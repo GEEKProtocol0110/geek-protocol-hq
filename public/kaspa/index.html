@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080b0b" />
+    <meta name="description" content="A source-led field guide to Kaspa: blockDAG, GHOSTDAG, fair launch, Crescendo, Toccata, developer paths, and the Geek Protocol curriculum." />
+    <title>Kaspa Field Guide — Geek Protocol</title>
+    <link rel="preconnect" href="https://geekprotocol.xyz" />
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <link rel="stylesheet" href="./assets/kaspa.css" />
+    <script defer src="../assets/site.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <a class="brand" href="../" aria-label="Geek Protocol home">
+        <img src="https://geekprotocol.xyz/logo.png" alt="" width="48" height="48" />
+        <span>GEEK<span class="brand-mark">//</span>KASPA</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav>
+        <a href="#protocol">Protocol</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#builders">Builders</a>
+        <a href="#sources">Sources</a>
+        <a href="../lobby/">Lobbies</a>
+        <a class="nav-cta" href="../play/?category=kaspa">Play Kaspa <span aria-hidden="true">→</span></a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="kaspa-hero">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="kaspa-hero-copy">
+          <div class="eyebrow"><span class="live-dot"></span> SOURCE-LED FIELD GUIDE · REVIEWED SEP 05 2026</div>
+          <h1>KASPA,<br /><em>WITHOUT<br />THE HYPE.</em></h1>
+          <p>Understand the architecture, milestones, and builder surface before you test your knowledge. Primary sources are linked throughout.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="../play/?category=kaspa">Start the Kaspa Gauntlet <span aria-hidden="true">→</span></a>
+            <a class="button button-secondary" href="https://docs.kaspa.org/">Official documentation <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <dl class="network-snapshot" aria-label="Kaspa mainnet snapshot">
+          <div><dt>10 BPS</dt><dd>Mainnet target rate</dd></div>
+          <div><dt>BlockDAG</dt><dd>Parallel block structure</dd></div>
+          <div><dt>GHOSTDAG</dt><dd>Consensus ordering</dd></div>
+          <div><dt>PoW</dt><dd>Permissionless security</dd></div>
+          <div><dt>KAS</dt><dd>Native network asset</dd></div>
+        </dl>
+      </section>
+
+      <section class="field-section" id="protocol">
+        <div class="section-kicker">01 / THE PROTOCOL</div>
+        <div class="field-heading"><h2>THE CHAIN<br />IS A DAG.</h2><p>Kaspa keeps proof-of-work and UTXO accounting while allowing blocks to be produced in parallel. GHOSTDAG supplies a consistent ordering for those blocks.</p></div>
+        <div class="protocol-grid">
+          <article><b>BLOCKDAG</b><h3>Parallel work stays useful.</h3><p>Blocks reference multiple predecessors, forming a directed acyclic graph instead of a single linear tip.</p><a href="https://kaspa.org/">Kaspa overview ↗</a></article>
+          <article><b>GHOSTDAG</b><h3>Order without discarding the graph.</h3><p>The consensus rule identifies a well-connected set of blocks and derives a deterministic order.</p><a href="https://eprint.iacr.org/2018/104.pdf">Original paper ↗</a></article>
+          <article><b>FAIR LAUNCH</b><h3>No premine. No presale.</h3><p>Mainnet launched in November 2021 without an insider allocation. Emissions follow a published schedule.</p><a href="https://kaspa.org/lore">Read Kaspa lore ↗</a></article>
+          <article><b>EMISSION</b><h3>Chromatic reduction.</h3><p>Block rewards decline smoothly over time through Kaspa's monthly chromatic emission schedule.</p><a href="https://wiki.kaspa.org/en/tokenomics">Tokenomics ↗</a></article>
+        </div>
+        <div class="dag-model" aria-label="Conceptual blockDAG diagram">
+          <div class="dag-label"><small>CONCEPTUAL MODEL</small><strong>PARALLEL BLOCKS, ONE ORDERED HISTORY</strong></div>
+          <div class="dag-track" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <p>This is an explanatory diagram, not a live network visualization.</p>
+        </div>
+      </section>
+
+      <section class="field-section timeline-section" id="timeline">
+        <div class="section-kicker">02 / MAINNET MILESTONES</div>
+        <div class="field-heading"><h2>FROM LAUNCH<br />TO TOCCATA.</h2><p>Kaspa's performance and programmability arrived in staged protocol upgrades. Future research is clearly separated from active mainnet capability.</p></div>
+        <ol class="timeline">
+          <li><time>2021</time><div><small>MAINNET</small><h3>Fair-launched proof-of-work blockDAG.</h3><p>Kaspa launched publicly in November with no premine or presale.</p></div></li>
+          <li><time>2025</time><div><small>CRESCENDO · MAY 05</small><h3>One block per second became ten.</h3><p>The hardfork activated KIP-9, KIP-10, KIP-13, and KIP-15 and raised the target rate to 10 BPS.</p></div></li>
+          <li><time>2026</time><div><small>TOCCATA · JUN 30</small><h3>UTXO-native programmability.</h3><p>Transaction v1, covenants, script pricing, user lanes, Based Apps, and Inline ZK foundations activated at DAA score 474,165,565.</p></div></li>
+          <li class="future"><time>NEXT</time><div><small>RESEARCH / DEVELOPMENT</small><h3>DAGKnight is not mainnet yet.</h3><p>DAGKnight proposes responsiveness to actual network conditions. It has no fixed activation date and should not be described as live.</p></div></li>
+        </ol>
+      </section>
+
+      <section class="field-section builders-section" id="builders">
+        <div class="section-kicker">03 / BUILDER SURFACE</div>
+        <div class="field-heading"><h2>STATE,<br />THE UTXO WAY.</h2><p>Toccata expands what can be expressed directly through transactions while keeping Kaspa's UTXO model. Production builders should start from official documentation and current tooling.</p></div>
+        <div class="builder-paths">
+          <article><span>01</span><h3>Covenants</h3><p>Transaction rules can constrain how outputs are spent, enabling verifiable state transitions without an account-style global state machine.</p></article>
+          <article><span>02</span><h3>Based Apps</h3><p>Applications can coordinate state through chained UTXOs and network-native verification patterns.</p></article>
+          <article><span>03</span><h3>Inline ZK</h3><p>Zero-knowledge verification primitives create a path toward privacy and compact proofs inside transaction logic.</p></article>
+        </div>
+        <div class="toolchain">
+          <div><small>CORE</small><b>rusty-kaspa</b><span>Node and protocol implementation</span></div>
+          <div><small>WEB</small><b>Kaspa WASM SDK</b><span>Browser and JavaScript integration</span></div>
+          <div><small>AUTHORING</small><b>Silverscript</b><span>Main covenant-oriented language path</span></div>
+          <div><small>EXPERIMENTAL</small><b>Argent</b><span>Emerging higher-level tooling</span></div>
+        </div>
+      </section>
+
+      <section class="field-section curriculum-section">
+        <div class="section-kicker">04 / GEEK CURRICULUM</div>
+        <div class="field-heading"><h2>1,032 DRILLS.<br />CURRENT LAYER.</h2><p>The Kaspa bank combines 1,000 practice variants across 80 core concepts with 32 priority questions covering current mainnet, Toccata, the developer stack, and DAGKnight research.</p></div>
+        <div class="curriculum-grid">
+          <span>Origins</span><span>BlockDAG Basics</span><span>GHOSTDAG</span><span>Mining &amp; Consensus</span><span>Wallets &amp; Security</span><span>Network &amp; Scaling</span><span>Tokens &amp; Programmability</span><span>Ecosystem &amp; Culture</span>
+        </div>
+        <p class="editorial-note"><b>Editorial standard:</b> current and time-sensitive questions are source-labelled inside the game. The larger legacy bank remains a draft practice bank pending full item-by-item review.</p>
+      </section>
+
+      <section class="field-section fit-section">
+        <div class="section-kicker">05 / WHERE GEEK FITS</div>
+        <div class="fit-grid">
+          <article><span class="status operational">LIVE SITE</span><h3>Practice layer</h3><p>Selectable categories, timed Gauntlet rounds, local progression, source review, and invite links.</p></article>
+          <article><span class="status tested">PUBLIC REPO</span><h3>Alpha architecture</h3><p>The linked codebase describes wallet authentication, server scoring, ledger rules, workers, and deployment.</p></article>
+          <article><span class="status pending">NOT LIVE</span><h3>Token settlement</h3><p>No mint or wallet transaction is exposed here until deployment details, terms, and audit evidence are verifiable.</p></article>
+        </div>
+      </section>
+
+      <section class="source-desk" id="sources">
+        <div><div class="section-kicker">06 / SOURCE DESK</div><h2>VERIFY<br />THE SIGNAL.</h2><p>Geek Protocol is independent from Kaspa's core organization. For protocol facts, use primary sources.</p></div>
+        <div class="source-links">
+          <a href="https://docs.kaspa.org/"><span>Official documentation</span><b>docs.kaspa.org ↗</b></a>
+          <a href="https://github.com/kaspanet/rusty-kaspa"><span>Core implementation</span><b>rusty-kaspa ↗</b></a>
+          <a href="https://github.com/kaspanet/kips"><span>Improvement proposals</span><b>Kaspa KIPs ↗</b></a>
+          <a href="https://docs.kaspa.org/toccata"><span>Toccata reference</span><b>Mainnet upgrade ↗</b></a>
+          <a href="https://kaspa.org/build"><span>Builder portal</span><b>Build on Kaspa ↗</b></a>
+          <a href="https://eprint.iacr.org/2022/1494.pdf"><span>DAGKnight paper</span><b>Research PDF ↗</b></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>Kaspa meets curiosity. Learning becomes value.</p></div>
+      <div class="footer-links"><a href="../">Home</a><a href="../lobby/">Lobbies</a><a href="../mint/">Mint readiness</a><a href="https://x.com/geekonkas">@geekonkas</a></div>
+      <p class="footer-copy">© <span data-year></span> Geek Protocol · Independent educational project · Not investment advice.</p>
+    </footer>
+  </body>
+</html>

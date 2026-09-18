@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#070a0a" />
+    <meta name="description" content="Play the Geek Gauntlet: eight selectable trivia categories, a source-reviewed Kaspa supplement, and ten escalating practice rounds." />
+    <title>Geek Gauntlet — Play</title>
+    <link rel="preconnect" href="https://geekprotocol.xyz" />
+    <link rel="stylesheet" href="./assets/game.css" />
+    <script defer src="./assets/game.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#game">Skip to game</a>
+
+    <header class="game-header">
+      <a class="brand" href="../" aria-label="Back to Geek Protocol">
+        <img src="https://geekprotocol.xyz/logo.png" alt="" width="44" height="44" />
+        <span>GEEK<span>//</span>GAUNTLET</span>
+      </a>
+      <div class="alpha-flag"><i></i> LOCAL ALPHA PLAY · NO TOKEN PAYOUTS</div>
+      <div class="player-wallet" aria-label="Local player totals">
+        <div><small>LEVEL</small><strong data-level>1</strong></div>
+        <div><small>XP</small><strong data-xp>0</strong></div>
+        <div class="balance"><small>ALPHA GEEK</small><strong data-balance>0</strong></div>
+      </div>
+    </header>
+
+    <main id="game" class="game-shell">
+      <section class="screen start-screen active" data-screen="start" aria-labelledby="start-title">
+        <div class="start-copy">
+          <div class="eyebrow">A.C.E. CHALLENGE MODULE // ONLINE</div>
+          <h1 id="start-title">THE GEEK<br /><span>GAUNTLET</span></h1>
+          <p>Eight knowledge worlds. Ten escalating rounds. Choose your domain, then bank your local Alpha GEEK or risk it to climb higher.</p>
+
+          <div class="category-select-head"><small>CHOOSE YOUR DOMAIN</small><span>8 selectable categories · 8,032 items</span></div>
+          <div class="category-picker" role="radiogroup" aria-label="Trivia category">
+            <button class="category-chip selected" type="button" role="radio" aria-checked="true" data-category-key="kaspa"><strong>Kaspa</strong><span>1,032 · sourced</span></button>
+            <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="video-games"><strong>Video Games</strong><span>1,000</span></button>
+            <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="science-fiction"><strong>Science Fiction</strong><span>1,000</span></button>
+            <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="technology"><strong>Technology</strong><span>1,000</span></button>
+            <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="movies"><strong>Movies</strong><span>1,000</span></button>
+            <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="history"><strong>History</strong><span>1,000</span></button>
+            <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="comics"><strong>Comics</strong><span>1,000</span></button>
+            <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="pop-culture"><strong>Pop Culture</strong><span>1,000</span></button>
+          </div>
+
+          <div class="mode-card">
+            <div>
+              <small>SELECTED CATEGORY</small>
+              <strong data-selected-mode>Kaspa: Proof of Learning</strong>
+              <span data-mode-detail>1,000 variants / 80 concepts + 32 current items</span>
+            </div>
+            <div class="mode-status" data-bank-status>LOADING</div>
+          </div>
+
+          <div class="start-actions">
+            <button class="primary-action" type="button" data-start disabled>Loading Question Bank</button>
+            <button class="quiet-action" type="button" data-how>How it works</button>
+            <a class="quiet-action" href="../lobby/">Find a lobby</a>
+          </div>
+
+          <div class="local-note">
+            <b>Practice economy:</b> progress and Alpha GEEK are saved only on this device. They are not tokens and have no monetary value.
+          </div>
+        </div>
+
+        <aside class="ladder" aria-label="Gauntlet rounds">
+          <div class="ladder-head"><span>THE ASCENT</span><span>MAX REWARD</span></div>
+          <ol data-ladder></ol>
+          <button class="reset-button" type="button" data-reset>Reset local progress</button>
+        </aside>
+      </section>
+
+      <section class="screen quiz-screen" data-screen="quiz" aria-live="polite">
+        <div class="quiz-hud">
+          <div><small>ROUND</small><strong><span data-round>01</span> / 10</strong></div>
+          <div><small>QUESTION</small><strong><span data-question-number>01</span> / 10</strong></div>
+          <div><small>CORRECT</small><strong data-correct>0</strong></div>
+          <div><small>RUN SCORE</small><strong data-score>0</strong></div>
+          <div class="timer-wrap" aria-label="Time remaining">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <circle class="timer-track" cx="24" cy="24" r="20"></circle>
+              <circle class="timer-line" data-timer-line cx="24" cy="24" r="20"></circle>
+            </svg>
+            <strong data-timer>20</strong>
+          </div>
+        </div>
+
+        <div class="question-stage">
+          <div class="question-meta">
+            <span data-category>TECHNOLOGY</span>
+            <span data-source-state>DRAFT BANK</span>
+            <span>DIFFICULTY <b data-difficulty>01</b></span>
+          </div>
+          <h2 data-question>Question loads here.</h2>
+          <div class="answers" data-answers></div>
+          <div class="feedback" data-feedback role="status"></div>
+          <div class="key-hint">Keyboard: press 1–4 to answer</div>
+        </div>
+
+        <aside class="ace-panel">
+          <img src="https://geekprotocol.xyz/mascot-ace.png" alt="A.C.E., the Geek Protocol quizmaster" />
+          <div><small>A.C.E. // LIVE READOUT</small><p data-ace>Choose carefully. The clock is already moving.</p></div>
+        </aside>
+      </section>
+
+      <section class="screen result-screen" data-screen="result" aria-labelledby="result-title">
+        <div class="result-main">
+          <div class="result-kicker" data-result-kicker>ROUND 01 COMPLETE</div>
+          <h2 id="result-title" data-result-title>ACCESS GRANTED</h2>
+          <p data-result-message>You survived the round.</p>
+
+          <div class="result-stats">
+            <div><small>CORRECT</small><strong data-result-correct>0/10</strong></div>
+            <div><small>ROUND SCORE</small><strong data-result-score>0</strong></div>
+            <div><small>XP EARNED</small><strong data-result-xp>0</strong></div>
+            <div><small>ALPHA GEEK</small><strong data-result-reward>+0</strong></div>
+          </div>
+
+          <div class="result-actions">
+            <button class="primary-action" type="button" data-continue>Continue to Round 02 <span>→</span></button>
+            <button class="quiet-action cashout" type="button" data-cashout>Cash out & end run</button>
+          </div>
+          <p class="entry-warning" data-entry-warning></p>
+          <details class="round-review">
+            <summary>Review answers &amp; sources</summary>
+            <ol data-round-review></ol>
+          </details>
+        </div>
+
+        <aside class="run-card">
+          <small>RUN SUMMARY</small>
+          <div><span>Started at</span><b data-start-balance>0 GEEK</b></div>
+          <div><span>Entry fees</span><b data-fees>0 GEEK</b></div>
+          <div><span>Rewards</span><b data-rewards>0 GEEK</b></div>
+          <div><span>Run profit</span><b data-profit>0 GEEK</b></div>
+          <div class="run-progress"><i data-run-progress></i></div>
+        </aside>
+      </section>
+
+      <section class="screen complete-screen" data-screen="complete" aria-labelledby="complete-title">
+        <div class="completion-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img src="https://geekprotocol.xyz/mascot-giga.png" alt="GIGA, the Geek Protocol mascot" />
+        <div class="eyebrow">APEX PROTOCOL // COMPLETE</div>
+        <h2 id="complete-title">GAUNTLET<br /><span>CONQUERED</span></h2>
+        <p data-complete-message>You cleared all ten rounds.</p>
+        <div class="complete-score"><small>FINAL RUN SCORE</small><strong data-final-score>0</strong></div>
+        <div class="result-actions complete-actions">
+          <button class="primary-action" type="button" data-new-run>Start a New Run <span>↻</span></button>
+          <a class="quiet-action" href="../">Return to Protocol</a>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="rules-dialog" data-rules>
+      <button class="dialog-close" type="button" data-close aria-label="Close rules">×</button>
+      <div class="eyebrow">GAUNTLET RULES</div>
+      <h2>Climb or cash out.</h2>
+      <ol>
+        <li><b>Round 1 is free.</b> Later rounds charge Alpha GEEK when you enter.</li>
+        <li><b>Answer ten questions.</b> Every round uses your selected category, a 20-second timer, and one locked answer.</li>
+        <li><b>Earn by accuracy.</b> Correct answers earn the round’s displayed reward.</li>
+        <li><b>Choose after every round.</b> Continue and risk another entry fee, or end the run.</li>
+        <li><b>Review the source.</b> Every Kaspa round links the cited primary source after scoring.</li>
+      </ol>
+      <p>This browser game uses a local practice economy. It does not connect a wallet or award real $GEEK.</p>
+      <button class="primary-action" type="button" data-close>Understood</button>
+    </dialog>
+  </body>
+</html>

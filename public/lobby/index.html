@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080b0b" />
+    <meta name="description" content="Geek Protocol lobbies: create a shareable Kaspa learning room, choose a category, and launch the Gauntlet together." />
+    <title>Community Lobbies — Geek Protocol</title>
+    <link rel="preconnect" href="https://geekprotocol.xyz" />
+    <link rel="stylesheet" href="./assets/lobby.css" />
+    <script defer src="./assets/lobby.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#lobby-main">Skip to lobbies</a>
+    <div class="community-shell">
+      <aside class="server-rail" aria-label="Protocol spaces">
+        <a class="server-logo" href="../" aria-label="Geek Protocol home"><img src="https://geekprotocol.xyz/logo.png" alt="" width="48" height="48" /></a>
+        <span class="rail-divider"></span>
+        <a class="server-icon active" href="./" aria-label="Geek learning lobbies">G</a>
+        <a class="server-icon" href="../kaspa/" aria-label="Kaspa field guide">K</a>
+        <a class="server-icon" href="../mint/" aria-label="Geek mint readiness">$</a>
+      </aside>
+
+      <aside class="channel-rail">
+        <div class="server-name"><span>GEEK PROTOCOL</span><small>COMMUNITY ALPHA</small></div>
+        <nav aria-label="Community channels">
+          <p>START HERE</p>
+          <button class="channel active" type="button" data-channel="briefing"><span>#</span> briefing</button>
+          <button class="channel" type="button" data-channel="matchmaking"><span>#</span> matchmaking</button>
+          <p>KASPA LAB</p>
+          <button class="channel" type="button" data-channel="academy"><span>#</span> kaspa-academy</button>
+          <button class="channel" type="button" data-channel="ghostdag"><span>#</span> ghostdag-lab</button>
+          <button class="channel" type="button" data-channel="builders"><span>#</span> builders-desk</button>
+          <p>EXTERNAL SIGNAL</p>
+          <a class="channel" href="https://x.com/geekonkas"><span>↗</span> @geekonkas</a>
+          <a class="channel" href="https://t.me/GEEKonKAScommunity"><span>↗</span> telegram</a>
+        </nav>
+        <div class="identity-card">
+          <span class="identity-avatar" data-avatar>G</span>
+          <div><b data-identity-name>Guest Geek</b><small>LOCAL IDENTITY</small></div>
+          <button type="button" data-edit-name aria-label="Edit display name">✎</button>
+        </div>
+      </aside>
+
+      <main id="lobby-main" class="lobby-main">
+        <header class="channel-header"><div><b>#</b><span data-channel-title>briefing</span></div><p data-channel-description>Create a focused learning room and share the invite.</p><a href="../play/">Quick play →</a></header>
+
+        <section class="channel-view">
+          <div class="welcome-panel">
+            <div class="eyebrow">COMMUNITY ROOMS // LOCAL INVITE ALPHA</div>
+            <h1>FIND YOUR<br /><span>SQUAD.</span></h1>
+            <p data-channel-copy>Choose a room template or configure your own. Every invite opens the same room setup, but live presence, chat, and synchronized rounds require the next multiplayer backend phase.</p>
+          </div>
+
+          <section class="room-builder" aria-labelledby="builder-title">
+            <div class="panel-heading"><div><small>CREATE A ROOM</small><h2 id="builder-title">Lobby configuration</h2></div><span class="status-pill">LOCAL</span></div>
+            <form data-lobby-form>
+              <label>Lobby name<input name="name" maxlength="36" value="Kaspa Study Hall" autocomplete="off" /></label>
+              <label>Category<select name="category"><option value="kaspa">Kaspa</option><option value="video-games">Video Games</option><option value="science-fiction">Science Fiction</option><option value="technology">Technology</option><option value="movies">Movies</option><option value="history">History</option><option value="comics">Comics</option><option value="pop-culture">Pop Culture</option></select></label>
+              <label>Seats<select name="seats"><option value="2">2 seats</option><option value="4" selected>4 seats</option><option value="8">8 seats</option></select></label>
+              <input type="hidden" name="focus" value="" />
+              <button class="primary-action" type="submit">Create invite <span>→</span></button>
+            </form>
+          </section>
+
+          <section class="templates" aria-labelledby="templates-title">
+            <div class="panel-heading"><div><small>ROOM TEMPLATES</small><h2 id="templates-title">Choose the signal</h2></div><span>4 formats</span></div>
+            <div class="template-grid">
+              <button type="button" data-template="core"><span>01</span><strong>Kaspa Core</strong><small>Broad protocol fundamentals</small></button>
+              <button type="button" data-template="ghostdag"><span>02</span><strong>GHOSTDAG Lab</strong><small>Consensus-weighted questions</small></button>
+              <button type="button" data-template="speed"><span>03</span><strong>Speed Signal</strong><small>Two-seat quick challenge</small></button>
+              <button type="button" data-template="builders"><span>04</span><strong>Builder Briefing</strong><small>Toccata and toolchain focus</small></button>
+            </div>
+          </section>
+
+          <section class="active-room" data-room hidden aria-labelledby="active-room-title">
+            <div class="panel-heading"><div><small>YOUR INVITE</small><h2 id="active-room-title" data-room-name>Kaspa Study Hall</h2></div><span class="status-pill ready">READY</span></div>
+            <div class="room-code"><div><small>LOBBY CODE</small><strong data-room-code>GEEK-0000</strong></div><button type="button" data-copy>Copy invite link</button></div>
+            <div class="seat-grid" data-seats></div>
+            <p class="room-note"><b>Current mode:</b> invite configuration is encoded in the URL. Players launch independently; live seats, chat, shared scoring, and synchronized state are not represented as active yet.</p>
+            <div class="room-actions"><a class="primary-action" data-launch href="../play/?category=kaspa">Launch Gauntlet <span>→</span></a><button class="secondary-action" type="button" data-new-room>New room</button></div>
+          </section>
+        </section>
+      </main>
+
+      <aside class="member-rail">
+        <p>ROOM STATUS</p>
+        <div class="status-card"><i></i><div><b>Invite alpha</b><small>Shareable setup links</small></div></div>
+        <p>PROTOCOL LINKS</p>
+        <a href="../kaspa/"><span>K</span><div><b>Kaspa 101</b><small>Field guide</small></div></a>
+        <a href="../mint/"><span>$</span><div><b>Mint readiness</b><small>Launch gates</small></div></a>
+        <a href="https://github.com/GEEKProtocol0110/geek-protocol-alpha"><span>↗</span><div><b>Source code</b><small>Public repository</small></div></a>
+        <div class="honesty-note"><b>No fake activity.</b><span>Online counts and chat stay absent until backed by live services.</span></div>
+      </aside>
+    </div>
+
+    <dialog data-name-dialog><form method="dialog"><button class="dialog-close" value="cancel" aria-label="Close">×</button><small>LOCAL IDENTITY</small><h2>Choose a display name</h2><label>Display name<input name="displayName" maxlength="24" autocomplete="nickname" /></label><button class="primary-action" value="save">Save name</button></form></dialog>
+  </body>
+</html>
