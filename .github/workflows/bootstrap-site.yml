@@ -25,7 +25,7 @@ jobs:
 
           stage_dir="$(mktemp -d)"
           git clone --depth 1 https://github.com/GEEKProtocol0110/geek-protocol-alpha.git "$stage_dir/source"
-          site_source="$stage_dir/source/public"
+          site_source="$stage_dir/source/public/dist"
           test -f "$site_source/index.html"
           test "$(find "$site_source" -type f | wc -l)" -eq 28
 
