@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out new repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -25,12 +25,13 @@ jobs:
 
           stage_dir="$(mktemp -d)"
           git clone --depth 1 https://github.com/GEEKProtocol0110/geek-protocol-alpha.git "$stage_dir/source"
-          test -f "$stage_dir/source/apps/site-prototype/index.html"
-          test "$(find "$stage_dir/source/apps/site-prototype" -type f | wc -l)" -eq 28
+          site_source="$stage_dir/source/apps/site-prototype/dist"
+          test -f "$site_source/index.html"
+          test "$(find "$site_source" -type f | wc -l)" -eq 28
 
           git rm -rf .
           mkdir -p public
-          cp -a "$stage_dir/source/apps/site-prototype/." public/
+          cp -a "$site_source/." public/
           cp "$stage_dir/source/LICENSE" LICENSE
 
           printf '.vercel/\n.DS_Store\n*.log\n' > .gitignore
