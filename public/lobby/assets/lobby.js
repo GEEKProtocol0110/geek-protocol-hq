@@ -108,6 +108,13 @@
     if (nameDialog.returnValue === 'save') setIdentity(nameForm.elements.displayName.value);
   });
 
+  document.addEventListener('geek:wallet', (event) => {
+    const wallet = event.detail || {};
+    const identityState = $('[data-identity-state]');
+    if (identityState) identityState.textContent = wallet.verified ? 'WALLET VERIFIED' : wallet.connected ? 'WALLET LINKED' : 'LOCAL IDENTITY';
+    document.body.classList.toggle('wallet-verified', Boolean(wallet.verified));
+  });
+
   setIdentity(identity);
   const params = new URLSearchParams(location.search);
   if (params.has('lobby')) renderRoom({ name: params.get('name'), category: params.get('category'), seats: params.get('seats'), focus: params.get('focus'), code: params.get('lobby') }, false);
