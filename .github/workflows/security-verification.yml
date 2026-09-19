@@ -1,0 +1,28 @@
+name: Security verification
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out pinned source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Install locked package graph
+        run: npm ci --ignore-scripts
+      - name: Check JavaScript syntax
+        run: find api server public scripts \( -name '*.js' -o -name '*.mjs' \) | sort | xargs -n1 node --check
+      - name: Run integration tests
+        run: npm test
+      - name: Verify security evidence
+        run: npm run security:check
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high
