@@ -365,7 +365,14 @@ h1 em { color: var(--gold); font-style: normal; }
 .origin .section-kicker { color: #3e6663; }
 .origin-layout { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: clamp(3rem, 9vw, 8rem); align-items: start; }
 .origin h2, .gauntlet h2 { margin-bottom: 0; font-size: clamp(4.2rem, 8vw, 8.5rem); }
-.origin h2 span, .gauntlet h2 span { color: transparent; -webkit-text-stroke: 2px currentColor; }
+.origin h2 span {
+  color: var(--ink);
+  -webkit-text-stroke: 0;
+}
+.gauntlet h2 span {
+  color: var(--gold);
+  -webkit-text-stroke: 0;
+}
 .origin-story { padding-top: 0.7rem; max-width: 610px; }
 .origin-story p { color: #39403e; font-size: 1.05rem; }
 .origin-story .story-lede { color: var(--ink); font-size: clamp(1.25rem, 2vw, 1.65rem); font-weight: 720; line-height: 1.5; }
@@ -718,7 +725,7 @@ h1 em { color: var(--gold); font-style: normal; }
     overflow-wrap: normal;
     word-break: normal;
   }
-  .origin h2 span, .gauntlet h2 span { -webkit-text-stroke-width: 1.25px; }
+  .origin h2 span, .gauntlet h2 span { -webkit-text-stroke-width: 0; }
   .origin-story { padding-top: 0; }
   .gauntlet-intro > p { margin-top: 1.5rem; }
   .check-list { grid-template-columns: 1fr; }
