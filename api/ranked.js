@@ -2,7 +2,7 @@ import { randomBytes } from 'node:crypto';
 import { recordCommunityQuestionUse } from '../server/cce.js';
 import { categories, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
 import { recordVerifiedScore } from '../server/leaderboard.js';
-import { loadProfile, saveProfile } from '../server/profile.js';
+import { loadProfile, saveProfile, saveProfileWithAudit } from '../server/profile.js';
 import { questionById, selectRoundQuestionIds, shuffleOptions } from '../server/questions.js';
 import { rateLimit, redis } from '../server/redis.js';
 import { requireSession } from '../server/session.js';
@@ -197,7 +197,29 @@ const answerQuestion = async (run, session, profile, body) => {
       nextEntry: run.mode !== 'gauntlet' || run.round === 10 ? 0 : ROUND_CONFIG[run.round].entry,
       nextMax: run.mode !== 'gauntlet' || run.round === 10 ? 0 : ROUND_CONFIG[run.round].max
     };
-    await saveProfile(session.id, profile);
+    if (reward > 0) {
+      await saveProfileWithAudit(session.id, profile, {
+        type: 'alpha.balance.reward-credited',
+        severity: 'info',
+        objectType: 'ranked-run',
+        objectId: run.id,
+        outcome: 'success',
+        reason: 'server-scored-round',
+        interactionId: run.id,
+        details: {
+          amount: reward,
+          unit: 'ALPHA_GEEK',
+          mode: run.mode,
+          category: run.category,
+          round: run.round,
+          correct: run.correct,
+          balanceAfter: profile.balance,
+          settlement: 'disabled'
+        }
+      });
+    } else {
+      await saveProfile(session.id, profile);
+    }
   } else {
     run.status = 'awaiting-next';
   }
@@ -259,9 +281,34 @@ export default async function handler(req, res) {
     }
     if (action === 'continue') {
       if (run.mode !== 'gauntlet' || run.status !== 'between-rounds' || run.round >= run.maxRounds) throw new Error('RUN_STATE_INVALID');
+      const balanceBefore = profile.balance;
       run.round += 1;
       const question = await startRound(run, profile);
-      await Promise.all([saveRun(run), saveProfile(session.id, profile)]);
+      const entry = balanceBefore - profile.balance;
+      await Promise.all([
+        saveRun(run),
+        entry > 0
+          ? saveProfileWithAudit(session.id, profile, {
+            type: 'alpha.balance.entry-debited',
+            severity: 'info',
+            objectType: 'ranked-run',
+            objectId: run.id,
+            outcome: 'success',
+            reason: 'gauntlet-round-entry',
+            interactionId: run.id,
+            details: {
+              amount: entry,
+              unit: 'ALPHA_GEEK',
+              mode: run.mode,
+              category: run.category,
+              round: run.round,
+              balanceBefore,
+              balanceAfter: profile.balance,
+              settlement: 'disabled'
+            }
+          })
+          : saveProfile(session.id, profile)
+      ]);
       return sendJson(res, 200, { ok: true, verified: true, run: safeRun(run), profile, question });
     }
     if (action === 'finish') {

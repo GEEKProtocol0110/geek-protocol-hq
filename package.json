@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "security:check": "node scripts/security-check.mjs",
+    "verify": "npm test && npm run security:check"
   },
   "engines": {
     "node": ">=20"

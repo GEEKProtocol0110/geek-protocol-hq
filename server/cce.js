@@ -1,4 +1,5 @@
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
+import { auditWriteCommands, createAuditRecord, hashAuditIdentifier, recordAuditEvent } from './audit.js';
 import { categories, cleanName } from './http.js';
 import { pipeline, parseStoredJson, redis } from './redis.js';
 
@@ -174,10 +175,11 @@ export const moderationQueue = async () => {
   return stored.map(parseStoredJson).filter(Boolean).map((item) => publicSubmission(item, true));
 };
 
-export const moderateContribution = async (body) => {
+export const moderateContribution = async (body, context = {}) => {
   const action = String(body.action || '');
   const note = cleanText(body.note, 400);
   const submission = await loadSubmission(body.id);
+  const previousStatus = submission.status;
   const now = Date.now();
   if (action === 'approve') {
     if (!['submitted', 'changes-requested'].includes(submission.status)) throw new Error('CCE_STATE_INVALID');
@@ -209,6 +211,25 @@ export const moderateContribution = async (body) => {
     commands.push(['ZADD', publishedIndex(submission.category), now, submission.id]);
     commands.push(['HINCRBY', contributorStats(submission.contributorSessionId), 'accepted', 1]);
   }
+  const auditRecord = await createAuditRecord({
+    type: `cce.moderation.${action}`,
+    severity: 'warning',
+    actorType: 'cce-moderator',
+    actorId: context.actorId || 'cce-moderator',
+    objectType: 'cce-submission',
+    objectId: submission.id,
+    outcome: 'success',
+    reason: 'moderator-state-transition',
+    interactionId: context.interactionId || submission.id,
+    details: {
+      action,
+      previousStatus,
+      nextStatus: submission.status,
+      notePresent: Boolean(note),
+      category: submission.category
+    }
+  });
+  commands.push(...auditWriteCommands(auditRecord));
   await pipeline(commands, true);
   return publicSubmission(submission, true);
 };
@@ -285,5 +306,29 @@ export const recordCommunityQuestionUse = async (question, runId) => {
     question.rewardAmount,
     now
   );
-  return Number(added) === 1;
+  const credited = Number(added) === 1;
+  if (credited) {
+    try {
+      await recordAuditEvent({
+        type: 'cce.reward.credited',
+        severity: 'info',
+        actorType: 'ranked-service',
+        actorId: 'ranked-service',
+        objectType: 'cce-submission',
+        objectId: question.id,
+        outcome: 'success',
+        reason: 'first-ranked-use',
+        interactionId: runId,
+        details: {
+          amount: question.rewardAmount,
+          unit: 'GEEK',
+          settlement: 'launch-gated',
+          runHash: hashAuditIdentifier(runId)
+        }
+      });
+    } catch (error) {
+      console.error('Geek audit event write failed', error);
+    }
+  }
+  return credited;
 };

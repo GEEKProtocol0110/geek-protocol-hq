@@ -1,4 +1,5 @@
-import { redis } from './redis.js';
+import { auditWriteCommands, createAuditRecord } from './audit.js';
+import { pipeline, redis } from './redis.js';
 
 const keyFor = (sessionId) => `geek:profile:${sessionId}`;
 
@@ -12,7 +13,9 @@ export const defaultProfile = () => ({
   totalRuns: 0,
   totalCorrect: 0,
   payoutAddress: '',
-  payoutAddressSetAt: 0
+  payoutAddressSetAt: 0,
+  payoutAddressVersion: 0,
+  payoutAddressEligibleAt: 0
 });
 
 export const loadProfile = async (sessionId) => {
@@ -28,4 +31,18 @@ export const loadProfile = async (sessionId) => {
 export const saveProfile = async (sessionId, profile) => {
   await redis('SET', keyFor(sessionId), JSON.stringify(profile));
   return profile;
+};
+
+export const saveProfileWithAudit = async (sessionId, profile, auditInput) => {
+  const record = await createAuditRecord({
+    actorType: 'alpha-session',
+    actorId: sessionId,
+    interactionId: sessionId,
+    ...auditInput
+  });
+  await pipeline([
+    ['SET', keyFor(sessionId), JSON.stringify(profile)],
+    ...auditWriteCommands(record)
+  ], true);
+  return { profile, audit: record };
 };

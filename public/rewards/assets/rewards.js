@@ -53,7 +53,8 @@
       const payload = await api('/api/rewards', { method: 'POST', body: JSON.stringify({ address: addressInput.value, acknowledged: form.elements.acknowledged.checked }) });
       render(payload);
       form.elements.acknowledged.checked = false;
-      setMessage('Payout wallet saved. No transaction was requested and withdrawals remain locked.', 'success');
+      const receipt = payload.auditReceipt?.eventId ? ` Audit receipt: ${payload.auditReceipt.eventId}.` : '';
+      setMessage(`Payout wallet saved as an unverified Alpha preference. The 72-hour change cooldown restarted; withdrawals remain locked.${receipt}`, 'success');
     } catch (error) {
       setMessage(error.message, 'error');
     } finally {
@@ -65,9 +66,11 @@
   removeButton.addEventListener('click', async () => {
     removeButton.disabled = true;
     try {
-      render(await api('/api/rewards', { method: 'DELETE' }));
+      const payload = await api('/api/rewards', { method: 'DELETE' });
+      render(payload);
       form.elements.acknowledged.checked = false;
-      setMessage('Payout wallet removed from this Alpha profile.', 'success');
+      const receipt = payload.auditReceipt?.eventId ? ` Audit receipt: ${payload.auditReceipt.eventId}.` : '';
+      setMessage(`Payout wallet removed from this Alpha profile.${receipt}`, 'success');
     } catch (error) {
       setMessage(error.message, 'error');
     } finally {
