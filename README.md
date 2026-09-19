@@ -8,7 +8,9 @@ The official Geek Protocol experience for Kaspa: a server-ranked trivia game and
 - Ten-round server-authoritative Gauntlet
 - Server-authoritative Daily Signal and 30-second Speed Signal modes adapted from Geek Mini
 - Eight selectable trivia categories
-- Kasware wallet connection, mainnet detection, GEEK balance display, and local signed ownership proof
+- Kasware connection, mainnet detection, GEEK balance display, and server-verified Kaspa Schnorr ownership proof
+- Wallet-recoverable player identities with older-session invalidation
+- Fresh, single-use wallet authorization for protected payout-setting changes
 - Wallet-neutral payout destination registration for any valid Kaspa mainnet address
 - Anonymous server sessions with secure, HTTP-only cookies
 - Persistent lobby records, active-seat presence, and shareable live room codes
@@ -50,6 +52,11 @@ Audit evidence supports:
 - `AUDIT_KEY_ID`: non-secret identifier for the current audit-integrity key
 - `AUDIT_ADMIN_TOKEN`: private random token of at least 24 characters for `/api/audit` exports
 
+Wallet identity also supports:
+
+- `IDENTITY_ORIGIN`: the canonical production origin included in signed challenges (recommended: `https://geekprotocol.xyz`)
+- `IDENTITY_ENV`: an optional non-Vercel environment namespace; Vercel automatically separates production and preview identity keys
+
 If `AUDIT_LOG_SECRET` is absent, Alpha events use visibly labeled unkeyed SHA-256 integrity. That mode is not sufficient for mainnet settlement. Real settlement must fail closed until keyed integrity, separately administered append-only replication, monitoring, and retention are configured.
 
 The private review desk lives at `/moderate/`. The key is sent only in the `X-CCE-Admin` request header and is held in browser `sessionStorage`, so closing the tab clears it.
@@ -66,14 +73,25 @@ The private review desk lives at `/moderate/`. The key is sent only in the `X-CC
 - The leaderboard endpoint is read-only; only the ranked service can write a result.
 - Session- and network-level rate limits reduce automated run farming.
 
+## Identity and recovery
+
+- `/api/identity` issues a random, five-minute server challenge bound to the exact origin, action, identity wallet, and requested payout destination when applicable.
+- Kasware signs human-readable text with explicit Schnorr mode. The browser never sends a seed phrase or private key.
+- The server verifies the signature and derives the Kaspa mainnet address from the supplied public key before creating any binding.
+- Challenge records and payout authorizations are atomically consumed once. Replays fail closed.
+- Wallet/player binding, session replacement, and the successful audit event commit in one Redis compare-and-set transition, preventing partial or raced identity claims.
+- A linked wallet can recover the same persistent profile in a new browser. Recovery increments an identity session version, invalidating older authenticated sessions.
+- Identity keys are environment-scoped so preview bindings cannot overwrite production bindings.
+- The pinned `@dfns/kaspa-wasm` package supplies the Node-compatible Kaspa personal-message verifier. Its exact version and integrity digest are locked for independent dependency review.
+
 ## Transparent Alpha
 
-Ranked Alpha balances, XP, game progress, lobbies, presence, verified scores, contributions, C.C.E. reward records, and payout-address preferences use Redis. Wallet proof state remains local to the browser. Server verification protects competitive integrity, but this is still an unproctored web trivia game and cannot prevent every form of outside assistance.
+Ranked Alpha balances, XP, game progress, lobbies, presence, verified scores, contributions, C.C.E. reward records, wallet identity bindings, and payout-address preferences use Redis. Server verification protects competitive integrity and wallet proof, but this is still an unproctored web trivia game and cannot prevent every form of outside assistance.
 
-C.C.E. rewards are internal, claim-gated Alpha ledger credits. They are created only once, when an approved and published question is first answered in ranked play. They are not token transfers, cannot be withdrawn, and have no promised monetary value. A player may register any checksum-valid Kaspa mainnet address as a future destination, but server wallet authentication, recoverable accounts, protected address changes, claim binding, minting, treasury settlement, and on-chain rewards are not enabled.
+C.C.E. rewards are internal, claim-gated Alpha ledger credits. They are created only once, when an approved and published question is first answered in ranked play. They are not token transfers, cannot be withdrawn, and have no promised monetary value. A player may register any checksum-valid Kaspa mainnet address as a future destination. Wallet authentication, recovery, and protected changes are now Alpha controls; minting, treasury settlement, token transfers, and on-chain rewards remain disabled.
 
 ## Audit readiness
 
-The project has not completed an independent audit. `SECURITY.md`, `docs/THREAT-MODEL.md`, `docs/AUDIT-SCOPE.md`, and `security/controls.json` define the review baseline and evidence map. `npm run verify` runs integration tests and checks the fail-closed settlement, private answer-bank, HTTP-header, audit-integrity, and control-evidence invariants.
+The project has not completed an independent audit. `SECURITY.md`, `docs/THREAT-MODEL.md`, `docs/IDENTITY-PROTOCOL.md`, `docs/DEPENDENCY-PROVENANCE.md`, `docs/AUDIT-SCOPE.md`, and `security/controls.json` define the review baseline and evidence map. `npm run verify` runs integration tests and checks the fail-closed settlement, private answer-bank, HTTP-header, wallet-proof, audit-integrity, and control-evidence invariants.
 
 Geek Protocol requires two independent scopes before value moves: a Web3 application penetration test of the complete browser/API/cloud stack, and a separate code audit of every future KRC-20 settlement and treasury component. All Critical and High findings must be remediated and retested against the exact release commit.

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#080b0b" />
-    <meta name="description" content="Register any valid Kaspa mainnet wallet as the future payout destination for Geek Protocol rewards." />
+    <meta name="description" content="Protect a recoverable Geek Protocol player identity with a server-verified Kaspa wallet signature and choose any valid Kaspa payout destination." />
     <title>Wallet &amp; Rewards — Geek Protocol</title>
     <link rel="stylesheet" href="../assets/styles.css" />
     <link rel="stylesheet" href="../assets/wallet.css" />
@@ -26,10 +26,11 @@
         <div>
           <div class="section-kicker">WALLET-NEUTRAL SETTLEMENT · ALPHA</div>
           <h1 id="rewards-title">YOUR GEEK.<br /><em>YOUR WALLET.</em></h1>
-          <p>Choose the Kaspa mainnet address where future eligible GEEK rewards should go. It can come from Kasware, a mobile wallet, hardware storage, or any wallet that gives you a valid Kaspa receiving address.</p>
+          <p>Protect your Alpha history with a one-time Kaspa wallet signature, then choose the Kaspa mainnet address where future eligible GEEK rewards should go. Wallet proofs never authorize a transaction.</p>
         </div>
         <dl class="reward-summary" aria-label="Alpha reward profile">
           <div><dt>ALPHA GEEK</dt><dd data-alpha-balance>0</dd></div>
+          <div><dt>PLAYER IDENTITY</dt><dd data-identity-state>SESSION ONLY</dd></div>
           <div><dt>PAYOUT WALLET</dt><dd data-payout-state>NOT SET</dd></div>
           <div><dt>ON-CHAIN STATUS</dt><dd>LOCKED</dd></div>
         </dl>
@@ -47,22 +48,23 @@
           <p class="address-help">Only the public receiving address is stored. Never enter a seed phrase or private key.</p>
           <label class="confirm-row"><input name="acknowledged" type="checkbox" required /><span>I checked the address and understand on-chain withdrawals are not enabled yet.</span></label>
           <div class="form-actions"><button class="save-address" type="submit">Save payout wallet <span>→</span></button><button class="remove-address" type="button" data-remove hidden>Remove</button></div>
-          <p class="form-message" data-form-message role="status" aria-live="polite">Your selection is tied to this server Alpha profile, remains unverified, and starts a 72-hour future-settlement cooldown after every change.</p>
+          <p class="form-message" data-form-message role="status" aria-live="polite">Every change starts a 72-hour future-settlement cooldown. Once an identity wallet is linked, changing or removing this setting also requires a fresh one-time wallet signature.</p>
         </form>
 
         <aside class="payout-policy" aria-labelledby="policy-title">
           <span>02 / POLICY</span>
           <h2 id="policy-title">Any wallet.<br />One safe address.</h2>
           <ol>
-            <li><b>Wallet-neutral</b><span>Kasware is optional. The destination only needs to be a valid Kaspa mainnet address.</span></li>
+            <li><b>Wallet-neutral</b><span>The identity wallet protects the account; the payout destination may still be any valid Kaspa mainnet address.</span></li>
             <li><b>No custody</b><span>Geek Protocol will never request or store your seed phrase or private key.</span></li>
+            <li><b>Recoverable</b><span>A fresh proof from the linked identity wallet can restore the same Alpha profile and invalidate its older signed-in sessions.</span></li>
             <li><b>Review first</b><span>Real transfers remain disabled until token identity, treasury rules, settlement code, limits, and an external security review are complete.</span></li>
           </ol>
         </aside>
       </section>
 
       <section class="connected-wallet" aria-labelledby="connected-title">
-        <div><span>03 / OPTIONAL SHORTCUT</span><h2 id="connected-title">Use Kasware without being locked to Kasware.</h2><p>Connect only if you want to copy its current address into the payout field. You can always paste an address from a different wallet instead.</p></div>
+        <div><span>03 / IDENTITY PROOF</span><h2 id="connected-title">Recover the player. Never expose the key.</h2><p>Kasware signs a five-minute, single-use server challenge. The server checks the signature and public-key address match, stores no signature, and never asks for transaction permission. The linked wallet can recover this Alpha identity on another browser.</p></div>
         <section class="wallet-panel" data-wallet-root aria-label="Optional Kasware wallet connection">
           <div>
             <div class="wallet-panel__head"><i class="wallet-panel__dot"></i><span data-wallet-state>CHECKING KASWARE</span></div>
@@ -70,8 +72,8 @@
             <div class="wallet-panel__facts"><span>HOLDING <b data-wallet-geek>—</b></span><span>OPTIONAL</span></div>
             <p class="wallet-panel__message" data-wallet-message aria-live="polite">Checking for the Kasware wallet.</p>
           </div>
-          <div class="wallet-panel__actions"><button type="button" data-wallet-connect>Connect Kasware</button><button type="button" data-wallet-verify hidden>Verify ownership</button><a href="https://www.kasware.xyz" target="_blank" rel="noreferrer" data-wallet-install>Get Kasware ↗</a></div>
-          <p class="wallet-panel__safety"><b>Optional convenience only.</b> The saved payout address may belong to any Kaspa wallet.</p>
+          <div class="wallet-panel__actions"><button type="button" data-wallet-connect>Connect Kasware</button><button type="button" data-wallet-verify hidden>Verify &amp; protect</button><a href="https://www.kasware.xyz" target="_blank" rel="noreferrer" data-wallet-install>Get Kasware ↗</a></div>
+          <p class="wallet-panel__safety"><b>Proof, not custody.</b> This feature signs human-readable text only. Settlement and withdrawals remain disabled.</p>
         </section>
       </section>
     </main>

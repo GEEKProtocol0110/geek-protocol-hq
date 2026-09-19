@@ -9,6 +9,7 @@
   const useConnected = $('[data-use-connected]');
   const removeButton = $('[data-remove]');
   let connectedAddress = '';
+  let identity = null;
 
   const api = async (path, options = {}) => {
     const response = await fetch(path, { credentials: 'same-origin', headers: { 'Content-Type': 'application/json', ...(options.headers || {}) }, ...options });
@@ -25,7 +26,9 @@
   const render = (payload) => {
     $('[data-alpha-balance]').textContent = Number(payload.balance || 0).toLocaleString();
     const payout = payload.payout || {};
+    identity = payload.identity || identity;
     $('[data-payout-state]').textContent = payout.maskedAddress || 'NOT SET';
+    $('[data-identity-state]').textContent = identity?.linked ? 'WALLET VERIFIED' : 'SESSION ONLY';
     addressInput.value = payout.address || '';
     removeButton.hidden = !payout.address;
     serviceState.textContent = 'SERVER READY';
@@ -50,11 +53,18 @@
     button.disabled = true;
     button.textContent = 'Checking address…';
     try {
-      const payload = await api('/api/rewards', { method: 'POST', body: JSON.stringify({ address: addressInput.value, acknowledged: form.elements.acknowledged.checked }) });
+      let authorizationToken = '';
+      if (identity?.linked) {
+        button.textContent = 'Sign wallet challenge…';
+        const authorization = await window.GeekWallet?.authorizePayout({ operation: 'set', address: addressInput.value });
+        authorizationToken = authorization?.token || '';
+      }
+      const payload = await api('/api/rewards', { method: 'POST', body: JSON.stringify({ address: addressInput.value, acknowledged: form.elements.acknowledged.checked, authorizationToken }) });
       render(payload);
       form.elements.acknowledged.checked = false;
       const receipt = payload.auditReceipt?.eventId ? ` Audit receipt: ${payload.auditReceipt.eventId}.` : '';
-      setMessage(`Payout wallet saved as an unverified Alpha preference. The 72-hour change cooldown restarted; withdrawals remain locked.${receipt}`, 'success');
+      const proof = payload.payout?.ownershipVerified ? ' Wallet ownership is server-verified.' : ' This destination remains unverified.';
+      setMessage(`Payout wallet saved.${proof} The 72-hour change cooldown restarted; withdrawals remain locked.${receipt}`, 'success');
     } catch (error) {
       setMessage(error.message, 'error');
     } finally {
@@ -66,7 +76,12 @@
   removeButton.addEventListener('click', async () => {
     removeButton.disabled = true;
     try {
-      const payload = await api('/api/rewards', { method: 'DELETE' });
+      let authorizationToken = '';
+      if (identity?.linked) {
+        const authorization = await window.GeekWallet?.authorizePayout({ operation: 'remove' });
+        authorizationToken = authorization?.token || '';
+      }
+      const payload = await api('/api/rewards', { method: 'DELETE', body: JSON.stringify({ authorizationToken }) });
       render(payload);
       form.elements.acknowledged.checked = false;
       const receipt = payload.auditReceipt?.eventId ? ` Audit receipt: ${payload.auditReceipt.eventId}.` : '';
@@ -88,6 +103,10 @@
   document.addEventListener('geek:wallet', (event) => {
     const wallet = event.detail || {};
     connectedAddress = wallet.connected && wallet.network === 'kaspa_mainnet' ? wallet.address || '' : '';
+    if (wallet.identity) {
+      identity = wallet.identity;
+      $('[data-identity-state]').textContent = identity.linked ? 'WALLET VERIFIED' : 'SESSION ONLY';
+    }
     useConnected.disabled = !connectedAddress;
   });
 

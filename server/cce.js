@@ -2,6 +2,7 @@ import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
 import { auditWriteCommands, createAuditRecord, hashAuditIdentifier, recordAuditEvent } from './audit.js';
 import { categories, cleanName } from './http.js';
 import { pipeline, parseStoredJson, redis } from './redis.js';
+import { playerIdFor } from './session.js';
 
 const SUBMISSION_PREFIX = 'geek:cce:submission:';
 const REVIEW_QUEUE = 'geek:cce:review';
@@ -102,6 +103,7 @@ const readStats = async (sessionId) => {
 };
 
 export const createContribution = async (session, body) => {
+  const playerId = playerIdFor(session);
   const normalized = normalizeSubmission(body);
   const now = Date.now();
   const id = `cce_${randomBytes(12).toString('hex')}`;
@@ -112,7 +114,7 @@ export const createContribution = async (session, body) => {
     ...normalized,
     id,
     fingerprint,
-    contributorSessionId: session.id,
+    contributorSessionId: playerId,
     status: 'submitted',
     submittedAt: now,
     updatedAt: now,
@@ -121,16 +123,17 @@ export const createContribution = async (session, body) => {
   };
   await pipeline([
     ['SET', submissionKey(id), JSON.stringify(submission)],
-    ['ZADD', contributorIndex(session.id), now, id],
+    ['ZADD', contributorIndex(playerId), now, id],
     ['ZADD', REVIEW_QUEUE, now, id],
-    ['HINCRBY', contributorStats(session.id), 'submitted', 1]
+    ['HINCRBY', contributorStats(playerId), 'submitted', 1]
   ], true);
   return publicSubmission(submission);
 };
 
 export const reviseContribution = async (session, body) => {
+  const playerId = playerIdFor(session);
   const existing = await loadSubmission(body.id);
-  if (existing.contributorSessionId !== session.id) throw new Error('CCE_NOT_FOUND');
+  if (existing.contributorSessionId !== playerId) throw new Error('CCE_NOT_FOUND');
   if (existing.status !== 'changes-requested') throw new Error('CCE_STATE_INVALID');
   const normalized = normalizeSubmission(body);
   const updated = {

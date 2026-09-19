@@ -6,7 +6,7 @@ Geek Protocol should commission both of the following before enabling value tran
 
 ### 1. Web3 application penetration test
 
-Scope the production domain, Vercel functions, Redis authorization and data flows, session management, ranked-game business logic, C.C.E., moderation, audit export, wallet integration, CI/CD, cloud configuration, secret management, and any future settlement API.
+Scope the production domain, Vercel functions, Redis authorization and data flows, session management, one-time wallet challenges, Schnorr verification, identity recovery and session invalidation, payout reauthentication, ranked-game business logic, C.C.E., moderation, audit export, wallet integration, CI/CD, cloud configuration, secret management, and any future settlement API.
 
 The engagement should include authenticated and unauthenticated testing, business-logic abuse, race conditions, replay, authorization, rate-limit bypass, API fuzzing, cloud misconfiguration, dependency and supply-chain review, and remediation retesting.
 
@@ -27,6 +27,7 @@ The auditor must receive:
 - sanitized deployment configuration and secret inventory;
 - privileged-role and key-management procedures;
 - audit-event schema and a sample integrity-verified export;
+- the identity protocol specification, wallet-signature test vectors, dependency provenance, nonce/replay/race tests, and identity-recovery/session-invalidation evidence;
 - incident response, backup, recovery, and log-retention procedures;
 - proposed treasury policy, payout caps, eligibility rules, and legal terms; and
 - all known risks, prior findings, accepted exceptions, and remediation evidence.
@@ -35,9 +36,9 @@ The auditor must receive:
 
 On-chain settlement remains disabled until all gates are documented as complete:
 
-1. Recoverable player identity and server-verified wallet ownership.
+1. Recoverable player identity and server-verified wallet ownership independently tested against replay, substitution, race, recovery, and session-fixation attacks. The Alpha implementation exists; external verification remains open.
 2. Hardware-backed, individual privileged access with MFA; no shared production moderator or audit credentials.
-3. Protected payout changes with ownership proof, user notification, cooldown, revocation, and administrative review for high-risk changes.
+3. Protected payout changes with fresh wallet reauthentication, destination ownership proof where supported, user notification, cooldown, revocation, and administrative review for high-risk changes. Alpha reauthentication and cooldown exist; notifications and high-risk review remain open.
 4. Canonical GEEK token identity and network parameters independently confirmed.
 5. Treasury isolated from the public web tier with least-privilege signing policy, transaction caps, allowlisted methods, and emergency pause.
 6. Idempotent payout jobs, double-entry accounting, balance invariants, reconciliation, retries, and dead-letter handling.

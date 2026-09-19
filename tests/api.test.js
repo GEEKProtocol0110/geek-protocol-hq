@@ -9,6 +9,8 @@ import contentHandler from '../api/content.js';
 import moderationHandler from '../api/moderation.js';
 import rewardsHandler from '../api/rewards.js';
 import auditHandler from '../api/audit.js';
+import identityHandler from '../api/identity.js';
+import kaspa from '@dfns/kaspa-wasm';
 import { isValidKaspaMainnetAddress } from '../server/kaspa-address.js';
 import { loadQuestionBank } from '../server/questions.js';
 
@@ -19,6 +21,7 @@ process.env.CCE_REWARD_AMOUNT = '25';
 process.env.AUDIT_LOG_SECRET = 'test-audit-hmac-secret-with-at-least-32-characters';
 process.env.AUDIT_ADMIN_TOKEN = 'test-audit-admin-token-123456789';
 process.env.AUDIT_KEY_ID = 'test-key';
+process.env.IDENTITY_ENV = 'test';
 
 const strings = new Map();
 const hashes = new Map();
@@ -29,6 +32,11 @@ const execute = (command) => {
   const name = String(rawName).toUpperCase();
   if (name === 'PING') return 'PONG';
   if (name === 'GET') return strings.get(args[0]) ?? null;
+  if (name === 'GETDEL') {
+    const value = strings.get(args[0]) ?? null;
+    strings.delete(args[0]);
+    return value;
+  }
   if (name === 'SET') {
     const [key, value] = args;
     const nx = args.some((item) => String(item).toUpperCase() === 'NX');
@@ -91,6 +99,24 @@ const execute = (command) => {
     return withScores ? entries.flatMap(([member, score]) => [member, String(score)]) : entries.map(([member]) => member);
   }
   if (name === 'EVAL') {
+    if (String(args[0]).includes('geek-identity-bind-v1')) {
+      const keyCount = Number(args[1]);
+      const keys = args.slice(2, 2 + keyCount);
+      const values = args.slice(2 + keyCount);
+      const wallet = strings.get(keys[0]);
+      const player = strings.get(keys[1]);
+      if (wallet && wallet !== String(values[0])) return 'WALLET_BOUND';
+      if ((!values[1] && player) || (values[1] && player !== String(values[1]))) return 'PLAYER_CONFLICT';
+      if (strings.has(keys[3])) return 'AUDIT_CONFLICT';
+      strings.set(keys[0], String(values[0]));
+      strings.set(keys[1], String(values[2]));
+      strings.set(keys[2], String(values[3]));
+      strings.set(keys[3], String(values[5]));
+      const index = sorted.get(keys[4]) || new Map();
+      index.set(String(values[7]), Number(values[6]));
+      sorted.set(keys[4], index);
+      return 'OK';
+    }
     const keyCount = Number(args[1]);
     const keys = args.slice(2, 2 + keyCount);
     const values = args.slice(2 + keyCount);
@@ -334,6 +360,202 @@ test('a player can register any valid Kaspa mainnet payout address without expos
   await rewardsHandler(request('GET', undefined, cookie), getRes);
   assert.equal(getRes.body.payout.address, address);
   assert.equal(getRes.body.payout.network, 'kaspa-mainnet');
+});
+
+test('a server-verified wallet proof links and recovers one durable player identity', async () => {
+  const privateKey = '1'.padStart(64, '0');
+  const key = new kaspa.PrivateKey(privateKey);
+  const publicKey = key.toPublicKey().toString();
+  const address = key.toAddress(kaspa.NetworkType.Mainnet).toString();
+  const firstCookie = await startSession('Recoverable Geek');
+  const identityRequest = (method, body, cookie) => request(method, body, cookie, {}, { host: 'geekprotocol.xyz', 'user-agent': 'identity-test' });
+  const sign = (message) => kaspa.signMessage({ message, privateKey });
+
+  const challengeRes = response();
+  await identityHandler(identityRequest('POST', { action: 'challenge', intent: 'identity', address, publicKey }, firstCookie), challengeRes);
+  assert.equal(challengeRes.statusCode, 201);
+  assert.equal(challengeRes.body.challenge.intent, 'link');
+  assert.equal(challengeRes.body.challenge.transactionRequested, false);
+  assert.match(challengeRes.body.challenge.message, /does not authorize a transaction/i);
+
+  const linkRes = response();
+  await identityHandler(identityRequest('POST', {
+    action: 'verify',
+    challengeId: challengeRes.body.challenge.challengeId,
+    signature: sign(challengeRes.body.challenge.message)
+  }, firstCookie), linkRes);
+  assert.equal(linkRes.statusCode, 200);
+  assert.equal(linkRes.body.identity.linked, true);
+  assert.equal(linkRes.body.identity.address, address);
+  assert.equal(linkRes.body.identity.settlementEnabled, false);
+  assert.equal(linkRes.body.recovered, false);
+
+  const unrelatedKey = new kaspa.PrivateKey('2'.padStart(64, '0'));
+  const unrelatedPublicKey = unrelatedKey.toPublicKey().toString();
+  const unrelatedAddress = unrelatedKey.toAddress(kaspa.NetworkType.Mainnet).toString();
+  const rotationChallenge = response();
+  await identityHandler(identityRequest('POST', {
+    action: 'challenge', intent: 'identity', address: unrelatedAddress, publicKey: unrelatedPublicKey
+  }, firstCookie), rotationChallenge);
+  assert.equal(rotationChallenge.statusCode, 409);
+  assert.equal(rotationChallenge.body.code, 'IDENTITY_ROTATION_UNAVAILABLE');
+
+  const cleanCookie = await startSession('Unbound Geek');
+  const unboundChallenge = response();
+  await identityHandler(identityRequest('POST', {
+    action: 'challenge', intent: 'identity', address: unrelatedAddress, publicKey: unrelatedPublicKey
+  }, cleanCookie), unboundChallenge);
+  assert.equal(unboundChallenge.body.challenge.intent, 'link');
+
+  const replayRes = response();
+  await identityHandler(identityRequest('POST', {
+    action: 'verify',
+    challengeId: challengeRes.body.challenge.challengeId,
+    signature: sign(challengeRes.body.challenge.message)
+  }, firstCookie), replayRes);
+  assert.equal(replayRes.statusCode, 409);
+
+  const authChallenge = response();
+  await identityHandler(identityRequest('POST', {
+    action: 'challenge', intent: 'payout', operation: 'set', payoutAddress: address, address, publicKey
+  }, firstCookie), authChallenge);
+  assert.equal(authChallenge.body.challenge.intent, 'payout-set');
+  const authProof = response();
+  await identityHandler(identityRequest('POST', {
+    action: 'verify',
+    challengeId: authChallenge.body.challenge.challengeId,
+    signature: sign(authChallenge.body.challenge.message)
+  }, firstCookie), authProof);
+  assert.match(authProof.body.authorization.token, /^[a-f0-9]{64}$/);
+  assert.equal(authProof.body.authorization.oneTime, true);
+
+  const protectedSave = response();
+  await rewardsHandler(request('POST', {
+    address,
+    acknowledged: true,
+    authorizationToken: authProof.body.authorization.token
+  }, firstCookie), protectedSave);
+  assert.equal(protectedSave.statusCode, 200);
+  assert.equal(protectedSave.body.payout.ownershipVerified, true);
+  assert.equal(protectedSave.body.payout.settlementEligible, false);
+
+  const scopedChallenge = response();
+  await identityHandler(identityRequest('POST', {
+    action: 'challenge', intent: 'payout', operation: 'set', payoutAddress: unrelatedAddress, address, publicKey
+  }, firstCookie), scopedChallenge);
+  const scopedProof = response();
+  await identityHandler(identityRequest('POST', {
+    action: 'verify',
+    challengeId: scopedChallenge.body.challenge.challengeId,
+    signature: sign(scopedChallenge.body.challenge.message)
+  }, firstCookie), scopedProof);
+  const wrongDestination = response();
+  await rewardsHandler(request('POST', {
+    address,
+    acknowledged: true,
+    authorizationToken: scopedProof.body.authorization.token
+  }, firstCookie), wrongDestination);
+  assert.equal(wrongDestination.statusCode, 401);
+
+  const reusedAuthorization = response();
+  await rewardsHandler(request('POST', {
+    address,
+    acknowledged: true,
+    authorizationToken: authProof.body.authorization.token
+  }, firstCookie), reusedAuthorization);
+  assert.equal(reusedAuthorization.statusCode, 401);
+
+  const secondCookie = await startSession('Recovered Geek');
+  const recoveryChallenge = response();
+  await identityHandler(identityRequest('POST', { action: 'challenge', intent: 'identity', address, publicKey }, secondCookie), recoveryChallenge);
+  assert.equal(recoveryChallenge.body.challenge.intent, 'recover');
+
+  const rejectedRecovery = response();
+  const recoverySignature = sign(recoveryChallenge.body.challenge.message);
+  const badSignature = `${recoverySignature[0] === '0' ? '1' : '0'}${recoverySignature.slice(1)}`;
+  await identityHandler(identityRequest('POST', {
+    action: 'verify', challengeId: recoveryChallenge.body.challenge.challengeId, signature: badSignature
+  }, secondCookie), rejectedRecovery);
+  assert.equal(rejectedRecovery.statusCode, 401);
+
+  const freshRecoveryChallenge = response();
+  await identityHandler(identityRequest('POST', { action: 'challenge', intent: 'identity', address, publicKey }, secondCookie), freshRecoveryChallenge);
+  const recoveryRes = response();
+  await identityHandler(identityRequest('POST', {
+    action: 'verify',
+    challengeId: freshRecoveryChallenge.body.challenge.challengeId,
+    signature: sign(freshRecoveryChallenge.body.challenge.message)
+  }, secondCookie), recoveryRes);
+  assert.equal(recoveryRes.statusCode, 200);
+  assert.equal(recoveryRes.body.recovered, true);
+  assert.equal(recoveryRes.body.previousSessionsInvalidated, true);
+
+  const restoredProfile = response();
+  await rewardsHandler(request('GET', undefined, secondCookie), restoredProfile);
+  assert.equal(restoredProfile.statusCode, 200);
+  assert.equal(restoredProfile.body.payout.address, address);
+  assert.equal(restoredProfile.body.identity.recoveryCount, 1);
+
+  const removeChallenge = response();
+  await identityHandler(identityRequest('POST', {
+    action: 'challenge', intent: 'payout', operation: 'remove', address, publicKey
+  }, secondCookie), removeChallenge);
+  const removeProof = response();
+  await identityHandler(identityRequest('POST', {
+    action: 'verify',
+    challengeId: removeChallenge.body.challenge.challengeId,
+    signature: sign(removeChallenge.body.challenge.message)
+  }, secondCookie), removeProof);
+  const protectedRemoval = response();
+  await rewardsHandler(request('DELETE', {
+    authorizationToken: removeProof.body.authorization.token
+  }, secondCookie), protectedRemoval);
+  assert.equal(protectedRemoval.statusCode, 200);
+  assert.equal(protectedRemoval.body.payout.address, '');
+
+  const invalidatedOldSession = response();
+  await rewardsHandler(request('GET', undefined, firstCookie), invalidatedOldSession);
+  assert.equal(invalidatedOldSession.statusCode, 401);
+});
+
+test('parallel identity claims leave one binding and no orphaned wallet mapping', async () => {
+  const keys = ['3', '4'].map((value) => new kaspa.PrivateKey(value.padStart(64, '0')));
+  const wallets = keys.map((key) => ({
+    privateKey: key.toString(),
+    publicKey: key.toPublicKey().toString(),
+    address: key.toAddress(kaspa.NetworkType.Mainnet).toString()
+  }));
+  const cookie = await startSession('Race Test Geek');
+  const identityRequest = (method, body, sessionCookie) => request(method, body, sessionCookie, {}, { host: 'geekprotocol.xyz', 'user-agent': 'identity-race-test' });
+  const challenges = [];
+  for (const wallet of wallets) {
+    const issued = response();
+    await identityHandler(identityRequest('POST', {
+      action: 'challenge', intent: 'identity', address: wallet.address, publicKey: wallet.publicKey
+    }, cookie), issued);
+    assert.equal(issued.statusCode, 201);
+    challenges.push(issued.body.challenge);
+  }
+
+  const results = [response(), response()];
+  await Promise.all(challenges.map((challenge, index) => identityHandler(identityRequest('POST', {
+    action: 'verify',
+    challengeId: challenge.challengeId,
+    signature: kaspa.signMessage({ message: challenge.message, privateKey: wallets[index].privateKey })
+  }, cookie), results[index])));
+  assert.deepEqual(results.map((item) => item.statusCode).sort(), [200, 409]);
+
+  const losingIndex = results.findIndex((item) => item.statusCode === 409);
+  const cleanCookie = await startSession('Race Mapping Check');
+  const orphanCheck = response();
+  await identityHandler(identityRequest('POST', {
+    action: 'challenge',
+    intent: 'identity',
+    address: wallets[losingIndex].address,
+    publicKey: wallets[losingIndex].publicKey
+  }, cleanCookie), orphanCheck);
+  assert.equal(orphanCheck.statusCode, 201);
+  assert.equal(orphanCheck.body.challenge.intent, 'link');
 });
 
 test('sensitive changes create private, pseudonymous, integrity-verified audit evidence', async () => {

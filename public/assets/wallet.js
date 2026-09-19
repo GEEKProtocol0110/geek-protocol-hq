@@ -2,7 +2,6 @@
   'use strict';
 
   const ROOT_SELECTOR = '[data-wallet-root]';
-  const PROOF_KEY = 'geek-wallet-proof-v1';
   const MAINNET = 'kaspa_mainnet';
   const state = {
     installed: false,
@@ -13,6 +12,7 @@
     publicKey: '',
     network: '',
     geekBalance: '0',
+    identity: null,
     error: ''
   };
 
@@ -25,6 +25,21 @@
     kaspa_testnet_12: 'Kaspa Testnet 12',
     kaspa_devnet: 'Kaspa Devnet'
   })[network] || (network ? network.replaceAll('_', ' ') : 'Unknown network');
+
+  const api = async (path, options = {}) => {
+    const response = await fetch(path, {
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
+      ...options
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      const error = new Error(payload.error || 'Wallet verification is unavailable.');
+      error.code = payload.code || '';
+      throw error;
+    }
+    return payload;
+  };
 
   const formatToken = (rawValue, decimalsValue) => {
     try {
@@ -40,72 +55,62 @@
     }
   };
 
-  const readProof = () => {
-    try {
-      return JSON.parse(localStorage.getItem(PROOF_KEY)) || null;
-    } catch {
-      return null;
-    }
-  };
-
-  const clearProof = () => {
-    localStorage.removeItem(PROOF_KEY);
-    state.verified = false;
-  };
-
-  const makeNonce = () => {
-    const bytes = new Uint8Array(16);
-    crypto.getRandomValues(bytes);
-    return [...bytes].map((byte) => byte.toString(16).padStart(2, '0')).join('');
-  };
-
-  const buildProofMessage = () => [
-    'Geek Protocol wallet verification',
-    `Domain: ${location.hostname}`,
-    `Address: ${state.address}`,
-    `Nonce: ${makeNonce()}`,
-    `Issued at: ${new Date().toISOString()}`,
-    'Purpose: Link this wallet to the Geek Protocol community Alpha.',
-    'This message does not create or approve a transaction.'
-  ].join('\n');
-
   const setText = (root, selector, value) => {
     const element = root.querySelector(selector);
     if (element) element.textContent = value;
   };
 
+  const publishState = () => document.dispatchEvent(new CustomEvent('geek:wallet', {
+    detail: { ...state, identity: state.identity ? { ...state.identity } : null }
+  }));
+
   const render = () => {
     const isMainnet = state.network === MAINNET;
     roots().forEach((root) => {
       root.dataset.walletStatus = state.error ? 'error' : state.verified ? 'verified' : state.connected ? 'connected' : state.installed ? 'ready' : 'missing';
-      setText(root, '[data-wallet-state]', state.error ? 'CHECK WALLET' : state.verified ? 'OWNERSHIP VERIFIED' : state.connected ? 'WALLET LINKED' : state.installed ? 'KASWARE READY' : 'KASWARE NOT FOUND');
+      setText(root, '[data-wallet-state]', state.error ? 'CHECK WALLET' : state.verified ? 'SERVER VERIFIED' : state.connected ? 'WALLET CONNECTED' : state.installed ? 'KASWARE READY' : 'KASWARE NOT FOUND');
       setText(root, '[data-wallet-address]', shortAddress(state.address));
       setText(root, '[data-wallet-network]', state.connected ? networkLabel(state.network) : 'Connect to read network');
       setText(root, '[data-wallet-geek]', state.connected ? `${state.geekBalance} GEEK` : '—');
       setText(root, '[data-wallet-message]', state.error || (state.verified
-        ? 'Signed ownership proof verified on this device. Server authentication and payouts remain disabled.'
+        ? 'The server verified a one-time Kaspa Schnorr signature. This wallet can recover the player identity and authorize payout-setting changes.'
         : state.connected && !isMainnet
-          ? 'Switch Kasware to Kaspa Mainnet before verifying ownership.'
+          ? 'Switch Kasware to Kaspa Mainnet before proving ownership.'
           : state.connected
-            ? 'Wallet connected. Verify ownership with a message signature—no transaction and no network fee.'
+            ? 'Sign a server nonce to link or recover the player identity—no transaction and no network fee.'
             : state.installed
-              ? 'Connect only when you choose. Geek Protocol will not request wallet access on page load.'
+              ? 'Connect only when you choose. Geek Protocol never requests wallet access on page load.'
               : 'Open this page in the Kasware dApp browser or install the official Kasware wallet.'));
 
       const connect = root.querySelector('[data-wallet-connect]');
       if (connect) {
         connect.disabled = state.pending;
-        connect.textContent = state.pending ? 'Connecting…' : state.connected ? 'Refresh wallet' : 'Connect Kasware';
+        connect.textContent = state.pending ? 'Waiting for wallet…' : state.connected ? 'Refresh wallet' : 'Connect Kasware';
       }
       const verify = root.querySelector('[data-wallet-verify]');
       if (verify) {
         verify.hidden = !state.connected || state.verified || !isMainnet;
         verify.disabled = state.pending;
+        verify.textContent = state.identity?.linked ? 'Recover identity' : 'Verify & protect';
       }
       const install = root.querySelector('[data-wallet-install]');
       if (install) install.hidden = state.installed;
     });
-    document.dispatchEvent(new CustomEvent('geek:wallet', { detail: { ...state, publicKey: undefined } }));
+    publishState();
+  };
+
+  const ensureSession = () => api('/api/session', { method: 'POST', body: JSON.stringify({ displayName: 'Verified Geek' }) });
+
+  const refreshIdentity = async () => {
+    try {
+      const payload = await api('/api/identity');
+      state.identity = payload.identity || null;
+      state.verified = Boolean(state.identity?.linked && state.identity.address === state.address);
+      return state.identity;
+    } catch (error) {
+      if (error.code !== 'SESSION_REQUIRED') throw error;
+      return null;
+    }
   };
 
   const readWallet = async (accountsOverride) => {
@@ -122,16 +127,15 @@
       const address = Array.isArray(accounts) ? accounts[0] : '';
       if (!address) {
         state.connected = false;
+        state.verified = false;
         state.address = '';
         state.publicKey = '';
         state.network = '';
         state.geekBalance = '0';
-        clearProof();
         render();
         return;
       }
 
-      if (state.address && state.address !== address) clearProof();
       state.connected = true;
       state.address = address;
       const [network, publicKey, balances] = await Promise.all([
@@ -143,8 +147,7 @@
       state.publicKey = publicKey || '';
       const geek = Array.isArray(balances) ? balances.find((token) => String(token.tick || '').toUpperCase() === 'GEEK') : null;
       state.geekBalance = geek ? formatToken(geek.balance, geek.dec) : '0';
-      const proof = readProof();
-      state.verified = Boolean(proof && proof.address === address && proof.hostname === location.hostname && proof.verifiedAt);
+      await refreshIdentity();
     } catch {
       state.error = 'Kasware could not return the wallet details. Unlock the wallet and try again.';
     }
@@ -171,25 +174,59 @@
     }
   };
 
+  const signServerChallenge = async (challenge) => {
+    if (!window.kasware?.signMessage) throw new Error('This Kasware version does not support message signatures.');
+    return window.kasware.signMessage(challenge.message, { type: 'schnorr' });
+  };
+
   const verifyOwnership = async () => {
     if (!window.kasware || !state.connected || state.network !== MAINNET || !state.publicKey) return;
     state.pending = true;
     state.error = '';
     render();
     try {
-      const message = buildProofMessage();
-      const signature = await window.kasware.signMessage(message, { type: 'auto' });
-      const valid = await window.kasware.verifyMessage(state.publicKey, message, signature);
-      if (!valid) throw new Error('Invalid signature');
-      localStorage.setItem(PROOF_KEY, JSON.stringify({ address: state.address, hostname: location.hostname, verifiedAt: new Date().toISOString() }));
-      state.verified = true;
-    } catch {
-      state.error = 'Ownership verification was canceled or the signature could not be verified.';
+      await ensureSession();
+      const issued = await api('/api/identity', {
+        method: 'POST',
+        body: JSON.stringify({ action: 'challenge', intent: 'identity', address: state.address, publicKey: state.publicKey })
+      });
+      const signature = await signServerChallenge(issued.challenge);
+      const verified = await api('/api/identity', {
+        method: 'POST',
+        body: JSON.stringify({ action: 'verify', challengeId: issued.challenge.challengeId, signature })
+      });
+      state.identity = verified.identity;
+      state.verified = Boolean(verified.identity?.linked && verified.identity.address === state.address);
+    } catch (error) {
+      state.error = error.message || 'Ownership verification was canceled or rejected.';
       state.verified = false;
     } finally {
       state.pending = false;
       render();
     }
+  };
+
+  const authorizePayout = async ({ operation, address = '' }) => {
+    if (!window.kasware || !state.connected || !state.verified || state.network !== MAINNET || !state.publicKey) {
+      throw new Error('Connect the verified identity wallet before changing the protected payout setting.');
+    }
+    const issued = await api('/api/identity', {
+      method: 'POST',
+      body: JSON.stringify({
+        action: 'challenge',
+        intent: 'payout',
+        operation,
+        payoutAddress: address,
+        address: state.address,
+        publicKey: state.publicKey
+      })
+    });
+    const signature = await signServerChallenge(issued.challenge);
+    const verified = await api('/api/identity', {
+      method: 'POST',
+      body: JSON.stringify({ action: 'verify', challengeId: issued.challenge.challengeId, signature })
+    });
+    return verified.authorization;
   };
 
   document.addEventListener('click', (event) => {
@@ -202,13 +239,11 @@
   const bindWalletEvents = () => {
     if (!window.kasware?.on) return;
     window.kasware.on('accountsChanged', (accounts) => readWallet(accounts));
-    window.kasware.on('networkChanged', () => {
-      clearProof();
-      readWallet();
-    });
+    window.kasware.on('networkChanged', () => readWallet());
     window.kasware.on('balanceChanged', () => readWallet());
   };
 
+  window.GeekWallet = Object.freeze({ authorizePayout, refreshIdentity });
   state.installed = Boolean(window.kasware);
   render();
   if (state.installed) {
