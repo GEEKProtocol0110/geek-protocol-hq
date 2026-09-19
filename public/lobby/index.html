@@ -49,9 +49,9 @@
 
         <section class="channel-view">
           <div class="welcome-panel">
-            <div class="eyebrow">COMMUNITY ROOMS // LOCAL INVITE ALPHA</div>
+            <div class="eyebrow">COMMUNITY ROOMS // LIVE PRESENCE ALPHA</div>
             <h1>FIND YOUR<br /><span>SQUAD.</span></h1>
-            <p data-channel-copy>Choose a room template or configure your own. Every invite opens the same room setup, but live presence, chat, and synchronized rounds require the next multiplayer backend phase.</p>
+            <p data-channel-copy>Choose a room template or configure your own. Active seats now update from the community service; synchronized questions and shared scoring remain a later Alpha gate.</p>
           </div>
 
           <section class="wallet-panel" data-wallet-root aria-label="Kasware wallet identity">
@@ -70,14 +70,20 @@
           </section>
 
           <section class="room-builder" aria-labelledby="builder-title">
-            <div class="panel-heading"><div><small>CREATE A ROOM</small><h2 id="builder-title">Lobby configuration</h2></div><span class="status-pill">LOCAL</span></div>
+            <div class="panel-heading"><div><small>CREATE A ROOM</small><h2 id="builder-title">Lobby configuration</h2></div><span class="status-pill" data-service-badge>CHECKING</span></div>
             <form data-lobby-form>
               <label>Lobby name<input name="name" maxlength="36" value="Kaspa Study Hall" autocomplete="off" /></label>
               <label>Category<select name="category"><option value="kaspa">Kaspa</option><option value="video-games">Video Games</option><option value="science-fiction">Science Fiction</option><option value="technology">Technology</option><option value="movies">Movies</option><option value="history">History</option><option value="comics">Comics</option><option value="pop-culture">Pop Culture</option></select></label>
               <label>Seats<select name="seats"><option value="2">2 seats</option><option value="4" selected>4 seats</option><option value="8">8 seats</option></select></label>
               <input type="hidden" name="focus" value="" />
-              <button class="primary-action" type="submit">Create invite <span>→</span></button>
+              <button class="primary-action" type="submit">Create room <span>→</span></button>
             </form>
+          </section>
+
+          <section class="room-browser" data-room-browser aria-labelledby="room-browser-title">
+            <div class="panel-heading"><div><small>COMMUNITY SIGNAL</small><h2 id="room-browser-title">Active rooms</h2></div><button class="refresh-rooms" type="button" data-refresh-rooms>Refresh</button></div>
+            <p class="room-list-message" data-room-list-message>Rooms appear while at least one player is active. Presence refreshes automatically.</p>
+            <div class="live-room-grid" data-live-rooms><div class="empty-room-list"><b>Checking community rooms…</b><span>Live state will appear here.</span></div></div>
           </section>
 
           <section class="templates" aria-labelledby="templates-title">
@@ -91,10 +97,10 @@
           </section>
 
           <section class="active-room" data-room hidden aria-labelledby="active-room-title">
-            <div class="panel-heading"><div><small>YOUR INVITE</small><h2 id="active-room-title" data-room-name>Kaspa Study Hall</h2></div><span class="status-pill ready">READY</span></div>
+            <div class="panel-heading"><div><small>YOUR ROOM</small><h2 id="active-room-title" data-room-name>Kaspa Study Hall</h2></div><span class="status-pill" data-room-state>LOCAL</span></div>
             <div class="room-code"><div><small>LOBBY CODE</small><strong data-room-code>GEEK-0000</strong></div><button type="button" data-copy>Copy invite link</button></div>
             <div class="seat-grid" data-seats></div>
-            <p class="room-note"><b>Current mode:</b> invite configuration is encoded in the URL. Players launch independently; live seats, chat, shared scoring, and synchronized state are not represented as active yet.</p>
+            <p class="room-note" data-room-note><b>Connecting:</b> checking live presence before creating the room.</p>
             <div class="room-actions"><a class="primary-action" data-launch href="../play/?category=kaspa">Launch Gauntlet <span>→</span></a><button class="secondary-action" type="button" data-new-room>New room</button></div>
           </section>
         </section>
@@ -102,12 +108,12 @@
 
       <aside class="member-rail">
         <p>ROOM STATUS</p>
-        <div class="status-card"><i></i><div><b>Invite alpha</b><small>Shareable setup links</small></div></div>
+        <div class="status-card" data-service-status><i></i><div><b>Community service</b><small data-service-copy>Checking live presence…</small></div></div>
         <p>PROTOCOL LINKS</p>
         <a href="../kaspa/"><span>K</span><div><b>Kaspa 101</b><small>Field guide</small></div></a>
         <a href="../mint/"><span>$</span><div><b>Mint readiness</b><small>Launch gates</small></div></a>
         <a href="https://github.com/GEEKProtocol0110/geek-protocol-alpha"><span>↗</span><div><b>Source code</b><small>Public repository</small></div></a>
-        <div class="honesty-note"><b>No fake activity.</b><span>Online counts and chat stay absent until backed by live services.</span></div>
+        <div class="honesty-note"><b>Honest Alpha.</b><span>Online seats and server-verified Gauntlet scores are live. Chat, synchronized group rounds, and payouts stay locked.</span></div>
       </aside>
     </div>
 

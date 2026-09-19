@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#070a0a" />
-    <meta name="description" content="Play the Geek Gauntlet: eight selectable trivia categories, a source-reviewed Kaspa supplement, and ten escalating practice rounds." />
+    <meta name="description" content="Play the server-ranked Geek Gauntlet: eight trivia categories, private answer keys, enforced timers, and verified global scores." />
     <title>Geek Gauntlet — Play</title>
     <link rel="preconnect" href="https://geekprotocol.xyz" />
     <link rel="stylesheet" href="../assets/wallet.css" />
@@ -20,7 +20,7 @@
         <img src="../assets/geek-protocol-logo.png" alt="" width="44" height="44" />
         <span>GEEK<span>//</span>GAUNTLET</span>
       </a>
-      <div class="alpha-flag"><i></i> LOCAL ALPHA PLAY · NO TOKEN PAYOUTS</div>
+      <div class="alpha-flag"><i></i> SERVER-RANKED ALPHA · NO TOKEN PAYOUTS</div>
       <div class="player-wallet" aria-label="Local player totals">
         <div><small>LEVEL</small><strong data-level>1</strong></div>
         <div><small>XP</small><strong data-xp>0</strong></div>
@@ -33,7 +33,7 @@
         <div class="start-copy">
           <div class="eyebrow">A.C.E. CHALLENGE MODULE // ONLINE</div>
           <h1 id="start-title">THE GEEK<br /><span>GAUNTLET</span></h1>
-          <p>Eight knowledge worlds. Ten escalating rounds. Choose your domain, then answer against a 15-second clock and risk your local Alpha GEEK to climb higher.</p>
+          <p>Eight knowledge worlds. Ten escalating rounds. The server keeps answer keys private, enforces every 15-second deadline, and alone decides what reaches the global board.</p>
 
           <div class="category-select-head"><small>CHOOSE YOUR DOMAIN</small><span>8 selectable categories · 8,032 items</span></div>
           <div class="category-picker" role="radiogroup" aria-label="Trivia category">
@@ -51,12 +51,12 @@
             <div>
               <small>SELECTED CATEGORY</small>
               <strong data-selected-mode>Kaspa: Proof of Learning</strong>
-              <span data-mode-detail>1,000 variants / 80 concepts + 32 current items</span>
+              <span data-mode-detail>1,032 private ranked items · 80 core concepts + 32 current items</span>
             </div>
             <div class="mode-status" data-bank-status>LOADING</div>
           </div>
 
-          <div class="career-strip" aria-label="Local Gauntlet career">
+          <div class="career-strip" aria-label="Server-ranked Gauntlet career">
             <div><small>BEST ROUND</small><strong data-career-round>00</strong></div>
             <div><small>BEST SCORE</small><strong data-career-score>0</strong></div>
             <div><small>RUNS</small><strong data-career-runs>0</strong></div>
@@ -78,20 +78,25 @@
           </section>
 
           <div class="start-actions">
-            <button class="primary-action" type="button" data-start disabled>Loading Question Bank</button>
+            <button class="primary-action" type="button" data-start disabled>Connecting Ranked Service</button>
             <button class="quiet-action" type="button" data-how>How it works</button>
             <a class="quiet-action" href="../lobby/">Find a lobby</a>
           </div>
 
           <div class="local-note">
-            <b>Practice economy:</b> progress and Alpha GEEK are saved only on this device. They are not tokens and have no monetary value.
+            <b>Server-authoritative ranked mode:</b> correct answers never ship to the browser. Alpha GEEK remains a no-value practice balance and cannot be withdrawn.
           </div>
         </div>
 
         <aside class="ladder" aria-label="Gauntlet rounds">
           <div class="ladder-head"><span>THE ASCENT</span><span>MAX REWARD</span></div>
           <ol data-ladder></ol>
-          <button class="reset-button" type="button" data-reset>Reset local progress</button>
+          <span class="ranked-profile-note">SERVER-RANKED PROFILE · RESET DISABLED</span>
+          <section class="community-leaderboard" aria-labelledby="leaderboard-title">
+            <div><h2 id="leaderboard-title">Community top ten</h2><span data-board-state>CONNECTING</span></div>
+            <ol data-leaderboard><li class="board-empty">Checking the practice board…</li></ol>
+            <p>Only completed rounds scored by the server appear here. Verified scores still do not earn tokens or determine payouts.</p>
+          </section>
         </aside>
       </section>
 
@@ -185,14 +190,15 @@
       <div class="eyebrow">GAUNTLET RULES</div>
       <h2>Climb or cash out.</h2>
       <ol>
-        <li><b>Round 1 is free.</b> Later rounds charge Alpha GEEK when you enter.</li>
-        <li><b>Answer ten questions.</b> Every round uses your selected category, a 15-second timer, and one locked answer.</li>
+        <li><b>Round 1 is free.</b> Later rounds charge server-tracked Alpha GEEK when you enter.</li>
+        <li><b>Answer ten questions.</b> The server chooses each question, withholds the answer, and enforces the 15-second deadline.</li>
         <li><b>Build a streak.</b> Consecutive correct answers add a growing score bonus.</li>
         <li><b>Earn by accuracy.</b> Correct answers earn the round’s displayed reward.</li>
         <li><b>Choose after every round.</b> Continue and risk another entry fee, or end the run.</li>
-        <li><b>Review the source.</b> Every Kaspa round links the cited primary source after scoring.</li>
+        <li><b>Trust the board.</b> The browser cannot write scores; only completed server-scored rounds can rank.</li>
+        <li><b>Review the source.</b> Every Kaspa answer reveals its cited primary source only after it is locked.</li>
       </ol>
-      <p>This browser game uses a local practice economy. It does not connect a wallet or award real $GEEK.</p>
+      <p>This ranked Alpha uses secure server sessions and a no-value practice economy. It does not authorize wallet transactions or award real $GEEK.</p>
       <button class="primary-action" type="button" data-close>Understood</button>
     </dialog>
   </body>
