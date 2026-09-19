@@ -24,9 +24,16 @@ const ROUND_CONFIG = [
   { round: 9, entry: 3500, reward: 1100, max: 11000, label: 'OMNISCIENT GATE' },
   { round: 10, entry: 6000, reward: 1800, max: 18000, label: 'APEX PROTOCOL' }
 ];
+const MODE_CONFIG = {
+  gauntlet: { questionCount: 10, questionMs: QUESTION_MS, maxRounds: 10, rewards: true, label: '' },
+  daily: { questionCount: 5, questionMs: QUESTION_MS, maxRounds: 1, rewards: false, label: 'DAILY SIGNAL' },
+  speed: { questionCount: 10, questionMs: QUESTION_MS, maxRounds: 1, rewards: false, label: 'SPEED SIGNAL', overallMs: 30_000 }
+};
+const modeConfig = (mode) => Object.hasOwn(MODE_CONFIG, mode) ? MODE_CONFIG[mode] : MODE_CONFIG.gauntlet;
 
 const safeRun = (run) => ({
   id: run.id,
+  mode: run.mode,
   category: run.category,
   round: run.round,
   questionIndex: run.questionIndex,
@@ -38,6 +45,8 @@ const safeRun = (run) => ({
   startBalance: run.startBalance,
   fees: run.fees,
   rewards: run.rewards,
+  questionCount: run.questionCount,
+  maxRounds: run.maxRounds,
   status: run.status
 });
 
@@ -63,17 +72,20 @@ const publicQuestion = (run, question) => ({
   topic: question.topic,
   difficulty: question.difficulty,
   sourceState: question.community ? 'COMMUNITY-REVIEWED' : question.priority ? 'SOURCE-REVIEWED' : question.volatile ? 'TIME-SENSITIVE' : run.category === 'kaspa' ? 'SOURCE-LINKED' : 'DRAFT BANK',
+  durationMs: Math.max(0, run.current.deadline - Date.now()),
   expiresAt: run.current.deadline,
   serverNow: Date.now()
 });
 
 const issueQuestion = async (run) => {
   const question = await questionById(run.category, run.roundQuestionIds[run.questionIndex]);
+  const config = modeConfig(run.mode);
+  const questionDeadline = Date.now() + config.questionMs;
   run.current = {
     token: randomBytes(16).toString('hex'),
     questionId: question.id,
     options: shuffleOptions(question.options),
-    deadline: Date.now() + QUESTION_MS
+    deadline: config.overallMs ? Math.min(questionDeadline, run.overallDeadline) : questionDeadline
   };
   run.status = 'question';
   run.lastResponse = null;
@@ -81,24 +93,27 @@ const issueQuestion = async (run) => {
 };
 
 const startRound = async (run, profile) => {
+  const mode = modeConfig(run.mode);
   const config = ROUND_CONFIG[run.round - 1];
-  if (!config || profile.balance < config.entry) throw new Error('INSUFFICIENT_BALANCE');
-  profile.balance -= config.entry;
-  run.fees += config.entry;
+  const entry = mode.rewards ? config?.entry : 0;
+  if (!config || profile.balance < entry) throw new Error('INSUFFICIENT_BALANCE');
+  profile.balance -= entry;
+  run.fees += entry;
   run.questionIndex = 0;
   run.correct = 0;
   run.roundScore = 0;
   run.roundAnswers = [];
-  run.roundQuestionIds = await selectRoundQuestionIds(run.category, run.round, run.usedQuestionIds, run.focus);
+  run.roundQuestionIds = (await selectRoundQuestionIds(run.category, run.round, run.usedQuestionIds, run.focus)).slice(0, mode.questionCount);
   run.usedQuestionIds.push(...run.roundQuestionIds);
+  if (mode.overallMs) run.overallDeadline = Date.now() + mode.overallMs;
   return issueQuestion(run);
 };
 
 const finishRun = async (run, session, profile) => {
-  if (run.status === 'finished') return { leaderboard: await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0) }) };
+  if (run.status === 'finished') return { leaderboard: await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode }) };
   profile.totalRuns += 1;
   await saveProfile(session.id, profile);
-  const leaderboard = await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0) });
+  const leaderboard = await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode });
   run.status = 'finished';
   run.current = null;
   await saveRun(run, 300);
@@ -148,28 +163,39 @@ const answerQuestion = async (run, session, profile, body) => {
   };
   run.current = null;
   let roundResult = null;
-  if (run.questionIndex === 9) {
+  const mode = modeConfig(run.mode);
+  const modeClockExpired = Boolean(mode.overallMs && now >= run.overallDeadline);
+  if (run.questionIndex === run.questionCount - 1 || modeClockExpired) {
     const config = ROUND_CONFIG[run.round - 1];
-    const reward = run.correct * config.reward;
+    const reward = mode.rewards ? run.correct * config.reward : 0;
     const xpEarned = run.correct * 10 + Math.round(run.roundScore / 1000);
     run.totalScore += run.roundScore;
     run.rewards += reward;
     profile.balance += reward;
     profile.xp += xpEarned;
     profile.totalCorrect += run.correct;
-    profile.bestRound = Math.max(profile.bestRound, run.round);
-    profile.bestScore = Math.max(profile.bestScore, run.totalScore);
+    if (run.mode === 'gauntlet') {
+      profile.bestRound = Math.max(profile.bestRound, run.round);
+      profile.bestScore = Math.max(profile.bestScore, run.totalScore);
+    } else if (run.mode === 'daily') {
+      profile.bestDailyScore = Math.max(profile.bestDailyScore, run.totalScore);
+    } else if (run.mode === 'speed') {
+      profile.bestSpeedScore = Math.max(profile.bestSpeedScore, run.totalScore);
+    }
     run.completedRound = run.round;
     run.status = 'between-rounds';
     roundResult = {
-      label: config.label,
+      label: mode.label || config.label,
       correct: run.correct,
+      answered: run.questionIndex + 1,
+      questionCount: run.questionCount,
       roundScore: run.roundScore,
       xpEarned,
       reward,
-      canContinue: run.round === 10 || profile.balance >= ROUND_CONFIG[run.round].entry,
-      nextEntry: run.round === 10 ? 0 : ROUND_CONFIG[run.round].entry,
-      nextMax: run.round === 10 ? 0 : ROUND_CONFIG[run.round].max
+      canContinue: run.mode === 'gauntlet' && (run.round === 10 || profile.balance >= ROUND_CONFIG[run.round].entry),
+      modeComplete: run.mode !== 'gauntlet',
+      nextEntry: run.mode !== 'gauntlet' || run.round === 10 ? 0 : ROUND_CONFIG[run.round].entry,
+      nextMax: run.mode !== 'gauntlet' || run.round === 10 ? 0 : ROUND_CONFIG[run.round].max
     };
     await saveProfile(session.id, profile);
   } else {
@@ -200,13 +226,20 @@ export default async function handler(req, res) {
     if (action === 'start') {
       await rateLimit('ranked-start-ip', clientFingerprint(req), 20, 60 * 60);
       const category = categories.has(body.category) ? body.category : 'kaspa';
+      const mode = Object.hasOwn(MODE_CONFIG, body.mode) ? body.mode : 'gauntlet';
       const focus = ['ghostdag', 'builders'].includes(body.focus) ? body.focus : '';
       const profile = await loadProfile(session.id);
       const run = {
-        id: randomBytes(20).toString('hex'), sessionId: session.id, category, focus, round: 1,
+        id: randomBytes(20).toString('hex'), sessionId: session.id, category, focus, mode, round: 1,
         questionIndex: 0, correct: 0, roundScore: 0, totalScore: 0, streak: 0, maxStreak: 0,
-        completedRound: 0, startBalance: profile.balance, fees: 0, rewards: 0, usedQuestionIds: [], status: 'starting'
+        completedRound: 0, startBalance: profile.balance, fees: 0, rewards: 0, usedQuestionIds: [], status: 'starting',
+        questionCount: modeConfig(mode).questionCount, maxRounds: modeConfig(mode).maxRounds, overallDeadline: 0
       };
+      if (mode === 'daily') {
+        const day = new Date().toISOString().slice(0, 10);
+        const claimed = await redis('SET', `geek:daily:${session.id}:${day}`, run.id, 'EX', 60 * 60 * 48, 'NX');
+        if (claimed !== 'OK') throw new Error('DAILY_ALREADY_PLAYED');
+      }
       const question = await startRound(run, profile);
       await Promise.all([saveRun(run), saveProfile(session.id, profile)]);
       return sendJson(res, 201, { ok: true, verified: true, run: safeRun(run), profile, question });
@@ -225,7 +258,7 @@ export default async function handler(req, res) {
       return sendJson(res, 200, { ok: true, verified: true, run: safeRun(run), profile, question });
     }
     if (action === 'continue') {
-      if (run.status !== 'between-rounds' || run.round >= 10) throw new Error('RUN_STATE_INVALID');
+      if (run.mode !== 'gauntlet' || run.status !== 'between-rounds' || run.round >= run.maxRounds) throw new Error('RUN_STATE_INVALID');
       run.round += 1;
       const question = await startRound(run, profile);
       await Promise.all([saveRun(run), saveProfile(session.id, profile)]);

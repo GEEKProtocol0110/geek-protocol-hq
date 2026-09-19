@@ -22,11 +22,13 @@ const cleanRoomInput = (body) => {
   const category = categories.has(body.category) ? body.category : 'kaspa';
   const seats = [2, 4, 8].includes(Number(body.seats)) ? Number(body.seats) : 4;
   const focus = ['ghostdag', 'builders'].includes(body.focus) ? body.focus : '';
+  const mode = ['gauntlet', 'daily', 'speed'].includes(body.mode) ? body.mode : 'gauntlet';
   return {
     name: String(body.name || '').replace(/[<>\u0000-\u001f]/g, '').replace(/\s+/g, ' ').trim().slice(0, 36) || 'Kaspa Study Hall',
     category,
     seats,
-    focus
+    focus,
+    mode
   };
 };
 

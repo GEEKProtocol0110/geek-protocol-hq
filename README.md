@@ -6,13 +6,15 @@ The official Geek Protocol experience for Kaspa: a server-ranked trivia game and
 
 - Geek Protocol landing page
 - Ten-round server-authoritative Gauntlet
+- Server-authoritative Daily Signal and 30-second Speed Signal modes adapted from Geek Mini
 - Eight selectable trivia categories
 - Kasware wallet connection, mainnet detection, GEEK balance display, and local signed ownership proof
+- Wallet-neutral payout destination registration for any valid Kaspa mainnet address
 - Anonymous server sessions with secure, HTTP-only cookies
 - Persistent lobby records, active-seat presence, and shareable live room codes
-- Category-specific verified global leaderboards
+- Category- and mode-specific verified global leaderboards
 - Community Content Engine submission, review, publication, and first-use reward ledger
-- Lobby, mint-readiness, and Kaspa information pages
+- Lobby, rewards, current litepaper, mint-readiness, and Kaspa information pages
 - Private server-side question banks plus complete artwork, styles, and scripts
 
 ## Run locally
@@ -48,11 +50,13 @@ The private review desk lives at `/moderate/`. The key is sent only in the `X-CC
 - Each question has a one-use opaque token and a server-enforced deadline.
 - Atomic answer claims stop parallel multi-answer races and replayed answers return the first committed result.
 - The server computes streaks, speed bonuses, XP, Alpha GEEK, and final scores.
+- Daily and Speed modes award XP and verified scores but no Alpha GEEK during the Alpha.
+- Daily attempts are limited server-side by UTC day; Speed uses one server-owned 30-second run deadline.
 - The leaderboard endpoint is read-only; only the ranked service can write a result.
 - Session- and network-level rate limits reduce automated run farming.
 
 ## Transparent Alpha
 
-Ranked Alpha balances, XP, game progress, lobbies, presence, verified scores, contributions, and C.C.E. reward records use Redis. Wallet proof state remains local to the browser. Server verification protects competitive integrity, but this is still an unproctored web trivia game and cannot prevent every form of outside assistance.
+Ranked Alpha balances, XP, game progress, lobbies, presence, verified scores, contributions, C.C.E. reward records, and payout-address preferences use Redis. Wallet proof state remains local to the browser. Server verification protects competitive integrity, but this is still an unproctored web trivia game and cannot prevent every form of outside assistance.
 
-C.C.E. rewards are internal, claim-gated Alpha ledger credits. They are created only once, when an approved and published question is first answered in ranked play. They are not token transfers, cannot be withdrawn, and have no promised monetary value. Server wallet authentication, claim binding, minting, treasury settlement, and on-chain rewards are not enabled.
+C.C.E. rewards are internal, claim-gated Alpha ledger credits. They are created only once, when an approved and published question is first answered in ranked play. They are not token transfers, cannot be withdrawn, and have no promised monetary value. A player may register any checksum-valid Kaspa mainnet address as a future destination, but server wallet authentication, recoverable accounts, protected address changes, claim binding, minting, treasury settlement, and on-chain rewards are not enabled.

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080b0b" />
+    <meta name="description" content="The current Geek Protocol Alpha litepaper: Proof of Learning, server-ranked games, community content, wallet-neutral rewards, and the road to audited Kaspa settlement." />
+    <title>Litepaper — Geek Protocol</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <link rel="stylesheet" href="./assets/litepaper.css" />
+    <script defer src="../assets/site.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to litepaper</a>
+    <header class="site-header scrolled" data-header>
+      <a class="brand" href="../" aria-label="Geek Protocol home"><img src="../assets/geek-protocol-logo.png" alt="" width="48" height="48" /><span>GEEK<span class="brand-mark">//</span>LITEPAPER</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="../kaspa/">Kaspa 101</a><a href="../play/">Play</a><a href="../contribute/">Contribute</a><a href="../rewards/">Rewards</a><a class="nav-cta" href="https://github.com/GEEKProtocol0110/geek-protocol-hq">Open source <span aria-hidden="true">↗</span></a></nav>
+    </header>
+
+    <main id="main" class="paper-main">
+      <header class="paper-hero">
+        <div class="section-kicker">PUBLIC ALPHA · WORKING LITEPAPER</div>
+        <h1>KNOWLEDGE<br /><em>WITH PROOF.</em></h1>
+        <div class="paper-deck"><p>Geek Protocol is a Kaspa-first Proof-of-Learning system where people learn, compete, contribute questions, build reputation, and—after independent launch gates are complete—settle eligible rewards to the Kaspa wallet they choose.</p><span>VERSION 1.4 · SEPTEMBER 2026</span></div>
+      </header>
+
+      <nav class="paper-index" aria-label="Litepaper sections"><a href="#problem">01 Problem</a><a href="#system">02 System</a><a href="#game">03 Game</a><a href="#content">04 C.C.E.</a><a href="#economy">05 Economy</a><a href="#security">06 Security</a><a href="#roadmap">07 Roadmap</a></nav>
+
+      <article class="paper-body">
+        <section id="problem"><div class="paper-number">01</div><div><span>THE PROBLEM</span><h2>Learning creates value. Most platforms fail to recognize it.</h2><p>Traditional trivia ends when the score appears. Traditional learning platforms measure completion, not verifiable performance. Geek Protocol connects knowledge, competition, community-authored content, reputation, and transparent accounting in one system.</p><blockquote>It began with index cards for a father and son. The mission grew, but the core idea did not: make learning feel worth doing.</blockquote></div></section>
+
+        <section id="system"><div class="paper-number">02</div><div><span>PROOF OF LEARNING</span><h2>A result should be earned, reproducible, and auditable.</h2><p>The current Alpha keeps ranked questions, correct answers, deadlines, scoring, and leaderboards on the server. The browser receives only one shuffled question at a time and cannot directly write a score.</p><div class="principle-grid"><article><b>Private answers</b><p>Correct choices never ship in the public game bundle.</p></article><article><b>Write-once attempts</b><p>Opaque tokens and atomic claims stop replayed or parallel answers.</p></article><article><b>Visible evidence</b><p>Sources and explanations appear after an answer is locked.</p></article><article><b>Honest accounting</b><p>Alpha credits remain visibly separate from real on-chain tokens.</p></article></div></div></section>
+
+        <section id="game"><div class="paper-number">03</div><div><span>THE GEEK GAUNTLET</span><h2>Ten rounds. Rising risk. A reason to learn.</h2><p>Players choose a knowledge category and face ten questions per round under a server clock. Round one is free. Later rounds spend Alpha GEEK from the practice ledger. After each completed round, the player can continue or close the run.</p><ul><li>Eight selectable knowledge categories</li><li>Cryptographically shuffled questions and answer order</li><li>Speed and streak scoring computed by the server</li><li>Category-specific verified leaderboards</li><li>Source-linked review after every locked answer</li></ul></div></section>
+
+        <section id="content"><div class="paper-number">04</div><div><span>COMMUNITY CONTENT ENGINE</span><h2>The community expands the game without weakening the truth.</h2><p>Contributors submit an original question, four answers, an explanation, and a primary source. The submission stays private until a human moderator reviews and publishes it. A published question can earn one Alpha ledger credit when it is first used in ranked play.</p><div class="pipeline-row" aria-label="Content workflow"><span>SUBMIT</span><i>→</i><span>REVIEW</span><i>→</i><span>PUBLISH</span><i>→</i><span>FIRST USE</span><i>→</i><span>CREDIT</span></div><p class="paper-note">Credits are not currently transferable, withdrawable, or guaranteed to become tokens.</p></div></section>
+
+        <section id="economy"><div class="paper-number">05</div><div><span>THE VALUE LAYER</span><h2>Wallet-neutral rewards, gated settlement.</h2><p>Geek Protocol is being designed so an eligible participant can choose any valid Kaspa mainnet receiving address. Kasware may provide a convenient connection, but it is not intended to control where rewards are sent.</p><dl class="economy-facts"><div><dt>NETWORK</dt><dd>Kaspa</dd></div><div><dt>TOKEN STANDARD</dt><dd>KRC-20 target</dd></div><div><dt>ECONOMIC MODEL</dt><dd>70% rewards / 30% burn proposed</dd></div><div><dt>LIVE STATUS</dt><dd>Alpha ledger only</dd></div></dl><p>The canonical token identity, treasury authority, eligibility, limits, jurisdictional terms, transfer implementation, monitoring, and reconciliation must be publicly verified before on-chain payout activation.</p></div></section>
+
+        <section id="security"><div class="paper-number">06</div><div><span>TRUST MINIMIZATION</span><h2>No seed phrases. No hidden payout switch.</h2><ul><li>Geek Protocol must never request or store a player’s seed phrase or private key.</li><li>Wallet connection must disclose the exact permission being requested.</li><li>Payout addresses must be validated and protected by authenticated account controls before withdrawals.</li><li>Settlement must use an auditable ledger, idempotent jobs, caps, budgets, retries, reconciliation, and circuit breakers.</li><li>Production settlement requires independent security review and a staged launch.</li></ul></div></section>
+
+        <section id="roadmap"><div class="paper-number">07</div><div><span>ROADMAP</span><h2>Ship proof before promises.</h2><ol class="roadmap-list"><li><b>LIVE ALPHA</b><span>Server-ranked Gauntlet, Daily and Speed Signals, selectable categories, lobbies, separate leaderboards, C.C.E. moderation, wallet-neutral payout registration, and internal reward records.</span></li><li><b>IDENTITY</b><span>Server-verified wallet signatures, recoverable player accounts, protected payout-address changes, and contributor claim binding.</span></li><li><b>SETTLEMENT</b><span>Canonical token verification, treasury controls, reviewed KRC-20 transfer path, withdrawal limits, reconciliation, and external audit.</span></li><li><b>EXPANSION</b><span>Real-time multiplayer, quests, achievements, creator reputation, marketplace systems, and community governance.</span></li></ol><div class="paper-actions"><a class="button button-primary" href="../play/">Enter the Alpha <span>→</span></a><a class="button button-secondary" href="../rewards/">Set payout wallet <span>→</span></a></div></div></section>
+      </article>
+    </main>
+
+    <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>Your Knowledge is Now an Asset.</p></div><div class="footer-links"><a href="../">Home</a><a href="../play/">Play</a><a href="../contribute/">Contribute</a><a href="../mint/">Mint status</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · All hope, no hype.</p></footer>
+  </body>
+</html>
