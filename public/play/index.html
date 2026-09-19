@@ -31,7 +31,7 @@
         <div class="start-copy">
           <div class="eyebrow">A.C.E. CHALLENGE MODULE // ONLINE</div>
           <h1 id="start-title">THE GEEK<br /><span>GAUNTLET</span></h1>
-          <p>Eight knowledge worlds. Ten escalating rounds. Choose your domain, then bank your local Alpha GEEK or risk it to climb higher.</p>
+          <p>Eight knowledge worlds. Ten escalating rounds. Choose your domain, then answer against a 15-second clock and risk your local Alpha GEEK to climb higher.</p>
 
           <div class="category-select-head"><small>CHOOSE YOUR DOMAIN</small><span>8 selectable categories · 8,032 items</span></div>
           <div class="category-picker" role="radiogroup" aria-label="Trivia category">
@@ -52,6 +52,12 @@
               <span data-mode-detail>1,000 variants / 80 concepts + 32 current items</span>
             </div>
             <div class="mode-status" data-bank-status>LOADING</div>
+          </div>
+
+          <div class="career-strip" aria-label="Local Gauntlet career">
+            <div><small>BEST ROUND</small><strong data-career-round>00</strong></div>
+            <div><small>BEST SCORE</small><strong data-career-score>0</strong></div>
+            <div><small>RUNS</small><strong data-career-runs>0</strong></div>
           </div>
 
           <div class="start-actions">
@@ -77,15 +83,18 @@
           <div><small>ROUND</small><strong><span data-round>01</span> / 10</strong></div>
           <div><small>QUESTION</small><strong><span data-question-number>01</span> / 10</strong></div>
           <div><small>CORRECT</small><strong data-correct>0</strong></div>
+          <div><small>STREAK</small><strong data-streak>0×</strong></div>
           <div><small>RUN SCORE</small><strong data-score>0</strong></div>
           <div class="timer-wrap" aria-label="Time remaining">
             <svg viewBox="0 0 48 48" aria-hidden="true">
               <circle class="timer-track" cx="24" cy="24" r="20"></circle>
               <circle class="timer-line" data-timer-line cx="24" cy="24" r="20"></circle>
             </svg>
-            <strong data-timer>20</strong>
+            <strong data-timer>15</strong>
           </div>
         </div>
+
+        <div class="question-progress" aria-label="Round question progress"><i data-question-progress></i></div>
 
         <div class="question-stage">
           <div class="question-meta">
@@ -93,7 +102,7 @@
             <span data-source-state>DRAFT BANK</span>
             <span>DIFFICULTY <b data-difficulty>01</b></span>
           </div>
-          <h2 data-question>Question loads here.</h2>
+          <h2 data-question tabindex="-1">Question loads here.</h2>
           <div class="answers" data-answers></div>
           <div class="feedback" data-feedback role="status"></div>
           <div class="key-hint">Keyboard: press 1–4 to answer</div>
@@ -102,6 +111,7 @@
         <aside class="ace-panel">
           <img src="../assets/quiz-quest.png" alt="Quiz Quest challenge artwork" />
           <div><small>A.C.E. // LIVE READOUT</small><p data-ace>Choose carefully. The clock is already moving.</p></div>
+          <button class="quit-run" type="button" data-quit>End run</button>
         </aside>
       </section>
 
@@ -159,7 +169,8 @@
       <h2>Climb or cash out.</h2>
       <ol>
         <li><b>Round 1 is free.</b> Later rounds charge Alpha GEEK when you enter.</li>
-        <li><b>Answer ten questions.</b> Every round uses your selected category, a 20-second timer, and one locked answer.</li>
+        <li><b>Answer ten questions.</b> Every round uses your selected category, a 15-second timer, and one locked answer.</li>
+        <li><b>Build a streak.</b> Consecutive correct answers add a growing score bonus.</li>
         <li><b>Earn by accuracy.</b> Correct answers earn the round’s displayed reward.</li>
         <li><b>Choose after every round.</b> Continue and risk another entry fee, or end the run.</li>
         <li><b>Review the source.</b> Every Kaspa round links the cited primary source after scoring.</li>
