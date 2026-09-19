@@ -1,0 +1,27 @@
+.desk-nav a,
+.access-card label,
+.access-card button,
+.access-card small,
+.access-card p,
+.queue-title > div:first-child span,
+.queue-title > div:last-child span,
+.review-card__head span,
+.review-card__head small,
+.evidence span,
+.evidence a,
+.action-buttons button {
+  font-size: .75rem;
+}
+
+.access-card input,
+.review-actions input {
+  font-size: 1rem;
+}
+
+.review-options li,
+.evidence p,
+.locked-state span {
+  font-size: .875rem;
+}
+
+.review-options li.correct::after { font-size: .7rem; }

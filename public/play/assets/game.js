@@ -177,7 +177,7 @@
     elements.category.textContent = displayTopic(question.topic).toUpperCase();
     elements.difficulty.textContent = question.difficulty.toUpperCase();
     elements.sourceState.textContent = question.sourceState;
-    elements.sourceState.className = question.sourceState === 'SOURCE-REVIEWED' ? 'reviewed' : question.sourceState === 'TIME-SENSITIVE' ? 'time-sensitive' : question.sourceState === 'SOURCE-LINKED' ? 'source-linked' : 'draft';
+    elements.sourceState.className = ['SOURCE-REVIEWED', 'COMMUNITY-REVIEWED'].includes(question.sourceState) ? 'reviewed' : question.sourceState === 'TIME-SENSITIVE' ? 'time-sensitive' : question.sourceState === 'SOURCE-LINKED' ? 'source-linked' : 'draft';
     elements.question.textContent = question.prompt;
     elements.feedback.textContent = '';
     elements.feedback.className = 'feedback';

@@ -11,6 +11,7 @@ The official Geek Protocol experience for Kaspa: a server-ranked trivia game and
 - Anonymous server sessions with secure, HTTP-only cookies
 - Persistent lobby records, active-seat presence, and shareable live room codes
 - Category-specific verified global leaderboards
+- Community Content Engine submission, review, publication, and first-use reward ledger
 - Lobby, mint-readiness, and Kaspa information pages
 - Private server-side question banks plus complete artwork, styles, and scripts
 
@@ -33,6 +34,13 @@ Vercel deploys `public` directly and discovers the JavaScript functions in `api`
 
 The server also accepts the legacy `KV_REST_API_URL` and `KV_REST_API_TOKEN` names. After adding variables, redeploy the project. If storage is unavailable, information pages and URL-based local lobby invites continue working, while ranked play remains locked.
 
+Community Content Engine moderation also requires:
+
+- `CCE_ADMIN_TOKEN`: a private random moderator key of at least 24 characters
+- `CCE_REWARD_AMOUNT`: integer Alpha GEEK credited on a published question's first ranked use (defaults to `25`)
+
+The private review desk lives at `/moderate/`. The key is sent only in the `X-CCE-Admin` request header and is held in browser `sessionStorage`, so closing the tab clears it.
+
 ## Ranked integrity
 
 - Question selection and option order use server-side cryptographic randomness.
@@ -45,4 +53,6 @@ The server also accepts the legacy `KV_REST_API_URL` and `KV_REST_API_TOKEN` nam
 
 ## Transparent Alpha
 
-Ranked Alpha balances, XP, game progress, lobbies, presence, and verified scores use Redis. Wallet proof state remains local to the browser. Server verification protects competitive integrity, but this is still an unproctored web trivia game and cannot prevent every form of outside assistance. Scores cannot earn tokens or determine payouts. Kasware can display the active address, network, and GEEK balance, but server wallet authentication, minting, and on-chain rewards are not enabled.
+Ranked Alpha balances, XP, game progress, lobbies, presence, verified scores, contributions, and C.C.E. reward records use Redis. Wallet proof state remains local to the browser. Server verification protects competitive integrity, but this is still an unproctored web trivia game and cannot prevent every form of outside assistance.
+
+C.C.E. rewards are internal, claim-gated Alpha ledger credits. They are created only once, when an approved and published question is first answered in ranked play. They are not token transfers, cannot be withdrawn, and have no promised monetary value. Server wallet authentication, claim binding, minting, treasury settlement, and on-chain rewards are not enabled.

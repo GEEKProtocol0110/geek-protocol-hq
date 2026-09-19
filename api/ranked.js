@@ -1,4 +1,5 @@
 import { randomBytes } from 'node:crypto';
+import { recordCommunityQuestionUse } from '../server/cce.js';
 import { categories, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
 import { recordVerifiedScore } from '../server/leaderboard.js';
 import { loadProfile, saveProfile } from '../server/profile.js';
@@ -61,13 +62,13 @@ const publicQuestion = (run, question) => ({
   options: run.current.options,
   topic: question.topic,
   difficulty: question.difficulty,
-  sourceState: question.priority ? 'SOURCE-REVIEWED' : question.volatile ? 'TIME-SENSITIVE' : run.category === 'kaspa' ? 'SOURCE-LINKED' : 'DRAFT BANK',
+  sourceState: question.community ? 'COMMUNITY-REVIEWED' : question.priority ? 'SOURCE-REVIEWED' : question.volatile ? 'TIME-SENSITIVE' : run.category === 'kaspa' ? 'SOURCE-LINKED' : 'DRAFT BANK',
   expiresAt: run.current.deadline,
   serverNow: Date.now()
 });
 
-const issueQuestion = (run) => {
-  const question = questionById(run.category, run.roundQuestionIds[run.questionIndex]);
+const issueQuestion = async (run) => {
+  const question = await questionById(run.category, run.roundQuestionIds[run.questionIndex]);
   run.current = {
     token: randomBytes(16).toString('hex'),
     questionId: question.id,
@@ -79,7 +80,7 @@ const issueQuestion = (run) => {
   return publicQuestion(run, question);
 };
 
-const startRound = (run, profile) => {
+const startRound = async (run, profile) => {
   const config = ROUND_CONFIG[run.round - 1];
   if (!config || profile.balance < config.entry) throw new Error('INSUFFICIENT_BALANCE');
   profile.balance -= config.entry;
@@ -88,7 +89,7 @@ const startRound = (run, profile) => {
   run.correct = 0;
   run.roundScore = 0;
   run.roundAnswers = [];
-  run.roundQuestionIds = selectRoundQuestionIds(run.category, run.round, run.usedQuestionIds, run.focus);
+  run.roundQuestionIds = await selectRoundQuestionIds(run.category, run.round, run.usedQuestionIds, run.focus);
   run.usedQuestionIds.push(...run.roundQuestionIds);
   return issueQuestion(run);
 };
@@ -114,7 +115,7 @@ const answerQuestion = async (run, session, profile, body) => {
     if (latest.lastResponse?.questionToken === body.questionToken) return latest.lastResponse;
     throw new Error('ANSWER_IN_PROGRESS');
   }
-  const question = questionById(run.category, run.current.questionId);
+  const question = await questionById(run.category, run.current.questionId);
   const now = Date.now();
   const timedOut = now > run.current.deadline + NETWORK_GRACE_MS;
   const selectedIndex = timedOut ? -1 : Number(body.selectedIndex);
@@ -142,7 +143,8 @@ const answerQuestion = async (run, session, profile, body) => {
     streak: run.streak,
     funFact: question.funFact,
     source: question.source,
-    sourceState: question.priority ? 'Reviewed current item' : question.volatile ? 'Time-sensitive item' : run.category === 'kaspa' ? 'Source-linked practice item' : 'Draft practice item'
+    sourceState: question.community ? 'Community-reviewed contribution' : question.priority ? 'Reviewed current item' : question.volatile ? 'Time-sensitive item' : run.category === 'kaspa' ? 'Source-linked practice item' : 'Draft practice item',
+    contributorCredit: await recordCommunityQuestionUse(question, run.id)
   };
   run.current = null;
   let roundResult = null;
@@ -205,7 +207,7 @@ export default async function handler(req, res) {
         questionIndex: 0, correct: 0, roundScore: 0, totalScore: 0, streak: 0, maxStreak: 0,
         completedRound: 0, startBalance: profile.balance, fees: 0, rewards: 0, usedQuestionIds: [], status: 'starting'
       };
-      const question = startRound(run, profile);
+      const question = await startRound(run, profile);
       await Promise.all([saveRun(run), saveProfile(session.id, profile)]);
       return sendJson(res, 201, { ok: true, verified: true, run: safeRun(run), profile, question });
     }
@@ -218,14 +220,14 @@ export default async function handler(req, res) {
     if (action === 'next') {
       if (run.status !== 'awaiting-next') throw new Error('RUN_STATE_INVALID');
       run.questionIndex += 1;
-      const question = issueQuestion(run);
+      const question = await issueQuestion(run);
       await saveRun(run);
       return sendJson(res, 200, { ok: true, verified: true, run: safeRun(run), profile, question });
     }
     if (action === 'continue') {
       if (run.status !== 'between-rounds' || run.round >= 10) throw new Error('RUN_STATE_INVALID');
       run.round += 1;
-      const question = startRound(run, profile);
+      const question = await startRound(run, profile);
       await Promise.all([saveRun(run), saveProfile(session.id, profile)]);
       return sendJson(res, 200, { ok: true, verified: true, run: safeRun(run), profile, question });
     }

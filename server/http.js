@@ -85,6 +85,12 @@ export const handleApiError = (res, error) => {
   if (code === 'INSUFFICIENT_BALANCE') return sendJson(res, 409, { ok: false, code, error: 'Your server Alpha GEEK balance is too low for the next round.' });
   if (code === 'ROOM_NOT_FOUND') return sendJson(res, 404, { ok: false, error: 'That lobby is no longer active.' });
   if (code === 'ROOM_FULL') return sendJson(res, 409, { ok: false, error: 'That lobby is full.' });
+  if (code === 'CCE_NOT_FOUND') return sendJson(res, 404, { ok: false, error: 'That contribution could not be found.' });
+  if (code === 'CCE_DUPLICATE') return sendJson(res, 409, { ok: false, error: 'That question is already in the review pipeline.' });
+  if (code === 'CCE_STATE_INVALID') return sendJson(res, 409, { ok: false, error: 'That contribution cannot take this action in its current state.' });
+  if (code === 'CCE_INVALID_SUBMISSION') return sendJson(res, 400, { ok: false, error: 'Complete every field, use four unique answers, add an HTTPS source, and confirm original submission rights.' });
+  if (code === 'CCE_FORBIDDEN') return sendJson(res, 403, { ok: false, error: 'Moderator access was not accepted.' });
+  if (code === 'CCE_MODERATION_NOT_CONFIGURED') return sendJson(res, 503, { ok: false, code, error: 'The private moderation key has not been configured yet.' });
   if (code === 'INVALID_BODY' || code === 'INVALID_REQUEST') return sendJson(res, 400, { ok: false, error: 'The request was not valid.' });
   console.error('Geek API error', error);
   return sendJson(res, 500, { ok: false, error: 'The community service hit an unexpected error.' });

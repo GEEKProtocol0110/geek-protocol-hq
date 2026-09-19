@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080b0b" />
+    <meta name="description" content="Submit original, sourced questions to the Geek Protocol Community Content Engine and track review, publication, use, and launch-gated GEEK credits." />
+    <title>Community Content Engine — Geek Protocol</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <link rel="stylesheet" href="./assets/cce.css" />
+    <link rel="stylesheet" href="./assets/cce-accessible.css" />
+    <script defer src="../assets/site.js"></script>
+    <script defer src="./assets/cce.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to contribution form</a>
+    <header class="site-header" data-header>
+      <a class="brand" href="../" aria-label="Geek Protocol home"><img src="../assets/geek-protocol-logo.png" alt="" width="48" height="48" /><span>GEEK<span class="brand-mark">//</span>C.C.E.</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="../kaspa/">Kaspa 101</a><a href="../lobby/">Lobbies</a><a href="../play/">Play</a><a href="../mint/">Mint $GEEK</a><a class="nav-cta" href="#submit">Submit a question <span aria-hidden="true">↓</span></a></nav>
+    </header>
+
+    <main id="main" class="cce-main">
+      <section class="cce-hero" aria-labelledby="cce-title">
+        <div class="cce-hero-copy">
+          <div class="section-kicker dark">COMMUNITY CONTENT ENGINE · ALPHA</div>
+          <h1 id="cce-title">BUILD THE<br /><em>QUESTION BANK.</em></h1>
+          <p>Submit an original, source-backed question. Every entry enters a human review queue before it can reach ranked play.</p>
+          <div class="pipeline" aria-label="Contribution workflow"><span class="active">01 Submit</span><i>→</i><span>02 Review</span><i>→</i><span>03 Publish</span><i>→</i><span>04 First use</span><i>→</i><span>05 Credit</span></div>
+        </div>
+        <aside class="reward-card">
+          <span class="reward-card__tag">ALPHA REWARD RULE</span>
+          <strong><b data-reward-amount>25</b> GEEK</strong>
+          <p>credited once, when an accepted question is first answered in a server-ranked game.</p>
+          <div><span>Settlement</span><b>Launch-gated</b></div>
+          <small>This is an internal Alpha ledger credit—not a token transfer, cash balance, or promise of monetary value. Wallet claim binding and on-chain settlement are not live.</small>
+        </aside>
+      </section>
+
+      <section class="cce-workspace" id="submit">
+        <form class="question-form" data-question-form novalidate>
+          <div class="form-heading">
+            <div><span>01 / AUTHOR</span><h2>Submit a question</h2></div>
+            <span class="service-state" data-service-state>CONNECTING</span>
+          </div>
+          <input type="hidden" name="submissionId" />
+          <div class="field-grid two-up">
+            <label><span>Display name</span><input name="displayName" maxlength="24" autocomplete="nickname" required placeholder="Community Geek" /></label>
+            <label><span>Category</span><select name="category" required><option value="kaspa">Kaspa</option><option value="video-games">Video Games</option><option value="science-fiction">Science Fiction</option><option value="technology">Technology</option><option value="movies">Movies</option><option value="history">History</option><option value="comics">Comics</option><option value="pop-culture">Pop Culture</option></select></label>
+            <label><span>Topic</span><input name="topic" minlength="2" maxlength="60" required placeholder="e.g. GHOSTDAG" /></label>
+            <label><span>Difficulty</span><select name="difficulty" required><option value="easy">Easy / Rounds 1–3</option><option value="medium">Medium / Rounds 4–7</option><option value="hard">Hard / Rounds 8–10</option></select></label>
+          </div>
+
+          <label class="full-field"><span>Question <b>18–280 characters</b></span><textarea name="prompt" minlength="18" maxlength="280" rows="3" required placeholder="Ask one precise question with one unambiguous answer."></textarea></label>
+
+          <fieldset class="answer-set">
+            <legend>Four answers <small>Select the correct one</small></legend>
+            <label><input type="radio" name="correctIndex" value="0" required /><span>A</span><input name="option0" maxlength="140" required placeholder="Answer A" /></label>
+            <label><input type="radio" name="correctIndex" value="1" /><span>B</span><input name="option1" maxlength="140" required placeholder="Answer B" /></label>
+            <label><input type="radio" name="correctIndex" value="2" /><span>C</span><input name="option2" maxlength="140" required placeholder="Answer C" /></label>
+            <label><input type="radio" name="correctIndex" value="3" /><span>D</span><input name="option3" maxlength="140" required placeholder="Answer D" /></label>
+          </fieldset>
+
+          <label class="full-field"><span>Answer explanation <b>Why is it correct?</b></span><textarea name="explanation" minlength="12" maxlength="500" rows="3" required placeholder="Give players a useful explanation after they answer."></textarea></label>
+          <label class="full-field"><span>Primary source <b>HTTPS link</b></span><input name="source" type="url" pattern="https://.*" maxlength="500" required placeholder="https://docs.kaspa.org/..." /></label>
+          <label class="rights-check"><input name="original" type="checkbox" required /><span>I created this wording, have the right to submit it, and understand Geek Protocol may edit, reject, publish, or remove it.</span></label>
+          <div class="form-actions"><button class="submit-question" type="submit">Send to review <span>→</span></button><button class="cancel-revision" type="button" data-cancel-revision hidden>Cancel revision</button></div>
+          <p class="form-message" data-form-message role="status" aria-live="polite">Questions are private until a moderator publishes them.</p>
+        </form>
+
+        <aside class="contributor-panel" aria-labelledby="contributor-title">
+          <div class="form-heading"><div><span>02 / YOUR PIPELINE</span><h2 id="contributor-title">Contribution log</h2></div><button type="button" data-refresh>Refresh</button></div>
+          <dl class="contributor-stats">
+            <div><dt>Submitted</dt><dd data-stat="submitted">0</dd></div>
+            <div><dt>Published</dt><dd data-stat="accepted">0</dd></div>
+            <div><dt>Used</dt><dd data-stat="used">0</dd></div>
+            <div class="earned"><dt>Earned</dt><dd><span data-stat="earned">0</span> GEEK</dd></div>
+          </dl>
+          <div class="settlement-note"><b>0 GEEK paid</b><span>Claim and settlement remain locked until the public token, treasury, identity binding, terms, and security gates are complete.</span></div>
+          <div class="submission-list" data-submission-list><div class="empty-state"><b>No submissions yet.</b><span>Your review history will appear here on this browser.</span></div></div>
+        </aside>
+      </section>
+
+      <section class="quality-rules">
+        <div><span>03 / QUALITY BAR</span><h2>MAKE IT<br />WORTH LEARNING.</h2></div>
+        <ol><li><b>One truth</b><span>Exactly one answer must be defensible from the source.</span></li><li><b>Primary evidence</b><span>Prefer official documentation, specifications, or first-party records.</span></li><li><b>No trivia traps</b><span>Test understanding—not spelling tricks or intentionally vague wording.</span></li><li><b>No copied banks</b><span>Submit original wording and respect copyright.</span></li></ol>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>Community-built knowledge. Human-reviewed signal.</p></div><div class="footer-links"><a href="../">Home</a><a href="../lobby/">Lobbies</a><a href="../play/">Play</a><a href="../mint/">Mint status</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · Alpha credits have no monetary value.</p></footer>
+  </body>
+</html>
