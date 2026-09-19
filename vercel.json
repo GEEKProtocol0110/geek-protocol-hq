@@ -6,6 +6,11 @@
   "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": true,
+  "functions": {
+    "api/ranked.js": {
+      "includeFiles": "server/questions/**"
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
