@@ -7,6 +7,8 @@ import leaderboardHandler from '../api/leaderboard.js';
 import rankedHandler from '../api/ranked.js';
 import contentHandler from '../api/content.js';
 import moderationHandler from '../api/moderation.js';
+import rewardsHandler from '../api/rewards.js';
+import { isValidKaspaMainnetAddress } from '../server/kaspa-address.js';
 import { loadQuestionBank } from '../server/questions.js';
 
 process.env.UPSTASH_REDIS_REST_URL = 'https://redis.test';
@@ -297,4 +299,81 @@ test('community questions move through review, enter ranked play, and earn once 
   assert.equal(dashboardRes.body.stats.paid, 0);
   assert.equal(dashboardRes.body.stats.settlement, 'launch-gated');
   assert.equal(dashboardRes.body.submissions[0].reward.status, 'earned');
+});
+
+test('a player can register any valid Kaspa mainnet payout address without exposing wallet secrets', async () => {
+  const cookie = await startSession('Open Wallet Geek');
+  const address = 'kaspa:qrahfynex4wsv6u283mvr77yc65ks9ze3assz3w4zegashgwupu6umagljg84';
+  assert.equal(isValidKaspaMainnetAddress(address), true);
+  assert.equal(isValidKaspaMainnetAddress(address.replace(/.$/, 'q')), false);
+  assert.equal(isValidKaspaMainnetAddress(address.replace('kaspa:', 'kaspatest:')), false);
+
+  const rejectedRes = response();
+  await rewardsHandler(request('POST', { address, acknowledged: false }, cookie), rejectedRes);
+  assert.equal(rejectedRes.statusCode, 400);
+
+  const saveRes = response();
+  await rewardsHandler(request('POST', { address, acknowledged: true }, cookie), saveRes);
+  assert.equal(saveRes.statusCode, 200);
+  assert.equal(saveRes.body.payout.address, address);
+  assert.equal(saveRes.body.payout.withdrawalsEnabled, false);
+  assert.equal('privateKey' in saveRes.body, false);
+  assert.equal('mnemonic' in saveRes.body, false);
+
+  const getRes = response();
+  await rewardsHandler(request('GET', undefined, cookie), getRes);
+  assert.equal(getRes.body.payout.address, address);
+  assert.equal(getRes.body.payout.network, 'kaspa-mainnet');
+});
+
+test('Daily and Speed modes keep answers and timing under server control', async () => {
+  const dailyCookie = await startSession('Daily Geek');
+  const dailyStart = response();
+  await rankedHandler(request('POST', { action: 'start', category: 'kaspa', mode: 'daily' }, dailyCookie), dailyStart);
+  assert.equal(dailyStart.statusCode, 201);
+  assert.equal(dailyStart.body.run.mode, 'daily');
+  assert.equal(dailyStart.body.run.questionCount, 5);
+  assert.equal('correctIndex' in dailyStart.body.question, false);
+
+  let dailyPayload = dailyStart.body;
+  for (let number = 1; number <= 5; number += 1) {
+    const answerRes = response();
+    await rankedHandler(request('POST', {
+      action: 'answer', runId: dailyPayload.run.id, questionToken: dailyPayload.question.token, selectedIndex: 0
+    }, dailyCookie), answerRes);
+    dailyPayload = answerRes.body;
+    if (number < 5) {
+      const nextRes = response();
+      await rankedHandler(request('POST', { action: 'next', runId: dailyPayload.run.id }, dailyCookie), nextRes);
+      dailyPayload = nextRes.body;
+    }
+  }
+  assert.equal(dailyPayload.roundResult.modeComplete, true);
+  assert.equal(dailyPayload.roundResult.questionCount, 5);
+  assert.equal(dailyPayload.roundResult.reward, 0);
+
+  const dailyRetry = response();
+  await rankedHandler(request('POST', { action: 'start', category: 'kaspa', mode: 'daily' }, dailyCookie), dailyRetry);
+  assert.equal(dailyRetry.statusCode, 409);
+  assert.equal(dailyRetry.body.code, 'DAILY_ALREADY_PLAYED');
+
+  const speedCookie = await startSession('Speed Geek');
+  const speedStart = response();
+  await rankedHandler(request('POST', { action: 'start', category: 'kaspa', mode: 'speed' }, speedCookie), speedStart);
+  assert.equal(speedStart.statusCode, 201);
+  assert.equal(speedStart.body.run.mode, 'speed');
+  assert.ok(speedStart.body.question.durationMs <= 30_000);
+
+  const storedKey = `geek:run:${speedStart.body.run.id}`;
+  const storedRun = JSON.parse(strings.get(storedKey));
+  storedRun.overallDeadline = Date.now() - 1_000;
+  storedRun.current.deadline = Date.now() - 1_000;
+  strings.set(storedKey, JSON.stringify(storedRun));
+  const speedAnswer = response();
+  await rankedHandler(request('POST', {
+    action: 'answer', runId: speedStart.body.run.id, questionToken: speedStart.body.question.token, selectedIndex: -1
+  }, speedCookie), speedAnswer);
+  assert.equal(speedAnswer.body.result.timedOut, true);
+  assert.equal(speedAnswer.body.roundResult.modeComplete, true);
+  assert.equal(speedAnswer.body.roundResult.reward, 0);
 });

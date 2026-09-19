@@ -7,8 +7,12 @@ export const defaultProfile = () => ({
   xp: 0,
   bestRound: 0,
   bestScore: 0,
+  bestDailyScore: 0,
+  bestSpeedScore: 0,
   totalRuns: 0,
-  totalCorrect: 0
+  totalCorrect: 0,
+  payoutAddress: '',
+  payoutAddressSetAt: 0
 });
 
 export const loadProfile = async (sessionId) => {

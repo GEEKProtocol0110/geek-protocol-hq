@@ -17,10 +17,10 @@
     builders: ['builders-desk', 'Explore the current developer surface.', 'Builder Briefing emphasizes Toccata, covenants, Based Apps, Inline ZK, Rust, WASM, and the evolving authoring toolchain.']
   };
   const templates = {
-    core: { name: 'Kaspa Core', category: 'kaspa', seats: '4', focus: '' },
-    ghostdag: { name: 'GHOSTDAG Lab', category: 'kaspa', seats: '4', focus: 'ghostdag' },
-    speed: { name: 'Speed Signal', category: 'kaspa', seats: '2', focus: '' },
-    builders: { name: 'Builder Briefing', category: 'kaspa', seats: '8', focus: 'builders' }
+    core: { name: 'Kaspa Core', category: 'kaspa', seats: '4', focus: '', mode: 'gauntlet' },
+    ghostdag: { name: 'GHOSTDAG Lab', category: 'kaspa', seats: '4', focus: 'ghostdag', mode: 'gauntlet' },
+    speed: { name: 'Speed Signal', category: 'kaspa', seats: '2', focus: '', mode: 'speed' },
+    builders: { name: 'Builder Briefing', category: 'kaspa', seats: '8', focus: 'builders', mode: 'gauntlet' }
   };
 
   const form = $('[data-lobby-form]');
@@ -90,6 +90,7 @@
     form.elements.category.value = template.category;
     form.elements.seats.value = template.seats;
     form.elements.focus.value = template.focus;
+    form.elements.mode.value = template.mode;
     form.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
@@ -97,8 +98,9 @@
     const safeCategory = categories.has(room.category) ? room.category : 'kaspa';
     const safeSeats = [2, 4, 8].includes(Number(room.seats)) ? Number(room.seats) : 4;
     const safeFocus = ['ghostdag', 'builders'].includes(room.focus) ? room.focus : '';
+    const safeMode = ['gauntlet', 'daily', 'speed'].includes(room.mode) ? room.mode : 'gauntlet';
     const members = Array.isArray(room.members) ? room.members.slice(0, safeSeats) : [{ name: identity, host: true }];
-    currentRoom = { ...room, category: safeCategory, seats: safeSeats, focus: safeFocus, members, live };
+    currentRoom = { ...room, category: safeCategory, seats: safeSeats, focus: safeFocus, mode: safeMode, members, live };
     $('[data-room-name]').textContent = room.name || 'Kaspa Study Hall';
     $('[data-room-code]').textContent = room.code;
     $('[data-room-state]').textContent = live ? 'LIVE' : 'LOCAL';
@@ -111,6 +113,7 @@
     }).join('');
     const playParams = new URLSearchParams({ category: safeCategory, lobby: room.code });
     if (safeFocus) playParams.set('focus', safeFocus);
+    if (safeMode !== 'gauntlet') playParams.set('mode', safeMode);
     $('[data-launch]').href = `../play/?${playParams}`;
     const inviteParams = new URLSearchParams({ lobby: room.code });
     if (!live) {
@@ -118,6 +121,7 @@
       inviteParams.set('category', safeCategory);
       inviteParams.set('seats', String(safeSeats));
       if (safeFocus) inviteParams.set('focus', safeFocus);
+      if (safeMode !== 'gauntlet') inviteParams.set('mode', safeMode);
     }
     if (replaceUrl) history.replaceState(null, '', `${location.pathname}?${inviteParams}`);
     $('[data-room-note]').innerHTML = live
@@ -187,17 +191,17 @@
         await syncSession();
         const payload = await api('/api/lobbies', {
           method: 'POST',
-          body: JSON.stringify({ action: 'create', name: data.get('name'), category: data.get('category'), seats: data.get('seats'), focus: data.get('focus') })
+          body: JSON.stringify({ action: 'create', name: data.get('name'), category: data.get('category'), seats: data.get('seats'), focus: data.get('focus'), mode: data.get('mode') })
         });
         renderRoom(payload.room, true, true);
         await loadRoomList();
       } else {
-        renderRoom({ name: data.get('name'), category: data.get('category'), seats: data.get('seats'), focus: data.get('focus'), code: makeLocalCode() }, true, false);
+        renderRoom({ name: data.get('name'), category: data.get('category'), seats: data.get('seats'), focus: data.get('focus'), mode: data.get('mode'), code: makeLocalCode() }, true, false);
       }
       roomPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch {
       setServiceState('offline', 'Local invite mode active');
-      renderRoom({ name: data.get('name'), category: data.get('category'), seats: data.get('seats'), focus: data.get('focus'), code: makeLocalCode() }, true, false);
+      renderRoom({ name: data.get('name'), category: data.get('category'), seats: data.get('seats'), focus: data.get('focus'), mode: data.get('mode'), code: makeLocalCode() }, true, false);
     } finally {
       button.disabled = false;
       button.innerHTML = 'Create room <span>→</span>';
@@ -299,7 +303,7 @@
         }
       }
     }
-    renderRoom({ name: params.get('name'), category: params.get('category'), seats: params.get('seats'), focus: params.get('focus'), code: params.get('lobby') }, false, false);
+    renderRoom({ name: params.get('name'), category: params.get('category'), seats: params.get('seats'), focus: params.get('focus'), mode: params.get('mode'), code: params.get('lobby') }, false, false);
   };
 
   initialize();

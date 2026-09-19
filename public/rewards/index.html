@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080b0b" />
+    <meta name="description" content="Register any valid Kaspa mainnet wallet as the future payout destination for Geek Protocol rewards." />
+    <title>Wallet &amp; Rewards — Geek Protocol</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <link rel="stylesheet" href="../assets/wallet.css" />
+    <link rel="stylesheet" href="./assets/rewards.css" />
+    <script defer src="../assets/site.js"></script>
+    <script defer src="../assets/wallet.js"></script>
+    <script defer src="./assets/rewards.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to wallet settings</a>
+    <header class="site-header scrolled" data-header>
+      <a class="brand" href="../" aria-label="Geek Protocol home"><img src="../assets/geek-protocol-logo.png" alt="" width="48" height="48" /><span>GEEK<span class="brand-mark">//</span>REWARDS</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="../play/">Play</a><a href="../lobby/">Lobbies</a><a href="../contribute/">Contribute</a><a href="../litepaper/">Litepaper</a><a class="nav-cta" href="#payout">Set payout wallet <span aria-hidden="true">↓</span></a></nav>
+    </header>
+
+    <main id="main" class="rewards-main">
+      <section class="rewards-hero" aria-labelledby="rewards-title">
+        <div>
+          <div class="section-kicker">WALLET-NEUTRAL SETTLEMENT · ALPHA</div>
+          <h1 id="rewards-title">YOUR GEEK.<br /><em>YOUR WALLET.</em></h1>
+          <p>Choose the Kaspa mainnet address where future eligible GEEK rewards should go. It can come from Kasware, a mobile wallet, hardware storage, or any wallet that gives you a valid Kaspa receiving address.</p>
+        </div>
+        <dl class="reward-summary" aria-label="Alpha reward profile">
+          <div><dt>ALPHA GEEK</dt><dd data-alpha-balance>0</dd></div>
+          <div><dt>PAYOUT WALLET</dt><dd data-payout-state>NOT SET</dd></div>
+          <div><dt>ON-CHAIN STATUS</dt><dd>LOCKED</dd></div>
+        </dl>
+      </section>
+
+      <section class="wallet-workspace" id="payout">
+        <form class="payout-form" data-payout-form novalidate>
+          <div class="form-head"><div><span>01 / DESTINATION</span><h2>Set payout wallet</h2></div><span class="api-state" data-service-state>CONNECTING</span></div>
+          <p class="form-intro">Paste a <strong>Kaspa mainnet receiving address</strong>. This does not connect the wallet and cannot move funds.</p>
+          <label for="payout-address">Kaspa address</label>
+          <div class="address-control">
+            <input id="payout-address" name="address" inputmode="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="kaspa:q…" required />
+            <button type="button" data-use-connected disabled>Use connected</button>
+          </div>
+          <p class="address-help">Only the public receiving address is stored. Never enter a seed phrase or private key.</p>
+          <label class="confirm-row"><input name="acknowledged" type="checkbox" required /><span>I checked the address and understand on-chain withdrawals are not enabled yet.</span></label>
+          <div class="form-actions"><button class="save-address" type="submit">Save payout wallet <span>→</span></button><button class="remove-address" type="button" data-remove hidden>Remove</button></div>
+          <p class="form-message" data-form-message role="status" aria-live="polite">Your selection is tied to this server Alpha profile.</p>
+        </form>
+
+        <aside class="payout-policy" aria-labelledby="policy-title">
+          <span>02 / POLICY</span>
+          <h2 id="policy-title">Any wallet.<br />One safe address.</h2>
+          <ol>
+            <li><b>Wallet-neutral</b><span>Kasware is optional. The destination only needs to be a valid Kaspa mainnet address.</span></li>
+            <li><b>No custody</b><span>Geek Protocol will never request or store your seed phrase or private key.</span></li>
+            <li><b>Review first</b><span>Real transfers remain disabled until token identity, treasury rules, settlement code, limits, and an external security review are complete.</span></li>
+          </ol>
+        </aside>
+      </section>
+
+      <section class="connected-wallet" aria-labelledby="connected-title">
+        <div><span>03 / OPTIONAL SHORTCUT</span><h2 id="connected-title">Use Kasware without being locked to Kasware.</h2><p>Connect only if you want to copy its current address into the payout field. You can always paste an address from a different wallet instead.</p></div>
+        <section class="wallet-panel" data-wallet-root aria-label="Optional Kasware wallet connection">
+          <div>
+            <div class="wallet-panel__head"><i class="wallet-panel__dot"></i><span data-wallet-state>CHECKING KASWARE</span></div>
+            <div class="wallet-panel__identity"><strong data-wallet-address>Not connected</strong><span data-wallet-network>Connect to read network</span></div>
+            <div class="wallet-panel__facts"><span>HOLDING <b data-wallet-geek>—</b></span><span>OPTIONAL</span></div>
+            <p class="wallet-panel__message" data-wallet-message aria-live="polite">Checking for the Kasware wallet.</p>
+          </div>
+          <div class="wallet-panel__actions"><button type="button" data-wallet-connect>Connect Kasware</button><button type="button" data-wallet-verify hidden>Verify ownership</button><a href="https://www.kasware.xyz" target="_blank" rel="noreferrer" data-wallet-install>Get Kasware ↗</a></div>
+          <p class="wallet-panel__safety"><b>Optional convenience only.</b> The saved payout address may belong to any Kaspa wallet.</p>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>All hope, no hype. Settlement stays locked until it is safe.</p></div><div class="footer-links"><a href="../">Home</a><a href="../play/">Play</a><a href="../contribute/">Contribute</a><a href="../mint/">Mint status</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · Alpha credits have no monetary value.</p></footer>
+  </body>
+</html>

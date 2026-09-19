@@ -6,6 +6,11 @@
   const IDENTITY_KEY = 'geek-lobby-identity-v1';
   const TIMER_SECONDS = 15;
   const TIMER_CIRCUMFERENCE = 125.66;
+  const GAME_MODES = {
+    gauntlet: { name: 'Geek Gauntlet', detail: '10 rounds × 10 questions · Alpha practice economy', start: 'Start Verified Round 01' },
+    daily: { name: 'Daily Signal', detail: '5 server-selected questions · one verified attempt per UTC day', start: 'Start Today’s Signal' },
+    speed: { name: 'Speed Signal', detail: 'Answer up to 10 questions before the 30-second server clock closes', start: 'Start 30-Second Signal' }
+  };
   const CATEGORY_BANKS = {
     kaspa: { name: 'Kaspa: Proof of Learning', shortName: 'Kaspa', count: 1032, detail: '80 core concepts + 32 current items', sourced: true },
     'video-games': { name: 'Video Games', shortName: 'Video Games', count: 1000, detail: 'games, consoles & lore' },
@@ -35,18 +40,20 @@
   const pad = (value) => String(value).padStart(2, '0');
   const escapeHtml = (value) => String(value ?? '').replace(/[&<>'"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character]);
 
-  let activeCategory = CATEGORY_BANKS[queryParams.get('category')] ? queryParams.get('category') : 'kaspa';
+  let activeCategory = Object.hasOwn(CATEGORY_BANKS, queryParams.get('category')) ? queryParams.get('category') : 'kaspa';
+  let activeMode = Object.hasOwn(GAME_MODES, queryParams.get('mode')) ? queryParams.get('mode') : 'gauntlet';
   let communityReady = false;
   let profile = { balance: 0, xp: 0, bestRound: 0, bestScore: 0, totalRuns: 0, totalCorrect: 0 };
   let run = null;
   let currentQuestion = null;
   let timerId = null;
   let deadline = 0;
+  let timerSeconds = TIMER_SECONDS;
   let locked = false;
 
   const elements = {
     screens: $$('.screen'), level: $('[data-level]'), xp: $('[data-xp]'), balance: $('[data-balance]'), ladder: $('[data-ladder]'),
-    round: $('[data-round]'), questionNumber: $('[data-question-number]'), correct: $('[data-correct]'), streak: $('[data-streak]'),
+    round: $('[data-round]'), roundTotal: $('[data-round-total]'), questionNumber: $('[data-question-number]'), questionTotal: $('[data-question-total]'), correct: $('[data-correct]'), streak: $('[data-streak]'),
     score: $('[data-score]'), timer: $('[data-timer]'), timerLine: $('[data-timer-line]'), timerWrap: $('.timer-wrap'),
     questionProgress: $('[data-question-progress]'), category: $('[data-category]'), difficulty: $('[data-difficulty]'),
     sourceState: $('[data-source-state]'), question: $('[data-question]'), answers: $('[data-answers]'), feedback: $('[data-feedback]'),
@@ -57,7 +64,8 @@
     completeMessage: $('[data-complete-message]'), rules: $('[data-rules]'), startButton: $('[data-start]'), bankStatus: $('[data-bank-status]'),
     localNote: $('.local-note'), selectedMode: $('[data-selected-mode]'), modeDetail: $('[data-mode-detail]'), roundReview: $('[data-round-review]'),
     careerRound: $('[data-career-round]'), careerScore: $('[data-career-score]'), careerRuns: $('[data-career-runs]'),
-    leaderboard: $('[data-leaderboard]'), boardState: $('[data-board-state]'), categoryButtons: $$('[data-category-key]')
+    leaderboard: $('[data-leaderboard]'), boardState: $('[data-board-state]'), categoryButtons: $$('[data-category-key]'), modeButtons: $$('[data-mode-key]'),
+    cashoutButton: $('[data-cashout]'), startScreen: $('[data-screen="start"]'), completeKicker: $('[data-complete-kicker]'), completeTitle: $('[data-complete-title]')
   };
 
   const api = async (path, options = {}) => {
@@ -111,14 +119,14 @@
 
   const renderLeaderboard = (entries = []) => {
     elements.leaderboard.innerHTML = entries.length
-      ? entries.map((entry) => `<li><b>${pad(entry.rank)}</b><span>${escapeHtml(entry.name)}</span><small>R${pad(entry.round)}</small><strong>${format.format(entry.score)}</strong></li>`).join('')
+      ? entries.map((entry) => `<li><b>${pad(entry.rank)}</b><span>${escapeHtml(entry.name)}</span><small>${activeMode === 'gauntlet' ? `R${pad(entry.round)}` : activeMode === 'daily' ? 'DAILY' : 'SPEED'}</small><strong>${format.format(entry.score)}</strong></li>`).join('')
       : '<li class="board-empty">No verified scores yet. Set the first signal.</li>';
   };
 
-  const loadLeaderboard = async (category = activeCategory) => {
+  const loadLeaderboard = async (category = activeCategory, mode = activeMode) => {
     elements.boardState.textContent = communityReady ? 'REFRESHING' : 'CONNECTING';
     try {
-      const payload = await api(`/api/leaderboard?category=${encodeURIComponent(category)}`);
+      const payload = await api(`/api/leaderboard?category=${encodeURIComponent(category)}&mode=${encodeURIComponent(mode)}`);
       elements.boardState.textContent = 'SERVER VERIFIED';
       renderLeaderboard(payload.entries);
     } catch {
@@ -127,24 +135,43 @@
     }
   };
 
+  const refreshSelection = () => {
+    const category = CATEGORY_BANKS[activeCategory];
+    const mode = GAME_MODES[activeMode];
+    elements.startScreen.dataset.mode = activeMode;
+    elements.selectedMode.textContent = `${mode.name} · ${category.shortName}`;
+    elements.modeDetail.textContent = `${mode.detail} · ${format.format(category.count)} private items`;
+    elements.bankStatus.textContent = communityReady ? 'SERVER READY' : 'CONNECTING';
+    elements.startButton.disabled = !communityReady;
+    elements.startButton.innerHTML = communityReady ? `${mode.start} <span>→</span>` : 'Connecting Ranked Service';
+    elements.localNote.innerHTML = communityReady
+      ? activeMode === 'gauntlet'
+        ? '<b>Server-authoritative Gauntlet:</b> private answers, enforced deadlines, and a server-only leaderboard. Alpha GEEK remains a no-value practice balance.'
+        : '<b>Server-authoritative quick mode:</b> the server owns the answers, clock, score, and board. Daily and Speed award XP and verified scores—not Alpha GEEK.'
+      : '<b>Ranked service required:</b> the answer bank is not shipped to browsers. Play unlocks after the secure game service connects.';
+    loadLeaderboard(activeCategory, activeMode);
+  };
+
+  const selectMode = (modeKey) => {
+    if (!Object.hasOwn(GAME_MODES, modeKey) || run) return;
+    activeMode = modeKey;
+    elements.modeButtons.forEach((button) => {
+      const selected = button.dataset.modeKey === modeKey;
+      button.classList.toggle('selected', selected);
+      button.setAttribute('aria-checked', String(selected));
+    });
+    refreshSelection();
+  };
+
   const selectCategory = (categoryKey) => {
-    if (!CATEGORY_BANKS[categoryKey] || run) return;
+    if (!Object.hasOwn(CATEGORY_BANKS, categoryKey) || run) return;
     activeCategory = categoryKey;
-    const config = CATEGORY_BANKS[categoryKey];
     elements.categoryButtons.forEach((button) => {
       const selected = button.dataset.categoryKey === categoryKey;
       button.classList.toggle('selected', selected);
       button.setAttribute('aria-checked', String(selected));
     });
-    elements.selectedMode.textContent = config.name;
-    elements.modeDetail.textContent = `${format.format(config.count)} private ranked items · ${config.detail}`;
-    elements.bankStatus.textContent = communityReady ? 'SERVER READY' : 'CONNECTING';
-    elements.startButton.disabled = !communityReady;
-    elements.startButton.innerHTML = communityReady ? 'Start Verified Round 01 <span>→</span>' : 'Connecting Ranked Service';
-    elements.localNote.innerHTML = communityReady
-      ? '<b>Server-authoritative ranked mode:</b> correct answers stay private, the server enforces every deadline and computes every leaderboard score. Alpha GEEK remains a no-value practice balance.'
-      : '<b>Ranked service required:</b> the answer bank is not shipped to browsers. Play unlocks after the secure game service connects.';
-    loadLeaderboard(categoryKey);
+    refreshSelection();
   };
 
   const startNewRun = async () => {
@@ -152,7 +179,7 @@
     elements.startButton.disabled = true;
     elements.startButton.textContent = 'Opening Verified Run…';
     try {
-      const payload = await postRanked('start', { category: activeCategory, focus: requestedFocus });
+      const payload = await postRanked('start', { category: activeCategory, focus: requestedFocus, mode: activeMode });
       applyServerState(payload, true);
       showScreen('quiz');
       showQuestion(payload.question);
@@ -168,12 +195,15 @@
     locked = false;
     clearTimer();
     deadline = Date.now() + Math.max(0, question.expiresAt - question.serverNow);
+    timerSeconds = Math.max(1, Number(question.durationMs || TIMER_SECONDS * 1000) / 1000);
     elements.round.textContent = pad(run.round);
+    elements.roundTotal.textContent = String(run.maxRounds || 1);
     elements.questionNumber.textContent = pad(question.number);
+    elements.questionTotal.textContent = String(run.questionCount || 10);
     elements.correct.textContent = String(run.correct);
     elements.streak.textContent = `${run.streak || 0}×`;
     elements.score.textContent = format.format(run.totalScore + run.roundScore);
-    elements.questionProgress.style.width = `${(question.number - 1) * 10}%`;
+    elements.questionProgress.style.width = `${((question.number - 1) / (run.questionCount || 10)) * 100}%`;
     elements.category.textContent = displayTopic(question.topic).toUpperCase();
     elements.difficulty.textContent = question.difficulty.toUpperCase();
     elements.sourceState.textContent = question.sourceState;
@@ -209,7 +239,7 @@
   const updateTimer = () => {
     const remaining = Math.max(0, (deadline - Date.now()) / 1000);
     elements.timer.textContent = String(Math.ceil(remaining));
-    elements.timerLine.style.strokeDashoffset = String(TIMER_CIRCUMFERENCE * (1 - remaining / TIMER_SECONDS));
+    elements.timerLine.style.strokeDashoffset = String(TIMER_CIRCUMFERENCE * (1 - Math.min(1, remaining / timerSeconds)));
     elements.timerWrap.classList.toggle('warning', remaining <= 10 && remaining > 5);
     elements.timerWrap.classList.toggle('danger', remaining <= 5);
     if (remaining <= 0) {
@@ -258,7 +288,7 @@
       elements.correct.textContent = String(run.correct);
       elements.streak.textContent = `${result.streak}×`;
       elements.score.textContent = format.format(run.totalScore + run.roundScore);
-      elements.questionProgress.style.width = `${currentQuestion.number * 10}%`;
+      elements.questionProgress.style.width = `${Math.min(100, (currentQuestion.number / (run.questionCount || 10)) * 100)}%`;
       window.setTimeout(() => payload.roundResult ? completeRound(payload.roundResult) : nextQuestion(), 1250);
     } catch (error) {
       locked = false;
@@ -283,10 +313,13 @@
   const completeRound = (result) => {
     clearTimer();
     const config = ROUND_CONFIG[run.round - 1];
-    elements.resultKicker.textContent = `ROUND ${pad(run.round)} VERIFIED · ${result.label}`;
+    const quickMode = run.mode !== 'gauntlet';
+    elements.resultKicker.textContent = quickMode ? `${GAME_MODES[run.mode].name.toUpperCase()} · SERVER VERIFIED` : `ROUND ${pad(run.round)} VERIFIED · ${result.label}`;
     elements.resultTitle.textContent = result.correct >= 8 ? 'ACCESS GRANTED' : result.correct >= 5 ? 'SIGNAL ACCEPTED' : 'ROUND SURVIVED';
-    elements.resultMessage.textContent = `${result.correct} answers were scored by the server, producing ${format.format(result.reward)} Alpha GEEK in the practice ledger.`;
-    elements.resultCorrect.textContent = `${result.correct}/10`;
+    elements.resultMessage.textContent = quickMode
+      ? `${result.answered} answers were locked and scored by the server. Quick modes build XP and verified scores without issuing Alpha GEEK.`
+      : `${result.correct} answers were scored by the server, producing ${format.format(result.reward)} Alpha GEEK in the practice ledger.`;
+    elements.resultCorrect.textContent = `${result.correct}/${result.answered || result.questionCount}`;
     elements.resultScore.textContent = format.format(result.roundScore);
     elements.resultXp.textContent = `+${format.format(result.xpEarned)}`;
     elements.resultReward.textContent = `+${format.format(result.reward)}`;
@@ -295,8 +328,13 @@
     elements.rewards.textContent = `${format.format(run.rewards)} GEEK`;
     const profit = run.rewards - run.fees;
     elements.profit.textContent = `${profit >= 0 ? '+' : ''}${format.format(profit)} GEEK`;
-    elements.runProgress.style.width = `${run.round * 10}%`;
-    if (run.round === 10) {
+    elements.runProgress.style.width = quickMode ? '100%' : `${run.round * 10}%`;
+    elements.cashoutButton.hidden = quickMode;
+    if (quickMode) {
+      elements.continueButton.disabled = false;
+      elements.continueButton.innerHTML = 'Record Verified Result <span>→</span>';
+      elements.entryWarning.textContent = 'No entry fee. No Alpha GEEK reward. The score remains server-verified.';
+    } else if (run.round === 10) {
       elements.continueButton.disabled = false;
       elements.continueButton.innerHTML = 'Seal Verified Run <span>→</span>';
       elements.entryWarning.textContent = 'All ten rounds cleared. Submit the server-verified result.';
@@ -313,6 +351,7 @@
 
   const continueRun = async () => {
     if (!run) return;
+    if (run.mode !== 'gauntlet') return finishRun(true);
     if (run.round === 10) return finishRun(true);
     elements.continueButton.disabled = true;
     try {
@@ -335,7 +374,12 @@
       if (payload.leaderboard) renderLeaderboard(payload.leaderboard.entries);
       if (apex) {
         elements.finalScore.textContent = format.format(run.totalScore);
-        elements.completeMessage.textContent = `The server verified all 100 ${CATEGORY_BANKS[run.category].shortName} answers and recorded the completed run.`;
+        const quickMode = run.mode !== 'gauntlet';
+        elements.completeKicker.textContent = quickMode ? `${GAME_MODES[run.mode].name.toUpperCase()} // COMPLETE` : 'APEX PROTOCOL // COMPLETE';
+        elements.completeTitle.innerHTML = quickMode ? 'SIGNAL<br /><span>RECORDED</span>' : 'GAUNTLET<br /><span>CONQUERED</span>';
+        elements.completeMessage.textContent = quickMode
+          ? `The server recorded this ${CATEGORY_BANKS[run.category].shortName} ${GAME_MODES[run.mode].name} score on its separate verified board.`
+          : `The server verified all 100 ${CATEGORY_BANKS[run.category].shortName} answers and recorded the completed run.`;
         showScreen('complete');
       } else {
         run = null;
@@ -356,6 +400,7 @@
   };
 
   const initialize = async () => {
+    selectMode(activeMode);
     selectCategory(activeCategory);
     try {
       const displayName = localStorage.getItem(IDENTITY_KEY) || 'Guest Geek';
@@ -377,6 +422,7 @@
   const displayTopic = (topic) => topic === 'KRC-20 & Smart Contracts' ? 'Tokens & Programmability' : topic;
 
   elements.startButton.addEventListener('click', startNewRun);
+  elements.modeButtons.forEach((button) => button.addEventListener('click', () => selectMode(button.dataset.modeKey)));
   elements.categoryButtons.forEach((button) => button.addEventListener('click', () => selectCategory(button.dataset.categoryKey)));
   $('[data-new-run]').addEventListener('click', () => {
     run = null;
