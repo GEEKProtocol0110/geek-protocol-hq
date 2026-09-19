@@ -7,6 +7,7 @@ The official Geek Protocol experience for Kaspa: a static, browser-based trivia 
 - Geek Protocol landing page
 - Ten-round playable Gauntlet
 - Eight selectable trivia categories
+- Kasware wallet connection, mainnet detection, GEEK balance display, and local signed ownership proof
 - Lobby, mint-readiness, and Kaspa information pages
 - Complete question banks, artwork, styles, and scripts
 
@@ -20,4 +21,4 @@ Vercel deploys `public` directly. No install or build command is required.
 
 ## Transparent Alpha
 
-Alpha balances, XP, lobby state, and progress are stored locally in the browser. Wallet connection, minting, and on-chain rewards are not enabled in this static release.
+Alpha balances, XP, lobby state, wallet proof state, and progress are stored locally in the browser. Kasware can connect to display the active address, network, and GEEK balance, but server authentication, minting, and on-chain rewards are not enabled in this static release.
