@@ -7,7 +7,9 @@
     <meta name="description" content="Play the Geek Gauntlet: eight selectable trivia categories, a source-reviewed Kaspa supplement, and ten escalating practice rounds." />
     <title>Geek Gauntlet — Play</title>
     <link rel="preconnect" href="https://geekprotocol.xyz" />
+    <link rel="stylesheet" href="../assets/wallet.css" />
     <link rel="stylesheet" href="./assets/game.css" />
+    <script defer src="../assets/wallet.js"></script>
     <script defer src="./assets/game.js"></script>
   </head>
   <body>
@@ -59,6 +61,21 @@
             <div><small>BEST SCORE</small><strong data-career-score>0</strong></div>
             <div><small>RUNS</small><strong data-career-runs>0</strong></div>
           </div>
+
+          <section class="wallet-panel" data-wallet-root aria-label="Kasware wallet identity">
+            <div>
+              <div class="wallet-panel__head"><i class="wallet-panel__dot"></i><span data-wallet-state>CHECKING KASWARE</span></div>
+              <div class="wallet-panel__identity"><strong data-wallet-address>Not connected</strong><span data-wallet-network>Connect to read network</span></div>
+              <div class="wallet-panel__facts"><span>HOLDING <b data-wallet-geek>—</b></span><span>REWARDS OFF</span></div>
+              <p class="wallet-panel__message" data-wallet-message aria-live="polite">Checking for the Kasware wallet.</p>
+            </div>
+            <div class="wallet-panel__actions">
+              <button type="button" data-wallet-connect>Connect Kasware</button>
+              <button type="button" data-wallet-verify hidden>Verify ownership</button>
+              <a href="https://www.kasware.xyz" target="_blank" rel="noreferrer" data-wallet-install>Get Kasware ↗</a>
+            </div>
+            <p class="wallet-panel__safety"><b>No transaction requested.</b> Wallet connection and message verification cannot move KAS or GEEK. Alpha rewards remain local to this device.</p>
+          </section>
 
           <div class="start-actions">
             <button class="primary-action" type="button" data-start disabled>Loading Question Bank</button>
