@@ -18,7 +18,7 @@
     'pop-culture': { name: 'Pop Culture', shortName: 'Pop Culture', file: 'pop-culture-questions.json', count: 1000, detail: 'music, television & culture' }
   };
   const STORAGE_KEY = 'geek-gauntlet-profile-v1';
-  const TIMER_SECONDS = 20;
+  const TIMER_SECONDS = 15;
   const TIMER_CIRCUMFERENCE = 125.66;
   const ROUND_CONFIG = [
     { round: 1, entry: 0, reward: 10, max: 100, label: 'INITIATION' },
@@ -47,10 +47,15 @@
   };
 
   const loadProfile = () => {
-    const fallback = { balance: 0, xp: 0, bestRound: 0, totalRuns: 0 };
+    const fallback = { balance: 0, xp: 0, bestRound: 0, bestScore: 0, totalRuns: 0, totalCorrect: 0 };
     try {
       const stored = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      return { ...fallback, ...(stored || {}) };
+      const merged = { ...fallback, ...(stored || {}) };
+      Object.keys(fallback).forEach((key) => {
+        const value = Number(merged[key]);
+        merged[key] = Number.isFinite(value) && value >= 0 ? Math.floor(value) : fallback[key];
+      });
+      return merged;
     } catch {
       return fallback;
     }
@@ -73,10 +78,12 @@
     round: $('[data-round]'),
     questionNumber: $('[data-question-number]'),
     correct: $('[data-correct]'),
+    streak: $('[data-streak]'),
     score: $('[data-score]'),
     timer: $('[data-timer]'),
     timerLine: $('[data-timer-line]'),
     timerWrap: $('.timer-wrap'),
+    questionProgress: $('[data-question-progress]'),
     category: $('[data-category]'),
     difficulty: $('[data-difficulty]'),
     sourceState: $('[data-source-state]'),
@@ -107,6 +114,9 @@
     selectedMode: $('[data-selected-mode]'),
     modeDetail: $('[data-mode-detail]'),
     roundReview: $('[data-round-review]'),
+    careerRound: $('[data-career-round]'),
+    careerScore: $('[data-career-score]'),
+    careerRuns: $('[data-career-runs]'),
     categoryButtons: $$('[data-category-key]')
   };
 
@@ -120,6 +130,9 @@
     elements.level.textContent = String(level);
     elements.xp.textContent = format.format(profile.xp);
     elements.balance.textContent = format.format(profile.balance);
+    elements.careerRound.textContent = pad(profile.bestRound);
+    elements.careerScore.textContent = format.format(profile.bestScore);
+    elements.careerRuns.textContent = format.format(profile.totalRuns);
     renderLadder(run?.round || Math.max(1, profile.bestRound + 1));
   };
 
@@ -144,6 +157,8 @@
       correct: 0,
       roundScore: 0,
       totalScore: 0,
+      streak: 0,
+      maxStreak: 0,
       startBalance: profile.balance,
       fees: 0,
       rewards: 0,
@@ -191,7 +206,9 @@
     elements.round.textContent = pad(run.round);
     elements.questionNumber.textContent = pad(run.questionIndex + 1);
     elements.correct.textContent = String(run.correct);
+    elements.streak.textContent = `${run.streak}×`;
     elements.score.textContent = format.format(run.totalScore + run.roundScore);
+    elements.questionProgress.style.width = `${run.questionIndex * 10}%`;
     elements.category.textContent = displayTopic(question.topic).toUpperCase();
     elements.difficulty.textContent = question.difficulty.toUpperCase();
     elements.sourceState.textContent = question.priority ? 'SOURCE-REVIEWED' : question.volatile ? 'TIME-SENSITIVE' : CATEGORY_BANKS[run.category].sourced ? 'SOURCE-LINKED' : 'DRAFT BANK';
@@ -275,20 +292,27 @@
     });
 
     if (isCorrect) {
-      const speedScore = Math.round(remaining * 25);
+      run.streak += 1;
+      run.maxStreak = Math.max(run.maxStreak, run.streak);
+      const speedScore = Math.round(remaining * 30);
+      const streakScore = Math.min(run.streak, 5) * 100;
+      const questionScore = 1000 + speedScore + streakScore;
       run.correct += 1;
-      run.roundScore += 1000 + speedScore;
-      elements.feedback.textContent = `Correct · +${format.format(1000 + speedScore)} score`;
+      run.roundScore += questionScore;
+      elements.feedback.textContent = `Correct · ${run.streak}× streak · +${format.format(questionScore)} score`;
       elements.feedback.className = 'feedback good';
       elements.ace.textContent = question.funFact || 'Verified. Clean signal added to the run.';
     } else {
+      run.streak = 0;
       elements.feedback.textContent = timedOut ? `Time expired · ${question.answer}` : `Not this time · ${question.answer}`;
       elements.feedback.className = 'feedback bad';
       elements.ace.textContent = question.funFact || (timedOut ? 'Clock hit zero. The correct answer is now revealed.' : 'Wrong signal. Lock it in, learn it, move forward.');
     }
 
     elements.correct.textContent = String(run.correct);
+    elements.streak.textContent = `${run.streak}×`;
     elements.score.textContent = format.format(run.totalScore + run.roundScore);
+    elements.questionProgress.style.width = `${(run.questionIndex + 1) * 10}%`;
     window.setTimeout(nextQuestion, 1250);
   };
 
@@ -307,12 +331,14 @@
     run.rewards += reward;
     profile.balance += reward;
     profile.xp += xpEarned;
+    profile.totalCorrect += run.correct;
     profile.bestRound = Math.max(profile.bestRound, run.round);
+    profile.bestScore = Math.max(profile.bestScore, run.totalScore);
     saveProfile();
 
     elements.resultKicker.textContent = `ROUND ${pad(run.round)} COMPLETE · ${config.label}`;
     elements.resultTitle.textContent = run.correct >= 8 ? 'ACCESS GRANTED' : run.correct >= 5 ? 'SIGNAL ACCEPTED' : 'ROUND SURVIVED';
-    elements.resultMessage.textContent = `${run.correct} verified answers produced ${format.format(reward)} Alpha GEEK in the local practice ledger.`;
+    elements.resultMessage.textContent = `${run.correct} verified answers and a ${run.maxStreak}× best streak produced ${format.format(reward)} Alpha GEEK in the local practice ledger.`;
     elements.resultCorrect.textContent = `${run.correct}/10`;
     elements.resultScore.textContent = format.format(run.roundScore);
     elements.resultXp.textContent = `+${format.format(xpEarned)}`;
@@ -361,6 +387,7 @@
   };
 
   const showStartAfterRun = (message) => {
+    profile.totalRuns += 1;
     saveProfile();
     run = null;
     elements.localNote.innerHTML = `<b>Run closed:</b> ${message} Your saved local balance is ${format.format(profile.balance)} Alpha GEEK.`;
@@ -376,9 +403,9 @@
   };
 
   const resetProgress = () => {
-    if (!window.confirm('Reset your local XP, Alpha GEEK balance, and best round?')) return;
+    if (!window.confirm('Reset your local XP, Alpha GEEK balance, career stats, and best round?')) return;
     clearTimer();
-    profile = { balance: 0, xp: 0, bestRound: 0, totalRuns: 0 };
+    profile = { balance: 0, xp: 0, bestRound: 0, bestScore: 0, totalRuns: 0, totalCorrect: 0 };
     run = null;
     localStorage.removeItem(STORAGE_KEY);
     updateProfileUI();
@@ -390,6 +417,15 @@
   $('[data-new-run]').addEventListener('click', startNewRun);
   $('[data-continue]').addEventListener('click', continueRun);
   $('[data-cashout]').addEventListener('click', cashOut);
+  $('[data-quit]').addEventListener('click', () => {
+    if (!run || !window.confirm('End this run? Your earned Alpha GEEK and XP stay saved.')) return;
+    clearTimer();
+    profile.totalRuns += 1;
+    saveProfile();
+    run = null;
+    elements.localNote.innerHTML = '<b>Run closed:</b> Your local Alpha GEEK and XP were saved on this device.';
+    showScreen('start');
+  });
   $('[data-reset]').addEventListener('click', resetProgress);
   $('[data-how]').addEventListener('click', () => elements.rules.showModal());
   $$('[data-close]').forEach((button) => button.addEventListener('click', () => elements.rules.close()));
