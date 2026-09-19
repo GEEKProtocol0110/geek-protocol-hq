@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "1.0",
+  "project": "geek-protocol-hq",
+  "auditStatus": "not-independently-audited",
+  "settlementStatus": "disabled",
+  "controls": [
+    {
+      "id": "GP-INV-001",
+      "title": "Server-authoritative scoring",
+      "status": "implemented",
+      "evidence": ["api/ranked.js", "api/leaderboard.js", "tests/api.test.js"]
+    },
+    {
+      "id": "GP-INV-002",
+      "title": "Write-once answer commitment",
+      "status": "implemented",
+      "evidence": ["api/ranked.js", "tests/api.test.js"]
+    },
+    {
+      "id": "GP-INV-003",
+      "title": "Private answer bank",
+      "status": "implemented",
+      "evidence": ["server/questions.js", "tests/api.test.js", "scripts/security-check.mjs"]
+    },
+    {
+      "id": "GP-INV-004",
+      "title": "Idempotent C.C.E. first-use credit",
+      "status": "implemented",
+      "evidence": ["server/cce.js", "tests/api.test.js"]
+    },
+    {
+      "id": "GP-INV-005",
+      "title": "Settlement fail-closed",
+      "status": "implemented",
+      "evidence": ["api/rewards.js", "tests/api.test.js", "scripts/security-check.mjs"]
+    },
+    {
+      "id": "GP-INV-006",
+      "title": "Payout-address change cooldown",
+      "status": "implemented-alpha",
+      "evidence": ["api/rewards.js", "tests/api.test.js"]
+    },
+    {
+      "id": "GP-INV-007",
+      "title": "Integrity-protected security events",
+      "status": "implemented-configuration-required",
+      "evidence": ["server/audit.js", "api/audit.js", "tests/api.test.js"]
+    },
+    {
+      "id": "GP-INV-008",
+      "title": "Pseudonymous audit records",
+      "status": "implemented",
+      "evidence": ["server/audit.js", "tests/api.test.js"]
+    },
+    {
+      "id": "GP-GATE-IDENTITY",
+      "title": "Recoverable identity and server wallet proof",
+      "status": "required-before-settlement",
+      "evidence": ["docs/AUDIT-SCOPE.md"]
+    },
+    {
+      "id": "GP-GATE-INDEPENDENT-AUDIT",
+      "title": "Independent application and settlement audits",
+      "status": "required-before-settlement",
+      "evidence": ["SECURITY.md", "docs/AUDIT-SCOPE.md"]
+    }
+  ]
+}

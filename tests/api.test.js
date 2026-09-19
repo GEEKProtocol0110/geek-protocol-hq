@@ -8,6 +8,7 @@ import rankedHandler from '../api/ranked.js';
 import contentHandler from '../api/content.js';
 import moderationHandler from '../api/moderation.js';
 import rewardsHandler from '../api/rewards.js';
+import auditHandler from '../api/audit.js';
 import { isValidKaspaMainnetAddress } from '../server/kaspa-address.js';
 import { loadQuestionBank } from '../server/questions.js';
 
@@ -15,6 +16,9 @@ process.env.UPSTASH_REDIS_REST_URL = 'https://redis.test';
 process.env.UPSTASH_REDIS_REST_TOKEN = 'test-token';
 process.env.CCE_ADMIN_TOKEN = 'test-cce-admin-token-123456789';
 process.env.CCE_REWARD_AMOUNT = '25';
+process.env.AUDIT_LOG_SECRET = 'test-audit-hmac-secret-with-at-least-32-characters';
+process.env.AUDIT_ADMIN_TOKEN = 'test-audit-admin-token-123456789';
+process.env.AUDIT_KEY_ID = 'test-key';
 
 const strings = new Map();
 const hashes = new Map();
@@ -317,6 +321,12 @@ test('a player can register any valid Kaspa mainnet payout address without expos
   assert.equal(saveRes.statusCode, 200);
   assert.equal(saveRes.body.payout.address, address);
   assert.equal(saveRes.body.payout.withdrawalsEnabled, false);
+  assert.equal(saveRes.body.payout.ownershipVerified, false);
+  assert.equal(saveRes.body.payout.settlementEligible, false);
+  assert.equal(saveRes.body.payout.version, 1);
+  assert.ok(saveRes.body.payout.changeCooldownUntil > saveRes.body.payout.configuredAt);
+  assert.match(saveRes.body.auditReceipt.eventId, /^aud_[a-f0-9]{24}$/);
+  assert.equal(saveRes.body.auditReceipt.integrity, 'hmac-sha256');
   assert.equal('privateKey' in saveRes.body, false);
   assert.equal('mnemonic' in saveRes.body, false);
 
@@ -324,6 +334,29 @@ test('a player can register any valid Kaspa mainnet payout address without expos
   await rewardsHandler(request('GET', undefined, cookie), getRes);
   assert.equal(getRes.body.payout.address, address);
   assert.equal(getRes.body.payout.network, 'kaspa-mainnet');
+});
+
+test('sensitive changes create private, pseudonymous, integrity-verified audit evidence', async () => {
+  const cookie = await startSession('Audit Geek');
+  const address = 'kaspa:qrahfynex4wsv6u283mvr77yc65ks9ze3assz3w4zegashgwupu6umagljg84';
+  const saveRes = response();
+  await rewardsHandler(request('POST', { address, acknowledged: true }, cookie), saveRes);
+  assert.equal(saveRes.statusCode, 200);
+
+  const denied = response();
+  await auditHandler(request('GET', undefined, '', {}, { 'x-audit-admin': 'wrong-token' }), denied);
+  assert.equal(denied.statusCode, 403);
+
+  const exported = response();
+  await auditHandler(request('GET', undefined, '', { limit: '100' }, { 'x-audit-admin': process.env.AUDIT_ADMIN_TOKEN }), exported);
+  assert.equal(exported.statusCode, 200);
+  assert.equal(exported.body.status.integrityMode, 'hmac-sha256');
+  assert.equal(exported.body.integrity.verified, true);
+  const event = exported.body.events.find((item) => item.eventId === saveRes.body.auditReceipt.eventId);
+  assert.equal(event.type, 'payout.destination.created');
+  assert.equal(event.actor.type, 'alpha-session');
+  assert.match(event.actor.idHash, /^[a-f0-9]{64}$/);
+  assert.equal(JSON.stringify(event).includes(address), false);
 });
 
 test('Daily and Speed modes keep answers and timing under server control', async () => {

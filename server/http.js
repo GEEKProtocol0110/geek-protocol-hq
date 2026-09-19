@@ -91,6 +91,8 @@ export const handleApiError = (res, error) => {
   if (code === 'CCE_INVALID_SUBMISSION') return sendJson(res, 400, { ok: false, error: 'Complete every field, use four unique answers, add an HTTPS source, and confirm original submission rights.' });
   if (code === 'CCE_FORBIDDEN') return sendJson(res, 403, { ok: false, error: 'Moderator access was not accepted.' });
   if (code === 'CCE_MODERATION_NOT_CONFIGURED') return sendJson(res, 503, { ok: false, code, error: 'The private moderation key has not been configured yet.' });
+  if (code === 'AUDIT_FORBIDDEN') return sendJson(res, 403, { ok: false, error: 'Audit export access was not accepted.' });
+  if (code === 'AUDIT_EXPORT_NOT_CONFIGURED') return sendJson(res, 503, { ok: false, code, error: 'The private audit export is not configured.' });
   if (code === 'INVALID_KASPA_ADDRESS') return sendJson(res, 400, { ok: false, code, error: 'Enter a valid Kaspa mainnet address beginning with kaspa:.' });
   if (code === 'PAYOUT_ACK_REQUIRED') return sendJson(res, 400, { ok: false, code, error: 'Confirm that you checked the payout address before saving it.' });
   if (code === 'DAILY_ALREADY_PLAYED') return sendJson(res, 409, { ok: false, code, error: 'Today’s verified Daily Signal has already been started. A new challenge unlocks at 00:00 UTC.' });
