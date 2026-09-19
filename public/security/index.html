@@ -28,6 +28,7 @@
         <dl class="status-board" aria-label="Security status">
           <div><dt>INDEPENDENT AUDIT</dt><dd>NOT COMPLETED</dd></div>
           <div><dt>ON-CHAIN PAYOUTS</dt><dd>DISABLED</dd></div>
+          <div><dt>WALLET IDENTITY</dt><dd>SERVER VERIFIED · ALPHA</dd></div>
           <div><dt>SECURITY EVIDENCE</dt><dd>IN REPOSITORY</dd></div>
           <div><dt>MAINNET GATES</dt><dd>12 OPEN</dd></div>
         </dl>
@@ -40,9 +41,10 @@
           <article><span>01</span><h3>Server authority</h3><p>Ranked answers stay private. The server owns clocks, one-use attempts, scoring, balances, and leaderboards.</p></article>
           <article><span>02</span><h3>Audit evidence</h3><p>Payout changes, moderation transitions, C.C.E. credits, and Alpha balance mutations create pseudonymous security events.</p></article>
           <article><span>03</span><h3>Tamper detection</h3><p>Production can HMAC-sign audit records with SHA-256. Private exports verify record integrity without exposing bearer credentials.</p></article>
-          <article><span>04</span><h3>Change protection</h3><p>Every payout-address change begins a 72-hour future-settlement cooldown. The address remains explicitly unverified in Alpha.</p></article>
+          <article><span>04</span><h3>Change protection</h3><p>Every payout-address change begins a 72-hour future-settlement cooldown. Linked players must re-sign; only the identity wallet is ownership-verified.</p></article>
           <article><span>05</span><h3>Automated evidence</h3><p>Integration tests, syntax checks, dependency review, and a machine-readable control map run for proposed releases.</p></article>
           <article><span>06</span><h3>Settlement lock</h3><p>No website path can mint, transfer, withdraw, or promise redeemability of Alpha GEEK.</p></article>
+          <article><span>07</span><h3>Recoverable identity</h3><p>Five-minute, single-use wallet challenges are verified by the server. Recovery invalidates older sessions; protected payout changes require a fresh signature.</p></article>
         </div>
       </section>
 

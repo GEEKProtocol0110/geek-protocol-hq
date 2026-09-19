@@ -1,4 +1,5 @@
 import { parseStoredJson, pipeline, redis } from './redis.js';
+import { playerIdFor } from './session.js';
 
 const validModes = new Set(['gauntlet', 'daily', 'speed']);
 const cleanMode = (mode) => validModes.has(mode) ? mode : 'gauntlet';
@@ -28,11 +29,12 @@ export const listLeaderboard = async (category, mode = 'gauntlet') => {
 export const recordVerifiedScore = async ({ session, category, score, round, mode = 'gauntlet' }) => {
   const selectedMode = cleanMode(mode);
   if (!Number.isInteger(score) || score <= 0) return { improved: false, entries: await listLeaderboard(category, selectedMode) };
-  const previous = Number(await redis('ZSCORE', boardKey(category, selectedMode), session.id) || 0);
+  const playerId = playerIdFor(session);
+  const previous = Number(await redis('ZSCORE', boardKey(category, selectedMode), playerId) || 0);
   if (score > previous) {
     await pipeline([
-      ['ZADD', boardKey(category, selectedMode), score, session.id],
-      ['HSET', metaKey(category, selectedMode), session.id, JSON.stringify({ name: session.name, round, mode: selectedMode, updatedAt: Date.now(), verified: true })]
+      ['ZADD', boardKey(category, selectedMode), score, playerId],
+      ['HSET', metaKey(category, selectedMode), playerId, JSON.stringify({ name: session.name, round, mode: selectedMode, updatedAt: Date.now(), verified: true })]
     ], true);
   }
   return { improved: score > previous, entries: await listLeaderboard(category, selectedMode) };

@@ -95,6 +95,16 @@ export const handleApiError = (res, error) => {
   if (code === 'AUDIT_EXPORT_NOT_CONFIGURED') return sendJson(res, 503, { ok: false, code, error: 'The private audit export is not configured.' });
   if (code === 'INVALID_KASPA_ADDRESS') return sendJson(res, 400, { ok: false, code, error: 'Enter a valid Kaspa mainnet address beginning with kaspa:.' });
   if (code === 'PAYOUT_ACK_REQUIRED') return sendJson(res, 400, { ok: false, code, error: 'Confirm that you checked the payout address before saving it.' });
+  if (code === 'PAYOUT_REAUTH_REQUIRED') return sendJson(res, 401, { ok: false, code, error: 'Sign a fresh wallet challenge before changing this protected payout setting.' });
+  if (code === 'IDENTITY_PUBLIC_KEY_INVALID' || code === 'IDENTITY_KEY_MISMATCH') return sendJson(res, 400, { ok: false, code, error: 'The public key does not match that Kaspa mainnet address.' });
+  if (code === 'IDENTITY_SIGNATURE_INVALID') return sendJson(res, 401, { ok: false, code, error: 'The wallet signature was not valid for this one-time challenge.' });
+  if (code === 'IDENTITY_CHALLENGE_INVALID') return sendJson(res, 409, { ok: false, code, error: 'That wallet challenge expired or was already used. Request a new one.' });
+  if (code === 'IDENTITY_WALLET_BOUND') return sendJson(res, 409, { ok: false, code, error: 'That wallet is already bound to another player identity.' });
+  if (code === 'IDENTITY_REAUTH_REQUIRED') return sendJson(res, 401, { ok: false, code, error: 'Reconnect the verified identity wallet and sign a fresh challenge.' });
+  if (code === 'IDENTITY_ROTATION_UNAVAILABLE') return sendJson(res, 409, { ok: false, code, error: 'This player is already protected by another wallet. Reconnect the linked identity wallet; wallet rotation is not enabled in Alpha.' });
+  if (code === 'IDENTITY_CHALLENGE_FAILED') return sendJson(res, 503, { ok: false, code, error: 'A one-time wallet challenge could not be created.' });
+  if (code === 'IDENTITY_AUTHORIZATION_FAILED') return sendJson(res, 503, { ok: false, code, error: 'A protected wallet authorization could not be created.' });
+  if (code === 'IDENTITY_STATE_CONFLICT') return sendJson(res, 409, { ok: false, code, error: 'The player identity changed during verification. Request a new wallet challenge.' });
   if (code === 'DAILY_ALREADY_PLAYED') return sendJson(res, 409, { ok: false, code, error: 'Today’s verified Daily Signal has already been started. A new challenge unlocks at 00:00 UTC.' });
   if (code === 'INVALID_BODY' || code === 'INVALID_REQUEST') return sendJson(res, 400, { ok: false, error: 'The request was not valid.' });
   console.error('Geek API error', error);

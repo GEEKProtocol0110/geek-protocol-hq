@@ -1,11 +1,11 @@
 # Geek Protocol HQ Threat Model
 
-Version: 1.0  
+Version: 1.1
 Scope baseline: the Git commit supplied to an independent reviewer
 
 ## System purpose and value boundary
 
-HQ hosts a server-ranked knowledge game, the Community Content Engine (C.C.E.), Alpha reward accounting, lobbies, leaderboards, and an unverified future payout-address preference. The live system does not mint, transfer, withdraw, custody, or promise redeemability of GEEK.
+HQ hosts a server-ranked knowledge game, the Community Content Engine (C.C.E.), Alpha reward accounting, lobbies, leaderboards, recoverable wallet-protected player identities, and a future payout-address preference. The live system does not mint, transfer, withdraw, custody, or promise redeemability of GEEK.
 
 The future value-moving boundary is intentionally absent. Adding a treasury key, KRC-20 transfer mechanism, withdrawal worker, or contract changes the threat model and requires a new audit scope.
 
@@ -15,7 +15,8 @@ The future value-moving boundary is intentionally absent. Adding a treasury key,
 |---|---|
 | Ranked answers and scoring rules | Confidential until commitment; server-authoritative |
 | Alpha balances and C.C.E. credits | Integrity, idempotency, traceability |
-| Payout-address preferences | Integrity, privacy, change traceability; never treated as proof of ownership |
+| Player identity wallet | Server-verified ownership, recovery, replay resistance, session invalidation |
+| Payout-address preferences | Integrity, privacy, change traceability; ownership true only when it equals the verified identity wallet |
 | Moderator authority | Strong authentication, least privilege, complete action trail |
 | Session identifiers and service secrets | Confidentiality; never written to audit records |
 | Question submissions and sources | Integrity, attribution, review-state correctness |
@@ -26,7 +27,7 @@ The future value-moving boundary is intentionally absent. Adding a treasury key,
 1. **Untrusted browser:** all names, answers, addresses, timing claims, wallet events, and request bodies are attacker-controlled.
 2. **Vercel API functions:** enforce state transitions, validation, deadlines, permissions, and rate limits.
 3. **Redis:** stores live state and private audit events. Administrative access is a high-impact trust role.
-4. **Wallet provider:** may expose a public address or sign a message. A client-only signature check is not a server identity control.
+4. **Wallet provider:** exposes a public address/key and asks the user to sign exact text. The server independently verifies the one-time challenge, signature, public-key/address relationship, scope, and expiry.
 5. **Moderator:** currently authenticates with a dedicated secret; this is an Alpha control, not the final privileged-access design.
 6. **Future treasury/settlement:** not deployed and must be isolated from the web application when introduced.
 
@@ -34,7 +35,7 @@ The future value-moving boundary is intentionally absent. Adding a treasury key,
 
 - Players replay or race answers, forge scores, manipulate clocks, scrape answers, or farm Alpha rewards.
 - Contributors submit duplicate, malicious, copyrighted, false, or manipulated questions and sources.
-- Attackers steal an anonymous session and change its payout preference.
+- Attackers steal a browser session, race a wallet-binding request, replay an old proof, substitute a payout address, or attempt recovery with an unrelated key.
 - Attackers brute-force moderator or audit credentials, exploit business-state transitions, or exfiltrate logs.
 - Operators or database administrators modify reward or audit data.
 - A compromised dependency, deployment token, CI workflow, or hosting account changes production code.
@@ -52,11 +53,18 @@ The future value-moving boundary is intentionally absent. Adding a treasury key,
 | GP-INV-006 | A payout change has a review window | Every new or changed address starts a 72-hour future-settlement cooldown |
 | GP-INV-007 | Sensitive state transitions leave evidence | HMAC-SHA-256 audit events when `AUDIT_LOG_SECRET` is configured |
 | GP-INV-008 | Audit records do not contain bearer secrets | Pseudonymous actor/object hashes and detail allowlisting |
+| GP-INV-009 | A wallet proof is server-issued, short-lived, and usable once | Random 256-bit nonce, exact origin/action text, five-minute TTL, atomic `GETDEL` consumption |
+| GP-INV-010 | A signature cannot bind an unrelated address | Server Schnorr verification plus public-key-to-Kaspa-mainnet-address derivation |
+| GP-INV-011 | Recovery cannot leave older authenticated sessions active | Monotonic identity session version checked on every authenticated request |
+| GP-INV-012 | A linked identity protects payout-setting changes | Fresh scoped wallet signature and one-time five-minute authorization before set/remove |
+| GP-INV-013 | Wallet and player identity binding cannot partially commit | Redis compare-and-set script atomically writes the wallet mapping, player record, replacement session, and successful audit event |
 
 ## Residual Alpha risks
 
-- Sessions are anonymous bearer cookies with no recovery or MFA.
-- A payout address is checksum-valid but ownership is not server-verified.
+- Unlinked players still use anonymous bearer sessions and cannot recover them.
+- Wallet proof currently supports Kaspa Schnorr personal-message signatures. Other wallet signature schemes require separately reviewed adapters before they can protect an identity.
+- One recovery wallet protects one player identity in this Alpha. Dual-wallet rotation, social recovery, and user notifications are not implemented.
+- A payout destination different from the verified identity wallet remains ownership-unverified, even though a fresh identity-wallet signature authorizes the preference change.
 - The moderator credential is a shared secret rather than an individual hardware-backed identity.
 - Redis administrators remain inside the operational trust boundary. HMAC evidence detects record edits when the key is protected, but production should also stream logs to separately administered, append-only storage.
 - Unproctored trivia cannot prevent all outside assistance.

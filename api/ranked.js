@@ -5,7 +5,7 @@ import { recordVerifiedScore } from '../server/leaderboard.js';
 import { loadProfile, saveProfile, saveProfileWithAudit } from '../server/profile.js';
 import { questionById, selectRoundQuestionIds, shuffleOptions } from '../server/questions.js';
 import { rateLimit, redis } from '../server/redis.js';
-import { requireSession } from '../server/session.js';
+import { playerIdFor, requireSession } from '../server/session.js';
 
 const RUN_TTL = 60 * 60 * 2;
 const QUESTION_MS = 15_000;
@@ -112,7 +112,7 @@ const startRound = async (run, profile) => {
 const finishRun = async (run, session, profile) => {
   if (run.status === 'finished') return { leaderboard: await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode }) };
   profile.totalRuns += 1;
-  await saveProfile(session.id, profile);
+  await saveProfile(playerIdFor(session), profile);
   const leaderboard = await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode });
   run.status = 'finished';
   run.current = null;
@@ -198,7 +198,7 @@ const answerQuestion = async (run, session, profile, body) => {
       nextMax: run.mode !== 'gauntlet' || run.round === 10 ? 0 : ROUND_CONFIG[run.round].max
     };
     if (reward > 0) {
-      await saveProfileWithAudit(session.id, profile, {
+      await saveProfileWithAudit(playerIdFor(session), profile, {
         type: 'alpha.balance.reward-credited',
         severity: 'info',
         objectType: 'ranked-run',
@@ -218,7 +218,7 @@ const answerQuestion = async (run, session, profile, body) => {
         }
       });
     } else {
-      await saveProfile(session.id, profile);
+      await saveProfile(playerIdFor(session), profile);
     }
   } else {
     run.status = 'awaiting-next';
@@ -240,17 +240,18 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   try {
     const session = await requireSession(req);
-    if (req.method === 'GET') return sendJson(res, 200, { ok: true, profile: await loadProfile(session.id), verified: true });
+    const playerId = playerIdFor(session);
+    if (req.method === 'GET') return sendJson(res, 200, { ok: true, profile: await loadProfile(playerId), verified: true });
     if (req.method !== 'POST') return methodNotAllowed(res);
     const body = parseBody(req);
     const action = String(body.action || '');
-    await rateLimit('ranked', session.id, 240, 60 * 5);
+    await rateLimit('ranked', playerId, 240, 60 * 5);
     if (action === 'start') {
       await rateLimit('ranked-start-ip', clientFingerprint(req), 20, 60 * 60);
       const category = categories.has(body.category) ? body.category : 'kaspa';
       const mode = Object.hasOwn(MODE_CONFIG, body.mode) ? body.mode : 'gauntlet';
       const focus = ['ghostdag', 'builders'].includes(body.focus) ? body.focus : '';
-      const profile = await loadProfile(session.id);
+      const profile = await loadProfile(playerId);
       const run = {
         id: randomBytes(20).toString('hex'), sessionId: session.id, category, focus, mode, round: 1,
         questionIndex: 0, correct: 0, roundScore: 0, totalScore: 0, streak: 0, maxStreak: 0,
@@ -259,15 +260,15 @@ export default async function handler(req, res) {
       };
       if (mode === 'daily') {
         const day = new Date().toISOString().slice(0, 10);
-        const claimed = await redis('SET', `geek:daily:${session.id}:${day}`, run.id, 'EX', 60 * 60 * 48, 'NX');
+        const claimed = await redis('SET', `geek:daily:${playerId}:${day}`, run.id, 'EX', 60 * 60 * 48, 'NX');
         if (claimed !== 'OK') throw new Error('DAILY_ALREADY_PLAYED');
       }
       const question = await startRound(run, profile);
-      await Promise.all([saveRun(run), saveProfile(session.id, profile)]);
+      await Promise.all([saveRun(run), saveProfile(playerId, profile)]);
       return sendJson(res, 201, { ok: true, verified: true, run: safeRun(run), profile, question });
     }
     const run = await loadRun(body.runId, session);
-    const profile = await loadProfile(session.id);
+    const profile = await loadProfile(playerId);
     if (action === 'answer') {
       const answer = await answerQuestion(run, session, profile, body);
       return sendJson(res, 200, { ok: true, verified: true, ...answer });
@@ -288,7 +289,7 @@ export default async function handler(req, res) {
       await Promise.all([
         saveRun(run),
         entry > 0
-          ? saveProfileWithAudit(session.id, profile, {
+          ? saveProfileWithAudit(playerId, profile, {
             type: 'alpha.balance.entry-debited',
             severity: 'info',
             objectType: 'ranked-run',
@@ -307,7 +308,7 @@ export default async function handler(req, res) {
               settlement: 'disabled'
             }
           })
-          : saveProfile(session.id, profile)
+          : saveProfile(playerId, profile)
       ]);
       return sendJson(res, 200, { ok: true, verified: true, run: safeRun(run), profile, question });
     }

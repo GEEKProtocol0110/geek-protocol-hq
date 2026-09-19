@@ -1,5 +1,6 @@
 {
   "name": "geek-protocol-hq",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,5 +10,8 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "dependencies": {
+    "@dfns/kaspa-wasm": "0.14.1"
   }
 }

@@ -55,8 +55,38 @@
     {
       "id": "GP-GATE-IDENTITY",
       "title": "Recoverable identity and server wallet proof",
-      "status": "required-before-settlement",
-      "evidence": ["docs/AUDIT-SCOPE.md"]
+      "status": "implemented-alpha-independent-review-required",
+      "evidence": ["server/identity.js", "api/identity.js", "public/assets/wallet.js", "tests/api.test.js", "docs/AUDIT-SCOPE.md"]
+    },
+    {
+      "id": "GP-INV-009",
+      "title": "Single-use server wallet challenges",
+      "status": "implemented",
+      "evidence": ["server/identity.js", "api/identity.js", "tests/api.test.js"]
+    },
+    {
+      "id": "GP-INV-010",
+      "title": "Cryptographic public-key and Kaspa-address binding",
+      "status": "implemented-schnorr",
+      "evidence": ["server/identity.js", "package-lock.json", "tests/api.test.js"]
+    },
+    {
+      "id": "GP-INV-011",
+      "title": "Recovery invalidates older authenticated sessions",
+      "status": "implemented",
+      "evidence": ["server/session.js", "server/identity.js", "tests/api.test.js"]
+    },
+    {
+      "id": "GP-INV-012",
+      "title": "Wallet reauthentication for protected payout changes",
+      "status": "implemented-alpha",
+      "evidence": ["server/identity.js", "api/rewards.js", "public/rewards/assets/rewards.js", "tests/api.test.js"]
+    },
+    {
+      "id": "GP-INV-013",
+      "title": "Atomic wallet and player identity binding",
+      "status": "implemented",
+      "evidence": ["server/identity.js", "tests/api.test.js", "docs/IDENTITY-PROTOCOL.md"]
     },
     {
       "id": "GP-GATE-INDEPENDENT-AUDIT",

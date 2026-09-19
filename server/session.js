@@ -1,5 +1,6 @@
 import { cleanName, createSessionId, readSessionId, sessionTtl, setSessionCookie } from './http.js';
-import { redis } from './redis.js';
+import { identityPlayerKey } from './identity-keys.js';
+import { parseStoredJson, redis } from './redis.js';
 
 const keyFor = (id) => `geek:session:${id}`;
 
@@ -10,11 +11,18 @@ export const readSession = async (req) => {
   if (!stored) return null;
   try {
     const session = JSON.parse(stored);
-    return session?.id === id ? session : null;
+    if (session?.id !== id) return null;
+    if (session.identityVersion) {
+      const identity = parseStoredJson(await redis('GET', identityPlayerKey(session.playerId)));
+      if (!identity || Number(identity.sessionVersion) !== Number(session.identityVersion)) return null;
+    }
+    return session;
   } catch {
     return null;
   }
 };
+
+export const playerIdFor = (session) => String(session?.playerId || session?.id || '');
 
 export const requireSession = async (req) => {
   const session = await readSession(req);
@@ -27,10 +35,13 @@ export const upsertSession = async (req, res, requestedName) => {
   const now = Date.now();
   const session = {
     id: existing?.id || createSessionId(),
+    playerId: existing?.playerId || existing?.id || '',
+    identityVersion: Number(existing?.identityVersion || 0),
     name: cleanName(requestedName, existing?.name || 'Guest Geek'),
     createdAt: existing?.createdAt || now,
     lastSeen: now
   };
+  if (!session.playerId) session.playerId = session.id;
   await redis('SET', keyFor(session.id), JSON.stringify(session), 'EX', sessionTtl);
   setSessionCookie(res, session.id);
   return session;

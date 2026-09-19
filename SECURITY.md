@@ -28,8 +28,11 @@ Do not access another person's data, degrade the service, submit malware, attemp
 - The application never requests or stores seed phrases or private keys.
 - Browsers never receive ranked answer keys before an answer is committed.
 - Clients cannot write scores, reward balances, moderation results, or payout eligibility.
-- A stored Kaspa address is an unverified Alpha preference until server-verified ownership and account recovery exist.
+- Identity binding and recovery use five-minute, single-use server challenges, Kaspa Schnorr verification, and public-key/address matching; no signature is stored.
+- The wallet binding, player record, replacement session, and successful audit event commit atomically; stale or raced identity state fails closed.
+- Recovering with the linked identity wallet increments a server-side session version and invalidates older authenticated sessions.
+- Once an identity wallet is linked, payout-setting changes require a fresh scoped wallet signature. A different payout destination remains ownership-unverified.
 - Every sensitive payout-address change and moderation transition creates private, pseudonymous audit evidence.
 - Real settlement stays disabled until the launch gates in `docs/AUDIT-SCOPE.md` are independently verified.
 
-See `docs/THREAT-MODEL.md`, `docs/AUDIT-SCOPE.md`, and `security/controls.json` for the reviewable security baseline.
+See `docs/THREAT-MODEL.md`, `docs/IDENTITY-PROTOCOL.md`, `docs/DEPENDENCY-PROVENANCE.md`, `docs/AUDIT-SCOPE.md`, and `security/controls.json` for the reviewable security baseline.

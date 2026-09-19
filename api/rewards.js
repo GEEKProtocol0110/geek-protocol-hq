@@ -1,25 +1,29 @@
 import { handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
 import { hashAuditIdentifier, recordAuditEvent } from '../server/audit.js';
+import { identityView, loadIdentity, requirePayoutAuthorization } from '../server/identity.js';
 import { isValidKaspaMainnetAddress, maskKaspaAddress, normalizeKaspaAddress } from '../server/kaspa-address.js';
 import { loadProfile, saveProfileWithAudit } from '../server/profile.js';
 import { rateLimit } from '../server/redis.js';
-import { requireSession } from '../server/session.js';
+import { playerIdFor, requireSession } from '../server/session.js';
 
 const PAYOUT_CHANGE_COOLDOWN_MS = 72 * 60 * 60 * 1000;
 
-const payoutView = (profile) => ({
-  address: profile.payoutAddress || '',
-  maskedAddress: maskKaspaAddress(profile.payoutAddress),
-  configuredAt: Number(profile.payoutAddressSetAt || 0),
-  version: Number(profile.payoutAddressVersion || 0),
-  changeCooldownUntil: Number(profile.payoutAddressEligibleAt || 0),
-  network: 'kaspa-mainnet',
-  status: profile.payoutAddress ? 'registered-alpha-unverified' : 'not-configured',
-  ownershipVerified: false,
-  settlementEligible: false,
-  withdrawalsEnabled: false,
-  protection: '72-hour-change-cooldown-before-future-settlement'
-});
+const payoutView = (profile, identity) => {
+  const ownershipVerified = Boolean(identity?.address && identity.address === profile.payoutAddress);
+  return ({
+    address: profile.payoutAddress || '',
+    maskedAddress: maskKaspaAddress(profile.payoutAddress),
+    configuredAt: Number(profile.payoutAddressSetAt || 0),
+    version: Number(profile.payoutAddressVersion || 0),
+    changeCooldownUntil: Number(profile.payoutAddressEligibleAt || 0),
+    network: 'kaspa-mainnet',
+    status: profile.payoutAddress ? (ownershipVerified ? 'registered-alpha-wallet-verified' : 'registered-alpha-unverified') : 'not-configured',
+    ownershipVerified,
+    settlementEligible: false,
+    withdrawalsEnabled: false,
+    protection: identity ? 'wallet-signature-and-72-hour-change-cooldown' : '72-hour-change-cooldown-before-future-settlement'
+  });
+};
 
 const auditReceipt = (record) => ({
   eventId: record.eventId,
@@ -51,11 +55,12 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   try {
     const session = await requireSession(req);
-    await rateLimit('rewards', session.id, 30, 60 * 10);
-    const profile = await loadProfile(session.id);
+    const playerId = playerIdFor(session);
+    await rateLimit('rewards', playerId, 30, 60 * 10);
+    const [profile, identity] = await Promise.all([loadProfile(playerId), loadIdentity(playerId)]);
 
     if (req.method === 'GET') {
-      return sendJson(res, 200, { ok: true, balance: profile.balance, payout: payoutView(profile) });
+      return sendJson(res, 200, { ok: true, balance: profile.balance, payout: payoutView(profile, identity), identity: identityView(identity) });
     }
 
     if (req.method === 'POST') {
@@ -69,17 +74,19 @@ export default async function handler(req, res) {
         throw new Error('INVALID_KASPA_ADDRESS');
       }
       const address = normalizeKaspaAddress(body.address);
+      if (identity) await requirePayoutAuthorization({ session, token: body.authorizationToken, operation: 'set', payoutAddress: address });
       const previousAddress = profile.payoutAddress || '';
       const now = Date.now();
       profile.payoutAddress = address;
       profile.payoutAddressSetAt = now;
       profile.payoutAddressVersion = Number(profile.payoutAddressVersion || 0) + (previousAddress === address ? 0 : 1);
       profile.payoutAddressEligibleAt = now + PAYOUT_CHANGE_COOLDOWN_MS;
-      const { audit } = await saveProfileWithAudit(session.id, profile, {
+      const ownershipVerified = Boolean(identity?.address && identity.address === address);
+      const { audit } = await saveProfileWithAudit(playerId, profile, {
         type: previousAddress ? (previousAddress === address ? 'payout.destination.reaffirmed' : 'payout.destination.changed') : 'payout.destination.created',
         severity: 'warning',
         objectType: 'payout-profile',
-        objectId: session.id,
+        objectId: playerId,
         outcome: 'success',
         reason: previousAddress === address ? 'address-reconfirmed' : 'user-requested-change',
         details: {
@@ -87,33 +94,36 @@ export default async function handler(req, res) {
           previousAddressHash: previousAddress ? hashAuditIdentifier(previousAddress) : '',
           version: profile.payoutAddressVersion,
           cooldownHours: 72,
-          ownershipVerified: false,
+          ownershipVerified,
+          walletReauthenticated: Boolean(identity),
           settlementEnabled: false
         }
       });
-      return sendJson(res, 200, { ok: true, balance: profile.balance, payout: payoutView(profile), auditReceipt: auditReceipt(audit) });
+      return sendJson(res, 200, { ok: true, balance: profile.balance, payout: payoutView(profile, identity), identity: identityView(identity), auditReceipt: auditReceipt(audit) });
     }
 
     if (req.method === 'DELETE') {
+      if (identity) await requirePayoutAuthorization({ session, token: parseBody(req).authorizationToken, operation: 'remove' });
       const previousAddress = profile.payoutAddress || '';
       delete profile.payoutAddress;
       delete profile.payoutAddressSetAt;
       delete profile.payoutAddressEligibleAt;
       profile.payoutAddressVersion = Number(profile.payoutAddressVersion || 0) + (previousAddress ? 1 : 0);
-      const { audit } = await saveProfileWithAudit(session.id, profile, {
+      const { audit } = await saveProfileWithAudit(playerId, profile, {
         type: 'payout.destination.removed',
         severity: 'warning',
         objectType: 'payout-profile',
-        objectId: session.id,
+        objectId: playerId,
         outcome: 'success',
         reason: previousAddress ? 'user-requested-removal' : 'already-empty',
         details: {
           previousAddressHash: previousAddress ? hashAuditIdentifier(previousAddress) : '',
           version: profile.payoutAddressVersion,
+          walletReauthenticated: Boolean(identity),
           settlementEnabled: false
         }
       });
-      return sendJson(res, 200, { ok: true, balance: profile.balance, payout: payoutView(profile), auditReceipt: auditReceipt(audit) });
+      return sendJson(res, 200, { ok: true, balance: profile.balance, payout: payoutView(profile, identity), identity: identityView(identity), auditReceipt: auditReceipt(audit) });
     }
 
     return methodNotAllowed(res, 'GET, POST, DELETE, OPTIONS');

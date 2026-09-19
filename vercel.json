@@ -1,12 +1,15 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "installCommand": "",
+  "installCommand": "npm ci --ignore-scripts",
   "buildCommand": null,
   "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": true,
   "functions": {
+    "api/identity.js": {
+      "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
+    },
     "api/ranked.js": {
       "includeFiles": "server/questions/**"
     }
