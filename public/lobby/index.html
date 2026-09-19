@@ -7,7 +7,9 @@
     <meta name="description" content="Geek Protocol lobbies: create a shareable Kaspa learning room, choose a category, and launch the Gauntlet together." />
     <title>Community Lobbies — Geek Protocol</title>
     <link rel="preconnect" href="https://geekprotocol.xyz" />
+    <link rel="stylesheet" href="../assets/wallet.css" />
     <link rel="stylesheet" href="./assets/lobby.css" />
+    <script defer src="../assets/wallet.js"></script>
     <script defer src="./assets/lobby.js"></script>
   </head>
   <body>
@@ -37,7 +39,7 @@
         </nav>
         <div class="identity-card">
           <span class="identity-avatar" data-avatar>G</span>
-          <div><b data-identity-name>Guest Geek</b><small>LOCAL IDENTITY</small></div>
+          <div><b data-identity-name>Guest Geek</b><small data-identity-state>LOCAL IDENTITY</small></div>
           <button type="button" data-edit-name aria-label="Edit display name">✎</button>
         </div>
       </aside>
@@ -51,6 +53,21 @@
             <h1>FIND YOUR<br /><span>SQUAD.</span></h1>
             <p data-channel-copy>Choose a room template or configure your own. Every invite opens the same room setup, but live presence, chat, and synchronized rounds require the next multiplayer backend phase.</p>
           </div>
+
+          <section class="wallet-panel" data-wallet-root aria-label="Kasware wallet identity">
+            <div>
+              <div class="wallet-panel__head"><i class="wallet-panel__dot"></i><span data-wallet-state>CHECKING KASWARE</span></div>
+              <div class="wallet-panel__identity"><strong data-wallet-address>Not connected</strong><span data-wallet-network>Connect to read network</span></div>
+              <div class="wallet-panel__facts"><span>HOLDING <b data-wallet-geek>—</b></span><span>PLAYER IDENTITY ALPHA</span></div>
+              <p class="wallet-panel__message" data-wallet-message aria-live="polite">Checking for the Kasware wallet.</p>
+            </div>
+            <div class="wallet-panel__actions">
+              <button type="button" data-wallet-connect>Connect Kasware</button>
+              <button type="button" data-wallet-verify hidden>Verify ownership</button>
+              <a href="https://www.kasware.xyz" target="_blank" rel="noreferrer" data-wallet-install>Get Kasware ↗</a>
+            </div>
+            <p class="wallet-panel__safety"><b>Identity only.</b> A signed message proves wallet control on this device. It does not join a live server, approve a transaction, or enable payouts.</p>
+          </section>
 
           <section class="room-builder" aria-labelledby="builder-title">
             <div class="panel-heading"><div><small>CREATE A ROOM</small><h2 id="builder-title">Lobby configuration</h2></div><span class="status-pill">LOCAL</span></div>
