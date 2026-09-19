@@ -1,0 +1,82 @@
+/* C.C.E. is a working surface: keep its task visible and its controls comfortably readable. */
+.cce-hero {
+  min-height: 360px;
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.2rem, 5vw, 5rem);
+}
+
+.cce-hero h1 {
+  margin: .75rem 0;
+  font-size: clamp(3.6rem, 7vw, 6.8rem);
+  line-height: .84;
+}
+
+.pipeline {
+  margin-top: 1.25rem;
+  color: #89958f;
+  font-size: .75rem;
+}
+
+.reward-card {
+  padding: 1.25rem;
+  box-shadow: 12px 12px 0 rgba(246, 198, 67, .08);
+}
+
+.reward-card__tag,
+.reward-card > div,
+.reward-card > small {
+  font-size: .75rem;
+}
+
+.reward-card > strong {
+  margin: .45rem 0 .2rem;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+}
+
+.reward-card > p { font-size: .9rem; }
+.reward-card > div { margin: .7rem 0; padding: .65rem 0; }
+.cce-workspace { padding: clamp(2rem, 4vw, 4rem) clamp(1.2rem, 5vw, 5rem); }
+
+.form-heading span,
+.question-form label,
+.answer-set legend,
+.service-state,
+.question-form label b,
+.submit-question,
+.cancel-revision,
+.form-heading button,
+.form-message,
+.contributor-stats dt,
+.settlement-note b,
+.settlement-note span,
+.empty-state b,
+.empty-state span,
+.submission-card small,
+.submission-card p,
+.submission-card__meta,
+.submission-card button,
+.quality-rules > div > span {
+  font-size: .75rem;
+}
+
+.question-form input:not([type="radio"]):not([type="checkbox"]),
+.question-form select,
+.question-form textarea {
+  font-size: 1rem;
+}
+
+.answer-set label > span { font-size: .875rem; }
+.rights-check { font-size: .875rem !important; }
+.submission-card h3 { font-size: .9rem; }
+
+@media (max-width: 940px) {
+  .cce-hero { padding-block: 2.5rem; }
+  .reward-card { max-width: none; }
+  .cce-workspace { padding-top: 1.25rem; }
+}
+
+@media (max-width: 620px) {
+  .cce-hero h1 { font-size: clamp(3.4rem, 16vw, 5.2rem); }
+  .cce-hero-copy > p { font-size: 1rem; }
+  .pipeline { font-size: .7rem; }
+  .reward-card { display: none; }
+}

@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { randomInt } from 'node:crypto';
 import { join } from 'node:path';
+import { publishedCommunityQuestionById, publishedCommunityQuestions } from './cce.js';
 
 const categoryFiles = {
   kaspa: ['kaspa-questions.json', 'kaspa-current-questions.json'],
@@ -51,16 +52,25 @@ export const loadQuestionBank = (category) => {
   return bank;
 };
 
-export const questionById = (category, id) => {
+export const questionById = async (category, id) => {
+  if (String(id || '').startsWith('cce_')) {
+    const question = await publishedCommunityQuestionById(id);
+    if (question.category !== category) throw new Error('QUESTION_NOT_FOUND');
+    return question;
+  }
   const question = loadQuestionBank(category).byId.get(id);
   if (!question) throw new Error('QUESTION_NOT_FOUND');
   return question;
 };
 
-export const selectRoundQuestionIds = (category, round, excludedIds = [], focus = '') => {
+export const selectRoundQuestionIds = async (category, round, excludedIds = [], focus = '') => {
   const tier = round <= 3 ? 'easy' : round <= 7 ? 'medium' : 'hard';
   const excluded = new Set(excludedIds);
-  const pool = secureShuffle(loadQuestionBank(category).questions.filter((question) => question.difficulty === tier && !excluded.has(question.id)));
+  const communityPool = secureShuffle((await publishedCommunityQuestions(category, tier)).filter((question) => !excluded.has(question.id)));
+  const pool = secureShuffle([
+    ...communityPool,
+    ...loadQuestionBank(category).questions.filter((question) => question.difficulty === tier && !excluded.has(question.id))
+  ]);
   const focusTerms = focus === 'ghostdag'
     ? ['ghostdag', 'consensus', 'blockdag']
     : focus === 'builders'
@@ -70,6 +80,7 @@ export const selectRoundQuestionIds = (category, round, excludedIds = [], focus 
   const addUnique = (question) => {
     if (question && !selected.some((item) => item.id === question.id)) selected.push(question);
   };
+  if (communityPool.length) addUnique(communityPool[0]);
   if (focusTerms.length) {
     secureShuffle(pool.filter((question) => focusTerms.some((term) => `${question.topic} ${question.tags.join(' ')}`.toLowerCase().includes(term)))).slice(0, 4).forEach(addUnique);
   }

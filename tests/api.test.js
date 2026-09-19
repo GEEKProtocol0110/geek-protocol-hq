@@ -5,10 +5,14 @@ import sessionHandler from '../api/session.js';
 import lobbiesHandler from '../api/lobbies.js';
 import leaderboardHandler from '../api/leaderboard.js';
 import rankedHandler from '../api/ranked.js';
+import contentHandler from '../api/content.js';
+import moderationHandler from '../api/moderation.js';
 import { loadQuestionBank } from '../server/questions.js';
 
 process.env.UPSTASH_REDIS_REST_URL = 'https://redis.test';
 process.env.UPSTASH_REDIS_REST_TOKEN = 'test-token';
+process.env.CCE_ADMIN_TOKEN = 'test-cce-admin-token-123456789';
+process.env.CCE_REWARD_AMOUNT = '25';
 
 const strings = new Map();
 const hashes = new Map();
@@ -38,6 +42,20 @@ const execute = (command) => {
     hashes.set(args[0], map);
     return 1;
   }
+  if (name === 'HSETNX') {
+    const map = hashes.get(args[0]) || new Map();
+    if (map.has(String(args[1]))) return 0;
+    map.set(String(args[1]), String(args[2]));
+    hashes.set(args[0], map);
+    return 1;
+  }
+  if (name === 'HINCRBY') {
+    const map = hashes.get(args[0]) || new Map();
+    const value = Number(map.get(String(args[1])) || 0) + Number(args[2]);
+    map.set(String(args[1]), String(value));
+    hashes.set(args[0], map);
+    return value;
+  }
   if (name === 'HGET') return hashes.get(args[0])?.get(String(args[1])) ?? null;
   if (name === 'HDEL') return hashes.get(args[0])?.delete(String(args[1])) ? 1 : 0;
   if (name === 'ZADD') {
@@ -66,6 +84,25 @@ const execute = (command) => {
     const entries = [...(sorted.get(args[0])?.entries() || [])].sort((a, b) => b[1] - a[1]).slice(Number(args[1]), Number(args[2]) + 1);
     return withScores ? entries.flatMap(([member, score]) => [member, String(score)]) : entries.map(([member]) => member);
   }
+  if (name === 'EVAL') {
+    const keyCount = Number(args[1]);
+    const keys = args.slice(2, 2 + keyCount);
+    const values = args.slice(2 + keyCount);
+    const added = execute(['HSETNX', keys[0], values[0], values[1]]);
+    if (added === 1) {
+      execute(['HINCRBY', keys[1], 'earned', values[2]]);
+      execute(['HINCRBY', keys[1], 'used', 1]);
+      const stored = strings.get(keys[2]);
+      if (stored) {
+        const submission = JSON.parse(stored);
+        submission.firstUsedAt = Number(values[3]);
+        submission.updatedAt = Number(values[3]);
+        submission.reward.status = 'earned';
+        strings.set(keys[2], JSON.stringify(submission));
+      }
+    }
+    return added;
+  }
   throw new Error(`Unsupported Redis command: ${name}`);
 };
 
@@ -76,11 +113,11 @@ global.fetch = async (url, options) => {
   return new Response(JSON.stringify(payload), { status: 200, headers: { 'Content-Type': 'application/json' } });
 };
 
-const request = (method, body = undefined, cookie = '', query = {}) => ({
+const request = (method, body = undefined, cookie = '', query = {}, headers = {}) => ({
   method,
   body,
   query,
-  headers: { cookie }
+  headers: { cookie, ...headers }
 });
 
 const response = () => ({
@@ -176,4 +213,88 @@ test('sessions, live rooms, and server-authoritative leaderboard work together',
   const forgedScoreRes = response();
   await leaderboardHandler(request('POST', { category: 'kaspa', score: 250000, round: 10 }, hostCookie), forgedScoreRes);
   assert.equal(forgedScoreRes.statusCode, 405);
+});
+
+test('community questions move through review, enter ranked play, and earn once on first use', async () => {
+  const contributorCookie = await startSession('Question Smith');
+  const playerCookie = await startSession('CCE Tester');
+  const question = {
+    action: 'submit',
+    displayName: 'Question Smith',
+    category: 'kaspa',
+    difficulty: 'easy',
+    topic: 'Consensus',
+    prompt: 'What does GHOSTDAG preserve when Kaspa receives parallel blocks?',
+    options: ['Useful proof-of-work', 'Only the oldest block', 'Private account balances', 'A validator committee'],
+    correctIndex: 0,
+    explanation: 'GHOSTDAG orders parallel blocks so useful proof-of-work can remain in the blockDAG.',
+    source: 'https://docs.kaspa.org/',
+    original: true
+  };
+
+  const submitRes = response();
+  await contentHandler(request('POST', question, contributorCookie), submitRes);
+  assert.equal(submitRes.statusCode, 201);
+  assert.equal(submitRes.body.submission.status, 'submitted');
+  assert.equal(submitRes.body.stats.submitted, 1);
+  assert.equal(submitRes.body.stats.earned, 0);
+  const submissionId = submitRes.body.submission.id;
+
+  const deniedRes = response();
+  await moderationHandler(request('GET', undefined, '', {}, { 'x-cce-admin': 'wrong-token' }), deniedRes);
+  assert.equal(deniedRes.statusCode, 403);
+
+  const moderatorHeaders = { 'x-cce-admin': process.env.CCE_ADMIN_TOKEN };
+  const approveRes = response();
+  await moderationHandler(request('POST', { action: 'approve', id: submissionId, note: 'Source and wording checked.' }, '', {}, moderatorHeaders), approveRes);
+  assert.equal(approveRes.body.submission.status, 'approved');
+
+  const publishRes = response();
+  await moderationHandler(request('POST', { action: 'publish', id: submissionId }, '', {}, moderatorHeaders), publishRes);
+  assert.equal(publishRes.body.submission.status, 'published');
+
+  const startRes = response();
+  await rankedHandler(request('POST', { action: 'start', category: 'kaspa' }, playerCookie), startRes);
+  assert.equal(startRes.statusCode, 201);
+  let rankedPayload = startRes.body;
+  let communityWasUsed = false;
+  for (let questionNumber = 1; questionNumber <= 10; questionNumber += 1) {
+    const isCommunityQuestion = rankedPayload.question.prompt === question.prompt;
+    const privateQuestion = isCommunityQuestion
+      ? question
+      : loadQuestionBank('kaspa').questions.find((item) => item.prompt === rankedPayload.question.prompt);
+    const correctAnswer = privateQuestion.options[privateQuestion.correctIndex];
+    const selectedIndex = rankedPayload.question.options.indexOf(correctAnswer);
+    const answerRes = response();
+    await rankedHandler(request('POST', {
+      action: 'answer', runId: rankedPayload.run.id, questionToken: rankedPayload.question.token, selectedIndex
+    }, playerCookie), answerRes);
+    assert.equal(answerRes.statusCode, 200);
+    if (isCommunityQuestion) {
+      communityWasUsed = true;
+      assert.equal(answerRes.body.result.contributorCredit, true);
+      assert.equal(answerRes.body.result.sourceState, 'Community-reviewed contribution');
+      const retryRes = response();
+      await rankedHandler(request('POST', {
+        action: 'answer', runId: rankedPayload.run.id, questionToken: rankedPayload.question.token, selectedIndex
+      }, playerCookie), retryRes);
+      assert.equal(retryRes.body.result.contributorCredit, true);
+    }
+    rankedPayload = answerRes.body;
+    if (questionNumber < 10) {
+      const nextRes = response();
+      await rankedHandler(request('POST', { action: 'next', runId: rankedPayload.run.id }, playerCookie), nextRes);
+      rankedPayload = nextRes.body;
+    }
+  }
+  assert.equal(communityWasUsed, true);
+
+  const dashboardRes = response();
+  await contentHandler(request('GET', undefined, contributorCookie), dashboardRes);
+  assert.equal(dashboardRes.body.stats.accepted, 1);
+  assert.equal(dashboardRes.body.stats.used, 1);
+  assert.equal(dashboardRes.body.stats.earned, 25);
+  assert.equal(dashboardRes.body.stats.paid, 0);
+  assert.equal(dashboardRes.body.stats.settlement, 'launch-gated');
+  assert.equal(dashboardRes.body.submissions[0].reward.status, 'earned');
 });
