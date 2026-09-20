@@ -25,7 +25,7 @@ const walk = async (directory) => {
   return files;
 };
 
-for (const path of ['SECURITY.md', 'docs/THREAT-MODEL.md', 'docs/IDENTITY-PROTOCOL.md', 'docs/PAYOUT-RISK-CONTROLS.md', 'docs/DEPENDENCY-PROVENANCE.md', 'docs/AUDIT-SCOPE.md', 'security/controls.json', 'package-lock.json']) {
+for (const path of ['SECURITY.md', 'docs/THREAT-MODEL.md', 'docs/MINT-PROTOCOL.md', 'docs/IDENTITY-PROTOCOL.md', 'docs/PAYOUT-RISK-CONTROLS.md', 'docs/DEPENDENCY-PROVENANCE.md', 'docs/AUDIT-SCOPE.md', 'security/controls.json', 'package-lock.json']) {
   check(await exists(path), `required evidence exists: ${path}`);
 }
 
@@ -59,6 +59,25 @@ const wallet = await text('public/assets/wallet.js');
 check(wallet.includes("signMessage(challenge.message, { type: 'schnorr' })"), 'wallet requests explicit Schnorr signatures');
 check(!wallet.includes('verifyMessage('), 'the browser is not trusted to verify wallet proofs');
 
+const mintServer = await text('server/mint.js');
+check(mintServer.includes("ticker: 'GEEK'"), 'mint verifier pins the GEEK ticker');
+check(mintServer.includes("maxRaw: '14400000000000000000'"), 'mint verifier pins maximum supply');
+check(mintServer.includes("limitRaw: '10000000000000'"), 'mint verifier pins per-mint limit');
+check(mintServer.includes("deploymentHash: 'c3cea245b394374b6d80d9fa82269967b56bd5d128a4db3152087a05e014d0b1'"), 'mint verifier pins the canonical reveal hash');
+check(mintServer.includes('MINT_DEPLOYMENT_MISMATCH'), 'mint verifier fails closed on deployment mismatch');
+
+const mintApi = await text('api/mint.js');
+check(mintApi.includes('userApprovalRequired: true'), 'mint API declares wallet approval mandatory');
+check(mintApi.includes('custodial: false'), 'mint API declares the non-custodial boundary');
+check(mintApi.includes("fresh ? 'no-store, max-age=0'"), 'pre-mint status checks bypass shared caches');
+
+const mintClient = await text('public/mint/assets/mint.js');
+check(mintClient.includes('window.kasware.signKRC20Transaction('), 'minting is handed to Kasware');
+check(mintClient.includes("network !== MAINNET"), 'mint client enforces Kaspa Mainnet');
+check(/status\.transaction\.inscription,\s*3,\s*undefined,\s*0/.test(mintClient), 'mint request fixes type, destination behavior, and added priority fee');
+check(!mintClient.includes('localStorage'), 'mint result is not persisted in local storage');
+check(!mintClient.includes('rawtx'), 'raw mint transactions are not handled by the page');
+
 const audit = await text('server/audit.js');
 check(audit.includes("createHmac('sha256'"), 'audit records support HMAC-SHA-256');
 check(audit.includes('hashAuditIdentifier'), 'audit actors and objects are pseudonymized');
@@ -80,7 +99,7 @@ check(packageLock.packages?.['node_modules/@dfns/kaspa-wasm']?.integrity === 'sh
 const controls = JSON.parse(await text('security/controls.json'));
 check(controls.auditStatus === 'not-independently-audited', 'public audit status is honest');
 check(controls.settlementStatus === 'disabled', 'control map keeps settlement disabled');
-check(Array.isArray(controls.controls) && controls.controls.length >= 17, 'control map contains reviewable evidence');
+check(Array.isArray(controls.controls) && controls.controls.length >= 18, 'control map contains reviewable evidence');
 for (const control of controls.controls || []) {
   check(/^GP-[A-Z0-9-]+$/.test(control.id), `control has stable identifier: ${control.id || 'missing'}`);
   for (const evidence of control.evidence || []) check(await exists(evidence), `control evidence exists: ${control.id} -> ${evidence}`);

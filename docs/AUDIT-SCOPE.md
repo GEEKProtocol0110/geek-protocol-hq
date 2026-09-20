@@ -2,11 +2,11 @@
 
 ## Required engagements
 
-Geek Protocol should commission both of the following before enabling value transfer:
+Geek Protocol should commission both of the following. The current user-signed fair-mint interface must be included in the application engagement; treasury-controlled value transfer remains gated until both applicable reviews are complete:
 
 ### 1. Web3 application penetration test
 
-Scope the production domain, Vercel functions, Redis authorization and data flows, session management, one-time wallet challenges, Schnorr verification, identity recovery and session invalidation, payout reauthentication, ranked-game business logic, C.C.E., moderation, audit export, wallet integration, CI/CD, cloud configuration, secret management, and any future settlement API.
+Scope the production domain, Vercel functions, live mint-status verifier, pinned deployment constants, type-3 KRC-20 inscription, Kasware transaction flow, supply-exhaustion behavior, Redis authorization and data flows, session management, one-time wallet challenges, Schnorr verification, identity recovery and session invalidation, payout reauthentication, ranked-game business logic, C.C.E., moderation, audit export, wallet integration, CI/CD, cloud configuration, secret management, and any future settlement API.
 
 The engagement should include authenticated and unauthenticated testing, business-logic abuse, race conditions, replay, authorization, rate-limit bypass, API fuzzing, cloud misconfiguration, dependency and supply-chain review, and remediation retesting.
 
@@ -28,6 +28,7 @@ The auditor must receive:
 - privileged-role and key-management procedures;
 - audit-event schema and a sample integrity-verified export;
 - the identity protocol specification, payout-risk controls, wallet-signature test vectors, dependency provenance, nonce/origin/replay/race tests, and identity-recovery/session-invalidation evidence;
+- the mint protocol specification, canonical GEEK deployment evidence, live-indexer fixtures, wallet request test cases, CSP review, and exhausted-supply/mismatch/failure cases;
 - incident response, backup, recovery, and log-retention procedures;
 - proposed treasury policy, payout caps, eligibility rules, and legal terms; and
 - all known risks, prior findings, accepted exceptions, and remediation evidence.

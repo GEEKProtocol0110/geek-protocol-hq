@@ -15,7 +15,7 @@
     <header class="site-header scrolled" data-header>
       <a class="brand" href="../" aria-label="Geek Protocol home"><img src="../assets/geek-protocol-logo.png" alt="" width="48" height="48" /><span>GEEK<span class="brand-mark">//</span>SECURITY</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
-      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="../play/">Play</a><a href="../rewards/">Rewards</a><a href="../litepaper/">Litepaper</a><a href="../mint/">Mint status</a><a class="nav-cta" href="https://github.com/GEEKProtocol0110/geek-protocol-hq/security">Repository security <span aria-hidden="true">↗</span></a></nav>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="../play/">Play</a><a href="../rewards/">Rewards</a><a href="../litepaper/">Litepaper</a><a href="../mint/">Mint GEEK</a><a class="nav-cta" href="https://github.com/GEEKProtocol0110/geek-protocol-hq/security">Repository security <span aria-hidden="true">↗</span></a></nav>
     </header>
 
     <main id="main" class="security-main">
@@ -43,7 +43,7 @@
           <article><span>03</span><h3>Tamper detection</h3><p>Production can HMAC-sign audit records with SHA-256. Private exports verify record integrity without exposing bearer credentials.</p></article>
           <article><span>04</span><h3>Change protection</h3><p>Every payout-address change begins a 72-hour future-settlement cooldown. Linked players must re-sign; only the identity wallet is ownership-verified.</p></article>
           <article><span>05</span><h3>Automated evidence</h3><p>Integration tests, syntax checks, dependency review, and a machine-readable control map run for proposed releases.</p></article>
-          <article><span>06</span><h3>Settlement lock</h3><p>No website path can mint, transfer, withdraw, or promise redeemability of Alpha GEEK.</p></article>
+          <article><span>06</span><h3>Non-custodial mint boundary</h3><p>The public mint page can request one user-approved Kasware mint. It cannot sign for users or activate Alpha reward transfers, withdrawals, or redeemability.</p></article>
           <article><span>07</span><h3>Recoverable identity</h3><p>Five-minute, single-use wallet challenges are verified by the server. Recovery invalidates older sessions; protected payout changes require a fresh signature.</p></article>
           <article><span>08</span><h3>Exact-origin proof</h3><p>Wallet challenges sign the requesting HTTPS origin, and verification rejects a challenge replayed through the other production hostname.</p></article>
           <article><span>09</span><h3>Payout risk review</h3><p>Changed, unverified, recently recovered, or repeatedly changed destinations create a persistent player notice and enter a private review queue.</p></article>

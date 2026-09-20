@@ -2,11 +2,11 @@
 
 ## Current status
 
-Geek Protocol HQ is a public Alpha. It has **not** completed an independent security audit, and no on-chain GEEK withdrawals are enabled. Alpha GEEK is an internal test ledger with no promised monetary value.
+Geek Protocol HQ is a public Alpha. It has **not** completed an independent security audit. The `/mint/` page can request one user-approved Kasware mint against the existing GEEK KRC-20 deployment; the site does not hold keys or sign that transaction. No on-chain GEEK reward withdrawals, treasury payouts, or redemptions are enabled. Alpha GEEK is a separate internal test ledger with no promised monetary value.
 
 The repository is being prepared for two distinct independent assessments:
 
-1. a Web3 application penetration test covering the browser, APIs, business logic, Redis data layer, deployment, wallet integration, and administrative surfaces; and
+1. a Web3 application penetration test covering the browser, mint interface, APIs, business logic, Redis data layer, deployment, wallet integration, and administrative surfaces; and
 2. a separate line-by-line audit of any future KRC-20 settlement, treasury, or smart-contract code before that code can move value.
 
 An audit report applies only to the exact commit, configuration, contracts, and deployment scope named in that report. It is not a permanent guarantee.
@@ -26,6 +26,9 @@ Do not access another person's data, degrade the service, submit malware, attemp
 ## Security invariants
 
 - The application never requests or stores seed phrases or private keys.
+- Every mint request is user-initiated, restricted to Kaspa Mainnet, pinned to the exact GEEK deployment and inscription, and approved or rejected inside Kasware.
+- A fresh server-side indexer check runs before each mint request. An unavailable indexer, exhausted supply, or deployment mismatch blocks the request.
+- The mint path is non-custodial and does not activate Alpha reward settlement, treasury transfers, or withdrawals.
 - Browsers never receive ranked answer keys before an answer is committed.
 - Clients cannot write scores, reward balances, moderation results, or payout eligibility.
 - Identity binding and recovery use five-minute, single-use server challenges, Kaspa Schnorr verification, and public-key/address matching; no signature is stored.
@@ -38,4 +41,4 @@ Do not access another person's data, degrade the service, submit malware, attemp
 - Every sensitive payout-address change and moderation transition creates private, pseudonymous audit evidence.
 - Real settlement stays disabled until the launch gates in `docs/AUDIT-SCOPE.md` are independently verified.
 
-See `docs/THREAT-MODEL.md`, `docs/IDENTITY-PROTOCOL.md`, `docs/PAYOUT-RISK-CONTROLS.md`, `docs/DEPENDENCY-PROVENANCE.md`, `docs/AUDIT-SCOPE.md`, and `security/controls.json` for the reviewable security baseline.
+See `docs/THREAT-MODEL.md`, `docs/MINT-PROTOCOL.md`, `docs/IDENTITY-PROTOCOL.md`, `docs/PAYOUT-RISK-CONTROLS.md`, `docs/DEPENDENCY-PROVENANCE.md`, `docs/AUDIT-SCOPE.md`, and `security/controls.json` for the reviewable security baseline.

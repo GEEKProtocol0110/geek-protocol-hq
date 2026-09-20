@@ -101,6 +101,12 @@
       "evidence": ["api/rewards.js", "server/payout-review.js", "api/payout-review.js", "tests/api.test.js", "docs/PAYOUT-RISK-CONTROLS.md"]
     },
     {
+      "id": "GP-INV-016",
+      "title": "Pinned non-custodial GEEK mint request",
+      "status": "implemented-unaudited-noncustodial",
+      "evidence": ["server/mint.js", "api/mint.js", "public/mint/index.html", "public/mint/assets/mint.js", "tests/mint.test.js", "docs/MINT-PROTOCOL.md"]
+    },
+    {
       "id": "GP-GATE-INDEPENDENT-AUDIT",
       "title": "Independent application and settlement audits",
       "status": "required-before-settlement",
