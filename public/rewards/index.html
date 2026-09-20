@@ -32,6 +32,7 @@
           <div><dt>ALPHA GEEK</dt><dd data-alpha-balance>0</dd></div>
           <div><dt>PLAYER IDENTITY</dt><dd data-identity-state>SESSION ONLY</dd></div>
           <div><dt>PAYOUT WALLET</dt><dd data-payout-state>NOT SET</dd></div>
+          <div><dt>RISK REVIEW</dt><dd data-review-state>NOT REQUIRED</dd></div>
           <div><dt>ON-CHAIN STATUS</dt><dd>LOCKED</dd></div>
         </dl>
       </section>
@@ -49,6 +50,7 @@
           <label class="confirm-row"><input name="acknowledged" type="checkbox" required /><span>I checked the address and understand on-chain withdrawals are not enabled yet.</span></label>
           <div class="form-actions"><button class="save-address" type="submit">Save payout wallet <span>→</span></button><button class="remove-address" type="button" data-remove hidden>Remove</button></div>
           <p class="form-message" data-form-message role="status" aria-live="polite">Every change starts a 72-hour future-settlement cooldown. Once an identity wallet is linked, changing or removing this setting also requires a fresh one-time wallet signature.</p>
+          <section class="payout-alert" data-payout-alert aria-live="polite" hidden><b data-payout-alert-title>SECURITY NOTICE</b><span data-payout-alert-copy></span><small data-payout-alert-reference></small></section>
         </form>
 
         <aside class="payout-policy" aria-labelledby="policy-title">
@@ -58,6 +60,8 @@
             <li><b>Wallet-neutral</b><span>The identity wallet protects the account; the payout destination may still be any valid Kaspa mainnet address.</span></li>
             <li><b>No custody</b><span>Geek Protocol will never request or store your seed phrase or private key.</span></li>
             <li><b>Recoverable</b><span>A fresh proof from the linked identity wallet can restore the same Alpha profile and invalidate its older signed-in sessions.</span></li>
+            <li><b>Change notice</b><span>Every saved or removed destination creates a persistent in-product security notice and pseudonymous audit receipt.</span></li>
+            <li><b>Risk review</b><span>Unverified, changed, recently recovered, or repeatedly changed destinations enter a private review queue. Review never enables settlement.</span></li>
             <li><b>Review first</b><span>Real transfers remain disabled until token identity, treasury rules, settlement code, limits, and an external security review are complete.</span></li>
           </ol>
         </aside>

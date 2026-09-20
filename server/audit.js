@@ -142,6 +142,7 @@ export const auditStatus = () => ({
   integrityMode: auditIntegrityMode(),
   keyedIntegrityConfigured: auditIntegrityMode() === 'hmac-sha256',
   exportConfigured: String(process.env.AUDIT_ADMIN_TOKEN || '').length >= 24,
+  payoutReviewConfigured: String(process.env.PAYOUT_REVIEW_ADMIN_TOKEN || '').length >= 24,
   settlementEnabled: false,
   independentAudit: 'not-completed'
 });

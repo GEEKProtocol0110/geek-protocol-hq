@@ -89,6 +89,18 @@
       "evidence": ["server/identity.js", "tests/api.test.js", "docs/IDENTITY-PROTOCOL.md"]
     },
     {
+      "id": "GP-INV-014",
+      "title": "Exact-origin wallet proof binding",
+      "status": "implemented",
+      "evidence": ["server/identity.js", "api/identity.js", "tests/api.test.js", "docs/IDENTITY-PROTOCOL.md"]
+    },
+    {
+      "id": "GP-INV-015",
+      "title": "Payout change notices and high-risk review",
+      "status": "implemented-alpha-configuration-required",
+      "evidence": ["api/rewards.js", "server/payout-review.js", "api/payout-review.js", "tests/api.test.js", "docs/PAYOUT-RISK-CONTROLS.md"]
+    },
+    {
       "id": "GP-GATE-INDEPENDENT-AUDIT",
       "title": "Independent application and settlement audits",
       "status": "required-before-settlement",

@@ -1,6 +1,6 @@
 # Geek Protocol HQ Threat Model
 
-Version: 1.1
+Version: 1.2
 Scope baseline: the Git commit supplied to an independent reviewer
 
 ## System purpose and value boundary
@@ -16,8 +16,8 @@ The future value-moving boundary is intentionally absent. Adding a treasury key,
 | Ranked answers and scoring rules | Confidential until commitment; server-authoritative |
 | Alpha balances and C.C.E. credits | Integrity, idempotency, traceability |
 | Player identity wallet | Server-verified ownership, recovery, replay resistance, session invalidation |
-| Payout-address preferences | Integrity, privacy, change traceability; ownership true only when it equals the verified identity wallet |
-| Moderator authority | Strong authentication, least privilege, complete action trail |
+| Payout-address preferences and reviews | Integrity, privacy, change traceability; ownership true only when it equals the verified identity wallet |
+| Moderator and payout-review authority | Strong authentication, separation of roles, least privilege, complete action trail |
 | Session identifiers and service secrets | Confidentiality; never written to audit records |
 | Question submissions and sources | Integrity, attribution, review-state correctness |
 | Audit evidence | Integrity, restricted access, exportability, retention |
@@ -28,14 +28,14 @@ The future value-moving boundary is intentionally absent. Adding a treasury key,
 2. **Vercel API functions:** enforce state transitions, validation, deadlines, permissions, and rate limits.
 3. **Redis:** stores live state and private audit events. Administrative access is a high-impact trust role.
 4. **Wallet provider:** exposes a public address/key and asks the user to sign exact text. The server independently verifies the one-time challenge, signature, public-key/address relationship, scope, and expiry.
-5. **Moderator:** currently authenticates with a dedicated secret; this is an Alpha control, not the final privileged-access design.
+5. **Privileged reviewers:** C.C.E. moderation, audit export, and payout review use separate credentials. These are Alpha controls, not the final individual hardware-backed access design.
 6. **Future treasury/settlement:** not deployed and must be isolated from the web application when introduced.
 
 ## Primary attackers and abuse cases
 
 - Players replay or race answers, forge scores, manipulate clocks, scrape answers, or farm Alpha rewards.
 - Contributors submit duplicate, malicious, copyrighted, false, or manipulated questions and sources.
-- Attackers steal a browser session, race a wallet-binding request, replay an old proof, substitute a payout address, or attempt recovery with an unrelated key.
+- Attackers steal a browser session, race a wallet-binding request, replay an old proof through another hostname, substitute a payout address, or attempt recovery with an unrelated key.
 - Attackers brute-force moderator or audit credentials, exploit business-state transitions, or exfiltrate logs.
 - Operators or database administrators modify reward or audit data.
 - A compromised dependency, deployment token, CI workflow, or hosting account changes production code.
@@ -58,14 +58,16 @@ The future value-moving boundary is intentionally absent. Adding a treasury key,
 | GP-INV-011 | Recovery cannot leave older authenticated sessions active | Monotonic identity session version checked on every authenticated request |
 | GP-INV-012 | A linked identity protects payout-setting changes | Fresh scoped wallet signature and one-time five-minute authorization before set/remove |
 | GP-INV-013 | Wallet and player identity binding cannot partially commit | Redis compare-and-set script atomically writes the wallet mapping, player record, replacement session, and successful audit event |
+| GP-INV-014 | A wallet challenge cannot move between allowed hostnames | Exact requesting HTTPS origin is signed and rechecked during verification |
+| GP-INV-015 | Higher-risk payout changes cannot silently bypass review | Persistent player notice, deterministic risk triggers, private review queue, stale-decision check, and settlement-disabled decision output |
 
 ## Residual Alpha risks
 
 - Unlinked players still use anonymous bearer sessions and cannot recover them.
 - Wallet proof currently supports Kaspa Schnorr personal-message signatures. Other wallet signature schemes require separately reviewed adapters before they can protect an identity.
-- One recovery wallet protects one player identity in this Alpha. Dual-wallet rotation, social recovery, and user notifications are not implemented.
+- One recovery wallet protects one player identity in this Alpha. Dual-wallet rotation, social recovery, and out-of-band email, SMS, push, or wallet notifications are not implemented.
 - A payout destination different from the verified identity wallet remains ownership-unverified, even though a fresh identity-wallet signature authorizes the preference change.
-- The moderator credential is a shared secret rather than an individual hardware-backed identity.
+- Privileged Alpha credentials are shared secrets rather than individual hardware-backed identities. Production reviewer configuration and access logging remain launch gates.
 - Redis administrators remain inside the operational trust boundary. HMAC evidence detects record edits when the key is protected, but production should also stream logs to separately administered, append-only storage.
 - Unproctored trivia cannot prevent all outside assistance.
 - Audit logging for the Alpha C.C.E. credit is best-effort after the atomic first-use credit; settlement must use an atomic outbox or equivalent transaction boundary.

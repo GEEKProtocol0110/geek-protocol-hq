@@ -15,7 +15,12 @@ export const defaultProfile = () => ({
   payoutAddress: '',
   payoutAddressSetAt: 0,
   payoutAddressVersion: 0,
-  payoutAddressEligibleAt: 0
+  payoutAddressEligibleAt: 0,
+  payoutMutationHistory: [],
+  payoutReviewId: '',
+  payoutReviewStatus: 'not-required',
+  payoutRiskReasons: [],
+  payoutNotice: null
 });
 
 export const loadProfile = async (sessionId) => {
@@ -33,7 +38,7 @@ export const saveProfile = async (sessionId, profile) => {
   return profile;
 };
 
-export const saveProfileWithAudit = async (sessionId, profile, auditInput) => {
+export const saveProfileWithAudit = async (sessionId, profile, auditInput, extraCommands = []) => {
   const record = await createAuditRecord({
     actorType: 'alpha-session',
     actorId: sessionId,
@@ -42,6 +47,7 @@ export const saveProfileWithAudit = async (sessionId, profile, auditInput) => {
   });
   await pipeline([
     ['SET', keyFor(sessionId), JSON.stringify(profile)],
+    ...extraCommands,
     ...auditWriteCommands(record)
   ], true);
   return { profile, audit: record };

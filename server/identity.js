@@ -83,13 +83,22 @@ const validateWalletProofInputs = (addressValue, publicKeyValue) => {
   return { address, publicKey };
 };
 
+const configuredOrigins = () => new Set([
+  'https://www.geekprotocol.xyz',
+  'https://geekprotocol.xyz',
+  ...String(process.env.IDENTITY_ALLOWED_ORIGINS || '').split(','),
+  String(process.env.IDENTITY_ORIGIN || '')
+].map((value) => value.trim().replace(/\/$/, '')).filter(Boolean));
+
 const canonicalOrigin = (req) => {
-  const configured = String(process.env.IDENTITY_ORIGIN || '').trim().replace(/\/$/, '');
-  if (configured) return configured;
   const host = String(req?.headers?.['x-forwarded-host'] || req?.headers?.host || '').split(',')[0].trim().toLowerCase();
-  if (host === 'geekprotocol.xyz' || host === 'www.geekprotocol.xyz') return 'https://geekprotocol.xyz';
-  if (/^[a-z0-9-]+\.vercel\.app$/.test(host)) return `https://${host}`;
-  return 'https://geekprotocol.xyz';
+  const forwardedProtocol = String(req?.headers?.['x-forwarded-proto'] || 'https').split(',')[0].trim().toLowerCase();
+  if (forwardedProtocol !== 'https' || !/^[a-z0-9.-]+$/.test(host)) throw new Error('IDENTITY_ORIGIN_INVALID');
+  const origin = `https://${host}`;
+  if (!configuredOrigins().has(origin) && !/^[a-z0-9-]+\.vercel\.app$/.test(host)) throw new Error('IDENTITY_ORIGIN_INVALID');
+  const suppliedOrigin = String(req?.headers?.origin || '').trim().replace(/\/$/, '');
+  if (suppliedOrigin && suppliedOrigin !== origin) throw new Error('IDENTITY_ORIGIN_MISMATCH');
+  return origin;
 };
 
 const challengeMessage = ({ origin, intent, address, payoutAddress, nonce, issuedAt, expiresAt }) => {
@@ -286,8 +295,12 @@ const createPayoutAuthorization = async (session, challenge) => {
   };
 };
 
-export const verifyIdentityChallenge = async ({ session, challengeId, signature }) => {
+export const verifyIdentityChallenge = async ({ req, session, challengeId, signature }) => {
   const challenge = await consumeChallenge(session, challengeId);
+  if (challenge.origin !== canonicalOrigin(req)) {
+    await recordRejectedProof(session, 'origin-mismatch', challenge);
+    throw new Error('IDENTITY_ORIGIN_MISMATCH');
+  }
   if (!verifySignature({ message: challenge.message, signature, publicKey: challenge.publicKey })) {
     await recordRejectedProof(session, 'signature-invalid', challenge);
     throw new Error('IDENTITY_SIGNATURE_INVALID');

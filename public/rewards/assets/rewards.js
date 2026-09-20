@@ -8,6 +8,7 @@
   const serviceState = $('[data-service-state]');
   const useConnected = $('[data-use-connected]');
   const removeButton = $('[data-remove]');
+  const payoutAlert = $('[data-payout-alert]');
   let connectedAddress = '';
   let identity = null;
 
@@ -29,6 +30,16 @@
     identity = payload.identity || identity;
     $('[data-payout-state]').textContent = payout.maskedAddress || 'NOT SET';
     $('[data-identity-state]').textContent = identity?.linked ? 'WALLET VERIFIED' : 'SESSION ONLY';
+    const review = payout.review || {};
+    $('[data-review-state]').textContent = review.required ? 'REVIEW REQUIRED' : review.status === 'approved' ? 'REVIEWED' : 'NOT REQUIRED';
+    const notice = payout.notification || null;
+    payoutAlert.hidden = !notice;
+    if (notice) {
+      payoutAlert.classList.toggle('warning', Boolean(notice.reviewRequired));
+      $('[data-payout-alert-title]').textContent = notice.reviewRequired ? 'SECURITY NOTICE · REVIEW REQUIRED' : 'SECURITY NOTICE';
+      $('[data-payout-alert-copy]').textContent = notice.message || 'Your payout setting changed.';
+      $('[data-payout-alert-reference]').textContent = review.reference ? `Private review reference: ${review.reference}` : `Payout version ${notice.payoutVersion || 0}`;
+    }
     addressInput.value = payout.address || '';
     removeButton.hidden = !payout.address;
     serviceState.textContent = 'SERVER READY';
@@ -64,7 +75,8 @@
       form.elements.acknowledged.checked = false;
       const receipt = payload.auditReceipt?.eventId ? ` Audit receipt: ${payload.auditReceipt.eventId}.` : '';
       const proof = payload.payout?.ownershipVerified ? ' Wallet ownership is server-verified.' : ' This destination remains unverified.';
-      setMessage(`Payout wallet saved.${proof} The 72-hour change cooldown restarted; withdrawals remain locked.${receipt}`, 'success');
+      const review = payload.payout?.review?.required ? ' Private risk review is required before any future settlement.' : '';
+      setMessage(`Payout wallet saved.${proof}${review} The 72-hour change cooldown restarted; withdrawals remain locked.${receipt}`, 'success');
     } catch (error) {
       setMessage(error.message, 'error');
     } finally {

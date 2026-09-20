@@ -11,7 +11,9 @@ The official Geek Protocol experience for Kaspa: a server-ranked trivia game and
 - Kasware connection, mainnet detection, GEEK balance display, and server-verified Kaspa Schnorr ownership proof
 - Wallet-recoverable player identities with older-session invalidation
 - Fresh, single-use wallet authorization for protected payout-setting changes
+- Exact-origin enforcement when wallet challenges are issued and verified
 - Wallet-neutral payout destination registration for any valid Kaspa mainnet address
+- Persistent payout-change notices and a private high-risk review queue
 - Anonymous server sessions with secure, HTTP-only cookies
 - Persistent lobby records, active-seat presence, and shareable live room codes
 - Category- and mode-specific verified global leaderboards
@@ -52,9 +54,14 @@ Audit evidence supports:
 - `AUDIT_KEY_ID`: non-secret identifier for the current audit-integrity key
 - `AUDIT_ADMIN_TOKEN`: private random token of at least 24 characters for `/api/audit` exports
 
+Private payout-risk decisions require a separate role secret:
+
+- `PAYOUT_REVIEW_ADMIN_TOKEN`: a private random token of at least 24 characters for `/api/payout-review`
+
 Wallet identity also supports:
 
-- `IDENTITY_ORIGIN`: the canonical production origin included in signed challenges (recommended: `https://geekprotocol.xyz`)
+- `IDENTITY_ALLOWED_ORIGINS`: optional comma-separated HTTPS origins beyond the two production hostnames and Vercel preview hostnames
+- `IDENTITY_ORIGIN`: legacy single-origin allowlist entry retained for deployment compatibility
 - `IDENTITY_ENV`: an optional non-Vercel environment namespace; Vercel automatically separates production and preview identity keys
 
 If `AUDIT_LOG_SECRET` is absent, Alpha events use visibly labeled unkeyed SHA-256 integrity. That mode is not sufficient for mainnet settlement. Real settlement must fail closed until keyed integrity, separately administered append-only replication, monitoring, and retention are configured.
@@ -76,6 +83,7 @@ The private review desk lives at `/moderate/`. The key is sent only in the `X-CC
 ## Identity and recovery
 
 - `/api/identity` issues a random, five-minute server challenge bound to the exact origin, action, identity wallet, and requested payout destination when applicable.
+- The exact requesting HTTPS origin is embedded in the signed text and rechecked when the proof is submitted; a challenge cannot move between the apex and `www` hosts.
 - Kasware signs human-readable text with explicit Schnorr mode. The browser never sends a seed phrase or private key.
 - The server verifies the signature and derives the Kaspa mainnet address from the supplied public key before creating any binding.
 - Challenge records and payout authorizations are atomically consumed once. Replays fail closed.
@@ -83,6 +91,14 @@ The private review desk lives at `/moderate/`. The key is sent only in the `X-CC
 - A linked wallet can recover the same persistent profile in a new browser. Recovery increments an identity session version, invalidating older authenticated sessions.
 - Identity keys are environment-scoped so preview bindings cannot overwrite production bindings.
 - The pinned `@dfns/kaspa-wasm` package supplies the Node-compatible Kaspa personal-message verifier. Its exact version and integrity digest are locked for independent dependency review.
+
+## Payout change protection
+
+- Every destination create, change, reaffirmation, or removal stores a persistent in-product security notice with masked addresses only.
+- Unlinked identities, ownership-unverified destinations, destination changes, recent identity recovery, and repeated recent mutations create a private review record.
+- Review records expose no player ID or raw address through the reviewer API. Reviewer decisions create pseudonymous, integrity-protected audit evidence.
+- `PAYOUT_REVIEW_ADMIN_TOKEN` is separate from moderation and audit-export credentials. A review decision never enables withdrawals or makes a payout settlement-eligible.
+- The precise policy and residual limitations are documented in `docs/PAYOUT-RISK-CONTROLS.md`.
 
 ## Transparent Alpha
 
@@ -92,6 +108,6 @@ C.C.E. rewards are internal, claim-gated Alpha ledger credits. They are created 
 
 ## Audit readiness
 
-The project has not completed an independent audit. `SECURITY.md`, `docs/THREAT-MODEL.md`, `docs/IDENTITY-PROTOCOL.md`, `docs/DEPENDENCY-PROVENANCE.md`, `docs/AUDIT-SCOPE.md`, and `security/controls.json` define the review baseline and evidence map. `npm run verify` runs integration tests and checks the fail-closed settlement, private answer-bank, HTTP-header, wallet-proof, audit-integrity, and control-evidence invariants.
+The project has not completed an independent audit. `SECURITY.md`, `docs/THREAT-MODEL.md`, `docs/IDENTITY-PROTOCOL.md`, `docs/PAYOUT-RISK-CONTROLS.md`, `docs/DEPENDENCY-PROVENANCE.md`, `docs/AUDIT-SCOPE.md`, and `security/controls.json` define the review baseline and evidence map. `npm run verify` runs integration tests and checks the fail-closed settlement, private answer-bank, HTTP-header, wallet-proof, payout-review, audit-integrity, and control-evidence invariants.
 
 Geek Protocol requires two independent scopes before value moves: a Web3 application penetration test of the complete browser/API/cloud stack, and a separate code audit of every future KRC-20 settlement and treasury component. All Critical and High findings must be remediated and retested against the exact release commit.

@@ -96,6 +96,13 @@ export const handleApiError = (res, error) => {
   if (code === 'INVALID_KASPA_ADDRESS') return sendJson(res, 400, { ok: false, code, error: 'Enter a valid Kaspa mainnet address beginning with kaspa:.' });
   if (code === 'PAYOUT_ACK_REQUIRED') return sendJson(res, 400, { ok: false, code, error: 'Confirm that you checked the payout address before saving it.' });
   if (code === 'PAYOUT_REAUTH_REQUIRED') return sendJson(res, 401, { ok: false, code, error: 'Sign a fresh wallet challenge before changing this protected payout setting.' });
+  if (code === 'PAYOUT_REVIEW_FORBIDDEN') return sendJson(res, 403, { ok: false, code, error: 'Payout-review access was not accepted.' });
+  if (code === 'PAYOUT_REVIEW_NOT_CONFIGURED') return sendJson(res, 503, { ok: false, code, error: 'The private payout-review service is not configured.' });
+  if (code === 'PAYOUT_REVIEW_NOT_FOUND') return sendJson(res, 404, { ok: false, code, error: 'That payout review could not be found.' });
+  if (code === 'PAYOUT_REVIEW_STATE_INVALID') return sendJson(res, 409, { ok: false, code, error: 'That payout review is no longer pending.' });
+  if (code === 'PAYOUT_REVIEW_NOTE_REQUIRED') return sendJson(res, 400, { ok: false, code, error: 'Choose approve or reject and include a review note of at least eight characters.' });
+  if (code === 'IDENTITY_ORIGIN_INVALID') return sendJson(res, 400, { ok: false, code, error: 'Wallet proof is unavailable from this origin.' });
+  if (code === 'IDENTITY_ORIGIN_MISMATCH') return sendJson(res, 409, { ok: false, code, error: 'That wallet challenge belongs to a different site origin. Request a new challenge here.' });
   if (code === 'IDENTITY_PUBLIC_KEY_INVALID' || code === 'IDENTITY_KEY_MISMATCH') return sendJson(res, 400, { ok: false, code, error: 'The public key does not match that Kaspa mainnet address.' });
   if (code === 'IDENTITY_SIGNATURE_INVALID') return sendJson(res, 401, { ok: false, code, error: 'The wallet signature was not valid for this one-time challenge.' });
   if (code === 'IDENTITY_CHALLENGE_INVALID') return sendJson(res, 409, { ok: false, code, error: 'That wallet challenge expired or was already used. Request a new one.' });
