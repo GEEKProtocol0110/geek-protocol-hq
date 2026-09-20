@@ -101,6 +101,8 @@ export const handleApiError = (res, error) => {
   if (code === 'PAYOUT_REVIEW_NOT_FOUND') return sendJson(res, 404, { ok: false, code, error: 'That payout review could not be found.' });
   if (code === 'PAYOUT_REVIEW_STATE_INVALID') return sendJson(res, 409, { ok: false, code, error: 'That payout review is no longer pending.' });
   if (code === 'PAYOUT_REVIEW_NOTE_REQUIRED') return sendJson(res, 400, { ok: false, code, error: 'Choose approve or reject and include a review note of at least eight characters.' });
+  if (code === 'MINT_STATUS_UNAVAILABLE') return sendJson(res, 503, { ok: false, code, error: 'Live GEEK mint status could not be verified. Minting is paused here until the indexer responds.' });
+  if (code === 'MINT_DEPLOYMENT_MISMATCH') return sendJson(res, 503, { ok: false, code, error: 'GEEK deployment details did not match the pinned official record. Minting is blocked.' });
   if (code === 'IDENTITY_ORIGIN_INVALID') return sendJson(res, 400, { ok: false, code, error: 'Wallet proof is unavailable from this origin.' });
   if (code === 'IDENTITY_ORIGIN_MISMATCH') return sendJson(res, 409, { ok: false, code, error: 'That wallet challenge belongs to a different site origin. Request a new challenge here.' });
   if (code === 'IDENTITY_PUBLIC_KEY_INVALID' || code === 'IDENTITY_KEY_MISMATCH') return sendJson(res, 400, { ok: false, code, error: 'The public key does not match that Kaspa mainnet address.' });

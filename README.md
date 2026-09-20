@@ -9,6 +9,7 @@ The official Geek Protocol experience for Kaspa: a server-ranked trivia game and
 - Server-authoritative Daily Signal and 30-second Speed Signal modes adapted from Geek Mini
 - Eight selectable trivia categories
 - Kasware connection, mainnet detection, GEEK balance display, and server-verified Kaspa Schnorr ownership proof
+- Non-custodial, one-at-a-time GEEK KRC-20 fair-mint requests with live deployment and remaining-supply verification
 - Wallet-recoverable player identities with older-session invalidation
 - Fresh, single-use wallet authorization for protected payout-setting changes
 - Exact-origin enforcement when wallet challenges are issued and verified
@@ -20,7 +21,7 @@ The official Geek Protocol experience for Kaspa: a server-ranked trivia game and
 - Community Content Engine submission, review, publication, and first-use reward ledger
 - Integrity-protected, pseudonymous security events for sensitive Alpha changes
 - Private auditor export with per-record verification
-- Lobby, rewards, current litepaper, mint-readiness, and Kaspa information pages
+- Lobby, rewards, current litepaper, live mint, and Kaspa information pages
 - Public security and audit-readiness status page
 - Private server-side question banks plus complete artwork, styles, and scripts
 
@@ -104,10 +105,10 @@ The private review desk lives at `/moderate/`. The key is sent only in the `X-CC
 
 Ranked Alpha balances, XP, game progress, lobbies, presence, verified scores, contributions, C.C.E. reward records, wallet identity bindings, and payout-address preferences use Redis. Server verification protects competitive integrity and wallet proof, but this is still an unproctored web trivia game and cannot prevent every form of outside assistance.
 
-C.C.E. rewards are internal, claim-gated Alpha ledger credits. They are created only once, when an approved and published question is first answered in ranked play. They are not token transfers, cannot be withdrawn, and have no promised monetary value. A player may register any checksum-valid Kaspa mainnet address as a future destination. Wallet authentication, recovery, and protected changes are now Alpha controls; minting, treasury settlement, token transfers, and on-chain rewards remain disabled.
+C.C.E. rewards are internal, claim-gated Alpha ledger credits. They are created only once, when an approved and published question is first answered in ranked play. They are not token transfers, cannot be withdrawn, and have no promised monetary value. A player may register any checksum-valid Kaspa mainnet address as a future destination. The separate `/mint/` page can ask Kasware to create one user-approved mint against the pinned existing GEEK deployment. HQ never signs or submits that transaction for the user. Treasury settlement, reward transfers, withdrawals, and on-chain rewards remain disabled.
 
 ## Audit readiness
 
-The project has not completed an independent audit. `SECURITY.md`, `docs/THREAT-MODEL.md`, `docs/IDENTITY-PROTOCOL.md`, `docs/PAYOUT-RISK-CONTROLS.md`, `docs/DEPENDENCY-PROVENANCE.md`, `docs/AUDIT-SCOPE.md`, and `security/controls.json` define the review baseline and evidence map. `npm run verify` runs integration tests and checks the fail-closed settlement, private answer-bank, HTTP-header, wallet-proof, payout-review, audit-integrity, and control-evidence invariants.
+The project has not completed an independent audit. `SECURITY.md`, `docs/THREAT-MODEL.md`, `docs/MINT-PROTOCOL.md`, `docs/IDENTITY-PROTOCOL.md`, `docs/PAYOUT-RISK-CONTROLS.md`, `docs/DEPENDENCY-PROVENANCE.md`, `docs/AUDIT-SCOPE.md`, and `security/controls.json` define the review baseline and evidence map. `npm run verify` runs integration tests and checks the pinned mint deployment, fail-closed settlement, private answer-bank, HTTP-header, wallet-proof, payout-review, audit-integrity, and control-evidence invariants.
 
 Geek Protocol requires two independent scopes before value moves: a Web3 application penetration test of the complete browser/API/cloud stack, and a separate code audit of every future KRC-20 settlement and treasury component. All Critical and High findings must be remediated and retested against the exact release commit.

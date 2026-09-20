@@ -5,7 +5,7 @@ Status: implemented Alpha control; configuration and independent review required
 
 ## Boundary
 
-The rewards page stores a preferred Kaspa mainnet receiving address for possible future use. No code in this repository can mint, transfer, withdraw, or settle GEEK. A review approval is evidence only: it never changes `settlementEligible: false` or `withdrawalsEnabled: false`.
+The rewards page stores a preferred Kaspa mainnet receiving address for possible future use. The separate public mint page can request one user-approved, non-custodial mint through Kasware, but no server code in this repository can sign, transfer, withdraw, or settle GEEK for a player. A review approval is evidence only: it never changes `settlementEligible: false` or `withdrawalsEnabled: false`.
 
 ## Player notice
 

@@ -4,68 +4,116 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#080b0b" />
-    <meta name="description" content="The official Geek Protocol $GEEK mint readiness page. Minting remains disabled until the canonical Kaspa deployment, terms, wallet flow, and audit are verified." />
-    <title>Mint $GEEK — Launch Readiness</title>
+    <meta name="description" content="Mint the official GEEK KRC-20 directly to your Kaspa wallet through a non-custodial, wallet-approved transaction." />
+    <title>Mint $GEEK — Official Fair Mint</title>
     <link rel="preconnect" href="https://geekprotocol.xyz" />
     <link rel="stylesheet" href="../assets/styles.css" />
+    <link rel="stylesheet" href="../assets/wallet.css" />
     <link rel="stylesheet" href="./assets/mint.css" />
     <script defer src="../assets/site.js"></script>
+    <script defer src="../assets/wallet.js"></script>
+    <script defer src="./assets/mint.js"></script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to mint readiness</a>
+    <a class="skip-link" href="#main">Skip to mint</a>
     <header class="site-header" data-header>
       <a class="brand" href="../" aria-label="Geek Protocol home"><img src="../assets/geek-protocol-logo.png" alt="" width="48" height="48" /><span>GEEK<span class="brand-mark">//</span>MINT</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
-      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="../kaspa/">Kaspa 101</a><a href="../lobby/">Lobbies</a><a href="../play/">Play</a><a href="../rewards/">Rewards</a><a href="../litepaper/">Litepaper</a><a href="../security/">Security</a><a class="nav-cta" href="https://x.com/geekonkas">Official updates <span aria-hidden="true">↗</span></a></nav>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="../play/">Play</a><a href="../lobby/">Lobbies</a><a href="../rewards/">Rewards</a><a href="../litepaper/">Litepaper</a><a href="../security/">Security</a><a class="nav-cta" href="../">Geek HQ <span aria-hidden="true">→</span></a></nav>
     </header>
 
     <main id="main" class="mint-main">
-      <section class="mint-hero">
+      <section class="mint-hero" aria-labelledby="mint-title">
         <div class="mint-copy">
-          <div class="eyebrow"><span class="status-dot"></span> OFFICIAL READINESS PAGE · MINT DISABLED</div>
-          <h1>MINT<br /><em>$GEEK.</em></h1>
-          <p>This is the permanent home for the future $GEEK mint flow. It will not ask for a wallet signature until the canonical deployment, terms, transaction details, and audit status can be verified here.</p>
-          <div class="hero-actions"><a class="button button-secondary" href="https://geekprotocol.xyz/litepaper">Read the litepaper <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="https://x.com/geekonkas">Follow launch updates <span aria-hidden="true">↗</span></a></div>
+          <div class="eyebrow"><span class="status-dot"></span><span id="mint-live-state" data-state="loading">VERIFYING</span> · KASPA MAINNET</div>
+          <h1 id="mint-title">MINT<br /><em>$GEEK.</em></h1>
+          <p>One wallet approval creates one KRC-20 mint directly to your connected Kaspa address. No account, deposit, custody, or private-key access.</p>
+          <div class="mint-facts" aria-label="Mint facts">
+            <div><span>ONE MINT</span><strong>100,000 GEEK</strong></div>
+            <div><span>PUBLISHED PROTOCOL FEE</span><strong>1 KAS</strong></div>
+            <div><span>NETWORK</span><strong>KASPA MAINNET</strong></div>
+          </div>
+          <p class="fee-note">Kasware shows the final request before approval. Commit and reveal network fees are additional and can change. Never enter a seed phrase on this site.</p>
         </div>
 
-        <aside class="mint-terminal" aria-labelledby="mint-terminal-title">
-          <div class="terminal-head"><span>GEEK // KASPA</span><span class="locked">LOCKED</span></div>
-          <img src="../assets/geek-protocol-logo.png" alt="Geek Protocol emblem" width="200" height="200" />
-          <h2 id="mint-terminal-title">$GEEK MINT</h2>
+        <aside class="mint-terminal" aria-labelledby="mint-panel-title">
+          <div class="terminal-head"><span>GEEK // KRC-20</span><span id="mint-state">VERIFYING</span></div>
+          <h2 id="mint-panel-title">LIVE SUPPLY</h2>
+          <div class="supply-progress" role="progressbar" aria-label="GEEK supply minted" aria-valuemin="0" aria-valuemax="100"><i id="mint-progress-bar"></i></div>
+          <div class="progress-line"><strong id="mint-progress-percent">—</strong><span id="mint-checked">Checking live indexer…</span></div>
           <dl>
-            <div><dt>Network</dt><dd>Kaspa mainnet</dd></div>
-            <div><dt>Asset</dt><dd>GEEK</dd></div>
-            <div><dt>Standard target</dt><dd>KRC-20</dd></div>
-            <div><dt>Deployment ID</dt><dd class="pending-value">Not published</dd></div>
+            <div><dt>Completed mints</dt><dd id="mint-completed">—</dd></div>
+            <div><dt>Mints remaining</dt><dd id="mint-remaining">—</dd></div>
+            <div><dt>Gross minted / max</dt><dd id="mint-supply">—</dd></div>
+            <div><dt>Deployment</dt><dd id="mint-deployment">c3cea245b394…05e014d0b1</dd></div>
           </dl>
-          <button type="button" disabled>Mint unavailable</button>
-          <p>No wallet connection is requested on this page.</p>
+          <button class="refresh-status" id="mint-refresh" type="button">Refresh on-chain status</button>
+          <p>Live totals are verified against the pinned GEEK deployment through the Kasplex indexer. Minting pauses here if verification fails.</p>
         </aside>
       </section>
 
-      <section class="readiness-section">
-        <div class="section-kicker">01 / LAUNCH GATES</div>
-        <div class="readiness-heading"><h2>VERIFY FIRST.<br />SIGN SECOND.</h2><p>Every gate below must be completed and publicly documented before this interface can move from informational to transactional.</p></div>
-        <ol class="gate-list">
-          <li><span>01</span><div><small>CANONICAL DEPLOYMENT</small><h3>Publish the exact token identifier.</h3><p>Network, ticker, deployment transaction, supply rules, decimals, limits, and official explorer link must agree.</p></div><b>OPEN</b></li>
-          <li><span>02</span><div><small>FINAL TERMS</small><h3>Make economics and eligibility explicit.</h3><p>Mint price, per-wallet limits, timing, allocation, fees, refund rules, geography, and risk language must be finalized.</p></div><b>OPEN</b></li>
-          <li><span>03</span><div><small>WALLET REVIEW</small><h3>Show the transaction before signature.</h3><p>Wallet support, requested permissions, exact outputs, network fees, failure recovery, and confirmations must be reviewable.</p></div><b>OPEN</b></li>
-          <li><span>04</span><div><small>SECURITY AUDIT</small><h3>Independent review before mainnet.</h3><p>Complete a Web3 application penetration test and a separate audit of every value-moving settlement component, then resolve and retest all Critical and High findings.</p></div><b>OPEN</b></li>
-          <li><span>05</span><div><small>OFFICIAL ANNOUNCEMENT</small><h3>Cross-check every official channel.</h3><p>The final destination should be announced by @geekonkas and the official Geek community before users transact.</p></div><b>OPEN</b></li>
+      <section class="mint-workspace" aria-labelledby="mint-workspace-title">
+        <div class="section-kicker">01 / CONNECT &amp; CONFIRM</div>
+        <div class="workspace-heading">
+          <div><h2 id="mint-workspace-title">YOUR KEYS.<br />YOUR MINT.</h2><p>Connect Kasware, verify the exact request below, then approve or reject it inside the wallet.</p></div>
+          <div class="workspace-badge"><span>NON-CUSTODIAL</span><strong>ONE CLICK = ONE MINT REQUEST</strong></div>
+        </div>
+
+        <div class="mint-grid">
+          <div>
+            <section class="wallet-panel" data-wallet-root aria-label="Kasware wallet connection">
+              <div>
+                <div class="wallet-panel__head"><i class="wallet-panel__dot"></i><span data-wallet-state>KASWARE CHECK</span></div>
+                <div class="wallet-panel__identity"><strong data-wallet-address>Not connected</strong><span data-wallet-network>Connect to read network</span></div>
+                <div class="wallet-panel__facts"><span>Wallet GEEK: <b data-wallet-geek>—</b></span></div>
+                <p class="wallet-panel__message" data-wallet-message>Connect only when you choose. Geek Protocol never requests wallet access on page load.</p>
+              </div>
+              <div class="wallet-panel__actions">
+                <button type="button" data-wallet-connect>Connect Kasware</button>
+                <a data-wallet-install href="https://www.kasware.xyz/" target="_blank" rel="noreferrer">Get Kasware ↗</a>
+              </div>
+              <p class="wallet-panel__safety"><b>Safety:</b> Geek Protocol cannot see your seed phrase or sign for you. Wallet connection alone does not move funds.</p>
+            </section>
+
+            <article class="transaction-card" aria-labelledby="transaction-title">
+              <div class="card-label">EXACT WALLET REQUEST</div>
+              <h3 id="transaction-title">Review before approval</h3>
+              <dl>
+                <div><dt>Protocol</dt><dd>KRC-20</dd></div><div><dt>Operation</dt><dd>MINT · TYPE 3</dd></div><div><dt>Ticker</dt><dd>GEEK</dd></div><div><dt>Quantity</dt><dd>100,000 GEEK</dd></div><div><dt>Priority fee requested by HQ</dt><dd>0 KAS</dd></div>
+                <div class="code-row"><dt>Inscription</dt><dd><code>{"p":"KRC-20","op":"mint","tick":"GEEK"}</code></dd></div>
+              </dl>
+              <p>The protocol fee and normal Kaspa commit/reveal network fees still apply. The wallet—not this page—presents the final total and asks for approval.</p>
+            </article>
+          </div>
+
+          <section class="approval-card" aria-labelledby="approval-title">
+            <div class="card-label">FINAL CHECK</div>
+            <h3 id="approval-title">Approve only what you verified.</h3>
+            <ul><li>Official ticker: <strong>GEEK</strong></li><li>One mint: <strong>100,000 GEEK</strong></li><li>Published protocol fee: <strong>1 KAS</strong></li><li>Network and commit/reveal fees: <strong>additional</strong></li><li>Destination: <strong>connected wallet</strong></li><li>Transaction: <strong>irreversible after broadcast</strong></li></ul>
+            <label class="acknowledge" for="mint-acknowledge"><input id="mint-acknowledge" type="checkbox" /><span>I checked the ticker, amount, fee notice, connected address, and mainnet network. I understand this transaction is irreversible and the application has not completed an independent audit.</span></label>
+            <button class="mint-submit" id="mint-submit" type="button" disabled>Verifying deployment…</button>
+            <p class="mint-message" id="mint-message" role="status" aria-live="polite">The wallet displays the complete request and final KAS cost before you approve it.</p>
+            <div class="mint-result" id="mint-result" hidden><span>SUBMITTED</span><dl><div><dt>Commit</dt><dd id="mint-commit-id">—</dd></div><div><dt>Reveal</dt><dd id="mint-reveal-id">—</dd></div></dl><a id="mint-explorer-link" href="#" target="_blank" rel="noreferrer">View reveal transaction ↗</a></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="mint-proof" aria-labelledby="proof-title">
+        <div><div class="section-kicker">02 / WHAT THIS PAGE ENFORCES</div><h2 id="proof-title">PINNED.<br />VERIFIED.<br />USER-SIGNED.</h2></div>
+        <ol>
+          <li><span>01</span><div><h3>Exact deployment</h3><p>Ticker, maximum supply, mint limit, decimals, deployer, and reveal hash must match the pinned GEEK record.</p></div></li>
+          <li><span>02</span><div><h3>Fresh availability</h3><p>The server rechecks the live indexer immediately before every wallet request. If it cannot verify capacity, minting stops.</p></div></li>
+          <li><span>03</span><div><h3>Wallet approval</h3><p>Kasware constructs and displays the request. You accept or reject it. HQ never receives your seed or signing key.</p></div></li>
+          <li><span>04</span><div><h3>Permanent cap</h3><p>Gross mints count toward the fixed maximum. Burned GEEK does not reopen mint capacity; when no mints remain, this interface closes.</p></div></li>
         </ol>
       </section>
 
-      <section class="future-flow">
-        <div class="section-kicker">02 / EXPECTED USER FLOW</div>
-        <div class="flow-cards"><article><span>01</span><h3>Connect</h3><p>Choose a supported Kaspa wallet and disclose only the permission being requested.</p></article><article><span>02</span><h3>Verify</h3><p>Review the canonical deployment, terms, quantity, recipient, and estimated network fee.</p></article><article><span>03</span><h3>Sign</h3><p>Approve the exact transaction inside the wallet—never a blind or unrelated message.</p></article><article><span>04</span><h3>Confirm</h3><p>Track submission and confirmations with a direct explorer reference and clear recovery state.</p></article></div>
-      </section>
-
       <section class="risk-section">
-        <div><div class="section-kicker">03 / RISK DISCLOSURE</div><h2>NO FALSE<br />STARTS.</h2></div>
-        <div class="risk-copy"><p><strong>Current status:</strong> the public Alpha describes internal GEEK balances, while mainnet deployment and on-chain transfer remain unfinished. The third-party security audit has not started.</p><p>Token economics presented elsewhere in the project are provisional until final terms are published. Nothing on this page promises availability, profit, value, liquidity, or eligibility.</p><p>Never send KAS or sign a transaction based only on a ticker. Verify the exact deployment through official Geek channels and an independent Kaspa explorer.</p><div class="official-links"><a href="https://x.com/geekonkas">X / @geekonkas ↗</a><a href="https://t.me/GEEKonKAScommunity">Official Telegram ↗</a><a href="https://geekprotocol.xyz/litepaper">Litepaper ↗</a><a href="../security/">Security status ↗</a></div></div>
+        <div><div class="section-kicker">03 / READ BEFORE MINTING</div><h2>REAL CHAIN.<br />REAL RISK.</h2></div>
+        <div class="risk-copy"><p><strong>This is an unaudited beta interface for an existing KRC-20 fair mint.</strong> It is separate from the game’s internal Alpha GEEK rewards and the future treasury payout system. Minting does not activate withdrawals, redemptions, settlement, or any promise of value.</p><p>Wallet software, indexers, browser extensions, fees, and the Kaspa network are external dependencies. Verify the full request in Kasware. Do not proceed if its network, ticker, amount, destination, or cost differs from what you expect.</p><p>No availability, price, profit, liquidity, utility, or eligibility is promised. This is not investment advice.</p><div class="official-links"><a href="https://api.kasplex.org/v1/krc20/token/GEEK">Live Kasplex record ↗</a><a href="https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-krc20">Kasware KRC-20 API ↗</a><a href="https://x.com/geekonkas">X / @geekonkas ↗</a><a href="../security/">Security status ↗</a></div></div>
       </section>
     </main>
 
-    <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>All hope, no hype. Verification before transaction.</p></div><div class="footer-links"><a href="../">Home</a><a href="../kaspa/">Kaspa 101</a><a href="../lobby/">Lobbies</a><a href="../play/">Play</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · Independent project · No investment advice.</p></footer>
+    <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>All hope, no hype. Verify every transaction.</p></div><div class="footer-links"><a href="../">Home</a><a href="../play/">Play</a><a href="../rewards/">Rewards</a><a href="../security/">Security</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · Independent project · No investment advice.</p></footer>
   </body>
 </html>

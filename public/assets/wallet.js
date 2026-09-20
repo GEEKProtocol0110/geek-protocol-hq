@@ -243,7 +243,9 @@
     window.kasware.on('balanceChanged', () => readWallet());
   };
 
-  window.GeekWallet = Object.freeze({ authorizePayout, refreshIdentity });
+  const snapshot = () => ({ ...state, identity: state.identity ? { ...state.identity } : null });
+
+  window.GeekWallet = Object.freeze({ authorizePayout, refreshIdentity, snapshot });
   state.installed = Boolean(window.kasware);
   render();
   if (state.installed) {
