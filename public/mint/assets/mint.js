@@ -72,7 +72,7 @@
     setText('mint-completed', mint ? number(mint.completedMints) : '—');
     setText('mint-remaining', mint ? number(mint.remainingMints) : '—');
     setText('mint-supply', mint ? `${number(mint.minted)} / ${number(mint.maximum)}` : '—');
-    setText('mint-state', mint ? (mint.open ? 'OPEN' : 'CLOSED') : 'VERIFYING');
+    setText('mint-state', state.error ? 'PAUSED' : mint ? (mint.open ? 'OPEN' : 'CLOSED') : 'VERIFYING');
     setText('mint-checked', status ? `Verified ${checkedTime(status.checkedAt)}` : 'Checking live indexer…');
     setText('mint-deployment', status ? shortHash(status.deployment.deploymentHash) : shortHash(EXPECTED.deploymentHash));
 
@@ -87,7 +87,9 @@
       button.disabled = !canMint();
       button.textContent = state.pending
         ? 'Waiting for Kasware approval…'
-        : !status
+        : state.error
+          ? 'Mint paused · refresh status'
+          : !status
           ? 'Verifying deployment…'
           : !mint?.open
             ? 'Mint is closed'
