@@ -42,7 +42,7 @@ Expires: <ISO-8601 timestamp>
 This proves wallet control only. It does not authorize a transaction, transfer, purchase, mint, or withdrawal.
 ```
 
-The origin, action, identity wallet, requested destination where applicable, nonce, issue time, and expiry are therefore inside the signed payload.
+The exact requesting HTTPS origin, action, identity wallet, requested destination where applicable, nonce, issue time, and expiry are therefore inside the signed payload. Geek Protocol re-derives and compares that origin when the proof is submitted. A challenge created on `www.geekprotocol.xyz` is rejected on `geekprotocol.xyz`, and vice versa.
 
 ## State transitions
 
@@ -50,7 +50,7 @@ The origin, action, identity wallet, requested destination where applicable, non
 2. The server validates the public key and derives the submitted Kaspa mainnet address.
 3. The server stores a one-time challenge for five minutes and returns only its identifier, exact message, scheme, and expiry.
 4. The wallet signs the exact message in explicit Schnorr mode.
-5. The server atomically consumes the challenge with `GETDEL` before checking the signature. A failed proof consumes the challenge as well.
+5. The server atomically consumes the challenge with `GETDEL`, rechecks the exact requesting origin, and then checks the signature. A failed origin or signature check consumes the challenge as well.
 6. After a valid signature, a Redis compare-and-set script verifies the expected wallet and player state and atomically writes the wallet mapping, player identity, replacement browser session, and successful audit event.
 7. A recovery increments the identity session version. Every linked session is checked against that current version on each authenticated request, so older sessions fail closed.
 
@@ -71,11 +71,11 @@ The preference remains ineligible for settlement. `ownershipVerified` is true on
 
 Recovery restores the persistent player ID and its profile, XP, Alpha balance, leaderboard identity, C.C.E. contribution history, and payout preference. It does not restore an in-progress ranked run or lobby seat, which remain bound to an ephemeral browser session.
 
-The current Alpha supports one immutable recovery wallet per player. Wallet rotation, social recovery, user notifications, and administrative recovery are deliberately absent pending separate design and review.
+The current Alpha supports one immutable recovery wallet per player. Payout-setting mutations now create persistent in-product notices, but out-of-band email or mobile alerts, wallet rotation, social recovery, and administrative recovery remain deliberately absent pending separate design and review.
 
 ## Evidence and negative tests
 
-`tests/api.test.js` covers valid link, challenge replay rejection, unrelated-wallet rejection without orphaned binding, fresh payout authorization, authorization replay rejection, invalid recovery signature, successful recovery, older-session invalidation, profile restoration, and protected payout removal.
+`tests/api.test.js` covers valid link, exact-origin mismatch rejection, challenge replay rejection, unrelated-wallet rejection without orphaned binding, fresh payout authorization, authorization replay rejection, invalid recovery signature, successful recovery, older-session invalidation, profile restoration, and protected payout removal.
 
 `scripts/security-check.mjs` verifies that the release still contains server-side signature verification, mainnet public-key/address derivation, random short-lived single-use challenges, atomic identity binding, fresh payout authorization, and no client-side signature-verification trust decision.
 
@@ -84,7 +84,7 @@ The current Alpha supports one immutable recovery wallet per player. Wallet rota
 - Independently reproduce wallet compatibility and signature test vectors across supported Kasware versions.
 - Fuzz hexadecimal and Base64 signature parsing, public-key parsing, address normalization, and message Unicode handling.
 - Test parallel link, recovery, payout authorization, session-fixation, Redis interruption, and replay scenarios against production-equivalent infrastructure.
-- Define a separately reviewed wallet-rotation and notification policy.
+- Define a separately reviewed wallet-rotation policy and out-of-band notification channel.
 - Repeat this review for every added wallet provider or signature scheme.
 
 These open items are launch gates. They do not enable or justify on-chain settlement.

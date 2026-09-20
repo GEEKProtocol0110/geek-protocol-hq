@@ -25,7 +25,7 @@ const walk = async (directory) => {
   return files;
 };
 
-for (const path of ['SECURITY.md', 'docs/THREAT-MODEL.md', 'docs/IDENTITY-PROTOCOL.md', 'docs/DEPENDENCY-PROVENANCE.md', 'docs/AUDIT-SCOPE.md', 'security/controls.json', 'package-lock.json']) {
+for (const path of ['SECURITY.md', 'docs/THREAT-MODEL.md', 'docs/IDENTITY-PROTOCOL.md', 'docs/PAYOUT-RISK-CONTROLS.md', 'docs/DEPENDENCY-PROVENANCE.md', 'docs/AUDIT-SCOPE.md', 'security/controls.json', 'package-lock.json']) {
   check(await exists(path), `required evidence exists: ${path}`);
 }
 
@@ -37,6 +37,9 @@ check(rewards.includes('withdrawalsEnabled: false'), 'withdrawals remain disable
 check(rewards.includes('settlementEligible: false'), 'payout preferences remain settlement-ineligible');
 check(rewards.includes('PAYOUT_CHANGE_COOLDOWN_MS'), 'payout changes declare a cooldown');
 check(rewards.includes('requirePayoutAuthorization'), 'linked identities require fresh payout authorization');
+check(rewards.includes('payoutMutationHistory'), 'payout mutations retain a bounded risk history');
+check(rewards.includes('payoutNotice'), 'payout mutations create persistent player notices');
+check(rewards.includes('createPayoutReview'), 'higher-risk payout destinations enter private review');
 
 const identity = await text('server/identity.js');
 check(identity.includes('kaspa.verifyMessage'), 'wallet signatures are verified on the server');
@@ -45,6 +48,12 @@ check(identity.includes('randomBytes(32)'), 'wallet challenges include a 256-bit
 check(identity.includes("redis('GETDEL'"), 'wallet challenges and authorizations are atomically consumed');
 check(identity.includes('geek-identity-bind-v1'), 'wallet and player bindings use an atomic compare-and-set transition');
 check(identity.includes('CHALLENGE_TTL_SECONDS = 5 * 60'), 'wallet challenges expire after five minutes');
+check(identity.includes("challenge.origin !== canonicalOrigin(req)"), 'wallet proofs are rechecked against the exact requesting origin');
+
+const payoutReview = await text('server/payout-review.js');
+check(payoutReview.includes('PAYOUT_REVIEW_ADMIN_TOKEN'), 'payout review uses a dedicated credential');
+check(payoutReview.includes("currentAddressHash === record.addressHash"), 'stale payout reviews fail closed');
+check(payoutReview.includes('settlementEnabled: false'), 'payout review cannot enable settlement');
 
 const wallet = await text('public/assets/wallet.js');
 check(wallet.includes("signMessage(challenge.message, { type: 'schnorr' })"), 'wallet requests explicit Schnorr signatures');
@@ -71,7 +80,7 @@ check(packageLock.packages?.['node_modules/@dfns/kaspa-wasm']?.integrity === 'sh
 const controls = JSON.parse(await text('security/controls.json'));
 check(controls.auditStatus === 'not-independently-audited', 'public audit status is honest');
 check(controls.settlementStatus === 'disabled', 'control map keeps settlement disabled');
-check(Array.isArray(controls.controls) && controls.controls.length >= 15, 'control map contains reviewable evidence');
+check(Array.isArray(controls.controls) && controls.controls.length >= 17, 'control map contains reviewable evidence');
 for (const control of controls.controls || []) {
   check(/^GP-[A-Z0-9-]+$/.test(control.id), `control has stable identifier: ${control.id || 'missing'}`);
   for (const evidence of control.evidence || []) check(await exists(evidence), `control evidence exists: ${control.id} -> ${evidence}`);

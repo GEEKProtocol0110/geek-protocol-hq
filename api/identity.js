@@ -26,7 +26,7 @@ export default async function handler(req, res) {
       return sendJson(res, 201, { ok: true, challenge });
     }
     if (body.action === 'verify') {
-      const result = await verifyIdentityChallenge({ session, challengeId: body.challengeId, signature: body.signature });
+      const result = await verifyIdentityChallenge({ req, session, challengeId: body.challengeId, signature: body.signature });
       return sendJson(res, 200, { ok: true, ...result });
     }
     throw new Error('INVALID_REQUEST');

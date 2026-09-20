@@ -8,6 +8,7 @@ import rankedHandler from '../api/ranked.js';
 import contentHandler from '../api/content.js';
 import moderationHandler from '../api/moderation.js';
 import rewardsHandler from '../api/rewards.js';
+import payoutReviewHandler from '../api/payout-review.js';
 import auditHandler from '../api/audit.js';
 import identityHandler from '../api/identity.js';
 import kaspa from '@dfns/kaspa-wasm';
@@ -21,6 +22,7 @@ process.env.CCE_REWARD_AMOUNT = '25';
 process.env.AUDIT_LOG_SECRET = 'test-audit-hmac-secret-with-at-least-32-characters';
 process.env.AUDIT_ADMIN_TOKEN = 'test-audit-admin-token-123456789';
 process.env.AUDIT_KEY_ID = 'test-key';
+process.env.PAYOUT_REVIEW_ADMIN_TOKEN = 'test-payout-review-token-123456789';
 process.env.IDENTITY_ENV = 'test';
 
 const strings = new Map();
@@ -349,6 +351,10 @@ test('a player can register any valid Kaspa mainnet payout address without expos
   assert.equal(saveRes.body.payout.withdrawalsEnabled, false);
   assert.equal(saveRes.body.payout.ownershipVerified, false);
   assert.equal(saveRes.body.payout.settlementEligible, false);
+  assert.equal(saveRes.body.payout.review.required, true);
+  assert.deepEqual(saveRes.body.payout.review.reasons, ['identity-not-linked', 'destination-ownership-unverified']);
+  assert.equal(saveRes.body.payout.notification.reviewRequired, true);
+  assert.match(saveRes.body.payout.notification.id, /^pnot_[a-f0-9]{20}$/);
   assert.equal(saveRes.body.payout.version, 1);
   assert.ok(saveRes.body.payout.changeCooldownUntil > saveRes.body.payout.configuredAt);
   assert.match(saveRes.body.auditReceipt.eventId, /^aud_[a-f0-9]{24}$/);
@@ -360,6 +366,70 @@ test('a player can register any valid Kaspa mainnet payout address without expos
   await rewardsHandler(request('GET', undefined, cookie), getRes);
   assert.equal(getRes.body.payout.address, address);
   assert.equal(getRes.body.payout.network, 'kaspa-mainnet');
+  assert.equal(getRes.body.payout.review.reference, saveRes.body.payout.review.reference);
+
+  const deniedReview = response();
+  await payoutReviewHandler(request('GET', undefined, '', {}, { 'x-payout-review-admin': 'wrong-token' }), deniedReview);
+  assert.equal(deniedReview.statusCode, 403);
+
+  const reviewerHeaders = { 'x-payout-review-admin': process.env.PAYOUT_REVIEW_ADMIN_TOKEN };
+  const queueRes = response();
+  await payoutReviewHandler(request('GET', undefined, '', {}, reviewerHeaders), queueRes);
+  assert.equal(queueRes.statusCode, 200);
+  const queued = queueRes.body.queue.find((item) => item.id === saveRes.body.payout.review.reference);
+  assert.equal(queued.status, 'pending');
+  assert.equal('playerId' in queued, false);
+  assert.equal('addressHash' in queued, false);
+
+  const decisionRes = response();
+  await payoutReviewHandler(request('POST', {
+    action: 'approve',
+    id: queued.id,
+    note: 'Destination reviewed for Alpha evidence only.'
+  }, '', {}, reviewerHeaders), decisionRes);
+  assert.equal(decisionRes.statusCode, 200);
+  assert.equal(decisionRes.body.review.status, 'approved');
+  assert.equal(decisionRes.body.settlementEnabled, false);
+
+  const reviewedProfile = response();
+  await rewardsHandler(request('GET', undefined, cookie), reviewedProfile);
+  assert.equal(reviewedProfile.body.payout.review.status, 'approved');
+  assert.equal(reviewedProfile.body.payout.review.required, false);
+  assert.equal(reviewedProfile.body.payout.settlementEligible, false);
+});
+
+test('wallet proof challenges are bound to the exact requesting origin', async () => {
+  const key = new kaspa.PrivateKey('5'.padStart(64, '0'));
+  const privateKey = key.toString();
+  const publicKey = key.toPublicKey().toString();
+  const address = key.toAddress(kaspa.NetworkType.Mainnet).toString();
+  const cookie = await startSession('Origin Bound Geek');
+  const identityRequest = (method, body, host) => request(method, body, cookie, {}, { host, origin: `https://${host}`, 'user-agent': 'origin-test' });
+
+  const issued = response();
+  await identityHandler(identityRequest('POST', { action: 'challenge', intent: 'identity', address, publicKey }, 'www.geekprotocol.xyz'), issued);
+  assert.equal(issued.statusCode, 201);
+  assert.match(issued.body.challenge.message, /Origin: https:\/\/www\.geekprotocol\.xyz/);
+
+  const crossOrigin = response();
+  await identityHandler(identityRequest('POST', {
+    action: 'verify',
+    challengeId: issued.body.challenge.challengeId,
+    signature: kaspa.signMessage({ message: issued.body.challenge.message, privateKey })
+  }, 'geekprotocol.xyz'), crossOrigin);
+  assert.equal(crossOrigin.statusCode, 409);
+  assert.equal(crossOrigin.body.code, 'IDENTITY_ORIGIN_MISMATCH');
+
+  const fresh = response();
+  await identityHandler(identityRequest('POST', { action: 'challenge', intent: 'identity', address, publicKey }, 'www.geekprotocol.xyz'), fresh);
+  const verified = response();
+  await identityHandler(identityRequest('POST', {
+    action: 'verify',
+    challengeId: fresh.body.challenge.challengeId,
+    signature: kaspa.signMessage({ message: fresh.body.challenge.message, privateKey })
+  }, 'www.geekprotocol.xyz'), verified);
+  assert.equal(verified.statusCode, 200);
+  assert.equal(verified.body.identity.address, address);
 });
 
 test('a server-verified wallet proof links and recovers one durable player identity', async () => {

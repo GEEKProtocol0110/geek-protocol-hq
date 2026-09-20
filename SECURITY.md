@@ -29,10 +29,13 @@ Do not access another person's data, degrade the service, submit malware, attemp
 - Browsers never receive ranked answer keys before an answer is committed.
 - Clients cannot write scores, reward balances, moderation results, or payout eligibility.
 - Identity binding and recovery use five-minute, single-use server challenges, Kaspa Schnorr verification, and public-key/address matching; no signature is stored.
+- Wallet challenges embed the exact requesting HTTPS origin, and verification rejects proofs replayed through a different allowed hostname.
 - The wallet binding, player record, replacement session, and successful audit event commit atomically; stale or raced identity state fails closed.
 - Recovering with the linked identity wallet increments a server-side session version and invalidates older authenticated sessions.
 - Once an identity wallet is linked, payout-setting changes require a fresh scoped wallet signature. A different payout destination remains ownership-unverified.
+- Every payout-setting mutation creates a persistent player-facing notice. Higher-risk destinations enter a private queue whose reviewer role is separate from moderation and audit export.
+- Reviewer decisions cannot make a destination settlement-eligible and cannot enable withdrawals.
 - Every sensitive payout-address change and moderation transition creates private, pseudonymous audit evidence.
 - Real settlement stays disabled until the launch gates in `docs/AUDIT-SCOPE.md` are independently verified.
 
-See `docs/THREAT-MODEL.md`, `docs/IDENTITY-PROTOCOL.md`, `docs/DEPENDENCY-PROVENANCE.md`, `docs/AUDIT-SCOPE.md`, and `security/controls.json` for the reviewable security baseline.
+See `docs/THREAT-MODEL.md`, `docs/IDENTITY-PROTOCOL.md`, `docs/PAYOUT-RISK-CONTROLS.md`, `docs/DEPENDENCY-PROVENANCE.md`, `docs/AUDIT-SCOPE.md`, and `security/controls.json` for the reviewable security baseline.

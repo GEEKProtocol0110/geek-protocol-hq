@@ -27,7 +27,7 @@ The auditor must receive:
 - sanitized deployment configuration and secret inventory;
 - privileged-role and key-management procedures;
 - audit-event schema and a sample integrity-verified export;
-- the identity protocol specification, wallet-signature test vectors, dependency provenance, nonce/replay/race tests, and identity-recovery/session-invalidation evidence;
+- the identity protocol specification, payout-risk controls, wallet-signature test vectors, dependency provenance, nonce/origin/replay/race tests, and identity-recovery/session-invalidation evidence;
 - incident response, backup, recovery, and log-retention procedures;
 - proposed treasury policy, payout caps, eligibility rules, and legal terms; and
 - all known risks, prior findings, accepted exceptions, and remediation evidence.
@@ -38,7 +38,7 @@ On-chain settlement remains disabled until all gates are documented as complete:
 
 1. Recoverable player identity and server-verified wallet ownership independently tested against replay, substitution, race, recovery, and session-fixation attacks. The Alpha implementation exists; external verification remains open.
 2. Hardware-backed, individual privileged access with MFA; no shared production moderator or audit credentials.
-3. Protected payout changes with fresh wallet reauthentication, destination ownership proof where supported, user notification, cooldown, revocation, and administrative review for high-risk changes. Alpha reauthentication and cooldown exist; notifications and high-risk review remain open.
+3. Protected payout changes with fresh wallet reauthentication, destination ownership proof where supported, user notification, cooldown, revocation, and administrative review for high-risk changes. Alpha reauthentication, cooldown, persistent in-product notices, risk classification, and a private review queue exist. Out-of-band alerts, final destination-proof policy, independent testing, and production reviewer-role configuration remain open.
 4. Canonical GEEK token identity and network parameters independently confirmed.
 5. Treasury isolated from the public web tier with least-privilege signing policy, transaction caps, allowlisted methods, and emergency pause.
 6. Idempotent payout jobs, double-entry accounting, balance invariants, reconciliation, retries, and dead-letter handling.
