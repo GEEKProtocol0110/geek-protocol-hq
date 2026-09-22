@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { GEEK_DEPLOYMENT, geekMintInscription, loadGeekMintStatus, parseGeekMintStatus } from '../server/mint.js';
+import { GEEK_DEPLOYMENT, geekMintInscription, createGeekMintStatusLoader, parseGeekMintStatus } from '../server/mint.js';
 
 const fixture = (overrides = {}) => ({
   message: 'successful',
@@ -56,5 +56,100 @@ test('GEEK mint status closes permanently at gross maximum supply', () => {
 
 test('GEEK mint status fails closed when the indexer is unavailable', async () => {
   const fetchImpl = async () => new Response('upstream unavailable', { status: 503 });
-  await assert.rejects(loadGeekMintStatus({ fetchImpl, force: true }), /MINT_STATUS_UNAVAILABLE/);
+  const load = createGeekMintStatusLoader({ fetchImpl, logger: () => {} });
+  await assert.rejects(load({ force: true }), /MINT_STATUS_UNAVAILABLE/);
+});
+
+test('primary DNS failure uses only the documented mainnet fallback and validates its record', async () => {
+  const requests = [];
+  const logs = [];
+  const load = createGeekMintStatusLoader({
+    logger: (event) => logs.push(event),
+    fetchImpl: async (url, options) => {
+      requests.push(url);
+      assert.equal(options.redirect, 'error');
+      assert.equal(options.cache, 'no-store');
+      assert.ok(options.signal instanceof AbortSignal);
+      return requests.length === 1
+        ? new Response('Origin DNS error', { status: 530 })
+        : Response.json(fixture());
+    }
+  });
+  const status = await load({ force: true });
+  assert.deepEqual(requests, [
+    'https://api.kasplex.org/v1/krc20/token/GEEK',
+    'https://api-fallback.kasplex.org/v1/krc20/token/GEEK'
+  ]);
+  assert.equal(status.sourceUrl, requests[1]);
+  assert.equal(status.mint.open, true);
+  assert.deepEqual(logs[0], { event: 'geek_mint_status_failure', sourceUrl: requests[0], reason: 'http_error', httpStatus: 530 });
+});
+
+test('reachable bad records cannot be overridden by a more permissive fallback', async () => {
+  for (const body of [fixture({ hashRev: '0'.repeat(64) }), fixture({ minted: '-1' }), fixture({ minted: '1' }), {}, null]) {
+    let calls = 0;
+    const load = createGeekMintStatusLoader({ logger: () => {}, fetchImpl: async () => {
+      calls++;
+      return Response.json(calls === 1 ? body : fixture());
+    } });
+    await assert.rejects(load({ force: true }), /MINT_(DEPLOYMENT_MISMATCH|STATUS_UNAVAILABLE)/);
+    assert.equal(calls, 1);
+  }
+});
+
+test('fallback cannot replace an exhausted supply with an open record', async () => {
+  let calls = 0;
+  const load = createGeekMintStatusLoader({ logger: () => {}, fetchImpl: async () => {
+    calls++;
+    return Response.json(fixture({ minted: GEEK_DEPLOYMENT.maxRaw, state: 'finished' }));
+  } });
+  const status = await load();
+  assert.equal(status.mint.open, false);
+  assert.equal(calls, 1);
+});
+
+test('fallback responses must pass the same deployment validation', async () => {
+  let calls = 0;
+  const load = createGeekMintStatusLoader({ logger: () => {}, fetchImpl: async () => {
+    if (++calls === 1) throw new DOMException('timeout', 'TimeoutError');
+    return Response.json(fixture({ to: 'kaspa:substituted' }));
+  } });
+  await assert.rejects(load(), /MINT_DEPLOYMENT_MISMATCH/);
+  assert.equal(calls, 2);
+});
+
+test('a failed fresh check invalidates cached success, then a later live request can recover', async () => {
+  let unavailable = false;
+  let calls = 0;
+  const load = createGeekMintStatusLoader({ logger: () => {}, clock: () => 1000, fetchImpl: async () => {
+    calls++;
+    return unavailable ? new Response('', { status: 503 }) : Response.json(fixture());
+  } });
+  assert.equal((await load()).mint.open, true);
+  assert.equal((await load()).mint.open, true);
+  assert.equal(calls, 1);
+  unavailable = true;
+  await assert.rejects(load({ force: true }), /MINT_STATUS_UNAVAILABLE/);
+  await assert.rejects(load(), /MINT_STATUS_UNAVAILABLE/);
+  assert.equal(calls, 5);
+  unavailable = false;
+  assert.equal((await load()).mint.open, true);
+  assert.equal(calls, 6);
+});
+
+test('display cache expires and fresh preflight always makes a network request', async () => {
+  let now = 1000;
+  let calls = 0;
+  const load = createGeekMintStatusLoader({ logger: () => {}, clock: () => now, fetchImpl: async () => {
+    calls++;
+    return Response.json(fixture());
+  } });
+  await load();
+  await load();
+  assert.equal(calls, 1);
+  await load({ force: true });
+  assert.equal(calls, 2);
+  now += 10_000;
+  await load();
+  assert.equal(calls, 3);
 });

@@ -29,7 +29,7 @@ The server-side value-moving boundary is intentionally absent. Adding a treasury
 2. **Vercel API functions:** enforce state transitions, validation, deadlines, permissions, and rate limits.
 3. **Redis:** stores live state and private audit events. Administrative access is a high-impact trust role.
 4. **Wallet provider:** exposes a public address/key, signs exact identity text, and constructs user-approved KRC-20 mint transactions. The server independently verifies identity proofs; the user must independently verify transaction details in Kasware.
-5. **Kasplex indexer:** provides current GEEK deployment and gross-mint state. The server pins all canonical deployment fields and blocks minting on unavailability or mismatch; a stale but internally consistent response remains a residual availability/state risk.
+5. **Kasplex indexer:** provides current GEEK deployment and gross-mint state through a fixed primary and Kasware-published mainnet fallback. Both are the same trust boundary, not independent consensus. The fallback is used only for transport errors, HTTP 429, or HTTP 5xx; mismatched or invalid successful responses block without fallback. The server pins all canonical deployment fields and blocks minting on unavailability or mismatch; a stale but internally consistent response remains a residual availability/state risk.
 6. **Privileged reviewers:** C.C.E. moderation, audit export, and payout review use separate credentials. These are Alpha controls, not the final individual hardware-backed access design.
 7. **Future treasury/settlement:** not deployed and must be isolated from the web application when introduced.
 

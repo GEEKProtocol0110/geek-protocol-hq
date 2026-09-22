@@ -14,6 +14,8 @@
     wallet: window.GeekWallet?.snapshot?.() || null,
     pending: false,
     acknowledged: false,
+    refreshing: false,
+    statusError: '',
     error: '',
     result: null
   };
@@ -39,6 +41,9 @@
     if (payload.deployment.deploymentHash !== EXPECTED.deploymentHash) return false;
     if (payload.deployment.limitRaw !== EXPECTED.limitRaw) return false;
     if (payload.mint?.perMint !== EXPECTED.perMint) return false;
+    if (typeof payload.mint.open !== 'boolean') return false;
+    const age = Date.now() - Number(payload.checkedAt);
+    if (!Number.isFinite(age) || age < -5_000 || age > 60_000) return false;
     if (payload.transaction?.type !== 3 || payload.transaction?.custodial !== false) return false;
     try {
       const inscription = JSON.parse(payload.transaction.inscription);
@@ -53,12 +58,15 @@
 
   const canMint = () => Boolean(
     validStatus(state.status)
-    && state.status.mint.open
+    && state.status.mint.open === true
     && state.wallet?.installed
     && state.wallet?.connected
     && state.wallet?.network === MAINNET
     && state.acknowledged
     && !state.pending
+    && !state.refreshing
+    && !state.statusError
+    && !state.error
   );
 
   const render = () => {
@@ -72,14 +80,14 @@
     setText('mint-completed', mint ? number(mint.completedMints) : '—');
     setText('mint-remaining', mint ? number(mint.remainingMints) : '—');
     setText('mint-supply', mint ? `${number(mint.minted)} / ${number(mint.maximum)}` : '—');
-    setText('mint-state', state.error ? 'PAUSED' : mint ? (mint.open ? 'OPEN' : 'CLOSED') : 'VERIFYING');
-    setText('mint-checked', status ? `Verified ${checkedTime(status.checkedAt)}` : 'Checking live indexer…');
+    setText('mint-state', state.statusError ? 'PAUSED' : mint ? (mint.open ? 'OPEN' : 'CLOSED') : 'VERIFYING');
+    setText('mint-checked', state.statusError ? 'Unavailable · checks every 30 seconds' : status ? `Verified ${checkedTime(status.checkedAt)}` : 'Checking live indexer…');
     setText('mint-deployment', status ? shortHash(status.deployment.deploymentHash) : shortHash(EXPECTED.deploymentHash));
 
     const statusPill = byId('mint-live-state');
     if (statusPill) {
-      statusPill.dataset.state = state.error ? 'error' : mint?.open ? 'open' : status ? 'closed' : 'loading';
-      statusPill.textContent = state.error ? 'MINT PAUSED' : mint?.open ? 'LIVE FAIR MINT' : status ? 'MINT CLOSED' : 'VERIFYING';
+      statusPill.dataset.state = state.statusError ? 'error' : mint?.open ? 'open' : status ? 'closed' : 'loading';
+      statusPill.textContent = state.statusError ? 'MINT PAUSED' : mint?.open ? 'LIVE FAIR MINT' : status ? 'MINT CLOSED' : 'VERIFYING';
     }
 
     const button = byId('mint-submit');
@@ -87,8 +95,12 @@
       button.disabled = !canMint();
       button.textContent = state.pending
         ? 'Waiting for Kasware approval…'
-        : state.error
+        : state.statusError
           ? 'Mint paused · refresh status'
+          : state.refreshing
+            ? 'Checking live status…'
+          : state.error
+            ? 'Review wallet activity before retrying'
           : !status
           ? 'Verifying deployment…'
           : !mint?.open
@@ -106,8 +118,8 @@
 
     const message = byId('mint-message');
     if (message) {
-      message.className = `mint-message${state.error ? ' is-error' : state.result ? ' is-success' : ''}`;
-      message.textContent = state.error || (state.result
+      message.className = `mint-message${state.statusError || state.error ? ' is-error' : state.result ? ' is-success' : ''}`;
+      message.textContent = state.error || state.statusError || (state.result
         ? 'Mint transaction submitted. Indexer totals may take a moment to update.'
         : 'The wallet displays the complete request and final KAS cost before you approve it.');
     }
@@ -129,17 +141,27 @@
   };
 
   const fetchStatus = async (fresh = false) => {
-    const response = await fetch(`/api/mint${fresh ? '?fresh=1' : ''}`, {
-      method: 'GET',
-      credentials: 'same-origin',
-      headers: { Accept: 'application/json' },
-      cache: fresh ? 'no-store' : 'default'
-    });
-    const payload = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(payload.error || 'Live GEEK mint status is unavailable.');
-    if (!validStatus(payload)) throw new Error('The live GEEK deployment did not match this site’s pinned record. Minting is blocked.');
-    state.status = payload;
-    return payload;
+    try {
+      const response = await fetch(`/api/mint/${fresh ? '?fresh=1' : ''}`, {
+        method: 'GET',
+        credentials: 'same-origin',
+        headers: { Accept: 'application/json' },
+        cache: fresh ? 'no-store' : 'default',
+        signal: AbortSignal.timeout(25_000)
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || 'Live GEEK mint status is unavailable.');
+      if (!validStatus(payload)) throw new Error('Live status is stale or does not match the pinned GEEK deployment. Minting is paused.');
+      state.status = payload;
+      state.statusError = '';
+      return payload;
+    } catch (error) {
+      state.status = null;
+      state.statusError = error?.name === 'TimeoutError'
+        ? 'Live GEEK mint status timed out. This page will check again automatically.'
+        : String(error?.message || 'Live GEEK mint status is unavailable.');
+      throw error;
+    }
   };
 
   const parseWalletResult = (value) => {
@@ -167,7 +189,7 @@
     try {
       if (!window.kasware?.signKRC20Transaction) throw new Error('This Kasware version does not support KRC-20 mint transactions.');
       const status = await fetchStatus(true);
-      if (!status.mint.open) throw new Error('The GEEK mint is closed.');
+      if (status.mint.open !== true) throw new Error('The GEEK mint is closed.');
 
       const [network, accounts] = await Promise.all([
         window.kasware.getNetwork(),
@@ -187,9 +209,9 @@
       state.acknowledged = false;
       const checkbox = byId('mint-acknowledge');
       if (checkbox) checkbox.checked = false;
-      window.setTimeout(() => fetchStatus(true).then(render).catch(() => {}), 5_000);
+      window.setTimeout(() => refreshStatus(), 5_000);
     } catch (error) {
-      state.error = friendlyError(error);
+      if (!state.statusError) state.error = friendlyError(error);
     } finally {
       state.pending = false;
       render();
@@ -214,21 +236,27 @@
     render();
   });
   byId('mint-submit')?.addEventListener('click', mintOne);
-  byId('mint-refresh')?.addEventListener('click', async () => {
-    state.error = '';
+  const refreshStatus = async () => {
+    if (state.pending || state.refreshing) return;
+    state.refreshing = true;
+    render();
     try {
       await fetchStatus(true);
-    } catch (error) {
-      state.status = null;
-      state.error = friendlyError(error);
+    } catch {
+      // fetchStatus clears stale data and keeps minting paused on failure.
+    } finally {
+      state.refreshing = false;
+      render();
     }
-    render();
+  };
+  byId('mint-refresh')?.addEventListener('click', refreshStatus);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) refreshStatus();
   });
+  window.setInterval(() => {
+    if (!document.hidden) return refreshStatus();
+  }, 30_000);
 
   render();
-  fetchStatus().then(render).catch((error) => {
-    state.status = null;
-    state.error = friendlyError(error);
-    render();
-  });
+  refreshStatus();
 })();

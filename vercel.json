@@ -7,6 +7,9 @@
   "cleanUrls": true,
   "trailingSlash": true,
   "functions": {
+    "api/mint.js": {
+      "maxDuration": 30
+    },
     "api/identity.js": {
       "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
     },

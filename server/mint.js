@@ -1,4 +1,7 @@
 const KASPLEX_TOKEN_URL = 'https://api.kasplex.org/v1/krc20/token/GEEK';
+// Kasware's published mainnet fallback; never accept an upstream URL from a request.
+const KASPLEX_FALLBACK_URL = 'https://api-fallback.kasplex.org/v1/krc20/token/GEEK';
+const STATUS_SOURCES = [KASPLEX_TOKEN_URL, KASPLEX_FALLBACK_URL];
 const STATUS_CACHE_MS = 10_000;
 const DIGITS = /^\d{1,40}$/;
 
@@ -15,8 +18,6 @@ export const GEEK_DEPLOYMENT = Object.freeze({
   deploymentHash: 'c3cea245b394374b6d80d9fa82269967b56bd5d128a4db3152087a05e014d0b1',
   protocolFeeKas: '1'
 });
-
-let cachedStatus = null;
 
 const rawInteger = (value, label) => {
   const raw = String(value ?? '');
@@ -92,25 +93,54 @@ export const parseGeekMintStatus = (payload, checkedAt = Date.now()) => {
   };
 };
 
-export const loadGeekMintStatus = async ({ fetchImpl = fetch, now = Date.now(), force = false } = {}) => {
-  if (!force && cachedStatus && now - cachedStatus.checkedAt < STATUS_CACHE_MS) return cachedStatus;
-  try {
-    const response = await fetchImpl(KASPLEX_TOKEN_URL, {
-      headers: {
-        Accept: 'application/json',
-        'User-Agent': 'Geek-Protocol-HQ/1.0 mint-status'
-      },
-      signal: AbortSignal.timeout(9_000)
-    });
-    if (!response.ok) throw new Error('MINT_STATUS_UNAVAILABLE');
-    const status = parseGeekMintStatus(await response.json(), now);
-    cachedStatus = status;
-    return status;
-  } catch (error) {
-    if (error?.message === 'MINT_DEPLOYMENT_MISMATCH') throw error;
-    if (String(error?.message || '').startsWith('MINT_STATUS_INVALID:')) throw new Error('MINT_DEPLOYMENT_MISMATCH');
+export const createGeekMintStatusLoader = ({ fetchImpl = fetch, clock = Date.now, logger = console.warn } = {}) => {
+  let cachedStatus = null;
+  const report = (sourceUrl, reason, httpStatus = null) => {
+    // Fixed diagnostic fields only: never log wallet data, request headers, or upstream bodies.
+    try { logger({ event: 'geek_mint_status_failure', sourceUrl, reason, httpStatus }); } catch { /* Logging cannot change mint safety. */ }
+  };
+  return async ({ force = false } = {}) => {
+    const age = cachedStatus ? clock() - cachedStatus.checkedAt : Infinity;
+    if (!force && cachedStatus && age >= 0 && age < STATUS_CACHE_MS) return cachedStatus;
+    cachedStatus = null;
+
+    for (const sourceUrl of STATUS_SOURCES) {
+      let response;
+      try {
+        response = await fetchImpl(sourceUrl, {
+          headers: { Accept: 'application/json', 'User-Agent': 'Geek-Protocol-HQ/1.0 mint-status' },
+          cache: 'no-store',
+          redirect: 'error',
+          signal: AbortSignal.timeout(9_000)
+        });
+      } catch (error) {
+        report(sourceUrl, error?.name === 'TimeoutError' ? 'timeout' : 'transport_error');
+        continue;
+      }
+      if (!response.ok) {
+        report(sourceUrl, 'http_error', response.status);
+        if (response.status >= 500 || response.status === 429) continue;
+        throw new Error('MINT_STATUS_UNAVAILABLE');
+      }
+
+      // A reachable source reporting a mismatch or bad data must never be overridden
+      // by a second source. Fallback handles availability failures only.
+      try {
+        const status = parseGeekMintStatus(await response.json(), clock());
+        status.sourceUrl = sourceUrl;
+        cachedStatus = status;
+        return status;
+      } catch (error) {
+        const mismatch = error?.message === 'MINT_DEPLOYMENT_MISMATCH'
+          || String(error?.message || '').startsWith('MINT_STATUS_INVALID:');
+        report(sourceUrl, mismatch ? 'deployment_mismatch' : 'invalid_response', response.status);
+        throw new Error(mismatch ? 'MINT_DEPLOYMENT_MISMATCH' : 'MINT_STATUS_UNAVAILABLE');
+      }
+    }
     throw new Error('MINT_STATUS_UNAVAILABLE');
-  }
+  };
 };
+
+export const loadGeekMintStatus = createGeekMintStatusLoader();
 
 export const geekMintInscription = () => JSON.stringify({ p: 'KRC-20', op: 'mint', tick: GEEK_DEPLOYMENT.ticker });
