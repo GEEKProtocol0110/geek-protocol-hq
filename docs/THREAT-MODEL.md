@@ -64,6 +64,7 @@ The server-side value-moving boundary is intentionally absent. Adding a treasury
 | GP-INV-014 | A wallet challenge cannot move between allowed hostnames | Exact requesting HTTPS origin is signed and rechecked during verification |
 | GP-INV-015 | Higher-risk payout changes cannot silently bypass review | Persistent player notice, deterministic risk triggers, private review queue, stale-decision check, and settlement-disabled decision output |
 | GP-INV-016 | HQ only requests the pinned GEEK mint on mainnet while gross capacity remains | Server-side exact deployment check, client-side duplicate validation, fresh preflight, fixed type-3 inscription, zero added priority fee, and Kasware user approval |
+| GP-INV-017 | The browser cannot award XP, levels, prestige, achievements, or journey events | Ranked server computes progression from verified results; the profile API is read-only; history has a fixed retention bound |
 
 ## Residual Alpha risks
 

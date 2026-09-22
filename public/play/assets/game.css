@@ -67,3 +67,4 @@ h1,h2{font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-we
 .ranked-profile-note{display:block;margin-top:1rem;color:#68736f;font-size:.56rem;font-weight:900;letter-spacing:.1em}
 h1,h2,h3{text-wrap:balance;overflow-wrap:normal;word-break:normal}p,li{text-wrap:pretty}
 @media(max-width:680px){.start-copy h1{font-size:clamp(3.8rem,18vw,5.8rem)}.result-main h2{font-size:clamp(3.7rem,17vw,5.8rem)}.complete-screen h2{font-size:clamp(4rem,18vw,6.2rem)}}
+.player-wallet>.profile-link{position:relative;display:flex;flex-direction:column;align-items:flex-end;color:var(--paper);text-decoration:none}.profile-link>span{position:absolute;right:-.75rem;top:-.25rem;color:var(--cyan);font-size:.48rem;font-weight:950}.profile-link:hover strong{color:var(--cyan)}

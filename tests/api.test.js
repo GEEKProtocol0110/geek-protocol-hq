@@ -11,8 +11,12 @@ import rewardsHandler from '../api/rewards.js';
 import payoutReviewHandler from '../api/payout-review.js';
 import auditHandler from '../api/audit.js';
 import identityHandler from '../api/identity.js';
+import profileHandler from '../api/profile.js';
+import collectiblesHandler from '../api/collectibles.js';
 import kaspa from '@dfns/kaspa-wasm';
 import { isValidKaspaMainnetAddress } from '../server/kaspa-address.js';
+import { defaultProfile } from '../server/profile.js';
+import { deriveProgression, recordRoundJourney } from '../server/progression.js';
 import { loadQuestionBank } from '../server/questions.js';
 
 process.env.UPSTASH_REDIS_REST_URL = 'https://redis.test';
@@ -101,6 +105,73 @@ const execute = (command) => {
     return withScores ? entries.flatMap(([member, score]) => [member, String(score)]) : entries.map(([member]) => member);
   }
   if (name === 'EVAL') {
+    if (String(args[0]).includes('geek-sticker-trade-create-v1')) {
+      const keyCount = Number(args[1]);
+      const keys = args.slice(2, 2 + keyCount);
+      const values = args.slice(2 + keyCount);
+      const profile = JSON.parse(strings.get(keys[0]) || 'null');
+      if (!profile) return 'PROFILE_MISSING';
+      profile.stickerInventory ||= {};
+      profile.stickerReserved ||= {};
+      const owned = Number(profile.stickerInventory[values[0]] || 0);
+      const reserved = Number(profile.stickerReserved[values[0]] || 0);
+      if (owned - reserved < Number(values[1])) return 'INSUFFICIENT_STICKERS';
+      profile.stickerReserved[values[0]] = reserved + Number(values[1]);
+      strings.set(keys[0], JSON.stringify(profile));
+      strings.set(keys[1], String(values[2]));
+      execute(['ZADD', keys[2], values[4], values[5]]);
+      return 'OK';
+    }
+    if (String(args[0]).includes('geek-sticker-trade-accept-v1')) {
+      const keyCount = Number(args[1]);
+      const keys = args.slice(2, 2 + keyCount);
+      const values = args.slice(2 + keyCount);
+      const offer = JSON.parse(strings.get(keys[0]) || 'null');
+      if (!offer) return 'TRADE_NOT_FOUND';
+      if (offer.status !== 'open') return 'TRADE_CLOSED';
+      if (Number(offer.expiresAt) <= Number(values[0])) return 'TRADE_EXPIRED';
+      if (offer.sellerId === String(values[1])) return 'OWN_TRADE';
+      const seller = JSON.parse(strings.get(keys[1]) || 'null');
+      const buyer = JSON.parse(strings.get(keys[2]) || 'null');
+      if (!seller || !buyer) return 'PROFILE_MISSING';
+      seller.stickerInventory ||= {}; seller.stickerReserved ||= {};
+      buyer.stickerInventory ||= {}; buyer.stickerReserved ||= {};
+      const sellerOwned = Number(seller.stickerInventory[offer.giveSticker] || 0);
+      const sellerReserved = Number(seller.stickerReserved[offer.giveSticker] || 0);
+      if (sellerOwned < offer.giveQuantity || sellerReserved < offer.giveQuantity) return 'SELLER_INVENTORY_CHANGED';
+      const buyerOwned = Number(buyer.stickerInventory[offer.wantSticker] || 0);
+      const buyerReserved = Number(buyer.stickerReserved[offer.wantSticker] || 0);
+      if (buyerOwned - buyerReserved < offer.wantQuantity) return 'INSUFFICIENT_STICKERS';
+      seller.stickerInventory[offer.giveSticker] = sellerOwned - offer.giveQuantity;
+      seller.stickerReserved[offer.giveSticker] = sellerReserved - offer.giveQuantity;
+      seller.stickerInventory[offer.wantSticker] = Number(seller.stickerInventory[offer.wantSticker] || 0) + offer.wantQuantity;
+      buyer.stickerInventory[offer.wantSticker] = buyerOwned - offer.wantQuantity;
+      buyer.stickerInventory[offer.giveSticker] = Number(buyer.stickerInventory[offer.giveSticker] || 0) + offer.giveQuantity;
+      offer.status = 'accepted';
+      strings.set(keys[1], JSON.stringify(seller));
+      strings.set(keys[2], JSON.stringify(buyer));
+      strings.set(keys[0], JSON.stringify(offer));
+      execute(['ZREM', keys[3], offer.id]);
+      return 'OK';
+    }
+    if (String(args[0]).includes('geek-sticker-trade-cancel-v1')) {
+      const keyCount = Number(args[1]);
+      const keys = args.slice(2, 2 + keyCount);
+      const values = args.slice(2 + keyCount);
+      const offer = JSON.parse(strings.get(keys[0]) || 'null');
+      if (!offer) return 'TRADE_NOT_FOUND';
+      if (offer.status !== 'open') return 'TRADE_CLOSED';
+      if (offer.sellerId !== String(values[0])) return 'TRADE_FORBIDDEN';
+      const profile = JSON.parse(strings.get(keys[1]) || 'null');
+      if (!profile) return 'PROFILE_MISSING';
+      profile.stickerReserved ||= {};
+      profile.stickerReserved[offer.giveSticker] = Math.max(0, Number(profile.stickerReserved[offer.giveSticker] || 0) - offer.giveQuantity);
+      offer.status = 'cancelled';
+      strings.set(keys[1], JSON.stringify(profile));
+      strings.set(keys[0], JSON.stringify(offer));
+      execute(['ZREM', keys[2], offer.id]);
+      return 'OK';
+    }
     if (String(args[0]).includes('geek-identity-bind-v1')) {
       const keyCount = Number(args[1]);
       const keys = args.slice(2, 2 + keyCount);
@@ -171,6 +242,123 @@ const startSession = async (displayName) => {
   return res.headers['set-cookie'].split(';')[0];
 };
 
+const sessionIdFromCookie = (cookie) => cookie.split('=')[1];
+
+test('levels, prestige, category mastery, and journey history derive from server XP', () => {
+  const profile = defaultProfile();
+  profile.xp = 6_250;
+  profile.totalCorrect = 10;
+  recordRoundJourney(profile, {
+    runId: 'server-run', mode: 'gauntlet', category: 'kaspa', round: 1,
+    correct: 10, answered: 10, score: 14_000, xpEarned: 250, reward: 100, maxStreak: 10
+  });
+  const progression = deriveProgression(profile);
+  assert.equal(progression.prestige, 1);
+  assert.equal(progression.level, 1);
+  assert.equal(profile.categoryStats.kaspa.correct, 10);
+  assert.equal(profile.totalQuestions, 10);
+  assert.equal(profile.longestStreak, 10);
+  assert.deepEqual(profile.journey.map((event) => event.type), ['prestige', 'sticker', 'sticker', 'sticker', 'round']);
+
+  for (let round = 2; round <= 100; round += 1) {
+    profile.xp += 10;
+    recordRoundJourney(profile, {
+      runId: `server-run-${round}`, mode: 'daily', category: 'technology', round,
+      correct: 1, answered: 1, score: 1_000, xpEarned: 10, reward: 0, maxStreak: 1
+    });
+  }
+  assert.equal(profile.journey.length, 80);
+});
+
+test('the 500-Geek blueprint and avatar unlocks are honest and server-controlled', async () => {
+  const cookie = await startSession('Collector Geek');
+  const getRes = response();
+  await collectiblesHandler(request('GET', undefined, cookie), getRes);
+  assert.equal(getRes.statusCode, 200);
+  assert.equal(getRes.body.collection.blueprint.supply, 500);
+  assert.equal(getRes.body.collection.blueprint.tiers.reduce((sum, tier) => sum + tier.count, 0), 500);
+  assert.deepEqual(getRes.body.collection.blueprint.anchors.map((anchor) => anchor.name), ['GIGA', 'A.C.E.']);
+  assert.equal(getRes.body.collection.onChainTransfersEnabled, false);
+  assert.equal(getRes.body.collection.avatars[0].owned, true);
+  assert.equal(getRes.body.collection.avatars[1].owned, false);
+
+  const lockedRes = response();
+  await collectiblesHandler(request('POST', { action: 'select-avatar', avatarId: 'protocol-core' }, cookie), lockedRes);
+  assert.equal(lockedRes.statusCode, 403);
+  assert.equal(lockedRes.body.code, 'AVATAR_LOCKED');
+});
+
+test('sticker offers reserve inventory and settle both players atomically', async () => {
+  const sellerCookie = await startSession('Sticker Seller');
+  const buyerCookie = await startSession('Sticker Buyer');
+  const sellerId = sessionIdFromCookie(sellerCookie);
+  const buyerId = sessionIdFromCookie(buyerCookie);
+  strings.set(`geek:profile:${sellerId}`, JSON.stringify({ ...defaultProfile(), stickerInventory: { 'giga-core': 2 } }));
+  strings.set(`geek:profile:${buyerId}`, JSON.stringify({ ...defaultProfile(), stickerInventory: { 'kaspa-k': 2 } }));
+
+  const createRes = response();
+  await collectiblesHandler(request('POST', { action: 'create-trade', giveSticker: 'giga-core', giveQuantity: 2, wantSticker: 'kaspa-k', wantQuantity: 1 }, sellerCookie), createRes);
+  assert.equal(createRes.statusCode, 200);
+  assert.equal(createRes.body.trades.length, 1);
+  assert.equal(createRes.body.collection.stickers.find((item) => item.id === 'giga-core').available, 0);
+  const tradeId = createRes.body.trades[0].id;
+
+  const oversellRes = response();
+  await collectiblesHandler(request('POST', { action: 'create-trade', giveSticker: 'giga-core', giveQuantity: 1, wantSticker: 'kaspa-k', wantQuantity: 1 }, sellerCookie), oversellRes);
+  assert.equal(oversellRes.statusCode, 409);
+  assert.equal(oversellRes.body.code, 'STICKER_INSUFFICIENT_STICKERS');
+
+  const ownRes = response();
+  await collectiblesHandler(request('POST', { action: 'accept-trade', tradeId }, sellerCookie), ownRes);
+  assert.equal(ownRes.statusCode, 409);
+  assert.equal(ownRes.body.code, 'STICKER_OWN_TRADE');
+
+  const acceptRes = response();
+  await collectiblesHandler(request('POST', { action: 'accept-trade', tradeId }, buyerCookie), acceptRes);
+  assert.equal(acceptRes.statusCode, 200);
+  assert.equal(acceptRes.body.trades.length, 0);
+  const seller = JSON.parse(strings.get(`geek:profile:${sellerId}`));
+  const buyer = JSON.parse(strings.get(`geek:profile:${buyerId}`));
+  assert.equal(seller.stickerInventory['giga-core'], 0);
+  assert.equal(seller.stickerReserved['giga-core'], 0);
+  assert.equal(seller.stickerInventory['kaspa-k'], 1);
+  assert.equal(buyer.stickerInventory['kaspa-k'], 1);
+  assert.equal(buyer.stickerInventory['giga-core'], 2);
+});
+
+test('cancelling a sticker offer releases the reserved inventory', async () => {
+  const cookie = await startSession('Cancel Geek');
+  const playerId = sessionIdFromCookie(cookie);
+  strings.set(`geek:profile:${playerId}`, JSON.stringify({ ...defaultProfile(), stickerInventory: { 'dag-node': 1 } }));
+  const createRes = response();
+  await collectiblesHandler(request('POST', { action: 'create-trade', giveSticker: 'dag-node', giveQuantity: 1, wantSticker: 'ace-eye', wantQuantity: 1 }, cookie), createRes);
+  const cancelRes = response();
+  await collectiblesHandler(request('POST', { action: 'cancel-trade', tradeId: createRes.body.trades[0].id }, cookie), cancelRes);
+  assert.equal(cancelRes.statusCode, 200);
+  assert.equal(cancelRes.body.trades.length, 0);
+  assert.equal(cancelRes.body.collection.stickers.find((item) => item.id === 'dag-node').available, 1);
+});
+
+test('expired sticker offers release reservations instead of stranding inventory', async () => {
+  const cookie = await startSession('Expiry Geek');
+  const playerId = sessionIdFromCookie(cookie);
+  strings.set(`geek:profile:${playerId}`, JSON.stringify({ ...defaultProfile(), stickerInventory: { 'signal-verified': 1 } }));
+  const createRes = response();
+  await collectiblesHandler(request('POST', { action: 'create-trade', giveSticker: 'signal-verified', giveQuantity: 1, wantSticker: 'toccata', wantQuantity: 1 }, cookie), createRes);
+  const tradeId = createRes.body.trades[0].id;
+  const tradeKey = `geek:sticker-trade:${tradeId}`;
+  const offer = JSON.parse(strings.get(tradeKey));
+  offer.expiresAt = Date.now() - 1;
+  strings.set(tradeKey, JSON.stringify(offer));
+  sorted.get('geek:sticker-trades:open').set(tradeId, offer.expiresAt);
+
+  const getRes = response();
+  await collectiblesHandler(request('GET', undefined, cookie), getRes);
+  assert.equal(getRes.statusCode, 200);
+  assert.equal(getRes.body.trades.length, 0);
+  assert.equal(getRes.body.collection.stickers.find((item) => item.id === 'signal-verified').available, 1);
+});
+
 test('sessions, live rooms, and server-authoritative leaderboard work together', async () => {
   const hostCookie = await startSession('Host Geek');
   const guestCookie = await startSession('Guest Geek');
@@ -231,12 +419,26 @@ test('sessions, live rooms, and server-authoritative leaderboard work together',
   }
   assert.equal(rankedPayload.roundResult.correct, 10);
   assert.equal(rankedPayload.run.status, 'between-rounds');
+  assert.equal(rankedPayload.profile.journey.some((event) => event.type === 'round'), true);
+  assert.equal(rankedPayload.profile.categoryStats.kaspa.correct, 10);
+  assert.equal(rankedPayload.profile.totalQuestions, 10);
+  assert.equal(rankedPayload.profile.progression.level >= 1, true);
 
   const finishRes = response();
   await rankedHandler(request('POST', { action: 'finish', runId: rankedPayload.run.id }, hostCookie), finishRes);
   assert.equal(finishRes.statusCode, 200);
   assert.equal(finishRes.body.leaderboard.entries[0].name, 'Host Geek');
   assert.ok(finishRes.body.leaderboard.entries[0].score > 0);
+
+  const profileRes = response();
+  await profileHandler(request('GET', undefined, hostCookie), profileRes);
+  assert.equal(profileRes.statusCode, 200);
+  assert.equal(profileRes.body.verified, true);
+  assert.equal(profileRes.body.profile.player.name, 'Host Geek');
+  assert.equal(profileRes.body.profile.stats.totalRuns, 1);
+  assert.equal(profileRes.body.profile.stats.totalQuestions, 10);
+  assert.equal(profileRes.body.profile.categories.find((category) => category.key === 'kaspa').correct, 10);
+  assert.equal(profileRes.body.profile.journey.at(-1).type, 'round');
 
   const boardRes = response();
   await leaderboardHandler(request('GET', undefined, '', { category: 'kaspa' }), boardRes);
