@@ -75,7 +75,7 @@
 }
 
 @media (max-width: 620px) {
-  .cce-hero h1 { font-size: clamp(3.4rem, 16vw, 5.2rem); }
+  .cce-hero h1 { font-size: clamp(3.4rem, 15vw, 5.2rem); }
   .cce-hero-copy > p { font-size: 1rem; }
   .pipeline { font-size: .7rem; }
   .reward-card { display: none; }

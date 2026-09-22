@@ -30,3 +30,4 @@
 .security-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 @media (max-width: 900px) { .security-hero, .security-heading, .audit-scope { grid-template-columns: 1fr; } .control-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 620px) { .security-main { padding-top: 80px; } .security-hero { min-height: auto; } .security-hero h1 { font-size: clamp(3.2rem, 18vw, 5.4rem); } .status-board div { align-items: flex-start; flex-direction: column; gap: .4rem; } .status-board dd { text-align: left; } .control-grid { grid-template-columns: 1fr; } .control-grid article { min-height: 220px; } .audit-scope { gap: 2.5rem; } }
+@media (max-width: 620px) { .security-hero h1 { font-size: clamp(3.2rem, 16vw, 5rem); } .launch-lock h2 { font-size: clamp(3.2rem, 15vw, 5.2rem); } }
