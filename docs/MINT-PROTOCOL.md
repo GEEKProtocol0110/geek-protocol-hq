@@ -1,6 +1,6 @@
 # GEEK Fair-Mint Protocol
 
-Version: 1.0  
+Version: 1.1
 Network: Kaspa Mainnet  
 Status: implemented, not independently audited
 
@@ -48,7 +48,7 @@ Normal protocol and Kaspa commit/reveal network fees still apply. The project pu
 
 ## Fail-closed sequence
 
-1. The server fetches the GEEK record from the fixed Kasplex KRC-20 endpoint.
+1. The server fetches the GEEK record from the fixed Kasplex KRC-20 primary endpoint. On a transport failure, HTTP 429, or HTTP 5xx, it tries the fixed mainnet fallback published in Kasware's source. Each attempt is bounded to nine seconds; redirects are refused. An HTTP-success response with invalid data or a mismatched deployment stops the sequence without trying another source.
 2. It validates every pinned deployment field, integer encoding, supply relationship, and remaining gross mint capacity.
 3. The browser independently rechecks the network, deployment hash, ticker, per-mint limit, transaction type, custody flag, and exact three-field inscription.
 4. A fresh server check runs immediately before each wallet request.
@@ -59,6 +59,17 @@ Normal protocol and Kaspa commit/reveal network fees still apply. The project pu
 
 An unavailable indexer, malformed response, deployment mismatch, exhausted supply, wrong wallet network, changed wallet account, missing wallet capability, or invalid result blocks the request.
 
+## Availability, recovery, and diagnostics
+
+- Primary: `https://api.kasplex.org/v1/krc20/token/GEEK`
+- Fallback: `https://api-fallback.kasplex.org/v1/krc20/token/GEEK`
+- The fallback comes from Kasware's `KASPLEX_FALLBACK_MAINNET` constant at [commit 78bb300](https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/shared/constant/index.ts). This expands the transport endpoint list within the same Kasplex trust boundary; it does not introduce an independent consensus source. Both responses must pass the exact same deployment and supply checks. The API reports which endpoint answered in `sourceUrl`.
+- Successful display status may be cached for ten seconds, with no stale-while-revalidate allowance. A fresh check bypasses and invalidates the prior in-process cache. Failures return a non-cacheable 503; availability failures include `Retry-After: 30`.
+- The visible page checks fresh status every 30 seconds and when brought back to the foreground. Checks pause during wallet approval and do not invoke the wallet. A failed check clears displayed live totals; recovery only restores status. Each mint still requires a direct click and a fresh preflight. Client responses older than 60 seconds are rejected.
+- Automatic recovery does not clear transaction errors or retry a transaction whose outcome is uncertain. The user must review wallet activity before explicitly acknowledging another request.
+- Server logs emit `geek_mint_status_failure` with a fixed source URL, reason, and HTTP status. No wallet identifiers, request headers, raw exception messages, or response bodies are logged. Use Vercel runtime logs to distinguish primary failure, fallback failure, and deployment mismatch.
+- On 2026-09-22, production status returned 503, the primary returned HTTP 530 / Cloudflare 1016, and the documented fallback returned a connection failure from the check environment. These observations do not prove a global outage. The recovery change cannot guarantee availability while both upstreams are unreachable.
+
 ## Audit evidence
 
 - Canonical status validation: `server/mint.js`
@@ -66,6 +77,7 @@ An unavailable indexer, malformed response, deployment mismatch, exhausted suppl
 - Browser preflight and wallet request: `public/mint/assets/mint.js`
 - User disclosures and confirmation: `public/mint/index.html`
 - Unit and mismatch cases: `tests/mint.test.js`
+- Browser recovery and wallet boundary cases: `tests/mint-client.test.js`
 - Machine-checked invariants: `scripts/security-check.mjs`
 - Control mapping: `security/controls.json`
 

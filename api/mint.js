@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   try {
     const fresh = req.query?.fresh === '1';
     const status = await loadGeekMintStatus({ force: fresh });
-    res.setHeader('Cache-Control', fresh ? 'no-store, max-age=0' : 'public, s-maxage=10, stale-while-revalidate=30');
+    res.setHeader('Cache-Control', fresh ? 'no-store, max-age=0' : 'public, max-age=0, s-maxage=10, must-revalidate');
     return sendJson(res, 200, {
       ok: true,
       ...status,
@@ -22,6 +22,7 @@ export default async function handler(req, res) {
       }
     });
   } catch (error) {
+    if (error?.message === 'MINT_STATUS_UNAVAILABLE') res.setHeader('Retry-After', '30');
     return handleApiError(res, error);
   }
 }
