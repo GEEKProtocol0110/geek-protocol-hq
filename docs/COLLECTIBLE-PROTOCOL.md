@@ -28,6 +28,8 @@ This lets the community test the game loop before an irreversible collection dep
 
 The deterministic manifest model in `server/geek-collection.js` assigns every slot a stable number, tier, district, discipline, archetype, and art-production status. It does not pretend unfinished artwork exists. Slots 499 and 500 are reserved for GIGA and A.C.E.
 
+The complete creative and production contract is documented in `docs/GEEK-500-ART-BIBLE.md`. The deterministic public manifest is generated at `public/data/geek-500.json` and checked during every verification run.
+
 ## Sticker integrity model
 
 1. The ranked server awards stickers from server-scored results.

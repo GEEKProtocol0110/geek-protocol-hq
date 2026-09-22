@@ -6,7 +6,9 @@
   "scripts": {
     "test": "node --test",
     "security:check": "node scripts/security-check.mjs",
-    "verify": "npm test && npm run security:check"
+    "collection:generate": "node scripts/generate-geek-collection.mjs",
+    "collection:check": "node scripts/check-geek-collection.mjs",
+    "verify": "npm test && npm run collection:check && npm run security:check"
   },
   "engines": {
     "node": ">=20"

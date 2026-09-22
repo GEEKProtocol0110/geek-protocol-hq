@@ -25,7 +25,7 @@ const walk = async (directory) => {
   return files;
 };
 
-for (const path of ['SECURITY.md', 'docs/THREAT-MODEL.md', 'docs/MINT-PROTOCOL.md', 'docs/IDENTITY-PROTOCOL.md', 'docs/PAYOUT-RISK-CONTROLS.md', 'docs/DEPENDENCY-PROVENANCE.md', 'docs/AUDIT-SCOPE.md', 'docs/COLLECTIBLE-PROTOCOL.md', 'security/controls.json', 'package-lock.json']) {
+for (const path of ['SECURITY.md', 'docs/THREAT-MODEL.md', 'docs/MINT-PROTOCOL.md', 'docs/IDENTITY-PROTOCOL.md', 'docs/PAYOUT-RISK-CONTROLS.md', 'docs/DEPENDENCY-PROVENANCE.md', 'docs/AUDIT-SCOPE.md', 'docs/COLLECTIBLE-PROTOCOL.md', 'docs/GEEK-500-ART-BIBLE.md', 'public/data/geek-500.json', 'security/controls.json', 'package-lock.json']) {
   check(await exists(path), `required evidence exists: ${path}`);
 }
 
@@ -98,7 +98,13 @@ check(stickerTrades.includes('geek-sticker-trade-create-v1'), 'sticker offers re
 check(stickerTrades.includes('geek-sticker-trade-accept-v1'), 'sticker exchanges settle both profiles atomically');
 check(stickerTrades.includes('geek-sticker-trade-cancel-v1'), 'sticker cancellation releases inventory atomically');
 check(collectionBlueprint.includes('supply: 500'), 'collection blueprint pins the 500-Geek supply');
-check(collectionBlueprint.includes("name: 'GIGA'") && collectionBlueprint.includes("name: 'A.C.E.'"), 'collection blueprint preserves both mythic anchors');
+check(collectionBlueprint.includes('onChainOwnershipActive: false'), 'collection ownership remains off-chain until audited deployment');
+check(collectionBlueprint.includes('metadataFrozen: false'), 'unfinished metadata cannot claim frozen status');
+check(collectionBlueprint.includes('independentlyAudited: false'), 'collection audit status remains honest');
+const publicCollection = JSON.parse(await text('public/data/geek-500.json'));
+check(publicCollection.identities?.length === 500, 'public collection manifest contains exactly 500 identities');
+check(publicCollection.blueprint?.anchors?.map((identity) => identity.name).join('|') === 'GIGA|A.C.E.', 'collection blueprint preserves both mythic anchors');
+check(publicCollection.identities?.every((identity) => identity.metadata?.image === null && identity.production?.approved === false), 'public collection manifest makes no finished art claims');
 
 const config = JSON.parse(await text('vercel.json'));
 check(config.installCommand === 'npm ci --ignore-scripts', 'production installs the locked dependency graph without lifecycle scripts');
@@ -116,7 +122,7 @@ check(packageLock.packages?.['node_modules/@dfns/kaspa-wasm']?.integrity === 'sh
 const controls = JSON.parse(await text('security/controls.json'));
 check(controls.auditStatus === 'not-independently-audited', 'public audit status is honest');
 check(controls.settlementStatus === 'disabled', 'control map keeps settlement disabled');
-check(Array.isArray(controls.controls) && controls.controls.length >= 21, 'control map contains reviewable evidence');
+check(Array.isArray(controls.controls) && controls.controls.length >= 22, 'control map contains reviewable evidence');
 for (const control of controls.controls || []) {
   check(/^GP-[A-Z0-9-]+$/.test(control.id), `control has stable identifier: ${control.id || 'missing'}`);
   for (const evidence of control.evidence || []) check(await exists(evidence), `control evidence exists: ${control.id} -> ${evidence}`);
