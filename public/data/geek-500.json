@@ -16,24 +16,24 @@
         "id": "geek-499",
         "number": 499,
         "name": "GIGA",
-        "description": "GIGA is a high-order identity from Nebula Archive, carrying the Courage signal through the Omniscient Grid.",
+        "description": "GIGA is the community heart of the Omniscient Grid: hope, culture, family, and the human reason the protocol exists.",
         "tier": "Mythic",
-        "district": "nebula-archive",
-        "districtName": "Nebula Archive",
-        "category": "science-fiction",
-        "discipline": "Science fiction",
+        "district": "giga-district",
+        "districtName": "GIGA District",
+        "category": "community",
+        "discipline": "Community culture and hope",
         "role": "Community Heart",
         "lore": {
-          "sector": "GRID-03.499",
-          "home": "Orbital memory library",
-          "credo": "Imagine far enough to find the future.",
-          "dispatch": "GIGA plans challenge routes through uncertain data. Its field signal is courage.",
+          "sector": "GRID-HEART.499",
+          "home": "The living hearth at the center of the Grid",
+          "credo": "All hope, no hype.",
+          "dispatch": "GIGA keeps the community signal human, hopeful, and connected to the families and learners it serves.",
           "alignment": "GIGA / community"
         },
         "traits": {
           "archetype": "Community Heart",
           "frame": "Ascendant",
-          "silhouette": "layered command shell",
+          "silhouette": "open golden community frame",
           "visor": "Open Holo",
           "core": "Community Heart",
           "tool": "Proof Shield",
@@ -41,11 +41,11 @@
           "signal": "Courage",
           "pose": "Scanning",
           "aura": "Genesis Field",
-          "motif": "star maps",
+          "motif": "golden heart pulse",
           "palette": [
-            "#a993ff",
-            "#0c0920",
-            "#e8e0ff"
+            "#f6c643",
+            "#151006",
+            "#fff0b8"
           ]
         },
         "metadata": {
@@ -62,7 +62,7 @@
             },
             {
               "trait_type": "District",
-              "value": "Nebula Archive"
+              "value": "GIGA District"
             },
             {
               "trait_type": "Archetype",
@@ -109,24 +109,24 @@
         "id": "geek-500",
         "number": 500,
         "name": "A.C.E.",
-        "description": "A.C.E. is a high-order identity from Tech Spire, carrying the Empathy signal through the Omniscient Grid.",
+        "description": "A.C.E. is the protocol mind of the Omniscient Grid, coordinating challenges and protecting the integrity of the learning signal.",
         "tier": "Mythic",
-        "district": "tech-spire",
-        "districtName": "Tech Spire",
-        "category": "technology",
-        "discipline": "Technology",
+        "district": "ace-spine",
+        "districtName": "A.C.E. Spine",
+        "category": "protocol",
+        "discipline": "Verification and orchestration",
         "role": "Protocol Mind",
         "lore": {
-          "sector": "GRID-04.500",
-          "home": "Vertical systems laboratory",
-          "credo": "Understand the tool before trusting it.",
-          "dispatch": "A.C.E. models futures the Grid has not reached. Its field signal is empathy.",
+          "sector": "GRID-SPINE.500",
+          "home": "The central cognition spine of the Grid",
+          "credo": "Clarity protects the signal.",
+          "dispatch": "A.C.E. coordinates challenges, evaluates verified learning signals, and guards the Grid against the Static.",
           "alignment": "A.C.E. / protocol"
         },
         "traits": {
           "archetype": "Protocol Mind",
           "frame": "Ascendant",
-          "silhouette": "halo projection frame",
+          "silhouette": "central cerebral lattice",
           "visor": "Open Holo",
           "core": "Cerebral Engine",
           "tool": "Logic Gauntlet",
@@ -134,11 +134,11 @@
           "signal": "Empathy",
           "pose": "Building",
           "aura": "Genesis Field",
-          "motif": "stacked logic gates",
+          "motif": "cerebral network",
           "palette": [
-            "#3cc8ff",
-            "#07131b",
-            "#dff7ff"
+            "#70e6dc",
+            "#071218",
+            "#dffcff"
           ]
         },
         "metadata": {
@@ -155,7 +155,7 @@
             },
             {
               "trait_type": "District",
-              "value": "Tech Spire"
+              "value": "A.C.E. Spine"
             },
             {
               "trait_type": "Archetype",
@@ -346,6 +346,36 @@
         "environment": "Live signal amphitheater",
         "credo": "Shared knowledge becomes culture.",
         "motif": "broadcast waves"
+      }
+    ],
+    "anchorRealms": [
+      {
+        "id": "giga-district",
+        "name": "GIGA District",
+        "category": "community",
+        "discipline": "Community culture and hope",
+        "palette": [
+          "#f6c643",
+          "#151006",
+          "#fff0b8"
+        ],
+        "environment": "The living hearth at the center of the Grid",
+        "credo": "All hope, no hype.",
+        "motif": "golden heart pulse"
+      },
+      {
+        "id": "ace-spine",
+        "name": "A.C.E. Spine",
+        "category": "protocol",
+        "discipline": "Verification and orchestration",
+        "palette": [
+          "#70e6dc",
+          "#071218",
+          "#dffcff"
+        ],
+        "environment": "The central cognition spine of the Grid",
+        "credo": "Clarity protects the signal.",
+        "motif": "cerebral network"
       }
     ],
     "artStatuses": {
@@ -46682,24 +46712,24 @@
       "id": "geek-499",
       "number": 499,
       "name": "GIGA",
-      "description": "GIGA is a high-order identity from Nebula Archive, carrying the Courage signal through the Omniscient Grid.",
+      "description": "GIGA is the community heart of the Omniscient Grid: hope, culture, family, and the human reason the protocol exists.",
       "tier": "Mythic",
-      "district": "nebula-archive",
-      "districtName": "Nebula Archive",
-      "category": "science-fiction",
-      "discipline": "Science fiction",
+      "district": "giga-district",
+      "districtName": "GIGA District",
+      "category": "community",
+      "discipline": "Community culture and hope",
       "role": "Community Heart",
       "lore": {
-        "sector": "GRID-03.499",
-        "home": "Orbital memory library",
-        "credo": "Imagine far enough to find the future.",
-        "dispatch": "GIGA plans challenge routes through uncertain data. Its field signal is courage.",
+        "sector": "GRID-HEART.499",
+        "home": "The living hearth at the center of the Grid",
+        "credo": "All hope, no hype.",
+        "dispatch": "GIGA keeps the community signal human, hopeful, and connected to the families and learners it serves.",
         "alignment": "GIGA / community"
       },
       "traits": {
         "archetype": "Community Heart",
         "frame": "Ascendant",
-        "silhouette": "layered command shell",
+        "silhouette": "open golden community frame",
         "visor": "Open Holo",
         "core": "Community Heart",
         "tool": "Proof Shield",
@@ -46707,11 +46737,11 @@
         "signal": "Courage",
         "pose": "Scanning",
         "aura": "Genesis Field",
-        "motif": "star maps",
+        "motif": "golden heart pulse",
         "palette": [
-          "#a993ff",
-          "#0c0920",
-          "#e8e0ff"
+          "#f6c643",
+          "#151006",
+          "#fff0b8"
         ]
       },
       "metadata": {
@@ -46728,7 +46758,7 @@
           },
           {
             "trait_type": "District",
-            "value": "Nebula Archive"
+            "value": "GIGA District"
           },
           {
             "trait_type": "Archetype",
@@ -46775,24 +46805,24 @@
       "id": "geek-500",
       "number": 500,
       "name": "A.C.E.",
-      "description": "A.C.E. is a high-order identity from Tech Spire, carrying the Empathy signal through the Omniscient Grid.",
+      "description": "A.C.E. is the protocol mind of the Omniscient Grid, coordinating challenges and protecting the integrity of the learning signal.",
       "tier": "Mythic",
-      "district": "tech-spire",
-      "districtName": "Tech Spire",
-      "category": "technology",
-      "discipline": "Technology",
+      "district": "ace-spine",
+      "districtName": "A.C.E. Spine",
+      "category": "protocol",
+      "discipline": "Verification and orchestration",
       "role": "Protocol Mind",
       "lore": {
-        "sector": "GRID-04.500",
-        "home": "Vertical systems laboratory",
-        "credo": "Understand the tool before trusting it.",
-        "dispatch": "A.C.E. models futures the Grid has not reached. Its field signal is empathy.",
+        "sector": "GRID-SPINE.500",
+        "home": "The central cognition spine of the Grid",
+        "credo": "Clarity protects the signal.",
+        "dispatch": "A.C.E. coordinates challenges, evaluates verified learning signals, and guards the Grid against the Static.",
         "alignment": "A.C.E. / protocol"
       },
       "traits": {
         "archetype": "Protocol Mind",
         "frame": "Ascendant",
-        "silhouette": "halo projection frame",
+        "silhouette": "central cerebral lattice",
         "visor": "Open Holo",
         "core": "Cerebral Engine",
         "tool": "Logic Gauntlet",
@@ -46800,11 +46830,11 @@
         "signal": "Empathy",
         "pose": "Building",
         "aura": "Genesis Field",
-        "motif": "stacked logic gates",
+        "motif": "cerebral network",
         "palette": [
-          "#3cc8ff",
-          "#07131b",
-          "#dff7ff"
+          "#70e6dc",
+          "#071218",
+          "#dffcff"
         ]
       },
       "metadata": {
@@ -46821,7 +46851,7 @@
           },
           {
             "trait_type": "District",
-            "value": "Tech Spire"
+            "value": "A.C.E. Spine"
           },
           {
             "trait_type": "Archetype",

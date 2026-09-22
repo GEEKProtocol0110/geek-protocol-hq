@@ -11,6 +11,8 @@ The Omniscient Grid is a living knowledge network built around one idea: curiosi
 
 The central conflict is not a war for tokens. It is the fight against the Static: misinformation, forgotten context, manufactured certainty, and systems that reward attention without understanding. Every verified lesson restores part of the signal.
 
+GIGA occupies the **GIGA District**, the living community hearth at the Grid’s center. A.C.E. occupies the **A.C.E. Spine**, the cognition and verification channel connecting every learning district. These are anchor realms, not two additional learning categories.
+
 ## The eight districts
 
 | District | Learning world | Environment | Visual motif | Credo |

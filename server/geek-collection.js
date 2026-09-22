@@ -18,6 +18,11 @@ const DISTRICTS = [
   { id: 'culture-circuit', name: 'Culture Circuit', category: 'pop-culture', discipline: 'Pop culture', palette: ['#73e69b', '#07150d', '#ddffe9'], environment: 'Live signal amphitheater', credo: 'Shared knowledge becomes culture.', motif: 'broadcast waves' }
 ];
 
+const ANCHOR_REALMS = {
+  499: { id: 'giga-district', name: 'GIGA District', category: 'community', discipline: 'Community culture and hope', palette: ['#f6c643', '#151006', '#fff0b8'], environment: 'The living hearth at the center of the Grid', credo: 'All hope, no hype.', motif: 'golden heart pulse' },
+  500: { id: 'ace-spine', name: 'A.C.E. Spine', category: 'protocol', discipline: 'Verification and orchestration', palette: ['#70e6dc', '#071218', '#dffcff'], environment: 'The central cognition spine of the Grid', credo: 'Clarity protects the signal.', motif: 'cerebral network' }
+};
+
 const ARCHETYPES = [
   { name: 'Archivist', function: 'Preserves sources and reconstructs lost context', silhouette: 'long memory mantle' },
   { name: 'Builder', function: 'Turns verified ideas into working systems', silhouette: 'heavy utility frame' },
@@ -72,7 +77,7 @@ const identityName = (number, district) => {
 
 export const identityForNumber = (number) => {
   if (!Number.isInteger(number) || number < 1 || number > 500) throw new Error('GEEK_EDITION_INVALID');
-  const district = DISTRICTS[(number - 1) % DISTRICTS.length];
+  const district = ANCHOR_REALMS[number] || DISTRICTS[(number - 1) % DISTRICTS.length];
   const archetype = ARCHETYPES[(number - 1) % ARCHETYPES.length];
   const tier = tierForNumber(number);
   const name = identityName(number, district);
@@ -84,16 +89,16 @@ export const identityForNumber = (number) => {
   const id = `geek-${String(number).padStart(3, '0')}`;
   return {
     schemaVersion: '1.0', collection: 'The Omniscient Grid', symbol: 'GEEK-500', id, number, name,
-    description: `${name} is ${number >= 491 ? 'a high-order identity' : `a ${archetype.name.toLowerCase()}`} from ${district.name}, carrying the ${signal} signal through the Omniscient Grid.`,
+    description: number === 499 ? 'GIGA is the community heart of the Omniscient Grid: hope, culture, family, and the human reason the protocol exists.' : number === 500 ? 'A.C.E. is the protocol mind of the Omniscient Grid, coordinating challenges and protecting the integrity of the learning signal.' : `${name} is ${number >= 491 ? 'a high-order identity' : `a ${archetype.name.toLowerCase()}`} from ${district.name}, carrying the ${signal} signal through the Omniscient Grid.`,
     tier: tier.name, district: district.id, districtName: district.name, category: district.category, discipline: district.discipline, role,
     lore: {
-      sector: `GRID-${String(DISTRICTS.indexOf(district) + 1).padStart(2, '0')}.${String(number).padStart(3, '0')}`,
+      sector: number === 499 ? 'GRID-HEART.499' : number === 500 ? 'GRID-SPINE.500' : `GRID-${String(DISTRICTS.indexOf(district) + 1).padStart(2, '0')}.${String(number).padStart(3, '0')}`,
       home: district.environment, credo: district.credo,
-      dispatch: `${name} ${archetype.function.charAt(0).toLowerCase()}${archetype.function.slice(1)}. Its field signal is ${signal.toLowerCase()}.`,
+      dispatch: number === 499 ? 'GIGA keeps the community signal human, hopeful, and connected to the families and learners it serves.' : number === 500 ? 'A.C.E. coordinates challenges, evaluates verified learning signals, and guards the Grid against the Static.' : `${name} ${archetype.function.charAt(0).toLowerCase()}${archetype.function.slice(1)}. Its field signal is ${signal.toLowerCase()}.`,
       alignment: number === 499 ? 'GIGA / community' : number === 500 ? 'A.C.E. / protocol' : 'Cognoscenti / learner'
     },
     traits: {
-      archetype: role, frame, silhouette: archetype.silhouette, visor: pick(VISORS, number, 7), core,
+      archetype: role, frame, silhouette: number === 499 ? 'open golden community frame' : number === 500 ? 'central cerebral lattice' : archetype.silhouette, visor: pick(VISORS, number, 7), core,
       tool: pick(TOOLS, number, 17), temperament: pick(TEMPERAMENTS, number, 23), signal,
       pose: pick(POSES, number, 31), aura: tier.aura, motif: district.motif, palette: [...district.palette]
     },
@@ -122,6 +127,7 @@ export const geekCollectionBlueprint = Object.freeze({
   anchors: [identityForNumber(499), identityForNumber(500)],
   tiers: TIERS.map((tier) => ({ name: tier.name, count: tier.count, firstEdition: countBeforeTier(tier.name) + 1, lastEdition: countBeforeTier(tier.name) + tier.count })),
   districts: DISTRICTS.map((district) => ({ ...district, palette: [...district.palette] })),
+  anchorRealms: Object.values(ANCHOR_REALMS).map((realm) => ({ ...realm, palette: [...realm.palette] })),
   artStatuses: { 'design-pending': 498, 'anchor-concept': 2, approved: 0 },
   deployment: { configured: false, onChainOwnershipActive: false, metadataFrozen: false, independentlyAudited: false }
 });

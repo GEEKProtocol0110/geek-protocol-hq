@@ -16,8 +16,10 @@ test('tier allocations total 500 and preserve the two mythic anchors', () => {
   assert.deepEqual(actual, { Common: 250, Rare: 125, Epic: 75, Legendary: 40, Elite: 8, Mythic: 2 });
   assert.equal(identityForNumber(499).name, 'GIGA');
   assert.equal(identityForNumber(499).role, 'Community Heart');
+  assert.equal(identityForNumber(499).districtName, 'GIGA District');
   assert.equal(identityForNumber(500).name, 'A.C.E.');
   assert.equal(identityForNumber(500).role, 'Protocol Mind');
+  assert.equal(identityForNumber(500).districtName, 'A.C.E. Spine');
 });
 
 test('every identity has production, lore, metadata, and no pay-to-win utility', () => {
