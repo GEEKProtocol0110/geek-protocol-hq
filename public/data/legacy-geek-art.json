@@ -1,0 +1,236 @@
+{
+  "blueprint": {
+    "schemaVersion": "1.0.0",
+    "title": "Geek Protocol Legacy Art Archive",
+    "recoveredAssetCount": 10,
+    "approvedAssetCount": 0,
+    "status": "archival-concept-only",
+    "sourceWindow": "July 2025",
+    "editionMapping": "unmapped",
+    "onChainOwnershipActive": false,
+    "mintReady": false,
+    "independentlyReviewed": false
+  },
+  "records": [
+    {
+      "id": "legacy-ace-corrupted-code",
+      "name": "A.C.E. — Corrupted Code",
+      "character": "A.C.E.",
+      "visibleTier": null,
+      "originalFilename": "A.C.E. Emerges from Corrupted Code.png",
+      "sourceCreatedAt": "2025-07-15T17:41:46.311967Z",
+      "fileName": "ace-corrupted-code.webp",
+      "alt": "A luminous blue A.C.E. dataform standing behind a vintage computer in a dark archive.",
+      "note": "Early A.C.E. origin concept. Preserved as lore art; not mapped to a mint edition.",
+      "asset": {
+        "path": "/collection/archive/legacy-art/ace-corrupted-code.webp",
+        "sha256": "392793e86c7870ee1e002dbb1eb8a9a31940846ab6d1a7dbcdc58fed4d0bfc83"
+      },
+      "production": {
+        "status": "legacy-recovered",
+        "approved": false,
+        "mintReady": false,
+        "mappedEdition": null,
+        "onChainOwnershipActive": false
+      }
+    },
+    {
+      "id": "legacy-ai-geek-common",
+      "name": "AI Geek",
+      "character": "AI Geek",
+      "visibleTier": "Common",
+      "originalFilename": "Futuristic AI Geek and Companion.png",
+      "sourceCreatedAt": "2025-07-16T12:43:47.166550Z",
+      "fileName": "ai-geek-common.webp",
+      "alt": "Pixel-art AI Geek wearing a circuit hoodie beside a small robot companion.",
+      "note": "The artwork visibly identifies this concept as AI Geek Common.",
+      "asset": {
+        "path": "/collection/archive/legacy-art/ai-geek-common.webp",
+        "sha256": "6f6a8b4ad595e31761219cd53a166c60a926e0488e40cacaf41edbd5dddc4aa9"
+      },
+      "production": {
+        "status": "legacy-recovered",
+        "approved": false,
+        "mintReady": false,
+        "mappedEdition": null,
+        "onChainOwnershipActive": false
+      }
+    },
+    {
+      "id": "legacy-speedrunner-geek-legendary",
+      "name": "Speedrunner Geek",
+      "character": "Speedrunner Geek",
+      "visibleTier": "Legendary",
+      "originalFilename": "Legendary Speedrunner Geek in Action.png",
+      "sourceCreatedAt": "2025-07-15T18:36:09.808382Z",
+      "fileName": "speedrunner-geek-legendary.webp",
+      "alt": "Pixel-art crowned speedrunner holding a trophy while sprinting through a neon trail.",
+      "note": "The artwork visibly identifies this concept as Speedrunner Geek Legendary.",
+      "asset": {
+        "path": "/collection/archive/legacy-art/speedrunner-geek-legendary.webp",
+        "sha256": "4697953d6463037f9c59c0014aad2fcd1fca5e7e7fc27e86d10ce66b3513581f"
+      },
+      "production": {
+        "status": "legacy-recovered",
+        "approved": false,
+        "mintReady": false,
+        "mappedEdition": null,
+        "onChainOwnershipActive": false
+      }
+    },
+    {
+      "id": "legacy-hacker-geek",
+      "name": "Hacker Geek",
+      "character": "Hacker Geek",
+      "visibleTier": null,
+      "originalFilename": "Hacker Geek in Pixel Art.png",
+      "sourceCreatedAt": "2025-07-16T11:40:54.405200Z",
+      "fileName": "hacker-geek-concept.webp",
+      "alt": "Pixel-art hooded Hacker Geek wearing dark glasses and using a green laptop.",
+      "note": "Legacy character concept. No reliable edition or rarity mapping survived.",
+      "asset": {
+        "path": "/collection/archive/legacy-art/hacker-geek-concept.webp",
+        "sha256": "c3dc6850a1105f40fadb2bd64837c6541bdd1967458d5ce21af3514e5c9718f1"
+      },
+      "production": {
+        "status": "legacy-recovered",
+        "approved": false,
+        "mintReady": false,
+        "mappedEdition": null,
+        "onChainOwnershipActive": false
+      }
+    },
+    {
+      "id": "legacy-sysadmin-geek",
+      "name": "SysAdmin Geek",
+      "character": "SysAdmin Geek",
+      "visibleTier": null,
+      "originalFilename": "Pixel Art SysAdmin Geek.png",
+      "sourceCreatedAt": "2025-07-16T12:00:54.674747Z",
+      "fileName": "sysadmin-geek-concept.webp",
+      "alt": "Pixel-art SysAdmin Geek carrying a server and a red maintenance tool.",
+      "note": "Legacy base concept. It remains distinct from the surviving Epic variant.",
+      "asset": {
+        "path": "/collection/archive/legacy-art/sysadmin-geek-concept.webp",
+        "sha256": "771476123cb490676b55b41bf3d175c1814a9ebc438b48f56253a924e675673b"
+      },
+      "production": {
+        "status": "legacy-recovered",
+        "approved": false,
+        "mintReady": false,
+        "mappedEdition": null,
+        "onChainOwnershipActive": false
+      }
+    },
+    {
+      "id": "legacy-puzzle-geek-common",
+      "name": "Puzzle Geek",
+      "character": "Puzzle Geek",
+      "visibleTier": "Common",
+      "originalFilename": "Pixelated Puzzle Enthusiast in Action.png",
+      "sourceCreatedAt": "2025-07-21T00:18:22.575969Z",
+      "fileName": "puzzle-geek-common.webp",
+      "alt": "Pixel-art Puzzle Geek holding a multicolored cube with puzzle symbols around him.",
+      "note": "The artwork visibly identifies this concept as Puzzle Geek Common.",
+      "asset": {
+        "path": "/collection/archive/legacy-art/puzzle-geek-common.webp",
+        "sha256": "c0ef6807dacf1493cc802546d51510f8bfc210ffb8b5e7f0181c039650096443"
+      },
+      "production": {
+        "status": "legacy-recovered",
+        "approved": false,
+        "mintReady": false,
+        "mappedEdition": null,
+        "onChainOwnershipActive": false
+      }
+    },
+    {
+      "id": "legacy-streamer-geek-common",
+      "name": "Streamer Geek",
+      "character": "Streamer Geek",
+      "visibleTier": "Common",
+      "originalFilename": "Pixelated Streamer in Retro Style.png",
+      "sourceCreatedAt": "2025-07-18T10:46:05.071289Z",
+      "fileName": "streamer-geek-common.webp",
+      "alt": "Pixel-art Streamer Geek wearing headphones at a microphone and control deck.",
+      "note": "The artwork visibly identifies this concept as Streamer Geek Common.",
+      "asset": {
+        "path": "/collection/archive/legacy-art/streamer-geek-common.webp",
+        "sha256": "c9e1e44b31ab27235e920abc27a51c5e5ea47af083ffe533b0c1399620033efb"
+      },
+      "production": {
+        "status": "legacy-recovered",
+        "approved": false,
+        "mintReady": false,
+        "mappedEdition": null,
+        "onChainOwnershipActive": false
+      }
+    },
+    {
+      "id": "legacy-vr-geek-rare",
+      "name": "VR Geek",
+      "character": "VR Geek",
+      "visibleTier": "Rare",
+      "originalFilename": "Pixelated VR Geek in Action.png",
+      "sourceCreatedAt": "2025-07-14T18:21:14.483410Z",
+      "fileName": "vr-geek-rare.webp",
+      "alt": "Pixel-art VR Geek wearing a bright blue headset and motion gloves.",
+      "note": "The artwork visibly identifies this concept as VR Geek Rare.",
+      "asset": {
+        "path": "/collection/archive/legacy-art/vr-geek-rare.webp",
+        "sha256": "25478b16c52235d2ce2fe2835c010f024f8637d3e06d452d45f15ae98ea45fc4"
+      },
+      "production": {
+        "status": "legacy-recovered",
+        "approved": false,
+        "mintReady": false,
+        "mappedEdition": null,
+        "onChainOwnershipActive": false
+      }
+    },
+    {
+      "id": "legacy-sysadmin-geek-epic",
+      "name": "SysAdmin Geek",
+      "character": "SysAdmin Geek",
+      "visibleTier": "Epic",
+      "originalFilename": "SysAdmin Geek at Work.png",
+      "sourceCreatedAt": "2025-07-16T12:05:18.315470Z",
+      "fileName": "sysadmin-geek-epic.webp",
+      "alt": "Pixel-art Epic SysAdmin Geek working at a terminal in a purple server room.",
+      "note": "The artwork visibly identifies this concept as SysAdmin Geek Epic.",
+      "asset": {
+        "path": "/collection/archive/legacy-art/sysadmin-geek-epic.webp",
+        "sha256": "ac7e83605741be1408a27cfe1dc42fa4e8532656721768266964aaa61ebcb338"
+      },
+      "production": {
+        "status": "legacy-recovered",
+        "approved": false,
+        "mintReady": false,
+        "mappedEdition": null,
+        "onChainOwnershipActive": false
+      }
+    },
+    {
+      "id": "legacy-vr-geek",
+      "name": "VR Geek",
+      "character": "VR Geek",
+      "visibleTier": null,
+      "originalFilename": "VR Geek in Retro Pixel Style.png",
+      "sourceCreatedAt": "2025-07-14T16:52:00.138894Z",
+      "fileName": "vr-geek-concept.webp",
+      "alt": "Pixel-art VR Geek holding a motion controller against a blue background.",
+      "note": "Early VR Geek base concept. No reliable edition or rarity mapping survived.",
+      "asset": {
+        "path": "/collection/archive/legacy-art/vr-geek-concept.webp",
+        "sha256": "947d027dd4ee5dd31f74447bafff486e90b88681f32ec75ce1b7efed7e3a1162"
+      },
+      "production": {
+        "status": "legacy-recovered",
+        "approved": false,
+        "mintReady": false,
+        "mappedEdition": null,
+        "onChainOwnershipActive": false
+      }
+    }
+  ]
+}

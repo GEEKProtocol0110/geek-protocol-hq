@@ -30,6 +30,8 @@ The deterministic manifest model in `server/geek-collection.js` assigns every sl
 
 The complete creative and production contract is documented in `docs/GEEK-500-ART-BIBLE.md`. The deterministic public manifest is generated at `public/data/geek-500.json` and checked during every verification run.
 
+Recovered July 2025 character concepts are isolated in a separate, hashed legacy archive at `public/data/legacy-geek-art.json`. They are visible for historical continuity but remain unapproved, unmapped to edition numbers, non-transferable, and outside the mint contract until provenance and visual review are complete.
+
 ## Sticker integrity model
 
 1. The ranked server awards stickers from server-scored results.

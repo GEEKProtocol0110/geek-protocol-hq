@@ -25,7 +25,7 @@ const walk = async (directory) => {
   return files;
 };
 
-for (const path of ['SECURITY.md', 'docs/THREAT-MODEL.md', 'docs/MINT-PROTOCOL.md', 'docs/IDENTITY-PROTOCOL.md', 'docs/PAYOUT-RISK-CONTROLS.md', 'docs/DEPENDENCY-PROVENANCE.md', 'docs/AUDIT-SCOPE.md', 'docs/COLLECTIBLE-PROTOCOL.md', 'docs/GEEK-500-ART-BIBLE.md', 'public/data/geek-500.json', 'security/controls.json', 'package-lock.json']) {
+for (const path of ['SECURITY.md', 'docs/THREAT-MODEL.md', 'docs/MINT-PROTOCOL.md', 'docs/IDENTITY-PROTOCOL.md', 'docs/PAYOUT-RISK-CONTROLS.md', 'docs/DEPENDENCY-PROVENANCE.md', 'docs/AUDIT-SCOPE.md', 'docs/COLLECTIBLE-PROTOCOL.md', 'docs/GEEK-500-ART-BIBLE.md', 'public/data/geek-500.json', 'public/data/legacy-geek-art.json', 'security/controls.json', 'package-lock.json']) {
   check(await exists(path), `required evidence exists: ${path}`);
 }
 
@@ -105,6 +105,10 @@ const publicCollection = JSON.parse(await text('public/data/geek-500.json'));
 check(publicCollection.identities?.length === 500, 'public collection manifest contains exactly 500 identities');
 check(publicCollection.blueprint?.anchors?.map((identity) => identity.name).join('|') === 'GIGA|A.C.E.', 'collection blueprint preserves both mythic anchors');
 check(publicCollection.identities?.every((identity) => identity.metadata?.image === null && identity.production?.approved === false), 'public collection manifest makes no finished art claims');
+const legacyArt = JSON.parse(await text('public/data/legacy-geek-art.json'));
+check(legacyArt.records?.length === 10, 'legacy archive exposes exactly ten recovered concepts');
+check(legacyArt.blueprint?.approvedAssetCount === 0 && legacyArt.blueprint?.editionMapping === 'unmapped', 'legacy archive does not invent approval or edition mappings');
+check(legacyArt.records?.every((record) => record.production?.approved === false && record.production?.mintReady === false && record.production?.mappedEdition === null && /^[a-f0-9]{64}$/.test(record.asset?.sha256)), 'legacy concepts remain unmapped and carry reproducible hashes');
 
 const config = JSON.parse(await text('vercel.json'));
 check(config.installCommand === 'npm ci --ignore-scripts', 'production installs the locked dependency graph without lifecycle scripts');

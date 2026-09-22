@@ -14,7 +14,7 @@
 
   const cardArt = (identity) => {
     if (identity.id === 'geek-499') return '<img src="../assets/kaspa-culture.png" alt="GIGA concept art" loading="lazy" />';
-    if (identity.id === 'geek-500') return '<img src="../assets/omniscient-grid.png" alt="A.C.E. concept art" loading="lazy" />';
+    if (identity.id === 'geek-500') return '<img src="./archive/legacy-art/ace-corrupted-code.webp" alt="Recovered A.C.E. origin concept art" loading="lazy" />';
     return `<div class="slot-art" aria-hidden="true"><i></i><strong>${String(identity.number).padStart(3, '0')}</strong><span>${escapeHtml(identity.traits.signal.slice(0, 3).toUpperCase())}</span></div>`;
   };
 
@@ -53,6 +53,19 @@
     history.replaceState(null, '', `${location.pathname}${location.search}`);
   };
 
+  const renderLegacyArchive = async () => {
+    const container = $('[data-legacy-grid]');
+    try {
+      const response = await fetch('../data/legacy-geek-art.json', { headers: { Accept: 'application/json' } });
+      if (!response.ok) throw new Error('Archive unavailable');
+      const archive = await response.json();
+      if (archive.blueprint?.status !== 'archival-concept-only' || archive.blueprint?.approvedAssetCount !== 0 || archive.blueprint?.onChainOwnershipActive !== false || archive.records?.length !== 10) throw new Error('Archive boundary invalid');
+      container.innerHTML = archive.records.map((record) => `<article class="legacy-card"><div class="legacy-art"><img src="${escapeHtml(record.asset.path)}" alt="${escapeHtml(record.alt)}" loading="lazy" /><em>LEGACY RECOVERED</em></div><div class="legacy-copy"><span>${escapeHtml(record.visibleTier || 'UNMAPPED TIER')} · JULY 2025</span><h3>${escapeHtml(record.name)}</h3><p>${escapeHtml(record.note)}</p><small title="SHA-256 ${escapeHtml(record.asset.sha256)}">SHA-256 · ${escapeHtml(record.asset.sha256.slice(0, 12))}…</small><b>NOT APPROVED · NOT MINTED</b></div></article>`).join('');
+    } catch {
+      container.innerHTML = '<p class="collection-loading">The legacy archive could not be verified, so recovered artwork is not being displayed.</p>';
+    }
+  };
+
   const initialize = async () => {
     try {
       const response = await fetch('../data/geek-500.json', { headers: { Accept: 'application/json' } });
@@ -64,6 +77,7 @@
       $('[data-district]').insertAdjacentHTML('beforeend', filterDistricts.map((district) => option(district.id, district.name)).join(''));
       renderDistricts();
       renderGrid();
+      await renderLegacyArchive();
       if (/^#geek-\d{3}$/.test(location.hash)) openIdentity(location.hash.slice(1));
     } catch {
       $('[data-geek-grid]').innerHTML = '<p class="collection-loading">The Grid manifest could not be verified. No collection data will be shown from an unverified source.</p>';
