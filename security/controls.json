@@ -125,6 +125,12 @@
       "evidence": ["server/geek-collection.js", "server/collectibles.js", "public/profile/index.html", "docs/COLLECTIBLE-PROTOCOL.md"]
     },
     {
+      "id": "GP-INV-020",
+      "title": "Deterministic 500-edition manifest and art provenance gates",
+      "status": "implemented-design-production",
+      "evidence": ["server/geek-collection.js", "scripts/generate-geek-collection.mjs", "scripts/check-geek-collection.mjs", "tests/collection.test.js", "public/data/geek-500.json", "docs/GEEK-500-ART-BIBLE.md"]
+    },
+    {
       "id": "GP-GATE-INDEPENDENT-AUDIT",
       "title": "Independent application and settlement audits",
       "status": "required-before-settlement",
