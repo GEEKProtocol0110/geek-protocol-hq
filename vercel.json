@@ -6,6 +6,12 @@
   "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": true,
+  "rewrites": [
+    { "source": "/api/profile", "destination": "/api/session?service=profile" },
+    { "source": "/api/profile/", "destination": "/api/session?service=profile" },
+    { "source": "/api/collectibles", "destination": "/api/session?service=collectibles" },
+    { "source": "/api/collectibles/", "destination": "/api/session?service=collectibles" }
+  ],
   "functions": {
     "api/mint.js": {
       "maxDuration": 30

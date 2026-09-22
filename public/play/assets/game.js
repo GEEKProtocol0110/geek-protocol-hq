@@ -43,7 +43,7 @@
   let activeCategory = Object.hasOwn(CATEGORY_BANKS, queryParams.get('category')) ? queryParams.get('category') : 'kaspa';
   let activeMode = Object.hasOwn(GAME_MODES, queryParams.get('mode')) ? queryParams.get('mode') : 'gauntlet';
   let communityReady = false;
-  let profile = { balance: 0, xp: 0, bestRound: 0, bestScore: 0, totalRuns: 0, totalCorrect: 0 };
+  let profile = { balance: 0, xp: 0, bestRound: 0, bestScore: 0, totalRuns: 0, totalCorrect: 0, progression: { level: 1, prestige: 0 } };
   let run = null;
   let currentQuestion = null;
   let timerId = null;
@@ -52,7 +52,7 @@
   let locked = false;
 
   const elements = {
-    screens: $$('.screen'), level: $('[data-level]'), xp: $('[data-xp]'), balance: $('[data-balance]'), ladder: $('[data-ladder]'),
+    screens: $$('.screen'), level: $('[data-level]'), prestige: $('[data-prestige]'), xp: $('[data-xp]'), balance: $('[data-balance]'), ladder: $('[data-ladder]'),
     round: $('[data-round]'), roundTotal: $('[data-round-total]'), questionNumber: $('[data-question-number]'), questionTotal: $('[data-question-total]'), correct: $('[data-correct]'), streak: $('[data-streak]'),
     score: $('[data-score]'), timer: $('[data-timer]'), timerLine: $('[data-timer-line]'), timerWrap: $('.timer-wrap'),
     questionProgress: $('[data-question-progress]'), category: $('[data-category]'), difficulty: $('[data-difficulty]'),
@@ -86,8 +86,9 @@
   const postRanked = (action, body = {}) => api('/api/ranked', { method: 'POST', body: JSON.stringify({ action, ...body }) });
 
   const updateProfileUI = () => {
-    const level = Math.max(1, Math.floor(profile.xp / 250) + 1);
+    const level = profile.progression?.level || Math.max(1, Math.floor(profile.xp / 250) + 1);
     elements.level.textContent = String(level);
+    elements.prestige.textContent = `P${profile.progression?.prestige || 0}`;
     elements.xp.textContent = format.format(profile.xp);
     elements.balance.textContent = format.format(profile.balance);
     elements.careerRound.textContent = pad(profile.bestRound);

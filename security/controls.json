@@ -107,6 +107,24 @@
       "evidence": ["server/mint.js", "api/mint.js", "public/mint/index.html", "public/mint/assets/mint.js", "tests/mint.test.js", "docs/MINT-PROTOCOL.md"]
     },
     {
+      "id": "GP-INV-017",
+      "title": "Server-authoritative progression and bounded journey history",
+      "status": "implemented-alpha",
+      "evidence": ["server/progression.js", "api/ranked.js", "server/player-api.js", "tests/api.test.js"]
+    },
+    {
+      "id": "GP-INV-018",
+      "title": "Atomic off-chain collectible inventory and trades",
+      "status": "implemented-alpha",
+      "evidence": ["server/collectibles.js", "server/sticker-trades.js", "server/player-api.js", "api/session.js", "tests/api.test.js", "docs/COLLECTIBLE-PROTOCOL.md"]
+    },
+    {
+      "id": "GP-INV-019",
+      "title": "Honest NFT and on-chain transfer boundary",
+      "status": "implemented-design-gate",
+      "evidence": ["server/geek-collection.js", "server/collectibles.js", "public/profile/index.html", "docs/COLLECTIBLE-PROTOCOL.md"]
+    },
+    {
       "id": "GP-GATE-INDEPENDENT-AUDIT",
       "title": "Independent application and settlement audits",
       "status": "required-before-settlement",

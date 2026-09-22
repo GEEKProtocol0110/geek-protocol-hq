@@ -3,6 +3,7 @@ import { recordCommunityQuestionUse } from '../server/cce.js';
 import { categories, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
 import { recordVerifiedScore } from '../server/leaderboard.js';
 import { loadProfile, saveProfile, saveProfileWithAudit } from '../server/profile.js';
+import { recordRoundJourney, withProgression } from '../server/progression.js';
 import { questionById, selectRoundQuestionIds, shuffleOptions } from '../server/questions.js';
 import { rateLimit, redis } from '../server/redis.js';
 import { playerIdFor, requireSession } from '../server/session.js';
@@ -112,6 +113,7 @@ const startRound = async (run, profile) => {
 const finishRun = async (run, session, profile) => {
   if (run.status === 'finished') return { leaderboard: await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode }) };
   profile.totalRuns += 1;
+  if (run.mode === 'gauntlet' && run.completedRound >= 10) profile.gauntletsCompleted += 1;
   await saveProfile(playerIdFor(session), profile);
   const leaderboard = await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode });
   run.status = 'finished';
@@ -174,6 +176,18 @@ const answerQuestion = async (run, session, profile, body) => {
     profile.balance += reward;
     profile.xp += xpEarned;
     profile.totalCorrect += run.correct;
+    recordRoundJourney(profile, {
+      runId: run.id,
+      mode: run.mode,
+      category: run.category,
+      round: run.round,
+      correct: run.correct,
+      answered: run.questionIndex + 1,
+      score: run.roundScore,
+      xpEarned,
+      reward,
+      maxStreak: run.maxStreak
+    });
     if (run.mode === 'gauntlet') {
       profile.bestRound = Math.max(profile.bestRound, run.round);
       profile.bestScore = Math.max(profile.bestScore, run.totalScore);
@@ -228,7 +242,7 @@ const answerQuestion = async (run, session, profile, body) => {
     result,
     roundResult,
     run: safeRun(run),
-    profile
+    profile: withProgression(profile)
   };
   run.lastResponse = response;
   await saveRun(run);
@@ -241,7 +255,7 @@ export default async function handler(req, res) {
   try {
     const session = await requireSession(req);
     const playerId = playerIdFor(session);
-    if (req.method === 'GET') return sendJson(res, 200, { ok: true, profile: await loadProfile(playerId), verified: true });
+    if (req.method === 'GET') return sendJson(res, 200, { ok: true, profile: withProgression(await loadProfile(playerId)), verified: true });
     if (req.method !== 'POST') return methodNotAllowed(res);
     const body = parseBody(req);
     const action = String(body.action || '');
@@ -265,7 +279,7 @@ export default async function handler(req, res) {
       }
       const question = await startRound(run, profile);
       await Promise.all([saveRun(run), saveProfile(playerId, profile)]);
-      return sendJson(res, 201, { ok: true, verified: true, run: safeRun(run), profile, question });
+      return sendJson(res, 201, { ok: true, verified: true, run: safeRun(run), profile: withProgression(profile), question });
     }
     const run = await loadRun(body.runId, session);
     const profile = await loadProfile(playerId);
@@ -278,7 +292,7 @@ export default async function handler(req, res) {
       run.questionIndex += 1;
       const question = await issueQuestion(run);
       await saveRun(run);
-      return sendJson(res, 200, { ok: true, verified: true, run: safeRun(run), profile, question });
+      return sendJson(res, 200, { ok: true, verified: true, run: safeRun(run), profile: withProgression(profile), question });
     }
     if (action === 'continue') {
       if (run.mode !== 'gauntlet' || run.status !== 'between-rounds' || run.round >= run.maxRounds) throw new Error('RUN_STATE_INVALID');
@@ -310,12 +324,12 @@ export default async function handler(req, res) {
           })
           : saveProfile(playerId, profile)
       ]);
-      return sendJson(res, 200, { ok: true, verified: true, run: safeRun(run), profile, question });
+      return sendJson(res, 200, { ok: true, verified: true, run: safeRun(run), profile: withProgression(profile), question });
     }
     if (action === 'finish') {
       if (!['between-rounds', 'question', 'awaiting-next', 'finished'].includes(run.status)) throw new Error('RUN_STATE_INVALID');
       const finished = await finishRun(run, session, profile);
-      return sendJson(res, 200, { ok: true, verified: true, run: safeRun(run), profile, ...finished });
+      return sendJson(res, 200, { ok: true, verified: true, run: safeRun(run), profile: withProgression(profile), ...finished });
     }
     throw new Error('INVALID_REQUEST');
   } catch (error) {

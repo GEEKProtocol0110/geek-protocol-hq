@@ -1,7 +1,7 @@
 import { auditWriteCommands, createAuditRecord } from './audit.js';
 import { pipeline, redis } from './redis.js';
 
-const keyFor = (sessionId) => `geek:profile:${sessionId}`;
+export const profileKeyFor = (sessionId) => `geek:profile:${sessionId}`;
 
 export const defaultProfile = () => ({
   balance: 0,
@@ -12,6 +12,14 @@ export const defaultProfile = () => ({
   bestSpeedScore: 0,
   totalRuns: 0,
   totalCorrect: 0,
+  totalQuestions: 0,
+  longestStreak: 0,
+  gauntletsCompleted: 0,
+  categoryStats: {},
+  journey: [],
+  avatarId: 'giga-genesis',
+  stickerInventory: { 'giga-core': 2, 'kaspa-k': 2, 'dag-node': 1, 'signal-verified': 1 },
+  stickerReserved: {},
   payoutAddress: '',
   payoutAddressSetAt: 0,
   payoutAddressVersion: 0,
@@ -24,7 +32,7 @@ export const defaultProfile = () => ({
 });
 
 export const loadProfile = async (sessionId) => {
-  const raw = await redis('GET', keyFor(sessionId));
+  const raw = await redis('GET', profileKeyFor(sessionId));
   if (!raw) return defaultProfile();
   try {
     return { ...defaultProfile(), ...JSON.parse(raw) };
@@ -34,7 +42,7 @@ export const loadProfile = async (sessionId) => {
 };
 
 export const saveProfile = async (sessionId, profile) => {
-  await redis('SET', keyFor(sessionId), JSON.stringify(profile));
+  await redis('SET', profileKeyFor(sessionId), JSON.stringify(profile));
   return profile;
 };
 
@@ -46,7 +54,7 @@ export const saveProfileWithAudit = async (sessionId, profile, auditInput, extra
     ...auditInput
   });
   await pipeline([
-    ['SET', keyFor(sessionId), JSON.stringify(profile)],
+    ['SET', profileKeyFor(sessionId), JSON.stringify(profile)],
     ...extraCommands,
     ...auditWriteCommands(record)
   ], true);

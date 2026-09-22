@@ -69,7 +69,7 @@ The preference remains ineligible for settlement. `ownershipVerified` is true on
 
 ## Recovery boundary
 
-Recovery restores the persistent player ID and its profile, XP, Alpha balance, leaderboard identity, C.C.E. contribution history, and payout preference. It does not restore an in-progress ranked run or lobby seat, which remain bound to an ephemeral browser session.
+Recovery restores the persistent player ID and its profile, XP, level, prestige, bounded journey history, Alpha balance, leaderboard identity, C.C.E. contribution history, and payout preference. It does not restore an in-progress ranked run or lobby seat, which remain bound to an ephemeral browser session.
 
 The current Alpha supports one immutable recovery wallet per player. Payout-setting mutations now create persistent in-product notices, but out-of-band email or mobile alerts, wallet rotation, social recovery, and administrative recovery remain deliberately absent pending separate design and review.
 

@@ -115,6 +115,14 @@ export const handleApiError = (res, error) => {
   if (code === 'IDENTITY_AUTHORIZATION_FAILED') return sendJson(res, 503, { ok: false, code, error: 'A protected wallet authorization could not be created.' });
   if (code === 'IDENTITY_STATE_CONFLICT') return sendJson(res, 409, { ok: false, code, error: 'The player identity changed during verification. Request a new wallet challenge.' });
   if (code === 'DAILY_ALREADY_PLAYED') return sendJson(res, 409, { ok: false, code, error: 'Today’s verified Daily Signal has already been started. A new challenge unlocks at 00:00 UTC.' });
+  if (code === 'AVATAR_LOCKED') return sendJson(res, 403, { ok: false, code, error: 'That Geek identity has not been unlocked yet.' });
+  if (code === 'STICKER_TRADE_INVALID') return sendJson(res, 400, { ok: false, code, error: 'Choose two different stickers and a quantity from one to nine.' });
+  if (code === 'STICKER_INSUFFICIENT_STICKERS') return sendJson(res, 409, { ok: false, code, error: 'Not enough unreserved stickers are available for that trade.' });
+  if (code === 'STICKER_OWN_TRADE') return sendJson(res, 409, { ok: false, code, error: 'You cannot accept your own sticker offer.' });
+  if (code === 'STICKER_TRADE_CLOSED' || code === 'STICKER_TRADE_EXPIRED' || code === 'STICKER_SELLER_INVENTORY_CHANGED') return sendJson(res, 409, { ok: false, code, error: 'That sticker offer is no longer available.' });
+  if (code === 'STICKER_TRADE_NOT_FOUND') return sendJson(res, 404, { ok: false, code, error: 'That sticker offer could not be found.' });
+  if (code === 'STICKER_TRADE_FORBIDDEN') return sendJson(res, 403, { ok: false, code, error: 'Only the player who created this offer can cancel it.' });
+  if (code === 'STICKER_TRADE_FAILED') return sendJson(res, 503, { ok: false, code, error: 'The sticker exchange could not be completed safely.' });
   if (code === 'INVALID_BODY' || code === 'INVALID_REQUEST') return sendJson(res, 400, { ok: false, error: 'The request was not valid.' });
   console.error('Geek API error', error);
   return sendJson(res, 500, { ok: false, error: 'The community service hit an unexpected error.' });

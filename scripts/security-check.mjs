@@ -25,7 +25,7 @@ const walk = async (directory) => {
   return files;
 };
 
-for (const path of ['SECURITY.md', 'docs/THREAT-MODEL.md', 'docs/MINT-PROTOCOL.md', 'docs/IDENTITY-PROTOCOL.md', 'docs/PAYOUT-RISK-CONTROLS.md', 'docs/DEPENDENCY-PROVENANCE.md', 'docs/AUDIT-SCOPE.md', 'security/controls.json', 'package-lock.json']) {
+for (const path of ['SECURITY.md', 'docs/THREAT-MODEL.md', 'docs/MINT-PROTOCOL.md', 'docs/IDENTITY-PROTOCOL.md', 'docs/PAYOUT-RISK-CONTROLS.md', 'docs/DEPENDENCY-PROVENANCE.md', 'docs/AUDIT-SCOPE.md', 'docs/COLLECTIBLE-PROTOCOL.md', 'security/controls.json', 'package-lock.json']) {
   check(await exists(path), `required evidence exists: ${path}`);
 }
 
@@ -83,6 +83,23 @@ check(audit.includes("createHmac('sha256'"), 'audit records support HMAC-SHA-256
 check(audit.includes('hashAuditIdentifier'), 'audit actors and objects are pseudonymized');
 check(!audit.includes('payoutAddress'), 'audit module does not depend on raw payout addresses');
 
+const progression = await text('server/progression.js');
+const profileApi = await text('server/player-api.js');
+check(progression.includes('recordRoundJourney'), 'progression is written by the ranked server');
+check(progression.includes('JOURNEY_LIMIT'), 'journey history has a fixed retention bound');
+check(profileApi.includes('requireSession(req)'), 'player journey requires an authenticated session');
+check(!profileApi.includes("req.method === 'POST'"), 'player journey API exposes no browser progression write');
+
+const collectibles = await text('server/collectibles.js');
+const stickerTrades = await text('server/sticker-trades.js');
+const collectionBlueprint = await text('server/geek-collection.js');
+check(collectibles.includes('onChainTransfersEnabled: false'), 'collectible API keeps on-chain transfers disabled');
+check(stickerTrades.includes('geek-sticker-trade-create-v1'), 'sticker offers reserve inventory atomically');
+check(stickerTrades.includes('geek-sticker-trade-accept-v1'), 'sticker exchanges settle both profiles atomically');
+check(stickerTrades.includes('geek-sticker-trade-cancel-v1'), 'sticker cancellation releases inventory atomically');
+check(collectionBlueprint.includes('supply: 500'), 'collection blueprint pins the 500-Geek supply');
+check(collectionBlueprint.includes("name: 'GIGA'") && collectionBlueprint.includes("name: 'A.C.E.'"), 'collection blueprint preserves both mythic anchors');
+
 const config = JSON.parse(await text('vercel.json'));
 check(config.installCommand === 'npm ci --ignore-scripts', 'production installs the locked dependency graph without lifecycle scripts');
 const headerValues = (config.headers || []).flatMap((route) => route.headers || []).map((item) => `${item.key}:${item.value}`);
@@ -99,7 +116,7 @@ check(packageLock.packages?.['node_modules/@dfns/kaspa-wasm']?.integrity === 'sh
 const controls = JSON.parse(await text('security/controls.json'));
 check(controls.auditStatus === 'not-independently-audited', 'public audit status is honest');
 check(controls.settlementStatus === 'disabled', 'control map keeps settlement disabled');
-check(Array.isArray(controls.controls) && controls.controls.length >= 18, 'control map contains reviewable evidence');
+check(Array.isArray(controls.controls) && controls.controls.length >= 21, 'control map contains reviewable evidence');
 for (const control of controls.controls || []) {
   check(/^GP-[A-Z0-9-]+$/.test(control.id), `control has stable identifier: ${control.id || 'missing'}`);
   for (const evidence of control.evidence || []) check(await exists(evidence), `control evidence exists: ${control.id} -> ${evidence}`);

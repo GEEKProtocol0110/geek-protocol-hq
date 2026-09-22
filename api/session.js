@@ -1,8 +1,11 @@
 import { clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
 import { rateLimit } from '../server/redis.js';
 import { upsertSession } from '../server/session.js';
+import { collectiblesHandler, profileHandler } from '../server/player-api.js';
 
 export default async function handler(req, res) {
+  if (req.query?.service === 'profile') return profileHandler(req, res);
+  if (req.query?.service === 'collectibles') return collectiblesHandler(req, res);
   setApiHeaders(res, 'POST, OPTIONS');
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') return methodNotAllowed(res, 'POST, OPTIONS');
