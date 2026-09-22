@@ -12,7 +12,7 @@
     speed: { name: 'Speed Signal', detail: 'Answer up to 10 questions before the 30-second server clock closes', start: 'Start 30-Second Signal' }
   };
   const CATEGORY_BANKS = {
-    kaspa: { name: 'Kaspa: Proof of Learning', shortName: 'Kaspa', count: 1032, detail: '80 core concepts + 32 current items', sourced: true },
+    kaspa: { name: 'Kaspa: Proof-of-Learning', shortName: 'Kaspa', count: 1032, detail: '1,000 practice variants + 32 current items', sourced: true },
     'video-games': { name: 'Video Games', shortName: 'Video Games', count: 1000, detail: 'games, consoles & lore' },
     'science-fiction': { name: 'Science Fiction', shortName: 'Science Fiction', count: 1000, detail: 'worlds, stories & futures' },
     technology: { name: 'Technology', shortName: 'Technology', count: 1000, detail: 'computing, science & invention' },
