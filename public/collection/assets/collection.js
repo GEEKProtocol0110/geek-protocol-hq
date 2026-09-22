@@ -60,7 +60,8 @@
       state.manifest = await response.json();
       state.filtered = state.manifest.identities;
       $('[data-tier]').insertAdjacentHTML('beforeend', state.manifest.blueprint.tiers.map((tier) => option(tier.name, `${tier.name} · ${tier.count}`)).join(''));
-      $('[data-district]').insertAdjacentHTML('beforeend', state.manifest.blueprint.districts.map((district) => option(district.id, district.name)).join(''));
+      const filterDistricts = [...state.manifest.blueprint.districts, ...(state.manifest.blueprint.anchorRealms || [])];
+      $('[data-district]').insertAdjacentHTML('beforeend', filterDistricts.map((district) => option(district.id, district.name)).join(''));
       renderDistricts();
       renderGrid();
       if (/^#geek-\d{3}$/.test(location.hash)) openIdentity(location.hash.slice(1));
