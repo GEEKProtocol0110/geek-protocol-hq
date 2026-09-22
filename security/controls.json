@@ -131,6 +131,12 @@
       "evidence": ["server/geek-collection.js", "scripts/generate-geek-collection.mjs", "scripts/check-geek-collection.mjs", "tests/collection.test.js", "public/data/geek-500.json", "docs/GEEK-500-ART-BIBLE.md"]
     },
     {
+      "id": "GP-INV-021",
+      "title": "Recovered art provenance and edition-mapping isolation",
+      "status": "implemented-archive-gate",
+      "evidence": ["server/legacy-art-archive.js", "scripts/generate-legacy-art-archive.mjs", "scripts/check-legacy-art-archive.mjs", "tests/legacy-art.test.js", "public/data/legacy-geek-art.json", "docs/GEEK-500-ART-BIBLE.md"]
+    },
+    {
       "id": "GP-GATE-INDEPENDENT-AUDIT",
       "title": "Independent application and settlement audits",
       "status": "required-before-settlement",

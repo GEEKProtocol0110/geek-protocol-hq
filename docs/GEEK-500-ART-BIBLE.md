@@ -85,6 +85,14 @@ Artists may interpret a field but may not silently rename, renumber, or re-tier 
 
 The public explorer currently shows `design-pending` for editions #001–#498 and `anchor-concept` for GIGA and A.C.E. No edition is `approved`, `hashed`, `frozen`, minted, or transferable.
 
+## Recovered legacy art archive
+
+Ten authentic early concepts from July 2025 were recovered from the original Geek Protocol project work: A.C.E., AI Geek Common, Speedrunner Geek Legendary, Hacker Geek, two SysAdmin concepts including an Epic variant, Puzzle Geek Common, Streamer Geek Common, and two VR Geek concepts including a Rare variant.
+
+The surviving pixels do not preserve trustworthy edition numbers for these concepts. The archive therefore records the original filename, recovery date, visible rarity label when present, public derivative path, and SHA-256 hash while leaving `mappedEdition` as `null`. Recovery does not equal approval. These assets remain `legacy-recovered`, are not counted as approved collection art, and cannot be presented as minted or transferable.
+
+Any future mapping into #001–#498 requires a documented human review that reconciles the old 100/500/600-character plans with the current fixed 500-edition contract. The source artwork must also pass originality, licensing, accessibility, visual consistency, and lore review before its status can advance.
+
 ## Metadata contract
 
 Each record contains:
