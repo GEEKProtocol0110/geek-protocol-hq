@@ -1,12 +1,12 @@
-import { avatarCatalog, collectibleProfile } from '../server/collectibles.js';
-import { clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
-import { loadProfile, saveProfile, saveProfileWithAudit } from '../server/profile.js';
-import { deriveProgression } from '../server/progression.js';
-import { rateLimit } from '../server/redis.js';
-import { playerIdFor, requireSession } from '../server/session.js';
-import { acceptStickerTrade, cancelStickerTrade, createStickerTrade, listStickerTrades } from '../server/sticker-trades.js';
+import { avatarCatalog, collectibleProfile } from './collectibles.js';
+import { clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from './http.js';
+import { loadProfile, saveProfile, saveProfileWithAudit } from './profile.js';
+import { buildJourneyProfile, deriveProgression } from './progression.js';
+import { rateLimit } from './redis.js';
+import { playerIdFor, requireSession } from './session.js';
+import { acceptStickerTrade, cancelStickerTrade, createStickerTrade, listStickerTrades } from './sticker-trades.js';
 
-const responseFor = async (session) => {
+const collectibleResponseFor = async (session) => {
   const playerId = playerIdFor(session);
   const trades = await listStickerTrades(playerId);
   const profile = await loadProfile(playerId);
@@ -16,13 +16,26 @@ const responseFor = async (session) => {
   };
 };
 
-export default async function handler(req, res) {
+export const profileHandler = async (req, res) => {
+  setApiHeaders(res, 'GET, OPTIONS');
+  if (req.method === 'OPTIONS') return res.status(204).end();
+  if (req.method !== 'GET') return methodNotAllowed(res, 'GET, OPTIONS');
+  try {
+    const session = await requireSession(req);
+    const profile = await loadProfile(playerIdFor(session));
+    return sendJson(res, 200, { ok: true, verified: true, profile: buildJourneyProfile(profile, session) });
+  } catch (error) {
+    return handleApiError(res, error);
+  }
+};
+
+export const collectiblesHandler = async (req, res) => {
   setApiHeaders(res);
   if (req.method === 'OPTIONS') return res.status(204).end();
   try {
     const session = await requireSession(req);
     const playerId = playerIdFor(session);
-    if (req.method === 'GET') return sendJson(res, 200, { ok: true, verified: true, ...(await responseFor(session)) });
+    if (req.method === 'GET') return sendJson(res, 200, { ok: true, verified: true, ...(await collectibleResponseFor(session)) });
     if (req.method !== 'POST') return methodNotAllowed(res);
     const body = parseBody(req);
     const action = String(body.action || '');
@@ -53,8 +66,8 @@ export default async function handler(req, res) {
       throw new Error('INVALID_REQUEST');
     }
 
-    return sendJson(res, 200, { ok: true, verified: true, ...(await responseFor(session)) });
+    return sendJson(res, 200, { ok: true, verified: true, ...(await collectibleResponseFor(session)) });
   } catch (error) {
     return handleApiError(res, error);
   }
-}
+};

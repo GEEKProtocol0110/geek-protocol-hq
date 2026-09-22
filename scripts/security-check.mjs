@@ -84,7 +84,7 @@ check(audit.includes('hashAuditIdentifier'), 'audit actors and objects are pseud
 check(!audit.includes('payoutAddress'), 'audit module does not depend on raw payout addresses');
 
 const progression = await text('server/progression.js');
-const profileApi = await text('api/profile.js');
+const profileApi = await text('server/player-api.js');
 check(progression.includes('recordRoundJourney'), 'progression is written by the ranked server');
 check(progression.includes('JOURNEY_LIMIT'), 'journey history has a fixed retention bound');
 check(profileApi.includes('requireSession(req)'), 'player journey requires an authenticated session');
