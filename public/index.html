@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#080b0b" />
-    <meta name="description" content="Geek Protocol is a Kaspa-first Proof-of-Learning game: learn the blockDAG, enter community lobbies, and follow the transparent path toward $GEEK." />
-    <title>Geek Protocol — Learn Kaspa. Prove It.</title>
+    <meta name="description" content="Geek Protocol on Kaspa is a Proof-of-Learning trivia game with server-ranked Alpha play. GEEK is a KRC-20 token on Kaspa; internal Alpha credits cannot be withdrawn." />
+    <title>Geek Protocol on Kaspa — Proof-of-Learning Game</title>
+    <link rel="canonical" href="https://www.geekprotocol.xyz/" />
     <link rel="preconnect" href="https://geekprotocol.xyz" />
     <link rel="stylesheet" href="./assets/styles.css" />
     <script defer src="./assets/site.js"></script>
@@ -41,7 +42,7 @@
         <div class="hero-copy">
           <div class="eyebrow"><span class="live-dot"></span> Kaspa-first learning game · Server-ranked Alpha</div>
           <h1>Learn Kaspa.<br /><em>Prove it.</em></h1>
-          <p class="hero-lede">Master the blockDAG, GHOSTDAG, Toccata programmability, and the culture behind Kaspa—then test your signal in the Gauntlet, Daily Signal, or a 30-second Speed Signal.</p>
+          <p class="hero-lede">Geek Protocol is a Kaspa-based Proof-of-Learning trivia game. Master the blockDAG, GHOSTDAG, Toccata programmability, and Kaspa culture—then test your signal in the Gauntlet, Daily Signal, or Speed Signal.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="./play/?category=kaspa">Play Kaspa <span aria-hidden="true">→</span></a>
             <a class="button button-secondary" href="./mint/">Mint GEEK <span aria-hidden="true">→</span></a>
@@ -171,6 +172,7 @@
           <div class="section-kicker dark">05 / THE VALUE LAYER</div>
           <h2>$GEEK is the<br />design target.</h2>
           <p>The separate GEEK KRC-20 fair-mint interface verifies live supply before offering a user-approved Kasware transaction. It pauses when status cannot be verified. Alpha credits, payout registration, and future treasury transfers remain separate and disabled.</p>
+          <p>Identity note: This is Geek Protocol on Kaspa at geekprotocol.xyz. Its GEEK KRC-20 token is distinct from the similarly named BNB Chain DeFi project.</p>
           <div class="token-specs">
             <div><span>NETWORK TARGET</span><b>Kaspa / KRC-20</b></div>
             <div><span>PAYOUT WALLET</span><b>Any valid Kaspa address</b></div>
@@ -366,13 +368,17 @@
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" itemscope itemtype="https://schema.org/Organization">
+      <link itemprop="logo" href="https://www.geekprotocol.xyz/assets/geek-protocol-logo.png" />
+      <link itemprop="sameAs" href="https://github.com/GEEKProtocol0110" />
+      <meta itemprop="name" content="Geek Protocol" />
+      <meta itemprop="description" content="Kaspa-based Geek Protocol Proof-of-Learning trivia game and GEEK KRC-20 community project." />
       <div class="footer-brand">
         <span>GEEK<span class="brand-mark">//</span>PROTOCOL</span>
         <p>All hope, no hype. Kaspa meets curiosity. Learning becomes value.</p>
       </div>
       <div class="footer-links">
-        <a href="https://geekprotocol.xyz">Main site</a>
+        <a itemprop="url" href="https://www.geekprotocol.xyz/">Main site</a>
         <a href="./kaspa/">Kaspa 101</a>
         <a href="./lobby/">Lobbies</a>
         <a href="./contribute/">Contribute</a>
@@ -383,8 +389,8 @@
         <a href="./security/">Security</a>
         <a href="./mint/">Mint</a>
         <a href="https://github.com/GEEKProtocol0110/geek-protocol-hq">Site source</a>
-        <a href="https://x.com/geekonkas">X / Twitter</a>
-        <a href="https://t.me/GEEKonKAScommunity">Telegram</a>
+        <a itemprop="sameAs" href="https://x.com/geekonkas">X / Twitter</a>
+        <a itemprop="sameAs" href="https://t.me/GEEKonKAScommunity">Telegram</a>
       </div>
       <p class="footer-copy">© <span data-year></span> Geek Protocol · Independent Kaspa community project · Educational content, not investment advice.</p>
     </footer>
