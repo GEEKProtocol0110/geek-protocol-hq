@@ -291,43 +291,30 @@ h1 em { color: var(--gold); font-style: normal; }
   animation: scan 5.2s ease-in-out infinite;
 }
 @keyframes scan { 50% { top: 78%; opacity: .45; } }
-.entity {
+.giga-emblem {
   position: absolute;
   z-index: 3;
+  width: min(66%, 340px);
   aspect-ratio: 1;
+  left: 50%;
+  top: 49%;
+  transform: translate(-50%, -50%);
   overflow: hidden;
-  border: 1px solid rgba(112,230,220,.24);
-  background: #061018;
-  box-shadow: 0 22px 50px rgba(0,0,0,.5);
+  border: 1px solid rgba(112, 230, 220, .5);
+  border-radius: 50%;
+  background: #10151d;
+  box-shadow: 0 0 0 12px rgba(112, 230, 220, .05), 0 25px 80px rgba(0, 0, 0, .55);
 }
-.entity img { width: 100%; height: 100%; object-fit: cover; }
-.entity span {
+.giga-emblem img {
   position: absolute;
-  padding: 0.42rem 0.6rem;
-  color: var(--paper-soft);
-  background: rgba(8,11,11,.84);
-  border-left: 2px solid var(--cyan);
-  font-size: 0.6rem;
-  font-weight: 800;
-  letter-spacing: 0.09em;
-  white-space: nowrap;
+  width: 212%;
+  max-width: none;
+  height: auto;
+  left: 50%;
+  top: -26%;
+  transform: translateX(-50%);
 }
-.entity span b { color: white; }
-.entity-giga { width: 61%; height: auto; left: 1%; bottom: 7%; }
-.entity-giga span { left: 7%; bottom: 4%; }
-.entity-ace { width: 54%; height: auto; right: -1%; top: 6%; }
-.entity-ace span { right: 4%; top: 10%; }
-.visual-label {
-  position: absolute;
-  z-index: 5;
-  color: rgba(238,242,236,.56);
-  font-size: 0.58rem;
-  font-weight: 900;
-  letter-spacing: 0.22em;
-  writing-mode: vertical-rl;
-}
-.label-top { right: 2%; top: 10%; }
-.label-bottom { left: 3%; bottom: 14%; transform: rotate(180deg); }
+
 
 .signal-strip {
   height: 54px;
@@ -684,8 +671,6 @@ h1 em { color: var(--gold); font-style: normal; }
   .hero-visual { min-height: 430px; }
   .orbit-one { width: 400px; height: 400px; }
   .orbit-two { width: 300px; height: 300px; }
-  .entity-giga { width: 64%; }
-  .entity-ace { width: 57%; }
   .origin-layout, .section-heading { display: block; }
   .origin h2 { margin-bottom: 2rem; }
   .section-heading > p { margin-top: 1.5rem; }
@@ -722,9 +707,6 @@ h1 em { color: var(--gold); font-style: normal; }
   .hero-visual { min-height: 350px; width: calc(100% + 1rem); margin-left: -.5rem; }
   .orbit-one { width: 320px; height: 320px; }
   .orbit-two { width: 245px; height: 245px; }
-  .entity-giga { width: 67%; height: auto; }
-  .entity-ace { width: 60%; height: auto; }
-  .entity span, .visual-label { display: none; }
   .title-break { display: none; }
   .origin h2, .gauntlet h2 {
     max-width: 100%;
