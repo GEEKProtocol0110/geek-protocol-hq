@@ -1,0 +1,64 @@
+name: Bug report
+description: Report a reproducible problem in Geek Protocol HQ
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Geek Protocol. Do not disclose an unpatched security vulnerability here; use the private process in SECURITY.md.
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Product surface
+      options:
+        - Home / navigation
+        - Play / ranked game
+        - Lobby
+        - Profile / progression
+        - Community Content Engine
+        - Collection / legacy archive
+        - GEEK mint
+        - Security / documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. Open …
+        2. Select …
+        3. Observe …
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Device, operating system, browser, wallet version, and URL when relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting evidence
+      description: Add screenshots or non-sensitive logs. Remove wallet addresses, tokens, and private data.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirmation
+      options:
+        - label: I removed secrets and private information from this report.
+          required: true
+        - label: This is not an unpatched security vulnerability.
+          required: true

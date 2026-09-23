@@ -1,8 +1,25 @@
 {
   "name": "geek-protocol-hq",
   "version": "0.1.0",
+  "description": "Security-first Proof-of-Learning and trivia platform for the Kaspa ecosystem.",
   "private": true,
   "type": "module",
+  "license": "MIT",
+  "homepage": "https://www.geekprotocol.xyz/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GEEKProtocol0110/geek-protocol-hq.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/issues"
+  },
+  "keywords": [
+    "kaspa",
+    "krc-20",
+    "proof-of-learning",
+    "trivia",
+    "web3"
+  ],
   "scripts": {
     "test": "node --test",
     "security:check": "node scripts/security-check.mjs",
@@ -10,7 +27,8 @@
     "collection:check": "node scripts/check-geek-collection.mjs",
     "archive:generate": "node scripts/generate-legacy-art-archive.mjs",
     "archive:check": "node scripts/check-legacy-art-archive.mjs",
-    "verify": "npm test && npm run collection:check && npm run archive:check && npm run security:check"
+    "repository:check": "node scripts/check-repository-presentation.mjs",
+    "verify": "npm test && npm run collection:check && npm run archive:check && npm run security:check && npm run repository:check"
   },
   "engines": {
     "node": ">=20"
