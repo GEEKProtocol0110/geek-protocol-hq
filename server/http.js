@@ -27,8 +27,13 @@ export const sendJson = (res, status, body) => {
 
 export const parseBody = (req) => {
   if (!req.body) return {};
-  if (typeof req.body === 'object') return req.body;
-  if (typeof req.body !== 'string' || req.body.length > 8_000) throw new Error('INVALID_BODY');
+  // Vercel may have parsed JSON before this handler sees it. Apply the same
+  // limit to that path so callers cannot bypass the raw-body size guard.
+  if (typeof req.body === 'object') {
+    if (Array.isArray(req.body) || Buffer.byteLength(JSON.stringify(req.body)) > 8_000) throw new Error('INVALID_BODY');
+    return req.body;
+  }
+  if (typeof req.body !== 'string' || Buffer.byteLength(req.body) > 8_000) throw new Error('INVALID_BODY');
   try {
     return JSON.parse(req.body);
   } catch {
@@ -41,10 +46,15 @@ export const cleanName = (value, fallback = 'Guest Geek') => {
   return name || fallback;
 };
 
-const parseCookies = (header = '') => Object.fromEntries(header.split(';').map((part) => {
+const parseCookies = (header = '') => Object.fromEntries(String(header).split(';').map((part) => {
   const index = part.indexOf('=');
   if (index < 0) return ['', ''];
-  return [part.slice(0, index).trim(), decodeURIComponent(part.slice(index + 1).trim())];
+  const value = part.slice(index + 1).trim();
+  try {
+    return [part.slice(0, index).trim(), decodeURIComponent(value)];
+  } catch {
+    return ['', ''];
+  }
 }).filter(([key]) => key));
 
 export const readSessionId = (req) => {
