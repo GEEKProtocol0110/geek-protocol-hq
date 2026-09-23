@@ -324,11 +324,11 @@
     elements.resultScore.textContent = format.format(result.roundScore);
     elements.resultXp.textContent = `+${format.format(result.xpEarned)}`;
     elements.resultReward.textContent = `+${format.format(result.reward)}`;
-    elements.startBalance.textContent = `${format.format(run.startBalance)} GEEK`;
-    elements.fees.textContent = `${format.format(run.fees)} GEEK`;
-    elements.rewards.textContent = `${format.format(run.rewards)} GEEK`;
+    elements.startBalance.textContent = `${format.format(run.startBalance)} Alpha GEEK`;
+    elements.fees.textContent = `${format.format(run.fees)} Alpha GEEK`;
+    elements.rewards.textContent = `${format.format(run.rewards)} Alpha GEEK`;
     const profit = run.rewards - run.fees;
-    elements.profit.textContent = `${profit >= 0 ? '+' : ''}${format.format(profit)} GEEK`;
+    elements.profit.textContent = `${profit >= 0 ? '+' : ''}${format.format(profit)} Alpha GEEK`;
     elements.runProgress.style.width = quickMode ? '100%' : `${run.round * 10}%`;
     elements.cashoutButton.hidden = quickMode;
     if (quickMode) {
