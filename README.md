@@ -1,114 +1,168 @@
-# Geek Protocol HQ
+<div align="center">
+  <img src="docs/assets/github-hero.svg" alt="Geek Protocol HQ — Proof of Learning on Kaspa" width="100%" />
 
-The official Geek Protocol experience for Kaspa: a server-ranked trivia game and community hub.
+  <br />
 
-## Included
+  [![Security verification](https://github.com/GEEKProtocol0110/geek-protocol-hq/actions/workflows/security-verification.yml/badge.svg)](https://github.com/GEEKProtocol0110/geek-protocol-hq/actions/workflows/security-verification.yml)
+  [![Production](https://img.shields.io/website?url=https%3A%2F%2Fwww.geekprotocol.xyz&label=production&up_message=online&down_message=offline&style=flat-square)](https://www.geekprotocol.xyz/)
+  [![License: MIT](https://img.shields.io/badge/license-MIT-49EACB?style=flat-square)](LICENSE)
+  [![Status: Public Alpha](https://img.shields.io/badge/status-public%20alpha-F5C451?style=flat-square)](docs/PROJECT-STATUS.md)
 
-- Geek Protocol landing page
-- Ten-round server-authoritative Gauntlet
-- Server-authoritative Daily Signal and 30-second Speed Signal modes adapted from Geek Mini
-- Eight selectable trivia categories
-- Kasware connection, mainnet detection, GEEK balance display, and server-verified Kaspa Schnorr ownership proof
-- Non-custodial, one-at-a-time GEEK KRC-20 fair-mint requests with live deployment and remaining-supply verification
-- Wallet-recoverable player identities with older-session invalidation
-- Fresh, single-use wallet authorization for protected payout-setting changes
-- Exact-origin enforcement when wallet challenges are issued and verified
-- Wallet-neutral payout destination registration for any valid Kaspa mainnet address
-- Persistent payout-change notices and a private high-risk review queue
-- Anonymous server sessions with secure, HTTP-only cookies
-- Persistent lobby records, active-seat presence, and shareable live room codes
-- Category- and mode-specific verified global leaderboards
-- Community Content Engine submission, review, publication, and first-use reward ledger
-- Integrity-protected, pseudonymous security events for sensitive Alpha changes
-- Private auditor export with per-record verification
-- Lobby, rewards, current litepaper, live mint, and Kaspa information pages
-- Public security and audit-readiness status page
-- Private server-side question banks plus complete artwork, styles, and scripts
+  **A server-authoritative learning and competition platform built for the Kaspa ecosystem.**
 
-## Run locally
+  [Live HQ](https://www.geekprotocol.xyz/) · [Play](https://www.geekprotocol.xyz/play/) · [Explore the Grid](https://www.geekprotocol.xyz/collection/) · [Security](https://www.geekprotocol.xyz/security/) · [Documentation](docs/README.md)
+</div>
 
-The public information pages can be served as static files. Ranked play requires the Vercel Functions in `api` and Redis credentials; answer keys are intentionally unavailable to the browser.
+---
 
-Run the API integration tests with:
+## What is Geek Protocol?
 
-```sh
-npm test
+Geek Protocol turns knowledge into a verifiable player journey. Players compete in timed trivia, build persistent profiles, join live lobbies, contribute reviewed questions, and interact with the GEEK ecosystem through a non-custodial Kasware flow.
+
+The project began as a way to make learning exciting for one child. HQ is the public Alpha where that idea is becoming a transparent, security-first Proof-of-Learning platform on Kaspa.
+
+> **All hope, no hype.** Public claims in this repository distinguish what is live, internally verified, independently audited, and still gated.
+
+## Current status
+
+| System | Status | Boundary |
+| --- | --- | --- |
+| Public website and information surfaces | **Live** | Production at `www.geekprotocol.xyz` |
+| Ranked trivia, lobbies, leaderboards, and profiles | **Public Alpha** | Server-authoritative; Redis required |
+| Kasware identity and account recovery | **Implemented** | Server-verified Kaspa Schnorr ownership proof |
+| GEEK fair-mint interface | **Live / non-custodial** | One user-approved request against the pinned deployment |
+| Community Content Engine | **Alpha** | Reviewed questions earn internal first-use credits |
+| Alpha GEEK rewards | **Internal ledger only** | No withdrawals, transfers, or promised monetary value |
+| 500-Geek collection | **Design and provenance phase** | Ownership and collection minting are disabled |
+| Independent security audit | **Not completed** | Required before treasury-controlled value movement |
+
+See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness matrix and open launch gates.
+
+## Product surfaces
+
+| Surface | Purpose |
+| --- | --- |
+| **Play** | Ten-round Geek Gauntlet plus server-owned Daily and Speed modes |
+| **Lobbies** | Public and private rooms with active-seat presence and shareable codes |
+| **Profile** | Verified XP, levels, prestige, category mastery, journey history, and collectibles |
+| **C.C.E.** | Community question submission, moderation, publication, and first-use reward records |
+| **Collection** | Deterministic 500-Geek identity blueprint and hashed legacy-art archive |
+| **Mint** | Fail-closed, user-approved GEEK KRC-20 fair-mint interface |
+| **Security** | Public control posture, trust boundaries, and independent-audit gates |
+
+## Architecture at a glance
+
+```mermaid
+flowchart LR
+    P[Player browser] -->|HTTPS + secure session| A[Vercel API]
+    W[Kasware wallet] -->|User-approved signature or mint| P
+    A -->|Atomic state| R[(Redis)]
+    A -->|Live deployment verification| K[Kaspa indexer]
+    A -->|Pseudonymous evidence| E[(Audit records)]
 ```
 
-## Deployment
+The browser renders the experience but does not own ranked answers, scores, rewards, moderation results, or payout eligibility. Sensitive state transitions are verified and committed by the server. Read the full [Architecture and Trust Boundaries](docs/ARCHITECTURE.md).
 
-Vercel deploys `public` directly and discovers the JavaScript functions in `api`. Connect an Upstash Redis database to the project so Vercel provides:
+## Security posture
 
-- `UPSTASH_REDIS_REST_URL`
-- `UPSTASH_REDIS_REST_TOKEN`
+Geek Protocol is designed to fail closed around identity, mint verification, ranked play, and any future value movement.
 
-The server also accepts the legacy `KV_REST_API_URL` and `KV_REST_API_TOKEN` names. After adding variables, redeploy the project. If storage is unavailable, information pages and URL-based local lobby invites continue working, while ranked play remains locked.
+- Ranked answer keys never enter the public bundle.
+- Scores, XP, streaks, rewards, and deadlines are computed by the server.
+- Wallet challenges are random, single-use, short-lived, and bound to the exact HTTPS origin and action.
+- The server verifies Kaspa Schnorr signatures and public-key/address correspondence.
+- Mint requests are pinned to Kaspa Mainnet and the canonical GEEK deployment.
+- An unavailable indexer, deployment mismatch, or exhausted supply blocks mint initiation.
+- Payout preferences cannot activate settlement; withdrawals remain disabled.
+- Security events are private, pseudonymous, and integrity verifiable.
+- Every production change runs tests, deterministic manifest checks, and security-control verification.
 
-Community Content Engine moderation also requires:
+This repository has **not** completed an independent audit. Read [SECURITY.md](SECURITY.md), the [Threat Model](docs/THREAT-MODEL.md), and the [Independent Audit Scope](docs/AUDIT-SCOPE.md) before making security claims or proposing value-moving code.
 
-- `CCE_ADMIN_TOKEN`: a private random moderator key of at least 24 characters
-- `CCE_REWARD_AMOUNT`: integer Alpha GEEK credited on a published question's first ranked use (defaults to `25`)
+## Repository map
 
-Audit evidence supports:
+```text
+api/          Vercel Function entry points
+server/       Domain logic, identity, ranking, rewards, and controls
+public/       Production pages, client assets, and public manifests
+tests/        Integration, mint, collection, and archive tests
+scripts/      Deterministic generators and security verification
+security/     Machine-readable control and evidence map
+docs/         Protocol, architecture, audit, and product documentation
+.github/      CI, issue forms, and pull-request standards
+```
 
-- `AUDIT_LOG_SECRET`: at least 32 random characters used to HMAC-SHA-256 security events
-- `AUDIT_KEY_ID`: non-secret identifier for the current audit-integrity key
-- `AUDIT_ADMIN_TOKEN`: private random token of at least 24 characters for `/api/audit` exports
+## Local development
 
-Private payout-risk decisions require a separate role secret:
+### Requirements
 
-- `PAYOUT_REVIEW_ADMIN_TOKEN`: a private random token of at least 24 characters for `/api/payout-review`
+- Node.js 20 or newer
+- npm
+- An Upstash Redis database for persistent sessions and ranked features
 
-Wallet identity also supports:
+### Setup
 
-- `IDENTITY_ALLOWED_ORIGINS`: optional comma-separated HTTPS origins beyond the two production hostnames and Vercel preview hostnames
-- `IDENTITY_ORIGIN`: legacy single-origin allowlist entry retained for deployment compatibility
-- `IDENTITY_ENV`: an optional non-Vercel environment namespace; Vercel automatically separates production and preview identity keys
+```sh
+git clone https://github.com/GEEKProtocol0110/geek-protocol-hq.git
+cd geek-protocol-hq
+npm ci --ignore-scripts
+cp .env.example .env.local
+npm run verify
+```
 
-If `AUDIT_LOG_SECRET` is absent, Alpha events use visibly labeled unkeyed SHA-256 integrity. That mode is not sufficient for mainnet settlement. Real settlement must fail closed until keyed integrity, separately administered append-only replication, monitoring, and retention are configured.
+Vercel serves `public/` and discovers serverless functions in `api/`. Static information pages work without Redis; stateful and ranked surfaces fail closed when their required storage is unavailable.
 
-The private review desk lives at `/moderate/`. The key is sent only in the `X-CCE-Admin` request header and is held in browser `sessionStorage`, so closing the tab clears it.
+### Required production configuration
 
-## Ranked integrity
+| Variable | Purpose |
+| --- | --- |
+| `UPSTASH_REDIS_REST_URL` | Redis REST endpoint |
+| `UPSTASH_REDIS_REST_TOKEN` | Redis REST credential |
+| `CCE_ADMIN_TOKEN` | Dedicated question-moderation credential |
+| `AUDIT_LOG_SECRET` | HMAC-SHA-256 audit-integrity key |
+| `AUDIT_KEY_ID` | Non-secret audit key identifier |
+| `AUDIT_ADMIN_TOKEN` | Private audit-export credential |
+| `PAYOUT_REVIEW_ADMIN_TOKEN` | Separate payout-review credential |
 
-- Question selection and option order use server-side cryptographic randomness.
-- Correct answers are bundled only with the ranked function, never under `public`.
-- Each question has a one-use opaque token and a server-enforced deadline.
-- Atomic answer claims stop parallel multi-answer races and replayed answers return the first committed result.
-- The server computes streaks, speed bonuses, XP, Alpha GEEK, and final scores.
-- Daily and Speed modes award XP and verified scores but no Alpha GEEK during the Alpha.
-- Daily attempts are limited server-side by UTC day; Speed uses one server-owned 30-second run deadline.
-- The leaderboard endpoint is read-only; only the ranked service can write a result.
-- Session- and network-level rate limits reduce automated run farming.
+The annotated [.env.example](.env.example) documents optional settings and safe local placeholders. Never commit production credentials.
 
-## Identity and recovery
+## Verification
 
-- `/api/identity` issues a random, five-minute server challenge bound to the exact origin, action, identity wallet, and requested payout destination when applicable.
-- The exact requesting HTTPS origin is embedded in the signed text and rechecked when the proof is submitted; a challenge cannot move between the apex and `www` hosts.
-- Kasware signs human-readable text with explicit Schnorr mode. The browser never sends a seed phrase or private key.
-- The server verifies the signature and derives the Kaspa mainnet address from the supplied public key before creating any binding.
-- Challenge records and payout authorizations are atomically consumed once. Replays fail closed.
-- Wallet/player binding, session replacement, and the successful audit event commit in one Redis compare-and-set transition, preventing partial or raced identity claims.
-- A linked wallet can recover the same persistent profile in a new browser. Recovery increments an identity session version, invalidating older authenticated sessions.
-- Identity keys are environment-scoped so preview bindings cannot overwrite production bindings.
-- The pinned `@dfns/kaspa-wasm` package supplies the Node-compatible Kaspa personal-message verifier. Its exact version and integrity digest are locked for independent dependency review.
+Run the same complete quality gate used for reviewed changes:
 
-## Payout change protection
+```sh
+npm run verify
+```
 
-- Every destination create, change, reaffirmation, or removal stores a persistent in-product security notice with masked addresses only.
-- Unlinked identities, ownership-unverified destinations, destination changes, recent identity recovery, and repeated recent mutations create a private review record.
-- Review records expose no player ID or raw address through the reviewer API. Reviewer decisions create pseudonymous, integrity-protected audit evidence.
-- `PAYOUT_REVIEW_ADMIN_TOKEN` is separate from moderation and audit-export credentials. A review decision never enables withdrawals or makes a payout settlement-eligible.
-- The precise policy and residual limitations are documented in `docs/PAYOUT-RISK-CONTROLS.md`.
+The command validates functional tests, the deterministic 500-Geek manifest, all recovered-art hashes, security invariants, and control evidence. CI also checks JavaScript syntax and audits production dependencies at `high` severity.
 
-## Transparent Alpha
+## Documentation
 
-Ranked Alpha balances, XP, game progress, lobbies, presence, verified scores, contributions, C.C.E. reward records, wallet identity bindings, and payout-address preferences use Redis. Server verification protects competitive integrity and wallet proof, but this is still an unproctored web trivia game and cannot prevent every form of outside assistance.
+Start with the [Documentation Index](docs/README.md). Key reviewer material includes:
 
-C.C.E. rewards are internal, claim-gated Alpha ledger credits. They are created only once, when an approved and published question is first answered in ranked play. They are not token transfers, cannot be withdrawn, and have no promised monetary value. A player may register any checksum-valid Kaspa mainnet address as a future destination. The separate `/mint/` page can ask Kasware to create one user-approved mint against the pinned existing GEEK deployment. HQ never signs or submits that transaction for the user. Treasury settlement, reward transfers, withdrawals, and on-chain rewards remain disabled.
+- [Architecture and Trust Boundaries](docs/ARCHITECTURE.md)
+- [Project Status](docs/PROJECT-STATUS.md)
+- [Independent Audit Scope](docs/AUDIT-SCOPE.md)
+- [Threat Model](docs/THREAT-MODEL.md)
+- [Identity Protocol](docs/IDENTITY-PROTOCOL.md)
+- [Mint Protocol](docs/MINT-PROTOCOL.md)
+- [Payout Risk Controls](docs/PAYOUT-RISK-CONTROLS.md)
+- [Collectible Protocol](docs/COLLECTIBLE-PROTOCOL.md)
+- [500-Geek Art Bible](docs/GEEK-500-ART-BIBLE.md)
 
-## Audit readiness
+## Contributing
 
-The project has not completed an independent audit. `SECURITY.md`, `docs/THREAT-MODEL.md`, `docs/MINT-PROTOCOL.md`, `docs/IDENTITY-PROTOCOL.md`, `docs/PAYOUT-RISK-CONTROLS.md`, `docs/DEPENDENCY-PROVENANCE.md`, `docs/AUDIT-SCOPE.md`, and `security/controls.json` define the review baseline and evidence map. `npm run verify` runs integration tests and checks the pinned mint deployment, fail-closed settlement, private answer-bank, HTTP-header, wallet-proof, payout-review, audit-integrity, and control-evidence invariants.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Every change must preserve the project's public Alpha boundaries, pass `npm run verify`, and avoid claims that exceed the available evidence.
 
-Geek Protocol requires two independent scopes before value moves: a Web3 application penetration test of the complete browser/API/cloud stack, and a separate code audit of every future KRC-20 settlement and treasury component. All Critical and High findings must be remediated and retested against the exact release commit.
+Do not report unpatched vulnerabilities in a public issue. Follow [SECURITY.md](SECURITY.md) and use GitHub private vulnerability reporting.
+
+## License
+
+Code in this repository is available under the [MIT License](LICENSE). Geek Protocol names, logos, character artwork, lore, and other brand assets are not granted for reuse by that software license unless separately stated.
+
+---
+
+<div align="center">
+  <strong>Level Up. Earn On. Geek Out.™</strong><br />
+  Built on Kaspa · Your knowledge is now an asset.
+</div>

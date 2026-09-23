@@ -1,0 +1,46 @@
+name: Feature request
+description: Propose a focused improvement to Geek Protocol HQ
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: Explain the player, contributor, moderator, or reviewer problem before proposing a solution.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Describe the smallest useful version and how a user would experience it.
+    validations:
+      required: true
+  - type: dropdown
+    id: trust
+    attributes:
+      label: Does this affect a trust boundary?
+      options:
+        - No
+        - Wallet or identity
+        - Ranked game or anti-cheat
+        - Rewards or payout preferences
+        - Moderation or community content
+        - Collection or ownership
+        - Deployment or privileged access
+        - Unsure
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: List observable outcomes that would make the feature complete.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
