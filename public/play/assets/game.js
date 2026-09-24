@@ -65,7 +65,7 @@
     localNote: $('.local-note'), selectedMode: $('[data-selected-mode]'), modeDetail: $('[data-mode-detail]'), categorySummary: $('[data-category-summary]'), roundReview: $('[data-round-review]'),
     careerRound: $('[data-career-round]'), careerScore: $('[data-career-score]'), careerRuns: $('[data-career-runs]'),
     leaderboard: $('[data-leaderboard]'), boardState: $('[data-board-state]'), categoryButtons: $$('[data-category-key]'), modeButtons: $$('[data-mode-key]'),
-    cashoutButton: $('[data-cashout]'), startScreen: $('[data-screen="start"]'), completeKicker: $('[data-complete-kicker]'), completeTitle: $('[data-complete-title]')
+    cashoutButton: $('[data-cashout]'), startScreen: $('[data-screen="start"]'), resultScreen: $('[data-screen="result"]'), completeKicker: $('[data-complete-kicker]'), completeTitle: $('[data-complete-title]')
   };
 
   const api = async (path, options = {}) => {
@@ -283,7 +283,7 @@
         elements.feedback.textContent = `Server verified · ${result.streak}× streak · +${format.format(result.scoreAdded)} score`;
         elements.feedback.className = 'feedback good';
       } else {
-        elements.feedback.textContent = result.timedOut ? `Server clock expired · ${result.answer}` : `Not this time · ${result.answer}`;
+        elements.feedback.textContent = timedOut || result.timedOut ? `Server clock expired · ${result.answer}` : `Not this time · ${result.answer}`;
         elements.feedback.className = 'feedback bad';
       }
       elements.ace.textContent = result.funFact || 'Answer locked by the ranked service.';
@@ -316,10 +316,11 @@
     clearTimer();
     const config = ROUND_CONFIG[run.round - 1];
     const quickMode = run.mode !== 'gauntlet';
+    elements.resultScreen.classList.toggle('quick-mode', quickMode);
     elements.resultKicker.textContent = quickMode ? `${GAME_MODES[run.mode].name.toUpperCase()} · SERVER VERIFIED` : `ROUND ${pad(run.round)} VERIFIED · ${result.label}`;
-    elements.resultTitle.textContent = result.correct >= 8 ? 'ACCESS GRANTED' : result.correct >= 5 ? 'SIGNAL ACCEPTED' : 'ROUND SURVIVED';
+    elements.resultTitle.textContent = quickMode ? 'SIGNAL COMPLETE' : result.correct >= 8 ? 'ACCESS GRANTED' : result.correct >= 5 ? 'SIGNAL ACCEPTED' : 'ROUND SURVIVED';
     elements.resultMessage.textContent = quickMode
-      ? `${result.answered} answers were locked and scored by the server. Quick modes build XP and verified scores without issuing Alpha GEEK.`
+      ? `${result.answered} questions completed. The server calculated your score and XP. No Alpha GEEK is awarded in quick modes.`
       : `${result.correct} answers were scored by the server, producing ${format.format(result.reward)} Alpha GEEK in the practice ledger.`;
     elements.resultCorrect.textContent = `${result.correct}/${result.answered || result.questionCount}`;
     elements.resultScore.textContent = format.format(result.roundScore);
@@ -335,7 +336,7 @@
     if (quickMode) {
       elements.continueButton.disabled = false;
       elements.continueButton.innerHTML = 'Record Verified Result <span>→</span>';
-      elements.entryWarning.textContent = 'No entry fee. No Alpha GEEK reward. The score remains server-verified.';
+      elements.entryWarning.textContent = '';
     } else if (run.round === 10) {
       elements.continueButton.disabled = false;
       elements.continueButton.innerHTML = 'Seal Verified Run <span>→</span>';
