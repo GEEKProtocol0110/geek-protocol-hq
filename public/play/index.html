@@ -32,28 +32,30 @@
     <main id="game" class="game-shell">
       <section class="screen start-screen active" data-screen="start" aria-labelledby="start-title">
         <div class="start-copy">
-          <div class="eyebrow">A.C.E. CHALLENGE MODULE // ONLINE</div>
-          <h1 id="start-title">THE GEEK<br /><span>GAUNTLET</span></h1>
-          <p>Choose a challenge and a knowledge world. The server keeps answer keys private, enforces every deadline, and alone decides what reaches each global board.</p>
+          <div class="eyebrow">PROOF OF LEARNING · ALPHA</div>
+          <h1 id="start-title">PLAY.<br /><span>LEARN.</span></h1>
+          <p>Pick a mode and start with Kaspa. No wallet needed to play.</p>
 
-          <div class="challenge-select-head"><small>CHOOSE YOUR CHALLENGE</small><span>Built from Geek Mini · secured by HQ</span></div>
+          <div class="challenge-select-head"><small>CHOOSE A MODE</small></div>
           <div class="challenge-picker" role="radiogroup" aria-label="Game mode">
             <button class="challenge-chip selected" type="button" role="radio" aria-checked="true" data-mode-key="gauntlet"><span>01</span><strong>Gauntlet</strong><small>10 rounds × 10</small></button>
             <button class="challenge-chip" type="button" role="radio" aria-checked="false" data-mode-key="daily"><span>02</span><strong>Daily Signal</strong><small>5 questions · once daily</small></button>
             <button class="challenge-chip" type="button" role="radio" aria-checked="false" data-mode-key="speed"><span>03</span><strong>Speed Signal</strong><small>10 questions · 30 seconds</small></button>
           </div>
 
-          <div class="category-select-head"><small>CHOOSE YOUR DOMAIN</small><span>8 selectable categories · 8,032 items</span></div>
-          <div class="category-picker" role="radiogroup" aria-label="Trivia category">
-            <button class="category-chip selected" type="button" role="radio" aria-checked="true" data-category-key="kaspa"><strong>Kaspa</strong><span>1,032 · sourced</span></button>
-            <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="video-games"><strong>Video Games</strong><span>1,000</span></button>
-            <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="science-fiction"><strong>Science Fiction</strong><span>1,000</span></button>
-            <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="technology"><strong>Technology</strong><span>1,000</span></button>
-            <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="movies"><strong>Movies</strong><span>1,000</span></button>
-            <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="history"><strong>History</strong><span>1,000</span></button>
-            <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="comics"><strong>Comics</strong><span>1,000</span></button>
-            <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="pop-culture"><strong>Pop Culture</strong><span>1,000</span></button>
-          </div>
+          <details class="topic-options">
+            <summary>Topic: <span data-category-summary>Kaspa</span> <span aria-hidden="true">↓</span></summary>
+            <div class="category-picker" role="radiogroup" aria-label="Trivia category">
+              <button class="category-chip selected" type="button" role="radio" aria-checked="true" data-category-key="kaspa"><strong>Kaspa</strong><span>1,032 · sourced</span></button>
+              <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="video-games"><strong>Video Games</strong><span>1,000</span></button>
+              <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="science-fiction"><strong>Science Fiction</strong><span>1,000</span></button>
+              <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="technology"><strong>Technology</strong><span>1,000</span></button>
+              <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="movies"><strong>Movies</strong><span>1,000</span></button>
+              <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="history"><strong>History</strong><span>1,000</span></button>
+              <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="comics"><strong>Comics</strong><span>1,000</span></button>
+              <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="pop-culture"><strong>Pop Culture</strong><span>1,000</span></button>
+            </div>
+          </details>
 
           <div class="mode-card">
             <div>
@@ -64,38 +66,40 @@
             <div class="mode-status" data-bank-status>LOADING</div>
           </div>
 
+          <div class="start-actions">
+            <button class="primary-action" type="button" data-start disabled>Connecting Ranked Service</button>
+            <button class="quiet-action" type="button" data-how>How it works</button>
+          </div>
+
+          <div class="local-note" role="status" aria-live="polite">
+            <b>Alpha play:</b> game credits are for practice and cannot be withdrawn.
+          </div>
+
+          <details class="optional-panel">
+            <summary>Connect Kasware <span>Optional for playing</span></summary>
+            <section class="wallet-panel" data-wallet-root aria-label="Kasware wallet identity">
+              <div>
+                <div class="wallet-panel__head"><i class="wallet-panel__dot"></i><span data-wallet-state>CHECKING KASWARE</span></div>
+                <div class="wallet-panel__identity"><strong data-wallet-address>Not connected</strong><span data-wallet-network>Connect to read network</span></div>
+                <div class="wallet-panel__facts"><span>HOLDING <b data-wallet-geek>—</b></span><span>REWARDS OFF</span></div>
+                <p class="wallet-panel__message" data-wallet-message aria-live="polite">Checking for the Kasware wallet.</p>
+              </div>
+              <div class="wallet-panel__actions">
+                <button type="button" data-wallet-connect>Connect Kasware</button>
+                <button type="button" data-wallet-verify hidden>Verify ownership</button>
+                <a href="https://www.kasware.xyz" target="_blank" rel="noreferrer" data-wallet-install>Get Kasware ↗</a>
+              </div>
+              <p class="wallet-panel__safety"><b>No transaction requested.</b> Wallet connection and message verification cannot move KAS or GEEK. Game balances are server-backed Alpha credits and cannot be withdrawn.</p>
+            </section>
+          </details>
+
           <div class="career-strip" aria-label="Server-ranked Gauntlet career">
             <div><small>BEST ROUND</small><strong data-career-round>00</strong></div>
             <div><small>BEST SCORE</small><strong data-career-score>0</strong></div>
             <div><small>RUNS</small><strong data-career-runs>0</strong></div>
           </div>
 
-          <section class="wallet-panel" data-wallet-root aria-label="Kasware wallet identity">
-            <div>
-              <div class="wallet-panel__head"><i class="wallet-panel__dot"></i><span data-wallet-state>CHECKING KASWARE</span></div>
-              <div class="wallet-panel__identity"><strong data-wallet-address>Not connected</strong><span data-wallet-network>Connect to read network</span></div>
-              <div class="wallet-panel__facts"><span>HOLDING <b data-wallet-geek>—</b></span><span>REWARDS OFF</span></div>
-              <p class="wallet-panel__message" data-wallet-message aria-live="polite">Checking for the Kasware wallet.</p>
-            </div>
-            <div class="wallet-panel__actions">
-              <button type="button" data-wallet-connect>Connect Kasware</button>
-              <button type="button" data-wallet-verify hidden>Verify ownership</button>
-              <a href="https://www.kasware.xyz" target="_blank" rel="noreferrer" data-wallet-install>Get Kasware ↗</a>
-            </div>
-            <p class="wallet-panel__safety"><b>No transaction requested.</b> Wallet connection and message verification cannot move KAS or GEEK. Game balances are server-backed Alpha credits and cannot be withdrawn.</p>
-          </section>
-
-          <div class="start-actions">
-            <button class="primary-action" type="button" data-start disabled>Connecting Ranked Service</button>
-            <button class="quiet-action" type="button" data-how>How it works</button>
-            <a class="quiet-action" href="../lobby/">Find a lobby</a>
-            <a class="quiet-action" href="../profile/">Profile &amp; journey</a>
-            <a class="quiet-action" href="../rewards/">Wallet &amp; rewards</a>
-          </div>
-
-          <div class="local-note">
-            <b>Server-authoritative ranked mode:</b> correct answers never ship to the browser. Alpha GEEK remains a no-value practice balance and cannot be withdrawn.
-          </div>
+          <nav class="play-more" aria-label="More ways to explore"><a href="../lobby/">Lobbies</a><a href="../profile/">Profile</a><a href="../rewards/">Rewards</a></nav>
         </div>
 
         <aside class="ladder" aria-label="Gauntlet rounds">
@@ -162,7 +166,7 @@
 
           <div class="result-actions">
             <button class="primary-action" type="button" data-continue>Continue to Round 02 <span>→</span></button>
-            <button class="quiet-action cashout" type="button" data-cashout>End run &amp; keep Alpha GEEK</button>
+            <button class="quiet-action cashout" type="button" data-cashout>End run</button>
           </div>
           <p class="entry-warning" data-entry-warning></p>
           <details class="round-review">

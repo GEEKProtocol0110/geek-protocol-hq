@@ -62,7 +62,7 @@
     continueButton: $('[data-continue]'), entryWarning: $('[data-entry-warning]'), startBalance: $('[data-start-balance]'), fees: $('[data-fees]'),
     rewards: $('[data-rewards]'), profit: $('[data-profit]'), runProgress: $('[data-run-progress]'), finalScore: $('[data-final-score]'),
     completeMessage: $('[data-complete-message]'), rules: $('[data-rules]'), startButton: $('[data-start]'), bankStatus: $('[data-bank-status]'),
-    localNote: $('.local-note'), selectedMode: $('[data-selected-mode]'), modeDetail: $('[data-mode-detail]'), roundReview: $('[data-round-review]'),
+    localNote: $('.local-note'), selectedMode: $('[data-selected-mode]'), modeDetail: $('[data-mode-detail]'), categorySummary: $('[data-category-summary]'), roundReview: $('[data-round-review]'),
     careerRound: $('[data-career-round]'), careerScore: $('[data-career-score]'), careerRuns: $('[data-career-runs]'),
     leaderboard: $('[data-leaderboard]'), boardState: $('[data-board-state]'), categoryButtons: $$('[data-category-key]'), modeButtons: $$('[data-mode-key]'),
     cashoutButton: $('[data-cashout]'), startScreen: $('[data-screen="start"]'), completeKicker: $('[data-complete-kicker]'), completeTitle: $('[data-complete-title]')
@@ -142,14 +142,15 @@
     elements.startScreen.dataset.mode = activeMode;
     elements.selectedMode.textContent = `${mode.name} · ${category.shortName}`;
     elements.modeDetail.textContent = `${mode.detail} · ${format.format(category.count)} private items`;
+    elements.categorySummary.textContent = category.shortName;
     elements.bankStatus.textContent = communityReady ? 'SERVER READY' : 'CONNECTING';
     elements.startButton.disabled = !communityReady;
     elements.startButton.innerHTML = communityReady ? `${mode.start} <span>→</span>` : 'Connecting Ranked Service';
     elements.localNote.innerHTML = communityReady
       ? activeMode === 'gauntlet'
-        ? '<b>Server-authoritative Gauntlet:</b> private answers, enforced deadlines, and a server-only leaderboard. Alpha GEEK remains a no-value practice balance.'
-        : '<b>Server-authoritative quick mode:</b> the server owns the answers, clock, score, and board. Daily and Speed award XP and verified scores—not Alpha GEEK.'
-      : '<b>Ranked service required:</b> the answer bank is not shipped to browsers. Play unlocks after the secure game service connects.';
+        ? '<b>Alpha play:</b> credits are for practice and cannot be withdrawn. Scores are checked by the server.'
+        : '<b>Quick mode:</b> earn XP and a verified score. No Alpha GEEK is awarded.'
+      : '<b>Connecting:</b> play unlocks when the ranked service is ready.';
     loadLeaderboard(activeCategory, activeMode);
   };
 
