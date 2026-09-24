@@ -53,9 +53,37 @@
         <div class="protocol-grid">
           <article><b>BLOCKDAG</b><h3>Parallel blocks.</h3><p>Blocks can reference several predecessors.</p><a href="https://kaspa.org/">Kaspa overview ↗</a></article>
           <article><b>GHOSTDAG</b><h3>One shared order.</h3><p>Consensus orders the graph's blocks.</p><a href="https://eprint.iacr.org/2018/104.pdf">Original paper ↗</a></article>
-          <article><b>FAIR LAUNCH</b><h3>No insiders.</h3><p>No premine or presale at launch.</p><a href="https://kaspa.org/lore">Kaspa history ↗</a></article>
+          <article><b>FAIR LAUNCH</b><h3>Open launch.</h3><p>No premine or presale.</p><a href="https://kaspa.org/lore">Kaspa history ↗</a></article>
           <article><b>EMISSION</b><h3>Known schedule.</h3><p>Block rewards decline each month.</p><a href="https://wiki.kaspa.org/en/tokenomics">Tokenomics ↗</a></article>
         </div>
+        <figure class="reference-graph">
+          <div class="reference-graph-head">
+            <div><small>BLOCK REFERENCES / SCHEMATIC</small><h3>Parallel blocks can share parents.</h3></div>
+            <a href="https://kgi.kaspad.net/">Explore Kaspa's live blockDAG ↗</a>
+          </div>
+          <div class="reference-graph-viewport">
+            <svg viewBox="0 0 800 300" role="img" aria-labelledby="blockdag-title blockdag-desc" xmlns="http://www.w3.org/2000/svg">
+              <title id="blockdag-title">Example blockDAG with parallel blocks and multiple parent references</title>
+              <desc id="blockdag-desc">Older block A is referenced by parallel blocks B and C. Newer block D references both B and C. Parallel blocks E and F reference D. Newer block G references both E and F. Every arrow points from a newer block back to a parent.</desc>
+              <defs><marker id="parent-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" /></marker></defs>
+              <g class="reference-edges" marker-end="url(#parent-arrow)">
+                <path d="M232 89 104 140" /><path d="M232 211 104 160" />
+                <path d="M407 140 279 89" /><path d="M407 160 279 211" />
+                <path d="M582 89 454 140" /><path d="M582 211 454 160" />
+                <path d="M717 140 629 89" /><path d="M717 160 629 211" />
+              </g>
+              <g class="reference-nodes">
+                <circle cx="80" cy="150" r="25" /><circle cx="255" cy="80" r="25" /><circle cx="255" cy="220" r="25" />
+                <circle cx="430" cy="150" r="25" /><circle cx="605" cy="80" r="25" /><circle cx="605" cy="220" r="25" /><circle cx="740" cy="150" r="25" />
+              </g>
+              <g class="reference-labels" text-anchor="middle" dominant-baseline="central">
+                <text x="80" y="150">A</text><text x="255" y="80">B</text><text x="255" y="220">C</text>
+                <text x="430" y="150">D</text><text x="605" y="80">E</text><text x="605" y="220">F</text><text x="740" y="150">G</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption>Older blocks are on the left. Arrows point back to parents. This example shows block references, not live blocks or GHOSTDAG ordering.</figcaption>
+        </figure>
       </section>
 
       <section class="field-section timeline-section" id="timeline">
