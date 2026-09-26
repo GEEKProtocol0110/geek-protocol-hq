@@ -95,6 +95,13 @@ export const handleApiError = (res, error) => {
   if (code === 'INSUFFICIENT_BALANCE') return sendJson(res, 409, { ok: false, code, error: 'Your server Alpha GEEK balance is too low for the next round.' });
   if (code === 'ROOM_NOT_FOUND') return sendJson(res, 404, { ok: false, error: 'That lobby is no longer active.' });
   if (code === 'ROOM_FULL') return sendJson(res, 409, { ok: false, error: 'That lobby is full.' });
+  if (code === 'ROOM_NOT_MEMBER') return sendJson(res, 403, { ok: false, code, error: 'Your room seat expired. Rejoin with the invitation link.' });
+  if (code === 'MATCH_ALREADY_STARTED') return sendJson(res, 409, { ok: false, code, error: 'This room already started a shared round. Create a new room to play again.' });
+  if (code === 'MATCH_HOST_REQUIRED') return sendJson(res, 403, { ok: false, code, error: 'Only the room host can start the shared round.' });
+  if (code === 'MATCH_PLAYERS_REQUIRED') return sendJson(res, 409, { ok: false, code, error: 'Wait until at least two players are online, including the host.' });
+  if (code === 'MATCH_NOT_FOUND') return sendJson(res, 404, { ok: false, code, error: 'That shared round expired.' });
+  if (code === 'MATCH_NOT_PLAYER') return sendJson(res, 403, { ok: false, code, error: 'Only players in the room when the round started can answer.' });
+  if (code === 'MATCH_QUESTION_CLOSED' || code === 'MATCH_ANSWER_RECORDED' || code === 'MATCH_CHANGED') return sendJson(res, 409, { ok: false, code, error: 'This question has closed or your answer was already recorded.' });
   if (code === 'CCE_NOT_FOUND') return sendJson(res, 404, { ok: false, error: 'That contribution could not be found.' });
   if (code === 'CCE_DUPLICATE') return sendJson(res, 409, { ok: false, error: 'That question is already in the review pipeline.' });
   if (code === 'CCE_STATE_INVALID') return sendJson(res, 409, { ok: false, error: 'That contribution cannot take this action in its current state.' });

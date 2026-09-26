@@ -48,6 +48,13 @@ flowchart TB
 
 ## Primary flows
 
+### Shared lobby practice round
+
+1. The host starts a room only after at least two seats are active. The server fixes the participant roster, selects ten questions and options, and schedules one shared 15-second window per question.
+2. Each participant fetches the current question from the server. The response contains no answer key or private match state.
+3. An atomic Redis script checks the room roster, shared deadline, and previous answer, then records exactly one answer and updates the server-computed practice score.
+4. All participants see the same questions and room standings. Lobby scores do not alter ranked Gauntlet scores, XP, Alpha GEEK, or on-chain balances.
+
 ### Ranked answer
 
 1. The server selects a question and cryptographically shuffles answer options.
