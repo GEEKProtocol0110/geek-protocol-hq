@@ -1,5 +1,6 @@
 import { randomBytes } from 'node:crypto';
-import { categories, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
+import { categories, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
+import { createMatch, loadMatch, matchView, submitMatchAnswer } from '../server/lobby-game.js';
 import { parseStoredJson, pipeline, rateLimit, redis } from '../server/redis.js';
 import { requireSession } from '../server/session.js';
 
@@ -117,6 +118,14 @@ export default async function handler(req, res) {
   try {
     if (req.method === 'GET') {
       const code = cleanCode(req.query?.code);
+      if (req.query?.game === '1') {
+        if (!codePattern.test(code)) throw new Error('ROOM_NOT_FOUND');
+        const session = await requireSession(req);
+        await rateLimit('lobby-game-view', session.id, 30, 60);
+        const room = parseStoredJson(await redis('GET', roomKey(code)));
+        if (!room) throw new Error('ROOM_NOT_FOUND');
+        return sendJson(res, 200, { ok: true, match: matchView(await loadMatch(code), session.id) });
+      }
       return sendJson(res, 200, { ok: true, ...(code ? { room: await getRoom(code) } : { rooms: await listRooms() }) });
     }
     if (req.method !== 'POST') return methodNotAllowed(res);
@@ -127,6 +136,25 @@ export default async function handler(req, res) {
     if (action === 'create') return sendJson(res, 201, { ok: true, room: await createRoom(session, body) });
     const code = cleanCode(body.code);
     if (!codePattern.test(code)) throw new Error('ROOM_NOT_FOUND');
+    if (action === 'game-start' || action === 'game-answer') {
+      await rateLimit('lobby-game-action', session.id, 25, 60);
+      const room = parseStoredJson(await redis('GET', roomKey(code)));
+      if (!room) throw new Error('ROOM_NOT_FOUND');
+      if (action === 'game-start') {
+        await rateLimit('lobby-game-start-ip', clientFingerprint(req), 15, 60 * 60);
+        if (room.hostId !== session.id) throw new Error('MATCH_HOST_REQUIRED');
+        const ids = await redis('ZRANGEBYSCORE', presenceKey(code), Date.now() - PRESENCE_WINDOW, '+inf');
+        if (!Array.isArray(ids) || ids.length < 2 || !ids.includes(session.id)) throw new Error('MATCH_PLAYERS_REQUIRED');
+        const names = await pipeline(ids.slice(0, room.seats).map((id) => ['HGET', membersKey(code), id]));
+        const roster = ids.slice(0, room.seats).map((id, index) => ({ id, name: parseStoredJson(names[index])?.name || 'Guest Geek' }));
+        const match = await createMatch({ code, category: room.category, focus: room.focus, roster });
+        return sendJson(res, 201, { ok: true, match: matchView(match, session.id) });
+      }
+      const match = await loadMatch(code);
+      if (!match) throw new Error('MATCH_NOT_FOUND');
+      const result = await submitMatchAnswer({ code, match, sessionId: session.id, questionNumber: Number(body.questionNumber), selectedIndex: Number(body.selectedIndex) });
+      return sendJson(res, 200, { ok: true, result, match: matchView(await loadMatch(code), session.id) });
+    }
     if (action === 'join') {
       const room = parseStoredJson(await redis('GET', roomKey(code)));
       if (!room) throw new Error('ROOM_NOT_FOUND');

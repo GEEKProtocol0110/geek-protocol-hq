@@ -22,7 +22,7 @@
     "api/ranked.js": {
       "includeFiles": "server/questions/**"
     },
-    "api/lobby-game.js": {
+    "api/lobbies.js": {
       "includeFiles": "server/questions/**"
     }
   },

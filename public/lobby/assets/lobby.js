@@ -182,7 +182,7 @@
     const code = currentRoom.code;
     matchLoading = true;
     try {
-      const payload = await api(`/api/lobby-game?code=${encodeURIComponent(code)}`);
+      const payload = await api(`/api/lobbies?game=1&code=${encodeURIComponent(code)}`);
       if (currentRoom?.code === code) renderMatch(payload.match);
     } catch (error) {
       $('[data-match-feedback]').textContent = error.message;
@@ -299,7 +299,7 @@
     if (!currentRoom?.live || !currentRoom.isHost) return;
     event.currentTarget.disabled = true;
     try {
-      const payload = await api('/api/lobby-game', { method: 'POST', body: JSON.stringify({ action: 'start', code: currentRoom.code }) });
+      const payload = await api('/api/lobbies', { method: 'POST', body: JSON.stringify({ action: 'game-start', code: currentRoom.code }) });
       renderMatch(payload.match);
     } catch (error) {
       $('[data-room-note]').textContent = error.message;
@@ -314,8 +314,8 @@
     $$('[data-answer-index]', $('[data-match-options]')).forEach((item) => { item.disabled = true; });
     $('[data-match-feedback]').textContent = 'Recording your answer…';
     try {
-      const payload = await api('/api/lobby-game', { method: 'POST', body: JSON.stringify({
-        action: 'answer', code: currentRoom.code, questionNumber: number, selectedIndex: Number(button.dataset.answerIndex)
+      const payload = await api('/api/lobbies', { method: 'POST', body: JSON.stringify({
+        action: 'game-answer', code: currentRoom.code, questionNumber: number, selectedIndex: Number(button.dataset.answerIndex)
       }) });
       renderMatch(payload.match);
     } catch (error) {

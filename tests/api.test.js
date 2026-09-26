@@ -3,7 +3,6 @@ import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
 import sessionHandler from '../api/session.js';
 import lobbiesHandler from '../api/lobbies.js';
-import lobbyGameHandler from '../api/lobby-game.js';
 import leaderboardHandler from '../api/leaderboard.js';
 import rankedHandler from '../api/ranked.js';
 import contentHandler from '../api/content.js';
@@ -18,6 +17,8 @@ import { isValidKaspaMainnetAddress } from '../server/kaspa-address.js';
 import { defaultProfile } from '../server/profile.js';
 import { deriveProgression, recordRoundJourney } from '../server/progression.js';
 import { loadQuestionBank } from '../server/questions.js';
+
+const lobbyGameHandler = lobbiesHandler;
 
 process.env.UPSTASH_REDIS_REST_URL = 'https://redis.test';
 process.env.UPSTASH_REDIS_REST_TOKEN = 'test-token';
@@ -504,7 +505,7 @@ test('shared lobby round locks its roster and answers, with scores decided by th
   const code = created.body.room.code;
 
   const earlyStart = response();
-  await lobbyGameHandler(request('POST', { code, action: 'start' }, hostCookie), earlyStart);
+  await lobbyGameHandler(request('POST', { code, action: 'game-start' }, hostCookie), earlyStart);
   assert.equal(earlyStart.statusCode, 409);
   const unjoinedHeartbeat = response();
   await lobbiesHandler(request('POST', { code, action: 'heartbeat' }, outsiderCookie), unjoinedHeartbeat);
@@ -518,10 +519,10 @@ test('shared lobby round locks its roster and answers, with scores decided by th
   assert.equal(full.statusCode, 409);
 
   const nonHostStart = response();
-  await lobbyGameHandler(request('POST', { code, action: 'start' }, guestCookie), nonHostStart);
+  await lobbyGameHandler(request('POST', { code, action: 'game-start' }, guestCookie), nonHostStart);
   assert.equal(nonHostStart.statusCode, 403);
   const started = response();
-  await lobbyGameHandler(request('POST', { code, action: 'start' }, hostCookie), started);
+  await lobbyGameHandler(request('POST', { code, action: 'game-start' }, hostCookie), started);
   assert.equal(started.statusCode, 201);
   assert.equal(started.body.match.state, 'starting');
   assert.equal(started.body.match.question, null);
@@ -529,7 +530,7 @@ test('shared lobby round locks its roster and answers, with scores decided by th
   assert.equal('correctIndex' in started.body.match, false);
 
   const replayStart = response();
-  await lobbyGameHandler(request('POST', { code, action: 'start' }, hostCookie), replayStart);
+  await lobbyGameHandler(request('POST', { code, action: 'game-start' }, hostCookie), replayStart);
   assert.equal(replayStart.statusCode, 409);
 
   const key = `geek:lobby:${code}:match`;
@@ -537,7 +538,7 @@ test('shared lobby round locks its roster and answers, with scores decided by th
   privateMatch.startsAt = Date.now() - 1_000;
   strings.set(key, JSON.stringify(privateMatch));
   const questionView = response();
-  await lobbyGameHandler(request('GET', undefined, guestCookie, { code }), questionView);
+  await lobbyGameHandler(request('GET', undefined, guestCookie, { code, game: '1' }), questionView);
   assert.equal(questionView.statusCode, 200);
   assert.equal(questionView.body.match.state, 'playing');
   assert.equal(questionView.body.match.questionNumber, 1);
@@ -545,10 +546,10 @@ test('shared lobby round locks its roster and answers, with scores decided by th
   const correct = privateMatch.questions[0].correctIndex;
 
   const outsiderAnswer = response();
-  await lobbyGameHandler(request('POST', { code, action: 'answer', questionNumber: 1, selectedIndex: correct }, outsiderCookie), outsiderAnswer);
+  await lobbyGameHandler(request('POST', { code, action: 'game-answer', questionNumber: 1, selectedIndex: correct }, outsiderCookie), outsiderAnswer);
   assert.equal(outsiderAnswer.statusCode, 403);
   const attempts = [response(), response()];
-  await Promise.all(attempts.map((res) => lobbyGameHandler(request('POST', { code, action: 'answer', questionNumber: 1, selectedIndex: correct, score: 1_000_000 }, guestCookie), res)));
+  await Promise.all(attempts.map((res) => lobbyGameHandler(request('POST', { code, action: 'game-answer', questionNumber: 1, selectedIndex: correct, score: 1_000_000 }, guestCookie), res)));
   assert.deepEqual(attempts.map((res) => res.statusCode).sort(), [200, 409]);
   assert.equal(attempts.find((res) => res.statusCode === 200).body.result.correct, true);
   const updated = JSON.parse(strings.get(key));
@@ -558,10 +559,10 @@ test('shared lobby round locks its roster and answers, with scores decided by th
   updated.startsAt = Date.now() - updated.questionMs * updated.questions.length - 100;
   strings.set(key, JSON.stringify(updated));
   const expired = response();
-  await lobbyGameHandler(request('POST', { code, action: 'answer', questionNumber: 1, selectedIndex: correct }, hostCookie), expired);
+  await lobbyGameHandler(request('POST', { code, action: 'game-answer', questionNumber: 1, selectedIndex: correct }, hostCookie), expired);
   assert.equal(expired.statusCode, 409);
   const final = response();
-  await lobbyGameHandler(request('GET', undefined, hostCookie, { code }), final);
+  await lobbyGameHandler(request('GET', undefined, hostCookie, { code, game: '1' }), final);
   assert.equal(final.body.match.state, 'finished');
   assert.equal(final.body.match.scores[0].name, 'Match Guest');
 });
