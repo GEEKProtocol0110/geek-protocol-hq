@@ -18,6 +18,8 @@ import { defaultProfile } from '../server/profile.js';
 import { deriveProgression, recordRoundJourney } from '../server/progression.js';
 import { loadQuestionBank } from '../server/questions.js';
 
+const lobbyGameHandler = lobbiesHandler;
+
 process.env.UPSTASH_REDIS_REST_URL = 'https://redis.test';
 process.env.UPSTASH_REDIS_REST_TOKEN = 'test-token';
 process.env.CCE_ADMIN_TOKEN = 'test-cce-admin-token-123456789';
@@ -37,6 +39,7 @@ const execute = (command) => {
   const name = String(rawName).toUpperCase();
   if (name === 'PING') return 'PONG';
   if (name === 'GET') return strings.get(args[0]) ?? null;
+  if (name === 'EXISTS') return strings.has(args[0]) ? 1 : 0;
   if (name === 'GETDEL') {
     const value = strings.get(args[0]) ?? null;
     strings.delete(args[0]);
@@ -104,6 +107,48 @@ const execute = (command) => {
     return withScores ? entries.flatMap(([member, score]) => [member, String(score)]) : entries.map(([member]) => member);
   }
   if (name === 'EVAL') {
+    if (String(args[0]).includes('geek-lobby-join-v1')) {
+      const keys = args.slice(2, 6);
+      const values = args.slice(6);
+      if (!strings.has(keys[0])) return 'ROOM_NOT_FOUND';
+      const previousPresence = execute(['ZSCORE', keys[1], values[0]]);
+      const count = execute(['ZCOUNT', keys[1], values[3], '+inf']);
+      if ((previousPresence === null || Number(previousPresence) < Number(values[3])) && count >= Number(values[6])) return 'ROOM_FULL';
+      const previous = execute(['HGET', keys[2], values[0]]);
+      const joinedAt = previous ? JSON.parse(previous).joinedAt : Number(values[1]);
+      execute(['ZADD', keys[1], values[1], values[0]]);
+      execute(['HSET', keys[2], values[0], JSON.stringify({ name: values[2], joinedAt, host: values[7] === '1' })]);
+      execute(['ZADD', keys[3], values[1], values[5]]);
+      return 'OK';
+    }
+    if (String(args[0]).includes('geek-lobby-heartbeat-v1')) {
+      const keys = args.slice(2, 5);
+      const values = args.slice(5);
+      const presence = execute(['ZSCORE', keys[1], values[0]]);
+      if (!strings.has(keys[0])) return 'ROOM_NOT_FOUND';
+      if (presence === null || Number(presence) < Number(values[3]) || !execute(['HGET', keys[2], values[0]])) return 'ROOM_NOT_MEMBER';
+      execute(['ZADD', keys[1], values[1], values[0]]);
+      return 'OK';
+    }
+    if (String(args[0]).includes('geek-lobby-answer-v1')) {
+      const key = args[2];
+      const values = args.slice(3);
+      const match = JSON.parse(strings.get(key) || 'null');
+      if (!match) return 'MATCH_NOT_FOUND';
+      const index = Number(values[1]);
+      const now = Number(values[2]);
+      if (match.id !== values[0]) return 'MATCH_CHANGED';
+      if (index < 0 || index >= match.questions.length || now < match.startsAt + index * match.questionMs || now >= match.startsAt + (index + 1) * match.questionMs) return 'MATCH_QUESTION_CLOSED';
+      const player = match.players[values[3]];
+      if (!player) return 'MATCH_NOT_PLAYER';
+      if (player.answers[String(index)]) return 'MATCH_ANSWER_RECORDED';
+      const correct = Number(values[4]) === match.questions[index].correctIndex;
+      const scoreAdded = correct ? 1000 + Math.floor((match.startsAt + (index + 1) * match.questionMs - now) / 1000) * 30 : 0;
+      player.score += scoreAdded;
+      player.answers[String(index)] = { correct, scoreAdded };
+      strings.set(key, JSON.stringify(match));
+      return JSON.stringify({ correct, scoreAdded, score: player.score });
+    }
     if (String(args[0]).includes('geek-sticker-trade-create-v1')) {
       const keyCount = Number(args[1]);
       const keys = args.slice(2, 2 + keyCount);
@@ -448,6 +493,78 @@ test('sessions, live rooms, and server-authoritative leaderboard work together',
   const forgedScoreRes = response();
   await leaderboardHandler(request('POST', { category: 'kaspa', score: 250000, round: 10 }, hostCookie), forgedScoreRes);
   assert.equal(forgedScoreRes.statusCode, 405);
+});
+
+test('shared lobby round locks its roster and answers, with scores decided by the server', async () => {
+  const hostCookie = await startSession('Match Host');
+  const guestCookie = await startSession('Match Guest');
+  const outsiderCookie = await startSession('Late Visitor');
+  const created = response();
+  await lobbiesHandler(request('POST', { action: 'create', seats: 2, category: 'kaspa' }, hostCookie), created);
+  assert.equal(created.statusCode, 201);
+  const code = created.body.room.code;
+
+  const earlyStart = response();
+  await lobbyGameHandler(request('POST', { code, action: 'game-start' }, hostCookie), earlyStart);
+  assert.equal(earlyStart.statusCode, 409);
+  const unjoinedHeartbeat = response();
+  await lobbiesHandler(request('POST', { code, action: 'heartbeat' }, outsiderCookie), unjoinedHeartbeat);
+  assert.equal(unjoinedHeartbeat.statusCode, 403);
+
+  const joined = response();
+  await lobbiesHandler(request('POST', { code, action: 'join' }, guestCookie), joined);
+  assert.equal(joined.body.room.isHost, false);
+  const full = response();
+  await lobbiesHandler(request('POST', { code, action: 'join' }, outsiderCookie), full);
+  assert.equal(full.statusCode, 409);
+
+  const nonHostStart = response();
+  await lobbyGameHandler(request('POST', { code, action: 'game-start' }, guestCookie), nonHostStart);
+  assert.equal(nonHostStart.statusCode, 403);
+  const started = response();
+  await lobbyGameHandler(request('POST', { code, action: 'game-start' }, hostCookie), started);
+  assert.equal(started.statusCode, 201);
+  assert.equal(started.body.match.state, 'starting');
+  assert.equal(started.body.match.question, null);
+  assert.equal(started.body.match.scores.length, 2);
+  assert.equal('correctIndex' in started.body.match, false);
+
+  const replayStart = response();
+  await lobbyGameHandler(request('POST', { code, action: 'game-start' }, hostCookie), replayStart);
+  assert.equal(replayStart.statusCode, 409);
+
+  const key = `geek:lobby:${code}:match`;
+  const privateMatch = JSON.parse(strings.get(key));
+  privateMatch.startsAt = Date.now() - 1_000;
+  strings.set(key, JSON.stringify(privateMatch));
+  const questionView = response();
+  await lobbyGameHandler(request('GET', undefined, guestCookie, { code, game: '1' }), questionView);
+  assert.equal(questionView.statusCode, 200);
+  assert.equal(questionView.body.match.state, 'playing');
+  assert.equal(questionView.body.match.questionNumber, 1);
+  assert.equal('correctIndex' in questionView.body.match.question, false);
+  const correct = privateMatch.questions[0].correctIndex;
+
+  const outsiderAnswer = response();
+  await lobbyGameHandler(request('POST', { code, action: 'game-answer', questionNumber: 1, selectedIndex: correct }, outsiderCookie), outsiderAnswer);
+  assert.equal(outsiderAnswer.statusCode, 403);
+  const attempts = [response(), response()];
+  await Promise.all(attempts.map((res) => lobbyGameHandler(request('POST', { code, action: 'game-answer', questionNumber: 1, selectedIndex: correct, score: 1_000_000 }, guestCookie), res)));
+  assert.deepEqual(attempts.map((res) => res.statusCode).sort(), [200, 409]);
+  assert.equal(attempts.find((res) => res.statusCode === 200).body.result.correct, true);
+  const updated = JSON.parse(strings.get(key));
+  assert.ok(updated.players[sessionIdFromCookie(guestCookie)].score > 0);
+  assert.ok(updated.players[sessionIdFromCookie(guestCookie)].score < 2_000);
+
+  updated.startsAt = Date.now() - updated.questionMs * updated.questions.length - 100;
+  strings.set(key, JSON.stringify(updated));
+  const expired = response();
+  await lobbyGameHandler(request('POST', { code, action: 'game-answer', questionNumber: 1, selectedIndex: correct }, hostCookie), expired);
+  assert.equal(expired.statusCode, 409);
+  const final = response();
+  await lobbyGameHandler(request('GET', undefined, hostCookie, { code, game: '1' }), final);
+  assert.equal(final.body.match.state, 'finished');
+  assert.equal(final.body.match.scores[0].name, 'Match Guest');
 });
 
 test('community questions move through review, enter ranked play, and earn once on first use', async () => {

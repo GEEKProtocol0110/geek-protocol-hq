@@ -21,6 +21,9 @@
     },
     "api/ranked.js": {
       "includeFiles": "server/questions/**"
+    },
+    "api/lobbies.js": {
+      "includeFiles": "server/questions/**"
     }
   },
   "headers": [

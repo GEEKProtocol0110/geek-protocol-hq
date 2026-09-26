@@ -57,7 +57,7 @@
           <div class="welcome-panel">
             <div class="eyebrow">COMMUNITY ROOMS // LIVE PRESENCE ALPHA</div>
             <h1>FIND YOUR<br /><span>SQUAD.</span></h1>
-            <p data-channel-copy>Choose a room template or configure your own. Active seats now update from the community service; synchronized questions and shared scoring remain a later Alpha gate.</p>
+            <p data-channel-copy>Choose a room template, invite another player, and let the host start ten shared questions with server-scored standings.</p>
           </div>
 
           <section class="wallet-panel" data-wallet-root aria-label="Kasware wallet identity">
@@ -98,7 +98,7 @@
             <div class="template-grid">
               <button type="button" data-template="core"><span>01</span><strong>Kaspa Core</strong><small>Broad protocol fundamentals</small></button>
               <button type="button" data-template="ghostdag"><span>02</span><strong>GHOSTDAG Lab</strong><small>Consensus-weighted questions</small></button>
-              <button type="button" data-template="speed"><span>03</span><strong>Speed Signal</strong><small>Two-seat quick challenge</small></button>
+              <button type="button" data-template="speed"><span>03</span><strong>Quick Duel</strong><small>Two-seat shared round</small></button>
               <button type="button" data-template="builders"><span>04</span><strong>Builder Briefing</strong><small>Toccata and toolchain focus</small></button>
             </div>
           </section>
@@ -108,7 +108,14 @@
             <div class="room-code"><div><small>LOBBY CODE</small><strong data-room-code>GEEK-0000</strong></div><button type="button" data-copy>Copy invite link</button></div>
             <div class="seat-grid" data-seats></div>
             <p class="room-note" data-room-note><b>Connecting:</b> checking live presence before creating the room.</p>
-            <div class="room-actions"><a class="primary-action" data-launch href="../play/?category=kaspa">Launch Gauntlet <span>→</span></a><button class="secondary-action" type="button" data-new-room>New room</button></div>
+            <div class="room-actions"><button class="primary-action" type="button" data-start-match disabled>Start shared round <span>→</span></button><a class="secondary-action" data-launch href="../play/?category=kaspa">Play solo</a><button class="secondary-action" type="button" data-new-room>New room</button></div>
+            <section class="shared-match" data-shared-match hidden aria-label="Shared lobby round">
+              <div class="shared-match-header"><span data-match-status>Waiting for host</span><strong data-match-clock>—</strong></div>
+              <h3 data-match-question>Ten shared questions. Fifteen seconds each.</h3>
+              <div class="shared-answers" data-match-options></div>
+              <p class="room-note" data-match-feedback role="status" aria-live="polite">Everyone sees the same questions. Scores are calculated by the server; no Alpha GEEK or on-chain tokens are awarded.</p>
+              <ol class="shared-scores" data-match-scores></ol>
+            </section>
           </section>
         </section>
       </main>
@@ -122,7 +129,7 @@
         <a href="../rewards/"><span>W</span><div><b>Wallet &amp; rewards</b><small>Any Kaspa wallet</small></div></a>
         <a href="../mint/"><span>$</span><div><b>Mint readiness</b><small>Launch gates</small></div></a>
         <a href="https://github.com/GEEKProtocol0110/geek-protocol-hq"><span>↗</span><div><b>Source code</b><small>Public repository</small></div></a>
-        <div class="honesty-note"><b>Honest Alpha.</b><span>Online seats and server-verified Gauntlet, Daily, and Speed scores are live. Chat, synchronized group rounds, and token payouts stay locked.</span></div>
+        <div class="honesty-note"><b>Honest Alpha.</b><span>Lobby rounds share ten timed questions and server-scored room standings. Ranked Gauntlet remains a separate solo game. Chat and token payouts stay locked.</span></div>
       </aside>
     </div>
 

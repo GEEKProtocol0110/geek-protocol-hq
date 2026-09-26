@@ -43,7 +43,7 @@ See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness
 | Surface | Purpose |
 | --- | --- |
 | **Play** | Ten-round Geek Gauntlet plus server-owned Daily and Speed modes |
-| **Lobbies** | Public and private rooms with active-seat presence and shareable codes |
+| **Lobbies** | Active seats, shareable rooms, and host-started ten-question shared practice rounds with server-scored standings |
 | **Profile** | Verified XP, levels, prestige, category mastery, journey history, and collectibles |
 | **C.C.E.** | Community question submission, moderation, publication, and first-use reward records |
 | **Collection** | Deterministic 500-Geek identity blueprint and hashed legacy-art archive |
@@ -69,6 +69,7 @@ Geek Protocol is designed to fail closed around identity, mint verification, ran
 
 - Ranked answer keys never enter the public bundle.
 - Scores, XP, streaks, rewards, and deadlines are computed by the server.
+- Shared lobby rounds use a fixed server clock and one atomic answer per player and question; their practice standings do not award Alpha GEEK or tokens.
 - Wallet challenges are random, single-use, short-lived, and bound to the exact HTTPS origin and action.
 - The server verifies Kaspa Schnorr signatures and public-key/address correspondence.
 - Mint requests are pinned to Kaspa Mainnet and the canonical GEEK deployment.

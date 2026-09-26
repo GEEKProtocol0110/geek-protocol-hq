@@ -1,5 +1,6 @@
 import { randomBytes } from 'node:crypto';
-import { categories, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
+import { categories, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
+import { createMatch, loadMatch, matchView, submitMatchAnswer } from '../server/lobby-game.js';
 import { parseStoredJson, pipeline, rateLimit, redis } from '../server/redis.js';
 import { requireSession } from '../server/session.js';
 
@@ -12,6 +13,36 @@ const presenceKey = (code) => `geek:lobby:${code}:presence`;
 const membersKey = (code) => `geek:lobby:${code}:members`;
 const cleanCode = (value) => String(value || '').trim().toUpperCase();
 const publicRoom = ({ hostId, ...room }) => room;
+
+// Seat checks and membership updates must be atomic across concurrent joins.
+export const JOIN_ROOM_LUA = `
+-- geek-lobby-join-v1
+if redis.call('EXISTS', KEYS[1]) == 0 then return 'ROOM_NOT_FOUND' end
+local existing = redis.call('ZSCORE', KEYS[2], ARGV[1])
+local count = redis.call('ZCOUNT', KEYS[2], ARGV[4], '+inf')
+if (not existing or tonumber(existing) < tonumber(ARGV[4])) and count >= tonumber(ARGV[7]) then return 'ROOM_FULL' end
+local previous = redis.call('HGET', KEYS[3], ARGV[1])
+local joinedAt = ARGV[2]
+if previous then joinedAt = cjson.decode(previous).joinedAt end
+redis.call('ZADD', KEYS[2], ARGV[2], ARGV[1])
+redis.call('HSET', KEYS[3], ARGV[1], cjson.encode({name=ARGV[3], joinedAt=joinedAt, host=ARGV[8] == '1'}))
+redis.call('EXPIRE', KEYS[2], ARGV[5])
+redis.call('EXPIRE', KEYS[3], ARGV[5])
+redis.call('EXPIRE', KEYS[1], ARGV[5])
+redis.call('ZADD', KEYS[4], ARGV[2], ARGV[6])
+return 'OK'
+`;
+
+export const HEARTBEAT_ROOM_LUA = `
+-- geek-lobby-heartbeat-v1
+if redis.call('EXISTS', KEYS[1]) == 0 then return 'ROOM_NOT_FOUND' end
+local presence = redis.call('ZSCORE', KEYS[2], ARGV[1])
+if not presence or tonumber(presence) < tonumber(ARGV[4]) or not redis.call('HGET', KEYS[3], ARGV[1]) then return 'ROOM_NOT_MEMBER' end
+redis.call('ZADD', KEYS[2], ARGV[2], ARGV[1])
+redis.call('EXPIRE', KEYS[2], ARGV[3])
+redis.call('EXPIRE', KEYS[1], ARGV[3])
+return 'OK'
+`;
 
 const generateCode = () => {
   const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -54,23 +85,10 @@ const getRoom = async (code) => {
 
 const touchMember = async (code, room, session, host = false) => {
   const now = Date.now();
-  const [existingPresence, onlineCount, storedMember] = await pipeline([
-    ['ZSCORE', presenceKey(code), session.id],
-    ['ZCOUNT', presenceKey(code), now - PRESENCE_WINDOW, '+inf'],
-    ['HGET', membersKey(code), session.id]
-  ]);
-  if (existingPresence === null && Number(onlineCount) >= room.seats) throw new Error('ROOM_FULL');
-  const previous = parseStoredJson(storedMember);
-  const member = { name: session.name, joinedAt: previous?.joinedAt || now, host };
-  await pipeline([
-    ['ZADD', presenceKey(code), now, session.id],
-    ['HSET', membersKey(code), session.id, JSON.stringify(member)],
-    ['EXPIRE', presenceKey(code), LOBBY_TTL],
-    ['EXPIRE', membersKey(code), LOBBY_TTL],
-    ['EXPIRE', roomKey(code), LOBBY_TTL],
-    ['ZADD', INDEX_KEY, now, code]
-  ]);
-  return getRoom(code);
+  const result = await redis('EVAL', JOIN_ROOM_LUA, 4, roomKey(code), presenceKey(code), membersKey(code), INDEX_KEY,
+    session.id, now, session.name, now - PRESENCE_WINDOW, LOBBY_TTL, code, room.seats, host ? '1' : '0');
+  if (result !== 'OK') throw new Error(result || 'ROOM_NOT_FOUND');
+  return { ...(await getRoom(code)), isHost: room.hostId === session.id };
 };
 
 const listRooms = async () => {
@@ -100,6 +118,14 @@ export default async function handler(req, res) {
   try {
     if (req.method === 'GET') {
       const code = cleanCode(req.query?.code);
+      if (req.query?.game === '1') {
+        if (!codePattern.test(code)) throw new Error('ROOM_NOT_FOUND');
+        const session = await requireSession(req);
+        await rateLimit('lobby-game-view', session.id, 30, 60);
+        const room = parseStoredJson(await redis('GET', roomKey(code)));
+        if (!room) throw new Error('ROOM_NOT_FOUND');
+        return sendJson(res, 200, { ok: true, match: matchView(await loadMatch(code), session.id) });
+      }
       return sendJson(res, 200, { ok: true, ...(code ? { room: await getRoom(code) } : { rooms: await listRooms() }) });
     }
     if (req.method !== 'POST') return methodNotAllowed(res);
@@ -110,6 +136,25 @@ export default async function handler(req, res) {
     if (action === 'create') return sendJson(res, 201, { ok: true, room: await createRoom(session, body) });
     const code = cleanCode(body.code);
     if (!codePattern.test(code)) throw new Error('ROOM_NOT_FOUND');
+    if (action === 'game-start' || action === 'game-answer') {
+      await rateLimit('lobby-game-action', session.id, 25, 60);
+      const room = parseStoredJson(await redis('GET', roomKey(code)));
+      if (!room) throw new Error('ROOM_NOT_FOUND');
+      if (action === 'game-start') {
+        await rateLimit('lobby-game-start-ip', clientFingerprint(req), 15, 60 * 60);
+        if (room.hostId !== session.id) throw new Error('MATCH_HOST_REQUIRED');
+        const ids = await redis('ZRANGEBYSCORE', presenceKey(code), Date.now() - PRESENCE_WINDOW, '+inf');
+        if (!Array.isArray(ids) || ids.length < 2 || !ids.includes(session.id)) throw new Error('MATCH_PLAYERS_REQUIRED');
+        const names = await pipeline(ids.slice(0, room.seats).map((id) => ['HGET', membersKey(code), id]));
+        const roster = ids.slice(0, room.seats).map((id, index) => ({ id, name: parseStoredJson(names[index])?.name || 'Guest Geek' }));
+        const match = await createMatch({ code, category: room.category, focus: room.focus, roster });
+        return sendJson(res, 201, { ok: true, match: matchView(match, session.id) });
+      }
+      const match = await loadMatch(code);
+      if (!match) throw new Error('MATCH_NOT_FOUND');
+      const result = await submitMatchAnswer({ code, match, sessionId: session.id, questionNumber: Number(body.questionNumber), selectedIndex: Number(body.selectedIndex) });
+      return sendJson(res, 200, { ok: true, result, match: matchView(await loadMatch(code), session.id) });
+    }
     if (action === 'join') {
       const room = parseStoredJson(await redis('GET', roomKey(code)));
       if (!room) throw new Error('ROOM_NOT_FOUND');
@@ -118,12 +163,10 @@ export default async function handler(req, res) {
     if (action === 'heartbeat') {
       const room = parseStoredJson(await redis('GET', roomKey(code)));
       if (!room) throw new Error('ROOM_NOT_FOUND');
-      await pipeline([
-        ['ZADD', presenceKey(code), Date.now(), session.id],
-        ['EXPIRE', presenceKey(code), LOBBY_TTL],
-        ['EXPIRE', roomKey(code), LOBBY_TTL]
-      ]);
-      return sendJson(res, 200, { ok: true, room: await getRoom(code) });
+      const now = Date.now();
+      const result = await redis('EVAL', HEARTBEAT_ROOM_LUA, 3, roomKey(code), presenceKey(code), membersKey(code), session.id, now, LOBBY_TTL, now - PRESENCE_WINDOW);
+      if (result !== 'OK') throw new Error(result || 'ROOM_NOT_FOUND');
+      return sendJson(res, 200, { ok: true, room: { ...(await getRoom(code)), isHost: room.hostId === session.id } });
     }
     if (action === 'leave') {
       await pipeline([

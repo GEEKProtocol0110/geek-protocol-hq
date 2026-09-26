@@ -10,8 +10,8 @@
     movies: 'Movies', history: 'History', comics: 'Comics', 'pop-culture': 'Pop Culture'
   };
   const channels = {
-    briefing: ['briefing', 'Create a live learning room and share the invite.', 'Choose a room template or configure your own. Active seats now update from the community service; synchronized questions and shared scoring remain a later Alpha gate.'],
-    matchmaking: ['matchmaking', 'See who is gathering now.', 'Open rooms appear in the live board while at least one player is present. Join a room, share the code, then launch the same category together.'],
+    briefing: ['briefing', 'Create a live learning room and share the invite.', 'Choose a room template, invite another player, and let the host start ten shared questions with server-scored standings.'],
+    matchmaking: ['matchmaking', 'See who is gathering now.', 'Open rooms appear while at least one player is present. Join a room and wait for the host to start the shared round.'],
     academy: ['kaspa-academy', 'Start with Kaspa fundamentals.', 'The Kaspa Core template spans origins, blockDAG basics, mining, wallets, scaling, programmability, and ecosystem culture.'],
     ghostdag: ['ghostdag-lab', 'Study the consensus layer.', 'GHOSTDAG Lab raises the selection priority of consensus and ordering questions inside the Kaspa bank.'],
     builders: ['builders-desk', 'Explore the current developer surface.', 'Builder Briefing emphasizes Toccata, covenants, Based Apps, Inline ZK, Rust, WASM, and the evolving authoring toolchain.']
@@ -19,7 +19,7 @@
   const templates = {
     core: { name: 'Kaspa Core', category: 'kaspa', seats: '4', focus: '', mode: 'gauntlet' },
     ghostdag: { name: 'GHOSTDAG Lab', category: 'kaspa', seats: '4', focus: 'ghostdag', mode: 'gauntlet' },
-    speed: { name: 'Speed Signal', category: 'kaspa', seats: '2', focus: '', mode: 'speed' },
+    speed: { name: 'Quick Duel', category: 'kaspa', seats: '2', focus: '', mode: 'gauntlet' },
     builders: { name: 'Builder Briefing', category: 'kaspa', seats: '8', focus: 'builders', mode: 'gauntlet' }
   };
 
@@ -32,6 +32,10 @@
   let currentRoom = null;
   let heartbeatTimer = null;
   let roomListTimer = null;
+  let matchTimer = null;
+  let currentMatch = null;
+  let matchClockOffset = 0;
+  let matchLoading = false;
 
   const api = async (path, options = {}) => {
     const response = await fetch(path, {
@@ -55,7 +59,7 @@
     const badge = $('[data-service-badge]');
     const status = $('[data-service-status]');
     const statusCopy = $('[data-service-copy]');
-    badge.textContent = state === 'live' ? 'LIVE' : state === 'checking' ? 'CHECKING' : 'LOCAL FALLBACK';
+    badge.textContent = state === 'live' ? 'LIVE' : state === 'checking' ? 'CHECKING' : 'OFFLINE';
     badge.className = `status-pill ${state === 'live' ? 'ready' : ''}`;
     status.classList.toggle('live', state === 'live');
     status.classList.toggle('offline', state === 'offline');
@@ -74,13 +78,6 @@
     setIdentity(payload.player.name);
     setServiceState('live', 'Live presence connected');
     return payload.player;
-  };
-
-  const makeLocalCode = () => {
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    const values = new Uint32Array(6);
-    crypto.getRandomValues(values);
-    return `GEEK-${[...values].map((value) => chars[value % chars.length]).join('')}`;
   };
 
   const applyTemplate = (key) => {
@@ -103,7 +100,7 @@
     currentRoom = { ...room, category: safeCategory, seats: safeSeats, focus: safeFocus, mode: safeMode, members, live };
     $('[data-room-name]').textContent = room.name || 'Kaspa Study Hall';
     $('[data-room-code]').textContent = room.code;
-    $('[data-room-state]').textContent = live ? 'LIVE' : 'LOCAL';
+    $('[data-room-state]').textContent = live ? 'LIVE' : 'OFFLINE';
     $('[data-room-state]').className = `status-pill ${live ? 'ready' : ''}`;
     $('[data-seats]').innerHTML = Array.from({ length: safeSeats }, (_, index) => {
       const member = members[index];
@@ -124,16 +121,80 @@
       if (safeMode !== 'gauntlet') inviteParams.set('mode', safeMode);
     }
     if (replaceUrl) history.replaceState(null, '', `${location.pathname}?${inviteParams}`);
-    $('[data-room-note]').innerHTML = live
-      ? '<b>Live Alpha:</b> seats reflect active browsers and expire after inactivity. Players still launch independent Gauntlet runs; synchronized questions, chat, and shared scoring are not enabled yet.'
-      : '<b>Local fallback:</b> this invite is encoded in the URL because the community database is not connected. Players can still open the same setup and launch independently.';
+    $('[data-room-note]').textContent = currentMatch
+      ? 'Shared round in progress. Players who were in the room when the host started can answer.'
+      : live ? 'Invite another player. The host can start a shared practice round once two players are online.' : 'The live room service is unavailable.';
+    $('[data-start-match]').hidden = !currentRoom.isHost || Boolean(currentMatch);
+    $('[data-start-match]').disabled = !live || members.length < 2;
     roomPanel.hidden = false;
+  };
+
+  const updateMatchClock = () => {
+    if (!currentMatch) return;
+    const now = Date.now() + matchClockOffset;
+    const remaining = currentMatch.state === 'starting'
+      ? currentMatch.startsAt - now : currentMatch.questionEndsAt - now;
+    $('[data-match-clock]').textContent = currentMatch.state === 'finished' ? 'DONE' : `${Math.max(0, Math.ceil(remaining / 1000))}s`;
+  };
+
+  const renderMatch = (match) => {
+    const previous = currentMatch;
+    currentMatch = match;
+    $('[data-shared-match]').hidden = !match;
+    if (!match) {
+      if (currentRoom) renderRoom(currentRoom, false, true);
+      return;
+    }
+    matchClockOffset = match.serverNow - Date.now();
+    const isNewQuestion = !previous || previous.id !== match.id || previous.questionNumber !== match.questionNumber || previous.state !== match.state;
+    $('[data-match-status]').textContent = match.state === 'starting' ? 'Starting together' : match.state === 'finished' ? 'Shared round complete' : `Question ${match.questionNumber} / ${match.questionCount}`;
+    $('[data-match-question]').textContent = match.state === 'starting'
+      ? 'Get ready. Everyone will see the same questions.'
+      : match.state === 'finished' ? 'Final room standings' : match.question?.prompt || 'This round was already in progress when you joined.';
+    const options = $('[data-match-options]');
+    if (isNewQuestion || Boolean(previous?.yourAnswer) !== Boolean(match.yourAnswer)) {
+      options.replaceChildren();
+      if (match.question && match.canPlay) match.question.options.forEach((option, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = `${index + 1}. ${option}`;
+        button.dataset.answerIndex = String(index);
+        button.disabled = Boolean(match.yourAnswer);
+        options.append(button);
+      });
+      $('[data-match-feedback]').textContent = match.yourAnswer
+        ? `Answer recorded. ${match.yourAnswer.correct ? `+${match.yourAnswer.scoreAdded} points` : 'No points this question.'}`
+        : match.state === 'finished' ? 'Create another room to play again. Scores here do not award Alpha GEEK or tokens.'
+          : match.canPlay ? 'Choose one answer before the clock closes. Your first answer counts.' : 'You joined after the round began. Watch the standings or create a new room.';
+    }
+    const scores = $('[data-match-scores]');
+    scores.replaceChildren(...match.scores.map((player) => {
+      const item = document.createElement('li');
+      item.textContent = `${player.name} · ${player.score.toLocaleString()} points`;
+      return item;
+    }));
+    if (currentRoom) renderRoom(currentRoom, false, true);
+    updateMatchClock();
+  };
+
+  const refreshMatch = async () => {
+    if (!serviceAvailable || !currentRoom?.live || currentMatch?.state === 'finished' || matchLoading || document.hidden) return;
+    const code = currentRoom.code;
+    matchLoading = true;
+    try {
+      const payload = await api(`/api/lobbies?game=1&code=${encodeURIComponent(code)}`);
+      if (currentRoom?.code === code) renderMatch(payload.match);
+    } catch (error) {
+      $('[data-match-feedback]').textContent = error.message;
+    } finally {
+      matchLoading = false;
+    }
   };
 
   const renderRoomList = (rooms = []) => {
     const list = $('[data-live-rooms]');
     if (!rooms.length) {
-      list.innerHTML = `<div class="empty-room-list"><b>${serviceAvailable ? 'No public rooms are active yet.' : 'Live room board is offline.'}</b><span>${serviceAvailable ? 'Create the first room and share its code.' : 'Local invites still work while the database is being connected.'}</span></div>`;
+      list.innerHTML = `<div class="empty-room-list"><b>${serviceAvailable ? 'No public rooms are active yet.' : 'Live room board is offline.'}</b><span>${serviceAvailable ? 'Create the first room and share its code.' : 'Creating rooms resumes when the community service returns.'}</span></div>`;
       return;
     }
     list.innerHTML = rooms.map((room) => `
@@ -151,7 +212,7 @@
       const payload = await api('/api/lobbies');
       renderRoomList(payload.rooms);
     } catch {
-      setServiceState('offline', 'Local invite mode active');
+      setServiceState('offline', 'Live rooms unavailable');
       renderRoomList([]);
     }
   };
@@ -159,7 +220,9 @@
   const joinRoom = async (code, replaceUrl = true) => {
     if (!serviceAvailable) throw new Error('Community service unavailable.');
     const payload = await api('/api/lobbies', { method: 'POST', body: JSON.stringify({ action: 'join', code }) });
+    currentMatch = null;
     renderRoom(payload.room, replaceUrl, true);
+    await refreshMatch();
     roomPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
@@ -178,6 +241,8 @@
     window.clearInterval(roomListTimer);
     heartbeatTimer = window.setInterval(heartbeat, 15_000);
     roomListTimer = window.setInterval(loadRoomList, 20_000);
+    window.clearInterval(matchTimer);
+    matchTimer = window.setInterval(() => { refreshMatch(); updateMatchClock(); }, 4_000);
   };
 
   form.addEventListener('submit', async (event) => {
@@ -185,23 +250,21 @@
     const button = $('button[type="submit"]', form);
     const data = new FormData(form);
     button.disabled = true;
-    button.textContent = serviceAvailable ? 'Creating live room…' : 'Creating local invite…';
+    button.textContent = 'Creating live room…';
     try {
-      if (serviceAvailable) {
-        await syncSession();
-        const payload = await api('/api/lobbies', {
-          method: 'POST',
-          body: JSON.stringify({ action: 'create', name: data.get('name'), category: data.get('category'), seats: data.get('seats'), focus: data.get('focus'), mode: data.get('mode') })
-        });
-        renderRoom(payload.room, true, true);
-        await loadRoomList();
-      } else {
-        renderRoom({ name: data.get('name'), category: data.get('category'), seats: data.get('seats'), focus: data.get('focus'), mode: data.get('mode'), code: makeLocalCode() }, true, false);
-      }
+      if (!serviceAvailable) throw new Error('Live room service is unavailable. Try again shortly.');
+      await syncSession();
+      const payload = await api('/api/lobbies', {
+        method: 'POST',
+        body: JSON.stringify({ action: 'create', name: data.get('name'), category: data.get('category'), seats: data.get('seats'), focus: data.get('focus'), mode: data.get('mode') })
+      });
+      currentMatch = null;
+      renderRoom(payload.room, true, true);
+      renderMatch(null);
+      await loadRoomList();
       roomPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } catch {
-      setServiceState('offline', 'Local invite mode active');
-      renderRoom({ name: data.get('name'), category: data.get('category'), seats: data.get('seats'), focus: data.get('focus'), mode: data.get('mode'), code: makeLocalCode() }, true, false);
+    } catch (error) {
+      $('[data-room-list-message]').textContent = error.message;
     } finally {
       button.disabled = false;
       button.innerHTML = 'Create room <span>→</span>';
@@ -232,6 +295,35 @@
   });
   $('[data-refresh-rooms]').addEventListener('click', loadRoomList);
 
+  $('[data-start-match]').addEventListener('click', async (event) => {
+    if (!currentRoom?.live || !currentRoom.isHost) return;
+    event.currentTarget.disabled = true;
+    try {
+      const payload = await api('/api/lobbies', { method: 'POST', body: JSON.stringify({ action: 'game-start', code: currentRoom.code }) });
+      renderMatch(payload.match);
+    } catch (error) {
+      $('[data-room-note]').textContent = error.message;
+      event.currentTarget.disabled = false;
+    }
+  });
+
+  $('[data-match-options]').addEventListener('click', async (event) => {
+    const button = event.target.closest('[data-answer-index]');
+    if (!button || !currentMatch?.canPlay || !currentRoom?.live || currentMatch.yourAnswer) return;
+    const number = currentMatch.questionNumber;
+    $$('[data-answer-index]', $('[data-match-options]')).forEach((item) => { item.disabled = true; });
+    $('[data-match-feedback]').textContent = 'Recording your answer…';
+    try {
+      const payload = await api('/api/lobbies', { method: 'POST', body: JSON.stringify({
+        action: 'game-answer', code: currentRoom.code, questionNumber: number, selectedIndex: Number(button.dataset.answerIndex)
+      }) });
+      renderMatch(payload.match);
+    } catch (error) {
+      $('[data-match-feedback]').textContent = error.message;
+      await refreshMatch();
+    }
+  });
+
   $('[data-copy]').addEventListener('click', async (event) => {
     try {
       await navigator.clipboard.writeText(location.href);
@@ -243,6 +335,7 @@
   $('[data-new-room]').addEventListener('click', () => {
     if (currentRoom?.live) api('/api/lobbies', { method: 'POST', body: JSON.stringify({ action: 'leave', code: currentRoom.code }) }).catch(() => {});
     currentRoom = null;
+    currentMatch = null;
     roomPanel.hidden = true;
     history.replaceState(null, '', location.pathname);
     form.scrollIntoView({ behavior: 'smooth' });
@@ -262,7 +355,7 @@
         renderRoom(payload.room, false, true);
       }
     } catch {
-      setServiceState('offline', 'Local invite mode active');
+      setServiceState('offline', 'Live rooms unavailable');
     }
   });
 
@@ -277,6 +370,9 @@
     if (!currentRoom?.live || !navigator.sendBeacon) return;
     navigator.sendBeacon('/api/lobbies', new Blob([JSON.stringify({ action: 'leave', code: currentRoom.code })], { type: 'application/json' }));
   });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) { refreshMatch(); heartbeat(); }
+  });
 
   const initialize = async () => {
     setIdentity(identity);
@@ -286,24 +382,18 @@
       await loadRoomList();
       startPolling();
     } catch {
-      setServiceState('offline', 'Local invite mode active');
+      setServiceState('offline', 'Live rooms unavailable');
       renderRoomList([]);
     }
 
     const params = new URLSearchParams(location.search);
     if (!params.has('lobby')) return;
-    if (serviceAvailable) {
-      try {
-        await joinRoom(params.get('lobby'), false);
-        return;
-      } catch (error) {
-        if (!params.has('name')) {
-          $('[data-room-list-message]').textContent = error.message;
-          return;
-        }
-      }
+    if (!serviceAvailable) return;
+    try {
+      await joinRoom(params.get('lobby'), false);
+    } catch (error) {
+      $('[data-room-list-message]').textContent = error.message;
     }
-    renderRoom({ name: params.get('name'), category: params.get('category'), seats: params.get('seats'), focus: params.get('focus'), mode: params.get('mode'), code: params.get('lobby') }, false, false);
   };
 
   initialize();
