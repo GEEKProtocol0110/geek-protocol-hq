@@ -55,6 +55,14 @@ flowchart TB
 3. An atomic Redis script checks the room roster, shared deadline, and previous answer, then records exactly one answer and updates the server-computed practice score.
 4. All participants see the same questions and room standings. Lobby scores do not alter ranked Gauntlet scores, XP, Alpha GEEK, or on-chain balances.
 
+### Untimed Study
+
+1. Public catalog metadata contains eight short lessons and source links, without questions or answer keys. The Study handler shares `/api/ranked/?service=study` to remain within the existing function budget.
+2. A valid browser session starts five distinct concepts in the private `geek:study:` Redis namespace. Questions have no answer deadline. State expires after 24 hours without a saved transition.
+3. Only the owning session can answer, resume, or advance. A Redis compare-and-set commits one answer and reveals its explanation and source. Retried answers and next requests return the recorded transition.
+4. A completed session can start a focused practice containing exactly its missed concepts. Study never writes ranked runs, leaderboards, XP, credits, contribution rewards, or collectible inventory.
+5. A.C.E. renders authored lessons and answer guidance. It is not an unrestricted chat service or an independent content reviewer.
+
 ### Ranked answer
 
 1. The server selects a question and cryptographically shuffles answer options.

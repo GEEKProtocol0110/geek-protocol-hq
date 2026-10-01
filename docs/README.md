@@ -15,6 +15,8 @@ This directory is the reviewable specification set for Geek Protocol HQ. Documen
 
 | Document | Scope |
 | --- | --- |
+| [Study Protocol](STUDY-PROTOCOL.md) | Untimed practice, private answers, retry safety, and ranked isolation |
+| [Kaspa Content Review](KASPA-CONTENT-REVIEW.md) | Source-check scope, corrections, and remaining editorial limits |
 | [Identity Protocol](IDENTITY-PROTOCOL.md) | Wallet proof, account recovery, origin binding, and session invalidation |
 | [Mint Protocol](MINT-PROTOCOL.md) | Canonical GEEK deployment verification and non-custodial mint flow |
 | [Payout Risk Controls](PAYOUT-RISK-CONTROLS.md) | Destination changes, notices, cooldowns, and private review |

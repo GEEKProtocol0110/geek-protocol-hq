@@ -17,6 +17,7 @@ import { isValidKaspaMainnetAddress } from '../server/kaspa-address.js';
 import { defaultProfile } from '../server/profile.js';
 import { deriveProgression, recordRoundJourney } from '../server/progression.js';
 import { loadQuestionBank } from '../server/questions.js';
+import { studyQuestionById, studyBank } from '../server/study-curriculum.js';
 
 const lobbyGameHandler = lobbiesHandler;
 
@@ -107,6 +108,12 @@ const execute = (command) => {
     return withScores ? entries.flatMap(([member, score]) => [member, String(score)]) : entries.map(([member]) => member);
   }
   if (name === 'EVAL') {
+    if (String(args[0]).includes('geek-study-state-v1')) {
+      const [key, previous, next] = args.slice(2);
+      if (strings.get(key) !== previous) return 0;
+      strings.set(key, next);
+      return 1;
+    }
     if (String(args[0]).includes('geek-lobby-join-v1')) {
       const keys = args.slice(2, 6);
       const values = args.slice(6);
@@ -1019,4 +1026,125 @@ test('Daily and Speed modes keep answers and timing under server control', async
   assert.equal(speedAnswer.body.result.timedOut, true);
   assert.equal(speedAnswer.body.roundResult.modeComplete, true);
   assert.equal(speedAnswer.body.roundResult.reward, 0);
+});
+
+const studyCall = async (body, cookie = '', method = 'POST') => {
+  const res = response();
+  await rankedHandler(request(method, body, cookie, { service: 'study' }), res);
+  return res;
+};
+const storedStudy = payload => JSON.parse(strings.get(`geek:study:${payload.run.id}`));
+const studyChoice = payload => {
+  const run = storedStudy(payload);
+  const q = studyQuestionById(run.ids[run.index]);
+  return payload.question.options.indexOf(q.options[q.correctIndex]);
+};
+const studyAnswer = (payload, cookie, correct = true) => studyCall({ action: 'answer', runId: payload.run.id, questionToken: payload.question.token, selectedIndex: correct ? studyChoice(payload) : (studyChoice(payload) + 1) % 4 }, cookie);
+const studyNext = (payload, cookie) => studyCall({ action: 'next', runId: payload.run.id, questionToken: payload.result.questionToken }, cookie);
+
+test('Study catalog exposes eight lessons and 80 distinct concepts without answer keys', async () => {
+  const res = await studyCall(undefined, '', 'GET');
+  assert.equal(res.statusCode, 200);
+  assert.equal(res.body.topics.length, 8);
+  assert.equal(res.body.topics.reduce((n, t) => n + t.count, 0), 80);
+  assert.equal(studyBank().length, 80);
+  assert.equal(new Set(studyBank().map(q => q.conceptId)).size, 80);
+  for (const topic of res.body.topics) {
+    assert.ok(topic.lesson.length > 100);
+    assert.equal(topic.count, 10);
+    assert.ok(topic.sources.every(source => new URL(source).protocol === 'https:'));
+  }
+  assert.equal('questions' in res.body, false);
+  assert.equal(JSON.stringify(res.body).includes('correctIndex'), false);
+  assert.equal(res.body.ranked, false);
+  assert.equal(res.body.rewardsEnabled, false);
+});
+
+test('Study is untimed, session-bound, private before commitment, and isolated from ranked progress', async () => {
+  assert.equal((await studyCall({ action: 'start', topic: 'origins' })).statusCode, 401);
+  const cookie = await startSession('Study Isolation');
+  const foreign = await startSession('Study Stranger');
+  const start = await studyCall({ action: 'start', topic: 'origins' }, cookie);
+  assert.equal(start.statusCode, 201);
+  const payload = start.body;
+  assert.equal(payload.run.total, 5);
+  assert.equal(new Set(storedStudy(payload).ids).size, 5);
+  for (const field of ['correctIndex', 'answer', 'explanation', 'source', 'deadline', 'durationMs']) assert.equal(field in payload.question, false);
+  assert.equal((await studyCall({ action: 'resume', runId: payload.run.id }, foreign)).statusCode, 404);
+  assert.equal((await studyCall({ action: 'answer', runId: payload.run.id, questionToken: payload.question.token, selectedIndex: 0 }, foreign)).statusCode, 404);
+  assert.equal((await studyCall({ action: 'next', runId: payload.run.id, questionToken: payload.question.token }, cookie)).statusCode, 409);
+  for (const selectedIndex of ['0', -1, 4, 1.5, null]) assert.equal((await studyCall({ action: 'answer', runId: payload.run.id, questionToken: payload.question.token, selectedIndex }, cookie)).statusCode, 400);
+  assert.equal(storedStudy(payload).answers.length, 0);
+  const before = new Map([...strings].filter(([key]) => !key.startsWith('geek:rate:') && !key.startsWith('geek:study:')));
+  const sortedBefore = JSON.stringify([...sorted].map(([key, value]) => [key, [...value]]));
+  const clock = Date.now;
+  let answer;
+  try { Date.now = () => clock() + 60 * 60 * 1000; answer = await studyAnswer(payload, cookie); } finally { Date.now = clock; }
+  assert.equal(answer.statusCode, 200);
+  assert.equal(answer.body.result.correct, true);
+  assert.ok(answer.body.result.explanation);
+  assert.ok(answer.body.result.source.startsWith('https://'));
+  assert.deepEqual(new Map([...strings].filter(([key]) => !key.startsWith('geek:rate:') && !key.startsWith('geek:study:'))), before);
+  assert.equal(JSON.stringify([...sorted].map(([key, value]) => [key, [...value]])), sortedBefore);
+  const rankedResponse = response();
+  await rankedHandler(request('POST', { action: 'answer', runId: payload.run.id, questionToken: payload.question.token, selectedIndex: 0 }, cookie), rankedResponse);
+  assert.equal(rankedResponse.statusCode, 404);
+  const rankedStart = response();
+  await rankedHandler(request('POST', { action: 'start', category: 'kaspa', mode: 'gauntlet' }, cookie), rankedStart);
+  assert.equal(rankedStart.statusCode, 201);
+  assert.equal((await studyCall({ action: 'resume', runId: rankedStart.body.run.id }, cookie)).statusCode, 404);
+  strings.delete(`geek:study:${payload.run.id}`);
+  assert.equal((await studyCall({ action: 'resume', runId: payload.run.id }, cookie)).statusCode, 404);
+});
+
+test('concurrent Study answers commit once; answer and next retries cannot change or skip results', async () => {
+  const cookie = await startSession('Study Race');
+  const payload = (await studyCall({ action: 'start', topic: 'blockdag' }, cookie)).body;
+  const answers = await Promise.all([studyAnswer(payload, cookie, true), studyAnswer(payload, cookie, false)]);
+  assert.deepEqual(answers.map(res => res.statusCode), [200, 200]);
+  assert.deepEqual(answers[0].body.result, answers[1].body.result);
+  assert.equal(storedStudy(payload).answers.length, 1);
+  const resumed = await studyCall({ action: 'resume', runId: payload.run.id }, cookie);
+  assert.deepEqual(resumed.body.result, answers[0].body.result);
+  assert.equal('question' in resumed.body, false);
+  const nexts = await Promise.all([studyNext(answers[0].body, cookie), studyNext(answers[0].body, cookie)]);
+  assert.deepEqual(nexts.map(res => res.statusCode), [200, 200]);
+  assert.equal(nexts[0].body.run.number, 2);
+  assert.equal(nexts[0].body.question.token, nexts[1].body.question.token);
+  assert.equal(storedStudy(payload).index, 1);
+  assert.equal((await studyCall({ action: 'answer', runId: payload.run.id, questionToken: payload.question.token, selectedIndex: 0 }, cookie)).statusCode, 409);
+});
+
+test('Study summary retries exactly the missed concepts and rejects unauthorized or incomplete practice', async () => {
+  const cookie = await startSession('Study Review');
+  const foreign = await startSession('Study Review Stranger');
+  let payload = (await studyCall({ action: 'start', topic: 'wallets' }, cookie)).body;
+  const runId = payload.run.id;
+  assert.equal((await studyCall({ action: 'start', topic: 'wallets', practiceRunId: runId }, cookie)).statusCode, 400);
+  for (let index = 0; index < 5; index++) {
+    const res = await studyAnswer(payload, cookie, ![0, 3].includes(index));
+    assert.equal(res.statusCode, 200);
+    payload = res.body;
+    if (index < 4) payload = (await studyNext(payload, cookie)).body;
+  }
+  assert.equal(payload.run.status, 'complete');
+  assert.equal(payload.summary.correct, 3);
+  assert.equal(payload.summary.missed.length, 2);
+  assert.equal(payload.summary.recommendation.topic, 'wallets');
+  assert.equal((await studyCall({ action: 'start', topic: 'wallets', practiceRunId: runId }, foreign)).statusCode, 404);
+  assert.equal((await studyCall({ action: 'start', topic: 'mining', practiceRunId: runId }, cookie)).statusCode, 400);
+  const missed = storedStudy(payload).answers.filter(a => !a.correct).map(a => a.questionId);
+  const practice = await studyCall({ action: 'start', topic: 'wallets', practiceRunId: runId }, cookie);
+  assert.equal(practice.statusCode, 201);
+  assert.equal(practice.body.run.total, 2);
+  assert.deepEqual(storedStudy(practice.body).ids, missed);
+  let focused = practice.body;
+  for (let index = 0; index < 2; index++) {
+    focused = (await studyAnswer(focused, cookie)).body;
+    if (index < 1) focused = (await studyNext(focused, cookie)).body;
+  }
+  assert.equal(focused.summary.correct, 2);
+  assert.equal(focused.summary.missed.length, 0);
+  assert.equal(focused.summary.recommendation.topic, 'tokens');
+  assert.equal((await studyCall({ action: 'start', topic: 'wallets', practiceRunId: focused.run.id }, cookie)).statusCode, 400);
 });

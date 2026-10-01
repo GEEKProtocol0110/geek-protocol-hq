@@ -42,6 +42,9 @@ export const loadQuestionBank = (category) => {
     correctIndex: question.correctIndex,
     funFact: question.funFact || '',
     source: question.source || '',
+    conceptId: question.conceptId || question.id,
+    reviewStatus: question.reviewStatus || 'draft',
+    reviewedAt: question.reviewedAt || '',
     volatile: Boolean(question.volatile),
     priority: Boolean(question.priority),
     tags: Array.isArray(question.tags) ? question.tags : []
