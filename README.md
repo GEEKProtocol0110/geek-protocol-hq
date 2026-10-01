@@ -17,7 +17,7 @@
 
 ## What is Geek Protocol?
 
-Geek Protocol turns knowledge into a verifiable player journey. Players compete in timed trivia, build persistent profiles, join live lobbies, contribute reviewed questions, and interact with the GEEK ecosystem through a non-custodial Kasware flow.
+Geek Protocol turns knowledge into a verifiable player journey. Players study Kaspa at their own pace with A.C.E., revisit missed concepts, compete in timed trivia, build persistent profiles, join live lobbies, contribute reviewed questions, and interact with the GEEK ecosystem through a non-custodial Kasware flow.
 
 The project began as a way to make learning exciting for one child. HQ is the public Alpha where that idea is becoming a transparent, security-first Proof-of-Learning platform on Kaspa.
 
