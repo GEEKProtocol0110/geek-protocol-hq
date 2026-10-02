@@ -1,0 +1,120 @@
+# Geek Protocol — Full Product Roadmap
+
+**Reviewed direction:** October 2, 2026  
+**Public edition:** [HQ Litepaper v1.7](https://www.geekprotocol.xyz/litepaper/)  
+**Purpose:** Carry the original project vision into an explicit implementation backlog.
+
+This document preserves the founder's full direction. It records features and acceptance criteria; it does not activate gameplay formats, payments, treasury authority, DAO votes, or collection ownership. Kaspa 101 remains the main Learn destination. Geek Jr's current implementation is outside this HQ release.
+
+## Original references
+
+- [Master Document](https://geek-litepaper-nu.vercel.app/docs/Master_Document_v1.3.html): labels itself v1.5 despite its legacy v1.3 URL.
+- [Litepaper v1.3](https://geek-litepaper-nu.vercel.app/docs/Litepaper_Themed_v1.3.html).
+- [Executive overview v1.5](https://geek-litepaper-nu.vercel.app/Geek_Protocol_Executive_OnePager_v1.5.pdf).
+- [DAO proposal v1.5](https://geek-litepaper-nu.vercel.app/DAO_Proposal_Geek_Protocol_v1.5.pdf).
+
+Earlier documents express a proposed ecosystem. The present implementation uses static pages, Vercel Functions, and Redis; the older React/MongoDB/IPFS stack is not a description of deployed HQ. Source archives remain linked, while [Architecture](ARCHITECTURE.md) and [Project Status](PROJECT-STATUS.md) describe current evidence.
+
+## Live starting point
+
+| Capability | Current evidence and boundary |
+| --- | --- |
+| Kaspa 101 | Field guide, live graph embed, milestones, builder paths, curriculum, sources; main Learn destination |
+| Study with A.C.E. | Eight topics, authored lessons, untimed practice, explanations, exact missed-concept retries; no rank or rewards |
+| Gauntlet | Ten rounds of ten questions, eight categories, server-owned deadlines/scoring; later rounds use internal credits |
+| Daily and Speed | Implemented timed alternatives; not weekly/monthly challenge infrastructure |
+| Geek's Journey | Server XP, 25-level prestige cycles, category records, journey history, avatars and achievements |
+| Shared lobbies | Ten-question host-started practice, roster/deadline authority; Quick Duel is a two-seat template |
+| Community Content Engine | Submission, human moderation, publication, one internal first-use credit |
+| Collectibles and trades | Off-chain avatar/sticker inventory and atomic sticker offers |
+| GEEK fair mint | Non-custodial interface against a pinned 144B-max, eight-decimal, no-premint deployment |
+| Wallet identity | Server-verified proof, recovery, and protected payout preferences; settlement remains disabled |
+| 500-Geek world | Stable identity/design manifest and recovered-art provenance; NFT ownership is not enabled |
+
+These capabilities remain covered by their existing protocol specifications and controls. Public web trivia is not a proctored credential.
+
+## 1. Learning depth
+
+| ID | Feature | Status | Completion evidence |
+| --- | --- | --- | --- |
+| LEARN-01 | Reviewed difficulty progression | Planned | Distinct concept coverage, editorial approval, explicit difficulty criteria, and compatible grading for active runs |
+| LEARN-02 | Guided learning / Learn & Earn modules | Planned | Clear objectives, lessons, practice and assessment boundaries; Study stays unranked; any future reward path receives separate validation |
+| LEARN-03 | Weekly and monthly challenges | Planned | Server-defined periods, participation rules, reproducible question selection, retry/replay checks, and bounded standings |
+| LEARN-04 | Daily login vault | Planned | Server-owned eligibility, transparent contents, duplicate-claim protection, and no implied learning proof from login alone |
+| LEARN-05 | Mastery feedback | Planned extension | Concept-level review records, explainable next steps, and honest distinction between practice and validated assessment |
+
+Start with content quality and guided practice. Educational benefit and question diversity should improve before additional earning incentives are introduced.
+
+## 2. Geek Arena
+
+| ID | Feature | Status | Completion evidence |
+| --- | --- | --- | --- |
+| ARENA-01 | The Duel: dedicated 1v1 | Planned | Match lifecycle, common server clock/question set, tie rules, reconnect and abandonment handling, and repeatable results |
+| ARENA-02 | Team Battle: 2v2 | Planned | Fixed team rosters, cooperative answer rules, team scoring, and adversarial cross-team authorization tests |
+| ARENA-03 | Party Mode: social co-op | Planned | Group objective, shared progress, accessible pacing, host/rejoin rules, and clearly separate practice standings |
+| ARENA-04 | Trivia Royale | Planned | Event entry/round lifecycle, elimination and tie rules, A.C.E. hosting tools, server authority, and tested participant-capacity limits |
+| ARENA-05 | Optional Duel wagers / event prizes | Proposed monetary extension | Separate approved economic specification, reviewed custody/settlement path, reconciliation, eligibility and dispute rules; follows economy work |
+
+The Quick Duel room template is a live shared practice format, not implementation of dedicated wagered Duel gameplay. Build practice Arena formats before their monetary extensions.
+
+## 3. Creator ecosystem
+
+| ID | Feature | Status | Completion evidence |
+| --- | --- | --- | --- |
+| CREATE-01 | Community peer review | Planned | Reviewer identity and authorization, conflict-of-interest rules, review history, appeal/correction path, and publication controls |
+| CREATE-02 | Creator attribution and reputation | Planned | Verifiable authorship, version history, transparent quality/use records, and abuse-resistant reputation criteria |
+| CREATE-03 | Recurring question-use earnings | Proposed | Defined payable usage, funded reward pool, replay-resistant accounting, attribution splits, caps and correction policy; no guaranteed passive income |
+| CREATE-04 | Contributor grants | Proposed | Public proposals, funding source, reviewer/executor separation, deliverables, decisions, and expenditure records |
+
+The Alpha's implemented reward is one internal first-use credit. Recurring earnings and funded grants do not exist merely because this roadmap names them.
+
+## 4. Player economy and ownership
+
+| ID | Feature | Status | Completion evidence |
+| --- | --- | --- | --- |
+| ECON-01 | Cosmetic/consumable store | Planned | Item definitions and inventory authority; purchases cannot buy ranked score or certify knowledge |
+| ECON-02 | Collection production and NFT achievements | Planned | Finished reviewed art, frozen metadata/provenance, selected ownership standard, and an independently reviewed mint/transfer design |
+| ECON-03 | Peer-to-peer NFT marketplace | Planned | Ownership verification, trade lifecycle, custody/signing boundaries, fees, settlement records and independent review |
+| ECON-04 | 70/30 Recycle & Burn | Proposed | Define eligible collected platform fees, denomination, rounding, recycling destination, burn mechanism/evidence, caps and auditable reconciliation |
+| ECON-05 | Token rewards and wallet-neutral payouts | Proposed | Funded treasury, eligibility, transfer implementation, limits, monitoring, recovery/disputes and independent exact-release audit |
+
+**70/30 applies to proposed platform fees:** 70% recycles into ecosystem reward funding; 30% is burned. It is not a 70/30 split of the 144-billion token supply. No operating fee-distribution or burn engine is being asserted. Game credits and the independently user-approved fair mint remain separate systems.
+
+Existing sticker trades are off-chain. Future token utilities include skill rewards, protocol spending, marketplace payments, and governance, subject to implemented rules. Wagers and event prize settlement depend on this stage.
+
+## 5. Contributors and community governance
+
+| ID | Feature | Status | Completion evidence |
+| --- | --- | --- | --- |
+| GOV-01 | Public proposals and participation | Planned | Transparent proposals, discussion, decisions, contributor roles, and authority records |
+| GOV-02 | Grant accountability | Proposed | Identified treasury authority, budget/expenditure reports, milestone evidence, and accountable execution |
+| GOV-03 | Geek Protocol DAO transition | Planned | Published eligibility/voting/delegation/quorum rules, conflict controls, execution and treasury design, and independent review of value-moving authority |
+
+Progressive decentralization is the direction. Today's server-ranked Alpha and moderator operations should not be described as an already community-controlled DAO. Founder and core-contributor roles remain visible; GEEK-holder voting is not live.
+
+## 6. Education and open infrastructure
+
+| ID | Feature | Status | Completion evidence |
+| --- | --- | --- | --- |
+| OPEN-01 | Geek Protocol for Education | Long-term planned | Teacher-supported pilot, curriculum objectives, appropriate learner controls, and measured learning outcomes |
+| OPEN-02 | Geek Protocol: Pro | Long-term planned | Domain-specific content, assessment standards, progress evidence, and a professional-learning pilot |
+| OPEN-03 | Open learning interfaces | Planned | Versioned documented interfaces, authorization and data boundaries, example integration, and reproducible developer checks |
+| OPEN-04 | Community Launchpad | Long-term planned | Community selection/funding rules, governance foundation, project accountability, and a bounded pilot |
+
+Schools, professional development, and the launchpad extend the learning purpose beyond entertainment. They are directions to build and test, not claims of existing partners, qualifications, or launched products.
+
+## Character roles
+
+**Giga** is the welcoming community robot and the social heart of the project. **A.C.E.** is the analytical teaching and event-host character. Current A.C.E. Study uses authored, source-linked guidance. Adaptive tutoring and automated event hosting need their own implementation and evaluation. Existing recovered art remains identified as concept art.
+
+## Delivery order and change discipline
+
+1. Preserve Kaspa 101 and the existing live learning path.
+2. Improve content quality and guided learning.
+3. Build practice Arena formats from the existing server-authoritative lobby foundation.
+4. Expand creator review and transparent contribution records.
+5. Specify and review store, ownership, treasury and fee behavior before monetary modes.
+6. Introduce community governance through published, accountable steps.
+7. Pilot education, professional learning, integrations, and the launchpad with their dependencies in place.
+
+Stages can contain independent work in parallel, but their stated dependencies remain. There are no invented launch dates. Each implemented feature should have a focused issue/PR, documentation, meaningful authorization/state tests where relevant, and production evidence before its public status becomes Live.
