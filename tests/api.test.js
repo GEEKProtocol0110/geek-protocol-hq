@@ -1450,7 +1450,7 @@ test('active challenge grading fails closed on missing or substituted snapshots'
 
 const vaultCall = async (method, body, cookie = '') => {
   const res = response();
-  await sessionHandler(request(method, body, cookie, { service: 'vault' }), res);
+  await sessionHandler(request(method, body, cookie, { service: 'vault' }, { 'user-agent': `vault-test:${cookie}` }), res);
   return res;
 };
 
