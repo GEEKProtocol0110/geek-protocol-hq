@@ -57,10 +57,10 @@ flowchart TB
 
 ### Untimed Study
 
-1. Public catalog metadata contains eight short lessons and source links, without questions or answer keys. The Study handler shares `/api/ranked/?service=study` to remain within the existing function budget.
-2. A valid browser session starts five distinct concepts in the private `geek:study:` Redis namespace. Questions have no answer deadline. State expires after 24 hours without a saved transition.
-3. Only the owning session can answer, resume, or advance. A Redis compare-and-set commits one answer and reveals its explanation and source. Retried answers and next requests return the recorded transition.
-4. A completed session can start a focused practice containing exactly its missed concepts. Study never writes ranked runs, leaderboards, XP, credits, contribution rewards, or collectible inventory.
+1. Public catalog metadata contains eight guided lessons, objectives, worked examples/reflections, practice levels, and sources, without question pools or answer keys. The Study handler shares `/api/ranked/?service=study` to remain within the existing function budget.
+2. A valid browser session starts up to five distinct concepts within its selected level in the private `geek:study:` Redis namespace. Questions have no answer deadline. State expires after 24 hours without a saved transition; unfinished runs retain their selected IDs and grading.
+3. Only the owning session can answer, resume, or advance. One Redis script commits the answer and updates private player-keyed concept feedback atomically, then reveals the explanation and source. Retried answers and next requests return the recorded transition without extra progress.
+4. A completed session can retry exactly its missed concepts. A separate review draws up to five concepts whose latest recorded answer was incorrect, independent of run expiry. Progress uses `geek:study-progress:` hashes, at most 80 canonical records per player, and a 180-day TTL refreshed by answers. Study never writes ranked runs, leaderboards, XP, credits, contribution rewards, or collectible inventory.
 5. A.C.E. renders authored lessons and answer guidance. It is not an unrestricted chat service or an independent content reviewer.
 
 ### Ranked answer

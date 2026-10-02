@@ -140,7 +140,7 @@
       "id": "GP-INV-022",
       "title": "Untimed Study isolation and atomic answer review",
       "status": "implemented-alpha",
-      "evidence": ["server/study.js", "server/study-curriculum.js", "api/ranked.js", "tests/api.test.js", "docs/STUDY-PROTOCOL.md"]
+      "evidence": ["server/study.js", "server/study-curriculum.js", "server/study-progress.js", "api/ranked.js", "tests/api.test.js", "docs/STUDY-PROTOCOL.md"]
     },
     {
       "id": "GP-GATE-INDEPENDENT-AUDIT",

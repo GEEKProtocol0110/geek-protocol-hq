@@ -19,7 +19,7 @@ The application is deliberately split into two risk classes:
 | Area | Implementation | Internal evidence | Independent review | Production boundary |
 | --- | --- | --- | --- | --- |
 | Public web experience | Live | CI and production checks | Not audited | Public Alpha |
-| Kaspa Study | Implemented | Session, privacy, race, retry, and rank-isolation tests | Internal source check only | Untimed; no XP, credits, or tokens |
+| Kaspa Study | Guided lessons, levels, saved practice feedback | Session, privacy, race, retry, coverage, review, and rank-isolation tests | Internal source check only | Untimed; no XP, credits, tokens, or mastery certification |
 | Ranked game authority | Implemented | Integration and abuse-case tests | Not audited | Unproctored trivia limitations remain |
 | Wallet identity and recovery | Implemented | Signature, replay, race, and origin tests | Not audited | Kaspa Mainnet ownership proof only |
 | GEEK fair-mint interface | Live | Pinned deployment and fail-closed tests | Not audited | Wallet signs and submits; HQ never holds keys |
@@ -33,7 +33,8 @@ The application is deliberately split into two risk classes:
 
 The repository currently verifies:
 
-- session-bound untimed Study with atomic answers, distinct concepts, and missed-concept retries;
+- session-bound untimed Study with guided lessons, distinct concepts, selectable practice levels, and atomic answer/progress writes;
+- private concept coverage and saved-mistake review with bounded retention and replay-safe confidence feedback;
 - server-owned answer validation, deadlines, scoring, XP, and rewards;
 - single-use ranked tokens and atomic answer claims;
 - exact-origin, single-use wallet challenges;
@@ -56,7 +57,7 @@ The repository currently verifies:
 
 ## Product direction
 
-[The full roadmap](PRODUCT-ROADMAP.md) restores the original Arena, creator, player-economy, governance, Education, Pro, and launchpad vision. HQ Litepaper v1.7 carries this direction with explicit live/planned/proposed labels. This documentation release does not implement those future features. The proposed 70/30 policy allocates platform fees to recycling and burning; no fee-distribution or burn engine is live.
+[The full roadmap](PRODUCT-ROADMAP.md) restores the original Arena, creator, player-economy, governance, Education, Pro, and launchpad vision. The litepaper carries this direction with explicit live/planned/proposed labels. The first learning implementation adds guided Study, practice levels, and concept feedback; other future features retain their documented status. The proposed 70/30 policy allocates platform fees to recycling and burning; no fee-distribution or burn engine is live.
 
 ## Required next gates
 

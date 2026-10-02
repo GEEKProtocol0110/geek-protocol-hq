@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { studyCatalog, studyBank, pickStudyQuestions } from '../server/study-curriculum.js';
 
 const read = name => JSON.parse(readFileSync(new URL(`../server/questions/${name}`, import.meta.url)));
 test('reviewed Kaspa banks have valid unique items and consistent concept variants', () => {
@@ -33,4 +34,20 @@ test('reviewed Kaspa banks have valid unique items and consistent concept varian
   }
   assert.equal(concepts.size, 80);
   for (const q of concepts.values()) assert.equal(q.id, q.conceptId);
+});
+
+test('guided lessons have objectives, examples, reflections, and usable levels for every topic', () => {
+  const catalog = studyCatalog();
+  for (const topic of catalog.topics) {
+    assert.ok(topic.objective && topic.example && topic.reflection, topic.id);
+    assert.equal(topic.steps.length, 3, topic.id);
+    assert.ok(topic.steps.every(step => step.title && step.text.length > 80), topic.id);
+    for (const level of catalog.levels) {
+      const selected = pickStudyQuestions(topic.id, level.id);
+      const available = studyBank().filter(q => q.topic === topic.category && (!level.tier || q.difficulty === level.tier));
+      assert.equal(selected.length, Math.min(5, available.length));
+      assert.ok(selected.length > 0, `${topic.id}/${level.id}`);
+      assert.equal(new Set(selected).size, selected.length);
+    }
+  }
 });
