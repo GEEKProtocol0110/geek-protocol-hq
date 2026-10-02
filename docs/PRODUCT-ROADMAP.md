@@ -18,8 +18,6 @@ The next review should ask whether learners can find a lesson, understand its ob
 
 - [Master Document](https://geek-litepaper-nu.vercel.app/docs/Master_Document_v1.3.html): labels itself v1.5 despite its legacy v1.3 URL.
 - [Litepaper v1.3](https://geek-litepaper-nu.vercel.app/docs/Litepaper_Themed_v1.3.html).
-- [Executive overview v1.5](https://geek-litepaper-nu.vercel.app/Geek_Protocol_Executive_OnePager_v1.5.pdf).
-- [DAO proposal v1.5](https://geek-litepaper-nu.vercel.app/DAO_Proposal_Geek_Protocol_v1.5.pdf).
 
 Earlier documents express a proposed ecosystem. The present implementation uses static pages, Vercel Functions, and Redis; the older React/MongoDB/IPFS stack is not a description of deployed HQ. Source archives remain linked, while [Architecture](ARCHITECTURE.md) and [Project Status](PROJECT-STATUS.md) describe current evidence.
 
