@@ -1,0 +1,43 @@
+.period-tabs { display: flex; gap: .7rem; }
+.period-tabs a { padding: .6rem .9rem; border: 1px solid var(--line); border-radius: 3px; font-size: .85rem; }
+.period-tabs a[aria-current] { border-color: var(--cyan); color: var(--cyan); }
+.challenge-player { margin: 1rem 0 2rem; max-width: 680px; }
+.challenge-player label { display: block; font-weight: 700; margin-bottom: .6rem; }
+.challenge-player label span { font-size: .8rem; color: var(--muted); font-weight: 400; margin-left: .5rem; }
+.challenge-player input { padding: .8rem 1rem; width: min(100%, 360px); min-height: 48px; background: #101c18; color: var(--paper); border: 1px solid var(--line); font: inherit; border-radius: 3px; }
+.challenge-player p { color: var(--muted); font-size: .85rem; }
+.challenge-player a, .ace-intro a { color: var(--cyan); }
+.period-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
+.period-card { border: 1px solid var(--line); border-top: 3px solid var(--cyan); background: #111d19; border-radius: 4px; padding: 1.7rem; }
+.period-card.monthly { border-top-color: var(--gold); }
+.period-card h3 { margin: .8rem 0; }
+.period-card > p { color: var(--paper-soft); font-size: .9rem; }
+.period-card .period-description { color: var(--muted); }
+.period-card .study-button { width: 100%; margin: .7rem 0 1.3rem; }
+.period-facts { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1.2rem 0; }
+.period-facts span { padding: .35rem .55rem; border: 1px solid var(--line); color: var(--paper-soft); font-size: .78rem; }
+.period-date { display: block; color: var(--paper-soft); font-size: .85rem; margin: .5rem 0; }
+.period-own { color: var(--cyan) !important; font-weight: 700; }
+.challenge-board { margin-top: .5rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+.challenge-board h4 { font-size: 1rem; margin: 0 0 .4rem; }
+.challenge-board p { color: var(--muted); font-size: .8rem; }
+.challenge-board ol { list-style: none; padding: 0; margin: 1rem 0; }
+.challenge-board li { display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto; align-items: start; gap: .7rem; border-top: 1px solid var(--line); padding: .8rem 0; font-size: .9rem; }
+.challenge-board .board-rank { color: var(--cyan); font-weight: 800; }
+.challenge-board .board-name { overflow-wrap: anywhere; }
+.challenge-board .board-score { font-weight: 800; color: var(--paper); }
+.challenge-rules { margin-top: 3rem; max-width: 900px; }
+.challenge-rules h2 { margin: .7rem 0 1.5rem; }
+.challenge-rules ol { padding-left: 1.3rem; color: var(--paper-soft); }
+.challenge-rules li { padding: .6rem 0 .6rem .3rem; }
+.challenge-rules > p { color: var(--muted); font-size: .85rem; }
+.challenge-hud { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; margin-top: 1.5rem; }
+.challenge-hud div { padding: .9rem; background: #101b17; border: 1px solid var(--line); display: flex; flex-direction: column; gap: .5rem; }
+.challenge-hud small { color: var(--muted); font-size: .65rem; letter-spacing: .07em; }
+.challenge-hud strong { font-size: 1.65rem; }
+.clock-note { font-size: .8rem; color: var(--muted) !important; }
+.finish-attempt { margin-top: 1.5rem; }
+.finish-attempt p { font-size: .8rem; color: var(--muted); }
+.study-error .study-button { margin: .3rem .5rem .3rem 0; }
+@media (max-width: 800px) { .period-grid { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .period-card { padding: 1.2rem; } .challenge-hud div { padding: .65rem; } .challenge-hud strong { font-size: 1.35rem; } .challenge-player label span { display: block; margin: .3rem 0 0; } }
