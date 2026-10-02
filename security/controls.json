@@ -149,6 +149,12 @@
       "evidence": ["server/challenges.js", "server/challenge-periods.js", "tests/api.test.js", "tests/challenge-periods.test.js", "docs/CHALLENGE-PROTOCOL.md"]
     },
     {
+      "id": "GP-INV-024",
+      "title": "Redis-clock daily vault eligibility and atomic private collection receipts",
+      "status": "implemented-alpha",
+      "evidence": ["server/vault.js", "api/session.js", "tests/api.test.js", "docs/VAULT-PROTOCOL.md"]
+    },
+    {
       "id": "GP-GATE-INDEPENDENT-AUDIT",
       "title": "Independent application and settlement audits",
       "status": "required-before-settlement",

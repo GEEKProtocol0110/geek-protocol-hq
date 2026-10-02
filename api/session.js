@@ -2,8 +2,10 @@ import { clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJso
 import { rateLimit } from '../server/redis.js';
 import { upsertSession } from '../server/session.js';
 import { collectiblesHandler, profileHandler } from '../server/player-api.js';
+import vaultHandler from '../server/vault.js';
 
 export default async function handler(req, res) {
+  if (req.query?.service === 'vault') return vaultHandler(req, res);
   if (req.query?.service === 'profile') return profileHandler(req, res);
   if (req.query?.service === 'collectibles') return collectiblesHandler(req, res);
   setApiHeaders(res, 'POST, OPTIONS');

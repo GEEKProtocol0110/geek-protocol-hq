@@ -19,6 +19,7 @@ import { deriveProgression, recordRoundJourney } from '../server/progression.js'
 import { loadQuestionBank } from '../server/questions.js';
 import { studyQuestionById, studyBank } from '../server/study-curriculum.js';
 import { challengePeriod, CHALLENGE_CAP } from '../server/challenge-periods.js';
+import { vaultDay, vaultKey, vaultSeals } from '../server/vault.js';
 
 const lobbyGameHandler = lobbiesHandler;
 
@@ -35,6 +36,7 @@ process.env.IDENTITY_ENV = 'test';
 const strings = new Map();
 const hashes = new Map();
 const sorted = new Map();
+let vaultRedisNow = null;
 
 const execute = (command) => {
   const [rawName, ...args] = command;
@@ -111,6 +113,22 @@ const execute = (command) => {
     return withScores ? entries.flatMap(([member, score]) => [member, String(score)]) : entries.map(([member]) => member);
   }
   if (name === 'EVAL') {
+    if (String(args[0]).includes('geek-vault-claim-v1')) {
+      const [key, opensAt, closesAt, day, seal, id] = args.slice(2);
+      const now = vaultRedisNow ?? Date.now();
+      if (now < Number(opensAt) || now >= Number(closesAt)) return ['DAY_CHANGED'];
+      const raw = strings.get(key);
+      const state = raw ? JSON.parse(raw) : { version: 1, total: 0, lastDay: '', inventory: {}, history: [] };
+      if (state.version !== 1 || !Number.isSafeInteger(state.total) || state.total < 0 || state.total >= Number.MAX_SAFE_INTEGER || typeof state.lastDay !== 'string' || !state.inventory || !state.history || Object.values(state.inventory).some(q => !Number.isSafeInteger(q) || q < 0 || q >= Number.MAX_SAFE_INTEGER) || state.lastDay > day) return ['STATE_INVALID'];
+      if (state.lastDay === day) return ['ALREADY_CLAIMED', raw];
+      state.total++; state.lastDay = day;
+      state.inventory[seal] = Number(state.inventory[seal] || 0) + 1;
+      state.history.unshift({ id, day, sealId: seal, quantity: 1, claimedAt: now });
+      state.history = state.history.slice(0, 14);
+      const encoded = JSON.stringify(state); strings.set(key, encoded);
+      return ['CLAIMED', encoded];
+    }
+
     if (String(args[0]).includes('geek-challenge-start-v1')) {
       const [key, starts, run, ttl, capacity, now, closesAt] = args.slice(2);
       if (strings.has(key)) return 0;
@@ -315,7 +333,7 @@ const response = () => ({
 
 const startSession = async (displayName) => {
   const res = response();
-  await sessionHandler(request('POST', { displayName }), res);
+  await sessionHandler(request('POST', { displayName }, '', {}, { 'user-agent': `test-session:${displayName}` }), res);
   assert.equal(res.statusCode, 200);
   return res.headers['set-cookie'].split(';')[0];
 };
@@ -891,6 +909,7 @@ test('a server-verified wallet proof links and recovers one durable player ident
   const learningSaved = (await studyAnswer(learningStart, firstCookie, false)).body.progress;
   assert.equal(learningSaved.review, 1);
   const challengeStarted = (await challengeStart(firstCookie, 'weekly')).body;
+  const vaultClaimed = (await vaultCall('POST', { action: 'claim', dayId: vaultDay().id }, firstCookie)).body;
   const secondCookie = await startSession('Recovered Geek');
   const recoveryChallenge = response();
   await identityHandler(identityRequest('POST', { action: 'challenge', intent: 'identity', address, publicKey }, secondCookie), recoveryChallenge);
@@ -921,6 +940,11 @@ test('a server-verified wallet proof links and recovers one durable player ident
   assert.equal(challengeRecovered.run.id, challengeStarted.run.id);
   assert.equal(challengeRecovered.run.overallDeadline, challengeStarted.run.overallDeadline);
   assert.equal((await challengeStart(secondCookie, 'weekly')).body.run.id, challengeStarted.run.id);
+  const recoveredVault = (await vaultCall('GET', undefined, secondCookie)).body.vault;
+  assert.deepEqual(recoveredVault.history, vaultClaimed.vault.history);
+  assert.equal(recoveredVault.totalClaimed, 1);
+  assert.equal((await vaultCall('POST', { action: 'claim', dayId: vaultDay().id }, secondCookie)).body.claimStatus, 'already-claimed');
+  assert.equal((await vaultCall('GET', undefined, firstCookie)).statusCode, 401);
   assert.equal(recoveryRes.body.previousSessionsInvalidated, true);
 
   const restoredProfile = response();
@@ -1421,4 +1445,117 @@ test('active challenge grading fails closed on missing or substituted snapshots'
     assert.equal((await answer()).statusCode, 503); assert.equal(challengeStored(payload, cookie).answers.length, 0);
     strings.set(key, original); assert.equal((await answer()).body.run.score, 100);
   } finally { Date.now = clock; }
+});
+
+
+const vaultCall = async (method, body, cookie = '') => {
+  const res = response();
+  await sessionHandler(request(method, body, cookie, { service: 'vault' }, { 'user-agent': `vault-test:${cookie}` }), res);
+  return res;
+};
+
+test('daily vault is private, explicit and isolated from learning, credits and trading', async () => {
+  assert.equal((await vaultCall('GET')).statusCode, 401);
+  assert.equal((await vaultCall('POST', { action: 'claim', dayId: vaultDay().id })).statusCode, 401);
+  const cookie = await startSession('Vault privacy');
+  const player = sessionIdFromCookie(cookie);
+  const profile = { ...defaultProfile(), xp: 400, balance: 75 };
+  strings.set(`geek:profile:${player}`, JSON.stringify(profile));
+  const before = strings.get(`geek:profile:${player}`);
+  const status = (await vaultCall('GET', undefined, cookie)).body.vault;
+  assert.equal(status.claimed, false); assert.equal(status.totalClaimed, 0);
+  assert.equal(status.collection.length, 7); assert.equal(status.day.quantity, 1);
+  assert.equal(status.xpEnabled, false); assert.equal(status.creditsEnabled, false);
+  assert.equal(status.tokensEnabled, false); assert.equal(status.transferable, false);
+  assert.equal(strings.has(vaultKey(player)), false); // Viewing never opens a vault.
+  for (const body of [{ action: 'claim' }, { action: 'claim', dayId: '2000-01-01' }, { action: 'award', dayId: vaultDay().id }]) {
+    assert.ok([400, 409].includes((await vaultCall('POST', body, cookie)).statusCode));
+  }
+  const result = await vaultCall('POST', { action: 'claim', dayId: vaultDay().id, playerId: 'other', quantity: 100, sealId: 'all-hope', xp: 999, claimedAt: 0 }, cookie);
+  assert.equal(result.statusCode, 200);
+  assert.equal(result.body.vault.totalClaimed, 1);
+  assert.equal(result.body.claimReceipt.quantity, 1);
+  assert.equal(result.body.claimReceipt.sealId, vaultDay().seal.id);
+  assert.equal(result.body.vault.collection.reduce((n, item) => n + item.quantity, 0), 1);
+  assert.equal(strings.get(`geek:profile:${player}`), before);
+  assert.equal(strings.has(vaultKey('other')), false);
+  assert.equal(Object.hasOwn(result.body.vault, 'playerId'), false);
+  const stranger = await startSession('Separate vault');
+  assert.equal((await vaultCall('GET', undefined, stranger)).body.vault.totalClaimed, 0);
+  assert.equal((await vaultCall('DELETE', undefined, cookie)).statusCode, 405);
+});
+
+test('concurrent vault claims and lost-response retries return one receipt and one seal', async () => {
+  const cookie = await startSession('Vault race');
+  const body = { action: 'claim', dayId: vaultDay().id };
+  const results = await Promise.all(Array.from({ length: 8 }, () => vaultCall('POST', body, cookie)));
+  assert.equal(results.filter(res => res.body.claimStatus === 'claimed').length, 1);
+  assert.equal(results.filter(res => res.body.claimStatus === 'already-claimed').length, 7);
+  const receipt = results[0].body.claimReceipt;
+  for (const result of results) {
+    assert.equal(result.statusCode, 200); assert.equal(result.body.vault.totalClaimed, 1);
+    assert.deepEqual(result.body.claimReceipt, receipt);
+  }
+  assert.deepEqual((await vaultCall('GET', undefined, cookie)).body.vault.receipt, receipt);
+  assert.deepEqual((await vaultCall('POST', body, cookie)).body.claimReceipt, receipt);
+});
+
+test('vault UTC rollover uses Redis time and rejects delayed or future claims without writes', async () => {
+  const cookie = await startSession('Vault UTC');
+  const now = Date.now;
+  try {
+    Date.now = () => Date.parse('2026-12-31T23:59:59.900Z');
+    const day = vaultDay();
+    assert.equal(day.id, '2026-12-31');
+    vaultRedisNow = day.closesAt;
+    const closed = await vaultCall('POST', { action: 'claim', dayId: day.id }, cookie);
+    assert.equal(closed.statusCode, 409); assert.equal(closed.body.code, 'VAULT_DAY_CHANGED');
+    assert.equal(strings.has(vaultKey(sessionIdFromCookie(cookie))), false);
+    vaultRedisNow = day.opensAt - 1;
+    assert.equal((await vaultCall('POST', { action: 'claim', dayId: day.id }, cookie)).statusCode, 409);
+    vaultRedisNow = null;
+    const first = await vaultCall('POST', { action: 'claim', dayId: day.id }, cookie);
+    assert.equal(first.body.vault.totalClaimed, 1);
+    Date.now = () => day.closesAt;
+    const status = (await vaultCall('GET', undefined, cookie)).body.vault;
+    assert.equal(status.day.id, '2027-01-01'); assert.equal(status.claimed, false);
+    assert.equal((await vaultCall('POST', { action: 'claim', dayId: day.id }, cookie)).statusCode, 409);
+    const second = await vaultCall('POST', { action: 'claim', dayId: status.day.id }, cookie);
+    assert.equal(second.body.vault.totalClaimed, 2);
+    assert.equal(second.body.vault.history.length, 2);
+    assert.notEqual(second.body.claimReceipt.id, first.body.claimReceipt.id);
+  } finally { Date.now = now; vaultRedisNow = null; }
+});
+
+test('vault schedule repeats without streak multipliers; history stays bounded and totals persist', async () => {
+  const cookie = await startSession('Vault history'); const now = Date.now;
+  try {
+    let timestamp = Date.parse('2028-02-28T12:00:00Z');
+    for (let i = 0; i < 18; i++) {
+      Date.now = () => timestamp + i * 86400000;
+      const day = vaultDay();
+      const result = (await vaultCall('POST', { action: 'claim', dayId: day.id }, cookie)).body;
+      assert.equal(result.vault.totalClaimed, i + 1);
+      assert.equal(result.vault.history.length, Math.min(i + 1, 14));
+      assert.equal(result.vault.collection.reduce((n, s) => n + s.quantity, 0), i + 1);
+      assert.equal(result.claimReceipt.quantity, 1);
+    }
+    const before = JSON.parse(strings.get(vaultKey(sessionIdFromCookie(cookie))));
+    Date.now = () => timestamp + 25 * 86400000; // A missed week creates no catch-up or penalty.
+    assert.equal((await vaultCall('GET', undefined, cookie)).body.vault.totalClaimed, 18);
+    assert.equal((await vaultCall('POST', { action: 'claim', dayId: vaultDay().id }, cookie)).body.vault.totalClaimed, 19);
+    assert.equal(before.history.length, 14);
+    assert.equal(vaultDay(timestamp).seal.id, vaultDay(timestamp + 7 * 86400000).seal.id);
+    assert.equal(new Set(vaultSeals.map(s => s.id)).size, 7);
+    assert.equal(vaultDay(Date.parse('2028-02-29T00:00:00Z')).id, '2028-02-29');
+  } finally { Date.now = now; }
+});
+
+test('future or incompatible vault records fail closed instead of granting another claim', async () => {
+  const cookie = await startSession('Vault invalid'); const key = vaultKey(sessionIdFromCookie(cookie));
+  for (const state of [ { version: 2, total: 1, lastDay: '', inventory: {}, history: [] }, { version: 1, total: 1, lastDay: '9999-01-01', inventory: {}, history: [] }, { version: 1, total: -1, lastDay: '', inventory: {}, history: [] }, { version: 1, total: 1, lastDay: '', inventory: { signal: '2' }, history: [] } ]) {
+    const raw = JSON.stringify(state); strings.set(key, raw);
+    const result = await vaultCall('POST', { action: 'claim', dayId: vaultDay().id }, cookie);
+    assert.equal(result.statusCode, 503); assert.equal(strings.get(key), raw);
+  }
 });

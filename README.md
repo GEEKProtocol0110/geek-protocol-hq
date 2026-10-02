@@ -15,6 +15,8 @@
 
 ---
 
+The [daily vault](https://www.geekprotocol.xyz/vault/) offers one visible cosmetic seal per UTC day, with a private collection and replay-safe receipts. Login claims award no XP, credits, or tokens.
+
 ## What is Geek Protocol?
 
 Geek Protocol turns knowledge into a verifiable player journey. Players study Kaspa at their own pace with A.C.E., revisit missed concepts, compete in timed trivia, build persistent profiles, join live lobbies, contribute reviewed questions, and interact with the GEEK ecosystem through a non-custodial Kasware flow.
@@ -44,6 +46,7 @@ See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness
 | --- | --- |
 | **Learn / Study** | Kaspa 101 field guide plus eight guided lessons, three practice levels, and private saved concept feedback |
 | **Play** | Ten-round Geek Gauntlet plus server-owned Daily and Speed modes |
+| **Daily vault** | One visible cosmetic seal per UTC day, private collection, and atomic claim receipts |
 | **Challenges** | Shared Weekly Signal and Monthly Circuit with one attempt per UTC period and separate verified standings |
 | **Lobbies** | Active seats, shareable rooms, and host-started ten-question shared practice rounds with server-scored standings |
 | **Profile** | Verified XP, levels, prestige, category mastery, journey history, and collectibles |
