@@ -7,6 +7,9 @@
   let state = null;
   let busy = false;
   let retry = null;
+  let learning = null;
+  let lessonStep = 0;
+  let selectedLevel = 'foundations';
   const activeKey = 'geek-study-active-v1';
   const reviewKey = 'geek-study-review-v1';
   const storageRead = (storage, key) => { try { return JSON.parse(window[storage].getItem(key) || 'null'); } catch { return null; } };
@@ -25,23 +28,82 @@
   };
   const clearError = () => { $('[data-error]').hidden = true; retry = null; };
   const showError = (error, again) => { $('[data-error-text]').textContent = error.message; $('[data-error]').hidden = false; $('[data-retry]').hidden = !again; retry = again || null; };
-  const lock = value => { busy = value; document.querySelectorAll('[data-start], [data-options] button, [data-next], [data-practice-missed], [data-recommended], [data-exit], [data-topics] button, [data-retry]').forEach(b => { b.disabled = value; }); $('[data-practice]').setAttribute('aria-busy', String(value)); };
+  const lock = value => { busy = value; document.querySelectorAll('[data-start], [data-options] button, [data-next], [data-practice-missed], [data-recommended], [data-exit], [data-topics] button, [data-retry], [data-level], [data-review-topic], [data-continue], [data-progress-retry]').forEach(b => { b.disabled = value; }); $('[data-practice]').setAttribute('aria-busy', String(value)); };
+  const renderLessonStep = (focus = false) => {
+    const final = lessonStep === selectedTopic.steps.length;
+    const step = final ? { title: 'Put the ideas together', text: selectedTopic.example } : selectedTopic.steps[lessonStep];
+    $('[data-lesson-step-number]').textContent = `IDEA ${lessonStep + 1} OF ${selectedTopic.steps.length + 1}`;
+    $('[data-lesson-step-title]').textContent = step.title;
+    $('[data-lesson-step-text]').textContent = step.text;
+    $('[data-reflection]').hidden = !final;
+    $('[data-reflection]').textContent = `Think it through: ${selectedTopic.reflection}`;
+    $('[data-lesson-prev]').disabled = lessonStep === 0;
+    $('[data-lesson-next]').disabled = final;
+    $('[data-lesson-next]').textContent = final ? 'Ready for practice' : 'Next idea →';
+    if (focus) $('[data-lesson-step-title]').focus({ preventScroll: true });
+  };
+  const renderLevel = () => {
+    const level = catalog.levels.find(l => l.id === selectedLevel);
+    const count = Math.min(5, selectedTopic.levels.find(l => l.id === selectedLevel).count);
+    $('[data-level]').value = selectedLevel;
+    $('[data-level-description]').textContent = level.description;
+    $('[data-practice-size]').textContent = `${count} distinct concept${count === 1 ? '' : 's'}. No timer.`;
+  };
+  const renderConcepts = () => {
+    if (!selectedTopic) return;
+    const concepts = learning?.concepts.filter(c => c.topic === selectedTopic.id) || [];
+    $('[data-concept-notes]').hidden = !concepts.length;
+    $('[data-concept-list]').replaceChildren(...concepts.map(c => {
+      const li = document.createElement('li'); const prompt = document.createElement('span'); const status = document.createElement('small');
+      prompt.textContent = c.prompt;
+      status.textContent = `${c.stage === 'review' ? 'Review next' : c.stage === 'confidence' ? 'Building confidence' : 'Practicing'} · ${c.attempts} attempt${c.attempts === 1 ? '' : 's'}`;
+      li.append(prompt, status); return li;
+    }));
+    const review = learning?.topics.find(t => t.id === selectedTopic.id)?.review || 0;
+    $('[data-review-topic]').hidden = !review;
+    $('[data-review-topic]').textContent = `Review ${Math.min(5, review)} saved mistake${review === 1 ? '' : 's'} →`;
+  };
+  const renderLearning = () => {
+    if (!learning) return;
+    $('[data-learning-stats]').hidden = false;
+    $('[data-explored]').textContent = `${learning.explored} / ${learning.total}`;
+    $('[data-review-count]').textContent = learning.review;
+    $('[data-confidence]').textContent = learning.confidence;
+    $('[data-progress-note]').textContent = 'Saved to your player session. Guest access follows this browser’s session. Practice records expire after 180 days without practice.';
+    $('[data-progress-retry]').hidden = true;
+    $('[data-continue]').hidden = false;
+    $('[data-continue]').textContent = `${learning.next.review ? 'Review' : 'Continue'}: ${learning.next.name} →`;
+    $('[data-topics]').querySelectorAll('button').forEach(b => {
+      const t = learning.topics.find(t => t.id === b.dataset.topic);
+      b.querySelector('.topic-progress').textContent = `${t.explored} / ${t.total} explored${t.review ? ` · ${t.review} to review` : ''}`;
+    });
+    renderConcepts();
+  };
+  const loadProgress = async () => {
+    try { await request('/api/session/', {}); learning = (await request(api, { action: 'progress' })).progress; renderLearning(); }
+    catch { $('[data-progress-note]').textContent = 'Saved progress is unavailable right now. Reload it, or choose a lesson below.'; $('[data-progress-retry]').hidden = false; }
+  };
   const choose = (id, scroll = false) => {
     const topic = catalog.topics.find(t => t.id === id);
     if (!topic) return;
     selectedTopic = topic;
+    lessonStep = 0;
     $('[data-lesson]').hidden = false;
     $('[data-lesson-title]').textContent = topic.name;
     $('[data-lesson-text]').textContent = topic.lesson;
+    $('[data-objective]').textContent = `Your goal: ${topic.objective}`;
     $('[data-lesson-sources]').replaceChildren(...topic.sources.map((s, i) => sourceLink(s, `Primary source ${i + 1} ↗`)));
     $('[data-topics]').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.topic === id)));
+    renderLessonStep(); renderLevel(); renderConcepts();
     if (scroll) $('[data-lesson]').scrollIntoView({ behavior: 'auto', block: 'center' });
   };
   const render = (focus = false) => {
+    if (state.progress) { learning = state.progress; renderLearning(); }
     $('[data-browse]').hidden = true; $('[data-practice]').hidden = false;
     $('[data-topic-name]').textContent = state.topic.name;
     const answered = state.run.status === 'question' ? state.run.number - 1 : state.run.number;
-    $('[data-step]').textContent = `${answered} of ${state.run.total} answered · No timer`;
+    const level = catalog.levels.find(l => l.id === state.run.level);
+    $('[data-step]').textContent = `${answered} of ${state.run.total} answered · ${state.run.review ? 'Focused review' : level?.name || 'Mixed challenge'} · No timer`;
     $('[data-progress]').max = state.run.total; $('[data-progress]').value = answered;
     $('[data-feedback]').hidden = !state.result; $('[data-summary]').hidden = !state.summary;
     const question = state.question;
@@ -67,6 +129,8 @@
     if (state.summary) {
       const summary = state.summary;
       $('[data-summary-score]').textContent = `${summary.correct} of ${summary.answered} correct in this practice session.`;
+      const topicProgress = learning?.topics.find(t => t.id === state.run.topic);
+      $('[data-session-progress]').textContent = topicProgress ? `${topicProgress.explored} of ${topicProgress.total} concepts explored in this topic; ${topicProgress.review} to review. A short practice result is a next step, not proof of mastery.` : '';
       $('[data-recommendation]').textContent = summary.recommendation.message;
       $('[data-practice-missed]').hidden = !summary.missed.length;
       $('[data-practice-missed]').textContent = `Practice ${summary.missed.length} missed concept${summary.missed.length === 1 ? '' : 's'} →`;
@@ -92,33 +156,44 @@
       else showError(error, () => act(body, scroll));
     } finally { lock(false); }
   };
-  const start = async practiceRunId => {
+  const start = async (practiceRunId, review = false) => {
     if (busy || !selectedTopic) return;
     clearError(); lock(true);
-    try { await request('/api/session/', {}); } catch (error) { showError(error, () => start(practiceRunId)); lock(false); return; }
-    lock(false); await act({ action: 'start', topic: selectedTopic.id, ...(practiceRunId ? { practiceRunId } : {}) }, true);
+    try { await request('/api/session/', {}); } catch (error) { showError(error, () => start(practiceRunId, review)); lock(false); return; }
+    lock(false); await act({ action: 'start', topic: selectedTopic.id, level: selectedLevel, ...(practiceRunId ? { practiceRunId } : {}), ...(review ? { review: true } : {}) }, true);
   };
   const browse = id => { clearError(); state = null; storageWrite('sessionStorage', activeKey, null); $('[data-practice]').hidden = true; $('[data-browse]').hidden = false; choose(id || selectedTopic?.id || 'origins', true); };
   const boot = async () => {
     clearError();
     try {
       catalog = await request(api);
+      const requestedLevel = new URLSearchParams(location.search).get('level');
+      if (catalog.levels.some(l => l.id === requestedLevel)) selectedLevel = requestedLevel;
+      $('[data-level]').replaceChildren(...catalog.levels.map(l => { const o = document.createElement('option'); o.value = l.id; o.textContent = l.name; return o; }));
       $('[data-topics]').replaceChildren(...catalog.topics.map((topic, i) => {
         const b = document.createElement('button'); b.type = 'button'; b.className = 'study-topic'; b.dataset.topic = topic.id; b.setAttribute('aria-pressed', 'false');
         const span = document.createElement('span'); span.textContent = `0${i + 1} / LEARN`;
         const title = document.createElement('strong'); title.textContent = topic.name;
         const count = document.createElement('small'); count.textContent = `${topic.count} distinct concepts ↗`;
-        b.append(span, title, count); b.addEventListener('click', () => choose(topic.id, true)); return b;
+        const progress = document.createElement('small'); progress.className = 'topic-progress'; progress.textContent = 'Not practiced yet';
+        b.append(span, title, count, progress); b.addEventListener('click', () => choose(topic.id, true)); return b;
       }));
       const saved = storageRead('localStorage', reviewKey); const previous = catalog.topics.find(t => t.id === saved?.topic);
-      if (previous) { $('[data-saved]').hidden = false; $('[data-saved]').textContent = `Your last practice topic: ${previous.name}. Practice notes stay in this browser.`; }
+      if (previous) { $('[data-saved]').hidden = false; $('[data-saved]').textContent = `Your last practice topic: ${previous.name}. Your saved learning progress is shown above.`; }
       const requested = new URLSearchParams(location.search).get('topic');
       choose(catalog.topics.some(t => t.id === requested) ? requested : previous?.id || 'origins');
       const active = storageRead('sessionStorage', activeKey);
       if (typeof active === 'string' && /^[a-f0-9]{40}$/.test(active)) await act({ action: 'resume', runId: active });
+      await loadProgress();
     } catch (error) { showError(error, boot); }
   };
   $('[data-start]').addEventListener('click', () => start());
+  $('[data-level]').addEventListener('change', () => { selectedLevel = $('[data-level]').value; renderLevel(); });
+  $('[data-lesson-prev]').addEventListener('click', () => { if (!busy && lessonStep > 0) { lessonStep--; renderLessonStep(true); } });
+  $('[data-lesson-next]').addEventListener('click', () => { if (!busy && lessonStep < selectedTopic.steps.length) { lessonStep++; renderLessonStep(true); } });
+  $('[data-review-topic]').addEventListener('click', () => start(undefined, true));
+  $('[data-continue]').addEventListener('click', () => choose(learning.next.topic, true));
+  $('[data-progress-retry]').addEventListener('click', loadProgress);
   $('[data-next]').addEventListener('click', () => act({ action: 'next', runId: state.run.id, questionToken: state.result.questionToken }));
   $('[data-exit]').addEventListener('click', () => browse());
   $('[data-retry]').addEventListener('click', () => retry?.());

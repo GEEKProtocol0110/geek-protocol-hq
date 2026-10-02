@@ -27,3 +27,9 @@ The fee question now states that it is a conventional linear-chain example and e
 Automatic tests validate IDs, answer schemas, HTTPS sources, 80 concept identities, and consistent options and answers across variants. Study draws only distinct canonical concepts. These checks do not establish factual correctness by themselves.
 
 Independent item-level editorial review remains necessary, especially for variant wording and future monetary incentives. Proposal status, protocol releases, source links, and time-sensitive developer-stack descriptions should be rechecked before publication of further updates. The source labels describe internal evidence, not certification or an external audit.
+
+## Guided lesson extension — October 2, 2026
+
+Eight authored lessons add objectives, teaching steps, worked examples, and ungraded reflection prompts in `server/study-lessons.js`. The launch, graph ordering, emission, wallet, indexer, and confirmation explanations follow the primary sources above. Lore, the GHOSTDAG paper, node documentation, KIP-5, KIP-14, integration documentation, tokenomics, and Kasplex interfaces were checked for this extension. It introduces no new ranked answer keys and preserves all existing bank IDs, options, grading, and active-run selections.
+
+Practice-level selection exposes the existing easy and medium tags plus a mixed pool. Names/definitions and safety form Foundations; mechanisms, unit relationships, and practical distinctions form Connections; technical concepts remain in Mixed. These criteria describe the present introductory bank. Some existing assignments (for example historical dates) still need a full item-level difficulty calibration. No separate hard-only pool is offered because not every topic has hard-tagged concepts. Independent editorial approval remains outstanding.

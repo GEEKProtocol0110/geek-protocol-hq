@@ -1,4 +1,11 @@
 import { loadQuestionBank, shuffleOptions } from './questions.js';
+import { guidedLessons } from './study-lessons.js';
+
+export const studyLevels = [
+  { id: 'foundations', name: 'Foundations', tier: 'easy', description: 'Start with names, terms, and basic safety.' },
+  { id: 'connections', name: 'Connections', tier: 'medium', description: 'Connect mechanisms, units, and practical decisions.' },
+  { id: 'mixed', name: 'Mixed challenge', tier: null, description: 'Explore the whole topic, including technical concepts.' }
+];
 
 export const studyTopics = [
   { id: 'origins', name: 'Where Kaspa began', category: 'Kaspa Origins', lesson: 'Kaspa grew from research into ordering parallel blocks. Its mainnet launched through public proof-of-work mining in 2021. Native KAS and the GEEK token are different assets.', sources: ['https://kaspa.org/lore/', 'https://eprint.iacr.org/2018/104'], next: 'blockdag' },
@@ -20,15 +27,24 @@ export const studyBank = () => {
 };
 
 export const studyCatalog = () => ({
-  reviewedAt: '2026-10-01',
+  reviewedAt: '2026-10-02',
   reviewNote: 'Internally checked against primary sources. Independent editorial review is still required before monetary rewards.',
-  topics: studyTopics.map(t => ({ ...t, count: studyBank().filter(q => q.topic === t.category).length }))
+  levels: studyLevels,
+  topics: studyTopics.map(t => {
+    const pool = studyBank().filter(q => q.topic === t.category);
+    return { ...t, ...guidedLessons[t.id], count: pool.length, levels: studyLevels.map(level => ({ id: level.id, count: pool.filter(q => !level.tier || q.difficulty === level.tier).length })) };
+  })
 });
 
-export const pickStudyQuestions = (topicId) => {
+export const pickStudyQuestions = (topicId, levelId = 'mixed', records = {}, review = false) => {
   const topic = studyTopics.find(t => t.id === topicId);
-  if (!topic) throw new Error('INVALID_REQUEST');
-  return shuffleOptions(studyBank().filter(q => q.topic === topic.category)).slice(0, 5).map(q => q.id);
+  const level = studyLevels.find(l => l.id === levelId);
+  if (!topic || !level) throw new Error('INVALID_REQUEST');
+  const pool = studyBank().filter(q => q.topic === topic.category && (review || !level.tier || q.difficulty === level.tier));
+  if (review) return pool.filter(q => records[q.conceptId]?.lastCorrect === false).sort((a, b) => records[a.conceptId].lastAnsweredAt - records[b.conceptId].lastAnsweredAt).slice(0, 5).map(q => q.id);
+  // Cover unseen concepts first, then revisit mistakes, then rotate practiced ones.
+  const priority = q => !records[q.conceptId] ? 0 : records[q.conceptId].lastCorrect === false ? 1 : 2;
+  return shuffleOptions(pool).sort((a, b) => priority(a) - priority(b)).slice(0, 5).map(q => q.id);
 };
 
 export const studyQuestionById = id => {

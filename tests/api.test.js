@@ -80,6 +80,7 @@ const execute = (command) => {
     return value;
   }
   if (name === 'HGET') return hashes.get(args[0])?.get(String(args[1])) ?? null;
+  if (name === 'HGETALL') return [...(hashes.get(args[0]) || new Map())].flat();
   if (name === 'HDEL') return hashes.get(args[0])?.delete(String(args[1])) ? 1 : 0;
   if (name === 'ZADD') {
     const map = sorted.get(args[0]) || new Map();
@@ -108,9 +109,18 @@ const execute = (command) => {
     return withScores ? entries.flatMap(([member, score]) => [member, String(score)]) : entries.map(([member]) => member);
   }
   if (name === 'EVAL') {
-    if (String(args[0]).includes('geek-study-state-v1')) {
-      const [key, previous, next] = args.slice(2);
+    if (String(args[0]).includes('geek-study-state-v2')) {
+      const [key, progressKey, previous, next, ttl, concept, correct, runId, now, retention] = args.slice(2);
       if (strings.get(key) !== previous) return 0;
+      if (concept) {
+        const record = JSON.parse(execute(['HGET', progressKey, concept]) || '{"attempts":0,"correctAttempts":0,"streak":0}');
+        record.attempts++;
+        record.correctAttempts += correct === '1' ? 1 : 0;
+        if (correct !== '1') record.streak = 0;
+        else if (record.lastRunId !== runId) record.streak++;
+        record.lastCorrect = correct === '1'; record.lastRunId = runId; record.lastAnsweredAt = Number(now);
+        execute(['HSET', progressKey, concept, JSON.stringify(record)]);
+      }
       strings.set(key, next);
       return 1;
     }
@@ -860,6 +870,9 @@ test('a server-verified wallet proof links and recovers one durable player ident
   }, firstCookie), reusedAuthorization);
   assert.equal(reusedAuthorization.statusCode, 401);
 
+  const learningStart = (await studyCall({ action: 'start', topic: 'wallets', level: 'foundations' }, firstCookie)).body;
+  const learningSaved = (await studyAnswer(learningStart, firstCookie, false)).body.progress;
+  assert.equal(learningSaved.review, 1);
   const secondCookie = await startSession('Recovered Geek');
   const recoveryChallenge = response();
   await identityHandler(identityRequest('POST', { action: 'challenge', intent: 'identity', address, publicKey }, secondCookie), recoveryChallenge);
@@ -883,6 +896,9 @@ test('a server-verified wallet proof links and recovers one durable player ident
   }, secondCookie), recoveryRes);
   assert.equal(recoveryRes.statusCode, 200);
   assert.equal(recoveryRes.body.recovered, true);
+  assert.deepEqual((await studyCall({ action: 'progress' }, secondCookie)).body.progress, learningSaved);
+  assert.equal((await studyCall({ action: 'progress' }, firstCookie)).statusCode, 401);
+  assert.equal((await studyCall({ action: 'resume', runId: learningStart.run.id }, secondCookie)).statusCode, 404);
   assert.equal(recoveryRes.body.previousSessionsInvalidated, true);
 
   const restoredProfile = response();
@@ -1145,6 +1161,88 @@ test('Study summary retries exactly the missed concepts and rejects unauthorized
   }
   assert.equal(focused.summary.correct, 2);
   assert.equal(focused.summary.missed.length, 0);
-  assert.equal(focused.summary.recommendation.topic, 'tokens');
+  assert.equal(focused.summary.recommendation.topic, 'wallets');
   assert.equal((await studyCall({ action: 'start', topic: 'wallets', practiceRunId: focused.run.id }, cookie)).statusCode, 400);
+});
+
+test('Study levels use distinct concepts, validate selection, and cover unseen concepts first', async () => {
+  const cookie = await startSession('Learning Levels');
+  for (const level of ['expert', 1, null]) assert.equal((await studyCall({ action: 'start', topic: 'origins', level }, cookie)).statusCode, 400);
+  assert.equal((await studyCall({ action: 'start', topic: 'origins', review: 'yes' }, cookie)).statusCode, 400);
+  for (const [level, tier] of [['foundations', 'easy'], ['connections', 'medium']]) {
+    let payload = (await studyCall({ action: 'start', topic: 'origins', level }, cookie)).body;
+    assert.equal(payload.run.level, level);
+    const ids = storedStudy(payload).ids;
+    assert.equal(ids.length, level === 'foundations' ? 5 : 3);
+    assert.ok(ids.every(id => studyQuestionById(id).difficulty === tier));
+    for (let i = 0; i < ids.length; i++) {
+      payload = (await studyAnswer(payload, cookie)).body;
+      if (i < ids.length - 1) payload = (await studyNext(payload, cookie)).body;
+    }
+  }
+  const mixed = (await studyCall({ action: 'start', topic: 'origins', level: 'mixed' }, cookie)).body;
+  assert.deepEqual(new Set(storedStudy(mixed).ids.slice(0, 2)), new Set(['KASPA-0005', 'KASPA-0010']));
+  assert.equal(mixed.progress.explored, 8);
+  assert.equal(mixed.progress.confidence, 0);
+});
+
+test('saved Study progress is private, survives run expiry, and cannot be written by the browser', async () => {
+  assert.equal((await studyCall({ action: 'progress' })).statusCode, 401);
+  const cookie = await startSession('Saved Practice');
+  const foreign = await startSession('Other Practice');
+  const start = (await studyCall({ action: 'start', topic: 'origins', level: 'foundations' }, cookie)).body;
+  const missedId = storedStudy(start).ids[0];
+  const missed = (await studyAnswer(start, cookie, false)).body;
+  assert.equal(missed.progress.review, 1);
+  assert.equal((await studyCall({ action: 'progress', playerId: 'forged', progress: { explored: 80 } }, foreign)).body.progress.explored, 0);
+  strings.delete(`geek:study:${start.run.id}`);
+  const saved = (await studyCall({ action: 'progress' }, cookie)).body.progress;
+  assert.equal(saved.explored, 1);
+  assert.equal(saved.concepts[0].stage, 'review');
+  assert.equal(JSON.stringify(saved).includes('correctIndex'), false);
+  assert.equal((await studyCall({ action: 'start', topic: 'origins', review: true }, foreign)).statusCode, 400);
+  const review = (await studyCall({ action: 'start', topic: 'origins', review: true }, cookie)).body;
+  assert.deepEqual(storedStudy(review).ids, [missedId]);
+  assert.equal(review.run.review, true);
+  assert.equal((await studyAnswer(review, cookie)).body.progress.review, 0);
+});
+
+test('Study progress counts atomic answers once and requires separate runs for confidence', async () => {
+  const cookie = await startSession('Practice Confidence');
+  let payload = (await studyCall({ action: 'start', topic: 'origins', level: 'connections' }, cookie)).body;
+  const firstId = storedStudy(payload).ids[0];
+  const race = await Promise.all([studyAnswer(payload, cookie), studyAnswer(payload, cookie)]);
+  assert.equal(race[0].body.progress.concepts.find(c => c.id === firstId).attempts, 1);
+  assert.equal((await studyAnswer(payload, cookie)).body.progress.concepts.find(c => c.id === firstId).attempts, 1);
+  payload = race[0].body;
+  for (let i = 1; i < 3; i++) { payload = (await studyNext(payload, cookie)).body; payload = (await studyAnswer(payload, cookie)).body; }
+  assert.equal(payload.progress.confidence, 0);
+  assert.match(payload.summary.recommendation.message, /more concepts/);
+  payload = (await studyCall({ action: 'start', topic: 'origins', level: 'connections' }, cookie)).body;
+  for (let i = 0; i < 3; i++) { payload = (await studyAnswer(payload, cookie)).body; if (i < 2) payload = (await studyNext(payload, cookie)).body; }
+  assert.equal(payload.progress.confidence, 3);
+  const bad = (await studyCall({ action: 'start', topic: 'origins', level: 'connections' }, cookie)).body;
+  const reset = (await studyAnswer(bad, cookie, false)).body;
+  assert.equal(reset.progress.confidence, 2);
+  assert.equal(reset.progress.review, 1);
+  assert.equal(reset.progress.explored, 3);
+  const practice = (await studyCall({ action: 'start', topic: 'origins', review: true }, cookie)).body;
+  const once = (await studyAnswer(practice, cookie)).body;
+  assert.equal(once.progress.confidence, 2);
+  assert.equal(once.progress.review, 0);
+});
+
+test('parallel Study runs preserve each concept record without losing attempts', async () => {
+  const cookie = await startSession('Parallel Learning');
+  const first = (await studyCall({ action: 'start', topic: 'origins', level: 'connections' }, cookie)).body;
+  const second = (await studyCall({ action: 'start', topic: 'origins', level: 'connections' }, cookie)).body;
+  const complete = async start => {
+    let payload = start;
+    for (let i = 0; i < 3; i++) { payload = (await studyAnswer(payload, cookie)).body; if (i < 2) payload = (await studyNext(payload, cookie)).body; }
+  };
+  await Promise.all([complete(first), complete(second)]);
+  const progress = (await studyCall({ action: 'progress' }, cookie)).body.progress;
+  assert.equal(progress.explored, 3);
+  assert.equal(progress.confidence, 3);
+  assert.ok(progress.concepts.every(c => c.attempts === 2 && c.correctAttempts === 2));
 });
