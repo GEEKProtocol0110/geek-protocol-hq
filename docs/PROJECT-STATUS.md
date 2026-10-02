@@ -1,6 +1,6 @@
 # Geek Protocol HQ — Project Status
 
-**Snapshot date:** 2026-10-01<br />
+**Snapshot date:** 2026-10-02<br />
 **Release channel:** Public Alpha  
 **Production:** [www.geekprotocol.xyz](https://www.geekprotocol.xyz/)  
 **Repository:** [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq)
@@ -53,6 +53,10 @@ The repository currently verifies:
 - Payout destinations are preferences only; withdrawals and treasury settlement are disabled.
 - The recovered art archive contains authentic concepts, not approved collection editions.
 - Future value-moving components require separate design review, implementation, testing, and audit.
+
+## Product direction
+
+[The full roadmap](PRODUCT-ROADMAP.md) restores the original Arena, creator, player-economy, governance, Education, Pro, and launchpad vision. HQ Litepaper v1.7 carries this direction with explicit live/planned/proposed labels. This documentation release does not implement those future features. The proposed 70/30 policy allocates platform fees to recycling and burning; no fee-distribution or burn engine is live.
 
 ## Required next gates
 

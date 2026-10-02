@@ -36,7 +36,7 @@ The project began as a way to make learning exciting for one child. HQ is the pu
 | 500-Geek collection | **Design and provenance phase** | Ownership and collection minting are disabled |
 | Independent security audit | **Not completed** | Required before treasury-controlled value movement |
 
-See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness matrix and open launch gates.
+See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness matrix and open launch gates. The [Full Product Roadmap](docs/PRODUCT-ROADMAP.md) preserves Geek Arena, creator rewards, the proposed 70/30 platform-fee model, community governance, schools, professional development, and open infrastructure with explicit implementation stages.
 
 ## Product surfaces
 
