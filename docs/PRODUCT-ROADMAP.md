@@ -1,10 +1,18 @@
 # Geek Protocol — Full Product Roadmap
 
 **Reviewed direction:** October 2, 2026  
-**Public edition:** [HQ Litepaper v1.9](https://www.geekprotocol.xyz/litepaper/)
+**Public edition:** [HQ Litepaper v1.11](https://www.geekprotocol.xyz/litepaper/)
 **Purpose:** Carry the original project vision into an explicit implementation backlog.
 
 This document preserves the founder's full direction. It records features and acceptance criteria; it does not activate gameplay formats, payments, treasury authority, DAO votes, or collection ownership. Kaspa 101 remains the main Learn destination. Geek Jr's current implementation is outside this HQ release.
+
+## Current priority: polish the core
+
+**Founder decision, October 2, 2026:** pause feature expansion and focus on Learn → Study → practise → see progress. Preserve Kaspa 101 in full. Home and primary navigation should make the next learning step clear; Progress should put saved Study feedback ahead of separate timed-game records. Existing challenges, vault, minting, collectibles, lobbies and contributions remain accessible as optional paths.
+
+Arena expansions, new economic/reward systems, DAO work, and the launchpad are **on hold** while the core is polished and tried by real learners. The feature tables below preserve the full long-term vision; “Planned” does not mean active work or the next release. No existing service is shut down by this prioritization.
+
+The next review should ask whether learners can find a lesson, understand its objective, answer a short practice set, find saved mistakes, and choose the next step without help. Record confusing steps and content corrections through the existing issue process. Usability observations are not evidence of improved learning outcomes; any outcome claim needs a separate evaluation. Do not add analytics or collect learner data merely to carry out this review.
 
 ## Original references
 
@@ -116,10 +124,10 @@ Schools, professional development, and the launchpad extend the learning purpose
 
 1. Preserve Kaspa 101 and the existing live learning path.
 2. Improve content quality and guided learning.
-3. Build practice Arena formats from the existing server-authoritative lobby foundation.
+3. After the founder reopens expansion, build practice Arena formats from the existing server-authoritative lobby foundation.
 4. Expand creator review and transparent contribution records.
 5. Specify and review store, ownership, treasury and fee behavior before monetary modes.
 6. Introduce community governance through published, accountable steps.
 7. Pilot education, professional learning, integrations, and the launchpad with their dependencies in place.
 
-Stages can contain independent work in parallel, but their stated dependencies remain. There are no invented launch dates. Each implemented feature should have a focused issue/PR, documentation, meaningful authorization/state tests where relevant, and production evidence before its public status becomes Live.
+Core polish is the active priority. Expansion stages are on hold until the founder chooses to reopen them; their stated dependencies remain. There are no invented launch dates. Each implemented feature should have a focused issue/PR, documentation, meaningful authorization/state tests where relevant, and production evidence before its public status becomes Live.

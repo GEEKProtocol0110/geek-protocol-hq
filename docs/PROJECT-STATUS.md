@@ -5,6 +5,10 @@
 **Production:** [www.geekprotocol.xyz](https://www.geekprotocol.xyz/)  
 **Repository:** [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq)
 
+## Current product focus
+
+The founder has paused expansion to polish the core journey: Learn, guided Study, practice, and saved progress. Primary navigation prioritizes those steps. Progress displays existing private Study feedback before separate timed-game XP and records; collectibles and detailed game history remain available in optional sections. Larger Arena formats, new economic systems, DAO work, and the launchpad remain on hold.
+
 ## Executive summary
 
 Geek Protocol HQ is a deployed Proof-of-Learning Alpha for the Kaspa ecosystem. The current release supports untimed Kaspa Study with A.C.E., server-authoritative trivia, persistent player progression, live lobbies, Kasware-based identity proof and recovery, community question review, collectible trading, and a non-custodial interface for the existing GEEK fair mint.

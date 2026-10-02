@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#080b0b" />
-    <meta name="description" content="Your server-verified Geek Protocol journey: level, prestige, category mastery, achievements, and ranked history." />
-    <title>Player Journey — Geek Protocol</title>
+    <meta name="description" content="Your saved Kaspa Study feedback, concepts explored, topics to review, and separate game progress." />
+    <title>Your Progress — Geek Protocol</title>
     <link rel="canonical" href="https://www.geekprotocol.xyz/profile/" />
     <link rel="stylesheet" href="../assets/styles.css" />
     <link rel="stylesheet" href="./assets/profile.css" />
@@ -17,29 +17,34 @@
     <header class="site-header scrolled" data-header>
       <a class="brand" href="../" aria-label="Geek Protocol home"><img src="../assets/geek-protocol-logo.png" alt="" width="48" height="48" /><span>GEEK<span class="brand-mark">//</span>PROFILE</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
-      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav>
-<a href="../kaspa/">Learn</a><a href="../collection/">Collection</a><a href="../mint/">Mint</a>
-<details class="nav-more"><summary>Explore</summary><div class="nav-more-panel"><a href="../vault/">Daily vault</a><a href="../lobby/">Lobbies</a><a href="../contribute/">Contribute</a><a href="../rewards/">Rewards</a><a href="../profile/">Profile</a><a href="../litepaper/">Litepaper</a><a href="../security/">Security</a></div></details>
-<a class="nav-cta" href="../play/?category=kaspa">Play Kaspa <span aria-hidden="true">→</span></a></nav>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="../kaspa/">Learn</a><a href="../study/">Study</a><a href="../profile/" aria-current="page">Progress</a><details class="nav-more"><summary>Explore</summary><div class="nav-more-panel"><a href="../challenges/">Challenges</a><a href="../vault/">Daily vault</a><a href="../mint/">Mint GEEK</a><a href="../collection/">Collection</a><a href="../lobby/">Lobbies</a><a href="../contribute/">Contribute</a><a href="../rewards/">Wallet & rewards</a><a href="../litepaper/">Litepaper</a><a href="../security/">Security</a></div></details><a class="nav-cta" href="../play/">Practise <span aria-hidden="true">→</span></a></nav>
     </header>
 
     <main id="main" class="profile-main">
       <section class="profile-hero" aria-labelledby="profile-title">
         <div class="profile-intro">
           <div class="eyebrow"><span class="profile-live-dot"></span><span data-profile-state>CONNECTING TO VERIFIED PROFILE</span></div>
-          <h1 id="profile-title">YOUR SIGNAL.<br /><em>YOUR STORY.</em></h1>
-          <p>Every server-ranked answer adds to one recoverable journey. Build mastery across eight worlds, unlock achievements, climb 25 levels, and cross into Prestige.</p>
-          <div class="profile-actions"><a class="button button-primary" href="../play/">Continue journey <span aria-hidden="true">→</span></a><a class="button button-secondary" href="../rewards/">Protect with Kaspa wallet</a><a class="button button-secondary" href="../vault/">Open daily vault</a></div>
+          <h1 id="profile-title">YOUR<br /><em>PROGRESS.</em></h1>
+          <p>See what you have explored and what to revisit. Your Study feedback appears first; timed games keep their own XP, scores, and milestones.</p>
+          <div class="profile-actions"><a class="button button-primary" href="../study/">Continue Study <span aria-hidden="true">→</span></a><a class="button button-secondary" href="../kaspa/">Read Kaspa 101</a><a class="button button-secondary" href="../rewards/">Protect your profile</a></div>
         </div>
 
         <article class="identity-card" aria-label="Player identity">
           <div class="identity-top"><div class="identity-avatar"><img data-avatar-image alt="Selected Geek avatar" hidden /><span data-avatar-fallback>G</span></div><div><span>SERVER PROFILE</span><h2 data-player-name>Guest Geek</h2><p data-rank-title>Initiate</p></div><b data-protection>SESSION PROFILE</b></div>
-          <dl><div><dt>Member since</dt><dd data-member-since>—</dd></div><div><dt>Profile recovery</dt><dd data-recovery>Not protected</dd></div><div><dt>Record source</dt><dd>Ranked server</dd></div></dl>
+          <dl><div><dt>Member since</dt><dd data-member-since>—</dd></div><div><dt>Profile recovery</dt><dd data-recovery>Not protected</dd></div><div><dt>Your records</dt><dd>Study &amp; games</dd></div></dl>
         </article>
       </section>
 
+      <section class="profile-study" aria-labelledby="study-progress-title" data-study-panel aria-busy="true">
+        <div class="section-kicker">YOUR SAVED STUDY FEEDBACK</div><div class="study-progress-heading"><h2 id="study-progress-title">Your next<br />small step.</h2><p data-study-note role="status">Loading your saved concept feedback…</p></div>
+        <div class="study-progress-totals" data-study-totals hidden><article><strong data-study-explored>—</strong><span>Concepts explored</span></article><article><strong data-study-review>—</strong><span>Ready to review</span></article><article><strong data-study-confidence>—</strong><span>Building confidence</span></article></div>
+        <div class="profile-actions"><a class="button button-primary" data-study-next hidden>Continue your topic →</a><a class="button button-secondary" href="../study/">Choose a lesson</a><button class="button button-secondary" type="button" data-study-retry hidden>Reload Study feedback</button></div>
+        <div class="study-progress-topics" data-study-topics aria-label="Saved Study feedback by topic"></div>
+        <p class="study-progress-boundary">These are practice signals. Building confidence means two correct answers in separate runs since the last mistake. Study awards no XP and does not certify mastery. Guest access follows this browser’s session; a verified identity supports recovery. Practice feedback expires after 180 days without practice.</p>
+      </section>
+
       <section class="progression-section" aria-labelledby="progression-title">
-        <div class="section-kicker">01 / PROGRESSION CORE</div>
+        <div class="section-kicker">TIMED GAME PROGRESS / SEPARATE FROM STUDY</div>
         <div class="progression-layout">
           <article class="level-core">
             <div class="level-orbit" data-level-orbit style="--progress:0deg"><div><span>LEVEL</span><strong data-level>1</strong><small data-prestige>PRESTIGE 0</small></div></div>
@@ -57,6 +62,7 @@
         </div>
       </section>
 
+      <details class="profile-extra" data-extra="collection"><summary>Your collectibles and sticker trades <span>Optional · off-chain Alpha</span></summary>
       <section class="collection-section" aria-labelledby="collection-title">
         <div class="section-kicker">02 / IDENTITY GRID</div>
         <div class="profile-heading collection-heading"><div><span class="alpha-chip">OFF-CHAIN ALPHA</span><h2 id="collection-title">Choose your<br />Geek signal.</h2></div><p>Your selected Geek is your visual identity across the learning ecosystem. Five launch identities are wired now; the complete 500-character Omniscient Grid is mapped for art production and a separately audited Kaspa deployment.</p></div>
@@ -81,15 +87,18 @@
         </div>
       </section>
 
+      </details>
+
+      <details class="profile-extra" data-extra="games"><summary>Your game details <span>Categories, achievements, and recent rounds</span></summary>
       <section class="mastery-section" aria-labelledby="mastery-title">
         <div class="section-kicker">04 / KNOWLEDGE WORLDS</div>
-        <div class="profile-heading"><h2 id="mastery-title">Category<br />mastery.</h2><p>Each world records only server-scored rounds. Explore broadly or build a specialty—the journey keeps both visible.</p></div>
+        <div class="profile-heading"><h2 id="mastery-title">Category<br />practice.</h2><p>Each world records only server-scored rounds. Explore broadly or build a specialty—the journey keeps both visible.</p></div>
         <div class="mastery-grid" data-mastery-grid><p class="profile-empty">Category signal will appear after your first verified round.</p></div>
       </section>
 
       <section class="achievement-section" aria-labelledby="achievement-title">
         <div class="section-kicker">05 / ACHIEVEMENTS</div>
-        <div class="profile-heading"><h2 id="achievement-title">Proof,<br />not badges.</h2><p>Achievements unlock from server-owned totals. Locked milestones show exactly what remains.</p></div>
+        <div class="profile-heading"><h2 id="achievement-title">Your game<br />milestones.</h2><p>Achievements unlock from server-owned totals. Locked milestones show exactly what remains.</p></div>
         <div class="achievement-grid" data-achievement-grid></div>
       </section>
 
@@ -98,7 +107,9 @@
         <ol class="journey-list" data-journey-list><li class="profile-empty">Your first verified milestone is waiting.</li></ol>
       </section>
 
-      <section class="profile-cta"><span>YOUR NEXT MILESTONE IS SERVER-VERIFIED</span><h2>KEEP<br /><em>CLIMBING.</em></h2><div class="profile-actions"><a class="button button-primary" href="../play/">Play a ranked mode <span aria-hidden="true">→</span></a><a class="button button-secondary" href="../kaspa/">Study Kaspa 101</a></div></section>
+      </details>
+
+      <section class="profile-cta"><span>ONE IDEA. ONE NEXT STEP.</span><h2>KEEP<br /><em>GOING.</em></h2><div class="profile-actions"><a class="button button-primary" href="../study/">Continue guided Study <span aria-hidden="true">→</span></a><a class="button button-secondary" href="../kaspa/">Study Kaspa 101</a></div></section>
     </main>
 
     <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>Your knowledge has a history.</p></div><div class="footer-links"><a href="../">Home</a><a href="../collection/">Collection</a><a href="../play/">Play</a><a href="../rewards/">Rewards</a><a href="../security/">Security</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · Progression is server-ranked Alpha data, not a financial balance.</p></footer>
