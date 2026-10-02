@@ -2,6 +2,8 @@
 
 Implemented in the public Alpha on October 1, 2026. A.C.E. presents authored lessons, sourced explanations, and suggestions based on the answers in a practice session. It is not a general chat model, a proficiency certification, or an independent reviewer.
 
+Kaspa 101 at `/kaspa/` is the main Learn destination. Study remains available through a prominent field-guide action and direct links from timed Play. The field guide retains its protocol, live DAG, milestones, builder, curriculum, and source sections.
+
 ## Learning flow
 
 Eight topics cover 80 distinct underlying Kaspa concepts. Each topic has a short lesson with primary sources and ten concepts. A new session draws five different concepts, shuffles answer options, and lets the learner take as long as needed. The answer is committed before its explanation and source appear. The completed session lists missed concepts and offers a practice containing exactly those concepts, or suggests the next topic when all answers were correct.
