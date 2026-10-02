@@ -1,7 +1,7 @@
 # Geek Protocol — Full Product Roadmap
 
 **Reviewed direction:** October 2, 2026  
-**Public edition:** [HQ Litepaper v1.8](https://www.geekprotocol.xyz/litepaper/)
+**Public edition:** [HQ Litepaper v1.9](https://www.geekprotocol.xyz/litepaper/)
 **Purpose:** Carry the original project vision into an explicit implementation backlog.
 
 This document preserves the founder's full direction. It records features and acceptance criteria; it does not activate gameplay formats, payments, treasury authority, DAO votes, or collection ownership. Kaspa 101 remains the main Learn destination. Geek Jr's current implementation is outside this HQ release.
@@ -22,7 +22,8 @@ Earlier documents express a proposed ecosystem. The present implementation uses 
 | Kaspa 101 | Field guide, live graph embed, milestones, builder paths, curriculum, sources; main Learn destination |
 | Study with A.C.E. | Eight guided lessons, three practice levels, saved concept feedback, untimed explanations, session and saved-mistake review; no rank or rewards |
 | Gauntlet | Ten rounds of ten questions, eight categories, server-owned deadlines/scoring; later rounds use internal credits |
-| Daily and Speed | Implemented timed alternatives; not weekly/monthly challenge infrastructure |
+| Daily and Speed | Implemented timed alternatives, with their existing separate modes |
+| Weekly and monthly challenges | Shared reviewed Kaspa sets, UTC periods, one attempt per player, accuracy scoring, bounded separate boards |
 | Geek's Journey | Server XP, 25-level prestige cycles, category records, journey history, avatars and achievements |
 | Shared lobbies | Ten-question host-started practice, roster/deadline authority; Quick Duel is a two-seat template |
 | Community Content Engine | Submission, human moderation, publication, one internal first-use credit |
@@ -39,13 +40,15 @@ These capabilities remain covered by their existing protocol specifications and 
 | --- | --- | --- | --- |
 | LEARN-01 | Reviewed difficulty progression | Partial: Study level selection live | Existing easy/medium tiers exposed as Foundations/Connections; Mixed includes technical concepts. Full difficulty audit, independent editorial approval, and ranked progression changes remain |
 | LEARN-02 | Guided learning / Learn & Earn modules | Guided Study live; earning path planned | Eight objectives, three teaching ideas plus a worked example/reflection per topic; Study remains unranked. Future rewarded assessments need separate validation |
-| LEARN-03 | Weekly and monthly challenges | Planned | Server-defined periods, participation rules, reproducible question selection, retry/replay checks, and bounded standings |
+| LEARN-03 | Weekly and monthly challenges | Implemented Alpha | UTC periods, shared immutable concept sets, one server player attempt, strict clocks, atomic completion, recovery/replay tests, tie ranks and bounded separate boards |
 | LEARN-04 | Daily login vault | Planned | Server-owned eligibility, transparent contents, duplicate-claim protection, and no implied learning proof from login alone |
 | LEARN-05 | Mastery feedback | Practice feedback live; validated assessment planned | Private server-owned concept records, coverage, saved mistakes, and two-run confidence signals. These do not certify mastery |
 
 Start with content quality and guided practice. Educational benefit and question diversity should improve before additional earning incentives are introduced.
 
-**October 2 learning release:** guided lessons and practice levels are implemented in Study. Selection covers unseen concepts first; saved mistakes can be reviewed after a run expires. Progress survives across sessions for the same verified player identity, while guest access follows the browser session. Weekly/monthly challenges, the login vault, independently reviewed difficulty progression, and reward-enabled assessments remain separate work.
+**October 2 learning release:** guided lessons and practice levels are implemented in Study. Selection covers unseen concepts first; saved mistakes can be reviewed after a run expires. Progress survives across sessions for the same verified player identity, while guest access follows the browser session. Weekly/monthly challenges now have shared sets and separate standings. The login vault, independently reviewed difficulty progression, and reward-enabled assessments remain separate work.
+
+[Challenge protocol](CHALLENGE-PROTOCOL.md) defines the ten-question Weekly Signal and twenty-question Monthly Circuit, UTC boundaries, one-attempt rule, no-reward boundary, capacity and retention.
 
 ## 2. Geek Arena
 

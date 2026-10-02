@@ -8,6 +8,7 @@ import { questionById, selectRoundQuestionIds, shuffleOptions } from '../server/
 import { rateLimit, redis } from '../server/redis.js';
 import { playerIdFor, requireSession } from '../server/session.js';
 import studyHandler from '../server/study.js';
+import challengesHandler from '../server/challenges.js';
 
 const RUN_TTL = 60 * 60 * 2;
 const QUESTION_MS = 15_000;
@@ -252,6 +253,7 @@ const answerQuestion = async (run, session, profile, body) => {
 
 export default async function handler(req, res) {
   if (req.query?.service === 'study') return studyHandler(req, res);
+  if (req.query?.service === 'challenges') return challengesHandler(req, res);
   setApiHeaders(res);
   if (req.method === 'OPTIONS') return res.status(204).end();
   try {

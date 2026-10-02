@@ -143,6 +143,12 @@
       "evidence": ["server/study.js", "server/study-curriculum.js", "server/study-progress.js", "api/ranked.js", "tests/api.test.js", "docs/STUDY-PROTOCOL.md"]
     },
     {
+      "id": "GP-INV-023",
+      "title": "Periodic challenge identity, clocks, snapshot integrity and atomic standings",
+      "status": "implemented-alpha",
+      "evidence": ["server/challenges.js", "server/challenge-periods.js", "tests/api.test.js", "tests/challenge-periods.test.js", "docs/CHALLENGE-PROTOCOL.md"]
+    },
+    {
       "id": "GP-GATE-INDEPENDENT-AUDIT",
       "title": "Independent application and settlement audits",
       "status": "required-before-settlement",

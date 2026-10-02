@@ -20,6 +20,7 @@ The application is deliberately split into two risk classes:
 | --- | --- | --- | --- | --- |
 | Public web experience | Live | CI and production checks | Not audited | Public Alpha |
 | Kaspa Study | Guided lessons, levels, saved practice feedback | Session, privacy, race, retry, coverage, review, and rank-isolation tests | Internal source check only | Untimed; no XP, credits, tokens, or mastery certification |
+| Weekly / monthly challenges | Implemented Alpha | UTC rollover, snapshot, clock, recovery, race, replay, and tie-ranking tests | Not audited | Free community standings; no XP, credits, or tokens |
 | Ranked game authority | Implemented | Integration and abuse-case tests | Not audited | Unproctored trivia limitations remain |
 | Wallet identity and recovery | Implemented | Signature, replay, race, and origin tests | Not audited | Kaspa Mainnet ownership proof only |
 | GEEK fair-mint interface | Live | Pinned deployment and fail-closed tests | Not audited | Wallet signs and submits; HQ never holds keys |
@@ -34,6 +35,7 @@ The application is deliberately split into two risk classes:
 The repository currently verifies:
 
 - session-bound untimed Study with guided lessons, distinct concepts, selectable practice levels, and atomic answer/progress writes;
+- one-attempt periodic competitions with shared snapshots, atomic completed-score publication, and bounded separate boards;
 - private concept coverage and saved-mistake review with bounded retention and replay-safe confidence feedback;
 - server-owned answer validation, deadlines, scoring, XP, and rewards;
 - single-use ranked tokens and atomic answer claims;

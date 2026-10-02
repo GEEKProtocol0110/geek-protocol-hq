@@ -18,6 +18,7 @@ import { defaultProfile } from '../server/profile.js';
 import { deriveProgression, recordRoundJourney } from '../server/progression.js';
 import { loadQuestionBank } from '../server/questions.js';
 import { studyQuestionById, studyBank } from '../server/study-curriculum.js';
+import { challengePeriod, CHALLENGE_CAP } from '../server/challenge-periods.js';
 
 const lobbyGameHandler = lobbiesHandler;
 
@@ -93,6 +94,7 @@ const execute = (command) => {
     return value === undefined ? null : String(value);
   }
   if (name === 'ZREM') return sorted.get(args[0])?.delete(String(args[1])) ? 1 : 0;
+  if (name === 'ZCARD') return sorted.get(args[0])?.size || 0;
   if (name === 'ZCOUNT') {
     const min = args[1] === '-inf' ? -Infinity : Number(args[1]);
     const max = args[2] === '+inf' ? Infinity : Number(args[2]);
@@ -109,6 +111,21 @@ const execute = (command) => {
     return withScores ? entries.flatMap(([member, score]) => [member, String(score)]) : entries.map(([member]) => member);
   }
   if (name === 'EVAL') {
+    if (String(args[0]).includes('geek-challenge-start-v1')) {
+      const [key, starts, run, ttl, capacity, now, closesAt] = args.slice(2);
+      if (strings.has(key)) return 0;
+      if (Number(now) >= Number(closesAt)) return -2;
+      if (Number(strings.get(starts) || 0) >= Number(capacity)) return -1;
+      strings.set(key, run); execute(['INCR', starts]); return 1;
+    }
+    if (String(args[0]).includes('geek-challenge-transition-v1')) {
+      const [key, board, meta, previous, next, ttl, now, closesAt, complete, score, playerId, details] = args.slice(2);
+      if (strings.get(key) !== previous) return 0;
+      if (Number(now) >= Number(closesAt)) return -1;
+      strings.set(key, next);
+      if (complete === '1') { execute(['ZADD', board, score, playerId]); execute(['HSET', meta, playerId, details]); }
+      return 1;
+    }
     if (String(args[0]).includes('geek-study-state-v2')) {
       const [key, progressKey, previous, next, ttl, concept, correct, runId, now, retention] = args.slice(2);
       if (strings.get(key) !== previous) return 0;
@@ -873,6 +890,7 @@ test('a server-verified wallet proof links and recovers one durable player ident
   const learningStart = (await studyCall({ action: 'start', topic: 'wallets', level: 'foundations' }, firstCookie)).body;
   const learningSaved = (await studyAnswer(learningStart, firstCookie, false)).body.progress;
   assert.equal(learningSaved.review, 1);
+  const challengeStarted = (await challengeStart(firstCookie, 'weekly')).body;
   const secondCookie = await startSession('Recovered Geek');
   const recoveryChallenge = response();
   await identityHandler(identityRequest('POST', { action: 'challenge', intent: 'identity', address, publicKey }, secondCookie), recoveryChallenge);
@@ -899,6 +917,10 @@ test('a server-verified wallet proof links and recovers one durable player ident
   assert.deepEqual((await studyCall({ action: 'progress' }, secondCookie)).body.progress, learningSaved);
   assert.equal((await studyCall({ action: 'progress' }, firstCookie)).statusCode, 401);
   assert.equal((await studyCall({ action: 'resume', runId: learningStart.run.id }, secondCookie)).statusCode, 404);
+  const challengeRecovered = (await challengeCall({ action: 'resume', periodId: challengeStarted.run.periodId, runId: challengeStarted.run.id }, secondCookie)).body;
+  assert.equal(challengeRecovered.run.id, challengeStarted.run.id);
+  assert.equal(challengeRecovered.run.overallDeadline, challengeStarted.run.overallDeadline);
+  assert.equal((await challengeStart(secondCookie, 'weekly')).body.run.id, challengeStarted.run.id);
   assert.equal(recoveryRes.body.previousSessionsInvalidated, true);
 
   const restoredProfile = response();
@@ -1245,4 +1267,158 @@ test('parallel Study runs preserve each concept record without losing attempts',
   assert.equal(progress.explored, 3);
   assert.equal(progress.confidence, 3);
   assert.ok(progress.concepts.every(c => c.attempts === 2 && c.correctAttempts === 2));
+});
+
+const challengeCall = async (body, cookie = '', method = 'POST', query = {}) => {
+  const res = response();
+  await rankedHandler(request(method, body, cookie, { service: 'challenges', ...query }, { 'user-agent': `challenge-test-${cookie}` }), res);
+  return res;
+};
+const challengeStart = (cookie, kind) => challengeCall({ action: 'start', kind, periodId: challengePeriod(kind).id }, cookie);
+const challengeStored = (payload, cookie) => {
+  const session = JSON.parse(strings.get(`geek:session:${sessionIdFromCookie(cookie)}`));
+  return JSON.parse(strings.get(`geek:challenge:attempt:${payload.run.periodId}:${session.playerId}`));
+};
+const challengeAnswer = (payload, cookie, correct = true) => {
+  const run = challengeStored(payload, cookie);
+  const q = JSON.parse(strings.get(`geek:challenge:pack:${run.period.id}`)).questions[run.index];
+  const right = payload.question.options.indexOf(q.options[q.correctIndex]);
+  return challengeCall({ action: 'answer', periodId: payload.run.periodId, runId: payload.run.id, questionToken: payload.question.token, selectedIndex: correct ? right : (right + 1) % 4, score: 999999, correct: 20 }, cookie);
+};
+const challengeNext = (payload, cookie) => challengeCall({ action: 'next', periodId: payload.run.periodId, runId: payload.run.id, questionToken: payload.result.questionToken }, cookie);
+const challengeFinish = (payload, cookie) => challengeCall({ action: 'finish', periodId: payload.run.periodId, runId: payload.run.id }, cookie);
+
+test('challenge starts are one-per-player, shared, private, and immutable under concurrent retries', async () => {
+  const cookie = await startSession('Challenge Shared'); const foreign = await startSession('Challenge Other');
+  const starts = await Promise.all([challengeStart(cookie, 'monthly'), challengeStart(cookie, 'monthly')]);
+  assert.deepEqual(starts.map(r => r.statusCode).sort(), [200, 201]);
+  assert.equal(starts[0].body.run.id, starts[1].body.run.id);
+  const payload = starts[0].body;
+  assert.equal(payload.run.total, 20);
+  assert.equal(payload.run.overallDeadline, starts[1].body.run.overallDeadline);
+  for (const key of ['correctIndex', 'answer', 'source', 'explanation']) assert.equal(key in payload.question, false);
+  const other = (await challengeStart(foreign, 'monthly')).body;
+  assert.equal(other.question.prompt, payload.question.prompt);
+  assert.deepEqual([...other.question.options].sort(), [...payload.question.options].sort());
+  assert.equal((await challengeCall({ action: 'resume', periodId: payload.run.periodId, runId: payload.run.id }, foreign)).statusCode, 404);
+  assert.equal((await challengeStart('', 'weekly')).statusCode, 401);
+  for (const selectedIndex of [null, '0', 4, -2, 0.5]) assert.equal((await challengeCall({ action: 'answer', periodId: payload.run.periodId, runId: payload.run.id, questionToken: payload.question.token, selectedIndex }, cookie)).statusCode, 400);
+  assert.equal(challengeStored(payload, cookie).answers.length, 0);
+  assert.equal((await challengeCall({ action: 'next', periodId: payload.run.periodId, runId: payload.run.id, questionToken: payload.question.token }, cookie)).statusCode, 409);
+  const profileBefore = strings.get(`geek:profile:${sessionIdFromCookie(cookie)}`);
+  const answers = await Promise.all([challengeAnswer(payload, cookie), challengeAnswer(payload, cookie, false)]);
+  assert.deepEqual(answers.map(r => r.statusCode), [200, 200]);
+  assert.deepEqual(answers[0].body.result, answers[1].body.result);
+  assert.equal(challengeStored(payload, cookie).answers.length, 1);
+  assert.equal(answers[0].body.run.score, 100);
+  const nexts = await Promise.all([challengeNext(answers[0].body, cookie), challengeNext(answers[0].body, cookie)]);
+  assert.equal(nexts[0].body.question.token, nexts[1].body.question.token);
+  assert.equal(nexts[0].body.run.number, 2);
+  assert.equal(strings.get(`geek:profile:${sessionIdFromCookie(cookie)}`), profileBefore);
+  assert.equal(answers[0].body.rewardsEnabled, false); assert.equal(answers[0].body.xpEnabled, false);
+});
+
+test('weekly challenge completes once with server scores, answer review, and isolated standings', async () => {
+  const clock = Date.now; const now = Date.parse('2029-01-17T12:00:00Z'); Date.now = () => now;
+  try {
+    const cookie = await startSession('Verified Circuit'); let payload = (await challengeStart(cookie, 'weekly')).body;
+    const initial = payload;
+    assert.equal((await challengeCall(undefined, '', 'GET')).body.periods.find(p => p.kind === 'weekly').completed, 0);
+    for (let i = 0; i < 10; i++) { payload = (await challengeAnswer(payload, cookie, i !== 3)).body; if (i < 9) payload = (await challengeNext(payload, cookie)).body; }
+    assert.equal(payload.run.status, 'complete'); assert.equal(payload.run.score, 900); assert.equal(payload.summary.correct, 9); assert.equal(payload.summary.review.length, 10);
+    const finishes = await Promise.all([challengeFinish(payload, cookie), challengeFinish(payload, cookie)]);
+    assert.ok(finishes.every(r => r.body.summary.score === 900));
+    const catalog = (await challengeCall(undefined, '', 'GET')).body;
+    const board = catalog.periods.find(p => p.kind === 'weekly');
+    assert.equal(board.completed, 1); assert.equal(board.entries[0].score, 900); assert.equal(board.entries[0].rank, 1);
+    assert.equal(board.entries[0].name, 'Verified Circuit'); assert.equal(catalog.periods.find(p => p.kind === 'monthly').completed, 0);
+    assert.equal(JSON.stringify(catalog).includes('correctIndex'), false); assert.equal(JSON.stringify(catalog).includes(initial.run.id), false);
+    assert.equal((await challengeStart(cookie, 'weekly')).body.run.id, initial.run.id);
+    const ranked = response(); await rankedHandler(request('POST', { action: 'answer', runId: initial.run.id, selectedIndex: 0 }, cookie), ranked); assert.equal(ranked.statusCode, 404);
+  } finally { Date.now = clock; }
+});
+
+test('challenge clocks survive resume; late answers and expired budgets cannot create points', async () => {
+  const clock = Date.now; let now = Date.parse('2029-02-14T12:00:00Z'); Date.now = () => now;
+  try {
+    const cookie = await startSession('Clock Signal'); let payload = (await challengeStart(cookie, 'weekly')).body;
+    const deadline = payload.question.expiresAt;
+    now = deadline;
+    const late = await challengeAnswer(payload, cookie);
+    assert.equal(late.body.result.timedOut, true); assert.equal(late.body.run.score, 0);
+    payload = (await challengeNext(late.body, cookie)).body;
+    const resumed = (await challengeCall({ action: 'resume', periodId: payload.run.periodId, runId: payload.run.id }, cookie)).body;
+    assert.equal(resumed.question.expiresAt, payload.question.expiresAt);
+    now = payload.run.overallDeadline;
+    const expired = (await challengeCall({ action: 'resume', periodId: payload.run.periodId, runId: payload.run.id }, cookie)).body;
+    assert.equal(expired.run.status, 'complete'); assert.equal(expired.run.score, 0); assert.equal(expired.summary.reason, 'time-limit');
+    assert.equal(expired.summary.answered, 1);
+    assert.equal((await challengeCall(undefined, '', 'GET')).body.periods.find(p => p.kind === 'weekly').completed, 1);
+  } finally { Date.now = clock; }
+});
+
+test('UTC period rollover rejects stale starts and closes unsubmitted attempts while retaining previous boards', async () => {
+  const clock = Date.now; let now = Date.parse('2029-03-31T23:59:50Z'); Date.now = () => now;
+  try {
+    const cookie = await startSession('Old Period'); const unfinishedCookie = await startSession('Unsubmitted');
+    let payload = (await challengeStart(cookie, 'monthly')).body;
+    payload = (await challengeAnswer(payload, cookie)).body; payload = (await challengeFinish(payload, cookie)).body;
+    const unfinished = (await challengeStart(unfinishedCookie, 'monthly')).body;
+    now = Date.parse('2029-04-01T00:00:00Z');
+    assert.equal((await challengeCall({ action: 'start', kind: 'monthly', periodId: unfinished.run.periodId }, unfinishedCookie)).statusCode, 409);
+    assert.equal((await challengeAnswer(unfinished, unfinishedCookie)).statusCode, 409);
+    const closed = (await challengeCall({ action: 'resume', periodId: unfinished.run.periodId, runId: unfinished.run.id }, unfinishedCookie)).body;
+    assert.equal(closed.run.status, 'closed'); assert.equal(closed.summary.ranked, false);
+    assert.equal((await challengeCall(undefined, '', 'GET')).body.periods.find(p => p.kind === 'monthly').completed, 0);
+    const previous = (await challengeCall(undefined, '', 'GET', { previous: '1' })).body.periods.find(p => p.kind === 'monthly');
+    assert.equal(previous.completed, 1); assert.equal(previous.entries[0].score, 100);
+    assert.equal((await challengeFinish(payload, cookie)).body.summary.score, 100);
+    assert.equal((await challengeStart(cookie, 'monthly')).statusCode, 201);
+  } finally { Date.now = clock; }
+});
+
+test('challenge boards include zero scores, share tie ranks, expose no identities, and bound the public listing', async () => {
+  const clock = Date.now; const now = Date.parse('2029-05-15T12:00:00Z'); Date.now = () => now;
+  try {
+    const own = [];
+    for (let n = 0; n < 14; n++) {
+      const cookie = await startSession(`Circuit ${n}`); let payload = (await challengeStart(cookie, 'weekly')).body;
+      if (n !== 13) payload = (await challengeAnswer(payload, cookie)).body;
+      if (n < 2) { payload = (await challengeNext(payload, cookie)).body; payload = (await challengeAnswer(payload, cookie)).body; }
+      payload = (await challengeFinish(payload, cookie)).body; own.push(payload);
+    }
+    const board = (await challengeCall(undefined, '', 'GET')).body.periods.find(p => p.kind === 'weekly');
+    assert.equal(board.completed, 14); assert.equal(board.entries.length, 10);
+    assert.equal(board.entries[0].rank, 1); assert.equal(board.entries[1].rank, 1); assert.equal(board.entries[2].rank, 3);
+    assert.equal(own[13].summary.score, 0); assert.equal(own[13].summary.rank, 14);
+    assert.ok(board.entries.every(e => !('playerId' in e) && !('address' in e) && !('runId' in e)));
+  } finally { Date.now = clock; }
+});
+
+test('period capacity is atomic and retries of an existing attempt remain available', async () => {
+  const clock = Date.now; const now = Date.parse('2029-06-18T12:00:00Z'); Date.now = () => now;
+  try {
+    const cookie = await startSession('Last Seat'); const period = challengePeriod('weekly');
+    strings.set(`geek:challenge:starts:${period.id}`, String(CHALLENGE_CAP - 1));
+    const attempts = await Promise.all([challengeStart(cookie, 'weekly'), challengeStart(cookie, 'weekly')]);
+    assert.deepEqual(attempts.map(a => a.statusCode).sort(), [200, 201]);
+    assert.equal(strings.get(`geek:challenge:starts:${period.id}`), String(CHALLENGE_CAP));
+    const stranger = await startSession('Over Capacity'); assert.equal((await challengeStart(stranger, 'weekly')).body.code, 'CHALLENGE_FULL');
+    assert.equal((await challengeStart(cookie, 'weekly')).statusCode, 200);
+  } finally { Date.now = clock; }
+});
+
+test('active challenge grading fails closed on missing or substituted snapshots', async () => {
+  const clock = Date.now; const now = Date.parse('2029-07-18T12:00:00Z'); Date.now = () => now;
+  try {
+    const cookie = await startSession('Snapshot Signal'); const payload = (await challengeStart(cookie, 'weekly')).body;
+    const key = `geek:challenge:pack:${payload.run.periodId}`; const original = strings.get(key);
+    const q = JSON.parse(original).questions[0]; const right = payload.question.options.indexOf(q.options[q.correctIndex]);
+    const answer = () => challengeCall({ action: 'answer', periodId: payload.run.periodId, runId: payload.run.id, questionToken: payload.question.token, selectedIndex: right }, cookie);
+    strings.delete(key);
+    assert.equal((await answer()).statusCode, 503); assert.equal(strings.has(key), false);
+    const changed = JSON.parse(original); changed.questions[0].correctIndex = (changed.questions[0].correctIndex + 1) % 4; strings.set(key, JSON.stringify(changed));
+    assert.equal((await answer()).statusCode, 503); assert.equal(challengeStored(payload, cookie).answers.length, 0);
+    strings.set(key, original); assert.equal((await answer()).body.run.score, 100);
+  } finally { Date.now = clock; }
 });
