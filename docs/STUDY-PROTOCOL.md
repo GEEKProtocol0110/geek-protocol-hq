@@ -45,3 +45,7 @@ Session storage holds an opaque run identifier for reload recovery in the same t
 Source review is internal, dated, and described in [KASPA-CONTENT-REVIEW.md](KASPA-CONTENT-REVIEW.md). It does not activate monetary rewards. Other categories and independent editorial review remain separate work. An untimed session result is practice feedback, not proof of mastery.
 
 Control: **GP-INV-022**. Integration tests cover answer privacy, session ownership, invalid levels, private progress, distinct coverage, ranked isolation, concurrency, retry counts, expiry, confidence resets, and both review modes.
+
+## Core journey presentation
+
+The Progress page reads the existing private `action: progress` response and shows concept coverage, saved mistakes and two-run confidence separately from game XP. It exposes no new progression write. Each topic links back to its authored lesson. An explicit topic URL takes priority over an unrelated browser-held active run hint; it never starts or answers a run automatically. A requested saved-mistake review focuses the existing review control when feedback is available. Study, game and collection outages are displayed independently on Progress. Visiting Progress preserves the session name and works without browser storage.

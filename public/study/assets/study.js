@@ -181,10 +181,24 @@
       const saved = storageRead('localStorage', reviewKey); const previous = catalog.topics.find(t => t.id === saved?.topic);
       if (previous) { $('[data-saved]').hidden = false; $('[data-saved]').textContent = `Your last practice topic: ${previous.name}. Your saved learning progress is shown above.`; }
       const requested = new URLSearchParams(location.search).get('topic');
-      choose(catalog.topics.some(t => t.id === requested) ? requested : previous?.id || 'origins');
+      const explicitTopic = catalog.topics.some(t => t.id === requested);
+      choose(explicitTopic ? requested : previous?.id || 'origins', explicitTopic);
       const active = storageRead('sessionStorage', activeKey);
-      if (typeof active === 'string' && /^[a-f0-9]{40}$/.test(active)) await act({ action: 'resume', runId: active });
+      const reviewRequested = new URLSearchParams(location.search).get('review') === '1';
+      if (typeof active === 'string' && /^[a-f0-9]{40}$/.test(active) && !reviewRequested) {
+        if (!explicitTopic) await act({ action: 'resume', runId: active });
+        else {
+          try {
+            const resumed = await request(api, { action: 'resume', runId: active });
+            if (resumed.run.topic === requested && (!catalog.levels.some(l => l.id === requestedLevel) || resumed.run.level === requestedLevel)) { state = resumed; render(); }
+          } catch (error) {
+            if (error.status === 401 || error.status === 404) storageWrite('sessionStorage', activeKey, null);
+            else showError(error, boot);
+          }
+        }
+      }
       await loadProgress();
+      if (explicitTopic && reviewRequested && !$('[data-review-topic]').hidden) $('[data-review-topic]').focus({ preventScroll: true });
     } catch (error) { showError(error, boot); }
   };
   $('[data-start]').addEventListener('click', () => start());

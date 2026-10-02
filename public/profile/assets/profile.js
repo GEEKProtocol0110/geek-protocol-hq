@@ -1,7 +1,6 @@
 (() => {
   'use strict';
 
-  const IDENTITY_KEY = 'geek-lobby-identity-v1';
   let collectibleState = null;
   const $ = (selector) => document.querySelector(selector);
   const format = new Intl.NumberFormat('en-US');
@@ -16,6 +15,34 @@
   };
 
   const setText = (selector, value) => { const element = $(selector); if (element) element.textContent = value; };
+
+  const refreshStudy = async () => {
+    const button = $('[data-study-retry]'); button.disabled = true;
+    $('[data-study-panel]').setAttribute('aria-busy', 'true');
+    try {
+      const { progress } = await api('/api/ranked/?service=study', { method: 'POST', body: JSON.stringify({ action: 'progress' }) });
+      setText('[data-study-explored]', `${progress.explored} / ${progress.total}`);
+      setText('[data-study-review]', progress.review);
+      setText('[data-study-confidence]', progress.confidence);
+      $('[data-study-totals]').hidden = false;
+      setText('[data-study-note]', progress.explored ? 'Your saved practice feedback helps you choose what to revisit.' : 'Begin with one lesson and a few untimed questions. Your feedback will appear here.');
+      const next = $('[data-study-next]');
+      next.href = `../study/?${new URLSearchParams({ topic: progress.next.topic, ...(progress.next.review ? { review: '1' } : {}) })}`;
+      next.textContent = `${progress.next.review ? 'Review' : 'Continue'}: ${progress.next.name} →`;
+      next.hidden = false; button.hidden = true;
+      const names = { origins: 'Where Kaspa began', blockdag: 'Blocks, graphs & agreement', mining: 'Mining & network security', emission: 'KAS & the emission schedule', wallets: 'Wallets & safe signatures', tokens: 'Tokens & indexers', ecosystem: 'Nodes & builder tools', fundamentals: 'Keys, fees & finality' };
+      $('[data-study-topics]').replaceChildren(...progress.topics.map(topic => {
+        const card = document.createElement('a');
+        card.href = `../study/?${new URLSearchParams({ topic: topic.id, ...(topic.review ? { review: '1' } : {}) })}`;
+        const title = document.createElement('strong'); title.textContent = names[topic.id] || topic.id;
+        const note = document.createElement('span'); note.textContent = `${topic.explored} / ${topic.total} explored${topic.review ? ` · ${topic.review} to review` : ''}`;
+        card.append(title, note); return card;
+      }));
+    } catch (error) {
+      setText('[data-study-note]', `${error.message} Your saved feedback has not changed. You can retry or open Study.`);
+      button.hidden = false;
+    } finally { button.disabled = false; $('[data-study-panel]').setAttribute('aria-busy', 'false'); }
+  };
 
   const postCollectible = (body) => api('/api/collectibles', { method: 'POST', body: JSON.stringify(body) });
 
@@ -139,16 +166,23 @@
 
   const initialize = async () => {
     try {
-      const displayName = localStorage.getItem(IDENTITY_KEY) || 'Guest Geek';
-      await api('/api/session', { method: 'POST', body: JSON.stringify({ displayName }) });
-      const [payload, collectibles] = await Promise.all([api('/api/profile'), api('/api/collectibles')]);
-      renderCollectibles(collectibles);
-      render(payload.profile);
+      await api('/api/session', { method: 'POST', body: '{}' });
+      await Promise.allSettled([
+        refreshStudy(),
+        api('/api/profile').then(payload => render(payload.profile)).catch(error => {
+          setText('[data-profile-state]', 'GAME RECORDS UNAVAILABLE');
+          setText('[data-journey-list]', `${error.message} Your game records remain saved.`);
+        }),
+        refreshCollectibles().catch(error => setText('[data-trade-feedback]', `${error.message} Your collection remains saved.`))
+      ]);
     } catch (error) {
       setText('[data-profile-state]', 'PROFILE SERVICE OFFLINE');
+      setText('[data-study-note]', `${error.message} Refresh this page to reconnect. You can still read Kaspa 101.`);
       $('[data-journey-list]').innerHTML = `<li class="profile-empty">${escapeHtml(error.message)} Your verified data remains on the server.</li>`;
     }
   };
+
+  $('[data-study-retry]')?.addEventListener('click', refreshStudy);
 
   document.addEventListener('click', (event) => {
     const avatarButton = event.target.closest('[data-avatar-id]');
