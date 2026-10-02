@@ -46,6 +46,10 @@ flowchart TB
 | Kaspa indexer | Current public token deployment state | Player identity or application authorization |
 | Audit records | Reviewable evidence for sensitive Alpha actions | Full production SIEM or immutable third-party replication |
 
+## Daily vault
+
+`/api/session/?service=vault` serves private status and explicit claims. A Lua transition checks Redis time against the server-selected UTC day, returns the original receipt on retries, and updates both the seven-design cosmetic collection and its latest 14 receipts in one `geek:vault:<player>` record. Eligibility does not expire or depend on browser storage. The vault does not write existing profiles, stickers, XP, balances, Study progress, or leaderboards.
+
 ## Primary flows
 
 ### Shared lobby practice round

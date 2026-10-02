@@ -41,12 +41,12 @@ These capabilities remain covered by their existing protocol specifications and 
 | LEARN-01 | Reviewed difficulty progression | Partial: Study level selection live | Existing easy/medium tiers exposed as Foundations/Connections; Mixed includes technical concepts. Full difficulty audit, independent editorial approval, and ranked progression changes remain |
 | LEARN-02 | Guided learning / Learn & Earn modules | Guided Study live; earning path planned | Eight objectives, three teaching ideas plus a worked example/reflection per topic; Study remains unranked. Future rewarded assessments need separate validation |
 | LEARN-03 | Weekly and monthly challenges | Implemented Alpha | UTC periods, shared immutable concept sets, one server player attempt, strict clocks, atomic completion, recovery/replay tests, tie ranks and bounded separate boards |
-| LEARN-04 | Daily login vault | Planned | Server-owned eligibility, transparent contents, duplicate-claim protection, and no implied learning proof from login alone |
+| LEARN-04 | Daily login vault | Implemented Alpha | Seven visible cosmetics, one claim per UTC day, Redis-clock eligibility, atomic receipts/collection, recovery and duplicate-claim checks; no XP or monetary rewards |
 | LEARN-05 | Mastery feedback | Practice feedback live; validated assessment planned | Private server-owned concept records, coverage, saved mistakes, and two-run confidence signals. These do not certify mastery |
 
 Start with content quality and guided practice. Educational benefit and question diversity should improve before additional earning incentives are introduced.
 
-**October 2 learning release:** guided lessons and practice levels are implemented in Study. Selection covers unseen concepts first; saved mistakes can be reviewed after a run expires. Progress survives across sessions for the same verified player identity, while guest access follows the browser session. Weekly/monthly challenges now have shared sets and separate standings. The login vault, independently reviewed difficulty progression, and reward-enabled assessments remain separate work.
+**October 2 learning release:** guided lessons and practice levels are implemented in Study. Selection covers unseen concepts first; saved mistakes can be reviewed after a run expires. Progress survives across sessions for the same verified player identity, while guest access follows the browser session. Weekly/monthly challenges now have shared sets and separate standings. The daily vault now gives one visible cosmetic seal per UTC day with private receipts and duplicate-claim protection. Independently reviewed difficulty progression and reward-enabled assessments remain separate work.
 
 [Challenge protocol](CHALLENGE-PROTOCOL.md) defines the ten-question Weekly Signal and twenty-question Monthly Circuit, UTC boundaries, one-attempt rule, no-reward boundary, capacity and retention.
 

@@ -16,6 +16,7 @@ This directory is the reviewable specification set for Geek Protocol HQ. Documen
 
 | Document | Scope |
 | --- | --- |
+| [Daily Vault Protocol](VAULT-PROTOCOL.md) | Visible cosmetic contents, UTC eligibility, atomic claims, and private receipts |
 | [Challenge Protocol](CHALLENGE-PROTOCOL.md) | UTC periods, private snapshots, clocks, attempts, and separate standings |
 | [Study Protocol](STUDY-PROTOCOL.md) | Untimed practice, private answers, retry safety, and ranked isolation |
 | [Kaspa Content Review](KASPA-CONTENT-REVIEW.md) | Source-check scope, corrections, and remaining editorial limits |

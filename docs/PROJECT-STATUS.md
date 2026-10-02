@@ -14,12 +14,15 @@ The application is deliberately split into two risk classes:
 1. **Live Alpha interactions** — learning, gameplay, identity, contribution records, and user-approved mint initiation.
 2. **Gated value movement** — treasury payouts, reward withdrawals, redemptions, and collection ownership. These remain disabled pending independent review and operational controls.
 
+The daily vault at `/vault/` adds seven cosmetic seal designs, one claim per UTC day, a private collection, and up to 14 recent receipts. Eligibility and grants share one atomic Redis record and survive verified identity recovery. Claims award no XP, credits, tokens, or tradable inventory.
+
 ## Readiness matrix
 
 | Area | Implementation | Internal evidence | Independent review | Production boundary |
 | --- | --- | --- | --- | --- |
 | Public web experience | Live | CI and production checks | Not audited | Public Alpha |
 | Kaspa Study | Guided lessons, levels, saved practice feedback | Session, privacy, race, retry, coverage, review, and rank-isolation tests | Internal source check only | Untimed; no XP, credits, tokens, or mastery certification |
+| Daily vault | Implemented Alpha | Redis-clock bounds, atomic claims, retries, private collection and identity recovery | Not audited | Cosmetic only; no XP, credits or tokens |
 | Weekly / monthly challenges | Implemented Alpha | UTC rollover, snapshot, clock, recovery, race, replay, and tie-ranking tests | Not audited | Free community standings; no XP, credits, or tokens |
 | Ranked game authority | Implemented | Integration and abuse-case tests | Not audited | Unproctored trivia limitations remain |
 | Wallet identity and recovery | Implemented | Signature, replay, race, and origin tests | Not audited | Kaspa Mainnet ownership proof only |
