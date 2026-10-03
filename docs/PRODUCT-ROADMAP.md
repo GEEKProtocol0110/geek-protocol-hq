@@ -16,7 +16,9 @@ Geek Protocol was born in Detroit, Michigan, USA. Use American English in public
 
 **Next founder direction, October 2, 2026:** pause wallet and sensitive configuration for the founder to handle. Continue free gameplay: a separate ten-question assisted practice session implements one 50/50 and one ten-second Extra Time trial use. No XP, credits, tokens or ranked entries are awarded. Paid inventory and the remaining effects are unfinished.
 
-Arena expansions, DAO work, and the launchpad are **on hold** while the core is polished and tried by real learners. The feature tables below preserve the full long-term vision; “Planned” does not mean active work or the next release. No existing service is shut down by this prioritization.
+**Founder direction, October 3, 2026:** reopen free game-mode work. The first addition is Memory Grid: untimed solo term/meaning matching, using four-, six-, or eight-pair Kaspa boards, source-linked explanations, related lessons and Giga encouragement. Results stay in the page and award no XP, credits or tokens. This does not activate paid entry or settlement.
+
+Multiplayer Arena expansions, DAO work, and the launchpad remain **planned** while the core and free games are polished and tried by real learners. The feature tables below preserve the full long-term vision; “Planned” does not mean active work or the next release. No existing service is shut down by this prioritization.
 
 First-visit guidance points beginners to Where Kaspa began at Foundations level, explains read → practice → review, and gives learners with no saved answers an explicit first-lesson action. Existing learners keep their saved review and continuation recommendations. The final lesson idea offers an explicit Start practice action using the selected topic and level; reading the lesson never starts a run automatically. This is interface guidance, not evidence of improved learning outcomes.
 
@@ -75,6 +77,18 @@ Start with content quality and guided practice. Educational benefit and question
 | ARENA-05 | Optional Duel wagers / event prizes | Proposed monetary extension | Separate approved economic specification, reviewed custody/settlement path, reconciliation, eligibility and dispute rules; follows economy work |
 
 The Quick Duel room template is a live shared practice format, not implementation of dedicated wagered Duel gameplay. Build practice Arena formats before their monetary extensions.
+
+### Original game-mode lineup
+
+| Mode | Current status | Remaining work |
+| --- | --- | --- |
+| Geek Gauntlet | Live server-owned ten-round Alpha; Daily/Speed alternatives live | Continued content/rule review; any funded entry or cash-out is a separate monetary extension |
+| Memory Grid | Live free Kaspa solo matching; 4/6/8 pairs, explanations, source/lesson links | Additional reviewed decks and any future saved progression require separate work |
+| Trivia Royale | Planned | Shared event lifecycle, elimination/ties, reconnect handling, hosting and capacity tests |
+| Fandom Duel | Planned | Dedicated head-to-head rules and reviewed fandom content; existing Quick Duel rooms are shared practice |
+| Quiz Quest | Planned | Authored story/chapter progression, learning objectives, replay and saved-state rules |
+
+The first Memory Grid release uses explicit player-controlled mismatch review rather than a countdown. Attempt counts describe pairs turned over, not certified knowledge. Ranked authority and real money remain outside this casual browser game.
 
 ## 3. Creator ecosystem
 

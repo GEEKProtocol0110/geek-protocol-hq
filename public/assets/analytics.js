@@ -2,7 +2,7 @@
   'use strict';
   // Vercel's HTML integration: production pages and a small learning-event allowlist.
   const hosts = new Set(['www.geekprotocol.xyz', 'geekprotocol.xyz']);
-  const pages = new Set(['/', '/kaspa/', '/study/', '/profile/', '/practice/', '/play/', '/lobby/', '/challenges/', '/vault/', '/collection/', '/contribute/', '/economy/', '/litepaper/', '/security/', '/mint/', '/rewards/']);
+  const pages = new Set(['/', '/kaspa/', '/study/', '/profile/', '/practice/', '/play/', '/memory/', '/lobby/', '/challenges/', '/vault/', '/collection/', '/contribute/', '/economy/', '/litepaper/', '/security/', '/mint/', '/rewards/']);
   const canonicalPath = pathname => pathname === '/' ? '/' : pathname.replace(/\/index\.html$/, '/').replace(/\/$/, '') + '/';
   const topics = new Set(['origins', 'blockdag', 'mining', 'emission', 'wallets', 'tokens', 'ecosystem', 'fundamentals']);
   const levels = new Set(['foundations', 'connections', 'mixed']);
@@ -15,6 +15,7 @@
       if (path === '/study/' && data.mode === 'study' && topics.has(data.topic) && levels.has(data.level)) return { mode: 'study', topic: data.topic, level: data.level };
     }
     if (name === 'Free lifeline used' && path === '/practice/' && ['fifty-fifty', 'extra-time'].includes(data.item)) return { item: data.item };
+    if ((name === 'Memory Grid started' || name === 'Memory Grid completed') && path === '/memory/' && [4, 6, 8].includes(data.pairs)) return { pairs: data.pairs };
     const surface = { '/': 'home', '/study/': 'study-welcome', '/profile/': 'progress' }[path];
     if (name === 'Giga choice selected' && surface && data.surface === surface && ['start', 'understand', 'practice', 'review'].includes(data.choice)) return { surface, choice: data.choice };
     return null;

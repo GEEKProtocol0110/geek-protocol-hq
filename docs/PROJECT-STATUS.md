@@ -1,13 +1,13 @@
 # Geek Protocol HQ — Project Status
 
-**Snapshot date:** 2026-10-02<br />
+**Snapshot date:** 2026-10-03<br />
 **Release channel:** Public Alpha  
 **Production:** [www.geekprotocol.xyz](https://www.geekprotocol.xyz/)  
 **Repository:** [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq)
 
 ## Current product focus
 
-The founder has paused expansion to polish the core journey: Learn, guided Study, practice, and saved progress. Primary navigation prioritizes those steps. Progress displays existing private Study feedback before separate timed-game XP and records; collectibles and detailed game history remain available in optional sections. Larger Arena formats, DAO work and the launchpad remain on hold. The founder subsequently reopened economy foundations: the named power-up catalog, reserve configuration status and private planning journal are implemented. Real purchases, paid item use, treasury funding, payouts and burns remain disabled. Free 50/50 and Extra Time trial uses are available in separate assisted practice.
+The current focus is Learn, guided Study, practice, saved progress, and free game modes. Primary navigation prioritizes learning; Progress displays private Study feedback before separate timed-game XP and records. The founder reopened game-mode work on October 3: Memory Grid adds an untimed solo matching game. Multiplayer Arena expansions, DAO work and the launchpad remain planned. Economy foundations include the named power-up catalog, reserve configuration status and private planning journal. Real purchases, paid item use, treasury funding, payouts and burns remain disabled. Free 50/50 and Extra Time trial uses are available in separate assisted practice.
 
 ## Executive summary
 
@@ -97,8 +97,12 @@ Passing repository checks are necessary evidence, not a substitute for independe
 
 ### Giga learning buddy
 
-Giga is present in Home, Study, assisted practice and Progress. The shared authored guide offers four next-step choices, encouragement based on actual Study/practice outcomes, and links to the existing lesson/review paths. Giga's guidance creates no account state, stores no answers or preferences, and requests no wallet action. A.C.E. continues to provide source-linked lesson and answer explanations. Existing recovered Giga artwork is reused as concept art. Free-form chat, adaptive AI tutoring, voice interaction and Geek Jr integration are not implemented by this change.
+Giga is present in Home, Study, assisted practice, Memory Grid and Progress. The shared authored guide offers four next-step choices, encouragement based on actual Study/practice outcomes, and links to the existing lesson/review paths. Giga's guidance creates no account state, stores no answers or preferences, and requests no wallet action. A.C.E. continues to provide source-linked lesson and answer explanations. Existing recovered Giga artwork is reused as concept art. Free-form chat, adaptive AI tutoring, voice interaction and Geek Jr integration are not implemented by this change.
 
 ### Traffic tracking
 
-Vercel Web Analytics is integrated for production public-page visits and five allowlisted learning activity events: lesson walkthrough completion, practice start/completion (Study and free assisted practice), confirmed free lifeline use, and Giga next-step choice changes. Page/event URLs exclude query strings/fragments; private moderation and local/preview traffic are excluded, and browser privacy preferences are respected. Only fixed curriculum/mode/item/choice categories are sent, with no answers, scores, wallets, or player/run IDs. Viewing or resuming saved results does not create completion/use events. Dashboard totals are approximate client activity, not proof of learning or payments. Custom-event reports require Vercel Pro or Enterprise; the founder's plan is unverified and no billing change is made. See [Architecture](ARCHITECTURE.md#learning-activity-events) for exact event definitions and reporting limits.
+Vercel Web Analytics is integrated for production public-page visits and seven allowlisted learning activity events: lesson walkthrough completion, practice start/completion (Study and free assisted practice), confirmed free lifeline use, Giga next-step choice changes, and Memory Grid starts/completions. Page/event URLs exclude query strings/fragments; private moderation and local/preview traffic are excluded, and browser privacy preferences are respected. Only fixed curriculum/mode/item/choice/board-size categories are sent, with no answers, scores, wallets, or player/run IDs. Viewing or resuming saved results does not create completion/use events. Dashboard totals are approximate client activity, not proof of learning or payments. Custom-event reports require Vercel Pro or Enterprise; the founder's plan is unverified and no billing change is made. See [Architecture](ARCHITECTURE.md#learning-activity-events) for exact event definitions and reporting limits.
+
+### Game modes
+
+Gauntlet, Daily Signal and Speed Signal retain their existing server-owned gameplay. Memory Grid is now a separate free, unranked solo mode at `/memory/`, reachable from Play. It matches Kaspa words with meanings on shuffled four-, six-, or eight-pair boards. Players explicitly close mismatches; there is no timer or speed bonus. Matches reveal explanations, primary-source links and related Study lessons. Giga supplies authored encouragement. Board state and attempts exist only in page memory, with no account/progress writes, XP, credits, purchases or token rewards. The public teaching deck is intentionally visible and does not contain the private ranked bank. Trivia Royale, Fandom Duel and Quiz Quest are explicitly planned, not playable.

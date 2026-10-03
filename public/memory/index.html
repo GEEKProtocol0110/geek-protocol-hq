@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#080b0b">
+  <meta name="description" content="Play Geek Protocol’s free Memory Grid. Match Kaspa terms with their meanings at your pace, then explore the explanations and sources.">
+  <title>Memory Grid — Geek Protocol</title><link rel="canonical" href="https://www.geekprotocol.xyz/memory/">
+  <link rel="stylesheet" href="../assets/styles.css"><link rel="stylesheet" href="../assets/giga.css"><link rel="stylesheet" href="./assets/memory.css">
+  <script defer src="../assets/site.js"></script><script defer src="../assets/giga.js"></script><script type="module" src="./assets/memory.js"></script><script defer src="/assets/analytics.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#memory-main">Skip to game</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="../" aria-label="Geek Protocol home"><img src="../assets/geek-protocol-logo.png" alt="" width="48" height="48"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
+    <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="../kaspa/">Learn</a><a href="../study/">Study</a><a href="../profile/">Progress</a><details class="nav-more"><summary>Explore</summary><div class="nav-more-panel"><a href="../challenges/">Challenges</a><a href="../vault/">Daily vault</a><a href="../mint/">Mint GEEK</a><a href="../collection/">Collection</a><a href="../lobby/">Lobbies</a><a href="../contribute/">Contribute</a><a href="../economy/">Power-ups &amp; economy</a><a href="../litepaper/">Litepaper</a><a href="../security/">Security</a></div></details><a class="nav-cta" href="../play/">Game modes <span aria-hidden="true">→</span></a></nav>
+  </header>
+  <main id="memory-main" class="memory-main">
+    <section class="memory-intro" aria-labelledby="memory-title">
+      <div class="section-kicker">MEMORY GRID · KASPA EDITION · FREE SOLO PLAY</div>
+      <h1 id="memory-title">Flip a card.<br><em>Connect an idea.</em></h1>
+      <p>Match a Kaspa word with its meaning. Remember where the cards are, read each explanation, and try again whenever you need to. There is no timer.</p>
+      <a href="../play/">← All game modes</a>
+    </section>
+    <div class="memory-setup">
+      <label>Choose your board<select data-size><option value="4">4 pairs · 8 cards</option><option value="6">6 pairs · 12 cards</option><option value="8">8 pairs · 16 cards</option></select></label>
+      <button class="button button-primary" type="button" data-start>Shuffle &amp; start →</button>
+    </div>
+    <p class="memory-setup-note">A new board resets your matches and attempts. One attempt means turning over two different cards.</p>
+    <aside class="giga-guide giga-guide--compact" data-giga-guide="memory" aria-label="Giga, your learning buddy"><div class="giga-portrait"><img src="../assets/kaspa-culture.png" alt="Giga, the friendly gold robot" width="1024" height="1024" loading="lazy"></div><div class="giga-content" data-giga-content><span class="giga-label">GIGA // YOUR LEARNING BUDDY</span><noscript><p>Take your time. Match one word with one meaning, then explore the lesson.</p></noscript></div></aside>
+    <section class="memory-board" data-board hidden aria-labelledby="board-title">
+      <div class="memory-board-head"><h2 id="board-title" data-board-title tabindex="-1">One idea at a time.</h2><div class="memory-stats"><div><small>PAIRS MATCHED</small><strong data-matches>0 / 4</strong></div><div><small>ATTEMPTS</small><strong data-moves>0</strong></div></div></div>
+      <progress data-pair-progress max="4" value="0" aria-label="Pairs matched"></progress>
+      <div class="memory-grid" data-grid role="group" aria-label="Memory cards"></div>
+      <p class="memory-feedback" data-feedback role="status" aria-live="polite" aria-atomic="true">Choose a card to begin.</p>
+      <button class="button button-secondary" type="button" data-close-pair hidden>Turn both over &amp; try again →</button>
+      <div class="memory-complete" data-complete hidden><div class="section-kicker">GRID CONNECTED</div><h2 data-complete-title tabindex="-1">You found every pair.</h2><p data-complete-text></p><a href="../study/?topic=origins&amp;level=foundations">Try a Kaspa lesson with A.C.E. →</a></div>
+    </section>
+    <section class="memory-review" data-review-panel hidden aria-labelledby="review-title"><div class="section-kicker">KEEP THE IDEAS</div><h2 id="review-title">Your matched concepts.</h2><p>Read the explanation or follow the source. Finding a pair is a chance to explore the idea further.</p><ul data-review></ul></section>
+    <p class="memory-boundary">Free, unranked play. Matches and attempts stay on this page and reset when you leave or reload. This mode awards no XP, game credits, tokens, or leaderboard entries. No wallet needed.</p>
+    <noscript><p>JavaScript is needed to play Memory Grid. <a href="../kaspa/">Read Kaspa 101 instead →</a></p></noscript>
+  </main>
+  <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>Born in Detroit, Michigan, USA.</p></div><div class="footer-links"><a href="../play/">Game modes</a><a href="../kaspa/">Learn</a><a href="../study/">Study</a><a href="../security/">Privacy &amp; security</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · All hope, no hype.</p></footer>
+</body>
+</html>
