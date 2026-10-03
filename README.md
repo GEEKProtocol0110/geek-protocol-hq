@@ -17,7 +17,7 @@
 
 The [daily vault](https://www.geekprotocol.xyz/vault/) offers one visible cosmetic seal per UTC day, with a private collection and replay-safe receipts. Login claims award no XP, credits, or tokens.
 
-**Current focus:** polish Learn → Study → practise → see progress. Existing extras remain available through Explore; larger Arena, economic, DAO and launchpad expansions are on hold.
+**Current focus:** polish Learn → Study → practice → see progress. Existing extras remain available through Explore; larger Arena, economic, DAO and launchpad expansions are on hold.
 
 ## What is Geek Protocol?
 
