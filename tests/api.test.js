@@ -37,6 +37,7 @@ const strings = new Map();
 const hashes = new Map();
 const sorted = new Map();
 let vaultRedisNow = null;
+let avatarRace = null;
 
 const execute = (command) => {
   const [rawName, ...args] = command;
@@ -113,6 +114,13 @@ const execute = (command) => {
     return withScores ? entries.flatMap(([member, score]) => [member, String(score)]) : entries.map(([member]) => member);
   }
   if (name === 'EVAL') {
+    if (String(args[0]).includes('geek-avatar-patch-v1')) {
+      const [key, eventKey, auditIndex, previous, next, record, sequence, eventId] = args.slice(2);
+      if (avatarRace) { const update = avatarRace; avatarRace = null; update(key); }
+      if ((strings.get(key) || '') !== previous) return 0;
+      strings.set(key, next); execute(['SET', eventKey, record, 'NX']); execute(['ZADD', auditIndex, sequence, eventId]); return 1;
+    }
+
     if (String(args[0]).includes('geek-vault-claim-v1')) {
       const [key, opensAt, closesAt, day, seal, id] = args.slice(2);
       const now = vaultRedisNow ?? Date.now();
@@ -1558,4 +1566,26 @@ test('future or incompatible vault records fail closed instead of granting anoth
     const result = await vaultCall('POST', { action: 'claim', dayId: vaultDay().id }, cookie);
     assert.equal(result.statusCode, 503); assert.equal(strings.get(key), raw);
   }
+});
+
+
+test('custom Geek saves only allowed cosmetics and preserves concurrent progress and wallet fields', async () => {
+  const { defaultGeek } = await import('../public/assets/geek-avatar.js');
+  const cookie = await startSession('Custom Geek'); const playerId = sessionIdFromCookie(cookie), key = `geek:profile:${playerId}`;
+  const initial = { ...defaultProfile(), xp: 123, balance: 77, payoutAddress: 'existing-setting', journey: [] };
+  strings.set(key, JSON.stringify(initial));
+  const customization = {...defaultGeek, palette: 'cyan', head: 'headphones', back: 'pack'};
+  avatarRace = key => {const current = JSON.parse(strings.get(key)); strings.set(key, JSON.stringify({...current, xp: 456, payoutAddressVersion: 4}));};
+  const saved = response(); await collectiblesHandler(request('POST', {action: 'customize-avatar', customization, xp: 99999, balance: 99999, avatarId: 'geek-499'}, cookie), saved);
+  assert.equal(saved.statusCode, 200); assert.equal(saved.body.collection.avatar.id, 'giga-builder'); assert.deepEqual(saved.body.collection.customization, customization);
+  const current = JSON.parse(strings.get(key)); assert.equal(current.xp, 456); assert.equal(current.balance, 77); assert.equal(current.payoutAddress, 'existing-setting'); assert.equal(current.payoutAddressVersion, 4); assert.deepEqual(current.journey, []);
+  const reload = response(); await collectiblesHandler(request('GET', undefined, cookie), reload); assert.deepEqual(reload.body.collection.customization, customization);
+  const switched = response(); await collectiblesHandler(request('POST', {action: 'select-avatar', avatarId: 'giga-genesis'}, cookie), switched); assert.equal(switched.statusCode, 200); assert.deepEqual(switched.body.collection.customization, customization);
+  for (const invalid of [null, [], {...customization, palette: '<script>'}, {...customization, edition: 500}, {...customization, version: 2}, {...customization, head: null}]) {
+    const bad = response(); await collectiblesHandler(request('POST', {action: 'customize-avatar', customization: invalid}, cookie), bad); assert.equal(bad.statusCode, 400); assert.equal(bad.body.code, 'INVALID_AVATAR_CUSTOMIZATION');
+  }
+  assert.equal(JSON.parse(strings.get(key)).avatarId, 'giga-genesis');
+  const unauthenticated = response(); await collectiblesHandler(request('POST', {action: 'customize-avatar', customization}), unauthenticated); assert.equal(unauthenticated.statusCode, 401);
+  const fakeOwned = response(); await collectiblesHandler(request('POST', {action: 'select-avatar', avatarId: 'geek-499'}, cookie), fakeOwned); assert.equal(fakeOwned.statusCode, 403);
+  const other = await startSession('Separate Custom Geek'); const foreign = response(); await collectiblesHandler(request('GET', undefined, other), foreign); assert.equal(foreign.body.collection.avatar.id, 'giga-genesis'); assert.deepEqual(foreign.body.collection.customization, defaultGeek);
 });

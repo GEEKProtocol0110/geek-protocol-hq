@@ -60,3 +60,28 @@ export const saveProfileWithAudit = async (sessionId, profile, auditInput, extra
   ], true);
   return { profile, audit: record };
 };
+
+// Compare-and-set preserves JSON arrays and concurrent game/wallet updates.
+export const AVATAR_PATCH_LUA = `-- geek-avatar-patch-v1
+local previous = redis.call('GET', KEYS[1]) or ''
+if previous ~= ARGV[1] then return 0 end
+redis.call('SET', KEYS[1], ARGV[2])
+redis.call('SET', KEYS[2], ARGV[3], 'NX')
+redis.call('ZADD', KEYS[3], ARGV[4], ARGV[5])
+return 1
+`;
+export const saveAvatarWithAudit = async (playerId, avatarId, customization = null) => {
+  const record = await createAuditRecord({ actorType: 'alpha-session', actorId: playerId, interactionId: playerId,
+    type: customization ? 'collectible.avatar-customized' : 'collectible.avatar-selected', severity: 'info', objectType: 'avatar', objectId: avatarId,
+    outcome: 'success', reason: 'player-equipped-profile-cosmetic', details: { avatarId, collectionStatus: 'off-chain-alpha' } });
+  const [event, index] = auditWriteCommands(record);
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const previous = await redis('GET', profileKeyFor(playerId));
+    const stored = previous ? JSON.parse(previous) : defaultProfile();
+    if (!stored || typeof stored !== 'object' || Array.isArray(stored)) throw new Error('PROFILE_STATE_INVALID');
+    const next = { ...stored, avatarId, ...(customization ? { avatarCustomization: customization } : {}) };
+    const saved = await redis('EVAL', AVATAR_PATCH_LUA, 3, profileKeyFor(playerId), event[1], index[1], previous || '', JSON.stringify(next), event[2], index[2], index[3]);
+    if (Number(saved) === 1) return;
+  }
+  throw new Error('PROFILE_BUSY');
+};

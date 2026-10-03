@@ -55,7 +55,8 @@ See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness
 | **Lobbies** | Active seats, shareable rooms, and host-started ten-question shared practice rounds with server-scored standings |
 | **Profile** | Verified XP, levels, prestige, category mastery, journey history, and collectibles |
 | **C.C.E.** | Community question submission, moderation, publication, and first-use reward records |
-| **Collection** | Deterministic 500-Geek identity blueprint and hashed legacy-art archive |
+| **Profile characters** | Free Build-a-GEEK editor with server-saved cosmetic parts, plus five launch avatars |
+| **Collection** | Five-tier, 500-NFT blueprint with planned mint/reward/GEEK-or-KAS purchase routes and hashed legacy-art archive |
 | **Mint** | Fail-closed, user-approved GEEK KRC-20 fair-mint interface |
 | **Security** | Public control posture, trust boundaries, and independent-audit gates |
 

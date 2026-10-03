@@ -153,3 +153,9 @@ Schools, professional development, and the launchpad extend the learning purpose
 7. Pilot education, professional learning, integrations, and the launchpad with their dependencies in place.
 
 Core polish and the authorized economy foundation are active. Other expansion stages remain on hold until the founder chooses to reopen them; their stated dependencies remain. There are no invented launch dates. Each implemented feature should have a focused issue/PR, documentation, meaningful authorization/state tests where relevant, and production evidence before its public status becomes Live.
+
+## Profile character and NFT collection (October 3, 2026)
+
+The founder specifies 500 NFTs in five tiers: Common 250, Rare 125, Epic 75, Legendary 48 and Mythic 2. Collection schema 1.1 folds the prior eight Elite identities into Legendary, retaining IDs, names, lore and GIGA/A.C.E. anchors. Planned public mint, earned reward, and GEEK/KAS purchase routes share this one capped supply. Allocations and prices are unset and all routes remain disabled. Verified ownership is required before NFT equipping; profile cosmetics cannot alter frozen NFT metadata.
+
+Build-a-GEEK is a free off-chain profile character editor with fixed color, headgear, face, torso, arms, legs, back and effect options. Previewing causes no write. Explicit Save & equip uses the session-authenticated, rate-limited collectibles endpoint, rejects arbitrary traits, stores the customization and equips `giga-builder`. Atomic Redis field patches preserve concurrent profile fields, with audit records. Existing five launch avatar unlocks remain server-controlled. Switching avatars retains the saved custom design. Reloading retrieves it from the same profile. Session loss follows the existing profile recovery rules. No profile traits are sent to analytics. This release does not mint NFTs, create token rewards, accept payments or require sensitive configuration.
