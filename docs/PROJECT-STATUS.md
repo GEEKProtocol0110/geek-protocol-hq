@@ -7,7 +7,7 @@
 
 ## Current product focus
 
-The founder has paused expansion to polish the core journey: Learn, guided Study, practice, and saved progress. Primary navigation prioritizes those steps. Progress displays existing private Study feedback before separate timed-game XP and records; collectibles and detailed game history remain available in optional sections. Larger Arena formats, DAO work and the launchpad remain on hold. The founder subsequently reopened economy foundations: the named power-up catalog, reserve configuration status and private planning journal are implemented. Real purchases, item use, treasury funding, payouts and burns remain disabled.
+The founder has paused expansion to polish the core journey: Learn, guided Study, practice, and saved progress. Primary navigation prioritizes those steps. Progress displays existing private Study feedback before separate timed-game XP and records; collectibles and detailed game history remain available in optional sections. Larger Arena formats, DAO work and the launchpad remain on hold. The founder subsequently reopened economy foundations: the named power-up catalog, reserve configuration status and private planning journal are implemented. Real purchases, paid item use, treasury funding, payouts and burns remain disabled. Free 50/50 and Extra Time trial uses are available in separate assisted practice.
 
 ## Executive summary
 
@@ -35,7 +35,7 @@ The daily vault at `/vault/` adds seven cosmetic seal designs, one claim per UTC
 | Payout preferences | Alpha | Reauthentication, notice, and review tests | Not audited | Settlement eligibility cannot be enabled |
 | Player collectibles and stickers | Alpha | Atomic reservation and exchange tests | Not audited | Off-chain profile inventory only |
 | 500-Geek collection | Production blueprint | Deterministic manifest and archive hashes | Not audited | Mint and on-chain ownership disabled |
-| Economy planning foundation | Implemented | Exact amounts, rounding, idempotency, CAS races, corruption and private-access tests | Not audited | Planning receipts only; no money movement or item use |
+| Economy planning foundation | Implemented | Exact amounts, rounding, idempotency, CAS races, corruption and private-access tests | Not audited | Planning receipts only; no money movement or paid item use |
 | Treasury settlement | Not implemented here | Launch gates defined | Required | Disabled |
 
 ## Verified release controls
@@ -90,3 +90,7 @@ npm audit --omit=dev --audit-level=high
 ```
 
 Passing repository checks are necessary evidence, not a substitute for independent review.
+
+### Free assisted practice
+
+50/50 and Extra Time are playable in a separate free ten-question Kaspa practice session at `/practice/`. Each is available once per session; Extra Time adds ten seconds before expiry. Assisted results award no XP, Alpha credits, tokens or ranked entries. The paid store, persistent purchased inventory, wallet setup and payout settlement remain unfinished.

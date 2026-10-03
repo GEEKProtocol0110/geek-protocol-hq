@@ -7,9 +7,9 @@ export const economyPolicy = Object.freeze({
 });
 
 export const powerups = Object.freeze([
-  { id: 'fifty-fifty', name: '50/50', description: 'Reduce the choices by removing two incorrect answers.', rules: 'Eligible modes and use limits must be finalized.' },
+  { id: 'fifty-fifty', name: '50/50', description: 'Reduce the choices by removing two incorrect answers.', rules: 'Try it free once per assisted practice session. Paid mode rules remain in development.', practice: { enabled: true, free: true, usesPerSession: 1, url: '/practice/' } },
   { id: 'ask-fandom', name: 'Ask the Fandom', description: 'See how other players answered.', rules: 'Requires real response statistics; no made-up poll results.' },
-  { id: 'extra-time', name: 'Extra Time', description: 'Add time to think about the current question.', rules: 'The time allowance and eligible modes must be finalized.' },
+  { id: 'extra-time', name: 'Extra Time', description: 'Add time to think about the current question.', rules: 'Try a free 10-second boost once per assisted practice session. Paid mode rules remain in development.', practice: { enabled: true, free: true, usesPerSession: 1, extraSeconds: 10, url: '/practice/' } },
   { id: 'skip-question', name: 'Skip Question', description: 'Move past a question.', rules: 'Scoring, reward eligibility and use limits must be finalized.' },
   { id: 'safety-net', name: 'Safety Net', description: 'A proposed second chance after a mistake.', rules: 'The protected event and limits must be finalized.' },
   { id: 'double-geek', name: 'Double GEEK opportunity', description: 'A proposed opportunity to increase an eligible reward.', rules: 'Effect, funding and eligibility must be finalized; no reward is guaranteed.' }

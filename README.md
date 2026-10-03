@@ -19,7 +19,7 @@ The [daily vault](https://www.geekprotocol.xyz/vault/) offers one visible cosmet
 
 **Current focus:** polish Learn → Study → practice → see progress. Existing extras remain available through Explore; economy accounting foundations are now active. Larger Arena, DAO and launchpad expansions remain on hold. Real purchases and settlement remain disabled.
 
-The [power-up and economy foundation](https://www.geekprotocol.xyz/economy/) restores six planned items, treasury categories, exact 70/30 fee examples, and a private planning journal. It cannot move funds or create spendable GEEK. Read the [Economy Protocol](docs/ECONOMY-PROTOCOL.md).
+The [power-up and economy foundation](https://www.geekprotocol.xyz/economy/) restores six planned items, treasury categories, exact 70/30 fee examples, and a private planning journal. It cannot move funds or create spendable GEEK. Try [free assisted practice](https://www.geekprotocol.xyz/practice/) with one 50/50 and one Extra Time use per session. It awards no XP, credits, tokens or ranked entries. Read the [Economy Protocol](docs/ECONOMY-PROTOCOL.md).
 
 ## What is Geek Protocol?
 

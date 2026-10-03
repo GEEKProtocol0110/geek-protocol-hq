@@ -6,7 +6,7 @@ Version: 1.0 · Founder authorized this foundation on October 2, 2026 (Detroit t
 
 `/economy/` restores the named power-up plan, planned treasury accounts, a fee-allocation example, and a private planning journal. `GET /api/session/?service=economy` is a public catalog/status view; session-bound `POST {"action":"ledger"}` reads only the resolved player's journal. Every other POST action is rejected. No new Vercel function is needed.
 
-**This release cannot purchase or consume an item, fund a wallet, credit a real GEEK balance, transfer tokens, settle a payout, or confirm a burn.** It does not convert Alpha credits. The existing fair-mint interface remains a separate, explicit wallet-approved operation. No existing game or contribution path writes this journal yet.
+**This economy foundation cannot purchase or consume a paid item, fund a wallet, credit a real GEEK balance, transfer tokens, settle a payout, or confirm a burn.** It does not convert Alpha credits. The existing fair-mint interface remains a separate, explicit wallet-approved operation. No existing game or contribution path writes this journal yet.
 
 ## Restored lineup
 
@@ -19,7 +19,7 @@ Version: 1.0 · Founder authorized this foundation on October 2, 2026 (Detroit t
 | Safety Net | A second chance | Protected event, limits and eligibility |
 | Double GEEK opportunity | An eligible reward opportunity | Exact effect, budget and eligibility; no guaranteed reward |
 
-The first three names appear in earlier planning; the later power-up plan adds the remaining three. None has a finalized price. The shared catalog exposes `priceRaw: null`, `purchasesEnabled: false`, and `usageEnabled: false`. No score or certification can be bought. Paid assists must have explicit scoring rules and separate assisted eligibility before implementation; existing ranked boards, periodic challenges, and Study are not changed by this foundation.
+The first three names appear in earlier planning; the later power-up plan adds the remaining three. None has a finalized price. The shared catalog exposes `priceRaw: null`, `purchasesEnabled: false`, and `usageEnabled: false`. Free assisted practice at `/practice/` separately provides one 50/50 and one 10-second Extra Time use per 10-question session. These trial uses cannot be purchased, withdrawn, or carried into ranked modes. They do not create inventory balances, fees, journal transactions, XP, or game credits. No score or certification can be bought. Paid assists must have explicit scoring rules and separate assisted eligibility before implementation; existing ranked boards, periodic challenges, and Study are not changed by this foundation.
 
 ## Treasury accounts and reserve verification
 

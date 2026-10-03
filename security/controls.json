@@ -161,6 +161,12 @@
       "evidence": ["server/economy-ledger.js", "server/economy.js", "public/economy/assets/amounts.js", "tests/economy.test.js", "docs/ECONOMY-PROTOCOL.md"]
     },
     {
+      "id": "GP-INV-026",
+      "title": "Server-controlled free practice lifelines isolated from ranked scores and monetary systems",
+      "status": "implemented-alpha",
+      "evidence": ["server/assisted-practice.js", "tests/assisted-practice.test.js", "docs/ARCHITECTURE.md"]
+    },
+    {
       "id": "GP-GATE-INDEPENDENT-AUDIT",
       "title": "Independent application and settlement audits",
       "status": "required-before-settlement",
