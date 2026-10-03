@@ -36,6 +36,7 @@
   };
   const renderLessonStep = (focus = false) => {
     const final = lessonStep === selectedTopic.steps.length;
+    window.GeekGiga?.update('study-welcome', { phase: final ? 'ready' : 'lesson', topic: selectedTopic.id });
     const step = final ? { title: 'Put the ideas together', text: selectedTopic.example } : selectedTopic.steps[lessonStep];
     $('[data-lesson-step-number]').textContent = `IDEA ${lessonStep + 1} OF ${selectedTopic.steps.length + 1}`;
     $('[data-lesson-step-title]').textContent = step.title;
@@ -107,6 +108,7 @@
   };
   const render = (focus = false) => {
     if (state.progress) { learning = state.progress; renderLearning(); }
+    document.querySelector('[data-giga-guide="study-welcome"]').hidden = true;
     $('[data-browse]').hidden = true; $('[data-practice]').hidden = false;
     $('[data-topic-name]').textContent = state.topic.name;
     const answered = state.run.status === 'question' ? state.run.number - 1 : state.run.number;
@@ -150,6 +152,7 @@
       }));
       storageWrite('localStorage', reviewKey, { topic: state.run.topic, missed: summary.missed.length });
     }
+    window.GeekGiga?.update('study', { phase: state.summary ? 'summary' : state.result ? state.result.correct ? 'correct' : 'missed' : 'question', topic: state.run.topic, missed: state.summary?.missed.length || 0 });
     if (focus) $('[data-question]').focus({ preventScroll: true });
   };
   const act = async (body, scroll = false) => {
@@ -170,7 +173,7 @@
     try { await request('/api/session/', {}); } catch (error) { showError(error, () => start(practiceRunId, review)); lock(false); return; }
     lock(false); await act({ action: 'start', topic: selectedTopic.id, level: selectedLevel, ...(practiceRunId ? { practiceRunId } : {}), ...(review ? { review: true } : {}) }, true);
   };
-  const browse = id => { clearError(); state = null; storageWrite('sessionStorage', activeKey, null); $('[data-practice]').hidden = true; $('[data-browse]').hidden = false; choose(id || selectedTopic?.id || 'origins', true); };
+  const browse = id => { document.querySelector('[data-giga-guide="study-welcome"]').hidden = false; clearError(); state = null; storageWrite('sessionStorage', activeKey, null); $('[data-practice]').hidden = true; $('[data-browse]').hidden = false; choose(id || selectedTopic?.id || 'origins', true); };
   const boot = async () => {
     clearError();
     try {

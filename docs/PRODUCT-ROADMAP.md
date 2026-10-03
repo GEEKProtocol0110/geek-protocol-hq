@@ -126,7 +126,7 @@ Schools, professional development, and the launchpad extend the learning purpose
 
 ## Character roles
 
-**Giga** is the welcoming community robot and the social heart of the project. **A.C.E.** is the analytical teaching and event-host character. Current A.C.E. Study uses authored, source-linked guidance. Adaptive tutoring and automated event hosting need their own implementation and evaluation. Existing recovered art remains identified as concept art.
+**Giga** is the welcoming community robot and the social heart of the project. **A.C.E.** is the analytical teaching and event-host character. Giga now welcomes learners on Home and Study, offers a next-step chooser, responds to Study and assisted-practice results with encouragement, and links Progress to the next lesson or saved review. This is authored guidance grounded in the existing page state, with no new chat, tracking, or reward authority. Current A.C.E. Study uses authored, source-linked guidance. Adaptive tutoring and automated event hosting need their own implementation and evaluation. Existing recovered art remains identified as concept art.
 
 ## Delivery order and change discipline
 
