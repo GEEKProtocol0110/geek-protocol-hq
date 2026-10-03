@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../assets/styles.css" />
     <link rel="stylesheet" href="./assets/security.css" />
     <script defer src="../assets/site.js"></script>
-  </head>
+  <script defer src="/assets/analytics.js"></script></head>
   <body>
     <a class="skip-link" href="#main">Skip to security status</a>
     <header class="site-header scrolled" data-header>
@@ -49,6 +49,10 @@
           <article><span>08</span><h3>Exact-origin proof</h3><p>Wallet challenges sign the requesting HTTPS origin, and verification rejects a challenge replayed through the other production hostname.</p></article>
           <article><span>09</span><h3>Payout risk review</h3><p>Changed, unverified, recently recovered, or repeatedly changed destinations create a persistent player notice and enter a private review queue.</p></article>
         </div>
+      </section>
+
+      <section class="security-section" aria-labelledby="traffic-title">
+        <div class="section-label">TRAFFIC &amp; PRIVACY</div><h2 id="traffic-title">Understand visits.</h2><p>Public pages use Vercel Web Analytics for aggregate traffic statistics, including pages viewed, referral sources, countries, and device types. The analytics service does not use third-party cookies. Our integration omits query parameters and fragments from page-view URLs and does not supply names, wallet addresses, answers, or form contents.</p><p>Tracking is skipped for the private moderation page and when your browser signals Do Not Track or Global Privacy Control. Individual learning actions are not tracked by this integration. <a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener noreferrer">Read how Vercel handles analytics data ↗</a></p>
       </section>
 
       <section class="audit-scope" aria-labelledby="scope-title">
