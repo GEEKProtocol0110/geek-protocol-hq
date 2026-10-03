@@ -14,6 +14,8 @@ Geek Protocol was born in Detroit, Michigan, USA. Use American English in public
 
 **Later founder direction, October 2, 2026:** start the wallet, payout, power-up purchase and 70/30 economy foundation. The first release restores the named catalog, planned treasury accounts and an isolated planning journal; purchases, gameplay effects, funding and settlement are not enabled. See [Economy Protocol](ECONOMY-PROTOCOL.md).
 
+**Next founder direction, October 2, 2026:** pause wallet and sensitive configuration for the founder to handle. Continue free gameplay: a separate ten-question assisted practice session implements one 50/50 and one ten-second Extra Time trial use. No XP, credits, tokens or ranked entries are awarded. Paid inventory and the remaining effects are unfinished.
+
 Arena expansions, DAO work, and the launchpad are **on hold** while the core is polished and tried by real learners. The feature tables below preserve the full long-term vision; “Planned” does not mean active work or the next release. No existing service is shut down by this prioritization.
 
 First-visit guidance points beginners to Where Kaspa began at Foundations level, explains read → practice → review, and gives learners with no saved answers an explicit first-lesson action. Existing learners keep their saved review and continuation recommendations. The final lesson idea offers an explicit Start practice action using the selected topic and level; reading the lesson never starts a run automatically. This is interface guidance, not evidence of improved learning outcomes.
@@ -97,7 +99,7 @@ The Alpha's implemented reward is one internal first-use credit. Recurring earni
 
 **70/30 applies to proposed platform fees:** 70% recycles into ecosystem reward funding; 30% is burned. It is not a 70/30 split of the 144-billion token supply. No operating fee-distribution or burn engine is being asserted. Game credits and the independently user-approved fair mint remain separate systems.
 
-The named lineup is 50/50, Ask the Fandom, Extra Time, Skip Question, Safety Net, and Double GEEK opportunity. Prices, eligible modes, limits, inventory consumption and assisted scoring remain explicit unfinished requirements. Restored treasury accounts are Reward Reserve, Creator Reward Pool, Tournament Pool, Operations Treasury, Burn Pending/Confirmed, Withdrawal Hot Wallet and Emergency Reserve. No funded reserve is verified.
+The named lineup is 50/50, Ask the Fandom, Extra Time, Skip Question, Safety Net, and Double GEEK opportunity. Free trial rules are implemented for 50/50 and Extra Time in assisted practice. Prices, paid eligible modes, persistent inventory consumption and monetary reward rules remain explicit unfinished requirements. Restored treasury accounts are Reward Reserve, Creator Reward Pool, Tournament Pool, Operations Treasury, Burn Pending/Confirmed, Withdrawal Hot Wallet and Emergency Reserve. No funded reserve is verified.
 
 Existing sticker trades are off-chain. Future token utilities include skill rewards, protocol spending, marketplace payments, and governance, subject to implemented rules. Wagers and event prize settlement depend on this stage.
 

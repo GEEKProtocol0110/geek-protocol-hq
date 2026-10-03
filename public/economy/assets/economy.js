@@ -4,9 +4,9 @@ const $ = selector => document.querySelector(selector);
 const element = (tag, text, className) => { const node = document.createElement(tag); if (text !== undefined) node.textContent = text; if (className) node.className = className; return node; };
 $('[data-powerups]').replaceChildren(...powerups.map(item => {
   const card = element('article', undefined, 'power-card');
-  card.append(element('span', 'PLANNED / NOT AVAILABLE', 'item-status'), element('h3', item.name), element('p', item.description), element('small', item.rules));
+  card.append(element('span', item.practice?.enabled ? 'FREE ASSISTED PRACTICE / PURCHASES PLANNED' : 'PLANNED / NOT AVAILABLE', 'item-status'), element('h3', item.name), element('p', item.description), element('small', item.rules));
   const price = element('p', 'Price not finalized', 'item-price'); const button = element('button', 'Purchases not enabled', 'button button-secondary'); button.type = 'button'; button.disabled = true;
-  card.append(price, button); return card;
+  card.append(price, button); if (item.practice?.enabled) { const link = element('a', 'Try in free practice →'); link.href = item.practice.url; card.append(link); } return card;
 }));
 $('[data-accounts]').replaceChildren(...treasuryAccounts.map(account => {
   const li = element('li'); li.append(element('strong', account.name), element('span', account.purpose), element('small', 'Funding not verified')); return li;
