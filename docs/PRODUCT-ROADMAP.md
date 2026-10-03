@@ -8,11 +8,13 @@ This document preserves the founder's full direction. It records features and ac
 
 Geek Protocol was born in Detroit, Michigan, USA. Use American English in public copy and project documentation, including “practice.”
 
-## Current priority: polish the core
+## Current priorities: core polish and economy foundations
 
 **Founder decision, October 2, 2026:** pause feature expansion and focus on Learn → Study → practice → see progress. Preserve Kaspa 101 in full. Home and primary navigation should make the next learning step clear; Progress should put saved Study feedback ahead of separate timed-game records. Existing challenges, vault, minting, collectibles, lobbies and contributions remain accessible as optional paths.
 
-Arena expansions, new economic/reward systems, DAO work, and the launchpad are **on hold** while the core is polished and tried by real learners. The feature tables below preserve the full long-term vision; “Planned” does not mean active work or the next release. No existing service is shut down by this prioritization.
+**Later founder direction, October 2, 2026:** start the wallet, payout, power-up purchase and 70/30 economy foundation. The first release restores the named catalog, planned treasury accounts and an isolated planning journal; purchases, gameplay effects, funding and settlement are not enabled. See [Economy Protocol](ECONOMY-PROTOCOL.md).
+
+Arena expansions, DAO work, and the launchpad are **on hold** while the core is polished and tried by real learners. The feature tables below preserve the full long-term vision; “Planned” does not mean active work or the next release. No existing service is shut down by this prioritization.
 
 First-visit guidance points beginners to Where Kaspa began at Foundations level, explains read → practice → review, and gives learners with no saved answers an explicit first-lesson action. Existing learners keep their saved review and continuation recommendations. The final lesson idea offers an explicit Start practice action using the selected topic and level; reading the lesson never starts a run automatically. This is interface guidance, not evidence of improved learning outcomes.
 
@@ -87,13 +89,15 @@ The Alpha's implemented reward is one internal first-use credit. Recurring earni
 
 | ID | Feature | Status | Completion evidence |
 | --- | --- | --- | --- |
-| ECON-01 | Cosmetic/consumable store | Planned | Item definitions and inventory authority; purchases cannot buy ranked score or certify knowledge |
+| ECON-01 | Cosmetic/consumable store | Catalog restored; purchases planned | Item definitions and inventory authority; purchases cannot buy ranked score or certify knowledge |
 | ECON-02 | Collection production and NFT achievements | Planned | Finished reviewed art, frozen metadata/provenance, selected ownership standard, and an independently reviewed mint/transfer design |
 | ECON-03 | Peer-to-peer NFT marketplace | Planned | Ownership verification, trade lifecycle, custody/signing boundaries, fees, settlement records and independent review |
-| ECON-04 | 70/30 Recycle & Burn | Proposed | Define eligible collected platform fees, denomination, rounding, recycling destination, burn mechanism/evidence, caps and auditable reconciliation |
+| ECON-04 | 70/30 Recycle & Burn | Planning accounting implemented; settlement proposed | Define eligible collected platform fees, denomination, rounding, recycling destination, burn mechanism/evidence, caps and auditable reconciliation |
 | ECON-05 | Token rewards and wallet-neutral payouts | Proposed | Funded treasury, eligibility, transfer implementation, limits, monitoring, recovery/disputes and independent exact-release audit |
 
 **70/30 applies to proposed platform fees:** 70% recycles into ecosystem reward funding; 30% is burned. It is not a 70/30 split of the 144-billion token supply. No operating fee-distribution or burn engine is being asserted. Game credits and the independently user-approved fair mint remain separate systems.
+
+The named lineup is 50/50, Ask the Fandom, Extra Time, Skip Question, Safety Net, and Double GEEK opportunity. Prices, eligible modes, limits, inventory consumption and assisted scoring remain explicit unfinished requirements. Restored treasury accounts are Reward Reserve, Creator Reward Pool, Tournament Pool, Operations Treasury, Burn Pending/Confirmed, Withdrawal Hot Wallet and Emergency Reserve. No funded reserve is verified.
 
 Existing sticker trades are off-chain. Future token utilities include skill rewards, protocol spending, marketplace payments, and governance, subject to implemented rules. Wagers and event prize settlement depend on this stage.
 
@@ -132,4 +136,4 @@ Schools, professional development, and the launchpad extend the learning purpose
 6. Introduce community governance through published, accountable steps.
 7. Pilot education, professional learning, integrations, and the launchpad with their dependencies in place.
 
-Core polish is the active priority. Expansion stages are on hold until the founder chooses to reopen them; their stated dependencies remain. There are no invented launch dates. Each implemented feature should have a focused issue/PR, documentation, meaningful authorization/state tests where relevant, and production evidence before its public status becomes Live.
+Core polish and the authorized economy foundation are active. Other expansion stages remain on hold until the founder chooses to reopen them; their stated dependencies remain. There are no invented launch dates. Each implemented feature should have a focused issue/PR, documentation, meaningful authorization/state tests where relevant, and production evidence before its public status becomes Live.

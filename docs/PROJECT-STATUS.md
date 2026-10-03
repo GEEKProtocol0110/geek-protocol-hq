@@ -7,7 +7,7 @@
 
 ## Current product focus
 
-The founder has paused expansion to polish the core journey: Learn, guided Study, practice, and saved progress. Primary navigation prioritizes those steps. Progress displays existing private Study feedback before separate timed-game XP and records; collectibles and detailed game history remain available in optional sections. Larger Arena formats, new economic systems, DAO work, and the launchpad remain on hold.
+The founder has paused expansion to polish the core journey: Learn, guided Study, practice, and saved progress. Primary navigation prioritizes those steps. Progress displays existing private Study feedback before separate timed-game XP and records; collectibles and detailed game history remain available in optional sections. Larger Arena formats, DAO work and the launchpad remain on hold. The founder subsequently reopened economy foundations: the named power-up catalog, reserve configuration status and private planning journal are implemented. Real purchases, item use, treasury funding, payouts and burns remain disabled.
 
 ## Executive summary
 
@@ -35,6 +35,7 @@ The daily vault at `/vault/` adds seven cosmetic seal designs, one claim per UTC
 | Payout preferences | Alpha | Reauthentication, notice, and review tests | Not audited | Settlement eligibility cannot be enabled |
 | Player collectibles and stickers | Alpha | Atomic reservation and exchange tests | Not audited | Off-chain profile inventory only |
 | 500-Geek collection | Production blueprint | Deterministic manifest and archive hashes | Not audited | Mint and on-chain ownership disabled |
+| Economy planning foundation | Implemented | Exact amounts, rounding, idempotency, CAS races, corruption and private-access tests | Not audited | Planning receipts only; no money movement or item use |
 | Treasury settlement | Not implemented here | Launch gates defined | Required | Disabled |
 
 ## Verified release controls
@@ -66,7 +67,7 @@ The repository currently verifies:
 
 ## Product direction
 
-[The full roadmap](PRODUCT-ROADMAP.md) restores the original Arena, creator, player-economy, governance, Education, Pro, and launchpad vision. The litepaper carries this direction with explicit live/planned/proposed labels. The first learning implementation adds guided Study, practice levels, and concept feedback; other future features retain their documented status. The proposed 70/30 policy allocates platform fees to recycling and burning; no fee-distribution or burn engine is live.
+[The full roadmap](PRODUCT-ROADMAP.md) restores the original Arena, creator, player-economy, governance, Education, Pro, and launchpad vision. The litepaper carries this direction with explicit live/planned/proposed labels. The first learning implementation adds guided Study, practice levels, and concept feedback; other future features retain their documented status. The proposed 70/30 policy allocates platform fees to recycling and burning; the isolated planning journal records proposed allocations, but no fee-distribution or burn engine is live.
 
 ## Required next gates
 
