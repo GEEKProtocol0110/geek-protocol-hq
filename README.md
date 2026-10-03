@@ -49,7 +49,7 @@ See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness
 | Surface | Purpose |
 | --- | --- |
 | **Learn / Study** | Kaspa 101 field guide plus eight guided lessons, three practice levels, and private saved concept feedback |
-| **Play** | Ten-round Geek Gauntlet plus server-owned Daily and Speed modes |
+| **Play** | Ten-round Geek Gauntlet, server-owned Daily/Speed, and free unranked [Memory Grid](https://www.geekprotocol.xyz/memory/) |
 | **Daily vault** | One visible cosmetic seal per UTC day, private collection, and atomic claim receipts |
 | **Challenges** | Shared Weekly Signal and Monthly Circuit with one attempt per UTC period and separate verified standings |
 | **Lobbies** | Active seats, shareable rooms, and host-started ten-question shared practice rounds with server-scored standings |

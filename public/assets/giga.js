@@ -10,6 +10,10 @@
     review: { label: 'I want to revisit something', message: 'Coming back is part of learning. Your Progress page shows the Study concepts you explored and the ones ready for another look.', action: 'Find my next step →', href: '/profile/' }
   };
   const copy = (page, context = {}) => {
+    if (page === 'memory') return {
+      message: context.phase === 'complete' ? 'You connected every pair. Give the explanations another look, then choose a lesson or try a fresh board.' : context.phase === 'match' ? 'You found a connection. Take a moment with its explanation; there is no rush to find the next pair.' : 'Let’s connect the ideas together. Flip one card, then find its word or meaning. You can take as many tries as you need.',
+      action: 'Want to explore the ideas? →', href: '/study/'
+    };
     if (page === 'study' || page === 'study-welcome') {
       if (context.phase === 'summary') return { message: context.missed > 0 ? 'You showed up and tried. Give the ideas you missed another look, then try them again when you’re ready.' : 'You worked through this practice session. Keep your curiosity going: revisit the explanation or explore the next topic with A.C.E.', action: context.missed > 0 ? 'Revisit this lesson →' : 'See my learning progress →', href: context.missed > 0 ? lessonLink(context.topic) : '/profile/' };
       if (context.phase === 'correct') return { message: 'You connected that idea. Take a moment with A.C.E.’s explanation before the next question.', action: 'Explore the Kaspa guide →', href: '/kaspa/' };

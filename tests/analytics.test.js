@@ -60,6 +60,9 @@ test('supported learning calls queue safely before the SDK loads, with no arbitr
     ['/practice/', 'Practice completed', { mode: 'assisted' }],
     ['/practice/', 'Free lifeline used', { item: 'fifty-fifty' }],
     ['/practice/', 'Free lifeline used', { item: 'extra-time' }],
+    ['/memory/', 'Memory Grid started', { pairs: 4 }],
+    ['/memory/', 'Memory Grid completed', { pairs: 6 }],
+    ['/memory/', 'Memory Grid completed', { pairs: 8 }],
     ['/', 'Giga choice selected', { surface: 'home', choice: 'start' }],
     ['/study/', 'Giga choice selected', { surface: 'study-welcome', choice: 'understand' }],
     ['/profile/', 'Giga choice selected', { surface: 'progress', choice: 'review' }]
