@@ -61,7 +61,12 @@
     const selected = collection.avatar;
     const image = $('[data-avatar-image]');
     const fallback = $('[data-avatar-fallback]');
-    if (selected?.asset) {
+    const custom = selected?.id === 'giga-builder';
+    const customImage = $('[data-avatar-custom]');
+    customImage.hidden = !custom;
+    if (custom && window.GeekBuilder) { customImage.innerHTML = window.GeekBuilder.svg(collection.customization); customImage.setAttribute('aria-label', 'Your custom Geek'); }
+    image.hidden = custom; fallback.hidden = custom;
+    if (selected?.asset && !custom) {
       image.src = selected.asset;
       image.hidden = false;
       fallback.hidden = true;
@@ -69,7 +74,7 @@
     renderCollectionMetrics(collection.blueprint);
     $('[data-avatar-grid]').innerHTML = collection.avatars.map((avatar) => {
       const active = selected.id === avatar.id;
-      return `<article class="avatar-card ${active ? 'selected' : ''} ${avatar.owned ? '' : 'locked'}"><img src="${escapeHtml(avatar.asset)}" alt="${escapeHtml(avatar.name)}" loading="lazy" /><div><span>${escapeHtml(avatar.tier)} IDENTITY</span><h3>${escapeHtml(avatar.name)}</h3><p>${escapeHtml(avatar.requirement)}</p><button type="button" data-avatar-id="${escapeHtml(avatar.id)}" ${avatar.owned && !active ? '' : 'disabled'}>${active ? 'ACTIVE SIGNAL' : avatar.owned ? 'SELECT GEEK' : 'LOCKED'}</button></div></article>`;
+      return `<article class="avatar-card ${active ? 'selected' : ''} ${avatar.owned ? '' : 'locked'}">${avatar.id === 'giga-builder' ? `<div class="avatar-custom-art" role="img" aria-label="Your customizable Geek">${window.GeekBuilder?.svg(collection.customization) || '<span>Build your Geek ↓</span>'}</div>` : `<img src="${escapeHtml(avatar.asset)}" alt="${escapeHtml(avatar.name)}" loading="lazy" />`}<div><span>${escapeHtml(avatar.tier)} IDENTITY</span><h3>${escapeHtml(avatar.name)}</h3><p>${escapeHtml(avatar.requirement)}</p><button type="button" data-avatar-id="${escapeHtml(avatar.id)}" ${avatar.owned && !active ? '' : 'disabled'}>${active ? 'ACTIVE SIGNAL' : avatar.owned ? 'SELECT GEEK' : 'LOCKED'}</button></div></article>`;
     }).join('');
   };
 
@@ -87,10 +92,14 @@
 
   const renderCollectibles = (payload) => {
     collectibleState = payload;
+    window.GeekProfile.trades = payload.trades; window.GeekProfile.collection = payload.collection; window.GeekProfile.offline = false;
+    window.GeekBuilder?.receive(payload.collection);
     renderAvatars(payload.collection);
     renderStickers(payload.collection);
     renderTrades(payload.trades);
   };
+
+  window.GeekProfile = { renderCollectibles, collection: null, offline: false };
 
   const refreshCollectibles = async () => renderCollectibles(await api('/api/collectibles'));
 
@@ -175,15 +184,21 @@
           setText('[data-profile-state]', 'GAME RECORDS UNAVAILABLE');
           setText('[data-journey-list]', `${error.message} Your game records remain saved.`);
         }),
-        refreshCollectibles().catch(error => setText('[data-trade-feedback]', `${error.message} Your collection remains saved.`))
+        refreshCollectibles().catch(error => { window.GeekProfile.offline = true; window.GeekBuilder?.unavailable(); setText('[data-trade-feedback]', `${error.message} Your collection remains saved.`); })
       ]);
     } catch (error) {
+      window.GeekProfile.offline = true; window.GeekBuilder?.unavailable();
       window.GeekGiga?.update('progress', { phase: 'unavailable' });
       setText('[data-profile-state]', 'PROFILE SERVICE OFFLINE');
       setText('[data-study-note]', `${error.message} Refresh this page to reconnect. You can still read Kaspa 101.`);
       $('[data-journey-list]').innerHTML = `<li class="profile-empty">${escapeHtml(error.message)} Your verified data remains on the server.</li>`;
     }
   };
+
+  $('[data-geek-reconnect]')?.addEventListener('click', async () => {
+    const button = $('[data-geek-reconnect]'); button.disabled = true;
+    try { await initialize(); } finally { button.disabled = false; }
+  });
 
   $('[data-study-retry]')?.addEventListener('click', refreshStudy);
 

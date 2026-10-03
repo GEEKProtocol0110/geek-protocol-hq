@@ -12,6 +12,7 @@
     <script defer src="../assets/site.js"></script>
     <script defer src="../assets/giga.js"></script>
     <script defer src="./assets/profile.js"></script>
+    <script type="module" src="./assets/geek-builder.js"></script>
   <link rel="stylesheet" href="../assets/giga.css" /><script defer src="/assets/analytics.js"></script></head>
   <body>
     <a class="skip-link" href="#main">Skip to player journey</a>
@@ -27,11 +28,11 @@
           <div class="eyebrow"><span class="profile-live-dot"></span><span data-profile-state>CONNECTING TO VERIFIED PROFILE</span></div>
           <h1 id="profile-title">YOUR<br /><em>PROGRESS.</em></h1>
           <p>See what you have explored and what to revisit. Your Study feedback appears first; timed games keep their own XP, scores, and milestones.</p>
-          <div class="profile-actions"><a class="button button-primary" href="../study/">Continue Study <span aria-hidden="true">→</span></a><a class="button button-secondary" href="../kaspa/">Read Kaspa 101</a><a class="button button-secondary" href="../rewards/">Protect your profile</a></div>
+          <div class="profile-actions"><a class="button button-primary" href="../study/">Continue Study <span aria-hidden="true">→</span></a><a class="button button-secondary" href="../kaspa/">Read Kaspa 101</a><a class="button button-secondary" href="#geek-builder">Customize my Geek</a><a class="button button-secondary" href="../rewards/">Protect your profile</a></div>
         </div>
 
         <article class="identity-card" aria-label="Player identity">
-          <div class="identity-top"><div class="identity-avatar"><img data-avatar-image alt="Selected Geek avatar" hidden /><span data-avatar-fallback>G</span></div><div><span>SERVER PROFILE</span><h2 data-player-name>Guest Geek</h2><p data-rank-title>Initiate</p></div><b data-protection>SESSION PROFILE</b></div>
+          <div class="identity-top"><div class="identity-avatar"><img data-avatar-image alt="Selected Geek avatar" hidden /><span data-avatar-custom role="img" hidden></span><span data-avatar-fallback>G</span></div><div><span>SERVER PROFILE</span><h2 data-player-name>Guest Geek</h2><p data-rank-title>Initiate</p></div><b data-protection>SESSION PROFILE</b></div>
           <dl><div><dt>Member since</dt><dd data-member-since>—</dd></div><div><dt>Profile recovery</dt><dd data-recovery>Not protected</dd></div><div><dt>Your records</dt><dd>Study &amp; games</dd></div></dl>
         </article>
       </section>
@@ -65,10 +66,23 @@
         </div>
       </section>
 
+      <section id="geek-builder" class="geek-builder" aria-labelledby="geek-builder-title">
+        <div class="section-kicker">BUILD-A-GEEK / YOUR PROFILE CHARACTER</div>
+        <div class="geek-builder-heading"><h2 id="geek-builder-title">Make your Geek.<br /><em>Make it yours.</em></h2><p>Start with a golden GIGA-style robot. Choose its parts and colors, preview your design, then equip it as your profile character. All starter parts are free.</p></div>
+        <div class="geek-builder-layout"><div class="geek-preview-stage"><span>LIVE CHARACTER PREVIEW</span><div data-geek-preview role="img" aria-label="Golden starter Geek"></div><b>GEEK // DETROIT, USA</b></div>
+          <div class="geek-builder-editor"><fieldset data-geek-controls><legend>Customize your character</legend><div class="geek-options" data-geek-options></div></fieldset>
+            <div class="geek-builder-actions"><button class="button button-primary" type="button" data-geek-save disabled>Save &amp; equip my Geek →</button><button class="button button-secondary" type="button" data-geek-cancel>Undo preview changes</button><button class="button button-secondary" type="button" data-geek-reset>Golden starter</button></div>
+            <p class="geek-builder-status" data-geek-status role="status" aria-live="polite">Connecting your profile. Preview changes are saved only when you choose Save &amp; equip.</p><button class="geek-reconnect" type="button" data-geek-reconnect>Reconnect profile</button>
+          </div>
+        </div>
+        <p class="geek-builder-boundary">Your custom Geek is an off-chain profile cosmetic. The <a href="../collection/">500 Geeks NFT collection</a> is separate; equipping those characters will require verified ownership when collection deployment is ready.</p>
+        <noscript><p>JavaScript is needed to customize and save your Geek.</p></noscript>
+      </section>
+
       <details class="profile-extra" data-extra="collection"><summary>Your collectibles and sticker trades <span>Optional · off-chain Alpha</span></summary>
       <section class="collection-section" aria-labelledby="collection-title">
         <div class="section-kicker">02 / IDENTITY GRID</div>
-        <div class="profile-heading collection-heading"><div><span class="alpha-chip">OFF-CHAIN ALPHA</span><h2 id="collection-title">Choose your<br />Geek signal.</h2></div><p>Your selected Geek is your visual identity across the learning ecosystem. Five launch identities are wired now; the complete 500-character Omniscient Grid is mapped for art production and a separately audited Kaspa deployment.</p></div>
+        <div class="profile-heading collection-heading"><div><span class="alpha-chip">OFF-CHAIN ALPHA</span><h2 id="collection-title">Choose your<br />Geek signal.</h2></div><p>Your selected Geek is your visual identity across the learning ecosystem. Five launch identities and a customizable starter Geek are available now; the complete 500-character Omniscient Grid is mapped for art production and a separately audited Kaspa deployment.</p></div>
         <div class="collection-metrics" data-collection-metrics aria-label="Collection blueprint"></div>
         <div class="avatar-grid" data-avatar-grid><p class="profile-empty">Loading identity grid…</p></div>
         <p class="collection-boundary"><b>Current boundary:</b> identity choices are server-owned Alpha profile data. No page claims NFT ownership or transfers an on-chain asset. <a href="../collection/">Explore the complete 500-Geek production blueprint →</a></p>

@@ -1,3 +1,4 @@
+import { customGeekId, normalizeGeek } from '../public/assets/geek-avatar.js';
 import { collectionPreview } from './geek-collection.js';
 
 const STARTER_STICKERS = {
@@ -14,6 +15,8 @@ export const avatarCatalog = [
   { id: 'omniscient-grid', name: 'Omniscient Grid', tier: 'Legendary', asset: '/assets/omniscient-grid.png', requirement: 'Reach Prestige 1', unlock: ({ progression }) => progression.prestige >= 1 },
   { id: 'protocol-core', name: 'Protocol Core', tier: 'Mythic', asset: '/assets/geek-protocol-logo.png', requirement: 'Protect the profile with a Kaspa wallet', unlock: ({ walletProtected }) => walletProtected }
 ];
+
+avatarCatalog.push({ id: customGeekId, name: 'My custom Geek', tier: 'Starter', asset: null, requirement: 'Build-a-GEEK · free cosmetic parts', unlock: () => true });
 
 export const stickerCatalog = [
   { id: 'giga-core', name: 'GIGA Core', rarity: 'Common', glyph: 'G', color: '#f6c643' },
@@ -45,6 +48,7 @@ export const collectibleProfile = (profile, context) => {
   const selected = avatars.find((avatar) => avatar.id === profile.avatarId && avatar.owned) || avatars[0];
   return {
     avatar: selected,
+    customization: normalizeGeek(profile.avatarCustomization),
     avatars,
     stickers: stickerCatalog.map((sticker) => ({
       ...sticker,

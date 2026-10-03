@@ -33,9 +33,10 @@ GIGA occupies the **GIGA District**, the living community hearth at the Grid’s
 | Common | #001–#250 | 250 | Signal Glow |
 | Rare | #251–#375 | 125 | Twin Pulse |
 | Epic | #376–#450 | 75 | DAG Current |
-| Legendary | #451–#490 | 40 | Golden Proof |
-| Elite | #491–#498 | 8 | Cognoscenti Crown |
+| Legendary | #451–#498 | 48 | Golden Proof |
 | Mythic | #499–#500 | 2 | Genesis Field |
+
+Founder correction, October 3, 2026: five rarity levels, with the previous eight Elite slots included in Legendary. Manifest schema 1.1 preserves all edition numbers, names, lore and anchor identities.
 
 Rarity changes production complexity and visual presence. It must never create a scoring advantage, payout multiplier, easier questions, or leaderboard benefit.
 
@@ -124,3 +125,9 @@ Before deployment:
 - run a public review period before any mint opens.
 
 Until those gates pass, the website must keep `configured`, `onChainOwnershipActive`, `metadataFrozen`, and `independentlyAudited` set to `false`.
+
+## Acquisition and profile identity
+
+The founder specifies one collection of **500 NFTs** across **five rarity levels**. Planned acquisition routes are public NFT minting, earned NFT rewards, and purchases paid in **GEEK or native KAS**. All routes draw from the same 500-edition supply; rewards and sales do not create additional editions. Prices and allocations remain unset. Every route is disabled until ownership, inventory, settlement, indexer recovery and deployment review are implemented. GEEK/KAS payment verification and the existing 70/30 transaction policy need explicit asset-specific settlement rules; accepting KAS cannot itself burn GEEK without a separately defined conversion/funding process. No placeholder checkout may claim a payment or reward.
+
+The free **Build-a-GEEK** profile editor is a separate cosmetic starter, with server-saved color, headgear, face, torso, arms, legs, back accessory and effect choices. It is not an edition, NFT mint, sale or reward. The five existing launch avatars retain their progression/wallet unlock rules. Future NFT profile equipping requires verified ownership; cosmetic profile customization must not change frozen collection metadata or supply.

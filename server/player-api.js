@@ -1,6 +1,7 @@
+import { customGeekId, normalizeGeek } from '../public/assets/geek-avatar.js';
 import { avatarCatalog, collectibleProfile } from './collectibles.js';
 import { clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from './http.js';
-import { loadProfile, saveProfile, saveProfileWithAudit } from './profile.js';
+import { loadProfile, saveProfile, saveAvatarWithAudit } from './profile.js';
 import { buildJourneyProfile, deriveProgression } from './progression.js';
 import { rateLimit } from './redis.js';
 import { playerIdFor, requireSession } from './session.js';
@@ -47,11 +48,10 @@ export const collectiblesHandler = async (req, res) => {
       const progression = deriveProgression(profile);
       const avatar = avatarCatalog.find((item) => item.id === body.avatarId);
       if (!avatar || !avatar.unlock({ progression, walletProtected: Boolean(session.identityVersion) })) throw new Error('AVATAR_LOCKED');
-      profile.avatarId = avatar.id;
-      await saveProfileWithAudit(playerId, profile, {
-        type: 'collectible.avatar-selected', severity: 'info', objectType: 'avatar', objectId: avatar.id,
-        outcome: 'success', reason: 'player-selected-owned-avatar', details: { avatarId: avatar.id, collectionStatus: 'off-chain-alpha' }
-      });
+      await saveAvatarWithAudit(playerId, avatar.id);
+    } else if (action === 'customize-avatar') {
+      const customization = normalizeGeek(body.customization, true);
+      await saveAvatarWithAudit(playerId, customGeekId, customization);
     } else if (action === 'create-trade') {
       const profile = await loadProfile(playerId);
       await saveProfile(playerId, profile);

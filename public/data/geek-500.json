@@ -1,7 +1,7 @@
 {
   "generatedFrom": "server/geek-collection.js",
   "blueprint": {
-    "schemaVersion": "1.0",
+    "schemaVersion": "1.1",
     "name": "The Omniscient Grid",
     "symbol": "GEEK-500",
     "supply": 500,
@@ -10,7 +10,7 @@
     "utility": "Identity and cosmetic access only; no competitive advantage",
     "anchors": [
       {
-        "schemaVersion": "1.0",
+        "schemaVersion": "1.1",
         "collection": "The Omniscient Grid",
         "symbol": "GEEK-500",
         "id": "geek-499",
@@ -103,7 +103,7 @@
         }
       },
       {
-        "schemaVersion": "1.0",
+        "schemaVersion": "1.1",
         "collection": "The Omniscient Grid",
         "symbol": "GEEK-500",
         "id": "geek-500",
@@ -217,14 +217,8 @@
       },
       {
         "name": "Legendary",
-        "count": 40,
+        "count": 48,
         "firstEdition": 451,
-        "lastEdition": 490
-      },
-      {
-        "name": "Elite",
-        "count": 8,
-        "firstEdition": 491,
         "lastEdition": 498
       },
       {
@@ -383,6 +377,35 @@
       "anchor-concept": 2,
       "approved": 0
     },
+    "acquisition": {
+      "status": "PLANNED",
+      "sharedSupply": 500,
+      "allocations": null,
+      "prices": null,
+      "routes": [
+        {
+          "id": "mint",
+          "name": "Public NFT mint",
+          "enabled": false
+        },
+        {
+          "id": "reward",
+          "name": "Earned NFT reward",
+          "enabled": false
+        },
+        {
+          "id": "purchase",
+          "name": "Purchase with GEEK or KAS",
+          "currencies": [
+            "GEEK",
+            "KAS"
+          ],
+          "enabled": false
+        }
+      ],
+      "equipRequiresVerifiedOwnership": true,
+      "customizationChangesFrozenMetadata": false
+    },
     "deployment": {
       "configured": false,
       "onChainOwnershipActive": false,
@@ -392,7 +415,7 @@
   },
   "identities": [
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-001",
@@ -485,7 +508,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-002",
@@ -578,7 +601,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-003",
@@ -671,7 +694,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-004",
@@ -764,7 +787,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-005",
@@ -857,7 +880,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-006",
@@ -950,7 +973,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-007",
@@ -1043,7 +1066,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-008",
@@ -1136,7 +1159,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-009",
@@ -1229,7 +1252,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-010",
@@ -1322,7 +1345,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-011",
@@ -1415,7 +1438,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-012",
@@ -1508,7 +1531,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-013",
@@ -1601,7 +1624,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-014",
@@ -1694,7 +1717,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-015",
@@ -1787,7 +1810,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-016",
@@ -1880,7 +1903,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-017",
@@ -1973,7 +1996,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-018",
@@ -2066,7 +2089,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-019",
@@ -2159,7 +2182,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-020",
@@ -2252,7 +2275,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-021",
@@ -2345,7 +2368,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-022",
@@ -2438,7 +2461,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-023",
@@ -2531,7 +2554,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-024",
@@ -2624,7 +2647,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-025",
@@ -2717,7 +2740,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-026",
@@ -2810,7 +2833,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-027",
@@ -2903,7 +2926,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-028",
@@ -2996,7 +3019,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-029",
@@ -3089,7 +3112,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-030",
@@ -3182,7 +3205,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-031",
@@ -3275,7 +3298,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-032",
@@ -3368,7 +3391,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-033",
@@ -3461,7 +3484,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-034",
@@ -3554,7 +3577,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-035",
@@ -3647,7 +3670,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-036",
@@ -3740,7 +3763,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-037",
@@ -3833,7 +3856,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-038",
@@ -3926,7 +3949,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-039",
@@ -4019,7 +4042,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-040",
@@ -4112,7 +4135,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-041",
@@ -4205,7 +4228,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-042",
@@ -4298,7 +4321,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-043",
@@ -4391,7 +4414,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-044",
@@ -4484,7 +4507,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-045",
@@ -4577,7 +4600,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-046",
@@ -4670,7 +4693,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-047",
@@ -4763,7 +4786,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-048",
@@ -4856,7 +4879,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-049",
@@ -4949,7 +4972,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-050",
@@ -5042,7 +5065,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-051",
@@ -5135,7 +5158,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-052",
@@ -5228,7 +5251,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-053",
@@ -5321,7 +5344,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-054",
@@ -5414,7 +5437,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-055",
@@ -5507,7 +5530,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-056",
@@ -5600,7 +5623,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-057",
@@ -5693,7 +5716,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-058",
@@ -5786,7 +5809,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-059",
@@ -5879,7 +5902,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-060",
@@ -5972,7 +5995,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-061",
@@ -6065,7 +6088,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-062",
@@ -6158,7 +6181,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-063",
@@ -6251,7 +6274,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-064",
@@ -6344,7 +6367,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-065",
@@ -6437,7 +6460,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-066",
@@ -6530,7 +6553,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-067",
@@ -6623,7 +6646,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-068",
@@ -6716,7 +6739,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-069",
@@ -6809,7 +6832,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-070",
@@ -6902,7 +6925,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-071",
@@ -6995,7 +7018,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-072",
@@ -7088,7 +7111,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-073",
@@ -7181,7 +7204,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-074",
@@ -7274,7 +7297,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-075",
@@ -7367,7 +7390,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-076",
@@ -7460,7 +7483,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-077",
@@ -7553,7 +7576,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-078",
@@ -7646,7 +7669,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-079",
@@ -7739,7 +7762,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-080",
@@ -7832,7 +7855,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-081",
@@ -7925,7 +7948,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-082",
@@ -8018,7 +8041,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-083",
@@ -8111,7 +8134,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-084",
@@ -8204,7 +8227,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-085",
@@ -8297,7 +8320,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-086",
@@ -8390,7 +8413,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-087",
@@ -8483,7 +8506,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-088",
@@ -8576,7 +8599,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-089",
@@ -8669,7 +8692,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-090",
@@ -8762,7 +8785,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-091",
@@ -8855,7 +8878,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-092",
@@ -8948,7 +8971,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-093",
@@ -9041,7 +9064,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-094",
@@ -9134,7 +9157,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-095",
@@ -9227,7 +9250,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-096",
@@ -9320,7 +9343,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-097",
@@ -9413,7 +9436,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-098",
@@ -9506,7 +9529,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-099",
@@ -9599,7 +9622,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-100",
@@ -9692,7 +9715,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-101",
@@ -9785,7 +9808,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-102",
@@ -9878,7 +9901,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-103",
@@ -9971,7 +9994,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-104",
@@ -10064,7 +10087,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-105",
@@ -10157,7 +10180,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-106",
@@ -10250,7 +10273,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-107",
@@ -10343,7 +10366,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-108",
@@ -10436,7 +10459,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-109",
@@ -10529,7 +10552,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-110",
@@ -10622,7 +10645,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-111",
@@ -10715,7 +10738,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-112",
@@ -10808,7 +10831,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-113",
@@ -10901,7 +10924,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-114",
@@ -10994,7 +11017,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-115",
@@ -11087,7 +11110,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-116",
@@ -11180,7 +11203,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-117",
@@ -11273,7 +11296,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-118",
@@ -11366,7 +11389,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-119",
@@ -11459,7 +11482,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-120",
@@ -11552,7 +11575,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-121",
@@ -11645,7 +11668,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-122",
@@ -11738,7 +11761,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-123",
@@ -11831,7 +11854,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-124",
@@ -11924,7 +11947,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-125",
@@ -12017,7 +12040,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-126",
@@ -12110,7 +12133,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-127",
@@ -12203,7 +12226,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-128",
@@ -12296,7 +12319,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-129",
@@ -12389,7 +12412,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-130",
@@ -12482,7 +12505,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-131",
@@ -12575,7 +12598,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-132",
@@ -12668,7 +12691,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-133",
@@ -12761,7 +12784,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-134",
@@ -12854,7 +12877,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-135",
@@ -12947,7 +12970,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-136",
@@ -13040,7 +13063,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-137",
@@ -13133,7 +13156,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-138",
@@ -13226,7 +13249,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-139",
@@ -13319,7 +13342,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-140",
@@ -13412,7 +13435,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-141",
@@ -13505,7 +13528,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-142",
@@ -13598,7 +13621,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-143",
@@ -13691,7 +13714,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-144",
@@ -13784,7 +13807,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-145",
@@ -13877,7 +13900,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-146",
@@ -13970,7 +13993,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-147",
@@ -14063,7 +14086,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-148",
@@ -14156,7 +14179,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-149",
@@ -14249,7 +14272,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-150",
@@ -14342,7 +14365,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-151",
@@ -14435,7 +14458,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-152",
@@ -14528,7 +14551,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-153",
@@ -14621,7 +14644,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-154",
@@ -14714,7 +14737,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-155",
@@ -14807,7 +14830,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-156",
@@ -14900,7 +14923,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-157",
@@ -14993,7 +15016,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-158",
@@ -15086,7 +15109,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-159",
@@ -15179,7 +15202,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-160",
@@ -15272,7 +15295,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-161",
@@ -15365,7 +15388,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-162",
@@ -15458,7 +15481,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-163",
@@ -15551,7 +15574,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-164",
@@ -15644,7 +15667,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-165",
@@ -15737,7 +15760,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-166",
@@ -15830,7 +15853,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-167",
@@ -15923,7 +15946,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-168",
@@ -16016,7 +16039,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-169",
@@ -16109,7 +16132,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-170",
@@ -16202,7 +16225,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-171",
@@ -16295,7 +16318,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-172",
@@ -16388,7 +16411,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-173",
@@ -16481,7 +16504,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-174",
@@ -16574,7 +16597,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-175",
@@ -16667,7 +16690,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-176",
@@ -16760,7 +16783,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-177",
@@ -16853,7 +16876,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-178",
@@ -16946,7 +16969,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-179",
@@ -17039,7 +17062,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-180",
@@ -17132,7 +17155,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-181",
@@ -17225,7 +17248,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-182",
@@ -17318,7 +17341,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-183",
@@ -17411,7 +17434,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-184",
@@ -17504,7 +17527,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-185",
@@ -17597,7 +17620,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-186",
@@ -17690,7 +17713,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-187",
@@ -17783,7 +17806,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-188",
@@ -17876,7 +17899,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-189",
@@ -17969,7 +17992,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-190",
@@ -18062,7 +18085,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-191",
@@ -18155,7 +18178,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-192",
@@ -18248,7 +18271,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-193",
@@ -18341,7 +18364,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-194",
@@ -18434,7 +18457,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-195",
@@ -18527,7 +18550,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-196",
@@ -18620,7 +18643,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-197",
@@ -18713,7 +18736,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-198",
@@ -18806,7 +18829,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-199",
@@ -18899,7 +18922,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-200",
@@ -18992,7 +19015,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-201",
@@ -19085,7 +19108,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-202",
@@ -19178,7 +19201,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-203",
@@ -19271,7 +19294,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-204",
@@ -19364,7 +19387,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-205",
@@ -19457,7 +19480,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-206",
@@ -19550,7 +19573,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-207",
@@ -19643,7 +19666,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-208",
@@ -19736,7 +19759,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-209",
@@ -19829,7 +19852,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-210",
@@ -19922,7 +19945,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-211",
@@ -20015,7 +20038,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-212",
@@ -20108,7 +20131,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-213",
@@ -20201,7 +20224,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-214",
@@ -20294,7 +20317,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-215",
@@ -20387,7 +20410,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-216",
@@ -20480,7 +20503,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-217",
@@ -20573,7 +20596,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-218",
@@ -20666,7 +20689,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-219",
@@ -20759,7 +20782,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-220",
@@ -20852,7 +20875,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-221",
@@ -20945,7 +20968,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-222",
@@ -21038,7 +21061,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-223",
@@ -21131,7 +21154,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-224",
@@ -21224,7 +21247,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-225",
@@ -21317,7 +21340,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-226",
@@ -21410,7 +21433,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-227",
@@ -21503,7 +21526,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-228",
@@ -21596,7 +21619,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-229",
@@ -21689,7 +21712,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-230",
@@ -21782,7 +21805,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-231",
@@ -21875,7 +21898,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-232",
@@ -21968,7 +21991,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-233",
@@ -22061,7 +22084,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-234",
@@ -22154,7 +22177,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-235",
@@ -22247,7 +22270,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-236",
@@ -22340,7 +22363,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-237",
@@ -22433,7 +22456,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-238",
@@ -22526,7 +22549,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-239",
@@ -22619,7 +22642,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-240",
@@ -22712,7 +22735,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-241",
@@ -22805,7 +22828,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-242",
@@ -22898,7 +22921,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-243",
@@ -22991,7 +23014,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-244",
@@ -23084,7 +23107,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-245",
@@ -23177,7 +23200,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-246",
@@ -23270,7 +23293,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-247",
@@ -23363,7 +23386,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-248",
@@ -23456,7 +23479,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-249",
@@ -23549,7 +23572,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-250",
@@ -23642,7 +23665,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-251",
@@ -23735,7 +23758,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-252",
@@ -23828,7 +23851,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-253",
@@ -23921,7 +23944,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-254",
@@ -24014,7 +24037,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-255",
@@ -24107,7 +24130,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-256",
@@ -24200,7 +24223,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-257",
@@ -24293,7 +24316,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-258",
@@ -24386,7 +24409,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-259",
@@ -24479,7 +24502,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-260",
@@ -24572,7 +24595,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-261",
@@ -24665,7 +24688,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-262",
@@ -24758,7 +24781,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-263",
@@ -24851,7 +24874,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-264",
@@ -24944,7 +24967,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-265",
@@ -25037,7 +25060,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-266",
@@ -25130,7 +25153,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-267",
@@ -25223,7 +25246,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-268",
@@ -25316,7 +25339,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-269",
@@ -25409,7 +25432,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-270",
@@ -25502,7 +25525,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-271",
@@ -25595,7 +25618,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-272",
@@ -25688,7 +25711,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-273",
@@ -25781,7 +25804,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-274",
@@ -25874,7 +25897,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-275",
@@ -25967,7 +25990,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-276",
@@ -26060,7 +26083,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-277",
@@ -26153,7 +26176,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-278",
@@ -26246,7 +26269,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-279",
@@ -26339,7 +26362,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-280",
@@ -26432,7 +26455,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-281",
@@ -26525,7 +26548,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-282",
@@ -26618,7 +26641,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-283",
@@ -26711,7 +26734,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-284",
@@ -26804,7 +26827,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-285",
@@ -26897,7 +26920,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-286",
@@ -26990,7 +27013,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-287",
@@ -27083,7 +27106,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-288",
@@ -27176,7 +27199,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-289",
@@ -27269,7 +27292,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-290",
@@ -27362,7 +27385,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-291",
@@ -27455,7 +27478,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-292",
@@ -27548,7 +27571,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-293",
@@ -27641,7 +27664,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-294",
@@ -27734,7 +27757,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-295",
@@ -27827,7 +27850,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-296",
@@ -27920,7 +27943,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-297",
@@ -28013,7 +28036,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-298",
@@ -28106,7 +28129,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-299",
@@ -28199,7 +28222,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-300",
@@ -28292,7 +28315,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-301",
@@ -28385,7 +28408,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-302",
@@ -28478,7 +28501,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-303",
@@ -28571,7 +28594,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-304",
@@ -28664,7 +28687,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-305",
@@ -28757,7 +28780,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-306",
@@ -28850,7 +28873,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-307",
@@ -28943,7 +28966,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-308",
@@ -29036,7 +29059,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-309",
@@ -29129,7 +29152,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-310",
@@ -29222,7 +29245,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-311",
@@ -29315,7 +29338,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-312",
@@ -29408,7 +29431,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-313",
@@ -29501,7 +29524,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-314",
@@ -29594,7 +29617,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-315",
@@ -29687,7 +29710,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-316",
@@ -29780,7 +29803,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-317",
@@ -29873,7 +29896,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-318",
@@ -29966,7 +29989,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-319",
@@ -30059,7 +30082,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-320",
@@ -30152,7 +30175,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-321",
@@ -30245,7 +30268,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-322",
@@ -30338,7 +30361,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-323",
@@ -30431,7 +30454,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-324",
@@ -30524,7 +30547,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-325",
@@ -30617,7 +30640,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-326",
@@ -30710,7 +30733,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-327",
@@ -30803,7 +30826,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-328",
@@ -30896,7 +30919,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-329",
@@ -30989,7 +31012,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-330",
@@ -31082,7 +31105,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-331",
@@ -31175,7 +31198,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-332",
@@ -31268,7 +31291,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-333",
@@ -31361,7 +31384,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-334",
@@ -31454,7 +31477,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-335",
@@ -31547,7 +31570,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-336",
@@ -31640,7 +31663,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-337",
@@ -31733,7 +31756,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-338",
@@ -31826,7 +31849,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-339",
@@ -31919,7 +31942,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-340",
@@ -32012,7 +32035,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-341",
@@ -32105,7 +32128,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-342",
@@ -32198,7 +32221,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-343",
@@ -32291,7 +32314,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-344",
@@ -32384,7 +32407,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-345",
@@ -32477,7 +32500,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-346",
@@ -32570,7 +32593,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-347",
@@ -32663,7 +32686,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-348",
@@ -32756,7 +32779,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-349",
@@ -32849,7 +32872,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-350",
@@ -32942,7 +32965,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-351",
@@ -33035,7 +33058,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-352",
@@ -33128,7 +33151,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-353",
@@ -33221,7 +33244,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-354",
@@ -33314,7 +33337,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-355",
@@ -33407,7 +33430,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-356",
@@ -33500,7 +33523,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-357",
@@ -33593,7 +33616,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-358",
@@ -33686,7 +33709,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-359",
@@ -33779,7 +33802,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-360",
@@ -33872,7 +33895,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-361",
@@ -33965,7 +33988,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-362",
@@ -34058,7 +34081,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-363",
@@ -34151,7 +34174,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-364",
@@ -34244,7 +34267,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-365",
@@ -34337,7 +34360,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-366",
@@ -34430,7 +34453,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-367",
@@ -34523,7 +34546,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-368",
@@ -34616,7 +34639,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-369",
@@ -34709,7 +34732,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-370",
@@ -34802,7 +34825,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-371",
@@ -34895,7 +34918,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-372",
@@ -34988,7 +35011,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-373",
@@ -35081,7 +35104,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-374",
@@ -35174,7 +35197,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-375",
@@ -35267,7 +35290,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-376",
@@ -35360,7 +35383,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-377",
@@ -35453,7 +35476,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-378",
@@ -35546,7 +35569,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-379",
@@ -35639,7 +35662,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-380",
@@ -35732,7 +35755,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-381",
@@ -35825,7 +35848,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-382",
@@ -35918,7 +35941,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-383",
@@ -36011,7 +36034,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-384",
@@ -36104,7 +36127,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-385",
@@ -36197,7 +36220,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-386",
@@ -36290,7 +36313,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-387",
@@ -36383,7 +36406,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-388",
@@ -36476,7 +36499,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-389",
@@ -36569,7 +36592,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-390",
@@ -36662,7 +36685,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-391",
@@ -36755,7 +36778,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-392",
@@ -36848,7 +36871,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-393",
@@ -36941,7 +36964,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-394",
@@ -37034,7 +37057,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-395",
@@ -37127,7 +37150,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-396",
@@ -37220,7 +37243,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-397",
@@ -37313,7 +37336,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-398",
@@ -37406,7 +37429,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-399",
@@ -37499,7 +37522,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-400",
@@ -37592,7 +37615,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-401",
@@ -37685,7 +37708,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-402",
@@ -37778,7 +37801,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-403",
@@ -37871,7 +37894,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-404",
@@ -37964,7 +37987,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-405",
@@ -38057,7 +38080,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-406",
@@ -38150,7 +38173,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-407",
@@ -38243,7 +38266,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-408",
@@ -38336,7 +38359,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-409",
@@ -38429,7 +38452,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-410",
@@ -38522,7 +38545,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-411",
@@ -38615,7 +38638,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-412",
@@ -38708,7 +38731,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-413",
@@ -38801,7 +38824,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-414",
@@ -38894,7 +38917,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-415",
@@ -38987,7 +39010,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-416",
@@ -39080,7 +39103,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-417",
@@ -39173,7 +39196,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-418",
@@ -39266,7 +39289,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-419",
@@ -39359,7 +39382,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-420",
@@ -39452,7 +39475,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-421",
@@ -39545,7 +39568,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-422",
@@ -39638,7 +39661,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-423",
@@ -39731,7 +39754,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-424",
@@ -39824,7 +39847,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-425",
@@ -39917,7 +39940,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-426",
@@ -40010,7 +40033,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-427",
@@ -40103,7 +40126,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-428",
@@ -40196,7 +40219,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-429",
@@ -40289,7 +40312,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-430",
@@ -40382,7 +40405,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-431",
@@ -40475,7 +40498,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-432",
@@ -40568,7 +40591,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-433",
@@ -40661,7 +40684,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-434",
@@ -40754,7 +40777,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-435",
@@ -40847,7 +40870,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-436",
@@ -40940,7 +40963,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-437",
@@ -41033,7 +41056,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-438",
@@ -41126,7 +41149,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-439",
@@ -41219,7 +41242,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-440",
@@ -41312,7 +41335,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-441",
@@ -41405,7 +41428,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-442",
@@ -41498,7 +41521,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-443",
@@ -41591,7 +41614,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-444",
@@ -41684,7 +41707,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-445",
@@ -41777,7 +41800,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-446",
@@ -41870,7 +41893,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-447",
@@ -41963,7 +41986,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-448",
@@ -42056,7 +42079,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-449",
@@ -42149,7 +42172,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-450",
@@ -42242,7 +42265,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-451",
@@ -42335,7 +42358,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-452",
@@ -42428,7 +42451,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-453",
@@ -42521,7 +42544,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-454",
@@ -42614,7 +42637,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-455",
@@ -42707,7 +42730,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-456",
@@ -42800,7 +42823,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-457",
@@ -42893,7 +42916,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-458",
@@ -42986,7 +43009,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-459",
@@ -43079,7 +43102,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-460",
@@ -43172,7 +43195,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-461",
@@ -43265,7 +43288,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-462",
@@ -43358,7 +43381,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-463",
@@ -43451,7 +43474,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-464",
@@ -43544,7 +43567,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-465",
@@ -43637,7 +43660,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-466",
@@ -43730,7 +43753,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-467",
@@ -43823,7 +43846,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-468",
@@ -43916,7 +43939,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-469",
@@ -44009,7 +44032,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-470",
@@ -44102,7 +44125,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-471",
@@ -44195,7 +44218,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-472",
@@ -44288,7 +44311,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-473",
@@ -44381,7 +44404,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-474",
@@ -44474,7 +44497,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-475",
@@ -44567,7 +44590,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-476",
@@ -44660,7 +44683,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-477",
@@ -44753,7 +44776,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-478",
@@ -44846,7 +44869,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-479",
@@ -44939,7 +44962,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-480",
@@ -45032,7 +45055,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-481",
@@ -45125,7 +45148,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-482",
@@ -45218,7 +45241,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-483",
@@ -45311,7 +45334,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-484",
@@ -45404,7 +45427,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-485",
@@ -45497,7 +45520,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-486",
@@ -45590,7 +45613,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-487",
@@ -45683,7 +45706,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-488",
@@ -45776,7 +45799,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-489",
@@ -45869,7 +45892,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-490",
@@ -45962,14 +45985,14 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-491",
       "number": 491,
       "name": "The Nodekeeper of Nebula Archive",
       "description": "The Nodekeeper of Nebula Archive is a high-order identity from Nebula Archive, carrying the Logic signal through the Omniscient Grid.",
-      "tier": "Elite",
+      "tier": "Legendary",
       "district": "nebula-archive",
       "districtName": "Nebula Archive",
       "category": "science-fiction",
@@ -45992,7 +46015,7 @@
         "temperament": "Fearless",
         "signal": "Logic",
         "pose": "Scanning",
-        "aura": "Cognoscenti Crown",
+        "aura": "Golden Proof",
         "motif": "star maps",
         "palette": [
           "#a993ff",
@@ -46010,7 +46033,7 @@
           },
           {
             "trait_type": "Tier",
-            "value": "Elite"
+            "value": "Legendary"
           },
           {
             "trait_type": "District",
@@ -46055,14 +46078,14 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-492",
       "number": 492,
       "name": "The Gamewright of Tech Spire",
       "description": "The Gamewright of Tech Spire is a high-order identity from Tech Spire, carrying the Wonder signal through the Omniscient Grid.",
-      "tier": "Elite",
+      "tier": "Legendary",
       "district": "tech-spire",
       "districtName": "Tech Spire",
       "category": "technology",
@@ -46085,7 +46108,7 @@
         "temperament": "Fearless",
         "signal": "Wonder",
         "pose": "Building",
-        "aura": "Cognoscenti Crown",
+        "aura": "Golden Proof",
         "motif": "stacked logic gates",
         "palette": [
           "#3cc8ff",
@@ -46103,7 +46126,7 @@
           },
           {
             "trait_type": "Tier",
-            "value": "Elite"
+            "value": "Legendary"
           },
           {
             "trait_type": "District",
@@ -46148,14 +46171,14 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-493",
       "number": 493,
       "name": "The Star Scribe of Cinema Vault",
       "description": "The Star Scribe of Cinema Vault is a high-order identity from Cinema Vault, carrying the Logic signal through the Omniscient Grid.",
-      "tier": "Elite",
+      "tier": "Legendary",
       "district": "cinema-vault",
       "districtName": "Cinema Vault",
       "category": "movies",
@@ -46178,7 +46201,7 @@
         "temperament": "Patient",
         "signal": "Logic",
         "pose": "Defending",
-        "aura": "Cognoscenti Crown",
+        "aura": "Golden Proof",
         "motif": "film apertures",
         "palette": [
           "#ff8f83",
@@ -46196,7 +46219,7 @@
           },
           {
             "trait_type": "Tier",
-            "value": "Elite"
+            "value": "Legendary"
           },
           {
             "trait_type": "District",
@@ -46241,14 +46264,14 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-494",
       "number": 494,
       "name": "The Systems Architect of History Relay",
       "description": "The Systems Architect of History Relay is a high-order identity from History Relay, carrying the Creativity signal through the Omniscient Grid.",
-      "tier": "Elite",
+      "tier": "Legendary",
       "district": "history-relay",
       "districtName": "History Relay",
       "category": "history",
@@ -46271,7 +46294,7 @@
         "temperament": "Patient",
         "signal": "Creativity",
         "pose": "Discovering",
-        "aura": "Cognoscenti Crown",
+        "aura": "Golden Proof",
         "motif": "layered timelines",
         "palette": [
           "#d69d62",
@@ -46289,7 +46312,7 @@
           },
           {
             "trait_type": "Tier",
-            "value": "Elite"
+            "value": "Legendary"
           },
           {
             "trait_type": "District",
@@ -46334,14 +46357,14 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-495",
       "number": 495,
       "name": "The Framekeeper of Comic Forge",
       "description": "The Framekeeper of Comic Forge is a high-order identity from Comic Forge, carrying the Curiosity signal through the Omniscient Grid.",
-      "tier": "Elite",
+      "tier": "Legendary",
       "district": "comic-forge",
       "districtName": "Comic Forge",
       "category": "comics",
@@ -46364,7 +46387,7 @@
         "temperament": "Patient",
         "signal": "Curiosity",
         "pose": "Broadcasting",
-        "aura": "Cognoscenti Crown",
+        "aura": "Golden Proof",
         "motif": "halftone bursts",
         "palette": [
           "#ff5f86",
@@ -46382,7 +46405,7 @@
           },
           {
             "trait_type": "Tier",
-            "value": "Elite"
+            "value": "Legendary"
           },
           {
             "trait_type": "District",
@@ -46427,14 +46450,14 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-496",
       "number": 496,
       "name": "The Chronologist of Culture Circuit",
       "description": "The Chronologist of Culture Circuit is a high-order identity from Culture Circuit, carrying the Clarity signal through the Omniscient Grid.",
-      "tier": "Elite",
+      "tier": "Legendary",
       "district": "culture-circuit",
       "districtName": "Culture Circuit",
       "category": "pop-culture",
@@ -46457,7 +46480,7 @@
         "temperament": "Playful",
         "signal": "Clarity",
         "pose": "Thinking",
-        "aura": "Cognoscenti Crown",
+        "aura": "Golden Proof",
         "motif": "broadcast waves",
         "palette": [
           "#73e69b",
@@ -46475,7 +46498,7 @@
           },
           {
             "trait_type": "Tier",
-            "value": "Elite"
+            "value": "Legendary"
           },
           {
             "trait_type": "District",
@@ -46520,14 +46543,14 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-497",
       "number": 497,
       "name": "The Panel Smith of Kaspa Core",
       "description": "The Panel Smith of Kaspa Core is a high-order identity from Kaspa Core, carrying the Focus signal through the Omniscient Grid.",
-      "tier": "Elite",
+      "tier": "Legendary",
       "district": "kaspa-core",
       "districtName": "Kaspa Core",
       "category": "kaspa",
@@ -46550,7 +46573,7 @@
         "temperament": "Playful",
         "signal": "Focus",
         "pose": "Ready",
-        "aura": "Cognoscenti Crown",
+        "aura": "Golden Proof",
         "motif": "interlocking DAG nodes",
         "palette": [
           "#70e6dc",
@@ -46568,7 +46591,7 @@
           },
           {
             "trait_type": "Tier",
-            "value": "Elite"
+            "value": "Legendary"
           },
           {
             "trait_type": "District",
@@ -46613,14 +46636,14 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-498",
       "number": 498,
       "name": "The Culture Carrier of Arcade Foundry",
       "description": "The Culture Carrier of Arcade Foundry is a high-order identity from Arcade Foundry, carrying the Clarity signal through the Omniscient Grid.",
-      "tier": "Elite",
+      "tier": "Legendary",
       "district": "arcade-foundry",
       "districtName": "Arcade Foundry",
       "category": "video-games",
@@ -46643,7 +46666,7 @@
         "temperament": "Curious",
         "signal": "Clarity",
         "pose": "Teaching",
-        "aura": "Cognoscenti Crown",
+        "aura": "Golden Proof",
         "motif": "pixel circuits",
         "palette": [
           "#f6c643",
@@ -46661,7 +46684,7 @@
           },
           {
             "trait_type": "Tier",
-            "value": "Elite"
+            "value": "Legendary"
           },
           {
             "trait_type": "District",
@@ -46706,7 +46729,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-499",
@@ -46799,7 +46822,7 @@
       }
     },
     {
-      "schemaVersion": "1.0",
+      "schemaVersion": "1.1",
       "collection": "The Omniscient Grid",
       "symbol": "GEEK-500",
       "id": "geek-500",

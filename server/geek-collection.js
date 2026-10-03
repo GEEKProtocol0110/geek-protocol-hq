@@ -2,8 +2,7 @@ const TIERS = [
   { name: 'Common', count: 250, aura: 'Signal Glow' },
   { name: 'Rare', count: 125, aura: 'Twin Pulse' },
   { name: 'Epic', count: 75, aura: 'DAG Current' },
-  { name: 'Legendary', count: 40, aura: 'Golden Proof' },
-  { name: 'Elite', count: 8, aura: 'Cognoscenti Crown' },
+  { name: 'Legendary', count: 48, aura: 'Golden Proof' },
   { name: 'Mythic', count: 2, aura: 'Genesis Field' }
 ];
 
@@ -45,7 +44,7 @@ const TOOLS = ['Source Scanner', 'DAG Compass', 'Question Deck', 'Logic Gauntlet
 const TEMPERAMENTS = ['Curious', 'Methodical', 'Fearless', 'Patient', 'Playful'];
 const SIGNALS = ['Curiosity', 'Clarity', 'Courage', 'Memory', 'Logic', 'Creativity', 'Focus', 'Empathy', 'Resilience', 'Wonder'];
 const POSES = ['Ready', 'Teaching', 'Scanning', 'Building', 'Defending', 'Discovering', 'Broadcasting', 'Thinking'];
-const ELITE_NAMES = ['The Nodekeeper', 'The Gamewright', 'The Star Scribe', 'The Systems Architect', 'The Framekeeper', 'The Chronologist', 'The Panel Smith', 'The Culture Carrier'];
+const COGNOSCENTI_NAMES = ['The Nodekeeper', 'The Gamewright', 'The Star Scribe', 'The Systems Architect', 'The Framekeeper', 'The Chronologist', 'The Panel Smith', 'The Culture Carrier'];
 
 const countBeforeTier = (target) => {
   let count = 0;
@@ -71,7 +70,7 @@ const callsignFor = (number) => `${PREFIXES[(number - 1) % PREFIXES.length]} ${S
 const identityName = (number, district) => {
   if (number === 499) return 'GIGA';
   if (number === 500) return 'A.C.E.';
-  if (number >= 491) return `${ELITE_NAMES[number - 491]} of ${district.name}`;
+  if (number >= 491) return `${COGNOSCENTI_NAMES[number - 491]} of ${district.name}`;
   return callsignFor(number);
 };
 
@@ -88,7 +87,7 @@ export const identityForNumber = (number) => {
   const artStatus = number >= 499 ? 'anchor-concept' : 'design-pending';
   const id = `geek-${String(number).padStart(3, '0')}`;
   return {
-    schemaVersion: '1.0', collection: 'The Omniscient Grid', symbol: 'GEEK-500', id, number, name,
+    schemaVersion: '1.1', collection: 'The Omniscient Grid', symbol: 'GEEK-500', id, number, name,
     description: number === 499 ? 'GIGA is the community heart of the Omniscient Grid: hope, culture, family, and the human reason the protocol exists.' : number === 500 ? 'A.C.E. is the protocol mind of the Omniscient Grid, coordinating challenges and protecting the integrity of the learning signal.' : `${name} is ${number >= 491 ? 'a high-order identity' : `a ${archetype.name.toLowerCase()}`} from ${district.name}, carrying the ${signal} signal through the Omniscient Grid.`,
     tier: tier.name, district: district.id, districtName: district.name, category: district.category, discipline: district.discipline, role,
     lore: {
@@ -121,7 +120,7 @@ export const identityForNumber = (number) => {
 };
 
 export const geekCollectionBlueprint = Object.freeze({
-  schemaVersion: '1.0', name: 'The Omniscient Grid', symbol: 'GEEK-500', supply: 500,
+  schemaVersion: '1.1', name: 'The Omniscient Grid', symbol: 'GEEK-500', supply: 500,
   chain: 'Kaspa-ready; deployment not configured', status: 'DESIGN BLUEPRINT',
   utility: 'Identity and cosmetic access only; no competitive advantage',
   anchors: [identityForNumber(499), identityForNumber(500)],
@@ -129,6 +128,15 @@ export const geekCollectionBlueprint = Object.freeze({
   districts: DISTRICTS.map((district) => ({ ...district, palette: [...district.palette] })),
   anchorRealms: Object.values(ANCHOR_REALMS).map((realm) => ({ ...realm, palette: [...realm.palette] })),
   artStatuses: { 'design-pending': 498, 'anchor-concept': 2, approved: 0 },
+  acquisition: {
+    status: 'PLANNED', sharedSupply: 500, allocations: null, prices: null,
+    routes: [
+      { id: 'mint', name: 'Public NFT mint', enabled: false },
+      { id: 'reward', name: 'Earned NFT reward', enabled: false },
+      { id: 'purchase', name: 'Purchase with GEEK or KAS', currencies: ['GEEK', 'KAS'], enabled: false }
+    ],
+    equipRequiresVerifiedOwnership: true, customizationChangesFrozenMetadata: false
+  },
   deployment: { configured: false, onChainOwnershipActive: false, metadataFrozen: false, independentlyAudited: false }
 });
 

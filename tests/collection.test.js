@@ -13,7 +13,7 @@ test('the Omniscient Grid contains exactly 500 stable, unique identities', () =>
 test('tier allocations total 500 and preserve the two mythic anchors', () => {
   const identities = listGeekIdentities();
   const actual = Object.fromEntries(geekCollectionBlueprint.tiers.map((tier) => [tier.name, identities.filter((item) => item.tier === tier.name).length]));
-  assert.deepEqual(actual, { Common: 250, Rare: 125, Epic: 75, Legendary: 40, Elite: 8, Mythic: 2 });
+  assert.deepEqual(actual, { Common: 250, Rare: 125, Epic: 75, Legendary: 48, Mythic: 2 });
   assert.equal(identityForNumber(499).name, 'GIGA');
   assert.equal(identityForNumber(499).role, 'Community Heart');
   assert.equal(identityForNumber(499).districtName, 'GIGA District');
@@ -49,4 +49,17 @@ test('out-of-range edition numbers fail closed', () => {
   assert.throws(() => identityForNumber(0), /GEEK_EDITION_INVALID/);
   assert.throws(() => identityForNumber(501), /GEEK_EDITION_INVALID/);
   assert.throws(() => identityForNumber(1.5), /GEEK_EDITION_INVALID/);
+});
+
+
+test('five rarity tiers and three planned acquisition routes share one capped supply', () => {
+  assert.equal(geekCollectionBlueprint.schemaVersion, '1.1');
+  assert.equal(geekCollectionBlueprint.tiers.length, 5);
+  assert.equal(identityForNumber(491).tier, 'Legendary'); assert.equal(identityForNumber(498).tier, 'Legendary');
+  assert.equal(geekCollectionBlueprint.acquisition.sharedSupply, 500);
+  assert.deepEqual(geekCollectionBlueprint.acquisition.routes.map(r => r.id), ['mint', 'reward', 'purchase']);
+  assert(geekCollectionBlueprint.acquisition.routes.every(r => r.enabled === false));
+  assert.deepEqual(geekCollectionBlueprint.acquisition.routes[2].currencies, ['GEEK', 'KAS']);
+  assert.equal(geekCollectionBlueprint.acquisition.prices, null); assert.equal(geekCollectionBlueprint.acquisition.allocations, null);
+  assert.equal(geekCollectionBlueprint.acquisition.equipRequiresVerifiedOwnership, true);
 });
