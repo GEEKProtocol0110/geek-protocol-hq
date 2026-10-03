@@ -69,10 +69,12 @@
     $('[data-explored]').textContent = `${learning.explored} / ${learning.total}`;
     $('[data-review-count]').textContent = learning.review;
     $('[data-confidence]').textContent = learning.confidence;
-    $('[data-progress-note]').textContent = 'Saved to your player session. Guest access follows this browser’s session. Practice records expire after 180 days without practice.';
+    $('[data-progress-note]').textContent = learning.explored
+      ? 'Saved to your player session. Guest access follows this browser’s session. Practice records expire after 180 days without practice.'
+      : 'No practice answers saved yet. Start with Where Kaspa began, read the lesson, then try Foundations. Your feedback appears after you answer a question.';
     $('[data-progress-retry]').hidden = true;
     $('[data-continue]').hidden = false;
-    $('[data-continue]').textContent = `${learning.next.review ? 'Review' : 'Continue'}: ${learning.next.name} →`;
+    $('[data-continue]').textContent = learning.explored ? `${learning.next.review ? 'Review' : 'Continue'}: ${learning.next.name} →` : 'Start your first lesson →';
     $('[data-topics]').querySelectorAll('button').forEach(b => {
       const t = learning.topics.find(t => t.id === b.dataset.topic);
       b.querySelector('.topic-progress').textContent = `${t.explored} / ${t.total} explored${t.review ? ` · ${t.review} to review` : ''}`;
@@ -206,7 +208,11 @@
   $('[data-lesson-prev]').addEventListener('click', () => { if (!busy && lessonStep > 0) { lessonStep--; renderLessonStep(true); } });
   $('[data-lesson-next]').addEventListener('click', () => { if (!busy && lessonStep < selectedTopic.steps.length) { lessonStep++; renderLessonStep(true); } });
   $('[data-review-topic]').addEventListener('click', () => start(undefined, true));
-  $('[data-continue]').addEventListener('click', () => choose(learning.next.topic, true));
+  $('[data-continue]').addEventListener('click', () => {
+    if (!learning.explored) selectedLevel = 'foundations';
+    choose(learning.next.topic, true);
+    $('[data-lesson-step-title]').focus({ preventScroll: true });
+  });
   $('[data-progress-retry]').addEventListener('click', loadProgress);
   $('[data-next]').addEventListener('click', () => act({ action: 'next', runId: state.run.id, questionToken: state.result.questionToken }));
   $('[data-exit]').addEventListener('click', () => browse());

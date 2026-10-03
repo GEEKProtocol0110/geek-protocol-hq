@@ -27,8 +27,8 @@
       $('[data-study-totals]').hidden = false;
       setText('[data-study-note]', progress.explored ? 'Your saved practice feedback helps you choose what to revisit.' : 'Begin with one lesson and a few untimed questions. Your feedback will appear here.');
       const next = $('[data-study-next]');
-      next.href = `../study/?${new URLSearchParams({ topic: progress.next.topic, ...(progress.next.review ? { review: '1' } : {}) })}`;
-      next.textContent = `${progress.next.review ? 'Review' : 'Continue'}: ${progress.next.name} →`;
+      next.href = `../study/?${new URLSearchParams({ topic: progress.next.topic, ...(!progress.explored ? { level: 'foundations' } : {}), ...(progress.next.review ? { review: '1' } : {}) })}`;
+      next.textContent = progress.explored ? `${progress.next.review ? 'Review' : 'Continue'}: ${progress.next.name} →` : 'Start your first lesson →';
       next.hidden = false; button.hidden = true;
       const names = { origins: 'Where Kaspa began', blockdag: 'Blocks, graphs & agreement', mining: 'Mining & network security', emission: 'KAS & the emission schedule', wallets: 'Wallets & safe signatures', tokens: 'Tokens & indexers', ecosystem: 'Nodes & builder tools', fundamentals: 'Keys, fees & finality' };
       $('[data-study-topics]').replaceChildren(...progress.topics.map(topic => {

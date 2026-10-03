@@ -38,3 +38,13 @@
 
 @media(max-width:650px){.kaspa-hero,.timeline li,.builder-paths{grid-template-columns:minmax(0,1fr)}.timeline li>div,.timeline h3,.builder-paths article{min-width:0;overflow-wrap:anywhere}}
 @media(max-width:380px){.kaspa-hero h1{font-size:clamp(3rem,17vw,3.8rem)}}
+
+.beginner-start{padding:3rem var(--pad);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3rem;background:#15221e;border-top:1px solid var(--line)}
+.beginner-start h2{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);letter-spacing:-.04em;text-transform:none;line-height:1.15;margin:.8rem 0}
+.beginner-start p{max-width:560px;color:var(--paper-soft)}
+.beginner-start a{color:var(--cyan);display:inline-block;padding:.5rem 0;font-weight:700}
+.beginner-steps{margin:0;padding-left:1.5rem;display:grid;gap:1.2rem}
+.beginner-steps li{padding-left:.4rem;color:var(--cyan)}
+.beginner-steps strong,.beginner-steps span{display:block;color:var(--paper)}
+.beginner-steps span{color:var(--paper-soft);font-size:.9rem;margin-top:.3rem}
+@media(max-width:760px){.beginner-start{grid-template-columns:minmax(0,1fr);gap:1.5rem}}
