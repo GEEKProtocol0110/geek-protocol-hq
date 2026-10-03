@@ -9,6 +9,14 @@
   let retry = null;
   let learning = null;
   let lessonStep = 0;
+  let walkthroughTracked = false;
+  const trackedRuns = new Set();
+  const trackPractice = stage => {
+    const key = `${stage}:${state.run.id}`;
+    if (trackedRuns.has(key)) return;
+    trackedRuns.add(key);
+    window.GeekAnalytics?.track(`Practice ${stage}`, { mode: 'study', topic: state.run.topic, level: state.run.level });
+  };
   let selectedLevel = 'foundations';
   const activeKey = 'geek-study-active-v1';
   const reviewKey = 'geek-study-review-v1';
@@ -97,6 +105,7 @@
     if (!topic) return;
     selectedTopic = topic;
     lessonStep = 0;
+    walkthroughTracked = false;
     $('[data-lesson]').hidden = false;
     $('[data-lesson-title]').textContent = topic.name;
     $('[data-lesson-text]').textContent = topic.lesson;
@@ -160,6 +169,8 @@
     clearError(); lock(true);
     try {
       state = await request(api, body); storageWrite('sessionStorage', activeKey, state.run.id); render(true);
+      if (body.action === 'start') trackPractice('started');
+      if (body.action === 'answer' && state.summary) trackPractice('completed');
       if (scroll) $('[data-practice]').scrollIntoView({ behavior: 'auto', block: 'start' });
     } catch (error) {
       if (error.status === 409) showError(error, () => act({ action: 'resume', runId: body.runId }));
@@ -217,7 +228,13 @@
   $('[data-lesson-prev]').addEventListener('click', () => { if (!busy && lessonStep > 0) { lessonStep--; renderLessonStep(true); } });
   $('[data-lesson-next]').addEventListener('click', () => {
     if (busy || !selectedTopic) return;
-    if (lessonStep < selectedTopic.steps.length) { lessonStep++; renderLessonStep(true); }
+    if (lessonStep < selectedTopic.steps.length) {
+      lessonStep++; renderLessonStep(true);
+      if (lessonStep === selectedTopic.steps.length && !walkthroughTracked) {
+        walkthroughTracked = true;
+        window.GeekAnalytics?.track('Lesson walkthrough completed', { topic: selectedTopic.id });
+      }
+    }
     else start();
   });
   $('[data-review-topic]').addEventListener('click', () => start(undefined, true));

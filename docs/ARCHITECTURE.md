@@ -121,4 +121,20 @@ The existing session function routes `service=economy` to a public status/catalo
 
 ## Traffic analytics
 
-The founder enabled Vercel Web Analytics on October 3, 2026. Public pages load `public/assets/analytics.js`, which queues Vercel's documented HTML `beforeSend` hook before loading the same-origin `/_vercel/insights/script.js`. The next deployment activates the Vercel-managed routes. Tracking runs only on the two official production hostnames and the explicit public-page list. Page-view URLs are normalized without query strings or fragments. Moderation and unlisted paths, local/preview hosts, Do Not Track, and Global Privacy Control are excluded. No custom learning events, wallet/form data, player IDs or answer data are supplied by this integration. Browser blockers or an unavailable analytics endpoint must not prevent learning. Dashboard reporting and quotas are managed by the founder's Vercel account; enabling analytics does not recreate earlier traffic history.
+The founder enabled Vercel Web Analytics on October 3, 2026. Public pages load `public/assets/analytics.js`, which queues Vercel's documented HTML `beforeSend` hook before loading the same-origin `/_vercel/insights/script.js`. Production page views are deployed. Tracking runs only on the two official production hostnames and the explicit public-page list. Page-view and event URLs are normalized without query strings or fragments. Moderation and unlisted paths, local/preview hosts, Do Not Track, and Global Privacy Control are excluded. Browser blockers or an unavailable analytics endpoint must not prevent learning. Dashboard reporting and quotas are managed by the founder's Vercel account; enabling analytics does not recreate earlier traffic history.
+
+### Learning activity events
+
+`window.GeekAnalytics.track(name, data)` accepts only the following events, routes, and fixed category values. The `beforeSend` hook independently enforces the same allowlist and rebuilds payloads, discarding extra properties. No answers, scores, question tokens, run/player IDs, wallet addresses, names, free text, or form contents are sent. Run IDs are used only in page memory to suppress duplicate confirmations; analytics adds no browser storage or cookies.
+
+| Event | Trigger | Allowed data |
+| --- | --- | --- |
+| Lesson walkthrough completed | On Study, Next idea reaches the final example, once per selected walkthrough | One of the eight curriculum `topic` IDs |
+| Practice started | Successful start response for a new Study or assisted practice run | `mode`: study/assisted; Study also supplies curriculum `topic` and `level` |
+| Practice completed | Successful answer response includes the finished Study summary or assisted practice state | Same fixed categories as Practice started |
+| Free lifeline used | Successful assisted practice lifeline response confirms the item is used | `item`: fifty-fifty/extra-time |
+| Giga choice selected | A visitor changes Giga's selected next-step choice on Home, Study, or Progress | `surface`: home/study-welcome/progress; `choice`: start/understand/practice/review |
+
+Completion and lifeline events run after successful API confirmation, outside rendering. Repeated confirmations are suppressed within the page. Viewing, resuming, or reloading an existing summary or used lifeline does not create a new event; selecting the already selected Giga choice does not count again. A walkthrough event records reaching the example, not time spent reading or demonstrated understanding. These are approximate client activity counts, not reward evidence, unique learner counts, or a complete audit trail. Blocking, privacy preferences, failed/lost responses, reloads, and automated traffic can affect totals. No custom collector, payout changes, or learning-progress writes are introduced.
+
+Vercel custom-event reports require a **Pro or Enterprise** plan ([official documentation](https://vercel.com/docs/analytics/custom-events)). The founder's account plan has not been verified, and this integration does not change the plan or billing. On a qualifying plan, open the project **Analytics → Production** dashboard and its custom events section. Event instrumentation is ready on other plans, but reporting availability must not be assumed; page-view analytics continues independently.

@@ -46,7 +46,7 @@
       const choices = document.createElement('div'); choices.className = 'giga-choices';
       for (const [id,goal] of Object.entries(goals)) {
         const button = document.createElement('button'); button.type='button';button.textContent=goal.label;button.dataset.gigaGoal=id;button.setAttribute('aria-pressed','false');
-        button.addEventListener('click',()=>{show(root,goal);choices.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));});choices.append(button);
+        button.addEventListener('click',()=>{const changed=button.getAttribute('aria-pressed')!=='true';show(root,goal);choices.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));if(changed) window.GeekAnalytics?.track('Giga choice selected',{surface:root.dataset.gigaGuide,choice:id});});choices.append(button);
       }
       details.append(choices);root.querySelector('[data-giga-content]').append(details);
     }

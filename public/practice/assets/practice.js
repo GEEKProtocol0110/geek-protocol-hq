@@ -2,6 +2,8 @@
  'use strict';
  const $ = s => document.querySelector(s), items = [...document.querySelectorAll('[data-item]')];
  let state = null, busy = false, clock = 0, timer = null, submittedTimeout = '';
+ const tracked = new Set();
+ const track = (name, key, data) => { if (tracked.has(key)) return; tracked.add(key); window.GeekAnalytics?.track(name,data); };
  const savedId = () => { try { return sessionStorage.getItem('geek-assisted-run') || ''; } catch { return ''; } };
  const saveId = id => { try { if (id) sessionStorage.setItem('geek-assisted-run',id); else sessionStorage.removeItem('geek-assisted-run'); } catch {} };
  const request = async (path,body) => {
@@ -41,6 +43,9 @@
   try {
    if (!state && body.action==='start') await request('/api/session/',{});
    const payload=await request('/api/ranked/?service=practice',{...body,...(body.runId?{}:state?{runId:state.id}:{})}); state=payload.practice;saveId(state.id);render();
+   if (body.action==='start') track('Practice started',`start:${state.id}`,{mode:'assisted'});
+   if (body.action==='answer' && state.finished) track('Practice completed',`finish:${state.id}`,{mode:'assisted'});
+   if (body.action==='lifeline' && state.used[body.item]) track('Free lifeline used',`${state.id}:${body.item}`,{item:body.item});
   } catch (error) { $('[data-error]').hidden=false; $('[data-error-message]').textContent=error.name==='AbortError'?'The request timed out. Reload the current question before trying again.':error.message; $('[data-reload]').hidden=!state && !savedId(); }
   finally { busy=false;controls(); }
  };
