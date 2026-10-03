@@ -21,6 +21,7 @@
     $('[data-study-panel]').setAttribute('aria-busy', 'true');
     try {
       const { progress } = await api('/api/ranked/?service=study', { method: 'POST', body: JSON.stringify({ action: 'progress' }) });
+      window.GeekGiga?.update('progress', { explored: progress.explored, review: progress.review, topic: progress.next.topic });
       setText('[data-study-explored]', `${progress.explored} / ${progress.total}`);
       setText('[data-study-review]', progress.review);
       setText('[data-study-confidence]', progress.confidence);
@@ -39,6 +40,7 @@
         card.append(title, note); return card;
       }));
     } catch (error) {
+      window.GeekGiga?.update('progress', { phase: 'unavailable' });
       setText('[data-study-note]', `${error.message} Your saved feedback has not changed. You can retry or open Study.`);
       button.hidden = false;
     } finally { button.disabled = false; $('[data-study-panel]').setAttribute('aria-busy', 'false'); }
@@ -176,6 +178,7 @@
         refreshCollectibles().catch(error => setText('[data-trade-feedback]', `${error.message} Your collection remains saved.`))
       ]);
     } catch (error) {
+      window.GeekGiga?.update('progress', { phase: 'unavailable' });
       setText('[data-profile-state]', 'PROFILE SERVICE OFFLINE');
       setText('[data-study-note]', `${error.message} Refresh this page to reconnect. You can still read Kaspa 101.`);
       $('[data-journey-list]').innerHTML = `<li class="profile-empty">${escapeHtml(error.message)} Your verified data remains on the server.</li>`;

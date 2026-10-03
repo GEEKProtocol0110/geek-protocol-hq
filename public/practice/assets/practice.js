@@ -29,7 +29,7 @@
    $('[data-lifeline-note]').textContent=q.removed.length?'50/50 removed two wrong choices. Choose from the remaining answers.':state.used['extra-time']?'Extra Time has been used in this session.':'Use a lifeline before answering.';
    timer=setInterval(tick,150); tick(); $('[data-prompt]').focus({preventScroll:true});
   } else if (state) {
-   const f=state.feedback; $('[data-feedback-title]').textContent=f.correct?'Correct · keep learning':f.selectedIndex===-1?'Time ended · learn from the answer':'A chance to learn'; $('[data-answer]').textContent=f.answer; $('[data-explanation]').textContent=f.explanation || 'Read the source and try the concept again.';
+   const f=state.feedback; window.GeekGiga?.update('practice', { phase: state.finished ? 'finished' : f.correct ? 'correct' : f.selectedIndex === -1 ? 'timeout' : 'missed' }); $('[data-feedback-title]').textContent=f.correct?'Correct · keep learning':f.selectedIndex===-1?'Time ended · learn from the answer':'A chance to learn'; $('[data-answer]').textContent=f.answer; $('[data-explanation]').textContent=f.explanation || 'Read the source and try the concept again.';
    const source=$('[data-source]'); let url; try { url=new URL(f.source); } catch {} source.hidden=!url || url.protocol!=='https:';if (!source.hidden) source.href=url.href;
    $('[data-summary]').textContent=state.finished?`Practice complete: ${state.correct} of 10 correct. These assisted results do not award XP, credits, or tokens.`:`${state.answered} of 10 answered · ${state.correct} correct. Take your time with the explanation.`;
    $('[data-next]').hidden=state.finished; $('[data-restart]').hidden=!state.finished;
