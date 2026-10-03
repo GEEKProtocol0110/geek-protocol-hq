@@ -98,3 +98,7 @@ Passing repository checks are necessary evidence, not a substitute for independe
 ### Giga learning buddy
 
 Giga is present in Home, Study, assisted practice and Progress. The shared authored guide offers four next-step choices, encouragement based on actual Study/practice outcomes, and links to the existing lesson/review paths. Giga's guidance creates no account state, stores no answers or preferences, and requests no wallet action. A.C.E. continues to provide source-linked lesson and answer explanations. Existing recovered Giga artwork is reused as concept art. Free-form chat, adaptive AI tutoring, voice interaction and Geek Jr integration are not implemented by this change.
+
+### Traffic tracking
+
+Vercel Web Analytics is integrated for production public-page visits. The founder handles the Vercel dashboard setting. Page URLs exclude query strings/fragments; private moderation and local/preview traffic are excluded, and browser privacy preferences are respected. Lesson/practice completion, lifeline-use and Giga-choice events are not yet instrumented. Dashboard totals are estimates of traffic, not proof of learning or payments.
