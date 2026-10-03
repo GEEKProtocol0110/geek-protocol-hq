@@ -17,7 +17,9 @@
 
 The [daily vault](https://www.geekprotocol.xyz/vault/) offers one visible cosmetic seal per UTC day, with a private collection and replay-safe receipts. Login claims award no XP, credits, or tokens.
 
-**Current focus:** polish Learn → Study → practice → see progress. Existing extras remain available through Explore; larger Arena, economic, DAO and launchpad expansions are on hold.
+**Current focus:** polish Learn → Study → practice → see progress. Existing extras remain available through Explore; economy accounting foundations are now active. Larger Arena, DAO and launchpad expansions remain on hold. Real purchases and settlement remain disabled.
+
+The [power-up and economy foundation](https://www.geekprotocol.xyz/economy/) restores six planned items, treasury categories, exact 70/30 fee examples, and a private planning journal. It cannot move funds or create spendable GEEK. Read the [Economy Protocol](docs/ECONOMY-PROTOCOL.md).
 
 ## What is Geek Protocol?
 

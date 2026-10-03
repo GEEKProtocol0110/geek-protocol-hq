@@ -155,6 +155,12 @@
       "evidence": ["server/vault.js", "api/session.js", "tests/api.test.js", "docs/VAULT-PROTOCOL.md"]
     },
     {
+      "id": "GP-INV-025",
+      "title": "Isolated planning-only economy journal with exact amounts and no client-authorized value movement",
+      "status": "implemented-alpha",
+      "evidence": ["server/economy-ledger.js", "server/economy.js", "public/economy/assets/amounts.js", "tests/economy.test.js", "docs/ECONOMY-PROTOCOL.md"]
+    },
+    {
       "id": "GP-GATE-INDEPENDENT-AUDIT",
       "title": "Independent application and settlement audits",
       "status": "required-before-settlement",
