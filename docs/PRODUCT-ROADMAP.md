@@ -14,7 +14,7 @@ Geek Protocol was born in Detroit, Michigan, USA. Use American English in public
 
 Arena expansions, new economic/reward systems, DAO work, and the launchpad are **on hold** while the core is polished and tried by real learners. The feature tables below preserve the full long-term vision; “Planned” does not mean active work or the next release. No existing service is shut down by this prioritization.
 
-First-visit guidance points beginners to Where Kaspa began at Foundations level, explains read → practice → review, and gives learners with no saved answers an explicit first-lesson action. Existing learners keep their saved review and continuation recommendations. This is interface guidance, not evidence of improved learning outcomes.
+First-visit guidance points beginners to Where Kaspa began at Foundations level, explains read → practice → review, and gives learners with no saved answers an explicit first-lesson action. Existing learners keep their saved review and continuation recommendations. The final lesson idea offers an explicit Start practice action using the selected topic and level; reading the lesson never starts a run automatically. This is interface guidance, not evidence of improved learning outcomes.
 
 The next review should ask whether learners can find a lesson, understand its objective, answer a short practice set, find saved mistakes, and choose the next step without help. Record confusing steps and content corrections through the existing issue process. Usability observations are not evidence of improved learning outcomes; any outcome claim needs a separate evaluation. Do not add analytics or collect learner data merely to carry out this review.
 

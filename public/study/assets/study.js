@@ -28,7 +28,12 @@
   };
   const clearError = () => { $('[data-error]').hidden = true; retry = null; };
   const showError = (error, again) => { $('[data-error-text]').textContent = error.message; $('[data-error]').hidden = false; $('[data-retry]').hidden = !again; retry = again || null; };
-  const lock = value => { busy = value; document.querySelectorAll('[data-start], [data-options] button, [data-next], [data-practice-missed], [data-recommended], [data-exit], [data-topics] button, [data-retry], [data-level], [data-review-topic], [data-continue], [data-progress-retry]').forEach(b => { b.disabled = value; }); $('[data-practice]').setAttribute('aria-busy', String(value)); };
+  const lock = value => {
+    busy = value;
+    document.querySelectorAll('[data-start], [data-lesson-prev], [data-lesson-next], [data-options] button, [data-next], [data-practice-missed], [data-recommended], [data-exit], [data-topics] button, [data-retry], [data-level], [data-review-topic], [data-continue], [data-progress-retry]').forEach(b => { b.disabled = value; });
+    if (selectedTopic) $('[data-lesson-prev]').disabled = value || lessonStep === 0;
+    $('[data-practice]').setAttribute('aria-busy', String(value));
+  };
   const renderLessonStep = (focus = false) => {
     const final = lessonStep === selectedTopic.steps.length;
     const step = final ? { title: 'Put the ideas together', text: selectedTopic.example } : selectedTopic.steps[lessonStep];
@@ -38,8 +43,9 @@
     $('[data-reflection]').hidden = !final;
     $('[data-reflection]').textContent = `Think it through: ${selectedTopic.reflection}`;
     $('[data-lesson-prev]').disabled = lessonStep === 0;
-    $('[data-lesson-next]').disabled = final;
-    $('[data-lesson-next]').textContent = final ? 'Ready for practice' : 'Next idea →';
+    $('[data-lesson-next]').disabled = busy;
+    $('[data-lesson-next]').textContent = final ? 'Start practice →' : 'Next idea →';
+    $('[data-lesson-next]').classList.toggle('primary', final);
     if (focus) $('[data-lesson-step-title]').focus({ preventScroll: true });
   };
   const renderLevel = () => {
@@ -206,7 +212,11 @@
   $('[data-start]').addEventListener('click', () => start());
   $('[data-level]').addEventListener('change', () => { selectedLevel = $('[data-level]').value; renderLevel(); });
   $('[data-lesson-prev]').addEventListener('click', () => { if (!busy && lessonStep > 0) { lessonStep--; renderLessonStep(true); } });
-  $('[data-lesson-next]').addEventListener('click', () => { if (!busy && lessonStep < selectedTopic.steps.length) { lessonStep++; renderLessonStep(true); } });
+  $('[data-lesson-next]').addEventListener('click', () => {
+    if (busy || !selectedTopic) return;
+    if (lessonStep < selectedTopic.steps.length) { lessonStep++; renderLessonStep(true); }
+    else start();
+  });
   $('[data-review-topic]').addEventListener('click', () => start(undefined, true));
   $('[data-continue]').addEventListener('click', () => {
     if (!learning.explored) selectedLevel = 'foundations';
