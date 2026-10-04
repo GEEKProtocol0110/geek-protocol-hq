@@ -132,7 +132,11 @@ export const handleApiError = (res, error) => {
   if (code === 'IDENTITY_AUTHORIZATION_FAILED') return sendJson(res, 503, { ok: false, code, error: 'A protected wallet authorization could not be created.' });
   if (code === 'IDENTITY_STATE_CONFLICT') return sendJson(res, 409, { ok: false, code, error: 'The player identity changed during verification. Request a new wallet challenge.' });
   if (code === 'DAILY_ALREADY_PLAYED') return sendJson(res, 409, { ok: false, code, error: 'Today’s verified Daily Signal has already been started. A new challenge unlocks at 00:00 UTC.' });
-  if (code === 'PROFILE_BUSY') return sendJson(res, 409, { ok: false, code, error: 'Your profile is updating. Try saving your Geek again.' });
+  if (code === 'PROFILE_BUSY') return sendJson(res, 409, { ok: false, code, error: 'Your profile is updating. Refresh and try again.' });
+  if (code === 'PRESTIGE_LEVEL_REQUIRED') return sendJson(res, 409, { ok: false, code, error: 'Reach level 50 before entering prestige.' });
+  if (code === 'PRESTIGE_CHANGED') return sendJson(res, 409, { ok: false, code, error: 'Your prestige changed. Refresh your dashboard before trying again.' });
+  if (code === 'PRESTIGE_MAXED') return sendJson(res, 409, { ok: false, code, error: 'Prestige 25 is the final prestige rank.' });
+  if (code === 'PRESTIGE_STATE_INVALID') return sendJson(res, 503, { ok: false, code, error: 'Your prestige record needs recovery. Your saved data has not been reset.' });
   if (code === 'INVALID_AVATAR_CUSTOMIZATION') return sendJson(res, 400, { ok: false, code, error: 'Choose a supported option for each Geek part.' });
   if (code === 'AVATAR_LOCKED') return sendJson(res, 403, { ok: false, code, error: 'That Geek identity has not been unlocked yet.' });
   if (code === 'STICKER_TRADE_INVALID') return sendJson(res, 400, { ok: false, code, error: 'Choose two different stickers and a quantity from one to nine.' });

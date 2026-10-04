@@ -4,14 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#080b0b" />
-    <meta name="description" content="Your saved Kaspa Study feedback, concepts explored, topics to review, and separate game progress." />
-    <title>Your Progress — Geek Protocol</title>
+    <meta name="description" content="Your Geek Protocol player dashboard: levels 1–50, 25 prestige ranks, achievements, challenges, verified leaderboards and saved Study feedback." />
+    <title>Player Dashboard — Geek Protocol</title>
     <link rel="canonical" href="https://www.geekprotocol.xyz/profile/" />
     <link rel="stylesheet" href="../assets/styles.css" /><link rel="stylesheet" href="../assets/space.css">
     <link rel="stylesheet" href="./assets/profile.css" />
+    <link rel="stylesheet" href="./assets/dashboard.css" />
     <script defer src="../assets/site.js"></script>
     <script defer src="../assets/giga.js"></script>
     <script defer src="./assets/profile.js"></script>
+    <script defer src="./assets/dashboard.js"></script>
     <script type="module" src="./assets/geek-builder.js"></script>
   <link rel="stylesheet" href="../assets/giga.css" /><script defer src="/assets/analytics.js"></script></head>
   <body>
@@ -26,9 +28,9 @@
       <section class="profile-hero" aria-labelledby="profile-title">
         <div class="profile-intro">
           <div class="eyebrow"><span class="profile-live-dot"></span><span data-profile-state>CONNECTING TO VERIFIED PROFILE</span></div>
-          <h1 id="profile-title">YOUR<br /><em>PROGRESS.</em></h1>
-          <p>See what you have explored and what to revisit. Your Study feedback appears first; timed games keep their own XP, scores, and milestones.</p>
-          <div class="profile-actions"><a class="button button-primary" href="../study/">Continue Study <span aria-hidden="true">→</span></a><a class="button button-secondary" href="../kaspa/">Read Kaspa 101</a><a class="button button-secondary" href="#geek-builder">Customize my Geek</a><a class="button button-secondary" href="../rewards/">Protect your profile</a></div>
+          <h1 id="profile-title">YOUR<br /><em>PLAYER HQ.</em></h1>
+          <p>Your Geek. Your career. Climb 50 levels, choose to prestige, and build your legacy through 25 prestige ranks. Track achievements, challenges, and verified scores in one place.</p>
+          <div class="profile-actions"><a class="button button-primary" href="../play/">Play for XP <span aria-hidden="true">→</span></a><a class="button button-secondary" href="../kaspa/">Read Kaspa 101</a><a class="button button-secondary" href="#geek-builder">Customize my Geek</a><a class="button button-secondary" href="../rewards/">Protect your profile</a></div>
         </div>
 
         <article class="identity-card" aria-label="Player identity">
@@ -37,22 +39,16 @@
         </article>
       </section>
 
+      <nav class="dashboard-nav" aria-label="Player dashboard sections"><a href="#progression-title">Career</a><a href="#prestige">Prestige</a><a href="#dashboard-challenges">Challenges</a><a href="#leaderboard">Leaderboard</a><a href="#achievement-title">Achievements</a><a href="#geek-builder">My Geek</a></nav>
+
       <aside class="giga-guide" data-giga-guide="progress" data-giga-choices aria-label="Giga, your learning buddy"><div class="giga-portrait"><img src="/assets/kaspa-culture.png" alt="Giga, the friendly gold robot" width="1024" height="1024" loading="lazy" /></div><div class="giga-content" data-giga-content><span class="giga-label">GIGA // YOUR LEARNING BUDDY</span><noscript><p>Welcome to Geek. Start with one idea and take your time. <a href="/study/?topic=origins&amp;level=foundations">Try your first lesson with A.C.E. →</a></p></noscript></div></aside>
 
-      <section class="profile-study" aria-labelledby="study-progress-title" data-study-panel aria-busy="true">
-        <div class="section-kicker">YOUR SAVED STUDY FEEDBACK</div><div class="study-progress-heading"><h2 id="study-progress-title">Your next<br />small step.</h2><p data-study-note role="status">Loading your saved concept feedback…</p></div>
-        <div class="study-progress-totals" data-study-totals hidden><article><strong data-study-explored>—</strong><span>Concepts explored</span></article><article><strong data-study-review>—</strong><span>Ready to review</span></article><article><strong data-study-confidence>—</strong><span>Building confidence</span></article></div>
-        <div class="profile-actions"><a class="button button-primary" data-study-next hidden>Continue your topic →</a><a class="button button-secondary" href="../study/">Choose a lesson</a><button class="button button-secondary" type="button" data-study-retry hidden>Reload Study feedback</button></div>
-        <div class="study-progress-topics" data-study-topics aria-label="Saved Study feedback by topic"></div>
-        <p class="study-progress-boundary">These are practice signals. Building confidence means two correct answers in separate runs since the last mistake. Study awards no XP and does not certify mastery. Guest access follows this browser’s session; a verified identity supports recovery. Practice feedback expires after 180 days without practice.</p>
-      </section>
-
       <section class="progression-section" aria-labelledby="progression-title">
-        <div class="section-kicker">TIMED GAME PROGRESS / SEPARATE FROM STUDY</div>
+        <div class="section-kicker">CAREER / 50 LEVELS × 25 PRESTIGE RANKS</div>
         <div class="progression-layout">
           <article class="level-core">
             <div class="level-orbit" data-level-orbit style="--progress:0deg"><div><span>LEVEL</span><strong data-level>1</strong><small data-prestige>PRESTIGE 0</small></div></div>
-            <div class="level-copy"><span data-rank-title-copy>INITIATE</span><h2 id="progression-title">Climb the<br />signal stack.</h2><p><b data-level-xp>0 / 250 XP</b> in this level · <span data-xp-next>250 XP to next level</span></p><div class="level-track" role="progressbar" aria-label="Progress to next level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-level-track><i data-level-bar></i></div><small>Prestige is awarded automatically after every 25 server-verified levels. XP never comes from the browser.</small></div>
+            <div class="level-copy"><span data-rank-title-copy>INITIATE</span><h2 id="progression-title">Climb the<br />signal stack.</h2><p><b data-level-xp>0 / 250 XP</b> in this level · <span data-xp-next>250 XP to next level</span></p><div class="level-track" role="progressbar" aria-label="Progress to next level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-level-track><i data-level-bar></i></div><small>Earn 250 server-awarded XP per level. Level 50 unlocks an optional prestige reset to level 1. Lifetime XP, achievements, scores, collectibles, and Study feedback stay with you.</small></div>
           </article>
 
           <div class="career-stats" aria-label="Career totals">
@@ -64,6 +60,32 @@
             <article><span>ALPHA GEEK</span><strong data-stat="alphaGeek">0</strong><small>No-value practice ledger</small></article>
           </div>
         </div>
+      </section>
+
+      <section id="prestige" class="dashboard-prestige" aria-labelledby="prestige-title">
+        <div class="section-kicker">YOUR LEGACY / PRESTIGE 01–25</div>
+        <div class="profile-heading"><div><h2 id="prestige-title">Start again.<br />Carry it all.</h2><p data-prestige-summary>Connecting your career…</p></div><div><p data-prestige-note></p><button class="button button-primary" type="button" data-prestige-open disabled>Unlock at level 50</button></div></div>
+        <ol class="prestige-road" data-prestige-road aria-label="25 prestige ranks"></ol>
+        <p class="dashboard-note" data-legacy-note hidden>Your previously earned prestige ranks are preserved from the earlier progression system.</p>
+        <div class="dashboard-refresh-row"><p data-prestige-feedback role="status" aria-live="polite"></p><button class="button button-secondary" type="button" data-dashboard-refresh>Refresh dashboard</button></div>
+      </section>
+      <section id="dashboard-challenges" class="dashboard-section" aria-labelledby="dashboard-challenges-title">
+        <div class="section-kicker">CHALLENGES / YOUR NEXT RUN</div><div class="profile-heading"><h2 id="dashboard-challenges-title">Keep the<br />signal moving.</h2><p data-dashboard-challenge-note role="status">Loading current challenges…</p></div>
+        <div class="dashboard-xp-modes"><a href="../play/?mode=gauntlet"><b>Geek Gauntlet</b><span>10-round ascent · career XP →</span></a><a href="../play/?mode=daily"><b>Daily Signal</b><span>5 questions · once per UTC day · XP →</span></a><a href="../play/?mode=speed"><b>Speed Signal</b><span>30 seconds · career XP →</span></a></div>
+        <div class="dashboard-challenge-grid" data-dashboard-challenges aria-busy="true"></div><a class="dashboard-text-link" href="../challenges/">All weekly and monthly challenges →</a>
+      </section>
+      <section id="leaderboard" class="dashboard-section dashboard-leaderboard" aria-labelledby="dashboard-board-title" data-board-panel aria-busy="true">
+        <div class="section-kicker">LEADERBOARD / VERIFIED SCORES</div><div class="profile-heading"><h2 id="dashboard-board-title">Make your<br />mark.</h2><p>Compete by mode and category. Prestige is a career badge; it gives no scoring advantage. Your best scores survive each reset.</p></div>
+        <div class="dashboard-board-controls"><label>Mode<select data-board-mode><option value="gauntlet">Geek Gauntlet</option><option value="daily">Daily Signal</option><option value="speed">Speed Signal</option></select></label><label>Category<select data-board-category><option value="kaspa">Kaspa</option><option value="video-games">Video Games</option><option value="science-fiction">Science Fiction</option><option value="technology">Technology</option><option value="movies">Movies</option><option value="history">History</option><option value="comics">Comics</option><option value="pop-culture">Pop Culture</option></select></label><button type="button" class="button button-secondary" data-board-refresh>Refresh standings</button></div>
+        <p data-dashboard-rank class="dashboard-own-rank"></p><p data-dashboard-board-note class="dashboard-note" role="status">Loading verified standings…</p>
+        <div class="dashboard-table-wrap"><table class="dashboard-table"><caption class="sr-only">Verified player standings for the selected mode and category</caption><thead><tr><th scope="col">Rank</th><th scope="col">Player</th><th scope="col">Career</th><th scope="col">Score</th></tr></thead><tbody data-dashboard-board></tbody></table></div>
+      </section>
+      <section class="profile-study" aria-labelledby="study-progress-title" data-study-panel aria-busy="true">
+        <div class="section-kicker">YOUR SAVED STUDY FEEDBACK</div><div class="study-progress-heading"><h2 id="study-progress-title">Your next<br />small step.</h2><p data-study-note role="status">Loading your saved concept feedback…</p></div>
+        <div class="study-progress-totals" data-study-totals hidden><article><strong data-study-explored>—</strong><span>Concepts explored</span></article><article><strong data-study-review>—</strong><span>Ready to review</span></article><article><strong data-study-confidence>—</strong><span>Building confidence</span></article></div>
+        <div class="profile-actions"><a class="button button-primary" data-study-next hidden>Continue your topic →</a><a class="button button-secondary" href="../study/">Choose a lesson</a><button class="button button-secondary" type="button" data-study-retry hidden>Reload Study feedback</button></div>
+        <div class="study-progress-topics" data-study-topics aria-label="Saved Study feedback by topic"></div>
+        <p class="study-progress-boundary">These are practice signals. Building confidence means two correct answers in separate runs since the last mistake. Study awards no XP and does not certify mastery. Guest access follows this browser’s session; a verified identity supports recovery. Practice feedback expires after 180 days without practice.</p>
       </section>
 
       <section id="geek-builder" class="geek-builder" aria-labelledby="geek-builder-title">
@@ -106,7 +128,7 @@
 
       </details>
 
-      <details class="profile-extra" data-extra="games"><summary>Your game details <span>Categories, achievements, and recent rounds</span></summary>
+      <div class="dashboard-career">
       <section class="mastery-section" aria-labelledby="mastery-title">
         <div class="section-kicker">04 / KNOWLEDGE WORLDS</div>
         <div class="profile-heading"><h2 id="mastery-title">Category<br />practice.</h2><p>Each world records only server-scored rounds. Explore broadly or build a specialty—the journey keeps both visible.</p></div>
@@ -115,20 +137,21 @@
 
       <section class="achievement-section" aria-labelledby="achievement-title">
         <div class="section-kicker">05 / ACHIEVEMENTS</div>
-        <div class="profile-heading"><h2 id="achievement-title">Your game<br />milestones.</h2><p>Achievements unlock from server-owned totals. Locked milestones show exactly what remains.</p></div>
+        <div class="profile-heading"><h2 id="achievement-title">Your game<br />milestones.</h2><p>Achievements unlock from your career record and survive prestige. <strong data-achievement-count>Loading achievements…</strong></p></div>
         <div class="achievement-grid" data-achievement-grid></div>
       </section>
 
       <section class="journey-section" aria-labelledby="journey-title">
-        <div class="journey-heading"><div><div class="section-kicker">06 / JOURNEY LOG</div><h2 id="journey-title">THE PATH<br /><em>SO FAR.</em></h2></div><p>Recent rounds, level-ups, sticker unlocks, and prestige crossings are kept in a bounded, recoverable server history. Correct answers and private question data never appear here.</p></div>
+        <div class="journey-heading"><div><div class="section-kicker">06 / JOURNEY LOG</div><h2 id="journey-title">THE PATH<br /><em>SO FAR.</em></h2></div><p>Recent rounds, level-ups, sticker unlocks, and prestige choices are kept in a bounded, recoverable server history. Correct answers and private question data never appear here.</p></div>
         <ol class="journey-list" data-journey-list><li class="profile-empty">Your first verified milestone is waiting.</li></ol>
       </section>
 
-      </details>
+      </div>
 
       <section class="profile-cta"><span>ONE IDEA. ONE NEXT STEP.</span><h2>KEEP<br /><em>GOING.</em></h2><div class="profile-actions"><a class="button button-primary" href="../study/">Continue guided Study <span aria-hidden="true">→</span></a><a class="button button-secondary" href="../kaspa/">Study Kaspa 101</a></div></section>
     </main>
 
+    <dialog class="prestige-dialog" data-prestige-dialog aria-labelledby="prestige-dialog-title"><h2 id="prestige-dialog-title" data-prestige-dialog-title>Enter prestige?</h2><p>Your level restarts at 1 with zero cycle XP. Lifetime XP, scores, achievements, collectibles, identity, and Study feedback remain saved.</p><p>Extra XP earned after reaching level 50 remains in lifetime totals and is not banked into the next cycle.</p><label class="prestige-confirm-check"><input type="checkbox" data-prestige-check /> I want to restart at level 1 and earn the next prestige rank.</label><p data-prestige-dialog-error role="status" aria-live="polite"></p><div class="profile-actions"><form method="dialog"><button class="button button-secondary" data-prestige-cancel>Keep my level</button></form><button class="button button-primary" type="button" data-prestige-confirm disabled>Confirm prestige</button></div></dialog>
     <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>Your knowledge has a history.</p></div><div class="footer-links"><a href="../">Home</a><a href="../collection/">Collection</a><a href="../play/">Play</a><a href="../rewards/">Rewards</a><a href="../security/">Security</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · Progression is server-ranked Alpha data, not a financial balance.</p></footer>
   </body>
 </html>

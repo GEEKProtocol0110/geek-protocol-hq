@@ -40,7 +40,7 @@ Earlier documents express a proposed ecosystem. The present implementation uses 
 | Gauntlet | Ten rounds of ten questions, eight categories, server-owned deadlines/scoring; later rounds use internal credits |
 | Daily and Speed | Implemented timed alternatives, with their existing separate modes |
 | Weekly and monthly challenges | Shared reviewed Kaspa sets, UTC periods, one attempt per player, accuracy scoring, bounded separate boards |
-| Geek's Journey | Server XP, 25-level prestige cycles, category records, journey history, avatars and achievements |
+| Player dashboard / Geek's Journey | Server XP, levels 1–50, 25 optional prestige resets, achievements, challenge cards, verified standings, category records, journey history and avatars |
 | Shared lobbies | Ten-question host-started practice, roster/deadline authority; Quick Duel is a two-seat template |
 | Community Content Engine | Submission, human moderation, publication, one internal first-use credit |
 | Collectibles and trades | Off-chain avatar/sticker inventory and atomic sticker offers |

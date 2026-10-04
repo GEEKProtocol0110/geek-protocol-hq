@@ -53,7 +53,7 @@ See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness
 | **Daily vault** | One visible cosmetic seal per UTC day, private collection, and atomic claim receipts |
 | **Challenges** | Shared Weekly Signal and Monthly Circuit with one attempt per UTC period and separate verified standings |
 | **Lobbies** | Active seats, shareable rooms, and host-started ten-question shared practice rounds with server-scored standings |
-| **Profile** | Verified XP, levels, prestige, category mastery, journey history, and collectibles |
+| **Player dashboard** | Levels 1–50, 25 manual prestige ranks, achievements, challenges, verified standings, category records and collectibles |
 | **C.C.E.** | Community question submission, moderation, publication, and first-use reward records |
 | **Profile characters** | Free Build-a-GEEK editor with server-saved cosmetic parts, plus five launch avatars |
 | **Collection** | Five-tier, 500-NFT blueprint with planned mint/reward/GEEK-or-KAS purchase routes and hashed legacy-art archive |

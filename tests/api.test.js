@@ -14,12 +14,72 @@ import identityHandler from '../api/identity.js';
 import { collectiblesHandler, profileHandler } from '../server/player-api.js';
 import kaspa from '@dfns/kaspa-wasm';
 import { isValidKaspaMainnetAddress } from '../server/kaspa-address.js';
-import { defaultProfile } from '../server/profile.js';
+import { defaultProfile, loadProfile, saveProfile } from '../server/profile.js';
+import { enterPrestige, PRESTIGE_LUA } from '../server/prestige.js';
+import { prestigeKeyFor, initialPrestigeState } from '../server/prestige-state.js';
+import { recordVerifiedScore } from '../server/leaderboard.js';
 import { deriveProgression, recordRoundJourney } from '../server/progression.js';
 import { loadQuestionBank } from '../server/questions.js';
 import { studyQuestionById, studyBank } from '../server/study-curriculum.js';
 import { challengePeriod, CHALLENGE_CAP } from '../server/challenge-periods.js';
 import { vaultDay, vaultKey, vaultSeals } from '../server/vault.js';
+
+test('level 50 is a manual boundary and lifetime XP never auto-prestiges', () => {
+  const p = defaultProfile();
+  for (const [xp, level, ready] of [[0,1,false],[249,1,false],[250,2,false],[12249,49,false],[12250,50,true],[500000,50,true]]) {
+    p.xp = xp; const result = deriveProgression(p);
+    assert.equal(result.level,level); assert.equal(result.canPrestige,ready); assert.equal(result.prestige,0);
+  }
+  p.prestigeState = {...initialPrestigeState(),prestige:25};
+  const result = deriveProgression(p); assert.equal(result.maxed,true); assert.equal(result.canPrestige,false); assert.equal(result.title,'Prestige Master');
+});
+
+test('manual prestige preserves career data and rejects forged or duplicate resets', async () => {
+  const cookie = await startSession('Prestige Carry'), id = sessionIdFromCookie(cookie), key = `geek:profile:${id}`;
+  await loadProfile(id);
+  await saveProfile(id,{...defaultProfile(),xp:13000,balance:77,totalCorrect:500,totalQuestions:600,bestScore:12345,avatarId:'giga-builder',avatarCustomization:{version:1},stickerInventory:{'giga-core':3},payoutAddress:'saved setting',payoutMutationHistory:[],journey:[{id:'old',type:'round',at:1}],categoryStats:{kaspa:{correct:100,rounds:12,questions:120}}});
+  const before = strings.get(key), body = {action:'prestige',expectedPrestige:0,confirm:true};
+  const call = async (input=body,auth=cookie) => {const r=response();await sessionHandler(request('POST',input,auth,{service:'prestige'}),r);return r;};
+  assert.equal((await call(body,'')).statusCode,401); assert.equal((await call({...body,xp:999999})).statusCode,400); assert.equal((await call({...body,confirm:false})).statusCode,400);
+  const results=await Promise.all([call(),call()]); assert.deepEqual(results.map(r=>r.statusCode).sort(),[200,409]);
+  const success=results.find(r=>r.statusCode===200).body.profile;
+  assert.equal(success.progression.level,1);assert.equal(success.progression.prestige,1);assert.equal(success.progression.cycleXp,0);assert.equal(success.stats.xp,13000);
+  assert.equal(success.achievements.find(a=>a.id==='level-fifty').unlocked,true);assert.equal(success.journey[0].type,'prestige');assert.equal(strings.get(key),before);
+  assert.equal(JSON.parse(strings.get(prestigeKeyFor(id))).history.length,1);assert.equal((await call()).statusCode,409);
+  const loaded=await loadProfile(id);loaded.xp+=250;await saveProfile(id,loaded);assert.equal(deriveProgression(await loadProfile(id)).level,2);
+});
+
+test('prestige survives concurrent career writes and caps at 25 resets', async () => {
+  const id='prestige-race',key=`geek:profile:${id}`;await loadProfile(id);await saveProfile(id,{...defaultProfile(),xp:12250,payoutAddress:'preserved',journey:[]});
+  avatarRace=k=>{const p=JSON.parse(strings.get(k));p.xp+=100;p.bestScore=17;strings.set(k,JSON.stringify(p));};
+  let p=await enterPrestige(id,0);assert.equal(p.prestigeState.xpBaseline,12350);assert.equal(p.bestScore,17);assert.equal(p.payoutAddress,'preserved');
+  for(let rank=1;rank<25;rank++){p.xp+=12250;await saveProfile(id,p);p=await enterPrestige(id,rank);assert.equal(p.prestigeState.prestige,rank+1);}
+  p.xp+=12250;await saveProfile(id,p);assert.equal(deriveProgression(await loadProfile(id)).maxed,true);
+  const before=strings.get(prestigeKeyFor(id));await assert.rejects(()=>enterPrestige(id,25),/PRESTIGE_MAXED/);assert.equal(strings.get(prestigeKeyFor(id)),before);
+  assert.equal(JSON.parse(before).history.length,25);assert.equal(JSON.parse(strings.get(key)).journey.length,0);
+});
+
+test('level 49 and corrupt prestige records fail without changing saved data', async () => {
+  const id='prestige-boundary';await loadProfile(id);await saveProfile(id,{...defaultProfile(),xp:12249});await assert.rejects(()=>enterPrestige(id,0),/PRESTIGE_LEVEL_REQUIRED/);
+  strings.set(prestigeKeyFor(id),JSON.stringify({version:1,prestige:26,xpBaseline:0,history:[]}));const before=strings.get(prestigeKeyFor(id));await assert.rejects(()=>loadProfile(id),/PRESTIGE_STATE_INVALID/);assert.equal(strings.get(prestigeKeyFor(id)),before);
+});
+
+test('legacy ranks migrate once while further XP follows the manual system', async () => {
+  const id='prestige-legacy',key=`geek:profile:${id}`;strings.set(key,JSON.stringify({xp:13000,stickerInventory:{'prestige-star':2},journey:[]}));
+  const p=await loadProfile(id),s=deriveProgression(p);assert.equal(s.prestige,2);assert.equal(s.level,3);assert.equal(s.legacyPrestige,2);
+  p.xp=50000;await saveProfile(id,p);const after=deriveProgression(await loadProfile(id));assert.equal(after.prestige,2);assert.equal(after.level,50);assert.equal((await loadProfile(id)).stickerInventory['prestige-star'],2);
+});
+
+test('standings share tie ranks and retain higher concurrent scores with private rank beyond top 50', async () => {
+  const category='comics',mode='speed',cookie=await startSession('Board Private'),id=sessionIdFromCookie(cookie);await loadProfile(id);
+  for(let i=0;i<52;i++)await recordVerifiedScore({session:{id:`board-${i}`,name:`Geek ${i}`},category,mode,score:2000+i,round:1});
+  await recordVerifiedScore({session:{id,name:'Board Private'},category,mode,score:1500,round:1});
+  for(const id of ['tie-a','tie-b'])await recordVerifiedScore({session:{id,name:id},category,mode,score:9000,round:1});
+  await Promise.all([recordVerifiedScore({session:{id:'race-best',name:'Best'},category,mode,score:10000,round:1}),recordVerifiedScore({session:{id:'race-best',name:'Best'},category,mode,score:100,round:1})]);
+  const r=response();await leaderboardHandler(request('GET',undefined,cookie,{category,mode,limit:'50',mine:'1'}),r);
+  assert.equal(r.statusCode,200);assert.equal(r.body.entries.length,50);assert.equal(r.body.entries[0].score,10000);assert.deepEqual(r.body.entries.slice(1,3).map(e=>e.rank),[2,2]);assert.equal(r.body.mine.rank,56);assert.equal(JSON.stringify(r.body).includes(id),false);
+  const unauth=response();await leaderboardHandler(request('GET',undefined,'',{category,mode,mine:'1'}),unauth);assert.equal(unauth.statusCode,401);
+});
 
 const lobbyGameHandler = lobbiesHandler;
 
@@ -114,6 +174,18 @@ const execute = (command) => {
     return withScores ? entries.flatMap(([member, score]) => [member, String(score)]) : entries.map(([member]) => member);
   }
   if (name === 'EVAL') {
+    if (String(args[0]).includes('geek-prestige-v1')) {
+      const [profileKey, stateKey, eventKey, auditIndex, previous, statePrevious, next, record, sequence, eventId] = args.slice(2);
+      if (avatarRace) { const update = avatarRace; avatarRace = null; update(profileKey); }
+      if ((strings.get(profileKey) || '') !== previous || (strings.get(stateKey) || '') !== statePrevious) return 0;
+      strings.set(stateKey, next); execute(['SET', eventKey, record, 'NX']); execute(['ZADD', auditIndex, sequence, eventId]); return 1;
+    }
+    if (String(args[0]).includes('geek-verified-score-v1')) {
+      const [board, meta, player, score, details] = args.slice(2);
+      if (Number(execute(['ZSCORE', board, player]) || 0) >= Number(score)) return 0;
+      execute(['ZADD', board, score, player]); execute(['HSET', meta, player, details]); return 1;
+    }
+
     if (String(args[0]).includes('geek-avatar-patch-v1')) {
       const [key, eventKey, auditIndex, previous, next, record, sequence, eventId] = args.slice(2);
       if (avatarRace) { const update = avatarRace; avatarRace = null; update(key); }
@@ -357,12 +429,12 @@ test('levels, prestige, category mastery, and journey history derive from server
     correct: 10, answered: 10, score: 14_000, xpEarned: 250, reward: 100, maxStreak: 10
   });
   const progression = deriveProgression(profile);
-  assert.equal(progression.prestige, 1);
-  assert.equal(progression.level, 1);
+  assert.equal(progression.prestige, 0);
+  assert.equal(progression.level, 26);
   assert.equal(profile.categoryStats.kaspa.correct, 10);
   assert.equal(profile.totalQuestions, 10);
   assert.equal(profile.longestStreak, 10);
-  assert.deepEqual(profile.journey.map((event) => event.type), ['prestige', 'sticker', 'sticker', 'sticker', 'round']);
+  assert.deepEqual(profile.journey.map((event) => event.type), ['level', 'sticker', 'sticker', 'round']);
 
   for (let round = 2; round <= 100; round += 1) {
     profile.xp += 10;

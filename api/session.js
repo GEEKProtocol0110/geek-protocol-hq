@@ -4,8 +4,10 @@ import { upsertSession } from '../server/session.js';
 import { collectiblesHandler, profileHandler } from '../server/player-api.js';
 import vaultHandler from '../server/vault.js';
 import economyHandler from '../server/economy.js';
+import prestigeHandler from '../server/prestige.js';
 
 export default async function handler(req, res) {
+  if (req.query?.service === 'prestige') return prestigeHandler(req, res);
   if (req.query?.service === 'economy') return economyHandler(req, res);
   if (req.query?.service === 'vault') return vaultHandler(req, res);
   if (req.query?.service === 'profile') return profileHandler(req, res);

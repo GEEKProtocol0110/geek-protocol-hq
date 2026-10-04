@@ -1,8 +1,9 @@
 import { awardRoundStickers } from './collectibles.js';
+import { initialPrestigeState, validatePrestigeState, MAX_PRESTIGE } from './prestige-state.js';
 
 const XP_PER_LEVEL = 250;
-const LEVELS_PER_PRESTIGE = 25;
-const XP_PER_PRESTIGE = XP_PER_LEVEL * LEVELS_PER_PRESTIGE;
+const LEVELS_PER_PRESTIGE = 50;
+const XP_TO_LEVEL_50 = XP_PER_LEVEL * (LEVELS_PER_PRESTIGE - 1);
 const JOURNEY_LIMIT = 80;
 
 const CATEGORY_LABELS = {
@@ -19,9 +20,15 @@ const CATEGORY_LABELS = {
 const numeric = (value) => Math.max(0, Number.isFinite(Number(value)) ? Number(value) : 0);
 
 const rankTitle = (level, prestige) => {
+  if (prestige === MAX_PRESTIGE && level === LEVELS_PER_PRESTIGE) return 'Prestige Master';
+  if (prestige >= 20) return 'Genesis Vanguard';
+  if (prestige >= 10) return 'Omniscient Guardian';
   if (prestige >= 5) return 'DAG Sovereign';
   if (prestige >= 3) return 'Grid Architect';
   if (prestige >= 1) return 'Prestige Operator';
+  if (level >= 50) return 'Signal Commander';
+  if (level >= 40) return 'Core Vanguard';
+  if (level >= 30) return 'Grid Navigator';
   if (level >= 20) return 'Signal Master';
   if (level >= 15) return 'Protocol Scholar';
   if (level >= 10) return 'DAG Pathfinder';
@@ -31,21 +38,29 @@ const rankTitle = (level, prestige) => {
 
 export const deriveProgression = (profile = {}) => {
   const xp = Math.floor(numeric(profile.xp));
-  const prestige = Math.floor(xp / XP_PER_PRESTIGE);
-  const cycleXp = xp % XP_PER_PRESTIGE;
+  const state = validatePrestigeState(profile.prestigeState || initialPrestigeState());
+  const prestige = state.prestige;
+  const cycleXp = Math.max(0, xp - state.xpBaseline);
   const level = Math.min(LEVELS_PER_PRESTIGE, Math.floor(cycleXp / XP_PER_LEVEL) + 1);
-  const levelXp = cycleXp % XP_PER_LEVEL;
-  const nextThreshold = prestige * XP_PER_PRESTIGE + level * XP_PER_LEVEL;
+  const atCap = level === LEVELS_PER_PRESTIGE;
+  const levelXp = atCap ? XP_PER_LEVEL : cycleXp % XP_PER_LEVEL;
+  const nextThreshold = atCap ? null : state.xpBaseline + level * XP_PER_LEVEL;
   return {
     xp,
     level,
     prestige,
+    cycleXp,
+    maxPrestige: MAX_PRESTIGE,
+    canPrestige: atCap && prestige < MAX_PRESTIGE,
+    maxed: atCap && prestige === MAX_PRESTIGE,
+    xpToPrestige: Math.max(0, XP_TO_LEVEL_50 - cycleXp),
+    legacyPrestige: state.legacyPrestige || 0,
     title: rankTitle(level, prestige),
     levelXp,
     levelXpRequired: XP_PER_LEVEL,
     progressPercent: Math.min(100, Math.round((levelXp / XP_PER_LEVEL) * 100)),
     nextThreshold,
-    xpToNext: Math.max(0, nextThreshold - xp),
+    xpToNext: atCap ? 0 : Math.max(0, nextThreshold - xp),
     levelsPerPrestige: LEVELS_PER_PRESTIGE
   };
 };
@@ -152,7 +167,11 @@ export const deriveAchievements = (profile = {}) => {
     { id: 'round-five', name: 'Deep Protocol', detail: 'Reach Gauntlet round five.', unlocked: bestRound >= 5, progress: Math.min(5, bestRound), target: 5 },
     { id: 'apex', name: 'Apex Protocol', detail: 'Clear all ten Gauntlet rounds.', unlocked: bestRound >= 10, progress: Math.min(10, bestRound), target: 10 },
     { id: 'eight-worlds', name: 'Omniscient Grid', detail: 'Complete a round in all eight worlds.', unlocked: worldsPlayed >= 8, progress: worldsPlayed, target: 8 },
-    { id: 'prestige-one', name: 'Prestige Operator', detail: 'Cross the first 25-level cycle.', unlocked: progression.prestige >= 1, progress: Math.min(1, progression.prestige), target: 1 }
+    { id: 'level-fifty', name: 'Signal Commander', detail: 'Reach level 50 in a prestige cycle.', unlocked: progression.level === 50 || (profile.prestigeState?.history?.length || 0) > 0, progress: profile.prestigeState?.history?.length ? 50 : progression.level, target: 50 },
+    { id: 'prestige-one', name: 'Prestige Operator', detail: 'Complete your first prestige.', unlocked: progression.prestige >= 1, progress: Math.min(1, progression.prestige), target: 1 },
+    { id: 'prestige-ten', name: 'Omniscient Guardian', detail: 'Reach Prestige 10.', unlocked: progression.prestige >= 10, progress: Math.min(10, progression.prestige), target: 10 },
+    { id: 'prestige-twenty-five', name: 'Genesis Vanguard', detail: 'Reach Prestige 25.', unlocked: progression.prestige >= 25, progress: progression.prestige, target: 25 },
+    { id: 'prestige-master', name: 'Prestige Master', detail: 'Reach level 50 at Prestige 25.', unlocked: progression.maxed, progress: progression.prestige === 25 ? progression.level : 0, target: 50 }
   ];
 };
 
@@ -180,7 +199,7 @@ export const buildJourneyProfile = (profile = {}, player = {}) => {
       gauntletsCompleted: Math.floor(numeric(profile.gauntletsCompleted))
     },
     categories: Object.entries(CATEGORY_LABELS).map(([key, label]) => ({ key, label, ...cleanCategoryStats(categories[key]) })),
-    journey: (Array.isArray(profile.journey) ? profile.journey : []).slice(0, JOURNEY_LIMIT),
+    journey: [...(profile.prestigeState?.history || []), ...(Array.isArray(profile.journey) ? profile.journey : [])].sort((a, b) => b.at - a.at).slice(0, JOURNEY_LIMIT),
     achievements: deriveAchievements(profile)
   };
 };
