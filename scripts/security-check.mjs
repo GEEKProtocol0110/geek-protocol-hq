@@ -89,6 +89,11 @@ check(progression.includes('recordRoundJourney'), 'progression is written by the
 check(progression.includes('JOURNEY_LIMIT'), 'journey history has a fixed retention bound');
 check(profileApi.includes('requireSession(req)'), 'player journey requires an authenticated session');
 check(!profileApi.includes("req.method === 'POST'"), 'player journey API exposes no browser progression write');
+const prestigeApi = await text('server/prestige.js');
+check(progression.includes('LEVELS_PER_PRESTIGE = 50'), 'prestige requires the 50-level cycle');
+check(prestigeApi.includes('before.canPrestige') && prestigeApi.includes('PRESTIGE_MAXED'), 'manual prestige enforces eligibility and the 25-rank cap');
+check(prestigeApi.includes('requireSession(req)') && prestigeApi.includes('Object.keys(body)'), 'prestige requires a session and rejects client progression fields');
+check(prestigeApi.includes('geek-prestige-v1') && prestigeApi.includes('state.prestige !== expectedPrestige'), 'prestige resets atomically with replay protection');
 
 const collectibles = await text('server/collectibles.js');
 const stickerTrades = await text('server/sticker-trades.js');

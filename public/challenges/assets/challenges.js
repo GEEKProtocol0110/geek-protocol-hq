@@ -3,6 +3,7 @@
   const $ = selector => document.querySelector(selector);
   const api = '/api/ranked/?service=challenges';
   const previous = new URLSearchParams(location.search).get('previous') === '1';
+  const requestedKind = new URLSearchParams(location.search).get('kind');
   let catalog, attempts = [], state = null, busy = false, retry = null, paused = false;
   let receivedAt = performance.now();
   const activeKey = 'geek-challenge-active-v1';
@@ -112,9 +113,14 @@
       const session = await request('/api/session/', {});
       $('[data-player-name]').value = session.player.name;
       attempts = (await request(api, { action: 'status' })).attempts; renderCards();
-      const saved = resume && recalled();
+      let saved = resume && recalled();
+      if (['weekly', 'monthly'].includes(requestedKind) && saved && !saved.periodId?.startsWith(`${requestedKind}:`)) saved = null;
       lock(false);
       if (saved && typeof saved.periodId === 'string' && /^[a-f0-9]{40}$/.test(saved.runId)) await act({ action: 'resume', periodId: saved.periodId, runId: saved.runId });
+      else if (['weekly', 'monthly'].includes(requestedKind)) {
+        const button = $(`[data-card-kind="${requestedKind}"] [data-period-action]`);
+        button?.scrollIntoView({ block: 'center', behavior: 'auto' }); button?.focus({ preventScroll: true });
+      }
     } catch (error) { showError(error, () => boot(resume)); }
     finally { lock(false); }
   };

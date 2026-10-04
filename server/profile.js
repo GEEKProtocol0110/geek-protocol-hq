@@ -1,11 +1,13 @@
 import { auditWriteCommands, createAuditRecord } from './audit.js';
 import { pipeline, redis } from './redis.js';
+import { initialPrestigeState, migrateLegacyPrestige, prestigeKeyFor, validatePrestigeState } from './prestige-state.js';
 
 export const profileKeyFor = (sessionId) => `geek:profile:${sessionId}`;
 
 export const defaultProfile = () => ({
   balance: 0,
   xp: 0,
+  prestigeState: initialPrestigeState(),
   bestRound: 0,
   bestScore: 0,
   bestDailyScore: 0,
@@ -32,17 +34,27 @@ export const defaultProfile = () => ({
 });
 
 export const loadProfile = async (sessionId) => {
-  const raw = await redis('GET', profileKeyFor(sessionId));
-  if (!raw) return defaultProfile();
+  const [raw, prestigeRaw] = await pipeline([['GET', profileKeyFor(sessionId)], ['GET', prestigeKeyFor(sessionId)]]);
+  let profile;
   try {
-    return { ...defaultProfile(), ...JSON.parse(raw) };
+    profile = raw ? { ...defaultProfile(), ...JSON.parse(raw) } : defaultProfile();
   } catch {
-    return defaultProfile();
+    profile = defaultProfile();
   }
+  let stateRaw = prestigeRaw;
+  if (!stateRaw) {
+    await redis('SET', prestigeKeyFor(sessionId), JSON.stringify(raw ? migrateLegacyPrestige(profile) : initialPrestigeState()), 'NX');
+    stateRaw = await redis('GET', prestigeKeyFor(sessionId));
+  }
+  profile.prestigeState = validatePrestigeState(JSON.parse(stateRaw));
+  return profile;
 };
 
+// Prestige is authoritative in its own ledger; stale profile writes cannot reset it.
+const profileJson = profile => { const { prestigeState, ...stored } = profile; return JSON.stringify(stored); };
+
 export const saveProfile = async (sessionId, profile) => {
-  await redis('SET', profileKeyFor(sessionId), JSON.stringify(profile));
+  await redis('SET', profileKeyFor(sessionId), profileJson(profile));
   return profile;
 };
 
@@ -54,7 +66,7 @@ export const saveProfileWithAudit = async (sessionId, profile, auditInput, extra
     ...auditInput
   });
   await pipeline([
-    ['SET', profileKeyFor(sessionId), JSON.stringify(profile)],
+    ['SET', profileKeyFor(sessionId), profileJson(profile)],
     ...extraCommands,
     ...auditWriteCommands(record)
   ], true);

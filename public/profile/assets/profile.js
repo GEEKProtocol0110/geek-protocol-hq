@@ -102,6 +102,7 @@
   window.GeekProfile = { renderCollectibles, collection: null, offline: false };
 
   const refreshCollectibles = async () => renderCollectibles(await api('/api/collectibles'));
+  window.GeekProfile.refreshCollectibles = refreshCollectibles;
 
   const collectibleAction = async (body, successMessage) => {
     const feedback = $('[data-trade-feedback]');
@@ -128,7 +129,7 @@
   };
 
   const eventCopy = (event) => {
-    if (event.type === 'prestige') return { icon: `P${event.prestige}`, title: `Prestige ${event.prestige} reached`, detail: `${event.title} · A new 25-level cycle began.` };
+    if (event.type === 'prestige') return { icon: `P${event.prestige}`, title: `Prestige ${event.prestige} reached`, detail: `${event.title} · ${event.cycleLevels === 50 ? 'A new 50-level cycle began.' : 'Earned under the earlier progression system.'}` };
     if (event.type === 'level') return { icon: `L${event.level}`, title: `Level ${event.level} reached`, detail: `${event.title} · Server-verified XP milestone.` };
     if (event.type === 'sticker') {
       const sticker = collectibleState?.collection?.stickers?.find((item) => item.id === event.stickerId);
@@ -157,9 +158,9 @@
     setText('[data-protection]', player.walletProtected ? 'WALLET PROTECTED' : 'SESSION PROFILE');
     $('[data-protection]').classList.toggle('protected', player.walletProtected);
     setText('[data-level]', progression.level);
-    setText('[data-prestige]', `PRESTIGE ${progression.prestige}`);
+    setText('[data-prestige]', `PRESTIGE ${progression.prestige} / 25`);
     setText('[data-level-xp]', `${format.format(progression.levelXp)} / ${format.format(progression.levelXpRequired)} XP`);
-    setText('[data-xp-next]', `${format.format(progression.xpToNext)} XP to ${progression.level === progression.levelsPerPrestige ? 'Prestige' : 'next level'}`);
+    setText('[data-xp-next]', progression.maxed ? 'Prestige Master' : progression.canPrestige ? 'Level 50 · ready to prestige' : progression.level === 50 ? 'Final level reached' : `${format.format(progression.xpToNext)} XP to next level`);
     $('[data-level-bar]').style.width = `${progression.progressPercent}%`;
     $('[data-level-track]').setAttribute('aria-valuenow', String(progression.progressPercent));
     $('[data-level-orbit]').style.setProperty('--progress', `${progression.progressPercent * 3.6}deg`);
@@ -173,7 +174,10 @@
     renderMastery(profile.categories);
     renderAchievements(profile.achievements);
     renderJourney(profile.journey);
+    window.dispatchEvent(new CustomEvent('geek:profile', { detail: profile }));
   };
+
+  window.GeekProfile.renderProfile = render;
 
   const initialize = async () => {
     try {
@@ -182,6 +186,7 @@
         refreshStudy(),
         api('/api/profile').then(payload => render(payload.profile)).catch(error => {
           setText('[data-profile-state]', 'GAME RECORDS UNAVAILABLE');
+          window.dispatchEvent(new Event('geek:profile-unavailable'));
           setText('[data-journey-list]', `${error.message} Your game records remain saved.`);
         }),
         refreshCollectibles().catch(error => { window.GeekProfile.offline = true; window.GeekBuilder?.unavailable(); setText('[data-trade-feedback]', `${error.message} Your collection remains saved.`); })
@@ -190,6 +195,7 @@
       window.GeekProfile.offline = true; window.GeekBuilder?.unavailable();
       window.GeekGiga?.update('progress', { phase: 'unavailable' });
       setText('[data-profile-state]', 'PROFILE SERVICE OFFLINE');
+      window.dispatchEvent(new Event('geek:profile-unavailable'));
       setText('[data-study-note]', `${error.message} Refresh this page to reconnect. You can still read Kaspa 101.`);
       $('[data-journey-list]').innerHTML = `<li class="profile-empty">${escapeHtml(error.message)} Your verified data remains on the server.</li>`;
     }
