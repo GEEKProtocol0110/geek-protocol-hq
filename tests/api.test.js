@@ -1653,11 +1653,38 @@ test('custom Geek saves only allowed cosmetics and preserves concurrent progress
   const current = JSON.parse(strings.get(key)); assert.equal(current.xp, 456); assert.equal(current.balance, 77); assert.equal(current.payoutAddress, 'existing-setting'); assert.equal(current.payoutAddressVersion, 4); assert.deepEqual(current.journey, []);
   const reload = response(); await collectiblesHandler(request('GET', undefined, cookie), reload); assert.deepEqual(reload.body.collection.customization, customization);
   const switched = response(); await collectiblesHandler(request('POST', {action: 'select-avatar', avatarId: 'giga-genesis'}, cookie), switched); assert.equal(switched.statusCode, 200); assert.deepEqual(switched.body.collection.customization, customization);
-  for (const invalid of [null, [], {...customization, palette: '<script>'}, {...customization, edition: 500}, {...customization, version: 2}, {...customization, head: null}]) {
+  for (const invalid of [null, [], {...customization, palette: '<script>'}, {...customization, edition: 500}, {...customization, version: 3}, {...customization, head: null}]) {
     const bad = response(); await collectiblesHandler(request('POST', {action: 'customize-avatar', customization: invalid}, cookie), bad); assert.equal(bad.statusCode, 400); assert.equal(bad.body.code, 'INVALID_AVATAR_CUSTOMIZATION');
   }
   assert.equal(JSON.parse(strings.get(key)).avatarId, 'giga-genesis');
   const unauthenticated = response(); await collectiblesHandler(request('POST', {action: 'customize-avatar', customization}), unauthenticated); assert.equal(unauthenticated.statusCode, 401);
   const fakeOwned = response(); await collectiblesHandler(request('POST', {action: 'select-avatar', avatarId: 'geek-499'}, cookie), fakeOwned); assert.equal(fakeOwned.statusCode, 403);
   const other = await startSession('Separate Custom Geek'); const foreign = response(); await collectiblesHandler(request('GET', undefined, other), foreign); assert.equal(foreign.body.collection.avatar.id, 'giga-genesis'); assert.deepEqual(foreign.body.collection.customization, defaultGeek);
+});
+
+
+test('personal Geek traits persist through reload and avatar switching; legacy robots migrate without losing parts', async () => {
+  const { defaultGeek, personalGeek, normalizeGeek } = await import('../public/assets/geek-avatar.js');
+  const cookie = await startSession('Personal Geek'), playerId = sessionIdFromCookie(cookie), key = `geek:profile:${playerId}`;
+  const customization = { ...personalGeek, skin: 'deep', hair: 'locs', hairColor: 'black', eyeColor: 'green', facialHair: 'beard', eyewear: 'square', outfit: 'jacket', pants: 'cargo', palette: 'forest', back: 'pack', fx: 'stars' };
+  const saved = response(); await collectiblesHandler(request('POST', { action: 'customize-avatar', customization }, cookie), saved);
+  assert.equal(saved.statusCode, 200); assert.deepEqual(saved.body.collection.customization, normalizeGeek(customization));
+  const stored = JSON.parse(strings.get(key)); assert.equal(stored.balance, 0); assert.equal(stored.xp, 0);
+  const switched = response(); await collectiblesHandler(request('POST', { action: 'select-avatar', avatarId: 'giga-genesis' }, cookie), switched);
+  assert.equal(switched.statusCode, 200); assert.deepEqual(switched.body.collection.customization, normalizeGeek(customization));
+  const reload = response(); await collectiblesHandler(request('GET', undefined, cookie), reload);
+  assert.deepEqual(reload.body.collection.customization, normalizeGeek(customization));
+  for (const bad of [{ ...customization, skin: '<svg>' }, { ...customization, hairColor: '#fff' }, { ...customization, head: 'antenna' }, { ...customization, photo: 'private-image' }]) {
+    const failed = response(); await collectiblesHandler(request('POST', { action: 'customize-avatar', customization: bad }, cookie), failed);
+    assert.equal(failed.statusCode, 400); assert.deepEqual(JSON.parse(strings.get(key)).avatarCustomization, normalizeGeek(customization));
+  }
+  const legacy = { version: 1, palette: 'violet', head: 'headphones', face: 'visor', torso: 'star', arms: 'guard', legs: 'runner', back: 'wings', fx: 'orbit' };
+  strings.set(key, JSON.stringify({ ...defaultProfile(), avatarId: 'giga-builder', avatarCustomization: legacy }));
+  const migrated = response(); await collectiblesHandler(request('GET', undefined, cookie), migrated);
+  assert.equal(migrated.statusCode, 200); assert.deepEqual(migrated.body.collection.customization, normalizeGeek(legacy));
+  assert.equal(migrated.body.collection.customization.kind, 'robot');
+  for (const field of Object.keys(legacy).filter(k => k !== 'version')) assert.equal(migrated.body.collection.customization[field], legacy[field]);
+  const resave = response(); await collectiblesHandler(request('POST', { action: 'customize-avatar', customization: legacy }, cookie), resave);
+  assert.equal(resave.statusCode, 200); assert.deepEqual(resave.body.collection.customization, normalizeGeek(legacy));
+  assert.equal(defaultGeek.version, 2);
 });

@@ -64,7 +64,7 @@
     const custom = selected?.id === 'giga-builder';
     const customImage = $('[data-avatar-custom]');
     customImage.hidden = !custom;
-    if (custom && window.GeekBuilder) { customImage.innerHTML = window.GeekBuilder.svg(collection.customization); customImage.setAttribute('aria-label', 'Your custom Geek'); }
+    if (custom && window.GeekBuilder) { customImage.innerHTML = window.GeekBuilder.svg(collection.customization); customImage.setAttribute('aria-label', window.GeekBuilder.description(collection.customization)); }
     image.hidden = custom; fallback.hidden = custom;
     if (selected?.asset && !custom) {
       image.src = selected.asset;

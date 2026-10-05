@@ -61,3 +61,12 @@ Before any on-chain Geek collection deployment:
 ## Art production contract
 
 Each finished Geek must preserve the stable slot ID and export a square source image, display derivative, thumbnail, accessible description, trait record, creator/provenance record, and content hash. Replacing an image after metadata freeze requires a public version change; silent replacement is prohibited.
+
+
+## Personal Geek character studio (October 5, 2026)
+
+The free profile builder now offers a block-style Personal Geek alongside the existing GIGA robot. Personal characters support eight skin tones, seven hairstyles, seven hair colors, five eye colors, facial hair, glasses, three tops and three bottoms. Both styles retain fixed character palettes, chest emblems, footwear, backpacks/fins and cosmic effects. Native character-style radio controls and keyboard-operable Face & hair, Outfit and Extras tabs organize the editor. Previews remain local until explicit Save & equip; Undo restores the saved design, and Reset this style restores its starter.
+
+Cosmetic schema version 2 uses the same session-authenticated customization endpoint and atomic profile-field patch. Its strict, complete fixed vocabulary accepts no arbitrary colors, markup, photo, reward, edition or ownership field. Existing version-1 robots normalize into version 2 with their original parts retained; reading does not overwrite the stored design. Version-1 clients can still save valid robot designs. The avatar ID remains `giga-builder`, and avatar switching preserves customization. Human-only controls are hidden in robot mode, and robot antennas cannot be saved on personal characters. Profile traits are not sent to analytics. No image upload, identity inference or face recognition is introduced.
+
+This is a free off-chain profile character feature. It does not create NFT ownership, alter the 500-Geek supply, grant XP/credits/tokens, accept payment, or enable settlement. Unit and handler tests cover strict trait validation, version migration, persistence, avatar switching and preservation of concurrent profile fields.

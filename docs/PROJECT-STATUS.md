@@ -116,3 +116,12 @@ Build-a-GEEK is a free off-chain profile character editor with fixed color, head
 ## Space effects (October 3, 2026)
 
 Dark hero sections and the profile character preview include decorative drifting stars, cyan/gold particles and occasional shooting-star trails. A shared capped canvas loop renders only visible scenes and stops while the tab is hidden, space effects are paused, reduced motion is enabled, or Save-Data is requested. Reduced-motion/Save-Data users retain a still starfield. The footer (or Play intro) offers a pause/resume control. Canvas decoration is hidden from assistive technology and cannot capture pointer input. Build-a-GEEK additionally offers Star Particles and Orbital Particles; saved choices use the existing strict cosmetic validation and profile persistence. No new analytics or storage mechanism is added.
+
+
+## Personal Geek character studio (October 5, 2026)
+
+The free profile builder now offers a block-style Personal Geek alongside the existing GIGA robot. Personal characters support eight skin tones, seven hairstyles, seven hair colors, five eye colors, facial hair, glasses, three tops and three bottoms. Both styles retain fixed character palettes, chest emblems, footwear, backpacks/fins and cosmic effects. Native character-style radio controls and keyboard-operable Face & hair, Outfit and Extras tabs organize the editor. Previews remain local until explicit Save & equip; Undo restores the saved design, and Reset this style restores its starter.
+
+Cosmetic schema version 2 uses the same session-authenticated customization endpoint and atomic profile-field patch. Its strict, complete fixed vocabulary accepts no arbitrary colors, markup, photo, reward, edition or ownership field. Existing version-1 robots normalize into version 2 with their original parts retained; reading does not overwrite the stored design. Version-1 clients can still save valid robot designs. The avatar ID remains `giga-builder`, and avatar switching preserves customization. Human-only controls are hidden in robot mode, and robot antennas cannot be saved on personal characters. Profile traits are not sent to analytics. No image upload, identity inference or face recognition is introduced.
+
+This is a free off-chain profile character feature. It does not create NFT ownership, alter the 500-Geek supply, grant XP/credits/tokens, accept payment, or enable settlement. Unit and handler tests cover strict trait validation, version migration, persistence, avatar switching and preservation of concurrent profile fields.

@@ -55,10 +55,16 @@ See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness
 | **Lobbies** | Active seats, shareable rooms, and host-started ten-question shared practice rounds with server-scored standings |
 | **Player dashboard** | Levels 1–50, 25 manual prestige ranks, achievements, challenges, verified standings, category records and collectibles |
 | **C.C.E.** | Community question submission, moderation, publication, and first-use reward records |
-| **Profile characters** | Free Build-a-GEEK editor with server-saved cosmetic parts, plus five launch avatars |
+| **Profile characters** | Free block-style Personal Geek and GIGA robot editor with server-saved skin, hair, face, outfit and accessory choices, plus five launch avatars |
 | **Collection** | Five-tier, 500-NFT blueprint with planned mint/reward/GEEK-or-KAS purchase routes and hashed legacy-art archive |
 | **Mint** | Fail-closed, user-approved GEEK KRC-20 fair-mint interface |
 | **Security** | Public control posture, trust boundaries, and independent-audit gates |
+
+## Personal Geek character studio
+
+Make a block-style character with skin, hair, face and clothing choices, or keep a custom GIGA robot. Free profile designs save to the existing player account; NFT ownership remains separate.
+
+![Personal Geek and GIGA character examples](docs/assets/personal-geeks-preview.png)
 
 ## Architecture at a glance
 
