@@ -89,6 +89,10 @@ export const handleApiError = (res, error) => {
   }
   if (code === 'RATE_LIMITED') return sendJson(res, 429, { ok: false, error: 'Slow down and try again in a moment.' });
   if (code === 'SESSION_REQUIRED') return sendJson(res, 401, { ok: false, error: 'Start a player session first.' });
+  if (code === 'DUEL_NOT_FOUND') return sendJson(res, 404, { ok: false, code, error: 'This Duel invitation has expired.' });
+  if (code === 'DUEL_FULL') return sendJson(res, 409, { ok: false, code, error: 'Both Duel seats are already reserved. Create a new Duel.' });
+  if (code === 'DUEL_NOT_PLAYER') return sendJson(res, 403, { ok: false, code, error: 'Join this Duel before viewing or playing.' });
+  if (['DUEL_CHANGED', 'DUEL_STATE_INVALID', 'DUEL_QUESTION_CLOSED', 'DUEL_ANSWER_RECORDED'].includes(code)) return sendJson(res, 409, { ok: false, code, error: 'That Duel action is no longer available. Refresh the match and try again.' });
   if (code === 'RUN_NOT_FOUND') return sendJson(res, 404, { ok: false, error: 'That ranked run expired or is no longer active.' });
   if (code === 'RUN_STATE_INVALID') return sendJson(res, 409, { ok: false, error: 'That ranked action is not available right now.' });
   if (code === 'ANSWER_IN_PROGRESS') return sendJson(res, 409, { ok: false, error: 'That answer is already being locked. Retry once to retrieve its result.' });

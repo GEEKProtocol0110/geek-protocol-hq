@@ -7,6 +7,8 @@
   "cleanUrls": true,
   "trailingSlash": true,
   "rewrites": [
+    { "source": "/api/duel", "destination": "/api/lobbies?service=duel" },
+    { "source": "/api/duel/", "destination": "/api/lobbies?service=duel" },
     { "source": "/api/profile", "destination": "/api/session?service=profile" },
     { "source": "/api/profile/", "destination": "/api/session?service=profile" },
     { "source": "/api/collectibles", "destination": "/api/session?service=collectibles" },

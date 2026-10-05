@@ -183,3 +183,7 @@ Code in this repository is available under the [MIT License](LICENSE). Geek Prot
   <strong>Level Up. Earn On. Geek Out.™</strong><br />
   Built on Kaspa · Your knowledge is now an asset.
 </div>
+
+### Free Geek Duel
+
+Invite a friend to [Geek Duel](https://www.geekprotocol.xyz/duel/): both players ready up, answer ten shared questions with a server clock, see a final result and agree to a rematch. Saved personal Geeks appear beside room scores. This free Alpha format grants no XP or monetary rewards. [Rules and architecture](docs/DUEL-PROTOCOL.md).

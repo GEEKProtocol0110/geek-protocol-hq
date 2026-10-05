@@ -52,6 +52,10 @@ flowchart TB
 
 ## Primary flows
 
+### Free Geek Duel
+
+`/duel/` uses the existing session, private question bank and verified cosmetic profile services. `/api/duel` rewrites to the Duel handler inside `api/lobbies.js`, retaining the current serverless function count and question-file bundling. Each invitation has one Redis record. A single Lua transition reads Redis TIME, locks two durable player identities, starts only on mutual readiness, accepts one answer per shared question, finalizes ties/forfeits/disconnections and requires mutual consent for rematches. No browser score or clock is trusted. Reads refresh presence and settle elapsed matches; no scheduled worker is required. Public responses contain room slots and cosmetic snapshots, never player/session IDs or correct-answer indices. The Duel ledger does not write ranked XP, credits, inventory, prestige or treasury state. See [Duel protocol](DUEL-PROTOCOL.md).
+
 ### Shared lobby practice round
 
 1. The host starts a room only after at least two seats are active. The server fixes the participant roster, selects ten questions and options, and schedules one shared 15-second window per question.
