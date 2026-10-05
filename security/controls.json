@@ -122,7 +122,7 @@
       "id": "GP-INV-019",
       "title": "Honest NFT and on-chain transfer boundary",
       "status": "implemented-design-gate",
-      "evidence": ["server/geek-collection.js", "server/collectibles.js", "public/profile/index.html", "docs/COLLECTIBLE-PROTOCOL.md"]
+      "evidence": ["server/geek-collection.js", "server/collectibles.js", "public/assets/geek-avatar.js", "tests/geek-avatar.test.js", "public/profile/index.html", "docs/COLLECTIBLE-PROTOCOL.md"]
     },
     {
       "id": "GP-INV-020",

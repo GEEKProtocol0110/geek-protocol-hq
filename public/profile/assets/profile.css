@@ -22,3 +22,34 @@
 .geek-builder .button-secondary{background:transparent;color:#eef2ec;border:1px solid #60766a}.geek-builder .button-secondary:hover{background:#1c3026;border-color:var(--cyan);color:var(--cyan)}
 
 .robot-star,.robot-orbit-particle{fill:#bcfff0}.robot-orbit .robot-effect{stroke-width:1;opacity:.45}.geek-preview-stage .robot-star{animation:geek-stardrift 5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}.geek-preview-stage .robot-star-alt{animation-delay:-1.8s}.geek-preview-stage .robot-star-last{animation-delay:-3.4s}.geek-preview-stage .robot-orbit{animation:geek-orbit 18s linear infinite;transform-origin:150px 166px}.space-paused .geek-preview-stage .robot-star,.space-paused .geek-preview-stage .robot-orbit{animation-play-state:paused}.space-still .geek-preview-stage .robot-star,.space-still .geek-preview-stage .robot-orbit{animation:none}@keyframes geek-stardrift{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-7px);opacity:1}}@keyframes geek-orbit{from{transform:rotate(-12deg)}to{transform:rotate(348deg)}}@media(prefers-reduced-motion:reduce){.geek-preview-stage .robot-star,.geek-preview-stage .robot-orbit{animation:none!important}}
+
+/* Personal Geek studio: fixed palettes and authored block-style characters. */
+.geek-robot.palette-ocean{--robot-color:#559be7;--robot-dark:#284d78;--robot-light:#c0e0ff}
+.geek-robot.palette-forest{--robot-color:#77a778;--robot-dark:#34543b;--robot-light:#d4e8bc}
+.geek-robot.palette-rose{--robot-color:#db7182;--robot-dark:#7d394d;--robot-light:#ffd1da}
+.human-cloth{fill:var(--robot-color);stroke:#25333a;stroke-width:2;stroke-linejoin:round}
+.human-cloth-shadow{fill:var(--robot-dark)}
+.human-seam{fill:none;stroke:#203b43;stroke-width:2;stroke-linejoin:round;opacity:.75}
+.human-pants{fill:#334656;stroke:#1d2b34;stroke-width:2}.human-cargo{fill:#68745a}
+.human-shoe{fill:#293038;stroke:#101d25;stroke-width:2}.human-sole{fill:none;stroke:#d5e5e2;stroke-width:4}
+.human-emblem{fill:none;stroke:var(--robot-light);stroke-width:3;stroke-linejoin:round}
+.human-glasses{fill:none;stroke:#202b35;stroke-width:4}.human-headband{fill:none;stroke:#293038;stroke-width:8}
+.geek-preview-stage{position:sticky;top:1.5rem;align-self:start;min-height:470px;overflow:hidden}
+.geek-preview-stage>b{font-size:1.05rem;letter-spacing:-.02em;color:#edf6ef;text-align:center}
+.geek-preview-stage>p{font-size:.75rem;text-align:center;color:#aac0b6;margin:.6rem 0 0}
+.geek-builder [hidden]{display:none!important}
+.geek-style-options{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.4rem}
+.geek-style-options label{position:relative;cursor:pointer;min-width:0}
+.geek-style-options input{position:absolute;opacity:0;width:1px;height:1px}
+.geek-style-options span{display:flex;flex-direction:column;gap:.4rem;min-height:80px;padding:1rem;border:1px solid #52685b;border-radius:9px;background:#0a1611}
+.geek-style-options b{font-size:.86rem;color:#eef4ef}.geek-style-options small{font-size:.7rem;line-height:1.4;color:#b4c6bc}
+.geek-style-options input:checked+span{border-color:var(--cyan);box-shadow:inset 0 0 0 1px var(--cyan);background:#172d23}
+.geek-style-options input:focus-visible+span{outline:3px solid var(--gold);outline-offset:4px}
+.geek-style-options input:disabled+span{opacity:.65;cursor:default}
+.geek-editor-tabs{display:flex;gap:.25rem;border-bottom:1px solid #405649;margin-bottom:1.1rem}
+.geek-editor-tabs button{min-height:44px;flex:1;background:none;color:#b2c6bb;border:0;border-bottom:3px solid transparent;font:700 .78rem Inter,sans-serif;cursor:pointer;padding:.65rem .35rem}
+.geek-editor-tabs button[aria-selected=true]{color:var(--cyan);border-bottom-color:var(--cyan)}
+.geek-panel-intro{font-size:.75rem;line-height:1.5;color:#acbfb4;margin:0 0 1rem}
+.geek-builder [role=tabpanel]{min-height:110px}
+@media(max-width:850px){.geek-preview-stage{position:static;min-height:350px}.geek-preview-stage [data-geek-preview]{max-width:230px}.geek-preview-stage{padding:1rem}}
+@media(max-width:420px){.geek-options{grid-template-columns:1fr 1fr;gap:.75rem}.geek-options select{font-size:.76rem;padding:.55rem .35rem}.geek-style-options span{padding:.8rem}.geek-style-options b{font-size:.78rem}.geek-editor-tabs button{font-size:.72rem}}
