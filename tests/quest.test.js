@@ -1,10 +1,11 @@
 import test, { after } from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { redisFixture } from './helpers/redis-fixture.js';
 import sessionHandler from '../api/session.js';
 import rankedHandler from '../api/ranked.js';
-import { firstSignal, questChecks } from '../public/quest/assets/chapter.js';
+import { firstSignal, questChecks, insideBlockdag, questChapters, checksFor, getChapter } from '../public/quest/assets/chapter.js';
 import { decodeQuest, questKey } from '../server/quest.js';
 
 let fixture;
@@ -27,24 +28,24 @@ const request = (method, body, cookie, query = {}) => ({ method, body, headers: 
 const session = async name => { const r = response(); await sessionHandler(request('POST', { displayName: name }, ''), r); assert.equal(r.statusCode, 200); return r.headers['Set-Cookie'].split(';')[0]; };
 const id = cookie => cookie.split('=')[1];
 const call = async (cookie, body, query = {}) => { const r = response(); await rankedHandler(request(body ? 'POST' : 'GET', body, cookie, { service: 'quest', ...query }), r); return r; };
-const key = cookie => questKey(id(cookie));
-const current = async cookie => (await call(cookie)).body.quest;
+const key = (cookie, chapter = firstSignal) => questKey(id(cookie), chapter.id);
+const current = async (cookie, chapter = firstSignal) => { const r = await call(cookie, undefined, { chapter: chapter.id }); assert.equal(r.statusCode, 200, JSON.stringify(r.body)); return r.body.quest; };
 const actionFor = (q, action, extra = {}) => ({ action, revision: q.revision, ...(action !== 'begin' ? { attemptId: q.attempt.id, stepToken: q.attempt.token } : {}), ...extra });
-const act = async (cookie, action, extra = {}) => {
-  const q = await current(cookie), r = await call(cookie, actionFor(q, action, extra)); assert.equal(r.statusCode, 200, JSON.stringify(r.body)); return r.body.quest;
+const act = async (cookie, action, extra = {}, chapter = firstSignal) => {
+  const q = await current(cookie, chapter), r = await call(cookie, actionFor(q, action, { ...(chapter.id !== firstSignal.id ? { chapterId: chapter.id } : {}), ...extra }), { chapter: chapter.id }); assert.equal(r.statusCode, 200, JSON.stringify(r.body)); return r.body.quest;
 };
 const fresh = async () => { await fixture.command('FLUSHDB'); return session('Explorer'); };
-const answer = async (cookie, correct = true) => {
-  const state = JSON.parse(await fixture.command('GET', key(cookie))), q = questChecks[state.run.index];
+const answer = async (cookie, correct = true, chapter = firstSignal) => {
+  const state = JSON.parse(await fixture.command('GET', key(cookie, chapter))), q = checksFor(chapter)[state.run.index];
   const choice = correct ? q.correctIndex : (q.correctIndex + 1) % 4;
-  return act(cookie, 'answer', { selectedIndex: state.run.orders[state.run.index].indexOf(choice) });
+  return act(cookie, 'answer', { selectedIndex: state.run.orders[state.run.index].indexOf(choice) }, chapter);
 };
-const complete = async (cookie, wrongAt = [0, 4]) => {
-  if (!(await current(cookie)).attempt) await act(cookie, 'begin');
+const complete = async (cookie, wrongAt = [0, 4], chapter = firstSignal) => {
+  if (!(await current(cookie, chapter)).attempt) await act(cookie, 'begin', {}, chapter);
   for (let i = 0; i < 25; i++) {
-    const q = await current(cookie); if (q.attempt.status === 'complete') return q;
-    if (q.attempt.status === 'question') await answer(cookie, !wrongAt.includes(q.attempt.index));
-    else await act(cookie, 'continue');
+    const q = await current(cookie, chapter); if (q.attempt.status === 'complete') return q;
+    if (q.attempt.status === 'question') await answer(cookie, !wrongAt.includes(q.attempt.index), chapter);
+    else await act(cookie, 'continue', {}, chapter);
   }
   throw new Error('Chapter did not complete within its fixed transition count');
 };
@@ -125,13 +126,14 @@ run('Quest never changes ranked XP, prestige, balances, collectibles or Study re
   const cookie = await fresh(), playerId = id(cookie);
   const values = { [`geek:profile:${playerId}`]: '{"xp":900,"balance":50,"avatarId":"giga-builder","stickerInventory":{"giga-core":3}}', [`geek:prestige:${playerId}`]: '{"version":1,"prestige":1,"xpBaseline":500,"history":[]}', [`geek:study-progress:${playerId}`]: 'saved-study-fixture' };
   for (const [k, v] of Object.entries(values)) await fixture.command('SET', k, v);
-  await complete(cookie); await act(cookie, 'replay'); await complete(cookie);
+  await complete(cookie); await complete(cookie, [], insideBlockdag);
   for (const [k, v] of Object.entries(values)) assert.equal(await fixture.command('GET', k), v);
   const q = await current(cookie); assert.equal(q.xpEnabled, false); assert.equal(q.creditsEnabled, false); assert.equal(q.tokensEnabled, false); assert.equal(q.ranked, false);
 });
 run('durable identity recovery resumes the same chapter and badge in a new session', async () => {
-  const cookie = await fresh(), done = await complete(cookie), recovered = await session('Recovered');
+  const cookie = await fresh(), done = await complete(cookie), second = await complete(cookie, [], insideBlockdag), recovered = await session('Recovered');
   const k = `geek:session:${id(recovered)}`, record = JSON.parse(await fixture.command('GET', k)); record.playerId = id(cookie); await fixture.command('SET', k, JSON.stringify(record));
+  assert.deepEqual((await current(recovered, insideBlockdag)).badge, second.badge);
   assert.deepEqual((await current(recovered)).badge, done.badge); assert.equal((await current(recovered)).attempt.id, done.attempt.id);
   await act(recovered, 'replay'); assert.equal((await current(cookie)).attempt.status, 'lesson');
 });
@@ -144,4 +146,116 @@ run('corrupt chapter records fail closed without replacing progress or granting 
     assert.equal(await fixture.command('GET', key(cookie)), corrupt);
     assert.throws(() => decodeQuest(corrupt), /QUEST_STATE_INVALID/);
   }
+});
+
+
+test('campaign content has two distinct three-stop chapters and no invented chapter fallback', () => {
+  assert.deepEqual(questChapters.map(c => c.id), ['first-signal', 'inside-blockdag']);
+  const allChecks = questChapters.flatMap(checksFor);
+  assert.equal(new Set(allChecks.map(q => q.id)).size, 12);
+  for (const chapter of questChapters) {
+    assert.equal(chapter.scenes.length, 3); assert.equal(checksFor(chapter).length, 6);
+    for (const scene of chapter.scenes) {
+      assert.equal(scene.checkpoints.length, 2); assert.ok(scene.objective && scene.example && scene.giga && scene.story);
+      assert.equal(new URL(scene.source.url).protocol, 'https:');
+      for (const check of scene.checkpoints) { assert.equal(new Set(check.choices).size, 4); assert.ok(check.choices[check.correctIndex] && check.explanation); }
+    }
+  }
+  assert.equal(getChapter('__proto__'), undefined); assert.equal(getChapter('unfinished'), undefined);
+});
+run('campaign reads are private, write-free and bounded; unknown or mismatched selectors are rejected', async () => {
+  const cookie = await fresh();
+  assert.equal((await call('', undefined, { campaign: '1' })).statusCode, 401);
+  const r = await call(cookie, undefined, { campaign: '1' }); assert.equal(r.statusCode, 200);
+  assert.equal(r.body.campaign.chapters.length, 2);
+  assert.ok(r.body.campaign.chapters.every(c => c.status === 'unstarted' && c.badge === null));
+  assert.equal((await fixture.command('KEYS', 'geek:quest:*')).length, 0);
+  for (const query of [{chapter:'unknown'}, {chapter:null}, {chapter:''}, {chapter:['first-signal','inside-blockdag']}, {campaign:'2'}, {campaign:'1',chapter:'first-signal'}]) assert.equal((await call(cookie, undefined, query)).statusCode, 400);
+  assert.equal((await call(cookie, {action:'begin',revision:0}, {chapter:insideBlockdag.id})).statusCode, 400);
+  assert.equal((await call(cookie, {action:'begin',revision:0,chapterId:firstSignal.id}, {chapter:insideBlockdag.id})).statusCode, 400);
+  assert.equal((await call(cookie, {action:'begin',revision:0}, {campaign:'1'})).statusCode, 400);
+  assert.equal((await fixture.command('KEYS', 'geek:quest:*')).length, 0);
+});
+run('Inside the blockDAG completes independently and replay preserves its badge and notes', async () => {
+  const cookie = await fresh(); await act(cookie, 'begin'); await act(cookie, 'continue'); await answer(cookie, false);
+  const original = await fixture.command('GET',key(cookie));
+  const done = await complete(cookie, [1,3], insideBlockdag);
+  assert.equal(done.chapter.id, insideBlockdag.id); assert.equal(done.attempt.correct,4);
+  assert.equal(done.badge.id, insideBlockdag.id); assert.equal(done.badge.name,'BlockDAG Pathfinder');
+  assert.equal(done.badge.awardedAt,done.lastCompleted.completedAt);
+  assert.deepEqual(await current(cookie,insideBlockdag),done);
+  assert.equal(await fixture.command('GET',key(cookie)),original);
+  const replay = await act(cookie,'replay',{},insideBlockdag);
+  assert.deepEqual(replay.badge,done.badge); assert.deepEqual(replay.lastCompleted,done.lastCompleted);
+  const second = await complete(cookie,[],insideBlockdag);
+  assert.equal(second.attempt.correct,6); assert.deepEqual(second.badge,done.badge);
+  assert.equal(await fixture.command('GET',key(cookie)),original);
+  assert.equal(await fixture.command('TTL',key(cookie,insideBlockdag)),-1);
+  const campaign = (await call(cookie,undefined,{campaign:'1'})).body.campaign;
+  assert.equal(campaign.chapters[0].status,'feedback'); assert.equal(campaign.chapters[1].status,'complete');
+  assert.equal(campaign.chapters[1].badge.id,insideBlockdag.id);
+  for (const value of ['attemptId','token','orders','checkpointId',id(cookie)]) assert.equal(JSON.stringify(campaign).includes(value),false);
+  const other = await session('Other'); assert.ok((await call(other,undefined,{campaign:'1',playerId:id(cookie)})).body.campaign.chapters.every(c=>c.status==='unstarted'));
+});
+run('chapter tokens cannot cross records and simultaneous Chapter 2 answers still accept only one', async () => {
+  const cookie = await fresh();
+  for (const chapter of questChapters) { await act(cookie,'begin',{},chapter); await act(cookie,'continue',{},chapter); }
+  const first = await current(cookie), next = await current(cookie,insideBlockdag);
+  const original = await fixture.command('GET',key(cookie));
+  const cross = actionFor(first,'answer',{chapterId:insideBlockdag.id,selectedIndex:0});
+  assert.equal((await call(cookie,cross,{chapter:insideBlockdag.id})).statusCode,409);
+  const mismatch = actionFor(next,'answer',{chapterId:insideBlockdag.id,selectedIndex:0});
+  assert.equal((await call(cookie,mismatch,{chapter:firstSignal.id})).statusCode,400);
+  const one=actionFor(next,'answer',{chapterId:insideBlockdag.id,selectedIndex:0}),two=actionFor(next,'answer',{chapterId:insideBlockdag.id,selectedIndex:1});
+  const results=await Promise.all([call(cookie,one,{chapter:insideBlockdag.id}),call(cookie,two,{chapter:insideBlockdag.id})]);
+  assert.deepEqual(results.map(r=>r.statusCode).sort(),[200,409]);
+  const accepted=results[0].statusCode===200?one:two, saved=await fixture.command('GET',key(cookie,insideBlockdag));
+  assert.equal((await call(cookie,accepted,{chapter:insideBlockdag.id})).statusCode,200);
+  assert.equal(await fixture.command('GET',key(cookie,insideBlockdag)),saved);
+  assert.equal(await fixture.command('GET',key(cookie)),original);
+});
+run('pre-campaign First Signal v1 receipts and exact command retries remain compatible without migration', async () => {
+  const cookie=await fresh(), attemptId='a'.repeat(32), stepToken='f'.repeat(32);
+  const command={action:'continue',revision:15,attemptId,stepToken};
+  const answers=questChecks.map(q=>({checkpointId:q.id,selectedChoice:q.correctIndex,correct:true,answeredAt:1700000000001}));
+  const legacy={version:1,contentVersion:1,revision:16,createdAt:1700000000000,updatedAt:1700000000002,
+    run:{id:attemptId,token:'b'.repeat(32),startedAt:1700000000000,status:'complete',index:5,orders:questChecks.map(()=>[0,1,2,3]),answers},
+    badge:{id:'first-signal',awardedAt:1700000000002,attemptId},lastCompleted:{attemptId,completedAt:1700000000002,answers},
+    lastMutation:createHash('sha256').update(JSON.stringify(['continue',15,attemptId,stepToken,null])).digest('hex')};
+  const raw=JSON.stringify(legacy); await fixture.command('SET',key(cookie),raw);
+  const before=await current(cookie); assert.equal(before.badge.name,'First Signal Explorer');
+  assert.deepEqual((await call(cookie,command)).body.quest,before);
+  await call(cookie,undefined,{campaign:'1'}); await complete(cookie,[],insideBlockdag);
+  assert.equal(await fixture.command('GET',key(cookie)),raw);
+  const replay=await act(cookie,'replay'); assert.deepEqual(replay.badge,before.badge);
+});
+run('one corrupt chapter is unavailable in the map without hiding or overwriting the other chapter', async () => {
+  const cookie=await fresh(), done=await complete(cookie);
+  await act(cookie,'begin',{},insideBlockdag); const good=await fixture.command('GET',key(cookie,insideBlockdag));
+  const corrupt=JSON.parse(good); corrupt.chapterId=firstSignal.id;
+  await fixture.command('SET',key(cookie,insideBlockdag),JSON.stringify(corrupt));
+  const read=await call(cookie,undefined,{chapter:insideBlockdag.id}); assert.equal(read.statusCode,503);
+  const map=(await call(cookie,undefined,{campaign:'1'})).body.campaign.chapters;
+  assert.equal(map[0].badge.id,done.badge.id); assert.equal(map[0].available,true); assert.equal(map[1].available,false);
+  assert.equal(JSON.stringify(map[1]).includes('badge'),false);
+  await act(cookie,'replay'); assert.equal(await fixture.command('GET',key(cookie,insideBlockdag)),JSON.stringify(corrupt));
+});
+
+run('simultaneous Chapter 2 final continuations grant one badge even with six wrong answers', async () => {
+  const cookie=await fresh(), chapter=insideBlockdag;
+  await act(cookie,'begin',{},chapter);
+  for(let i=0;i<25;i++) {
+    const q=await current(cookie,chapter);
+    if(q.attempt.status==='feedback'&&q.attempt.index===5)break;
+    if(q.attempt.status==='question')await answer(cookie,false,chapter); else await act(cookie,'continue',{},chapter);
+  }
+  const before=await current(cookie,chapter); assert.equal(before.badge,null); assert.equal(before.lastCompleted,null);
+  const command=actionFor(before,'continue',{chapterId:chapter.id});
+  const results=await Promise.all([call(cookie,command,{chapter:chapter.id}),call(cookie,command,{chapter:chapter.id})]);
+  assert.deepEqual(results.map(r=>r.statusCode),[200,200]);assert.deepEqual(results[0].body.quest,results[1].body.quest);
+  const q=results[0].body.quest; assert.equal(q.attempt.status,'complete');assert.equal(q.attempt.correct,0);assert.equal(q.review.length,6);
+  assert.equal(q.badge.id,chapter.badge.id);assert.equal(q.badge.awardedAt,q.lastCompleted.completedAt);
+  const [seconds,microseconds]=await fixture.command('TIME'),now=Number(seconds)*1000+Math.floor(Number(microseconds)/1000);
+  assert.ok(q.badge.awardedAt<=now&&now-q.badge.awardedAt<10000);
+  assert.equal(await fixture.command('EXISTS',key(cookie)),0);
 });

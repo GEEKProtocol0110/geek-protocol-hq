@@ -49,15 +49,16 @@
   const refreshQuest = async () => {
     const button = $('[data-quest-retry]'); if (!button) return;
     button.disabled = true;
+    let campaignCards;
     try {
-      const { quest } = await api('/api/quest');
-      const a = quest.attempt;
-      setText('[data-quest-status]', !a ? 'Three story stops and six untimed checks are waiting. Begin your Kaspa origins adventure.' : a.status === 'complete' ? `First Signal complete · ${a.correct} / 6 correct on your latest visit. Saved notes are available in the chapter.` : `First Signal in progress · ${a.answered} / 6 learning checks attempted. Resume your saved stop.`);
-      setText('[data-quest-link]', !a ? 'Begin First Signal →' : a.status === 'complete' ? 'Open chapter & review →' : 'Resume First Signal →');
-      $('[data-quest-badge]').hidden = !quest.badge;
-      if (quest.badge) setText('[data-quest-badge-date]', `Saved ${safeDate(quest.badge.awardedAt)}`);
-      button.hidden = true;
+      const ui = await import('../../quest/assets/campaign.js');
+      campaignCards = ui.campaignCards;
+      const { campaign } = await api('/api/quest?campaign=1');
+      setText('[data-quest-status]', ui.campaignSummary(campaign.chapters));
+      $('[data-quest-chapters]').innerHTML = campaignCards(campaign.chapters);
+      button.hidden = campaign.chapters.every(c => c.available);
     } catch (error) {
+      if (campaignCards) $('[data-quest-chapters]').innerHTML = campaignCards([]);
       setText('[data-quest-status]', `${error.message} Your saved chapter remains on the server.`);
       button.hidden = false;
     } finally { button.disabled = false; }

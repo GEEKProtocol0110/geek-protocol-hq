@@ -174,7 +174,7 @@
     },
     {
       "id": "GP-INV-028",
-      "title": "Quest progress and one-time completion badge use validated atomic state isolated from ranked and monetary records",
+      "title": "Per-chapter Quest progress and one-time badges use validated atomic state, preserve legacy receipts and isolate campaign summaries from other chapters and ranked or monetary records",
       "status": "implemented-alpha",
       "evidence": ["server/quest.js", "tests/quest.test.js", "public/quest/assets/chapter.js", "docs/QUEST-PROTOCOL.md"]
     },
