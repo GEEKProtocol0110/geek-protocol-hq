@@ -7,6 +7,7 @@ import { recordRoundJourney, withProgression } from '../server/progression.js';
 import { questionById, selectRoundQuestionIds, shuffleOptions } from '../server/questions.js';
 import { rateLimit, redis } from '../server/redis.js';
 import { playerIdFor, requireSession } from '../server/session.js';
+import questHandler from '../server/quest.js';
 import studyHandler from '../server/study.js';
 import challengesHandler from '../server/challenges.js';
 import assistedPracticeHandler from '../server/assisted-practice.js';
@@ -253,6 +254,7 @@ const answerQuestion = async (run, session, profile, body) => {
 };
 
 export default async function handler(req, res) {
+  if (req.query?.service === 'quest') return questHandler(req, res);
   if (req.query?.service === 'practice') return assistedPracticeHandler(req, res);
   if (req.query?.service === 'study') return studyHandler(req, res);
   if (req.query?.service === 'challenges') return challengesHandler(req, res);

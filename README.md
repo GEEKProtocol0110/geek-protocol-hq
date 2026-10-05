@@ -187,3 +187,7 @@ Code in this repository is available under the [MIT License](LICENSE). Geek Prot
 ### Free Geek Duel
 
 Invite a friend to [Geek Duel](https://www.geekprotocol.xyz/duel/): both players ready up, answer ten shared questions with a server clock, see a final result and agree to a rematch. Saved personal Geeks appear beside room scores. This free Alpha format grants no XP or monetary rewards. [Rules and architecture](docs/DUEL-PROTOCOL.md).
+
+### Quiz Quest: First Signal
+
+[First Signal](https://www.geekprotocol.xyz/quest/) is a free solo Kaspa origins chapter: explore with your selected Geek and GIGA, read A.C.E.’s learning notes, save progress through six untimed checks and collect one completion badge. Missed answers remain available for review; replaying preserves the original badge. No ranked XP or token rewards are awarded. [Chapter protocol](docs/QUEST-PROTOCOL.md).

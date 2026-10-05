@@ -46,6 +46,24 @@
     } finally { button.disabled = false; $('[data-study-panel]').setAttribute('aria-busy', 'false'); }
   };
 
+  const refreshQuest = async () => {
+    const button = $('[data-quest-retry]'); if (!button) return;
+    button.disabled = true;
+    try {
+      const { quest } = await api('/api/quest');
+      const a = quest.attempt;
+      setText('[data-quest-status]', !a ? 'Three story stops and six untimed checks are waiting. Begin your Kaspa origins adventure.' : a.status === 'complete' ? `First Signal complete · ${a.correct} / 6 correct on your latest visit. Saved notes are available in the chapter.` : `First Signal in progress · ${a.answered} / 6 learning checks attempted. Resume your saved stop.`);
+      setText('[data-quest-link]', !a ? 'Begin First Signal →' : a.status === 'complete' ? 'Open chapter & review →' : 'Resume First Signal →');
+      $('[data-quest-badge]').hidden = !quest.badge;
+      if (quest.badge) setText('[data-quest-badge-date]', `Saved ${safeDate(quest.badge.awardedAt)}`);
+      button.hidden = true;
+    } catch (error) {
+      setText('[data-quest-status]', `${error.message} Your saved chapter remains on the server.`);
+      button.hidden = false;
+    } finally { button.disabled = false; }
+  };
+  $('[data-quest-retry]')?.addEventListener('click', refreshQuest);
+
   const postCollectible = (body) => api('/api/collectibles', { method: 'POST', body: JSON.stringify(body) });
 
   const renderCollectionMetrics = (blueprint) => {
@@ -184,6 +202,7 @@
       await api('/api/session', { method: 'POST', body: '{}' });
       await Promise.allSettled([
         refreshStudy(),
+        refreshQuest(),
         api('/api/profile').then(payload => render(payload.profile)).catch(error => {
           setText('[data-profile-state]', 'GAME RECORDS UNAVAILABLE');
           window.dispatchEvent(new Event('geek:profile-unavailable'));

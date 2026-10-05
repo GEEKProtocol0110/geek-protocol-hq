@@ -173,6 +173,12 @@
       "evidence": ["server/duel.js", "server/duel-api.js", "tests/duel.test.js", "docs/DUEL-PROTOCOL.md"]
     },
     {
+      "id": "GP-INV-028",
+      "title": "Quest progress and one-time completion badge use validated atomic state isolated from ranked and monetary records",
+      "status": "implemented-alpha",
+      "evidence": ["server/quest.js", "tests/quest.test.js", "public/quest/assets/chapter.js", "docs/QUEST-PROTOCOL.md"]
+    },
+    {
       "id": "GP-GATE-INDEPENDENT-AUDIT",
       "title": "Independent application and settlement audits",
       "status": "required-before-settlement",
