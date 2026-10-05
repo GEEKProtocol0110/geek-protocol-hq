@@ -24,7 +24,11 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Check JavaScript syntax
         run: find api server public scripts \( -name '*.js' -o -name '*.mjs' \) | sort | xargs -n1 node --check
+      - name: Install Redis for atomic Duel integration tests
+        run: sudo apt-get update -qq && sudo apt-get install -y redis-server
       - name: Run integration tests
+        env:
+          DUEL_REQUIRE_REDIS: "1"
         run: npm test
       - name: Verify security evidence
         run: npm run security:check

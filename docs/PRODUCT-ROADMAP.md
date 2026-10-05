@@ -70,13 +70,13 @@ Start with content quality and guided practice. Educational benefit and question
 
 | ID | Feature | Status | Completion evidence |
 | --- | --- | --- | --- |
-| ARENA-01 | The Duel: dedicated 1v1 | Planned | Match lifecycle, common server clock/question set, tie rules, reconnect and abandonment handling, and repeatable results |
+| ARENA-01 | The Duel: dedicated 1v1 | Implemented free Alpha | Mutual ready-up, ten shared questions, Redis clock and atomic scoring, winner/draw/forfeit/disconnect results, fixed two-player roster, reload recovery and mutual rematches; no XP or monetary rewards |
 | ARENA-02 | Team Battle: 2v2 | Planned | Fixed team rosters, cooperative answer rules, team scoring, and adversarial cross-team authorization tests |
 | ARENA-03 | Party Mode: social co-op | Planned | Group objective, shared progress, accessible pacing, host/rejoin rules, and clearly separate practice standings |
 | ARENA-04 | Trivia Royale | Planned | Event entry/round lifecycle, elimination and tie rules, A.C.E. hosting tools, server authority, and tested participant-capacity limits |
 | ARENA-05 | Optional Duel wagers / event prizes | Proposed monetary extension | Separate approved economic specification, reviewed custody/settlement path, reconciliation, eligibility and dispute rules; follows economy work |
 
-The Quick Duel room template is a live shared practice format, not implementation of dedicated wagered Duel gameplay. Build practice Arena formats before their monetary extensions.
+Geek Duel at `/duel/` is the dedicated free 1v1 format. The existing Quick Duel lobby template remains shared practice. Wagered Duel and specialized Fandom Duel rules remain planned. See [Duel protocol](DUEL-PROTOCOL.md).
 
 ### Original game-mode lineup
 

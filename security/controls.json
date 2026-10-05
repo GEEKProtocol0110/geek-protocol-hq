@@ -167,6 +167,12 @@
       "evidence": ["server/assisted-practice.js", "tests/assisted-practice.test.js", "docs/ARCHITECTURE.md"]
     },
     {
+      "id": "GP-INV-027",
+      "title": "Free Duel uses atomic server-clock consent, scoring, disconnect results and rematches without ranked or monetary writes",
+      "status": "implemented-alpha",
+      "evidence": ["server/duel.js", "server/duel-api.js", "tests/duel.test.js", "docs/DUEL-PROTOCOL.md"]
+    },
+    {
       "id": "GP-GATE-INDEPENDENT-AUDIT",
       "title": "Independent application and settlement audits",
       "status": "required-before-settlement",
