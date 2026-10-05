@@ -52,6 +52,10 @@ flowchart TB
 
 ## Primary flows
 
+### Quiz Quest chapter progress
+
+`/quest/` serves an authored First Signal origins chapter with public teaching notes and six untimed checks, distinct from ranked banks. `/api/quest` rewrites to a handler inside `api/ranked.js`, preserving the existing function count. A bounded durable record per player and chapter contains one current attempt, one last-completed summary and one completion badge. Strict schema validation and a raw-record compare-and-set atomically advance the cursor, save an answer and finalize the badge. Redis TIME stamps accepted steps and first completion. Exact last-command retries are idempotent; stale/different tokens cannot skip a step. Replays preserve the first badge and completed notes. No ranked XP, balance, prestige, Study, inventory or settlement record is written. The profile fetches chapter progress separately, so a chapter outage cannot block career/collection rendering. See [Quest protocol](QUEST-PROTOCOL.md).
+
 ### Free Geek Duel
 
 `/duel/` uses the existing session, private question bank and verified cosmetic profile services. `/api/duel` rewrites to the Duel handler inside `api/lobbies.js`, retaining the current serverless function count and question-file bundling. Each invitation has one Redis record. A single Lua transition reads Redis TIME, locks two durable player identities, starts only on mutual readiness, accepts one answer per shared question, finalizes ties/forfeits/disconnections and requires mutual consent for rematches. No browser score or clock is trusted. Reads refresh presence and settle elapsed matches; no scheduled worker is required. Public responses contain room slots and cosmetic snapshots, never player/session IDs or correct-answer indices. The Duel ledger does not write ranked XP, credits, inventory, prestige or treasury state. See [Duel protocol](DUEL-PROTOCOL.md).
