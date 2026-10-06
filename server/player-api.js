@@ -1,4 +1,4 @@
-import { customGeekId, normalizeGeek } from '../public/assets/geek-avatar.js';
+import { customGeekId, normalizeGeek, careerEffects, unlockedGeekEffects } from '../public/assets/geek-avatar.js';
 import { avatarCatalog, collectibleProfile } from './collectibles.js';
 import { clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from './http.js';
 import { loadProfile, saveProfile, saveAvatarWithAudit } from './profile.js';
@@ -51,6 +51,10 @@ export const collectiblesHandler = async (req, res) => {
       await saveAvatarWithAudit(playerId, avatar.id);
     } else if (action === 'customize-avatar') {
       const customization = normalizeGeek(body.customization, true);
+      if (careerEffects.some(effect => effect.id === customization.fx)) {
+        const profile = await loadProfile(playerId);
+        if (!unlockedGeekEffects(deriveProgression(profile)).includes(customization.fx)) throw new Error('AVATAR_LOCKED');
+      }
       await saveAvatarWithAudit(playerId, customGeekId, customization);
     } else if (action === 'create-trade') {
       const profile = await loadProfile(playerId);

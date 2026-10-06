@@ -822,3 +822,6 @@ h1 em { color: var(--gold); font-style: normal; }
   .home-main .hero-actions { display: flex; }
   .home-main .hero-actions .button { flex: 1 1 170px; }
 }
+/* Touch navigation and controls on compact screens. */
+@media (max-width: 850px){.main-nav a,.main-nav summary,.menu-toggle{min-height:44px}.main-nav a{display:flex;align-items:center}.main-nav{max-height:calc(100dvh - 66px);overflow-y:auto;overscroll-behavior:contain;padding-bottom:max(1rem,env(safe-area-inset-bottom))}.main-nav summary{display:flex;align-items:center}.main-nav select,.main-nav input{font-size:16px}.menu-toggle{min-width:44px}.button{touch-action:manipulation}input,select,textarea{font-size:max(16px,1em)}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.level-track i{transition:none}}

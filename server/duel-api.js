@@ -19,7 +19,9 @@ export default async function handler(req, res) {
       await rateLimit('duel-create', playerId, 10, 3600);
       await rateLimit('duel-create-ip', clientFingerprint(req), 20, 3600);
       if (!categories.has(body.category)) throw new Error('INVALID_REQUEST');
-      duel = await createDuel(session, body.category);
+      if (body.opponent !== undefined && !['player', 'ace'].includes(body.opponent)) throw new Error('INVALID_REQUEST');
+      if (body.difficulty !== undefined && body.opponent !== 'ace') throw new Error('INVALID_REQUEST');
+      duel = await createDuel(session, body.category, body.opponent || 'player', body.difficulty ?? 'operator');
     } else {
       if (action === 'rematch') await rateLimit('duel-rematch', playerId, 15, 3600);
       duel = await transitionDuel(session, code, action, body);

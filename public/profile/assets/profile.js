@@ -54,10 +54,13 @@
       const ui = await import('../../quest/assets/campaign.js');
       campaignCards = ui.campaignCards;
       const { campaign } = await api('/api/quest?campaign=1');
+      window.GeekProfile.campaign = campaign.chapters;
+      window.dispatchEvent(new CustomEvent('geek:campaign', { detail: campaign.chapters }));
       setText('[data-quest-status]', ui.campaignSummary(campaign.chapters));
       $('[data-quest-chapters]').innerHTML = campaignCards(campaign.chapters);
       button.hidden = campaign.chapters.every(c => c.available);
     } catch (error) {
+      window.GeekProfile.campaign = null; window.dispatchEvent(new Event('geek:campaign-unavailable'));
       if (campaignCards) $('[data-quest-chapters]').innerHTML = campaignCards([]);
       setText('[data-quest-status]', `${error.message} Your saved chapter remains on the server.`);
       button.hidden = false;
@@ -116,6 +119,7 @@
     renderAvatars(payload.collection);
     renderStickers(payload.collection);
     renderTrades(payload.trades);
+    window.dispatchEvent(new CustomEvent('geek:collection', { detail: payload.collection }));
   };
 
   window.GeekProfile = { renderCollectibles, collection: null, offline: false };
@@ -143,8 +147,9 @@
     }).join('');
   };
 
+  const achievementLink = id => id.startsWith('prestige') || id === 'level-fifty' ? '#prestige' : id === 'kaspa-initiate' ? '../play/?category=kaspa' : '../play/?mode=gauntlet';
   const renderAchievements = (achievements) => {
-    $('[data-achievement-grid]').innerHTML = achievements.map((achievement, index) => `<article class="achievement-card ${achievement.unlocked ? 'unlocked' : 'locked'}"><span>${achievement.unlocked ? '✓' : String(index + 1).padStart(2, '0')}</span><h3>${escapeHtml(achievement.name)}</h3><p>${escapeHtml(achievement.detail)}</p><div class="achievement-progress"><b>${achievement.unlocked ? 'UNLOCKED' : 'IN PROGRESS'}</b><span>${format.format(achievement.progress)} / ${format.format(achievement.target)}</span></div></article>`).join('');
+    $('[data-achievement-grid]').innerHTML = achievements.map((achievement, index) => `<article data-achievement-state="${achievement.unlocked ? 'unlocked' : 'locked'}" class="achievement-card ${achievement.unlocked ? 'unlocked' : 'locked'}"><span>${achievement.unlocked ? '✓' : String(index + 1).padStart(2, '0')}</span><h3>${escapeHtml(achievement.name)}</h3><p>${escapeHtml(achievement.detail)}</p><div class="achievement-progress"><b>${achievement.unlocked ? 'UNLOCKED' : 'IN PROGRESS'}</b><span>${format.format(achievement.progress)} / ${format.format(achievement.target)}</span></div><progress value="${achievement.progress}" max="${achievement.target}" aria-label="${escapeHtml(achievement.name)} progress"></progress><a href="${achievementLink(achievement.id)}">${achievement.unlocked ? 'Keep building your career' : 'Work toward this goal'} →</a></article>`).join('');
   };
 
   const eventCopy = (event) => {
@@ -193,6 +198,7 @@
     renderMastery(profile.categories);
     renderAchievements(profile.achievements);
     renderJourney(profile.journey);
+    window.GeekProfile.currentProfile = profile;
     window.dispatchEvent(new CustomEvent('geek:profile', { detail: profile }));
   };
 
@@ -206,7 +212,7 @@
         refreshQuest(),
         api('/api/profile').then(payload => render(payload.profile)).catch(error => {
           setText('[data-profile-state]', 'GAME RECORDS UNAVAILABLE');
-          window.dispatchEvent(new Event('geek:profile-unavailable'));
+          window.GeekProfile.currentProfile = null; window.dispatchEvent(new Event('geek:profile-unavailable'));
           setText('[data-journey-list]', `${error.message} Your game records remain saved.`);
         }),
         refreshCollectibles().catch(error => { window.GeekProfile.offline = true; window.GeekBuilder?.unavailable(); setText('[data-trade-feedback]', `${error.message} Your collection remains saved.`); })
@@ -215,7 +221,7 @@
       window.GeekProfile.offline = true; window.GeekBuilder?.unavailable();
       window.GeekGiga?.update('progress', { phase: 'unavailable' });
       setText('[data-profile-state]', 'PROFILE SERVICE OFFLINE');
-      window.dispatchEvent(new Event('geek:profile-unavailable'));
+      window.GeekProfile.currentProfile = null; window.dispatchEvent(new Event('geek:profile-unavailable'));
       setText('[data-study-note]', `${error.message} Refresh this page to reconnect. You can still read Kaspa 101.`);
       $('[data-journey-list]').innerHTML = `<li class="profile-empty">${escapeHtml(error.message)} Your verified data remains on the server.</li>`;
     }

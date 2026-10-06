@@ -168,15 +168,21 @@
     },
     {
       "id": "GP-INV-027",
-      "title": "Free Duel uses atomic server-clock consent, scoring, disconnect results and rematches without ranked or monetary writes",
+      "title": "Free human and simulated A.C.E. Duel uses atomic server-clock scoring, disconnect results and rematches without ranked or monetary writes",
       "status": "implemented-alpha",
       "evidence": ["server/duel.js", "server/duel-api.js", "tests/duel.test.js", "docs/DUEL-PROTOCOL.md"]
     },
     {
       "id": "GP-INV-028",
-      "title": "Quest chapter access requires verified prerequisite completion; atomic progress and badges preserve legacy receipts and remain isolated from ranked or monetary records",
+      "title": "Quest chapter access requires the full verified prerequisite completion chain; atomic progress and badges preserve legacy receipts and remain isolated from ranked or monetary records",
       "status": "implemented-alpha",
       "evidence": ["server/quest.js", "tests/quest.test.js", "public/quest/assets/chapter.js", "docs/QUEST-PROTOCOL.md"]
+    },
+    {
+      "id": "GP-INV-029",
+      "title": "Career effects require authenticated server-ledger unlocks; previews cannot grant ownership or alter career/economy state",
+      "status": "implemented-alpha",
+      "evidence": ["server/player-api.js", "server/collectibles.js", "server/progression.js", "public/assets/geek-avatar.js", "tests/duel.test.js", "tests/geek-avatar.test.js", "docs/COLLECTIBLE-PROTOCOL.md"]
     },
     {
       "id": "GP-GATE-INDEPENDENT-AUDIT",

@@ -175,6 +175,23 @@ export const deriveAchievements = (profile = {}) => {
   ];
 };
 
+// Read-only goals from the existing career ledger. No second reward counter.
+export const deriveCareerMilestones = (profile = {}) => {
+  const p = deriveProgression(profile);
+  return [
+    { id: 'explorer', name: 'Block Explorer', level: 5, detail: 'Kaspa Culture avatar + Explorer pulse effect', href: '/profile/#geek-builder' },
+    { id: 'pathfinder', name: 'DAG Pathfinder', level: 10, detail: 'Quiz Quest avatar', href: '/profile/#geek-builder' },
+    { id: 'signal-master', name: 'Signal Master', level: 20, detail: 'New career title', href: '/profile/#progression-title' },
+    { id: 'navigator', name: 'Grid Navigator', level: 30, detail: 'New career title', href: '/profile/#progression-title' },
+    { id: 'commander', name: 'Signal Commander', level: 50, detail: 'Optional prestige cycle becomes available', href: '/profile/#prestige' },
+    { id: 'operator', name: 'Prestige Operator', prestige: 1, level: 50, detail: 'Omniscient Grid avatar + Prestige crown effect', href: '/profile/#prestige' }
+  ].map(goal => {
+    const unlocked = goal.prestige ? p.prestige >= goal.prestige : p.level >= goal.level || p.prestige > 0;
+    const required = (goal.level - 1) * XP_PER_LEVEL;
+    return { ...goal, unlocked, progressPercent: unlocked ? 100 : Math.min(100, Math.floor(p.cycleXp / required * 100)), xpRemaining: unlocked ? 0 : Math.max(0, required - p.cycleXp) };
+  });
+};
+
 export const buildJourneyProfile = (profile = {}, player = {}) => {
   const categories = profile.categoryStats && typeof profile.categoryStats === 'object' ? profile.categoryStats : {};
   const totalCorrect = Math.floor(numeric(profile.totalCorrect));
@@ -186,6 +203,7 @@ export const buildJourneyProfile = (profile = {}, player = {}) => {
       walletProtected: Boolean(player.identityVersion)
     },
     progression: deriveProgression(profile),
+    milestones: deriveCareerMilestones(profile),
     stats: {
       xp: Math.floor(numeric(profile.xp)),
       alphaGeek: Math.floor(numeric(profile.balance)),

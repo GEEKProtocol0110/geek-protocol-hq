@@ -70,7 +70,7 @@ Start with content quality and guided practice. Educational benefit and question
 
 | ID | Feature | Status | Completion evidence |
 | --- | --- | --- | --- |
-| ARENA-01 | The Duel: dedicated 1v1 | Implemented free Alpha | Mutual ready-up, ten shared questions, Redis clock and atomic scoring, winner/draw/forfeit/disconnect results, fixed two-player roster, reload recovery and mutual rematches; no XP or monetary rewards |
+| ARENA-01 | The Duel: dedicated 1v1 | Implemented free Alpha | Friend ready-up or solo A.C.E. simulation with three difficulty presets, ten shared questions, Redis clock and atomic scoring, winner/draw/forfeit/disconnect results, fixed two-player roster, reload recovery and mutual rematches; no XP or monetary rewards |
 | ARENA-02 | Team Battle: 2v2 | Planned | Fixed team rosters, cooperative answer rules, team scoring, and adversarial cross-team authorization tests |
 | ARENA-03 | Party Mode: social co-op | Planned | Group objective, shared progress, accessible pacing, host/rejoin rules, and clearly separate practice standings |
 | ARENA-04 | Trivia Royale | Planned | Event entry/round lifecycle, elimination and tie rules, A.C.E. hosting tools, server authority, and tested participant-capacity limits |
@@ -86,7 +86,7 @@ Geek Duel at `/duel/` is the dedicated free 1v1 format. The existing Quick Duel 
 | Memory Grid | Live free Kaspa solo matching; 4/6/8 pairs, explanations, source/lesson links | Additional reviewed decks and any future saved progression require separate work |
 | Trivia Royale | Planned | Shared event lifecycle, elimination/ties, reconnect handling, hosting and capacity tests |
 | Fandom Duel | Planned | Dedicated head-to-head rules and reviewed fandom content; existing Quick Duel rooms are shared practice |
-| Quiz Quest | Two free Alpha chapters implemented | First Signal and Inside the blockDAG; campaign map with First Signal completion unlocking Chapter 2, three sourced scenes/six checks per chapter, independent saved resume/review and badges; further chapters planned |
+| Quiz Quest | Three free Alpha chapters implemented | First Signal, Inside the blockDAG and Keys to the Grid; campaign map with the full earlier-chapter completion chain unlocking each next chapter, three sourced scenes/six checks per chapter, independent saved resume/review and badges; further chapters planned |
 
 The first Memory Grid release uses explicit player-controlled mismatch review rather than a countdown. Attempt counts describe pairs turned over, not certified knowledge. Ranked authority and real money remain outside this casual browser game.
 

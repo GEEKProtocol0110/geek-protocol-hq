@@ -18,6 +18,7 @@ const drawCampaign = () => {
   if (summaries) $('[data-campaign-summary]').textContent = campaignSummary(summaries);
 };
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+let prerequisite = getChapter(chapter.prerequisite);
 let quest = null, connected = false, busy = false, selection = null, locked = false, accessPending = Boolean(chapter.prerequisite);
 const say = message => { $('[data-status]').textContent = message; };
 const api = async (path, body) => {
@@ -71,7 +72,7 @@ $('[data-begin]').textContent = `Begin ${chapter.title} →`;
 $('[data-badge-number]').textContent = number;
 $('[data-badge-title]').textContent = chapter.title.toUpperCase();
 $('[data-badge-name]').textContent = chapter.badge.name;
-$('[data-mission-title]').textContent = chapter.number === 1 ? 'Follow the first signal.' : 'Find the links. Understand the order.';
+$('[data-mission-title]').textContent = chapter.number === 1 ? 'Follow the first signal.' : chapter.number === 2 ? 'Find the links. Understand the order.' : 'Make a deliberate decision.';
 $('[data-next]').href = chapter.next.href;
 $('[data-next]').textContent = `${chapter.next.name} →`;
 
@@ -84,8 +85,9 @@ const controls = () => {
   $('[data-story-map]').hidden = gated;
   $('[data-chapter-reference]').hidden = gated;
   $('[data-chapter-lock]').hidden = !gated;
-  $('[data-lock-title]').textContent = locked ? 'Chapter 2 is locked.' : 'Checking your chapter unlock…';
-  $('[data-lock-copy]').textContent = locked ? 'Complete all six First Signal checks and choose Finish chapter & save badge to unlock Inside the blockDAG.' : 'Your saved First Signal completion opens this chapter.';
+  $('[data-lock-title]').textContent = locked ? `Chapter ${chapter.number} is locked.` : 'Checking your chapter unlock…';
+  $('[data-lock-copy]').textContent = locked ? `Complete ${prerequisite?.title || 'the previous chapter'} and choose Finish chapter & save badge to unlock ${chapter.title}.` : 'Checking saved completion of the earlier chapters.';
+  if (prerequisite) { $('[data-lock-link]').href = `/quest/?chapter=${encodeURIComponent(prerequisite.id)}`; $('[data-lock-link]').textContent = `Continue ${prerequisite.title} →`; }
   $('[data-resume]').textContent = locked || accessPending ? 'Check chapter unlock' : 'Resume saved chapter';
   $('[data-begin]').hidden = Boolean(a); $('[data-begin]').disabled = !enabled;
   $('[data-continue]').hidden = !a || !['lesson', 'feedback'].includes(a.status);
@@ -156,6 +158,7 @@ const render = (q, focus = false) => {
 const failure = error => {
   connected = false;
   if (error.code === 'QUEST_LOCKED') {
+    prerequisite = getChapter(error.prerequisite?.id) || prerequisite;
     locked = true; accessPending = false; quest = null; selection = null;
     campaign = [...(campaign || []).filter(c => c.chapterId !== chapter.id), { chapterId: chapter.id, available: true, locked: true, prerequisite: error.prerequisite }];
     say(error.message); drawCampaign();

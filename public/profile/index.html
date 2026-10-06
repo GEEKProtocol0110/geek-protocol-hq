@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="../assets/styles.css" /><link rel="stylesheet" href="../assets/space.css">
     <link rel="stylesheet" href="./assets/profile.css" />
     <link rel="stylesheet" href="../quest/assets/campaign.css" />
-    <link rel="stylesheet" href="./assets/dashboard.css" />
+    <link rel="stylesheet" href="./assets/dashboard.css" /><link rel="stylesheet" href="../assets/geek-character.css" />
     <script defer src="../assets/site.js"></script>
     <script defer src="../assets/giga.js"></script>
     <script defer src="./assets/profile.js"></script>
     <script defer src="./assets/dashboard.js"></script>
-    <script type="module" src="./assets/geek-builder.js"></script>
+    <script type="module" src="./assets/geek-builder.js"></script><script type="module" src="./assets/hq.js"></script>
   <link rel="stylesheet" href="../assets/giga.css" /><script defer src="/assets/analytics.js"></script></head>
   <body>
     <a class="skip-link" href="#main">Skip to player journey</a>
@@ -36,8 +36,18 @@
 
         <article class="identity-card" aria-label="Player identity">
           <div class="identity-top"><div class="identity-avatar"><img data-avatar-image alt="Selected Geek avatar" hidden /><span data-avatar-custom role="img" hidden></span><span data-avatar-fallback>G</span></div><div><span>SERVER PROFILE</span><h2 data-player-name>Guest Geek</h2><p data-rank-title>Initiate</p></div><b data-protection>SESSION PROFILE</b></div>
-          <dl><div><dt>Member since</dt><dd data-member-since>—</dd></div><div><dt>Profile recovery</dt><dd data-recovery>Not protected</dd></div><div><dt>Your records</dt><dd>Study &amp; games</dd></div></dl>
+          <dl><div><dt>Member since</dt><dd data-member-since>—</dd></div><div><dt>Profile recovery</dt><dd data-recovery>Not protected</dd></div><div><dt>Your records</dt><dd>Study &amp; games</dd></div></dl><a class="hq-identity-edit" href="#geek-builder">Open my character studio →</a>
         </article>
+      </section>
+
+      <section class="hq-deck" aria-labelledby="hq-deck-title">
+        <div class="hq-deck-heading"><div><span class="section-kicker">YOUR GRID / PICK UP THE SIGNAL</span><h2 id="hq-deck-title">One place. Your next move.</h2></div><a href="../duel/?opponent=ace" class="button button-secondary">Challenge A.C.E. solo →</a></div>
+        <div class="hq-next-grid">
+          <article><span>STORY PATH</span><h3 data-hq-quest-title>Connecting your adventure…</h3><p data-hq-quest-copy>Saved chapter progress will guide your next stop.</p><a data-hq-quest-link href="../quest/">Open campaign →</a></article>
+          <article><span>CAREER UNLOCK</span><h3 data-hq-career-title>Connecting your career…</h3><p data-hq-career-copy>Levels unlock titles, avatars and character effects.</p><a data-hq-career-link href="#progression-title">Open career →</a></article>
+          <article><span>NEXT ACHIEVEMENT</span><h3 data-hq-achievement-title>Connecting your milestones…</h3><p data-hq-achievement-copy>Your saved career will choose a goal.</p><a data-hq-achievement-link href="#achievement-title">Browse achievements →</a></article>
+        </div>
+        <p class="hq-boundary">Career XP comes from Gauntlet, Daily and Speed. Quest badges, Study feedback and free Duel scores each keep their own progress.</p>
       </section>
 
       <nav class="dashboard-nav" aria-label="Player dashboard sections"><a href="#progression-title">Career</a><a href="#prestige">Prestige</a><a href="#dashboard-challenges">Challenges</a><a href="#leaderboard">Leaderboard</a><a href="#achievement-title">Achievements</a><a href="#quest-progress">Quest</a><a href="#geek-builder">My Geek</a></nav>
@@ -62,6 +72,8 @@
           </div>
         </div>
       </section>
+
+      <section class="hq-milestones" aria-labelledby="hq-milestones-title"><span class="section-kicker">CAREER / WHAT OPENS NEXT</span><h2 id="hq-milestones-title">Build a Geek. Build a legacy.</h2><p>These milestones come from your existing career record. Earned looks stay available when you prestige.</p><div data-hq-milestones class="hq-milestone-grid"><p>Connecting career milestones…</p></div></section>
 
       <section id="prestige" class="dashboard-prestige" aria-labelledby="prestige-title">
         <div class="section-kicker">YOUR LEGACY / PRESTIGE 01–25</div>
@@ -90,21 +102,21 @@
       </section>
 
       <section id="quest-progress" class="quest-progress-card" aria-labelledby="quest-progress-title">
-        <div class="section-kicker">QUIZ QUEST / SOLO CAMPAIGN</div><h2 id="quest-progress-title">Your path through the Grid.</h2><p data-quest-status role="status" aria-live="polite">Connecting saved chapter progress…</p><div class="campaign-cards" data-quest-chapters><a class="campaign-chapter" href="../quest/?chapter=first-signal">First Signal →</a><a class="campaign-chapter" href="../quest/?chapter=inside-blockdag">Inside the blockDAG →</a></div><p class="dashboard-note">Chapter badges record completion. They are off-chain cosmetics.</p><button class="button button-secondary" type="button" data-quest-retry hidden>Retry campaign status</button>
+        <div class="section-kicker">QUIZ QUEST / SOLO CAMPAIGN</div><h2 id="quest-progress-title">Your path through the Grid.</h2><p data-quest-status role="status" aria-live="polite">Connecting saved chapter progress…</p><div class="campaign-cards" data-quest-chapters><a class="campaign-chapter" href="../quest/?chapter=first-signal">First Signal →</a><a class="campaign-chapter" href="../quest/?chapter=inside-blockdag">Inside the blockDAG →</a><a class="campaign-chapter" href="../quest/?chapter=keys-to-the-grid">Keys to the Grid →</a></div><p class="dashboard-note">Chapter badges record completion. They are off-chain cosmetics.</p><button class="button button-secondary" type="button" data-quest-retry hidden>Retry campaign status</button>
       </section>
 
       <section id="geek-builder" class="geek-builder" aria-labelledby="geek-builder-title">
         <div class="section-kicker">BUILD-A-GEEK / YOUR PROFILE CHARACTER</div>
-        <div class="geek-builder-heading"><h2 id="geek-builder-title">Make your Geek.<br /><em>Make it yours.</em></h2><p>A Geek that looks like you. Choose your skin tone, hair, face and outfit in our block-style character studio—or build your own GIGA robot. Preview freely, then save and equip. All starter parts are free.</p></div>
-        <div class="geek-builder-layout"><div class="geek-preview-stage"><span data-geek-preview-state>YOUR CHARACTER PREVIEW</span><div data-geek-preview role="img" aria-label="Golden starter Geek"></div><b data-geek-preview-title>Your place in the Grid.</b><p>Your character. Your colors. Your story.</p></div>
-          <div class="geek-builder-editor"><fieldset data-geek-controls><legend>Character studio</legend>
+        <div class="geek-builder-heading"><h2 id="geek-builder-title">Make your Geek.<br /><em>Make it yours.</em></h2><p>A Geek that looks like you. Choose your skin tone, hair, face and outfit in our block-style character studio—or build your own GIGA robot. Preview freely, then save and equip. Try starter looks, tune each detail, and view your character from both sides. Starter parts are free; career play unlocks two extra effects.</p></div>
+        <div class="geek-builder-layout"><div class="geek-preview-stage"><span data-geek-preview-state>YOUR CHARACTER PREVIEW</span><div data-geek-preview role="img" aria-label="Golden starter Geek"></div><div class="geek-camera" role="group" aria-label="Character preview camera"><button type="button" data-geek-view="front" aria-pressed="true">Front</button><button type="button" data-geek-view="back" aria-pressed="false">Back</button><button type="button" data-geek-portrait aria-pressed="false">Portrait</button></div><b data-geek-preview-title>Your place in the Grid.</b><p>Your character. Your colors. Your story.</p></div>
+          <div class="geek-builder-editor"><fieldset data-geek-controls><legend>Character studio</legend><p class="geek-panel-intro">START WITH A LOOK</p><div class="geek-presets" data-geek-presets></div><div class="geek-studio-tools"><div class="geek-swatches" data-geek-swatches role="group" aria-label="Character colors"></div><button type="button" data-geek-random>Surprise me</button></div>
               <div class="geek-style-options" role="group" aria-label="Character style"><label><input type="radio" name="geek-kind" value="human" /><span><b>Personal Geek</b><small>Make it look like you</small></span></label><label><input type="radio" name="geek-kind" value="robot" checked /><span><b>GIGA robot</b><small>Build your own signal</small></span></label></div>
               <div class="geek-editor-tabs" role="tablist" aria-label="Character details"><button id="geek-tab-face" type="button" role="tab" aria-controls="geek-panel-face" aria-selected="true" data-geek-tab="face">Face &amp; hair</button><button id="geek-tab-outfit" type="button" role="tab" aria-controls="geek-panel-outfit" aria-selected="false" tabindex="-1" data-geek-tab="outfit">Outfit</button><button id="geek-tab-extras" type="button" role="tab" aria-controls="geek-panel-extras" aria-selected="false" tabindex="-1" data-geek-tab="extras">Extras</button></div>
               <section id="geek-panel-face" role="tabpanel" aria-labelledby="geek-tab-face" tabindex="0"><p class="geek-panel-intro">Your everyday look, ready for the Grid.</p><div class="geek-options" data-geek-options="face"></div></section>
               <section id="geek-panel-outfit" role="tabpanel" aria-labelledby="geek-tab-outfit" tabindex="0" hidden><p class="geek-panel-intro">Pick your colors, clothing and signature emblem.</p><div class="geek-options" data-geek-options="outfit"></div></section>
               <section id="geek-panel-extras" role="tabpanel" aria-labelledby="geek-tab-extras" tabindex="0" hidden><p class="geek-panel-intro">Finish with accessories and a little cosmic energy.</p><div class="geek-options" data-geek-options="extras"></div></section></fieldset>
             <div class="geek-builder-actions"><button class="button button-primary" type="button" data-geek-save disabled>Save &amp; equip my Geek →</button><button class="button button-secondary" type="button" data-geek-cancel>Undo preview changes</button><button class="button button-secondary" type="button" data-geek-reset>Reset this style</button></div>
-            <p class="geek-builder-status" data-geek-status role="status" aria-live="polite">Connecting your profile. Preview changes are saved only when you choose Save &amp; equip.</p><button class="geek-reconnect" type="button" data-geek-reconnect>Reconnect profile</button>
+            <p class="geek-unlock-note" data-geek-unlock-note role="status"></p><details class="geek-look-details"><summary>Your look at a glance</summary><p data-geek-look></p></details><p class="geek-builder-status" data-geek-status role="status" aria-live="polite">Connecting your profile. Preview changes are saved only when you choose Save &amp; equip.</p><button class="geek-reconnect" type="button" data-geek-reconnect>Reconnect profile</button>
           </div>
         </div>
         <p class="geek-builder-boundary">Your custom Geek is an off-chain profile cosmetic. The <a href="../collection/">500 Geeks NFT collection</a> is separate; equipping those characters will require verified ownership when collection deployment is ready.</p>
@@ -148,7 +160,7 @@
       <section class="achievement-section" aria-labelledby="achievement-title">
         <div class="section-kicker">05 / ACHIEVEMENTS</div>
         <div class="profile-heading"><h2 id="achievement-title">Your game<br />milestones.</h2><p>Achievements unlock from your career record and survive prestige. <strong data-achievement-count>Loading achievements…</strong></p></div>
-        <div class="achievement-grid" data-achievement-grid></div>
+        <div class="achievement-filters" role="group" aria-label="Filter achievements"><button type="button" data-achievement-filter="all" aria-pressed="true">All</button><button type="button" data-achievement-filter="locked" aria-pressed="false">In progress</button><button type="button" data-achievement-filter="unlocked" aria-pressed="false">Earned</button></div><p data-achievement-filter-count role="status" class="achievement-filter-count"></p><div class="achievement-grid" data-achievement-grid></div>
       </section>
 
       <section class="journey-section" aria-labelledby="journey-title">

@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { redisFixture } from './helpers/redis-fixture.js';
 import sessionHandler from '../api/session.js';
 import rankedHandler from '../api/ranked.js';
-import { firstSignal, questChecks, insideBlockdag, questChapters, checksFor, getChapter } from '../public/quest/assets/chapter.js';
+import { firstSignal, questChecks, insideBlockdag, keysToTheGrid, questChapters, checksFor, getChapter } from '../public/quest/assets/chapter.js';
 import { decodeQuest, questKey, mutateQuest } from '../server/quest.js';
 
 let fixture;
@@ -161,10 +161,10 @@ run('corrupt chapter records fail closed without replacing progress or granting 
 });
 
 
-test('campaign content has two distinct three-stop chapters and no invented chapter fallback', () => {
-  assert.deepEqual(questChapters.map(c => c.id), ['first-signal', 'inside-blockdag']);
+test('campaign content has three distinct three-stop chapters and no invented chapter fallback', () => {
+  assert.deepEqual(questChapters.map(c => c.id), ['first-signal', 'inside-blockdag', 'keys-to-the-grid']);
   const allChecks = questChapters.flatMap(checksFor);
-  assert.equal(new Set(allChecks.map(q => q.id)).size, 12);
+  assert.equal(new Set(allChecks.map(q => q.id)).size, 18);
   for (const chapter of questChapters) {
     assert.equal(chapter.scenes.length, 3); assert.equal(checksFor(chapter).length, 6);
     for (const scene of chapter.scenes) {
@@ -179,7 +179,7 @@ run('campaign reads are private, write-free and bounded; unknown or mismatched s
   const cookie = await fresh();
   assert.equal((await call('', undefined, { campaign: '1' })).statusCode, 401);
   const r = await call(cookie, undefined, { campaign: '1' }); assert.equal(r.statusCode, 200);
-  assert.equal(r.body.campaign.chapters.length, 2);
+  assert.equal(r.body.campaign.chapters.length, 3);
   assert.equal(r.body.campaign.chapters[0].status,'unstarted'); assert.equal(r.body.campaign.chapters[1].locked,true); assert.equal(r.body.campaign.chapters[1].prerequisite.id,firstSignal.id);
   assert.equal((await fixture.command('KEYS', 'geek:quest:*')).length, 0);
   for (const query of [{chapter:'unknown'}, {chapter:null}, {chapter:''}, {chapter:['first-signal','inside-blockdag']}, {campaign:'2'}, {campaign:'1',chapter:'first-signal'}]) assert.equal((await call(cookie, undefined, query)).statusCode, 400);
@@ -315,4 +315,38 @@ run('corrupt prerequisite receipts fail closed and are not presented as an unloc
   const map=(await call(cookie,undefined,{campaign:'1'})).body.campaign.chapters;assert.ok(map.every(c=>c.available===false));
   assert.equal(await fixture.command('GET',key(cookie,insideBlockdag)),saved);
   assert.equal(await fixture.command('GET',key(cookie)),JSON.stringify(corrupt));
+});
+
+run('Chapter 3 checks the full prerequisite chain and cannot bypass Chapter 1 with an older Chapter 2 badge', async () => {
+  const cookie = await fresh(); await seedPrerequisite(cookie);
+  await complete(cookie, [], insideBlockdag);
+  const chapter2 = await fixture.command('GET', key(cookie, insideBlockdag));
+  await fixture.command('DEL', key(cookie));
+  const read = await call(cookie, undefined, { chapter: keysToTheGrid.id });
+  assert.equal(read.statusCode, 403); assert.equal(read.body.prerequisite.id, firstSignal.id);
+  assert.equal((await call(cookie, { action: 'begin', revision: 0, chapterId: keysToTheGrid.id }, { chapter: keysToTheGrid.id })).statusCode, 403);
+  assert.equal(await fixture.command('GET', key(cookie, insideBlockdag)), chapter2);
+  assert.equal(await fixture.command('EXISTS', key(cookie, keysToTheGrid)), 0);
+  await seedPrerequisite(cookie);
+  assert.equal((await current(cookie, keysToTheGrid)).attempt, null);
+});
+run('Chapter 2 final completion unlocks Chapter 3, with independent decisions, badge, replay and recovery', async () => {
+  const cookie = await fresh(); await seedPrerequisite(cookie);
+  const locked = await call(cookie, undefined, { chapter: keysToTheGrid.id });
+  assert.equal(locked.statusCode, 403); assert.equal(locked.body.prerequisite.id, insideBlockdag.id);
+  await complete(cookie, [], insideBlockdag);
+  const chapter2 = await fixture.command('GET', key(cookie, insideBlockdag));
+  const done = await complete(cookie, [0,2,4], keysToTheGrid);
+  assert.equal(done.badge.name, 'Grid Guardian'); assert.equal(done.attempt.correct, 3); assert.equal(done.review.length, 3);
+  assert.equal(done.xpEnabled, false); assert.equal(done.tokensEnabled, false);
+  assert.deepEqual(await current(cookie, keysToTheGrid), done);
+  assert.equal(await fixture.command('GET', key(cookie, insideBlockdag)), chapter2);
+  const map = (await call(cookie, undefined, { campaign: '1' })).body.campaign.chapters;
+  assert.equal(map[2].locked, false); assert.equal(map[2].badge.id, keysToTheGrid.id);
+  await act(cookie, 'replay', {}, insideBlockdag);
+  assert.equal((await current(cookie, keysToTheGrid)).badge.awardedAt, done.badge.awardedAt);
+  // Existing durable-identity recovery applies to this independent ledger too.
+  const guest = await session('Recovered Guardian'), playerId = id(cookie);
+  await fixture.command('SET', `geek:session:${id(guest)}`, JSON.stringify({ id: id(guest), playerId, name: 'Recovered Guardian', createdAt: Date.now() }));
+  assert.equal((await current(guest, keysToTheGrid)).badge.id, keysToTheGrid.id);
 });

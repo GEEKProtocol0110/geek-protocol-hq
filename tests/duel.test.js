@@ -198,3 +198,86 @@ run('recovered sessions share one durable seat and cannot become their own oppon
   assert.equal((await call(replacement, 'answer', { ...p, questionNumber: 1, selectedIndex: 0 })).statusCode, 200);
   assert.equal((await call(p.a, 'answer', { ...p, questionNumber: 1, selectedIndex: 0 })).statusCode, 409);
 });
+
+run('A.C.E. creation reserves a simulated seat, validates difficulty and hides future plans', async () => {
+  await fixture.command('FLUSHDB');
+  const a = await session('Solo Geek'), outsider = await session('Visitor');
+  for (const difficulty of ['cadet', 'operator', 'vanguard']) {
+    const response = await call(a, 'create', { category: 'kaspa', opponent: 'ace', difficulty, score: 999999, acePlans: [{ selectedIndex: 0 }] });
+    assert.equal(response.statusCode, 201);
+    const view = response.body.duel, d = await stored(view.code);
+    assert.equal(view.opponent, 'ace'); assert.equal(view.difficulty, difficulty);
+    assert.equal(view.players[1].simulated, true); assert.equal(view.players[1].ready, true);
+    assert.equal(view.state, 'waiting'); assert.equal(view.question, null);
+    assert.equal(d.acePlans.length, 10);
+    assert(d.acePlans.every(p => Number.isInteger(p.selectedIndex) && p.selectedIndex >= 0 && p.selectedIndex <= 3 && p.delayMs >= 2000 && p.delayMs < 15000));
+    for (const value of ['acePlans', 'correctIndex', 'delayMs', 'simulated-ace', pid(a)]) assert(!JSON.stringify(view).includes(value));
+    assert.equal((await call(outsider, 'join', { code: view.code })).statusCode, 409);
+    assert.equal((await call(outsider, 'view', { code: view.code })).statusCode, 403);
+  }
+  assert.equal((await call(a, 'create', { category: 'kaspa', opponent: 'ace', difficulty: '__proto__' })).statusCode, 400);
+  assert.equal((await call(a, 'create', { category: 'kaspa', opponent: 'fake' })).statusCode, 400);
+  assert.equal((await call(a, 'create', { category: 'kaspa', difficulty: 'cadet' })).statusCode, 400);
+});
+run('A.C.E. answers settle once on Redis time and scores do not depend on polling or client fields', async () => {
+  await fixture.command('FLUSHDB'); const a = await session('Solo Geek');
+  const view = (await call(a, 'create', { category: 'kaspa', opponent: 'ace' })).body.duel;
+  const p = { code: view.code, matchId: view.id };
+  await mutate(p.code, d => { d.acePlans = d.questions.map((q, i) => ({ delayMs: 6000, selectedIndex: i % 2 ? (q.correctIndex + 1) % 4 : q.correctIndex })); });
+  assert.equal((await call(a, 'view', p)).body.duel.players[1].score, 0);
+  assert.equal((await call(a, 'ready', p)).body.duel.state, 'starting');
+  await mutate(p.code, (d, now) => { d.startsAt = now - 7000; d.players['simulated-ace'].lastSeen = now - 999999; });
+  const reads = await Promise.all([call(a, 'view', p), call(a, 'view', p), call(a, 'view', p)]);
+  for (const r of reads) { assert.equal(r.body.duel.players[1].score, 1270); assert.equal(r.body.duel.players[1].correct, 1); }
+  assert.equal(Object.keys((await stored(p.code)).players['simulated-ace'].answers).length, 1);
+  const correct = (await stored(p.code)).questions[0].correctIndex;
+  const answers = await Promise.all([0,1].map(() => call(a, 'answer', { ...p, questionNumber: 1, selectedIndex: correct, score: 99999, botCorrect: false })));
+  assert.deepEqual(answers.map(r => r.statusCode).sort(), [200, 409]);
+  assert.equal((await stored(p.code)).players['simulated-ace'].score, 1270);
+  const profileBefore = await fixture.command('GET', `geek:profile:${pid(a)}`);
+  await mutate(p.code, (d, now) => { d.startsAt = now - 150001; });
+  const final = (await call(a, 'view', p)).body.duel;
+  assert.equal(final.state, 'finished'); assert.equal(final.result.reason, 'completed');
+  assert.equal(final.players[1].score, 6350); assert.equal(final.players[1].correct, 5);
+  assert.equal((await call(a, 'view', p)).body.duel.players[1].score, 6350);
+  assert.equal(await fixture.command('GET', `geek:profile:${pid(a)}`), profileBefore);
+  const replay = (await call(a, 'rematch', p)).body.duel;
+  assert.equal(replay.generation, 2); assert.equal(replay.state, 'starting'); assert.notEqual(replay.id, p.matchId);
+  assert(replay.players.every(player => player.score === 0)); assert.equal(replay.difficulty, 'operator');
+  assert.equal((await call(a, 'answer', { ...p, questionNumber: 1, selectedIndex: correct })).statusCode, 409);
+});
+run('A.C.E. uses human disconnect/forfeit rules and cannot be impersonated by a second player', async () => {
+  await fixture.command('FLUSHDB'); const a = await session('Solo Geek'), b = await session('A.C.E.');
+  const d = (await call(a, 'create', { category: 'kaspa', opponent: 'ace', difficulty: 'cadet' })).body.duel;
+  const p = { code: d.code, matchId: d.id };
+  assert.equal((await call(b, 'ready', p)).statusCode, 403);
+  await call(a, 'ready', p);
+  await mutate(p.code, (d, now) => { d.startsAt = now - 46000; d.players[pid(a)].lastSeen = now - DUEL_GRACE_MS - 1; });
+  const gone = (await call(a, 'view', p)).body.duel;
+  assert.equal(gone.result.reason, 'disconnect'); assert.equal(gone.result.winner, 2);
+  const next = (await call(a, 'rematch', p)).body.duel;
+  const forfeit = (await call(a, 'leave', { code: next.code, matchId: next.id })).body.duel;
+  assert.equal(forfeit.result.reason, 'forfeit'); assert.equal(forfeit.result.winner, 2);
+  assert.equal((await call(a, 'rematch', { code: next.code, matchId: next.id })).statusCode, 409);
+});
+run('career effects reject forged unlocks, preserve concurrent profile data, and survive prestige resets', async () => {
+  await fixture.command('FLUSHDB'); const a = await session('Character Geek'); const key = `geek:profile:${pid(a)}`;
+  const save = async design => { const res = response(); await collectiblesHandler(request('POST', { action: 'customize-avatar', customization: design, progression: { prestige: 25, level: 50 } }, a), res); return res; };
+  await fixture.command('SET', key, JSON.stringify({ xp: 0, balance: 23, categoryStats: { kaspa: { rounds: 2 } }, avatarId: 'giga-genesis' }));
+  const before = await fixture.command('GET', key);
+  assert.equal((await save({ ...personalGeek, fx: 'pulse' })).statusCode, 403);
+  assert.equal((await save({ ...personalGeek, fx: 'crown' })).statusCode, 403);
+  assert.equal(await fixture.command('GET', key), before);
+  const profile = JSON.parse(before); profile.xp = 1000; await fixture.command('SET', key, JSON.stringify(profile));
+  const pulse = await save({ ...personalGeek, fx: 'pulse', head: 'cap', outfit: 'vest', hair: 'braids' });
+  assert.equal(pulse.statusCode, 200); assert.equal(pulse.body.collection.effects.find(e => e.id === 'pulse').owned, true);
+  const stored = JSON.parse(await fixture.command('GET', key)); assert.equal(stored.xp, 1000); assert.equal(stored.balance, 23); assert.deepEqual(stored.categoryStats, profile.categoryStats);
+  assert.equal((await save({ ...personalGeek, fx: 'crown' })).statusCode, 403);
+  stored.xp = 12250; await fixture.command('SET', key, JSON.stringify(stored));
+  const prestige = response(); await sessionHandler(request('POST', { action: 'prestige', expectedPrestige: 0, confirm: true }, a, { service: 'prestige' }), prestige);
+  assert.equal(prestige.statusCode, 200); assert.equal(prestige.body.profile.progression.level, 1);
+  const crown = await save({ ...personalGeek, fx: 'crown' }); assert.equal(crown.statusCode, 200);
+  assert(crown.body.collection.effects.every(e => e.owned));
+  const summary = response(); await profileHandler(request('GET', undefined, a), summary);
+  assert.equal(summary.body.profile.progression.level, 1); assert(summary.body.profile.milestones.every(m => m.unlocked));
+});

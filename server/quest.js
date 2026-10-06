@@ -114,6 +114,8 @@ const fingerprint = body => createHash('sha256').update(JSON.stringify([body.act
 const accessFor = async (playerId, chapter) => {
   if (!chapter.prerequisite) return { locked: false, prerequisite: null };
   const previous = chapterFor(chapter.prerequisite);
+  const earlier = await accessFor(playerId, previous);
+  if (earlier.locked) return earlier;
   const state = decodeQuest(await redis('GET', questKey(playerId, previous.id)), previous);
   // Completion receipts survive replay. A current replay cursor must not relock
   // the next chapter; malformed prerequisites fail closed through decodeQuest.

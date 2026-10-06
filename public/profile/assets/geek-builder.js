@@ -1,14 +1,25 @@
-import { customGeekId, geekParts, defaultGeek, personalGeek, normalizeGeek, geekDescription, geekSvg } from '../../assets/geek-avatar.js';
+import { customGeekId, geekParts, defaultGeek, personalGeek, normalizeGeek, geekDescription, geekSvg, careerEffects } from '../../assets/geek-avatar.js';
 
 const $ = selector => document.querySelector(selector);
 let saved = normalizeGeek(defaultGeek), draft = { ...saved }, ready = false, saving = false, edited = false;
 const sections = ['face', 'outfit', 'extras'];
-let section = 'face';
+let section = 'face', view = 'front', effects = [];
+const presets = [
+  { name: 'Everyday', design: personalGeek },
+  { name: 'Explorer', design: { ...personalGeek, outfit: 'vest', palette: 'forest', hair: 'curls', back: 'pack', pants: 'cargo' } },
+  { name: 'Night signal', design: { ...personalGeek, palette: 'violet', hair: 'bob', hairColor: 'black', skin: 'brown', head: 'beanie', fx: 'stars' } },
+  { name: 'GIGA', design: defaultGeek }
+];
 const sameDesign = (left, right) => JSON.stringify(normalizeGeek(left)) === JSON.stringify(normalizeGeek(right));
 const preview = () => {
   const root = $('[data-geek-preview]');
-  root.innerHTML = geekSvg(draft);
-  root.setAttribute('aria-label', geekDescription(draft));
+  root.innerHTML = geekSvg(draft, view);
+  root.setAttribute('aria-label', `${view} view. ${geekDescription(draft)}`);
+  for (const button of document.querySelectorAll('[data-geek-view]')) button.setAttribute('aria-pressed', String(button.dataset.geekView === view));
+  for (const button of document.querySelectorAll('[data-geek-palette]')) button.setAttribute('aria-pressed', String(button.dataset.geekPalette === draft.palette));
+  $('[data-geek-look]').textContent = geekDescription(draft).replace('Custom Geek: ', '');
+  const lockedEffect = careerEffects.find(effect => effect.id === draft.fx && !effects.some(item => item.id === effect.id && item.owned));
+  $('[data-geek-unlock-note]').textContent = lockedEffect ? `${lockedEffect.requirement} to save this effect. You can preview it now.` : 'All selected parts are available for your connected profile.';
   for (const [key, part] of Object.entries(geekParts)) {
     if (key === 'kind') continue;
     const control = $(`[data-geek-part="${key}"]`);
@@ -25,10 +36,11 @@ const preview = () => {
   }
   $('[data-geek-preview-state]').textContent = edited ? 'UNSAVED PREVIEW' : 'YOUR CHARACTER PREVIEW';
   $('[data-geek-preview-title]').textContent = draft.kind === 'human' ? 'Your place in the Grid.' : 'Your GIGA signal.';
-  $('[data-geek-save]').disabled = !ready || saving;
+  $('[data-geek-save]').disabled = !ready || saving || Boolean(lockedEffect);
   $('[data-geek-save]').textContent = saving ? 'Saving your Geek…' : 'Save & equip my Geek →';
   $('[data-geek-controls]').disabled = saving;
   $('[data-geek-reset]').disabled = saving;
+  for (const button of document.querySelectorAll('[data-geek-preset], [data-geek-random], [data-geek-palette]')) button.disabled = saving;
   $('[data-geek-cancel]').disabled = saving || !edited;
 };
 const changed = message => {
@@ -73,7 +85,7 @@ $('[data-geek-cancel]').addEventListener('click', () => {
   draft = { ...saved }; edited = false; preview(); $('[data-geek-status]').textContent = 'Restored your saved design.';
 });
 $('[data-geek-save]').addEventListener('click', async () => {
-  if (!ready || saving) return;
+  if (!ready || saving || careerEffects.some(effect => effect.id === draft.fx && !effects.some(item => item.id === effect.id && item.owned))) return;
   saving = true; preview(); $('[data-geek-status]').textContent = 'Saving your profile character…';
   try {
     const response = await fetch('/api/collectibles', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'customize-avatar', customization: draft }) });
@@ -88,7 +100,7 @@ $('[data-geek-save]').addEventListener('click', async () => {
 });
 window.GeekBuilder = {
   receive(collection) {
-    ready = true; saved = normalizeGeek(collection.customization);
+    ready = true; effects = collection.effects || []; saved = normalizeGeek(collection.customization);
     if (!edited && !saving) draft = { ...saved };
     if (!saving && !edited) $('[data-geek-status]').textContent = collection.avatar.id === customGeekId ? 'Your saved Geek is equipped. Make it yours below.' : 'Choose a personal Geek or a GIGA robot, then save & equip. All starter parts are free.';
     preview();
@@ -96,6 +108,33 @@ window.GeekBuilder = {
   unavailable() { ready = false; preview(); $('[data-geek-status]').textContent = 'You can preview your Geek. Reconnect your profile below before saving.'; },
   svg: geekSvg, description: geekDescription, customGeekId
 };
+for (const [index, preset] of presets.entries()) {
+  const button = document.createElement('button'); button.type = 'button'; button.dataset.geekPreset = index;
+  button.innerHTML = geekSvg(preset.design) + `<span>${preset.name}</span>`;
+  button.addEventListener('click', () => { if (saving) return; draft = normalizeGeek(preset.design); changed(`${preset.name} starter preview. Adjust any part, then save & equip.`); });
+  $('[data-geek-presets]').append(button);
+}
+for (const [id, label] of geekParts.palette.choices) {
+  const button = document.createElement('button'); button.type = 'button'; button.dataset.geekPalette = id;
+  button.className = `geek-swatch swatch-${id}`; button.setAttribute('aria-label', label); button.setAttribute('aria-pressed', 'false');
+  button.addEventListener('click', () => { if (saving) return; draft.palette = id; changed(`${label} preview. Save & equip to apply.`); });
+  $('[data-geek-swatches]').append(button);
+}
+for (const button of document.querySelectorAll('[data-geek-view]')) button.addEventListener('click', () => { view = button.dataset.geekView; preview(); });
+$('[data-geek-portrait]').addEventListener('click', event => {
+  const button = event.currentTarget, enabled = button.getAttribute('aria-pressed') !== 'true';
+  button.setAttribute('aria-pressed', String(enabled)); $('[data-geek-preview]').classList.toggle('portrait', enabled);
+});
+$('[data-geek-random]').addEventListener('click', () => {
+  if (saving) return;
+  for (const [key, part] of Object.entries(geekParts)) {
+    if (key === 'kind' || (part.modes && !part.modes.includes(draft.kind))) continue;
+    const choices = part.choices.filter(([id]) => !(key === 'head' && id === 'antenna' && draft.kind === 'human') && !(key === 'fx' && careerEffects.some(effect => effect.id === id) && !effects.some(effect => effect.id === id && effect.owned)));
+    draft[key] = choices[Math.floor(Math.random() * choices.length)][0];
+  }
+  changed('A new look to try. Undo returns to your saved design.');
+});
+window.addEventListener('beforeunload', event => { if (edited) { event.preventDefault(); event.returnValue = ''; } });
 preview();
 // The profile request may finish before this module loads.
 if (window.GeekProfile?.collection) {
