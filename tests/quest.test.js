@@ -6,7 +6,7 @@ import { redisFixture } from './helpers/redis-fixture.js';
 import sessionHandler from '../api/session.js';
 import rankedHandler from '../api/ranked.js';
 import { firstSignal, questChecks, insideBlockdag, questChapters, checksFor, getChapter } from '../public/quest/assets/chapter.js';
-import { decodeQuest, questKey } from '../server/quest.js';
+import { decodeQuest, questKey, mutateQuest } from '../server/quest.js';
 
 let fixture;
 try { fixture = await redisFixture(); }
@@ -49,6 +49,18 @@ const complete = async (cookie, wrongAt = [0, 4], chapter = firstSignal) => {
   }
   throw new Error('Chapter did not complete within its fixed transition count');
 };
+
+const legacyFirst = () => {
+  const attemptId='a'.repeat(32), stepToken='f'.repeat(32);
+  const command={action:'continue',revision:15,attemptId,stepToken};
+  const answers=questChecks.map(q=>({checkpointId:q.id,selectedChoice:q.correctIndex,correct:true,answeredAt:1700000000001}));
+  const legacy={version:1,contentVersion:1,revision:16,createdAt:1700000000000,updatedAt:1700000000002,
+    run:{id:attemptId,token:'b'.repeat(32),startedAt:1700000000000,status:'complete',index:5,orders:questChecks.map(()=>[0,1,2,3]),answers},
+    badge:{id:'first-signal',awardedAt:1700000000002,attemptId},lastCompleted:{attemptId,completedAt:1700000000002,answers},
+    lastMutation:createHash('sha256').update(JSON.stringify(['continue',15,attemptId,stepToken,null])).digest('hex')};
+  return { raw: JSON.stringify(legacy), command };
+};
+const seedPrerequisite = async cookie => { const {raw}=legacyFirst(); await fixture.command('SET',key(cookie),raw); return raw; };
 
 test('First Signal has three sourced scenes, six distinct checks, and no ranked question IDs', () => {
   assert.equal(firstSignal.scenes.length, 3); assert.equal(questChecks.length, 6);
@@ -168,7 +180,7 @@ run('campaign reads are private, write-free and bounded; unknown or mismatched s
   assert.equal((await call('', undefined, { campaign: '1' })).statusCode, 401);
   const r = await call(cookie, undefined, { campaign: '1' }); assert.equal(r.statusCode, 200);
   assert.equal(r.body.campaign.chapters.length, 2);
-  assert.ok(r.body.campaign.chapters.every(c => c.status === 'unstarted' && c.badge === null));
+  assert.equal(r.body.campaign.chapters[0].status,'unstarted'); assert.equal(r.body.campaign.chapters[1].locked,true); assert.equal(r.body.campaign.chapters[1].prerequisite.id,firstSignal.id);
   assert.equal((await fixture.command('KEYS', 'geek:quest:*')).length, 0);
   for (const query of [{chapter:'unknown'}, {chapter:null}, {chapter:''}, {chapter:['first-signal','inside-blockdag']}, {campaign:'2'}, {campaign:'1',chapter:'first-signal'}]) assert.equal((await call(cookie, undefined, query)).statusCode, 400);
   assert.equal((await call(cookie, {action:'begin',revision:0}, {chapter:insideBlockdag.id})).statusCode, 400);
@@ -177,7 +189,7 @@ run('campaign reads are private, write-free and bounded; unknown or mismatched s
   assert.equal((await fixture.command('KEYS', 'geek:quest:*')).length, 0);
 });
 run('Inside the blockDAG completes independently and replay preserves its badge and notes', async () => {
-  const cookie = await fresh(); await act(cookie, 'begin'); await act(cookie, 'continue'); await answer(cookie, false);
+  const cookie = await fresh(); await seedPrerequisite(cookie);
   const original = await fixture.command('GET',key(cookie));
   const done = await complete(cookie, [1,3], insideBlockdag);
   assert.equal(done.chapter.id, insideBlockdag.id); assert.equal(done.attempt.correct,4);
@@ -192,14 +204,15 @@ run('Inside the blockDAG completes independently and replay preserves its badge 
   assert.equal(await fixture.command('GET',key(cookie)),original);
   assert.equal(await fixture.command('TTL',key(cookie,insideBlockdag)),-1);
   const campaign = (await call(cookie,undefined,{campaign:'1'})).body.campaign;
-  assert.equal(campaign.chapters[0].status,'feedback'); assert.equal(campaign.chapters[1].status,'complete');
+  assert.equal(campaign.chapters[0].status,'complete'); assert.equal(campaign.chapters[1].status,'complete');
   assert.equal(campaign.chapters[1].badge.id,insideBlockdag.id);
   for (const value of ['attemptId','token','orders','checkpointId',id(cookie)]) assert.equal(JSON.stringify(campaign).includes(value),false);
-  const other = await session('Other'); assert.ok((await call(other,undefined,{campaign:'1',playerId:id(cookie)})).body.campaign.chapters.every(c=>c.status==='unstarted'));
+  const other = await session('Other'); assert.equal((await call(other,undefined,{campaign:'1',playerId:id(cookie)})).body.campaign.chapters[1].locked,true);
 });
 run('chapter tokens cannot cross records and simultaneous Chapter 2 answers still accept only one', async () => {
-  const cookie = await fresh();
-  for (const chapter of questChapters) { await act(cookie,'begin',{},chapter); await act(cookie,'continue',{},chapter); }
+  const cookie = await fresh(); await seedPrerequisite(cookie);
+  await act(cookie,'replay'); await act(cookie,'continue');
+  await act(cookie,'begin',{},insideBlockdag); await act(cookie,'continue',{},insideBlockdag);
   const first = await current(cookie), next = await current(cookie,insideBlockdag);
   const original = await fixture.command('GET',key(cookie));
   const cross = actionFor(first,'answer',{chapterId:insideBlockdag.id,selectedIndex:0});
@@ -215,14 +228,7 @@ run('chapter tokens cannot cross records and simultaneous Chapter 2 answers stil
   assert.equal(await fixture.command('GET',key(cookie)),original);
 });
 run('pre-campaign First Signal v1 receipts and exact command retries remain compatible without migration', async () => {
-  const cookie=await fresh(), attemptId='a'.repeat(32), stepToken='f'.repeat(32);
-  const command={action:'continue',revision:15,attemptId,stepToken};
-  const answers=questChecks.map(q=>({checkpointId:q.id,selectedChoice:q.correctIndex,correct:true,answeredAt:1700000000001}));
-  const legacy={version:1,contentVersion:1,revision:16,createdAt:1700000000000,updatedAt:1700000000002,
-    run:{id:attemptId,token:'b'.repeat(32),startedAt:1700000000000,status:'complete',index:5,orders:questChecks.map(()=>[0,1,2,3]),answers},
-    badge:{id:'first-signal',awardedAt:1700000000002,attemptId},lastCompleted:{attemptId,completedAt:1700000000002,answers},
-    lastMutation:createHash('sha256').update(JSON.stringify(['continue',15,attemptId,stepToken,null])).digest('hex')};
-  const raw=JSON.stringify(legacy); await fixture.command('SET',key(cookie),raw);
+  const cookie=await fresh(), {raw,command}=legacyFirst(); await fixture.command('SET',key(cookie),raw);
   const before=await current(cookie); assert.equal(before.badge.name,'First Signal Explorer');
   assert.deepEqual((await call(cookie,command)).body.quest,before);
   await call(cookie,undefined,{campaign:'1'}); await complete(cookie,[],insideBlockdag);
@@ -242,7 +248,7 @@ run('one corrupt chapter is unavailable in the map without hiding or overwriting
 });
 
 run('simultaneous Chapter 2 final continuations grant one badge even with six wrong answers', async () => {
-  const cookie=await fresh(), chapter=insideBlockdag;
+  const cookie=await fresh(), chapter=insideBlockdag; const prerequisite=await seedPrerequisite(cookie);
   await act(cookie,'begin',{},chapter);
   for(let i=0;i<25;i++) {
     const q=await current(cookie,chapter);
@@ -257,5 +263,56 @@ run('simultaneous Chapter 2 final continuations grant one badge even with six wr
   assert.equal(q.badge.id,chapter.badge.id);assert.equal(q.badge.awardedAt,q.lastCompleted.completedAt);
   const [seconds,microseconds]=await fixture.command('TIME'),now=Number(seconds)*1000+Math.floor(Number(microseconds)/1000);
   assert.ok(q.badge.awardedAt<=now&&now-q.badge.awardedAt<10000);
-  assert.equal(await fixture.command('EXISTS',key(cookie)),0);
+  assert.equal(await fixture.command('GET',key(cookie)),prerequisite);
+});
+
+run('Chapter 2 read and every mutation require the same player’s verified First Signal completion', async () => {
+  const cookie=await fresh(), other=await session('Completed');await seedPrerequisite(other);
+  const query={chapter:insideBlockdag.id};
+  const read=await call(cookie,undefined,{...query,playerId:id(other)});
+  assert.equal(read.statusCode,403);assert.equal(read.body.code,'QUEST_LOCKED');assert.equal(read.body.quest,undefined);
+  const commands=[{action:'begin',revision:0,chapterId:insideBlockdag.id},...['answer','continue','replay'].map(action=>({action,revision:1,attemptId:'a'.repeat(32),stepToken:'b'.repeat(32),chapterId:insideBlockdag.id,...(action==='answer'?{selectedIndex:0}:{})}))];
+  for(const command of commands)assert.equal((await call(cookie,command,query)).statusCode,403);
+  await assert.rejects(mutateQuest({id:id(cookie)},commands[0],insideBlockdag.id),/QUEST_LOCKED/);
+  assert.equal(await fixture.command('EXISTS',key(cookie,insideBlockdag)),0);
+  const summary=(await call(cookie,undefined,{campaign:'1'})).body.campaign.chapters[1];
+  assert.equal(summary.locked,true);assert.equal(summary.available,true);assert.equal(summary.status,undefined);assert.equal(summary.badge,undefined);
+  assert.deepEqual(summary.prerequisite,{id:firstSignal.id,title:firstSignal.title,href:'/quest/?chapter=first-signal'});
+});
+run('the final Chapter 1 continuation unlocks Chapter 2 even with mistakes; replay never relocks it', async () => {
+  const cookie=await fresh();await act(cookie,'begin');
+  for(let i=0;i<25;i++) {
+    const q=await current(cookie);
+    assert.equal((await call(cookie,undefined,{chapter:insideBlockdag.id})).statusCode,403);
+    if(q.attempt.status==='feedback'&&q.attempt.index===5)break;
+    if(q.attempt.status==='question')await answer(cookie,false);else await act(cookie,'continue');
+  }
+  const before=await current(cookie);assert.equal(before.attempt.answered,6);assert.equal(before.badge,null);
+  const finish=actionFor(before,'continue');const done=(await call(cookie,finish)).body.quest;assert.equal(done.attempt.correct,0);
+  assert.equal((await call(cookie,undefined,{chapter:insideBlockdag.id})).statusCode,200);
+  await call(cookie,finish);await act(cookie,'begin',{},insideBlockdag);await act(cookie,'replay');
+  assert.equal((await current(cookie)).attempt.status,'lesson');assert.equal((await current(cookie,insideBlockdag)).attempt.status,'lesson');
+  assert.equal((await call(cookie,undefined,{campaign:'1'})).body.campaign.chapters[1].locked,false);
+});
+run('pre-existing Chapter 2 progress is preserved while locked and resumes after Chapter 1 completion', async () => {
+  const cookie=await fresh();const original=await seedPrerequisite(cookie);await act(cookie,'begin',{},insideBlockdag);await act(cookie,'continue',{},insideBlockdag);await answer(cookie,false,insideBlockdag);
+  const saved=await fixture.command('GET',key(cookie,insideBlockdag));await fixture.command('DEL',key(cookie));
+  assert.equal((await call(cookie,undefined,{chapter:insideBlockdag.id})).statusCode,403);
+  const state=decodeQuest(saved,insideBlockdag), command={action:'continue',chapterId:insideBlockdag.id,revision:state.revision,attemptId:state.run.id,stepToken:state.run.token};
+  assert.equal((await call(cookie,command,{chapter:insideBlockdag.id})).statusCode,403);
+  assert.equal(await fixture.command('GET',key(cookie,insideBlockdag)),saved);
+  await fixture.command('SET',key(cookie),original);
+  const resumed=await current(cookie,insideBlockdag);assert.equal(resumed.attempt.status,'feedback');assert.equal(resumed.review.length,1);
+  assert.equal(await fixture.command('GET',key(cookie,insideBlockdag)),saved);
+});
+run('corrupt prerequisite receipts fail closed and are not presented as an unlocked chapter', async () => {
+  const cookie=await fresh();const raw=await seedPrerequisite(cookie);await act(cookie,'begin',{},insideBlockdag);
+  const saved=await fixture.command('GET',key(cookie,insideBlockdag));const corrupt=JSON.parse(raw);corrupt.lastCompleted=null;
+  await fixture.command('SET',key(cookie),JSON.stringify(corrupt));
+  const read=await call(cookie,undefined,{chapter:insideBlockdag.id});assert.equal(read.statusCode,503);
+  const command={action:'continue',chapterId:insideBlockdag.id,revision:1,attemptId:'a'.repeat(32),stepToken:'b'.repeat(32)};
+  assert.equal((await call(cookie,command,{chapter:insideBlockdag.id})).statusCode,503);
+  const map=(await call(cookie,undefined,{campaign:'1'})).body.campaign.chapters;assert.ok(map.every(c=>c.available===false));
+  assert.equal(await fixture.command('GET',key(cookie,insideBlockdag)),saved);
+  assert.equal(await fixture.command('GET',key(cookie)),JSON.stringify(corrupt));
 });

@@ -18,10 +18,11 @@
   <header><a class="brand" href="../"><img src="../assets/geek-protocol-logo.png" alt="" width="42" height="42" />GEEK<span>// QUEST</span></a><nav aria-label="Player navigation"><a href="../play/">Play</a><a href="../profile/">My Geek</a><a href="../study/">Study</a></nav></header>
   <main id="quest-main">
     <section class="quest-intro" aria-labelledby="quest-title"><div><p class="eyebrow" data-chapter-kicker>QUIZ QUEST · CHAPTER 01 · FREE SOLO</p><h1 id="quest-title" data-chapter-title>FIRST<br /><em>SIGNAL.</em></h1><p data-chapter-subtitle>An archive. Three stops. One curious Geek.<br />Explore Kaspa’s origins with GIGA and A.C.E.</p><div class="chapter-facts"><span>3 STORY STOPS</span><span>6 LEARNING CHECKS</span><span>NO TIMER</span></div></div><div class="arrival"><div class="arrival-orbit" aria-hidden="true"></div><div class="arrival-geek" data-player-art aria-label="Your selected Geek"></div><span data-player-name>YOUR GEEK IN THE GRID</span><a href="../profile/#geek-builder">Customize your Geek →</a></div></section>
-    <nav class="campaign-nav" aria-labelledby="campaign-title"><h2 id="campaign-title">Your path through the Grid.</h2><p data-campaign-summary>Two chapters. Choose your next adventure; each keeps its own saved place.</p><div class="campaign-cards" data-campaign></div><button class="secondary" type="button" data-campaign-retry hidden>Retry campaign status</button></nav>
-    <section class="chapter-map" aria-label="Story stops"><div class="map-route" aria-hidden="true"></div><ol data-map></ol></section>
+    <nav class="campaign-nav" aria-labelledby="campaign-title"><h2 id="campaign-title">Your path through the Grid.</h2><p data-campaign-summary>Two chapters. Complete First Signal to unlock Inside the blockDAG. Each keeps its own saved place.</p><div class="campaign-cards" data-campaign></div><button class="secondary" type="button" data-campaign-retry hidden>Retry campaign status</button></nav>
+    <section class="chapter-map" data-story-map aria-label="Story stops"><div class="map-route" aria-hidden="true"></div><ol data-map></ol></section>
     <div class="service-bar"><p data-status role="status" aria-live="polite">Connecting your saved chapter…</p><button class="secondary" type="button" data-resume hidden>Resume saved chapter</button></div>
-    <div class="quest-layout">
+    <section class="chapter-lock" data-chapter-lock hidden aria-labelledby="chapter-lock-title"><p class="eyebrow">YOUR NEXT CHAPTER</p><h2 id="chapter-lock-title" data-lock-title>Complete First Signal to unlock.</h2><p data-lock-copy>Finish all six checks and save Chapter 1’s completion badge to continue your adventure.</p><a class="primary link-button" href="./?chapter=first-signal">Continue First Signal →</a><p>Your existing chapter progress stays saved.</p></section>
+    <div class="quest-layout" data-chapter-layout>
       <section class="story-panel" data-story aria-labelledby="story-title">
         <p class="eyebrow" data-location>YOUR FIRST ADVENTURE</p><h2 id="story-title" data-title>Step into the archive.</h2><p class="narrative" data-narrative>GIGA is waiting at the entrance. Together, you will explore where Kaspa began, why parallel blocks need an order, and how KAS differs from GEEK.</p>
         <div class="quest-companion"><div data-player-art aria-hidden="true"></div><span>YOUR GEEK // EXPLORING WITH GIGA &amp; A.C.E.</span></div>
@@ -38,7 +39,7 @@
         <section class="review-card" aria-labelledby="review-title"><p class="eyebrow">YOUR SAVED NOTES</p><h2 id="review-title">Places to revisit.</h2><p data-review-note>No missed answers yet. Your review notes will appear here.</p><div data-review></div><div data-previous-review></div></section>
       </aside>
     </div>
-    <details class="chapter-reference"><summary>Read the chapter notes and sources</summary><div data-reference></div><p>These are public teaching notes. Reading them does not advance your saved chapter.</p></details>
+    <details class="chapter-reference" data-chapter-reference><summary>Read the chapter notes and sources</summary><div data-reference></div><p>These are public teaching notes. Reading them does not advance your saved chapter.</p></details>
     <p class="chapter-boundary">Story dialogue is authored fiction; Kaspa lessons link to primary sources. Free, untimed learning with saved progress. No XP, Alpha credits, purchases, wallet approvals, or token rewards.</p>
     <noscript><p>JavaScript is needed for chapter play and saving progress. You can still <a href="../kaspa/">read Kaspa 101</a> and its sources.</p></noscript>
   </main>

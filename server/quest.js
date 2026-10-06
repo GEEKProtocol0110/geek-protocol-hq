@@ -111,9 +111,24 @@ const validateBody = (body, chapterId = firstSignal.id) => {
 };
 const fingerprint = body => createHash('sha256').update(JSON.stringify([body.action, body.revision, body.attemptId || '', body.stepToken || '', body.selectedIndex ?? null])).digest('hex');
 
+const accessFor = async (playerId, chapter) => {
+  if (!chapter.prerequisite) return { locked: false, prerequisite: null };
+  const previous = chapterFor(chapter.prerequisite);
+  const state = decodeQuest(await redis('GET', questKey(playerId, previous.id)), previous);
+  // Completion receipts survive replay. A current replay cursor must not relock
+  // the next chapter; malformed prerequisites fail closed through decodeQuest.
+  return { locked: !state.badge, prerequisite: { id: previous.id, title: previous.title, href: `/quest/?chapter=${previous.id}` } };
+};
+const requireChapterAccess = async (playerId, chapter) => {
+  const access = await accessFor(playerId, chapter);
+  if (access.locked) throw Object.assign(new Error('QUEST_LOCKED'), { prerequisite: access.prerequisite });
+  return access;
+};
+
 export const mutateQuest = async (session, body, chapterId = firstSignal.id) => {
   const chapter = chapterFor(chapterId), questChecks = checksFor(chapter);
   validateBody(body, chapterId);
+  await requireChapterAccess(playerIdFor(session), chapter);
   const key = questKey(playerIdFor(session), chapterId), raw = await redis('GET', key) || '', state = decodeQuest(raw, chapter), mutation = fingerprint(body);
   if (state.lastMutation === mutation) return state;
   if (body.revision !== state.revision) throw new Error('QUEST_STATE_CHANGED');
@@ -172,15 +187,20 @@ export default async function questHandler(req, res) {
       // Isolate unreadable records: one damaged chapter cannot hide the other.
       const chapters = await Promise.all(questChapters.map(async chapter => {
         try {
+          const access = await accessFor(playerIdFor(session), chapter);
+          if (access.locked) return { chapterId: chapter.id, available: true, ...access };
           const state = decodeQuest(await redis('GET', questKey(playerIdFor(session), chapter.id)), chapter);
-          return campaignChapter(state, chapter);
+          return { ...campaignChapter(state, chapter), ...access };
         } catch { return { chapterId: chapter.id, available: false }; }
       }));
       return sendJson(res, 200, { ok: true, campaign: { chapters } });
     }
     const chapterId = req.query?.chapter === undefined ? firstSignal.id : req.query.chapter, chapter = chapterFor(chapterId);
     let state;
-    if (req.method === 'GET') state = decodeQuest(await redis('GET', questKey(playerIdFor(session), chapterId)), chapter);
+    if (req.method === 'GET') {
+      await requireChapterAccess(playerIdFor(session), chapter);
+      state = decodeQuest(await redis('GET', questKey(playerIdFor(session), chapterId)), chapter);
+    }
     else {
       const body = parseBody(req); validateBody(body, chapterId);
       if (['begin', 'replay'].includes(body.action)) await rateLimit('quest-start-ip', clientFingerprint(req), 40, 3600);
@@ -188,6 +208,7 @@ export default async function questHandler(req, res) {
     }
     return sendJson(res, 200, { ok: true, quest: questView(state, chapter) });
   } catch (error) {
+    if (error.message === 'QUEST_LOCKED') return sendJson(res, 403, { ok: false, code: error.message, prerequisite: error.prerequisite, error: `Complete ${error.prerequisite.title} to unlock this chapter.` });
     if (error.message === 'QUEST_STATE_CHANGED') return sendJson(res, 409, { ok: false, code: error.message, error: 'Your chapter moved forward in another request. Resume to see the saved step.' });
     if (error.message === 'QUEST_STATE_INVALID') return sendJson(res, 503, { ok: false, code: error.message, error: 'Your chapter record could not be verified. No progress or badge was changed.' });
     return handleApiError(res, error);

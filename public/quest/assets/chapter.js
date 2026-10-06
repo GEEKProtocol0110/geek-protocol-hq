@@ -66,6 +66,7 @@ export const firstSignal = {
 };
 
 export const insideBlockdag = {
+  prerequisite: 'first-signal',
   id: 'inside-blockdag', version: 1, number: 2, title: 'Inside the blockDAG', heading: ['Inside the', 'blockDAG.'], subtitle: 'Follow the links. Find the order.',
   entrance: { title: 'Enter the Signal Foundry.', story: 'Beyond the archive, your Geek discovers a room of suspended blocks. GIGA offers a lantern while A.C.E. brings the connections into view. Follow the links and discover how a graph becomes an ordered ledger.' },
   completedTitle: 'The foundry lights are connected.',
@@ -119,7 +120,7 @@ export const insideBlockdag = {
   next: { name: 'Practice blocks, graphs & agreement', href: '/study/?topic=blockdag&level=foundations' }
 };
 
-// Ordered public catalog. Neither chapter has an unlock or payment gate.
+// Ordered public catalog. Server-verified completion unlocks the next chapter.
 export const questChapters = [firstSignal, insideBlockdag];
 export const getChapter = id => questChapters.find(chapter => chapter.id === id);
 export const checksFor = chapter => chapter.scenes.flatMap((scene, sceneIndex) => scene.checkpoints.map(check => ({ ...check, sceneIndex, source: scene.source })));
