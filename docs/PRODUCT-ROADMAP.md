@@ -86,7 +86,7 @@ Geek Duel at `/duel/` is the dedicated free 1v1 format. The existing Quick Duel 
 | Memory Grid | Live free Kaspa solo matching; 4/6/8 pairs, explanations, source/lesson links | Additional reviewed decks and any future saved progression require separate work |
 | Trivia Royale | Planned | Shared event lifecycle, elimination/ties, reconnect handling, hosting and capacity tests |
 | Fandom Duel | Planned | Dedicated head-to-head rules and reviewed fandom content; existing Quick Duel rooms are shared practice |
-| Quiz Quest | Two free Alpha chapters implemented | First Signal and Inside the blockDAG; campaign map, three sourced scenes/six checks per chapter, independent saved resume/review and badges; further chapters planned |
+| Quiz Quest | Two free Alpha chapters implemented | First Signal and Inside the blockDAG; campaign map with First Signal completion unlocking Chapter 2, three sourced scenes/six checks per chapter, independent saved resume/review and badges; further chapters planned |
 
 The first Memory Grid release uses explicit player-controlled mismatch review rather than a countdown. Attempt counts describe pairs turned over, not certified knowledge. Ranked authority and real money remain outside this casual browser game.
 
