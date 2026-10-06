@@ -1,4 +1,4 @@
-import { randomBytes } from 'node:crypto';
+import { randomBytes, randomInt } from 'node:crypto';
 import { collectibleProfile } from './collectibles.js';
 import { loadProfile } from './profile.js';
 import { deriveProgression } from './progression.js';
@@ -10,6 +10,17 @@ export const DUEL_TTL = 3600;
 export const DUEL_GRACE_MS = 45_000;
 export const duelKey = code => `geek:duel:${code}`;
 export const duelCodePattern = /^DUEL-[A-Z2-9]{6}$/;
+const aceId = 'simulated-ace';
+export const aceDifficulties = Object.freeze({
+  cadet: { accuracy: 45, earliest: 7000, latest: 13000 },
+  operator: { accuracy: 70, earliest: 4000, latest: 10000 },
+  vanguard: { accuracy: 90, earliest: 2000, latest: 7000 }
+});
+const acePlans = (questions, difficulty) => {
+  const preset = aceDifficulties[difficulty];
+  return questions.map(q => ({ delayMs: randomInt(preset.earliest, preset.latest + 1),
+    selectedIndex: randomInt(100) < preset.accuracy ? q.correctIndex : (q.correctIndex + randomInt(1, 4)) % 4 }));
+};
 
 // All transitions, answer claims, presence, results and mutual rematches use the
 // same Redis record and clock. Reads settle elapsed matches too; no worker is needed.
@@ -25,6 +36,24 @@ local grace, ttl = tonumber(ARGV[7]), tonumber(ARGV[8])
 local player = d.players[who]
 if action ~= 'join' and not player then return 'DUEL_NOT_PLAYER' end
 if action ~= 'join' and action ~= 'view' and d.id ~= expected then return 'DUEL_CHANGED' end
+-- Simulated answers are scheduled privately at creation, then settled by the
+-- Redis clock. Poll frequency and client answer/score fields cannot change them.
+local bot = d.opponent == 'ace' and d.players['simulated-ace'] or nil
+if bot then
+  bot.lastSeen, bot.ready = now, true
+  if d.state == 'starting' or d.state == 'playing' then
+    for i, plan in ipairs(d.acePlans) do
+      local key = tostring(i - 1)
+      local answeredAt = d.startsAt + (i - 1) * d.questionMs + plan.delayMs
+      if now >= answeredAt and not bot.answers[key] then
+        local correct = plan.selectedIndex == d.questions[i].correctIndex
+        local added = correct and (1000 + math.floor((d.questionMs - plan.delayMs) / 1000) * 30) or 0
+        bot.answers[key] = {selectedIndex=plan.selectedIndex, correct=correct, scoreAdded=added}
+        bot.score, bot.correct = bot.score + added, bot.correct + (correct and 1 or 0)
+      end
+    end
+  end
+end
 local function finish(reason, winner)
   d.state = 'finished'
   d.result = {reason=reason, winner=winner, finishedAt=now}
@@ -76,6 +105,7 @@ elseif action == 'rematch' then
   if d.state ~= 'finished' or player.left then return 'DUEL_STATE_INVALID' end
   for _, p in pairs(d.players) do if p.left then return 'DUEL_STATE_INVALID' end end
   player.rematch = true
+  if bot then bot.rematch = true end
   local visual = cjson.decode(ARGV[6])
   player.name, player.avatar = visual.name, visual.avatar
 elseif action == 'leave' then
@@ -96,6 +126,7 @@ if d.state == 'waiting' and count == 2 and allReady then
 elseif action == 'rematch' and count == 2 and allRematch then
   local next = cjson.decode(ARGV[9])
   d.id, d.questions = next.id, next.questions
+  if bot then d.acePlans = next.acePlans end
   d.generation, d.state, d.startsAt, d.result = d.generation + 1, 'starting', now + 3000, nil
   for _, p in pairs(d.players) do p.score, p.correct, p.answers, p.ready, p.rematch = 0, 0, {}, false, false end
 end
@@ -125,15 +156,19 @@ const visualFor = async session => {
   return { name: session.name, avatar: { id: collection.avatar.id, name: collection.avatar.name, asset: collection.avatar.asset, ...(collection.avatar.id === 'giga-builder' ? { customization: collection.customization } : {}) } };
 };
 
-export const createDuel = async (session, category) => {
+export const createDuel = async (session, category, opponent = 'player', difficulty = 'operator') => {
+  if (!['player', 'ace'].includes(opponent) || (opponent === 'ace' && !Object.hasOwn(aceDifficulties, difficulty))) throw new Error('INVALID_REQUEST');
   const questions = await questionsFor(category);
   const visual = await visualFor(session);
   for (let attempt = 0; attempt < 6; attempt++) {
     const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
     const code = `DUEL-${[...randomBytes(6)].map(n => alphabet[n % alphabet.length]).join('')}`;
     const now = await redisNow();
-    const duel = { code, category, id: randomBytes(16).toString('hex'), generation: 1, state: 'waiting', startsAt: 0, questionMs: 15_000, questions, serverNow: now,
+    const duel = { code, category, opponent, ...(opponent === 'ace' ? { difficulty, acePlans: acePlans(questions, difficulty) } : {}), id: randomBytes(16).toString('hex'), generation: 1, state: 'waiting', startsAt: 0, questionMs: 15_000, questions, serverNow: now,
       players: { [playerIdFor(session)]: { ...visual, slot: 1, score: 0, correct: 0, answers: {}, ready: false, rematch: false, left: false, lastSeen: now } } };
+    if (opponent === 'ace') duel.players[aceId] = { name: 'A.C.E.', simulated: true, slot: 2,
+      avatar: { id: 'ace-opponent', name: 'A.C.E. simulated opponent', asset: '/assets/omniscient-grid.png' },
+      score: 0, correct: 0, answers: {}, ready: true, rematch: false, left: false, lastSeen: now };
     if (await redis('SET', duelKey(code), JSON.stringify(duel), 'EX', DUEL_TTL, 'NX') === 'OK') return duel;
   }
   throw new Error('ROOM_CODE_UNAVAILABLE');
@@ -153,6 +188,7 @@ export const transitionDuel = async (session, code, action, body = {}) => {
     const previous = JSON.parse(raw);
     if (!previous.players[playerIdFor(session)]) throw new Error('DUEL_NOT_PLAYER');
     candidate = { id: randomBytes(16).toString('hex'), questions: await questionsFor(previous.category) };
+    if (previous.opponent === 'ace') candidate.acePlans = acePlans(candidate.questions, previous.difficulty);
   }
   const result = await redis('EVAL', DUEL_LUA, 1, duelKey(code), playerIdFor(session), action, body.matchId || '',
     Number(body.questionNumber || 0) - 1, Number(body.selectedIndex || 0), JSON.stringify(visual), DUEL_GRACE_MS, DUEL_TTL, JSON.stringify(candidate));
@@ -165,11 +201,11 @@ export const duelView = (duel, session) => {
   if (!you) throw new Error('DUEL_NOT_PLAYER');
   const index = Math.floor((duel.serverNow - duel.startsAt) / duel.questionMs);
   const active = duel.state === 'playing';
-  return { code: duel.code, id: duel.id, category: duel.category, generation: duel.generation, state: duel.state, serverNow: duel.serverNow,
+  return { code: duel.code, id: duel.id, category: duel.category, opponent: duel.opponent || 'player', difficulty: duel.opponent === 'ace' ? duel.difficulty : null, generation: duel.generation, state: duel.state, serverNow: duel.serverNow,
     startsAt: duel.startsAt, questionCount: duel.questions.length, questionNumber: active ? index + 1 : 0,
     questionEndsAt: active ? duel.startsAt + (index + 1) * duel.questionMs : 0, graceMs: DUEL_GRACE_MS, yourSlot: you.slot,
     question: active && !you.left ? { prompt: duel.questions[index].prompt, options: duel.questions[index].options, topic: duel.questions[index].topic } : null,
     yourAnswer: active ? you.answers[String(index)] || null : null, result: duel.result || null,
-    players: Object.values(duel.players).sort((a, b) => a.slot - b.slot).map(p => ({ slot: p.slot, name: p.name, avatar: p.avatar,
+    players: Object.values(duel.players).sort((a, b) => a.slot - b.slot).map(p => ({ slot: p.slot, name: p.name, avatar: p.avatar, simulated: Boolean(p.simulated),
       score: p.score, correct: p.correct, ready: p.ready, rematch: p.rematch, left: p.left, lastSeen: p.lastSeen })) };
 };

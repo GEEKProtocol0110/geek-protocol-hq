@@ -35,10 +35,10 @@ const updateControls = () => {
   if (!duel) return;
   const me = you(), finished = duel.state === 'finished', waiting = duel.state === 'waiting';
   $('[data-ready]').hidden = !waiting;
-  $('[data-ready]').textContent = me.ready ? 'Ready · waiting for opponent' : 'Ready up';
+  $('[data-ready]').textContent = me.ready ? 'Ready · waiting for opponent' : duel.opponent === 'ace' ? 'Challenge A.C.E. →' : 'Ready up';
   $('[data-ready]').disabled = !available() || me.ready || me.left || duel.players.length < 2;
   $('[data-rematch]').hidden = !finished || duel.players.length !== 2 || duel.players.some(p => p.left);
-  $('[data-rematch]').textContent = me.rematch ? 'Rematch requested · waiting' : 'Request rematch';
+  $('[data-rematch]').textContent = me.rematch ? 'Rematch requested · waiting' : duel.opponent === 'ace' ? 'Rematch A.C.E.' : 'Request rematch';
   $('[data-rematch]').disabled = !available() || me.rematch;
   $('[data-reconnect]').hidden = connected || me.left;
   $('[data-leave]').hidden = me.left;
@@ -56,9 +56,9 @@ const render = d => {
   const old = duel;
   duel = d; connected = true; offset = d.serverNow - Date.now();
   $('[data-setup]').hidden = true; $('[data-room]').hidden = false;
-  $('[data-room-category]').textContent = `${categories[d.category] || 'Trivia'} · FREE DUEL`;
+  $('[data-room-category]').textContent = `${categories[d.category] || 'Trivia'} · ${d.opponent === 'ace' ? `A.C.E. SOLO / ${d.difficulty.toUpperCase()}` : 'FREE DUEL'}`;
   $('[data-round-label]').textContent = `MATCH ${d.generation}`;
-  const title = d.state === 'waiting' ? d.players.length < 2 ? 'Invite your opponent.' : 'Both Geeks, ready up.' : d.state === 'starting' ? 'The challenge begins.' : d.state === 'finished' ? 'Duel complete.' : 'Make every answer count.';
+  const title = d.state === 'waiting' ? d.players.length < 2 ? 'Invite your opponent.' : d.opponent === 'ace' ? 'A.C.E. is ready for you.' : 'Both Geeks, ready up.' : d.state === 'starting' ? 'The challenge begins.' : d.state === 'finished' ? 'Duel complete.' : 'Make every answer count.';
   $('[data-room-title]').textContent = title;
   const params = new URLSearchParams({ code: d.code });
   const url = `${location.origin}${location.pathname}?${params}`;
@@ -69,7 +69,7 @@ const render = d => {
     if (!p) return '<article class="fighter"><div class="fighter-art" aria-hidden="true">?</div><h3>Opponent wanted</h3><small>SHARE YOUR INVITATION</small><strong>—</strong></article>';
     const art = p.avatar.id === 'giga-builder' ? `<div class="fighter-art" role="img" aria-label="${escape(geekDescription(p.avatar.customization))}">${geekSvg(p.avatar.customization)}</div>` : `<div class="fighter-art"><img src="${escape(p.avatar.asset)}" alt="${escape(p.avatar.name)}" /></div>`;
     const status = p.left ? 'LEFT THE DUEL' : now() - p.lastSeen > 12_000 && !['waiting', 'finished'].includes(d.state) ? 'RECONNECTING · CLOCK CONTINUES' : d.state === 'waiting' ? p.ready ? 'READY' : 'WAITING TO READY UP' : d.state === 'finished' && p.rematch ? 'REMATCH REQUESTED' : 'IN THE DUEL';
-    return `<article class="fighter ${slot === d.yourSlot ? 'you' : ''}">${art}<small>${slot === d.yourSlot ? 'YOUR GEEK' : 'OPPONENT'}</small><h3>${escape(p.name)}</h3><strong>${p.score.toLocaleString()}</strong><small>${p.correct} CORRECT · ${status}</small></article>`;
+    return `<article class="fighter ${slot === d.yourSlot ? 'you' : ''}">${art}<small>${slot === d.yourSlot ? 'YOUR GEEK' : p.simulated ? 'SIMULATED OPPONENT' : 'OPPONENT'}</small><h3>${escape(p.name)}</h3><strong>${p.score.toLocaleString()}</strong><small>${p.correct} CORRECT · ${status}</small></article>`;
   }).join('');
   $('[data-question-panel]').hidden = !['starting', 'playing'].includes(d.state);
   $('[data-question-number]').textContent = d.state === 'starting' ? 'Ready together' : `Question ${d.questionNumber} / ${d.questionCount}`;
@@ -83,16 +83,17 @@ const render = d => {
     if (d.state === 'playing') $('[data-question]').setAttribute('tabindex', '-1');
     if (d.state === 'playing' && old?.state !== 'waiting') $('[data-question]').focus({ preventScroll: true });
   }
-  $('[data-feedback]').textContent = d.yourAnswer ? d.yourAnswer.correct ? `Correct. +${d.yourAnswer.scoreAdded} room points.` : 'Answer recorded. No points this question.' : d.state === 'starting' ? 'Both players see the same question and answer order.' : 'Choose one answer before the clock closes. Your first answer counts.';
+  $('[data-feedback]').textContent = d.yourAnswer ? d.yourAnswer.correct ? `Correct. +${d.yourAnswer.scoreAdded} room points.` : 'Answer recorded. No points this question.' : d.state === 'starting' ? d.opponent === 'ace' ? 'A.C.E. is a simulated opponent. Your first answer counts.' : 'Both players see the same question and answer order.' : 'Choose one answer before the clock closes. Your first answer counts.';
   $('[data-result]').hidden = d.state !== 'finished';
   if (d.result) {
     const names = Object.fromEntries(d.players.map(p => [p.slot, p.name]));
     const verdict = d.result.reason === 'cancelled' ? 'Duel cancelled.' : d.result.reason === 'abandoned' ? 'Both connections expired.' : d.result.winner === 0 ? 'It’s a draw.' : d.result.winner === d.yourSlot ? 'Your Geek wins!' : `${names[d.result.winner]} wins.`;
     const reasons = { completed: 'All ten questions are complete. The final scores decide the result.', forfeit: 'One player left the Duel. The other player wins by forfeit.', disconnect: 'One player’s connection exceeded the 45-second grace period.', abandoned: 'Neither player returned within the connection grace period. No winner is recorded.', cancelled: 'A player left before the match started. No winner is recorded.' };
+    $('[data-rematch-copy]').textContent = d.opponent === 'ace' ? 'Play again at this difficulty, or choose New Duel to change it.' : 'Both players must agree to a rematch.';
     $('[data-result-title]').textContent = verdict; $('[data-result-copy]').textContent = reasons[d.result.reason] || '';
     if (old?.state !== 'finished') { $('[data-result-title]').setAttribute('tabindex', '-1'); $('[data-result-title]').focus({ preventScroll: true }); }
     say('Final scores are saved for this room. Duel points do not change your ranked progression.');
-  } else say(d.state === 'waiting' ? d.players.length < 2 ? 'Copy the invitation link and send it to a friend.' : 'Both players must choose Ready up. The clock starts together.' : 'Live Duel connected. The server controls the clock and points.');
+  } else say(d.state === 'waiting' ? d.players.length < 2 ? 'Copy the invitation link and send it to a friend.' : d.opponent === 'ace' ? 'Choose Challenge A.C.E. when you are ready. Solo play awards room points only.' : 'Both players must choose Ready up. The clock starts together.' : 'Live Duel connected. The server controls the clock and points.');
   updateControls(); clock();
 };
 const clock = () => {
@@ -124,7 +125,10 @@ const enter = async (action, fields) => {
   } catch (error) { say(error.message); }
   finally { acting = false; document.querySelectorAll('[data-setup] button').forEach(button => { button.disabled = !connected; }); updateControls(); }
 };
-$('[data-create-form]').addEventListener('submit', event => { event.preventDefault(); enter('create', { category: event.currentTarget.elements.category.value }); });
+const createForm = $('[data-create-form]');
+const updateOpponent = () => { $('[data-ace-difficulty]').hidden = createForm.elements.opponent.value !== 'ace'; createForm.querySelector('[type=submit]').textContent = createForm.elements.opponent.value === 'ace' ? 'Create solo Duel →' : 'Create Duel →'; };
+createForm.addEventListener('change', updateOpponent);
+createForm.addEventListener('submit', event => { event.preventDefault(); const opponent = createForm.elements.opponent.value; enter('create', { category: createForm.elements.category.value, opponent, ...(opponent === 'ace' ? { difficulty: createForm.elements.difficulty.value } : {}) }); });
 $('[data-join-form]').addEventListener('submit', event => { event.preventDefault(); enter('join', { code: event.currentTarget.elements.code.value.trim().toUpperCase() }); });
 $('[data-ready]').addEventListener('click', () => act('ready'));
 $('[data-rematch]').addEventListener('click', () => act('rematch'));
@@ -152,7 +156,9 @@ const initialize = async () => {
     const data = await api('/api/session', {}); connected = true; $('[data-create-form]').elements.displayName.value = data.player.name;
     document.querySelectorAll('[data-setup] button').forEach(button => { button.disabled = false; });
     say('Your player is connected. Create a Duel or open an invitation.');
-    const code = new URLSearchParams(location.search).get('code');
+    const params = new URLSearchParams(location.search);
+    if (params.get('opponent') === 'ace') { createForm.elements.opponent.value = 'ace'; updateOpponent(); }
+    const code = params.get('code');
     if (code) {
       try { render((await api(`/api/duel?code=${encodeURIComponent(code)}`)).duel); }
       catch (error) { if (error.code === 'DUEL_NOT_PLAYER') await enter('join', { code }); else throw error; }

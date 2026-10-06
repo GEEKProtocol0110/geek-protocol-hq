@@ -36,3 +36,28 @@ test('version-one robot designs migrate predictably; strict validation rejects u
   assert(geekDescription(personalGeek).includes('Personal Geek'));
   assert(geekDescription(personalGeek).includes('No headgear'));
 });
+
+test('front and rear previews are bounded authored views, not user-provided SVG', () => {
+  for (const starter of [defaultGeek, personalGeek]) {
+    const design = { ...starter, back: 'pack', head: 'cap', fx: 'crown' };
+    const front = geekSvg(design), rear = geekSvg(design, 'back');
+    assert.notEqual(front, rear); assert.match(rear, /^<svg /); assert(!/onload=|<script|href=/.test(rear));
+    assert.equal(geekSvg(design, '<script>'), front);
+    assert.notEqual(geekSvg({ ...design, back: 'wings' }, 'back'), rear);
+  }
+});
+
+test('career roadmap uses existing XP thresholds and earned cosmetics remain available after prestige', async () => {
+  const { deriveCareerMilestones, deriveProgression } = await import('../server/progression.js');
+  const { unlockedGeekEffects } = await import('../public/assets/geek-avatar.js');
+  const state = { version: 1, prestige: 0, xpBaseline: 0, history: [] };
+  for (const [xp, pulse, next] of [[0, false, 'explorer'], [999, false, 'explorer'], [1000, true, 'pathfinder'], [2250, true, 'signal-master'], [12250, true, 'operator']]) {
+    const profile = { xp, prestigeState: state }, p = deriveProgression(profile), milestones = deriveCareerMilestones(profile);
+    assert.equal(unlockedGeekEffects(p).includes('pulse'), pulse); assert(!unlockedGeekEffects(p).includes('crown'));
+    assert.equal(milestones.find(m => !m.unlocked).id, next);
+    assert(milestones.every(m => m.xpRemaining >= 0 && m.progressPercent >= 0 && m.progressPercent <= 100));
+  }
+  const reset = { xp: 12250, prestigeState: { ...state, prestige: 1, xpBaseline: 12250 } };
+  assert.equal(deriveProgression(reset).level, 1); assert.deepEqual(unlockedGeekEffects(deriveProgression(reset)), ['pulse', 'crown']);
+  assert(deriveCareerMilestones(reset).every(m => m.unlocked));
+});

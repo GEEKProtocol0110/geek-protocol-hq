@@ -117,11 +117,64 @@ export const insideBlockdag = {
     }
   ],
   finish: 'Your Geek’s lantern joins the ordering beacon. The foundry is connected: parents, parallel branches, and a shared ledger order. GIGA hands you a Pathfinder seal. “You followed the links. Keep looking for the rules behind the picture.”',
-  next: { name: 'Practice blocks, graphs & agreement', href: '/study/?topic=blockdag&level=foundations' }
+  next: { name: 'Keys to the Grid', href: '/quest/?chapter=keys-to-the-grid' }
+};
+
+export const keysToTheGrid = {
+  prerequisite: 'inside-blockdag',
+  id: 'keys-to-the-grid', version: 1, number: 3, title: 'Keys to the Grid', heading: ['Keys to', 'the Grid.'], subtitle: 'Read the request. Protect the key.',
+  entrance: { title: 'The Guardian station awaits.', story: 'Your Geek arrives at a station with three doors. GIGA brings the lantern; A.C.E. projects a fictional wallet request. Each door asks you to make a decision. Everything here is a learning example—there is no wallet connection or signing request.' },
+  completedTitle: 'The Guardian station is secure.',
+  objective: 'Distinguish public addresses from secret recovery material, separate message signing from transactions, and inspect a request before approving it.',
+  reviewedAt: '2026-10-06',
+  badge: { id: 'keys-to-the-grid', name: 'Grid Guardian', description: 'Visited all three Guardian stops and completed six wallet-safety decisions.' },
+  scenes: [
+    {
+      id: 'key-room', name: 'The Key Room', location: 'GUARDIAN 01',
+      story: 'A visitor offers your Geek an explorer seal in exchange for a recovery phrase. GIGA lowers the lantern. “A label on a doorway does not make a request safe.” A.C.E. highlights the difference between an address and a secret.',
+      giga: 'Your address can receive a payment. Your recovery phrase can restore control of a wallet. Keep that secret out of chat and websites.',
+      objective: 'Choose what can be shared and what must stay private.',
+      notes: ['A public receiving address identifies a destination; sharing it does not share a private key.', 'Recovery phrases and private keys are secret wallet material. Someone with them may gain control of the wallet.', 'Kasware keeps recovery material on the device and cannot recover a lost phrase for you. Follow the wallet’s own backup instructions.'],
+      example: 'A fictional reward page asks for your recovery phrase. Decline the request. A receiving address and a recovery phrase have different jobs.',
+      source: { label: 'Kasware: wallet keys and privacy', url: 'https://docs.kasware.xyz/wallet/other/privacy-policy' },
+      checkpoints: [
+        { id: 'secret-request', prompt: 'A page offers a badge if you paste your recovery phrase. What do you do?', choices: ['Paste only half the phrase', 'Decline and leave the page', 'Send the phrase in a private chat', 'Share it because the page has a logo'], correctIndex: 1, explanation: 'A badge never needs secret wallet recovery material. Decline the request and keep the phrase private.' },
+        { id: 'receiving-address', prompt: 'Which item identifies where a KAS payment can be received without revealing the private key?', choices: ['A recovery phrase', 'An account password', 'A public receiving address', 'A private key'], correctIndex: 2, explanation: 'A public receiving address is the destination. Recovery phrases, passwords and private keys are not receiving addresses.' }
+      ]
+    },
+    {
+      id: 'signature-gate', name: 'The Signature Gate', location: 'GUARDIAN 02',
+      story: 'Two fictional panels appear: “Prove key control” and “Send payment.” Your Geek pauses. GIGA asks you to read them aloud. A.C.E. shows that a message signature and a transaction signature serve different purposes.',
+      giga: 'Read what the wallet is asking you to sign. A proof of key control is different from authorizing a payment.',
+      objective: 'Distinguish a message signature from a transaction approval.',
+      notes: ['Kaspa’s KIP-5 defines a message-signing standard for proving access to a key without revealing it.', 'KIP-5 separates message signatures from transaction signatures through a distinct hashing domain.', 'A valid signature is evidence about a key and message. It does not prove that a website is trustworthy or that its promises are true.'],
+      example: 'An app asks for an identity message, but the wallet displays a payment request. Decline the mismatch instead of approving it automatically.',
+      source: { label: 'Kaspa KIP-5: Message Signing', url: 'https://github.com/kaspanet/kips/blob/master/kip-0005.md' },
+      checkpoints: [
+        { id: 'signature-purpose', prompt: 'What can a verified KIP-5 message signature demonstrate?', choices: ['Guaranteed investment returns', 'That all websites are safe', 'That a quiz sent a payment', 'Access to the key associated with that message'], correctIndex: 3, explanation: 'The verifier checks the message and public key. This demonstrates key access, without publishing the private key.' },
+        { id: 'approval-mismatch', prompt: 'You expect an identity message, but the wallet asks to send KAS. What is the sensible next action?', choices: ['Decline and inspect the mismatch', 'Approve because both involve signatures', 'Share the recovery phrase to fix it', 'Approve twice to be sure'], correctIndex: 0, explanation: 'The displayed request should match the intended action. A payment approval is different from a message proof.' }
+      ]
+    },
+    {
+      id: 'verification-dock', name: 'The Verification Dock', location: 'GUARDIAN 03',
+      story: 'Your Geek reaches the final dock. A fictional payment screen lists an amount, recipient and fee. GIGA keeps the launch button covered while A.C.E. asks you to compare the details with your intent. The mission is to make a deliberate choice.',
+      giga: 'Slow down at the approval screen. Read the recipient, amount and fee before deciding.',
+      objective: 'Inspect the request instead of trusting the appearance of the app.',
+      notes: ['A wallet manages keys and accounts and builds transactions for destinations and amounts.', 'Check the recipient, amount and network fee shown by the wallet against the action you intended.', 'If details are unexpected or unclear, cancel and investigate. A successful signature does not correct a wrong destination.'],
+      example: 'You intend to pay one recipient, but the confirmation shows another. Stop before approving; do not treat the app’s branding as verification.',
+      source: { label: 'Kaspa developer docs: wallet and transaction flow', url: 'https://docs.kaspa.org/integrate/wallet' },
+      checkpoints: [
+        { id: 'inspect-payment', prompt: 'Which details belong in your check before a payment approval?', choices: ['Only the website color', 'Only your profile level', 'Recipient, amount and network fee', 'Only the badge offered afterward'], correctIndex: 2, explanation: 'Compare the displayed payment details with your intended action before approval.' },
+        { id: 'unexpected-recipient', prompt: 'The confirmation displays an unexpected recipient. Which choice protects your intent?', choices: ['Approve and hope it is a display issue', 'Cancel and verify the destination', 'Post your private key to ask for help', 'Ignore the recipient if the fee is small'], correctIndex: 1, explanation: 'Cancel and investigate a mismatch. A valid signature cannot turn an unintended recipient into the intended one.' }
+      ]
+    }
+  ],
+  finish: 'The station doors open. Your Geek kept secrets private, distinguished a message from a payment, and inspected the final request. GIGA offers the Grid Guardian seal. “A good explorer knows when to pause.” No real wallet was needed for this journey.',
+  next: { name: 'Practice wallets & safe signatures', href: '/study/?topic=wallets&level=foundations' }
 };
 
 // Ordered public catalog. Server-verified completion unlocks the next chapter.
-export const questChapters = [firstSignal, insideBlockdag];
+export const questChapters = [firstSignal, insideBlockdag, keysToTheGrid];
 export const getChapter = id => questChapters.find(chapter => chapter.id === id);
 export const checksFor = chapter => chapter.scenes.flatMap((scene, sceneIndex) => scene.checkpoints.map(check => ({ ...check, sceneIndex, source: scene.source })));
 export const questChecks = checksFor(firstSignal);

@@ -1,6 +1,6 @@
 # Geek Protocol HQ — Project Status
 
-**Snapshot date:** 2026-10-03<br />
+**Snapshot date:** 2026-10-06<br />
 **Release channel:** Public Alpha  
 **Production:** [www.geekprotocol.xyz](https://www.geekprotocol.xyz/)  
 **Repository:** [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq)
@@ -146,3 +146,9 @@ Quiz Quest now offers two free solo chapters from a saved campaign map. First Si
 The API accepts only catalog chapter IDs and matching mutation selectors, with private, write-free campaign summaries. Chapter 2 state includes an explicit chapter identity; First Signal keys, content version and exact command retry receipts remain unchanged. The same atomic CAS/Lua runs against independent keys. A corrupt chapter is labeled unavailable in the map. A corrupt prerequisite also blocks its dependent chapter, while a bad Chapter 2 cannot block First Signal; no saved records are replaced. Summary outages do not block active chapter play, and campaign failures do not block profile career/collection data. No ranked, XP, credit, inventory or monetary authority is added. Chapter badges record completion rather than mastery.
 
 Verification includes real-Redis chapter transactions, legacy compatibility, cross-chapter isolation, simultaneous answers, private/write-free summaries and unavailable-record reporting. Browser checks use actual handlers, disposable Redis and synthetic profiles for chapter switching, diagram/companion rendering, resume, lost/failed responses, stale tabs, badge/dashboard display, replay, outage retry and phone layout. See [Quest protocol](QUEST-PROTOCOL.md).
+
+## Player HQ expansion (October 6, 2026)
+
+The dashboard now connects the next story stop, career unlock and achievement goal. A six-milestone roadmap and achievement filters expose progress from the existing ranked career ledger. My Geek adds starter looks, swatches, randomization, back/portrait views, extra hair/clothing/headgear and two server-gated earned effects that survive prestige. A.C.E. solo Duel is a labeled preset simulation with three difficulty settings, private scheduled answers, Redis-clock points and rematches. Quiz Quest adds Keys to the Grid: three wallet-safety scenes, six decision checks and the Grid Guardian badge, unlocked by both earlier chapters. Mobile changes cover shared navigation and the profile, studio, Duel and Quest.
+
+These are free Alpha features. Career XP remains in its existing modes; Duel room points, Study feedback and chapter badges remain separate. The NFT collection and monetary gates are unchanged. See [Player HQ upgrade](PLAYER-HQ-UPGRADE.md), [Duel](DUEL-PROTOCOL.md), [Quest](QUEST-PROTOCOL.md) and [Collectibles](COLLECTIBLE-PROTOCOL.md) for behavior and evidence.

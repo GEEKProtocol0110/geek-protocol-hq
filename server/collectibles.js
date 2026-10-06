@@ -1,4 +1,4 @@
-import { customGeekId, normalizeGeek } from '../public/assets/geek-avatar.js';
+import { customGeekId, normalizeGeek, careerEffects, unlockedGeekEffects } from '../public/assets/geek-avatar.js';
 import { collectionPreview } from './geek-collection.js';
 
 const STARTER_STICKERS = {
@@ -49,6 +49,7 @@ export const collectibleProfile = (profile, context) => {
   return {
     avatar: selected,
     customization: normalizeGeek(profile.avatarCustomization),
+    effects: careerEffects.map(effect => ({ ...effect, owned: unlockedGeekEffects(context.progression).includes(effect.id) })),
     avatars,
     stickers: stickerCatalog.map((sticker) => ({
       ...sticker,

@@ -186,8 +186,16 @@ Code in this repository is available under the [MIT License](LICENSE). Geek Prot
 
 ### Free Geek Duel
 
-Invite a friend to [Geek Duel](https://www.geekprotocol.xyz/duel/): both players ready up, answer ten shared questions with a server clock, see a final result and agree to a rematch. Saved personal Geeks appear beside room scores. This free Alpha format grants no XP or monetary rewards. [Rules and architecture](docs/DUEL-PROTOCOL.md).
+Invite a friend or challenge a simulated A.C.E. opponent at [Geek Duel](https://www.geekprotocol.xyz/duel/): friend players ready up together, or start solo with Cadet/Operator/Vanguard difficulty; answer ten shared questions with a server clock, see a final result and agree to a rematch. Saved personal Geeks appear beside room scores. This free Alpha format grants no XP or monetary rewards. [Rules and architecture](docs/DUEL-PROTOCOL.md).
 
 ### Quiz Quest: solo campaign
 
-[Quiz Quest](https://www.geekprotocol.xyz/quest/) has two free solo chapters: First Signal explores Kaspa’s origins; Inside the blockDAG teaches parent links, parallel blocks and consensus ordering with labeled diagrams. Complete First Signal to unlock Inside the blockDAG, then resume each chapter from the campaign map. Explore with your selected Geek and GIGA, read A.C.E.’s learning notes, and save progress through six untimed checks per chapter. Each chapter has its own completion badge, saved place and dashboard card. Missed answers remain available for review; replaying preserves the original badge. No ranked XP or token rewards are awarded. [Chapter protocol](docs/QUEST-PROTOCOL.md).
+[Quiz Quest](https://www.geekprotocol.xyz/quest/) has three free solo chapters: First Signal explores Kaspa’s origins; Inside the blockDAG teaches parent links, parallel blocks and consensus ordering; Keys to the Grid adds wallet-safety decisions. Complete each earlier chapter to unlock the next, then resume from the campaign map. Explore with your selected Geek and GIGA, read A.C.E.’s learning notes, and save progress through six untimed checks per chapter. Each chapter has its own completion badge, saved place and dashboard card. Missed answers remain available for review; replaying preserves the original badge. No ranked XP or token rewards are awarded. [Chapter protocol](docs/QUEST-PROTOCOL.md).
+
+### Player HQ and character studio
+
+Your next chapter, career unlock and achievement goal now share a dashboard entrance. The career roadmap links levels, titles, avatars and earned effects. The upgraded My Geek studio offers starter looks, swatches, extra hair/clothing, front/back views, a portrait crop and explicit Save & equip. Explorer pulse opens at level 5; Prestige crown opens at Prestige 1. Earned effects remain available after a reset.
+
+![My Geek character studio](docs/assets/geek-studio-upgrade.jpg)
+
+[Release scope and verification](docs/PLAYER-HQ-UPGRADE.md) · [Player dashboard](https://www.geekprotocol.xyz/profile/)
