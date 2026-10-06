@@ -172,14 +172,14 @@
 
   const render = (profile) => {
     const { player, progression, stats } = profile;
-    setText('[data-profile-state]', 'SERVER-VERIFIED JOURNEY ONLINE');
+    setText('[data-profile-state]', 'Your progress is ready');
     setText('[data-player-name]', player.name);
     setText('[data-avatar-fallback]', player.name.trim().charAt(0).toUpperCase() || 'G');
     setText('[data-rank-title]', progression.title);
     setText('[data-rank-title-copy]', progression.title.toUpperCase());
     setText('[data-member-since]', safeDate(player.memberSince));
-    setText('[data-recovery]', player.walletProtected ? 'Kaspa wallet protected' : 'Not protected');
-    setText('[data-protection]', player.walletProtected ? 'WALLET PROTECTED' : 'SESSION PROFILE');
+    setText('[data-recovery]', player.walletProtected ? 'Kaspa wallet protected' : 'Saved in this browser');
+    setText('[data-protection]', player.walletProtected ? 'Recovery enabled' : 'Browser profile');
     $('[data-protection]').classList.toggle('protected', player.walletProtected);
     setText('[data-level]', progression.level);
     setText('[data-prestige]', `PRESTIGE ${progression.prestige} / 25`);
@@ -211,7 +211,7 @@
         refreshStudy(),
         refreshQuest(),
         api('/api/profile').then(payload => render(payload.profile)).catch(error => {
-          setText('[data-profile-state]', 'GAME RECORDS UNAVAILABLE');
+          setText('[data-profile-state]', 'Your game records need a retry');
           window.GeekProfile.currentProfile = null; window.dispatchEvent(new Event('geek:profile-unavailable'));
           setText('[data-journey-list]', `${error.message} Your game records remain saved.`);
         }),
@@ -220,7 +220,7 @@
     } catch (error) {
       window.GeekProfile.offline = true; window.GeekBuilder?.unavailable();
       window.GeekGiga?.update('progress', { phase: 'unavailable' });
-      setText('[data-profile-state]', 'PROFILE SERVICE OFFLINE');
+      setText('[data-profile-state]', 'Let’s reconnect your profile');
       window.GeekProfile.currentProfile = null; window.dispatchEvent(new Event('geek:profile-unavailable'));
       setText('[data-study-note]', `${error.message} Refresh this page to reconnect. You can still read Kaspa 101.`);
       $('[data-journey-list]').innerHTML = `<li class="profile-empty">${escapeHtml(error.message)} Your verified data remains on the server.</li>`;

@@ -7,6 +7,7 @@ This directory is the reviewable specification set for Geek Protocol HQ. Documen
 | Document | Audience | Purpose |
 | --- | --- | --- |
 | [Full Product Roadmap](PRODUCT-ROADMAP.md) | Community, builders, reviewers | Original vision, live foundations, feature backlog and acceptance criteria |
+| [HQ Interface Polish](HQ-UX-POLISH.md) | Product reviewers | Calmer navigation, progressive disclosure and browser verification |
 | [Project Status](PROJECT-STATUS.md) | Community, partners, reviewers | Dated product and launch-readiness snapshot |
 | [Architecture and Trust Boundaries](ARCHITECTURE.md) | Engineers, auditors | Components, sensitive flows, and security boundaries |
 | [Independent Audit Scope](AUDIT-SCOPE.md) | Audit firms, maintainers | Required engagements, evidence, and launch gates |

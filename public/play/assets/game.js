@@ -7,9 +7,9 @@
   const TIMER_SECONDS = 15;
   const TIMER_CIRCUMFERENCE = 125.66;
   const GAME_MODES = {
-    gauntlet: { name: 'Geek Gauntlet', detail: '10 rounds × 10 questions · Alpha practice economy', start: 'Start Verified Round 01' },
-    daily: { name: 'Daily Signal', detail: '5 server-selected questions · one verified attempt per UTC day', start: 'Start Today’s Signal' },
-    speed: { name: 'Speed Signal', detail: 'Answer up to 10 questions before the 30-second server clock closes', start: 'Start 30-Second Signal' }
+    gauntlet: { name: 'Geek Gauntlet', detail: '10 rounds · 10 questions each', start: 'Start round 1' },
+    daily: { name: 'Daily Signal', detail: '5 questions · one scored attempt each day (UTC)', start: 'Start today’s questions' },
+    speed: { name: 'Speed Signal', detail: 'Answer up to 10 questions in 30 seconds', start: 'Start 30-second challenge' }
   };
   const CATEGORY_BANKS = {
     kaspa: { name: 'Kaspa: Proof-of-Learning', shortName: 'Kaspa', count: 1032, detail: '1,000 practice variants + 32 current items', sourced: true },
@@ -145,7 +145,7 @@
     elements.categorySummary.textContent = category.shortName;
     elements.bankStatus.textContent = communityReady ? 'SERVER READY' : 'CONNECTING';
     elements.startButton.disabled = !communityReady;
-    elements.startButton.innerHTML = communityReady ? `${mode.start} <span>→</span>` : 'Connecting Ranked Service';
+    elements.startButton.innerHTML = communityReady ? `${mode.start} <span>→</span>` : 'Connecting your game…';
     elements.localNote.innerHTML = communityReady
       ? activeMode === 'gauntlet'
         ? '<b>Alpha play:</b> credits are for practice and cannot be withdrawn. Scores are checked by the server.'
@@ -179,7 +179,7 @@
   const startNewRun = async () => {
     if (!communityReady || run) return;
     elements.startButton.disabled = true;
-    elements.startButton.textContent = 'Opening Verified Run…';
+    elements.startButton.textContent = 'Getting your questions…';
     try {
       const payload = await postRanked('start', { category: activeCategory, focus: requestedFocus, mode: activeMode });
       applyServerState(payload, true);
@@ -188,7 +188,7 @@
     } catch (error) {
       elements.localNote.innerHTML = `<b>Could not start:</b> ${escapeHtml(error.message)}`;
       elements.startButton.disabled = false;
-      elements.startButton.innerHTML = 'Retry Verified Run <span>→</span>';
+      elements.startButton.innerHTML = 'Try starting again <span>→</span>';
     }
   };
 
@@ -318,7 +318,7 @@
     const quickMode = run.mode !== 'gauntlet';
     elements.resultScreen.classList.toggle('quick-mode', quickMode);
     elements.resultKicker.textContent = quickMode ? `${GAME_MODES[run.mode].name.toUpperCase()} · SERVER VERIFIED` : `ROUND ${pad(run.round)} VERIFIED · ${result.label}`;
-    elements.resultTitle.textContent = quickMode ? 'SIGNAL COMPLETE' : result.correct >= 8 ? 'ACCESS GRANTED' : result.correct >= 5 ? 'SIGNAL ACCEPTED' : 'ROUND SURVIVED';
+    elements.resultTitle.textContent = quickMode ? 'Challenge complete!' : result.correct >= 8 ? 'Great round!' : result.correct >= 5 ? 'Nice progress!' : 'Round complete!';
     elements.resultMessage.textContent = quickMode
       ? `${result.answered} questions completed. The server calculated your score and XP. No Alpha GEEK is awarded in quick modes.`
       : `${result.correct} answers were scored by the server, producing ${format.format(result.reward)} Alpha GEEK in the practice ledger.`;
@@ -335,7 +335,7 @@
     elements.cashoutButton.hidden = quickMode;
     if (quickMode) {
       elements.continueButton.disabled = false;
-      elements.continueButton.innerHTML = 'Record Verified Result <span>→</span>';
+      elements.continueButton.innerHTML = 'Finish &amp; save result <span>→</span>';
       elements.entryWarning.textContent = '';
     } else if (run.round === 10) {
       elements.continueButton.disabled = false;
@@ -379,7 +379,7 @@
         elements.finalScore.textContent = format.format(run.totalScore);
         const quickMode = run.mode !== 'gauntlet';
         elements.completeKicker.textContent = quickMode ? `${GAME_MODES[run.mode].name.toUpperCase()} // COMPLETE` : 'APEX PROTOCOL // COMPLETE';
-        elements.completeTitle.innerHTML = quickMode ? 'SIGNAL<br /><span>RECORDED</span>' : 'GAUNTLET<br /><span>CONQUERED</span>';
+        elements.completeTitle.innerHTML = quickMode ? 'Challenge<br /><span>saved.</span>' : 'Gauntlet<br /><span>complete!</span>';
         elements.completeMessage.textContent = quickMode
           ? `The server recorded this ${CATEGORY_BANKS[run.category].shortName} ${GAME_MODES[run.mode].name} score on its separate verified board.`
           : `The server verified all 100 ${CATEGORY_BANKS[run.category].shortName} answers and recorded the completed run.`;
@@ -417,7 +417,7 @@
       communityReady = false;
       elements.bankStatus.textContent = 'OFFLINE';
       elements.startButton.disabled = true;
-      elements.startButton.textContent = 'Ranked Service Offline';
+      elements.startButton.textContent = 'Game unavailable · reload to retry';
       elements.localNote.innerHTML = `<b>Ranked service unavailable:</b> ${escapeHtml(error.message)} Answers are not exposed for insecure browser-only play.`;
     }
   };

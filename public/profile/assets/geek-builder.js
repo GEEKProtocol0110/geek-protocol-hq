@@ -37,7 +37,7 @@ const preview = () => {
   $('[data-geek-preview-state]').textContent = edited ? 'UNSAVED PREVIEW' : 'YOUR CHARACTER PREVIEW';
   $('[data-geek-preview-title]').textContent = draft.kind === 'human' ? 'Your place in the Grid.' : 'Your GIGA signal.';
   $('[data-geek-save]').disabled = !ready || saving || Boolean(lockedEffect);
-  $('[data-geek-save]').textContent = saving ? 'Saving your Geek…' : 'Save & equip my Geek →';
+  $('[data-geek-save]').textContent = saving ? 'Saving your Geek…' : 'Save my Geek →';
   $('[data-geek-controls]').disabled = saving;
   $('[data-geek-reset]').disabled = saving;
   for (const button of document.querySelectorAll('[data-geek-preset], [data-geek-random], [data-geek-palette]')) button.disabled = saving;
@@ -57,7 +57,7 @@ for (const [key, part] of Object.entries(geekParts)) {
   }));
   select.addEventListener('change', () => {
     draft[key] = select.value;
-    changed('Preview updated. Save & equip to use this Geek on your profile.');
+    changed('Preview updated. Choose Save my Geek to use this Geek on your profile.');
   });
   label.append(select); $(`[data-geek-options="${part.section}"]`).append(label);
 }
@@ -65,7 +65,7 @@ for (const radio of document.querySelectorAll('[name="geek-kind"]')) radio.addEv
   if (!radio.checked) return;
   draft.kind = radio.value;
   if (draft.kind === 'human' && draft.head === 'antenna') draft.head = 'plain';
-  changed('Character style changed. Your preview becomes your profile character when you save & equip.');
+  changed('Character style changed. Your preview becomes your profile character when you save your Geek.');
 });
 for (const tab of document.querySelectorAll('[data-geek-tab]')) {
   tab.addEventListener('click', () => { section = tab.dataset.geekTab; preview(); });
@@ -79,7 +79,7 @@ for (const tab of document.querySelectorAll('[data-geek-tab]')) {
 }
 $('[data-geek-reset]').addEventListener('click', () => {
   draft = normalizeGeek(draft.kind === 'human' ? personalGeek : defaultGeek);
-  changed(`${draft.kind === 'human' ? 'Personal Geek' : 'Golden GIGA'} starter preview. Save & equip to apply it.`);
+  changed(`${draft.kind === 'human' ? 'Personal Geek' : 'Golden GIGA'} starter preview. Choose Save my Geek to apply it.`);
 });
 $('[data-geek-cancel]').addEventListener('click', () => {
   draft = { ...saved }; edited = false; preview(); $('[data-geek-status]').textContent = 'Restored your saved design.';
@@ -102,7 +102,7 @@ window.GeekBuilder = {
   receive(collection) {
     ready = true; effects = collection.effects || []; saved = normalizeGeek(collection.customization);
     if (!edited && !saving) draft = { ...saved };
-    if (!saving && !edited) $('[data-geek-status]').textContent = collection.avatar.id === customGeekId ? 'Your saved Geek is equipped. Make it yours below.' : 'Choose a personal Geek or a GIGA robot, then save & equip. All starter parts are free.';
+    if (!saving && !edited) $('[data-geek-status]').textContent = collection.avatar.id === customGeekId ? 'Your saved Geek is equipped. Make it yours below.' : 'Choose a personal Geek or a GIGA robot, then save your Geek. All starter parts are free.';
     preview();
   },
   unavailable() { ready = false; preview(); $('[data-geek-status]').textContent = 'You can preview your Geek. Reconnect your profile below before saving.'; },
@@ -111,13 +111,13 @@ window.GeekBuilder = {
 for (const [index, preset] of presets.entries()) {
   const button = document.createElement('button'); button.type = 'button'; button.dataset.geekPreset = index;
   button.innerHTML = geekSvg(preset.design) + `<span>${preset.name}</span>`;
-  button.addEventListener('click', () => { if (saving) return; draft = normalizeGeek(preset.design); changed(`${preset.name} starter preview. Adjust any part, then save & equip.`); });
+  button.addEventListener('click', () => { if (saving) return; draft = normalizeGeek(preset.design); changed(`${preset.name} starter preview. Adjust any part, then save your Geek.`); });
   $('[data-geek-presets]').append(button);
 }
 for (const [id, label] of geekParts.palette.choices) {
   const button = document.createElement('button'); button.type = 'button'; button.dataset.geekPalette = id;
   button.className = `geek-swatch swatch-${id}`; button.setAttribute('aria-label', label); button.setAttribute('aria-pressed', 'false');
-  button.addEventListener('click', () => { if (saving) return; draft.palette = id; changed(`${label} preview. Save & equip to apply.`); });
+  button.addEventListener('click', () => { if (saving) return; draft.palette = id; changed(`${label} preview. Choose Save my Geek to apply.`); });
   $('[data-geek-swatches]').append(button);
 }
 for (const button of document.querySelectorAll('[data-geek-view]')) button.addEventListener('click', () => { view = button.dataset.geekView; preview(); });

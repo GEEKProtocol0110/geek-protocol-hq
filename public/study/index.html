@@ -13,27 +13,27 @@
     <script defer src="../assets/site.js"></script>
     <script defer src="../assets/giga.js"></script>
     <script defer src="./assets/study.js"></script>
-  <link rel="stylesheet" href="../assets/giga.css" /><script defer src="/assets/analytics.js"></script></head>
-  <body>
+  <link rel="stylesheet" href="../assets/giga.css" /><script defer src="/assets/analytics.js"></script><link rel="stylesheet" href="/assets/welcome.css" /><script defer src="/assets/welcome.js"></script></head>
+  <body class="welcome-page">
     <a class="skip-link" href="#study-main">Skip to learning</a>
     <header class="site-header" data-header>
       <a class="brand" href="../" aria-label="Geek Protocol home"><img src="../assets/geek-protocol-logo.png" alt="" width="48" height="48" /><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
-      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="../kaspa/">Learn</a><a href="../study/" aria-current="page">Study</a><a href="../profile/">Progress</a><details class="nav-more"><summary>Explore</summary><div class="nav-more-panel"><a href="../challenges/">Challenges</a><a href="../vault/">Daily vault</a><a href="../mint/">Mint GEEK</a><a href="../collection/">Collection</a><a href="../lobby/">Lobbies</a><a href="../contribute/">Contribute</a><a href="../rewards/">Wallet & rewards</a><a href="../economy/">Power-ups &amp; economy</a><a href="../litepaper/">Litepaper</a><a href="../security/">Security</a></div></details><a class="nav-cta" href="../play/">Practice <span aria-hidden="true">→</span></a></nav>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="../study/" aria-current="page">Learn</a><a href="../quest/">Adventure</a><a href="../play/">Play</a><a href="../profile/">My HQ</a><details class="nav-more"><summary>More</summary><div class="nav-more-panel"><a href="../kaspa/">Kaspa field guide</a><a href="../memory/">Memory Grid</a><a href="../duel/">Duel with a friend or A.C.E.</a><a href="../challenges/">Weekly challenges</a><a href="https://geekjr.xyz/">Geek Jr · for younger children ↗</a><a href="#project-links">About the project</a></div></details></nav>
     </header>
     <main class="study-main" id="study-main">
       <section class="study-intro" aria-labelledby="study-title">
         <div><div class="section-kicker">STUDY WITH A.C.E.</div><h1 id="study-title">No clock.<br /><em>Room to think.</em></h1><p>Understand the idea. Try a question. Learn from the answer. Come back to what you missed.</p><div class="study-tags"><span>At your pace</span><span>Source-linked</span><span>No wallet needed</span></div></div>
         <aside class="ace-intro"><span class="ace-label">A.C.E. // YOUR LEARNING GUIDE</span><p>“Start with curiosity. Take your time. A wrong answer is a place to begin.”</p><small>Guidance comes from the lesson and its sources.</small></aside>
       </section>
-      <aside class="giga-guide" data-giga-guide="study-welcome" data-giga-choices aria-label="Giga, your learning buddy"><div class="giga-portrait"><img src="/assets/kaspa-culture.png" alt="Giga, the friendly gold robot" width="1024" height="1024" loading="lazy" /></div><div class="giga-content" data-giga-content><span class="giga-label">GIGA // YOUR LEARNING BUDDY</span><noscript><p>Welcome to Geek. Start with one idea and take your time. <a href="/study/?topic=origins&amp;level=foundations">Try your first lesson with A.C.E. →</a></p></noscript></div></aside>
+<details class="welcome-panel" id="learning-help"><summary><span><b>New here? Here’s how it works</b><small>Read, practice and review at your pace.</small></span></summary><div class="welcome-panel-content">      <aside class="giga-guide" data-giga-guide="study-welcome" data-giga-choices aria-label="Giga, your learning buddy"><div class="giga-portrait"><img src="/assets/kaspa-culture.png" alt="Giga, the friendly gold robot" width="1024" height="1024" loading="lazy" /></div><div class="giga-content" data-giga-content><span class="giga-label">GIGA // YOUR LEARNING BUDDY</span><noscript><p>Welcome to Geek. Start with one idea and take your time. <a href="/study/?topic=origins&amp;level=foundations">Try your first lesson with A.C.E. →</a></p></noscript></div></aside>
       <ol class="study-how" aria-label="How Study works">
         <li><strong>Read</strong><span>Follow the lesson one idea at a time. Use Next idea to keep going.</span></li>
         <li><strong>Practice</strong><span>Begin with Foundations. Start practice opens a short set with no timer.</span></li>
         <li><strong>Review</strong><span>Read each explanation. Progress keeps your answered concepts and saved mistakes.</span></li>
       </ol>
       <div class="study-notice"><strong>Study is unranked.</strong> It does not award XP, game credits, or tokens. Your concept feedback is saved; <a href="../profile/">see it in Progress</a>. Timed games track XP separately.</div>
-      <div class="study-error" role="alert" data-error hidden><p data-error-text></p><button class="study-button" type="button" data-retry>Try again</button></div>
+</div></details>      <div class="study-error" role="alert" data-error hidden><p data-error-text></p><button class="study-button" type="button" data-retry>Try again</button></div>
       <section class="study-browse" data-browse aria-labelledby="topics-title">
         <section class="learning-progress" aria-labelledby="learning-progress-title">
           <div class="study-section-head"><div><div class="section-kicker">YOUR LEARNING PATH</div><h2 id="learning-progress-title">Small steps. Real understanding.</h2></div><button class="study-button" type="button" data-continue hidden>Continue learning →</button></div>
@@ -64,6 +64,6 @@
       </section>
       <noscript><p>Study needs JavaScript to show questions and feedback. You can still read the <a href="../kaspa/">Kaspa 101</a>.</p></noscript>
     </main>
-    <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>Make learning feel worth doing.</p></div><div class="footer-links"><a href="../">Home</a><a href="https://geekjr.xyz/">Geek Jr</a><a href="../kaspa/">Kaspa guide</a><a href="../play/">Play</a><a href="../contribute/">Contribute</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · Guided lessons checked October 2, 2026 · Internal source review, not independent editorial approval.</p></footer>
+    <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>Make learning feel worth doing.</p></div><div class="footer-links"><a href="../">Home</a><a href="https://geekjr.xyz/">Geek Jr</a><a href="../kaspa/">Kaspa guide</a><a href="../play/">Play</a><a href="../contribute/">Contribute</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · Guided lessons checked October 2, 2026 · Internal source review, not independent editorial approval.</p><details class="welcome-panel" id="project-links"><summary><span><b>About Geek Protocol</b><small>Project information, community and optional wallet features.</small></span></summary><div class="welcome-panel-content"><div class="welcome-project-links"><a href="/litepaper/">Project roadmap</a><a href="/security/">Security</a><a href="/contribute/">Contribute a question</a><a href="/collection/">Collection</a><a href="/lobby/">Practice rooms</a><a href="/vault/">Daily vault</a><a href="/rewards/">Wallet & rewards</a><a href="/economy/">Power-ups & economy</a><a href="/mint/">Mint GEEK</a></div></div></details></footer>
   </body>
 </html>
