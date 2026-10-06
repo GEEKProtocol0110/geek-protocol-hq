@@ -14,8 +14,8 @@
     <script defer src="../assets/wallet.js"></script>
     <script defer src="./assets/game.js"></script>
     <script defer src="../assets/site.js"></script>
-  <script defer src="/assets/analytics.js"></script></head>
-  <body>
+  <script defer src="/assets/analytics.js"></script><link rel="stylesheet" href="/assets/welcome.css" /><script defer src="/assets/welcome.js"></script></head>
+  <body class="welcome-page welcome-play">
     <a class="skip-link" href="#game">Skip to game</a>
 
     <header class="game-header">
@@ -23,7 +23,7 @@
         <img src="../assets/geek-protocol-logo.png" alt="" width="44" height="44" />
         <span>GEEK<span>//</span>PLAY</span>
       </a>
-      <div class="alpha-flag"><i></i> TIMED TRIVIA + MEMORY GRID · FREE ALPHA PLAY</div>
+      <div class="alpha-flag"><i></i> A little learning. A little play.</div>
       <div class="player-wallet" aria-label="Local player totals">
         <a class="profile-link" href="../profile/" aria-label="Open player journey"><small>LEVEL</small><strong data-level>1</strong><span data-prestige>P0</span></a>
         <div><small>XP</small><strong data-xp>0</strong></div>
@@ -34,25 +34,13 @@
     <main id="game" class="game-shell">
       <section class="screen start-screen active" data-screen="start" aria-labelledby="start-title">
         <div class="start-copy">
-          <div class="eyebrow">CHOOSE YOUR CHALLENGE · ALPHA</div>
-          <h1 id="start-title">PLAY.<br /><span>LEARN.</span></h1>
-          <p>Choose timed trivia or connect Kaspa ideas in Memory Grid. Find your pace. No wallet needed to play.</p><p><a href="../study/">Want time to think? Study with A.C.E. →</a></p><p><a href="../practice/">Try free assisted practice · 50/50 &amp; Extra Time →</a></p><p><a href="../economy/">Power-ups &amp; payout status →</a></p>
-
-          <div class="challenge-select-head"><small>CHOOSE A MODE</small></div>
-          <div class="challenge-picker" role="radiogroup" aria-label="Game mode">
-            <button class="challenge-chip selected" type="button" role="radio" aria-checked="true" data-mode-key="gauntlet"><span>01</span><strong>Gauntlet</strong><small>10 rounds × 10</small></button>
+          <div class="eyebrow">A game for every kind of curious</div>
+          <h1 id="start-title">Find your<br /><span>kind of play.</span></h1>
+          <p>Start with a relaxed adventure or matching game. Try the timed challenges whenever you feel ready.</p><div class="welcome-cards"><a href="../quest/"><span class="welcome-icon" aria-hidden="true">✦</span><h3>Quiz Quest</h3><p>A saved story adventure. No timer, one chapter at a time.</p><b class="welcome-card-action">Start an adventure <span aria-hidden="true">→</span></b></a><a href="../memory/"><span class="welcome-icon" aria-hidden="true">▦</span><h3>Memory Grid</h3><p>Match words with their meanings. Take your time.</p><b class="welcome-card-action">Try matching <span aria-hidden="true">→</span></b></a><a href="../duel/?opponent=ace"><span class="welcome-icon" aria-hidden="true">◉</span><h3>Geek Duel</h3><p>Try ten timed questions against A.C.E., a simulated opponent.</p><b class="welcome-card-action">Meet A.C.E. <span aria-hidden="true">→</span></b></a></div><details class="welcome-panel" id="timed-games"><summary><span><b>Ready for a timed challenge?</b><small>Choose a mode and a topic. Timed games earn career XP.</small></span></summary><div class="welcome-panel-content"><div class="challenge-picker" role="radiogroup" aria-label="Game mode">
+            <button class="challenge-chip selected" type="button" role="radio" aria-checked="true" data-mode-key="gauntlet"><span>01</span><strong>Gauntlet</strong><small>10 rounds · 10 questions each</small></button>
             <button class="challenge-chip" type="button" role="radio" aria-checked="false" data-mode-key="daily"><span>02</span><strong>Daily Signal</strong><small>5 questions · once daily</small></button>
             <button class="challenge-chip" type="button" role="radio" aria-checked="false" data-mode-key="speed"><span>03</span><strong>Speed Signal</strong><small>10 questions · 30 seconds</small></button>
-          </div>
-
-          <a class="memory-mode-link" href="../memory/"><span class="memory-mode-number">04</span><span><small>FREE SOLO · NO TIMER</small><strong>Memory Grid</strong><span>Match Kaspa words with their meanings.</span></span><b aria-hidden="true">→</b></a>
-          <a class="memory-mode-link" href="../duel/"><span class="memory-mode-number">05</span><span><small>FREE DUEL · FRIEND OR A.C.E.</small><strong>Geek Duel</strong><span>Bring your Geek. Challenge a friend or a simulated A.C.E. opponent.</span></span><b aria-hidden="true">→</b></a>
-          <a class="memory-mode-link" href="../quest/"><span class="memory-mode-number">06</span><span><small>FREE STORY · SAVE &amp; RESUME</small><strong>Quiz Quest</strong><span>Three chapters: origins, the blockDAG &amp; wallet safety.</span></span><b aria-hidden="true">→</b></a>
-          <details class="future-modes"><summary>The rest of the Geek game universe</summary><p>These formats are planned. They are not playable yet.</p><dl><div><dt>Trivia Royale</dt><dd>Multiplayer elimination trivia · planned</dd></div><div><dt>Fandom Duel</dt><dd>Dedicated head-to-head fandom trivia · planned</dd></div></dl><a href="../litepaper/#arena">Explore the broader roadmap →</a></details>
-
-          <p><a href="../challenges/">Weekly Signal &amp; Monthly Circuit · shared Kaspa challenges →</a> · <a href="../vault/">Open your daily vault →</a></p>
-
-          <details class="topic-options">
+          </div>          <details class="topic-options">
             <summary>Topic: <span data-category-summary>Kaspa</span> <span aria-hidden="true">↓</span></summary>
             <div class="category-picker" role="radiogroup" aria-label="Trivia category">
               <button class="category-chip selected" type="button" role="radio" aria-checked="true" data-category-key="kaspa"><strong>Kaspa</strong><span>1,032 · sourced</span></button>
@@ -108,10 +96,10 @@
             <div><small>RUNS</small><strong data-career-runs>0</strong></div>
           </div>
 
-          <nav class="play-more" aria-label="Learning journey"><a href="../kaspa/">Learn</a><a href="../study/">Study</a><a href="../profile/">Progress</a><a href="../lobby/">Lobbies</a><a href="../rewards/">Wallet &amp; rewards</a></nav>
+          </div></details>
         </div>
 
-        <aside class="ladder" aria-label="Gauntlet rounds">
+        <details class="welcome-panel" id="game-standings"><summary><span><b>My scores & game ladder</b><small>Round rewards and community standings.</small></span></summary><div class="welcome-panel-content"><aside class="ladder" aria-label="Gauntlet rounds">
           <div class="ladder-head"><span>THE ASCENT</span><span>MAX REWARD</span></div>
           <ol data-ladder></ol>
           <a class="ranked-profile-note" href="../profile/#prestige">SERVER-RANKED CAREER · PRESTIGE AT LEVEL 50 →</a>
@@ -120,7 +108,7 @@
             <ol data-leaderboard><li class="board-empty">Checking the practice board…</li></ol>
             <p>Only completed rounds scored by the server appear here. Verified scores still do not earn tokens or determine payouts.</p>
           </section>
-        </aside>
+        </aside></div></details>
       </section>
 
       <section class="screen quiz-screen" data-screen="quiz" aria-live="polite">
@@ -225,5 +213,5 @@
       <p>This ranked Alpha uses secure server sessions and a no-value practice economy. It does not authorize wallet transactions or award real $GEEK.</p>
       <button class="primary-action" type="button" data-close>Understood</button>
     </dialog>
-  </body>
+  <footer class="welcome-simple-footer" aria-label="More places to explore"><a href="../">Home</a><a href="../study/">Learn at your pace</a><a href="../profile/">My HQ</a><a href="https://geekjr.xyz/">Geek Jr ↗</a></footer></body>
 </html>

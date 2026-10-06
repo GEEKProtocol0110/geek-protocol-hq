@@ -1,0 +1,210 @@
+/* Shared calm presentation. Page-specific game and learning states retain their styles. */
+.welcome-page { --welcome-panel:#131e22; --welcome-line:#35464d; --welcome-copy:#c4d0d4; --welcome-max:1120px; background-color:#0c1317; color:#eff5f6; }
+.welcome-page::before { display:none; }
+.welcome-page :where(h1,h2,h3) { font-family:Inter,ui-sans-serif,system-ui,sans-serif; text-transform:none; letter-spacing:-.035em; }
+.welcome-page :where(h1) { font-size:clamp(2.5rem,5vw,4.4rem); line-height:1.12; font-weight:800; }
+.welcome-page :where(h2) { line-height:1.22; }
+.welcome-page :where(p) { text-wrap:pretty; }
+.welcome-page :where(.eyebrow,.section-kicker) { text-transform:none; letter-spacing:.04em; font-size:.78rem; color:#a9c4cd; }
+.welcome-page :where(.button,.primary-action) { border-radius:10px; text-transform:none; letter-spacing:0; font-size:.94rem; min-height:48px; white-space:normal; }
+.welcome-page .button-secondary { background:transparent; color:#eaf3f5; border:1px solid #68828b; }
+.welcome-page .button-secondary:hover { color:#fff; background:#203138; border-color:#70e6dc; }
+.welcome-page :where(.button-primary,.primary-action,.primary) { box-shadow:none; }
+.welcome-page :where(a,button,summary,input,select):focus-visible { outline:3px solid #70e6dc; outline-offset:4px; }
+.welcome-page :where(summary,button) { touch-action:manipulation; }
+.welcome-page [hidden] { display:none!important; }
+.welcome-page .site-header { height:72px; background:#0c1317f5; border-bottom:1px solid #35464d; backdrop-filter:blur(12px); }
+.welcome-page .main-nav a { font-size:.88rem; letter-spacing:0; text-transform:none; min-height:44px; display:flex; align-items:center; }
+.welcome-page .main-nav a[aria-current=page] { color:#f6c643; text-decoration:underline; text-underline-offset:7px; }
+.welcome-page .nav-more summary { min-height:44px; display:flex; align-items:center; color:#c4d0d4; text-transform:none; }
+.welcome-page .nav-more-panel { width:290px; background:#152127; border:1px solid #526872; border-radius:12px; }
+.welcome-page .brand img { border-radius:10px; }
+.welcome-page .space-canvas { opacity:.35; }
+.welcome-page .site-footer .welcome-panel { grid-column:1/-1; width:100%; margin:0; }
+.welcome-project-links { display:flex; flex-wrap:wrap; gap:.5rem 1.5rem; padding:1.25rem; }
+.welcome-project-links a { display:flex; align-items:center; min-height:44px; color:#c4d0d4; font-size:.9rem; }
+/* Reusable choices and progressive disclosure. */
+.welcome-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin-top:1.5rem; }
+.welcome-cards>a { display:flex; flex-direction:column; align-items:flex-start; gap:.6rem; min-width:0; border:1px solid var(--welcome-line); border-radius:16px; padding:1.5rem; background:var(--welcome-panel); color:#eff5f6; text-decoration:none; transition:border-color .15s,background .15s; }
+.welcome-cards>a:hover { border-color:#70e6dc; background:#1a2b32; }
+.welcome-icon { display:grid; place-items:center; width:44px; height:44px; color:#f6c643; background:#f6c64312; border-radius:12px; font-size:1.6rem; }
+.welcome-cards h3 { margin:.3rem 0 0; font-size:1.25rem; line-height:1.3; color:#f4f8f9; }
+.welcome-cards p { margin:0 0 1rem; font-size:.95rem; line-height:1.65; color:var(--welcome-copy); }
+.welcome-card-action { display:flex; justify-content:space-between; gap:1rem; width:100%; margin-top:auto; color:#70e6dc; font-size:.9rem; }
+.welcome-panel { display:block; margin:1rem 0; border:1px solid var(--welcome-line); border-radius:14px; background:var(--welcome-panel); min-width:0; color:#eff5f6; }
+.welcome-panel>summary { cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.25rem 1.5rem; min-height:80px; list-style:none; }
+.welcome-panel>summary::-webkit-details-marker { display:none; }
+.welcome-panel>summary::after { content:'+'; font-size:1.5rem; color:#70e6dc; flex-shrink:0; }
+.welcome-panel[open]>summary::after { content:'−'; }
+.welcome-panel[open]>summary { border-bottom:1px solid var(--welcome-line); }
+.welcome-panel>summary b { display:block; font-size:1.05rem; font-weight:750; }
+.welcome-panel>summary small { display:block; margin-top:.25rem; font-size:.88rem; line-height:1.55; font-weight:400; color:var(--welcome-copy); }
+.welcome-panel>summary:hover { background:#203039; border-radius:13px; }
+.welcome-panel :where(section[id],h2[id]),.welcome-page [id] { scroll-margin-top:90px; }
+.welcome-panel-content { min-width:0; }
+.welcome-family { max-width:var(--welcome-max); margin:2.5rem auto; padding:1.75rem 2rem; border:1px solid #4b6054; border-radius:16px; background:linear-gradient(110deg,#1d2c24,#152127); display:flex; gap:2rem; align-items:center; justify-content:space-between; }
+.welcome-family h2 { font-size:1.6rem; margin:.4rem 0; }
+.welcome-family p { font-size:.95rem; color:var(--welcome-copy); margin:.5rem 0 0; }
+.welcome-family .button { flex-shrink:0; }
+/* Home: warm introduction, clear paths, then optional project background. */
+.welcome-page .home-main { padding-bottom:2rem; }
+.welcome-page .hero { min-height:0; padding:8rem max(var(--pad),calc((100vw - 1120px)/2)) 3.5rem; gap:3rem; background:radial-gradient(ellipse at 80% 30%,#243b34,transparent 50%),#0c1317; }
+.welcome-page .hero h1 { font-size:clamp(2.8rem,5.5vw,4.6rem); }
+.welcome-page .hero h1 em { color:#f6c643; -webkit-text-stroke:0; }
+.welcome-page .hero-lede { color:#c4d0d4; max-width:540px; font-size:1.08rem; }
+.welcome-page .hero-visual { min-height:0; }
+.welcome-page .giga-emblem { width:min(100%,330px); height:auto; aspect-ratio:1; border-radius:30px; overflow:hidden; margin:auto; box-shadow:none; }
+.welcome-page .home-path { padding:2.5rem var(--pad); max-width:1210px; margin:auto; }
+.welcome-page .home-path h2 { font-size:2rem; margin:.5rem 0; }
+.welcome-page .home-main>.welcome-panel { max-width:var(--welcome-max); margin:1rem auto; }
+.welcome-page .home-main>.welcome-panel .section { padding:2rem; margin:0; }
+.welcome-page .home-main>.welcome-panel h2 { font-size:2rem; }
+/* HQ: overview is short; all existing saved-data hooks remain available in records. */
+.welcome-page .profile-main { max-width:1210px; margin:auto; padding:100px 2rem 2rem; background:transparent; }
+.welcome-page .profile-hero { padding:1rem 0 2rem; min-height:0; background:none; grid-template-columns:minmax(0,1.5fr) minmax(260px,1fr); gap:3rem; overflow:visible; }
+.welcome-page .profile-hero::before { display:none; }
+.welcome-page .profile-intro h1 { font-size:clamp(2.6rem,4.5vw,4rem); margin:1rem 0; }
+.welcome-page .profile-intro h1 em { -webkit-text-stroke:0; color:#f6c643; }
+.welcome-page .profile-intro>p { font-size:1.05rem; line-height:1.75; color:var(--welcome-copy); max-width:480px; }
+.welcome-page .profile-actions { margin-top:1.25rem; }
+.welcome-page .identity-card { background:var(--welcome-panel); border:1px solid var(--welcome-line); box-shadow:none; padding:1.25rem; }
+.welcome-page .identity-top { grid-template-columns:100px 1fr; border:0; padding:0; gap:1rem; }
+.welcome-page .identity-avatar { grid-column:auto; width:100px; height:120px; border:0; background:#1d3034; }
+.welcome-page .identity-top h2 { font-size:1.25rem; margin:.25rem 0; }
+.welcome-page .identity-top>div>span { color:#b9ccd3; font-size:.8rem; letter-spacing:0; }
+.welcome-page .identity-top>b { grid-column:1/-1; color:#c4d0d4; font-size:.75rem; background:none; border:0; padding:0; }
+.welcome-page .identity-card .welcome-panel { background:transparent; margin-bottom:0; }
+.welcome-page .identity-card .welcome-panel>summary { min-height:44px; padding:.65rem; }
+.welcome-page .identity-card .welcome-panel>summary b { font-size:.85rem; }
+.welcome-page .identity-card .welcome-panel>summary small { display:none; }
+.welcome-page .identity-card dl { padding:.75rem; font-size:.8rem; }
+.welcome-page .identity-card .welcome-panel-content>a { display:block; padding:.7rem; color:#70e6dc; font-size:.8rem; }
+.welcome-next { display:grid; grid-template-columns:1fr 1.2fr; align-items:center; gap:2rem; border:1px solid #4b665d; border-radius:18px; background:linear-gradient(115deg,#1b2f2b,#142329); padding:2rem; }
+.welcome-next h2 { font-size:1.9rem; margin:.6rem 0; }
+.welcome-next p { color:#c4d0d4; font-size:.95rem; line-height:1.65; }
+.welcome-recommendation { border-left:1px solid #4b665d; padding-left:2rem; }
+.welcome-recommendation>span { color:#f6c643; font-size:.8rem; }
+.welcome-recommendation h3 { font-size:1.4rem; margin:.5rem 0; }
+.welcome-recommendation a { display:inline-flex; align-items:center; min-height:48px; color:#10211d; background:#70e6dc; padding:.6rem 1.1rem; border-radius:10px; font-weight:750; text-decoration:none; }
+.welcome-choices { padding:2.5rem 0 1rem; }
+.welcome-choices h2,.welcome-records-heading h2 { font-size:1.6rem; margin:.5rem 0; }
+.welcome-page .progression-section { border:1px solid var(--welcome-line); padding:1.5rem; margin:1.5rem 0; border-radius:16px; background:var(--welcome-panel); }
+.welcome-page .progression-section>.section-kicker { margin-bottom:1rem; }
+.welcome-page .progression-layout { display:block; }
+.welcome-page .level-core { gap:1.5rem; }
+.welcome-page .level-orbit { width:110px; height:110px; flex-shrink:0; }
+.welcome-page .level-orbit strong { font-size:2.2rem; }
+.welcome-page .level-orbit small { font-size:.65rem; }
+.welcome-page .level-copy h2 { font-size:1.5rem; margin:.3rem 0; }
+.welcome-page .level-copy>span { font-size:.7rem; }
+.welcome-page .level-copy>p { font-size:.9rem; }
+.welcome-page .level-copy>small { font-size:.8rem; }
+.welcome-records { padding-top:1rem; }
+.welcome-records-heading p { color:var(--welcome-copy); margin:.5rem 0 1.5rem; }
+.welcome-page .welcome-records .profile-extra { margin:1rem 0; }
+.welcome-page .welcome-panel-content :where(.geek-builder,.profile-study,.hq-milestones,.dashboard-prestige,.dashboard-section,.mastery-section,.achievement-section,.journey-section,.collection-section,.sticker-section) { padding:2rem 1.5rem; border-radius:0 0 14px 14px; }
+.welcome-page .welcome-panel-content :where(.profile-heading,.study-progress-heading,.geek-builder-heading,.journey-heading) { gap:1.5rem; }
+.welcome-page .welcome-panel-content :where(h2) { font-size:clamp(1.55rem,3vw,2.1rem); }
+.welcome-page .welcome-panel-content .quest-progress-card { margin:0; border:0; padding:1.5rem; background:transparent; }
+.welcome-page .welcome-panel-content .career-stats { padding:1.5rem; }
+.welcome-page .welcome-career-goals { padding:1.5rem; grid-template-columns:repeat(2,minmax(0,1fr)); }
+.welcome-page .geek-builder-heading { grid-template-columns:1fr; }
+.welcome-page .geek-builder-heading p { max-width:680px; }
+.welcome-page .geek-builder { background:#111e22; }
+.welcome-page .geek-builder-editor { background:#15252a; border-color:#425f65; }
+.welcome-page .geek-builder-actions { background:transparent; }
+.welcome-page .geek-builder .geek-builder-boundary { padding-top:1rem; }
+/* Game setup and story pages share the same human-scale headings. */
+.welcome-play .start-screen.active { display:block; }
+.welcome-play .start-copy { max-width:1120px; margin:auto; padding-bottom:1rem; }
+.welcome-play .start-copy h1 { font-size:clamp(2.6rem,5vw,4rem); }
+.welcome-play .start-copy>p { max-width:650px; font-size:1.05rem; }
+.welcome-play .start-copy>.welcome-panel .welcome-panel-content { padding:1.5rem; }
+.welcome-play .start-copy .challenge-picker { max-width:none; }
+.welcome-play .game-shell>.start-screen>.welcome-panel { max-width:1120px; margin:1rem auto; }
+.welcome-play .ladder { width:100%; margin:0; }
+.welcome-play .challenge-chip { border-radius:10px; }
+.welcome-play .game-header { min-height:78px; height:auto; }
+.welcome-play .alpha-flag { text-transform:none; font-size:.8rem; letter-spacing:0; }
+.welcome-duel .intro { padding-bottom:1.5rem; }
+.welcome-duel .intro h1 { font-size:clamp(2.4rem,5vw,3.8rem); }
+.welcome-duel .setup { grid-template-columns:minmax(0,1fr); max-width:760px; }
+.welcome-duel .join-panel { padding:1.5rem; border:0; background:transparent; }
+.welcome-duel .how-to { padding:1.5rem; margin-top:0; }
+.welcome-quest .quest-intro h1 { font-size:clamp(2.6rem,5vw,4rem); }
+.welcome-quest .campaign-nav { display:block; padding:1.5rem; margin:0; }
+.welcome-quest .quest-intro { padding-block:1rem 1.5rem; }
+.welcome-quest .chapter-map { margin-top:1.5rem; }
+.welcome-quest .quest-layout { grid-template-columns:minmax(0,1.7fr) minmax(240px,1fr); }
+.welcome-quest .story-panel { border-radius:16px; }
+.welcome-quest .story-panel h2 { font-size:clamp(1.6rem,3vw,2.2rem); }
+.welcome-quest :where(.chapter-facts,.rules) span { font-size:.75rem; letter-spacing:.02em; }
+.welcome-page .study-main>.welcome-panel { margin-block:1.5rem; }
+.welcome-page .study-main>.welcome-panel .welcome-panel-content { padding:1.5rem; }
+.welcome-page .study-main>.welcome-panel .giga-guide { margin:0 0 1.5rem; }
+@media(max-width:850px) {
+ .welcome-page .hero { padding-top:7rem; gap:2rem; }
+ .welcome-page .profile-main { padding:100px 1.25rem 1.5rem; }
+ .welcome-page .profile-hero { gap:1.5rem; grid-template-columns:1fr; }
+ .welcome-page .identity-card { max-width:none; }
+ .welcome-page .identity-top { grid-template-columns:90px 1fr; }
+ .welcome-page .identity-avatar { width:90px; height:100px; }
+ .welcome-page .identity-top>b { grid-column:2; }
+ .welcome-next { gap:1.5rem; padding:1.5rem; }
+ .welcome-page .welcome-family,.welcome-page .home-main>.welcome-panel { margin-inline:1.25rem; }
+ .welcome-page .profile-main .welcome-family { margin-inline:0; }
+ .welcome-quest .quest-layout { grid-template-columns:1fr; }
+ .welcome-quest .quest-sidebar { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+ .welcome-page .main-nav.open { max-height:calc(100dvh - 72px); overflow-y:auto; }
+}
+@media(max-width:650px) {
+ .welcome-cards { grid-template-columns:1fr; gap:.75rem; }
+ .welcome-cards>a { padding:1.25rem; }
+ .welcome-cards p { margin-bottom:.4rem; }
+ .welcome-page .hero { grid-template-columns:1fr; padding-bottom:2rem; }
+ .welcome-page .hero-visual { display:none; }
+ .welcome-page .hero-actions { flex-wrap:wrap; }
+ .welcome-page .hero-actions .button { width:100%; justify-content:center; }
+ .welcome-next { grid-template-columns:1fr; }
+ .welcome-recommendation { border-left:0; border-top:1px solid #4b665d; padding:1.25rem 0 0; }
+ .welcome-next h2 { font-size:1.6rem; }
+ .welcome-family { flex-direction:column; align-items:flex-start; gap:1.25rem; padding:1.5rem; }
+ .welcome-page .welcome-panel>summary { padding:1rem; }
+ .welcome-page .welcome-panel-content :where(.geek-builder,.profile-study,.hq-milestones,.dashboard-prestige,.dashboard-section,.mastery-section,.achievement-section,.journey-section,.collection-section,.sticker-section) { padding:1.5rem 1rem; }
+ .welcome-page .welcome-career-goals { grid-template-columns:1fr; padding:1rem; }
+ .welcome-page .level-core { display:flex; align-items:center; gap:1rem; }
+ .welcome-page .level-orbit { width:80px; height:80px; }
+ .welcome-page .level-orbit small { font-size:.55rem; }
+ .welcome-page .level-orbit strong { font-size:1.7rem; }
+ .welcome-page .level-copy { min-width:0; }
+ .welcome-page .level-copy h2 { font-size:1.15rem; }
+ .welcome-play .game-header { flex-wrap:wrap; gap:.75rem; }
+ .welcome-play .alpha-flag { display:none; }
+ .welcome-play .start-copy>.welcome-panel .welcome-panel-content { padding:1rem; }
+ .welcome-play .challenge-picker { grid-template-columns:1fr; }
+ .welcome-quest .quest-sidebar { grid-template-columns:1fr; }
+ .welcome-duel header,.welcome-quest header { flex-wrap:wrap; }
+ .welcome-duel header nav,.welcome-quest header nav { flex-wrap:wrap; }
+ .welcome-duel main,.welcome-quest main { padding-inline:1rem; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .welcome-page { scroll-behavior:auto; }
+ .welcome-page * { scroll-behavior:auto!important; }
+}
+
+.welcome-play .start-copy h1 span { color:#f6c643; -webkit-text-stroke:0; }
+.welcome-play .player-wallet small { color:#a7bfc4; }
+.welcome-play .game-header { display:flex; justify-content:space-between; }
+.welcome-play .challenge-chip small,.welcome-play .category-chip span { color:#afc4c8; font-size:.75rem; }
+.welcome-play .challenge-chip strong { font-size:.95rem; }
+.welcome-page .level-core { display:flex; min-height:0; padding:0; border:0; background:transparent; }
+.welcome-page .level-copy { flex:1; }
+.welcome-page .level-copy>small { color:#b8cbd1; }
+.welcome-simple-footer { max-width:1120px; margin:auto; padding:1.5rem 2rem 2.5rem; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; }
+.welcome-simple-footer a { color:#b8cbd1; font-size:.9rem; text-decoration:none; min-height:44px; display:flex; align-items:center; }
+.welcome-simple-footer a:hover { color:#70e6dc; }
+.welcome-simple-footer .space-toggle { margin-left:auto; }
+.welcome-play :where(.result-main,.complete-screen) h2 { font-size:clamp(2rem,5vw,3.2rem); line-height:1.15; overflow-wrap:anywhere; }
+.welcome-play .player-wallet .balance { display:none; }
+.welcome-play .brand span { display:inline; }
+.welcome-play .player-wallet>div:nth-child(2) { display:flex; }

@@ -16,98 +16,42 @@
     <script defer src="./assets/profile.js"></script>
     <script defer src="./assets/dashboard.js"></script>
     <script type="module" src="./assets/geek-builder.js"></script><script type="module" src="./assets/hq.js"></script>
-  <link rel="stylesheet" href="../assets/giga.css" /><script defer src="/assets/analytics.js"></script></head>
-  <body>
+  <link rel="stylesheet" href="../assets/giga.css" /><script defer src="/assets/analytics.js"></script><link rel="stylesheet" href="/assets/welcome.css" /><script defer src="/assets/welcome.js"></script></head>
+  <body class="welcome-page">
     <a class="skip-link" href="#main">Skip to player journey</a>
     <header class="site-header scrolled" data-header>
       <a class="brand" href="../" aria-label="Geek Protocol home"><img src="../assets/geek-protocol-logo.png" alt="" width="48" height="48" /><span>GEEK<span class="brand-mark">//</span>PROFILE</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
-      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="../kaspa/">Learn</a><a href="../study/">Study</a><a href="../profile/" aria-current="page">Progress</a><details class="nav-more"><summary>Explore</summary><div class="nav-more-panel"><a href="../challenges/">Challenges</a><a href="../vault/">Daily vault</a><a href="../mint/">Mint GEEK</a><a href="../collection/">Collection</a><a href="../lobby/">Lobbies</a><a href="../contribute/">Contribute</a><a href="../rewards/">Wallet & rewards</a><a href="../economy/">Power-ups &amp; economy</a><a href="../litepaper/">Litepaper</a><a href="../security/">Security</a></div></details><a class="nav-cta" href="../play/">Practice <span aria-hidden="true">→</span></a></nav>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="../study/">Learn</a><a href="../quest/">Adventure</a><a href="../play/">Play</a><a href="../profile/" aria-current="page">My HQ</a><details class="nav-more"><summary>More</summary><div class="nav-more-panel"><a href="../kaspa/">Kaspa field guide</a><a href="../memory/">Memory Grid</a><a href="../duel/">Duel with a friend or A.C.E.</a><a href="../challenges/">Weekly challenges</a><a href="https://geekjr.xyz/">Geek Jr · for younger children ↗</a><a href="#project-links">About the project</a></div></details></nav>
     </header>
 
-    <main id="main" class="profile-main">
-      <section class="profile-hero" aria-labelledby="profile-title">
+    <main id="main" class="profile-main"><section class="profile-hero" aria-labelledby="profile-title">
         <div class="profile-intro">
-          <div class="eyebrow"><span class="profile-live-dot"></span><span data-profile-state>CONNECTING TO VERIFIED PROFILE</span></div>
-          <h1 id="profile-title">YOUR<br /><em>PLAYER HQ.</em></h1>
-          <p>Your Geek. Your career. Climb 50 levels, choose to prestige, and build your legacy through 25 prestige ranks. Track achievements, challenges, and verified scores in one place.</p>
-          <div class="profile-actions"><a class="button button-primary" href="../play/">Play for XP <span aria-hidden="true">→</span></a><a class="button button-secondary" href="../kaspa/">Read Kaspa 101</a><a class="button button-secondary" href="#geek-builder">Customize my Geek</a><a class="button button-secondary" href="../rewards/">Protect your profile</a></div>
+          <div class="eyebrow"><span class="profile-live-dot"></span><span data-profile-state>Getting your progress ready…</span></div>
+          <h1 id="profile-title">Welcome to<br /><em>your HQ.</em></h1>
+          <p>A little learning. A little play. A Geek that feels like you. Pick up your adventure or try something new.</p>
+          <div class="profile-actions"><a class="button button-primary" href="#next-step">Find my next step <span aria-hidden="true">→</span></a><a class="button button-secondary" href="#geek-builder">Edit my Geek</a></div>
         </div>
 
         <article class="identity-card" aria-label="Player identity">
-          <div class="identity-top"><div class="identity-avatar"><img data-avatar-image alt="Selected Geek avatar" hidden /><span data-avatar-custom role="img" hidden></span><span data-avatar-fallback>G</span></div><div><span>SERVER PROFILE</span><h2 data-player-name>Guest Geek</h2><p data-rank-title>Initiate</p></div><b data-protection>SESSION PROFILE</b></div>
-          <dl><div><dt>Member since</dt><dd data-member-since>—</dd></div><div><dt>Profile recovery</dt><dd data-recovery>Not protected</dd></div><div><dt>Your records</dt><dd>Study &amp; games</dd></div></dl><a class="hq-identity-edit" href="#geek-builder">Open my character studio →</a>
+          <div class="identity-top"><div class="identity-avatar"><img data-avatar-image alt="Selected Geek avatar" hidden /><span data-avatar-custom role="img" hidden></span><span data-avatar-fallback>G</span></div><div><span>Your Geek</span><h2 data-player-name>Guest Geek</h2><p data-rank-title>Initiate</p></div><b data-protection>Browser profile</b></div>
+          <details class="welcome-panel" id="profile-identity"><summary><span><b>Your saved profile</b><small>How your progress is kept.</small></span></summary><div class="welcome-panel-content"><dl><div><dt>Member since</dt><dd data-member-since>—</dd></div><div><dt>Profile recovery</dt><dd data-recovery>Saved in this browser</dd></div><div><dt>Your records</dt><dd>Study &amp; games</dd></div></dl><a href="../rewards/">Profile recovery options →</a></div></details><a class="hq-identity-edit" href="#geek-builder">Make it yours →</a>
         </article>
-      </section>
-
-      <section class="hq-deck" aria-labelledby="hq-deck-title">
-        <div class="hq-deck-heading"><div><span class="section-kicker">YOUR GRID / PICK UP THE SIGNAL</span><h2 id="hq-deck-title">One place. Your next move.</h2></div><a href="../duel/?opponent=ace" class="button button-secondary">Challenge A.C.E. solo →</a></div>
-        <div class="hq-next-grid">
-          <article><span>STORY PATH</span><h3 data-hq-quest-title>Connecting your adventure…</h3><p data-hq-quest-copy>Saved chapter progress will guide your next stop.</p><a data-hq-quest-link href="../quest/">Open campaign →</a></article>
-          <article><span>CAREER UNLOCK</span><h3 data-hq-career-title>Connecting your career…</h3><p data-hq-career-copy>Levels unlock titles, avatars and character effects.</p><a data-hq-career-link href="#progression-title">Open career →</a></article>
-          <article><span>NEXT ACHIEVEMENT</span><h3 data-hq-achievement-title>Connecting your milestones…</h3><p data-hq-achievement-copy>Your saved career will choose a goal.</p><a data-hq-achievement-link href="#achievement-title">Browse achievements →</a></article>
-        </div>
-        <p class="hq-boundary">Career XP comes from Gauntlet, Daily and Speed. Quest badges, Study feedback and free Duel scores each keep their own progress.</p>
-      </section>
-
-      <nav class="dashboard-nav" aria-label="Player dashboard sections"><a href="#progression-title">Career</a><a href="#prestige">Prestige</a><a href="#dashboard-challenges">Challenges</a><a href="#leaderboard">Leaderboard</a><a href="#achievement-title">Achievements</a><a href="#quest-progress">Quest</a><a href="#geek-builder">My Geek</a></nav>
-
-      <aside class="giga-guide" data-giga-guide="progress" data-giga-choices aria-label="Giga, your learning buddy"><div class="giga-portrait"><img src="/assets/kaspa-culture.png" alt="Giga, the friendly gold robot" width="1024" height="1024" loading="lazy" /></div><div class="giga-content" data-giga-content><span class="giga-label">GIGA // YOUR LEARNING BUDDY</span><noscript><p>Welcome to Geek. Start with one idea and take your time. <a href="/study/?topic=origins&amp;level=foundations">Try your first lesson with A.C.E. →</a></p></noscript></div></aside>
-
-      <section class="progression-section" aria-labelledby="progression-title">
-        <div class="section-kicker">CAREER / 50 LEVELS × 25 PRESTIGE RANKS</div>
+      </section><section class="welcome-next" id="next-step" aria-labelledby="hq-deck-title"><div><span class="section-kicker">Your next small step</span><h2 id="hq-deck-title">An adventure at your pace.</h2><p>No timer. Read the story, try a question, and keep going when you’re ready.</p></div><article class="welcome-recommendation"><span>Quiz Quest</span><h3 data-hq-quest-title>Connecting your adventure…</h3><p data-hq-quest-copy>Saved chapter progress will guide your next stop.</p><a data-hq-quest-link href="../quest/">Open campaign →</a></article></section><section class="welcome-choices" aria-labelledby="choose-title"><h2 id="choose-title">What feels good today?</h2><div class="welcome-cards"><a href="../study/?topic=origins&level=foundations"><span class="welcome-icon" aria-hidden="true">◉</span><h3>Learn something</h3><p>Short lessons with explanations. Take all the time you need.</p><b class="welcome-card-action">Try a lesson <span aria-hidden="true">→</span></b></a><a href="../play/"><span class="welcome-icon" aria-hidden="true">✦</span><h3>Play a game</h3><p>Match ideas, enjoy a story or try a timed challenge.</p><b class="welcome-card-action">Find a game <span aria-hidden="true">→</span></b></a><a href="#geek-builder"><span class="welcome-icon" aria-hidden="true">☺</span><h3>Make it yours</h3><p>Choose a look and colors for your own Geek.</p><b class="welcome-card-action">Open my studio <span aria-hidden="true">→</span></b></a></div></section><section class="progression-section" aria-labelledby="progression-title">
+        <div class="section-kicker">Your game progress</div>
         <div class="progression-layout">
           <article class="level-core">
             <div class="level-orbit" data-level-orbit style="--progress:0deg"><div><span>LEVEL</span><strong data-level>1</strong><small data-prestige>PRESTIGE 0</small></div></div>
-            <div class="level-copy"><span data-rank-title-copy>INITIATE</span><h2 id="progression-title">Climb the<br />signal stack.</h2><p><b data-level-xp>0 / 250 XP</b> in this level · <span data-xp-next>250 XP to next level</span></p><div class="level-track" role="progressbar" aria-label="Progress to next level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-level-track><i data-level-bar></i></div><small>Earn 250 server-awarded XP per level. Level 50 unlocks an optional prestige reset to level 1. Lifetime XP, achievements, scores, collectibles, and Study feedback stay with you.</small></div>
+            <div class="level-copy"><span data-rank-title-copy>Initiate</span><h2 id="progression-title">One level at a time.</h2><p><b data-level-xp>0 / 250 XP</b> in this level · <span data-xp-next>250 XP to next level</span></p><div class="level-track" role="progressbar" aria-label="Progress to next level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-level-track><i data-level-bar></i></div><small>Timed games earn XP. Every 250 XP brings you to the next level.</small></div>
           </article>
 
-          <div class="career-stats" aria-label="Career totals">
-            <article><span>XP</span><strong data-stat="xp">0</strong><small>Lifetime signal</small></article>
-            <article><span>ACCURACY</span><strong data-stat="accuracy">0%</strong><small data-answer-count>0 / 0 correct</small></article>
-            <article><span>BEST ROUND</span><strong data-stat="bestRound">00</strong><small>Gauntlet ascent</small></article>
-            <article><span>LONGEST STREAK</span><strong data-stat="longestStreak">0×</strong><small>Verified answers</small></article>
-            <article><span>RANKED RUNS</span><strong data-stat="totalRuns">0</strong><small>Results recorded</small></article>
-            <article><span>ALPHA GEEK</span><strong data-stat="alphaGeek">0</strong><small>No-value practice ledger</small></article>
-          </div>
+
         </div>
-      </section>
-
-      <section class="hq-milestones" aria-labelledby="hq-milestones-title"><span class="section-kicker">CAREER / WHAT OPENS NEXT</span><h2 id="hq-milestones-title">Build a Geek. Build a legacy.</h2><p>These milestones come from your existing career record. Earned looks stay available when you prestige.</p><div data-hq-milestones class="hq-milestone-grid"><p>Connecting career milestones…</p></div></section>
-
-      <section id="prestige" class="dashboard-prestige" aria-labelledby="prestige-title">
-        <div class="section-kicker">YOUR LEGACY / PRESTIGE 01–25</div>
-        <div class="profile-heading"><div><h2 id="prestige-title">Start again.<br />Carry it all.</h2><p data-prestige-summary>Connecting your career…</p></div><div><p data-prestige-note></p><button class="button button-primary" type="button" data-prestige-open disabled>Unlock at level 50</button></div></div>
-        <ol class="prestige-road" data-prestige-road aria-label="25 prestige ranks"></ol>
-        <p class="dashboard-note" data-legacy-note hidden>Your previously earned prestige ranks are preserved from the earlier progression system.</p>
-        <div class="dashboard-refresh-row"><p data-prestige-feedback role="status" aria-live="polite"></p><button class="button button-secondary" type="button" data-dashboard-refresh>Refresh dashboard</button></div>
-      </section>
-      <section id="dashboard-challenges" class="dashboard-section" aria-labelledby="dashboard-challenges-title">
-        <div class="section-kicker">CHALLENGES / YOUR NEXT RUN</div><div class="profile-heading"><h2 id="dashboard-challenges-title">Keep the<br />signal moving.</h2><p data-dashboard-challenge-note role="status">Loading current challenges…</p></div>
-        <div class="dashboard-xp-modes"><a href="../play/?mode=gauntlet"><b>Geek Gauntlet</b><span>10-round ascent · career XP →</span></a><a href="../play/?mode=daily"><b>Daily Signal</b><span>5 questions · once per UTC day · XP →</span></a><a href="../play/?mode=speed"><b>Speed Signal</b><span>30 seconds · career XP →</span></a></div>
-        <div class="dashboard-challenge-grid" data-dashboard-challenges aria-busy="true"></div><a class="dashboard-text-link" href="../challenges/">All weekly and monthly challenges →</a>
-      </section>
-      <section id="leaderboard" class="dashboard-section dashboard-leaderboard" aria-labelledby="dashboard-board-title" data-board-panel aria-busy="true">
-        <div class="section-kicker">LEADERBOARD / VERIFIED SCORES</div><div class="profile-heading"><h2 id="dashboard-board-title">Make your<br />mark.</h2><p>Compete by mode and category. Prestige is a career badge; it gives no scoring advantage. Your best scores survive each reset.</p></div>
-        <div class="dashboard-board-controls"><label>Mode<select data-board-mode><option value="gauntlet">Geek Gauntlet</option><option value="daily">Daily Signal</option><option value="speed">Speed Signal</option></select></label><label>Category<select data-board-category><option value="kaspa">Kaspa</option><option value="video-games">Video Games</option><option value="science-fiction">Science Fiction</option><option value="technology">Technology</option><option value="movies">Movies</option><option value="history">History</option><option value="comics">Comics</option><option value="pop-culture">Pop Culture</option></select></label><button type="button" class="button button-secondary" data-board-refresh>Refresh standings</button></div>
-        <p data-dashboard-rank class="dashboard-own-rank"></p><p data-dashboard-board-note class="dashboard-note" role="status">Loading verified standings…</p>
-        <div class="dashboard-table-wrap"><table class="dashboard-table"><caption class="sr-only">Verified player standings for the selected mode and category</caption><thead><tr><th scope="col">Rank</th><th scope="col">Player</th><th scope="col">Career</th><th scope="col">Score</th></tr></thead><tbody data-dashboard-board></tbody></table></div>
-      </section>
-      <section class="profile-study" aria-labelledby="study-progress-title" data-study-panel aria-busy="true">
-        <div class="section-kicker">YOUR SAVED STUDY FEEDBACK</div><div class="study-progress-heading"><h2 id="study-progress-title">Your next<br />small step.</h2><p data-study-note role="status">Loading your saved concept feedback…</p></div>
-        <div class="study-progress-totals" data-study-totals hidden><article><strong data-study-explored>—</strong><span>Concepts explored</span></article><article><strong data-study-review>—</strong><span>Ready to review</span></article><article><strong data-study-confidence>—</strong><span>Building confidence</span></article></div>
-        <div class="profile-actions"><a class="button button-primary" data-study-next hidden>Continue your topic →</a><a class="button button-secondary" href="../study/">Choose a lesson</a><button class="button button-secondary" type="button" data-study-retry hidden>Reload Study feedback</button></div>
-        <div class="study-progress-topics" data-study-topics aria-label="Saved Study feedback by topic"></div>
-        <p class="study-progress-boundary">These are practice signals. Building confidence means two correct answers in separate runs since the last mistake. Study awards no XP and does not certify mastery. Guest access follows this browser’s session; a verified identity supports recovery. Practice feedback expires after 180 days without practice.</p>
-      </section>
-
-      <section id="quest-progress" class="quest-progress-card" aria-labelledby="quest-progress-title">
+      </section><section class="welcome-records" aria-labelledby="records-title"><div class="welcome-records-heading"><h2 id="records-title">Your space to explore.</h2><p>Open just what you need. Everything else can wait.</p></div><details class="welcome-panel" id="adventure-records"><summary><span><b>My adventure</b><small>Your saved chapters and completion badges.</small></span></summary><div class="welcome-panel-content"><section id="quest-progress" class="quest-progress-card" aria-labelledby="quest-progress-title">
         <div class="section-kicker">QUIZ QUEST / SOLO CAMPAIGN</div><h2 id="quest-progress-title">Your path through the Grid.</h2><p data-quest-status role="status" aria-live="polite">Connecting saved chapter progress…</p><div class="campaign-cards" data-quest-chapters><a class="campaign-chapter" href="../quest/?chapter=first-signal">First Signal →</a><a class="campaign-chapter" href="../quest/?chapter=inside-blockdag">Inside the blockDAG →</a><a class="campaign-chapter" href="../quest/?chapter=keys-to-the-grid">Keys to the Grid →</a></div><p class="dashboard-note">Chapter badges record completion. They are off-chain cosmetics.</p><button class="button button-secondary" type="button" data-quest-retry hidden>Retry campaign status</button>
-      </section>
-
-      <section id="geek-builder" class="geek-builder" aria-labelledby="geek-builder-title">
+      </section></div></details><details class="welcome-panel" id="studio-records"><summary><span><b>My Geek studio</b><small>Choose a starter look, then change the details.</small></span></summary><div class="welcome-panel-content"><section id="geek-builder" class="geek-builder" aria-labelledby="geek-builder-title">
         <div class="section-kicker">BUILD-A-GEEK / YOUR PROFILE CHARACTER</div>
-        <div class="geek-builder-heading"><h2 id="geek-builder-title">Make your Geek.<br /><em>Make it yours.</em></h2><p>A Geek that looks like you. Choose your skin tone, hair, face and outfit in our block-style character studio—or build your own GIGA robot. Preview freely, then save and equip. Try starter looks, tune each detail, and view your character from both sides. Starter parts are free; career play unlocks two extra effects.</p></div>
+        <div class="geek-builder-heading"><h2 id="geek-builder-title">A Geek of your own.</h2><p>Start with a look below. Choose your hair, outfit and favorite colors, then save your Geek. Starter parts are free.</p></div>
         <div class="geek-builder-layout"><div class="geek-preview-stage"><span data-geek-preview-state>YOUR CHARACTER PREVIEW</span><div data-geek-preview role="img" aria-label="Golden starter Geek"></div><div class="geek-camera" role="group" aria-label="Character preview camera"><button type="button" data-geek-view="front" aria-pressed="true">Front</button><button type="button" data-geek-view="back" aria-pressed="false">Back</button><button type="button" data-geek-portrait aria-pressed="false">Portrait</button></div><b data-geek-preview-title>Your place in the Grid.</b><p>Your character. Your colors. Your story.</p></div>
           <div class="geek-builder-editor"><fieldset data-geek-controls><legend>Character studio</legend><p class="geek-panel-intro">START WITH A LOOK</p><div class="geek-presets" data-geek-presets></div><div class="geek-studio-tools"><div class="geek-swatches" data-geek-swatches role="group" aria-label="Character colors"></div><button type="button" data-geek-random>Surprise me</button></div>
               <div class="geek-style-options" role="group" aria-label="Character style"><label><input type="radio" name="geek-kind" value="human" /><span><b>Personal Geek</b><small>Make it look like you</small></span></label><label><input type="radio" name="geek-kind" value="robot" checked /><span><b>GIGA robot</b><small>Build your own signal</small></span></label></div>
@@ -115,18 +59,62 @@
               <section id="geek-panel-face" role="tabpanel" aria-labelledby="geek-tab-face" tabindex="0"><p class="geek-panel-intro">Your everyday look, ready for the Grid.</p><div class="geek-options" data-geek-options="face"></div></section>
               <section id="geek-panel-outfit" role="tabpanel" aria-labelledby="geek-tab-outfit" tabindex="0" hidden><p class="geek-panel-intro">Pick your colors, clothing and signature emblem.</p><div class="geek-options" data-geek-options="outfit"></div></section>
               <section id="geek-panel-extras" role="tabpanel" aria-labelledby="geek-tab-extras" tabindex="0" hidden><p class="geek-panel-intro">Finish with accessories and a little cosmic energy.</p><div class="geek-options" data-geek-options="extras"></div></section></fieldset>
-            <div class="geek-builder-actions"><button class="button button-primary" type="button" data-geek-save disabled>Save &amp; equip my Geek →</button><button class="button button-secondary" type="button" data-geek-cancel>Undo preview changes</button><button class="button button-secondary" type="button" data-geek-reset>Reset this style</button></div>
-            <p class="geek-unlock-note" data-geek-unlock-note role="status"></p><details class="geek-look-details"><summary>Your look at a glance</summary><p data-geek-look></p></details><p class="geek-builder-status" data-geek-status role="status" aria-live="polite">Connecting your profile. Preview changes are saved only when you choose Save &amp; equip.</p><button class="geek-reconnect" type="button" data-geek-reconnect>Reconnect profile</button>
+            <div class="geek-builder-actions"><button class="button button-primary" type="button" data-geek-save disabled>Save my Geek →</button><button class="button button-secondary" type="button" data-geek-cancel>Undo changes</button><button class="button button-secondary" type="button" data-geek-reset>Reset look</button></div>
+            <p class="geek-unlock-note" data-geek-unlock-note role="status"></p><details class="geek-look-details"><summary>Your look at a glance</summary><p data-geek-look></p></details><p class="geek-builder-status" data-geek-status role="status" aria-live="polite">Connecting your profile. Preview changes are saved only when you choose Save my Geek.</p><button class="geek-reconnect" type="button" data-geek-reconnect>Reconnect profile</button>
           </div>
         </div>
-        <p class="geek-builder-boundary">Your custom Geek is an off-chain profile cosmetic. The <a href="../collection/">500 Geeks NFT collection</a> is separate; equipping those characters will require verified ownership when collection deployment is ready.</p>
+        <p class="geek-builder-boundary">Your Geek is a saved profile character. The <a href="../collection/">500 Geeks NFT collection</a> is a separate project; those characters need verified ownership once deployment is ready.</p>
         <noscript><p>JavaScript is needed to customize and save your Geek.</p></noscript>
+      </section></div></details><details class="welcome-panel" id="learning-records"><summary><span><b>My learning</b><small>Continue a lesson or revisit something you’ve tried.</small></span></summary><div class="welcome-panel-content"><section class="profile-study" aria-labelledby="study-progress-title" data-study-panel aria-busy="true">
+        <div class="section-kicker">Your saved learning</div><div class="study-progress-heading"><h2 id="study-progress-title">Pick up your learning.</h2><p data-study-note role="status">Loading your saved concept feedback…</p></div>
+        <div class="study-progress-totals" data-study-totals hidden><article><strong data-study-explored>—</strong><span>Concepts explored</span></article><article><strong data-study-review>—</strong><span>Ready to review</span></article><article><strong data-study-confidence>—</strong><span>Building confidence</span></article></div>
+        <div class="profile-actions"><a class="button button-primary" data-study-next hidden>Continue your topic →</a><a class="button button-secondary" href="../study/">Choose a lesson</a><button class="button button-secondary" type="button" data-study-retry hidden>Reload Study feedback</button></div>
+        <div class="study-progress-topics" data-study-topics aria-label="Saved Study feedback by topic"></div>
+        <p class="study-progress-boundary">These are practice signals. Building confidence means two correct answers in separate runs since the last mistake. Study awards no XP and does not certify mastery. Guest access follows this browser’s session; a verified identity supports recovery. Practice feedback expires after 180 days without practice.</p>
+      </section></div></details><details class="welcome-panel" id="career-records"><summary><span><b>Levels & achievements</b><small>Your game stats, character unlocks and career history.</small></span></summary><div class="welcome-panel-content"><div class="hq-next-grid welcome-career-goals"><article><span>CAREER UNLOCK</span><h3 data-hq-career-title>Connecting your career…</h3><p data-hq-career-copy>Levels unlock titles, avatars and character effects.</p><a data-hq-career-link href="#progression-title">Open career →</a></article><article><span>NEXT ACHIEVEMENT</span><h3 data-hq-achievement-title>Connecting your milestones…</h3><p data-hq-achievement-copy>Your saved career will choose a goal.</p><a data-hq-achievement-link href="#achievement-title">Browse achievements →</a></article></div><div class="career-stats" aria-label="Career totals">
+            <article><span>XP</span><strong data-stat="xp">0</strong><small>Lifetime signal</small></article>
+            <article><span>ACCURACY</span><strong data-stat="accuracy">0%</strong><small data-answer-count>0 / 0 correct</small></article>
+            <article><span>BEST ROUND</span><strong data-stat="bestRound">00</strong><small>Gauntlet ascent</small></article>
+            <article><span>LONGEST STREAK</span><strong data-stat="longestStreak">0×</strong><small>Verified answers</small></article>
+            <article><span>RANKED RUNS</span><strong data-stat="totalRuns">0</strong><small>Results recorded</small></article>
+            <article><span>ALPHA GEEK</span><strong data-stat="alphaGeek">0</strong><small>No-value practice ledger</small></article>
+          </div><section class="hq-milestones" aria-labelledby="hq-milestones-title"><span class="section-kicker">CAREER / WHAT OPENS NEXT</span><h2 id="hq-milestones-title">Looks to look forward to.</h2><p>These milestones come from your existing career record. Earned looks stay available when you prestige.</p><div data-hq-milestones class="hq-milestone-grid"><p>Connecting career milestones…</p></div></section><section id="prestige" class="dashboard-prestige" aria-labelledby="prestige-title">
+        <div class="section-kicker">YOUR LEGACY / PRESTIGE 01–25</div>
+        <div class="profile-heading"><div><h2 id="prestige-title">Your next career chapter.</h2><p data-prestige-summary>Connecting your career…</p></div><div><p data-prestige-note></p><button class="button button-primary" type="button" data-prestige-open disabled>Unlock at level 50</button></div></div>
+        <ol class="prestige-road" data-prestige-road aria-label="25 prestige ranks"></ol>
+        <p class="dashboard-note" data-legacy-note hidden>Your previously earned prestige ranks are preserved from the earlier progression system.</p>
+        <div class="dashboard-refresh-row"><p data-prestige-feedback role="status" aria-live="polite"></p><button class="button button-secondary" type="button" data-dashboard-refresh>Refresh dashboard</button></div>
+      </section><div class="dashboard-career">
+      <section class="mastery-section" aria-labelledby="mastery-title">
+        <div class="section-kicker">04 / KNOWLEDGE WORLDS</div>
+        <div class="profile-heading"><h2 id="mastery-title">Topics you’ve tried.</h2><p>See the topics you’ve tried in timed games. Explore a new one whenever you feel ready.</p></div>
+        <div class="mastery-grid" data-mastery-grid><p class="profile-empty">Category signal will appear after your first verified round.</p></div>
       </section>
 
-      <details class="profile-extra" data-extra="collection"><summary>Your collectibles and sticker trades <span>Optional · off-chain Alpha</span></summary>
+      <section class="achievement-section" aria-labelledby="achievement-title">
+        <div class="section-kicker">05 / ACHIEVEMENTS</div>
+        <div class="profile-heading"><h2 id="achievement-title">Celebrate your progress.</h2><p>Achievements unlock from your career record and survive prestige. <strong data-achievement-count>Loading achievements…</strong></p></div>
+        <div class="achievement-filters" role="group" aria-label="Filter achievements"><button type="button" data-achievement-filter="all" aria-pressed="true">All</button><button type="button" data-achievement-filter="locked" aria-pressed="false">In progress</button><button type="button" data-achievement-filter="unlocked" aria-pressed="false">Earned</button></div><p data-achievement-filter-count role="status" class="achievement-filter-count"></p><div class="achievement-grid" data-achievement-grid></div>
+      </section>
+
+      <section class="journey-section" aria-labelledby="journey-title">
+        <div class="journey-heading"><div><div class="section-kicker">06 / JOURNEY LOG</div><h2 id="journey-title">Your recent activity.</h2></div><p>Your recent games, level-ups and sticker unlocks, saved in one place.</p></div>
+        <ol class="journey-list" data-journey-list><li class="profile-empty">Your first verified milestone is waiting.</li></ol>
+      </section>
+
+      </div></div></details><details class="welcome-panel" id="competition-records"><summary><span><b>Challenges & scores</b><small>Explore weekly goals and the leaderboard when you’re ready.</small></span></summary><div class="welcome-panel-content"><section id="dashboard-challenges" class="dashboard-section" aria-labelledby="dashboard-challenges-title">
+        <div class="section-kicker">CHALLENGES / YOUR NEXT RUN</div><div class="profile-heading"><h2 id="dashboard-challenges-title">Try a new challenge.</h2><p data-dashboard-challenge-note role="status">Loading current challenges…</p></div>
+        <div class="dashboard-xp-modes"><a href="../play/?mode=gauntlet"><b>Geek Gauntlet</b><span>10-round ascent · career XP →</span></a><a href="../play/?mode=daily"><b>Daily Signal</b><span>5 questions · once per UTC day · XP →</span></a><a href="../play/?mode=speed"><b>Speed Signal</b><span>30 seconds · career XP →</span></a></div>
+        <div class="dashboard-challenge-grid" data-dashboard-challenges aria-busy="true"></div><a class="dashboard-text-link" href="../challenges/">All weekly and monthly challenges →</a>
+      </section><section id="leaderboard" class="dashboard-section dashboard-leaderboard" aria-labelledby="dashboard-board-title" data-board-panel aria-busy="true">
+        <div class="section-kicker">LEADERBOARD / VERIFIED SCORES</div><div class="profile-heading"><h2 id="dashboard-board-title">Your place on the board.</h2><p>Compete by mode and category. Prestige is a career badge; it gives no scoring advantage. Your best scores survive each reset.</p></div>
+        <div class="dashboard-board-controls"><label>Mode<select data-board-mode><option value="gauntlet">Geek Gauntlet</option><option value="daily">Daily Signal</option><option value="speed">Speed Signal</option></select></label><label>Category<select data-board-category><option value="kaspa">Kaspa</option><option value="video-games">Video Games</option><option value="science-fiction">Science Fiction</option><option value="technology">Technology</option><option value="movies">Movies</option><option value="history">History</option><option value="comics">Comics</option><option value="pop-culture">Pop Culture</option></select></label><button type="button" class="button button-secondary" data-board-refresh>Refresh standings</button></div>
+        <p data-dashboard-rank class="dashboard-own-rank"></p><p data-dashboard-board-note class="dashboard-note" role="status">Loading verified standings…</p>
+        <div class="dashboard-table-wrap"><table class="dashboard-table"><caption class="sr-only">Verified player standings for the selected mode and category</caption><thead><tr><th scope="col">Rank</th><th scope="col">Player</th><th scope="col">Career</th><th scope="col">Score</th></tr></thead><tbody data-dashboard-board></tbody></table></div>
+      </section></div></details><details class="profile-extra welcome-panel" data-extra="collection"><summary><span><b>Collectibles & stickers</b><small>Optional extras for your profile.</small></span></summary>
       <section class="collection-section" aria-labelledby="collection-title">
         <div class="section-kicker">02 / IDENTITY GRID</div>
-        <div class="profile-heading collection-heading"><div><span class="alpha-chip">OFF-CHAIN ALPHA</span><h2 id="collection-title">Choose your<br />Geek signal.</h2></div><p>Your selected Geek is your visual identity across the learning ecosystem. Five launch identities and a customizable starter Geek are available now; the complete 500-character Omniscient Grid is mapped for art production and a separately audited Kaspa deployment.</p></div>
+        <div class="profile-heading collection-heading"><div><span class="alpha-chip">OFF-CHAIN ALPHA</span><h2 id="collection-title">Choose a character.</h2></div><p>Choose from your available Geeks below, or make your own in the character studio. Your selected character appears across your learning and games.</p></div>
         <div class="collection-metrics" data-collection-metrics aria-label="Collection blueprint"></div>
         <div class="avatar-grid" data-avatar-grid><p class="profile-empty">Loading identity grid…</p></div>
         <p class="collection-boundary"><b>Current boundary:</b> identity choices are server-owned Alpha profile data. No page claims NFT ownership or transfers an on-chain asset. <a href="../collection/">Explore the complete 500-Geek production blueprint →</a></p>
@@ -134,46 +122,23 @@
 
       <section class="sticker-section" aria-labelledby="sticker-title">
         <div class="section-kicker">03 / STICKER PROTOCOL</div>
-        <div class="profile-heading"><h2 id="sticker-title">Earn. Collect.<br />Trade.</h2><p>Verified play can unlock cosmetic stickers. Offers reserve the seller’s inventory and settle both profiles atomically—no client-side balances and no duplicate trades.</p></div>
+        <div class="profile-heading"><h2 id="sticker-title">Your sticker album.</h2><p>Play to unlock cosmetic stickers. Offer a sticker you have in exchange for one you’d like. A trade happens when another player accepts the offer.</p></div>
         <div class="sticker-grid" data-sticker-grid><p class="profile-empty">Loading sticker album…</p></div>
         <div class="trade-terminal">
           <form data-trade-form>
             <div><span>YOU GIVE</span><select data-give-sticker aria-label="Sticker you give"></select><input data-give-quantity type="number" min="1" max="9" value="1" aria-label="Quantity you give" /></div>
             <i aria-hidden="true">⇄</i>
             <div><span>YOU WANT</span><select data-want-sticker aria-label="Sticker you want"></select><input data-want-quantity type="number" min="1" max="9" value="1" aria-label="Quantity you want" /></div>
-            <button class="button button-primary" type="submit">Open verified offer</button>
+            <button class="button button-primary" type="submit">Create sticker offer</button>
           </form>
           <div class="trade-feedback" data-trade-feedback role="status" aria-live="polite">Trades are cosmetic and off-chain during Alpha.</div>
           <div class="trade-list" data-trade-list><p class="profile-empty">No open offers yet.</p></div>
         </div>
       </section>
 
-      </details>
-
-      <div class="dashboard-career">
-      <section class="mastery-section" aria-labelledby="mastery-title">
-        <div class="section-kicker">04 / KNOWLEDGE WORLDS</div>
-        <div class="profile-heading"><h2 id="mastery-title">Category<br />practice.</h2><p>Each world records only server-scored rounds. Explore broadly or build a specialty—the journey keeps both visible.</p></div>
-        <div class="mastery-grid" data-mastery-grid><p class="profile-empty">Category signal will appear after your first verified round.</p></div>
-      </section>
-
-      <section class="achievement-section" aria-labelledby="achievement-title">
-        <div class="section-kicker">05 / ACHIEVEMENTS</div>
-        <div class="profile-heading"><h2 id="achievement-title">Your game<br />milestones.</h2><p>Achievements unlock from your career record and survive prestige. <strong data-achievement-count>Loading achievements…</strong></p></div>
-        <div class="achievement-filters" role="group" aria-label="Filter achievements"><button type="button" data-achievement-filter="all" aria-pressed="true">All</button><button type="button" data-achievement-filter="locked" aria-pressed="false">In progress</button><button type="button" data-achievement-filter="unlocked" aria-pressed="false">Earned</button></div><p data-achievement-filter-count role="status" class="achievement-filter-count"></p><div class="achievement-grid" data-achievement-grid></div>
-      </section>
-
-      <section class="journey-section" aria-labelledby="journey-title">
-        <div class="journey-heading"><div><div class="section-kicker">06 / JOURNEY LOG</div><h2 id="journey-title">THE PATH<br /><em>SO FAR.</em></h2></div><p>Recent rounds, level-ups, sticker unlocks, and prestige choices are kept in a bounded, recoverable server history. Correct answers and private question data never appear here.</p></div>
-        <ol class="journey-list" data-journey-list><li class="profile-empty">Your first verified milestone is waiting.</li></ol>
-      </section>
-
-      </div>
-
-      <section class="profile-cta"><span>ONE IDEA. ONE NEXT STEP.</span><h2>KEEP<br /><em>GOING.</em></h2><div class="profile-actions"><a class="button button-primary" href="../study/">Continue guided Study <span aria-hidden="true">→</span></a><a class="button button-secondary" href="../kaspa/">Study Kaspa 101</a></div></section>
-    </main>
+      </details></section><aside class="welcome-family"><div><span class="section-kicker">For younger explorers</span><h2>Learning with a little one?</h2><p>Discover Geek Jr together, our separate home for younger children.</p></div><a class="button button-secondary" href="https://geekjr.xyz/">Visit Geek Jr ↗</a></aside></main>
 
     <dialog class="prestige-dialog" data-prestige-dialog aria-labelledby="prestige-dialog-title"><h2 id="prestige-dialog-title" data-prestige-dialog-title>Enter prestige?</h2><p>Your level restarts at 1 with zero cycle XP. Lifetime XP, scores, achievements, collectibles, identity, and Study feedback remain saved.</p><p>Extra XP earned after reaching level 50 remains in lifetime totals and is not banked into the next cycle.</p><label class="prestige-confirm-check"><input type="checkbox" data-prestige-check /> I want to restart at level 1 and earn the next prestige rank.</label><p data-prestige-dialog-error role="status" aria-live="polite"></p><div class="profile-actions"><form method="dialog"><button class="button button-secondary" data-prestige-cancel>Keep my level</button></form><button class="button button-primary" type="button" data-prestige-confirm disabled>Confirm prestige</button></div></dialog>
-    <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>Your knowledge has a history.</p></div><div class="footer-links"><a href="../">Home</a><a href="../collection/">Collection</a><a href="../play/">Play</a><a href="../rewards/">Rewards</a><a href="../security/">Security</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · Progression is server-ranked Alpha data, not a financial balance.</p></footer>
+    <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>Your knowledge has a history.</p></div><div class="footer-links"><a href="../">Home</a><a href="../collection/">Collection</a><a href="../play/">Play</a><a href="../rewards/">Rewards</a><a href="../security/">Security</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · Progression is server-ranked Alpha data, not a financial balance.</p><details class="welcome-panel" id="project-links"><summary><span><b>About Geek Protocol</b><small>Project information, community and optional wallet features.</small></span></summary><div class="welcome-panel-content"><div class="welcome-project-links"><a href="/litepaper/">Project roadmap</a><a href="/security/">Security</a><a href="/contribute/">Contribute a question</a><a href="/collection/">Collection</a><a href="/lobby/">Practice rooms</a><a href="/vault/">Daily vault</a><a href="/rewards/">Wallet & rewards</a><a href="/economy/">Power-ups & economy</a><a href="/mint/">Mint GEEK</a></div></div></details></footer>
   </body>
 </html>
