@@ -162,3 +162,8 @@ Validation: all 138 repository tests and `npm run verify` pass with the Redis in
 ## Question maintenance — October 7, 2026
 
 All eight HQ pools now total 8,048 distinct active questions, twice the final cleaned 4,024-question baseline. Retired repeats and unusable imports remain lookup-only for unfinished games. Public counts are generated from active banks, and CI checks normalized/near duplicates, answer schemas, metadata and complete Gauntlet capacity. Study now offers 166 canonical concepts. See [Question Maintenance](QUESTION-MAINTENANCE.md) for category counts, source snapshots, licenses and remaining item-level review. Imported trivia retains draft status and provisional difficulty; this release makes no independent correctness or review claim. Validation: all 145 tests pass with real Redis and zero skips; full verification and production dependency audit pass. Browser checks use actual local API handlers and Redis.
+
+
+## Operations workspace (October 7, 2026)
+
+`/ops/` consolidates public community-service health, generated active bank counts and reserve configuration with three separately protected sections: existing CCE moderation, payout-setting risk reviews, and paginated read-only audit activity. Keys entered here remain only in page memory; role/global lock and page navigation clear loaded private records and invalidate in-flight responses. Published question decisions require explicit confirmation. Risk decisions require notes and confirmation and never enable settlement. GitHub links provide issue/security reporting; imported bank editing, verified treasury balances and an automated threat detector are not implemented. The older `/moderate/` desk remains available and links to Operations. See [Operations](OPERATIONS.md).
