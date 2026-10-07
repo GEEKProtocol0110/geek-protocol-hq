@@ -12,14 +12,14 @@
     speed: { name: 'Speed Signal', detail: 'Answer up to 10 questions in 30 seconds', start: 'Start 30-second challenge' }
   };
   const CATEGORY_BANKS = {
-    kaspa: { name: 'Kaspa: Proof-of-Learning', shortName: 'Kaspa', count: 1032, detail: '1,000 practice variants + 32 current items', sourced: true },
-    'video-games': { name: 'Video Games', shortName: 'Video Games', count: 1000, detail: 'games, consoles & lore' },
-    'science-fiction': { name: 'Science Fiction', shortName: 'Science Fiction', count: 1000, detail: 'worlds, stories & futures' },
-    technology: { name: 'Technology', shortName: 'Technology', count: 1000, detail: 'computing, science & invention' },
-    movies: { name: 'Movies', shortName: 'Movies', count: 1000, detail: 'cinema, characters & creators' },
-    history: { name: 'History', shortName: 'History', count: 1000, detail: 'people, places & turning points' },
-    comics: { name: 'Comics', shortName: 'Comics', count: 1000, detail: 'heroes, creators & panels' },
-    'pop-culture': { name: 'Pop Culture', shortName: 'Pop Culture', count: 1000, detail: 'music, television & culture' }
+    kaspa: { name: 'Kaspa: Proof-of-Learning', shortName: 'Kaspa', count: window.GEEK_QUESTION_COUNTS['kaspa'], detail: 'distinct, source-checked questions', sourced: true },
+    'video-games': { name: 'Video Games', shortName: 'Video Games', count: window.GEEK_QUESTION_COUNTS['video-games'], detail: 'games, consoles & lore' },
+    'science-fiction': { name: 'Science Fiction', shortName: 'Science Fiction', count: window.GEEK_QUESTION_COUNTS['science-fiction'], detail: 'worlds, stories & futures' },
+    technology: { name: 'Technology', shortName: 'Technology', count: window.GEEK_QUESTION_COUNTS['technology'], detail: 'computing, science & invention' },
+    movies: { name: 'Movies', shortName: 'Movies', count: window.GEEK_QUESTION_COUNTS['movies'], detail: 'cinema, characters & creators' },
+    history: { name: 'History', shortName: 'History', count: window.GEEK_QUESTION_COUNTS['history'], detail: 'people, places & turning points' },
+    comics: { name: 'Comics', shortName: 'Comics', count: window.GEEK_QUESTION_COUNTS['comics'], detail: 'heroes, creators & panels' },
+    'pop-culture': { name: 'Pop Culture', shortName: 'Pop Culture', count: window.GEEK_QUESTION_COUNTS['pop-culture'], detail: 'music, television & culture' }
   };
   const ROUND_CONFIG = [
     { round: 1, entry: 0, reward: 10, max: 100, label: 'INITIATION' },
@@ -141,7 +141,7 @@
     const mode = GAME_MODES[activeMode];
     elements.startScreen.dataset.mode = activeMode;
     elements.selectedMode.textContent = `${mode.name} · ${category.shortName}`;
-    elements.modeDetail.textContent = `${mode.detail} · ${format.format(category.count)} private items`;
+    elements.modeDetail.textContent = `${mode.detail} · ${format.format(category.count)} distinct questions`;
     elements.categorySummary.textContent = category.shortName;
     elements.bankStatus.textContent = communityReady ? 'SERVER READY' : 'CONNECTING';
     elements.startButton.disabled = !communityReady;

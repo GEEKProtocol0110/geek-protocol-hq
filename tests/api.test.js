@@ -1184,16 +1184,16 @@ const studyChoice = payload => {
 const studyAnswer = (payload, cookie, correct = true) => studyCall({ action: 'answer', runId: payload.run.id, questionToken: payload.question.token, selectedIndex: correct ? studyChoice(payload) : (studyChoice(payload) + 1) % 4 }, cookie);
 const studyNext = (payload, cookie) => studyCall({ action: 'next', runId: payload.run.id, questionToken: payload.result.questionToken }, cookie);
 
-test('Study catalog exposes eight lessons and 80 distinct concepts without answer keys', async () => {
+test('Study catalog exposes eight lessons and the expanded distinct bank without answer keys', async () => {
   const res = await studyCall(undefined, '', 'GET');
   assert.equal(res.statusCode, 200);
   assert.equal(res.body.topics.length, 8);
-  assert.equal(res.body.topics.reduce((n, t) => n + t.count, 0), 80);
-  assert.equal(studyBank().length, 80);
-  assert.equal(new Set(studyBank().map(q => q.conceptId)).size, 80);
+  assert.equal(res.body.topics.reduce((n, t) => n + t.count, 0), studyBank().length);
+  assert.ok(studyBank().length > 80);
+  assert.equal(new Set(studyBank().map(q => q.conceptId)).size, studyBank().length);
   for (const topic of res.body.topics) {
     assert.ok(topic.lesson.length > 100);
-    assert.equal(topic.count, 10);
+    assert.ok(topic.count >= 5);
     assert.ok(topic.sources.every(source => new URL(source).protocol === 'https:'));
   }
   assert.equal('questions' in res.body, false);
@@ -1299,7 +1299,7 @@ test('Study levels use distinct concepts, validate selection, and cover unseen c
     let payload = (await studyCall({ action: 'start', topic: 'origins', level }, cookie)).body;
     assert.equal(payload.run.level, level);
     const ids = storedStudy(payload).ids;
-    assert.equal(ids.length, level === 'foundations' ? 5 : 3);
+    assert.equal(ids.length, level === 'foundations' ? 5 : 2);
     assert.ok(ids.every(id => studyQuestionById(id).difficulty === tier));
     for (let i = 0; i < ids.length; i++) {
       payload = (await studyAnswer(payload, cookie)).body;
@@ -1308,7 +1308,7 @@ test('Study levels use distinct concepts, validate selection, and cover unseen c
   }
   const mixed = (await studyCall({ action: 'start', topic: 'origins', level: 'mixed' }, cookie)).body;
   assert.deepEqual(new Set(storedStudy(mixed).ids.slice(0, 2)), new Set(['KASPA-0005', 'KASPA-0010']));
-  assert.equal(mixed.progress.explored, 8);
+  assert.equal(mixed.progress.explored, 7);
   assert.equal(mixed.progress.confidence, 0);
 });
 
@@ -1341,20 +1341,20 @@ test('Study progress counts atomic answers once and requires separate runs for c
   assert.equal(race[0].body.progress.concepts.find(c => c.id === firstId).attempts, 1);
   assert.equal((await studyAnswer(payload, cookie)).body.progress.concepts.find(c => c.id === firstId).attempts, 1);
   payload = race[0].body;
-  for (let i = 1; i < 3; i++) { payload = (await studyNext(payload, cookie)).body; payload = (await studyAnswer(payload, cookie)).body; }
+  for (let i = 1; i < 2; i++) { payload = (await studyNext(payload, cookie)).body; payload = (await studyAnswer(payload, cookie)).body; }
   assert.equal(payload.progress.confidence, 0);
   assert.match(payload.summary.recommendation.message, /more concepts/);
   payload = (await studyCall({ action: 'start', topic: 'origins', level: 'connections' }, cookie)).body;
-  for (let i = 0; i < 3; i++) { payload = (await studyAnswer(payload, cookie)).body; if (i < 2) payload = (await studyNext(payload, cookie)).body; }
-  assert.equal(payload.progress.confidence, 3);
+  for (let i = 0; i < 2; i++) { payload = (await studyAnswer(payload, cookie)).body; if (i < 1) payload = (await studyNext(payload, cookie)).body; }
+  assert.equal(payload.progress.confidence, 2);
   const bad = (await studyCall({ action: 'start', topic: 'origins', level: 'connections' }, cookie)).body;
   const reset = (await studyAnswer(bad, cookie, false)).body;
-  assert.equal(reset.progress.confidence, 2);
+  assert.equal(reset.progress.confidence, 1);
   assert.equal(reset.progress.review, 1);
-  assert.equal(reset.progress.explored, 3);
+  assert.equal(reset.progress.explored, 2);
   const practice = (await studyCall({ action: 'start', topic: 'origins', review: true }, cookie)).body;
   const once = (await studyAnswer(practice, cookie)).body;
-  assert.equal(once.progress.confidence, 2);
+  assert.equal(once.progress.confidence, 1);
   assert.equal(once.progress.review, 0);
 });
 
@@ -1364,12 +1364,12 @@ test('parallel Study runs preserve each concept record without losing attempts',
   const second = (await studyCall({ action: 'start', topic: 'origins', level: 'connections' }, cookie)).body;
   const complete = async start => {
     let payload = start;
-    for (let i = 0; i < 3; i++) { payload = (await studyAnswer(payload, cookie)).body; if (i < 2) payload = (await studyNext(payload, cookie)).body; }
+    for (let i = 0; i < 2; i++) { payload = (await studyAnswer(payload, cookie)).body; if (i < 1) payload = (await studyNext(payload, cookie)).body; }
   };
   await Promise.all([complete(first), complete(second)]);
   const progress = (await studyCall({ action: 'progress' }, cookie)).body.progress;
-  assert.equal(progress.explored, 3);
-  assert.equal(progress.confidence, 3);
+  assert.equal(progress.explored, 2);
+  assert.equal(progress.confidence, 2);
   assert.ok(progress.concepts.every(c => c.attempts === 2 && c.correctAttempts === 2));
 });
 

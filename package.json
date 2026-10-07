@@ -28,7 +28,9 @@
     "archive:generate": "node scripts/generate-legacy-art-archive.mjs",
     "archive:check": "node scripts/check-legacy-art-archive.mjs",
     "repository:check": "node scripts/check-repository-presentation.mjs",
-    "verify": "npm test && npm run collection:check && npm run archive:check && npm run security:check && npm run repository:check"
+    "verify": "npm test && npm run questions:check && npm run collection:check && npm run archive:check && npm run security:check && npm run repository:check",
+    "questions:check": "node scripts/check-question-banks.mjs && node scripts/question-catalog.mjs",
+    "questions:catalog": "node scripts/question-catalog.mjs --write"
   },
   "engines": {
     "node": ">=20"

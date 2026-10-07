@@ -1,60 +1,29 @@
 {
-  "category": "Kaspa",
-  "reviewedAt": "2026-10-01",
-  "reviewStandard": "Internal primary-source check; no independent editorial approval",
+  "metadata": {
+    "title": "GEEK Protocol — Kaspa Question Bank",
+    "version": "2.0.0-distinct",
+    "maintainedAt": "2026-10-07",
+    "questionCount": 18,
+    "conceptCount": 18,
+    "category": "Kaspa",
+    "difficultyDistribution": {
+      "easy": 4,
+      "hard": 5,
+      "medium": 9
+    },
+    "correctIndexDistribution": {
+      "1": 3,
+      "0": 15
+    },
+    "schema": "correctIndex is zero-based; options contains four distinct strings",
+    "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
+    "attribution": "GEEK Protocol original questions; OpenTriviaQA contributors and Open Trivia Database / PIXELTAIL GAMES LLC where credited per question.",
+    "licenses": [
+      "MIT",
+      "CC BY 4.0"
+    ]
+  },
   "questions": [
-    {
-      "id": "KCUR-0001",
-      "category": "Kaspa",
-      "subcategory": "Current Mainnet",
-      "prompt": "What block production rate does Kaspa mainnet target after Crescendo?",
-      "options": [
-        "1 block per second",
-        "10 blocks per second",
-        "100 blocks per second",
-        "1 block per minute"
-      ],
-      "correctIndex": 1,
-      "difficulty": "easy",
-      "funFact": "Crescendo raised Kaspa's target rate from 1 BPS to 10 BPS.",
-      "tags": [
-        "kaspa",
-        "mainnet",
-        "crescendo"
-      ],
-      "volatile": true,
-      "priority": true,
-      "source": "https://github.com/kaspanet/rusty-kaspa#the-crescendo-hardfork",
-      "reviewStatus": "source-checked",
-      "conceptId": "KCUR-0001",
-      "reviewedAt": "2026-10-01"
-    },
-    {
-      "id": "KCUR-0002",
-      "category": "Kaspa",
-      "subcategory": "Current Mainnet",
-      "prompt": "When did the Crescendo hardfork activate on Kaspa mainnet?",
-      "options": [
-        "May 5, 2025",
-        "November 7, 2021",
-        "June 30, 2026",
-        "January 1, 2024"
-      ],
-      "correctIndex": 0,
-      "difficulty": "medium",
-      "funFact": "Crescendo was the coordinated upgrade that moved Kaspa to 10 BPS.",
-      "tags": [
-        "kaspa",
-        "crescendo",
-        "hardfork"
-      ],
-      "volatile": false,
-      "priority": true,
-      "source": "https://github.com/kaspanet/rusty-kaspa#the-crescendo-hardfork",
-      "reviewStatus": "source-checked",
-      "conceptId": "KCUR-0002",
-      "reviewedAt": "2026-10-01"
-    },
     {
       "id": "KCUR-0003",
       "category": "Kaspa",
@@ -105,81 +74,6 @@
       "source": "https://kaspa.org/lore/",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0004",
-      "reviewedAt": "2026-10-01"
-    },
-    {
-      "id": "KCUR-0005",
-      "category": "Kaspa",
-      "subcategory": "Current Mainnet",
-      "prompt": "Which description best matches Kaspa's launch?",
-      "options": [
-        "Venture allocation with a public sale",
-        "Proof-of-stake genesis distribution",
-        "Fair launch with no premine or presale",
-        "Private chain later opened to miners"
-      ],
-      "correctIndex": 2,
-      "difficulty": "easy",
-      "funFact": "Kaspa mainnet launched in November 2021 without an insider allocation.",
-      "tags": [
-        "kaspa",
-        "fair-launch"
-      ],
-      "volatile": false,
-      "priority": true,
-      "source": "https://kaspa.org/lore",
-      "reviewStatus": "source-checked",
-      "conceptId": "KCUR-0005",
-      "reviewedAt": "2026-10-01"
-    },
-    {
-      "id": "KCUR-0006",
-      "category": "Kaspa",
-      "subcategory": "Current Mainnet",
-      "prompt": "What is Kaspa's native network asset ticker?",
-      "options": [
-        "KRC",
-        "KAS",
-        "KSP",
-        "GHOST"
-      ],
-      "correctIndex": 1,
-      "difficulty": "easy",
-      "funFact": "KAS is used for value transfer and network fees on Kaspa.",
-      "tags": [
-        "kaspa",
-        "kas"
-      ],
-      "volatile": false,
-      "priority": true,
-      "source": "https://kaspa.org/",
-      "reviewStatus": "source-checked",
-      "conceptId": "KCUR-0006",
-      "reviewedAt": "2026-10-01"
-    },
-    {
-      "id": "KCUR-0007",
-      "category": "Kaspa",
-      "subcategory": "Current Mainnet",
-      "prompt": "Which security mechanism does Kaspa use?",
-      "options": [
-        "Proof of stake",
-        "Delegated proof of stake",
-        "Proof of work",
-        "Proof of authority"
-      ],
-      "correctIndex": 2,
-      "difficulty": "easy",
-      "funFact": "Kaspa combines permissionless proof of work with a blockDAG data structure.",
-      "tags": [
-        "kaspa",
-        "proof-of-work"
-      ],
-      "volatile": false,
-      "priority": true,
-      "source": "https://kaspa.org/",
-      "reviewStatus": "source-checked",
-      "conceptId": "KCUR-0007",
       "reviewedAt": "2026-10-01"
     },
     {
@@ -258,32 +152,6 @@
       "source": "https://docs.kaspa.org/toccata/covenant-state",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0010",
-      "reviewedAt": "2026-10-01"
-    },
-    {
-      "id": "KCUR-0011",
-      "category": "Kaspa",
-      "subcategory": "Toccata Programmability",
-      "prompt": "What model does Toccata extend rather than replacing with an account-based virtual machine?",
-      "options": [
-        "UTXO",
-        "Delegated staking",
-        "Centralized SQL",
-        "Federated identity"
-      ],
-      "correctIndex": 0,
-      "difficulty": "easy",
-      "funFact": "Toccata is designed around Kaspa's native UTXO architecture.",
-      "tags": [
-        "kaspa",
-        "toccata",
-        "utxo"
-      ],
-      "volatile": false,
-      "priority": true,
-      "source": "https://docs.kaspa.org/toccata",
-      "reviewStatus": "source-checked",
-      "conceptId": "KCUR-0011",
       "reviewedAt": "2026-10-01"
     },
     {
@@ -469,58 +337,6 @@
       "reviewedAt": "2026-10-01"
     },
     {
-      "id": "KCUR-0019",
-      "category": "Kaspa",
-      "subcategory": "Toccata Programmability",
-      "prompt": "Which upgrade first moved Kaspa mainnet to 10 BPS?",
-      "options": [
-        "Toccata",
-        "Crescendo",
-        "DAGKnight",
-        "GHOSTDAG"
-      ],
-      "correctIndex": 1,
-      "difficulty": "easy",
-      "funFact": "Toccata followed Crescendo; the 10 BPS transition came with Crescendo in 2025.",
-      "tags": [
-        "kaspa",
-        "crescendo",
-        "toccata"
-      ],
-      "volatile": false,
-      "priority": true,
-      "source": "https://github.com/kaspanet/rusty-kaspa#the-crescendo-hardfork",
-      "reviewStatus": "source-checked",
-      "conceptId": "KCUR-0019",
-      "reviewedAt": "2026-10-01"
-    },
-    {
-      "id": "KCUR-0020",
-      "category": "Kaspa",
-      "subcategory": "Toccata Programmability",
-      "prompt": "Which item is NOT part of Toccata's documented feature set?",
-      "options": [
-        "Covenants",
-        "Inline ZK foundations",
-        "User lanes",
-        "Proof-of-stake validators"
-      ],
-      "correctIndex": 3,
-      "difficulty": "easy",
-      "funFact": "Kaspa remains proof of work after Toccata.",
-      "tags": [
-        "kaspa",
-        "toccata",
-        "proof-of-work"
-      ],
-      "volatile": false,
-      "priority": true,
-      "source": "https://docs.kaspa.org/toccata",
-      "reviewStatus": "source-checked",
-      "conceptId": "KCUR-0020",
-      "reviewedAt": "2026-10-01"
-    },
-    {
       "id": "KCUR-0021",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
@@ -573,83 +389,6 @@
       "reviewedAt": "2026-10-01"
     },
     {
-      "id": "KCUR-0023",
-      "category": "Kaspa",
-      "subcategory": "Toccata Programmability",
-      "prompt": "Which pair is correctly associated with Toccata?",
-      "options": [
-        "Covenants and transaction v1",
-        "Validators and slashing",
-        "Gas tokens and sequencers",
-        "Premine and vesting"
-      ],
-      "correctIndex": 0,
-      "difficulty": "easy",
-      "funFact": "Toccata expands Kaspa transactions without changing Kaspa into a proof-of-stake network.",
-      "tags": [
-        "kaspa",
-        "toccata"
-      ],
-      "volatile": false,
-      "priority": true,
-      "source": "https://docs.kaspa.org/toccata",
-      "reviewStatus": "source-checked",
-      "conceptId": "KCUR-0023",
-      "reviewedAt": "2026-10-01"
-    },
-    {
-      "id": "KCUR-0024",
-      "category": "Kaspa",
-      "subcategory": "Toccata Programmability",
-      "prompt": "What should a production builder consult before relying on a Toccata capability?",
-      "options": [
-        "Current official Kaspa documentation",
-        "An undated meme",
-        "An unrelated token listing",
-        "A proof-of-stake validator guide"
-      ],
-      "correctIndex": 0,
-      "difficulty": "easy",
-      "funFact": "Protocol capabilities and tooling evolve, so current primary documentation matters.",
-      "tags": [
-        "kaspa",
-        "toccata",
-        "documentation"
-      ],
-      "volatile": true,
-      "priority": true,
-      "source": "https://docs.kaspa.org/toccata/agent-brief",
-      "reviewStatus": "source-checked",
-      "conceptId": "KCUR-0024",
-      "reviewedAt": "2026-10-01"
-    },
-    {
-      "id": "KCUR-0025",
-      "category": "Kaspa",
-      "subcategory": "Developer Stack",
-      "prompt": "What is rusty-kaspa?",
-      "options": [
-        "Kaspa's Rust implementation",
-        "A KRC-20 ticker",
-        "A centralized exchange",
-        "A proof-of-stake client"
-      ],
-      "correctIndex": 0,
-      "difficulty": "easy",
-      "funFact": "rusty-kaspa is the core open-source Rust codebase for Kaspa.",
-      "tags": [
-        "kaspa",
-        "rust",
-        "rusty-kaspa"
-      ],
-      "volatile": false,
-      "priority": true,
-      "source": "https://github.com/kaspanet/rusty-kaspa",
-      "reviewStatus": "source-checked",
-      "conceptId": "KCUR-0025",
-      "reviewedAt": "2026-10-01"
-    },
-    {
       "id": "KCUR-0026",
       "category": "Kaspa",
       "subcategory": "Developer Stack",
@@ -673,32 +412,6 @@
       "source": "https://docs.kaspa.org/integrate",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0026",
-      "reviewedAt": "2026-10-01"
-    },
-    {
-      "id": "KCUR-0027",
-      "category": "Kaspa",
-      "subcategory": "Developer Stack",
-      "prompt": "Where are proposed Kaspa protocol changes formally documented?",
-      "options": [
-        "Kaspa Improvement Proposals",
-        "Token price charts",
-        "Wallet avatars",
-        "Mining pool advertisements"
-      ],
-      "correctIndex": 0,
-      "difficulty": "easy",
-      "funFact": "KIPs make protocol proposals inspectable and versioned in public.",
-      "tags": [
-        "kaspa",
-        "kips",
-        "governance"
-      ],
-      "volatile": false,
-      "priority": true,
-      "source": "https://github.com/kaspanet/kips",
-      "reviewStatus": "source-checked",
-      "conceptId": "KCUR-0027",
       "reviewedAt": "2026-10-01"
     },
     {
@@ -754,32 +467,6 @@
       "reviewedAt": "2026-10-01"
     },
     {
-      "id": "KCUR-0030",
-      "category": "Kaspa",
-      "subcategory": "DAGKnight Research",
-      "prompt": "How should DAGKnight be described as of October 1, 2026?",
-      "options": [
-        "A proposed protocol under development",
-        "Kaspa's current wallet format",
-        "A live KRC-20 mint",
-        "A proof-of-stake committee"
-      ],
-      "correctIndex": 0,
-      "difficulty": "medium",
-      "funFact": "DAGKnight research should not be presented as an already-active mainnet feature.",
-      "tags": [
-        "kaspa",
-        "dagknight",
-        "research"
-      ],
-      "volatile": true,
-      "priority": true,
-      "source": "https://github.com/kaspanet/kips/blob/master/kip-0002.md",
-      "reviewStatus": "source-checked",
-      "conceptId": "KCUR-0030",
-      "reviewedAt": "2026-10-01"
-    },
-    {
       "id": "KCUR-0031",
       "category": "Kaspa",
       "subcategory": "DAGKnight Research",
@@ -803,32 +490,6 @@
       "source": "https://eprint.iacr.org/2022/1494.pdf",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0031",
-      "reviewedAt": "2026-10-01"
-    },
-    {
-      "id": "KCUR-0032",
-      "category": "Kaspa",
-      "subcategory": "DAGKnight Research",
-      "prompt": "Which statement about a DAGKnight activation date is responsible?",
-      "options": [
-        "No fixed mainnet activation date should be claimed",
-        "It activated with Crescendo",
-        "It activated with Toccata",
-        "It has always been Kaspa's live consensus"
-      ],
-      "correctIndex": 0,
-      "difficulty": "hard",
-      "funFact": "KIP-2 is still marked Proposed at this review. Do not invent a fixed activation date; check current release and activation evidence before making a mainnet claim.",
-      "tags": [
-        "kaspa",
-        "dagknight",
-        "roadmap"
-      ],
-      "volatile": true,
-      "priority": true,
-      "source": "https://github.com/kaspanet/kips/blob/master/kip-0002.md",
-      "reviewStatus": "source-checked",
-      "conceptId": "KCUR-0032",
       "reviewedAt": "2026-10-01"
     }
   ]

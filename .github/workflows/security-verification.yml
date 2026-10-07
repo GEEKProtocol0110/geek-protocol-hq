@@ -33,5 +33,7 @@ jobs:
         run: npm test
       - name: Verify security evidence
         run: npm run security:check
+      - name: Verify distinct question banks and public counts
+        run: npm run questions:check
       - name: Audit production dependencies
         run: npm audit --omit=dev --audit-level=high

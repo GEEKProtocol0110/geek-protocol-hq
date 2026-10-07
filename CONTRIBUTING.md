@@ -44,3 +44,7 @@ Use Node.js 20 or newer. Stateful Alpha features require Upstash Redis credentia
 Maintainers may request threat-model updates, abuse cases, failure-mode tests, evidence paths, or a narrower change before merging. Passing CI is necessary but does not guarantee acceptance or constitute an independent audit.
 
 By contributing, you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md) and license your code contributions under the repository's MIT License.
+
+## Question maintenance
+
+Check existing prompts and their underlying facts before adding a question. Keep one active canonical question per concept; a reordered answer list or rewording is not a new concept. Supply a stable ID, source, correct answer, provenance/license, and an honest review status. Do not attach unrelated choices to true/false questions. Imported items remain draft until individually reviewed. General imported content retains its source content license separately from MIT code. Run `npm run questions:catalog` after count changes, then `npm run questions:check`. Retire old rows to lookup-only compatibility files rather than breaking unfinished games. See [Question Maintenance](docs/QUESTION-MAINTENANCE.md).

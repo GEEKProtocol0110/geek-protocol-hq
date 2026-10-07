@@ -48,7 +48,7 @@ export const pickStudyQuestions = (topicId, levelId = 'mixed', records = {}, rev
 };
 
 export const studyQuestionById = id => {
-  const q = studyBank().find(q => q.id === id);
-  if (!q) throw new Error('STUDY_NOT_FOUND');
+  const q = loadQuestionBank('kaspa').byId.get(id);
+  if (!q || q.reviewStatus !== 'source-checked' || !studyTopics.some(t => t.category === q.topic)) throw new Error('STUDY_NOT_FOUND');
   return q;
 };

@@ -1,6 +1,7 @@
 import { redis } from './redis.js';
 import { playerIdFor } from './session.js';
 import { studyBank, studyTopics } from './study-curriculum.js';
+import { loadQuestionBank } from './questions.js';
 
 export const STUDY_PROGRESS_TTL = 60 * 60 * 24 * 180;
 export const studyProgressKey = session => `geek:study-progress:${playerIdFor(session)}`;
@@ -11,8 +12,14 @@ export const readStudyRecords = async session => {
   const allowed = new Set(studyBank().map(q => q.conceptId));
   const records = {};
   for (const [id, value] of entries) {
-    if (!allowed.has(id)) continue;
-    try { const r = JSON.parse(value); if (Number.isInteger(r.attempts) && r.attempts > 0 && typeof r.lastCorrect === 'boolean') records[id] = r; } catch { /* Ignore malformed historical records. */ }
+    const concept = loadQuestionBank('kaspa').byId.get(id)?.conceptId || id;
+    if (!allowed.has(concept)) continue;
+    try {
+      const r = JSON.parse(value);
+      // Use the most recent observation, without inventing a combined mastery streak.
+      if (Number.isInteger(r.attempts) && r.attempts > 0 && typeof r.lastCorrect === 'boolean'
+        && (!records[concept] || Number(r.lastAnsweredAt || 0) > Number(records[concept].lastAnsweredAt || 0))) records[concept] = r;
+    } catch { /* Ignore malformed historical records. */ }
   }
   return records;
 };
