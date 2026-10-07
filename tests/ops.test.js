@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { roleClient, sourceLink, escapeHtml, auditSummary } from '../public/ops/assets/ops-core.js';
+import { roleClient, sourceLink, escapeHtml, auditSummary } from '../server/ops-ui/assets/ops-core.js';
 
 const response = (payload = { ok: true }, status = 200) => ({ ok: status === 200, status, json: async () => payload });
 test('operations access keys are separated by role and never included in request bodies or URLs', async () => {
@@ -50,9 +50,9 @@ test('audit risk counts describe loaded events, not inferred attacks', () => {
   assert.deepEqual(auditSummary([{severity:'warning',outcome:'success'},{severity:'critical',outcome:'failure'},{severity:'info',outcome:'failure'}]), {warning:1,critical:1,failures:2});
 });
 test('operations has no analytics, wallet signer, persistent credentials, or public privileged data', () => {
-  const html = readFileSync(new URL('../public/ops/index.html', import.meta.url), 'utf8');
-  const js = readFileSync(new URL('../public/ops/assets/ops.js', import.meta.url), 'utf8');
-  const core = readFileSync(new URL('../public/ops/assets/ops-core.js', import.meta.url), 'utf8');
+  const html = readFileSync(new URL('../server/ops-ui/index.html', import.meta.url), 'utf8');
+  const js = readFileSync(new URL('../server/ops-ui/assets/ops.js', import.meta.url), 'utf8');
+  const core = readFileSync(new URL('../server/ops-ui/assets/ops-core.js', import.meta.url), 'utf8');
   assert.match(html, /noindex,nofollow/); assert.doesNotMatch(html, /analytics\.js|site\.js|wallet\.js/);
   assert.doesNotMatch(js + core, /localStorage|sessionStorage|sendKaspa|signKRC|console\./);
   assert.match(js, /pagehide/); assert.match(js, /window\.confirm/); assert.match(js, /version !== epoch/);
