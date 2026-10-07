@@ -12,6 +12,10 @@
       "destination": "/api/session?service=operations"
     },
     {
+      "source": "/ops/",
+      "destination": "/api/session?service=operations"
+    },
+    {
       "source": "/ops/:path*",
       "destination": "/api/session?service=operations&path=:path*"
     },
