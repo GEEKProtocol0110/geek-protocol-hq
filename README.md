@@ -143,6 +143,8 @@ Vercel serves `public/` and discovers serverless functions in `api/`. Static inf
 | `AUDIT_ADMIN_TOKEN` | Private audit-export credential |
 | `PAYOUT_REVIEW_ADMIN_TOKEN` | Separate payout-review credential |
 
+The [operations dashboard](https://www.geekprotocol.xyz/ops/) brings community moderation, payout-setting risk reviews and read-only audit activity together. Each section uses its existing dedicated key. See [Operations](docs/OPERATIONS.md) for access and review procedures.
+
 The annotated [.env.example](.env.example) documents optional settings and safe local placeholders. Never commit production credentials.
 
 ## Verification

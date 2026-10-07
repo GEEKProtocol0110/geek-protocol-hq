@@ -17,6 +17,7 @@ This directory is the reviewable specification set for Geek Protocol HQ. Documen
 
 | Document | Scope |
 | --- | --- |
+| [Operations Workspace](OPERATIONS.md) | Role-separated moderation, risk-review and audit workflows |
 | [Economy Protocol](ECONOMY-PROTOCOL.md) | Restored power-ups, private planning receipts, reserve status and disabled transfers |
 | [Daily Vault Protocol](VAULT-PROTOCOL.md) | Visible cosmetic contents, UTC eligibility, atomic claims, and private receipts |
 | [Challenge Protocol](CHALLENGE-PROTOCOL.md) | UTC periods, private snapshots, clocks, attempts, and separate standings |
