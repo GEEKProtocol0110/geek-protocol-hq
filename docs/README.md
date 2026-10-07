@@ -21,6 +21,7 @@ This directory is the reviewable specification set for Geek Protocol HQ. Documen
 | [Daily Vault Protocol](VAULT-PROTOCOL.md) | Visible cosmetic contents, UTC eligibility, atomic claims, and private receipts |
 | [Challenge Protocol](CHALLENGE-PROTOCOL.md) | UTC periods, private snapshots, clocks, attempts, and separate standings |
 | [Study Protocol](STUDY-PROTOCOL.md) | Untimed practice, private answers, retry safety, and ranked isolation |
+| [Question Maintenance](QUESTION-MAINTENANCE.md) | Distinct-question cleanup, expansion, attribution, and compatibility |
 | [Kaspa Content Review](KASPA-CONTENT-REVIEW.md) | Source-check scope, corrections, and remaining editorial limits |
 | [Identity Protocol](IDENTITY-PROTOCOL.md) | Wallet proof, account recovery, origin binding, and session invalidation |
 | [Mint Protocol](MINT-PROTOCOL.md) | Canonical GEEK deployment verification and non-custodial mint flow |

@@ -22,7 +22,7 @@ The fee question now states that it is a conventional linear-chain example and e
 
 ## Reproducibility and remaining work
 
-`scripts/review-kaspa-content.mjs` records this specific review's corrections and metadata. It is idempotent. Running it again does not fetch new sources or conduct a new review; future changes require a fresh human assessment and date.
+The original review was recorded in Git history. After October 7 maintenance, `scripts/review-kaspa-content.mjs` verifies banks without rewriting evidence or dates. Future changes require fresh source assessment and individual review dates.
 
 Automatic tests validate IDs, answer schemas, HTTPS sources, 80 concept identities, and consistent options and answers across variants. Study draws only distinct canonical concepts. These checks do not establish factual correctness by themselves.
 
@@ -33,3 +33,7 @@ Independent item-level editorial review remains necessary, especially for varian
 Eight authored lessons add objectives, teaching steps, worked examples, and ungraded reflection prompts in `server/study-lessons.js`. The launch, graph ordering, emission, wallet, indexer, and confirmation explanations follow the primary sources above. Lore, the GHOSTDAG paper, node documentation, KIP-5, KIP-14, integration documentation, tokenomics, and Kasplex interfaces were checked for this extension. It introduces no new ranked answer keys and preserves all existing bank IDs, options, grading, and active-run selections.
 
 Practice-level selection exposes the existing easy and medium tags plus a mixed pool. Names/definitions and safety form Foundations; mechanisms, unit relationships, and practical distinctions form Connections; technical concepts remain in Mixed. These criteria describe the present introductory bank. Some existing assignments (for example historical dates) still need a full item-level difficulty calibration. No separate hard-only pool is offered because not every topic has hard-tagged concepts. Independent editorial approval remains outstanding.
+
+## Distinct question extension — October 7, 2026
+
+The historical 1,000-variant bank described above has been retired from active selection. Kaspa now has 184 distinct active questions (166 core, 18 current), twice its cleaned 92-concept baseline. Ninety-two new original questions were checked against official integration documentation and pinned node/KIP source snapshots. Dates are retained per item. See [Question Maintenance](QUESTION-MAINTENANCE.md) for the complete audit, compatibility boundary, sources, and limits.
