@@ -3557,7 +3557,7 @@
       ],
       "correctIndex": 0,
       "funFact": "Open-source development depends on actionable, reproducible issue reports and version information.",
-      "source": "https://github.com/kaspanet/kips/blob/e4ae2332117b5cb68bd6188e065ef885b6d17939/kip-0001.md",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/.github/ISSUE_TEMPLATE/bug_report.md",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "volatile": false,
