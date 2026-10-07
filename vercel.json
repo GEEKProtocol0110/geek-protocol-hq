@@ -7,14 +7,46 @@
   "cleanUrls": true,
   "trailingSlash": true,
   "rewrites": [
-    { "source": "/api/quest", "destination": "/api/ranked?service=quest" },
-    { "source": "/api/quest/", "destination": "/api/ranked?service=quest" },
-    { "source": "/api/duel", "destination": "/api/lobbies?service=duel" },
-    { "source": "/api/duel/", "destination": "/api/lobbies?service=duel" },
-    { "source": "/api/profile", "destination": "/api/session?service=profile" },
-    { "source": "/api/profile/", "destination": "/api/session?service=profile" },
-    { "source": "/api/collectibles", "destination": "/api/session?service=collectibles" },
-    { "source": "/api/collectibles/", "destination": "/api/session?service=collectibles" }
+    {
+      "source": "/ops",
+      "destination": "/api/session?service=operations"
+    },
+    {
+      "source": "/ops/:path*",
+      "destination": "/api/session?service=operations&path=:path*"
+    },
+    {
+      "source": "/api/quest",
+      "destination": "/api/ranked?service=quest"
+    },
+    {
+      "source": "/api/quest/",
+      "destination": "/api/ranked?service=quest"
+    },
+    {
+      "source": "/api/duel",
+      "destination": "/api/lobbies?service=duel"
+    },
+    {
+      "source": "/api/duel/",
+      "destination": "/api/lobbies?service=duel"
+    },
+    {
+      "source": "/api/profile",
+      "destination": "/api/session?service=profile"
+    },
+    {
+      "source": "/api/profile/",
+      "destination": "/api/session?service=profile"
+    },
+    {
+      "source": "/api/collectibles",
+      "destination": "/api/session?service=collectibles"
+    },
+    {
+      "source": "/api/collectibles/",
+      "destination": "/api/session?service=collectibles"
+    }
   ],
   "functions": {
     "api/mint.js": {
@@ -28,6 +60,9 @@
     },
     "api/lobbies.js": {
       "includeFiles": "server/questions/**"
+    },
+    "api/session.js": {
+      "includeFiles": "server/ops-ui/**"
     }
   },
   "headers": [
@@ -67,6 +102,18 @@
           "value": "same-origin"
         }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/moderate",
+      "destination": "/ops/",
+      "permanent": false
+    },
+    {
+      "source": "/moderate/:path*",
+      "destination": "/ops/",
+      "permanent": false
     }
   ]
 }

@@ -152,3 +152,28 @@ const lockAll = () => { panels.forEach(panel => panel.lock()); $('[data-global-m
 $('[data-lock-all]').addEventListener('click', lockAll);
 window.addEventListener('pagehide', () => { lockAll(); overviewVersion += 1; overviewController?.abort(); });
 refreshOverview();
+
+$('[data-sign-out]').addEventListener('click', async event => {
+  lockAll(); const button = event.currentTarget; button.disabled = true;
+  const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 15_000);
+  try {
+    const response = await fetch('/api/session?service=operations&action=logout', { method: 'POST', credentials: 'same-origin', cache: 'no-store', signal: controller.signal, headers: { 'Content-Type': 'application/json' }, body: '{}' });
+    if (response.ok || response.status === 401) { window.location.replace('/ops-login/'); return; }
+    throw new Error('Sign-out unavailable.');
+  } catch { $('[data-global-message]').textContent = 'Role access cleared here, but server sign-out could not finish. Retry Sign out.'; }
+  finally { clearTimeout(timer); button.disabled = false; }
+});
+// Recheck the short-lived server session when the operator returns to this tab.
+let gateChecking = false;
+const checkGate = async () => {
+  if (gateChecking || document.hidden) return; gateChecking = true;
+  const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 15_000);
+  try {
+    const response = await fetch('/api/session?service=operations&action=status', { credentials: 'same-origin', cache: 'no-store', signal: controller.signal });
+    if (!response.ok) { lockAll(); window.location.replace('/ops-login/'); }
+  } catch { lockAll(); $('[data-global-message]').textContent = 'Private access could not be checked. Sign out and sign in again when the service returns.'; }
+  finally { clearTimeout(timer); gateChecking = false; }
+};
+window.addEventListener('focus', checkGate);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) checkGate(); });
+setInterval(checkGate, 60_000);
