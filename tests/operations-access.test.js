@@ -96,6 +96,7 @@ run('login attempts are rate limited and configuration or database failures do n
 });
 test('deployment routes the complete private namespace to the server and retires public review files',()=>{
   const cfg=JSON.parse(readFileSync(new URL('../vercel.json',import.meta.url),'utf8'));
+  assert.ok(cfg.rewrites.some(item=>item.source==='/ops/'&&item.destination.includes('service=operations')));
   assert.ok(cfg.rewrites.some(item=>item.source==='/ops/:path*'&&item.destination.includes('service=operations')));
   assert.ok(cfg.redirects.some(item=>item.source==='/moderate/:path*'&&item.destination==='/ops/'));
   assert.equal(cfg.functions['api/session.js'].includeFiles,'server/ops-ui/**');
