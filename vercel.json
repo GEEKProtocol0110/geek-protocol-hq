@@ -115,6 +115,11 @@
       "permanent": false
     },
     {
+      "source": "/moderate/",
+      "destination": "/ops/",
+      "permanent": false
+    },
+    {
       "source": "/moderate/:path*",
       "destination": "/ops/",
       "permanent": false
