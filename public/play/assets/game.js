@@ -426,6 +426,13 @@
 
   elements.startButton.addEventListener('click', startNewRun);
   elements.modeButtons.forEach((button) => button.addEventListener('click', () => selectMode(button.dataset.modeKey)));
+  $('[data-gauntlet-setup]').addEventListener('click', () => {
+    selectMode('gauntlet');
+    const setup = $('#timed-games');
+    setup.open = true;
+    setup.querySelector('summary').focus({ preventScroll: true });
+    setup.scrollIntoView({ block: 'start', behavior: 'instant' });
+  });
   elements.categoryButtons.forEach((button) => button.addEventListener('click', () => selectCategory(button.dataset.categoryKey)));
   $('[data-new-run]').addEventListener('click', () => {
     run = null;
