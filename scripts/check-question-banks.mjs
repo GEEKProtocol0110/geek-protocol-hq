@@ -12,14 +12,17 @@ export const checkQuestionBanks = () => {
   assert.equal(editorialIds.size, review.retirementCount);
   const ids = new Set(), concepts = new Set(), prompts = new Set();
   const termIndex = new Map(), questions = [];
-  let active = 0, retired = 0;
+  let active = 0, retired = 0, postReviewAdditions = 0;
   for (const [category, files] of Object.entries(categoryFiles)) {
     const bank = loadQuestionBank(category);
     const summary = report.categories[category];
     assert.equal(bank.questions.length, summary.after, category);
     // The expansion milestone is historical. Editorial removals must not be
     // padded with unreviewed replacements just to preserve a marketing count.
-    assert.equal(summary.after, summary.cleaned + summary.added - (summary.editorialRemoved || 0), `${category}: reviewed pool accounting`);
+    const followUp = summary.postReviewAdditions || 0;
+    assert.ok(Number.isSafeInteger(followUp) && followUp >= 0, `${category}: follow-up count`);
+    postReviewAdditions += followUp;
+    assert.equal(summary.after, summary.cleaned + summary.added + followUp - (summary.editorialRemoved || 0), `${category}: reviewed pool accounting`);
     assert.equal(summary.added, summary.cleaned, category);
     const tiers = { easy: 0, medium: 0, hard: 0 };
     for (const q of bank.questions) {
@@ -80,7 +83,8 @@ export const checkQuestionBanks = () => {
     active += bank.questions.length; retired += legacy.questions.length;
   }
   assert.equal(active, report.activeQuestions);
-  assert.equal(active, report.cleanedBaseline + report.addedQuestions - report.editorialRetiredRows);
+  assert.equal(postReviewAdditions, report.postReviewAdditions || 0);
+  assert.equal(active, report.cleanedBaseline + report.addedQuestions + postReviewAdditions - report.editorialRetiredRows);
   assert.equal(retired, report.retiredRows);
   assert.equal(report.originalRows - (retired - report.editorialRetiredRows), report.cleanedBaseline);
   assert.equal(report.editorialRetiredRows, review.retirementCount);

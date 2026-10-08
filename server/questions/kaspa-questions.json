@@ -2,20 +2,20 @@
   "metadata": {
     "title": "GEEK Protocol — Kaspa Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-07",
-    "questionCount": 166,
-    "conceptCount": 166,
+    "maintainedAt": "2026-10-08",
+    "questionCount": 176,
+    "conceptCount": 176,
     "category": "Kaspa",
     "difficultyDistribution": {
-      "easy": 60,
-      "medium": 68,
-      "hard": 38
+      "easy": 64,
+      "medium": 71,
+      "hard": 41
     },
     "correctIndexDistribution": {
-      "1": 42,
-      "2": 52,
-      "3": 29,
-      "0": 43
+      "1": 45,
+      "2": 55,
+      "3": 31,
+      "0": 45
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -4193,6 +4193,276 @@
       "attribution": "GEEK Protocol; original question based on cited primary source.",
       "id": "KNEW-0092",
       "conceptId": "KNEW-0092"
+    },
+    {
+      "id": "KRC20-2026-001",
+      "conceptId": "KRC20-2026-001",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "Which protocol identifier appears in the p field of Kasplex’s KRC-20 operation data?",
+      "options": [
+        "erc-20",
+        "krc-20",
+        "krc-721",
+        "bep-20"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "The Kiwi example sets p to krc-20; the op field separately identifies the requested action.",
+      "tags": [
+        "kaspa",
+        "krc-20",
+        "developer"
+      ],
+      "volatile": false,
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/README-Node.md",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-08",
+      "license": "CC BY 4.0",
+      "attribution": "GEEK Protocol; original question based on cited primary source."
+    },
+    {
+      "id": "KRC20-2026-002",
+      "conceptId": "KRC20-2026-002",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "In Kiwi’s KRC-20 transferByPayload method, which field specifies the quantity to transfer?",
+      "options": [
+        "to",
+        "memo",
+        "amt",
+        "p"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The method requires amt for the quantity and to for the recipient. This question describes the cited Kiwi snapshot.",
+      "tags": [
+        "kaspa",
+        "krc-20",
+        "developer"
+      ],
+      "volatile": false,
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/krc20.ts",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-08",
+      "license": "CC BY 4.0",
+      "attribution": "GEEK Protocol; original question based on cited primary source."
+    },
+    {
+      "id": "KRC20-2026-003",
+      "conceptId": "KRC20-2026-003",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "Which field supplies the recipient in Kiwi’s KRC-20 transferByPayload method?",
+      "options": [
+        "to",
+        "dec",
+        "max",
+        "pre"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "The cited method requires a to field alongside the transfer quantity.",
+      "tags": [
+        "kaspa",
+        "krc-20",
+        "developer"
+      ],
+      "volatile": false,
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/krc20.ts",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-08",
+      "license": "CC BY 4.0",
+      "attribution": "GEEK Protocol; original question based on cited primary source."
+    },
+    {
+      "id": "KRC20-2026-004",
+      "conceptId": "KRC20-2026-004",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "Which two stages make up Kiwi’s original P2SH KRC-20 executeOperation flow?",
+      "options": [
+        "Deposit and stake",
+        "Register and vote",
+        "Bridge and swap",
+        "Commit and reveal"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The original flow submits a commit transaction and then spends its script output in a reveal transaction. The SDK also exposes a separate direct-payload path.",
+      "tags": [
+        "kaspa",
+        "krc-20",
+        "developer"
+      ],
+      "volatile": false,
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/krc20.ts",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-08",
+      "license": "CC BY 4.0",
+      "attribution": "GEEK Protocol; original question based on cited primary source."
+    },
+    {
+      "id": "KRC20-2026-005",
+      "conceptId": "KRC20-2026-005",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "What compatibility problem does Kiwi warn about when replacing standard KRC-20 JSON with a custom wrapped payload?",
+      "options": [
+        "The wrapper guarantees faster finality",
+        "A standard indexer may not recognize the operation",
+        "It converts the token into native KAS",
+        "It permanently increases the token supply"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "A transaction carrying data is not enough: the interpreter must recognize its format. This warning is attached to the direct-payload method in the cited SDK.",
+      "tags": [
+        "kaspa",
+        "krc-20",
+        "developer"
+      ],
+      "volatile": false,
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/krc20.ts",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-08",
+      "license": "CC BY 4.0",
+      "attribution": "GEEK Protocol; original question based on cited primary source."
+    },
+    {
+      "id": "KRC20-2026-006",
+      "conceptId": "KRC20-2026-006",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "At the cited Kiwi snapshot, what range does validateDec allow for KRC-20 decimal precision?",
+      "options": [
+        "1 through 6",
+        "0 through 8",
+        "0 through 18",
+        "18 through 36"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The SDK’s validator rejects dec values below zero or above eighteen. This is a snapshot-specific implementation question.",
+      "tags": [
+        "kaspa",
+        "krc-20",
+        "developer"
+      ],
+      "volatile": false,
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/check.ts",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-08",
+      "license": "CC BY 4.0",
+      "attribution": "GEEK Protocol; original question based on cited primary source."
+    },
+    {
+      "id": "KRC20-2026-007",
+      "conceptId": "KRC20-2026-007",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "For a deployment without mod, what ticker length does Kiwi’s validateTick accept at the cited snapshot?",
+      "options": [
+        "4 to 6 characters",
+        "1 to 3 characters",
+        "8 to 12 characters",
+        "Exactly 32 characters"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "The cited SDK checks that a tick is present and has a length from four through six. This is not a claim about every token standard.",
+      "tags": [
+        "kaspa",
+        "krc-20",
+        "developer"
+      ],
+      "volatile": false,
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/check.ts",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-08",
+      "license": "CC BY 4.0",
+      "attribution": "GEEK Protocol; original question based on cited primary source."
+    },
+    {
+      "id": "KRC20-2026-008",
+      "conceptId": "KRC20-2026-008",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Which KaspaCom surface is intended for browsing KRC-20 token markets?",
+      "options": [
+        "A proof-of-work mining pool",
+        "A hardware-wallet recovery form",
+        "A private seed-phrase directory",
+        "The token marketplace"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "KaspaCom provides a token marketplace. Exploring a project is separate from deciding to transact with it.",
+      "tags": [
+        "kaspa",
+        "krc-20",
+        "ecosystem"
+      ],
+      "volatile": true,
+      "source": "https://kaspa.com/tokens/marketplace",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-08",
+      "license": "CC BY 4.0",
+      "attribution": "GEEK Protocol; original question based on cited primary source."
+    },
+    {
+      "id": "KRC20-2026-009",
+      "conceptId": "KRC20-2026-009",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Which community project describes Kat Bot as a Kaspa and KRC-20 wallet for Discord?",
+      "options": [
+        "Kango",
+        "Nacho the Kat",
+        "Kaspy",
+        "Geek Protocol"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Nacho’s project site describes Kat Bot as a Discord wallet with Kaspa and KRC-20 functions. Product details can change; the source was checked on the stated review date.",
+      "tags": [
+        "kaspa",
+        "krc-20",
+        "ecosystem"
+      ],
+      "volatile": true,
+      "source": "https://nachothekat.xyz/",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-08",
+      "license": "CC BY 4.0",
+      "attribution": "GEEK Protocol; original question based on cited primary source."
+    },
+    {
+      "id": "KRC20-2026-010",
+      "conceptId": "KRC20-2026-010",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "What distinctive feature belongs to the cat character in Kaspy’s own project story?",
+      "options": [
+        "It has wings",
+        "It is made of gold",
+        "It has three legs",
+        "It lives on the Moon"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "Kaspy presents its character as a three-legged cat and shares memes and games around that story. This question concerns project lore.",
+      "tags": [
+        "kaspa",
+        "krc-20",
+        "ecosystem"
+      ],
+      "volatile": false,
+      "source": "https://kaspy.io/",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-08",
+      "license": "CC BY 4.0",
+      "attribution": "GEEK Protocol; original question based on cited primary source."
     }
   ]
 }

@@ -7,8 +7,8 @@ const read = name => JSON.parse(readFileSync(new URL(`../server/questions/${name
 test('reviewed Kaspa banks contain canonical distinct items with individual source dates', () => {
   const core = read('kaspa-questions.json');
   const current = read('kaspa-current-questions.json');
-  const report = readFileSync(new URL('../docs/question-maintenance.json', import.meta.url));
-  assert.equal(core.questions.length + current.questions.length, JSON.parse(report).categories.kaspa.cleaned * 2);
+  const report = JSON.parse(readFileSync(new URL('../docs/question-maintenance.json', import.meta.url)));
+  assert.equal(core.questions.length + current.questions.length, report.categories.kaspa.after);
   const ids = new Set();
   const concepts = new Map();
   for (const q of [...core.questions, ...current.questions]) {
@@ -20,7 +20,8 @@ test('reviewed Kaspa banks contain canonical distinct items with individual sour
     assert.ok(q.prompt.trim() && q.funFact.trim(), q.id);
     assert.equal(new URL(q.source).protocol, 'https:', q.id);
     assert.equal(q.reviewStatus, 'source-checked', q.id);
-    assert.match(q.reviewedAt, /^2026-10-(01|07)$/, q.id);
+    assert.match(q.reviewedAt, /^\d{4}-\d{2}-\d{2}$/, q.id);
+    assert.ok(q.reviewedAt <= report.maintainedAt, `${q.id}: future review date`);
     assert.ok(q.conceptId, q.id);
   }
   for (const q of core.questions) {
