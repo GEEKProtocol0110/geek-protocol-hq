@@ -87,6 +87,8 @@ export const handleApiError = (res, error) => {
   if (code === 'REDIS_NOT_CONFIGURED') {
     return sendJson(res, 503, { ok: false, code: 'SERVICE_NOT_CONFIGURED', error: 'Community services are waiting for a database connection.' });
   }
+  if (code === 'OPS_ROLE_FORBIDDEN') return sendJson(res, 403, { ok: false, error: 'Operator access was not accepted.' });
+  if (code === 'OPS_NOT_CONFIGURED') return sendJson(res, 503, { ok: false, error: 'Private operator access is unavailable.' });
   if (code === 'RATE_LIMITED') return sendJson(res, 429, { ok: false, error: 'Slow down and try again in a moment.' });
   if (code === 'SESSION_REQUIRED') return sendJson(res, 401, { ok: false, error: 'Start a player session first.' });
   if (code === 'DUEL_NOT_FOUND') return sendJson(res, 404, { ok: false, code, error: 'This Duel invitation has expired.' });

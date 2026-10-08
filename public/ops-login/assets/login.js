@@ -12,7 +12,7 @@
     message.textContent = 'Checking private access…'; message.dataset.error = 'false';
     const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 15_000);
     try {
-      const response = await fetch('/api/session?service=operations&action=login', { method: 'POST', credentials: 'same-origin', cache: 'no-store', signal: controller.signal, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ key }) });
+      const response = await fetch('/api/session/?service=operations&action=login', { method: 'POST', credentials: 'same-origin', cache: 'no-store', signal: controller.signal, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ key }) });
       const result = await response.json();
       if (!response.ok || result.ok !== true) throw new Error(response.status === 429 ? 'Too many attempts. Wait before trying again.' : response.status === 503 ? 'Operator access is unavailable. Try again later.' : 'Access was not accepted. Check your private key.');
       window.location.replace('/ops/');

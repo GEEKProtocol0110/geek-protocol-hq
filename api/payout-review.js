@@ -1,3 +1,4 @@
+import { requireOperationsRole } from '../server/operations-access.js';
 import { recordAuditEvent } from '../server/audit.js';
 import { clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
 import { decidePayoutReview, listPayoutReviews, requirePayoutReviewer } from '../server/payout-review.js';
@@ -8,7 +9,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   const actorId = clientFingerprint(req);
   try {
-    requirePayoutReviewer(req);
+    await requireOperationsRole(req, 'payout', requirePayoutReviewer);
     await rateLimit('payout-review', actorId, 120, 60 * 10);
     if (req.method === 'GET') return sendJson(res, 200, { ok: true, settlementEnabled: false, queue: await listPayoutReviews() });
     if (req.method !== 'POST') return methodNotAllowed(res, 'GET, POST, OPTIONS');
