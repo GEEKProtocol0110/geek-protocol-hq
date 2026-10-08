@@ -185,6 +185,12 @@
       "evidence": ["server/player-api.js", "server/collectibles.js", "server/progression.js", "public/assets/geek-avatar.js", "tests/duel.test.js", "tests/geek-avatar.test.js", "docs/COLLECTIBLE-PROTOCOL.md"]
     },
     {
+      "id": "GP-INV-030",
+      "title": "Configurable 2–100-player Royale uses atomic server-clock membership, hidden-until-deadline answers and deterministic elimination without ranked or monetary writes",
+      "status": "implemented-alpha",
+      "evidence": ["server/royale.js", "server/royale-api.js", "tests/royale.test.js", "docs/ROYALE-PROTOCOL.md", "public/royale/assets/royale.js"]
+    },
+    {
       "id": "GP-GATE-INDEPENDENT-AUDIT",
       "title": "Independent application and settlement audits",
       "status": "required-before-settlement",
