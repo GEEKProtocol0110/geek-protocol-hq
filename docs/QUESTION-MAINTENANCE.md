@@ -1,6 +1,6 @@
-# Question Maintenance — October 7, 2026
+# Question Maintenance — October 8, 2026
 
-The eight HQ categories now contain **8,048 active questions**, exactly twice the **4,024-question cleaned baseline**. The previous 8,032 rows included generated variants, repeated facts, and unusable imports. **4,008 rows were retired** and **4,024 distinct questions added**. Retired records remain server-only for previously issued game IDs and are excluded from every new pool and public count.
+The October 7 expansion reached **8,048 active questions**, twice the **4,024-question cleaned baseline**. The October 8 editorial pass retired **272 additional items**, leaving **7,776 active questions**. Historical expansion counts below describe October 7; current counts and review dispositions are in [Editorial Review](EDITORIAL-REVIEW.md). The previous 8,032 rows included generated variants, repeated facts, and unusable imports. **4,008 rows were retired** and **4,024 distinct questions added**. Retired records remain server-only for previously issued game IDs and are excluded from every new pool and public count.
 
 | Category | Previous rows | Cleaned baseline | Added | Active questions |
 | --- | ---: | ---: | ---: | ---: |
@@ -24,7 +24,7 @@ Cross-category duplicates are retained in one active category only. Similarity s
 
 ## Sources and review status
 
-The expansion includes 92 original source-checked Kaspa questions, 39 original DC Comics questions, and 25 original Star Wars questions. The remaining 3,868 additions are licensed trivia imports. Each new item includes provenance and its correct answer; source-checked authored items also include explanations and a review date.
+The expansion includes 92 original source-checked Kaspa questions, 39 original DC Comics questions, and 37 original Star Wars questions. The remaining 3,856 additions are licensed trivia imports. Each new item includes provenance and its correct answer; source-checked authored items also include explanations and a review date.
 
 - [OpenTriviaQA](https://github.com/uberspot/OpenTriviaQA), pinned to `dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9`: CC BY-SA 4.0, credited to its contributors. Source category and ordinal are retained. Wording/encoding, options, categories, and selection were normalized; the publisher supplies the answer key.
 - [Open Trivia Database](https://opentdb.com/) / PIXELTAIL GAMES LLC: multiple-choice API records retrieved October 7, 2026, CC BY-SA 4.0. HTML entities are decoded and publisher difficulty labels retained. These items retain `draft-needs-human-review`; publisher verification is not a GEEK editorial review.

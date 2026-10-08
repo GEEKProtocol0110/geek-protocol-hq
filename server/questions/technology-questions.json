@@ -2,20 +2,20 @@
   "metadata": {
     "title": "GEEK Protocol — Technology Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-07",
-    "questionCount": 1504,
-    "conceptCount": 1504,
+    "maintainedAt": "2026-10-08",
+    "questionCount": 1482,
+    "conceptCount": 1482,
     "category": "Technology",
     "difficultyDistribution": {
-      "easy": 584,
-      "medium": 612,
-      "hard": 308
+      "easy": 579,
+      "medium": 604,
+      "hard": 299
     },
     "correctIndexDistribution": {
-      "0": 379,
-      "1": 350,
-      "3": 401,
-      "2": 374
+      "0": 374,
+      "1": 344,
+      "3": 396,
+      "2": 368
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -3459,30 +3459,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0199",
-      "category": "Technology",
-      "prompt": "Which of the following tests would be appropriate to confirm the diagnosis of B12 deficiency in a patient whose B12 level is at the low end of the normal range?",
-      "options": [
-        "Urine Catecholamines",
-        "Folic Acid level",
-        "Methylmalonic Acid level",
-        "Haptaglobin level"
-      ],
-      "correctIndex": 2,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0199",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "TECH-0201",
       "category": "Technology",
       "prompt": "Which of Santa Klaus reindeersâ€™ name means lightning?",
@@ -6816,30 +6792,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "TECH-0398",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "TECH-0401",
-      "category": "Technology",
-      "prompt": "I think we have all heard this one. Does an apple a day keep the doctor away?",
-      "options": [
-        "No",
-        "Yes",
-        "Light skin lets in more sunlight. Sunlight catalyzes the formation of Vitamin D.",
-        "Fat"
-      ],
-      "correctIndex": 0,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0401",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -13155,30 +13107,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0740",
-      "category": "Technology",
-      "prompt": "If a patient over the age of 50 presents with shoulder-and pelvic-girdle muscle pain, and you suspect a diagnosis of Polymyalgia Rheumatica, what question should you ask to rule out another diagnosis which often accompanies this one?",
-      "options": [
-        "Do you get short of breath?",
-        "Does it ever seem that your heart is beating fast?",
-        "Do you have tingling in your feet or toes?",
-        "Does your jaw hurt when you chew?"
-      ],
-      "correctIndex": 3,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0740",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "TECH-0741",
       "category": "Technology",
       "prompt": "Which one of these is an operating system?",
@@ -14160,30 +14088,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "TECH-0794",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "TECH-0795",
-      "category": "Technology",
-      "prompt": "Which of the following medications is for enuresis (bed-wetting)?",
-      "options": [
-        "Senokot (senna)",
-        "Sansert (methysergide)",
-        "DDAVP (Arginine Vasopressin)",
-        "THC (tetrahydrocannabinol)"
-      ],
-      "correctIndex": 2,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0795",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -15936,30 +15840,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "TECH-0889",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "TECH-0890",
-      "category": "Technology",
-      "prompt": "If a patient has chest pain and ST elevation in nearly all leads of the EKG, what is the likely diagnosis?",
-      "options": [
-        "Acute Myocardial Infarction",
-        "Pericarditis",
-        "Pulmonary Embolism",
-        "Pneumothorax"
-      ],
-      "correctIndex": 1,
-      "difficulty": "hard",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0890",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -18156,33 +18036,6 @@
       "difficulty": "hard"
     },
     {
-      "prompt": "Which of these regions is most affected by AIDS, as about 60% of all the HIV-infected people in the world live there?",
-      "options": [
-        "Latin America",
-        "Sub-Saharan Africa",
-        "East Asia",
-        "Western Europe"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 842,
-      "id": "TECH-N-9472d232e840",
-      "conceptId": "TECH-N-9472d232e840",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "How much blood does the average adult human have?",
       "options": [
         "4-8 pounds (2-4 kg)",
@@ -18505,33 +18358,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
-    },
-    {
-      "prompt": "Uncontrolled hypertension (high blood pressure) leads to all of the following EXCEPT this one.",
-      "options": [
-        "Thyroid disease",
-        "Kidney failure",
-        "Stroke",
-        "Heart disease"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 1640,
-      "id": "TECH-N-767b3eb89d47",
-      "conceptId": "TECH-N-767b3eb89d47",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "What organization won the Nobel Peace Prize in 1999 for its medical care in acute crises and raising international awareness of potential humanitarian disasters?",
@@ -19882,33 +19708,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "Which one of the following medications treats Alzheimers Disease (dementia)?",
-      "options": [
-        "Topamax (topiramate)",
-        "Effexor (venlafaxine)",
-        "Lanoxin (digoxin)",
-        "Aricept (donepezil)"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 465,
-      "id": "TECH-N-66fbe1fd88f0",
-      "conceptId": "TECH-N-66fbe1fd88f0",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "What is the main protein found in the egg white?",
@@ -23394,33 +23193,6 @@
       "difficulty": "medium"
     },
     {
-      "prompt": "After reading the following, what will a doctor conclude? Pt presents 3 d S/P TURP, with c/o HA x 2 d.",
-      "options": [
-        "The patient has no current complaints.",
-        "The patient is female.",
-        "The patient has a headache.",
-        "The patient recently had abdominal surgery."
-      ],
-      "correctIndex": 2,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 199,
-      "id": "TECH-N-c2c5f93203e6",
-      "conceptId": "TECH-N-c2c5f93203e6",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "Gold carats measure purity, whereas diamond carats measure this quality.",
       "options": [
         "Hardness",
@@ -23664,33 +23436,6 @@
       "difficulty": "medium"
     },
     {
-      "prompt": "What vein is usually the first choice when selecting a site for venipuncture?",
-      "options": [
-        "Median Cubital",
-        "Accessory Cephalic",
-        "Cephalic",
-        "Basilic"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 586,
-      "id": "TECH-N-d188aa4ebe3f",
-      "conceptId": "TECH-N-d188aa4ebe3f",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "Change the Roman numeral XL to a Hindu-Arabic numeral.",
       "options": [
         "40",
@@ -23826,33 +23571,6 @@
       "difficulty": "hard"
     },
     {
-      "prompt": "This kind of doctor is an expert in such diseases as Lupus, Sjogrens Syndrome, and Dermatomyositis.",
-      "options": [
-        "Internist",
-        "Rheumatologist",
-        "Gastroenterologist",
-        "Otorrhinolaryngologist"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 444,
-      "id": "TECH-N-f467262df0fd",
-      "conceptId": "TECH-N-f467262df0fd",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "What is the study of whales called?",
       "options": [
         "dendrology",
@@ -23932,33 +23650,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "Which line contains only names of people who have or had AIDS?",
-      "options": [
-        "Freddie Mercury, Jimi Hendrix",
-        "Jim Morrison, Bob Marley",
-        "Magic Johnson, Isaac Asimov",
-        "Tony Richardson, Kurt Cobain"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 843,
-      "id": "TECH-N-e9ab060cbf11",
-      "conceptId": "TECH-N-e9ab060cbf11",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "The atmosphere of Mars is mostly composed of what element?",
@@ -25255,33 +24946,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
-    },
-    {
-      "prompt": "When a patient presents with a sore throat, which of the following diagnoses may indicate immediate intubation?",
-      "options": [
-        "Mononucleosis",
-        "Quinsy",
-        "Epiglottitis",
-        "Peri-tonsillar Abscess"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 1248,
-      "id": "TECH-N-24bff940ae6b",
-      "conceptId": "TECH-N-24bff940ae6b",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "This equation, Y=mX+B, represents what?",
@@ -26715,33 +26379,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "Which of these substances and minerals is not effective in the treatment of depression?",
-      "options": [
-        "Magnesium",
-        "Dopamine",
-        "Sodium",
-        "Zinc"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 2005,
-      "id": "TECH-N-7bb69569b223",
-      "conceptId": "TECH-N-7bb69569b223",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "Which of the following is part of the frontal lobe, an area at the front of each cerebral hemisphere?",
       "options": [
         "cingulate sulcus",
@@ -27687,33 +27324,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "Of the following medications for anxiety, which is potentially addictive?",
-      "options": [
-        "Prozac (fluoxetine)",
-        "Ativan (lorazepam)",
-        "Buspar (buspirone)",
-        "Effexor (venlafaxine)"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 961,
-      "id": "TECH-N-0c3a38df0b28",
-      "conceptId": "TECH-N-0c3a38df0b28",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "Three of these snakes produce venom, lethal to humans. Which one does not?",
       "options": [
         "Desert Kingsnake",
@@ -27780,33 +27390,6 @@
       "sourceOrdinal": 590,
       "id": "TECH-N-3e6cbdf0f4fa",
       "conceptId": "TECH-N-3e6cbdf0f4fa",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "What is a difficult patient in medical jargon?",
-      "options": [
-        "A patient who upsets the doctor or the office staff in some way",
-        "A patient who has a disease which is difficult to treat",
-        "A patient who is terminal",
-        "An insane patient"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 553,
-      "id": "TECH-N-fe367887a89b",
-      "conceptId": "TECH-N-fe367887a89b",
       "category": "Technology",
       "subcategory": "Science Technology",
       "funFact": null,
@@ -28522,33 +28105,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "All of the following medications are contraindicated during pregnancy, EXCEPT which one?",
-      "options": [
-        "Valproic Acid",
-        "Nitrofurantoin",
-        "Methotrexate",
-        "Tetracycline"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 1249,
-      "id": "TECH-N-d2cf892a086a",
-      "conceptId": "TECH-N-d2cf892a086a",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "What distinction does Dennis Tito hold?",
@@ -30075,33 +29631,6 @@
       "sourceOrdinal": 564,
       "id": "TECH-N-b531b2328614",
       "conceptId": "TECH-N-b531b2328614",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "There is proof that microbes existed on this planet.",
-      "options": [
-        "Pluto",
-        "Mars",
-        "The Sun",
-        "Neptune"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 541,
-      "id": "TECH-N-8be37bf2d04f",
-      "conceptId": "TECH-N-8be37bf2d04f",
       "category": "Technology",
       "subcategory": "Science Technology",
       "funFact": null,
@@ -33519,33 +33048,6 @@
       "difficulty": "medium"
     },
     {
-      "prompt": "Which type of doctor deals with removing hemorrhoids?",
-      "options": [
-        "Proctologist",
-        "Endocrinologist",
-        "Urologist",
-        "Vascular surgeon"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 443,
-      "id": "TECH-N-659898521913",
-      "conceptId": "TECH-N-659898521913",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "How many times can an electromagnetic wave travel around the world in a single second?",
       "options": [
         "7",
@@ -34192,33 +33694,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "Which disease is treated by Synthroid (levothyroxine)?",
-      "options": [
-        "Multiple Sclerosis",
-        "Congestive Heart Failure",
-        "Erectile Dysfunction",
-        "Hypothyroidism"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 463,
-      "id": "TECH-N-586b1bd87de8",
-      "conceptId": "TECH-N-586b1bd87de8",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "Which of the following is not true about the bird eggshell?",
@@ -36354,33 +35829,6 @@
       "difficulty": "medium"
     },
     {
-      "prompt": "This is the most rare disease.",
-      "options": [
-        "Brain tumor",
-        "Schizophrenia",
-        "Glaucoma",
-        "Smallpox"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 782,
-      "id": "TECH-N-de3cf6d49c80",
-      "conceptId": "TECH-N-de3cf6d49c80",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "What is the nature of the so-called Socratic Method of inquiry?",
       "options": [
         "Asking very personal questions to embarrass the other party",
@@ -37756,33 +37204,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "This doctor takes care of you and your baby during pregnancy.",
-      "options": [
-        "Pediatrician",
-        "Psychologist",
-        "Periodontist",
-        "Obstetrician"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 19,
-      "id": "TECH-N-db1a1fb84e2d",
-      "conceptId": "TECH-N-db1a1fb84e2d",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "Which of these processes does the cactus perform only at night?",

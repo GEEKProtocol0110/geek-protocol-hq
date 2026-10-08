@@ -2,19 +2,19 @@
   "metadata": {
     "title": "GEEK Protocol — Movies Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-07",
-    "questionCount": 1496,
-    "conceptCount": 1496,
+    "maintainedAt": "2026-10-08",
+    "questionCount": 1495,
+    "conceptCount": 1495,
     "category": "Movies",
     "difficultyDistribution": {
       "easy": 604,
-      "medium": 601,
+      "medium": 600,
       "hard": 291
     },
     "correctIndexDistribution": {
       "1": 377,
       "0": 363,
-      "2": 370,
+      "2": 369,
       "3": 386
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
@@ -27373,33 +27373,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "hard"
-    },
-    {
-      "prompt": "What actress who had a small role in this film as Bianca Torres girlfriend (Debra Feuer), later went on to fame in a supporting television series role?",
-      "options": [
-        "Fran Drescher, The Nanny",
-        "Jenna Elfman, Dharma and Greg",
-        "Jane Leeves, Frazier",
-        "Jennifer Garner, Alias"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "movies",
-      "sourceOrdinal": 2307,
-      "id": "MOV-N-a0190e23dec8",
-      "conceptId": "MOV-N-a0190e23dec8",
-      "category": "Movies",
-      "subcategory": "Movies",
-      "funFact": null,
-      "tags": [
-        "movies"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Fast Times at Ridgemont High, directed by Amy Heckerling, was released to theaters in what year?",

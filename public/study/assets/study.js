@@ -29,10 +29,17 @@
     a.textContent = label; a.target = '_blank'; a.rel = 'noopener noreferrer'; return a;
   };
   const request = async (url, body) => {
-    const response = await fetch(url, { method: body ? 'POST' : 'GET', credentials: 'same-origin', headers: body ? { 'Content-Type': 'application/json' } : {}, ...(body ? { body: JSON.stringify(body) } : {}) });
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok || !data.ok) { const error = new Error(data.error || 'The learning service could not respond. Please try again.'); error.status = response.status; throw error; }
-    return data;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15_000);
+    try {
+      const response = await fetch(url, { signal: controller.signal, method: body ? 'POST' : 'GET', credentials: 'same-origin', headers: body ? { 'Content-Type': 'application/json' } : {}, ...(body ? { body: JSON.stringify(body) } : {}) });
+      const data = await response.json().catch(error => { if (controller.signal.aborted) throw error; return {}; });
+      if (!response.ok || !data.ok) { const error = new Error(data.error || 'The learning service could not respond. Please try again.'); error.status = response.status; throw error; }
+      return data;
+    } catch (error) {
+      if (controller.signal.aborted) throw new Error('The learning service is taking too long. Try again to check your saved practice.');
+      throw error;
+    } finally { clearTimeout(timeout); }
   };
   const clearError = () => { $('[data-error]').hidden = true; retry = null; };
   const showError = (error, again) => { $('[data-error-text]').textContent = error.message; $('[data-error]').hidden = false; $('[data-retry]').hidden = !again; retry = again || null; };

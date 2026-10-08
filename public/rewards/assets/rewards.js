@@ -48,7 +48,7 @@
 
   const load = async () => {
     try {
-      await api('/api/session', { method: 'POST', body: JSON.stringify({ displayName: 'Reward Geek' }) });
+      await api('/api/session', { method: 'POST', body: '{}' });
       render(await api('/api/rewards'));
     } catch (error) {
       serviceState.textContent = 'SERVICE PAUSED';

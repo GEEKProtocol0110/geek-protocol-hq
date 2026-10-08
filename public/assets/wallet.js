@@ -99,7 +99,7 @@
     publishState();
   };
 
-  const ensureSession = () => api('/api/session', { method: 'POST', body: JSON.stringify({ displayName: 'Verified Geek' }) });
+  const ensureSession = () => api('/api/session', { method: 'POST', body: '{}' });
 
   const refreshIdentity = async () => {
     try {

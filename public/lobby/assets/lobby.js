@@ -73,8 +73,8 @@
     $('[data-avatar]').textContent = identity.charAt(0).toUpperCase();
   };
 
-  const syncSession = async () => {
-    const payload = await api('/api/session', { method: 'POST', body: JSON.stringify({ displayName: identity }) });
+  const syncSession = async (rename = false) => {
+    const payload = await api('/api/session', { method: 'POST', body: rename ? JSON.stringify({ displayName: identity }) : '{}' });
     setIdentity(payload.player.name);
     setServiceState('live', 'Live presence connected');
     return payload.player;
@@ -340,16 +340,16 @@
     history.replaceState(null, '', location.pathname);
     form.scrollIntoView({ behavior: 'smooth' });
   });
-  $('[data-edit-name]').addEventListener('click', () => {
+  $$('[data-edit-name], [data-edit-name-mobile]').forEach(button => button.addEventListener('click', () => {
     nameForm.elements.displayName.value = identity;
     nameDialog.showModal();
-  });
+  }));
   nameDialog.addEventListener('close', async () => {
     if (nameDialog.returnValue !== 'save') return;
     setIdentity(nameForm.elements.displayName.value);
     if (!serviceAvailable) return;
     try {
-      await syncSession();
+      await syncSession(true);
       if (currentRoom?.live) {
         const payload = await api('/api/lobbies', { method: 'POST', body: JSON.stringify({ action: 'join', code: currentRoom.code }) });
         renderRoom(payload.room, false, true);

@@ -2,20 +2,20 @@
   "metadata": {
     "title": "GEEK Protocol — Video Games Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-07",
-    "questionCount": 736,
-    "conceptCount": 736,
+    "maintainedAt": "2026-10-08",
+    "questionCount": 602,
+    "conceptCount": 602,
     "category": "Video Games",
     "difficultyDistribution": {
-      "easy": 324,
-      "medium": 330,
-      "hard": 82
+      "easy": 280,
+      "medium": 265,
+      "hard": 57
     },
     "correctIndexDistribution": {
-      "0": 192,
-      "2": 183,
-      "3": 169,
-      "1": 192
+      "0": 149,
+      "2": 150,
+      "3": 144,
+      "1": 159
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -6555,54 +6555,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "VG-0565",
-      "category": "Video Games",
-      "prompt": "What unit says that in the game?",
-      "options": [
-        "Dark Templar",
-        "Zealot",
-        "Scout",
-        "Cloud Cuckooland"
-      ],
-      "correctIndex": 0,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-video-games.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "VG-0565",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "VG-0566",
-      "category": "Video Games",
-      "prompt": "Which computer game is this soundtrack from?",
-      "options": [
-        "Final Fight",
-        "Double Dragon",
-        "Punisher",
-        "Street Fighter"
-      ],
-      "correctIndex": 1,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-video-games.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "VG-0566",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "VG-0567",
       "category": "Video Games",
       "prompt": "When first created, Mario game character, Birdo, was what?",
@@ -6888,30 +6840,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "VG-0584",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "VG-0586",
-      "category": "Video Games",
-      "prompt": "This is the overworld theme to this NES game that introduced the save function because the game took so long to complete.",
-      "options": [
-        "Metroid",
-        "Legend of Zelda",
-        "Donkey Kong",
-        "Super Mario Bros."
-      ],
-      "correctIndex": 1,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-video-games.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "VG-0586",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -8886,60 +8814,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "This abstract strategy board game is the national game of Ghana. The board has two straight rows of six pits or cavities, called houses.",
-      "options": [
-        "Oware",
-        "Chess",
-        "Checkers",
-        "Backgammon"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "general",
-      "sourceOrdinal": 426,
-      "id": "VG-N-cfa709910a0c",
-      "conceptId": "VG-N-cfa709910a0c",
-      "category": "Video Games",
-      "subcategory": "General",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "This country hosted the 1924 Summer Olympics, officially known as the Games of the VIII Olympiad.",
-      "options": [
-        "France",
-        "Japan",
-        "Canada",
-        "Greece"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1933,
-      "id": "VG-N-f0f9c3189bd2",
-      "conceptId": "VG-N-f0f9c3189bd2",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "What major event caused the events of Half-Life 1?",
       "options": [
         "The Seven Hour War",
@@ -9048,33 +8922,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Who was the winning pitcher in game five of the 1969 World Series, clinching the Series for the Mets?",
-      "options": [
-        "Gary Gentry",
-        "Tom Seaver",
-        "Jerry Koosman",
-        "Tug McGraw"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1948,
-      "id": "VG-N-0a76fb615511",
-      "conceptId": "VG-N-0a76fb615511",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "In what year was the game \"Eliminator\" released?",
       "options": [
         "1998",
@@ -9102,33 +8949,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "The Charlotte Bobcats lost their very first regular season game to what team?",
-      "options": [
-        "Washington Wizards",
-        "Detroit Pistons",
-        "Atlanta Hawks",
-        "Miami Heat"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1728,
-      "id": "VG-N-24f629d05bb9",
-      "conceptId": "VG-N-24f629d05bb9",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "Which German city does the map \"Clubhouse\" in \"Tom Clancy's Rainbow Six Siege\" take place in?",
       "options": [
         "Munich",
@@ -9154,87 +8974,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Paul Newman has starred in Cat on a Hot Tin Roof, Butch Cassidy and the Sundance Kid, Cool Hand Luke and The Sting. In what movie did Newmans character praise Fat Man, you shoot a great game of pool.?",
-      "options": [
-        "Hud",
-        "The Hustler",
-        "Slap Shot",
-        "The Color of Money"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "humanities",
-      "sourceOrdinal": 577,
-      "id": "VG-N-ed5048dd5205",
-      "conceptId": "VG-N-ed5048dd5205",
-      "category": "Video Games",
-      "subcategory": "Humanities",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/humanities",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "Who plays the ex-policeman in the card game in episode #81of The Dick Van Dyke Show, titled “A Nice Friendly Game of Cards”?",
-      "options": [
-        "Karl Malden",
-        "Raymond Burr",
-        "Chuck Connors",
-        "Ed Platt"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "television",
-      "sourceOrdinal": 3236,
-      "id": "VG-N-5718e0ffa470",
-      "conceptId": "VG-N-5718e0ffa470",
-      "category": "Video Games",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
-      "prompt": "On the first day of the 2008 Olympic Games, three American women took all medals in which event?",
-      "options": [
-        "Cycling - road race",
-        "Fencing - sabre",
-        "Shooting - 10m air rifle",
-        "Swimming - 400m freestyle"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1105,
-      "id": "VG-N-89adb9bcb49c",
-      "conceptId": "VG-N-89adb9bcb49c",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "In the 1958 NFL Championship Game, the Colts played against the Giants. Which statement is untrue about the game?",
@@ -9289,33 +9028,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "The 1986-87 NFC Championship game was at Giants Stadium in a cold, blustery evening with a mean, swirling wind. The Giants won 17-0 over which division rival?",
-      "options": [
-        "Philadelphia Eagles",
-        "Dallas Cowboys",
-        "Washington Redskins",
-        "Buffalo Bills"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1094,
-      "id": "VG-N-34da1c5436c0",
-      "conceptId": "VG-N-34da1c5436c0",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "The map featured in Arma 3 named \"Altis\" is based off of what Greek island?",
@@ -9399,33 +9111,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "What is the name of Katniss Everdeens 12 year-old sister in the novel The Hunger Games?",
-      "options": [
-        "Tulip",
-        "Primrose",
-        "Violet",
-        "Carnation"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "newest",
-      "sourceOrdinal": 982,
-      "id": "VG-N-47f487f392dc",
-      "conceptId": "VG-N-47f487f392dc",
-      "category": "Video Games",
-      "subcategory": "Newest",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/newest",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "In the \"Call Of Duty: Zombies\" map \"Moon\", there is a secondary called the QED. What does QED stand for?",
       "options": [
         "Quality Edward Device",
@@ -9480,33 +9165,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "In A Series of Unfortunate Events, what type of game did Fionas brother invent?",
-      "options": [
-        "Word game",
-        "Ball game",
-        "Card game",
-        "Board game"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "for-kids",
-      "sourceOrdinal": 757,
-      "id": "VG-N-6cc6af2409ff",
-      "conceptId": "VG-N-6cc6af2409ff",
-      "category": "Video Games",
-      "subcategory": "For Kids",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/for-kids",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "Which of the following is a character in the video game Destiny?",
       "options": [
         "Cayde-6",
@@ -9559,33 +9217,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "This popular board game, patented in 1935 by salesman Charles Darrow, is known for the long hours a single game could take to complete.",
-      "options": [
-        "Go",
-        "Snakes and ladders",
-        "Sorry!",
-        "Monopoly"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "hobbies",
-      "sourceOrdinal": 73,
-      "id": "VG-N-22f1ec1c56bf",
-      "conceptId": "VG-N-22f1ec1c56bf",
-      "category": "Video Games",
-      "subcategory": "Hobbies",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/hobbies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "In \"Donkey Kong Country\", why does Donkey Kong want to know the secret of the crystal coconut?",
@@ -9696,33 +9327,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Who pitched a perfect game for the California Angels on September 30, 1984?",
-      "options": [
-        "Frank Tanana",
-        "Chuck Finley",
-        "Mike Witt",
-        "Nolan Ryan"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1512,
-      "id": "VG-N-b68b3f5a8f00",
-      "conceptId": "VG-N-b68b3f5a8f00",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "What engine did the original \"Half-Life\" run on?",
       "options": [
         "Source",
@@ -9831,87 +9435,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "What was the nickname of the American mens basketball team at the Olympic Games held in Beijing?",
-      "options": [
-        "Redeem Team",
-        "Ming Team",
-        "Dream Team V",
-        "Dream Team"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1100,
-      "id": "VG-N-3c0345400768",
-      "conceptId": "VG-N-3c0345400768",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "In what year did Nicolas Cugnot invent the first successful steam-powered road vehicle?",
-      "options": [
-        "1816",
-        "1842",
-        "1645",
-        "1769"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "general",
-      "sourceOrdinal": 403,
-      "id": "VG-N-58808bf48377",
-      "conceptId": "VG-N-58808bf48377",
-      "category": "Video Games",
-      "subcategory": "General",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
-      "prompt": "The Beijing 2008 Olympic Games have been scheduled to include 28 sports and how many separate events?",
-      "options": [
-        "201-250",
-        "251-300",
-        "301-350",
-        "151-200"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 870,
-      "id": "VG-N-ec0591d90494",
-      "conceptId": "VG-N-ec0591d90494",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "Although there are Chinese, English, Polish, Spanish, Italian, and Turkish variations of this game, played on a board of black and red square spaces, its origins can be traced back to 1600 BC ancient Egypt.",
       "options": [
         "Checkers",
@@ -9937,60 +9460,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/hobbies",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
-    },
-    {
-      "prompt": "The International Olympic Committee, created in June of 1894 to revive the Olympic Games, is the supreme authority of the Olympic Movement. It is based in which city?",
-      "options": [
-        "Lausanne",
-        "Geneva",
-        "Davos",
-        "Paris"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 207,
-      "id": "VG-N-2897bd94152a",
-      "conceptId": "VG-N-2897bd94152a",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "Which of the following players did not hit 4 home runs in one game?",
-      "options": [
-        "Carlos Delgado",
-        "Lou Gehrig",
-        "Mickey Mantle",
-        "Babe Ruth"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 906,
-      "id": "VG-N-826679e2acfe",
-      "conceptId": "VG-N-826679e2acfe",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "In \"Call Of Duty: Zombies\", which map features the \"Fly Trap\" easter egg?",
@@ -10182,60 +9651,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "How many points did Wilt Chamberlain score in his best game versus New York?",
-      "options": [
-        "100",
-        "82",
-        "99",
-        "71"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 15,
-      "id": "VG-N-f0a1f4bd16c8",
-      "conceptId": "VG-N-f0a1f4bd16c8",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "Which baseball commissioner was widely criticized for refusing to cancel games following the assassinations of Martin Luther King and Robert Kennedy?",
-      "options": [
-        "Lt. Gen. William D. Eckert",
-        "A.B. Happy Chandler",
-        "Bowie K. Kuhn",
-        "Ford C. Frick"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 836,
-      "id": "VG-N-631a6e3f6ae2",
-      "conceptId": "VG-N-631a6e3f6ae2",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "Who is Sonic's sidekick?",
       "options": [
         "Knuckles",
@@ -10398,60 +9813,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Dating back to 776 B.C., the ancient Olympic Games were held in the valley of Olympia in southwestern Greece, to honor this god.",
-      "options": [
-        "Hermes",
-        "Zeus",
-        "Apollo",
-        "Poseidon"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 198,
-      "id": "VG-N-c9b2e36a816f",
-      "conceptId": "VG-N-c9b2e36a816f",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
-      "prompt": "Which two teams played in the first NBA game in 1946?",
-      "options": [
-        "Philidelphia Warrior and New York Knicks",
-        "New York Knicks and Toronto Huskies",
-        "New York Knicks and Boston Celtics",
-        "Boston Celtics and Toronto Huskies"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 994,
-      "id": "VG-N-e940fefddf9f",
-      "conceptId": "VG-N-e940fefddf9f",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "How many trophies are there in \"Super Smash Bros. for Nintendo 3DS\"?",
       "options": [
         "1155",
@@ -10504,33 +9865,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Roughly how many television viewers watched the 2000 Olympic Games in Sydney, Australia over the whole course of the event?",
-      "options": [
-        "3.8 billion",
-        "38 million",
-        "3.8 million",
-        "38 billion"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 872,
-      "id": "VG-N-2035704087c1",
-      "conceptId": "VG-N-2035704087c1",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "The original mascot of the popular Nintendo game, \"Splatoon\" was going to be...",
@@ -10587,33 +9921,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Where did the 1928 Summer Olympics, or the Games of the IX Olympiad, take place?",
-      "options": [
-        "South Korea",
-        "Spain",
-        "Argentina",
-        "The Netherlands"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1934,
-      "id": "VG-N-5449997f8ba8",
-      "conceptId": "VG-N-5449997f8ba8",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "In \"The Big Bang Theory\", what is Howard Wolowitz's nickname in World of Warcraft?",
       "options": [
         "Wolowizard",
@@ -10666,60 +9973,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "This character from the Disney film The Nightmare Before Christmas is a being from Halloween Town who opens a portal to Christmas Town.",
-      "options": [
-        "Dr. Finklestein",
-        "Jack Skellington",
-        "Grinch",
-        "St. Nicholas"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "world",
-      "sourceOrdinal": 3299,
-      "id": "VG-N-93ddd94242d9",
-      "conceptId": "VG-N-93ddd94242d9",
-      "category": "Video Games",
-      "subcategory": "World",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/world",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
-      "prompt": "All other things being equal, which 3-card meld is more likely to be increased to a 4-card meld in the game gin rummy?",
-      "options": [
-        "Eight Nine Ten of Diamonds",
-        "Three Kings",
-        "Ace Two Three of Spades",
-        "Jack Queen King of Hearts"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "hobbies",
-      "sourceOrdinal": 611,
-      "id": "VG-N-14ad417676a1",
-      "conceptId": "VG-N-14ad417676a1",
-      "category": "Video Games",
-      "subcategory": "Hobbies",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/hobbies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Who was the first Legendary Pokemon to be defeated by Ash Ketchum in the Pokémon anime?",
@@ -10776,60 +10029,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "What number did Kirby Puckett, who was elected to the Baseball Hall of Fame in 2001, wear when he was a player for the Minnesota Twins?",
-      "options": [
-        "18",
-        "14",
-        "34",
-        "32"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 132,
-      "id": "VG-N-3b201f106f13",
-      "conceptId": "VG-N-3b201f106f13",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "During the mens 200m sprint at the Beijing Olympic Games, the second and third athletes were disqualified. What for?",
-      "options": [
-        "For doping",
-        "For their public support of Tibet",
-        "For false-start",
-        "For running outside of their tracks"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2642,
-      "id": "VG-N-5e642f66288e",
-      "conceptId": "VG-N-5e642f66288e",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "Which episode of the Phantasy Star Online series is exclusive to the Nintendo Gamecube?",
       "options": [
         "Episode IV",
@@ -10855,33 +10054,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Big Don No-Hit Larson pitched a perfect game for the Yankees. What was extra special about his perfect game?",
-      "options": [
-        "Larson hit two homers to win the game for the Yankees.",
-        "It lasted over three hours.",
-        "It was played in the World Series.",
-        "It was played in the American League Championship series."
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1325,
-      "id": "VG-N-5936709d1d3c",
-      "conceptId": "VG-N-5936709d1d3c",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "Which of these is NOT a playable character in \"Left 4 Dead\"?",
@@ -11071,33 +10243,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "The 1980 Summer Olympics, officially known as the Games of the XXII Olympiad, were held in this country.",
-      "options": [
-        "Italy",
-        "The Soviet Union",
-        "Australia",
-        "Finland"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1935,
-      "id": "VG-N-420e45d6294f",
-      "conceptId": "VG-N-420e45d6294f",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "Who is the main protagonist in Danganronpa 2: Goodbye Despair?",
@@ -11316,33 +10461,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "80% of the competitors in the 1904 Olympic games were from which country?",
-      "options": [
-        "The USA",
-        "Greece",
-        "Australia",
-        "France"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 871,
-      "id": "VG-N-3b40af13816a",
-      "conceptId": "VG-N-3b40af13816a",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "In Fallout 4, which type of power armor is first encountered in the early mission \"When Freedom Calls\" in a crashed Vertibird?",
       "options": [
         "T-51",
@@ -11451,87 +10569,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "What type of domino game is Bergen?",
-      "options": [
-        "Scoring domino game",
-        "Both blocking and scoring domino game",
-        "Blocking domino game",
-        "Neither blocking nor scoring domino game"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "hobbies",
-      "sourceOrdinal": 919,
-      "id": "VG-N-9976c613605c",
-      "conceptId": "VG-N-9976c613605c",
-      "category": "Video Games",
-      "subcategory": "Hobbies",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/hobbies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "What was the final score of LSUs 2005 bowl game?",
-      "options": [
-        "LSU 40 - Miami 3",
-        "LSU 49 - Miami 3",
-        "LSU 41 - Miami 17",
-        "LSU 10 - Miami 45"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1524,
-      "id": "VG-N-650d5776fcfe",
-      "conceptId": "VG-N-650d5776fcfe",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
-      "prompt": "It is generally accepted that the game of golf originated in this country.",
-      "options": [
-        "England",
-        "Ireland",
-        "Sweden",
-        "Scotland"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "rated",
-      "sourceOrdinal": 1812,
-      "id": "VG-N-734a03d75cce",
-      "conceptId": "VG-N-734a03d75cce",
-      "category": "Video Games",
-      "subcategory": "Rated",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/rated",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "In the video game \"Closers Online: Dimension Conflict\", who is the administrator of team Wildhüter?",
       "options": [
         "Wolfgang Schneider",
@@ -11613,33 +10650,6 @@
       "difficulty": "medium"
     },
     {
-      "prompt": "How may periods are there in a regular ice hockey game?",
-      "options": [
-        "3",
-        "1",
-        "4",
-        "2"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1963,
-      "id": "VG-N-71b9ef9ad1c8",
-      "conceptId": "VG-N-71b9ef9ad1c8",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "In the game Pokémon Conquest, how many kingdoms make up the region of Ransei?",
       "options": [
         "18",
@@ -11667,33 +10677,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "How many players are allowed on the ice during an ice hockey game?",
-      "options": [
-        "5",
-        "12",
-        "10",
-        "6"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 732,
-      "id": "VG-N-c9185baafebf",
-      "conceptId": "VG-N-c9185baafebf",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "In the \"Call Of Duty: Zombies\" map \"Der Riese\", what is the name of the \"Pack-A-Punched PPSH-41\"?",
       "options": [
         "The Grim Reaper",
@@ -11719,33 +10702,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Who was the last shortstop to start for the Baltimore Orioles before Cal Ripken stepped in and played 2,632 consecutive games?",
-      "options": [
-        "Floyd Rayford",
-        "Razor Shines",
-        "Boots Day",
-        "Jose Uribe"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1892,
-      "id": "VG-N-c7fae9b49294",
-      "conceptId": "VG-N-c7fae9b49294",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "In the video game franchise \"Halo\", what is the UNSC's main opposing faction called?",
@@ -11798,87 +10754,6 @@
       "reviewStatus": "draft-needs-human-review",
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "The 2004 Boston Red Sox played 13 extra inning games during the regular season. How many of them did they win?",
-      "options": [
-        "9",
-        "5",
-        "7",
-        "11"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 661,
-      "id": "VG-N-7469a83fcc04",
-      "conceptId": "VG-N-7469a83fcc04",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "In tennis, how much time does the server have between the time the previous point ends and the time he/she serves the ball for the next point, to avoid being cited by the umpire for delaying the game?",
-      "options": [
-        "40 seconds",
-        "30 seconds",
-        "25 seconds",
-        "20 seconds"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2360,
-      "id": "VG-N-6c8be7105faf",
-      "conceptId": "VG-N-6c8be7105faf",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "In NCAA football, a conference can play a conference championship game if it has this many teams.",
-      "options": [
-        "16",
-        "10",
-        "11",
-        "12"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 136,
-      "id": "VG-N-6cff2412fdb9",
-      "conceptId": "VG-N-6cff2412fdb9",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
     },
@@ -11937,33 +10812,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "In the game of Scrabble, if a player uses all seven of their letters in a turn, they receive a bonus of how many points?",
-      "options": [
-        "100",
-        "50",
-        "25",
-        "10"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "general",
-      "sourceOrdinal": 390,
-      "id": "VG-N-9c6a5b7eb719",
-      "conceptId": "VG-N-9c6a5b7eb719",
-      "category": "Video Games",
-      "subcategory": "General",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "In World of Warcraft, What was the original level cap?",
       "options": [
         "70",
@@ -12018,33 +10866,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "The popular casino game Blackjack is known under several different names. Which of the following is NOT one of them?",
-      "options": [
-        "Twenty-One",
-        "Crazy Eights",
-        "Vingt-et-un",
-        "Pontoon"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "hobbies",
-      "sourceOrdinal": 521,
-      "id": "VG-N-511e077d9ec3",
-      "conceptId": "VG-N-511e077d9ec3",
-      "category": "Video Games",
-      "subcategory": "Hobbies",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/hobbies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "How much armor does a rank 6 Colossus have in the strategy game Battle Nations?",
       "options": [
         "190",
@@ -12070,60 +10891,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/newest",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "This sport, whereby the player navigates the playing field on horseback, is the national game of Argentina.",
-      "options": [
-        "Parkour",
-        "Hapkido",
-        "Pato",
-        "Kosho"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1064,
-      "id": "VG-N-75974e809ac3",
-      "conceptId": "VG-N-75974e809ac3",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "Who was the New York Mets player who hit 3 home runs in one game in the 1999 National League Division Series held at Shea Stadium?",
-      "options": [
-        "Carlos Delgado",
-        "Darryl Strawberry",
-        "Mike Piazza",
-        "It never happened."
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2188,
-      "id": "VG-N-1ad45b3a414b",
-      "conceptId": "VG-N-1ad45b3a414b",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "In Divinity: Original Sin 2, who is the earliest companion you can acquire?",
@@ -12234,60 +11001,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "There are open, semi-open and closed openings. Which of the following openings would be considered an open game?",
-      "options": [
-        "The Kings Indian Defense",
-        "The Queens Gambit",
-        "The Queens Indian Defense",
-        "The Two Knights Defense"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2818,
-      "id": "VG-N-3a1db604ee6b",
-      "conceptId": "VG-N-3a1db604ee6b",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "In 1961Ludwig von Bersuda was looking for a game that would also be a good conditioning sport. What sport did he invent?",
-      "options": [
-        "Underwater soccer",
-        "Bo-stethnics",
-        "Underwater (American rules) football",
-        "Underwater rugby"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1446,
-      "id": "VG-N-099be790b765",
-      "conceptId": "VG-N-099be790b765",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "By how many minutes are you late to work in \"Half-Life\"?",
       "options": [
         "5",
@@ -12313,60 +11026,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Which championship game was called The Greatest Game Ever Played and was the first championship game to go into overtime?",
-      "options": [
-        "The 1974 Championship Game",
-        "The 1990 Championship Game",
-        "The 1958 Championship Game",
-        "The 1983 Championship Game"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 101,
-      "id": "VG-N-2c8403d67b46",
-      "conceptId": "VG-N-2c8403d67b46",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "This pitcher ended Pete Roses 44 game hit streak in 1978 with a strikeout.",
-      "options": [
-        "Bruce Sutter",
-        "Pat Jarvis",
-        "Gene Garber",
-        "John Smoltz"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 157,
-      "id": "VG-N-373cf8e5e0ee",
-      "conceptId": "VG-N-373cf8e5e0ee",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "\"Minecraft\" was released from beta in 2011 during a convention held in which city?",
@@ -12396,33 +11055,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "What name was given to the London 2012 Olympic Games Opening Ceremony that took place on 27 July 2012?",
-      "options": [
-        "Isles of Inspiration",
-        "Beautiful Olympics",
-        "Games of Courage",
-        "Isles of Wonder"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2220,
-      "id": "VG-N-c484511d2b30",
-      "conceptId": "VG-N-c484511d2b30",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "Which is the protagonist of Bioshock Infinite?",
       "options": [
         "Herbie Hancock",
@@ -12448,33 +11080,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "This advertising slogan of Nike triggered harsh criticism during the 1996 Olympic Games in Atlanta, because it was in contradiction with the Olympic principles.",
-      "options": [
-        "‘You don’t win silver – you lose gold’.",
-        "‘Common sense. Uncommon results’",
-        "‘Exceed. Why compromise?’.",
-        "‘Nobody is perfect. My name is nobody’."
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 204,
-      "id": "VG-N-4508751017a5",
-      "conceptId": "VG-N-4508751017a5",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "In the \"Pikmin\" series, what is the only pikmin type to possess visible ears?",
@@ -12504,33 +11109,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "This former ice hockey defenseman, born in Ontario, Canada, played 465 games as a New York Ranger and wore number 2.",
-      "options": [
-        "Brad Park",
-        "Maurice Richard",
-        "Guy Lafleur",
-        "Clint Smith"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2778,
-      "id": "VG-N-3126442a83df",
-      "conceptId": "VG-N-3126442a83df",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "Which of these TrackMania environments was NOT in the original game?",
       "options": [
         "Desert",
@@ -12558,33 +11136,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "In 1973, this person who played for four different NBA teams set a record for blocked shots in one game, with 17.",
-      "options": [
-        "Moses Malone",
-        "Elmore Smith",
-        "Bill Russel",
-        "Wilt Chamberlain"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1255,
-      "id": "VG-N-6674fa4df12c",
-      "conceptId": "VG-N-6674fa4df12c",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "What is the name of the province you explore in Runescape?",
       "options": [
         "Ashendale",
@@ -12610,60 +11161,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Wilt The Stilt Chamberlain became the first NBA player who has scored 100 points in a single game. Against which team did he score the 100 points?",
-      "options": [
-        "The Chicago Bulls",
-        "The New York Knicks",
-        "The Saint Louis Hawks",
-        "The Fort Wayne Pistons"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 549,
-      "id": "VG-N-766a1ae4e957",
-      "conceptId": "VG-N-766a1ae4e957",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "Taking all thirteen tricks in a game of bridge is referred to as what?",
-      "options": [
-        "Small slam",
-        "Grand slam",
-        "Knock",
-        "Double nil"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "hobbies",
-      "sourceOrdinal": 137,
-      "id": "VG-N-52187ed6fbe5",
-      "conceptId": "VG-N-52187ed6fbe5",
-      "category": "Video Games",
-      "subcategory": "Hobbies",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/hobbies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "Which of these weapons is NOT available to the Terrorist team in the game, \"Counter-Strike: Global Offensive\"?",
@@ -12747,33 +11244,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "At University High School in Waco, Texas, during his first game, football player LaDanian Tomlinson, nicknamed LT, scored how many touchdowns?",
-      "options": [
-        "5",
-        "2",
-        "7",
-        "0"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2446,
-      "id": "VG-N-f43ad4288c06",
-      "conceptId": "VG-N-f43ad4288c06",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "Which game in the \"Dark Souls\" series does the player play as the \"Ashen One\"?",
       "options": [
         "Bloodborne",
@@ -12855,33 +11325,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "What team did the Steelers defeat to win their first Super Bowl game?",
-      "options": [
-        "Seattle Seahawks",
-        "Oakland Raiders",
-        "Dallas Cowboys",
-        "Minnesota Vikings"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1532,
-      "id": "VG-N-af0b2688af8b",
-      "conceptId": "VG-N-af0b2688af8b",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "In the survival horror game, \"Cry of Fear,\" what was the name of Simon's close friend/potential love interest?",
       "options": [
         "Olivia",
@@ -12934,87 +11377,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "The board game Monopoly was initially created not only for entertaining purposes but also to demonstrate this aspect of the market.",
-      "options": [
-        "The negatives of concentrating land in private-owned properties",
-        "The advantages of the transition from state-owned to private-owned property",
-        "The rapid shift of property in developing markets",
-        "The number of opportunities private-owned properties gave people"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "hobbies",
-      "sourceOrdinal": 285,
-      "id": "VG-N-aca740a5a658",
-      "conceptId": "VG-N-aca740a5a658",
-      "category": "Video Games",
-      "subcategory": "Hobbies",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/hobbies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "Athletics is called the queen of all sports. Who won the first gold in athletics during the 2008 Olympic Games?",
-      "options": [
-        "Tirunesh Dibaba (Ethiopia, 10km)",
-        "Nicoleta Grasu (Romania, discus)",
-        "Hyleas Fountain (USA, heptathlon)",
-        "Tomasz Majewski (Poland, shot put)"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1106,
-      "id": "VG-N-2fdac2a8f3f7",
-      "conceptId": "VG-N-2fdac2a8f3f7",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
-      "prompt": "This card game is played by four players one of which is a dummy.",
-      "options": [
-        "Bridge",
-        "Rummy",
-        "Hearts",
-        "Spades"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "hobbies",
-      "sourceOrdinal": 1036,
-      "id": "VG-N-04fe24c61b66",
-      "conceptId": "VG-N-04fe24c61b66",
-      "category": "Video Games",
-      "subcategory": "Hobbies",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/hobbies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Which of the following is not a Magic: The Gathering game format?",
@@ -13125,60 +11487,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "In 1985, the Giants were so close to the Super Bowl they could taste it. But one forbidding defensive team with a monster coach stopped them dead in their tracks and went on to win the big game themselves. Name that team?",
-      "options": [
-        "Dallas Cowboys",
-        "Chicago Bears",
-        "Washington Redskins",
-        "Green Bay Packers"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1097,
-      "id": "VG-N-3b1d0e47b04b",
-      "conceptId": "VG-N-3b1d0e47b04b",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "Beginning in 1998 he had a significant role in CBS getting the rights to NFL games through at least 2012. His father was a truly great sportscaster.",
-      "options": [
-        "Sean McManus",
-        "Jonathan Buck",
-        "Robert Barber",
-        "Henry Rodgers, Jr."
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2656,
-      "id": "VG-N-a8afc6dd0b83",
-      "conceptId": "VG-N-a8afc6dd0b83",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "The first night football game was played in this city.",
       "options": [
         "Pittsburgh",
@@ -13206,33 +11514,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "Which of these has been a host of the popular American TV game The Wheel of Fortune?",
-      "options": [
-        "Gary Moore",
-        "Pat Sajak",
-        "Bob Barker",
-        "Gene Simmons"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "television",
-      "sourceOrdinal": 401,
-      "id": "VG-N-1ba13033233f",
-      "conceptId": "VG-N-1ba13033233f",
-      "category": "Video Games",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "In Splatoon 2's Hero Mode, which agent does the player take the role of?",
       "options": [
         "Agent 1",
@@ -13258,114 +11539,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "In 1987, North Carolina State University defeated what team in the longest basketball game of the year, played in the Atlantic Coast Conference tournament?",
-      "options": [
-        "Maryland",
-        "Wake Forest",
-        "Duke",
-        "Virginia"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1319,
-      "id": "VG-N-b4dbf2f01685",
-      "conceptId": "VG-N-b4dbf2f01685",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "When Utah first broke the BCS, they played against this team in this BCS Bowl Game.",
-      "options": [
-        "Pittsburgh/Fiesta Bowl",
-        "Tulsa/Armed Forces Bowl",
-        "Alabama/Sugar Bowl",
-        "Georgia Tech/Emerald Bowl"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2414,
-      "id": "VG-N-636fdcc4debc",
-      "conceptId": "VG-N-636fdcc4debc",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "What is the first Major League baseball franchise to lose more than 9,000 games?",
-      "options": [
-        "Philadelphia Phillies",
-        "Cincinnati Reds",
-        "Brooklyn/Los Angeles Dodgers",
-        "Chicago Cubs"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1150,
-      "id": "VG-N-deea0abd1b5e",
-      "conceptId": "VG-N-deea0abd1b5e",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "On what game show did contestants receive unwanted joke prizes, called zonks?",
-      "options": [
-        "Lets Make a Deal",
-        "Check-Out",
-        "The Price is Right",
-        "Family Feud"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "general",
-      "sourceOrdinal": 1420,
-      "id": "VG-N-2c04b97f70dd",
-      "conceptId": "VG-N-2c04b97f70dd",
-      "category": "Video Games",
-      "subcategory": "General",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Which character in Undertale tells you that you're \"gonna have a bad time\"?",
@@ -13422,33 +11595,6 @@
       "difficulty": "medium"
     },
     {
-      "prompt": "This former baseball player, called The Ol Perfesser, left his mark on the game as a manager.",
-      "options": [
-        "Casey Stengel",
-        "Miller Huggins",
-        "Earl Weaver",
-        "Connie Mack"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 191,
-      "id": "VG-N-a7fd6de8a9ca",
-      "conceptId": "VG-N-a7fd6de8a9ca",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "In the movie Point Break, FBI agent Utah was quarterback for a major college football team and ended up getting hurt in the Rose Bowl. What team did he play against in that bowl game?",
       "options": [
         "UCLA",
@@ -13474,60 +11620,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
-    },
-    {
-      "prompt": "Who was the first host of the game show Wheel of Fortune?",
-      "options": [
-        "Monty Hall",
-        "Richard Dawson",
-        "Chuck Woolery",
-        "Pat Sajak"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "television",
-      "sourceOrdinal": 881,
-      "id": "VG-N-f1be73b5415e",
-      "conceptId": "VG-N-f1be73b5415e",
-      "category": "Video Games",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "What role did Brad Pitt play at the 2008 Summer Olympic Games?",
-      "options": [
-        "He was an umpire in the baseball tournament",
-        "He presented the last gold medal to Michael Phelps",
-        "He fought in the boxing tournament and was eliminated in the first round",
-        "He organized a pro-Tibet march in Hong-Kong"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1102,
-      "id": "VG-N-7c5741efd14f",
-      "conceptId": "VG-N-7c5741efd14f",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "Which building trains Allied Raider Mammoths in the strategy game Battle Nations?",
@@ -13638,60 +11730,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Which country took all medals in the 100m womens sprint race at the Beijing Olympic Games?",
-      "options": [
-        "UK",
-        "USA",
-        "Jamaica",
-        "China"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2635,
-      "id": "VG-N-370b679831e2",
-      "conceptId": "VG-N-370b679831e2",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
-      "prompt": "In this card game, which is a predecessor to bridge, there is a trump suit, that can vary from hand to hand.",
-      "options": [
-        "Spades",
-        "Whist",
-        "Honeymoon Bridge",
-        "Rummy"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "hobbies",
-      "sourceOrdinal": 1028,
-      "id": "VG-N-2afb4b9ac548",
-      "conceptId": "VG-N-2afb4b9ac548",
-      "category": "Video Games",
-      "subcategory": "Hobbies",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/hobbies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "\"Gimmick!\" is a Japanese Famicom game that uses a sound chip expansion in the cartridge. What is it called?",
       "options": [
         "VRC7",
@@ -13771,33 +11809,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Lorenzo Charles hit the game winning shot in the 1983 NCAA Championship, but what was the name of the player who put up the famous air ball?",
-      "options": [
-        "Cozell McQueen",
-        "Terry Gannon",
-        "Derek Whittenburg",
-        "Ranzino Smith"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1313,
-      "id": "VG-N-3f776594fb60",
-      "conceptId": "VG-N-3f776594fb60",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "Which of the following was not developed by Bethesda?",
@@ -13962,33 +11973,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "What happens if you play all of your letters during the game of Scrabble?",
-      "options": [
-        "You win",
-        "Your opponent(s) lose(s) a turn",
-        "You get an extra 50 points",
-        "You are penalized 25 points"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "rated",
-      "sourceOrdinal": 596,
-      "id": "VG-N-1acbd97d7858",
-      "conceptId": "VG-N-1acbd97d7858",
-      "category": "Video Games",
-      "subcategory": "Rated",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/rated",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "\"The Potato Sack\" was a collection of indie games released on Steam in 2011 as a promotion for which game?",
       "options": [
         "Portal 2",
@@ -14014,33 +11998,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Which one of these players did NOT hit a walk-off home run in a World Series game?",
-      "options": [
-        "Bobby Thomson",
-        "Bill Mazeroski",
-        "Carlton Fisk",
-        "Joe Carter"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 644,
-      "id": "VG-N-286af8311285",
-      "conceptId": "VG-N-286af8311285",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "How many obsidian blocks are required to build a nether portal in Minecraft?",
@@ -14205,33 +12162,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "How many pitchers threw perfect games in the 20th century?",
-      "options": [
-        "10",
-        "8",
-        "14",
-        "15"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1766,
-      "id": "VG-N-d4f26e4e7c35",
-      "conceptId": "VG-N-d4f26e4e7c35",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "In most FPS video games such as Counter-Strike, shooting which part of the body does the highest damage?",
       "options": [
         "Arm",
@@ -14259,60 +12189,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Athletes from which country took all gold medals in table tennis in the Olympic Games in 2000, 2004 and 2008?",
-      "options": [
-        "USA",
-        "Poland",
-        "China",
-        "Singapore"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 795,
-      "id": "VG-N-fb048de8670f",
-      "conceptId": "VG-N-fb048de8670f",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "In what year did the first televised basketball game air?",
-      "options": [
-        "1948",
-        "1940",
-        "1944",
-        "1956"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1687,
-      "id": "VG-N-dbcdf681eafa",
-      "conceptId": "VG-N-dbcdf681eafa",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "In the Yakuza series who is the Dragon of Dojima?",
       "options": [
         "Ryuji Goda",
@@ -14338,33 +12214,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "In what 2005 bowl game did LSU defeat Miami?",
-      "options": [
-        "Cotton bowl",
-        "Peach bowl",
-        "Outback bowl",
-        "Rose bowl"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1523,
-      "id": "VG-N-0da7f3aa3221",
-      "conceptId": "VG-N-0da7f3aa3221",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Which one of the following titles by Valve is not based on a Community Mod?",
@@ -14556,87 +12405,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "Which team had Manuel Francisco dos Santos, the legendary Garrincha, playing for them for 45 minutes in a game against the Fluminense/RJ in the 1960s.",
-      "options": [
-        "Princesa Solimoes/AM",
-        "Botafogo/RJ",
-        "Fortaleza/CE",
-        "Mirassol/SP"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1855,
-      "id": "VG-N-359a9e01e477",
-      "conceptId": "VG-N-359a9e01e477",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "What country was the host of the 1968 Summer Olympics, or Games of the XIX Olympiad?",
-      "options": [
-        "Mexico",
-        "Brazil",
-        "Norway",
-        "France"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1932,
-      "id": "VG-N-310aa62f6030",
-      "conceptId": "VG-N-310aa62f6030",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
-      "prompt": "Scrabble, an amusing family game created by architect Alfred Mosher Butts in 1938, is what type of game?",
-      "options": [
-        "Athletic game",
-        "Dare game",
-        "Chance game",
-        "Word game"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "hobbies",
-      "sourceOrdinal": 78,
-      "id": "VG-N-d97023a5bc43",
-      "conceptId": "VG-N-d97023a5bc43",
-      "category": "Video Games",
-      "subcategory": "Hobbies",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/hobbies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "What is the highest level that you can reach in \"The Elder Scrolls 4: Oblivion\" without considering skill levels, class, and birthsign?",
       "options": [
         "50",
@@ -14689,33 +12457,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Who was the first NBA player to score 60 points in a game?",
-      "options": [
-        "Wilt Chamberlain",
-        "Joe Fulks",
-        "Frank Selvy",
-        "Joe Marasovich"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1685,
-      "id": "VG-N-3d7c424f4508",
-      "conceptId": "VG-N-3d7c424f4508",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Which of the following is not a playable race in the MMORPG Guild Wars 2?",
@@ -14853,33 +12594,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Which country was represented by the highest number of athletes at the Olympic Games of 2008?",
-      "options": [
-        "USA",
-        "India",
-        "China",
-        "Russia"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2631,
-      "id": "VG-N-6197e070cc4e",
-      "conceptId": "VG-N-6197e070cc4e",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "In vanilla Minecraft, which of the following cannot be made into a block?",
       "options": [
         "Wheat",
@@ -14961,33 +12675,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "42 is a domino game popular in which part of the world?",
-      "options": [
-        "Texas",
-        "France",
-        "Guatemala",
-        "Hawaii"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "hobbies",
-      "sourceOrdinal": 922,
-      "id": "VG-N-5c38a3fc73ea",
-      "conceptId": "VG-N-5c38a3fc73ea",
-      "category": "Video Games",
-      "subcategory": "Hobbies",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/hobbies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "What programming language does the Source Engine use?",
       "options": [
         "Lua",
@@ -15040,33 +12727,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Which team won the 1940 National Football League Championship Game with 73-0?",
-      "options": [
-        "Oakland Raiders",
-        "Washington Redskins",
-        "Chicago Bears",
-        "New York Giants"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 99,
-      "id": "VG-N-d5b8e889fd0f",
-      "conceptId": "VG-N-d5b8e889fd0f",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "This person contributed to the revival of the course camarguaise, as well as to the to improvement in breeding of the Camarguese bull and to the codifying of the rules of the game.",
@@ -15150,33 +12810,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Who has the highest ranking in an NFL game?",
-      "options": [
-        "The Umpire",
-        "The Backfield Judge",
-        "The Referee",
-        "The Head Linesman"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2568,
-      "id": "VG-N-99fb022f6e09",
-      "conceptId": "VG-N-99fb022f6e09",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "What was the name of the teenage witch played by Melisa Joan Hart who lives with her witch aunts Hilda and Zelda?",
       "options": [
         "Dahlia",
@@ -15202,33 +12835,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "A record for the fastest goal was set at the start of an NHL playoff game on April 17, 1972. How long after the start of the playoff game was it scored?",
-      "options": [
-        "5 seconds",
-        "6 seconds",
-        "4 seconds",
-        "3 seconds"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2057,
-      "id": "VG-N-7c15caefe5fa",
-      "conceptId": "VG-N-7c15caefe5fa",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "Which student in Yandere Simulator is known for asking irritating and stupid questions?",
@@ -15312,33 +12918,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Jim Quick umpired a perfect game on September 16, 1988. Tom Browning was the winning pitcher for the home team. The game was played at Riverfront Stadium. Name the wining team.",
-      "options": [
-        "The Red Sox",
-        "The Twins",
-        "The Reds",
-        "The Padres"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1330,
-      "id": "VG-N-a9415faf9c1c",
-      "conceptId": "VG-N-a9415faf9c1c",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "What is the name of the child performing the Black Sacrament, in The Elder Scrolls V: Skyrim?",
       "options": [
         "Aval Atheron",
@@ -15364,33 +12943,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Who was the winning pitcher in game six of the 1995 World Series, 1-0 victory over the Cleveland Indians?",
-      "options": [
-        "John Smoltz",
-        "Tom Glavine",
-        "Steve Avery",
-        "Greg Maddux"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 159,
-      "id": "VG-N-1136a3bbc21c",
-      "conceptId": "VG-N-1136a3bbc21c",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Which game was the Game of the Year in 2018?",
@@ -15501,60 +13053,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "He was the first 40-year-old to pitch a perfect game.",
-      "options": [
-        "Randy Johnson",
-        "Kenny Rogers",
-        "Dizzy Dean",
-        "Don Drysdale"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2720,
-      "id": "VG-N-90831694e22a",
-      "conceptId": "VG-N-90831694e22a",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "Goose Goslin and this man are the only Major League baseball players to hit into 4 double plays in a single game.",
-      "options": [
-        "Joe Torre",
-        "Frank Torre",
-        "Frank Howard",
-        "Reggie Jackson"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 929,
-      "id": "VG-N-52c55e73a800",
-      "conceptId": "VG-N-52c55e73a800",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "In \"PAYDAY 2\", what weapon has the highest base weapon damage on a per-shot basis?",
       "options": [
         "Broomstick Pistol",
@@ -15607,60 +13105,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
-    },
-    {
-      "prompt": "Which of these running backs did not rush for 100+ yards in a Super Bowl game?",
-      "options": [
-        "Duane Thomas",
-        "Larry Csonka",
-        "Ottis Anderson",
-        "John Riggins"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2001,
-      "id": "VG-N-5ca155c6c8e8",
-      "conceptId": "VG-N-5ca155c6c8e8",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "Who was the first player to play in three perfect games?",
-      "options": [
-        "Don Baylor",
-        "Paul ONeil",
-        "Don Zimmer",
-        "Pedro Martinez"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2723,
-      "id": "VG-N-5a08b5fc42ab",
-      "conceptId": "VG-N-5a08b5fc42ab",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "In the movie A League of Their Own, there was an obnoxious little kid who used to go to all of his mothers baseball games. He always sat in the dugout and bothered all of the players. What was the name of this kid?",
@@ -15825,33 +13269,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "May 15, 1981 saw a perfect game involving the Toronto Blue Jays and the Cleveland Indians. Who was the winning pitcher?",
-      "options": [
-        "Jim Clancy",
-        "John Denny",
-        "Len Barker",
-        "Dave Stieb"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1328,
-      "id": "VG-N-6e96a71b3066",
-      "conceptId": "VG-N-6e96a71b3066",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "What was the first PlayStation game to require the use of the DualShock controller?",
       "options": [
         "Tekken",
@@ -15877,33 +13294,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Who was the first man to win gold medals in three straight Olympic Games?",
-      "options": [
-        "Rafer Johnson",
-        "Michael Johnson",
-        "Ray Ewry",
-        "Jim Thorpe"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1830,
-      "id": "VG-N-67e3c18f3344",
-      "conceptId": "VG-N-67e3c18f3344",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "Which of the following cards in the game Magic: the Gathering is from the Onslaught Block?",
@@ -16012,33 +13402,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "How many medals did the Gymnastics US team get in the 2004 Olympic Games?",
-      "options": [
-        "18",
-        "0",
-        "9",
-        "5"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1458,
-      "id": "VG-N-51bc093e3aca",
-      "conceptId": "VG-N-51bc093e3aca",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "In Game of Thrones, what is Littlefinger's real name?",
@@ -16230,33 +13593,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Which of these gymnastics disciplines, contested at the 2012 Olympic Games, was the last to be recognised as an Olympic discipline?",
-      "options": [
-        "rhythmic gymnastics",
-        "artistic gymnastics",
-        "They all became Olympic disciplines in the same year.",
-        "trampolining"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2195,
-      "id": "VG-N-1420b074acc5",
-      "conceptId": "VG-N-1420b074acc5",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "This Australian special force deals with reconnaissance and counter-terrorism. It played a significant role in providing security during the Sydney Olympic Games in 2000.",
       "options": [
         "KS",
@@ -16280,33 +13616,6 @@
       "reviewStatus": "draft-needs-human-review",
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/world",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "Tommie Smith won the 200-meter dash in the 1968 Olympics. In that same year, John Carlos came in third in that event. Why were Carlos and Smith banned from the Olympic Games?",
-      "options": [
-        "They refused to accept the medals.",
-        "They tested positive for steroids.",
-        "They refused to take a blood test.",
-        "They made a political gesture on the medal stage."
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1834,
-      "id": "VG-N-df6d4864b081",
-      "conceptId": "VG-N-df6d4864b081",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
     },
@@ -16419,60 +13728,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "In the 2004 Olympic Games, Michael Phelps set a number of world records, Olympic records, and American records. How many of each did he set?",
-      "options": [
-        "2 WR, 3 OR, and 2 AR",
-        "4 WR, 1 OR, and 2 AR",
-        "1 WR, 4 OR, and 2 AR",
-        "3 WR, 2 OR, and 2 AR"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1706,
-      "id": "VG-N-74aa99b1aa4c",
-      "conceptId": "VG-N-74aa99b1aa4c",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "What Nickelodeon game show featured a house on the set that the contestants would ransack to find hidden objects?",
-      "options": [
-        "Finders Keepers",
-        "Double Dare",
-        "Nickelodeon Guts",
-        "Nick Arcade"
-      ],
-      "correctIndex": 0,
-      "sourceCategoryId": 14,
-      "difficulty": "easy",
-      "sourceFile": "Entertainment: Television",
-      "id": "VG-N-957437b45882",
-      "conceptId": "VG-N-957437b45882",
-      "category": "Video Games",
-      "subcategory": "Entertainment: Television",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
       "prompt": "What minimum level in the Defence skill is needed to equip Dragon Armour in the MMO RuneScape?",
       "options": [
         "60",
@@ -16500,33 +13755,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "When was the first Pro Bowl game held?",
-      "options": [
-        "1935",
-        "1939",
-        "1970",
-        "1955"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 511,
-      "id": "VG-N-47186731e91d",
-      "conceptId": "VG-N-47186731e91d",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "When was Pokemon GO released in North America?",
       "options": [
         "July 6th, 2016",
@@ -16552,60 +13780,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "The Steelers lost their first playoff game against this team in 1947.",
-      "options": [
-        "New York Giants",
-        "St. Louis Cardinals",
-        "Cleveland Browns.",
-        "Philadelphia Eagles"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1661,
-      "id": "VG-N-2b67e981a776",
-      "conceptId": "VG-N-2b67e981a776",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "On September 17, 1948 Greenbay played Boston in an NFL game. What was the significance of the game?",
-      "options": [
-        "It was the first time an interception was returned for a touchdown.",
-        "It was the first NFL game to be on radio.",
-        "It was the first time a NFL game that went into overtime.",
-        "It was the first time a penalty flag was thrown."
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 945,
-      "id": "VG-N-25560d720193",
-      "conceptId": "VG-N-25560d720193",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Which of these items is not used in an American football game?",
@@ -16716,60 +13890,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "In 1990 I was sold to Juventus for £7,700,000. Not to mention I scored 24 goals in 40 games with Fiorentina. Who am I?",
-      "options": [
-        "Zico",
-        "Roberto Baggio",
-        "Alfredo Di Stefano",
-        "Eusebio"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 595,
-      "id": "VG-N-a8afb016460a",
-      "conceptId": "VG-N-a8afb016460a",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "Where did The Detroit Red Wings play their home games during the Original Six NHL era?",
-      "options": [
-        "The Silver Dome",
-        "The Palace",
-        "The Gardens",
-        "The Olympia"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1406,
-      "id": "VG-N-c7fa6a905f8b",
-      "conceptId": "VG-N-c7fa6a905f8b",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "In the game Nuclear Throne, what organization chases the player character throughout the game?",
       "options": [
         "The Bandits",
@@ -16851,33 +13971,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "When was the last time teams played to a tie in a Series game?",
-      "options": [
-        "Never",
-        "1908",
-        "1994",
-        "1912"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 645,
-      "id": "VG-N-80d5d72cefa1",
-      "conceptId": "VG-N-80d5d72cefa1",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "What is the name of the main island in PLAYERUNKNOWN'S BATTLEGROUNDS?",
       "options": [
         "Erangel",
@@ -16903,33 +13996,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "If you see the characters “S17” printed on a Blackjack table what valuable information do you get about the rules of the game in this casino?",
-      "options": [
-        "Soft 17s are considered eights by the dealer",
-        "The dealer surrenders on soft 17s",
-        "The dealer doubles on soft 17s",
-        "The dealer stands on soft 17s"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "hobbies",
-      "sourceOrdinal": 529,
-      "id": "VG-N-5e4d08bfc83e",
-      "conceptId": "VG-N-5e4d08bfc83e",
-      "category": "Video Games",
-      "subcategory": "Hobbies",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/hobbies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Which Silver Wolf unit is not trainable in the game Battle Nations?",
@@ -16959,60 +14025,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "On September 9, 1965, this Hall of Fame Pitcher threw a perfect game against the Chicago Cubs. Who was he and what team did he pitch for?",
-      "options": [
-        "Don Drysdale, Brooklyn Dodgers",
-        "Don Drysdale, L.A. Dodgers",
-        "Sandy Koufax, L.A. Dodgers",
-        "Sandy Koufax, Brooklyn Dodgers"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1509,
-      "id": "VG-N-2238ce0891b0",
-      "conceptId": "VG-N-2238ce0891b0",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "Name this British quiz/game show.",
-      "options": [
-        "Krypton Factor",
-        "Crystal Maze",
-        "Blockbusters",
-        "Fort Boyard"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "music",
-      "sourceOrdinal": 2318,
-      "id": "VG-N-15007bcbd1c7",
-      "conceptId": "VG-N-15007bcbd1c7",
-      "category": "Video Games",
-      "subcategory": "Music",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/music",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "The five guys from the movie Grown Ups play a game that they used to play with each other when they were kids. What game do they play?",
       "options": [
         "Arrow Roulette",
@@ -17038,87 +14050,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/newest",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "hard"
-    },
-    {
-      "prompt": "Which card game, invented by British poet Sir John Suckling, is scored with a peg board?",
-      "options": [
-        "Cribbage",
-        "Piquet",
-        "Canasta",
-        "Euchre"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "hobbies",
-      "sourceOrdinal": 141,
-      "id": "VG-N-3dc959006171",
-      "conceptId": "VG-N-3dc959006171",
-      "category": "Video Games",
-      "subcategory": "Hobbies",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/hobbies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "The Mets won how many regular season games en route to their postseason and title?",
-      "options": [
-        "109",
-        "106",
-        "107",
-        "108"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1057,
-      "id": "VG-N-218ea38b0c94",
-      "conceptId": "VG-N-218ea38b0c94",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "This Kentucky grad had a very long Pro Football career. He won games as a kicker and as a quarterback. He originally played for the Chicago bears but also won fame playing for the Houston Oilers and the Oakland Raiders.",
-      "options": [
-        "George Blanda",
-        "Gary Anderson",
-        "Ray Guy",
-        "Jan Stenerud"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 616,
-      "id": "VG-N-08011a22f06b",
-      "conceptId": "VG-N-08011a22f06b",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "How many balls are on the snooker table at the beginning of the game?",
@@ -17175,33 +14106,6 @@
       "difficulty": "hard"
     },
     {
-      "prompt": "Which game show was hit by a scandal in 1958?",
-      "options": [
-        "The $64,000 Question",
-        "Twenty-One",
-        "Jeopardy",
-        "The $64,000 Challenge"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 576,
-      "id": "VG-N-d6aebf98325a",
-      "conceptId": "VG-N-d6aebf98325a",
-      "category": "Video Games",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "Who created the 2011 Video Game \"Minecraft\"?",
       "options": [
         "Daniel Rosenfeld",
@@ -17229,60 +14133,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Three of these MLB players have hit a home run in at least 8 consecutive games. Which of the listed players did not accomplish this feat?",
-      "options": [
-        "Dale Long",
-        "Robin Ventura",
-        "Don Mattingly",
-        "Ken Griffey Jr."
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1980,
-      "id": "VG-N-dd0eda13c193",
-      "conceptId": "VG-N-dd0eda13c193",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "What team won the first college bowl game?",
-      "options": [
-        "Bucknell",
-        "Tulane",
-        "Michigan",
-        "Penn State"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1887,
-      "id": "VG-N-7b59bf832d77",
-      "conceptId": "VG-N-7b59bf832d77",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "Soccers home is Europe. Which two teams played the first official international game?",
       "options": [
         "England vs. Scotland",
@@ -17308,33 +14158,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/world",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "hard"
-    },
-    {
-      "prompt": "The domino effect, a term named after the domino game, denotes what peculiar sequence of events?",
-      "options": [
-        "Consecutive events triggering one another",
-        "A series of unexpected events",
-        "One big event causing a series of simultaneous small events",
-        "Simultaneous events caused by a small event"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "hobbies",
-      "sourceOrdinal": 920,
-      "id": "VG-N-89384dc6f225",
-      "conceptId": "VG-N-89384dc6f225",
-      "category": "Video Games",
-      "subcategory": "Hobbies",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/hobbies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Which of these games was NOT a Nintendo Switch launch title in the United States?",
@@ -17418,60 +14241,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Chicago Bulls drafted this player in 1984, who is probably the best in the NBA ever. He played his final game on April 16, 2003.",
-      "options": [
-        "Magic Johnson",
-        "Kevin Garnett",
-        "Michael Jordan",
-        "Shaquille ONeal"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 62,
-      "id": "VG-N-39e58d416b2b",
-      "conceptId": "VG-N-39e58d416b2b",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
-      "prompt": "The first 20 games of the Tiger/ Jayhawk rivalry were played off campus in Kansas City or in St Joesph. The Tigers hosted the first game on campus in 1911. What is significant about this game?",
-      "options": [
-        "It was the first Homecoming game in the country.",
-        "There was a riot after the game.",
-        "a 3 to 3 tie",
-        "The game was played at Rollins field."
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2349,
-      "id": "VG-N-c7a0ca72f622",
-      "conceptId": "VG-N-c7a0ca72f622",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "Who is the last boss in Night In The Woods' Demontower minigame?",
       "options": [
         "Krampus",
@@ -17497,33 +14266,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "When was the first indoor NCAA Football Bowl game played?",
-      "options": [
-        "1964",
-        "1955",
-        "1976",
-        "1939"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1734,
-      "id": "VG-N-72a712a8ff95",
-      "conceptId": "VG-N-72a712a8ff95",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "In Splatoon, what is the age that inklings can freely change between squid and humanoid forms?",
@@ -17580,33 +14322,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "If you play the word wagon in the game of Scrabble and it is not on any letter or word premium squares, how many points is it worth?",
-      "options": [
-        "14",
-        "11",
-        "9",
-        "20"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "rated",
-      "sourceOrdinal": 598,
-      "id": "VG-N-8d295c7f2645",
-      "conceptId": "VG-N-8d295c7f2645",
-      "category": "Video Games",
-      "subcategory": "Rated",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/rated",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "The person who developed the popular game Sudoku was from which country?",
       "options": [
         "Malaysia",
@@ -17632,60 +14347,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
-    },
-    {
-      "prompt": "Which were the first modern Olympic Games to be subject to a boycott by more than one country?",
-      "options": [
-        "1956, Melbourne",
-        "1980, Moscow",
-        "1936, Berlin",
-        "1920, Antwerp"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 873,
-      "id": "VG-N-70ad2ccd3d06",
-      "conceptId": "VG-N-70ad2ccd3d06",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "This is the first team to have three perfect games pitched against them.",
-      "options": [
-        "Dodgers",
-        "Blue Jays",
-        "White Sox",
-        "Rangers"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2724,
-      "id": "VG-N-51584f3fd9a5",
-      "conceptId": "VG-N-51584f3fd9a5",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "In what year was the video game company Electronic Arts founded?",
@@ -17931,33 +14592,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "What happened during the second period of Game 4 of the 1988 Stanley Cup Finals between the Boston Bruins and the Edmonton Oilers?",
-      "options": [
-        "The lights went out.",
-        "There was a bomb threat.",
-        "The refs never showed up for the second period.",
-        "The coaches had a fight on the ice."
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2059,
-      "id": "VG-N-23eca2fefe50",
-      "conceptId": "VG-N-23eca2fefe50",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "In \"A Hat In Time\" who is the final boss?",
       "options": [
         "Mafia Boss",
@@ -18066,33 +14700,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Kirsty Coventry won four medals and set a new world record in the 200m backstroke at the 2008 Summer Olympic Games. Which country did she represent?",
-      "options": [
-        "Zimbabwe",
-        "UK",
-        "USA",
-        "Australia"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2639,
-      "id": "VG-N-0df7e21abf36",
-      "conceptId": "VG-N-0df7e21abf36",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "What household item make the characters of \"Steins; Gate\" travel through time?",
       "options": [
         "Televison",
@@ -18118,33 +14725,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "What game show host has a Black Belt in Martial Arts and studied under Chuck Norris?",
-      "options": [
-        "Pat Sajak",
-        "Richard Karn",
-        "Bob Barker",
-        "Alex Trebek"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "television",
-      "sourceOrdinal": 884,
-      "id": "VG-N-f5ad9e75a980",
-      "conceptId": "VG-N-f5ad9e75a980",
-      "category": "Video Games",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "In which location does Dark Sun Gwyndolin reside in \"Dark Souls\"?",
@@ -18174,33 +14754,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "In 1962, this former Philadelphia 76er set the record for most points scored in a game.",
-      "options": [
-        "Bill Russel",
-        "Michael Jordon",
-        "Hakeem Olajuwon",
-        "Wilt Chamberlain"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1253,
-      "id": "VG-N-6b3251b1fb4a",
-      "conceptId": "VG-N-6b3251b1fb4a",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "How old is Chloe Price in Life is Strange: Before the Storm?",
       "options": [
         "16",
@@ -18226,33 +14779,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "In the novel The Hunger Games, when faced with the cornucopia, Katniss planned to grab what weapon?",
-      "options": [
-        "bow and arrows",
-        "knives",
-        "javelin",
-        "rope"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "newest",
-      "sourceOrdinal": 985,
-      "id": "VG-N-13ae7aac1f8c",
-      "conceptId": "VG-N-13ae7aac1f8c",
-      "category": "Video Games",
-      "subcategory": "Newest",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/newest",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "In \"Call Of Duty: Zombies\", which map's opening cutscene shows \"Richtofen\" killing another version of himself?",
@@ -18363,33 +14889,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Which of the following was the first Olympic Games mascot?",
-      "options": [
-        "a panda",
-        "a cartoon character",
-        "an eagle",
-        "a kangaroo"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1840,
-      "id": "VG-N-187645376e86",
-      "conceptId": "VG-N-187645376e86",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "In \"Starbound\", what is the max HP of the monster \"Punchy\"?",
       "options": [
         "100 HP",
@@ -18444,33 +14943,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "The parade of the nations is part of the opening ceremony of the Olympic Games. Since the1928 Summer Olympics, which nation traditionally leads the parade?",
-      "options": [
-        "The first country in alphabetical order",
-        "Greece",
-        "The country with the most medals from the last Olympics",
-        "The host country"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 200,
-      "id": "VG-N-dd9e13d17e23",
-      "conceptId": "VG-N-dd9e13d17e23",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "In Geometry Dash, what is level 13?",
       "options": [
         "Electroman Adventures",
@@ -18498,33 +14970,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "On June 21, 1964, the Philadelphia Phillies beat the New York Mets 6 to 0 behind a perfect game pitched by this player.",
-      "options": [
-        "Dick Allen",
-        "Dennis Bennett",
-        "Jim Bunning",
-        "Kirk Gibson"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1508,
-      "id": "VG-N-2ca35474a919",
-      "conceptId": "VG-N-2ca35474a919",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "According to the official Monopoly rules what happens if the bank runs out of money during the course of the game?",
       "options": [
         "Noone wins",
@@ -18550,33 +14995,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/hobbies",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "Who was the first Major Leaguer to hit a grand slam home run in a Major League All-Star game?",
-      "options": [
-        "Jimmy Piersall",
-        "Roberto Clemente",
-        "Fred Lynn",
-        "Jackie Robinson"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1210,
-      "id": "VG-N-3bac8b390e82",
-      "conceptId": "VG-N-3bac8b390e82",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "In \"Call Of Duty: Zombies\", \"Richtofen\" is in possession of two filled blood vials belonging to who?",
@@ -18766,33 +15184,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "What baseball team played their first game on April 5, 1993?",
-      "options": [
-        "Atlanta Braves",
-        "Colorado Rockies",
-        "Houston Astros",
-        "Florida Marlins"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 2690,
-      "id": "VG-N-bdf85c8af623",
-      "conceptId": "VG-N-bdf85c8af623",
-      "category": "Video Games",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     }
   ]
 }

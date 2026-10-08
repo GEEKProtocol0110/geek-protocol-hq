@@ -2,19 +2,19 @@
   "metadata": {
     "title": "GEEK Protocol — Pop Culture Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-07",
-    "questionCount": 1572,
-    "conceptCount": 1572,
+    "maintainedAt": "2026-10-08",
+    "questionCount": 1571,
+    "conceptCount": 1571,
     "category": "Pop Culture",
     "difficultyDistribution": {
-      "easy": 631,
+      "easy": 630,
       "medium": 626,
       "hard": 315
     },
     "correctIndexDistribution": {
       "0": 388,
       "1": 399,
-      "2": 384,
+      "2": 383,
       "3": 401
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
@@ -27367,33 +27367,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "Her fathers is a clothing designer and one of her brothers is a filmmaker.",
-      "options": [
-        "Donna Karan",
-        "Donatela Versache",
-        "Dylan Lauren",
-        "Diane von Furstenberg"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "people",
-      "sourceOrdinal": 1969,
-      "id": "POP-N-9766010cb09c",
-      "conceptId": "POP-N-9766010cb09c",
-      "category": "Pop Culture",
-      "subcategory": "People",
-      "funFact": null,
-      "tags": [
-        "pop-culture"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "Which Beatle/s actually wrote the song Yesterday?",
