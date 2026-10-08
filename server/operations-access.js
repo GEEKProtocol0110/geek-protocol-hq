@@ -1,5 +1,6 @@
-import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
+import { createHash, createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
 import { parseStoredJson, redis } from './redis.js';
+import { operationsMfaSecret } from './operations-mfa.js';
 
 export const OPERATIONS_TTL = 30 * 60;
 const COOKIE = '__Host-geek_ops';
@@ -12,7 +13,9 @@ export const operationsConfig = () => {
   const secret = String(process.env.AUDIT_LOG_SECRET || '');
   if (key.length < 24 || key.length > 512 || secret.length < 32) throw new Error('OPS_NOT_CONFIGURED');
   const credentials = Object.values(roles).map(name => String(process.env[name] || ''));
-  return { key, fingerprint: createHmac('sha256', secret).update(JSON.stringify(['geek-ops-owner-v2', key, ...credentials])).digest('hex') };
+  const totpSecret = operationsMfaSecret(), factors = ['geek-ops-owner-v2', key, ...credentials];
+  if (totpSecret) factors.push(['totp', totpSecret.toString('hex')]);
+  return { key, totpSecret, totpFingerprint: totpSecret ? createHash('sha256').update(totpSecret).digest('hex') : '', fingerprint: createHmac('sha256', secret).update(JSON.stringify(factors)).digest('hex') };
 };
 export const operationsEqual = (a, b) => {
   const x = Buffer.from(String(a || '')), y = Buffer.from(String(b || ''));
@@ -55,6 +58,14 @@ export const requireOperationsRole = async (req, role, requireToken) => {
   if (!Object.hasOwn(roles, role)) throw new Error('OPS_ROLE_FORBIDDEN');
   // Explicit API credentials retain their existing role checks; a wrong key cannot fall back to the cookie.
   const credentialHeaders = ['x-cce-admin', 'x-audit-admin', 'x-payout-review-admin', 'authorization'];
+  if (operationsMfaSecret()) {
+    // Enabling MFA closes the direct role-key bypass as well as owner login.
+    if (credentialHeaders.some(header => Object.hasOwn(req.headers || {}, header))) throw new Error('OPS_ROLE_FORBIDDEN');
+    const session = await operationsSession(req);
+    if (!session?.permissions.includes(role) || String(req.headers?.['sec-fetch-site'] || '') === 'cross-site' || (req.headers?.origin && !operationsTrustedOrigin(req))) throw new Error('OPS_ROLE_FORBIDDEN');
+    if (!['GET', 'HEAD'].includes(req.method) && (!operationsTrustedOrigin(req) || !operationsJsonRequest(req))) throw new Error('OPS_ROLE_FORBIDDEN');
+    return;
+  }
   if (String(process.env[roles[role]] || '').length < 24 || credentialHeaders.some(header => Object.hasOwn(req.headers || {}, header))) return requireToken(req);
   const session = await operationsSession(req);
   if (!session?.permissions.includes(role)) return requireToken(req);

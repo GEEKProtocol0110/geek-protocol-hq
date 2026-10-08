@@ -4,6 +4,7 @@ import { redis, rateLimit } from './redis.js';
 import { operationsConfig as config, operationsEqual as equal, operationsCookieId as cookieId, operationsSessionKey as keyFor, setOperationsCookie as setCookie, operationsTrustedOrigin as trustedOrigin, operationsJsonRequest, operationsSession, createOperationsSession } from './operations-access.js';
 import { recordAuditEvent } from './audit.js';
 import { ownerAppearanceHandler } from './appearance.js';
+import { consumeOperationsCode } from './operations-mfa.js';
 
 const files = new Map([
   ['', ['index.html', 'text/html; charset=utf-8']],
@@ -39,7 +40,7 @@ export default async function operationsHandler(req, res) {
         return sendJson(res, 200, { ok: true });
       }
       const current = config();
-      if (typeof body.key !== 'string' || body.key.length > 512 || !equal(body.key, current.key)) {
+      if (typeof body.key !== 'string' || body.key.length > 512 || !equal(body.key, current.key) || !await consumeOperationsCode(current, body.code)) {
         await event(req, 'ops.access.login', 'failure');
         return sendJson(res, 403, { ok: false, error: 'Access was not accepted.' });
       }
@@ -60,14 +61,14 @@ export default async function operationsHandler(req, res) {
       }
       return sendJson(res, 401, { ok: false, error: 'Sign in to open Operations.' });
     }
-    if (action === 'status') return sendJson(res, 200, { ok: true, authenticated: true, role: 'owner', permissions: session.permissions, expiresAt: session.expiresAt });
+    if (action === 'status') return sendJson(res, 200, { ok: true, authenticated: true, role: 'owner', permissions: session.permissions, expiresAt: session.expiresAt, mfaEnabled: Boolean(config().totpSecret) });
     if (action) return sendJson(res, 400, { ok: false, error: 'Invalid request.' });
     const [filename, contentType] = files.get(requestedPath);
     const content = await readFile(new URL(`ops-ui/${filename}`, import.meta.url));
     res.setHeader('Content-Type', contentType);
     return res.status(200).end(req.method === 'HEAD' ? undefined : content);
   } catch (error) {
-    if (error.message === 'OPS_NOT_CONFIGURED') return sendJson(res, 503, { ok: false, error: 'Private operator access is unavailable.' });
+    if (['OPS_NOT_CONFIGURED', 'OPS_MFA_UNAVAILABLE'].includes(error.message)) return sendJson(res, 503, { ok: false, error: 'Private operator access is unavailable.' });
     return handleApiError(res, error);
   }
 }

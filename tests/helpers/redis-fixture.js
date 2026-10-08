@@ -1,7 +1,7 @@
 import { spawn } from 'node:child_process';
 import { createConnection, createServer } from 'node:net';
 import { once } from 'node:events';
-import { mkdtemp, rm } from 'node:fs/promises';
+import { mkdtemp, rm, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -32,8 +32,9 @@ const parse = (buffer, start = 0) => {
 };
 
 // Real Redis binds only to loopback on an ephemeral port, with persistence disabled.
-export const redisFixture = async () => {
+export const redisFixture = async ({ snapshot } = {}) => {
   const directory = await mkdtemp(join(tmpdir(), 'geek-duel-'));
+  if (snapshot) await writeFile(join(directory, 'dump.rdb'), snapshot);
   const reserve = createServer();
   reserve.listen(0, '127.0.0.1'); await once(reserve, 'listening');
   const port = reserve.address().port;
@@ -67,7 +68,7 @@ export const redisFixture = async () => {
   });
   const command = async (...values) => (await commands([values]))[0];
   await command('PING');
-  return { command, commands, close: async () => {
+  return { command, commands, snapshot: async () => { await command('SAVE'); return readFile(join(directory, 'dump.rdb')); }, close: async () => {
     const closed = once(process, 'exit'); process.kill(); await closed;
     await rm(directory, { recursive: true, force: true });
   } };

@@ -144,7 +144,7 @@ for (const root of document.querySelectorAll('[data-role]')) {
   }
   panels.push({ lock, load }); setBusy(false);
 }
-const clearViews = () => { panels.forEach(panel => panel.lock()); appearance?.lock(); overviewVersion += 1; overviewController?.abort(); };
+const clearViews = () => { panels.forEach(panel => panel.lock()); appearance?.lock(); overviewVersion += 1; overviewController?.abort(); if ($('[data-mfa-state]')) { $('[data-mfa-state]').textContent = 'Access not checked'; $('[data-mfa-detail]').textContent = 'Sign in to check owner protection.'; } };
 const expireSession = () => { sessionReady = false; clearViews(); window.location.replace('/ops-login/'); };
 window.addEventListener('pagehide', () => { sessionReady = false; clearViews(); });
 
@@ -169,6 +169,7 @@ const checkGate = async (loadWorkspace = false) => {
     if (!response.ok || status.authenticated !== true || status.role !== 'owner') throw new Error('Owner access unavailable.');
     sessionReady = true;
     appearance?.enableRefresh();
+    if ($('[data-mfa-state]')) { $('[data-mfa-state]').textContent = status.mfaEnabled ? 'Authenticator enabled' : 'Authenticator not enabled'; $('[data-mfa-detail]').textContent = status.mfaEnabled ? 'Owner login requires your key and a one-time code. Direct role-key access is disabled.' : 'Owner access currently uses one key. Complete authenticator setup to add a second factor.'; }
     $('[data-session-state]').textContent = `Owner access · Session ends ${new Date(status.expiresAt).toLocaleTimeString()}`;
     if (loadWorkspace) { panels.forEach(panel => panel.load()); appearance?.load(); refreshOverview(); }
   } catch {
