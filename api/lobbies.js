@@ -1,4 +1,5 @@
 import duelHandler from '../server/duel-api.js';
+import royaleHandler from '../server/royale-api.js';
 import { randomBytes } from 'node:crypto';
 import { categories, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
 import { createMatch, loadMatch, matchView, submitMatchAnswer } from '../server/lobby-game.js';
@@ -114,6 +115,7 @@ const createRoom = async (session, body) => {
 };
 
 export default async function handler(req, res) {
+  if (req.query?.service === 'royale') return royaleHandler(req, res);
   if (req.query?.service === 'duel') return duelHandler(req, res);
   setApiHeaders(res);
   if (req.method === 'OPTIONS') return res.status(204).end();

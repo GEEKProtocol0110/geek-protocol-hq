@@ -18,7 +18,7 @@ Geek Protocol was born in Detroit, Michigan, USA. Use American English in public
 
 **Founder direction, October 3, 2026:** reopen free game-mode work. The first addition is Memory Grid: untimed solo term/meaning matching, using four-, six-, or eight-pair Kaspa boards, source-linked explanations, related lessons and Giga encouragement. Results stay in the page and award no XP, credits or tokens. This does not activate paid entry or settlement.
 
-Multiplayer Arena expansions, DAO work, and the launchpad remain **planned** while the core and free games are polished and tried by real learners. The feature tables below preserve the full long-term vision; “Planned” does not mean active work or the next release. No existing service is shut down by this prioritization.
+The founder reopened Trivia Royale on October 8, 2026. Other Multiplayer Arena expansions, DAO work, and the launchpad remain **planned** while the core and free games are polished and tried by real learners. The feature tables below preserve the full long-term vision; “Planned” does not mean active work or the next release. No existing service is shut down by this prioritization.
 
 First-visit guidance points beginners to Where Kaspa began at Foundations level, explains read → practice → review, and gives learners with no saved answers an explicit first-lesson action. Existing learners keep their saved review and continuation recommendations. The final lesson idea offers an explicit Start practice action using the selected topic and level; reading the lesson never starts a run automatically. This is interface guidance, not evidence of improved learning outcomes.
 
@@ -73,10 +73,10 @@ Start with content quality and guided practice. Educational benefit and question
 | ARENA-01 | The Duel: dedicated 1v1 | Implemented free Alpha | Friend ready-up or solo A.C.E. simulation with three difficulty presets, ten shared questions, Redis clock and atomic scoring, winner/draw/forfeit/disconnect results, fixed two-player roster, reload recovery and mutual rematches; no XP or monetary rewards |
 | ARENA-02 | Team Battle: 2v2 | Planned | Fixed team rosters, cooperative answer rules, team scoring, and adversarial cross-team authorization tests |
 | ARENA-03 | Party Mode: social co-op | Planned | Group objective, shared progress, accessible pacing, host/rejoin rules, and clearly separate practice standings |
-| ARENA-04 | Trivia Royale | Planned | Event entry/round lifecycle, elimination and tie rules, A.C.E. hosting tools, server authority, and tested participant-capacity limits |
+| ARENA-04 | Trivia Royale | Implemented free Alpha; deployment/pilot pending | Host-selected 2–100 seat limit, partial-room start, shared Redis clock, wrong/timeout/slowest-group elimination, exact ties, stable-identity reconnect and room-result medal; local 100-client capacity tests; real production pilot pending |
 | ARENA-05 | Optional Duel wagers / event prizes | Proposed monetary extension | Separate approved economic specification, reviewed custody/settlement path, reconciliation, eligibility and dispute rules; follows economy work |
 
-Geek Duel at `/duel/` is the dedicated free 1v1 format. The existing Quick Duel lobby template remains shared practice. Wagered Duel and specialized Fandom Duel rules remain planned. See [Duel protocol](DUEL-PROTOCOL.md).
+Geek Duel at `/duel/` is the dedicated free 1v1 format. The existing Quick Duel lobby template remains shared practice. Wagered Duel and specialized Fandom Duel rules remain planned. See [Duel protocol](DUEL-PROTOCOL.md) and [Royale protocol](ROYALE-PROTOCOL.md).
 
 ### Original game-mode lineup
 
@@ -84,7 +84,7 @@ Geek Duel at `/duel/` is the dedicated free 1v1 format. The existing Quick Duel 
 | --- | --- | --- |
 | Geek Gauntlet | Live server-owned ten-round Alpha; Daily/Speed alternatives live | Continued content/rule review; any funded entry or cash-out is a separate monetary extension |
 | Memory Grid | Live free Kaspa solo matching; 4/6/8 pairs, explanations, source/lesson links | Additional reviewed decks and any future saved progression require separate work |
-| Trivia Royale | Planned | Shared event lifecycle, elimination/ties, reconnect handling, hosting and capacity tests |
+| Trivia Royale | Free Alpha implemented | Configurable 2–100-player rooms, ready/host start, slowest-out rules, tie/reconnect handling, isolated scores and local capacity tests; production pilot and real device acceptance remain |
 | Fandom Duel | Planned | Dedicated head-to-head rules and reviewed fandom content; existing Quick Duel rooms are shared practice |
 | Quiz Quest | Three free Alpha chapters implemented | First Signal, Inside the blockDAG and Keys to the Grid; campaign map with the full earlier-chapter completion chain unlocking each next chapter, three sourced scenes/six checks per chapter, independent saved resume/review and badges; further chapters planned |
 
@@ -152,7 +152,7 @@ Schools, professional development, and the launchpad extend the learning purpose
 6. Introduce community governance through published, accountable steps.
 7. Pilot education, professional learning, integrations, and the launchpad with their dependencies in place.
 
-Core polish and the authorized economy foundation are active. Other expansion stages remain on hold until the founder chooses to reopen them; their stated dependencies remain. There are no invented launch dates. Each implemented feature should have a focused issue/PR, documentation, meaningful authorization/state tests where relevant, and production evidence before its public status becomes Live.
+Core polish, the authorized economy foundation and the founder-requested Trivia Royale Alpha are active. Other expansion stages remain on hold until the founder chooses to reopen them; their stated dependencies remain. There are no invented launch dates. Each implemented feature should have a focused issue/PR, documentation, meaningful authorization/state tests where relevant, and production evidence before its public status becomes Live.
 
 ## Profile character and NFT collection (October 3, 2026)
 

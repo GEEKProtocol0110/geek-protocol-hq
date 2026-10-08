@@ -26,7 +26,10 @@ export default async function handler(req, res) {
         return sendJson(res, 400, { ok: false, error: 'Enter a profile name with 1–24 characters.' });
       }
     }
-    await rateLimit('session-ip', clientFingerprint(req), 60, 60 * 10);
+    // A shared network can onboard a 100-player event without disabling per-player limits.
+    const fingerprint = clientFingerprint(req);
+    await rateLimit('session-ip', fingerprint, 600, 60 * 10);
+    if (!existing) await rateLimit('session-create-ip', fingerprint, 120, 60 * 10);
     if (existing) await rateLimit('session', existing.id, 40, 60);
     const session = await upsertSession(req, res, body.displayName);
     if (!existing) await rateLimit('session', session.id, 40, 60);

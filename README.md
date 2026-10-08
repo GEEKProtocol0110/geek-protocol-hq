@@ -203,3 +203,7 @@ Your next chapter, career unlock and achievement goal now share a dashboard entr
 ![My Geek character studio](docs/assets/geek-studio-upgrade.jpg)
 
 [Release scope and verification](docs/PLAYER-HQ-UPGRADE.md) · [Player dashboard](https://www.geekprotocol.xyz/profile/)
+
+### Trivia Royale — free multiplayer Alpha
+
+[Trivia Royale](https://www.geekprotocol.xyz/royale/) implements The Battle of a Hundred Minds: choose a player limit from 2 to 100, invite the crew and start when at least two players are online and ready. The room does not need to be full. Wrong, missing and slowest correct answers eliminate players; exact ties stay together. A shared 15-second question clock, five-second reveal and stable-identity reconnect lead to the Last Mind Standing's visual room-result medal. No XP or monetary rewards. The implementation has local real-Redis 100-client tests; deployment and a real production pilot are pending. [Rules and architecture](docs/ROYALE-PROTOCOL.md).
