@@ -44,7 +44,7 @@ document.addEventListener('keydown', (event) => {
 
 // Decorative space scenes. One capped animation loop, only for visible panels.
 (() => {
-  const hosts = [...document.querySelectorAll('.hero, .grid-hero, .profile-hero, .geek-preview-stage, .kaspa-hero, .study-intro, .memory-intro, .mint-hero, .economy-hero, .start-copy')];
+  const hosts = [...document.querySelectorAll('.hero, .grid-hero, .profile-hero, .geek-preview-stage, .kaspa-hero, .study-intro, .memory-intro, .mint-hero, .thanks-hero, .economy-hero, .start-copy')];
   if (!hosts.length) return;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   let reduceMotion = reduced.matches;
