@@ -7,6 +7,7 @@ The founder requested a lasting place in Geek history for Kaspa, the tools used 
 ## Evidence and maintenance
 
 - Kaspa network and learning sources: `public/kaspa/index.html`, `docs/KASPA-CONTENT-REVIEW.md`.
+- KaspaCom and KasLens were requested by the founder on October 8, 2026. Their dedicated ecosystem section follows the Kaspa foundation tribute, before the general community and tool credits. Verified public sources: [KaspaCom](https://kaspa.com/) describes its token marketplace/community hub; [KasLens token directory](https://kaspa-lens.com/kaspa/tokens) describes token discovery and market information. These credits do not assert an HQ API integration, formal partnership or current GEEK-specific listing status.
 - Kasware and Kasplex roles: `docs/MINT-PROTOCOL.md`, `server/mint.js`, `public/assets/wallet.js`.
 - Rusty Kaspa and the Dfns-published WASM package: `docs/DEPENDENCY-PROVENANCE.md`, `package-lock.json`; the package publisher and upstream project receive separate credits.
 - Kaspa Graph Inspector: the existing field-guide iframe and repository attribution.
