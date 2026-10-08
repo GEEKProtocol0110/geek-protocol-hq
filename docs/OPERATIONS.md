@@ -1,6 +1,6 @@
 # Geek Protocol Operations
 
-The private Operations home at [www.geekprotocol.xyz/ops/](https://www.geekprotocol.xyz/ops/) links to three focused workspaces. Every page and its assets is served through the existing session function, outside the public output directory. Anonymous page visits redirect to sign-in and asset requests are denied. Public health, question-count and economy APIs retain their public status. No signing or settlement capability is introduced.
+The private Operations home at [www.geekprotocol.xyz/ops/](https://www.geekprotocol.xyz/ops/) links to four focused workspaces. Every page and its assets is served through the existing session function, outside the public output directory. Anonymous page visits redirect to sign-in and asset requests are denied. Public health, question-count and economy APIs retain their public status. No signing or settlement capability is introduced.
 
 ## Pages and access
 
@@ -10,6 +10,7 @@ The private Operations home at [www.geekprotocol.xyz/ops/](https://www.geekproto
 | `/ops/questions/` | Read community queue; approve, request changes, reject and publish | `CCE_ADMIN_TOKEN` |
 | `/ops/activity/` | Read paginated audit events and integrity results | `AUDIT_ADMIN_TOKEN` |
 | `/ops/payouts/` | Read masked destination-change cases; approve or reject risk reviews | `PAYOUT_REVIEW_ADMIN_TOKEN` |
+| `/ops/appearance/` | Preview and save site-wide holiday themes | Owner session; no additional key |
 
 Sign in once with `OPS_ACCESS_TOKEN` when configured, or the existing CCE moderator key while it is absent. The current sole owner can keep using that existing key. A configured but empty/invalid dedicated owner key fails closed. Owner keys must be 24–512 characters. This is possession-of-key access, not a named account or MFA identity check. **Configure a distinct `OPS_ACCESS_TOKEN` before giving anyone the CCE moderator key: the fallback CCE key now grants the complete owner session.**
 
@@ -46,6 +47,10 @@ After a successful decision, refresh before reviewing the next case. Any failed 
 ## Audit activity
 
 The viewer requests 50 records at a time with newest/older navigation, using the existing API's bounded offset range. Filters and text search apply only to the loaded page. Warning/critical/failed counts describe recorded events; they do not certify attacks, all-time totals or threat detection. Empty pages are reported as having no records to verify. Verification reports record digests using the server's configured integrity mode; an unkeyed Alpha mode is not independent tamper-proof evidence. Events retain pseudonymous server identifiers; the UI displays type, reason, object type, outcome, severity, sequence and time rather than raw identifiers or arbitrary details.
+
+## Holiday themes
+
+Open **Holiday themes** from Operations. Off keeps the standard appearance; Automatic uses the Eastern-time celebration calendar; On lets the owner choose one of 14 holidays until changed. Previewing makes no write. Save applies fixed decorative colors and a small header mark across the public site. Settings default to Off and remain separate for production and previews. Successful saves are recorded atomically in audit activity. A conflict or failed response requires Refresh settings before another save. See [Holiday themes](HOLIDAY-THEMES.md) for dates, caching and verification.
 
 ## Verification
 

@@ -191,6 +191,12 @@
       "evidence": ["server/royale.js", "server/royale-api.js", "tests/royale.test.js", "docs/ROYALE-PROTOCOL.md", "public/royale/assets/royale.js"]
     },
     {
+      "id": "GP-INV-031",
+      "title": "Owner-only holiday settings use revision checks and atomic audit writes; public appearance exposes only allowlisted static decoration",
+      "status": "implemented-alpha",
+      "evidence": ["server/appearance.js", "public/assets/holiday-theme.js", "public/assets/holiday-calendar.js", "tests/appearance.test.js", "docs/HOLIDAY-THEMES.md"]
+    },
+    {
       "id": "GP-GATE-INDEPENDENT-AUDIT",
       "title": "Independent application and settlement audits",
       "status": "required-before-settlement",
