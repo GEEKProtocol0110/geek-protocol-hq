@@ -8,6 +8,14 @@
   "trailingSlash": true,
   "rewrites": [
     {
+      "source": "/api/appearance",
+      "destination": "/api/session?service=appearance"
+    },
+    {
+      "source": "/api/appearance/",
+      "destination": "/api/session?service=appearance"
+    },
+    {
       "source": "/api/royale",
       "destination": "/api/lobbies?service=royale"
     },

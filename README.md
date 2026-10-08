@@ -60,6 +60,7 @@ See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness
 | **Profile characters** | Free block-style Personal Geek and GIGA robot editor with server-saved skin, hair, face, outfit and accessory choices, plus five launch avatars |
 | **Collection** | Five-tier, 500-NFT blueprint with planned mint/reward/GEEK-or-KAS purchase routes and hashed legacy-art archive |
 | **Mint** | Fail-closed, user-approved GEEK KRC-20 fair-mint interface |
+| **Operations** | Private owner workspaces for questions, audit activity, payout reviews and [holiday appearance](docs/HOLIDAY-THEMES.md) |
 | **Security** | Public control posture, trust boundaries, and independent-audit gates |
 
 ## Personal Geek character studio

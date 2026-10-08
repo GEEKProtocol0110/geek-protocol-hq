@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#080b0b" /><meta name="robots" content="noindex,nofollow" />
+  <title>Holiday themes — Geek Protocol Operations</title>
+  <link rel="stylesheet" href="/assets/styles.css" /><link rel="stylesheet" href="/ops/assets/ops.css" /><link rel="stylesheet" href="/assets/holiday-theme.css" />
+  <script type="module" src="/ops/assets/ops.js"></script>
+</head>
+<body data-workspace="appearance">
+  <a class="skip-link" href="#main">Skip to holiday settings</a>
+  <header class="ops-header"><a class="brand" href="/ops/" aria-label="Operations home"><img src="/assets/geek-protocol-logo.png" alt="" width="40" height="40" /><span>GEEK<span class="brand-mark">//</span>OPERATIONS</span></a><button type="button" class="secondary" data-sign-out>Sign out</button></header>
+  <main id="main" class="ops-main">
+    <nav class="ops-nav" aria-label="Operations pages"><a href="/ops/">Home</a><a href="/ops/questions/">Questions</a><a href="/ops/activity/">Audit activity</a><a href="/ops/payouts/">Payout reviews</a><a href="/ops/appearance/" aria-current="page">Holiday themes</a></nav>
+    <section class="ops-intro"><div class="section-kicker">PRIVATE OWNER WORKSPACE</div><h1>Holiday themes</h1><p>Bring a little celebration to Geek HQ. Choose the holiday yourself, or let the calendar handle it.</p><p class="muted" data-session-state role="status">Checking your owner session…</p><p role="status" data-global-message></p></section>
+    <section class="ops-section" aria-labelledby="holiday-title" data-appearance-root>
+      <div class="section-heading"><div><h2 id="holiday-title">Site appearance</h2><p data-saved-theme>Loading saved settings…</p></div><button type="button" class="secondary" data-appearance-refresh disabled>Refresh settings</button></div>
+      <div class="appearance-grid">
+        <form data-appearance-form>
+          <fieldset disabled data-appearance-fields><legend>Holiday style</legend>
+            <label for="holiday-mode">When should it show?</label>
+            <select id="holiday-mode" name="mode"><option value="off">Off — standard Geek HQ</option><option value="auto">Automatic — follow the holiday calendar</option><option value="manual">On — choose a holiday</option></select>
+            <div data-holiday-choice hidden><label for="holiday-choice">Choose a holiday</label><select id="holiday-choice" name="holiday"></select></div>
+            <p class="muted" data-mode-description></p>
+            <button type="submit">Save holiday settings</button>
+          </fieldset>
+          <p data-appearance-message role="status" aria-live="polite"></p>
+        </form>
+        <div><div class="holiday-preview" data-appearance-preview role="img" aria-label="Standard Geek HQ appearance preview"><span class="preview-kicker">GEEK HQ · APPEARANCE PREVIEW</span><span class="holiday-preview-icon" data-preview-icon aria-hidden="true">✦</span><h3 data-preview-title>Level up your curiosity.</h3><p data-preview-copy>Standard Geek HQ</p><span class="preview-button">Let's Geek out →</span></div><p class="muted">Preview only. Saving applies the style across the public Geek HQ site. Open pages update within about 90 seconds.</p><a href="/" target="_blank" rel="noopener noreferrer">Open the public site ↗</a></div>
+      </div>
+    </section>
+    <section class="ops-section" aria-labelledby="calendar-title"><div class="section-heading"><div><h2 id="calendar-title">Automatic calendar</h2><p>Celebration dates use Eastern time (America/Detroit). Outside these windows, Geek HQ returns to its standard style.</p></div></div><div class="holiday-calendar" data-holiday-calendar></div><p class="muted">Christmas and Easter are included alongside New Year's, Thanksgiving, Halloween and major U.S. holidays. Manual mode stays on until you change it. Decorations are static and do not affect game timers or question text.</p></section>
+    <footer class="ops-footer"><p>Private owner workspace · Session expires after 30 minutes.</p><a href="/security/">Security status →</a></footer>
+  </main>
+</body>
+</html>

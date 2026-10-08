@@ -132,3 +132,6 @@ document.addEventListener('keydown', (event) => {
   window.addEventListener('pageshow', sync);
   sync();
 })();
+
+// Optional owner-selected decoration. A failed read keeps the standard site usable.
+import('/assets/holiday-theme.js').then(module => module.initHolidayTheme()).catch(() => {});

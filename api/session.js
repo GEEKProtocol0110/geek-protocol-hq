@@ -6,8 +6,10 @@ import vaultHandler from '../server/vault.js';
 import economyHandler from '../server/economy.js';
 import prestigeHandler from '../server/prestige.js';
 import operationsHandler from '../server/operations.js';
+import { publicAppearanceHandler } from '../server/appearance.js';
 
 export default async function handler(req, res) {
+  if (req.query?.service === 'appearance') return publicAppearanceHandler(req, res);
   if (req.query?.service === 'operations') return operationsHandler(req, res);
   if (req.query?.service === 'prestige') return prestigeHandler(req, res);
   if (req.query?.service === 'economy') return economyHandler(req, res);
