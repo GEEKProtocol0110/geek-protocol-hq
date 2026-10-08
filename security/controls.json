@@ -197,6 +197,18 @@
       "evidence": ["server/appearance.js", "public/assets/holiday-theme.js", "public/assets/holiday-calendar.js", "tests/appearance.test.js", "docs/HOLIDAY-THEMES.md"]
     },
     {
+      "id": "GP-INV-032",
+      "title": "Configured owner authenticator enforces both factors, bounded attempts, atomic replay claims and no direct privileged role-key bypass",
+      "status": "implemented-alpha",
+      "evidence": ["server/operations-mfa.js", "server/operations-access.js", "server/operations.js", "tests/operations-mfa.test.js", "docs/OPERATOR-SECURITY.md"]
+    },
+    {
+      "id": "GP-INV-033",
+      "title": "Isolated native Redis restore checks durable data and expiry; restored-session cleanup defaults dry-run and preserves durable records",
+      "status": "implemented-alpha",
+      "evidence": ["tests/recovery.test.js", "tests/helpers/redis-fixture.js", "scripts/reset-restored-sessions.mjs", "docs/BACKUP-RECOVERY.md"]
+    },
+    {
       "id": "GP-GATE-INDEPENDENT-AUDIT",
       "title": "Independent application and settlement audits",
       "status": "required-before-settlement",
