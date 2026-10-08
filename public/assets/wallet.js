@@ -4,6 +4,7 @@
   const ROOT_SELECTOR = '[data-wallet-root]';
   const MAINNET = 'kaspa_mainnet';
   const state = {
+    providerName: '',
     installed: false,
     connected: false,
     pending: false,
@@ -15,6 +16,23 @@
     identity: null,
     error: ''
   };
+
+  const providers = new Map();
+  const kaswareOnly = Boolean(document.querySelector('[data-wallet-kasware-only]'));
+  let selected = null;
+  let readRevision = 0;
+  const addProvider = (id, name, adapter) => {
+    if (providers.has(id) || providers.size >= 20) return;
+    providers.set(id, { id, name: String(name || 'Kaspa wallet').slice(0, 60), ...adapter });
+    if (!selected) { selected = providers.get(id); state.providerName = selected.name; }
+    state.installed = true;
+    document.querySelectorAll('[data-wallet-provider]').forEach(select => {
+      const option = document.createElement('option'); option.value = id; option.textContent = providers.get(id).name; select.append(option);
+      select.value = selected.id;
+    });
+    render();
+  };
+  const normalizeNetwork = value => ({ mainnet: MAINNET, 'testnet-10': 'kaspa_testnet_10', 'testnet-11': 'kaspa_testnet_11', devnet: 'kaspa_devnet' })[value] || value;
 
   const roots = () => [...document.querySelectorAll(ROOT_SELECTOR)];
   const shortAddress = (address) => address ? `${address.slice(0, 12)}…${address.slice(-6)}` : 'Not connected';
@@ -71,33 +89,35 @@
     const isMainnet = state.network === MAINNET;
     roots().forEach((root) => {
       root.dataset.walletStatus = state.error ? 'error' : state.verified ? 'verified' : state.connected ? 'connected' : state.installed ? 'ready' : 'missing';
-      setText(root, '[data-wallet-state]', state.error ? 'CHECK WALLET' : state.verified ? 'SERVER VERIFIED' : state.connected ? 'WALLET CONNECTED' : state.installed ? 'KASWARE READY' : 'KASWARE NOT FOUND');
+      setText(root, '[data-wallet-state]', state.error ? 'CHECK WALLET' : state.verified ? 'SERVER VERIFIED' : state.connected ? 'WALLET CONNECTED' : state.installed ? `${state.providerName} ready` : 'No browser wallet detected');
       setText(root, '[data-wallet-address]', shortAddress(state.address));
       setText(root, '[data-wallet-network]', state.connected ? networkLabel(state.network) : 'Connect to read network');
       setText(root, '[data-wallet-geek]', state.connected ? `${state.geekBalance} GEEK` : '—');
       setText(root, '[data-wallet-message]', state.error || (state.verified
         ? root.hasAttribute('data-wallet-sign-in') ? 'Your wallet proof is verified. Open My HQ to continue with your saved player.' : 'The server verified a one-time Kaspa Schnorr signature. This wallet can recover the player identity and authorize payout-setting changes.'
         : state.connected && !isMainnet
-          ? 'Switch Kasware to Kaspa Mainnet before proving ownership.'
+          ? 'Switch your wallet to Kaspa Mainnet before proving ownership.'
           : state.connected
             ? 'Sign a server nonce to link or recover the player identity—no transaction and no network fee.'
             : state.installed
               ? 'Connect only when you choose. Geek Protocol never requests wallet access on page load.'
-              : 'Open this page in the Kasware dApp browser or install the official Kasware wallet.'));
+              : root.hasAttribute('data-wallet-kasware-only') ? 'This mint flow requires Kasware. Install it or open this page in its dApp browser.' : 'Use the signed-message option on the sign-in page, or open this page with a compatible Kaspa browser wallet.'));
 
       const connect = root.querySelector('[data-wallet-connect]');
       if (connect) {
-        connect.disabled = state.pending;
-        connect.textContent = state.pending ? 'Waiting for wallet…' : state.connected ? 'Refresh wallet' : 'Connect Kasware';
+        connect.disabled = state.pending || !selected;
+        connect.textContent = state.pending ? 'Waiting for wallet…' : state.connected ? 'Refresh wallet' : selected ? `Connect ${selected.name}` : 'Connect browser wallet';
       }
       const verify = root.querySelector('[data-wallet-verify]');
       if (verify) {
         verify.hidden = !state.connected || state.verified || !isMainnet;
         verify.disabled = state.pending;
-        verify.textContent = root.hasAttribute('data-wallet-sign-in') ? 'Sign in with Kasware' : state.identity?.linked ? 'Recover identity' : 'Verify & protect';
+        verify.textContent = root.hasAttribute('data-wallet-sign-in') ? 'Sign in with wallet' : state.identity?.linked ? 'Recover identity' : 'Verify & protect';
       }
       const install = root.querySelector('[data-wallet-install]');
       if (install) install.hidden = state.installed;
+      const selector = root.querySelector('[data-wallet-provider]');
+      if (selector) { selector.disabled = state.pending || !providers.size; selector.hidden = providers.size < 2; }
     });
     publishState();
   };
@@ -117,7 +137,9 @@
   };
 
   const readWallet = async (accountsOverride) => {
-    if (!window.kasware) {
+    const revision = ++readRevision;
+    const provider = selected;
+    if (!provider) {
       state.installed = false;
       state.connected = false;
       render();
@@ -126,7 +148,8 @@
     state.installed = true;
     state.error = '';
     try {
-      const accounts = accountsOverride || await window.kasware.getAccounts();
+      const accounts = accountsOverride || await provider.getAccounts();
+      if (provider !== selected || revision !== readRevision) return;
       const address = Array.isArray(accounts) ? accounts[0] : '';
       if (!address) {
         state.connected = false;
@@ -142,23 +165,25 @@
       state.connected = true;
       state.address = address;
       const [network, publicKey, balances] = await Promise.all([
-        window.kasware.getNetwork(),
-        window.kasware.getPublicKey(),
-        window.kasware.getKRC20Balance()
+        provider.getNetwork(),
+        provider.getPublicKey(),
+        Promise.resolve().then(() => provider.getBalances()).catch(() => null)
       ]);
-      state.network = network || '';
+      if (provider !== selected || revision !== readRevision) return;
+      state.network = normalizeNetwork(network || '');
       state.publicKey = publicKey || '';
       const geek = Array.isArray(balances) ? balances.find((token) => String(token.tick || '').toUpperCase() === 'GEEK') : null;
-      state.geekBalance = geek ? formatToken(geek.balance, geek.dec) : '0';
+      state.geekBalance = geek ? formatToken(geek.balance, geek.dec) : Array.isArray(balances) ? '0' : '—';
       await refreshIdentity();
     } catch {
-      state.error = 'Kasware could not return the wallet details. Unlock the wallet and try again.';
+      state.error = 'Your wallet could not return the signing details. Unlock it and try again, or use the signed-message option.';
     }
     render();
   };
 
   const connectWallet = async () => {
-    if (!window.kasware) {
+    if (state.pending) return;
+    if (!selected) {
       state.installed = false;
       render();
       return;
@@ -167,7 +192,7 @@
     state.error = '';
     render();
     try {
-      const accounts = await window.kasware.requestAccounts();
+      const accounts = await selected.requestAccounts();
       await readWallet(accounts);
     } catch {
       state.error = 'Connection was not approved. Your wallet remains unchanged.';
@@ -178,12 +203,13 @@
   };
 
   const signServerChallenge = async (challenge) => {
-    if (!window.kasware?.signMessage) throw new Error('This Kasware version does not support message signatures.');
-    return window.kasware.signMessage(challenge.message, { type: 'schnorr' });
+    if (!selected?.signMessage) throw new Error('This wallet does not support Kaspa message signatures. Use the signed-message option if your wallet can sign outside the browser.');
+    return selected.signMessage(challenge.message, state.address);
   };
 
   const verifyOwnership = async () => {
-    if (!window.kasware || !state.connected || state.network !== MAINNET || !state.publicKey) return;
+    if (state.pending || !selected || !state.connected || state.network !== MAINNET) return;
+    const provider = selected, address = state.address;
     state.pending = true;
     state.error = '';
     render();
@@ -194,6 +220,7 @@
         body: JSON.stringify({ action: 'challenge', intent: 'identity', address: state.address, publicKey: state.publicKey })
       });
       const signature = await signServerChallenge(issued.challenge);
+      if (provider !== selected || address !== state.address || state.network !== MAINNET) throw new Error('The wallet changed. Request a new login message.');
       const verified = await api('/api/identity', {
         method: 'POST',
         body: JSON.stringify({ action: 'verify', challengeId: issued.challenge.challengeId, signature })
@@ -211,7 +238,7 @@
   };
 
   const authorizePayout = async ({ operation, address = '' }) => {
-    if (!window.kasware || !state.connected || !state.verified || state.network !== MAINNET || !state.publicKey) {
+    if (!selected || !state.connected || !state.verified || state.network !== MAINNET) {
       throw new Error('Connect the verified identity wallet before changing the protected payout setting.');
     }
     const issued = await api('/api/identity', {
@@ -240,20 +267,63 @@
     if (verify) verifyOwnership();
   });
 
-  const bindWalletEvents = () => {
-    if (!window.kasware?.on) return;
-    window.kasware.on('accountsChanged', (accounts) => readWallet(accounts));
-    window.kasware.on('networkChanged', () => readWallet());
-    window.kasware.on('balanceChanged', () => readWallet());
+  const bindWalletEvents = (provider) => {
+    if (!provider.on) return;
+    provider.on('accountsChanged', accounts => { if (selected?.id === provider.id) readWallet(accounts); });
+    ['networkChanged', 'chainChanged', 'balanceChanged'].forEach(name => provider.on(name, () => { if (selected?.id === provider.id) readWallet(); }));
+    provider.on('disconnect', () => { if (selected?.id === provider.id) readWallet([]); });
   };
+  document.addEventListener('change', event => {
+    if (!event.target.matches('[data-wallet-provider]')) return;
+    if (state.pending) { event.target.value = selected.id; return; }
+    selected = providers.get(event.target.value);
+    state.providerName = selected?.name || '';
+    Object.assign(state, { connected: false, verified: false, address: '', publicKey: '', network: '', geekBalance: '0', error: '' });
+    document.querySelectorAll('[data-wallet-provider]').forEach(select => { select.value = selected.id; });
+    render();
+  });
 
   const snapshot = () => ({ ...state, identity: state.identity ? { ...state.identity } : null });
 
   window.GeekWallet = Object.freeze({ authorizePayout, refreshIdentity, snapshot });
-  state.installed = Boolean(window.kasware);
   render();
-  if (state.installed) {
-    bindWalletEvents();
-    readWallet();
+  if (window.kasware) {
+    const wallet = window.kasware;
+    addProvider('kasware', 'Kasware', {
+      requestAccounts: () => wallet.requestAccounts(), getAccounts: () => wallet.getAccounts(),
+      getNetwork: () => wallet.getNetwork(), getPublicKey: () => wallet.getPublicKey(),
+      getBalances: () => wallet.getKRC20Balance?.() || Promise.resolve([]),
+      signMessage: (message) => wallet.signMessage(message, { type: 'schnorr' }), on: wallet.on?.bind(wallet)
+    });
+    bindWalletEvents(providers.get('kasware'));
   }
+  const detectKaspire = () => {
+    const wallet = window.kaspire;
+    if (kaswareOnly || !wallet?.isKaspire || providers.has('kaspire')) return;
+    const call = (method, params) => wallet.request({ method, ...(params ? { params } : {}) });
+    addProvider('kaspire', 'Kaspire Extension', {
+      requestAccounts: () => call('requestAccounts'), getAccounts: () => call('getAccounts'),
+      getNetwork: () => call('getNetwork'), getPublicKey: () => call('getPublicKey'), getBalances: async () => null,
+      signMessage: async (message, address) => { const result = await call('signMessage', { message, address }); if (result.address !== address) throw new Error('The signing wallet changed.'); return result.signature; },
+      on: wallet.on?.bind(wallet)
+    });
+    bindWalletEvents(providers.get('kaspire'));
+  };
+  detectKaspire();
+  window.addEventListener('kaspire#initialized', detectKaspire);
+  window.addEventListener('kaspa:provider', event => {
+    if (kaswareOnly) return;
+    const { info, provider } = event.detail || {};
+    if (!info || typeof info.uuid !== 'string' || !provider || typeof provider.requestAccounts !== 'function') return;
+    const id = `standard:${info.uuid}`;
+    if (providers.has(id)) return;
+    addProvider(id, info.name, {
+      requestAccounts: () => provider.requestAccounts(), getAccounts: () => provider.getAccounts?.() || Promise.resolve([]),
+      getNetwork: () => provider.getNetwork?.() || Promise.resolve(''), getPublicKey: () => provider.getPublicKey?.() || Promise.resolve(''), getBalances: async () => null,
+      signMessage: typeof provider.signMessage === 'function' ? message => provider.signMessage(message) : null,
+      on: provider.on?.bind(provider)
+    });
+    if (providers.has(id)) bindWalletEvents(providers.get(id));
+  });
+  window.dispatchEvent(new Event('kaspa:requestProvider'));
 })();

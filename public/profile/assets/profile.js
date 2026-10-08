@@ -184,7 +184,7 @@
     if (!$('[data-name-input]').matches(':focus')) $('[data-name-input]').value = player.name;
     $('[data-name-save]').disabled = false;
     setText('[data-account-status]', player.walletProtected ? 'Signed in with a verified Kaspa wallet.' : 'Guest profile · saved in this browser. Sign in to enable recovery.');
-    setText('[data-account-link]', player.walletProtected ? 'Sign-in & recovery options →' : 'Sign in with Kasware →');
+    setText('[data-account-link]', player.walletProtected ? 'Sign-in & recovery options →' : 'Sign in with Kaspa →');
     setText('[data-avatar-fallback]', player.name.trim().charAt(0).toUpperCase() || 'G');
     setText('[data-rank-title]', progression.title);
     setText('[data-rank-title-copy]', progression.title.toUpperCase());

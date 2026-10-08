@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#080b0b" />
-    <meta name="description" content="Sign in to Geek Protocol with Kasware, recover your saved player, or continue as a guest." />
+    <meta name="description" content="Sign in to Geek Protocol with a Kaspa wallet, recover your saved player, or continue as a guest." />
     <title>Sign in — Geek Protocol</title>
     <link rel="canonical" href="https://www.geekprotocol.xyz/sign-in/" />
     <link rel="stylesheet" href="/assets/styles.css" />
@@ -21,23 +21,46 @@
       <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="/study/">Learn</a><a href="/quest/">Adventure</a><a href="/play/">Play</a><a href="/profile/">My HQ</a><a href="/sign-in/" aria-current="page">Sign in</a></nav>
     </header>
     <main id="main" class="sign-in-main">
-      <div class="sign-in-intro"><span class="section-kicker">Your player account</span><h1>Welcome back,<br /><em>Geek.</em></h1><p>Sign in with your Kasware wallet to protect this player or recover the player already linked to that wallet.</p></div>
+      <div class="sign-in-intro"><span class="section-kicker">Your player account</span><h1>Welcome back,<br /><em>Geek.</em></h1><p>Use your Kaspa address to protect this player or recover the player already linked to it. Choose a browser wallet or sign a login message in your own wallet.</p></div>
       <section class="sign-in-card" aria-labelledby="sign-in-title">
-        <h2 id="sign-in-title">Sign in with Kasware</h2>
-        <ol class="sign-in-steps"><li><b>Connect your wallet.</b> Open Kasware and choose your player’s wallet.</li><li><b>Sign the login message.</b> Geek Protocol verifies a one-time signature.</li><li><b>Open My HQ.</b> Continue your progress or change your profile name.</li></ol>
+        <h2 id="sign-in-title">Sign in with Kaspa</h2>
+        <ol class="sign-in-steps"><li><b>Choose your address.</b> Connect a browser wallet or paste your Kaspa address.</li><li><b>Sign the login message.</b> Geek Protocol verifies a one-time signature.</li><li><b>Open My HQ.</b> Continue your progress or change your profile name.</li></ol>
         <p class="sign-in-current" data-sign-in-status role="status" aria-live="polite">Checking your player session…</p>
-        <div class="sign-in-wallet" data-wallet-root data-wallet-sign-in>
-          <span class="wallet-state" data-wallet-state>Checking Kasware…</span>
+        <details class="sign-in-method" data-browser-method open><summary>Connect a browser wallet</summary><div class="sign-in-wallet" data-wallet-root data-wallet-sign-in>
+          <label for="wallet-provider">Browser wallet</label><select id="wallet-provider" data-wallet-provider aria-label="Choose a browser wallet" hidden></select>
+          <span class="wallet-state" data-wallet-state>Checking browser wallets…</span>
           <dl><div><dt>Wallet</dt><dd data-wallet-address>Not connected</dd></div><div><dt>Network</dt><dd data-wallet-network>—</dd></div></dl>
           <p data-wallet-message role="status" aria-live="polite"></p>
-          <div class="sign-in-actions"><button class="button button-primary" type="button" data-wallet-connect>Connect Kasware</button><button class="button button-primary" type="button" data-wallet-verify hidden>Sign in with Kasware</button><a class="button button-secondary" href="https://www.kasware.xyz/" target="_blank" rel="noopener noreferrer" data-wallet-install>Get Kasware ↗</a></div>
+          <div class="sign-in-actions"><button class="button button-primary" type="button" data-wallet-connect>Connect browser wallet</button><button class="button button-primary" type="button" data-wallet-verify hidden>Sign in with wallet</button><a class="button button-secondary" href="https://www.kasware.xyz/" target="_blank" rel="noopener noreferrer" data-wallet-install>Get Kasware ↗</a></div>
         </div>
+        </details>
+        <details class="sign-in-method" data-manual-method><summary>Use an address from another wallet</summary>
+          <p>Your wallet needs a <b>Sign message</b> feature for Kaspa. Sign the exact login message in that wallet, then paste its signature here. Connecting through Kasware is optional.</p>
+          <form data-address-form>
+            <label for="login-address">Your Kaspa Mainnet address</label>
+            <input id="login-address" name="address" data-login-address required maxlength="120" placeholder="kaspa:…" autocomplete="off" autocapitalize="none" spellcheck="false" />
+            <button class="button button-primary" type="submit" data-create-proof>Create login message</button>
+          </form>
+          <div data-proof-step hidden>
+            <p data-proof-expiry></p>
+            <label for="login-message">Exact message to sign in your wallet</label>
+            <textarea id="login-message" data-login-message readonly rows="12" spellcheck="false"></textarea>
+            <button class="button button-secondary" type="button" data-copy-message>Copy message</button>
+            <form data-signature-form>
+              <label for="login-signature">Signature from your wallet</label>
+              <textarea id="login-signature" data-login-signature required maxlength="180" rows="3" spellcheck="false" autocomplete="off" autocapitalize="none"></textarea>
+              <button class="button button-primary" type="submit" data-submit-proof>Verify &amp; sign in</button>
+            </form>
+          </div>
+          <p data-manual-status role="status" aria-live="polite"></p>
+          <p class="sign-in-note">An address alone cannot sign you in. If your wallet cannot sign Kaspa login messages, continue as a guest for now. Exchange deposit and shared-script addresses may need another ownership method.</p>
+        </details>
         <a class="button button-primary sign-in-hq" href="/profile/" data-sign-in-hq hidden>Open My HQ →</a>
         <p class="sign-in-note">Login currently uses Kaspa Mainnet. Signing this message has no network fee and moves no funds. Never enter a seed phrase or private key here.</p>
         <p class="sign-in-note">Use the same wallet to recover your player on another browser. Recovery replaces this browser’s player session; separate guest progress is not merged.</p>
       </section>
       <div class="sign-in-guest"><a href="/profile/" data-sign-in-continue>Continue as a guest →</a><p>You can learn and play without a wallet. Guest progress stays with this browser’s session.</p></div>
-      <noscript><p>Enable JavaScript to sign in with Kasware or edit your saved player profile.</p></noscript>
+      <noscript><p>Enable JavaScript to sign in with a Kaspa wallet or edit your saved player profile.</p></noscript>
     </main>
   </body>
 </html>

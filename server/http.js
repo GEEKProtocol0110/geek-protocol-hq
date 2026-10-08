@@ -129,6 +129,7 @@ export const handleApiError = (res, error) => {
   if (code === 'IDENTITY_ORIGIN_INVALID') return sendJson(res, 400, { ok: false, code, error: 'Wallet proof is unavailable from this origin.' });
   if (code === 'IDENTITY_ORIGIN_MISMATCH') return sendJson(res, 409, { ok: false, code, error: 'That wallet challenge belongs to a different site origin. Request a new challenge here.' });
   if (code === 'IDENTITY_PUBLIC_KEY_INVALID' || code === 'IDENTITY_KEY_MISMATCH') return sendJson(res, 400, { ok: false, code, error: 'The public key does not match that Kaspa mainnet address.' });
+  if (code === 'IDENTITY_ADDRESS_UNSUPPORTED') return sendJson(res, 400, { ok: false, code, error: 'This address needs a script-based ownership proof. Single-key Kaspa addresses can use the signed-message option. You can continue as a guest.' });
   if (code === 'IDENTITY_SIGNATURE_INVALID') return sendJson(res, 401, { ok: false, code, error: 'The wallet signature was not valid for this one-time challenge.' });
   if (code === 'IDENTITY_CHALLENGE_INVALID') return sendJson(res, 409, { ok: false, code, error: 'That wallet challenge expired or was already used. Request a new one.' });
   if (code === 'IDENTITY_WALLET_BOUND') return sendJson(res, 409, { ok: false, code, error: 'That wallet is already bound to another player identity.' });

@@ -109,7 +109,7 @@
     if (!connectedAddress) return;
     addressInput.value = connectedAddress;
     addressInput.focus();
-    setMessage('Connected Kasware address copied. Check every character before saving.');
+    setMessage('Connected Kaspa address copied. Check every character before saving.');
   });
 
   document.addEventListener('geek:wallet', (event) => {

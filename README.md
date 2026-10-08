@@ -25,7 +25,7 @@ The [power-up and economy foundation](https://www.geekprotocol.xyz/economy/) res
 
 ## What is Geek Protocol?
 
-Geek Protocol turns knowledge into a verifiable player journey. Players study Kaspa at their own pace with A.C.E., revisit missed concepts, compete in timed trivia, build persistent profiles, join live lobbies, contribute reviewed questions, and interact with the GEEK ecosystem through a non-custodial Kasware flow.
+Geek Protocol turns knowledge into a verifiable player journey. Players study Kaspa at their own pace with A.C.E., revisit missed concepts, compete in timed trivia, build persistent profiles, join live lobbies, contribute reviewed questions, and interact with the GEEK ecosystem through non-custodial Kaspa wallet proofs and a Kasware mint flow.
 
 The project began as a way to make learning exciting for one child. HQ is the public Alpha where that idea is becoming a transparent, security-first Proof-of-Learning platform on Kaspa.
 
@@ -37,7 +37,7 @@ The project began as a way to make learning exciting for one child. HQ is the pu
 | --- | --- | --- |
 | Public website and information surfaces | **Live** | Production at `www.geekprotocol.xyz` |
 | Ranked trivia, lobbies, leaderboards, and profiles | **Public Alpha** | Server-authoritative; Redis required |
-| Kasware identity and account recovery | **Implemented** | Server-verified Kaspa Schnorr ownership proof |
+| Kaspa identity and account recovery | **Implemented Alpha** | Server-verified KIP-5 proofs through browser wallets or pasted signatures; wallet signing support required |
 | GEEK fair-mint interface | **Live / non-custodial** | One user-approved request against the pinned deployment |
 | Community Content Engine | **Alpha** | Reviewed questions earn internal first-use credits |
 | Alpha GEEK rewards | **Internal ledger only** | No withdrawals, transfers, or promised monetary value |
@@ -73,7 +73,7 @@ Make a block-style character with skin, hair, face and clothing choices, or keep
 ```mermaid
 flowchart LR
     P[Player browser] -->|HTTPS + secure session| A[Vercel API]
-    W[Kasware wallet] -->|User-approved signature or mint| P
+    W[Kaspa wallet] -->|User-approved signature or mint| P
     A -->|Atomic state| R[(Redis)]
     A -->|Live deployment verification| K[Kaspa indexer]
     A -->|Pseudonymous evidence| E[(Audit records)]
