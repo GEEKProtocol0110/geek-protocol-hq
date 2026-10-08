@@ -269,9 +269,10 @@
 
   const bindWalletEvents = (provider) => {
     if (!provider.on) return;
-    provider.on('accountsChanged', accounts => { if (selected?.id === provider.id) readWallet(accounts); });
-    ['networkChanged', 'chainChanged', 'balanceChanged'].forEach(name => provider.on(name, () => { if (selected?.id === provider.id) readWallet(); }));
-    provider.on('disconnect', () => { if (selected?.id === provider.id) readWallet([]); });
+    const listen = (name, callback) => { try { provider.on(name, callback); } catch { /* Events are optional provider capabilities. */ } };
+    listen('accountsChanged', accounts => { if (selected?.id === provider.id) readWallet(accounts); });
+    ['networkChanged', 'chainChanged', 'balanceChanged'].forEach(name => listen(name, () => { if (selected?.id === provider.id) readWallet(); }));
+    listen('disconnect', () => { if (selected?.id === provider.id) readWallet([]); });
   };
   document.addEventListener('change', event => {
     if (!event.target.matches('[data-wallet-provider]')) return;
