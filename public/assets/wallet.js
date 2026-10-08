@@ -27,18 +27,21 @@
   })[network] || (network ? network.replaceAll('_', ' ') : 'Unknown network');
 
   const api = async (path, options = {}) => {
-    const response = await fetch(path, {
-      credentials: 'same-origin',
-      headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
-      ...options
-    });
-    const payload = await response.json().catch(() => ({}));
-    if (!response.ok) {
-      const error = new Error(payload.error || 'Wallet verification is unavailable.');
-      error.code = payload.code || '';
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 15000);
+    try {
+      const response = await fetch(path, { credentials: 'same-origin', ...options, signal: controller.signal, headers: { 'Content-Type': 'application/json', ...(options.headers || {}) } });
+      const payload = await response.json().catch(error => { if (controller.signal.aborted) throw error; return {}; });
+      if (!response.ok) {
+        const error = new Error(payload.error || 'Wallet verification is unavailable.');
+        error.code = payload.code || (response.status === 401 ? 'SESSION_REQUIRED' : '');
+        throw error;
+      }
+      return payload;
+    } catch (error) {
+      if (controller.signal.aborted) throw new Error('The request took too long. Reload to check your saved player before retrying.');
       throw error;
-    }
-    return payload;
+    } finally { clearTimeout(timer); }
   };
 
   const formatToken = (rawValue, decimalsValue) => {
@@ -73,7 +76,7 @@
       setText(root, '[data-wallet-network]', state.connected ? networkLabel(state.network) : 'Connect to read network');
       setText(root, '[data-wallet-geek]', state.connected ? `${state.geekBalance} GEEK` : '—');
       setText(root, '[data-wallet-message]', state.error || (state.verified
-        ? 'The server verified a one-time Kaspa Schnorr signature. This wallet can recover the player identity and authorize payout-setting changes.'
+        ? root.hasAttribute('data-wallet-sign-in') ? 'Your wallet proof is verified. Open My HQ to continue with your saved player.' : 'The server verified a one-time Kaspa Schnorr signature. This wallet can recover the player identity and authorize payout-setting changes.'
         : state.connected && !isMainnet
           ? 'Switch Kasware to Kaspa Mainnet before proving ownership.'
           : state.connected
@@ -91,7 +94,7 @@
       if (verify) {
         verify.hidden = !state.connected || state.verified || !isMainnet;
         verify.disabled = state.pending;
-        verify.textContent = state.identity?.linked ? 'Recover identity' : 'Verify & protect';
+        verify.textContent = root.hasAttribute('data-wallet-sign-in') ? 'Sign in with Kasware' : state.identity?.linked ? 'Recover identity' : 'Verify & protect';
       }
       const install = root.querySelector('[data-wallet-install]');
       if (install) install.hidden = state.installed;
@@ -197,6 +200,7 @@
       });
       state.identity = verified.identity;
       state.verified = Boolean(verified.identity?.linked && verified.identity.address === state.address);
+      if (state.verified) document.dispatchEvent(new CustomEvent('geek:signed-in', { detail: { recovered: Boolean(verified.recovered) } }));
     } catch (error) {
       state.error = error.message || 'Ownership verification was canceled or rejected.';
       state.verified = false;

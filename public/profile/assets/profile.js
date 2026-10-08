@@ -8,10 +8,17 @@
   const safeDate = (value, options = { month: 'short', day: 'numeric', year: 'numeric' }) => value ? new Intl.DateTimeFormat('en-US', options).format(new Date(value)) : '—';
 
   const api = async (path, options = {}) => {
-    const response = await fetch(path, { credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, ...options });
-    const payload = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(payload.error || 'Profile service unavailable.');
-    return payload;
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 15000);
+    try {
+      const response = await fetch(path, { credentials: 'same-origin', ...options, signal: controller.signal, headers: { 'Content-Type': 'application/json', ...(options.headers || {}) } });
+      const payload = await response.json().catch(error => { if (controller.signal.aborted) throw error; return {}; });
+      if (!response.ok) throw new Error(payload.error || 'Profile service unavailable.');
+      return payload;
+    } catch (error) {
+      if (controller.signal.aborted) throw new Error('The request took too long. Reload to check your saved player before retrying.');
+      throw error;
+    } finally { clearTimeout(timer); }
   };
 
   const setText = (selector, value) => { const element = $(selector); if (element) element.textContent = value; };
@@ -174,6 +181,10 @@
     const { player, progression, stats } = profile;
     setText('[data-profile-state]', 'Your progress is ready');
     setText('[data-player-name]', player.name);
+    if (!$('[data-name-input]').matches(':focus')) $('[data-name-input]').value = player.name;
+    $('[data-name-save]').disabled = false;
+    setText('[data-account-status]', player.walletProtected ? 'Signed in with a verified Kaspa wallet.' : 'Guest profile · saved in this browser. Sign in to enable recovery.');
+    setText('[data-account-link]', player.walletProtected ? 'Sign-in & recovery options →' : 'Sign in with Kasware →');
     setText('[data-avatar-fallback]', player.name.trim().charAt(0).toUpperCase() || 'G');
     setText('[data-rank-title]', progression.title);
     setText('[data-rank-title-copy]', progression.title.toUpperCase());
@@ -204,6 +215,26 @@
 
   window.GeekProfile.renderProfile = render;
 
+  $('[data-name-form]')?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const button = $('[data-name-save]');
+    if (button.disabled) return;
+    const name = $('[data-name-input]').value.trim();
+    if (!name) { setText('[data-name-status]', 'Enter a profile name with 1–24 characters.'); return; }
+    button.disabled = true;
+    setText('[data-name-status]', 'Saving your name…');
+    try {
+      const { player } = await api('/api/session', { method: 'POST', body: JSON.stringify({ action: 'rename', displayName: name }) });
+      // Update immediately from the server receipt; a failed stats refresh cannot hide a saved edit.
+      const current = window.GeekProfile.currentProfile;
+      if (current) render({ ...current, player: { ...current.player, name: player.name } });
+      $('[data-name-input]').value = player.name;
+      setText('[data-name-status]', `Name saved: ${player.name}.`);
+    } catch (error) {
+      setText('[data-name-status]', `${error.message} Your name has not been confirmed. Reload to check before trying again.`);
+    } finally { button.disabled = false; }
+  });
+
   const initialize = async () => {
     try {
       await api('/api/session', { method: 'POST', body: '{}' });
@@ -211,6 +242,7 @@
         refreshStudy(),
         refreshQuest(),
         api('/api/profile').then(payload => render(payload.profile)).catch(error => {
+          setText('[data-name-status]', 'Your profile could not load. Reload this page to try again.');
           setText('[data-profile-state]', 'Your game records need a retry');
           window.GeekProfile.currentProfile = null; window.dispatchEvent(new Event('geek:profile-unavailable'));
           setText('[data-journey-list]', `${error.message} Your game records remain saved.`);
