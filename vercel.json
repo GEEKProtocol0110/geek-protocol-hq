@@ -56,6 +56,14 @@
       "destination": "/api/session?service=operations&path=payouts"
     },
     {
+      "source": "/ops/appearance",
+      "destination": "/api/session?service=operations&path=appearance"
+    },
+    {
+      "source": "/ops/appearance/",
+      "destination": "/api/session?service=operations&path=appearance"
+    },
+    {
       "source": "/ops/:path*",
       "destination": "/api/session?service=operations&path=:path*"
     },
