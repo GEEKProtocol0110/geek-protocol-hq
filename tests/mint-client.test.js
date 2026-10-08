@@ -17,7 +17,7 @@ const live = () => ({
 
 const settle = () => new Promise((resolve) => setImmediate(resolve));
 
-const mount = async () => {
+const mount = async ({ wallet = {}, clipboard } = {}) => {
   const elements = new Map();
   const listeners = new Map();
   const intervals = [];
@@ -30,6 +30,7 @@ const mount = async () => {
   const element = (id) => {
     if (!elements.has(id)) elements.set(id, {
       textContent: '', disabled: false, checked: false, hidden: false, style: {}, dataset: {},
+      attributes: {}, setAttribute(name, value) { this.attributes[name] = value; }, removeAttribute(name) { delete this.attributes[name]; },
       parentElement: { setAttribute() {} },
       addEventListener: (event, handler) => listeners.set(`${id}:${event}`, handler)
     });
@@ -40,7 +41,7 @@ const mount = async () => {
     addEventListener: (event, handler) => listeners.set(`document:${event}`, handler)
   };
   const window = {
-    GeekWallet: { snapshot: () => ({ installed: true, connected: true, network: 'kaspa_mainnet', address: 'kaspa:test' }) },
+    GeekWallet: { snapshot: () => ({ installed: true, connected: true, network: 'kaspa_mainnet', address: 'kaspa:test', ...wallet }) },
     kasware: {
       getNetwork: async () => 'kaspa_mainnet', getAccounts: async () => ['kaspa:test'],
       signKRC20Transaction: async (...args) => { walletCalls.push(args); return ui.sign(); }
@@ -48,13 +49,14 @@ const mount = async () => {
     setTimeout() {},
     setInterval: (handler, delay) => { assert.equal(delay, 30_000); intervals.push(handler); }
   };
-  vm.runInNewContext(source, { document, window, AbortSignal, Intl, Date, fetch: async (url, options) => {
+  vm.runInNewContext(source, { document, window, navigator: { clipboard }, AbortSignal, Intl, Date, fetch: async (url, options) => {
     requests.push({ url, options });
     return ui.response();
   } });
   await settle();
   return Object.assign(ui, {
     element, document, walletCalls, requests,
+    walletChange: (detail) => listeners.get('document:geek:wallet')({ detail }),
     click: (id) => listeners.get(`${id}:click`)(),
     acknowledge: () => listeners.get('mint-acknowledge:change')({ currentTarget: { checked: true } }),
     tick: async () => { await intervals[0](); await settle(); }
@@ -129,4 +131,90 @@ test('stale status cannot authorize a wallet request', async () => {
   await ui.click('mint-submit');
   assert.equal(ui.walletCalls.length, 0);
   assert.equal(ui.element('mint-submit').disabled, true);
+});
+
+
+test('guided steps expose the selected address and require a fresh explicit review', async () => {
+  const ui = await mount();
+  assert.equal(ui.element('mint-destination').textContent, 'kaspa:test');
+  assert.equal(ui.element('mint-step-connect').dataset.state, 'done');
+  assert.equal(ui.element('mint-step-review').attributes['aria-current'], 'step');
+  ui.acknowledge();
+  assert.equal(ui.element('mint-step-approve').attributes['aria-current'], 'step');
+  assert.equal(ui.walletCalls.length, 0);
+  ui.walletChange({ installed: true, connected: true, network: 'kaspa_mainnet', address: 'kaspa:changed' });
+  assert.equal(ui.element('mint-destination').textContent, 'kaspa:changed');
+  assert.equal(ui.element('mint-submit').disabled, true);
+  assert.equal(ui.element('mint-step-review').attributes['aria-current'], 'step');
+});
+
+test('wrong network and missing extension explain the next action without a wallet request', async () => {
+  for (const [wallet, next] of [[{network:'kaspa_testnet'}, /Switch Kasware/], [{installed:false,connected:false}, /Kasware installed/]]) {
+    const ui=await mount({wallet}); ui.acknowledge(); await ui.click('mint-submit');
+    assert.equal(ui.walletCalls.length,0); assert.equal(ui.element('mint-submit').disabled,true);
+    assert.match(ui.element('mint-next').textContent,next);
+  }
+});
+
+test('wallet approval stage locks review controls and result stays a submission receipt', async () => {
+  const copied=[];
+  const ui=await mount({clipboard:{writeText:async text=>copied.push(text)}});
+  ui.acknowledge(); let finish;
+  ui.sign=()=>new Promise(resolve=>{finish=resolve;});
+  const pending=ui.click('mint-submit'); await settle();
+  assert.equal(ui.element('mint-submit').textContent,'Waiting for Kasware approval…');
+  assert.equal(ui.element('mint-acknowledge').disabled,true);
+  assert.equal(ui.element('mint-refresh').disabled,true);
+  assert.equal(ui.element('mint-step-approve').dataset.state,'current');
+  finish({commitId:'a'.repeat(64),revealId:'b'.repeat(64)}); await pending;
+  assert.equal(ui.element('mint-result').hidden,false);
+  assert.equal(ui.element('mint-commit-id').textContent,'a'.repeat(64));
+  assert.equal(ui.element('mint-reveal-id').textContent,'b'.repeat(64));
+  assert.equal(ui.element('mint-result-address').textContent,'kaspa:test');
+  assert.equal(ui.element('mint-commit-link').href,'https://explorer.kaspa.org/txs/'+'a'.repeat(64));
+  assert.equal(ui.element('mint-explorer-link').href,'https://explorer.kaspa.org/txs/'+'b'.repeat(64));
+  assert.equal(ui.element('mint-submit').disabled,true);
+  await ui.click('mint-copy-receipt'); assert.equal(copied.length,1);
+  assert.match(copied[0],/Submission is not confirmation/); assert.match(copied[0],/Selected wallet: kaspa:test/);
+  ui.walletChange({installed:true,connected:true,network:'kaspa_mainnet',address:'kaspa:changed'});
+  assert.equal(ui.element('mint-result-address').textContent,'kaspa:test');
+  assert.equal(ui.element('mint-destination').textContent,'kaspa:changed');
+});
+
+test('unknown outcomes cannot be cleared by refreshing or toggling review; reset never resubmits', async () => {
+  const ui=await mount(); ui.acknowledge();
+  ui.sign=async()=>{throw new Error('Unknown wallet outcome');};
+  await ui.click('mint-submit'); await ui.tick(); ui.acknowledge();
+  assert.equal(ui.element('mint-submit').disabled,true);
+  assert.equal(ui.element('mint-retry').hidden,false);
+  await ui.click('mint-retry');
+  assert.equal(ui.walletCalls.length,1); assert.equal(ui.element('mint-submit').disabled,true);
+  assert.equal(ui.element('mint-retry').hidden,true);
+  ui.acknowledge(); assert.equal(ui.element('mint-submit').disabled,false);
+  assert.equal(ui.walletCalls.length,1);
+});
+
+test('account change during fresh preflight blocks wallet handoff', async () => {
+  const ui=await mount(); ui.acknowledge(); let finish;
+  ui.response=()=>new Promise(resolve=>{finish=resolve;});
+  const pending=ui.click('mint-submit'); await settle();
+  ui.walletChange({installed:true,connected:true,network:'kaspa_mainnet',address:'kaspa:changed'});
+  finish(Response.json(live())); await pending;
+  assert.equal(ui.walletCalls.length,0); assert.equal(ui.element('mint-submit').disabled,true);
+});
+
+test('invalid transaction IDs never become a receipt or explorer URL', async () => {
+  const ui=await mount(); ui.acknowledge();
+  ui.sign=async()=>({commitId:'javascript:alert(1)',revealId:'b'.repeat(64)});
+  await ui.click('mint-submit');
+  assert.equal(ui.element('mint-result').hidden,true);
+  assert.equal(ui.element('mint-submit').disabled,true);
+  assert.equal(ui.element('mint-retry').hidden,false);
+});
+
+test('clipboard refusal gives manual-copy guidance without invoking the wallet again', async () => {
+  const ui=await mount({clipboard:{writeText:async()=>{throw new Error('denied');}}});
+  ui.acknowledge(); await ui.click('mint-submit'); await ui.click('mint-copy-receipt');
+  assert.match(ui.element('mint-copy-message').textContent,/copy them manually/);
+  assert.equal(ui.walletCalls.length,1);
 });

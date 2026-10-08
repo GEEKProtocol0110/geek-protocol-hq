@@ -97,3 +97,15 @@ An unavailable indexer, malformed response, deployment mismatch, exhausted suppl
 - Live GEEK Kasplex record: <https://api.kasplex.org/v1/krc20/token/GEEK>
 
 Deployment values and live state were rechecked on 2026-09-20. Reviewers must recheck them against an independent Kaspa/KRC-20 source before accepting an audit baseline.
+
+## Guided mint experience (October 8, 2026)
+
+The page presents Connect → Review → Approve, with the full selected wallet address and a fee summary beside the review checkbox. Technical inscription/deployment details and common questions are expandable. The connection panel describes minting rather than requesting a player identity signature. Missing Kasware and wrong-network states explain the next step without invoking the wallet.
+
+Preflight and wallet approval have separate visible stages. Review and status-refresh controls are disabled during a pending request. An account/network change clears acknowledgment; an account change during preflight blocks handoff. The request remains exactly one mint, with the existing pinned deployment, Mainnet, fresh-status, fee and user-approval boundaries.
+
+A successful wallet return shows a **submission** receipt, not a confirmation of token arrival. It includes both complete transaction IDs, separate commit/reveal explorer links, the wallet selected for the request, and the local submission time. A later wallet change updates the current selected address without rewriting the previous receipt. Receipt copying is explicit, includes the selected wallet address, and falls back to manual selection if clipboard access is unavailable. Receipts are held only in page memory and are lost on reload; no wallet information is persisted or sent to analytics.
+
+An uncertain or failed wallet outcome remains blocked across status refreshes and review-checkbox changes. The owner of the wallet must inspect wallet activity and explicitly reset the request; reset clears acknowledgment and starts no transaction. A new request still requires a new acknowledgment, click, fresh preflight and wallet approval. This change does not add bulk minting or automated retries, transaction confirmation polling, new wallet adapters or an additional indexer.
+
+Validation: mint client tests cover guided readiness, wrong-network/missing-wallet guidance, pending control locks, account changes during preflight, exact submission receipts, malformed IDs, explicit error reset and clipboard failure, alongside existing outage/recovery and stale-status cases. Browser access was declined during this change; responsive CSS and native keyboard/disclosure controls are reviewed in source, but rendered-layout and real-extension acceptance remain outstanding.
