@@ -825,3 +825,5 @@ h1 em { color: var(--gold); font-style: normal; }
 /* Touch navigation and controls on compact screens. */
 @media (max-width: 850px){.main-nav a,.main-nav summary,.menu-toggle{min-height:44px}.main-nav a{display:flex;align-items:center}.main-nav{max-height:calc(100dvh - 66px);overflow-y:auto;overscroll-behavior:contain;padding-bottom:max(1rem,env(safe-area-inset-bottom))}.main-nav summary{display:flex;align-items:center}.main-nav select,.main-nav input{font-size:16px}.menu-toggle{min-width:44px}.button{touch-action:manipulation}input,select,textarea{font-size:max(16px,1em)}}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.level-track i{transition:none}}
+
+.wallet-panel__choice{display:grid;gap:.45rem;font-size:.75rem;color:var(--muted,#becfc4)}.wallet-panel__choice:has(select[hidden]){display:none}.wallet-panel__choice select{max-width:100%;border:1px solid #638574;border-radius:6px;padding:.6rem;background:#101c16;color:#edf4ef;font:inherit;font-size:16px}

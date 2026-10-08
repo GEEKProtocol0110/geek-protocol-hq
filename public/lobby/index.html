@@ -60,17 +60,17 @@
             <p data-channel-copy>Choose a room template, invite another player, and let the host start ten shared questions with server-scored standings.</p>
           </div>
 
-          <section class="wallet-panel" data-wallet-root aria-label="Kasware wallet identity">
+          <section class="wallet-panel" data-wallet-root aria-label="Kaspa wallet identity">
             <div>
-              <div class="wallet-panel__head"><i class="wallet-panel__dot"></i><span data-wallet-state>CHECKING KASWARE</span></div>
+              <div class="wallet-panel__head"><i class="wallet-panel__dot"></i><span data-wallet-state>CHECKING WALLETS</span></div>
               <div class="wallet-panel__identity"><strong data-wallet-address>Not connected</strong><span data-wallet-network>Connect to read network</span></div>
               <div class="wallet-panel__facts"><span>HOLDING <b data-wallet-geek>—</b></span><span>PLAYER IDENTITY ALPHA</span></div>
-              <p class="wallet-panel__message" data-wallet-message aria-live="polite">Checking for the Kasware wallet.</p>
+              <p class="wallet-panel__message" data-wallet-message aria-live="polite">Choose a Kaspa signing wallet.</p>
             </div>
             <div class="wallet-panel__actions">
-              <button type="button" data-wallet-connect>Connect Kasware</button>
+              <label class="wallet-panel__choice">Browser wallet<select data-wallet-provider aria-label="Choose a browser wallet" hidden></select></label><button type="button" data-wallet-connect>Connect wallet</button>
               <button type="button" data-wallet-verify hidden>Verify ownership</button>
-              <a href="https://www.kasware.xyz" target="_blank" rel="noreferrer" data-wallet-install>Get Kasware ↗</a>
+              <a href="/sign-in/">Other sign-in options →</a>
             </div>
             <p class="wallet-panel__safety"><b>Identity only.</b> A signed message proves wallet control on this device. It does not join a live server, approve a transaction, or enable payouts.</p>
           </section>

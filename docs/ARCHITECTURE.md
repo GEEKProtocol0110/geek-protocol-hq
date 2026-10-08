@@ -2,13 +2,13 @@
 
 ## System context
 
-Geek Protocol HQ is a static-first web application with Vercel Functions for trusted state transitions. Upstash Redis stores short-lived authorization state and durable Alpha records. Kasware remains the user's signing boundary; the application never requests private keys or seed phrases.
+Geek Protocol HQ is a static-first web application with Vercel Functions for trusted state transitions. Upstash Redis stores short-lived authorization state and durable Alpha records. The selected Kaspa wallet remains the user's signing boundary; the application never requests private keys or seed phrases.
 
 ```mermaid
 flowchart TB
     subgraph User[User-controlled boundary]
         B[Browser]
-        W[Kasware]
+        W[Kaspa wallet]
     end
 
     subgraph Edge[Geek Protocol web tier]
@@ -40,7 +40,7 @@ flowchart TB
 | Component | Trusted responsibility | Explicitly not trusted for |
 | --- | --- | --- |
 | Browser | Rendering, user input, wallet request initiation | Correct answers, scores, balances, moderation, payout eligibility |
-| Kasware | User approval, signatures, transaction submission | Geek Protocol game or reward state |
+| Kaspa wallet | User approval and proof signatures; Kasware also handles the current mint flow | Geek Protocol game or reward state |
 | Vercel Functions | Authorization, validation, scoring, state transitions | Custody of wallet keys |
 | Redis | Session, game, identity, lobby, contribution, and Alpha ledger state | Independent settlement accounting |
 | Kaspa indexer | Current public token deployment state | Player identity or application authorization |
@@ -90,8 +90,8 @@ The existing ranked function routes `service=challenges` to the isolated periodi
 ### Wallet identity proof
 
 1. The server issues a random five-minute challenge bound to the exact HTTPS origin, player, wallet, and action.
-2. Kasware signs human-readable challenge text in explicit Schnorr mode.
-3. The server verifies the signature and derives the Kaspa Mainnet address from the public key.
+2. The selected wallet signs the exact human-readable challenge using KIP-5. Kasware, Kaspire Extension, announced capable providers, and pasted signatures share the same verifier.
+3. The server verifies the signature and binds the public key to the single-key Kaspa Mainnet address; copied addresses alone grant no access.
 4. The challenge is consumed once and the binding transition commits atomically.
 5. Recovery increments the identity session version so older sessions fail closed.
 

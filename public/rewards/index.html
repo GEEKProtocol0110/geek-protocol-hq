@@ -72,14 +72,14 @@
 
       <section class="connected-wallet" aria-labelledby="connected-title">
         <div><span>03 / IDENTITY PROOF</span><h2 id="connected-title">Recover the player. Never expose the key.</h2><p>Kasware signs a five-minute, single-use server challenge. The server checks the signature and public-key address match, stores no signature, and never asks for transaction permission. The linked wallet can recover this Alpha identity on another browser.</p></div>
-        <section class="wallet-panel" data-wallet-root aria-label="Optional Kasware wallet connection">
+        <section class="wallet-panel" data-wallet-root aria-label="Optional Kaspa wallet connection">
           <div>
-            <div class="wallet-panel__head"><i class="wallet-panel__dot"></i><span data-wallet-state>CHECKING KASWARE</span></div>
+            <div class="wallet-panel__head"><i class="wallet-panel__dot"></i><span data-wallet-state>CHECKING WALLETS</span></div>
             <div class="wallet-panel__identity"><strong data-wallet-address>Not connected</strong><span data-wallet-network>Connect to read network</span></div>
             <div class="wallet-panel__facts"><span>HOLDING <b data-wallet-geek>—</b></span><span>OPTIONAL</span></div>
-            <p class="wallet-panel__message" data-wallet-message aria-live="polite">Checking for the Kasware wallet.</p>
+            <p class="wallet-panel__message" data-wallet-message aria-live="polite">Choose a Kaspa signing wallet.</p>
           </div>
-          <div class="wallet-panel__actions"><button type="button" data-wallet-connect>Connect Kasware</button><button type="button" data-wallet-verify hidden>Verify &amp; protect</button><a href="https://www.kasware.xyz" target="_blank" rel="noreferrer" data-wallet-install>Get Kasware ↗</a></div>
+          <div class="wallet-panel__actions"><label class="wallet-panel__choice">Browser wallet<select data-wallet-provider aria-label="Choose a browser wallet" hidden></select></label><button type="button" data-wallet-connect>Connect wallet</button><button type="button" data-wallet-verify hidden>Verify &amp; protect</button><a href="/sign-in/">Other sign-in options →</a></div>
           <p class="wallet-panel__safety"><b>Proof, not custody.</b> This feature signs human-readable text only. Settlement and withdrawals remain disabled.</p>
         </section>
       </section>

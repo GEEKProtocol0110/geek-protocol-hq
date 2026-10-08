@@ -56,7 +56,7 @@ check(payoutReview.includes("currentAddressHash === record.addressHash"), 'stale
 check(payoutReview.includes('settlementEnabled: false'), 'payout review cannot enable settlement');
 
 const wallet = await text('public/assets/wallet.js');
-check(wallet.includes("signMessage(challenge.message, { type: 'schnorr' })"), 'wallet requests explicit Schnorr signatures');
+check(wallet.includes("wallet.signMessage(message, { type: 'schnorr' })"), 'Kasware requests explicit Schnorr signatures');
 check(!wallet.includes('verifyMessage('), 'the browser is not trusted to verify wallet proofs');
 
 const mintServer = await text('server/mint.js');
