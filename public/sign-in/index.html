@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080b0b" />
+    <meta name="description" content="Sign in to Geek Protocol with Kasware, recover your saved player, or continue as a guest." />
+    <title>Sign in — Geek Protocol</title>
+    <link rel="canonical" href="https://www.geekprotocol.xyz/sign-in/" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="stylesheet" href="./assets/sign-in.css" />
+    <script defer src="/assets/site.js"></script>
+    <script defer src="./assets/sign-in.js"></script>
+    <script defer src="/assets/wallet.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to sign in</a>
+    <header class="site-header scrolled" data-header>
+      <a class="brand" href="/" aria-label="Geek Protocol home"><img src="/assets/geek-protocol-logo.png" alt="" width="48" height="48" /><span>GEEK<span class="brand-mark">//</span>HQ</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="/study/">Learn</a><a href="/quest/">Adventure</a><a href="/play/">Play</a><a href="/profile/">My HQ</a><a href="/sign-in/" aria-current="page">Sign in</a></nav>
+    </header>
+    <main id="main" class="sign-in-main">
+      <div class="sign-in-intro"><span class="section-kicker">Your player account</span><h1>Welcome back,<br /><em>Geek.</em></h1><p>Sign in with your Kasware wallet to protect this player or recover the player already linked to that wallet.</p></div>
+      <section class="sign-in-card" aria-labelledby="sign-in-title">
+        <h2 id="sign-in-title">Sign in with Kasware</h2>
+        <ol class="sign-in-steps"><li><b>Connect your wallet.</b> Open Kasware and choose your player’s wallet.</li><li><b>Sign the login message.</b> Geek Protocol verifies a one-time signature.</li><li><b>Open My HQ.</b> Continue your progress or change your profile name.</li></ol>
+        <p class="sign-in-current" data-sign-in-status role="status" aria-live="polite">Checking your player session…</p>
+        <div class="sign-in-wallet" data-wallet-root data-wallet-sign-in>
+          <span class="wallet-state" data-wallet-state>Checking Kasware…</span>
+          <dl><div><dt>Wallet</dt><dd data-wallet-address>Not connected</dd></div><div><dt>Network</dt><dd data-wallet-network>—</dd></div></dl>
+          <p data-wallet-message role="status" aria-live="polite"></p>
+          <div class="sign-in-actions"><button class="button button-primary" type="button" data-wallet-connect>Connect Kasware</button><button class="button button-primary" type="button" data-wallet-verify hidden>Sign in with Kasware</button><a class="button button-secondary" href="https://www.kasware.xyz/" target="_blank" rel="noopener noreferrer" data-wallet-install>Get Kasware ↗</a></div>
+        </div>
+        <a class="button button-primary sign-in-hq" href="/profile/" data-sign-in-hq hidden>Open My HQ →</a>
+        <p class="sign-in-note">Login currently uses Kaspa Mainnet. Signing this message has no network fee and moves no funds. Never enter a seed phrase or private key here.</p>
+        <p class="sign-in-note">Use the same wallet to recover your player on another browser. Recovery replaces this browser’s player session; separate guest progress is not merged.</p>
+      </section>
+      <div class="sign-in-guest"><a href="/profile/" data-sign-in-continue>Continue as a guest →</a><p>You can learn and play without a wallet. Guest progress stays with this browser’s session.</p></div>
+      <noscript><p>Enable JavaScript to sign in with Kasware or edit your saved player profile.</p></noscript>
+    </main>
+  </body>
+</html>

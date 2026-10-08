@@ -2,20 +2,20 @@
   "metadata": {
     "title": "GEEK Protocol — Comics Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-07",
-    "questionCount": 462,
-    "conceptCount": 462,
+    "maintainedAt": "2026-10-08",
+    "questionCount": 417,
+    "conceptCount": 417,
     "category": "Comics",
     "difficultyDistribution": {
-      "easy": 218,
-      "medium": 192,
-      "hard": 52
+      "easy": 205,
+      "medium": 168,
+      "hard": 44
     },
     "correctIndexDistribution": {
-      "0": 120,
-      "1": 104,
-      "3": 127,
-      "2": 111
+      "0": 108,
+      "1": 94,
+      "3": 110,
+      "2": 105
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -3075,30 +3075,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "COM-0372",
-      "category": "Comics",
-      "prompt": "In what year did Hulk Hogan make his debut in the World Wrestling Federation?",
-      "options": [
-        "1980",
-        "1983",
-        "1977",
-        "1979"
-      ],
-      "correctIndex": 3,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-entertainment.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0372",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "COM-0376",
       "category": "Comics",
       "prompt": "What famous playwright wrote Pygmalion, John Bulls Other Island, The Doctors Dilemma, Man and Superman, Candida?",
@@ -3120,30 +3096,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "COM-0376",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "COM-0381",
-      "category": "Comics",
-      "prompt": "Where was daredevil performer Steve-O from Jackass: The Movie born?",
-      "options": [
-        "Wimbledon, London",
-        "Los Angeles, California",
-        "Conway, Arkansas",
-        "Ontario, Canada"
-      ],
-      "correctIndex": 0,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-movies.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0381",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -3504,30 +3456,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "COM-0425",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "COM-0428",
-      "category": "Comics",
-      "prompt": "Which of these actors has Hulk Hogan not co-starred with?",
-      "options": [
-        "Christopher Lloyd",
-        "Sherman Hemsley",
-        "Ed Begley Jr.",
-        "John Ritter"
-      ],
-      "correctIndex": 3,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-entertainment.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0428",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -4035,30 +3963,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "COM-0508",
-      "category": "Comics",
-      "prompt": "In what year was Hulk Hogan inducted into the WWE Hall of Fame?",
-      "options": [
-        "2003",
-        "2000",
-        "1999",
-        "2005"
-      ],
-      "correctIndex": 3,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-entertainment.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0508",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "COM-0514",
       "category": "Comics",
       "prompt": "Which two actors have played the Batman villain, Two-Face?",
@@ -4368,30 +4272,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "COM-0560",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "COM-0561",
-      "category": "Comics",
-      "prompt": "In which of the Rocky movies did Hulk Hogan have a part?",
-      "options": [
-        "Rocky III",
-        "Rocky",
-        "Rocky IV",
-        "Rocky II"
-      ],
-      "correctIndex": 0,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-entertainment.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0561",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -4752,30 +4632,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "COM-0605",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "COM-0609",
-      "category": "Comics",
-      "prompt": "Which of these has not been used as a ring name by Hulk Hogan?",
-      "options": [
-        "The Bronze Bomb",
-        "Mr. America",
-        "Sterling Golden",
-        "The Super Destroyer"
-      ],
-      "correctIndex": 0,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-entertainment.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0609",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -6678,33 +6534,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "What was the name of the prankster, who was one of Archie Bunkers best friends on All in the Family?",
-      "options": [
-        "Stern Cunningham",
-        "Stretch Cunningham",
-        "Steve Cunningham",
-        "Stew Cunningham"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "television",
-      "sourceOrdinal": 1249,
-      "id": "COM-N-ef2ac09b488a",
-      "conceptId": "COM-N-ef2ac09b488a",
-      "category": "Comics",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "What US space mission named the command module Charlie Brown and the lunar module Snoopy?",
       "options": [
         "Apollo 7",
@@ -6813,33 +6642,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "In what city did Andre the Giant defeat Hulk Hogan for the WWF title?",
-      "options": [
-        "Detroit",
-        "Indianapolis",
-        "St. Paul",
-        "Boston"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 609,
-      "id": "COM-N-4fdf519c2fd6",
-      "conceptId": "COM-N-4fdf519c2fd6",
-      "category": "Comics",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "Name the Red Baron hunting Beagle from Charles Schultz popular comic strip, Peanuts.",
       "options": [
         "Lassie",
@@ -6865,33 +6667,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/animals",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "hard"
-    },
-    {
-      "prompt": "Which Rogers and Hammerstein musical featured the comic lament Pore Jud is Daid?",
-      "options": [
-        "CanCan",
-        "Annie Get Your Gun",
-        "Anything Goes",
-        "Oklahoma"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "music",
-      "sourceOrdinal": 1205,
-      "id": "COM-N-275914130b12",
-      "conceptId": "COM-N-275914130b12",
-      "category": "Comics",
-      "subcategory": "Music",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/music",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "What position did cartoon character Snoopy play in Charlie Browns Little League baseball team?",
@@ -7056,33 +6831,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "Sammy Davis, Jr. was a great tap dancer, actor, singer, comic actor, and a member of the Rat Pack. What was the name of the act that led to his fame?",
-      "options": [
-        "The Will Mastin Trio",
-        "The Tappers",
-        "The Hoofers",
-        "The Stylistics"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "humanities",
-      "sourceOrdinal": 779,
-      "id": "COM-N-aef39b78498d",
-      "conceptId": "COM-N-aef39b78498d",
-      "category": "Comics",
-      "subcategory": "Humanities",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/humanities",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "What is the name of the comic about a young boy, and a tiger who is actually a stuffed animal?",
       "options": [
         "Peanuts",
@@ -7191,33 +6939,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "The section of the Catskill Mountains famous for its Jewish resorts populated by comics like Rodney Dangerfield, Sid Caesar, Mel Brooks, Woody Allen, and dozens more was known as The ________ Belt.",
-      "options": [
-        "Kosher",
-        "Borscht",
-        "Klezmer",
-        "Matzo"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "world",
-      "sourceOrdinal": 2863,
-      "id": "COM-N-c24cbc029221",
-      "conceptId": "COM-N-c24cbc029221",
-      "category": "Comics",
-      "subcategory": "World",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/world",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "In the Dragon Ball Z series, Saiyans lose their power if they happen to lose what part of their body?",
       "options": [
         "arms",
@@ -7270,33 +6991,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "hard"
-    },
-    {
-      "prompt": "Which New York City school did Archie Bunker from TV series, All in the family attend?",
-      "options": [
-        "James Madison",
-        "Grover Cleveland",
-        "Long Island City",
-        "William Cullen Bryant"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "television",
-      "sourceOrdinal": 154,
-      "id": "COM-N-b9b44342e880",
-      "conceptId": "COM-N-b9b44342e880",
-      "category": "Comics",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Cesar Romero played which iconic Batman villain from the 1960's TV show?",
@@ -7515,33 +7209,6 @@
       "difficulty": "medium"
     },
     {
-      "prompt": "When did Planters Peanuts begin using Mr. Peanut as its mascot?",
-      "options": [
-        "1914",
-        "1915",
-        "1920",
-        "1916"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "world",
-      "sourceOrdinal": 885,
-      "id": "COM-N-d11423347a20",
-      "conceptId": "COM-N-d11423347a20",
-      "category": "Comics",
-      "subcategory": "World",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/world",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "What kind of magic does Gray Fullbuster use in the Fairy Tail manga and anime series?",
       "options": [
         "Water",
@@ -7731,60 +7398,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "What was the first name of Archie Bunkers brother on the sitcom All in the Family?",
-      "options": [
-        "Fred",
-        "John",
-        "Chuck",
-        "Billy"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "television",
-      "sourceOrdinal": 1254,
-      "id": "COM-N-ba49ecaf2078",
-      "conceptId": "COM-N-ba49ecaf2078",
-      "category": "Comics",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "What is the symbol for Krypton?",
-      "options": [
-        "K",
-        "Ky",
-        "Kr",
-        "Kp"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 1026,
-      "id": "COM-N-43c5f25bc6f8",
-      "conceptId": "COM-N-43c5f25bc6f8",
-      "category": "Comics",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "Who is the main character with yellow hair in the anime Naruto?",
       "options": [
         "Kakashi",
@@ -7891,33 +7504,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Which Rogers and Hammerstein musical features the comic character Ado Annie?",
-      "options": [
-        "Oklahoma",
-        "Carousel",
-        "MAME",
-        "Barnum"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "humanities",
-      "sourceOrdinal": 226,
-      "id": "COM-N-11fc4ba9e683",
-      "conceptId": "COM-N-11fc4ba9e683",
-      "category": "Comics",
-      "subcategory": "Humanities",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/humanities",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "What is the name of Gokus powerful beam blast attack in Dragon Ball Z?",
@@ -8053,60 +7639,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "In the sitcom All in the family, Archie Bunker was a dock foreman for what company?",
-      "options": [
-        "Bills bait and Tackle",
-        "Johnny Estradas Hardware Goods",
-        "Freemans Bait and Tackle",
-        "Prendergast Tool and Die company"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "television",
-      "sourceOrdinal": 156,
-      "id": "COM-N-ff61160403c8",
-      "conceptId": "COM-N-ff61160403c8",
-      "category": "Comics",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
-      "prompt": "Which comic actor starred with Shelley Winters in the Poseidon Adventure and was famed on the Dean Martin Roast programs for his skit on Never Got a Dinner?",
-      "options": [
-        "Jerry Lewis",
-        "Red Skelton",
-        "Max Baird",
-        "Red Buttons"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "rated",
-      "sourceOrdinal": 534,
-      "id": "COM-N-bd52bdc66234",
-      "conceptId": "COM-N-bd52bdc66234",
-      "category": "Comics",
-      "subcategory": "Rated",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/rated",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Who is the author of the manga series \"Astro Boy\"?",
@@ -8487,33 +8019,6 @@
       "difficulty": "hard"
     },
     {
-      "prompt": "Which of these movies did not feature comic actor Jonathan Winters?",
-      "options": [
-        "The Shadow 1994",
-        "The Adventures of Rocky and Bullwinkle 2000",
-        "Hollywood, Hollywood 1989",
-        "Moon Over Parador 1988"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "celebrities",
-      "sourceOrdinal": 2061,
-      "id": "COM-N-b96c31ef7b29",
-      "conceptId": "COM-N-b96c31ef7b29",
-      "category": "Comics",
-      "subcategory": "Celebrities",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/celebrities",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "Which of these is NOT the name of one of the Calvin and Hobbes books?",
       "options": [
         "The Essential Calvin and Hobbes",
@@ -8539,60 +8044,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/entertainment",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
-    },
-    {
-      "prompt": "In Poison a la Carte, Archie Goodwin compares the color of a womans hair to cornsilk before it begins to turn. What color is cornsilk before it begins to turn?",
-      "options": [
-        "Pinkish white",
-        "Black",
-        "Light brown",
-        "Yellowish green"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "newest",
-      "sourceOrdinal": 949,
-      "id": "COM-N-aa6820ee5f6b",
-      "conceptId": "COM-N-aa6820ee5f6b",
-      "category": "Comics",
-      "subcategory": "Newest",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/newest",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "What was the first name of the woman with whom Archie Bunker nearly had an affair on the show All in the Family?",
-      "options": [
-        "Dotty",
-        "Deborah",
-        "Denise",
-        "Dorothy"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "television",
-      "sourceOrdinal": 1251,
-      "id": "COM-N-4c6ec48c979c",
-      "conceptId": "COM-N-4c6ec48c979c",
-      "category": "Comics",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "In which manga did the \"404 Girl\" from 4chan originate from?",
@@ -8946,33 +8397,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "This legendary stand-up comic, who starred in many cult movies, such as Reservoir Dogs and Coffee and Cigarettes, is famous for his slow, monotonous voice and deadpan delivery.",
-      "options": [
-        "Steve Buscemi",
-        "Steven Wright",
-        "Roberto Benigni",
-        "Vince Vaughn"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "celebrities",
-      "sourceOrdinal": 2324,
-      "id": "COM-N-2aa3beba5bba",
-      "conceptId": "COM-N-2aa3beba5bba",
-      "category": "Comics",
-      "subcategory": "Celebrities",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/celebrities",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "Which nemesis of Batman was portrayed by Burgess Meredith in the “Batman” TV series?",
       "options": [
         "Mr. Freeze",
@@ -8998,33 +8422,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/rated",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "Chad and Jason have a collection of comic books. Chad has 23 books. Together, Chad and Jason have a total of 59 books. How many books does Jason have?",
-      "options": [
-        "36",
-        "82",
-        "26",
-        "35"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "for-kids",
-      "sourceOrdinal": 138,
-      "id": "COM-N-09d126251661",
-      "conceptId": "COM-N-09d126251661",
-      "category": "Comics",
-      "subcategory": "For Kids",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/for-kids",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "In \"One Piece\", what does \"the Pirate King\" mean to the captain of the Straw Hat Pirates?",
@@ -9106,60 +8503,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "When US President James Garfield was assassinated, this famous inventor tried to use his new metal detector to help the surgeons find the bullet.",
-      "options": [
-        "Thomas Alva Edison",
-        "Nikolai Tesla",
-        "Samuel F. B. Morse",
-        "Alexander G. Bell"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "general",
-      "sourceOrdinal": 1534,
-      "id": "COM-N-79a5ae120452",
-      "conceptId": "COM-N-79a5ae120452",
-      "category": "Comics",
-      "subcategory": "General",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "Who played the role of Archie Bunker on 1970s CBS sitcom, All in the Family?",
-      "options": [
-        "Paul Downing",
-        "Carroll OConnor",
-        "Ron Howard",
-        "Don Rickles"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "television",
-      "sourceOrdinal": 198,
-      "id": "COM-N-0bf912af62e8",
-      "conceptId": "COM-N-0bf912af62e8",
-      "category": "Comics",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "When was Marvel Comics founded?",
@@ -9324,33 +8667,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Which of these works by Adam de la Halle is considered to be a forerunner of comic opera?",
-      "options": [
-        "La Chanson du roi de Sicile",
-        "La chanson du Henri de la Halle",
-        "Le jeu de pelerin",
-        "Le jeu de Robin et Marion"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "music",
-      "sourceOrdinal": 4049,
-      "id": "COM-N-a8411ed2b9dc",
-      "conceptId": "COM-N-a8411ed2b9dc",
-      "category": "Comics",
-      "subcategory": "Music",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/music",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "Orochimarus Curse is the title of which volume of the Naruto manga?",
       "options": [
         "4",
@@ -9432,60 +8748,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Which comic great is Don Ricles best friend?",
-      "options": [
-        "Tom Poston",
-        "Andy Grifith",
-        "Bob Newhart",
-        "Henny Youngman"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "celebrities",
-      "sourceOrdinal": 2828,
-      "id": "COM-N-82d2b9047c2e",
-      "conceptId": "COM-N-82d2b9047c2e",
-      "category": "Comics",
-      "subcategory": "Celebrities",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/celebrities",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "This man, who appeared in the British film noir The Third man, said, I hate television. I hate it almost as much as I hate peanuts. But I cant stop eating peanuts.",
-      "options": [
-        "Steve Allen",
-        "Orson Welles",
-        "Newton P. Minow",
-        "Ernie Kovacs"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "television",
-      "sourceOrdinal": 2772,
-      "id": "COM-N-c5a3c5e77ec3",
-      "conceptId": "COM-N-c5a3c5e77ec3",
-      "category": "Comics",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "Who was the inspiration for Cuthbert Calculus in the Tintin series?",
       "options": [
         "Will Morris",
@@ -9511,60 +8773,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "This comedian, author of the humorous book Yeah I Said It, won the 2001 award for Funniest Female Stand-Up Comic. She is known for her blunt observations on current events and on issues such as the difference between the sexes and races.",
-      "options": [
-        "Shirley Hemphill",
-        "Retta",
-        "Jan McInnis",
-        "Wanda Sykes"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "celebrities",
-      "sourceOrdinal": 1955,
-      "id": "COM-N-087aa2ec1364",
-      "conceptId": "COM-N-087aa2ec1364",
-      "category": "Comics",
-      "subcategory": "Celebrities",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/celebrities",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
-      "prompt": "Why are peanuts believed to be bad for auto racing?",
-      "options": [
-        "They distract drivers while in the car.",
-        "Fans throw them at cars.",
-        "They get thrown on the track",
-        "They are considered bad luck."
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 1124,
-      "id": "COM-N-88a44e82efa0",
-      "conceptId": "COM-N-88a44e82efa0",
-      "category": "Comics",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "Who taught Sasuke the Chidori technique in the Naruto series?",
@@ -9702,33 +8910,6 @@
       "difficulty": "hard"
     },
     {
-      "prompt": "Advise. Down on 42nd Street You dont tug on Supermans cape and You dont pull the mask off the old Lone Ranger and most of all, you dont mess around with Big Jim Walker.",
-      "options": [
-        "Stagger Lee",
-        "Mister McCoy",
-        "Slim",
-        "Willie C"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "music",
-      "sourceOrdinal": 1617,
-      "id": "COM-N-071807496ad4",
-      "conceptId": "COM-N-071807496ad4",
-      "category": "Comics",
-      "subcategory": "Music",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/music",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "In \"One Piece,\" what color is Tony Tony Chopper's nose?",
       "options": [
         "Black",
@@ -9756,33 +8937,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "What was the name of the bar, that Archie Bunker used to frequent in All in the family?",
-      "options": [
-        "O Neills Pub",
-        "Kelseys Bar",
-        "The Manor Lounge",
-        "Murrays Bar and Grill"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "television",
-      "sourceOrdinal": 161,
-      "id": "COM-N-11bafe4e1551",
-      "conceptId": "COM-N-11bafe4e1551",
-      "category": "Comics",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "In Naruto: Shippuden, which of the following elements is a \"Kekkei Tōta?\"",
       "options": [
         "Any Doujutsu",
@@ -9808,33 +8962,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "In the 1970s television sitcom All in the Family, what was the nickname by which Archie called Gloria?",
-      "options": [
-        "Little Girl",
-        "Meathead",
-        "Dingbat",
-        "Pinko"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "general",
-      "sourceOrdinal": 548,
-      "id": "COM-N-55b6cb081c0c",
-      "conceptId": "COM-N-55b6cb081c0c",
-      "category": "Comics",
-      "subcategory": "General",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "What is the name of Charlie Browns little sister in the Peanuts comic strip?",
@@ -10053,33 +9180,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "In The Black Mountain, Nero Wolfe and his assistant Archie Goodwin are traveling in Europe and are almost arrested and taken to Titograd. By what name do we know Titograd?",
-      "options": [
-        "Belgrade, Serbia",
-        "Sarajevo, Bosnia-Herzegovina",
-        "Bucharest, Romania",
-        "Podgorica, Montenegro"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "newest",
-      "sourceOrdinal": 943,
-      "id": "COM-N-20ed4f638318",
-      "conceptId": "COM-N-20ed4f638318",
-      "category": "Comics",
-      "subcategory": "Newest",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/newest",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "In the \"Archie\" comics, who was Jughead's first girlfriend?",
       "options": [
         "Margret",
@@ -10105,33 +9205,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Archie Bunker, a character on All in the Family would frequent this local bar, which he later bought and renamed Archie Bunkers Place.",
-      "options": [
-        "Kelcys Bar",
-        "Tommys Place",
-        "The White Room",
-        "Murrays Bar"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "television",
-      "sourceOrdinal": 624,
-      "id": "COM-N-ac5ea59de2d0",
-      "conceptId": "COM-N-ac5ea59de2d0",
-      "category": "Comics",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Who was Batgirl’s father, portrayed by Neil Hamilton in the TV series Batman?",
@@ -10186,33 +9259,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/newest",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
-    },
-    {
-      "prompt": "Alexander Graham Bell, known as the inventor of the telephone, is also credited with the invention of this device, which was first used after the assassination of President James Garfield.",
-      "options": [
-        "metal detector",
-        "phonograph",
-        "audiometer",
-        "air conditioning"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "general",
-      "sourceOrdinal": 1839,
-      "id": "COM-N-3cd165e9a31a",
-      "conceptId": "COM-N-3cd165e9a31a",
-      "category": "Comics",
-      "subcategory": "General",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Which One Piece character is the carpenter who remodeled himself into a cyborg?",
@@ -10321,33 +9367,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
-    },
-    {
-      "prompt": "Hulk Hogan had two title defences on Saturday Nights Main Event in 1985. Which of the listed wrestlers was one of his opponents?",
-      "options": [
-        "Roddy Piper",
-        "Cowboy Bob Orton",
-        "Big John Studd",
-        "Mr. Wonderful"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "sports",
-      "sourceOrdinal": 255,
-      "id": "COM-N-f01991044f8e",
-      "conceptId": "COM-N-f01991044f8e",
-      "category": "Comics",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Who portrays Batman’s nemesis, The Joker, on the TV series “Batman”?",
@@ -10483,33 +9502,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/rated",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "In The League of Frightened Men, Archie Goodwin uses the term viva voce incorrectly. What does viva voce mean?",
-      "options": [
-        "by word of mouth",
-        "secret",
-        "out loud",
-        "cheerful"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "newest",
-      "sourceOrdinal": 945,
-      "id": "COM-N-e2762e0822b2",
-      "conceptId": "COM-N-e2762e0822b2",
-      "category": "Comics",
-      "subcategory": "Newest",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/newest",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "What One Piece chracter, nicknamed King of Snipers Sogeking, is the crews marksman?",
@@ -10755,33 +9747,6 @@
       "difficulty": "medium"
     },
     {
-      "prompt": "In the series All in the Family, what nickname was given to Michael Stivic by his father-in-law, Archie Bunker?",
-      "options": [
-        "Meathead",
-        "Dummy",
-        "Dingbat",
-        "Big Butt"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "television",
-      "sourceOrdinal": 158,
-      "id": "COM-N-8284e94feb43",
-      "conceptId": "COM-N-8284e94feb43",
-      "category": "Comics",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "Who was the Author of the manga Uzumaki?",
       "options": [
         "Noboru Takahashi",
@@ -10834,60 +9799,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/rated",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
-    },
-    {
-      "prompt": "Anything You Can Do I Can Do Better is a comic duet from which Broadway/Hollywood musical?",
-      "options": [
-        "Gypsy",
-        "Annie",
-        "Anything Goes",
-        "Annie Get Your Gun"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "music",
-      "sourceOrdinal": 1781,
-      "id": "COM-N-46b38a1db665",
-      "conceptId": "COM-N-46b38a1db665",
-      "category": "Comics",
-      "subcategory": "Music",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/music",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "The Madonna/Britney Spears kiss paled in comparison to this kiss bestowed on Americas best known bigot, Archie Bunker. Who kissed Archie Bunker on the count of three?",
-      "options": [
-        "Tiny Tim",
-        "Liberace",
-        "Meathead",
-        "Sammy Davis Jr."
-      ],
-      "correctIndex": 3,
-      "sourceFile": "television",
-      "sourceOrdinal": 1642,
-      "id": "COM-N-25b8f6553d0b",
-      "conceptId": "COM-N-25b8f6553d0b",
-      "category": "Comics",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "Charles Schulz, the creator of Peanuts passed away in what year?",
@@ -11079,33 +9990,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "The face (good guy) team in the main event of the 1988 Survivor Series consisted of Hulk Hogan, Randy Savage, Hillbilly Jim, Hercules, and what other wrestler?",
-      "options": [
-        "Jake The Snake Roberts",
-        "Brutus Beefcake",
-        "Tito Santana",
-        "Koko B. Ware"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "sports",
-      "sourceOrdinal": 612,
-      "id": "COM-N-c18a46f94005",
-      "conceptId": "COM-N-c18a46f94005",
-      "category": "Comics",
-      "subcategory": "Sports",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/sports",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "What is Lucy and Linuss last name in the cartoon strip Peanuts?",
       "options": [
         "van Pelt",
@@ -11266,33 +10150,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "On the TV show All in the Family the Jeffersons were introduced as Archie Bunkers neighbors. What was the first name of George Jeffersons brother who appeared in a recurring role on the hit show?",
-      "options": [
-        "Harvey",
-        "Henry",
-        "Herbert",
-        "Harold"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "television",
-      "sourceOrdinal": 1250,
-      "id": "COM-N-e284268d7427",
-      "conceptId": "COM-N-e284268d7427",
-      "category": "Comics",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "What character did Arnold Schwarzenegger play in the 1997 movie Batman Robin?",
@@ -11511,33 +10368,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "This TV mom, who had a daughter named Gloria, was married to the working class bigot Archie.",
-      "options": [
-        "Marcia Brady",
-        "Edith Bunker",
-        "Carol Brady",
-        "Louise Jefferson"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "television",
-      "sourceOrdinal": 29,
-      "id": "COM-N-f957b341a70a",
-      "conceptId": "COM-N-f957b341a70a",
-      "category": "Comics",
-      "subcategory": "Television",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "What does Naruto dream of being in the self-titled anime series?",
       "options": [
         "a pizza man",
@@ -11671,33 +10501,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/celebrities",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
-    },
-    {
-      "prompt": "Buster Keaton, famous for the deadpan expression on his face, was an influential silent-film comic actor. Who gave him the nickname, Buster?",
-      "options": [
-        "Florenz Ziegfeld",
-        "His brothers",
-        "Harry Houdini",
-        "His father"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "rated",
-      "sourceOrdinal": 936,
-      "id": "COM-N-60e44b890b9e",
-      "conceptId": "COM-N-60e44b890b9e",
-      "category": "Comics",
-      "subcategory": "Rated",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/rated",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "What popular fictional villain did Jack Nicholson portray in the 1989 movie Batman?",

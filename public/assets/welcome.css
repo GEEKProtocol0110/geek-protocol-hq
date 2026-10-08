@@ -42,6 +42,7 @@
 .welcome-panel>summary:hover { background:#203039; border-radius:13px; }
 .welcome-panel :where(section[id],h2[id]),.welcome-page [id] { scroll-margin-top:90px; }
 .welcome-panel-content { min-width:0; }
+.welcome-page .hero-return{margin:.7rem 0 0}.welcome-page .hero-return a{display:inline-flex;align-items:center;min-height:44px;color:#70e6dc;font-size:.95rem;font-weight:750}
 .welcome-family { max-width:var(--welcome-max); margin:2.5rem auto; padding:1.75rem 2rem; border:1px solid #4b6054; border-radius:16px; background:linear-gradient(110deg,#1d2c24,#152127); display:flex; gap:2rem; align-items:center; justify-content:space-between; }
 .welcome-family h2 { font-size:1.6rem; margin:.4rem 0; }
 .welcome-family p { font-size:.95rem; color:var(--welcome-copy); margin:.5rem 0 0; }

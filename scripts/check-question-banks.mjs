@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import { categoryFiles, loadQuestionBank } from '../server/questions.js';
@@ -6,6 +7,9 @@ import { promptIdentity, promptTerms, similarQuestion } from '../server/question
 
 export const checkQuestionBanks = () => {
   const report = JSON.parse(readFileSync('docs/question-maintenance.json', 'utf8'));
+  const review = JSON.parse(readFileSync('docs/editorial-review.json', 'utf8'));
+  const editorialIds = new Set(review.retirements.map(q => q.id));
+  assert.equal(editorialIds.size, review.retirementCount);
   const ids = new Set(), concepts = new Set(), prompts = new Set();
   const termIndex = new Map(), questions = [];
   let active = 0, retired = 0;
@@ -13,7 +17,9 @@ export const checkQuestionBanks = () => {
     const bank = loadQuestionBank(category);
     const summary = report.categories[category];
     assert.equal(bank.questions.length, summary.after, category);
-    assert.equal(summary.after, summary.cleaned * 2, `${category}: double the cleaned pool`);
+    // The expansion milestone is historical. Editorial removals must not be
+    // padded with unreviewed replacements just to preserve a marketing count.
+    assert.equal(summary.after, summary.cleaned + summary.added - (summary.editorialRemoved || 0), `${category}: reviewed pool accounting`);
     assert.equal(summary.added, summary.cleaned, category);
     const tiers = { easy: 0, medium: 0, hard: 0 };
     for (const q of bank.questions) {
@@ -30,6 +36,7 @@ export const checkQuestionBanks = () => {
       assert.equal(new URL(q.source).protocol, 'https:', q.id);
       assert.ok(['source-checked', 'draft-needs-human-review'].includes(q.reviewStatus), q.id);
       assert.ok(!q.derivedVariant && !q.retiredReason, q.id);
+      assert.ok(!editorialIds.has(q.id), `${q.id}: editorial hold entered active pool`);
       assert.ok(!/Proof-of-Learning challenge:|knowledge check:/i.test(q.prompt), q.id);
       assert.ok(!/sound clip|audio clip|following poem|following lyrics|in the picture|\uFFFD/i.test(q.prompt), q.id);
       assert.ok(!q.options.some(o => /^(?:true|false)$/i.test(o.trim()) || /\b(?:all|none|both|neither) (?:of )?(?:these|the above)\b/i.test(o)), q.id);
@@ -62,12 +69,21 @@ export const checkQuestionBanks = () => {
       assert.deepEqual(bank.byId.get(q.id).options, q.options, q.id);
       assert.equal(bank.byId.get(q.id).correctIndex, q.correctIndex, q.id);
     }
+    for (const decision of review.retirements.filter(q => q.category === category)) {
+      const q = legacy.questions.find(q => q.id === decision.id);
+      assert.ok(q, `${decision.id}: missing retired compatibility record`);
+      assert.equal(q.retiredReason, `editorial-${decision.reason}`, decision.id);
+      assert.equal(q.editorialReviewNote, decision.note, decision.id);
+      const hash = createHash('sha256').update(JSON.stringify([q.prompt, q.options, q.correctIndex])).digest('hex');
+      assert.equal(hash, decision.answerKeyHash, `${decision.id}: previously issued answer changed`);
+    }
     active += bank.questions.length; retired += legacy.questions.length;
   }
   assert.equal(active, report.activeQuestions);
-  assert.equal(active, report.cleanedBaseline * 2);
+  assert.equal(active, report.cleanedBaseline + report.addedQuestions - report.editorialRetiredRows);
   assert.equal(retired, report.retiredRows);
-  assert.equal(report.originalRows - retired, report.cleanedBaseline);
+  assert.equal(report.originalRows - (retired - report.editorialRetiredRows), report.cleanedBaseline);
+  assert.equal(report.editorialRetiredRows, review.retirementCount);
   return { categories: Object.keys(categoryFiles).length, active, retired };
 };
 

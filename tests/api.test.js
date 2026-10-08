@@ -418,6 +418,55 @@ const startSession = async (displayName) => {
   return res.headers['set-cookie'].split(';')[0];
 };
 
+test('profile name edits belong to the authenticated player and survive stale game writes', async () => {
+  const cookie = await startSession('Original Geek');
+  const playerId = sessionIdFromCookie(cookie);
+  const stranger = await startSession('Other Geek');
+  const stale = await loadProfile(playerId);
+  const rename = async (body, auth = cookie) => {
+    const res = response(); await sessionHandler(request('POST', { action: 'rename', ...body }, auth), res); return res;
+  };
+  assert.equal((await rename({ displayName: 'New Geek' }, '')).statusCode, 401);
+  for (const name of ['', '   ', '<>', 'x'.repeat(25), 123]) assert.equal((await rename({ displayName: name })).statusCode, 400);
+  const saved = await rename({ displayName: '  New <Geek>  ', playerId: sessionIdFromCookie(stranger) });
+  assert.equal(saved.statusCode, 200);
+  assert.equal(saved.body.player.name, 'New Geek');
+  stale.xp = 500; await saveProfile(playerId, stale);
+  const profile = response(); await profileHandler(request('GET', undefined, cookie), profile);
+  assert.equal(profile.body.profile.player.name, 'New Geek');
+  assert.equal(profile.body.profile.stats.xp, 500);
+  const otherProfile = response(); await profileHandler(request('GET', undefined, stranger), otherProfile);
+  assert.equal(otherProfile.body.profile.player.name, 'Other Geek');
+  const refresh = response(); await sessionHandler(request('POST', {}, cookie), refresh);
+  assert.equal(refresh.body.player.name, 'New Geek');
+});
+
+test('rate-limited profile edits cannot change a saved name', async () => {
+  const cookie = await startSession('Limited Geek');
+  strings.set(`geek:rate:session:${sessionIdFromCookie(cookie)}`, '40');
+  const res = response(); await sessionHandler(request('POST', { action: 'rename', displayName: 'Blocked Edit' }, cookie), res);
+  assert.equal(res.statusCode, 429);
+  const profile = response(); await profileHandler(request('GET', undefined, cookie), profile);
+  assert.equal(profile.body.profile.player.name, 'Limited Geek');
+});
+
+test('a name-store outage does not replace an existing player session', async () => {
+  const cookie = await startSession('Outage Geek'), id = sessionIdFromCookie(cookie);
+  const before = strings.get(`geek:session:${id}`), fetchBefore = global.fetch;
+  global.fetch = async (url, options) => {
+    const command = JSON.parse(options.body);
+    if (command[0] === 'GET' && command[1] === `geek:player-name:${id}`) return new Response('{}', { status: 503 });
+    return fetchBefore(url, options);
+  };
+  try {
+    const res = response(); await sessionHandler(request('POST', {}, cookie), res);
+    assert.equal(res.statusCode, 500);
+    assert.equal(res.headers['set-cookie'], undefined);
+    assert.equal(strings.get(`geek:session:${id}`), before);
+    assert.equal(strings.get(`geek:player-name:${id}`), 'Outage Geek');
+  } finally { global.fetch = fetchBefore; }
+});
+
 const sessionIdFromCookie = (cookie) => cookie.split('=')[1];
 
 test('levels, prestige, category mastery, and journey history derive from server XP', () => {
@@ -1013,6 +1062,18 @@ test('a server-verified wallet proof links and recovers one durable player ident
   }, secondCookie), recoveryRes);
   assert.equal(recoveryRes.statusCode, 200);
   assert.equal(recoveryRes.body.recovered, true);
+  const recoveredName = response();
+  await profileHandler(request('GET', undefined, secondCookie), recoveredName);
+  assert.equal(recoveredName.body.profile.player.name, 'Recoverable Geek');
+  const renamedRecovery = response();
+  await sessionHandler(request('POST', { action: 'rename', displayName: 'My Recovered Name' }, secondCookie), renamedRecovery);
+  assert.equal(renamedRecovery.statusCode, 200);
+  const revokedRename = response();
+  await sessionHandler(request('POST', { action: 'rename', displayName: 'Old Session Edit' }, firstCookie), revokedRename);
+  assert.equal(revokedRename.statusCode, 401);
+  const confirmedRecovery = response();
+  await profileHandler(request('GET', undefined, secondCookie), confirmedRecovery);
+  assert.equal(confirmedRecovery.body.profile.player.name, 'My Recovered Name');
   assert.deepEqual((await studyCall({ action: 'progress' }, secondCookie)).body.progress, learningSaved);
   assert.equal((await studyCall({ action: 'progress' }, firstCookie)).statusCode, 401);
   assert.equal((await studyCall({ action: 'resume', runId: learningStart.run.id }, secondCookie)).statusCode, 404);

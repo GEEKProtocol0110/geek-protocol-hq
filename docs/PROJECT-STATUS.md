@@ -169,3 +169,10 @@ All eight HQ pools now total 8,048 distinct active questions, twice the final cl
 `/ops/` is a private owner home with service health, active bank counts, reserve configuration and links to `/ops/questions/`, `/ops/activity/` and `/ops/payouts/`. One owner sign-in opens the configured workspaces; their APIs validate the short-lived owner session and permission server-side. Existing dedicated role keys remain server secrets and remain available to direct API callers. The browser does not receive or ask for role keys. Navigation and Clear view clear private records and invalidate pending replies; Sign out revokes the session. Older page-only sessions require a fresh login after this change. Owner and role-key rotations invalidate sessions. Cookie-based writes require trusted HTTPS Origin and JSON. Notes, confirmations, separate question publication and disabled token settlement remain in place.
 
 Use a dedicated `OPS_ACCESS_TOKEN` when set, or the existing CCE key while absent. Set a distinct owner key before sharing moderator access because the fallback grants all configured owner permissions. The legacy `/moderate/` namespace redirects to Operations. See [Operations](OPERATIONS.md).
+
+
+## Editorial and player-journey review — October 8, 2026
+
+The active pool now contains 7,776 questions after 272 explicit editorial retirements. All eight categories retain complete Gauntlet capacity; preserved server-only answer keys support previously issued runs. No remaining draft is promoted to source-checked. The corrected remaining count is 3,598 new licensed imports for item-level factual and difficulty review. See [Editorial Review](EDITORIAL-REVIEW.md).
+
+The HTTPS/real-Redis browser walkthrough covers mobile learning, reload, saved progress, focused mistake review, lost-answer replies, outages and stalled requests. Study now has a 15-second deadline with manual retry; Play, Lobby, reward/recovery and wallet session setup preserve chosen player names. Phone-width emulation is not a physical-phone or real-extension signoff. See [Player Journey Review](PLAYER-JOURNEY-REVIEW.md).

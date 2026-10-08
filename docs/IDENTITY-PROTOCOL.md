@@ -69,6 +69,10 @@ The preference remains ineligible for settlement. `ownershipVerified` is true on
 
 ## Recovery boundary
 
+Home and My HQ expose `/sign-in/`: connect Kasware, sign the existing one-time identity challenge, then open My HQ. Connecting alone is not authentication. Existing verified sessions can continue without another signature; missing-wallet and wrong-network states explain the next step. This flow uses the existing Mainnet proof and requests no transaction.
+
+My HQ exposes **Edit profile name** on the identity card. An explicit `POST /api/session` with `action: "rename"` requires a valid current session, validates a 1–24-character name, and applies rate limits before writing. Names are stored at `geek:player-name:<stable-player-id>` separately from game profiles; stale score/profile writes cannot undo edits. Session reads resolve that durable name, including after wallet recovery. Existing sessions seed a missing name with `SET NX`; automatic refresh cannot replace a chosen name. Display names are public labels, not unique login identifiers. The legacy explicit lobby editor writes the same name record.
+
 Recovery restores the persistent player ID and its profile, XP, level, prestige, bounded journey history, Alpha balance, leaderboard identity, C.C.E. contribution history, and payout preference. It does not restore an in-progress ranked run or lobby seat, which remain bound to an ephemeral browser session.
 
 The current Alpha supports one immutable recovery wallet per player. Payout-setting mutations now create persistent in-product notices, but out-of-band email or mobile alerts, wallet rotation, social recovery, and administrative recovery remain deliberately absent pending separate design and review.

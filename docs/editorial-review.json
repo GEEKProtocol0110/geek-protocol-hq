@@ -1,0 +1,2253 @@
+{
+  "date": "2026-10-08",
+  "screenedQuestions": 8048,
+  "newLicensedImportsScreened": 3856,
+  "scope": "Targeted category/context and unsupported-claim review, not complete factual validation or difficulty calibration.",
+  "retainedFlaggedIds": [
+    "COM-0698",
+    "SF-0065",
+    "SF-0102",
+    "SF-0103",
+    "SF-0165",
+    "SF-0295",
+    "SF-0305",
+    "SF-N-9d49ec275f96",
+    "SF-N-5eb4a8a66e19",
+    "SF-N-fc227f843edd",
+    "SF-N-b2f7c0f5e9cc",
+    "TECH-0256"
+  ],
+  "retirements": [
+    {
+      "id": "MOV-N-a0190e23dec8",
+      "category": "movies",
+      "difficulty": "medium",
+      "reason": "missing-context",
+      "note": "The prompt lacks the clip, reference, named film or identifying context needed to choose an answer.",
+      "answerKeyHash": "b6d4f37c4a1f0c1fb261f6c375cd2baa43712a8484ddb38c5c8f93b03f71a9b6"
+    },
+    {
+      "id": "TECH-0199",
+      "category": "technology",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "9a167df52f31229e57b242590c194d3a134a025f8dd82f43ce5f2e6cb3405609"
+    },
+    {
+      "id": "TECH-0401",
+      "category": "technology",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "b5665aac58024a94b1f8ef7dbba9807044bf1a5ab27b27e681271ae28ca05a7a"
+    },
+    {
+      "id": "TECH-0740",
+      "category": "technology",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "9fa369ab62983eec2644bb93cd6ee0822d8789006d56ef9830606cd7af597a94"
+    },
+    {
+      "id": "TECH-0795",
+      "category": "technology",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "3ad96f33b0487d9342e4177ff7afcee23869251a7fdd7e77a544f1a42bb98d14"
+    },
+    {
+      "id": "TECH-0890",
+      "category": "technology",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "11643b6d1dc20a2af4a54dd78d397c86befb3e61e16641365869907b487b1701"
+    },
+    {
+      "id": "TECH-N-9472d232e840",
+      "category": "technology",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "97204a274c791811f7904ba30fca3258b81d8f2b211f678542b6f596df3dc6ac"
+    },
+    {
+      "id": "TECH-N-767b3eb89d47",
+      "category": "technology",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "2309d205c12c2722582a7e0b027b563725e0dfcf523e32371584677ab52b91a1"
+    },
+    {
+      "id": "TECH-N-66fbe1fd88f0",
+      "category": "technology",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "db41c967564aa2cc10765b9ee1bc670dc60cd4440e7b3b4528d49ccbcf8425d8"
+    },
+    {
+      "id": "TECH-N-c2c5f93203e6",
+      "category": "technology",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "238206097c76f9d2ead9edaff1c24883b48a9dd6560cf59fecaba1ee20d72e3d"
+    },
+    {
+      "id": "TECH-N-d188aa4ebe3f",
+      "category": "technology",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "c96ccd69000b2fa65b691ebb82bbdf118d730c50ec365db8f2d2665e278b13b5"
+    },
+    {
+      "id": "TECH-N-f467262df0fd",
+      "category": "technology",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "bbac15a5a8e9df4d4aaa1838a1399b789e02190dfbc4b23d87f6b1f1cebf020b"
+    },
+    {
+      "id": "TECH-N-24bff940ae6b",
+      "category": "technology",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "a59930c8bb9b06dd6128c7c6716c19ae9765833d0b20887eabf7c07ffe739435"
+    },
+    {
+      "id": "TECH-N-7bb69569b223",
+      "category": "technology",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "31ee4ce95f257806c4ac04d0fd1e70598728bb54f4879a2667ecd887b9637fc6"
+    },
+    {
+      "id": "TECH-N-0c3a38df0b28",
+      "category": "technology",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "21b7317a981f6d2fbd1c83e6a6389ce0d3d3b0b66a77835a27f9370f32aababd"
+    },
+    {
+      "id": "TECH-N-fe367887a89b",
+      "category": "technology",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "d948e10f90726c0163cd97686eb8845c0d7c6c6ec48d6739b0f3cdf5bf83d230"
+    },
+    {
+      "id": "TECH-N-d2cf892a086a",
+      "category": "technology",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "d3b1945afc65efd0969951d73ba6d3050e0687007d79d0236ff91d74a2506f1e"
+    },
+    {
+      "id": "TECH-N-8be37bf2d04f",
+      "category": "technology",
+      "difficulty": "easy",
+      "reason": "unsupported-claim",
+      "note": "The Mars microbial-life claim overstates evidence; NASA describes potential biosignatures, not proof.",
+      "answerKeyHash": "bf0fb6c185859b04db453fc3c075e9f86f943df6348d06297f03e4042650cf81"
+    },
+    {
+      "id": "TECH-N-659898521913",
+      "category": "technology",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "75382209295ae7bc770e251529b5d6351803ff115652633f3eb9dc09589bc35d"
+    },
+    {
+      "id": "TECH-N-586b1bd87de8",
+      "category": "technology",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "6c24d191de30e597015033e779979852eb7a373f080d9634bd7712dcf35327e0"
+    },
+    {
+      "id": "TECH-N-de3cf6d49c80",
+      "category": "technology",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "dc22db308415565463f0669aad8b9e29a848406bd74ad639de68bbbe77febf4a"
+    },
+    {
+      "id": "TECH-N-db1a1fb84e2d",
+      "category": "technology",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Clinical diagnosis, treatment or undated medical statistics, outside the Technology quiz.",
+      "answerKeyHash": "3b8a7debd09e6bf388f2d52a253ec587faed5c37e37aed49925e091c70b6da3f"
+    },
+    {
+      "id": "POP-N-9766010cb09c",
+      "category": "pop-culture",
+      "difficulty": "easy",
+      "reason": "missing-context",
+      "note": "The prompt lacks the clip, reference, named film or identifying context needed to choose an answer.",
+      "answerKeyHash": "cda51c77b20a3d8b193f9c7c9bc244d00ccb8bb77e970cdee285c64def81c37c"
+    },
+    {
+      "id": "COM-0372",
+      "category": "comics",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "d47942675cecfd08906e93326c982b0793ccf3bb7572b1b210f99fefaa53b5c2"
+    },
+    {
+      "id": "COM-0381",
+      "category": "comics",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "1ff2b4943422f4de3d76f85a9d25b27074b62303f93e411884aaa1ffbf504685"
+    },
+    {
+      "id": "COM-0428",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "ab24fadcc686f2473833a7b9d5102a8ca7eaeae13c798b4ebc7294c610223e3e"
+    },
+    {
+      "id": "COM-0508",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "8b161f60c5ecbf30ad244f269198116a85f8e023c7141699f08a97b3b7292c55"
+    },
+    {
+      "id": "COM-0561",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "316f9ea28eedf3c7769a751fab597a7a71d7123487d9f46f993b1f8d1b91dbdd"
+    },
+    {
+      "id": "COM-0609",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "c8fb2e94829a60cc2d879e198814c058b032039161d299471b69ce7667daa670"
+    },
+    {
+      "id": "COM-N-ef2ac09b488a",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "568f5c7bae446cd550711d04e31699efcabddae3f0427e00093eeeb9d551e0e2"
+    },
+    {
+      "id": "COM-N-4fdf519c2fd6",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "80082ca07b71d8df7098cc71af3138e7e916a90e0fbcf6947460f4b58356561e"
+    },
+    {
+      "id": "COM-N-275914130b12",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "e1a279165f95583dbfde132186cd73e2bb683dc53a1b92ed6867481dcdd4cda7"
+    },
+    {
+      "id": "COM-N-aef39b78498d",
+      "category": "comics",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "b6ab8a51f12c29d9824568702de11246f4b2c49ac54a55158121cc4090aa784a"
+    },
+    {
+      "id": "COM-N-c24cbc029221",
+      "category": "comics",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "d79f31bbcf7678714f3f7a3b565fdab85d62fbb97dd6f4e3e1880acdc3cd254e"
+    },
+    {
+      "id": "COM-N-b9b44342e880",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "17ba5d89403992ab99163b5a481f9ff7066a03486b185af33043349fa2f23dd8"
+    },
+    {
+      "id": "COM-N-d11423347a20",
+      "category": "comics",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "4f5fa8025a2269b0b91298d46eed666478ad433549a2ab8a1cb3995c2d65c6c8"
+    },
+    {
+      "id": "COM-N-ba49ecaf2078",
+      "category": "comics",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "6a62cb96f7993bf1920aadae1d9a84576f63d83fdbaef50176f1b4390bf89c48"
+    },
+    {
+      "id": "COM-N-43c5f25bc6f8",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "b1e61a1ce82de66f24d256e41e320f33cc3d5e49bd4bd7e1c7ab0412c52f922a"
+    },
+    {
+      "id": "COM-N-11fc4ba9e683",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "0778307daa444b0454025a4ec1974ad55b75e8325aae7b94ab169daeb429cad5"
+    },
+    {
+      "id": "COM-N-ff61160403c8",
+      "category": "comics",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "686fd5f4d9407322713029865fe29509c1cdf8f33a9cde436215321c270d9c03"
+    },
+    {
+      "id": "COM-N-bd52bdc66234",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "1a7b46f7ff1d47badf6598e9bd125e27a1f8673a9a78ad707e558b27545c8fe7"
+    },
+    {
+      "id": "COM-N-b96c31ef7b29",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "263353f035a9f04351356c4d7a473e84a2f935f87f250459c9c4d66f4a49a289"
+    },
+    {
+      "id": "COM-N-aa6820ee5f6b",
+      "category": "comics",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "67ec912b5f82211c62a1184d17b3b07799b21655b0a0f91e914dcfa6b1d8d8c9"
+    },
+    {
+      "id": "COM-N-4c6ec48c979c",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "821e31b9279e258b1d5503b18a9d248ec9c71fa9e5c0c86efc9912b63a7c7106"
+    },
+    {
+      "id": "COM-N-2aa3beba5bba",
+      "category": "comics",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "bff353d2996a31aa52b6e31e59caec763ed0e8a300e260aee3a371580808481e"
+    },
+    {
+      "id": "COM-N-79a5ae120452",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "46fc9dddafe10a0367efde23fb729baf15a315d2485259e5dbaeedf820df2afd"
+    },
+    {
+      "id": "COM-N-0bf912af62e8",
+      "category": "comics",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "05a14184723a2967a3594b97bfa0ee6a31bf0bfe3d3fa98788a68c7d882bf82a"
+    },
+    {
+      "id": "COM-N-a8411ed2b9dc",
+      "category": "comics",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "7edb0bb77495ce749e67aa211746e9d943314e5866637ea8edd198948b599960"
+    },
+    {
+      "id": "COM-N-82d2b9047c2e",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "0b0e239e5dbd241b514bfd529b24559b8b836c59815220da9a8fc96992c41dd9"
+    },
+    {
+      "id": "COM-N-c5a3c5e77ec3",
+      "category": "comics",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "cfa6ae620e5d7543bbbc8952792310e79d3d5976eb437aa1f24031e790c7abdc"
+    },
+    {
+      "id": "COM-N-087aa2ec1364",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "b8f025de24603cda2516d1076075381c4d45888856048cd57b8fb6c1a6b935a6"
+    },
+    {
+      "id": "COM-N-88a44e82efa0",
+      "category": "comics",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "013c3c9950446063252d58066c8d2df9019f73bf74190a713a64a24632b08e8a"
+    },
+    {
+      "id": "COM-N-11bafe4e1551",
+      "category": "comics",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "345c2a1c5ad0b0dd3690d333de93608f3f296dd178a27abac0c70dabf617d0c9"
+    },
+    {
+      "id": "COM-N-55b6cb081c0c",
+      "category": "comics",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "a01b1b4162f551a30b641f29eaded798d13a8359980dccaad8c2ec0b5d77a1d7"
+    },
+    {
+      "id": "COM-N-20ed4f638318",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "d9cd6ffd766b52f003ba1b444a73adcab6ffad80e886e8343e12037d5b727f35"
+    },
+    {
+      "id": "COM-N-ac5ea59de2d0",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "757ec4549973c4cb3719c1b13e434d878343dff045f1c312a4481101b4eff80f"
+    },
+    {
+      "id": "COM-N-3cd165e9a31a",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "d0ad77cb8703b2f5b9b47f82525481276d77882cda5728bfcea09c7fb32b9ef4"
+    },
+    {
+      "id": "COM-N-f01991044f8e",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "78d468f8ce326fc63ab3f5914dc7623e71146ed2158577ed414776abf953651b"
+    },
+    {
+      "id": "COM-N-e2762e0822b2",
+      "category": "comics",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "39ac2314c374bdc0e14ece7eb84706b20aa7d2a5c42627e6e84a585d5c02d0b5"
+    },
+    {
+      "id": "COM-N-8284e94feb43",
+      "category": "comics",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "58b6c66e6f80181675ad69307e5b382fa08d42ac38ed427b074e0904a1c0afc0"
+    },
+    {
+      "id": "COM-N-46b38a1db665",
+      "category": "comics",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "3847ad15683e5a1189eceb07951212c47867aa07c431f9f2baa7827092d4b23e"
+    },
+    {
+      "id": "COM-N-25b8f6553d0b",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "106035c902c410b472d329fe8b920639f904b8d93d9860a0aaab742019e98194"
+    },
+    {
+      "id": "COM-N-c18a46f94005",
+      "category": "comics",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "312e9a4f703c0444d291af0ef9e7c03dfc79f98194d1c3b78c380da78c3f512f"
+    },
+    {
+      "id": "COM-N-e284268d7427",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "03ec2532ce53f7e94ce6c6bc83085b813d65854016c9c3db75e869bf2c188cfc"
+    },
+    {
+      "id": "COM-N-60e44b890b9e",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "A shared word or name matched the category without referring to comic or manga knowledge.",
+      "answerKeyHash": "5abc4a21c29a677e599e6780f6ecbe300619be41b8ca264194b7753293600526"
+    },
+    {
+      "id": "SF-N-a8ad621c7bb7",
+      "category": "science-fiction",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "e8a33e1d6e079364e0de70992cc2daf3d5f52ff4f23975c225b5607a91e24f0a"
+    },
+    {
+      "id": "SF-N-56c4d39b6405",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "c8989e625a45dd56bbf50073d465d959ff9bffe0f475f0325e065a7b7c05dcc7"
+    },
+    {
+      "id": "SF-N-04fac36c8952",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "53cbf52a8261c8daf9dbe210f1708e195793b495624d830b7c09566c9b4cc615"
+    },
+    {
+      "id": "SF-N-a89621d76472",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "0dbc1191593f01d871aee7a442066a9db55386f91cff75e14548a5397c1489cd"
+    },
+    {
+      "id": "SF-N-8baa523cedb5",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "215d610d2c936dfafbc8b737a036aca8c47e006ba4c77ccd014f248183c03078"
+    },
+    {
+      "id": "SF-N-58f5d849ba04",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "7bc1f55f200673a20852fdd5335170ed243d4673e42f0b339e22d8d313c2e94a"
+    },
+    {
+      "id": "SF-N-521d097e6bcb",
+      "category": "science-fiction",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "4eec5c9111d1163d7afd83e68c457f2f50811a676f445ce34488dc25af98c417"
+    },
+    {
+      "id": "SF-N-1ba3cba7c365",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "43c4feef3f91152bec4bbc17d8df46274bf41ac7ede238ddd12cde83bbf4b52f"
+    },
+    {
+      "id": "SF-N-8dbb1b364213",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "e5c3608a3e2e18a2004998d255ff90617d133b5f220249e3d3b1f462585025fc"
+    },
+    {
+      "id": "SF-N-2e55f9751d55",
+      "category": "science-fiction",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "152d4402535dc535588ec4f1b0a7c874fe246d5dc1a0afd938b415ef146e758b"
+    },
+    {
+      "id": "SF-N-e68de947f30a",
+      "category": "science-fiction",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "8ff3d0eb48092f1371b1ec56e9f286d1d5ffa36cce00f7fb8d26d2c8b02fc1af"
+    },
+    {
+      "id": "SF-N-a6332ba58d3e",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "88485c8da8f12134b16db3d9d1695711e9144cc97651d94aa862e4f1ab28a9d7"
+    },
+    {
+      "id": "SF-N-621e4304d295",
+      "category": "science-fiction",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "359dff958269738a762093398f30081f772636edef777d9912ae4fc197774981"
+    },
+    {
+      "id": "SF-N-52c316bc3ed1",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "0784d7b10a51108c3edbb00fd24195aaee765339f956561921b470fb13378139"
+    },
+    {
+      "id": "SF-N-bef6372f11c2",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "edf411023d05dd0b49b2110340e468de850e59952439a54bb0802ccd96843db9"
+    },
+    {
+      "id": "SF-N-b21f9148e47c",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "8002e748f01aebc9f495164010b651f400dacad630e6081c0f4bc77545b97bfe"
+    },
+    {
+      "id": "SF-N-5e6ed755c192",
+      "category": "science-fiction",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "2d893cc40fcb156477fb687f23a97e14ff66e98f6a119985707219df3b484c1a"
+    },
+    {
+      "id": "SF-N-a2d46ecc3c80",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "d35248be0de107deb422846b680fd7b80be2ff784ffe9c5f331db6121410c34d"
+    },
+    {
+      "id": "SF-N-27d78b3c04ed",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "1f6861088d337616fcf076655bde7b96aa58967c05e138655439aba0034b0805"
+    },
+    {
+      "id": "SF-N-3e095bee47b9",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "ee91fcb3703131f4a661fb0b4353d8c72576ea5e7671a77a7126ca183a208951"
+    },
+    {
+      "id": "SF-N-b1495b3e602f",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "840e1315c7969131aaedc04354da041715b9e97122b6f687ad092466f3ba3a52"
+    },
+    {
+      "id": "SF-N-89f6124624f7",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "d80ce6de0701b8a2fca07d9c2c8784058734b73cf4522596be8465c79705b487"
+    },
+    {
+      "id": "SF-N-efa2b49d2702",
+      "category": "science-fiction",
+      "difficulty": "hard",
+      "reason": "missing-context",
+      "note": "The prompt lacks the clip, reference, named film or identifying context needed to choose an answer.",
+      "answerKeyHash": "873803c4392e168b38302faac6e14d7625802d152b696036a7d28478fc79fea7"
+    },
+    {
+      "id": "SF-N-4c667fd31c28",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "df789714f388309d7b783a50ca2bf8c6e8e3f26778cdbd3fd778168833e604a7"
+    },
+    {
+      "id": "SF-N-cbf4f0ddae68",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "02bcfd6290829a77a114a68d7e6eb8a549f2de6e50490b3265d24bc21beaac78"
+    },
+    {
+      "id": "SF-N-cb6e0858e9cc",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "16783cdc225c0c1be287407defc70b6348d8d3e659ae41b7d4de44c471116566"
+    },
+    {
+      "id": "SF-N-85cf5f2b99ed",
+      "category": "science-fiction",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "4e4e682f134727dc76691b5f6b970c1f98e0c6fb5b1b6a50862b064b80a8a462"
+    },
+    {
+      "id": "SF-N-0e753ed7257f",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "d1084b9dd1633e26d01f67750e81e5f66488e3612824fda9d10d69a07c4ed86d"
+    },
+    {
+      "id": "SF-N-b43643d3d182",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "ee7e34e31e73fe7b44511d4a758a9dcf5c7035a478ab49268c53b194508f2325"
+    },
+    {
+      "id": "SF-N-4094c5bf6515",
+      "category": "science-fiction",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "0283937762794a67fb37269004524fa55fa87c67dea741e597fcda38a58b842d"
+    },
+    {
+      "id": "SF-N-9b2c74833d62",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "a3bd09413cc14bc3cab119fe8b5b0b083c2e90f145f5d36ad51c784571f2d756"
+    },
+    {
+      "id": "SF-N-e76802691473",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "fea81d35c020cd1dbf86e9a7dccbf27125fa8cc8a8dea6e05b592f6b829cbcd7"
+    },
+    {
+      "id": "SF-N-3538c4efd506",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "fdd343f52773ad593a497ee07932a7c46b2e05fd3d4cdaa3f2ba0cc4da5e9420"
+    },
+    {
+      "id": "SF-N-4241fb1f0eaf",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "f0fef7deb35489dca71eca2f1635f2df8411229f3d7f99aa8ba6684c8f981a31"
+    },
+    {
+      "id": "SF-N-710e851bc191",
+      "category": "science-fiction",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "c7647fa22c3b8d50dd13d28e4442b7aea0b890487feba8ec577dcee91d8bef14"
+    },
+    {
+      "id": "SF-N-988097d3e393",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "c69c8db05d0917e2f67a84ad8e91d893504e29cf549b0a4bbb725eb964a0c9f6"
+    },
+    {
+      "id": "SF-N-1b5ca27f335c",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "b0c57125ba0979baed216fc43e84da76731f01c17b21cf08e33e47e917d67cfa"
+    },
+    {
+      "id": "SF-N-9ac15c588cd9",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "86e46104f3f68df364438647fdfeb25e0ed24a20257758eb36e8cfc93aabe8a4"
+    },
+    {
+      "id": "SF-N-0a92b72d3286",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "2f4562ca85ee888f3c7867beee75ea0955128328de401d9f4028733caeac89d4"
+    },
+    {
+      "id": "SF-N-37418cc417e2",
+      "category": "science-fiction",
+      "difficulty": "hard",
+      "reason": "corrupt-text",
+      "note": "Corrupted text prevents reading the named person correctly.",
+      "answerKeyHash": "50730e8af4ffdf672a86f5def35475203280851c65e83d7a97fc88c79096c6cb"
+    },
+    {
+      "id": "SF-N-c1c7d27958d7",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "d564a0733d0541d396242678479cd664fc6d134345917777de1c018e69375b9e"
+    },
+    {
+      "id": "SF-N-71bc05747396",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "8d16967c828e726e1c3df309119b06fe5bf09cfd362ea5bbdcd8079c28be861d"
+    },
+    {
+      "id": "SF-N-ec26a5629c06",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "4269dea80c6813c7aa3861302b2116b34d88982a3f7504b03d9eb0d1ff8688e5"
+    },
+    {
+      "id": "SF-N-c251575a8154",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "94854a7ffdcb4099f9bd81a0a4d62ebc3dccab4a7ec3ae292e8804fd32aa1aa2"
+    },
+    {
+      "id": "SF-N-f1e561addf50",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "8852f93f96b21cfe892f4c91b4a2ae8aa5ba975167de9ae055d85d34fa147c99"
+    },
+    {
+      "id": "SF-N-4abb95a3f4e8",
+      "category": "science-fiction",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "1ff6f0ed9f4612e2e8c2a2af120c62d88d45739391790b99a43f360ab20c1ab6"
+    },
+    {
+      "id": "SF-N-7c3fb821dae8",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "42d07986f7142f25dcc632feda8a35a514326ec20dfde7c47ea93eee263a56fc"
+    },
+    {
+      "id": "SF-N-1dfe0b708314",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "527002c9c6848472b164dfe509a1420fb44eadf5121cc307619ee41954238ca5"
+    },
+    {
+      "id": "SF-N-7be61b5631c1",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "042a38d4a1860a8b448396456ba7544226228f885e73a6626b58f94371e4b0d7"
+    },
+    {
+      "id": "SF-N-b6e8c6045607",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "64fa0bddf4179dcd6fa490b032a9ea1694d2dd5768683bfac9825862dd872e25"
+    },
+    {
+      "id": "SF-N-b704288f8e6f",
+      "category": "science-fiction",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "4c5f6b95fa1477b987e539372b4453e77deb35d5cec612ef77ed4fc8f3e7ca09"
+    },
+    {
+      "id": "SF-N-253e5e91c4a6",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "5063ef45cb4c209fc789e8987a2fe59a52c3a3c02a40842fbff0f9b4d0fa4ea2"
+    },
+    {
+      "id": "SF-N-8e120eb1bccc",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "08ff4e7783199dfbfea89b87ca9a090aeb74403eadefe827d30cdaa4673e80d9"
+    },
+    {
+      "id": "SF-N-0411dc9c3d8a",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "44d0de5e50516a3be2ae994b88cd09a564848cdc587e988d6dfa67fd8901ebaf"
+    },
+    {
+      "id": "SF-N-ff6ae2b1bd31",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "0b9e8103275d08987c9c06275ffc52a0eb4725defc185c8dd505c62168382901"
+    },
+    {
+      "id": "SF-N-31ed2c3aa745",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "f39a5923931f817a3a270fb8c90f7fdb20ac509c55a1e01633ea95efba944561"
+    },
+    {
+      "id": "SF-N-683bfa916b2d",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "eb23e2f1678b123fe64573e845b58b17fe0753d3ced5b6871ccbf1ae1d9283c4"
+    },
+    {
+      "id": "SF-N-0e7b303cfde3",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "109e49768cc1b606a60ce8ed12513ccf5c14de6b6081d9ba2efa9fcc57ee99db"
+    },
+    {
+      "id": "SF-N-c319a45bd3a4",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "missing-context",
+      "note": "The prompt lacks the clip, reference, named film or identifying context needed to choose an answer.",
+      "answerKeyHash": "d33e4e7cb9b894c9fc8be723f1b7293f5cbdd8a9fec3dd2217fa0345c0e6f005"
+    },
+    {
+      "id": "SF-N-b58b98a06343",
+      "category": "science-fiction",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "1a8786f13e43ea6250d0a8bfbd63197265300a85903dea2430f533ffe49da1d5"
+    },
+    {
+      "id": "SF-N-511c2e13b1c9",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "8880487fb210eefe64269aac6e5b821dc1f36f964b709afdd90ac629ef3f9f7c"
+    },
+    {
+      "id": "SF-N-072fc15d17f1",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "a583d7def2db249366498bace5ef504b149115ca67deb45fb54c7623717a1953"
+    },
+    {
+      "id": "SF-N-2a725b760de6",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "8c2a1f044a73b3de723d3f80103da30cdbf1943e4434c88d898caaa2366f084a"
+    },
+    {
+      "id": "SF-N-3ae74065be6f",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "630f199f5a6acb802c9d1a07b059dbe302b64811d2dca01434532dffecdd1d7c"
+    },
+    {
+      "id": "SF-N-a0d7c9395b78",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "ce9224cc1162658a71a8bc595e223b26ded40e22eba5d9267685e45088888d27"
+    },
+    {
+      "id": "SF-N-c59e468f2165",
+      "category": "science-fiction",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "f06c0a0c2bcedfbe4886147ee9e4beec32b3b7823b7601a283b7e0d66fafa5e3"
+    },
+    {
+      "id": "SF-N-0277cd4e766f",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Food, animals, holidays, Latin, sports or general biography; no science-fiction/fantasy context.",
+      "answerKeyHash": "c0f9a147463d542888bf50a7cb6d489ac6075b3cd12a521e8201656b5a56bb48"
+    },
+    {
+      "id": "VG-0565",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "missing-context",
+      "note": "The prompt lacks the clip, reference, named film or identifying context needed to choose an answer.",
+      "answerKeyHash": "999b41a3eae726bdcd1cf0b1ae36842510dfa935cf5208cbbb3a64c92cd81569"
+    },
+    {
+      "id": "VG-0566",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "missing-context",
+      "note": "The prompt lacks the clip, reference, named film or identifying context needed to choose an answer.",
+      "answerKeyHash": "743a44955743b57eb2ccc9283862b02cf4f5d537449f65b59eee7e94674e5782"
+    },
+    {
+      "id": "VG-0586",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "missing-context",
+      "note": "The prompt lacks the clip, reference, named film or identifying context needed to choose an answer.",
+      "answerKeyHash": "1ad26980ac03546dd9b8105bac91e25aee47df1b5a4c7c376e6d771139938ded"
+    },
+    {
+      "id": "VG-N-cfa709910a0c",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "e97868c5bf1d280db303bb75e4aedd83e865dc3e560cb069ce6bfd59725c2ea6"
+    },
+    {
+      "id": "VG-N-f0f9c3189bd2",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "b238ab3bafdf0810f0753c2400cf66cb6f4ea3bf39cf45313e1c26886bbc3677"
+    },
+    {
+      "id": "VG-N-0a76fb615511",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "8420256e71184ebbc6ccc9077a61a5cb8ce1eae2b76f6059be27b6a678b253d2"
+    },
+    {
+      "id": "VG-N-24f629d05bb9",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "2a368fffad7a121d2e5038e7b13787172fcff550c294f747de0d6aa848d7a096"
+    },
+    {
+      "id": "VG-N-5718e0ffa470",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "1938a3112c352271c79d9723bcdc26131e1b4fb3ae0f34971b19bf0bd62971d7"
+    },
+    {
+      "id": "VG-N-89adb9bcb49c",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "6106e4b1f2bd84400ff5b1f9e17e3cd21d8d9a90c3e4db90a4d985052dc42ae0"
+    },
+    {
+      "id": "VG-N-34da1c5436c0",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "5a89b5cc3da9aebe1dc3e66107a83bcd5224c3d23248b96045ff724625ec4d92"
+    },
+    {
+      "id": "VG-N-47f487f392dc",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "337716274b0b5aa49e667ee8cf713715b232f8eb21556054ba537691781dff7d"
+    },
+    {
+      "id": "VG-N-6cc6af2409ff",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "5817167cfd6e552b2a2d31de9e8aea35a0b7b27a62b285e885330feb9a48e310"
+    },
+    {
+      "id": "VG-N-22f1ec1c56bf",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "3ca3de0f0a91f93ab5da8dffe77eb6bfbc8a1287cc4e743a0ad4a5051f358134"
+    },
+    {
+      "id": "VG-N-b68b3f5a8f00",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "a49ce28c19f412861c621323b1f31e6f87e1b635389ddb102fe8b00fd2acd09b"
+    },
+    {
+      "id": "VG-N-3c0345400768",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "6eecba55f88d852b69dacff85dcfe346d696a25c8ed2336c8e3aa058e28753f0"
+    },
+    {
+      "id": "VG-N-ec0591d90494",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "f519d91d9e3e69f9c8b9228045fe81cc6ffd5fc168a83da3594f1832a608daa3"
+    },
+    {
+      "id": "VG-N-2897bd94152a",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "e56b5a83aaa1b6d8c55e8c411935bd99e24c40e6a42480657567842ed6309187"
+    },
+    {
+      "id": "VG-N-826679e2acfe",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "631da8bbf0da13d907d6934a894a38b8b0afe6f25c409f3ef5af30ee128bfd18"
+    },
+    {
+      "id": "VG-N-f0a1f4bd16c8",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "bec8a42fd45edcb47faae565a56787c9a5f66149a34f926022a6f7d8ab076c7e"
+    },
+    {
+      "id": "VG-N-631a6e3f6ae2",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "abebe012607bd1db4d36166ea928e92a90a9c68a06eef0cc10089a3096cca86e"
+    },
+    {
+      "id": "VG-N-c9b2e36a816f",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "9b20b705fb03afdc985867300319fec0690a0430aa7c205d1aeb9c99704aa353"
+    },
+    {
+      "id": "VG-N-e940fefddf9f",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "eccd6a50ff77ada4f9ac1c425996ca350c6046ee28c1b083bbf91656be1a12f8"
+    },
+    {
+      "id": "VG-N-2035704087c1",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "249f816c8cf33f8fc96fe11597f31c9808c2ece158788008910b0b72666aa483"
+    },
+    {
+      "id": "VG-N-5449997f8ba8",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "c3f722fe7fb59341a3defcf8c16af400d7e97364bc35459bd31ebadd1559c29c"
+    },
+    {
+      "id": "VG-N-14ad417676a1",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "520d69f79329b009cd8bf3f885c9c55c1254663d0c11fea0227e5a83a7388547"
+    },
+    {
+      "id": "VG-N-3b201f106f13",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "a806407997e105266a665bc588baada4caf6baf171fa34862c1a09f5567e00eb"
+    },
+    {
+      "id": "VG-N-5e642f66288e",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "aad7c63449673988179e915395e996eb12db70b7fbde7f6dbdb33c06354e907c"
+    },
+    {
+      "id": "VG-N-5936709d1d3c",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "79004f0f33a74f30891df6c10535327258934a1e29ecdf6a70f52711a3172531"
+    },
+    {
+      "id": "VG-N-420e45d6294f",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "23e1065d4b37306e4c3c186c334cd5f6a31327260482481014341901313246c6"
+    },
+    {
+      "id": "VG-N-3b40af13816a",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "a6df9ef3a5e8998240fc5021e25cca1d320ca73f683946f0be8a4c97984d4367"
+    },
+    {
+      "id": "VG-N-9976c613605c",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "f3c54f940a16143530dc3fe58e6acb4ffd724941b566616cda2b6b01ac123d38"
+    },
+    {
+      "id": "VG-N-650d5776fcfe",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "0e4bedc9131e562ba1fb8a70a0eb92f8873f1168d9c0a92c36f97c79cb84652e"
+    },
+    {
+      "id": "VG-N-734a03d75cce",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "b47ec32b8711634b09d5ab2ba396c6d9fb10e14fc8b212cad234efb212118cb8"
+    },
+    {
+      "id": "VG-N-71b9ef9ad1c8",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "d83b938f1f9f3ee700f81fc3d2097dc2b6e2aa5b92b8ded2d9099ff110cb7e98"
+    },
+    {
+      "id": "VG-N-c9185baafebf",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "68fa5dea712d62ce3e3e44f62d3e6c323971c213c9d4675cb0791abb8abd6445"
+    },
+    {
+      "id": "VG-N-c7fae9b49294",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "560af7e2d66d631715ebef8580fb76cb7294f5558cb821a6925986b37d1449e3"
+    },
+    {
+      "id": "VG-N-7469a83fcc04",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "e4aaa6f2b86496bb4d8e523f9eb8e8c2287055241d4d4393056d0f8d93bbaaac"
+    },
+    {
+      "id": "VG-N-6c8be7105faf",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "2c517eb5a03a171410d70715ab921a280adfeeedd462f5f29ec2b6f1ac51200c"
+    },
+    {
+      "id": "VG-N-6cff2412fdb9",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "88144859ea23ef4e7d8d67d75fa6a08f7dd6f8a61570317ae2a20602a8d2d3a1"
+    },
+    {
+      "id": "VG-N-9c6a5b7eb719",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "149417d0ef84f6c2c3f4412990be27eb0393e5be467aeba704f149d07294f47a"
+    },
+    {
+      "id": "VG-N-511e077d9ec3",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "122ba04854d9da32957abf0fcfe6dbc9a9f0d74223077fbffe063e7f1e670af2"
+    },
+    {
+      "id": "VG-N-75974e809ac3",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "b8b8b800f033bfe2ab298cbab5b134be7ff635165e8129f0869d54f08430326b"
+    },
+    {
+      "id": "VG-N-1ad45b3a414b",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "73861e6a32552cb83c91b9e0f0a72b6c672d868e20a9f84791cfb84425e41d7f"
+    },
+    {
+      "id": "VG-N-3a1db604ee6b",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "e4085ad57b4b983dcbf3e78c2c4a04c1a22581dc8c592ff9ec65e804012cc58f"
+    },
+    {
+      "id": "VG-N-099be790b765",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "1937f484dfa3d30ee945199d65eae5a7a8cdd3b5096e06e9d46b4e69421d3455"
+    },
+    {
+      "id": "VG-N-2c8403d67b46",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "8e8767f8e4e6cbc9d1e13f07b4b78284cb91c9f84c00b84e4c8031b6535df705"
+    },
+    {
+      "id": "VG-N-373cf8e5e0ee",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "9a42750ab19e7ae27a53ac5402168b0b2566caf47468745103b3943c7bfb7a84"
+    },
+    {
+      "id": "VG-N-c484511d2b30",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "e086716c14bf575b248bbde2e91828769f6bd298e7c64f23c88bc0d1081c5650"
+    },
+    {
+      "id": "VG-N-4508751017a5",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "0371af628d25edf0b198c0709e046edd7fdaa6b3caff1db557b7585deba041bc"
+    },
+    {
+      "id": "VG-N-3126442a83df",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "07927913e203a5eb8ff70069d022886111bc865e90b8a0ad381f82679d04986e"
+    },
+    {
+      "id": "VG-N-6674fa4df12c",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "43a98a3abc0742e19cfdd0a4659a0dd32546eccde8ad9ef5818bd80d28bd1afd"
+    },
+    {
+      "id": "VG-N-766a1ae4e957",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "12469de89d7a46bcb9941fb32cdcefbff204c4a04b3aa04fb62577b08fc5caad"
+    },
+    {
+      "id": "VG-N-52187ed6fbe5",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "4ca17bb5b7d3f5a42c92788554b844dbc67a05ea2c9be5077812c7f09430b972"
+    },
+    {
+      "id": "VG-N-f43ad4288c06",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "c76905cf6e5ae3acf20f6e7373dcb96258547e67740acb9c920325fab93ea0ca"
+    },
+    {
+      "id": "VG-N-af0b2688af8b",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "a86832640c8ae5bf5bd20073b7697c63c9c911bb21b75b5294cf37fa72158cc3"
+    },
+    {
+      "id": "VG-N-aca740a5a658",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "af029111a25827d6c580e65b1489f60e7dc8c2f7c71dc0e3fada0674d92c7ac1"
+    },
+    {
+      "id": "VG-N-2fdac2a8f3f7",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "ac802580008237e0b29e0ceeab0ad1013c80a303068748a2443d8059a5daba45"
+    },
+    {
+      "id": "VG-N-04fe24c61b66",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "5329c24dfd6d91c6c5492ba617416a9d1747ae20c3fbe0bc1b8d9553673bc00e"
+    },
+    {
+      "id": "VG-N-3b1d0e47b04b",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "da86d8af122cb1dd802ff5bd3e20e47bdcc2c4eb2be0faa24cd8c85b99d3db94"
+    },
+    {
+      "id": "VG-N-a8afc6dd0b83",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "28b17ad3243d25df5be4600ffbc1a932deca1067a1c709426205f1f36a33d0e2"
+    },
+    {
+      "id": "VG-N-1ba13033233f",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "467c504c5499d23d8ec80ffd767ae097c74d417dd42ba036fa48ef288a33d046"
+    },
+    {
+      "id": "VG-N-b4dbf2f01685",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "77b850c44c1617521bc90d79ad038aadca92909053dd3bf6f11f24abf52d94e3"
+    },
+    {
+      "id": "VG-N-636fdcc4debc",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "2a3dbfe71749a7325854f8b1fa401845ec8b01953cd2d8c2c4ad8dafb6434389"
+    },
+    {
+      "id": "VG-N-deea0abd1b5e",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "3bd61dcb326bf297fd743d401bb36aba4ab2e677bdcb2fd18e626478d83f168f"
+    },
+    {
+      "id": "VG-N-2c04b97f70dd",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "34345e7ab77c35ada351bb3565a08e6fc968547c9bea578a0c449fd6cf05ef57"
+    },
+    {
+      "id": "VG-N-a7fd6de8a9ca",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "f2663a1da03fb5c09dc10891fe25dcfed43865a20f22e135727b111de44c7fa6"
+    },
+    {
+      "id": "VG-N-f1be73b5415e",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "e07af08d0e2335ab07d125474812f32a81415382325575b02bccdc4f65b7b60c"
+    },
+    {
+      "id": "VG-N-7c5741efd14f",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "078b2d07a6d162a04888741019286ee7ed0626f6f33a0a624fce42f0adb73640"
+    },
+    {
+      "id": "VG-N-370b679831e2",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "f3e2543d65638d201f60ac97f5ed80133ec85f3cf21642f1e28ea1632f0377d4"
+    },
+    {
+      "id": "VG-N-2afb4b9ac548",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "e34fd1fe53c5b0d08a4962720e81fb40912c128bd0e96b7b90d600f7b4baa6bf"
+    },
+    {
+      "id": "VG-N-3f776594fb60",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "c17579e1dc0733036a3d6c2cc4dab76eadbfc402a69f6a923b11d5de2d5da7d3"
+    },
+    {
+      "id": "VG-N-1acbd97d7858",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "62b9a60dab6b8119c36c5fc4a90a3575d319aee13907c486dbfcc0a031bda07f"
+    },
+    {
+      "id": "VG-N-286af8311285",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "fa4d947169c1e4874774b8ce12a67384fc6a2b5c7bba5a59dd673140bfee5eac"
+    },
+    {
+      "id": "VG-N-d4f26e4e7c35",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "a8db3990cb5870fc972d269364d7dd3fc73bea52ebab0cf9fb96e6584e01597f"
+    },
+    {
+      "id": "VG-N-fb048de8670f",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "c5fbaf592cca962584b2a86efe6681ac81d66f9fd862d3947dd2ebaeff307dbb"
+    },
+    {
+      "id": "VG-N-dbcdf681eafa",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "ddfa0efc32a4bf70df61bdf47fed7d44e44e4f52702a10076e211b0451f66cdd"
+    },
+    {
+      "id": "VG-N-0da7f3aa3221",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "a6f713348421ea71ef750dcd8e158890b00d5f1d73f291092b243a93fb07fc76"
+    },
+    {
+      "id": "VG-N-359a9e01e477",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "b4121d5d70137a3815a67646a849ff30b48dbed0592a263de0b01d2ae77a3306"
+    },
+    {
+      "id": "VG-N-310aa62f6030",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "1226cd09c1bc11a83b0ea979a596af53bae0ee4f1a4671ec861047ac4f27655c"
+    },
+    {
+      "id": "VG-N-d97023a5bc43",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "9ed717c339d09b313ad3002c67db6cc577082adbe2ebdb45707b1cee42705968"
+    },
+    {
+      "id": "VG-N-3d7c424f4508",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "3f77e5e4bb817a606f1b2093400a45a0616c9c1f0c0ea887472f44ca5726ca57"
+    },
+    {
+      "id": "VG-N-6197e070cc4e",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "213de386d1dc8971d4c70cbc78c33407bc549397055fa3d8a926f96e4f2720cc"
+    },
+    {
+      "id": "VG-N-5c38a3fc73ea",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "4d95276f6ef169272bb3a9069beb1494d56e53bd865509b7c6695ff7425450ee"
+    },
+    {
+      "id": "VG-N-d5b8e889fd0f",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "b9a4c385f5d7cdb0099a2cfa9df86288176213ef1c280fc3c97cc76e27e192f7"
+    },
+    {
+      "id": "VG-N-99fb022f6e09",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "5724c69011db0344b7582f5ea9f43c2733f3b51359a24eb5979e750b6d7fd641"
+    },
+    {
+      "id": "VG-N-7c15caefe5fa",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "72cd883f213dc7b71057ade8a90b12882cffa27b94addc346710650b3d63fde1"
+    },
+    {
+      "id": "VG-N-a9415faf9c1c",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "f796865f18e3a0628e1373e60cd424b59cc4b0f3033893fb57ab3dce07f94abf"
+    },
+    {
+      "id": "VG-N-1136a3bbc21c",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "7f91c24bb169b1e12929eaf2c9b4f48b76c88ccb7548db567533090caf49453a"
+    },
+    {
+      "id": "VG-N-90831694e22a",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "8143091c5175d9f7d19fda651c063de616627a528eda093dc6052cf678b49fce"
+    },
+    {
+      "id": "VG-N-52c55e73a800",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "590554fcd3341346e23e201d28d1df1d3fba22b7a47eab1c5eaf043a2ec2d2cd"
+    },
+    {
+      "id": "VG-N-5ca155c6c8e8",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "2de025b1be4733d8baf0fec30d5895d39d3ec50f4d1b7c8bbe63388ea78c133e"
+    },
+    {
+      "id": "VG-N-5a08b5fc42ab",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "296ffae9dd32fd9cfaf7385c9390ad4e0dda5d80c43bc7e9c5ee1da5015708e9"
+    },
+    {
+      "id": "VG-N-6e96a71b3066",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "d6573700a6e19a95934287fcd2a0ffa73988d2ddb9f5d93357cdf8df1571da92"
+    },
+    {
+      "id": "VG-N-67e3c18f3344",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "7e207bf5c608dc37bbfdfc1b58edc9bd20b07ec2fe862fb36ca09a592d22dd40"
+    },
+    {
+      "id": "VG-N-51bc093e3aca",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "0a468b213e5e84a96ff71ddf4b1b386384338b070c5fe34979264fb298665808"
+    },
+    {
+      "id": "VG-N-1420b074acc5",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "64d27d3d46919116632834e28f7111e98f6762d464cfa70a142ab573a376bbb5"
+    },
+    {
+      "id": "VG-N-df6d4864b081",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "0ad25fbc3d61f889aa071846283eab486987331570e119777219cc7059fac7ae"
+    },
+    {
+      "id": "VG-N-74aa99b1aa4c",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "6e26b535e48e27c9d89f7bf69e82a1cbf357ecb0e3657566a059c13546d42d21"
+    },
+    {
+      "id": "VG-N-957437b45882",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "20a40eda1447a2bf91e096caa744e218a83897acd61fe615cdfbd767bf739cad"
+    },
+    {
+      "id": "VG-N-47186731e91d",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "a58558d4a12543df86a028882d1e603cb81f8ad11bbe526504d60aa27a57da55"
+    },
+    {
+      "id": "VG-N-2b67e981a776",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "bd4af7633b10e103e27700c8382de78e76e1baa56c7d022a74e4cdc094fa0582"
+    },
+    {
+      "id": "VG-N-25560d720193",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "bf4cc54a494f8b713d25d5f95278c42ae1114290862cfb7b8f3c6e680a4050f8"
+    },
+    {
+      "id": "VG-N-a8afb016460a",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "5506f4133e210c0cdbcf938bada4b865ef19a801a5a43d44816ab89044b54b5c"
+    },
+    {
+      "id": "VG-N-c7fa6a905f8b",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "0975b87d3bc196be4bd8c6b8f9ac141f7f3d747226c0478e487d7b9bc8173d09"
+    },
+    {
+      "id": "VG-N-80d5d72cefa1",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "eabfaf6e126c6ab07261caea572e5a3f8f684a7d183eec2dbc01a27cca44bc52"
+    },
+    {
+      "id": "VG-N-5e4d08bfc83e",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "1f394c9c42a7e282b0f802771b0e6d864e3eb32e4923ea8b604cd2c8d20fda84"
+    },
+    {
+      "id": "VG-N-2238ce0891b0",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "10d826d2377ca957d6c5bf4768ac104dca89e59de282d2910b80dc2961d3807a"
+    },
+    {
+      "id": "VG-N-15007bcbd1c7",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "ca8bdd4376ab88fc0ae84b12587e5455d951b4b619b2e1f8accd33ccd3ed8aa4"
+    },
+    {
+      "id": "VG-N-3dc959006171",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "c9916799c69334d1e21c7f902445b55ae6515c279f7926b67b4425425e6e7856"
+    },
+    {
+      "id": "VG-N-218ea38b0c94",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "d43b7a30f44373bc38781ef4db5b404030ab72c426c012c941aba5d4de581981"
+    },
+    {
+      "id": "VG-N-08011a22f06b",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "c18bbca9c561bc2cd6a6cdcaec5cf692b0b0017a5b5594e28a2a4c39ba96160a"
+    },
+    {
+      "id": "VG-N-d6aebf98325a",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "5ca0997f689d8473857b6d5eeeae20f71e17992fe676f9e000d80f0cf0b58ddd"
+    },
+    {
+      "id": "VG-N-dd0eda13c193",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "27942e42833d1b63f138046b95f0a0effd05460eb9812a67480130fcf7b0dc80"
+    },
+    {
+      "id": "VG-N-7b59bf832d77",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "e75191ea8169d984b3454040b5352306e3f0c4a01957796b175280db1b36cf5c"
+    },
+    {
+      "id": "VG-N-89384dc6f225",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "a9aac5b4871ebdd8d001464655b5c78f46fd8c6359b008b1032084873b403e24"
+    },
+    {
+      "id": "VG-N-39e58d416b2b",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "e88099223b71e0fd526b9624c8990a305aa74c4f51bfa033813b7508d660aaa7"
+    },
+    {
+      "id": "VG-N-c7a0ca72f622",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "dd8db5f6f96762b87ab0c76f5d78bca621c41f9e8a0e94b8b7f28b255134a4a0"
+    },
+    {
+      "id": "VG-N-72a712a8ff95",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "62e085483f4f71ea98824dc9b681c901895ab0c4f96ad79f64eeeafdbde59f11"
+    },
+    {
+      "id": "VG-N-8d295c7f2645",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "1605a2e74c3ce504fd26c23f37b4e86a7a1920ce831b7ccb63827ac8657403cb"
+    },
+    {
+      "id": "VG-N-70ad2ccd3d06",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "ffaf65c9030fd97d1c9d9c56693568127e92300b29a3baf69149ee152d601f5c"
+    },
+    {
+      "id": "VG-N-51584f3fd9a5",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "743b9253c409e2533102408f120dfa565cd6a4a9d3c9eecdcfdce7c20d150930"
+    },
+    {
+      "id": "VG-N-23eca2fefe50",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "2250adff5623663783fa1c0d20ef11800d3a494b6c3818d4dcf4667543e335f2"
+    },
+    {
+      "id": "VG-N-0df7e21abf36",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "1910d5e0aee865d013827563c4fc17ab31f12b2d17616676506fec0b2768790a"
+    },
+    {
+      "id": "VG-N-f5ad9e75a980",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "589d2260bddf7ad320acf5f916a75e4e98efc61be9a3af9ac9d009b76b4a7fd1"
+    },
+    {
+      "id": "VG-N-6b3251b1fb4a",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "7f90d6145f79fd57b17b7b0ad80cd6d11f7a742a4da8d6626318e2651120c5ab"
+    },
+    {
+      "id": "VG-N-13ae7aac1f8c",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Tabletop games, sports, television or literature, not video-game knowledge.",
+      "answerKeyHash": "cd491e19300f1d923f2c66e798f5f08dd3079dc618471e2307ac9f0347a771bc"
+    },
+    {
+      "id": "VG-N-187645376e86",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "de0fd4621c452d334882cc4fff274bd69672c1b78b374476e3209b84d7850523"
+    },
+    {
+      "id": "VG-N-dd9e13d17e23",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "dae44f5314582726499a5c4b6a42bf6bdab5218bbbb0943f27af0875565ffc57"
+    },
+    {
+      "id": "VG-N-2ca35474a919",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "4b5c454fdac79e778df95c7b8364249a6e63ad29577241dc41be84b37556150b"
+    },
+    {
+      "id": "VG-N-3bac8b390e82",
+      "category": "video-games",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "fe34f1fe801af3cebeab2234a8e03c76c7fbf7fd44abff1e819b152ddba1fe13"
+    },
+    {
+      "id": "VG-N-bdf85c8af623",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "Physical sports, not video-game knowledge.",
+      "answerKeyHash": "68f608004a6aa4b5b0a224800468be8390c83258ba54d059eb853833d02d81db"
+    },
+    {
+      "id": "TECH-N-e9ab060cbf11",
+      "category": "technology",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "The named topic belongs outside this category; no asserted factual error.",
+      "answerKeyHash": "a9a92a3a56df335e9a5d5c8c8d97c6a59907db1460141f2f6763d371cb321690"
+    },
+    {
+      "id": "COM-N-09d126251661",
+      "category": "comics",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "The named topic belongs outside this category; no asserted factual error.",
+      "answerKeyHash": "cbc1bf8e49bde6c989009310a54f633b16ccc3d13ae5349d678c94c79dcfd000"
+    },
+    {
+      "id": "COM-N-071807496ad4",
+      "category": "comics",
+      "difficulty": "medium",
+      "reason": "missing-context",
+      "note": "Incomplete question.",
+      "answerKeyHash": "e35fef1a86a95871d15d4e5c330d4386660583e3369e35f593ca23948ba54b9a"
+    },
+    {
+      "id": "COM-N-f957b341a70a",
+      "category": "comics",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "The named topic belongs outside this category; no asserted factual error.",
+      "answerKeyHash": "96272fd0829865a0beb2749e6ed8bc96e59c87d82d9b2fb8da6694080ae43d72"
+    },
+    {
+      "id": "SF-N-1f934f0d0983",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "The named topic belongs outside this category; no asserted factual error.",
+      "answerKeyHash": "23a4f9f29ce0264f7ff28683e1f23bb3aa592a7f7392030781126c4533ee9215"
+    },
+    {
+      "id": "SF-N-9c81203ce158",
+      "category": "science-fiction",
+      "difficulty": "easy",
+      "reason": "off-category",
+      "note": "The named topic belongs outside this category; no asserted factual error.",
+      "answerKeyHash": "0f29cbbb450a8c267e282a4fdca41fb759877d4c36f1d6efef9ec366106d2d3e"
+    },
+    {
+      "id": "VG-N-ed5048dd5205",
+      "category": "video-games",
+      "difficulty": "medium",
+      "reason": "off-category",
+      "note": "The named topic belongs outside this category; no asserted factual error.",
+      "answerKeyHash": "d3fc395653821a1ce581f570746f31e52d217763b0bf689ca12e3c09dca8d7cf"
+    },
+    {
+      "id": "VG-N-58808bf48377",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "The named topic belongs outside this category; no asserted factual error.",
+      "answerKeyHash": "e966ab89a83ea182ced8912350abaacce7c47f9e3d70773d3dcac9527b1b7cf4"
+    },
+    {
+      "id": "VG-N-93ddd94242d9",
+      "category": "video-games",
+      "difficulty": "hard",
+      "reason": "off-category",
+      "note": "The named topic belongs outside this category; no asserted factual error.",
+      "answerKeyHash": "caf0ba6d93cbba9fadaad483f9579441cdb7897c04fe1cb27ae9ee01d4e78167"
+    }
+  ],
+  "retirementCount": 272,
+  "newLicensedImportsRetired": 258,
+  "activeNewLicensedImportsPending": 3598,
+  "activeDraftQuestions": 7516,
+  "remainingReview": "All retained drafts still require item-level primary evidence and difficulty review; a lack of a screening flag is not an approval.",
+  "evidence": [
+    {
+      "id": "TECH-N-8be37bf2d04f",
+      "source": "https://science.nasa.gov/resource/what-is-a-potential-biosignature/",
+      "note": "NASA defines a potential biosignature as requiring further evidence before concluding whether life was present."
+    }
+  ],
+  "categories": {
+    "kaspa": {
+      "retired": 0,
+      "activeDrafts": 0,
+      "activeNewLicensedImportsPending": 0
+    },
+    "comics": {
+      "retired": 45,
+      "activeDrafts": 378,
+      "activeNewLicensedImportsPending": 153
+    },
+    "science-fiction": {
+      "retired": 69,
+      "activeDrafts": 478,
+      "activeNewLicensedImportsPending": 186
+    },
+    "video-games": {
+      "retired": 134,
+      "activeDrafts": 602,
+      "activeNewLicensedImportsPending": 237
+    },
+    "history": {
+      "retired": 0,
+      "activeDrafts": 1510,
+      "activeNewLicensedImportsPending": 755
+    },
+    "technology": {
+      "retired": 22,
+      "activeDrafts": 1482,
+      "activeNewLicensedImportsPending": 735
+    },
+    "movies": {
+      "retired": 1,
+      "activeDrafts": 1495,
+      "activeNewLicensedImportsPending": 747
+    },
+    "pop-culture": {
+      "retired": 1,
+      "activeDrafts": 1571,
+      "activeNewLicensedImportsPending": 785
+    }
+  },
+  "importCountCorrection": "The previous prose total of 3,868 licensed additions was incorrect: the original active snapshot has 3,856 new draft imports and 168 new source-checked authored items (92 Kaspa, 39 Comics, 37 Science Fiction)."
+}

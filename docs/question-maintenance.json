@@ -1,9 +1,9 @@
 {
-  "maintainedAt": "2026-10-07",
+  "maintainedAt": "2026-10-08",
   "originalRows": 8032,
   "cleanedBaseline": 4024,
-  "activeQuestions": 8048,
-  "retiredRows": 4008,
+  "activeQuestions": 7776,
+  "retiredRows": 4280,
   "addedQuestions": 4024,
   "categories": {
     "kaspa": {
@@ -25,57 +25,67 @@
     "comics": {
       "before": 1000,
       "cleaned": 231,
-      "removed": 769,
+      "removed": 814,
       "reasons": {
         "invalid-or-ambiguous": 139,
         "off-category": 352,
-        "generated-variant": 278
+        "generated-variant": 278,
+        "editorial-off-category": 44,
+        "editorial-missing-context": 1
       },
       "added": 231,
       "target": 462,
-      "after": 462,
+      "after": 417,
       "difficultyDistribution": {
-        "easy": 218,
-        "medium": 192,
-        "hard": 52
-      }
+        "easy": 205,
+        "medium": 168,
+        "hard": 44
+      },
+      "editorialRemoved": 45
     },
     "science-fiction": {
       "before": 1000,
       "cleaned": 292,
-      "removed": 708,
+      "removed": 777,
       "reasons": {
         "invalid-or-ambiguous": 119,
         "off-category": 118,
-        "generated-variant": 471
+        "generated-variant": 471,
+        "editorial-off-category": 66,
+        "editorial-missing-context": 2,
+        "editorial-corrupt-text": 1
       },
       "added": 292,
       "target": 584,
-      "after": 584,
+      "after": 515,
       "difficultyDistribution": {
-        "easy": 324,
-        "medium": 192,
-        "hard": 68
-      }
+        "easy": 295,
+        "medium": 166,
+        "hard": 54
+      },
+      "editorialRemoved": 69
     },
     "video-games": {
       "before": 1000,
       "cleaned": 368,
-      "removed": 632,
+      "removed": 766,
       "reasons": {
         "invalid-or-ambiguous": 227,
         "off-category": 169,
         "duplicate-or-similar": 5,
-        "generated-variant": 231
+        "generated-variant": 231,
+        "editorial-missing-context": 3,
+        "editorial-off-category": 131
       },
       "added": 368,
       "target": 736,
-      "after": 736,
+      "after": 602,
       "difficultyDistribution": {
-        "easy": 324,
-        "medium": 330,
-        "hard": 82
-      }
+        "easy": 280,
+        "medium": 265,
+        "hard": 57
+      },
+      "editorialRemoved": 134
     },
     "history": {
       "before": 1000,
@@ -97,53 +107,60 @@
     "technology": {
       "before": 1000,
       "cleaned": 752,
-      "removed": 248,
+      "removed": 270,
       "reasons": {
         "invalid-or-ambiguous": 244,
-        "duplicate-or-similar": 4
+        "duplicate-or-similar": 4,
+        "editorial-off-category": 21,
+        "editorial-unsupported-claim": 1
       },
       "added": 752,
       "target": 1504,
-      "after": 1504,
+      "after": 1482,
       "difficultyDistribution": {
-        "easy": 584,
-        "medium": 612,
-        "hard": 308
-      }
+        "easy": 579,
+        "medium": 604,
+        "hard": 299
+      },
+      "editorialRemoved": 22
     },
     "movies": {
       "before": 1000,
       "cleaned": 748,
-      "removed": 252,
+      "removed": 253,
       "reasons": {
         "invalid-or-ambiguous": 206,
-        "duplicate-or-similar": 46
+        "duplicate-or-similar": 46,
+        "editorial-missing-context": 1
       },
       "added": 748,
       "target": 1496,
-      "after": 1496,
+      "after": 1495,
       "difficultyDistribution": {
         "easy": 604,
-        "medium": 601,
+        "medium": 600,
         "hard": 291
-      }
+      },
+      "editorialRemoved": 1
     },
     "pop-culture": {
       "before": 1000,
       "cleaned": 786,
-      "removed": 214,
+      "removed": 215,
       "reasons": {
         "invalid-or-ambiguous": 193,
-        "duplicate-or-similar": 21
+        "duplicate-or-similar": 21,
+        "editorial-missing-context": 1
       },
       "added": 786,
       "target": 1572,
-      "after": 1572,
+      "after": 1571,
       "difficultyDistribution": {
-        "easy": 631,
+        "easy": 630,
         "medium": 626,
         "hard": 315
-      }
+      },
+      "editorialRemoved": 1
     }
   },
   "method": "Canonical Kaspa concepts; removal of generated variants, incomplete/unsupported-media/ambiguous choices, unsuitable language, unclassified narrow-category prompts, and exact or conservative token/answer similarity matches. Distinct retained content gets doubled with licensed imports and original source-checked questions. Similarity screening is conservative, not a guarantee of exhaustive semantic equivalence or factual accuracy.",
@@ -152,5 +169,7 @@
     "OpenTriviaDatabase": "Retrieved multiple-choice API records 2026-10-07; publisher difficulty retained.",
     "RustyKaspa": "01b532e8b553523216471682649693af92f0fd16",
     "KaspaKIPs": "e4ae2332117b5cb68bd6188e065ef885b6d17939"
-  }
+  },
+  "editorialRetiredRows": 272,
+  "editorialReview": "docs/editorial-review.json"
 }

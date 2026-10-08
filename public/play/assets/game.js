@@ -3,7 +3,6 @@
 
   const queryParams = new URLSearchParams(window.location.search);
   const requestedFocus = ['ghostdag', 'builders'].includes(queryParams.get('focus')) ? queryParams.get('focus') : '';
-  const IDENTITY_KEY = 'geek-lobby-identity-v1';
   const TIMER_SECONDS = 15;
   const TIMER_CIRCUMFERENCE = 125.66;
   const GAME_MODES = {
@@ -406,8 +405,7 @@
     selectMode(activeMode);
     selectCategory(activeCategory);
     try {
-      const displayName = localStorage.getItem(IDENTITY_KEY) || 'Guest Geek';
-      await api('/api/session', { method: 'POST', body: JSON.stringify({ displayName }) });
+      await api('/api/session', { method: 'POST', body: '{}' });
       const status = await api('/api/ranked');
       profile = status.profile;
       communityReady = true;

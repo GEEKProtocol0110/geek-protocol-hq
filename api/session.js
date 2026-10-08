@@ -1,6 +1,6 @@
-import { clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
+import { cleanName, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
 import { rateLimit } from '../server/redis.js';
-import { upsertSession } from '../server/session.js';
+import { readSession, upsertSession } from '../server/session.js';
 import { collectiblesHandler, profileHandler } from '../server/player-api.js';
 import vaultHandler from '../server/vault.js';
 import economyHandler from '../server/economy.js';
@@ -19,9 +19,17 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return methodNotAllowed(res, 'POST, OPTIONS');
   try {
     const body = parseBody(req);
-    const session = await upsertSession(req, res, body.displayName);
-    await rateLimit('session', session.id, 40, 60);
+    const existing = await readSession(req);
+    if (body.action === 'rename') {
+      if (!existing) throw new Error('SESSION_REQUIRED');
+      if (typeof body.displayName !== 'string' || body.displayName.length > 24 || !cleanName(body.displayName, '')) {
+        return sendJson(res, 400, { ok: false, error: 'Enter a profile name with 1–24 characters.' });
+      }
+    }
     await rateLimit('session-ip', clientFingerprint(req), 60, 60 * 10);
+    if (existing) await rateLimit('session', existing.id, 40, 60);
+    const session = await upsertSession(req, res, body.displayName);
+    if (!existing) await rateLimit('session', session.id, 40, 60);
     return sendJson(res, 200, { ok: true, player: { name: session.name, createdAt: session.createdAt } });
   } catch (error) {
     return handleApiError(res, error);
