@@ -1,6 +1,6 @@
 # Question Maintenance — October 8, 2026
 
-The October 7 expansion reached **8,048 active questions**, twice the **4,024-question cleaned baseline**. The October 8 editorial pass retired **272 additional items**, leaving **7,776 active questions**. Historical expansion counts below describe October 7; current counts and review dispositions are in [Editorial Review](EDITORIAL-REVIEW.md). The previous 8,032 rows included generated variants, repeated facts, and unusable imports. **4,008 rows were retired** and **4,024 distinct questions added**. Retired records remain server-only for previously issued game IDs and are excluded from every new pool and public count.
+The October 7 expansion reached **8,048 active questions**, twice the **4,024-question cleaned baseline**. The October 8 editorial pass retired **272 additional items**, leaving **7,776 active questions** before the subsequent ten KRC-20 additions. The current total is **7,786** (194 Kaspa). Historical expansion counts below describe October 7; current counts and review dispositions are in [Editorial Review](EDITORIAL-REVIEW.md). The previous 8,032 rows included generated variants, repeated facts, and unusable imports. **4,008 rows were retired** and **4,024 distinct questions added**. Retired records remain server-only for previously issued game IDs and are excluded from every new pool and public count.
 
 | Category | Previous rows | Cleaned baseline | Added | Active questions |
 | --- | ---: | ---: | ---: | ---: |
@@ -39,7 +39,7 @@ Code retains the repository MIT license. Imported question content and its adapt
 
 `loadQuestionBank().questions` contains only active rows. `byId` also resolves lookup-only retired rows, preserving their original IDs, prompts, options, and correct indices for unfinished ranked/practice/Study runs. Shared lobby, duel, and periodic challenge snapshots already retain issued question data. New round selection excludes both previously used concepts and normalized prompts, including previously issued retired variant IDs and exact and conservatively similar community duplicates.
 
-Every category supports the full 30 easy / 40 medium / 30 hard Gauntlet allocation without repeat concepts. Daily/Speed, lobbies, and Duel use the same cleaned selection boundary. Assisted practice reads only active easy questions. Study contains 166 active canonical concepts across its eight existing topics; current-topic questions remain outside its introductory curriculum. Former Study concept aliases resolve to the latest saved observation; counts/streaks from equivalent records are not combined into invented confidence. Progress reads do not refresh retention or mutate saved records.
+Every category supports the full 30 easy / 40 medium / 30 hard Gauntlet allocation without repeat concepts. Daily/Speed, lobbies, and Duel use the same cleaned selection boundary. Assisted practice reads only active easy questions. Study contains 176 active canonical concepts across its eight existing topics; current-topic questions remain outside its introductory curriculum. Former Study concept aliases resolve to the latest saved observation; counts/streaks from equivalent records are not combined into invented confidence. Progress reads do not refresh retention or mutate saved records.
 
 ## Maintenance commands
 
@@ -52,3 +52,11 @@ npm run verify             # includes the question checks
 The old `review-kaspa-content.mjs` entrypoint now verifies the banks without rewriting review dates or evidence. It cannot silently mark an import source-checked. GitHub CI runs question checks. `docs/question-maintenance.json` records counts, reasons, and source snapshots; retired rows record their disposition. Keep question JSON under `server/questions/`, never under `public/`.
 
 Validation: all eight categories complete two ten-round selections with 100 distinct concepts, including both Kaspa focus paths. Tests cover retired answer keys, concept exclusions, generated browser counts, source schemas, and saved Study alias feedback. Browser checks exercise game setup, category switching, grading/review, mobile layout, and the attribution page with real local handlers and Redis. Independent content review remains separate.
+
+## KRC-20 additions — October 8, 2026
+
+Ten original source-checked questions extend the Kaspa category from 184 to 194 distinct concepts; Study gains the same ten, from 166 to 176. Existing deploy/mint/transfer and indexer questions were checked for overlap before adding operation-data, SDK behavior, marketplace and project-lore concepts. Correct-answer positions span all four choices. New content carries CC BY 4.0 attribution and individual review dates. No public asset contains the answer keys.
+
+Seven implementation questions cite Kasplex Kiwi commit `06dc75ea1066aba4d78eb32711690f6f123a9575` (README-Node.md, src/krc20.ts and src/check.ts); implementation-specific prompts explicitly identify that SDK or snapshot. Three community questions cite KaspaCom, Nacho’s Kat Bot description and Kaspy’s project story. Product-capability questions are marked volatile; no prices, market rankings or investment predictions are included. Quiz inclusion does not establish partnership or support for Geek.
+
+The original doubling milestone remains historical. `postReviewAdditions` records subsequent authored content separately from `addedQuestions`; verification checks both counts and per-category accounting. Existing and retired answer keys remain intact. Difficulty is provisional editorial judgment, not empirical calibration.

@@ -36,4 +36,8 @@ Practice-level selection exposes the existing easy and medium tags plus a mixed 
 
 ## Distinct question extension — October 7, 2026
 
-The historical 1,000-variant bank described above has been retired from active selection. Kaspa now has 184 distinct active questions (166 core, 18 current), twice its cleaned 92-concept baseline. Ninety-two new original questions were checked against official integration documentation and pinned node/KIP source snapshots. Dates are retained per item. See [Question Maintenance](QUESTION-MAINTENANCE.md) for the complete audit, compatibility boundary, sources, and limits.
+The historical 1,000-variant bank described above has been retired from active selection. At the October 7 expansion milestone, Kaspa had 184 distinct active questions (166 core, 18 current), twice its cleaned 92-concept baseline. Ninety-two new original questions were checked against official integration documentation and pinned node/KIP source snapshots. Dates are retained per item. See [Question Maintenance](QUESTION-MAINTENANCE.md) for the complete audit, compatibility boundary, sources, and limits.
+
+### KRC-20 follow-up — October 8, 2026
+
+Ten distinct, original source-checked questions bring Kaspa to 194 active questions (176 core, 18 current). They add protocol data, explicitly scoped Kiwi SDK behavior and community project facts. Sources and the pinned SDK commit are recorded in Question Maintenance; existing and retired records are unchanged.
