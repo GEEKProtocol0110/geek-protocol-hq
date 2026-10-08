@@ -63,6 +63,10 @@ See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness
 | **Operations** | Private owner workspaces for questions, audit activity, payout reviews and [holiday appearance](docs/HOLIDAY-THEMES.md) |
 | **Security** | Public control posture, trust boundaries, and independent-audit gates |
 
+## Hall of Thanks
+
+[The Hall of Thanks](https://www.geekprotocol.xyz/thanks/) honors Kaspa, our community, the tools behind HQ and the sources behind its learning content. Its first dedication is preserved in the repository history. [Attribution and maintenance](docs/HALL-OF-THANKS.md).
+
 ## Personal Geek character studio
 
 Make a block-style character with skin, hair, face and clothing choices, or keep a custom GIGA robot. Free profile designs save to the existing player account; NFT ownership remains separate.

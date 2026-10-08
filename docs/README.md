@@ -35,6 +35,10 @@ This directory is the reviewable specification set for Geek Protocol HQ. Documen
 | [Collectible Protocol](COLLECTIBLE-PROTOCOL.md) | Player collectibles, sticker trades, and disabled on-chain ownership |
 | [Dependency Provenance](DEPENDENCY-PROVENANCE.md) | Pinned verifier dependency and supply-chain evidence |
 
+## Community history
+
+- [Hall of Thanks](HALL-OF-THANKS.md): the first dedication, attribution evidence and how to add confirmed community names.
+
 ## Collection and worldbuilding
 
 | Document | Scope |
