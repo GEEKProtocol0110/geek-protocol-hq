@@ -93,7 +93,11 @@
       setText(root, '[data-wallet-address]', shortAddress(state.address));
       setText(root, '[data-wallet-network]', state.connected ? networkLabel(state.network) : 'Connect to read network');
       setText(root, '[data-wallet-geek]', state.connected ? `${state.geekBalance} GEEK` : '—');
-      setText(root, '[data-wallet-message]', state.error || (state.verified
+      setText(root, '[data-wallet-message]', state.error || (root.hasAttribute('data-wallet-kasware-only')
+        ? state.connected
+          ? isMainnet ? 'Connected for minting. Review your selected address, amount and fees below. No player sign-in is needed.' : 'Switch Kasware to Kaspa Mainnet, then refresh your wallet before minting.'
+          : state.installed ? 'Connect only when you choose. Connection alone does not move funds.' : 'This mint flow requires Kasware. Open this page in a browser where Kasware is installed and available.'
+        : state.verified
         ? root.hasAttribute('data-wallet-sign-in') ? 'Your wallet proof is verified. Open My HQ to continue with your saved player.' : 'The server verified a one-time Kaspa Schnorr signature. This wallet can recover the player identity and authorize payout-setting changes.'
         : state.connected && !isMainnet
           ? 'Switch your wallet to Kaspa Mainnet before proving ownership.'
@@ -101,7 +105,7 @@
             ? 'Sign a server nonce to link or recover the player identity—no transaction and no network fee.'
             : state.installed
               ? 'Connect only when you choose. Geek Protocol never requests wallet access on page load.'
-              : root.hasAttribute('data-wallet-kasware-only') ? 'This mint flow requires Kasware. Install it or open this page in its dApp browser.' : 'Use the signed-message option on the sign-in page, or open this page with a compatible Kaspa browser wallet.'));
+              : 'Use the signed-message option on the sign-in page, or open this page with a compatible Kaspa browser wallet.'));
 
       const connect = root.querySelector('[data-wallet-connect]');
       if (connect) {

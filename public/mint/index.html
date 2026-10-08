@@ -27,92 +27,85 @@
       <section class="mint-hero" aria-labelledby="mint-title">
         <div class="mint-copy">
           <div class="eyebrow"><span class="status-dot"></span><span id="mint-live-state" data-state="loading">VERIFYING</span> · KASPA MAINNET</div>
-          <h1 id="mint-title">MINT<br /><em>$GEEK.</em></h1>
-          <p>One wallet approval creates one KRC-20 mint directly to your connected Kaspa address. No account, deposit, custody, or private-key access.</p>
+          <h1 id="mint-title">Make it <em>GEEK.</em></h1>
+          <p>Mint 100,000 GEEK to your Kasware wallet. Connect, review the cost, and choose whether to approve in your wallet.</p>
           <div class="mint-facts" aria-label="Mint facts">
-            <div><span>ONE MINT</span><strong>100,000 GEEK</strong></div>
-            <div><span>PUBLISHED PROTOCOL FEE</span><strong>1 KAS</strong></div>
-            <div><span>NETWORK</span><strong>KASPA MAINNET</strong></div>
+            <div><span>YOU MINT</span><strong>100,000 GEEK</strong></div>
+            <div><span>PROTOCOL FEE</span><strong>1 KAS + network fees</strong></div>
           </div>
-          <p class="fee-note">Kasware shows the final request before approval. Commit and reveal network fees are additional and can change. Never enter a seed phrase on this site.</p>
+          <a class="mint-start" href="#mint-workspace">Start minting <span aria-hidden="true">↓</span></a>
+          <p class="fee-note">No account or deposit needed. Kasware shows the final total before you approve.</p>
         </div>
-
         <aside class="mint-terminal" aria-labelledby="mint-panel-title">
-          <div class="terminal-head"><span>GEEK // KRC-20</span><span id="mint-state">VERIFYING</span></div>
-          <h2 id="mint-panel-title">LIVE SUPPLY</h2>
-          <div class="supply-progress" role="progressbar" aria-label="GEEK supply minted" aria-valuemin="0" aria-valuemax="100"><i id="mint-progress-bar"></i></div>
-          <div class="progress-line"><strong id="mint-progress-percent">—</strong><span id="mint-checked">Checking live indexer…</span></div>
+          <div class="terminal-head"><span>OFFICIAL GEEK FAIR MINT</span><span id="mint-state">VERIFYING</span></div>
+          <h2 id="mint-panel-title">Room for more Geeks.</h2>
+          <div class="supply-progress" role="progressbar" aria-label="GEEK supply minted" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="mint-progress-bar"></i></div>
+          <div class="progress-line"><strong id="mint-progress-percent">—</strong><span>of maximum supply minted</span></div>
           <dl>
-            <div><dt>Completed mints</dt><dd id="mint-completed">—</dd></div>
             <div><dt>Mints remaining</dt><dd id="mint-remaining">—</dd></div>
-            <div><dt>Gross minted / max</dt><dd id="mint-supply">—</dd></div>
-            <div><dt>Deployment</dt><dd id="mint-deployment">c3cea245b394…05e014d0b1</dd></div>
+            <div><dt>Completed mints</dt><dd id="mint-completed">—</dd></div>
+            <div><dt>GEEK minted / maximum</dt><dd id="mint-supply">—</dd></div>
           </dl>
-          <button class="refresh-status" id="mint-refresh" type="button">Refresh on-chain status</button>
-          <p>Status checks repeat every 30 seconds while this page is visible. Every mint still requires your click and approval in Kasware.</p>
-          <p>Live totals are verified against the pinned GEEK deployment through the Kasplex indexer. Minting pauses here if verification fails.</p>
+          <div class="mint-status-actions"><span id="mint-checked">Checking live indexer…</span><button class="refresh-status" id="mint-refresh" type="button">Refresh status</button></div>
+          <p>Checks update every 30 seconds while this page is visible. A fresh check runs before each mint.</p>
         </aside>
       </section>
 
-      <section class="mint-workspace" aria-labelledby="mint-workspace-title">
-        <div class="section-kicker">01 / CONNECT &amp; CONFIRM</div>
-        <div class="workspace-heading">
-          <div><h2 id="mint-workspace-title">YOUR KEYS.<br />YOUR MINT.</h2><p>Connect Kasware, verify the exact request below, then approve or reject it inside the wallet.</p></div>
-          <div class="workspace-badge"><span>NON-CUSTODIAL</span><strong>ONE CLICK = ONE MINT REQUEST</strong></div>
-        </div>
-
+      <section id="mint-workspace" class="mint-workspace" aria-labelledby="mint-workspace-title">
+        <div class="workspace-heading"><div><div class="section-kicker">YOUR WALLET. YOUR CHOICE.</div><h2 id="mint-workspace-title">Three steps to your mint.</h2></div><p>One request mints 100,000 GEEK. You approve each request yourself.</p></div>
+        <ol class="mint-steps" aria-label="Mint progress">
+          <li id="mint-step-connect" data-state="current"><span class="step-number">1</span><div><strong>Connect</strong><span id="mint-step-connect-status">Kasware on Mainnet</span></div></li>
+          <li id="mint-step-review" data-state="waiting"><span class="step-number">2</span><div><strong>Review</strong><span id="mint-step-review-status">Amount, address and fees</span></div></li>
+          <li id="mint-step-approve" data-state="waiting"><span class="step-number">3</span><div><strong>Approve in wallet</strong><span id="mint-step-approve-status">Only when you choose</span></div></li>
+        </ol>
+        <p class="mint-next" id="mint-next" role="status" aria-live="polite">Connect Kasware to get started.</p>
         <div class="mint-grid">
-          <div>
+          <div class="mint-setup">
             <section class="wallet-panel" data-wallet-root data-wallet-kasware-only aria-label="Kasware wallet connection">
               <div>
                 <div class="wallet-panel__head"><i class="wallet-panel__dot"></i><span data-wallet-state>KASWARE CHECK</span></div>
                 <div class="wallet-panel__identity"><strong data-wallet-address>Not connected</strong><span data-wallet-network>Connect to read network</span></div>
                 <div class="wallet-panel__facts"><span>Wallet GEEK: <b data-wallet-geek>—</b></span></div>
-                <p class="wallet-panel__message" data-wallet-message>Connect only when you choose. Geek Protocol never requests wallet access on page load.</p>
+                <p class="wallet-panel__message" data-wallet-message>Connect only when you choose. Connection alone does not move funds.</p>
               </div>
-              <div class="wallet-panel__actions">
-                <button type="button" data-wallet-connect>Connect Kasware</button>
-                <a data-wallet-install href="https://www.kasware.xyz/" target="_blank" rel="noreferrer">Get Kasware ↗</a>
-              </div>
-              <p class="wallet-panel__safety"><b>Safety:</b> Geek Protocol cannot see your seed phrase or sign for you. Wallet connection alone does not move funds.</p>
+              <div class="wallet-panel__actions"><button type="button" data-wallet-connect>Connect Kasware</button><a data-wallet-install href="https://www.kasware.xyz/" target="_blank" rel="noopener noreferrer">Get Kasware ↗</a></div>
+              <p class="wallet-panel__safety">This mint flow uses Kasware's KRC-20 transaction support. Never enter a seed phrase here.</p>
             </section>
-
-            <article class="transaction-card" aria-labelledby="transaction-title">
-              <div class="card-label">EXACT WALLET REQUEST</div>
-              <h3 id="transaction-title">Review before approval</h3>
-              <dl>
-                <div><dt>Protocol</dt><dd>KRC-20</dd></div><div><dt>Operation</dt><dd>MINT · TYPE 3</dd></div><div><dt>Ticker</dt><dd>GEEK</dd></div><div><dt>Quantity</dt><dd>100,000 GEEK</dd></div><div><dt>Priority fee requested by HQ</dt><dd>0 KAS</dd></div>
-                <div class="code-row"><dt>Inscription</dt><dd><code>{"p":"KRC-20","op":"mint","tick":"GEEK"}</code></dd></div>
-              </dl>
-              <p>The protocol fee and normal Kaspa commit/reveal network fees still apply. The wallet—not this page—presents the final total and asks for approval.</p>
-            </article>
+            <details class="transaction-card">
+              <summary>View the exact transaction details</summary>
+              <dl><div><dt>Protocol / operation</dt><dd>KRC-20 / MINT · TYPE 3</dd></div><div><dt>Ticker / quantity</dt><dd>GEEK / 100,000</dd></div><div><dt>HQ priority fee</dt><dd>0 KAS</dd></div><div><dt>Deployment</dt><dd id="mint-deployment">c3cea245b394…05e014d0b1</dd></div><div class="code-row"><dt>Inscription</dt><dd><code>{"p":"KRC-20","op":"mint","tick":"GEEK"}</code></dd></div></dl>
+              <p>The wallet constructs two linked transactions: commit and reveal. Normal network fees apply to both.</p>
+            </details>
           </div>
-
           <section class="approval-card" aria-labelledby="approval-title">
-            <div class="card-label">FINAL CHECK</div>
-            <h3 id="approval-title">Approve only what you verified.</h3>
-            <ul><li>Official ticker: <strong>GEEK</strong></li><li>One mint: <strong>100,000 GEEK</strong></li><li>Published protocol fee: <strong>1 KAS</strong></li><li>Network and commit/reveal fees: <strong>additional</strong></li><li>Destination: <strong>connected wallet</strong></li><li>Transaction: <strong>irreversible after broadcast</strong></li></ul>
-            <label class="acknowledge" for="mint-acknowledge"><input id="mint-acknowledge" type="checkbox" /><span>I checked the ticker, amount, fee notice, connected address, and mainnet network. I understand this transaction is irreversible and the application has not completed an independent audit.</span></label>
+            <div class="card-label">YOUR MINT</div><h3 id="approval-title">100,000 <span>GEEK</span></h3>
+            <dl class="mint-review"><div><dt>Protocol fee</dt><dd>1 KAS</dd></div><div><dt>Network fees</dt><dd>Additional · shown in wallet</dd></div><div><dt>Network</dt><dd>Kaspa Mainnet</dd></div><div class="mint-destination-row"><dt>Selected wallet</dt><dd id="mint-destination">Connect Kasware first</dd></div></dl>
+            <label class="acknowledge" for="mint-acknowledge"><input id="mint-acknowledge" type="checkbox" /><span>I checked GEEK, 100,000 tokens, my address and Mainnet. I understand the 1 KAS protocol fee plus network fees, that broadcast transactions are irreversible, and that this interface has not completed an independent audit.</span></label>
             <button class="mint-submit" id="mint-submit" type="button" disabled>Verifying deployment…</button>
-            <p class="mint-message" id="mint-message" role="status" aria-live="polite">The wallet displays the complete request and final KAS cost before you approve it.</p>
-            <div class="mint-result" id="mint-result" hidden><span>SUBMITTED</span><dl><div><dt>Commit</dt><dd id="mint-commit-id">—</dd></div><div><dt>Reveal</dt><dd id="mint-reveal-id">—</dd></div></dl><a id="mint-explorer-link" href="#" target="_blank" rel="noreferrer">View reveal transaction ↗</a></div>
+            <p class="mint-message" id="mint-message" role="status" aria-live="polite">Kasware displays the complete request and final cost before you approve.</p>
+            <button class="mint-retry" id="mint-retry" type="button" hidden>I checked wallet activity · reset request</button>
+            <div class="mint-result" id="mint-result" hidden>
+              <div class="receipt-heading"><span>REQUEST SUBMITTED</span><strong>Follow your mint</strong></div>
+              <p>Kasware returned both transaction IDs. Submission does not confirm that GEEK has arrived. Check the reveal transaction and your wallet before minting again.</p>
+              <dl><div><dt>Wallet selected for this request</dt><dd id="mint-result-address">—</dd></div><div><dt>Submitted</dt><dd id="mint-result-time">—</dd></div><div><dt>Commit transaction</dt><dd id="mint-commit-id">—</dd></div><div><dt>Reveal transaction</dt><dd id="mint-reveal-id">—</dd></div></dl>
+              <div class="receipt-actions"><a id="mint-commit-link" href="#" target="_blank" rel="noopener noreferrer">View commit ↗</a><a id="mint-explorer-link" href="#" target="_blank" rel="noopener noreferrer">View reveal ↗</a><button id="mint-copy-receipt" type="button">Copy receipt</button></div>
+              <p id="mint-copy-message" role="status" aria-live="polite"></p>
+              <p class="receipt-note">This receipt stays on this page only. Copy it if you want to keep it.</p>
+            </div>
           </section>
         </div>
       </section>
 
-      <section class="mint-proof" aria-labelledby="proof-title">
-        <div><div class="section-kicker">02 / WHAT THIS PAGE ENFORCES</div><h2 id="proof-title">PINNED.<br />VERIFIED.<br />USER-SIGNED.</h2></div>
-        <ol>
-          <li><span>01</span><div><h3>Exact deployment</h3><p>Ticker, maximum supply, mint limit, decimals, deployer, and reveal hash must match the pinned GEEK record.</p></div></li>
-          <li><span>02</span><div><h3>Fresh availability</h3><p>The server rechecks the live indexer immediately before every wallet request. If it cannot verify capacity, minting stops.</p></div></li>
-          <li><span>03</span><div><h3>Wallet approval</h3><p>Kasware constructs and displays the request. You accept or reject it. HQ never receives your seed or signing key.</p></div></li>
-          <li><span>04</span><div><h3>Permanent cap</h3><p>Gross mints count toward the fixed maximum. Burned GEEK does not reopen mint capacity; when no mints remain, this interface closes.</p></div></li>
-        </ol>
-      </section>
-
-      <section class="risk-section">
-        <div><div class="section-kicker">03 / READ BEFORE MINTING</div><h2>REAL CHAIN.<br />REAL RISK.</h2></div>
-        <div class="risk-copy"><p><strong>This is an unaudited beta interface for an existing KRC-20 fair mint.</strong> It is separate from the game’s internal Alpha GEEK rewards and the future treasury payout system. Minting does not activate withdrawals, redemptions, settlement, or any promise of value.</p><p>Wallet software, indexers, browser extensions, fees, and the Kaspa network are external dependencies. Verify the full request in Kasware. Do not proceed if its network, ticker, amount, destination, or cost differs from what you expect.</p><p>No availability, price, profit, liquidity, utility, or eligibility is promised. This is not investment advice.</p><div class="official-links"><a href="https://api.kasplex.org/v1/krc20/token/GEEK">Live Kasplex record ↗</a><a href="https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-krc20">Kasware KRC-20 API ↗</a><a href="https://x.com/geekonkas">X / @geekonkas ↗</a><a href="../security/">Security status ↗</a></div></div>
+      <section class="mint-help" aria-labelledby="mint-help-title">
+        <div><div class="section-kicker">A LITTLE HELP</div><h2 id="mint-help-title">Before you mint.</h2><p>All hope, no hype. Know what your wallet is approving.</p></div>
+        <div class="mint-faq">
+          <details><summary>Can I mint from my phone or another wallet?</summary><p>This page uses Kasware's KRC-20 mint API. Use a browser where Kasware is installed and available. An address alone, or a wallet used for player sign-in, does not provide this transaction capability. <a href="https://www.kasware.xyz/" target="_blank" rel="noopener noreferrer">Check Kasware's supported options ↗</a></p></details>
+          <details><summary>How much KAS do I need?</summary><p>Each mint has a published 1 KAS protocol fee, plus commit and reveal network fees. Keep enough KAS for the total shown by Kasware. HQ requests no added priority fee; review the wallet's final total.</p></details>
+          <details><summary>What happens if mint status is unavailable?</summary><p>The page pauses minting and clears live totals until the indexer responds with a valid official record. It checks again automatically while visible, without requesting a wallet transaction. You can also refresh status yourself.</p></details>
+          <details><summary>My mint was submitted. Where is my GEEK?</summary><p>Open the reveal link in your receipt and check wallet activity. The network or indexer may take time to show the result. If there is an error or uncertain outcome, inspect both transactions before resetting the request. This page does not retry transactions automatically.</p></details>
+          <details><summary>What does this mint give me?</summary><p>A successful mint creates GEEK KRC-20 tokens for your wallet. It is separate from internal Alpha game credits and the planned 500-Geek NFT collection. It does not activate game withdrawals or guarantee value. Gross mints count toward the fixed 144 billion GEEK cap; burning does not reopen capacity.</p></details>
+          <details><summary>How is the official mint checked?</summary><p>Every fresh status must match the pinned ticker, supply, limit, decimals, deployer and deployment hash. Kasware presents the request for your approval. This interface has not completed an independent audit. Verify the complete request in your wallet; transactions are irreversible after broadcast.</p><div class="official-links"><a href="https://api.kasplex.org/v1/krc20/token/GEEK">Live Kasplex record ↗</a><a href="../security/">Security status →</a></div></details>
+        </div>
       </section>
     </main>
 
