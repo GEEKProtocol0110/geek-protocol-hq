@@ -16,6 +16,30 @@
       "destination": "/api/session?service=operations"
     },
     {
+      "source": "/ops/questions",
+      "destination": "/api/session?service=operations&path=questions"
+    },
+    {
+      "source": "/ops/questions/",
+      "destination": "/api/session?service=operations&path=questions"
+    },
+    {
+      "source": "/ops/activity",
+      "destination": "/api/session?service=operations&path=activity"
+    },
+    {
+      "source": "/ops/activity/",
+      "destination": "/api/session?service=operations&path=activity"
+    },
+    {
+      "source": "/ops/payouts",
+      "destination": "/api/session?service=operations&path=payouts"
+    },
+    {
+      "source": "/ops/payouts/",
+      "destination": "/api/session?service=operations&path=payouts"
+    },
+    {
       "source": "/ops/:path*",
       "destination": "/api/session?service=operations&path=:path*"
     },
