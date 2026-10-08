@@ -1,13 +1,10 @@
-// Each role owns one in-memory key and one cancellable request. No browser storage.
-export const roleClient = ({ endpoint, header, fetchImpl = globalThis.fetch }) => {
-  let key = '', generation = 0, active = null;
-  const clear = () => { generation += 1; key = ''; active?.abort(); active = null; };
+// Each workspace has one cancellable request. Authentication stays in the HttpOnly owner cookie.
+export const ownerClient = ({ endpoint, fetchImpl = globalThis.fetch }) => {
+  let generation = 0, active = null;
+  const clear = () => { generation += 1; active?.abort(); active = null; };
   return {
     clear,
-    unlock(value) { clear(); key = String(value || '').trim(); },
-    hasKey: () => Boolean(key),
     async request({ method = 'GET', body, query = '' } = {}) {
-      if (!key) throw new Error('Enter the access key for this section.');
       if (active) throw new Error('Wait for the current request to finish.');
       const version = generation, controller = new AbortController();
       active = controller;
@@ -15,13 +12,13 @@ export const roleClient = ({ endpoint, header, fetchImpl = globalThis.fetch }) =
       try {
         const response = await fetchImpl(endpoint + query, {
           method, credentials: 'same-origin', cache: 'no-store', signal: controller.signal,
-          headers: { 'Content-Type': 'application/json', [header]: key },
+          headers: { 'Content-Type': 'application/json' },
           ...(body ? { body: JSON.stringify(body) } : {})
         });
         const payload = await response.json();
-        if (version !== generation || controller.signal.aborted) throw new DOMException('Access cleared.', 'AbortError');
+        if (version !== generation || controller.signal.aborted) throw new DOMException('View cleared.', 'AbortError');
         if (!response.ok || payload.ok !== true) {
-          const copy = response.status === 401 || response.status === 403 ? 'Access was not accepted. Check the key for this role.'
+          const copy = response.status === 401 || response.status === 403 ? 'Your owner session has ended. Sign in again.'
             : response.status === 429 ? 'Too many requests. Wait a moment before refreshing.'
             : response.status === 503 ? 'This service is unavailable or its access key is not configured.'
             : String(payload.error || 'The request could not be completed.').slice(0, 240);

@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#080b0b" /><meta name="robots" content="noindex,nofollow" />
-  <title>Operations — Geek Protocol</title>
-  <meta name="description" content="Geek Protocol operator workspace for content moderation, payout-risk review and audit activity." />
-  <link rel="stylesheet" href="/assets/styles.css" /><link rel="stylesheet" href="./assets/ops.css" />
-  <script defer src="/play/assets/question-catalog.js"></script>
-  <script type="module" src="./assets/ops.js"></script>
+  <title>Operations — Geek Protocol Operations</title>
+  <link rel="stylesheet" href="/assets/styles.css" /><link rel="stylesheet" href="/ops/assets/ops.css" />
+  <script defer src="/play/assets/question-catalog.js"></script><script type="module" src="/ops/assets/ops.js"></script>
 </head>
-<body>
+<body data-workspace="home">
   <a class="skip-link" href="#main">Skip to operations</a>
-  <header class="ops-header"><a class="brand" href="/" aria-label="Geek Protocol home"><img src="/assets/geek-protocol-logo.png" alt="" width="40" height="40" /><span>GEEK<span class="brand-mark">//</span>OPERATIONS</span></a><div class="ops-header-actions"><button type="button" class="secondary" data-lock-all>Lock all role access</button><button type="button" class="secondary" data-sign-out>Sign out</button></div></header>
+  <header class="ops-header"><a class="brand" href="/ops/" aria-label="Operations home"><img src="/assets/geek-protocol-logo.png" alt="" width="40" height="40" /><span>GEEK<span class="brand-mark">//</span>OPERATIONS</span></a><button type="button" class="secondary" data-sign-out>Sign out</button></header>
   <main id="main" class="ops-main">
-    <section class="ops-intro"><div class="section-kicker">OPERATOR WORKSPACE</div><h1>A clear view of Geek.</h1><p>Review community questions, resolve payout-setting risks, and inspect recorded activity.</p><p class="boundary">Public Alpha · Token payouts, purchases and burns are disabled.</p><p role="status" data-global-message></p></section>
-    <nav class="ops-nav" aria-label="Operations sections"><a href="#overview">Overview</a><a href="#questions">Questions</a><a href="#payouts">Payout reviews</a><a href="#activity">Activity</a></nav>
+    <nav class="ops-nav" aria-label="Operations pages"><a href="/ops/" aria-current="page">Home</a><a href="/ops/questions/">Questions</a><a href="/ops/activity/">Audit activity</a><a href="/ops/payouts/">Payout reviews</a></nav>
+    <section class="ops-intro"><div class="section-kicker">PRIVATE OWNER WORKSPACE</div><h1>Operations</h1><p>Choose a workspace. One owner sign-in gives you access to all configured sections.</p><p class="muted" data-session-state role="status">Checking your owner session…</p><p role="status" data-global-message></p></section>
+    <section class="workspace-grid" aria-label="Choose a workspace">
+<a class="workspace-card" href="/ops/questions/"><span class="workspace-number">01 / CONTENT</span><h2>Questions</h2><p>Check community submissions, review sources and publish approved questions.</p><span class="workspace-open">Open question reviews →</span></a>
+<a class="workspace-card" href="/ops/activity/"><span class="workspace-number">02 / RECORDS</span><h2>Audit activity</h2><p>Inspect recorded activity, filter events and check record integrity.</p><span class="workspace-open">Open activity log →</span></a>
+<a class="workspace-card" href="/ops/payouts/"><span class="workspace-number">03 / RISK</span><h2>Payout reviews</h2><p>Review flagged wallet settings and record a decision. Token payments stay disabled.</p><span class="workspace-open">Open risk reviews →</span></a>
+</section>
     <section id="overview" aria-labelledby="overview-title" class="ops-section">
       <div class="section-heading"><div><h2 id="overview-title">Overview</h2><p>Service status and readiness. Refresh to check again.</p></div><button type="button" class="secondary" data-refresh-overview>Refresh status</button></div>
       <div class="status-grid">
@@ -23,31 +26,11 @@
         <article class="status-card"><span>Reward reserve</span><strong data-reserve-state>Checking…</strong><p data-reserve-detail>Funding has not been verified.</p><small data-reserve-time></small></article>
         <article class="status-card"><span>Token settlement</span><strong>Disabled</strong><p>Internal Alpha credits are separate from wallet tokens. A review decision cannot send funds.</p><a href="/economy/">Economy plan →</a></article>
       </div>
-      <p class="muted" data-operator-readiness>Operator access configuration is checked with service health.</p>
-      <details class="bank-details"><summary>Question counts by category</summary><div data-bank-breakdown></div><p>Imported banks still need individual factual, wording and difficulty review. The CCE queue below contains community submissions; it does not edit these imported banks.</p></details>
+
+      <details class="bank-details"><summary>Question counts by category</summary><div data-bank-breakdown></div><p>Imported banks still need individual factual, wording and difficulty review. The Questions workspace contains community submissions; it does not edit these imported banks.</p></details>
       <div class="ops-links"><a href="https://github.com/GEEKProtocol0110/geek-protocol-hq/issues">Reported issues ↗</a><a href="https://github.com/GEEKProtocol0110/geek-protocol-hq/security/policy">Private security reporting ↗</a><a href="/contribute/">Contributor view →</a></div><p class="muted">Issue reports are managed on GitHub. This workspace does not import or count them.</p>
     </section>
-    <section id="questions" class="ops-section" data-role="cce" aria-labelledby="questions-title">
-      <div class="section-heading"><div><h2 id="questions-title">Community questions</h2><p>Check the answer and evidence before approving. Publication is a separate step.</p></div><span class="count" data-count>Locked</span></div>
-      <form class="access-form" data-access><label for="cce-key">Question moderator key<input id="cce-key" name="key" type="password" autocomplete="off" spellcheck="false" required maxlength="512" /></label><button type="submit">Open question queue</button><button type="button" class="secondary" data-refresh disabled>Refresh</button><button type="button" class="secondary" data-lock>Lock</button></form>
-      <p class="muted">Use the dedicated CCE moderator key. Keys stay in page memory and clear on lock, navigation or reload.</p>
-      <p role="status" data-message>Access required.</p><div data-content class="queue-content"><p class="empty">Question queue locked.</p></div>
-    </section>
-    <section id="payouts" class="ops-section" data-role="payout" aria-labelledby="payouts-title">
-      <div class="section-heading"><div><h2 id="payouts-title">Payout-setting risk reviews</h2><p>Review flagged destination changes. Approval clears a risk hold; it does not authorize or execute a payout.</p></div><span class="count" data-count>Locked</span></div>
-      <form class="access-form" data-access><label for="payout-key">Payout reviewer key<input id="payout-key" name="key" type="password" autocomplete="off" spellcheck="false" required maxlength="512" /></label><button type="submit">Open risk queue</button><button type="button" class="secondary" data-refresh disabled>Refresh</button><button type="button" class="secondary" data-lock>Lock</button></form>
-      <p class="muted">This role uses a separate key. Wallet destinations are masked.</p>
-      <p role="status" data-message>Access required.</p><div data-content class="queue-content"><p class="empty">Risk queue locked.</p></div>
-    </section>
-    <section id="activity" class="ops-section" data-role="audit" aria-labelledby="activity-title">
-      <div class="section-heading"><div><h2 id="activity-title">Audit activity</h2><p>Recorded moderation, identity, reward-credit and payout-setting events. This is not a live threat detector.</p></div><span class="count" data-count>Locked</span></div>
-      <form class="access-form" data-access><label for="audit-key">Audit viewer key<input id="audit-key" name="key" type="password" autocomplete="off" spellcheck="false" required maxlength="512" /></label><button type="submit">Open activity</button><button type="button" class="secondary" data-refresh disabled>Newest events</button><button type="button" class="secondary" data-lock>Lock</button></form>
-      <p class="muted">Read-only access. Integrity checks do not replace an independent security audit.</p>
-      <p role="status" data-message>Access required.</p>
-      <div class="audit-tools" data-audit-tools hidden><label for="audit-filter">Filter this page<select id="audit-filter"><option value="all">All events</option><option value="risk">Warnings &amp; critical events</option><option value="failure">Failed operations</option><option value="cce">Question activity</option><option value="payout">Payout activity</option></select></label><div><button type="button" class="secondary" data-newer>Newer</button><button type="button" class="secondary" data-older>Older</button></div></div>
-      <div data-content class="queue-content"><p class="empty">Audit activity locked.</p></div>
-    </section>
-    <footer class="ops-footer"><p>Geek Protocol · Access remains separated by role. This page sends no analytics events.</p><a href="/security/">Security status →</a></footer>
+    <footer class="ops-footer"><p>Private owner workspace · Session expires after 30 minutes.</p><a href="/security/">Security status →</a></footer>
   </main>
 </body>
 </html>

@@ -1,24 +1,25 @@
 # Geek Protocol Operations
 
-The workspace at [www.geekprotocol.xyz/ops/](https://www.geekprotocol.xyz/ops/) consolidates existing operator services. The dashboard and its JavaScript/CSS are served by a server-side access gate through the existing session function. Unauthenticated page visits redirect to a generic sign-in page, while unauthenticated asset requests are denied. The UI files live under `server/ops-ui/`, outside the public output directory. Existing public health, question-count and economy APIs retain their public status; this gate protects the Operations workspace. Role APIs continue to require their separate keys. No signing capability or settlement flag is introduced.
+The private Operations home at [www.geekprotocol.xyz/ops/](https://www.geekprotocol.xyz/ops/) links to three focused workspaces. Every page and its assets is served through the existing session function, outside the public output directory. Anonymous page visits redirect to sign-in and asset requests are denied. Public health, question-count and economy APIs retain their public status. No signing or settlement capability is introduced.
 
-## Access
+## Pages and access
 
-| Section | Existing server setting | Capability |
+| Page | Server capability | Existing role configuration |
 | --- | --- | --- |
-| Community questions | `CCE_ADMIN_TOKEN` | Read community queue; approve, request changes, reject and publish |
-| Payout-setting risk reviews | `PAYOUT_REVIEW_ADMIN_TOKEN` | Read masked destination-change cases; approve or reject risk reviews |
-| Audit activity | `AUDIT_ADMIN_TOKEN` | Read paginated event records and server verification results |
+| `/ops/` | Owner home and service overview | Owner session |
+| `/ops/questions/` | Read community queue; approve, request changes, reject and publish | `CCE_ADMIN_TOKEN` |
+| `/ops/activity/` | Read paginated audit events and integrity results | `AUDIT_ADMIN_TOKEN` |
+| `/ops/payouts/` | Read masked destination-change cases; approve or reject risk reviews | `PAYOUT_REVIEW_ADMIN_TOKEN` |
 
-Page access uses `OPS_ACCESS_TOKEN` when configured. While it is absent, the sole operator signs in with the existing `CCE_ADMIN_TOKEN`. A configured but empty/invalid dedicated key fails closed. This is possession-of-key access, not a named personal-account or MFA identity check. Keep the keys private; configure a separate `OPS_ACCESS_TOKEN` before sharing CCE moderation access.
+Sign in once with `OPS_ACCESS_TOKEN` when configured, or the existing CCE moderator key while it is absent. The current sole owner can keep using that existing key. A configured but empty/invalid dedicated owner key fails closed. Owner keys must be 24–512 characters. This is possession-of-key access, not a named account or MFA identity check. **Configure a distinct `OPS_ACCESS_TOKEN` before giving anyone the CCE moderator key: the fallback CCE key now grants the complete owner session.**
 
-Successful sign-in creates a random, Redis-backed, 30-minute `Secure`, `HttpOnly`, `SameSite=Strict`, `__Host-` cookie. The password is never stored in the browser or session record. The session is tied to the configured access-key fingerprint; access-key/audit-key rotation invalidates it. Reads do not renew the absolute expiry. Logout deletes the server session, so a copied cookie cannot be reused after sign-out. Login/logout require JSON and an exact allowlisted HTTPS origin, are rate limited, and create credential-free audit events. Storage/configuration failures fail closed. Dedicated preview origins can be set in `OPS_ALLOWED_ORIGINS`; the deployment's own Vercel URL is also trusted.
+Login creates a random Redis-backed 30-minute `Secure`, `HttpOnly`, `SameSite=Strict`, `__Host-` cookie. Version 2 sessions explicitly record the owner role and configured permissions; older page-only sessions must sign in again and do not gain API permissions. Permissions are granted by the server only for roles whose existing configuration meets its 24-character requirement. Server-held role secrets never travel to the workspace browser. Changing the owner key, any configured role key, or the audit HMAC secret invalidates owner sessions. Reads do not extend the deadline. Sign out deletes the session, revoking copied cookies as well.
 
-Provision distinct random keys of at least 24 characters through the deployment's secret configuration. Operators obtain only keys for their role. This release does not configure missing production secrets or replace keys with individual MFA-backed login; that remains an operations/security upgrade. Never paste a wallet phrase or signing key into this page.
+All three existing APIs now accept this server-validated owner session for the corresponding permission. Direct API callers may still use their existing dedicated role credentials, with their previous role checks. Explicit invalid credentials cannot fall back to a valid owner cookie. Cookie-authenticated mutations require JSON and an exact trusted HTTPS Origin. Cross-site request metadata and untrusted Origins are rejected. Audit remains GET-only. Configuration/storage failures fail closed, and an owner session cannot turn on an unconfigured role or token settlement.
 
-Each role sends its key only in its designated HTTP header to its existing same-origin API. Keys are not written to browser storage, URLs, analytics or logs by this workspace. Inputs clear after entry. Lock clears the role key, inputs and private rendered data, aborts its request and prevents late replies from repopulating the page. Lock all and pagehide apply this to every role. Reload requires fresh role keys while the short-lived page-access cookie remains valid. **Sign out** additionally revokes that server session. Page focus, visibility return and a periodic check clear roles and return to sign-in when page access has expired. Keys remain available in memory until lock/navigation/reload; this is not an idle-expiry session. Each role allows one in-flight request, uses a 15-second request timeout and never automatically retries a decision. Requests accepted by the server may finish after the browser locks or loses the response.
+The browser checks owner status before loading its active workspace. Each page requests only its own private records. Navigation, Clear view and sign-out clear loaded records, cancel requests and reject stale replies. Restored browser-history pages recheck the session before loading again. Focus, visibility return and a periodic check enforce session validity. Requests have a 15-second timeout and decisions are never automatically retried: a server-accepted write may complete after a response is lost or a view is cleared. Sign-out failures clear local records and ask the owner to retry revocation.
 
-The legacy `/moderate/` namespace redirects to the protected workspace. Its former public HTML/scripts were removed, including the older session-storage credential behavior. The generic sign-in page removes any leftover `geek-cce-admin` session-storage value without reading/reusing it.
+Keys remain server-side environment secrets and must stay configured even though the UI no longer asks for each role key. The generic sign-in page stores no credential and clears the retired review desk's session-storage value. The legacy `/moderate/` namespace redirects to Operations. Dedicated trusted preview origins can be configured with `OPS_ALLOWED_ORIGINS`, and the deployment's Vercel URL is trusted. No production credential is provisioned or rotated by this release.
 
 ## Overview
 
@@ -28,7 +29,7 @@ The generated count-only question catalog supplies category totals. Imported que
 
 ## Question decisions
 
-1. Open the question queue with the CCE key.
+1. Sign in once as owner and open the Questions workspace.
 2. Check the wording, correct option, explanation, source and contribution rights.
 3. Enter a decision note (at least six characters in this workspace).
 4. Approve, request changes or reject using the existing endpoint. Rejection requires confirmation.
@@ -38,14 +39,14 @@ Returned queue length is a window of up to 100 records, not a lifetime or global
 
 ## Payout-setting risk decisions
 
-Open this queue with the separate payout-review key. The endpoint returns masked destinations and existing risk reasons. Both decisions require a note of at least eight characters and explicit confirmation. Approval resolves a destination-setting risk hold; it does not authorize token settlement, remove the existing change cooldown or prove treasury funding. No transfer is constructed, signed or broadcast.
+Open the Payout reviews workspace with your shared owner session. The endpoint returns masked destinations and existing risk reasons. Both decisions require a note of at least eight characters and explicit confirmation. Approval resolves a destination-setting risk hold; it does not authorize token settlement, remove the existing change cooldown or prove treasury funding. No transfer is constructed, signed or broadcast.
 
 After a successful decision, refresh before reviewing the next case. Any failed or lost decision response clears actionable rows and asks the operator to refresh, because the server may already have recorded the change. This UI introduces no auto-retry or bulk execution. Existing API concurrency behavior is not changed by this release.
 
 ## Audit activity
 
-The viewer requests 50 records at a time with newest/older navigation, using the existing API's bounded offset range. Filters apply only to the loaded page. Warning/critical/failed counts describe recorded events; they do not certify attacks, all-time totals or threat detection. Empty pages are reported as having no records to verify. Verification reports record digests using the server's configured integrity mode; an unkeyed Alpha mode is not independent tamper-proof evidence. Events retain pseudonymous server identifiers; the UI displays type, reason, object type, outcome, severity, sequence and time rather than raw identifiers or arbitrary details.
+The viewer requests 50 records at a time with newest/older navigation, using the existing API's bounded offset range. Filters and text search apply only to the loaded page. Warning/critical/failed counts describe recorded events; they do not certify attacks, all-time totals or threat detection. Empty pages are reported as having no records to verify. Verification reports record digests using the server's configured integrity mode; an unkeyed Alpha mode is not independent tamper-proof evidence. Events retain pseudonymous server identifiers; the UI displays type, reason, object type, outcome, severity, sequence and time rather than raw identifiers or arbitrary details.
 
 ## Verification
 
-`tests/operations-access.test.js` exercises real Redis login, protected files, origin checks, role-key separation, expiry, key rotation, logout, cookie replay, path allowlisting, rate limits and storage failures. `tests/ops.test.js` covers role-header isolation, cancelled/stale replies, mutation serialization, no automatic write retries, safe evidence links, escaped question content and privacy boundaries. Full repository checks retain existing API authorization and review behavior. Browser QA exercises actual moderation/risk/audit handlers through an isolated real Redis fixture and synthetic keys, plus locked, empty, outage, lost-response, confirmation, page-navigation and 320–1280 px layouts. Production credentials and real moderation/risk decisions are not used for QA. This is internal verification, not an independent audit.
+`tests/operations-access.test.js` exercises real Redis owner login, scoped API reads/writes, origin/JSON checks, legacy-session rejection, explicit credential isolation, configured-role checks, expiry, key rotation, logout, cookie replay, file allowlisting, rate limits and storage failures. `tests/ops.test.js` covers credential-free browser requests, focused page structure, cancelled/stale replies, mutation serialization, no automatic write retries, safe evidence links, escaped question content and privacy boundaries. Full repository checks retain existing API authorization and review behavior. Browser QA exercises actual moderation/risk/audit handlers through an isolated real Redis fixture and synthetic keys, plus locked, empty, outage, lost-response, confirmation, page-navigation and 320–1280 px layouts. Production credentials and real moderation/risk decisions are not used for QA. This is internal verification, not an independent audit.

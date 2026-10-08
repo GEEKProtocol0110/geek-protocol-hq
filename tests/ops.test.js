@@ -1,44 +1,38 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { roleClient, sourceLink, escapeHtml, auditSummary } from '../server/ops-ui/assets/ops-core.js';
+import { ownerClient, sourceLink, escapeHtml, auditSummary } from '../server/ops-ui/assets/ops-core.js';
 
 const response = (payload = { ok: true }, status = 200) => ({ ok: status === 200, status, json: async () => payload });
-test('operations access keys are separated by role and never included in request bodies or URLs', async () => {
-  const requests = [], fetchImpl = async (url, options) => { requests.push({ url, options }); return response(); };
-  const cce = roleClient({ endpoint: '/api/moderation', header: 'X-CCE-Admin', fetchImpl });
-  const audit = roleClient({ endpoint: '/api/audit', header: 'X-Audit-Admin', fetchImpl });
-  cce.unlock('cce-test-only'); audit.unlock('audit-test-only');
-  await cce.request({ method: 'POST', body: { action: 'approve', id: 'question' } }); await audit.request({ query: '?offset=50&limit=50' });
-  assert.equal(requests[0].options.headers['X-CCE-Admin'], 'cce-test-only');
-  assert.equal(requests[1].options.headers['X-Audit-Admin'], 'audit-test-only');
-  assert.equal(requests[0].options.headers['X-Audit-Admin'], undefined);
-  assert.equal(requests[1].options.headers['X-CCE-Admin'], undefined);
-  assert.equal(requests[0].options.body.includes('test-only'), false);
-  assert.equal(requests.some(item => item.url.includes('test-only')), false);
-  cce.clear(); await assert.rejects(() => cce.request(), /access key/); assert.equal(audit.hasKey(), true);
+test('owner workspaces use cookies without role credentials, key fields or cross-workspace requests', async () => {
+  const requests=[],fetchImpl=async(url,options)=>{requests.push({url,options});return response();};
+  const cce=ownerClient({endpoint:'/api/moderation/',fetchImpl}),audit=ownerClient({endpoint:'/api/audit/',fetchImpl});
+  await cce.request({method:'POST',body:{action:'approve',id:'question'}});await audit.request({query:'?offset=50&limit=50'});
+  for(const {options} of requests){assert.deepEqual(options.headers,{'Content-Type':'application/json'});assert.equal(options.credentials,'same-origin');}
+  for(const page of ['questions','activity','payouts']){const html=readFileSync(new URL(`../server/ops-ui/${page}/index.html`,import.meta.url),'utf8');assert.equal((html.match(/data-role=/g)||[]).length,1);assert.doesNotMatch(html,/name="key"|data-access|data-lock/);assert.match(html,/aria-current="page"/);}
+  const home=readFileSync(new URL('../server/ops-ui/index.html',import.meta.url),'utf8');assert.doesNotMatch(home,/data-role=/);for(const path of ['questions','activity','payouts'])assert.match(home,new RegExp(`/ops/${path}/`));
 });
 test('lock cancels pending access and rejects late replies even if transport ignores cancellation', async () => {
   let resolve, observedSignal;
-  const client = roleClient({ endpoint: '/api/audit', header: 'X-Audit-Admin', fetchImpl: (url, options) => { observedSignal = options.signal; return new Promise(done => { resolve = done; }); } });
-  client.unlock('synthetic'); const pending = client.request(); client.clear();
+  const client = ownerClient({ endpoint: '/api/audit', header: 'X-Audit-Admin', fetchImpl: (url, options) => { observedSignal = options.signal; return new Promise(done => { resolve = done; }); } });
+  const pending = client.request(); client.clear();
   assert.equal(observedSignal.aborted, true); resolve(response({ ok: true, events: ['private'] }));
-  await assert.rejects(pending, { name: 'AbortError' }); assert.equal(client.hasKey(), false);
+  await assert.rejects(pending, { name: 'AbortError' });
 });
-test('role changes reject stale data and duplicate clicks cannot send a second mutation', async () => {
+test('clearing a view rejects stale data and duplicate clicks cannot send a second mutation', async () => {
   const replies = [];
-  const client = roleClient({ endpoint: '/api/moderation', header: 'X-CCE-Admin', fetchImpl: () => new Promise(done => replies.push(done)) });
-  client.unlock('first'); const first = client.request({ method: 'POST', body: { action: 'publish' } });
+  const client = ownerClient({ endpoint: '/api/moderation', header: 'X-CCE-Admin', fetchImpl: () => new Promise(done => replies.push(done)) });
+  const first = client.request({ method: 'POST', body: { action: 'publish' } });
   await assert.rejects(() => client.request(), /current request/); assert.equal(replies.length, 1);
-  client.unlock('second'); const second = client.request();
+  client.clear(); const second = client.request();
   replies[0](response()); await assert.rejects(first, { name: 'AbortError' });
   await assert.rejects(() => client.request(), /current request/);
   replies[1](response({ ok: true, queue: [] })); assert.deepEqual(await second, { ok: true, queue: [] });
 });
 test('request errors do not retry writes and preserve server access denial', async () => {
   let count = 0;
-  const client = roleClient({ endpoint: '/api/payout-review', header: 'X-Payout-Review-Admin', fetchImpl: async () => { count += 1; return response({ ok: false }, 403); } });
-  client.unlock('synthetic'); await assert.rejects(() => client.request({ method: 'POST', body: { action: 'approve' } }), error => error.status === 403);
+  const client = ownerClient({ endpoint: '/api/payout-review', header: 'X-Payout-Review-Admin', fetchImpl: async () => { count += 1; return response({ ok: false }, 403); } });
+  await assert.rejects(() => client.request({ method: 'POST', body: { action: 'approve' } }), error => error.status === 403);
   assert.equal(count, 1);
 });
 test('question evidence cannot create executable or credential-bearing links', () => {

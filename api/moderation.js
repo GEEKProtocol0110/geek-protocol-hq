@@ -1,3 +1,4 @@
+import { requireOperationsRole } from '../server/operations-access.js';
 import { moderateContribution, moderationQueue, requireCceModerator } from '../server/cce.js';
 import { recordAuditEvent } from '../server/audit.js';
 import { clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
@@ -8,7 +9,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   const actorId = clientFingerprint(req);
   try {
-    requireCceModerator(req);
+    await requireOperationsRole(req, 'cce', requireCceModerator);
     await rateLimit('cce-moderation', actorId, 180, 60 * 10);
     if (req.method === 'GET') return sendJson(res, 200, { ok: true, queue: await moderationQueue() });
     if (req.method !== 'POST') return methodNotAllowed(res);

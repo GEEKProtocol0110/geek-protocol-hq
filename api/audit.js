@@ -1,3 +1,4 @@
+import { requireOperationsRole } from '../server/operations-access.js';
 import { auditStatus, listAuditEvents, requireAuditViewer, verifyAuditRecord } from '../server/audit.js';
 import { handleApiError, methodNotAllowed, sendJson, setApiHeaders } from '../server/http.js';
 
@@ -6,7 +7,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'GET') return methodNotAllowed(res, 'GET, OPTIONS');
   try {
-    requireAuditViewer(req);
+    await requireOperationsRole(req, 'audit', requireAuditViewer);
     const offset = Math.max(0, Number(req.query?.offset || 0));
     const limit = Math.max(1, Math.min(100, Number(req.query?.limit || 100)));
     const events = await listAuditEvents({ offset, limit });
