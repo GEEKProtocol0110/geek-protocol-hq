@@ -44,3 +44,16 @@ The accessible mirror https://www6.twstalker.com/geekonkas shows Geek mentioning
 A mirror of the Genesis Quiz closure post https://ww.twstalker.com/geekonkas/status/1960328626689446278 includes an encouraging reply attributed to @Ibrahim07341441. This is a lead for participant acknowledgment, not verification of their identity or a prominent Kaspa project role. No individual has been added based on these mirrors. Confirm support with original post/repost links or an account export supplied by the founder, record the specific contribution and date, then use the preferred public identity.
 
 Kaspa now includes ten additional sourced KRC-20 and ecosystem questions; attribution and snapshot evidence are recorded in QUESTION-MAINTENANCE.md. The hall links Play without exposing question answers.
+
+## Tangem and CoinGecko context — October 8, 2026
+
+The founder highlighted Tangem's KRC-20 support and explained that GEEK is not listed on CoinGecko: an application was submitted but did not meet the requirements. This application outcome is founder-reported history, not an independently inspected CoinGecko decision. No application ID, rejection letter, specific unmet requirement or future approval date was supplied. Do not invent those details or describe an application as pending approval.
+
+Tangem receives an ecosystem wallet credit, separate from Kasware's implemented HQ wallet integration. The public card thanks its Kaspa/KRC-20 support and explicitly leaves GEEK availability unverified. It does not claim a Tangem integration, partnership, GEEK catalog entry or completed compatibility test. CoinGecko is not credited as an HQ data provider or GEEK listing venue.
+
+Primary sources checked October 8, 2026 (America/Detroit):
+
+- https://tangem.com/en/help-center/tangem-wallet-core-functionality/how-to-add-a-token/ describes the CoinGecko-backed Market search and distinguishes asset discovery from wallet support.
+- https://tangem.com/en/blog/post/how-to-add-tokens-to-tangem-app/ includes Kaspa among custom-token networks and refers to KRC-20. Its generic guide is evidence of broader capability, not a verified GEEK procedure. Do not infer from a missing CoinGecko listing alone that GEEK is impossible to add manually. The guide's generic KRC-20 decimal suggestion must not replace the canonical deployment values checked in `server/mint.js`.
+
+GEEK-specific Tangem compatibility remains a separate task requiring the current app behavior and canonical token identity to be checked. This credit update adds no transfer instructions, wallet connection, listing application or token transaction.
