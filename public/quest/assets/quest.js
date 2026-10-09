@@ -10,16 +10,17 @@ const apiPath = `/api/quest?chapter=${encodeURIComponent(chapter.id)}`;
 let campaign = null;
 const drawCampaign = () => {
   let summaries = campaign;
-  if (quest) {
+  if (quest && connected) {
     const selected = { chapterId: chapter.id, available: true, revision: quest.revision, status: quest.attempt?.status || 'unstarted', answered: quest.attempt?.answered || 0, total: questChecks.length, badge: quest.badge, locked: false, prerequisite: null };
     summaries = [...(campaign || []).filter(c => c.chapterId !== chapter.id), selected];
   }
+  if (recordUnavailable) summaries = [...(summaries || []).filter(c => c.chapterId !== chapter.id), { chapterId: chapter.id, available: false }];
   $('[data-campaign]').innerHTML = campaignCards(summaries, validChapter ? chapter.id : null);
   if (summaries) $('[data-campaign-summary]').textContent = campaignSummary(summaries);
 };
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 let prerequisite = getChapter(chapter.prerequisite);
-let quest = null, connected = false, busy = false, selection = null, locked = false, accessPending = Boolean(chapter.prerequisite);
+let quest = null, connected = false, busy = false, selection = null, locked = false, accessPending = Boolean(chapter.prerequisite), recordUnavailable = false;
 const say = message => { $('[data-status]').textContent = message; };
 const api = async (path, body) => {
   const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 12_000);
@@ -29,6 +30,9 @@ const api = async (path, body) => {
     const data = await response.json().catch(() => ({}));
     if (!response.ok) throw Object.assign(new Error(data.error || 'Chapter service unavailable.'), { status: response.status, code: data.code, prerequisite: data.prerequisite });
     return data;
+  } catch (error) {
+    if (error.name === 'AbortError') throw new Error('The chapter service took too long to respond.');
+    throw error;
   } finally { clearTimeout(timeout); }
 };
 const sourceHtml = source => `<a href="${escape(source.url)}"${source.url.startsWith('https:') ? ' target="_blank" rel="noreferrer"' : ''}>${escape(source.label)} ↗</a>`;
@@ -80,16 +84,17 @@ $('[data-mission]').textContent = chapter.objective;
 $('[data-reference]').innerHTML = chapter.scenes.map(scene => `<section><h3>${escape(scene.name)}</h3><p>${escape(scene.objective)}</p><ol>${scene.notes.map(note => `<li>${escape(note)}</li>`).join('')}</ol><p>${escape(scene.example)}</p><div class="sources">${sourceHtml(scene.source)}${scene.additionalSource ? sourceHtml(scene.additionalSource) : ''}</div></section>`).join('');
 
 const controls = () => {
-  const a = quest?.attempt, gated = locked || accessPending, enabled = connected && !busy && !gated;
-  $('[data-chapter-layout]').hidden = gated;
-  $('[data-story-map]').hidden = gated;
+  const a = quest?.attempt, gated = locked || accessPending, recovering = recordUnavailable && !quest, enabled = connected && !busy && !gated;
+  $('[data-chapter-layout]').hidden = gated || recovering;
+  $('[data-story-map]').hidden = gated || recovering;
   $('[data-chapter-reference]').hidden = gated;
-  $('[data-chapter-lock]').hidden = !gated;
-  $('[data-lock-title]').textContent = locked ? `Chapter ${chapter.number} is locked.` : 'Checking your chapter unlock…';
-  $('[data-lock-copy]').textContent = locked ? `Complete ${prerequisite?.title || 'the previous chapter'} and choose Finish chapter & save badge to unlock ${chapter.title}.` : 'Checking saved completion of the earlier chapters.';
+  $('[data-chapter-lock]').hidden = !gated && !recovering;
+  $('[data-lock-title]').textContent = recordUnavailable ? 'Your saved chapter needs a check.' : locked ? `Chapter ${chapter.number} is locked.` : 'Checking your chapter unlock…';
+  $('[data-lock-copy]').textContent = recordUnavailable ? 'Retry loading to check your saved place. Your record has been kept. Reading the chapter notes does not change progress.' : locked ? `Complete ${prerequisite?.title || 'the previous chapter'} and choose Finish chapter & save badge to unlock ${chapter.title}.` : 'Checking saved completion of the earlier chapters.';
+  $('[data-lock-link]').hidden = recordUnavailable || !prerequisite;
   if (prerequisite) { $('[data-lock-link]').href = `/quest/?chapter=${encodeURIComponent(prerequisite.id)}`; $('[data-lock-link]').textContent = `Continue ${prerequisite.title} →`; }
-  $('[data-resume]').textContent = locked || accessPending ? 'Check chapter unlock' : 'Resume saved chapter';
-  $('[data-begin]').hidden = Boolean(a); $('[data-begin]').disabled = !enabled;
+  $('[data-resume]').textContent = recordUnavailable ? 'Retry loading saved chapter' : locked || accessPending ? 'Check chapter unlock' : 'Resume saved chapter';
+  $('[data-begin]').hidden = Boolean(a) || !connected; $('[data-begin]').disabled = !enabled;
   $('[data-continue]').hidden = !a || !['lesson', 'feedback'].includes(a.status);
   $('[data-continue]').disabled = !enabled;
   $('[data-continue]').textContent = a?.status === 'lesson' ? 'Try the first check →' : a?.index === questChecks.length - 1 ? quest.badge ? 'Finish this chapter visit →' : 'Finish chapter & save badge →' : a?.index % 2 === 1 ? 'Explore the next stop →' : 'Try the next check →';
@@ -111,7 +116,7 @@ const render = (q, focus = false) => {
   if (quest && q.revision < quest.revision) throw new Error('Your player session changed. Reload to reconnect to the current profile.');
   const previous = quest?.attempt;
   const changed = !previous || previous.token !== q.attempt?.token || previous.status !== q.attempt?.status;
-  quest = q; connected = true; locked = false; accessPending = false;
+  quest = q; connected = true; locked = false; accessPending = false; recordUnavailable = false;
   const a = q.attempt, scene = chapter.scenes[a?.sceneIndex || 0], complete = a?.status === 'complete';
   if (changed) selection = null;
   $('[data-location]').textContent = complete ? `CHAPTER ${number} / ALL STOPS VISITED` : a ? scene.location : 'YOUR FIRST ADVENTURE';
@@ -155,15 +160,19 @@ const render = (q, focus = false) => {
   map(); drawCampaign(); controls();
   if (focus && changed) { const heading = a?.status === 'question' ? $('[data-question]') : a?.status === 'feedback' ? $('[data-feedback-title]') : complete ? $('#finish-title') : $('[data-title]'); heading.tabIndex = -1; heading.focus({ preventScroll: true }); }
 };
-const failure = error => {
+const failure = (error, saving = false) => {
   connected = false;
   if (error.code === 'QUEST_LOCKED') {
     prerequisite = getChapter(error.prerequisite?.id) || prerequisite;
-    locked = true; accessPending = false; quest = null; selection = null;
+    locked = true; accessPending = false; recordUnavailable = false; quest = null; selection = null;
     campaign = [...(campaign || []).filter(c => c.chapterId !== chapter.id), { chapterId: chapter.id, available: true, locked: true, prerequisite: error.prerequisite }];
-    say(error.message); drawCampaign();
-  } else say(`${error.message} Saving could not be confirmed. Resume to see the server’s saved step.`);
-  controls();
+    say(error.message);
+  } else {
+    recordUnavailable = true;
+    say(`${error.message} ${saving ? 'Your last action may have saved. ' : ''}Retry loading to see the server’s saved step.`);
+    $('[data-save-note]').textContent = 'Saved progress is unverified. Retry loading before taking another chapter step.';
+  }
+  drawCampaign(); controls();
 };
 const load = async () => {
   if (busy) return;
@@ -181,8 +190,8 @@ const act = async (action, extra = {}) => {
     if (result.quest.attempt?.status === 'complete') await refreshCampaign();
   }
   catch (error) {
-    if (error.status === 409) { try { render((await api(apiPath)).quest, true); say('Resumed the saved step from your other request.'); } catch (next) { failure(next); } }
-    else failure(error);
+    if (error.status === 409) { try { render((await api(apiPath)).quest, true); say('Resumed the saved step from your other request.'); } catch (next) { failure(next, true); } }
+    else failure(error, true);
   } finally { busy = false; controls(); }
 };
 $('[data-begin]').addEventListener('click', () => act('begin'));
