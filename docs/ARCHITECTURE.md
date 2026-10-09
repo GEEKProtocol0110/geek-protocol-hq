@@ -200,3 +200,7 @@ The native Redis recovery test restores an isolated RDB and checks data/expiry r
 ## Community contributions
 
 The existing session function serves the Hall application/public-credit API and owner-only review action. Deployment-scoped Redis records isolate pending private applications from approved public projections. Atomic Lua decisions include revision checks and audit writes. Consent and owner verification precede publication; fund support only displays the founder-designated receiving address. No custody or transfer API is added. See [Community Contributions](COMMUNITY-CONTRIBUTIONS.md).
+
+## Owner attention summary
+
+The existing Operations session function serves a private count-only attention action for the home dashboard. Current owner authorization precedes all queue reads; the configured CCE permission gates question counts. Hall applications use their deployment-scoped bounded pending queue, while question counts cover the same newest 100 index entries as moderation and explicitly report further entries. Queue failures remain independent and display unavailable rather than zero. Counts contain no contributor/application text, question answers or wallet data, and create no decision or signing authority. See [Operations](OPERATIONS.md#overview) and GP-INV-035.

@@ -224,6 +224,12 @@
         "tests/community-contributions.test.js",
         "docs/COMMUNITY-CONTRIBUTIONS.md"
       ]
+    },
+    {
+      "id": "GP-INV-035",
+      "title": "Owner-only attention counts preserve queue scope, privacy, unavailable states and cancelled-view clearing",
+      "status": "implemented-alpha",
+      "evidence": ["server/operations-attention.js", "server/cce.js", "server/community-contributions.js", "server/ops-ui/assets/attention.js", "tests/operations-access.test.js", "tests/operations-attention.test.js", "docs/OPERATIONS.md"]
     }
   ]
 }

@@ -13,6 +13,15 @@
   <main id="main" class="ops-main">
     <nav class="ops-nav" aria-label="Operations pages"><a href="/ops/" aria-current="page">Home</a><a href="/ops/questions/">Questions</a><a href="/ops/activity/">Audit activity</a><a href="/ops/payouts/">Payout reviews</a><a href="/ops/appearance/">Holiday themes</a><a href="/ops/community/">Community contributions</a></nav>
     <section class="ops-intro"><div class="section-kicker">PRIVATE OWNER WORKSPACE</div><h1>Operations</h1><p>Choose a workspace. One owner sign-in gives you access to all configured sections.</p><p class="muted" data-session-state role="status">Checking your owner session…</p><p role="status" data-global-message></p></section>
+    <section class="ops-section attention-section" data-attention-root aria-labelledby="attention-title">
+      <div class="section-heading"><div><h2 id="attention-title">Needs your attention</h2><p>Waiting community work. Open a queue to review each contribution.</p></div><button type="button" class="secondary" data-attention-refresh disabled>Refresh waiting reviews</button></div>
+      <div class="attention-grid">
+        <article class="attention-card"><h3>Hall applications</h3><strong data-attention-hall-count>—</strong><p data-attention-hall-detail>Waiting for your owner session.</p><a href="/ops/community/">Review Hall applications →</a></article>
+        <article class="attention-card"><h3>Question decisions</h3><strong data-attention-review-count>—</strong><p data-attention-review-detail>Waiting for your owner session.</p><a href="/ops/questions/">Review submitted questions →</a></article>
+        <article class="attention-card"><h3>Ready to publish</h3><strong data-attention-publish-count>—</strong><p data-attention-publish-detail>Waiting for your owner session.</p><a href="/ops/questions/">Publish approved questions →</a></article>
+      </div>
+      <p class="muted" data-attention-scope></p><p class="muted" data-attention-message role="status" aria-live="polite">Counts appear after owner access is checked.</p>
+    </section>
     <section class="workspace-grid" aria-label="Choose a workspace">
 <a class="workspace-card" href="/ops/questions/"><span class="workspace-number">01 / CONTENT</span><h2>Questions</h2><p>Check community submissions, review sources and publish approved questions.</p><span class="workspace-open">Open question reviews →</span></a>
 <a class="workspace-card" href="/ops/activity/"><span class="workspace-number">02 / RECORDS</span><h2>Audit activity</h2><p>Inspect recorded activity, filter events and check record integrity.</p><span class="workspace-open">Open activity log →</span></a>

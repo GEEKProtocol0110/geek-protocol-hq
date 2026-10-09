@@ -178,6 +178,25 @@ export const moderationQueue = async () => {
   return stored.map(parseStoredJson).filter(Boolean).map((item) => publicSubmission(item, true));
 };
 
+// Count the same bounded window the review workspace can load, without
+// returning question text, answer keys or contributor identifiers.
+export const moderationAttention = async () => {
+  const ids = await redis('ZREVRANGE', REVIEW_QUEUE, 0, 100);
+  if (!Array.isArray(ids) || ids.some(id => !/^cce_[a-f0-9]{24}$/.test(id))) throw new Error('OPS_ATTENTION_STORAGE');
+  const window = ids.slice(0, 100);
+  const stored = window.length ? await pipeline(window.map(id => ['GET', submissionKey(id)])) : [];
+  if (stored.length !== window.length) throw new Error('OPS_ATTENTION_STORAGE');
+  let review = 0, publish = 0;
+  for (let i = 0; i < stored.length; i++) {
+    if (!stored[i]) continue; // A concurrent decision may have removed the row.
+    const row = parseStoredJson(stored[i]);
+    if (!row || row.id !== window[i] || !contributionStates.has(row.status)) throw new Error('OPS_ATTENTION_STORAGE');
+    if (row.status === 'submitted') review++;
+    if (row.status === 'approved') publish++;
+  }
+  return { review, publish, scanned: window.length, limit: 100, hasMore: ids.length > 100 };
+};
+
 export const moderateContribution = async (body, context = {}) => {
   const action = String(body.action || '');
   const note = cleanText(body.note, 400);
