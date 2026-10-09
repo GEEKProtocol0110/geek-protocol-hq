@@ -176,7 +176,7 @@
       "id": "GP-INV-028",
       "title": "Quest chapter access requires the full verified prerequisite completion chain; atomic progress and badges preserve legacy receipts and remain isolated from ranked or monetary records",
       "status": "implemented-alpha",
-      "evidence": ["server/quest.js", "tests/quest.test.js", "public/quest/assets/chapter.js", "docs/QUEST-PROTOCOL.md"]
+      "evidence": ["server/quest.js", "tests/quest.test.js", "tests/quest-client.test.js", "public/quest/assets/quest.js", "public/quest/assets/chapter.js", "docs/QUEST-PROTOCOL.md"]
     },
     {
       "id": "GP-INV-029",

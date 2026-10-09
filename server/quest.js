@@ -10,6 +10,7 @@ export const questKey = (playerId, chapterId = firstSignal.id) => `geek:quest:${
 const tokenPattern = /^[a-f0-9]{32}$/;
 const token = () => randomBytes(16).toString('hex');
 const validTime = n => Number.isSafeInteger(n) && n > 0;
+const serverTimeMarker = '__geek_quest_server_time_v2__';
 const emptyState = chapter => ({ version: 1, ...(chapter.id !== firstSignal.id ? { chapterId: chapter.id } : {}), contentVersion: chapter.version, revision: 0, createdAt: 0, updatedAt: 0, run: null, badge: null, lastCompleted: null, lastMutation: '' });
 
 const checkAnswers = (answers, questChecks) => {
@@ -49,31 +50,21 @@ export const decodeQuest = (raw, chapter = firstSignal) => {
 };
 
 // The cursor, answer, completed summary and one-time cosmetic badge share a CAS.
+// Preserve JS's explicit nulls, arrays and booleans instead of re-encoding the
+// record through a provider's cjson implementation. Only clock markers change.
 // Redis TIME stamps accepted activity. No ranked/profile/inventory key is touched.
 export const QUEST_LUA = `
 -- geek-quest-state-v1
 local raw = redis.call('GET', KEYS[1]) or ''
 if raw ~= ARGV[1] then return {0, raw} end
 local next = cjson.decode(ARGV[2])
-local time = redis.call('TIME')
-local now = tonumber(time[1]) * 1000 + math.floor(tonumber(time[2]) / 1000)
-if raw ~= '' then
-  local previous = cjson.decode(raw)
-  if previous.badge ~= cjson.null then next.badge = previous.badge end
-end
-if next.createdAt == 0 then next.createdAt = now end
-next.updatedAt = now
-if next.run.startedAt == 0 then next.run.startedAt = now end
-if next.run.status == 'feedback' then
-  local answer = next.run.answers[#next.run.answers]
-  if answer.answeredAt == 0 then answer.answeredAt = now end
-end
 if next.run.status == 'complete' then
   if #next.run.answers ~= tonumber(ARGV[3]) then return {-1, raw} end
-  next.lastCompleted.completedAt = now
-  if next.badge == cjson.null then next.badge = {id=ARGV[4], awardedAt=now, attemptId=next.run.id} end
 end
-local encoded = cjson.encode(next)
+local time = redis.call('TIME')
+local now = tonumber(time[1]) * 1000 + math.floor(tonumber(time[2]) / 1000)
+local encoded, clocks = string.gsub(ARGV[2], '"__geek_quest_server_time_v2__"', string.format('%.0f', now))
+if clocks < 1 then return {-1, raw} end
 redis.call('SET', KEYS[1], encoded)
 return {1, encoded}
 `;
@@ -160,7 +151,17 @@ export const mutateQuest = async (session, body, chapterId = firstSignal.id) => 
     }
   }
   state.revision++; state.lastMutation = mutation;
-  const result = await redis('EVAL', QUEST_LUA, 1, key, raw, JSON.stringify(state), questChecks.length, chapter.badge.id);
+  // The previous state was validated before this server-owned transition.
+  // A whole-record CAS also protects its original badge during replay.
+  if (state.createdAt === 0) state.createdAt = serverTimeMarker;
+  state.updatedAt = serverTimeMarker;
+  if (state.run.startedAt === 0) state.run.startedAt = serverTimeMarker;
+  if (state.run.status === 'feedback' && state.run.answers.at(-1).answeredAt === 0) state.run.answers.at(-1).answeredAt = serverTimeMarker;
+  if (state.run.status === 'complete') {
+    state.lastCompleted.completedAt = serverTimeMarker;
+    if (state.badge === null) state.badge = { id: chapter.badge.id, awardedAt: serverTimeMarker, attemptId: state.run.id };
+  }
+  const result = await redis('EVAL', QUEST_LUA, 1, key, raw, JSON.stringify(state), questChecks.length);
   if (Number(result[0]) === 1) return decodeQuest(result[1], chapter);
   if (Number(result[0]) === 0) {
     const latest = decodeQuest(result[1], chapter);
@@ -212,7 +213,7 @@ export default async function questHandler(req, res) {
   } catch (error) {
     if (error.message === 'QUEST_LOCKED') return sendJson(res, 403, { ok: false, code: error.message, prerequisite: error.prerequisite, error: `Complete ${error.prerequisite.title} to unlock this chapter.` });
     if (error.message === 'QUEST_STATE_CHANGED') return sendJson(res, 409, { ok: false, code: error.message, error: 'Your chapter moved forward in another request. Resume to see the saved step.' });
-    if (error.message === 'QUEST_STATE_INVALID') return sendJson(res, 503, { ok: false, code: error.message, error: 'Your chapter record could not be verified. No progress or badge was changed.' });
+    if (error.message === 'QUEST_STATE_INVALID') return sendJson(res, 503, { ok: false, code: error.message, error: 'Your saved chapter could not be verified. The record has been kept; retry loading to check the saved step.' });
     return handleApiError(res, error);
   }
 }

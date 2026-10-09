@@ -6,7 +6,7 @@ import { redisFixture } from './helpers/redis-fixture.js';
 import sessionHandler from '../api/session.js';
 import rankedHandler from '../api/ranked.js';
 import { firstSignal, questChecks, insideBlockdag, keysToTheGrid, questChapters, checksFor, getChapter } from '../public/quest/assets/chapter.js';
-import { decodeQuest, questKey, mutateQuest } from '../server/quest.js';
+import { decodeQuest, questKey, mutateQuest, QUEST_LUA } from '../server/quest.js';
 
 let fixture;
 try { fixture = await redisFixture(); }
@@ -85,6 +85,59 @@ run('reading Quest is private and write-free until explicit begin; completed ste
   assert.equal(privateView.body.quest.attempt, null);
   const serialized = JSON.stringify(feedback); assert.equal(serialized.includes(id(cookie)), false); assert.equal(serialized.includes('orders'), false);
 });
+run('storage preserves JSON nulls, empty arrays and booleans without a Lua encoder', async () => {
+  const cookie = await fresh(), transport = globalThis.fetch;
+  // Simulate a provider whose JSON encoder cannot preserve our record shape.
+  // Every transition still executes on real Redis, including its TIME and CAS.
+  globalThis.fetch = async (url, options) => {
+    const values = JSON.parse(options.body);
+    if (values[0] === 'EVAL' && values[1] === QUEST_LUA) {
+      values[1] = `local cjson = {decode = cjson.decode, encode = function() error('Provider encoding is unavailable') end}\n${QUEST_LUA}`;
+      options = { ...options, body: JSON.stringify(values) };
+    }
+    return transport(url, options);
+  };
+  try {
+    await act(cookie, 'begin');
+    let saved = JSON.parse(await fixture.command('GET', key(cookie)));
+    assert.deepEqual(saved.run.answers, []); assert.equal(saved.badge, null); assert.equal(saved.lastCompleted, null);
+    assert.ok(Number.isSafeInteger(saved.createdAt)); assert.equal(saved.createdAt, saved.updatedAt); assert.equal(saved.createdAt, saved.run.startedAt);
+    await act(cookie, 'continue'); await answer(cookie, false);
+    saved = JSON.parse(await fixture.command('GET', key(cookie)));
+    assert.equal(saved.run.answers[0].correct, false); assert.equal(saved.run.answers[0].answeredAt, saved.updatedAt);
+    const done = await complete(cookie, [0]);
+    saved = JSON.parse(await fixture.command('GET', key(cookie)));
+    assert.equal(saved.run.answers[1].correct, true); assert.equal(saved.badge.awardedAt, saved.updatedAt);
+    assert.equal(saved.lastCompleted.completedAt, saved.updatedAt); assert.equal(saved.run.answers.length, 6);
+    assert.equal(JSON.stringify(saved).includes('__geek_quest_server_time_v2__'), false);
+    const originalBadge = saved.badge, replay = await act(cookie, 'replay');
+    assert.deepEqual(replay.badge, done.badge);
+    saved = JSON.parse(await fixture.command('GET', key(cookie)));
+    assert.deepEqual(saved.badge, originalBadge); assert.deepEqual(saved.run.answers, []);
+    assert.deepEqual((await complete(cookie, [])).badge, done.badge);
+  } finally { globalThis.fetch = transport; }
+});
+run('an invalid post-commit reply reports uncertainty and a read recovers the accepted Begin', async () => {
+  const cookie = await fresh(), transport = globalThis.fetch;
+  globalThis.fetch = async (url, options) => {
+    const result = await transport(url, options), values = JSON.parse(options.body);
+    if (values[0] !== 'EVAL' || values[1] !== QUEST_LUA) return result;
+    const data = await result.json(), saved = JSON.parse(data.result[1]);
+    delete saved.lastCompleted;
+    data.result[1] = JSON.stringify(saved);
+    return new Response(JSON.stringify(data));
+  };
+  try {
+    const result = await call(cookie, { action: 'begin', revision: 0 });
+    assert.equal(result.statusCode, 503); assert.equal(result.body.code, 'QUEST_STATE_INVALID');
+    assert.doesNotMatch(result.body.error, /No progress or badge was changed/);
+    assert.match(result.body.error, /retry loading/);
+  } finally { globalThis.fetch = transport; }
+  const raw = await fixture.command('GET', key(cookie)), recovered = await current(cookie);
+  assert.equal(recovered.revision, 1); assert.equal(recovered.attempt.status, 'lesson'); assert.equal(recovered.badge, null);
+  assert.deepEqual((await call(cookie, { action: 'begin', revision: 0 })).body.quest, recovered);
+  assert.equal(await fixture.command('GET', key(cookie)), raw);
+});
 run('skips, forged badge/score fields, wrong tokens and premature replay cannot advance progress', async () => {
   const cookie = await fresh(); let q = await current(cookie);
   assert.equal((await call(cookie, { ...actionFor(q, 'begin'), badge: { id: 'first-signal' } })).statusCode, 400);
@@ -152,7 +205,7 @@ run('durable identity recovery resumes the same chapter and badge in a new sessi
 run('corrupt chapter records fail closed without replacing progress or granting a badge', async () => {
   const cookie = await fresh(); await act(cookie, 'begin');
   const good = await fixture.command('GET', key(cookie));
-  for (const change of [s => { s.version = 2; }, s => { s.run.answers = 12; }, s => { s.run.answers = [null]; }, s => { s.run.orders[0] = ['0','1','2','3']; }, s => { s.run.index = 5; }, s => { s.badge = {id:'fake'}; }, s => { delete s.lastCompleted; }]) {
+  for (const change of [s => { s.version = 2; }, s => { s.run.answers = 12; }, s => { s.run.answers = null; }, s => { s.run.answers = [null]; }, s => { s.run.orders[0] = ['0','1','2','3']; }, s => { s.run.index = 5; }, s => { s.badge = {id:'fake'}; }, s => { delete s.lastCompleted; }, s => { delete s.badge; delete s.lastCompleted; }]) {
     const s = JSON.parse(good); change(s); const corrupt = JSON.stringify(s); await fixture.command('SET', key(cookie), corrupt);
     const result = await call(cookie); assert.equal(result.statusCode, 503, JSON.stringify(result.body)); assert.equal(result.body.code, 'QUEST_STATE_INVALID');
     assert.equal(await fixture.command('GET', key(cookie)), corrupt);
