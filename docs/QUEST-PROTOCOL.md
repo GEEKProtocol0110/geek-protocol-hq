@@ -2,6 +2,47 @@
 
 Quiz Quest has three free, untimed solo chapters: First Signal (Kaspa origins), Inside the blockDAG (parent links, parallel blocks and consensus ordering), and Keys to the Grid (wallet-safety decisions). Each has three authored story scenes and six learning checks. The campaign starts with First Signal. Saved completion badges unlock the chapters in order: First Signal → Inside the blockDAG → Keys to the Grid. The server checks the full earlier-chapter chain on reads and every mutation. Each chapter retains its own saved place. GIGA is the welcoming story guide; A.C.E. supplies fixed teaching notes and checkpoint explanations. Dialogue is fiction, not a historical quotation, adaptive tutoring or live AI chat. The player’s chosen off-chain avatar appears at the chapter entrance and beside the story throughout each visit.
 
+## Saved-record support codes
+
+The October 9 founder phone check still showed an unverified saved chapter, and the founder reported that retrying did not visibly recover it. Issue #81 remains open. The existing record has not been inspected; this report does not establish a provider-specific cause or prove the saved step is recoverable.
+
+Chapter reads and mutations still reject invalid records with HTTP 503 and `QUEST_STATE_INVALID`. They now also return a fixed support code identifying the failed validation group, without returning the raw record, player ID, attempt token, answer choices, or stored values:
+
+| Code | Failed check |
+| --- | --- |
+| `Q_JSON` | Stored JSON parsing |
+| `Q_META` | Record version, revision, timestamps, or mutation fingerprint |
+| `Q_CONTENT` | Chapter selector or content version |
+| `Q_RUN` | Attempt identity, token, start time, status, index, or order-list shape |
+| `Q_ORDER` | Answer-option permutation |
+| `Q_ANSWERS` | Current or completed answer-list shape, checkpoint, choice, grading, or timestamp |
+| `Q_CURSOR` | Saved answer count and chapter cursor consistency |
+| `Q_BADGE` | Badge identity, timestamp, or attempt reference |
+| `Q_RECEIPT` | Completed summary shape, answer count, or badge chronology |
+| `Q_LINK` | Badge/completion presence or completed-attempt linkage |
+| `Q_REPLY` | Unverified transaction result without a specific record-validation code |
+
+Retry visibly announces the check and disables its button while the request is pending. A repeated validation failure shows the support code; it does not automatically start, replay, or rewrite a chapter. A successful read resumes the verified server step. Older servers without support codes retain the previous recovery message.
+
+For an affected player, record the support code, chapter, approximate time, and browser through the existing support conversation. The code identifies a failed check, not its cause; do not infer missing fields, reset progress, or grant badges from the code alone. If a retry still fails after the specific compatibility rule below, inspect the corresponding record through authorized private storage access before proposing further recovery. Keep any inspection read-only and do not paste raw records into public issues. Validation tests verify repeated GET and rejected POST requests leave malformed records byte-for-byte unchanged. A failed post-commit response can still follow an accepted write, so retry loading is the authority for its outcome.
+
+### Null-omitted first Begin compatibility
+
+The founder's follow-up phone screenshot reported `Q_BADGE`. An independent experiment on a disposable Upstash database reproduced the original Quest Lua's first Begin write: its `cjson.decode`/`cjson.encode` round-trip omitted both `badge: null` and `lastCompleted: null`. The resulting record was accepted by the old writer but rejected by the current badge validator. The synthetic result is retained in `tests/fixtures/quest-upstash-first-begin.json`; it contains invented attempt tokens and no player ID or credential. The affected production record has not been inspected, so matching this reproduction is a hypothesis until its retry succeeds.
+
+The reader normalizes both omitted fields to null only after validating the record metadata, chapter/content version, run, option permutations, answers, and cursor, and only when all these additional conditions hold:
+
+- Both fields are absent, rather than present with invalid values.
+- Revision is exactly 1 and the mutation fingerprint equals the server's initial `begin` at revision 0.
+- The run is at lesson 0 with zero accepted answers.
+- Created, updated, and run-start timestamps are the same valid server timestamp.
+
+This exact first-save state cannot contain a previous completion or earned badge. Normalization changes only the in-memory representation, retains the attempt and step token, and grants nothing. GET and an exact legacy Begin retry leave storage unchanged. The next explicit step uses the existing whole-record CAS against the original raw bytes and writes canonical explicit nulls through the current writer. Concurrent retries remain idempotent. Completing the actual six checks and final continuation is still required to earn the first badge and unlock Chapter 2.
+
+Single missing fields, invalid field values, later revisions, mismatched timestamps or fingerprints, completed runs, and replays remain rejected and preserved. This rule applies to a chapter's first Begin only; the existing full prerequisite chain still controls access to later chapters. No generalized missing-field migration, production record reset, or external service call is added to the runtime or CI. [Upstash's temporary database API](https://upstash.com/docs/devops/developer-api/start-redis/create) was used solely for the synthetic compatibility experiment, and its test key was deleted afterward.
+
+The same disposable provider also passed a synthetic run using the current `mutateQuest` state engine: read-only resume and exact legacy Begin retry preserved the raw first save, the first explicit continuation wrote canonical null fields, and 15 accepted transitions completed all six checks and awarded the badge on that original attempt. These are provider compatibility checks on invented data, not acceptance of the founder's saved record. Repeatable local real-Redis tests cover compatibility, concurrent continuation, ordinary completion/replay, and rejection of ambiguous omissions.
+
 ## Curriculum and sources
 
 First Signal covers Kaspa’s research roots, November 2021 public proof-of-work launch and the distinction between KAS and GEEK. Inside the blockDAG uses small, labeled example graphs to teach parent references, parallel relationships and consensus ordering. Arrows point from child to referenced parent; the diagrams are authored teaching examples, not live network data. Teaching references were checked on October 5, 2026:

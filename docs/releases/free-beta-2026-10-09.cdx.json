@@ -2,13 +2,13 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c7b9e670-3d91-4832-ad9b-be09a4ce2880",
+  "serialNumber": "urn:uuid:08cf7ce3-b2ac-4434-b5a9-0b7828ea28aa",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-09T13:43:50.946Z",
+    "timestamp": "2026-10-09T23:00:37.502Z",
     "lifecycles": [
       {
-        "phase": "pre-build"
+        "phase": "build"
       }
     ],
     "tools": [
@@ -33,7 +33,7 @@
         },
         {
           "name": "geek:source:commit",
-          "value": "78ed916ac006ee97bdac109b337df238586d481c"
+          "value": "382ffdb59f967e684ceb4a001f7d6705fe8fe55c"
         },
         {
           "name": "geek:source:lockfile-sha256",
@@ -70,12 +70,17 @@
       "name": "@dfns/kaspa-wasm",
       "version": "0.14.1",
       "scope": "required",
+      "description": "KASPA WASM bindings",
       "purl": "pkg:npm/%40dfns/kaspa-wasm@0.14.1",
       "properties": [],
       "externalReferences": [
         {
           "type": "distribution",
           "url": "https://registry.npmjs.org/@dfns/kaspa-wasm/-/kaspa-wasm-0.14.1.tgz"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/kaspanet/rusty-kaspa"
         }
       ],
       "hashes": [

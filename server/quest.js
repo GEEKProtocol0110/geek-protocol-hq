@@ -12,40 +12,54 @@ const token = () => randomBytes(16).toString('hex');
 const validTime = n => Number.isSafeInteger(n) && n > 0;
 const serverTimeMarker = '__geek_quest_server_time_v2__';
 const emptyState = chapter => ({ version: 1, ...(chapter.id !== firstSignal.id ? { chapterId: chapter.id } : {}), contentVersion: chapter.version, revision: 0, createdAt: 0, updatedAt: 0, run: null, badge: null, lastCompleted: null, lastMutation: '' });
+const firstBeginMutation = createHash('sha256').update(JSON.stringify(['begin', 0, '', '', null])).digest('hex');
+// Fixed support codes identify a failed check without returning saved fields,
+// player identifiers, answer choices, or the raw record. Validation stays strict.
+const invalidRecord = check => { throw Object.assign(new Error('QUEST_STATE_INVALID'), { supportCode: `Q_${check}` }); };
 
 const checkAnswers = (answers, questChecks) => {
-  if (!Array.isArray(answers) || answers.length > questChecks.length) throw new Error('QUEST_STATE_INVALID');
+  if (!Array.isArray(answers) || answers.length > questChecks.length) invalidRecord('ANSWERS');
   answers.forEach((a, index) => {
     const q = questChecks[index];
     if (!a || typeof a !== 'object' || a.checkpointId !== q.id || !Number.isInteger(a.selectedChoice) || a.selectedChoice < 0 || a.selectedChoice > 3
-      || a.correct !== (a.selectedChoice === q.correctIndex) || !validTime(a.answeredAt)) throw new Error('QUEST_STATE_INVALID');
+      || a.correct !== (a.selectedChoice === q.correctIndex) || !validTime(a.answeredAt)) invalidRecord('ANSWERS');
   });
 };
 export const decodeQuest = (raw, chapter = firstSignal) => {
   const questChecks = checksFor(chapter);
   if (!raw) return emptyState(chapter);
   let s;
-  try { s = JSON.parse(raw); } catch { throw new Error('QUEST_STATE_INVALID'); }
-  if (!s || s.version !== 1 || s.contentVersion !== chapter.version || (Object.hasOwn(s, 'chapterId') ? s.chapterId : firstSignal.id) !== chapter.id || !Number.isSafeInteger(s.revision) || s.revision < 1
-    || !validTime(s.createdAt) || !validTime(s.updatedAt) || !/^[a-f0-9]{64}$/.test(s.lastMutation)) throw new Error('QUEST_STATE_INVALID');
+  try { s = JSON.parse(raw); } catch { invalidRecord('JSON'); }
+  if (!s || s.version !== 1 || !Number.isSafeInteger(s.revision) || s.revision < 1
+    || !validTime(s.createdAt) || !validTime(s.updatedAt) || !/^[a-f0-9]{64}$/.test(s.lastMutation)) invalidRecord('META');
+  if (s.contentVersion !== chapter.version || (Object.hasOwn(s, 'chapterId') ? s.chapterId : firstSignal.id) !== chapter.id) invalidRecord('CONTENT');
   const r = s.run;
   if (!r || !tokenPattern.test(r.id) || !tokenPattern.test(r.token) || !validTime(r.startedAt) || !['lesson', 'question', 'feedback', 'complete'].includes(r.status)
-    || !Number.isInteger(r.index) || r.index < 0 || r.index >= questChecks.length || !Array.isArray(r.orders) || r.orders.length !== questChecks.length) throw new Error('QUEST_STATE_INVALID');
-  r.orders.forEach(order => { if (!Array.isArray(order) || order.length !== 4 || !order.every(Number.isInteger) || [...order].sort().join(',') !== '0,1,2,3') throw new Error('QUEST_STATE_INVALID'); });
+    || !Number.isInteger(r.index) || r.index < 0 || r.index >= questChecks.length || !Array.isArray(r.orders) || r.orders.length !== questChecks.length) invalidRecord('RUN');
+  r.orders.forEach(order => { if (!Array.isArray(order) || order.length !== 4 || !order.every(Number.isInteger) || [...order].sort().join(',') !== '0,1,2,3') invalidRecord('ORDER'); });
   // Redis cjson represents an empty array as {}. Only normalize that exact
   // artifact; cursor validation below still requires zero accepted answers.
   if (r.answers && typeof r.answers === 'object' && !Array.isArray(r.answers) && Object.keys(r.answers).length === 0) r.answers = [];
   checkAnswers(r.answers, questChecks);
   const expectedAnswers = r.index + (['feedback', 'complete'].includes(r.status) ? 1 : 0);
-  if (r.answers.length !== expectedAnswers || (r.status === 'lesson' && r.index % 2 !== 0) || (r.status === 'complete' && r.index !== questChecks.length - 1)) throw new Error('QUEST_STATE_INVALID');
-  if (s.badge !== null && (!s.badge || s.badge.id !== chapter.badge.id || !validTime(s.badge.awardedAt) || !tokenPattern.test(s.badge.attemptId))) throw new Error('QUEST_STATE_INVALID');
+  if (r.answers.length !== expectedAnswers || (r.status === 'lesson' && r.index % 2 !== 0) || (r.status === 'complete' && r.index !== questChecks.length - 1)) invalidRecord('CURSOR');
+  // The original Lua writer on Upstash omits JSON nulls. Recover only its
+  // validated first Begin: neither a badge nor a completion can exist yet.
+  // Reads normalize in memory; the next explicit step canonicalizes via CAS.
+  if (!Object.hasOwn(s, 'badge') && !Object.hasOwn(s, 'lastCompleted')
+    && s.revision === 1 && s.lastMutation === firstBeginMutation
+    && r.status === 'lesson' && r.index === 0 && r.answers.length === 0
+    && s.createdAt === s.updatedAt && s.updatedAt === r.startedAt) {
+    s.badge = null; s.lastCompleted = null;
+  }
+  if (s.badge !== null && (!s.badge || s.badge.id !== chapter.badge.id || !validTime(s.badge.awardedAt) || !tokenPattern.test(s.badge.attemptId))) invalidRecord('BADGE');
   if (s.lastCompleted !== null) {
     const done = s.lastCompleted;
-    if (!done || !tokenPattern.test(done.attemptId) || !validTime(done.completedAt)) throw new Error('QUEST_STATE_INVALID');
+    if (!done || !tokenPattern.test(done.attemptId) || !validTime(done.completedAt)) invalidRecord('RECEIPT');
     checkAnswers(done.answers, questChecks);
-    if (done.answers.length !== questChecks.length || !s.badge || s.badge.awardedAt > done.completedAt) throw new Error('QUEST_STATE_INVALID');
+    if (done.answers.length !== questChecks.length || !s.badge || s.badge.awardedAt > done.completedAt) invalidRecord('RECEIPT');
   }
-  if (Boolean(s.badge) !== Boolean(s.lastCompleted) || (r.status === 'complete' && s.lastCompleted?.attemptId !== r.id)) throw new Error('QUEST_STATE_INVALID');
+  if (Boolean(s.badge) !== Boolean(s.lastCompleted) || (r.status === 'complete' && s.lastCompleted?.attemptId !== r.id)) invalidRecord('LINK');
   return s;
 };
 
@@ -213,7 +227,7 @@ export default async function questHandler(req, res) {
   } catch (error) {
     if (error.message === 'QUEST_LOCKED') return sendJson(res, 403, { ok: false, code: error.message, prerequisite: error.prerequisite, error: `Complete ${error.prerequisite.title} to unlock this chapter.` });
     if (error.message === 'QUEST_STATE_CHANGED') return sendJson(res, 409, { ok: false, code: error.message, error: 'Your chapter moved forward in another request. Resume to see the saved step.' });
-    if (error.message === 'QUEST_STATE_INVALID') return sendJson(res, 503, { ok: false, code: error.message, error: 'Your saved chapter could not be verified. The record has been kept; retry loading to check the saved step.' });
+    if (error.message === 'QUEST_STATE_INVALID') return sendJson(res, 503, { ok: false, code: error.message, supportCode: error.supportCode || 'Q_REPLY', error: 'Your saved chapter could not be verified. The record has been kept; retry loading to check the saved step.' });
     return handleApiError(res, error);
   }
 }

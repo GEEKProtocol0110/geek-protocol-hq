@@ -71,6 +71,39 @@ test('retrying a failed load restores only the saved server step, without starti
   assert.equal(ui.requests.filter(r => r.method === 'POST' && r.path.startsWith('/api/quest')).length, 0);
 });
 
+test('the actual initial retry button visibly checks, reports a repeated failure code, and can recover', async () => {
+  const invalid = () => new Response(JSON.stringify({ code: 'QUEST_STATE_INVALID', supportCode: 'Q_META', error: 'Your saved chapter could not be verified.' }), { status: 503 });
+  let pending = false, release;
+  const ui = await page(() => pending ? new Promise(resolve => { release = resolve; }) : invalid());
+  assert.match(ui.node('[data-status]').textContent, /Support code: Q_META/);
+  pending = true;
+  const retry = ui.node('[data-resume]').events.get('click')();
+  assert.equal(ui.node('[data-resume]').disabled, true);
+  assert.equal(ui.node('[data-resume]').textContent, 'Checking saved chapter…');
+  assert.equal(ui.node('[data-status]').textContent, 'Checking your saved chapter…');
+  await new Promise(setImmediate); release(invalid()); await retry;
+  assert.equal(ui.node('[data-resume]').disabled, false);
+  assert.match(ui.node('[data-status]').textContent, /Support code: Q_META/);
+  assert.equal(ui.node('[data-begin]').hidden, true);
+  const recovered = ui.node('[data-resume]').events.get('click')();
+  await new Promise(setImmediate); release(ok({ quest: started() })); await recovered;
+  assert.equal(ui.node('[data-chapter-lock]').hidden, true);
+  assert.equal(ui.node('[data-continue]').disabled, false);
+  assert.doesNotMatch(ui.node('[data-status]').textContent, /Q_META/);
+  assert.equal(ui.requests.filter(r => r.path.startsWith('/api/quest') && r.method === 'POST').length, 0);
+});
+
+test('only recognized Quest support codes are displayed', async () => {
+  for (const payload of [
+    { code: 'QUEST_STATE_INVALID', supportCode: 'private-record-value' },
+    { code: 'OTHER_FAILURE', supportCode: 'Q_META' }
+  ]) {
+    const ui = await page(() => new Response(JSON.stringify({ ...payload, error: 'Chapter service unavailable.' }), { status: 503 }));
+    assert.doesNotMatch(ui.node('[data-status]').textContent, /Support code|private-record-value|Q_META/);
+    assert.equal(ui.node('[data-begin]').hidden, true);
+  }
+});
+
 test('a lost Begin response disables writes and resumes its accepted step without automatic POST retry', async () => {
   let saved = initial();
   const ui = await page(options => {
