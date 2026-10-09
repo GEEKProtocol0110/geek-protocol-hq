@@ -109,7 +109,7 @@ test('deployment routes the complete private namespace to the server and retires
   assert.ok(cfg.rewrites.some(item=>item.source==='/ops/:path*'&&item.destination.includes('service=operations')));
   assert.ok(cfg.redirects.some(item=>item.source==='/moderate/'&&item.destination==='/ops/'));
   assert.ok(cfg.redirects.some(item=>item.source==='/moderate/:path*'&&item.destination==='/ops/'));
-  assert.equal(cfg.functions['api/session.js'].includeFiles,'server/ops-ui/**');
+  assert.equal(cfg.functions['api/session.js'].includeFiles,'{server/ops-ui/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}');
   assert.equal(existsSync(new URL('../public/ops',import.meta.url)),false);assert.equal(existsSync(new URL('../public/moderate',import.meta.url)),false);
   const loginSource=readFileSync(new URL('../public/ops-login/assets/login.js',import.meta.url),'utf8');assert.doesNotMatch(loginSource,/Storage\.(?:setItem|getItem)|console\./);assert.match(loginSource,/removeItem\('geek-cce-admin'\)/);
 });

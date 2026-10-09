@@ -230,6 +230,12 @@
       "title": "Owner-only attention counts preserve queue scope, privacy, unavailable states and cancelled-view clearing",
       "status": "implemented-alpha",
       "evidence": ["server/operations-attention.js", "server/cce.js", "server/community-contributions.js", "server/ops-ui/assets/attention.js", "tests/operations-access.test.js", "tests/operations-attention.test.js", "docs/OPERATIONS.md"]
+    },
+    {
+      "id": "GP-INV-036",
+      "title": "Stored identity, session and one-time proof records validate before use; incompatible durable records remain preserved and unavailable",
+      "status": "implemented-alpha-independent-review-required",
+      "evidence": ["server/identity-records.js", "server/identity-wallet.js", "server/identity.js", "server/session.js", "tests/identity-records.test.js", "docs/IDENTITY-PROTOCOL.md", "vercel.json"]
     }
   ]
 }

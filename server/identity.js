@@ -8,13 +8,15 @@ import {
   identityWalletKey
 } from './identity-keys.js';
 import { isValidKaspaMainnetAddress, maskKaspaAddress, normalizeKaspaAddress } from './kaspa-address.js';
-import { parseStoredJson, redis } from './redis.js';
+import { redis } from './redis.js';
+import { addressForPublicKey, normalizePublicKey, sameSigningKey, validateWalletProofInputs } from './identity-wallet.js';
+import {
+  CHALLENGE_TTL_SECONDS, AUTHORIZATION_TTL_SECONDS, SIGNATURE_SCHEME, PROOF_VERSION,
+  challengeMessage, decodeIdentityRecord, decodeChallengeRecord, decodeAuthorizationRecord,
+  validateIdentityRecord, validateSessionRecord, validateChallengeRecord, validateAuthorizationRecord, readWalletBinding
+} from './identity-records.js';
 import { sessionTtl } from './http.js';
 
-const CHALLENGE_TTL_SECONDS = 5 * 60;
-const AUTHORIZATION_TTL_SECONDS = 5 * 60;
-const SIGNATURE_SCHEME = 'kaspa-schnorr-personal-message-v1';
-const PROOF_VERSION = 1;
 const IDENTITY_BIND_SCRIPT = `
 -- geek-identity-bind-v1
 local wallet = redis.call('GET', KEYS[1])
@@ -37,50 +39,6 @@ return 'OK'
 const digest = (value) => createHash('sha256').update(String(value || '')).digest('hex');
 const sessionKey = (sessionId) => `geek:session:${sessionId}`;
 const stablePlayerId = (session) => String(session?.playerId || session?.id || '');
-
-const normalizePublicKey = (value) => {
-  const publicKey = String(value || '').trim().toLowerCase();
-  if (/^[a-f0-9]{64}$/.test(publicKey)) return `02${publicKey}`;
-  if (!/^(02|03)[a-f0-9]{64}$/.test(publicKey)) throw new Error('IDENTITY_PUBLIC_KEY_INVALID');
-  return publicKey;
-};
-
-// KIP-5 uses the x-only key. Keep older compressed-key records compatible.
-const sameSigningKey = (first, second) => normalizePublicKey(first).slice(2) === normalizePublicKey(second).slice(2);
-
-const publicKeyFromAddress = (address) => {
-  let parsed;
-  try {
-    parsed = new kaspa.Address(address);
-    if (!['PubKey', 'PubKeyECDSA'].includes(parsed.version)) throw new Error('IDENTITY_ADDRESS_UNSUPPORTED');
-    const alphabet = 'qpzry9x8gf2tvdw0s3jn54khce6mua7l';
-    const values = address.split(':')[1].slice(0, -8);
-    const bytes = [];
-    let bits = 0, accumulator = 0;
-    for (const character of values) {
-      accumulator = ((accumulator << 5) | alphabet.indexOf(character)) & 0xffff;
-      bits += 5;
-      while (bits >= 8) { bits -= 8; bytes.push((accumulator >>> bits) & 255); }
-    }
-    const expected = parsed.version === 'PubKey' ? 33 : 34;
-    if (bytes.length !== expected || bits >= 5 || ((accumulator << (8 - bits)) & 255)) throw new Error('IDENTITY_PUBLIC_KEY_INVALID');
-    return { publicKey: normalizePublicKey(Buffer.from(bytes.slice(1)).toString('hex')), ecdsa: parsed.version === 'PubKeyECDSA' };
-  } catch (error) {
-    if (error.message === 'IDENTITY_ADDRESS_UNSUPPORTED') throw error;
-    throw new Error('IDENTITY_PUBLIC_KEY_INVALID');
-  } finally { parsed?.free(); }
-};
-
-const addressForPublicKey = (publicKey) => {
-  try {
-    const key = new kaspa.PublicKey(publicKey);
-    const address = key.toAddress(kaspa.NetworkType.Mainnet);
-    try { return address.toString().toLowerCase(); }
-    finally { address.free(); }
-  } catch {
-    throw new Error('IDENTITY_PUBLIC_KEY_INVALID');
-  }
-};
 
 const normalizeSchnorrSignature = (value) => {
   const signature = String(value || '').trim();
@@ -105,18 +63,6 @@ const verifySignature = ({ message, signature, publicKey }) => {
   }
 };
 
-const validateWalletProofInputs = (addressValue, publicKeyValue) => {
-  if (!isValidKaspaMainnetAddress(addressValue)) throw new Error('INVALID_KASPA_ADDRESS');
-  const address = normalizeKaspaAddress(addressValue);
-  const decoded = publicKeyFromAddress(address);
-  const publicKey = publicKeyValue == null || publicKeyValue === '' ? decoded.publicKey : normalizePublicKey(publicKeyValue);
-  // The SDK validates the curve point. ECDSA-format addresses embed the full
-  // compressed key, including parity; Schnorr addresses embed its x coordinate.
-  const schnorrAddress = addressForPublicKey(publicKey);
-  if (decoded.ecdsa ? publicKey !== decoded.publicKey : schnorrAddress !== address) throw new Error('IDENTITY_KEY_MISMATCH');
-  return { address, publicKey };
-};
-
 const configuredOrigins = () => new Set([
   'https://www.geekprotocol.xyz',
   'https://geekprotocol.xyz',
@@ -133,27 +79,6 @@ const canonicalOrigin = (req) => {
   const suppliedOrigin = String(req?.headers?.origin || '').trim().replace(/\/$/, '');
   if (suppliedOrigin && suppliedOrigin !== origin) throw new Error('IDENTITY_ORIGIN_MISMATCH');
   return origin;
-};
-
-const challengeMessage = ({ origin, intent, address, payoutAddress, nonce, issuedAt, expiresAt }) => {
-  const actions = {
-    link: 'LINK PLAYER IDENTITY',
-    recover: 'RECOVER PLAYER IDENTITY',
-    'payout-set': 'AUTHORIZE PAYOUT DESTINATION',
-    'payout-remove': 'AUTHORIZE PAYOUT REMOVAL'
-  };
-  return [
-    'GEEK Protocol Identity Proof',
-    `Version: ${PROOF_VERSION}`,
-    `Origin: ${origin}`,
-    `Action: ${actions[intent]}`,
-    `Identity wallet: ${address}`,
-    ...(intent === 'payout-set' ? [`Requested payout: ${payoutAddress}`] : []),
-    `Challenge: ${nonce}`,
-    `Issued: ${new Date(issuedAt).toISOString()}`,
-    `Expires: ${new Date(expiresAt).toISOString()}`,
-    'This proves wallet control only. It does not authorize a transaction, transfer, purchase, mint, or withdrawal.'
-  ].join('\n');
 };
 
 const safeIdentity = (identity) => identity ? ({
@@ -184,9 +109,9 @@ const safeIdentity = (identity) => identity ? ({
   settlementEnabled: false
 });
 
-export const loadIdentity = async (playerId) => parseStoredJson(await redis('GET', identityPlayerKey(playerId)));
+export const loadIdentity = async (playerId) => decodeIdentityRecord(await redis('GET', identityPlayerKey(playerId)), playerId);
 
-export const identityView = (identity) => safeIdentity(identity);
+export const identityView = (identity) => safeIdentity(identity == null ? null : validateIdentityRecord(identity, identity.id));
 
 export const identityStatus = async (session) => safeIdentity(await loadIdentity(stablePlayerId(session)));
 
@@ -217,7 +142,14 @@ export const createIdentityChallenge = async ({ req, session, address: rawAddres
   const { address, publicKey } = validateWalletProofInputs(rawAddress, rawPublicKey);
   const playerId = stablePlayerId(session);
   const addressHash = hashAuditIdentifier(address);
-  const boundPlayerId = String(await redis('GET', identityWalletKey(addressHash)) || '');
+  const boundPlayerId = readWalletBinding(await redis('GET', identityWalletKey(addressHash)));
+  // A wallet mapping must not silently recreate a missing durable identity.
+  if (boundPlayerId) {
+    const boundIdentity = await loadIdentity(boundPlayerId);
+    if (!boundIdentity || boundIdentity.address !== address || !sameSigningKey(boundIdentity.publicKey, publicKey)) {
+      throw new Error('IDENTITY_STATE_INVALID');
+    }
+  }
   let selectedIntent;
   let targetPlayerId;
   let payoutAddress = '';
@@ -261,6 +193,7 @@ export const createIdentityChallenge = async ({ req, session, address: rawAddres
     issuedAt: now,
     expiresAt
   };
+  validateChallengeRecord(challenge, challengeId);
   const stored = await redis('SET', identityChallengeKey(challengeId), JSON.stringify(challenge), 'EX', CHALLENGE_TTL_SECONDS, 'NX');
   if (stored !== 'OK') throw new Error('IDENTITY_CHALLENGE_FAILED');
   return {
@@ -276,9 +209,10 @@ export const createIdentityChallenge = async ({ req, session, address: rawAddres
 
 const consumeChallenge = async (session, challengeId) => {
   if (!/^[a-f0-9]{40}$/.test(String(challengeId || ''))) throw new Error('IDENTITY_CHALLENGE_INVALID');
-  const challenge = parseStoredJson(await redis('GETDEL', identityChallengeKey(challengeId)));
-  if (!challenge || challenge.challengeId !== challengeId) throw new Error('IDENTITY_CHALLENGE_INVALID');
-  if (challenge.sessionId !== session.id || Number(challenge.expiresAt || 0) < Date.now()) throw new Error('IDENTITY_CHALLENGE_INVALID');
+  const challenge = decodeChallengeRecord(await redis('GETDEL', identityChallengeKey(challengeId)), challengeId);
+  const now = Date.now();
+  if (!challenge || challenge.sessionId !== session.id || challenge.requesterPlayerId !== stablePlayerId(session)
+      || challenge.issuedAt > now || challenge.expiresAt <= now) throw new Error('IDENTITY_CHALLENGE_INVALID');
   return challenge;
 };
 
@@ -298,6 +232,7 @@ const createPayoutAuthorization = async (session, challenge) => {
     issuedAt: now,
     expiresAt
   };
+  validateAuthorizationRecord(authorization);
   const stored = await redis('SET', identityAuthorizationKey(tokenHash), JSON.stringify(authorization), 'EX', AUTHORIZATION_TTL_SECONDS, 'NX');
   if (stored !== 'OK') throw new Error('IDENTITY_AUTHORIZATION_FAILED');
   const audit = await recordAuditEvent({
@@ -345,15 +280,15 @@ export const verifyIdentityChallenge = async ({ req, session, challengeId, signa
   const targetPlayerId = String(challenge.targetPlayerId || '');
   const walletKey = identityWalletKey(hashAuditIdentifier(challenge.address));
   const playerKey = identityPlayerKey(targetPlayerId);
-  const existingBinding = String(await redis('GET', walletKey) || '');
+  const existingBinding = readWalletBinding(await redis('GET', walletKey));
   if (!targetPlayerId || (existingBinding && existingBinding !== targetPlayerId)) {
     await recordRejectedProof(session, 'wallet-already-bound', challenge);
     throw new Error('IDENTITY_WALLET_BOUND');
   }
 
   const previousRaw = await redis('GET', playerKey);
-  const previous = parseStoredJson(previousRaw);
-  if (previousRaw && !previous) throw new Error('IDENTITY_STATE_INVALID');
+  const previous = decodeIdentityRecord(previousRaw, targetPlayerId);
+  if (existingBinding && !previous) throw new Error('IDENTITY_STATE_INVALID');
   if (previous && (previous.address !== challenge.address || !sameSigningKey(previous.publicKey, challenge.publicKey))) {
     await recordRejectedProof(session, 'identity-record-mismatch', challenge);
     throw new Error('IDENTITY_WALLET_BOUND');
@@ -381,6 +316,8 @@ export const verifyIdentityChallenge = async ({ req, session, challengeId, signa
     identityVersion: identity.sessionVersion,
     lastSeen: now
   };
+  validateIdentityRecord(identity, targetPlayerId);
+  validateSessionRecord(updatedSession, session.id);
   const audit = await createAuditRecord({
     type: recovered ? 'identity.session.recovered' : (previous ? 'identity.wallet.reverified' : 'identity.wallet.linked'),
     severity: 'warning',
@@ -434,17 +371,19 @@ export const verifyIdentityChallenge = async ({ req, session, challengeId, signa
 
 export const requirePayoutAuthorization = async ({ session, token, operation, payoutAddress = '' }) => {
   if (!/^[a-f0-9]{64}$/.test(String(token || ''))) throw new Error('PAYOUT_REAUTH_REQUIRED');
-  const authorization = parseStoredJson(await redis('GETDEL', identityAuthorizationKey(digest(token))));
+  const authorization = decodeAuthorizationRecord(await redis('GETDEL', identityAuthorizationKey(digest(token))));
   const identity = await loadIdentity(stablePlayerId(session));
   const expectedAddressHash = operation === 'set' ? hashAuditIdentifier(normalizeKaspaAddress(payoutAddress)) : '';
+  const now = Date.now();
   const valid = authorization
     && identity
     && authorization.sessionId === session.id
     && authorization.playerId === stablePlayerId(session)
-    && Number(authorization.identityVersion) === Number(identity.sessionVersion)
+    && authorization.identityVersion === identity.sessionVersion
     && authorization.operation === operation
     && authorization.payoutAddressHash === expectedAddressHash
-    && Number(authorization.expiresAt || 0) >= Date.now();
+    && authorization.issuedAt <= now
+    && authorization.expiresAt > now;
   if (!valid) throw new Error('PAYOUT_REAUTH_REQUIRED');
   return identity;
 };

@@ -138,6 +138,8 @@ export const handleApiError = (res, error) => {
   if (code === 'IDENTITY_CHALLENGE_FAILED') return sendJson(res, 503, { ok: false, code, error: 'A one-time wallet challenge could not be created.' });
   if (code === 'IDENTITY_AUTHORIZATION_FAILED') return sendJson(res, 503, { ok: false, code, error: 'A protected wallet authorization could not be created.' });
   if (code === 'IDENTITY_STATE_CONFLICT') return sendJson(res, 409, { ok: false, code, error: 'The player identity changed during verification. Request a new wallet challenge.' });
+  if (code === 'IDENTITY_STATE_INVALID') return sendJson(res, 503, { ok: false, code, error: 'Your saved wallet identity could not be verified. Wallet-protected actions are unavailable. Your saved data has not been reset.' });
+  if (code === 'SESSION_STATE_INVALID') return sendJson(res, 503, { ok: false, code, error: 'Your saved player session could not be verified. Your saved progress has not been reset.' });
   if (code === 'DAILY_ALREADY_PLAYED') return sendJson(res, 409, { ok: false, code, error: 'Today’s verified Daily Signal has already been started. A new challenge unlocks at 00:00 UTC.' });
   if (code === 'PROFILE_BUSY') return sendJson(res, 409, { ok: false, code, error: 'Your profile is updating. Refresh and try again.' });
   if (code === 'PRESTIGE_LEVEL_REQUIRED') return sendJson(res, 409, { ok: false, code, error: 'Reach level 50 before entering prestige.' });
