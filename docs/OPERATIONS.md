@@ -1,6 +1,6 @@
 # Geek Protocol Operations
 
-The private Operations home at [www.geekprotocol.xyz/ops/](https://www.geekprotocol.xyz/ops/) links to four focused workspaces. Every page and its assets is served through the existing session function, outside the public output directory. Anonymous page visits redirect to sign-in and asset requests are denied. Public health, question-count and economy APIs retain their public status. No signing or settlement capability is introduced.
+The private Operations home at [www.geekprotocol.xyz/ops/](https://www.geekprotocol.xyz/ops/) links to five focused workspaces. Every page and its assets is served through the existing session function, outside the public output directory. Anonymous page visits redirect to sign-in and asset requests are denied. Public health, question-count and economy APIs retain their public status. No signing or settlement capability is introduced.
 
 ## Pages and access
 
@@ -59,3 +59,7 @@ Open **Holiday themes** from Operations. Off keeps the standard appearance; Auto
 ## Verification
 
 `tests/operations-access.test.js` exercises real Redis owner login, scoped API reads/writes, origin/JSON checks, legacy-session rejection, explicit credential isolation, configured-role checks, expiry, key rotation, logout, cookie replay, file allowlisting, rate limits and storage failures. `tests/ops.test.js` covers credential-free browser requests, focused page structure, cancelled/stale replies, mutation serialization, no automatic write retries, safe evidence links, escaped question content and privacy boundaries. Full repository checks retain existing API authorization and review behavior. Browser QA exercises actual moderation/risk/audit handlers through an isolated real Redis fixture and synthetic keys, plus locked, empty, outage, lost-response, confirmation, page-navigation and 320–1280 px layouts. Production credentials and real moderation/risk decisions are not used for QA. This is internal verification, not an independent audit.
+
+## Community contributions
+
+`/ops/community/` reviews Hall applications and offers to help, using the current owner session without a separate role key. Choose Pending or Published, review private evidence, enter a private note and an independently written public description. Publication requires requested recognition, explicit applicant consent and confirmation that you checked the contribution/public identity. Close offers without publishing, or withdraw an existing credit. Refresh after a lost decision response. Nothing in this workspace verifies a donation automatically or sends funds. See [Community Contributions](COMMUNITY-CONTRIBUTIONS.md) for retention and capacity limits.

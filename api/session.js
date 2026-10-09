@@ -7,8 +7,10 @@ import economyHandler from '../server/economy.js';
 import prestigeHandler from '../server/prestige.js';
 import operationsHandler from '../server/operations.js';
 import { publicAppearanceHandler } from '../server/appearance.js';
+import { publicCommunityHandler } from '../server/community-contributions.js';
 
 export default async function handler(req, res) {
+  if (req.query?.service === 'community') return publicCommunityHandler(req, res);
   if (req.query?.service === 'appearance') return publicAppearanceHandler(req, res);
   if (req.query?.service === 'operations') return operationsHandler(req, res);
   if (req.query?.service === 'prestige') return prestigeHandler(req, res);

@@ -57,3 +57,7 @@ Primary sources checked October 8, 2026 (America/Detroit):
 - https://tangem.com/en/blog/post/how-to-add-tokens-to-tangem-app/ includes Kaspa among custom-token networks and refers to KRC-20. Its generic guide is evidence of broader capability, not a verified GEEK procedure. Do not infer from a missing CoinGecko listing alone that GEEK is impossible to add manually. The guide's generic KRC-20 decimal suggestion must not replace the canonical deployment values checked in `server/mint.js`.
 
 GEEK-specific Tangem compatibility remains a separate task requiring the current app behavior and canonical token identity to be checked. This credit update adds no transfer instructions, wallet connection, listing application or token transaction.
+
+## Community participation — October 8, 2026
+
+The founder subsequently requested a Hall application/contribution flow and supplied the fund address. This is the separate product request required by the initial maintenance guidance. `/thanks/#join` accepts private offers to help and opt-in recognition applications, displays the designated fund and loads only owner-approved credits. `/ops/community/` provides review and withdrawal. See [Community Contributions](COMMUNITY-CONTRIBUTIONS.md) for address, consent, retention, abuse controls and validation. Founding dedications remain in Git; application credits live in Redis with audit events and require database backup/recovery coverage.
