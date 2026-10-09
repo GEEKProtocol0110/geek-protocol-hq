@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:08520924-0cb0-4a96-8f93-ca96f41a189b",
+  "serialNumber": "urn:uuid:c7b9e670-3d91-4832-ad9b-be09a4ce2880",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-09T04:12:11.592Z",
+    "timestamp": "2026-10-09T13:43:50.946Z",
     "lifecycles": [
       {
         "phase": "pre-build"
@@ -33,7 +33,7 @@
         },
         {
           "name": "geek:source:commit",
-          "value": "a682c20733c771d074b96284b889a217fb69a8ed"
+          "value": "78ed916ac006ee97bdac109b337df238586d481c"
         },
         {
           "name": "geek:source:lockfile-sha256",

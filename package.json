@@ -23,7 +23,7 @@
   "scripts": {
     "test": "node --test",
     "recovery:drill": "node --test tests/recovery.test.js",
-    "security:check": "node scripts/security-check.mjs",
+    "security:check": "node scripts/public-answer-check.mjs && node scripts/security-check.mjs",
     "collection:generate": "node scripts/generate-geek-collection.mjs",
     "collection:check": "node scripts/check-geek-collection.mjs",
     "archive:generate": "node scripts/generate-legacy-art-archive.mjs",

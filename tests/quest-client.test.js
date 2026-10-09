@@ -18,7 +18,7 @@ const page = async (questRequest, { campaignRequest, search = '' } = {}) => {
       textContent: '', innerHTML: '', hidden: false, disabled: false, dataset: {}, attributes: new Map(), events: new Map(),
       addEventListener(name, handler) { this.events.set(name, handler); },
       setAttribute(name, value) { this.attributes.set(name, value); }, hasAttribute(name) { return this.attributes.has(name); }, removeAttribute(name) { this.attributes.delete(name); },
-      replaceChildren() {}, append() {}, focus() {}, showModal() {},
+      replaceChildren() {}, append() {}, focus() { this.focused = true; }, scrollIntoView(options) { this.scrolled = options; }, showModal() {},
     });
     return nodes.get(selector);
   };
@@ -65,6 +65,8 @@ test('retrying a failed load restores only the saved server step, without starti
   assert.equal(ui.node('[data-begin]').hidden, true);
   assert.equal(ui.node('[data-continue]').disabled, false);
   assert.equal(ui.node('[data-title]').textContent, firstSignal.scenes[0].name);
+  assert.equal(ui.node('[data-title]').focused, true);
+  assert.equal(ui.node('[data-title]').scrolled.block, 'start');
   assert.match(ui.node('[data-campaign]').innerHTML, /saved visit in progress/);
   assert.equal(ui.requests.filter(r => r.method === 'POST' && r.path.startsWith('/api/quest')).length, 0);
 });

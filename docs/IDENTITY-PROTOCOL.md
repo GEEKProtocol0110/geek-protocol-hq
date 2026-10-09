@@ -56,6 +56,18 @@ The exact requesting HTTPS origin, action, identity wallet, requested destinatio
 
 The atomic binding step prevents a raced or interrupted request from leaving a second wallet partially attached to a player. A stale compare-and-set returns a conflict and requires a new challenge.
 
+## Stored-record validation and unavailable states
+
+`server/identity-records.js` validates identity records, guest/linked sessions, one-time challenges and payout authorizations on reads and before writes. Only a Redis nil result means an absent record. Empty strings, malformed JSON, JSON null, arrays, missing provider results, unsupported identity/proof versions and incorrectly typed fields are rejected. The wallet mapping must contain a canonical player identifier and resolve to the corresponding valid wallet identity before a recovery challenge can be issued.
+
+Durable identities retain the existing v1 format: Mainnet address and matching compressed/x-only key, KIP-5 scheme, strictly numeric timestamps and counters, a session version equal to the recovery count plus one, and disabled settlement. Older guest sessions may omit player ID, identity version and timestamps; present fields must still be valid. Existing compressed-key records, x-only proofs and ECDSA-format address behavior remain compatible. `server/identity-wallet.js` isolates the existing address/key checks; this release does not replace the manual address decoder or upgrade the verifier. Shared session validation loads the existing verifier, so `vercel.json` explicitly includes its WASM asset for each affected API while retaining question and private operator UI assets. [Vercel's file-inclusion guide](https://vercel.com/kb/guide/how-can-i-use-files-in-serverless-functions) documents the function asset configuration.
+
+Challenges must have the exact five-minute lifetime and agree with their signed message's origin, action, wallet, destination, nonce and timestamps. The requesting session and stable player must still match when the challenge is consumed. Authorizations require strictly numeric identity versions and timestamps, the five-minute lifetime and the expected operation/destination hash. Future-dated or expired one-time records fail closed. Invalid or failed proofs still consume the one-time credential through `GETDEL`; a failed storage response remains uncertain and is never retried automatically.
+
+Malformed durable identity/session data returns an explicit 503 `IDENTITY_STATE_INVALID` or `SESSION_STATE_INVALID`, without exposing the record, claiming the player is unlinked, recreating the identity or replacing the invalid session. A dangling linked-session identity also requires recovery. Valid older-session versions remain revoked with the existing 401 behavior after wallet recovery. These checks preserve saved profiles, wallet mappings and invalid durable records for investigation; they do not repair/reset data. A valid durable wallet identity can still be recovered through the normal fresh guest-session proof flow. Invalid durable records require separate investigation and reviewed recovery; no administrative repair endpoint or migration is added.
+
+Validation detects incompatible or inconsistent data; it does not authenticate Redis contents against a party controlling the database, provide a complete replay log, or prove production recovery. The production Quest record in issue #81 is a separate ledger and is not repaired by this change.
+
 ## Wallet transports and compatibility
 
 Kasware is one signing transport, not the identity namespace. The same address maps to the same player regardless of how its valid proof arrives. Address-only challenge creation grants no identity access; verification still needs the one-time KIP-5 signature.
@@ -99,6 +111,8 @@ The current Alpha supports one immutable recovery wallet per player. Payout-sett
 `tests/api.test.js` covers valid link, exact-origin mismatch rejection, challenge replay rejection, unrelated-wallet rejection without orphaned binding, fresh payout authorization, authorization replay rejection, invalid recovery signature, successful recovery, older-session invalidation, profile restoration, and protected payout removal.
 
 `scripts/security-check.mjs` verifies that the release still contains server-side signature verification, mainnet public-key/address derivation, random short-lived single-use challenges, atomic identity binding, fresh payout authorization, and no client-side signature-verification trust decision.
+
+`tests/identity-records.test.js` executes shipped session/identity/rewards handlers against isolated real Redis. It checks corrupt durable JSON and inconsistent fields, preserved progress/mappings, invalid session refresh/rename, older guest compatibility, missing provider results, dangling wallet references, consumed contradictory/expired/future proofs, payout-authorization validation and disabled settlement. Existing wallet vector, Schnorr/ECDSA, origin, replay and recovery tests continue to run.
 
 ## Residual review items
 

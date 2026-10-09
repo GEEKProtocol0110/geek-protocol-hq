@@ -20,7 +20,7 @@
       "id": "GP-INV-003",
       "title": "Private answer bank",
       "status": "implemented",
-      "evidence": ["server/questions.js", "tests/api.test.js", "scripts/security-check.mjs"]
+      "evidence": ["server/questions.js", "tests/api.test.js", "scripts/security-check.mjs", "scripts/public-answer-check.mjs", "tests/public-answer-check.test.js", "tests/release-boundaries.test.js", "docs/RELEASE-BOUNDARY-CHECKS.md"]
     },
     {
       "id": "GP-INV-004",
@@ -32,7 +32,7 @@
       "id": "GP-INV-005",
       "title": "Settlement fail-closed",
       "status": "implemented",
-      "evidence": ["api/rewards.js", "tests/api.test.js", "scripts/security-check.mjs"]
+      "evidence": ["api/rewards.js", "tests/api.test.js", "scripts/security-check.mjs", "tests/release-boundaries.test.js", "docs/RELEASE-BOUNDARY-CHECKS.md"]
     },
     {
       "id": "GP-INV-006",
@@ -110,13 +110,13 @@
       "id": "GP-INV-017",
       "title": "Server-authoritative progression and bounded journey history",
       "status": "implemented-alpha",
-      "evidence": ["server/progression.js", "api/ranked.js", "server/player-api.js", "tests/api.test.js"]
+      "evidence": ["server/progression.js", "api/ranked.js", "server/player-api.js", "tests/api.test.js", "public/profile/assets/dashboard.js", "tests/profile-client.test.js"]
     },
     {
       "id": "GP-INV-018",
       "title": "Atomic off-chain collectible inventory and trades",
       "status": "implemented-alpha",
-      "evidence": ["server/collectibles.js", "server/sticker-trades.js", "server/player-api.js", "api/session.js", "tests/api.test.js", "docs/COLLECTIBLE-PROTOCOL.md"]
+      "evidence": ["server/collectibles.js", "server/sticker-trades.js", "server/player-api.js", "api/session.js", "tests/api.test.js", "public/profile/assets/profile.js", "public/profile/assets/geek-builder.js", "tests/profile-client.test.js", "docs/COLLECTIBLE-PROTOCOL.md"]
     },
     {
       "id": "GP-INV-019",
@@ -188,7 +188,7 @@
       "id": "GP-INV-030",
       "title": "Configurable 2–100-player Royale uses atomic server-clock membership, hidden-until-deadline answers and deterministic elimination without ranked or monetary writes",
       "status": "implemented-alpha",
-      "evidence": ["server/royale.js", "server/royale-api.js", "tests/royale.test.js", "docs/ROYALE-PROTOCOL.md", "public/royale/assets/royale.js"]
+      "evidence": ["server/royale.js", "server/royale-api.js", "tests/royale.test.js", "tests/royale-client.test.js", "docs/ROYALE-PROTOCOL.md", "public/royale/assets/royale.js"]
     },
     {
       "id": "GP-INV-031",
@@ -230,6 +230,12 @@
       "title": "Owner-only attention counts preserve queue scope, privacy, unavailable states and cancelled-view clearing",
       "status": "implemented-alpha",
       "evidence": ["server/operations-attention.js", "server/cce.js", "server/community-contributions.js", "server/ops-ui/assets/attention.js", "tests/operations-access.test.js", "tests/operations-attention.test.js", "docs/OPERATIONS.md"]
+    },
+    {
+      "id": "GP-INV-036",
+      "title": "Stored identity, session and one-time proof records validate before use; incompatible durable records remain preserved and unavailable",
+      "status": "implemented-alpha-independent-review-required",
+      "evidence": ["server/identity-records.js", "server/identity-wallet.js", "server/identity.js", "server/session.js", "tests/identity-records.test.js", "docs/IDENTITY-PROTOCOL.md", "vercel.json"]
     }
   ]
 }

@@ -1,6 +1,7 @@
 import { cleanName, createSessionId, readSessionId, sessionTtl, setSessionCookie } from './http.js';
 import { identityPlayerKey } from './identity-keys.js';
-import { parseStoredJson, redis } from './redis.js';
+import { redis } from './redis.js';
+import { decodeIdentityRecord, decodeSessionRecord, validateSessionRecord } from './identity-records.js';
 
 const keyFor = (id) => `geek:session:${id}`;
 // Keep names separate from game profiles so concurrent score writes cannot undo an edit.
@@ -10,13 +11,12 @@ export const readSession = async (req) => {
   const id = readSessionId(req);
   if (!id) return null;
   const stored = await redis('GET', keyFor(id));
-  if (!stored) return null;
-  let session;
-  try { session = JSON.parse(stored); } catch { return null; }
-  if (session?.id !== id) return null;
+  const session = decodeSessionRecord(stored, id);
+  if (!session) return null;
   if (session.identityVersion) {
-    const identity = parseStoredJson(await redis('GET', identityPlayerKey(session.playerId)));
-    if (!identity || Number(identity.sessionVersion) !== Number(session.identityVersion)) return null;
+    const identity = decodeIdentityRecord(await redis('GET', identityPlayerKey(session.playerId)), session.playerId);
+    if (!identity) throw new Error('IDENTITY_STATE_INVALID');
+    if (identity.sessionVersion !== session.identityVersion) return null;
   }
   const savedName = await redis('GET', nameKeyFor(playerIdFor(session)));
   if (savedName) session.name = cleanName(savedName, session.name);
@@ -43,6 +43,7 @@ export const upsertSession = async (req, res, requestedName) => {
     lastSeen: now
   };
   if (!session.playerId) session.playerId = session.id;
+  validateSessionRecord(session, session.id);
   if (typeof requestedName === 'string' && cleanName(requestedName, '')) {
     await redis('SET', nameKeyFor(session.playerId), session.name);
   } else {

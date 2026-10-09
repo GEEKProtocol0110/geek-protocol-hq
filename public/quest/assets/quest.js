@@ -158,7 +158,7 @@ const render = (q, focus = false) => {
   $('[data-save-note]').textContent = !a ? 'Reading does not start the chapter. Choose Begin when you are ready.' : complete ? 'Chapter completion and badge are saved. Replays never grant another copy of this badge.' : 'Your last accepted step is saved. You can close this page and return to continue.';
   say(!a ? `Ready when you are. Choose Begin ${chapter.title} to save your adventure.` : complete ? `${chapter.title} complete. Your chapter badge is saved in your profile.` : 'Connected. Your chapter progress is saved on the server.');
   map(); drawCampaign(); controls();
-  if (focus && changed) { const heading = a?.status === 'question' ? $('[data-question]') : a?.status === 'feedback' ? $('[data-feedback-title]') : complete ? $('#finish-title') : $('[data-title]'); heading.tabIndex = -1; heading.focus({ preventScroll: true }); }
+  if (focus && changed) { const heading = a?.status === 'question' ? $('[data-question]') : a?.status === 'feedback' ? $('[data-feedback-title]') : complete ? $('#finish-title') : $('[data-title]'); heading.tabIndex = -1; heading.focus({ preventScroll: true }); heading.scrollIntoView({ block: 'start', behavior: 'instant' }); }
 };
 const failure = (error, saving = false) => {
   connected = false;

@@ -6,4 +6,6 @@
 
 .chapter-lock{padding:2rem;margin:1.5rem 0;border:1px dashed var(--gold);border-radius:14px;background:#172229}.chapter-lock p{color:var(--muted)}.chapter-lock h2{color:var(--gold)}.chapter-lock p:last-child{font-size:.8rem}@media(max-width:600px){.chapter-lock{padding:1.2rem}}
 
-.story-actions{position:relative}.story-actions button,.link-button{touch-action:manipulation}main{padding-bottom:max(2rem,env(safe-area-inset-bottom))}@media(max-width:680px){.story-actions{position:sticky;bottom:0;z-index:3;padding:.8rem 0 max(.8rem,env(safe-area-inset-bottom));background:#101b24;border-top:1px solid #354b5b}.story-actions>*{flex:1;min-width:120px;text-align:center}.chapter-lock a{min-height:48px}.sources a{display:inline-flex;align-items:center;min-height:44px}.review summary{min-height:48px}}
+.story-actions{position:relative}.story-actions button,.link-button{touch-action:manipulation}main{padding-bottom:max(2rem,env(safe-area-inset-bottom))}@media(max-width:680px){.story-actions{position:static;padding:.8rem 0 max(.8rem,env(safe-area-inset-bottom));border-top:1px solid #354b5b}.story-actions>*{flex:1;min-width:120px;text-align:center}.chapter-lock a{min-height:48px}.sources a{display:inline-flex;align-items:center;min-height:44px}.review-card summary{min-height:48px}}
+
+.story-panel h2,.story-panel h3{scroll-margin-top:6rem}.story-actions button,.story-actions .link-button{min-height:48px}

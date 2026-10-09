@@ -40,7 +40,7 @@ const renderQuest = () => {
   if (!campaign) {
     text('[data-hq-quest-title]', 'Reconnect your adventure.');
     text('[data-hq-quest-copy]', 'Open the campaign to retrieve your saved place.');
-    $('[data-hq-quest-link]').href = '../quest/'; return;
+    $('[data-hq-quest-link]').href = '../quest/'; text('[data-hq-quest-link]', 'Reconnect adventure →'); return;
   }
   // Unknown status is never treated as a completed chapter.
   const chapter = questChapters.find(c => { const saved = campaign.find(s => s.chapterId === c.id); return !saved?.available || !saved.badge; });

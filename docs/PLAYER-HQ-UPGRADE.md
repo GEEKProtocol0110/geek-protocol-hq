@@ -54,3 +54,11 @@ Synthetic local test profiles appear in these images.
 ![A.C.E. solo Duel](assets/ace-solo-duel.jpg)
 
 ![Keys to the Grid](assets/quiz-quest-guardian.jpg)
+
+## Client debugging and polish (October 9, 2026)
+
+Dashboard, prestige and character-save requests now have 15-second deadlines including response-body reads. A failed prestige reply releases the dialog controls and requires an explicit dashboard refresh before another attempt; checkbox changes and older profile events cannot re-enable it. Server expected-prestige validation remains unchanged. A pending name save keeps its draft and disabled button even during another profile render. Its successful server receipt updates the visible name directly.
+
+Collection writes use one pending-action guard across studio saves, avatar selection and sticker offers. Fresh-read recovery preserves drafts after uncertain saves and ignores older collection replies. Failed Study refreshes hide stale totals and next-step links. An unavailable Quest campaign resets the HQ adventure link label as well as its destination. Quest phone actions no longer float over the story, and accepted chapter changes scroll to their heading. Royale recovers rejected actions by reading current state and leaves expired-invitation setup usable.
+
+New shipped-client tests use synthetic DOM, API and controllable-timer fixtures alongside the existing real-Redis server suite. No new visual/browser or production-profile verification is claimed for this pass. The previously reported production Quest record still needs its own successful retry or diagnosis. No new dependency, backend transition, monetary gate, production configuration or analytics event is introduced.

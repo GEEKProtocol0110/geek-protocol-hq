@@ -6,19 +6,21 @@
 
 | Evidence | Recorded result |
 | --- | --- |
-| Code baseline | [`a682c20733c771d074b96284b889a217fb69a8ed`](https://github.com/GEEKProtocol0110/geek-protocol-hq/commit/a682c20733c771d074b96284b889a217fb69a8ed), the PR #82 merge |
-| Application tree | `39aaee33a8c0b1525762a6afcea2212497ccdc98`; identical to tested PR head `2547f18eae729c59dae3865412f965c7323fdd61` |
-| Internal verification | 240 tests passed, zero failed/skipped; question, collection, archive, security and repository checks passed |
+| Code baseline | [`78ed916ac006ee97bdac109b337df238586d481c`](https://github.com/GEEKProtocol0110/geek-protocol-hq/commit/78ed916ac006ee97bdac109b337df238586d481c), the PR #90 merge, including the identity and release-boundary hardening |
+| Application tree | `c8cdbaf65a006422a214b713fe01775e5b777936`; the recorded main baseline, verified before this documentation-only refresh |
+| Internal verification | 297 tests passed, zero failed/skipped; question, collection, archive, repository checks and all 306 security assertions passed |
 | Dependency audit | `npm audit --omit=dev --audit-level=high`: zero reported vulnerabilities at verification time; not an independent security audit |
-| CI | [Security verification run 37880511136](https://github.com/GEEKProtocol0110/geek-protocol-hq/actions/runs/37880511136) passed on the matching application tree |
-| Deployment | [Vercel production deployment](https://vercel.com/geek-protocols-projects/geek-protocol-hq/E6oFXhjfaWBJjL5rXg2eoRi3e8xx) reported success for the merge; this does not establish private API health or a user's saved-record recovery |
-| npm dependency inventory | [CycloneDX 1.5 SBOM](releases/free-beta-2026-10-09.cdx.json), generated from the candidate lockfile with npm 11.9.0 / local Node 24.19.0 |
+| CI | [Security verification run 37925322334](https://github.com/GEEKProtocol0110/geek-protocol-hq/actions/runs/37925322334) passed on the matching application tree |
+| Deployment | [Vercel production deployment](https://vercel.com/geek-protocols-projects/geek-protocol-hq/66XwwMmFkmHqvUgiWYNSzY7nkh6d) reported success for the merge; this does not establish private API health or a user's saved-record recovery |
+| npm dependency inventory | [CycloneDX 1.5 SBOM](releases/free-beta-2026-10-09.cdx.json), regenerated October 9 from the candidate lockfile with npm 11.9.0 / local Node 24.19.0 |
 | Lockfile SHA-256 | `a20b44b57303cdd9375399cfa7383c042690933c9fbec79a8cd9de3402548296` |
-| SBOM SHA-256 | `8cf43496bde8e09c473d0ce3b21966a7754a26bccf6afe952a9da67730f61412` |
+| SBOM SHA-256 | `21bf6b058348fb44f4f1c64bdfd183d51b4e11fc75cf2284c10d600eb99c8c52` |
 
-The SBOM contains the declared production npm graph: HQ 0.1.0 and `@dfns/kaspa-wasm` 0.14.1, with its lockfile distribution integrity and license. It is a pre-build inventory, not a deployed artifact attestation or a complete inventory of the WASM package's upstream source dependencies, hosted runtime, Vercel, Redis provider, wallets, indexers or CDN assets. Production runtime and provider configuration remain owner evidence. The generator's root display name was normalized to `package.json`'s name; source commit and lockfile hash were added as metadata properties.
+The production lockfile and dependency graph are unchanged from the earlier PR #82 baseline; this regenerated inventory records the current source commit. The SBOM contains the declared production npm graph: HQ 0.1.0 and `@dfns/kaspa-wasm` 0.14.1, with its lockfile distribution integrity and license. It is a pre-build inventory, not a deployed artifact attestation or a complete inventory of the WASM package's upstream source dependencies, hosted runtime, Vercel, Redis provider, wallets, indexers or CDN assets. Production runtime and provider configuration remain owner evidence. The generator's root display name was normalized to `package.json`'s name; source commit and lockfile hash were added as metadata properties.
 
 This baseline is recorded for comparison; no release tag, branch freeze, Beta announcement or production configuration change is performed. A code or dependency change requires a new baseline, SBOM when dependencies change, and relevant checks before acceptance. Documentation-only changes do not alter the tested gameplay code.
+
+Current internal coverage includes strict identity records, packaged-verifier reachability from APIs, public ranked-answer exclusion, grading across all category/mode combinations, Royale reveal deadlines and disabled settlement flags. These are repository/real-Redis checks, not production pilot results. See [Identity protocol](IDENTITY-PROTOCOL.md) and [Threat model](THREAT-MODEL.md).
 
 ## Acceptance order
 
@@ -38,7 +40,7 @@ Repository tests cannot complete device, account or provider acceptance. Passing
 
 Keep the existing browser session and saved profile. Do not clear cookies, create a replacement profile, reset a record or paste a wallet secret into support.
 
-1. Refresh [Quiz Quest](https://www.geekprotocol.xyz/quest/) after PR #82. If a saved-record warning appears, select **Retry loading saved chapter**. The unverified entrance must not offer Begin; the campaign card must say status unavailable.
+1. Refresh [Quiz Quest](https://www.geekprotocol.xyz/quest/) on the recorded candidate deployment. If a saved-record warning appears, select **Retry loading saved chapter**. The unverified entrance must not offer Begin; the campaign card must say status unavailable.
 2. Confirm a successful retry resumes the server's saved place. If it still returns an error, record the visible message, approximate time, device/browser and chapter; leave [issue #81](https://github.com/GEEKProtocol0110/geek-protocol-hq/issues/81) open. Do not infer the missing step or reset progress.
 3. Complete First Signal's six checks and final **Finish chapter & save badge** continuation. Reload: the completion, notes and badge must remain, and Inside the blockDAG must unlock.
 4. Finish Inside the blockDAG, reload its result, then finish Keys to the Grid and reload again. Each chapter should show its own badge and review; the dashboard should match.
@@ -71,11 +73,11 @@ Record one row per run. Public evidence uses test display names and redacted scr
 
 | Run / candidate commit | Date and device | Scenario | Expected and observed behavior | Pass / fail / pending | Finding / retest |
 | --- | --- | --- | --- | --- | --- |
-| `a682c207...` | Pending | Affected Quest save | Saved step resumes without replacement | Pending | #81 |
-| `a682c207...` | Pending | Quest campaign and replay | Three badges persist; prerequisites remain correct | Pending | — |
-| `a682c207...` | Pending | Phone profile and learning | Name/Geek/Study/practice and gameplay entry persist | Pending | — |
-| `a682c207...` | Pending | Two-player Royale in a four-seat room | Ready/start, locked answers, reveal, reload and result agree | Pending | — |
-| `a682c207...` | Pending | Owner MFA and account recovery | Privately verified access/recovery; public evidence redacted | Pending | — |
-| `a682c207...` | Pending | Provider backup/isolated restore | Privately verified durable data and measured recovery | Pending | — |
+| `78ed916a...` | Pending | Affected Quest save | Saved step resumes without replacement | Pending | #81 |
+| `78ed916a...` | Pending | Quest campaign and replay | Three badges persist; prerequisites remain correct | Pending | — |
+| `78ed916a...` | Pending | Phone profile and learning | Name/Geek/Study/practice and gameplay entry persist | Pending | — |
+| `78ed916a...` | Pending | Two-player Royale in a four-seat room | Ready/start, locked answers, reveal, reload and result agree | Pending | — |
+| `78ed916a...` | Pending | Owner MFA and account recovery | Privately verified access/recovery; public evidence redacted | Pending | — |
+| `78ed916a...` | Pending | Provider backup/isolated restore | Privately verified durable data and measured recovery | Pending | — |
 
 Approve the free-beta scope only after reviewing these results and recording remaining limitations. Monetary gates retain their separate funding, settlement, reconciliation, security and independent-review requirements.
