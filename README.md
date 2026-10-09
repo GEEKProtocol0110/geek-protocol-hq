@@ -98,6 +98,8 @@ Geek Protocol is designed to fail closed around identity, mint verification, ran
 - Mint requests are pinned to Kaspa Mainnet and the canonical GEEK deployment.
 - An unavailable indexer, deployment mismatch, or exhausted supply blocks mint initiation.
 - Payout preferences cannot activate settlement; withdrawals remain disabled.
+
+CI scans the configured public files for known private bank records and checks answer-disclosure and disabled-settlement API transitions against real Redis. See [Release boundary checks and their limits](docs/RELEASE-BOUNDARY-CHECKS.md).
 - Security events are private, pseudonymous, and integrity verifiable.
 - Every production change runs tests, deterministic manifest checks, and security-control verification.
 
