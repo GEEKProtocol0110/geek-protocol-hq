@@ -118,6 +118,13 @@ const page = async (view, offset, limit) => {
   });
   return { items, hasMore: ids.length > limit, offset };
 };
+export const pendingContributionAttention = async () => {
+  // This queue has a hard 500-record capacity; prune expired entries and use
+  // the existing private record validation before exposing a count.
+  const result = await page('pending', 0, 500);
+  if (result.hasMore) throw new Error('COMMUNITY_STORAGE');
+  return { pending: result.items.length };
+};
 const decide = async (req, body) => {
   if (!body || typeof body !== 'object' || Array.isArray(body)) throw new Error('COMMUNITY_INVALID');
   if (unknown(body, ['id', 'action', 'expectedRevision', 'note', 'summary', 'confirmed']) || !ID.test(body.id || '') || !Number.isSafeInteger(body.expectedRevision) || body.expectedRevision < 1 || !['close', 'publish', 'withdraw'].includes(body.action)) throw new Error('COMMUNITY_INVALID');

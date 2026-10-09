@@ -11,6 +11,7 @@ The private Operations home at [www.geekprotocol.xyz/ops/](https://www.geekproto
 | `/ops/activity/` | Read paginated audit events and integrity results | `AUDIT_ADMIN_TOKEN` |
 | `/ops/payouts/` | Read masked destination-change cases; approve or reject risk reviews | `PAYOUT_REVIEW_ADMIN_TOKEN` |
 | `/ops/appearance/` | Preview and save site-wide holiday themes | Owner session; no additional key |
+| `/ops/community/` | Review Hall applications and publish consented credits | Owner session; no additional key |
 
 Sign in once with `OPS_ACCESS_TOKEN` when configured, or the existing CCE moderator key while it is absent. The current sole owner can keep using that existing key. A configured but empty/invalid dedicated owner key fails closed. Owner keys must be 24–512 characters. An optional authenticator adds a second factor through `OPS_TOTP_SECRET`; see [Owner authenticator setup](OPERATOR-SECURITY.md). This remains the current sole-owner identity, not named staff accounts. **Configure a distinct `OPS_ACCESS_TOKEN` before giving anyone the CCE moderator key: the fallback CCE key now grants the complete owner session.**
 
@@ -27,6 +28,12 @@ Keys remain server-side environment secrets and must stay configured even though
 The owner-only overview reports whether authenticator login is enabled. It never displays the secret or code. Backup status is explicitly unverified until the provider restore drill is completed; connectivity is not backup evidence. See [Operator security](OPERATOR-SECURITY.md) and [Backup recovery](BACKUP-RECOVERY.md).
 
 ## Overview
+
+The home page begins with **Needs your attention**: pending Hall applications, submitted/revised questions awaiting a decision, and approved questions awaiting publication. Each card links to its existing review workspace. These are checked counts, not external notifications or automatic decisions. Refresh waiting reviews checks again; the timestamp makes it clear when the counts were read. Counts clear before refresh, on pagehide/sign-out and when owner access fails. Cancelled or stale replies cannot restore a cleared view.
+
+The count-only GET action `service=operations&action=attention` requires the current owner session, rejects cross-site/untrusted-Origin reads, uses private no-store caching, and allows 60 checks per 10 minutes per network/user-agent fingerprint. Direct role keys and player sessions do not grant access. It returns no application names, descriptions, evidence, question text, correct answers, notes, wallet addresses or contributor IDs. Question counts require the existing CCE permission; missing permission is displayed as unavailable rather than zero.
+
+Hall counts use the existing deployment-scoped queue, prune expired pending entries and validate up to the queue's 500-record capacity. Question counts cover the same newest 100 index entries that the Questions workspace can load. Submitted rows count as awaiting a decision; approved rows count as awaiting publication. A one-entry lookahead reports when more index entries exist beyond that window; those badges are never presented as full question queue totals. Missing rows are skipped, as in the existing question viewer; malformed records or wrong index types make that queue unavailable. Independent queue checks allow one card group to work while another is unavailable. Counts may change between the read and opening a queue; they cannot authorize a decision. No question queue ordering, moderation lifecycle, retention, publication, rewards or fund behavior changes.
 
 Health uses the existing Redis PING API. A connected result verifies that request, not all game, wallet, treasury or backup operations. Reserve status reads the existing economy catalog and reports address configuration only; there is no indexed reserve balance, funding verification or signer. No private wallet destinations or user identifiers appear in this overview.
 
@@ -63,3 +70,7 @@ Open **Holiday themes** from Operations. Off keeps the standard appearance; Auto
 ## Community contributions
 
 `/ops/community/` reviews Hall applications and offers to help, using the current owner session without a separate role key. Choose Pending or Published, review private evidence, enter a private note and an independently written public description. Publication requires requested recognition, explicit applicant consent and confirmation that you checked the contribution/public identity. Close offers without publishing, or withdraw an existing credit. Refresh after a lost decision response. Nothing in this workspace verifies a donation automatically or sends funds. See [Community Contributions](COMMUNITY-CONTRIBUTIONS.md) for retention and capacity limits.
+
+### Attention summary validation
+
+Real-Redis access tests cover count-only privacy, owner/session rotation and expiry, cross-site/method restrictions, pending retention and closure, submitted/approved states, 101-entry window bounds, queue corruption/outage isolation, missing CCE permission and read rate limits. `tests/operations-attention.test.js` checks unavailable/empty wording, malformed count rejection, stale badge clearing and late-reply cancellation after logout. Rendered mobile and keyboard checks for this new owner UI remain unverified: automatic approval review previously rejected site access, and that browser action is not retried. Source checks validate responsive rules, focus styles, labels, protected asset routing and JavaScript syntax. No production submissions, owner decisions or credentials are used as test data.

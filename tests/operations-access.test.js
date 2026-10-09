@@ -8,6 +8,7 @@ import payoutHandler from '../api/payout-review.js';
 import { createContribution } from '../server/cce.js';
 import { createPayoutReview, payoutReviewWriteCommands } from '../server/payout-review.js';
 import { defaultProfile, saveProfile } from '../server/profile.js';
+import { communityPrefix } from '../server/community-contributions.js';
 import { redisFixture } from './helpers/redis-fixture.js';
 
 let fixture;
@@ -39,9 +40,9 @@ if (fixture) {
   });
 }
 after(async () => { globalThis.fetch = savedFetch; if (fixture) await fixture.close(); });
-const call = async ({ method = 'GET', path = '', action, cookie = '', key, headers = {}, body, handler = sessionHandler } = {}) => {
+const call = async ({ method = 'GET', path = '', action, service = 'operations', cookie = '', key, headers = {}, body, handler = sessionHandler } = {}) => {
   const res = { statusCode: 0, headers: {}, body: null, setHeader(k,v) { this.headers[k] = v; }, status(n) { this.statusCode = n; return this; }, json(v) { this.body = v; return this; }, end(v) { this.body = v; return this; } };
-  await handler({ method, query: { service: 'operations', path, ...(action ? { action } : {}) }, headers: { origin, 'content-type': 'application/json', 'user-agent': 'ops-access-test', 'x-forwarded-for': '127.0.0.1', cookie, ...headers }, body: body ?? (key !== undefined ? { key } : {}) }, res);
+  await handler({ method, query: { service, path, ...(action ? { action } : {}) }, headers: { origin, 'content-type': 'application/json', 'user-agent': 'ops-access-test', 'x-forwarded-for': '127.0.0.1', cookie, ...headers }, body: body ?? (key !== undefined ? { key } : {}) }, res);
   return res;
 };
 const login = async (key = moderator, cookie = '') => { const res = await call({ method: 'POST', action: 'login', key, cookie }); assert.equal(res.statusCode, 200); return res.headers['Set-Cookie'].split(';')[0]; };
@@ -163,4 +164,71 @@ run('owner-cookie moderation and payout decisions use the existing recorded work
   assert.equal(JSON.parse(await fixture.command('GET','geek:cce:submission:'+contribution.id)).status,'submitted');
   const approved=await call({cookie,handler:moderationHandler,method:'POST',body:{id:contribution.id,action:'approve',note:'Verified test evidence.'}});assert.equal(approved.statusCode,200);assert.equal(approved.body.submission.status,'approved');
   const payoutResult=await call({cookie,handler:payoutHandler,method:'POST',body:{id:review.id,action:'approve',note:'Verified synthetic destination evidence.'}});assert.equal(payoutResult.statusCode,200);assert.equal(payoutResult.body.review.status,'approved');assert.equal(payoutResult.body.settlementEnabled,false);assert.match(payoutResult.body.auditReceipt.eventId,/^aud_/);
+});
+
+run('attention summary and its script require the current owner session and reject cross-site reads', async () => {
+  assert.equal((await call({ action: 'attention' })).statusCode, 401);
+  assert.equal((await call({ path: 'assets/attention.js' })).statusCode, 401);
+  for (const headers of [{ 'x-cce-admin': moderator }, { authorization: 'Bearer ' + audit }]) assert.equal((await call({ action: 'attention', headers })).statusCode, 401);
+  const cookie = await login();
+  assert.equal((await call({ cookie, path: 'assets/attention.js' })).statusCode, 200);
+  for (const headers of [{ origin: 'https://evil.example' }, { 'sec-fetch-site': 'cross-site' }]) assert.equal((await call({ cookie, action: 'attention', headers })).statusCode, 403);
+  for (const method of ['POST', 'HEAD', 'DELETE']) assert.equal((await call({ cookie, method, action: 'attention' })).statusCode, 405);
+  const result = await call({ cookie, action: 'attention' });
+  assert.equal(result.statusCode, 200); assert.match(result.headers['Cache-Control'], /private, no-store/);
+  assert.deepEqual(result.body.hall, { status: 'ready', pending: 0 });
+  assert.deepEqual(result.body.questions, { status: 'ready', review: 0, publish: 0, scanned: 0, limit: 100, hasMore: false });
+  process.env.CCE_ADMIN_TOKEN += '-rotated'; assert.equal((await call({ cookie, action: 'attention' })).statusCode, 401);
+});
+
+run('attention exposes only counts, splits question decisions from publication, and follows Hall retention', async () => {
+  const applied = await call({ service: 'community', method: 'POST', body: { requestId: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', name: 'PRIVATE contributor', profile: 'https://example.org/private-profile', kind: 'testing', details: 'PRIVATE application details and evidence for testing.', evidence: 'https://example.org/private-evidence', recognition: false, consent: false, website: '' } });
+  assert.equal(applied.statusCode, 200);
+  const prefix = communityPrefix(), id = applied.body.receipt.id;
+  await fixture.command('ZADD', prefix + ':pending', Date.now() - 91 * 86400 * 1000, 'app_' + 'f'.repeat(32));
+  for (const [index, status] of ['submitted', 'approved', 'changes-requested', 'published', 'rejected'].entries()) {
+    const questionId = 'cce_' + index.toString(16).padStart(24, '0');
+    await fixture.command('SET', 'geek:cce:submission:' + questionId, JSON.stringify({ id: questionId, status, prompt: 'PRIVATE question', correctIndex: 3, contributorSessionId: 'PRIVATE wallet identity' }));
+    await fixture.command('ZADD', 'geek:cce:review', index, questionId);
+  }
+  const cookie = await login(), result = await call({ cookie, action: 'attention' });
+  assert.deepEqual(result.body.hall, { status: 'ready', pending: 1 });
+  assert.deepEqual(result.body.questions, { status: 'ready', review: 1, publish: 1, scanned: 5, limit: 100, hasMore: false });
+  assert.equal(JSON.stringify(result.body).includes('PRIVATE'), false); assert.equal(JSON.stringify(result.body).includes(id), false);
+  assert.equal(await fixture.command('ZCARD', prefix + ':pending'), 1);
+  await call({ cookie, action: 'community', method: 'POST', body: { id, action: 'close', expectedRevision: 1, note: 'Reviewed the offer to help.' } });
+  assert.equal((await call({ cookie, action: 'attention' })).body.hall.pending, 0);
+});
+
+run('attention reports the bounded question window instead of claiming a full queue total', async () => {
+  for (let i = 0; i < 101; i++) {
+    const id = 'cce_' + i.toString(16).padStart(24, '0');
+    await fixture.command('SET', 'geek:cce:submission:' + id, JSON.stringify({ id, status: i === 0 ? 'approved' : 'submitted' }));
+    await fixture.command('ZADD', 'geek:cce:review', i, id);
+  }
+  const result = await call({ cookie: await login(), action: 'attention' });
+  assert.deepEqual(result.body.questions, { status: 'ready', review: 100, publish: 0, scanned: 100, limit: 100, hasMore: true });
+});
+
+run('attention keeps independent queues available when one has a storage fault or missing permission', async () => {
+  const cookie = await login();
+  await fixture.command('SET', 'geek:cce:review', 'wrong-type');
+  let result = await call({ cookie, action: 'attention' });
+  assert.equal(result.statusCode, 200); assert.deepEqual(result.body.questions, { status: 'unavailable' }); assert.equal(result.body.hall.pending, 0);
+  await fixture.command('DEL', 'geek:cce:review');
+  const id = 'cce_' + 'a'.repeat(24); await fixture.command('SET', 'geek:cce:submission:' + id, '{invalid'); await fixture.command('ZADD', 'geek:cce:review', 1, id);
+  result = await call({ cookie, action: 'attention' }); assert.deepEqual(result.body.questions, { status: 'unavailable' });
+  await fixture.command('DEL', 'geek:cce:review'); await fixture.command('SET', communityPrefix() + ':pending', 'wrong-type');
+  result = await call({ cookie, action: 'attention' }); assert.deepEqual(result.body.hall, { status: 'unavailable' }); assert.equal(result.body.questions.review, 0);
+  process.env.OPS_ACCESS_TOKEN = owner; delete process.env.CCE_ADMIN_TOKEN;
+  result = await call({ cookie: await login(owner), action: 'attention' }); assert.deepEqual(result.body.questions, { status: 'access-unavailable' });
+});
+
+run('attention reads are rate limited and do not extend owner sessions', async () => {
+  const cookie = await login(), key = 'geek:ops:session:' + sessionId(cookie), original = await fixture.command('GET', key);
+  for (let i = 0; i < 60; i++) assert.equal((await call({ cookie, action: 'attention' })).statusCode, 200);
+  assert.equal((await call({ cookie, action: 'attention' })).statusCode, 429);
+  assert.equal(await fixture.command('GET', key), original);
+  const record = JSON.parse(original); record.expiresAt = Date.now() - 1; await fixture.command('SET', key, JSON.stringify(record));
+  assert.equal((await call({ cookie, action: 'attention' })).statusCode, 401);
 });

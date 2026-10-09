@@ -6,6 +6,7 @@ import { recordAuditEvent } from './audit.js';
 import { ownerAppearanceHandler } from './appearance.js';
 import { consumeOperationsCode } from './operations-mfa.js';
 import { ownerCommunityHandler } from './community-contributions.js';
+import { operationsAttentionHandler } from './operations-attention.js';
 
 const files = new Map([
   ['', ['index.html', 'text/html; charset=utf-8']],
@@ -16,6 +17,7 @@ const files = new Map([
   ['assets/ops-core.js', ['assets/ops-core.js', 'text/javascript; charset=utf-8']],
   ['assets/appearance.js', ['assets/appearance.js', 'text/javascript; charset=utf-8']],
   ['assets/community.js', ['assets/community.js', 'text/javascript; charset=utf-8']],
+  ['assets/attention.js', ['assets/attention.js', 'text/javascript; charset=utf-8']],
   ['assets/ops.css', ['assets/ops.css', 'text/css; charset=utf-8']]
 ]);
 const event = (req, type, outcome) => recordAuditEvent({ type, outcome, severity: outcome === 'failure' ? 'warning' : 'info', actorType: 'ops-key-holder', actorId: clientFingerprint(req), objectType: 'operations-access', objectId: 'ops', reason: outcome === 'failure' ? 'access-not-accepted' : 'access-session-transition' });
@@ -29,6 +31,7 @@ export default async function operationsHandler(req, res) {
   try {
     if (action === 'appearance') return ownerAppearanceHandler(req, res);
     if (action === 'community') return ownerCommunityHandler(req, res);
+    if (action === 'attention') return operationsAttentionHandler(req, res);
     if (action === 'login' || action === 'logout') {
       if (req.method !== 'POST') return methodNotAllowed(res, 'POST');
       if (!trustedOrigin(req) || !operationsJsonRequest(req)) return sendJson(res, 403, { ok: false, error: 'Access was not accepted.' });
