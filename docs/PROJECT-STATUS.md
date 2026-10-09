@@ -1,6 +1,6 @@
 # Geek Protocol HQ — Project Status
 
-**Snapshot date:** 2026-10-06<br />
+**Snapshot date:** 2026-10-09<br />
 **Release channel:** Public Alpha  
 **Production:** [www.geekprotocol.xyz](https://www.geekprotocol.xyz/)  
 **Repository:** [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq)
@@ -70,6 +70,8 @@ The repository currently verifies:
 [The full roadmap](PRODUCT-ROADMAP.md) restores the original Arena, creator, player-economy, governance, Education, Pro, and launchpad vision. The litepaper carries this direction with explicit live/planned/proposed labels. The first learning implementation adds guided Study, practice levels, and concept feedback; other future features retain their documented status. The proposed 70/30 policy allocates platform fees to recycling and burning; the isolated planning journal records proposed allocations, but no fee-distribution or burn engine is live.
 
 ## Required next gates
+
+For the next free learning/gameplay pilot, use the [free-beta candidate checklist](FREE-BETA-READINESS.md). The October 9 baseline records current main after PR #92, with 303 passing tests, identity/release-boundary hardening, legacy Quest save recovery, and a refreshed npm dependency inventory. The founder confirmed that the affected phone resumed its existing saved chapter at the correct step at 18:57 America/Detroit; issue #81 is closed. Full Quest completion/badge/replay checks, the real-device/Royale pilot, owner MFA and production backup/restore acceptance remain pending; preparing the checklist does not change the public Alpha label. The broader value-moving launch gates below remain separate.
 
 1. Freeze a named release candidate and software bill of materials.
 2. Complete production architecture, incident-response, backup, and key-management evidence.
