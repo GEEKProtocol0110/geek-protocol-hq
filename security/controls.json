@@ -20,7 +20,7 @@
       "id": "GP-INV-003",
       "title": "Private answer bank",
       "status": "implemented",
-      "evidence": ["server/questions.js", "tests/api.test.js", "scripts/security-check.mjs"]
+      "evidence": ["server/questions.js", "tests/api.test.js", "scripts/security-check.mjs", "scripts/public-answer-check.mjs", "tests/public-answer-check.test.js", "tests/release-boundaries.test.js", "docs/RELEASE-BOUNDARY-CHECKS.md"]
     },
     {
       "id": "GP-INV-004",
@@ -32,7 +32,7 @@
       "id": "GP-INV-005",
       "title": "Settlement fail-closed",
       "status": "implemented",
-      "evidence": ["api/rewards.js", "tests/api.test.js", "scripts/security-check.mjs"]
+      "evidence": ["api/rewards.js", "tests/api.test.js", "scripts/security-check.mjs", "tests/release-boundaries.test.js", "docs/RELEASE-BOUNDARY-CHECKS.md"]
     },
     {
       "id": "GP-INV-006",
