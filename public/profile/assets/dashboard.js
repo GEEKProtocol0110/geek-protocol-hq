@@ -2,17 +2,24 @@
   'use strict';
   const $ = selector => document.querySelector(selector);
   const format = new Intl.NumberFormat('en-US');
-  let profile = null, busy = false, boardSequence = 0, challengeSequence = 0;
+  let profile = null, busy = false, prestigeNeedsRefresh = false, boardSequence = 0, challengeSequence = 0;
   const node = (tag, text, className) => { const el = document.createElement(tag); if (text !== undefined) el.textContent = text; if (className) el.className = className; return el; };
   const api = async (url, body) => {
-    const res = await fetch(url, { credentials: 'same-origin', ...(body ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {}) });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok || !data.ok) throw new Error(data.error || 'The dashboard could not reconnect. Try again.');
-    return data;
+    const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 15000);
+    try {
+      const res = await fetch(url, { credentials: 'same-origin', signal: controller.signal, ...(body ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {}) });
+      const data = await res.json().catch(error => { if (controller.signal.aborted) throw error; return {}; });
+      if (!res.ok || !data.ok) throw new Error(data.error || 'The dashboard could not reconnect. Try again.');
+      return data;
+    } catch (error) {
+      if (controller.signal.aborted) throw new Error('The dashboard took too long to respond. Refresh to check your saved progress.');
+      throw error;
+    } finally { clearTimeout(timer); }
   };
   const renderPrestige = () => {
     const p = profile?.progression;
     $('[data-prestige-open]').disabled = busy || !p?.canPrestige;
+    $('[data-prestige-confirm]').disabled = busy || !p?.canPrestige || !$('[data-prestige-check]').checked;
     $('[data-prestige-open]').textContent = p?.maxed ? 'Prestige Master achieved' : p?.prestige === 25 ? 'Final prestige reached' : p?.canPrestige ? `Enter Prestige ${p.prestige + 1} →` : 'Unlock at level 50';
     $('[data-prestige-summary]').textContent = p ? `Prestige ${p.prestige} / 25 · Level ${p.level} / 50` : 'Connect your profile to see your rank.';
     $('[data-prestige-note]').textContent = !p ? 'Your saved progress will appear when the profile service reconnects.' : p.maxed ? 'You completed the final cycle. Lifetime XP and your career record keep growing.' : p.canPrestige ? 'Level 50 reached. You can stay here or choose a fresh level-1 cycle. XP earned while you wait stays in lifetime totals and does not carry into the new cycle.' : p.prestige === 25 ? `${format.format(p.xpToPrestige)} XP to Prestige Master. There is no Prestige 26.` : `${format.format(p.xpToPrestige)} XP to level 50. Prestige is always your choice.`;
@@ -73,13 +80,19 @@
 
   const refreshProfile = async () => {
     const data = await api('/api/profile/');
+    prestigeNeedsRefresh = false;
     window.GeekProfile.renderProfile(data.profile);
   };
   $('[data-dashboard-refresh]').addEventListener('click', async () => {
     if (busy) return;
     busy = true; $('[data-dashboard-refresh]').disabled = true; renderPrestige();
     try { await refreshProfile(); $('[data-prestige-feedback]').textContent = 'Dashboard updated.'; }
-    catch (error) { $('[data-prestige-feedback]').textContent = error.message; }
+    catch (error) {
+      prestigeNeedsRefresh = true;
+      profile = null; window.GeekProfile.currentProfile = null;
+      window.dispatchEvent(new Event('geek:profile-unavailable'));
+      $('[data-prestige-feedback]').textContent = error.message;
+    }
     finally { busy = false; $('[data-dashboard-refresh]').disabled = false; renderPrestige(); }
   });
   $('[data-prestige-open]').addEventListener('click', () => {
@@ -90,7 +103,7 @@
     $('[data-prestige-dialog-error]').textContent = '';
     $('[data-prestige-dialog]').showModal();
   });
-  $('[data-prestige-check]').addEventListener('change', () => { $('[data-prestige-confirm]').disabled = busy || !$('[data-prestige-check]').checked; });
+  $('[data-prestige-check]').addEventListener('change', renderPrestige);
   $('[data-prestige-dialog]').addEventListener('cancel', event => { if (busy) event.preventDefault(); });
   $('[data-prestige-confirm]').addEventListener('click', async () => {
     if (busy || !profile?.progression.canPrestige || !$('[data-prestige-check]').checked) return;
@@ -105,13 +118,19 @@
       window.GeekProfile.refreshCollectibles?.().catch(() => { $('[data-trade-feedback]').textContent = 'Prestige saved. Reload your collectibles to see newly unlocked identities.'; });
       $('[data-dashboard-refresh]').focus();
     } catch (error) {
+      // A failed reply can follow an accepted prestige. Require a canonical
+      // profile read before another attempt, including checkbox changes.
+      profile = null;
+      prestigeNeedsRefresh = true;
+      window.GeekProfile.currentProfile = null;
+      window.dispatchEvent(new Event('geek:profile-unavailable'));
       $('[data-prestige-dialog-error]').textContent = `${error.message} Close this dialog and refresh your dashboard before retrying.`;
     } finally { busy = false; $('[data-prestige-cancel]').disabled = false; renderPrestige(); }
   });
   $('[data-board-mode]').addEventListener('change', refreshBoard);
   $('[data-board-category]').addEventListener('change', refreshBoard);
   $('[data-board-refresh]').addEventListener('click', refreshBoard);
-  window.addEventListener('geek:profile', event => { profile = event.detail; renderPrestige(); refreshBoard(); refreshChallenges(); });
+  window.addEventListener('geek:profile', event => { if (prestigeNeedsRefresh) return; profile = event.detail; renderPrestige(); refreshBoard(); refreshChallenges(); });
   window.addEventListener('geek:profile-unavailable', () => { profile = null; renderPrestige(); refreshBoard(); refreshChallenges(); });
   renderPrestige();
 })();

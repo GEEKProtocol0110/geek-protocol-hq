@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  let collectibleState = null;
+  let collectibleState = null, collectionBusy = false, collectionGeneration = 0, collectionReadSequence = 0, nameSaving = false;
   const $ = (selector) => document.querySelector(selector);
   const format = new Intl.NumberFormat('en-US');
   const escapeHtml = (value) => String(value ?? '').replace(/[&<>'"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character]);
@@ -48,6 +48,8 @@
       }));
     } catch (error) {
       window.GeekGiga?.update('progress', { phase: 'unavailable' });
+      $('[data-study-totals]').hidden = true; $('[data-study-next]').hidden = true;
+      $('[data-study-topics]').replaceChildren();
       setText('[data-study-note]', `${error.message} Your saved feedback has not changed. You can retry or open Study.`);
       button.hidden = false;
     } finally { button.disabled = false; $('[data-study-panel]').setAttribute('aria-busy', 'false'); }
@@ -120,29 +122,60 @@
   };
 
   const renderCollectibles = (payload) => {
+    collectionGeneration++;
     collectibleState = payload;
     window.GeekProfile.trades = payload.trades; window.GeekProfile.collection = payload.collection; window.GeekProfile.offline = false;
     window.GeekBuilder?.receive(payload.collection);
     renderAvatars(payload.collection);
     renderStickers(payload.collection);
     renderTrades(payload.trades);
+    collectionControls();
     window.dispatchEvent(new CustomEvent('geek:collection', { detail: payload.collection }));
   };
 
-  window.GeekProfile = { renderCollectibles, collection: null, offline: false };
+  window.GeekProfile = { renderCollectibles, collection: null, offline: true, collectionBusy: false };
 
-  const refreshCollectibles = async () => renderCollectibles(await api('/api/collectibles'));
+  const collectionControls = () => {
+    const unavailable = collectionBusy || window.GeekProfile.offline || !collectibleState;
+    window.GeekProfile.collectionBusy = collectionBusy;
+    document.querySelectorAll('[data-avatar-id], [data-trade-accept], [data-trade-cancel], [data-trade-form] button').forEach(button => {
+      const avatarId = button.dataset.avatarId;
+      button.disabled = unavailable || Boolean(avatarId && (collectibleState?.collection.avatar.id === avatarId || !collectibleState?.collection.avatars.some(a => a.id === avatarId && a.owned)));
+    });
+    $('[data-trade-form]')?.setAttribute('aria-busy', String(collectionBusy));
+    window.GeekBuilder?.syncControls?.();
+  };
+  const collectionUnavailable = () => {
+    collectionGeneration++;
+    window.GeekProfile.offline = true; window.GeekBuilder?.unavailable(); collectionControls();
+  };
+  const beginCollectionWrite = () => {
+    if (collectionBusy || window.GeekProfile.offline || !collectibleState) return false;
+    collectionBusy = true; collectionGeneration++; collectionControls(); return true;
+  };
+  const endCollectionWrite = () => { collectionBusy = false; collectionControls(); };
+  Object.assign(window.GeekProfile, { beginCollectionWrite, endCollectionWrite, markCollectionUnavailable: collectionUnavailable });
+
+  const refreshCollectibles = async () => {
+    if (collectionBusy) return;
+    const generation = collectionGeneration, sequence = ++collectionReadSequence;
+    const current = () => generation === collectionGeneration && sequence === collectionReadSequence;
+    try { const payload = await api('/api/collectibles'); if (current()) renderCollectibles(payload); }
+    catch (error) { if (!current()) return; collectionUnavailable(); throw error; }
+  };
   window.GeekProfile.refreshCollectibles = refreshCollectibles;
 
   const collectibleAction = async (body, successMessage) => {
+    if (!beginCollectionWrite()) return;
     const feedback = $('[data-trade-feedback]');
     feedback.textContent = 'Verifying server state…';
     try {
       renderCollectibles(await postCollectible(body));
       feedback.textContent = successMessage;
     } catch (error) {
-      feedback.textContent = error.message;
-    }
+      collectionUnavailable();
+      feedback.textContent = `${error.message} Reconnect your profile to check the saved collection before trying again.`;
+    } finally { endCollectionWrite(); }
   };
 
   const renderMastery = (categories) => {
@@ -181,8 +214,8 @@
     const { player, progression, stats } = profile;
     setText('[data-profile-state]', 'Your progress is ready');
     setText('[data-player-name]', player.name);
-    if (!$('[data-name-input]').matches(':focus')) $('[data-name-input]').value = player.name;
-    $('[data-name-save]').disabled = false;
+    if (!nameSaving && !$('[data-name-input]').matches(':focus')) $('[data-name-input]').value = player.name;
+    $('[data-name-save]').disabled = nameSaving;
     setText('[data-account-status]', player.walletProtected ? 'Signed in with a verified Kaspa wallet.' : 'Guest profile · saved in this browser. Sign in to enable recovery.');
     setText('[data-account-link]', player.walletProtected ? 'Sign-in & recovery options →' : 'Sign in with Kaspa →');
     setText('[data-avatar-fallback]', player.name.trim().charAt(0).toUpperCase() || 'G');
@@ -218,21 +251,22 @@
   $('[data-name-form]')?.addEventListener('submit', async (event) => {
     event.preventDefault();
     const button = $('[data-name-save]');
-    if (button.disabled) return;
+    if (nameSaving || button.disabled) return;
     const name = $('[data-name-input]').value.trim();
     if (!name) { setText('[data-name-status]', 'Enter a profile name with 1–24 characters.'); return; }
-    button.disabled = true;
+    nameSaving = true; button.disabled = true;
     setText('[data-name-status]', 'Saving your name…');
     try {
       const { player } = await api('/api/session', { method: 'POST', body: JSON.stringify({ action: 'rename', displayName: name }) });
       // Update immediately from the server receipt; a failed stats refresh cannot hide a saved edit.
       const current = window.GeekProfile.currentProfile;
       if (current) render({ ...current, player: { ...current.player, name: player.name } });
+      setText('[data-player-name]', player.name);
       $('[data-name-input]').value = player.name;
       setText('[data-name-status]', `Name saved: ${player.name}.`);
     } catch (error) {
       setText('[data-name-status]', `${error.message} Your name has not been confirmed. Reload to check before trying again.`);
-    } finally { button.disabled = false; }
+    } finally { nameSaving = false; button.disabled = false; }
   });
 
   const initialize = async () => {
@@ -247,10 +281,10 @@
           window.GeekProfile.currentProfile = null; window.dispatchEvent(new Event('geek:profile-unavailable'));
           setText('[data-journey-list]', `${error.message} Your game records remain saved.`);
         }),
-        refreshCollectibles().catch(error => { window.GeekProfile.offline = true; window.GeekBuilder?.unavailable(); setText('[data-trade-feedback]', `${error.message} Your collection remains saved.`); })
+        refreshCollectibles().catch(error => { collectionUnavailable(); setText('[data-trade-feedback]', `${error.message} Your collection remains saved.`); })
       ]);
     } catch (error) {
-      window.GeekProfile.offline = true; window.GeekBuilder?.unavailable();
+      collectionUnavailable();
       window.GeekGiga?.update('progress', { phase: 'unavailable' });
       setText('[data-profile-state]', 'Let’s reconnect your profile');
       window.GeekProfile.currentProfile = null; window.dispatchEvent(new Event('geek:profile-unavailable'));
@@ -286,5 +320,5 @@
     }, 'Verified offer opened. Your offered stickers are now reserved.');
   });
 
-  initialize();
+  collectionControls(); initialize();
 })();

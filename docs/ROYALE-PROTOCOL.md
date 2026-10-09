@@ -44,6 +44,10 @@ Players reach Royale from Play or the Home/My HQ More menu. Creation exposes the
 
 The UI polls every roughly four seconds during play and five seconds while waiting, with jitter. Hidden tabs stop polling and refresh when shown. Requests time out after 15 seconds. Offline/stale state disables answers and exposes manual reconnect; a saved-state read recovers lost answer responses. A request-version guard prevents an older poll from overwriting a later answer receipt. Only the shared deadline reveals correctness.
 
+The October 9 client recovery pass reads the canonical room once after an action returns 409 or 403; it never automatically repeats that action. If the read also fails, further mutations are blocked until manual reconnect. An expired invitation can display its error without disabling creation/join setup for an otherwise connected player. Reconnect preserves an entered display-name draft and reads the currently entered invitation, allowing an accepted manual-code join to recover after a lost reply. Duplicate reconnect clicks cannot create overlapping session requests. A lost room-creation reply still cannot reveal an unknown room code; this change does not add server-side create idempotency or a recent-room index.
+
+`tests/royale-client.test.js` runs the shipped module with synthetic DOM/API fixtures for rejected actions, unavailable canonical reads, delayed successful/failed polls, expired invites, lost manual-code join replies and pending reconnect guards. These are behavior checks, not production load or physical-device acceptance.
+
 The shared session endpoint now allows up to 600 session operations per IP/user-agent in ten minutes, with a separate 120-new-session limit and the existing 40-operations-per-session/minute limit. This supports onboarding and explicit name saves for 100 participants behind one network. Royale also caps room creation at five per player and fifteen per shared fingerprint/hour, with a bounded join rate.
 
 ## Verification and rollout

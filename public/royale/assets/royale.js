@@ -2,7 +2,7 @@
   'use strict';
   const $ = selector => document.querySelector(selector);
   const labels = { kaspa: 'Kaspa', 'video-games': 'Video Games', 'science-fiction': 'Science Fiction', technology: 'Technology', movies: 'Movies', history: 'History', comics: 'Comics', 'pop-culture': 'Pop Culture' };
-  let room = null, acting = false, refreshing = false, ready = false, offline = false, pollTimer = null, boundary = '', confirmedAt = 0;
+  let room = null, acting = false, refreshing = false, connecting = false, ready = false, offline = false, pollTimer = null, boundary = '', confirmedAt = 0;
   let serverAt = 0, receivedAt = 0;
   let requestVersion = 0, rosterSignature = '';
   const now = () => serverAt + performance.now() - receivedAt;
@@ -29,7 +29,9 @@
     pollTimer = setTimeout(refresh, base + Math.floor(Math.random() * 400));
   };
   const controls = () => {
-    const busy = acting || !ready;
+    const busy = acting || connecting || !ready;
+    $('[data-reconnect]').disabled = acting || refreshing || connecting;
+    $('[data-error-retry]').disabled = acting || refreshing || connecting;
     $('[data-setup]').querySelectorAll('button').forEach(button => { button.disabled = busy; });
     if (!room) return;
     const you = room.players.find(p => p.slot === room.yourSlot), waiting = room.state === 'waiting';
@@ -116,24 +118,33 @@
   };
   const connectionLost = error => {
     offline = true; stopPoll(); showError(error); controls();
-    say('Connection lost. The question clock continues. Reconnect to recover your saved seat and answer.');
+    say('Room state could not be confirmed. The event clock continues. Reconnect before taking another action.');
   };
   async function refresh() {
     if (!room || refreshing || acting) return;
-    refreshing = true; const code = room.code, id = room.id, version = requestVersion;
+    refreshing = true; controls(); const code = room.code, id = room.id, version = requestVersion;
     try { const payload = await api(`/api/royale?${new URLSearchParams({ code })}`); if (room?.id === id && requestVersion === version && !acting) render(payload.royale); }
     catch (error) { if (room?.id === id && requestVersion === version && !acting) connectionLost(error); }
-    finally { refreshing = false; }
+    finally { refreshing = false; controls(); }
   }
   async function act(action, extra = {}) {
-    if (!room || acting || offline) return;
+    if (!room || acting || connecting || !ready || offline) return;
     requestVersion++; stopPoll(); acting = true; controls(); const code = room.code, id = room.id;
     try { const payload = await api('/api/royale', { action, code, eventId: id, ...extra }); if (room?.id === id) render(payload.royale); }
-    catch (error) { if (error.status === 409 || error.status === 403) { showError(error); } else connectionLost(error); }
+    catch (error) {
+      if (error.status === 409 || error.status === 403) {
+        // Rejected actions do not authorize another write against a stale view.
+        // Read the canonical room once; never repeat the mutation automatically.
+        try {
+          const payload = await api(`/api/royale?${new URLSearchParams({ code })}`);
+          if (room?.id === id) { render(payload.royale); showError(error); say('Your current room state has been reloaded. Check it before your next action.'); }
+        } catch (next) { if (room?.id === id) connectionLost(next); }
+      } else connectionLost(error);
+    }
     finally { acting = false; controls(); schedulePoll(); }
   }
   const enter = async (action, data) => {
-    if (acting || !ready) return;
+    if (acting || connecting || !ready) return;
     acting = true; controls();
     try {
       const displayName = $('[data-create-form]').elements.displayName.value.trim();
@@ -177,17 +188,25 @@
   $('[data-copy]').addEventListener('click', async () => { try { await navigator.clipboard.writeText($('[data-invite]').value); say('Invitation copied. Share it with your crew.'); } catch { $('[data-invite]').select(); say('Select and copy the invitation link.'); } });
   const connect = async () => {
     if (room) { await refresh(); return; }
+    if (connecting || acting) return;
+    connecting = true; controls();
     try {
-      const payload = await api('/api/session', {}); ready = true; $('[data-create-form]').elements.displayName.value = payload.player.name; controls();
+      const payload = await api('/api/session', {}); ready = true;
+      const name = $('[data-create-form]').elements.displayName;
+      if (!name.value.trim()) name.value = payload.player.name;
       $('[data-error]').hidden = true;
-      const code = new URLSearchParams(location.search).get('code');
+      const code = ($('[data-join-form]').elements.code.value.trim() || new URLSearchParams(location.search).get('code') || '').toUpperCase();
       if (code) {
         $('[data-join-form]').elements.code.value = code;
         try { render((await api(`/api/royale?${new URLSearchParams({ code })}`)).royale); }
-        catch (error) { if (error.status === 403) say('Invitation ready. Choose your public name and Join Royale to take a seat.'); else throw error; }
+        catch (error) {
+          if (error.status === 403) say('Invitation ready. Choose your public name and Join Royale to take a seat.');
+          else { showError(error); say('The invitation could not load. Check the code, retry, or create another Royale.'); }
+        }
       } else say('Your player is ready. Host a Royale or enter an invitation code.');
       $('[data-reconnect]').hidden = true;
     } catch (error) { ready = false; controls(); showError(error); $('[data-reconnect]').hidden = false; say('Your player could not connect. Retry when the service is available.'); }
+    finally { connecting = false; controls(); }
   };
   $('[data-reconnect]').addEventListener('click', connect);
   $('[data-error-retry]').addEventListener('click', connect);
