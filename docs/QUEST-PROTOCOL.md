@@ -24,7 +24,24 @@ Chapter reads and mutations still reject invalid records with HTTP 503 and `QUES
 
 Retry visibly announces the check and disables its button while the request is pending. A repeated validation failure shows the support code; it does not automatically start, replay, or rewrite a chapter. A successful read resumes the verified server step. Older servers without support codes retain the previous recovery message.
 
-For an affected player, record the support code, chapter, approximate time, and browser through the existing support conversation. If a retry still fails, inspect the corresponding record through authorized private storage access before proposing recovery. Keep any inspection read-only and do not paste raw records into public issues. The code identifies a failed check, not its cause; do not infer missing fields, relax validation, reset progress, or grant badges from the code. Validation tests verify repeated GET and rejected POST requests leave malformed records byte-for-byte unchanged. A failed post-commit response can still follow an accepted write, so retry loading is the authority for its outcome.
+For an affected player, record the support code, chapter, approximate time, and browser through the existing support conversation. The code identifies a failed check, not its cause; do not infer missing fields, reset progress, or grant badges from the code alone. If a retry still fails after the specific compatibility rule below, inspect the corresponding record through authorized private storage access before proposing further recovery. Keep any inspection read-only and do not paste raw records into public issues. Validation tests verify repeated GET and rejected POST requests leave malformed records byte-for-byte unchanged. A failed post-commit response can still follow an accepted write, so retry loading is the authority for its outcome.
+
+### Null-omitted first Begin compatibility
+
+The founder's follow-up phone screenshot reported `Q_BADGE`. An independent experiment on a disposable Upstash database reproduced the original Quest Lua's first Begin write: its `cjson.decode`/`cjson.encode` round-trip omitted both `badge: null` and `lastCompleted: null`. The resulting record was accepted by the old writer but rejected by the current badge validator. The synthetic result is retained in `tests/fixtures/quest-upstash-first-begin.json`; it contains invented attempt tokens and no player ID or credential. The affected production record has not been inspected, so matching this reproduction is a hypothesis until its retry succeeds.
+
+The reader normalizes both omitted fields to null only after validating the record metadata, chapter/content version, run, option permutations, answers, and cursor, and only when all these additional conditions hold:
+
+- Both fields are absent, rather than present with invalid values.
+- Revision is exactly 1 and the mutation fingerprint equals the server's initial `begin` at revision 0.
+- The run is at lesson 0 with zero accepted answers.
+- Created, updated, and run-start timestamps are the same valid server timestamp.
+
+This exact first-save state cannot contain a previous completion or earned badge. Normalization changes only the in-memory representation, retains the attempt and step token, and grants nothing. GET and an exact legacy Begin retry leave storage unchanged. The next explicit step uses the existing whole-record CAS against the original raw bytes and writes canonical explicit nulls through the current writer. Concurrent retries remain idempotent. Completing the actual six checks and final continuation is still required to earn the first badge and unlock Chapter 2.
+
+Single missing fields, invalid field values, later revisions, mismatched timestamps or fingerprints, completed runs, and replays remain rejected and preserved. This rule applies to a chapter's first Begin only; the existing full prerequisite chain still controls access to later chapters. No generalized missing-field migration, production record reset, or external service call is added to the runtime or CI. [Upstash's temporary database API](https://upstash.com/docs/devops/developer-api/start-redis/create) was used solely for the synthetic compatibility experiment, and its test key was deleted afterward.
+
+The same disposable provider also passed a synthetic run using the current `mutateQuest` state engine: read-only resume and exact legacy Begin retry preserved the raw first save, the first explicit continuation wrote canonical null fields, and 15 accepted transitions completed all six checks and awarded the badge on that original attempt. These are provider compatibility checks on invented data, not acceptance of the founder's saved record. Repeatable local real-Redis tests cover compatibility, concurrent continuation, ordinary completion/replay, and rejection of ambiguous omissions.
 
 ## Curriculum and sources
 

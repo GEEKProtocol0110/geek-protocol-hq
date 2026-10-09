@@ -61,6 +61,76 @@ const legacyFirst = () => {
   return { raw: JSON.stringify(legacy), command };
 };
 const seedPrerequisite = async cookie => { const {raw}=legacyFirst(); await fixture.command('SET',key(cookie),raw); return raw; };
+// Captured from the original Quest Lua on a disposable Upstash database with
+// synthetic IDs. No user records, credentials, or external service in CI.
+const nullOmittedBegin = () => readFileSync(new URL('./fixtures/quest-upstash-first-begin.json', import.meta.url), 'utf8');
+
+run('the provider null-omitted first Begin resumes write-free and canonicalizes only on an explicit step', async () => {
+  const cookie = await fresh(), raw = nullOmittedBegin(), original = JSON.parse(raw);
+  assert.equal(Object.hasOwn(original, 'badge'), false); assert.equal(Object.hasOwn(original, 'lastCompleted'), false);
+  await fixture.command('SET', key(cookie), raw);
+  const q = await current(cookie);
+  assert.equal(q.revision, 1); assert.equal(q.attempt.id, original.run.id); assert.equal(q.attempt.token, original.run.token);
+  assert.equal(q.attempt.status, 'lesson'); assert.equal(q.attempt.index, 0); assert.equal(q.attempt.answered, 0);
+  assert.equal(q.badge, null); assert.equal(q.lastCompleted, null);
+  const map = await call(cookie, undefined, { campaign: '1' });
+  assert.equal(map.body.campaign.chapters[0].available, true); assert.equal(map.body.campaign.chapters[0].badge, null);
+  assert.equal(map.body.campaign.chapters[1].locked, true);
+  assert.equal(await fixture.command('GET', key(cookie)), raw);
+  const beginRetry = await call(cookie, { action: 'begin', revision: 0 });
+  assert.equal(beginRetry.statusCode, 200); assert.deepEqual(beginRetry.body.quest, q);
+  assert.equal(await fixture.command('GET', key(cookie)), raw);
+  const command = actionFor(q, 'continue'), concurrent = await Promise.all([call(cookie, command), call(cookie, command)]);
+  assert.deepEqual(concurrent.map(r => r.statusCode), [200, 200]);
+  assert.deepEqual(concurrent[0].body.quest, concurrent[1].body.quest);
+  const saved = JSON.parse(await fixture.command('GET', key(cookie)));
+  assert.equal(saved.revision, 2); assert.equal(saved.run.id, original.run.id); assert.equal(saved.run.status, 'question');
+  assert.equal(saved.createdAt, original.createdAt); assert.equal(saved.run.startedAt, original.run.startedAt);
+  assert.equal(saved.badge, null); assert.equal(saved.lastCompleted, null);
+  assert.deepEqual(saved.run.orders, original.run.orders); assert.deepEqual(saved.run.answers, []);
+  const done = await complete(cookie), badge = done.badge;
+  assert.equal(done.attempt.id, original.run.id); assert.equal(badge.attemptId, original.run.id);
+  assert.equal((await call(cookie, undefined, { campaign: '1' })).body.campaign.chapters[1].locked, false);
+  await act(cookie, 'replay'); assert.deepEqual((await complete(cookie, [])).badge, badge);
+});
+
+test('null omission compatibility is limited to a fully validated first Begin in each chapter', () => {
+  for (const chapter of questChapters) {
+    const saved = JSON.parse(nullOmittedBegin());
+    if (chapter.id !== firstSignal.id) saved.chapterId = chapter.id;
+    const decoded = decodeQuest(JSON.stringify(saved), chapter);
+    assert.equal(decoded.badge, null); assert.equal(decoded.lastCompleted, null);
+    assert.equal(decoded.run.id, saved.run.id); assert.equal(decoded.revision, 1);
+  }
+});
+
+run('missing badge fields in later, ambiguous, partial, or inconsistent records still fail closed', async () => {
+  const cookie = await fresh(), raw = nullOmittedBegin();
+  const changes = [
+    s => { s.badge = null; }, s => { s.lastCompleted = null; },
+    s => { s.badge = {}; }, s => { s.badge = false; },
+    s => { s.revision = 2; }, s => { s.lastMutation = 'f'.repeat(64); },
+    s => { s.updatedAt++; }, s => { s.run.startedAt++; },
+    s => { s.run.status = 'question'; }, s => { s.run.index = 2; },
+    s => { s.run.orders[0] = [0, 0, 2, 3]; }, s => { s.contentVersion = 2; }
+  ];
+  for (const change of changes) {
+    const state = JSON.parse(raw); change(state); const invalid = JSON.stringify(state);
+    await fixture.command('SET', key(cookie), invalid);
+    for (const body of [undefined, { action: 'begin', revision: 0 }]) {
+      const result = await call(cookie, body);
+      assert.equal(result.statusCode, 503); assert.equal(result.body.code, 'QUEST_STATE_INVALID');
+      assert.equal(await fixture.command('GET', key(cookie)), invalid);
+    }
+  }
+  await fixture.command('DEL', key(cookie)); await complete(cookie); await act(cookie, 'replay');
+  for (const later of [await fixture.command('GET', key(cookie)), legacyFirst().raw]) {
+    const state = JSON.parse(later); delete state.badge; delete state.lastCompleted;
+    const invalid = JSON.stringify(state); await fixture.command('SET', key(cookie), invalid);
+    const result = await call(cookie); assert.equal(result.statusCode, 503); assert.equal(result.body.supportCode, 'Q_BADGE');
+    assert.equal(await fixture.command('GET', key(cookie)), invalid);
+  }
+});
 
 test('First Signal has three sourced scenes, six distinct checks, and no ranked question IDs', () => {
   assert.equal(firstSignal.scenes.length, 3); assert.equal(questChecks.length, 6);
@@ -205,7 +275,7 @@ run('durable identity recovery resumes the same chapter and badge in a new sessi
 run('corrupt chapter records fail closed without replacing progress or granting a badge', async () => {
   const cookie = await fresh(); await act(cookie, 'begin');
   const good = await fixture.command('GET', key(cookie));
-  for (const change of [s => { s.version = 2; }, s => { s.run.answers = 12; }, s => { s.run.answers = null; }, s => { s.run.answers = [null]; }, s => { s.run.orders[0] = ['0','1','2','3']; }, s => { s.run.index = 5; }, s => { s.badge = {id:'fake'}; }, s => { delete s.lastCompleted; }, s => { delete s.badge; delete s.lastCompleted; }]) {
+  for (const change of [s => { s.version = 2; }, s => { s.run.answers = 12; }, s => { s.run.answers = null; }, s => { s.run.answers = [null]; }, s => { s.run.orders[0] = ['0','1','2','3']; }, s => { s.run.index = 5; }, s => { s.badge = {id:'fake'}; }, s => { delete s.lastCompleted; }, s => { delete s.badge; }]) {
     const s = JSON.parse(good); change(s); const corrupt = JSON.stringify(s); await fixture.command('SET', key(cookie), corrupt);
     const result = await call(cookie); assert.equal(result.statusCode, 503, JSON.stringify(result.body)); assert.equal(result.body.code, 'QUEST_STATE_INVALID');
     assert.equal(await fixture.command('GET', key(cookie)), corrupt);

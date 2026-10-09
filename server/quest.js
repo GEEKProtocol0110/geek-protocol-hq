@@ -12,6 +12,7 @@ const token = () => randomBytes(16).toString('hex');
 const validTime = n => Number.isSafeInteger(n) && n > 0;
 const serverTimeMarker = '__geek_quest_server_time_v2__';
 const emptyState = chapter => ({ version: 1, ...(chapter.id !== firstSignal.id ? { chapterId: chapter.id } : {}), contentVersion: chapter.version, revision: 0, createdAt: 0, updatedAt: 0, run: null, badge: null, lastCompleted: null, lastMutation: '' });
+const firstBeginMutation = createHash('sha256').update(JSON.stringify(['begin', 0, '', '', null])).digest('hex');
 // Fixed support codes identify a failed check without returning saved fields,
 // player identifiers, answer choices, or the raw record. Validation stays strict.
 const invalidRecord = check => { throw Object.assign(new Error('QUEST_STATE_INVALID'), { supportCode: `Q_${check}` }); };
@@ -42,6 +43,15 @@ export const decodeQuest = (raw, chapter = firstSignal) => {
   checkAnswers(r.answers, questChecks);
   const expectedAnswers = r.index + (['feedback', 'complete'].includes(r.status) ? 1 : 0);
   if (r.answers.length !== expectedAnswers || (r.status === 'lesson' && r.index % 2 !== 0) || (r.status === 'complete' && r.index !== questChecks.length - 1)) invalidRecord('CURSOR');
+  // The original Lua writer on Upstash omits JSON nulls. Recover only its
+  // validated first Begin: neither a badge nor a completion can exist yet.
+  // Reads normalize in memory; the next explicit step canonicalizes via CAS.
+  if (!Object.hasOwn(s, 'badge') && !Object.hasOwn(s, 'lastCompleted')
+    && s.revision === 1 && s.lastMutation === firstBeginMutation
+    && r.status === 'lesson' && r.index === 0 && r.answers.length === 0
+    && s.createdAt === s.updatedAt && s.updatedAt === r.startedAt) {
+    s.badge = null; s.lastCompleted = null;
+  }
   if (s.badge !== null && (!s.badge || s.badge.id !== chapter.badge.id || !validTime(s.badge.awardedAt) || !tokenPattern.test(s.badge.attemptId))) invalidRecord('BADGE');
   if (s.lastCompleted !== null) {
     const done = s.lastCompleted;
