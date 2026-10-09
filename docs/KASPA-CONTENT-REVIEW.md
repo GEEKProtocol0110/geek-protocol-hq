@@ -41,3 +41,24 @@ The historical 1,000-variant bank described above has been retired from active s
 ### KRC-20 follow-up — October 8, 2026
 
 Ten distinct, original source-checked questions bring Kaspa to 194 active questions (176 core, 18 current). They add protocol data, explicitly scoped Kiwi SDK behavior and community project facts. Sources and the pinned SDK commit are recorded in Question Maintenance; existing and retired records are unchanged.
+
+### Focused editorial follow-up — October 8, 2026
+
+This pass checks **33 existing questions**: `KASPA-0626`–`KASPA-0635`, all ten `KRC20-2026` items, and thirteen Toccata items (`KCUR-0003`, `0004`, `0009`, `0010`, `0012`–`0018`, `0021`, `0022`). It improves prompts, source specificity and explanations. The [item-level register](kaspa-editorial-review-2026-10-08.json) records each source, decision, difficulty change, and before/after SHA-256 of the complete question JSON. These are internal editorial decisions, not independent approval.
+
+| Evidence | Review decision |
+| --- | --- |
+| [Kiwi SDK](https://github.com/kasplex/sdk-kiwi/tree/06dc75ea1066aba4d78eb32711690f6f123a9575) | Scope field spelling and P2SH/direct-payload paths to this snapshot. Explain that `validateDec` checks numeric bounds without establishing complete decimal validity. |
+| [Kasplex executor](https://github.com/kasplex/indexer-executor/tree/0e4ee46fb6e7a148dfff38bac78bd8415c312c15) | Check deployment modes, mint limits and indexed balance transfers. This archived reference is evidence for these mechanics, not a claim about today's operated service. |
+| [Fungible token definition](https://ethereum.org/developers/docs/standards/tokens/erc-20/) and [scaling guide](https://ethereum.org/developers/docs/scaling/) | Specify interchangeability within one token; distinguish a token format from Layer 2 execution/security. |
+| [Kaspa lore](https://kaspa.org/lore/) and [Toccata source map](https://docs.kaspa.org/toccata/references) | Recheck activation markers; use specific transaction, covenant, pricing, proof and authoring pages for the respective questions. Explain lineage versus transition validation and L1 ordering versus off-chain execution. |
+| [Programmability overview](https://docs.kaspa.org/programmability) | Preserve the distinction between current options and Full vProgs as a future direction. Argent remains described as experimental in its specific guide. |
+| [KaspaCom](https://kaspa.com/tokens/marketplace), [Nacho](https://nachothekat.xyz/) and [Kaspy](https://kaspy.io/) | Describe the marketplace's purpose, attribute Kat Bot capabilities to its publisher, and identify Kaspy's story as project lore. No product transaction or bot was tested. |
+
+The Kasplex GitBook landing pages redirected to an inaccessible editor surface and were not counted as checked evidence. The SDK and executor source above were inspected instead. Current web documentation was checked on the item review date; it remains subject to change. Pinning implementation evidence does not establish indexer acceptance for another version.
+
+Ten difficulty labels change using these editorial criteria: basic definitions and operation/project recognition are easy; interpreting one mechanism or scoped SDK rule is medium; specialist implementation/numeric recall and comparisons across layers remain hard. This is provisional classification, not calibration from player performance. Kaspa now has **71 easy, 82 medium and 41 hard** active questions, retaining the complete 30/40/30 Gauntlet capacity. Study's Foundations and Connections pools follow the revised labels for future selections.
+
+All 194 Kaspa concepts and the 7,786-question total remain. IDs, concept IDs, answer options/order, correct indices and retired records are unchanged. No duplicate concept or replacement was needed in this batch. Existing issued questions keep the same answer mapping; snapshots already held by shared modes retain their wording. Future selections can use the revised tiers. The broader imported-bank review remains unfinished.
+
+Validation: the full repository verification passes with 232 tests, zero failures and zero skips, using isolated real Redis. Question checks cover schemas, duplicate screening, historical answer compatibility, count metadata and Gauntlet capacity; the dependency audit reports zero vulnerabilities. This change introduces no new interface. No live-site browser, bot, wallet or transfer test was performed for this pass.

@@ -2,14 +2,14 @@
   "metadata": {
     "title": "GEEK Protocol — Kaspa Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-07",
+    "maintainedAt": "2026-10-08",
     "questionCount": 18,
     "conceptCount": 18,
     "category": "Kaspa",
     "difficultyDistribution": {
-      "easy": 4,
-      "hard": 5,
-      "medium": 9
+      "easy": 3,
+      "hard": 3,
+      "medium": 12
     },
     "correctIndexDistribution": {
       "1": 3,
@@ -28,7 +28,7 @@
       "id": "KCUR-0003",
       "category": "Kaspa",
       "subcategory": "Current Mainnet",
-      "prompt": "Which named upgrade activated on Kaspa mainnet on June 30, 2026?",
+      "prompt": "Which named Kaspa upgrade activated on mainnet on June 30, 2026?",
       "options": [
         "Crescendo",
         "Toccata",
@@ -37,24 +37,24 @@
       ],
       "correctIndex": 1,
       "difficulty": "easy",
-      "funFact": "Toccata is Kaspa's current UTXO-native programmability upgrade.",
+      "funFact": "Kaspa's lore page records Toccata activation on June 30, 2026. It added L1 programmability; it is separate from the later DAGKnight direction.",
       "tags": [
         "kaspa",
         "toccata",
         "mainnet"
       ],
-      "volatile": true,
+      "volatile": false,
       "priority": true,
       "source": "https://kaspa.org/lore/",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0003",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KCUR-0004",
       "category": "Kaspa",
       "subcategory": "Current Mainnet",
-      "prompt": "At which DAA score did Toccata activate on Kaspa mainnet?",
+      "prompt": "At which DAA score does Kaspa record Toccata mainnet activation?",
       "options": [
         "474,165,565",
         "10,000,000",
@@ -63,7 +63,7 @@
       ],
       "correctIndex": 0,
       "difficulty": "hard",
-      "funFact": "DAA score provides a protocol-native activation point independent of wall-clock ambiguity.",
+      "funFact": "Kaspa records activation at DAA score 474,165,565. The score is the protocol activation marker; June 30, 2026 is the corresponding published date.",
       "tags": [
         "kaspa",
         "toccata",
@@ -74,7 +74,7 @@
       "source": "https://kaspa.org/lore/",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0004",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KCUR-0008",
@@ -106,7 +106,7 @@
       "id": "KCUR-0009",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "What transaction version forms the base of Toccata programmability?",
+      "prompt": "Which transaction version supports the Toccata covenant fields described in Kaspa documentation?",
       "options": [
         "Transaction v0",
         "Transaction v1",
@@ -115,7 +115,7 @@
       ],
       "correctIndex": 1,
       "difficulty": "medium",
-      "funFact": "Toccata introduces transaction v1 as part of its programmable transaction surface.",
+      "funFact": "Transaction v1 adds input compute budgets and output covenant bindings. Version 0 remains an ordinary transaction format; v1 support does not mean every transaction must use it.",
       "tags": [
         "kaspa",
         "toccata",
@@ -123,16 +123,16 @@
       ],
       "volatile": false,
       "priority": true,
-      "source": "https://docs.kaspa.org/toccata",
+      "source": "https://docs.kaspa.org/toccata/transaction-v1",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0009",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KCUR-0010",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "In a UTXO system, what does a covenant primarily constrain?",
+      "prompt": "In a UTXO design, what does a covenant primarily restrict?",
       "options": [
         "The future spending conditions of an output",
         "The miner's geographic location",
@@ -141,7 +141,7 @@
       ],
       "correctIndex": 0,
       "difficulty": "medium",
-      "funFact": "Covenants enable consensus-enforced rules over how a UTXO may be spent.",
+      "funFact": "A covenant validates how its output may be spent, including permitted successor outputs. A covenant identifier tracks lineage; the script still checks the allowed transition.",
       "tags": [
         "kaspa",
         "toccata",
@@ -152,13 +152,13 @@
       "source": "https://docs.kaspa.org/toccata/covenant-state",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0010",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KCUR-0012",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Why does Toccata include script pricing?",
+      "prompt": "What is the purpose of Toccata script pricing?",
       "options": [
         "To meter computational resources",
         "To set the market price of KAS",
@@ -167,7 +167,7 @@
       ],
       "correctIndex": 0,
       "difficulty": "medium",
-      "funFact": "Resource pricing helps keep programmable validation bounded and predictable.",
+      "funFact": "Script pricing meters runtime work such as hashing, stack growth, signatures and proof verification. Validation fails if the input exceeds its execution allowance.",
       "tags": [
         "kaspa",
         "toccata",
@@ -175,16 +175,16 @@
       ],
       "volatile": false,
       "priority": true,
-      "source": "https://docs.kaspa.org/toccata",
+      "source": "https://docs.kaspa.org/toccata/script-pricing",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0012",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KCUR-0013",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Which Toccata feature creates an explicit path for application-oriented transaction activity?",
+      "prompt": "Which Toccata feature groups application transaction activity for app-specific ordering commitments?",
       "options": [
         "User lanes",
         "Premine lanes",
@@ -193,7 +193,7 @@
       ],
       "correctIndex": 0,
       "difficulty": "medium",
-      "funFact": "User lanes are part of the Toccata feature set documented for current mainnet.",
+      "funFact": "User lanes identify application activity in L1 transactions. Their sequencing commitments let application proofs focus on that lane; lanes are not simply parallel UTXO tracks.",
       "tags": [
         "kaspa",
         "toccata",
@@ -201,16 +201,16 @@
       ],
       "volatile": false,
       "priority": true,
-      "source": "https://docs.kaspa.org/toccata",
+      "source": "https://docs.kaspa.org/toccata/transaction-v1",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0013",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KCUR-0014",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "What does Inline ZK add to Kaspa's programmability direction?",
+      "prompt": "Which capability does Inline ZK provide to Toccata covenants?",
       "options": [
         "Zero-knowledge proof verification primitives",
         "A centralized identity database",
@@ -219,7 +219,7 @@
       ],
       "correctIndex": 0,
       "difficulty": "medium",
-      "funFact": "Inline ZK is a foundation for compact, verifiable claims in transaction logic.",
+      "funFact": "A covenant can verify a proof for a transition computed elsewhere, then validate its successor output. The proof must match the intended program and state commitments.",
       "tags": [
         "kaspa",
         "toccata",
@@ -227,16 +227,16 @@
       ],
       "volatile": false,
       "priority": true,
-      "source": "https://docs.kaspa.org/toccata",
+      "source": "https://docs.kaspa.org/toccata/inline-zk",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0014",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KCUR-0015",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Which phrase names application patterns built directly around Kaspa's base-layer ordering and UTXOs?",
+      "prompt": "Which term does Kaspa use for apps that execute ordered L1 operations off-chain and settle by proofs?",
       "options": [
         "Based Apps",
         "Hosted Apps",
@@ -244,8 +244,8 @@
         "Custodial Programs"
       ],
       "correctIndex": 0,
-      "difficulty": "easy",
-      "funFact": "Kaspa documentation uses Based Apps for applications aligned with the base protocol model.",
+      "difficulty": "medium",
+      "funFact": "Based apps use L1 lane transactions for ordered user operations. An off-chain runtime executes them, and a settlement covenant verifies a proof of the resulting state.",
       "tags": [
         "kaspa",
         "toccata",
@@ -253,16 +253,16 @@
       ],
       "volatile": false,
       "priority": true,
-      "source": "https://docs.kaspa.org/toccata",
+      "source": "https://docs.kaspa.org/toccata/based-apps",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0015",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KCUR-0016",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Which language is presented as the main covenant-authoring path in current Kaspa documentation?",
+      "prompt": "Which language does the reviewed Kaspa guide recommend for authoring Toccata covenants?",
       "options": [
         "Silverscript",
         "Solidity",
@@ -271,7 +271,7 @@
       ],
       "correctIndex": 0,
       "difficulty": "medium",
-      "funFact": "Silverscript targets readable covenant authoring for Kaspa's UTXO-native model.",
+      "funFact": "Silverscript lets developers describe state and transition policy, then compiles the supporting script checks. Tooling and release status still need review for a particular deployment.",
       "tags": [
         "kaspa",
         "silverscript",
@@ -282,13 +282,13 @@
       "source": "https://docs.kaspa.org/toccata/silverscript",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0016",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KCUR-0017",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "How should Argent currently be described in the Kaspa toolchain?",
+      "prompt": "How does the reviewed Kaspa guide describe Argent in its toolchain?",
       "options": [
         "Experimental",
         "The mandatory mainnet wallet",
@@ -297,7 +297,7 @@
       ],
       "correctIndex": 0,
       "difficulty": "medium",
-      "funFact": "Argent is an emerging experimental authoring path, not a replacement for consensus.",
+      "funFact": "Argent is an experimental actor-style prototype for multi-contract covenant authoring. It lowers toward Silverscript and is not described as a production-stable API.",
       "tags": [
         "kaspa",
         "argent",
@@ -308,13 +308,13 @@
       "source": "https://docs.kaspa.org/toccata/argent",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0017",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KCUR-0018",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Which capability is a future direction rather than the current primary Toccata authoring path?",
+      "prompt": "Which option does the reviewed Kaspa programmability guide label a future direction?",
       "options": [
         "Full vProgs",
         "Transaction v1",
@@ -322,8 +322,8 @@
         "Script pricing"
       ],
       "correctIndex": 0,
-      "difficulty": "hard",
-      "funFact": "Current documentation separates active covenant capabilities from the broader vProgs direction.",
+      "difficulty": "medium",
+      "funFact": "The guide places Full vProgs under future direction for composition across independent apps. It distinguishes that goal from current covenant and based-app options.",
       "tags": [
         "kaspa",
         "vprogs",
@@ -334,13 +334,13 @@
       "source": "https://docs.kaspa.org/programmability",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0018",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KCUR-0021",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "How can an application represent evolving state in a covenant-based UTXO design?",
+      "prompt": "How can a covenant-based UTXO application carry its state into the next transaction?",
       "options": [
         "Through controlled successor UTXOs",
         "By editing old confirmed blocks",
@@ -348,8 +348,8 @@
         "Through a central database required by consensus"
       ],
       "correctIndex": 0,
-      "difficulty": "hard",
-      "funFact": "A state-bearing output can enforce rules for the output that succeeds it.",
+      "difficulty": "medium",
+      "funFact": "The current UTXO is spent and its script validates a successor that commits to the permitted next state. The application does not edit an already confirmed output.",
       "tags": [
         "kaspa",
         "covenants",
@@ -360,13 +360,13 @@
       "source": "https://docs.kaspa.org/toccata/covenant-state",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0021",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KCUR-0022",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "What enforces a Kaspa covenant's spending rules?",
+      "prompt": "What checks a Kaspa covenant's spending rules when the transaction is validated?",
       "options": [
         "Network consensus validation",
         "A social media poll",
@@ -375,7 +375,7 @@
       ],
       "correctIndex": 0,
       "difficulty": "easy",
-      "funFact": "Covenant conditions are evaluated as part of transaction validity.",
+      "funFact": "Nodes evaluate the spending script as part of consensus validation. A website can display the state, but its approval cannot replace those transaction checks.",
       "tags": [
         "kaspa",
         "covenants",
@@ -386,7 +386,7 @@
       "source": "https://docs.kaspa.org/toccata/covenant-state",
       "reviewStatus": "source-checked",
       "conceptId": "KCUR-0022",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KCUR-0026",

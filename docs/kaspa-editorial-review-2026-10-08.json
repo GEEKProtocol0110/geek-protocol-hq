@@ -1,0 +1,604 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-10-08",
+  "scope": "33 existing KRC-20 and Toccata questions; internal editorial review",
+  "reviewedCount": 33,
+  "difficultyChanges": 10,
+  "activeQuestions": 194,
+  "status": "Internal primary-source check; no independent approval or empirical difficulty calibration",
+  "compatibility": "All IDs, concept IDs, options, correct indices, and retired records preserved. Tier reassignment affects future selection.",
+  "sources": {
+    "kiwiCommit": "06dc75ea1066aba4d78eb32711690f6f123a9575",
+    "indexerExecutorCommit": "0e4ee46fb6e7a148dfff38bac78bd8415c312c15",
+    "indexerNotice": "Archived reference implementation, used for protocol mechanics rather than claims about the currently operated service.",
+    "secondaryEvidence": [
+      "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/types/interface.ts",
+      "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/krc20.ts",
+      "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_transfer.go",
+      "https://docs.kaspa.org/toccata/agent-brief"
+    ],
+    "unavailable": [
+      "Kasplex GitBook landing pages redirected to an inaccessible editor surface; they were not used as checked evidence."
+    ]
+  },
+  "items": [
+    {
+      "id": "KASPA-0626",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/types/interface.ts",
+      "evidenceNote": "Krc20Data models token operations; executor balance state confirms the separation from native KAS.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "source",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "easy",
+      "difficultyAfter": "easy",
+      "beforeHash": "b621a759fc05f1c59e0e285a5e68bfef2393444c68c82e7833ca800249967455",
+      "afterHash": "7aeeb0e1572eca992ab1d7b0c5a67dbe83dcc5e1894f1b01962d5c7f77f2d38a",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KASPA-0627",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://ethereum.org/developers/docs/standards/tokens/erc-20/",
+      "evidenceNote": "The primary token-standard guide defines interchangeability within one token type.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "source",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "easy",
+      "difficultyAfter": "easy",
+      "beforeHash": "dd35993c77ce1c33aec46675d571966ded1024ec9ddf577c335201fc2181a9aa",
+      "afterHash": "7cfbee0a525b9538c6069fd8a48f21f3cf2d3c53d073c1673dd424ce21a5bef6",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KASPA-0628",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
+      "evidenceNote": "Deploy validates tick in mint mode and uses the deployment transaction ID in issue mode; avoids implying every mode uses a short ticker.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "source",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "easy",
+      "difficultyAfter": "easy",
+      "beforeHash": "f4fa38ecf94a409795995a9336e5d9641f10379bcf7eed93f227fa072059c1d8",
+      "afterHash": "591313c5d29ec695bdf62bae42109cb50b23adfebefcbe51e476b7cdf621c364",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KASPA-0629",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
+      "evidenceNote": "Deploy initializes token state; introductory operation recognition is easy.",
+      "changedFields": [
+        "prompt",
+        "difficulty",
+        "funFact",
+        "source",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "medium",
+      "difficultyAfter": "easy",
+      "beforeHash": "093899f1fc98ab3f5fe744e9b994310ea6139185cf15d0d9192fc83b4dde8da6",
+      "afterHash": "2d0bb5ebdcb0184f9c3b26f017af1157f72734387d75bc97a976e0540d4c64c1",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KASPA-0630",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_mint.go",
+      "evidenceNote": "Explicit mint-mode scope prevents confusion with issue-mode issuance; introductory operation recognition is easy.",
+      "changedFields": [
+        "prompt",
+        "difficulty",
+        "funFact",
+        "source",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "medium",
+      "difficultyAfter": "easy",
+      "beforeHash": "cb77bd1cfd0c57dc04820438b135f392f3cdcb7a12d58650de8d6012c48500ee",
+      "afterHash": "538b2382444ff668d8ec2d085fa270ac04a32762380a10559e64849355a38fa3",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KASPA-0631",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_transfer.go",
+      "evidenceNote": "Transfer performs token balance updates after validity and balance checks.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "source",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "easy",
+      "difficultyAfter": "easy",
+      "beforeHash": "12cabdd64204e83106c35b9373036ebf7ef89d2e3e6a99493b65ed33d08640a3",
+      "afterHash": "fedbcb7580b08355919924620fe2b6921cf20c70e31049e4b685852a55e17cb9",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KASPA-0632",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/explorer/scan.go",
+      "evidenceNote": "Scan builds and applies operation state batches; introductory architecture is medium rather than hard.",
+      "changedFields": [
+        "prompt",
+        "difficulty",
+        "funFact",
+        "source",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "hard",
+      "difficultyAfter": "medium",
+      "beforeHash": "6fc8fa5771780f4bf61c92fff2b8c03c26fb29169bb937d71c8d532245127a60",
+      "afterHash": "a347081759a6a2c032875d5fd3643060f17ff0a2bd334f070a6b4724f656f0b6",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KASPA-0633",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_transfer.go",
+      "evidenceNote": "Executor maintains separate token balances; Kiwi builds operations from native UTXOs. Basic coin/token distinction is easy.",
+      "changedFields": [
+        "prompt",
+        "difficulty",
+        "funFact",
+        "source",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "medium",
+      "difficultyAfter": "easy",
+      "beforeHash": "88c72f93b384206dfdf97fce6af3b8148cfe6c5ad6018908fe04a7022d2e8caf",
+      "afterHash": "206815a56b612c7ec0b65f178b0e08de4099e8c5ee2aea7be1c5c84fcfb8a758",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KASPA-0634",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
+      "evidenceNote": "Deployment identifiers can differ by mode. Recipient/project cross-check advice is editorial guidance, not a claim that the source measures scam prevalence.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "volatile",
+        "source",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "easy",
+      "difficultyAfter": "easy",
+      "beforeHash": "baa499aed49cc4b4e8050aa5e0d8f2710141fe8ec377892bd7b8cfed38865f5c",
+      "afterHash": "67f91662ab0490ebd6dfba658941f6ffa9f5666082da36043d679f545982c4c4",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KASPA-0635",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://ethereum.org/developers/docs/scaling/",
+      "evidenceNote": "Scaling guide distinguishes Layer 2 execution/security from other off-chain systems; no activation claim.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "volatile",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "hard",
+      "difficultyAfter": "hard",
+      "beforeHash": "61f3461faa234a74fda89d22e0b85d2185b4378732022315f80d564029e6de47",
+      "afterHash": "6bfc2a940da40efc5d5e7261f3c631f11d5c04bfa6feb84a9ac9be13f8afc65d",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KRC20-2026-001",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/README-Node.md",
+      "evidenceNote": "Scopes exact lowercase spelling to the example instead of every parser.",
+      "changedFields": [
+        "prompt",
+        "funFact"
+      ],
+      "difficultyBefore": "easy",
+      "difficultyAfter": "easy",
+      "beforeHash": "d7b08e51b31491c118e5dfa62dec9e53e082d1921a8bcd653773c4392b9d4037",
+      "afterHash": "109b3794ca031946ff565c1a9557e5db4a5aad3c8af701418aceb861c0eec7a8",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KRC20-2026-002",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/krc20.ts",
+      "evidenceNote": "transferByPayload checks amt and forwards a separate fee argument.",
+      "changedFields": [
+        "prompt",
+        "funFact"
+      ],
+      "difficultyBefore": "medium",
+      "difficultyAfter": "medium",
+      "beforeHash": "d24fe30230bd3ef5c1f0ade395cd02779bc5ffb9e090162fd5c7123216a58bbf",
+      "afterHash": "007cf20359f7fee7e326546ef34493f8af21fcae1b454e505093ce7bfc91d47d",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KRC20-2026-003",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/krc20.ts",
+      "evidenceNote": "transferByPayload explicitly requires to and amt.",
+      "changedFields": [
+        "prompt",
+        "funFact"
+      ],
+      "difficultyBefore": "easy",
+      "difficultyAfter": "easy",
+      "beforeHash": "114e6a0274a432a9d11b59399aad6dab662bdc644e309585778ebf8b1f3d0d1a",
+      "afterHash": "31fdf70da20faed5589fa4d016cc95c77bb4c4171caca3c9dd79b285546e5545",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KRC20-2026-004",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/krc20.ts",
+      "evidenceNote": "executeOperation constructs commit then reveal; avoids implying all KRC-20 paths use identical stages.",
+      "changedFields": [
+        "prompt",
+        "funFact"
+      ],
+      "difficultyBefore": "medium",
+      "difficultyAfter": "medium",
+      "beforeHash": "33e5bd62473d9a82837b3d9cd17a8e012458d0e58178d43837d9b85e37a36938",
+      "afterHash": "cb0904a7d4b3a88c1312dc767b93ad2ce33024a246f8045271ca6962cca4b2a6",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KRC20-2026-005",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/krc20.ts",
+      "evidenceNote": "executePayloadOperation warns about custom wrappers; practical format distinction is medium, not specialist recall.",
+      "changedFields": [
+        "prompt",
+        "difficulty",
+        "funFact"
+      ],
+      "difficultyBefore": "hard",
+      "difficultyAfter": "medium",
+      "beforeHash": "2f0dd36dfe5ec5fbdd9d4cfcbaeb89b822b8650adff1cc24143db915516d89f4",
+      "afterHash": "e52c36c976a40abcf367ce22378660507347f2e6dddda30b41ba54dc08c0b9d5",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KRC20-2026-006",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/check.ts",
+      "evidenceNote": "The conditional uses Number(dec) range comparisons; it does not enforce integer or finite-number validity. Preserves the numeric-bounds answer.",
+      "changedFields": [
+        "prompt",
+        "funFact"
+      ],
+      "difficultyBefore": "hard",
+      "difficultyAfter": "hard",
+      "beforeHash": "26b2f9483102e930e79c48d9c0bf15eb79480eac50d7f9377154617a151909fc",
+      "afterHash": "a7c076f2230688488a6371a5f4868b06b59f2a3fb76299645a8eea4fd79d76bf",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KRC20-2026-007",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/check.ts",
+      "evidenceNote": "validateTick checks length under !mod; simple SDK-rule lookup is medium.",
+      "changedFields": [
+        "prompt",
+        "difficulty",
+        "funFact"
+      ],
+      "difficultyBefore": "hard",
+      "difficultyAfter": "medium",
+      "beforeHash": "896f31b50f1ba9471fe51bbe8cbf9c4fc55a809b05a3ec8fa75afa4b34419e4d",
+      "afterHash": "67e34d0a890c5519e658cb90053b0af92a10761d37e6c10ab2c51877305e8a89",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KRC20-2026-008",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://kaspa.com/tokens/marketplace",
+      "evidenceNote": "Primary marketplace page lists KRC-20 browsing; no uptime or transaction test.",
+      "changedFields": [
+        "prompt",
+        "funFact"
+      ],
+      "difficultyBefore": "easy",
+      "difficultyAfter": "easy",
+      "beforeHash": "569a2df40dc6fc68deee81e3e690711f81774659e40435d44a0b589694fa73a5",
+      "afterHash": "efa150583ebb7fbd37d5c928a8cc6d69bbc4ed95b3ce7873a219e29cedbc081c",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KRC20-2026-009",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://nachothekat.xyz/",
+      "evidenceNote": "Primary site describes both wallet role and KSPR collaboration; recognition is easy, not mechanism-level knowledge.",
+      "changedFields": [
+        "prompt",
+        "difficulty",
+        "funFact"
+      ],
+      "difficultyBefore": "medium",
+      "difficultyAfter": "easy",
+      "beforeHash": "274722749ae0c3d28f3fb01f6b7b5877a13d9ebeb681d5d2773dc392392968ca",
+      "afterHash": "fd3138bbf16f61af483c06b52c08da25fc6c260ef0cbaa422d8084264d85e1d7",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KRC20-2026-010",
+      "file": "server/questions/kaspa-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://kaspy.io/",
+      "evidenceNote": "Primary Story section supports the character detail; avoids treating project lore as independent historical evidence.",
+      "changedFields": [
+        "prompt",
+        "funFact"
+      ],
+      "difficultyBefore": "easy",
+      "difficultyAfter": "easy",
+      "beforeHash": "72ff50ecc9e07ebb462e3fdfd33bbff43c62379db93223bd231112364dae0acb",
+      "afterHash": "a585b7b218fbfa6c786047e087dbc265dbfd0bff80a5e2d6994ada93a6096c39",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KCUR-0003",
+      "file": "server/questions/kaspa-current-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://kaspa.org/lore/",
+      "evidenceNote": "Lore explicitly records the activation date; replaces undated current-upgrade wording.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "volatile",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "easy",
+      "difficultyAfter": "easy",
+      "beforeHash": "613fec6f3e7ae83523d4b85bbaffb51087157839b49b5366ad49075a174aba05",
+      "afterHash": "670f711179897a953365afa0e1e85fdcc947642978e98ffdd9da2ac80ce8e5c0",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KCUR-0004",
+      "file": "server/questions/kaspa-current-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://kaspa.org/lore/",
+      "evidenceNote": "Lore records exact DAA score and date; specialist numeric recall stays hard.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "hard",
+      "difficultyAfter": "hard",
+      "beforeHash": "d16a8dcfba212d6d5364ec172fb7494f3a1454a44a7410ad99a302c392a5e39c",
+      "afterHash": "392c8351359732e937f41db11dce9649eb71ad44d60cc9104c206e098ca45a5d",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KCUR-0009",
+      "file": "server/questions/kaspa-current-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://docs.kaspa.org/toccata/transaction-v1",
+      "evidenceNote": "Version-aware transaction layout supports v1 fields without claiming all transactions changed to v1.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "source",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "medium",
+      "difficultyAfter": "medium",
+      "beforeHash": "f54cc886d2fa4e412e11f2d71706e6f5fc236c575fe358cd0a4a8668950f7ba1",
+      "afterHash": "37eea42849643882a228a600af0099e3aee2b1cd28bc87b9f2842012aafa693c",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KCUR-0010",
+      "file": "server/questions/kaspa-current-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://docs.kaspa.org/toccata/covenant-state",
+      "evidenceNote": "State and Covenant IDs sections distinguish lineage admission from transition checks.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "medium",
+      "difficultyAfter": "medium",
+      "beforeHash": "0cc802e56bfdca07e2907bfe7d4b1a10a26bc80a90e6245acead61285bdb82ac",
+      "afterHash": "085f4305e41fc607c3085809e8de943860d2f92512bb051b819cdd19d1f64d41",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KCUR-0012",
+      "file": "server/questions/kaspa-current-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://docs.kaspa.org/toccata/script-pricing",
+      "evidenceNote": "Runtime meter and unit ladder define the purpose and failure condition.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "source",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "medium",
+      "difficultyAfter": "medium",
+      "beforeHash": "93ae9770c66d650ce9cd21799194ea2a02d11fa5c7c53b6a89708766c7b61705",
+      "afterHash": "f47464c46ed8ada49c753388ef6942ad21bfea35573879d162a8b17b7ac01424",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KCUR-0013",
+      "file": "server/questions/kaspa-current-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://docs.kaspa.org/toccata/transaction-v1",
+      "evidenceNote": "Lanes and gas section plus agent brief distinguish app lanes from UTXO parallelism.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "source",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "medium",
+      "difficultyAfter": "medium",
+      "beforeHash": "4abdeb301e05c232a65ccaf376c19b3ae58025b159185f72d8ac8e14b7eb06ca",
+      "afterHash": "975f40ea35385b86c787a7cf00f5e511e1d090e96213f51bd1bf8a77935c080e",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KCUR-0014",
+      "file": "server/questions/kaspa-current-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://docs.kaspa.org/toccata/inline-zk",
+      "evidenceNote": "Inline ZK requires proof verification and successor validation, not automatic privacy for all transactions.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "source",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "medium",
+      "difficultyAfter": "medium",
+      "beforeHash": "9c6067067fd1441bad54c53e58971625b1f687fb1f429623aedfb176ef284453",
+      "afterHash": "95e2a99bbf37eaad25f04286c6241f9041c077b9ff150f9cb30a92ce5a07ad07",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KCUR-0015",
+      "file": "server/questions/kaspa-current-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://docs.kaspa.org/toccata/based-apps",
+      "evidenceNote": "Clarifies the actual based-app architecture; mechanism recognition belongs in medium.",
+      "changedFields": [
+        "prompt",
+        "difficulty",
+        "funFact",
+        "source",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "easy",
+      "difficultyAfter": "medium",
+      "beforeHash": "dcab701ef426ff5f981ddbbd2f144255dae281ccb7866cbc393127dd9a62235b",
+      "afterHash": "fa3f3389002eabadbc4d9157352572c0f9dfacd03fe91543717b6f09a99ae582",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KCUR-0016",
+      "file": "server/questions/kaspa-current-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://docs.kaspa.org/toccata/silverscript",
+      "evidenceNote": "Main authoring path and compiler role supported; no independent audit or universal stability claim.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "medium",
+      "difficultyAfter": "medium",
+      "beforeHash": "17f17a664cc4efa708d05d30f9d4f32b1c8ec3ec816c6934ec92302582b21cab",
+      "afterHash": "36071adb1ec2c7ba65355f66e13f9b68677d2e607f7f78e8f3d62c33b65b7439",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KCUR-0017",
+      "file": "server/questions/kaspa-current-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://docs.kaspa.org/toccata/argent",
+      "evidenceNote": "Guide explicitly calls Argent experimental and a prototype; date lives in reviewedAt.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "medium",
+      "difficultyAfter": "medium",
+      "beforeHash": "8f3031cf0b7f7d3e4d495a66f22f4d159387914adb19a373de5edf519a743c6d",
+      "afterHash": "09e50a8c2a7a0490b498297ec88062b3d5d9ac26ee9f66661c39fffb815d194e",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KCUR-0018",
+      "file": "server/questions/kaspa-current-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://docs.kaspa.org/programmability",
+      "evidenceNote": "Current options / Future direction sections support a status distinction rather than a hard technical mechanism.",
+      "changedFields": [
+        "prompt",
+        "difficulty",
+        "funFact",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "hard",
+      "difficultyAfter": "medium",
+      "beforeHash": "5a68e4d2d69634c6a67a7bbc136691f1fe08ec83bb96ef56a5f86cc0008a12d2",
+      "afterHash": "3c001fc74714e0852e2de2214abd04d543d33110458bac76f15600fa36b5ce8b",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KCUR-0021",
+      "file": "server/questions/kaspa-current-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://docs.kaspa.org/toccata/covenant-state",
+      "evidenceNote": "P2SH state pattern gives a concrete successor explanation; application of one mechanism is medium.",
+      "changedFields": [
+        "prompt",
+        "difficulty",
+        "funFact",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "hard",
+      "difficultyAfter": "medium",
+      "beforeHash": "48ae7d0d2d7ddae4b650ed9cbbea6aa9d3e7f9d5d90f5cfb6b7f26f66da6c2db",
+      "afterHash": "e9bfad9d4041b1dadcfbe590d3a53d6974d38d0c53753d63a2226242b27cf892",
+      "gradingPreserved": true
+    },
+    {
+      "id": "KCUR-0022",
+      "file": "server/questions/kaspa-current-questions.json",
+      "reviewedAt": "2026-10-08",
+      "source": "https://docs.kaspa.org/toccata/covenant-state",
+      "evidenceNote": "Script transition enforcement is part of transaction validity.",
+      "changedFields": [
+        "prompt",
+        "funFact",
+        "reviewedAt"
+      ],
+      "difficultyBefore": "easy",
+      "difficultyAfter": "easy",
+      "beforeHash": "d1bffd2736eafa6b20e2ba0caf32b966802b27beeacd5e3a269dab61abc0b6ed",
+      "afterHash": "22db5c6867305dbb94d0c60e8ce36f63ffb0037e6adf000caa61d0ce902a08b0",
+      "gradingPreserved": true
+    }
+  ]
+}
