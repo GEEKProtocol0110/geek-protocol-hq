@@ -2,6 +2,30 @@
 
 Quiz Quest has three free, untimed solo chapters: First Signal (Kaspa origins), Inside the blockDAG (parent links, parallel blocks and consensus ordering), and Keys to the Grid (wallet-safety decisions). Each has three authored story scenes and six learning checks. The campaign starts with First Signal. Saved completion badges unlock the chapters in order: First Signal → Inside the blockDAG → Keys to the Grid. The server checks the full earlier-chapter chain on reads and every mutation. Each chapter retains its own saved place. GIGA is the welcoming story guide; A.C.E. supplies fixed teaching notes and checkpoint explanations. Dialogue is fiction, not a historical quotation, adaptive tutoring or live AI chat. The player’s chosen off-chain avatar appears at the chapter entrance and beside the story throughout each visit.
 
+## Saved-record support codes
+
+The October 9 founder phone check still showed an unverified saved chapter, and the founder reported that retrying did not visibly recover it. Issue #81 remains open. The existing record has not been inspected; this report does not establish a provider-specific cause or prove the saved step is recoverable.
+
+Chapter reads and mutations still reject invalid records with HTTP 503 and `QUEST_STATE_INVALID`. They now also return a fixed support code identifying the failed validation group, without returning the raw record, player ID, attempt token, answer choices, or stored values:
+
+| Code | Failed check |
+| --- | --- |
+| `Q_JSON` | Stored JSON parsing |
+| `Q_META` | Record version, revision, timestamps, or mutation fingerprint |
+| `Q_CONTENT` | Chapter selector or content version |
+| `Q_RUN` | Attempt identity, token, start time, status, index, or order-list shape |
+| `Q_ORDER` | Answer-option permutation |
+| `Q_ANSWERS` | Current or completed answer-list shape, checkpoint, choice, grading, or timestamp |
+| `Q_CURSOR` | Saved answer count and chapter cursor consistency |
+| `Q_BADGE` | Badge identity, timestamp, or attempt reference |
+| `Q_RECEIPT` | Completed summary shape, answer count, or badge chronology |
+| `Q_LINK` | Badge/completion presence or completed-attempt linkage |
+| `Q_REPLY` | Unverified transaction result without a specific record-validation code |
+
+Retry visibly announces the check and disables its button while the request is pending. A repeated validation failure shows the support code; it does not automatically start, replay, or rewrite a chapter. A successful read resumes the verified server step. Older servers without support codes retain the previous recovery message.
+
+For an affected player, record the support code, chapter, approximate time, and browser through the existing support conversation. If a retry still fails, inspect the corresponding record through authorized private storage access before proposing recovery. Keep any inspection read-only and do not paste raw records into public issues. The code identifies a failed check, not its cause; do not infer missing fields, relax validation, reset progress, or grant badges from the code. Validation tests verify repeated GET and rejected POST requests leave malformed records byte-for-byte unchanged. A failed post-commit response can still follow an accepted write, so retry loading is the authority for its outcome.
+
 ## Curriculum and sources
 
 First Signal covers Kaspa’s research roots, November 2021 public proof-of-work launch and the distinction between KAS and GEEK. Inside the blockDAG uses small, labeled example graphs to teach parent references, parallel relationships and consensus ordering. Arrows point from child to referenced parent; the diagrams are authored teaching examples, not live network data. Teaching references were checked on October 5, 2026:

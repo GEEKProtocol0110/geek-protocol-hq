@@ -214,6 +214,38 @@ run('corrupt chapter records fail closed without replacing progress or granting 
 });
 
 
+run('failed record checks return fixed support codes and retries preserve the exact stored record', async () => {
+  const cookie = await fresh(); await complete(cookie);
+  const good = await fixture.command('GET', key(cookie));
+  const cases = [
+    ['Q_JSON', () => 'not-json'],
+    ['Q_META', s => { s.createdAt = 0; }],
+    ['Q_CONTENT', s => { s.contentVersion = 99; }],
+    ['Q_RUN', s => { s.run.token = 'private-invalid-token'; }],
+    ['Q_ORDER', s => { s.run.orders[0] = [0, 0, 2, 3]; }],
+    ['Q_ANSWERS', s => { s.run.answers[0].checkpointId = 'private-invalid-checkpoint'; }],
+    ['Q_CURSOR', s => { s.run.status = 'question'; }],
+    ['Q_BADGE', s => { s.badge.id = 'private-invalid-badge'; }],
+    ['Q_RECEIPT', s => { delete s.lastCompleted; }],
+    ['Q_LINK', s => { s.lastCompleted.attemptId = 'e'.repeat(32); }]
+  ];
+  for (const [supportCode, change] of cases) {
+    const state = JSON.parse(good), replacement = change(state), raw = replacement || JSON.stringify(state);
+    await fixture.command('SET', key(cookie), raw);
+    for (const body of [undefined, undefined, { action: 'begin', revision: 0 }]) {
+      const result = await call(cookie, body);
+      assert.equal(result.statusCode, 503); assert.equal(result.body.code, 'QUEST_STATE_INVALID');
+      assert.equal(result.body.supportCode, supportCode);
+      assert.deepEqual(Object.keys(result.body).sort(), ['code', 'error', 'ok', 'supportCode']);
+      assert.doesNotMatch(JSON.stringify(result.body), /private-invalid|checkpointId|attemptId|selectedChoice|lastMutation/);
+      assert.equal(await fixture.command('GET', key(cookie)), raw);
+    }
+  }
+  await fixture.command('SET', key(cookie), good);
+  assert.equal((await current(cookie)).attempt.status, 'complete');
+  assert.equal(await fixture.command('GET', key(cookie)), good);
+});
+
 test('campaign content has three distinct three-stop chapters and no invented chapter fallback', () => {
   assert.deepEqual(questChapters.map(c => c.id), ['first-signal', 'inside-blockdag', 'keys-to-the-grid']);
   const allChecks = questChapters.flatMap(checksFor);

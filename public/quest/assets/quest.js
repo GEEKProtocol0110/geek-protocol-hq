@@ -28,7 +28,7 @@ const api = async (path, body) => {
     const response = await fetch(path, { credentials: 'same-origin', signal: controller.signal,
       ...(body ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {}) });
     const data = await response.json().catch(() => ({}));
-    if (!response.ok) throw Object.assign(new Error(data.error || 'Chapter service unavailable.'), { status: response.status, code: data.code, prerequisite: data.prerequisite });
+    if (!response.ok) throw Object.assign(new Error(data.error || 'Chapter service unavailable.'), { status: response.status, code: data.code, supportCode: data.supportCode, prerequisite: data.prerequisite });
     return data;
   } catch (error) {
     if (error.name === 'AbortError') throw new Error('The chapter service took too long to respond.');
@@ -93,7 +93,7 @@ const controls = () => {
   $('[data-lock-copy]').textContent = recordUnavailable ? 'Retry loading to check your saved place. Your record has been kept. Reading the chapter notes does not change progress.' : locked ? `Complete ${prerequisite?.title || 'the previous chapter'} and choose Finish chapter & save badge to unlock ${chapter.title}.` : 'Checking saved completion of the earlier chapters.';
   $('[data-lock-link]').hidden = recordUnavailable || !prerequisite;
   if (prerequisite) { $('[data-lock-link]').href = `/quest/?chapter=${encodeURIComponent(prerequisite.id)}`; $('[data-lock-link]').textContent = `Continue ${prerequisite.title} →`; }
-  $('[data-resume]').textContent = recordUnavailable ? 'Retry loading saved chapter' : locked || accessPending ? 'Check chapter unlock' : 'Resume saved chapter';
+  $('[data-resume]').textContent = busy ? 'Checking saved chapter…' : recordUnavailable ? 'Retry loading saved chapter' : locked || accessPending ? 'Check chapter unlock' : 'Resume saved chapter';
   $('[data-begin]').hidden = Boolean(a) || !connected; $('[data-begin]').disabled = !enabled;
   $('[data-continue]').hidden = !a || !['lesson', 'feedback'].includes(a.status);
   $('[data-continue]').disabled = !enabled;
@@ -169,14 +169,15 @@ const failure = (error, saving = false) => {
     say(error.message);
   } else {
     recordUnavailable = true;
-    say(`${error.message} ${saving ? 'Your last action may have saved. ' : ''}Retry loading to see the server’s saved step.`);
+    const supportCode = error.code === 'QUEST_STATE_INVALID' && /^Q_(JSON|META|CONTENT|RUN|ORDER|ANSWERS|CURSOR|BADGE|RECEIPT|LINK|REPLY)$/.test(error.supportCode) ? error.supportCode : '';
+    say(supportCode ? `We still could not verify your saved chapter. Support code: ${supportCode}. ${saving ? 'Your last action may have saved. ' : ''}Please share this code when reporting the problem.` : `${error.message} ${saving ? 'Your last action may have saved. ' : ''}Retry loading to see the server’s saved step.`);
     $('[data-save-note]').textContent = 'Saved progress is unverified. Retry loading before taking another chapter step.';
   }
   drawCampaign(); controls();
 };
 const load = async () => {
   if (busy) return;
-  busy = true; controls();
+  busy = true; say('Checking your saved chapter…'); controls();
   try { await Promise.all([api(apiPath).then(data => render(data.quest, true)), refreshCampaign()]); }
   catch (error) { failure(error); }
   finally { busy = false; controls(); }
@@ -201,7 +202,7 @@ $('[data-resume]').addEventListener('click', async () => { if (!quest) return in
 $('[data-replay]').addEventListener('click', () => $('[data-replay-dialog]').showModal());
 $('[data-replay-dialog]').addEventListener('close', () => { if ($('[data-replay-dialog]').returnValue === 'replay') act('replay'); });
 const initialize = async () => {
-  if (busy) return; busy = true; controls();
+  if (busy) return; busy = true; say('Checking your saved chapter…'); controls();
   try {
     const session = await api('/api/session', {}); $('[data-player-name]').textContent = session.player.name;
     const results = await Promise.allSettled([validChapter ? api(apiPath) : Promise.reject(new Error('That chapter is not in this campaign. Choose a chapter from the map.')), api('/api/collectibles'), refreshCampaign()]);
