@@ -1,0 +1,108 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:08520924-0cb0-4a96-8f93-ca96f41a189b",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-09T04:12:11.592Z",
+    "lifecycles": [
+      {
+        "phase": "pre-build"
+      }
+    ],
+    "tools": [
+      {
+        "vendor": "npm",
+        "name": "cli",
+        "version": "11.9.0"
+      }
+    ],
+    "component": {
+      "bom-ref": "geek-protocol-hq@0.1.0",
+      "type": "library",
+      "name": "geek-protocol-hq",
+      "version": "0.1.0",
+      "scope": "required",
+      "description": "Security-first Proof-of-Learning and trivia platform for the Kaspa ecosystem.",
+      "purl": "pkg:npm/geek-protocol-hq@0.1.0",
+      "properties": [
+        {
+          "name": "cdx:npm:package:private",
+          "value": "true"
+        },
+        {
+          "name": "geek:source:commit",
+          "value": "a682c20733c771d074b96284b889a217fb69a8ed"
+        },
+        {
+          "name": "geek:source:lockfile-sha256",
+          "value": "a20b44b57303cdd9375399cfa7383c042690933c9fbec79a8cd9de3402548296"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "git+https://github.com/GEEKProtocol0110/geek-protocol-hq.git"
+        },
+        {
+          "type": "website",
+          "url": "https://www.geekprotocol.xyz/"
+        },
+        {
+          "type": "issue-tracker",
+          "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/issues"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "bom-ref": "@dfns/kaspa-wasm@0.14.1",
+      "type": "library",
+      "name": "@dfns/kaspa-wasm",
+      "version": "0.14.1",
+      "scope": "required",
+      "purl": "pkg:npm/%40dfns/kaspa-wasm@0.14.1",
+      "properties": [],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@dfns/kaspa-wasm/-/kaspa-wasm-0.14.1.tgz"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "2effd59223e4c5080f4d19b3d8c1bf3d3345ccbd09b952f185cf6628a8106f16ee4fb5d33b3adafc0982260381ae7d0efc0ef7ff440a01e88183ed47ad0ed99c"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "ISC"
+          }
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "geek-protocol-hq@0.1.0",
+      "dependsOn": [
+        "@dfns/kaspa-wasm@0.14.1"
+      ]
+    },
+    {
+      "ref": "@dfns/kaspa-wasm@0.14.1",
+      "dependsOn": []
+    }
+  ]
+}

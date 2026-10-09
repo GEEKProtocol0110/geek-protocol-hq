@@ -71,6 +71,8 @@ The repository currently verifies:
 
 ## Required next gates
 
+For the next free learning/gameplay pilot, use the [free-beta candidate checklist](FREE-BETA-READINESS.md). The October 9 baseline records the tested PR #82 code and npm dependency inventory. Affected-phone Quest recovery, real-device/Royale pilot, owner MFA and production backup/restore acceptance remain pending; preparing the checklist does not change the public Alpha label. The broader value-moving launch gates below remain separate.
+
 1. Freeze a named release candidate and software bill of materials.
 2. Complete production architecture, incident-response, backup, and key-management evidence.
 3. Configure protected production roles with individual MFA-backed access.
