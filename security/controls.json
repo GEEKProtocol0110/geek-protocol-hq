@@ -110,13 +110,13 @@
       "id": "GP-INV-017",
       "title": "Server-authoritative progression and bounded journey history",
       "status": "implemented-alpha",
-      "evidence": ["server/progression.js", "api/ranked.js", "server/player-api.js", "tests/api.test.js"]
+      "evidence": ["server/progression.js", "api/ranked.js", "server/player-api.js", "tests/api.test.js", "public/profile/assets/dashboard.js", "tests/profile-client.test.js"]
     },
     {
       "id": "GP-INV-018",
       "title": "Atomic off-chain collectible inventory and trades",
       "status": "implemented-alpha",
-      "evidence": ["server/collectibles.js", "server/sticker-trades.js", "server/player-api.js", "api/session.js", "tests/api.test.js", "docs/COLLECTIBLE-PROTOCOL.md"]
+      "evidence": ["server/collectibles.js", "server/sticker-trades.js", "server/player-api.js", "api/session.js", "tests/api.test.js", "public/profile/assets/profile.js", "public/profile/assets/geek-builder.js", "tests/profile-client.test.js", "docs/COLLECTIBLE-PROTOCOL.md"]
     },
     {
       "id": "GP-INV-019",
@@ -188,7 +188,7 @@
       "id": "GP-INV-030",
       "title": "Configurable 2–100-player Royale uses atomic server-clock membership, hidden-until-deadline answers and deterministic elimination without ranked or monetary writes",
       "status": "implemented-alpha",
-      "evidence": ["server/royale.js", "server/royale-api.js", "tests/royale.test.js", "docs/ROYALE-PROTOCOL.md", "public/royale/assets/royale.js"]
+      "evidence": ["server/royale.js", "server/royale-api.js", "tests/royale.test.js", "tests/royale-client.test.js", "docs/ROYALE-PROTOCOL.md", "public/royale/assets/royale.js"]
     },
     {
       "id": "GP-INV-031",

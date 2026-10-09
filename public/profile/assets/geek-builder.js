@@ -11,6 +11,18 @@ const presets = [
   { name: 'GIGA', design: defaultGeek }
 ];
 const sameDesign = (left, right) => JSON.stringify(normalizeGeek(left)) === JSON.stringify(normalizeGeek(right));
+const saveCharacter = async customization => {
+  const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 15000);
+  try {
+    const response = await fetch('/api/collectibles', { method: 'POST', credentials: 'same-origin', signal: controller.signal, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'customize-avatar', customization }) });
+    const payload = await response.json().catch(error => { if (controller.signal.aborted) throw error; return {}; });
+    if (!response.ok || !payload.collection?.customization || payload.collection.avatar?.id !== customGeekId) throw new Error(payload.error || 'Your Geek save could not be confirmed.');
+    return payload;
+  } catch (error) {
+    if (controller.signal.aborted) throw new Error('Saving your Geek took too long to respond.');
+    throw error;
+  } finally { clearTimeout(timer); }
+};
 const preview = () => {
   const root = $('[data-geek-preview]');
   root.innerHTML = geekSvg(draft, view);
@@ -36,7 +48,7 @@ const preview = () => {
   }
   $('[data-geek-preview-state]').textContent = edited ? 'UNSAVED PREVIEW' : 'YOUR CHARACTER PREVIEW';
   $('[data-geek-preview-title]').textContent = draft.kind === 'human' ? 'Your place in the Grid.' : 'Your GIGA signal.';
-  $('[data-geek-save]').disabled = !ready || saving || Boolean(lockedEffect);
+  $('[data-geek-save]').disabled = !ready || saving || Boolean(window.GeekProfile?.collectionBusy) || Boolean(lockedEffect);
   $('[data-geek-save]').textContent = saving ? 'Saving your Geek…' : 'Save my Geek →';
   $('[data-geek-controls]').disabled = saving;
   $('[data-geek-reset]').disabled = saving;
@@ -86,27 +98,29 @@ $('[data-geek-cancel]').addEventListener('click', () => {
 });
 $('[data-geek-save]').addEventListener('click', async () => {
   if (!ready || saving || careerEffects.some(effect => effect.id === draft.fx && !effects.some(item => item.id === effect.id && item.owned))) return;
+  if (window.GeekProfile?.beginCollectionWrite && !window.GeekProfile.beginCollectionWrite()) return;
   saving = true; preview(); $('[data-geek-status]').textContent = 'Saving your profile character…';
   try {
-    const response = await fetch('/api/collectibles', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'customize-avatar', customization: draft }) });
-    const payload = await response.json().catch(() => ({}));
-    if (!response.ok || !payload.collection?.customization || payload.collection.avatar?.id !== customGeekId) throw new Error(payload.error || 'Your Geek could not be saved. Try again.');
+    const payload = await saveCharacter(draft);
     edited = false; saved = normalizeGeek(payload.collection.customization); draft = { ...saved };
     window.GeekProfile?.renderCollectibles(payload);
     $('[data-geek-status]').textContent = 'Saved and equipped. Your custom Geek is now your profile character.';
   } catch (error) {
-    $('[data-geek-status]').textContent = `${error.message} Your preview is still here; it has not replaced your saved character.`;
-  } finally { saving = false; preview(); }
+    ready = false;
+    window.GeekProfile?.markCollectionUnavailable?.();
+    $('[data-geek-status]').textContent = `${error.message} Your preview is still here. Reconnect your profile to check whether the save was accepted before trying again.`;
+  } finally { saving = false; window.GeekProfile?.endCollectionWrite?.(); preview(); }
 });
 window.GeekBuilder = {
   receive(collection) {
     ready = true; effects = collection.effects || []; saved = normalizeGeek(collection.customization);
     if (!edited && !saving) draft = { ...saved };
+    if (!saving) edited = !sameDesign(draft, saved);
     if (!saving && !edited) $('[data-geek-status]').textContent = collection.avatar.id === customGeekId ? 'Your saved Geek is equipped. Make it yours below.' : 'Choose a personal Geek or a GIGA robot, then save your Geek. All starter parts are free.';
     preview();
   },
   unavailable() { ready = false; preview(); $('[data-geek-status]').textContent = 'You can preview your Geek. Reconnect your profile below before saving.'; },
-  svg: geekSvg, description: geekDescription, customGeekId
+  syncControls: preview, svg: geekSvg, description: geekDescription, customGeekId
 };
 for (const [index, preset] of presets.entries()) {
   const button = document.createElement('button'); button.type = 'button'; button.dataset.geekPreset = index;
