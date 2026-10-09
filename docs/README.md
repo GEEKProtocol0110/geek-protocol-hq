@@ -61,3 +61,5 @@ Use these terms consistently in code, documentation, and public statements:
 Geek Protocol HQ is implemented and internally verified in several areas. It is **not independently audited**.
 
 - [Player dashboard and prestige rules](PLAYER-PROGRESSION.md) — optional level-50 resets, 25 prestige ranks, preserved career, and verified standings.
+
+- [Community contributions and Hall applications](COMMUNITY-CONTRIBUTIONS.md) — fund address, private owner review, consent and public credit boundaries.

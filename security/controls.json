@@ -213,6 +213,17 @@
       "title": "Independent application and settlement audits",
       "status": "required-before-settlement",
       "evidence": ["SECURITY.md", "docs/AUDIT-SCOPE.md"]
+    },
+    {
+      "id": "GP-INV-034",
+      "title": "Private contribution applications and consented owner-reviewed public credits",
+      "status": "implemented-alpha-independent-review-required",
+      "evidence": [
+        "server/community-contributions.js",
+        "server/operations.js",
+        "tests/community-contributions.test.js",
+        "docs/COMMUNITY-CONTRIBUTIONS.md"
+      ]
     }
   ]
 }

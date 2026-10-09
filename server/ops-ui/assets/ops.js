@@ -1,5 +1,6 @@
 import { ownerClient, escapeHtml as e, sourceLink, auditSummary } from './ops-core.js';
 import { appearancePanel } from './appearance.js';
+import { communityPanel } from './community.js';
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const roles = { cce: '/api/moderation/', payout: '/api/payout-review/', audit: '/api/audit/' };
@@ -7,6 +8,7 @@ const date = value => Number(value) > 0 ? new Date(Number(value)).toLocaleString
 const panels = [];
 let sessionReady = false;
 const appearance = appearancePanel({ isReady: () => sessionReady, onExpired: () => expireSession() });
+const community = communityPanel({ isReady: () => sessionReady, onExpired: () => expireSession() });
 const categoryNames = { kaspa: 'Kaspa', 'video-games': 'Video Games', 'science-fiction': 'Science Fiction', technology: 'Technology', movies: 'Movies', history: 'History', comics: 'Comics', 'pop-culture': 'Pop Culture' };
 const counts = window.GEEK_QUESTION_COUNTS;
 if ($('[data-bank-total]') && counts && Object.keys(categoryNames).every(id => Number.isInteger(counts[id]) && counts[id] > 0)) {
@@ -144,7 +146,7 @@ for (const root of document.querySelectorAll('[data-role]')) {
   }
   panels.push({ lock, load }); setBusy(false);
 }
-const clearViews = () => { panels.forEach(panel => panel.lock()); appearance?.lock(); overviewVersion += 1; overviewController?.abort(); if ($('[data-mfa-state]')) { $('[data-mfa-state]').textContent = 'Access not checked'; $('[data-mfa-detail]').textContent = 'Sign in to check owner protection.'; } };
+const clearViews = () => { panels.forEach(panel => panel.lock()); appearance?.lock(); community?.lock(); overviewVersion += 1; overviewController?.abort(); if ($('[data-mfa-state]')) { $('[data-mfa-state]').textContent = 'Access not checked'; $('[data-mfa-detail]').textContent = 'Sign in to check owner protection.'; } };
 const expireSession = () => { sessionReady = false; clearViews(); window.location.replace('/ops-login/'); };
 window.addEventListener('pagehide', () => { sessionReady = false; clearViews(); });
 
@@ -169,9 +171,10 @@ const checkGate = async (loadWorkspace = false) => {
     if (!response.ok || status.authenticated !== true || status.role !== 'owner') throw new Error('Owner access unavailable.');
     sessionReady = true;
     appearance?.enableRefresh();
+    community?.enableRefresh();
     if ($('[data-mfa-state]')) { $('[data-mfa-state]').textContent = status.mfaEnabled ? 'Authenticator enabled' : 'Authenticator not enabled'; $('[data-mfa-detail]').textContent = status.mfaEnabled ? 'Owner login requires your key and a one-time code. Direct role-key access is disabled.' : 'Owner access currently uses one key. Complete authenticator setup to add a second factor.'; }
     $('[data-session-state]').textContent = `Owner access · Session ends ${new Date(status.expiresAt).toLocaleTimeString()}`;
-    if (loadWorkspace) { panels.forEach(panel => panel.load()); appearance?.load(); refreshOverview(); }
+    if (loadWorkspace) { panels.forEach(panel => panel.load()); appearance?.load(); community?.load(); refreshOverview(); }
   } catch {
     sessionReady = false; clearViews();
     $('[data-session-state]').textContent = 'Owner access could not be checked.';
