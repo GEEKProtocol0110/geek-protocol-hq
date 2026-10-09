@@ -42,13 +42,19 @@ check(rewards.includes('payoutNotice'), 'payout mutations create persistent play
 check(rewards.includes('createPayoutReview'), 'higher-risk payout destinations enter private review');
 
 const identity = await text('server/identity.js');
+const identityWallet = await text('server/identity-wallet.js');
+const identityRecords = await text('server/identity-records.js');
+const playerSession = await text('server/session.js');
 check(identity.includes('kaspa.verifyMessage'), 'wallet signatures are verified on the server');
-check(identity.includes('toAddress(kaspa.NetworkType.Mainnet)'), 'public keys are bound to derived Kaspa mainnet addresses');
+check(identityWallet.includes('toAddress(kaspa.NetworkType.Mainnet)'), 'public keys are bound to derived Kaspa mainnet addresses');
 check(identity.includes('randomBytes(32)'), 'wallet challenges include a 256-bit random nonce');
 check(identity.includes("redis('GETDEL'"), 'wallet challenges and authorizations are atomically consumed');
 check(identity.includes('geek-identity-bind-v1'), 'wallet and player bindings use an atomic compare-and-set transition');
-check(identity.includes('CHALLENGE_TTL_SECONDS = 5 * 60'), 'wallet challenges expire after five minutes');
+check(identityRecords.includes('CHALLENGE_TTL_SECONDS = 5 * 60'), 'wallet challenges expire after five minutes');
 check(identity.includes("challenge.origin !== canonicalOrigin(req)"), 'wallet proofs are rechecked against the exact requesting origin');
+check(identity.includes('decodeIdentityRecord') && playerSession.includes('decodeIdentityRecord'), 'identity and linked sessions validate stored wallet records');
+check(playerSession.includes('decodeSessionRecord') && playerSession.includes('validateSessionRecord'), 'session records are validated before reads and writes');
+check(identity.includes('decodeChallengeRecord') && identity.includes('decodeAuthorizationRecord'), 'one-time proofs and payout authorizations validate stored records');
 
 const payoutReview = await text('server/payout-review.js');
 check(payoutReview.includes('PAYOUT_REVIEW_ADMIN_TOKEN'), 'payout review uses a dedicated credential');
@@ -122,6 +128,14 @@ check(headerValues.some((item) => item.startsWith('Content-Security-Policy:')), 
 check(headerValues.some((item) => item.startsWith('Strict-Transport-Security:')), 'HSTS is configured');
 check(headerValues.some((item) => item.startsWith('X-Frame-Options:')), 'clickjacking protection is configured');
 check(config.functions?.['api/identity.js']?.includeFiles === 'node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm', 'identity deployment includes the pinned verifier WebAssembly');
+const verifierAsset = 'node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm';
+for (const entry of ['session', 'ranked', 'lobbies', 'leaderboard', 'content', 'rewards']) {
+  const glob = config.functions?.[`api/${entry}.js`]?.includeFiles || '';
+  const included = glob.startsWith('{') && glob.endsWith('}') ? glob.slice(1, -1).split(',') : [glob];
+  check(included.includes(verifierAsset), `${entry} deployment includes the shared identity verifier WebAssembly`);
+}
+check(config.functions?.['api/session.js']?.includeFiles?.includes('server/ops-ui/**'), 'session deployment retains private operator UI assets');
+for (const entry of ['ranked', 'lobbies']) check(config.functions?.[`api/${entry}.js`]?.includeFiles?.includes('server/questions/**'), `${entry} deployment retains private question banks`);
 
 const packageJson = JSON.parse(await text('package.json'));
 const packageLock = JSON.parse(await text('package-lock.json'));

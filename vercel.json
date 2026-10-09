@@ -108,13 +108,22 @@
       "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
     },
     "api/ranked.js": {
-      "includeFiles": "server/questions/**"
+      "includeFiles": "{server/questions/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}"
     },
     "api/lobbies.js": {
-      "includeFiles": "server/questions/**"
+      "includeFiles": "{server/questions/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}"
     },
     "api/session.js": {
-      "includeFiles": "server/ops-ui/**"
+      "includeFiles": "{server/ops-ui/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}"
+    },
+    "api/leaderboard.js": {
+      "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
+    },
+    "api/content.js": {
+      "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
+    },
+    "api/rewards.js": {
+      "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
     }
   },
   "headers": [
