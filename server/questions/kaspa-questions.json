@@ -7,9 +7,9 @@
     "conceptCount": 176,
     "category": "Kaspa",
     "difficultyDistribution": {
-      "easy": 64,
-      "medium": 71,
-      "hard": 41
+      "easy": 68,
+      "medium": 70,
+      "hard": 38
     },
     "correctIndexDistribution": {
       "1": 45,
@@ -1086,7 +1086,7 @@
       "id": "KASPA-0626",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What is KRC-20?",
+      "prompt": "What kind of tokens does the KRC-20 protocol describe on Kaspa?",
       "options": [
         "A hardware wallet",
         "Kaspa's mining algorithm",
@@ -1095,22 +1095,22 @@
       ],
       "correctIndex": 2,
       "difficulty": "easy",
-      "funFact": "KRC-20 defines deploy, mint, and transfer operations.",
+      "funFact": "KRC-20 operations describe tokens separately from native KAS. An indexer interprets those operations and tracks token balances.",
       "tags": [
         "kaspa",
         "krc20"
       ],
       "volatile": false,
-      "source": "https://github.com/kasplex/sdk-kiwi",
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/types/interface.ts",
       "reviewStatus": "source-checked",
       "conceptId": "KASPA-0626",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KASPA-0627",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What does fungible mean?",
+      "prompt": "What does fungible mean for units of the same token?",
       "options": [
         "Units are mutually interchangeable",
         "Every unit is unique",
@@ -1119,22 +1119,22 @@
       ],
       "correctIndex": 0,
       "difficulty": "easy",
-      "funFact": "Currency-like tokens are fungible.",
+      "funFact": "Units of the same fungible token are interchangeable. That does not mean units from different token deployments are interchangeable.",
       "tags": [
         "kaspa",
         "fungible"
       ],
       "volatile": false,
-      "source": "https://github.com/kasplex/sdk-kiwi",
+      "source": "https://ethereum.org/developers/docs/standards/tokens/erc-20/",
       "reviewStatus": "source-checked",
       "conceptId": "KASPA-0627",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KASPA-0628",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What is a KRC-20 ticker?",
+      "prompt": "In a ticker-based KRC-20 deployment, what does the ticker represent?",
       "options": [
         "The token's identifying symbol",
         "A private key",
@@ -1143,22 +1143,22 @@
       ],
       "correctIndex": 0,
       "difficulty": "easy",
-      "funFact": "A ticker identifies a KRC-20 token deployment.",
+      "funFact": "A ticker is a token lookup label. It is not a private key or proof that a project is legitimate; deployment modes can also use transaction-based identifiers.",
       "tags": [
         "kaspa",
         "ticker"
       ],
       "volatile": false,
-      "source": "https://github.com/kasplex/sdk-kiwi",
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
       "reviewStatus": "source-checked",
       "conceptId": "KASPA-0628",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KASPA-0629",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Which KRC-20 operation establishes a token's parameters?",
+      "prompt": "Which KRC-20 operation initially defines a token deployment's parameters?",
       "options": [
         "list",
         "deploy",
@@ -1166,23 +1166,23 @@
         "transfer"
       ],
       "correctIndex": 1,
-      "difficulty": "medium",
-      "funFact": "Deployment defines properties such as ticker and supply limits.",
+      "difficulty": "easy",
+      "funFact": "For a mint-mode deployment, deploy records parameters including the ticker, maximum supply, mint limit and decimal precision.",
       "tags": [
         "kaspa",
         "deploy"
       ],
       "volatile": false,
-      "source": "https://github.com/kasplex/sdk-kiwi",
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
       "reviewStatus": "source-checked",
       "conceptId": "KASPA-0629",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KASPA-0630",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Which KRC-20 operation creates units under a deployment's rules?",
+      "prompt": "For a mint-mode KRC-20 deployment, which operation creates additional units within its rules?",
       "options": [
         "transfer",
         "mint",
@@ -1190,23 +1190,23 @@
         "deploy"
       ],
       "correctIndex": 1,
-      "difficulty": "medium",
-      "funFact": "Minting must follow the deployment parameters.",
+      "difficulty": "easy",
+      "funFact": "Mint reads the existing deployment and its mint limit. The cited executor rejects a missing deployment or an incompatible mode and checks the remaining supply.",
       "tags": [
         "kaspa",
         "mint"
       ],
       "volatile": false,
-      "source": "https://github.com/kasplex/sdk-kiwi",
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_mint.go",
       "reviewStatus": "source-checked",
       "conceptId": "KASPA-0630",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KASPA-0631",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Which KRC-20 operation moves token units to another address?",
+      "prompt": "Which KRC-20 operation requests moving existing token units between addresses?",
       "options": [
         "mine",
         "index",
@@ -1215,22 +1215,22 @@
       ],
       "correctIndex": 2,
       "difficulty": "easy",
-      "funFact": "Transfers change indexed token ownership.",
+      "funFact": "A valid transfer reduces the sender's indexed token balance and increases the recipient's. It does not create a new deployment or mine native KAS.",
       "tags": [
         "kaspa",
         "transfer"
       ],
       "volatile": false,
-      "source": "https://github.com/kasplex/sdk-kiwi",
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_transfer.go",
       "reviewStatus": "source-checked",
       "conceptId": "KASPA-0631",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KASPA-0632",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What does a KRC-20 indexer do?",
+      "prompt": "What role does a KRC-20 indexer perform for token applications?",
       "options": [
         "Guarantees token prices",
         "Controls Kaspa consensus",
@@ -1238,23 +1238,23 @@
         "Stores users' seed phrases"
       ],
       "correctIndex": 2,
-      "difficulty": "hard",
-      "funFact": "Applications rely on consistent indexing of protocol data.",
+      "difficulty": "medium",
+      "funFact": "The indexer applies token rules to operation data and maintains derived balances. Token interpretation is distinct from Kaspa nodes validating native transactions.",
       "tags": [
         "kaspa",
         "indexer"
       ],
       "volatile": false,
-      "source": "https://github.com/kasplex/sdk-kiwi",
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/explorer/scan.go",
       "reviewStatus": "source-checked",
       "conceptId": "KASPA-0632",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KASPA-0633",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Is a KRC-20 token the same thing as native KAS?",
+      "prompt": "Does a KRC-20 token represent the same asset as native KAS?",
       "options": [
         "No, KAS is the native coin and KRC-20 is a token protocol",
         "No, because KAS is proof of stake",
@@ -1262,23 +1262,23 @@
         "Yes, every ticker is KAS"
       ],
       "correctIndex": 0,
-      "difficulty": "medium",
-      "funFact": "Native KAS pays network fees; tokens are interpreted separately.",
+      "difficulty": "easy",
+      "funFact": "Native KAS and indexed KRC-20 token balances are separate assets. Holding token units does not replace the KAS needed to pay native transaction costs.",
       "tags": [
         "kaspa",
         "native"
       ],
       "volatile": false,
-      "source": "https://github.com/kasplex/sdk-kiwi",
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_transfer.go",
       "reviewStatus": "source-checked",
       "conceptId": "KASPA-0633",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KASPA-0634",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What should users verify before interacting with a KRC-20 token?",
+      "prompt": "Which information helps identify the intended KRC-20 token before using it?",
       "options": [
         "The exact ticker/deployment and trusted source information",
         "Only its name similarity",
@@ -1287,22 +1287,22 @@
       ],
       "correctIndex": 0,
       "difficulty": "easy",
-      "funFact": "Imitation tickers and misleading links are common token risks.",
+      "funFact": "Match the deployment identifier with the project's official information. A similar name or logo alone does not establish which deployment you are using.",
       "tags": [
         "kaspa",
         "risk"
       ],
-      "volatile": true,
-      "source": "https://github.com/kasplex/sdk-kiwi",
+      "volatile": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
       "reviewStatus": "source-checked",
       "conceptId": "KASPA-0634",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KASPA-0635",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What is a blockchain Layer 2?",
+      "prompt": "Which description best identifies a blockchain Layer 2 scaling system?",
       "options": [
         "A larger mining ASIC",
         "A second seed phrase",
@@ -1311,16 +1311,16 @@
       ],
       "correctIndex": 2,
       "difficulty": "hard",
-      "funFact": "Layer 2 systems move execution off a base chain while relying on it for settlement or security. Designs have different trust assumptions; an application token protocol alone is not automatically a Layer 2.",
+      "funFact": "Layer 2 systems execute transactions outside the base chain and rely on it for security or settlement. A token format by itself does not establish such a system.",
       "tags": [
         "kaspa",
         "l2"
       ],
-      "volatile": true,
+      "volatile": false,
       "source": "https://ethereum.org/developers/docs/scaling/",
       "reviewStatus": "source-checked",
       "conceptId": "KASPA-0635",
-      "reviewedAt": "2026-10-01"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "KASPA-0751",
@@ -4199,7 +4199,7 @@
       "conceptId": "KRC20-2026-001",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Which protocol identifier appears in the p field of Kasplex’s KRC-20 operation data?",
+      "prompt": "In the cited Kiwi example, what value identifies the protocol in the p field?",
       "options": [
         "erc-20",
         "krc-20",
@@ -4208,7 +4208,7 @@
       ],
       "correctIndex": 1,
       "difficulty": "easy",
-      "funFact": "The Kiwi example sets p to krc-20; the op field separately identifies the requested action.",
+      "funFact": "The example uses p = krc-20 to identify the protocol. Its separate op field names the action, such as mint.",
       "tags": [
         "kaspa",
         "krc-20",
@@ -4226,7 +4226,7 @@
       "conceptId": "KRC20-2026-002",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "In Kiwi’s KRC-20 transferByPayload method, which field specifies the quantity to transfer?",
+      "prompt": "In the cited Kiwi transferByPayload method, which field supplies the token quantity?",
       "options": [
         "to",
         "memo",
@@ -4235,7 +4235,7 @@
       ],
       "correctIndex": 2,
       "difficulty": "medium",
-      "funFact": "The method requires amt for the quantity and to for the recipient. This question describes the cited Kiwi snapshot.",
+      "funFact": "The method requires amt for the token quantity. This is distinct from the native KAS fee argument passed to transaction construction.",
       "tags": [
         "kaspa",
         "krc-20",
@@ -4253,7 +4253,7 @@
       "conceptId": "KRC20-2026-003",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Which field supplies the recipient in Kiwi’s KRC-20 transferByPayload method?",
+      "prompt": "In the cited Kiwi transferByPayload method, which field supplies the recipient?",
       "options": [
         "to",
         "dec",
@@ -4262,7 +4262,7 @@
       ],
       "correctIndex": 0,
       "difficulty": "easy",
-      "funFact": "The cited method requires a to field alongside the transfer quantity.",
+      "funFact": "The method requires to for the recipient and amt for the quantity. These field names describe the cited SDK snapshot.",
       "tags": [
         "kaspa",
         "krc-20",
@@ -4280,7 +4280,7 @@
       "conceptId": "KRC20-2026-004",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Which two stages make up Kiwi’s original P2SH KRC-20 executeOperation flow?",
+      "prompt": "Which two stages does the cited Kiwi executeOperation method use for its P2SH flow?",
       "options": [
         "Deposit and stake",
         "Register and vote",
@@ -4289,7 +4289,7 @@
       ],
       "correctIndex": 3,
       "difficulty": "medium",
-      "funFact": "The original flow submits a commit transaction and then spends its script output in a reveal transaction. The SDK also exposes a separate direct-payload path.",
+      "funFact": "The commit creates the script output; the reveal spends it with the operation script. The SDK's separate direct-payload method is a different construction path.",
       "tags": [
         "kaspa",
         "krc-20",
@@ -4307,7 +4307,7 @@
       "conceptId": "KRC20-2026-005",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What compatibility problem does Kiwi warn about when replacing standard KRC-20 JSON with a custom wrapped payload?",
+      "prompt": "In the cited Kiwi SDK, why can a custom wrapper around KRC-20 payload data cause a problem?",
       "options": [
         "The wrapper guarantees faster finality",
         "A standard indexer may not recognize the operation",
@@ -4315,8 +4315,8 @@
         "It permanently increases the token supply"
       ],
       "correctIndex": 1,
-      "difficulty": "hard",
-      "funFact": "A transaction carrying data is not enough: the interpreter must recognize its format. This warning is attached to the direct-payload method in the cited SDK.",
+      "difficulty": "medium",
+      "funFact": "The SDK warns that a standard indexer may not recognize a custom wrapped payload. A submitted Kaspa transaction alone does not prove that an indexer accepted a token operation.",
       "tags": [
         "kaspa",
         "krc-20",
@@ -4334,7 +4334,7 @@
       "conceptId": "KRC20-2026-006",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "At the cited Kiwi snapshot, what range does validateDec allow for KRC-20 decimal precision?",
+      "prompt": "For a numeric dec value, what inclusive bounds does the cited Kiwi validateDec check use?",
       "options": [
         "1 through 6",
         "0 through 8",
@@ -4343,7 +4343,7 @@
       ],
       "correctIndex": 2,
       "difficulty": "hard",
-      "funFact": "The SDK’s validator rejects dec values below zero or above eighteen. This is a snapshot-specific implementation question.",
+      "funFact": "The snapshot checks numeric values against 0 and 18. This range check alone does not prove that every supplied value is a valid integer decimal setting or that an indexer will accept it.",
       "tags": [
         "kaspa",
         "krc-20",
@@ -4361,7 +4361,7 @@
       "conceptId": "KRC20-2026-007",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "For a deployment without mod, what ticker length does Kiwi’s validateTick accept at the cited snapshot?",
+      "prompt": "With no mod field, what ticker length does the cited Kiwi validateTick check require?",
       "options": [
         "4 to 6 characters",
         "1 to 3 characters",
@@ -4369,8 +4369,8 @@
         "Exactly 32 characters"
       ],
       "correctIndex": 0,
-      "difficulty": "hard",
-      "funFact": "The cited SDK checks that a tick is present and has a length from four through six. This is not a claim about every token standard.",
+      "difficulty": "medium",
+      "funFact": "The snapshot requires tick to have four through six characters when mod is absent. That length check alone is not a complete token-deployment validation.",
       "tags": [
         "kaspa",
         "krc-20",
@@ -4388,7 +4388,7 @@
       "conceptId": "KRC20-2026-008",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Which KaspaCom surface is intended for browsing KRC-20 token markets?",
+      "prompt": "Which KaspaCom page is intended for browsing KRC-20 token markets?",
       "options": [
         "A proof-of-work mining pool",
         "A hardware-wallet recovery form",
@@ -4397,7 +4397,7 @@
       ],
       "correctIndex": 3,
       "difficulty": "easy",
-      "funFact": "KaspaCom provides a token marketplace. Exploring a project is separate from deciding to transact with it.",
+      "funFact": "KaspaCom identifies this page as its KRC-20 token marketplace, where visitors can explore token markets.",
       "tags": [
         "kaspa",
         "krc-20",
@@ -4415,7 +4415,7 @@
       "conceptId": "KRC20-2026-009",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Which community project describes Kat Bot as a Kaspa and KRC-20 wallet for Discord?",
+      "prompt": "Which project describes Kat Bot as a Kaspa and KRC-20 wallet for Discord?",
       "options": [
         "Kango",
         "Nacho the Kat",
@@ -4423,8 +4423,8 @@
         "Geek Protocol"
       ],
       "correctIndex": 1,
-      "difficulty": "medium",
-      "funFact": "Nacho’s project site describes Kat Bot as a Discord wallet with Kaspa and KRC-20 functions. Product details can change; the source was checked on the stated review date.",
+      "difficulty": "easy",
+      "funFact": "Nacho the Kat's site describes Kat Bot as a Discord wallet for Kaspa and KRC-20, developed in collaboration with KSPR. This is the project's published product description.",
       "tags": [
         "kaspa",
         "krc-20",
@@ -4442,7 +4442,7 @@
       "conceptId": "KRC20-2026-010",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "What distinctive feature belongs to the cat character in Kaspy’s own project story?",
+      "prompt": "In Kaspy's own project story, what distinctive feature does its cat have?",
       "options": [
         "It has wings",
         "It is made of gold",
@@ -4451,7 +4451,7 @@
       ],
       "correctIndex": 2,
       "difficulty": "easy",
-      "funFact": "Kaspy presents its character as a three-legged cat and shares memes and games around that story. This question concerns project lore.",
+      "funFact": "Kaspy's project story describes a three-legged cat that inspired its meme-token character. The question concerns that project's lore.",
       "tags": [
         "kaspa",
         "krc-20",

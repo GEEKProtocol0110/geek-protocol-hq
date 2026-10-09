@@ -60,3 +60,7 @@ Ten original source-checked questions extend the Kaspa category from 184 to 194 
 Seven implementation questions cite Kasplex Kiwi commit `06dc75ea1066aba4d78eb32711690f6f123a9575` (README-Node.md, src/krc20.ts and src/check.ts); implementation-specific prompts explicitly identify that SDK or snapshot. Three community questions cite KaspaCom, Nacho’s Kat Bot description and Kaspy’s project story. Product-capability questions are marked volatile; no prices, market rankings or investment predictions are included. Quiz inclusion does not establish partnership or support for Geek.
 
 The original doubling milestone remains historical. `postReviewAdditions` records subsequent authored content separately from `addedQuestions`; verification checks both counts and per-category accounting. Existing and retired answer keys remain intact. Difficulty is provisional editorial judgment, not empirical calibration.
+
+## Kaspa editorial follow-up — October 8, 2026
+
+A focused pass rechecks 33 existing KRC-20/Toccata questions, improves their wording and explanations, and changes ten provisional difficulty labels. Specific primary sources and individual decisions are recorded in [Kaspa Content Review](KASPA-CONTENT-REVIEW.md#focused-editorial-follow-up--october-8-2026) and its linked item-level register. Kaspa retains 194 concepts (71 easy / 82 medium / 41 hard); the site total remains 7,786. Answer options, correct indices and all retired rows are preserved. This pass does not complete the general imported-question review.
