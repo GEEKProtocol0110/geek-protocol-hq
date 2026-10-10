@@ -219,3 +219,26 @@
 .welcome-play .player-wallet>div:nth-child(2) { display:flex; }
 
 .welcome-play .welcome-cards{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:650px){.welcome-play .welcome-cards{grid-template-columns:1fr}}
+
+/* Free products share the existing calm, responsive presentation. */
+.free-tools>p { max-width:680px; color:var(--welcome-copy); line-height:1.7; }
+.free-tools-cards { grid-template-columns:repeat(2,minmax(0,1fr)); margin-bottom:1.25rem; }
+.tools-main { max-width:1120px; margin:auto; padding:120px 2rem 3rem; }
+.tools-intro { max-width:720px; margin-bottom:2.5rem; }
+.tools-intro h1 { margin:.75rem 0; }
+.tools-main p,.tools-steps { color:var(--welcome-copy); line-height:1.75; }
+.tools-product { border:1px solid var(--welcome-line); border-radius:16px; background:var(--welcome-panel); padding:2rem; margin-top:1.5rem; scroll-margin-top:90px; }
+.tools-product h2 { font-size:2rem; margin:.6rem 0 1rem; }
+.tools-product h3 { font-size:1.25rem; margin:2rem 0 .75rem; }
+.tools-product .hero-actions { flex-wrap:wrap; margin:1.5rem 0; }
+.tools-product .tools-note { font-size:.9rem; }
+.tools-detail { padding:0 1.5rem 1.5rem; }
+.tools-steps { padding-left:1.5rem; }
+.tools-steps li { padding-left:.25rem; margin:.75rem 0; }
+.welcome-page .nav-more-panel { max-height:calc(100dvh - 100px); overflow-y:auto; }
+@media(max-width:650px) {
+  .free-tools-cards { grid-template-columns:1fr; }
+  .tools-main { padding:100px 1rem 2rem; }
+  .tools-product { padding:1.25rem; }
+  .tools-product .hero-actions .button { width:100%; }
+}
