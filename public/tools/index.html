@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0c1317" />
+    <title>Free Kaspa Tools — Geek Mini &amp; Kaspa Live Widget</title>
+    <meta name="description" content="Play Geek Mini, share a Kaspa challenge, or set up the free Kaspa Live Widget for Android. No wallet required." />
+    <link rel="canonical" href="https://www.geekprotocol.xyz/tools/" />
+    <link rel="icon" type="image/png" href="/assets/geek-protocol-logo.png" />
+    <meta property="og:title" content="Free tools from Geek Protocol" />
+    <meta property="og:description" content="Quick Kaspa quizzes and a neon glass Android widget. Find play links, sharing options and installation help." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.geekprotocol.xyz/tools/" />
+    <meta property="og:image" content="https://www.geekprotocol.xyz/assets/kaspa-culture.png" />
+    <meta property="og:image:alt" content="GIGA beside the Kaspa emblem" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="stylesheet" href="/assets/welcome.css" />
+    <script defer src="/assets/site.js"></script>
+  </head>
+  <body class="welcome-page tools-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="Geek Protocol home">
+        <img src="/assets/geek-protocol-logo.png" alt="" width="48" height="48" />
+        <span>GEEK<span class="brand-mark">//</span>PROTOCOL</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle>
+        <span></span><span></span><span></span>
+        <span class="sr-only">Open menu</span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="/study/">Learn</a><a href="/quest/">Adventure</a><a href="/play/?mode=gauntlet#timed-games">Gauntlet</a><a href="/play/">Play</a><a href="/profile/">My HQ</a><a href="/sign-in/">Sign in</a><details class="nav-more"><summary>More</summary><div class="nav-more-panel"><a href="https://geek-mini.vercel.app/">Geek Mini ↗</a><a href="/tools/#kaspa-widget">Free Kaspa widget</a><a href="/kaspa/">Kaspa field guide</a><a href="/memory/">Memory Grid</a><a href="/duel/">Duel with a friend or A.C.E.</a><a href="/challenges/">Weekly challenges</a><a href="/royale/">Trivia Royale · live rooms</a><a href="https://geekjr.xyz/">Geek Jr · for younger children ↗</a><a href="/thanks/">Hall of Thanks</a><a href="/#project-links">About the project</a></div></details></nav>
+    </header>
+    <main id="main" class="tools-main">
+      <div class="tools-intro">
+        <span class="section-kicker">Made for the Kaspa community</span>
+        <h1>Free tools from Geek.</h1>
+        <p>A small way to learn. A new view of Kaspa. Open these tools without a wallet, GEEK holdings or an HQ account.</p>
+      </div>
+      <section class="tools-product" id="geek-mini" aria-labelledby="mini-title">
+        <span class="section-kicker">Play in your browser · Free</span>
+        <h2 id="mini-title">Geek Mini</h2>
+        <p>Make a little time for Kaspa knowledge. Choose five questions in the Daily Challenge or up to ten in a 30-second Speed Round. Each answer comes with an explanation and a source to explore.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://geek-mini.vercel.app/daily">Play the Daily Challenge ↗</a>
+          <a class="button button-secondary" href="https://geek-mini.vercel.app/speed">Try a Speed Round ↗</a>
+        </div>
+        <p class="tools-note">Practice scores only. Geek Mini does not pay tokens.</p>
+        <details class="welcome-panel">
+          <summary><span><b>Help a friend discover Geek</b><small>Share a challenge or add a card to your website.</small></span></summary>
+          <div class="tools-detail">
+            <p>On the Geek Mini homepage, choose Daily or Speed in the supporter section. Share the challenge link, or copy its embed code to show a branded game card on your website.</p>
+            <p>No account, wallet or referral code needed. The card opens Geek Mini so visitors can play.</p>
+            <a class="text-link" href="https://geek-mini.vercel.app/">Open Geek Mini sharing options ↗</a>
+          </div>
+        </details>
+      </section>
+      <section class="tools-product" id="kaspa-widget" aria-labelledby="widget-title">
+        <span class="section-kicker">Android 8.0+ · Free &amp; open source</span>
+        <h2 id="widget-title">Kaspa Live Widget</h2>
+        <p>Bring Kaspa to your home screen with a neon price chart behind frosted glass. Choose the compact 2×2 widget or the expanded 4×4 view, with time, KAS price and DAA score. The expanded view adds observed BPS and network hashrate.</p>
+        <p>Pick USD, EUR or GBP, dark or light appearance, and a 15-, 30- or 60-minute refresh interval. Cached readings stay visible with their age when a feed is unavailable.</p>
+        <p class="tools-note"><strong>Test build available:</strong> a signed public release is not published yet. The current APK is a debug build from GitHub and requires a GitHub account to download. It installs as a separate test app.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://github.com/GEEKProtocol0110/kaspa-live-widget/actions/workflows/ci.yml?query=branch%3Amain">Find the latest test APK ↗</a>
+          <a class="button button-secondary" href="https://github.com/GEEKProtocol0110/kaspa-live-widget/releases">Check public releases ↗</a>
+        </div>
+        <h3>Install on Android</h3>
+        <ol class="tools-steps">
+          <li>Sign in to GitHub. Open the latest successful CI run on <strong>main</strong> using the test APK link above.</li>
+          <li>Under <strong>Artifacts</strong>, download <strong>debug-apk</strong>. Extract the ZIP to find the APK. Artifacts expire after seven days; use a recent successful run.</li>
+          <li>Open the APK on your Android phone. When prompted, allow that browser or file manager to install it.</li>
+          <li>Open <strong>Kaspa Live Widget</strong>, choose your settings, then tap <strong>Save &amp; add</strong>. Or long-press the home screen → <strong>Widgets</strong> → add <strong>Kaspa 2×2</strong> or <strong>Kaspa 4×4</strong>.</li>
+        </ol>
+        <p class="tools-note">Reads public network data. No wallet connection, seed phrase or private key needed. Android may delay scheduled background updates; tap the widget to refresh.</p>
+        <a class="text-link" href="https://github.com/GEEKProtocol0110/kaspa-live-widget#installation">Full setup guide &amp; source code ↗</a>
+      </section>
+    </main>
+    <footer class="welcome-simple-footer" aria-label="More places to explore">
+      <a href="/">Geek Protocol HQ</a><a href="https://geek-mini.vercel.app/">Geek Mini ↗</a><a href="https://geekjr.xyz/">Geek Jr ↗</a><a href="/security/">Security</a>
+    </footer>
+  </body>
+</html>
