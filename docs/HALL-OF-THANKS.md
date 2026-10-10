@@ -26,6 +26,12 @@ Home includes a visible hall invitation. Existing public More menus and About Ge
 
 Browser access was previously declined and is not retried for this work. Validate local assets/links, heading/ID structure, sitemap, JavaScript syntax and existing repository checks. Rendered responsive layout and physical-device acceptance remain outstanding.
 
+### Link preview — October 10, 2026
+
+The Hall's Open Graph and Twitter image now use `/assets/hall-of-thanks-share-v1.png`, a dedicated 1200×630 card rather than the 200×200 site logo. It pairs the existing default gold GIGA vector character from `public/assets/geek-avatar.js` with the Hall title and community dedication. Editable, self-contained source is in `docs/assets/hall-of-thanks-share.svg`; export it at its declared dimensions as PNG. The page declares image type, dimensions and descriptive alt text plus Twitter's large-image card. This adds no page scripts or external assets.
+
+Use a new versioned image filename for future replacements and update both image URLs together. Link-preview services can retain cached cards in existing messages; a newly shared URL may still be subject to the service's cache. Do not promise that old messages will update. The PNG was visually inspected and its dimensions and metadata targets checked; actual messaging-app preview refresh remains outside repository verification.
+
 ## KRC-20 community and project links — October 8, 2026
 
 The ecosystem section now thanks the whole KRC-20 community, links the KaspaCom marketplace and KasLens directory, and acknowledges three projects for their public ecosystem contributions. This is an initial selection, not a ranking or an exhaustive directory. These cards do not assert that the project teams support, sponsor or partner with Geek.
