@@ -52,7 +52,7 @@ See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness
 | --- | --- |
 | **Learn / Study** | Kaspa 101 field guide plus eight guided lessons, three practice levels, and private saved concept feedback |
 | **Play** | Ten-round Geek Gauntlet, server-owned Daily/Speed, and free unranked [Memory Grid](https://www.geekprotocol.xyz/memory/) |
-| **[Free tools](https://www.geekprotocol.xyz/tools/)** | Geek Mini browser quizzes and supporter sharing, plus Kaspa Live Widget Android test-build installation help |
+| **[Free tools](https://www.geekprotocol.xyz/tools/)** | Geek Mini browser quizzes and supporter sharing, plus the signed Kaspa Live Widget Android download and installation help |
 | **Daily vault** | One visible cosmetic seal per UTC day, private collection, and atomic claim receipts |
 | **Challenges** | Shared Weekly Signal and Monthly Circuit with one attempt per UTC period and separate verified standings |
 | **Lobbies** | Active seats, shareable rooms, and host-started ten-question shared practice rounds with server-scored standings |
