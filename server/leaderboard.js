@@ -1,5 +1,6 @@
 import { parseStoredJson, pipeline, redis } from './redis.js';
 import { playerIdFor } from './session.js';
+import { parseProfile } from './profile.js';
 import { deriveProgression } from './progression.js';
 import { prestigeKeyFor, migrateLegacyPrestige } from './prestige-state.js';
 
@@ -19,9 +20,8 @@ export const listLeaderboard = async (category, mode = 'gauntlet', limit = 10) =
   const profiles = await pipeline(ids.flatMap(id => [['GET', `geek:profile:${id}`], ['GET', prestigeKeyFor(id)]]));
   return ids.map((id, index) => {
     const details = parseStoredJson(meta[index]) || {};
-    const profile = parseStoredJson(profiles[index * 2]) || {};
     let progression = null;
-    try { progression = deriveProgression({ ...profile, prestigeState: parseStoredJson(profiles[index * 2 + 1]) || migrateLegacyPrestige(profile) }); } catch { /* A damaged rank must not fabricate progression. */ }
+    try { if (profiles[index * 2] === null) throw new Error('PROFILE_STATE_INVALID'); const profile = parseProfile(profiles[index * 2]); progression = deriveProgression({ ...profile, prestigeState: parseStoredJson(profiles[index * 2 + 1]) || migrateLegacyPrestige(profile) }); } catch { /* A damaged rank must not fabricate progression. */ }
     return {
       rank: Number(ranks[index]) + 1,
       name: details.name || 'Guest Geek',

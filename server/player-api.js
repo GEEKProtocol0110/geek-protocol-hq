@@ -1,9 +1,9 @@
 import { customGeekId, normalizeGeek, careerEffects, unlockedGeekEffects } from '../public/assets/geek-avatar.js';
 import { avatarCatalog, collectibleProfile } from './collectibles.js';
 import { clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from './http.js';
-import { loadProfile, saveProfile, saveAvatarWithAudit } from './profile.js';
+import { loadProfile, profileJson, profileKeyFor, saveAvatarWithAudit } from './profile.js';
 import { buildJourneyProfile, deriveProgression } from './progression.js';
-import { rateLimit } from './redis.js';
+import { rateLimit, redis } from './redis.js';
 import { playerIdFor, requireSession } from './session.js';
 import { acceptStickerTrade, cancelStickerTrade, createStickerTrade, listStickerTrades } from './sticker-trades.js';
 
@@ -58,11 +58,11 @@ export const collectiblesHandler = async (req, res) => {
       await saveAvatarWithAudit(playerId, customGeekId, customization);
     } else if (action === 'create-trade') {
       const profile = await loadProfile(playerId);
-      await saveProfile(playerId, profile);
+      await redis('SET', profileKeyFor(playerId), profileJson(profile), 'NX');
       await createStickerTrade({ playerId, sellerName: session.name, giveSticker: body.giveSticker, giveQuantity: body.giveQuantity, wantSticker: body.wantSticker, wantQuantity: body.wantQuantity });
     } else if (action === 'accept-trade') {
       const profile = await loadProfile(playerId);
-      await saveProfile(playerId, profile);
+      await redis('SET', profileKeyFor(playerId), profileJson(profile), 'NX');
       await acceptStickerTrade({ playerId, buyerName: session.name, tradeId: body.tradeId });
     } else if (action === 'cancel-trade') {
       await cancelStickerTrade({ playerId, tradeId: body.tradeId });

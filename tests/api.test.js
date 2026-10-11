@@ -174,6 +174,24 @@ const execute = (command) => {
     return withScores ? entries.flatMap(([member, score]) => [member, String(score)]) : entries.map(([member]) => member);
   }
   if (name === 'EVAL') {
+    if (String(args[0]).includes('geek-profile-audit-cas-v1')) {
+      const count = Number(args[1]), [profileKey, prestigeKey] = args.slice(2, 2 + count);
+      const [previous, prestigePrevious, next, commands] = args.slice(2 + count);
+      if ((strings.get(profileKey) || '') !== previous || (strings.get(prestigeKey) || '') !== prestigePrevious) return 0;
+      strings.set(profileKey, next); JSON.parse(commands).forEach(command => execute(command)); return 1;
+    }
+    if (String(args[0]).includes('geek-ranked-commit-v1')) {
+      const [runKey, profileKey, prestigeKey, eventKey, auditIndex, dailyKey, activeKey] = args.slice(2, 9);
+      const [runPrevious, profilePrevious, prestigePrevious, runNext, profileNext, ttl, changed, daily, record, sequence, eventId, active] = args.slice(9);
+      if ((strings.get(runKey) || '') !== runPrevious || (strings.get(profileKey) || '') !== profilePrevious || (strings.get(prestigeKey) || '') !== prestigePrevious) return 0;
+      if (daily && strings.has(dailyKey)) return -1;
+      strings.set(runKey, runNext);
+      if (changed === '1') strings.set(profileKey, profileNext);
+      if (daily) strings.set(dailyKey, daily);
+      if (active) strings.set(activeKey, active);
+      if (record) { execute(['SET', eventKey, record, 'NX']); execute(['ZADD', auditIndex, sequence, eventId]); }
+      return 1;
+    }
     if (String(args[0]).includes('geek-prestige-v1')) {
       const [profileKey, stateKey, eventKey, auditIndex, previous, statePrevious, next, record, sequence, eventId] = args.slice(2);
       if (avatarRace) { const update = avatarRace; avatarRace = null; update(profileKey); }

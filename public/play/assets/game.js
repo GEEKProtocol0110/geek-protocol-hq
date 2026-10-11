@@ -45,10 +45,13 @@
   let profile = { balance: 0, xp: 0, bestRound: 0, bestScore: 0, totalRuns: 0, totalCorrect: 0, progression: { level: 1, prestige: 0 } };
   let run = null;
   let currentQuestion = null;
-  let timerId = null;
+  let timerId = null, transitionTimer = null;
   let deadline = 0;
   let timerSeconds = TIMER_SECONDS;
-  let locked = false;
+  let locked = false, requestBusy = false, recoveryNeeded = false;
+  const savedRunKey = 'geek_hq_ranked_run_v1';
+  const rememberRun = id => { try { id ? localStorage.setItem(savedRunKey, id) : localStorage.removeItem(savedRunKey); } catch { /* Storage is optional; the current visit still works. */ } };
+  const readSavedRun = () => { try { const id = localStorage.getItem(savedRunKey); return id === 'pending' || /^[a-f0-9]{40}$/.test(id || '') ? id : null; } catch { return null; } };
 
   const elements = {
     screens: $$('.screen'), level: $('[data-level]'), prestige: $('[data-prestige]'), xp: $('[data-xp]'), balance: $('[data-balance]'), ladder: $('[data-ladder]'),
@@ -68,18 +71,16 @@
   };
 
   const api = async (path, options = {}) => {
-    const response = await fetch(path, {
-      credentials: 'same-origin',
-      headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
-      ...options
-    });
-    const payload = await response.json().catch(() => ({}));
-    if (!response.ok) {
-      const error = new Error(payload.error || 'Ranked service unavailable.');
-      error.code = payload.code || response.status;
+    const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 15000);
+    try {
+      const response = await fetch(path, { credentials: 'same-origin', headers: { 'Content-Type': 'application/json', ...(options.headers || {}) }, ...options, signal: controller.signal });
+      const payload = await response.json();
+      if (!response.ok) { const error = new Error(payload.error || 'Ranked service unavailable.'); error.code = payload.code || response.status; throw error; }
+      return payload;
+    } catch (error) {
+      if (controller.signal.aborted) throw new Error('The game took too long to respond. Reconnect to check your saved run.');
       throw error;
-    }
-    return payload;
+    } finally { clearTimeout(timeout); }
   };
 
   const postRanked = (action, body = {}) => api('/api/ranked', { method: 'POST', body: JSON.stringify({ action, ...body }) });
@@ -99,8 +100,9 @@
   const applyServerState = (payload, resetReview = false) => {
     if (payload.profile) profile = payload.profile;
     if (payload.run) {
-      const roundAnswers = resetReview ? [] : run?.roundAnswers || [];
+      const roundAnswers = payload.run.answeredReview || (resetReview ? [] : run?.roundAnswers || []);
       run = { ...payload.run, roundAnswers };
+      rememberRun(run.id);
     }
     updateProfileUI();
   };
@@ -176,9 +178,12 @@
   };
 
   const startNewRun = async () => {
+    if (requestBusy) return;
     if (!communityReady || run) return;
+    requestBusy = true; recoveryNeeded = false; $('[data-ranked-recovery]').hidden = true;
     elements.startButton.disabled = true;
     elements.startButton.textContent = 'Getting your questions…';
+    rememberRun('pending');
     try {
       const payload = await postRanked('start', { category: activeCategory, focus: requestedFocus, mode: activeMode });
       applyServerState(payload, true);
@@ -186,9 +191,8 @@
       showQuestion(payload.question);
     } catch (error) {
       elements.localNote.innerHTML = `<b>Could not start:</b> ${escapeHtml(error.message)}`;
-      elements.startButton.disabled = false;
-      elements.startButton.innerHTML = 'Try starting again <span>→</span>';
-    }
+      showRecovery(`${error.message} Reconnect to check whether your run started before trying again.`);
+    } finally { requestBusy = false; }
   };
 
   const showQuestion = (question) => {
@@ -203,7 +207,7 @@
     elements.questionTotal.textContent = String(run.questionCount || 10);
     elements.correct.textContent = String(run.correct);
     elements.streak.textContent = `${run.streak || 0}×`;
-    elements.score.textContent = format.format(run.totalScore + run.roundScore);
+    elements.score.textContent = format.format(run.totalScore + (['question', 'awaiting-next'].includes(run.status) ? run.roundScore : 0));
     elements.questionProgress.style.width = `${((question.number - 1) / (run.questionCount || 10)) * 100}%`;
     elements.category.textContent = displayTopic(question.topic).toUpperCase();
     elements.difficulty.textContent = question.difficulty.toUpperCase();
@@ -250,12 +254,14 @@
   };
 
   const clearTimer = () => {
+    window.clearTimeout(transitionTimer); transitionTimer = null;
     if (timerId) window.clearInterval(timerId);
     timerId = null;
   };
 
   const answerQuestion = async (selectedIndex, timedOut = false) => {
-    if (locked || !currentQuestion) return;
+    if (locked || requestBusy || !currentQuestion) return;
+    requestBusy = true;
     locked = true;
     clearTimer();
     const buttons = $$('.answer', elements.answers);
@@ -270,14 +276,6 @@
         if (index === result.correctIndex) button.classList.add('correct');
         if (index === selectedIndex && !result.correct) button.classList.add('wrong');
       });
-      run.roundAnswers.push({
-        prompt: currentQuestion.prompt,
-        selected: timedOut || result.timedOut ? 'No answer' : selected,
-        answer: result.answer,
-        correct: result.correct,
-        source: result.source,
-        sourceState: result.sourceState
-      });
       if (result.correct) {
         elements.feedback.textContent = `Server verified · ${result.streak}× streak · +${format.format(result.scoreAdded)} score`;
         elements.feedback.className = 'feedback good';
@@ -288,27 +286,24 @@
       elements.ace.textContent = result.funFact || 'Answer locked by the ranked service.';
       elements.correct.textContent = String(run.correct);
       elements.streak.textContent = `${result.streak}×`;
-      elements.score.textContent = format.format(run.totalScore + run.roundScore);
+      elements.score.textContent = format.format(run.totalScore + (['question', 'awaiting-next'].includes(run.status) ? run.roundScore : 0));
       elements.questionProgress.style.width = `${Math.min(100, (currentQuestion.number / (run.questionCount || 10)) * 100)}%`;
-      window.setTimeout(() => payload.roundResult ? completeRound(payload.roundResult) : nextQuestion(), 1250);
+      transitionTimer = window.setTimeout(() => payload.roundResult ? completeRound(payload.roundResult) : nextQuestion(), 1250);
     } catch (error) {
-      locked = false;
-      buttons.forEach((button) => { button.disabled = false; });
-      elements.feedback.textContent = `${error.message} Retry before the server clock closes.`;
-      elements.feedback.className = 'feedback bad';
-      startTimer();
-    }
+      showRecovery(`${error.message} Your answer has not been confirmed. Reconnect before answering again.`);
+    } finally { requestBusy = false; }
   };
 
   const nextQuestion = async () => {
+    if (requestBusy || !run) return;
+    requestBusy = true; $('[data-ranked-next]').disabled = true;
     try {
       const payload = await postRanked('next', { runId: run.id });
       applyServerState(payload);
+      recoveryNeeded = false; $('[data-ranked-recovery]').hidden = true;
       showQuestion(payload.question);
-    } catch (error) {
-      elements.feedback.textContent = error.message;
-      elements.feedback.className = 'feedback bad';
-    }
+    } catch (error) { showRecovery(error.message); }
+    finally { requestBusy = false; $('[data-ranked-next]').disabled = false; }
   };
 
   const completeRound = (result) => {
@@ -352,36 +347,38 @@
   };
 
   const continueRun = async () => {
-    if (!run) return;
+    if (!run || requestBusy || recoveryNeeded) return;
     if (run.mode !== 'gauntlet') return finishRun(true);
     if (run.round === 10) return finishRun(true);
-    elements.continueButton.disabled = true;
+    requestBusy = true; elements.continueButton.disabled = true;
     try {
       const payload = await postRanked('continue', { runId: run.id });
       applyServerState(payload, true);
       showScreen('quiz');
       showQuestion(payload.question);
     } catch (error) {
-      elements.entryWarning.textContent = error.message;
-    }
+      showRecovery(error.message);
+    } finally { requestBusy = false; elements.continueButton.disabled = recoveryNeeded; }
   };
 
   const finishRun = async (apex = false) => {
-    if (!run) return;
+    if (!run || requestBusy || recoveryNeeded) return;
+    requestBusy = true; elements.continueButton.disabled = true; elements.cashoutButton.disabled = true;
     clearTimer();
     try {
       const payload = await postRanked('finish', { runId: run.id });
       applyServerState(payload);
       elements.boardState.textContent = payload.leaderboard?.improved ? 'NEW VERIFIED BEST' : 'SERVER VERIFIED';
       if (payload.leaderboard) renderLeaderboard(payload.leaderboard.entries);
+      rememberRun(null); $('[data-ranked-recovery]').hidden = true;
       if (apex) {
         elements.finalScore.textContent = format.format(run.totalScore);
         const quickMode = run.mode !== 'gauntlet';
-        elements.completeKicker.textContent = quickMode ? `${GAME_MODES[run.mode].name.toUpperCase()} // COMPLETE` : 'APEX PROTOCOL // COMPLETE';
-        elements.completeTitle.innerHTML = quickMode ? 'Challenge<br /><span>saved.</span>' : 'Gauntlet<br /><span>complete!</span>';
+        elements.completeKicker.textContent = quickMode ? `${GAME_MODES[run.mode].name.toUpperCase()} // COMPLETE` : run.completedRound === 10 ? 'APEX PROTOCOL // COMPLETE' : 'GAUNTLET // SAVED';
+        elements.completeTitle.innerHTML = quickMode ? 'Challenge<br /><span>saved.</span>' : run.completedRound === 10 ? 'Gauntlet<br /><span>complete!</span>' : 'Run<br /><span>saved.</span>';
         elements.completeMessage.textContent = quickMode
           ? `The server recorded this ${CATEGORY_BANKS[run.category].shortName} ${GAME_MODES[run.mode].name} score on its separate verified board.`
-          : `The server verified all 100 ${CATEGORY_BANKS[run.category].shortName} answers and recorded the completed run.`;
+          : `The server recorded your completed ${CATEGORY_BANKS[run.category].shortName} rounds. Check My HQ for career progress.`;
         showScreen('complete');
       } else {
         run = null;
@@ -389,8 +386,8 @@
         showScreen('start');
       }
     } catch (error) {
-      elements.entryWarning.textContent = error.message;
-    }
+      showRecovery(error.message);
+    } finally { requestBusy = false; elements.continueButton.disabled = recoveryNeeded; elements.cashoutButton.disabled = recoveryNeeded; }
   };
 
   const renderRoundReview = () => {
@@ -398,8 +395,54 @@
       const result = item.correct ? 'Correct' : `${item.selected === 'No answer' ? 'No answer' : `Your answer: ${item.selected}`} · Correct: ${item.answer}`;
       const source = item.source ? `<a href="${escapeHtml(item.source)}" target="_blank" rel="noreferrer">Open source ↗</a>` : '<span>No source recorded</span>';
       return `<li class="${item.correct ? 'correct-review' : 'wrong-review'}"><div><b>${index + 1}. ${escapeHtml(item.prompt)}</b><small>${escapeHtml(result)} · ${escapeHtml(item.sourceState)}</small></div>${source}</li>`;
-    }).join('');
+    }).join('') || '<li>Your last answer is saved. Earlier answers from an older run are not available for review here.</li>';
   };
+
+  const showRecovery = message => {
+    recoveryNeeded = true; locked = true; clearTimer();
+    $$('.answer', elements.answers).forEach(button => { button.disabled = true; });
+    $('[data-ranked-recovery]').hidden = false; $('[data-ranked-next]').hidden = true; $('[data-ranked-finish]').hidden = true;
+    $('[data-ranked-reconnect]').hidden = false;
+    $('[data-ranked-recovery-status]').textContent = message;
+    elements.feedback.textContent = message; elements.entryWarning.textContent = message;
+    elements.continueButton.disabled = true; elements.cashoutButton.disabled = true;
+    const panel = $('[data-ranked-recovery]'); panel.tabIndex = -1; panel.focus({ preventScroll: true }); panel.scrollIntoView({ block: 'start', behavior: 'instant' });
+  };
+  const reconnectRun = async () => {
+    const id = run?.id || readSavedRun() || (recoveryNeeded ? 'pending' : null);
+    if (!id || requestBusy) return;
+    requestBusy = true; clearTimer(); $('[data-ranked-reconnect]').disabled = true;
+    try {
+      const payload = await api(`/api/ranked?${new URLSearchParams(id === 'pending' ? { resume: '1' } : { runId: id })}`);
+      if (Object.hasOwn(GAME_MODES, payload.run?.mode)) activeMode = payload.run.mode;
+      if (Object.hasOwn(CATEGORY_BANKS, payload.run?.category)) activeCategory = payload.run.category;
+      applyServerState(payload); recoveryNeeded = false;
+      $('[data-ranked-recovery]').hidden = true; $('[data-ranked-next]').hidden = true; $('[data-ranked-finish]').hidden = true;
+      if (run.status === 'question' && payload.question) { showScreen('quiz'); showQuestion(payload.question); }
+      else if (run.status === 'between-rounds' && payload.roundResult) completeRound(payload.roundResult);
+      else if (run.status === 'awaiting-next') {
+        currentQuestion = null; locked = true; showScreen('quiz'); elements.answers.innerHTML = '';
+        elements.question.textContent = 'Your answer is saved.';
+        elements.feedback.textContent = payload.result ? `Correct answer: ${payload.result.answer}. ${payload.result.correct ? 'Your answer was correct.' : 'Read the feedback, then continue.'}` : 'Continue to your next question.';
+        elements.ace.textContent = payload.result?.funFact || '';
+        $('[data-ranked-recovery]').hidden = false; $('[data-ranked-next]').hidden = false;
+        $('[data-ranked-recovery-status]').textContent = 'Your last answer is confirmed. Continue when you’re ready.';
+      } else if (run.status === 'finished') {
+        rememberRun(null); elements.finalScore.textContent = format.format(run.totalScore);
+        elements.completeKicker.textContent = 'SERVER-SAVED RUN'; elements.completeTitle.textContent = 'Run saved.';
+        elements.completeMessage.textContent = 'Your completed rounds and career progress are saved. Confirm the leaderboard submission below or visit My HQ.';
+        showScreen('complete');
+        $('[data-ranked-recovery]').hidden = false; $('[data-ranked-finish]').hidden = false;
+        $('[data-ranked-recovery-status]').textContent = 'Your run is finished. Confirm its leaderboard submission or visit My HQ.';
+      } else throw new Error('The saved run could not be displayed. Your progress has not been reset.');
+    } catch (error) {
+      showRecovery(error.message);
+      if (error.code === 404 || error.code === 'RUN_NOT_FOUND') { rememberRun(null); run = null; recoveryNeeded = false; selectCategory(activeCategory); showScreen('start'); $('[data-ranked-reconnect]').hidden = true; }
+    } finally { requestBusy = false; $('[data-ranked-reconnect]').disabled = false; }
+  };
+  $('[data-ranked-reconnect]').addEventListener('click', reconnectRun);
+  $('[data-ranked-next]').addEventListener('click', nextQuestion);
+  $('[data-ranked-finish]').addEventListener('click', async () => { $('[data-ranked-finish]').hidden = true; $('[data-ranked-recovery]').hidden = true; await finishRun(true); });
 
   const initialize = async () => {
     selectMode(activeMode);
@@ -411,6 +454,7 @@
       communityReady = true;
       updateProfileUI();
       selectCategory(activeCategory);
+      if (readSavedRun()) { $('[data-ranked-recovery]').hidden = false; $('[data-ranked-recovery-status]').textContent = 'You have a saved run from this browser. Reconnect to check its current question or result; the server timer keeps running.'; }
     } catch (error) {
       communityReady = false;
       elements.bankStatus.textContent = 'OFFLINE';
@@ -433,7 +477,8 @@
   });
   elements.categoryButtons.forEach((button) => button.addEventListener('click', () => selectCategory(button.dataset.categoryKey)));
   $('[data-new-run]').addEventListener('click', () => {
-    run = null;
+    if (requestBusy) return;
+    run = null; recoveryNeeded = false; rememberRun(null); $('[data-ranked-recovery]').hidden = true;
     selectCategory(activeCategory);
     showScreen('start');
   });
