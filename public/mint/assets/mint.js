@@ -59,6 +59,8 @@
     }
   };
 
+  const needsActivityReview = () => Boolean(state.error || state.result && !state.result.complete && !state.result.reviewed);
+
   const canMint = () => Boolean(
     validStatus(state.status)
     && state.status.mint.open === true
@@ -69,7 +71,7 @@
     && !state.pending
     && !state.refreshing
     && !state.statusError
-    && !state.error
+    && !needsActivityReview()
   );
 
   const render = () => {
@@ -94,11 +96,12 @@
     }
 
     const connected = state.wallet?.installed && state.wallet?.connected && state.wallet?.network === MAINNET;
+    const incompleteReceipt = state.result && !state.result.complete;
     const ready = connected && validStatus(status) && mint?.open === true && !state.statusError;
     const steps = [
       ['connect', connected ? 'done' : 'current', connected ? 'Connected on Mainnet' : state.wallet?.connected ? 'Switch to Mainnet in Kasware' : 'Kasware on Mainnet'],
       ['review', connected ? state.acknowledged && ready ? 'done' : 'current' : 'waiting', state.acknowledged && ready ? 'Request reviewed' : 'Amount, address and fees'],
-      ['approve', state.pending || ready && state.acknowledged ? 'current' : state.result ? 'done' : 'waiting', state.phase === 'awaiting-approval' ? 'Waiting for your decision' : state.result && !state.acknowledged ? 'Submitted · check reveal' : 'Only when you choose']
+      ['approve', state.pending || ready && state.acknowledged ? 'current' : incompleteReceipt ? 'current' : state.result ? 'done' : 'waiting', state.phase === 'awaiting-approval' ? 'Waiting for your decision' : incompleteReceipt ? 'Check wallet activity' : state.result && !state.acknowledged ? 'Submitted · check reveal' : 'Only when you choose']
     ];
     for (const [name, stepState, label] of steps) {
       const element = byId(`mint-step-${name}`);
@@ -113,6 +116,7 @@
     const next = state.pending
       ? state.phase === 'awaiting-approval' ? 'Open Kasware to review the final cost. Approve or cancel there.' : 'Checking live supply and your selected wallet…'
       : state.error ? 'Review your wallet activity before resetting this request.'
+      : incompleteReceipt ? 'Kasware finished the request without a complete receipt. Check wallet activity for the outcome before another mint.'
       : state.statusError ? 'Live supply is unavailable. Minting will resume here after a valid status check.'
       : mint && !mint.open ? 'The mint is closed. A wallet request cannot be started.'
       : !state.wallet?.installed ? 'Open this page in a browser with Kasware installed, then connect your wallet.'
@@ -127,7 +131,7 @@
     const refresh = byId('mint-refresh');
     if (refresh) { refresh.disabled = state.refreshing || state.pending; refresh.textContent = state.refreshing ? 'Checking…' : 'Refresh status'; }
     const retry = byId('mint-retry');
-    if (retry) retry.hidden = !state.error || state.pending;
+    if (retry) retry.hidden = !needsActivityReview() || state.pending;
 
     const button = byId('mint-submit');
     if (button) {
@@ -140,6 +144,8 @@
             ? 'Checking live status…'
           : state.error
             ? 'Review wallet activity before retrying'
+          : needsActivityReview()
+            ? 'Check wallet activity before another mint'
           : !status
           ? 'Verifying deployment…'
           : !mint?.open
@@ -157,9 +163,9 @@
 
     const message = byId('mint-message');
     if (message) {
-      message.className = `mint-message${state.statusError || state.error ? ' is-error' : state.result ? ' is-success' : ''}`;
+      message.className = `mint-message${state.statusError || state.error ? ' is-error' : incompleteReceipt ? ' is-notice' : state.result ? ' is-success' : ''}`;
       message.textContent = state.error || state.statusError || (state.result
-        ? 'Mint transaction submitted. Indexer totals may take a moment to update.'
+        ? incompleteReceipt ? 'Kasware finished the request, but HQ could not read a complete transaction receipt. This does not mean the mint failed. Check Kasware activity and your GEEK balance.' : 'Mint transaction submitted. Indexer totals may take a moment to update.'
         : 'The wallet displays the complete request and final KAS cost before you approve it.');
     }
 
@@ -167,13 +173,19 @@
     if (result) {
       result.hidden = !state.result;
       if (state.result) {
-        setText('mint-commit-id', state.result.commitId);
-        setText('mint-reveal-id', state.result.revealId);
+        result.dataset.state = incompleteReceipt ? 'incomplete' : 'submitted';
+        setText('mint-result-label', incompleteReceipt ? 'RECEIPT INCOMPLETE' : 'REQUEST SUBMITTED');
+        setText('mint-result-title', incompleteReceipt ? 'Check Kasware activity' : 'Follow your mint');
+        setText('mint-result-description', incompleteReceipt
+          ? 'HQ cannot confirm the mint outcome from this receipt. Any valid transaction IDs returned are shown below. If Kasware shows the mint completed, do not repeat it to fix this notice.'
+          : 'Kasware returned both transaction IDs. Submission does not confirm that GEEK has arrived. Check the reveal transaction and your wallet before minting again.');
+        setText('mint-commit-id', state.result.commitId || 'Not returned in a readable format');
+        setText('mint-reveal-id', state.result.revealId || 'Not returned in a readable format');
         setText('mint-result-address', state.result.address);
         setText('mint-result-time', new Date(state.result.submittedAt).toLocaleString());
         setText('mint-copy-message', state.copyMessage);
         const commitLink = byId('mint-commit-link');
-        if (commitLink) { commitLink.href = safeExplorerUrl(state.result.commitId); commitLink.hidden = !commitLink.href; }
+        if (commitLink) { const url = safeExplorerUrl(state.result.commitId); commitLink.href = url || '#'; commitLink.hidden = !url; }
         const copy = byId('mint-copy-receipt');
         if (copy) copy.disabled = state.copying;
         const link = byId('mint-explorer-link');
@@ -211,11 +223,16 @@
   };
 
   const parseWalletResult = (value) => {
-    const payload = typeof value === 'string' ? JSON.parse(value) : value;
-    const commitId = String(payload?.commitId || '');
-    const revealId = String(payload?.revealId || '');
-    if (!HEX_64.test(commitId) || !HEX_64.test(revealId)) throw new Error('Kasware did not return valid transaction IDs. Check the wallet activity before retrying.');
-    return { commitId, revealId };
+    let payload = value;
+    if (typeof value === 'string') {
+      try { payload = JSON.parse(value); } catch { payload = null; }
+    }
+    const validId = (id) => typeof id === 'string' && HEX_64.test(id) ? id : '';
+    const commitId = validId(payload?.commitId);
+    const revealId = validId(payload?.revealId);
+    // A fulfilled wallet call and a readable receipt are separate outcomes.
+    // Keep valid IDs individually; never infer broadcast or mint completion.
+    return { commitId, revealId, complete: Boolean(commitId && revealId), reviewed: false };
   };
 
   const friendlyError = (error) => {
@@ -290,8 +307,9 @@
     render();
   });
   byId('mint-retry')?.addEventListener('click', () => {
-    if (state.pending || !state.error) return;
+    if (state.pending || !needsActivityReview()) return;
     state.error = '';
+    if (state.result) state.result.reviewed = true;
     state.acknowledged = false;
     const checkbox = byId('mint-acknowledge');
     if (checkbox) checkbox.checked = false;
@@ -305,9 +323,10 @@
     try {
       if (!globalThis.navigator?.clipboard?.writeText) throw new Error('COPY_UNAVAILABLE');
       await navigator.clipboard.writeText([
-        'Geek Protocol — GEEK mint submission', 'Amount requested: 100,000 GEEK', 'Network: Kaspa Mainnet',
-        `Selected wallet: ${receipt.address}`, `Submitted: ${new Date(receipt.submittedAt).toISOString()}`,
-        `Commit: ${receipt.commitId}`, `Reveal: ${receipt.revealId}`, safeExplorerUrl(receipt.revealId),
+        'Geek Protocol — GEEK mint request', 'Amount requested: 100,000 GEEK', 'Network: Kaspa Mainnet',
+        `Selected wallet: ${receipt.address}`, `Wallet request finished: ${new Date(receipt.submittedAt).toISOString()}`,
+        `Receipt: ${receipt.complete ? 'Both transaction IDs returned' : 'Incomplete; outcome unconfirmed by HQ'}`,
+        `Commit: ${receipt.commitId || 'Unavailable'}`, `Reveal: ${receipt.revealId || 'Unavailable'}`, safeExplorerUrl(receipt.revealId),
         'Submission is not confirmation. Check wallet activity and the reveal transaction.'
       ].join('\n'));
       if (state.result === receipt) state.copyMessage = 'Receipt copied. It includes your selected wallet address and transaction IDs.';

@@ -57,7 +57,9 @@ Normal protocol and Kaspa commit/reveal network fees still apply. The project pu
 7. Kasware presents the final transaction for approval. A rejection stops the flow.
 8. HQ displays only the returned commit and reveal transaction IDs. Raw transaction data is not retained or rendered.
 
-An unavailable indexer, malformed response, deployment mismatch, exhausted supply, wrong wallet network, changed wallet account, missing wallet capability, or invalid result blocks the request.
+An unavailable indexer, malformed status response, deployment mismatch, exhausted supply, wrong wallet network, changed wallet account, or missing wallet capability blocks the request before wallet handoff.
+
+A fulfilled Kasware call with a missing, unreadable, or partial receipt is not reported as a failed mint. HQ shows an incomplete-receipt notice and preserves each individually valid 64-character hexadecimal commit/reveal ID. It does not infer broadcast, token arrival, or mint completion from the call resolving. No other field aliases or raw transaction data are accepted. A complete receipt still means submission only. Incomplete receipts block another wallet request until the user explicitly checks wallet activity, resets the request, and reviews the terms again; the reset and background status refresh never invoke Kasware. Wallet rejections and thrown errors retain their separate error path.
 
 ## Availability, recovery, and diagnostics
 

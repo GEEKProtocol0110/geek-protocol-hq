@@ -203,13 +203,72 @@ test('account change during fresh preflight blocks wallet handoff', async () => 
   assert.equal(ui.walletCalls.length,0); assert.equal(ui.element('mint-submit').disabled,true);
 });
 
-test('invalid transaction IDs never become a receipt or explorer URL', async () => {
+test('invalid transaction IDs are discarded while valid partial IDs remain available', async () => {
   const ui=await mount(); ui.acknowledge();
   ui.sign=async()=>({commitId:'javascript:alert(1)',revealId:'b'.repeat(64)});
   await ui.click('mint-submit');
-  assert.equal(ui.element('mint-result').hidden,true);
+  assert.equal(ui.element('mint-result').hidden,false);
+  assert.equal(ui.element('mint-result').dataset.state,'incomplete');
+  assert.equal(ui.element('mint-commit-link').hidden,true);
+  assert.equal(ui.element('mint-commit-link').href,'#');
+  assert.equal(ui.element('mint-explorer-link').href,'https://explorer.kaspa.org/txs/'+'b'.repeat(64));
+  assert.doesNotMatch(ui.element('mint-commit-id').textContent,/javascript/);
   assert.equal(ui.element('mint-submit').disabled,true);
   assert.equal(ui.element('mint-retry').hidden,false);
+});
+
+test('documented JSON-string receipts and object receipts show submission only', async () => {
+  for (const serialize of [value=>value, JSON.stringify]) {
+    const ui=await mount();
+    ui.sign=async()=>serialize({commitId:'A'.repeat(64),revealId:'b'.repeat(64),commitTxStr:'private raw transaction',revealTxStr:'private raw transaction'});
+    ui.acknowledge(); await ui.click('mint-submit');
+    assert.equal(ui.element('mint-result').dataset.state,'submitted');
+    assert.equal(ui.element('mint-retry').hidden,true);
+    assert.match(ui.element('mint-result-description').textContent,/Submission does not confirm/);
+    assert.doesNotMatch(ui.element('mint-result-description').textContent,/private raw transaction/);
+    assert.equal(ui.walletCalls.length,1);
+  }
+});
+
+test('fulfilled calls without readable receipts are notices, never failures or confirmed mints', async () => {
+  for (const response of [undefined,null,{},'', 'not JSON', 'null', JSON.stringify({commitId:'',revealId:''}), {commitId:123,revealId:{}}, {txId:'c'.repeat(64)}]) {
+    const copied=[];
+    const ui=await mount({clipboard:{writeText:async text=>copied.push(text)}});
+    ui.sign=async()=>response; ui.acknowledge(); await ui.click('mint-submit');
+    assert.equal(ui.element('mint-message').className,'mint-message is-notice');
+    assert.match(ui.element('mint-message').textContent,/does not mean the mint failed/);
+    assert.equal(ui.element('mint-result-label').textContent,'RECEIPT INCOMPLETE');
+    assert.equal(ui.element('mint-step-approve-status').textContent,'Check wallet activity');
+    assert.equal(ui.element('mint-commit-link').hidden,true);
+    assert.equal(ui.element('mint-explorer-link').hidden,true);
+    await ui.tick(); ui.acknowledge(); await ui.click('mint-submit');
+    assert.equal(ui.element('mint-submit').disabled,true);
+    assert.equal(ui.walletCalls.length,1);
+    await ui.click('mint-copy-receipt');
+    assert.match(copied[0],/Incomplete; outcome unconfirmed by HQ/);
+    await ui.click('mint-retry');
+    assert.equal(ui.walletCalls.length,1);
+    assert.equal(ui.element('mint-retry').hidden,true);
+    assert.equal(ui.element('mint-submit').disabled,true);
+    ui.acknowledge(); assert.equal(ui.element('mint-submit').disabled,false);
+    assert.equal(ui.walletCalls.length,1);
+  }
+});
+
+test('each valid partial receipt ID can be copied and linked without claiming submission', async () => {
+  for (const field of ['commitId','revealId']) {
+    const copied=[];
+    const ui=await mount({clipboard:{writeText:async text=>copied.push(text)}});
+    ui.sign=async()=>JSON.stringify({[field]:'a'.repeat(64)});
+    ui.acknowledge(); await ui.click('mint-submit');
+    assert.equal(ui.element('mint-result').dataset.state,'incomplete');
+    assert.equal(ui.element(field==='commitId'?'mint-commit-link':'mint-explorer-link').href,'https://explorer.kaspa.org/txs/'+'a'.repeat(64));
+    await ui.click('mint-copy-receipt'); assert.match(copied[0],/a{64}/);
+    assert.match(copied[0],/outcome unconfirmed/);
+    await ui.click('mint-retry');
+    assert.equal(ui.element(field==='commitId'?'mint-commit-id':'mint-reveal-id').textContent,'a'.repeat(64));
+    assert.equal(ui.walletCalls.length,1);
+  }
 });
 
 test('clipboard refusal gives manual-copy guidance without invoking the wallet again', async () => {
