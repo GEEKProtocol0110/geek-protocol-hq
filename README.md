@@ -38,7 +38,7 @@ The project began as a way to make learning exciting for one child. HQ is the pu
 | Public website and information surfaces | **Live** | Production at `www.geekprotocol.xyz` |
 | Ranked trivia, lobbies, leaderboards, and profiles | **Public Alpha** | Server-authoritative; Redis required |
 | Kaspa identity and account recovery | **Implemented Alpha** | Server-verified KIP-5 proofs through browser wallets or pasted signatures; wallet signing support required |
-| GEEK fair-mint interface | **Live / non-custodial** | One user-approved request against the pinned deployment |
+| GEEK fair-mint interface | **Live / non-custodial** | A reviewed queue of up to 100 requests against the pinned deployment; each requires wallet approval |
 | Community Content Engine | **Alpha** | Reviewed questions earn internal first-use credits |
 | Alpha GEEK rewards | **Internal ledger only** | No withdrawals, transfers, or promised monetary value |
 | 500-Geek collection | **Design and provenance phase** | Ownership and collection minting are disabled |
@@ -202,7 +202,7 @@ Invite a friend or challenge a simulated A.C.E. opponent at [Geek Duel](https://
 
 ### Quiz Quest: solo campaign
 
-[Quiz Quest](https://www.geekprotocol.xyz/quest/) has three free solo chapters: First Signal explores Kaspa’s origins; Inside the blockDAG teaches parent links, parallel blocks and consensus ordering; Keys to the Grid adds wallet-safety decisions. Complete each earlier chapter to unlock the next, then resume from the campaign map. Explore with your selected Geek and GIGA, read A.C.E.’s learning notes, and save progress through six untimed checks per chapter. Each chapter has its own completion badge, saved place and dashboard card. Missed answers remain available for review; replaying preserves the original badge. No ranked XP or token rewards are awarded. [Chapter protocol](docs/QUEST-PROTOCOL.md).
+[Quiz Quest](https://www.geekprotocol.xyz/quest/) has four free solo chapters: First Signal explores Kaspa’s origins; Inside the blockDAG teaches parent links, parallel blocks and consensus ordering; Keys to the Grid adds wallet-safety decisions; Value in Motion explains UTXOs, change, fees and accepted transaction evidence. Complete each earlier chapter to unlock the next, then resume from the campaign map. Explore with your selected Geek and GIGA, read A.C.E.’s learning notes, and save progress through six untimed checks per chapter. Each chapter has its own completion badge, saved place and dashboard card. Missed answers remain available for review; replaying preserves the original badge. No ranked XP or token rewards are awarded. [Chapter protocol](docs/QUEST-PROTOCOL.md).
 
 ### Player HQ and character studio
 

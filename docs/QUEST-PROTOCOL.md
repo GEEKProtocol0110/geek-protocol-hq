@@ -73,7 +73,7 @@ One bounded record per chapter at `geek:quest:<durable-player-id>:<chapter-id>` 
 
 `GET /api/quest?chapter=<id>` reads one allowlisted chapter. No selector retains the original First Signal contract. New clients include the same `chapterId` in each POST body; a mismatch is rejected. Chapters 2 and 3 require that field. Legacy First Signal bodies without it remain valid. Attempt IDs and retired step tokens cannot be reused for another chapter. Unknown, empty, array or conflicting selectors fail without a write.
 
-`GET /api/quest?campaign=1` returns a bounded summary of all three chapters for the authenticated player, with progress counts and badge receipts. It omits answer/review content, attempt IDs, step tokens, raw permutations and player IDs. The campaign view creates no chapter records. An unreadable chapter returns only its ID and `available: false`. An unreadable prerequisite also makes its dependent chapter unavailable; it does not alter either record. A corrupt Chapter 2 cannot block First Signal. The map displays unavailable status explicitly, and offers retry. Campaign summary reads are snapshots, not a multi-record transaction; current selected-chapter responses take precedence in that page’s map.
+`GET /api/quest?campaign=1` returns a bounded summary of all four chapters for the authenticated player, with progress counts and badge receipts. It omits answer/review content, attempt IDs, step tokens, raw permutations and player IDs. The campaign view creates no chapter records. An unreadable chapter returns only its ID and `available: false`. An unreadable prerequisite also makes its dependent chapter unavailable; it does not alter either record. A corrupt Chapter 2 cannot block First Signal. The map displays unavailable status explicitly, and offers retry. Campaign summary reads are snapshots, not a multi-record transaction; current selected-chapter responses take precedence in that page’s map.
 
 ### Sequential unlock
 
@@ -116,3 +116,7 @@ Primary references checked on October 6:
 - [Kaspa wallet integration docs](https://docs.kaspa.org/integrate/wallet): account, key and transaction flows.
 
 Chapter 3 requires valid completion receipts for both earlier chapters. A corrupt ancestor fails closed; replaying either ancestor retains access. Each record still uses schema/content version 1 in its own key, with no migration of prior saves. Tests cover the full chain, an older Chapter 2 receipt without Chapter 1, independent completion/review, replay retention and durable identity recovery. Browser checks complete all three chapters with mistakes and verify immediate map/dashboard updates.
+
+## Chapter 4: Value in Motion
+
+Unlocked by the saved Grid Guardian completion receipt, after the full earlier prerequisite chain. Three authored stops teach unspent outputs, fictional input/output/change accounting and transaction-acceptance evidence. Six checks and the Value Pathfinder badge use the existing independent chapter ledger, CAS, replay and recovery rules. No transaction is built or approved; math examples are not fee quotations. Sources were internally reviewed October 11, 2026. Earlier chapters retain their content versions and saved records.
