@@ -17,7 +17,7 @@ const live = () => ({
 
 const settle = () => new Promise((resolve) => setImmediate(resolve));
 
-const mount = async ({ wallet = {}, clipboard } = {}) => {
+const mount = async ({ wallet = {}, clipboard, version = '0.8.50.3' } = {}) => {
   const elements = new Map();
   const listeners = new Map();
   const intervals = [];
@@ -44,6 +44,7 @@ const mount = async ({ wallet = {}, clipboard } = {}) => {
     GeekWallet: { snapshot: () => ({ installed: true, connected: true, network: 'kaspa_mainnet', address: 'kaspa:test', ...wallet }) },
     kasware: {
       getNetwork: async () => 'kaspa_mainnet', getAccounts: async () => ['kaspa:test'],
+      getVersion: async () => version,
       signKRC20Transaction: async (...args) => { walletCalls.push(args); return ui.sign(); }
     },
     setTimeout() {},
@@ -56,6 +57,8 @@ const mount = async ({ wallet = {}, clipboard } = {}) => {
   await settle();
   return Object.assign(ui, {
     element, document, walletCalls, requests,
+    chooseCount: (value) => listeners.get('mint-count:change')({currentTarget:{value:String(value)}}),
+    changeProvider: () => { window.kasware = {...window.kasware}; },
     walletChange: (detail) => listeners.get('document:geek:wallet')({ detail }),
     click: (id) => listeners.get(`${id}:click`)(),
     acknowledge: () => listeners.get('mint-acknowledge:change')({ currentTarget: { checked: true } }),
@@ -208,13 +211,13 @@ test('invalid transaction IDs are discarded while valid partial IDs remain avail
   ui.sign=async()=>({commitId:'javascript:alert(1)',revealId:'b'.repeat(64)});
   await ui.click('mint-submit');
   assert.equal(ui.element('mint-result').hidden,false);
-  assert.equal(ui.element('mint-result').dataset.state,'incomplete');
+  assert.equal(ui.element('mint-result').dataset.state,'reference');
   assert.equal(ui.element('mint-commit-link').hidden,true);
   assert.equal(ui.element('mint-commit-link').href,'#');
   assert.equal(ui.element('mint-explorer-link').href,'https://explorer.kaspa.org/txs/'+'b'.repeat(64));
   assert.doesNotMatch(ui.element('mint-commit-id').textContent,/javascript/);
   assert.equal(ui.element('mint-submit').disabled,true);
-  assert.equal(ui.element('mint-retry').hidden,false);
+  assert.equal(ui.element('mint-retry').hidden,true);
 });
 
 test('documented JSON-string receipts and object receipts show submission only', async () => {
@@ -245,7 +248,7 @@ test('fulfilled calls without readable receipts are notices, never failures or c
     assert.equal(ui.element('mint-submit').disabled,true);
     assert.equal(ui.walletCalls.length,1);
     await ui.click('mint-copy-receipt');
-    assert.match(copied[0],/Incomplete; outcome unconfirmed by HQ/);
+    assert.match(copied[0],/Partial or missing; outcome unconfirmed by HQ/);
     await ui.click('mint-retry');
     assert.equal(ui.walletCalls.length,1);
     assert.equal(ui.element('mint-retry').hidden,true);
@@ -261,13 +264,138 @@ test('each valid partial receipt ID can be copied and linked without claiming su
     const ui=await mount({clipboard:{writeText:async text=>copied.push(text)}});
     ui.sign=async()=>JSON.stringify({[field]:'a'.repeat(64)});
     ui.acknowledge(); await ui.click('mint-submit');
-    assert.equal(ui.element('mint-result').dataset.state,'incomplete');
+    assert.equal(ui.element('mint-result').dataset.state,'reference');
     assert.equal(ui.element(field==='commitId'?'mint-commit-link':'mint-explorer-link').href,'https://explorer.kaspa.org/txs/'+'a'.repeat(64));
     await ui.click('mint-copy-receipt'); assert.match(copied[0],/a{64}/);
     assert.match(copied[0],/outcome unconfirmed/);
     await ui.click('mint-retry');
     assert.equal(ui.element(field==='commitId'?'mint-commit-id':'mint-reveal-id').textContent,'a'.repeat(64));
     assert.equal(ui.walletCalls.length,1);
+  }
+});
+
+test('standalone transaction IDs and bounded JSON encodings remain generic references', async () => {
+  for (const response of ['a'.repeat(64),JSON.stringify('a'.repeat(64)),JSON.stringify(JSON.stringify({commitId:'a'.repeat(64),revealId:'b'.repeat(64)}))]) {
+    const ui=await mount(); ui.sign=async()=>response; ui.acknowledge(); await ui.click('mint-submit');
+    assert.equal(ui.element('mint-result').hidden,false);
+    assert.equal(ui.element('mint-retry').hidden,true);
+    assert.doesNotMatch(ui.element('mint-message').textContent,/failed|arrived/);
+    if (ui.element('mint-reference-row').hidden===false) {
+      assert.equal(ui.element('mint-reference-link').href,'https://explorer.kaspa.org/txs/'+'a'.repeat(64));
+      assert.equal(ui.element('mint-result-label').textContent,'TRANSACTION ID RETURNED');
+      assert.equal(ui.element('mint-reveal-id').textContent,'Not returned in a readable format');
+    }
+    assert.equal(ui.walletCalls.length,1);
+  }
+});
+
+test('diagnostics expose only fixed field types and a bounded wallet version', async () => {
+  const copied=[];
+  const ui=await mount({clipboard:{writeText:async text=>copied.push(text)}});
+  ui.sign=async()=>({txId:'secret transaction data',data:'secret data',seed:'private keys',address:'secret address','secret property':'secret value'});
+  ui.acknowledge(); await ui.click('mint-submit'); await ui.click('mint-copy-diagnostic');
+  assert.match(copied[0],/Kasware version: 0\.8\.50\.3/);
+  assert.match(copied[0],/commitId: undefined, revealId: undefined, txId: string/);
+  assert.doesNotMatch(copied[0],/kaspa:test|secret|private|keys|address|seed/);
+  assert.equal(ui.walletCalls.length,1);
+  const unknown=await mount({version:'malicious wallet payload'}); unknown.acknowledge(); await unknown.click('mint-submit');
+  assert.match(unknown.element('mint-receipt-diagnostic').textContent,/Kasware Unavailable/);
+  assert.doesNotMatch(unknown.element('mint-receipt-diagnostic').textContent,/malicious/);
+  const oversized=await mount({version:'1'.repeat(100)+'.0'}); oversized.acknowledge(); await oversized.click('mint-submit');
+  assert.match(oversized.element('mint-receipt-diagnostic').textContent,/Kasware Unavailable/);
+});
+
+test('a selected queue has immutable totals and fresh checks before every wallet request', async () => {
+  const ui=await mount(); ui.acknowledge(); ui.chooseCount(5);
+  assert.equal(ui.element('mint-selected-amount').textContent,'500,000');
+  assert.equal(ui.element('mint-protocol-fee').textContent,'5 KAS');
+  assert.equal(ui.element('mint-submit').disabled,true);
+  assert.equal(ui.walletCalls.length,0);
+  ui.acknowledge(); await ui.click('mint-submit');
+  assert.equal(ui.walletCalls.length,5);
+  assert.equal(ui.requests.length,6);
+  for (const args of ui.walletCalls) assert.deepEqual(Array.from(args),[geekMintInscription(),3,undefined,0]);
+  assert.match(ui.element('mint-batch-status').textContent,/5 of 5.*Queue finished/);
+  assert.match(ui.element('mint-batch-log').textContent,/Request 5:/);
+  assert.equal(ui.element('mint-submit').disabled,true);
+});
+
+test('invalid counts and insufficient batch capacity cannot open the wallet', async () => {
+  for (const value of [0,101,1.5,'1e2','bad','']) {
+    const ui=await mount(); ui.chooseCount(value); ui.acknowledge(); await ui.click('mint-submit');
+    assert.equal(ui.walletCalls.length,0); assert.equal(ui.element('mint-submit').disabled,true);
+  }
+  const ui=await mount(); ui.chooseCount(5); ui.acknowledge();
+  ui.response=()=>Response.json({...live(),mint:{...live().mint,remainingMints:'4'}});
+  await ui.click('mint-submit'); assert.equal(ui.walletCalls.length,0);
+  assert.match(ui.element('mint-message').textContent,/Not enough GEEK mints/);
+});
+
+test('stop during wallet approval retains the receipt and prevents later wallet requests', async () => {
+  const ui=await mount(); ui.chooseCount(5); ui.acknowledge(); let finish;
+  ui.sign=()=>new Promise(resolve=>{finish=resolve;});
+  const minting=ui.click('mint-submit'); await settle();
+  assert.equal(ui.element('mint-count').disabled,true);
+  ui.chooseCount(100); assert.equal(ui.element('mint-protocol-fee').textContent,'5 KAS');
+  await ui.click('mint-stop');
+  finish({commitId:'a'.repeat(64),revealId:'b'.repeat(64)}); await minting;
+  assert.equal(ui.walletCalls.length,1);
+  assert.equal(ui.element('mint-commit-id').textContent,'a'.repeat(64));
+  assert.match(ui.element('mint-batch-status').textContent,/Queue stopped/);
+  assert.equal(ui.element('mint-submit').disabled,true);
+});
+
+test('unreadable receipts pause and continuation never repeats an already requested mint', async () => {
+  const ui=await mount(); ui.chooseCount(5); ui.acknowledge(); ui.sign=async()=>null;
+  await ui.click('mint-submit'); assert.equal(ui.walletCalls.length,1);
+  await ui.tick(); ui.acknowledge(); await ui.click('mint-submit');
+  assert.equal(ui.walletCalls.length,1);
+  await ui.click('mint-retry'); assert.equal(ui.walletCalls.length,1);
+  assert.equal(ui.element('mint-submit').disabled,true);
+  assert.equal(ui.element('mint-selected-amount').textContent,'400,000');
+  ui.acknowledge(); assert.match(ui.element('mint-submit').textContent,/Continue queue · 4 mints/);
+  ui.sign=async()=>({commitId:'a'.repeat(64),revealId:'b'.repeat(64)});
+  await ui.click('mint-submit'); assert.equal(ui.walletCalls.length,5);
+  assert.match(ui.element('mint-batch-log').textContent,/Request 1: No readable/);
+  assert.match(ui.element('mint-batch-log').textContent,/Request 5: Transaction ID/);
+});
+
+test('wallet rejection, supply outage, and account changes halt a queue before further requests', async () => {
+  for (const problem of ['reject','outage','account','network']) {
+    const ui=await mount(); ui.chooseCount(5); ui.acknowledge();
+    ui.sign=async()=>{
+      if (problem==='reject') throw new Error('User rejected');
+      if (problem==='outage') ui.response=()=>Response.json({error:'Unavailable'},{status:503});
+      if (problem==='account'||problem==='network') ui.walletChange({installed:true,connected:true,network:problem==='network'?'kaspa_testnet':'kaspa_mainnet',address:problem==='account'?'kaspa:changed':'kaspa:test'});
+      return {commitId:'a'.repeat(64),revealId:'b'.repeat(64)};
+    };
+    await ui.click('mint-submit'); assert.equal(ui.walletCalls.length,1);
+    await ui.tick(); assert.equal(ui.walletCalls.length,1);
+    assert.equal(ui.element('mint-submit').disabled,true);
+  }
+});
+
+test('a hidden page pauses the queue until a new explicit review and click', async () => {
+  const ui=await mount(); ui.chooseCount(2); ui.acknowledge();
+  ui.sign=async()=>{ui.document.hidden=true;return {commitId:'a'.repeat(64),revealId:'b'.repeat(64)};};
+  await ui.click('mint-submit'); assert.equal(ui.walletCalls.length,1);
+  ui.document.hidden=false; await ui.tick(); assert.equal(ui.walletCalls.length,1);
+  ui.acknowledge(); ui.sign=async()=>({commitId:'a'.repeat(64),revealId:'b'.repeat(64)});
+  await ui.click('mint-submit'); assert.equal(ui.walletCalls.length,2);
+});
+
+test('stop, a hidden page, or a replaced provider during preflight prevent wallet handoff', async () => {
+  for (const action of ['stop','hide','provider']) {
+    const ui=await mount(); ui.chooseCount(5); ui.acknowledge(); let finish;
+    ui.response=()=>new Promise(resolve=>{finish=resolve;});
+    const pending=ui.click('mint-submit'); await settle();
+    if (action==='stop') await ui.click('mint-stop');
+    if (action==='hide') ui.document.hidden=true;
+    if (action==='provider') ui.changeProvider();
+    finish(Response.json(live())); await pending;
+    assert.equal(ui.walletCalls.length,0);
+    assert.equal(ui.element('mint-submit').disabled,true);
+    if (action==='stop') assert.doesNotMatch(ui.element('mint-message').textContent,/wallet changed/);
   }
 });
 

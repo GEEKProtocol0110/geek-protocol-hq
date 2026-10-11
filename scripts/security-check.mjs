@@ -78,7 +78,7 @@ check(mintApi.includes('custodial: false'), 'mint API declares the non-custodial
 check(mintApi.includes("fresh ? 'no-store, max-age=0'"), 'pre-mint status checks bypass shared caches');
 
 const mintClient = await text('public/mint/assets/mint.js');
-check(mintClient.includes('window.kasware.signKRC20Transaction('), 'minting is handed to Kasware');
+check(mintClient.includes('const provider = window.kasware;') && mintClient.includes('await provider.signKRC20Transaction('), 'minting is handed to the captured Kasware provider');
 check(mintClient.includes("network !== MAINNET"), 'mint client enforces Kaspa Mainnet');
 check(/status\.transaction\.inscription,\s*3,\s*undefined,\s*0/.test(mintClient), 'mint request fixes type, destination behavior, and added priority fee');
 check(!mintClient.includes('localStorage'), 'mint result is not persisted in local storage');
