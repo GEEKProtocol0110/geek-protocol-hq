@@ -61,3 +61,13 @@ test('career roadmap uses existing XP thresholds and earned cosmetics remain ava
   assert.equal(deriveProgression(reset).level, 1); assert.deepEqual(unlockedGeekEffects(deriveProgression(reset)), ['pulse', 'crown']);
   assert(deriveCareerMilestones(reset).every(m => m.unlocked));
 });
+
+test('expanded starter cosmetics survive strict save validation and authored rear previews', () => {
+  for (const [key, value] of [['hair', 'ponytail'], ['hair', 'afro'], ['hairColor', 'rose'], ['hairColor', 'emerald'], ['outfit', 'varsity'], ['head', 'bucket']]) {
+    const design = { ...personalGeek, [key]: value };
+    assert.deepEqual(normalizeGeek(JSON.parse(JSON.stringify(design)), true), design);
+    assert.notEqual(geekSvg(design, 'back'), geekSvg(personalGeek, 'back'), `${key}: ${value} has a rear view`);
+  }
+  assert.notEqual(geekSvg({ ...defaultGeek, head: 'bucket' }, 'back'), geekSvg(defaultGeek, 'back'));
+  assert.match(geekDescription({ ...personalGeek, eyewear: 'sun' }), /Sunglasses/);
+});
