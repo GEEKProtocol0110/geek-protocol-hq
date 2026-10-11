@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { redisFixture } from './helpers/redis-fixture.js';
 import sessionHandler from '../api/session.js';
 import rankedHandler from '../api/ranked.js';
-import { firstSignal, questChecks, insideBlockdag, keysToTheGrid, questChapters, checksFor, getChapter } from '../public/quest/assets/chapter.js';
+import { firstSignal, questChecks, insideBlockdag, keysToTheGrid, valueInMotion, questChapters, checksFor, getChapter } from '../public/quest/assets/chapter.js';
 import { decodeQuest, questKey, mutateQuest, QUEST_LUA } from '../server/quest.js';
 
 let fixture;
@@ -316,10 +316,10 @@ run('failed record checks return fixed support codes and retries preserve the ex
   assert.equal(await fixture.command('GET', key(cookie)), good);
 });
 
-test('campaign content has three distinct three-stop chapters and no invented chapter fallback', () => {
-  assert.deepEqual(questChapters.map(c => c.id), ['first-signal', 'inside-blockdag', 'keys-to-the-grid']);
+test('campaign content has four distinct three-stop chapters and no invented chapter fallback', () => {
+  assert.deepEqual(questChapters.map(c => c.id), ['first-signal', 'inside-blockdag', 'keys-to-the-grid', 'value-in-motion']);
   const allChecks = questChapters.flatMap(checksFor);
-  assert.equal(new Set(allChecks.map(q => q.id)).size, 18);
+  assert.equal(new Set(allChecks.map(q => q.id)).size, 24);
   for (const chapter of questChapters) {
     assert.equal(chapter.scenes.length, 3); assert.equal(checksFor(chapter).length, 6);
     for (const scene of chapter.scenes) {
@@ -334,7 +334,7 @@ run('campaign reads are private, write-free and bounded; unknown or mismatched s
   const cookie = await fresh();
   assert.equal((await call('', undefined, { campaign: '1' })).statusCode, 401);
   const r = await call(cookie, undefined, { campaign: '1' }); assert.equal(r.statusCode, 200);
-  assert.equal(r.body.campaign.chapters.length, 3);
+  assert.equal(r.body.campaign.chapters.length, 4);
   assert.equal(r.body.campaign.chapters[0].status,'unstarted'); assert.equal(r.body.campaign.chapters[1].locked,true); assert.equal(r.body.campaign.chapters[1].prerequisite.id,firstSignal.id);
   assert.equal((await fixture.command('KEYS', 'geek:quest:*')).length, 0);
   for (const query of [{chapter:'unknown'}, {chapter:null}, {chapter:''}, {chapter:['first-signal','inside-blockdag']}, {campaign:'2'}, {campaign:'1',chapter:'first-signal'}]) assert.equal((await call(cookie, undefined, query)).statusCode, 400);
@@ -504,4 +504,21 @@ run('Chapter 2 final completion unlocks Chapter 3, with independent decisions, b
   const guest = await session('Recovered Guardian'), playerId = id(cookie);
   await fixture.command('SET', `geek:session:${id(guest)}`, JSON.stringify({ id: id(guest), playerId, name: 'Recovered Guardian', createdAt: Date.now() }));
   assert.equal((await current(guest, keysToTheGrid)).badge.id, keysToTheGrid.id);
+});
+
+run('Chapter 4 unlocks only after Guardian completion and preserves all earlier ledgers during replay', async () => {
+ const cookie=await fresh();await seedPrerequisite(cookie);await complete(cookie,[],insideBlockdag);
+ await fixture.command('DEL', `geek:rate:quest:${id(cookie)}`);
+ const locked=await call(cookie,undefined,{chapter:valueInMotion.id});assert.equal(locked.statusCode,403);assert.equal(locked.body.prerequisite.id,keysToTheGrid.id);
+ assert.equal((await call(cookie,{action:'begin',revision:0,chapterId:valueInMotion.id},{chapter:valueInMotion.id})).statusCode,403);
+ assert.equal(await fixture.command('EXISTS',key(cookie,valueInMotion)),0);
+ await complete(cookie,[],keysToTheGrid);
+ await fixture.command('DEL', `geek:rate:quest:${id(cookie)}`); // Fixture spans several chapters faster than a real learner.
+ const originals=await Promise.all([firstSignal,insideBlockdag,keysToTheGrid].map(c=>fixture.command('GET',key(cookie,c))));
+ const done=await complete(cookie,[1],valueInMotion);assert.equal(done.attempt.correct,5);assert.equal(done.badge.name,'Value Pathfinder');assert.equal(done.review.length,1);assert.equal(done.tokensEnabled,false);assert.equal(done.xpEnabled,false);
+ assert.deepEqual(await current(cookie,valueInMotion),done);await act(cookie,'replay',{},valueInMotion);const repeated=await complete(cookie,[],valueInMotion);assert.deepEqual(repeated.badge,done.badge);
+ assert.deepEqual(await Promise.all([firstSignal,insideBlockdag,keysToTheGrid].map(c=>fixture.command('GET',key(cookie,c)))),originals);
+ const chapter3=await fixture.command('GET',key(cookie,keysToTheGrid));await fixture.command('DEL',key(cookie,keysToTheGrid));
+ assert.equal((await call(cookie,undefined,{chapter:valueInMotion.id})).statusCode,403);await fixture.command('SET',key(cookie,keysToTheGrid),chapter3);
+ assert.equal((await current(cookie,valueInMotion)).badge.id,valueInMotion.id);
 });
