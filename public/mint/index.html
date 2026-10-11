@@ -85,9 +85,9 @@
             <p class="mint-message" id="mint-message" role="status" aria-live="polite">Kasware displays the complete request and final cost before you approve.</p>
             <button class="mint-retry" id="mint-retry" type="button" hidden>I checked wallet activity · reset request</button>
             <div class="mint-result" id="mint-result" hidden>
-              <div class="receipt-heading"><span>REQUEST SUBMITTED</span><strong>Follow your mint</strong></div>
-              <p>Kasware returned both transaction IDs. Submission does not confirm that GEEK has arrived. Check the reveal transaction and your wallet before minting again.</p>
-              <dl><div><dt>Wallet selected for this request</dt><dd id="mint-result-address">—</dd></div><div><dt>Submitted</dt><dd id="mint-result-time">—</dd></div><div><dt>Commit transaction</dt><dd id="mint-commit-id">—</dd></div><div><dt>Reveal transaction</dt><dd id="mint-reveal-id">—</dd></div></dl>
+              <div class="receipt-heading"><span id="mint-result-label">REQUEST SUBMITTED</span><strong id="mint-result-title">Follow your mint</strong></div>
+              <p id="mint-result-description">Kasware returned both transaction IDs. Submission does not confirm that GEEK has arrived. Check the reveal transaction and your wallet before minting again.</p>
+              <dl><div><dt>Wallet selected for this request</dt><dd id="mint-result-address">—</dd></div><div><dt>Wallet request finished</dt><dd id="mint-result-time">—</dd></div><div><dt>Commit transaction</dt><dd id="mint-commit-id">—</dd></div><div><dt>Reveal transaction</dt><dd id="mint-reveal-id">—</dd></div></dl>
               <div class="receipt-actions"><a id="mint-commit-link" href="#" target="_blank" rel="noopener noreferrer">View commit ↗</a><a id="mint-explorer-link" href="#" target="_blank" rel="noopener noreferrer">View reveal ↗</a><button id="mint-copy-receipt" type="button">Copy receipt</button></div>
               <p id="mint-copy-message" role="status" aria-live="polite"></p>
               <p class="receipt-note">This receipt stays on this page only. Copy it if you want to keep it.</p>
