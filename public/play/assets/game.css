@@ -112,3 +112,7 @@ h1,h2,h3{text-wrap:balance;overflow-wrap:normal;word-break:normal}p,li{text-wrap
   .start-screen .start-actions .quiet-action{padding:.7rem;font-size:.63rem}
   .start-screen .local-note{margin-top:.8rem}
 }
+
+/* Saved-state recovery stays reachable above every game screen. */
+.ranked-recovery{margin:16px;padding:18px;border:1px solid var(--cyan);border-radius:14px;background:var(--panel,#111d18)}.ranked-recovery[hidden]{display:none}.ranked-recovery p{margin:0 0 12px}.ranked-recovery>div{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.ranked-recovery a,.saved-progress-link a{color:var(--cyan)}.ranked-recovery button{min-height:44px}.saved-progress-link{color:#a9b3af;font-size:.9rem}.complete-actions{flex-wrap:wrap}
+@media(max-width:680px){.quiz-hud{position:sticky;top:0;z-index:10;background:var(--ink);padding-block:6px}.ranked-recovery>div{align-items:stretch;flex-direction:column}.ranked-recovery button{width:100%}.complete-actions>*{min-height:44px}.quiz-screen{padding-bottom:max(24px,env(safe-area-inset-bottom))}}

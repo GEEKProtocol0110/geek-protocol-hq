@@ -1,6 +1,6 @@
 # Geek Protocol HQ — Project Status
 
-**Snapshot date:** 2026-10-06<br />
+**Snapshot date:** 2026-10-11<br />
 **Release channel:** Public Alpha  
 **Production:** [www.geekprotocol.xyz](https://www.geekprotocol.xyz/)  
 **Repository:** [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq)
@@ -46,7 +46,7 @@ The repository currently verifies:
 - one-attempt periodic competitions with shared snapshots, atomic completed-score publication, and bounded separate boards;
 - private concept coverage and saved-mistake review with bounded retention and replay-safe confidence feedback;
 - server-owned answer validation, deadlines, scoring, XP, and rewards;
-- single-use ranked tokens and atomic answer claims;
+- single-use ranked tokens with atomic run/grade/profile commits and session-bound read-only recovery;
 - exact-origin, single-use wallet challenges;
 - server-side Kaspa Schnorr verification and address derivation;
 - identity recovery with older-session invalidation;
@@ -176,3 +176,9 @@ Use a dedicated `OPS_ACCESS_TOKEN` when set, or the existing CCE key while absen
 The active pool now contains 7,776 questions after 272 explicit editorial retirements. All eight categories retain complete Gauntlet capacity; preserved server-only answer keys support previously issued runs. No remaining draft is promoted to source-checked. The corrected remaining count is 3,598 new licensed imports for item-level factual and difficulty review. See [Editorial Review](EDITORIAL-REVIEW.md).
 
 The HTTPS/real-Redis browser walkthrough covers mobile learning, reload, saved progress, focused mistake review, lost-answer replies, outages and stalled requests. Study now has a 15-second deadline with manual retry; Play, Lobby, reward/recovery and wallet session setup preserve chosen player names. Phone-width emulation is not a physical-phone or real-extension signoff. See [Player Journey Review](PLAYER-JOURNEY-REVIEW.md).
+
+## October 11: first visit, saved results and launch review
+
+Start Here now connects player choice, Geek customization, a short lesson, HQ Daily Signal and saved progress. Ranked commits protect XP, practice balance, career counters and answer receipts from simultaneous writes; lost start/answer replies recover the confirmed server state. Payout-setting saves reject stale profile snapshots. Royale restores setup when the server confirms a removed seat or expired room. Responsive controls and recovery focus are improved.
+
+The [dated readiness review](LAUNCH-READINESS-2026-10-11.md) records 328 passing tests with required real Redis, live read-only health/mint observations and the CCE/mint/payout audit findings. Physical-device and real-wallet acceptance, CCE settlement-grade reconciliation, independent audit and operational financial gates remain outstanding. No financial capability or production secret was activated.

@@ -33,6 +33,7 @@
     </header>
 
     <main id="game" class="game-shell">
+      <aside class="ranked-recovery" data-ranked-recovery hidden aria-label="Saved run recovery"><p data-ranked-recovery-status role="status"></p><div><button class="quiet-action" type="button" data-ranked-reconnect>Reconnect saved run</button><button class="quiet-action" type="button" data-ranked-next hidden>Continue to next question</button><button class="quiet-action" type="button" data-ranked-finish hidden>Finish &amp; save result</button><a href="/profile/#progression-title">See My HQ progress →</a><a href="/start/">First-visit guide</a></div></aside>
       <section class="screen start-screen active" data-screen="start" aria-labelledby="start-title">
         <div class="start-copy">
           <div class="eyebrow">A game for every kind of curious</div>
@@ -169,7 +170,7 @@
             <button class="primary-action" type="button" data-continue>Continue to Round 02 <span>→</span></button>
             <button class="quiet-action cashout" type="button" data-cashout>End run</button>
           </div>
-          <p class="entry-warning" data-entry-warning></p>
+          <p class="entry-warning" data-entry-warning></p><p class="saved-progress-link">Your round XP is saved. Finish this run to submit its score, then <a href="/profile/#progression-title">see My HQ progress →</a>.</p>
           <details class="round-review">
             <summary>Review answers &amp; sources</summary>
             <ol data-round-review></ol>
@@ -193,7 +194,7 @@
         <h2 id="complete-title" data-complete-title>GAUNTLET<br /><span>CONQUERED</span></h2>
         <p data-complete-message>You cleared all ten rounds.</p>
         <div class="complete-score"><small>FINAL RUN SCORE</small><strong data-final-score>0</strong></div>
-        <div class="result-actions complete-actions">
+        <div class="result-actions complete-actions"><a class="quiet-action" href="/profile/#progression-title">See My HQ progress →</a><a class="quiet-action" href="/start/">First-visit guide</a>
           <button class="primary-action" type="button" data-new-run>Start a New Run <span>↻</span></button>
           <a class="quiet-action" href="../">Return to Protocol</a>
         </div>

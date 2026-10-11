@@ -113,3 +113,16 @@ test('repeated Royale reconnect clicks do not duplicate a pending session reques
   assert.equal(ui.node('[data-create-form]').elements.displayName.value, 'Draft name');
   assert.equal(ui.node('[data-error-retry]').disabled, false);
 });
+
+for (const code of ['ROYALE_NOT_PLAYER', 'ROYALE_NOT_FOUND']) test(`a confirmed ${code} clears the stale view and permits a new room without automatic mutations`, async () => {
+  let reads = 0;
+  const ui = await page(path => path.startsWith('/api/royale?') && ++reads > 1 ? json({ code, error: 'This seat is no longer available.' }, code === 'ROYALE_NOT_PLAYER' ? 403 : 404) : undefined);
+  ui.node('[data-create-form]').elements.displayName.value = 'Keep my name';
+  await ui.context.actions.refresh();
+  assert.equal(ui.node('[data-setup]').hidden, false);
+  assert.ok(ui.node('[data-create-form]').querySelectorAll('button').every(button => !button.disabled));
+  assert.equal(ui.node('[data-create-form]').elements.displayName.value, 'Keep my name');
+  assert.equal(ui.node('[data-join-form]').elements.code.value, '');
+  assert.match(ui.node('[data-status]').textContent, /create another Royale/);
+  assert.equal(ui.requests.filter(request => request.body?.action).length, 0);
+});

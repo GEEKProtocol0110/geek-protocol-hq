@@ -14,7 +14,7 @@
       "id": "GP-INV-002",
       "title": "Write-once answer commitment",
       "status": "implemented",
-      "evidence": ["api/ranked.js", "tests/api.test.js"]
+      "evidence": ["api/ranked.js", "server/ranked-state.js", "tests/api.test.js", "tests/ranked-persistence.test.js", "tests/ranked-client.test.js", "docs/LAUNCH-READINESS-2026-10-11.md"]
     },
     {
       "id": "GP-INV-003",

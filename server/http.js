@@ -142,6 +142,10 @@ export const handleApiError = (res, error) => {
   if (code === 'SESSION_STATE_INVALID') return sendJson(res, 503, { ok: false, code, error: 'Your saved player session could not be verified. Your saved progress has not been reset.' });
   if (code === 'DAILY_ALREADY_PLAYED') return sendJson(res, 409, { ok: false, code, error: 'Today’s verified Daily Signal has already been started. A new challenge unlocks at 00:00 UTC.' });
   if (code === 'PROFILE_BUSY') return sendJson(res, 409, { ok: false, code, error: 'Your profile is updating. Refresh and try again.' });
+  if (code === 'RANKED_STATE_CHANGED') return sendJson(res, 409, { ok: false, code, error: 'Your saved game or profile changed. Reconnect the run before continuing.' });
+  if (code === 'PROFILE_STATE_CHANGED') return sendJson(res, 409, { ok: false, code, error: 'Your saved profile changed. Reload your settings before trying again.' });
+  if (code === 'AUDIT_STATE_INVALID') return sendJson(res, 503, { ok: false, code, error: 'The game audit record needs recovery. This action was not saved.' });
+  if (code === 'PROFILE_STATE_INVALID') return sendJson(res, 503, { ok: false, code, error: 'Your saved game profile needs recovery. Your progress has not been reset.' });
   if (code === 'PRESTIGE_LEVEL_REQUIRED') return sendJson(res, 409, { ok: false, code, error: 'Reach level 50 before entering prestige.' });
   if (code === 'PRESTIGE_CHANGED') return sendJson(res, 409, { ok: false, code, error: 'Your prestige changed. Refresh your dashboard before trying again.' });
   if (code === 'PRESTIGE_MAXED') return sendJson(res, 409, { ok: false, code, error: 'Prestige 25 is the final prestige rank.' });

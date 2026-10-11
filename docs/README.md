@@ -4,6 +4,8 @@ This directory is the reviewable specification set for Geek Protocol HQ. Documen
 
 ## Start here
 
+- [October 11 Launch Readiness](LAUNCH-READINESS-2026-10-11.md): all five workstreams, save/recovery fixes, validation and remaining reward gates.
+
 - [Editorial Review](EDITORIAL-REVIEW.md): current removals and the remaining draft review.
 - [Player Journey Review](PLAYER-JOURNEY-REVIEW.md): browser walkthrough, fixes and physical-device acceptance work.
 
