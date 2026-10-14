@@ -37,7 +37,7 @@ test('the stress lab is private and arbitrary fees, scores or configuration cann
   const key = 'geek:profile:' + 'a'.repeat(32); await fixture.command('SET', key, '{"balance":73,"xp":12}');
   const keysBefore = (await fixture.command('KEYS', '*')).filter(k => !k.startsWith('geek:rate:')).sort();
   const read = await ops('GET', {}, cookie); assert.equal(read.statusCode, 200); assert.match(read.headers['Cache-Control'], /private.*no-store/);
-  const result = await ops('POST', defaultStressScenario(), cookie); assert.equal(result.statusCode, 200); assert.equal(result.body.result.reserve.coveredClaims, '700'); assert.equal(result.body.result.creditConversionEnabled, false);
+  const result = await ops('POST', defaultStressScenario(), cookie); assert.equal(result.statusCode, 200); assert.equal(result.body.result.reserve.coveredClaims, '1000'); assert.equal(result.body.result.creditConversionEnabled, false); assert.equal(result.body.result.runway.fullBudgetDays, '10000');
   assert.equal((await ops('POST', { ...defaultStressScenario(), balance: 999999 }, cookie)).statusCode, 400);
   assert.equal(await fixture.command('GET', key), '{"balance":73,"xp":12}');
   assert.deepEqual((await fixture.command('KEYS', '*')).filter(k => !k.startsWith('geek:rate:')).sort(), keysBefore);

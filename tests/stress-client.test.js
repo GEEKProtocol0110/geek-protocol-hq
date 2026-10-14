@@ -14,7 +14,7 @@ test('the shipped stress form sends decimal strings, shows only modeled values a
   const fields = { ...defaultStressScenario(), ...defaultStressScenario().reserve, pattern: defaultStressScenario().correctByRound.join(',') };
   const form = fixture.node('[data-scenario]'); for (const [name, value] of Object.entries(fields)) { const input = fixture.make('input'); input.value = String(value); form.elements[name] = input; }
   fixture.run(source); await settle();
-  await form.emit('submit'); await settle(); assert.match(fixture.node('[data-results]').innerHTML, /700 proposed claims covered/, fixture.node('[data-message]').textContent); assert.match(fixture.node('[data-results]').innerHTML, /No funds or credits changed/);
+  await form.emit('submit'); await settle(); assert.match(fixture.node('[data-results]').innerHTML, /1,000 proposed claims covered/, fixture.node('[data-message]').textContent); assert.match(fixture.node('[data-results]').innerHTML, /No funds or credits changed/); assert.match(fixture.node('[data-results]').innerHTML, /10,000 full-budget days/); assert.match(fixture.node('[data-results]').innerHTML, /27.40 years/);
   const request = requests.find(r => r.method === 'POST'), body = JSON.parse(request.body); assert.equal(body.reserve.feeEach, '1'); assert.equal(request.credentials, 'same-origin'); assert.equal(body.transfersEnabled, undefined);
   fail = true; await form.emit('submit'); await settle(); assert.equal(fixture.node('[data-results]').innerHTML, '');
   await fixture.window.emit('pagehide'); assert.equal(fixture.node('[data-examples]').innerHTML, '');

@@ -53,3 +53,7 @@ Next: verify the reserve; finish fee, price and gameplay rules; build payment ve
 
 
 The [economy stress lab](ECONOMY-STRESS.md) tests internal credit paths and separate hypothetical reserve scenarios. Its caps and reserve values apply only to the simulation; it changes no live fees, credit grants or settlement controls.
+
+## Founder-selected launch reward proposal
+
+The October 14, 2026 proposal is **100 GEEK per qualifying completed round**. The private stress lab defaults to this reward and an assumed billion-GEEK reserve, with editable daily caps and repeating-day runway estimates. This is not a live payment rule or a conversion of existing Alpha credits. Qualification, supported modes and per-player rewarded-round limits remain to be defined. See [the exact model and assumptions](ECONOMY-STRESS.md#proposed-100-geek-round-reward-and-daily-runway).

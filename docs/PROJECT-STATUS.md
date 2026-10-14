@@ -207,3 +207,7 @@ Twenty credential-free HTTP probes now cover key public pages, database health, 
 ## October 14: economy stress tests
 
 The private `/ops/stress/` lab and a reproducible baseline model the existing Gauntlet credit rules separately from hypothetical token reserves. Real Redis checks cover a hundred concurrent identical planning receipts, changed-reference terms, a lost accepted reply, and replayed ranked answers versus new legitimate free rounds. The 70/30 split conserves each receipt's fee, with recycle rounded down and burn pending receiving the remainder. Empty reserves, period caps, token-supply constraints and unsafe profile-credit paths are covered. These are internal tests and modeled budgets; no actual funding, credit conversion, burn execution, changed game fees, reward queue or settlement is enabled. See [Economy Stress](ECONOMY-STRESS.md).
+
+### Round reward proposal — October 14, 2026
+
+The founder selected 100 GEEK per qualifying completed round. The private economy stress lab now models an assumed billion-GEEK reserve, whole-round daily caps, per-receipt 70/30 recycling, full-budget days and the next partial day. Caps are scenario inputs; eligibility and per-player payout limits are not finalized. No Alpha grant, funded liability, wallet balance, payment gate or burn authority changes.
