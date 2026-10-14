@@ -44,6 +44,16 @@ test('clipboard failure or missing browser support returns a manual-copy result'
   let value; assert.equal(await copyWidgetText('text', { writeText: async v => { value = v; } }), true); assert.equal(value, 'text');
 });
 
+test('a stalled script request aborts at its deadline', async t => {
+  t.mock.timers.enable({ apis: ['setTimeout'] });
+  const request = loadWidgetScript(async (url, { signal }) => new Promise((resolve, reject) => {
+    signal.addEventListener('abort', () => reject(new Error('Request aborted')), { once: true });
+  }), webcrypto.subtle);
+  const rejected = assert.rejects(request, /Request aborted/);
+  t.mock.timers.tick(8000);
+  await rejected;
+});
+
 test('script copy writes the whole file and reuses it on a second click', async () => {
   let copies = [], loads = 0;
   const ui = await page({ clipboard: { writeText: async value => copies.push(value) }, loader: async () => { loads++; return script; } });
