@@ -72,3 +72,5 @@ Geek Protocol HQ is implemented and internally verified in several areas. It is 
 - [Imported question review](IMPORTED-QUESTION-REVIEW.md): private decisions and checked staging.
 - [Testnet reward pilot](TESTNET-REWARD-PILOT.md): disabled-by-default receipts and exact indexed transfer checks.
 - [Next-five acceptance](NEXT-FIVE-ACCEPTANCE.md): software scope and real-device, community and funded-wallet work still pending.
+
+- [Production monitoring](PRODUCTION-MONITORING.md): HTTP checks, private snapshots and scheduled run summaries.

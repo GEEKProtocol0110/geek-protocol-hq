@@ -197,3 +197,8 @@ Quiz Quest has four sequential chapters. **Value in Motion** follows Keys to the
 - `/ops/testnet/` provides an owner-only, disabled-by-default testnet-10 receipt pipeline. It ties a pilot receipt to the owner's completed server-graded Kaspa Daily Signal, exports an exact transfer request, records one transaction hash and checks its matching indexed operation. No automatic signing or broadcasting is implemented. No real payout was performed; a funded test wallet, approved signer and pinned deployed test asset are required. Mainnet settlement remains disabled.
 
 See [acceptance procedures](NEXT-FIVE-ACCEPTANCE.md) and [testnet pilot boundaries](TESTNET-REWARD-PILOT.md). Synthetic transaction fixtures prove software behavior, not on-chain payout success.
+
+
+## October 14: production monitoring
+
+Twenty credential-free HTTP probes now cover key public pages, database health, the Study catalog, Royale discovery, widget release metadata, disabled payment gates and three private workspaces. The owner desk at `/ops/monitor/` runs bounded checks and retains twenty-five snapshots. Missing, damaged and stale evidence cannot appear as current passing status. A separate pinned GitHub workflow runs the same checks every fifteen minutes, with failures in its job summary; its schedule and notification delivery are not guaranteed. No player state, token settlement, signing or separate messaging service is enabled. See [Production Monitoring](PRODUCTION-MONITORING.md) for coverage and limits.
