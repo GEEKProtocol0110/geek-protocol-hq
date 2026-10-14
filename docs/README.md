@@ -74,3 +74,5 @@ Geek Protocol HQ is implemented and internally verified in several areas. It is 
 - [Next-five acceptance](NEXT-FIVE-ACCEPTANCE.md): software scope and real-device, community and funded-wallet work still pending.
 
 - [Production monitoring](PRODUCTION-MONITORING.md): HTTP checks, private snapshots and scheduled run summaries.
+
+- [Economy stress lab](ECONOMY-STRESS.md): current credit paths, hypothetical reserve math and replay evidence.

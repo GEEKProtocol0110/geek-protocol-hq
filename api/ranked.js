@@ -1,3 +1,4 @@
+import { ROUND_CONFIG, RANKED_START_IP_LIMIT } from '../server/game-economy.js';
 import { randomBytes } from 'node:crypto';
 import { recordCommunityQuestionUse } from '../server/cce.js';
 import { categories, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
@@ -19,18 +20,7 @@ const NETWORK_GRACE_MS = 350;
 const runKey = (id) => `geek:run:${id}`;
 const runSnapshots = new WeakMap();
 const runIdPattern = /^[a-f0-9]{40}$/;
-const ROUND_CONFIG = [
-  { round: 1, entry: 0, reward: 10, max: 100, label: 'INITIATION' },
-  { round: 2, entry: 40, reward: 20, max: 200, label: 'BASIC PROTOCOLS' },
-  { round: 3, entry: 100, reward: 40, max: 400, label: 'NETWORK LAYER' },
-  { round: 4, entry: 200, reward: 80, max: 800, label: 'DATA STREAMS' },
-  { round: 5, entry: 400, reward: 150, max: 1500, label: 'GRID ACCESS' },
-  { round: 6, entry: 750, reward: 280, max: 2800, label: 'DEEP PROTOCOL' },
-  { round: 7, entry: 1250, reward: 450, max: 4500, label: 'CIPHER DESCENT' },
-  { round: 8, entry: 2000, reward: 700, max: 7000, label: 'CORE BREACH' },
-  { round: 9, entry: 3500, reward: 1100, max: 11000, label: 'OMNISCIENT GATE' },
-  { round: 10, entry: 6000, reward: 1800, max: 18000, label: 'APEX PROTOCOL' }
-];
+
 const MODE_CONFIG = {
   gauntlet: { questionCount: 10, questionMs: QUESTION_MS, maxRounds: 10, rewards: true, label: '' },
   daily: { questionCount: 5, questionMs: QUESTION_MS, maxRounds: 1, rewards: false, label: 'DAILY SIGNAL' },
@@ -269,7 +259,7 @@ export default async function handler(req, res) {
     const action = String(body.action || '');
     await rateLimit('ranked', playerId, 240, 60 * 5);
     if (action === 'start') {
-      await rateLimit('ranked-start-ip', clientFingerprint(req), 20, 60 * 60);
+      await rateLimit('ranked-start-ip', clientFingerprint(req), RANKED_START_IP_LIMIT.maximum, RANKED_START_IP_LIMIT.seconds);
       const category = categories.has(body.category) ? body.category : 'kaspa';
       const mode = Object.hasOwn(MODE_CONFIG, body.mode) ? body.mode : 'gauntlet';
       const focus = ['ghostdag', 'builders'].includes(body.focus) ? body.focus : '';
