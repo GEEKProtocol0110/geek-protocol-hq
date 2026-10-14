@@ -202,3 +202,8 @@ See [acceptance procedures](NEXT-FIVE-ACCEPTANCE.md) and [testnet pilot boundari
 ## October 14: production monitoring
 
 Twenty credential-free HTTP probes now cover key public pages, database health, the Study catalog, Royale discovery, widget release metadata, disabled payment gates and three private workspaces. The owner desk at `/ops/monitor/` runs bounded checks and retains twenty-five snapshots. Missing, damaged and stale evidence cannot appear as current passing status. A separate pinned GitHub workflow runs the same checks every fifteen minutes, with failures in its job summary; its schedule and notification delivery are not guaranteed. No player state, token settlement, signing or separate messaging service is enabled. See [Production Monitoring](PRODUCTION-MONITORING.md) for coverage and limits.
+
+
+## October 14: economy stress tests
+
+The private `/ops/stress/` lab and a reproducible baseline model the existing Gauntlet credit rules separately from hypothetical token reserves. Real Redis checks cover a hundred concurrent identical planning receipts, changed-reference terms, a lost accepted reply, and replayed ranked answers versus new legitimate free rounds. The 70/30 split conserves each receipt's fee, with recycle rounded down and burn pending receiving the remainder. Empty reserves, period caps, token-supply constraints and unsafe profile-credit paths are covered. These are internal tests and modeled budgets; no actual funding, credit conversion, burn execution, changed game fees, reward queue or settlement is enabled. See [Economy Stress](ECONOMY-STRESS.md).

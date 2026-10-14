@@ -21,6 +21,8 @@ The October 14 improvements add [private imported-question review](docs/IMPORTED
 
 The [production monitor](docs/PRODUCTION-MONITORING.md) adds twenty read-only HTTP probes, a private owner history at `/ops/monitor/`, and independent scheduled GitHub run summaries.
 
+The [economy stress lab](docs/ECONOMY-STRESS.md) adds reproducible credit-path, per-receipt rounding, reserve-depletion and replay checks. The private `/ops/stress/` calculator changes no game rules or balances.
+
 **Current focus:** polish Learn → Study → practice → see progress. Existing extras remain available through Explore; economy accounting foundations are now active. Larger Arena, DAO and launchpad expansions remain on hold. Real purchases and settlement remain disabled.
 
 The [power-up and economy foundation](https://www.geekprotocol.xyz/economy/) restores six planned items, treasury categories, exact 70/30 fee examples, and a private planning journal. It cannot move funds or create spendable GEEK. Try [free assisted practice](https://www.geekprotocol.xyz/practice/) with one 50/50 and one Extra Time use per session. It awards no XP, credits, tokens or ranked entries. Read the [Economy Protocol](docs/ECONOMY-PROTOCOL.md).

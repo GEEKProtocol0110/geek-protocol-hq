@@ -96,6 +96,14 @@
       "destination": "/api/session?service=operations&path=monitor"
     },
     {
+      "source": "/ops/stress",
+      "destination": "/api/session?service=operations&path=stress"
+    },
+    {
+      "source": "/ops/stress/",
+      "destination": "/api/session?service=operations&path=stress"
+    },
+    {
       "source": "/ops/:path*",
       "destination": "/api/session?service=operations&path=:path*"
     },

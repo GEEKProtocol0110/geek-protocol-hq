@@ -10,6 +10,7 @@ import { operationsAttentionHandler } from './operations-attention.js';
 import { importedReviewHandler } from './imported-review.js';
 import { testnetRewardsHandler } from './testnet-rewards.js';
 import { operationsMonitorHandler } from './operations-monitor.js';
+import { operationsStressHandler } from './operations-stress.js';
 
 const files = new Map([
   ['', ['index.html', 'text/html; charset=utf-8']],
@@ -21,6 +22,8 @@ const files = new Map([
   ['testnet', ['testnet/index.html', 'text/html; charset=utf-8']],
   ['assets/testnet.js', ['assets/testnet.js', 'text/javascript; charset=utf-8']],
   ['monitor', ['monitor/index.html', 'text/html; charset=utf-8']],
+  ['stress', ['stress/index.html', 'text/html; charset=utf-8']],
+  ['assets/stress.js', ['assets/stress.js', 'text/javascript; charset=utf-8']],
   ['assets/monitor.js', ['assets/monitor.js', 'text/javascript; charset=utf-8']],
   ['assets/ops.js', ['assets/ops.js', 'text/javascript; charset=utf-8']],
   ['assets/ops-core.js', ['assets/ops-core.js', 'text/javascript; charset=utf-8']],
@@ -44,6 +47,7 @@ export default async function operationsHandler(req, res) {
     if (action === 'imported') return importedReviewHandler(req, res);
     if (action === 'testnet') return testnetRewardsHandler(req, res);
     if (action === 'monitor') return operationsMonitorHandler(req, res);
+    if (action === 'stress') return operationsStressHandler(req, res);
     if (action === 'login' || action === 'logout') {
       if (req.method !== 'POST') return methodNotAllowed(res, 'POST');
       if (!trustedOrigin(req) || !operationsJsonRequest(req)) return sendJson(res, 403, { ok: false, error: 'Access was not accepted.' });

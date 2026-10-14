@@ -1,0 +1,463 @@
+{
+  "model": "economy-stress-v1",
+  "mode": "planning-only",
+  "roundConfiguration": [
+    {
+      "round": 1,
+      "entry": 0,
+      "reward": 10,
+      "max": 100,
+      "label": "INITIATION"
+    },
+    {
+      "round": 2,
+      "entry": 40,
+      "reward": 20,
+      "max": 200,
+      "label": "BASIC PROTOCOLS"
+    },
+    {
+      "round": 3,
+      "entry": 100,
+      "reward": 40,
+      "max": 400,
+      "label": "NETWORK LAYER"
+    },
+    {
+      "round": 4,
+      "entry": 200,
+      "reward": 80,
+      "max": 800,
+      "label": "DATA STREAMS"
+    },
+    {
+      "round": 5,
+      "entry": 400,
+      "reward": 150,
+      "max": 1500,
+      "label": "GRID ACCESS"
+    },
+    {
+      "round": 6,
+      "entry": 750,
+      "reward": 280,
+      "max": 2800,
+      "label": "DEEP PROTOCOL"
+    },
+    {
+      "round": 7,
+      "entry": 1250,
+      "reward": 450,
+      "max": 4500,
+      "label": "CIPHER DESCENT"
+    },
+    {
+      "round": 8,
+      "entry": 2000,
+      "reward": 700,
+      "max": 7000,
+      "label": "CORE BREACH"
+    },
+    {
+      "round": 9,
+      "entry": 3500,
+      "reward": 1100,
+      "max": 11000,
+      "label": "OMNISCIENT GATE"
+    },
+    {
+      "round": 10,
+      "entry": 6000,
+      "reward": 1800,
+      "max": 18000,
+      "label": "APEX PROTOCOL"
+    }
+  ],
+  "startLimit": {
+    "maximum": 20,
+    "seconds": 3600
+  },
+  "gauntlet": [
+    {
+      "correctPerRound": 10,
+      "currency": "ALPHA-CREDITS",
+      "startingCredits": "0",
+      "issued": "46300",
+      "spent": "14240",
+      "closingCredits": "32060",
+      "netCreated": "32060",
+      "completedRounds": 10,
+      "stoppedAtRound": null,
+      "rounds": [
+        {
+          "round": 1,
+          "correct": 10,
+          "beforeCredits": "0",
+          "entryCredits": "0",
+          "issuedCredits": "100",
+          "afterCredits": "100"
+        },
+        {
+          "round": 2,
+          "correct": 10,
+          "beforeCredits": "100",
+          "entryCredits": "40",
+          "issuedCredits": "200",
+          "afterCredits": "260"
+        },
+        {
+          "round": 3,
+          "correct": 10,
+          "beforeCredits": "260",
+          "entryCredits": "100",
+          "issuedCredits": "400",
+          "afterCredits": "560"
+        },
+        {
+          "round": 4,
+          "correct": 10,
+          "beforeCredits": "560",
+          "entryCredits": "200",
+          "issuedCredits": "800",
+          "afterCredits": "1160"
+        },
+        {
+          "round": 5,
+          "correct": 10,
+          "beforeCredits": "1160",
+          "entryCredits": "400",
+          "issuedCredits": "1500",
+          "afterCredits": "2260"
+        },
+        {
+          "round": 6,
+          "correct": 10,
+          "beforeCredits": "2260",
+          "entryCredits": "750",
+          "issuedCredits": "2800",
+          "afterCredits": "4310"
+        },
+        {
+          "round": 7,
+          "correct": 10,
+          "beforeCredits": "4310",
+          "entryCredits": "1250",
+          "issuedCredits": "4500",
+          "afterCredits": "7560"
+        },
+        {
+          "round": 8,
+          "correct": 10,
+          "beforeCredits": "7560",
+          "entryCredits": "2000",
+          "issuedCredits": "7000",
+          "afterCredits": "12560"
+        },
+        {
+          "round": 9,
+          "correct": 10,
+          "beforeCredits": "12560",
+          "entryCredits": "3500",
+          "issuedCredits": "11000",
+          "afterCredits": "20060"
+        },
+        {
+          "round": 10,
+          "correct": 10,
+          "beforeCredits": "20060",
+          "entryCredits": "6000",
+          "issuedCredits": "18000",
+          "afterCredits": "32060"
+        }
+      ]
+    },
+    {
+      "correctPerRound": 5,
+      "currency": "ALPHA-CREDITS",
+      "startingCredits": "0",
+      "issued": "14150",
+      "spent": "8240",
+      "closingCredits": "5910",
+      "netCreated": "5910",
+      "completedRounds": 9,
+      "stoppedAtRound": 10,
+      "rounds": [
+        {
+          "round": 1,
+          "correct": 5,
+          "beforeCredits": "0",
+          "entryCredits": "0",
+          "issuedCredits": "50",
+          "afterCredits": "50"
+        },
+        {
+          "round": 2,
+          "correct": 5,
+          "beforeCredits": "50",
+          "entryCredits": "40",
+          "issuedCredits": "100",
+          "afterCredits": "110"
+        },
+        {
+          "round": 3,
+          "correct": 5,
+          "beforeCredits": "110",
+          "entryCredits": "100",
+          "issuedCredits": "200",
+          "afterCredits": "210"
+        },
+        {
+          "round": 4,
+          "correct": 5,
+          "beforeCredits": "210",
+          "entryCredits": "200",
+          "issuedCredits": "400",
+          "afterCredits": "410"
+        },
+        {
+          "round": 5,
+          "correct": 5,
+          "beforeCredits": "410",
+          "entryCredits": "400",
+          "issuedCredits": "750",
+          "afterCredits": "760"
+        },
+        {
+          "round": 6,
+          "correct": 5,
+          "beforeCredits": "760",
+          "entryCredits": "750",
+          "issuedCredits": "1400",
+          "afterCredits": "1410"
+        },
+        {
+          "round": 7,
+          "correct": 5,
+          "beforeCredits": "1410",
+          "entryCredits": "1250",
+          "issuedCredits": "2250",
+          "afterCredits": "2410"
+        },
+        {
+          "round": 8,
+          "correct": 5,
+          "beforeCredits": "2410",
+          "entryCredits": "2000",
+          "issuedCredits": "3500",
+          "afterCredits": "3910"
+        },
+        {
+          "round": 9,
+          "correct": 5,
+          "beforeCredits": "3910",
+          "entryCredits": "3500",
+          "issuedCredits": "5500",
+          "afterCredits": "5910"
+        }
+      ]
+    },
+    {
+      "correctPerRound": 4,
+      "currency": "ALPHA-CREDITS",
+      "startingCredits": "0",
+      "issued": "120",
+      "spent": "40",
+      "closingCredits": "80",
+      "netCreated": "80",
+      "completedRounds": 2,
+      "stoppedAtRound": 3,
+      "rounds": [
+        {
+          "round": 1,
+          "correct": 4,
+          "beforeCredits": "0",
+          "entryCredits": "0",
+          "issuedCredits": "40",
+          "afterCredits": "40"
+        },
+        {
+          "round": 2,
+          "correct": 4,
+          "beforeCredits": "40",
+          "entryCredits": "40",
+          "issuedCredits": "80",
+          "afterCredits": "80"
+        }
+      ]
+    },
+    {
+      "correctPerRound": 0,
+      "currency": "ALPHA-CREDITS",
+      "startingCredits": "0",
+      "issued": "0",
+      "spent": "0",
+      "closingCredits": "0",
+      "netCreated": "0",
+      "completedRounds": 1,
+      "stoppedAtRound": 2,
+      "rounds": [
+        {
+          "round": 1,
+          "correct": 0,
+          "beforeCredits": "0",
+          "entryCredits": "0",
+          "issuedCredits": "0",
+          "afterCredits": "0"
+        }
+      ]
+    }
+  ],
+  "repeatedFreeRounds": {
+    "currency": "ALPHA-CREDITS",
+    "completions": 1000000,
+    "correct": 10,
+    "entryCredits": "0",
+    "issuedCredits": "100000000",
+    "startLimit": {
+      "maximum": 20,
+      "seconds": 3600
+    },
+    "startWindowsPerUnchangedFingerprint": "50000",
+    "scope": "Aggregate completions across players/time, not a same-hour per-person forecast. Starts share the existing network-fingerprint limit across ranked modes; no lifetime credit-grant cap is modeled."
+  },
+  "reserve": {
+    "feesOnly": {
+      "model": "economy-stress-v1",
+      "currency": "GEEK",
+      "decimals": 8,
+      "policy": "platform-fees-70-30-v1",
+      "mode": "planning-only",
+      "fundingVerified": false,
+      "transfersEnabled": false,
+      "burnsConfirmed": false,
+      "input": {
+        "openingReserveRaw": "0",
+        "feeCount": 1000,
+        "feePerReceiptRaw": "100000000",
+        "claimCount": 1000,
+        "rewardPerClaimRaw": "100000000",
+        "rewardCapRaw": "100000000000"
+      },
+      "feeTotalRaw": "100000000000",
+      "recyclePendingRaw": "70000000000",
+      "burnPendingRaw": "30000000000",
+      "aggregateRecycleComparisonRaw": "70000000000",
+      "roundingDifferenceRaw": "0",
+      "modeledAvailableRaw": "70000000000",
+      "requestedRewardsRaw": "100000000000",
+      "coveredClaims": "700",
+      "blockedClaims": "300",
+      "coveredRewardsRaw": "70000000000",
+      "closingReserveRaw": "0",
+      "fundingGapRaw": "30000000000",
+      "capGapRaw": "0",
+      "capLimited": false,
+      "feeReceiptsToCoverDemand": "1429",
+      "scope": "Hypothetical one-batch token budget: fees arrive first, all recycling is assigned to this reserve, then distinct equal-sized proposed claims. Burns remain pending and cannot fund rewards. This is not actual reserve funding, credit conversion or settlement."
+    },
+    "tinyFees": {
+      "model": "economy-stress-v1",
+      "currency": "GEEK",
+      "decimals": 8,
+      "policy": "platform-fees-70-30-v1",
+      "mode": "planning-only",
+      "fundingVerified": false,
+      "transfersEnabled": false,
+      "burnsConfirmed": false,
+      "input": {
+        "openingReserveRaw": "0",
+        "feeCount": 1000000,
+        "feePerReceiptRaw": "1",
+        "claimCount": 1,
+        "rewardPerClaimRaw": "1",
+        "rewardCapRaw": "1"
+      },
+      "feeTotalRaw": "1000000",
+      "recyclePendingRaw": "0",
+      "burnPendingRaw": "1000000",
+      "aggregateRecycleComparisonRaw": "700000",
+      "roundingDifferenceRaw": "700000",
+      "modeledAvailableRaw": "0",
+      "requestedRewardsRaw": "1",
+      "coveredClaims": "0",
+      "blockedClaims": "1",
+      "coveredRewardsRaw": "0",
+      "closingReserveRaw": "0",
+      "fundingGapRaw": "1",
+      "capGapRaw": "0",
+      "capLimited": false,
+      "feeReceiptsToCoverDemand": null,
+      "scope": "Hypothetical one-batch token budget: fees arrive first, all recycling is assigned to this reserve, then distinct equal-sized proposed claims. Burns remain pending and cannot fund rewards. This is not actual reserve funding, credit conversion or settlement."
+    },
+    "depleted": {
+      "model": "economy-stress-v1",
+      "currency": "GEEK",
+      "decimals": 8,
+      "policy": "platform-fees-70-30-v1",
+      "mode": "planning-only",
+      "fundingVerified": false,
+      "transfersEnabled": false,
+      "burnsConfirmed": false,
+      "input": {
+        "openingReserveRaw": "0",
+        "feeCount": 0,
+        "feePerReceiptRaw": "0",
+        "claimCount": 1000000,
+        "rewardPerClaimRaw": "100000000",
+        "rewardCapRaw": "100000000000000"
+      },
+      "feeTotalRaw": "0",
+      "recyclePendingRaw": "0",
+      "burnPendingRaw": "0",
+      "aggregateRecycleComparisonRaw": "0",
+      "roundingDifferenceRaw": "0",
+      "modeledAvailableRaw": "0",
+      "requestedRewardsRaw": "100000000000000",
+      "coveredClaims": "0",
+      "blockedClaims": "1000000",
+      "coveredRewardsRaw": "0",
+      "closingReserveRaw": "0",
+      "fundingGapRaw": "100000000000000",
+      "capGapRaw": "0",
+      "capLimited": false,
+      "feeReceiptsToCoverDemand": null,
+      "scope": "Hypothetical one-batch token budget: fees arrive first, all recycling is assigned to this reserve, then distinct equal-sized proposed claims. Burns remain pending and cannot fund rewards. This is not actual reserve funding, credit conversion or settlement."
+    },
+    "capped": {
+      "model": "economy-stress-v1",
+      "currency": "GEEK",
+      "decimals": 8,
+      "policy": "platform-fees-70-30-v1",
+      "mode": "planning-only",
+      "fundingVerified": false,
+      "transfersEnabled": false,
+      "burnsConfirmed": false,
+      "input": {
+        "openingReserveRaw": "100000000000",
+        "feeCount": 0,
+        "feePerReceiptRaw": "0",
+        "claimCount": 1000,
+        "rewardPerClaimRaw": "100000000",
+        "rewardCapRaw": "10000000000"
+      },
+      "feeTotalRaw": "0",
+      "recyclePendingRaw": "0",
+      "burnPendingRaw": "0",
+      "aggregateRecycleComparisonRaw": "0",
+      "roundingDifferenceRaw": "0",
+      "modeledAvailableRaw": "100000000000",
+      "requestedRewardsRaw": "100000000000",
+      "coveredClaims": "100",
+      "blockedClaims": "900",
+      "coveredRewardsRaw": "10000000000",
+      "closingReserveRaw": "90000000000",
+      "fundingGapRaw": "0",
+      "capGapRaw": "90000000000",
+      "capLimited": true,
+      "feeReceiptsToCoverDemand": "0",
+      "scope": "Hypothetical one-batch token budget: fees arrive first, all recycling is assigned to this reserve, then distinct equal-sized proposed claims. Burns remain pending and cannot fund rewards. This is not actual reserve funding, credit conversion or settlement."
+    }
+  },
+  "transfersEnabled": false,
+  "creditConversionEnabled": false
+}
