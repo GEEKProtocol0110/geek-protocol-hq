@@ -124,6 +124,9 @@
     },
     "api/rewards.js": {
       "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
+    },
+    "api/widget.js": {
+      "maxDuration": 30
     }
   },
   "headers": [
