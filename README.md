@@ -17,15 +17,17 @@
 
 The [daily vault](https://www.geekprotocol.xyz/vault/) offers one visible cosmetic seal per UTC day, with a private collection and replay-safe receipts. Login claims award no XP, credits, or tokens.
 
+The October 14 improvements add [private imported-question review](docs/IMPORTED-QUESTION-REVIEW.md), guest-first sign-in with activity return paths, three practical technology lessons, opt-in Royale room discovery, and an [isolated testnet receipt pilot](docs/TESTNET-REWARD-PILOT.md). See [acceptance steps](docs/NEXT-FIVE-ACCEPTANCE.md) for real-device, community and funded-wallet checks still outstanding.
+
 **Current focus:** polish Learn → Study → practice → see progress. Existing extras remain available through Explore; economy accounting foundations are now active. Larger Arena, DAO and launchpad expansions remain on hold. Real purchases and settlement remain disabled.
 
 The [power-up and economy foundation](https://www.geekprotocol.xyz/economy/) restores six planned items, treasury categories, exact 70/30 fee examples, and a private planning journal. It cannot move funds or create spendable GEEK. Try [free assisted practice](https://www.geekprotocol.xyz/practice/) with one 50/50 and one Extra Time use per session. It awards no XP, credits, tokens or ranked entries. Read the [Economy Protocol](docs/ECONOMY-PROTOCOL.md).
 
-**Question bank:** 7,786 distinct active questions across eight categories after the October 8 editorial pass and ten sourced KRC-20 additions. See [Question Maintenance](docs/QUESTION-MAINTENANCE.md) for counts, source licenses, and editorial review status.
+**Question bank:** 7,801 distinct active questions across eight categories, including fifteen original technology questions added on October 14. Guided Study has eleven topics and 191 concepts. See [Question Maintenance](docs/QUESTION-MAINTENANCE.md) for counts, source licenses, and editorial review status.
 
 ## What is Geek Protocol?
 
-Geek Protocol turns knowledge into a verifiable player journey. Players study Kaspa at their own pace with A.C.E., revisit missed concepts, compete in timed trivia, build persistent profiles, join live lobbies, contribute reviewed questions, and interact with the GEEK ecosystem through non-custodial Kaspa wallet proofs and a Kasware mint flow.
+Geek Protocol turns knowledge into a verifiable player journey. Players study Kaspa and practical technology at their own pace with A.C.E., revisit missed concepts, compete in timed trivia, build persistent profiles, join live lobbies, contribute reviewed questions, and interact with the GEEK ecosystem through non-custodial Kaspa wallet proofs and a Kasware mint flow.
 
 The project began as a way to make learning exciting for one child. HQ is the public Alpha where that idea is becoming a transparent, security-first Proof-of-Learning platform on Kaspa.
 

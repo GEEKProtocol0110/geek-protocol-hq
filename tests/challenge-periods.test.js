@@ -25,6 +25,7 @@ test('period packs are deterministic, cover eight topics, and contain distinct r
     assert.equal(new Set(pack.questions.map(q => q.conceptId)).size, period.questionCount);
     assert.equal(new Set(pack.questions.map(q => q.topic)).size, 8);
     assert.ok(pack.questions.every(q => q.reviewStatus === 'source-checked' && q.id === q.conceptId));
+    assert.ok(pack.questions.every(q => !q.id.startsWith('TECH-')), 'New Study subjects do not change Kaspa competition allocation');
     const counts = Object.fromEntries(['easy', 'medium', 'hard'].map(t => [t, pack.questions.filter(q => q.difficulty === t).length]));
     assert.deepEqual(counts, kind === 'weekly' ? { easy: 4, medium: 4, hard: 2 } : { easy: 8, medium: 8, hard: 4 });
   }

@@ -1,6 +1,6 @@
 # Geek Protocol HQ — Project Status
 
-**Snapshot date:** 2026-10-11<br />
+**Snapshot date:** 2026-10-14<br />
 **Release channel:** Public Alpha  
 **Production:** [www.geekprotocol.xyz](https://www.geekprotocol.xyz/)  
 **Repository:** [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq)
@@ -11,7 +11,7 @@ The current focus is Learn, guided Study, practice, saved progress, and free gam
 
 ## Executive summary
 
-Geek Protocol HQ is a deployed Proof-of-Learning Alpha for the Kaspa ecosystem. The current release supports untimed Kaspa Study with A.C.E., server-authoritative trivia, persistent player progression, live lobbies, Kasware-based identity proof and recovery, community question review, collectible trading, and a non-custodial interface for the existing GEEK fair mint.
+Geek Protocol HQ is a deployed Proof-of-Learning Alpha for the Kaspa ecosystem. The current release supports untimed Kaspa and technology Study with A.C.E., server-authoritative trivia, persistent player progression, live lobbies, Kasware-based identity proof and recovery, community question review, collectible trading, and a non-custodial interface for the existing GEEK fair mint.
 
 The application is deliberately split into two risk classes:
 
@@ -186,3 +186,14 @@ The [dated readiness review](LAUNCH-READINESS-2026-10-11.md) records 328 passing
 ## Ecosystem improvement release — October 11, 2026
 
 Quiz Quest has four sequential chapters. **Value in Motion** follows Keys to the Grid with UTXOs, change, fee arithmetic and accepted-transaction evidence. It keeps a separate v1 ledger and Value Pathfinder badge, without altering earlier saves or enabling financial rewards. Mini adds source-linked practice and routes missed topics to HQ Study; Geek Jr adds local learner profiles and progress backups. Geek Wallet is a public-address portfolio companion. The Android widget already has a signed 1.4.0 APK/AAB; automated release acceptance complements, but does not replace, owner testing on physical phones and Play Console submission. Marketplace expansion remains paused.
+
+
+## October 14: next-five software improvements
+
+- Imported-question review is available at `/ops/imported/`: ten-row decisions, source checks, stale-version protection, private export and a staging tool that preserves saved-run answer keys. No live editorial decisions were made by this release.
+- Guest-first sign-in appears before wallet setup. Fixed activity return paths support Study, Play, Quest, Royale and Start. Mobile form sizing and target spacing were improved; physical phone acceptance remains pending.
+- Study adds three guided technology lessons and fifteen original source-checked MDN-based questions. Eleven topics cover 191 concepts. Private feedback remains untimed and has no XP, credit or token rewards.
+- Royale hosts may opt into public waiting-room discovery. Invite-only remains the default. Listings contain codes and seat counts, exclude full / started / stale-host rooms and never include player names, identities or questions. Actual 10–20-player community trials remain pending.
+- `/ops/testnet/` provides an owner-only, disabled-by-default testnet-10 receipt pipeline. It ties a pilot receipt to the owner's completed server-graded Kaspa Daily Signal, exports an exact transfer request, records one transaction hash and checks its matching indexed operation. No automatic signing or broadcasting is implemented. No real payout was performed; a funded test wallet, approved signer and pinned deployed test asset are required. Mainnet settlement remains disabled.
+
+See [acceptance procedures](NEXT-FIVE-ACCEPTANCE.md) and [testnet pilot boundaries](TESTNET-REWARD-PILOT.md). Synthetic transaction fixtures prove software behavior, not on-chain payout success.

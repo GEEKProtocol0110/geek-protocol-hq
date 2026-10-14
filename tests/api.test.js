@@ -1263,10 +1263,10 @@ const studyChoice = payload => {
 const studyAnswer = (payload, cookie, correct = true) => studyCall({ action: 'answer', runId: payload.run.id, questionToken: payload.question.token, selectedIndex: correct ? studyChoice(payload) : (studyChoice(payload) + 1) % 4 }, cookie);
 const studyNext = (payload, cookie) => studyCall({ action: 'next', runId: payload.run.id, questionToken: payload.result.questionToken }, cookie);
 
-test('Study catalog exposes eight lessons and the expanded distinct bank without answer keys', async () => {
+test('Study catalog exposes eleven lessons and the expanded distinct bank without answer keys', async () => {
   const res = await studyCall(undefined, '', 'GET');
   assert.equal(res.statusCode, 200);
-  assert.equal(res.body.topics.length, 8);
+  assert.equal(res.body.topics.length, 11);
   assert.equal(res.body.topics.reduce((n, t) => n + t.count, 0), studyBank().length);
   assert.ok(studyBank().length > 80);
   assert.equal(new Set(studyBank().map(q => q.conceptId)).size, studyBank().length);
@@ -1766,4 +1766,27 @@ test('personal Geek traits persist through reload and avatar switching; legacy r
   const resave = response(); await collectiblesHandler(request('POST', { action: 'customize-avatar', customization: legacy }, cookie), resave);
   assert.equal(resave.statusCode, 200); assert.deepEqual(resave.body.collection.customization, normalizeGeek(legacy));
   assert.equal(defaultGeek.version, 2);
+});
+
+
+test('technology Study grades privately, saves missed concepts and resumes review without ranked rewards', async () => {
+  const cookie = await startSession('Technology Learner');
+  for (const topic of ['web-status', 'browser-privacy', 'exact-values']) {
+    const first = (await studyCall({ action: 'start', topic, level: 'mixed' }, cookie)).body;
+    assert.equal(first.run.total, 5);
+    assert.equal(JSON.stringify(first.question).includes('correctIndex'), false);
+    const missedId = storedStudy(first).ids[0];
+    const graded = (await studyAnswer(first, cookie, false)).body;
+    assert.equal(graded.result.correct, false);
+    assert.equal(new URL(graded.result.source).hostname, 'developer.mozilla.org');
+    assert.equal(graded.rewardsEnabled, false);
+    strings.delete(`geek:study:${first.run.id}`);
+    const progress = (await studyCall({ action: 'progress' }, cookie)).body.progress;
+    assert.equal(progress.concepts.find(c => c.id === missedId).topic, topic);
+    const review = (await studyCall({ action: 'start', topic, review: true }, cookie)).body;
+    assert.deepEqual(storedStudy(review).ids, [missedId]);
+    const fixed = (await studyAnswer(review, cookie)).body;
+    assert.equal(fixed.result.correct, true);
+    assert.equal(fixed.progress.topics.find(t => t.id === topic).review, 0);
+  }
 });

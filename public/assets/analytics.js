@@ -4,7 +4,7 @@
   const hosts = new Set(['www.geekprotocol.xyz', 'geekprotocol.xyz']);
   const pages = new Set(['/', '/kaspa/', '/study/', '/profile/', '/practice/', '/play/', '/memory/', '/lobby/', '/challenges/', '/vault/', '/collection/', '/contribute/', '/economy/', '/litepaper/', '/security/', '/mint/', '/rewards/']);
   const canonicalPath = pathname => pathname === '/' ? '/' : pathname.replace(/\/index\.html$/, '/').replace(/\/$/, '') + '/';
-  const topics = new Set(['origins', 'blockdag', 'mining', 'emission', 'wallets', 'tokens', 'ecosystem', 'fundamentals']);
+  const topics = new Set(['origins', 'blockdag', 'mining', 'emission', 'wallets', 'tokens', 'ecosystem', 'fundamentals', 'web-status', 'browser-privacy', 'exact-values']);
   const levels = new Set(['foundations', 'connections', 'mixed']);
   // Rebuild each payload from fixed categories. Never forward arbitrary properties.
   const learningData = (name, data, path) => {

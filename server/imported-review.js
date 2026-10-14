@@ -42,7 +42,9 @@ for i,key in ipairs(KEYS) do
   local version = ''
   if old then
     local ok, record = pcall(cjson.decode,old)
-    if not ok or type(record) ~= 'table' or type(record.version) ~= 'string' then return 'INVALID' end
+    if not ok or type(record) ~= 'table' or record.schema ~= 1 or record.category ~= proposals[i].category or record.id ~= proposals[i].id
+      or type(record.version) ~= 'string' or string.len(record.version) ~= 24 or not string.match(record.version, '^[a-f0-9]+$')
+      or record.sourceChecked ~= true or type(record.questionRevision) ~= 'string' or string.len(record.questionRevision) ~= 64 then return 'INVALID' end
     version = record.version
   end
   if version ~= proposals[i].expectedVersion then return 'CHANGED' end

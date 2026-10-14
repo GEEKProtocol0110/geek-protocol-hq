@@ -40,12 +40,14 @@ export const periodFromId = id => {
 export const buildChallengePack = period => {
   const seed = `geek-challenge-v1:${period.id}`;
   const hash = q => createHash('sha256').update(`${seed}:${q.conceptId}`).digest('hex');
-  const pool = studyBank().sort((a, b) => hash(a).localeCompare(hash(b)) || a.id.localeCompare(b.id));
+  // The existing Kaspa competitions keep their eight-topic allocation as Study expands.
+  const topics = studyTopics.filter(t => (t.bank || 'kaspa') === 'kaspa');
+  const pool = studyBank().filter(q => topics.some(t => t.category === q.topic)).sort((a, b) => hash(a).localeCompare(hash(b)) || a.id.localeCompare(b.id));
   const quotas = challengeConfigs[period.kind].quotas;
   const counts = { easy: 0, medium: 0, hard: 0 };
   const selected = [];
   const add = q => { selected.push(q); counts[q.difficulty]++; };
-  for (const topic of studyTopics) {
+  for (const topic of topics) {
     const q = pool.find(q => q.topic === topic.category && counts[q.difficulty] < quotas[q.difficulty]);
     if (!q) throw new Error('CHALLENGE_CONTENT_UNAVAILABLE');
     add(q);

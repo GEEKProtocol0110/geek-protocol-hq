@@ -1,0 +1,385 @@
+{
+  "metadata": {
+    "questionCount": 15,
+    "conceptCount": 15,
+    "reviewedAt": "2026-10-14",
+    "note": "Original scenario-based learning checks, internally checked against MDN primary documentation; not independently reviewed."
+  },
+  "questions": [
+    {
+      "id": "TECH-ST-001",
+      "conceptId": "TECH-ST-001",
+      "category": "Technology",
+      "subcategory": "Web Status & Requests",
+      "prompt": "An app receives HTTP 202 for a queued task. Which message best describes what the app actually knows?",
+      "options": [
+        "The task was accepted but its completion is not yet known",
+        "The task definitely completed",
+        "The request was never received",
+        "The server has proved the final result"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "HTTP 202 acknowledges acceptance for processing. It does not certify the later outcome.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/202",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-14",
+      "tags": [
+        "guided-study"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "Original questions by Geek Protocol; factual references linked individually."
+    },
+    {
+      "id": "TECH-ST-002",
+      "conceptId": "TECH-ST-002",
+      "category": "Technology",
+      "subcategory": "Web Status & Requests",
+      "prompt": "A public data service returns HTTP 503. What should its consumer report about a balance it could not read?",
+      "options": [
+        "Temporarily unavailable",
+        "A verified zero balance",
+        "A completed account deletion",
+        "An automatically corrected balance"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "HTTP 503 indicates that a service is currently unable to handle the request. An unavailable read does not establish the underlying value.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/503",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-14",
+      "tags": [
+        "guided-study"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "Original questions by Geek Protocol; factual references linked individually."
+    },
+    {
+      "id": "TECH-ST-003",
+      "conceptId": "TECH-ST-003",
+      "category": "Technology",
+      "subcategory": "Web Status & Requests",
+      "prompt": "A service responds HTTP 429 with Retry-After. Which response respects the service limit?",
+      "options": [
+        "Wait for the indicated interval before retrying",
+        "Send more requests immediately",
+        "Treat the response as a confirmed payment",
+        "Delete unrelated browser records"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "HTTP 429 reports too many requests. Retry-After can communicate how long the client should wait.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/429",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-14",
+      "tags": [
+        "guided-study"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "Original questions by Geek Protocol; factual references linked individually."
+    },
+    {
+      "id": "TECH-ST-004",
+      "conceptId": "TECH-ST-004",
+      "category": "Technology",
+      "subcategory": "Web Status & Requests",
+      "prompt": "A browser aborts a fetch request after a timeout. Which conclusion about a remote write is justified?",
+      "options": [
+        "The browser stopped waiting; the remote outcome may still need checking",
+        "The server certainly rolled back the write",
+        "The write certainly completed twice",
+        "The recipient address was changed"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "Aborting cancels the client fetch operation. That client-side action is not evidence that a remote application reversed an earlier write.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-14",
+      "tags": [
+        "guided-study"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "Original questions by Geek Protocol; factual references linked individually."
+    },
+    {
+      "id": "TECH-ST-005",
+      "conceptId": "TECH-ST-005",
+      "category": "Technology",
+      "subcategory": "Web Status & Requests",
+      "prompt": "Which HTTP method is defined for retrieving a representation rather than asking the server to change application state?",
+      "options": [
+        "GET",
+        "POST",
+        "PATCH",
+        "DELETE"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "GET requests a representation and is defined as a safe method. Sensitive information and write operations still need appropriate handling.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/GET",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-14",
+      "tags": [
+        "guided-study"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "Original questions by Geek Protocol; factual references linked individually."
+    },
+    {
+      "id": "TECH-ST-006",
+      "conceptId": "TECH-ST-006",
+      "category": "Technology",
+      "subcategory": "Browser Privacy & Storage",
+      "prompt": "A learner saves preferences in localStorage. What lifetime should the app normally expect for those values?",
+      "options": [
+        "They persist across browser sessions until removed or storage is cleared",
+        "They are automatically shared with every device",
+        "They disappear after each question",
+        "They are guaranteed permanent backups"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "localStorage is scoped to an origin and persists across browser sessions. It is not a substitute for backups and can be unavailable or cleared.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-14",
+      "tags": [
+        "guided-study"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "Original questions by Geek Protocol; factual references linked individually."
+    },
+    {
+      "id": "TECH-ST-007",
+      "conceptId": "TECH-ST-007",
+      "category": "Technology",
+      "subcategory": "Browser Privacy & Storage",
+      "prompt": "A result receipt uses sessionStorage. Which description best matches the browser feature?",
+      "options": [
+        "Storage tied to the page origin and the current tab session",
+        "A public record visible to all users",
+        "A permanent wallet recovery service",
+        "A shared database across all devices"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "sessionStorage is partitioned by origin and top-level browsing context. Closing a tab or window ends that page session.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-14",
+      "tags": [
+        "guided-study"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "Original questions by Geek Protocol; factual references linked individually."
+    },
+    {
+      "id": "TECH-ST-008",
+      "conceptId": "TECH-ST-008",
+      "category": "Technology",
+      "subcategory": "Browser Privacy & Storage",
+      "prompt": "An iPhone browser refuses an automatic Copy action. What user interface should preserve access to the text?",
+      "options": [
+        "A selectable text field for manual copying",
+        "A claim that copying succeeded",
+        "An invisible retry loop",
+        "A request for a wallet seed phrase"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "Clipboard access is restricted and browser permission behavior varies. A manual-copy path gives the user another way to obtain the text.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-14",
+      "tags": [
+        "guided-study"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "Original questions by Geek Protocol; factual references linked individually."
+    },
+    {
+      "id": "TECH-ST-009",
+      "conceptId": "TECH-ST-009",
+      "category": "Technology",
+      "subcategory": "Browser Privacy & Storage",
+      "prompt": "What does the HttpOnly cookie attribute prevent in ordinary page scripts?",
+      "options": [
+        "Reading the cookie through document.cookie",
+        "Every possible cross-site request",
+        "A user clearing browser cookies",
+        "All server-side authentication errors"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "HttpOnly prevents JavaScript access through document.cookie. It is one control and does not replace request-origin or authorization checks.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-14",
+      "tags": [
+        "guided-study"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "Original questions by Geek Protocol; factual references linked individually."
+    },
+    {
+      "id": "TECH-ST-010",
+      "conceptId": "TECH-ST-010",
+      "category": "Technology",
+      "subcategory": "Browser Privacy & Storage",
+      "prompt": "Why should an app catch localStorage write errors instead of assuming every Save action worked?",
+      "options": [
+        "Browser policy or storage limits can prevent the write",
+        "Every write creates a verified cloud backup",
+        "Storage values automatically prove ownership",
+        "Saving a preference broadcasts a transaction"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "Access can raise SecurityError when persistence is disallowed. Apps should handle unavailable storage and avoid promising that a record was saved.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-14",
+      "tags": [
+        "guided-study"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "Original questions by Geek Protocol; factual references linked individually."
+    },
+    {
+      "id": "TECH-ST-011",
+      "conceptId": "TECH-ST-011",
+      "category": "Technology",
+      "subcategory": "Exact Values & Data",
+      "prompt": "A counter exceeds JavaScript Number safe-integer precision. Which representation can preserve its integer value?",
+      "options": [
+        "BigInt or a validated decimal string",
+        "A rounded floating-point Number",
+        "A shortened display label alone",
+        "An arbitrary random number"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "BigInt represents integers beyond Number safe-integer limits. Display formatting and external JSON representation are separate concerns.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-14",
+      "tags": [
+        "guided-study"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "Original questions by Geek Protocol; factual references linked individually."
+    },
+    {
+      "id": "TECH-ST-012",
+      "conceptId": "TECH-ST-012",
+      "category": "Technology",
+      "subcategory": "Exact Values & Data",
+      "prompt": "Which JavaScript check tests whether a Number value is an exactly representable safe integer?",
+      "options": [
+        "Number.isSafeInteger(value)",
+        "String(value).includes(value)",
+        "Boolean(value)",
+        "value.toFixed(0)"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "Number.isSafeInteger rejects fractions, non-number values and integers outside the safe-integer range.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isSafeInteger",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-14",
+      "tags": [
+        "guided-study"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "Original questions by Geek Protocol; factual references linked individually."
+    },
+    {
+      "id": "TECH-ST-013",
+      "conceptId": "TECH-ST-013",
+      "category": "Technology",
+      "subcategory": "Exact Values & Data",
+      "prompt": "A response body contains broken JSON syntax. What should a caller expect from JSON.parse?",
+      "options": [
+        "A SyntaxError rather than a reliable parsed result",
+        "An automatically repaired object",
+        "A verified numeric zero",
+        "A successful blockchain confirmation"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "JSON.parse parses JSON text and throws SyntaxError for invalid syntax. Applications should handle that failure explicitly.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-14",
+      "tags": [
+        "guided-study"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "Original questions by Geek Protocol; factual references linked individually."
+    },
+    {
+      "id": "TECH-ST-014",
+      "conceptId": "TECH-ST-014",
+      "category": "Technology",
+      "subcategory": "Exact Values & Data",
+      "prompt": "A JSON counter arrives as the string \"120\". Which statement describes its initial JavaScript type?",
+      "options": [
+        "It is a string until explicitly interpreted or converted",
+        "It is already a BigInt",
+        "It is automatically a validated address",
+        "It is a boolean"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "Strings hold text. A decimal-looking string requires separate validation before it is used as a numeric counter.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-14",
+      "tags": [
+        "guided-study"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "Original questions by Geek Protocol; factual references linked individually."
+    },
+    {
+      "id": "TECH-ST-015",
+      "conceptId": "TECH-ST-015",
+      "category": "Technology",
+      "subcategory": "Exact Values & Data",
+      "prompt": "What is the result of comparing the Number 120 and the string \"120\" with JavaScript strict equality?",
+      "options": [
+        "False because the operand types differ",
+        "True because the characters look similar",
+        "A confirmed transfer receipt",
+        "A newly created BigInt"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "Strict equality does not convert different operand types to a common type. Number and string operands are different types.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-14",
+      "tags": [
+        "guided-study"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "Original questions by Geek Protocol; factual references linked individually."
+    }
+  ]
+}

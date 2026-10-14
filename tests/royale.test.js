@@ -6,7 +6,7 @@ import sessionHandler from '../api/session.js';
 import lobbiesHandler from '../api/lobbies.js';
 import identityHandler from '../api/identity.js';
 import kaspa from '@dfns/kaspa-wasm';
-import { royaleKey, royaleQuestionsKey, buildRoyaleQuestions } from '../server/royale.js';
+import { royaleKey, royaleQuestionsKey, royalePublicKey, buildRoyaleQuestions } from '../server/royale.js';
 
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
 process.env.UPSTASH_REDIS_REST_URL = 'https://redis.royale.test';
@@ -44,6 +44,67 @@ const start = async g => {
   await mutate(g.fields.code, (r, now) => { r.startsAt = now - 1000; });
 };
 const answer = async (g, index, selectedIndex) => call(g.cookies[index], 'answer', { ...g.fields, questionNumber: 1, selectedIndex });
+
+const discover = async () => {
+  const res = response();
+  await lobbiesHandler(request('GET', undefined, '', { service: 'royale', discover: '1' }), res);
+  return res;
+};
+test('public discovery is opt-in, anonymous, bounded and reveals no names, identities or questions', async () => {
+  await fixture.command('FLUSHDB'); const host = await session('Private Host'), guest = await session('Joining Guest');
+  const privateRoom = (await call(host, 'create', { category: 'kaspa', capacity: 2 })).body.royale;
+  assert.equal(privateRoom.visibility, 'private');
+  assert.deepEqual((await discover()).body.discovery.rooms, []);
+  assert.equal((await call(host, 'create', { category: 'kaspa', visibility: 'yes' })).statusCode, 400);
+  const publicRoom = (await call(host, 'create', { category: 'technology', capacity: 2, visibility: 'public' })).body.royale;
+  const first = await discover(); assert.equal(first.statusCode, 200);
+  assert.equal(first.headers['Set-Cookie'], undefined);
+  assert.deepEqual(Object.keys(first.body.discovery.rooms[0]).sort(), ['capacity', 'category', 'code', 'createdAt', 'expiresAt', 'online', 'seats']);
+  assert.equal(first.body.discovery.rooms[0].code, publicRoom.code);
+  assert.equal(first.body.discovery.rooms[0].seats, 1);
+  for (const secret of ['Private Host', pid(host), 'prompt', 'correctIndex', 'questionHash']) assert.equal(JSON.stringify(first.body).includes(secret), false);
+  const fields = { code: publicRoom.code, eventId: publicRoom.id };
+  assert.equal((await call(guest, 'join', fields)).statusCode, 200);
+  assert.deepEqual((await discover()).body.discovery.rooms, []);
+  await call(guest, 'leave', fields);
+  assert.equal((await discover()).body.discovery.rooms.length, 1);
+  await mutate(publicRoom.code, (r, now) => { r.players[r.hostId].lastSeen = now - 61000; });
+  assert.deepEqual((await discover()).body.discovery.rooms, []);
+  await call(host, 'view', fields);
+  assert.equal((await discover()).body.discovery.rooms.length, 1);
+  await call(host, 'cancel', fields);
+  assert.deepEqual((await discover()).body.discovery.rooms, []);
+  assert.equal(await fixture.command('ZCARD', royalePublicKey), 0);
+});
+test('discovery filters started and expired rooms and fails closed for damaged room records', async () => {
+  await fixture.command('FLUSHDB'); const host = await session('Discovery Host');
+  const room = (await call(host, 'create', { category: 'kaspa', visibility: 'public' })).body.royale;
+  await mutate(room.code, r => { r.phase = 'starting'; });
+  assert.deepEqual((await discover()).body.discovery.rooms, []);
+  await mutate(room.code, r => { r.phase = 'waiting'; });
+  await fixture.command('ZADD', royalePublicKey, Date.now() + 86400000, room.code);
+  await fixture.command('SET', royaleKey(room.code), '{damaged', 'EX', 86400);
+  assert.equal((await discover()).statusCode, 503);
+  await fixture.command('ZADD', royalePublicKey, 1, room.code);
+  assert.deepEqual((await discover()).body.discovery.rooms, []);
+  assert.equal(await fixture.command('ZCARD', royalePublicKey), 0);
+});
+test('discovery keeps a bounded index and returns at most twenty room summaries', async () => {
+  await fixture.command('FLUSHDB'); const host = await session('Bounded Host');
+  const first = (await call(host, 'create', { category: 'kaspa', visibility: 'public' })).body.royale;
+  const template = await stored(first.code), commands = [];
+  for (let n = 0; n < 260; n++) {
+    const code = `ROY-${String.fromCharCode(65 + Math.floor(n / 26))}${String.fromCharCode(65 + n % 26)}AAAAAA`;
+    const room = { ...template, code, expiresAt: template.expiresAt + n + 1 };
+    commands.push(['SET', royaleKey(code), JSON.stringify(room), 'EX', 86400], ['ZADD', royalePublicKey, room.expiresAt, code]);
+  }
+  await fixture.commands(commands);
+  assert.equal((await call(host, 'create', { category: 'kaspa', visibility: 'public' })).statusCode, 201);
+  assert.equal(await fixture.command('ZCARD', royalePublicKey), 250);
+  const listing = await discover(); assert.equal(listing.statusCode, 200);
+  assert.equal(listing.body.discovery.rooms.length, 20);
+  assert.ok(listing.body.discovery.rooms.every(r => r.seats === 1 && r.online === 1));
+});
 
 test('all eight active banks provide a frozen 100-question Royale pack', () => {
   for (const category of ['kaspa', 'video-games', 'science-fiction', 'technology', 'movies', 'history', 'comics', 'pop-culture']) {

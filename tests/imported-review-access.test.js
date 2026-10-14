@@ -73,4 +73,9 @@ test('invalid bodies and corrupted storage are rejected without replacing record
   assert.equal((await call({ cookie })).statusCode, 503);
   assert.equal((await call({ cookie, method: 'POST', body: proposal([row]) })).statusCode, 503);
   assert.equal(await fixture.command('GET', key), '{broken');
+  const damaged = JSON.stringify({ schema: 99, version: 'a'.repeat(24), category: 'technology', id: row.question.id });
+  await fixture.command('SET', key, damaged);
+  const stale = proposal([row]); stale.items[0].reviewVersion = 'a'.repeat(24);
+  assert.equal((await call({ cookie, method: 'POST', body: stale })).statusCode, 503);
+  assert.equal(await fixture.command('GET', key), damaged);
 });

@@ -10,9 +10,11 @@ export const readStudyRecords = async session => {
   const raw = await redis('HGETALL', studyProgressKey(session));
   const entries = Array.isArray(raw) ? Array.from({ length: raw.length / 2 }, (_, i) => [raw[i * 2], raw[i * 2 + 1]]) : Object.entries(raw || {});
   const allowed = new Set(studyBank().map(q => q.conceptId));
+  const aliases = new Map();
+  for (const bank of new Set(studyTopics.map(t => t.bank || 'kaspa'))) for (const [id, q] of loadQuestionBank(bank).byId) aliases.set(id, q.conceptId);
   const records = {};
   for (const [id, value] of entries) {
-    const concept = loadQuestionBank('kaspa').byId.get(id)?.conceptId || id;
+    const concept = aliases.get(id) || id;
     if (!allowed.has(concept)) continue;
     try {
       const r = JSON.parse(value);
