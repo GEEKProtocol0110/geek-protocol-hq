@@ -46,7 +46,7 @@ export function modelReserve({ openingReserveRaw, feeCount, feePerReceiptRaw, cl
     modeledAvailableRaw: available.toString(), requestedRewardsRaw: requested.toString(), coveredClaims: covered.toString(), blockedClaims: (claims - covered).toString(), coveredRewardsRaw: coveredAmount.toString(), closingReserveRaw: (available - coveredAmount).toString(),
     fundingGapRaw: positive(requested - available).toString(), capGapRaw: positive(requested - cap).toString(), capLimited: requested > cap && cap < available,
     feeReceiptsToCoverDemand: needed === 0n ? '0' : perRecycle === 0n ? null : ceilDivide(needed, perRecycle).toString(),
-    scope: 'Hypothetical one-batch token budget: fees arrive first, then equal-sized proposed claims. Burns remain pending and cannot fund rewards. This is not actual reserve funding, credit conversion or settlement.' };
+    scope: 'Hypothetical one-batch token budget: fees arrive first, all recycling is assigned to this reserve, then distinct equal-sized proposed claims. Burns remain pending and cannot fund rewards. This is not actual reserve funding, credit conversion or settlement.' };
 }
 export function parseStressScenario(body) {
   if (!body || Object.keys(body).some(k => !['startingCredits', 'correctByRound', 'freeCompletions', 'freeCorrect', 'reserve'].includes(k)) || !body.reserve ||

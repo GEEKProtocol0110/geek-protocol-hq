@@ -353,7 +353,7 @@
       "capGapRaw": "0",
       "capLimited": false,
       "feeReceiptsToCoverDemand": "1429",
-      "scope": "Hypothetical one-batch token budget: fees arrive first, then equal-sized proposed claims. Burns remain pending and cannot fund rewards. This is not actual reserve funding, credit conversion or settlement."
+      "scope": "Hypothetical one-batch token budget: fees arrive first, all recycling is assigned to this reserve, then distinct equal-sized proposed claims. Burns remain pending and cannot fund rewards. This is not actual reserve funding, credit conversion or settlement."
     },
     "tinyFees": {
       "model": "economy-stress-v1",
@@ -387,7 +387,7 @@
       "capGapRaw": "0",
       "capLimited": false,
       "feeReceiptsToCoverDemand": null,
-      "scope": "Hypothetical one-batch token budget: fees arrive first, then equal-sized proposed claims. Burns remain pending and cannot fund rewards. This is not actual reserve funding, credit conversion or settlement."
+      "scope": "Hypothetical one-batch token budget: fees arrive first, all recycling is assigned to this reserve, then distinct equal-sized proposed claims. Burns remain pending and cannot fund rewards. This is not actual reserve funding, credit conversion or settlement."
     },
     "depleted": {
       "model": "economy-stress-v1",
@@ -421,7 +421,7 @@
       "capGapRaw": "0",
       "capLimited": false,
       "feeReceiptsToCoverDemand": null,
-      "scope": "Hypothetical one-batch token budget: fees arrive first, then equal-sized proposed claims. Burns remain pending and cannot fund rewards. This is not actual reserve funding, credit conversion or settlement."
+      "scope": "Hypothetical one-batch token budget: fees arrive first, all recycling is assigned to this reserve, then distinct equal-sized proposed claims. Burns remain pending and cannot fund rewards. This is not actual reserve funding, credit conversion or settlement."
     },
     "capped": {
       "model": "economy-stress-v1",
@@ -455,7 +455,7 @@
       "capGapRaw": "90000000000",
       "capLimited": true,
       "feeReceiptsToCoverDemand": "0",
-      "scope": "Hypothetical one-batch token budget: fees arrive first, then equal-sized proposed claims. Burns remain pending and cannot fund rewards. This is not actual reserve funding, credit conversion or settlement."
+      "scope": "Hypothetical one-batch token budget: fees arrive first, all recycling is assigned to this reserve, then distinct equal-sized proposed claims. Burns remain pending and cannot fund rewards. This is not actual reserve funding, credit conversion or settlement."
     }
   },
   "transfersEnabled": false,
