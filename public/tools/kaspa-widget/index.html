@@ -2,50 +2,109 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Kaspa Live Widget for Android — Geek Protocol</title>
-  <meta name="description" content="Download the free Kaspa Live Widget for Android. Neon glass, X-ray and custom colors, with clear setup and update instructions.">
+  <meta name="theme-color" content="#050c18">
+  <title>Kaspa Widget for Android &amp; iPhone — Geek Protocol</title>
+  <meta name="description" content="Put Kaspa on your home screen. Download the signed Android widget or copy the free iPhone Scriptable version, with clear installation help.">
   <link rel="canonical" href="https://www.geekprotocol.xyz/tools/kaspa-widget/">
   <link rel="icon" href="/assets/geek-protocol-logo.png">
+  <meta property="og:title" content="Kaspa on your home screen — Geek Protocol">
+  <meta property="og:description" content="Choose Android or iPhone. Free Kaspa widgets, neon glass and simple setup. No wallet or account needed.">
+  <meta property="og:type" content="website"><meta property="og:url" content="https://www.geekprotocol.xyz/tools/kaspa-widget/">
+  <meta property="og:image" content="https://www.geekprotocol.xyz/assets/kaspa-culture.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="/assets/styles.css"><link rel="stylesheet" href="/assets/widget-guide.css">
-  <script defer src="/assets/widget-guide.js"></script>
+  <script type="module" src="/assets/widget-guide.js"></script>
 </head>
 <body>
-  <main class="widget-guide">
-    <a class="text-link" href="/tools/#kaspa-widget">← Free tools from Geek</a>
+  <a class="skip-link" href="#main">Skip to setup</a>
+  <main id="main" class="widget-guide">
+    <nav class="widget-nav" aria-label="Page navigation"><a class="text-link" href="/tools/#kaspa-widget">← Free tools from Geek</a><a href="/">Geek HQ</a></nav>
     <header class="widget-hero">
-      <span class="section-kicker">Android 8+ · Free · No wallet or account</span>
-      <h1>A new view<br>of Kaspa.</h1>
-      <p>Time, KAS price and network readings on your home screen. Neon glass, black-and-white X-ray, or a palette of your own.</p>
-      <div class="hero-actions">
-        <a class="button button-primary" href="/api/widget?download=1">Download for Android</a>
-        <a class="button button-secondary" id="widget-release" href="https://github.com/GEEKProtocol0110/kaspa-live-widget/releases/latest">GitHub download &amp; release notes ↗</a>
+      <div class="widget-wordmark"><img src="/assets/kaspa-widget-mark.svg" width="44" height="44" alt="Kaspa"><span>GEEK // KASPA</span></div>
+      <span class="section-kicker">Free · Open source · No wallet or account</span>
+      <h1>Kaspa on your<br>home screen.</h1>
+      <p>KAS price, a neon chart and network readings behind glass. Choose your phone below and make it yours.</p>
+      <div class="widget-platforms" aria-label="Choose your phone">
+        <article class="widget-platform">
+          <span class="widget-badge">Android 8.0+</span><h2>Android</h2>
+          <p>Install the signed app. Pick your colors, currency and widget size.</p>
+          <a class="button button-primary" href="/api/widget?download=1" download>Download Android APK</a>
+          <a class="text-link" href="#android">Android setup &amp; download help →</a>
+          <p class="widget-release" id="widget-version" role="status">Signed APK · Latest public release</p>
+        </article>
+        <article class="widget-platform">
+          <span class="widget-badge">iPhone · Requires Scriptable</span><h2>iPhone</h2>
+          <p>Use the free Scriptable app. Copy our widget into it, then add it to your Home Screen.</p>
+          <a class="button button-secondary" href="#iphone">Set up for iPhone</a>
+          <p class="widget-release">First Scriptable version · 1.0.0</p>
+          <p class="widget-small">Early version: a real iPhone trial is still pending.</p>
+        </article>
       </div>
-      <p class="widget-release" id="widget-version" role="status">Signed APK · The download always uses the latest public release.</p>
-      <p class="widget-small">Install over your existing signed app to keep settings and widgets. The Android app is available here; it is not listed on Google Play yet.</p>
     </header>
     <section class="widget-features" aria-label="Widget features">
-      <article><h2>Your look</h2><p>Choose dark, light, X-ray or custom colors. New controls arrive through signed app updates; check the release notes for your version.</p></article>
-      <article><h2>Your view</h2><p>A compact glance at price and DAA score, or an expanded view with observed BPS and network hashrate. Choose USD, EUR or GBP.</p></article>
-      <article><h2>Honest readings</h2><p>Public feeds refresh on a 15-, 30- or 60-minute schedule. Saved readings remain visible during outages. Android may delay background updates.</p></article>
+      <article><h2>Neon, your way</h2><p>Android offers dark, light, X-ray and custom colors. On iPhone, choose mint, cyan, violet or white on black.</p></article>
+      <article><h2>Kaspa at a glance</h2><p>Price, real 24-hour history and DAA score. Larger views include observed average BPS and network hashrate.</p></article>
+      <article><h2>Readings with their age</h2><p>Last good readings stay visible during feed outages. Stale data is labeled; your phone controls background refresh timing.</p></article>
     </section>
-    <section class="widget-panel" aria-labelledby="install-heading">
-      <h2 id="install-heading">Set up in a few taps</h2>
+    <section id="android" class="widget-panel" aria-labelledby="android-heading">
+      <span class="section-kicker">Signed Android app</span><h2 id="android-heading">Set up on Android</h2>
       <ol>
-        <li><strong>Download the APK.</strong> Use Chrome or Samsung Internet on your Android phone.</li>
-        <li><strong>Open Downloads.</strong> Tap the finished <code>.apk</code> file. If Android asks, allow that browser or file manager to install this app. You can turn that permission off afterward.</li>
-        <li><strong>Install or update.</strong> Keep your existing signed app installed. A debug test build is a separate app.</li>
-        <li><strong>Make it yours.</strong> Open Kaspa Live Widget, choose Appearance and your settings, then tap Apply settings.</li>
+        <li><strong>Download in your browser.</strong> Open this page in Chrome or Samsung Internet and tap <a href="/api/widget?download=1" download>Download Android APK</a>.</li>
+        <li><strong>Open the finished file.</strong> In My Files → Downloads, tap the <code>.apk</code>. If Android asks, allow that browser or file manager to install this app. You can turn that permission off afterward.</li>
+        <li><strong>Install or update.</strong> Install over the existing signed app to keep settings and widgets. An older debug test build is a separate app. The public app is not on Google Play yet.</li>
+        <li><strong>Make it yours.</strong> Open Kaspa Live Widget, choose your currency, appearance and refresh interval, then tap Apply settings.</li>
         <li><strong>Add the widget.</strong> Use Save &amp; add, or hold an empty home-screen area → Widgets → Kaspa Live Widget. Hold the widget to resize it.</li>
       </ol>
+      <div class="widget-download-options"><a id="widget-direct" class="text-link" href="https://github.com/GEEKProtocol0110/kaspa-live-widget/releases/latest/download/kaspa-live-widget.apk">Alternative APK download ↗</a><a id="widget-release" class="text-link" href="https://github.com/GEEKProtocol0110/kaspa-live-widget/releases/latest">Release notes &amp; checksum ↗</a></div>
+      <details class="widget-help" open><summary>Download stuck inside ChatGPT, X or another app?</summary>
+        <p>Use that app’s menu to open this page in Chrome or Samsung Internet. If there is no browser option, copy the link below and paste it into your browser’s address bar.</p>
+        <label for="widget-page-link">Installation page link</label>
+        <div class="widget-link-copy"><input id="widget-page-link" type="text" readonly value="https://www.geekprotocol.xyz/tools/kaspa-widget/"><button id="copy-widget-link" class="button button-secondary" type="button">Copy page link</button></div>
+        <p id="widget-link-status" class="widget-small" role="status" aria-live="polite">You can also touch and hold the link field to copy it.</p>
+        <p>If a download reaches 100% but never finishes, check My Files → Downloads for a completed APK. If there is none, cancel the stalled download, reopen this page in your browser and try again. The alternative APK link above is a second route.</p>
+      </details>
+    </section>
+    <section id="iphone" class="widget-panel" aria-labelledby="iphone-heading">
+      <span class="section-kicker">Hosted in Scriptable</span><h2 id="iphone-heading">Set up on iPhone</h2>
+      <p class="widget-notice">This version runs inside Scriptable. It is an early release awaiting a real iPhone trial; it is not a standalone App Store app.</p>
+      <ol>
+        <li><strong>Install Scriptable.</strong> Get the <a href="https://apps.apple.com/us/app/scriptable/id1405459188">free Scriptable app from the App Store ↗</a>.</li>
+        <li><strong>Copy the widget below.</strong> In Scriptable, tap <strong>+</strong>, paste the entire script, and name it <strong>Geek Kaspa Widget</strong>. No file download is needed.</li>
+        <li><strong>Run it once.</strong> Tap the play button and choose <strong>Preview medium</strong>. BPS begins at “Sampling…”; it needs two successful samples at least 30 seconds apart.</li>
+        <li><strong>Add it to your Home Screen.</strong> Touch and hold an empty area → Edit → Add Widget (or +) → Scriptable. Choose medium and tap Add Widget.</li>
+        <li><strong>Select your script.</strong> Hold the new widget → Edit Widget → Script → Geek Kaspa Widget. Set When Interacting to Run Script, then close the panel.</li>
+      </ol>
+      <div class="hero-actions"><button id="copy-widget-script" class="button button-primary" type="button">Copy iPhone widget script</button><a class="button button-secondary" href="/tools/kaspa-widget/downloads/Geek-Kaspa-Widget-v1.0.0.txt">View script as text</a></div>
+      <p id="widget-script-status" class="widget-small" role="status" aria-live="polite">Copy the script, then paste it into Scriptable.</p>
+      <div id="widget-manual-copy" hidden>
+        <label for="widget-script-text">Widget script — select and copy all of it</label>
+        <textarea id="widget-script-text" readonly spellcheck="false" rows="6" aria-describedby="widget-script-status"></textarea>
+        <button id="select-widget-script" class="button button-secondary" type="button">Select entire script</button>
+      </div>
+      <noscript><p>Open <a href="/tools/kaspa-widget/downloads/Geek-Kaspa-Widget-v1.0.0.txt">the script as text</a> and copy all of it into Scriptable. JavaScript is only needed for the copy button.</p></noscript>
+      <details class="widget-help"><summary>Choose a color and widget size</summary>
+        <p>Small, medium and large Home Screen widgets are supported. Medium is the best place to start. Lock Screen widgets are not supported.</p>
+        <p>In Edit Widget → Parameter, enter <code>mint</code>, <code>cyan</code>, <code>violet</code> or <code>xray</code>. For example, <code>theme=violet;chart=off;refresh=15</code> chooses purple, hides the chart and requests a refresh after 15 minutes. Refresh choices are 15, 30 or 60; iOS can delay them.</p>
+        <p>In-app previews use the defaults at the top of the script. The Home Screen parameter applies to that widget.</p>
+      </details>
+      <details class="widget-help"><summary>Refresh, stale readings and missing data</summary>
+        <p>Run the script and choose a preview to fetch again. A preview can update before the Home Screen does. iOS schedules Home Screen refreshes; continuous live updates are not guaranteed.</p>
+        <p>iPhone prices use USD. The backup USDT quote is labeled as an approximation. A delayed feed keeps its last good reading and timestamp; a missing chart does not draw an invented line. The medium and large header time shows when the widget rendered.</p>
+        <p>“Sampling…” is normal on the first run. Wait at least 30 seconds and run again. An outage, a counter reset or a gap longer than six hours can require another pair of samples.</p>
+      </details>
+      <details class="widget-help"><summary>Copying is blocked or the widget is blank</summary>
+        <p>If your browser blocks automatic copying, the script appears in a text box. Use Select entire script, then Copy. You can also open View script as text in Safari and copy it there.</p>
+        <p>A blank widget usually needs its Script field set in Edit Widget. If Scriptable shows an error, confirm the entire script was pasted, including the final <code>await run();</code> line. Note the exact error and line number when reporting a problem.</p>
+        <p><a href="https://github.com/GEEKProtocol0110/kaspa-live-widget/blob/main/scriptable/README.md">Full Scriptable guide ↗</a> · <a href="https://github.com/GEEKProtocol0110/kaspa-live-widget/issues">Report a widget problem ↗</a></p>
+      </details>
     </section>
     <section class="widget-panel" aria-labelledby="help-heading">
-      <h2 id="help-heading">Download or installation stuck?</h2>
-      <details open><summary>It reaches 100% but never finishes</summary><p>Open your phone’s My Files → Downloads and check for a completed APK. If there isn’t one, cancel the stalled download and open this page directly in Chrome or Samsung Internet. Download from here again, or use the GitHub link above. A full progress bar alone does not confirm the file is ready to install.</p></details>
-      <details><summary>The file opens, but Android won’t install it</summary><p>Check that you downloaded the <strong>APK</strong>, not the <strong>AAB</strong> Play upload bundle. Note the exact Android message. Keep the existing app installed; uninstalling can remove saved settings. An existing debug test app uses a separate package.</p></details>
-      <details><summary>I installed it, but can’t find the widget</summary><p>Open Kaspa Live Widget once, then hold an empty home-screen area and choose Widgets. Find Kaspa Live Widget and drag a size onto the home screen. Some launchers need a moment to refresh their widget list.</p></details>
-      <details><summary>The readings look old</summary><p>Tap the widget to refresh. Check the reading times and your connection. Battery settings can delay scheduled updates, and public providers can be temporarily unavailable. A cached value is not a live quote.</p></details>
+      <h2 id="help-heading">A little more help</h2>
+      <details><summary>Android opens the file but won’t install it</summary><p>Use the APK, not the AAB Play upload bundle. Note the exact Android message. Keep the existing signed app installed; uninstalling can remove saved settings. An existing debug test app uses a separate package.</p></details>
+      <details><summary>I installed Android but can’t find the widget</summary><p>Open Kaspa Live Widget once, then hold an empty home-screen area and choose Widgets. Find Kaspa Live Widget and drag a size onto the home screen. Some launchers need a moment to refresh their widget list.</p></details>
+      <details><summary>Does the widget need my wallet?</summary><p>No. Both versions read public market and network data. They do not need your account, wallet address, seed phrase or private key. Saved settings and readings stay on your device. Scriptable has its own app settings and privacy policy.</p></details>
     </section>
-    <footer><a href="/tools/kaspa-widget/privacy/">Privacy policy</a><a href="https://github.com/GEEKProtocol0110/kaspa-live-widget">Open-source code ↗</a><a href="/">Geek Protocol HQ</a></footer>
+    <footer><a href="/tools/kaspa-widget/privacy/">Android app privacy policy</a><a href="https://github.com/GEEKProtocol0110/kaspa-live-widget">Widget source &amp; Kaspa mark attribution ↗</a><a href="/">Geek Protocol HQ</a></footer>
   </main>
 </body>
 </html>
