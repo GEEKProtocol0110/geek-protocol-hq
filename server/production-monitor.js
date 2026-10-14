@@ -83,5 +83,6 @@ export function validMonitorReport(report, now = Date.now()) {
   return Boolean(report && Object.keys(report).every(key => ['schema', 'checkedAt', 'durationMs', 'passed', 'checks'].includes(key)) && report.schema === 1 && Number.isSafeInteger(report.checkedAt) && report.checkedAt > 0 && report.checkedAt <= now + 60000 &&
     Number.isSafeInteger(report.durationMs) && report.durationMs >= 0 && report.durationMs <= 60000 && typeof report.passed === 'boolean' &&
     Array.isArray(report.checks) && report.checks.length === monitorChecks.length && report.checks.every((c, i) => c && Object.keys(c).every(key => ['id', 'passed', 'status', 'elapsedMs', 'reason'].includes(key)) && c.id === monitorChecks[i].id && typeof c.passed === 'boolean' && Number.isInteger(c.status) && c.status >= 0 && c.status <= 599 && Number.isSafeInteger(c.elapsedMs) && c.elapsedMs >= 0 && c.elapsedMs <= 60000 &&
-      ['expected-response', 'response-mismatch', 'timed-out', 'response-too-large', 'request-failed'].includes(c.reason) && c.passed === (c.reason === 'expected-response')) && report.passed === report.checks.every(c => c.passed));
+      ['expected-response', 'response-mismatch', 'timed-out', 'response-too-large', 'request-failed'].includes(c.reason) && c.passed === (c.reason === 'expected-response') &&
+      (!c.passed || c.status === (monitorChecks[i].kind === 'private-page' ? 303 : monitorChecks[i].kind === 'private-api' ? 401 : 200))) && report.passed === report.checks.every(c => c.passed));
 }

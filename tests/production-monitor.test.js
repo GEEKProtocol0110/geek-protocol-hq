@@ -16,6 +16,8 @@ test('all production probes use the fixed HQ, GET, no credentials and manual red
   const { probe } = JSON.parse(JSON.stringify({ probe: report })); probe.checks[0].passed = false; assert.equal(validMonitorReport(probe), false);
   assert.equal(validMonitorReport({ ...report, playerId: 'private' }), false);
   assert.equal(validMonitorReport({ ...report, checks: report.checks.slice(1) }), false);
+  const forged = structuredClone(report); forged.checks[0].status = 503;
+  assert.equal(validMonitorReport(forged), false, 'A failure status cannot be stored as a passing check');
 });
 test('privacy and gate regressions fail even when endpoints return HTTP 200', async () => {
   for (const id of ['study-api', 'royale-api']) {
