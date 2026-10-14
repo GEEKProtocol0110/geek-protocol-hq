@@ -64,6 +64,30 @@
       "destination": "/api/session?service=operations&path=appearance"
     },
     {
+      "source": "/ops/community",
+      "destination": "/api/session?service=operations&path=community"
+    },
+    {
+      "source": "/ops/community/",
+      "destination": "/api/session?service=operations&path=community"
+    },
+    {
+      "source": "/ops/imported",
+      "destination": "/api/session?service=operations&path=imported"
+    },
+    {
+      "source": "/ops/imported/",
+      "destination": "/api/session?service=operations&path=imported"
+    },
+    {
+      "source": "/ops/testnet",
+      "destination": "/api/session?service=operations&path=testnet"
+    },
+    {
+      "source": "/ops/testnet/",
+      "destination": "/api/session?service=operations&path=testnet"
+    },
+    {
       "source": "/ops/:path*",
       "destination": "/api/session?service=operations&path=:path*"
     },
