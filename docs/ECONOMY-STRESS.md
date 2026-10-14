@@ -2,6 +2,34 @@
 
 The lab tests **current internal credit behavior** and **a separate hypothetical GEEK reserve**. It does not convert credits to tokens, verify treasury funding, authorize a payout, execute a burn or change game rules. The baseline is reproducible in [economy-stress-report.json](economy-stress-report.json).
 
+## Proposed 100-GEEK round reward and daily runway
+
+On October 14, 2026, the founder selected **100 GEEK per qualifying completed round**, not per correct answer or per player per day. This is the launch reward proposal; it does not alter current Alpha credit grants. Eligibility, supported modes, repeat-round limits, per-player limits and production payout budgets are not finalized. A unique verified round must eventually produce at most one award; finishing or retrying it cannot create additional rewards.
+
+The default planning scenario assumes a **1,000,000,000-GEEK reward reserve**, 1,000 qualifying rounds per day, 100 GEEK per round, a 100,000-GEEK daily reward cap and zero fee receipts. The reserve and daily cap are editable assumptions, not verified funding or finalized limits. Developer spending, creator/event rewards, outstanding obligations and KAS transaction costs are excluded. An observed wallet balance is not automatically a dedicated spendable reward reserve.
+
+| Qualifying rounds/day | Scheduled GEEK/day | Full-budget days before recycling | Approximate years (365 days/year) |
+| --- | --- | --- | --- |
+| 1,000 | 100,000 | 10,000 | 27.40 |
+| 10,000 | 1,000,000 | 1,000 | 2.74 |
+| 100,000 | 10,000,000 | 100 | 0.27 |
+
+At the founder-provided reference of 1 KAS per 100,000 GEEK, 100 GEEK equals 0.001 KAS and one billion GEEK equals 10,000 KAS. This is a supplied reference conversion, not a live market quote or a future-price forecast.
+
+Choose a single batch or repeat the entered batch daily. Repeating-day math uses exact raw units:
+
+- Budgeted rounds/day = the smaller of requested rounds and `floor(dailyCap / rewardPerRound)`.
+- Scheduled rewards/day = budgeted rounds × reward per round.
+- Recycled/day = fee receipt count × `floor(feePerReceipt × 70 / 100)`.
+- Net reserve draw/day = scheduled rewards − recycled fees.
+- For a positive net draw, full-budget days = `floor(openingReserve / netDraw)`. The next day's covered rounds are shown separately using the remaining reserve plus that day's assumed recycling.
+
+Fees must arrive before rewards **each day**, and this model assigns all recycling to this reserve. Fees are assumed, not guaranteed. A nonpositive draw is labeled “no modeled depletion”; it does not promise perpetual funding or project unlimited reserve growth. A zero cap or zero demand is labeled “no rewards budgeted,” with no duration estimate. Partial days do not count as full-budget days. Per-receipt rounding and whole-round cap rounding remain exact, including fees of one raw unit. Cumulative circulation can reuse tokens over multiple days; the batch supply check applies to the first day, not cumulative fee volume. Every future funding projection remains subject to actual circulating supply and source balances.
+
+For example, 100,000 GEEK in scheduled rewards and 50,000 GEEK in daily eligible fees means 35,000 recycled, 15,000 burn pending and 65,000 net daily draw. An assumed billion-GEEK opening reserve covers 15,384 full-budget days (about 42.15 years), then 750 rewards of 100 GEEK on the next day. Burning follows a future verified GEEK transfer to the Kaspa burn address, with accepted indexer evidence; this planning model neither transfers nor confirms a burn.
+
+The form and API do not enforce these caps on live rewards. Before activation, define eligibility and per-player limits, ring-fence the funded reserve, reserve pending liabilities atomically and reject new awards when the available global budget is insufficient.
+
 ## Concrete baseline findings
 
 | Case | Result | Meaning |

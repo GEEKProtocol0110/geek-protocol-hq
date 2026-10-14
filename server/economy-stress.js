@@ -2,7 +2,8 @@ import { ROUND_CONFIG, RANKED_START_IP_LIMIT } from './game-economy.js';
 import { rawAmount, splitFee, MAX_RAW, decimalToRaw } from '../public/economy/assets/amounts.js';
 import { economyPolicy } from '../public/economy/assets/catalog.js';
 
-export const STRESS_MODEL = 'economy-stress-v1';
+export const STRESS_MODEL = 'economy-stress-v2';
+export const proposedRoundReward = Object.freeze({ rewardGeek: '100', basis: 'One qualifying completed round, not each correct answer or each day.', status: 'proposal', eligibilityFinalized: false, dailyLimitsFinalized: false, transfersEnabled: false });
 const count = value => { if (!Number.isSafeInteger(value) || value < 0 || value > 1000000) throw new Error('STRESS_INPUT_INVALID'); return BigInt(value); };
 const minimum = (a, b) => a < b ? a : b;
 const positive = n => n > 0n ? n : 0n;
@@ -48,17 +49,36 @@ export function modelReserve({ openingReserveRaw, feeCount, feePerReceiptRaw, cl
     feeReceiptsToCoverDemand: needed === 0n ? '0' : perRecycle === 0n ? null : ceilDivide(needed, perRecycle).toString(),
     scope: 'Hypothetical one-batch token budget: fees arrive first, all recycling is assigned to this reserve, then distinct equal-sized proposed claims. Burns remain pending and cannot fund rewards. This is not actual reserve funding, credit conversion or settlement.' };
 }
+export function modelRunway(input) {
+  const day = modelReserve(input), opening = BigInt(input.openingReserveRaw), reward = BigInt(input.rewardPerClaimRaw);
+  const requested = BigInt(input.claimCount), admitted = minimum(requested, BigInt(input.rewardCapRaw) / reward);
+  const scheduled = admitted * reward, recycle = BigInt(day.recyclePendingRaw), netDraw = scheduled - recycle;
+  const status = admitted === 0n ? 'no-rewards-budgeted' : netDraw <= 0n ? 'no-modeled-depletion' : 'finite';
+  const days = status === 'finite' ? opening / netDraw : null;
+  const remaining = days === null ? null : opening - days * netDraw;
+  return { model: STRESS_MODEL, mode: 'planning-only', currency: 'GEEK', fundingVerified: false, transfersEnabled: false,
+    status, input, requestedRoundsPerDay: requested.toString(), budgetedRoundsPerDay: admitted.toString(), capBlockedRoundsPerDay: (requested - admitted).toString(),
+    scheduledRewardsPerDayRaw: scheduled.toString(), recyclePerDayRaw: recycle.toString(), burnPendingPerDayRaw: day.burnPendingRaw,
+    netReserveDrawPerDayRaw: netDraw.toString(), fullBudgetDays: days?.toString() ?? null,
+    reserveAfterFullDaysRaw: remaining?.toString() ?? null,
+    roundsCoveredOnNextDay: days === null ? null : minimum(admitted, (remaining + recycle) / reward).toString(),
+    scope: 'Constant daily assumptions, with all eligible fees received before rewards each day and all recycling assigned to this reserve. Full budget days count days that can pay every budgeted round; a later partial day is separate. Recurring fees are assumed, not guaranteed. Cumulative circulation may reuse tokens. Creator/event/developer spending and KAS transaction costs are excluded. This does not enforce live payout caps, eligibility or per-player limits.' };
+}
 export function parseStressScenario(body) {
-  if (!body || Object.keys(body).some(k => !['startingCredits', 'correctByRound', 'freeCompletions', 'freeCorrect', 'reserve'].includes(k)) || !body.reserve ||
+  if (!body || Object.keys(body).some(k => !['startingCredits', 'correctByRound', 'freeCompletions', 'freeCorrect', 'reserve', 'period'].includes(k)) || !body.reserve ||
+      (body.period !== undefined && !['once', 'daily'].includes(body.period)) ||
       Object.keys(body.reserve).some(k => !['openingReserve', 'feeCount', 'feeEach', 'claimCount', 'rewardEach', 'rewardCap'].includes(k))) throw new Error('STRESS_INPUT_INVALID');
-  return { gauntlet: modelGauntlet(body), freeRounds: modelFreeRounds(body.freeCompletions, body.freeCorrect), reserve: modelReserve({
+  const input = {
     openingReserveRaw: decimalToRaw(body.reserve.openingReserve), feeCount: body.reserve.feeCount, feePerReceiptRaw: decimalToRaw(body.reserve.feeEach),
     claimCount: body.reserve.claimCount, rewardPerClaimRaw: decimalToRaw(body.reserve.rewardEach), rewardCapRaw: decimalToRaw(body.reserve.rewardCap)
-  }), mode: 'planning-only', transfersEnabled: false, creditConversionEnabled: false, gameConfigurationChanged: false };
+  };
+  return { gauntlet: modelGauntlet(body), freeRounds: modelFreeRounds(body.freeCompletions, body.freeCorrect), reserve: modelReserve(input),
+    runway: body.period === 'daily' ? modelRunway(input) : null, proposedRoundReward,
+    mode: 'planning-only', transfersEnabled: false, creditConversionEnabled: false, gameConfigurationChanged: false };
 }
-export const defaultStressScenario = () => ({ startingCredits: '0', correctByRound: Array(10).fill(10), freeCompletions: 1000, freeCorrect: 10,
-  reserve: { openingReserve: '0', feeCount: 1000, feeEach: '1', claimCount: 1000, rewardEach: '1', rewardCap: '1000' } });
-export const stressExamples = () => ({ model: STRESS_MODEL, mode: 'planning-only', roundConfiguration: ROUND_CONFIG, startLimit: RANKED_START_IP_LIMIT,
+export const defaultStressScenario = () => ({ startingCredits: '0', correctByRound: Array(10).fill(10), freeCompletions: 1000, freeCorrect: 10, period: 'daily',
+  reserve: { openingReserve: '1000000000', feeCount: 0, feeEach: '1', claimCount: 1000, rewardEach: proposedRoundReward.rewardGeek, rewardCap: '100000' } });
+export const stressExamples = () => ({ model: STRESS_MODEL, mode: 'planning-only', roundConfiguration: ROUND_CONFIG, startLimit: RANKED_START_IP_LIMIT, proposedRoundReward,
   gauntlet: [10, 5, 4, 0].map(correct => ({ correctPerRound: correct, ...modelGauntlet({ correctByRound: Array(10).fill(correct) }) })),
   repeatedFreeRounds: modelFreeRounds(1000000, 10),
   reserve: {
@@ -66,4 +86,5 @@ export const stressExamples = () => ({ model: STRESS_MODEL, mode: 'planning-only
     tinyFees: modelReserve({ openingReserveRaw: '0', feeCount: 1000000, feePerReceiptRaw: '1', claimCount: 1, rewardPerClaimRaw: '1', rewardCapRaw: '1' }),
     depleted: modelReserve({ openingReserveRaw: '0', feeCount: 0, feePerReceiptRaw: '0', claimCount: 1000000, rewardPerClaimRaw: '100000000', rewardCapRaw: '100000000000000' }),
     capped: modelReserve({ openingReserveRaw: '100000000000', feeCount: 0, feePerReceiptRaw: '0', claimCount: 1000, rewardPerClaimRaw: '100000000', rewardCapRaw: '10000000000' })
-  }, transfersEnabled: false, creditConversionEnabled: false });
+  }, runway: [1000, 10000, 100000].map(rounds => modelRunway({ openingReserveRaw: '100000000000000000', feeCount: 0, feePerReceiptRaw: '0', claimCount: rounds, rewardPerClaimRaw: '10000000000', rewardCapRaw: (BigInt(rounds) * 10000000000n).toString() })),
+  transfersEnabled: false, creditConversionEnabled: false });
