@@ -52,7 +52,7 @@ See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness
 
 | Surface | Purpose |
 | --- | --- |
-| **Learn / Study** | Kaspa 101 field guide plus eight guided lessons, three practice levels, and private saved concept feedback |
+| **Learn / Study** | Kaspa 101 field guide plus eleven guided Kaspa and practical-technology lessons, three practice levels, and private saved concept feedback |
 | **Play** | Ten-round Geek Gauntlet, server-owned Daily/Speed, and free unranked [Memory Grid](https://www.geekprotocol.xyz/memory/) |
 | **[Free tools](https://www.geekprotocol.xyz/tools/)** | Geek Mini browser quizzes and supporter sharing, plus Android APK and iPhone Scriptable widget setup with download/copy help |
 | **Daily vault** | One visible cosmetic seal per UTC day, private collection, and atomic claim receipts |
