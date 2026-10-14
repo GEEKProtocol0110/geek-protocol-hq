@@ -39,7 +39,7 @@ Code retains the repository MIT license. Imported question content and its adapt
 
 `loadQuestionBank().questions` contains only active rows. `byId` also resolves lookup-only retired rows, preserving their original IDs, prompts, options, and correct indices for unfinished ranked/practice/Study runs. Shared lobby, duel, and periodic challenge snapshots already retain issued question data. New round selection excludes both previously used concepts and normalized prompts, including previously issued retired variant IDs and exact and conservatively similar community duplicates.
 
-Every category supports the full 30 easy / 40 medium / 30 hard Gauntlet allocation without repeat concepts. Daily/Speed, lobbies, and Duel use the same cleaned selection boundary. Assisted practice reads only active easy questions. Study contains 176 active canonical concepts across its eight existing topics; current-topic questions remain outside its introductory curriculum. Former Study concept aliases resolve to the latest saved observation; counts/streaks from equivalent records are not combined into invented confidence. Progress reads do not refresh retention or mutate saved records.
+Every category supports the full 30 easy / 40 medium / 30 hard Gauntlet allocation without repeat concepts. Daily/Speed, lobbies, and Duel use the same cleaned selection boundary. Assisted practice reads only active easy questions. Study contains 191 active canonical concepts across eleven topics (eight Kaspa and three practical technology topics); current-topic questions remain outside its introductory curriculum. Former Study concept aliases resolve to the latest saved observation; counts/streaks from equivalent records are not combined into invented confidence. Progress reads do not refresh retention or mutate saved records.
 
 ## Maintenance commands
 
@@ -64,3 +64,10 @@ The original doubling milestone remains historical. `postReviewAdditions` record
 ## Kaspa editorial follow-up — October 8, 2026
 
 A focused pass rechecks 33 existing KRC-20/Toccata questions, improves their wording and explanations, and changes ten provisional difficulty labels. Specific primary sources and individual decisions are recorded in [Kaspa Content Review](KASPA-CONTENT-REVIEW.md#focused-editorial-follow-up--october-8-2026) and its linked item-level register. Kaspa retains 194 concepts (71 easy / 82 medium / 41 hard); the site total remains 7,786. Answer options, correct indices and all retired rows are preserved. This pass does not complete the general imported-question review.
+
+
+## October 14 practical technology additions
+
+Fifteen original MIT-licensed questions in `technology-current-questions.json` extend the Technology category and guided Study. Each has an explanation, an individual source-check date and a primary MDN reference. Web responses, browser privacy and exact values each have five concepts, three guided ideas, an example, a reflection, and Foundations / Connections / Mixed practice. Their private grades and saved mistakes use the existing Study authority and retention. Imported draft Technology questions remain outside Study. Total active bank size is 7,801; Study has 191 concepts. These are internal source checks, not independent editorial approval.
+
+The [private imported-question desk](IMPORTED-QUESTION-REVIEW.md) now stages source-checked proposals for a maintainer-reviewed bank release. Corrected grading content receives a new question identity; saved runs retain the original answer key.

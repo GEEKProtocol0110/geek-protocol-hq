@@ -35,3 +35,20 @@ test('the first-visit guest and signed-in destinations return to the Geek step',
 test('an arbitrary next URL never becomes a sign-in redirect', async () => {
   const ui = await signIn('?next=https%3A%2F%2Fexample.invalid'); assert.equal(ui.node('[data-sign-in-hq]').href, '/profile/'); assert.equal(ui.node('[data-sign-in-continue]').href, '/profile/');
 });
+test('mobile sign-in and guest choices return to an allowlisted activity without auto-starting a game', async () => {
+  for (const [next, path] of [['study', '/study/'], ['play', '/play/#timed-games'], ['royale', '/royale/'], ['quest', '/quest/']]) {
+    const ui = await signIn('?next=' + next);
+    assert.equal(ui.node('[data-sign-in-hq]').href, path);
+    assert.equal(ui.node('[data-sign-in-continue]').href, path);
+  }
+  for (const next of ['__proto__', 'constructor', '//evil.invalid', 'javascript:alert(1)']) assert.equal((await signIn('?next=' + encodeURIComponent(next))).node('[data-sign-in-continue]').href, '/profile/');
+});
+test('the guest action precedes wallet setup and game pages carry their return intent', () => {
+  const html = readFileSync(new URL('../public/sign-in/index.html', import.meta.url), 'utf8');
+  assert.ok(html.indexOf('data-sign-in-continue') < html.indexOf('data-wallet-root'));
+  for (const page of ['study', 'play', 'royale', 'quest']) {
+    const body = readFileSync(new URL('../public/' + page + '/index.html', import.meta.url), 'utf8');
+    // Some learning pages expose sign-in via the shared menu rather than their own link.
+    if (body.includes('/sign-in/')) assert.ok(body.includes('/sign-in/?next=' + page));
+  }
+});

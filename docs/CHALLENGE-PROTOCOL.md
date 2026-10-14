@@ -25,7 +25,7 @@ Finishing early forfeits unanswered questions (zero points). Expired overall clo
 
 ## Question selection and snapshots
 
-The introductory source-checked bank supplies one canonical item for each of 80 concepts. Period ID and a versioned SHA-256 seed deterministically order candidates; selection covers all eight topics and satisfies the quotas above. Questions progress from easy to medium to hard. Current/volatile questions and community submissions are outside this initial periodic curriculum.
+The Kaspa portion of the source-checked Study bank supplies 176 canonical concepts across eight topics. Period ID and a versioned SHA-256 seed deterministically order candidates; selection covers all eight topics and satisfies the quotas above. Questions progress from easy to medium to hard. The three practical-technology Study topics and community submissions remain outside this Kaspa competition allocation.
 
 The first successful start freezes a private Redis snapshot containing prompt, options, correct index, explanation, source, topic and concept identity. `SET NX` makes one snapshot win concurrent creation. Each attempt pins its hash. Grading reads that snapshot, never a replacement answer from the live bank. Missing or substituted snapshots fail closed without consuming an answer. New app releases therefore cannot silently change an existing period’s grading. Reviewed difficulty labels remain internally assigned, not independently calibrated.
 

@@ -114,7 +114,7 @@
       "includeFiles": "{server/questions/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}"
     },
     "api/session.js": {
-      "includeFiles": "{server/ops-ui/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}"
+      "includeFiles": "{server/ops-ui/**,server/questions/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}"
     },
     "api/leaderboard.js": {
       "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"

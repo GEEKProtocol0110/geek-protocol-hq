@@ -65,3 +65,10 @@ Geek Protocol HQ is implemented and internally verified in several areas. It is 
 - [Player dashboard and prestige rules](PLAYER-PROGRESSION.md) — optional level-50 resets, 25 prestige ranks, preserved career, and verified standings.
 
 - [Community contributions and Hall applications](COMMUNITY-CONTRIBUTIONS.md) — fund address, private owner review, consent and public credit boundaries.
+
+
+## October 14 operator improvements
+
+- [Imported question review](IMPORTED-QUESTION-REVIEW.md): private decisions and checked staging.
+- [Testnet reward pilot](TESTNET-REWARD-PILOT.md): disabled-by-default receipts and exact indexed transfer checks.
+- [Next-five acceptance](NEXT-FIVE-ACCEPTANCE.md): software scope and real-device, community and funded-wallet work still pending.

@@ -1,8 +1,8 @@
 {
-  "maintainedAt": "2026-10-08",
+  "maintainedAt": "2026-10-14",
   "originalRows": 8032,
   "cleanedBaseline": 4024,
-  "activeQuestions": 7786,
+  "activeQuestions": 7801,
   "retiredRows": 4280,
   "addedQuestions": 4024,
   "categories": {
@@ -117,13 +117,14 @@
       },
       "added": 752,
       "target": 1504,
-      "after": 1482,
+      "after": 1497,
       "difficultyDistribution": {
-        "easy": 579,
-        "medium": 604,
+        "easy": 588,
+        "medium": 610,
         "hard": 299
       },
-      "editorialRemoved": 22
+      "editorialRemoved": 22,
+      "postReviewAdditions": 15
     },
     "movies": {
       "before": 1000,
@@ -174,5 +175,5 @@
   },
   "editorialRetiredRows": 272,
   "editorialReview": "docs/editorial-review.json",
-  "postReviewAdditions": 10
+  "postReviewAdditions": 25
 }

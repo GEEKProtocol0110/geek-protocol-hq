@@ -3,7 +3,7 @@ window.GEEK_QUESTION_COUNTS = Object.freeze({
   "kaspa": 194,
   "video-games": 602,
   "science-fiction": 515,
-  "technology": 1482,
+  "technology": 1497,
   "movies": 1495,
   "history": 1510,
   "comics": 417,

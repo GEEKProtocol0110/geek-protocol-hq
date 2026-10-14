@@ -21,7 +21,7 @@ const polymod = (values) => {
 
 export const normalizeKaspaAddress = (value) => String(value || '').trim().toLowerCase();
 
-export const isValidKaspaMainnetAddress = (value) => {
+const validAddress = (value, expectedPrefix) => {
   const raw = String(value || '').trim();
   if (!raw || raw.length > 120) return false;
   const hasLower = raw !== raw.toUpperCase();
@@ -33,7 +33,7 @@ export const isValidKaspaMainnetAddress = (value) => {
   if (separator < 1 || separator !== normalized.lastIndexOf(':')) return false;
   const prefix = normalized.slice(0, separator);
   const payload = normalized.slice(separator + 1);
-  if (prefix !== 'kaspa' || payload.length < 9) return false;
+  if (prefix !== expectedPrefix || payload.length < 9) return false;
 
   const values = [];
   for (const character of prefix) values.push(character.charCodeAt(0) & 31);
@@ -45,6 +45,9 @@ export const isValidKaspaMainnetAddress = (value) => {
   }
   return polymod(values) === 0n;
 };
+
+export const isValidKaspaMainnetAddress = value => validAddress(value, 'kaspa');
+export const isValidKaspaTestnetAddress = value => validAddress(value, 'kaspatest');
 
 export const maskKaspaAddress = (value) => {
   const address = normalizeKaspaAddress(value);

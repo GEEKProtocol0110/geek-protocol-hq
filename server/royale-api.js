@@ -1,9 +1,10 @@
 import { categories, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from './http.js';
 import { rateLimit } from './redis.js';
 import { requireSession, playerIdFor } from './session.js';
-import { createRoyale, transitionRoyale, royaleView } from './royale.js';
+import { createRoyale, discoverRoyale, transitionRoyale, royaleView } from './royale.js';
 
 const errors = {
+  ROYALE_DISCOVERY_INVALID: [503, 'Public rooms could not be loaded. Try again later.'],
   ROYALE_NOT_FOUND: [404, 'This Royale invitation has expired or was not found.'],
   ROYALE_NOT_PLAYER: [403, 'Join this Royale before viewing it. Your seat may have been removed.'],
   ROYALE_HOST_REQUIRED: [403, 'Only the host can start, remove seats or end this event. Hosts must end a room before leaving.'],
@@ -33,6 +34,10 @@ export default async function handler(req, res) {
     }
   }
   try {
+    if (req.method === 'GET' && req.query?.discover === '1') {
+      await rateLimit('royale-discovery-ip', clientFingerprint(req), 30, 60);
+      return sendJson(res, 200, { ok: true, discovery: await discoverRoyale() });
+    }
     const session = await requireSession(req), playerId = playerIdFor(session);
     await rateLimit('royale', playerId, 60, 60);
     const body = req.method === 'POST' ? parseBody(req) : {};
@@ -45,10 +50,12 @@ export default async function handler(req, res) {
     if (action === 'create') {
       if (!categories.has(body.category)) throw new Error('INVALID_REQUEST');
       const capacity = body.capacity ?? 100;
+      const visibility = body.visibility ?? 'private';
+      if (!['private', 'public'].includes(visibility)) throw new Error('INVALID_REQUEST');
       if (!Number.isInteger(capacity) || capacity < 2 || capacity > 100) throw new Error('INVALID_REQUEST');
       await rateLimit('royale-create', playerId, 5, 3600);
       await rateLimit('royale-create-ip', clientFingerprint(req), 15, 3600);
-      room = await createRoyale(session, body.category, capacity);
+      room = await createRoyale(session, body.category, capacity, visibility);
     } else {
       if (action === 'join') await rateLimit('royale-join-ip', clientFingerprint(req), 180, 60);
       room = await transitionRoyale(session, req.method === 'GET' ? req.query?.code : body.code, action, body);

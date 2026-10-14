@@ -54,6 +54,7 @@ test('the provider boundary strips private fields and accepts only route-appropr
 test('supported learning calls queue safely before the SDK loads, with no arbitrary metadata', () => {
   for (const [path, name, data] of [
     ['/study/', 'Lesson walkthrough completed', { topic: 'origins' }],
+    ...['web-status', 'browser-privacy', 'exact-values'].map(topic => ['/study/', 'Practice completed', { mode: 'study', topic, level: 'mixed' }]),
     ['/study/', 'Practice started', { mode: 'study', topic: 'tokens', level: 'connections' }],
     ['/study/', 'Practice completed', { mode: 'study', topic: 'wallets', level: 'mixed' }],
     ['/practice/', 'Practice started', { mode: 'assisted' }],

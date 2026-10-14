@@ -48,3 +48,26 @@ test('guided lessons have objectives, examples, reflections, and usable levels f
     }
   }
 });
+
+
+test('practical technology lessons use only their original source-checked question bank', () => {
+  const added = read('technology-current-questions.json').questions;
+  const catalog = studyCatalog();
+  assert.equal(catalog.topics.length, 11);
+  assert.equal(added.length, 15);
+  for (const id of ['web-status', 'browser-privacy', 'exact-values']) {
+    const topic = catalog.topics.find(t => t.id === id);
+    assert.equal(topic.bank, 'technology');
+    assert.equal(topic.count, 5);
+    assert.ok(topic.sources.every(url => new URL(url).hostname === 'developer.mozilla.org'));
+    for (const questionId of pickStudyQuestions(id)) {
+      const q = added.find(q => q.id === questionId);
+      assert.ok(q, questionId);
+      assert.equal(q.reviewStatus, 'source-checked');
+      assert.equal(q.reviewedAt, '2026-10-14');
+      assert.equal(new URL(q.source).hostname, 'developer.mozilla.org');
+      assert.equal(q.id, q.conceptId);
+    }
+  }
+  assert.equal(studyBank().filter(q => added.some(a => a.id === q.id)).length, 15);
+});

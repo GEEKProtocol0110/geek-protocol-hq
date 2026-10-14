@@ -7,12 +7,18 @@ import { ownerAppearanceHandler } from './appearance.js';
 import { consumeOperationsCode } from './operations-mfa.js';
 import { ownerCommunityHandler } from './community-contributions.js';
 import { operationsAttentionHandler } from './operations-attention.js';
+import { importedReviewHandler } from './imported-review.js';
+import { testnetRewardsHandler } from './testnet-rewards.js';
 
 const files = new Map([
   ['', ['index.html', 'text/html; charset=utf-8']],
   ['index', ['index.html', 'text/html; charset=utf-8']],
   ['index.html', ['index.html', 'text/html; charset=utf-8']],
   ...['questions', 'activity', 'payouts', 'appearance', 'community'].flatMap(page => [page, `${page}/index`, `${page}/index.html`].map(path => [path, [`${page}/index.html`, 'text/html; charset=utf-8']])),
+  ['imported', ['imported/index.html', 'text/html; charset=utf-8']],
+  ['assets/imported.js', ['assets/imported.js', 'text/javascript; charset=utf-8']],
+  ['testnet', ['testnet/index.html', 'text/html; charset=utf-8']],
+  ['assets/testnet.js', ['assets/testnet.js', 'text/javascript; charset=utf-8']],
   ['assets/ops.js', ['assets/ops.js', 'text/javascript; charset=utf-8']],
   ['assets/ops-core.js', ['assets/ops-core.js', 'text/javascript; charset=utf-8']],
   ['assets/appearance.js', ['assets/appearance.js', 'text/javascript; charset=utf-8']],
@@ -32,6 +38,8 @@ export default async function operationsHandler(req, res) {
     if (action === 'appearance') return ownerAppearanceHandler(req, res);
     if (action === 'community') return ownerCommunityHandler(req, res);
     if (action === 'attention') return operationsAttentionHandler(req, res);
+    if (action === 'imported') return importedReviewHandler(req, res);
+    if (action === 'testnet') return testnetRewardsHandler(req, res);
     if (action === 'login' || action === 'logout') {
       if (req.method !== 'POST') return methodNotAllowed(res, 'POST');
       if (!trustedOrigin(req) || !operationsJsonRequest(req)) return sendJson(res, 403, { ok: false, error: 'Access was not accepted.' });
