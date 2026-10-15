@@ -26,7 +26,7 @@ Current internal coverage includes legacy first-Begin recovery, strict identity 
 
 ## Onboarding release evidence
 
-The comparison baseline has two direct starting actions, visible sign-in and expandable optional content. Final polish in this PR states the Daily Signal limit before entry, puts practical Kaspa next steps ahead of extra games, improves narrow-header wrapping and footer tap targets, and corrects stale navigation/status copy. See [Mobile onboarding](MOBILE-ONBOARDING.md). Static and client-fixture checks are not new browser-rendering or physical-phone evidence. The founder's earlier Quest-resume confirmation remains the only recorded device acceptance in this checklist; it does not certify later releases or the whole campaign.
+The comparison baseline has two direct starting actions, visible sign-in and expandable optional content. Final polish in this PR states the Daily Signal limit before entry, puts practical Kaspa next steps ahead of extra games, improves narrow-header wrapping and footer tap targets, and corrects stale navigation/status copy. See [Mobile onboarding](MOBILE-ONBOARDING.md). Static and client-fixture checks are not new browser-rendering or physical-phone evidence. The founder reported on October 15 that the polished homepage looked good on their physical phone with nothing abnormal. This is a limited visual pass, with device/browser details and individual interaction steps unspecified. The earlier Quest-resume confirmation remains a separate historical pass; neither observation completes broader campaign/profile/device acceptance.
 
 ## Acceptance order
 

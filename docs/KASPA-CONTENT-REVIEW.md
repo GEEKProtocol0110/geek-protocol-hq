@@ -62,3 +62,8 @@ Ten difficulty labels change using these editorial criteria: basic definitions a
 All 194 Kaspa concepts and the 7,786-question total remain. IDs, concept IDs, answer options/order, correct indices and retired records are unchanged. No duplicate concept or replacement was needed in this batch. Existing issued questions keep the same answer mapping; snapshots already held by shared modes retain their wording. Future selections can use the revised tiers. The broader imported-bank review remains unfinished.
 
 Validation: the full repository verification passes with 232 tests, zero failures and zero skips, using isolated real Redis. Question checks cover schemas, duplicate screening, historical answer compatibility, count metadata and Gauntlet capacity; the dependency audit reports zero vulnerabilities. This change introduces no new interface. No live-site browser, bot, wallet or transfer test was performed for this pass.
+
+
+## Community further reading — October 15, 2026
+
+The founder supplied [DAG and Kaspa](https://kaspa.com/learn-kaspa/post/dag-and-kaspa), published on KaspaCom’s Learn Kaspa site. Study’s optional More Kaspa reading panel, the field guide’s community-learning links and the public resource-credits page link directly to that article and name KaspaCom as publisher. This is a further-reading attribution; no article text, artwork or new assessment items are imported. Existing primary-source references and question review records remain unchanged. The URL responded over HTTPS; the retrieved static page is a JavaScript application shell, so the article body and any individual author byline were not independently reviewed for this addition.
