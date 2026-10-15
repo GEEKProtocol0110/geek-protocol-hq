@@ -1,6 +1,6 @@
 # GEEKT TN10 setup and deployment record
 
-**GEEKT is now deployed and accepted by the TN10 indexer.** The founder submitted the external Kasware operations. The operation JSON files remain unsigned reference data; this repository did not send them. Do not deploy this ticker again. The public HQ Mint page remains Mainnet-only. The owner-only manual TN10 receipt pilot is now configured on production; authenticated acceptance and a first reward transfer remain pending.
+**GEEKT is now deployed and accepted by the TN10 indexer.** The founder submitted the external Kasware operations. The operation JSON files remain unsigned reference data; this repository did not send them. Do not deploy this ticker again. The public HQ Mint page remains Mainnet-only. The owner-only manual TN10 receipt pilot is now configured on production; authenticated desk reads have passed on the founder phone; the first receipt and reward transfer remain pending.
 
 ## October 15 indexed deployment
 
@@ -25,7 +25,7 @@ Next reconcile the existing mint batch and preserve its hashes. Verify a later s
 | Initial experiment | Deploy once, verify, mint once and verify 100,000 tokens |
 | Later receipt experiment | Proposed 1 GEEKT per eligible manual pilot transfer |
 
-The founder requested matching GEEK tokenomics for a faithful rehearsal. Maximum supply, mint limit, decimals and zero premint now match the pinned `GEEK_DEPLOYMENT` in `server/mint.js`. This supersedes the earlier smaller test-supply proposal, which was never deployed. Network, ticker and eventual deployment identity remain separate. Matching these deploy fields does not implement rewards, pool/burn distribution or settlement; the 1-GEEKT receipt amount above remains a separate unselected test proposal. Review the wallet request and fees before any approval.
+The founder requested matching GEEK tokenomics for a faithful rehearsal. Maximum supply, mint limit, decimals and zero premint now match the pinned `GEEK_DEPLOYMENT` in `server/mint.js`. This supersedes the earlier smaller test-supply proposal, which was never deployed. Network, ticker and eventual deployment identity remain separate. Matching these deploy fields does not implement rewards, pool/burn distribution or settlement; the 1-GEEKT receipt amount is the configured manual test amount, separate from the unselected contributor rate. Review the wallet request and fees before any approval.
 
 - [Unsigned deploy operation](testnet/geekt-deploy.json): wallet operation type **2**.
 - [Unsigned first mint operation](testnet/geekt-mint.json): wallet operation type **3**, only after deployment verification.
@@ -55,12 +55,18 @@ Preparing the original packet sent no wallet operation. The founder subsequently
 
 After the founder reconnected Vercel, seven production-only settings were applied for GEEKT, eight decimals, the verified deploy hash, the privately supplied sender and **1 test GEEKT** (`100000000` raw). This amount is for the manual test, not the unselected contributor rate. The final enable flag is true. No signing key was requested or configured.
 
-The existing verified Mainnet product source `e3fd589878d473939724b06882fb167b1e8d9b0a` was redeployed without a source change as `dpl_FwNcNoHHGZn4Znkz8aUcWobbgEjc`, READY at 12:03:22.952 UTC, assigned to the production domains. PR #114 remains a separate open continuation/documentation change.
+The existing verified Mainnet product source `e3fd589878d473939724b06882fb167b1e8d9b0a` was redeployed without a source change as `dpl_FwNcNoHHGZn4Znkz8aUcWobbgEjc`, READY at 12:03:22.952 UTC, assigned to the production domains. PR #114 remains open; it now includes a pilot run-loading UI fix as well as the continuation records.
 
 Twenty read-only production response checks passed through a proxy-aware transport with a fifteen-second timeout. Health returned connected storage and disabled settlement. Anonymous testnet desk access returned 303 to login; its API and script returned 401. Mainnet economic purchase/payout/burn gates remain disabled. The standard local Node monitor with its five-second limit timed out, including after its proxy option; those timeouts are retained as a validation limit, not described as a passed monitor run.
 
 Latest fixed-indexer snapshot at 12:01:31 UTC: 398 mints / 39,800,000 GEEKT, zero transfers. Full batch completion and native fee funds remain unverified. A separate recipient was validated privately and its token list was empty.
 
-**Next owner action:** open [the testnet desk](https://www.geekprotocol.xyz/ops/testnet/) and sign in with the existing owner access key. Confirm GEEKT/testnet-10 and `100000000` raw per run. Then complete a Kaspa Daily Signal in the same browser/player, save it, and queue its receipt within five minutes before any transfer. The owned run's ID is available from the [current run response](https://www.geekprotocol.xyz/api/ranked?resume=1), in `run.id`, during that window. The desk's current run-ID entry is an operator workflow, not a polished public reward flow. No owner credential should be sent through chat.
+## Owner phone acceptance and expired-run blocker — October 15
 
-Do not represent environment configuration as an authenticated desk test, graded founder run, queued receipt or confirmed payout. The next receipt and wallet signing steps require the owner's active browser session. Keep the original hash and inspect the same wallet history if any send result is uncertain.
+Founder screenshots at approximately 08:29 Michigan time show a signed-in desk, refreshed empty receipts and GEEKT/testnet-10/`100000000` raw settings. This accepts authenticated desk reads, not receipt creation or wallet signing. A later screenshot at 08:50 shows the current-run API error: `That ranked run expired or is no longer active.` No pilot receipt was created in the supplied evidence. The manually copied run ID and five-minute window blocked the first attempt; the expired proof cannot be reconstructed or replaced with a client score.
+
+PR #114 now adds a read-only current-run lookup when the pilot page opens and a **Use my latest completed Daily** button. It fills only an eligible-looking finished Kaspa Daily, clears stale IDs, explains expired/unfinished/player-session states, and leaves final validation to the receipt server. This fix is locally tested but unmerged and not deployed. The existing five-minute proof lifetime, one Daily per UTC day, receipt replay locks and manual-signing boundary remain unchanged.
+
+**Next owner action after the fix is merged and deployed:** enter the recipient first. Complete the next eligible Kaspa Daily in the same browser/player, choose **Finish & save result**, return immediately to the desk, tap **Use my latest completed Daily**, then **Queue pilot receipt** within five minutes. Do not start another mode first because current-run lookup follows the latest run. If today’s Daily was already started, the next challenge unlocks at 00:00 UTC (8 PM Michigan on October 15). Do not reset identity, erase replay locks or synthesize a run to bypass that limit. The manual `run.id` field remains available for operator diagnosis; no JSON copying is required with the fix.
+
+Review/export the queued receipt before any transfer. No owner credential should be sent through chat. Keep the original hash and inspect the same wallet history if any send result is uncertain. A first queued receipt and reconciled real transfer remain outstanding.

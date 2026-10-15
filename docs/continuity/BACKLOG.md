@@ -344,7 +344,7 @@ Evidence/specification: [docs/continuity/repositories.json](../../docs/continuit
 
 **P1 / needs-evidence.** Owner: Maintainer; founder controls the external testnet wallet. Dependencies: none.
 
-Next action: Owner opens the configured production testnet desk and confirms GEEKT/one-token settings; complete and save an eligible Kaspa Daily Signal in that same browser/player, queue within five minutes, then sign one exact transfer and reconcile its receipt. Verify current fee funds and existing batch state before sending.
+Next action: Review the run-loading UI fix in PR #114 and verify its deployment. Authenticated desk reads/config passed on the founder phone; the first run expired before queuing. Complete the next eligible Daily in that same browser/player, save and load it directly in the desk, then queue before the five-minute expiry. Preserve the daily limit, verify fee funds/batch state, and send/reconcile exactly one manual transfer only after a receipt exists.
 
 Acceptance:
 

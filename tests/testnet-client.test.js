@@ -1,0 +1,75 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { ownerClient, escapeHtml } from '../server/ops-ui/assets/ops-core.js';
+import { clientFixture, deferred, json } from './helpers/client-fixture.js';
+
+const source = readFileSync(new URL('../server/ops-ui/assets/testnet.js', import.meta.url), 'utf8').replace(/^import[^\n]+\n/, '');
+const settle = () => new Promise(setImmediate);
+const run = { id: 'a'.repeat(40), status: 'finished', mode: 'daily', category: 'kaspa', completedRound: 1, questionCount: 5, questionIndex: 4, correct: 3 };
+const receipt = { id: 'b'.repeat(64), state: 'queued', ticker: 'GEEKT', amount: '100000000', network: 'testnet-10', recipient: 'synthetic-recipient', proof: { correct: 3, score: 100 } };
+const setup = async (reply = () => json({ ok: true, run })) => {
+  const requests = [];
+  const fetchImpl = async (url, options) => {
+    requests.push({ url, options });
+    if (url === '/api/ranked?resume=1') return reply(options);
+    if (options.method === 'POST') return json({ ok: true, record: receipt });
+    return json({ ok: true, enabled: true, network: 'testnet-10', config: { ticker: 'GEEKT', amount: '100000000' }, records: [receipt] });
+  };
+  const ui = clientFixture(fetchImpl, { ownerClient: args => ownerClient({ ...args, fetchImpl }), escapeHtml });
+  const form = ui.node('[data-queue]');
+  form.elements = { runId: ui.make('input'), recipient: ui.make('input') };
+  ui.run(source); await settle();
+  return { ...ui, requests, form };
+};
+
+test('the pilot loads the owned finished Daily without copying JSON or creating a receipt', async () => {
+  const ui = await setup();
+  assert.equal(ui.form.elements.runId.value, run.id);
+  assert.match(ui.node('[data-run-status]').textContent, /3 \/ 5 correct/);
+  assert.ok(ui.requests.every(r => r.options.method === 'GET'));
+  const resume = ui.requests.find(r => r.url === '/api/ranked?resume=1');
+  assert.equal(resume.options.credentials, 'same-origin'); assert.equal(resume.options.cache, 'no-store');
+  ui.form.elements.recipient.value = 'synthetic-recipient';
+  await ui.form.emit('submit'); await settle();
+  const writes = ui.requests.filter(r => r.options.method === 'POST');
+  assert.equal(writes.length, 1);
+  assert.deepEqual(JSON.parse(writes[0].options.body), { action: 'queue', runId: run.id, recipient: 'synthetic-recipient' });
+});
+
+test('an expired run clears the old ID and explains recovery without disabling existing receipts', async () => {
+  let expired = false;
+  const ui = await setup(() => expired ? json({ ok: false, error: 'That ranked run expired or is no longer active.' }, 404) : json({ ok: true, run }));
+  expired = true;
+  await ui.node('[data-load-run]').emit('click'); await settle();
+  assert.equal(ui.form.elements.runId.value, '');
+  assert.match(ui.node('[data-run-status]').textContent, /expired run cannot be recovered/);
+  assert.match(ui.node('[data-run-status]').textContent, /00:00 UTC/);
+  assert.equal(ui.node('[data-load-run]').disabled, false);
+  assert.match(ui.node('[data-records]').innerHTML, /queued/);
+  assert.ok(ui.requests.every(r => r.options.method === 'GET'));
+});
+
+test('unfinished, wrong-mode, wrong-category and zero-correct runs never autofill the pilot', async () => {
+  for (const patch of [{ status: 'between-rounds' }, { mode: 'speed' }, { category: 'movies' }, { correct: 0 }, { id: '<script>' }, { questionIndex: 3 }]) {
+    const ui = await setup(() => json({ ok: true, run: { ...run, ...patch } }));
+    assert.equal(ui.form.elements.runId.value, '');
+    assert.match(ui.node('[data-run-status]').textContent, /No eligible finished Kaspa Daily/);
+    assert.ok(ui.requests.every(r => r.options.method === 'GET'));
+  }
+});
+
+test('player authentication errors are distinguished from owner access and late replies cannot restore a cleared ID', async () => {
+  const denied = await setup(() => json({ ok: false }, 401));
+  assert.match(denied.node('[data-run-status]').textContent, /player session is separate from owner access/);
+  const pending = deferred();
+  const ui = await setup(() => pending.promise);
+  await ui.node('[data-load-run]').emit('click');
+  assert.equal(ui.requests.filter(r => r.url === '/api/ranked?resume=1').length, 1);
+  const signal = ui.requests.at(-1).options.signal;
+  await ui.window.emit('pagehide'); assert.equal(signal.aborted, true);
+  pending.resolve(json({ ok: true, run })); await settle();
+  assert.equal(ui.form.elements.runId.value, '');
+  assert.equal(ui.node('[data-run-status]').textContent, '');
+  assert.ok(ui.requests.every(r => r.options.method === 'GET'));
+});

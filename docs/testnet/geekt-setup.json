@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "production-manual-pilot-configured-awaiting-first-receipt",
+  "status": "production-desk-read-accepted-first-receipt-blocked-by-run-expiry",
   "recordedOn": "2026-10-15",
   "backlogId": "CHAIN-001",
   "network": "testnet-10",
@@ -52,7 +52,7 @@
     "individualMintReceiptVerified": false,
     "mintBatchComplete": false,
     "signingEvidence": "Founder Kasware TN10 mint screenshot plus matching accepted deploy operation; no HQ signer/provider acceptance claim.",
-    "ownerReceiptDeskAccepted": false,
+    "ownerReceiptDeskAccepted": true,
     "firstRewardTransferVerified": false,
     "recipient": "Separate founder-supplied TN10 address validated privately; empty token list at baseline."
   },
@@ -132,9 +132,10 @@
     "healthStorage": "connected",
     "mainnetSettlementEnabled": false,
     "automaticSigning": false,
-    "ownerAuthenticatedAcceptance": false,
+    "ownerAuthenticatedAcceptance": true,
     "rewardTransferSubmittedByAssistant": false,
-    "validationLimit": "Local Node monitor requests timed out at five seconds. The same twenty response validators passed using a proxy-aware read-only transport with a fifteen-second timeout. Owner session/first receipt/real transfer remain untested."
+    "validationLimit": "Local five-second Node monitor timed out; twenty response validators passed with a proxy-aware fifteen-second transport. Founder screenshots later accepted authenticated desk reads; first receipt and real transfer remain unverified.",
+    "ownerAcceptanceScope": "Founder screenshots show signed-in desk, refreshed empty receipts and GEEKT/testnet-10/100000000 raw settings. No queue or transfer acceptance."
   },
   "latestTokenObservation": {
     "checkedAt": "2026-10-15T12:01:31Z",
@@ -145,5 +146,36 @@
     "senderHoldingsObservedPrivately": true,
     "recipientTokenListEmptyPrivately": true,
     "meaning": "Snapshot, not batch-completion evidence or a native TKAS balance check."
+  },
+  "ownerDeviceObservation": {
+    "recordedOn": "2026-10-15",
+    "source": "Founder-supplied phone screenshots in the working conversation; private browser data is not copied into this public repository.",
+    "deskReadAccepted": true,
+    "displayedTicker": "GEEKT",
+    "displayedNetwork": "testnet-10",
+    "displayedAmountRaw": "100000000",
+    "displayedReceiptCount": 0,
+    "runLookupError": "That ranked run expired or is no longer active.",
+    "receiptQueued": false,
+    "transferVerified": false,
+    "meaning": "Authenticated UI/config acceptance only. Expired run proof cannot be reconstructed from a screenshot, score, or client assertion."
+  },
+  "runLoadingFix": {
+    "status": "implemented-and-locally-tested-unmerged",
+    "reviewPullRequest": 114,
+    "scope": "Read current owned run automatically on pilot page entry and via Use my latest completed Daily; show missing/unfinished/player-session guidance.",
+    "serverPolicyChanged": false,
+    "finishedRunTtlSeconds": 300,
+    "dailyResetUtc": "00:00",
+    "targetedTestsPassed": 17,
+    "browserRenderingAccepted": false,
+    "nextAction": "Review and merge the UI fix, verify the production release, then complete an eligible Daily and queue immediately in the same browser/player. If today was already started, wait for the next UTC Daily; do not bypass the lock.",
+    "fullVerify": {
+      "testsPassed": 436,
+      "testsFailed": 0,
+      "testsSkipped": 0,
+      "redis": "real Redis 7.4.2",
+      "securityAssertions": 310
+    }
   }
 }

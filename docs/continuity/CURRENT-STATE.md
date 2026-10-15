@@ -25,7 +25,7 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CONT-001: in-progress.** Build and review this continuation system, source archive, backlog and 2026–2076 vision. No new institutional service is implemented by these documents.
+**CONT-001: in-progress.** Build and review the continuation system, source archive, backlog and 2026–2076 vision. PR #114 also carries the CHAIN-001 pilot run-loading UI fix after the founder accepted desk reads but the first Daily expired before queuing. No new institutional service is implemented.
 
 Next task: **BANK-001**. After the continuation change is reviewed and merged, prepare a small distinct source-checked Kaspa batch toward 1,000. Keep all CCE and settlement holds intact.
 
