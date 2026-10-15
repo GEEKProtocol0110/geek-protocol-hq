@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "checkedOn": "2026-10-15",
+  "source": "Connected GitHub REST open issue lists for each of thirteen public repositories; pull requests excluded; every list below the 100-entry page limit.",
+  "repositories": [
+    {
+      "repository": "GEEKProtocol0110/geek-protocol-alpha",
+      "openIssueCount": 0,
+      "openPullRequestCount": 0,
+      "issues": []
+    },
+    {
+      "repository": "GEEKProtocol0110/geek-protocol-hq",
+      "openIssueCount": 1,
+      "openPullRequestCount": 0,
+      "issues": [
+        {
+          "number": 14,
+          "title": "Mint availability: Kasplex status endpoints failing while HQ is paused",
+          "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/issues/14"
+        }
+      ]
+    },
+    {
+      "repository": "GEEKProtocol0110/geek-mini",
+      "openIssueCount": 0,
+      "openPullRequestCount": 0,
+      "issues": []
+    },
+    {
+      "repository": "GEEKProtocol0110/geek-jr-indexcards",
+      "openIssueCount": 0,
+      "openPullRequestCount": 0,
+      "issues": []
+    },
+    {
+      "repository": "GEEKProtocol0110/level-up-life",
+      "openIssueCount": 0,
+      "openPullRequestCount": 0,
+      "issues": []
+    },
+    {
+      "repository": "GEEKProtocol0110/GEEKProtocol0110",
+      "openIssueCount": 0,
+      "openPullRequestCount": 0,
+      "issues": []
+    },
+    {
+      "repository": "GEEKProtocol0110/kaspa-speed-benchmark-dashboard",
+      "openIssueCount": 0,
+      "openPullRequestCount": 0,
+      "issues": []
+    },
+    {
+      "repository": "GEEKProtocol0110/geek-protocol-docs",
+      "openIssueCount": 0,
+      "openPullRequestCount": 0,
+      "issues": []
+    },
+    {
+      "repository": "GEEKProtocol0110/geek-wallet",
+      "openIssueCount": 0,
+      "openPullRequestCount": 0,
+      "issues": []
+    },
+    {
+      "repository": "GEEKProtocol0110/kaspa-live-widget",
+      "openIssueCount": 0,
+      "openPullRequestCount": 0,
+      "issues": []
+    },
+    {
+      "repository": "GEEKProtocol0110/a.c.e.-AGI",
+      "openIssueCount": 0,
+      "openPullRequestCount": 0,
+      "issues": []
+    },
+    {
+      "repository": "GEEKProtocol0110/geek-jr",
+      "openIssueCount": 0,
+      "openPullRequestCount": 0,
+      "issues": []
+    },
+    {
+      "repository": "GEEKProtocol0110/geek-protocol-site",
+      "openIssueCount": 0,
+      "openPullRequestCount": 0,
+      "issues": []
+    }
+  ],
+  "scope": "Point-in-time ticket inventory, not an assertion that repositories have no defects. Private repositories are excluded."
+}

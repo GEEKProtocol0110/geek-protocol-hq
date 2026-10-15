@@ -1,4 +1,5 @@
 // Shared read-only probes for the owner desk and independent GitHub runner.
+import { GEEK_DEPLOYMENT } from './geek-deployment.js';
 export const MONITOR_ORIGIN = 'https://www.geekprotocol.xyz';
 export const MONITOR_TIMEOUT = 5000;
 export const MONITOR_FRESH_MS = 15 * 60 * 1000;
@@ -15,6 +16,7 @@ export const monitorChecks = Object.freeze([
   { id: 'royale-api', name: 'Public room discovery', path: '/api/royale/?discover=1', kind: 'royale' },
   { id: 'economy', name: 'Payment gates', path: '/api/session/?service=economy', kind: 'economy' },
   { id: 'widget-api', name: 'Widget release metadata', path: '/api/widget/', kind: 'widget' },
+  { id: 'mint-status', name: 'Verified GEEK mint availability', path: '/api/mint/?fresh=1', kind: 'mint' },
   ...['imported', 'testnet', 'monitor'].flatMap(page => [
     { id: `${page}-page`, name: `${page} page protection`, path: `/ops/${page}/`, kind: 'private-page' },
     { id: `${page}-api`, name: `${page} API protection`, path: `/api/session/?service=operations&action=${page}`, kind: 'private-api' },
@@ -25,6 +27,24 @@ const PRIVATE_KEYS = new Set(['correctIndex', 'questionHash', 'playerId', 'sessi
 const leaks = value => value && typeof value === 'object' && Object.entries(value).some(([key, child]) => PRIVATE_KEYS.has(key) || leaks(child));
 const header = (response, name) => response.headers.get(name) || '';
 const privateHeaders = response => /(?:^|,)\s*private\b/i.test(header(response, 'cache-control')) && /\bno-store\b/i.test(header(response, 'cache-control'));
+const mintStatusValid = data => {
+  const { deployment, mint, transaction } = data;
+  if (deployment?.verified !== true || !Object.entries(GEEK_DEPLOYMENT).every(([key, value]) => deployment[key] === value) ||
+    !['https://api.kasplex.org/v1/krc20/token/GEEK', 'https://api-fallback.kasplex.org/v1/krc20/token/GEEK'].includes(data.sourceUrl) ||
+    !Number.isSafeInteger(data.checkedAt) || Math.abs(Date.now() - data.checkedAt) > 60_000 ||
+    typeof mint?.mintedRaw !== 'string' || !/^(?:0|[1-9][0-9]{0,19})$/.test(mint.mintedRaw) ||
+    mint.maximumRaw !== GEEK_DEPLOYMENT.maxRaw || mint.perMintRaw !== GEEK_DEPLOYMENT.limitRaw ||
+    transaction?.userApprovalRequired !== true || transaction.custodial !== false || transaction.type !== 3 ||
+    transaction.inscription !== JSON.stringify({ p: 'KRC-20', op: 'mint', tick: 'GEEK' })) return false;
+  const minted = BigInt(mint.mintedRaw), maximum = BigInt(GEEK_DEPLOYMENT.maxRaw), limit = BigInt(GEEK_DEPLOYMENT.limitRaw);
+  if (minted > maximum || minted % limit !== 0n) return false;
+  const remaining = (maximum - minted) / limit, scale = 10n ** BigInt(GEEK_DEPLOYMENT.decimals);
+  return mint.completedMints === String(minted / limit) && mint.totalMints === String(maximum / limit) &&
+    mint.remainingMints === String(remaining) && mint.minted === String(minted / scale) &&
+    mint.maximum === String(maximum / scale) && mint.perMint === String(limit / scale) &&
+    mint.progressBasisPoints === Number(minted * 10_000n / maximum) &&
+    (remaining > 0n ? mint.state === 'deployed' && mint.open === true : ['deployed', 'finished'].includes(mint.state) && mint.open === false);
+};
 export function validateProbe(spec, response, text) {
   if (spec.kind === 'private-page') return response.status === 303 && privateHeaders(response) &&
     ['/ops-login/', `${MONITOR_ORIGIN}/ops-login/`].includes(header(response, 'location')) && !text;
@@ -38,6 +58,7 @@ export function validateProbe(spec, response, text) {
   const data = JSON.parse(text);
   if (spec.kind === 'widget') return /^\d+\.\d+\.\d+$/.test(data.version || '') && Number.isSafeInteger(data.size) && data.size > 0 && data.size <= 20 * 1024 * 1024 && /^[a-f0-9]{64}$/.test(data.sha256 || '') && data.release === `https://github.com/GEEKProtocol0110/kaspa-live-widget/releases/tag/v${data.version}`;
   if (data.ok !== true || !/\bno-store\b/i.test(header(response, 'cache-control')) || leaks(data)) return false;
+  if (spec.kind === 'mint') return mintStatusValid(data);
   if (spec.kind === 'health') return data.storage === 'connected';
   if (spec.kind === 'study') return Array.isArray(data.topics) && data.topics.length >= 8 && data.topics.length <= 100 && new Set(data.topics.map(t => t.id)).size === data.topics.length && data.topics.every(t => typeof t.id === 'string' && Number.isSafeInteger(t.count) && t.count > 0) && data.ranked === false && data.rewardsEnabled === false;
   if (spec.kind === 'royale') return Number.isSafeInteger(data.discovery?.serverNow) && Array.isArray(data.discovery?.rooms) && data.discovery.rooms.length <= 20 && data.discovery.rooms.every(r => Object.keys(r).every(key => ['code', 'category', 'capacity', 'seats', 'online', 'createdAt', 'expiresAt'].includes(key)) && /^ROY-[A-Z2-9]{8}$/.test(r.code || '') && Number.isInteger(r.seats) && r.seats > 0 && r.seats < r.capacity && Number.isInteger(r.capacity) && r.capacity <= 100 && Number.isInteger(r.online) && r.online > 0 && r.online <= r.seats);
@@ -77,12 +98,14 @@ export async function probeProduction({ fetchImpl = globalThis.fetch } = {}) {
     finally { clearTimeout(timer); controller.abort(); }
     return { id: spec.id, passed, status, elapsedMs: Math.max(0, Math.round(performance.now() - since)), reason };
   }));
-  return { schema: 1, checkedAt, durationMs: Math.round(performance.now() - started), passed: checks.every(c => c.passed), checks };
+  return { schema: 2, checkedAt, durationMs: Math.round(performance.now() - started), passed: checks.every(c => c.passed), checks };
 }
 export function validMonitorReport(report, now = Date.now()) {
-  return Boolean(report && Object.keys(report).every(key => ['schema', 'checkedAt', 'durationMs', 'passed', 'checks'].includes(key)) && report.schema === 1 && Number.isSafeInteger(report.checkedAt) && report.checkedAt > 0 && report.checkedAt <= now + 60000 &&
+  // Preserve exact pre-mint snapshots; schema 1 never claims the expanded coverage.
+  const definitions = report?.schema === 1 ? monitorChecks.filter(c => c.id !== 'mint-status') : monitorChecks;
+  return Boolean(report && Object.keys(report).every(key => ['schema', 'checkedAt', 'durationMs', 'passed', 'checks'].includes(key)) && [1, 2].includes(report.schema) && Number.isSafeInteger(report.checkedAt) && report.checkedAt > 0 && report.checkedAt <= now + 60000 &&
     Number.isSafeInteger(report.durationMs) && report.durationMs >= 0 && report.durationMs <= 60000 && typeof report.passed === 'boolean' &&
-    Array.isArray(report.checks) && report.checks.length === monitorChecks.length && report.checks.every((c, i) => c && Object.keys(c).every(key => ['id', 'passed', 'status', 'elapsedMs', 'reason'].includes(key)) && c.id === monitorChecks[i].id && typeof c.passed === 'boolean' && Number.isInteger(c.status) && c.status >= 0 && c.status <= 599 && Number.isSafeInteger(c.elapsedMs) && c.elapsedMs >= 0 && c.elapsedMs <= 60000 &&
+    Array.isArray(report.checks) && report.checks.length === definitions.length && report.checks.every((c, i) => c && Object.keys(c).every(key => ['id', 'passed', 'status', 'elapsedMs', 'reason'].includes(key)) && c.id === definitions[i].id && typeof c.passed === 'boolean' && Number.isInteger(c.status) && c.status >= 0 && c.status <= 599 && Number.isSafeInteger(c.elapsedMs) && c.elapsedMs >= 0 && c.elapsedMs <= 60000 &&
       ['expected-response', 'response-mismatch', 'timed-out', 'response-too-large', 'request-failed'].includes(c.reason) && c.passed === (c.reason === 'expected-response') &&
-      (!c.passed || c.status === (monitorChecks[i].kind === 'private-page' ? 303 : monitorChecks[i].kind === 'private-api' ? 401 : 200))) && report.passed === report.checks.every(c => c.passed));
+      (!c.passed || c.status === (definitions[i].kind === 'private-page' ? 303 : definitions[i].kind === 'private-api' ? 401 : 200))) && report.passed === report.checks.every(c => c.passed));
 }

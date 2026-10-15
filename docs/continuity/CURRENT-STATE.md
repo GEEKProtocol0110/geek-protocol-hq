@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-001: active.** Continuation system CONT-001 is merged and deployed. Continue distinct source-checked Kaspa concepts toward 1,000; CHAIN-001 separately awaits the next eligible Daily, queued receipt and reconciled manual test transfer.
+**OPS-003: in-progress.** Resolve the remaining monitoring gap in open GitHub issue #14. Primary mint status has recovered; add fresh pinned-deployment checks and preserve older monitor snapshots. Candidate is not yet merged or deployed.
 
-Next task: **BANK-001**. Prepare the next small distinct source-checked Kaspa batch. For CHAIN-001, refresh the deployed pilot tab and verify Use my latest completed Daily, then queue the next eligible Daily immediately after saving; do not bypass today’s lock or send before a receipt. Keep all CCE and Mainnet settlement holds intact.
+Next task: **BANK-001**. Review and release OPS-003 with issue #14 evidence, then continue BANK-001 toward 1,000 distinct source-checked Kaspa concepts. CHAIN-001 still needs owner acceptance of run loading and its first queued/reconciled manual test transfer; keep CCE and Mainnet settlement held.
 
 ## Holds
 

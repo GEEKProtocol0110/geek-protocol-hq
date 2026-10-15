@@ -1,6 +1,6 @@
 # Production monitoring
 
-The HQ monitor runs twenty **read-only HTTP probes** against the fixed production origin, `https://www.geekprotocol.xyz`. It creates no player session, game entry, review decision or wallet transaction. No owner cookie, API credential, private response body, display name, wallet address or player ID enters its reports.
+The HQ monitor runs twenty-one **read-only HTTP probes** against the fixed production origin, `https://www.geekprotocol.xyz`. It creates no player session, game entry, review decision or wallet transaction. No owner cookie, API credential, private response body, display name, wallet address or player ID enters its reports.
 
 ## Coverage and interpretation
 
@@ -11,9 +11,12 @@ The HQ monitor runs twenty **read-only HTTP probes** against the fixed productio
 | Study catalog | Distinct populated topics, no graded answers or player identifiers, no ranked/reward grant |
 | Public Royale discovery | Bounded counts-only waiting-room summaries; an empty list is valid |
 | Economy | Planning-only journal; purchases, payouts, burns and signing remain disabled |
+| GEEK mint availability | Fresh no-store status, exact pinned Mainnet deployment, consistent gross minted/remaining totals, explicit wallet approval; verified exhaustion is healthy |
 | Widget release metadata | Version, bounded size, SHA-256 and the exact canonical release URL |
 | Imported review, Testnet pilot and Monitoring pages | Anonymous request receives the private no-store sign-in redirect |
 | The same three APIs and scripts | Anonymous request receives HTTP 401 with private no-store headers |
+
+Mint status uses `/api/mint/?fresh=1` on HQ; the monitor never contacts an arbitrary indexer or signs a request. It checks status freshness, trusted source, all pinned deployment fields, raw/display supply arithmetic and remaining mint count. A verified exhausted supply with minting closed is healthy. Unavailable or mismatched status, an incorrectly paused non-exhausted token, or open exhausted supply fails. This is status availability, not an independently audited indexer ledger or a mint submission.
 
 A 200 response alone is insufficient. Redirects are checked directly rather than followed into a successful login page. Each probe has a five-second deadline covering headers and body reading, including a transport that ignores cancellation. Body limits are 384 KB for public pages and 64 KB for API/private responses. Unexpected responses, oversized bodies, timeouts and transport failures are separate report reasons. Only the check identifier, result, HTTP status, elapsed milliseconds and fixed reason category are saved.
 
@@ -22,6 +25,8 @@ These are point-in-time HTTP checks, not measured percentage uptime, load testin
 ## Owner desk
 
 Open `/ops/monitor/` using the existing owner login. **Refresh saved history** only reads stored evidence. **Run production check** performs live probes and saves one report. Failed probes are saved as failed evidence; storage errors are shown as unavailable. No absent or corrupted report is treated as a passing check.
+
+Current reports use schema 2 and include twenty-one checks. Exact schema-1 twenty-check snapshots remain readable without rewriting or deleting them. The owner UI labels these **Earlier coverage** and asks for a new check; they cannot certify mint availability. Malformed or incomplete reports still fail closed.
 
 The newest twenty-five owner-triggered reports are retained in a bounded Redis list. The list expires seven days after its last write. A snapshot older than fifteen minutes is labeled stale, including while the page remains open; the local aging timer makes no requests. Read timestamps and the failed rows before relying on a result. This UI has no automatic probe retries, credentials in browser storage or analytics.
 
@@ -45,6 +50,8 @@ node scripts/production-monitor.mjs --json
 The origin is intentionally not configurable. A monitor request cannot be repurposed to read arbitrary internal or external URLs. The script prints no response bodies and makes no writes to production or Operations history.
 
 ## Verification
+
+Issue [#14](https://github.com/GEEKProtocol0110/geek-protocol-hq/issues/14) investigation and dated acceptance evidence are in [the mint availability record](MINT-AVAILABILITY-ISSUE-14.md). The candidate change must be merged and observed in production before marking monitoring deployed.
 
 Tests cover fixed-origin credential-free requests, body/transport deadlines, oversized responses, private-route and disabled-payment regressions, outage evidence, stale client displays, authenticated access, global run races, bounded history and preserved corruption. Client fixtures exercise the shipped client behavior; they do not establish rendered phone acceptance.
 

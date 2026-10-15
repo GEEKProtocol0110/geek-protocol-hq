@@ -66,10 +66,12 @@ check(wallet.includes("wallet.signMessage(message, { type: 'schnorr' })"), 'Kasw
 check(!wallet.includes('verifyMessage('), 'the browser is not trusted to verify wallet proofs');
 
 const mintServer = await text('server/mint.js');
-check(mintServer.includes("ticker: 'GEEK'"), 'mint verifier pins the GEEK ticker');
-check(mintServer.includes("maxRaw: '14400000000000000000'"), 'mint verifier pins maximum supply');
-check(mintServer.includes("limitRaw: '10000000000000'"), 'mint verifier pins per-mint limit');
-check(mintServer.includes("deploymentHash: 'c3cea245b394374b6d80d9fa82269967b56bd5d128a4db3152087a05e014d0b1'"), 'mint verifier pins the canonical reveal hash');
+const mintDeployment = await text('server/geek-deployment.js');
+check(mintServer.includes("import { GEEK_DEPLOYMENT } from './geek-deployment.js'"), 'mint verifier uses the shared canonical deployment');
+check(mintDeployment.includes("ticker: 'GEEK'"), 'mint verifier pins the GEEK ticker');
+check(mintDeployment.includes("maxRaw: '14400000000000000000'"), 'mint verifier pins maximum supply');
+check(mintDeployment.includes("limitRaw: '10000000000000'"), 'mint verifier pins per-mint limit');
+check(mintDeployment.includes("deploymentHash: 'c3cea245b394374b6d80d9fa82269967b56bd5d128a4db3152087a05e014d0b1'"), 'mint verifier pins the canonical reveal hash');
 check(mintServer.includes('MINT_DEPLOYMENT_MISMATCH'), 'mint verifier fails closed on deployment mismatch');
 
 const mintApi = await text('api/mint.js');

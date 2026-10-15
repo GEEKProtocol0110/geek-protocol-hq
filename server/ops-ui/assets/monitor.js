@@ -1,10 +1,12 @@
 import { ownerClient, escapeHtml as e } from './ops-core.js';
 const $ = selector => document.querySelector(selector);
 const client = ownerClient({ endpoint: '/api/session/?service=operations&action=monitor' });
-export const monitorCopy = (report, serverNow, freshnessMs) => {
+export const monitorCopy = (report, serverNow, freshnessMs, expectedChecks = []) => {
   if (!report) return { label: 'No checks saved', detail: 'Run a production check to create the first snapshot.' };
-  const valid = Number.isSafeInteger(serverNow) && Number.isSafeInteger(freshnessMs) && freshnessMs === 900000 && Number.isSafeInteger(report.checkedAt) && report.checkedAt > 0 && report.checkedAt <= serverNow + 60000 && Array.isArray(report.checks) && report.checks.length === 20 && report.checks.every(c => typeof c.passed === 'boolean') && report.passed === report.checks.every(c => c.passed);
+  const definitions = report.schema === 1 ? expectedChecks.filter(c => c.id !== 'mint-status') : expectedChecks;
+  const valid = [1, 2].includes(report.schema) && expectedChecks.some(c => c.id === 'mint-status') && Number.isSafeInteger(serverNow) && Number.isSafeInteger(freshnessMs) && freshnessMs === 900000 && Number.isSafeInteger(report.checkedAt) && report.checkedAt > 0 && report.checkedAt <= serverNow + 60000 && Array.isArray(report.checks) && report.checks.length === definitions.length && report.checks.every((c, i) => c.id === definitions[i].id && typeof c.passed === 'boolean') && report.passed === report.checks.every(c => c.passed);
   if (!valid) return { label: 'Unavailable', detail: 'This snapshot could not be verified. Refresh the saved history.' };
+  if (report.schema === 1) return { label: 'Earlier coverage', detail: 'This saved snapshot predates mint-status monitoring. Run a new check for the current coverage; older results are preserved.' };
   const stale = serverNow - report.checkedAt > freshnessMs;
   return { label: stale ? 'Stale snapshot' : report.passed ? 'Checks passed' : 'Attention required', detail: `${stale ? 'Run a new check. Last checked' : 'Checked'} ${new Date(report.checkedAt).toLocaleString()}. ${report.checks.filter(c => !c.passed).length} of ${report.checks.length} checks failed at that time.` };
 };
@@ -14,7 +16,7 @@ if (typeof document !== 'undefined') {
   const controls = () => { $('[data-refresh]').disabled = busy; $('[data-run]').disabled = busy; };
   const render = payload => {
     lastPayload = payload; receivedAt = performance.now();
-    const report = payload.history[0], copy = monitorCopy(report, payload.serverNow, payload.freshnessMs);
+    const report = payload.history[0], copy = monitorCopy(report, payload.serverNow, payload.freshnessMs, payload.checks);
     $('[data-overall]').textContent = copy.label; $('[data-checked]').textContent = copy.detail;
     if (copy.label === 'Unavailable') return;
     if (report) $('[data-checks]').innerHTML = `<div class="monitor-table"><table><caption>Last saved owner check</caption><thead><tr><th>Check</th><th>Result</th><th>HTTP</th><th>Response time</th></tr></thead><tbody>${report.checks.map(c => `<tr><th scope="row">${e(payload.checks.find(s => s.id === c.id)?.name || c.id)}</th><td>${c.passed ? 'Passed' : `Failed · ${e(c.reason)}`}</td><td>${e(c.status || 'No response')}</td><td>${e(c.elapsedMs)} ms</td></tr>`).join('')}</tbody></table></div>`;
@@ -29,7 +31,7 @@ if (typeof document !== 'undefined') {
   };
   $('[data-refresh]').addEventListener('click', () => task(false)); $('[data-run]').addEventListener('click', () => task(true));
   // Age the visible snapshot locally; this timer sends no network request or mutation.
-  setInterval(() => { if (busy || !lastPayload) return; const copy = monitorCopy(lastPayload.history[0], lastPayload.serverNow + Math.round(performance.now() - receivedAt), lastPayload.freshnessMs); $('[data-overall]').textContent = copy.label; $('[data-checked]').textContent = copy.detail; }, 30000);
+  setInterval(() => { if (busy || !lastPayload) return; const copy = monitorCopy(lastPayload.history[0], lastPayload.serverNow + Math.round(performance.now() - receivedAt), lastPayload.freshnessMs, lastPayload.checks); $('[data-overall]').textContent = copy.label; $('[data-checked]').textContent = copy.detail; }, 30000);
   window.addEventListener('pagehide', () => { epoch++; client.clear(); clear('Private evidence cleared. Refresh after returning.'); busy = false; controls(); });
   $('[data-sign-out]').addEventListener('click', async () => { epoch++; client.clear(); clear('Signed-out view.'); busy = true; controls(); try { await fetch('/api/session/?service=operations&action=logout', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: '{}' }); } finally { location.href = '/ops-login/'; } });
   task(false);

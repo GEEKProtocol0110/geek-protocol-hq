@@ -39,7 +39,7 @@ test('monitor pages, APIs and assets remain private; GET only reads history and 
 });
 test('a global lock prevents duplicate probes and failures are saved as failures with a bounded history', async () => {
   const cookie = await login(), results = await Promise.all([run(cookie), run(cookie)]);
-  assert.deepEqual(results.map(r => r.statusCode).sort(), [200, 409]); assert.equal(probes, 20);
+  assert.deepEqual(results.map(r => r.statusCode).sort(), [200, 409]); assert.equal(probes, 21);
   assert.equal((await call({ cookie })).body.history[0].passed, true);
   const saved = await fixture.command('LINDEX', monitorHistoryKey, 0);
   for (let n = 0; n < 24; n++) await fixture.command('RPUSH', monitorHistoryKey, saved);
@@ -48,6 +48,18 @@ test('a global lock prevents duplicate probes and failures are saved as failures
   assert.equal((await run(cookie)).body.report.passed, false);
   const read = await call({ cookie }); assert.equal(read.body.history.length, 25); assert.equal(read.body.history[0].checks.find(c => c.id === 'health').status, 503);
   assert.ok(await fixture.command('TTL', monitorHistoryKey) > 0);
+});
+test('saved twenty-check legacy history survives deployment and can be followed by a current mint-covered report', async () => {
+  const cookie = await login();
+  const current = (await run(cookie)).body.report;
+  const legacy = { ...current, schema: 1, checks: current.checks.filter(c => c.id !== 'mint-status') };
+  await fixture.command('DEL', monitorHistoryKey);
+  await fixture.command('LPUSH', monitorHistoryKey, JSON.stringify(legacy));
+  const old = await call({ cookie }); assert.equal(old.statusCode, 200); assert.equal(old.body.history[0].schema, 1);
+  await fixture.command('DEL', monitorLockKey);
+  assert.equal((await run(cookie)).body.report.schema, 2);
+  const history = (await call({ cookie })).body.history;
+  assert.equal(history.length, 2); assert.deepEqual(history.map(r => r.schema), [2, 1]);
 });
 test('damaged evidence is unavailable without overwriting historical records', async () => {
   const cookie = await login(); await fixture.command('LPUSH', monitorHistoryKey, '{damaged');

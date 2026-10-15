@@ -11,13 +11,44 @@ test('all production probes use the fixed HQ, GET, no credentials and manual red
     assert.equal(options.method, 'GET'); assert.equal(options.credentials, 'omit'); assert.equal(options.redirect, 'manual');
     assert.deepEqual(Object.keys(options.headers).sort(), ['Cache-Control', 'User-Agent']); return expectedProbe(spec);
   } });
-  assert.equal(calls.length, 20); assert.equal(report.passed, true); assert.equal(validMonitorReport(report), true);
+  assert.equal(calls.length, 21); assert.equal(report.passed, true); assert.equal(report.schema, 2); assert.equal(validMonitorReport(report), true);
   assert.ok(report.checks.every(c => Object.keys(c).sort().join(',') === 'elapsedMs,id,passed,reason,status'));
   const { probe } = JSON.parse(JSON.stringify({ probe: report })); probe.checks[0].passed = false; assert.equal(validMonitorReport(probe), false);
   assert.equal(validMonitorReport({ ...report, playerId: 'private' }), false);
   assert.equal(validMonitorReport({ ...report, checks: report.checks.slice(1) }), false);
   const forged = structuredClone(report); forged.checks[0].status = 503;
   assert.equal(validMonitorReport(forged), false, 'A failure status cannot be stored as a passing check');
+});
+test('mint monitoring rejects unavailable, stale, mismatched or inconsistent success but accepts verified exhaustion', async () => {
+  const spec = monitorChecks.find(s => s.id === 'mint-status');
+  assert.equal(spec.path, '/api/mint/?fresh=1');
+  const response = expectedProbe(spec), base = JSON.parse(await response.text());
+  for (const patch of [
+    { deployment: { ...base.deployment, deploymentHash: 'f'.repeat(64) } },
+    { deployment: { ...base.deployment, ticker: 'GEEKT' } },
+    { deployment: { ...base.deployment, verified: false } },
+    { sourceUrl: 'https://untrusted.invalid/token/GEEK' }, { checkedAt: Date.now() - 61_000 },
+    { mint: { ...base.mint, remainingMints: '1' } }, { mint: { ...base.mint, mintedRaw: '1' } },
+    { mint: { ...base.mint, mintedRaw: '14400000000000000001' } },
+    { mint: { ...base.mint, open: false } }, { transaction: { ...base.transaction, userApprovalRequired: false } }
+  ]) assert.equal(validateProbe(spec, response, JSON.stringify({ ...base, ...patch })), false, JSON.stringify(patch));
+  assert.equal(validateProbe(spec, new Response('unavailable', { status: 503 }), 'unavailable'), false);
+  const exhausted = { ...base, mint: { ...base.mint, state: 'finished', open: false, minted: base.mint.maximum, mintedRaw: base.mint.maximumRaw, completedMints: '1440000', remainingMints: '0', progressBasisPoints: 10000 } };
+  assert.equal(validateProbe(spec, response, JSON.stringify(exhausted)), true);
+  exhausted.mint.open = true; assert.equal(validateProbe(spec, response, JSON.stringify(exhausted)), false);
+  const report = await probeProduction({ fetchImpl: async url => {
+    const check = monitorChecks.find(s => url === MONITOR_ORIGIN + s.path);
+    return check.id === 'mint-status' ? new Response('upstream problem', { status: 503 }) : expectedProbe(check);
+  } });
+  assert.equal(report.passed, false); assert.deepEqual(report.checks.filter(c => !c.passed).map(c => c.id), ['mint-status']);
+  assert.doesNotMatch(JSON.stringify(report), /upstream problem|kasplex/);
+});
+test('legacy reports remain readable without pretending to cover mint availability', async () => {
+  const report = await probeProduction({ fetchImpl: async url => expectedProbe(monitorChecks.find(s => url === MONITOR_ORIGIN + s.path)) });
+  const legacy = { ...report, schema: 1, checks: report.checks.filter(c => c.id !== 'mint-status') };
+  assert.equal(validMonitorReport(legacy), true);
+  assert.equal(validMonitorReport({ ...legacy, schema: 2 }), false);
+  assert.equal(validMonitorReport({ ...report, schema: 1 }), false);
 });
 test('privacy and gate regressions fail even when endpoints return HTTP 200', async () => {
   for (const id of ['study-api', 'royale-api']) {

@@ -96,6 +96,23 @@ test('reachable bad records cannot be overridden by a more permissive fallback',
     assert.equal(calls, 1);
   }
 });
+test('transport, throttling and gateway failures can recover through the fixed fallback only', async () => {
+  for (const failure of ['transport', 429, 502]) {
+    const requests = [], logs = [];
+    const load = createGeekMintStatusLoader({ logger: event => logs.push(event), fetchImpl: async url => {
+      requests.push(url);
+      if (requests.length === 1) {
+        if (failure === 'transport') throw new TypeError('network unavailable');
+        return new Response('', { status: failure });
+      }
+      return Response.json(fixture());
+    } });
+    assert.equal((await load({ force: true })).mint.open, true);
+    assert.deepEqual(requests, ['https://api.kasplex.org/v1/krc20/token/GEEK', 'https://api-fallback.kasplex.org/v1/krc20/token/GEEK']);
+    assert.equal(logs[0].reason, failure === 'transport' ? 'transport_error' : 'http_error');
+    assert.equal(logs[0].httpStatus, failure === 'transport' ? null : failure);
+  }
+});
 
 test('fallback cannot replace an exhausted supply with an open record', async () => {
   let calls = 0;
