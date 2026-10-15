@@ -1,5 +1,6 @@
 import { loadQuestionBank, shuffleOptions } from './questions.js';
 import { guidedLessons } from './study-lessons.js';
+import { technologyTopics, technologyLessons } from './study-technology.js';
 
 export const studyLevels = [
   { id: 'foundations', name: 'Foundations', tier: 'easy', description: 'Start with names, terms, and basic safety.' },
@@ -15,24 +16,25 @@ export const studyTopics = [
   { id: 'wallets', name: 'Wallets & safe signatures', category: 'Wallets & Addresses', lesson: 'A Kaspa balance is made from unspent transaction outputs. A public address can receive funds; a seed phrase or private key must stay private. A checksum catches many typing errors, but cannot tell you whether you chose the right recipient. Check a signature message just as carefully as a transaction request.', sources: ['https://docs.kaspa.org/integrate', 'https://github.com/kaspanet/kips/blob/master/kip-0005.md'], next: 'tokens' },
   { id: 'tokens', name: 'Tokens & indexers', category: 'KRC-20 & Smart Contracts', lesson: 'KRC-20 is an application token protocol on Kaspa. Deploy establishes token parameters; mint creates units according to those parameters; transfer moves units. An indexer interprets those operations. Token state is distinct from native KAS, and an indexer outage does not mean Kaspa stopped producing blocks.', sources: ['https://github.com/kasplex/sdk-kiwi'], next: 'ecosystem' },
   { id: 'ecosystem', name: 'Nodes & builder tools', category: 'Kaspa Ecosystem', lesson: 'A full node checks consensus rules independently. Applications use RPC to communicate with nodes. Testnet is for experimentation with test coins. Kaspa Improvement Proposals document changes in public; a proposed upgrade must not be described as already active.', sources: ['https://docs.kaspa.org/integrate', 'https://github.com/kaspanet/kips'], next: 'fundamentals' },
-  { id: 'fundamentals', name: 'Keys, fees & finality', category: 'Crypto Fundamentals', lesson: 'Private keys authorize signatures; public keys support verification. Consensus resolves double spends. Proof-of-work finality becomes stronger with accumulated work; it is not a promise of zero reversal risk. Self-custody means keeping control of your own keys.', sources: ['https://eprint.iacr.org/2018/104', 'https://docs.kaspa.org/integrate'], next: 'origins' }
+  { id: 'fundamentals', name: 'Keys, fees & finality', category: 'Crypto Fundamentals', lesson: 'Private keys authorize signatures; public keys support verification. Consensus resolves double spends. Proof-of-work finality becomes stronger with accumulated work; it is not a promise of zero reversal risk. Self-custody means keeping control of your own keys.', sources: ['https://eprint.iacr.org/2018/104', 'https://docs.kaspa.org/integrate'], next: 'web-status' },
+  ...technologyTopics
 ];
 
 export const studyBank = () => {
   const unique = new Map();
-  for (const q of loadQuestionBank('kaspa').questions) {
-    if (q.reviewStatus === 'source-checked' && studyTopics.some(t => t.category === q.topic) && !unique.has(q.conceptId)) unique.set(q.conceptId, q);
+  for (const bank of new Set(studyTopics.map(t => t.bank || 'kaspa'))) for (const q of loadQuestionBank(bank).questions) {
+    if (q.reviewStatus === 'source-checked' && studyTopics.some(t => (t.bank || 'kaspa') === bank && t.category === q.topic) && !unique.has(q.conceptId)) unique.set(q.conceptId, q);
   }
   return [...unique.values()];
 };
 
 export const studyCatalog = () => ({
-  reviewedAt: '2026-10-02',
+  reviewedAt: '2026-10-14',
   reviewNote: 'Internally checked against primary sources. Independent editorial review is still required before monetary rewards.',
   levels: studyLevels,
   topics: studyTopics.map(t => {
     const pool = studyBank().filter(q => q.topic === t.category);
-    return { ...t, ...guidedLessons[t.id], count: pool.length, levels: studyLevels.map(level => ({ id: level.id, count: pool.filter(q => !level.tier || q.difficulty === level.tier).length })) };
+    return { ...t, ...(guidedLessons[t.id] || technologyLessons[t.id]), count: pool.length, levels: studyLevels.map(level => ({ id: level.id, count: pool.filter(q => !level.tier || q.difficulty === level.tier).length })) };
   })
 });
 
@@ -48,7 +50,7 @@ export const pickStudyQuestions = (topicId, levelId = 'mixed', records = {}, rev
 };
 
 export const studyQuestionById = id => {
-  const q = loadQuestionBank('kaspa').byId.get(id);
+  const q = [...new Set(studyTopics.map(t => t.bank || 'kaspa'))].map(bank => loadQuestionBank(bank).byId.get(id)).find(Boolean);
   if (!q || q.reviewStatus !== 'source-checked' || !studyTopics.some(t => t.category === q.topic)) throw new Error('STUDY_NOT_FOUND');
   return q;
 };

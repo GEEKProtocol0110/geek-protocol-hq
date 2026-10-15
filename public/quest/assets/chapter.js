@@ -170,11 +170,175 @@ export const keysToTheGrid = {
     }
   ],
   finish: 'The station doors open. Your Geek kept secrets private, distinguished a message from a payment, and inspected the final request. GIGA offers the Grid Guardian seal. “A good explorer knows when to pause.” No real wallet was needed for this journey.',
-  next: { name: 'Practice wallets & safe signatures', href: '/study/?topic=wallets&level=foundations' }
+  next: { name: 'Value in Motion', href: '/quest/?chapter=value-in-motion' }
+};
+
+export const valueInMotion = {
+  "prerequisite": "keys-to-the-grid",
+  "id": "value-in-motion",
+  "version": 1,
+  "number": 4,
+  "title": "Value in Motion",
+  "heading": [
+    "Value in",
+    "Motion."
+  ],
+  "subtitle": "Follow the inputs. Account for the change.",
+  "entrance": {
+    "title": "Enter the Transaction Workshop.",
+    "story": "GIGA leads your Geek into a workshop of glowing coin tiles. A.C.E. projects fictional payments so you can trace inputs, outputs and fees. This chapter builds no real transaction and asks for no wallet approval."
+  },
+  "completedTitle": "Every tile has a destination.",
+  "objective": "Trace unspent outputs, account for recipient/change/fee amounts, and distinguish submission from accepted transaction evidence.",
+  "reviewedAt": "2026-10-11",
+  "badge": {
+    "id": "value-in-motion",
+    "name": "Value Pathfinder",
+    "description": "Completed three transaction-workshop stops and six learning checks."
+  },
+  "scenes": [
+    {
+      "id": "input-workbench",
+      "name": "The Input Workbench",
+      "location": "WORKSHOP 01",
+      "story": "Three coin tiles rest on the workbench. Your Geek chooses one, and GIGA traces its place in an earlier transaction. A.C.E. marks the tile as unspent. It can be an input only while that output remains available.",
+      "giga": "A balance is a total. Each input points to a particular unspent output.",
+      "objective": "Separate a displayed balance from individual spendable outputs.",
+      "notes": [
+        "UTXO means unspent transaction output. A wallet balance can combine many such outputs.",
+        "An input consumes a particular existing output, identified by its transaction ID and output index.",
+        "A consumed output cannot be reused. A transaction creates new outputs for its destinations."
+      ],
+      "example": "A fictional wallet has two outputs of 3 KAS and 5 KAS. Together they total 8 KAS, but they remain two separate outputs.",
+      "source": {
+        "label": "Kaspa UTXO reference",
+        "url": "https://wiki.kaspa.org/en/utxo"
+      },
+      "checkpoints": [
+        {
+          "id": "balance-pieces",
+          "prompt": "Two unspent outputs hold 3 KAS and 5 KAS. What does an 8 KAS balance represent?",
+          "choices": [
+            "One secret recovery phrase",
+            "The total of two separate outputs",
+            "A guarantee of a fixed fee",
+            "A newly mined block"
+          ],
+          "correctIndex": 1,
+          "explanation": "The displayed total adds two outputs. The total does not turn them into one existing output."
+        },
+        {
+          "id": "already-spent",
+          "prompt": "A transaction has consumed an output. Can a second valid transaction spend that same original output again?",
+          "choices": [
+            "Yes, if it has a different logo",
+            "Yes, if the amount is small",
+            "No, it has already been spent",
+            "Only after changing the wallet nickname"
+          ],
+          "correctIndex": 2,
+          "explanation": "An input must refer to an available unspent output. Reusing a spent output would conflict with the ledger state."
+        }
+      ]
+    },
+    {
+      "id": "change-counter",
+      "name": "The Change Counter",
+      "location": "WORKSHOP 02",
+      "story": "GIGA slides an 8 KAS tile to the counter. A.C.E. sketches 3 KAS for a fictional recipient, 4.99 KAS in change, and a 0.01 KAS fee. Your Geek follows every part of the value. The figures are teaching examples, not a quote for a real payment.",
+      "giga": "Count all outputs, including change. The difference between inputs and all outputs is the fee.",
+      "objective": "Reconcile a fictional payment without confusing change with fees.",
+      "notes": [
+        "Transaction fees are the sum of input amounts minus the sum of all output amounts.",
+        "Change is a new output returning value left after the recipient amount and fee.",
+        "Real fees depend on the proposed transaction and network rules. A classroom example is not a wallet fee estimate."
+      ],
+      "example": "8 KAS in inputs minus 3 KAS to a recipient minus a 0.01 KAS fee leaves 4.99 KAS of change.",
+      "source": {
+        "label": "Kaspa SDK: transaction fee accounting",
+        "url": "https://kaspa.aspectron.org/transactions/fees/index.html"
+      },
+      "checkpoints": [
+        {
+          "id": "change-value",
+          "prompt": "In this fictional example, 8 KAS funds 3 KAS to a recipient and a 0.01 KAS fee. What is the change?",
+          "choices": [
+            "8 KAS",
+            "5.01 KAS",
+            "3 KAS",
+            "4.99 KAS"
+          ],
+          "correctIndex": 3,
+          "explanation": "8 minus 3 minus 0.01 is 4.99 KAS. This arithmetic example does not establish a real transaction’s fee."
+        },
+        {
+          "id": "fee-value",
+          "prompt": "A transaction has 10 KAS in inputs and 9.99 KAS across all outputs. What is its fee?",
+          "choices": [
+            "0.01 KAS",
+            "9.99 KAS",
+            "10 KAS",
+            "19.99 KAS"
+          ],
+          "correctIndex": 0,
+          "explanation": "Subtract all outputs from the inputs: 10 minus 9.99 equals 0.01 KAS. A change output is included in that output total."
+        }
+      ]
+    },
+    {
+      "id": "receipt-observatory",
+      "name": "The Receipt Observatory",
+      "location": "WORKSHOP 03",
+      "story": "At the final station, a display says request sent while another tracks accepted transactions. GIGA asks your Geek to compare the two. A.C.E. records a checkpoint for its reader and watches for changes to the accepted path.",
+      "giga": "A sent request and accepted transaction evidence describe different stages. Read what the receipt actually establishes.",
+      "objective": "Recognize acceptance evidence and why transaction readers reconcile changes.",
+      "notes": [
+        "An application can follow accepted transaction IDs or request fuller transaction data through the node API.",
+        "A request submission alone does not establish every later acceptance or application-token outcome.",
+        "Readers save processing checkpoints and handle removed accepting blocks. Near the tips, confirmation buffers help account for changing state."
+      ],
+      "example": "A fictional app loses its reply after a submission. The learner checks transaction evidence instead of assuming that sending the same request again is necessary.",
+      "source": {
+        "label": "Kaspa developer guide: accepted transactions",
+        "url": "https://docs.kaspa.org/integrate/accepted-transactions"
+      },
+      "checkpoints": [
+        {
+          "id": "submission-stage",
+          "prompt": "An app says request sent. What additional evidence would establish native transaction acceptance?",
+          "choices": [
+            "A brighter button",
+            "A higher player level",
+            "Accepted transaction data from the network",
+            "A copied app logo"
+          ],
+          "correctIndex": 2,
+          "explanation": "Submission and acceptance are different stages. Accepted transaction data provides evidence about the network’s processing."
+        },
+        {
+          "id": "reader-reconcile",
+          "prompt": "A reader’s accepted path later removes a block it processed. What should the reader do?",
+          "choices": [
+            "Keep every derived record forever without checking",
+            "Reconcile records tied to that removed block",
+            "Invent a replacement receipt",
+            "Ask for the user’s recovery phrase"
+          ],
+          "correctIndex": 1,
+          "explanation": "The developer guide treats removed blocks as rollback input. A reader must reconcile derived data rather than assume the active path can never change."
+        }
+      ]
+    }
+  ],
+  "finish": "Every glowing tile now has a destination. Your Geek traced unspent outputs, accounted for change and fees, and read acceptance evidence. GIGA offers the Value Pathfinder seal. “Good explorers follow the value and check the evidence.”",
+  "next": {
+    "name": "Explore tokens & indexers",
+    "href": "/study/?topic=tokens&level=foundations"
+  }
 };
 
 // Ordered public catalog. Server-verified completion unlocks the next chapter.
-export const questChapters = [firstSignal, insideBlockdag, keysToTheGrid];
+export const questChapters = [firstSignal, insideBlockdag, keysToTheGrid, valueInMotion];
 export const getChapter = id => questChapters.find(chapter => chapter.id === id);
 export const checksFor = chapter => chapter.scenes.flatMap((scene, sceneIndex) => scene.checkpoints.map(check => ({ ...check, sceneIndex, source: scene.source })));
 export const questChecks = checksFor(firstSignal);

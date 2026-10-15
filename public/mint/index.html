@@ -20,7 +20,7 @@
     <header class="site-header" data-header>
       <a class="brand" href="../" aria-label="Geek Protocol home"><img src="../assets/geek-protocol-logo.png" alt="" width="48" height="48" /><span>GEEK<span class="brand-mark">//</span>MINT</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
-      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="../study/">Learn</a><a href="../quest/">Adventure</a><a href="../play/">Play</a><a href="../profile/">My HQ</a><details class="nav-more"><summary>More</summary><div class="nav-more-panel"><a href="../kaspa/">Kaspa field guide</a><a href="../memory/">Memory Grid</a><a href="../duel/">Duel with a friend or A.C.E.</a><a href="../challenges/">Weekly challenges</a><a href="https://geekjr.xyz/">Geek Jr · for younger children ↗</a><a href="/thanks/">Hall of Thanks</a><a href="#project-links">About the project</a></div></details></nav>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="../study/">Learn</a><a href="../quest/">Adventure</a><a href="../play/">Play</a><a href="../profile/">My HQ</a><details class="nav-more"><summary>More</summary><div class="nav-more-panel"><a href="/trade/">Trade GEEK</a><a href="https://geek-mini.vercel.app/">Geek Mini ↗</a><a href="/tools/#kaspa-widget">Free Kaspa widget</a><a href="../kaspa/">Kaspa field guide</a><a href="../memory/">Memory Grid</a><a href="../duel/">Duel with a friend or A.C.E.</a><a href="../challenges/">Weekly challenges</a><a href="https://geekjr.xyz/">Geek Jr · for younger children ↗</a><a href="/thanks/">Hall of Thanks</a><a href="#project-links">About the project</a></div></details></nav>
     </header>
 
     <main id="main" class="mint-main">
@@ -28,7 +28,7 @@
         <div class="mint-copy">
           <div class="eyebrow"><span class="status-dot"></span><span id="mint-live-state" data-state="loading">VERIFYING</span> · KASPA MAINNET</div>
           <h1 id="mint-title">Make it <em>GEEK.</em></h1>
-          <p>Mint 100,000 GEEK to your Kasware wallet. Connect, review the cost, and choose whether to approve in your wallet.</p>
+          <p>Mint GEEK to your Kasware wallet. Choose one mint or a queue, review the total, and approve each request in your wallet.</p>
           <div class="mint-facts" aria-label="Mint facts">
             <div><span>YOU MINT</span><strong>100,000 GEEK</strong></div>
             <div><span>PROTOCOL FEE</span><strong>1 KAS + network fees</strong></div>
@@ -52,7 +52,7 @@
       </section>
 
       <section id="mint-workspace" class="mint-workspace" aria-labelledby="mint-workspace-title">
-        <div class="workspace-heading"><div><div class="section-kicker">YOUR WALLET. YOUR CHOICE.</div><h2 id="mint-workspace-title">Three steps to your mint.</h2></div><p>One request mints 100,000 GEEK. You approve each request yourself.</p></div>
+        <div class="workspace-heading"><div><div class="section-kicker">YOUR WALLET. YOUR CHOICE.</div><h2 id="mint-workspace-title">Three steps to your mint.</h2></div><p>Each mint requests 100,000 GEEK. Queue up to 100 and approve each request in Kasware.</p></div>
         <ol class="mint-steps" aria-label="Mint progress">
           <li id="mint-step-connect" data-state="current"><span class="step-number">1</span><div><strong>Connect</strong><span id="mint-step-connect-status">Kasware on Mainnet</span></div></li>
           <li id="mint-step-review" data-state="waiting"><span class="step-number">2</span><div><strong>Review</strong><span id="mint-step-review-status">Amount, address and fees</span></div></li>
@@ -78,29 +78,39 @@
             </details>
           </div>
           <section class="approval-card" aria-labelledby="approval-title">
-            <div class="card-label">YOUR MINT</div><h3 id="approval-title">100,000 <span>GEEK</span></h3>
-            <dl class="mint-review"><div><dt>Protocol fee</dt><dd>1 KAS</dd></div><div><dt>Network fees</dt><dd>Additional · shown in wallet</dd></div><div><dt>Network</dt><dd>Kaspa Mainnet</dd></div><div class="mint-destination-row"><dt>Selected wallet</dt><dd id="mint-destination">Connect Kasware first</dd></div></dl>
-            <label class="acknowledge" for="mint-acknowledge"><input id="mint-acknowledge" type="checkbox" /><span>I checked GEEK, 100,000 tokens, my address and Mainnet. I understand the 1 KAS protocol fee plus network fees, that broadcast transactions are irreversible, and that this interface has not completed an independent audit.</span></label>
+            <div class="card-label" id="mint-amount-label">YOUR MINT QUEUE</div><h3 id="approval-title"><b id="mint-selected-amount">100,000</b> <span>GEEK</span></h3>
+            <label class="mint-count-label" for="mint-count">Number of mints <select id="mint-count"><option value="1">1 mint</option><option value="2">2 mints</option><option value="5">5 mints</option><option value="10">10 mints</option><option value="25">25 mints</option><option value="50">50 mints</option><option value="100">100 mints</option></select></label>
+            <p class="mint-queue-help">100,000 GEEK and 1 KAS protocol fee per mint. Requests run one at a time; approve each in Kasware. Network fees are additional.</p>
+            <dl class="mint-review"><div><dt>Selected protocol fee total</dt><dd id="mint-protocol-fee">1 KAS</dd></div><div><dt>Network fees</dt><dd>Additional · shown in wallet</dd></div><div><dt>Network</dt><dd>Kaspa Mainnet</dd></div><div class="mint-destination-row"><dt>Selected wallet</dt><dd id="mint-destination">Connect Kasware first</dd></div></dl>
+            <label class="acknowledge" for="mint-acknowledge"><input id="mint-acknowledge" type="checkbox" /><span>I checked <b id="mint-ack-count">1 mint</b> requesting <b id="mint-ack-amount">100,000</b> GEEK, my address and Mainnet. I understand the <b id="mint-ack-fee">1 KAS</b> protocol fee total plus network fees, that broadcast transactions are irreversible, and that this interface has not completed an independent audit.</span></label>
             <button class="mint-submit" id="mint-submit" type="button" disabled>Verifying deployment…</button>
+            <p class="mint-batch-status" id="mint-batch-status" role="status" aria-live="polite" hidden></p>
+            <button class="mint-stop" id="mint-stop" type="button" hidden>Stop queue · keep approved transactions</button>
             <p class="mint-message" id="mint-message" role="status" aria-live="polite">Kasware displays the complete request and final cost before you approve.</p>
             <button class="mint-retry" id="mint-retry" type="button" hidden>I checked wallet activity · reset request</button>
             <div class="mint-result" id="mint-result" hidden>
-              <div class="receipt-heading"><span>REQUEST SUBMITTED</span><strong>Follow your mint</strong></div>
-              <p>Kasware returned both transaction IDs. Submission does not confirm that GEEK has arrived. Check the reveal transaction and your wallet before minting again.</p>
-              <dl><div><dt>Wallet selected for this request</dt><dd id="mint-result-address">—</dd></div><div><dt>Submitted</dt><dd id="mint-result-time">—</dd></div><div><dt>Commit transaction</dt><dd id="mint-commit-id">—</dd></div><div><dt>Reveal transaction</dt><dd id="mint-reveal-id">—</dd></div></dl>
-              <div class="receipt-actions"><a id="mint-commit-link" href="#" target="_blank" rel="noopener noreferrer">View commit ↗</a><a id="mint-explorer-link" href="#" target="_blank" rel="noopener noreferrer">View reveal ↗</a><button id="mint-copy-receipt" type="button">Copy receipt</button></div>
+              <div class="receipt-heading"><span id="mint-result-label">REQUEST SUBMITTED</span><strong id="mint-result-title">Follow your mint</strong></div>
+              <p id="mint-result-description">Kasware returned both transaction IDs. Submission does not confirm that GEEK has arrived. Check the reveal transaction and your wallet before minting again.</p>
+              <dl><div><dt>Wallet selected for this request</dt><dd id="mint-result-address">—</dd></div><div><dt>Wallet request finished</dt><dd id="mint-result-time">—</dd></div><div><dt>Commit transaction</dt><dd id="mint-commit-id">—</dd></div><div><dt>Reveal transaction</dt><dd id="mint-reveal-id">—</dd></div><div id="mint-reference-row" hidden><dt>Transaction reference · stage unspecified</dt><dd id="mint-reference-id">—</dd></div></dl>
+              <div class="receipt-actions"><a id="mint-commit-link" href="#" target="_blank" rel="noopener noreferrer">View commit ↗</a><a id="mint-explorer-link" href="#" target="_blank" rel="noopener noreferrer">View reveal ↗</a><a id="mint-reference-link" href="#" target="_blank" rel="noopener noreferrer" hidden>View transaction ↗</a><button id="mint-copy-receipt" type="button">Copy receipts</button></div>
               <p id="mint-copy-message" role="status" aria-live="polite"></p>
+              <details class="mint-receipt-details"><summary>Queue receipts</summary><pre id="mint-batch-log"></pre></details>
+              <details class="mint-receipt-details"><summary>Receipt diagnostics</summary><p id="mint-receipt-diagnostic"></p><button id="mint-copy-diagnostic" type="button">Copy receipt diagnostics</button><p id="mint-diagnostic-message" role="status"></p><p>No raw response, wallet address, transaction data, or keys are included in this diagnostic.</p></details>
               <p class="receipt-note">This receipt stays on this page only. Copy it if you want to keep it.</p>
             </div>
           </section>
         </div>
       </section>
 
+      <aside class="mint-trade-path"><div><strong>Already have GEEK? Looking for an offer?</strong><p>Find GEEK buy and sell orders on Kaspacom.</p></div><a class="button button-secondary" href="/trade/">Trade GEEK →</a></aside>
+
       <section class="mint-help" aria-labelledby="mint-help-title">
         <div><div class="section-kicker">A LITTLE HELP</div><h2 id="mint-help-title">Before you mint.</h2><p>All hope, no hype. Know what your wallet is approving.</p></div>
         <div class="mint-faq">
           <details><summary>Can I mint from my phone or another wallet?</summary><p>This page uses Kasware's KRC-20 mint API. Use a browser where Kasware is installed and available. An address alone, or a wallet used for player sign-in, does not provide this transaction capability. <a href="https://www.kasware.xyz/" target="_blank" rel="noopener noreferrer">Check Kasware's supported options ↗</a></p></details>
           <details><summary>How much KAS do I need?</summary><p>Each mint has a published 1 KAS protocol fee, plus commit and reveal network fees. Keep enough KAS for the total shown by Kasware. HQ requests no added priority fee; review the wallet's final total.</p></details>
+          <details><summary>Can I mint more than once?</summary><p>Yes. Choose up to 100 mints in the count selector. For example, 5 mints request 500,000 GEEK for 5 KAS in protocol fees plus network fees. HQ queues individual wallet requests, so you approve each one in Kasware. Stop queue prevents further requests; it cannot undo a transaction you already approved. An unreadable response pauses the queue for a wallet-activity check.</p></details>
+          <details><summary>Why is a receipt missing?</summary><p>The mint and the wallet's response to HQ are separate. HQ accepts validated commit/reveal IDs or a standalone transaction reference; it never assumes a transaction reference proves GEEK arrived. If no readable ID comes back, check Kasware activity. Receipt diagnostics show the wallet version and response field types to help troubleshoot without sharing your wallet address or raw transaction data.</p></details>
           <details><summary>What happens if mint status is unavailable?</summary><p>The page pauses minting and clears live totals until the indexer responds with a valid official record. It checks again automatically while visible, without requesting a wallet transaction. You can also refresh status yourself.</p></details>
           <details><summary>My mint was submitted. Where is my GEEK?</summary><p>Open the reveal link in your receipt and check wallet activity. The network or indexer may take time to show the result. If there is an error or uncertain outcome, inspect both transactions before resetting the request. This page does not retry transactions automatically.</p></details>
           <details><summary>What does this mint give me?</summary><p>A successful mint creates GEEK KRC-20 tokens for your wallet. It is separate from internal Alpha game credits and the planned 500-Geek NFT collection. It does not activate game withdrawals or guarantee value. Gross mints count toward the fixed 144 billion GEEK cap; burning does not reopen capacity.</p></details>
@@ -109,6 +119,6 @@
       </section>
     </main>
 
-    <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>All hope, no hype. Verify every transaction.</p></div><div class="footer-links"><a href="../">Home</a><a href="../play/">Play</a><a href="../rewards/">Rewards</a><a href="../security/">Security</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · Independent project · No investment advice.</p><details class="welcome-panel" id="project-links"><summary><span><b>About Geek Protocol</b><small>Project information, community and optional wallet features.</small></span></summary><div class="welcome-panel-content"><div class="welcome-project-links"><a href="/thanks/">Hall of Thanks</a><a href="/litepaper/">Project roadmap</a><a href="/security/">Security</a><a href="/contribute/">Contribute a question</a><a href="/collection/">Collection</a><a href="/lobby/">Practice rooms</a><a href="/vault/">Daily vault</a><a href="/rewards/">Wallet & rewards</a><a href="/economy/">Power-ups & economy</a><a href="/mint/">Mint GEEK</a></div></div></details></footer>
+    <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>All hope, no hype. Verify every transaction.</p></div><div class="footer-links"><a href="https://geek-mini.vercel.app/">Geek Mini ↗</a><a href="/tools/#kaspa-widget">Free Kaspa widget</a><a href="../">Home</a><a href="../play/">Play</a><a href="../rewards/">Rewards</a><a href="../security/">Security</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · Independent project · No investment advice.</p><details class="welcome-panel" id="project-links"><summary><span><b>About Geek Protocol</b><small>Project information, community and optional wallet features.</small></span></summary><div class="welcome-panel-content"><div class="welcome-project-links"><a href="/thanks/">Hall of Thanks</a><a href="/litepaper/">Project roadmap</a><a href="/security/">Security</a><a href="/contribute/">Contribute a question</a><a href="/collection/">Collection</a><a href="/lobby/">Practice rooms</a><a href="/vault/">Daily vault</a><a href="/rewards/">Wallet & rewards</a><a href="/economy/">Power-ups & economy</a><a href="/mint/">Mint GEEK</a></div></div></details></footer>
   </body>
 </html>

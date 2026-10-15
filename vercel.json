@@ -64,6 +64,46 @@
       "destination": "/api/session?service=operations&path=appearance"
     },
     {
+      "source": "/ops/community",
+      "destination": "/api/session?service=operations&path=community"
+    },
+    {
+      "source": "/ops/community/",
+      "destination": "/api/session?service=operations&path=community"
+    },
+    {
+      "source": "/ops/imported",
+      "destination": "/api/session?service=operations&path=imported"
+    },
+    {
+      "source": "/ops/imported/",
+      "destination": "/api/session?service=operations&path=imported"
+    },
+    {
+      "source": "/ops/testnet",
+      "destination": "/api/session?service=operations&path=testnet"
+    },
+    {
+      "source": "/ops/testnet/",
+      "destination": "/api/session?service=operations&path=testnet"
+    },
+    {
+      "source": "/ops/monitor",
+      "destination": "/api/session?service=operations&path=monitor"
+    },
+    {
+      "source": "/ops/monitor/",
+      "destination": "/api/session?service=operations&path=monitor"
+    },
+    {
+      "source": "/ops/stress",
+      "destination": "/api/session?service=operations&path=stress"
+    },
+    {
+      "source": "/ops/stress/",
+      "destination": "/api/session?service=operations&path=stress"
+    },
+    {
       "source": "/ops/:path*",
       "destination": "/api/session?service=operations&path=:path*"
     },
@@ -114,7 +154,8 @@
       "includeFiles": "{server/questions/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}"
     },
     "api/session.js": {
-      "includeFiles": "{server/ops-ui/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}"
+      "includeFiles": "{server/ops-ui/**,server/questions/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}",
+      "maxDuration": 30
     },
     "api/leaderboard.js": {
       "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
@@ -124,6 +165,9 @@
     },
     "api/rewards.js": {
       "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
+    },
+    "api/widget.js": {
+      "maxDuration": 30
     }
   },
   "headers": [

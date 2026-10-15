@@ -10,6 +10,7 @@ export const ROYALE_REVIEW_MS = 5_000;
 export const ROYALE_TTL = 24 * 60 * 60;
 export const royaleKey = code => `geek:royale:${code}`;
 export const royaleQuestionsKey = code => `${royaleKey(code)}:questions`;
+export const royalePublicKey = 'geek:royale-public-v1';
 const codePattern = /^ROY-[A-Z2-9]{8}$/;
 const checksum = text => createHash('sha1').update(text).digest('hex');
 const snapshots = new Map();
@@ -45,8 +46,59 @@ room.expiresAt = now + tonumber(ARGV[3]) * 1000
 room.players[room.hostId].lastSeen = now
 redis.call('SET', KEYS[1], cjson.encode(room), 'EX', ARGV[3])
 redis.call('SET', KEYS[2], ARGV[2], 'EX', ARGV[3])
+if room.visibility == 'public' then
+  redis.call('ZADD', KEYS[3], room.expiresAt, room.code)
+  redis.call('ZREMRANGEBYRANK', KEYS[3], 0, -251)
+  redis.call('EXPIRE', KEYS[3], ARGV[3])
+end
 return 1
 `;
+
+// Bounded discovery reads summaries only. A stale or corrupt index never grants a seat.
+const DISCOVER_LUA = `-- geek-royale-discover-v1
+local t = redis.call('TIME')
+local now = tonumber(t[1]) * 1000 + math.floor(tonumber(t[2]) / 1000)
+redis.call('ZREMRANGEBYSCORE', KEYS[1], '-inf', now)
+local rooms = {}
+local categories = {kaspa=true, ['video-games']=true, ['science-fiction']=true, technology=true, movies=true, history=true, comics=true, ['pop-culture']=true}
+for _, code in ipairs(redis.call('ZREVRANGE', KEYS[1], 0, 249)) do
+  if not string.match(code, '^ROY%-[A-Z2-9]+$') or string.len(code) ~= 12 then return 'ROYALE_DISCOVERY_INVALID' end
+  local raw = redis.call('GET', 'geek:royale:' .. code)
+  if not raw then redis.call('ZREM', KEYS[1], code)
+  else
+    local ok, room = pcall(cjson.decode, raw)
+    if not ok or type(room) ~= 'table' or room.version ~= 1 or room.code ~= code or type(room.players) ~= 'table' or not categories[room.category]
+      or type(room.hostId) ~= 'string' or type(room.expiresAt) ~= 'number'
+      or type(room.createdAt) ~= 'number' or type(room.capacity) ~= 'number'
+      or room.capacity < 2 or room.capacity > 100 or room.capacity % 1 ~= 0 then return 'ROYALE_DISCOVERY_INVALID' end
+    if room.visibility ~= 'public' or room.phase ~= 'waiting' or room.expiresAt <= now then redis.call('ZREM', KEYS[1], code)
+    else
+      local host = room.players[room.hostId]
+      local count, online = 0, 0
+      for _, p in pairs(room.players) do
+        if type(p) ~= 'table' or type(p.lastSeen) ~= 'number' then return 'ROYALE_DISCOVERY_INVALID' end
+        count = count + 1
+        if p.lastSeen <= now and now - p.lastSeen < 60000 then online = online + 1 end
+      end
+      if type(host) ~= 'table' or type(host.lastSeen) ~= 'number' then return 'ROYALE_DISCOVERY_INVALID' end
+      if count < room.capacity and host.lastSeen <= now and now - host.lastSeen < 60000 and #rooms < 20 then
+        table.insert(rooms, {code = code, category = room.category, capacity = room.capacity,
+          seats = count, online = online, createdAt = room.createdAt, expiresAt = room.expiresAt})
+      end
+    end
+  end
+end
+return cjson.encode({serverNow = now, rooms = rooms})
+`;
+
+export const discoverRoyale = async () => {
+  const result = await redis('EVAL', DISCOVER_LUA, 1, royalePublicKey);
+  if (typeof result !== 'string' || !result.startsWith('{')) throw new Error('ROYALE_DISCOVERY_INVALID');
+  const listing = JSON.parse(result);
+  // Redis encodes an empty Lua table as an object.
+  listing.rooms = Array.isArray(listing.rooms) ? listing.rooms : [];
+  return listing;
+};
 
 // One Redis transaction owns membership, time, answer locking and elimination.
 // Correctness is withheld until the shared question deadline, even from its author.
@@ -192,20 +244,21 @@ room.serverNow = now
 return cjson.encode(room)
 `;
 
-export const createRoyale = async (session, category, capacity = ROYALE_CAPACITY) => {
+export const createRoyale = async (session, category, capacity = ROYALE_CAPACITY, visibility = 'private') => {
+  if (!['private', 'public'].includes(visibility)) throw new Error('INVALID_REQUEST');
   const questions = buildRoyaleQuestions(category), pack = JSON.stringify(questions), hash = checksum(pack);
   const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   for (let attempt = 0; attempt < 5; attempt++) {
     const code = `ROY-${[...randomBytes(8)].map(v => alphabet[v % alphabet.length]).join('')}`;
     const playerId = playerIdFor(session);
     const room = { version: 1, id: randomBytes(16).toString('hex'), code, category, hostId: playerId,
-      capacity, questionCount: questions.length, questionHash: hash,
+      capacity, visibility, questionCount: questions.length, questionHash: hash,
       questionMs: ROYALE_QUESTION_MS, reviewMs: ROYALE_REVIEW_MS, phase: 'waiting',
       startsAt: 0, questionNumber: 1, reviewedQuestion: 0, nextSlot: 2, rosterCount: 0,
       pendingResult: null, result: null, lastReview: null,
       players: { [playerId]: { slot: 1, name: session.name, ready: false, alive: true,
         lastSeen: 0, correct: 0, eliminatedAt: 0, eliminationReason: '', answer: null } } };
-    const created = await redis('EVAL', CREATE_LUA, 2, royaleKey(code), royaleQuestionsKey(code), JSON.stringify(room), pack, ROYALE_TTL);
+    const created = await redis('EVAL', CREATE_LUA, 3, royaleKey(code), royaleQuestionsKey(code), royalePublicKey, JSON.stringify(room), pack, ROYALE_TTL);
     if (Number(created) === 1) { cache(hash, questions); return transitionRoyale(session, code, 'view'); }
   }
   throw new Error('ROYALE_CODE_UNAVAILABLE');
@@ -240,7 +293,7 @@ export const royaleView = async (room, session) => {
   const answer = you?.answer?.questionNumber === room.questionNumber ? { selectedIndex: you.answer.selectedIndex,
     ...(room.phase === 'review' ? { elapsedMs: you.answer.elapsedMs, correct: you.answer.selectedIndex === review.correctIndex } : {}) } : null;
   const begins = room.startsAt + (room.questionNumber - 1) * (room.questionMs + room.reviewMs);
-  return { id: room.id, code: room.code, category: room.category, capacity: room.capacity,
+  return { id: room.id, code: room.code, category: room.category, capacity: room.capacity, visibility: room.visibility || 'private',
     state: room.phase, serverNow: room.serverNow, expiresAt: room.expiresAt,
     startsAt: room.startsAt, questionNumber: room.questionNumber, questionCount: room.questionCount,
     questionEndsAt: room.startsAt ? begins + room.questionMs : 0,

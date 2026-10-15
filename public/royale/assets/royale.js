@@ -71,7 +71,7 @@
     const old = room, previous = old ? `${old.id}:${old.state}:${old.questionNumber}` : '';
     room = r; serverAt = r.serverNow; receivedAt = performance.now(); confirmedAt = receivedAt; offline = false;
     $('[data-error]').hidden = true; $('[data-room]').hidden = false; $('[data-setup]').hidden = true;
-    $('[data-room-category]').textContent = `${labels[r.category]} · TRIVIA ROYALE`;
+    $('[data-room-category]').textContent = `${labels[r.category]} · ${r.visibility === 'public' ? 'PUBLIC' : 'INVITE-ONLY'} ROYALE`;
     $('[data-seat-count]').textContent = r.state === 'waiting' ? `${r.players.length} / ${r.capacity}` : `${r.remaining} standing`;
     $('[data-room-title]').textContent = { waiting: 'Gather your crew.', starting: 'The battle is about to begin.', question: 'Keep your mind in the game.', review: 'See who remains.', finished: 'The battle is complete.', cancelled: 'The host ended this event.' }[r.state];
     const invite = new URL(location.href); invite.search = new URLSearchParams({ code: r.code }).toString(); invite.hash = '';
@@ -117,6 +117,14 @@
     if (`${r.id}:${r.state}:${r.questionNumber}` !== previous && r.state === 'question') { $('[data-question]').focus({ preventScroll: true }); $('[data-question-panel]').scrollIntoView({ block: 'start', behavior: 'instant' }); }
   };
   const connectionLost = error => {
+    if (['ROYALE_NOT_PLAYER', 'ROYALE_NOT_FOUND'].includes(error.code)) {
+      // The server confirmed this seat cannot be recovered. Clear only the
+      // browser view; never send a leave/join/cancel mutation automatically.
+      reset(); showError(error);
+      say(`${error.message} Join an invitation or create another Royale.`);
+      $('[data-create-form]').querySelector('button').focus();
+      return;
+    }
     offline = true; stopPoll(); showError(error); controls();
     say('Room state could not be confirmed. The event clock continues. Reconnect before taking another action.');
   };
@@ -155,7 +163,7 @@
     } catch (error) { showError(error); }
     finally { acting = false; controls(); }
   };
-  const reset = () => { requestVersion++; rosterSignature = ''; room = null; offline = false; stopPoll(); $('[data-room]').hidden = true; $('[data-setup]').hidden = false; $('[data-reconnect]').hidden = true; $('[data-error]').hidden = true; history.replaceState(null, '', location.pathname); say('Create a new room or join another invitation.'); controls(); };
+  const reset = () => { $('[data-join-form]').elements.code.value = ''; requestVersion++; rosterSignature = ''; room = null; offline = false; stopPoll(); $('[data-room]').hidden = true; $('[data-setup]').hidden = false; $('[data-reconnect]').hidden = true; $('[data-error]').hidden = true; history.replaceState(null, '', location.pathname); say('Create a new room or join another invitation.'); controls(); };
   const clock = () => {
     if (!room) return;
     const active = ['starting', 'question', 'review'].includes(room.state);
@@ -169,7 +177,7 @@
     const key = `${room.id}:${room.state}:${room.questionNumber}`;
     if (!remaining && boundary !== key && !acting && !refreshing && !offline) { boundary = key; refresh(); }
   };
-  $('[data-create-form]').addEventListener('submit', event => { event.preventDefault(); enter('create', { category: event.currentTarget.elements.category.value, capacity: Number(event.currentTarget.elements.capacity.value) }); });
+  $('[data-create-form]').addEventListener('submit', event => { event.preventDefault(); enter('create', { category: event.currentTarget.elements.category.value, capacity: Number(event.currentTarget.elements.capacity.value), visibility: event.currentTarget.elements.listPublic?.checked ? 'public' : 'private' }); });
   $('[data-join-form]').addEventListener('submit', event => { event.preventDefault(); enter('join', { code: event.currentTarget.elements.code.value.trim().toUpperCase() }); });
   $('[data-ready]').addEventListener('click', () => act('ready', { ready: !room.players.find(p => p.slot === room.yourSlot)?.ready }));
   $('[data-start]').addEventListener('click', () => act('start'));

@@ -1,6 +1,6 @@
 # Geek Protocol HQ — Project Status
 
-**Snapshot date:** 2026-10-09<br />
+**Snapshot date:** 2026-10-15<br />
 **Release channel:** Public Alpha  
 **Production:** [www.geekprotocol.xyz](https://www.geekprotocol.xyz/)  
 **Repository:** [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq)
@@ -11,7 +11,7 @@ The current focus is Learn, guided Study, practice, saved progress, and free gam
 
 ## Executive summary
 
-Geek Protocol HQ is a deployed Proof-of-Learning Alpha for the Kaspa ecosystem. The current release supports untimed Kaspa Study with A.C.E., server-authoritative trivia, persistent player progression, live lobbies, Kasware-based identity proof and recovery, community question review, collectible trading, and a non-custodial interface for the existing GEEK fair mint.
+Geek Protocol HQ is a deployed Proof-of-Learning Alpha for the Kaspa ecosystem. The current release supports untimed Kaspa and technology Study with A.C.E., server-authoritative trivia, persistent player progression, live lobbies, Kasware-based identity proof and recovery, community question review, collectible trading, and a non-custodial interface for the existing GEEK fair mint.
 
 The application is deliberately split into two risk classes:
 
@@ -46,7 +46,7 @@ The repository currently verifies:
 - one-attempt periodic competitions with shared snapshots, atomic completed-score publication, and bounded separate boards;
 - private concept coverage and saved-mistake review with bounded retention and replay-safe confidence feedback;
 - server-owned answer validation, deadlines, scoring, XP, and rewards;
-- single-use ranked tokens and atomic answer claims;
+- single-use ranked tokens with atomic run/grade/profile commits and session-bound read-only recovery;
 - exact-origin, single-use wallet challenges;
 - server-side Kaspa Schnorr verification and address derivation;
 - identity recovery with older-session invalidation;
@@ -71,7 +71,7 @@ The repository currently verifies:
 
 ## Required next gates
 
-For the next free learning/gameplay pilot, use the [free-beta candidate checklist](FREE-BETA-READINESS.md). The October 9 baseline records current main after PR #92, with 303 passing tests, identity/release-boundary hardening, legacy Quest save recovery, and a refreshed npm dependency inventory. The founder confirmed that the affected phone resumed its existing saved chapter at the correct step at 18:57 America/Detroit; issue #81 is closed. Full Quest completion/badge/replay checks, the real-device/Royale pilot, owner MFA and production backup/restore acceptance remain pending; preparing the checklist does not change the public Alpha label. The broader value-moving launch gates below remain separate.
+Use the [free-beta pilot checklist](FREE-BETA-READINESS.md) for the current four-chapter Quest, mobile learning/profile and real two-player Royale acceptance. It records the PR #109 comparison baseline and links the final PR #84 candidate checks. The October 9 founder-confirmed Quest resume remains a limited historical pass; later campaign/device acceptance, owner MFA and provider restore evidence remain pending. Preparing or merging the checklist does not change the public Alpha label. Value-moving gates below remain separate.
 
 1. Freeze a named release candidate and software bill of materials.
 2. Complete production architecture, incident-response, backup, and key-management evidence.
@@ -107,7 +107,7 @@ Vercel Web Analytics is integrated for production public-page visits and seven a
 
 ### Game modes
 
-Gauntlet, Daily Signal and Speed Signal retain their existing server-owned gameplay. Memory Grid is now a separate free, unranked solo mode at `/memory/`, reachable from Play. It matches Kaspa words with meanings on shuffled four-, six-, or eight-pair boards. Players explicitly close mismatches; there is no timer or speed bonus. Matches reveal explanations, primary-source links and related Study lessons. Giga supplies authored encouragement. Board state and attempts exist only in page memory, with no account/progress writes, XP, credits, purchases or token rewards. The public teaching deck is intentionally visible and does not contain the private ranked bank. Trivia Royale and Fandom Duel remain planned. Quiz Quest was implemented later; see its release sections below.
+Gauntlet, Daily Signal and Speed Signal retain their existing server-owned gameplay. Memory Grid is now a separate free, unranked solo mode at `/memory/`, reachable from Play. It matches Kaspa words with meanings on shuffled four-, six-, or eight-pair boards. Players explicitly close mismatches; there is no timer or speed bonus. Matches reveal explanations, primary-source links and related Study lessons. Giga supplies authored encouragement. Board state and attempts exist only in page memory, with no account/progress writes, XP, credits, purchases or token rewards. The public teaching deck is intentionally visible and does not contain the private ranked bank. Free Geek Duel and Trivia Royale were implemented in later releases; Fandom Duel remains planned. Quiz Quest was implemented later; see its release sections below.
 
 ## Profile character and NFT collection (October 3, 2026)
 
@@ -178,3 +178,43 @@ Use a dedicated `OPS_ACCESS_TOKEN` when set, or the existing CCE key while absen
 The active pool now contains 7,776 questions after 272 explicit editorial retirements. All eight categories retain complete Gauntlet capacity; preserved server-only answer keys support previously issued runs. No remaining draft is promoted to source-checked. The corrected remaining count is 3,598 new licensed imports for item-level factual and difficulty review. See [Editorial Review](EDITORIAL-REVIEW.md).
 
 The HTTPS/real-Redis browser walkthrough covers mobile learning, reload, saved progress, focused mistake review, lost-answer replies, outages and stalled requests. Study now has a 15-second deadline with manual retry; Play, Lobby, reward/recovery and wallet session setup preserve chosen player names. Phone-width emulation is not a physical-phone or real-extension signoff. See [Player Journey Review](PLAYER-JOURNEY-REVIEW.md).
+
+## October 11: first visit, saved results and launch review
+
+Start Here now connects player choice, Geek customization, a short lesson, HQ Daily Signal and saved progress. Ranked commits protect XP, practice balance, career counters and answer receipts from simultaneous writes; lost start/answer replies recover the confirmed server state. Payout-setting saves reject stale profile snapshots. Royale restores setup when the server confirms a removed seat or expired room. Responsive controls and recovery focus are improved.
+
+The [dated readiness review](LAUNCH-READINESS-2026-10-11.md) records 328 passing tests with required real Redis, live read-only health/mint observations and the CCE/mint/payout audit findings. Physical-device and real-wallet acceptance, CCE settlement-grade reconciliation, independent audit and operational financial gates remain outstanding. No financial capability or production secret was activated.
+
+## Ecosystem improvement release — October 11, 2026
+
+Quiz Quest has four sequential chapters. **Value in Motion** follows Keys to the Grid with UTXOs, change, fee arithmetic and accepted-transaction evidence. It keeps a separate v1 ledger and Value Pathfinder badge, without altering earlier saves or enabling financial rewards. Mini adds source-linked practice and routes missed topics to HQ Study; Geek Jr adds local learner profiles and progress backups. Geek Wallet is a public-address portfolio companion. The Android widget already has a signed 1.4.0 APK/AAB; automated release acceptance complements, but does not replace, owner testing on physical phones and Play Console submission. Marketplace expansion remains paused.
+
+
+## October 14: next-five software improvements
+
+- Imported-question review is available at `/ops/imported/`: ten-row decisions, source checks, stale-version protection, private export and a staging tool that preserves saved-run answer keys. No live editorial decisions were made by this release.
+- Guest-first sign-in appears before wallet setup. Fixed activity return paths support Study, Play, Quest, Royale and Start. Mobile form sizing and target spacing were improved; physical phone acceptance remains pending.
+- Study adds three guided technology lessons and fifteen original source-checked MDN-based questions. Eleven topics cover 191 concepts. Private feedback remains untimed and has no XP, credit or token rewards.
+- Royale hosts may opt into public waiting-room discovery. Invite-only remains the default. Listings contain codes and seat counts, exclude full / started / stale-host rooms and never include player names, identities or questions. Actual 10–20-player community trials remain pending.
+- `/ops/testnet/` provides an owner-only, disabled-by-default testnet-10 receipt pipeline. It ties a pilot receipt to the owner's completed server-graded Kaspa Daily Signal, exports an exact transfer request, records one transaction hash and checks its matching indexed operation. No automatic signing or broadcasting is implemented. No real payout was performed; a funded test wallet, approved signer and pinned deployed test asset are required. Mainnet settlement remains disabled.
+
+See [acceptance procedures](NEXT-FIVE-ACCEPTANCE.md) and [testnet pilot boundaries](TESTNET-REWARD-PILOT.md). Synthetic transaction fixtures prove software behavior, not on-chain payout success.
+
+
+## October 14: production monitoring
+
+Twenty credential-free HTTP probes now cover key public pages, database health, the Study catalog, Royale discovery, widget release metadata, disabled payment gates and three private workspaces. The owner desk at `/ops/monitor/` runs bounded checks and retains twenty-five snapshots. Missing, damaged and stale evidence cannot appear as current passing status. A separate pinned GitHub workflow runs the same checks every fifteen minutes, with failures in its job summary; its schedule and notification delivery are not guaranteed. No player state, token settlement, signing or separate messaging service is enabled. See [Production Monitoring](PRODUCTION-MONITORING.md) for coverage and limits.
+
+
+## October 14: economy stress tests
+
+The private `/ops/stress/` lab and a reproducible baseline model the existing Gauntlet credit rules separately from hypothetical token reserves. Real Redis checks cover a hundred concurrent identical planning receipts, changed-reference terms, a lost accepted reply, and replayed ranked answers versus new legitimate free rounds. The 70/30 split conserves each receipt's fee, with recycle rounded down and burn pending receiving the remainder. Empty reserves, period caps, token-supply constraints and unsafe profile-credit paths are covered. These are internal tests and modeled budgets; no actual funding, credit conversion, burn execution, changed game fees, reward queue or settlement is enabled. See [Economy Stress](ECONOMY-STRESS.md).
+
+### Round reward proposal — October 14, 2026
+
+The founder selected 100 GEEK per qualifying completed round. The private economy stress lab now models an assumed billion-GEEK reserve, whole-round daily caps, per-receipt 70/30 recycling, full-budget days and the next partial day. Caps are scenario inputs; eligibility and per-player payout limits are not finalized. No Alpha grant, funded liability, wallet balance, payment gate or burn authority changes.
+
+
+## October 15: Kaspa-first onboarding and final polish
+
+The homepage now starts with a five-question Kaspa Daily Signal or a beginner Origins lesson, with no wallet required. Sign-in remains visible outside the mobile menu. The quiz selects setup without starting its timer and explains the one-attempt-per-UTC-day rule. Wallet education and public-address tracking precede optional game modes; ecosystem and project information remain expandable. Header wrapping, footer tap targets and current-feature wording received a focused polish. See [Mobile onboarding](MOBILE-ONBOARDING.md) for verification and pending browser/device acceptance.

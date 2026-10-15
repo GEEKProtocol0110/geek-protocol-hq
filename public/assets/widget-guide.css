@@ -1,0 +1,56 @@
+.widget-guide { max-width: 1080px; margin: auto; padding: 26px 24px 64px; }
+.widget-nav, .widget-wordmark, .widget-download-options { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; }
+.widget-nav { justify-content: space-between; font-size: .92rem; }
+.widget-wordmark { gap: 12px; margin-bottom: 28px; color: #80e8d0; font-weight: 700; letter-spacing: .09em; }
+.widget-hero { padding: 54px 0 14px; }
+.widget-hero h1 { font-size: clamp(2.65rem, 7vw, 5.5rem); line-height: 1.04; letter-spacing: -.05em; margin: 20px 0; }
+.widget-hero > p { max-width: 680px; font-size: 1.12rem; color: #c6d8d8; }
+.widget-guide p, .widget-guide li { line-height: 1.75; }
+.widget-platforms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 32px; }
+.widget-platform { min-width: 0; border: 1px solid #366667; border-radius: 24px; padding: 26px; background: linear-gradient(145deg, #102c30, #0c1728); }
+.widget-platform:nth-child(2) { background: linear-gradient(145deg, #162a38, #141527); }
+.widget-platform h2 { font-size: 1.75rem; margin: 14px 0; }
+.widget-platform > p:first-of-type { min-height: 3.5em; color: #c6d8d8; }
+.widget-platform .button { display: flex; justify-content: center; margin: 18px 0 14px; }
+.widget-platform .text-link { display: inline-block; }
+.widget-badge { font-size: .8rem; letter-spacing: .02em; color: #c6f4e8; }
+.widget-features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 26px 0; }
+.widget-features article, .widget-panel { min-width: 0; border: 1px solid #2c5356; border-radius: 20px; background: #101f2a; padding: 24px; }
+.widget-features h2 { font-size: 1.1rem; }
+.widget-features p { color: #c6d8d8; font-size: .95rem; }
+.widget-panel { margin: 24px 0; scroll-margin-top: 20px; }
+.widget-panel h2 { font-size: clamp(1.5rem, 4vw, 2rem); margin: 12px 0 20px; }
+.widget-panel ol { padding-left: 24px; }
+.widget-panel li { padding: 7px 0 7px 4px; }
+.widget-release, .widget-small { font-size: .86rem; color: #c6d8d8; }
+.widget-notice { border-left: 3px solid #80e8d0; padding: 8px 0 8px 16px; color: #c6d8d8; }
+.widget-guide details { padding: 14px 0; border-top: 1px solid #2c5356; }
+.widget-guide summary { cursor: pointer; font-weight: 650; min-height: 44px; display: list-item; }
+.widget-guide details p { color: #c6d8d8; }
+.widget-help { margin-top: 18px; }
+.widget-guide label { display: block; font-size: .86rem; margin: 16px 0 8px; color: #d8f4ef; }
+.widget-link-copy { display: flex; align-items: stretch; gap: 10px; }
+.widget-guide input, .widget-guide textarea { min-width: 0; width: 100%; background: #050c18; color: #defff9; border: 1px solid #486568; border-radius: 10px; padding: 12px; font: inherit; }
+.widget-link-copy input { flex: 1; font-size: 1rem; }
+.widget-link-copy button { flex-shrink: 0; }
+.widget-guide textarea { font: 1rem/1.5 ui-monospace, SFMono-Regular, monospace; resize: vertical; margin-bottom: 12px; }
+.widget-guide .button { min-height: 44px; cursor: pointer; }
+.widget-guide .button-primary { background: #80e8d0; color: #050c18; border-color: #80e8d0; }
+.widget-guide .button-primary:hover { background: #a4f6e3; }
+.widget-guide .button-secondary { background: #0c1728; color: #defff9; border-color: #486568; }
+.widget-guide .button-secondary:hover { border-color: #80e8d0; color: #80e8d0; }
+.widget-guide .button:disabled { opacity: .6; cursor: wait; }
+.widget-guide .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.widget-guide a:focus-visible, .widget-guide summary:focus-visible, .widget-guide button:focus-visible, .widget-guide input:focus-visible, .widget-guide textarea:focus-visible { outline: 3px solid #80e8d0; outline-offset: 4px; }
+.widget-guide code, .widget-guide a { overflow-wrap: anywhere; }
+.widget-guide footer { display: flex; flex-wrap: wrap; gap: 20px; padding-top: 24px; font-size: .9rem; }
+.widget-guide [hidden] { display: none !important; }
+@media (max-width: 700px) {
+  .widget-platforms, .widget-features { grid-template-columns: minmax(0, 1fr); }
+  .widget-guide { padding-inline: 18px; }
+  .widget-hero { padding-top: 36px; }
+  .widget-panel, .widget-platform { padding: 20px; }
+  .widget-platform > p:first-of-type { min-height: 0; }
+  .widget-link-copy { flex-direction: column; }
+  .widget-guide .hero-actions > * { width: 100%; text-align: center; }
+}

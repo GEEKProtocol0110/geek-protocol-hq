@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Hall of Thanks — Geek Protocol</title>
+  <desc id="description">No Geek stands alone. Built on Kaspa. Carried by community. A gold GIGA robot stands beside the dedication.</desc>
+  <defs>
+    <linearGradient id="background" x2="1" y2="1"><stop stop-color="#0b171c"/><stop offset="1" stop-color="#080f13"/></linearGradient>
+    <radialGradient id="halo"><stop stop-color="#385a4c" stop-opacity=".7"/><stop offset="1" stop-color="#385a4c" stop-opacity="0"/></radialGradient>
+    <linearGradient id="gold" x2=".7" y2="1"><stop stop-color="#fff0b8"/><stop offset=".5" stop-color="#f6c643"/><stop offset="1" stop-color="#c58b2d"/></linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#70e6dc" stroke-opacity=".045"/></pattern>
+  </defs>
+  <style>
+    text{font-family:"DejaVu Sans",sans-serif}
+    .robot-metal{fill:url(#gold);stroke:#ffe7a2;stroke-width:2}
+    .robot-dark{fill:#102b26;stroke:#7b5823;stroke-width:3}
+    .robot-trim{fill:none;stroke:#7b5823;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+    .robot-light{fill:#ffe7a2}
+    .robot-joint{fill:none;stroke:#7b5823;stroke-width:22;stroke-linecap:round}
+    .robot-eye{fill:none;stroke:#9fffea;stroke-width:5;stroke-linecap:round}
+    .robot-mouth{fill:none;stroke:#9fffea;stroke-width:2;stroke-linecap:round}
+    .robot-core{fill:#ffe7a2}
+    .robot-symbol{fill:none;stroke:#7b5823;stroke-width:4;stroke-linejoin:round}
+    .robot-shadow{fill:#060c09;opacity:.8}
+  </style>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <ellipse cx="940" cy="306" rx="310" ry="310" fill="url(#halo)"/>
+  <rect x="28" y="28" width="1144" height="574" rx="24" fill="none" stroke="#466158"/>
+  <path d="M68 100h42" stroke="#70e6dc" stroke-width="5" stroke-linecap="round"/>
+  <text x="126" y="109" fill="#70e6dc" font-size="24" font-weight="700" letter-spacing="2">GEEK PROTOCOL</text>
+  <text x="68" y="239" fill="#f6f8f5" font-size="73" font-weight="700" letter-spacing="-3">Hall of</text>
+  <text x="68" y="328" fill="#f6c643" font-size="84" font-weight="700" letter-spacing="-3">Thanks.</text>
+  <text x="72" y="389" fill="#d9e7e5" font-size="30">No Geek stands alone.</text>
+  <path d="M72 428h540" stroke="#466158"/>
+  <text x="72" y="471" fill="#b7cfca" font-size="23">Built on Kaspa. Carried by community.</text>
+  <text x="72" y="552" fill="#70e6dc" font-size="21" letter-spacing="1">geekprotocol.xyz/thanks</text>
+  <g fill="none" stroke="#70e6dc" stroke-opacity=".22">
+    <circle cx="929" cy="310" r="190"/><circle cx="929" cy="310" r="214"/>
+    <path d="M765 204 929 96l185 132-74 250-229 9-85-129"/>
+  </g>
+  <g fill="#70e6dc"><circle cx="765" cy="204" r="4"/><circle cx="929" cy="96" r="4"/><circle cx="1114" cy="228" r="4"/><circle cx="1040" cy="478" r="4"/></g>
+  <g transform="translate(718 90) scale(1.42)"><ellipse class="robot-shadow" cx="150" cy="306" rx="83" ry="11"/><path class="robot-joint" d="M117 228v47m66-47v47M89 157l-10 48m132-48 10 48"/><rect class="robot-metal" x="103" y="265" width="40" height="31" rx="10"/><rect class="robot-metal" x="157" y="265" width="40" height="31" rx="10"/><rect class="robot-metal" x="65" y="186" width="28" height="42" rx="12"/><rect class="robot-metal" x="207" y="186" width="28" height="42" rx="12"/><rect class="robot-metal" x="97" y="137" width="106" height="101" rx="28"/><path class="robot-trim" d="M108 224h84"/><circle class="robot-dark" cx="150" cy="189" r="29"/><circle class="robot-core" cx="150" cy="189" r="20"/><path class="robot-symbol" d="M158 179h-13v20h13v-9h-7"/><rect class="robot-dark" x="134" y="125" width="32" height="20" rx="6"/><rect class="robot-metal" x="93" y="64" width="114" height="72" rx="28"/><rect class="robot-dark" x="105" y="82" width="90" height="40" rx="16"/><path class="robot-eye" d="M115 104q8-16 16 0m38 0q8-16 16 0"/><path class="robot-mouth" d="M140 114q10 6 20 0"/><path class="robot-trim" d="M150 64V39"/><circle class="robot-light" cx="150" cy="33" r="9"/><circle class="robot-light" cx="99" cy="158" r="6"/><circle class="robot-light" cx="201" cy="158" r="6"/></g>
+  <g fill="#ffe7a2"><path d="M786 119l3-9 3 9 9 3-9 3-3 9-3-9-9-3z"/><path d="M1091 395l2-6 2 6 6 2-6 2-2 6-2-6-6-2z"/></g>
+</svg>

@@ -1,8 +1,10 @@
+import { ROUND_CONFIG, RANKED_START_IP_LIMIT } from '../server/game-economy.js';
 import { randomBytes } from 'node:crypto';
 import { recordCommunityQuestionUse } from '../server/cce.js';
 import { categories, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
 import { recordVerifiedScore } from '../server/leaderboard.js';
-import { loadProfile, saveProfile, saveProfileWithAudit } from '../server/profile.js';
+import { loadProfile } from '../server/profile.js';
+import { commitRankedState } from '../server/ranked-state.js';
 import { recordRoundJourney, withProgression } from '../server/progression.js';
 import { questionById, selectRoundQuestionIds, shuffleOptions } from '../server/questions.js';
 import { rateLimit, redis } from '../server/redis.js';
@@ -16,19 +18,9 @@ const RUN_TTL = 60 * 60 * 2;
 const QUESTION_MS = 15_000;
 const NETWORK_GRACE_MS = 350;
 const runKey = (id) => `geek:run:${id}`;
+const runSnapshots = new WeakMap();
 const runIdPattern = /^[a-f0-9]{40}$/;
-const ROUND_CONFIG = [
-  { round: 1, entry: 0, reward: 10, max: 100, label: 'INITIATION' },
-  { round: 2, entry: 40, reward: 20, max: 200, label: 'BASIC PROTOCOLS' },
-  { round: 3, entry: 100, reward: 40, max: 400, label: 'NETWORK LAYER' },
-  { round: 4, entry: 200, reward: 80, max: 800, label: 'DATA STREAMS' },
-  { round: 5, entry: 400, reward: 150, max: 1500, label: 'GRID ACCESS' },
-  { round: 6, entry: 750, reward: 280, max: 2800, label: 'DEEP PROTOCOL' },
-  { round: 7, entry: 1250, reward: 450, max: 4500, label: 'CIPHER DESCENT' },
-  { round: 8, entry: 2000, reward: 700, max: 7000, label: 'CORE BREACH' },
-  { round: 9, entry: 3500, reward: 1100, max: 11000, label: 'OMNISCIENT GATE' },
-  { round: 10, entry: 6000, reward: 1800, max: 18000, label: 'APEX PROTOCOL' }
-];
+
 const MODE_CONFIG = {
   gauntlet: { questionCount: 10, questionMs: QUESTION_MS, maxRounds: 10, rewards: true, label: '' },
   daily: { questionCount: 5, questionMs: QUESTION_MS, maxRounds: 1, rewards: false, label: 'DAILY SIGNAL' },
@@ -41,6 +33,7 @@ const safeRun = (run) => ({
   mode: run.mode,
   category: run.category,
   round: run.round,
+  completedRound: run.completedRound || 0,
   questionIndex: run.questionIndex,
   correct: run.correct,
   streak: run.streak,
@@ -52,7 +45,8 @@ const safeRun = (run) => ({
   rewards: run.rewards,
   questionCount: run.questionCount,
   maxRounds: run.maxRounds,
-  status: run.status
+  status: run.status,
+  answeredReview: run.roundAnswers || []
 });
 
 const loadRun = async (id, session) => {
@@ -61,11 +55,7 @@ const loadRun = async (id, session) => {
   if (!raw) throw new Error('RUN_NOT_FOUND');
   const run = JSON.parse(raw);
   if (run.sessionId !== session.id) throw new Error('RUN_NOT_FOUND');
-  return run;
-};
-
-const saveRun = async (run, ttl = RUN_TTL) => {
-  await redis('SET', runKey(run.id), JSON.stringify(run), 'EX', ttl);
+  runSnapshots.set(run, raw);
   return run;
 };
 
@@ -118,24 +108,16 @@ const finishRun = async (run, session, profile) => {
   if (run.status === 'finished') return { leaderboard: await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode }) };
   profile.totalRuns += 1;
   if (run.mode === 'gauntlet' && run.completedRound >= 10) profile.gauntletsCompleted += 1;
-  await saveProfile(playerIdFor(session), profile);
-  const leaderboard = await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode });
   run.status = 'finished';
   run.current = null;
-  await saveRun(run, 300);
+  await commitRankedState({ playerId: playerIdFor(session), run, previousRun: runSnapshots.get(run), profile, ttl: 300 });
+  const leaderboard = await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode });
   return { leaderboard };
 };
 
 const answerQuestion = async (run, session, profile, body) => {
   if (run.lastResponse?.questionToken === body.questionToken && ['awaiting-next', 'between-rounds'].includes(run.status)) return run.lastResponse;
   if (run.status !== 'question' || run.current?.token !== body.questionToken) throw new Error('RUN_STATE_INVALID');
-  const claimKey = `geek:answer-claim:${run.id}:${body.questionToken}`;
-  const claimed = await redis('SET', claimKey, session.id, 'EX', 10, 'NX');
-  if (claimed !== 'OK') {
-    const latest = await loadRun(run.id, session);
-    if (latest.lastResponse?.questionToken === body.questionToken) return latest.lastResponse;
-    throw new Error('ANSWER_IN_PROGRESS');
-  }
   const question = await questionById(run.category, run.current.questionId);
   const now = Date.now();
   const timedOut = now > run.current.deadline + NETWORK_GRACE_MS;
@@ -167,8 +149,10 @@ const answerQuestion = async (run, session, profile, body) => {
     sourceState: question.community ? 'Community-reviewed contribution' : question.priority ? 'Reviewed current item' : question.volatile ? 'Time-sensitive item' : run.category === 'kaspa' ? 'Source-linked practice item' : 'Draft practice item',
     contributorCredit: await recordCommunityQuestionUse(question, run.id)
   };
+  run.roundAnswers ||= [];
+  run.roundAnswers.push({ prompt: question.prompt, selected: selectedIndex < 0 ? 'No answer' : run.current.options[selectedIndex], answer, correct: isCorrect, source: question.source, sourceState: result.sourceState });
   run.current = null;
-  let roundResult = null;
+  let roundResult = null, auditInput = null;
   const mode = modeConfig(run.mode);
   const modeClockExpired = Boolean(mode.overallMs && now >= run.overallDeadline);
   if (run.questionIndex === run.questionCount - 1 || modeClockExpired) {
@@ -216,7 +200,7 @@ const answerQuestion = async (run, session, profile, body) => {
       nextMax: run.mode !== 'gauntlet' || run.round === 10 ? 0 : ROUND_CONFIG[run.round].max
     };
     if (reward > 0) {
-      await saveProfileWithAudit(playerIdFor(session), profile, {
+      auditInput = {
         type: 'alpha.balance.reward-credited',
         severity: 'info',
         objectType: 'ranked-run',
@@ -234,9 +218,7 @@ const answerQuestion = async (run, session, profile, body) => {
           balanceAfter: profile.balance,
           settlement: 'disabled'
         }
-      });
-    } else {
-      await saveProfile(playerIdFor(session), profile);
+      };
     }
   } else {
     run.status = 'awaiting-next';
@@ -249,7 +231,7 @@ const answerQuestion = async (run, session, profile, body) => {
     profile: withProgression(profile)
   };
   run.lastResponse = response;
-  await saveRun(run);
+  await commitRankedState({ playerId: playerIdFor(session), run, previousRun: runSnapshots.get(run), profile, auditInput });
   return response;
 };
 
@@ -263,13 +245,21 @@ export default async function handler(req, res) {
   try {
     const session = await requireSession(req);
     const playerId = playerIdFor(session);
-    if (req.method === 'GET') return sendJson(res, 200, { ok: true, profile: withProgression(await loadProfile(playerId)), verified: true });
+    if (req.method === 'GET') {
+      const profile = withProgression(await loadProfile(playerId));
+      if (!req.query?.runId && req.query?.resume !== '1') return sendJson(res, 200, { ok: true, profile, verified: true });
+      const id = req.query?.resume === '1' ? await redis('GET', `geek:ranked:active:${session.id}`) : req.query.runId;
+      const run = await loadRun(id, session);
+      const question = run.current ? publicQuestion(run, await questionById(run.category, run.current.questionId)) : null;
+      // Only the latest committed grade is available here; never future answers.
+      return sendJson(res, 200, { ok: true, verified: true, ...(run.lastResponse || {}), run: safeRun(run), profile, question });
+    }
     if (req.method !== 'POST') return methodNotAllowed(res);
     const body = parseBody(req);
     const action = String(body.action || '');
     await rateLimit('ranked', playerId, 240, 60 * 5);
     if (action === 'start') {
-      await rateLimit('ranked-start-ip', clientFingerprint(req), 20, 60 * 60);
+      await rateLimit('ranked-start-ip', clientFingerprint(req), RANKED_START_IP_LIMIT.maximum, RANKED_START_IP_LIMIT.seconds);
       const category = categories.has(body.category) ? body.category : 'kaspa';
       const mode = Object.hasOwn(MODE_CONFIG, body.mode) ? body.mode : 'gauntlet';
       const focus = ['ghostdag', 'builders'].includes(body.focus) ? body.focus : '';
@@ -280,26 +270,29 @@ export default async function handler(req, res) {
         completedRound: 0, startBalance: profile.balance, fees: 0, rewards: 0, usedQuestionIds: [], status: 'starting',
         questionCount: modeConfig(mode).questionCount, maxRounds: modeConfig(mode).maxRounds, overallDeadline: 0
       };
-      if (mode === 'daily') {
-        const day = new Date().toISOString().slice(0, 10);
-        const claimed = await redis('SET', `geek:daily:${playerId}:${day}`, run.id, 'EX', 60 * 60 * 48, 'NX');
-        if (claimed !== 'OK') throw new Error('DAILY_ALREADY_PLAYED');
-      }
+      const dailyKey = mode === 'daily' ? `geek:daily:${playerId}:${new Date().toISOString().slice(0, 10)}` : undefined;
       const question = await startRound(run, profile);
-      await Promise.all([saveRun(run), saveProfile(playerId, profile)]);
+      await commitRankedState({ playerId, run, profile, dailyKey, activeKey: `geek:ranked:active:${session.id}` });
       return sendJson(res, 201, { ok: true, verified: true, run: safeRun(run), profile: withProgression(profile), question });
     }
     const run = await loadRun(body.runId, session);
     const profile = await loadProfile(playerId);
     if (action === 'answer') {
-      const answer = await answerQuestion(run, session, profile, body);
+      let answer;
+      try { answer = await answerQuestion(run, session, profile, body); }
+      catch (error) {
+        if (error.message !== 'RANKED_STATE_CHANGED') throw error;
+        const latest = await loadRun(run.id, session);
+        if (latest.lastResponse?.questionToken !== body.questionToken) throw error;
+        answer = latest.lastResponse;
+      }
       return sendJson(res, 200, { ok: true, verified: true, ...answer });
     }
     if (action === 'next') {
       if (run.status !== 'awaiting-next') throw new Error('RUN_STATE_INVALID');
       run.questionIndex += 1;
       const question = await issueQuestion(run);
-      await saveRun(run);
+      await commitRankedState({ playerId, run, previousRun: runSnapshots.get(run), profile });
       return sendJson(res, 200, { ok: true, verified: true, run: safeRun(run), profile: withProgression(profile), question });
     }
     if (action === 'continue') {
@@ -308,10 +301,7 @@ export default async function handler(req, res) {
       run.round += 1;
       const question = await startRound(run, profile);
       const entry = balanceBefore - profile.balance;
-      await Promise.all([
-        saveRun(run),
-        entry > 0
-          ? saveProfileWithAudit(playerId, profile, {
+      const auditInput = entry > 0 ? {
             type: 'alpha.balance.entry-debited',
             severity: 'info',
             objectType: 'ranked-run',
@@ -329,9 +319,8 @@ export default async function handler(req, res) {
               balanceAfter: profile.balance,
               settlement: 'disabled'
             }
-          })
-          : saveProfile(playerId, profile)
-      ]);
+      } : null;
+      await commitRankedState({ playerId, run, previousRun: runSnapshots.get(run), profile, auditInput });
       return sendJson(res, 200, { ok: true, verified: true, run: safeRun(run), profile: withProgression(profile), question });
     }
     if (action === 'finish') {

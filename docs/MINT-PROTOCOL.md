@@ -57,7 +57,23 @@ Normal protocol and Kaspa commit/reveal network fees still apply. The project pu
 7. Kasware presents the final transaction for approval. A rejection stops the flow.
 8. HQ displays only the returned commit and reveal transaction IDs. Raw transaction data is not retained or rendered.
 
-An unavailable indexer, malformed response, deployment mismatch, exhausted supply, wrong wallet network, changed wallet account, missing wallet capability, or invalid result blocks the request.
+An unavailable indexer, malformed status response, deployment mismatch, exhausted supply, wrong wallet network, changed wallet account, or missing wallet capability blocks the request before wallet handoff.
+
+A fulfilled Kasware call with no readable transaction ID is not reported as a failed mint. HQ shows a receipt notice and preserves each individually valid 64-character hexadecimal commit/reveal ID. It also accepts a bare transaction ID as a generic reference, without calling it a reveal, and decodes at most two JSON string layers. It does not infer token arrival or mint completion from any receipt. No other field aliases or raw transaction data are accepted. A receipt containing both IDs still means submission only. Responses with no readable ID block another wallet request until the user explicitly checks wallet activity, resets the request, and reviews the terms again; the reset and background status refresh never invoke Kasware. Wallet rejections and thrown errors retain their separate error path.
+
+## Multiple mint requests
+
+- The count selector offers 1, 2, 5, 10, 25, 50, or 100 mints. Each remains an exact, independent type-3 GEEK inscription requesting 100,000 GEEK. The review shows the selected token total and 1 KAS protocol fee per mint, plus separately disclosed network fees. Changing the count clears the acknowledgment. The reviewed total cannot change while a queue runs.
+- HQ uses the existing public `signKRC20Transaction` API sequentially. It does not call Kasware's internal batch-mint method, bypass approval, or broadcast raw transactions. Every queued request still requires the user to approve in Kasware; this is not a single-approval bulk transaction.
+- Before each request, HQ fetches fresh verified supply and rechecks the selected wallet, provider and Mainnet. It requires sufficient gross remaining mint capacity for the unrequested portion. Counts are bounded to 1–100 and the original wallet and count are fixed for the queue.
+- Stop queue prevents further requests, including a request still in preflight. It does not cancel or undo a request already handed to the wallet. Account or network changes stop the queue. A wallet error, unreadable response, or hidden page pauses it. Visibility changes and status recovery never resume a queue automatically.
+- Continuing a paused queue requires a new explicit review and click. Unknown outcomes additionally require a wallet-activity acknowledgment. The queue advances past each wallet call already attempted; it never replays one to recover a receipt. The displayed count is wallet requests, not confirmed mints. Receipts remain page-local and can be copied; reloading does not persist or resume a queue.
+
+## Receipt compatibility diagnostics
+
+The current official [Kasware provider](https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/controller.ts) delegates minting to `signKRC20Tx`, whose current implementation returns JSON with `commitId` and `revealId`. The affected user's exact response was not available during development, so no specific wallet-version defect or wrapper is assumed.
+
+The page optionally reads Kasware's public `getVersion()` without requesting an account, signature, or transaction. The diagnostic stores only a bounded version string, response type, decoded type, JSON layer count, and types of a fixed list of known receipt fields. It never retains raw payloads, field values, arbitrary field names, addresses, keys, or transaction bytes. Copy receipt diagnostics is a separate user action from copying a receipt, and contains no wallet address or transaction IDs. There is no automatic diagnostic logging or transmission. This allows a user to share the response shape if their receipt remains unreadable.
 
 ## Availability, recovery, and diagnostics
 

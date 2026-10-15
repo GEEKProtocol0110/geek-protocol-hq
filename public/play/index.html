@@ -33,6 +33,7 @@
     </header>
 
     <main id="game" class="game-shell">
+      <aside class="ranked-recovery" data-ranked-recovery hidden aria-label="Saved run recovery"><p data-ranked-recovery-status role="status"></p><div><button class="quiet-action" type="button" data-ranked-reconnect>Reconnect saved run</button><button class="quiet-action" type="button" data-ranked-next hidden>Continue to next question</button><button class="quiet-action" type="button" data-ranked-finish hidden>Finish &amp; save result</button><a href="/profile/#progression-title">See My HQ progress →</a><a href="/start/">First-visit guide</a></div></aside>
       <section class="screen start-screen active" data-screen="start" aria-labelledby="start-title">
         <div class="start-copy">
           <div class="eyebrow">A game for every kind of curious</div>
@@ -50,7 +51,7 @@
               <button class="category-chip selected" type="button" role="radio" aria-checked="true" data-category-key="kaspa"><strong>Kaspa</strong><span>194 · sourced</span></button>
               <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="video-games"><strong>Video Games</strong><span>602</span></button>
               <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="science-fiction"><strong>Science Fiction</strong><span>515</span></button>
-              <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="technology"><strong>Technology</strong><span>1,482</span></button>
+              <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="technology"><strong>Technology</strong><span>1,497</span></button>
               <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="movies"><strong>Movies</strong><span>1,495</span></button>
               <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="history"><strong>History</strong><span>1,510</span></button>
               <button class="category-chip" type="button" role="radio" aria-checked="false" data-category-key="comics"><strong>Comics</strong><span>417</span></button>
@@ -88,7 +89,7 @@
               <div class="wallet-panel__actions">
                 <label class="wallet-panel__choice">Browser wallet<select data-wallet-provider aria-label="Choose a browser wallet" hidden></select></label><button type="button" data-wallet-connect>Connect wallet</button>
                 <button type="button" data-wallet-verify hidden>Verify ownership</button>
-                <a href="/sign-in/">Other sign-in options →</a>
+                <a href="/sign-in/?next=play">Other sign-in options →</a>
               </div>
               <p class="wallet-panel__safety"><b>No transaction requested.</b> A verified Kasware identity lets you recover your player progress. It does not change your score or rewards. You can set any valid Kaspa receiving address in <a href="../rewards/">Rewards</a>; on-chain payouts remain locked.</p>
             </section>
@@ -169,7 +170,7 @@
             <button class="primary-action" type="button" data-continue>Continue to Round 02 <span>→</span></button>
             <button class="quiet-action cashout" type="button" data-cashout>End run</button>
           </div>
-          <p class="entry-warning" data-entry-warning></p>
+          <p class="entry-warning" data-entry-warning></p><p class="saved-progress-link">Your round XP is saved. Finish this run to submit its score, then <a href="/profile/#progression-title">see My HQ progress →</a>.</p>
           <details class="round-review">
             <summary>Review answers &amp; sources</summary>
             <ol data-round-review></ol>
@@ -193,7 +194,7 @@
         <h2 id="complete-title" data-complete-title>GAUNTLET<br /><span>CONQUERED</span></h2>
         <p data-complete-message>You cleared all ten rounds.</p>
         <div class="complete-score"><small>FINAL RUN SCORE</small><strong data-final-score>0</strong></div>
-        <div class="result-actions complete-actions">
+        <div class="result-actions complete-actions"><a class="quiet-action" href="/profile/#progression-title">See My HQ progress →</a><a class="quiet-action" href="/start/">First-visit guide</a>
           <button class="primary-action" type="button" data-new-run>Start a New Run <span>↻</span></button>
           <a class="quiet-action" href="../">Return to Protocol</a>
         </div>
@@ -217,5 +218,5 @@
       <p>This ranked Alpha uses secure server sessions and a no-value practice economy. It does not authorize wallet transactions or award real $GEEK.</p>
       <button class="primary-action" type="button" data-close>Understood</button>
     </dialog>
-  <footer class="welcome-simple-footer" aria-label="More places to explore"><a href="../">Home</a><a href="../study/">Learn at your pace</a><a href="../profile/">My HQ</a><a href="sources/">Question sources</a><a href="https://geekjr.xyz/">Geek Jr ↗</a></footer></body>
+  <footer class="welcome-simple-footer" aria-label="More places to explore"><a href="https://geek-mini.vercel.app/">Geek Mini ↗</a><a href="/tools/#kaspa-widget">Free Kaspa widget</a><a href="../">Home</a><a href="../study/">Learn at your pace</a><a href="../profile/">My HQ</a><a href="sources/">Question sources</a><a href="https://geekjr.xyz/">Geek Jr ↗</a></footer></body>
 </html>

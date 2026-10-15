@@ -4,6 +4,10 @@ This directory is the reviewable specification set for Geek Protocol HQ. Documen
 
 ## Start here
 
+- [Kaspa-first Mobile Onboarding](MOBILE-ONBOARDING.md): direct quiz/lesson choices, visible sign-in, optional ecosystem detail and remaining phone acceptance.
+
+- [October 11 Launch Readiness](LAUNCH-READINESS-2026-10-11.md): all five workstreams, save/recovery fixes, validation and remaining reward gates.
+
 - [Editorial Review](EDITORIAL-REVIEW.md): current removals and the remaining draft review.
 - [Player Journey Review](PLAYER-JOURNEY-REVIEW.md): browser walkthrough, fixes and physical-device acceptance work.
 
@@ -63,3 +67,16 @@ Geek Protocol HQ is implemented and internally verified in several areas. It is 
 - [Player dashboard and prestige rules](PLAYER-PROGRESSION.md) — optional level-50 resets, 25 prestige ranks, preserved career, and verified standings.
 
 - [Community contributions and Hall applications](COMMUNITY-CONTRIBUTIONS.md) — fund address, private owner review, consent and public credit boundaries.
+
+
+## October 14 operator improvements
+
+- [Imported question review](IMPORTED-QUESTION-REVIEW.md): private decisions and checked staging.
+- [Testnet reward pilot](TESTNET-REWARD-PILOT.md): disabled-by-default receipts and exact indexed transfer checks.
+- [Next-five acceptance](NEXT-FIVE-ACCEPTANCE.md): software scope and real-device, community and funded-wallet work still pending.
+
+- [Production monitoring](PRODUCTION-MONITORING.md): HTTP checks, private snapshots and scheduled run summaries.
+
+- [Economy stress lab](ECONOMY-STRESS.md): current credit paths, hypothetical reserve math and replay evidence.
+
+- [Free-beta candidate and pilot checklist](FREE-BETA-READINESS.md) — current comparison baseline, historical dependency inventory and pending production acceptance.

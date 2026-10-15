@@ -3,6 +3,8 @@ import { pipeline, redis } from './redis.js';
 import { initialPrestigeState, migrateLegacyPrestige, prestigeKeyFor, validatePrestigeState } from './prestige-state.js';
 
 export const profileKeyFor = (sessionId) => `geek:profile:${sessionId}`;
+const snapshots = new WeakMap();
+export const profileSnapshot = profile => snapshots.get(profile);
 
 export const defaultProfile = () => ({
   balance: 0,
@@ -33,25 +35,39 @@ export const defaultProfile = () => ({
   payoutNotice: null
 });
 
+export const parseProfile = raw => {
+  if (raw === null || raw === undefined) return defaultProfile();
+  let value;
+  try { value = JSON.parse(raw); } catch { throw new Error('PROFILE_STATE_INVALID'); }
+  if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('PROFILE_STATE_INVALID');
+  // Missing legacy fields get their defaults; damaged counters never become zero.
+  for (const key of ['xp', 'balance', 'bestRound', 'bestScore', 'bestDailyScore', 'bestSpeedScore', 'totalRuns', 'totalCorrect', 'totalQuestions', 'longestStreak', 'gauntletsCompleted']) {
+    if (Object.hasOwn(value, key) && (!Number.isSafeInteger(value[key]) || value[key] < 0)) throw new Error('PROFILE_STATE_INVALID');
+  }
+  for (const key of ['categoryStats', 'stickerInventory', 'stickerReserved']) {
+    if (Object.hasOwn(value, key) && (!value[key] || typeof value[key] !== 'object' || Array.isArray(value[key]))) throw new Error('PROFILE_STATE_INVALID');
+  }
+  for (const key of ['journey', 'payoutMutationHistory']) {
+    if (Object.hasOwn(value, key) && !Array.isArray(value[key])) throw new Error('PROFILE_STATE_INVALID');
+  }
+  return { ...defaultProfile(), ...value };
+};
+
 export const loadProfile = async (sessionId) => {
   const [raw, prestigeRaw] = await pipeline([['GET', profileKeyFor(sessionId)], ['GET', prestigeKeyFor(sessionId)]]);
-  let profile;
-  try {
-    profile = raw ? { ...defaultProfile(), ...JSON.parse(raw) } : defaultProfile();
-  } catch {
-    profile = defaultProfile();
-  }
+  const profile = parseProfile(raw);
   let stateRaw = prestigeRaw;
   if (!stateRaw) {
     await redis('SET', prestigeKeyFor(sessionId), JSON.stringify(raw ? migrateLegacyPrestige(profile) : initialPrestigeState()), 'NX');
     stateRaw = await redis('GET', prestigeKeyFor(sessionId));
   }
   profile.prestigeState = validatePrestigeState(JSON.parse(stateRaw));
+  snapshots.set(profile, { raw: raw ?? '', prestigeRaw: stateRaw });
   return profile;
 };
 
 // Prestige is authoritative in its own ledger; stale profile writes cannot reset it.
-const profileJson = profile => { const { prestigeState, ...stored } = profile; return JSON.stringify(stored); };
+export const profileJson = profile => { const { prestigeState, ...stored } = profile; return JSON.stringify(stored); };
 
 export const saveProfile = async (sessionId, profile) => {
   await redis('SET', profileKeyFor(sessionId), profileJson(profile));
@@ -59,19 +75,41 @@ export const saveProfile = async (sessionId, profile) => {
 };
 
 export const saveProfileWithAudit = async (sessionId, profile, auditInput, extraCommands = []) => {
+  const snapshot = profileSnapshot(profile);
+  if (!snapshot) throw new Error('PROFILE_STATE_INVALID');
+  const next = profileJson(profile); parseProfile(next);
   const record = await createAuditRecord({
     actorType: 'alpha-session',
     actorId: sessionId,
     interactionId: sessionId,
     ...auditInput
   });
-  await pipeline([
-    ['SET', profileKeyFor(sessionId), profileJson(profile)],
-    ...extraCommands,
-    ...auditWriteCommands(record)
-  ], true);
+  const commands = [...extraCommands, ...auditWriteCommands(record)];
+  // Only server-created review/audit commands are accepted by this helper.
+  for (const command of commands) {
+    if (!['SET', 'ZADD', 'ZREM'].includes(command[0])) throw new Error('AUDIT_STATE_INVALID');
+  }
+  const result = Number(await redis('EVAL', PROFILE_AUDIT_CAS_LUA, 2 + commands.length,
+    profileKeyFor(sessionId), prestigeKeyFor(sessionId), ...commands.map(command => command[1]),
+    snapshot.raw, snapshot.prestigeRaw, next, JSON.stringify(commands)));
+  if (result === -1) throw new Error('AUDIT_STATE_INVALID');
+  if (result !== 1) throw new Error('PROFILE_STATE_CHANGED');
   return { profile, audit: record };
 };
+
+export const PROFILE_AUDIT_CAS_LUA = `-- geek-profile-audit-cas-v1
+if (redis.call('GET', KEYS[1]) or '') ~= ARGV[1] then return 0 end
+if (redis.call('GET', KEYS[2]) or '') ~= ARGV[2] then return 0 end
+local commands = cjson.decode(ARGV[4])
+for _, command in ipairs(commands) do
+  if command[1] == 'ZADD' or command[1] == 'ZREM' then
+    local kind = redis.call('TYPE', command[2]).ok
+    if kind ~= 'none' and kind ~= 'zset' then return -1 end
+  end
+end
+redis.call('SET', KEYS[1], ARGV[3])
+for _, command in ipairs(commands) do redis.call(unpack(command)) end
+return 1`;
 
 // Compare-and-set preserves JSON arrays and concurrent game/wallet updates.
 export const AVATAR_PATCH_LUA = `-- geek-avatar-patch-v1
@@ -89,8 +127,7 @@ export const saveAvatarWithAudit = async (playerId, avatarId, customization = nu
   const [event, index] = auditWriteCommands(record);
   for (let attempt = 0; attempt < 5; attempt++) {
     const previous = await redis('GET', profileKeyFor(playerId));
-    const stored = previous ? JSON.parse(previous) : defaultProfile();
-    if (!stored || typeof stored !== 'object' || Array.isArray(stored)) throw new Error('PROFILE_STATE_INVALID');
+    const stored = parseProfile(previous);
     const next = { ...stored, avatarId, ...(customization ? { avatarCustomization: customization } : {}) };
     const saved = await redis('EVAL', AVATAR_PATCH_LUA, 3, profileKeyFor(playerId), event[1], index[1], previous || '', JSON.stringify(next), event[2], index[2], index[3]);
     if (Number(saved) === 1) return;

@@ -2,11 +2,26 @@
   'use strict';
   const status = document.querySelector('[data-sign-in-status]');
   const hq = document.querySelector('[data-sign-in-hq]');
+  const returningToStart = new URLSearchParams(location.search).get('next') === 'start';
+  const continueLink = document.querySelector('[data-sign-in-continue]');
+  const nextPages = {
+    start: ['/start/#step-geek', 'Continue to your Geek →'],
+    study: ['/study/', 'Continue learning →'],
+    play: ['/play/#timed-games', 'Continue to your game →'],
+    royale: ['/royale/', 'Continue to Royale →'],
+    quest: ['/quest/', 'Continue your adventure →']
+  };
+  const requestedNext = new URLSearchParams(location.search).get('next');
+  const nextPage = Object.hasOwn(nextPages, requestedNext) ? nextPages[requestedNext] : ['/profile/', 'Open My HQ →'];
+  hq.href = nextPage[0]; hq.textContent = nextPage[1]; continueLink.href = nextPage[0];
+  // Fixed destinations only: query input can never become an external redirect.
+  if (returningToStart) { hq.href = '/start/#step-geek'; hq.textContent = 'Continue to your Geek →'; continueLink.href = '/start/#step-geek'; continueLink.textContent = 'Continue as a guest →'; }
+  const destination = nextPage[1].replace(' →', '') + ' when you’re ready.';
   let signedIn = false;
-  const showSignedIn = (message) => { status.textContent = message; hq.hidden = false; document.querySelector('[data-sign-in-continue]').textContent = 'Continue to My HQ →'; };
+  const showSignedIn = (message) => { status.textContent = message; hq.hidden = false; continueLink.textContent = nextPage[1]; };
   document.addEventListener('geek:signed-in', (event) => {
     signedIn = true;
-    showSignedIn(event.detail.recovered ? 'Signed in. Your saved player has been recovered. Open My HQ to continue.' : 'Signed in. Your player is protected by this wallet. Open My HQ to continue.');
+    showSignedIn(event.detail.recovered ? `Signed in. Your saved player has been recovered. ${destination}` : `Signed in. Your player is protected by this wallet. ${destination}`);
     hq.focus();
   });
   const controller = new AbortController();
@@ -15,7 +30,7 @@
     .then(async (response) => {
       const payload = await response.json();
       if (signedIn) return;
-      if (response.ok && payload.identity?.linked) showSignedIn('You are already signed in with a verified wallet. Open My HQ to continue.');
+      if (response.ok && payload.identity?.linked) showSignedIn(`You are already signed in with a verified wallet. ${destination}`);
       else if (response.status === 401 || (response.ok && !payload.identity?.linked)) status.textContent = 'Guest profile. Choose a wallet or use your Kaspa address below to sign in.';
       else throw new Error('Session check unavailable');
     })
@@ -83,7 +98,7 @@
     try {
       const verified = await request('/api/identity', { action: 'verify', challengeId, signature });
       if (!verified.identity?.linked) throw new Error('Wallet ownership could not be verified.');
-      invalidate(); manualStatus.textContent = 'Ownership verified. Open My HQ to continue.';
+      invalidate(); manualStatus.textContent = `Ownership verified. ${destination}`;
       document.dispatchEvent(new CustomEvent('geek:signed-in', { detail: { recovered: Boolean(verified.recovered) } }));
     } catch (error) { invalidate(); manualStatus.textContent = `${error.message} Create a new login message before retrying.`; }
     finally { busy(false); }

@@ -8,6 +8,8 @@ const presets = [
   { name: 'Everyday', design: personalGeek },
   { name: 'Explorer', design: { ...personalGeek, outfit: 'vest', palette: 'forest', hair: 'curls', back: 'pack', pants: 'cargo' } },
   { name: 'Night signal', design: { ...personalGeek, palette: 'violet', hair: 'bob', hairColor: 'black', skin: 'brown', head: 'beanie', fx: 'stars' } },
+  { name: 'Campus', design: { ...personalGeek, outfit: 'varsity', hair: 'afro', hairColor: 'emerald', palette: 'forest', head: 'plain' } },
+  { name: 'Weekend', design: { ...personalGeek, outfit: 'tee', hair: 'ponytail', hairColor: 'rose', palette: 'rose', head: 'bucket', eyewear: 'sun', pants: 'shorts' } },
   { name: 'GIGA', design: defaultGeek }
 ];
 const sameDesign = (left, right) => JSON.stringify(normalizeGeek(left)) === JSON.stringify(normalizeGeek(right));

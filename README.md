@@ -17,15 +17,21 @@
 
 The [daily vault](https://www.geekprotocol.xyz/vault/) offers one visible cosmetic seal per UTC day, with a private collection and replay-safe receipts. Login claims award no XP, credits, or tokens.
 
+The October 14 improvements add [private imported-question review](docs/IMPORTED-QUESTION-REVIEW.md), guest-first sign-in with activity return paths, three practical technology lessons, opt-in Royale room discovery, and an [isolated testnet receipt pilot](docs/TESTNET-REWARD-PILOT.md). See [acceptance steps](docs/NEXT-FIVE-ACCEPTANCE.md) for real-device, community and funded-wallet checks still outstanding.
+
+The [production monitor](docs/PRODUCTION-MONITORING.md) adds twenty read-only HTTP probes, a private owner history at `/ops/monitor/`, and independent scheduled GitHub run summaries.
+
+The [economy stress lab](docs/ECONOMY-STRESS.md) adds reproducible credit-path, per-receipt rounding, reserve-depletion and replay checks. The private `/ops/stress/` calculator changes no game rules or balances.
+
 **Current focus:** polish Learn → Study → practice → see progress. Existing extras remain available through Explore; economy accounting foundations are now active. Larger Arena, DAO and launchpad expansions remain on hold. Real purchases and settlement remain disabled.
 
 The [power-up and economy foundation](https://www.geekprotocol.xyz/economy/) restores six planned items, treasury categories, exact 70/30 fee examples, and a private planning journal. It cannot move funds or create spendable GEEK. Try [free assisted practice](https://www.geekprotocol.xyz/practice/) with one 50/50 and one Extra Time use per session. It awards no XP, credits, tokens or ranked entries. Read the [Economy Protocol](docs/ECONOMY-PROTOCOL.md).
 
-**Question bank:** 7,786 distinct active questions across eight categories after the October 8 editorial pass and ten sourced KRC-20 additions. See [Question Maintenance](docs/QUESTION-MAINTENANCE.md) for counts, source licenses, and editorial review status.
+**Question bank:** 7,801 distinct active questions across eight categories, including fifteen original technology questions added on October 14. Guided Study has eleven topics and 191 concepts. See [Question Maintenance](docs/QUESTION-MAINTENANCE.md) for counts, source licenses, and editorial review status.
 
 ## What is Geek Protocol?
 
-Geek Protocol turns knowledge into a verifiable player journey. Players study Kaspa at their own pace with A.C.E., revisit missed concepts, compete in timed trivia, build persistent profiles, join live lobbies, contribute reviewed questions, and interact with the GEEK ecosystem through non-custodial Kaspa wallet proofs and a Kasware mint flow.
+Geek Protocol turns knowledge into a verifiable player journey. Players study Kaspa and practical technology at their own pace with A.C.E., revisit missed concepts, compete in timed trivia, build persistent profiles, join live lobbies, contribute reviewed questions, and interact with the GEEK ecosystem through non-custodial Kaspa wallet proofs and a Kasware mint flow.
 
 The project began as a way to make learning exciting for one child. HQ is the public Alpha where that idea is becoming a transparent, security-first Proof-of-Learning platform on Kaspa.
 
@@ -38,7 +44,7 @@ The project began as a way to make learning exciting for one child. HQ is the pu
 | Public website and information surfaces | **Live** | Production at `www.geekprotocol.xyz` |
 | Ranked trivia, lobbies, leaderboards, and profiles | **Public Alpha** | Server-authoritative; Redis required |
 | Kaspa identity and account recovery | **Implemented Alpha** | Server-verified KIP-5 proofs through browser wallets or pasted signatures; wallet signing support required |
-| GEEK fair-mint interface | **Live / non-custodial** | One user-approved request against the pinned deployment |
+| GEEK fair-mint interface | **Live / non-custodial** | A reviewed queue of up to 100 requests against the pinned deployment; each requires wallet approval |
 | Community Content Engine | **Alpha** | Reviewed questions earn internal first-use credits |
 | Alpha GEEK rewards | **Internal ledger only** | No withdrawals, transfers, or promised monetary value |
 | 500-Geek collection | **Design and provenance phase** | Ownership and collection minting are disabled |
@@ -50,8 +56,9 @@ See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness
 
 | Surface | Purpose |
 | --- | --- |
-| **Learn / Study** | Kaspa 101 field guide plus eight guided lessons, three practice levels, and private saved concept feedback |
+| **Learn / Study** | Kaspa 101 field guide plus eleven guided Kaspa and practical-technology lessons, three practice levels, and private saved concept feedback |
 | **Play** | Ten-round Geek Gauntlet, server-owned Daily/Speed, and free unranked [Memory Grid](https://www.geekprotocol.xyz/memory/) |
+| **[Free tools](https://www.geekprotocol.xyz/tools/)** | Geek Mini browser quizzes and supporter sharing, plus Android APK and iPhone Scriptable widget setup with download/copy help |
 | **Daily vault** | One visible cosmetic seal per UTC day, private collection, and atomic claim receipts |
 | **Challenges** | Shared Weekly Signal and Monthly Circuit with one attempt per UTC period and separate verified standings |
 | **Lobbies** | Active seats, shareable rooms, and host-started ten-question shared practice rounds with server-scored standings |
@@ -201,7 +208,7 @@ Invite a friend or challenge a simulated A.C.E. opponent at [Geek Duel](https://
 
 ### Quiz Quest: solo campaign
 
-[Quiz Quest](https://www.geekprotocol.xyz/quest/) has three free solo chapters: First Signal explores Kaspa’s origins; Inside the blockDAG teaches parent links, parallel blocks and consensus ordering; Keys to the Grid adds wallet-safety decisions. Complete each earlier chapter to unlock the next, then resume from the campaign map. Explore with your selected Geek and GIGA, read A.C.E.’s learning notes, and save progress through six untimed checks per chapter. Each chapter has its own completion badge, saved place and dashboard card. Missed answers remain available for review; replaying preserves the original badge. No ranked XP or token rewards are awarded. [Chapter protocol](docs/QUEST-PROTOCOL.md).
+[Quiz Quest](https://www.geekprotocol.xyz/quest/) has four free solo chapters: First Signal explores Kaspa’s origins; Inside the blockDAG teaches parent links, parallel blocks and consensus ordering; Keys to the Grid adds wallet-safety decisions; Value in Motion explains UTXOs, change, fees and accepted transaction evidence. Complete each earlier chapter to unlock the next, then resume from the campaign map. Explore with your selected Geek and GIGA, read A.C.E.’s learning notes, and save progress through six untimed checks per chapter. Each chapter has its own completion badge, saved place and dashboard card. Missed answers remain available for review; replaying preserves the original badge. No ranked XP or token rewards are awarded. [Chapter protocol](docs/QUEST-PROTOCOL.md).
 
 ### Player HQ and character studio
 
