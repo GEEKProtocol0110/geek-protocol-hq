@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "checkedAt": "2026-10-15",
-  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1–2 plus observed #114/#115 merges. Merged is not a deployment or independent audit claim.",
+  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1–2 plus observed #114/#115/#117 merges. PR #116 remains open. Merged is not a deployment or independent audit claim.",
   "records": [
     {
       "number": 1,
@@ -730,6 +730,13 @@
       "mergedAt": "2026-10-15T14:58:30Z",
       "commit": "b0bc952d14d06b34cf82ae7b3794f61f6916c900",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/115"
+    },
+    {
+      "number": 117,
+      "title": "Research KCC20 compatibility and GEEK holder migration requirements",
+      "mergedAt": "2026-10-15T17:33:08Z",
+      "commit": "a4e34cd6c7146ed268729cb37b1bcb0ba051e5d7",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/117"
     }
   ]
 }

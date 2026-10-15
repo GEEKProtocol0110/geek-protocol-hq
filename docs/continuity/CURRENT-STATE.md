@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-002: decision-needed.** KCC20 primary-source research is prepared on codex/kcc20-research. Current convention is Last Call; implementation compatibility, the GEEK raw-supply integer bound and holder transition remain unresolved. Research does not enable migration or settlement.
+**CHAIN-002: decision-needed.** PR #117 merged at a4e34cd6c7146ed268729cb37b1bcb0ba051e5d7 on October 15 at 17:33:08 UTC. KCC20 research and pinned sources are in main; the 144-billion/eight-decimal representation, exact artifact/wallet compatibility and holder transition remain decision-needed. No migration or settlement is enabled.
 
-Next task: **BANK-001**. Review CHAIN-002 research and select only a disabled prototype after supply/artifact decisions; then resume BANK-001. Founding originals remain in separate open PR #116. CHAIN-001 still needs its first accepted manual testnet reward receipt. Preserve CCE, ownership and Mainnet settlement holds.
+Next task: **BANK-001**. Review merged CHAIN-002 research before selecting a disabled prototype; resolve supply/artifact decisions first. Resume BANK-001 as the next product task. Founding archive PR #116 remains open and needs continuity-record reconciliation before merge. CHAIN-001 still needs its first accepted manual testnet reward receipt; preserve all recorded holds.
 
 ## Holds
 
