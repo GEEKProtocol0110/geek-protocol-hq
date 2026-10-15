@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "capturedAt": "2026-10-15",
-  "through": "b0bc952d14d06b34cf82ae7b3794f61f6916c900",
-  "scope": "HQ commit metadata through the merged product baseline. Authored dates are retained as Git metadata, not proof of founding time. Git bundles preserve underlying objects.",
+  "through": "a4e34cd6c7146ed268729cb37b1bcb0ba051e5d7",
+  "scope": "HQ commit metadata through the declared snapshot commit, including the KCC20 research merge. The product runtime baseline remains PR #115. Authored dates are Git metadata, not founding-time proof; bundles preserve underlying objects.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -1496,6 +1496,31 @@
       ],
       "authoredAt": "2026-10-15T10:58:30-04:00",
       "title": "Merge pull request #115 from GEEKProtocol0110/codex/issue-14-mint-monitor"
+    },
+    {
+      "commit": "65820b08a8b84d08db1756a65c2e9bf83df66569",
+      "parents": [
+        "b0bc952d14d06b34cf82ae7b3794f61f6916c900"
+      ],
+      "authoredAt": "2026-10-15T11:01:33-04:00",
+      "title": "Record deployed mint monitoring and completed issue 14"
+    },
+    {
+      "commit": "1dd637858361c89bc6ad65e6e9c7303954d79ea1",
+      "parents": [
+        "65820b08a8b84d08db1756a65c2e9bf83df66569"
+      ],
+      "authoredAt": "2026-10-15T13:28:08-04:00",
+      "title": "Document KCC20 research, GEEK supply constraints and migration prerequisites"
+    },
+    {
+      "commit": "a4e34cd6c7146ed268729cb37b1bcb0ba051e5d7",
+      "parents": [
+        "65820b08a8b84d08db1756a65c2e9bf83df66569",
+        "1dd637858361c89bc6ad65e6e9c7303954d79ea1"
+      ],
+      "authoredAt": "2026-10-15T13:33:08-04:00",
+      "title": "Merge pull request #117 from GEEKProtocol0110/codex/kcc20-research"
     }
   ]
 }

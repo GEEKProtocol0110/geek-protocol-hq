@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**ARCH-002: in-progress.** PR #116 preserves the 500-position theme roster and incomplete 17-page trait PDF unchanged, with ordered extractions and comparison. The PDF repeats rarity cells per archetype but contains only 358 populated rows. No edition or supply policy is changed.
+**ARCH-002: in-progress.** Founder authorized finishing and merging PR #116. Both original uploads and ordered extractions are preserved; reconcile current continuity records with merged KCC20 research PR #117 before release. No collection or token policy changes.
 
-Next task: **BANK-001**. Review the ARCH-002 archive/reconciliation candidate, then resume BANK-001. COLL-001 needs explicit theme/rarity/edition reconciliation; CHAIN-001 still needs its first accepted pilot receipt/manual transfer. Preserve CCE and Mainnet settlement holds.
+Next task: **BANK-001**. Merge the reconciled ARCH-002 archive after exact-byte and continuity checks. Then resume BANK-001 toward 1,000 reviewed Kaspa concepts. CHAIN-001 still needs first real reward-receipt/manual-transfer acceptance; CHAIN-002 remains decision-needed. Preserve CCE, ownership and Mainnet settlement holds.
 
 ## Holds
 
@@ -35,8 +35,9 @@ CCE: **bank-and-economy-hold**. Contributor rate: unselected; 1 or 5 GEEK are pr
 
 ## Unresolved
 
-- Original founding conversation and remaining phone files are not yet ingested; the theme roster and incomplete trait PDF are preserved in PR #116.
+- Original founding conversation and remaining phone files are still missing; the supplied roster and trait PDF are preserved in the reconciled PR #116 candidate awaiting merge.
 - Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.
 - No successor or second trusted account administrator is appointed in this record.
 - No institutional contract, school partnership, legal-entity registration or accreditation is verified.
 - An independent off-provider repository copy and production-provider restore have not been demonstrated.
+- KCC20 integration/migration is unapproved: eight-decimal supply representation, exact artifact/wallet compatibility and existing-holder accounting require a concrete design.

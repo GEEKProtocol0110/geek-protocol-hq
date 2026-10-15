@@ -1,0 +1,269 @@
+{
+  "schema": 1,
+  "checkedOn": "2026-10-15",
+  "taskId": "CHAIN-002",
+  "status": "research-complete-integration-and-migration-unapproved",
+  "geekBaseline": "65820b08a8b84d08db1756a65c2e9bf83df66569",
+  "report": "docs/KCC20-RESEARCH.md",
+  "scope": "Primary-source survey and Geek design analysis; no exhaustive private/unpublished coverage, wallet or network execution.",
+  "sources": [
+    {
+      "id": "KCC20",
+      "repository": "kaspanet/kccs",
+      "commit": "1516a6c4cef59940fc3af3096dbcdd9c08690254",
+      "path": "kcc-0020.md",
+      "gitBlobSha": "9d6e5c1a7e0f4d17c226b71834d8f326a2b37930",
+      "url": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md"
+    },
+    {
+      "id": "KCC1",
+      "repository": "kaspanet/kccs",
+      "commit": "1516a6c4cef59940fc3af3096dbcdd9c08690254",
+      "path": "kcc-0001.md",
+      "gitBlobSha": "9399895904c4f652ae544b855d4b3b660b6703e4",
+      "url": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0001.md"
+    },
+    {
+      "id": "KCC2",
+      "repository": "kaspanet/kccs",
+      "commit": "1516a6c4cef59940fc3af3096dbcdd9c08690254",
+      "path": "kcc-0002.md",
+      "gitBlobSha": "b9e6e2706834b844fddcf91f3a450bc3055501ad",
+      "url": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0002.md"
+    },
+    {
+      "id": "KCC23",
+      "repository": "kaspanet/kccs",
+      "commit": "1516a6c4cef59940fc3af3096dbcdd9c08690254",
+      "path": "kcc-0023.md",
+      "gitBlobSha": "dd84f5c2066cff486e4a615acbd8c7d9f026f56b",
+      "url": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0023.md"
+    },
+    {
+      "id": "ARGENT",
+      "repository": "argent-lang/kcc20-reference",
+      "commit": "c8a087117735a1f87c5c6d115fcddeaf2562c784",
+      "path": "README.md",
+      "gitBlobSha": "2d4f4912333f3d65e580a2ab8a55e5bb22e59cc4",
+      "url": "https://github.com/argent-lang/kcc20-reference/blob/c8a087117735a1f87c5c6d115fcddeaf2562c784/README.md"
+    },
+    {
+      "id": "ARGENT-MINT",
+      "repository": "argent-lang/kcc20-reference",
+      "commit": "c8a087117735a1f87c5c6d115fcddeaf2562c784",
+      "path": "contracts/public_mint.ag",
+      "gitBlobSha": "8a0617ff1d2e46af7211efce5aa7f35cf3ba5db5",
+      "url": "https://github.com/argent-lang/kcc20-reference/blob/c8a087117735a1f87c5c6d115fcddeaf2562c784/contracts/public_mint.ag"
+    },
+    {
+      "id": "BUILDER",
+      "repository": "KASPACOM/kcc20-tx-builder",
+      "commit": "d65c203071c131f36ba1687c3d4f76ccf929733a",
+      "path": "README.md",
+      "gitBlobSha": "1fae17033d446b63c1e6f4f069035df07fc45aa2",
+      "url": "https://github.com/KASPACOM/kcc20-tx-builder/blob/d65c203071c131f36ba1687c3d4f76ccf929733a/README.md"
+    },
+    {
+      "id": "BUILDER-INTEGRATION",
+      "repository": "KASPACOM/kcc20-tx-builder",
+      "commit": "d65c203071c131f36ba1687c3d4f76ccf929733a",
+      "path": "docs/INTEGRATION.md",
+      "gitBlobSha": "bf1c2dde223ac7fe236e66e442cd26c28f658bd0",
+      "url": "https://github.com/KASPACOM/kcc20-tx-builder/blob/d65c203071c131f36ba1687c3d4f76ccf929733a/docs/INTEGRATION.md"
+    },
+    {
+      "id": "SNAPSHOT",
+      "repository": "KASPACOM/kcc20-tx-builder",
+      "commit": "d65c203071c131f36ba1687c3d4f76ccf929733a",
+      "path": "docs/snapshot-start.md",
+      "gitBlobSha": "9bee4f985db59721673daeaaf2f1e9407e0bb4ee",
+      "url": "https://github.com/KASPACOM/kcc20-tx-builder/blob/d65c203071c131f36ba1687c3d4f76ccf929733a/docs/snapshot-start.md"
+    },
+    {
+      "id": "BUILDER-LOCK",
+      "repository": "KASPACOM/kcc20-tx-builder",
+      "commit": "d65c203071c131f36ba1687c3d4f76ccf929733a",
+      "path": "artifacts/snapshot-standards.lock.json",
+      "gitBlobSha": "65daa37cc329c395c09e7411b0052dd854354dd1",
+      "url": "https://github.com/KASPACOM/kcc20-tx-builder/blob/d65c203071c131f36ba1687c3d4f76ccf929733a/artifacts/snapshot-standards.lock.json"
+    },
+    {
+      "id": "TOCCATA",
+      "repository": "kaspanet/rusty-kaspa",
+      "commit": "7cc22feadb36cbb9678bffed5896aebe1a30b14d",
+      "path": "docs/toccata-guide.md",
+      "gitBlobSha": "c31e944944b679bde23bed76a109f817a5009863",
+      "url": "https://github.com/kaspanet/rusty-kaspa/blob/7cc22feadb36cbb9678bffed5896aebe1a30b14d/docs/toccata-guide.md"
+    },
+    {
+      "id": "KASWARE-PROVIDER",
+      "repository": "kasware-wallet/extension",
+      "commit": "78bb30045edd4d898c4d61c4c75ba1bc37e18748",
+      "path": "src/background/controller/provider/controller.ts",
+      "gitBlobSha": "d057752aea36bfe4dc51550d6b5080667c33338a",
+      "url": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/controller.ts"
+    },
+    {
+      "id": "DEPOT",
+      "repository": "token-depot/kcc20-specification",
+      "commit": "cc6eacf2c825843ca93089fe2a6b9d53f0163609",
+      "path": "docs/spec/KCC20_Specification_v1.2_Community_Review.md",
+      "gitBlobSha": "4a6ee5b0d8a598707bee8e092fd702e1036905a5",
+      "url": "https://github.com/token-depot/kcc20-specification/blob/cc6eacf2c825843ca93089fe2a6b9d53f0163609/docs/spec/KCC20_Specification_v1.2_Community_Review.md"
+    }
+  ],
+  "additionalPrimarySources": [
+    {
+      "id": "KIP20",
+      "url": "https://github.com/kaspanet/kips/blob/e4ae2332117b5cb68bd6188e065ef885b6d17939/kip-0020.md",
+      "role": "Consensus lineage mechanism; separately read current master through web retrieval. Pin is referenced by checked KCC documents."
+    },
+    {
+      "id": "COMPATIBILITY",
+      "url": "https://github.com/kaspanet/kccs/issues/11",
+      "state": "closed",
+      "updatedAt": "2026-08-22T21:21:27Z",
+      "role": "Dated KaspaCom KCC20V2 partial-alignment statement, not certification of every later artifact."
+    },
+    {
+      "id": "LAST-CALL",
+      "url": "https://github.com/kaspanet/kccs/pull/31",
+      "mergedAt": "2026-10-07T20:38:09Z",
+      "role": "Current Last Call advancement; older search descriptions are stale."
+    },
+    {
+      "id": "KASWARE-ANDROID",
+      "url": "https://github.com/kasware-wallet/kasware-app/releases/tag/v0.5.1",
+      "publishedAt": "2026-08-06T02:00:58Z",
+      "role": "KRON KCC20 release-note support, not universal compatibility."
+    },
+    {
+      "id": "KASPIRE",
+      "url": "https://github.com/KaspaHUB21/Kaspire-Kaspa-Wallet",
+      "role": "Maintainer documentation; no product acceptance or independent audit performed."
+    },
+    {
+      "id": "SCORPION",
+      "url": "https://kcc20-sdk.vercel.app/docs",
+      "role": "Maintainer signing/connection documentation; candidate only."
+    },
+    {
+      "id": "KASMOS",
+      "url": "https://github.com/kasmoslabs/kcc20-web-wallet",
+      "role": "Maintainer covenant/PSKT wallet documentation; candidate only."
+    },
+    {
+      "id": "INDEXER",
+      "url": "https://kcc20.info/",
+      "observation": "Retrieved page showed connecting/unavailable data; no live count, sync or token state verified."
+    },
+    {
+      "id": "KAT-DOCS",
+      "url": "https://kaspakat.gitbook.io/kat-bridge",
+      "role": "Current route-specific bridge documentation; no confirmed GEEK KCC20 route."
+    },
+    {
+      "id": "KAT-NOTICE",
+      "url": "https://nft.katbridge.com/",
+      "observation": "Undated operator pause/exploit notice; no independent RCA, incident-date verification or GEEK-exposure determination."
+    }
+  ],
+  "findings": [
+    {
+      "id": "KCC-F01",
+      "classification": "source-fact",
+      "claim": "Pinned KCC-20, KCC-1 and KCC-2 headers are Last Call; KCC-23 is Draft. Convention maturity differs from deployed implementation availability.",
+      "sources": [
+        "KCC20",
+        "KCC1",
+        "KCC2",
+        "KCC23"
+      ]
+    },
+    {
+      "id": "KCC-F02",
+      "classification": "source-fact",
+      "claim": "Argent reference provides offline examples and VM/conformance tests; its README excludes network submission, wallet synchronization and independent audit.",
+      "sources": [
+        "ARGENT"
+      ]
+    },
+    {
+      "id": "KCC-F03",
+      "classification": "derived-arithmetic",
+      "claim": "144 billion at eight decimals exceeds the checked reference single-minter int range; this does not prove aggregate multi-state supply is universally impossible.",
+      "sources": [
+        "ARGENT",
+        "ARGENT-MINT"
+      ],
+      "localEvidence": [
+        "server/geek-deployment.js"
+      ]
+    },
+    {
+      "id": "KCC-F04",
+      "classification": "source-fact-and-integration-limit",
+      "claim": "Snapshot builders use synthetic funded tests and leave funded DEV rehearsal, independent review and source acceptance to the host. They do not establish a trustless GEEK migration.",
+      "sources": [
+        "SNAPSHOT",
+        "BUILDER-LOCK"
+      ]
+    },
+    {
+      "id": "KCC-F05",
+      "classification": "geek-design-analysis",
+      "claim": "Snapshot claims alone leave old tokens spendable. Open mint, post-cutoff transfers, duplicate entitlements, custody holders, precision and unclaimed reserves require explicit policy.",
+      "sources": []
+    },
+    {
+      "id": "KCC-F06",
+      "classification": "geek-design-analysis",
+      "claim": "Covenants can constrain authorized token spending; they cannot independently verify honest learning or replace funded reward, identity and appeal rules.",
+      "sources": [
+        "KCC20",
+        "KCC2"
+      ]
+    },
+    {
+      "id": "KCC-F07",
+      "classification": "source-fact",
+      "claim": "Token Depot v1.2 is a separate community-review proposal, not an accepted ecosystem KCC or a replacement for kaspanet ABI.",
+      "sources": [
+        "DEPOT"
+      ]
+    }
+  ],
+  "arithmetic": {
+    "maxDisplay": "144000000000",
+    "decimals": 8,
+    "maxRaw": "14400000000000000000",
+    "referenceSignedMax": "9223372036854775807",
+    "singleMinterFullCapFits": false,
+    "maximumDisplayAt8Decimals": "92233720368.54775807",
+    "minimumFullCapPartitionsByIntegerBound": 2,
+    "partitionsAreApprovedDesign": false,
+    "alternative7DecimalsRaw": "1440000000000000000",
+    "precisionChangeApproved": false,
+    "note": "Partition count is arithmetic only. Source/contract/template compatibility, aggregate limits and ownership precision still require proof."
+  },
+  "recommendation": "Keep existing GEEK unchanged; finish the current GEEKT pilot and evaluate a separate disabled KCC20 prototype after supply/artifact decisions.",
+  "unresolved": [
+    "Exact artifact and specification conformance, compiler reproduction and license disposition.",
+    "144-billion/eight-decimal accounting design, integer bounds and still-unminted source allocation.",
+    "Holder conversion, source-state trust, replay, custody/exchanges, dust and unclaimed balances.",
+    "Actual Android wallet/PSKT compatibility, funding, fees, mass, indexer sync and recovery.",
+    "Independent review and funded network rehearsal; no production activation or migration authorized."
+  ],
+  "notPerformed": [
+    "third-party-code-execution",
+    "dependency-installation",
+    "wallet-connection",
+    "signing",
+    "broadcast",
+    "token-deployment",
+    "holder-snapshot",
+    "mainnet-settlement",
+    "outreach",
+    "independent-security-audit"
+  ]
+}

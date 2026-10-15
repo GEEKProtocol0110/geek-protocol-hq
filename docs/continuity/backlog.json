@@ -472,6 +472,25 @@
       ]
     },
     {
+      "id": "CHAIN-002",
+      "priority": "P1",
+      "status": "decision-needed",
+      "title": "Evaluate KCC20 compatibility and preserve GEEK holder entitlements",
+      "owner": "Maintainer researches; founder selects policy; independent covenant reviewer unassigned",
+      "nextAction": "Research PR #117 is merged at a4e34cd6c7146ed268729cb37b1bcb0ba051e5d7. Resolve the 144-billion/eight-decimal integer issue, select exact conforming artifacts and a test wallet, and specify a disabled prototype. Holder migration or funded deployment requires a separate concrete proposal; BANK-001 remains next product priority.",
+      "acceptance": [
+        "Current specification and implementation distinctions, pinned sources and research limits recorded.",
+        "Existing holder and still-unminted GEEK accounting, decimal precision and integer bounds explicitly resolved.",
+        "Artifact reproduction/conformance, independent review, wallet/network tests and recovery evidence required before integration.",
+        "No supply change, migration, new signer, CCE reopening or Mainnet settlement implied by research."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/KCC20-RESEARCH.md",
+        "docs/research/kcc20-2026-10-15.json"
+      ]
+    },
+    {
       "id": "ARCH-002",
       "priority": "P1",
       "status": "in-progress",

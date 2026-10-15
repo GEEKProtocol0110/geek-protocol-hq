@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-The ledger preserves **104 merged HQ PR records** and **183 Git commit records** through product baseline #115. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
+The ledger preserves **105 merged HQ PR records** and **186 Git commit records** through the declared commit snapshot `a4e34cd6c7146ed268729cb37b1bcb0ba051e5d7`. The product runtime baseline remains #115. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
 
 ## Founding record
 
@@ -12,6 +12,7 @@ Three exact historical master/litepaper snapshots are preserved with source comm
 
 | PR | Merged (UTC) | Change | Commit |
 | --- | --- | --- | --- |
+| [#117](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/117) | 2026-10-15T17:33:08Z | Research KCC20 compatibility and GEEK holder migration requirements | `a4e34cd6c714` |
 | [#115](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/115) | 2026-10-15T14:58:30Z | Monitor verified GEEK mint availability and preserve saved history | `b0bc952d14d0` |
 | [#114](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/114) | 2026-10-15T13:17:24Z | Preserve Geek's project memory, handoff and 50-year direction | `962bbada66a7` |
 | [#113](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/113) | 2026-10-15T07:40:48Z | Reach 500 sourced Kaspa questions and preserve the project handoff | `e3fd589878d4` |
