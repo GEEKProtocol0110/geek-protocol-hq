@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "capturedAt": "2026-10-15",
-  "through": "e3fd589878d473939724b06882fb167b1e8d9b0a",
+  "through": "962bbada66a719c1c679ec79202ea3893f875998",
   "scope": "HQ commit metadata through the merged product baseline. Authored dates are retained as Git metadata, not proof of founding time. Git bundles preserve underlying objects.",
   "records": [
     {
@@ -881,7 +881,7 @@
         "eb2ef291d319feade3e17fdf6bb947cf816b0ade"
       ],
       "authoredAt": "2026-10-08T07:41:15-04:00",
-      "title": "Add Trivia Royale with configurable 2\u2013100-player rooms"
+      "title": "Add Trivia Royale with configurable 2–100-player rooms"
     },
     {
       "commit": "51204af34d76a5554013346f0c089200ab80cce1",
@@ -1398,6 +1398,79 @@
       ],
       "authoredAt": "2026-10-15T03:40:48-04:00",
       "title": "Reach 500 sourced Kaspa questions and preserve the project handoff (#113)"
+    },
+    {
+      "commit": "3eccb9ac1dcf7c8018b21d0ab7acd504639f2143",
+      "parents": [
+        "e3fd589878d473939724b06882fb167b1e8d9b0a"
+      ],
+      "authoredAt": "2026-10-15T06:08:34-04:00",
+      "title": "Add durable project continuity, founding archive and 2026–2076 direction"
+    },
+    {
+      "commit": "bf8f60ef4a08d630aa92a98833a7810bbc09477d",
+      "parents": [
+        "3eccb9ac1dcf7c8018b21d0ab7acd504639f2143"
+      ],
+      "authoredAt": "2026-10-15T06:15:10-04:00",
+      "title": "Record TN10 wallet compatibility and test-asset prerequisites"
+    },
+    {
+      "commit": "7020a6e1b744c7f5fccd17eefe2eb0449c420d51",
+      "parents": [
+        "bf8f60ef4a08d630aa92a98833a7810bbc09477d"
+      ],
+      "authoredAt": "2026-10-15T06:32:07-04:00",
+      "title": "Preserve Kasware identification and documented TN10 integration path"
+    },
+    {
+      "commit": "388a36e2c5c2a40cbbb595b130c1ec46a7443453",
+      "parents": [
+        "7020a6e1b744c7f5fccd17eefe2eb0449c420d51"
+      ],
+      "authoredAt": "2026-10-15T06:53:19-04:00",
+      "title": "Prepare unsigned GEEKT TN10 deployment and first-mint packet"
+    },
+    {
+      "commit": "1e7cf0c040eeb43ed62b22ae8dd6d5d640771182",
+      "parents": [
+        "388a36e2c5c2a40cbbb595b130c1ec46a7443453"
+      ],
+      "authoredAt": "2026-10-15T07:04:07-04:00",
+      "title": "Match GEEKT test deployment to GEEK supply and mint settings"
+    },
+    {
+      "commit": "b24b42411a8725a763f98024d6f19712b09ce271",
+      "parents": [
+        "1e7cf0c040eeb43ed62b22ae8dd6d5d640771182"
+      ],
+      "authoredAt": "2026-10-15T07:15:03-04:00",
+      "title": "Record accepted external GEEKT deployment and partial mint evidence"
+    },
+    {
+      "commit": "bef006928cfed64fe12f440e5d1349e222ecb687",
+      "parents": [
+        "b24b42411a8725a763f98024d6f19712b09ce271"
+      ],
+      "authoredAt": "2026-10-15T08:07:59-04:00",
+      "title": "Record configured production GEEKT manual pilot and owner acceptance handoff"
+    },
+    {
+      "commit": "5ffe0c840a9fbdbbb7969cf81da9800fd3464fe0",
+      "parents": [
+        "bef006928cfed64fe12f440e5d1349e222ecb687"
+      ],
+      "authoredAt": "2026-10-15T08:57:09-04:00",
+      "title": "Load completed pilot runs directly and preserve phone acceptance checkpoint"
+    },
+    {
+      "commit": "962bbada66a719c1c679ec79202ea3893f875998",
+      "parents": [
+        "e3fd589878d473939724b06882fb167b1e8d9b0a",
+        "5ffe0c840a9fbdbbb7969cf81da9800fd3464fe0"
+      ],
+      "authoredAt": "2026-10-15T09:17:23-04:00",
+      "title": "Merge pull request #114 from GEEKProtocol0110/codex/project-continuity"
     }
   ]
 }

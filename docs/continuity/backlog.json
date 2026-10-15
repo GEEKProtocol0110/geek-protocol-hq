@@ -21,10 +21,10 @@
     {
       "id": "CONT-001",
       "priority": "P0",
-      "status": "in-progress",
+      "status": "done",
       "title": "Publish the continuation system",
       "owner": "Maintainer; release reviewed by founder",
-      "nextAction": "Review this PR and record its final merge/deployment state.",
+      "nextAction": "Maintain the record at each substantive checkpoint; independent backup and provider recovery remain separate tasks.",
       "acceptance": [
         "Start Here, state, backlog, decisions, history, assets, long-term vision and succession instructions are linked.",
         "Continuity validation and portable-source snapshot drill pass.",
@@ -34,6 +34,11 @@
       "evidence": [
         "START-HERE.md",
         "docs/continuity/README.md"
+      ],
+      "completedAt": "2026-10-15",
+      "completionEvidence": [
+        "PR #114 merged at 962bbada66a719c1c679ec79202ea3893f875998; production dpl_9cMymSMNqxkaH8gu7aT9dZdSz6XU READY; full candidate verification 436 passed and 20 read-only production response validators passed.",
+        "Source snapshot QA restored matching commit/tree and refs; independent durable backup is tracked separately by CONT-002."
       ]
     },
     {
@@ -427,7 +432,7 @@
       "status": "needs-evidence",
       "title": "Verify the TN10 test asset and wallet before a real pilot",
       "owner": "Maintainer; founder controls the external testnet wallet",
-      "nextAction": "Review the run-loading UI fix in PR #114 and verify its deployment. Authenticated desk reads/config passed on the founder phone; the first run expired before queuing. Complete the next eligible Daily in that same browser/player, save and load it directly in the desk, then queue before the five-minute expiry. Preserve the daily limit, verify fee funds/batch state, and send/reconcile exactly one manual transfer only after a receipt exists.",
+      "nextAction": "PR #114 is merged and deployed. Founder refreshes the pilot tab and accepts the new run-loading control on the phone. Complete the next eligible Daily in the same browser/player, save and return immediately, load the run and queue within five minutes. Preserve the UTC daily lock, verify fee funds/batch state, export the receipt, then send/reconcile exactly one manual transfer.",
       "acceptance": [
         "Exact TN10 token deployment, decimals, sender and amount verified against the fixed indexer.",
         "Wallet provider and TN10 signing workflow exercised with recorded transaction evidence.",

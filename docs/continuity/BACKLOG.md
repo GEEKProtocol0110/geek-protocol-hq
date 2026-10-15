@@ -6,7 +6,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 
 | ID | Priority | Status | Work | Owner |
 | --- | --- | --- | --- | --- |
-| CONT-001 | P0 | in-progress | Publish the continuation system | Maintainer; release reviewed by founder |
+| CONT-001 | P0 | done | Publish the continuation system | Maintainer; release reviewed by founder |
 | CONT-002 | P0 | planned | Make and verify an independent source backup | Founder or appointed repository custodian |
 | ARCH-001 | P1 | blocked | Ingest founding originals and reconcile chronology | Founder supplies originals; archivist unassigned |
 | BANK-001 | P0 | active | Grow Kaspa from 500 toward 1,000 reviewed concepts | Content maintainer; independent editor unassigned |
@@ -32,9 +32,9 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 
 ## CONT-001: Publish the continuation system
 
-**P0 / in-progress.** Owner: Maintainer; release reviewed by founder. Dependencies: none.
+**P0 / done.** Owner: Maintainer; release reviewed by founder. Dependencies: none.
 
-Next action: Review this PR and record its final merge/deployment state.
+Next action: Maintain the record at each substantive checkpoint; independent backup and provider recovery remain separate tasks.
 
 Acceptance:
 
@@ -344,7 +344,7 @@ Evidence/specification: [docs/continuity/repositories.json](../../docs/continuit
 
 **P1 / needs-evidence.** Owner: Maintainer; founder controls the external testnet wallet. Dependencies: none.
 
-Next action: Review the run-loading UI fix in PR #114 and verify its deployment. Authenticated desk reads/config passed on the founder phone; the first run expired before queuing. Complete the next eligible Daily in that same browser/player, save and load it directly in the desk, then queue before the five-minute expiry. Preserve the daily limit, verify fee funds/batch state, and send/reconcile exactly one manual transfer only after a receipt exists.
+Next action: PR #114 is merged and deployed. Founder refreshes the pilot tab and accepts the new run-loading control on the phone. Complete the next eligible Daily in the same browser/player, save and return immediately, load the run and queue within five minutes. Preserve the UTC daily lock, verify fee funds/batch state, export the receipt, then send/reconcile exactly one manual transfer.
 
 Acceptance:
 

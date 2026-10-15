@@ -161,7 +161,7 @@
     "meaning": "Authenticated UI/config acceptance only. Expired run proof cannot be reconstructed from a screenshot, score, or client assertion."
   },
   "runLoadingFix": {
-    "status": "implemented-and-locally-tested-unmerged",
+    "status": "merged-and-production-deployed-awaiting-phone-acceptance",
     "reviewPullRequest": 114,
     "scope": "Read current owned run automatically on pilot page entry and via Use my latest completed Daily; show missing/unfinished/player-session guidance.",
     "serverPolicyChanged": false,
@@ -169,13 +169,23 @@
     "dailyResetUtc": "00:00",
     "targetedTestsPassed": 17,
     "browserRenderingAccepted": false,
-    "nextAction": "Review and merge the UI fix, verify the production release, then complete an eligible Daily and queue immediately in the same browser/player. If today was already started, wait for the next UTC Daily; do not bypass the lock.",
+    "nextAction": "Refresh the production pilot page and accept the direct run-loading control on the founder phone, then queue the next eligible Daily within five minutes before a manual transfer.",
     "fullVerify": {
       "testsPassed": 436,
       "testsFailed": 0,
       "testsSkipped": 0,
       "redis": "real Redis 7.4.2",
       "securityAssertions": 310
+    },
+    "releaseObservation": {
+      "commit": "962bbada66a719c1c679ec79202ea3893f875998",
+      "mergedAt": "2026-10-15T13:17:24Z",
+      "deploymentId": "dpl_9cMymSMNqxkaH8gu7aT9dZdSz6XU",
+      "deploymentStatus": "READY",
+      "productionDomainsAssigned": true,
+      "postDeploymentResponseChecksPassed": 20,
+      "transport": "proxy-aware read-only transport; fifteen-second timeout",
+      "ownerPhoneAcceptanceOfNewUi": false
     }
   }
 }

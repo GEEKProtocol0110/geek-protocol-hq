@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "checkedAt": "2026-10-15",
-  "scope": "Merged HQ PR metadata retrieved from GitHub REST, closed PR pages 1–2; merged is not a deployment or independent audit claim.",
+  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1–2 plus the observed #114 merge. Merged is not a deployment or independent audit claim.",
   "records": [
     {
       "number": 1,
@@ -716,6 +716,13 @@
       "mergedAt": "2026-10-15T07:40:48Z",
       "commit": "e3fd589878d473939724b06882fb167b1e8d9b0a",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/113"
+    },
+    {
+      "number": 114,
+      "title": "Preserve Geek's project memory, handoff and 50-year direction",
+      "mergedAt": "2026-10-15T13:17:24Z",
+      "commit": "962bbada66a719c1c679ec79202ea3893f875998",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/114"
     }
   ]
 }

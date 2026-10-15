@@ -6,7 +6,7 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Last verified product release
 
-[PR #113](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/113), commit `e3fd589878d473939724b06882fb167b1e8d9b0a`. Recorded merge/deployment and read-only production checks in the working session; tests and review records in PR #113. This is a historical checkpoint, not continuous uptime certification. Recorded tests: 426 passed, 0 failed, 0 skipped; 20 read-only probes passed. Later documentation candidates are separate from this baseline.
+[PR #114](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/114), commit `962bbada66a719c1c679ec79202ea3893f875998`. Founder-authorized PR #114 merged October 15 at 13:17:24 UTC; Vercel production dpl_9cMymSMNqxkaH8gu7aT9dZdSz6XU is READY on the exact merge commit and assigned to the production domains. Twenty read-only response validators passed via proxy-aware transport with a fifteen-second timeout. Candidate full verification passed 436 tests with real Redis and GitHub verify succeeded. The new private run-loading UI still needs owner phone acceptance; no reward receipt or transfer is verified. Recorded tests: 436 passed, 0 failed, 0 skipped; 20 read-only probes passed. Later documentation candidates are separate from this baseline.
 
 ## Current checkout counts
 
@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CONT-001: in-progress.** Build and review the continuation system, source archive, backlog and 2026–2076 vision. PR #114 also carries the CHAIN-001 pilot run-loading UI fix after the founder accepted desk reads but the first Daily expired before queuing. No new institutional service is implemented.
+**BANK-001: active.** Continuation system CONT-001 is merged and deployed. Continue distinct source-checked Kaspa concepts toward 1,000; CHAIN-001 separately awaits the next eligible Daily, queued receipt and reconciled manual test transfer.
 
-Next task: **BANK-001**. After the continuation change is reviewed and merged, prepare a small distinct source-checked Kaspa batch toward 1,000. Keep all CCE and settlement holds intact.
+Next task: **BANK-001**. Prepare the next small distinct source-checked Kaspa batch. For CHAIN-001, refresh the deployed pilot tab and verify Use my latest completed Daily, then queue the next eligible Daily immediately after saving; do not bypass today’s lock or send before a receipt. Keep all CCE and Mainnet settlement holds intact.
 
 ## Holds
 
