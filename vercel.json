@@ -161,13 +161,16 @@
       "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
     },
     "api/content.js": {
-      "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
+      "includeFiles": "{server/questions/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}"
     },
     "api/rewards.js": {
       "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
     },
     "api/widget.js": {
       "maxDuration": 30
+    },
+    "api/moderation.js": {
+      "includeFiles": "{server/questions/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}"
     }
   },
   "headers": [

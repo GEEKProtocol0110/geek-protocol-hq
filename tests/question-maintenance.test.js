@@ -96,7 +96,7 @@ run('Study keeps the latest saved observation when retired concepts are consolid
   assert.ok(Number(await fixture.command('TTL', key)) <= 120);
 });
 
-run('community rewordings cannot repeat static or community facts in later rounds', async () => {
+run('held community rows stay out of new rounds while historical exclusions still prevent repeated facts', async () => {
   const original = loadQuestionBank('kaspa').byId.get('KASPA-0002');
   const id = 'cce_' + 'a'.repeat(24);
   const community = { id, category: 'kaspa', topic: original.topic, difficulty: 'easy', status: 'published',
@@ -106,8 +106,7 @@ run('community rewordings cannot repeat static or community facts in later round
   await fixture.command('ZADD', 'geek:cce:published:kaspa', 1, id);
   try {
     const sameRound = await selectRoundQuestionIds('kaspa', 1);
-    assert.ok(sameRound.includes(id));
-    assert.ok(!sameRound.includes(original.id));
+    assert.ok(!sameRound.includes(id));
     const afterStatic = await selectRoundQuestionIds('kaspa', 2, [original.id]);
     assert.ok(!afterStatic.includes(id));
     const afterCommunity = await selectRoundQuestionIds('kaspa', 2, [id]);

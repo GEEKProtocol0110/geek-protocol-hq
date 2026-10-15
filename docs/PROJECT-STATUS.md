@@ -218,3 +218,10 @@ The founder selected 100 GEEK per qualifying completed round. The private econom
 ## October 15: Kaspa-first onboarding and final polish
 
 The homepage now starts with a five-question Kaspa Daily Signal or a beginner Origins lesson, with no wallet required. Sign-in remains visible outside the mobile menu. The quiz selects setup without starting its timer and explains the one-attempt-per-UTC-day rule. Wallet education and public-address tracking precede optional game modes; ecosystem and project information remain expandable. Header wrapping, footer tap targets and current-feature wording received a focused polish. See [Mobile onboarding](MOBILE-ONBOARDING.md) for verification and pending browser/device acceptance.
+
+
+## October 15: bank-first hold and Geek Store
+
+The founder requires 1,000 distinct source-reviewed questions in each category before CCE reopens. A source audit found 285 recorded reviews among 7,801 active questions. Seven sourced History corrections and two retirements bring the current figures to 292 reviews, 7,799 active questions and 7,708 further reviews needed for the category targets. The generated public readiness report distinguishes drafts from recorded reviews. New CCE intake, revisions, publication, new-game selection and first-use credits are held; historical records and saved-question grading remain readable. Reward amounts remain proposals.
+
+The Geek Store adds free character try-on, filters/search, front/back views and an explicit unsaved handoff to the studio. Five new cosmetic options use the existing server-validated vocabulary. Career-effect unlocks and free practice lifelines keep their existing rules. Paid purchases, inventory consumption and new bonuses are unfinished. See [Bank-first release and Store](BANK-FIRST-STORE.md).

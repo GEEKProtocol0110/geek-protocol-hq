@@ -1,3 +1,4 @@
+import { takeStorePreview } from '../../store/assets/preview.js';
 import { customGeekId, geekParts, defaultGeek, personalGeek, normalizeGeek, geekDescription, geekSvg, careerEffects } from '../../assets/geek-avatar.js';
 
 const $ = selector => document.querySelector(selector);
@@ -151,6 +152,11 @@ $('[data-geek-random]').addEventListener('click', () => {
   changed('A new look to try. Undo returns to your saved design.');
 });
 window.addEventListener('beforeunload', event => { if (edited) { event.preventDefault(); event.returnValue = ''; } });
+// A store look is a one-time local preview, never an automatic save or an unlock.
+if (new URLSearchParams(window.location?.search || '').get('store') === 'preview') {
+  const look = takeStorePreview(window.sessionStorage);
+  if (look) { draft = look; edited = true; section = 'outfit'; $('[data-geek-status]').textContent = 'Store preview loaded. Review the details, then choose Save my Geek to apply it. Undo restores your saved look.'; }
+}
 preview();
 // The profile request may finish before this module loads.
 if (window.GeekProfile?.collection) {

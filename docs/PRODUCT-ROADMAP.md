@@ -8,7 +8,11 @@ This document preserves the founder's full direction. It records features and ac
 
 Geek Protocol was born in Detroit, Michigan, USA. Use American English in public copy and project documentation, including “practice.”
 
-## Current priorities: core polish and economy foundations
+## Current priorities: reviewed bank, then CCE and a small economy
+
+**Founder direction, October 15, 2026:** reach 1,000 distinct, source-reviewed questions in each of the eight categories before CCE reopens. Contributor reward amounts and prices remain unresolved. The first Geek Store release provides free cosmetic try-on and a studio handoff, with lifelines and later perks labeled by actual availability. New CCE intake, publication, selection and credits are held while the bank and contributor economy are prepared; existing history and issued-question lookup remain available. See [Bank-first release and Store](BANK-FIRST-STORE.md) for exact counts, the first source-review batch and remaining production work.
+
+### Earlier direction
 
 **Founder decision, October 2, 2026:** pause feature expansion and focus on Learn → Study → practice → see progress. Preserve Kaspa 101 in full. Home and primary navigation should make the next learning step clear; Progress should put saved Study feedback ahead of separate timed-game records. Existing challenges, vault, minting, collectibles, lobbies and contributions remain accessible as optional paths.
 

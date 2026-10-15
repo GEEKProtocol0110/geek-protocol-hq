@@ -1,0 +1,139 @@
+{
+  "schema": 1,
+  "targetPerCategory": 1000,
+  "requiredCategories": 8,
+  "bankReady": false,
+  "active": 7799,
+  "reviewed": 292,
+  "remaining": 7708,
+  "categories": [
+    {
+      "id": "kaspa",
+      "name": "Kaspa",
+      "active": 194,
+      "reviewed": 194,
+      "needsReview": 0,
+      "target": 1000,
+      "remaining": 806,
+      "additionalQuestionsNeeded": 806,
+      "tiers": {
+        "easy": 71,
+        "medium": 82,
+        "hard": 41
+      },
+      "ready": false
+    },
+    {
+      "id": "video-games",
+      "name": "Video games",
+      "active": 602,
+      "reviewed": 0,
+      "needsReview": 602,
+      "target": 1000,
+      "remaining": 1000,
+      "additionalQuestionsNeeded": 398,
+      "tiers": {
+        "easy": 0,
+        "medium": 0,
+        "hard": 0
+      },
+      "ready": false
+    },
+    {
+      "id": "science-fiction",
+      "name": "Science fiction",
+      "active": 515,
+      "reviewed": 37,
+      "needsReview": 478,
+      "target": 1000,
+      "remaining": 963,
+      "additionalQuestionsNeeded": 485,
+      "tiers": {
+        "easy": 9,
+        "medium": 18,
+        "hard": 10
+      },
+      "ready": false
+    },
+    {
+      "id": "technology",
+      "name": "Technology",
+      "active": 1497,
+      "reviewed": 15,
+      "needsReview": 1482,
+      "target": 1000,
+      "remaining": 985,
+      "additionalQuestionsNeeded": 0,
+      "tiers": {
+        "easy": 9,
+        "medium": 6,
+        "hard": 0
+      },
+      "ready": false
+    },
+    {
+      "id": "movies",
+      "name": "Movies",
+      "active": 1495,
+      "reviewed": 0,
+      "needsReview": 1495,
+      "target": 1000,
+      "remaining": 1000,
+      "additionalQuestionsNeeded": 0,
+      "tiers": {
+        "easy": 0,
+        "medium": 0,
+        "hard": 0
+      },
+      "ready": false
+    },
+    {
+      "id": "history",
+      "name": "History",
+      "active": 1508,
+      "reviewed": 7,
+      "needsReview": 1501,
+      "target": 1000,
+      "remaining": 993,
+      "additionalQuestionsNeeded": 0,
+      "tiers": {
+        "easy": 5,
+        "medium": 2,
+        "hard": 0
+      },
+      "ready": false
+    },
+    {
+      "id": "comics",
+      "name": "Comics",
+      "active": 417,
+      "reviewed": 39,
+      "needsReview": 378,
+      "target": 1000,
+      "remaining": 961,
+      "additionalQuestionsNeeded": 583,
+      "tiers": {
+        "easy": 16,
+        "medium": 16,
+        "hard": 7
+      },
+      "ready": false
+    },
+    {
+      "id": "pop-culture",
+      "name": "Pop culture",
+      "active": 1571,
+      "reviewed": 0,
+      "needsReview": 1571,
+      "target": 1000,
+      "remaining": 1000,
+      "additionalQuestionsNeeded": 0,
+      "tiers": {
+        "easy": 0,
+        "medium": 0,
+        "hard": 0
+      },
+      "ready": false
+    }
+  ]
+}

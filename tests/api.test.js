@@ -20,6 +20,7 @@ import { prestigeKeyFor, initialPrestigeState } from '../server/prestige-state.j
 import { recordVerifiedScore } from '../server/leaderboard.js';
 import { deriveProgression, recordRoundJourney } from '../server/progression.js';
 import { loadQuestionBank } from '../server/questions.js';
+import { publishedCommunityQuestionById, recordCommunityQuestionUse } from '../server/cce.js';
 import { studyQuestionById, studyBank } from '../server/study-curriculum.js';
 import { challengePeriod, CHALLENGE_CAP } from '../server/challenge-periods.js';
 import { vaultDay, vaultKey, vaultSeals } from '../server/vault.js';
@@ -766,88 +767,25 @@ test('shared lobby round locks its roster and answers, with scores decided by th
   assert.equal(final.body.match.scores[0].name, 'Match Guest');
 });
 
-test('community questions move through review, enter ranked play, and earn once on first use', async () => {
+test('CCE hold blocks new intake and publication while preserving historical questions and credits', async () => {
   const contributorCookie = await startSession('Question Smith');
-  const playerCookie = await startSession('CCE Tester');
-  const question = {
-    action: 'submit',
-    displayName: 'Question Smith',
-    category: 'kaspa',
-    difficulty: 'easy',
-    topic: 'Consensus',
-    prompt: 'What does GHOSTDAG preserve when Kaspa receives parallel blocks?',
-    options: ['Useful proof-of-work', 'Only the oldest block', 'Private account balances', 'A validator committee'],
-    correctIndex: 0,
-    explanation: 'GHOSTDAG orders parallel blocks so useful proof-of-work can remain in the blockDAG.',
-    source: 'https://docs.kaspa.org/',
-    original: true
-  };
-
-  const submitRes = response();
-  await contentHandler(request('POST', question, contributorCookie), submitRes);
-  assert.equal(submitRes.statusCode, 201);
-  assert.equal(submitRes.body.submission.status, 'submitted');
-  assert.equal(submitRes.body.stats.submitted, 1);
-  assert.equal(submitRes.body.stats.earned, 0);
-  const submissionId = submitRes.body.submission.id;
-
-  const deniedRes = response();
-  await moderationHandler(request('GET', undefined, '', {}, { 'x-cce-admin': 'wrong-token' }), deniedRes);
-  assert.equal(deniedRes.statusCode, 403);
-
-  const moderatorHeaders = { 'x-cce-admin': process.env.CCE_ADMIN_TOKEN };
-  const approveRes = response();
-  await moderationHandler(request('POST', { action: 'approve', id: submissionId, note: 'Source and wording checked.' }, '', {}, moderatorHeaders), approveRes);
-  assert.equal(approveRes.body.submission.status, 'approved');
-
-  const publishRes = response();
-  await moderationHandler(request('POST', { action: 'publish', id: submissionId }, '', {}, moderatorHeaders), publishRes);
-  assert.equal(publishRes.body.submission.status, 'published');
-
-  const startRes = response();
-  await rankedHandler(request('POST', { action: 'start', category: 'kaspa' }, playerCookie), startRes);
-  assert.equal(startRes.statusCode, 201);
-  let rankedPayload = startRes.body;
-  let communityWasUsed = false;
-  for (let questionNumber = 1; questionNumber <= 10; questionNumber += 1) {
-    const isCommunityQuestion = rankedPayload.question.prompt === question.prompt;
-    const privateQuestion = isCommunityQuestion
-      ? question
-      : loadQuestionBank('kaspa').questions.find((item) => item.prompt === rankedPayload.question.prompt);
-    const correctAnswer = privateQuestion.options[privateQuestion.correctIndex];
-    const selectedIndex = rankedPayload.question.options.indexOf(correctAnswer);
-    const answerRes = response();
-    await rankedHandler(request('POST', {
-      action: 'answer', runId: rankedPayload.run.id, questionToken: rankedPayload.question.token, selectedIndex
-    }, playerCookie), answerRes);
-    assert.equal(answerRes.statusCode, 200);
-    if (isCommunityQuestion) {
-      communityWasUsed = true;
-      assert.equal(answerRes.body.result.contributorCredit, true);
-      assert.equal(answerRes.body.result.sourceState, 'Community-reviewed contribution');
-      const retryRes = response();
-      await rankedHandler(request('POST', {
-        action: 'answer', runId: rankedPayload.run.id, questionToken: rankedPayload.question.token, selectedIndex
-      }, playerCookie), retryRes);
-      assert.equal(retryRes.body.result.contributorCredit, true);
-    }
-    rankedPayload = answerRes.body;
-    if (questionNumber < 10) {
-      const nextRes = response();
-      await rankedHandler(request('POST', { action: 'next', runId: rankedPayload.run.id }, playerCookie), nextRes);
-      rankedPayload = nextRes.body;
-    }
+  const playerId = sessionIdFromCookie(contributorCookie), id = 'cce_' + 'b'.repeat(24);
+  const historic = {id,contributorSessionId:playerId,category:'kaspa',difficulty:'easy',topic:'Consensus',prompt:'A preserved historical community question?',options:['One','Two','Three','Four'],correctIndex:0,explanation:'The original historical explanation.',source:'https://docs.kaspa.org/',displayName:'Question Smith',status:'published',submittedAt:1000,updatedAt:1000,publishedAt:1000,firstUsedAt:1000,reward:{amount:25,status:'earned',settlement:'launch-gated'}};
+  strings.set('geek:cce:submission:'+id,JSON.stringify(historic));
+  sorted.set('geek:cce:contributor:'+playerId+':submissions',new Map([[id,1000]]));
+  sorted.set('geek:cce:published:kaspa',new Map([[id,1000]]));
+  hashes.set('geek:cce:contributor:'+playerId+':stats',new Map([['submitted','1'],['accepted','1'],['used','1'],['earned','25']]));
+  const before = strings.get('geek:cce:submission:'+id);
+  for(const action of ['submit','revise']) {
+    const r=response();await contentHandler(request('POST',{action,id},contributorCookie),r);assert.equal(r.statusCode,409);assert.equal(r.body.code,'CCE_BANK_AND_ECONOMY_HOLD');
   }
-  assert.equal(communityWasUsed, true);
-
-  const dashboardRes = response();
-  await contentHandler(request('GET', undefined, contributorCookie), dashboardRes);
-  assert.equal(dashboardRes.body.stats.accepted, 1);
-  assert.equal(dashboardRes.body.stats.used, 1);
-  assert.equal(dashboardRes.body.stats.earned, 25);
-  assert.equal(dashboardRes.body.stats.paid, 0);
-  assert.equal(dashboardRes.body.stats.settlement, 'launch-gated');
-  assert.equal(dashboardRes.body.submissions[0].reward.status, 'earned');
+  const denied=response();await moderationHandler(request('GET',undefined,'',{}, {'x-cce-admin':'wrong-token'}),denied);assert.equal(denied.statusCode,403);
+  const publish=response();await moderationHandler(request('POST',{action:'publish',id},'',{}, {'x-cce-admin':process.env.CCE_ADMIN_TOKEN}),publish);assert.equal(publish.statusCode,409);
+  const q=await publishedCommunityQuestionById(id);assert.equal(q.correctIndex,0);assert.deepEqual(q.options,historic.options);
+  assert.equal(await recordCommunityQuestionUse(q,'old-run'),false);
+  assert.equal(strings.get('geek:cce:submission:'+id),before);
+  const dashboard=response();await contentHandler(request('GET',undefined,contributorCookie),dashboard);
+  assert.equal(dashboard.statusCode,200);assert.equal(dashboard.body.stats.earned,25);assert.equal(dashboard.body.stats.paid,0);assert.equal(dashboard.body.submissions[0].reward.status,'earned');
 });
 
 test('a player can register any valid Kaspa mainnet payout address without exposing wallet secrets', async () => {

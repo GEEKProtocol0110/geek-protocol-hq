@@ -108,6 +108,8 @@ export const handleApiError = (res, error) => {
   if (code === 'MATCH_NOT_FOUND') return sendJson(res, 404, { ok: false, code, error: 'That shared round expired.' });
   if (code === 'MATCH_NOT_PLAYER') return sendJson(res, 403, { ok: false, code, error: 'Only players in the room when the round started can answer.' });
   if (code === 'MATCH_QUESTION_CLOSED' || code === 'MATCH_ANSWER_RECORDED' || code === 'MATCH_CHANGED') return sendJson(res, 409, { ok: false, code, error: 'This question has closed or your answer was already recorded.' });
+  if (code === 'CCE_BANK_AND_ECONOMY_HOLD') return sendJson(res, 409, { ok: false, code, error: 'CCE is on hold while we build 1,000 source-reviewed questions per category and finalize contributor reward rules. Existing history is preserved.' });
+  if (code === 'QUESTION_READINESS_UNAVAILABLE') return sendJson(res, 503, { ok: false, code, error: 'Question-bank readiness could not be verified. CCE remains on hold.' });
   if (code === 'CCE_NOT_FOUND') return sendJson(res, 404, { ok: false, error: 'That contribution could not be found.' });
   if (code === 'CCE_DUPLICATE') return sendJson(res, 409, { ok: false, error: 'That question is already in the review pipeline.' });
   if (code === 'CCE_STATE_INVALID') return sendJson(res, 409, { ok: false, error: 'That contribution cannot take this action in its current state.' });

@@ -7,6 +7,7 @@
   const message = $('[data-form-message]');
   const serviceState = $('[data-service-state]');
   const NAME_KEY = 'geek-cce-name-v1';
+  let intakeEnabled = false;
   let dashboard = { submissions: [], stats: {} };
 
   const escapeHtml = (value) => String(value ?? '').replace(/[&<>'"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character]);
@@ -27,8 +28,8 @@
     localStorage.setItem(NAME_KEY, displayName);
     const payload = await api('/api/session', { method: 'POST', body: JSON.stringify({ displayName }) });
     form.elements.displayName.value = payload.player.name;
-    serviceState.textContent = 'SERVER READY';
-    serviceState.classList.add('live');
+    serviceState.textContent = intakeEnabled ? 'SERVER READY' : 'CCE ON HOLD';
+    serviceState.classList.toggle('live', intakeEnabled);
   };
 
   const formatDate = (timestamp) => timestamp ? new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric' }).format(new Date(timestamp)) : 'Pending';
@@ -47,8 +48,8 @@
         <div class="submission-card__top"><small>${escapeHtml(item.category)} · ${escapeHtml(item.difficulty)}</small><small class="status ${escapeHtml(item.status)}">${escapeHtml(formatStatus(item.status))}</small></div>
         <h3>${escapeHtml(item.prompt)}</h3>
         ${item.reviewNote ? `<p><b>Review note:</b> ${escapeHtml(item.reviewNote)}</p>` : '<p>Awaiting the next moderation step.</p>'}
-        <div class="submission-card__meta"><span>${escapeHtml(formatDate(item.updatedAt))}</span><b>${escapeHtml(item.reward?.status === 'earned' ? `${item.reward.amount} GEEK EARNED` : `${item.reward?.amount || 25} GEEK · ${item.reward?.status || 'PENDING'}`)}</b></div>
-        ${item.status === 'changes-requested' ? `<button type="button" data-revise="${escapeHtml(item.id)}">Revise this question</button>` : ''}
+        <div class="submission-card__meta"><span>${escapeHtml(formatDate(item.updatedAt))}</span><b>${escapeHtml(item.reward?.status === 'earned' ? `${item.reward.amount} ALPHA CREDITS` : `${item.reward?.amount ?? 0} Alpha credits · ${item.reward?.status || 'PENDING'}`)}</b></div>
+        ${intakeEnabled && item.status === 'changes-requested' ? `<button type="button" data-revise="${escapeHtml(item.id)}">Revise this question</button>` : ''}
       </article>`).join('');
   };
 
@@ -91,6 +92,7 @@
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (!intakeEnabled) return setMessage('CCE is on hold while the bank and contributor reward rules are prepared.');
     if (!form.reportValidity()) return;
     const button = $('.submit-question');
     button.disabled = true;
@@ -104,7 +106,7 @@
     } catch (error) {
       setMessage(error.message, 'error');
     } finally {
-      button.disabled = false;
+      button.disabled = !intakeEnabled;
       if (!button.querySelector('span')) button.innerHTML = form.elements.submissionId.value ? 'Send revision <span>→</span>' : 'Send to review <span>→</span>';
     }
   });
@@ -133,5 +135,11 @@
   $('[data-cancel-revision]').addEventListener('click', () => { resetForm(); setMessage('Revision canceled.'); });
   $('[data-refresh]').addEventListener('click', loadDashboard);
   form.elements.displayName.value = localStorage.getItem(NAME_KEY) || 'Community Geek';
-  loadDashboard();
+  // Checking readiness is credential-free and creates no player session or reward record.
+  api('/api/content/?view=readiness').then(payload => {
+    intakeEnabled = payload.readiness?.submissionsEnabled === true;
+    $('[data-submission-fields]').disabled = !intakeEnabled;
+    serviceState.textContent = intakeEnabled ? 'READY' : 'CCE ON HOLD';
+    if (!intakeEnabled) setMessage('Building 1,000 reviewed questions per category. Contributor reward rules are still being designed.');
+  }).catch(() => { setMessage('Readiness could not be checked. Submissions remain on hold.'); });
 })();

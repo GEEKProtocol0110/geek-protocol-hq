@@ -1,3 +1,4 @@
+import { cceReadiness, requireCceIntake, requireCcePublication } from './question-bank-readiness.js';
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
 import { auditWriteCommands, createAuditRecord, hashAuditIdentifier, recordAuditEvent } from './audit.js';
 import { categories, cleanName } from './http.js';
@@ -103,6 +104,7 @@ const readStats = async (sessionId) => {
 };
 
 export const createContribution = async (session, body) => {
+  requireCceIntake();
   const playerId = playerIdFor(session);
   const normalized = normalizeSubmission(body);
   const now = Date.now();
@@ -131,6 +133,7 @@ export const createContribution = async (session, body) => {
 };
 
 export const reviseContribution = async (session, body) => {
+  requireCceIntake();
   const playerId = playerIdFor(session);
   const existing = await loadSubmission(body.id);
   if (existing.contributorSessionId !== playerId) throw new Error('CCE_NOT_FOUND');
@@ -199,6 +202,7 @@ export const moderationAttention = async () => {
 
 export const moderateContribution = async (body, context = {}) => {
   const action = String(body.action || '');
+  if (action === 'publish') requireCcePublication();
   const note = cleanText(body.note, 400);
   const submission = await loadSubmission(body.id);
   const previousStatus = submission.status;
@@ -275,7 +279,7 @@ const rankedQuestionFrom = (submission) => ({
 });
 
 export const publishedCommunityQuestions = async (category, difficulty = '') => {
-  if (!categories.has(category)) return [];
+  if (!categories.has(category) || !cceReadiness().publishingEnabled) return [];
   const ids = await redis('ZRANGEBYSCORE', publishedIndex(category), '-inf', '+inf');
   const stored = ids.length ? await pipeline(ids.map((id) => ['GET', submissionKey(id)])) : [];
   return stored.map(parseStoredJson)
@@ -306,7 +310,7 @@ end
 return added`;
 
 export const recordCommunityQuestionUse = async (question, runId) => {
-  if (!question?.community || !question.contributorSessionId) return false;
+  if (!question?.community || !question.contributorSessionId || !cceReadiness().newCreditsEnabled) return false;
   const now = Date.now();
   const ledger = JSON.stringify({
     questionId: question.id,

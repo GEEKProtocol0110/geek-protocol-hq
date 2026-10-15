@@ -2193,9 +2193,72 @@
       "reason": "off-category",
       "note": "The named topic belongs outside this category; no asserted factual error.",
       "answerKeyHash": "caf0ba6d93cbba9fadaad483f9579441cdb7897c04fe1cb27ae9ee01d4e78167"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-f317c834cef3",
+      "reason": "source-correction",
+      "note": "Replaced by an internally source-checked correction; original answer retained for saved runs.",
+      "answerKeyHash": "c3995ad56eba4b5f47f8d244e788fc8c330286fc95aabb65c2082057e97b3f8e"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0033",
+      "reason": "source-correction",
+      "note": "Replaced by an internally source-checked correction; original answer retained for saved runs.",
+      "answerKeyHash": "1f81e0cc889327e207f3a544e8543e5ef0c85790c696993992991c37ac96cca5"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-2086bc060489",
+      "reason": "source-correction",
+      "note": "Replaced by an internally source-checked correction; original answer retained for saved runs.",
+      "answerKeyHash": "92c65e17ab7add9f23f0e4d25c6053e281f50ff30b9cc07cc7d397f3aeec9752"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0924",
+      "reason": "source-correction",
+      "note": "Replaced by an internally source-checked correction; original answer retained for saved runs.",
+      "answerKeyHash": "504160ece86aef32d70c55b48776faf45b8e7bbd34fb3f7766ee55284b128a2f"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0051",
+      "reason": "source-correction",
+      "note": "Replaced by an internally source-checked correction; original answer retained for saved runs.",
+      "answerKeyHash": "f37f90508048391f458341cb3646bc73da7d7a2418d6f2b19eee80f01d12ffa9"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0052",
+      "reason": "source-correction",
+      "note": "Replaced by an internally source-checked correction; original answer retained for saved runs.",
+      "answerKeyHash": "8b46c3205db9d04490067948ec9ffc200608c13b3df2239e6e1a6da93e3ab508"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-3162317504ab",
+      "reason": "source-correction",
+      "note": "Replaced by an internally source-checked correction; original answer retained for saved runs.",
+      "answerKeyHash": "a56ede149dce2816a4b4c593d20c28e05b0fb3e62ae9ce15474fadbfdfd5edbc"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-ec831b5b832f",
+      "reason": "owner-review",
+      "note": "Retired following internal editorial review; original answer retained for saved runs.",
+      "answerKeyHash": "4c00e6a8f6b949606f4ad9b4a3d74fd5affe4ca4eb30a012530025b204ac8b72"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0121",
+      "reason": "owner-review",
+      "note": "Retired following internal editorial review; original answer retained for saved runs.",
+      "answerKeyHash": "a3394dd762eee3669d641b60edc36ed72356f2f04ef0f2cc506a11259d8ddc9c"
     }
   ],
-  "retirementCount": 272,
+  "retirementCount": 281,
   "newLicensedImportsRetired": 258,
   "activeNewLicensedImportsPending": 3598,
   "activeDraftQuestions": 7516,

@@ -1,0 +1,45 @@
+.store-main { max-width:1240px; margin:auto; padding:112px 1.5rem 4rem; }
+.store-main :is(h1,h2,h3) { font-family:Inter,system-ui,sans-serif; text-transform:none; letter-spacing:-.035em; line-height:1.15; }
+.store-intro h1 { font-size:clamp(2.3rem,4.5vw,4rem); margin:1rem 0; }
+.store-intro h1 em { color:#70e6dc; font-style:normal; }
+.store-intro>p { max-width:720px; color:#c4d0d4; line-height:1.6; }
+.store-intro .store-notice { padding:.85rem 1rem; border-left:3px solid #f6c643; background:#19231e; font-size:.9rem; }
+.store-layout { display:grid; grid-template-columns:minmax(260px,340px) minmax(0,1fr); align-items:start; gap:2rem; margin-top:2rem; }
+.store-preview-panel { position:sticky; top:90px; min-width:0; padding:1.25rem; border:1px solid #35464d; background:#131e22; border-radius:16px; }
+.store-preview-panel h2,.store-browse h2 { font-size:1.4rem; margin:0 0 1rem; }
+.store-main label { display:grid; gap:.5rem; color:#c4d0d4; font-size:.9rem; }
+.store-main :is(select,input) { width:100%; min-height:48px; padding:.75rem; color:#eff5f6; background:#0c1317; border:1px solid #68828b; border-radius:9px; font:inherit; }
+.store-main button { cursor:pointer; font:inherit; }
+.store-main :is(button,a,input,select):focus-visible { outline:3px solid #70e6dc; outline-offset:4px; }
+.store-preview-panel [data-store-preview] { max-width:250px; margin:.5rem auto; }
+.store-view-controls,.store-filters { display:flex; flex-wrap:wrap; gap:.5rem; }
+.store-main :is(.store-view-controls,.store-filters) button,.store-card button { min-height:44px; padding:.6rem .8rem; color:#e7f1f1; background:#203138; border:1px solid #68828b; border-radius:9px; }
+.store-main button[aria-pressed=true] { color:#0c1317; background:#70e6dc; border-color:#70e6dc; }
+.store-look,.store-caption { color:#b6c8ce; font-size:.8rem; line-height:1.5; }
+.store-status { color:#c4fff7; font-size:.85rem; line-height:1.5; margin-bottom:0; }
+.store-preview-panel>.button { width:100%; justify-content:center; text-align:center; white-space:normal; }
+.store-search { margin-bottom:1rem; }
+.store-count { font-size:.85rem; color:#b6c8ce; }
+.store-items { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+.store-card { display:flex; flex-direction:column; gap:.65rem; min-width:0; padding:1.1rem; border:1px solid #35464d; border-radius:14px; background:#131e22; }
+.store-card h3 { font-size:1.15rem; margin:0; }
+.store-card p { color:#c4d0d4; font-size:.9rem; line-height:1.5; margin:0; }
+.store-card small { color:#b6c8ce; font-size:.8rem; line-height:1.5; }
+.store-card :is(button,a,.store-planned) { margin-top:auto; }
+.store-card>a,.store-next a { display:inline-flex; align-items:center; min-height:44px; color:#70e6dc; font-size:.9rem; }
+.store-badge { color:#f6c643; font-size:.75rem; font-weight:750; }
+.store-planned { display:block; padding-top:.5rem; color:#b6c8ce; font-size:.8rem; }
+.store-item-art { height:128px; border-radius:10px; background:#0c171b; }
+.store-item-art svg { height:100%; width:auto; max-width:100%; margin:auto; }
+.store-next { margin-top:2rem; padding:1.5rem; border:1px solid #35464d; border-radius:14px; }
+.store-next h2 { font-size:1.4rem; }
+.store-next p { color:#c4d0d4; line-height:1.6; }
+.store-next a { margin-right:1.5rem; }
+@media(max-width:850px) { .store-main { padding-top:100px; } .store-layout { grid-template-columns:1fr; gap:1.5rem; } .store-preview-panel { position:static; } .store-preview-panel [data-store-preview] { max-width:180px; } }
+@media(max-width:480px) { .store-main { padding-inline:1rem; } .store-items { grid-template-columns:1fr; } .store-item-art { height:110px; } }
+
+.store-preview-panel>summary { display:flex; align-items:center; justify-content:space-between; gap:.75rem; min-height:44px; cursor:pointer; }
+.store-preview-panel>summary h2 { margin:0; }
+.store-preview-panel>summary span { color:#70e6dc; font-size:.75rem; }
+.store-preview-panel[open]>summary { padding-bottom:1rem; }
+.store-preview-panel>summary:focus-visible { outline:3px solid #70e6dc; outline-offset:4px; }

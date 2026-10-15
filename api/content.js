@@ -1,3 +1,4 @@
+import { cceReadiness, requireCceIntake } from '../server/question-bank-readiness.js';
 import { createContribution, contributorDashboard, reviseContribution } from '../server/cce.js';
 import { clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
 import { rateLimit } from '../server/redis.js';
@@ -7,6 +8,8 @@ export default async function handler(req, res) {
   setApiHeaders(res);
   if (req.method === 'OPTIONS') return res.status(204).end();
   try {
+    if (req.method === 'GET' && req.query?.view === 'readiness') return sendJson(res, 200, { ok: true, readiness: cceReadiness() });
+    if (req.method === 'POST') requireCceIntake();
     const session = await requireSession(req);
     const playerId = playerIdFor(session);
     if (req.method === 'GET') {

@@ -5,7 +5,6 @@ import sessionHandler from '../api/session.js';
 import moderationHandler from '../api/moderation.js';
 import auditHandler from '../api/audit.js';
 import payoutHandler from '../api/payout-review.js';
-import { createContribution } from '../server/cce.js';
 import { createPayoutReview, payoutReviewWriteCommands } from '../server/payout-review.js';
 import { defaultProfile, saveProfile } from '../server/profile.js';
 import { communityPrefix } from '../server/community-contributions.js';
@@ -154,7 +153,9 @@ run('owner sessions cannot enable an unconfigured role and dedicated owner acces
   assert.equal((await call({cookie,handler:auditHandler})).statusCode,200);
 });
 run('owner-cookie moderation and payout decisions use the existing recorded workflows', async () => {
-  const contribution=await createContribution({id:'owner-session-contributor'},{category:'kaspa',difficulty:'easy',topic:'Session checks',prompt:'Which option is correct for the owner-session test?',options:['Alpha','Beta','Gamma','Delta'],correctIndex:0,explanation:'Synthetic answer evidence for an isolated test.',source:'https://example.org/session-evidence',displayName:'Synthetic Geek',original:true});
+  const contribution={id:'cce_'+ 'a'.repeat(24),status:'submitted',contributorSessionId:'owner-session-contributor',category:'kaspa',difficulty:'easy',topic:'Session checks',prompt:'Which option is correct for the owner-session test?',options:['Alpha','Beta','Gamma','Delta'],correctIndex:0,explanation:'Synthetic answer evidence for an isolated test.',source:'https://example.org/session-evidence',displayName:'Synthetic Geek',submittedAt:Date.now(),reward:{amount:25,status:'pending-use',settlement:'launch-gated'}};
+  await fixture.command('SET','geek:cce:submission:'+contribution.id,JSON.stringify(contribution));
+  await fixture.command('ZADD','geek:cce:review',Date.now(),contribution.id);
   const address='kaspa:qzj0e55rlxpm0knvra9wvgckpkyq9h8hv8wl0lh2ngjad9a4cedmj24cy07ew';
   const review=createPayoutReview({playerId:'owner-session-player',address,addressMasked:'kaspa:qzj0…07ew',payoutVersion:1,reasons:['recent-destination-change']});
   await saveProfile('owner-session-player',{...defaultProfile(),payoutAddress:address,payoutAddressVersion:1,payoutReviewId:review.id});

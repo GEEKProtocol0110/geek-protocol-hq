@@ -57,3 +57,8 @@ The [economy stress lab](ECONOMY-STRESS.md) tests internal credit paths and sepa
 ## Founder-selected launch reward proposal
 
 The October 14, 2026 proposal is **100 GEEK per qualifying completed round**. The private stress lab defaults to this reward and an assumed billion-GEEK reserve, with editable daily caps and repeating-day runway estimates. This is not a live payment rule or a conversion of existing Alpha credits. Qualification, supported modes and per-player rewarded-round limits remain to be defined. See [the exact model and assumptions](ECONOMY-STRESS.md#proposed-100-geek-round-reward-and-daily-runway).
+
+
+## October 15: store and contributor reward hold
+
+The free fitting room at `/store/` is implemented; it carries an unsaved preview into the existing character studio and introduces no purchase/transfer authority. The founder requires 1,000 reviewed questions per category before CCE reopens, and contributor reward economics remain unresolved. New CCE credits are held; historical 25-credit records remain unchanged. The 1-or-5-GEEK one-time creator examples in [Bank-first release and Store](BANK-FIRST-STORE.md) are unselected proposals, separate from the proposed 100-GEEK player round reward. No price or funded eligibility rule is activated.
