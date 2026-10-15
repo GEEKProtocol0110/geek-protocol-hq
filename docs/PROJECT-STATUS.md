@@ -5,6 +5,8 @@
 **Production:** [www.geekprotocol.xyz](https://www.geekprotocol.xyz/)  
 **Repository:** [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq)
 
+**Continue work:** [Working handoff](HANDOFF.md) records the current checkpoint, founder constraints and next unfinished actions.
+
 ## Current product focus
 
 The current focus is Learn, guided Study, practice, saved progress, and free game modes. Primary navigation prioritizes learning; Progress displays private Study feedback before separate timed-game XP and records. The founder reopened game-mode work on October 3: Memory Grid adds an untimed solo matching game. Multiplayer Arena expansions, DAO work and the launchpad remain planned. Economy foundations include the named power-up catalog, reserve configuration status and private planning journal. Real purchases, paid item use, treasury funding, payouts and burns remain disabled. Free 50/50 and Extra Time trial uses are available in separate assisted practice.
@@ -231,3 +233,7 @@ The Geek Store adds free character try-on, filters/search, front/back views and 
 Fifty-six original source-checked questions bring Kaspa from 194 to 250 distinct concepts (83 easy / 111 medium / 56 hard). Study has 247 concepts in its existing eleven topics. All new implementation evidence is pinned to a specific Kaspanet commit, with [item/source hashes and source locations](kaspa-250-review-2026-10-15.json). Existing active questions, issued answer keys and retired compatibility records are unchanged.
 
 The full bank now has 7,855 active questions, 348 recorded internal source reviews and 7,652 more reviewed questions needed across the eight 1,000-question targets. Kaspa still needs 750. This milestone leaves CCE held for the bank and contributor economy. Difficulty is provisional, and broader imported-bank review remains unfinished. No interface or value-movement feature is introduced.
+
+## Kaspa question bank: 500 concepts — October 15, 2026
+
+The next 250 authored, source-checked questions bring Kaspa to **500 distinct concepts** and Study to **497 concepts**. The full bank contains 8,105 active questions and 598 recorded internal reviews, with 7,402 more reviewed questions needed across the eight category targets. Kaspa needs another 500 to reach 1,000. Each addition has pinned implementation evidence and an [individual review record](kaspa-500-review-2026-10-15.json). These internal checks do not establish independent certification or calibrated difficulty. Existing question records, CCE hold and value-movement boundaries remain intact. The [working handoff](HANDOFF.md) records next actions and distinguishes repository state from deployment evidence.
