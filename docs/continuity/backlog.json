@@ -448,10 +448,10 @@
     {
       "id": "OPS-003",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "done",
       "title": "Finish mint-availability monitoring for GitHub issue #14",
       "owner": "Maintainer; founder reviews release",
-      "nextAction": "Review and merge the issue #14 candidate, then verify the expanded twenty-one-check production monitor and fresh live mint status before closing the ticket. Preserve the known fallback 502 limitation and original outage evidence.",
+      "nextAction": "Continue scheduled monitoring and investigate any new failed mint-status check. Preserve the fallback limitation and original outage evidence; no wallet transaction is needed to check status.",
       "acceptance": [
         "Fresh HQ mint status verifies the exact pinned deployment and internally consistent raw/display minted and remaining supply.",
         "Production monitoring flags outages, stale/mismatched payloads and invalid open/paused states; verified exhaustion passes.",
@@ -463,6 +463,11 @@
         "docs/MINT-AVAILABILITY-ISSUE-14.md",
         "docs/PRODUCTION-MONITORING.md",
         "docs/continuity/github-issues.json"
+      ],
+      "completedAt": "2026-10-15",
+      "completionEvidence": [
+        "PR #115 merged b0bc952d14d06b34cf82ae7b3794f61f6916c900; production dpl_2koiXamNy5a1eVmMsbuHXnaKKMEG READY on exact source. Standard Node monitor passed 21/21 under five-second deadlines; GitHub verify and production-monitor check passed; issue #14 closed completed.",
+        "Exact legacy reports remain readable; full candidate verification 441 tests, zero failures/skips, real Redis and 311 security assertions. Fallback 502 was observed earlier and is not claimed repaired."
       ]
     }
   ]

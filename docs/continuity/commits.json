@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "capturedAt": "2026-10-15",
-  "through": "962bbada66a719c1c679ec79202ea3893f875998",
+  "through": "b0bc952d14d06b34cf82ae7b3794f61f6916c900",
   "scope": "HQ commit metadata through the merged product baseline. Authored dates are retained as Git metadata, not proof of founding time. Git bundles preserve underlying objects.",
   "records": [
     {
@@ -1471,6 +1471,31 @@
       ],
       "authoredAt": "2026-10-15T09:17:23-04:00",
       "title": "Merge pull request #114 from GEEKProtocol0110/codex/project-continuity"
+    },
+    {
+      "commit": "ec3a0c7c1c8a2da2a716735213a0f5b7e5549521",
+      "parents": [
+        "962bbada66a719c1c679ec79202ea3893f875998"
+      ],
+      "authoredAt": "2026-10-15T09:21:21-04:00",
+      "title": "Record merged continuity release and verified production pickup"
+    },
+    {
+      "commit": "707faa9d96e5f36d3baba54a9aed326c2892dad3",
+      "parents": [
+        "ec3a0c7c1c8a2da2a716735213a0f5b7e5549521"
+      ],
+      "authoredAt": "2026-10-15T10:38:10-04:00",
+      "title": "Monitor verified GEEK mint status and preserve legacy health snapshots"
+    },
+    {
+      "commit": "b0bc952d14d06b34cf82ae7b3794f61f6916c900",
+      "parents": [
+        "ec3a0c7c1c8a2da2a716735213a0f5b7e5549521",
+        "707faa9d96e5f36d3baba54a9aed326c2892dad3"
+      ],
+      "authoredAt": "2026-10-15T10:58:30-04:00",
+      "title": "Merge pull request #115 from GEEKProtocol0110/codex/issue-14-mint-monitor"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "checkedAt": "2026-10-15",
-  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1–2 plus the observed #114 merge. Merged is not a deployment or independent audit claim.",
+  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1–2 plus observed #114/#115 merges. Merged is not a deployment or independent audit claim.",
   "records": [
     {
       "number": 1,
@@ -723,6 +723,13 @@
       "mergedAt": "2026-10-15T13:17:24Z",
       "commit": "962bbada66a719c1c679ec79202ea3893f875998",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/114"
+    },
+    {
+      "number": 115,
+      "title": "Monitor verified GEEK mint availability and preserve saved history",
+      "mergedAt": "2026-10-15T14:58:30Z",
+      "commit": "b0bc952d14d06b34cf82ae7b3794f61f6916c900",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/115"
     }
   ]
 }

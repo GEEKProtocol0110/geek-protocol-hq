@@ -29,7 +29,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | MIL-001 | P3 | proposed | Explore military and veteran professional learning | Founder with authorized institutional sponsor unassigned |
 | ECO-001 | P1 | planned | Audit each ecosystem component and preserve its handoff | Maintainer for each repository unassigned |
 | CHAIN-001 | P1 | needs-evidence | Verify the TN10 test asset and wallet before a real pilot | Maintainer; founder controls the external testnet wallet |
-| OPS-003 | P1 | in-progress | Finish mint-availability monitoring for GitHub issue #14 | Maintainer; founder reviews release |
+| OPS-003 | P1 | done | Finish mint-availability monitoring for GitHub issue #14 | Maintainer; founder reviews release |
 
 ## CONT-001: Publish the continuation system
 
@@ -358,9 +358,9 @@ Evidence/specification: [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD
 
 ## OPS-003: Finish mint-availability monitoring for GitHub issue #14
 
-**P1 / in-progress.** Owner: Maintainer; founder reviews release. Dependencies: none.
+**P1 / done.** Owner: Maintainer; founder reviews release. Dependencies: none.
 
-Next action: Review and merge the issue #14 candidate, then verify the expanded twenty-one-check production monitor and fresh live mint status before closing the ticket. Preserve the known fallback 502 limitation and original outage evidence.
+Next action: Continue scheduled monitoring and investigate any new failed mint-status check. Preserve the fallback limitation and original outage evidence; no wallet transaction is needed to check status.
 
 Acceptance:
 

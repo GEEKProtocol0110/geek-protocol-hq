@@ -6,7 +6,7 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Last verified product release
 
-[PR #114](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/114), commit `962bbada66a719c1c679ec79202ea3893f875998`. Founder-authorized PR #114 merged October 15 at 13:17:24 UTC; Vercel production dpl_9cMymSMNqxkaH8gu7aT9dZdSz6XU is READY on the exact merge commit and assigned to the production domains. Twenty read-only response validators passed via proxy-aware transport with a fifteen-second timeout. Candidate full verification passed 436 tests with real Redis and GitHub verify succeeded. The new private run-loading UI still needs owner phone acceptance; no reward receipt or transfer is verified. Recorded tests: 436 passed, 0 failed, 0 skipped; 20 read-only probes passed. Later documentation candidates are separate from this baseline.
+[PR #115](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/115), commit `b0bc952d14d06b34cf82ae7b3794f61f6916c900`. Founder-authorized PR #115 merged October 15 at 14:58:30 UTC. Production dpl_2koiXamNy5a1eVmMsbuHXnaKKMEG READY at 14:58:47.234 UTC on the exact merge source and assigned to both production domains. Standard proxy-aware Node monitor passed all 21 checks at 14:59:09.158 UTC under five-second deadlines; mint HTTP 200 in 4,550 ms. GitHub main verify and production-monitor check passed. Candidate full verification: 441 tests, no failures/skips, real Redis, 311 security assertions. Issue #14 closed completed; provider fallback 502 is not claimed repaired. No wallet signing or settlement activation. Recorded tests: 441 passed, 0 failed, 0 skipped; 21 read-only probes passed. Later documentation candidates are separate from this baseline.
 
 ## Current checkout counts
 
@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**OPS-003: in-progress.** Resolve the remaining monitoring gap in open GitHub issue #14. Primary mint status has recovered; add fresh pinned-deployment checks and preserve older monitor snapshots. Candidate is not yet merged or deployed.
+**BANK-001: active.** OPS-003 is merged, production-checked and complete; GitHub issue #14 is closed. Continue distinct source-checked Kaspa concepts toward 1,000. CHAIN-001 still needs owner acceptance of run loading and its first real receipt/transfer.
 
-Next task: **BANK-001**. Review and release OPS-003 with issue #14 evidence, then continue BANK-001 toward 1,000 distinct source-checked Kaspa concepts. CHAIN-001 still needs owner acceptance of run loading and its first queued/reconciled manual test transfer; keep CCE and Mainnet settlement held.
+Next task: **BANK-001**. Prepare the next small distinct source-checked Kaspa batch. For CHAIN-001, accept the deployed run loader on the phone and queue the next eligible completed Daily within five minutes before any manual transfer. Preserve the UTC daily lock, CCE hold and disabled Mainnet settlement.
 
 ## Holds
 

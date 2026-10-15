@@ -88,5 +88,19 @@
       "issues": []
     }
   ],
-  "scope": "Point-in-time ticket inventory, not an assertion that repositories have no defects. Private repositories are excluded."
+  "scope": "Point-in-time ticket inventory, not an assertion that repositories have no defects. Private repositories are excluded.",
+  "resolutionObservation": {
+    "recordedOn": "2026-10-15",
+    "repository": "GEEKProtocol0110/geek-protocol-hq",
+    "issueNumber": 14,
+    "state": "closed",
+    "stateReason": "completed",
+    "pullRequest": 115,
+    "mergeCommit": "b0bc952d14d06b34cf82ae7b3794f61f6916c900",
+    "deploymentId": "dpl_2koiXamNy5a1eVmMsbuHXnaKKMEG",
+    "standardProductionChecksPassed": 21,
+    "githubVerifyPassed": true,
+    "githubProductionCheckPassed": true,
+    "meaning": "Supersedes the earlier issue #14 open state. Original thirteen-repository snapshot above remains historical, not a continuously refreshed inventory."
+  }
 }

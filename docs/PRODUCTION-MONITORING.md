@@ -51,7 +51,7 @@ The origin is intentionally not configurable. A monitor request cannot be repurp
 
 ## Verification
 
-Issue [#14](https://github.com/GEEKProtocol0110/geek-protocol-hq/issues/14) investigation and dated acceptance evidence are in [the mint availability record](MINT-AVAILABILITY-ISSUE-14.md). The candidate change must be merged and observed in production before marking monitoring deployed.
+Issue [#14](https://github.com/GEEKProtocol0110/geek-protocol-hq/issues/14) investigation and dated acceptance evidence are in [the mint availability record](MINT-AVAILABILITY-ISSUE-14.md). PR #115 is merged and deployed: the standard twenty-one-check monitor and GitHub production check passed; issue #14 is closed. The detailed record preserves the remaining upstream fallback limitation.
 
 Tests cover fixed-origin credential-free requests, body/transport deadlines, oversized responses, private-route and disabled-payment regressions, outage evidence, stale client displays, authenticated access, global run races, bounded history and preserved corruption. Client fixtures exercise the shipped client behavior; they do not establish rendered phone acceptance.
 
