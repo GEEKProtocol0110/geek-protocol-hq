@@ -19,6 +19,7 @@ test('drafts, malformed reviews, future dates, retired variants and bad answer/e
   delete input.comics;assert.throws(()=>evaluateBankReadiness(input),/QUESTION_READINESS_UNAVAILABLE/);
 });
 test('the shipped readiness report contains only aggregates and cannot imply approved creator economics', () => {
+  const config=JSON.parse(readFileSync(new URL('../vercel.json',import.meta.url)));for(const fn of ['api/content.js','api/moderation.js'])assert.ok(config.functions[fn].includeFiles.includes('server/questions/**'),`${fn} must package server banks for runtime readiness`);
   const actual=questionBankReadiness(),published=JSON.parse(readFileSync(new URL('../public/play/assets/bank-readiness.json',import.meta.url)));
   assert.deepEqual(published,actual);assert.equal(actual.targetPerCategory,1000);assert.equal(actual.requiredCategories,8);assert.equal(actual.bankReady,false);
   const text=JSON.stringify(actual);for(const key of ['prompt','correctIndex','options','funFact','source','playerId'])assert.ok(!text.includes(`"${key}"`));
