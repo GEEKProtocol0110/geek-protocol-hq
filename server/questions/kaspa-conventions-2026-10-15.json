@@ -1,0 +1,570 @@
+{
+  "metadata": {
+    "title": "GEEK Protocol — Kaspa conventions follow-up",
+    "version": "1.0.0",
+    "maintainedAt": "2026-10-15",
+    "questionCount": 20,
+    "conceptCount": 20,
+    "category": "Kaspa",
+    "difficultyDistribution": {
+      "easy": 6,
+      "medium": 10,
+      "hard": 4
+    },
+    "correctIndexDistribution": {
+      "0": 5,
+      "1": 5,
+      "2": 5,
+      "3": 5
+    },
+    "schema": "correctIndex is zero-based; options contains four distinct strings",
+    "sourceSnapshot": "1516a6c4cef59940fc3af3096dbcdd9c08690254",
+    "reviewNotice": "Internally source-checked original questions about the cited KCC document snapshot. Normative convention requirements are not claims of universal wallet support, finalization, migration approval or current network acceptance. Difficulty is provisional.",
+    "attribution": "GEEK Protocol original questions; Kaspanet KCC documents are CC0 primary evidence. No source prose or code is imported.",
+    "licenses": [
+      "MIT"
+    ]
+  },
+  "questions": [
+    {
+      "id": "K520-0001",
+      "conceptId": "K520-0001",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Under the cited KCC-0 guidelines, what kind of proposal belongs in a KIP rather than a KCC?",
+      "options": [
+        "A change to Kaspa consensus or core-node behavior",
+        "A shared wallet discovery convention",
+        "A common application interface layout",
+        "An ecosystem token interoperability convention"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "KCCs coordinate ecosystem conventions; KCC-0 directs consensus and core-node changes to KIPs.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0000.md#L51",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc-consensus-boundary"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0002",
+      "conceptId": "K520-0002",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Under KCC-0, what does a convention becoming Final mean for a wallet developer?",
+      "options": [
+        "It automatically updates every installed wallet",
+        "It marks ecosystem convergence without forcing that wallet to implement it",
+        "It proves every wallet already supports the convention",
+        "It requires the wallet to use one particular vendor"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "Final status describes the convention. Each participant still decides whether to implement it.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0000.md#L48",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc-final-optional-adoption"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0003",
+      "conceptId": "K520-0003",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "In the KCC-0 lifecycle, what is the purpose of Last Call?",
+      "options": [
+        "A deadline for users to sell a token",
+        "A signal that all wallet deployments are complete",
+        "A final review window before a proposal can move to Final",
+        "A request to stop accepting network transactions"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "Last Call is a standards review stage, not a trading instruction or deployment certificate.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0000.md#L154",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc-last-call-purpose"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0004",
+      "conceptId": "K520-0004",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "What do conformance vectors provide for a Kaspa convention that defines byte layouts or hashes?",
+      "options": [
+        "A list of validators allowed to change consensus",
+        "A guarantee that a wallet has no security bugs",
+        "A replacement for the convention specification",
+        "Concrete test cases for comparing an implementation with the specified results"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "KCC-0 requires human-readable and machine-readable vectors for the relevant Standards Track conventions. Passing them does not certify every application behavior.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0000.md#L235",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc-conformance-vector-role"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0005",
+      "conceptId": "K520-0005",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Under KCC-0, how should a substantive change to a Final convention be made, apart from its stated defect-correction process?",
+      "options": [
+        "Through a new KCC that supersedes the old convention",
+        "By silently replacing the old specification text",
+        "By treating a wallet release note as the new standard",
+        "By letting each implementation redefine existing fields locally"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "KCC-0 distinguishes limited corrections and clarifications from other substantive changes, which require an explicit superseding KCC.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0000.md#L163",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc-final-substantive-supersession"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0006",
+      "conceptId": "K520-0006",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "Why does the cited KCC-20 convention require a token program artifact?",
+      "options": [
+        "To publish the private keys of all token holders",
+        "To describe how clients decode token state and construct transfers",
+        "To guarantee a token receives an exchange listing",
+        "To replace transaction validation with a token logo"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The artifact exposes the program ABI and token configuration needed by compatible readers and transaction builders.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md#L154",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc20-artifact-reader-writer"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0007",
+      "conceptId": "K520-0007",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "Within one KCC-20 covenant family, when does the cited standard treat states as fungible with one another?",
+      "options": [
+        "Whenever their displayed tickers are identical",
+        "Whenever their KAS carrier values are identical",
+        "When their extension commitments are identical",
+        "Whenever their owners use the same wallet app"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The standard treats extended state as opaque but includes its commitment in token identity for fungibility. A standard transfer preserves that shared commitment.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md#L213",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc20-extension-fungibility"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0008",
+      "conceptId": "K520-0008",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "Why must a KCC-20 transfer reject a successor owner scheme that the token configuration does not support?",
+      "options": [
+        "Different owner schemes always change the token price",
+        "Every recipient must use the sender's private key",
+        "Owner schemes determine the Kaspa block production rate",
+        "The resulting token state could otherwise become unspendable"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "KCC-20 requires validation of successor owner schemes so a transfer cannot create a state whose authorization method the token cannot handle.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md#L104",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc20-supported-recipient-authority"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0009",
+      "conceptId": "K520-0009",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "What does KCC-20 borrowed receive let a sender do under the recipient state's borrowing policy?",
+      "options": [
+        "Add tokens to an existing recipient state without that recipient authorizing the transaction",
+        "Spend tokens out of the recipient's state without restrictions",
+        "Take ownership of every state held by the recipient",
+        "Receive a loan that must later be repaid with interest"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "Borrowed receive reuses and recreates a recipient UTXO with more tokens. It does not transfer its ownership to the sender or create a lending debt.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md#L227",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc20-borrowed-receive-owner-signature"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0010",
+      "conceptId": "K520-0010",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "What happens to the KAS value carried by the recipient state during a valid KCC-20 borrowed receive?",
+      "options": [
+        "The sender may use all of it for unrelated fees",
+        "Its successor must carry at least as much KAS as the borrowed input",
+        "It must always become exactly zero",
+        "It is automatically converted into token units"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The borrowed-receive rules protect the recipient's existing KAS carrier value while adding token quantity.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md#L305",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc20-borrowed-carrier-value"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0011",
+      "conceptId": "K520-0011",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "Under the cited KCC-20 amount-threshold borrow scheme, the effective threshold is 10 base units. Which increase satisfies the amount rule?",
+      "options": [
+        "An increase of exactly 10 base units",
+        "An increase of 9 base units",
+        "An increase of 11 base units",
+        "An unchanged token amount"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The increase must be strictly greater than the effective threshold. This checks the amount condition only; the transaction must still satisfy every other rule.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md#L300",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc20-borrow-threshold-strictness"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0012",
+      "conceptId": "K520-0012",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "Which KCC-20 path may choose new borrowing settings for its output states?",
+      "options": [
+        "A borrowed receive that changes settings without owner approval",
+        "An explorer changing its local token label",
+        "A sender merely knowing the recipient address",
+        "A normal owner-authorized transfer"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The owner-authorized path may set new borrow policies. Borrowed receive must preserve the borrow scheme and follow the scheme's guard-update rule.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md#L311",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc20-owner-borrow-policy-update"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0013",
+      "conceptId": "K520-0013",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "In the cited KCC-20 multi-input transfer convention, how do leader and delegator checks differ?",
+      "options": [
+        "The leader checks the complete transition; each delegator authenticates its local owner",
+        "Delegators may create extra token quantity independently",
+        "Only the last output checks every input owner",
+        "The leader skips successor validation once a delegator signs"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "Delegators authorize their own inputs while the leader validates conservation and all successor states for the shared transition.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md#L134",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc20-leader-transition-check"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0014",
+      "conceptId": "K520-0014",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "How must an implementation treat an unassigned KCC-20 borrow-scheme value under the cited convention?",
+      "options": [
+        "Interpret it as unrestricted borrowing by default",
+        "Reject it as invalid rather than invent a local meaning",
+        "Treat it as the most recently supported scheme",
+        "Accept it whenever the transaction fee is high enough"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Unassigned borrow-scheme selectors are reserved for future KCCs. Guessing their meaning would break interoperability and authorization checks.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md#L196",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc20-unassigned-borrow-selector"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0015",
+      "conceptId": "K520-0015",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "For KCC-2 covenant-ID authority, what is the minimum transaction participation requirement?",
+      "options": [
+        "A transaction output may merely display the same token ticker",
+        "A website must list the authority in its page title",
+        "A spent input must belong to the identified covenant lineage",
+        "The transaction must use an address with the longest text"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The minimum check uses a consensus-authenticated input from the specified lineage. Applications can require additional program, state and transition checks.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0002.md#L125",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc2-lineage-authority-participation"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0016",
+      "conceptId": "K520-0016",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "When checking a KCC-2 P2SH authority, why is matching only a program template insufficient?",
+      "options": [
+        "The authority ignores script contents whenever a fee is paid",
+        "Every template always belongs to the same private key",
+        "The authority is identified only by its human-readable name",
+        "The authority commits to the exact redeem script, including its embedded state"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "A P2SH authority commits to every byte of its redeem script. Similar structure does not establish the required exact-script authority.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0002.md#L279",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc2-exact-script-authority"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0017",
+      "conceptId": "K520-0017",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "Why can the presence of a matching KCC-2 authority input still be insufficient to prove approval of an application's intended action?",
+      "options": [
+        "A permissive authority program may allow participation without constraining that action",
+        "A matching authority input always invalidates the transaction",
+        "Transaction fees replace the application's authorization policy",
+        "The input owner automatically approves every future application action"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "Applications must ensure the authority's rules constrain its participation or add suitable template, state and transition checks.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0002.md#L281",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc2-participation-intent-boundary"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0018",
+      "conceptId": "K520-0018",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "In the cited KCC-23 metadata convention, where is the JSON declaration placed before covenant genesis?",
+      "options": [
+        "In every future token transfer's recipient signature",
+        "In the payload of a preparation transaction whose output genesis spends",
+        "Only in the token holder's wallet password",
+        "In the private key used to mine the genesis transaction"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "The preparation transaction commits to the JSON bytes. Genesis spends its output to bind that declaration to the covenant identity.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0023.md#L70",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc23-metadata-preparation"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0019",
+      "conceptId": "K520-0019",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Under KCC-23, which metadata representation does the covenant binding commit to?",
+      "options": [
+        "Only the token name with all other fields ignored",
+        "Any JSON text that happens to display the same logo",
+        "The exact payload bytes, including codec prefix, whitespace and property order",
+        "A freely editable description kept only by one explorer"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "Equivalent-looking JSON serializations can have different bytes. KCC-23 binds the exact declaration, fixed for that covenant ID.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0023.md#L63",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc23-exact-metadata-commitment"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    },
+    {
+      "id": "K520-0020",
+      "conceptId": "K520-0020",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Does declaring metadata through KCC-23 itself grant a new right to spend the covenant's tokens?",
+      "options": [
+        "Yes; whoever supplies a logo becomes the token owner",
+        "Yes; any explorer may then spend a holder's balance",
+        "Yes; changing a displayed name replaces the token's signatures",
+        "No; it binds descriptive metadata without changing spending authority"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "KCC-23 binds descriptive information. The covenant's actual validation rules continue to determine spending authorization.",
+      "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0023.md#L204",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "kcc-conventions",
+        "kcc23-metadata-no-spending-authority"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet KCC documents provide primary evidence, not endorsement."
+    }
+  ]
+}

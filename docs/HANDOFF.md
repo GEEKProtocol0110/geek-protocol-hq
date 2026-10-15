@@ -9,4 +9,4 @@ The maintained entry point is [Start Here](../START-HERE.md). The short pointer 
 - [Founding assets](continuity/ASSET-REGISTER.md) and [component repositories](continuity/REPOSITORIES.md)
 - [Operating/update/backup guide](continuity/OPERATING-GUIDE.md) and [succession](continuity/SUCCESSION.md)
 
-The recorded product baseline is merged/deployed PR #113. Bank-first and economic holds remain in force. Read the actual current checkout and open PRs before continuing; do not treat an earlier chat's next step as newer than repository evidence.
+The maintained current-state record identifies the exact merged/deployed product baseline; unmerged content candidates are recorded separately. Bank-first and economic holds remain in force. Read the actual current checkout and open PRs before continuing; do not treat an earlier chat's next step as newer than repository evidence.

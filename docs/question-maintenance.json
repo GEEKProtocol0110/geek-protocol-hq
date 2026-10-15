@@ -2,7 +2,7 @@
   "maintainedAt": "2026-10-15",
   "originalRows": 8032,
   "cleanedBaseline": 4024,
-  "activeQuestions": 8105,
+  "activeQuestions": 8185,
   "retiredRows": 4289,
   "addedQuestions": 4024,
   "categories": {
@@ -15,13 +15,13 @@
       },
       "added": 92,
       "target": 184,
-      "after": 500,
+      "after": 580,
       "difficultyDistribution": {
-        "easy": 108,
-        "medium": 208,
-        "hard": 184
+        "easy": 125,
+        "medium": 251,
+        "hard": 204
       },
-      "postReviewAdditions": 316
+      "postReviewAdditions": 396
     },
     "comics": {
       "before": 1000,
@@ -173,9 +173,12 @@
     "OpenTriviaDatabase": "Retrieved multiple-choice API records 2026-10-07; publisher difficulty retained.",
     "RustyKaspa": "01b532e8b553523216471682649693af92f0fd16",
     "KaspaKIPs": "e4ae2332117b5cb68bd6188e065ef885b6d17939",
-    "KasplexKiwi": "06dc75ea1066aba4d78eb32711690f6f123a9575"
+    "KasplexKiwi": "06dc75ea1066aba4d78eb32711690f6f123a9575",
+    "KaspaKCCs": "1516a6c4cef59940fc3af3096dbcdd9c08690254",
+    "KasWareExtension": "78bb30045edd4d898c4d61c4c75ba1bc37e18748",
+    "KaspanetDocs": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9"
   },
   "editorialRetiredRows": 281,
   "editorialReview": "docs/editorial-review.json",
-  "postReviewAdditions": 338
+  "postReviewAdditions": 418
 }
