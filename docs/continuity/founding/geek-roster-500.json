@@ -1,0 +1,4360 @@
+{
+  "schema": 1,
+  "assetId": "ARCH-011",
+  "recordedOn": "2026-10-15",
+  "originalFilename": "500geek list.txt",
+  "originalLocation": "docs/continuity/founding/phone/500geek list.txt",
+  "originalSizeBytes": 10336,
+  "originalSha256": "7e41d7d9bf0783339e6239a2607cbad8c78aa66a47714bdf745f6a9527c3ce6c",
+  "originalGitBlob": "47d8f502b955e0e003b77912c0026374c015ee3e",
+  "sourceProvenance": "Founder-supplied upload in this working conversation; described in context as founding material. Original creation date, authoring chronology and completeness are not independently verified. File-system timestamps are not creation proof.",
+  "status": "archival-roster-not-current-edition-mapping",
+  "extractionPolicy": "Source order, names and line numbers retained, including repeated labels. sourceOrdinal is not an approved edition number. No names or tier allocations are silently corrected.",
+  "header": [
+    {
+      "sourceLine": 1,
+      "text": "Common (100)"
+    },
+    {
+      "sourceLine": 3,
+      "text": "Rare (50)"
+    },
+    {
+      "sourceLine": 5,
+      "text": "Epic (25)"
+    },
+    {
+      "sourceLine": 7,
+      "text": "Legendary (5)"
+    },
+    {
+      "sourceLine": 9,
+      "text": "Mythic (1/1)"
+    }
+  ],
+  "sections": [
+    {
+      "id": "group-01",
+      "heading": "🎮 Gaming & Tech Geeks (1–50)",
+      "declaredStart": 1,
+      "declaredEnd": 50,
+      "sourceLine": 11,
+      "entryCount": 50
+    },
+    {
+      "id": "group-02",
+      "heading": "💻 Programming & Computer Geeks (51–100)",
+      "declaredStart": 51,
+      "declaredEnd": 100,
+      "sourceLine": 112,
+      "entryCount": 50
+    },
+    {
+      "id": "group-03",
+      "heading": "📚 Academic & Knowledge Geeks (101–150)",
+      "declaredStart": 101,
+      "declaredEnd": 150,
+      "sourceLine": 213,
+      "entryCount": 50
+    },
+    {
+      "id": "group-04",
+      "heading": "🎨 Creative & Art Geeks (151–200)",
+      "declaredStart": 151,
+      "declaredEnd": 200,
+      "sourceLine": 314,
+      "entryCount": 50
+    },
+    {
+      "id": "group-05",
+      "heading": "🎼 Music & Audio Geeks (201–250)",
+      "declaredStart": 201,
+      "declaredEnd": 250,
+      "sourceLine": 415,
+      "entryCount": 50
+    },
+    {
+      "id": "group-06",
+      "heading": "📺 Film, TV & Pop Culture Geeks (251–300)",
+      "declaredStart": 251,
+      "declaredEnd": 300,
+      "sourceLine": 516,
+      "entryCount": 50
+    },
+    {
+      "id": "group-07",
+      "heading": "🔬 Science & Exploration Geeks (301–350)",
+      "declaredStart": 301,
+      "declaredEnd": 350,
+      "sourceLine": 617,
+      "entryCount": 50
+    },
+    {
+      "id": "group-08",
+      "heading": "🧙 Fantasy & Roleplay Geeks (351–400)",
+      "declaredStart": 351,
+      "declaredEnd": 400,
+      "sourceLine": 718,
+      "entryCount": 50
+    },
+    {
+      "id": "group-09",
+      "heading": "👾 Internet & Subculture Geeks (401–450)",
+      "declaredStart": 401,
+      "declaredEnd": 450,
+      "sourceLine": 819,
+      "entryCount": 50
+    },
+    {
+      "id": "group-10",
+      "heading": "💡 Misc / Lifestyle Geeks (451–500)",
+      "declaredStart": 451,
+      "declaredEnd": 500,
+      "sourceLine": 920,
+      "entryCount": 50
+    }
+  ],
+  "summary": {
+    "sourceEntries": 500,
+    "uniqueExactNames": 482,
+    "repeatedNameGroups": 18,
+    "extraRepeatedPositions": 18,
+    "exactCurrentEditionNameMatches": 0,
+    "exactLegacyConceptNames": 3,
+    "exactLegacyAssetRecords": 4
+  },
+  "duplicates": [
+    {
+      "name": "Cosplay Geek",
+      "sourceOrdinals": [
+        28,
+        356
+      ]
+    },
+    {
+      "name": "Tabletop RPG Geek",
+      "sourceOrdinals": [
+        30,
+        398
+      ]
+    },
+    {
+      "name": "AI Research Geek",
+      "sourceOrdinals": [
+        82,
+        345
+      ]
+    },
+    {
+      "name": "Paleontology Geek",
+      "sourceOrdinals": [
+        112,
+        328
+      ]
+    },
+    {
+      "name": "Oceanography Geek",
+      "sourceOrdinals": [
+        121,
+        321
+      ]
+    },
+    {
+      "name": "Ecology Geek",
+      "sourceOrdinals": [
+        123,
+        332
+      ]
+    },
+    {
+      "name": "Neuroscience Geek",
+      "sourceOrdinals": [
+        124,
+        340
+      ]
+    },
+    {
+      "name": "Marine Biology Geek",
+      "sourceOrdinals": [
+        129,
+        322
+      ]
+    },
+    {
+      "name": "Genetics Geek",
+      "sourceOrdinals": [
+        130,
+        339
+      ]
+    },
+    {
+      "name": "Microbiology Geek",
+      "sourceOrdinals": [
+        131,
+        337
+      ]
+    },
+    {
+      "name": "Botany Geek",
+      "sourceOrdinals": [
+        133,
+        336
+      ]
+    },
+    {
+      "name": "Astrophysics Geek",
+      "sourceOrdinals": [
+        135,
+        302
+      ]
+    },
+    {
+      "name": "Cosmology Geek",
+      "sourceOrdinals": [
+        136,
+        303
+      ]
+    },
+    {
+      "name": "Cinematography Geek",
+      "sourceOrdinals": [
+        183,
+        267
+      ]
+    },
+    {
+      "name": "Synthwave Geek",
+      "sourceOrdinals": [
+        223,
+        433
+      ]
+    },
+    {
+      "name": "Foley Artist Geek",
+      "sourceOrdinals": [
+        248,
+        299
+      ]
+    },
+    {
+      "name": "Meme Geek",
+      "sourceOrdinals": [
+        259,
+        406
+      ]
+    },
+    {
+      "name": "Smartwatch Geek",
+      "sourceOrdinals": [
+        448,
+        491
+      ]
+    }
+  ],
+  "comparison": {
+    "currentManifestSource": "server/geek-collection.js",
+    "checkedAtCommit": "65820b08a8b84d08db1756a65c2e9bf83df66569",
+    "currentSupply": 500,
+    "currentTierCounts": [
+      {
+        "name": "Common",
+        "count": 250,
+        "firstEdition": 1,
+        "lastEdition": 250
+      },
+      {
+        "name": "Rare",
+        "count": 125,
+        "firstEdition": 251,
+        "lastEdition": 375
+      },
+      {
+        "name": "Epic",
+        "count": 75,
+        "firstEdition": 376,
+        "lastEdition": 450
+      },
+      {
+        "name": "Legendary",
+        "count": 48,
+        "firstEdition": 451,
+        "lastEdition": 498
+      },
+      {
+        "name": "Mythic",
+        "count": 2,
+        "firstEdition": 499,
+        "lastEdition": 500
+      }
+    ],
+    "exactCurrentNameMatches": [],
+    "legacyConceptNameOverlaps": [
+      {
+        "legacyAssetId": "legacy-speedrunner-geek-legendary",
+        "character": "Speedrunner Geek",
+        "visibleTier": "Legendary",
+        "sourceOrdinals": [
+          3
+        ],
+        "mappedEdition": null,
+        "meaning": "Exact concept-name overlap only; no edition or art approval."
+      },
+      {
+        "legacyAssetId": "legacy-streamer-geek-common",
+        "character": "Streamer Geek",
+        "visibleTier": "Common",
+        "sourceOrdinals": [
+          6
+        ],
+        "mappedEdition": null,
+        "meaning": "Exact concept-name overlap only; no edition or art approval."
+      },
+      {
+        "legacyAssetId": "legacy-vr-geek-rare",
+        "character": "VR Geek",
+        "visibleTier": "Rare",
+        "sourceOrdinals": [
+          5
+        ],
+        "mappedEdition": null,
+        "meaning": "Exact concept-name overlap only; no edition or art approval."
+      },
+      {
+        "legacyAssetId": "legacy-vr-geek",
+        "character": "VR Geek",
+        "visibleTier": null,
+        "sourceOrdinals": [
+          5
+        ],
+        "mappedEdition": null,
+        "meaning": "Exact concept-name overlap only; no edition or art approval."
+      }
+    ],
+    "anchorsPresentInSource": {
+      "GIGA": false,
+      "A.C.E.": false
+    },
+    "sourcePositionsAtCurrentAnchorNumbers": [
+      {
+        "sourceId": "source-499",
+        "sourceOrdinal": 499,
+        "sourceLine": 1017,
+        "groupId": "group-10",
+        "name": "ASMR Geek",
+        "mappedEdition": null
+      },
+      {
+        "sourceId": "source-500",
+        "sourceOrdinal": 500,
+        "sourceLine": 1019,
+        "groupId": "group-10",
+        "name": "Perfume Blending Geek",
+        "mappedEdition": null
+      }
+    ],
+    "approvedEditionMappings": 0,
+    "runtimeManifestChanged": false
+  },
+  "entries": [
+    {
+      "sourceId": "source-001",
+      "sourceOrdinal": 1,
+      "sourceLine": 12,
+      "groupId": "group-01",
+      "name": "Retro Gamer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-002",
+      "sourceOrdinal": 2,
+      "sourceLine": 14,
+      "groupId": "group-01",
+      "name": "Pro Gamer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-003",
+      "sourceOrdinal": 3,
+      "sourceLine": 16,
+      "groupId": "group-01",
+      "name": "Speedrunner Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-004",
+      "sourceOrdinal": 4,
+      "sourceLine": 18,
+      "groupId": "group-01",
+      "name": "Modder Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-005",
+      "sourceOrdinal": 5,
+      "sourceLine": 20,
+      "groupId": "group-01",
+      "name": "VR Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-006",
+      "sourceOrdinal": 6,
+      "sourceLine": 22,
+      "groupId": "group-01",
+      "name": "Streamer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-007",
+      "sourceOrdinal": 7,
+      "sourceLine": 24,
+      "groupId": "group-01",
+      "name": "Mobile Gamer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-008",
+      "sourceOrdinal": 8,
+      "sourceLine": 26,
+      "groupId": "group-01",
+      "name": "Arcade Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-009",
+      "sourceOrdinal": 9,
+      "sourceLine": 28,
+      "groupId": "group-01",
+      "name": "Board Game Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-010",
+      "sourceOrdinal": 10,
+      "sourceLine": 30,
+      "groupId": "group-01",
+      "name": "Esports Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-011",
+      "sourceOrdinal": 11,
+      "sourceLine": 32,
+      "groupId": "group-01",
+      "name": "FPS Gamer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-012",
+      "sourceOrdinal": 12,
+      "sourceLine": 34,
+      "groupId": "group-01",
+      "name": "MOBA Gamer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-013",
+      "sourceOrdinal": 13,
+      "sourceLine": 36,
+      "groupId": "group-01",
+      "name": "RPG Gamer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-014",
+      "sourceOrdinal": 14,
+      "sourceLine": 38,
+      "groupId": "group-01",
+      "name": "Simulation Gamer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-015",
+      "sourceOrdinal": 15,
+      "sourceLine": 40,
+      "groupId": "group-01",
+      "name": "Indie Game Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-016",
+      "sourceOrdinal": 16,
+      "sourceLine": 42,
+      "groupId": "group-01",
+      "name": "Puzzle Game Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-017",
+      "sourceOrdinal": 17,
+      "sourceLine": 44,
+      "groupId": "group-01",
+      "name": "Fighting Game Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-018",
+      "sourceOrdinal": 18,
+      "sourceLine": 46,
+      "groupId": "group-01",
+      "name": "Strategy Game Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-019",
+      "sourceOrdinal": 19,
+      "sourceLine": 48,
+      "groupId": "group-01",
+      "name": "Survival Game Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-020",
+      "sourceOrdinal": 20,
+      "sourceLine": 50,
+      "groupId": "group-01",
+      "name": "Sandbox Game Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-021",
+      "sourceOrdinal": 21,
+      "sourceLine": 52,
+      "groupId": "group-01",
+      "name": "Platformer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-022",
+      "sourceOrdinal": 22,
+      "sourceLine": 54,
+      "groupId": "group-01",
+      "name": "Roguelike Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-023",
+      "sourceOrdinal": 23,
+      "sourceLine": 56,
+      "groupId": "group-01",
+      "name": "VRChat Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-024",
+      "sourceOrdinal": 24,
+      "sourceLine": 58,
+      "groupId": "group-01",
+      "name": "Twitch Chat Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-025",
+      "sourceOrdinal": 25,
+      "sourceLine": 60,
+      "groupId": "group-01",
+      "name": "Game Dev Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-026",
+      "sourceOrdinal": 26,
+      "sourceLine": 62,
+      "groupId": "group-01",
+      "name": "Level Designer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-027",
+      "sourceOrdinal": 27,
+      "sourceLine": 64,
+      "groupId": "group-01",
+      "name": "Indie Dev Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-028",
+      "sourceOrdinal": 28,
+      "sourceLine": 66,
+      "groupId": "group-01",
+      "name": "Cosplay Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-029",
+      "sourceOrdinal": 29,
+      "sourceLine": 68,
+      "groupId": "group-01",
+      "name": "Collectible Card Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-030",
+      "sourceOrdinal": 30,
+      "sourceLine": 70,
+      "groupId": "group-01",
+      "name": "Tabletop RPG Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-031",
+      "sourceOrdinal": 31,
+      "sourceLine": 72,
+      "groupId": "group-01",
+      "name": "Looter-Shooter Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-032",
+      "sourceOrdinal": 32,
+      "sourceLine": 74,
+      "groupId": "group-01",
+      "name": "MMOG Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-033",
+      "sourceOrdinal": 33,
+      "sourceLine": 76,
+      "groupId": "group-01",
+      "name": "MMORPG Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-034",
+      "sourceOrdinal": 34,
+      "sourceLine": 78,
+      "groupId": "group-01",
+      "name": "Roguelite Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-035",
+      "sourceOrdinal": 35,
+      "sourceLine": 80,
+      "groupId": "group-01",
+      "name": "Open World Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-036",
+      "sourceOrdinal": 36,
+      "sourceLine": 82,
+      "groupId": "group-01",
+      "name": "Esports Analyst Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-037",
+      "sourceOrdinal": 37,
+      "sourceLine": 84,
+      "groupId": "group-01",
+      "name": "Game Soundtrack Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-038",
+      "sourceOrdinal": 38,
+      "sourceLine": 86,
+      "groupId": "group-01",
+      "name": "Game Theory Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-039",
+      "sourceOrdinal": 39,
+      "sourceLine": 88,
+      "groupId": "group-01",
+      "name": "Tactical Shooter Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-040",
+      "sourceOrdinal": 40,
+      "sourceLine": 90,
+      "groupId": "group-01",
+      "name": "Battle Royale Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-041",
+      "sourceOrdinal": 41,
+      "sourceLine": 92,
+      "groupId": "group-01",
+      "name": "Rhythm Game Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-042",
+      "sourceOrdinal": 42,
+      "sourceLine": 94,
+      "groupId": "group-01",
+      "name": "Horror Game Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-043",
+      "sourceOrdinal": 43,
+      "sourceLine": 96,
+      "groupId": "group-01",
+      "name": "Dating Sim Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-044",
+      "sourceOrdinal": 44,
+      "sourceLine": 98,
+      "groupId": "group-01",
+      "name": "Visual Novel Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-045",
+      "sourceOrdinal": 45,
+      "sourceLine": 100,
+      "groupId": "group-01",
+      "name": "Metroidvania Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-046",
+      "sourceOrdinal": 46,
+      "sourceLine": 102,
+      "groupId": "group-01",
+      "name": "DLC Collector Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-047",
+      "sourceOrdinal": 47,
+      "sourceLine": 104,
+      "groupId": "group-01",
+      "name": "Achievement Hunter Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-048",
+      "sourceOrdinal": 48,
+      "sourceLine": 106,
+      "groupId": "group-01",
+      "name": "Live Production Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-049",
+      "sourceOrdinal": 49,
+      "sourceLine": 108,
+      "groupId": "group-01",
+      "name": "Game Tester Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-050",
+      "sourceOrdinal": 50,
+      "sourceLine": 110,
+      "groupId": "group-01",
+      "name": "QA Automation Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-051",
+      "sourceOrdinal": 51,
+      "sourceLine": 113,
+      "groupId": "group-02",
+      "name": "Coder Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-052",
+      "sourceOrdinal": 52,
+      "sourceLine": 115,
+      "groupId": "group-02",
+      "name": "Frontend Dev Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-053",
+      "sourceOrdinal": 53,
+      "sourceLine": 117,
+      "groupId": "group-02",
+      "name": "Backend Dev Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-054",
+      "sourceOrdinal": 54,
+      "sourceLine": 119,
+      "groupId": "group-02",
+      "name": "Full-Stack Dev Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-055",
+      "sourceOrdinal": 55,
+      "sourceLine": 121,
+      "groupId": "group-02",
+      "name": "DevOps Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-056",
+      "sourceOrdinal": 56,
+      "sourceLine": 123,
+      "groupId": "group-02",
+      "name": "Cloud Architect Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-057",
+      "sourceOrdinal": 57,
+      "sourceLine": 125,
+      "groupId": "group-02",
+      "name": "Kubernetes Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-058",
+      "sourceOrdinal": 58,
+      "sourceLine": 127,
+      "groupId": "group-02",
+      "name": "Docker Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-059",
+      "sourceOrdinal": 59,
+      "sourceLine": 129,
+      "groupId": "group-02",
+      "name": "Cybersecurity Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-060",
+      "sourceOrdinal": 60,
+      "sourceLine": 131,
+      "groupId": "group-02",
+      "name": "Ethical Hacker Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-061",
+      "sourceOrdinal": 61,
+      "sourceLine": 133,
+      "groupId": "group-02",
+      "name": "QA Tester Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-062",
+      "sourceOrdinal": 62,
+      "sourceLine": 135,
+      "groupId": "group-02",
+      "name": "Database Admin Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-063",
+      "sourceOrdinal": 63,
+      "sourceLine": 137,
+      "groupId": "group-02",
+      "name": "SQL Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-064",
+      "sourceOrdinal": 64,
+      "sourceLine": 139,
+      "groupId": "group-02",
+      "name": "NoSQL Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-065",
+      "sourceOrdinal": 65,
+      "sourceLine": 141,
+      "groupId": "group-02",
+      "name": "API Dev Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-066",
+      "sourceOrdinal": 66,
+      "sourceLine": 143,
+      "groupId": "group-02",
+      "name": "Mobile Dev Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-067",
+      "sourceOrdinal": 67,
+      "sourceLine": 145,
+      "groupId": "group-02",
+      "name": "iOS Dev Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-068",
+      "sourceOrdinal": 68,
+      "sourceLine": 147,
+      "groupId": "group-02",
+      "name": "Android Dev Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-069",
+      "sourceOrdinal": 69,
+      "sourceLine": 149,
+      "groupId": "group-02",
+      "name": "Embedded Systems Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-070",
+      "sourceOrdinal": 70,
+      "sourceLine": 151,
+      "groupId": "group-02",
+      "name": "IoT Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-071",
+      "sourceOrdinal": 71,
+      "sourceLine": 153,
+      "groupId": "group-02",
+      "name": "Network Engineer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-072",
+      "sourceOrdinal": 72,
+      "sourceLine": 155,
+      "groupId": "group-02",
+      "name": "Pen-Tester Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-073",
+      "sourceOrdinal": 73,
+      "sourceLine": 157,
+      "groupId": "group-02",
+      "name": "Blockchain Dev Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-074",
+      "sourceOrdinal": 74,
+      "sourceLine": 159,
+      "groupId": "group-02",
+      "name": "Smart Contract Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-075",
+      "sourceOrdinal": 75,
+      "sourceLine": 161,
+      "groupId": "group-02",
+      "name": "NFT Dev Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-076",
+      "sourceOrdinal": 76,
+      "sourceLine": 163,
+      "groupId": "group-02",
+      "name": "Hardware Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-077",
+      "sourceOrdinal": 77,
+      "sourceLine": 165,
+      "groupId": "group-02",
+      "name": "Raspberry Pi Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-078",
+      "sourceOrdinal": 78,
+      "sourceLine": 167,
+      "groupId": "group-02",
+      "name": "Arduino Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-079",
+      "sourceOrdinal": 79,
+      "sourceLine": 169,
+      "groupId": "group-02",
+      "name": "FPGA Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-080",
+      "sourceOrdinal": 80,
+      "sourceLine": 171,
+      "groupId": "group-02",
+      "name": "VR Dev Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-081",
+      "sourceOrdinal": 81,
+      "sourceLine": 173,
+      "groupId": "group-02",
+      "name": "AR Dev Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-082",
+      "sourceOrdinal": 82,
+      "sourceLine": 175,
+      "groupId": "group-02",
+      "name": "AI Research Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-083",
+      "sourceOrdinal": 83,
+      "sourceLine": 177,
+      "groupId": "group-02",
+      "name": "ML Engineer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-084",
+      "sourceOrdinal": 84,
+      "sourceLine": 179,
+      "groupId": "group-02",
+      "name": "Data Engineer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-085",
+      "sourceOrdinal": 85,
+      "sourceLine": 181,
+      "groupId": "group-02",
+      "name": "Big Data Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-086",
+      "sourceOrdinal": 86,
+      "sourceLine": 183,
+      "groupId": "group-02",
+      "name": "Visualization Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-087",
+      "sourceOrdinal": 87,
+      "sourceLine": 185,
+      "groupId": "group-02",
+      "name": "BI Analyst Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-088",
+      "sourceOrdinal": 88,
+      "sourceLine": 187,
+      "groupId": "group-02",
+      "name": "Algorithm Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-089",
+      "sourceOrdinal": 89,
+      "sourceLine": 189,
+      "groupId": "group-02",
+      "name": "Functional Programming Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-090",
+      "sourceOrdinal": 90,
+      "sourceLine": 191,
+      "groupId": "group-02",
+      "name": "Rust Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-091",
+      "sourceOrdinal": 91,
+      "sourceLine": 193,
+      "groupId": "group-02",
+      "name": "Python Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-092",
+      "sourceOrdinal": 92,
+      "sourceLine": 195,
+      "groupId": "group-02",
+      "name": "GoLang Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-093",
+      "sourceOrdinal": 93,
+      "sourceLine": 197,
+      "groupId": "group-02",
+      "name": "Java Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-094",
+      "sourceOrdinal": 94,
+      "sourceLine": 199,
+      "groupId": "group-02",
+      "name": "Haskell Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-095",
+      "sourceOrdinal": 95,
+      "sourceLine": 201,
+      "groupId": "group-02",
+      "name": "Linux Kernel Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-096",
+      "sourceOrdinal": 96,
+      "sourceLine": 203,
+      "groupId": "group-02",
+      "name": "OS Architect Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-097",
+      "sourceOrdinal": 97,
+      "sourceLine": 205,
+      "groupId": "group-02",
+      "name": "Shell Scripting Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-098",
+      "sourceOrdinal": 98,
+      "sourceLine": 207,
+      "groupId": "group-02",
+      "name": "Bash Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-099",
+      "sourceOrdinal": 99,
+      "sourceLine": 209,
+      "groupId": "group-02",
+      "name": "Windows Admin Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-100",
+      "sourceOrdinal": 100,
+      "sourceLine": 211,
+      "groupId": "group-02",
+      "name": "Mac Admin Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-101",
+      "sourceOrdinal": 101,
+      "sourceLine": 214,
+      "groupId": "group-03",
+      "name": "Bookworm Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-102",
+      "sourceOrdinal": 102,
+      "sourceLine": 216,
+      "groupId": "group-03",
+      "name": "History Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-103",
+      "sourceOrdinal": 103,
+      "sourceLine": 218,
+      "groupId": "group-03",
+      "name": "Mythology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-104",
+      "sourceOrdinal": 104,
+      "sourceLine": 220,
+      "groupId": "group-03",
+      "name": "Math Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-105",
+      "sourceOrdinal": 105,
+      "sourceLine": 222,
+      "groupId": "group-03",
+      "name": "Physics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-106",
+      "sourceOrdinal": 106,
+      "sourceLine": 224,
+      "groupId": "group-03",
+      "name": "Chemistry Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-107",
+      "sourceOrdinal": 107,
+      "sourceLine": 226,
+      "groupId": "group-03",
+      "name": "Biology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-108",
+      "sourceOrdinal": 108,
+      "sourceLine": 228,
+      "groupId": "group-03",
+      "name": "Philosophy Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-109",
+      "sourceOrdinal": 109,
+      "sourceLine": 230,
+      "groupId": "group-03",
+      "name": "Linguistics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-110",
+      "sourceOrdinal": 110,
+      "sourceLine": 232,
+      "groupId": "group-03",
+      "name": "Library Science Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-111",
+      "sourceOrdinal": 111,
+      "sourceLine": 234,
+      "groupId": "group-03",
+      "name": "Art History Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-112",
+      "sourceOrdinal": 112,
+      "sourceLine": 236,
+      "groupId": "group-03",
+      "name": "Paleontology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-113",
+      "sourceOrdinal": 113,
+      "sourceLine": 238,
+      "groupId": "group-03",
+      "name": "Archaeology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-114",
+      "sourceOrdinal": 114,
+      "sourceLine": 240,
+      "groupId": "group-03",
+      "name": "Theology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-115",
+      "sourceOrdinal": 115,
+      "sourceLine": 242,
+      "groupId": "group-03",
+      "name": "Political Science Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-116",
+      "sourceOrdinal": 116,
+      "sourceLine": 244,
+      "groupId": "group-03",
+      "name": "Economics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-117",
+      "sourceOrdinal": 117,
+      "sourceLine": 246,
+      "groupId": "group-03",
+      "name": "Psychology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-118",
+      "sourceOrdinal": 118,
+      "sourceLine": 248,
+      "groupId": "group-03",
+      "name": "Sociology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-119",
+      "sourceOrdinal": 119,
+      "sourceLine": 250,
+      "groupId": "group-03",
+      "name": "Anthropology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-120",
+      "sourceOrdinal": 120,
+      "sourceLine": 252,
+      "groupId": "group-03",
+      "name": "Geography Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-121",
+      "sourceOrdinal": 121,
+      "sourceLine": 254,
+      "groupId": "group-03",
+      "name": "Oceanography Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-122",
+      "sourceOrdinal": 122,
+      "sourceLine": 256,
+      "groupId": "group-03",
+      "name": "Environmental Science Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-123",
+      "sourceOrdinal": 123,
+      "sourceLine": 258,
+      "groupId": "group-03",
+      "name": "Ecology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-124",
+      "sourceOrdinal": 124,
+      "sourceLine": 260,
+      "groupId": "group-03",
+      "name": "Neuroscience Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-125",
+      "sourceOrdinal": 125,
+      "sourceLine": 262,
+      "groupId": "group-03",
+      "name": "Criminology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-126",
+      "sourceOrdinal": 126,
+      "sourceLine": 264,
+      "groupId": "group-03",
+      "name": "Law Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-127",
+      "sourceOrdinal": 127,
+      "sourceLine": 266,
+      "groupId": "group-03",
+      "name": "Medicine Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-128",
+      "sourceOrdinal": 128,
+      "sourceLine": 268,
+      "groupId": "group-03",
+      "name": "Anatomy Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-129",
+      "sourceOrdinal": 129,
+      "sourceLine": 270,
+      "groupId": "group-03",
+      "name": "Marine Biology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-130",
+      "sourceOrdinal": 130,
+      "sourceLine": 272,
+      "groupId": "group-03",
+      "name": "Genetics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-131",
+      "sourceOrdinal": 131,
+      "sourceLine": 274,
+      "groupId": "group-03",
+      "name": "Microbiology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-132",
+      "sourceOrdinal": 132,
+      "sourceLine": 276,
+      "groupId": "group-03",
+      "name": "Zoology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-133",
+      "sourceOrdinal": 133,
+      "sourceLine": 278,
+      "groupId": "group-03",
+      "name": "Botany Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-134",
+      "sourceOrdinal": 134,
+      "sourceLine": 280,
+      "groupId": "group-03",
+      "name": "Quantum Physics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-135",
+      "sourceOrdinal": 135,
+      "sourceLine": 282,
+      "groupId": "group-03",
+      "name": "Astrophysics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-136",
+      "sourceOrdinal": 136,
+      "sourceLine": 284,
+      "groupId": "group-03",
+      "name": "Cosmology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-137",
+      "sourceOrdinal": 137,
+      "sourceLine": 286,
+      "groupId": "group-03",
+      "name": "Neurology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-138",
+      "sourceOrdinal": 138,
+      "sourceLine": 288,
+      "groupId": "group-03",
+      "name": "Semiotics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-139",
+      "sourceOrdinal": 139,
+      "sourceLine": 290,
+      "groupId": "group-03",
+      "name": "Cryptography Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-140",
+      "sourceOrdinal": 140,
+      "sourceLine": 292,
+      "groupId": "group-03",
+      "name": "Statistics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-141",
+      "sourceOrdinal": 141,
+      "sourceLine": 294,
+      "groupId": "group-03",
+      "name": "Probability Theory Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-142",
+      "sourceOrdinal": 142,
+      "sourceLine": 296,
+      "groupId": "group-03",
+      "name": "Logic Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-143",
+      "sourceOrdinal": 143,
+      "sourceLine": 298,
+      "groupId": "group-03",
+      "name": "Epistemology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-144",
+      "sourceOrdinal": 144,
+      "sourceLine": 300,
+      "groupId": "group-03",
+      "name": "Phenomenology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-145",
+      "sourceOrdinal": 145,
+      "sourceLine": 302,
+      "groupId": "group-03",
+      "name": "Rhetoric Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-146",
+      "sourceOrdinal": 146,
+      "sourceLine": 304,
+      "groupId": "group-03",
+      "name": "Demography Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-147",
+      "sourceOrdinal": 147,
+      "sourceLine": 306,
+      "groupId": "group-03",
+      "name": "Linguistic Anthropology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-148",
+      "sourceOrdinal": 148,
+      "sourceLine": 308,
+      "groupId": "group-03",
+      "name": "Paleobotany Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-149",
+      "sourceOrdinal": 149,
+      "sourceLine": 310,
+      "groupId": "group-03",
+      "name": "Paleozoology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-150",
+      "sourceOrdinal": 150,
+      "sourceLine": 312,
+      "groupId": "group-03",
+      "name": "Climatology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-151",
+      "sourceOrdinal": 151,
+      "sourceLine": 315,
+      "groupId": "group-04",
+      "name": "Pixel Art Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-152",
+      "sourceOrdinal": 152,
+      "sourceLine": 317,
+      "groupId": "group-04",
+      "name": "3D Modeling Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-153",
+      "sourceOrdinal": 153,
+      "sourceLine": 319,
+      "groupId": "group-04",
+      "name": "Graphic Design Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-154",
+      "sourceOrdinal": 154,
+      "sourceLine": 321,
+      "groupId": "group-04",
+      "name": "Illustrator Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-155",
+      "sourceOrdinal": 155,
+      "sourceLine": 323,
+      "groupId": "group-04",
+      "name": "Photography Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-156",
+      "sourceOrdinal": 156,
+      "sourceLine": 325,
+      "groupId": "group-04",
+      "name": "Digital Painting Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-157",
+      "sourceOrdinal": 157,
+      "sourceLine": 327,
+      "groupId": "group-04",
+      "name": "Concept Art Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-158",
+      "sourceOrdinal": 158,
+      "sourceLine": 329,
+      "groupId": "group-04",
+      "name": "UI/UX Design Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-159",
+      "sourceOrdinal": 159,
+      "sourceLine": 331,
+      "groupId": "group-04",
+      "name": "Motion Graphics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-160",
+      "sourceOrdinal": 160,
+      "sourceLine": 333,
+      "groupId": "group-04",
+      "name": "VFX Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-161",
+      "sourceOrdinal": 161,
+      "sourceLine": 335,
+      "groupId": "group-04",
+      "name": "2D Animation Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-162",
+      "sourceOrdinal": 162,
+      "sourceLine": 337,
+      "groupId": "group-04",
+      "name": "3D Animation Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-163",
+      "sourceOrdinal": 163,
+      "sourceLine": 339,
+      "groupId": "group-04",
+      "name": "Stop-Motion Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-164",
+      "sourceOrdinal": 164,
+      "sourceLine": 341,
+      "groupId": "group-04",
+      "name": "Character Design Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-165",
+      "sourceOrdinal": 165,
+      "sourceLine": 343,
+      "groupId": "group-04",
+      "name": "Sculpting Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-166",
+      "sourceOrdinal": 166,
+      "sourceLine": 345,
+      "groupId": "group-04",
+      "name": "Pottery Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-167",
+      "sourceOrdinal": 167,
+      "sourceLine": 347,
+      "groupId": "group-04",
+      "name": "Glassblowing Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-168",
+      "sourceOrdinal": 168,
+      "sourceLine": 349,
+      "groupId": "group-04",
+      "name": "Woodworking Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-169",
+      "sourceOrdinal": 169,
+      "sourceLine": 351,
+      "groupId": "group-04",
+      "name": "Knitting Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-170",
+      "sourceOrdinal": 170,
+      "sourceLine": 353,
+      "groupId": "group-04",
+      "name": "Crochet Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-171",
+      "sourceOrdinal": 171,
+      "sourceLine": 355,
+      "groupId": "group-04",
+      "name": "Embroidery Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-172",
+      "sourceOrdinal": 172,
+      "sourceLine": 357,
+      "groupId": "group-04",
+      "name": "Jewelry Design Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-173",
+      "sourceOrdinal": 173,
+      "sourceLine": 359,
+      "groupId": "group-04",
+      "name": "Fashion Design Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-174",
+      "sourceOrdinal": 174,
+      "sourceLine": 361,
+      "groupId": "group-04",
+      "name": "Costume Design Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-175",
+      "sourceOrdinal": 175,
+      "sourceLine": 363,
+      "groupId": "group-04",
+      "name": "Makeup Artistry Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-176",
+      "sourceOrdinal": 176,
+      "sourceLine": 365,
+      "groupId": "group-04",
+      "name": "Calligraphy Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-177",
+      "sourceOrdinal": 177,
+      "sourceLine": 367,
+      "groupId": "group-04",
+      "name": "Comic Book Artist Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-178",
+      "sourceOrdinal": 178,
+      "sourceLine": 369,
+      "groupId": "group-04",
+      "name": "Manga Artist Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-179",
+      "sourceOrdinal": 179,
+      "sourceLine": 371,
+      "groupId": "group-04",
+      "name": "Installation Art Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-180",
+      "sourceOrdinal": 180,
+      "sourceLine": 373,
+      "groupId": "group-04",
+      "name": "Graffiti Artist Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-181",
+      "sourceOrdinal": 181,
+      "sourceLine": 375,
+      "groupId": "group-04",
+      "name": "Sign Painting Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-182",
+      "sourceOrdinal": 182,
+      "sourceLine": 377,
+      "groupId": "group-04",
+      "name": "Stage Design Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-183",
+      "sourceOrdinal": 183,
+      "sourceLine": 379,
+      "groupId": "group-04",
+      "name": "Cinematography Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-184",
+      "sourceOrdinal": 184,
+      "sourceLine": 381,
+      "groupId": "group-04",
+      "name": "Textile Design Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-185",
+      "sourceOrdinal": 185,
+      "sourceLine": 383,
+      "groupId": "group-04",
+      "name": "Cake Decorating Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-186",
+      "sourceOrdinal": 186,
+      "sourceLine": 385,
+      "groupId": "group-04",
+      "name": "Floral Arrangement Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-187",
+      "sourceOrdinal": 187,
+      "sourceLine": 387,
+      "groupId": "group-04",
+      "name": "Lego Builder Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-188",
+      "sourceOrdinal": 188,
+      "sourceLine": 389,
+      "groupId": "group-04",
+      "name": "Model Railroad Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-189",
+      "sourceOrdinal": 189,
+      "sourceLine": 391,
+      "groupId": "group-04",
+      "name": "Diorama Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-190",
+      "sourceOrdinal": 190,
+      "sourceLine": 393,
+      "groupId": "group-04",
+      "name": "Bonsai Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-191",
+      "sourceOrdinal": 191,
+      "sourceLine": 395,
+      "groupId": "group-04",
+      "name": "Paper Art Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-192",
+      "sourceOrdinal": 192,
+      "sourceLine": 397,
+      "groupId": "group-04",
+      "name": "Stencil Art Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-193",
+      "sourceOrdinal": 193,
+      "sourceLine": 399,
+      "groupId": "group-04",
+      "name": "Resin Art Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-194",
+      "sourceOrdinal": 194,
+      "sourceLine": 401,
+      "groupId": "group-04",
+      "name": "Light Painting Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-195",
+      "sourceOrdinal": 195,
+      "sourceLine": 403,
+      "groupId": "group-04",
+      "name": "Chalk Art Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-196",
+      "sourceOrdinal": 196,
+      "sourceLine": 405,
+      "groupId": "group-04",
+      "name": "Caricature Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-197",
+      "sourceOrdinal": 197,
+      "sourceLine": 407,
+      "groupId": "group-04",
+      "name": "Etching Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-198",
+      "sourceOrdinal": 198,
+      "sourceLine": 409,
+      "groupId": "group-04",
+      "name": "Printmaking Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-199",
+      "sourceOrdinal": 199,
+      "sourceLine": 411,
+      "groupId": "group-04",
+      "name": "Storyboarding Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-200",
+      "sourceOrdinal": 200,
+      "sourceLine": 413,
+      "groupId": "group-04",
+      "name": "Conceptual Artist Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-201",
+      "sourceOrdinal": 201,
+      "sourceLine": 416,
+      "groupId": "group-05",
+      "name": "DJ Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-202",
+      "sourceOrdinal": 202,
+      "sourceLine": 418,
+      "groupId": "group-05",
+      "name": "Lo-Fi Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-203",
+      "sourceOrdinal": 203,
+      "sourceLine": 420,
+      "groupId": "group-05",
+      "name": "Synth Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-204",
+      "sourceOrdinal": 204,
+      "sourceLine": 422,
+      "groupId": "group-05",
+      "name": "Vinyl Collector Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-205",
+      "sourceOrdinal": 205,
+      "sourceLine": 424,
+      "groupId": "group-05",
+      "name": "Guitar Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-206",
+      "sourceOrdinal": 206,
+      "sourceLine": 426,
+      "groupId": "group-05",
+      "name": "Pianist Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-207",
+      "sourceOrdinal": 207,
+      "sourceLine": 428,
+      "groupId": "group-05",
+      "name": "Drummer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-208",
+      "sourceOrdinal": 208,
+      "sourceLine": 430,
+      "groupId": "group-05",
+      "name": "Bassist Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-209",
+      "sourceOrdinal": 209,
+      "sourceLine": 432,
+      "groupId": "group-05",
+      "name": "Electronic Music Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-210",
+      "sourceOrdinal": 210,
+      "sourceLine": 434,
+      "groupId": "group-05",
+      "name": "Hip-Hop Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-211",
+      "sourceOrdinal": 211,
+      "sourceLine": 436,
+      "groupId": "group-05",
+      "name": "Jazz Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-212",
+      "sourceOrdinal": 212,
+      "sourceLine": 438,
+      "groupId": "group-05",
+      "name": "Classical Music Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-213",
+      "sourceOrdinal": 213,
+      "sourceLine": 440,
+      "groupId": "group-05",
+      "name": "Opera Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-214",
+      "sourceOrdinal": 214,
+      "sourceLine": 442,
+      "groupId": "group-05",
+      "name": "Metal Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-215",
+      "sourceOrdinal": 215,
+      "sourceLine": 444,
+      "groupId": "group-05",
+      "name": "Punk Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-216",
+      "sourceOrdinal": 216,
+      "sourceLine": 446,
+      "groupId": "group-05",
+      "name": "Folk Music Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-217",
+      "sourceOrdinal": 217,
+      "sourceLine": 448,
+      "groupId": "group-05",
+      "name": "World Music Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-218",
+      "sourceOrdinal": 218,
+      "sourceLine": 450,
+      "groupId": "group-05",
+      "name": "Vocal Coach Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-219",
+      "sourceOrdinal": 219,
+      "sourceLine": 452,
+      "groupId": "group-05",
+      "name": "Music Producer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-220",
+      "sourceOrdinal": 220,
+      "sourceLine": 454,
+      "groupId": "group-05",
+      "name": "Mixing Engineer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-221",
+      "sourceOrdinal": 221,
+      "sourceLine": 456,
+      "groupId": "group-05",
+      "name": "Mastering Engineer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-222",
+      "sourceOrdinal": 222,
+      "sourceLine": 458,
+      "groupId": "group-05",
+      "name": "Sample Pack Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-223",
+      "sourceOrdinal": 223,
+      "sourceLine": 460,
+      "groupId": "group-05",
+      "name": "Synthwave Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-224",
+      "sourceOrdinal": 224,
+      "sourceLine": 462,
+      "groupId": "group-05",
+      "name": "Techno Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-225",
+      "sourceOrdinal": 225,
+      "sourceLine": 464,
+      "groupId": "group-05",
+      "name": "House Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-226",
+      "sourceOrdinal": 226,
+      "sourceLine": 466,
+      "groupId": "group-05",
+      "name": "Trance Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-227",
+      "sourceOrdinal": 227,
+      "sourceLine": 468,
+      "groupId": "group-05",
+      "name": "Ambient Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-228",
+      "sourceOrdinal": 228,
+      "sourceLine": 470,
+      "groupId": "group-05",
+      "name": "Experimental Music Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-229",
+      "sourceOrdinal": 229,
+      "sourceLine": 472,
+      "groupId": "group-05",
+      "name": "IDM Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-230",
+      "sourceOrdinal": 230,
+      "sourceLine": 474,
+      "groupId": "group-05",
+      "name": "Reggae Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-231",
+      "sourceOrdinal": 231,
+      "sourceLine": 476,
+      "groupId": "group-05",
+      "name": "Ska Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-232",
+      "sourceOrdinal": 232,
+      "sourceLine": 478,
+      "groupId": "group-05",
+      "name": "Blues Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-233",
+      "sourceOrdinal": 233,
+      "sourceLine": 480,
+      "groupId": "group-05",
+      "name": "Country Music Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-234",
+      "sourceOrdinal": 234,
+      "sourceLine": 482,
+      "groupId": "group-05",
+      "name": "Singer-Songwriter Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-235",
+      "sourceOrdinal": 235,
+      "sourceLine": 484,
+      "groupId": "group-05",
+      "name": "Music Historian Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-236",
+      "sourceOrdinal": 236,
+      "sourceLine": 486,
+      "groupId": "group-05",
+      "name": "Film Score Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-237",
+      "sourceOrdinal": 237,
+      "sourceLine": 488,
+      "groupId": "group-05",
+      "name": "Game Music Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-238",
+      "sourceOrdinal": 238,
+      "sourceLine": 490,
+      "groupId": "group-05",
+      "name": "Instrument Repair Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-239",
+      "sourceOrdinal": 239,
+      "sourceLine": 492,
+      "groupId": "group-05",
+      "name": "Turntablism Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-240",
+      "sourceOrdinal": 240,
+      "sourceLine": 494,
+      "groupId": "group-05",
+      "name": "Beatmaker Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-241",
+      "sourceOrdinal": 241,
+      "sourceLine": 496,
+      "groupId": "group-05",
+      "name": "Loop Pedal Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-242",
+      "sourceOrdinal": 242,
+      "sourceLine": 498,
+      "groupId": "group-05",
+      "name": "Choral Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-243",
+      "sourceOrdinal": 243,
+      "sourceLine": 500,
+      "groupId": "group-05",
+      "name": "World Instrument Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-244",
+      "sourceOrdinal": 244,
+      "sourceLine": 502,
+      "groupId": "group-05",
+      "name": "Binaural Beats Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-245",
+      "sourceOrdinal": 245,
+      "sourceLine": 504,
+      "groupId": "group-05",
+      "name": "Podcast Audio Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-246",
+      "sourceOrdinal": 246,
+      "sourceLine": 506,
+      "groupId": "group-05",
+      "name": "ASMR Audio Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-247",
+      "sourceOrdinal": 247,
+      "sourceLine": 508,
+      "groupId": "group-05",
+      "name": "Field Recording Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-248",
+      "sourceOrdinal": 248,
+      "sourceLine": 510,
+      "groupId": "group-05",
+      "name": "Foley Artist Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-249",
+      "sourceOrdinal": 249,
+      "sourceLine": 512,
+      "groupId": "group-05",
+      "name": "MIDI Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-250",
+      "sourceOrdinal": 250,
+      "sourceLine": 514,
+      "groupId": "group-05",
+      "name": "DAW Specialist Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-251",
+      "sourceOrdinal": 251,
+      "sourceLine": 517,
+      "groupId": "group-06",
+      "name": "Movie Buff Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-252",
+      "sourceOrdinal": 252,
+      "sourceLine": 519,
+      "groupId": "group-06",
+      "name": "Sci-Fi Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-253",
+      "sourceOrdinal": 253,
+      "sourceLine": 521,
+      "groupId": "group-06",
+      "name": "Fantasy Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-254",
+      "sourceOrdinal": 254,
+      "sourceLine": 523,
+      "groupId": "group-06",
+      "name": "Superhero Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-255",
+      "sourceOrdinal": 255,
+      "sourceLine": 525,
+      "groupId": "group-06",
+      "name": "Horror Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-256",
+      "sourceOrdinal": 256,
+      "sourceLine": 527,
+      "groupId": "group-06",
+      "name": "Rom-Com Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-257",
+      "sourceOrdinal": 257,
+      "sourceLine": 529,
+      "groupId": "group-06",
+      "name": "Sitcom Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-258",
+      "sourceOrdinal": 258,
+      "sourceLine": 531,
+      "groupId": "group-06",
+      "name": "Anime Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-259",
+      "sourceOrdinal": 259,
+      "sourceLine": 533,
+      "groupId": "group-06",
+      "name": "Meme Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-260",
+      "sourceOrdinal": 260,
+      "sourceLine": 535,
+      "groupId": "group-06",
+      "name": "Nostalgia Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-261",
+      "sourceOrdinal": 261,
+      "sourceLine": 537,
+      "groupId": "group-06",
+      "name": "Documentary Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-262",
+      "sourceOrdinal": 262,
+      "sourceLine": 539,
+      "groupId": "group-06",
+      "name": "Film Noir Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-263",
+      "sourceOrdinal": 263,
+      "sourceLine": 541,
+      "groupId": "group-06",
+      "name": "Indie Film Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-264",
+      "sourceOrdinal": 264,
+      "sourceLine": 543,
+      "groupId": "group-06",
+      "name": "Cult Classic Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-265",
+      "sourceOrdinal": 265,
+      "sourceLine": 545,
+      "groupId": "group-06",
+      "name": "B-Movie Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-266",
+      "sourceOrdinal": 266,
+      "sourceLine": 547,
+      "groupId": "group-06",
+      "name": "Blockbuster Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-267",
+      "sourceOrdinal": 267,
+      "sourceLine": 549,
+      "groupId": "group-06",
+      "name": "Cinematography Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-268",
+      "sourceOrdinal": 268,
+      "sourceLine": 551,
+      "groupId": "group-06",
+      "name": "Screenwriter Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-269",
+      "sourceOrdinal": 269,
+      "sourceLine": 553,
+      "groupId": "group-06",
+      "name": "Film Critic Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-270",
+      "sourceOrdinal": 270,
+      "sourceLine": 555,
+      "groupId": "group-06",
+      "name": "Action Movie Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-271",
+      "sourceOrdinal": 271,
+      "sourceLine": 557,
+      "groupId": "group-06",
+      "name": "Thriller Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-272",
+      "sourceOrdinal": 272,
+      "sourceLine": 559,
+      "groupId": "group-06",
+      "name": "Western Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-273",
+      "sourceOrdinal": 273,
+      "sourceLine": 561,
+      "groupId": "group-06",
+      "name": "Silent Film Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-274",
+      "sourceOrdinal": 274,
+      "sourceLine": 563,
+      "groupId": "group-06",
+      "name": "Golden Age Hollywood Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-275",
+      "sourceOrdinal": 275,
+      "sourceLine": 565,
+      "groupId": "group-06",
+      "name": "Bollywood Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-276",
+      "sourceOrdinal": 276,
+      "sourceLine": 567,
+      "groupId": "group-06",
+      "name": "K-Drama Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-277",
+      "sourceOrdinal": 277,
+      "sourceLine": 569,
+      "groupId": "group-06",
+      "name": "Telenovela Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-278",
+      "sourceOrdinal": 278,
+      "sourceLine": 571,
+      "groupId": "group-06",
+      "name": "Reality TV Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-279",
+      "sourceOrdinal": 279,
+      "sourceLine": 573,
+      "groupId": "group-06",
+      "name": "Game Show Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-280",
+      "sourceOrdinal": 280,
+      "sourceLine": 575,
+      "groupId": "group-06",
+      "name": "Sketch Comedy Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-281",
+      "sourceOrdinal": 281,
+      "sourceLine": 577,
+      "groupId": "group-06",
+      "name": "Stand-Up Comedy Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-282",
+      "sourceOrdinal": 282,
+      "sourceLine": 579,
+      "groupId": "group-06",
+      "name": "Late-Night TV Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-283",
+      "sourceOrdinal": 283,
+      "sourceLine": 581,
+      "groupId": "group-06",
+      "name": "Cult TV Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-284",
+      "sourceOrdinal": 284,
+      "sourceLine": 583,
+      "groupId": "group-06",
+      "name": "Animated Series Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-285",
+      "sourceOrdinal": 285,
+      "sourceLine": 585,
+      "groupId": "group-06",
+      "name": "Manga Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-286",
+      "sourceOrdinal": 286,
+      "sourceLine": 587,
+      "groupId": "group-06",
+      "name": "Comic Book Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-287",
+      "sourceOrdinal": 287,
+      "sourceLine": 589,
+      "groupId": "group-06",
+      "name": "Fan Convention Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-288",
+      "sourceOrdinal": 288,
+      "sourceLine": 591,
+      "groupId": "group-06",
+      "name": "Autograph Collector Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-289",
+      "sourceOrdinal": 289,
+      "sourceLine": 593,
+      "groupId": "group-06",
+      "name": "Movie Prop Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-290",
+      "sourceOrdinal": 290,
+      "sourceLine": 595,
+      "groupId": "group-06",
+      "name": "VHS Collector Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-291",
+      "sourceOrdinal": 291,
+      "sourceLine": 597,
+      "groupId": "group-06",
+      "name": "Criterion Collection Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-292",
+      "sourceOrdinal": 292,
+      "sourceLine": 599,
+      "groupId": "group-06",
+      "name": "Film Festival Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-293",
+      "sourceOrdinal": 293,
+      "sourceLine": 601,
+      "groupId": "group-06",
+      "name": "Streaming Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-294",
+      "sourceOrdinal": 294,
+      "sourceLine": 603,
+      "groupId": "group-06",
+      "name": "Binge-Watcher Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-295",
+      "sourceOrdinal": 295,
+      "sourceLine": 605,
+      "groupId": "group-06",
+      "name": "Award Show Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-296",
+      "sourceOrdinal": 296,
+      "sourceLine": 607,
+      "groupId": "group-06",
+      "name": "Red Carpet Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-297",
+      "sourceOrdinal": 297,
+      "sourceLine": 609,
+      "groupId": "group-06",
+      "name": "Subtitle Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-298",
+      "sourceOrdinal": 298,
+      "sourceLine": 611,
+      "groupId": "group-06",
+      "name": "Voice Actor Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-299",
+      "sourceOrdinal": 299,
+      "sourceLine": 613,
+      "groupId": "group-06",
+      "name": "Foley Artist Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-300",
+      "sourceOrdinal": 300,
+      "sourceLine": 615,
+      "groupId": "group-06",
+      "name": "Showrunner Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-301",
+      "sourceOrdinal": 301,
+      "sourceLine": 618,
+      "groupId": "group-07",
+      "name": "Astronomy Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-302",
+      "sourceOrdinal": 302,
+      "sourceLine": 620,
+      "groupId": "group-07",
+      "name": "Astrophysics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-303",
+      "sourceOrdinal": 303,
+      "sourceLine": 622,
+      "groupId": "group-07",
+      "name": "Cosmology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-304",
+      "sourceOrdinal": 304,
+      "sourceLine": 624,
+      "groupId": "group-07",
+      "name": "Planetary Science Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-305",
+      "sourceOrdinal": 305,
+      "sourceLine": 626,
+      "groupId": "group-07",
+      "name": "Exoplanet Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-306",
+      "sourceOrdinal": 306,
+      "sourceLine": 628,
+      "groupId": "group-07",
+      "name": "Star Formation Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-307",
+      "sourceOrdinal": 307,
+      "sourceLine": 630,
+      "groupId": "group-07",
+      "name": "Black Hole Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-308",
+      "sourceOrdinal": 308,
+      "sourceLine": 632,
+      "groupId": "group-07",
+      "name": "Dark Matter Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-309",
+      "sourceOrdinal": 309,
+      "sourceLine": 634,
+      "groupId": "group-07",
+      "name": "Dark Energy Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-310",
+      "sourceOrdinal": 310,
+      "sourceLine": 636,
+      "groupId": "group-07",
+      "name": "Space Telescope Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-311",
+      "sourceOrdinal": 311,
+      "sourceLine": 638,
+      "groupId": "group-07",
+      "name": "Rocket Science Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-312",
+      "sourceOrdinal": 312,
+      "sourceLine": 640,
+      "groupId": "group-07",
+      "name": "Space Mission Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-313",
+      "sourceOrdinal": 313,
+      "sourceLine": 642,
+      "groupId": "group-07",
+      "name": "Satellite Engineer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-314",
+      "sourceOrdinal": 314,
+      "sourceLine": 644,
+      "groupId": "group-07",
+      "name": "Mars Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-315",
+      "sourceOrdinal": 315,
+      "sourceLine": 646,
+      "groupId": "group-07",
+      "name": "Moon Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-316",
+      "sourceOrdinal": 316,
+      "sourceLine": 648,
+      "groupId": "group-07",
+      "name": "Space Station Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-317",
+      "sourceOrdinal": 317,
+      "sourceLine": 650,
+      "groupId": "group-07",
+      "name": "EVA Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-318",
+      "sourceOrdinal": 318,
+      "sourceLine": 652,
+      "groupId": "group-07",
+      "name": "Space Suit Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-319",
+      "sourceOrdinal": 319,
+      "sourceLine": 654,
+      "groupId": "group-07",
+      "name": "Launch Pad Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-320",
+      "sourceOrdinal": 320,
+      "sourceLine": 656,
+      "groupId": "group-07",
+      "name": "Deep Sea Exploration Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-321",
+      "sourceOrdinal": 321,
+      "sourceLine": 658,
+      "groupId": "group-07",
+      "name": "Oceanography Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-322",
+      "sourceOrdinal": 322,
+      "sourceLine": 660,
+      "groupId": "group-07",
+      "name": "Marine Biology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-323",
+      "sourceOrdinal": 323,
+      "sourceLine": 662,
+      "groupId": "group-07",
+      "name": "Coral Reef Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-324",
+      "sourceOrdinal": 324,
+      "sourceLine": 664,
+      "groupId": "group-07",
+      "name": "Underwater Drone Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-325",
+      "sourceOrdinal": 325,
+      "sourceLine": 666,
+      "groupId": "group-07",
+      "name": "Geology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-326",
+      "sourceOrdinal": 326,
+      "sourceLine": 668,
+      "groupId": "group-07",
+      "name": "Volcanology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-327",
+      "sourceOrdinal": 327,
+      "sourceLine": 670,
+      "groupId": "group-07",
+      "name": "Seismology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-328",
+      "sourceOrdinal": 328,
+      "sourceLine": 672,
+      "groupId": "group-07",
+      "name": "Paleontology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-329",
+      "sourceOrdinal": 329,
+      "sourceLine": 674,
+      "groupId": "group-07",
+      "name": "Glaciology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-330",
+      "sourceOrdinal": 330,
+      "sourceLine": 676,
+      "groupId": "group-07",
+      "name": "Meteorology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-331",
+      "sourceOrdinal": 331,
+      "sourceLine": 678,
+      "groupId": "group-07",
+      "name": "Climate Science Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-332",
+      "sourceOrdinal": 332,
+      "sourceLine": 680,
+      "groupId": "group-07",
+      "name": "Ecology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-333",
+      "sourceOrdinal": 333,
+      "sourceLine": 682,
+      "groupId": "group-07",
+      "name": "Conservation Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-334",
+      "sourceOrdinal": 334,
+      "sourceLine": 684,
+      "groupId": "group-07",
+      "name": "Wildlife Biology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-335",
+      "sourceOrdinal": 335,
+      "sourceLine": 686,
+      "groupId": "group-07",
+      "name": "Coral Ecology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-336",
+      "sourceOrdinal": 336,
+      "sourceLine": 688,
+      "groupId": "group-07",
+      "name": "Botany Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-337",
+      "sourceOrdinal": 337,
+      "sourceLine": 690,
+      "groupId": "group-07",
+      "name": "Microbiology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-338",
+      "sourceOrdinal": 338,
+      "sourceLine": 692,
+      "groupId": "group-07",
+      "name": "Nanotechnology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-339",
+      "sourceOrdinal": 339,
+      "sourceLine": 694,
+      "groupId": "group-07",
+      "name": "Genetics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-340",
+      "sourceOrdinal": 340,
+      "sourceLine": 696,
+      "groupId": "group-07",
+      "name": "Neuroscience Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-341",
+      "sourceOrdinal": 341,
+      "sourceLine": 698,
+      "groupId": "group-07",
+      "name": "Astrobiology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-342",
+      "sourceOrdinal": 342,
+      "sourceLine": 700,
+      "groupId": "group-07",
+      "name": "Exobiology Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-343",
+      "sourceOrdinal": 343,
+      "sourceLine": 702,
+      "groupId": "group-07",
+      "name": "Terraforming Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-344",
+      "sourceOrdinal": 344,
+      "sourceLine": 704,
+      "groupId": "group-07",
+      "name": "Robotics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-345",
+      "sourceOrdinal": 345,
+      "sourceLine": 706,
+      "groupId": "group-07",
+      "name": "AI Research Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-346",
+      "sourceOrdinal": 346,
+      "sourceLine": 708,
+      "groupId": "group-07",
+      "name": "Quantum Mechanics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-347",
+      "sourceOrdinal": 347,
+      "sourceLine": 710,
+      "groupId": "group-07",
+      "name": "Particle Physics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-348",
+      "sourceOrdinal": 348,
+      "sourceLine": 712,
+      "groupId": "group-07",
+      "name": "Relativity Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-349",
+      "sourceOrdinal": 349,
+      "sourceLine": 714,
+      "groupId": "group-07",
+      "name": "Computational Science Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-350",
+      "sourceOrdinal": 350,
+      "sourceLine": 716,
+      "groupId": "group-07",
+      "name": "Biotech Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-351",
+      "sourceOrdinal": 351,
+      "sourceLine": 719,
+      "groupId": "group-08",
+      "name": "D&D Dungeon Master Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-352",
+      "sourceOrdinal": 352,
+      "sourceLine": 721,
+      "groupId": "group-08",
+      "name": "Pathfinder Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-353",
+      "sourceOrdinal": 353,
+      "sourceLine": 723,
+      "groupId": "group-08",
+      "name": "Call of Cthulhu Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-354",
+      "sourceOrdinal": 354,
+      "sourceLine": 725,
+      "groupId": "group-08",
+      "name": "Warhammer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-355",
+      "sourceOrdinal": 355,
+      "sourceLine": 727,
+      "groupId": "group-08",
+      "name": "MTG Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-356",
+      "sourceOrdinal": 356,
+      "sourceLine": 729,
+      "groupId": "group-08",
+      "name": "Cosplay Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-357",
+      "sourceOrdinal": 357,
+      "sourceLine": 731,
+      "groupId": "group-08",
+      "name": "Costume Maker Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-358",
+      "sourceOrdinal": 358,
+      "sourceLine": 733,
+      "groupId": "group-08",
+      "name": "Prop Maker Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-359",
+      "sourceOrdinal": 359,
+      "sourceLine": 735,
+      "groupId": "group-08",
+      "name": "Worldbuilder Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-360",
+      "sourceOrdinal": 360,
+      "sourceLine": 737,
+      "groupId": "group-08",
+      "name": "Lore Keeper Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-361",
+      "sourceOrdinal": 361,
+      "sourceLine": 739,
+      "groupId": "group-08",
+      "name": "Tavern Master Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-362",
+      "sourceOrdinal": 362,
+      "sourceLine": 741,
+      "groupId": "group-08",
+      "name": "NPC Actor Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-363",
+      "sourceOrdinal": 363,
+      "sourceLine": 743,
+      "groupId": "group-08",
+      "name": "Dungeon Maker Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-364",
+      "sourceOrdinal": 364,
+      "sourceLine": 745,
+      "groupId": "group-08",
+      "name": "Beast Tamer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-365",
+      "sourceOrdinal": 365,
+      "sourceLine": 747,
+      "groupId": "group-08",
+      "name": "Alchemy Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-366",
+      "sourceOrdinal": 366,
+      "sourceLine": 749,
+      "groupId": "group-08",
+      "name": "Enchanter Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-367",
+      "sourceOrdinal": 367,
+      "sourceLine": 751,
+      "groupId": "group-08",
+      "name": "Spellbook Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-368",
+      "sourceOrdinal": 368,
+      "sourceLine": 753,
+      "groupId": "group-08",
+      "name": "Dragon Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-369",
+      "sourceOrdinal": 369,
+      "sourceLine": 755,
+      "groupId": "group-08",
+      "name": "Dragon Rider Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-370",
+      "sourceOrdinal": 370,
+      "sourceLine": 757,
+      "groupId": "group-08",
+      "name": "Knight Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-371",
+      "sourceOrdinal": 371,
+      "sourceLine": 759,
+      "groupId": "group-08",
+      "name": "Paladin Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-372",
+      "sourceOrdinal": 372,
+      "sourceLine": 761,
+      "groupId": "group-08",
+      "name": "Necromancer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-373",
+      "sourceOrdinal": 373,
+      "sourceLine": 763,
+      "groupId": "group-08",
+      "name": "Warlock Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-374",
+      "sourceOrdinal": 374,
+      "sourceLine": 765,
+      "groupId": "group-08",
+      "name": "Sorcerer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-375",
+      "sourceOrdinal": 375,
+      "sourceLine": 767,
+      "groupId": "group-08",
+      "name": "Wizard Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-376",
+      "sourceOrdinal": 376,
+      "sourceLine": 769,
+      "groupId": "group-08",
+      "name": "Rogue Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-377",
+      "sourceOrdinal": 377,
+      "sourceLine": 771,
+      "groupId": "group-08",
+      "name": "Ranger Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-378",
+      "sourceOrdinal": 378,
+      "sourceLine": 773,
+      "groupId": "group-08",
+      "name": "Bard Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-379",
+      "sourceOrdinal": 379,
+      "sourceLine": 775,
+      "groupId": "group-08",
+      "name": "Cleric Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-380",
+      "sourceOrdinal": 380,
+      "sourceLine": 777,
+      "groupId": "group-08",
+      "name": "Shapeshifter Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-381",
+      "sourceOrdinal": 381,
+      "sourceLine": 779,
+      "groupId": "group-08",
+      "name": "Elemental Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-382",
+      "sourceOrdinal": 382,
+      "sourceLine": 781,
+      "groupId": "group-08",
+      "name": "Dieselpunk Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-383",
+      "sourceOrdinal": 383,
+      "sourceLine": 783,
+      "groupId": "group-08",
+      "name": "Gaslamp Fantasy Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-384",
+      "sourceOrdinal": 384,
+      "sourceLine": 785,
+      "groupId": "group-08",
+      "name": "Victorian Horror Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-385",
+      "sourceOrdinal": 385,
+      "sourceLine": 787,
+      "groupId": "group-08",
+      "name": "Gothic Fantasy Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-386",
+      "sourceOrdinal": 386,
+      "sourceLine": 789,
+      "groupId": "group-08",
+      "name": "Pixel RPG Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-387",
+      "sourceOrdinal": 387,
+      "sourceLine": 791,
+      "groupId": "group-08",
+      "name": "JRPG Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-388",
+      "sourceOrdinal": 388,
+      "sourceLine": 793,
+      "groupId": "group-08",
+      "name": "Rogue-Lite Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-389",
+      "sourceOrdinal": 389,
+      "sourceLine": 795,
+      "groupId": "group-08",
+      "name": "Virtual Reality RPG Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-390",
+      "sourceOrdinal": 390,
+      "sourceLine": 797,
+      "groupId": "group-08",
+      "name": "Character Sheet Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-391",
+      "sourceOrdinal": 391,
+      "sourceLine": 799,
+      "groupId": "group-08",
+      "name": "Campaign Storyteller Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-392",
+      "sourceOrdinal": 392,
+      "sourceLine": 801,
+      "groupId": "group-08",
+      "name": "LARP Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-393",
+      "sourceOrdinal": 393,
+      "sourceLine": 803,
+      "groupId": "group-08",
+      "name": "Steampunk Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-394",
+      "sourceOrdinal": 394,
+      "sourceLine": 805,
+      "groupId": "group-08",
+      "name": "Cyberpunk Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-395",
+      "sourceOrdinal": 395,
+      "sourceLine": 807,
+      "groupId": "group-08",
+      "name": "Cosplay Prop Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-396",
+      "sourceOrdinal": 396,
+      "sourceLine": 809,
+      "groupId": "group-08",
+      "name": "VR RPG Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-397",
+      "sourceOrdinal": 397,
+      "sourceLine": 811,
+      "groupId": "group-08",
+      "name": "Text-Based RPG Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-398",
+      "sourceOrdinal": 398,
+      "sourceLine": 813,
+      "groupId": "group-08",
+      "name": "Tabletop RPG Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-399",
+      "sourceOrdinal": 399,
+      "sourceLine": 815,
+      "groupId": "group-08",
+      "name": "World Lore Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-400",
+      "sourceOrdinal": 400,
+      "sourceLine": 817,
+      "groupId": "group-08",
+      "name": "Myth Keeper Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-401",
+      "sourceOrdinal": 401,
+      "sourceLine": 820,
+      "groupId": "group-09",
+      "name": "Forum Troll Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-402",
+      "sourceOrdinal": 402,
+      "sourceLine": 822,
+      "groupId": "group-09",
+      "name": "Reddit Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-403",
+      "sourceOrdinal": 403,
+      "sourceLine": 824,
+      "groupId": "group-09",
+      "name": "StackOverflow Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-404",
+      "sourceOrdinal": 404,
+      "sourceLine": 826,
+      "groupId": "group-09",
+      "name": "Hacker News Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-405",
+      "sourceOrdinal": 405,
+      "sourceLine": 828,
+      "groupId": "group-09",
+      "name": "4chan Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-406",
+      "sourceOrdinal": 406,
+      "sourceLine": 830,
+      "groupId": "group-09",
+      "name": "Meme Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-407",
+      "sourceOrdinal": 407,
+      "sourceLine": 832,
+      "groupId": "group-09",
+      "name": "GIF Collector Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-408",
+      "sourceOrdinal": 408,
+      "sourceLine": 834,
+      "groupId": "group-09",
+      "name": "Emoji Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-409",
+      "sourceOrdinal": 409,
+      "sourceLine": 836,
+      "groupId": "group-09",
+      "name": "Fanfic Writer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-410",
+      "sourceOrdinal": 410,
+      "sourceLine": 838,
+      "groupId": "group-09",
+      "name": "Slashfic Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-411",
+      "sourceOrdinal": 411,
+      "sourceLine": 840,
+      "groupId": "group-09",
+      "name": "Fan Art Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-412",
+      "sourceOrdinal": 412,
+      "sourceLine": 842,
+      "groupId": "group-09",
+      "name": "VTuber Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-413",
+      "sourceOrdinal": 413,
+      "sourceLine": 844,
+      "groupId": "group-09",
+      "name": "Webcomic Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-414",
+      "sourceOrdinal": 414,
+      "sourceLine": 846,
+      "groupId": "group-09",
+      "name": "Podcast Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-415",
+      "sourceOrdinal": 415,
+      "sourceLine": 848,
+      "groupId": "group-09",
+      "name": "Blogger Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-416",
+      "sourceOrdinal": 416,
+      "sourceLine": 850,
+      "groupId": "group-09",
+      "name": "Vlogger Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-417",
+      "sourceOrdinal": 417,
+      "sourceLine": 852,
+      "groupId": "group-09",
+      "name": "YouTube Tutorial Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-418",
+      "sourceOrdinal": 418,
+      "sourceLine": 854,
+      "groupId": "group-09",
+      "name": "Twitch Moderator Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-419",
+      "sourceOrdinal": 419,
+      "sourceLine": 856,
+      "groupId": "group-09",
+      "name": "Discord Moderator Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-420",
+      "sourceOrdinal": 420,
+      "sourceLine": 858,
+      "groupId": "group-09",
+      "name": "Telegram Admin Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-421",
+      "sourceOrdinal": 421,
+      "sourceLine": 860,
+      "groupId": "group-09",
+      "name": "Social Media Manager Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-422",
+      "sourceOrdinal": 422,
+      "sourceLine": 862,
+      "groupId": "group-09",
+      "name": "Influencer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-423",
+      "sourceOrdinal": 423,
+      "sourceLine": 864,
+      "groupId": "group-09",
+      "name": "Wikipedia Editor Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-424",
+      "sourceOrdinal": 424,
+      "sourceLine": 866,
+      "groupId": "group-09",
+      "name": "Crypto Trader Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-425",
+      "sourceOrdinal": 425,
+      "sourceLine": 868,
+      "groupId": "group-09",
+      "name": "NFT Collector Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-426",
+      "sourceOrdinal": 426,
+      "sourceLine": 870,
+      "groupId": "group-09",
+      "name": "DAO Member Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-427",
+      "sourceOrdinal": 427,
+      "sourceLine": 872,
+      "groupId": "group-09",
+      "name": "Altcoin Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-428",
+      "sourceOrdinal": 428,
+      "sourceLine": 874,
+      "groupId": "group-09",
+      "name": "DeFi Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-429",
+      "sourceOrdinal": 429,
+      "sourceLine": 876,
+      "groupId": "group-09",
+      "name": "Smart Contract Auditor Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-430",
+      "sourceOrdinal": 430,
+      "sourceLine": 878,
+      "groupId": "group-09",
+      "name": "Crypto Miner Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-431",
+      "sourceOrdinal": 431,
+      "sourceLine": 880,
+      "groupId": "group-09",
+      "name": "Dark Web Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-432",
+      "sourceOrdinal": 432,
+      "sourceLine": 882,
+      "groupId": "group-09",
+      "name": "Vaporwave Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-433",
+      "sourceOrdinal": 433,
+      "sourceLine": 884,
+      "groupId": "group-09",
+      "name": "Synthwave Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-434",
+      "sourceOrdinal": 434,
+      "sourceLine": 886,
+      "groupId": "group-09",
+      "name": "Retrowave Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-435",
+      "sourceOrdinal": 435,
+      "sourceLine": 888,
+      "groupId": "group-09",
+      "name": "Lolita Fashion Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-436",
+      "sourceOrdinal": 436,
+      "sourceLine": 890,
+      "groupId": "group-09",
+      "name": "Gothic Fashion Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-437",
+      "sourceOrdinal": 437,
+      "sourceLine": 892,
+      "groupId": "group-09",
+      "name": "Streetwear Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-438",
+      "sourceOrdinal": 438,
+      "sourceLine": 894,
+      "groupId": "group-09",
+      "name": "Sneakerhead Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-439",
+      "sourceOrdinal": 439,
+      "sourceLine": 896,
+      "groupId": "group-09",
+      "name": "Zine Maker Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-440",
+      "sourceOrdinal": 440,
+      "sourceLine": 898,
+      "groupId": "group-09",
+      "name": "Fanzine Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-441",
+      "sourceOrdinal": 441,
+      "sourceLine": 900,
+      "groupId": "group-09",
+      "name": "Cybersecurity Subculture Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-442",
+      "sourceOrdinal": 442,
+      "sourceLine": 902,
+      "groupId": "group-09",
+      "name": "Retro Tech Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-443",
+      "sourceOrdinal": 443,
+      "sourceLine": 904,
+      "groupId": "group-09",
+      "name": "Maker Faire Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-444",
+      "sourceOrdinal": 444,
+      "sourceLine": 906,
+      "groupId": "group-09",
+      "name": "Hacker Space Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-445",
+      "sourceOrdinal": 445,
+      "sourceLine": 908,
+      "groupId": "group-09",
+      "name": "Drone Racer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-446",
+      "sourceOrdinal": 446,
+      "sourceLine": 910,
+      "groupId": "group-09",
+      "name": "RC Vehicle Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-447",
+      "sourceOrdinal": 447,
+      "sourceLine": 912,
+      "groupId": "group-09",
+      "name": "Satellite Tracking Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-448",
+      "sourceOrdinal": 448,
+      "sourceLine": 914,
+      "groupId": "group-09",
+      "name": "Smartwatch Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-449",
+      "sourceOrdinal": 449,
+      "sourceLine": 916,
+      "groupId": "group-09",
+      "name": "Gadget Hack Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-450",
+      "sourceOrdinal": 450,
+      "sourceLine": 918,
+      "groupId": "group-09",
+      "name": "Digital Archivist Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-451",
+      "sourceOrdinal": 451,
+      "sourceLine": 921,
+      "groupId": "group-10",
+      "name": "Fitness Tracker Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-452",
+      "sourceOrdinal": 452,
+      "sourceLine": 923,
+      "groupId": "group-10",
+      "name": "Health App Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-453",
+      "sourceOrdinal": 453,
+      "sourceLine": 925,
+      "groupId": "group-10",
+      "name": "Yoga Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-454",
+      "sourceOrdinal": 454,
+      "sourceLine": 927,
+      "groupId": "group-10",
+      "name": "Meditation Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-455",
+      "sourceOrdinal": 455,
+      "sourceLine": 929,
+      "groupId": "group-10",
+      "name": "Vegan Cooking Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-456",
+      "sourceOrdinal": 456,
+      "sourceLine": 931,
+      "groupId": "group-10",
+      "name": "Keto Cooking Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-457",
+      "sourceOrdinal": 457,
+      "sourceLine": 933,
+      "groupId": "group-10",
+      "name": "Craft Beer Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-458",
+      "sourceOrdinal": 458,
+      "sourceLine": 935,
+      "groupId": "group-10",
+      "name": "Wine Tasting Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-459",
+      "sourceOrdinal": 459,
+      "sourceLine": 937,
+      "groupId": "group-10",
+      "name": "Home Barista Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-460",
+      "sourceOrdinal": 460,
+      "sourceLine": 939,
+      "groupId": "group-10",
+      "name": "Coffee Cupping Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-461",
+      "sourceOrdinal": 461,
+      "sourceLine": 941,
+      "groupId": "group-10",
+      "name": "Home Brewing Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-462",
+      "sourceOrdinal": 462,
+      "sourceLine": 943,
+      "groupId": "group-10",
+      "name": "Gardening Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-463",
+      "sourceOrdinal": 463,
+      "sourceLine": 945,
+      "groupId": "group-10",
+      "name": "Hydroponics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-464",
+      "sourceOrdinal": 464,
+      "sourceLine": 947,
+      "groupId": "group-10",
+      "name": "Aquaponics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-465",
+      "sourceOrdinal": 465,
+      "sourceLine": 949,
+      "groupId": "group-10",
+      "name": "Home Automation Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-466",
+      "sourceOrdinal": 466,
+      "sourceLine": 951,
+      "groupId": "group-10",
+      "name": "Smart Home Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-467",
+      "sourceOrdinal": 467,
+      "sourceLine": 953,
+      "groupId": "group-10",
+      "name": "Minimalist Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-468",
+      "sourceOrdinal": 468,
+      "sourceLine": 955,
+      "groupId": "group-10",
+      "name": "Bullet Journal Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-469",
+      "sourceOrdinal": 469,
+      "sourceLine": 957,
+      "groupId": "group-10",
+      "name": "Planner Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-470",
+      "sourceOrdinal": 470,
+      "sourceLine": 959,
+      "groupId": "group-10",
+      "name": "Pomodoro Technique Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-471",
+      "sourceOrdinal": 471,
+      "sourceLine": 961,
+      "groupId": "group-10",
+      "name": "Habit Tracker Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-472",
+      "sourceOrdinal": 472,
+      "sourceLine": 963,
+      "groupId": "group-10",
+      "name": "Budgeting Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-473",
+      "sourceOrdinal": 473,
+      "sourceLine": 965,
+      "groupId": "group-10",
+      "name": "Personal Finance Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-474",
+      "sourceOrdinal": 474,
+      "sourceLine": 967,
+      "groupId": "group-10",
+      "name": "Side Hustle Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-475",
+      "sourceOrdinal": 475,
+      "sourceLine": 969,
+      "groupId": "group-10",
+      "name": "Remote Work Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-476",
+      "sourceOrdinal": 476,
+      "sourceLine": 971,
+      "groupId": "group-10",
+      "name": "Vanlife Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-477",
+      "sourceOrdinal": 477,
+      "sourceLine": 973,
+      "groupId": "group-10",
+      "name": "Tiny House Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-478",
+      "sourceOrdinal": 478,
+      "sourceLine": 975,
+      "groupId": "group-10",
+      "name": "Homesteading Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-479",
+      "sourceOrdinal": 479,
+      "sourceLine": 977,
+      "groupId": "group-10",
+      "name": "Survivalist Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-480",
+      "sourceOrdinal": 480,
+      "sourceLine": 979,
+      "groupId": "group-10",
+      "name": "Prepper Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-481",
+      "sourceOrdinal": 481,
+      "sourceLine": 981,
+      "groupId": "group-10",
+      "name": "Off-Grid Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-482",
+      "sourceOrdinal": 482,
+      "sourceLine": 983,
+      "groupId": "group-10",
+      "name": "Digital Nomad Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-483",
+      "sourceOrdinal": 483,
+      "sourceLine": 985,
+      "groupId": "group-10",
+      "name": "Tao Traveler Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-484",
+      "sourceOrdinal": 484,
+      "sourceLine": 987,
+      "groupId": "group-10",
+      "name": "Drone Photography Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-485",
+      "sourceOrdinal": 485,
+      "sourceLine": 989,
+      "groupId": "group-10",
+      "name": "RC Plane Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-486",
+      "sourceOrdinal": 486,
+      "sourceLine": 991,
+      "groupId": "group-10",
+      "name": "3D Printing Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-487",
+      "sourceOrdinal": 487,
+      "sourceLine": 993,
+      "groupId": "group-10",
+      "name": "Laser Cutter Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-488",
+      "sourceOrdinal": 488,
+      "sourceLine": 995,
+      "groupId": "group-10",
+      "name": "DIY Electronics Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-489",
+      "sourceOrdinal": 489,
+      "sourceLine": 997,
+      "groupId": "group-10",
+      "name": "Keyboard Mod Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-490",
+      "sourceOrdinal": 490,
+      "sourceLine": 999,
+      "groupId": "group-10",
+      "name": "Gadget Collector Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-491",
+      "sourceOrdinal": 491,
+      "sourceLine": 1001,
+      "groupId": "group-10",
+      "name": "Smartwatch Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-492",
+      "sourceOrdinal": 492,
+      "sourceLine": 1003,
+      "groupId": "group-10",
+      "name": "Drone Racing Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-493",
+      "sourceOrdinal": 493,
+      "sourceLine": 1005,
+      "groupId": "group-10",
+      "name": "Pet Care Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-494",
+      "sourceOrdinal": 494,
+      "sourceLine": 1007,
+      "groupId": "group-10",
+      "name": "Birdwatching Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-495",
+      "sourceOrdinal": 495,
+      "sourceLine": 1009,
+      "groupId": "group-10",
+      "name": "Stargazing Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-496",
+      "sourceOrdinal": 496,
+      "sourceLine": 1011,
+      "groupId": "group-10",
+      "name": "Geocaching Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-497",
+      "sourceOrdinal": 497,
+      "sourceLine": 1013,
+      "groupId": "group-10",
+      "name": "Puzzle Solver Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-498",
+      "sourceOrdinal": 498,
+      "sourceLine": 1015,
+      "groupId": "group-10",
+      "name": "Life Hack Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-499",
+      "sourceOrdinal": 499,
+      "sourceLine": 1017,
+      "groupId": "group-10",
+      "name": "ASMR Geek",
+      "mappedEdition": null
+    },
+    {
+      "sourceId": "source-500",
+      "sourceOrdinal": 500,
+      "sourceLine": 1019,
+      "groupId": "group-10",
+      "name": "Perfume Blending Geek",
+      "mappedEdition": null
+    }
+  ]
+}

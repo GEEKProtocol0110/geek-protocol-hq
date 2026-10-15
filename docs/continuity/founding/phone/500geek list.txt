@@ -1,0 +1,1019 @@
+Common (100)
+
+Rare (50)
+
+Epic (25)
+
+Legendary (5)
+
+Mythic (1/1)
+
+🎮 Gaming & Tech Geeks (1–50)
+Retro Gamer Geek
+
+Pro Gamer Geek
+
+Speedrunner Geek
+
+Modder Geek
+
+VR Geek
+
+Streamer Geek
+
+Mobile Gamer Geek
+
+Arcade Geek
+
+Board Game Geek
+
+Esports Geek
+
+FPS Gamer Geek
+
+MOBA Gamer Geek
+
+RPG Gamer Geek
+
+Simulation Gamer Geek
+
+Indie Game Geek
+
+Puzzle Game Geek
+
+Fighting Game Geek
+
+Strategy Game Geek
+
+Survival Game Geek
+
+Sandbox Game Geek
+
+Platformer Geek
+
+Roguelike Geek
+
+VRChat Geek
+
+Twitch Chat Geek
+
+Game Dev Geek
+
+Level Designer Geek
+
+Indie Dev Geek
+
+Cosplay Geek
+
+Collectible Card Geek
+
+Tabletop RPG Geek
+
+Looter-Shooter Geek
+
+MMOG Geek
+
+MMORPG Geek
+
+Roguelite Geek
+
+Open World Geek
+
+Esports Analyst Geek
+
+Game Soundtrack Geek
+
+Game Theory Geek
+
+Tactical Shooter Geek
+
+Battle Royale Geek
+
+Rhythm Game Geek
+
+Horror Game Geek
+
+Dating Sim Geek
+
+Visual Novel Geek
+
+Metroidvania Geek
+
+DLC Collector Geek
+
+Achievement Hunter Geek
+
+Live Production Geek
+
+Game Tester Geek
+
+QA Automation Geek
+
+💻 Programming & Computer Geeks (51–100)
+Coder Geek
+
+Frontend Dev Geek
+
+Backend Dev Geek
+
+Full-Stack Dev Geek
+
+DevOps Geek
+
+Cloud Architect Geek
+
+Kubernetes Geek
+
+Docker Geek
+
+Cybersecurity Geek
+
+Ethical Hacker Geek
+
+QA Tester Geek
+
+Database Admin Geek
+
+SQL Geek
+
+NoSQL Geek
+
+API Dev Geek
+
+Mobile Dev Geek
+
+iOS Dev Geek
+
+Android Dev Geek
+
+Embedded Systems Geek
+
+IoT Geek
+
+Network Engineer Geek
+
+Pen-Tester Geek
+
+Blockchain Dev Geek
+
+Smart Contract Geek
+
+NFT Dev Geek
+
+Hardware Geek
+
+Raspberry Pi Geek
+
+Arduino Geek
+
+FPGA Geek
+
+VR Dev Geek
+
+AR Dev Geek
+
+AI Research Geek
+
+ML Engineer Geek
+
+Data Engineer Geek
+
+Big Data Geek
+
+Visualization Geek
+
+BI Analyst Geek
+
+Algorithm Geek
+
+Functional Programming Geek
+
+Rust Geek
+
+Python Geek
+
+GoLang Geek
+
+Java Geek
+
+Haskell Geek
+
+Linux Kernel Geek
+
+OS Architect Geek
+
+Shell Scripting Geek
+
+Bash Geek
+
+Windows Admin Geek
+
+Mac Admin Geek
+
+📚 Academic & Knowledge Geeks (101–150)
+Bookworm Geek
+
+History Geek
+
+Mythology Geek
+
+Math Geek
+
+Physics Geek
+
+Chemistry Geek
+
+Biology Geek
+
+Philosophy Geek
+
+Linguistics Geek
+
+Library Science Geek
+
+Art History Geek
+
+Paleontology Geek
+
+Archaeology Geek
+
+Theology Geek
+
+Political Science Geek
+
+Economics Geek
+
+Psychology Geek
+
+Sociology Geek
+
+Anthropology Geek
+
+Geography Geek
+
+Oceanography Geek
+
+Environmental Science Geek
+
+Ecology Geek
+
+Neuroscience Geek
+
+Criminology Geek
+
+Law Geek
+
+Medicine Geek
+
+Anatomy Geek
+
+Marine Biology Geek
+
+Genetics Geek
+
+Microbiology Geek
+
+Zoology Geek
+
+Botany Geek
+
+Quantum Physics Geek
+
+Astrophysics Geek
+
+Cosmology Geek
+
+Neurology Geek
+
+Semiotics Geek
+
+Cryptography Geek
+
+Statistics Geek
+
+Probability Theory Geek
+
+Logic Geek
+
+Epistemology Geek
+
+Phenomenology Geek
+
+Rhetoric Geek
+
+Demography Geek
+
+Linguistic Anthropology Geek
+
+Paleobotany Geek
+
+Paleozoology Geek
+
+Climatology Geek
+
+🎨 Creative & Art Geeks (151–200)
+Pixel Art Geek
+
+3D Modeling Geek
+
+Graphic Design Geek
+
+Illustrator Geek
+
+Photography Geek
+
+Digital Painting Geek
+
+Concept Art Geek
+
+UI/UX Design Geek
+
+Motion Graphics Geek
+
+VFX Geek
+
+2D Animation Geek
+
+3D Animation Geek
+
+Stop-Motion Geek
+
+Character Design Geek
+
+Sculpting Geek
+
+Pottery Geek
+
+Glassblowing Geek
+
+Woodworking Geek
+
+Knitting Geek
+
+Crochet Geek
+
+Embroidery Geek
+
+Jewelry Design Geek
+
+Fashion Design Geek
+
+Costume Design Geek
+
+Makeup Artistry Geek
+
+Calligraphy Geek
+
+Comic Book Artist Geek
+
+Manga Artist Geek
+
+Installation Art Geek
+
+Graffiti Artist Geek
+
+Sign Painting Geek
+
+Stage Design Geek
+
+Cinematography Geek
+
+Textile Design Geek
+
+Cake Decorating Geek
+
+Floral Arrangement Geek
+
+Lego Builder Geek
+
+Model Railroad Geek
+
+Diorama Geek
+
+Bonsai Geek
+
+Paper Art Geek
+
+Stencil Art Geek
+
+Resin Art Geek
+
+Light Painting Geek
+
+Chalk Art Geek
+
+Caricature Geek
+
+Etching Geek
+
+Printmaking Geek
+
+Storyboarding Geek
+
+Conceptual Artist Geek
+
+🎼 Music & Audio Geeks (201–250)
+DJ Geek
+
+Lo-Fi Geek
+
+Synth Geek
+
+Vinyl Collector Geek
+
+Guitar Geek
+
+Pianist Geek
+
+Drummer Geek
+
+Bassist Geek
+
+Electronic Music Geek
+
+Hip-Hop Geek
+
+Jazz Geek
+
+Classical Music Geek
+
+Opera Geek
+
+Metal Geek
+
+Punk Geek
+
+Folk Music Geek
+
+World Music Geek
+
+Vocal Coach Geek
+
+Music Producer Geek
+
+Mixing Engineer Geek
+
+Mastering Engineer Geek
+
+Sample Pack Geek
+
+Synthwave Geek
+
+Techno Geek
+
+House Geek
+
+Trance Geek
+
+Ambient Geek
+
+Experimental Music Geek
+
+IDM Geek
+
+Reggae Geek
+
+Ska Geek
+
+Blues Geek
+
+Country Music Geek
+
+Singer-Songwriter Geek
+
+Music Historian Geek
+
+Film Score Geek
+
+Game Music Geek
+
+Instrument Repair Geek
+
+Turntablism Geek
+
+Beatmaker Geek
+
+Loop Pedal Geek
+
+Choral Geek
+
+World Instrument Geek
+
+Binaural Beats Geek
+
+Podcast Audio Geek
+
+ASMR Audio Geek
+
+Field Recording Geek
+
+Foley Artist Geek
+
+MIDI Geek
+
+DAW Specialist Geek
+
+📺 Film, TV & Pop Culture Geeks (251–300)
+Movie Buff Geek
+
+Sci-Fi Geek
+
+Fantasy Geek
+
+Superhero Geek
+
+Horror Geek
+
+Rom-Com Geek
+
+Sitcom Geek
+
+Anime Geek
+
+Meme Geek
+
+Nostalgia Geek
+
+Documentary Geek
+
+Film Noir Geek
+
+Indie Film Geek
+
+Cult Classic Geek
+
+B-Movie Geek
+
+Blockbuster Geek
+
+Cinematography Geek
+
+Screenwriter Geek
+
+Film Critic Geek
+
+Action Movie Geek
+
+Thriller Geek
+
+Western Geek
+
+Silent Film Geek
+
+Golden Age Hollywood Geek
+
+Bollywood Geek
+
+K-Drama Geek
+
+Telenovela Geek
+
+Reality TV Geek
+
+Game Show Geek
+
+Sketch Comedy Geek
+
+Stand-Up Comedy Geek
+
+Late-Night TV Geek
+
+Cult TV Geek
+
+Animated Series Geek
+
+Manga Geek
+
+Comic Book Geek
+
+Fan Convention Geek
+
+Autograph Collector Geek
+
+Movie Prop Geek
+
+VHS Collector Geek
+
+Criterion Collection Geek
+
+Film Festival Geek
+
+Streaming Geek
+
+Binge-Watcher Geek
+
+Award Show Geek
+
+Red Carpet Geek
+
+Subtitle Geek
+
+Voice Actor Geek
+
+Foley Artist Geek
+
+Showrunner Geek
+
+🔬 Science & Exploration Geeks (301–350)
+Astronomy Geek
+
+Astrophysics Geek
+
+Cosmology Geek
+
+Planetary Science Geek
+
+Exoplanet Geek
+
+Star Formation Geek
+
+Black Hole Geek
+
+Dark Matter Geek
+
+Dark Energy Geek
+
+Space Telescope Geek
+
+Rocket Science Geek
+
+Space Mission Geek
+
+Satellite Engineer Geek
+
+Mars Geek
+
+Moon Geek
+
+Space Station Geek
+
+EVA Geek
+
+Space Suit Geek
+
+Launch Pad Geek
+
+Deep Sea Exploration Geek
+
+Oceanography Geek
+
+Marine Biology Geek
+
+Coral Reef Geek
+
+Underwater Drone Geek
+
+Geology Geek
+
+Volcanology Geek
+
+Seismology Geek
+
+Paleontology Geek
+
+Glaciology Geek
+
+Meteorology Geek
+
+Climate Science Geek
+
+Ecology Geek
+
+Conservation Geek
+
+Wildlife Biology Geek
+
+Coral Ecology Geek
+
+Botany Geek
+
+Microbiology Geek
+
+Nanotechnology Geek
+
+Genetics Geek
+
+Neuroscience Geek
+
+Astrobiology Geek
+
+Exobiology Geek
+
+Terraforming Geek
+
+Robotics Geek
+
+AI Research Geek
+
+Quantum Mechanics Geek
+
+Particle Physics Geek
+
+Relativity Geek
+
+Computational Science Geek
+
+Biotech Geek
+
+🧙 Fantasy & Roleplay Geeks (351–400)
+D&D Dungeon Master Geek
+
+Pathfinder Geek
+
+Call of Cthulhu Geek
+
+Warhammer Geek
+
+MTG Geek
+
+Cosplay Geek
+
+Costume Maker Geek
+
+Prop Maker Geek
+
+Worldbuilder Geek
+
+Lore Keeper Geek
+
+Tavern Master Geek
+
+NPC Actor Geek
+
+Dungeon Maker Geek
+
+Beast Tamer Geek
+
+Alchemy Geek
+
+Enchanter Geek
+
+Spellbook Geek
+
+Dragon Geek
+
+Dragon Rider Geek
+
+Knight Geek
+
+Paladin Geek
+
+Necromancer Geek
+
+Warlock Geek
+
+Sorcerer Geek
+
+Wizard Geek
+
+Rogue Geek
+
+Ranger Geek
+
+Bard Geek
+
+Cleric Geek
+
+Shapeshifter Geek
+
+Elemental Geek
+
+Dieselpunk Geek
+
+Gaslamp Fantasy Geek
+
+Victorian Horror Geek
+
+Gothic Fantasy Geek
+
+Pixel RPG Geek
+
+JRPG Geek
+
+Rogue-Lite Geek
+
+Virtual Reality RPG Geek
+
+Character Sheet Geek
+
+Campaign Storyteller Geek
+
+LARP Geek
+
+Steampunk Geek
+
+Cyberpunk Geek
+
+Cosplay Prop Geek
+
+VR RPG Geek
+
+Text-Based RPG Geek
+
+Tabletop RPG Geek
+
+World Lore Geek
+
+Myth Keeper Geek
+
+👾 Internet & Subculture Geeks (401–450)
+Forum Troll Geek
+
+Reddit Geek
+
+StackOverflow Geek
+
+Hacker News Geek
+
+4chan Geek
+
+Meme Geek
+
+GIF Collector Geek
+
+Emoji Geek
+
+Fanfic Writer Geek
+
+Slashfic Geek
+
+Fan Art Geek
+
+VTuber Geek
+
+Webcomic Geek
+
+Podcast Geek
+
+Blogger Geek
+
+Vlogger Geek
+
+YouTube Tutorial Geek
+
+Twitch Moderator Geek
+
+Discord Moderator Geek
+
+Telegram Admin Geek
+
+Social Media Manager Geek
+
+Influencer Geek
+
+Wikipedia Editor Geek
+
+Crypto Trader Geek
+
+NFT Collector Geek
+
+DAO Member Geek
+
+Altcoin Geek
+
+DeFi Geek
+
+Smart Contract Auditor Geek
+
+Crypto Miner Geek
+
+Dark Web Geek
+
+Vaporwave Geek
+
+Synthwave Geek
+
+Retrowave Geek
+
+Lolita Fashion Geek
+
+Gothic Fashion Geek
+
+Streetwear Geek
+
+Sneakerhead Geek
+
+Zine Maker Geek
+
+Fanzine Geek
+
+Cybersecurity Subculture Geek
+
+Retro Tech Geek
+
+Maker Faire Geek
+
+Hacker Space Geek
+
+Drone Racer Geek
+
+RC Vehicle Geek
+
+Satellite Tracking Geek
+
+Smartwatch Geek
+
+Gadget Hack Geek
+
+Digital Archivist Geek
+
+💡 Misc / Lifestyle Geeks (451–500)
+Fitness Tracker Geek
+
+Health App Geek
+
+Yoga Geek
+
+Meditation Geek
+
+Vegan Cooking Geek
+
+Keto Cooking Geek
+
+Craft Beer Geek
+
+Wine Tasting Geek
+
+Home Barista Geek
+
+Coffee Cupping Geek
+
+Home Brewing Geek
+
+Gardening Geek
+
+Hydroponics Geek
+
+Aquaponics Geek
+
+Home Automation Geek
+
+Smart Home Geek
+
+Minimalist Geek
+
+Bullet Journal Geek
+
+Planner Geek
+
+Pomodoro Technique Geek
+
+Habit Tracker Geek
+
+Budgeting Geek
+
+Personal Finance Geek
+
+Side Hustle Geek
+
+Remote Work Geek
+
+Vanlife Geek
+
+Tiny House Geek
+
+Homesteading Geek
+
+Survivalist Geek
+
+Prepper Geek
+
+Off-Grid Geek
+
+Digital Nomad Geek
+
+Tao Traveler Geek
+
+Drone Photography Geek
+
+RC Plane Geek
+
+3D Printing Geek
+
+Laser Cutter Geek
+
+DIY Electronics Geek
+
+Keyboard Mod Geek
+
+Gadget Collector Geek
+
+Smartwatch Geek
+
+Drone Racing Geek
+
+Pet Care Geek
+
+Birdwatching Geek
+
+Stargazing Geek
+
+Geocaching Geek
+
+Puzzle Solver Geek
+
+Life Hack Geek
+
+ASMR Geek
+
+Perfume Blending Geek

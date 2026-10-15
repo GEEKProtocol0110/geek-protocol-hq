@@ -30,6 +30,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ECO-001 | P1 | planned | Audit each ecosystem component and preserve its handoff | Maintainer for each repository unassigned |
 | CHAIN-001 | P1 | needs-evidence | Verify the TN10 test asset and wallet before a real pilot | Maintainer; founder controls the external testnet wallet |
 | OPS-003 | P1 | done | Finish mint-availability monitoring for GitHub issue #14 | Maintainer; founder reviews release |
+| ARCH-002 | P1 | in-progress | Preserve the founder-supplied 500-Geek theme roster | Maintainer archives; founder reviews interpretation |
 
 ## CONT-001: Publish the continuation system
 
@@ -261,7 +262,7 @@ Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.m
 
 **P2 / planned.** Owner: Art lead and ownership reviewer unassigned. Dependencies: none.
 
-Next action: Inventory finished artwork against the existing edition manifest.
+Next action: Use the newly preserved founding roster to review 18 repeated-label pairs, clarify the original rarity-header numbers, and propose explicit theme/edition mappings that account for the GIGA/A.C.E. anchors. Inventory finished art separately; do not silently replace the current manifest.
 
 Acceptance:
 
@@ -269,7 +270,7 @@ Acceptance:
 - Art provenance, metadata and acquisition allocations approved.
 - Ownership remains disabled until its separate reviewed implementation.
 
-Evidence/specification: [docs/GEEK-500-ART-BIBLE.md](../../docs/GEEK-500-ART-BIBLE.md), [docs/COLLECTIBLE-PROTOCOL.md](../../docs/COLLECTIBLE-PROTOCOL.md).
+Evidence/specification: [docs/GEEK-500-ART-BIBLE.md](../../docs/GEEK-500-ART-BIBLE.md), [docs/COLLECTIBLE-PROTOCOL.md](../../docs/COLLECTIBLE-PROTOCOL.md), [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md).
 
 ## EDU-001: Design the first family or school learning pilot
 
@@ -370,3 +371,17 @@ Acceptance:
 - Candidate tests, exact PR/commit and deployment/production evidence are recorded; no signing, settlement or new mint policy enabled.
 
 Evidence/specification: [docs/MINT-AVAILABILITY-ISSUE-14.md](../../docs/MINT-AVAILABILITY-ISSUE-14.md), [docs/PRODUCTION-MONITORING.md](../../docs/PRODUCTION-MONITORING.md), [docs/continuity/github-issues.json](../../docs/continuity/github-issues.json).
+
+## ARCH-002: Preserve the founder-supplied 500-Geek theme roster
+
+**P1 / in-progress.** Owner: Maintainer archives; founder reviews interpretation. Dependencies: none.
+
+Next action: Review the unchanged original, ordered extraction and roster comparison in this candidate PR; then reconcile duplicate themes, rarity-header meaning and edition mappings under COLL-001.
+
+Acceptance:
+
+- Original filename, exact UTF-8/CRLF bytes, SHA-256, Git blob, source and received date preserved; missing creation-time proof explicit.
+- 500 ordered entries in ten groups, 482 exact distinct names and 18 repeated-label pairs recorded without deletion or renaming.
+- Existing 500-edition manifest, five tiers, GIGA/A.C.E. anchors, art approvals and disabled ownership remain unchanged.
+
+Evidence/specification: [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md), [docs/continuity/founding/geek-roster-500.json](../../docs/continuity/founding/geek-roster-500.json), [docs/continuity/assets.json](../../docs/continuity/assets.json).

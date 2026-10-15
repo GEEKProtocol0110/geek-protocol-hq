@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-001: active.** OPS-003 is merged, production-checked and complete; GitHub issue #14 is closed. Continue distinct source-checked Kaspa concepts toward 1,000. CHAIN-001 still needs owner acceptance of run loading and its first real receipt/transfer.
+**ARCH-002: in-progress.** Preserve the newly supplied 500geek list.txt unchanged and compare its 500 source positions, 482 exact names and 18 repeated-label pairs with the current collection. Candidate does not change editions, rarity, art approvals or ownership.
 
-Next task: **BANK-001**. Prepare the next small distinct source-checked Kaspa batch. For CHAIN-001, accept the deployed run loader on the phone and queue the next eligible completed Daily within five minutes before any manual transfer. Preserve the UTC daily lock, CCE hold and disabled Mainnet settlement.
+Next task: **BANK-001**. Review the ARCH-002 archive/reconciliation candidate, then resume BANK-001. COLL-001 needs explicit theme/rarity/edition reconciliation; CHAIN-001 still needs its first accepted pilot receipt/manual transfer. Preserve CCE and Mainnet settlement holds.
 
 ## Holds
 
@@ -35,7 +35,7 @@ CCE: **bank-and-economy-hold**. Contributor rate: unselected; 1 or 5 GEEK are pr
 
 ## Unresolved
 
-- Original founding conversation and phone files are not yet ingested.
+- Original founding conversation and remaining phone files are not yet ingested; one founder-supplied 500-Geek roster is now preserved in the ARCH-002 candidate.
 - Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.
 - No successor or second trusted account administrator is appointed in this record.
 - No institutional contract, school partnership, legal-entity registration or accreditation is verified.

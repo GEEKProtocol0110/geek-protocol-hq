@@ -1,0 +1,2 @@
+# Preserve the exact founder-upload bytes across checkouts.
+"docs/continuity/founding/phone/500geek list.txt" -text whitespace=cr-at-eol

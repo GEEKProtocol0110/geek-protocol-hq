@@ -94,6 +94,10 @@ The surviving pixels do not preserve trustworthy edition numbers for these conce
 
 Any future mapping into #001–#498 requires a documented human review that reconciles the old 100/500/600-character plans with the current fixed 500-edition contract. The source artwork must also pass originality, licensing, accessibility, visual consistency, and lore review before its status can advance.
 
+## Newly supplied founding theme roster
+
+The founder supplied `500geek list.txt` on October 15, 2026. Its unchanged original and ordered extraction are recorded under ARCH-011. It contains 500 theme positions in ten groups, 482 exact distinct labels and 18 repeated-label pairs. Its rarity header is ambiguous and its last two source positions are ASMR Geek / Perfume Blending Geek, rather than the current GIGA / A.C.E. anchors. [The reconciliation review](GEEK-500-FOUNDING-ROSTER-REVIEW.md) records these differences and exact legacy-art concept overlaps. Source positions are not approved edition mappings. This archival recovery does not rename, renumber or re-tier the current collection.
+
 ## Metadata contract
 
 Each record contains:

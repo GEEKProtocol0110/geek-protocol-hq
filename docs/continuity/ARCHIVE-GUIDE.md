@@ -1,6 +1,6 @@
 # Preserve the founding record
 
-The [asset register](ASSET-REGISTER.md) distinguishes exact preserved bytes, indexed material and originals still missing. Three public historical HTML documents are copied unchanged under [founding](founding/README.md), pinned to their source commit and hashes. The existing recovered art remains in its original archive system.
+The [asset register](ASSET-REGISTER.md) distinguishes exact preserved bytes, indexed material and originals still missing. Three public historical HTML documents are copied unchanged under [founding](founding/README.md), pinned to their source commit and hashes. A newly supplied phone roster is preserved byte-for-byte under ARCH-011; [its review](../GEEK-500-FOUNDING-ROSTER-REVIEW.md) distinguishes historic theme positions from current NFT editions. The existing recovered art remains in its original archive system.
 
 The master document's filename says v1.3 while its text labels itself v1.5. Preserve that mismatch as evidence. Earlier architecture and economic language describes earlier proposals; it does not override the current product or holds. Do not rewrite old documents to make them match today's implementation.
 
