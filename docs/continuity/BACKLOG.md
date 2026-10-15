@@ -29,6 +29,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | MIL-001 | P3 | proposed | Explore military and veteran professional learning | Founder with authorized institutional sponsor unassigned |
 | ECO-001 | P1 | planned | Audit each ecosystem component and preserve its handoff | Maintainer for each repository unassigned |
 | CHAIN-001 | P1 | needs-evidence | Verify the TN10 test asset and wallet before a real pilot | Maintainer; founder controls the external testnet wallet |
+| OPS-003 | P1 | in-progress | Finish mint-availability monitoring for GitHub issue #14 | Maintainer; founder reviews release |
 
 ## CONT-001: Publish the continuation system
 
@@ -354,3 +355,18 @@ Acceptance:
 - Test deployment maximum, mint limit, premint and decimals match pinned GEEK; test ticker/network/deployment remain distinct.
 
 Evidence/specification: [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md), [docs/TESTNET-ASSET-SETUP.md](../../docs/TESTNET-ASSET-SETUP.md).
+
+## OPS-003: Finish mint-availability monitoring for GitHub issue #14
+
+**P1 / in-progress.** Owner: Maintainer; founder reviews release. Dependencies: none.
+
+Next action: Review and merge the issue #14 candidate, then verify the expanded twenty-one-check production monitor and fresh live mint status before closing the ticket. Preserve the known fallback 502 limitation and original outage evidence.
+
+Acceptance:
+
+- Fresh HQ mint status verifies the exact pinned deployment and internally consistent raw/display minted and remaining supply.
+- Production monitoring flags outages, stale/mismatched payloads and invalid open/paused states; verified exhaustion passes.
+- Exact historical twenty-check reports remain readable and are labeled Earlier coverage.
+- Candidate tests, exact PR/commit and deployment/production evidence are recorded; no signing, settlement or new mint policy enabled.
+
+Evidence/specification: [docs/MINT-AVAILABILITY-ISSUE-14.md](../../docs/MINT-AVAILABILITY-ISSUE-14.md), [docs/PRODUCTION-MONITORING.md](../../docs/PRODUCTION-MONITORING.md), [docs/continuity/github-issues.json](../../docs/continuity/github-issues.json).

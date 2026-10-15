@@ -35,12 +35,12 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "BANK-001",
-    "status": "active",
-    "description": "Continuation system CONT-001 is merged and deployed. Continue distinct source-checked Kaspa concepts toward 1,000; CHAIN-001 separately awaits the next eligible Daily, queued receipt and reconciled manual test transfer."
+    "id": "OPS-003",
+    "status": "in-progress",
+    "description": "Resolve the remaining monitoring gap in open GitHub issue #14. Primary mint status has recovered; add fresh pinned-deployment checks and preserve older monitor snapshots. Candidate is not yet merged or deployed."
   },
   "nextTask": "BANK-001",
-  "nextAction": "Prepare the next small distinct source-checked Kaspa batch. For CHAIN-001, refresh the deployed pilot tab and verify Use my latest completed Daily, then queue the next eligible Daily immediately after saving; do not bypass today’s lock or send before a receipt. Keep all CCE and Mainnet settlement holds intact.",
+  "nextAction": "Review and release OPS-003 with issue #14 evidence, then continue BANK-001 toward 1,000 distinct source-checked Kaspa concepts. CHAIN-001 still needs owner acceptance of run loading and its first queued/reconciled manual test transfer; keep CCE and Mainnet settlement held.",
   "unresolved": [
     "Original founding conversation and phone files are not yet ingested.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

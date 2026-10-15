@@ -1,23 +1,11 @@
+import { GEEK_DEPLOYMENT } from './geek-deployment.js';
+export { GEEK_DEPLOYMENT } from './geek-deployment.js';
 const KASPLEX_TOKEN_URL = 'https://api.kasplex.org/v1/krc20/token/GEEK';
 // Kasware's published mainnet fallback; never accept an upstream URL from a request.
 const KASPLEX_FALLBACK_URL = 'https://api-fallback.kasplex.org/v1/krc20/token/GEEK';
 const STATUS_SOURCES = [KASPLEX_TOKEN_URL, KASPLEX_FALLBACK_URL];
 const STATUS_CACHE_MS = 10_000;
 const DIGITS = /^\d{1,40}$/;
-
-export const GEEK_DEPLOYMENT = Object.freeze({
-  network: 'kaspa-mainnet',
-  protocol: 'KRC-20',
-  ticker: 'GEEK',
-  maxRaw: '14400000000000000000',
-  limitRaw: '10000000000000',
-  premintRaw: '0',
-  decimals: 8,
-  mode: 'mint',
-  deployer: 'kaspa:qzj0e55rlxpm0knvra9wvgckpkyq9h8hv8wl0lh2ngjad9a4cedmj24cy07ew',
-  deploymentHash: 'c3cea245b394374b6d80d9fa82269967b56bd5d128a4db3152087a05e014d0b1',
-  protocolFeeKas: '1'
-});
 
 const rawInteger = (value, label) => {
   const raw = String(value ?? '');

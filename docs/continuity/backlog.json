@@ -444,6 +444,26 @@
         "docs/TESTNET-REWARD-PILOT.md",
         "docs/TESTNET-ASSET-SETUP.md"
       ]
+    },
+    {
+      "id": "OPS-003",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Finish mint-availability monitoring for GitHub issue #14",
+      "owner": "Maintainer; founder reviews release",
+      "nextAction": "Review and merge the issue #14 candidate, then verify the expanded twenty-one-check production monitor and fresh live mint status before closing the ticket. Preserve the known fallback 502 limitation and original outage evidence.",
+      "acceptance": [
+        "Fresh HQ mint status verifies the exact pinned deployment and internally consistent raw/display minted and remaining supply.",
+        "Production monitoring flags outages, stale/mismatched payloads and invalid open/paused states; verified exhaustion passes.",
+        "Exact historical twenty-check reports remain readable and are labeled Earlier coverage.",
+        "Candidate tests, exact PR/commit and deployment/production evidence are recorded; no signing, settlement or new mint policy enabled."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/MINT-AVAILABILITY-ISSUE-14.md",
+        "docs/PRODUCTION-MONITORING.md",
+        "docs/continuity/github-issues.json"
+      ]
     }
   ]
 }
