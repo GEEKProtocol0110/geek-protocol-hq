@@ -469,6 +469,25 @@
         "PR #115 merged b0bc952d14d06b34cf82ae7b3794f61f6916c900; production dpl_2koiXamNy5a1eVmMsbuHXnaKKMEG READY on exact source. Standard Node monitor passed 21/21 under five-second deadlines; GitHub verify and production-monitor check passed; issue #14 closed completed.",
         "Exact legacy reports remain readable; full candidate verification 441 tests, zero failures/skips, real Redis and 311 security assertions. Fallback 502 was observed earlier and is not claimed repaired."
       ]
+    },
+    {
+      "id": "CHAIN-002",
+      "priority": "P1",
+      "status": "decision-needed",
+      "title": "Evaluate KCC20 compatibility and preserve GEEK holder entitlements",
+      "owner": "Maintainer researches; founder selects policy; independent covenant reviewer unassigned",
+      "nextAction": "Review the dated KCC20 report. Resolve the 144-billion/eight-decimal integer issue, select exact conforming artifacts and a test wallet, and specify a disabled prototype. Any holder migration or funded deployment needs a separate concrete proposal.",
+      "acceptance": [
+        "Current specification and implementation distinctions, pinned sources and research limits recorded.",
+        "Existing holder and still-unminted GEEK accounting, decimal precision and integer bounds explicitly resolved.",
+        "Artifact reproduction/conformance, independent review, wallet/network tests and recovery evidence required before integration.",
+        "No supply change, migration, new signer, CCE reopening or Mainnet settlement implied by research."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/KCC20-RESEARCH.md",
+        "docs/research/kcc20-2026-10-15.json"
+      ]
     }
   ]
 }

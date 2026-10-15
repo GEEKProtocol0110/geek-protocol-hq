@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-001: active.** OPS-003 is merged, production-checked and complete; GitHub issue #14 is closed. Continue distinct source-checked Kaspa concepts toward 1,000. CHAIN-001 still needs owner acceptance of run loading and its first real receipt/transfer.
+**CHAIN-002: decision-needed.** KCC20 primary-source research is prepared on codex/kcc20-research. Current convention is Last Call; implementation compatibility, the GEEK raw-supply integer bound and holder transition remain unresolved. Research does not enable migration or settlement.
 
-Next task: **BANK-001**. Prepare the next small distinct source-checked Kaspa batch. For CHAIN-001, accept the deployed run loader on the phone and queue the next eligible completed Daily within five minutes before any manual transfer. Preserve the UTC daily lock, CCE hold and disabled Mainnet settlement.
+Next task: **BANK-001**. Review CHAIN-002 research and select only a disabled prototype after supply/artifact decisions; then resume BANK-001. Founding originals remain in separate open PR #116. CHAIN-001 still needs its first accepted manual testnet reward receipt. Preserve CCE, ownership and Mainnet settlement holds.
 
 ## Holds
 
@@ -35,8 +35,9 @@ CCE: **bank-and-economy-hold**. Contributor rate: unselected; 1 or 5 GEEK are pr
 
 ## Unresolved
 
-- Original founding conversation and phone files are not yet ingested.
+- Original founding conversation and remaining phone files are still missing; the supplied roster and trait PDF are preserved in open PR #116, not yet merged into main.
 - Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.
 - No successor or second trusted account administrator is appointed in this record.
 - No institutional contract, school partnership, legal-entity registration or accreditation is verified.
 - An independent off-provider repository copy and production-provider restore have not been demonstrated.
+- KCC20 integration/migration is unapproved: eight-decimal supply representation, exact artifact/wallet compatibility and existing-holder accounting require a concrete design.

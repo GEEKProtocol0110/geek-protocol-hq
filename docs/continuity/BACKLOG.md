@@ -30,6 +30,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ECO-001 | P1 | planned | Audit each ecosystem component and preserve its handoff | Maintainer for each repository unassigned |
 | CHAIN-001 | P1 | needs-evidence | Verify the TN10 test asset and wallet before a real pilot | Maintainer; founder controls the external testnet wallet |
 | OPS-003 | P1 | done | Finish mint-availability monitoring for GitHub issue #14 | Maintainer; founder reviews release |
+| CHAIN-002 | P1 | decision-needed | Evaluate KCC20 compatibility and preserve GEEK holder entitlements | Maintainer researches; founder selects policy; independent covenant reviewer unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -370,3 +371,18 @@ Acceptance:
 - Candidate tests, exact PR/commit and deployment/production evidence are recorded; no signing, settlement or new mint policy enabled.
 
 Evidence/specification: [docs/MINT-AVAILABILITY-ISSUE-14.md](../../docs/MINT-AVAILABILITY-ISSUE-14.md), [docs/PRODUCTION-MONITORING.md](../../docs/PRODUCTION-MONITORING.md), [docs/continuity/github-issues.json](../../docs/continuity/github-issues.json).
+
+## CHAIN-002: Evaluate KCC20 compatibility and preserve GEEK holder entitlements
+
+**P1 / decision-needed.** Owner: Maintainer researches; founder selects policy; independent covenant reviewer unassigned. Dependencies: none.
+
+Next action: Review the dated KCC20 report. Resolve the 144-billion/eight-decimal integer issue, select exact conforming artifacts and a test wallet, and specify a disabled prototype. Any holder migration or funded deployment needs a separate concrete proposal.
+
+Acceptance:
+
+- Current specification and implementation distinctions, pinned sources and research limits recorded.
+- Existing holder and still-unminted GEEK accounting, decimal precision and integer bounds explicitly resolved.
+- Artifact reproduction/conformance, independent review, wallet/network tests and recovery evidence required before integration.
+- No supply change, migration, new signer, CCE reopening or Mainnet settlement implied by research.
+
+Evidence/specification: [docs/KCC20-RESEARCH.md](../../docs/KCC20-RESEARCH.md), [docs/research/kcc20-2026-10-15.json](../../docs/research/kcc20-2026-10-15.json).
