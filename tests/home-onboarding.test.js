@@ -14,7 +14,7 @@ test('the first actions go directly to Daily Signal and the beginner Kaspa lesso
  const play=new URL(decode(actions[0][2]),'https://www.geekprotocol.xyz');
  assert.equal(play.pathname,'/play/');assert.equal(play.searchParams.get('mode'),'daily');assert.equal(play.searchParams.get('category'),'kaspa');assert.equal(play.hash,'#timed-games');
  const study=new URL(decode(actions[1][2]),play.origin);assert.equal(study.pathname,'/study/');assert.equal(study.searchParams.get('topic'),'origins');assert.equal(study.searchParams.get('level'),'foundations');
- assert.ok(hero.includes('No wallet needed'));assert.ok(hero.includes('5 timed quiz questions'));assert.ok(!hero.includes('href="./start/"'));
+ assert.ok(hero.includes('No wallet needed'));assert.ok(hero.includes('5 timed quiz questions'));assert.ok(hero.includes('One quiz attempt per UTC day'));assert.ok(!hero.includes('href="./start/"'));
  for(const path of ['play','study','sign-in','start'])assert.ok(existsSync(new URL(`../public/${path}/index.html`,import.meta.url)));
 });
 test('sign-in is outside the collapsed navigation and explains saved-player recovery without a save requirement',()=>{

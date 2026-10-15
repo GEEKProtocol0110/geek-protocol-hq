@@ -1,6 +1,6 @@
 # Geek Protocol HQ — Project Status
 
-**Snapshot date:** 2026-10-14<br />
+**Snapshot date:** 2026-10-15<br />
 **Release channel:** Public Alpha  
 **Production:** [www.geekprotocol.xyz](https://www.geekprotocol.xyz/)  
 **Repository:** [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq)
@@ -71,6 +71,8 @@ The repository currently verifies:
 
 ## Required next gates
 
+Use the [free-beta pilot checklist](FREE-BETA-READINESS.md) for the current four-chapter Quest, mobile learning/profile and real two-player Royale acceptance. It records the PR #109 comparison baseline and links the final PR #84 candidate checks. The October 9 founder-confirmed Quest resume remains a limited historical pass; later campaign/device acceptance, owner MFA and provider restore evidence remain pending. Preparing or merging the checklist does not change the public Alpha label. Value-moving gates below remain separate.
+
 1. Freeze a named release candidate and software bill of materials.
 2. Complete production architecture, incident-response, backup, and key-management evidence.
 3. Configure protected production roles with individual MFA-backed access.
@@ -105,7 +107,7 @@ Vercel Web Analytics is integrated for production public-page visits and seven a
 
 ### Game modes
 
-Gauntlet, Daily Signal and Speed Signal retain their existing server-owned gameplay. Memory Grid is now a separate free, unranked solo mode at `/memory/`, reachable from Play. It matches Kaspa words with meanings on shuffled four-, six-, or eight-pair boards. Players explicitly close mismatches; there is no timer or speed bonus. Matches reveal explanations, primary-source links and related Study lessons. Giga supplies authored encouragement. Board state and attempts exist only in page memory, with no account/progress writes, XP, credits, purchases or token rewards. The public teaching deck is intentionally visible and does not contain the private ranked bank. Trivia Royale and Fandom Duel remain planned. Quiz Quest was implemented later; see its release sections below.
+Gauntlet, Daily Signal and Speed Signal retain their existing server-owned gameplay. Memory Grid is now a separate free, unranked solo mode at `/memory/`, reachable from Play. It matches Kaspa words with meanings on shuffled four-, six-, or eight-pair boards. Players explicitly close mismatches; there is no timer or speed bonus. Matches reveal explanations, primary-source links and related Study lessons. Giga supplies authored encouragement. Board state and attempts exist only in page memory, with no account/progress writes, XP, credits, purchases or token rewards. The public teaching deck is intentionally visible and does not contain the private ranked bank. Free Geek Duel and Trivia Royale were implemented in later releases; Fandom Duel remains planned. Quiz Quest was implemented later; see its release sections below.
 
 ## Profile character and NFT collection (October 3, 2026)
 
@@ -211,3 +213,8 @@ The private `/ops/stress/` lab and a reproducible baseline model the existing Ga
 ### Round reward proposal — October 14, 2026
 
 The founder selected 100 GEEK per qualifying completed round. The private economy stress lab now models an assumed billion-GEEK reserve, whole-round daily caps, per-receipt 70/30 recycling, full-budget days and the next partial day. Caps are scenario inputs; eligibility and per-player payout limits are not finalized. No Alpha grant, funded liability, wallet balance, payment gate or burn authority changes.
+
+
+## October 15: Kaspa-first onboarding and final polish
+
+The homepage now starts with a five-question Kaspa Daily Signal or a beginner Origins lesson, with no wallet required. Sign-in remains visible outside the mobile menu. The quiz selects setup without starting its timer and explains the one-attempt-per-UTC-day rule. Wallet education and public-address tracking precede optional game modes; ecosystem and project information remain expandable. Header wrapping, footer tap targets and current-feature wording received a focused polish. See [Mobile onboarding](MOBILE-ONBOARDING.md) for verification and pending browser/device acceptance.

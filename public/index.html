@@ -42,20 +42,18 @@
           <h1 id="home-title">Your first steps<br /><em>into Kaspa.</em></h1>
           <p class="hero-lede">Learn what Kaspa is and how to use it. Start with a quick quiz or one beginner lesson.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="/play/?mode=daily&amp;category=kaspa#timed-games" aria-describedby="home-quiz-note">Play a quick quiz <span aria-hidden="true">→</span></a>
+            <a class="button button-primary" href="/play/?mode=daily&amp;category=kaspa#timed-games" aria-describedby="home-quiz-note">Play today’s quiz <span aria-hidden="true">→</span></a>
             <a class="button button-secondary" href="/study/?topic=origins&amp;level=foundations">Learn about Kaspa <span aria-hidden="true">→</span></a>
           </div>
-          <p class="hero-notice" id="home-quiz-note">Free · 5 timed quiz questions · No wallet needed</p>
+          <p class="hero-notice" id="home-quiz-note">Free · 5 timed quiz questions · No wallet needed<span class="home-quiz-limit">One quiz attempt per UTC day. Learn anytime.</span></p>
           <p class="hero-return"><a href="/sign-in/">Already a Geek? Sign in →</a><small>Recover a saved player with your Kaspa wallet. Guest progress follows this browser’s session.</small></p>
         </div>
         <div class="hero-visual" aria-hidden="true"><div class="giga-emblem"><img src="./assets/kaspa-culture.png" alt="" width="1024" height="1024" /></div></div>
       </section>
 
-
-
-
-
       <section class="home-first-steps" aria-labelledby="first-steps-title"><h2 id="first-steps-title">One small start.</h2><ol><li><b>01 · Choose</b><span>A quick quiz or a Kaspa lesson.</span></li><li><b>02 · Try</b><span>Answer and read the explanation.</span></li><li><b>03 · Keep going</b><span>See your result and pick your next step.</span></li></ol></section>
+
+      <details class="welcome-panel" id="kaspa-next-steps"><summary><span><b>Your next steps with Kaspa</b><small>Learn about wallets, then try tracking a public address.</small></span></summary><div class="welcome-panel-content home-kaspa-next"><p>Geek helps you move from discovering Kaspa to understanding how to use it. Take these steps when you feel ready.</p><div class="welcome-project-links"><a href="/study/?topic=wallets&amp;level=foundations">Learn how Kaspa wallets work →</a><a href="/kaspa/">Explore the Kaspa field guide →</a><a href="https://wallet.geekprotocol.xyz/" target="_blank" rel="noopener noreferrer">Track a public Kaspa address in Geek Wallet ↗</a><a href="/sign-in/">Use a Kaspa wallet to recover your Geek player →</a></div><p>Learning and games work without a wallet. Signing in proves control of a Kaspa address; it does not send a payment.</p></div></details>
 
       <details class="welcome-panel home-more-play" id="more-ways-to-play"><summary><span><b>More ways to play</b><small>Geek Gauntlet, story adventures and matching games.</small></span></summary><div class="welcome-panel-content"><section class="welcome-gauntlet" aria-labelledby="home-gauntlet-title">
         <div><span class="section-kicker">The Geek Protocol challenge</span><h2 id="home-gauntlet-title">Geek Gauntlet</h2><p>Ten rounds. Ten questions each. Fifteen seconds to choose your answer. Start round one and see how far you can climb.</p><small>Career XP and internal Alpha credits. No token payouts.</small></div>
@@ -63,8 +61,6 @@
       </section>
 
       <section class="home-path section" aria-labelledby="path-title"><h2 id="path-title">Find your kind of play.</h2><div class="welcome-cards"><a href="./quest/"><span class="welcome-icon" aria-hidden="true">✦</span><h3>Follow a story</h3><p>Explore with GIGA, one chapter at a time.</p><b class="welcome-card-action">Begin Quiz Quest <span aria-hidden="true">→</span></b></a><a href="./memory/"><span class="welcome-icon" aria-hidden="true">▦</span><h3>Match an idea</h3><p>Pair Kaspa words with their meanings. No timer.</p><b class="welcome-card-action">Try Memory Grid <span aria-hidden="true">→</span></b></a><a href="./play/"><span class="welcome-icon" aria-hidden="true">◉</span><h3>Explore every game</h3><p>Pick a solo challenge or play with friends.</p><b class="welcome-card-action">Choose a game <span aria-hidden="true">→</span></b></a></div></section></div></details>
-
-      <details class="welcome-panel" id="kaspa-next-steps"><summary><span><b>Ready to use Kaspa?</b><small>Understand addresses, wallets and your next step.</small></span></summary><div class="welcome-panel-content home-kaspa-next"><p>Geek helps you move from discovering Kaspa to understanding how to use it. Take these steps when you feel ready.</p><div class="welcome-project-links"><a href="/study/?topic=wallets&amp;level=foundations">Learn how Kaspa wallets work →</a><a href="/kaspa/">Explore the Kaspa field guide →</a><a href="https://wallet.geekprotocol.xyz/" target="_blank" rel="noopener noreferrer">Track a public Kaspa address in Geek Wallet ↗</a><a href="/sign-in/">Use a Kaspa wallet to recover your Geek player →</a></div><p>Learning and games work without a wallet. Signing in proves control of a Kaspa address; it does not send a payment.</p></div></details>
 
       <details class="welcome-panel" id="community-and-tools"><summary><span><b>Explore the Geek ecosystem</b><small>Geek Jr, Geek Mini, the Kaspa widget and our community.</small></span></summary><div class="welcome-panel-content"><aside class="welcome-family"><div><span class="section-kicker">Growing curiosity, together</span><h2>A younger explorer at home?</h2><p>Geek Jr is our separate learning home for younger children. Explore it together.</p></div><a class="button button-secondary" href="https://geekjr.xyz/">Visit Geek Jr ↗</a></aside>
 
@@ -96,11 +92,11 @@
       </section></div></details>
 <details class="welcome-panel" id="our-vision"><summary><span><b>Where we’re going</b><small>The idea behind Geek Protocol.</small></span></summary><div class="welcome-panel-content"><section class="home-about section" aria-labelledby="about-title">
         <div><div class="section-kicker">BUILT FOR THE CURIOUS</div><h2 id="about-title">Knowledge has<br /><em>its own value.</em></h2></div>
-        <div class="home-about-copy"><p>Once you have explored an idea, you can try the timed Gauntlet, Daily Signal, or Speed Signal. Review each answer, then use your feedback to choose what to study next.</p><p><strong>Our focus now:</strong> make this learning journey simple and useful. Larger Arena modes, economic systems, governance, and launchpad plans are on hold while we improve the core experience. The full vision stays in the litepaper.</p><div class="home-links"><a href="./study/">Continue guided Study →</a><a href="./collection/">Meet the Geeks ↗</a><a href="./contribute/">Contribute a question ↗</a><a href="./litepaper/#roadmap">See the full project roadmap ↗</a></div></div>
+        <div class="home-about-copy"><p>Once you have explored an idea, you can try the timed Gauntlet, Daily Signal, or Speed Signal. Review each answer, then use your feedback to choose what to study next.</p><p><strong>Our focus now:</strong> make this learning journey simple and useful. Free Duel and Trivia Royale are available to explore. Paid gameplay, token payouts, governance and launchpad plans remain future work. The full vision stays in the litepaper.</p><div class="home-links"><a href="./study/">Continue guided Study →</a><a href="./collection/">Meet the Geeks ↗</a><a href="./contribute/">Contribute a question ↗</a><a href="./litepaper/#roadmap">See the full project roadmap ↗</a></div></div>
       </section></div></details>
 
       <details class="welcome-panel" id="live-status"><summary><span><b>What’s available today</b><small>Learning, games and project features in Alpha.</small></span></summary><div class="welcome-panel-content"><section class="home-status section" aria-labelledby="status-title">
-        <div class="home-status-inner"><div><div class="section-kicker">CLEAR BY DESIGN</div><h2 id="status-title">What is live?</h2></div><div><p><strong>The learning path is live in Alpha.</strong> Kaspa 101, guided Study, untimed practice, and saved concept feedback are ready to use. Timed games track scores, XP, and internal game credits separately. Those credits cannot be withdrawn; on-chain reward settlement is not live.</p><p>Challenges, the daily vault, collectibles, and minting are available through Explore. GEEK KRC-20 minting is a separate, wallet-approved flow that pauses if live supply cannot be verified. Geek Protocol is an independent Kaspa community project.</p><a class="text-link" href="/trade/">Buy &amp; sell GEEK on Kaspacom ↗</a><a class="text-link" href="./mint/">Check mint status <span aria-hidden="true">→</span></a><a class="text-link" href="./security/">Read security &amp; launch gates <span aria-hidden="true">→</span></a></div></div>
+        <div class="home-status-inner"><div><div class="section-kicker">CLEAR BY DESIGN</div><h2 id="status-title">What is live?</h2></div><div><p><strong>The learning path is live in Alpha.</strong> Kaspa 101, guided Study, untimed practice, and saved concept feedback are ready to use. Timed games track scores, XP, and internal game credits separately. Those credits cannot be withdrawn; on-chain reward settlement is not live.</p><p>Find challenges under More. The project links below include the daily vault, collectibles and minting. GEEK KRC-20 minting is a separate, wallet-approved flow that pauses if live supply cannot be verified. Geek Protocol is an independent Kaspa community project.</p><a class="text-link" href="/trade/">Buy &amp; sell GEEK on Kaspacom ↗</a><a class="text-link" href="./mint/">Check mint status <span aria-hidden="true">→</span></a><a class="text-link" href="./security/">Read security &amp; launch gates <span aria-hidden="true">→</span></a></div></div>
       </section></div></details>
     </main>
 
@@ -113,12 +109,13 @@
         <span>GEEK<span class="brand-mark">//</span>PROTOCOL</span>
         <p>All hope, no hype. Kaspa meets curiosity. Learning becomes value.</p>
       </div>
-      <div class="footer-links"><a href="https://geek-mini.vercel.app/">Geek Mini ↗</a><a href="/tools/#kaspa-widget">Free Kaspa widget</a>
+      <nav class="footer-links" aria-label="Footer navigation">
         <a itemprop="url" href="https://www.geekprotocol.xyz/">Home</a>
-        <a href="https://geekjr.xyz/">Geek Jr</a><a href="./kaspa/">Learn</a><a href="./play/">Play</a><a href="./collection/">Collection</a>
-        <a href="./litepaper/">Litepaper</a><a href="./security/">Security</a>
-        <a itemprop="sameAs" href="https://x.com/geekonkas">X / Twitter</a>
-      </div>
+        <a href="/study/">Learn</a><a href="/play/">Play</a>
+        <a href="https://wallet.geekprotocol.xyz/" target="_blank" rel="noopener noreferrer">Geek Wallet ↗</a>
+        <a href="/security/">Security</a>
+        <a itemprop="sameAs" href="https://x.com/geekonkas">X / Twitter ↗</a>
+      </nav>
       <p class="footer-copy">© <span data-year></span> Geek Protocol · Independent Kaspa community project · Educational content, not investment advice.</p>
     <details class="welcome-panel" id="project-links"><summary><span><b>About Geek Protocol</b><small>Project information, community and optional wallet features.</small></span></summary><div class="welcome-panel-content"><div class="welcome-project-links"><a href="/tools/">Free tools from Geek</a><a href="/thanks/">Hall of Thanks</a><a href="/litepaper/">Project roadmap</a><a href="/security/">Security</a><a href="/contribute/">Contribute a question</a><a href="/collection/">Collection</a><a href="/lobby/">Practice rooms</a><a href="/vault/">Daily vault</a><a href="/rewards/">Wallet & rewards</a><a href="/economy/">Power-ups & economy</a><a href="/mint/">Mint GEEK</a><a href="/trade/">Trade GEEK</a></div></div></details></footer>
   </body>

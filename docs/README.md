@@ -78,3 +78,5 @@ Geek Protocol HQ is implemented and internally verified in several areas. It is 
 - [Production monitoring](PRODUCTION-MONITORING.md): HTTP checks, private snapshots and scheduled run summaries.
 
 - [Economy stress lab](ECONOMY-STRESS.md): current credit paths, hypothetical reserve math and replay evidence.
+
+- [Free-beta candidate and pilot checklist](FREE-BETA-READINESS.md) — current comparison baseline, historical dependency inventory and pending production acceptance.

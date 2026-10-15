@@ -15,7 +15,13 @@ The former five-step Start Here checklist remains an optional guide under More. 
 
 “Ready to use Kaspa?” links to the wallet lesson, the field guide, public-address tracking in Geek Wallet and Kaspa wallet sign-in. These are distinct actions: public-address tracking does not prove ownership; sign-in proves control of an address and sends no payment. No new signer, payout, purchase, settlement or swap execution is added.
 
+## Final polish
+
+The homepage names today’s quiz and its one-attempt-per-UTC-day limit before entry. Lessons remain the untimed alternative. Practical Kaspa next steps appear before additional game modes. The mobile header allows the brand text to wrap, and the open menu uses the actual 64-pixel header offset. Footer navigation keeps six frequently used destinations, with 44-pixel targets and two columns on narrow screens; ecosystem and project links remain in their existing expandable sections. Alpha-status copy now names the actual More menu and distinguishes available free Duel/Royale from future paid features.
+
 ## Verification and acceptance
+
+October 15 verification: all 412 tests passed with required real Redis and zero skips; full repository verification, 310 security assertions and the production dependency audit passed (zero reported vulnerabilities). HTML IDs, local links/fragments, panel ordering, footer destinations, CSS parsing and documentation links were checked.
 
 Navigation tests cover the primary destinations, visible sign-in placement, preserved destinations and the shipped deep-link handler. Existing ranked tests cover explicit start, answer review, saved results and recovery; the optional checklist/sign-in return tests remain in place. Static HTML checks validate local links, fragment targets, closed details and unique IDs.
 
