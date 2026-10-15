@@ -23,3 +23,10 @@ Use one entry per substantive session/interruption: task ID, exact review/commit
 - **Outcome:** Mainnet mint and TN10 manual KRC-20 receipt desk are separate. Testnet GEEK is reported unused; wallet provider/signing compatibility is unverified. Added the explicit blocked task without changing the bank-first product priority.
 - **Validation:** 40 targeted mint client/server and testnet receipt tests passed with real Redis, zero failures/skips. Continuity generation, validation and whitespace checks passed; review record is PR #114. No blockchain transaction, wallet connection, environment change or deployment performed.
 - **Next:** identify wallet app/signing support and specify and verify a separate test asset before pilot configuration.
+
+## October 15, 2026 — CHAIN-001 Kasware clarification
+
+- **Outcome:** founder identified Kasware. Primary Connection/KRC20 docs establish a documented TN10 integration path; the mobile app requires manual network selection. Device provider/version and real signing remain unverified.
+- **Evidence:** linked Kasware primary documentation in [the pilot guide](../TESTNET-REWARD-PILOT.md); review record PR #114.
+- **Validation:** documentation-only change; continuity generation/check and whitespace checks passed. No runtime changes, wallet connection, address-specific public record or transaction.
+- **Next:** obtain the public test address privately, verify the installed provider and separate test asset, then configure and exercise the manual pilot.

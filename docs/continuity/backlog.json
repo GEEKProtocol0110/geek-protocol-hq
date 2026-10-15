@@ -427,7 +427,7 @@
       "status": "blocked",
       "title": "Verify the TN10 test asset and wallet before a real pilot",
       "owner": "Maintainer; founder controls the external testnet wallet",
-      "nextAction": "Identify the wallet app and its TN10 KRC-20 signing support, choose a separate test-asset specification, and verify its deploy hash and funded sender before configuration.",
+      "nextAction": "Obtain the full public TN10 address for private read-only checks, verify the installed Kasware provider/version and signing flow, then specify and verify the separate test asset before configuration.",
       "acceptance": [
         "Exact TN10 token deployment, decimals, sender and amount verified against the fixed indexer.",
         "Wallet provider and TN10 signing workflow exercised with recorded transaction evidence.",
@@ -437,7 +437,7 @@
       "evidence": [
         "docs/TESTNET-REWARD-PILOT.md"
       ],
-      "blocker": "October 15 read-only indexer response reports testnet GEEK unused; screenshot does not establish the full sender, wallet app/provider, KRC-20 holdings or signing capability."
+      "blocker": "Founder identified Kasware; official docs cover TN10 and KRC-20 operations, with mobile network selection manual. Full sender, installed-provider behavior and deployed/funded test token remain unverified; October 15 indexer response reports TN10 GEEK unused."
     }
   ]
 }

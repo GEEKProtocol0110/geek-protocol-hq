@@ -12,6 +12,14 @@ A fresh read-only GET to `https://tn10api.kasplex.org/v1/krc20/token/GEEK` on Oc
 
 Next: identify the wallet app/provider and verify its TN10 KRC-20 signing workflow against its primary documentation. Specify a separate test asset and verify its deployment, decimals, funded sender and exact transfer amount. Only then configure the existing pilot. The screenshot's test KAS does not establish these prerequisites. Keep the Mainnet mint page and disabled settlement boundaries unchanged.
 
+## Kasware clarification — October 15
+
+The founder identified the screenshot application as **Kasware**. This resolves the app-name question; it does not establish the installed version or a working dapp connection.
+
+Kasware's [Connection API](https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection) documents `kaspa_testnet_10` and says `switchNetwork` is disabled in the mobile app. Select TN10 in the wallet itself. Its [KRC20 API](https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-krc20) documents deployment, mint and transfer through `signKRC20Transaction`, plus an explicit TN10 network mapping for `submitCommitReveal`. This establishes a documented integration path, not device acceptance or an executed operation.
+
+Next obtain the complete public `kaspatest:` address directly from the founder's wallet for checksum and read-only funding checks. Keep address-specific pilot evidence private. Verify provider presence/version/network on that device before any signing request; specify and verify the separate test asset before enabling receipts. No transaction or wallet connection was performed during this clarification.
+
 ## Configure a real pilot
 
 Use a separate funded testnet wallet and an approved signing tool outside HQ. Do not place wallet seeds or private keys in HQ, its environment, exports, browser storage, logs or chat. Verify the signing tool's network and transaction behavior separately before its first use.

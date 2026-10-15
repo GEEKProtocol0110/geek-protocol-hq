@@ -344,9 +344,9 @@ Evidence/specification: [docs/continuity/repositories.json](../../docs/continuit
 
 **P1 / blocked.** Owner: Maintainer; founder controls the external testnet wallet. Dependencies: none.
 
-Next action: Identify the wallet app and its TN10 KRC-20 signing support, choose a separate test-asset specification, and verify its deploy hash and funded sender before configuration.
+Next action: Obtain the full public TN10 address for private read-only checks, verify the installed Kasware provider/version and signing flow, then specify and verify the separate test asset before configuration.
 
-Blocker: October 15 read-only indexer response reports testnet GEEK unused; screenshot does not establish the full sender, wallet app/provider, KRC-20 holdings or signing capability.
+Blocker: Founder identified Kasware; official docs cover TN10 and KRC-20 operations, with mobile network selection manual. Full sender, installed-provider behavior and deployed/funded test token remain unverified; October 15 indexer response reports TN10 GEEK unused.
 
 Acceptance:
 
