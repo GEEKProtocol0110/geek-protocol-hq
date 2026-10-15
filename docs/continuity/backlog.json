@@ -420,6 +420,24 @@
       "evidence": [
         "docs/continuity/repositories.json"
       ]
+    },
+    {
+      "id": "CHAIN-001",
+      "priority": "P1",
+      "status": "blocked",
+      "title": "Verify the TN10 test asset and wallet before a real pilot",
+      "owner": "Maintainer; founder controls the external testnet wallet",
+      "nextAction": "Identify the wallet app and its TN10 KRC-20 signing support, choose a separate test-asset specification, and verify its deploy hash and funded sender before configuration.",
+      "acceptance": [
+        "Exact TN10 token deployment, decimals, sender and amount verified against the fixed indexer.",
+        "Wallet provider and TN10 signing workflow exercised with recorded transaction evidence.",
+        "One manual pilot transfer reconciled by the existing receipt desk; no Mainnet settlement enabled."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/TESTNET-REWARD-PILOT.md"
+      ],
+      "blocker": "October 15 read-only indexer response reports testnet GEEK unused; screenshot does not establish the full sender, wallet app/provider, KRC-20 holdings or signing capability."
     }
   ]
 }

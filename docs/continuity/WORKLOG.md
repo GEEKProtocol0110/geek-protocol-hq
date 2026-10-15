@@ -16,3 +16,10 @@ Use one entry per substantive session/interruption: task ID, exact review/commit
 - **Local validation:** full `npm run verify` passed with 431 tests, zero failures/skips and required real Redis 7.4.2. Continuity records/views, source hashes, local links, bank counts, 310 security assertions and the existing collection/archive/repository/economy checks passed. Production dependency audit reported zero vulnerabilities. Five targeted tests cover dependency cycles/missing tasks, source restoration, corruption/false-tree detection, dirty/incomplete source rejection and output preservation. GitHub CI and any actual checkpoint-bundle result belong in the candidate PR; they remain separate from these local results.
 - **Remaining:** original phone files/conversation; appointed successor; independent durable backup; provider restore evidence; institutional sponsor, entity/procurement facts and actual pilots. No institutional service is launched here.
 - **Next:** review/merge this candidate, verify an independent source copy, then resume `BANK-001`. Task acceptance and owner roles live in [backlog.json](backlog.json).
+
+## October 15, 2026 — CHAIN-001 compatibility check
+
+- **Evidence:** source inspected at `3eccb9ac1dcf7c8018b21d0ab7acd504639f2143`; founder screenshot and read-only TN10 indexer observation described in [the pilot checkpoint](../TESTNET-REWARD-PILOT.md).
+- **Outcome:** Mainnet mint and TN10 manual KRC-20 receipt desk are separate. Testnet GEEK is reported unused; wallet provider/signing compatibility is unverified. Added the explicit blocked task without changing the bank-first product priority.
+- **Validation:** 40 targeted mint client/server and testnet receipt tests passed with real Redis, zero failures/skips. Continuity generation, validation and whitespace checks passed; review record is PR #114. No blockchain transaction, wallet connection, environment change or deployment performed.
+- **Next:** identify wallet app/signing support and specify and verify a separate test asset before pilot configuration.

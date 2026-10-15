@@ -28,6 +28,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | GOV-001 | P2 | proposed | Develop an unclassified public-service refresher pilot | Founder with agency sponsor unassigned |
 | MIL-001 | P3 | proposed | Explore military and veteran professional learning | Founder with authorized institutional sponsor unassigned |
 | ECO-001 | P1 | planned | Audit each ecosystem component and preserve its handoff | Maintainer for each repository unassigned |
+| CHAIN-001 | P1 | blocked | Verify the TN10 test asset and wallet before a real pilot | Maintainer; founder controls the external testnet wallet |
 
 ## CONT-001: Publish the continuation system
 
@@ -338,3 +339,19 @@ Acceptance:
 - HQ remains the central index while component histories remain intact.
 
 Evidence/specification: [docs/continuity/repositories.json](../../docs/continuity/repositories.json).
+
+## CHAIN-001: Verify the TN10 test asset and wallet before a real pilot
+
+**P1 / blocked.** Owner: Maintainer; founder controls the external testnet wallet. Dependencies: none.
+
+Next action: Identify the wallet app and its TN10 KRC-20 signing support, choose a separate test-asset specification, and verify its deploy hash and funded sender before configuration.
+
+Blocker: October 15 read-only indexer response reports testnet GEEK unused; screenshot does not establish the full sender, wallet app/provider, KRC-20 holdings or signing capability.
+
+Acceptance:
+
+- Exact TN10 token deployment, decimals, sender and amount verified against the fixed indexer.
+- Wallet provider and TN10 signing workflow exercised with recorded transaction evidence.
+- One manual pilot transfer reconciled by the existing receipt desk; no Mainnet settlement enabled.
+
+Evidence/specification: [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md).

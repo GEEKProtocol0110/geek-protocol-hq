@@ -2,6 +2,16 @@
 
 This is an owner-only **manual transfer receipt workflow**, disabled by default. It does not implement an automatic signer or broadcaster, enable Mainnet withdrawals, convert Alpha credits, or promise payments to players. A synthetic fixture acceptance is not a real payout.
 
+## October 15 compatibility checkpoint — CHAIN-001
+
+The founder supplied a wallet screenshot showing TN10, a truncated `kaspatest:` address and 1,335,776.56869995 TKAS. This is a displayed wallet balance, not an independent chain balance check or proof of token holdings. The screenshot does not identify the wallet application or establish its dapp provider and signing methods. “No KCC20 tokens found” is a KCC20 display result, not a verified KRC-20 balance.
+
+Source inspection at commit `3eccb9ac1dcf7c8018b21d0ab7acd504639f2143` confirms that `server/mint.js` pins the Mainnet GEEK KRC-20 deployment and `public/mint/assets/mint.js` requires Mainnet plus Kasware's `signKRC20Transaction`. That page is not a TN10 mint interface. The separate `server/testnet-rewards.js` workflow accepts TN10 KRC-20 manual-transfer receipts; it does not deploy, mint, sign or broadcast a token operation and does not implement KCC20.
+
+A fresh read-only GET to `https://tn10api.kasplex.org/v1/krc20/token/GEEK` on October 15 returned `message: successful`, `state: unused`, an empty `hashRev` and zero `minted`. This is a dated indexer observation, not a permanent reservation or proof about another token standard. No configuration, wallet connection, deployment, mint or transfer was performed.
+
+Next: identify the wallet app/provider and verify its TN10 KRC-20 signing workflow against its primary documentation. Specify a separate test asset and verify its deployment, decimals, funded sender and exact transfer amount. Only then configure the existing pilot. The screenshot's test KAS does not establish these prerequisites. Keep the Mainnet mint page and disabled settlement boundaries unchanged.
+
 ## Configure a real pilot
 
 Use a separate funded testnet wallet and an approved signing tool outside HQ. Do not place wallet seeds or private keys in HQ, its environment, exports, browser storage, logs or chat. Verify the signing tool's network and transaction behavior separately before its first use.
