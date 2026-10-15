@@ -13,7 +13,7 @@ The former five-step Start Here checklist remains an optional guide under More. 
 
 ## From learning to Kaspa use
 
-“Ready to use Kaspa?” links to the wallet lesson, the field guide, public-address tracking in Geek Wallet and Kaspa wallet sign-in. These are distinct actions: public-address tracking does not prove ownership; sign-in proves control of an address and sends no payment. No new signer, payout, purchase, settlement or swap execution is added.
+“Your next steps with Kaspa” links to the wallet lesson, the field guide, public-address tracking in Geek Wallet and Kaspa wallet sign-in. These are distinct actions: public-address tracking does not prove ownership; sign-in proves control of an address and sends no payment. No new signer, payout, purchase, settlement or swap execution is added.
 
 ## Final polish
 
@@ -26,3 +26,8 @@ October 15 verification: all 412 tests passed with required real Redis and zero 
 Navigation tests cover the primary destinations, visible sign-in placement, preserved destinations and the shipped deep-link handler. Existing ranked tests cover explicit start, answer review, saved results and recovery; the optional checklist/sign-in return tests remain in place. Static HTML checks validate local links, fragment targets, closed details and unique IDs.
 
 This environment has no supported browser-control capability, so this change has no new browser-rendering or physical-phone acceptance claim. Check 320, 375, 390, 768 and desktop widths on a supported browser: the initial choices, sign-in, menu keyboard order, large-text wrapping, expandable content, explicit game start and saved-result return. Run the repository verification and security checks before release.
+
+
+## Founder phone observation — October 15, 2026
+
+After the polished release, the founder reported that the layout looked good with nothing abnormal on their physical phone. This records a positive visual observation, not completion of every navigation, large-text, saved-progress or gameplay acceptance step. The report did not specify device model, browser version or viewport dimensions; broader device acceptance remains pending.
