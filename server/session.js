@@ -1,6 +1,8 @@
 import { cleanName, createSessionId, readSessionId, sessionTtl, setSessionCookie } from './http.js';
 import { identityPlayerKey } from './identity-keys.js';
 import { redis } from './redis.js';
+import { decodePasskeyAccount } from './passkey-records.js';
+import { passkeyAccountKey } from './passkey-grants.js';
 import { decodeIdentityRecord, decodeSessionRecord, validateSessionRecord } from './identity-records.js';
 
 const keyFor = (id) => `geek:session:${id}`;
@@ -13,6 +15,12 @@ export const readSession = async (req) => {
   const stored = await redis('GET', keyFor(id));
   const session = decodeSessionRecord(stored, id);
   if (!session) return null;
+  if (session.passkeyEpoch) {
+    const account = decodePasskeyAccount(await redis('GET', passkeyAccountKey(playerIdFor(session))), playerIdFor(session));
+    if (!account || account.epoch !== session.passkeyEpoch || !account.credentials.length) return null;
+    const wallet = decodeIdentityRecord(await redis('GET', identityPlayerKey(playerIdFor(session))), playerIdFor(session));
+    if (account.walletVersion !== (wallet?.sessionVersion || 0)) return null;
+  }
   if (session.identityVersion) {
     const identity = decodeIdentityRecord(await redis('GET', identityPlayerKey(session.playerId)), session.playerId);
     if (!identity) throw new Error('IDENTITY_STATE_INVALID');
@@ -38,6 +46,7 @@ export const upsertSession = async (req, res, requestedName) => {
     id: existing?.id || createSessionId(),
     playerId: existing?.playerId || existing?.id || '',
     identityVersion: Number(existing?.identityVersion || 0),
+    ...(existing?.passkeyEpoch ? { passkeyEpoch: existing.passkeyEpoch } : {}),
     name: cleanName(requestedName, existing?.name || 'Guest Geek'),
     createdAt: existing?.createdAt || now,
     lastSeen: now

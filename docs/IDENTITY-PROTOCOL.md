@@ -123,3 +123,7 @@ The current Alpha supports one immutable recovery wallet per player. Payout-sett
 - Repeat this review for every added wallet provider or signature scheme.
 
 These open items are launch gates. They do not enable or justify on-chain settlement.
+
+## Passkey implementation candidate — October 15, 2026
+
+See [five-leap record](FIVE-LEAPS.md) for the optional passkey path and its pending device acceptance. Passkeys preserve the stable player ID and use required WebAuthn user verification; they are not wallet transaction signatures. Wallet-linked enrollment requires a fresh explicit passkey-account-access wallet proof. Wallet recovery invalidates obsolete passkeys. Existing payout authorization and settlement holds remain in force. Enrollment/login and credential removals are written with their audit records atomically. Database-restore handling now purges one-use passkey challenges/grants; reconcile newer revocations before exposing a stale snapshot.

@@ -216,7 +216,7 @@
     setText('[data-player-name]', player.name);
     if (!nameSaving && !$('[data-name-input]').matches(':focus')) $('[data-name-input]').value = player.name;
     $('[data-name-save]').disabled = nameSaving;
-    setText('[data-account-status]', player.walletProtected ? 'Signed in with a verified Kaspa wallet.' : 'Guest profile · saved in this browser. Sign in to enable recovery.');
+    setText('[data-account-status]', player.walletProtected ? 'Signed in with a verified Kaspa wallet.' : player.passkeyProtected ? 'Signed in with a passkey. Keep a second passkey or linked wallet for recovery.' : 'Guest profile · saved in this browser. Sign in to enable recovery.');
     setText('[data-account-link]', player.walletProtected ? 'Sign-in & recovery options →' : 'Sign in with Kaspa →');
     setText('[data-avatar-fallback]', player.name.trim().charAt(0).toUpperCase() || 'G');
     setText('[data-rank-title]', progression.title);

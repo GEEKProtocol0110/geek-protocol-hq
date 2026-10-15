@@ -1,3 +1,14 @@
+export const pilotTransferView = record => {
+  if (record?.network !== 'testnet-10' || !/^[0-9]+$/.test(record.amount || '') || !/^(?:[0-9]|1[0-8])$/.test(record.decimals || '')) return null;
+  const decimals = Number(record.decimals), raw = BigInt(record.amount).toString();
+  const padded = raw.padStart(decimals + 1, '0');
+  const amount = decimals ? `${padded.slice(0,-decimals)}.${padded.slice(-decimals)}` : raw;
+  const next = record.state === 'queued' ? 'Send exactly once with your approved testnet wallet; then attach its reveal hash.'
+    : record.state === 'awaiting-indexer' ? 'Check this same hash. Investigate uncertain results before another send.'
+      : 'Matching transfer accepted at the last indexer check. Preserve the receipt and checkpoint; this is not an independent finality proof.';
+  return { amount, rawAmount:record.amount, ticker:record.ticker, recipient:record.recipient, next };
+};
+
 // Each workspace has one cancellable request. Authentication stays in the HttpOnly owner cookie.
 export const ownerClient = ({ endpoint, fetchImpl = globalThis.fetch }) => {
   let generation = 0, active = null;

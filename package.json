@@ -37,12 +37,16 @@
     "economy:stress:check": "node scripts/economy-stress.mjs --check",
     "continuity:write": "node scripts/continuity.mjs --write",
     "continuity:check": "node scripts/continuity.mjs",
-    "continuity:snapshot": "node scripts/continuity-snapshot.mjs"
+    "continuity:snapshot": "node scripts/continuity-snapshot.mjs",
+    "wallet:sdk": "node scripts/build-wallet-sdk.mjs",
+    "pretest": "npm run wallet:sdk",
+    "pilot:evaluate": "node scripts/evaluate-pilot.mjs"
   },
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
-    "@dfns/kaspa-wasm": "0.14.1"
+    "@dfns/kaspa-wasm": "0.14.1",
+    "@simplewebauthn/server": "14.0.3"
   }
 }

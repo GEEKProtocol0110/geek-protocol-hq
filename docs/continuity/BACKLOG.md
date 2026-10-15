@@ -32,6 +32,9 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | OPS-003 | P1 | done | Finish mint-availability monitoring for GitHub issue #14 | Maintainer; founder reviews release |
 | CHAIN-002 | P1 | decision-needed | Evaluate KCC20 compatibility and preserve GEEK holder entitlements | Maintainer researches; founder selects policy; independent covenant reviewer unassigned |
 | ARCH-002 | P1 | done | Preserve the founder-supplied theme roster and trait sheet | Maintainer archives; founder reviews interpretation |
+| AUTH-001 | P0 | in-progress | Add passkey account access and recovery controls | Maintainer; independent auth reviewer unassigned |
+| WALLET-001 | P1 | in-progress | Create and recover an optional Geek testnet wallet | Maintainer; independent wallet reviewer unassigned |
+| PILOT-002 | P1 | needs-evidence | Prepare and run a measured wallet-safety learning pilot | Pilot coordinator and instructor unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -81,7 +84,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Review unmerged PR #118: 80 additions across convention, KasWare integration and Toccata app-design batches, for 580 internally source-checked Kaspa concepts. Continue distinct primary-source facts toward 1,000 (420 remain). Introductory Study remains 537; independent editorial review is unassigned.
+Next action: PR #118 merged as 606d06a861428f96b633152d32d3e8954e3e209d, with 580 internally source-checked Kaspa concepts. Continue toward 1,000 (420 remain); 7,322 reviews remain across category goals. Independent editorial review remains unassigned.
 
 Acceptance:
 
@@ -402,3 +405,45 @@ Acceptance:
 - Existing 500-edition manifest, five tiers, GIGA/A.C.E. anchors, art approvals and disabled ownership remain unchanged.
 
 Evidence/specification: [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md), [docs/continuity/founding/geek-roster-500.json](../../docs/continuity/founding/geek-roster-500.json), [docs/continuity/assets.json](../../docs/continuity/assets.json), [docs/continuity/founding/geek-trait-rarity-sheet.json](../../docs/continuity/founding/geek-trait-rarity-sheet.json).
+
+## AUTH-001: Add passkey account access and recovery controls
+
+**P0 / in-progress.** Owner: Maintainer; independent auth reviewer unassigned. Dependencies: none.
+
+Next action: Review candidate and perform Android/browser passkey registration, sign-in, credential removal and recovery acceptance.
+
+Acceptance:
+
+- Real WebAuthn signature/origin/UV/replay/counter and session-rotation tests pass.
+- Fresh-proof enrollment and wallet recovery invalidate obsolete credentials.
+- Rendered device acceptance and exact release evidence recorded.
+
+Evidence/specification: [docs/FIVE-LEAPS.md](../../docs/FIVE-LEAPS.md), [server/passkeys.js](../../server/passkeys.js), [tests/passkeys.test.js](../../tests/passkeys.test.js).
+
+## WALLET-001: Create and recover an optional Geek testnet wallet
+
+**P1 / in-progress.** Owner: Maintainer; independent wallet reviewer unassigned. Dependencies: none.
+
+Next action: Review testnet lab and test physical-device backup recovery; then design a separate reviewed Mainnet/biometric vault release.
+
+Acceptance:
+
+- SDK-derived testnet addresses match the pinned package.
+- Authenticated encryption and successful backup restore required.
+- No seed/password transmission, Mainnet signer or funding claim.
+
+Evidence/specification: [docs/FIVE-LEAPS.md](../../docs/FIVE-LEAPS.md), [public/wallet-lab/index.html](../../public/wallet-lab/index.html), [tests/wallet-vault.test.js](../../tests/wallet-vault.test.js).
+
+## PILOT-002: Prepare and run a measured wallet-safety learning pilot
+
+**P1 / needs-evidence.** Owner: Pilot coordinator and instructor unassigned. Dependencies: none.
+
+Next action: Appoint coordinator and approve objectives/assessments, consent/authority, dates, privacy/accessibility and success/stop rules before recruitment.
+
+Acceptance:
+
+- Approved charter and assessment mapping before recruiting.
+- Reporting distinguishes missing follow-ups and paired descriptive results.
+- Real delivery, limitations and data disposition recorded without public learner records.
+
+Evidence/specification: [docs/pilots/wallet-safety-v1.json](../../docs/pilots/wallet-safety-v1.json), [docs/continuity/PILOT-CHARTER.md](../../docs/continuity/PILOT-CHARTER.md), [server/pilot-evaluation.js](../../server/pilot-evaluation.js).

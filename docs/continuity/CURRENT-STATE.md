@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-001: active.** BANK-001 / PR #118 candidate adds 80 internally source-checked questions in three batches to the 500-concept baseline: 580 Kaspa / 8,185 active / 678 source reviews. Introductory Study remains 537 concepts; the new advanced Toccata topic is outside its existing filter. Candidate is unmerged and not deployed; answer keys and holds remain unchanged.
+**AUTH-001: active.** Five-leap implementation candidate on codex/five-leaps: passkey account access, testnet wallet creation/restore lab, merged 580-question release, clearer manual reward reconciliation and prepared pilot evaluation. Not yet merged/deployed; Mainnet wallet/rewards and real pilot acceptance are unfinished.
 
-Next task: **BANK-001**. Review PR #118 and all three pinned item registers, then continue distinct primary-source learning facts toward 1,000 Kaspa concepts (420 remain). CHAIN-001 still needs its first accepted manual testnet reward; CHAIN-002 needs policy/artifact decisions. Preserve all holds.
+Next task: **AUTH-001**. Review and verify the five-leap candidate; complete Android/browser passkey and testnet backup acceptance. BANK-001 continues from merged 580 Kaspa toward 1,000. CHAIN-001 still needs the first actual testnet transfer; PILOT-002 needs a coordinator and approved charter.
 
 ## Holds
 

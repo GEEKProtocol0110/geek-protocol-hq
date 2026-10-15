@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "status": "prepared-not-recruited",
+  "course": "Wallet safety before learning rewards",
+  "owner": "Pilot coordinator unassigned",
+  "institution": null,
+  "objectives": ["Distinguish Mainnet from testnet", "Keep recovery phrases private", "Explain recovery versus routine login", "Review recipients and amounts before approval", "Restore an encrypted testnet backup before relying on it"],
+  "lesson": "/study/?topic=wallets&level=foundations",
+  "practicalExercise": "/wallet-lab/",
+  "assessmentQuestionIds": ["KASPA-0501", "KASPA-0505", "KASPA-0506", "KASPA-0510", "K250-0031"],
+  "assessmentStatus": "Proposed existing source-checked items; instructor approval and mapping to every objective remain pending",
+  "stages": ["Five-item baseline before instruction", "Guided wallet lesson and testnet restore exercise", "Five-item immediate assessment", "Delayed assessment at least 24 hours later"],
+  "rewardPolicy": "No monetary rewards; no new reward permissions",
+  "prerequisites": ["Coordinator, cohort and dates agreed", "Consent/guardian and institutional authority where applicable", "Instructor approves assessment, accessibility and success/stop rules before recruitment", "Controlled private data destination, retention and deletion agreed"],
+  "analysis": "node scripts/evaluate-pilot.mjs /private/path/pilot.json",
+  "participantData": "Pseudonymous IDs and five-item scores/timestamps only. Do not commit actual participant files, names, seed phrases, passwords, wallet addresses or consent documents."
+}

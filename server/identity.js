@@ -16,6 +16,7 @@ import {
   validateIdentityRecord, validateSessionRecord, validateChallengeRecord, validateAuthorizationRecord, readWalletBinding
 } from './identity-records.js';
 import { sessionTtl } from './http.js';
+import { issuePasskeyGrant } from './passkey-grants.js';
 
 const IDENTITY_BIND_SCRIPT = `
 -- geek-identity-bind-v1
@@ -154,10 +155,10 @@ export const createIdentityChallenge = async ({ req, session, address: rawAddres
   let targetPlayerId;
   let payoutAddress = '';
 
-  if (intent === 'payout') {
+  if (intent === 'payout' || intent === 'passkey') {
     const identity = await loadIdentity(playerId);
     if (!identity || identity.address !== address || !sameSigningKey(identity.publicKey, publicKey)) throw new Error('IDENTITY_REAUTH_REQUIRED');
-    selectedIntent = operation === 'remove' ? 'payout-remove' : 'payout-set';
+    selectedIntent = intent === 'passkey' ? 'passkey-add' : (operation === 'remove' ? 'payout-remove' : 'payout-set');
     targetPlayerId = playerId;
     if (selectedIntent === 'payout-set') {
       if (!isValidKaspaMainnetAddress(rawPayoutAddress)) throw new Error('INVALID_KASPA_ADDRESS');
@@ -275,6 +276,11 @@ export const verifyIdentityChallenge = async ({ req, session, challengeId, signa
     throw new Error('IDENTITY_SIGNATURE_INVALID');
   }
   if (challenge.intent.startsWith('payout-')) return createPayoutAuthorization(session, challenge);
+  if (challenge.intent === 'passkey-add') {
+    const identity = await loadIdentity(stablePlayerId(session));
+    if (!identity || identity.address !== challenge.address || !sameSigningKey(identity.publicKey, challenge.publicKey)) throw new Error('IDENTITY_REAUTH_REQUIRED');
+    return { identity: safeIdentity(identity), passkeyAuthorization: await issuePasskeyGrant(session, identity.sessionVersion) };
+  }
 
   const currentPlayerId = stablePlayerId(session);
   const targetPlayerId = String(challenge.targetPlayerId || '');

@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "installCommand": "npm ci --ignore-scripts",
-  "buildCommand": null,
+  "buildCommand": "npm run wallet:sdk",
   "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": true,
@@ -171,6 +171,9 @@
     },
     "api/moderation.js": {
       "includeFiles": "{server/questions/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}"
+    },
+    "api/passkeys.js": {
+      "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
     }
   },
   "headers": [
@@ -191,7 +194,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; frame-src https://kgi.kaspad.net; form-action 'self'; script-src 'self' 'sha256-z4nhfmSCNrXFiKv3iMJVPjFv5lrk3ueDGEn5lnOcZpg='; style-src 'self'; img-src 'self' data:; connect-src 'self'; upgrade-insecure-requests"
+          "value": "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; frame-src https://kgi.kaspad.net; form-action 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-z4nhfmSCNrXFiKv3iMJVPjFv5lrk3ueDGEn5lnOcZpg='; style-src 'self'; img-src 'self' data:; connect-src 'self'; upgrade-insecure-requests"
         },
         {
           "key": "Strict-Transport-Security",
@@ -208,6 +211,23 @@
         {
           "key": "Cross-Origin-Resource-Policy",
           "value": "same-origin"
+        }
+      ]
+    },
+    {
+      "source": "/wallet-lab/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; connect-src 'self'; img-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
         }
       ]
     }

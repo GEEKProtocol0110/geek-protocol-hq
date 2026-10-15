@@ -2,3 +2,8 @@
 node_modules/
 .DS_Store
 *.log
+
+# Reproduced from the integrity-pinned SDK by pretest / Vercel build.
+/public/wallet-lab/assets/kaspa-sdk.js
+/public/wallet-lab/assets/kaspa_bg.wasm
+/public/wallet-lab/assets/SDK-LICENSE.txt

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { ownerClient, escapeHtml } from '../server/ops-ui/assets/ops-core.js';
+import { ownerClient, escapeHtml, pilotTransferView } from '../server/ops-ui/assets/ops-core.js';
 import { clientFixture, deferred, json } from './helpers/client-fixture.js';
 
 const source = readFileSync(new URL('../server/ops-ui/assets/testnet.js', import.meta.url), 'utf8').replace(/^import[^\n]+\n/, '');
@@ -16,7 +16,7 @@ const setup = async (reply = () => json({ ok: true, run })) => {
     if (options.method === 'POST') return json({ ok: true, record: receipt });
     return json({ ok: true, enabled: true, network: 'testnet-10', config: { ticker: 'GEEKT', amount: '100000000' }, records: [receipt] });
   };
-  const ui = clientFixture(fetchImpl, { ownerClient: args => ownerClient({ ...args, fetchImpl }), escapeHtml });
+  const ui = clientFixture(fetchImpl, { ownerClient: args => ownerClient({ ...args, fetchImpl }), escapeHtml, pilotTransferView });
   const form = ui.node('[data-queue]');
   form.elements = { runId: ui.make('input'), recipient: ui.make('input') };
   ui.run(source); await settle();

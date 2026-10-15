@@ -200,7 +200,8 @@ export const buildJourneyProfile = (profile = {}, player = {}) => {
     player: {
       name: String(player.name || 'Guest Geek').slice(0, 24),
       memberSince: Math.floor(numeric(player.createdAt)),
-      walletProtected: Boolean(player.identityVersion)
+      walletProtected: Boolean(player.identityVersion),
+      passkeyProtected: Boolean(player.passkeyEpoch)
     },
     progression: deriveProgression(profile),
     milestones: deriveCareerMilestones(profile),
