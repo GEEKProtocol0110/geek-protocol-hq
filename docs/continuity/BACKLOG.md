@@ -344,9 +344,9 @@ Evidence/specification: [docs/continuity/repositories.json](../../docs/continuit
 
 **P1 / blocked.** Owner: Maintainer; founder controls the external testnet wallet. Dependencies: none.
 
-Next action: Obtain the full public TN10 address for private read-only checks, verify the installed Kasware provider/version and signing flow, then specify and verify the separate test asset before configuration.
+Next action: Review the GEEKT unsigned packet, implement or select a separately reviewed Kasware TN10 signing integration, verify the installed provider and funds, then deploy/mint once and reconcile before enabling the manual pilot.
 
-Blocker: Founder identified Kasware; official docs cover TN10 and KRC-20 operations, with mobile network selection manual. Full sender, installed-provider behavior and deployed/funded test token remain unverified; October 15 indexer response reports TN10 GEEK unused.
+Blocker: Unsigned GEEKT proposal prepared; ticker reported unused on October 15. No TN10 deployment signer in HQ, accepted parameters, deployed test asset or real-device signing evidence. Supplied address validated privately; native balance APIs returned HTTP 403.
 
 Acceptance:
 
@@ -354,4 +354,4 @@ Acceptance:
 - Wallet provider and TN10 signing workflow exercised with recorded transaction evidence.
 - One manual pilot transfer reconciled by the existing receipt desk; no Mainnet settlement enabled.
 
-Evidence/specification: [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md).
+Evidence/specification: [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md), [docs/TESTNET-ASSET-SETUP.md](../../docs/TESTNET-ASSET-SETUP.md).

@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "status": "unsigned-proposal-not-deployed",
+  "recordedOn": "2026-10-15",
+  "backlogId": "CHAIN-001",
+  "network": "testnet-10",
+  "walletNetwork": "kaspa_testnet_10",
+  "protocol": "KRC-20",
+  "ticker": "GEEKT",
+  "parametersChosenBy": "Maintainer proposal for founder review; not Mainnet GEEK tokenomics",
+  "display": {
+    "maximumTokens": "1000000",
+    "tokensPerMint": "1000",
+    "premintTokens": "0",
+    "decimals": 8,
+    "maximumMintOperations": "1000"
+  },
+  "walletRequests": {
+    "deploy": {
+      "payload": "geekt-deploy.json",
+      "method": "signKRC20Transaction",
+      "type": 2
+    },
+    "mint": {
+      "payload": "geekt-mint.json",
+      "method": "signKRC20Transaction",
+      "type": 3
+    }
+  },
+  "availabilityObservation": {
+    "date": "2026-10-15",
+    "url": "https://tn10api.kasplex.org/v1/krc20/token/GEEKT",
+    "message": "successful",
+    "state": "unused",
+    "deploymentHash": "",
+    "meaning": "Dated indexer observation only; ticker is not reserved and must be rechecked before signing."
+  },
+  "readiness": {
+    "appIdentified": "Kasware, supplied by founder",
+    "testnetAddress": "Privately supplied; checksum and Kaspa WASM Address parser passed",
+    "nativeBalance": "Not independently verified; native REST API returned HTTP 403",
+    "krc20Holdings": "TN10 indexer returned an empty token list for the supplied address",
+    "documentedProviderSupport": true,
+    "installedProviderVerified": false,
+    "founderAcceptedParameters": false,
+    "deploymentSubmitted": false,
+    "deploymentVerified": false,
+    "mintSubmitted": false,
+    "mintVerified": false,
+    "pilotEnabled": false,
+    "mainnetSettlementEnabled": false
+  },
+  "pilotConfigurationAfterVerificationOnly": {
+    "TESTNET_REWARDS_ENABLED": "false",
+    "TESTNET_REWARDS_NETWORK": "testnet-10",
+    "TESTNET_REWARDS_TICKER": "GEEKT",
+    "TESTNET_REWARDS_DEPLOYMENT_HASH": null,
+    "TESTNET_REWARDS_DECIMALS": "8",
+    "TESTNET_REWARDS_SENDER": null,
+    "TESTNET_REWARDS_AMOUNT_RAW": "100000000"
+  },
+  "references": [
+    "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection",
+    "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-krc20",
+    "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go"
+  ]
+}

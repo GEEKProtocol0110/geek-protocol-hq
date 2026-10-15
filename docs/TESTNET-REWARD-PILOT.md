@@ -20,6 +20,10 @@ Kasware's [Connection API](https://docs.kasware.xyz/wallet/developer-documentati
 
 Next obtain the complete public `kaspatest:` address directly from the founder's wallet for checksum and read-only funding checks. Keep address-specific pilot evidence private. Verify provider presence/version/network on that device before any signing request; specify and verify the separate test asset before enabling receipts. No transaction or wallet connection was performed during this clarification.
 
+## Prepared test-asset proposal
+
+The [GEEKT unsigned setup packet](TESTNET-ASSET-SETUP.md) contains a separate test ticker, exact deploy/mint operations, supply arithmetic, incomplete disabled configuration and signing/reconciliation procedure. It is not deployed and HQ has no TN10 deployment signing screen yet. The founder supplied a valid full test address privately; native balance remains unverified after HTTP 403 responses.
+
 ## Configure a real pilot
 
 Use a separate funded testnet wallet and an approved signing tool outside HQ. Do not place wallet seeds or private keys in HQ, its environment, exports, browser storage, logs or chat. Verify the signing tool's network and transaction behavior separately before its first use.

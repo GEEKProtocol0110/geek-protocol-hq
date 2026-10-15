@@ -30,3 +30,10 @@ Use one entry per substantive session/interruption: task ID, exact review/commit
 - **Evidence:** linked Kasware primary documentation in [the pilot guide](../TESTNET-REWARD-PILOT.md); review record PR #114.
 - **Validation:** documentation-only change; continuity generation/check and whitespace checks passed. No runtime changes, wallet connection, address-specific public record or transaction.
 - **Next:** obtain the public test address privately, verify the installed provider and separate test asset, then configure and exercise the manual pilot.
+
+## October 15, 2026 — CHAIN-001 unsigned GEEKT packet
+
+- **Outcome:** prepared a separate GEEKT proposal: 1,000,000 maximum, 1,000 per mint, eight decimals, zero premint. Saved exact unsigned deploy/mint JSON and incomplete disabled configuration. Parameters are a maintainer proposal, not founder acceptance or a Mainnet change.
+- **Evidence:** [setup packet](../TESTNET-ASSET-SETUP.md), dated GEEKT-unused observation, primary Kasware docs and pinned Kasplex executor. Supplied address passes local/SDK parsing; no KRC-20 holdings returned; native balance APIs returned HTTP 403. Address-specific evidence stays private. Review record: PR #114.
+- **Validation:** JSON parsed, integer scaling/capacity and packet references checked; continuity generation/check and whitespace checks passed. No runtime files, wallet operations or environment settings changed.
+- **Next:** review this packet and implement/select the guarded TN10 signer integration before actual deployment. The existing public mint remains Mainnet-only; pilot configuration remains disabled and incomplete.
