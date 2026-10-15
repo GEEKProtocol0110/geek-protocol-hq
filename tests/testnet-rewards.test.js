@@ -99,6 +99,19 @@ test('forged score, foreign or stale run, undeployed asset and concurrent run ch
   assetState = 'unused'; assert.equal((await queue(g)).statusCode, 503); assert.equal(await fixture.command('ZCARD', testnetRewardIndex), 0); assetState = 'deployed';
   beforeQueue = values => fixture.command('DEL', values[3]); assert.equal((await queue(g)).statusCode, 409); assert.equal(await fixture.command('ZCARD', testnetRewardIndex), 0);
 });
+test('the current-run read supports the pilot, while expiry preserves the Daily limit and cannot create receipts', async () => {
+  const g = await finished();
+  const resume = () => call(rankedHandler, 'GET', {}, g.cookie, { resume: '1' });
+  const restored = await resume();
+  assert.equal(restored.statusCode, 200); assert.equal(restored.body.run.id, g.runId);
+  assert.equal(restored.body.run.status, 'finished');
+  assert.ok(await fixture.command('TTL', `geek:run:${g.runId}`) <= 300);
+  await fixture.command('DEL', `geek:run:${g.runId}`);
+  assert.equal((await resume()).statusCode, 404);
+  assert.equal((await queue(g)).statusCode, 409);
+  assert.equal((await play(g.player, 'start', { mode: 'daily', category: 'kaspa' })).statusCode, 409);
+  assert.equal(await fixture.command('ZCARD', testnetRewardIndex), 0);
+});
 test('wrong transfers, stale versions, reused transaction hashes and damaged receipt records are rejected', async () => {
   const g = await finished(); const first = (await queue(g)).body.record;
   let record = (await attach(first, g.cookie)).body.record;

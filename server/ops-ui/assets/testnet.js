@@ -1,11 +1,14 @@
 import { ownerClient, escapeHtml } from './ops-core.js';
 const $ = selector => document.querySelector(selector);
 const client = ownerClient({ endpoint: '/api/session?service=operations&action=testnet' });
+const runClient = ownerClient({ endpoint: '/api/ranked?resume=1' });
+const runId = () => $('[data-queue]').elements.runId;
 let records = [], selected = '', enabled = false, busy = false;
 const current = () => records.find(r => r.id === selected);
 const controls = () => {
   document.querySelectorAll('button,input').forEach(el => { el.disabled = busy; });
   $('[data-queue-button]').disabled = busy || !enabled;
+  $('[data-load-run]').disabled = busy || !enabled;
   $('[data-attach-button]').disabled = busy || !enabled || current()?.state !== 'queued';
   $('[data-export]').disabled = busy || !current();
 };
@@ -21,10 +24,35 @@ const load = async () => {
 };
 const task = async action => {
   if (busy) return; busy = true; controls();
-  try { await action(); $('[data-message]').textContent = 'Receipts refreshed. Review the saved state before the next step.'; }
+  try { const message = await action(); $('[data-message]').textContent = message || 'Receipts refreshed. Review the saved state before the next step.'; }
   catch (error) { records = []; selected = ''; enabled = false; render(); $('[data-message]').textContent = error.message; }
   finally { busy = false; controls(); }
 };
+const loadCurrentRun = async () => {
+  runId().value = '';
+  $('[data-run-status]').textContent = 'Checking this browser’s current player run…';
+  try {
+    const { run } = await runClient.request();
+    const complete = run?.status === 'finished' && run.mode === 'daily' && run.category === 'kaspa' &&
+      /^[a-f0-9]{40}$/.test(run.id) && run.completedRound === 1 && run.questionCount === 5 &&
+      run.questionIndex === 4 && Number.isInteger(run.correct) && run.correct >= 1 && run.correct <= 5;
+    if (!complete) {
+      $('[data-run-status]').textContent = 'No eligible finished Kaspa Daily selected. Complete all five questions with at least one correct, then choose Finish & save result and return here. Loading does not finish a run.';
+    } else {
+      runId().value = run.id;
+      $('[data-run-status]').textContent = `Finished Kaspa Daily loaded: ${run.correct} / 5 correct. Enter the recipient and queue now. The five-minute window starts when you finish; loading does not extend it. The server rechecks eligibility when you queue.`;
+    }
+  } catch (error) {
+    if (error.name === 'AbortError') return;
+    $('[data-run-status]').textContent = error.status === 404
+      ? 'No saved run is available for this player in this browser. It may have expired after five minutes. An expired run cannot be recovered here. If today’s Daily has already been started, the next challenge unlocks at 00:00 UTC.'
+      : error.status === 401 || error.status === 403
+        ? 'Start or sign in to your HQ player in this same browser, complete the Kaspa Daily, then return here. Your player session is separate from owner access.'
+        : `Could not load the player run. ${error.message}`;
+  }
+  return 'Player run checked. No receipt or transfer was created.';
+};
+$('[data-load-run]').addEventListener('click', () => task(loadCurrentRun));
 $('[data-refresh]').addEventListener('click', () => task(load));
 $('[data-records]').addEventListener('click', event => {
   const select = event.target.closest('[data-select]'), check = event.target.closest('[data-check]');
@@ -50,8 +78,8 @@ $('[data-export]').addEventListener('click', () => {
   const link = document.createElement('a'); link.href = url; link.download = `geek-testnet-${record.id.slice(0,12)}.json`; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
 $('[data-sign-out]').addEventListener('click', async () => {
-  client.clear(); records = []; selected = ''; render();
+  client.clear(); runClient.clear(); runId().value = ''; $('[data-run-status]').textContent = ''; records = []; selected = ''; render();
   try { await fetch('/api/session?service=operations&action=logout', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: '{}' }); } finally { location.href = '/ops-login/'; }
 });
-window.addEventListener('pagehide', () => { client.clear(); records = []; selected = ''; render(); });
-task(load);
+window.addEventListener('pagehide', () => { client.clear(); runClient.clear(); runId().value = ''; $('[data-run-status]').textContent = ''; records = []; selected = ''; render(); });
+task(async () => { await load(); if (enabled) return loadCurrentRun(); });

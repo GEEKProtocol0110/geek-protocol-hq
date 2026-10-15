@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "updatedAt": "2026-10-15",
+  "records": [
+    {
+      "id": "ARCH-001",
+      "title": "Master_Document_v1.3.html",
+      "status": "preserved-public-snapshot",
+      "location": "docs/continuity/founding/Master_Document_v1.3.html",
+      "sha256": "399dc1f57b77aeb37ebd5b3c029e03bf008f62f17d3c9e2da0ab39505be5cb9a",
+      "sourceRepository": "GEEKProtocol0110/geek-protocol-docs",
+      "sourceCommit": "40cb559f06b271d11f5114c9906aa39b2e8d5cfd",
+      "sourcePath": "docs/Master_Document_v1.3.html",
+      "provenance": "Exact public repository bytes; historical content, not proof of original creation time or present implementation.",
+      "rights": "Founder-controlled project source; original notices retained. Specific third-party embedded material is not relicensed by this inventory."
+    },
+    {
+      "id": "ARCH-002",
+      "title": "Litepaper_Themed_v1.3.html",
+      "status": "preserved-public-snapshot",
+      "location": "docs/continuity/founding/Litepaper_Themed_v1.3.html",
+      "sha256": "e914c99e4440784ca939af4a380480c00a3c40ca28280b2ed4b37cfa48f8de06",
+      "sourceRepository": "GEEKProtocol0110/geek-protocol-docs",
+      "sourceCommit": "40cb559f06b271d11f5114c9906aa39b2e8d5cfd",
+      "sourcePath": "docs/Litepaper_Themed_v1.3.html",
+      "provenance": "Exact public repository bytes; historical content, not proof of original creation time or present implementation.",
+      "rights": "Founder-controlled project source; original notices retained. Specific third-party embedded material is not relicensed by this inventory."
+    },
+    {
+      "id": "ARCH-003",
+      "title": "Litepaper.html",
+      "status": "preserved-public-snapshot",
+      "location": "docs/continuity/founding/Litepaper.html",
+      "sha256": "94e0273c4347bdb664114d220c0de4a125957e64f391c9ecfa6800126cb1a072",
+      "sourceRepository": "GEEKProtocol0110/geek-protocol-docs",
+      "sourceCommit": "40cb559f06b271d11f5114c9906aa39b2e8d5cfd",
+      "sourcePath": "docs/Litepaper.html",
+      "provenance": "Exact public repository bytes; historical content, not proof of original creation time or present implementation.",
+      "rights": "Founder-controlled project source; original notices retained. Specific third-party embedded material is not relicensed by this inventory."
+    },
+    {
+      "id": "ARCH-004",
+      "title": "Public founding-document repository index",
+      "status": "indexed-not-fully-copied",
+      "location": "docs/continuity/founding/source-index.json",
+      "provenance": "Pins every public source-file path and Git blob hash at the captured commit. Only the three text snapshots above are copied into HQ.",
+      "sha256": null
+    },
+    {
+      "id": "ARCH-005",
+      "title": "Recovered legacy art",
+      "status": "existing-hashed-archive",
+      "location": "server/legacy-art-archive.js",
+      "provenance": "Ten recovered concepts and existing asset hashes; no approved NFT edition mapping.",
+      "sha256": null
+    },
+    {
+      "id": "ARCH-006",
+      "title": "HQ merged-release ledger",
+      "status": "preserved-metadata",
+      "location": "docs/continuity/releases.json",
+      "provenance": "102 merged PR metadata records through #113. PR discussions, reviews and attachments are not exported here.",
+      "sha256": null
+    },
+    {
+      "id": "ARCH-007",
+      "title": "HQ commit ledger",
+      "status": "preserved-metadata",
+      "location": "docs/continuity/commits.json",
+      "provenance": "171 commit metadata records through the #113 product baseline; underlying objects require Git history/bundle.",
+      "sha256": null
+    },
+    {
+      "id": "ARCH-008",
+      "title": "Original founding conversation",
+      "status": "awaiting-original",
+      "location": null,
+      "sha256": null,
+      "provenance": "Founder-supplied export and timestamp evidence needed; never reconstruct missing messages as originals."
+    },
+    {
+      "id": "ARCH-009",
+      "title": "Remaining phone founding files",
+      "status": "awaiting-original",
+      "location": null,
+      "sha256": null,
+      "provenance": "Quantity, filenames, exact bytes, rights and duplicate status remain unknown until supplied."
+    },
+    {
+      "id": "ARCH-010",
+      "title": "Guinness application kit",
+      "status": "referenced-not-ingested",
+      "location": null,
+      "sha256": null,
+      "provenance": "Prior generated application kit is a secondary claim document, not independent record verification. Read current file before extracting or publishing claims."
+    }
+  ]
+}

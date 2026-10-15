@@ -1,0 +1,141 @@
+{
+  "schema": 1,
+  "updatedAt": "2026-10-15",
+  "records": [
+    {
+      "id": "DR-001",
+      "status": "implementation-choice",
+      "title": "HQ is the central project record",
+      "decision": "Keep the canonical HQ repo as the continuation entry point; index component repos rather than create another competing master.",
+      "basis": "Founder requested this repo or a repo to preserve continuity; this is the maintainer's reversible implementation choice.",
+      "evidence": [
+        "START-HERE.md"
+      ],
+      "recordedAt": "2026-10-15",
+      "supersedes": null
+    },
+    {
+      "id": "DR-002",
+      "status": "founder-direction",
+      "title": "Keep the bank-first CCE hold",
+      "decision": "Require 1,000 legitimate source-reviewed concepts in each of eight categories before CCE resumes, plus separately approved economy rules.",
+      "basis": "Founder direction retained by PR #111; 500 is the completed intermediate Kaspa milestone.",
+      "evidence": [
+        "docs/BANK-FIRST-STORE.md"
+      ],
+      "recordedAt": "2026-10-15",
+      "supersedes": null
+    },
+    {
+      "id": "DR-003",
+      "status": "unresolved",
+      "title": "Contributor amount is not selected",
+      "decision": "1 or 5 GEEK are examples only. Do not convert a planning amount into a payable promise.",
+      "basis": "Founder requires small rewards; rate, funded budget and qualification are unfinished.",
+      "evidence": [
+        "docs/BANK-FIRST-STORE.md"
+      ],
+      "recordedAt": "2026-10-15",
+      "supersedes": null
+    },
+    {
+      "id": "DR-004",
+      "status": "existing-boundary",
+      "title": "Keep game credits and real settlement separate",
+      "decision": "Public Alpha credits are internal; treasury settlement and collection ownership remain disabled.",
+      "basis": "Existing product and audit boundaries.",
+      "evidence": [
+        "docs/ECONOMY-PROTOCOL.md",
+        "docs/COLLECTIBLE-PROTOCOL.md"
+      ],
+      "recordedAt": "2026-10-15",
+      "supersedes": null
+    },
+    {
+      "id": "DR-005",
+      "status": "existing-direction",
+      "title": "Preserve the five-tier 500-Geek collection",
+      "decision": "The edition plan is 500 in Common/Rare/Epic/Legendary/Mythic, separate from question counts.",
+      "basis": "Existing founder collection direction and manifest.",
+      "evidence": [
+        "docs/GEEK-500-ART-BIBLE.md"
+      ],
+      "recordedAt": "2026-10-15",
+      "supersedes": null
+    },
+    {
+      "id": "DR-006",
+      "status": "founder-direction",
+      "title": "Plan for schools and public service over fifty years",
+      "decision": "Preserve school integration, government contracting and public-service/military refresher learning and rewards as a staged long-term ambition.",
+      "basis": "Founder request October 15, 2026. No contract, accreditation or implementation is implied.",
+      "evidence": [
+        "docs/continuity/VISION-2076.md"
+      ],
+      "recordedAt": "2026-10-15",
+      "supersedes": null
+    },
+    {
+      "id": "DR-007",
+      "status": "proposal",
+      "title": "Pilot one learning outcome before institution-wide expansion",
+      "decision": "Start with a bounded instructor-supported course and measured retention; expand after evidence.",
+      "basis": "Maintainer proposal for delivering the founder's long-term direction.",
+      "evidence": [
+        "docs/continuity/PILOT-CHARTER.md"
+      ],
+      "recordedAt": "2026-10-15",
+      "supersedes": null
+    },
+    {
+      "id": "DR-008",
+      "status": "proposal",
+      "title": "Keep institutional learning usable without a wallet",
+      "decision": "Use nonfinancial recognition first in a pilot; evaluate optional funded rewards separately with the institution.",
+      "basis": "Maintainer proposal, aligned with the current guest-first learning path; not a final institutional reward policy.",
+      "evidence": [
+        "docs/continuity/INSTITUTIONAL-PATH.md"
+      ],
+      "recordedAt": "2026-10-15",
+      "supersedes": null
+    },
+    {
+      "id": "DR-009",
+      "status": "unresolved",
+      "title": "Founding duration needs originals",
+      "decision": "Preserve the founder's 23-hour recollection and the earlier assistant kit's approximately 29-hour claim as unresolved; do not certify either.",
+      "basis": "Original conversation timestamps and deliverable inventory are not ingested.",
+      "evidence": [
+        "docs/continuity/ARCHIVE-GUIDE.md"
+      ],
+      "recordedAt": "2026-10-15",
+      "supersedes": null
+    },
+    {
+      "id": "DR-010",
+      "status": "unresolved",
+      "title": "Succession is not yet assigned",
+      "decision": "Document the succession process now; the founder must appoint real trusted custodians privately.",
+      "basis": "A role description is not an account transfer or legal succession instrument.",
+      "evidence": [
+        "docs/continuity/SUCCESSION.md"
+      ],
+      "recordedAt": "2026-10-15",
+      "supersedes": null
+    },
+    {
+      "id": "DR-011",
+      "status": "founder-direction",
+      "title": "Mirror GEEK deployment tokenomics in GEEKT",
+      "decision": "For TN10 rehearsal, mirror the pinned Mainnet maximum of 144 billion, 100,000 per mint, eight decimals and zero premint. Keep a separate test ticker, network and deployment identity.",
+      "basis": "Founder questioned the smaller test-supply proposal on October 15; it had not been deployed. Deployment-field parity is separate from wallet approval, rewards and settlement.",
+      "evidence": [
+        "docs/TESTNET-ASSET-SETUP.md",
+        "docs/testnet/geekt-deploy.json",
+        "server/mint.js"
+      ],
+      "recordedAt": "2026-10-15",
+      "supersedes": null
+    }
+  ]
+}

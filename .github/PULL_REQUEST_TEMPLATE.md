@@ -24,3 +24,10 @@
 ## Evidence
 
 <!-- Add screenshots for UI changes and concise test output or reproduction steps. -->
+
+## Continuation record
+
+<!-- Backlog ID; decision or hold affected; state/evidence updated; first next action and any blocker. A merge, deployment and pilot acceptance are separate facts. -->
+
+- [ ] `npm run continuity:write` and `npm run continuity:check` completed
+- [ ] Backlog, decision/work log and pickup point reflect the actual result

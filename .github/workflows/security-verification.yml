@@ -35,6 +35,8 @@ jobs:
         run: npm run security:check
       - name: Verify distinct question banks and public counts
         run: npm run questions:check
+      - name: Verify the project continuation record
+        run: npm run continuity:check
       - name: Verify economy stress baseline
         run: npm run economy:stress:check
       - name: Audit production dependencies

@@ -1,0 +1,384 @@
+{
+  "schema": 1,
+  "repository": "GEEKProtocol0110/geek-protocol-docs",
+  "commit": "40cb559f06b271d11f5114c9906aa39b2e8d5cfd",
+  "capturedAt": "2026-10-15",
+  "source": "GitHub REST tree metadata; originals on the founder's phone and original conversation remain unverified.",
+  "records": [
+    {
+      "path": ".github/FUNDING.yml",
+      "gitBlobSha": "7288d29eace45d4884fa4e107cf2df3350aad0a5",
+      "size": 145
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "gitBlobSha": "771c86bd4a33eccd1a8c0a40fd00b7ce5dc7146f",
+      "size": 912
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/documentation.md",
+      "gitBlobSha": "71f5f9608efaa37d911bec211bc7aba85cc3871b",
+      "size": 1024
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "gitBlobSha": "96c5ccf650d464cb1c61e7a36085ec63d9dafbea",
+      "size": 945
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "gitBlobSha": "564e7a5e5a3ccaec90a6ef8285273c3638af791c",
+      "size": 1661
+    },
+    {
+      "path": ".github/workflows/deploy.yml",
+      "gitBlobSha": "316a20a0272996a8ea2d1b071146a473d0285443",
+      "size": 720
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "gitBlobSha": "a5337df44b8880019626b7d332deac3f3922b696",
+      "size": 567
+    },
+    {
+      "path": ".gitignore",
+      "gitBlobSha": "4ac90c3379a56354ad5156c2b2acd44eb20c2e14",
+      "size": 611
+    },
+    {
+      "path": ".lycheeignore",
+      "gitBlobSha": "b035a3b5644f70dcecda4d7d5a90ec42e1a95d68",
+      "size": 322
+    },
+    {
+      "path": "BEFORE_AFTER.md",
+      "gitBlobSha": "db2d3e2e37da48ee955df1654059b48576115f4f",
+      "size": 9096
+    },
+    {
+      "path": "CHANGELOG.md",
+      "gitBlobSha": "72bd074b35ba4ccaa74fffc658b0a7c7d82663cd",
+      "size": 2308
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "gitBlobSha": "e4b0a7cba23b9dd04260846d599439738615a9d7",
+      "size": 5823
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "gitBlobSha": "3c29c6804ea40abd2c577214ca23d7222e9e38da",
+      "size": 5276
+    },
+    {
+      "path": "DAO_Proposal_Geek_Protocol_v1.5.pdf",
+      "gitBlobSha": "81f7d3ff0c0bfc7d605dcc931c49723ee3fb5301",
+      "size": 2452
+    },
+    {
+      "path": "ECOSYSTEM.md",
+      "gitBlobSha": "cac852eed6803b5721b928cee3b8ac273d01f72c",
+      "size": 2337
+    },
+    {
+      "path": "Geek_Protocol_Executive_OnePager_v1.5.pdf",
+      "gitBlobSha": "2c61c7639f0fdb0613a4b4608c46d0c5e0032e1e",
+      "size": 3105
+    },
+    {
+      "path": "Job Description_ Freelance Full-Stack Developer (Web3_Kaspa).pdf",
+      "gitBlobSha": "b92dbbdd7eb8c13a41c842d8f599ea0f91150c26",
+      "size": 151205
+    },
+    {
+      "path": "LICENSE",
+      "gitBlobSha": "f5040cf0192679395295c85e772ceceae17389ed",
+      "size": 1070
+    },
+    {
+      "path": "PROFESSIONALIZATION_SUMMARY.md",
+      "gitBlobSha": "97a607a4e6b13fcc725847a0b5f298c35802f0b4",
+      "size": 8450
+    },
+    {
+      "path": "PROJECT_STRUCTURE.md",
+      "gitBlobSha": "96a879c799449a472e71b46bf43b935288b98023",
+      "size": 5636
+    },
+    {
+      "path": "QUICKSTART.md",
+      "gitBlobSha": "b69828955364e22ff38fdd3e354b37706df8904b",
+      "size": 2062
+    },
+    {
+      "path": "README.md",
+      "gitBlobSha": "4c426d16d51e2aa8a91cfa14c8b12e57981c5bc9",
+      "size": 1693
+    },
+    {
+      "path": "SECURITY.md",
+      "gitBlobSha": "1067d247123f14cff2d710594f270f5fa0c055a2",
+      "size": 3840
+    },
+    {
+      "path": "STYLE_GUIDE.md",
+      "gitBlobSha": "4637a753550ffcd7242de5632a8f0b4a1713d44c",
+      "size": 4808
+    },
+    {
+      "path": "Wireframes/ChatGPT Image Jul 17, 2025, 09_28_02 PM.png",
+      "gitBlobSha": "05f9727aeb67d4005940c142c8b16af7d9110ac9",
+      "size": 2193684
+    },
+    {
+      "path": "Wireframes/ChatGPT Image Jul 17, 2025, 09_28_15 PM.png",
+      "gitBlobSha": "2b28d055d29a2a3359b6d02d4dea8ca2d2d0eae1",
+      "size": 2166629
+    },
+    {
+      "path": "Wireframes/ChatGPT Image Jul 17, 2025, 09_28_20 PM.png",
+      "gitBlobSha": "1a7edd2599755bd81f2ab14e6607454b4a99190c",
+      "size": 2051325
+    },
+    {
+      "path": "Wireframes/DAO Voting Panel wireframe.png",
+      "gitBlobSha": "c6051c7ac0441ddb7831191faa133679ae3d2187",
+      "size": 2026803
+    },
+    {
+      "path": "Wireframes/Gauntlet Quiz Screen wireframe.png",
+      "gitBlobSha": "9c981db3fcca4593d55a2c8dbd6100ad04568e39",
+      "size": 1651760
+    },
+    {
+      "path": "Wireframes/Other Game Modes Screen wireframe.png",
+      "gitBlobSha": "b5a3246940a4133a67301233dc59a9571146856d",
+      "size": 1912204
+    },
+    {
+      "path": "Wireframes/Settings  Menu Modal wireframe.png",
+      "gitBlobSha": "9a857ea24649ef7474ad9581c47f23dbe866bf76",
+      "size": 1974726
+    },
+    {
+      "path": "Wireframes/Victory  Game Over Screen wireframe.png",
+      "gitBlobSha": "9c1b48061babe0c5a84eb671e66581ca111f7f6b",
+      "size": 2002566
+    },
+    {
+      "path": "Wireframes/collection screen wireframe.png",
+      "gitBlobSha": "10d24dead45ccc0236656c6348f98ee6d880c692",
+      "size": 1490894
+    },
+    {
+      "path": "Wireframes/lobby screen wireframe.png",
+      "gitBlobSha": "ad8d777af56c64d1aec97be24c97c9a905378a1e",
+      "size": 1570837
+    },
+    {
+      "path": "Wireframes/main screen wireframe.png",
+      "gitBlobSha": "aa8058261952918da2d2c513dcba76c3c600557e",
+      "size": 1292945
+    },
+    {
+      "path": "Wireframes/wallet screen wireframe.png",
+      "gitBlobSha": "8986420ea67f22affd63cd59b3af06b07b3ccf1a",
+      "size": 1949137
+    },
+    {
+      "path": "brand-assets/GEEK Protocol LOGO.png",
+      "gitBlobSha": "d12e835e62ad36e6a59f4e7156c6710fe4b931e3",
+      "size": 42018
+    },
+    {
+      "path": "brand-assets/README.md",
+      "gitBlobSha": "0f35b19395957fb98745e60633960aa2b7fee138",
+      "size": 2428
+    },
+    {
+      "path": "brand-assets/Untitled design (1)/1.png",
+      "gitBlobSha": "3ccbb938c6fd5e9f1bd6c5635bc73a2698e485a7",
+      "size": 928789
+    },
+    {
+      "path": "brand-assets/Untitled design (1)/10.png",
+      "gitBlobSha": "79a6a61f6ea2fdd571aa674ebfb0b7eb4c3a2bbe",
+      "size": 792586
+    },
+    {
+      "path": "brand-assets/Untitled design (1)/11.png",
+      "gitBlobSha": "12ba6a44d406070be247036650b9730231d81b28",
+      "size": 303166
+    },
+    {
+      "path": "brand-assets/Untitled design (1)/12.png",
+      "gitBlobSha": "20d5ce571ee5b7231acde61685e5013793ea5d4b",
+      "size": 354654
+    },
+    {
+      "path": "brand-assets/Untitled design (1)/2.png",
+      "gitBlobSha": "e51ad6eef5110e11f345cbdce2d17fd2f990fb2b",
+      "size": 527414
+    },
+    {
+      "path": "brand-assets/Untitled design (1)/3.png",
+      "gitBlobSha": "d06ae0eae887da33c2ab4b2e3acc1fbba64865d3",
+      "size": 375481
+    },
+    {
+      "path": "brand-assets/Untitled design (1)/4.png",
+      "gitBlobSha": "7c0abe4a782ee456134f7546d8ce472be683fdd9",
+      "size": 926444
+    },
+    {
+      "path": "brand-assets/Untitled design (1)/5.png",
+      "gitBlobSha": "d276efc8c13c1b7e6a81a64f40a5fe32dcd9d075",
+      "size": 181602
+    },
+    {
+      "path": "brand-assets/Untitled design (1)/6.png",
+      "gitBlobSha": "5f4587910ccc10785222b39a47a5e221f1719bb7",
+      "size": 136389
+    },
+    {
+      "path": "brand-assets/Untitled design (1)/7.png",
+      "gitBlobSha": "fae700a9cf29bae443c3026abdbe24e6a4127c04",
+      "size": 577662
+    },
+    {
+      "path": "brand-assets/Untitled design (1)/8.png",
+      "gitBlobSha": "f0c935dd71ebce9d40d69f220f58663a66e84b09",
+      "size": 594671
+    },
+    {
+      "path": "brand-assets/Untitled design (1)/9.png",
+      "gitBlobSha": "7c9bd13c86d462363318dfa2242ae803e4bb90aa",
+      "size": 278339
+    },
+    {
+      "path": "brand-assets/Untitled design (2)/1.jpg",
+      "gitBlobSha": "688a6e82708ea8bf02c1a470820f071f84f72e4e",
+      "size": 101751
+    },
+    {
+      "path": "brand-assets/Untitled design (2)/10.jpg",
+      "gitBlobSha": "05077750bcbd1ce94737a933ef2fb4a2806e967d",
+      "size": 84730
+    },
+    {
+      "path": "brand-assets/Untitled design (2)/11.jpg",
+      "gitBlobSha": "086986f29105692ab6d68bff769544f463746407",
+      "size": 52209
+    },
+    {
+      "path": "brand-assets/Untitled design (2)/12.jpg",
+      "gitBlobSha": "fb6e9784975fb413e358b9e944924453e1e3bd07",
+      "size": 40496
+    },
+    {
+      "path": "brand-assets/Untitled design (2)/2.jpg",
+      "gitBlobSha": "d9ff98c4dd3323f6687a6ec8cc3fccb816fce256",
+      "size": 88861
+    },
+    {
+      "path": "brand-assets/Untitled design (2)/3.jpg",
+      "gitBlobSha": "5f8ec0489339a0b6f1dc6a64c337743f2fa78c8e",
+      "size": 83046
+    },
+    {
+      "path": "brand-assets/Untitled design (2)/4.jpg",
+      "gitBlobSha": "12eac53a15f80ecaa96cc565ae86651dfecb35cc",
+      "size": 72917
+    },
+    {
+      "path": "brand-assets/Untitled design (2)/5.jpg",
+      "gitBlobSha": "7b9857fd6cb27e81c6a8a1a51885a2716c514999",
+      "size": 33624
+    },
+    {
+      "path": "brand-assets/Untitled design (2)/6.jpg",
+      "gitBlobSha": "031d85f223eb63358939365a68d82d5fd9c12b59",
+      "size": 51035
+    },
+    {
+      "path": "brand-assets/Untitled design (2)/7.jpg",
+      "gitBlobSha": "81545a0d6797260740b0bc6d9b0d5de0e20df015",
+      "size": 67954
+    },
+    {
+      "path": "brand-assets/Untitled design (2)/8.jpg",
+      "gitBlobSha": "d8a06fcd7f7c49203a139699df2bb5c12ee9d2e9",
+      "size": 71022
+    },
+    {
+      "path": "brand-assets/Untitled design (2)/9.jpg",
+      "gitBlobSha": "eda56b360d9ed1da1eea430cd5f98f815843df96",
+      "size": 46311
+    },
+    {
+      "path": "brand-assets/placeholder.txt",
+      "gitBlobSha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "size": 1
+    },
+    {
+      "path": "docs/Geek Protocol Litepaper.pdf",
+      "gitBlobSha": "31031c88b77169e8d61b2f8771ee167ed4ada8b7",
+      "size": 198995
+    },
+    {
+      "path": "docs/Job_Description_Themed.html",
+      "gitBlobSha": "d97f6855b9546cc15c744b096bc680b61234a632",
+      "size": 6332
+    },
+    {
+      "path": "docs/Litepaper.html",
+      "gitBlobSha": "a3352e8f03f8c5421a701be453fa25655d2070d2",
+      "size": 9736
+    },
+    {
+      "path": "docs/Litepaper_Themed_v1.3.html",
+      "gitBlobSha": "38dd9af1a73877f4f04b7d1449876cd6f5d0646e",
+      "size": 5778
+    },
+    {
+      "path": "docs/Master_Document_v1.3.html",
+      "gitBlobSha": "94500e5fc15ffd54df7930769a86d3774975c28d",
+      "size": 7395
+    },
+    {
+      "path": "docs/README.md",
+      "gitBlobSha": "31c56cdab528d5b6f8426416c0e512fee87c693b",
+      "size": 1739
+    },
+    {
+      "path": "docs/placeholder.txt",
+      "gitBlobSha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "size": 1
+    },
+    {
+      "path": "favicon.ico",
+      "gitBlobSha": "848f0beda3d92231191a8b7e71d4e136b0fa812b",
+      "size": 15406
+    },
+    {
+      "path": "index.html",
+      "gitBlobSha": "0b82de73549243d5ddb40d2c53d6592152b3eba5",
+      "size": 28535
+    },
+    {
+      "path": "og.png",
+      "gitBlobSha": "8e7ee688f1f2379362471b0c6cb48d2eb2ec5229",
+      "size": 734948
+    },
+    {
+      "path": "robots.txt",
+      "gitBlobSha": "71bbff8814d469048e113b2a50e6ca6b6106407f",
+      "size": 255
+    },
+    {
+      "path": "sitemap.xml",
+      "gitBlobSha": "a376033a25c8b2db70d43bf75a0f62d716b3624c",
+      "size": 1061
+    }
+  ]
+}

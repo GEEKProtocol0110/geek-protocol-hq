@@ -1,0 +1,721 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-15",
+  "scope": "Merged HQ PR metadata retrieved from GitHub REST, closed PR pages 1–2; merged is not a deployment or independent audit claim.",
+  "records": [
+    {
+      "number": 1,
+      "title": "Harden Geek Protocol with server-authoritative ranked play",
+      "mergedAt": "2026-09-19T13:06:25Z",
+      "commit": "6aa19a71d065cb383ca4052fbe63b4b1bda63415",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/1"
+    },
+    {
+      "number": 2,
+      "title": "Launch Community Content Engine Alpha",
+      "mergedAt": "2026-09-19T14:32:34Z",
+      "commit": "d8af9af75a6aadca2d45884d0589d1b90347e20c",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/2"
+    },
+    {
+      "number": 3,
+      "title": "Add wallet-neutral rewards and secure quick modes",
+      "mergedAt": "2026-09-19T15:41:25Z",
+      "commit": "0f7eb18f866ee1e7a976fd49313e230c27396222",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/3"
+    },
+    {
+      "number": 4,
+      "title": "Add independent-audit readiness controls",
+      "mergedAt": "2026-09-19T16:37:54Z",
+      "commit": "5f5c331fcbe8c8146aed1b112ab8d952e7acbf08",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/4"
+    },
+    {
+      "number": 5,
+      "title": "Add recoverable Kaspa wallet identity",
+      "mergedAt": "2026-09-19T21:05:29Z",
+      "commit": "b731ff2314a8a784b4f12d21dc87e9db76cba02d",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/5"
+    },
+    {
+      "number": 6,
+      "title": "Add payout risk review controls",
+      "mergedAt": "2026-09-20T09:37:07Z",
+      "commit": "e15c08c8791c2f97210063e9121481db2c721332",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/6"
+    },
+    {
+      "number": 7,
+      "title": "Activate the non-custodial GEEK fair mint",
+      "mergedAt": "2026-09-20T13:35:50Z",
+      "commit": "794e0b1142abad8d46c4f848948a2b15702ec263",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/7"
+    },
+    {
+      "number": 8,
+      "title": "Harden GEEK mint status recovery",
+      "mergedAt": "2026-09-22T04:49:38Z",
+      "commit": "314026d23b02b74a1ce5cb3178bcef428ca599e1",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/8"
+    },
+    {
+      "number": 9,
+      "title": "Polish copy and responsive Kaspa visuals",
+      "mergedAt": "2026-09-22T05:10:00Z",
+      "commit": "324b4e24c82e21948abf47d488246351e28214c6",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/9"
+    },
+    {
+      "number": 10,
+      "title": "Add verified player journey and collectible trading alpha",
+      "mergedAt": "2026-09-22T12:29:57Z",
+      "commit": "c56381580927d24affd60c4501ad4700c5491173",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/10"
+    },
+    {
+      "number": 11,
+      "title": "Build the 500-Geek art and lore production system",
+      "mergedAt": "2026-09-22T13:36:39Z",
+      "commit": "6078acb9998f4a6a0deb68d4309a0a91d84d93d2",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/11"
+    },
+    {
+      "number": 12,
+      "title": "Recover and preserve legacy Geek artwork",
+      "mergedAt": "2026-09-22T20:59:15Z",
+      "commit": "85d02a07480f3699fcad91f402c76328a903ea64",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/12"
+    },
+    {
+      "number": 13,
+      "title": "Professionalize the repository and GitHub experience",
+      "mergedAt": "2026-09-23T01:51:32Z",
+      "commit": "1c8974a95139908260ff5787119c9e231c2e8919",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/13"
+    },
+    {
+      "number": 15,
+      "title": "Clarify Alpha credits and fair mint availability",
+      "mergedAt": "2026-09-23T11:49:15Z",
+      "commit": "c48ad53b066b089daad9d0fb19c592e4c4459fb1",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/15"
+    },
+    {
+      "number": 16,
+      "title": "Clarify Kaspa identity for search results",
+      "mergedAt": "2026-09-23T12:12:07Z",
+      "commit": "180ac82d2522c1a522267ce7516833dc1a6a8660",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/16"
+    },
+    {
+      "number": 17,
+      "title": "Improve Kaspa search discovery and project identity",
+      "mergedAt": "2026-09-23T13:27:59Z",
+      "commit": "b9b7e278815f141b5864ac7c98e7d82066c6f1d2",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/17"
+    },
+    {
+      "number": 18,
+      "title": "Replace overlapping homepage art with GIGA head",
+      "mergedAt": "2026-09-23T23:37:30Z",
+      "commit": "094253435b7df31ce8ce461f926ce9016d788456",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/18"
+    },
+    {
+      "number": 19,
+      "title": "Simplify site journey and strengthen API input handling",
+      "mergedAt": "2026-09-23T23:59:34Z",
+      "commit": "536a3884dad43aa2417cd8f9c1d9c5827b08b8e3",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/19"
+    },
+    {
+      "number": 20,
+      "title": "Fix Kaspa guide contrast and oversized protocol section",
+      "mergedAt": "2026-09-24T05:14:31Z",
+      "commit": "512f8fcb9a730c0db15302ab01d3d8cfdbc793c8",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/20"
+    },
+    {
+      "number": 21,
+      "title": "Correct Kaspa blockDAG visual to show actual parent references",
+      "mergedAt": "2026-09-24T05:34:06Z",
+      "commit": "3a17f7fc4319a1c284963824272a4f34b228d67b",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/21"
+    },
+    {
+      "number": 22,
+      "title": "Embed the live Kaspa blockDAG viewer in HQ",
+      "mergedAt": "2026-09-24T06:05:32Z",
+      "commit": "e6427402bdf4562b2f5a9b04e5e6e6e541f92405",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/22"
+    },
+    {
+      "number": 23,
+      "title": "Put the mobile Kaspa game flow first",
+      "mergedAt": "2026-09-24T06:24:18Z",
+      "commit": "3b44f2a6aed7671c6e4a855946dde27c7894b738",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/23"
+    },
+    {
+      "number": 24,
+      "title": "Clean up Daily and Speed result screens",
+      "mergedAt": "2026-09-24T06:33:48Z",
+      "commit": "789a4e08c997f97ae5f1b28698b7ed84b65b57d3",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/24"
+    },
+    {
+      "number": 25,
+      "title": "Clarify optional wallet connection and payout status in Gauntlet",
+      "mergedAt": "2026-09-26T06:17:42Z",
+      "commit": "e4279a171abcb2e7394fb6e5245305824d7df657",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/25"
+    },
+    {
+      "number": 26,
+      "title": "Connect HQ lobbies to shared server-scored rounds",
+      "mergedAt": "2026-09-26T06:55:34Z",
+      "commit": "13fea50f698381ab79d2939e6c539cd2beaf212b",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/26"
+    },
+    {
+      "number": 28,
+      "title": "Put Geek Protocol's education mission on the homepage",
+      "mergedAt": "2026-10-01T08:45:16Z",
+      "commit": "6cee2e665ae5ef4309e1063ea4d6c751108c3998",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/28"
+    },
+    {
+      "number": 30,
+      "title": "Add untimed Kaspa Study with A.C.E. explanations and missed-concept practice",
+      "mergedAt": "2026-10-01T10:27:52Z",
+      "commit": "de5c90845a76a168f98f1b6d3c263a823fba94e9",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/30"
+    },
+    {
+      "number": 32,
+      "title": "Restore Kaspa 101 as the Learn page",
+      "mergedAt": "2026-10-02T04:59:49Z",
+      "commit": "53ca4b4a1d21f55696ffc57b5bdf12c16e849895",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/32"
+    },
+    {
+      "number": 34,
+      "title": "Restore the full Geek Protocol vision and staged build roadmap",
+      "mergedAt": "2026-10-02T08:09:00Z",
+      "commit": "fc345c25f06892e9432ad52abe79e0c49bd12710",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/34"
+    },
+    {
+      "number": 35,
+      "title": "Add guided Kaspa learning and saved practice progress",
+      "mergedAt": "2026-10-02T09:11:35Z",
+      "commit": "199dd75ba904071c518e13b20afcdfd21a4eb2d0",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/35"
+    },
+    {
+      "number": 36,
+      "title": "Add weekly and monthly Kaspa challenges",
+      "mergedAt": "2026-10-02T09:56:12Z",
+      "commit": "ab9fa9a0b592816621a0cebbf5dd40cc2a7f88d9",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/36"
+    },
+    {
+      "number": 37,
+      "title": "Add daily cosmetic vault with replay-safe UTC claims",
+      "mergedAt": "2026-10-02T11:35:52Z",
+      "commit": "c4b93273c0c08425d018be9c1e1e9477759ba473",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/37"
+    },
+    {
+      "number": 38,
+      "title": "Focus the core learning journey and pause larger expansions",
+      "mergedAt": "2026-10-02T13:02:59Z",
+      "commit": "f482848c152fb3f7f52ee619ed652a9e773a55c7",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/38"
+    },
+    {
+      "number": 39,
+      "title": "Remove Executive Summary and DAO Proposal links",
+      "mergedAt": "2026-10-02T20:45:30Z",
+      "commit": "c7538980c7e405e1cb10c9ac14db5eb26fd1d8bb",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/39"
+    },
+    {
+      "number": 40,
+      "title": "Guide new learners from Kaspa 101 to their first lesson",
+      "mergedAt": "2026-10-03T01:28:27Z",
+      "commit": "ab0eac8ec499d287bbb4d3117acd56fc02edb760",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/40"
+    },
+    {
+      "number": 41,
+      "title": "Use American English across Geek Protocol",
+      "mergedAt": "2026-10-03T01:36:49Z",
+      "commit": "13fb07815555ef6aca5dc334eacedc842cc3a1fa",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/41"
+    },
+    {
+      "number": 42,
+      "title": "Let learners start practice from the final lesson idea",
+      "mergedAt": "2026-10-03T01:45:12Z",
+      "commit": "b9346ec348891c5b7aaa713cd1272017d9bc6406",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/42"
+    },
+    {
+      "number": 43,
+      "title": "Restore power-ups and add planning-only economy accounting",
+      "mergedAt": "2026-10-03T02:42:52Z",
+      "commit": "91d6e59045485f148f3a84d7d14a85e1ddc7847a",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/43"
+    },
+    {
+      "number": 44,
+      "title": "Make 50/50 and Extra Time playable in free assisted practice",
+      "mergedAt": "2026-10-03T03:52:31Z",
+      "commit": "2fc6178d7d997a64b7269990befba49067d87e0d",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/44"
+    },
+    {
+      "number": 45,
+      "title": "Give Giga an active role in the learning journey",
+      "mergedAt": "2026-10-03T05:38:34Z",
+      "commit": "9673f6fd74281e17c047fcdcd170b09b24d403e4",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/45"
+    },
+    {
+      "number": 46,
+      "title": "Connect enabled Vercel Web Analytics to public pages",
+      "mergedAt": "2026-10-03T07:07:23Z",
+      "commit": "a87bf13201b11c750d76a2fbe228ac6664d3eebb",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/46"
+    },
+    {
+      "number": 47,
+      "title": "Track learning activity across Study, practice, and Giga",
+      "mergedAt": "2026-10-03T08:39:29Z",
+      "commit": "20bd5acb7e2b0fde13428ce5917c984981ca360a",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/47"
+    },
+    {
+      "number": 48,
+      "title": "Add playable Memory Grid to Geek Protocol game modes",
+      "mergedAt": "2026-10-03T09:19:38Z",
+      "commit": "9029050cef83aee9f70e7cb40f5ecb27a0afd4da",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/48"
+    },
+    {
+      "number": 49,
+      "title": "Add Build-a-GEEK profiles and correct the 500-NFT collection to five tiers",
+      "mergedAt": "2026-10-03T10:01:31Z",
+      "commit": "a99093bc3e761fdd61c16459522c821514ed2b87",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/49"
+    },
+    {
+      "number": 50,
+      "title": "Add space starfields and selectable profile particle effects",
+      "mergedAt": "2026-10-03T10:45:43Z",
+      "commit": "f5832d09e850056e07b29d4f205819327f05bf9f",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/50"
+    },
+    {
+      "number": 51,
+      "title": "Player dashboard: level 50, 25 manual prestige ranks and verified standings",
+      "mergedAt": "2026-10-04T05:31:06Z",
+      "commit": "ec59bedbd38f36fdb772c5c0d894f30170934168",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/51"
+    },
+    {
+      "number": 52,
+      "title": "Add personal Geeks with skin, hair and clothing customization",
+      "mergedAt": "2026-10-05T06:33:29Z",
+      "commit": "3945dd816c1a65147b4d8c7a109f25c9876a5ae9",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/52"
+    },
+    {
+      "number": 53,
+      "title": "Add free 1v1 Geek Duel with saved characters and mutual rematches",
+      "mergedAt": "2026-10-05T07:44:12Z",
+      "commit": "249e3e5268e451654638935ab36316f068f8eaf9",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/53"
+    },
+    {
+      "number": 54,
+      "title": "Add First Signal Quiz Quest with saved progress and chapter badge",
+      "mergedAt": "2026-10-05T08:34:58Z",
+      "commit": "7ef91914a2057c0805a55bc872c9adf3afc284b0",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/54"
+    },
+    {
+      "number": 55,
+      "title": "Add Quiz Quest campaign map and Inside the blockDAG chapter",
+      "mergedAt": "2026-10-05T14:36:04Z",
+      "commit": "7a9c100b16063a8b5f1c8a317e2b1738b9394feb",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/55"
+    },
+    {
+      "number": 56,
+      "title": "Require Chapter 1 completion before Quiz Quest Chapter 2",
+      "mergedAt": "2026-10-06T04:07:22Z",
+      "commit": "28aebb02a99fb12463019cda3e4e5c422f52d2a5",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/56"
+    },
+    {
+      "number": 57,
+      "title": "Upgrade Player HQ, My Geek, solo A.C.E. Duel and Quest Chapter 3",
+      "mergedAt": "2026-10-06T05:42:01Z",
+      "commit": "8f8f062471ebf615d01318b56750aa90145dba78",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/57"
+    },
+    {
+      "number": 58,
+      "title": "Make HQ calmer and friendlier for younger learners",
+      "mergedAt": "2026-10-06T09:24:28Z",
+      "commit": "7f03d2874d653d87fcd7b4077e6c0f23d5d16c59",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/58"
+    },
+    {
+      "number": 59,
+      "title": "Make Geek Gauntlet visible on the site",
+      "mergedAt": "2026-10-07T02:17:00Z",
+      "commit": "df33ccf9710e7ecd974f25b7066d9065319e73b8",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/59"
+    },
+    {
+      "number": 60,
+      "title": "Clean duplicate questions and double the distinct question pools",
+      "mergedAt": "2026-10-07T04:30:39Z",
+      "commit": "3d7ad8f2a1fe40937a2579943244c2319d4040e7",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/60"
+    },
+    {
+      "number": 61,
+      "title": "Unify community moderation, risk reviews and audit activity in Operations",
+      "mergedAt": "2026-10-07T07:34:41Z",
+      "commit": "6950bcd29b4645b8b47f90f3e685caf2ab07a0da",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/61"
+    },
+    {
+      "number": 62,
+      "title": "Require private sign-in for Operations",
+      "mergedAt": "2026-10-07T08:15:06Z",
+      "commit": "2f38ed42df202bdad538fda9b742090d15c32055",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/62"
+    },
+    {
+      "number": 63,
+      "title": "Route /ops/ through the private sign-in gate",
+      "mergedAt": "2026-10-07T08:17:25Z",
+      "commit": "843be638aa9b314194ca92cf1ef01efc6cacfcf7",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/63"
+    },
+    {
+      "number": 64,
+      "title": "Redirect the trailing-slash legacy review root",
+      "mergedAt": "2026-10-07T08:19:32Z",
+      "commit": "6fd3b59db115cb6284b8b27c0072b4a7ca9604b5",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/64"
+    },
+    {
+      "number": 65,
+      "title": "Give Operations separate pages and one owner sign-in",
+      "mergedAt": "2026-10-08T06:55:13Z",
+      "commit": "efbb6770b322ce92f9a8b8a36aa923923e6af68f",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/65"
+    },
+    {
+      "number": 66,
+      "title": "Route all Operations workspace pages to the owner gate",
+      "mergedAt": "2026-10-08T06:58:42Z",
+      "commit": "cbc2029648e5f575c7db3aab5094db6c51a738cc",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/66"
+    },
+    {
+      "number": 67,
+      "title": "Retire unusable trivia and clarify player sign-in and recovery",
+      "mergedAt": "2026-10-08T11:55:31Z",
+      "commit": "51204af34d76a5554013346f0c089200ab80cce1",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/67"
+    },
+    {
+      "number": 68,
+      "title": "Add Trivia Royale with configurable 2–100-player rooms",
+      "mergedAt": "2026-10-08T11:56:20Z",
+      "commit": "053c7e708327c9b8448579bd2141bf09f7337662",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/68"
+    },
+    {
+      "number": 69,
+      "title": "Support Kaspa sign-in beyond Kasware with verified message proofs",
+      "mergedAt": "2026-10-08T21:36:23Z",
+      "commit": "658f8dd28428a2c5e570c53a2308a41b53fe5f81",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/69"
+    },
+    {
+      "number": 70,
+      "title": "Add owner-controlled holiday themes in Operations",
+      "mergedAt": "2026-10-08T21:05:54Z",
+      "commit": "a1be9eae2e45c6f45dc5698e68099a58e300da95",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/70"
+    },
+    {
+      "number": 71,
+      "title": "Fix production route for holiday Operations workspace",
+      "mergedAt": "2026-10-08T21:09:34Z",
+      "commit": "b4f8998f51c5499e1e7f5692068352e1f3c28547",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/71"
+    },
+    {
+      "number": 72,
+      "title": "Add owner authenticator login and recovery preparation",
+      "mergedAt": "2026-10-08T22:18:02Z",
+      "commit": "cd69dc00ba634bcc436389c56a91fe733fad0b17",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/72"
+    },
+    {
+      "number": 73,
+      "title": "Make GEEK minting easier to follow with guided steps and receipts",
+      "mergedAt": "2026-10-08T22:46:41Z",
+      "commit": "0f95d81ce9e1d0a2d1ccf0a20e183cdee1bcc021",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/73"
+    },
+    {
+      "number": 74,
+      "title": "Add a Hall of Thanks for Kaspa, the Geek community and its builders",
+      "mergedAt": "2026-10-08T23:08:43Z",
+      "commit": "b2332975827a648cf616e3e1b7678749763af290",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/74"
+    },
+    {
+      "number": 75,
+      "title": "Honor KRC-20 communities and expand Kaspa learning",
+      "mergedAt": "2026-10-08T23:40:37Z",
+      "commit": "3dc87c1d44d345bf63bffd41073ed74072c521b5",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/75"
+    },
+    {
+      "number": 76,
+      "title": "Thank Tangem for Kaspa and KRC-20 wallet support",
+      "mergedAt": "2026-10-09T00:54:30Z",
+      "commit": "4431eb1405f8c25e9c32d2a3f8b59c0982b25588",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/76"
+    },
+    {
+      "number": 77,
+      "title": "Open Hall applications and community contributions",
+      "mergedAt": "2026-10-09T01:25:01Z",
+      "commit": "f696cb78b41c86a485df837aaeb9a0399db02060",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/77"
+    },
+    {
+      "number": 78,
+      "title": "Show waiting community reviews on Operations home",
+      "mergedAt": "2026-10-09T02:39:57Z",
+      "commit": "4d48cde8ab84853aa27700bbe2c6baa63a341acd",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/78"
+    },
+    {
+      "number": 80,
+      "title": "Clarify 33 Kaspa and KRC-20 questions and reassess difficulty",
+      "mergedAt": "2026-10-09T03:15:00Z",
+      "commit": "8aa2f036bce88bed5821abdd97e2f05787aa0d8f",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/80"
+    },
+    {
+      "number": 82,
+      "title": "Preserve Quiz Quest save JSON and recover unverified chapter loads",
+      "mergedAt": "2026-10-09T03:57:58Z",
+      "commit": "a682c20733c771d074b96284b889a217fb69a8ed",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/82"
+    },
+    {
+      "number": 84,
+      "title": "Polish Kaspa-first onboarding and refresh the free-beta pilot checklist",
+      "mergedAt": "2026-10-15T03:44:19Z",
+      "commit": "7b138bb5c27d5195f7e9a5a67cd8798b0764583f",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/84"
+    },
+    {
+      "number": 86,
+      "title": "Debug player saves and Royale recovery; polish Quest phone controls",
+      "mergedAt": "2026-10-09T09:55:03Z",
+      "commit": "ff4ae10136d84403b3ca90801927ec9e78847c89",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/86"
+    },
+    {
+      "number": 88,
+      "title": "Validate saved identities, sessions and one-time wallet proofs",
+      "mergedAt": "2026-10-09T11:41:22Z",
+      "commit": "5f48634f53a5c3f437da265f174bfce25dba7d1d",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/88"
+    },
+    {
+      "number": 90,
+      "title": "Check public answer artifacts and disabled settlement boundaries",
+      "mergedAt": "2026-10-09T11:41:43Z",
+      "commit": "78ed916ac006ee97bdac109b337df238586d481c",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/90"
+    },
+    {
+      "number": 91,
+      "title": "Make failed Quest retries diagnosable without rewriting saved progress",
+      "mergedAt": "2026-10-09T16:47:09Z",
+      "commit": "e0a3ad5c4464a00ef11b391b9caeaaf3f1ba5183",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/91"
+    },
+    {
+      "number": 92,
+      "title": "Recover first Quest saves omitted by the legacy provider JSON writer",
+      "mergedAt": "2026-10-09T22:50:49Z",
+      "commit": "382ffdb59f967e684ceb4a001f7d6705fe8fe55c",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/92"
+    },
+    {
+      "number": 93,
+      "title": "Add Geek Mini and free Kaspa widget discovery to HQ",
+      "mergedAt": "2026-10-10T09:31:43Z",
+      "commit": "8db24414224a47ef12b702c445a665e175b61f34",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/93"
+    },
+    {
+      "number": 94,
+      "title": "Replace blurry Hall of Thanks link preview with a dedicated card",
+      "mergedAt": "2026-10-10T14:47:59Z",
+      "commit": "bc85f6964025beac0f2721684d9dbbb95b337be1",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/94"
+    },
+    {
+      "number": 95,
+      "title": "Offer the signed Kaspa Live Widget public download",
+      "mergedAt": "2026-10-10T18:35:08Z",
+      "commit": "f0b239981c6ce9747e1b28aebecb2cf0cab2008a",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/95"
+    },
+    {
+      "number": 96,
+      "title": "Add a first-visit route and more My Geek starter choices",
+      "mergedAt": "2026-10-11T03:06:42Z",
+      "commit": "280c9749d3afbdef0a7cda04506d74337aec6bda",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/96"
+    },
+    {
+      "number": 97,
+      "title": "Keep the first-visit GIGA illustration proportional",
+      "mergedAt": "2026-10-11T03:12:14Z",
+      "commit": "1ebb02c10bbc70bfad1a5e3613e161de59dc044a",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/97"
+    },
+    {
+      "number": 98,
+      "title": "Complete HQ first visit and reliable saved-game recovery",
+      "mergedAt": "2026-10-11T04:33:30Z",
+      "commit": "4b432f6407b8b691c15fef3a2bb71f747e491efe",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/98"
+    },
+    {
+      "number": 99,
+      "title": "Show incomplete mint receipts without reporting successful wallet calls as failures",
+      "mergedAt": "2026-10-11T06:10:01Z",
+      "commit": "a93fad53c09c33f64d40f8e8c6345ff31d4c3a86",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/99"
+    },
+    {
+      "number": 100,
+      "title": "Add wallet-approved mint queues and a GEEK trading path",
+      "mergedAt": "2026-10-11T06:32:40Z",
+      "commit": "926bd1dad2264191f5f76950ca9482089e49b8f0",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/100"
+    },
+    {
+      "number": 101,
+      "title": "Add Value in Motion, the fourth saved Quiz Quest chapter",
+      "mergedAt": "2026-10-11T07:57:48Z",
+      "commit": "d7a00d277f7b537e826ff134b3a61094d428146d",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/101"
+    },
+    {
+      "number": 102,
+      "title": "Make Android widget downloads easier from HQ",
+      "mergedAt": "2026-10-14T01:24:53Z",
+      "commit": "30f025fbc00037e5ee44bc7ca3fd8888e1b6ec22",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/102"
+    },
+    {
+      "number": 103,
+      "title": "Give Android and iPhone users one Kaspa widget setup page",
+      "mergedAt": "2026-10-14T08:19:01Z",
+      "commit": "500fa97f09523f64bc7dfa3565066eb446710a13",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/103"
+    },
+    {
+      "number": 104,
+      "title": "Add source review, mobile entry, technology lessons, Royale discovery and testnet receipts",
+      "mergedAt": "2026-10-14T10:28:34Z",
+      "commit": "552a64f8ce349f77fe5220eb7adad49f7aa0b224",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/104"
+    },
+    {
+      "number": 105,
+      "title": "Fix private Operations desk routes",
+      "mergedAt": "2026-10-14T10:33:25Z",
+      "commit": "c7c50e861f7e2a27db6b0d626f51a32efc925241",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/105"
+    },
+    {
+      "number": 106,
+      "title": "Monitor live pages, services, private routes and payment gates",
+      "mergedAt": "2026-10-14T11:16:48Z",
+      "commit": "2e1a0ef70a2db2433010cd65988c540bc86e1a6f",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/106"
+    },
+    {
+      "number": 107,
+      "title": "Stress-test credit issuance, fee rounding and hypothetical reward reserves",
+      "mergedAt": "2026-10-14T13:00:25Z",
+      "commit": "bda84f91098105b8aefc7ad70a9bc04309b3803b",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/107"
+    },
+    {
+      "number": 108,
+      "title": "Model 100 GEEK round rewards and daily reserve runway",
+      "mergedAt": "2026-10-14T13:39:44Z",
+      "commit": "b50b417e4bd64d5c0a0a4ca5fe73eec4b5934cce",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/108"
+    },
+    {
+      "number": 109,
+      "title": "Make Kaspa onboarding clear on the mobile homepage",
+      "mergedAt": "2026-10-15T03:18:25Z",
+      "commit": "5421a78524cd81dcd54aeddb8f04ca01efb75e7c",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/109"
+    },
+    {
+      "number": 110,
+      "title": "Add credited KaspaCom further reading to the learning pages",
+      "mergedAt": "2026-10-15T04:08:52Z",
+      "commit": "efeb0c7c9869346dfa87ce67c950dce460962fd3",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/110"
+    },
+    {
+      "number": 111,
+      "title": "Require reviewed question banks before CCE and launch the free Geek Store fitting room",
+      "mergedAt": "2026-10-15T04:59:11Z",
+      "commit": "7dc26bc136cab72a60437d94141a8f0bb692365b",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/111"
+    },
+    {
+      "number": 112,
+      "title": "Expand Kaspa to 250 distinct source-checked questions",
+      "mergedAt": "2026-10-15T05:52:13Z",
+      "commit": "df28b93e70831c7c9d2af3a148e2867e6e32a47f",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/112"
+    },
+    {
+      "number": 113,
+      "title": "Reach 500 sourced Kaspa questions and preserve the project handoff",
+      "mergedAt": "2026-10-15T07:40:48Z",
+      "commit": "e3fd589878d473939724b06882fb167b1e8d9b0a",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/113"
+    }
+  ]
+}

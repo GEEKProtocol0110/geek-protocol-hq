@@ -4,6 +4,8 @@
 **Public edition:** [HQ Litepaper v1.11](https://www.geekprotocol.xyz/litepaper/)
 **Purpose:** Carry the original project vision into an explicit implementation backlog.
 
+**Continuation:** [Start Here](../START-HERE.md), [maintained backlog](continuity/BACKLOG.md), and [2026–2076 vision](continuity/VISION-2076.md). These feature tables preserve product direction; the continuation record owns the current task, evidence and next action. Older dated descriptions remain historical where later releases supersede them.
+
 This document preserves the founder's full direction. It records features and acceptance criteria; it does not activate gameplay formats, payments, treasury authority, DAO votes, or collection ownership. Kaspa 101 remains the main Learn destination. Geek Jr's current implementation is outside this HQ release.
 
 Geek Protocol was born in Detroit, Michigan, USA. Use American English in public copy and project documentation, including “practice.”
@@ -40,13 +42,13 @@ Earlier documents express a proposed ecosystem. The present implementation uses 
 | Capability | Current evidence and boundary |
 | --- | --- |
 | Kaspa 101 | Field guide, live graph embed, milestones, builder paths, curriculum, sources; main Learn destination |
-| Study with A.C.E. | Eight guided lessons, three practice levels, saved concept feedback, untimed explanations, session and saved-mistake review; no rank or rewards |
+| Study with A.C.E. | Eleven guided Kaspa/practical-technology topics, three practice levels, saved concept feedback, untimed explanations, session and saved-mistake review; no rank or rewards |
 | Gauntlet | Ten rounds of ten questions, eight categories, server-owned deadlines/scoring; later rounds use internal credits |
 | Daily and Speed | Implemented timed alternatives, with their existing separate modes |
 | Weekly and monthly challenges | Shared reviewed Kaspa sets, UTC periods, one attempt per player, accuracy scoring, bounded separate boards |
 | Player dashboard / Geek's Journey | Server XP, levels 1–50, 25 optional prestige resets, achievements, challenge cards, verified standings, category records, journey history and avatars |
 | Shared lobbies | Ten-question host-started practice, roster/deadline authority; Quick Duel is a two-seat template |
-| Community Content Engine | Submission, human moderation, publication, one internal first-use credit |
+| Community Content Engine | Historical review/publication/credit records; new intake, publication and credits held for banks and economy |
 | Collectibles and trades | Off-chain avatar/sticker inventory and atomic sticker offers |
 | GEEK fair mint | Non-custodial interface against a pinned 144B-max, eight-decimal, no-premint deployment |
 | Wallet identity | Server-verified proof, recovery, and protected payout preferences; settlement remains disabled |
@@ -90,7 +92,7 @@ Geek Duel at `/duel/` is the dedicated free 1v1 format. The existing Quick Duel 
 | Memory Grid | Live free Kaspa solo matching; 4/6/8 pairs, explanations, source/lesson links | Additional reviewed decks and any future saved progression require separate work |
 | Trivia Royale | Free Alpha implemented | Configurable 2–100-player rooms, ready/host start, slowest-out rules, tie/reconnect handling, isolated scores and local capacity tests; production pilot and real device acceptance remain |
 | Fandom Duel | Planned | Dedicated head-to-head rules and reviewed fandom content; existing Quick Duel rooms are shared practice |
-| Quiz Quest | Three free Alpha chapters implemented | First Signal, Inside the blockDAG and Keys to the Grid; campaign map with the full earlier-chapter completion chain unlocking each next chapter, three sourced scenes/six checks per chapter, independent saved resume/review and badges; further chapters planned |
+| Quiz Quest | Four free Alpha chapters implemented | First Signal, Inside the blockDAG, Keys to the Grid and Value in Motion; saved resume/review, badges and prerequisite chain; real-device acceptance tracked separately |
 
 The first Memory Grid release uses explicit player-controlled mismatch review rather than a countdown. Attempt counts describe pairs turned over, not certified knowledge. Ranked authority and real money remain outside this casual browser game.
 
@@ -103,7 +105,7 @@ The first Memory Grid release uses explicit player-controlled mismatch review ra
 | CREATE-03 | Recurring question-use earnings | Proposed | Defined payable usage, funded reward pool, replay-resistant accounting, attribution splits, caps and correction policy; no guaranteed passive income |
 | CREATE-04 | Contributor grants | Proposed | Public proposals, funding source, reviewer/executor separation, deliverables, decisions, and expenditure records |
 
-The Alpha's implemented reward is one internal first-use credit. Recurring earnings and funded grants do not exist merely because this roadmap names them.
+Historical first-use credits retain their issued records. New credits are held with CCE while the reviewed bank and contributor economy are prepared. Recurring earnings and funded grants do not exist merely because this roadmap names them.
 
 ## 4. Player economy and ownership
 

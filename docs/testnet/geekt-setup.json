@@ -1,0 +1,181 @@
+{
+  "schema": 1,
+  "status": "production-desk-read-accepted-first-receipt-blocked-by-run-expiry",
+  "recordedOn": "2026-10-15",
+  "backlogId": "CHAIN-001",
+  "network": "testnet-10",
+  "walletNetwork": "kaspa_testnet_10",
+  "protocol": "KRC-20",
+  "ticker": "GEEKT",
+  "parametersChosenBy": "Founder direction: mirror pinned Mainnet GEEK supply, mint limit, decimals and premint on TN10; use separate ticker GEEKT.",
+  "display": {
+    "maximumTokens": "144000000000",
+    "tokensPerMint": "100000",
+    "premintTokens": "0",
+    "decimals": 8,
+    "maximumMintOperations": "1440000"
+  },
+  "walletRequests": {
+    "deploy": {
+      "payload": "geekt-deploy.json",
+      "method": "signKRC20Transaction",
+      "type": 2
+    },
+    "mint": {
+      "payload": "geekt-mint.json",
+      "method": "signKRC20Transaction",
+      "type": 3
+    }
+  },
+  "availabilityObservation": {
+    "date": "2026-10-15",
+    "url": "https://tn10api.kasplex.org/v1/krc20/token/GEEKT",
+    "message": "successful",
+    "state": "unused",
+    "deploymentHash": "",
+    "meaning": "Dated indexer observation only; ticker is not reserved and must be rechecked before signing."
+  },
+  "readiness": {
+    "appIdentified": "Kasware, supplied by founder",
+    "testnetAddress": "Privately supplied; checksum and Kaspa WASM Address parser passed",
+    "nativeBalance": "Not independently verified; native REST API returned HTTP 403",
+    "krc20Holdings": "GEEKT holdings now observed; address-specific balance stays private. Earlier empty-list observation is superseded.",
+    "documentedProviderSupport": true,
+    "installedProviderVerified": false,
+    "deploymentSubmitted": true,
+    "deploymentVerified": true,
+    "mintSubmitted": true,
+    "mintVerified": true,
+    "pilotEnabled": true,
+    "mainnetSettlementEnabled": false,
+    "founderRequestedMainnetParity": true,
+    "individualMintReceiptVerified": false,
+    "mintBatchComplete": false,
+    "signingEvidence": "Founder Kasware TN10 mint screenshot plus matching accepted deploy operation; no HQ signer/provider acceptance claim.",
+    "ownerReceiptDeskAccepted": true,
+    "firstRewardTransferVerified": false,
+    "recipient": "Separate founder-supplied TN10 address validated privately; empty token list at baseline."
+  },
+  "pilotConfigurationAfterVerificationOnly": {
+    "TESTNET_REWARDS_ENABLED": "false",
+    "TESTNET_REWARDS_NETWORK": "testnet-10",
+    "TESTNET_REWARDS_TICKER": "GEEKT",
+    "TESTNET_REWARDS_DEPLOYMENT_HASH": "2a74f6e1b4cf7c8f813cc089840a1ed85d90be96d6d48eb30f741b03d7161742",
+    "TESTNET_REWARDS_DECIMALS": "8",
+    "TESTNET_REWARDS_SENDER": null,
+    "TESTNET_REWARDS_AMOUNT_RAW": "100000000"
+  },
+  "references": [
+    "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection",
+    "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-krc20",
+    "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go"
+  ],
+  "mainnetParityReference": {
+    "repositoryPath": "server/mint.js",
+    "export": "GEEK_DEPLOYMENT",
+    "checkedAtCommit": "388a36e2c5c2a40cbbb595b130c1ec46a7443453",
+    "matchingFields": [
+      "maxRaw",
+      "limitRaw",
+      "premintRaw",
+      "decimals"
+    ],
+    "separateFields": [
+      "network",
+      "ticker",
+      "deployer",
+      "deploymentHash"
+    ],
+    "scope": "Token deployment parameters only; does not activate rewards, pool/burn policy, settlement or a signing request."
+  },
+  "deploymentObservation": {
+    "checkedAt": "2026-10-15T11:06:40Z",
+    "network": "testnet-10",
+    "deploymentHash": "2a74f6e1b4cf7c8f813cc089840a1ed85d90be96d6d48eb30f741b03d7161742",
+    "tokenState": "deployed",
+    "maxRaw": "14400000000000000000",
+    "limitRaw": "10000000000000",
+    "premintRaw": "0",
+    "decimals": 8,
+    "mintedRaw": "190000000000000",
+    "mintCount": "19",
+    "transferCount": "0",
+    "senderMatchedPrivately": true,
+    "txAccept": "1",
+    "opAccept": "1",
+    "opError": "",
+    "checkpoint": "26b9e3a1b26c116b4f80cded35784a00cba9af23653cb20ebc24f68dce104eab",
+    "operationUrl": "https://tn10api.kasplex.org/v1/krc20/op/2a74f6e1b4cf7c8f813cc089840a1ed85d90be96d6d48eb30f741b03d7161742",
+    "tokenUrl": "https://tn10api.kasplex.org/v1/krc20/token/GEEKT",
+    "meaning": "Dated indexer acceptance and token metadata, not continuous monitoring or independent finality. Mint batch still running at observation; no reward transfer."
+  },
+  "productionPilotObservation": {
+    "recordedOn": "2026-10-15",
+    "origin": "https://www.geekprotocol.xyz",
+    "path": "/ops/testnet/",
+    "deploymentId": "dpl_FwNcNoHHGZn4Znkz8aUcWobbgEjc",
+    "sourceCommit": "e3fd589878d473939724b06882fb167b1e8d9b0a",
+    "readyAt": "2026-10-15T12:03:22.952Z",
+    "deploymentStatus": "READY",
+    "scope": "production configuration of existing owner-only manual TN10 receipt workflow",
+    "ticker": "GEEKT",
+    "decimals": 8,
+    "amountRaw": "100000000",
+    "amountTokens": "1",
+    "enabledConfigured": true,
+    "senderConfiguredPrivately": true,
+    "sevenRequiredSettingsPresent": true,
+    "postDeploymentResponseChecksPassed": 20,
+    "anonymousDeskStatus": 303,
+    "anonymousApiStatus": 401,
+    "anonymousAssetStatus": 401,
+    "healthStorage": "connected",
+    "mainnetSettlementEnabled": false,
+    "automaticSigning": false,
+    "ownerAuthenticatedAcceptance": true,
+    "rewardTransferSubmittedByAssistant": false,
+    "validationLimit": "Local five-second Node monitor timed out; twenty response validators passed with a proxy-aware fifteen-second transport. Founder screenshots later accepted authenticated desk reads; first receipt and real transfer remain unverified.",
+    "ownerAcceptanceScope": "Founder screenshots show signed-in desk, refreshed empty receipts and GEEKT/testnet-10/100000000 raw settings. No queue or transfer acceptance."
+  },
+  "latestTokenObservation": {
+    "checkedAt": "2026-10-15T12:01:31Z",
+    "mintCount": "398",
+    "mintedRaw": "3980000000000000",
+    "transferCount": "0",
+    "tokenAndDeploymentMatch": true,
+    "senderHoldingsObservedPrivately": true,
+    "recipientTokenListEmptyPrivately": true,
+    "meaning": "Snapshot, not batch-completion evidence or a native TKAS balance check."
+  },
+  "ownerDeviceObservation": {
+    "recordedOn": "2026-10-15",
+    "source": "Founder-supplied phone screenshots in the working conversation; private browser data is not copied into this public repository.",
+    "deskReadAccepted": true,
+    "displayedTicker": "GEEKT",
+    "displayedNetwork": "testnet-10",
+    "displayedAmountRaw": "100000000",
+    "displayedReceiptCount": 0,
+    "runLookupError": "That ranked run expired or is no longer active.",
+    "receiptQueued": false,
+    "transferVerified": false,
+    "meaning": "Authenticated UI/config acceptance only. Expired run proof cannot be reconstructed from a screenshot, score, or client assertion."
+  },
+  "runLoadingFix": {
+    "status": "implemented-and-locally-tested-unmerged",
+    "reviewPullRequest": 114,
+    "scope": "Read current owned run automatically on pilot page entry and via Use my latest completed Daily; show missing/unfinished/player-session guidance.",
+    "serverPolicyChanged": false,
+    "finishedRunTtlSeconds": 300,
+    "dailyResetUtc": "00:00",
+    "targetedTestsPassed": 17,
+    "browserRenderingAccepted": false,
+    "nextAction": "Review and merge the UI fix, verify the production release, then complete an eligible Daily and queue immediately in the same browser/player. If today was already started, wait for the next UTC Daily; do not bypass the lock.",
+    "fullVerify": {
+      "testsPassed": 436,
+      "testsFailed": 0,
+      "testsSkipped": 0,
+      "redis": "real Redis 7.4.2",
+      "securityAssertions": 310
+    }
+  }
+}

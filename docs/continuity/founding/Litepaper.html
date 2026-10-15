@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geek Protocol Litepaper</title>
+    <style>
+        /* This uses the dark, neon theme for on-screen viewing */
+        body {
+            background-color: #0c0a1a;
+            color: #f0f0f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #1a1a2e;
+            border: 1px solid #00d1ff;
+            box-shadow: 0 0 20px rgba(0, 209, 255, 0.2);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: "Orbitron", sans-serif; /* Assumes Orbitron is available, falls back to sans-serif */
+            color: #00d1ff;
+            border-bottom: 1px solid #ff00e5;
+            padding-bottom: 10px;
+            margin-top: 1.5em;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            border: none;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+        
+        h3 {
+            font-size: 1.5em;
+            border-bottom-style: dashed;
+            border-bottom-color: #00ff95;
+        }
+        
+        h4 {
+            font-size: 1.2em;
+            color: #00ff95;
+            border-bottom: none;
+        }
+
+        p, li {
+            font-size: 1.1em;
+            color: #dcdcdc;
+        }
+
+        a {
+            color: #00d1ff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            color: #ffffff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #00ff95;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1f1f3d;
+            color: #00ff95;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #00d1ff;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        /* --- Print-Specific Styling --- */
+        @media print {
+            body { background-color: #ffffff; color: #000000; font-family: "Times New Roman", Times, serif; }
+            .container { margin: 0; padding: 0; border: none; box-shadow: none; }
+            h1, h2, h3, h4, strong, a { color: #000000 !important; }
+            p, li { color: #000000 !important; }
+            a { text-decoration: underline; }
+            table, th, td { border: 1px solid #dddddd; }
+            th { background-color: #f2f2f2; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Geek Protocol Litepaper</h1>
+        <p style="text-align: center;"><em>Version 1.2 | July 6, 2025</em></p>
+
+        <h2>1.0 The Vision: What is Geek Protocol?</h2>
+        <p>In the digital universe, knowledge is power. Geek Protocol is a decentralized Web3 ecosystem built on the high-speed Kaspa network, designed for a single purpose: to create a home where geeks can learn, compete, and monetize their expertise.</p>
+        <p>More than just a quiz, Geek Protocol is a fully gamified world. Progress on your "Geek's Journey," complete daily challenges, unlock achievements, and fill your collectible sticker albums. This is a living ecosystem designed for long-term engagement, hosted by our unique AI, A.C.E.</p>
+        <p>Welcome to the future of fandom.</p>
+
+        <h2>2.0 The Ecosystem</h2>
+        <p>The Geek Protocol is a multi-layered, interactive world designed for play.</p>
+
+        <h4>2.1 The Geek Gauntlet & Daily Challenges</h4>
+        <p>The heart of our platform is the "Geek Gauntlet," a 100-question trivia challenge. The experience is designed for high-stakes drama and endless replayability, with strict time limits, increasing difficulty, and strategic lifelines. On top of this, a fresh set of <strong>Daily, Weekly, & Monthly Challenges</strong> provide a constant stream of new goals and `$GEEK` rewards.</p>
+
+        <h4>2.2 Top-Tier Gamification</h4>
+        <p>We believe in rewarding every aspect of your journey.</p>
+        <ul>
+            <li><strong>The Geek's Journey:</strong> Level up your account by earning XP from every activity on the platform, unlocking rewards as you progress along a visual map.</li>
+            <li><strong>Achievements & NFT Badges:</strong> Unlock hundreds of achievements, from "First Steps" to "Master of Sci-Fi," earning permanent, non-tradable NFT badges to display your expertise.</li>
+            <li><strong>Collectible Sets:</strong> Complete sets of digital "stickers" for each quiz category by playing the game. Finish a set to earn huge `$GEEK` prizes and exclusive avatar gear. Trade your duplicates on the marketplace!</li>
+        </ul>
+
+        <h4>2.3 Create & Customize: Your Geek Identity</h4>
+        <p>Your passion deserves recognition.</p>
+        <ul>
+            <li><strong>Customizable Avatars:</strong> Every user gets a "Giga" bot avatar to customize with unique apparel and accessories.</li>
+            <li><strong>Peer-to-Peer Marketplace:</strong> Buy and sell cosmetic items and collectibles with other community members in a fully on-chain marketplace.</li>
+        </ul>
+
+        <h2>3.0 The $GEEK Token</h2>
+        <p>`$GEEK` is the KRC-20 utility token that powers the entire Geek Protocol ecosystem.</p>
+        
+        <h4>3.1 Token Details</h4>
+        <table>
+             <thead><tr><th>Attribute</th><th>Details</th></tr></thead>
+             <tbody>
+                <tr><td><strong>Name</strong></td><td>Geek Protocol</td></tr>
+                <tr><td><strong>Ticker</strong></td><td>`$GEEK`</td></tr>
+                <tr><td><strong>Blockchain</strong></td><td>Kaspa</td></tr>
+                <tr><td><strong>Standard</strong></td><td>KRC-20 (Smart Contract Token)</td></tr>
+             </tbody>
+        </table>
+
+        <h4>3.2 Core Utility</h4>
+        <ul>
+            <li><strong>Earn:</strong> Receive `$GEEK` as rewards for winning quizzes.</li>
+            <li><strong>Spend:</strong> Purchase in-game items, avatar cosmetics, and premium content.</li>
+            <li><strong>Trade:</strong> Use `$GEEK` as the primary currency on the on-chain marketplace.</li>
+            <li><strong>Enter:</strong> Pay entry fees for special, high-stakes tournaments.</li>
+            <li><strong>Stake:</strong> Lock your `$GEEK` in the official staking smart contract to earn rewards and boost your earnings.</li>
+        </ul>
+        
+        <h4>3.3 Tokenomics & Allocation</h4>
+        <p><strong>Total Supply:</strong> 144,000,000,000 GEEK</p>
+        <table>
+            <thead><tr><th>Category</th><th>Allocation</th></tr></thead>
+            <tbody>
+                <tr><td>Quiz2Earn Rewards</td><td>30%</td></tr>
+                <tr><td>Staking Rewards</td><td>20%</td></tr>
+                <tr><td>Liquidity Fund</td><td>20%</td></tr>
+                <tr><td>Team & Advisors (Vested)</td><td>15%</td></tr>
+                <tr><td>Marketing & Ecosystem</td><td>15%</td></tr>
+            </tbody>
+        </table>
+
+        <h4>3.4 Economic Engine: Recycle & Burn</h4>
+        <p>To ensure a sustainable economy, all platform fees paid in `$GEEK` are processed on-chain: <strong>70% is recycled</strong> back to the player rewards pool, and <strong>30% is permanently burned</strong>, reducing the total supply over time.</p>
+
+        <h2>4.0 Our Characters: A.C.E. & Giga</h2>
+        <p>The Geek Protocol is hosted by two unique personalities who create an immersive experience.</p>
+        <ul>
+            <li><strong>A.C.E. (Automated Cerebral Emulator):</strong> The "brains" of the operation. A.C.E. is the sharp, analytical AI who hosts the quizzes, curates content, and provides data-driven insights with a dry wit.</li>
+            <li><strong>Giga:</strong> The "face" of the brand. Giga is the friendly and fun robot mascot who welcomes new users, represents the community on social media, and serves as the base model for your customizable avatar.</li>
+        </ul>
+
+        <h2>5.0 Roadmap</h2>
+        <ul>
+            <li><strong>Q3 2025: Foundation & Community Launch</strong></li>
+            <li><strong>Q4 2025: MVP Launch</strong></li>
+            <li><strong>Q1 2026: Feature Expansion</strong></li>
+            <li><strong>Q2 2026: Decentralization</strong></li>
+        </ul>
+
+        <h2>6.0 Join the Protocol</h2>
+        <ul>
+            <li><strong>X (Twitter):</strong> <a href="https://x.com/geekonkas">https://x.com/geekonkas</a></li>
+            <li><strong>Telegram:</strong> <a href="https://t.me/GEEKonKAScommunity">https://t.me/GEEKonKAScommunity</a></li>
+            <li><strong>Token Info:</strong> <a href="https://kas.fyi/token/krc20/GEEK">https://kas.fyi/token/krc20/GEEK</a></li>
+            <li><strong>Marketplace:</strong> <a href="https://kaspa.com/tokens/marketplace/token/GEEK">https://kaspa.com/tokens/marketplace/token/GEEK</a></li>
+        </ul>
+
+        <div class="footer">
+            <p>© 2025 Geek Protocol. All hope, no hype.</p>
+        </div>
+    </div>
+</body>
+</html>

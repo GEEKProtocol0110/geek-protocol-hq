@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-15",
+  "scope": "Public repositories visible through the connected GitHub account. Private repository metadata is excluded from this public record. This does not migrate, archive, deploy or audit any component.",
+  "records": [
+    {
+      "name": "geek-protocol-alpha",
+      "repository": "GEEKProtocol0110/geek-protocol-alpha",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-alpha",
+      "defaultBranch": "main",
+      "role": "legacy-reference",
+      "verification": "repository-exists; implementation and live deployment require per-repository review"
+    },
+    {
+      "name": "geek-protocol-hq",
+      "repository": "GEEKProtocol0110/geek-protocol-hq",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq",
+      "defaultBranch": "main",
+      "role": "canonical-hq",
+      "verification": "repository-exists; implementation and live deployment require per-repository review"
+    },
+    {
+      "name": "geek-mini",
+      "repository": "GEEKProtocol0110/geek-mini",
+      "url": "https://github.com/GEEKProtocol0110/geek-mini",
+      "defaultBranch": "main",
+      "role": "component",
+      "verification": "repository-exists; implementation and live deployment require per-repository review"
+    },
+    {
+      "name": "geek-jr-indexcards",
+      "repository": "GEEKProtocol0110/geek-jr-indexcards",
+      "url": "https://github.com/GEEKProtocol0110/geek-jr-indexcards",
+      "defaultBranch": "main",
+      "role": "component",
+      "verification": "repository-exists; implementation and live deployment require per-repository review"
+    },
+    {
+      "name": "level-up-life",
+      "repository": "GEEKProtocol0110/level-up-life",
+      "url": "https://github.com/GEEKProtocol0110/level-up-life",
+      "defaultBranch": "main",
+      "role": "component",
+      "verification": "repository-exists; implementation and live deployment require per-repository review"
+    },
+    {
+      "name": "GEEKProtocol0110",
+      "repository": "GEEKProtocol0110/GEEKProtocol0110",
+      "url": "https://github.com/GEEKProtocol0110/GEEKProtocol0110",
+      "defaultBranch": "main",
+      "role": "profile",
+      "verification": "repository-exists; implementation and live deployment require per-repository review"
+    },
+    {
+      "name": "kaspa-speed-benchmark-dashboard",
+      "repository": "GEEKProtocol0110/kaspa-speed-benchmark-dashboard",
+      "url": "https://github.com/GEEKProtocol0110/kaspa-speed-benchmark-dashboard",
+      "defaultBranch": "main",
+      "role": "component",
+      "verification": "repository-exists; implementation and live deployment require per-repository review"
+    },
+    {
+      "name": "geek-protocol-docs",
+      "repository": "GEEKProtocol0110/geek-protocol-docs",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-docs",
+      "defaultBranch": "main",
+      "role": "founding-documents",
+      "verification": "repository-exists; implementation and live deployment require per-repository review"
+    },
+    {
+      "name": "geek-wallet",
+      "repository": "GEEKProtocol0110/geek-wallet",
+      "url": "https://github.com/GEEKProtocol0110/geek-wallet",
+      "defaultBranch": "main",
+      "role": "component",
+      "verification": "repository-exists; implementation and live deployment require per-repository review"
+    },
+    {
+      "name": "kaspa-live-widget",
+      "repository": "GEEKProtocol0110/kaspa-live-widget",
+      "url": "https://github.com/GEEKProtocol0110/kaspa-live-widget",
+      "defaultBranch": "main",
+      "role": "component",
+      "verification": "repository-exists; implementation and live deployment require per-repository review"
+    },
+    {
+      "name": "a.c.e.-AGI",
+      "repository": "GEEKProtocol0110/a.c.e.-AGI",
+      "url": "https://github.com/GEEKProtocol0110/a.c.e.-AGI",
+      "defaultBranch": "main",
+      "role": "component",
+      "verification": "repository-exists; implementation and live deployment require per-repository review"
+    },
+    {
+      "name": "geek-jr",
+      "repository": "GEEKProtocol0110/geek-jr",
+      "url": "https://github.com/GEEKProtocol0110/geek-jr",
+      "defaultBranch": "main",
+      "role": "component",
+      "verification": "repository-exists; implementation and live deployment require per-repository review"
+    },
+    {
+      "name": "geek-protocol-site",
+      "repository": "GEEKProtocol0110/geek-protocol-site",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-site",
+      "defaultBranch": "main",
+      "role": "component",
+      "verification": "repository-exists; implementation and live deployment require per-repository review"
+    }
+  ]
+}
