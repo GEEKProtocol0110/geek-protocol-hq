@@ -1,17 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { categoryFiles } from '../server/question-categories.js';
 import { studyCatalog, studyBank, pickStudyQuestions } from '../server/study-curriculum.js';
 
 const read = name => JSON.parse(readFileSync(new URL(`../server/questions/${name}`, import.meta.url)));
 test('reviewed Kaspa banks contain canonical distinct items with individual source dates', () => {
-  const core = read('kaspa-questions.json');
-  const current = read('kaspa-current-questions.json');
+  const kaspa = categoryFiles.kaspa.flatMap(file => read(file).questions);
   const report = JSON.parse(readFileSync(new URL('../docs/question-maintenance.json', import.meta.url)));
-  assert.equal(core.questions.length + current.questions.length, report.categories.kaspa.after);
+  assert.equal(kaspa.length, report.categories.kaspa.after);
   const ids = new Set();
   const concepts = new Map();
-  for (const q of [...core.questions, ...current.questions]) {
+  for (const q of kaspa) {
     assert.equal(ids.has(q.id), false, `Duplicate ID: ${q.id}`); ids.add(q.id);
     assert.equal(q.options.length, 4, q.id);
     assert.equal(new Set(q.options.map(s => s.trim().toLowerCase())).size, 4, q.id);
@@ -24,12 +24,12 @@ test('reviewed Kaspa banks contain canonical distinct items with individual sour
     assert.ok(q.reviewedAt <= report.maintainedAt, `${q.id}: future review date`);
     assert.ok(q.conceptId, q.id);
   }
-  for (const q of core.questions) {
+  for (const q of kaspa) {
     const previous = concepts.get(q.conceptId);
     assert.equal(previous, undefined, q.id);
     concepts.set(q.conceptId, q);
   }
-  assert.equal(concepts.size, core.questions.length);
+  assert.equal(concepts.size, kaspa.length);
   for (const q of concepts.values()) assert.equal(q.id, q.conceptId);
 });
 

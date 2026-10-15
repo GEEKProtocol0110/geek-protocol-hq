@@ -1,0 +1,1542 @@
+{
+  "metadata": {
+    "title": "GEEK Protocol — Kaspa 250 milestone expansion",
+    "version": "1.0.0",
+    "maintainedAt": "2026-10-15",
+    "questionCount": 56,
+    "conceptCount": 56,
+    "category": "Kaspa",
+    "difficultyDistribution": {
+      "medium": 29,
+      "hard": 15,
+      "easy": 12
+    },
+    "correctIndexDistribution": {
+      "0": 14,
+      "1": 14,
+      "2": 14,
+      "3": 14
+    },
+    "schema": "correctIndex is zero-based; options contains four distinct strings",
+    "reviewNotice": "Original distinct questions internally source-checked against pinned implementation evidence. Difficulty is provisional, not player-calibrated or independently approved.",
+    "attribution": "GEEK Protocol original questions. Kaspanet Rusty Kaspa source is credited per item as primary implementation evidence; no source prose or code is imported.",
+    "licenses": [
+      "MIT"
+    ],
+    "sourceSnapshot": "01b532e8b553523216471682649693af92f0fd16"
+  },
+  "questions": [
+    {
+      "id": "K250-0001",
+      "conceptId": "K250-0001",
+      "category": "Kaspa",
+      "subcategory": "GHOSTDAG & BlockDAG",
+      "prompt": "When GHOSTDAG chooses between parents with unequal blue work, which parent wins?",
+      "options": [
+        "The parent with the greatest blue work",
+        "The parent with the greatest blue score, regardless of blue work",
+        "The parent received first by this node",
+        "The parent with the latest timestamp, regardless of work"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The reference implementation compares accumulated blue work. Local arrival order does not choose the selected parent.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/ghostdag/protocol.rs#L99",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "selected-parent-work"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0002",
+      "conceptId": "K250-0002",
+      "category": "Kaspa",
+      "subcategory": "GHOSTDAG & BlockDAG",
+      "prompt": "In Rusty Kaspa, what breaks a SortableBlock tie when blue work is equal?",
+      "options": [
+        "The block timestamp",
+        "The block hash",
+        "The number of transaction inputs",
+        "The peer arrival order"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "SortableBlock compares blue work first and then hashes, giving nodes a deterministic comparison when work ties.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/ghostdag/ordering.rs#L39",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "blue-work-tie-break"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0003",
+      "conceptId": "K250-0003",
+      "category": "Kaspa",
+      "subcategory": "GHOSTDAG & BlockDAG",
+      "prompt": "What does GHOSTDAG parameter K bound when adding blocks to its blue set?",
+      "options": [
+        "The total number of blocks in the DAG",
+        "The number of selected parents per block",
+        "The blue anticone size allowed for each blue block",
+        "The size of the transaction mempool"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The candidate and existing blue blocks must continue satisfying the K-cluster anticone constraints. K is not a wallet or currency setting.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/ghostdag/protocol.rs#L114",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "k-cluster-constraint"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0004",
+      "conceptId": "K250-0004",
+      "category": "Kaspa",
+      "subcategory": "GHOSTDAG & BlockDAG",
+      "prompt": "In the topological mergeset order used by GHOSTDAG, how are ancestors placed relative to their children?",
+      "options": [
+        "Children always come before their ancestors",
+        "Every block is sorted only by its displayed timestamp",
+        "Blocks are placed in local arrival order",
+        "Ancestors come before their children"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "The implementation describes this order as forward from blocks to children. It respects ancestry rather than a node's reception times.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/ghostdag/protocol.rs#L139",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "topological-ancestry"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0005",
+      "conceptId": "K250-0005",
+      "category": "Kaspa",
+      "subcategory": "GHOSTDAG & BlockDAG",
+      "prompt": "What does unordered_mergeset_without_selected_parent collect in Rusty Kaspa?",
+      "options": [
+        "Blocks reached through other parents that are outside the selected parent's past",
+        "All ancestors of the selected parent, excluding other branches",
+        "Only the new block's direct parents",
+        "Only blue blocks already on the selected-parent chain"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "The traversal starts with non-selected parents, walks backward and skips ancestors already covered by the selected parent.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/ghostdag/mergeset.rs#L9",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "mergeset-membership"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0006",
+      "conceptId": "K250-0006",
+      "category": "Kaspa",
+      "subcategory": "GHOSTDAG & BlockDAG",
+      "prompt": "How does Rusty Kaspa calculate a new block's blue score from its selected parent?",
+      "options": [
+        "Parent blue score plus the number of mergeset reds",
+        "Parent blue score plus the size of the new block's mergeset blues",
+        "Parent blue work plus the new block's transaction count",
+        "The largest parent timestamp divided by the block interval"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "The score recurrence adds a block count, whereas the separate blue-work recurrence sums work represented by blue blocks.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/ghostdag/protocol.rs#L153",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "blue-score-recurrence"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0007",
+      "conceptId": "K250-0007",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "What happens to a regular, non-coinbase Kaspa transaction containing no inputs?",
+      "options": [
+        "It spends directly from the address in its first output",
+        "It is valid if its outputs sum to less than one KAS",
+        "It fails the no-input validation check",
+        "It is treated as coinbase solely because its input list is empty"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "The validator requires an input for non-coinbase transactions. A payment cannot create spendable value merely by naming a recipient.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_isolation.rs#L78",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "regular-input-required"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0008",
+      "conceptId": "K250-0008",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "Can one Kaspa transaction list the same outpoint twice as two separate inputs?",
+      "options": [
+        "Yes; if each copy uses a different signature",
+        "Yes; if the total output value is below that outpoint's amount",
+        "Yes; if the repeated copies have different sequence numbers",
+        "No; duplicate input outpoints are rejected"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "The validator tracks previous outpoints in a set. Repeating the same reference does not provide another independent UTXO.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_isolation.rs#L110",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "duplicate-input-rejection"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0009",
+      "conceptId": "K250-0009",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "How does the pinned Rusty Kaspa validator treat an output worth exactly zero sompi?",
+      "options": [
+        "It rejects that output",
+        "It accepts it whenever the transaction fee is positive",
+        "It silently removes that output before hashing",
+        "It accepts it only as the last change output"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The output-value range check explicitly rejects zero. This rule concerns a native transaction output, not an off-chain token balance.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_isolation.rs#L150",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "zero-output-rejection"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0010",
+      "conceptId": "K250-0010",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "Which output-value condition causes TxOutTooHigh in Rusty Kaspa?",
+      "options": [
+        "One output exceeds the transaction's storage mass",
+        "One output exceeds MAX_SOMPI",
+        "One output exceeds the sender's chosen fee rate",
+        "One output uses a script-hash locking script"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "The range check caps each output at MAX_SOMPI; separate checks also guard aggregate values and arithmetic overflow.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_isolation.rs#L154",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "individual-output-cap"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0011",
+      "conceptId": "K250-0011",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "What happens if a regular Kaspa transaction tries to pay more value than its inputs provide?",
+      "options": [
+        "It is accepted if the miner includes it in a valid block",
+        "It is accepted if every input signature is valid",
+        "It fails with a spend-too-high error",
+        "The output total is automatically reduced to the input total"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "The UTXO-context validator compares total input and output values. A signature cannot authorize creation of the missing native value.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs#L119",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "value-conservation"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0012",
+      "conceptId": "K250-0012",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "Why can a correctly signed spend of a newly earned Kaspa coinbase UTXO still fail?",
+      "options": [
+        "Coinbase outputs can never be spent",
+        "A valid signature must first be registered with a pool",
+        "The destination must use the same address as the miner",
+        "The coinbase maturity requirement may not be met"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "Coinbase maturity compares the entry's block DAA score plus the maturity parameter against the validation point of view.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs#L81",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "coinbase-maturity"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0013",
+      "conceptId": "K250-0013",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "For a valid regular Kaspa transaction, how is its native fee obtained?",
+      "options": [
+        "Total input value minus total output value",
+        "Total input value minus only the recipient output, ignoring change",
+        "The amount in a dedicated fee output to every miner",
+        "The transaction payload interpreted as a sompi amount"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The validator derives the fee from the UTXO value difference. Change outputs belong in total outputs when calculating it.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs#L49",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "native-fee-difference"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0014",
+      "conceptId": "K250-0014",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "What must hold for the stored storage-mass commitment during Rusty Kaspa UTXO validation?",
+      "options": [
+        "It may be any value above the compute mass",
+        "It must equal the storage mass calculated from transaction context",
+        "It must equal the transaction's serialized byte length",
+        "It must equal the sum of the input and output values"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "The validator computes contextual storage mass and rejects a different committed value. The sender cannot freely declare a lower value.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs#L126",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "storage-commitment-validation"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0015",
+      "conceptId": "K250-0015",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "If a Kaspa input's spending script fails execution, can sufficient input value alone make that transaction pass full validation?",
+      "options": [
+        "Yes; conservation of value is the only check",
+        "Yes; a higher fee bypasses the script",
+        "No; full validation also requires the input script checks to pass",
+        "Yes; the miner may waive the failing script"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The full validation path executes input scripts in addition to checking amounts, maturity, sequence locks and mass.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs#L196",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "full-script-validation"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0016",
+      "conceptId": "K250-0016",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "What distinguishes transaction validation in isolation from UTXO-context validation?",
+      "options": [
+        "Isolation checks prove the inputs remain unspent",
+        "Isolation checks evaluate scripts against referenced UTXOs",
+        "Isolation checks establish permanent finality",
+        "Isolation checks do not need the referenced UTXO state"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The isolation pass checks the transaction's own structure and ranges. Input values and coinbase maturity need populated UTXO context.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_isolation.rs#L13",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "validation-contexts"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0017",
+      "conceptId": "K250-0017",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "For a nonzero Kaspa lock_time below LOCK_TIME_THRESHOLD, which kind of condition does Rusty Kaspa use?",
+      "options": [
+        "A DAA-score condition",
+        "A timestamp condition",
+        "A relative age counted from each input UTXO",
+        "A blue-work target condition"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "Values below the threshold use a DAA score; values at or above it use time. Zero and maximum input sequences have separate finalization rules.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_header_context.rs#L54",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "absolute-lock-units"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0018",
+      "conceptId": "K250-0018",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "How is the feerate-threshold check described in the pinned Rusty Kaspa transaction validator?",
+      "options": [
+        "A consensus minimum fee enforced for every block transaction",
+        "A mempool Replace by Fee policy check rather than a consensus rule",
+        "A rule determining the coinbase maturity interval",
+        "A consensus limit on the number of UTXOs per address"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "The code explicitly separates this floating-point mempool threshold from consensus checks, even though it runs in the same validation module.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs#L55",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "policy-versus-consensus"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0019",
+      "conceptId": "K250-0019",
+      "category": "Kaspa",
+      "subcategory": "Crypto Fundamentals",
+      "prompt": "With Kaspa SIGHASH_ALL, which outputs does the outputs-hash component commit to?",
+      "options": [
+        "Only the output matching the input index",
+        "No transaction outputs",
+        "All transaction outputs",
+        "Only outputs using the current input's script"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The ordinary outputs-hash path hashes every output. Different sighash modes change what the signature commits to.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/sighash.rs#L219",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "sighash-all-outputs"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0020",
+      "conceptId": "K250-0020",
+      "category": "Kaspa",
+      "subcategory": "Crypto Fundamentals",
+      "prompt": "What does SIGHASH_NONE do to Kaspa's outputs-hash component?",
+      "options": [
+        "It commits only to the output matching the input index",
+        "It commits to all outputs except the change output",
+        "It removes the current input's amount from the signature hash",
+        "It uses the zero hash instead of committing to transaction outputs"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "The outputs-hash function returns ZERO_HASH for this mode. Other signature-hash components and script requirements still apply.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/sighash.rs#L198",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "sighash-none-outputs"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0021",
+      "conceptId": "K250-0021",
+      "category": "Kaspa",
+      "subcategory": "Crypto Fundamentals",
+      "prompt": "When the matching output exists, which output is hashed by Kaspa SIGHASH_SINGLE?",
+      "options": [
+        "The output at the same index as the input being signed",
+        "The output with the same address as the input UTXO",
+        "The output with the largest amount",
+        "The first output, regardless of the input index"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "The SINGLE path uses input_index to select one output. It does not choose by amount, address or arrival time.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/sighash.rs#L209",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "sighash-single-index"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0022",
+      "conceptId": "K250-0022",
+      "category": "Kaspa",
+      "subcategory": "Crypto Fundamentals",
+      "prompt": "What changes in the previous-outputs-hash component when Kaspa ANYONECANPAY is set?",
+      "options": [
+        "The current input's own outpoint is also omitted from the full hash",
+        "The combined hash of all input outpoints becomes the zero hash",
+        "Every output is omitted regardless of the output sighash mode",
+        "The transaction lock_time is omitted from the full hash"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "ANYONECANPAY omits the aggregate previous-outpoints component. The current input's own outpoint remains in the full signature hash.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/sighash.rs#L140",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "anyonecanpay-input-scope"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0023",
+      "conceptId": "K250-0023",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Why does Rusty Kaspa cache signature-hash components shared across transaction inputs?",
+      "options": [
+        "To replace signature verification with a single cached transaction ID",
+        "To reuse one input's signature for all other input keys",
+        "To avoid repeatedly hashing the same shared transaction data",
+        "To avoid fetching the referenced output amounts"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The reused-values structures cache common hashes, avoiding redundant work that would otherwise grow quadratically across many inputs.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/sighash.rs#L12",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "sighash-caching"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0024",
+      "conceptId": "K250-0024",
+      "category": "Kaspa",
+      "subcategory": "Crypto Fundamentals",
+      "prompt": "Which previous-output detail is included in Kaspa's Schnorr signature-hash calculation for the input being signed?",
+      "options": [
+        "The current market value of the referenced UTXO",
+        "The total number of addresses in the source wallet",
+        "The number of peers that relayed the UTXO's transaction",
+        "The referenced UTXO's amount"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "The signature hash writes the current input's UTXO amount as well as its script public key and outpoint. Signing uses more than a destination string.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/sighash.rs#L245",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "sighash-utxo-amount"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0025",
+      "conceptId": "K250-0025",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "What does a wallet derivation path such as m/0/1 describe?",
+      "options": [
+        "A route through a hierarchy of derived keys",
+        "The route a transaction follows through network peers",
+        "The ordered list of a payment's output amounts",
+        "The selected-parent path that confirms a payment"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "The derivation path is a sequence of child numbers rooted at m. It describes key derivation rather than a network or payment route.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/derivation_path.rs#L12",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "derivation-path"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0026",
+      "conceptId": "K250-0026",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "In Rusty Kaspa BIP32 path notation, what does the apostrophe in a child step such as 7' mark?",
+      "options": [
+        "The branch reserved for change addresses",
+        "Hardened derivation",
+        "The depth of seven blocks required for a payment",
+        "A child key that has already signed a transaction"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Child-number parsing uses the apostrophe suffix to set the hardened flag. The visible index remains 7.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/child_number.rs#L84",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "hardened-path-marker"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0027",
+      "conceptId": "K250-0027",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "Can Rusty Kaspa derive a hardened child public key using only an extended public key?",
+      "options": [
+        "Yes; all child public keys can be derived from any public key",
+        "Yes; but only after that child address has received KAS",
+        "No; that operation returns an error",
+        "Only if the child index is smaller than the account index"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The extended-public-key derive_child implementation rejects hardened child numbers. Non-hardened public derivation is a different operation.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/xpublic_key.rs#L54",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "xpub-hardened-restriction"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0028",
+      "conceptId": "K250-0028",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "Which key material initializes Rusty Kaspa's BIP32 watch account?",
+      "options": [
+        "A list of seed phrases",
+        "An unsigned transaction and its fee",
+        "The node's pruning-point hash",
+        "Extended public keys"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "The watch account stores extended public keys and derives addresses for observation. It does not initialize from a seed phrase in this account payload.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/account/variants/bip32watch.rs#L36",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "watch-account-xpub"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0029",
+      "conceptId": "K250-0029",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "Why does the BIP32 watch account's address-range scan include receive and change branches?",
+      "options": [
+        "Funds may be associated with addresses from either branch",
+        "Every payment must appear twice in the ledger",
+        "Only the change branch can hold confirmed funds",
+        "Receive addresses expire after one scan"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The scan combines derived receive addresses with change addresses. Scanning only one branch can omit relevant account UTXOs.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/account/variants/bip32watch.rs#L128",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "scan-receive-and-change"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0030",
+      "conceptId": "K250-0030",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "Besides checking the words, what integrity check does Rusty Kaspa perform when parsing a BIP39 mnemonic?",
+      "options": [
+        "It verifies the wallet's current balance",
+        "It checks the mnemonic checksum",
+        "It verifies the phrase against a registered owner list",
+        "It verifies that every word is unique"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "The parser reconstructs entropy and compares checksum bits. Passing this check does not prove that a phrase belongs to the intended wallet.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L194",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "mnemonic-checksum"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0031",
+      "conceptId": "K250-0031",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "What kind of randomness does Rusty Kaspa require for generating a new mnemonic?",
+      "options": [
+        "A current block hash used without additional secret randomness",
+        "A phrase chosen from familiar personal details",
+        "Cryptographically suitable random input",
+        "A timestamp padded to the required byte length"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "The random mnemonic function requires a cryptographic RNG and fills entropy bytes. Predictable public information is unsuitable for new wallet secrets.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L116",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "mnemonic-entropy-security"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0032",
+      "conceptId": "K250-0032",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "Why can the same mnemonic produce a different BIP39 seed when its optional passphrase changes?",
+      "options": [
+        "The passphrase only changes the display name of the same seed",
+        "The node salts each new derivation with its current DAA score",
+        "The passphrase changes only the checksum of the existing phrase",
+        "The passphrase is part of the seed-derivation salt"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "Rusty Kaspa builds the salt from mnemonic followed by the passphrase and applies PBKDF2. This differs from a password that only unlocks a local file.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L233",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "bip39-passphrase"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0033",
+      "conceptId": "K250-0033",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "With identical mnemonic bytes and identical passphrase bytes, what seed does Rusty Kaspa's BIP39 derivation produce?",
+      "options": [
+        "The same seed each time",
+        "A new random seed on every call",
+        "A seed selected by the connected node",
+        "A seed determined by the wallet balance at recovery time"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "PBKDF2 is deterministic for fixed inputs. This reproducibility is part of recovering the same key hierarchy.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L235",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "deterministic-seed"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0034",
+      "conceptId": "K250-0034",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "How many bytes are in the BIP39 Seed value in the pinned Rusty Kaspa implementation?",
+      "options": [
+        "16 bytes",
+        "64 bytes",
+        "32 bytes",
+        "33 bytes"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "Seed::SIZE is 64 bytes, the PBKDF2 output length. Seed bytes are distinct from mnemonic entropy and encoded address payloads.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/seed.rs#L11",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "bip39-seed-size"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0035",
+      "conceptId": "K250-0035",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "What does Rusty Kaspa's Seed destructor attempt to do to its stored seed bytes?",
+      "options": [
+        "It retains them indefinitely in a global recovery cache",
+        "It stores them in the transaction payload before disposal",
+        "Zeroize them when the value is dropped",
+        "It replaces the array with its public key without erasing it"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The Drop implementation calls zeroize on the seed array. This is a memory-handling measure, not a guarantee that all possible copies are erased.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/seed.rs#L30",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "seed-memory-zeroization"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0036",
+      "conceptId": "K250-0036",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "What additional derivation data does an extended public key retain beyond its public key?",
+      "options": [
+        "The mnemonic entropy and optional passphrase",
+        "Only the current address prefix and balance",
+        "The private key and every generated signature",
+        "Attributes including a chain code and derivation depth"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "ExtendedPublicKey stores ExtendedKeyAttrs, including chain code, depth, child number and parent fingerprint. These support hierarchical public derivation.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/xpublic_key.rs#L41",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "extended-key-attributes"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0037",
+      "conceptId": "K250-0037",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "For an eligible mergeset blue block with a positive reward, where does Rusty Kaspa direct its coinbase reward output?",
+      "options": [
+        "To the script reported by that blue block",
+        "To the current merging miner regardless of that blue block's script",
+        "To the first peer that relays the blue block",
+        "To the script in the last transaction of the blue block"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The coinbase builder uses each eligible blue block's recorded script and its subsidy plus fees. It does not pay according to token ownership.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/coinbase.rs#L107",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "blue-reward-destination"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0038",
+      "conceptId": "K250-0038",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "Who receives the aggregated reward output collected from mergeset red blocks in Rusty Kaspa?",
+      "options": [
+        "Each red block's original miner receives a separate output",
+        "The miner of the current merging block",
+        "The original selected parent's miner receives them all",
+        "The rewards are always excluded from the coinbase"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The builder collects red rewards and, when positive, pays one output to the current block's miner script. Eligibility affects the amount collected.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/coinbase.rs#L118",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "red-reward-destination"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0039",
+      "conceptId": "K250-0039",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "For a mergeset red block outside the DAA set, what does the pinned coinbase builder add to the merging miner's red reward?",
+      "options": [
+        "Its subsidy plus its total fees",
+        "Its subsidy only, without fees",
+        "Its total fees, without its subsidy",
+        "Neither its subsidy nor any fees"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The non-DAA red branch adds total_fees only. The other red branch adds both subsidy and fees.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/coinbase.rs#L124",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "non-daa-red-reward"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0040",
+      "conceptId": "K250-0040",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "Which value is passed to Rusty Kaspa's block-subsidy calculation to locate the emission stage?",
+      "options": [
+        "The block's transaction count",
+        "The miner's chosen timestamp alone",
+        "The current mempool feerate threshold",
+        "The block DAA score"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "calc_block_subsidy uses the DAA score and configured phase/fork parameters to select the appropriate subsidy-table entry.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/coinbase.rs#L222",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "subsidy-clock"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0041",
+      "conceptId": "K250-0041",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "In the coinbase payload layout, what follows the miner script bytes?",
+      "options": [
+        "Miner extra data",
+        "Another mandatory copy of the blue score",
+        "The full list of input UTXOs",
+        "The selected parent's signature script"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The serializer appends miner extra_data after the script fields. This is payload content and does not grant authority to spend the reward.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/coinbase.rs#L157",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "coinbase-extra-data"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0042",
+      "conceptId": "K250-0042",
+      "category": "Kaspa",
+      "subcategory": "Mining & Consensus",
+      "prompt": "When Rusty Kaspa modifies only miner data in an existing coinbase payload, which leading fields does it preserve?",
+      "options": [
+        "The old script version and old script length",
+        "Blue score and subsidy",
+        "The old miner script and all extra data",
+        "The selected parent and transaction Merkle root"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "modify_coinbase_payload retains the two leading u64 fields and rewrites the script fields and extra data afterward.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/coinbase.rs#L174",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "coinbase-payload-update"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0043",
+      "conceptId": "K250-0043",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "What must a standard Kaspa P2SH spending signature script supply in addition to its unlocking data?",
+      "options": [
+        "Only the address's checksum",
+        "The source transaction's entire block header",
+        "The redeem script as pushed data",
+        "The sender's extended public key instead of the redeem script"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The P2SH signature-script builder appends the redeem script as data after the supplied signature bytes. The script must match the output commitment.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/standard.rs#L59",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "p2sh-redeem-reveal"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0044",
+      "conceptId": "K250-0044",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "Which hash construction does Rusty Kaspa use when creating a standard P2SH output from a redeem script?",
+      "options": [
+        "SHA-256 with a 32-byte result",
+        "RIPEMD-160 with a 20-byte result",
+        "BLAKE2b with a 64-byte result",
+        "BLAKE2b with a 32-byte result"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "The standard builder hashes the redeem script using BLAKE2b configured to 32 bytes before constructing the script-hash locking script.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/standard.rs#L52",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "p2sh-hash-construction"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0045",
+      "conceptId": "K250-0045",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "In a Kaspa 2-of-3 multisig script, what does the 2 specify?",
+      "options": [
+        "The required number of valid signatures",
+        "The number of separate receiving outputs",
+        "The number of required block confirmations",
+        "The total number of public keys in the script"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "The multisig builder places the required-signature threshold in the script separately from the list and count of public keys.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/standard/multisig.rs#L23",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "multisig-threshold"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0046",
+      "conceptId": "K250-0046",
+      "category": "Kaspa",
+      "subcategory": "Wallets & Addresses",
+      "prompt": "Which opcode ends the multisig script produced by the Rusty Kaspa ECDSA multisig builder?",
+      "options": [
+        "OpCheckMultiSig",
+        "OpCheckMultiSigECDSA",
+        "OpCheckSigECDSA",
+        "OpEqual"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The ECDSA builder uses the ECDSA multisignature opcode. The separate 32-byte-key multisig builder ends with OpCheckMultiSig.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/standard/multisig.rs#L65",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "multisig-signature-algorithm"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0047",
+      "conceptId": "K250-0047",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Does Rusty Kaspa's standard address-extraction helper return an address for every arbitrary locking script?",
+      "options": [
+        "Yes; every byte string maps to a standard address",
+        "Yes; it uses the miner address for unrecognized scripts",
+        "No; it returns an error for nonstandard script classes",
+        "Yes; it hashes every nonstandard script into an address automatically"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "extract_script_pub_key_address recognizes specific standard script forms. Failure to extract an address does not by itself describe all consensus validity rules.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/standard.rs#L89",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "standard-script-extraction"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0048",
+      "conceptId": "K250-0048",
+      "category": "Kaspa",
+      "subcategory": "KRC-20 & Smart Contracts",
+      "prompt": "What determines which standard locking-script constructor pay_to_address_script uses?",
+      "options": [
+        "The script version from the most recent block's coinbase",
+        "The recipient's current balance",
+        "The address's position in the wallet's receive list",
+        "The decoded address version"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The helper branches between public-key, ECDSA public-key and script-hash address versions. It does not choose by balance or peer state.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/standard.rs#L43",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "address-to-script-dispatch"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0049",
+      "conceptId": "K250-0049",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Which GetInfo response field tells an integration whether a Kaspa node reports itself synchronized?",
+      "options": [
+        "is_synced",
+        "server_version",
+        "p2p_id",
+        "mempool_size"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "GetInfo includes a synchronization flag. A reachable RPC endpoint alone does not establish that the node reports a synchronized state.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L266",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "rpc-sync-status"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0050",
+      "conceptId": "K250-0050",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Which RPC request directly asks a Kaspa node which network it is using?",
+      "options": [
+        "GetConnectedPeerInfo",
+        "GetCurrentNetwork",
+        "GetMempoolEntry",
+        "GetBalanceByAddress"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "GetCurrentNetwork returns a network identifier. An integration can check this explicitly instead of inferring the network from a server hostname.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L326",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "rpc-network-check"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0051",
+      "conceptId": "K250-0051",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Which RPC request retrieves unspent-output records associated with a supplied list of Kaspa addresses?",
+      "options": [
+        "GetBalanceByAddress",
+        "GetPeerAddresses",
+        "GetUtxosByAddresses",
+        "GetCurrentNetwork"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The UTXO request accepts addresses and returns entries for them. Unspent does not necessarily mean immediately spendable: scripts and maturity still apply.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L1451",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "rpc-utxo-lookup"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0052",
+      "conceptId": "K250-0052",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "How does RpcMempoolEntryByAddress organize transactions associated with an address?",
+      "options": [
+        "Separate confirmed and finalized transaction lists",
+        "A single list containing only coinbase transactions",
+        "Only the address's aggregate confirmed balance",
+        "Separate sending and receiving lists"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The address-oriented mempool model has sending and receiving collections. These are pending-pool records, not evidence of final settlement.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/mempool.rs#L39",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "address-mempool-directions"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0053",
+      "conceptId": "K250-0053",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Which Kaspa RPC call requests information about peers currently connected to a node?",
+      "options": [
+        "GetConnectedPeerInfo",
+        "GetPeerAddresses",
+        "GetBlockDagInfo",
+        "GetCurrentNetwork"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The API separates connected-peer information from stored peer addresses, balance requests and block-template generation.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L576",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "rpc-connected-peers"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0054",
+      "conceptId": "K250-0054",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "In Rusty Kaspa's fee-estimate API, what are the units of the recommended feerate?",
+      "options": [
+        "Sompi per serialized byte, irrespective of mass",
+        "Sompi per gram of transaction mass",
+        "KAS per input",
+        "Grams per second"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The documented fee-estimate unit is sompi/gram. Here gram measures transaction mass, not physical weight.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/feerate_estimate.rs#L20",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "feerate-units"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0055",
+      "conceptId": "K250-0055",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "How does an integration use a recommended Kaspa feerate and a transaction's mass to estimate its native fee?",
+      "options": [
+        "Divide mass by feerate",
+        "Use the feerate directly as the complete fee",
+        "Multiply feerate by transaction mass",
+        "Multiply feerate by the recipient's balance"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "The fee API documents fee = feerate × mass. The result is in sompi when the rate is sompi per gram and mass is in grams.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/feerate_estimate.rs#L22",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "fee-estimate-calculation"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    },
+    {
+      "id": "K250-0056",
+      "conceptId": "K250-0056",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "What does estimated_seconds in a Kaspa feerate bucket represent?",
+      "options": [
+        "A guaranteed irreversible settlement deadline",
+        "The minimum maturity of every coinbase output",
+        "The relative lock duration encoded in each input",
+        "An estimated DAG inclusion time for that fee-to-mass rate"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "The model describes an estimated inclusion time. It is not a guarantee of acceptance or probabilistic finality.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/feerate_estimate.rs#L11",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "tags": [
+        "kaspa",
+        "implementation-01b532e",
+        "fee-estimate-not-guarantee"
+      ],
+      "volatile": false,
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question; Kaspanet Rusty Kaspa source provides implementation evidence."
+    }
+  ]
+}
