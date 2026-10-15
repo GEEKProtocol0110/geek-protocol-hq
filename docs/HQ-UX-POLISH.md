@@ -1,5 +1,7 @@
 # HQ interface polish
 
+The homepage has since received a [Kaspa-first mobile onboarding update](MOBILE-ONBOARDING.md): quick quiz and beginner lesson actions precede optional extra games and ecosystem details. The verification below describes the earlier polish release, not new phone acceptance for that update.
+
 This change makes Geek Protocol HQ easier to approach for younger learners while preserving the existing game and learning services. Geek Jr remains a separate site; the home page, HQ and navigation now make the family destination easier to find.
 
 ## What changes

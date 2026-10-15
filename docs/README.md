@@ -4,6 +4,8 @@ This directory is the reviewable specification set for Geek Protocol HQ. Documen
 
 ## Start here
 
+- [Kaspa-first Mobile Onboarding](MOBILE-ONBOARDING.md): direct quiz/lesson choices, visible sign-in, optional ecosystem detail and remaining phone acceptance.
+
 - [October 11 Launch Readiness](LAUNCH-READINESS-2026-10-11.md): all five workstreams, save/recovery fixes, validation and remaining reward gates.
 
 - [Editorial Review](EDITORIAL-REVIEW.md): current removals and the remaining draft review.

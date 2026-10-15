@@ -1,0 +1,52 @@
+/* Keep the first choices compact; extra games and project details open on request. */
+.home-onboarding .home-header-actions { display:flex; align-items:center; gap:.75rem; flex-shrink:0; order:3; }
+.home-onboarding .main-nav { order:2; }
+.home-onboarding .home-sign-in { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:.5rem .9rem; border:1px solid #68828b; border-radius:10px; color:#eff5f6; font-size:.88rem; font-weight:750; text-decoration:none; }
+.home-onboarding .home-sign-in:hover { background:#203138; border-color:#70e6dc; }
+.home-onboarding .home-main .hero { display:grid; height:auto; min-height:0; max-height:none; padding-top:112px; padding-bottom:36px; gap:2rem; }
+.home-onboarding .home-main h1 { font-size:clamp(2.6rem,5vw,4.2rem); line-height:1.1; margin:1rem 0; }
+.home-onboarding .hero-lede { font-size:1.05rem; line-height:1.55; margin:0; max-width:520px; }
+.home-onboarding .hero-actions { margin-top:1.25rem; }
+.home-onboarding .home-main .hero-notice { font-size:.82rem; line-height:1.5; padding:0; border:0; margin:1rem 0 0; color:#c4d0d4; }
+.home-onboarding .hero-return { margin:.25rem 0 0; }
+.home-onboarding .hero-return a { min-height:44px; font-size:.9rem; }
+.home-onboarding .hero-return small { display:block; color:#b6c8ce; font-size:.8rem; line-height:1.5; max-width:430px; }
+.home-onboarding .home-first-steps { max-width:1120px; margin:1rem auto 1.5rem; padding:1.25rem 1.5rem; border:1px solid #35464d; border-radius:14px; background:#131e22; }
+.home-onboarding .home-first-steps h2 { font-size:1.25rem; line-height:1.3; margin:0 0 1rem; }
+.home-onboarding .home-first-steps ol { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.5rem; }
+.home-onboarding .home-first-steps li { display:grid; gap:.35rem; min-width:0; }
+.home-onboarding .home-first-steps b { color:#70e6dc; font-size:.88rem; }
+.home-onboarding .home-first-steps span { color:#c4d0d4; font-size:.88rem; line-height:1.5; }
+.home-onboarding .home-more-play .welcome-gauntlet { border:0; margin:0; border-radius:0; }
+.home-onboarding .home-main>.welcome-panel .home-path { padding:1.5rem; }
+.home-onboarding .home-main>.welcome-panel .home-path h2 { font-size:1.5rem; }
+.home-onboarding .home-kaspa-next>p { margin:1.25rem 1.5rem; color:#c4d0d4; font-size:.95rem; line-height:1.65; }
+.home-onboarding .home-kaspa-next .welcome-project-links { padding-top:0; padding-bottom:0; }
+@media(max-width:1100px) and (min-width:851px) {
+ .home-onboarding .site-header { gap:1rem; padding-inline:1.5rem; }
+ .home-onboarding .main-nav { gap:1rem; }
+}
+@media(max-width:850px) {
+ .home-onboarding .site-header { height:64px; padding-inline:1rem; }
+ .home-onboarding .brand { gap:.55rem; }
+ .home-onboarding .brand img { width:36px; height:36px; }
+ .home-onboarding .brand>span { font-size:.75rem; letter-spacing:.025em; }
+ .home-onboarding .home-header-actions { gap:.4rem; }
+ .home-onboarding .home-sign-in { padding-inline:.7rem; font-size:.82rem; }
+ .home-onboarding .menu-toggle { width:44px; height:44px; }
+ .home-onboarding .main-nav { top:64px; max-height:calc(100dvh - 64px); }
+ .home-onboarding .home-main .hero { display:block; padding:88px 1.25rem 24px; }
+ .home-onboarding .home-main .hero h1 { font-size:clamp(2.4rem,8.5vw,3.8rem); margin:.8rem 0; }
+ .home-onboarding .hero-visual { display:none; }
+ .home-onboarding .hero-actions { display:grid; grid-template-columns:1fr 1fr; gap:.65rem; }
+ .home-onboarding .hero-actions .button { width:100%; min-width:0; justify-content:center; padding:.75rem; }
+ .home-onboarding .home-first-steps { margin-inline:1.25rem; }
+}
+@media(max-width:540px) {
+ .home-onboarding .hero-actions { grid-template-columns:1fr; margin-top:1rem; }
+ .home-onboarding .hero-actions .button { min-height:48px; }
+ .home-onboarding .home-first-steps ol { grid-template-columns:1fr; gap:.8rem; }
+ .home-onboarding .home-first-steps li { grid-template-columns:110px 1fr; gap:.75rem; align-items:baseline; }
+ .home-onboarding .home-first-steps { padding:1rem; }
+ .home-onboarding .hero-return small { font-size:.78rem; }
+}
