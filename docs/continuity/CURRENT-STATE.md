@@ -10,11 +10,11 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,105 active questions; 598 recorded internal source reviews; 7,402 further reviews needed across eight targets. 497 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,125 active questions; 618 recorded internal source reviews; 7,382 further reviews needed across eight targets. 517 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
-| Kaspa | 500 | 500 | 500 |
+| Kaspa | 520 | 520 | 480 |
 | Video games | 602 | 0 | 1000 |
 | Science fiction | 515 | 37 | 963 |
 | Technology | 1497 | 15 | 985 |
@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-001: active.** PR #116 founding archive and PR #117 KCC20 research are merged. Both supplied originals, extractions and interpretations are preserved with hashes. Continue distinct source-checked Kaspa concepts from 500 toward 1,000; reward acceptance and KCC20 policy decisions remain separate.
+**BANK-001: active.** BANK-001 candidate adds 20 internally source-checked convention/authority/metadata questions to the 500-concept baseline, for 520 Kaspa / 8,125 active / 618 source reviews / 517 Study concepts. Candidate is unmerged and not deployed; all existing answer keys and recorded holds remain unchanged.
 
-Next task: **BANK-001**. Prepare the next small distinct source-checked Kaspa batch. For CHAIN-001, complete the next eligible Daily in the same browser/player and queue within five minutes, then export and reconcile one exact manual testnet transfer. CHAIN-002 needs supply/artifact/holder decisions before a disabled KCC20 prototype. Preserve UTC Daily locks, CCE, ownership and Mainnet settlement holds.
+Next task: **BANK-001**. Review the 20-question BANK-001 candidate and its pinned evidence, then continue distinct learning facts toward 1,000 Kaspa concepts. CHAIN-001 still needs the first accepted manual testnet reward; CHAIN-002 needs policy/artifact decisions. Preserve all recorded holds.
 
 ## Holds
 

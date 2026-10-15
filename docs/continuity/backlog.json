@@ -86,7 +86,7 @@
       "status": "active",
       "title": "Grow Kaspa from 500 toward 1,000 reviewed concepts",
       "owner": "Content maintainer; independent editor unassigned",
-      "nextAction": "Choose the next small set of distinct learning facts, broaden primary-source coverage, and review each answer and distractor.",
+      "nextAction": "Review the unmerged 20-question conventions candidate and item-level evidence register, then broaden the next distinct primary-source batch toward 1,000. Current candidate: 520 reviewed Kaspa concepts; independent editorial review remains unassigned.",
       "acceptance": [
         "1,000 distinct source-checked Kaspa concepts with explanations and review dates.",
         "No padded variants; existing issued answers remain compatible.",
@@ -95,7 +95,8 @@
       "dependsOn": [],
       "evidence": [
         "docs/BANK-FIRST-STORE.md",
-        "docs/QUESTION-MAINTENANCE.md"
+        "docs/QUESTION-MAINTENANCE.md",
+        "docs/kaspa-520-review-2026-10-15.json"
       ]
     },
     {

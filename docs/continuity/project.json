@@ -18,12 +18,12 @@
     "evidence": "Founder-authorized PR #115 merged October 15 at 14:58:30 UTC. Production dpl_2koiXamNy5a1eVmMsbuHXnaKKMEG READY at 14:58:47.234 UTC on the exact merge source and assigned to both production domains. Standard proxy-aware Node monitor passed all 21 checks at 14:59:09.158 UTC under five-second deadlines; mint HTTP 200 in 4,550 ms. GitHub main verify and production-monitor check passed. Candidate full verification: 441 tests, no failures/skips, real Redis, 311 security assertions. Issue #14 closed completed; provider fallback 502 is not claimed repaired. No wallet signing or settlement activation."
   },
   "questionCheckpoint": {
-    "active": 8105,
-    "reviewed": 598,
-    "remaining": 7402,
-    "kaspaActive": 500,
-    "kaspaReviewed": 500,
-    "studyConcepts": 497,
+    "active": 8125,
+    "reviewed": 618,
+    "remaining": 7382,
+    "kaspaActive": 520,
+    "kaspaReviewed": 520,
+    "studyConcepts": 517,
     "questChapters": 4
   },
   "holds": {
@@ -37,10 +37,10 @@
   "currentWork": {
     "id": "BANK-001",
     "status": "active",
-    "description": "PR #116 founding archive and PR #117 KCC20 research are merged. Both supplied originals, extractions and interpretations are preserved with hashes. Continue distinct source-checked Kaspa concepts from 500 toward 1,000; reward acceptance and KCC20 policy decisions remain separate."
+    "description": "BANK-001 candidate adds 20 internally source-checked convention/authority/metadata questions to the 500-concept baseline, for 520 Kaspa / 8,125 active / 618 source reviews / 517 Study concepts. Candidate is unmerged and not deployed; all existing answer keys and recorded holds remain unchanged."
   },
   "nextTask": "BANK-001",
-  "nextAction": "Prepare the next small distinct source-checked Kaspa batch. For CHAIN-001, complete the next eligible Daily in the same browser/player and queue within five minutes, then export and reconcile one exact manual testnet transfer. CHAIN-002 needs supply/artifact/holder decisions before a disabled KCC20 prototype. Preserve UTC Daily locks, CCE, ownership and Mainnet settlement holds.",
+  "nextAction": "Review the 20-question BANK-001 candidate and its pinned evidence, then continue distinct learning facts toward 1,000 Kaspa concepts. CHAIN-001 still needs the first accepted manual testnet reward; CHAIN-002 needs policy/artifact decisions. Preserve all recorded holds.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
