@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "checkedAt": "2026-10-15",
-  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1–2 plus observed #114/#115/#117 merges. PR #116 remains open. Merged is not a deployment or independent audit claim.",
+  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1–2 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence.",
   "records": [
     {
       "number": 1,
@@ -737,6 +737,13 @@
       "mergedAt": "2026-10-15T17:33:08Z",
       "commit": "a4e34cd6c7146ed268729cb37b1bcb0ba051e5d7",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/117"
+    },
+    {
+      "number": 116,
+      "title": "Preserve founding Geek roster and incomplete rarity sheet",
+      "mergedAt": "2026-10-15T17:51:47Z",
+      "commit": "71ad0442e7b9c7ed957f94057db6b43bfa395905",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/116"
     }
   ]
 }

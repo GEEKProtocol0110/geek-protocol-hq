@@ -31,7 +31,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CHAIN-001 | P1 | needs-evidence | Verify the TN10 test asset and wallet before a real pilot | Maintainer; founder controls the external testnet wallet |
 | OPS-003 | P1 | done | Finish mint-availability monitoring for GitHub issue #14 | Maintainer; founder reviews release |
 | CHAIN-002 | P1 | decision-needed | Evaluate KCC20 compatibility and preserve GEEK holder entitlements | Maintainer researches; founder selects policy; independent covenant reviewer unassigned |
-| ARCH-002 | P1 | in-progress | Preserve the founder-supplied theme roster and trait sheet | Maintainer archives; founder reviews interpretation |
+| ARCH-002 | P1 | done | Preserve the founder-supplied theme roster and trait sheet | Maintainer archives; founder reviews interpretation |
 
 ## CONT-001: Publish the continuation system
 
@@ -390,9 +390,9 @@ Evidence/specification: [docs/KCC20-RESEARCH.md](../../docs/KCC20-RESEARCH.md), 
 
 ## ARCH-002: Preserve the founder-supplied theme roster and trait sheet
 
-**P1 / in-progress.** Owner: Maintainer archives; founder reviews interpretation. Dependencies: none.
+**P1 / done.** Owner: Maintainer archives; founder reviews interpretation. Dependencies: none.
 
-Next action: Review PR #116 with both unchanged originals and extractions; reconcile the incomplete PDF and copies-per-archetype interpretation with the current edition plan under COLL-001.
+Next action: Maintain the two originals and their hashes; ingest additional supplied files under ARCH-001 and resolve historical rarity/theme/edition interpretation under COLL-001. Archive completion does not approve a collection change.
 
 Acceptance:
 

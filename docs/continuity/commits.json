@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "capturedAt": "2026-10-15",
-  "through": "a4e34cd6c7146ed268729cb37b1bcb0ba051e5d7",
-  "scope": "HQ commit metadata through the declared snapshot commit, including the KCC20 research merge. The product runtime baseline remains PR #115. Authored dates are Git metadata, not founding-time proof; bundles preserve underlying objects.",
+  "through": "71ad0442e7b9c7ed957f94057db6b43bfa395905",
+  "scope": "HQ commit metadata through the declared snapshot commit, including merged KCC20 research and the founding archive. Product runtime baseline remains PR #115. Authored dates are Git metadata, not founding proof; bundles preserve underlying objects.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -1521,6 +1521,48 @@
       ],
       "authoredAt": "2026-10-15T13:33:08-04:00",
       "title": "Merge pull request #117 from GEEKProtocol0110/codex/kcc20-research"
+    },
+    {
+      "commit": "d3a389b303c9deaaaf61dfece8a02034a1aab942",
+      "parents": [
+        "65820b08a8b84d08db1756a65c2e9bf83df66569"
+      ],
+      "authoredAt": "2026-10-15T12:30:26-04:00",
+      "title": "Preserve founder's original 500-Geek roster and reconciliation record"
+    },
+    {
+      "commit": "61129f6a772c1d4378532196a2b44998ad26be37",
+      "parents": [
+        "d3a389b303c9deaaaf61dfece8a02034a1aab942"
+      ],
+      "authoredAt": "2026-10-15T12:45:45-04:00",
+      "title": "Preserve incomplete founding trait sheet and clarify rarity evidence"
+    },
+    {
+      "commit": "3c2b7e323b8e6989816b4d9636eff4cd3278003d",
+      "parents": [
+        "a4e34cd6c7146ed268729cb37b1bcb0ba051e5d7"
+      ],
+      "authoredAt": "2026-10-15T13:34:58-04:00",
+      "title": "Record merged KCC20 research and preserve next-step decisions"
+    },
+    {
+      "commit": "b5be849817a2c66e9550d7564a960262b1476900",
+      "parents": [
+        "61129f6a772c1d4378532196a2b44998ad26be37",
+        "3c2b7e323b8e6989816b4d9636eff4cd3278003d"
+      ],
+      "authoredAt": "2026-10-15T13:50:07-04:00",
+      "title": "Merge current main and reconcile founding archive with KCC20 handoff"
+    },
+    {
+      "commit": "71ad0442e7b9c7ed957f94057db6b43bfa395905",
+      "parents": [
+        "3c2b7e323b8e6989816b4d9636eff4cd3278003d",
+        "b5be849817a2c66e9550d7564a960262b1476900"
+      ],
+      "authoredAt": "2026-10-15T13:51:47-04:00",
+      "title": "Merge pull request #116 from GEEKProtocol0110/codex/founding-geek-roster"
     }
   ]
 }

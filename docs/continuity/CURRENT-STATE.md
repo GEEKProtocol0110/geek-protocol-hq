@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**ARCH-002: in-progress.** Founder authorized finishing and merging PR #116. Both original uploads and ordered extractions are preserved; reconcile current continuity records with merged KCC20 research PR #117 before release. No collection or token policy changes.
+**BANK-001: active.** PR #116 founding archive and PR #117 KCC20 research are merged. Both supplied originals, extractions and interpretations are preserved with hashes. Continue distinct source-checked Kaspa concepts from 500 toward 1,000; reward acceptance and KCC20 policy decisions remain separate.
 
-Next task: **BANK-001**. Merge the reconciled ARCH-002 archive after exact-byte and continuity checks. Then resume BANK-001 toward 1,000 reviewed Kaspa concepts. CHAIN-001 still needs first real reward-receipt/manual-transfer acceptance; CHAIN-002 remains decision-needed. Preserve CCE, ownership and Mainnet settlement holds.
+Next task: **BANK-001**. Prepare the next small distinct source-checked Kaspa batch. For CHAIN-001, complete the next eligible Daily in the same browser/player and queue within five minutes, then export and reconcile one exact manual testnet transfer. CHAIN-002 needs supply/artifact/holder decisions before a disabled KCC20 prototype. Preserve UTC Daily locks, CCE, ownership and Mainnet settlement holds.
 
 ## Holds
 
@@ -35,7 +35,7 @@ CCE: **bank-and-economy-hold**. Contributor rate: unselected; 1 or 5 GEEK are pr
 
 ## Unresolved
 
-- Original founding conversation and remaining phone files are still missing; the supplied roster and trait PDF are preserved in the reconciled PR #116 candidate awaiting merge.
+- Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.
 - Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.
 - No successor or second trusted account administrator is appointed in this record.
 - No institutional contract, school partnership, legal-entity registration or accreditation is verified.
