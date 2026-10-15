@@ -4,6 +4,8 @@ This directory is the reviewable specification set for Geek Protocol HQ. Documen
 
 ## Start here
 
+- [Continue Geek Protocol](../START-HERE.md): maintained project record, long-term direction and pickup path.
+
 - [Working handoff](HANDOFF.md): current question-bank checkpoint, founder decisions, unfinished work and continuation instructions.
 
 - [Kaspa-first Mobile Onboarding](MOBILE-ONBOARDING.md): direct quiz/lesson choices, visible sign-in, optional ecosystem detail and remaining phone acceptance.

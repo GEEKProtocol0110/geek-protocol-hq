@@ -15,6 +15,8 @@
 
 ---
 
+**Returning to the project or taking over development? [Start Here](START-HERE.md).** The [project record](docs/continuity/README.md) holds current state, next work, decisions, release history, founding assets, component repositories, succession and the [2026–2076 direction](docs/continuity/VISION-2076.md).
+
 The [daily vault](https://www.geekprotocol.xyz/vault/) offers one visible cosmetic seal per UTC day, with a private collection and replay-safe receipts. Login claims award no XP, credits, or tokens.
 
 The October 14 improvements add [private imported-question review](docs/IMPORTED-QUESTION-REVIEW.md), guest-first sign-in with activity return paths, three practical technology lessons, opt-in Royale room discovery, and an [isolated testnet receipt pilot](docs/TESTNET-REWARD-PILOT.md). See [acceptance steps](docs/NEXT-FIVE-ACCEPTANCE.md) for real-device, community and funded-wallet checks still outstanding.
@@ -45,7 +47,7 @@ The project began as a way to make learning exciting for one child. HQ is the pu
 | Ranked trivia, lobbies, leaderboards, and profiles | **Public Alpha** | Server-authoritative; Redis required |
 | Kaspa identity and account recovery | **Implemented Alpha** | Server-verified KIP-5 proofs through browser wallets or pasted signatures; wallet signing support required |
 | GEEK fair-mint interface | **Live / non-custodial** | A reviewed queue of up to 100 requests against the pinned deployment; each requires wallet approval |
-| Community Content Engine | **Alpha** | Reviewed questions earn internal first-use credits |
+| Community Content Engine | **Held for banks and economy** | Historical records remain readable; new intake, publication and credits are disabled |
 | Alpha GEEK rewards | **Internal ledger only** | No withdrawals, transfers, or promised monetary value |
 | 500-Geek collection | **Design and provenance phase** | Ownership and collection minting are disabled |
 | Independent security audit | **Not completed** | Required before treasury-controlled value movement |
@@ -63,7 +65,7 @@ See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness
 | **Challenges** | Shared Weekly Signal and Monthly Circuit with one attempt per UTC period and separate verified standings |
 | **Lobbies** | Active seats, shareable rooms, and host-started ten-question shared practice rounds with server-scored standings |
 | **Player dashboard** | Levels 1–50, 25 manual prestige ranks, achievements, challenges, verified standings, category records and collectibles |
-| **C.C.E.** | Community question submission, moderation, publication, and first-use reward records |
+| **C.C.E.** | Historical submission, review and first-use records; new intake, publication and credits held for reviewed banks and economy |
 | **Profile characters** | Free block-style Personal Geek and GIGA robot editor with server-saved skin, hair, face, outfit and accessory choices, plus five launch avatars |
 | **Collection** | Five-tier, 500-NFT blueprint with planned mint/reward/GEEK-or-KAS purchase routes and hashed legacy-art archive |
 | **Mint** | Fail-closed, user-approved GEEK KRC-20 fair-mint interface |

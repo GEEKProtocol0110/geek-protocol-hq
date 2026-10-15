@@ -1,0 +1,340 @@
+# Maintained backlog
+
+Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
+
+P0 is the immediate product/recovery queue. Planned and proposed work is not automatically authorized implementation. An owner role labeled unassigned has no appointed person.
+
+| ID | Priority | Status | Work | Owner |
+| --- | --- | --- | --- | --- |
+| CONT-001 | P0 | in-progress | Publish the continuation system | Maintainer; release reviewed by founder |
+| CONT-002 | P0 | planned | Make and verify an independent source backup | Founder or appointed repository custodian |
+| ARCH-001 | P1 | blocked | Ingest founding originals and reconcile chronology | Founder supplies originals; archivist unassigned |
+| BANK-001 | P0 | active | Grow Kaspa from 500 toward 1,000 reviewed concepts | Content maintainer; independent editor unassigned |
+| BANK-002 | P1 | planned | Reach 1,000 reviewed Video games concepts | Content editor unassigned |
+| BANK-003 | P1 | planned | Reach 1,000 reviewed Science fiction concepts | Content editor unassigned |
+| BANK-004 | P1 | planned | Reach 1,000 reviewed Technology concepts | Content editor unassigned |
+| BANK-005 | P1 | planned | Reach 1,000 reviewed Movies concepts | Content editor unassigned |
+| BANK-006 | P1 | planned | Reach 1,000 reviewed History concepts | Content editor unassigned |
+| BANK-007 | P1 | planned | Reach 1,000 reviewed Comics concepts | Content editor unassigned |
+| BANK-008 | P1 | planned | Reach 1,000 reviewed Pop culture concepts | Content editor unassigned |
+| PILOT-001 | P0 | needs-evidence | Complete the real-device free-beta pilot | Founder and consenting pilot participants |
+| OPS-001 | P0 | needs-evidence | Verify operator access and managed-data recovery | Founder; private account custodian unassigned |
+| OPS-002 | P1 | decision-needed | Appoint a successor and second trusted maintainer | Founder |
+| ECON-001 | P1 | decision-needed | Specify funded contributor and learner rewards | Founder with economic and legal review |
+| STORE-001 | P2 | planned | Finish the store and equipment experience | Product maintainer unassigned |
+| COLL-001 | P2 | planned | Finish the 500-Geek art and ownership specification | Art lead and ownership reviewer unassigned |
+| EDU-001 | P1 | planned | Design the first family or school learning pilot | Founder with educator partner unassigned |
+| TECH-001 | P2 | proposed | Design institutional identity and learning exports | Integration maintainer unassigned |
+| GOV-001 | P2 | proposed | Develop an unclassified public-service refresher pilot | Founder with agency sponsor unassigned |
+| MIL-001 | P3 | proposed | Explore military and veteran professional learning | Founder with authorized institutional sponsor unassigned |
+| ECO-001 | P1 | planned | Audit each ecosystem component and preserve its handoff | Maintainer for each repository unassigned |
+
+## CONT-001: Publish the continuation system
+
+**P0 / in-progress.** Owner: Maintainer; release reviewed by founder. Dependencies: none.
+
+Next action: Review this PR and record its final merge/deployment state.
+
+Acceptance:
+
+- Start Here, state, backlog, decisions, history, assets, long-term vision and succession instructions are linked.
+- Continuity validation and portable-source snapshot drill pass.
+- Exact PR and verification evidence are retained.
+
+Evidence/specification: [START-HERE.md](../../START-HERE.md), [docs/continuity/README.md](../../docs/continuity/README.md).
+
+## CONT-002: Make and verify an independent source backup
+
+**P0 / planned.** Owner: Founder or appointed repository custodian. Dependencies: CONT-001.
+
+Next action: Run the source snapshot tool on the merged release, copy it to a separately controlled destination, and verify restore.
+
+Acceptance:
+
+- Committed source restores with matching Git tree and bundle digest.
+- Private evidence records destination, custodian, date and restore result.
+- Issues, releases, external files and component repositories have their own preservation inventory.
+
+Evidence/specification: [docs/continuity/OPERATING-GUIDE.md](../../docs/continuity/OPERATING-GUIDE.md), [docs/BACKUP-RECOVERY.md](../../docs/BACKUP-RECOVERY.md).
+
+## ARCH-001: Ingest founding originals and reconcile chronology
+
+**P1 / blocked.** Owner: Founder supplies originals; archivist unassigned. Dependencies: none.
+
+Next action: Supply the original conversation export and remaining founding files from the phone.
+
+Blocker: Original conversation and remaining phone files have not been supplied in this working copy.
+
+Acceptance:
+
+- Each received file has an original filename, byte hash, provenance, privacy/licensing disposition and duplicate result.
+- Originals remain unchanged; public derivatives are identified separately.
+- The 23-hour/29-hour claims are reconciled only with timestamp evidence.
+
+Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity/ARCHIVE-GUIDE.md), [docs/continuity/assets.json](../../docs/continuity/assets.json).
+
+## BANK-001: Grow Kaspa from 500 toward 1,000 reviewed concepts
+
+**P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
+
+Next action: Choose the next small set of distinct learning facts, broaden primary-source coverage, and review each answer and distractor.
+
+Acceptance:
+
+- 1,000 distinct source-checked Kaspa concepts with explanations and review dates.
+- No padded variants; existing issued answers remain compatible.
+- Tier capacity and bank/catalog/readiness checks pass.
+
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/QUESTION-MAINTENANCE.md](../../docs/QUESTION-MAINTENANCE.md).
+
+## BANK-002: Reach 1,000 reviewed Video games concepts
+
+**P1 / planned.** Owner: Content editor unassigned. Dependencies: none.
+
+Next action: Review a small Video games batch against specific primary sources; correct or retire unsuitable drafts.
+
+Acceptance:
+
+- 1,000 distinct supported concepts in this category.
+- Keys, distractors, licensing, explanations, scope and difficulty reviewed.
+- Saved-game compatibility and generated counts verified.
+
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md).
+
+## BANK-003: Reach 1,000 reviewed Science fiction concepts
+
+**P1 / planned.** Owner: Content editor unassigned. Dependencies: none.
+
+Next action: Review a small Science fiction batch against specific primary sources; correct or retire unsuitable drafts.
+
+Acceptance:
+
+- 1,000 distinct supported concepts in this category.
+- Keys, distractors, licensing, explanations, scope and difficulty reviewed.
+- Saved-game compatibility and generated counts verified.
+
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md).
+
+## BANK-004: Reach 1,000 reviewed Technology concepts
+
+**P1 / planned.** Owner: Content editor unassigned. Dependencies: none.
+
+Next action: Review a small Technology batch against specific primary sources; correct or retire unsuitable drafts.
+
+Acceptance:
+
+- 1,000 distinct supported concepts in this category.
+- Keys, distractors, licensing, explanations, scope and difficulty reviewed.
+- Saved-game compatibility and generated counts verified.
+
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md).
+
+## BANK-005: Reach 1,000 reviewed Movies concepts
+
+**P1 / planned.** Owner: Content editor unassigned. Dependencies: none.
+
+Next action: Review a small Movies batch against specific primary sources; correct or retire unsuitable drafts.
+
+Acceptance:
+
+- 1,000 distinct supported concepts in this category.
+- Keys, distractors, licensing, explanations, scope and difficulty reviewed.
+- Saved-game compatibility and generated counts verified.
+
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md).
+
+## BANK-006: Reach 1,000 reviewed History concepts
+
+**P1 / planned.** Owner: Content editor unassigned. Dependencies: none.
+
+Next action: Review a small History batch against specific primary sources; correct or retire unsuitable drafts.
+
+Acceptance:
+
+- 1,000 distinct supported concepts in this category.
+- Keys, distractors, licensing, explanations, scope and difficulty reviewed.
+- Saved-game compatibility and generated counts verified.
+
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md).
+
+## BANK-007: Reach 1,000 reviewed Comics concepts
+
+**P1 / planned.** Owner: Content editor unassigned. Dependencies: none.
+
+Next action: Review a small Comics batch against specific primary sources; correct or retire unsuitable drafts.
+
+Acceptance:
+
+- 1,000 distinct supported concepts in this category.
+- Keys, distractors, licensing, explanations, scope and difficulty reviewed.
+- Saved-game compatibility and generated counts verified.
+
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md).
+
+## BANK-008: Reach 1,000 reviewed Pop culture concepts
+
+**P1 / planned.** Owner: Content editor unassigned. Dependencies: none.
+
+Next action: Review a small Pop culture batch against specific primary sources; correct or retire unsuitable drafts.
+
+Acceptance:
+
+- 1,000 distinct supported concepts in this category.
+- Keys, distractors, licensing, explanations, scope and difficulty reviewed.
+- Saved-game compatibility and generated counts verified.
+
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md).
+
+## PILOT-001: Complete the real-device free-beta pilot
+
+**P0 / needs-evidence.** Owner: Founder and consenting pilot participants. Dependencies: none.
+
+Next action: Record the remaining phone, saved Quest and two-person Royale outcomes against one exact release.
+
+Acceptance:
+
+- Four Quest chapters retain completion/replay state.
+- Phone sign-in/profile/Study flow passes.
+- Two participants can start a partially filled Royale room and recover correctly.
+
+Evidence/specification: [docs/FREE-BETA-READINESS.md](../../docs/FREE-BETA-READINESS.md).
+
+## OPS-001: Verify operator access and managed-data recovery
+
+**P0 / needs-evidence.** Owner: Founder; private account custodian unassigned. Dependencies: none.
+
+Next action: Verify owner MFA and a provider restore into an isolated destination; record evidence privately.
+
+Acceptance:
+
+- Named account custodians can recover access without publishing credentials.
+- Provider backup retention and isolated restore are measured.
+- Restored sessions are revoked before any recovery exposure.
+
+Evidence/specification: [docs/OPERATOR-SECURITY.md](../../docs/OPERATOR-SECURITY.md), [docs/BACKUP-RECOVERY.md](../../docs/BACKUP-RECOVERY.md).
+
+## OPS-002: Appoint a successor and second trusted maintainer
+
+**P1 / decision-needed.** Owner: Founder. Dependencies: none.
+
+Next action: Select trusted people and record responsibilities and account access privately.
+
+Acceptance:
+
+- Successor and backup custodian accept roles.
+- Least-privilege GitHub/hosting/database/domain access and independent recovery are exercised.
+- Public role record contains no recovery secrets or private personal details.
+
+Evidence/specification: [docs/continuity/SUCCESSION.md](../../docs/continuity/SUCCESSION.md).
+
+## ECON-001: Specify funded contributor and learner rewards
+
+**P1 / decision-needed.** Owner: Founder with economic and legal review. Dependencies: none.
+
+Next action: Choose the contributor rate and qualification rules only after a funded budget and abuse controls are defined.
+
+Acceptance:
+
+- Rate, funding, caps, qualifying third-party use, correction, appeal and settlement receipts specified.
+- All eight banks meet their 1,000 target before a separately reviewed CCE reopening.
+- School or agency participation does not require speculative token use.
+
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/ECONOMY-PROTOCOL.md](../../docs/ECONOMY-PROTOCOL.md).
+
+## STORE-001: Finish the store and equipment experience
+
+**P2 / planned.** Owner: Product maintainer unassigned. Dependencies: ECON-001.
+
+Next action: Specify one small useful inventory flow while preserving existing free cosmetics and practice lifelines.
+
+Acceptance:
+
+- Prices and inventory rules are explicit if purchases are proposed.
+- Server-authoritative grants/consumption and failure handling are reviewed.
+- Paid items cannot buy correctness or assessment credit.
+
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md).
+
+## COLL-001: Finish the 500-Geek art and ownership specification
+
+**P2 / planned.** Owner: Art lead and ownership reviewer unassigned. Dependencies: none.
+
+Next action: Inventory finished artwork against the existing edition manifest.
+
+Acceptance:
+
+- Exactly 500 editions in five tiers are reconciled.
+- Art provenance, metadata and acquisition allocations approved.
+- Ownership remains disabled until its separate reviewed implementation.
+
+Evidence/specification: [docs/GEEK-500-ART-BIBLE.md](../../docs/GEEK-500-ART-BIBLE.md), [docs/COLLECTIBLE-PROTOCOL.md](../../docs/COLLECTIBLE-PROTOCOL.md).
+
+## EDU-001: Design the first family or school learning pilot
+
+**P1 / planned.** Owner: Founder with educator partner unassigned. Dependencies: PILOT-001.
+
+Next action: Use the pilot charter to select one age-appropriate objective, reviewed lesson and measurement plan.
+
+Acceptance:
+
+- Instructor-approved objective, content, safeguarding/data plan and accessible flow.
+- Limited pilot scope, recruitment permission, owner and end date.
+- Usability and delayed retention results recorded without overstating certification.
+
+Evidence/specification: [docs/continuity/INSTITUTIONAL-PATH.md](../../docs/continuity/INSTITUTIONAL-PATH.md), [docs/continuity/PILOT-CHARTER.md](../../docs/continuity/PILOT-CHARTER.md).
+
+## TECH-001: Design institutional identity and learning exports
+
+**P2 / proposed.** Owner: Integration maintainer unassigned. Dependencies: EDU-001.
+
+Next action: Ask the selected pilot which LMS and export workflow it needs before selecting an integration.
+
+Acceptance:
+
+- Synthetic-data tenant and role model reviewed.
+- Selected export/standard has contract tests and data minimization.
+- No claim of LTI, QTI, OneRoster or xAPI conformance without implementation and required verification.
+
+Evidence/specification: [docs/continuity/INSTITUTIONAL-PATH.md](../../docs/continuity/INSTITUTIONAL-PATH.md).
+
+## GOV-001: Develop an unclassified public-service refresher pilot
+
+**P2 / proposed.** Owner: Founder with agency sponsor unassigned. Dependencies: PILOT-001.
+
+Next action: Prepare the factual partner brief and identify one voluntary public-service training problem.
+
+Acceptance:
+
+- Sponsor, approved public content, objectives, procurement route and evaluation agreed.
+- Legal entity, registration, accessibility and buyer-specific conditions verified before an offer.
+- No claimed contract, certification or token obligation without an executed agreement.
+
+Evidence/specification: [docs/continuity/PARTNER-BRIEF.md](../../docs/continuity/PARTNER-BRIEF.md), [docs/continuity/INSTITUTIONAL-PATH.md](../../docs/continuity/INSTITUTIONAL-PATH.md).
+
+## MIL-001: Explore military and veteran professional learning
+
+**P3 / proposed.** Owner: Founder with authorized institutional sponsor unassigned. Dependencies: GOV-001.
+
+Next action: Begin with public, non-sensitive professional-development or transition-learning discovery.
+
+Acceptance:
+
+- Sponsor-approved scope, assessment authority and required hosting/data boundaries.
+- Relevant procurement and personnel-reward rules reviewed for that engagement.
+- No operational, controlled or personal military data enters the public Alpha.
+
+Evidence/specification: [docs/continuity/INSTITUTIONAL-PATH.md](../../docs/continuity/INSTITUTIONAL-PATH.md).
+
+## ECO-001: Audit each ecosystem component and preserve its handoff
+
+**P1 / planned.** Owner: Maintainer for each repository unassigned. Dependencies: none.
+
+Next action: Inspect the public repository directory one component at a time, starting with Geek Jr, Mini, Wallet and the widget.
+
+Acceptance:
+
+- Exact default-branch commit, owner, deployment, last verified behavior and next task recorded per component.
+- Separate repository/source and external-release backups exist.
+- HQ remains the central index while component histories remain intact.
+
+Evidence/specification: [docs/continuity/repositories.json](../../docs/continuity/repositories.json).

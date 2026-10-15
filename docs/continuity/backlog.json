@@ -1,0 +1,425 @@
+{
+  "schema": 1,
+  "updatedAt": "2026-10-15",
+  "priorityOrder": [
+    "P0",
+    "P1",
+    "P2",
+    "P3"
+  ],
+  "statusMeaning": {
+    "active": "Current product work",
+    "in-progress": "Current unmerged documentation/tooling change",
+    "planned": "Defined work, no implementation claim",
+    "proposed": "Direction to evaluate",
+    "needs-evidence": "Implementation or process exists but acceptance evidence is missing",
+    "decision-needed": "Owner or policy decision is unresolved",
+    "blocked": "An explicit prerequisite is unavailable",
+    "done": "Acceptance and evidence recorded"
+  },
+  "tasks": [
+    {
+      "id": "CONT-001",
+      "priority": "P0",
+      "status": "in-progress",
+      "title": "Publish the continuation system",
+      "owner": "Maintainer; release reviewed by founder",
+      "nextAction": "Review this PR and record its final merge/deployment state.",
+      "acceptance": [
+        "Start Here, state, backlog, decisions, history, assets, long-term vision and succession instructions are linked.",
+        "Continuity validation and portable-source snapshot drill pass.",
+        "Exact PR and verification evidence are retained."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "START-HERE.md",
+        "docs/continuity/README.md"
+      ]
+    },
+    {
+      "id": "CONT-002",
+      "priority": "P0",
+      "status": "planned",
+      "title": "Make and verify an independent source backup",
+      "owner": "Founder or appointed repository custodian",
+      "nextAction": "Run the source snapshot tool on the merged release, copy it to a separately controlled destination, and verify restore.",
+      "acceptance": [
+        "Committed source restores with matching Git tree and bundle digest.",
+        "Private evidence records destination, custodian, date and restore result.",
+        "Issues, releases, external files and component repositories have their own preservation inventory."
+      ],
+      "dependsOn": [
+        "CONT-001"
+      ],
+      "evidence": [
+        "docs/continuity/OPERATING-GUIDE.md",
+        "docs/BACKUP-RECOVERY.md"
+      ]
+    },
+    {
+      "id": "ARCH-001",
+      "priority": "P1",
+      "status": "blocked",
+      "title": "Ingest founding originals and reconcile chronology",
+      "owner": "Founder supplies originals; archivist unassigned",
+      "nextAction": "Supply the original conversation export and remaining founding files from the phone.",
+      "acceptance": [
+        "Each received file has an original filename, byte hash, provenance, privacy/licensing disposition and duplicate result.",
+        "Originals remain unchanged; public derivatives are identified separately.",
+        "The 23-hour/29-hour claims are reconciled only with timestamp evidence."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/continuity/ARCHIVE-GUIDE.md",
+        "docs/continuity/assets.json"
+      ],
+      "blocker": "Original conversation and remaining phone files have not been supplied in this working copy."
+    },
+    {
+      "id": "BANK-001",
+      "priority": "P0",
+      "status": "active",
+      "title": "Grow Kaspa from 500 toward 1,000 reviewed concepts",
+      "owner": "Content maintainer; independent editor unassigned",
+      "nextAction": "Choose the next small set of distinct learning facts, broaden primary-source coverage, and review each answer and distractor.",
+      "acceptance": [
+        "1,000 distinct source-checked Kaspa concepts with explanations and review dates.",
+        "No padded variants; existing issued answers remain compatible.",
+        "Tier capacity and bank/catalog/readiness checks pass."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/BANK-FIRST-STORE.md",
+        "docs/QUESTION-MAINTENANCE.md"
+      ]
+    },
+    {
+      "id": "BANK-002",
+      "priority": "P1",
+      "status": "planned",
+      "title": "Reach 1,000 reviewed Video games concepts",
+      "owner": "Content editor unassigned",
+      "nextAction": "Review a small Video games batch against specific primary sources; correct or retire unsuitable drafts.",
+      "acceptance": [
+        "1,000 distinct supported concepts in this category.",
+        "Keys, distractors, licensing, explanations, scope and difficulty reviewed.",
+        "Saved-game compatibility and generated counts verified."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/BANK-FIRST-STORE.md",
+        "docs/IMPORTED-QUESTION-REVIEW.md"
+      ]
+    },
+    {
+      "id": "BANK-003",
+      "priority": "P1",
+      "status": "planned",
+      "title": "Reach 1,000 reviewed Science fiction concepts",
+      "owner": "Content editor unassigned",
+      "nextAction": "Review a small Science fiction batch against specific primary sources; correct or retire unsuitable drafts.",
+      "acceptance": [
+        "1,000 distinct supported concepts in this category.",
+        "Keys, distractors, licensing, explanations, scope and difficulty reviewed.",
+        "Saved-game compatibility and generated counts verified."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/BANK-FIRST-STORE.md",
+        "docs/IMPORTED-QUESTION-REVIEW.md"
+      ]
+    },
+    {
+      "id": "BANK-004",
+      "priority": "P1",
+      "status": "planned",
+      "title": "Reach 1,000 reviewed Technology concepts",
+      "owner": "Content editor unassigned",
+      "nextAction": "Review a small Technology batch against specific primary sources; correct or retire unsuitable drafts.",
+      "acceptance": [
+        "1,000 distinct supported concepts in this category.",
+        "Keys, distractors, licensing, explanations, scope and difficulty reviewed.",
+        "Saved-game compatibility and generated counts verified."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/BANK-FIRST-STORE.md",
+        "docs/IMPORTED-QUESTION-REVIEW.md"
+      ]
+    },
+    {
+      "id": "BANK-005",
+      "priority": "P1",
+      "status": "planned",
+      "title": "Reach 1,000 reviewed Movies concepts",
+      "owner": "Content editor unassigned",
+      "nextAction": "Review a small Movies batch against specific primary sources; correct or retire unsuitable drafts.",
+      "acceptance": [
+        "1,000 distinct supported concepts in this category.",
+        "Keys, distractors, licensing, explanations, scope and difficulty reviewed.",
+        "Saved-game compatibility and generated counts verified."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/BANK-FIRST-STORE.md",
+        "docs/IMPORTED-QUESTION-REVIEW.md"
+      ]
+    },
+    {
+      "id": "BANK-006",
+      "priority": "P1",
+      "status": "planned",
+      "title": "Reach 1,000 reviewed History concepts",
+      "owner": "Content editor unassigned",
+      "nextAction": "Review a small History batch against specific primary sources; correct or retire unsuitable drafts.",
+      "acceptance": [
+        "1,000 distinct supported concepts in this category.",
+        "Keys, distractors, licensing, explanations, scope and difficulty reviewed.",
+        "Saved-game compatibility and generated counts verified."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/BANK-FIRST-STORE.md",
+        "docs/IMPORTED-QUESTION-REVIEW.md"
+      ]
+    },
+    {
+      "id": "BANK-007",
+      "priority": "P1",
+      "status": "planned",
+      "title": "Reach 1,000 reviewed Comics concepts",
+      "owner": "Content editor unassigned",
+      "nextAction": "Review a small Comics batch against specific primary sources; correct or retire unsuitable drafts.",
+      "acceptance": [
+        "1,000 distinct supported concepts in this category.",
+        "Keys, distractors, licensing, explanations, scope and difficulty reviewed.",
+        "Saved-game compatibility and generated counts verified."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/BANK-FIRST-STORE.md",
+        "docs/IMPORTED-QUESTION-REVIEW.md"
+      ]
+    },
+    {
+      "id": "BANK-008",
+      "priority": "P1",
+      "status": "planned",
+      "title": "Reach 1,000 reviewed Pop culture concepts",
+      "owner": "Content editor unassigned",
+      "nextAction": "Review a small Pop culture batch against specific primary sources; correct or retire unsuitable drafts.",
+      "acceptance": [
+        "1,000 distinct supported concepts in this category.",
+        "Keys, distractors, licensing, explanations, scope and difficulty reviewed.",
+        "Saved-game compatibility and generated counts verified."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/BANK-FIRST-STORE.md",
+        "docs/IMPORTED-QUESTION-REVIEW.md"
+      ]
+    },
+    {
+      "id": "PILOT-001",
+      "priority": "P0",
+      "status": "needs-evidence",
+      "title": "Complete the real-device free-beta pilot",
+      "owner": "Founder and consenting pilot participants",
+      "nextAction": "Record the remaining phone, saved Quest and two-person Royale outcomes against one exact release.",
+      "acceptance": [
+        "Four Quest chapters retain completion/replay state.",
+        "Phone sign-in/profile/Study flow passes.",
+        "Two participants can start a partially filled Royale room and recover correctly."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/FREE-BETA-READINESS.md"
+      ]
+    },
+    {
+      "id": "OPS-001",
+      "priority": "P0",
+      "status": "needs-evidence",
+      "title": "Verify operator access and managed-data recovery",
+      "owner": "Founder; private account custodian unassigned",
+      "nextAction": "Verify owner MFA and a provider restore into an isolated destination; record evidence privately.",
+      "acceptance": [
+        "Named account custodians can recover access without publishing credentials.",
+        "Provider backup retention and isolated restore are measured.",
+        "Restored sessions are revoked before any recovery exposure."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/OPERATOR-SECURITY.md",
+        "docs/BACKUP-RECOVERY.md"
+      ]
+    },
+    {
+      "id": "OPS-002",
+      "priority": "P1",
+      "status": "decision-needed",
+      "title": "Appoint a successor and second trusted maintainer",
+      "owner": "Founder",
+      "nextAction": "Select trusted people and record responsibilities and account access privately.",
+      "acceptance": [
+        "Successor and backup custodian accept roles.",
+        "Least-privilege GitHub/hosting/database/domain access and independent recovery are exercised.",
+        "Public role record contains no recovery secrets or private personal details."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/continuity/SUCCESSION.md"
+      ]
+    },
+    {
+      "id": "ECON-001",
+      "priority": "P1",
+      "status": "decision-needed",
+      "title": "Specify funded contributor and learner rewards",
+      "owner": "Founder with economic and legal review",
+      "nextAction": "Choose the contributor rate and qualification rules only after a funded budget and abuse controls are defined.",
+      "acceptance": [
+        "Rate, funding, caps, qualifying third-party use, correction, appeal and settlement receipts specified.",
+        "All eight banks meet their 1,000 target before a separately reviewed CCE reopening.",
+        "School or agency participation does not require speculative token use."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/BANK-FIRST-STORE.md",
+        "docs/ECONOMY-PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "STORE-001",
+      "priority": "P2",
+      "status": "planned",
+      "title": "Finish the store and equipment experience",
+      "owner": "Product maintainer unassigned",
+      "nextAction": "Specify one small useful inventory flow while preserving existing free cosmetics and practice lifelines.",
+      "acceptance": [
+        "Prices and inventory rules are explicit if purchases are proposed.",
+        "Server-authoritative grants/consumption and failure handling are reviewed.",
+        "Paid items cannot buy correctness or assessment credit."
+      ],
+      "dependsOn": [
+        "ECON-001"
+      ],
+      "evidence": [
+        "docs/BANK-FIRST-STORE.md"
+      ]
+    },
+    {
+      "id": "COLL-001",
+      "priority": "P2",
+      "status": "planned",
+      "title": "Finish the 500-Geek art and ownership specification",
+      "owner": "Art lead and ownership reviewer unassigned",
+      "nextAction": "Inventory finished artwork against the existing edition manifest.",
+      "acceptance": [
+        "Exactly 500 editions in five tiers are reconciled.",
+        "Art provenance, metadata and acquisition allocations approved.",
+        "Ownership remains disabled until its separate reviewed implementation."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/GEEK-500-ART-BIBLE.md",
+        "docs/COLLECTIBLE-PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "EDU-001",
+      "priority": "P1",
+      "status": "planned",
+      "title": "Design the first family or school learning pilot",
+      "owner": "Founder with educator partner unassigned",
+      "nextAction": "Use the pilot charter to select one age-appropriate objective, reviewed lesson and measurement plan.",
+      "acceptance": [
+        "Instructor-approved objective, content, safeguarding/data plan and accessible flow.",
+        "Limited pilot scope, recruitment permission, owner and end date.",
+        "Usability and delayed retention results recorded without overstating certification."
+      ],
+      "dependsOn": [
+        "PILOT-001"
+      ],
+      "evidence": [
+        "docs/continuity/INSTITUTIONAL-PATH.md",
+        "docs/continuity/PILOT-CHARTER.md"
+      ]
+    },
+    {
+      "id": "TECH-001",
+      "priority": "P2",
+      "status": "proposed",
+      "title": "Design institutional identity and learning exports",
+      "owner": "Integration maintainer unassigned",
+      "nextAction": "Ask the selected pilot which LMS and export workflow it needs before selecting an integration.",
+      "acceptance": [
+        "Synthetic-data tenant and role model reviewed.",
+        "Selected export/standard has contract tests and data minimization.",
+        "No claim of LTI, QTI, OneRoster or xAPI conformance without implementation and required verification."
+      ],
+      "dependsOn": [
+        "EDU-001"
+      ],
+      "evidence": [
+        "docs/continuity/INSTITUTIONAL-PATH.md"
+      ]
+    },
+    {
+      "id": "GOV-001",
+      "priority": "P2",
+      "status": "proposed",
+      "title": "Develop an unclassified public-service refresher pilot",
+      "owner": "Founder with agency sponsor unassigned",
+      "nextAction": "Prepare the factual partner brief and identify one voluntary public-service training problem.",
+      "acceptance": [
+        "Sponsor, approved public content, objectives, procurement route and evaluation agreed.",
+        "Legal entity, registration, accessibility and buyer-specific conditions verified before an offer.",
+        "No claimed contract, certification or token obligation without an executed agreement."
+      ],
+      "dependsOn": [
+        "PILOT-001"
+      ],
+      "evidence": [
+        "docs/continuity/PARTNER-BRIEF.md",
+        "docs/continuity/INSTITUTIONAL-PATH.md"
+      ]
+    },
+    {
+      "id": "MIL-001",
+      "priority": "P3",
+      "status": "proposed",
+      "title": "Explore military and veteran professional learning",
+      "owner": "Founder with authorized institutional sponsor unassigned",
+      "nextAction": "Begin with public, non-sensitive professional-development or transition-learning discovery.",
+      "acceptance": [
+        "Sponsor-approved scope, assessment authority and required hosting/data boundaries.",
+        "Relevant procurement and personnel-reward rules reviewed for that engagement.",
+        "No operational, controlled or personal military data enters the public Alpha."
+      ],
+      "dependsOn": [
+        "GOV-001"
+      ],
+      "evidence": [
+        "docs/continuity/INSTITUTIONAL-PATH.md"
+      ]
+    },
+    {
+      "id": "ECO-001",
+      "priority": "P1",
+      "status": "planned",
+      "title": "Audit each ecosystem component and preserve its handoff",
+      "owner": "Maintainer for each repository unassigned",
+      "nextAction": "Inspect the public repository directory one component at a time, starting with Geek Jr, Mini, Wallet and the widget.",
+      "acceptance": [
+        "Exact default-branch commit, owner, deployment, last verified behavior and next task recorded per component.",
+        "Separate repository/source and external-release backups exist.",
+        "HQ remains the central index while component histories remain intact."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/continuity/repositories.json"
+      ]
+    }
+  ]
+}

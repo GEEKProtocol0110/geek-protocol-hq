@@ -5,7 +5,7 @@
 **Production:** [www.geekprotocol.xyz](https://www.geekprotocol.xyz/)  
 **Repository:** [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq)
 
-**Continue work:** [Working handoff](HANDOFF.md) records the current checkpoint, founder constraints and next unfinished actions.
+**Continue work:** [Start Here](../START-HERE.md) and the [maintained project record](continuity/README.md) hold the current checkpoint, decisions, history, backlog, source assets and 2026–2076 direction.
 
 ## Current product focus
 

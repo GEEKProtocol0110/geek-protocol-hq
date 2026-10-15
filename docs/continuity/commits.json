@@ -1,0 +1,1403 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-10-15",
+  "through": "e3fd589878d473939724b06882fb167b1e8d9b0a",
+  "scope": "HQ commit metadata through the merged product baseline. Authored dates are retained as Git metadata, not proof of founding time. Git bundles preserve underlying objects.",
+  "records": [
+    {
+      "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
+      "parents": [],
+      "authoredAt": "2026-09-18T10:30:35-04:00",
+      "title": "Bootstrap Geek Protocol HQ Site"
+    },
+    {
+      "commit": "ea59b064ca27660ba72aead5ab01626269cf0126",
+      "parents": [
+        "f7b60d3ef7447cd799fc19f7091d54484d91a45b"
+      ],
+      "authoredAt": "2026-09-18T10:33:02-04:00",
+      "title": "Fix Site source directory"
+    },
+    {
+      "commit": "ee816af6ab4a530fdb4c562647264c26d44e3c1f",
+      "parents": [
+        "ea59b064ca27660ba72aead5ab01626269cf0126"
+      ],
+      "authoredAt": "2026-09-18T10:47:52-04:00",
+      "title": "Use merged Site build as source"
+    },
+    {
+      "commit": "95cd106bd1b228a4dee21962c2f21c0b22f46e71",
+      "parents": [
+        "ee816af6ab4a530fdb4c562647264c26d44e3c1f"
+      ],
+      "authoredAt": "2026-09-18T10:49:22-04:00",
+      "title": "Use exact merged Site build directory"
+    },
+    {
+      "commit": "d17aaa5de8b378ba451ba9bc951baf39adead283",
+      "parents": [
+        "95cd106bd1b228a4dee21962c2f21c0b22f46e71"
+      ],
+      "authoredAt": "2026-09-18T14:49:33Z",
+      "title": "Publish Geek Protocol HQ Site"
+    },
+    {
+      "commit": "e977aca54eaeece37421da113026ffc07ef58e66",
+      "parents": [
+        "d17aaa5de8b378ba451ba9bc951baf39adead283"
+      ],
+      "authoredAt": "2026-09-18T11:52:15-04:00",
+      "title": "Fix broken Geek Protocol image references"
+    },
+    {
+      "commit": "1685d278cee463882e97bab307829b462671c718",
+      "parents": [
+        "e977aca54eaeece37421da113026ffc07ef58e66"
+      ],
+      "authoredAt": "2026-09-18T11:52:37-04:00",
+      "title": "Fix mobile heading overflow and responsive artwork"
+    },
+    {
+      "commit": "987d2d0b964abe58a4e6d2bbe6012de6cc42245d",
+      "parents": [
+        "1685d278cee463882e97bab307829b462671c718"
+      ],
+      "authoredAt": "2026-09-18T22:41:22-04:00",
+      "title": "Fix invisible heading contrast"
+    },
+    {
+      "commit": "8f8b504a8af6ac0ef97df4f61fa1431806db36e1",
+      "parents": [
+        "987d2d0b964abe58a4e6d2bbe6012de6cc42245d"
+      ],
+      "authoredAt": "2026-09-18T22:42:56-04:00",
+      "title": "Fix Gauntlet brand and character artwork"
+    },
+    {
+      "commit": "934fff4f5121dff07d691c2b41b66c940655dddc",
+      "parents": [
+        "8f8b504a8af6ac0ef97df4f61fa1431806db36e1"
+      ],
+      "authoredAt": "2026-09-18T22:44:57-04:00",
+      "title": "Fix lobby brand artwork"
+    },
+    {
+      "commit": "384e47ccca93488c944736ceb5e2ac9193a5b174",
+      "parents": [
+        "934fff4f5121dff07d691c2b41b66c940655dddc"
+      ],
+      "authoredAt": "2026-09-18T22:46:39-04:00",
+      "title": "Fix mint page brand artwork"
+    },
+    {
+      "commit": "fcc2744ab06c6b57fafc94898ee97852a860a607",
+      "parents": [
+        "384e47ccca93488c944736ceb5e2ac9193a5b174"
+      ],
+      "authoredAt": "2026-09-18T22:47:07-04:00",
+      "title": "Fix Kaspa page brand artwork"
+    },
+    {
+      "commit": "c7438adc22d165256f593a69046e7c04b7319639",
+      "parents": [
+        "fcc2744ab06c6b57fafc94898ee97852a860a607"
+      ],
+      "authoredAt": "2026-09-18T23:17:37-04:00",
+      "title": "Upgrade the Gauntlet game interface"
+    },
+    {
+      "commit": "fc3617d5ac826c58a06a74fea92cfd8e3c7118e5",
+      "parents": [
+        "c7438adc22d165256f593a69046e7c04b7319639"
+      ],
+      "authoredAt": "2026-09-18T23:17:56-04:00",
+      "title": "Update game.js"
+    },
+    {
+      "commit": "583d6ac0b874b41533e76335fbeffcce07e8a3f7",
+      "parents": [
+        "fc3617d5ac826c58a06a74fea92cfd8e3c7118e5"
+      ],
+      "authoredAt": "2026-09-18T23:19:08-04:00",
+      "title": "Polish the Gauntlet HUD and mobile play"
+    },
+    {
+      "commit": "41093c4f5555c85e09571274096021f9abf63482",
+      "parents": [
+        "583d6ac0b874b41533e76335fbeffcce07e8a3f7"
+      ],
+      "authoredAt": "2026-09-18T23:30:43-04:00",
+      "title": "Add shared wallet identity styles"
+    },
+    {
+      "commit": "1f85db9d29ca300346289911219c1b092356fcc0",
+      "parents": [
+        "41093c4f5555c85e09571274096021f9abf63482"
+      ],
+      "authoredAt": "2026-09-18T23:31:17-04:00",
+      "title": "Add Kasware wallet identity integration"
+    },
+    {
+      "commit": "abd473da26fb145d74550699bc37e5eaba5f6713",
+      "parents": [
+        "1f85db9d29ca300346289911219c1b092356fcc0"
+      ],
+      "authoredAt": "2026-09-18T23:31:41-04:00",
+      "title": "Document the wallet identity foundation"
+    },
+    {
+      "commit": "6f74d3a00b21789b5024fef69b19db1dbeb1597f",
+      "parents": [
+        "abd473da26fb145d74550699bc37e5eaba5f6713"
+      ],
+      "authoredAt": "2026-09-18T23:32:06-04:00",
+      "title": "Add Kasware identity card to lobbies"
+    },
+    {
+      "commit": "90e2048cc3fb55a17f2ac5f1ebc29b84c0ba0ab8",
+      "parents": [
+        "6f74d3a00b21789b5024fef69b19db1dbeb1597f"
+      ],
+      "authoredAt": "2026-09-18T23:32:35-04:00",
+      "title": "Reflect wallet verification in lobby profiles"
+    },
+    {
+      "commit": "dd9dd9b23f771fffc0cb425cfab126e5193784d6",
+      "parents": [
+        "90e2048cc3fb55a17f2ac5f1ebc29b84c0ba0ab8"
+      ],
+      "authoredAt": "2026-09-18T23:33:10-04:00",
+      "title": "Add Kasware identity to the Gauntlet"
+    },
+    {
+      "commit": "4706c2f4d142a660041d48e7e91bb0c1b3c68d8a",
+      "parents": [
+        "dd9dd9b23f771fffc0cb425cfab126e5193784d6"
+      ],
+      "authoredAt": "2026-09-19T09:04:42-04:00",
+      "title": "Stage hardened server-authoritative release"
+    },
+    {
+      "commit": "d60d1754516f6917e4768ca29a760c9c00e7116b",
+      "parents": [
+        "4706c2f4d142a660041d48e7e91bb0c1b3c68d8a"
+      ],
+      "authoredAt": "2026-09-19T13:04:55Z",
+      "title": "Apply hardened server-authoritative build"
+    },
+    {
+      "commit": "7c36e4bb88487751226a6a316098925c8515b1df",
+      "parents": [
+        "d60d1754516f6917e4768ca29a760c9c00e7116b"
+      ],
+      "authoredAt": "2026-09-19T09:05:39-04:00",
+      "title": "Remove one-time release workflow"
+    },
+    {
+      "commit": "6aa19a71d065cb383ca4052fbe63b4b1bda63415",
+      "parents": [
+        "dd9dd9b23f771fffc0cb425cfab126e5193784d6",
+        "7c36e4bb88487751226a6a316098925c8515b1df"
+      ],
+      "authoredAt": "2026-09-19T09:06:25-04:00",
+      "title": "Merge pull request #1 from GEEKProtocol0110/server-alpha"
+    },
+    {
+      "commit": "597b3a40254aecef16c8882282eac33f65593223",
+      "parents": [
+        "6aa19a71d065cb383ca4052fbe63b4b1bda63415"
+      ],
+      "authoredAt": "2026-09-19T10:27:19-04:00",
+      "title": "Prepare C.C.E. Alpha release"
+    },
+    {
+      "commit": "7379a371306c48e36d7ecf975801fa31c4342b79",
+      "parents": [
+        "597b3a40254aecef16c8882282eac33f65593223"
+      ],
+      "authoredAt": "2026-09-19T08:40:16-05:00",
+      "title": "Add Community Content Engine alpha"
+    },
+    {
+      "commit": "a68cf51fb247442ce236b9ccca512fccdacfd020",
+      "parents": [
+        "7379a371306c48e36d7ecf975801fa31c4342b79"
+      ],
+      "authoredAt": "2026-09-19T10:31:42-04:00",
+      "title": "Remove one-time C.C.E. release workflow"
+    },
+    {
+      "commit": "d8af9af75a6aadca2d45884d0589d1b90347e20c",
+      "parents": [
+        "6aa19a71d065cb383ca4052fbe63b4b1bda63415",
+        "a68cf51fb247442ce236b9ccca512fccdacfd020"
+      ],
+      "authoredAt": "2026-09-19T10:32:33-04:00",
+      "title": "Merge pull request #2 from GEEKProtocol0110/cce-alpha"
+    },
+    {
+      "commit": "8397dbaea8578a0c6f8e41968d0071c577458893",
+      "parents": [
+        "d8af9af75a6aadca2d45884d0589d1b90347e20c"
+      ],
+      "authoredAt": "2026-09-19T11:36:40-04:00",
+      "title": "Stage verified HQ upgrade"
+    },
+    {
+      "commit": "ea11d1ebeb0198d27e1ad0246fb43d4a439b6233",
+      "parents": [
+        "8397dbaea8578a0c6f8e41968d0071c577458893"
+      ],
+      "authoredAt": "2026-09-19T11:39:33-04:00",
+      "title": "Apply verified HQ upgrade"
+    },
+    {
+      "commit": "65bb8a1b5c1f0fabd4c564a9334304319c0ecf42",
+      "parents": [
+        "ea11d1ebeb0198d27e1ad0246fb43d4a439b6233"
+      ],
+      "authoredAt": "2026-09-19T10:29:48-05:00",
+      "title": "Add wallet-neutral rewards and secure quick modes"
+    },
+    {
+      "commit": "f055171f4fa176f2aeecca99b9cba98c9b051958",
+      "parents": [
+        "65bb8a1b5c1f0fabd4c564a9334304319c0ecf42"
+      ],
+      "authoredAt": "2026-09-19T15:39:40Z",
+      "title": "Remove one-time HQ release payload"
+    },
+    {
+      "commit": "a4f99e8bc9880db684efc10909742b2eca2cd776",
+      "parents": [
+        "f055171f4fa176f2aeecca99b9cba98c9b051958"
+      ],
+      "authoredAt": "2026-09-19T11:40:39-04:00",
+      "title": "Remove one-time HQ release workflow"
+    },
+    {
+      "commit": "0f7eb18f866ee1e7a976fd49313e230c27396222",
+      "parents": [
+        "d8af9af75a6aadca2d45884d0589d1b90347e20c",
+        "a4f99e8bc9880db684efc10909742b2eca2cd776"
+      ],
+      "authoredAt": "2026-09-19T11:41:24-04:00",
+      "title": "Merge pull request #3 from GEEKProtocol0110/hq-wallet-modes-docs"
+    },
+    {
+      "commit": "a617cb8df2ae75f32f9faecb6f6d2a28984ed451",
+      "parents": [
+        "0f7eb18f866ee1e7a976fd49313e230c27396222"
+      ],
+      "authoredAt": "2026-09-19T12:10:05-04:00",
+      "title": "Stage audit-readiness release"
+    },
+    {
+      "commit": "149cc6d57788d15e46a57810b2ce87e6cad39de1",
+      "parents": [
+        "a617cb8df2ae75f32f9faecb6f6d2a28984ed451"
+      ],
+      "authoredAt": "2026-09-19T12:10:56-04:00",
+      "title": "Apply verified audit-readiness release"
+    },
+    {
+      "commit": "74e159a3521a54f5029b397fbcd30a6024fb0487",
+      "parents": [
+        "149cc6d57788d15e46a57810b2ce87e6cad39de1"
+      ],
+      "authoredAt": "2026-09-19T11:07:40-05:00",
+      "title": "Add audit-readiness controls and evidence"
+    },
+    {
+      "commit": "df83a631b00bfaeadeb8ffeec806ee8047ede450",
+      "parents": [
+        "74e159a3521a54f5029b397fbcd30a6024fb0487"
+      ],
+      "authoredAt": "2026-09-19T16:11:38Z",
+      "title": "Remove one-time audit release payload"
+    },
+    {
+      "commit": "8aaeadb19df283623f19e700ca990b05f816d167",
+      "parents": [
+        "df83a631b00bfaeadeb8ffeec806ee8047ede450"
+      ],
+      "authoredAt": "2026-09-19T12:12:12-04:00",
+      "title": "Add permanent security verification"
+    },
+    {
+      "commit": "66bdaa944eaf74fca18b33aceea33241705b1293",
+      "parents": [
+        "8aaeadb19df283623f19e700ca990b05f816d167"
+      ],
+      "authoredAt": "2026-09-19T12:12:36-04:00",
+      "title": "Remove one-time audit release workflow"
+    },
+    {
+      "commit": "5f5c331fcbe8c8146aed1b112ab8d952e7acbf08",
+      "parents": [
+        "0f7eb18f866ee1e7a976fd49313e230c27396222",
+        "66bdaa944eaf74fca18b33aceea33241705b1293"
+      ],
+      "authoredAt": "2026-09-19T12:37:54-04:00",
+      "title": "Merge pull request #4 from GEEKProtocol0110/audit-readiness-v1"
+    },
+    {
+      "commit": "18fb8d2eef3fe44a579bde065b0081c76f944ff8",
+      "parents": [
+        "5f5c331fcbe8c8146aed1b112ab8d952e7acbf08"
+      ],
+      "authoredAt": "2026-09-19T16:59:11-04:00",
+      "title": "Stage reviewed identity release"
+    },
+    {
+      "commit": "37983ce914d184db1d3ec18c60f33ee14ca411e8",
+      "parents": [
+        "18fb8d2eef3fe44a579bde065b0081c76f944ff8"
+      ],
+      "authoredAt": "2026-09-19T20:59:19Z",
+      "title": "feat: add recoverable Kaspa wallet identity"
+    },
+    {
+      "commit": "b731ff2314a8a784b4f12d21dc87e9db76cba02d",
+      "parents": [
+        "5f5c331fcbe8c8146aed1b112ab8d952e7acbf08",
+        "37983ce914d184db1d3ec18c60f33ee14ca411e8"
+      ],
+      "authoredAt": "2026-09-19T17:05:29-04:00",
+      "title": "Merge pull request #5 from GEEKProtocol0110/identity-proof-v1"
+    },
+    {
+      "commit": "08546680fa333a93d6e25c7a0b8fd047034c1fdb",
+      "parents": [
+        "b731ff2314a8a784b4f12d21dc87e9db76cba02d"
+      ],
+      "authoredAt": "2026-09-20T05:29:21-04:00",
+      "title": "feat: add payout risk review controls"
+    },
+    {
+      "commit": "e15c08c8791c2f97210063e9121481db2c721332",
+      "parents": [
+        "b731ff2314a8a784b4f12d21dc87e9db76cba02d",
+        "08546680fa333a93d6e25c7a0b8fd047034c1fdb"
+      ],
+      "authoredAt": "2026-09-20T05:37:06-04:00",
+      "title": "Merge pull request #6 from GEEKProtocol0110/payout-risk-controls-v1"
+    },
+    {
+      "commit": "c18d9d8a61a76a4e0feb64ce7d3bc695dc40cabe",
+      "parents": [
+        "e15c08c8791c2f97210063e9121481db2c721332"
+      ],
+      "authoredAt": "2026-09-20T08:36:27-04:00",
+      "title": "feat: activate non-custodial GEEK fair mint"
+    },
+    {
+      "commit": "1f5abdf2b53a9b287a5b932e26531e6ab9249af5",
+      "parents": [
+        "c18d9d8a61a76a4e0feb64ce7d3bc695dc40cabe"
+      ],
+      "authoredAt": "2026-09-20T08:39:27-04:00",
+      "title": "fix: make paused mint state explicit"
+    },
+    {
+      "commit": "794e0b1142abad8d46c4f848948a2b15702ec263",
+      "parents": [
+        "e15c08c8791c2f97210063e9121481db2c721332",
+        "1f5abdf2b53a9b287a5b932e26531e6ab9249af5"
+      ],
+      "authoredAt": "2026-09-20T09:35:49-04:00",
+      "title": "Merge pull request #7 from GEEKProtocol0110/geek-mint-portal-v1"
+    },
+    {
+      "commit": "698e95640a3f3de9e1c9b05de31338f50339f6db",
+      "parents": [
+        "794e0b1142abad8d46c4f848948a2b15702ec263"
+      ],
+      "authoredAt": "2026-09-22T00:48:21-04:00",
+      "title": "fix: harden mint status recovery"
+    },
+    {
+      "commit": "314026d23b02b74a1ce5cb3178bcef428ca599e1",
+      "parents": [
+        "794e0b1142abad8d46c4f848948a2b15702ec263",
+        "698e95640a3f3de9e1c9b05de31338f50339f6db"
+      ],
+      "authoredAt": "2026-09-22T00:49:38-04:00",
+      "title": "Merge pull request #8 from GEEKProtocol0110/mint-status-recovery-v1"
+    },
+    {
+      "commit": "0bb5b768f1208086fc5d4878f74b3c9c498592cc",
+      "parents": [
+        "314026d23b02b74a1ce5cb3178bcef428ca599e1"
+      ],
+      "authoredAt": "2026-09-22T01:09:07-04:00",
+      "title": "Polish copy and responsive Kaspa visuals"
+    },
+    {
+      "commit": "324b4e24c82e21948abf47d488246351e28214c6",
+      "parents": [
+        "314026d23b02b74a1ce5cb3178bcef428ca599e1",
+        "0bb5b768f1208086fc5d4878f74b3c9c498592cc"
+      ],
+      "authoredAt": "2026-09-22T01:09:59-04:00",
+      "title": "Merge responsive visual and proofreading pass"
+    },
+    {
+      "commit": "c56381580927d24affd60c4501ad4700c5491173",
+      "parents": [
+        "324b4e24c82e21948abf47d488246351e28214c6"
+      ],
+      "authoredAt": "2026-09-22T08:29:57-04:00",
+      "title": "Add verified player journey and collectible trading alpha"
+    },
+    {
+      "commit": "6078acb9998f4a6a0deb68d4309a0a91d84d93d2",
+      "parents": [
+        "c56381580927d24affd60c4501ad4700c5491173"
+      ],
+      "authoredAt": "2026-09-22T09:36:39-04:00",
+      "title": "Build the 500-Geek art and lore production system"
+    },
+    {
+      "commit": "85d02a07480f3699fcad91f402c76328a903ea64",
+      "parents": [
+        "6078acb9998f4a6a0deb68d4309a0a91d84d93d2"
+      ],
+      "authoredAt": "2026-09-22T16:59:14-04:00",
+      "title": "Recover and preserve legacy Geek artwork (#12)"
+    },
+    {
+      "commit": "1c8974a95139908260ff5787119c9e231c2e8919",
+      "parents": [
+        "85d02a07480f3699fcad91f402c76328a903ea64"
+      ],
+      "authoredAt": "2026-09-22T21:51:31-04:00",
+      "title": "Professionalize the repository and GitHub experience (#13)"
+    },
+    {
+      "commit": "c48ad53b066b089daad9d0fb19c592e4c4459fb1",
+      "parents": [
+        "1c8974a95139908260ff5787119c9e231c2e8919"
+      ],
+      "authoredAt": "2026-09-23T07:49:15-04:00",
+      "title": "Clarify Alpha credits and fair mint availability (#15)"
+    },
+    {
+      "commit": "180ac82d2522c1a522267ce7516833dc1a6a8660",
+      "parents": [
+        "c48ad53b066b089daad9d0fb19c592e4c4459fb1"
+      ],
+      "authoredAt": "2026-09-23T08:12:06-04:00",
+      "title": "Clarify Kaspa identity for search and AI summaries (#16)"
+    },
+    {
+      "commit": "b9b7e278815f141b5864ac7c98e7d82066c6f1d2",
+      "parents": [
+        "180ac82d2522c1a522267ce7516833dc1a6a8660"
+      ],
+      "authoredAt": "2026-09-23T09:27:58-04:00",
+      "title": "Improve Kaspa search discovery and project identity (#17)"
+    },
+    {
+      "commit": "094253435b7df31ce8ce461f926ce9016d788456",
+      "parents": [
+        "b9b7e278815f141b5864ac7c98e7d82066c6f1d2"
+      ],
+      "authoredAt": "2026-09-23T19:37:29-04:00",
+      "title": "Replace overlapping homepage art with GIGA head (#18)"
+    },
+    {
+      "commit": "536a3884dad43aa2417cd8f9c1d9c5827b08b8e3",
+      "parents": [
+        "094253435b7df31ce8ce461f926ce9016d788456"
+      ],
+      "authoredAt": "2026-09-23T19:59:33-04:00",
+      "title": "Simplify site navigation and homepage; harden API input parsing (#19)"
+    },
+    {
+      "commit": "512f8fcb9a730c0db15302ab01d3d8cfdbc793c8",
+      "parents": [
+        "536a3884dad43aa2417cd8f9c1d9c5827b08b8e3"
+      ],
+      "authoredAt": "2026-09-24T01:14:31-04:00",
+      "title": "Tighten Kaspa guide protocol section and improve contrast (#20)"
+    },
+    {
+      "commit": "3a17f7fc4319a1c284963824272a4f34b228d67b",
+      "parents": [
+        "512f8fcb9a730c0db15302ab01d3d8cfdbc793c8"
+      ],
+      "authoredAt": "2026-09-24T01:34:06-04:00",
+      "title": "Show accurate parent references in Kaspa blockDAG schematic (#21)"
+    },
+    {
+      "commit": "e6427402bdf4562b2f5a9b04e5e6e6e541f92405",
+      "parents": [
+        "3a17f7fc4319a1c284963824272a4f34b228d67b"
+      ],
+      "authoredAt": "2026-09-24T02:05:31-04:00",
+      "title": "Embed live Kaspa blockDAG viewer on guide (#22)"
+    },
+    {
+      "commit": "3b44f2a6aed7671c6e4a855946dde27c7894b738",
+      "parents": [
+        "e6427402bdf4562b2f5a9b04e5e6e6e541f92405"
+      ],
+      "authoredAt": "2026-09-24T02:24:17-04:00",
+      "title": "Put the mobile Kaspa game flow first (#23)"
+    },
+    {
+      "commit": "789a4e08c997f97ae5f1b28698b7ed84b65b57d3",
+      "parents": [
+        "3b44f2a6aed7671c6e4a855946dde27c7894b738"
+      ],
+      "authoredAt": "2026-09-24T02:33:47-04:00",
+      "title": "Clean up Daily and Speed result screens (#24)"
+    },
+    {
+      "commit": "e4279a171abcb2e7394fb6e5245305824d7df657",
+      "parents": [
+        "789a4e08c997f97ae5f1b28698b7ed84b65b57d3"
+      ],
+      "authoredAt": "2026-09-26T02:17:41-04:00",
+      "title": "Clarify optional wallet and locked payouts on Gauntlet (#25)"
+    },
+    {
+      "commit": "13fea50f698381ab79d2939e6c539cd2beaf212b",
+      "parents": [
+        "e4279a171abcb2e7394fb6e5245305824d7df657"
+      ],
+      "authoredAt": "2026-09-26T02:55:34-04:00",
+      "title": "Connect HQ lobbies to shared server-scored rounds (#26)"
+    },
+    {
+      "commit": "6cee2e665ae5ef4309e1063ea4d6c751108c3998",
+      "parents": [
+        "13fea50f698381ab79d2939e6c539cd2beaf212b"
+      ],
+      "authoredAt": "2026-10-01T04:45:15-04:00",
+      "title": "Put Geek Protocol's education mission on the homepage (#28)"
+    },
+    {
+      "commit": "de5c90845a76a168f98f1b6d3c263a823fba94e9",
+      "parents": [
+        "6cee2e665ae5ef4309e1063ea4d6c751108c3998"
+      ],
+      "authoredAt": "2026-10-01T06:27:52-04:00",
+      "title": "Add untimed Kaspa Study with A.C.E. guidance (#30)"
+    },
+    {
+      "commit": "53ca4b4a1d21f55696ffc57b5bdf12c16e849895",
+      "parents": [
+        "de5c90845a76a168f98f1b6d3c263a823fba94e9"
+      ],
+      "authoredAt": "2026-10-02T00:59:49-04:00",
+      "title": "Restore Kaspa 101 as the Learn page (#32)"
+    },
+    {
+      "commit": "fc345c25f06892e9432ad52abe79e0c49bd12710",
+      "parents": [
+        "53ca4b4a1d21f55696ffc57b5bdf12c16e849895"
+      ],
+      "authoredAt": "2026-10-02T04:09:00-04:00",
+      "title": "Restore the full Geek Protocol vision and build roadmap (#34)"
+    },
+    {
+      "commit": "199dd75ba904071c518e13b20afcdfd21a4eb2d0",
+      "parents": [
+        "fc345c25f06892e9432ad52abe79e0c49bd12710"
+      ],
+      "authoredAt": "2026-10-02T05:11:34-04:00",
+      "title": "Add guided Kaspa learning and saved practice progress (#35)"
+    },
+    {
+      "commit": "ab9fa9a0b592816621a0cebbf5dd40cc2a7f88d9",
+      "parents": [
+        "199dd75ba904071c518e13b20afcdfd21a4eb2d0"
+      ],
+      "authoredAt": "2026-10-02T05:56:12-04:00",
+      "title": "Add weekly and monthly Kaspa challenges (#36)"
+    },
+    {
+      "commit": "c4b93273c0c08425d018be9c1e1e9477759ba473",
+      "parents": [
+        "ab9fa9a0b592816621a0cebbf5dd40cc2a7f88d9"
+      ],
+      "authoredAt": "2026-10-02T07:35:52-04:00",
+      "title": "Add daily cosmetic vault with replay-safe UTC claims (#37)"
+    },
+    {
+      "commit": "f482848c152fb3f7f52ee619ed652a9e773a55c7",
+      "parents": [
+        "c4b93273c0c08425d018be9c1e1e9477759ba473"
+      ],
+      "authoredAt": "2026-10-02T09:02:58-04:00",
+      "title": "Focus the core learning journey and pause larger expansions (#38)"
+    },
+    {
+      "commit": "c7538980c7e405e1cb10c9ac14db5eb26fd1d8bb",
+      "parents": [
+        "f482848c152fb3f7f52ee619ed652a9e773a55c7"
+      ],
+      "authoredAt": "2026-10-02T16:45:30-04:00",
+      "title": "Remove Executive Summary and DAO Proposal links (#39)"
+    },
+    {
+      "commit": "ab0eac8ec499d287bbb4d3117acd56fc02edb760",
+      "parents": [
+        "c7538980c7e405e1cb10c9ac14db5eb26fd1d8bb"
+      ],
+      "authoredAt": "2026-10-02T21:28:27-04:00",
+      "title": "Guide first-time learners through their first lesson (#40)"
+    },
+    {
+      "commit": "13fb07815555ef6aca5dc334eacedc842cc3a1fa",
+      "parents": [
+        "ab0eac8ec499d287bbb4d3117acd56fc02edb760"
+      ],
+      "authoredAt": "2026-10-02T21:36:48-04:00",
+      "title": "Use American English across Geek Protocol (#41)"
+    },
+    {
+      "commit": "b9346ec348891c5b7aaa713cd1272017d9bc6406",
+      "parents": [
+        "13fb07815555ef6aca5dc334eacedc842cc3a1fa"
+      ],
+      "authoredAt": "2026-10-02T21:45:11-04:00",
+      "title": "Start practice from the final lesson idea (#42)"
+    },
+    {
+      "commit": "91d6e59045485f148f3a84d7d14a85e1ddc7847a",
+      "parents": [
+        "b9346ec348891c5b7aaa713cd1272017d9bc6406"
+      ],
+      "authoredAt": "2026-10-02T22:42:52-04:00",
+      "title": "Restore power-ups and add planning-only economy accounting (#43)"
+    },
+    {
+      "commit": "2fc6178d7d997a64b7269990befba49067d87e0d",
+      "parents": [
+        "91d6e59045485f148f3a84d7d14a85e1ddc7847a"
+      ],
+      "authoredAt": "2026-10-02T23:52:30-04:00",
+      "title": "Make 50/50 and Extra Time playable in free assisted practice (#44)"
+    },
+    {
+      "commit": "9673f6fd74281e17c047fcdcd170b09b24d403e4",
+      "parents": [
+        "2fc6178d7d997a64b7269990befba49067d87e0d"
+      ],
+      "authoredAt": "2026-10-03T01:38:34-04:00",
+      "title": "Give Giga an active role in the learning journey (#45)"
+    },
+    {
+      "commit": "a87bf13201b11c750d76a2fbe228ac6664d3eebb",
+      "parents": [
+        "9673f6fd74281e17c047fcdcd170b09b24d403e4"
+      ],
+      "authoredAt": "2026-10-03T03:07:23-04:00",
+      "title": "Connect enabled Vercel Web Analytics to public pages (#46)"
+    },
+    {
+      "commit": "20bd5acb7e2b0fde13428ce5917c984981ca360a",
+      "parents": [
+        "a87bf13201b11c750d76a2fbe228ac6664d3eebb"
+      ],
+      "authoredAt": "2026-10-03T04:39:29-04:00",
+      "title": "Track confirmed learning activity with fixed privacy-filtered events (#47)"
+    },
+    {
+      "commit": "9029050cef83aee9f70e7cb40f5ecb27a0afd4da",
+      "parents": [
+        "20bd5acb7e2b0fde13428ce5917c984981ca360a"
+      ],
+      "authoredAt": "2026-10-03T05:19:38-04:00",
+      "title": "Add free Kaspa Memory Grid with source-linked concept matching (#48)"
+    },
+    {
+      "commit": "a99093bc3e761fdd61c16459522c821514ed2b87",
+      "parents": [
+        "9029050cef83aee9f70e7cb40f5ecb27a0afd4da"
+      ],
+      "authoredAt": "2026-10-03T06:01:30-04:00",
+      "title": "Add customizable profile Geeks and align 500 NFT collection to five tiers (#49)"
+    },
+    {
+      "commit": "f5832d09e850056e07b29d4f205819327f05bf9f",
+      "parents": [
+        "a99093bc3e761fdd61c16459522c821514ed2b87"
+      ],
+      "authoredAt": "2026-10-03T06:45:43-04:00",
+      "title": "Add space starfields and customizable star and orbital particle effects (#50)"
+    },
+    {
+      "commit": "ec59bedbd38f36fdb772c5c0d894f30170934168",
+      "parents": [
+        "f5832d09e850056e07b29d4f205819327f05bf9f"
+      ],
+      "authoredAt": "2026-10-04T01:31:05-04:00",
+      "title": "Build player dashboard with manual level-50 prestige and 25 ranks (#51)"
+    },
+    {
+      "commit": "3945dd816c1a65147b4d8c7a109f25c9876a5ae9",
+      "parents": [
+        "ec59bedbd38f36fdb772c5c0d894f30170934168"
+      ],
+      "authoredAt": "2026-10-05T02:33:29-04:00",
+      "title": "Add personal Geeks with skin, hair and clothing customization (#52)"
+    },
+    {
+      "commit": "249e3e5268e451654638935ab36316f068f8eaf9",
+      "parents": [
+        "3945dd816c1a65147b4d8c7a109f25c9876a5ae9"
+      ],
+      "authoredAt": "2026-10-05T03:44:11-04:00",
+      "title": "Add free 1v1 Geek Duel with saved characters and mutual rematches (#53)"
+    },
+    {
+      "commit": "7ef91914a2057c0805a55bc872c9adf3afc284b0",
+      "parents": [
+        "249e3e5268e451654638935ab36316f068f8eaf9"
+      ],
+      "authoredAt": "2026-10-05T04:34:58-04:00",
+      "title": "Add First Signal Quiz Quest with saved chapter progress and badge (#54)"
+    },
+    {
+      "commit": "7a9c100b16063a8b5f1c8a317e2b1738b9394feb",
+      "parents": [
+        "7ef91914a2057c0805a55bc872c9adf3afc284b0"
+      ],
+      "authoredAt": "2026-10-05T10:36:03-04:00",
+      "title": "Expand Quiz Quest with a campaign map and Inside the blockDAG chapter (#55)"
+    },
+    {
+      "commit": "28aebb02a99fb12463019cda3e4e5c422f52d2a5",
+      "parents": [
+        "7a9c100b16063a8b5f1c8a317e2b1738b9394feb"
+      ],
+      "authoredAt": "2026-10-06T00:07:22-04:00",
+      "title": "Require First Signal completion to unlock Quiz Quest Chapter 2 (#56)"
+    },
+    {
+      "commit": "8f8f062471ebf615d01318b56750aa90145dba78",
+      "parents": [
+        "28aebb02a99fb12463019cda3e4e5c422f52d2a5"
+      ],
+      "authoredAt": "2026-10-06T01:42:00-04:00",
+      "title": "Upgrade Player HQ, character studio, solo A.C.E. Duel and Quest Chapter 3 (#57)"
+    },
+    {
+      "commit": "7f03d2874d653d87fcd7b4077e6c0f23d5d16c59",
+      "parents": [
+        "8f8f062471ebf615d01318b56750aa90145dba78"
+      ],
+      "authoredAt": "2026-10-06T05:24:28-04:00",
+      "title": "Simplify HQ navigation and polish the learning and play experience (#58)"
+    },
+    {
+      "commit": "df33ccf9710e7ecd974f25b7066d9065319e73b8",
+      "parents": [
+        "7f03d2874d653d87fcd7b4077e6c0f23d5d16c59"
+      ],
+      "authoredAt": "2026-10-06T22:17:00-04:00",
+      "title": "Make Geek Gauntlet visible from home and Play (#59)"
+    },
+    {
+      "commit": "3d7ad8f2a1fe40937a2579943244c2319d4040e7",
+      "parents": [
+        "df33ccf9710e7ecd974f25b7066d9065319e73b8"
+      ],
+      "authoredAt": "2026-10-07T00:30:38-04:00",
+      "title": "Clean duplicate questions and double the distinct question pools (#60)"
+    },
+    {
+      "commit": "6950bcd29b4645b8b47f90f3e685caf2ab07a0da",
+      "parents": [
+        "3d7ad8f2a1fe40937a2579943244c2319d4040e7"
+      ],
+      "authoredAt": "2026-10-07T03:34:40-04:00",
+      "title": "Add the Geek operations dashboard (#61)"
+    },
+    {
+      "commit": "2f38ed42df202bdad538fda9b742090d15c32055",
+      "parents": [
+        "6950bcd29b4645b8b47f90f3e685caf2ab07a0da"
+      ],
+      "authoredAt": "2026-10-07T04:15:05-04:00",
+      "title": "Require private sign-in for Operations (#62)"
+    },
+    {
+      "commit": "843be638aa9b314194ca92cf1ef01efc6cacfcf7",
+      "parents": [
+        "2f38ed42df202bdad538fda9b742090d15c32055"
+      ],
+      "authoredAt": "2026-10-07T04:17:25-04:00",
+      "title": "Route /ops/ through the private sign-in gate (#63)"
+    },
+    {
+      "commit": "6fd3b59db115cb6284b8b27c0072b4a7ca9604b5",
+      "parents": [
+        "843be638aa9b314194ca92cf1ef01efc6cacfcf7"
+      ],
+      "authoredAt": "2026-10-07T04:19:31-04:00",
+      "title": "Redirect the trailing-slash legacy review root (#64)"
+    },
+    {
+      "commit": "efbb6770b322ce92f9a8b8a36aa923923e6af68f",
+      "parents": [
+        "6fd3b59db115cb6284b8b27c0072b4a7ca9604b5"
+      ],
+      "authoredAt": "2026-10-08T02:55:13-04:00",
+      "title": "Give Operations separate pages and one owner sign-in (#65)"
+    },
+    {
+      "commit": "cbc2029648e5f575c7db3aab5094db6c51a738cc",
+      "parents": [
+        "efbb6770b322ce92f9a8b8a36aa923923e6af68f"
+      ],
+      "authoredAt": "2026-10-08T02:58:42-04:00",
+      "title": "Route all Operations workspace pages to the owner gate (#66)"
+    },
+    {
+      "commit": "1222452fb3f93eb6804e3dd28f0344a1b6b44658",
+      "parents": [
+        "cbc2029648e5f575c7db3aab5094db6c51a738cc"
+      ],
+      "authoredAt": "2026-10-08T06:00:03-04:00",
+      "title": "Retire unusable trivia and fix mobile player journey recovery"
+    },
+    {
+      "commit": "eb2ef291d319feade3e17fdf6bb947cf816b0ade",
+      "parents": [
+        "1222452fb3f93eb6804e3dd28f0344a1b6b44658"
+      ],
+      "authoredAt": "2026-10-08T06:27:49-04:00",
+      "title": "Expose wallet sign-in and durable profile name editing"
+    },
+    {
+      "commit": "6c70dfa400e59e5f0ea1acad27ac4e4986ded3b5",
+      "parents": [
+        "eb2ef291d319feade3e17fdf6bb947cf816b0ade"
+      ],
+      "authoredAt": "2026-10-08T07:41:15-04:00",
+      "title": "Add Trivia Royale with configurable 2\u2013100-player rooms"
+    },
+    {
+      "commit": "51204af34d76a5554013346f0c089200ab80cce1",
+      "parents": [
+        "cbc2029648e5f575c7db3aab5094db6c51a738cc",
+        "eb2ef291d319feade3e17fdf6bb947cf816b0ade"
+      ],
+      "authoredAt": "2026-10-08T07:55:31-04:00",
+      "title": "Merge pull request #67 from GEEKProtocol0110/codex/editorial-player-review-oct8"
+    },
+    {
+      "commit": "053c7e708327c9b8448579bd2141bf09f7337662",
+      "parents": [
+        "51204af34d76a5554013346f0c089200ab80cce1",
+        "6c70dfa400e59e5f0ea1acad27ac4e4986ded3b5"
+      ],
+      "authoredAt": "2026-10-08T07:56:19-04:00",
+      "title": "Merge pull request #68 from GEEKProtocol0110/codex/trivia-royale-alpha"
+    },
+    {
+      "commit": "9862297c32483cae661e1162987ad54c943beacf",
+      "parents": [
+        "053c7e708327c9b8448579bd2141bf09f7337662"
+      ],
+      "authoredAt": "2026-10-08T08:34:40-04:00",
+      "title": "Support wallet-independent Kaspa sign-in with one-time message proofs"
+    },
+    {
+      "commit": "707eae8c85e8d6227c67e5862557866489296dc7",
+      "parents": [
+        "9862297c32483cae661e1162987ad54c943beacf"
+      ],
+      "authoredAt": "2026-10-08T08:37:01-04:00",
+      "title": "Tolerate unsupported optional wallet-provider events"
+    },
+    {
+      "commit": "e7163b86831320e27f4fc35a2cd1920bfaae5ca5",
+      "parents": [
+        "053c7e708327c9b8448579bd2141bf09f7337662"
+      ],
+      "authoredAt": "2026-10-08T10:13:27-04:00",
+      "title": "Add owner-controlled holiday themes and automatic calendar"
+    },
+    {
+      "commit": "a1be9eae2e45c6f45dc5698e68099a58e300da95",
+      "parents": [
+        "053c7e708327c9b8448579bd2141bf09f7337662",
+        "e7163b86831320e27f4fc35a2cd1920bfaae5ca5"
+      ],
+      "authoredAt": "2026-10-08T17:05:54-04:00",
+      "title": "Merge pull request #70 from GEEKProtocol0110/codex/holiday-theme-controls"
+    },
+    {
+      "commit": "708c47e7a14e3d67316ce390609857518c6a7721",
+      "parents": [
+        "a1be9eae2e45c6f45dc5698e68099a58e300da95"
+      ],
+      "authoredAt": "2026-10-08T17:07:49-04:00",
+      "title": "Route holiday workspace explicitly through protected Operations"
+    },
+    {
+      "commit": "b4f8998f51c5499e1e7f5692068352e1f3c28547",
+      "parents": [
+        "a1be9eae2e45c6f45dc5698e68099a58e300da95",
+        "708c47e7a14e3d67316ce390609857518c6a7721"
+      ],
+      "authoredAt": "2026-10-08T17:09:33-04:00",
+      "title": "Merge pull request #71 from GEEKProtocol0110/codex/fix-holiday-workspace-route"
+    },
+    {
+      "commit": "658f8dd28428a2c5e570c53a2308a41b53fe5f81",
+      "parents": [
+        "b4f8998f51c5499e1e7f5692068352e1f3c28547",
+        "707eae8c85e8d6227c67e5862557866489296dc7"
+      ],
+      "authoredAt": "2026-10-08T17:36:23-04:00",
+      "title": "Merge pull request #69 from GEEKProtocol0110/codex/wallet-independent-sign-in"
+    },
+    {
+      "commit": "1bbe8f28dc56d066b99e4e71c66a53127f572998",
+      "parents": [
+        "658f8dd28428a2c5e570c53a2308a41b53fe5f81"
+      ],
+      "authoredAt": "2026-10-08T17:59:05-04:00",
+      "title": "Add owner authenticator enforcement and isolated recovery drills"
+    },
+    {
+      "commit": "cd69dc00ba634bcc436389c56a91fe733fad0b17",
+      "parents": [
+        "658f8dd28428a2c5e570c53a2308a41b53fe5f81",
+        "1bbe8f28dc56d066b99e4e71c66a53127f572998"
+      ],
+      "authoredAt": "2026-10-08T18:18:02-04:00",
+      "title": "Merge pull request #72 from GEEKProtocol0110/codex/operator-authenticator-recovery"
+    },
+    {
+      "commit": "e22a264c0d2e4028f80fdd74041c5480876cf300",
+      "parents": [
+        "cd69dc00ba634bcc436389c56a91fe733fad0b17"
+      ],
+      "authoredAt": "2026-10-08T18:44:46-04:00",
+      "title": "Guide GEEK minting and clarify wallet submission receipts"
+    },
+    {
+      "commit": "0f95d81ce9e1d0a2d1ccf0a20e183cdee1bcc021",
+      "parents": [
+        "cd69dc00ba634bcc436389c56a91fe733fad0b17",
+        "e22a264c0d2e4028f80fdd74041c5480876cf300"
+      ],
+      "authoredAt": "2026-10-08T18:46:40-04:00",
+      "title": "Merge pull request #73 from GEEKProtocol0110/codex/mint-guided-experience"
+    },
+    {
+      "commit": "7c14baddba0fd5a85d217312c3338e0d4e8ae6e1",
+      "parents": [
+        "0f95d81ce9e1d0a2d1ccf0a20e183cdee1bcc021"
+      ],
+      "authoredAt": "2026-10-08T19:05:05-04:00",
+      "title": "Add Geek Protocol Hall of Thanks and community history"
+    },
+    {
+      "commit": "b2332975827a648cf616e3e1b7678749763af290",
+      "parents": [
+        "0f95d81ce9e1d0a2d1ccf0a20e183cdee1bcc021",
+        "7c14baddba0fd5a85d217312c3338e0d4e8ae6e1"
+      ],
+      "authoredAt": "2026-10-08T19:08:43-04:00",
+      "title": "Merge pull request #74 from GEEKProtocol0110/codex/hall-of-thanks"
+    },
+    {
+      "commit": "12bfea15217292ff2d05f5d4e47471ecfc33896a",
+      "parents": [
+        "b2332975827a648cf616e3e1b7678749763af290"
+      ],
+      "authoredAt": "2026-10-08T19:18:17-04:00",
+      "title": "Recognize KaspaCom and KasLens in the Hall of Thanks"
+    },
+    {
+      "commit": "9a6d4f024dd90c507739e0e47946a3d80cd546a7",
+      "parents": [
+        "12bfea15217292ff2d05f5d4e47471ecfc33896a"
+      ],
+      "authoredAt": "2026-10-08T19:31:54-04:00",
+      "title": "Honor KRC-20 communities and add ten sourced Kaspa questions"
+    },
+    {
+      "commit": "3dc87c1d44d345bf63bffd41073ed74072c521b5",
+      "parents": [
+        "b2332975827a648cf616e3e1b7678749763af290",
+        "9a6d4f024dd90c507739e0e47946a3d80cd546a7"
+      ],
+      "authoredAt": "2026-10-08T19:40:36-04:00",
+      "title": "Merge pull request #75 from GEEKProtocol0110/codex/thanks-kaspa-discovery"
+    },
+    {
+      "commit": "56c2b9cd34e7993a61b1aabbabad4858b970db7e",
+      "parents": [
+        "3dc87c1d44d345bf63bffd41073ed74072c521b5"
+      ],
+      "authoredAt": "2026-10-08T20:51:33-04:00",
+      "title": "Thank Tangem for Kaspa and KRC-20 ecosystem wallet support"
+    },
+    {
+      "commit": "4431eb1405f8c25e9c32d2a3f8b59c0982b25588",
+      "parents": [
+        "3dc87c1d44d345bf63bffd41073ed74072c521b5",
+        "56c2b9cd34e7993a61b1aabbabad4858b970db7e"
+      ],
+      "authoredAt": "2026-10-08T20:54:30-04:00",
+      "title": "Merge pull request #76 from GEEKProtocol0110/codex/thanks-tangem"
+    },
+    {
+      "commit": "01a20068afb4d5ba634fcfae2b4a8ffdc7c3b542",
+      "parents": [
+        "4431eb1405f8c25e9c32d2a3f8b59c0982b25588"
+      ],
+      "authoredAt": "2026-10-08T21:18:05-04:00",
+      "title": "Open private Hall applications and community contributions"
+    },
+    {
+      "commit": "f696cb78b41c86a485df837aaeb9a0399db02060",
+      "parents": [
+        "4431eb1405f8c25e9c32d2a3f8b59c0982b25588",
+        "01a20068afb4d5ba634fcfae2b4a8ffdc7c3b542"
+      ],
+      "authoredAt": "2026-10-08T21:25:00-04:00",
+      "title": "Merge pull request #77 from GEEKProtocol0110/codex/community-contributions"
+    },
+    {
+      "commit": "ffd459a77a61cab3b827e25fb32aba82b9f4e173",
+      "parents": [
+        "f696cb78b41c86a485df837aaeb9a0399db02060"
+      ],
+      "authoredAt": "2026-10-08T22:21:42-04:00",
+      "title": "Show waiting community reviews on Operations home"
+    },
+    {
+      "commit": "4d48cde8ab84853aa27700bbe2c6baa63a341acd",
+      "parents": [
+        "f696cb78b41c86a485df837aaeb9a0399db02060",
+        "ffd459a77a61cab3b827e25fb32aba82b9f4e173"
+      ],
+      "authoredAt": "2026-10-08T22:39:57-04:00",
+      "title": "Merge pull request #78 from GEEKProtocol0110/codex/operations-attention"
+    },
+    {
+      "commit": "e5aaa05e18a307e1fe920a3c1133c4303b16f3f2",
+      "parents": [
+        "4d48cde8ab84853aa27700bbe2c6baa63a341acd"
+      ],
+      "authoredAt": "2026-10-08T23:04:14-04:00",
+      "title": "Clarify Kaspa and KRC-20 questions with source-backed editorial review"
+    },
+    {
+      "commit": "8aa2f036bce88bed5821abdd97e2f05787aa0d8f",
+      "parents": [
+        "4d48cde8ab84853aa27700bbe2c6baa63a341acd",
+        "e5aaa05e18a307e1fe920a3c1133c4303b16f3f2"
+      ],
+      "authoredAt": "2026-10-08T23:14:59-04:00",
+      "title": "Merge pull request #80 from GEEKProtocol0110/codex/kaspa-editorial-review"
+    },
+    {
+      "commit": "2547f18eae729c59dae3865412f965c7323fdd61",
+      "parents": [
+        "8aa2f036bce88bed5821abdd97e2f05787aa0d8f"
+      ],
+      "authoredAt": "2026-10-08T23:42:09-04:00",
+      "title": "Preserve Quest save JSON and recover honestly after unverified responses"
+    },
+    {
+      "commit": "a682c20733c771d074b96284b889a217fb69a8ed",
+      "parents": [
+        "8aa2f036bce88bed5821abdd97e2f05787aa0d8f",
+        "2547f18eae729c59dae3865412f965c7323fdd61"
+      ],
+      "authoredAt": "2026-10-08T23:57:58-04:00",
+      "title": "Merge pull request #82 from GEEKProtocol0110/codex/quest-save-recovery"
+    },
+    {
+      "commit": "75236b2970e65c6b686322d00636f7354ecf04ed",
+      "parents": [
+        "a682c20733c771d074b96284b889a217fb69a8ed"
+      ],
+      "authoredAt": "2026-10-09T05:19:27-04:00",
+      "title": "Debug player save recovery and Royale state; polish mobile Quest actions"
+    },
+    {
+      "commit": "ff4ae10136d84403b3ca90801927ec9e78847c89",
+      "parents": [
+        "a682c20733c771d074b96284b889a217fb69a8ed",
+        "75236b2970e65c6b686322d00636f7354ecf04ed"
+      ],
+      "authoredAt": "2026-10-09T05:55:02-04:00",
+      "title": "Merge pull request #86 from GEEKProtocol0110/codex/ux-reliability-polish"
+    },
+    {
+      "commit": "73b6def184f6c60bd85b81035a0407545589c56a",
+      "parents": [
+        "ff4ae10136d84403b3ca90801927ec9e78847c89"
+      ],
+      "authoredAt": "2026-10-09T06:28:11-04:00",
+      "title": "Validate stored identity records and preserve unavailable state"
+    },
+    {
+      "commit": "a84d37b07a00415ae6ac79832be9fc65068b887f",
+      "parents": [
+        "ff4ae10136d84403b3ca90801927ec9e78847c89"
+      ],
+      "authoredAt": "2026-10-09T07:29:02-04:00",
+      "title": "Check public answer artifacts and disabled settlement API boundaries"
+    },
+    {
+      "commit": "5f48634f53a5c3f437da265f174bfce25dba7d1d",
+      "parents": [
+        "ff4ae10136d84403b3ca90801927ec9e78847c89",
+        "73b6def184f6c60bd85b81035a0407545589c56a"
+      ],
+      "authoredAt": "2026-10-09T07:41:22-04:00",
+      "title": "Merge pull request #88 from GEEKProtocol0110/codex/identity-record-validation"
+    },
+    {
+      "commit": "78ed916ac006ee97bdac109b337df238586d481c",
+      "parents": [
+        "5f48634f53a5c3f437da265f174bfce25dba7d1d",
+        "a84d37b07a00415ae6ac79832be9fc65068b887f"
+      ],
+      "authoredAt": "2026-10-09T07:41:43-04:00",
+      "title": "Merge pull request #90 from GEEKProtocol0110/codex/release-boundary-checks"
+    },
+    {
+      "commit": "6f17de351845b3fc6139c770b3e7b873a1198024",
+      "parents": [
+        "78ed916ac006ee97bdac109b337df238586d481c"
+      ],
+      "authoredAt": "2026-10-09T12:43:57-04:00",
+      "title": "Show Quest record support codes and visible retry feedback"
+    },
+    {
+      "commit": "e0a3ad5c4464a00ef11b391b9caeaaf3f1ba5183",
+      "parents": [
+        "78ed916ac006ee97bdac109b337df238586d481c",
+        "6f17de351845b3fc6139c770b3e7b873a1198024"
+      ],
+      "authoredAt": "2026-10-09T12:47:09-04:00",
+      "title": "Merge pull request #91 from GEEKProtocol0110/codex/quest-validation-diagnostics"
+    },
+    {
+      "commit": "88ce64ef983d0bccc07c25254f9b9791c0300b39",
+      "parents": [
+        "e0a3ad5c4464a00ef11b391b9caeaaf3f1ba5183"
+      ],
+      "authoredAt": "2026-10-09T14:09:46-04:00",
+      "title": "Recover verified first Quest Begin saves with omitted null fields"
+    },
+    {
+      "commit": "382ffdb59f967e684ceb4a001f7d6705fe8fe55c",
+      "parents": [
+        "e0a3ad5c4464a00ef11b391b9caeaaf3f1ba5183",
+        "88ce64ef983d0bccc07c25254f9b9791c0300b39"
+      ],
+      "authoredAt": "2026-10-09T18:50:49-04:00",
+      "title": "Merge pull request #92 from GEEKProtocol0110/codex/quest-legacy-recovery"
+    },
+    {
+      "commit": "8db24414224a47ef12b702c445a665e175b61f34",
+      "parents": [
+        "382ffdb59f967e684ceb4a001f7d6705fe8fe55c"
+      ],
+      "authoredAt": "2026-10-10T05:31:42-04:00",
+      "title": "Make Geek Mini and Kaspa Live Widget discoverable from HQ (#93)"
+    },
+    {
+      "commit": "bc85f6964025beac0f2721684d9dbbb95b337be1",
+      "parents": [
+        "8db24414224a47ef12b702c445a665e175b61f34"
+      ],
+      "authoredAt": "2026-10-10T10:47:58-04:00",
+      "title": "Give Hall of Thanks a crisp dedicated social preview card (#94)"
+    },
+    {
+      "commit": "f0b239981c6ce9747e1b28aebecb2cf0cab2008a",
+      "parents": [
+        "bc85f6964025beac0f2721684d9dbbb95b337be1"
+      ],
+      "authoredAt": "2026-10-10T14:35:08-04:00",
+      "title": "Link the signed public Kaspa widget download (#95)"
+    },
+    {
+      "commit": "280c9749d3afbdef0a7cda04506d74337aec6bda",
+      "parents": [
+        "f0b239981c6ce9747e1b28aebecb2cf0cab2008a"
+      ],
+      "authoredAt": "2026-10-10T23:06:41-04:00",
+      "title": "Add a first-visit route and more My Geek starter choices (#96)"
+    },
+    {
+      "commit": "1ebb02c10bbc70bfad1a5e3613e161de59dc044a",
+      "parents": [
+        "280c9749d3afbdef0a7cda04506d74337aec6bda"
+      ],
+      "authoredAt": "2026-10-10T23:12:13-04:00",
+      "title": "Use the authored GIGA character in the welcome guide (#97)"
+    },
+    {
+      "commit": "4b432f6407b8b691c15fef3a2bb71f747e491efe",
+      "parents": [
+        "1ebb02c10bbc70bfad1a5e3613e161de59dc044a"
+      ],
+      "authoredAt": "2026-10-11T00:33:30-04:00",
+      "title": "Complete HQ first-visit, atomic ranked saves and launch-readiness review (#98)"
+    },
+    {
+      "commit": "a93fad53c09c33f64d40f8e8c6345ff31d4c3a86",
+      "parents": [
+        "4b432f6407b8b691c15fef3a2bb71f747e491efe"
+      ],
+      "authoredAt": "2026-10-11T02:10:00-04:00",
+      "title": "Handle incomplete Kasware mint receipts without false failure messages (#99)"
+    },
+    {
+      "commit": "926bd1dad2264191f5f76950ca9482089e49b8f0",
+      "parents": [
+        "a93fad53c09c33f64d40f8e8c6345ff31d4c3a86"
+      ],
+      "authoredAt": "2026-10-11T02:32:39-04:00",
+      "title": "Add controlled GEEK mint queues, receipt diagnostics, and Kaspacom trading path (#100)"
+    },
+    {
+      "commit": "d7a00d277f7b537e826ff134b3a61094d428146d",
+      "parents": [
+        "926bd1dad2264191f5f76950ca9482089e49b8f0"
+      ],
+      "authoredAt": "2026-10-11T03:57:47-04:00",
+      "title": "Add Value in Motion, the fourth saved Quiz Quest chapter (#101)"
+    },
+    {
+      "commit": "30f025fbc00037e5ee44bc7ca3fd8888e1b6ec22",
+      "parents": [
+        "d7a00d277f7b537e826ff134b3a61094d428146d"
+      ],
+      "authoredAt": "2026-10-13T21:24:53-04:00",
+      "title": "Provide a verified Android widget download and dedicated setup guide (#102)"
+    },
+    {
+      "commit": "37f07dcc4d44a1453711826f7c30d78709d3d989",
+      "parents": [
+        "30f025fbc00037e5ee44bc7ca3fd8888e1b6ec22"
+      ],
+      "authoredAt": "2026-10-14T04:15:35-04:00",
+      "title": "feat: add Android and iPhone widget installation paths to HQ"
+    },
+    {
+      "commit": "f1f84c8c5d74d853e6a6dda2e2996ee88de011cd",
+      "parents": [
+        "37f07dcc4d44a1453711826f7c30d78709d3d989"
+      ],
+      "authoredAt": "2026-10-14T04:17:17-04:00",
+      "title": "fix: keep widget copy controls readable and verify request timeout"
+    },
+    {
+      "commit": "500fa97f09523f64bc7dfa3565066eb446710a13",
+      "parents": [
+        "30f025fbc00037e5ee44bc7ca3fd8888e1b6ec22",
+        "f1f84c8c5d74d853e6a6dda2e2996ee88de011cd"
+      ],
+      "authoredAt": "2026-10-14T04:19:01-04:00",
+      "title": "Merge pull request #103 from GEEKProtocol0110/codex/widget-install-page"
+    },
+    {
+      "commit": "552a64f8ce349f77fe5220eb7adad49f7aa0b224",
+      "parents": [
+        "500fa97f09523f64bc7dfa3565066eb446710a13"
+      ],
+      "authoredAt": "2026-10-14T06:28:34-04:00",
+      "title": "Improve question review, mobile learning, Royale discovery and testnet receipts (#104)"
+    },
+    {
+      "commit": "c7c50e861f7e2a27db6b0d626f51a32efc925241",
+      "parents": [
+        "552a64f8ce349f77fe5220eb7adad49f7aa0b224"
+      ],
+      "authoredAt": "2026-10-14T06:33:24-04:00",
+      "title": "Fix private Operations desk routes (#105)"
+    },
+    {
+      "commit": "2e1a0ef70a2db2433010cd65988c540bc86e1a6f",
+      "parents": [
+        "c7c50e861f7e2a27db6b0d626f51a32efc925241"
+      ],
+      "authoredAt": "2026-10-14T07:16:48-04:00",
+      "title": "Monitor live pages, services, private routes and payment gates (#106)"
+    },
+    {
+      "commit": "bda84f91098105b8aefc7ad70a9bc04309b3803b",
+      "parents": [
+        "2e1a0ef70a2db2433010cd65988c540bc86e1a6f"
+      ],
+      "authoredAt": "2026-10-14T09:00:24-04:00",
+      "title": "Stress-test credit issuance, fee rounding and hypothetical reward reserves (#107)"
+    },
+    {
+      "commit": "b50b417e4bd64d5c0a0a4ca5fe73eec4b5934cce",
+      "parents": [
+        "bda84f91098105b8aefc7ad70a9bc04309b3803b"
+      ],
+      "authoredAt": "2026-10-14T09:39:44-04:00",
+      "title": "Model 100 GEEK round rewards and daily reserve runway (#108)"
+    },
+    {
+      "commit": "5421a78524cd81dcd54aeddb8f04ca01efb75e7c",
+      "parents": [
+        "b50b417e4bd64d5c0a0a4ca5fe73eec4b5934cce"
+      ],
+      "authoredAt": "2026-10-14T23:18:25-04:00",
+      "title": "Make Kaspa onboarding the first action on mobile HQ (#109)"
+    },
+    {
+      "commit": "7b138bb5c27d5195f7e9a5a67cd8798b0764583f",
+      "parents": [
+        "5421a78524cd81dcd54aeddb8f04ca01efb75e7c"
+      ],
+      "authoredAt": "2026-10-14T23:44:19-04:00",
+      "title": "Prepare free-beta pilot checklist and candidate npm SBOM (#84)"
+    },
+    {
+      "commit": "efeb0c7c9869346dfa87ce67c950dce460962fd3",
+      "parents": [
+        "7b138bb5c27d5195f7e9a5a67cd8798b0764583f"
+      ],
+      "authoredAt": "2026-10-15T00:08:52-04:00",
+      "title": "Add credited KaspaCom further reading to learning pages (#110)"
+    },
+    {
+      "commit": "7dc26bc136cab72a60437d94141a8f0bb692365b",
+      "parents": [
+        "efeb0c7c9869346dfa87ce67c950dce460962fd3"
+      ],
+      "authoredAt": "2026-10-15T00:59:11-04:00",
+      "title": "Require reviewed banks before CCE and add the free Geek Store fitting room (#111)"
+    },
+    {
+      "commit": "df28b93e70831c7c9d2af3a148e2867e6e32a47f",
+      "parents": [
+        "7dc26bc136cab72a60437d94141a8f0bb692365b"
+      ],
+      "authoredAt": "2026-10-15T01:52:13-04:00",
+      "title": "Expand Kaspa to 250 distinct source-checked questions (#112)"
+    },
+    {
+      "commit": "e3fd589878d473939724b06882fb167b1e8d9b0a",
+      "parents": [
+        "df28b93e70831c7c9d2af3a148e2867e6e32a47f"
+      ],
+      "authoredAt": "2026-10-15T03:40:48-04:00",
+      "title": "Reach 500 sourced Kaspa questions and preserve the project handoff (#113)"
+    }
+  ]
+}
