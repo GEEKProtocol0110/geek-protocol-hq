@@ -28,7 +28,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | GOV-001 | P2 | proposed | Develop an unclassified public-service refresher pilot | Founder with agency sponsor unassigned |
 | MIL-001 | P3 | proposed | Explore military and veteran professional learning | Founder with authorized institutional sponsor unassigned |
 | ECO-001 | P1 | planned | Audit each ecosystem component and preserve its handoff | Maintainer for each repository unassigned |
-| CHAIN-001 | P1 | blocked | Verify the TN10 test asset and wallet before a real pilot | Maintainer; founder controls the external testnet wallet |
+| CHAIN-001 | P1 | needs-evidence | Verify the TN10 test asset and wallet before a real pilot | Maintainer; founder controls the external testnet wallet |
 
 ## CONT-001: Publish the continuation system
 
@@ -342,11 +342,9 @@ Evidence/specification: [docs/continuity/repositories.json](../../docs/continuit
 
 ## CHAIN-001: Verify the TN10 test asset and wallet before a real pilot
 
-**P1 / blocked.** Owner: Maintainer; founder controls the external testnet wallet. Dependencies: none.
+**P1 / needs-evidence.** Owner: Maintainer; founder controls the external testnet wallet. Dependencies: none.
 
-Next action: Review the GEEKT unsigned packet, implement or select a separately reviewed Kasware TN10 signing integration, verify the installed provider and funds, then deploy/mint once and reconcile before enabling the manual pilot.
-
-Blocker: Unsigned GEEKT packet now mirrors pinned GEEK supply/mint settings; ticker was reported unused on October 15. No TN10 deployment signer in HQ, deployed asset, wallet approval or real-device signing evidence. Supplied address validated privately; native balance APIs returned HTTP 403.
+Next action: Reconcile the existing external Kasware mint batch and retain hashes, verify stable holdings/fee funds, then privately configure the verified GEEKT deploy hash and sender for one manual pilot transfer.
 
 Acceptance:
 

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "unsigned-proposal-not-deployed",
+  "status": "deployment-indexer-verified-mint-batch-in-progress",
   "recordedOn": "2026-10-15",
   "backlogId": "CHAIN-001",
   "network": "testnet-10",
@@ -39,23 +39,25 @@
     "appIdentified": "Kasware, supplied by founder",
     "testnetAddress": "Privately supplied; checksum and Kaspa WASM Address parser passed",
     "nativeBalance": "Not independently verified; native REST API returned HTTP 403",
-    "krc20Holdings": "TN10 indexer returned an empty token list for the supplied address",
+    "krc20Holdings": "GEEKT holdings now observed; address-specific balance stays private. Earlier empty-list observation is superseded.",
     "documentedProviderSupport": true,
     "installedProviderVerified": false,
-    "deploymentSubmitted": false,
-    "deploymentVerified": false,
-    "mintSubmitted": false,
-    "mintVerified": false,
+    "deploymentSubmitted": true,
+    "deploymentVerified": true,
+    "mintSubmitted": true,
+    "mintVerified": true,
     "pilotEnabled": false,
     "mainnetSettlementEnabled": false,
     "founderRequestedMainnetParity": true,
-    "deploymentApprovalGiven": false
+    "individualMintReceiptVerified": false,
+    "mintBatchComplete": false,
+    "signingEvidence": "Founder Kasware TN10 mint screenshot plus matching accepted deploy operation; no HQ signer/provider acceptance claim."
   },
   "pilotConfigurationAfterVerificationOnly": {
     "TESTNET_REWARDS_ENABLED": "false",
     "TESTNET_REWARDS_NETWORK": "testnet-10",
     "TESTNET_REWARDS_TICKER": "GEEKT",
-    "TESTNET_REWARDS_DEPLOYMENT_HASH": null,
+    "TESTNET_REWARDS_DEPLOYMENT_HASH": "2a74f6e1b4cf7c8f813cc089840a1ed85d90be96d6d48eb30f741b03d7161742",
     "TESTNET_REWARDS_DECIMALS": "8",
     "TESTNET_REWARDS_SENDER": null,
     "TESTNET_REWARDS_AMOUNT_RAW": "100000000"
@@ -82,5 +84,26 @@
       "deploymentHash"
     ],
     "scope": "Token deployment parameters only; does not activate rewards, pool/burn policy, settlement or a signing request."
+  },
+  "deploymentObservation": {
+    "checkedAt": "2026-10-15T11:06:40Z",
+    "network": "testnet-10",
+    "deploymentHash": "2a74f6e1b4cf7c8f813cc089840a1ed85d90be96d6d48eb30f741b03d7161742",
+    "tokenState": "deployed",
+    "maxRaw": "14400000000000000000",
+    "limitRaw": "10000000000000",
+    "premintRaw": "0",
+    "decimals": 8,
+    "mintedRaw": "190000000000000",
+    "mintCount": "19",
+    "transferCount": "0",
+    "senderMatchedPrivately": true,
+    "txAccept": "1",
+    "opAccept": "1",
+    "opError": "",
+    "checkpoint": "26b9e3a1b26c116b4f80cded35784a00cba9af23653cb20ebc24f68dce104eab",
+    "operationUrl": "https://tn10api.kasplex.org/v1/krc20/op/2a74f6e1b4cf7c8f813cc089840a1ed85d90be96d6d48eb30f741b03d7161742",
+    "tokenUrl": "https://tn10api.kasplex.org/v1/krc20/token/GEEKT",
+    "meaning": "Dated indexer acceptance and token metadata, not continuous monitoring or independent finality. Mint batch still running at observation; no reward transfer."
   }
 }

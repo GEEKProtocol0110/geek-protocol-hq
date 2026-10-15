@@ -1,8 +1,16 @@
-# GEEKT unsigned TN10 setup packet
+# GEEKT TN10 setup and deployment record
 
-**Prepared proposal, not deployed.** This packet preserves the exact operation for founder review before a separate wallet signing step. It contains unsigned protocol data, not a signed transaction, deployment hash, reserved ticker or working HQ deployment button. The public Mint page remains Mainnet-only; the Operations testnet desk records manually submitted transfers.
+**GEEKT is now deployed and accepted by the TN10 indexer.** The founder submitted the external Kasware operations. The operation JSON files remain unsigned reference data; this repository did not send them. Do not deploy this ticker again. The public HQ Mint page remains Mainnet-only and the Operations desk remains a disabled manual-transfer pilot.
 
-## Proposed parameters
+## October 15 indexed deployment
+
+At 11:06:40 UTC, the token endpoint reported GEEKT deployed with 144 billion maximum, 100,000 per mint, eight decimals and zero premint. The deploy reveal hash is `2a74f6e1b4cf7c8f813cc089840a1ed85d90be96d6d48eb30f741b03d7161742`. Its operation returned `txAccept: 1`, `opAccept: 1`, no operation error, and a sender matching the founder-supplied address checked privately. Both metadata and operation fields match the prepared payload.
+
+At that snapshot the indexer reported 19 mints, 1,900,000 GEEKT minted and zero transfers. Address holdings also showed GEEKT; address-specific details stay private. These are dated indexer observations. The founder's screenshot shows an ongoing 1,000-operation mint batch; its displayed percentage is batch progress. Neither screenshot completion counters nor this snapshot establish full-batch completion. Native TKAS balance remains unverified after API 403 responses; the screenshot's zero display alone does not establish exhaustion.
+
+Next reconcile the existing mint batch and preserve its hashes. Verify a later stable token balance and spendable fee funds before configuring one manual reward transfer. No new deployment is needed. The pilot remains disabled and its sender remains unset in this public template.
+
+## Matched deployment parameters
 
 | Setting | Proposal |
 | --- | --- |
@@ -31,7 +39,7 @@ On October 15 the fixed TN10 indexer returned `successful` and `state: unused` f
 
 Kasware's [Connection API](https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection) documents TN10 and manual mobile network selection. Its [KRC20 API](https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-krc20) documents deploy/mint/transfer types and user approval. The pinned [Kasplex deploy executor](https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go) validates deploy fields and the eight-decimal default. Its historical minimum protocol fee is 100,000,000,000 sompi (1,000 test KAS), before network fees. Verify current fees and available funds in the wallet before approving; this source is not a current fee quote.
 
-## Signing and reconciliation sequence
+## Reference sequence for a new deployment — already completed here through deployment
 
 1. Use a separately reviewed Kasware deployment integration; HQ has no TN10 deployment signing screen yet. On mobile, select TN10 inside Kasware. Verify installed provider/version, exact `kaspa_testnet_10` network and checksum-valid account. Missing provider or unknown network stops the experiment.
 2. Recheck GEEKT availability at the fixed TN10 indexer. If unavailable, already deployed, reserved or ambiguous, stop and revise the proposal. Do not silently select another ticker or reuse a Mainnet hash.
@@ -41,4 +49,4 @@ Kasware's [Connection API](https://docs.kasware.xyz/wallet/developer-documentati
 6. Review and submit the first-mint JSON once through type 3 on the same verified network/account. Reconcile its separate hash and verify the accepted mint plus 100,000-token balance. Zero premint means deployment alone gives no tokens.
 7. Fill the missing sender and deploy hash in a **private** pilot configuration. Keep `TESTNET_REWARDS_ENABLED=false` until asset, wallet and amount checks pass. Then follow the [manual receipt procedure](TESTNET-REWARD-PILOT.md) for one eligible Daily Signal transfer and reconciliation.
 
-No wallet request, deployment, mint, transfer or environment update was performed in preparing this packet. CCE, collection ownership and Mainnet settlement stay held. The next implementation task is a separately reviewed Kasware integration with fresh TN10/asset checks, explicit operation actions, durable uncertain-outcome protection, receipt export and real-device acceptance.
+Preparing the original packet sent no wallet operation. The founder subsequently deployed and began minting externally in Kasware, as recorded above. HQ has not enabled the pilot, submitted a reward transfer or implemented a TN10 deployment signer. CCE, collection ownership and Mainnet settlement stay held. Next reconcile the existing batch, then validate the private pilot configuration and execute one manual receipt flow; adding an HQ deployment button is not a prerequisite for this already-deployed asset.

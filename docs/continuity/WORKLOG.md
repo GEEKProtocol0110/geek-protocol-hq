@@ -43,3 +43,10 @@ Use one entry per substantive session/interruption: task ID, exact review/commit
 - **Outcome:** founder requested matching GEEK tokenomics. Superseded the unsubmitted small-supply proposal with 144 billion maximum, 100,000 per mint, eight decimals and zero premint. Preserved the original proposal in this historical log; updated current deploy JSON, manifest and guide. DR-011 records the direction.
 - **Validation:** exact raw fields matched `GEEK_DEPLOYMENT`; BigInt scaling and 1,440,000-mint capacity checked. Continuity generation/check and whitespace checks passed. Review record: PR #114.
 - **Boundary/next:** GEEKT remains a separate unsigned TN10 packet. No wallet approval, deployment, mint, reward activation or environment change; guarded signer integration and real-device acceptance remain pending.
+
+## October 15, 2026 — CHAIN-001 external deployment observed
+
+- **Outcome:** founder deployed GEEKT and began a 1,000-operation batch in Kasware. Fixed TN10 endpoints at 11:06:40 UTC reported a matching accepted deployment, 19 mints / 1,900,000 tokens and zero transfers. Deploy hash: `2a74f6e1b4cf7c8f813cc089840a1ed85d90be96d6d48eb30f741b03d7161742`. Matched supply/limit/premint/decimals and privately matched the sender. Address holdings also returned GEEKT.
+- **Evidence:** [current asset record](../TESTNET-ASSET-SETUP.md) and machine-readable deployment observation. Earlier unsigned/unused snapshots stay historical. The assistant performed read-only checks; the user submitted wallet operations externally.
+- **Validation:** exact operation and metadata matching, accepted transaction/operation and no operation error checked; continuity generation/check and whitespace checks passed. The batch was not complete at observation; native TKAS balance and individual mint receipt reconciliation remain unverified.
+- **Next:** reconcile the current batch and verify fee funds, then privately configure and execute one manual reward receipt. No second deploy, new batch, environment enablement or reward transfer was performed here. Review record: PR #114.

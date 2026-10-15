@@ -22,7 +22,7 @@ Next obtain the complete public `kaspatest:` address directly from the founder's
 
 ## Prepared test-asset proposal
 
-The [GEEKT unsigned setup packet](TESTNET-ASSET-SETUP.md) contains a separate test ticker, exact deploy/mint operations, supply arithmetic, incomplete disabled configuration and signing/reconciliation procedure. It is not deployed and HQ has no TN10 deployment signing screen yet. The founder supplied a valid full test address privately; native balance remains unverified after HTTP 403 responses.
+The [GEEKT unsigned setup packet](TESTNET-ASSET-SETUP.md) contains a separate test ticker, exact deploy/mint operations, supply arithmetic, incomplete disabled configuration and signing/reconciliation procedure. The founder subsequently deployed GEEKT externally in Kasware; accepted deployment and partial mint evidence are in the setup record. HQ still has no TN10 deployment signing screen. The founder supplied a valid full test address privately; native balance remains unverified after HTTP 403 responses.
 
 ## Configure a real pilot
 

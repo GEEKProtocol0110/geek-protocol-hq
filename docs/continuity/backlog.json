@@ -424,10 +424,10 @@
     {
       "id": "CHAIN-001",
       "priority": "P1",
-      "status": "blocked",
+      "status": "needs-evidence",
       "title": "Verify the TN10 test asset and wallet before a real pilot",
       "owner": "Maintainer; founder controls the external testnet wallet",
-      "nextAction": "Review the GEEKT unsigned packet, implement or select a separately reviewed Kasware TN10 signing integration, verify the installed provider and funds, then deploy/mint once and reconcile before enabling the manual pilot.",
+      "nextAction": "Reconcile the existing external Kasware mint batch and retain hashes, verify stable holdings/fee funds, then privately configure the verified GEEKT deploy hash and sender for one manual pilot transfer.",
       "acceptance": [
         "Exact TN10 token deployment, decimals, sender and amount verified against the fixed indexer.",
         "Wallet provider and TN10 signing workflow exercised with recorded transaction evidence.",
@@ -438,8 +438,7 @@
       "evidence": [
         "docs/TESTNET-REWARD-PILOT.md",
         "docs/TESTNET-ASSET-SETUP.md"
-      ],
-      "blocker": "Unsigned GEEKT packet now mirrors pinned GEEK supply/mint settings; ticker was reported unused on October 15. No TN10 deployment signer in HQ, deployed asset, wallet approval or real-device signing evidence. Supplied address validated privately; native balance APIs returned HTTP 403."
+      ]
     }
   ]
 }
