@@ -10,11 +10,11 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,125 active questions; 618 recorded internal source reviews; 7,382 further reviews needed across eight targets. 517 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,145 active questions; 638 recorded internal source reviews; 7,362 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
-| Kaspa | 520 | 520 | 480 |
+| Kaspa | 540 | 540 | 460 |
 | Video games | 602 | 0 | 1000 |
 | Science fiction | 515 | 37 | 963 |
 | Technology | 1497 | 15 | 985 |
@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-001: active.** BANK-001 candidate adds 20 internally source-checked convention/authority/metadata questions to the 500-concept baseline, for 520 Kaspa / 8,125 active / 618 source reviews / 517 Study concepts. Candidate is unmerged and not deployed; all existing answer keys and recorded holds remain unchanged.
+**BANK-001: active.** BANK-001 / PR #118 candidate adds 40 internally source-checked questions in two batches to the 500-concept baseline: 540 Kaspa / 8,145 active / 638 source reviews / 537 Study concepts. Candidate is unmerged and not deployed; existing answer keys and holds remain unchanged.
 
-Next task: **BANK-001**. Review the 20-question BANK-001 candidate and its pinned evidence, then continue distinct learning facts toward 1,000 Kaspa concepts. CHAIN-001 still needs the first accepted manual testnet reward; CHAIN-002 needs policy/artifact decisions. Preserve all recorded holds.
+Next task: **BANK-001**. Review PR #118 and both pinned item registers, then continue distinct primary-source learning facts toward 1,000 Kaspa concepts (460 remain). CHAIN-001 still needs the first accepted manual testnet reward; CHAIN-002 needs policy/artifact decisions. Preserve all recorded holds.
 
 ## Holds
 

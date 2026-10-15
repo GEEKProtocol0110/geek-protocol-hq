@@ -1,0 +1,570 @@
+{
+  "metadata": {
+    "title": "GEEK Protocol — KasWare application integration",
+    "version": "1.0.0",
+    "maintainedAt": "2026-10-15",
+    "questionCount": 20,
+    "conceptCount": 20,
+    "category": "Kaspa",
+    "difficultyDistribution": {
+      "easy": 6,
+      "medium": 12,
+      "hard": 2
+    },
+    "correctIndexDistribution": {
+      "0": 5,
+      "1": 5,
+      "2": 5,
+      "3": 5
+    },
+    "schema": "correctIndex is zero-based; options contains four distinct strings",
+    "sourceSnapshot": "78bb30045edd4d898c4d61c4c75ba1bc37e18748",
+    "reviewNotice": "Internally source-checked original questions scoped to this KasWare browser-extension revision. Not universal wallet behavior, an installed-version claim, a security audit or an endorsement. Difficulty is provisional.",
+    "attribution": "GEEK Protocol original questions based on pinned primary implementation evidence; no source code or prose imported.",
+    "licenses": [
+      "MIT"
+    ]
+  },
+  "questions": [
+    {
+      "id": "K540-0001",
+      "conceptId": "K540-0001",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Where does the cited KasWare extension expose its browser wallet API?",
+      "options": [
+        "window.kasware",
+        "window.kaspad",
+        "document.walletSecret",
+        "navigator.krc20"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "The injected provider is exposed through window.kasware; it is the application interface, not a private-key export.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L510",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0002",
+      "conceptId": "K540-0002",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Which browser event does the cited KasWare code dispatch after exposing its injected provider?",
+      "options": [
+        "accountsChanged",
+        "kasware#initialized",
+        "networkChanged",
+        "virtual-chain-changed"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The injection announcement is kasware#initialized. Account, network and node-chain events have different purposes.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L531",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0003",
+      "conceptId": "K540-0003",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Which cited KasWare method reads available authorized accounts and returns an empty list for an unauthorized site?",
+      "options": [
+        "requestAccounts()",
+        "getPublicKey()",
+        "getAccounts()",
+        "getNetwork()"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "getAccounts checks the calling origin and returns [] without connection permission; requestAccounts uses the connection approval flow.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/controller.ts#L36",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0004",
+      "conceptId": "K540-0004",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "For an ordinary external site, what does the cited KasWare permission service use to look up connection authorization?",
+      "options": [
+        "The requested token ticker",
+        "The recipient's address prefix",
+        "The transaction fee amount",
+        "The site's origin"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "External connection records are keyed by origin, and hasPermission also requires the stored site to be connected.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/service/permission.ts#L117",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0005",
+      "conceptId": "K540-0005",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "In the cited KasWare request flow, does an existing site connection by itself skip a required signing approval?",
+      "options": [
+        "No; the operation approval check runs after the connection check",
+        "Yes; connection permanently approves all later signatures",
+        "Yes; every connected site becomes a SAFE method",
+        "Only if the site requests an unrecognized method"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The connection check and operation-specific APPROVAL metadata are separate stages. A connection is not blanket signing consent.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/rpcFlow.ts#L89",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0006",
+      "conceptId": "K540-0006",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "What does the cited KasWare flow request when a non-SAFE operation reaches a locked keyring?",
+      "options": [
+        "An automatic wallet reset",
+        "An unlock approval before continuing",
+        "A fresh seed phrase from the website",
+        "A transaction broadcast without a signature"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The non-SAFE request path checks isUnlocked and waits for the wallet unlock approval before moving on.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/rpcFlow.ts#L41",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0007",
+      "conceptId": "K540-0007",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "What unit should an application use for the payment amount passed to the cited KasWare sendKaspa method?",
+      "options": [
+        "Whole KAS entered as a decimal string",
+        "The number of recipient UTXOs",
+        "Sompi",
+        "A percentage of the wallet balance"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "The interface names and forwards its amount argument as sompi. Applications must match that unit when constructing a payment request.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L402",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0008",
+      "conceptId": "K540-0008",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Which cited KasWare provider method requests KRC-20 holdings rather than the native KAS balance summary?",
+      "options": [
+        "getBalance()",
+        "getPublicKey()",
+        "getUtxoEntries()",
+        "getKRC20Balance()"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "The controller reads address inscriptions for getKRC20Balance; getBalance returns the native confirmed, unconfirmed and total amounts.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/controller.ts#L144",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0009",
+      "conceptId": "K540-0009",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "When the cited KasWare accountsChanged handler detects a changed active account, what does it emit to the application?",
+      "options": [
+        "The updated account-address array",
+        "Only a transaction ID",
+        "The mnemonic for the new account",
+        "Only the network name"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The handler updates its selected address and account list, then emits accountsChanged with the accounts array.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/pushEventHandlers.ts#L47",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0010",
+      "conceptId": "K540-0010",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Which provider event carries a changed network name in the cited KasWare implementation?",
+      "options": [
+        "accountsChanged",
+        "networkChanged",
+        "maturity",
+        "virtual-chain-changed"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "The handler compares the new network with its cached network and emits networkChanged with the changed name.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/pushEventHandlers.ts#L62",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0011",
+      "conceptId": "K540-0011",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "How does the cited KasWare disconnect handler change its cached account state?",
+      "options": [
+        "It retains both as currently authorized",
+        "It replaces the address with a new seed phrase",
+        "It clears the account list and selected address",
+        "It changes the selected account into a mainnet account"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "Disconnection clears the cached accounts and selected address, marks the provider disconnected and emits an empty accountsChanged list.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/pushEventHandlers.ts#L38",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0012",
+      "conceptId": "K540-0012",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Which cited KasWare method returns the wallet software VERSION value for compatibility checks?",
+      "options": [
+        "getNetwork()",
+        "getPublicKey()",
+        "getBalance()",
+        "getVersion()"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "getVersion returns the extension VERSION constant. Network and account queries describe different aspects of the wallet session.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/controller.ts#L552",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0013",
+      "conceptId": "K540-0013",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "What does a caller supply to the cited KasWare pushTx method?",
+      "options": [
+        "A raw transaction string to submit",
+        "A mnemonic to import",
+        "A human-readable message to sign",
+        "A list of account names to activate"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "pushTx forwards rawtx for transaction submission. Its input is not a seed phrase or a message-signing request.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L465",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0014",
+      "conceptId": "K540-0014",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "What happens when an application calls signKRC20BatchTransferTransaction in the cited KasWare page provider?",
+      "options": [
+        "It silently executes a native KAS payment",
+        "It throws a deprecation error naming krc20BatchTransferTransaction",
+        "It returns the current KRC-20 balance",
+        "It switches to mainnet and retries"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The deprecated page-provider method throws before submitting a request, directing callers to krc20BatchTransferTransaction.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L431",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0015",
+      "conceptId": "K540-0015",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "In the cited KasWare signPskt options, what does each signInputs entry specify?",
+      "options": [
+        "An output address and a token ticker",
+        "An account nickname and a password hint",
+        "An input index and its sighashType",
+        "A block hash and a confirmation count"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "Each entry pairs index with sighashType so the request can describe input-specific signing intent. The schema alone is not proof of a wallet execution result.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L486",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0016",
+      "conceptId": "K540-0016",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Why should an integrator examine numeric precision in the cited KasWare getUtxoEntries serialization?",
+      "options": [
+        "It encodes all integers as exact decimal strings",
+        "It encrypts every amount with a public address",
+        "It omits every value above one sompi",
+        "It converts bigint values to Number, which can lose integer precision above the safe range"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "The JSON replacer explicitly converts bigint to Number. JavaScript Numbers do not preserve all integers above Number.MAX_SAFE_INTEGER; this is a conversion caveat, not a claim that an observed balance was wrong.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/controller.ts#L168",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0017",
+      "conceptId": "K540-0017",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "For an authorized caller with a current account, how does the cited KasWare getUtxoEntries choose the queried address?",
+      "options": [
+        "It uses the supplied address when truthy, otherwise the current account address",
+        "It always queries every account in the wallet",
+        "It uses only the recipient of the last transaction",
+        "It always substitutes the mainnet genesis address"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The controller sends either [address] or [account.address] to the UTXO service. Permission and current-account checks run first.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/controller.ts#L167",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0018",
+      "conceptId": "K540-0018",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "Which three values does the cited KasWare verifyMessage interface accept?",
+      "options": [
+        "A private key, mnemonic and password",
+        "A public key, message and signature",
+        "A block hash, nonce and difficulty target",
+        "A token ticker, mint limit and maximum supply"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "verifyMessage forwards pubkey, message and sig for verification; it does not ask the application to provide signing secrets.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L371",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0019",
+      "conceptId": "K540-0019",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "How does the cited KasWare RPC flow handle a method with no corresponding provider-controller handler?",
+      "options": [
+        "It falls back to sendKaspa",
+        "It treats the method name as a message to sign",
+        "It throws a methodNotFound RPC error",
+        "It creates a connected-site record and reports success"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The first flow stage resolves the method name and rejects missing handlers before later approval and execution stages.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/rpcFlow.ts#L27",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    },
+    {
+      "id": "K540-0020",
+      "conceptId": "K540-0020",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Ecosystem",
+      "prompt": "If a background request rejects, what does the cited KasWare page provider do with the error?",
+      "options": [
+        "It replaces the error with a successful transaction ID",
+        "It hides the rejection and returns an empty signature",
+        "It automatically retries the request as a payment",
+        "It serializes and rethrows the error to the caller"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The _request catch handler rethrows serializeError(err), so the application must handle the rejected promise rather than assume success.",
+      "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L160",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-15",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "kasware",
+        "application-integration"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited KasWare implementation; source code and prose are not imported."
+    }
+  ]
+}

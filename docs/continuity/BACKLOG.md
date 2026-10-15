@@ -81,7 +81,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Review the unmerged 20-question conventions candidate and item-level evidence register, then broaden the next distinct primary-source batch toward 1,000. Current candidate: 520 reviewed Kaspa concepts; independent editorial review remains unassigned.
+Next action: Review unmerged PR #118: 40 additions across convention and KasWare integration batches, 540 internally source-checked Kaspa concepts. Then add distinct primary-source learning facts toward 1,000 (460 remain). Independent editorial review remains unassigned.
 
 Acceptance:
 
@@ -89,7 +89,7 @@ Acceptance:
 - No padded variants; existing issued answers remain compatible.
 - Tier capacity and bank/catalog/readiness checks pass.
 
-Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/QUESTION-MAINTENANCE.md](../../docs/QUESTION-MAINTENANCE.md), [docs/kaspa-520-review-2026-10-15.json](../../docs/kaspa-520-review-2026-10-15.json).
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/QUESTION-MAINTENANCE.md](../../docs/QUESTION-MAINTENANCE.md), [docs/kaspa-520-review-2026-10-15.json](../../docs/kaspa-520-review-2026-10-15.json), [docs/kaspa-540-review-2026-10-15.json](../../docs/kaspa-540-review-2026-10-15.json).
 
 ## BANK-002: Reach 1,000 reviewed Video games concepts
 

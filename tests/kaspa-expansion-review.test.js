@@ -12,6 +12,54 @@ const nextBank = read('server/questions/kaspa-500-2026-10-15.json');
 const nextRegister = read('docs/kaspa-500-review-2026-10-15.json');
 const conventions = read('server/questions/kaspa-conventions-2026-10-15.json');
 const conventionsRegister = read('docs/kaspa-520-review-2026-10-15.json');
+const integration = read('server/questions/kaspa-wallet-integration-2026-10-15.json');
+const integrationRegister = read('docs/kaspa-540-review-2026-10-15.json');
+
+test('KasWare integration items retain exact reviewed content and pinned source identity', () => {
+  assert.equal(integration.questions.length, 20);
+  assert.equal(integrationRegister.questionCount, 20);
+  assert.equal(integrationRegister.items.length, 20);
+  assert.equal(integrationRegister.independentReview, false);
+  assert.equal(integrationRegister.sourceRepository, 'kasware-wallet/extension');
+  assert.equal(integrationRegister.sourceSnapshot, '78bb30045edd4d898c4d61c4c75ba1bc37e18748');
+  const sourceFiles = new Map(integrationRegister.sources.map(s => [s.path, s]));
+  assert.equal(sourceFiles.size, 5);
+  const concepts = new Set();
+  for (const item of integrationRegister.items) {
+    const q = integration.questions.find(q => q.id === item.id);
+    assert.ok(q, item.id);
+    assert.equal(createHash('sha256').update(JSON.stringify(q)).digest('hex'), item.questionSha256, item.id);
+    assert.equal(q.source, item.source);
+    assert.equal(q.reviewedAt, integrationRegister.reviewedAt);
+    const url = new URL(item.source);
+    assert.equal(url.hostname, 'github.com');
+    const prefix = `/kasware-wallet/extension/blob/${integrationRegister.sourceSnapshot}/`;
+    assert.ok(url.pathname.startsWith(prefix), item.id);
+    assert.match(url.hash, /^#L[1-9]\d*$/);
+    const source = sourceFiles.get(url.pathname.slice(prefix.length));
+    assert.ok(source, item.id);
+    assert.equal(source.commit, integrationRegister.sourceSnapshot);
+    assert.equal(source.sha256, item.sourceSha256);
+    assert.match(source.sha256, /^[a-f0-9]{64}$/);
+    assert.match(source.gitBlobSha, /^[a-f0-9]{40}$/);
+    assert.ok(item.evidenceSymbol);
+    assert.equal(concepts.has(item.concept), false, item.id);
+    concepts.add(item.concept);
+  }
+});
+
+test('KasWare integration additions reach games and Study with balanced answer positions', () => {
+  const active = loadQuestionBank('kaspa');
+  const study = new Set(studyBank().map(q => q.id));
+  const positions = { 0: 0, 1: 0, 2: 0, 3: 0 };
+  for (const q of integration.questions) {
+    assert.equal(active.byId.get(q.id).conceptId, q.id);
+    assert.ok(study.has(q.id), q.id);
+    positions[q.correctIndex]++;
+  }
+  assert.deepEqual(positions, { 0: 5, 1: 5, 2: 5, 3: 5 });
+  assert.deepEqual(integration.metadata.correctIndexDistribution, positions);
+});
 
 test('Kaspa convention questions preserve their exact reviewed content and versioned evidence', () => {
   assert.equal(conventions.questions.length, 20);

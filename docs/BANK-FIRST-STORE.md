@@ -4,11 +4,11 @@ Founder direction, October 15, 2026: build 1,000 legitimate questions per catego
 
 ## The actual bank
 
-The audit began with 7,801 active questions, 285 carrying source-checked review records. A first History batch replaces seven drafts with sourced corrections and retires two unsuitable rows. After the Kaspa expansions to 500 and the 20-question conventions follow-up, the candidate bank has **8,125 active questions and 618 internally source-reviewed questions**, with **7,382 more reviewed questions needed** to meet the per-category minimum. This release does not claim the 8,000-question quality goal is complete.
+The audit began with 7,801 active questions, 285 carrying source-checked review records. A first History batch replaces seven drafts with sourced corrections and retires two unsuitable rows. After the Kaspa expansions to 500 and two 20-question convention/wallet-integration follow-ups, the candidate bank has **8,145 active questions and 638 internally source-reviewed questions**, with **7,362 more reviewed questions needed** to meet the per-category minimum. This release does not claim the 8,000-question quality goal is complete.
 
 | Category | Active | Recorded source reviews | Still needed for 1,000 | Additional distinct questions needed even if every current draft passes |
 | --- | ---: | ---: | ---: | ---: |
-| Kaspa | 520 | 520 | 480 | 480 |
+| Kaspa | 540 | 540 | 460 | 460 |
 | Video games | 602 | 0 | 1,000 | 398 |
 | Science fiction | 515 | 37 | 963 | 485 |
 | Technology | 1,497 | 15 | 985 | 0 |
