@@ -12,3 +12,9 @@
 .site-header nav a { color: #cfdbd8; font-size: .9rem; }
 @media (max-width: 850px) { .sources-grid { grid-template-columns: 1fr; } .sources-main { margin-top: 2rem; } }
 .sources-main .button-primary { color: #101b15; }
+
+.bank-table-wrap { overflow-x:auto; max-width:100%; border:1px solid #35464d; border-radius:12px; }
+.bank-table { border-collapse:collapse; width:100%; min-width:420px; font-size:.95rem; }
+.bank-table caption { text-align:left; padding:1rem; color:#eff5f6; }
+.bank-table :is(th,td) { padding:.75rem 1rem; text-align:right; border-top:1px solid #35464d; }
+.bank-table tr>*:first-child { text-align:left; }

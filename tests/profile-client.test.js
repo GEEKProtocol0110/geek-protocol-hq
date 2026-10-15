@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { clientFixture, deferred, aborted, json } from './helpers/client-fixture.js';
 import * as geek from '../public/assets/geek-avatar.js';
+import { takeStorePreview, saveStorePreview, storePreviewKey } from '../public/store/assets/preview.js';
 import * as campaignUI from '../public/quest/assets/campaign.js';
 import { questChapters } from '../public/quest/assets/chapter.js';
 import { defaultProfile } from '../server/profile.js';
@@ -86,7 +87,7 @@ test('a real studio save blocks sticker actions and cannot be undone by an older
     if (body?.action === 'customize-avatar') { customization = body.customization; return reply.promise; }
     if (path === '/api/collectibles' && delayRead) return oldRead.promise;
   });
-  Object.assign(ui.context, geek);
+  Object.assign(ui.context, geek, { takeStorePreview });
   ui.run(source('geek-builder').replace(/^import .*;\n/gm, ''));
   delayRead = true; const pendingRead = ui.window.GeekProfile.refreshCollectibles();
   const palette = ui.node('[data-geek-part="palette"]'); palette.value = geek.geekParts.palette.choices[1][0]; await palette.emit('change');
@@ -129,7 +130,7 @@ test('failed Study refresh hides stale totals and next-step claims', async () =>
 });
 
 const builderPage = fetch => {
-  const ui = clientFixture(fetch, geek);
+  const ui = clientFixture(fetch, { ...geek, takeStorePreview });
   ui.run(source('geek-builder').replace(/^import .*;\n/gm, '') + '\nglobalThis.actions = { saveCharacter };');
   ui.window.GeekBuilder.receive({ avatar: { id: geek.customGeekId }, customization: geek.defaultGeek, effects: [] });
   return ui;
@@ -215,4 +216,16 @@ test('HQ resets a completed-adventure link label when campaign status becomes un
   ui.window.dispatchEvent(new Event('geek:campaign-unavailable'));
   assert.equal(ui.node('[data-hq-quest-link]').href, '../quest/');
   assert.equal(ui.node('[data-hq-quest-link]').textContent, 'Reconnect adventure →');
+});
+
+
+test('a store handoff loads an unsaved preview, preserves it across profile reads and requires explicit save', async () => {
+  const requests=[],store=new Map();const design={...geek.personalGeek,outfit:'labcoat',back:'fieldkit',head:'goggles'};
+  const storage={getItem:k=>store.get(k)??null,setItem:(k,v)=>store.set(k,v),removeItem:k=>store.delete(k)};saveStorePreview(storage,design);
+  const ui=clientFixture(async(path,options)=>{requests.push(options);return json({ok:true});},{...geek,takeStorePreview});
+  ui.window.sessionStorage=storage;ui.window.location={search:'?store=preview'};
+  ui.run(source('geek-builder').replace(/^import .*;\n/gm,''));
+  ui.window.GeekBuilder.receive({avatar:{id:geek.customGeekId},customization:geek.defaultGeek,effects:[]});
+  assert.equal(ui.node('[data-geek-part="outfit"]').value,'labcoat');assert.equal(ui.node('[data-geek-preview-state]').textContent,'UNSAVED PREVIEW');assert.equal(store.has(storePreviewKey),false);assert.equal(requests.length,0);
+  await ui.node('[data-geek-cancel]').emit('click');assert.equal(ui.node('[data-geek-preview-state]').textContent,'YOUR CHARACTER PREVIEW');assert.equal(ui.node('[data-geek-part="outfit"]').value,geek.defaultGeek.outfit);
 });

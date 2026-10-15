@@ -3,8 +3,8 @@
     "title": "GEEK Protocol — History Question Bank",
     "version": "2.0.0-distinct",
     "maintainedAt": "2026-10-07",
-    "questionCount": 1510,
-    "conceptCount": 1510,
+    "questionCount": 1508,
+    "conceptCount": 1508,
     "category": "History",
     "difficultyDistribution": {
       "easy": 558,
@@ -13,9 +13,9 @@
     },
     "correctIndexDistribution": {
       "0": 399,
+      "1": 356,
       "2": 396,
-      "3": 359,
-      "1": 356
+      "3": 359
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -555,30 +555,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0033",
-      "category": "History",
-      "prompt": "What year did the Wright Brothers fly at Kitty Hawk, North Carolina?",
-      "options": [
-        "1903",
-        "1904",
-        "1901",
-        "1900"
-      ],
-      "correctIndex": 0,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-history.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0033",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "HIST-0034",
       "category": "History",
       "prompt": "Which of the following is the longest war in American history?",
@@ -936,54 +912,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "HIST-0050",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "HIST-0051",
-      "category": "History",
-      "prompt": "This Union general was killed by a sniper on the first day of the Battle of Gettysburg.",
-      "options": [
-        "Abner Doubleday",
-        "Joshua Chamberlain",
-        "John Reynolds",
-        "John Sedgwick"
-      ],
-      "correctIndex": 2,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-history.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0051",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "HIST-0052",
-      "category": "History",
-      "prompt": "This cavalry officer commanded the Union cavalry at Gettysburg.",
-      "options": [
-        "George Custer",
-        "Judson Kilpatrick",
-        "Wesley Merritt",
-        "John Buford"
-      ],
-      "correctIndex": 3,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-history.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0052",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -2112,30 +2040,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "HIST-0118",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "HIST-0121",
-      "category": "History",
-      "prompt": "Having been forgotten on the Treaty of Versailles and remaining legally at war, this country signed an official treaty with Germany, thus officially ending WW I .",
-      "options": [
-        "Andorra",
-        "Spain",
-        "Portugal",
-        "Luxembourg"
-      ],
-      "correctIndex": 0,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-history.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0121",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -16659,30 +16563,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0924",
-      "category": "History",
-      "prompt": "In the 1960s, Humans finally achieved an age-old dream of landing on the Moon. Who was the first person to set foot on the Moon and in what year did this happen?",
-      "options": [
-        "Michael Collins, 1968",
-        "Buzz Aldrin, 1966",
-        "Buzz Aldrin, 1967",
-        "Neil Armstrong, 1969"
-      ],
-      "correctIndex": 3,
-      "difficulty": "hard",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-history.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0924",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "HIST-0926",
       "category": "History",
       "prompt": "During which war did the Battle of Marathon take place?",
@@ -26814,33 +26694,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "When did the Berlin Wall fall, ending symbolically the Cold War?",
-      "options": [
-        "1992",
-        "1990",
-        "1989",
-        "1991"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "history",
-      "sourceOrdinal": 741,
-      "id": "HIS-N-3162317504ab",
-      "conceptId": "HIS-N-3162317504ab",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "What was William Frederick Cody better known as?",
       "options": [
         "Billy the Kid",
@@ -30958,33 +30811,6 @@
       "sourceFile": "History",
       "id": "HIS-N-d03b772f1204",
       "conceptId": "HIS-N-d03b772f1204",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "In which year was Nelson Mandela released from prison",
-      "options": [
-        "1992",
-        "1980",
-        "1990",
-        "1994"
-      ],
-      "correctIndex": 2,
-      "sourceCategoryId": 23,
-      "difficulty": "easy",
-      "sourceFile": "History",
-      "id": "HIS-N-2086bc060489",
-      "conceptId": "HIS-N-2086bc060489",
       "category": "History",
       "subcategory": "History",
       "funFact": null,
@@ -35643,33 +35469,6 @@
       "difficulty": "hard"
     },
     {
-      "prompt": "In what year did the Berlin Wall fall?",
-      "options": [
-        "1991",
-        "1993",
-        "1989",
-        "1987"
-      ],
-      "correctIndex": 2,
-      "sourceCategoryId": 23,
-      "difficulty": "medium",
-      "sourceFile": "History",
-      "id": "HIS-N-ec831b5b832f",
-      "conceptId": "HIS-N-ec831b5b832f",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
       "prompt": "What country did Osama bin Laden live in and operate al-Qaeda from before he found sanctuary back in Afghanistan?",
       "options": [
         "Saudi Arabia",
@@ -37749,33 +37548,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "What year was the United States Declaration of Independence signed?",
-      "options": [
-        "1776",
-        "1775",
-        "1774",
-        "1777"
-      ],
-      "correctIndex": 0,
-      "sourceCategoryId": 23,
-      "difficulty": "hard",
-      "sourceFile": "History",
-      "id": "HIS-N-f317c834cef3",
-      "conceptId": "HIS-N-f317c834cef3",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
       "prompt": "Which Australian Prime Minister disappeared in 1967 and was never found?",
       "options": [
         "Paul Keating",
@@ -38530,6 +38302,190 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
+    },
+    {
+      "prompt": "In which year did delegates begin signing the engrossed Declaration of Independence on August 2?",
+      "options": [
+        "1776",
+        "1775",
+        "1774",
+        "1777"
+      ],
+      "correctIndex": 0,
+      "sourceCategoryId": 23,
+      "difficulty": "easy",
+      "sourceFile": "History",
+      "id": "HIS-N-f317c834cef3-R193c3a0af2",
+      "conceptId": "HIS-N-f317c834cef3-R193c3a0af2",
+      "category": "History",
+      "subcategory": "History",
+      "funFact": "Congress adopted the Declaration in July 1776. Signing the parchment copy began on August 2 that year; some signatures were added later.",
+      "tags": [
+        "history"
+      ],
+      "volatile": false,
+      "license": "CC BY-SA 4.0",
+      "reviewStatus": "source-checked",
+      "maintenanceCheckedAt": "2026-10-07",
+      "source": "https://www.archives.gov/milestone-documents/declaration-of-independence",
+      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol.",
+      "reviewedAt": "2026-10-15"
+    },
+    {
+      "id": "HIST-0033-R5161adba95",
+      "category": "History",
+      "prompt": "In what year did the Wright brothers make their powered flights at Kitty Hawk on December 17?",
+      "options": [
+        "1903",
+        "1904",
+        "1901",
+        "1900"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "The National Park Service dates the Wright Flyer flights at Kitty Hawk to December 17, 1903. Orville piloted the first flight that day.",
+      "tags": [
+        "history"
+      ],
+      "volatile": false,
+      "source": "https://www.nps.gov/articles/wrightflyer.htm",
+      "sourceFile": "source-history.txt",
+      "license": "CC BY-SA 4.0",
+      "reviewStatus": "source-checked",
+      "conceptId": "HIST-0033-R5161adba95",
+      "maintenanceCheckedAt": "2026-10-07",
+      "reviewedAt": "2026-10-15"
+    },
+    {
+      "prompt": "In which year was Nelson Mandela released from Victor Verster Prison?",
+      "options": [
+        "1992",
+        "1980",
+        "1990",
+        "1994"
+      ],
+      "correctIndex": 2,
+      "sourceCategoryId": 23,
+      "difficulty": "easy",
+      "sourceFile": "History",
+      "id": "HIS-N-2086bc060489-Rd56b588753",
+      "conceptId": "HIS-N-2086bc060489-Rd56b588753",
+      "category": "History",
+      "subcategory": "History",
+      "funFact": "Mandela left Victor Verster Prison on February 11, 1990. His release preceded the 1994 election in which he became president.",
+      "tags": [
+        "history"
+      ],
+      "volatile": false,
+      "license": "CC BY-SA 4.0",
+      "reviewStatus": "source-checked",
+      "maintenanceCheckedAt": "2026-10-07",
+      "source": "https://www.nelsonmandela.org/biography",
+      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol.",
+      "reviewedAt": "2026-10-15"
+    },
+    {
+      "id": "HIST-0924-Ra99a58c70d",
+      "category": "History",
+      "prompt": "Who became the first person to step onto the Moon, and in what year?",
+      "options": [
+        "Michael Collins, 1968",
+        "Buzz Aldrin, 1966",
+        "Buzz Aldrin, 1967",
+        "Neil Armstrong, 1969"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "Neil Armstrong stepped onto the lunar surface during Apollo 11 in 1969. Buzz Aldrin followed; Michael Collins remained in lunar orbit.",
+      "tags": [
+        "history"
+      ],
+      "volatile": false,
+      "source": "https://www.nasa.gov/history/apollo-11-mission-overview/",
+      "sourceFile": "source-history.txt",
+      "license": "CC BY-SA 4.0",
+      "reviewStatus": "source-checked",
+      "conceptId": "HIST-0924-Ra99a58c70d",
+      "maintenanceCheckedAt": "2026-10-07",
+      "reviewedAt": "2026-10-15"
+    },
+    {
+      "id": "HIST-0051-R59a3297a82",
+      "category": "History",
+      "prompt": "Which Union general was killed while leading the First Corps at Gettysburg on July 1, 1863?",
+      "options": [
+        "Abner Doubleday",
+        "Joshua Chamberlain",
+        "John Reynolds",
+        "John Sedgwick"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "John Reynolds died during the first day of the battle. Abner Doubleday then took command of the First Corps.",
+      "tags": [
+        "history"
+      ],
+      "volatile": false,
+      "source": "https://www.nps.gov/people/john-f-reynolds.htm",
+      "sourceFile": "source-history.txt",
+      "license": "CC BY-SA 4.0",
+      "reviewStatus": "source-checked",
+      "conceptId": "HIST-0051-R59a3297a82",
+      "maintenanceCheckedAt": "2026-10-07",
+      "reviewedAt": "2026-10-15"
+    },
+    {
+      "id": "HIST-0052-Ra3f0cc2cf5",
+      "category": "History",
+      "prompt": "Which Union cavalry division commander held the approaches to Gettysburg as the battle opened on July 1, 1863?",
+      "options": [
+        "George Custer",
+        "Judson Kilpatrick",
+        "Wesley Merritt",
+        "John Buford"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "John Buford commanded a cavalry division, not the entire Union cavalry corps. His troops fought before the arrival of Union infantry.",
+      "tags": [
+        "history"
+      ],
+      "volatile": false,
+      "source": "https://www.nps.gov/articles/000/federals-gettysburg.htm",
+      "sourceFile": "source-history.txt",
+      "license": "CC BY-SA 4.0",
+      "reviewStatus": "source-checked",
+      "conceptId": "HIST-0052-Ra3f0cc2cf5",
+      "maintenanceCheckedAt": "2026-10-07",
+      "reviewedAt": "2026-10-15"
+    },
+    {
+      "prompt": "In which year did East Germany open the Berlin Wall border crossings on November 9?",
+      "options": [
+        "1992",
+        "1990",
+        "1989",
+        "1991"
+      ],
+      "correctIndex": 2,
+      "sourceFile": "history",
+      "sourceOrdinal": 741,
+      "id": "HIS-N-3162317504ab-R74ba9dca52",
+      "conceptId": "HIS-N-3162317504ab-R74ba9dca52",
+      "category": "History",
+      "subcategory": "History",
+      "funFact": "The crossings opened in November 1989. German reunification followed in 1990; these are different milestones.",
+      "tags": [
+        "history"
+      ],
+      "volatile": false,
+      "license": "CC BY-SA 4.0",
+      "reviewStatus": "source-checked",
+      "maintenanceCheckedAt": "2026-10-07",
+      "source": "https://history.state.gov/milestones/1989-1992/fall-of-communism",
+      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
+      "difficulty": "easy",
+      "reviewedAt": "2026-10-15"
     }
   ]
 }

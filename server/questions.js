@@ -4,16 +4,8 @@ import { join } from 'node:path';
 import { publishedCommunityQuestionById, publishedCommunityQuestions } from './cce.js';
 import { promptIdentity, similarQuestion } from './question-identity.js';
 
-export const categoryFiles = {
-  kaspa: ['kaspa-questions.json', 'kaspa-current-questions.json'],
-  'video-games': ['video-games-questions.json'],
-  'science-fiction': ['science-fiction-questions.json'],
-  technology: ['technology-questions.json', 'technology-current-questions.json'],
-  movies: ['movies-questions.json'],
-  history: ['history-questions.json'],
-  comics: ['comics-questions.json'],
-  'pop-culture': ['pop-culture-questions.json']
-};
+import { categoryFiles } from './question-categories.js';
+export { categoryFiles };
 
 const bankCache = new Map();
 const normalizeQuestion = (question) => ({

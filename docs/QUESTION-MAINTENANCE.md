@@ -71,3 +71,8 @@ A focused pass rechecks 33 existing KRC-20/Toccata questions, improves their wor
 Fifteen original MIT-licensed questions in `technology-current-questions.json` extend the Technology category and guided Study. Each has an explanation, an individual source-check date and a primary MDN reference. Web responses, browser privacy and exact values each have five concepts, three guided ideas, an example, a reflection, and Foundations / Connections / Mixed practice. Their private grades and saved mistakes use the existing Study authority and retention. Imported draft Technology questions remain outside Study. Total active bank size is 7,801; Study has 191 concepts. These are internal source checks, not independent editorial approval.
 
 The [private imported-question desk](IMPORTED-QUESTION-REVIEW.md) now stages source-checked proposals for a maintainer-reviewed bank release. Corrected grading content receives a new question identity; saved runs retain the original answer key.
+
+
+## Bank-first target — October 15, 2026
+
+The new target is 1,000 distinct, internally source-reviewed questions in every category, before CCE reopens. The generated readiness report counts review records separately from active drafts. Seven sourced History corrections retire their prior identities and two further rows are retired for repetition or an unsupported premise. Current totals: 7,799 active questions, 292 recorded source reviews and 7,708 further reviewed questions needed across the category targets. See [the source register, production workflow and acceptance limits](BANK-FIRST-STORE.md). This target supersedes earlier quantity milestones; it does not claim that the remaining drafts have been fact-checked.

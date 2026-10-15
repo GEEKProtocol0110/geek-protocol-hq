@@ -5,7 +5,7 @@ window.GEEK_QUESTION_COUNTS = Object.freeze({
   "science-fiction": 515,
   "technology": 1497,
   "movies": 1495,
-  "history": 1510,
+  "history": 1508,
   "comics": 417,
   "pop-culture": 1571
 });

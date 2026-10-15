@@ -80,3 +80,5 @@ Geek Protocol HQ is implemented and internally verified in several areas. It is 
 - [Economy stress lab](ECONOMY-STRESS.md): current credit paths, hypothetical reserve math and replay evidence.
 
 - [Free-beta candidate and pilot checklist](FREE-BETA-READINESS.md) — current comparison baseline, historical dependency inventory and pending production acceptance.
+
+- [Bank-first release and Geek Store](BANK-FIRST-STORE.md) — 1,000 reviewed questions per category, CCE hold, first source-review batch and free cosmetic fitting room.
