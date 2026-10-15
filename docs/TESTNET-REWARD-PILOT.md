@@ -1,6 +1,6 @@
 # Isolated testnet reward pilot
 
-This is an owner-only **manual transfer receipt workflow**, disabled by default. It does not implement an automatic signer or broadcaster, enable Mainnet withdrawals, convert Alpha credits, or promise payments to players. A synthetic fixture acceptance is not a real payout.
+This is an owner-only **manual transfer receipt workflow**, disabled by default. It does not implement an automatic signer or broadcaster, enable Mainnet withdrawals, convert Alpha credits, or promise payments to players. A synthetic fixture acceptance is not a real payout. Production was configured for the one-token manual GEEKT test on October 15; see the [deployment checkpoint](TESTNET-ASSET-SETUP.md#production-manual-pilot-configuration--october-15). Authenticated owner acceptance and a first reward transfer remain pending.
 
 ## October 15 compatibility checkpoint — CHAIN-001
 

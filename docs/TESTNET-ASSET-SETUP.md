@@ -1,6 +1,6 @@
 # GEEKT TN10 setup and deployment record
 
-**GEEKT is now deployed and accepted by the TN10 indexer.** The founder submitted the external Kasware operations. The operation JSON files remain unsigned reference data; this repository did not send them. Do not deploy this ticker again. The public HQ Mint page remains Mainnet-only and the Operations desk remains a disabled manual-transfer pilot.
+**GEEKT is now deployed and accepted by the TN10 indexer.** The founder submitted the external Kasware operations. The operation JSON files remain unsigned reference data; this repository did not send them. Do not deploy this ticker again. The public HQ Mint page remains Mainnet-only. The owner-only manual TN10 receipt pilot is now configured on production; authenticated acceptance and a first reward transfer remain pending.
 
 ## October 15 indexed deployment
 
@@ -8,7 +8,7 @@ At 11:06:40 UTC, the token endpoint reported GEEKT deployed with 144 billion max
 
 At that snapshot the indexer reported 19 mints, 1,900,000 GEEKT minted and zero transfers. Address holdings also showed GEEKT; address-specific details stay private. These are dated indexer observations. The founder's screenshot shows an ongoing 1,000-operation mint batch; its displayed percentage is batch progress. Neither screenshot completion counters nor this snapshot establish full-batch completion. Native TKAS balance remains unverified after API 403 responses; the screenshot's zero display alone does not establish exhaustion.
 
-Next reconcile the existing mint batch and preserve its hashes. Verify a later stable token balance and spendable fee funds before configuring one manual reward transfer. No new deployment is needed. The pilot remains disabled and its sender remains unset in this public template.
+Next reconcile the existing mint batch and preserve its hashes. Verify a later stable token balance and spendable fee funds before configuring one manual reward transfer. No new deployment is needed. The public configuration template remains disabled with its sender omitted; the separate production checkpoint below records the applied private configuration.
 
 ## Matched deployment parameters
 
@@ -49,4 +49,18 @@ Kasware's [Connection API](https://docs.kasware.xyz/wallet/developer-documentati
 6. Review and submit the first-mint JSON once through type 3 on the same verified network/account. Reconcile its separate hash and verify the accepted mint plus 100,000-token balance. Zero premint means deployment alone gives no tokens.
 7. Fill the missing sender and deploy hash in a **private** pilot configuration. Keep `TESTNET_REWARDS_ENABLED=false` until asset, wallet and amount checks pass. Then follow the [manual receipt procedure](TESTNET-REWARD-PILOT.md) for one eligible Daily Signal transfer and reconciliation.
 
-Preparing the original packet sent no wallet operation. The founder subsequently deployed and began minting externally in Kasware, as recorded above. HQ has not enabled the pilot, submitted a reward transfer or implemented a TN10 deployment signer. CCE, collection ownership and Mainnet settlement stay held. Next reconcile the existing batch, then validate the private pilot configuration and execute one manual receipt flow; adding an HQ deployment button is not a prerequisite for this already-deployed asset.
+Preparing the original packet sent no wallet operation. The founder subsequently deployed and began minting externally in Kasware, as recorded above. HQ has configured the owner-only manual pilot as recorded below; no reward transfer or HQ TN10 deployment signer is claimed. CCE, collection ownership and Mainnet settlement stay held. Next reconcile the existing batch, then validate the private pilot configuration and execute one manual receipt flow; adding an HQ deployment button is not a prerequisite for this already-deployed asset.
+
+## Production manual pilot configuration — October 15
+
+After the founder reconnected Vercel, seven production-only settings were applied for GEEKT, eight decimals, the verified deploy hash, the privately supplied sender and **1 test GEEKT** (`100000000` raw). This amount is for the manual test, not the unselected contributor rate. The final enable flag is true. No signing key was requested or configured.
+
+The existing verified Mainnet product source `e3fd589878d473939724b06882fb167b1e8d9b0a` was redeployed without a source change as `dpl_FwNcNoHHGZn4Znkz8aUcWobbgEjc`, READY at 12:03:22.952 UTC, assigned to the production domains. PR #114 remains a separate open continuation/documentation change.
+
+Twenty read-only production response checks passed through a proxy-aware transport with a fifteen-second timeout. Health returned connected storage and disabled settlement. Anonymous testnet desk access returned 303 to login; its API and script returned 401. Mainnet economic purchase/payout/burn gates remain disabled. The standard local Node monitor with its five-second limit timed out, including after its proxy option; those timeouts are retained as a validation limit, not described as a passed monitor run.
+
+Latest fixed-indexer snapshot at 12:01:31 UTC: 398 mints / 39,800,000 GEEKT, zero transfers. Full batch completion and native fee funds remain unverified. A separate recipient was validated privately and its token list was empty.
+
+**Next owner action:** open [the testnet desk](https://www.geekprotocol.xyz/ops/testnet/) and sign in with the existing owner access key. Confirm GEEKT/testnet-10 and `100000000` raw per run. Then complete a Kaspa Daily Signal in the same browser/player, save it, and queue its receipt within five minutes before any transfer. The owned run's ID is available from the [current run response](https://www.geekprotocol.xyz/api/ranked?resume=1), in `run.id`, during that window. The desk's current run-ID entry is an operator workflow, not a polished public reward flow. No owner credential should be sent through chat.
+
+Do not represent environment configuration as an authenticated desk test, graded founder run, queued receipt or confirmed payout. The next receipt and wallet signing steps require the owner's active browser session. Keep the original hash and inspect the same wallet history if any send result is uncertain.

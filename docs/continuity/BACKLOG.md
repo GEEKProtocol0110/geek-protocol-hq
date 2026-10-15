@@ -344,7 +344,7 @@ Evidence/specification: [docs/continuity/repositories.json](../../docs/continuit
 
 **P1 / needs-evidence.** Owner: Maintainer; founder controls the external testnet wallet. Dependencies: none.
 
-Next action: Reconcile the existing external Kasware mint batch and retain hashes, verify stable holdings/fee funds, then privately configure the verified GEEKT deploy hash and sender for one manual pilot transfer.
+Next action: Owner opens the configured production testnet desk and confirms GEEKT/one-token settings; complete and save an eligible Kaspa Daily Signal in that same browser/player, queue within five minutes, then sign one exact transfer and reconcile its receipt. Verify current fee funds and existing batch state before sending.
 
 Acceptance:
 
