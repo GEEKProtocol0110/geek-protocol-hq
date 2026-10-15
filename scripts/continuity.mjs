@@ -11,7 +11,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const folder = resolve(root, 'docs/continuity');
 const read = name => JSON.parse(readFileSync(resolve(folder, name), 'utf8'));
 const md = value => String(value ?? '').replaceAll('|', '\\|').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replace(/\r?\n/g, ' ');
-const localLink = path => `[${md(path)}](../../${path})`;
+const localLink = path => `[${md(path)}](${/\s/.test(path) ? `<../../${path}>` : `../../${path}`})`;
 const date = value => /^\d{4}-\d{2}-\d{2}$/.test(value) && new Date(value).toISOString().slice(0, 10) === value;
 const sha = value => /^[a-f0-9]{40}$/.test(value);
 const safeLocal = path => {
@@ -151,8 +151,8 @@ export function maintainContinuity({ write = false } = {}) {
   const handwritten = ['START-HERE.md', 'AGENTS.md', 'docs/HANDOFF.md', 'docs/continuity/README.md', 'docs/continuity/VISION-2076.md', 'docs/continuity/INSTITUTIONAL-PATH.md', 'docs/continuity/PILOT-CHARTER.md', 'docs/continuity/PARTNER-BRIEF.md', 'docs/continuity/ARCHIVE-GUIDE.md', 'docs/continuity/OPERATING-GUIDE.md', 'docs/continuity/SUCCESSION.md', 'docs/continuity/SOURCES.md', 'docs/continuity/WORKLOG.md', 'docs/continuity/founding/README.md'];
   for (const path of [...handwritten, ...[...outputs.keys()].map(name => `docs/continuity/${name}`)]) {
     const content = readFileSync(safeLocal(path), 'utf8');
-    for (const match of content.matchAll(/\[[^\]]*\]\(([^)\s]+)\)/g)) {
-      const target = match[1];
+    for (const match of content.matchAll(/\[[^\]]*\]\((?:<([^>]+)>|([^)\s]+))\)/g)) {
+      const target = match[1] || match[2];
       if (/^(?:https?:|mailto:|#)/.test(target)) continue;
       safeLocal(relative(root, resolve(root, dirname(path), target.split('#')[0])));
     }

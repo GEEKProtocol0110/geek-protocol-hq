@@ -16,6 +16,8 @@ Exact preserved bytes, indexed metadata and missing originals are different stat
 | ARCH-008 | Original founding conversation | awaiting-original | Not ingested |
 | ARCH-009 | Remaining phone founding files | awaiting-original | Not ingested |
 | ARCH-010 | Guinness application kit | referenced-not-ingested | Not ingested |
+| ARCH-011 | 500geek list.txt | preserved-founder-upload | [docs/continuity/founding/phone/500geek list.txt](<../../docs/continuity/founding/phone/500geek list.txt>) |
+| ARCH-012 | trait_rarity_sheet_organized.pdf | preserved-founder-upload | [docs/continuity/founding/phone/trait_rarity_sheet_organized.pdf](../../docs/continuity/founding/phone/trait_rarity_sheet_organized.pdf) |
 
 ## ARCH-001: Master_Document_v1.3.html
 
@@ -51,11 +53,11 @@ Ten recovered concepts and existing asset hashes; no approved NFT edition mappin
 
 ## ARCH-006: HQ merged-release ledger
 
-102 merged PR metadata records through #113. PR discussions, reviews and attachments are not exported here.
+Maintained merged-PR metadata; use the release ledger scope and current baseline for coverage. PR discussions, reviews and attachments are not exported here.
 
 ## ARCH-007: HQ commit ledger
 
-171 commit metadata records through the #113 product baseline; underlying objects require Git history/bundle.
+Maintained commit metadata through the ledger’s declared baseline. Underlying objects require Git history/bundle; metadata alone is not a full source backup.
 
 ## ARCH-008: Original founding conversation
 
@@ -63,8 +65,20 @@ Founder-supplied export and timestamp evidence needed; never reconstruct missing
 
 ## ARCH-009: Remaining phone founding files
 
-Quantity, filenames, exact bytes, rights and duplicate status remain unknown until supplied.
+Two supplied phone files are preserved as ARCH-011 and ARCH-012. Quantity and contents of remaining phone files are unknown; original conversation is still missing.
 
 ## ARCH-010: Guinness application kit
 
 Prior generated application kit is a secondary claim document, not independent record verification. Read current file before extracting or publishing claims.
+
+## ARCH-011: 500geek list.txt
+
+Exact founder-upload bytes and original filename, UTF-8/CRLF preserved. No matching tracked blob in HQ at 65820b08a8b84d08db1756a65c2e9bf83df66569 or the pinned founding-document tree index. Extracted 500 ordered entries in ten groups, 482 distinct exact names and 18 repeated-name pairs. Different from the current generated collection; no edition mapping or creation-time certification.
+
+SHA-256: `7e41d7d9bf0783339e6239a2607cbad8c78aa66a47714bdf745f6a9527c3ce6c`.
+
+## ARCH-012: trait_rarity_sheet_organized.pdf
+
+Exact founder-upload PDF bytes. No matching blob in HQ at 65820b08a8b84d08db1756a65c2e9bf83df66569 or the pinned founding-document tree index. Related to ARCH-011 but not a complete replacement: 17 pages, 358 rows, 344 distinct labels; last two sections header-only. Repeated per-row rarity cells suggest copies/variants per archetype; inference, not approved supply. Embedded CreationDate/ModDate D:20250715203451+00'00' is self-reported metadata only, not verified founding proof.
+
+SHA-256: `02cbd63e222f891998b946d07d79c68297fb77d81a16c717b538c89a71f111dc`.
