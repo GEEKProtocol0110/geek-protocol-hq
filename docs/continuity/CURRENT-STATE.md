@@ -10,11 +10,11 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,145 active questions; 638 recorded internal source reviews; 7,362 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,185 active questions; 678 recorded internal source reviews; 7,322 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
-| Kaspa | 540 | 540 | 460 |
+| Kaspa | 580 | 580 | 420 |
 | Video games | 602 | 0 | 1000 |
 | Science fiction | 515 | 37 | 963 |
 | Technology | 1497 | 15 | 985 |
@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-001: active.** BANK-001 / PR #118 candidate adds 40 internally source-checked questions in two batches to the 500-concept baseline: 540 Kaspa / 8,145 active / 638 source reviews / 537 Study concepts. Candidate is unmerged and not deployed; existing answer keys and holds remain unchanged.
+**BANK-001: active.** BANK-001 / PR #118 candidate adds 80 internally source-checked questions in three batches to the 500-concept baseline: 580 Kaspa / 8,185 active / 678 source reviews. Introductory Study remains 537 concepts; the new advanced Toccata topic is outside its existing filter. Candidate is unmerged and not deployed; answer keys and holds remain unchanged.
 
-Next task: **BANK-001**. Review PR #118 and both pinned item registers, then continue distinct primary-source learning facts toward 1,000 Kaspa concepts (460 remain). CHAIN-001 still needs the first accepted manual testnet reward; CHAIN-002 needs policy/artifact decisions. Preserve all recorded holds.
+Next task: **BANK-001**. Review PR #118 and all three pinned item registers, then continue distinct primary-source learning facts toward 1,000 Kaspa concepts (420 remain). CHAIN-001 still needs its first accepted manual testnet reward; CHAIN-002 needs policy/artifact decisions. Preserve all holds.
 
 ## Holds
 

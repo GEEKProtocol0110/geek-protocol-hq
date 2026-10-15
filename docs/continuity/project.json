@@ -18,11 +18,11 @@
     "evidence": "Founder-authorized PR #115 merged October 15 at 14:58:30 UTC. Production dpl_2koiXamNy5a1eVmMsbuHXnaKKMEG READY at 14:58:47.234 UTC on the exact merge source and assigned to both production domains. Standard proxy-aware Node monitor passed all 21 checks at 14:59:09.158 UTC under five-second deadlines; mint HTTP 200 in 4,550 ms. GitHub main verify and production-monitor check passed. Candidate full verification: 441 tests, no failures/skips, real Redis, 311 security assertions. Issue #14 closed completed; provider fallback 502 is not claimed repaired. No wallet signing or settlement activation."
   },
   "questionCheckpoint": {
-    "active": 8145,
-    "reviewed": 638,
-    "remaining": 7362,
-    "kaspaActive": 540,
-    "kaspaReviewed": 540,
+    "active": 8185,
+    "reviewed": 678,
+    "remaining": 7322,
+    "kaspaActive": 580,
+    "kaspaReviewed": 580,
     "studyConcepts": 537,
     "questChapters": 4
   },
@@ -37,10 +37,10 @@
   "currentWork": {
     "id": "BANK-001",
     "status": "active",
-    "description": "BANK-001 / PR #118 candidate adds 40 internally source-checked questions in two batches to the 500-concept baseline: 540 Kaspa / 8,145 active / 638 source reviews / 537 Study concepts. Candidate is unmerged and not deployed; existing answer keys and holds remain unchanged."
+    "description": "BANK-001 / PR #118 candidate adds 80 internally source-checked questions in three batches to the 500-concept baseline: 580 Kaspa / 8,185 active / 678 source reviews. Introductory Study remains 537 concepts; the new advanced Toccata topic is outside its existing filter. Candidate is unmerged and not deployed; answer keys and holds remain unchanged."
   },
   "nextTask": "BANK-001",
-  "nextAction": "Review PR #118 and both pinned item registers, then continue distinct primary-source learning facts toward 1,000 Kaspa concepts (460 remain). CHAIN-001 still needs the first accepted manual testnet reward; CHAIN-002 needs policy/artifact decisions. Preserve all recorded holds.",
+  "nextAction": "Review PR #118 and all three pinned item registers, then continue distinct primary-source learning facts toward 1,000 Kaspa concepts (420 remain). CHAIN-001 still needs its first accepted manual testnet reward; CHAIN-002 needs policy/artifact decisions. Preserve all holds.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

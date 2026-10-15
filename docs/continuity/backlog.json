@@ -86,7 +86,7 @@
       "status": "active",
       "title": "Grow Kaspa from 500 toward 1,000 reviewed concepts",
       "owner": "Content maintainer; independent editor unassigned",
-      "nextAction": "Review unmerged PR #118: 40 additions across convention and KasWare integration batches, 540 internally source-checked Kaspa concepts. Then add distinct primary-source learning facts toward 1,000 (460 remain). Independent editorial review remains unassigned.",
+      "nextAction": "Review unmerged PR #118: 80 additions across convention, KasWare integration and Toccata app-design batches, for 580 internally source-checked Kaspa concepts. Continue distinct primary-source facts toward 1,000 (420 remain). Introductory Study remains 537; independent editorial review is unassigned.",
       "acceptance": [
         "1,000 distinct source-checked Kaspa concepts with explanations and review dates.",
         "No padded variants; existing issued answers remain compatible.",
@@ -97,7 +97,8 @@
         "docs/BANK-FIRST-STORE.md",
         "docs/QUESTION-MAINTENANCE.md",
         "docs/kaspa-520-review-2026-10-15.json",
-        "docs/kaspa-540-review-2026-10-15.json"
+        "docs/kaspa-540-review-2026-10-15.json",
+        "docs/kaspa-580-review-2026-10-15.json"
       ]
     },
     {
