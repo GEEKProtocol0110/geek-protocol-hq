@@ -1,6 +1,6 @@
 # Founding 500-Geek roster review
 
-**This upload is useful new evidence.** It is an early character-theme roster, distinct from HQ’s current generated edition manifest. Preserve it as supplied; no collection names, numbers, tiers or ownership gates are changed by this review.
+**Both uploads are useful historical evidence.** The complete theme roster and incomplete rarity sheet are distinct from HQ’s current generated edition manifest. Preserve them as supplied; no collection names, numbers, tiers or ownership gates are changed by this review.
 
 ## Source and limits
 
@@ -72,13 +72,41 @@ Every row below occurs twice. Original order and both occurrences remain intact.
 | Organizing structure | Ten theme groups | Eight learning districts plus two anchor realms |
 | Character labels | 500 positions / 482 exact distinct names | 498 field callsigns, GIGA and A.C.E. |
 | Rarity header | Common (100); Rare (50); Epic (25); Legendary (5); Mythic (1/1) | 250 Common; 125 Rare; 75 Epic; 48 Legendary; 2 Mythic |
-| Per-character rarity | Not supplied | Defined for every edition |
+| Per-character rarity | Text has only a header; companion PDF repeats 100/50/25/5/1 beside each populated character | Defined for every edition |
 | Position / edition 499 | ASMR Geek | GIGA |
 | Position / edition 500 | Perfume Blending Geek | A.C.E. |
 
-The old rarity labels do not state whether their numbers represent allocations, copies per design or something else. They do not establish a complete 500-edition allocation. Do not convert `1/1` into a new supply policy or overwrite the later five-tier contract. GIGA and A.C.E. are absent as exact names from this upload.
+The text alone does not define the rarity numbers. The later-supplied companion PDF provides stronger evidence for a copies/variants-per-archetype interpretation, described below. That remains an inference; neither file establishes an approved replacement for the current 500-edition allocation. GIGA and A.C.E. are absent as exact names from both uploads.
 
 If all 482 exact unique themes were eventually reused once alongside the two existing anchors, there would be 484 names, leaving 16 field slots under that particular interpretation. This arithmetic is a planning option, not an approved mapping or permission to rename editions.
+
+## Companion trait sheet: useful but incomplete
+
+- Original: [trait_rarity_sheet_organized.pdf](continuity/founding/phone/trait_rarity_sheet_organized.pdf), ARCH-012; 30,949 bytes, preserved unchanged.
+- SHA-256: `02cbd63e222f891998b946d07d79c68297fb77d81a16c717b538c89a71f111dc`; Git blob: `d09008115b3154724cbadd3693cd37652f64bbf0`.
+- [Page/row extraction and exact-name joins](continuity/founding/geek-trait-rarity-sheet.json). Received October 15, 2026. PDF metadata reports `D:20250715203451+00'00'` for creation and modification, but that embedded value is self-reported and does not independently establish original creation time, sequence or founding duration.
+- No matching blob exists in the checked HQ baseline `65820b08a8b84d08db1756a65c2e9bf83df66569` or pinned founding-document index. This scoped check does not prove absence from all external files/chats. It is related to the text roster, not a byte duplicate or a complete replacement.
+
+| Pages | Printed group | Populated rows |
+| --- | --- | ---: |
+| 1–2 | Gaming & Tech | 50 |
+| 3–4 | Programming & Computer | 50 |
+| 5–6 | Academic & Knowledge | 50 |
+| 7–8 | Creative & Art | 50 |
+| 9–10 | Music & Audio | 50 |
+| 11–12 | Film, TV & Pop Culture | 50 |
+| 13–14 | Science & Exploration | 50 |
+| 15 | Fantasy & Roleplay | 8 |
+| 16 | Internet & Subculture | 0 |
+| 17 | Misc / Lifestyle | 0 |
+
+There are **358 populated rows and 344 distinct exact labels**, not 500 populated rows. Pages 16–17 contain only their table headings; rendered inspection confirms this is not lost extraction. The first 357 rows match the text roster's order exactly. The eighth Fantasy row is **Perfume Blending Geek**, which appears at source position 500 in the text. **Prop Maker Geek**, expected at source position 358, is absent. Preserve this mismatch rather than assigning PDF row 358 to source position 358.
+
+The sheet has 142 fewer rows than the text's 500 positions. A separate exact-name comparison finds 139 text positions, representing 138 distinct names, with no name match anywhere in the PDF. Those are different measures because names repeat. Exact-name joins retain all matches and are not unique source-position or edition mappings.
+
+Every populated row repeats **Common 100, Rare 50, Epic 25, Legendary 5, Mythic 1**, under a Mythic (1/1) heading. This layout suggests an earlier plan for copies or variants of each archetype. The PDF does not explicitly define the cell units in explanatory prose. **If those cells are copy quantities**, they sum to 181 per archetype: 90,500 for an intended 500-archetype plan, or 64,798 across the 358 populated rows. These are conditional arithmetic, not approved or minted supply. The actual sheet does not contain all 500 archetypes.
+
+This evidence clarifies why the earlier header may differ from today's five-tier allocation. Founder confirmation, missing rows and a deliberate supply/edition decision remain necessary before any canon migration. Original files are not silently repaired, and current collection data stays unchanged.
 
 ## Existing recovered-art connections
 
@@ -94,7 +122,7 @@ These are exact concept-name overlaps only. VR Geek has two archived concepts; t
 ## Next review
 
 1. Decide whether the 18 repeated labels should remain distinct visual variants or be replaced with different themes.
-2. Clarify the original rarity numbers and how this roster relates to the later five-tier allocation.
+2. Confirm whether the PDF's repeated rarity cells meant copies per archetype, recover the missing rows if originals exist, and decide how that earlier plan relates to the later five-tier allocation.
 3. Reconcile themes with the fixed 500-edition plan, the 498 field slots and reserved GIGA/A.C.E. anchors. Record any approved renaming/mapping explicitly before changing the manifest.
 4. Match actual supplied artwork by concept, then review provenance, design consistency and edition suitability. The list supplies names; artwork remains separate evidence.
 

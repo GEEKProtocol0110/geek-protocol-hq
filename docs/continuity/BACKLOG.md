@@ -30,7 +30,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ECO-001 | P1 | planned | Audit each ecosystem component and preserve its handoff | Maintainer for each repository unassigned |
 | CHAIN-001 | P1 | needs-evidence | Verify the TN10 test asset and wallet before a real pilot | Maintainer; founder controls the external testnet wallet |
 | OPS-003 | P1 | done | Finish mint-availability monitoring for GitHub issue #14 | Maintainer; founder reviews release |
-| ARCH-002 | P1 | in-progress | Preserve the founder-supplied 500-Geek theme roster | Maintainer archives; founder reviews interpretation |
+| ARCH-002 | P1 | in-progress | Preserve the founder-supplied theme roster and trait sheet | Maintainer archives; founder reviews interpretation |
 
 ## CONT-001: Publish the continuation system
 
@@ -262,7 +262,7 @@ Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.m
 
 **P2 / planned.** Owner: Art lead and ownership reviewer unassigned. Dependencies: none.
 
-Next action: Use the newly preserved founding roster to review 18 repeated-label pairs, clarify the original rarity-header numbers, and propose explicit theme/edition mappings that account for the GIGA/A.C.E. anchors. Inventory finished art separately; do not silently replace the current manifest.
+Next action: Review the 18 repeated roster labels and incomplete trait PDF. Confirm whether historical 100/50/25/5/1 cells meant copies per archetype, recover missing sheet rows, and reconcile any proposed supply/theme/edition policy with the current 500-edition plan and GIGA/A.C.E. anchors before changing canon.
 
 Acceptance:
 
@@ -372,16 +372,17 @@ Acceptance:
 
 Evidence/specification: [docs/MINT-AVAILABILITY-ISSUE-14.md](../../docs/MINT-AVAILABILITY-ISSUE-14.md), [docs/PRODUCTION-MONITORING.md](../../docs/PRODUCTION-MONITORING.md), [docs/continuity/github-issues.json](../../docs/continuity/github-issues.json).
 
-## ARCH-002: Preserve the founder-supplied 500-Geek theme roster
+## ARCH-002: Preserve the founder-supplied theme roster and trait sheet
 
 **P1 / in-progress.** Owner: Maintainer archives; founder reviews interpretation. Dependencies: none.
 
-Next action: Review the unchanged original, ordered extraction and roster comparison in this candidate PR; then reconcile duplicate themes, rarity-header meaning and edition mappings under COLL-001.
+Next action: Review PR #116 with both unchanged originals and extractions; reconcile the incomplete PDF and copies-per-archetype interpretation with the current edition plan under COLL-001.
 
 Acceptance:
 
-- Original filename, exact UTF-8/CRLF bytes, SHA-256, Git blob, source and received date preserved; missing creation-time proof explicit.
+- Both original filenames and exact bytes, SHA-256, Git blobs, source and supplied date preserved; embedded PDF timestamp not independently verified.
 - 500 ordered entries in ten groups, 482 exact distinct names and 18 repeated-label pairs recorded without deletion or renaming.
+- PDF has 358 rows / 344 exact labels across 17 pages; empty final sections and misplaced Perfume Blending Geek preserved, with no invented missing rows or approved supply.
 - Existing 500-edition manifest, five tiers, GIGA/A.C.E. anchors, art approvals and disabled ownership remain unchanged.
 
-Evidence/specification: [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md), [docs/continuity/founding/geek-roster-500.json](../../docs/continuity/founding/geek-roster-500.json), [docs/continuity/assets.json](../../docs/continuity/assets.json).
+Evidence/specification: [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md), [docs/continuity/founding/geek-roster-500.json](../../docs/continuity/founding/geek-roster-500.json), [docs/continuity/assets.json](../../docs/continuity/assets.json), [docs/continuity/founding/geek-trait-rarity-sheet.json](../../docs/continuity/founding/geek-trait-rarity-sheet.json).

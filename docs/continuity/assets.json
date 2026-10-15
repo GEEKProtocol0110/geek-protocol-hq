@@ -84,7 +84,7 @@
       "status": "awaiting-original",
       "location": null,
       "sha256": null,
-      "provenance": "One supplied phone roster is preserved as ARCH-011. Quantity and contents of the remaining phone files are still unknown; original conversation is still missing."
+      "provenance": "Two supplied phone files are preserved as ARCH-011 and ARCH-012. Quantity and contents of remaining phone files are unknown; original conversation is still missing."
     },
     {
       "id": "ARCH-010",
@@ -108,6 +108,22 @@
       "provenance": "Exact founder-upload bytes and original filename, UTF-8/CRLF preserved. No matching tracked blob in HQ at 65820b08a8b84d08db1756a65c2e9bf83df66569 or the pinned founding-document tree index. Extracted 500 ordered entries in ten groups, 482 distinct exact names and 18 repeated-name pairs. Different from the current generated collection; no edition mapping or creation-time certification.",
       "rights": "Founder-supplied project planning text. Named third-party brands/themes are historical concepts, not licensed artwork or endorsement.",
       "derivedIndex": "docs/continuity/founding/geek-roster-500.json",
+      "review": "docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md"
+    },
+    {
+      "id": "ARCH-012",
+      "title": "trait_rarity_sheet_organized.pdf",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/trait_rarity_sheet_organized.pdf",
+      "sha256": "02cbd63e222f891998b946d07d79c68297fb77d81a16c717b538c89a71f111dc",
+      "sizeBytes": 30949,
+      "gitBlobSha": "d09008115b3154724cbadd3693cd37652f64bbf0",
+      "originalFilename": "trait_rarity_sheet_organized.pdf",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-upload PDF bytes. No matching blob in HQ at 65820b08a8b84d08db1756a65c2e9bf83df66569 or the pinned founding-document tree index. Related to ARCH-011 but not a complete replacement: 17 pages, 358 rows, 344 distinct labels; last two sections header-only. Repeated per-row rarity cells suggest copies/variants per archetype; inference, not approved supply. Embedded CreationDate/ModDate D:20250715203451+00'00' is self-reported metadata only, not verified founding proof.",
+      "rights": "Founder-supplied planning sheet. Third-party themes remain historical concepts, not licensed artwork or endorsement.",
+      "derivedIndex": "docs/continuity/founding/geek-trait-rarity-sheet.json",
       "review": "docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md"
     }
   ]

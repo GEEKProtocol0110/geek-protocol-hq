@@ -319,7 +319,7 @@
       "status": "planned",
       "title": "Finish the 500-Geek art and ownership specification",
       "owner": "Art lead and ownership reviewer unassigned",
-      "nextAction": "Use the newly preserved founding roster to review 18 repeated-label pairs, clarify the original rarity-header numbers, and propose explicit theme/edition mappings that account for the GIGA/A.C.E. anchors. Inventory finished art separately; do not silently replace the current manifest.",
+      "nextAction": "Review the 18 repeated roster labels and incomplete trait PDF. Confirm whether historical 100/50/25/5/1 cells meant copies per archetype, recover missing sheet rows, and reconcile any proposed supply/theme/edition policy with the current 500-edition plan and GIGA/A.C.E. anchors before changing canon.",
       "acceptance": [
         "Exactly 500 editions in five tiers are reconciled.",
         "Art provenance, metadata and acquisition allocations approved.",
@@ -475,19 +475,21 @@
       "id": "ARCH-002",
       "priority": "P1",
       "status": "in-progress",
-      "title": "Preserve the founder-supplied 500-Geek theme roster",
+      "title": "Preserve the founder-supplied theme roster and trait sheet",
       "owner": "Maintainer archives; founder reviews interpretation",
-      "nextAction": "Review the unchanged original, ordered extraction and roster comparison in this candidate PR; then reconcile duplicate themes, rarity-header meaning and edition mappings under COLL-001.",
+      "nextAction": "Review PR #116 with both unchanged originals and extractions; reconcile the incomplete PDF and copies-per-archetype interpretation with the current edition plan under COLL-001.",
       "acceptance": [
-        "Original filename, exact UTF-8/CRLF bytes, SHA-256, Git blob, source and received date preserved; missing creation-time proof explicit.",
+        "Both original filenames and exact bytes, SHA-256, Git blobs, source and supplied date preserved; embedded PDF timestamp not independently verified.",
         "500 ordered entries in ten groups, 482 exact distinct names and 18 repeated-label pairs recorded without deletion or renaming.",
+        "PDF has 358 rows / 344 exact labels across 17 pages; empty final sections and misplaced Perfume Blending Geek preserved, with no invented missing rows or approved supply.",
         "Existing 500-edition manifest, five tiers, GIGA/A.C.E. anchors, art approvals and disabled ownership remain unchanged."
       ],
       "dependsOn": [],
       "evidence": [
         "docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md",
         "docs/continuity/founding/geek-roster-500.json",
-        "docs/continuity/assets.json"
+        "docs/continuity/assets.json",
+        "docs/continuity/founding/geek-trait-rarity-sheet.json"
       ]
     }
   ]

@@ -96,7 +96,7 @@ Any future mapping into #001–#498 requires a documented human review that reco
 
 ## Newly supplied founding theme roster
 
-The founder supplied `500geek list.txt` on October 15, 2026. Its unchanged original and ordered extraction are recorded under ARCH-011. It contains 500 theme positions in ten groups, 482 exact distinct labels and 18 repeated-label pairs. Its rarity header is ambiguous and its last two source positions are ASMR Geek / Perfume Blending Geek, rather than the current GIGA / A.C.E. anchors. [The reconciliation review](GEEK-500-FOUNDING-ROSTER-REVIEW.md) records these differences and exact legacy-art concept overlaps. Source positions are not approved edition mappings. This archival recovery does not rename, renumber or re-tier the current collection.
+The founder supplied `500geek list.txt` and `trait_rarity_sheet_organized.pdf` on October 15, 2026. Unchanged originals and ordered extractions are recorded under ARCH-011/ARCH-012. The text has 500 theme positions, 482 exact distinct labels and 18 repeated-label pairs. The incomplete PDF has 358 rows, repeats rarity numbers per character and suggests copies/variants per archetype; that interpretation is not an approved supply policy. The text's last two positions are ASMR Geek / Perfume Blending Geek, rather than today's GIGA / A.C.E. anchors. [The reconciliation review](GEEK-500-FOUNDING-ROSTER-REVIEW.md) records missing PDF rows, conditional quantity arithmetic and legacy-art concept overlaps. Source positions are not approved edition mappings. This archival recovery does not rename, renumber or re-tier the current collection.
 
 ## Metadata contract
 

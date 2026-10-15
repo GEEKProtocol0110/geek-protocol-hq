@@ -1,0 +1,6760 @@
+{
+  "schema": 1,
+  "assetId": "ARCH-012",
+  "recordedOn": "2026-10-15",
+  "originalFilename": "trait_rarity_sheet_organized.pdf",
+  "originalLocation": "docs/continuity/founding/phone/trait_rarity_sheet_organized.pdf",
+  "originalSizeBytes": 30949,
+  "originalSha256": "02cbd63e222f891998b946d07d79c68297fb77d81a16c717b538c89a71f111dc",
+  "originalGitBlob": "d09008115b3154724cbadd3693cd37652f64bbf0",
+  "status": "incomplete-historical-rarity-sheet-not-current-supply",
+  "sourceProvenance": "Founder-supplied upload. Self-reported PDF metadata is not independently verified creation-time or founding-duration proof.",
+  "embeddedMetadata": {
+    "creationDateRaw": "D:20250715203451+00'00'",
+    "modDateRaw": "D:20250715203451+00'00'",
+    "producer": "ReportLab PDF Library - www.reportlab.com",
+    "timestampVerified": false
+  },
+  "extractionPolicy": "Poppler pdftotext -layout; ordered numeric table rows, page and row-on-page retained. Pages 1, 15, 16 and 17 visually checked. Group IDs follow printed headings, including misplaced Perfume Blending Geek. Exact-name joins preserve all matches, not approved edition or unique source-position mappings.",
+  "columns": [
+    "Common",
+    "Rare",
+    "Epic",
+    "Legendary",
+    "Mythic"
+  ],
+  "printedMythicHeader": "Mythic (1/1)",
+  "summary": {
+    "pages": 17,
+    "populatedRows": 358,
+    "distinctExactNames": 344,
+    "declaredRosterPositions": 500,
+    "fewerRowsThanDeclared": 142,
+    "rosterPositionsWithoutAnyExactNameMatch": 139,
+    "distinctRosterNamesWithoutMatch": 138,
+    "approvedEditionMappings": 0
+  },
+  "interpretation": {
+    "status": "inference-not-founder-confirmed",
+    "meaning": "Repeated 100/50/25/5/1 cells suggest copies or variants per archetype, not a total allocation of 500 single editions. Cell units are not explicitly defined by explanatory prose.",
+    "conditionalCopiesPerArchetype": 181,
+    "conditionalTotalFor500Archetypes": 90500,
+    "conditionalTotalFor358PopulatedRows": 64798,
+    "supplyPolicyApproved": false
+  },
+  "comparison": {
+    "rosterIndex": "docs/continuity/founding/geek-roster-500.json",
+    "first357RowsMatchRosterOrder": true,
+    "lastPdfRowExactNameMatches": [
+      "source-500"
+    ],
+    "missingAtNextExpectedRosterPosition": "source-358",
+    "missingAtNextExpectedRosterName": "Prop Maker Geek",
+    "rosterPositionsWithoutAnyExactNameMatch": [
+      "source-358",
+      "source-359",
+      "source-360",
+      "source-361",
+      "source-362",
+      "source-363",
+      "source-364",
+      "source-365",
+      "source-366",
+      "source-367",
+      "source-368",
+      "source-369",
+      "source-370",
+      "source-371",
+      "source-372",
+      "source-373",
+      "source-374",
+      "source-375",
+      "source-376",
+      "source-377",
+      "source-378",
+      "source-379",
+      "source-380",
+      "source-381",
+      "source-382",
+      "source-383",
+      "source-384",
+      "source-385",
+      "source-386",
+      "source-387",
+      "source-388",
+      "source-389",
+      "source-390",
+      "source-391",
+      "source-392",
+      "source-393",
+      "source-394",
+      "source-395",
+      "source-396",
+      "source-397",
+      "source-399",
+      "source-400",
+      "source-401",
+      "source-402",
+      "source-403",
+      "source-404",
+      "source-405",
+      "source-407",
+      "source-408",
+      "source-409",
+      "source-410",
+      "source-411",
+      "source-412",
+      "source-413",
+      "source-414",
+      "source-415",
+      "source-416",
+      "source-417",
+      "source-418",
+      "source-419",
+      "source-420",
+      "source-421",
+      "source-422",
+      "source-423",
+      "source-424",
+      "source-425",
+      "source-426",
+      "source-427",
+      "source-428",
+      "source-429",
+      "source-430",
+      "source-431",
+      "source-432",
+      "source-434",
+      "source-435",
+      "source-436",
+      "source-437",
+      "source-438",
+      "source-439",
+      "source-440",
+      "source-441",
+      "source-442",
+      "source-443",
+      "source-444",
+      "source-445",
+      "source-446",
+      "source-447",
+      "source-448",
+      "source-449",
+      "source-450",
+      "source-451",
+      "source-452",
+      "source-453",
+      "source-454",
+      "source-455",
+      "source-456",
+      "source-457",
+      "source-458",
+      "source-459",
+      "source-460",
+      "source-461",
+      "source-462",
+      "source-463",
+      "source-464",
+      "source-465",
+      "source-466",
+      "source-467",
+      "source-468",
+      "source-469",
+      "source-470",
+      "source-471",
+      "source-472",
+      "source-473",
+      "source-474",
+      "source-475",
+      "source-476",
+      "source-477",
+      "source-478",
+      "source-479",
+      "source-480",
+      "source-481",
+      "source-482",
+      "source-483",
+      "source-484",
+      "source-485",
+      "source-486",
+      "source-487",
+      "source-488",
+      "source-489",
+      "source-490",
+      "source-491",
+      "source-492",
+      "source-493",
+      "source-494",
+      "source-495",
+      "source-496",
+      "source-497",
+      "source-498",
+      "source-499"
+    ],
+    "currentCollectionChanged": false
+  },
+  "pages": [
+    {
+      "page": 1,
+      "groupIdAsPrinted": "group-01",
+      "populatedRows": 32
+    },
+    {
+      "page": 2,
+      "groupIdAsPrinted": "group-01",
+      "populatedRows": 18
+    },
+    {
+      "page": 3,
+      "groupIdAsPrinted": "group-02",
+      "populatedRows": 32
+    },
+    {
+      "page": 4,
+      "groupIdAsPrinted": "group-02",
+      "populatedRows": 18
+    },
+    {
+      "page": 5,
+      "groupIdAsPrinted": "group-03",
+      "populatedRows": 32
+    },
+    {
+      "page": 6,
+      "groupIdAsPrinted": "group-03",
+      "populatedRows": 18
+    },
+    {
+      "page": 7,
+      "groupIdAsPrinted": "group-04",
+      "populatedRows": 32
+    },
+    {
+      "page": 8,
+      "groupIdAsPrinted": "group-04",
+      "populatedRows": 18
+    },
+    {
+      "page": 9,
+      "groupIdAsPrinted": "group-05",
+      "populatedRows": 32
+    },
+    {
+      "page": 10,
+      "groupIdAsPrinted": "group-05",
+      "populatedRows": 18
+    },
+    {
+      "page": 11,
+      "groupIdAsPrinted": "group-06",
+      "populatedRows": 32
+    },
+    {
+      "page": 12,
+      "groupIdAsPrinted": "group-06",
+      "populatedRows": 18
+    },
+    {
+      "page": 13,
+      "groupIdAsPrinted": "group-07",
+      "populatedRows": 32
+    },
+    {
+      "page": 14,
+      "groupIdAsPrinted": "group-07",
+      "populatedRows": 18
+    },
+    {
+      "page": 15,
+      "groupIdAsPrinted": "group-08",
+      "populatedRows": 8
+    },
+    {
+      "page": 16,
+      "groupIdAsPrinted": "group-09",
+      "populatedRows": 0
+    },
+    {
+      "page": 17,
+      "groupIdAsPrinted": "group-10",
+      "populatedRows": 0
+    }
+  ],
+  "rows": [
+    {
+      "pdfRowId": "pdf-row-001",
+      "page": 1,
+      "rowOnPage": 1,
+      "groupIdAsPrinted": "group-01",
+      "name": "Retro Gamer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-001"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-002",
+      "page": 1,
+      "rowOnPage": 2,
+      "groupIdAsPrinted": "group-01",
+      "name": "Pro Gamer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-002"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-003",
+      "page": 1,
+      "rowOnPage": 3,
+      "groupIdAsPrinted": "group-01",
+      "name": "Speedrunner Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-003"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-004",
+      "page": 1,
+      "rowOnPage": 4,
+      "groupIdAsPrinted": "group-01",
+      "name": "Modder Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-004"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-005",
+      "page": 1,
+      "rowOnPage": 5,
+      "groupIdAsPrinted": "group-01",
+      "name": "VR Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-005"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-006",
+      "page": 1,
+      "rowOnPage": 6,
+      "groupIdAsPrinted": "group-01",
+      "name": "Streamer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-006"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-007",
+      "page": 1,
+      "rowOnPage": 7,
+      "groupIdAsPrinted": "group-01",
+      "name": "Mobile Gamer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-007"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-008",
+      "page": 1,
+      "rowOnPage": 8,
+      "groupIdAsPrinted": "group-01",
+      "name": "Arcade Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-008"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-009",
+      "page": 1,
+      "rowOnPage": 9,
+      "groupIdAsPrinted": "group-01",
+      "name": "Board Game Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-009"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-010",
+      "page": 1,
+      "rowOnPage": 10,
+      "groupIdAsPrinted": "group-01",
+      "name": "Esports Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-010"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-011",
+      "page": 1,
+      "rowOnPage": 11,
+      "groupIdAsPrinted": "group-01",
+      "name": "FPS Gamer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-011"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-012",
+      "page": 1,
+      "rowOnPage": 12,
+      "groupIdAsPrinted": "group-01",
+      "name": "MOBA Gamer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-012"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-013",
+      "page": 1,
+      "rowOnPage": 13,
+      "groupIdAsPrinted": "group-01",
+      "name": "RPG Gamer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-013"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-014",
+      "page": 1,
+      "rowOnPage": 14,
+      "groupIdAsPrinted": "group-01",
+      "name": "Simulation Gamer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-014"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-015",
+      "page": 1,
+      "rowOnPage": 15,
+      "groupIdAsPrinted": "group-01",
+      "name": "Indie Game Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-015"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-016",
+      "page": 1,
+      "rowOnPage": 16,
+      "groupIdAsPrinted": "group-01",
+      "name": "Puzzle Game Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-016"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-017",
+      "page": 1,
+      "rowOnPage": 17,
+      "groupIdAsPrinted": "group-01",
+      "name": "Fighting Game Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-017"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-018",
+      "page": 1,
+      "rowOnPage": 18,
+      "groupIdAsPrinted": "group-01",
+      "name": "Strategy Game Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-018"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-019",
+      "page": 1,
+      "rowOnPage": 19,
+      "groupIdAsPrinted": "group-01",
+      "name": "Survival Game Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-019"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-020",
+      "page": 1,
+      "rowOnPage": 20,
+      "groupIdAsPrinted": "group-01",
+      "name": "Sandbox Game Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-020"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-021",
+      "page": 1,
+      "rowOnPage": 21,
+      "groupIdAsPrinted": "group-01",
+      "name": "Platformer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-021"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-022",
+      "page": 1,
+      "rowOnPage": 22,
+      "groupIdAsPrinted": "group-01",
+      "name": "Roguelike Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-022"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-023",
+      "page": 1,
+      "rowOnPage": 23,
+      "groupIdAsPrinted": "group-01",
+      "name": "VRChat Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-023"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-024",
+      "page": 1,
+      "rowOnPage": 24,
+      "groupIdAsPrinted": "group-01",
+      "name": "Twitch Chat Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-024"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-025",
+      "page": 1,
+      "rowOnPage": 25,
+      "groupIdAsPrinted": "group-01",
+      "name": "Game Dev Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-025"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-026",
+      "page": 1,
+      "rowOnPage": 26,
+      "groupIdAsPrinted": "group-01",
+      "name": "Level Designer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-026"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-027",
+      "page": 1,
+      "rowOnPage": 27,
+      "groupIdAsPrinted": "group-01",
+      "name": "Indie Dev Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-027"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-028",
+      "page": 1,
+      "rowOnPage": 28,
+      "groupIdAsPrinted": "group-01",
+      "name": "Cosplay Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-028",
+        "source-356"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-029",
+      "page": 1,
+      "rowOnPage": 29,
+      "groupIdAsPrinted": "group-01",
+      "name": "Collectible Card Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-029"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-030",
+      "page": 1,
+      "rowOnPage": 30,
+      "groupIdAsPrinted": "group-01",
+      "name": "Tabletop RPG Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-030",
+        "source-398"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-031",
+      "page": 1,
+      "rowOnPage": 31,
+      "groupIdAsPrinted": "group-01",
+      "name": "Looter-Shooter Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-031"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-032",
+      "page": 1,
+      "rowOnPage": 32,
+      "groupIdAsPrinted": "group-01",
+      "name": "MMOG Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-032"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-033",
+      "page": 2,
+      "rowOnPage": 1,
+      "groupIdAsPrinted": "group-01",
+      "name": "MMORPG Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-033"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-034",
+      "page": 2,
+      "rowOnPage": 2,
+      "groupIdAsPrinted": "group-01",
+      "name": "Roguelite Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-034"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-035",
+      "page": 2,
+      "rowOnPage": 3,
+      "groupIdAsPrinted": "group-01",
+      "name": "Open World Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-035"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-036",
+      "page": 2,
+      "rowOnPage": 4,
+      "groupIdAsPrinted": "group-01",
+      "name": "Esports Analyst Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-036"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-037",
+      "page": 2,
+      "rowOnPage": 5,
+      "groupIdAsPrinted": "group-01",
+      "name": "Game Soundtrack Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-037"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-038",
+      "page": 2,
+      "rowOnPage": 6,
+      "groupIdAsPrinted": "group-01",
+      "name": "Game Theory Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-038"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-039",
+      "page": 2,
+      "rowOnPage": 7,
+      "groupIdAsPrinted": "group-01",
+      "name": "Tactical Shooter Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-039"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-040",
+      "page": 2,
+      "rowOnPage": 8,
+      "groupIdAsPrinted": "group-01",
+      "name": "Battle Royale Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-040"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-041",
+      "page": 2,
+      "rowOnPage": 9,
+      "groupIdAsPrinted": "group-01",
+      "name": "Rhythm Game Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-041"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-042",
+      "page": 2,
+      "rowOnPage": 10,
+      "groupIdAsPrinted": "group-01",
+      "name": "Horror Game Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-042"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-043",
+      "page": 2,
+      "rowOnPage": 11,
+      "groupIdAsPrinted": "group-01",
+      "name": "Dating Sim Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-043"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-044",
+      "page": 2,
+      "rowOnPage": 12,
+      "groupIdAsPrinted": "group-01",
+      "name": "Visual Novel Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-044"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-045",
+      "page": 2,
+      "rowOnPage": 13,
+      "groupIdAsPrinted": "group-01",
+      "name": "Metroidvania Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-045"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-046",
+      "page": 2,
+      "rowOnPage": 14,
+      "groupIdAsPrinted": "group-01",
+      "name": "DLC Collector Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-046"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-047",
+      "page": 2,
+      "rowOnPage": 15,
+      "groupIdAsPrinted": "group-01",
+      "name": "Achievement Hunter Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-047"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-048",
+      "page": 2,
+      "rowOnPage": 16,
+      "groupIdAsPrinted": "group-01",
+      "name": "Live Production Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-048"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-049",
+      "page": 2,
+      "rowOnPage": 17,
+      "groupIdAsPrinted": "group-01",
+      "name": "Game Tester Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-049"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-050",
+      "page": 2,
+      "rowOnPage": 18,
+      "groupIdAsPrinted": "group-01",
+      "name": "QA Automation Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-050"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-051",
+      "page": 3,
+      "rowOnPage": 1,
+      "groupIdAsPrinted": "group-02",
+      "name": "Coder Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-051"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-052",
+      "page": 3,
+      "rowOnPage": 2,
+      "groupIdAsPrinted": "group-02",
+      "name": "Frontend Dev Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-052"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-053",
+      "page": 3,
+      "rowOnPage": 3,
+      "groupIdAsPrinted": "group-02",
+      "name": "Backend Dev Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-053"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-054",
+      "page": 3,
+      "rowOnPage": 4,
+      "groupIdAsPrinted": "group-02",
+      "name": "Full-Stack Dev Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-054"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-055",
+      "page": 3,
+      "rowOnPage": 5,
+      "groupIdAsPrinted": "group-02",
+      "name": "DevOps Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-055"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-056",
+      "page": 3,
+      "rowOnPage": 6,
+      "groupIdAsPrinted": "group-02",
+      "name": "Cloud Architect Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-056"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-057",
+      "page": 3,
+      "rowOnPage": 7,
+      "groupIdAsPrinted": "group-02",
+      "name": "Kubernetes Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-057"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-058",
+      "page": 3,
+      "rowOnPage": 8,
+      "groupIdAsPrinted": "group-02",
+      "name": "Docker Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-058"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-059",
+      "page": 3,
+      "rowOnPage": 9,
+      "groupIdAsPrinted": "group-02",
+      "name": "Cybersecurity Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-059"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-060",
+      "page": 3,
+      "rowOnPage": 10,
+      "groupIdAsPrinted": "group-02",
+      "name": "Ethical Hacker Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-060"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-061",
+      "page": 3,
+      "rowOnPage": 11,
+      "groupIdAsPrinted": "group-02",
+      "name": "QA Tester Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-061"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-062",
+      "page": 3,
+      "rowOnPage": 12,
+      "groupIdAsPrinted": "group-02",
+      "name": "Database Admin Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-062"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-063",
+      "page": 3,
+      "rowOnPage": 13,
+      "groupIdAsPrinted": "group-02",
+      "name": "SQL Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-063"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-064",
+      "page": 3,
+      "rowOnPage": 14,
+      "groupIdAsPrinted": "group-02",
+      "name": "NoSQL Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-064"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-065",
+      "page": 3,
+      "rowOnPage": 15,
+      "groupIdAsPrinted": "group-02",
+      "name": "API Dev Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-065"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-066",
+      "page": 3,
+      "rowOnPage": 16,
+      "groupIdAsPrinted": "group-02",
+      "name": "Mobile Dev Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-066"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-067",
+      "page": 3,
+      "rowOnPage": 17,
+      "groupIdAsPrinted": "group-02",
+      "name": "iOS Dev Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-067"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-068",
+      "page": 3,
+      "rowOnPage": 18,
+      "groupIdAsPrinted": "group-02",
+      "name": "Android Dev Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-068"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-069",
+      "page": 3,
+      "rowOnPage": 19,
+      "groupIdAsPrinted": "group-02",
+      "name": "Embedded Systems Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-069"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-070",
+      "page": 3,
+      "rowOnPage": 20,
+      "groupIdAsPrinted": "group-02",
+      "name": "IoT Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-070"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-071",
+      "page": 3,
+      "rowOnPage": 21,
+      "groupIdAsPrinted": "group-02",
+      "name": "Network Engineer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-071"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-072",
+      "page": 3,
+      "rowOnPage": 22,
+      "groupIdAsPrinted": "group-02",
+      "name": "Pen-Tester Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-072"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-073",
+      "page": 3,
+      "rowOnPage": 23,
+      "groupIdAsPrinted": "group-02",
+      "name": "Blockchain Dev Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-073"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-074",
+      "page": 3,
+      "rowOnPage": 24,
+      "groupIdAsPrinted": "group-02",
+      "name": "Smart Contract Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-074"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-075",
+      "page": 3,
+      "rowOnPage": 25,
+      "groupIdAsPrinted": "group-02",
+      "name": "NFT Dev Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-075"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-076",
+      "page": 3,
+      "rowOnPage": 26,
+      "groupIdAsPrinted": "group-02",
+      "name": "Hardware Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-076"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-077",
+      "page": 3,
+      "rowOnPage": 27,
+      "groupIdAsPrinted": "group-02",
+      "name": "Raspberry Pi Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-077"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-078",
+      "page": 3,
+      "rowOnPage": 28,
+      "groupIdAsPrinted": "group-02",
+      "name": "Arduino Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-078"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-079",
+      "page": 3,
+      "rowOnPage": 29,
+      "groupIdAsPrinted": "group-02",
+      "name": "FPGA Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-079"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-080",
+      "page": 3,
+      "rowOnPage": 30,
+      "groupIdAsPrinted": "group-02",
+      "name": "VR Dev Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-080"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-081",
+      "page": 3,
+      "rowOnPage": 31,
+      "groupIdAsPrinted": "group-02",
+      "name": "AR Dev Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-081"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-082",
+      "page": 3,
+      "rowOnPage": 32,
+      "groupIdAsPrinted": "group-02",
+      "name": "AI Research Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-082",
+        "source-345"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-083",
+      "page": 4,
+      "rowOnPage": 1,
+      "groupIdAsPrinted": "group-02",
+      "name": "ML Engineer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-083"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-084",
+      "page": 4,
+      "rowOnPage": 2,
+      "groupIdAsPrinted": "group-02",
+      "name": "Data Engineer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-084"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-085",
+      "page": 4,
+      "rowOnPage": 3,
+      "groupIdAsPrinted": "group-02",
+      "name": "Big Data Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-085"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-086",
+      "page": 4,
+      "rowOnPage": 4,
+      "groupIdAsPrinted": "group-02",
+      "name": "Visualization Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-086"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-087",
+      "page": 4,
+      "rowOnPage": 5,
+      "groupIdAsPrinted": "group-02",
+      "name": "BI Analyst Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-087"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-088",
+      "page": 4,
+      "rowOnPage": 6,
+      "groupIdAsPrinted": "group-02",
+      "name": "Algorithm Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-088"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-089",
+      "page": 4,
+      "rowOnPage": 7,
+      "groupIdAsPrinted": "group-02",
+      "name": "Functional Programming Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-089"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-090",
+      "page": 4,
+      "rowOnPage": 8,
+      "groupIdAsPrinted": "group-02",
+      "name": "Rust Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-090"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-091",
+      "page": 4,
+      "rowOnPage": 9,
+      "groupIdAsPrinted": "group-02",
+      "name": "Python Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-091"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-092",
+      "page": 4,
+      "rowOnPage": 10,
+      "groupIdAsPrinted": "group-02",
+      "name": "GoLang Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-092"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-093",
+      "page": 4,
+      "rowOnPage": 11,
+      "groupIdAsPrinted": "group-02",
+      "name": "Java Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-093"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-094",
+      "page": 4,
+      "rowOnPage": 12,
+      "groupIdAsPrinted": "group-02",
+      "name": "Haskell Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-094"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-095",
+      "page": 4,
+      "rowOnPage": 13,
+      "groupIdAsPrinted": "group-02",
+      "name": "Linux Kernel Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-095"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-096",
+      "page": 4,
+      "rowOnPage": 14,
+      "groupIdAsPrinted": "group-02",
+      "name": "OS Architect Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-096"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-097",
+      "page": 4,
+      "rowOnPage": 15,
+      "groupIdAsPrinted": "group-02",
+      "name": "Shell Scripting Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-097"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-098",
+      "page": 4,
+      "rowOnPage": 16,
+      "groupIdAsPrinted": "group-02",
+      "name": "Bash Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-098"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-099",
+      "page": 4,
+      "rowOnPage": 17,
+      "groupIdAsPrinted": "group-02",
+      "name": "Windows Admin Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-099"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-100",
+      "page": 4,
+      "rowOnPage": 18,
+      "groupIdAsPrinted": "group-02",
+      "name": "Mac Admin Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-100"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-101",
+      "page": 5,
+      "rowOnPage": 1,
+      "groupIdAsPrinted": "group-03",
+      "name": "Bookworm Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-101"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-102",
+      "page": 5,
+      "rowOnPage": 2,
+      "groupIdAsPrinted": "group-03",
+      "name": "History Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-102"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-103",
+      "page": 5,
+      "rowOnPage": 3,
+      "groupIdAsPrinted": "group-03",
+      "name": "Mythology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-103"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-104",
+      "page": 5,
+      "rowOnPage": 4,
+      "groupIdAsPrinted": "group-03",
+      "name": "Math Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-104"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-105",
+      "page": 5,
+      "rowOnPage": 5,
+      "groupIdAsPrinted": "group-03",
+      "name": "Physics Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-105"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-106",
+      "page": 5,
+      "rowOnPage": 6,
+      "groupIdAsPrinted": "group-03",
+      "name": "Chemistry Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-106"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-107",
+      "page": 5,
+      "rowOnPage": 7,
+      "groupIdAsPrinted": "group-03",
+      "name": "Biology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-107"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-108",
+      "page": 5,
+      "rowOnPage": 8,
+      "groupIdAsPrinted": "group-03",
+      "name": "Philosophy Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-108"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-109",
+      "page": 5,
+      "rowOnPage": 9,
+      "groupIdAsPrinted": "group-03",
+      "name": "Linguistics Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-109"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-110",
+      "page": 5,
+      "rowOnPage": 10,
+      "groupIdAsPrinted": "group-03",
+      "name": "Library Science Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-110"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-111",
+      "page": 5,
+      "rowOnPage": 11,
+      "groupIdAsPrinted": "group-03",
+      "name": "Art History Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-111"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-112",
+      "page": 5,
+      "rowOnPage": 12,
+      "groupIdAsPrinted": "group-03",
+      "name": "Paleontology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-112",
+        "source-328"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-113",
+      "page": 5,
+      "rowOnPage": 13,
+      "groupIdAsPrinted": "group-03",
+      "name": "Archaeology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-113"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-114",
+      "page": 5,
+      "rowOnPage": 14,
+      "groupIdAsPrinted": "group-03",
+      "name": "Theology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-114"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-115",
+      "page": 5,
+      "rowOnPage": 15,
+      "groupIdAsPrinted": "group-03",
+      "name": "Political Science Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-115"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-116",
+      "page": 5,
+      "rowOnPage": 16,
+      "groupIdAsPrinted": "group-03",
+      "name": "Economics Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-116"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-117",
+      "page": 5,
+      "rowOnPage": 17,
+      "groupIdAsPrinted": "group-03",
+      "name": "Psychology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-117"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-118",
+      "page": 5,
+      "rowOnPage": 18,
+      "groupIdAsPrinted": "group-03",
+      "name": "Sociology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-118"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-119",
+      "page": 5,
+      "rowOnPage": 19,
+      "groupIdAsPrinted": "group-03",
+      "name": "Anthropology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-119"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-120",
+      "page": 5,
+      "rowOnPage": 20,
+      "groupIdAsPrinted": "group-03",
+      "name": "Geography Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-120"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-121",
+      "page": 5,
+      "rowOnPage": 21,
+      "groupIdAsPrinted": "group-03",
+      "name": "Oceanography Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-121",
+        "source-321"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-122",
+      "page": 5,
+      "rowOnPage": 22,
+      "groupIdAsPrinted": "group-03",
+      "name": "Environmental Science Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-122"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-123",
+      "page": 5,
+      "rowOnPage": 23,
+      "groupIdAsPrinted": "group-03",
+      "name": "Ecology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-123",
+        "source-332"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-124",
+      "page": 5,
+      "rowOnPage": 24,
+      "groupIdAsPrinted": "group-03",
+      "name": "Neuroscience Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-124",
+        "source-340"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-125",
+      "page": 5,
+      "rowOnPage": 25,
+      "groupIdAsPrinted": "group-03",
+      "name": "Criminology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-125"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-126",
+      "page": 5,
+      "rowOnPage": 26,
+      "groupIdAsPrinted": "group-03",
+      "name": "Law Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-126"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-127",
+      "page": 5,
+      "rowOnPage": 27,
+      "groupIdAsPrinted": "group-03",
+      "name": "Medicine Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-127"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-128",
+      "page": 5,
+      "rowOnPage": 28,
+      "groupIdAsPrinted": "group-03",
+      "name": "Anatomy Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-128"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-129",
+      "page": 5,
+      "rowOnPage": 29,
+      "groupIdAsPrinted": "group-03",
+      "name": "Marine Biology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-129",
+        "source-322"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-130",
+      "page": 5,
+      "rowOnPage": 30,
+      "groupIdAsPrinted": "group-03",
+      "name": "Genetics Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-130",
+        "source-339"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-131",
+      "page": 5,
+      "rowOnPage": 31,
+      "groupIdAsPrinted": "group-03",
+      "name": "Microbiology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-131",
+        "source-337"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-132",
+      "page": 5,
+      "rowOnPage": 32,
+      "groupIdAsPrinted": "group-03",
+      "name": "Zoology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-132"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-133",
+      "page": 6,
+      "rowOnPage": 1,
+      "groupIdAsPrinted": "group-03",
+      "name": "Botany Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-133",
+        "source-336"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-134",
+      "page": 6,
+      "rowOnPage": 2,
+      "groupIdAsPrinted": "group-03",
+      "name": "Quantum Physics Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-134"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-135",
+      "page": 6,
+      "rowOnPage": 3,
+      "groupIdAsPrinted": "group-03",
+      "name": "Astrophysics Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-135",
+        "source-302"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-136",
+      "page": 6,
+      "rowOnPage": 4,
+      "groupIdAsPrinted": "group-03",
+      "name": "Cosmology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-136",
+        "source-303"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-137",
+      "page": 6,
+      "rowOnPage": 5,
+      "groupIdAsPrinted": "group-03",
+      "name": "Neurology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-137"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-138",
+      "page": 6,
+      "rowOnPage": 6,
+      "groupIdAsPrinted": "group-03",
+      "name": "Semiotics Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-138"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-139",
+      "page": 6,
+      "rowOnPage": 7,
+      "groupIdAsPrinted": "group-03",
+      "name": "Cryptography Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-139"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-140",
+      "page": 6,
+      "rowOnPage": 8,
+      "groupIdAsPrinted": "group-03",
+      "name": "Statistics Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-140"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-141",
+      "page": 6,
+      "rowOnPage": 9,
+      "groupIdAsPrinted": "group-03",
+      "name": "Probability Theory Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-141"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-142",
+      "page": 6,
+      "rowOnPage": 10,
+      "groupIdAsPrinted": "group-03",
+      "name": "Logic Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-142"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-143",
+      "page": 6,
+      "rowOnPage": 11,
+      "groupIdAsPrinted": "group-03",
+      "name": "Epistemology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-143"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-144",
+      "page": 6,
+      "rowOnPage": 12,
+      "groupIdAsPrinted": "group-03",
+      "name": "Phenomenology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-144"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-145",
+      "page": 6,
+      "rowOnPage": 13,
+      "groupIdAsPrinted": "group-03",
+      "name": "Rhetoric Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-145"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-146",
+      "page": 6,
+      "rowOnPage": 14,
+      "groupIdAsPrinted": "group-03",
+      "name": "Demography Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-146"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-147",
+      "page": 6,
+      "rowOnPage": 15,
+      "groupIdAsPrinted": "group-03",
+      "name": "Linguistic Anthropology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-147"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-148",
+      "page": 6,
+      "rowOnPage": 16,
+      "groupIdAsPrinted": "group-03",
+      "name": "Paleobotany Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-148"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-149",
+      "page": 6,
+      "rowOnPage": 17,
+      "groupIdAsPrinted": "group-03",
+      "name": "Paleozoology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-149"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-150",
+      "page": 6,
+      "rowOnPage": 18,
+      "groupIdAsPrinted": "group-03",
+      "name": "Climatology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-150"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-151",
+      "page": 7,
+      "rowOnPage": 1,
+      "groupIdAsPrinted": "group-04",
+      "name": "Pixel Art Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-151"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-152",
+      "page": 7,
+      "rowOnPage": 2,
+      "groupIdAsPrinted": "group-04",
+      "name": "3D Modeling Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-152"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-153",
+      "page": 7,
+      "rowOnPage": 3,
+      "groupIdAsPrinted": "group-04",
+      "name": "Graphic Design Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-153"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-154",
+      "page": 7,
+      "rowOnPage": 4,
+      "groupIdAsPrinted": "group-04",
+      "name": "Illustrator Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-154"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-155",
+      "page": 7,
+      "rowOnPage": 5,
+      "groupIdAsPrinted": "group-04",
+      "name": "Photography Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-155"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-156",
+      "page": 7,
+      "rowOnPage": 6,
+      "groupIdAsPrinted": "group-04",
+      "name": "Digital Painting Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-156"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-157",
+      "page": 7,
+      "rowOnPage": 7,
+      "groupIdAsPrinted": "group-04",
+      "name": "Concept Art Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-157"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-158",
+      "page": 7,
+      "rowOnPage": 8,
+      "groupIdAsPrinted": "group-04",
+      "name": "UI/UX Design Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-158"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-159",
+      "page": 7,
+      "rowOnPage": 9,
+      "groupIdAsPrinted": "group-04",
+      "name": "Motion Graphics Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-159"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-160",
+      "page": 7,
+      "rowOnPage": 10,
+      "groupIdAsPrinted": "group-04",
+      "name": "VFX Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-160"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-161",
+      "page": 7,
+      "rowOnPage": 11,
+      "groupIdAsPrinted": "group-04",
+      "name": "2D Animation Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-161"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-162",
+      "page": 7,
+      "rowOnPage": 12,
+      "groupIdAsPrinted": "group-04",
+      "name": "3D Animation Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-162"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-163",
+      "page": 7,
+      "rowOnPage": 13,
+      "groupIdAsPrinted": "group-04",
+      "name": "Stop-Motion Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-163"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-164",
+      "page": 7,
+      "rowOnPage": 14,
+      "groupIdAsPrinted": "group-04",
+      "name": "Character Design Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-164"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-165",
+      "page": 7,
+      "rowOnPage": 15,
+      "groupIdAsPrinted": "group-04",
+      "name": "Sculpting Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-165"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-166",
+      "page": 7,
+      "rowOnPage": 16,
+      "groupIdAsPrinted": "group-04",
+      "name": "Pottery Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-166"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-167",
+      "page": 7,
+      "rowOnPage": 17,
+      "groupIdAsPrinted": "group-04",
+      "name": "Glassblowing Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-167"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-168",
+      "page": 7,
+      "rowOnPage": 18,
+      "groupIdAsPrinted": "group-04",
+      "name": "Woodworking Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-168"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-169",
+      "page": 7,
+      "rowOnPage": 19,
+      "groupIdAsPrinted": "group-04",
+      "name": "Knitting Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-169"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-170",
+      "page": 7,
+      "rowOnPage": 20,
+      "groupIdAsPrinted": "group-04",
+      "name": "Crochet Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-170"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-171",
+      "page": 7,
+      "rowOnPage": 21,
+      "groupIdAsPrinted": "group-04",
+      "name": "Embroidery Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-171"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-172",
+      "page": 7,
+      "rowOnPage": 22,
+      "groupIdAsPrinted": "group-04",
+      "name": "Jewelry Design Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-172"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-173",
+      "page": 7,
+      "rowOnPage": 23,
+      "groupIdAsPrinted": "group-04",
+      "name": "Fashion Design Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-173"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-174",
+      "page": 7,
+      "rowOnPage": 24,
+      "groupIdAsPrinted": "group-04",
+      "name": "Costume Design Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-174"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-175",
+      "page": 7,
+      "rowOnPage": 25,
+      "groupIdAsPrinted": "group-04",
+      "name": "Makeup Artistry Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-175"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-176",
+      "page": 7,
+      "rowOnPage": 26,
+      "groupIdAsPrinted": "group-04",
+      "name": "Calligraphy Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-176"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-177",
+      "page": 7,
+      "rowOnPage": 27,
+      "groupIdAsPrinted": "group-04",
+      "name": "Comic Book Artist Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-177"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-178",
+      "page": 7,
+      "rowOnPage": 28,
+      "groupIdAsPrinted": "group-04",
+      "name": "Manga Artist Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-178"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-179",
+      "page": 7,
+      "rowOnPage": 29,
+      "groupIdAsPrinted": "group-04",
+      "name": "Installation Art Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-179"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-180",
+      "page": 7,
+      "rowOnPage": 30,
+      "groupIdAsPrinted": "group-04",
+      "name": "Graffiti Artist Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-180"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-181",
+      "page": 7,
+      "rowOnPage": 31,
+      "groupIdAsPrinted": "group-04",
+      "name": "Sign Painting Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-181"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-182",
+      "page": 7,
+      "rowOnPage": 32,
+      "groupIdAsPrinted": "group-04",
+      "name": "Stage Design Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-182"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-183",
+      "page": 8,
+      "rowOnPage": 1,
+      "groupIdAsPrinted": "group-04",
+      "name": "Cinematography Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-183",
+        "source-267"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-184",
+      "page": 8,
+      "rowOnPage": 2,
+      "groupIdAsPrinted": "group-04",
+      "name": "Textile Design Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-184"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-185",
+      "page": 8,
+      "rowOnPage": 3,
+      "groupIdAsPrinted": "group-04",
+      "name": "Cake Decorating Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-185"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-186",
+      "page": 8,
+      "rowOnPage": 4,
+      "groupIdAsPrinted": "group-04",
+      "name": "Floral Arrangement Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-186"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-187",
+      "page": 8,
+      "rowOnPage": 5,
+      "groupIdAsPrinted": "group-04",
+      "name": "Lego Builder Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-187"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-188",
+      "page": 8,
+      "rowOnPage": 6,
+      "groupIdAsPrinted": "group-04",
+      "name": "Model Railroad Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-188"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-189",
+      "page": 8,
+      "rowOnPage": 7,
+      "groupIdAsPrinted": "group-04",
+      "name": "Diorama Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-189"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-190",
+      "page": 8,
+      "rowOnPage": 8,
+      "groupIdAsPrinted": "group-04",
+      "name": "Bonsai Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-190"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-191",
+      "page": 8,
+      "rowOnPage": 9,
+      "groupIdAsPrinted": "group-04",
+      "name": "Paper Art Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-191"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-192",
+      "page": 8,
+      "rowOnPage": 10,
+      "groupIdAsPrinted": "group-04",
+      "name": "Stencil Art Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-192"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-193",
+      "page": 8,
+      "rowOnPage": 11,
+      "groupIdAsPrinted": "group-04",
+      "name": "Resin Art Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-193"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-194",
+      "page": 8,
+      "rowOnPage": 12,
+      "groupIdAsPrinted": "group-04",
+      "name": "Light Painting Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-194"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-195",
+      "page": 8,
+      "rowOnPage": 13,
+      "groupIdAsPrinted": "group-04",
+      "name": "Chalk Art Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-195"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-196",
+      "page": 8,
+      "rowOnPage": 14,
+      "groupIdAsPrinted": "group-04",
+      "name": "Caricature Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-196"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-197",
+      "page": 8,
+      "rowOnPage": 15,
+      "groupIdAsPrinted": "group-04",
+      "name": "Etching Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-197"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-198",
+      "page": 8,
+      "rowOnPage": 16,
+      "groupIdAsPrinted": "group-04",
+      "name": "Printmaking Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-198"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-199",
+      "page": 8,
+      "rowOnPage": 17,
+      "groupIdAsPrinted": "group-04",
+      "name": "Storyboarding Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-199"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-200",
+      "page": 8,
+      "rowOnPage": 18,
+      "groupIdAsPrinted": "group-04",
+      "name": "Conceptual Artist Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-200"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-201",
+      "page": 9,
+      "rowOnPage": 1,
+      "groupIdAsPrinted": "group-05",
+      "name": "DJ Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-201"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-202",
+      "page": 9,
+      "rowOnPage": 2,
+      "groupIdAsPrinted": "group-05",
+      "name": "Lo-Fi Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-202"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-203",
+      "page": 9,
+      "rowOnPage": 3,
+      "groupIdAsPrinted": "group-05",
+      "name": "Synth Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-203"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-204",
+      "page": 9,
+      "rowOnPage": 4,
+      "groupIdAsPrinted": "group-05",
+      "name": "Vinyl Collector Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-204"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-205",
+      "page": 9,
+      "rowOnPage": 5,
+      "groupIdAsPrinted": "group-05",
+      "name": "Guitar Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-205"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-206",
+      "page": 9,
+      "rowOnPage": 6,
+      "groupIdAsPrinted": "group-05",
+      "name": "Pianist Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-206"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-207",
+      "page": 9,
+      "rowOnPage": 7,
+      "groupIdAsPrinted": "group-05",
+      "name": "Drummer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-207"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-208",
+      "page": 9,
+      "rowOnPage": 8,
+      "groupIdAsPrinted": "group-05",
+      "name": "Bassist Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-208"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-209",
+      "page": 9,
+      "rowOnPage": 9,
+      "groupIdAsPrinted": "group-05",
+      "name": "Electronic Music Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-209"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-210",
+      "page": 9,
+      "rowOnPage": 10,
+      "groupIdAsPrinted": "group-05",
+      "name": "Hip-Hop Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-210"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-211",
+      "page": 9,
+      "rowOnPage": 11,
+      "groupIdAsPrinted": "group-05",
+      "name": "Jazz Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-211"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-212",
+      "page": 9,
+      "rowOnPage": 12,
+      "groupIdAsPrinted": "group-05",
+      "name": "Classical Music Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-212"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-213",
+      "page": 9,
+      "rowOnPage": 13,
+      "groupIdAsPrinted": "group-05",
+      "name": "Opera Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-213"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-214",
+      "page": 9,
+      "rowOnPage": 14,
+      "groupIdAsPrinted": "group-05",
+      "name": "Metal Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-214"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-215",
+      "page": 9,
+      "rowOnPage": 15,
+      "groupIdAsPrinted": "group-05",
+      "name": "Punk Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-215"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-216",
+      "page": 9,
+      "rowOnPage": 16,
+      "groupIdAsPrinted": "group-05",
+      "name": "Folk Music Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-216"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-217",
+      "page": 9,
+      "rowOnPage": 17,
+      "groupIdAsPrinted": "group-05",
+      "name": "World Music Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-217"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-218",
+      "page": 9,
+      "rowOnPage": 18,
+      "groupIdAsPrinted": "group-05",
+      "name": "Vocal Coach Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-218"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-219",
+      "page": 9,
+      "rowOnPage": 19,
+      "groupIdAsPrinted": "group-05",
+      "name": "Music Producer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-219"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-220",
+      "page": 9,
+      "rowOnPage": 20,
+      "groupIdAsPrinted": "group-05",
+      "name": "Mixing Engineer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-220"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-221",
+      "page": 9,
+      "rowOnPage": 21,
+      "groupIdAsPrinted": "group-05",
+      "name": "Mastering Engineer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-221"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-222",
+      "page": 9,
+      "rowOnPage": 22,
+      "groupIdAsPrinted": "group-05",
+      "name": "Sample Pack Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-222"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-223",
+      "page": 9,
+      "rowOnPage": 23,
+      "groupIdAsPrinted": "group-05",
+      "name": "Synthwave Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-223",
+        "source-433"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-224",
+      "page": 9,
+      "rowOnPage": 24,
+      "groupIdAsPrinted": "group-05",
+      "name": "Techno Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-224"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-225",
+      "page": 9,
+      "rowOnPage": 25,
+      "groupIdAsPrinted": "group-05",
+      "name": "House Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-225"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-226",
+      "page": 9,
+      "rowOnPage": 26,
+      "groupIdAsPrinted": "group-05",
+      "name": "Trance Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-226"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-227",
+      "page": 9,
+      "rowOnPage": 27,
+      "groupIdAsPrinted": "group-05",
+      "name": "Ambient Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-227"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-228",
+      "page": 9,
+      "rowOnPage": 28,
+      "groupIdAsPrinted": "group-05",
+      "name": "Experimental Music Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-228"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-229",
+      "page": 9,
+      "rowOnPage": 29,
+      "groupIdAsPrinted": "group-05",
+      "name": "IDM Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-229"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-230",
+      "page": 9,
+      "rowOnPage": 30,
+      "groupIdAsPrinted": "group-05",
+      "name": "Reggae Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-230"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-231",
+      "page": 9,
+      "rowOnPage": 31,
+      "groupIdAsPrinted": "group-05",
+      "name": "Ska Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-231"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-232",
+      "page": 9,
+      "rowOnPage": 32,
+      "groupIdAsPrinted": "group-05",
+      "name": "Blues Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-232"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-233",
+      "page": 10,
+      "rowOnPage": 1,
+      "groupIdAsPrinted": "group-05",
+      "name": "Country Music Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-233"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-234",
+      "page": 10,
+      "rowOnPage": 2,
+      "groupIdAsPrinted": "group-05",
+      "name": "Singer-Songwriter Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-234"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-235",
+      "page": 10,
+      "rowOnPage": 3,
+      "groupIdAsPrinted": "group-05",
+      "name": "Music Historian Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-235"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-236",
+      "page": 10,
+      "rowOnPage": 4,
+      "groupIdAsPrinted": "group-05",
+      "name": "Film Score Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-236"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-237",
+      "page": 10,
+      "rowOnPage": 5,
+      "groupIdAsPrinted": "group-05",
+      "name": "Game Music Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-237"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-238",
+      "page": 10,
+      "rowOnPage": 6,
+      "groupIdAsPrinted": "group-05",
+      "name": "Instrument Repair Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-238"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-239",
+      "page": 10,
+      "rowOnPage": 7,
+      "groupIdAsPrinted": "group-05",
+      "name": "Turntablism Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-239"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-240",
+      "page": 10,
+      "rowOnPage": 8,
+      "groupIdAsPrinted": "group-05",
+      "name": "Beatmaker Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-240"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-241",
+      "page": 10,
+      "rowOnPage": 9,
+      "groupIdAsPrinted": "group-05",
+      "name": "Loop Pedal Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-241"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-242",
+      "page": 10,
+      "rowOnPage": 10,
+      "groupIdAsPrinted": "group-05",
+      "name": "Choral Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-242"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-243",
+      "page": 10,
+      "rowOnPage": 11,
+      "groupIdAsPrinted": "group-05",
+      "name": "World Instrument Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-243"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-244",
+      "page": 10,
+      "rowOnPage": 12,
+      "groupIdAsPrinted": "group-05",
+      "name": "Binaural Beats Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-244"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-245",
+      "page": 10,
+      "rowOnPage": 13,
+      "groupIdAsPrinted": "group-05",
+      "name": "Podcast Audio Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-245"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-246",
+      "page": 10,
+      "rowOnPage": 14,
+      "groupIdAsPrinted": "group-05",
+      "name": "ASMR Audio Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-246"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-247",
+      "page": 10,
+      "rowOnPage": 15,
+      "groupIdAsPrinted": "group-05",
+      "name": "Field Recording Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-247"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-248",
+      "page": 10,
+      "rowOnPage": 16,
+      "groupIdAsPrinted": "group-05",
+      "name": "Foley Artist Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-248",
+        "source-299"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-249",
+      "page": 10,
+      "rowOnPage": 17,
+      "groupIdAsPrinted": "group-05",
+      "name": "MIDI Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-249"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-250",
+      "page": 10,
+      "rowOnPage": 18,
+      "groupIdAsPrinted": "group-05",
+      "name": "DAW Specialist Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-250"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-251",
+      "page": 11,
+      "rowOnPage": 1,
+      "groupIdAsPrinted": "group-06",
+      "name": "Movie Buff Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-251"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-252",
+      "page": 11,
+      "rowOnPage": 2,
+      "groupIdAsPrinted": "group-06",
+      "name": "Sci-Fi Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-252"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-253",
+      "page": 11,
+      "rowOnPage": 3,
+      "groupIdAsPrinted": "group-06",
+      "name": "Fantasy Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-253"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-254",
+      "page": 11,
+      "rowOnPage": 4,
+      "groupIdAsPrinted": "group-06",
+      "name": "Superhero Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-254"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-255",
+      "page": 11,
+      "rowOnPage": 5,
+      "groupIdAsPrinted": "group-06",
+      "name": "Horror Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-255"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-256",
+      "page": 11,
+      "rowOnPage": 6,
+      "groupIdAsPrinted": "group-06",
+      "name": "Rom-Com Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-256"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-257",
+      "page": 11,
+      "rowOnPage": 7,
+      "groupIdAsPrinted": "group-06",
+      "name": "Sitcom Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-257"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-258",
+      "page": 11,
+      "rowOnPage": 8,
+      "groupIdAsPrinted": "group-06",
+      "name": "Anime Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-258"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-259",
+      "page": 11,
+      "rowOnPage": 9,
+      "groupIdAsPrinted": "group-06",
+      "name": "Meme Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-259",
+        "source-406"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-260",
+      "page": 11,
+      "rowOnPage": 10,
+      "groupIdAsPrinted": "group-06",
+      "name": "Nostalgia Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-260"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-261",
+      "page": 11,
+      "rowOnPage": 11,
+      "groupIdAsPrinted": "group-06",
+      "name": "Documentary Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-261"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-262",
+      "page": 11,
+      "rowOnPage": 12,
+      "groupIdAsPrinted": "group-06",
+      "name": "Film Noir Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-262"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-263",
+      "page": 11,
+      "rowOnPage": 13,
+      "groupIdAsPrinted": "group-06",
+      "name": "Indie Film Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-263"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-264",
+      "page": 11,
+      "rowOnPage": 14,
+      "groupIdAsPrinted": "group-06",
+      "name": "Cult Classic Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-264"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-265",
+      "page": 11,
+      "rowOnPage": 15,
+      "groupIdAsPrinted": "group-06",
+      "name": "B-Movie Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-265"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-266",
+      "page": 11,
+      "rowOnPage": 16,
+      "groupIdAsPrinted": "group-06",
+      "name": "Blockbuster Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-266"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-267",
+      "page": 11,
+      "rowOnPage": 17,
+      "groupIdAsPrinted": "group-06",
+      "name": "Cinematography Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-183",
+        "source-267"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-268",
+      "page": 11,
+      "rowOnPage": 18,
+      "groupIdAsPrinted": "group-06",
+      "name": "Screenwriter Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-268"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-269",
+      "page": 11,
+      "rowOnPage": 19,
+      "groupIdAsPrinted": "group-06",
+      "name": "Film Critic Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-269"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-270",
+      "page": 11,
+      "rowOnPage": 20,
+      "groupIdAsPrinted": "group-06",
+      "name": "Action Movie Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-270"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-271",
+      "page": 11,
+      "rowOnPage": 21,
+      "groupIdAsPrinted": "group-06",
+      "name": "Thriller Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-271"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-272",
+      "page": 11,
+      "rowOnPage": 22,
+      "groupIdAsPrinted": "group-06",
+      "name": "Western Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-272"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-273",
+      "page": 11,
+      "rowOnPage": 23,
+      "groupIdAsPrinted": "group-06",
+      "name": "Silent Film Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-273"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-274",
+      "page": 11,
+      "rowOnPage": 24,
+      "groupIdAsPrinted": "group-06",
+      "name": "Golden Age Hollywood Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-274"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-275",
+      "page": 11,
+      "rowOnPage": 25,
+      "groupIdAsPrinted": "group-06",
+      "name": "Bollywood Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-275"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-276",
+      "page": 11,
+      "rowOnPage": 26,
+      "groupIdAsPrinted": "group-06",
+      "name": "K-Drama Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-276"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-277",
+      "page": 11,
+      "rowOnPage": 27,
+      "groupIdAsPrinted": "group-06",
+      "name": "Telenovela Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-277"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-278",
+      "page": 11,
+      "rowOnPage": 28,
+      "groupIdAsPrinted": "group-06",
+      "name": "Reality TV Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-278"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-279",
+      "page": 11,
+      "rowOnPage": 29,
+      "groupIdAsPrinted": "group-06",
+      "name": "Game Show Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-279"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-280",
+      "page": 11,
+      "rowOnPage": 30,
+      "groupIdAsPrinted": "group-06",
+      "name": "Sketch Comedy Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-280"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-281",
+      "page": 11,
+      "rowOnPage": 31,
+      "groupIdAsPrinted": "group-06",
+      "name": "Stand-Up Comedy Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-281"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-282",
+      "page": 11,
+      "rowOnPage": 32,
+      "groupIdAsPrinted": "group-06",
+      "name": "Late-Night TV Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-282"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-283",
+      "page": 12,
+      "rowOnPage": 1,
+      "groupIdAsPrinted": "group-06",
+      "name": "Cult TV Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-283"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-284",
+      "page": 12,
+      "rowOnPage": 2,
+      "groupIdAsPrinted": "group-06",
+      "name": "Animated Series Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-284"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-285",
+      "page": 12,
+      "rowOnPage": 3,
+      "groupIdAsPrinted": "group-06",
+      "name": "Manga Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-285"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-286",
+      "page": 12,
+      "rowOnPage": 4,
+      "groupIdAsPrinted": "group-06",
+      "name": "Comic Book Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-286"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-287",
+      "page": 12,
+      "rowOnPage": 5,
+      "groupIdAsPrinted": "group-06",
+      "name": "Fan Convention Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-287"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-288",
+      "page": 12,
+      "rowOnPage": 6,
+      "groupIdAsPrinted": "group-06",
+      "name": "Autograph Collector Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-288"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-289",
+      "page": 12,
+      "rowOnPage": 7,
+      "groupIdAsPrinted": "group-06",
+      "name": "Movie Prop Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-289"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-290",
+      "page": 12,
+      "rowOnPage": 8,
+      "groupIdAsPrinted": "group-06",
+      "name": "VHS Collector Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-290"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-291",
+      "page": 12,
+      "rowOnPage": 9,
+      "groupIdAsPrinted": "group-06",
+      "name": "Criterion Collection Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-291"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-292",
+      "page": 12,
+      "rowOnPage": 10,
+      "groupIdAsPrinted": "group-06",
+      "name": "Film Festival Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-292"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-293",
+      "page": 12,
+      "rowOnPage": 11,
+      "groupIdAsPrinted": "group-06",
+      "name": "Streaming Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-293"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-294",
+      "page": 12,
+      "rowOnPage": 12,
+      "groupIdAsPrinted": "group-06",
+      "name": "Binge-Watcher Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-294"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-295",
+      "page": 12,
+      "rowOnPage": 13,
+      "groupIdAsPrinted": "group-06",
+      "name": "Award Show Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-295"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-296",
+      "page": 12,
+      "rowOnPage": 14,
+      "groupIdAsPrinted": "group-06",
+      "name": "Red Carpet Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-296"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-297",
+      "page": 12,
+      "rowOnPage": 15,
+      "groupIdAsPrinted": "group-06",
+      "name": "Subtitle Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-297"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-298",
+      "page": 12,
+      "rowOnPage": 16,
+      "groupIdAsPrinted": "group-06",
+      "name": "Voice Actor Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-298"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-299",
+      "page": 12,
+      "rowOnPage": 17,
+      "groupIdAsPrinted": "group-06",
+      "name": "Foley Artist Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-248",
+        "source-299"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-300",
+      "page": 12,
+      "rowOnPage": 18,
+      "groupIdAsPrinted": "group-06",
+      "name": "Showrunner Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-300"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-301",
+      "page": 13,
+      "rowOnPage": 1,
+      "groupIdAsPrinted": "group-07",
+      "name": "Astronomy Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-301"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-302",
+      "page": 13,
+      "rowOnPage": 2,
+      "groupIdAsPrinted": "group-07",
+      "name": "Astrophysics Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-135",
+        "source-302"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-303",
+      "page": 13,
+      "rowOnPage": 3,
+      "groupIdAsPrinted": "group-07",
+      "name": "Cosmology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-136",
+        "source-303"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-304",
+      "page": 13,
+      "rowOnPage": 4,
+      "groupIdAsPrinted": "group-07",
+      "name": "Planetary Science Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-304"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-305",
+      "page": 13,
+      "rowOnPage": 5,
+      "groupIdAsPrinted": "group-07",
+      "name": "Exoplanet Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-305"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-306",
+      "page": 13,
+      "rowOnPage": 6,
+      "groupIdAsPrinted": "group-07",
+      "name": "Star Formation Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-306"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-307",
+      "page": 13,
+      "rowOnPage": 7,
+      "groupIdAsPrinted": "group-07",
+      "name": "Black Hole Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-307"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-308",
+      "page": 13,
+      "rowOnPage": 8,
+      "groupIdAsPrinted": "group-07",
+      "name": "Dark Matter Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-308"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-309",
+      "page": 13,
+      "rowOnPage": 9,
+      "groupIdAsPrinted": "group-07",
+      "name": "Dark Energy Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-309"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-310",
+      "page": 13,
+      "rowOnPage": 10,
+      "groupIdAsPrinted": "group-07",
+      "name": "Space Telescope Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-310"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-311",
+      "page": 13,
+      "rowOnPage": 11,
+      "groupIdAsPrinted": "group-07",
+      "name": "Rocket Science Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-311"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-312",
+      "page": 13,
+      "rowOnPage": 12,
+      "groupIdAsPrinted": "group-07",
+      "name": "Space Mission Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-312"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-313",
+      "page": 13,
+      "rowOnPage": 13,
+      "groupIdAsPrinted": "group-07",
+      "name": "Satellite Engineer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-313"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-314",
+      "page": 13,
+      "rowOnPage": 14,
+      "groupIdAsPrinted": "group-07",
+      "name": "Mars Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-314"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-315",
+      "page": 13,
+      "rowOnPage": 15,
+      "groupIdAsPrinted": "group-07",
+      "name": "Moon Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-315"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-316",
+      "page": 13,
+      "rowOnPage": 16,
+      "groupIdAsPrinted": "group-07",
+      "name": "Space Station Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-316"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-317",
+      "page": 13,
+      "rowOnPage": 17,
+      "groupIdAsPrinted": "group-07",
+      "name": "EVA Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-317"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-318",
+      "page": 13,
+      "rowOnPage": 18,
+      "groupIdAsPrinted": "group-07",
+      "name": "Space Suit Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-318"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-319",
+      "page": 13,
+      "rowOnPage": 19,
+      "groupIdAsPrinted": "group-07",
+      "name": "Launch Pad Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-319"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-320",
+      "page": 13,
+      "rowOnPage": 20,
+      "groupIdAsPrinted": "group-07",
+      "name": "Deep Sea Exploration Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-320"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-321",
+      "page": 13,
+      "rowOnPage": 21,
+      "groupIdAsPrinted": "group-07",
+      "name": "Oceanography Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-121",
+        "source-321"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-322",
+      "page": 13,
+      "rowOnPage": 22,
+      "groupIdAsPrinted": "group-07",
+      "name": "Marine Biology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-129",
+        "source-322"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-323",
+      "page": 13,
+      "rowOnPage": 23,
+      "groupIdAsPrinted": "group-07",
+      "name": "Coral Reef Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-323"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-324",
+      "page": 13,
+      "rowOnPage": 24,
+      "groupIdAsPrinted": "group-07",
+      "name": "Underwater Drone Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-324"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-325",
+      "page": 13,
+      "rowOnPage": 25,
+      "groupIdAsPrinted": "group-07",
+      "name": "Geology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-325"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-326",
+      "page": 13,
+      "rowOnPage": 26,
+      "groupIdAsPrinted": "group-07",
+      "name": "Volcanology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-326"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-327",
+      "page": 13,
+      "rowOnPage": 27,
+      "groupIdAsPrinted": "group-07",
+      "name": "Seismology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-327"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-328",
+      "page": 13,
+      "rowOnPage": 28,
+      "groupIdAsPrinted": "group-07",
+      "name": "Paleontology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-112",
+        "source-328"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-329",
+      "page": 13,
+      "rowOnPage": 29,
+      "groupIdAsPrinted": "group-07",
+      "name": "Glaciology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-329"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-330",
+      "page": 13,
+      "rowOnPage": 30,
+      "groupIdAsPrinted": "group-07",
+      "name": "Meteorology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-330"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-331",
+      "page": 13,
+      "rowOnPage": 31,
+      "groupIdAsPrinted": "group-07",
+      "name": "Climate Science Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-331"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-332",
+      "page": 13,
+      "rowOnPage": 32,
+      "groupIdAsPrinted": "group-07",
+      "name": "Ecology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-123",
+        "source-332"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-333",
+      "page": 14,
+      "rowOnPage": 1,
+      "groupIdAsPrinted": "group-07",
+      "name": "Conservation Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-333"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-334",
+      "page": 14,
+      "rowOnPage": 2,
+      "groupIdAsPrinted": "group-07",
+      "name": "Wildlife Biology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-334"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-335",
+      "page": 14,
+      "rowOnPage": 3,
+      "groupIdAsPrinted": "group-07",
+      "name": "Coral Ecology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-335"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-336",
+      "page": 14,
+      "rowOnPage": 4,
+      "groupIdAsPrinted": "group-07",
+      "name": "Botany Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-133",
+        "source-336"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-337",
+      "page": 14,
+      "rowOnPage": 5,
+      "groupIdAsPrinted": "group-07",
+      "name": "Microbiology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-131",
+        "source-337"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-338",
+      "page": 14,
+      "rowOnPage": 6,
+      "groupIdAsPrinted": "group-07",
+      "name": "Nanotechnology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-338"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-339",
+      "page": 14,
+      "rowOnPage": 7,
+      "groupIdAsPrinted": "group-07",
+      "name": "Genetics Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-130",
+        "source-339"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-340",
+      "page": 14,
+      "rowOnPage": 8,
+      "groupIdAsPrinted": "group-07",
+      "name": "Neuroscience Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-124",
+        "source-340"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-341",
+      "page": 14,
+      "rowOnPage": 9,
+      "groupIdAsPrinted": "group-07",
+      "name": "Astrobiology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-341"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-342",
+      "page": 14,
+      "rowOnPage": 10,
+      "groupIdAsPrinted": "group-07",
+      "name": "Exobiology Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-342"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-343",
+      "page": 14,
+      "rowOnPage": 11,
+      "groupIdAsPrinted": "group-07",
+      "name": "Terraforming Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-343"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-344",
+      "page": 14,
+      "rowOnPage": 12,
+      "groupIdAsPrinted": "group-07",
+      "name": "Robotics Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-344"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-345",
+      "page": 14,
+      "rowOnPage": 13,
+      "groupIdAsPrinted": "group-07",
+      "name": "AI Research Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-082",
+        "source-345"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-346",
+      "page": 14,
+      "rowOnPage": 14,
+      "groupIdAsPrinted": "group-07",
+      "name": "Quantum Mechanics Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-346"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-347",
+      "page": 14,
+      "rowOnPage": 15,
+      "groupIdAsPrinted": "group-07",
+      "name": "Particle Physics Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-347"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-348",
+      "page": 14,
+      "rowOnPage": 16,
+      "groupIdAsPrinted": "group-07",
+      "name": "Relativity Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-348"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-349",
+      "page": 14,
+      "rowOnPage": 17,
+      "groupIdAsPrinted": "group-07",
+      "name": "Computational Science Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-349"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-350",
+      "page": 14,
+      "rowOnPage": 18,
+      "groupIdAsPrinted": "group-07",
+      "name": "Biotech Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-350"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-351",
+      "page": 15,
+      "rowOnPage": 1,
+      "groupIdAsPrinted": "group-08",
+      "name": "D&D Dungeon Master Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-351"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-352",
+      "page": 15,
+      "rowOnPage": 2,
+      "groupIdAsPrinted": "group-08",
+      "name": "Pathfinder Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-352"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-353",
+      "page": 15,
+      "rowOnPage": 3,
+      "groupIdAsPrinted": "group-08",
+      "name": "Call of Cthulhu Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-353"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-354",
+      "page": 15,
+      "rowOnPage": 4,
+      "groupIdAsPrinted": "group-08",
+      "name": "Warhammer Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-354"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-355",
+      "page": 15,
+      "rowOnPage": 5,
+      "groupIdAsPrinted": "group-08",
+      "name": "MTG Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-355"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-356",
+      "page": 15,
+      "rowOnPage": 6,
+      "groupIdAsPrinted": "group-08",
+      "name": "Cosplay Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-028",
+        "source-356"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-357",
+      "page": 15,
+      "rowOnPage": 7,
+      "groupIdAsPrinted": "group-08",
+      "name": "Costume Maker Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-357"
+      ],
+      "mappedEdition": null
+    },
+    {
+      "pdfRowId": "pdf-row-358",
+      "page": 15,
+      "rowOnPage": 8,
+      "groupIdAsPrinted": "group-08",
+      "name": "Perfume Blending Geek",
+      "rarityCells": [
+        100,
+        50,
+        25,
+        5,
+        1
+      ],
+      "exactRosterNameMatches": [
+        "source-500"
+      ],
+      "mappedEdition": null
+    }
+  ]
+}

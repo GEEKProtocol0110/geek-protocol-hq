@@ -25,7 +25,7 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**ARCH-002: in-progress.** Preserve the newly supplied 500geek list.txt unchanged and compare its 500 source positions, 482 exact names and 18 repeated-label pairs with the current collection. Candidate does not change editions, rarity, art approvals or ownership.
+**ARCH-002: in-progress.** PR #116 preserves the 500-position theme roster and incomplete 17-page trait PDF unchanged, with ordered extractions and comparison. The PDF repeats rarity cells per archetype but contains only 358 populated rows. No edition or supply policy is changed.
 
 Next task: **BANK-001**. Review the ARCH-002 archive/reconciliation candidate, then resume BANK-001. COLL-001 needs explicit theme/rarity/edition reconciliation; CHAIN-001 still needs its first accepted pilot receipt/manual transfer. Preserve CCE and Mainnet settlement holds.
 
@@ -35,7 +35,7 @@ CCE: **bank-and-economy-hold**. Contributor rate: unselected; 1 or 5 GEEK are pr
 
 ## Unresolved
 
-- Original founding conversation and remaining phone files are not yet ingested; one founder-supplied 500-Geek roster is now preserved in the ARCH-002 candidate.
+- Original founding conversation and remaining phone files are not yet ingested; the theme roster and incomplete trait PDF are preserved in PR #116.
 - Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.
 - No successor or second trusted account administrator is appointed in this record.
 - No institutional contract, school partnership, legal-entity registration or accreditation is verified.
