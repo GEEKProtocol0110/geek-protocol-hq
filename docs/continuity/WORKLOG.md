@@ -37,3 +37,9 @@ Use one entry per substantive session/interruption: task ID, exact review/commit
 - **Evidence:** [setup packet](../TESTNET-ASSET-SETUP.md), dated GEEKT-unused observation, primary Kasware docs and pinned Kasplex executor. Supplied address passes local/SDK parsing; no KRC-20 holdings returned; native balance APIs returned HTTP 403. Address-specific evidence stays private. Review record: PR #114.
 - **Validation:** JSON parsed, integer scaling/capacity and packet references checked; continuity generation/check and whitespace checks passed. No runtime files, wallet operations or environment settings changed.
 - **Next:** review this packet and implement/select the guarded TN10 signer integration before actual deployment. The existing public mint remains Mainnet-only; pilot configuration remains disabled and incomplete.
+
+## October 15, 2026 — CHAIN-001 tokenomics correction
+
+- **Outcome:** founder requested matching GEEK tokenomics. Superseded the unsubmitted small-supply proposal with 144 billion maximum, 100,000 per mint, eight decimals and zero premint. Preserved the original proposal in this historical log; updated current deploy JSON, manifest and guide. DR-011 records the direction.
+- **Validation:** exact raw fields matched `GEEK_DEPLOYMENT`; BigInt scaling and 1,440,000-mint capacity checked. Continuity generation/check and whitespace checks passed. Review record: PR #114.
+- **Boundary/next:** GEEKT remains a separate unsigned TN10 packet. No wallet approval, deployment, mint, reward activation or environment change; guarded signer integration and real-device acceptance remain pending.

@@ -346,12 +346,13 @@ Evidence/specification: [docs/continuity/repositories.json](../../docs/continuit
 
 Next action: Review the GEEKT unsigned packet, implement or select a separately reviewed Kasware TN10 signing integration, verify the installed provider and funds, then deploy/mint once and reconcile before enabling the manual pilot.
 
-Blocker: Unsigned GEEKT proposal prepared; ticker reported unused on October 15. No TN10 deployment signer in HQ, accepted parameters, deployed test asset or real-device signing evidence. Supplied address validated privately; native balance APIs returned HTTP 403.
+Blocker: Unsigned GEEKT packet now mirrors pinned GEEK supply/mint settings; ticker was reported unused on October 15. No TN10 deployment signer in HQ, deployed asset, wallet approval or real-device signing evidence. Supplied address validated privately; native balance APIs returned HTTP 403.
 
 Acceptance:
 
 - Exact TN10 token deployment, decimals, sender and amount verified against the fixed indexer.
 - Wallet provider and TN10 signing workflow exercised with recorded transaction evidence.
 - One manual pilot transfer reconciled by the existing receipt desk; no Mainnet settlement enabled.
+- Test deployment maximum, mint limit, premint and decimals match pinned GEEK; test ticker/network/deployment remain distinct.
 
 Evidence/specification: [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md), [docs/TESTNET-ASSET-SETUP.md](../../docs/TESTNET-ASSET-SETUP.md).

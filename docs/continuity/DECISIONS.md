@@ -103,3 +103,13 @@ Document the succession process now; the founder must appoint real trusted custo
 Basis: A role description is not an account transfer or legal succession instrument.
 
 Evidence: [docs/continuity/SUCCESSION.md](../../docs/continuity/SUCCESSION.md).
+
+## DR-011: Mirror GEEK deployment tokenomics in GEEKT
+
+**founder-direction** · 2026-10-15.
+
+For TN10 rehearsal, mirror the pinned Mainnet maximum of 144 billion, 100,000 per mint, eight decimals and zero premint. Keep a separate test ticker, network and deployment identity.
+
+Basis: Founder questioned the smaller test-supply proposal on October 15; it had not been deployed. Deployment-field parity is separate from wallet approval, rewards and settlement.
+
+Evidence: [docs/TESTNET-ASSET-SETUP.md](../../docs/TESTNET-ASSET-SETUP.md), [docs/testnet/geekt-deploy.json](../../docs/testnet/geekt-deploy.json), [server/mint.js](../../server/mint.js).

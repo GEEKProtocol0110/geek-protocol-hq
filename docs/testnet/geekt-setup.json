@@ -7,13 +7,13 @@
   "walletNetwork": "kaspa_testnet_10",
   "protocol": "KRC-20",
   "ticker": "GEEKT",
-  "parametersChosenBy": "Maintainer proposal for founder review; not Mainnet GEEK tokenomics",
+  "parametersChosenBy": "Founder direction: mirror pinned Mainnet GEEK supply, mint limit, decimals and premint on TN10; use separate ticker GEEKT.",
   "display": {
-    "maximumTokens": "1000000",
-    "tokensPerMint": "1000",
+    "maximumTokens": "144000000000",
+    "tokensPerMint": "100000",
     "premintTokens": "0",
     "decimals": 8,
-    "maximumMintOperations": "1000"
+    "maximumMintOperations": "1440000"
   },
   "walletRequests": {
     "deploy": {
@@ -42,13 +42,14 @@
     "krc20Holdings": "TN10 indexer returned an empty token list for the supplied address",
     "documentedProviderSupport": true,
     "installedProviderVerified": false,
-    "founderAcceptedParameters": false,
     "deploymentSubmitted": false,
     "deploymentVerified": false,
     "mintSubmitted": false,
     "mintVerified": false,
     "pilotEnabled": false,
-    "mainnetSettlementEnabled": false
+    "mainnetSettlementEnabled": false,
+    "founderRequestedMainnetParity": true,
+    "deploymentApprovalGiven": false
   },
   "pilotConfigurationAfterVerificationOnly": {
     "TESTNET_REWARDS_ENABLED": "false",
@@ -63,5 +64,23 @@
     "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection",
     "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-krc20",
     "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go"
-  ]
+  ],
+  "mainnetParityReference": {
+    "repositoryPath": "server/mint.js",
+    "export": "GEEK_DEPLOYMENT",
+    "checkedAtCommit": "388a36e2c5c2a40cbbb595b130c1ec46a7443453",
+    "matchingFields": [
+      "maxRaw",
+      "limitRaw",
+      "premintRaw",
+      "decimals"
+    ],
+    "separateFields": [
+      "network",
+      "ticker",
+      "deployer",
+      "deploymentHash"
+    ],
+    "scope": "Token deployment parameters only; does not activate rewards, pool/burn policy, settlement or a signing request."
+  }
 }

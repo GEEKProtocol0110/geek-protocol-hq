@@ -122,6 +122,20 @@
       ],
       "recordedAt": "2026-10-15",
       "supersedes": null
+    },
+    {
+      "id": "DR-011",
+      "status": "founder-direction",
+      "title": "Mirror GEEK deployment tokenomics in GEEKT",
+      "decision": "For TN10 rehearsal, mirror the pinned Mainnet maximum of 144 billion, 100,000 per mint, eight decimals and zero premint. Keep a separate test ticker, network and deployment identity.",
+      "basis": "Founder questioned the smaller test-supply proposal on October 15; it had not been deployed. Deployment-field parity is separate from wallet approval, rewards and settlement.",
+      "evidence": [
+        "docs/TESTNET-ASSET-SETUP.md",
+        "docs/testnet/geekt-deploy.json",
+        "server/mint.js"
+      ],
+      "recordedAt": "2026-10-15",
+      "supersedes": null
     }
   ]
 }

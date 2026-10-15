@@ -9,21 +9,21 @@
 | Network | Kaspa testnet-10 / Kasware `kaspa_testnet_10` |
 | Standard | KRC-20 |
 | Test ticker | **GEEKT**, distinct from Mainnet GEEK |
-| Maximum | 1,000,000 GEEKT |
-| Per mint | 1,000 GEEKT |
+| Maximum | 144,000,000,000 GEEKT |
+| Per mint | 100,000 GEEKT |
 | Decimals | 8 |
 | Premint | 0 |
-| Full-supply mint operations | 1,000 |
-| Initial experiment | Deploy once, verify, mint once and verify 1,000 tokens |
+| Full-supply mint operations | 1,440,000 |
+| Initial experiment | Deploy once, verify, mint once and verify 100,000 tokens |
 | Later receipt experiment | Proposed 1 GEEKT per eligible manual pilot transfer |
 
-The maintainer chose a small test supply for exercising deployment, minting and receipts. It does not amend GEEK's Mainnet supply, contributor rates or launch conditions. Review these settings before any wallet approval.
+The founder requested matching GEEK tokenomics for a faithful rehearsal. Maximum supply, mint limit, decimals and zero premint now match the pinned `GEEK_DEPLOYMENT` in `server/mint.js`. This supersedes the earlier smaller test-supply proposal, which was never deployed. Network, ticker and eventual deployment identity remain separate. Matching these deploy fields does not implement rewards, pool/burn distribution or settlement; the 1-GEEKT receipt amount above remains a separate unselected test proposal. Review the wallet request and fees before any approval.
 
 - [Unsigned deploy operation](testnet/geekt-deploy.json): wallet operation type **2**.
 - [Unsigned first mint operation](testnet/geekt-mint.json): wallet operation type **3**, only after deployment verification.
 - [Machine-readable setup and incomplete disabled pilot configuration](testnet/geekt-setup.json).
 
-`max` is 100,000,000,000,000 smallest units; `lim` is 100,000,000,000. Divide by 100,000,000 for display tokens. Neither operation embeds a transfer recipient. The sender stays in private pilot evidence; the wallet provides its current account.
+`max` is 14,400,000,000,000,000,000 smallest units; `lim` is 10,000,000,000,000. Divide by 100,000,000 for display tokens. Neither operation embeds a transfer recipient. The sender stays in private pilot evidence; the wallet provides its current account.
 
 ## Verified preparation evidence
 
@@ -38,7 +38,7 @@ Kasware's [Connection API](https://docs.kasware.xyz/wallet/developer-documentati
 3. Review settings, funds and fees. Load the exact deploy JSON through the documented type-2 method after a direct user action. Inspect network, account and token details in Kasware before final approval. This packet does not initiate a wallet call.
 4. Submit once and preserve commit/reveal identifiers, wallet history and timestamp privately. A missing or uncertain result requires reconciling that same request before another submission. A returned hash is submission evidence, not accepted deployment.
 5. Read `https://tn10api.kasplex.org/v1/krc20/op/<reveal-hash>` and `/token/GEEKT`. Require the exact hash, accepted transaction and operation, no operation error, expected signer, ticker, maximum, limit, premint and decimals. Record the verified deployment hash privately.
-6. Review and submit the first-mint JSON once through type 3 on the same verified network/account. Reconcile its separate hash and verify the accepted mint plus 1,000-token balance. Zero premint means deployment alone gives no tokens.
+6. Review and submit the first-mint JSON once through type 3 on the same verified network/account. Reconcile its separate hash and verify the accepted mint plus 100,000-token balance. Zero premint means deployment alone gives no tokens.
 7. Fill the missing sender and deploy hash in a **private** pilot configuration. Keep `TESTNET_REWARDS_ENABLED=false` until asset, wallet and amount checks pass. Then follow the [manual receipt procedure](TESTNET-REWARD-PILOT.md) for one eligible Daily Signal transfer and reconciliation.
 
 No wallet request, deployment, mint, transfer or environment update was performed in preparing this packet. CCE, collection ownership and Mainnet settlement stay held. The next implementation task is a separately reviewed Kasware integration with fresh TN10/asset checks, explicit operation actions, durable uncertain-outcome protection, receipt export and real-device acceptance.
