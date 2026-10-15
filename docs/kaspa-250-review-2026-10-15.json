@@ -1,0 +1,458 @@
+{
+  "reviewedAt": "2026-10-15",
+  "reviewKind": "internal-source-check",
+  "independentReview": false,
+  "difficultyCalibration": "provisional-editorial",
+  "sourceSnapshot": "01b532e8b553523216471682649693af92f0fd16",
+  "questionCount": 56,
+  "items": [
+    {
+      "id": "K250-0001",
+      "concept": "selected-parent-work",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/ghostdag/protocol.rs#L99",
+      "evidenceSymbol": "pub fn find_selected_parent",
+      "sourceSha256": "044b12f1941733ce45c5f3a5376e198ef2b4796f5b6f5bda3c4b670a18055e33",
+      "questionSha256": "b4a99a5c6c521f9e8d39f9187ee22dc807c4642709aa3dd570fe46ffc2f7cf53"
+    },
+    {
+      "id": "K250-0002",
+      "concept": "blue-work-tie-break",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/ghostdag/ordering.rs#L39",
+      "evidenceSymbol": "fn cmp",
+      "sourceSha256": "8b6716afbaddd2becd1910e8d80108747daaa97970669cb50c22ff0fca0dc47f",
+      "questionSha256": "78fca44859c7a42e4c4147d34d8eabd7ff093685d15dc587f04910d28fe72b8c"
+    },
+    {
+      "id": "K250-0003",
+      "concept": "k-cluster-constraint",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/ghostdag/protocol.rs#L114",
+      "evidenceSymbol": "1) |anticone",
+      "sourceSha256": "044b12f1941733ce45c5f3a5376e198ef2b4796f5b6f5bda3c4b670a18055e33",
+      "questionSha256": "04da5d04750dbaa3b3f5fd4868e1119e80c24a2ff34c5e1ae0dcac19e0f15e31"
+    },
+    {
+      "id": "K250-0004",
+      "concept": "topological-ancestry",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/ghostdag/protocol.rs#L139",
+      "evidenceSymbol": "topological here means",
+      "sourceSha256": "044b12f1941733ce45c5f3a5376e198ef2b4796f5b6f5bda3c4b670a18055e33",
+      "questionSha256": "08ca7c0c347835a35a0b3fc90d2da67f7335981a33d5c378990b6dfcc4307162"
+    },
+    {
+      "id": "K250-0005",
+      "concept": "mergeset-membership",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/ghostdag/mergeset.rs#L9",
+      "evidenceSymbol": "pub fn unordered_mergeset",
+      "sourceSha256": "8a86df5cf864a17c963be9cd1cf08961c040ea28e4684b238506ec0a51671122",
+      "questionSha256": "2c786cc64992d0932bb2549d8c115c8d09780bb1a29eb07e950275bda851d0a4"
+    },
+    {
+      "id": "K250-0006",
+      "concept": "blue-score-recurrence",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/ghostdag/protocol.rs#L153",
+      "evidenceSymbol": "let blue_score =",
+      "sourceSha256": "044b12f1941733ce45c5f3a5376e198ef2b4796f5b6f5bda3c4b670a18055e33",
+      "questionSha256": "e9e199a7a13b0681cfabd1f3ffa97753497ec79d3fe8f2bf3e06cf30463f8d6c"
+    },
+    {
+      "id": "K250-0007",
+      "concept": "regular-input-required",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_isolation.rs#L78",
+      "evidenceSymbol": "fn check_transaction_inputs_count",
+      "sourceSha256": "820cc3ae6e3f7343154b21c455f21f22fecc3e0ab3324ab00e05abc741b8c847",
+      "questionSha256": "9fa7755f3178492b29affdf5f29496f00f33082b5489b6a95d48257e779c699b"
+    },
+    {
+      "id": "K250-0008",
+      "concept": "duplicate-input-rejection",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_isolation.rs#L110",
+      "evidenceSymbol": "fn check_duplicate_transaction_inputs",
+      "sourceSha256": "820cc3ae6e3f7343154b21c455f21f22fecc3e0ab3324ab00e05abc741b8c847",
+      "questionSha256": "35ea9adfa7bd4fa21fc631b124cc629db976ab0d1bc7fad6a01599b4d6cde45f"
+    },
+    {
+      "id": "K250-0009",
+      "concept": "zero-output-rejection",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_isolation.rs#L150",
+      "evidenceSymbol": "if output.value == 0",
+      "sourceSha256": "820cc3ae6e3f7343154b21c455f21f22fecc3e0ab3324ab00e05abc741b8c847",
+      "questionSha256": "c250c6e7bd309901851c7a81ebc77b56d97e4803e15adabf9cfc322d7a4bc5f8"
+    },
+    {
+      "id": "K250-0010",
+      "concept": "individual-output-cap",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_isolation.rs#L154",
+      "evidenceSymbol": "if output.value > MAX_SOMPI",
+      "sourceSha256": "820cc3ae6e3f7343154b21c455f21f22fecc3e0ab3324ab00e05abc741b8c847",
+      "questionSha256": "425a6214c142711f0284fecadb673e6cf9a8c0d95857adc10a1ee87fa14ba797"
+    },
+    {
+      "id": "K250-0011",
+      "concept": "value-conservation",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs#L119",
+      "evidenceSymbol": "if total_in < total_out",
+      "sourceSha256": "8e6f22b0f0280df9c3baad39654e3ce15c0b25cc5a97b720add1bbdc721e6786",
+      "questionSha256": "43673e0f1af17f9bc2c3fc4cbd47f80c78857999a333d3d7c6e710903fb0e6cd"
+    },
+    {
+      "id": "K250-0012",
+      "concept": "coinbase-maturity",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs#L81",
+      "evidenceSymbol": "fn check_transaction_coinbase_maturity",
+      "sourceSha256": "8e6f22b0f0280df9c3baad39654e3ce15c0b25cc5a97b720add1bbdc721e6786",
+      "questionSha256": "10990517a3f2bd7d671ce7249071611d81f839400b480ea5ff3eee25fdb8411d"
+    },
+    {
+      "id": "K250-0013",
+      "concept": "native-fee-difference",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs#L49",
+      "evidenceSymbol": "let fee = total_in - total_out",
+      "sourceSha256": "8e6f22b0f0280df9c3baad39654e3ce15c0b25cc5a97b720add1bbdc721e6786",
+      "questionSha256": "ea976aa5b9de86ecbe346f612734f14313e3919a96e65f31c44935f90e8b5343"
+    },
+    {
+      "id": "K250-0014",
+      "concept": "storage-commitment-validation",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs#L126",
+      "evidenceSymbol": "fn check_mass_commitment",
+      "sourceSha256": "8e6f22b0f0280df9c3baad39654e3ce15c0b25cc5a97b720add1bbdc721e6786",
+      "questionSha256": "1d8083840439b93a6127431f970e75784ecb66eff2516a0244e40039c00e03fa"
+    },
+    {
+      "id": "K250-0015",
+      "concept": "full-script-validation",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs#L196",
+      "evidenceSymbol": "vm.execute().map_err",
+      "sourceSha256": "8e6f22b0f0280df9c3baad39654e3ce15c0b25cc5a97b720add1bbdc721e6786",
+      "questionSha256": "640a9ad8c5946290e573e39b4cc9c850f59633dfb989852ed03aacbe7643f2f7"
+    },
+    {
+      "id": "K250-0016",
+      "concept": "validation-contexts",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_isolation.rs#L13",
+      "evidenceSymbol": "independent of any",
+      "sourceSha256": "820cc3ae6e3f7343154b21c455f21f22fecc3e0ab3324ab00e05abc741b8c847",
+      "questionSha256": "3b176fdc54cee69b6b8db5f00e6dd6c1340d4988971de1ce410d1d3cb42f13d3"
+    },
+    {
+      "id": "K250-0017",
+      "concept": "absolute-lock-units",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_header_context.rs#L54",
+      "evidenceSymbol": "t if t < LOCK_TIME_THRESHOLD",
+      "sourceSha256": "3790dbc361c1adc6acf4e74ea503361910e7f09658caac097edd3f1e6b393abb",
+      "questionSha256": "d143b43f62d63ed53614fb55006e09a9428ff6b476cd10dac084aabbbf6d2d47"
+    },
+    {
+      "id": "K250-0018",
+      "concept": "policy-versus-consensus",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs#L55",
+      "evidenceSymbol": "not a consensus check",
+      "sourceSha256": "8e6f22b0f0280df9c3baad39654e3ce15c0b25cc5a97b720add1bbdc721e6786",
+      "questionSha256": "c1393af80573411602a0c3c807b39d428112e1f65944c21e5ddf1c7dcbc76a68"
+    },
+    {
+      "id": "K250-0019",
+      "concept": "sighash-all-outputs",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/sighash.rs#L219",
+      "evidenceSymbol": "Otherwise, return hash of all outputs",
+      "sourceSha256": "a1f300f5925155a7e32c2b262502427cd0c9c1f5fb04c73b511b72747a92f89f",
+      "questionSha256": "988b398dcbc4aa779550b5ce6f91a1c6d9f8e0b104ebc99e67ffbebba408cb2c"
+    },
+    {
+      "id": "K250-0020",
+      "concept": "sighash-none-outputs",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/sighash.rs#L198",
+      "evidenceSymbol": "if hash_type.is_sighash_none()",
+      "sourceSha256": "a1f300f5925155a7e32c2b262502427cd0c9c1f5fb04c73b511b72747a92f89f",
+      "questionSha256": "acdd448edf2e9787dd451e2ab5fee8fed75087153448372c9599adab013435f5"
+    },
+    {
+      "id": "K250-0021",
+      "concept": "sighash-single-index",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/sighash.rs#L209",
+      "evidenceSymbol": "hash_output(&mut hasher, &tx.outputs[input_index]",
+      "sourceSha256": "a1f300f5925155a7e32c2b262502427cd0c9c1f5fb04c73b511b72747a92f89f",
+      "questionSha256": "3139c7bc6a71f06c3dae02e728196b6f5697a585ad416314f68fcf010f2e1e33"
+    },
+    {
+      "id": "K250-0022",
+      "concept": "anyonecanpay-input-scope",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/sighash.rs#L140",
+      "evidenceSymbol": "pub fn previous_outputs_hash",
+      "sourceSha256": "a1f300f5925155a7e32c2b262502427cd0c9c1f5fb04c73b511b72747a92f89f",
+      "questionSha256": "5f6fdc96099adec515f1a85814d08b95ae36798a94cdcf369d1fbe84c8ac344f"
+    },
+    {
+      "id": "K250-0023",
+      "concept": "sighash-caching",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/sighash.rs#L12",
+      "evidenceSymbol": "quadratic hashing problem",
+      "sourceSha256": "a1f300f5925155a7e32c2b262502427cd0c9c1f5fb04c73b511b72747a92f89f",
+      "questionSha256": "dffe66cbfe020356781b09b05dc15c5883dbef47e26f8aafaa1fa84add942b36"
+    },
+    {
+      "id": "K250-0024",
+      "concept": "sighash-utxo-amount",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/sighash.rs#L245",
+      "evidenceSymbol": "pub fn calc_schnorr_signature_hash",
+      "sourceSha256": "a1f300f5925155a7e32c2b262502427cd0c9c1f5fb04c73b511b72747a92f89f",
+      "questionSha256": "48b1eec290b243b6b2d49bcc401a24ff7bad78f68e7a69c91cff82129a455d43"
+    },
+    {
+      "id": "K250-0025",
+      "concept": "derivation-path",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/derivation_path.rs#L12",
+      "evidenceSymbol": "const PREFIX",
+      "sourceSha256": "db7e60dd61c1977454fe8cb3b584119133890f2fa6bfa75a85e272df575f1599",
+      "questionSha256": "3e85208ef91b874926a5e5cfb052e126af9c3d3b1be33a1c54a441f22321d871"
+    },
+    {
+      "id": "K250-0026",
+      "concept": "hardened-path-marker",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/child_number.rs#L84",
+      "evidenceSymbol": "child.strip_suffix",
+      "sourceSha256": "e5ed43a443f8947ecb904decd6c2c4f817f7856935ff21e35cbce4a6f6a3bbb4",
+      "questionSha256": "49a16645c8978ee884863708cc44dc465d43b0658dc0098a07434cfe2fe4a837"
+    },
+    {
+      "id": "K250-0027",
+      "concept": "xpub-hardened-restriction",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/xpublic_key.rs#L54",
+      "evidenceSymbol": "Cannot derive child public keys for hardened",
+      "sourceSha256": "f5a1fc1e9f1a3a4bf2ebf357b60a783488056e5af985e27b3e72966597a128df",
+      "questionSha256": "98f5dc7f914db763d988122dc84c1ca30c2f46408e857380c8b961fc066acfda"
+    },
+    {
+      "id": "K250-0028",
+      "concept": "watch-account-xpub",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/account/variants/bip32watch.rs#L36",
+      "evidenceSymbol": "pub xpub_keys: ExtendedPublicKeys",
+      "sourceSha256": "9905aece4514c5fc52fa80ce32b6134b0a16aa00d6b2783fa009cdd1a7a31f28",
+      "questionSha256": "fd7f9e5aba926557de2f39cd00166453836cc223b03208321ffd7b65aad4760f"
+    },
+    {
+      "id": "K250-0029",
+      "concept": "scan-receive-and-change",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/account/variants/bip32watch.rs#L128",
+      "evidenceSymbol": "let receive_addresses =",
+      "sourceSha256": "9905aece4514c5fc52fa80ce32b6134b0a16aa00d6b2783fa009cdd1a7a31f28",
+      "questionSha256": "c7b93df30b09a4f49e19ccd4c7f3e63f8bff9efaede2f8621448b608f2152f1b"
+    },
+    {
+      "id": "K250-0030",
+      "concept": "mnemonic-checksum",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L194",
+      "evidenceSymbol": "if actual_checksum != expected_checksum",
+      "sourceSha256": "6b62c6a82a1dfe5293c1fc9c22340f9c70a9c29eb003f6beeb177fe46e11cdea",
+      "questionSha256": "255a5cfc67b9590679b10f39201b0061ef000752f3f65799b9f7307bf09ae2d8"
+    },
+    {
+      "id": "K250-0031",
+      "concept": "mnemonic-entropy-security",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L116",
+      "evidenceSymbol": "mut rng: impl RngCore + CryptoRng",
+      "sourceSha256": "6b62c6a82a1dfe5293c1fc9c22340f9c70a9c29eb003f6beeb177fe46e11cdea",
+      "questionSha256": "a88b3eae16b25c3f55693b85e6bdf1185f9140f4e1e7c10b15d13172f5856027"
+    },
+    {
+      "id": "K250-0032",
+      "concept": "bip39-passphrase",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L233",
+      "evidenceSymbol": "let salt = Zeroizing::new",
+      "sourceSha256": "6b62c6a82a1dfe5293c1fc9c22340f9c70a9c29eb003f6beeb177fe46e11cdea",
+      "questionSha256": "544f02506db1820492adb4c14004bf17feab803f64372d668e4f151466995c8e"
+    },
+    {
+      "id": "K250-0033",
+      "concept": "deterministic-seed",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L235",
+      "evidenceSymbol": "pbkdf2::pbkdf2",
+      "sourceSha256": "6b62c6a82a1dfe5293c1fc9c22340f9c70a9c29eb003f6beeb177fe46e11cdea",
+      "questionSha256": "1e803edd1c99d02da6536a87b5b6d87d7454bf115c602744136a40488825911c"
+    },
+    {
+      "id": "K250-0034",
+      "concept": "bip39-seed-size",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/seed.rs#L11",
+      "evidenceSymbol": "pub const SIZE",
+      "sourceSha256": "9e66af853988d839390c8aed406f2d1ff2e7aef90abab521c6a6017651043e4a",
+      "questionSha256": "dcbf8e9dfb31522f04e6c20fdff827c6709cb72ee67fc80288629eb4df5b772b"
+    },
+    {
+      "id": "K250-0035",
+      "concept": "seed-memory-zeroization",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/seed.rs#L30",
+      "evidenceSymbol": "impl Drop for Seed",
+      "sourceSha256": "9e66af853988d839390c8aed406f2d1ff2e7aef90abab521c6a6017651043e4a",
+      "questionSha256": "a67d927d59b4a0a8f3ea0b4e1acea47e151f6d51bef2bc5c8f01d207b2d0ab93"
+    },
+    {
+      "id": "K250-0036",
+      "concept": "extended-key-attributes",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/xpublic_key.rs#L41",
+      "evidenceSymbol": "child number, and chain code",
+      "sourceSha256": "f5a1fc1e9f1a3a4bf2ebf357b60a783488056e5af985e27b3e72966597a128df",
+      "questionSha256": "3911ce18f2b7d81b253a598540fc3feb632278c4225d82f13695f72039467557"
+    },
+    {
+      "id": "K250-0037",
+      "concept": "blue-reward-destination",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/coinbase.rs#L107",
+      "evidenceSymbol": "Add an output for each mergeset blue block",
+      "sourceSha256": "acf550179fdef618a88e0215bff351a13ac272fba760627a449d605721e44d20",
+      "questionSha256": "6927fb9e5235ce55b590e0ceeeae931397f121f0d5955157dc02c1f6d3563bbd"
+    },
+    {
+      "id": "K250-0038",
+      "concept": "red-reward-destination",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/coinbase.rs#L118",
+      "evidenceSymbol": "single output rewarding all",
+      "sourceSha256": "acf550179fdef618a88e0215bff351a13ac272fba760627a449d605721e44d20",
+      "questionSha256": "aec064b96fad1e5aee0b83e84f93ef482a846d73dfa4d338b34b439d6370e378"
+    },
+    {
+      "id": "K250-0039",
+      "concept": "non-daa-red-reward",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/coinbase.rs#L124",
+      "evidenceSymbol": "red_reward += reward_data.total_fees;",
+      "sourceSha256": "acf550179fdef618a88e0215bff351a13ac272fba760627a449d605721e44d20",
+      "questionSha256": "12910b82daa78006afd78226ce3014b0d722023ebd9ebc952626f50b4fd1cf94"
+    },
+    {
+      "id": "K250-0040",
+      "concept": "subsidy-clock",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/coinbase.rs#L222",
+      "evidenceSymbol": "pub fn calc_block_subsidy",
+      "sourceSha256": "acf550179fdef618a88e0215bff351a13ac272fba760627a449d605721e44d20",
+      "questionSha256": "79c016a642c44e9e472dd3f807f706a072ada1298953c3cfcdad9096be9e30e6"
+    },
+    {
+      "id": "K250-0041",
+      "concept": "coinbase-extra-data",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/coinbase.rs#L157",
+      "evidenceSymbol": "// Extra data",
+      "sourceSha256": "acf550179fdef618a88e0215bff351a13ac272fba760627a449d605721e44d20",
+      "questionSha256": "fcaa4b739b07676b1a251f0075571747f412c8bce6d7d66751300f332d6e4d13"
+    },
+    {
+      "id": "K250-0042",
+      "concept": "coinbase-payload-update",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/coinbase.rs#L174",
+      "evidenceSymbol": "payload.truncate",
+      "sourceSha256": "acf550179fdef618a88e0215bff351a13ac272fba760627a449d605721e44d20",
+      "questionSha256": "4f30cc5af8f0ddbb0cfaa58ede7d07f82f5b1be121128f396ceffc7c3260b3d1"
+    },
+    {
+      "id": "K250-0043",
+      "concept": "p2sh-redeem-reveal",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/standard.rs#L59",
+      "evidenceSymbol": "pay_to_script_hash_signature_script_with_flags",
+      "sourceSha256": "4b7f6132bc927c8daffdfd9d704cd55c338f9e15498c3a9ec39f79f0074ae765",
+      "questionSha256": "0f5504612b148c72bb8956ad12f4ba5b2cd7708fe33f88a19a2194a7cdfc4031"
+    },
+    {
+      "id": "K250-0044",
+      "concept": "p2sh-hash-construction",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/standard.rs#L52",
+      "evidenceSymbol": "let redeem_script_hash =",
+      "sourceSha256": "4b7f6132bc927c8daffdfd9d704cd55c338f9e15498c3a9ec39f79f0074ae765",
+      "questionSha256": "5d383b242e44315f5bd581a165aecede6d70472ded697f2d74b06147cb89f81e"
+    },
+    {
+      "id": "K250-0045",
+      "concept": "multisig-threshold",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/standard/multisig.rs#L23",
+      "evidenceSymbol": "builder.add_i64(required as i64)",
+      "sourceSha256": "d838d42ccc5de8d440969636bc3c868e27302d24a6c159041906603e198030fa",
+      "questionSha256": "7f8beea5172d5ed127dba959447d4cb416b5b22a59e531c557fa767450ec8c8a"
+    },
+    {
+      "id": "K250-0046",
+      "concept": "multisig-signature-algorithm",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/standard/multisig.rs#L65",
+      "evidenceSymbol": "builder.add_op(OpCheckMultiSigECDSA)",
+      "sourceSha256": "d838d42ccc5de8d440969636bc3c868e27302d24a6c159041906603e198030fa",
+      "questionSha256": "7054b855bd8617c1e8c6a36c903459edf74247d21c11668e882470975e728574"
+    },
+    {
+      "id": "K250-0047",
+      "concept": "standard-script-extraction",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/standard.rs#L89",
+      "evidenceSymbol": "ScriptClass::NonStandard => Err",
+      "sourceSha256": "4b7f6132bc927c8daffdfd9d704cd55c338f9e15498c3a9ec39f79f0074ae765",
+      "questionSha256": "e2ac80ac61e3961126be67b96d1033631404696178856408a53c7572fc79be1d"
+    },
+    {
+      "id": "K250-0048",
+      "concept": "address-to-script-dispatch",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/standard.rs#L43",
+      "evidenceSymbol": "Version::PubKey => pay_to_pub_key",
+      "sourceSha256": "4b7f6132bc927c8daffdfd9d704cd55c338f9e15498c3a9ec39f79f0074ae765",
+      "questionSha256": "e9f1491e6fb2a1dd8b87176b0a65bf35752bf1b91b45e356da113b3668bedb16"
+    },
+    {
+      "id": "K250-0049",
+      "concept": "rpc-sync-status",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L266",
+      "evidenceSymbol": "pub struct GetInfoResponse",
+      "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
+      "questionSha256": "b34d87af2131180fd76e60e5b94384366aaaca55eec92ff34fc5544a773429b0"
+    },
+    {
+      "id": "K250-0050",
+      "concept": "rpc-network-check",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L326",
+      "evidenceSymbol": "pub struct GetCurrentNetworkResponse",
+      "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
+      "questionSha256": "48fbe300396bfeb8ae6a33251661a1e93dacdbb955cd58206cfe0a3a1cb74a56"
+    },
+    {
+      "id": "K250-0051",
+      "concept": "rpc-utxo-lookup",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L1451",
+      "evidenceSymbol": "pub struct GetUtxosByAddressesRequest",
+      "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
+      "questionSha256": "067c8a160f2f51caea2163eb5a435c8000c774a3963402eef0df8d207df8b6b0"
+    },
+    {
+      "id": "K250-0052",
+      "concept": "address-mempool-directions",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/mempool.rs#L39",
+      "evidenceSymbol": "pub sending: Vec<RpcMempoolEntry>",
+      "sourceSha256": "1162db74900db98b77a6ef59313d0c4c71f96aa0ea0b610b109b4aecbfb1e83c",
+      "questionSha256": "48cbfe42cc1248aa84f7e4fd4464e9b450b48feffe97775e6f6af8df2ba1d874"
+    },
+    {
+      "id": "K250-0053",
+      "concept": "rpc-connected-peers",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L576",
+      "evidenceSymbol": "pub struct GetConnectedPeerInfoRequest",
+      "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
+      "questionSha256": "630fe7f25d20e06d8d217b46b58a34282c9a08f72a3bf0e8a381f9f9dc841642"
+    },
+    {
+      "id": "K250-0054",
+      "concept": "feerate-units",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/feerate_estimate.rs#L20",
+      "evidenceSymbol": "sompi/gram",
+      "sourceSha256": "0a7d4251e8ebd54a7f5e6fce21d61958b6cfff1cd4f498d524dbb898e11bb161",
+      "questionSha256": "e66b43649a45746ea4abfa115c48b49a88d4205580e3296194eac640e9e72493"
+    },
+    {
+      "id": "K250-0055",
+      "concept": "fee-estimate-calculation",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/feerate_estimate.rs#L22",
+      "evidenceSymbol": "fee = feerate * mass(tx)",
+      "sourceSha256": "0a7d4251e8ebd54a7f5e6fce21d61958b6cfff1cd4f498d524dbb898e11bb161",
+      "questionSha256": "8838e12545083b1c874697c635daa215a904eb5e820a40fbc08582438d7bae65"
+    },
+    {
+      "id": "K250-0056",
+      "concept": "fee-estimate-not-guarantee",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/feerate_estimate.rs#L11",
+      "evidenceSymbol": "estimated inclusion time",
+      "sourceSha256": "0a7d4251e8ebd54a7f5e6fce21d61958b6cfff1cd4f498d524dbb898e11bb161",
+      "questionSha256": "86b7aba2c56f3ed1aa965b16859b12ff7827f9297ada5faea3f7e1b68e0afba5"
+    }
+  ]
+}

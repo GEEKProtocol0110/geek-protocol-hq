@@ -31,7 +31,7 @@ The daily vault at `/vault/` adds seven cosmetic seal designs, one claim per UTC
 | Ranked game authority | Implemented | Integration and abuse-case tests | Not audited | Unproctored trivia limitations remain |
 | Wallet identity and recovery | Implemented | Signature, replay, race, and origin tests | Not audited | Kaspa Mainnet ownership proof only |
 | GEEK fair-mint interface | Live | Pinned deployment and fail-closed tests | Not audited | Wallet signs and submits; HQ never holds keys |
-| Community Content Engine | Alpha | Moderation and first-use reward tests | Not audited | Credits are internal and non-withdrawable |
+| Community Content Engine | Held for bank and economy | Intake/publication/credit guards and historical compatibility tests | Not audited | Historical records readable; new publication and credits disabled |
 | Payout preferences | Alpha | Reauthentication, notice, and review tests | Not audited | Settlement eligibility cannot be enabled |
 | Player collectibles and stickers | Alpha | Atomic reservation and exchange tests | Not audited | Off-chain profile inventory only |
 | 500-Geek collection | Production blueprint | Deterministic manifest and archive hashes | Not audited | Mint and on-chain ownership disabled |
@@ -225,3 +225,9 @@ The homepage now starts with a five-question Kaspa Daily Signal or a beginner Or
 The founder requires 1,000 distinct source-reviewed questions in each category before CCE reopens. A source audit found 285 recorded reviews among 7,801 active questions. Seven sourced History corrections and two retirements bring the current figures to 292 reviews, 7,799 active questions and 7,708 further reviews needed for the category targets. The generated public readiness report distinguishes drafts from recorded reviews. New CCE intake, revisions, publication, new-game selection and first-use credits are held; historical records and saved-question grading remain readable. Reward amounts remain proposals.
 
 The Geek Store adds free character try-on, filters/search, front/back views and an explicit unsaved handoff to the studio. Five new cosmetic options use the existing server-validated vocabulary. Career-effect unlocks and free practice lifelines keep their existing rules. Paid purchases, inventory consumption and new bonuses are unfinished. See [Bank-first release and Store](BANK-FIRST-STORE.md).
+
+## Kaspa question bank: 250 concepts — October 15, 2026
+
+Fifty-six original source-checked questions bring Kaspa from 194 to 250 distinct concepts (83 easy / 111 medium / 56 hard). Study has 247 concepts in its existing eleven topics. All new implementation evidence is pinned to a specific Kaspanet commit, with [item/source hashes and source locations](kaspa-250-review-2026-10-15.json). Existing active questions, issued answer keys and retired compatibility records are unchanged.
+
+The full bank now has 7,855 active questions, 348 recorded internal source reviews and 7,652 more reviewed questions needed across the eight 1,000-question targets. Kaspa still needs 750. This milestone leaves CCE held for the bank and contributor economy. Difficulty is provisional, and broader imported-bank review remains unfinished. No interface or value-movement feature is introduced.

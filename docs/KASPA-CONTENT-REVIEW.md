@@ -67,3 +67,7 @@ Validation: the full repository verification passes with 232 tests, zero failure
 ## Community further reading — October 15, 2026
 
 The founder supplied [DAG and Kaspa](https://kaspa.com/learn-kaspa/post/dag-and-kaspa), published on KaspaCom’s Learn Kaspa site. Study’s optional More Kaspa reading panel, the field guide’s community-learning links and the public resource-credits page link directly to that article and name KaspaCom as publisher. This is a further-reading attribution; no article text, artwork or new assessment items are imported. Existing primary-source references and question review records remain unchanged. The URL responded over HTTPS; the retrieved static page is a JavaScript application shell, so the article body and any individual author byline were not independently reviewed for this addition.
+
+## Kaspa 250 expansion — October 15, 2026
+
+The new private bank adds 56 original, distinct implementation concepts with pinned primary evidence and dated individual reviews. Kaspa now has 250 source-checked concepts; Study has 247 concepts including its existing fifteen Technology questions. Source-file and item hashes are recorded in the [56-item register](kaspa-250-review-2026-10-15.json). See [Question Maintenance](QUESTION-MAINTENANCE.md#kaspa-250-milestone--october-15-2026) for scope, topic allocation and limits. Existing question and retired answer records are unchanged. CCE, rewards and value movement remain held.

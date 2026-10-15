@@ -3,23 +3,23 @@
   "targetPerCategory": 1000,
   "requiredCategories": 8,
   "bankReady": false,
-  "active": 7799,
-  "reviewed": 292,
-  "remaining": 7708,
+  "active": 7855,
+  "reviewed": 348,
+  "remaining": 7652,
   "categories": [
     {
       "id": "kaspa",
       "name": "Kaspa",
-      "active": 194,
-      "reviewed": 194,
+      "active": 250,
+      "reviewed": 250,
       "needsReview": 0,
       "target": 1000,
-      "remaining": 806,
-      "additionalQuestionsNeeded": 806,
+      "remaining": 750,
+      "additionalQuestionsNeeded": 750,
       "tiers": {
-        "easy": 71,
-        "medium": 82,
-        "hard": 41
+        "easy": 83,
+        "medium": 111,
+        "hard": 56
       },
       "ready": false
     },
