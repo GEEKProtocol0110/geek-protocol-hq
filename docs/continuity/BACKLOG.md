@@ -408,7 +408,7 @@ Evidence/specification: [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEE
 
 **P0 / needs-evidence.** Owner: Maintainer implements and verifies; founder confirms physical-phone passkeys. Dependencies: none.
 
-Next action: PR #124 is merged/deployed at c972e27301bc461a526230806d5e781adac05e50 with ready live UI and three targeted HTTP checks. Verify physical-phone enrollment and returning sign-in to the intended player. Existing wallet-linked players without an enrolled passkey still need wallet proof. Artwork remains paused; draft #119 needs reconciliation.
+Next action: Founder reported the phone passkey flow worked on October 16 at 2:35 AM Detroit. Preserve that success and the working session. Confirm returning sign-in to the intended saved player next; cross-device recovery, revocation and independent review remain separately unreported. Do not ask for another initial enrollment or unavailable KasWare message signing.
 
 Acceptance:
 

@@ -33,3 +33,8 @@ Released in [PR #124](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/
 A disposable live API probe also passed session/status/begin-registration (200 each), correct RP ID, and required resident-key/user-verification options. No authenticator credential was created.
 
 Release follow-up: refreshing a session uses an update-only Redis write, so a request already in flight cannot resurrect a cookie deleted by logout or credential/session rotation. Fresh sessions use a create-only write; failed preconditions issue no cookie.
+
+
+## Founder phone result — October 16, 2026
+
+At 2:35 AM Detroit the founder reported **“It worked”** in response to the live phone passkey instructions. This confirms founder-reported phone-flow success. Browser/app version and prompt method were not specified. Separate returning-login, cross-device recovery and revocation attempts remain unreported, and independent review remains pending. Preserve the working session and saved credential; do not repeat the original initial-enrollment request as though no phone result exists.
