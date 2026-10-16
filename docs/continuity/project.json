@@ -37,7 +37,7 @@
   "currentWork": {
     "id": "BANK-001",
     "status": "active",
-    "description": "Prepared a separate 20-question PSKT coordination candidate: 600 Kaspa concepts in this checkout; 580 in the merged product. Full local verification passed: 496 tests, zero failures/skips, real Redis and 311 security assertions; production dependency audit found zero vulnerabilities. GitHub review/merge/deployment remain pending. Provider recovery and device acceptance still need owner/participant evidence."
+    "description": "PR #140 adds twenty PSKT coordination questions: 600 Kaspa concepts in this checkout; 580 in the merged product. Candidate head 4b330f4760c249e35fff2c9bf0297437ccac4849 has the exact locally verified tree be663c25fa58df1ee67ab25be54c05912296b034: 496 tests, zero failures/skips, real Redis, 311 security assertions and zero production dependency vulnerabilities. Exact-head GitHub Security verification run 38951540803 and candidate Vercel status passed. Review/merge, final follow-up-head checks and production deployment remain pending. Provider recovery and device acceptance still need owner/participant evidence."
   },
   "nextTask": "OPS-001",
   "nextAction": "Review the BANK-001 candidate, then resume independent source preservation and actual provider backup/isolated restore evidence. Returning saved-player login, four-chapter Quest and two-person Royale remain actual-device acceptance tasks. Continue reviewed content when owner/device evidence is unavailable.",
