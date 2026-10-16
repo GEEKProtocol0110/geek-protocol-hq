@@ -171,6 +171,9 @@
     },
     "api/moderation.js": {
       "includeFiles": "{server/questions/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}"
+    },
+    "api/passkeys.js": {
+      "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
     }
   },
   "headers": [

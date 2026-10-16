@@ -29,3 +29,8 @@ The drill also demonstrates that restored bearer sessions remain usable until re
 Preserve relevant deployment, audit and provider evidence without exposing credentials. Restrict affected writes at the hosting boundary; do not assume this repository contains a universal maintenance switch. Revoke compromised owner credentials, secure the independent hosting/database accounts and determine whether the incident affects credentials, data or both. Restore only if needed, following the isolated acceptance procedure. Never clear the live database to troubleshoot a login problem. Publish a factual incident record after recovery, separating measured loss and recovery time from unknowns.
 
 The owner must still complete and record the provider drill and account-access recovery. No production backup, deletion, credential rotation or restore is performed by this release.
+
+
+## Passkey records
+
+Preserve `geek:passkey:account:v1:*` and `geek:passkey:credential:v1:*` in controlled database backups alongside player records. They contain public credential material and player mappings; still treat the database backup as sensitive. Offline cleanup now revokes `geek:passkey:challenge:v1:*` and `geek:passkey:grant:v1:*` without deleting durable accounts or credentials. Verify saved-passkey login after a restore rather than relying on restored bearer sessions. Loss of all recovery credentials has no administrative bypass.
