@@ -6,16 +6,16 @@
   "founder": "Michael Gee",
   "releaseChannel": "Public Alpha",
   "productBaseline": {
-    "pullRequest": 121,
-    "commit": "78e9c0e0a3e8f275d162a470448e4fa0b9abe4ca",
-    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/121",
-    "status": "merged-and-production-checked",
+    "pullRequest": 124,
+    "commit": "c972e27301bc461a526230806d5e781adac05e50",
+    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/124",
+    "status": "merged-deployed-ui-checked",
     "checkedOn": "2026-10-16",
-    "testsPassed": 455,
+    "testsPassed": 471,
     "testsFailed": 0,
     "testsSkipped": 0,
-    "productionProbesPassed": 21,
-    "evidence": "Focused mobile login-copy PR #121 merged October 16 at 03:40:36 UTC (October 15 in Detroit). Exact merge source Vercel status reported Deployment has completed; live https://www.geekprotocol.xyz/sign-in/ rendered the new KasWare phone guidance. Read-only production monitor at 03:41:03.589 UTC passed 21/21 probes. Exact candidate-head GitHub verify and Vercel checks passed; full local verification 455 tests, no failures/skips, required real Redis and 311 security assertions. Physical Android clipboard/KasWare login remains unverified. No backend auth, signer, dependency, payout or settlement change."
+    "productionProbesPassed": 3,
+    "evidence": "PR #124 merged at 2026-10-16T05:37:11Z (1:37 AM Detroit), exact head 93d9ac6df3ceacac39b32fcf8e0e0d1790da1900 with passing GitHub verify and Vercel checks; merge-source Vercel success. Live canonical browser renders enabled passkey buttons and ready first-visit status (session/passkey-status API flow). Three targeted HTTP checks passed at 05:40 UTC: HTML 200, client 200, unauthenticated API 401. Full local checks: 471 tests, no failures/skips, real Redis 7.4.2, 311 security assertions; dependency audit zero vulnerabilities. Node monitor transport timed out; do not claim 21 probes passed for this release. Actual phone authenticator enrollment/returning login and independent auth review remain outstanding. A disposable guest API check also passed: session/status/begin-registration each 200, correct production RP ID, required discoverability/user verification. It created expiring options only, not an authenticator credential. Python HTTP following the existing method-preserving 308 redirect succeeded; terminal native-fetch failures are separate transport limits."
   },
   "questionCheckpoint": {
     "active": 8185,
@@ -37,10 +37,10 @@
   "currentWork": {
     "id": "AUTH-002",
     "status": "needs-evidence",
-    "description": "Focused passkey login is implemented on current main, preserving the mobile copy fix and guidance correction. Full local verification passes 471 tests and 311 security assertions; dependency audit zero vulnerabilities. Review/merge/deployment and physical-phone acceptance are recorded in the focused release PR; artwork remains paused."
+    "description": "Passkey login is merged/deployed in PR #124. Live ready UI and targeted HTTP checks verified; physical-phone enrollment and returning sign-in are next. Old wallet-linked recovery still requires existing proof. Artwork remains paused. Final follow-up on codex/passkey-release prevents revoked-cookie resurrection during concurrent refresh; 472 full tests and 311 security assertions pass. Consult that branch\u2019s release PR for its exact final state."
   },
   "nextTask": "AUTH-002",
-  "nextAction": "Check the focused passkey release PR for exact merge/deployment evidence, then verify phone enrollment and returning login at /sign-in/. Keep existing wallet-linked recovery proof intact; a new guest passkey cannot recover a different player. PR #119 must be reconciled before its remaining features can merge.",
+  "nextAction": "On the intended phone browser, open /sign-in/ and enroll a passkey for the current player or sign in with an existing saved passkey. Record exact device/browser/result. New guest enrollment does not recover another wallet-linked player. Reconcile draft #119 before any other features merge; keep artwork paused.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

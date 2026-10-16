@@ -12,18 +12,20 @@ import { identityPlayerKey } from '../server/identity-keys.js';
 import { resetRestoredSessions } from '../scripts/reset-restored-sessions.mjs';
 
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
+let beforeCommand = null;
 process.env.UPSTASH_REDIS_REST_URL = 'https://redis.passkeys.test';
 process.env.UPSTASH_REDIS_REST_TOKEN = 'synthetic-passkey-fixture';
 process.env.AUDIT_LOG_SECRET = 'synthetic-passkey-audit-32-characters';
 globalThis.fetch = async (url, options) => {
   assert.ok(String(url).startsWith('https://redis.passkeys.test'));
   const command = JSON.parse(options.body);
+  await beforeCommand?.(command);
   const payload = String(url).endsWith('/multi-exec') ? (await fixture.commands([['MULTI'], ...command, ['EXEC']])).at(-1).map(result => ({ result }))
     : String(url).endsWith('/pipeline') ? (await fixture.commands(command)).map(result => ({ result })) : { result: await fixture.command(...command) };
   return new Response(JSON.stringify(payload));
 };
 after(async () => { globalThis.fetch = originalFetch; await fixture.close(); });
-beforeEach(async () => fixture.command('FLUSHDB'));
+beforeEach(async () => { beforeCommand = null; await fixture.command('FLUSHDB'); });
 const origin = 'https://www.geekprotocol.xyz', rp = 'geekprotocol.xyz';
 const response = () => ({ headers: {}, statusCode: 0, body: null, setHeader(k,v) { this.headers[k] = v; }, status(v) { this.statusCode = v; return this; }, json(v) { this.body = v; return this; }, end() {} });
 const call = async (handler, cookie, body, method = 'POST', changed = {}) => {
@@ -196,4 +198,20 @@ test('logout removes the current session and malformed passkey sessions fail clo
   const fresh = await enroll(await session());
   assert.equal((await call(passkeysHandler,fresh.cookie,{action:'logout'})).statusCode,200);
   assert.equal((await call(passkeysHandler,fresh.cookie,null,'GET')).statusCode,401);
+});
+
+
+test('an in-flight session refresh cannot resurrect a cookie removed by sign-out or rotation', async () => {
+  const cookie = await session(), key = 'geek:session:'+cookie.split('=')[1];
+  let interrupted = false;
+  beforeCommand = async command => {
+    if (command[0] === 'SET' && command[1] === key && command.includes('XX')) {
+      beforeCommand = null; interrupted = true;
+      await fixture.command('DEL',key);
+    }
+  };
+  const refreshed = await call(sessionHandler,cookie,{});
+  assert.equal(interrupted,true);assert.equal(refreshed.statusCode,401);
+  assert.equal(refreshed.headers['Set-Cookie'],undefined);
+  assert.equal(await fixture.command('GET',key),null);
 });

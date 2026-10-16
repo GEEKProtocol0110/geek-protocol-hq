@@ -59,7 +59,9 @@ export const upsertSession = async (req, res, requestedName) => {
     // Migrate an older session name without letting a stale tab overwrite a chosen name.
     await redis('SET', nameKeyFor(session.playerId), session.name, 'NX');
   }
-  await redis('SET', keyFor(session.id), JSON.stringify(session), 'EX', sessionTtl);
+  // A refresh that started before logout/rotation must not recreate a revoked cookie.
+  const saved = await redis('SET', keyFor(session.id), JSON.stringify(session), 'EX', sessionTtl, existing ? 'XX' : 'NX');
+  if (saved !== 'OK') throw new Error('SESSION_REQUIRED');
   setSessionCookie(res, session.id);
   return session;
 };

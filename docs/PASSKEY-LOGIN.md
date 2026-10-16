@@ -27,3 +27,9 @@ Durable passkey account and credential records belong in controlled database bac
 Primary guidance: [SimpleWebAuthn server 14.0.x](https://simplewebauthn.dev/docs/packages/server), [WebAuthn Level 3](https://www.w3.org/TR/webauthn-3/). Dependency integrity is recorded in `package-lock.json`. See the PR discussion for the exact checked head, merge and deployment evidence.
 
 Full local verification: 471 tests passed, zero failures/skips, required Redis 7.4.2 and 311 security assertions, plus bank/catalog/readiness, collection/archive, repository, economy and continuity checks. Production dependency audit returned zero vulnerabilities. Twenty-four focused passkey/clipboard tests are included in the total. Real phone, rendered browser and independent review remain separate acceptance evidence.
+
+Released in [PR #124](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/124), merge `c972e27301bc461a526230806d5e781adac05e50` at 2026-10-16T05:37:11Z. Exact-head and merge-source Vercel checks succeeded. The live browser shows enabled passkey actions and ready first-visit state; three targeted HTTP checks passed. Actual Android enrollment/returning login and independent review remain outstanding. The broad PR #119 must be reconciled before later feature merges.
+
+A disposable live API probe also passed session/status/begin-registration (200 each), correct RP ID, and required resident-key/user-verification options. No authenticator credential was created.
+
+Release follow-up: refreshing a session uses an update-only Redis write, so a request already in flight cannot resurrect a cookie deleted by logout or credential/session rotation. Fresh sessions use a create-only write; failed preconditions issue no cookie.

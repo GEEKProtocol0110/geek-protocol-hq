@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "checkedAt": "2026-10-16",
-  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1–2 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged.",
+  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused.",
   "records": [
     {
       "number": 1,
@@ -439,7 +439,7 @@
     },
     {
       "number": 68,
-      "title": "Add Trivia Royale with configurable 2–100-player rooms",
+      "title": "Add Trivia Royale with configurable 2\u2013100-player rooms",
       "mergedAt": "2026-10-08T11:56:20Z",
       "commit": "053c7e708327c9b8448579bd2141bf09f7337662",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/68"
@@ -758,6 +758,27 @@
       "mergedAt": "2026-10-16T03:40:36Z",
       "commit": "78e9c0e0a3e8f275d162a470448e4fa0b9abe4ca",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/121"
+    },
+    {
+      "number": 122,
+      "title": "Record the deployed mobile-login fix and paused artwork checkpoint",
+      "mergedAt": "2026-10-16T03:45:18Z",
+      "commit": "3defa649efeb2506595933635b980bc1b7d34438",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/122"
+    },
+    {
+      "number": 123,
+      "title": "Correct KasWare mobile login instructions and record the signing blocker",
+      "mergedAt": "2026-10-16T04:23:44Z",
+      "commit": "b9a2e8ab2d58edc5ec3cb2af51bd7398e1940d83",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/123"
+    },
+    {
+      "number": 124,
+      "title": "Add passkey sign-in without KasWare message signing",
+      "mergedAt": "2026-10-16T05:37:11Z",
+      "commit": "c972e27301bc461a526230806d5e781adac05e50",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/124"
     }
   ]
 }
