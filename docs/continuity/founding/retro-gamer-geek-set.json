@@ -1,0 +1,112 @@
+{
+  "schema": 1,
+  "recordedOn": "2026-10-15",
+  "status": "preserved-unmapped-art-set",
+  "source": "Founder-supplied attachments in this conversation; supplied date uses America/Detroit. Filesystem timestamps are not original creation proof.",
+  "character": "Retro Gamer Geek",
+  "tiers": [
+    "Common",
+    "Rare",
+    "Epic",
+    "Legendary",
+    "Mythic"
+  ],
+  "records": [
+    {
+      "assetId": "ARCH-028",
+      "originalFilename": "1 Retro Gamer Geek Common.png",
+      "location": "docs/continuity/founding/phone/1 Retro Gamer Geek Common.png",
+      "sha256": "9c498e4a0884e3adedb11f94a1dc7bab886695a2486ae2d23a0b3cde949e72d7",
+      "gitBlobSha": "1d000c4f885c17d98c53a0def3145b70a1c4f5e7",
+      "sizeBytes": 213063,
+      "width": 1536,
+      "height": 1536,
+      "suppliedTier": "Common",
+      "visibleTier": null,
+      "tierBasis": "supplied filename; artwork shows character name without tier word",
+      "observedDesign": "bearded figure in a backward purple cap and blue outfit holding a gray controller",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-029",
+      "originalFilename": "2 Retro Gamer Geek Rare.png",
+      "location": "docs/continuity/founding/phone/2 Retro Gamer Geek Rare.png",
+      "sha256": "3083136c1ca0360cc9ab8b8a405628d599ea9a40b91379d6c05fa1635f77d9a1",
+      "gitBlobSha": "4120eb31aecfe0c62ab2bf8b47c82b154994f097",
+      "sizeBytes": 196251,
+      "width": 1024,
+      "height": 1536,
+      "suppliedTier": "Rare",
+      "visibleTier": "Rare",
+      "tierBasis": "supplied filename and visible artwork label",
+      "observedDesign": "red-jacketed figure with cyan shutter glasses and stacked cartridges on the head, holding a controller",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-030",
+      "originalFilename": "3 Retro Gamer Geek Epic.png",
+      "location": "docs/continuity/founding/phone/3 Retro Gamer Geek Epic.png",
+      "sha256": "7a112fdb819da6a1e9a897ed93b4a7e08a017aa8018d3edfe1c8ca3fb41b8ccd",
+      "gitBlobSha": "48f41a2764bf3a5647446ec1e2828b757598950b",
+      "sizeBytes": 327541,
+      "width": 1536,
+      "height": 1536,
+      "suppliedTier": "Epic",
+      "visibleTier": "Epic",
+      "tierBasis": "supplied filename and visible artwork label",
+      "observedDesign": "red-jacketed figure with dark glasses, a controller and a burning torch above a cyan grid",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-031",
+      "originalFilename": "4 Retro Gamer Geek Legendary.png",
+      "location": "docs/continuity/founding/phone/4 Retro Gamer Geek Legendary.png",
+      "sha256": "b9ba6362580d0e8c5db40ab4e96a8f7bb7b7c4e047d09103961d3bf7b8026de8",
+      "gitBlobSha": "381ad03c0e5ab1a96d5b308b34c960b61b10a04e",
+      "sizeBytes": 450655,
+      "width": 1536,
+      "height": 1536,
+      "suppliedTier": "Legendary",
+      "visibleTier": "Legendary",
+      "tierBasis": "supplied filename and visible artwork label",
+      "observedDesign": "crowned figure with purple glowing eyes, a gray game device, controller and floating robot companion",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-032",
+      "originalFilename": "5 Retro Gamer Geek Mythic.png",
+      "location": "docs/continuity/founding/phone/5 Retro Gamer Geek Mythic.png",
+      "sha256": "63db1182c4955bb66d67afcca8415e301324cb0f80fe36e7c72660bb1b9ec98a",
+      "gitBlobSha": "2834a1f01e6e646b99fb45824d5710a566fb54f1",
+      "sizeBytes": 452885,
+      "width": 1536,
+      "height": 1536,
+      "suppliedTier": "Mythic",
+      "visibleTier": null,
+      "tierBasis": "supplied filename; artwork shows character name without tier word",
+      "observedDesign": "glitch-colored figure with glasses, cyan aura, sword and wired light-gun-style accessory",
+      "mappedEdition": null,
+      "approved": false
+    }
+  ],
+  "historicalRelations": {
+    "roster": "docs/continuity/founding/geek-roster-500.json",
+    "rosterSourceId": "source-001",
+    "rosterSourceLine": 12,
+    "traitSheet": "docs/continuity/founding/geek-trait-rarity-sheet.json",
+    "traitSheetRowId": "pdf-row-001",
+    "traitSheetPage": 1,
+    "interpretation": "Character-name match relates these files to the historical archetype. Five tiers are supplied via filenames; Common/Mythic lack a visible tier word. Founder plan is 500 character concepts × five rarity artworks = 2,500 planned images; copies per artwork and edition mapping are separate unresolved decisions."
+  },
+  "limits": {
+    "mappedEdition": null,
+    "mintReady": false,
+    "onChainOwnershipActive": false,
+    "independentlyReviewed": false,
+    "originalCreationTimeVerified": false
+  }
+}

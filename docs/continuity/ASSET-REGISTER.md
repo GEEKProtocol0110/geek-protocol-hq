@@ -33,6 +33,11 @@ Exact preserved bytes, indexed metadata and missing originals are different stat
 | ARCH-025 | 3 Pro Gamer Geek Epic.png | preserved-founder-upload | [docs/continuity/founding/phone/3 Pro Gamer Geek Epic.png](<../../docs/continuity/founding/phone/3 Pro Gamer Geek Epic.png>) |
 | ARCH-026 | 4 Pro Gamer Geek Legendary.png | preserved-founder-upload | [docs/continuity/founding/phone/4 Pro Gamer Geek Legendary.png](<../../docs/continuity/founding/phone/4 Pro Gamer Geek Legendary.png>) |
 | ARCH-027 | 5 Pro Gamer Geek Mythic.png | preserved-founder-upload | [docs/continuity/founding/phone/5 Pro Gamer Geek Mythic.png](<../../docs/continuity/founding/phone/5 Pro Gamer Geek Mythic.png>) |
+| ARCH-028 | 1 Retro Gamer Geek Common.png | preserved-founder-upload | [docs/continuity/founding/phone/1 Retro Gamer Geek Common.png](<../../docs/continuity/founding/phone/1 Retro Gamer Geek Common.png>) |
+| ARCH-029 | 2 Retro Gamer Geek Rare.png | preserved-founder-upload | [docs/continuity/founding/phone/2 Retro Gamer Geek Rare.png](<../../docs/continuity/founding/phone/2 Retro Gamer Geek Rare.png>) |
+| ARCH-030 | 3 Retro Gamer Geek Epic.png | preserved-founder-upload | [docs/continuity/founding/phone/3 Retro Gamer Geek Epic.png](<../../docs/continuity/founding/phone/3 Retro Gamer Geek Epic.png>) |
+| ARCH-031 | 4 Retro Gamer Geek Legendary.png | preserved-founder-upload | [docs/continuity/founding/phone/4 Retro Gamer Geek Legendary.png](<../../docs/continuity/founding/phone/4 Retro Gamer Geek Legendary.png>) |
+| ARCH-032 | 5 Retro Gamer Geek Mythic.png | preserved-founder-upload | [docs/continuity/founding/phone/5 Retro Gamer Geek Mythic.png](<../../docs/continuity/founding/phone/5 Retro Gamer Geek Mythic.png>) |
 
 ## ARCH-001: Master_Document_v1.3.html
 
@@ -80,7 +85,7 @@ Founder-supplied export and timestamp evidence needed; never reconstruct missing
 
 ## ARCH-009: Remaining phone founding files
 
-Seventeen supplied phone originals are preserved as ARCH-011 through ARCH-027: the roster, trait PDF and fifteen PNGs across Sci-Fi, A.I. and Pro Gamer Geek. Remaining phone files and original conversation are still missing.
+Twenty-two supplied phone originals are preserved as ARCH-011 through ARCH-032: the roster, trait PDF and twenty PNGs across Sci-Fi, A.I., Pro Gamer and Retro Gamer Geek. Remaining phone files and the original conversation are still missing.
 
 ## ARCH-010: Guinness application kit
 
@@ -187,3 +192,33 @@ SHA-256: `de6c990e1c6f6cae7c98b844d52a91aa052ab5a572c3f98883f64e2377d8d2bc`.
 Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at 1b23cf93e5293a6a47a0ac036f6eb069b12b3b56; no Pro Gamer Geek record in the existing ten-concept legacy archive. Exact character-name match to roster source-002 and PDF row-002/page 1. Visible tier retained; no numbered edition assignment or original creation-time proof.
 
 SHA-256: `c1b36fed96330fa0306c54138a6628a45f94547d67980badd8605af9a5ef2f8d`.
+
+## ARCH-028: 1 Retro Gamer Geek Common.png
+
+Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at dc3abb4cfc725e3b4a750e2abc4a4c4904ed1325; no Retro Gamer record in the existing ten-concept legacy-art index. Character name matches roster source-001 and trait-sheet row-001/page 1. Common/Mythic tiers derive from supplied filenames; those tier words are not visible in the artwork. No numbered edition or verified original creation date.
+
+SHA-256: `9c498e4a0884e3adedb11f94a1dc7bab886695a2486ae2d23a0b3cde949e72d7`.
+
+## ARCH-029: 2 Retro Gamer Geek Rare.png
+
+Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at dc3abb4cfc725e3b4a750e2abc4a4c4904ed1325; no Retro Gamer record in the existing ten-concept legacy-art index. Character name matches roster source-001 and trait-sheet row-001/page 1. Common/Mythic tiers derive from supplied filenames; those tier words are not visible in the artwork. No numbered edition or verified original creation date.
+
+SHA-256: `3083136c1ca0360cc9ab8b8a405628d599ea9a40b91379d6c05fa1635f77d9a1`.
+
+## ARCH-030: 3 Retro Gamer Geek Epic.png
+
+Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at dc3abb4cfc725e3b4a750e2abc4a4c4904ed1325; no Retro Gamer record in the existing ten-concept legacy-art index. Character name matches roster source-001 and trait-sheet row-001/page 1. Common/Mythic tiers derive from supplied filenames; those tier words are not visible in the artwork. No numbered edition or verified original creation date.
+
+SHA-256: `7a112fdb819da6a1e9a897ed93b4a7e08a017aa8018d3edfe1c8ca3fb41b8ccd`.
+
+## ARCH-031: 4 Retro Gamer Geek Legendary.png
+
+Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at dc3abb4cfc725e3b4a750e2abc4a4c4904ed1325; no Retro Gamer record in the existing ten-concept legacy-art index. Character name matches roster source-001 and trait-sheet row-001/page 1. Common/Mythic tiers derive from supplied filenames; those tier words are not visible in the artwork. No numbered edition or verified original creation date.
+
+SHA-256: `b9ba6362580d0e8c5db40ab4e96a8f7bb7b7c4e047d09103961d3bf7b8026de8`.
+
+## ARCH-032: 5 Retro Gamer Geek Mythic.png
+
+Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at dc3abb4cfc725e3b4a750e2abc4a4c4904ed1325; no Retro Gamer record in the existing ten-concept legacy-art index. Character name matches roster source-001 and trait-sheet row-001/page 1. Common/Mythic tiers derive from supplied filenames; those tier words are not visible in the artwork. No numbered edition or verified original creation date.
+
+SHA-256: `63db1182c4955bb66d67afcca8415e301324cb0f80fe36e7c72660bb1b9ec98a`.

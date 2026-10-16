@@ -14,4 +14,6 @@ Five further founder-supplied Sci-Fi Geek PNGs (Common through Mythic) are prese
 
 Five founder-supplied A.I. Geek PNGs are preserved as ARCH-018–ARCH-022. See [the variant review](AI-GEEK-SET.md) and [exact-byte index](ai-geek-set.json). The Common differs from the previously recovered robot-companion version; both remain preserved.
 
-Five Pro Gamer Geek originals are preserved as ARCH-023–ARCH-027. See [the set review](PRO-GAMER-GEEK-SET.md), [exact-byte index](pro-gamer-geek-set.json) and [three-set inventory](character-art-sets.json). The founder clarified **500 characters × five artworks = 2,500 planned images**; [the structure decision](../../GEEK-500-COLLECTION-STRUCTURE.md) supersedes the previous 500-total-edition interpretation.
+Five Pro Gamer Geek originals are preserved as ARCH-023–ARCH-027. See [the set review](PRO-GAMER-GEEK-SET.md), [exact-byte index](pro-gamer-geek-set.json) and [supplied-set inventory](character-art-sets.json). The founder clarified **500 characters × five artworks = 2,500 planned images**; [the structure decision](../../GEEK-500-COLLECTION-STRUCTURE.md) supersedes the previous 500-total-edition interpretation.
+
+Five Retro Gamer Geek originals are preserved as ARCH-028–ARCH-032. See [the set review](RETRO-GAMER-GEEK-SET.md) and [exact-byte index](retro-gamer-geek-set.json). Four supplied sets now total twenty art originals. Common/Mythic tiers in this set are identified by supplied filenames, not printed tier words.

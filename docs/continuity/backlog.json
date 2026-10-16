@@ -67,7 +67,7 @@
       "status": "blocked",
       "title": "Ingest founding originals and reconcile chronology",
       "owner": "Founder supplies originals; archivist unassigned",
-      "nextAction": "Seventeen phone originals are preserved. Continue supplying the original conversation and remaining files; chronology requires original evidence.",
+      "nextAction": "Twenty-two phone originals are preserved. Continue supplying the original conversation and remaining files; chronology requires original evidence.",
       "acceptance": [
         "Each received file has an original filename, byte hash, provenance, privacy/licensing disposition and duplicate result.",
         "Originals remain unchanged; public derivatives are identified separately.",
@@ -526,10 +526,10 @@
       "status": "in-progress",
       "title": "Preserve founder-supplied five-tier Geek art sets",
       "owner": "Maintainer archives; founder reviews interpretation",
-      "nextAction": "Review open PR #120 with Sci-Fi, A.I. and Pro Gamer originals and founder decision DR-012. Preserve new uploads individually; COLL-001 must reconcile the runtime model with 500 characters × five artworks.",
+      "nextAction": "Review open PR #120 with four supplied five-tier sets and founder decision DR-012. Preserve new originals individually; COLL-001 must reconcile runtime with 500 characters × five artworks.",
       "acceptance": [
-        "Fifteen original PNG filenames/bytes retained with SHA-256, Git blobs, dimensions and source provenance.",
-        "Duplicate scope, Sci-Fi/Pro Gamer roster/PDF links, alternative AI Common and absent exact AI source label recorded.",
+        "Twenty original PNG filenames/bytes retained with SHA-256, Git blobs, dimensions and source provenance.",
+        "Duplicate scope, Sci-Fi/Pro Gamer/Retro Gamer roster/PDF links, alternative AI Common and absent exact AI source label recorded. Retro Common/Mythic tiers attributed to filenames.",
         "Founder correction recorded without changing runtime IDs, art approval, mint readiness or ownership; existing legacy records unchanged."
       ],
       "dependsOn": [],
@@ -541,7 +541,9 @@
         "docs/continuity/founding/AI-GEEK-SET.md",
         "docs/continuity/founding/pro-gamer-geek-set.json",
         "docs/GEEK-500-COLLECTION-STRUCTURE.md",
-        "docs/continuity/founding/character-art-sets.json"
+        "docs/continuity/founding/character-art-sets.json",
+        "docs/continuity/founding/retro-gamer-geek-set.json",
+        "docs/continuity/founding/RETRO-GAMER-GEEK-SET.md"
       ]
     }
   ]

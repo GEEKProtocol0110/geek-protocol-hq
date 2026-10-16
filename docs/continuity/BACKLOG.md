@@ -66,7 +66,7 @@ Evidence/specification: [docs/continuity/OPERATING-GUIDE.md](../../docs/continui
 
 **P1 / blocked.** Owner: Founder supplies originals; archivist unassigned. Dependencies: none.
 
-Next action: Seventeen phone originals are preserved. Continue supplying the original conversation and remaining files; chronology requires original evidence.
+Next action: Twenty-two phone originals are preserved. Continue supplying the original conversation and remaining files; chronology requires original evidence.
 
 Blocker: Original conversation and the complete remaining founding-file inventory have not been supplied; received files are preserved individually.
 
@@ -408,12 +408,12 @@ Evidence/specification: [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEE
 
 **P1 / in-progress.** Owner: Maintainer archives; founder reviews interpretation. Dependencies: none.
 
-Next action: Review open PR #120 with Sci-Fi, A.I. and Pro Gamer originals and founder decision DR-012. Preserve new uploads individually; COLL-001 must reconcile the runtime model with 500 characters × five artworks.
+Next action: Review open PR #120 with four supplied five-tier sets and founder decision DR-012. Preserve new originals individually; COLL-001 must reconcile runtime with 500 characters × five artworks.
 
 Acceptance:
 
-- Fifteen original PNG filenames/bytes retained with SHA-256, Git blobs, dimensions and source provenance.
-- Duplicate scope, Sci-Fi/Pro Gamer roster/PDF links, alternative AI Common and absent exact AI source label recorded.
+- Twenty original PNG filenames/bytes retained with SHA-256, Git blobs, dimensions and source provenance.
+- Duplicate scope, Sci-Fi/Pro Gamer/Retro Gamer roster/PDF links, alternative AI Common and absent exact AI source label recorded. Retro Common/Mythic tiers attributed to filenames.
 - Founder correction recorded without changing runtime IDs, art approval, mint readiness or ownership; existing legacy records unchanged.
 
-Evidence/specification: [docs/continuity/founding/sci-fi-geek-set.json](../../docs/continuity/founding/sci-fi-geek-set.json), [docs/continuity/founding/SCI-FI-GEEK-SET.md](../../docs/continuity/founding/SCI-FI-GEEK-SET.md), [docs/continuity/assets.json](../../docs/continuity/assets.json), [docs/continuity/founding/ai-geek-set.json](../../docs/continuity/founding/ai-geek-set.json), [docs/continuity/founding/AI-GEEK-SET.md](../../docs/continuity/founding/AI-GEEK-SET.md), [docs/continuity/founding/pro-gamer-geek-set.json](../../docs/continuity/founding/pro-gamer-geek-set.json), [docs/GEEK-500-COLLECTION-STRUCTURE.md](../../docs/GEEK-500-COLLECTION-STRUCTURE.md), [docs/continuity/founding/character-art-sets.json](../../docs/continuity/founding/character-art-sets.json).
+Evidence/specification: [docs/continuity/founding/sci-fi-geek-set.json](../../docs/continuity/founding/sci-fi-geek-set.json), [docs/continuity/founding/SCI-FI-GEEK-SET.md](../../docs/continuity/founding/SCI-FI-GEEK-SET.md), [docs/continuity/assets.json](../../docs/continuity/assets.json), [docs/continuity/founding/ai-geek-set.json](../../docs/continuity/founding/ai-geek-set.json), [docs/continuity/founding/AI-GEEK-SET.md](../../docs/continuity/founding/AI-GEEK-SET.md), [docs/continuity/founding/pro-gamer-geek-set.json](../../docs/continuity/founding/pro-gamer-geek-set.json), [docs/GEEK-500-COLLECTION-STRUCTURE.md](../../docs/GEEK-500-COLLECTION-STRUCTURE.md), [docs/continuity/founding/character-art-sets.json](../../docs/continuity/founding/character-art-sets.json), [docs/continuity/founding/retro-gamer-geek-set.json](../../docs/continuity/founding/retro-gamer-geek-set.json), [docs/continuity/founding/RETRO-GAMER-GEEK-SET.md](../../docs/continuity/founding/RETRO-GAMER-GEEK-SET.md).

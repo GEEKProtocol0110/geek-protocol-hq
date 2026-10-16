@@ -84,7 +84,7 @@
       "status": "awaiting-original",
       "location": null,
       "sha256": null,
-      "provenance": "Seventeen supplied phone originals are preserved as ARCH-011 through ARCH-027: the roster, trait PDF and fifteen PNGs across Sci-Fi, A.I. and Pro Gamer Geek. Remaining phone files and original conversation are still missing."
+      "provenance": "Twenty-two supplied phone originals are preserved as ARCH-011 through ARCH-032: the roster, trait PDF and twenty PNGs across Sci-Fi, A.I., Pro Gamer and Retro Gamer Geek. Remaining phone files and the original conversation are still missing."
     },
     {
       "id": "ARCH-010",
@@ -365,6 +365,86 @@
       "rights": "Founder-supplied project concept art, described in earlier context as Gemini-assisted. Independent authorship and third-party-rights certification remain unverified; ingestion does not authorize a mint.",
       "derivedIndex": "docs/continuity/founding/pro-gamer-geek-set.json",
       "review": "docs/continuity/founding/PRO-GAMER-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-028",
+      "title": "1 Retro Gamer Geek Common.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/1 Retro Gamer Geek Common.png",
+      "sha256": "9c498e4a0884e3adedb11f94a1dc7bab886695a2486ae2d23a0b3cde949e72d7",
+      "gitBlobSha": "1d000c4f885c17d98c53a0def3145b70a1c4f5e7",
+      "sizeBytes": 213063,
+      "originalFilename": "1 Retro Gamer Geek Common.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at dc3abb4cfc725e3b4a750e2abc4a4c4904ed1325; no Retro Gamer record in the existing ten-concept legacy-art index. Character name matches roster source-001 and trait-sheet row-001/page 1. Common/Mythic tiers derive from supplied filenames; those tier words are not visible in the artwork. No numbered edition or verified original creation date.",
+      "rights": "Founder-supplied project concept art, described in earlier context as Gemini-assisted. Independent authorship and third-party-rights certification remain unverified; ingestion does not approve commercial minting.",
+      "derivedIndex": "docs/continuity/founding/retro-gamer-geek-set.json",
+      "review": "docs/continuity/founding/RETRO-GAMER-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-029",
+      "title": "2 Retro Gamer Geek Rare.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/2 Retro Gamer Geek Rare.png",
+      "sha256": "3083136c1ca0360cc9ab8b8a405628d599ea9a40b91379d6c05fa1635f77d9a1",
+      "gitBlobSha": "4120eb31aecfe0c62ab2bf8b47c82b154994f097",
+      "sizeBytes": 196251,
+      "originalFilename": "2 Retro Gamer Geek Rare.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at dc3abb4cfc725e3b4a750e2abc4a4c4904ed1325; no Retro Gamer record in the existing ten-concept legacy-art index. Character name matches roster source-001 and trait-sheet row-001/page 1. Common/Mythic tiers derive from supplied filenames; those tier words are not visible in the artwork. No numbered edition or verified original creation date.",
+      "rights": "Founder-supplied project concept art, described in earlier context as Gemini-assisted. Independent authorship and third-party-rights certification remain unverified; ingestion does not approve commercial minting.",
+      "derivedIndex": "docs/continuity/founding/retro-gamer-geek-set.json",
+      "review": "docs/continuity/founding/RETRO-GAMER-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-030",
+      "title": "3 Retro Gamer Geek Epic.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/3 Retro Gamer Geek Epic.png",
+      "sha256": "7a112fdb819da6a1e9a897ed93b4a7e08a017aa8018d3edfe1c8ca3fb41b8ccd",
+      "gitBlobSha": "48f41a2764bf3a5647446ec1e2828b757598950b",
+      "sizeBytes": 327541,
+      "originalFilename": "3 Retro Gamer Geek Epic.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at dc3abb4cfc725e3b4a750e2abc4a4c4904ed1325; no Retro Gamer record in the existing ten-concept legacy-art index. Character name matches roster source-001 and trait-sheet row-001/page 1. Common/Mythic tiers derive from supplied filenames; those tier words are not visible in the artwork. No numbered edition or verified original creation date.",
+      "rights": "Founder-supplied project concept art, described in earlier context as Gemini-assisted. Independent authorship and third-party-rights certification remain unverified; ingestion does not approve commercial minting.",
+      "derivedIndex": "docs/continuity/founding/retro-gamer-geek-set.json",
+      "review": "docs/continuity/founding/RETRO-GAMER-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-031",
+      "title": "4 Retro Gamer Geek Legendary.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/4 Retro Gamer Geek Legendary.png",
+      "sha256": "b9ba6362580d0e8c5db40ab4e96a8f7bb7b7c4e047d09103961d3bf7b8026de8",
+      "gitBlobSha": "381ad03c0e5ab1a96d5b308b34c960b61b10a04e",
+      "sizeBytes": 450655,
+      "originalFilename": "4 Retro Gamer Geek Legendary.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at dc3abb4cfc725e3b4a750e2abc4a4c4904ed1325; no Retro Gamer record in the existing ten-concept legacy-art index. Character name matches roster source-001 and trait-sheet row-001/page 1. Common/Mythic tiers derive from supplied filenames; those tier words are not visible in the artwork. No numbered edition or verified original creation date.",
+      "rights": "Founder-supplied project concept art, described in earlier context as Gemini-assisted. Independent authorship and third-party-rights certification remain unverified; ingestion does not approve commercial minting.",
+      "derivedIndex": "docs/continuity/founding/retro-gamer-geek-set.json",
+      "review": "docs/continuity/founding/RETRO-GAMER-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-032",
+      "title": "5 Retro Gamer Geek Mythic.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/5 Retro Gamer Geek Mythic.png",
+      "sha256": "63db1182c4955bb66d67afcca8415e301324cb0f80fe36e7c72660bb1b9ec98a",
+      "gitBlobSha": "2834a1f01e6e646b99fb45824d5710a566fb54f1",
+      "sizeBytes": 452885,
+      "originalFilename": "5 Retro Gamer Geek Mythic.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at dc3abb4cfc725e3b4a750e2abc4a4c4904ed1325; no Retro Gamer record in the existing ten-concept legacy-art index. Character name matches roster source-001 and trait-sheet row-001/page 1. Common/Mythic tiers derive from supplied filenames; those tier words are not visible in the artwork. No numbered edition or verified original creation date.",
+      "rights": "Founder-supplied project concept art, described in earlier context as Gemini-assisted. Independent authorship and third-party-rights certification remain unverified; ingestion does not approve commercial minting.",
+      "derivedIndex": "docs/continuity/founding/retro-gamer-geek-set.json",
+      "review": "docs/continuity/founding/RETRO-GAMER-GEEK-SET.md"
     }
   ]
 }

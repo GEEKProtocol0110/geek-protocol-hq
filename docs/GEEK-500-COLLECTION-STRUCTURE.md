@@ -4,7 +4,7 @@
 
 Michael clarified: “So you see the direction I went with the 500 geek. 2500 different images.”
 
-**500 Geek character concepts × five rarity artworks per concept = 2,500 planned distinct images.** Every concept is intended to have Common, Rare, Epic, Legendary and Mythic versions. The supplied Sci-Fi, A.I. and Pro Gamer sets demonstrate this visual progression. This supersedes the earlier interpretation of 500 total editions in DR-005; DR-012 records the correction without deleting that history.
+**500 Geek character concepts × five rarity artworks per concept = 2,500 planned distinct images.** Every concept is intended to have Common, Rare, Epic, Legendary and Mythic versions. The supplied Sci-Fi, A.I., Pro Gamer and Retro Gamer sets demonstrate this visual progression. This supersedes the earlier interpretation of 500 total editions in DR-005; DR-012 records the correction without deleting that history.
 
 ## Keep the counts distinct
 
@@ -13,15 +13,15 @@ Michael clarified: “So you see the direction I went with the 500 geek. 2500 di
 | 500 | Planned character concepts | Founder direction; canonical names/IDs require reconciliation |
 | 5 | Artwork tiers per concept | Common, Rare, Epic, Legendary, Mythic |
 | 2,500 | Planned distinct artworks | 500 × 5; does not claim finished art exists |
-| 3 | Complete five-tier sets supplied in this upload sequence | Sci-Fi, A.I., Pro Gamer |
-| 15 | Original PNGs in those supplied sets | Exact file hashes and paths in the set indices |
+| 4 | Complete five-tier sets supplied in this upload sequence | Sci-Fi, A.I., Pro Gamer, Retro Gamer |
+| 20 | Original PNGs in those supplied sets | Exact file hashes and paths in the set indices |
 | Unselected | Collectible copies per artwork and aggregate mint supply | Separate supply, allocation and deployment design |
 
 [The set inventory](continuity/founding/character-art-sets.json) links every received set and its exact-byte record. The older AI Common with a robot companion remains an additional variant, not a replacement for the new Common. The ten-concept legacy archive stays separate; it is not silently counted toward complete-set coverage.
 
 ## Reconciliation work
 
-The historical phone roster has 500 ordered positions, 482 exact distinct labels and 18 repeated-label pairs. The trait PDF is incomplete and its per-row quantities remain historical evidence, not approved mint counts. Sci-Fi and Pro Gamer match source-252 and source-002 respectively; A.I. Geek has no exact label match in those extracts. Resolve duplicates and stable character IDs without rewriting original source bytes.
+The historical phone roster has 500 ordered positions, 482 exact distinct labels and 18 repeated-label pairs. The trait PDF is incomplete and its per-row quantities remain historical evidence, not approved mint counts. Sci-Fi, Pro Gamer and Retro Gamer match source-252, source-002 and source-001 respectively; A.I. Geek has no exact label match in those extracts. Resolve duplicates and stable character IDs without rewriting original source bytes.
 
 The generated `server/geek-collection.js` / `public/data/geek-500.json` baseline still implements the earlier 500-slot interpretation with GIGA/A.C.E. anchors. It is preserved for compatibility in this archive change and is **not the completed implementation of the clarified 2,500-artwork plan**. COLL-001 must define a versioned character-plus-tier model, reconcile anchors and existing IDs, and update public explorer counts/metadata/tests before claiming that implementation. Do not silently renumber existing slots or equate artwork count with minted supply.
 
