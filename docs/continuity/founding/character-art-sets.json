@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "recordedOn": "2026-10-15",
+  "plannedCharacterConcepts": 500,
+  "rarityLevelsPerConcept": 5,
+  "plannedDistinctArtworks": 2500,
+  "tiers": [
+    "Common",
+    "Rare",
+    "Epic",
+    "Legendary",
+    "Mythic"
+  ],
+  "founderDecision": "DR-012",
+  "suppliedCompleteSetCount": 4,
+  "suppliedArtOriginalCount": 20,
+  "sets": [
+    {
+      "character": "Sci-Fi Geek",
+      "index": "docs/continuity/founding/sci-fi-geek-set.json",
+      "receivedTierCount": 5,
+      "editionMappingStatus": "unresolved"
+    },
+    {
+      "character": "A.I. Geek",
+      "index": "docs/continuity/founding/ai-geek-set.json",
+      "receivedTierCount": 5,
+      "editionMappingStatus": "unresolved"
+    },
+    {
+      "character": "Pro Gamer Geek",
+      "index": "docs/continuity/founding/pro-gamer-geek-set.json",
+      "receivedTierCount": 5,
+      "editionMappingStatus": "unresolved"
+    },
+    {
+      "character": "Retro Gamer Geek",
+      "index": "docs/continuity/founding/retro-gamer-geek-set.json",
+      "receivedTierCount": 5,
+      "tierEvidence": "Filenames supply all five tiers; Rare/Epic/Legendary also visibly label their tier.",
+      "editionMappingStatus": "unresolved"
+    }
+  ],
+  "coverageLimits": "Counts describe these four supplied sets only. Historical roster has 500 positions but 482 exact distinct labels; stable canonical character IDs/names and runtime reconciliation are unfinished. Other legacy art is separately preserved and is not silently counted as a completed set.",
+  "copiesPerArtwork": null,
+  "mintReady": false,
+  "onChainOwnershipActive": false
+}

@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-001: active.** BANK-001 / PR #118 candidate adds 80 internally source-checked questions in three batches to the 500-concept baseline: 580 Kaspa / 8,185 active / 678 source reviews. Introductory Study remains 537 concepts; the new advanced Toccata topic is outside its existing filter. Candidate is unmerged and not deployed; answer keys and holds remain unchanged.
+**ARCH-003: in-progress.** Archive twenty newly supplied Sci-Fi, A.I., Pro Gamer and Retro Gamer Geek rarity PNGs in open PR #120 / codex/archive-scifi-originals, not merged. Separate draft PR #119 has passkey/testnet-wallet work at 3b291065aad6dd2901225ab2f83100cb0277030b with passing GitHub verification; device acceptance is outstanding. ART-001 now has a 2,500-slot planning tracker and production workflow; original intake continues before gap generation.
 
-Next task: **BANK-001**. Review PR #118 and all three pinned item registers, then continue distinct primary-source learning facts toward 1,000 Kaspa concepts (420 remain). CHAIN-001 still needs its first accepted manual testnet reward; CHAIN-002 needs policy/artifact decisions. Preserve all holds.
+Next task: **BANK-001**. Continue remaining original intake, then use ART-001 to produce verified missing tiers in consistent batches. Review open PR #120. PR #119 phone passkey/backup acceptance, BANK-001 toward 1,000 Kaspa and CHAIN-001 real testnet reward remain outstanding.
 
 ## Holds
 
@@ -35,9 +35,10 @@ CCE: **bank-and-economy-hold**. Contributor rate: unselected; 1 or 5 GEEK are pr
 
 ## Unresolved
 
-- Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.
+- Original founding conversation and remaining phone files are still missing. Roster and trait PDF are preserved in merged PR #116; twenty newly supplied Sci-Fi, A.I., Pro Gamer and Retro Gamer Geek PNGs are archived on codex/archive-scifi-originals for review.
 - Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.
 - No successor or second trusted account administrator is appointed in this record.
 - No institutional contract, school partnership, legal-entity registration or accreditation is verified.
 - An independent off-provider repository copy and production-provider restore have not been demonstrated.
 - KCC20 integration/migration is unapproved: eight-decimal supply representation, exact artifact/wallet compatibility and existing-holder accounting require a concrete design.
+- Founder clarified 500 characters × five rarity artworks = 2,500 planned images. Runtime 500-slot manifest, canonical names/IDs, copies per artwork and mint supply still require COLL-001 reconciliation.

@@ -1,5 +1,7 @@
 # GEEK-500 Art and Lore Bible
 
+**Founder clarification, October 15, 2026:** the artwork plan is **500 character concepts × five rarity versions = 2,500 planned images**. [The structure decision](GEEK-500-COLLECTION-STRUCTURE.md) supersedes the earlier 500-total-edition interpretation below. The generated 500-slot manifest is an earlier runtime baseline awaiting COLL-001 reconciliation; its IDs and anchors have not been migrated. Copies per artwork and mint supply remain unselected.
+
 ## Canon
 
 The Omniscient Grid is a living knowledge network built around one idea: curiosity becomes stronger when it is shared, tested, and preserved.
@@ -26,7 +28,7 @@ GIGA occupies the **GIGA District**, the living community hearth at the Grid’s
 | Comic Forge | Comics | Panel-powered fabrication bay | Halftone bursts | A symbol can move a world. |
 | Culture Circuit | Pop Culture | Live signal amphitheater | Broadcast waves | Shared knowledge becomes culture. |
 
-## Rarity contract
+## Earlier runtime rarity distribution
 
 | Tier | Editions | Count | Aura direction |
 | --- | --- | ---: | --- |
@@ -92,7 +94,7 @@ Ten authentic early concepts from July 2025 were recovered from the original Gee
 
 The surviving pixels do not preserve trustworthy edition numbers for these concepts. The archive therefore records the original filename, recovery date, visible rarity label when present, public derivative path, and SHA-256 hash while leaving `mappedEdition` as `null`. Recovery does not equal approval. These assets remain `legacy-recovered`, are not counted as approved collection art, and cannot be presented as minted or transferable.
 
-Any future mapping into #001–#498 requires a documented human review that reconciles the old 100/500/600-character plans with the current fixed 500-edition contract. The source artwork must also pass originality, licensing, accessibility, visual consistency, and lore review before its status can advance.
+Any future mapping into #001–#498 requires a documented human review that reconciles the old 100/500/600-character plans with the clarified 500-character/five-artwork plan and earlier runtime IDs. The source artwork must also pass originality, licensing, accessibility, visual consistency, and lore review before its status can advance.
 
 ## Newly supplied founding theme roster
 
@@ -118,7 +120,7 @@ The collection is Kaspa-ready, not Kaspa-deployed. Any future KRC-721 or marketp
 
 Before deployment:
 
-- approve all 500 original images and metadata records;
+- reconcile and approve the complete versioned character/tier artwork catalog and its metadata;
 - independently review originality and license provenance;
 - hash every asset and publish a reproducible collection root;
 - pin the network, standard version, deployment transaction, supply, authority, royalty, and metadata mutability policy;
@@ -132,6 +134,6 @@ Until those gates pass, the website must keep `configured`, `onChainOwnershipAct
 
 ## Acquisition and profile identity
 
-The founder specifies one collection of **500 NFTs** across **five rarity levels**. Planned acquisition routes are public NFT minting, earned NFT rewards, and purchases paid in **GEEK or native KAS**. All routes draw from the same 500-edition supply; rewards and sales do not create additional editions. Prices and allocations remain unset. Every route is disabled until ownership, inventory, settlement, indexer recovery and deployment review are implemented. GEEK/KAS payment verification and the existing 70/30 transaction policy need explicit asset-specific settlement rules; accepting KAS cannot itself burn GEEK without a separately defined conversion/funding process. No placeholder checkout may claim a payment or reward.
+The founder specifies **500 Geek character concepts, each with five rarity artworks (2,500 planned images)**. Planned acquisition routes are public NFT minting, earned NFT rewards, and purchases paid in **GEEK or native KAS**. Collectible copies per artwork, total mint supply and allocations across acquisition routes require a separate specification. Prices and allocations remain unset. Every route is disabled until ownership, inventory, settlement, indexer recovery and deployment review are implemented. GEEK/KAS payment verification and the existing 70/30 transaction policy need explicit asset-specific settlement rules; accepting KAS cannot itself burn GEEK without a separately defined conversion/funding process. No placeholder checkout may claim a payment or reward.
 
 The free **Build-a-GEEK** profile editor is a separate cosmetic starter, with server-saved color, headgear, face, torso, arms, legs, back accessory and effect choices. It is not an edition, NFT mint, sale or reward. The five existing launch avatars retain their progression/wallet unlock rules. Future NFT profile equipping requires verified ownership; cosmetic profile customization must not change frozen collection metadata or supply.

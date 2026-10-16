@@ -32,6 +32,8 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | OPS-003 | P1 | done | Finish mint-availability monitoring for GitHub issue #14 | Maintainer; founder reviews release |
 | CHAIN-002 | P1 | decision-needed | Evaluate KCC20 compatibility and preserve GEEK holder entitlements | Maintainer researches; founder selects policy; independent covenant reviewer unassigned |
 | ARCH-002 | P1 | done | Preserve the founder-supplied theme roster and trait sheet | Maintainer archives; founder reviews interpretation |
+| ARCH-003 | P1 | in-progress | Preserve founder-supplied five-tier Geek art sets | Maintainer archives; founder reviews interpretation |
+| ART-001 | P1 | in-progress | Finish the five-tier artwork for 500 Geek character concepts | Maintainer produces candidates; founder supplies originals and reviews art direction |
 
 ## CONT-001: Publish the continuation system
 
@@ -65,9 +67,9 @@ Evidence/specification: [docs/continuity/OPERATING-GUIDE.md](../../docs/continui
 
 **P1 / blocked.** Owner: Founder supplies originals; archivist unassigned. Dependencies: none.
 
-Next action: Supply the original conversation export and remaining founding files from the phone.
+Next action: Twenty-two phone originals are preserved. Continue supplying the original conversation and remaining files; chronology requires original evidence.
 
-Blocker: Original conversation and remaining phone files have not been supplied in this working copy.
+Blocker: Original conversation and the complete remaining founding-file inventory have not been supplied; received files are preserved individually.
 
 Acceptance:
 
@@ -263,15 +265,15 @@ Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.m
 
 **P2 / planned.** Owner: Art lead and ownership reviewer unassigned. Dependencies: none.
 
-Next action: Review the 18 repeated roster labels and incomplete trait PDF. Confirm whether historical 100/50/25/5/1 cells meant copies per archetype, recover missing sheet rows, and reconcile any proposed supply/theme/edition policy with the current 500-edition plan and GIGA/A.C.E. anchors before changing canon.
+Next action: Implement founder clarification DR-012 as a versioned plan for 500 character concepts × five rarity artworks (2,500). Reconcile the historical duplicate names, incomplete trait sheet, generated 500-slot IDs and GIGA/A.C.E. anchors. Define collectible copies/supply and acquisition separately before any mint.
 
 Acceptance:
 
-- Exactly 500 editions in five tiers are reconciled.
+- 500 character concepts and five artworks per concept are represented without silent renumbering; distinguish 2,500 planned artworks from received/approved assets and collectible copies.
 - Art provenance, metadata and acquisition allocations approved.
 - Ownership remains disabled until its separate reviewed implementation.
 
-Evidence/specification: [docs/GEEK-500-ART-BIBLE.md](../../docs/GEEK-500-ART-BIBLE.md), [docs/COLLECTIBLE-PROTOCOL.md](../../docs/COLLECTIBLE-PROTOCOL.md), [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md).
+Evidence/specification: [docs/GEEK-500-ART-BIBLE.md](../../docs/GEEK-500-ART-BIBLE.md), [docs/COLLECTIBLE-PROTOCOL.md](../../docs/COLLECTIBLE-PROTOCOL.md), [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md), [docs/GEEK-500-COLLECTION-STRUCTURE.md](../../docs/GEEK-500-COLLECTION-STRUCTURE.md).
 
 ## EDU-001: Design the first family or school learning pilot
 
@@ -402,3 +404,31 @@ Acceptance:
 - Existing 500-edition manifest, five tiers, GIGA/A.C.E. anchors, art approvals and disabled ownership remain unchanged.
 
 Evidence/specification: [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md), [docs/continuity/founding/geek-roster-500.json](../../docs/continuity/founding/geek-roster-500.json), [docs/continuity/assets.json](../../docs/continuity/assets.json), [docs/continuity/founding/geek-trait-rarity-sheet.json](../../docs/continuity/founding/geek-trait-rarity-sheet.json).
+
+## ARCH-003: Preserve founder-supplied five-tier Geek art sets
+
+**P1 / in-progress.** Owner: Maintainer archives; founder reviews interpretation. Dependencies: none.
+
+Next action: Review open PR #120 with four supplied five-tier sets and founder decision DR-012. Preserve new originals individually; COLL-001 must reconcile runtime with 500 characters × five artworks.
+
+Acceptance:
+
+- Twenty original PNG filenames/bytes retained with SHA-256, Git blobs, dimensions and source provenance.
+- Duplicate scope, Sci-Fi/Pro Gamer/Retro Gamer roster/PDF links, alternative AI Common and absent exact AI source label recorded. Retro Common/Mythic tiers attributed to filenames.
+- Founder correction recorded without changing runtime IDs, art approval, mint readiness or ownership; existing legacy records unchanged.
+
+Evidence/specification: [docs/continuity/founding/sci-fi-geek-set.json](../../docs/continuity/founding/sci-fi-geek-set.json), [docs/continuity/founding/SCI-FI-GEEK-SET.md](../../docs/continuity/founding/SCI-FI-GEEK-SET.md), [docs/continuity/assets.json](../../docs/continuity/assets.json), [docs/continuity/founding/ai-geek-set.json](../../docs/continuity/founding/ai-geek-set.json), [docs/continuity/founding/AI-GEEK-SET.md](../../docs/continuity/founding/AI-GEEK-SET.md), [docs/continuity/founding/pro-gamer-geek-set.json](../../docs/continuity/founding/pro-gamer-geek-set.json), [docs/GEEK-500-COLLECTION-STRUCTURE.md](../../docs/GEEK-500-COLLECTION-STRUCTURE.md), [docs/continuity/founding/character-art-sets.json](../../docs/continuity/founding/character-art-sets.json), [docs/continuity/founding/retro-gamer-geek-set.json](../../docs/continuity/founding/retro-gamer-geek-set.json), [docs/continuity/founding/RETRO-GAMER-GEEK-SET.md](../../docs/continuity/founding/RETRO-GAMER-GEEK-SET.md).
+
+## ART-001: Finish the five-tier artwork for 500 Geek character concepts
+
+**P1 / in-progress.** Owner: Maintainer produces candidates; founder supplies originals and reviews art direction. Dependencies: ARCH-003.
+
+Next action: Finish ingesting the remaining founder files. Review duplicate source labels and unassigned A.I. set, then choose one verified incomplete character and generate its missing tiers using preserved references.
+
+Acceptance:
+
+- A reproducible tracker covers 500 historical positions × five tiers, preserving duplicate-name and unassigned-set evidence.
+- New art preserves character consistency, records generation provenance and stays separate from founding originals.
+- All supplied/generated/approved assets and missing evidence are recorded per tier; no false complete-catalog or NFT-supply claim.
+
+Evidence/specification: [docs/GEEK-ART-PRODUCTION.md](../../docs/GEEK-ART-PRODUCTION.md), [docs/GEEK-ART-PROGRESS.md](../../docs/GEEK-ART-PROGRESS.md), [docs/art/artwork-production.json](../../docs/art/artwork-production.json), [scripts/geek-art-tracker.mjs](../../scripts/geek-art-tracker.mjs).
