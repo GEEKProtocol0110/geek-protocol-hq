@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "capturedAt": "2026-10-15",
-  "through": "71ad0442e7b9c7ed957f94057db6b43bfa395905",
-  "scope": "HQ commit metadata through the declared snapshot commit, including merged KCC20 research and the founding archive. Product runtime baseline remains PR #115. Authored dates are Git metadata, not founding proof; bundles preserve underlying objects.",
+  "capturedAt": "2026-10-16",
+  "through": "78e9c0e0a3e8f275d162a470448e4fa0b9abe4ca",
+  "scope": "HQ commit metadata through the PR #121 merge, preserving earlier records and adding merged 580-question and mobile login-copy history. Product baseline is PR #121. Git authored dates are metadata, not founding proof; bundles preserve underlying objects.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -1563,6 +1563,72 @@
       ],
       "authoredAt": "2026-10-15T13:51:47-04:00",
       "title": "Merge pull request #116 from GEEKProtocol0110/codex/founding-geek-roster"
+    },
+    {
+      "commit": "a78561410076eb7b3ae8d838049026e2b5540074",
+      "parents": [
+        "71ad0442e7b9c7ed957f94057db6b43bfa395905"
+      ],
+      "authoredAt": "2026-10-15T13:52:40-04:00",
+      "title": "Record merged founding archive and resume the bank-first pickup"
+    },
+    {
+      "commit": "4fe4aed4f4a5c22a6e78b420197116c347133a03",
+      "parents": [
+        "a78561410076eb7b3ae8d838049026e2b5540074"
+      ],
+      "authoredAt": "2026-10-15T14:03:04-04:00",
+      "title": "Add twenty source-checked Kaspa convention and authority questions"
+    },
+    {
+      "commit": "28186a3ac177e0115a4dd1481e5a37dcb46e8230",
+      "parents": [
+        "4fe4aed4f4a5c22a6e78b420197116c347133a03"
+      ],
+      "authoredAt": "2026-10-15T14:44:21-04:00",
+      "title": "Expand Kaspa to 540 concepts with pinned KasWare integration evidence"
+    },
+    {
+      "commit": "31e68e61a690685115b3bc555e697f27f140fb74",
+      "parents": [
+        "28186a3ac177e0115a4dd1481e5a37dcb46e8230"
+      ],
+      "authoredAt": "2026-10-15T14:55:07-04:00",
+      "title": "Add forty pinned Toccata application-design questions for 580 Kaspa concepts"
+    },
+    {
+      "commit": "606d06a861428f96b633152d32d3e8954e3e209d",
+      "parents": [
+        "a78561410076eb7b3ae8d838049026e2b5540074",
+        "31e68e61a690685115b3bc555e697f27f140fb74"
+      ],
+      "authoredAt": "2026-10-15T15:19:04-04:00",
+      "title": "Merge pull request #118 from GEEKProtocol0110/codex/kaspa-520-batch"
+    },
+    {
+      "commit": "844baed4bb18adf10d0b6361d35e1192e0fe331c",
+      "parents": [
+        "606d06a861428f96b633152d32d3e8954e3e209d"
+      ],
+      "authoredAt": "2026-10-15T23:33:25-04:00",
+      "title": "Fix Android login message copying and manual selection recovery"
+    },
+    {
+      "commit": "6dbc8d8b24abb79bc1502df6b9bac49dd395b08b",
+      "parents": [
+        "844baed4bb18adf10d0b6361d35e1192e0fe331c"
+      ],
+      "authoredAt": "2026-10-15T23:39:03-04:00",
+      "title": "Record login-copy verification and paused artwork checkpoint"
+    },
+    {
+      "commit": "78e9c0e0a3e8f275d162a470448e4fa0b9abe4ca",
+      "parents": [
+        "606d06a861428f96b633152d32d3e8954e3e209d",
+        "6dbc8d8b24abb79bc1502df6b9bac49dd395b08b"
+      ],
+      "authoredAt": "2026-10-15T23:40:35-04:00",
+      "title": "Merge pull request #121 from GEEKProtocol0110/codex/mobile-login-copy"
     }
   ]
 }

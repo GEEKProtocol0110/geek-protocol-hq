@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-The ledger preserves **106 merged HQ PR records** and **191 Git commit records** through the declared commit snapshot `71ad0442e7b9c7ed957f94057db6b43bfa395905`. The product runtime baseline remains #115. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
+The ledger preserves **108 merged HQ PR records** and **199 Git commit records** through the declared commit snapshot `78e9c0e0a3e8f275d162a470448e4fa0b9abe4ca`. The product runtime baseline remains #121. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
 
 ## Founding record
 
@@ -12,6 +12,8 @@ Three exact historical master/litepaper snapshots are preserved with source comm
 
 | PR | Merged (UTC) | Change | Commit |
 | --- | --- | --- | --- |
+| [#121](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/121) | 2026-10-16T03:40:36Z | Fix Android login-message copying and selection recovery | `78e9c0e0a3e8` |
+| [#118](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/118) | 2026-10-15T19:19:05Z | Grow Kaspa to 580 reviewed concepts with pinned primary-source evidence | `606d06a86142` |
 | [#116](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/116) | 2026-10-15T17:51:47Z | Preserve founding Geek roster and incomplete rarity sheet | `71ad0442e7b9` |
 | [#117](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/117) | 2026-10-15T17:33:08Z | Research KCC20 compatibility and GEEK holder migration requirements | `a4e34cd6c714` |
 | [#115](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/115) | 2026-10-15T14:58:30Z | Monitor verified GEEK mint availability and preserve saved history | `b0bc952d14d0` |
