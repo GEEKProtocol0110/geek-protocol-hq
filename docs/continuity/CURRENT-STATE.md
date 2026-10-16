@@ -25,9 +25,9 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**OPS-001: needs-evidence.** UX-002 shipped in PR #131 with GIGA/A.C.E., cosmic shell, removed motion button and revised holiday themes/catalog. Resume provider recovery evidence and independent auth review; preserve founder phone success.
+**UX-003: active.** Founder correction: reduce GIGA/A.C.E. repetition while new character art is pending, and put more emphasis on neon-space/coder backgrounds. Retire injected character panels, replace the large home portrait with a local constellation, and preserve holiday/reduced-motion behavior.
 
-Next task: **OPS-001**. Verify actual production backup retention and an isolated provider restore privately, reconcile post-backup security changes and obtain independent authentication review. Further visual QA should cover a real phone/narrow viewport and rendered seasonal previews. Preserve the working player/passkey, draft #119 reconciliation, paused collection artwork #120 and all holds.
+Next task: **UX-003**. Verify and ship UX-003, record its exact release and browser limits, then resume the recorded recovery/security work. Wait for founder-supplied character art before another broad character-art rollout.
 
 ## Holds
 

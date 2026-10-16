@@ -35,6 +35,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | AUTH-002 | P0 | needs-evidence | Resolve mobile login when wallet message signing is unavailable | Maintainer implements and verifies; founder confirms physical-phone passkeys |
 | UX-001 | P0 | done | Simplify first visits and close current reliability gaps | Maintainer |
 | UX-002 | P1 | done | Bring GIGA, A.C.E. and seasonal cosmic styling throughout HQ | Maintainer |
+| UX-003 | P1 | active | Reduce repeated character art and emphasize the neon-space background | Maintainer |
 
 ## CONT-001: Publish the continuation system
 
@@ -456,3 +457,18 @@ Acceptance:
 - Relevant checks, exact release evidence and remaining verification limits are recorded.
 
 Evidence/specification: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/characters.js](../../public/assets/characters.js), [public/assets/atmosphere.css](../../public/assets/atmosphere.css), [public/assets/site.js](../../public/assets/site.js), [public/assets/holiday-theme.js](../../public/assets/holiday-theme.js), [tests/appearance.test.js](../../tests/appearance.test.js).
+
+## UX-003: Reduce repeated character art and emphasize the neon-space background
+
+**P1 / active.** Owner: Maintainer. Dependencies: none.
+
+Next action: Verify and release the background-focused correction, including browser confirmation that repeated character panels are absent and the constellation asset loads.
+
+Acceptance:
+
+- Newly injected GIGA/A.C.E. panels and portrait treatment are removed; established story guides and original art remain available.
+- The large home portrait gives way to a decorative local constellation and stronger neon-space/coder backgrounds.
+- Background layers remain aria-hidden, click-through and bounded for motion preferences; holiday greetings and the reduced holiday catalog still work.
+- Relevant checks and actual release/browser evidence are recorded without claiming unperformed phone or seasonal QA.
+
+Evidence/specification: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/atmosphere.js](../../public/assets/atmosphere.js), [public/assets/atmosphere.css](../../public/assets/atmosphere.css), [public/assets/neon-constellation.svg](../../public/assets/neon-constellation.svg).

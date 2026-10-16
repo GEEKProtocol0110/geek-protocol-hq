@@ -254,3 +254,13 @@ Use one entry per substantive session/interruption: task ID, exact review/commit
 - **Validation:** 493 full local tests, zero failures/skips, real Redis 7.4.2, 311 security assertions and supporting checks; dependency audit zero vulnerabilities. Preview desktop checks covered home, Quest, Duel and sign-in; canonical live home showed both loaded portraits, the cosmic shell and no motion button or horizontal overflow. No game was started, authenticator prompted or production appearance setting changed.
 - **Limits:** no actual phone/narrow-viewport or complete rendered seasonal-preview run. Responsive CSS is present; seasonal palette/allowlist/date/retired-state compatibility and motion-loop behavior were internally checked. Zero new counted production-monitor probes; browser observations are separate. Preserve prior founder phone success.
 - **Continuation:** mark UX-002 shipped and advance the runtime baseline to #131; append observed #130/#131 releases and five Git records. The record-only follow-up regenerates continuity and runs validation/whitespace checks; it does not rerun the local app suite. Return to OPS-001 provider recovery evidence and independent auth review, with optional focused visual/device QA. Draft #119 remains separate; collection artwork #120 stays paused; all holds remain.
+
+
+## October 16, 2026 — UX-003 background emphasis correction
+
+- **Direction:** founder asks to dial back GIGA/A.C.E. while more art is pending, and increase space/neon/glitch/coder atmosphere. DR-014 supersedes the character-prominence part of DR-013, preserving its holiday choices.
+- **Change:** retire the injected guide panels/extra A.C.E. portrait styling and replace the large home character with a local decorative neon constellation. Keep original art and established story/lesson guides. Add stronger cyan/violet nebula/star backgrounds, a perspective grid, faint scanlines and aria-hidden code rails. No request for new character art, new collection production or generated bitmap work.
+- **Boundaries:** decoration captures no input, reads no player data and supplies no live telemetry. Brief low-opacity code entrance obeys reduced-motion and is disabled on narrow layouts. Existing bounded canvas motion, absent animation button, holiday catalog and owner settings remain. Seasonal note is hidden outside an active holiday.
+- **Checks so far:** eight existing onboarding/motion tests passed. Full verification and release/browser evidence follow.
+
+- **Full verification:** `npm run verify` passed 493 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all supporting checks. No dependencies changed; exact-head CI also audits them. Browser preview and release evidence follow.

@@ -130,5 +130,5 @@ document.addEventListener('keydown', (event) => {
 // Optional owner-selected decoration. A failed read keeps the standard site usable.
 import('/assets/holiday-theme.js').then(module => module.initHolidayTheme()).catch(() => {});
 
-// Shared GIGA and A.C.E. companions on every public page using this shell.
-import('/assets/characters.js').catch(() => {});
+// Shared neon-space background; story characters stay in their original contexts.
+import('/assets/atmosphere.js').catch(() => {});
