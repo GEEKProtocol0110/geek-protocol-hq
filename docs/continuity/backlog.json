@@ -522,10 +522,10 @@
     {
       "id": "AUTH-002",
       "priority": "P0",
-      "status": "in-progress",
+      "status": "needs-evidence",
       "title": "Restore a usable Android login-message copy path",
       "owner": "Maintainer fixes; founder verifies physical KasWare phone flow",
-      "nextAction": "Verify the exact candidate, release the small client-only fix, then retry copy or the in-app-browser route on the phone. Preserve the separate passkey candidate and paused art work.",
+      "nextAction": "Use PR #121 for its exact merge/deployment result; founder retries the updated page on Android. Try Copy message or Select entire message, or connect from KasWare Explore on Mainnet. Physical phone acceptance remains outstanding; art is paused.",
       "acceptance": [
         "Exact server message copied/selected without modifying whitespace; selection copy runs during the tap, with Clipboard API/manual fallbacks.",
         "Denied/unavailable/stalled clipboard and expired/replaced challenges have usable, honest states; no copy action sends a signature or authenticates a player.",

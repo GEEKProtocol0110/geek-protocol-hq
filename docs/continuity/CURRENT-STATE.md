@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-002: active.** Founder paused further artwork uploads/production and reported being unable to copy the login message to KasWare on Android. Fix the sign-in clipboard fallback and provide an explicit full-message selection and in-app-browser route.
+**AUTH-002: active.** PR #121 / codex/mobile-login-copy fixes Android login copying with selection-based copy during the tap, a bounded Clipboard API fallback and explicit manual selection. Candidate passed 455 tests and rendered preview guidance was observed. Physical Android/KasWare acceptance remains outstanding; artwork work is paused.
 
-Next task: **AUTH-002**. Verify and release the focused mobile login-copy fix, then have the founder retry on the phone. Art intake/generation is paused at four sets/twenty originals in separate PR #120. PR #119 passkey/testnet-wallet acceptance remains pending; BANK-001 and CHAIN-001 are still outstanding.
+Next task: **AUTH-002**. Read PR #121 for the exact release/deployment result, then retry login on the phone. Art intake/generation is paused in PR #120. PR #119 passkey/testnet-wallet acceptance remains pending; BANK-001 and CHAIN-001 are still outstanding.
 
 ## Holds
 

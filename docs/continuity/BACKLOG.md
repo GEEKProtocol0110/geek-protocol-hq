@@ -32,7 +32,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | OPS-003 | P1 | done | Finish mint-availability monitoring for GitHub issue #14 | Maintainer; founder reviews release |
 | CHAIN-002 | P1 | decision-needed | Evaluate KCC20 compatibility and preserve GEEK holder entitlements | Maintainer researches; founder selects policy; independent covenant reviewer unassigned |
 | ARCH-002 | P1 | done | Preserve the founder-supplied theme roster and trait sheet | Maintainer archives; founder reviews interpretation |
-| AUTH-002 | P0 | in-progress | Restore a usable Android login-message copy path | Maintainer fixes; founder verifies physical KasWare phone flow |
+| AUTH-002 | P0 | needs-evidence | Restore a usable Android login-message copy path | Maintainer fixes; founder verifies physical KasWare phone flow |
 
 ## CONT-001: Publish the continuation system
 
@@ -406,9 +406,9 @@ Evidence/specification: [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEE
 
 ## AUTH-002: Restore a usable Android login-message copy path
 
-**P0 / in-progress.** Owner: Maintainer fixes; founder verifies physical KasWare phone flow. Dependencies: none.
+**P0 / needs-evidence.** Owner: Maintainer fixes; founder verifies physical KasWare phone flow. Dependencies: none.
 
-Next action: Verify the exact candidate, release the small client-only fix, then retry copy or the in-app-browser route on the phone. Preserve the separate passkey candidate and paused art work.
+Next action: Use PR #121 for its exact merge/deployment result; founder retries the updated page on Android. Try Copy message or Select entire message, or connect from KasWare Explore on Mainnet. Physical phone acceptance remains outstanding; art is paused.
 
 Acceptance:
 

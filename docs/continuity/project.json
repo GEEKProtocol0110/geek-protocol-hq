@@ -37,10 +37,10 @@
   "currentWork": {
     "id": "AUTH-002",
     "status": "active",
-    "description": "Founder paused further artwork uploads/production and reported being unable to copy the login message to KasWare on Android. Fix the sign-in clipboard fallback and provide an explicit full-message selection and in-app-browser route."
+    "description": "PR #121 / codex/mobile-login-copy fixes Android login copying with selection-based copy during the tap, a bounded Clipboard API fallback and explicit manual selection. Candidate passed 455 tests and rendered preview guidance was observed. Physical Android/KasWare acceptance remains outstanding; artwork work is paused."
   },
   "nextTask": "AUTH-002",
-  "nextAction": "Verify and release the focused mobile login-copy fix, then have the founder retry on the phone. Art intake/generation is paused at four sets/twenty originals in separate PR #120. PR #119 passkey/testnet-wallet acceptance remains pending; BANK-001 and CHAIN-001 are still outstanding.",
+  "nextAction": "Read PR #121 for the exact release/deployment result, then retry login on the phone. Art intake/generation is paused in PR #120. PR #119 passkey/testnet-wallet acceptance remains pending; BANK-001 and CHAIN-001 are still outstanding.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
