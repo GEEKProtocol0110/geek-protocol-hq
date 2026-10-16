@@ -10,11 +10,11 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,185 active questions; 678 recorded internal source reviews; 7,322 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,205 active questions; 698 recorded internal source reviews; 7,302 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
-| Kaspa | 580 | 580 | 420 |
+| Kaspa | 600 | 600 | 400 |
 | Video games | 602 | 0 | 1000 |
 | Science fiction | 515 | 37 | 963 |
 | Technology | 1497 | 15 | 985 |
@@ -25,9 +25,9 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**OPS-001: needs-evidence.** CONT-003 roadmap/PR reconciliation is prepared in #139: superseded #119 closed with work retained; #120 paused; beta and art direction clarified. Provider recovery/independent source preservation and authentication review evidence remain open.
+**BANK-001: active.** Prepared a separate 20-question PSKT coordination candidate: 600 Kaspa concepts in this checkout; 580 in the merged product. Full local verification passed: 496 tests, zero failures/skips, real Redis and 311 security assertions; production dependency audit found zero vulnerabilities. GitHub review/merge/deployment remain pending. Provider recovery and device acceptance still need owner/participant evidence.
 
-Next task: **OPS-001**. Resume independent source preservation and actual provider backup/isolated restore evidence. Current history is complete locally; a local bundle is not an independent copy. Device observations remain PILOT-001/AUTH-002/UX-005; continue BANK-001 while owner/device evidence is unavailable.
+Next task: **OPS-001**. Review the BANK-001 candidate, then resume independent source preservation and actual provider backup/isolated restore evidence. Returning saved-player login, four-chapter Quest and two-person Royale remain actual-device acceptance tasks. Continue reviewed content when owner/device evidence is unavailable.
 
 ## Holds
 

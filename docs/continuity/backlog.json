@@ -84,9 +84,9 @@
       "id": "BANK-001",
       "priority": "P0",
       "status": "active",
-      "title": "Grow Kaspa from 580 toward 1,000 reviewed concepts",
+      "title": "Grow Kaspa from 600 toward 1,000 reviewed concepts",
       "owner": "Content maintainer; independent editor unassigned",
-      "nextAction": "PR #118 merged at 606d06a861428f96b633152d32d3e8954e3e209d: 580 internally source-checked Kaspa concepts. Continue distinct primary-source facts toward 1,000 (420 remain). Introductory Study remains 537; independent editorial review is unassigned.",
+      "nextAction": "A 20-question PSKT coordination candidate extends merged PR #118's 580 to 600 internally source-checked Kaspa concepts (400 remain). Validate and review the fresh scoped PR before claiming a merged/deployed count. Continue distinct primary-source facts toward 1,000; introductory Study remains 537 and independent editorial review is unassigned.",
       "acceptance": [
         "1,000 distinct source-checked Kaspa concepts with explanations and review dates.",
         "No padded variants; existing issued answers remain compatible.",
@@ -98,7 +98,8 @@
         "docs/QUESTION-MAINTENANCE.md",
         "docs/kaspa-520-review-2026-10-15.json",
         "docs/kaspa-540-review-2026-10-15.json",
-        "docs/kaspa-580-review-2026-10-15.json"
+        "docs/kaspa-580-review-2026-10-15.json",
+        "docs/kaspa-600-review-2026-10-16.json"
       ]
     },
     {
