@@ -668,10 +668,10 @@
     {
       "id": "UX-005",
       "priority": "P0",
-      "status": "active",
+      "status": "needs-evidence",
       "title": "Contain mobile decoration and stabilize page edges",
       "owner": "Maintainer",
-      "nextAction": "Contain the narrow code rail and hero, stabilize the viewport background, verify relevant checks and release evidence.",
+      "nextAction": "CSS correction shipped in PR #137 at b194970626b4864286fb25a210b33df14047d3bc. Await actual refreshed-phone scrolling/browser-bar retest; source and desktop checks do not establish device acceptance.",
       "acceptance": [
         "Decorative code no longer extends beyond mobile sections; the home hero clips its decorative children.",
         "The shared page shell prevents decorative horizontal scrolling without disabling pinch zoom or vertical navigation.",
@@ -684,6 +684,9 @@
         "public/assets/atmosphere.css",
         "public/assets/home.css",
         "public/assets/styles.css"
+      ],
+      "releaseEvidence": [
+        "Exact head cb2650f3609b8d77ae1ca0b5164a571698e6f8af (tree 0b2499b3dc0fe03db7ef8fc3606099926999cbe2) passed GitHub verify run 38927170918 and Vercel; merge-source Vercel succeeded. Full local verification: 496 tests, zero failures/skips, required Redis 7.4.2 and 311 security assertions. Desktop preview/live computed root/body/hero overflow-x:clip, preview paint containment, loaded narrow rules with inset code, 100lvh background and no perspective. Desktop document width 1348 <= viewport 1363. Actual narrow rendering and physical-phone/browser-bar retest remain unverified; a local fixture URL was blocked and no workaround attempted. No new counted HTTP-monitor probes."
       ]
     }
   ]

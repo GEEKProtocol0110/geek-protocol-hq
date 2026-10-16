@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "capturedAt": "2026-10-16",
-  "through": "4a12ec8b4cff78c6042ec6c65b7b6027d3af7352",
-  "scope": "Preserved HQ commit metadata plus observed Git objects through PR #135. Runtime baseline is #135. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation.",
+  "through": "b194970626b4864286fb25a210b33df14047d3bc",
+  "scope": "Preserved HQ commit metadata plus observed Git objects through PR #137. Runtime baseline is #137. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -1883,6 +1883,40 @@
       ],
       "authoredAt": "2026-10-16T11:38:19-04:00",
       "title": "Merge pull request #135 from GEEKProtocol0110/codex/grid-discoveries"
+    },
+    {
+      "commit": "b16d02cdb25ebbfee4f4f0006f21d358585b8174",
+      "parents": [
+        "4a12ec8b4cff78c6042ec6c65b7b6027d3af7352"
+      ],
+      "authoredAt": "2026-10-16T11:40:12-04:00",
+      "title": "Record the deployed Kaspa positioning and Grid discoveries release"
+    },
+    {
+      "commit": "705a963619493bde140b64152f2389fef7500cdd",
+      "parents": [
+        "4a12ec8b4cff78c6042ec6c65b7b6027d3af7352",
+        "b16d02cdb25ebbfee4f4f0006f21d358585b8174"
+      ],
+      "authoredAt": "2026-10-16T11:41:27-04:00",
+      "title": "Merge pull request #136 from GEEKProtocol0110/codex/grid-discoveries-release"
+    },
+    {
+      "commit": "cb2650f3609b8d77ae1ca0b5164a571698e6f8af",
+      "parents": [
+        "705a963619493bde140b64152f2389fef7500cdd"
+      ],
+      "authoredAt": "2026-10-16T11:50:21-04:00",
+      "title": "Contain mobile code decoration and stabilize page edges"
+    },
+    {
+      "commit": "b194970626b4864286fb25a210b33df14047d3bc",
+      "parents": [
+        "705a963619493bde140b64152f2389fef7500cdd",
+        "cb2650f3609b8d77ae1ca0b5164a571698e6f8af"
+      ],
+      "authoredAt": "2026-10-16T11:55:00-04:00",
+      "title": "Merge pull request #137 from GEEKProtocol0110/codex/mobile-edge-fix"
     }
   ]
 }

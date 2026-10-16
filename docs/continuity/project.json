@@ -6,16 +6,16 @@
   "founder": "Michael Gee",
   "releaseChannel": "Public Alpha",
   "productBaseline": {
-    "pullRequest": 135,
-    "commit": "4a12ec8b4cff78c6042ec6c65b7b6027d3af7352",
-    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/135",
+    "pullRequest": 137,
+    "commit": "b194970626b4864286fb25a210b33df14047d3bc",
+    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/137",
     "status": "merged-deployed",
     "checkedOn": "2026-10-16",
     "testsPassed": 496,
     "testsFailed": 0,
     "testsSkipped": 0,
     "productionProbesPassed": 0,
-    "evidence": "Exact head 4f36f40372a9f367be0bbc4f316db1aa98f1b27c (tree b6caa3bfd2a0cfaf5da44e800a8184455737a4c3) passed GitHub verify run 38925222445 and Vercel; merge-source Vercel succeeded. Full local verification: 496 tests, zero failures/skips, required Redis 7.4.2 and 311 security assertions. Desktop preview checked native disclosure, binary shortcut, typed /HoPe and ping; one terminal, controls >=44px and no horizontal overflow. Canonical live homepage confirmed identity copy, title and working binary reveal. No physical-phone/narrow-viewport or complete seasonal visual acceptance is claimed; no new counted HTTP-monitor probes."
+    "evidence": "Exact head cb2650f3609b8d77ae1ca0b5164a571698e6f8af (tree 0b2499b3dc0fe03db7ef8fc3606099926999cbe2) passed GitHub verify run 38927170918 and Vercel; merge-source Vercel succeeded. Full local verification: 496 tests, zero failures/skips, required Redis 7.4.2 and 311 security assertions. Desktop preview/live computed root/body/hero overflow-x:clip, preview paint containment, loaded narrow rules with inset code, 100lvh background and no perspective. Desktop document width 1348 <= viewport 1363. Actual narrow rendering and physical-phone/browser-bar retest remain unverified; a local fixture URL was blocked and no workaround attempted. No new counted HTTP-monitor probes."
   },
   "questionCheckpoint": {
     "active": 8185,
@@ -36,11 +36,11 @@
   },
   "currentWork": {
     "id": "UX-005",
-    "status": "active",
-    "description": "Founder phone screenshot/report shows unstable page edge and sideways movement. Contain the decorative code overflow and stabilize mobile background geometry."
+    "status": "needs-evidence",
+    "description": "Mobile edge containment/stable background correction shipped in #137 after founder phone report. Source and desktop release checks passed; physical-phone scrolling/browser-bar retest remains pending."
   },
   "nextTask": "UX-005",
-  "nextAction": "Verify and release the CSS containment fix; record source and browser evidence without claiming physical-phone retest.",
+  "nextAction": "Record the founder phone retest of refreshed #137 styles before claiming device acceptance. OPS-001 provider restore and independent auth evidence remain open; preserve pending-art direction and all holds.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

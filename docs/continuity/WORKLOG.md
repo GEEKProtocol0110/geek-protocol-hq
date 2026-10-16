@@ -299,3 +299,11 @@ Use one entry per substantive session/interruption: task ID, exact review/commit
 - **Evidence limits:** supplied screenshot inspected in conversation. A local narrow-fixture navigation was rejected by browser URL policy; no workaround was attempted. Source/desktop checks and physical-phone acceptance are distinct. Tests, preview and exact release evidence follow.
 
 - **Full checks:** 496 tests passed with zero failures/skips, required Redis 7.4.2, 311 security assertions and all supporting checks. Whitespace validation passed. No runtime JavaScript, answer banks, authentication or dependencies changed. Exact-head preview and deployment evidence follow.
+
+
+## October 16, 2026 — UX-005 correction released; phone retest pending
+
+- **Release:** [PR #137](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/137), merged `b194970626b4864286fb25a210b33df14047d3bc` at 15:55:00 UTC / 11:55 AM Detroit. Exact head `cb2650f3609b8d77ae1ca0b5164a571698e6f8af`, tree `0b2499b3dc0fe03db7ef8fc3606099926999cbe2`, passed GitHub verify run 38927170918 and Vercel. Merge-source Vercel succeeded.
+- **Checks:** 496 full local tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and supporting checks. Desktop preview/live computed root/body/hero horizontal `clip`; preview also confirmed paint containment and loaded mobile media rules with inside code offsets, `100lvh` and no perspective. Desktop document 1348px, viewport 1363px. Live desktop screenshot captured privately outside repository; no account or appearance setting changed.
+- **Limits:** source diagnosis and desktop checks passed; actual narrow rendering and refreshed-phone browser-bar/sideways-scroll acceptance remain pending. A local file fixture was blocked by browser URL policy; no workaround attempted. No new HTTP-monitor probes. UX-005 stays needs-evidence rather than claiming phone acceptance.
+- **Continuation:** runtime baseline advances to #137; append observed #136/#137 releases and four intervening Git records. The next observation is the founder phone retest. OPS-001 provider restore and independent authentication review remain open; pending character art, separate drafts #119/#120 and all holds remain. This checkpoint changes documentation only; continuity generation/check and whitespace validation passed.

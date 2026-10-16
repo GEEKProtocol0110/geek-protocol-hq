@@ -37,7 +37,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-002 | P1 | done | Bring GIGA, A.C.E. and seasonal cosmic styling throughout HQ | Maintainer |
 | UX-003 | P1 | done | Reduce repeated character art and emphasize the neon-space background | Maintainer |
 | UX-004 | P1 | done | Clarify the Kaspa onboarding identity and add playful Grid discoveries | Maintainer |
-| UX-005 | P0 | active | Contain mobile decoration and stabilize page edges | Maintainer |
+| UX-005 | P0 | needs-evidence | Contain mobile decoration and stabilize page edges | Maintainer |
 
 ## CONT-001: Publish the continuation system
 
@@ -492,9 +492,9 @@ Evidence/specification: [docs/GRID-DISCOVERIES.md](../../docs/GRID-DISCOVERIES.m
 
 ## UX-005: Contain mobile decoration and stabilize page edges
 
-**P0 / active.** Owner: Maintainer. Dependencies: none.
+**P0 / needs-evidence.** Owner: Maintainer. Dependencies: none.
 
-Next action: Contain the narrow code rail and hero, stabilize the viewport background, verify relevant checks and release evidence.
+Next action: CSS correction shipped in PR #137 at b194970626b4864286fb25a210b33df14047d3bc. Await actual refreshed-phone scrolling/browser-bar retest; source and desktop checks do not establish device acceptance.
 
 Acceptance:
 
