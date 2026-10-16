@@ -232,7 +232,11 @@
           "gitBlobSha": "ab55e2841b6bc8271ee7ca8587dfa75828f17107",
           "disposition": "mixed-infrastructure-do-not-cherry-pick-whole-file"
         }
-      ]
+      ],
+      "sourceBranch": "codex/five-leaps",
+      "observedState": "closed",
+      "metadataCheckedAt": "2026-10-16",
+      "filesChangedByReconciliation": false
     },
     {
       "number": 120,
@@ -473,7 +477,12 @@
           "gitBlobSha": "604158e6d9c4e4fd562e6c1b1441aab4d0be2d13",
           "disposition": "paused-art-documentation-tracker"
         }
-      ]
+      ],
+      "sourceBranch": "codex/archive-scifi-originals",
+      "observedState": "open",
+      "metadataCheckedAt": "2026-10-16",
+      "filesChangedByReconciliation": false
     }
-  ]
+  ],
+  "reviewPullRequest": 139
 }

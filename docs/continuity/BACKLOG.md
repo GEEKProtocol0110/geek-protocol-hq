@@ -38,7 +38,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-003 | P1 | done | Reduce repeated character art and emphasize the neon-space background | Maintainer |
 | UX-004 | P1 | done | Clarify the Kaspa onboarding identity and add playful Grid discoveries | Maintainer |
 | UX-005 | P0 | needs-evidence | Contain mobile decoration and stabilize page edges | Maintainer |
-| CONT-003 | P0 | active | Reconcile roadmap, stale drafts and current acceptance evidence | Maintainer |
+| CONT-003 | P0 | done | Reconcile roadmap, stale drafts and current acceptance evidence | Maintainer |
 | WALLET-001 | P1 | planned | Review and isolate the optional Testnet wallet lab retained from #119 | Wallet maintainer; independent wallet reviewer unassigned |
 | CHAIN-003 | P2 | planned | Review retained Testnet reward-desk amount and copy polish | Maintainer |
 | PILOT-002 | P1 | planned | Review retained wallet-safety course and evaluation tooling | Pilot coordinator and instructor unassigned |
@@ -512,9 +512,9 @@ Evidence/specification: [docs/MOBILE-ONBOARDING.md](../../docs/MOBILE-ONBOARDING
 
 ## CONT-003: Reconcile roadmap, stale drafts and current acceptance evidence
 
-**P0 / active.** Owner: Maintainer. Dependencies: none.
+**P0 / done.** Owner: Maintainer. Dependencies: none.
 
-Next action: Finish documentation validation, retire superseded #119 without deleting its branch, mark #120 paused and publish the exact checked checkpoint.
+Next action: Roadmap checkpoint prepared in PR #139; #119 is closed as superseded with branch/head retained and all unshipped work tracked. #120 remains open/paused with the same head. Preserve the current record and resume OPS-001; final head/check/merge is in #139’s review record.
 
 Acceptance:
 

@@ -700,10 +700,10 @@
     {
       "id": "CONT-003",
       "priority": "P0",
-      "status": "active",
+      "status": "done",
       "title": "Reconcile roadmap, stale drafts and current acceptance evidence",
       "owner": "Maintainer",
-      "nextAction": "Finish documentation validation, retire superseded #119 without deleting its branch, mark #120 paused and publish the exact checked checkpoint.",
+      "nextAction": "Roadmap checkpoint prepared in PR #139; #119 is closed as superseded with branch/head retained and all unshipped work tracked. #120 remains open/paused with the same head. Preserve the current record and resume OPS-001; final head/check/merge is in #139\u2019s review record.",
       "acceptance": [
         "Every old PR changed-file blob is inventoried at an exact head and retained work has stable backlog IDs.",
         "Current roadmap, beta source/dependency evidence and limited founder phone observations agree.",
@@ -716,6 +716,11 @@
         "docs/PR-RECONCILIATION.md",
         "docs/continuity/pr-reconciliation.json",
         "docs/FREE-BETA-READINESS.md"
+      ],
+      "completedAt": "2026-10-16",
+      "completionEvidence": [
+        "All older-PR changed paths match fetched Git blobs at the exact retained heads. GitHub metadata update confirmed #119 closed and #120 open/paused without a head change or branch deletion.",
+        "Current roadmap/beta/phone evidence and DR-012 art interpretation reconciled. Continuity/repository/whitespace, SBOM-to-lockfile and local-link checks passed; current production dependency audit reports zero vulnerabilities. Final exact-head CI and merge are recorded in PR #139."
       ]
     },
     {

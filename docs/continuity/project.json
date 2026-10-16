@@ -35,12 +35,12 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "CONT-003",
-    "status": "active",
-    "description": "Reconcile older PRs/current roadmap, preserve unshipped work and paused art, refresh beta dependency baseline and limited phone observations."
+    "id": "OPS-001",
+    "status": "needs-evidence",
+    "description": "CONT-003 roadmap/PR reconciliation is prepared in #139: superseded #119 closed with work retained; #120 paused; beta and art direction clarified. Provider recovery/independent source preservation and authentication review evidence remain open."
   },
-  "nextTask": "CONT-003",
-  "nextAction": "Validate/publish the roadmap checkpoint and PR dispositions, then resume OPS-001 independent preservation/provider evidence while remaining device pilot and BANK-001 can progress.",
+  "nextTask": "OPS-001",
+  "nextAction": "Resume independent source preservation and actual provider backup/isolated restore evidence. Current history is complete locally; a local bundle is not an independent copy. Device observations remain PILOT-001/AUTH-002/UX-005; continue BANK-001 while owner/device evidence is unavailable.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

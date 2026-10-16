@@ -25,9 +25,9 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CONT-003: active.** Reconcile older PRs/current roadmap, preserve unshipped work and paused art, refresh beta dependency baseline and limited phone observations.
+**OPS-001: needs-evidence.** CONT-003 roadmap/PR reconciliation is prepared in #139: superseded #119 closed with work retained; #120 paused; beta and art direction clarified. Provider recovery/independent source preservation and authentication review evidence remain open.
 
-Next task: **CONT-003**. Validate/publish the roadmap checkpoint and PR dispositions, then resume OPS-001 independent preservation/provider evidence while remaining device pilot and BANK-001 can progress.
+Next task: **OPS-001**. Resume independent source preservation and actual provider backup/isolated restore evidence. Current history is complete locally; a local bundle is not an independent copy. Device observations remain PILOT-001/AUTH-002/UX-005; continue BANK-001 while owner/device evidence is unavailable.
 
 ## Holds
 
