@@ -525,7 +525,7 @@
       "status": "needs-evidence",
       "title": "Resolve mobile login when wallet message signing is unavailable",
       "owner": "Maintainer implements and verifies; founder confirms physical-phone passkeys",
-      "nextAction": "PR #124 is merged/deployed at c972e27301bc461a526230806d5e781adac05e50 with ready live UI and three targeted HTTP checks. Verify physical-phone enrollment and returning sign-in to the intended player. Existing wallet-linked players without an enrolled passkey still need wallet proof. Artwork remains paused; draft #119 needs reconciliation.",
+      "nextAction": "Founder reported the phone passkey flow worked on October 16 at 2:35 AM Detroit. Preserve that success and the working session. Confirm returning sign-in to the intended saved player next; cross-device recovery, revocation and independent review remain separately unreported. Do not ask for another initial enrollment or unavailable KasWare message signing.",
       "acceptance": [
         "Exact server message copied/selected without modifying whitespace; selection copy runs during the tap, with Clipboard API/manual fallbacks.",
         "Denied/unavailable/stalled clipboard and expired/replaced challenges have usable, honest states; no copy action sends a signature or authenticates a player.",
@@ -545,7 +545,13 @@
         "server/passkeys.js",
         "tests/passkeys.test.js",
         "tests/passkey-client.test.js"
-      ]
+      ],
+      "phoneResult": {
+        "reportedAt": "2026-10-16T02:35:21-04:00",
+        "source": "Founder chat report after the live phone passkey instructions",
+        "result": "It worked",
+        "scope": "Founder-reported phone-flow success; exact browser/app version and prompt method not supplied. Separate returning-login, cross-device recovery and revocation results not supplied."
+      }
     }
   ]
 }
