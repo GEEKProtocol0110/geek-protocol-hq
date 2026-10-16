@@ -3,7 +3,7 @@
 .home-onboarding .main-nav { order:2; }
 .home-onboarding .home-sign-in { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:.5rem .9rem; border:1px solid #68828b; border-radius:10px; color:#eff5f6; font-size:.88rem; font-weight:750; text-decoration:none; }
 .home-onboarding .home-sign-in:hover { background:#203138; border-color:#70e6dc; }
-.home-onboarding .home-main .hero { display:grid; height:auto; min-height:0; max-height:none; padding-top:112px; padding-bottom:36px; gap:2rem; }
+.home-onboarding .home-main .hero { display:grid; width:100%; height:auto; min-height:0; max-height:none; padding-top:112px; padding-bottom:36px; gap:2rem; overflow:clip; }
 .home-onboarding .home-main h1 { font-size:clamp(2.6rem,5vw,4.2rem); line-height:1.1; margin:1rem 0; }
 .home-onboarding .hero-lede { font-size:1.05rem; line-height:1.55; margin:0; max-width:520px; }
 .home-onboarding .hero-actions { margin-top:1.25rem; }

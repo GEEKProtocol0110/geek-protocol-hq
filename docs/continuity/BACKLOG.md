@@ -37,6 +37,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-002 | P1 | done | Bring GIGA, A.C.E. and seasonal cosmic styling throughout HQ | Maintainer |
 | UX-003 | P1 | done | Reduce repeated character art and emphasize the neon-space background | Maintainer |
 | UX-004 | P1 | done | Clarify the Kaspa onboarding identity and add playful Grid discoveries | Maintainer |
+| UX-005 | P0 | active | Contain mobile decoration and stabilize page edges | Maintainer |
 
 ## CONT-001: Publish the continuation system
 
@@ -488,3 +489,18 @@ Acceptance:
 - Relevant checks and release/browser evidence are recorded with their limits.
 
 Evidence/specification: [docs/GRID-DISCOVERIES.md](../../docs/GRID-DISCOVERIES.md), [public/assets/easter-eggs.js](../../public/assets/easter-eggs.js), [tests/easter-eggs.test.js](../../tests/easter-eggs.test.js).
+
+## UX-005: Contain mobile decoration and stabilize page edges
+
+**P0 / active.** Owner: Maintainer. Dependencies: none.
+
+Next action: Contain the narrow code rail and hero, stabilize the viewport background, verify relevant checks and release evidence.
+
+Acceptance:
+
+- Decorative code no longer extends beyond mobile sections; the home hero clips its decorative children.
+- The shared page shell prevents decorative horizontal scrolling without disabling pinch zoom or vertical navigation.
+- Mobile background geometry stays stable when browser chrome changes height.
+- Relevant checks and actual release/browser evidence distinguish source/desktop checks from physical-phone acceptance.
+
+Evidence/specification: [docs/MOBILE-ONBOARDING.md](../../docs/MOBILE-ONBOARDING.md), [public/assets/atmosphere.css](../../public/assets/atmosphere.css), [public/assets/home.css](../../public/assets/home.css), [public/assets/styles.css](../../public/assets/styles.css).

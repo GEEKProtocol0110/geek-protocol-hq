@@ -31,3 +31,12 @@ This environment has no supported browser-control capability, so this change has
 ## Founder phone observation — October 15, 2026
 
 After the polished release, the founder reported that the layout looked good with nothing abnormal on their physical phone. This records a positive visual observation, not completion of every navigation, large-text, saved-progress or gameplay acceptance step. The report did not specify device model, browser version or viewport dimensions; broader device acceptance remains pending.
+
+
+## Mobile edge correction — October 16, 2026
+
+Founder supplied a phone screenshot and reported sideways movement and a zooming/unstable edge after the neon-background update. This supersedes the earlier positive phone observation for that later visual release; no physical-phone retest of this fix is implied.
+
+Source diagnosis: the narrow `.hq-space-code` rule positioned its right edge at `-2rem` outside the scene while the legacy `.home-main .hero` rule used `overflow:visible`. That combination permits decoration to extend the document horizontally. The correction brings both mobile code rails inside, clips decorative children at the home hero, and uses horizontal `clip` on the shared root/body without disabling vertical scrolling or pinch zoom. The shared fixed cosmos gets paint containment. On narrow screens its grid is flat/static and uses stable `100lvh` height (with a `100vh` fallback), keeping perspective/percentage geometry from changing as mobile browser bars expand or collapse. Content font sizes and viewport zoom settings are unchanged.
+
+Relevant existing onboarding/motion/holiday tests and the full verification suite remain required. Desktop preview/live layout, computed containment and navigation can be checked here; physical-phone browser-bar transitions and narrow-device acceptance require a subsequent device observation.
