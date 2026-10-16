@@ -25,9 +25,9 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**OPS-001: needs-evidence.** UX-004 shipped in PR #135: Kaspa onboarding ecosystem/Proof of Learning positioning and optional cosmetic footer discoveries. Continue provider recovery and independent authentication review evidence; more character art awaits founder supply.
+**UX-005: active.** Founder phone screenshot/report shows unstable page edge and sideways movement. Contain the decorative code overflow and stabilize mobile background geometry.
 
-Next task: **OPS-001**. Resume actual provider backup/isolated-restore evidence and independent authentication review. Preserve founder phone success and all holds. Await supplied GIGA/A.C.E. art; optional physical-phone discovery/seasonal QA remains separate.
+Next task: **UX-005**. Verify and release the CSS containment fix; record source and browser evidence without claiming physical-phone retest.
 
 ## Holds
 

@@ -35,12 +35,12 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "OPS-001",
-    "status": "needs-evidence",
-    "description": "UX-004 shipped in PR #135: Kaspa onboarding ecosystem/Proof of Learning positioning and optional cosmetic footer discoveries. Continue provider recovery and independent authentication review evidence; more character art awaits founder supply."
+    "id": "UX-005",
+    "status": "active",
+    "description": "Founder phone screenshot/report shows unstable page edge and sideways movement. Contain the decorative code overflow and stabilize mobile background geometry."
   },
-  "nextTask": "OPS-001",
-  "nextAction": "Resume actual provider backup/isolated-restore evidence and independent authentication review. Preserve founder phone success and all holds. Await supplied GIGA/A.C.E. art; optional physical-phone discovery/seasonal QA remains separate.",
+  "nextTask": "UX-005",
+  "nextAction": "Verify and release the CSS containment fix; record source and browser evidence without claiming physical-phone retest.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

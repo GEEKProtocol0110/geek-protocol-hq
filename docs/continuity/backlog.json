@@ -664,6 +664,27 @@
         "Exact head 4f36f40372a9f367be0bbc4f316db1aa98f1b27c passed GitHub verify run 38925222445 and Vercel; merge-source deployment succeeded. Full local checks: 496 tests, zero failures/skips and 311 security assertions.",
         "Desktop preview verified disclosure, binary shortcut, typed /HoPe and ping; native controls >=44px, one terminal and no horizontal overflow. Canonical live home verified identity/title and binary reveal. No physical-phone/narrow-viewport or all-season visual acceptance claim; no production appearance setting changed."
       ]
+    },
+    {
+      "id": "UX-005",
+      "priority": "P0",
+      "status": "active",
+      "title": "Contain mobile decoration and stabilize page edges",
+      "owner": "Maintainer",
+      "nextAction": "Contain the narrow code rail and hero, stabilize the viewport background, verify relevant checks and release evidence.",
+      "acceptance": [
+        "Decorative code no longer extends beyond mobile sections; the home hero clips its decorative children.",
+        "The shared page shell prevents decorative horizontal scrolling without disabling pinch zoom or vertical navigation.",
+        "Mobile background geometry stays stable when browser chrome changes height.",
+        "Relevant checks and actual release/browser evidence distinguish source/desktop checks from physical-phone acceptance."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/MOBILE-ONBOARDING.md",
+        "public/assets/atmosphere.css",
+        "public/assets/home.css",
+        "public/assets/styles.css"
+      ]
     }
   ]
 }

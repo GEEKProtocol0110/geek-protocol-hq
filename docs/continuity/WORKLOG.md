@@ -289,3 +289,13 @@ Use one entry per substantive session/interruption: task ID, exact review/commit
 - **Release:** [PR #135](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/135), merged `4a12ec8b4cff78c6042ec6c65b7b6027d3af7352` at 15:38:19 UTC. Exact head `4f36f40372a9f367be0bbc4f316db1aa98f1b27c`, tree `b6caa3bfd2a0cfaf5da44e800a8184455737a4c3`, passed GitHub verify run 38925222445 and Vercel; merge-source Vercel succeeded.
 - **Verification:** 496 full local tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and supporting checks. Preview desktop verified native open/closed discovery, binary shortcut, typed `/HoPe`, ping, one terminal, >=44px controls and no horizontal overflow. Canonical live home confirmed identity copy/title and working binary reveal. No production appearance setting changed. No physical-phone/narrow-viewport or complete seasonal visual acceptance; no new counted HTTP-monitor probes.
 - **Continuation:** UX-004 is shipped; baseline advances to #135. Append observed #134/#135 release metadata and four intervening Git records. Keep reduced character direction/pending art and all economic/security holds. Resume OPS-001 provider recovery and independent auth evidence. This checkpoint changes documentation only; regenerate/check continuity and whitespace, without rerunning the unchanged runtime suite.
+
+
+## October 16, 2026 — UX-005 mobile edge correction
+
+- **Report:** founder phone screenshot shows an exposed right edge; founder reports sideways scrolling and zoom-like shifting. The prior desktop-only checks did not cover this phone failure.
+- **Diagnosis:** mobile scene code had `right:-2rem`; legacy home hero overflow remained visible. Code can therefore extend 32 CSS pixels beyond the scene. Mobile fixed perspective geometry also varies with browser-bar height.
+- **Correction:** move narrow code rails inside, clip home-hero decoration, use root/body horizontal clip, paint-contain the cosmos and flatten/stabilize its mobile grid with `100lvh` plus fallback. Preserve pinch zoom, content sizing, vertical scrolling, menus, holiday choices and all gameplay/reward boundaries.
+- **Evidence limits:** supplied screenshot inspected in conversation. A local narrow-fixture navigation was rejected by browser URL policy; no workaround was attempted. Source/desktop checks and physical-phone acceptance are distinct. Tests, preview and exact release evidence follow.
+
+- **Full checks:** 496 tests passed with zero failures/skips, required Redis 7.4.2, 311 security assertions and all supporting checks. Whitespace validation passed. No runtime JavaScript, answer banks, authentication or dependencies changed. Exact-head preview and deployment evidence follow.
