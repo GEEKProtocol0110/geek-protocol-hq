@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-The ledger preserves **122 merged HQ PR records** and **229 Git commit records** through the declared commit snapshot `4a12ec8b4cff78c6042ec6c65b7b6027d3af7352`. The product runtime baseline remains #135. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
+The ledger preserves **124 merged HQ PR records** and **233 Git commit records** through the declared commit snapshot `b194970626b4864286fb25a210b33df14047d3bc`. The product runtime baseline remains #137. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
 
 ## Founding record
 
@@ -12,6 +12,8 @@ Three exact historical master/litepaper snapshots are preserved with source comm
 
 | PR | Merged (UTC) | Change | Commit |
 | --- | --- | --- | --- |
+| [#137](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/137) | 2026-10-16T15:55:00Z | Contain mobile decoration and stabilize scrolling edges | `b194970626b4` |
+| [#136](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/136) | 2026-10-16T15:41:28Z | Record the deployed Kaspa positioning and Grid discoveries | `705a96361949` |
 | [#135](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/135) | 2026-10-16T15:38:19Z | Clarify Geek Protocol’s Kaspa onboarding identity and add Grid Easter eggs | `4a12ec8b4cff` |
 | [#134](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/134) | 2026-10-16T15:27:16Z | Record the deployed neon background correction and art handoff | `99209b4198e1` |
 | [#133](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/133) | 2026-10-16T15:23:25Z | Dial back GIGA/A.C.E. and emphasize the neon-space background | `31be106bcecf` |
