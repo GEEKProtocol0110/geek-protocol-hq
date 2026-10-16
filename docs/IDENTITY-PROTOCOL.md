@@ -123,3 +123,9 @@ The current Alpha supports one immutable recovery wallet per player. Payout-sett
 - Repeat this review for every added wallet provider or signature scheme.
 
 These open items are launch gates. They do not enable or justify on-chain settlement.
+
+## Android copy recovery — October 15, 2026 candidate
+
+The sign-in page selects the exact server challenge and attempts selection-based copy synchronously during the user's tap, before awaiting a clipboard permission response. If that fails, Clipboard API copying has a two-second UI deadline. Denial, missing APIs or a stalled response leaves an explicit whole-message selection and touch-and-hold Copy guidance; an additional Select entire message button is available. No challenge text is trimmed or reconstructed. Messages are cleared on the existing address-edit/expiry/verification boundaries; late clipboard results cannot restore an obsolete UI state. Browser clipboard operations themselves cannot be cancelled after submission.
+
+The page also explains the existing KasWare in-app-browser connection route. It does not add a mobile deep link, WalletConnect, provider, signature scheme or account-recovery bypass. Mainnet remains required for identity login. Physical Android/KasWare acceptance is separate from synthetic client tests and unchanged real-signature server tests. Passkeys remain a separate unmerged candidate in PR #119.

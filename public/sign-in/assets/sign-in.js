@@ -44,9 +44,11 @@
   const messageInput = document.querySelector('[data-login-message]');
   const proofStep = document.querySelector('[data-proof-step]');
   const manualStatus = document.querySelector('[data-manual-status]');
-  let challenge = null, pending = false, expiryTimer;
+  const copyButton = document.querySelector('[data-copy-message]');
+  const selectButton = document.querySelector('[data-select-message]');
+  let challenge = null, pending = false, copying = false, copyRevision = 0, expiryTimer;
   const invalidate = () => {
-    challenge = null; clearTimeout(expiryTimer); proofStep.hidden = true;
+    challenge = null; copyRevision += 1; clearTimeout(expiryTimer); proofStep.hidden = true;
     messageInput.value = ''; signatureInput.value = '';
   };
   const busy = value => {
@@ -54,6 +56,7 @@
     addressInput.disabled = value;
     addressForm.querySelector('button').disabled = value;
     signatureForm.querySelector('button').disabled = value;
+    copyButton.disabled = value || copying; selectButton.disabled = value;
   };
   const request = async (path, body) => {
     const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 15000);
@@ -84,10 +87,42 @@
     } catch (error) { manualStatus.textContent = error.message; }
     finally { busy(false); }
   });
-  document.querySelector('[data-copy-message]').addEventListener('click', async () => {
-    if (!challenge) return;
-    try { await navigator.clipboard.writeText(messageInput.value); manualStatus.textContent = 'Message copied. Sign it in your wallet.'; }
-    catch { messageInput.focus(); messageInput.select(); manualStatus.textContent = 'Select and copy the complete message, then sign it in your wallet.'; }
+  const selectMessage = () => {
+    if (!challenge || pending) return false;
+    if (Date.now() >= challenge.expiresAt) {
+      invalidate(); manualStatus.textContent = 'That login message expired. Create a new one.'; return false;
+    }
+    // Always select the exact server challenge, including every line break.
+    messageInput.value = challenge.message;
+    messageInput.focus(); messageInput.select();
+    messageInput.setSelectionRange?.(0, messageInput.value.length);
+    return true;
+  };
+  const manualCopyHelp = 'Message selected. Touch and hold the selected text, choose Copy, then paste the whole message into your wallet’s Kaspa Sign message screen.';
+  selectButton.addEventListener('click', () => {
+    if (selectMessage()) manualStatus.textContent = manualCopyHelp;
+  });
+  copyButton.addEventListener('click', async () => {
+    if (copying || !selectMessage()) return;
+    const proof = challenge, revision = ++copyRevision;
+    // Run the selection-based fallback during the tap. Waiting for a rejected
+    // clipboard promise first can lose Android WebView's user activation.
+    let copied = false;
+    try { copied = document.execCommand?.('copy') === true; } catch { /* Try the Clipboard API next. */ }
+    if (copied) { manualStatus.textContent = 'Message copied. Sign it in your wallet, then paste its signature below.'; return; }
+    if (typeof navigator.clipboard?.writeText !== 'function') { manualStatus.textContent = manualCopyHelp; return; }
+    copying = true; copyButton.disabled = true;
+    let deadline;
+    const stillCurrent = () => challenge === proof && copyRevision === revision && Date.now() < proof.expiresAt;
+    try {
+      await Promise.race([
+        navigator.clipboard.writeText(proof.message),
+        new Promise((_, reject) => { deadline = setTimeout(() => reject(new Error('Clipboard timeout')), 2000); })
+      ]);
+      if (stillCurrent()) manualStatus.textContent = 'Message copied. Sign it in your wallet, then paste its signature below.';
+    } catch {
+      if (stillCurrent() && selectMessage()) manualStatus.textContent = manualCopyHelp;
+    } finally { clearTimeout(deadline); copying = false; copyButton.disabled = pending; }
   });
   signatureForm.addEventListener('submit', async event => {
     event.preventDefault(); if (pending || !challenge) return;
