@@ -33,6 +33,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CHAIN-002 | P1 | decision-needed | Evaluate KCC20 compatibility and preserve GEEK holder entitlements | Maintainer researches; founder selects policy; independent covenant reviewer unassigned |
 | ARCH-002 | P1 | done | Preserve the founder-supplied theme roster and trait sheet | Maintainer archives; founder reviews interpretation |
 | ARCH-003 | P1 | in-progress | Preserve founder-supplied five-tier Geek art sets | Maintainer archives; founder reviews interpretation |
+| ART-001 | P1 | in-progress | Finish the five-tier artwork for 500 Geek character concepts | Maintainer produces candidates; founder supplies originals and reviews art direction |
 
 ## CONT-001: Publish the continuation system
 
@@ -417,3 +418,17 @@ Acceptance:
 - Founder correction recorded without changing runtime IDs, art approval, mint readiness or ownership; existing legacy records unchanged.
 
 Evidence/specification: [docs/continuity/founding/sci-fi-geek-set.json](../../docs/continuity/founding/sci-fi-geek-set.json), [docs/continuity/founding/SCI-FI-GEEK-SET.md](../../docs/continuity/founding/SCI-FI-GEEK-SET.md), [docs/continuity/assets.json](../../docs/continuity/assets.json), [docs/continuity/founding/ai-geek-set.json](../../docs/continuity/founding/ai-geek-set.json), [docs/continuity/founding/AI-GEEK-SET.md](../../docs/continuity/founding/AI-GEEK-SET.md), [docs/continuity/founding/pro-gamer-geek-set.json](../../docs/continuity/founding/pro-gamer-geek-set.json), [docs/GEEK-500-COLLECTION-STRUCTURE.md](../../docs/GEEK-500-COLLECTION-STRUCTURE.md), [docs/continuity/founding/character-art-sets.json](../../docs/continuity/founding/character-art-sets.json), [docs/continuity/founding/retro-gamer-geek-set.json](../../docs/continuity/founding/retro-gamer-geek-set.json), [docs/continuity/founding/RETRO-GAMER-GEEK-SET.md](../../docs/continuity/founding/RETRO-GAMER-GEEK-SET.md).
+
+## ART-001: Finish the five-tier artwork for 500 Geek character concepts
+
+**P1 / in-progress.** Owner: Maintainer produces candidates; founder supplies originals and reviews art direction. Dependencies: ARCH-003.
+
+Next action: Finish ingesting the remaining founder files. Review duplicate source labels and unassigned A.I. set, then choose one verified incomplete character and generate its missing tiers using preserved references.
+
+Acceptance:
+
+- A reproducible tracker covers 500 historical positions × five tiers, preserving duplicate-name and unassigned-set evidence.
+- New art preserves character consistency, records generation provenance and stays separate from founding originals.
+- All supplied/generated/approved assets and missing evidence are recorded per tier; no false complete-catalog or NFT-supply claim.
+
+Evidence/specification: [docs/GEEK-ART-PRODUCTION.md](../../docs/GEEK-ART-PRODUCTION.md), [docs/GEEK-ART-PROGRESS.md](../../docs/GEEK-ART-PROGRESS.md), [docs/art/artwork-production.json](../../docs/art/artwork-production.json), [scripts/geek-art-tracker.mjs](../../scripts/geek-art-tracker.mjs).

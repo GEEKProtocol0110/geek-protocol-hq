@@ -37,10 +37,10 @@
   "currentWork": {
     "id": "ARCH-003",
     "status": "in-progress",
-    "description": "Archive twenty newly supplied Sci-Fi, A.I., Pro Gamer and Retro Gamer Geek rarity PNGs in open PR #120 / codex/archive-scifi-originals, not merged. Separate draft PR #119 has passkey/testnet-wallet work at 3b291065aad6dd2901225ab2f83100cb0277030b with passing GitHub verification; device acceptance is outstanding."
+    "description": "Archive twenty newly supplied Sci-Fi, A.I., Pro Gamer and Retro Gamer Geek rarity PNGs in open PR #120 / codex/archive-scifi-originals, not merged. Separate draft PR #119 has passkey/testnet-wallet work at 3b291065aad6dd2901225ab2f83100cb0277030b with passing GitHub verification; device acceptance is outstanding. ART-001 now has a 2,500-slot planning tracker and production workflow; original intake continues before gap generation."
   },
   "nextTask": "BANK-001",
-  "nextAction": "Review the four-set original archive and founder clarification (500 characters × five artworks); PR #119 remains separate and awaits phone passkey/backup acceptance. BANK-001 continues from merged PR #118 / 580 Kaspa toward 1,000. CHAIN-001 still needs one actual reconciled testnet reward.",
+  "nextAction": "Continue remaining original intake, then use ART-001 to produce verified missing tiers in consistent batches. Review open PR #120. PR #119 phone passkey/backup acceptance, BANK-001 toward 1,000 Kaspa and CHAIN-001 real testnet reward remain outstanding.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing. Roster and trait PDF are preserved in merged PR #116; twenty newly supplied Sci-Fi, A.I., Pro Gamer and Retro Gamer Geek PNGs are archived on codex/archive-scifi-originals for review.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

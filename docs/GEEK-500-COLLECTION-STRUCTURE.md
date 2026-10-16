@@ -30,3 +30,7 @@ Acquisition directions (mint, earned rewards, GEEK/KAS purchases) remain planned
 ## Original art and production
 
 Uploaded originals remain unchanged, including square and portrait dimensions and original filenames. Delivery-size images, thumbnails and avatar crops are future derivatives with separate hashes; a production canvas convention must never alter the archive master. Preserve source/tool/provenance records and review final artwork before any deployment.
+
+## Production continuation
+
+[The artwork workflow](GEEK-ART-PRODUCTION.md) and [500-position progress tracker](GEEK-ART-PROGRESS.md) organize the remaining original intake and future generation. Repeated historical labels, unassigned sets, source references and unverified availability remain explicit.

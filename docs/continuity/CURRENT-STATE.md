@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**ARCH-003: in-progress.** Archive twenty newly supplied Sci-Fi, A.I., Pro Gamer and Retro Gamer Geek rarity PNGs in open PR #120 / codex/archive-scifi-originals, not merged. Separate draft PR #119 has passkey/testnet-wallet work at 3b291065aad6dd2901225ab2f83100cb0277030b with passing GitHub verification; device acceptance is outstanding.
+**ARCH-003: in-progress.** Archive twenty newly supplied Sci-Fi, A.I., Pro Gamer and Retro Gamer Geek rarity PNGs in open PR #120 / codex/archive-scifi-originals, not merged. Separate draft PR #119 has passkey/testnet-wallet work at 3b291065aad6dd2901225ab2f83100cb0277030b with passing GitHub verification; device acceptance is outstanding. ART-001 now has a 2,500-slot planning tracker and production workflow; original intake continues before gap generation.
 
-Next task: **BANK-001**. Review the four-set original archive and founder clarification (500 characters × five artworks); PR #119 remains separate and awaits phone passkey/backup acceptance. BANK-001 continues from merged PR #118 / 580 Kaspa toward 1,000. CHAIN-001 still needs one actual reconciled testnet reward.
+Next task: **BANK-001**. Continue remaining original intake, then use ART-001 to produce verified missing tiers in consistent batches. Review open PR #120. PR #119 phone passkey/backup acceptance, BANK-001 toward 1,000 Kaspa and CHAIN-001 real testnet reward remain outstanding.
 
 ## Holds
 

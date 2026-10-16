@@ -545,6 +545,28 @@
         "docs/continuity/founding/retro-gamer-geek-set.json",
         "docs/continuity/founding/RETRO-GAMER-GEEK-SET.md"
       ]
+    },
+    {
+      "id": "ART-001",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Finish the five-tier artwork for 500 Geek character concepts",
+      "owner": "Maintainer produces candidates; founder supplies originals and reviews art direction",
+      "nextAction": "Finish ingesting the remaining founder files. Review duplicate source labels and unassigned A.I. set, then choose one verified incomplete character and generate its missing tiers using preserved references.",
+      "acceptance": [
+        "A reproducible tracker covers 500 historical positions × five tiers, preserving duplicate-name and unassigned-set evidence.",
+        "New art preserves character consistency, records generation provenance and stays separate from founding originals.",
+        "All supplied/generated/approved assets and missing evidence are recorded per tier; no false complete-catalog or NFT-supply claim."
+      ],
+      "dependsOn": [
+        "ARCH-003"
+      ],
+      "evidence": [
+        "docs/GEEK-ART-PRODUCTION.md",
+        "docs/GEEK-ART-PROGRESS.md",
+        "docs/art/artwork-production.json",
+        "scripts/geek-art-tracker.mjs"
+      ]
     }
   ]
 }
