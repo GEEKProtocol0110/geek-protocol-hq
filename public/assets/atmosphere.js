@@ -15,6 +15,11 @@ export const initAtmosphere = () => {
     const rail = document.createElement('span'); rail.className = `hq-code-rail hq-code-rail--${index}`; rail.textContent = text; cosmos.append(rail);
   }
   document.body.prepend(cosmos);
+  for (const scene of document.querySelectorAll('.space-scene')) {
+    const code = document.createElement('span'); code.className = 'hq-space-code'; code.setAttribute('aria-hidden', 'true');
+    code.textContent = '01100111  01100101\n{ curiosity: true }\nlearn.connect();\n01001011  01000001\n// discover something';
+    scene.append(code);
+  }
   // Seasonal greetings remain available without putting characters on every page.
   const note = document.createElement('aside'); note.className = 'hq-seasonal-note'; note.hidden = true;
   const greeting = document.createElement('p'); greeting.className = 'hq-holiday-greeting'; note.append(greeting);
