@@ -8,7 +8,7 @@
   [![License: MIT](https://img.shields.io/badge/license-MIT-49EACB?style=flat-square)](LICENSE)
   [![Status: Public Alpha](https://img.shields.io/badge/status-public%20alpha-F5C451?style=flat-square)](docs/PROJECT-STATUS.md)
 
-  **A server-authoritative learning and competition platform built for the Kaspa ecosystem.**
+  **A Kaspa onboarding ecosystem built for Proof of Learning.**
 
   [Live HQ](https://www.geekprotocol.xyz/) · [Play](https://www.geekprotocol.xyz/play/) · [Explore the Grid](https://www.geekprotocol.xyz/collection/) · [Security](https://www.geekprotocol.xyz/security/) · [Documentation](docs/README.md)
 </div>

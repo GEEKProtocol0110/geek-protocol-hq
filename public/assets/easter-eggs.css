@@ -1,0 +1,15 @@
+.grid-discovery{grid-column:1/-1;width:100%;max-width:38rem;margin:1.25rem 0;color:#c7dbe9;font:.88rem/1.6 ui-monospace,SFMono-Regular,Consolas,monospace}
+.grid-discovery summary{min-height:44px;width:fit-content;cursor:pointer;padding:.65rem .8rem;color:#93ddf4;border:1px solid #487792;border-radius:8px;list-style:revert}
+.grid-discovery summary:hover{border-color:#af91ff;color:#e0d5ff}
+.grid-terminal{margin-top:.75rem;padding:clamp(1rem,4vw,1.5rem);background:linear-gradient(135deg,#09192af5,#17102bf5);border:1px solid #8071b5;border-radius:12px;box-shadow:inset 3px 0 #80e6e8,0 0 28px #7967ef15;overflow-wrap:anywhere}
+.grid-terminal .grid-terminal-title{color:#9aefe2;letter-spacing:.08em;margin-top:0}
+.grid-terminal-output{min-height:5em;padding:1rem;border:1px solid #46667d;background:#060d1e;color:#dcf5ff;border-radius:6px;white-space:pre-wrap}
+.grid-terminal-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5rem}
+.grid-terminal-form label{grid-column:1/-1;color:#d3e9f7}
+.grid-terminal input{min-width:0;width:100%;box-sizing:border-box;font:inherit;padding:.7rem;border:1px solid #61849e;border-radius:6px;color:#fff;background:#060d1e}
+.grid-terminal button{min-height:44px;padding:.65rem .85rem;border:1px solid #7384bd;border-radius:6px;background:#19243e;color:#e2eeff;font:inherit;cursor:pointer}
+.grid-terminal button:hover{background:#273558;border-color:#a8f5e9}
+.grid-terminal :is(button,input):focus-visible,.grid-discovery summary:focus-visible{outline:3px solid #a8f5e9;outline-offset:3px}
+.grid-terminal-shortcuts{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
+.grid-terminal small{color:#aec3d5}
+@media(forced-colors:active){.grid-terminal,.grid-terminal-output{border:1px solid CanvasText}.grid-terminal input,.grid-terminal button,.grid-discovery summary{border:1px solid ButtonText}}

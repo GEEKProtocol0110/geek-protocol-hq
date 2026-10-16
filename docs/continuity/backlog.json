@@ -639,6 +639,26 @@
         "Exact head 579dc7ebc98dd88d72f0eab15085b2673bf968e6 passed GitHub verify and Vercel; merge-source deployment succeeded. Full local verification: 493 tests, zero failures/skips and 311 security assertions.",
         "Preview home/Study and canonical live home checked: repeated panels absent, constellation loaded, decoration aria-hidden/click-through and no horizontal overflow. Existing active Halloween greeting/header/ornaments rendered; no production appearance setting changed. No new actual-phone or complete seasonal visual acceptance claim."
       ]
+    },
+    {
+      "id": "UX-004",
+      "priority": "P1",
+      "status": "active",
+      "title": "Clarify the Kaspa onboarding identity and add playful Grid discoveries",
+      "owner": "Maintainer",
+      "nextAction": "Verify and release the positioning and optional footer terminal; record exact release evidence.",
+      "acceptance": [
+        "Homepage, share metadata and project positioning describe a Kaspa onboarding ecosystem built for Proof of Learning.",
+        "A small optional footer discovery supports typing and tapping without global keyboard handlers, tracking, storage, player mutations or rewards.",
+        "Native disclosure, labeled controls, safe text output and visible focus keep the experience accessible.",
+        "Relevant checks and release/browser evidence are recorded with their limits."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/GRID-DISCOVERIES.md",
+        "public/assets/easter-eggs.js",
+        "tests/easter-eggs.test.js"
+      ]
     }
   ]
 }

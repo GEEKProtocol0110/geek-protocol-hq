@@ -25,9 +25,9 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**OPS-001: needs-evidence.** UX-003 shipped in PR #133: repeated character panels/large home portrait removed in favor of neon-space backgrounds; original story guides remain. Additional GIGA/A.C.E. art awaits founder supply. Recovery/provider and independent-review evidence remain open.
+**UX-004: active.** Clarify the Kaspa onboarding/Proof of Learning identity and add optional small footer Easter eggs without player-state or reward effects.
 
-Next task: **OPS-001**. Resume actual provider backup/isolated-restore evidence and independent authentication review. Preserve founder phone success and all holds. Await supplied GIGA/A.C.E. art before another broad character rollout; optional phone/other-seasonal visual QA remains separate.
+Next task: **UX-004**. Validate the identity copy and optional touch/keyboard terminal, publish the exact checked tree and record actual release/browser evidence.
 
 ## Holds
 

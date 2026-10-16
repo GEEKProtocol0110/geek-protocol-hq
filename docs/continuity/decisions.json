@@ -160,6 +160,18 @@
       ],
       "recordedAt": "2026-10-16",
       "supersedes": "DR-013"
+    },
+    {
+      "id": "DR-015",
+      "status": "founder-direction",
+      "title": "Kaspa onboarding ecosystem and playful discoveries",
+      "decision": "Position Geek Protocol as a Kaspa onboarding ecosystem built for Proof of Learning. Add modest optional Easter eggs that fit the Grid, preserving the dialed-back character direction and all learning/reward boundaries.",
+      "basis": "Founder clarified the ecosystem identity and asked about Easter eggs/fun on October 16, 2026.",
+      "evidence": [
+        "docs/GRID-DISCOVERIES.md"
+      ],
+      "recordedAt": "2026-10-16",
+      "supersedes": null
     }
   ]
 }

@@ -133,3 +133,13 @@ Dial back the repeated GIGA/A.C.E. art and emphasize space/neon/glitch/coder bac
 Basis: Founder correction October 16 after reviewing PR #131: more character artwork will be supplied later. This supersedes the broad character-prominence choice, not the retained holiday direction.
 
 Evidence: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md). Supersedes DR-013.
+
+## DR-015: Kaspa onboarding ecosystem and playful discoveries
+
+**founder-direction** · 2026-10-16.
+
+Position Geek Protocol as a Kaspa onboarding ecosystem built for Proof of Learning. Add modest optional Easter eggs that fit the Grid, preserving the dialed-back character direction and all learning/reward boundaries.
+
+Basis: Founder clarified the ecosystem identity and asked about Easter eggs/fun on October 16, 2026.
+
+Evidence: [docs/GRID-DISCOVERIES.md](../../docs/GRID-DISCOVERIES.md).
