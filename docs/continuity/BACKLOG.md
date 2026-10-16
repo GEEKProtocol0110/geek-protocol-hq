@@ -36,6 +36,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-001 | P0 | done | Simplify first visits and close current reliability gaps | Maintainer |
 | UX-002 | P1 | done | Bring GIGA, A.C.E. and seasonal cosmic styling throughout HQ | Maintainer |
 | UX-003 | P1 | done | Reduce repeated character art and emphasize the neon-space background | Maintainer |
+| UX-004 | P1 | active | Clarify the Kaspa onboarding identity and add playful Grid discoveries | Maintainer |
 
 ## CONT-001: Publish the continuation system
 
@@ -472,3 +473,18 @@ Acceptance:
 - Relevant checks and actual release/browser evidence are recorded without claiming unperformed phone or seasonal QA.
 
 Evidence/specification: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/atmosphere.js](../../public/assets/atmosphere.js), [public/assets/atmosphere.css](../../public/assets/atmosphere.css), [public/assets/neon-constellation.svg](../../public/assets/neon-constellation.svg).
+
+## UX-004: Clarify the Kaspa onboarding identity and add playful Grid discoveries
+
+**P1 / active.** Owner: Maintainer. Dependencies: none.
+
+Next action: Verify and release the positioning and optional footer terminal; record exact release evidence.
+
+Acceptance:
+
+- Homepage, share metadata and project positioning describe a Kaspa onboarding ecosystem built for Proof of Learning.
+- A small optional footer discovery supports typing and tapping without global keyboard handlers, tracking, storage, player mutations or rewards.
+- Native disclosure, labeled controls, safe text output and visible focus keep the experience accessible.
+- Relevant checks and release/browser evidence are recorded with their limits.
+
+Evidence/specification: [docs/GRID-DISCOVERIES.md](../../docs/GRID-DISCOVERIES.md), [public/assets/easter-eggs.js](../../public/assets/easter-eggs.js), [tests/easter-eggs.test.js](../../tests/easter-eggs.test.js).

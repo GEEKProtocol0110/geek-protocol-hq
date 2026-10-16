@@ -1,3 +1,4 @@
+@import url('./easter-eggs.css');
 /* Neon cosmos and code texture stay behind readable content and never capture input. */
 body.hq-world{isolation:isolate;background-color:#050b18;background-image:radial-gradient(ellipse at 0 12%,#0c94b035,transparent 45%),radial-gradient(ellipse at 100% 25%,#6828a441,transparent 48%),radial-gradient(ellipse at 55% 80%,#143b8828,transparent 48%),radial-gradient(1px 1px at 18px 34px,#c4f1ffb3 70%,transparent 100%),radial-gradient(1px 1px at 91px 117px,#dfb7ff90 70%,transparent 100%);background-size:auto,auto,auto,163px 211px,277px 251px}
 .hq-world main{position:relative;min-width:0}

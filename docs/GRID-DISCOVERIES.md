@@ -1,0 +1,9 @@
+# Grid discoveries and identity
+
+Founder direction, October 16, 2026 (DR-015 / UX-004): **Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning.** The homepage introduction, search/share metadata, litepaper introduction, README and maintained mission use that positioning. Existing learning/game accounting remains unchanged; this is not a claim of on-chain learning certification.
+
+An optional, initially closed **✦ Stray signal** native disclosure appears in the public learning/exploration footers listed in `public/assets/easter-eggs.js`. It does not appear on owner, sign-in, mint or rewards pages. No footer means no discovery. JavaScript failure leaves normal navigation usable.
+
+Inside is a small toy terminal. `help`, `decode`, `ping`, `hope`, `giga`, `ace`, `sudo` and `clear` return authored messages. Two tap shortcuts provide the binary decode and cycling cosmic pings without typing. `01001011 01000001 01010011` decodes to ASCII `KAS`. Character notes are playful copy, not new artwork or live AI. The terminal uses text output, a labeled length-limited field, status announcements, visible focus, 44-pixel controls and a native keyboard-operable disclosure. There is no animation, global key interception, network request, persistent storage, analytics event, score, inventory item or reward.
+
+Verification: meaningful synthetic-DOM tests cover route isolation, idempotent initialization, tap/typed command parity, normalization, safe unknown input and no network/global event hooks. Existing onboarding and full project checks remain required. Browser observations and deployment evidence are recorded separately in the release record; no synthetic check establishes real-phone acceptance.

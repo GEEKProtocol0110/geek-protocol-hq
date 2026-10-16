@@ -13,7 +13,7 @@ The current focus is Learn, guided Study, practice, saved progress, and free gam
 
 ## Executive summary
 
-Geek Protocol HQ is a deployed Proof-of-Learning Alpha for the Kaspa ecosystem. The current release supports untimed Kaspa and technology Study with A.C.E., server-authoritative trivia, persistent player progression, live lobbies, Kasware-based identity proof and recovery, community question review, collectible trading, and a non-custodial interface for the existing GEEK fair mint.
+Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. HQ is its deployed public Alpha. The current release supports untimed Kaspa and technology Study with A.C.E., server-authoritative trivia, persistent player progression, live lobbies, Kasware-based identity proof and recovery, community question review, collectible trading, and a non-custodial interface for the existing GEEK fair mint.
 
 The application is deliberately split into two risk classes:
 

@@ -132,3 +132,6 @@ import('/assets/holiday-theme.js').then(module => module.initHolidayTheme()).cat
 
 // Shared neon-space background; story characters stay in their original contexts.
 import('/assets/atmosphere.js').catch(() => {});
+
+// A small optional footer discovery, independent of gameplay and decoration.
+import('/assets/easter-eggs.js').catch(() => {});

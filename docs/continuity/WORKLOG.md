@@ -272,3 +272,13 @@ Use one entry per substantive session/interruption: task ID, exact review/commit
 - **Checks:** 493 full local tests, zero failures/skips, real Redis 7.4.2, 311 security assertions and supporting checks. The final code-texture refinement passed syntax/whitespace checks and exact-head CI; no dependency change.
 - **Browser:** desktop preview home/Study and canonical live home inspected. Zero repeated companion panels; one aria-hidden, click-through cosmic background; local constellation loaded; no horizontal overflow. The existing active Halloween theme rendered its compact greeting, header and edge ornaments. No production appearance setting was changed by the agent. Phone/narrow-viewport and other seasonal visual QA remain unperformed. No new counted HTTP-monitor run.
 - **Continuation:** mark UX-003 shipped, advance baseline to #133, append observed #132/#133 releases and intervening Git metadata. DR-014 retains the founder correction; await supplied character artwork before another broad rollout. Resume OPS-001 provider recovery/independent auth evidence; preserve #119 separation, paused collection art #120 and all holds. This follow-up is documentation only; continuity generation/check and whitespace validation passed.
+
+
+## October 16, 2026 — UX-004 ecosystem identity and Grid discoveries
+
+- **Direction:** founder defines Geek Protocol as a Kaspa onboarding ecosystem built for Proof of Learning and asks for Easter eggs/fun. DR-015 records that direction without reversing DR-014’s reduced character prominence.
+- **Change:** align home/share/schema metadata, litepaper introduction, README, product status and mission. Add a small closed public-footer “Stray signal” toy terminal: binary KAS decode, cosmic pings and optional authored secret messages, with tap shortcuts as well as typing. No new character artwork.
+- **Boundaries:** native disclosure, labels, status text, focus indication and touch targets; no animation/global key listener, persistent storage, requests, tracking hooks, player mutations or reward effects. Account/owner/mint/reward pages are outside the route allowlist.
+- **Verification:** targeted interaction tests, full verification and exact release/browser evidence follow.
+
+- **Full checks:** 496 tests passed, zero failures/skips, required real Redis 7.4.2, 311 security assertions and all supporting bank/catalog/archive/collection/repository/economy/continuity checks. Syntax and whitespace checks passed. Deployment and rendered browser evidence follow.
