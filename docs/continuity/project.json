@@ -35,19 +35,20 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "BANK-001",
+    "id": "AUTH-002",
     "status": "active",
-    "description": "BANK-001 / PR #118 candidate adds 80 internally source-checked questions in three batches to the 500-concept baseline: 580 Kaspa / 8,185 active / 678 source reviews. Introductory Study remains 537 concepts; the new advanced Toccata topic is outside its existing filter. Candidate is unmerged and not deployed; answer keys and holds remain unchanged."
+    "description": "Founder paused further artwork uploads/production and reported being unable to copy the login message to KasWare on Android. Fix the sign-in clipboard fallback and provide an explicit full-message selection and in-app-browser route."
   },
-  "nextTask": "BANK-001",
-  "nextAction": "Review PR #118 and all three pinned item registers, then continue distinct primary-source learning facts toward 1,000 Kaspa concepts (420 remain). CHAIN-001 still needs its first accepted manual testnet reward; CHAIN-002 needs policy/artifact decisions. Preserve all holds.",
+  "nextTask": "AUTH-002",
+  "nextAction": "Verify and release the focused mobile login-copy fix, then have the founder retry on the phone. Art intake/generation is paused at four sets/twenty originals in separate PR #120. PR #119 passkey/testnet-wallet acceptance remains pending; BANK-001 and CHAIN-001 are still outstanding.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
     "No successor or second trusted account administrator is appointed in this record.",
     "No institutional contract, school partnership, legal-entity registration or accreditation is verified.",
     "An independent off-provider repository copy and production-provider restore have not been demonstrated.",
-    "KCC20 integration/migration is unapproved: eight-decimal supply representation, exact artifact/wallet compatibility and existing-holder accounting require a concrete design."
+    "KCC20 integration/migration is unapproved: eight-decimal supply representation, exact artifact/wallet compatibility and existing-holder accounting require a concrete design.",
+    "Founder paused further artwork uploads/generation October 15; four supplied sets/twenty original PNGs and the 2,500-slot tracker remain in separate unmerged PR #120."
   ],
   "recordPolicy": "Update after each substantive change. Baseline records stay historical; append later releases and replace only current checkpoint fields with evidence."
 }

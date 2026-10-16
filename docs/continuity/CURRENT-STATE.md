@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-001: active.** BANK-001 / PR #118 candidate adds 80 internally source-checked questions in three batches to the 500-concept baseline: 580 Kaspa / 8,185 active / 678 source reviews. Introductory Study remains 537 concepts; the new advanced Toccata topic is outside its existing filter. Candidate is unmerged and not deployed; answer keys and holds remain unchanged.
+**AUTH-002: active.** Founder paused further artwork uploads/production and reported being unable to copy the login message to KasWare on Android. Fix the sign-in clipboard fallback and provide an explicit full-message selection and in-app-browser route.
 
-Next task: **BANK-001**. Review PR #118 and all three pinned item registers, then continue distinct primary-source learning facts toward 1,000 Kaspa concepts (420 remain). CHAIN-001 still needs its first accepted manual testnet reward; CHAIN-002 needs policy/artifact decisions. Preserve all holds.
+Next task: **AUTH-002**. Verify and release the focused mobile login-copy fix, then have the founder retry on the phone. Art intake/generation is paused at four sets/twenty originals in separate PR #120. PR #119 passkey/testnet-wallet acceptance remains pending; BANK-001 and CHAIN-001 are still outstanding.
 
 ## Holds
 
@@ -41,3 +41,4 @@ CCE: **bank-and-economy-hold**. Contributor rate: unselected; 1 or 5 GEEK are pr
 - No institutional contract, school partnership, legal-entity registration or accreditation is verified.
 - An independent off-provider repository copy and production-provider restore have not been demonstrated.
 - KCC20 integration/migration is unapproved: eight-decimal supply representation, exact artifact/wallet compatibility and existing-holder accounting require a concrete design.
+- Founder paused further artwork uploads/generation October 15; four supplied sets/twenty original PNGs and the 2,500-slot tracker remain in separate unmerged PR #120.

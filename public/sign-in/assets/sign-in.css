@@ -4,3 +4,5 @@
 /* Keep the guest path reachable before wallet setup, including narrow phones. */
 .sign-in-guest{padding:20px;border:1px solid #43625c;border-radius:16px;background:#10211e;margin:20px 0}.sign-in-guest p{margin-bottom:0}.sign-in-card input,.sign-in-card textarea{font-size:16px}.sign-in-card dd{overflow-wrap:anywhere}.sign-in-guest .button-secondary{background:#0c1717;color:#eef2ec}
 @media(max-width:600px){.sign-in-guest a,.sign-in-actions>*{width:100%;text-align:center}.sign-in-method summary{min-height:48px}.sign-in-card{padding:20px}.sign-in-main{padding-inline:18px}}
+
+.sign-in-mobile-help{padding:1rem;border:1px solid #496958;border-radius:10px;margin:1rem 0;background:#14271f}.sign-in-mobile-help h3{margin:0;color:#edf4ef;font-size:1.05rem;text-transform:none}.sign-in-mobile-help p{margin:.6rem 0}.sign-in-url{overflow-wrap:anywhere;font-family:ui-monospace,monospace}.sign-in-method [data-login-message]{user-select:text;-webkit-user-select:text;-webkit-touch-callout:default}.sign-in-method [data-login-message]::selection{background:#70e6dc;color:#080f0b}
