@@ -46,7 +46,7 @@ Evidence: [docs/ECONOMY-PROTOCOL.md](../../docs/ECONOMY-PROTOCOL.md), [docs/COLL
 
 ## DR-005: Preserve the five-tier 500-Geek collection
 
-**existing-direction** · 2026-10-15.
+**superseded** · 2026-10-15.
 
 The edition plan is 500 in Common/Rare/Epic/Legendary/Mythic, separate from question counts.
 
@@ -143,3 +143,23 @@ Position Geek Protocol as a Kaspa onboarding ecosystem built for Proof of Learni
 Basis: Founder clarified the ecosystem identity and asked about Easter eggs/fun on October 16, 2026.
 
 Evidence: [docs/GRID-DISCOVERIES.md](../../docs/GRID-DISCOVERIES.md).
+
+## DR-012: 500 character concepts, each with five rarity artworks
+
+**founder-direction** · 2026-10-15.
+
+Plan 500 Geek character concepts with Common, Rare, Epic, Legendary and Mythic artwork for every concept: 2,500 distinct planned images. This corrects the earlier interpretation of 500 total editions. Artwork count does not determine collectible copies per artwork, mint supply or acquisition allocations.
+
+Basis: Founder clarified October 15, 2026: “So you see the direction I went with the 500 geek. 2500 different images.” Three supplied five-tier sets demonstrate the intended structure. Runtime manifest migration remains COLL-001 work. Recovered into main during October 16 PR reconciliation; later fourth-set intake remains preserved in paused PR #120. No art production or runtime migration resumed.
+
+Evidence: [docs/GEEK-500-COLLECTION-STRUCTURE.md](../../docs/GEEK-500-COLLECTION-STRUCTURE.md), [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION.md), [docs/continuity/pr-reconciliation.json](../../docs/continuity/pr-reconciliation.json). Supersedes DR-005.
+
+## DR-016: Regroup around beta loose ends, preservation and the reviewed learning path
+
+**founder-direction** · 2026-10-16.
+
+Reconcile older PRs and current roadmap first, then close remaining beta evidence and independent backup/provider-recovery evidence, continue reviewed Kaspa content, complete the existing manual Testnet receipt pilot and inspect ecosystem components. Preserve paused art and all economic/security holds.
+
+Basis: Founder asked to regroup around the roadmap and loose ends, then approved the proposed roadmap-housekeeping/PR-reconciliation step on October 16. This does not authorize a new wallet, mainnet settlement, art production, recruitment or provider cutover.
+
+Evidence: [docs/ROADMAP-CHECKPOINT.md](../../docs/ROADMAP-CHECKPOINT.md), [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION.md).

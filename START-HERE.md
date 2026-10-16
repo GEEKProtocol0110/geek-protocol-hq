@@ -5,6 +5,7 @@
 | Need | Read |
 | --- | --- |
 | Where are we now? | [Current state](docs/continuity/CURRENT-STATE.md) |
+| What is the regrouped execution order? | [Roadmap checkpoint](docs/ROADMAP-CHECKPOINT.md) and [older PR reconciliation](docs/PR-RECONCILIATION.md) |
 | What should happen next? | [Maintained backlog](docs/continuity/BACKLOG.md) |
 | Why did we choose this? | [Decision register](docs/continuity/DECISIONS.md) |
 | What have we actually built? | [Release history](docs/continuity/HISTORY.md) and [product status](docs/PROJECT-STATUS.md) |

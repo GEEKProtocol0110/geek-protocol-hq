@@ -1,5 +1,7 @@
 # Geek Collectible Protocol
 
+**Current art direction:** [500 concepts × five rarity artworks](GEEK-500-COLLECTION-STRUCTURE.md), or 2,500 planned images (DR-012). The slot blueprint below is the retained historical runtime layout, not the new artwork model or a mint-supply approval. Copies, allocations and versioned migration remain unresolved; production is paused and ownership stays disabled.
+
 ## Purpose
 
 The Omniscient Grid is a planned collection of 500 unique Geek identities. GIGA is the community heart and A.C.E. is the protocol mind. The remaining identities span eight knowledge districts and ten functional archetypes. Collectibles are cosmetic identity and learning-history objects; they do not improve scores, odds, rewards, or leaderboard placement.

@@ -25,9 +25,9 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**UX-005: needs-evidence.** Mobile edge containment/stable background correction shipped in #137 after founder phone report. Source and desktop release checks passed; physical-phone scrolling/browser-bar retest remains pending.
+**OPS-001: needs-evidence.** CONT-003 roadmap/PR reconciliation is prepared in #139: superseded #119 closed with work retained; #120 paused; beta and art direction clarified. Provider recovery/independent source preservation and authentication review evidence remain open.
 
-Next task: **UX-005**. Record the founder phone retest of refreshed #137 styles before claiming device acceptance. OPS-001 provider restore and independent auth evidence remain open; preserve pending-art direction and all holds.
+Next task: **OPS-001**. Resume independent source preservation and actual provider backup/isolated restore evidence. Current history is complete locally; a local bundle is not an independent copy. Device observations remain PILOT-001/AUTH-002/UX-005; continue BANK-001 while owner/device evidence is unavailable.
 
 ## Holds
 
@@ -41,5 +41,6 @@ CCE: **bank-and-economy-hold**. Contributor rate: unselected; 1 or 5 GEEK are pr
 - No institutional contract, school partnership, legal-entity registration or accreditation is verified.
 - An independent off-provider repository copy and production-provider restore have not been demonstrated.
 - KCC20 integration/migration is unapproved: eight-decimal supply representation, exact artifact/wallet compatibility and existing-holder accounting require a concrete design.
-- Founder paused further artwork uploads/generation October 15; four supplied sets/twenty original PNGs and the 2,500-slot tracker remain in separate unmerged PR #120.
+- Founder paused further artwork uploads/generation October 15; four supplied sets/twenty original PNGs and the 2,500-image tracker remain preserved in paused PR #120. DR-012 recovers the 500-concept/five-artworks direction; runtime migration and supply remain separate.
 - Additional GIGA/A.C.E. artwork awaits founder supply. UX-003 removes repeated character panels and the large home portrait; do not restart a broad character rollout from the older UX-002 direction.
+- Superseded #119 retains wallet-lab, reward-desk polish and pilot tools at its exact preserved head; follow-up work is WALLET-001, CHAIN-003 and PILOT-002. Do not merge its old authentication/infrastructure over main.

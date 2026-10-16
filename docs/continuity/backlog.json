@@ -233,7 +233,7 @@
       "status": "needs-evidence",
       "title": "Complete the real-device free-beta pilot",
       "owner": "Founder and consenting pilot participants",
-      "nextAction": "Record the remaining phone, saved Quest and two-person Royale outcomes against one exact release.",
+      "nextAction": "Use the refreshed #137 runtime checklist. Preserve the earlier Quest-resume success, October 16 phone passkey success and limited mobile-edge improvement. Record returning saved-player login, four-chapter completion/replay and a two-person Royale run on actual devices.",
       "acceptance": [
         "Four Quest chapters retain completion/replay state.",
         "Phone sign-in/profile/Study flow passes.",
@@ -325,19 +325,21 @@
       "id": "COLL-001",
       "priority": "P2",
       "status": "planned",
-      "title": "Finish the 500-Geek art and ownership specification",
+      "title": "Reconcile the 500-concept, five-tier artwork plan with the legacy runtime",
       "owner": "Art lead and ownership reviewer unassigned",
-      "nextAction": "Review the 18 repeated roster labels and incomplete trait PDF. Confirm whether historical 100/50/25/5/1 cells meant copies per archetype, recover missing sheet rows, and reconcile any proposed supply/theme/edition policy with the current 500-edition plan and GIGA/A.C.E. anchors before changing canon.",
+      "nextAction": "DR-012 recovers the founder\u2019s 500 concepts \u00d7 five artwork tiers = 2,500-image direction from paused #120. Resolve repeated names, stable IDs and GIGA/A.C.E. anchors; specify versioned migration while retaining the older 500-slot runtime. Copies per artwork, mint supply and allocations remain unselected; art production stays paused.",
       "acceptance": [
-        "Exactly 500 editions in five tiers are reconciled.",
-        "Art provenance, metadata and acquisition allocations approved.",
-        "Ownership remains disabled until its separate reviewed implementation."
+        "500 character concepts and five artwork tiers are distinct from collectible copies/mint supply.",
+        "Duplicate names, anchors and versioned character-plus-tier mapping preserve existing IDs/saves.",
+        "Original asset provenance is retained; new production and ownership remain disabled until their separate authorization/review."
       ],
       "dependsOn": [],
       "evidence": [
         "docs/GEEK-500-ART-BIBLE.md",
         "docs/COLLECTIBLE-PROTOCOL.md",
-        "docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md"
+        "docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md",
+        "docs/GEEK-500-COLLECTION-STRUCTURE.md",
+        "docs/PR-RECONCILIATION.md"
       ]
     },
     {
@@ -671,7 +673,7 @@
       "status": "needs-evidence",
       "title": "Contain mobile decoration and stabilize page edges",
       "owner": "Maintainer",
-      "nextAction": "CSS correction shipped in PR #137 at b194970626b4864286fb25a210b33df14047d3bc. Await actual refreshed-phone scrolling/browser-bar retest; source and desktop checks do not establish device acceptance.",
+      "nextAction": "Preserve the founder\u2019s October 16 \u201cOk better\u201d phone-layout report. Broader browser-bar/pinch-zoom/menu acceptance remains part of the remaining free-beta device checks; do not treat improvement as no response or complete device certification.",
       "acceptance": [
         "Decorative code no longer extends beyond mobile sections; the home hero clips its decorative children.",
         "The shared page shell prevents decorative horizontal scrolling without disabling pinch zoom or vertical navigation.",
@@ -687,6 +689,114 @@
       ],
       "releaseEvidence": [
         "Exact head cb2650f3609b8d77ae1ca0b5164a571698e6f8af (tree 0b2499b3dc0fe03db7ef8fc3606099926999cbe2) passed GitHub verify run 38927170918 and Vercel; merge-source Vercel succeeded. Full local verification: 496 tests, zero failures/skips, required Redis 7.4.2 and 311 security assertions. Desktop preview/live computed root/body/hero overflow-x:clip, preview paint containment, loaded narrow rules with inset code, 100lvh background and no perspective. Desktop document width 1348 <= viewport 1363. Actual narrow rendering and physical-phone/browser-bar retest remain unverified; a local fixture URL was blocked and no workaround attempted. No new counted HTTP-monitor probes."
+      ],
+      "phoneResult": {
+        "reportedAt": "2026-10-16T13:00:27-04:00",
+        "source": "Founder chat following the #137 mobile-edge correction",
+        "result": "Ok better",
+        "scope": "Limited phone-layout improvement observation; exact browser/version and individual browser-bar/zoom/menu tests not supplied."
+      }
+    },
+    {
+      "id": "CONT-003",
+      "priority": "P0",
+      "status": "done",
+      "title": "Reconcile roadmap, stale drafts and current acceptance evidence",
+      "owner": "Maintainer",
+      "nextAction": "Roadmap checkpoint prepared in PR #139; #119 is closed as superseded with branch/head retained and all unshipped work tracked. #120 remains open/paused with the same head. Preserve the current record and resume OPS-001; final head/check/merge is in #139\u2019s review record.",
+      "acceptance": [
+        "Every old PR changed-file blob is inventoried at an exact head and retained work has stable backlog IDs.",
+        "Current roadmap, beta source/dependency evidence and limited founder phone observations agree.",
+        "Superseded passkey draft cannot be mistaken for a merge candidate; paused art stays preserved.",
+        "Continuity, repository, inventory and documentation checks pass; final PR/check/merge evidence is retained."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/ROADMAP-CHECKPOINT.md",
+        "docs/PR-RECONCILIATION.md",
+        "docs/continuity/pr-reconciliation.json",
+        "docs/FREE-BETA-READINESS.md"
+      ],
+      "completedAt": "2026-10-16",
+      "completionEvidence": [
+        "All older-PR changed paths match fetched Git blobs at the exact retained heads. GitHub metadata update confirmed #119 closed and #120 open/paused without a head change or branch deletion.",
+        "Current roadmap/beta/phone evidence and DR-012 art interpretation reconciled. Continuity/repository/whitespace, SBOM-to-lockfile and local-link checks passed; current production dependency audit reports zero vulnerabilities. Final exact-head CI and merge are recorded in PR #139."
+      ]
+    },
+    {
+      "id": "WALLET-001",
+      "priority": "P1",
+      "status": "planned",
+      "title": "Review and isolate the optional Testnet wallet lab retained from #119",
+      "owner": "Wallet maintainer; independent wallet reviewer unassigned",
+      "nextAction": "Start a fresh scoped branch from current main and review the pinned lab/SDK/backup files from superseded #119. Do not reuse its old authentication, lockfile or CSP wholesale. No new lab implementation is authorized by roadmap cleanup.",
+      "acceptance": [
+        "Reviewed artifact/SDK integrity and restrictive origin/CSP design.",
+        "Locally generated Testnet-only material, encrypted backup and verified actual-device restore; no existing recovery phrase requested by login.",
+        "Account passkeys remain distinct from wallet-key unlocking; independent security/recovery acceptance precedes any custody expansion."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/PR-RECONCILIATION.md",
+        "docs/continuity/pr-reconciliation.json"
+      ]
+    },
+    {
+      "id": "CHAIN-003",
+      "priority": "P2",
+      "status": "planned",
+      "title": "Review retained Testnet reward-desk amount and copy polish",
+      "owner": "Maintainer",
+      "nextAction": "Extract only the pinned exact-unit formatter/copy/state guidance onto current main. Review unavailable/denied/stalled clipboard and current owner-client boundaries before a separate implementation.",
+      "acceptance": [
+        "Integer base units and validated decimals produce exact wallet amounts.",
+        "Copy failures have usable manual selection and never send a transaction.",
+        "One-send/same-hash reconciliation and existing Daily/receipt authorization remain unchanged."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/PR-RECONCILIATION.md",
+        "docs/TESTNET-REWARD-PILOT.md"
+      ]
+    },
+    {
+      "id": "PILOT-002",
+      "priority": "P1",
+      "status": "planned",
+      "title": "Review retained wallet-safety course and evaluation tooling",
+      "owner": "Pilot coordinator and instructor unassigned",
+      "nextAction": "Review pinned course/evaluation files from superseded #119 against the pilot charter before extracting them. Appoint a coordinator and approve assessments/privacy/consent before recruitment.",
+      "acceptance": [
+        "Approved objective/assessment mapping, authority, accessibility/privacy and stop rules before any recruitment.",
+        "Evaluation distinguishes missing follow-ups and descriptive paired results without treating them as verified learning outcomes.",
+        "Real delivery/data disposition evidence stays private; no public learner records or automatic rewards."
+      ],
+      "dependsOn": [
+        "PILOT-001"
+      ],
+      "evidence": [
+        "docs/PR-RECONCILIATION.md",
+        "docs/continuity/PILOT-CHARTER.md"
+      ]
+    },
+    {
+      "id": "ART-001",
+      "priority": "P2",
+      "status": "blocked",
+      "title": "Preserve paused original art and resume production only on founder direction",
+      "owner": "Founder supplies art; production maintainer unassigned",
+      "nextAction": "Keep #120 and its exact twenty original PNGs/tracker intact. Await founder resumption; review against current continuity before any merge.",
+      "acceptance": [
+        "Original filenames/bytes/provenance remain intact at the pinned paused head.",
+        "500 concepts \u00d7 five artworks remain distinct from finished-image and collectible-supply counts.",
+        "A separate founder resumption precedes additional generation/production; runtime migration remains COLL-001."
+      ],
+      "dependsOn": [],
+      "blocker": "Founder paused further collection-art production; additional GIGA/A.C.E. art awaits supply.",
+      "evidence": [
+        "docs/PR-RECONCILIATION.md",
+        "docs/continuity/pr-reconciliation.json",
+        "docs/GEEK-500-COLLECTION-STRUCTURE.md"
       ]
     }
   ]

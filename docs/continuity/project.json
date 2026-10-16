@@ -35,12 +35,12 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "UX-005",
+    "id": "OPS-001",
     "status": "needs-evidence",
-    "description": "Mobile edge containment/stable background correction shipped in #137 after founder phone report. Source and desktop release checks passed; physical-phone scrolling/browser-bar retest remains pending."
+    "description": "CONT-003 roadmap/PR reconciliation is prepared in #139: superseded #119 closed with work retained; #120 paused; beta and art direction clarified. Provider recovery/independent source preservation and authentication review evidence remain open."
   },
-  "nextTask": "UX-005",
-  "nextAction": "Record the founder phone retest of refreshed #137 styles before claiming device acceptance. OPS-001 provider restore and independent auth evidence remain open; preserve pending-art direction and all holds.",
+  "nextTask": "OPS-001",
+  "nextAction": "Resume independent source preservation and actual provider backup/isolated restore evidence. Current history is complete locally; a local bundle is not an independent copy. Device observations remain PILOT-001/AUTH-002/UX-005; continue BANK-001 while owner/device evidence is unavailable.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
@@ -48,8 +48,9 @@
     "No institutional contract, school partnership, legal-entity registration or accreditation is verified.",
     "An independent off-provider repository copy and production-provider restore have not been demonstrated.",
     "KCC20 integration/migration is unapproved: eight-decimal supply representation, exact artifact/wallet compatibility and existing-holder accounting require a concrete design.",
-    "Founder paused further artwork uploads/generation October 15; four supplied sets/twenty original PNGs and the 2,500-slot tracker remain in separate unmerged PR #120.",
-    "Additional GIGA/A.C.E. artwork awaits founder supply. UX-003 removes repeated character panels and the large home portrait; do not restart a broad character rollout from the older UX-002 direction."
+    "Founder paused further artwork uploads/generation October 15; four supplied sets/twenty original PNGs and the 2,500-image tracker remain preserved in paused PR #120. DR-012 recovers the 500-concept/five-artworks direction; runtime migration and supply remain separate.",
+    "Additional GIGA/A.C.E. artwork awaits founder supply. UX-003 removes repeated character panels and the large home portrait; do not restart a broad character rollout from the older UX-002 direction.",
+    "Superseded #119 retains wallet-lab, reward-desk polish and pilot tools at its exact preserved head; follow-up work is WALLET-001, CHAIN-003 and PILOT-002. Do not merge its old authentication/infrastructure over main."
   ],
   "recordPolicy": "Update after each substantive change. Baseline records stay historical; append later releases and replace only current checkpoint fields with evidence."
 }

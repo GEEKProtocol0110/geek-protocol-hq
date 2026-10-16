@@ -6,6 +6,8 @@ This directory is the reviewable specification set for Geek Protocol HQ. Documen
 
 - [Continue Geek Protocol](../START-HERE.md): maintained project record, long-term direction and pickup path.
 
+- [Roadmap checkpoint](ROADMAP-CHECKPOINT.md) and [older PR reconciliation](PR-RECONCILIATION.md): current execution order, retained draft work and beta/recovery loose ends.
+
 - [Working handoff](HANDOFF.md): current question-bank checkpoint, founder decisions, unfinished work and continuation instructions.
 
 - [Kaspa-first Mobile Onboarding](MOBILE-ONBOARDING.md): direct quiz/lesson choices, visible sign-in, optional ecosystem detail and remaining phone acceptance.

@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "capturedAt": "2026-10-16",
-  "through": "b194970626b4864286fb25a210b33df14047d3bc",
-  "scope": "Preserved HQ commit metadata plus observed Git objects through PR #137. Runtime baseline is #137. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation.",
+  "through": "a7eaca32908b30214aaf04730f485c851963ee30",
+  "scope": "Preserved HQ commit metadata plus observed Git objects through documentation PR #138. Runtime baseline remains #137. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -1917,6 +1917,23 @@
       ],
       "authoredAt": "2026-10-16T11:55:00-04:00",
       "title": "Merge pull request #137 from GEEKProtocol0110/codex/mobile-edge-fix"
+    },
+    {
+      "commit": "3d94bd413ac10f9532da986c1f9e064ca6e4b2a1",
+      "parents": [
+        "b194970626b4864286fb25a210b33df14047d3bc"
+      ],
+      "authoredAt": "2026-10-16T11:56:46-04:00",
+      "title": "Record deployed mobile edge correction and pending phone retest"
+    },
+    {
+      "commit": "a7eaca32908b30214aaf04730f485c851963ee30",
+      "parents": [
+        "b194970626b4864286fb25a210b33df14047d3bc",
+        "3d94bd413ac10f9532da986c1f9e064ca6e4b2a1"
+      ],
+      "authoredAt": "2026-10-16T11:57:49-04:00",
+      "title": "Merge pull request #138 from GEEKProtocol0110/codex/mobile-edge-release"
     }
   ]
 }

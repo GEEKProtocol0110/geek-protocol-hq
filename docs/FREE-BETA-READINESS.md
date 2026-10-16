@@ -1,24 +1,41 @@
 # Free-beta candidate and pilot checklist
 
-**Prepared October 9; refreshed October 15, 2026. Status: current comparison baseline recorded; production acceptance pending. The public release remains Alpha.** This checklist covers Kaspa-first learning and free gameplay. It does not approve paid entry, GEEK rewards, cash-out, treasury settlement, burns, NFT ownership or collection minting.
+**Prepared October 9; refreshed October 16, 2026. Status: current runtime evidence recorded; broader production pilot acceptance pending. The public release remains Alpha.** This checklist covers Kaspa-first learning and free gameplay. It does not approve paid entry, GEEK rewards, cash-out, treasury settlement, burns, NFT ownership or collection minting.
 
-## Current comparison baseline
+## Current runtime and acceptance checkpoint
+
+Runtime is [PR #137](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/137), merge `b194970626b4864286fb25a210b33df14047d3bc`, tree `0b2499b3dc0fe03db7ef8fc3606099926999cbe2`. Main also includes later documentation through #138. The maintained [project record](continuity/project.json) owns later exact runtime evidence.
+
+| Evidence | Current recorded result |
+| --- | --- |
+| Internal checks | 496 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and supporting checks on #137 |
+| CI / deployment | Exact-head verify run 38927170918 and Vercel passed; merge-source Vercel succeeded; desktop live containment checked |
+| Phone access | Founder reported initial passkey flow success October 16, 2:35 AM Detroit; returning-login/cross-device/revocation scenarios remain separate |
+| Phone layout | Founder reported “Ok better” after #137, October 16 at 1:00 PM Detroit; limited improvement observation, not a complete browser-bar/device matrix |
+| npm inventory | [October 16 CycloneDX SBOM](releases/free-beta-2026-10-16.cdx.json): 26 dependency components; source checkpoint `a7eaca32908b30214aaf04730f485c851963ee30` |
+| Lockfile SHA-256 | `8f1e46d66eb413f6d8ebf245a796f54c98fe7bc937ad4a20e537de7d6860237c` |
+| SBOM SHA-256 | `5505bb8290dcac560b784ad30a9fc1740b9e49e9c7223badd3380f18e3adc9d2` |
+| Dependency audit | October 16 `npm audit --omit=dev --audit-level=high`: zero reported vulnerabilities; no independent audit claim |
+
+The new SBOM includes `@simplewebauthn/server` and its dependency graph. It is a local installed production-npm inventory bound to the recorded lockfile/source, not an attestation of deployed provider assets or a complete upstream WASM inventory. The October 9 SBOM below remains historical and no longer matches today's lockfile. No runtime dependencies changed during this documentation cleanup.
+
+## Historical October 9–15 comparison baseline
 
 | Evidence | Recorded result |
 | --- | --- |
-| Code baseline | [`5421a78524cd81dcd54aeddb8f04ca01efb75e7c`](https://github.com/GEEKProtocol0110/geek-protocol-hq/commit/5421a78524cd81dcd54aeddb8f04ca01efb75e7c), the PR #109 Kaspa-first onboarding merge; the latest candidate is the checked head/merge of PR #84 |
+| Code baseline | [`5421a78524cd81dcd54aeddb8f04ca01efb75e7c`](https://github.com/GEEKProtocol0110/geek-protocol-hq/commit/5421a78524cd81dcd54aeddb8f04ca01efb75e7c), the PR #109 Kaspa-first onboarding merge; a historical source snapshot; the old #84 references below are not the current candidate |
 | Application tree | `d0817b68cd1bcd3ba696f1c5b6d00fc73770dfc6`; the comparison baseline before the final homepage polish in PR #84 |
 | Internal verification | 412 tests passed, zero failed/skipped; question, collection, archive, repository, economy stress checks and all 310 security assertions passed on the comparison baseline; rerun on the final PR head before merge |
 | Dependency audit | `npm audit --omit=dev --audit-level=high`: zero reported vulnerabilities at verification time; not an independent security audit |
 | CI | [Security verification run 38675575595](https://github.com/GEEKProtocol0110/geek-protocol-hq/actions/runs/38675575595) passed on the comparison baseline; [PR #84 checks](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/84/checks) identify the final candidate |
 | Deployment | [Vercel production deployment](https://vercel.com/geek-protocols-projects/geek-protocol-hq/DDZUovShyuTDnZwzxWgVPf4ogqS2) reported ready for the comparison baseline; this does not establish private API health or a user's saved-record recovery |
-| npm dependency inventory | [CycloneDX 1.5 SBOM](releases/free-beta-2026-10-09.cdx.json), historical October 9 inventory, generated with npm 11.9.0 / local Node 24.19.0; its lockfile hash still matches the current candidate |
+| npm dependency inventory | [CycloneDX 1.5 SBOM](releases/free-beta-2026-10-09.cdx.json), historical October 9 inventory, generated with npm 11.9.0 / local Node 24.19.0; its lockfile hash belongs to that historical checkpoint and does not match current main |
 | Lockfile SHA-256 | `a20b44b57303cdd9375399cfa7383c042690933c9fbec79a8cd9de3402548296` |
 | SBOM SHA-256 | `5a0535cb0e645b703f94700770721fc314aedb6bbcbbdd9ae94661efeee4a426` |
 
-The production lockfile and dependency graph remain unchanged. The retained October 9 inventory records its historical source commit (`382ffdb5...`), not the current application source; the matching lockfile hash above was rechecked October 15. The SBOM contains the declared production npm graph: HQ 0.1.0 and `@dfns/kaspa-wasm` 0.14.1, with its lockfile distribution integrity and license. It is a pre-build inventory, not a deployed artifact attestation or a complete inventory of the WASM package's upstream source dependencies, hosted runtime, Vercel, Redis provider, wallets, indexers or CDN assets. Production runtime and provider configuration remain owner evidence. The generator's root display name was normalized to `package.json`'s name; source commit and lockfile hash were added as metadata properties.
+At the October 15 checkpoint the lockfile and dependency graph were recorded as unchanged. Later passkey dependencies supersede that statement for current main. The retained October 9 inventory records its historical source commit (`382ffdb5...`), not the current application source; that historical lockfile hash was rechecked October 15. The SBOM contains the declared production npm graph: HQ 0.1.0 and `@dfns/kaspa-wasm` 0.14.1, with its lockfile distribution integrity and license. It is a pre-build inventory, not a deployed artifact attestation or a complete inventory of the WASM package's upstream source dependencies, hosted runtime, Vercel, Redis provider, wallets, indexers or CDN assets. Production runtime and provider configuration remain owner evidence. The generator's root display name was normalized to `package.json`'s name; source commit and lockfile hash were added as metadata properties.
 
-This baseline is recorded for comparison; no release tag, branch freeze, Beta announcement or production configuration change is performed. A code or dependency change requires a new baseline, SBOM when dependencies change, and relevant checks before acceptance. This PR also polishes homepage copy, ordering and responsive CSS; it does not alter gameplay authority or dependencies. Match acceptance to the final deployed PR merge, rather than assuming the comparison baseline includes that polish.
+This baseline is recorded for comparison; no release tag, branch freeze, Beta announcement or production configuration change is performed. A code or dependency change requires a new baseline, SBOM when dependencies change, and relevant checks before acceptance. The earlier onboarding release polished homepage copy, ordering and responsive CSS without altering gameplay authority or dependencies. Match new acceptance to the current deployed runtime above; these old comparison pointers do not establish it.
 
 The founder confirmed the reported saved-step recovery on the existing phone/browser after the PR #92 production deployment. This confirmation is limited to resume: it does not complete campaign, badge reload, replay, Royale, owner MFA, or backup/restore acceptance. [Issue #81](https://github.com/GEEKProtocol0110/geek-protocol-hq/issues/81) records the closed finding and acceptance.
 
@@ -34,7 +51,7 @@ The comparison baseline has two direct starting actions, visible sign-in and exp
 | --- | --- | --- |
 | Reported Quest resume | **Passed — founder confirmation, October 9 at 18:57 America/Detroit; issue #81 closed** | Existing saved chapter resumed at the correct step after PR #92; no replacement profile or reset |
 | Quest campaign and replay | **Pending** | All four chapters complete, badges/review persist after reload, and replay preserves badges and later unlocks |
-| Phone learning and profile | **Pending** | Kaspa-first entry, visible sign-in, menu, quiz/lesson links, name save, selected Geek, Study, free practice, Gauntlet and dashboard work on actual devices |
+| Phone learning and profile | **Partial; full flow pending** | Kaspa-first entry, visible sign-in, menu, quiz/lesson links, name save, selected Geek, Study, free practice, Gauntlet and dashboard work on actual devices |
 | Small Royale pilot | **Pending** | Two distinct participants finish a real production room with ready/start, shared reveal, reload and result behavior observed |
 | Controlled capacity event | **Pending; separate gate for a 100-player capacity claim** | Measured production latency, errors, reconnect outcomes and request/Redis usage during a progressively larger event |
 | Owner authenticator and account recovery | **Pending verification** | Owner confirms authenticator login, protected workspaces and offline recovery; GitHub, hosting and database account recovery verified privately |
@@ -82,10 +99,10 @@ Record one row per run. Public evidence uses test display names and redacted scr
 | Run / candidate commit | Date and device | Scenario | Expected and observed behavior | Pass / fail / pending | Finding / retest |
 | --- | --- | --- | --- | --- | --- |
 | `382ffdb5...` | October 9, 18:57 America/Detroit; founder’s existing Android phone/browser | Affected Quest save | Founder confirmed saved chapter resumed at the correct step without replacement | Pass — founder reported | #81 closed after PR #92; completion/replay not covered |
-| Final deployed PR #84 merge | Pending | Quest campaign and replay | Four badges persist; prerequisites remain correct | Pending | — |
-| Final deployed PR #84 merge | Pending | Phone profile and learning | Name/Geek/Study/practice and gameplay entry persist | Pending | — |
-| Final deployed PR #84 merge | Pending | Two-player Royale in a four-seat room | Ready/start, locked answers, reveal, reload and result agree | Pending | — |
-| Final deployed PR #84 merge | Pending | Owner MFA and account recovery | Privately verified access/recovery; public evidence redacted | Pending | — |
-| Final deployed PR #84 merge | Pending | Provider backup/isolated restore | Privately verified durable data and measured recovery | Pending | — |
+| Current runtime #137; record exact retest release | Pending | Quest campaign and replay | Four badges persist; prerequisites remain correct | Pending | — |
+| Current runtime #137; record exact retest release | Pending | Phone profile and learning | Name/Geek/Study/practice and gameplay entry persist | Pending | — |
+| Current runtime #137; record exact retest release | Pending | Two-player Royale in a four-seat room | Ready/start, locked answers, reveal, reload and result agree | Pending | — |
+| Current runtime #137; record exact retest release | Pending | Owner MFA and account recovery | Privately verified access/recovery; public evidence redacted | Pending | — |
+| Current runtime #137; record exact retest release | Pending | Provider backup/isolated restore | Privately verified durable data and measured recovery | Pending | — |
 
 Approve the free-beta scope only after reviewing these results and recording remaining limitations. Monetary gates retain their separate funding, settlement, reconciliation, security and independent-review requirements.
