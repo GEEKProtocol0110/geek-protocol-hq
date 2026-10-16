@@ -1,7 +1,7 @@
 # Geek Protocol — Full Product Roadmap
 
-**Reviewed direction:** October 2, 2026  
-**Public edition:** [HQ Litepaper v1.11](https://www.geekprotocol.xyz/litepaper/)
+**Reviewed direction:** October 16, 2026; earlier dated directions retained
+**Public edition:** [HQ Litepaper v1.12](https://www.geekprotocol.xyz/litepaper/)
 **Purpose:** Carry the original project vision into an explicit implementation backlog.
 
 **Continuation:** [Start Here](../START-HERE.md), [maintained backlog](continuity/BACKLOG.md), and [2026–2076 vision](continuity/VISION-2076.md). These feature tables preserve product direction; the continuation record owns the current task, evidence and next action. Older dated descriptions remain historical where later releases supersede them.
@@ -9,6 +9,12 @@
 This document preserves the founder's full direction. It records features and acceptance criteria; it does not activate gameplay formats, payments, treasury authority, DAO votes, or collection ownership. Kaspa 101 remains the main Learn destination. Geek Jr's current implementation is outside this HQ release.
 
 Geek Protocol was born in Detroit, Michigan, USA. Use American English in public copy and project documentation, including “practice.”
+
+## Current execution checkpoint
+
+Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. The October 16 regroup is [recorded here](ROADMAP-CHECKPOINT.md): close remaining free-beta device evidence, verify independent backup/provider recovery, continue reviewed Kaspa content, complete one manual Testnet reward receipt, then inspect each ecosystem component. Content work can continue while owner/device evidence is unavailable. The public release remains Alpha.
+
+The deployed runtime is #137 (496 tests, zero failures/skips; 311 security assertions). The founder reports initial phone passkey success and improved mobile edges; broader returning-login/Quest/Royale acceptance remains separate. [PR reconciliation](PR-RECONCILIATION.md) retires the old #119 merge candidate while retaining its wallet-lab, desk-polish and pilot work; #120 artwork remains paused. The art direction is [500 concepts × five tier artworks](GEEK-500-COLLECTION-STRUCTURE.md), with runtime migration and supply choices separate.
 
 ## Current priorities: reviewed bank, then CCE and a small economy
 
@@ -79,7 +85,7 @@ Start with content quality and guided practice. Educational benefit and question
 | ARENA-01 | The Duel: dedicated 1v1 | Implemented free Alpha | Friend ready-up or solo A.C.E. simulation with three difficulty presets, ten shared questions, Redis clock and atomic scoring, winner/draw/forfeit/disconnect results, fixed two-player roster, reload recovery and mutual rematches; no XP or monetary rewards |
 | ARENA-02 | Team Battle: 2v2 | Planned | Fixed team rosters, cooperative answer rules, team scoring, and adversarial cross-team authorization tests |
 | ARENA-03 | Party Mode: social co-op | Planned | Group objective, shared progress, accessible pacing, host/rejoin rules, and clearly separate practice standings |
-| ARENA-04 | Trivia Royale | Implemented free Alpha; deployment/pilot pending | Host-selected 2–100 seat limit, partial-room start, shared Redis clock, wrong/timeout/slowest-group elimination, exact ties, stable-identity reconnect and room-result medal; local 100-client capacity tests; real production pilot pending |
+| ARENA-04 | Trivia Royale | Deployed free Alpha; real-participant pilot pending | Host-selected 2–100 seat limit, partial-room start, shared Redis clock, wrong/timeout/slowest-group elimination, exact ties, stable-identity reconnect and room-result medal; local 100-client capacity tests; real production pilot pending |
 | ARENA-05 | Optional Duel wagers / event prizes | Proposed monetary extension | Separate approved economic specification, reviewed custody/settlement path, reconciliation, eligibility and dispute rules; follows economy work |
 
 Geek Duel at `/duel/` is the dedicated free 1v1 format. The existing Quick Duel lobby template remains shared practice. Wagered Duel and specialized Fandom Duel rules remain planned. See [Duel protocol](DUEL-PROTOCOL.md) and [Royale protocol](ROYALE-PROTOCOL.md).

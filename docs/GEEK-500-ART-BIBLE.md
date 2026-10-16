@@ -1,5 +1,7 @@
 # GEEK-500 Art and Lore Bible
 
+**October 16 reconciliation:** the intended art plan is [500 character concepts × five rarity artworks](GEEK-500-COLLECTION-STRUCTURE.md), or 2,500 planned images (DR-012). The numbered anchors and distributions below describe the older compatible runtime manifest, not an approved mint supply or the completed new art model. Production stays paused under ART-001; migration remains COLL-001.
+
 ## Canon
 
 The Omniscient Grid is a living knowledge network built around one idea: curiosity becomes stronger when it is shared, tested, and preserved.

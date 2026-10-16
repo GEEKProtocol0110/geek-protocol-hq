@@ -1,0 +1,479 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-16",
+  "scope": "GitHub changed-file inventories for exact older PR heads, reviewed against current main. Source branches remain. No runtime adoption, branch deletion, new art or collection migration. Final PR metadata outcomes are retained in the review record.",
+  "records": [
+    {
+      "number": 119,
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/119",
+      "head": "3b291065aad6dd2901225ab2f83100cb0277030b",
+      "tree": "92a60e358ce0c244fe1b2e94b72bd2c2ac49a670",
+      "reviewedAgainst": "a7eaca32908b30214aaf04730f485c851963ee30",
+      "sourceBranchPreserved": true,
+      "disposition": "superseded-closed-with-remaining-work-tracked",
+      "files": [
+        {
+          "path": ".gitignore",
+          "gitBlobSha": "011281620419412b5eaf39bfeb081f68ca1be03e",
+          "disposition": "mixed-infrastructure-do-not-cherry-pick-whole-file"
+        },
+        {
+          "path": "api/passkeys.js",
+          "gitBlobSha": "f7bcda98fa024956afa2683cef58652167ad058e",
+          "disposition": "passkey-identity-work-superseded-by-main"
+        },
+        {
+          "path": "docs/BACKUP-RECOVERY.md",
+          "gitBlobSha": "19ea9a0cfc20f8d9e907bb4afdc04e9925913665",
+          "disposition": "historical-draft-documentation-do-not-overwrite-main"
+        },
+        {
+          "path": "docs/FIVE-LEAPS.md",
+          "gitBlobSha": "9c1216f22ad9c46da7faf73912f972a2018f6f72",
+          "disposition": "historical-draft-documentation-do-not-overwrite-main"
+        },
+        {
+          "path": "docs/IDENTITY-PROTOCOL.md",
+          "gitBlobSha": "3fe8d96aa5211512431a0f54893a23c37bb89c6b",
+          "disposition": "historical-draft-documentation-do-not-overwrite-main"
+        },
+        {
+          "path": "docs/continuity/BACKLOG.md",
+          "gitBlobSha": "9005af4282fde668f51b7da68fd9a67810fe1c4f",
+          "disposition": "historical-draft-documentation-do-not-overwrite-main"
+        },
+        {
+          "path": "docs/continuity/CURRENT-STATE.md",
+          "gitBlobSha": "806f5189d7f3789d81c45adc1dcf75243dd57da7",
+          "disposition": "historical-draft-documentation-do-not-overwrite-main"
+        },
+        {
+          "path": "docs/continuity/HISTORY.md",
+          "gitBlobSha": "f49830a2ec7da337ed2a9c69ef5fb07728b6c957",
+          "disposition": "historical-draft-documentation-do-not-overwrite-main"
+        },
+        {
+          "path": "docs/continuity/WORKLOG.md",
+          "gitBlobSha": "fb4789388d795d6e31d8d7fdbf4bf6bbc64e1909",
+          "disposition": "historical-draft-documentation-do-not-overwrite-main"
+        },
+        {
+          "path": "docs/continuity/backlog.json",
+          "gitBlobSha": "75603e65a416e3e5d83dd8571ee37e22f5f35010",
+          "disposition": "historical-draft-documentation-do-not-overwrite-main"
+        },
+        {
+          "path": "docs/continuity/commits.json",
+          "gitBlobSha": "9280b27ab4a27b13129b58f3a1301a04b595bc75",
+          "disposition": "historical-draft-documentation-do-not-overwrite-main"
+        },
+        {
+          "path": "docs/continuity/project.json",
+          "gitBlobSha": "7147388c5b65bc9e73e7f7207dfb37a898dde69c",
+          "disposition": "historical-draft-documentation-do-not-overwrite-main"
+        },
+        {
+          "path": "docs/continuity/releases.json",
+          "gitBlobSha": "7201476a7042644f9f8a67d023931b876893478b",
+          "disposition": "historical-draft-documentation-do-not-overwrite-main"
+        },
+        {
+          "path": "docs/pilots/wallet-safety-v1.json",
+          "gitBlobSha": "61028b9cd18adbcd8d4e1ef095cdafee3f9af800",
+          "disposition": "unmerged-pilot-tooling"
+        },
+        {
+          "path": "package-lock.json",
+          "gitBlobSha": "f6d248b2e42f6232ec7825fcf82622fc00b0f46b",
+          "disposition": "mixed-infrastructure-do-not-cherry-pick-whole-file"
+        },
+        {
+          "path": "package.json",
+          "gitBlobSha": "f07c1cafb5ce5580aba6bd8fe7dbaf8d7efb21fe",
+          "disposition": "mixed-infrastructure-do-not-cherry-pick-whole-file"
+        },
+        {
+          "path": "public/profile/assets/profile.js",
+          "gitBlobSha": "ac9b2b21e7e64b5f96cfc63772d70373197bbbbd",
+          "disposition": "passkey-identity-work-superseded-by-main"
+        },
+        {
+          "path": "public/profile/index.html",
+          "gitBlobSha": "4e15655535113391f8eccda1305bdb8cf1ed4897",
+          "disposition": "passkey-identity-work-superseded-by-main"
+        },
+        {
+          "path": "public/sign-in/assets/passkeys.js",
+          "gitBlobSha": "68b5b90b07dcc8f80fcafdda32ad6d1a1b4e346f",
+          "disposition": "passkey-identity-work-superseded-by-main"
+        },
+        {
+          "path": "public/sign-in/assets/sign-in.js",
+          "gitBlobSha": "3e5406c336ad2b4e99001c0d957d28a3c402bdd8",
+          "disposition": "passkey-identity-work-superseded-by-main"
+        },
+        {
+          "path": "public/sign-in/index.html",
+          "gitBlobSha": "0d7e7ff20b340d708493d590e984babb33bf45ba",
+          "disposition": "passkey-identity-work-superseded-by-main"
+        },
+        {
+          "path": "public/wallet-lab/assets/lab.css",
+          "gitBlobSha": "ce5585263539a216a60a26255a37bb4ed02fc44e",
+          "disposition": "unmerged-wallet-lab"
+        },
+        {
+          "path": "public/wallet-lab/assets/vault.js",
+          "gitBlobSha": "5acd63020e7df5ea454343abff9c31610e741c71",
+          "disposition": "unmerged-wallet-lab"
+        },
+        {
+          "path": "public/wallet-lab/assets/wallet-lab.js",
+          "gitBlobSha": "9d20990a261d51642e6b15ce967d8a07ccd2b093",
+          "disposition": "unmerged-wallet-lab"
+        },
+        {
+          "path": "public/wallet-lab/index.html",
+          "gitBlobSha": "356bf62a4b54abab6d0b5daf06a849dfb8a3b42e",
+          "disposition": "unmerged-wallet-lab"
+        },
+        {
+          "path": "scripts/build-wallet-sdk.mjs",
+          "gitBlobSha": "49967a5c964de2134f0ca786c08cc2324e2241df",
+          "disposition": "unmerged-wallet-lab"
+        },
+        {
+          "path": "scripts/evaluate-pilot.mjs",
+          "gitBlobSha": "1489446b4c3e5c69336bb0e96d8cc7387e641cf6",
+          "disposition": "unmerged-pilot-tooling"
+        },
+        {
+          "path": "scripts/reset-restored-sessions.mjs",
+          "gitBlobSha": "79f80d11d102561115f9ee9adeacdaa3c950cc77",
+          "disposition": "mixed-infrastructure-do-not-cherry-pick-whole-file"
+        },
+        {
+          "path": "server/identity-records.js",
+          "gitBlobSha": "8d904612cdf84fd36d7451309f2a0559e35123cd",
+          "disposition": "passkey-identity-work-superseded-by-main"
+        },
+        {
+          "path": "server/identity.js",
+          "gitBlobSha": "bd47f269966a5c7dc5361f6dfc32a31d1dd88cf9",
+          "disposition": "passkey-identity-work-superseded-by-main"
+        },
+        {
+          "path": "server/ops-ui/assets/ops-core.js",
+          "gitBlobSha": "413dc2f7488213702545800d6c32fbe062f18d77",
+          "disposition": "unmerged-desk-polish-requires-rebase"
+        },
+        {
+          "path": "server/ops-ui/assets/testnet.js",
+          "gitBlobSha": "0d982850f604469227a9026eaa1e18c3b9ab5d43",
+          "disposition": "unmerged-desk-polish-requires-rebase"
+        },
+        {
+          "path": "server/passkey-grants.js",
+          "gitBlobSha": "57239e1f0ff5ec85c60602529dd0c9c1c07f6e8d",
+          "disposition": "passkey-identity-work-superseded-by-main"
+        },
+        {
+          "path": "server/passkey-records.js",
+          "gitBlobSha": "5eebc27bc9d0591b5ed9a0627bd902f53c12d68c",
+          "disposition": "passkey-identity-work-superseded-by-main"
+        },
+        {
+          "path": "server/passkeys.js",
+          "gitBlobSha": "d670f8a7c18d9724501dfd57946b138edc9e2bb8",
+          "disposition": "passkey-identity-work-superseded-by-main"
+        },
+        {
+          "path": "server/pilot-evaluation.js",
+          "gitBlobSha": "8cd772fb3e770bc29f43f3509751f927b417f93e",
+          "disposition": "unmerged-pilot-tooling"
+        },
+        {
+          "path": "server/progression.js",
+          "gitBlobSha": "bce843f756632b707378fc7e7c2266c99e7bcad3",
+          "disposition": "passkey-identity-work-superseded-by-main"
+        },
+        {
+          "path": "server/session.js",
+          "gitBlobSha": "fa43381cfada36af02f51fb3fe356663573438bc",
+          "disposition": "passkey-identity-work-superseded-by-main"
+        },
+        {
+          "path": "tests/passkeys.test.js",
+          "gitBlobSha": "88082702ad7078075107e4f7cb9a23b81c322a8e",
+          "disposition": "passkey-identity-work-superseded-by-main"
+        },
+        {
+          "path": "tests/pilot-evaluation.test.js",
+          "gitBlobSha": "5092a8f0330986f60642904292bf78a9e28d9257",
+          "disposition": "unmerged-pilot-tooling"
+        },
+        {
+          "path": "tests/testnet-amount-view.test.js",
+          "gitBlobSha": "a89e80b78827ed92450c852a7e4e539653691a78",
+          "disposition": "unmerged-desk-polish-requires-rebase"
+        },
+        {
+          "path": "tests/testnet-client.test.js",
+          "gitBlobSha": "c13a5ef5d93b6c6beb9e64772148f01edfcc56be",
+          "disposition": "unmerged-desk-polish-requires-rebase"
+        },
+        {
+          "path": "tests/wallet-vault.test.js",
+          "gitBlobSha": "9b2d3f5253bf514049a39c931d9f91f3a3afbdc8",
+          "disposition": "unmerged-wallet-lab"
+        },
+        {
+          "path": "vercel.json",
+          "gitBlobSha": "ab55e2841b6bc8271ee7ca8587dfa75828f17107",
+          "disposition": "mixed-infrastructure-do-not-cherry-pick-whole-file"
+        }
+      ]
+    },
+    {
+      "number": 120,
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/120",
+      "head": "d2a8a9959a8be2870d2fca58261f27eeaf523f4e",
+      "tree": "361ed15e71357dc6af964ecc64a75b8ac6edde48",
+      "reviewedAgainst": "a7eaca32908b30214aaf04730f485c851963ee30",
+      "sourceBranchPreserved": true,
+      "disposition": "paused-open-no-art-production",
+      "files": [
+        {
+          "path": "docs/COLLECTIBLE-PROTOCOL.md",
+          "gitBlobSha": "f714c6eba6376deb82daf349f0f76066acd00072",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/GEEK-500-ART-BIBLE.md",
+          "gitBlobSha": "d0b8e4a0a329725a059e0c68ab28787790d683a3",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/GEEK-500-COLLECTION-STRUCTURE.md",
+          "gitBlobSha": "833e9a7aec00659b691ee55d2244ddfbc74f8592",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/GEEK-ART-PRODUCTION.md",
+          "gitBlobSha": "e952035fdf7b57ecf39837e192f6adfdd4a1d193",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/GEEK-ART-PROGRESS.md",
+          "gitBlobSha": "42def0b245b978ba1c24c5220e341ef72fd9f0f8",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/art/artwork-production.json",
+          "gitBlobSha": "3847a341b9f4e0f2a7640bf210e502a4c483d142",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/ASSET-REGISTER.md",
+          "gitBlobSha": "fec7f71cfaeadb31b8909091c524d2e31972cd01",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/BACKLOG.md",
+          "gitBlobSha": "33b38f94418f70f04f8e091989c96169ac0ab73f",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/CURRENT-STATE.md",
+          "gitBlobSha": "49c554ee52172fa33fe64e62ceb841d7d0c376c6",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/DECISIONS.md",
+          "gitBlobSha": "c7dd3a79a4a86b759fa1206726cfff62d3a304d3",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/WORKLOG.md",
+          "gitBlobSha": "753af3d0ae2367c22ae53d590f1d916c5f50d94a",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/assets.json",
+          "gitBlobSha": "922e7f7dc82938c8978c49037e142b3b75069e8c",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/backlog.json",
+          "gitBlobSha": "8386d65f52ed83d62514422cdc37450de2cfdc5d",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/decisions.json",
+          "gitBlobSha": "fcc781f078a1b45caea5d32bd775c256dbf9c5c8",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/founding/AI-GEEK-SET.md",
+          "gitBlobSha": "f7f29c13df0fd05b5d69c790f739aea14d610ed4",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/founding/PRO-GAMER-GEEK-SET.md",
+          "gitBlobSha": "acbc56f35b6373d97f7b38abdb9444f33b3b4a37",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/founding/README.md",
+          "gitBlobSha": "8bcbab3f357c03b3bfcdb22272daa4e0eea401bb",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/founding/RETRO-GAMER-GEEK-SET.md",
+          "gitBlobSha": "fb2ff9c10a32659cae6547a3bdab5c16542a2ca2",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/founding/SCI-FI-GEEK-SET.md",
+          "gitBlobSha": "29592666b474040b8f2924078d3df81198e1962d",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/founding/ai-geek-set.json",
+          "gitBlobSha": "5179a3707fcd9a096dce0a88b36c24578ee84b9b",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/founding/character-art-sets.json",
+          "gitBlobSha": "090c86996c19e27e2a257f15fb5ce79ba9caae14",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/founding/phone/1 A.I. Geek Common.png",
+          "gitBlobSha": "d5f22a873a68a0118e5855a3ad3ccbf1ce6ce7e5",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/1 Pro Gamer Geek Common.png",
+          "gitBlobSha": "02146a1c65dfc46a823de5c47f51b13762c0f912",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/1 Retro Gamer Geek Common.png",
+          "gitBlobSha": "1d000c4f885c17d98c53a0def3145b70a1c4f5e7",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/1 Sci-Fi Geek Common.png",
+          "gitBlobSha": "b7076e57dfa9cf5aeeaf1cdabc6bd97272f46201",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/2 A.I. Geek  Rare.png",
+          "gitBlobSha": "9ed4de6bd49adca5272a0a6e18862adca3c57440",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/2 Pro Gamer Geek Rare.png",
+          "gitBlobSha": "02f9ea1c52d53f811115e8d7be9b57582bf296ad",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/2 Retro Gamer Geek Rare.png",
+          "gitBlobSha": "4120eb31aecfe0c62ab2bf8b47c82b154994f097",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/2 Sci-Fi Geek Rare.png",
+          "gitBlobSha": "b1fd043acf9d9f0302ab77e7a0c6e5a70cea86db",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/3 A.I. Geek Epic.png",
+          "gitBlobSha": "d139b7568d788ae54a40b31bc2c79803b9d93a25",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/3 Pro Gamer Geek Epic.png",
+          "gitBlobSha": "d664e2a72be8e5a5ceebf1d3c97e4bb70355380e",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/3 Retro Gamer Geek Epic.png",
+          "gitBlobSha": "48f41a2764bf3a5647446ec1e2828b757598950b",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/3 Sci-Fi Geek Epic.png",
+          "gitBlobSha": "05c6bf34a5c07e511bb34783b87ae794e94fbefd",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/4 A.I. Geek Legendary.png",
+          "gitBlobSha": "86f7fad5c75504964e000aaa5d0854b2fe3eeca9",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/4 Pro Gamer Geek Legendary.png",
+          "gitBlobSha": "6d090a61678477810ab2b31cbe5840a849c586f4",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/4 Retro Gamer Geek Legendary.png",
+          "gitBlobSha": "381ad03c0e5ab1a96d5b308b34c960b61b10a04e",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/4 Sci-Fi Geek Legendary.png",
+          "gitBlobSha": "b14f1c430374d7cf650d40b38f4f87c451ef2716",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/5 A.I. Geek Mythic.png",
+          "gitBlobSha": "1ff873bb7ab63eebc47795b2a5cf1861a8887d3e",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/5 Pro Gamer Geek Mythic.png",
+          "gitBlobSha": "e148ba63c5460342b972e7c9543d4314b1cc9c39",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/5 Retro Gamer Geek Mythic.png",
+          "gitBlobSha": "2834a1f01e6e646b99fb45824d5710a566fb54f1",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/phone/5 Sci-Fi Geek Mythic.png",
+          "gitBlobSha": "e1cd4558d95652a89081a83856280f5a73c2ae61",
+          "disposition": "paused-original-art"
+        },
+        {
+          "path": "docs/continuity/founding/pro-gamer-geek-set.json",
+          "gitBlobSha": "68b9dec58a0658684f1d0da8ba207ba8ab8e7f85",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/founding/retro-gamer-geek-set.json",
+          "gitBlobSha": "e209ff0fe9b91b11e64b7459fb14b66d1dab8025",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/founding/sci-fi-geek-set.json",
+          "gitBlobSha": "9dd69cab3057dab43b239c5622db55d0a136d5f3",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "docs/continuity/project.json",
+          "gitBlobSha": "f068e3a38ffb0897885c4e4679dc789fb841e812",
+          "disposition": "paused-art-documentation-tracker"
+        },
+        {
+          "path": "scripts/geek-art-tracker.mjs",
+          "gitBlobSha": "604158e6d9c4e4fd562e6c1b1441aab4d0be2d13",
+          "disposition": "paused-art-documentation-tracker"
+        }
+      ]
+    }
+  ]
+}

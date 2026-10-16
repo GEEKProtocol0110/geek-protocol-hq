@@ -22,7 +22,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | OPS-002 | P1 | decision-needed | Appoint a successor and second trusted maintainer | Founder |
 | ECON-001 | P1 | decision-needed | Specify funded contributor and learner rewards | Founder with economic and legal review |
 | STORE-001 | P2 | planned | Finish the store and equipment experience | Product maintainer unassigned |
-| COLL-001 | P2 | planned | Finish the 500-Geek art and ownership specification | Art lead and ownership reviewer unassigned |
+| COLL-001 | P2 | planned | Reconcile the 500-concept, five-tier artwork plan with the legacy runtime | Art lead and ownership reviewer unassigned |
 | EDU-001 | P1 | planned | Design the first family or school learning pilot | Founder with educator partner unassigned |
 | TECH-001 | P2 | proposed | Design institutional identity and learning exports | Integration maintainer unassigned |
 | GOV-001 | P2 | proposed | Develop an unclassified public-service refresher pilot | Founder with agency sponsor unassigned |
@@ -38,6 +38,11 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-003 | P1 | done | Reduce repeated character art and emphasize the neon-space background | Maintainer |
 | UX-004 | P1 | done | Clarify the Kaspa onboarding identity and add playful Grid discoveries | Maintainer |
 | UX-005 | P0 | needs-evidence | Contain mobile decoration and stabilize page edges | Maintainer |
+| CONT-003 | P0 | active | Reconcile roadmap, stale drafts and current acceptance evidence | Maintainer |
+| WALLET-001 | P1 | planned | Review and isolate the optional Testnet wallet lab retained from #119 | Wallet maintainer; independent wallet reviewer unassigned |
+| CHAIN-003 | P2 | planned | Review retained Testnet reward-desk amount and copy polish | Maintainer |
+| PILOT-002 | P1 | planned | Review retained wallet-safety course and evaluation tooling | Pilot coordinator and instructor unassigned |
+| ART-001 | P2 | blocked | Preserve paused original art and resume production only on founder direction | Founder supplies art; production maintainer unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -199,7 +204,7 @@ Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.m
 
 **P0 / needs-evidence.** Owner: Founder and consenting pilot participants. Dependencies: none.
 
-Next action: Record the remaining phone, saved Quest and two-person Royale outcomes against one exact release.
+Next action: Use the refreshed #137 runtime checklist. Preserve the earlier Quest-resume success, October 16 phone passkey success and limited mobile-edge improvement. Record returning saved-player login, four-chapter completion/replay and a two-person Royale run on actual devices.
 
 Acceptance:
 
@@ -267,19 +272,19 @@ Acceptance:
 
 Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md).
 
-## COLL-001: Finish the 500-Geek art and ownership specification
+## COLL-001: Reconcile the 500-concept, five-tier artwork plan with the legacy runtime
 
 **P2 / planned.** Owner: Art lead and ownership reviewer unassigned. Dependencies: none.
 
-Next action: Review the 18 repeated roster labels and incomplete trait PDF. Confirm whether historical 100/50/25/5/1 cells meant copies per archetype, recover missing sheet rows, and reconcile any proposed supply/theme/edition policy with the current 500-edition plan and GIGA/A.C.E. anchors before changing canon.
+Next action: DR-012 recovers the founder’s 500 concepts × five artwork tiers = 2,500-image direction from paused #120. Resolve repeated names, stable IDs and GIGA/A.C.E. anchors; specify versioned migration while retaining the older 500-slot runtime. Copies per artwork, mint supply and allocations remain unselected; art production stays paused.
 
 Acceptance:
 
-- Exactly 500 editions in five tiers are reconciled.
-- Art provenance, metadata and acquisition allocations approved.
-- Ownership remains disabled until its separate reviewed implementation.
+- 500 character concepts and five artwork tiers are distinct from collectible copies/mint supply.
+- Duplicate names, anchors and versioned character-plus-tier mapping preserve existing IDs/saves.
+- Original asset provenance is retained; new production and ownership remain disabled until their separate authorization/review.
 
-Evidence/specification: [docs/GEEK-500-ART-BIBLE.md](../../docs/GEEK-500-ART-BIBLE.md), [docs/COLLECTIBLE-PROTOCOL.md](../../docs/COLLECTIBLE-PROTOCOL.md), [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md).
+Evidence/specification: [docs/GEEK-500-ART-BIBLE.md](../../docs/GEEK-500-ART-BIBLE.md), [docs/COLLECTIBLE-PROTOCOL.md](../../docs/COLLECTIBLE-PROTOCOL.md), [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md), [docs/GEEK-500-COLLECTION-STRUCTURE.md](../../docs/GEEK-500-COLLECTION-STRUCTURE.md), [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION.md).
 
 ## EDU-001: Design the first family or school learning pilot
 
@@ -494,7 +499,7 @@ Evidence/specification: [docs/GRID-DISCOVERIES.md](../../docs/GRID-DISCOVERIES.m
 
 **P0 / needs-evidence.** Owner: Maintainer. Dependencies: none.
 
-Next action: CSS correction shipped in PR #137 at b194970626b4864286fb25a210b33df14047d3bc. Await actual refreshed-phone scrolling/browser-bar retest; source and desktop checks do not establish device acceptance.
+Next action: Preserve the founder’s October 16 “Ok better” phone-layout report. Broader browser-bar/pinch-zoom/menu acceptance remains part of the remaining free-beta device checks; do not treat improvement as no response or complete device certification.
 
 Acceptance:
 
@@ -504,3 +509,76 @@ Acceptance:
 - Relevant checks and actual release/browser evidence distinguish source/desktop checks from physical-phone acceptance.
 
 Evidence/specification: [docs/MOBILE-ONBOARDING.md](../../docs/MOBILE-ONBOARDING.md), [public/assets/atmosphere.css](../../public/assets/atmosphere.css), [public/assets/home.css](../../public/assets/home.css), [public/assets/styles.css](../../public/assets/styles.css).
+
+## CONT-003: Reconcile roadmap, stale drafts and current acceptance evidence
+
+**P0 / active.** Owner: Maintainer. Dependencies: none.
+
+Next action: Finish documentation validation, retire superseded #119 without deleting its branch, mark #120 paused and publish the exact checked checkpoint.
+
+Acceptance:
+
+- Every old PR changed-file blob is inventoried at an exact head and retained work has stable backlog IDs.
+- Current roadmap, beta source/dependency evidence and limited founder phone observations agree.
+- Superseded passkey draft cannot be mistaken for a merge candidate; paused art stays preserved.
+- Continuity, repository, inventory and documentation checks pass; final PR/check/merge evidence is retained.
+
+Evidence/specification: [docs/ROADMAP-CHECKPOINT.md](../../docs/ROADMAP-CHECKPOINT.md), [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION.md), [docs/continuity/pr-reconciliation.json](../../docs/continuity/pr-reconciliation.json), [docs/FREE-BETA-READINESS.md](../../docs/FREE-BETA-READINESS.md).
+
+## WALLET-001: Review and isolate the optional Testnet wallet lab retained from #119
+
+**P1 / planned.** Owner: Wallet maintainer; independent wallet reviewer unassigned. Dependencies: none.
+
+Next action: Start a fresh scoped branch from current main and review the pinned lab/SDK/backup files from superseded #119. Do not reuse its old authentication, lockfile or CSP wholesale. No new lab implementation is authorized by roadmap cleanup.
+
+Acceptance:
+
+- Reviewed artifact/SDK integrity and restrictive origin/CSP design.
+- Locally generated Testnet-only material, encrypted backup and verified actual-device restore; no existing recovery phrase requested by login.
+- Account passkeys remain distinct from wallet-key unlocking; independent security/recovery acceptance precedes any custody expansion.
+
+Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION.md), [docs/continuity/pr-reconciliation.json](../../docs/continuity/pr-reconciliation.json).
+
+## CHAIN-003: Review retained Testnet reward-desk amount and copy polish
+
+**P2 / planned.** Owner: Maintainer. Dependencies: none.
+
+Next action: Extract only the pinned exact-unit formatter/copy/state guidance onto current main. Review unavailable/denied/stalled clipboard and current owner-client boundaries before a separate implementation.
+
+Acceptance:
+
+- Integer base units and validated decimals produce exact wallet amounts.
+- Copy failures have usable manual selection and never send a transaction.
+- One-send/same-hash reconciliation and existing Daily/receipt authorization remain unchanged.
+
+Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION.md), [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md).
+
+## PILOT-002: Review retained wallet-safety course and evaluation tooling
+
+**P1 / planned.** Owner: Pilot coordinator and instructor unassigned. Dependencies: PILOT-001.
+
+Next action: Review pinned course/evaluation files from superseded #119 against the pilot charter before extracting them. Appoint a coordinator and approve assessments/privacy/consent before recruitment.
+
+Acceptance:
+
+- Approved objective/assessment mapping, authority, accessibility/privacy and stop rules before any recruitment.
+- Evaluation distinguishes missing follow-ups and descriptive paired results without treating them as verified learning outcomes.
+- Real delivery/data disposition evidence stays private; no public learner records or automatic rewards.
+
+Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION.md), [docs/continuity/PILOT-CHARTER.md](../../docs/continuity/PILOT-CHARTER.md).
+
+## ART-001: Preserve paused original art and resume production only on founder direction
+
+**P2 / blocked.** Owner: Founder supplies art; production maintainer unassigned. Dependencies: none.
+
+Next action: Keep #120 and its exact twenty original PNGs/tracker intact. Await founder resumption; review against current continuity before any merge.
+
+Blocker: Founder paused further collection-art production; additional GIGA/A.C.E. art awaits supply.
+
+Acceptance:
+
+- Original filenames/bytes/provenance remain intact at the pinned paused head.
+- 500 concepts × five artworks remain distinct from finished-image and collectible-supply counts.
+- A separate founder resumption precedes additional generation/production; runtime migration remains COLL-001.
+
+Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION.md), [docs/continuity/pr-reconciliation.json](../../docs/continuity/pr-reconciliation.json), [docs/GEEK-500-COLLECTION-STRUCTURE.md](../../docs/GEEK-500-COLLECTION-STRUCTURE.md).

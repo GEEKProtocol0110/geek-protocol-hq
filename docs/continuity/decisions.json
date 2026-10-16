@@ -53,7 +53,7 @@
     },
     {
       "id": "DR-005",
-      "status": "existing-direction",
+      "status": "superseded",
       "title": "Preserve the five-tier 500-Geek collection",
       "decision": "The edition plan is 500 in Common/Rare/Epic/Legendary/Mythic, separate from question counts.",
       "basis": "Existing founder collection direction and manifest.",
@@ -169,6 +169,33 @@
       "basis": "Founder clarified the ecosystem identity and asked about Easter eggs/fun on October 16, 2026.",
       "evidence": [
         "docs/GRID-DISCOVERIES.md"
+      ],
+      "recordedAt": "2026-10-16",
+      "supersedes": null
+    },
+    {
+      "id": "DR-012",
+      "status": "founder-direction",
+      "title": "500 character concepts, each with five rarity artworks",
+      "decision": "Plan 500 Geek character concepts with Common, Rare, Epic, Legendary and Mythic artwork for every concept: 2,500 distinct planned images. This corrects the earlier interpretation of 500 total editions. Artwork count does not determine collectible copies per artwork, mint supply or acquisition allocations.",
+      "basis": "Founder clarified October 15, 2026: \u201cSo you see the direction I went with the 500 geek. 2500 different images.\u201d Three supplied five-tier sets demonstrate the intended structure. Runtime manifest migration remains COLL-001 work. Recovered into main during October 16 PR reconciliation; later fourth-set intake remains preserved in paused PR #120. No art production or runtime migration resumed.",
+      "evidence": [
+        "docs/GEEK-500-COLLECTION-STRUCTURE.md",
+        "docs/PR-RECONCILIATION.md",
+        "docs/continuity/pr-reconciliation.json"
+      ],
+      "recordedAt": "2026-10-15",
+      "supersedes": "DR-005"
+    },
+    {
+      "id": "DR-016",
+      "status": "founder-direction",
+      "title": "Regroup around beta loose ends, preservation and the reviewed learning path",
+      "decision": "Reconcile older PRs and current roadmap first, then close remaining beta evidence and independent backup/provider-recovery evidence, continue reviewed Kaspa content, complete the existing manual Testnet receipt pilot and inspect ecosystem components. Preserve paused art and all economic/security holds.",
+      "basis": "Founder asked to regroup around the roadmap and loose ends, then approved the proposed roadmap-housekeeping/PR-reconciliation step on October 16. This does not authorize a new wallet, mainnet settlement, art production, recruitment or provider cutover.",
+      "evidence": [
+        "docs/ROADMAP-CHECKPOINT.md",
+        "docs/PR-RECONCILIATION.md"
       ],
       "recordedAt": "2026-10-16",
       "supersedes": null

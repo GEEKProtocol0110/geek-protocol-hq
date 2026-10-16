@@ -40,3 +40,8 @@ Founder supplied a phone screenshot and reported sideways movement and a zooming
 Source diagnosis: the narrow `.hq-space-code` rule positioned its right edge at `-2rem` outside the scene while the legacy `.home-main .hero` rule used `overflow:visible`. That combination permits decoration to extend the document horizontally. The correction brings both mobile code rails inside, clips decorative children at the home hero, and uses horizontal `clip` on the shared root/body without disabling vertical scrolling or pinch zoom. The shared fixed cosmos gets paint containment. On narrow screens its grid is flat/static and uses stable `100lvh` height (with a `100vh` fallback), keeping perspective/percentage geometry from changing as mobile browser bars expand or collapse. Content font sizes and viewport zoom settings are unchanged.
 
 Relevant existing onboarding/motion/holiday tests and the full verification suite remain required. Desktop preview/live layout, computed containment and navigation can be checked here; physical-phone browser-bar transitions and narrow-device acceptance require a subsequent device observation.
+
+
+## Founder improvement report — October 16, 2026
+
+At 1:00 PM Detroit, after the #137 correction, the founder reported “Ok better.” This records a limited phone-layout improvement observation. It does not identify browser/version or explicitly complete browser-bar transitions, pinch zoom, expanded menus or the full device matrix. Preserve the report; do not treat it as no response or as full free-beta acceptance.
