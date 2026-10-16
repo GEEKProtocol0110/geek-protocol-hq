@@ -168,3 +168,12 @@ Use one entry per substantive session/interruption: task ID, exact review/commit
 - **Production:** standard read-only monitor at 2026-10-16T03:41:03.589Z passed 21/21 probes under existing deadlines. Candidate verification passed 455 tests, no failures/skips, required real Redis 7.4.2 and 311 security assertions. No authenticated user proof, actual device clipboard, wallet signature or transaction executed by the agent.
 - **Pickup:** AUTH-002 remains needs-evidence until the founder retries on Android/KasWare. PR #119 remains the separate unmerged passkey/testnet-wallet draft. PR #120 retains twenty original PNGs, four supplied sets and the 2,500-slot planning tracker; founder paused art intake/generation. No new uploads are required to continue product fixes.
 - **Record:** append observed PR #118/#121 releases and Git metadata through the login merge, retain older ledger entries, and advance the verified product checkpoint. Copies per artwork, art-runtime migration, CCE and settlement holds are unaffected.
+
+
+## October 16, 2026 — AUTH-002 mobile capability blocker
+
+- **Founder result:** KasWare mobile does not expose the feature described in the previous instructions. Exact app version and a complete compatibility test remain unavailable. Record the reported blocker without claiming universal absence across mobile builds.
+- **Correction:** remove unconditional Explore → connect → sign directions from the live-page candidate. Explain biometric wallet unlocking versus signing, the actual capability required for each route, and the guest path’s saved-player limitation. Preserve PR #121’s copying behavior. Correct current protocol, release note and maintained pickup; keep historical release evidence.
+- **Scope:** text and continuation records only. No authenticator, session, signature, provider, key handling, payout or wallet action changed. PR #119 remains draft; no passkey deployment is claimed. Artwork remains paused.
+- **Next:** isolate passkey login from the broad five-leaps draft, verify against current main and retain existing-player ownership requirements. A new guest passkey must never be presented as recovery of another player. Do not send the founder through unavailable mobile signing again.
+- **Validation:** 15 existing copy, guest-route and redirect client tests passed; continuity generation/check and repository presentation check passed. Text-only change; full backend tests were not rerun locally. No physical phone or authenticated sign-in success is claimed.

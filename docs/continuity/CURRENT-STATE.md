@@ -25,9 +25,9 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-002: needs-evidence.** Mobile login-copy fix is merged/deployed in PR #121 with 455 candidate tests and 21 production probes passed. Live new phone guidance observed. Founder retries Android/KasWare login; artwork intake/generation is paused in unmerged PR #120.
+**AUTH-002: blocked.** Founder reports the suggested KasWare mobile feature is unavailable; PR #121 clipboard deployment did not resolve phone login. Correct the unsupported Explore guidance. Wallet-independent passkeys remain in unmerged draft PR #119; artwork stays paused.
 
-Next task: **AUTH-002**. Retry the live login page on Android: Copy message, Select entire message/manual Copy, or connect from KasWare Explore on Mainnet. Record actual phone result under AUTH-002. PR #119 passkey/testnet-wallet acceptance remains pending. Keep art work paused; BANK-001 and CHAIN-001 remain outstanding.
+Next task: **AUTH-002**. Isolate and verify the passkey login work from draft PR #119 against current main, retaining the deployed copy fix. Confirm enrollment, returning sign-in and existing-player recovery boundaries; do not ask the founder to retry unavailable wallet signing. Guest learning remains browser-local; artwork stays paused.
 
 ## Holds
 
