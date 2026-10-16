@@ -408,7 +408,7 @@ Evidence/specification: [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEE
 
 **P1 / in-progress.** Owner: Maintainer archives; founder reviews interpretation. Dependencies: none.
 
-Next action: Review codex/archive-scifi-originals and its five byte-identical originals; retain null edition mappings until COLL-001 resolves the art specification.
+Next action: Review open PR #120 / codex/archive-scifi-originals and its five byte-identical originals; retain null edition mappings until COLL-001 resolves the art specification.
 
 Acceptance:
 

@@ -25,7 +25,7 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**ARCH-003: in-progress.** Archive five newly supplied Sci-Fi Geek rarity PNGs on codex/archive-scifi-originals. Separate draft PR #119 has passkey/testnet-wallet work at 3b291065aad6dd2901225ab2f83100cb0277030b with passing GitHub verification; device acceptance is outstanding.
+**ARCH-003: in-progress.** Archive five newly supplied Sci-Fi Geek rarity PNGs in open PR #120 / codex/archive-scifi-originals, not merged. Separate draft PR #119 has passkey/testnet-wallet work at 3b291065aad6dd2901225ab2f83100cb0277030b with passing GitHub verification; device acceptance is outstanding.
 
 Next task: **BANK-001**. Review the Sci-Fi original archive; PR #119 remains separate and awaits phone passkey/backup acceptance. BANK-001 continues from merged PR #118 / 580 Kaspa toward 1,000. CHAIN-001 still needs one actual reconciled testnet reward.
 

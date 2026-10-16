@@ -525,7 +525,7 @@
       "status": "in-progress",
       "title": "Preserve the five founder-supplied Sci-Fi Geek rarity originals",
       "owner": "Maintainer archives; founder reviews interpretation",
-      "nextAction": "Review codex/archive-scifi-originals and its five byte-identical originals; retain null edition mappings until COLL-001 resolves the art specification.",
+      "nextAction": "Review open PR #120 / codex/archive-scifi-originals and its five byte-identical originals; retain null edition mappings until COLL-001 resolves the art specification.",
       "acceptance": [
         "Five original filenames and PNG bytes retained with SHA-256, Git blobs, dimensions and supplied provenance.",
         "Duplicate check scope and links to roster source-252 / PDF row-252 recorded.",
