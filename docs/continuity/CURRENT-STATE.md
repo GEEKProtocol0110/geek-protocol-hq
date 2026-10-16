@@ -25,7 +25,7 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**OPS-001: needs-evidence.** Offline restore tooling internally verified: mandatory distinct production/restored hosts, fail-closed targeting/provider replies, a final transient-credential scan, and native-snapshot fresh-passkey recovery. Full verification passed 489 tests and 311 security assertions. Production provider retention/restore and independent review remain unverified; see the focused recovery PR for release state.
+**OPS-001: needs-evidence.** Offline restore tooling released in PR #129, merge 9e43107c2a027ddf18900d2c072f19dcaaf5b94e. Exact head 5a8ae292d8013d04e78b46d032f42bb7ffe119a3 passed GitHub verify and Vercel; merge-source deployment succeeded. Full local verification passed 489 tests and 311 security assertions. Production provider retention/restore and independent review remain unverified; preserve the working founder phone passkey.
 
 Next task: **OPS-001**. Verify actual production backup retention and an isolated provider restore privately; reconcile post-backup credential revocations before access reopens. Independent authentication review and physical-device recovery remain separate. Preserve the working phone player/passkey. Reconcile draft #119 before more features; artwork #120 stays paused; settlement stays disabled.
 
