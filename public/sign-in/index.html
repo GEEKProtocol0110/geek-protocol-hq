@@ -4,13 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#080b0b" />
-    <meta name="description" content="Sign in to Geek Protocol with a Kaspa wallet, recover your saved player, or continue as a guest." />
+    <meta name="description" content="Sign in to Geek Protocol with a passkey or Kaspa wallet, recover your saved player, or continue as a guest." />
     <title>Sign in — Geek Protocol</title>
     <link rel="canonical" href="https://www.geekprotocol.xyz/sign-in/" />
     <link rel="stylesheet" href="/assets/styles.css" />
     <link rel="stylesheet" href="./assets/sign-in.css" />
     <script defer src="/assets/site.js"></script>
     <script defer src="./assets/sign-in.js"></script>
+    <script defer src="./assets/passkeys.js"></script>
     <script defer src="/assets/wallet.js"></script>
   </head>
   <body>
@@ -21,8 +22,18 @@
       <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="/study/">Learn</a><a href="/quest/">Adventure</a><a href="/play/">Play</a><a href="/profile/">My HQ</a><a href="/sign-in/" aria-current="page">Sign in</a></nav>
     </header>
     <main id="main" class="sign-in-main">
-      <div class="sign-in-intro"><span class="section-kicker">Your player account</span><h1>Welcome back,<br /><em>Geek.</em></h1><p>Continue as a guest to learn and play, or use a Kaspa wallet to protect and recover your saved player. Choose the path that works on your phone.</p></div>
+      <div class="sign-in-intro"><span class="section-kicker">Your player account</span><h1>Welcome back,<br /><em>Geek.</em></h1><p>Continue as a guest to learn and play, or use a passkey or Kaspa wallet to protect and recover your saved player. Choose the path that works on your phone.</p></div>
       <div class="sign-in-guest"><a href="/profile/" class="button button-secondary" data-sign-in-continue>Continue as a guest →</a><p>You can learn and play without a wallet. Guest progress stays with this browser’s session.</p></div>
+      <section class="sign-in-card" data-passkeys aria-labelledby="passkey-title">
+        <h2 id="passkey-title">Sign in with a passkey</h2>
+        <p>Save a passkey and return with your device’s fingerprint, face or screen lock. No wallet connection or copied message is needed. If this browser already holds a wallet-linked player, adding a passkey requires fresh wallet proof.</p>
+        <div class="sign-in-actions"><button type="button" class="button button-primary" data-passkey-login disabled>Sign in with a passkey</button></div>
+        <label for="passkey-label">Passkey name</label><input id="passkey-label" data-passkey-label maxlength="40" placeholder="My phone" autocomplete="off" />
+        <div class="sign-in-actions"><button type="button" class="button button-secondary" data-passkey-save disabled>Create a passkey for this player</button><button type="button" class="button button-secondary" data-passkey-logout disabled>Sign out on this browser</button></div>
+        <p data-passkey-note role="status" aria-live="polite">Checking passkey support…</p><ul data-passkey-list></ul>
+        <div data-passkey-wallet-help hidden><p>For an existing player, sign in with a saved passkey first. If you have a linked wallet, verify it below to authorize a new passkey.</p><button type="button" class="button button-secondary" data-passkey-wallet-authorize>Authorize with my linked wallet</button></div>
+        <p class="sign-in-note">Signing into another player replaces this browser’s player; separate guest progress is not merged. Keep another passkey saved through your trusted credential manager, a second authenticator, or your linked wallet. Without a remaining recovery method, Geek cannot restore access. Never enter a wallet recovery phrase here.</p>
+      </section>
       <section class="sign-in-card" aria-labelledby="sign-in-title">
         <h2 id="sign-in-title">Sign in with Kaspa</h2>
         <ol class="sign-in-steps"><li><b>Choose your address.</b> Connect a browser wallet or paste your Kaspa address.</li><li><b>Sign the login message.</b> Geek Protocol verifies a one-time signature.</li><li><b>Open My HQ.</b> Continue your progress or change your profile name.</li></ol>

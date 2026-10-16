@@ -18,7 +18,9 @@
   if (returningToStart) { hq.href = '/start/#step-geek'; hq.textContent = 'Continue to your Geek →'; continueLink.href = '/start/#step-geek'; continueLink.textContent = 'Continue as a guest →'; }
   const destination = nextPage[1].replace(' →', '') + ' when you’re ready.';
   let signedIn = false;
+  let proofIntent = 'identity';
   const showSignedIn = (message) => { status.textContent = message; hq.hidden = false; continueLink.textContent = nextPage[1]; };
+  document.addEventListener('geek:passkey-signed-in', () => { signedIn = true; invalidate(); manualStatus.textContent = ''; proofIntent = 'identity'; showSignedIn(`Signed in with a passkey. ${destination}`); hq.focus(); });
   document.addEventListener('geek:signed-in', (event) => {
     signedIn = true;
     showSignedIn(event.detail.recovered ? `Signed in. Your saved player has been recovered. ${destination}` : `Signed in. Your player is protected by this wallet. ${destination}`);
@@ -31,7 +33,7 @@
       const payload = await response.json();
       if (signedIn) return;
       if (response.ok && payload.identity?.linked) showSignedIn(`You are already signed in with a verified wallet. ${destination}`);
-      else if (response.status === 401 || (response.ok && !payload.identity?.linked)) status.textContent = 'Guest profile. Choose a wallet or use your Kaspa address below to sign in.';
+      else if (response.status === 401 || (response.ok && !payload.identity?.linked)) status.textContent = 'Guest profile. Create a passkey to save this player, or sign in with one you already saved.';
       else throw new Error('Session check unavailable');
     })
     .catch(() => { if (!signedIn) status.textContent = 'Your session could not be checked. You can retry wallet sign-in below or reload this page.'; })
@@ -70,13 +72,17 @@
       throw error;
     } finally { clearTimeout(timer); }
   };
+  document.addEventListener('geek:passkey-wallet-proof', () => {
+    invalidate(); proofIntent = 'passkey'; document.querySelector('[data-manual-method]').open = true;
+    manualStatus.textContent = 'Enter your linked address and sign the passkey-authorization message. This grants another way to access this player.'; addressInput.focus();
+  });
   addressInput.addEventListener('input', () => { invalidate(); manualStatus.textContent = 'Create a new message for this address.'; });
   addressForm.addEventListener('submit', async event => {
     event.preventDefault(); if (pending) return;
     invalidate(); busy(true); manualStatus.textContent = 'Creating your one-time login message…';
     try {
       await request('/api/session', {});
-      const issued = await request('/api/identity', { action: 'challenge', intent: 'identity', address: addressInput.value.trim() });
+      const issued = await request('/api/identity', { action: 'challenge', intent: proofIntent, address: addressInput.value.trim() });
       challenge = issued.challenge;
       messageInput.value = challenge.message;
       proofStep.hidden = false;
@@ -133,6 +139,10 @@
     try {
       const verified = await request('/api/identity', { action: 'verify', challengeId, signature });
       if (!verified.identity?.linked) throw new Error('Wallet ownership could not be verified.');
+      if (verified.passkeyAuthorization) {
+        invalidate(); proofIntent = 'identity'; manualStatus.textContent = 'Wallet verified. Return to Create a passkey above.';
+        document.dispatchEvent(new CustomEvent('geek:passkey-grant', { detail: { token: verified.passkeyAuthorization.token } })); return;
+      }
       invalidate(); manualStatus.textContent = `Ownership verified. ${destination}`;
       document.dispatchEvent(new CustomEvent('geek:signed-in', { detail: { recovered: Boolean(verified.recovered) } }));
     } catch (error) { invalidate(); manualStatus.textContent = `${error.message} Create a new login message before retrying.`; }

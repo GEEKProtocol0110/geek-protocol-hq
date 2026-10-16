@@ -138,3 +138,8 @@ The founder reports that the described mobile feature is not available in their 
 The sign-in page no longer directs every mobile user through Explore or assumes a missing connection can be replaced by manual message signing. Both routes require actual signing capability. A device without either capability can continue guest learning in its current browser; guest play neither recovers nor merges a different saved player. Do not clear browser data, move keys, or create a substitute wallet to address this blocker.
 
 AUTH-002 remains blocked for this phone. The next implementation task is to isolate and verify the wallet-independent passkey work from draft PR #119 while preserving the deployed copy fix. It is not merged or deployed. First-time passkey enrollment for a guest would protect that current player; it cannot grant access to an existing wallet-linked player without a valid existing session or ownership proof. No address-only recovery or weaker wallet verification is introduced by this correction.
+
+
+## Wallet-independent passkey access — October 16, 2026
+
+The focused [passkey login protocol](PASSKEY-LOGIN.md) adds a separate player-access credential without changing Kaspa proof validation or payout authorization. Passkeys protect the current player and recover a player with an enrolled credential; first-time guest enrollment cannot bypass ownership of an older wallet-linked identity. Wallet-linked enrollment still requires fresh explicit authorization. This supersedes the earlier statement that all passkey work remains only in the broad PR #119; consult the focused release PR for merged/deployed status and actual phone acceptance.

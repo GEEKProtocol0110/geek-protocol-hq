@@ -25,9 +25,9 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-002: blocked.** Founder reports the suggested KasWare mobile feature is unavailable; PR #121 clipboard deployment did not resolve phone login. Correct the unsupported Explore guidance. Wallet-independent passkeys remain in unmerged draft PR #119; artwork stays paused.
+**AUTH-002: needs-evidence.** Focused passkey login is implemented on current main, preserving the mobile copy fix and guidance correction. Full local verification passes 471 tests and 311 security assertions; dependency audit zero vulnerabilities. Review/merge/deployment and physical-phone acceptance are recorded in the focused release PR; artwork remains paused.
 
-Next task: **AUTH-002**. Isolate and verify the passkey login work from draft PR #119 against current main, retaining the deployed copy fix. Confirm enrollment, returning sign-in and existing-player recovery boundaries; do not ask the founder to retry unavailable wallet signing. Guest learning remains browser-local; artwork stays paused.
+Next task: **AUTH-002**. Check the focused passkey release PR for exact merge/deployment evidence, then verify phone enrollment and returning login at /sign-in/. Keep existing wallet-linked recovery proof intact; a new guest passkey cannot recover a different player. PR #119 must be reconciled before its remaining features can merge.
 
 ## Holds
 

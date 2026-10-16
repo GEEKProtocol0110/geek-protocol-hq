@@ -60,6 +60,7 @@ export const validateSessionRecord = (record, sessionId) => {
   // Pre-identity guest records may omit playerId/version/timestamps. Validate every
   // field that is present instead of inferring a link from a truthy string.
   assert(!record.identityVersion || hex(record.playerId, 32), code);
+  assert(record.passkeyEpoch === undefined || (integer(record.passkeyEpoch, 1) && hex(record.playerId, 32)), code);
   for (const field of ['createdAt', 'lastSeen']) {
     assert(record[field] === undefined || integer(record[field], 1), code);
   }
@@ -82,7 +83,8 @@ export const challengeMessage = ({ origin, intent, address, payoutAddress, nonce
     link: 'LINK PLAYER IDENTITY',
     recover: 'RECOVER PLAYER IDENTITY',
     'payout-set': 'AUTHORIZE PAYOUT DESTINATION',
-    'payout-remove': 'AUTHORIZE PAYOUT REMOVAL'
+    'payout-remove': 'AUTHORIZE PAYOUT REMOVAL',
+    'passkey-add': 'AUTHORIZE PASSKEY ACCOUNT ACCESS'
   };
   return [
     'GEEK Protocol Identity Proof',
@@ -107,7 +109,7 @@ export const validateChallengeRecord = (record, challengeId) => {
   assert(object(record) && record.version === PROOF_VERSION
     && hex(record.challengeId, 40) && record.challengeId === challengeId
     && hex(record.sessionId, 32) && hex(record.requesterPlayerId, 32) && hex(record.targetPlayerId, 32)
-    && ['link', 'recover', 'payout-set', 'payout-remove'].includes(record.intent)
+    && ['link', 'recover', 'payout-set', 'payout-remove', 'passkey-add'].includes(record.intent)
     && record.scheme === SIGNATURE_SCHEME && walletMatches(record)
     && typeof record.origin === 'string' && /^https:\/\/[a-z0-9.-]+$/.test(record.origin)
     && typeof record.message === 'string' && record.message.length <= 2000
