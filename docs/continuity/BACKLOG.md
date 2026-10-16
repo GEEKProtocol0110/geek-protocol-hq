@@ -209,7 +209,7 @@ Evidence/specification: [docs/FREE-BETA-READINESS.md](../../docs/FREE-BETA-READI
 
 **P0 / needs-evidence.** Owner: Founder; private account custodian unassigned. Dependencies: none.
 
-Next action: The offline restore-safety checks pass internally (489 full tests, 311 security assertions); see the associated PR for exact release status. Verify owner MFA, actual provider retention and a provider restore into an isolated destination next. Confirm both hosts independently, reconcile security changes after the backup point, and record evidence privately.
+Next action: Offline restore safety shipped in PR #129 (merge 9e43107c2a027ddf18900d2c072f19dcaaf5b94e; exact-head GitHub/Vercel and merge-source deployment passed; 489 local tests, 311 security assertions). Verify owner MFA, actual provider retention and a provider restore into an isolated destination next. Confirm both hosts independently, reconcile security changes after the backup point, and record evidence privately.
 
 Acceptance:
 

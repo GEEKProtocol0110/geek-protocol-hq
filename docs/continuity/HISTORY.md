@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-The ledger preserves **112 merged HQ PR records** and **211 Git commit records** through the declared commit snapshot `c972e27301bc461a526230806d5e781adac05e50`. The product runtime baseline remains #127. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
+The ledger preserves **116 merged HQ PR records** and **215 Git commit records** through the declared commit snapshot `9e43107c2a027ddf18900d2c072f19dcaaf5b94e`. The product runtime baseline remains #127. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
 
 ## Founding record
 
@@ -12,7 +12,11 @@ Three exact historical master/litepaper snapshots are preserved with source comm
 
 | PR | Merged (UTC) | Change | Commit |
 | --- | --- | --- | --- |
+| [#129](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/129) | 2026-10-16T12:41:36Z | Protect offline restore targets and verify passkey recovery | `9e43107c2a02` |
+| [#128](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/128) | 2026-10-16T12:19:59Z | Record deployed polish release and recovery handoff | `96a71d52d54c` |
 | [#127](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/127) | 2026-10-16T12:14:55Z | Simplify newcomer sign-in and harden saved-player reliability | `dfcb64f9ce3e` |
+| [#126](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/126) | 2026-10-16T06:39:18Z | Record the founder’s successful phone passkey result | `26b97263c36b` |
+| [#125](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/125) | 2026-10-16T05:47:45Z | Keep revoked sessions revoked and save the deployed passkey checkpoint | `b8af2c9a5e35` |
 | [#124](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/124) | 2026-10-16T05:37:11Z | Add passkey sign-in without KasWare message signing | `c972e27301bc` |
 | [#123](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/123) | 2026-10-16T04:23:44Z | Correct KasWare mobile login instructions and record the signing blocker | `b9a2e8ab2d58` |
 | [#122](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/122) | 2026-10-16T03:45:18Z | Record the deployed mobile-login fix and paused artwork checkpoint | `3defa649efeb` |

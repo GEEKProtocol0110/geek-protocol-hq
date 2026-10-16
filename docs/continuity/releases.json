@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "checkedAt": "2026-10-16",
-  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1–2 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused.",
+  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127.",
   "records": [
     {
       "number": 1,
@@ -439,7 +439,7 @@
     },
     {
       "number": 68,
-      "title": "Add Trivia Royale with configurable 2–100-player rooms",
+      "title": "Add Trivia Royale with configurable 2\u2013100-player rooms",
       "mergedAt": "2026-10-08T11:56:20Z",
       "commit": "053c7e708327c9b8448579bd2141bf09f7337662",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/68"
@@ -786,6 +786,34 @@
       "mergedAt": "2026-10-16T12:14:55Z",
       "commit": "dfcb64f9ce3eb281f91ada9d3f6c7432c5b1855a",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/127"
+    },
+    {
+      "number": 125,
+      "title": "Keep revoked sessions revoked and save the deployed passkey checkpoint",
+      "mergedAt": "2026-10-16T05:47:45Z",
+      "commit": "b8af2c9a5e359babca55e40771c409137848ad9b",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/125"
+    },
+    {
+      "number": 126,
+      "title": "Record the founder\u2019s successful phone passkey result",
+      "mergedAt": "2026-10-16T06:39:18Z",
+      "commit": "26b97263c36b63abe09028b536e838bd5bcc1f86",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/126"
+    },
+    {
+      "number": 128,
+      "title": "Record deployed polish release and recovery handoff",
+      "mergedAt": "2026-10-16T12:19:59Z",
+      "commit": "96a71d52d54c262f97a1f67d7c3e9de684cd1a04",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/128"
+    },
+    {
+      "number": 129,
+      "title": "Protect offline restore targets and verify passkey recovery",
+      "mergedAt": "2026-10-16T12:41:36Z",
+      "commit": "9e43107c2a027ddf18900d2c072f19dcaaf5b94e",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/129"
     }
   ]
 }

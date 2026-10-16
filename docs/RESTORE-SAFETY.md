@@ -1,6 +1,6 @@
 # Offline restore safety
 
-October 16, 2026. OPS-001 candidate based on main after PR #128, commit `96a71d52d54c262f97a1f67d7c3e9de684cd1a04`.
+October 16, 2026. OPS-001 tooling released in [PR #129](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/129), based on main after PR #128, commit `96a71d52d54c262f97a1f67d7c3e9de684cd1a04`.
 
 The earlier cleanup command rejected the application database only when its URL was also configured in the recovery environment. An isolated recovery shell could lack that configuration. The updated command requires both `--production-host` and `--restored-host`, rejects equality before any request and still rejects configured application hosts. The operator must independently identify both databases in the provider console and keep the restored target offline. An incorrect confirmation or an unrecognized provider alias cannot be detected by this script.
 
@@ -23,3 +23,5 @@ See [Backup and recovery](BACKUP-RECOVERY.md) for the updated dry-run/apply comm
 Focused checks: 24 tests passed. Full `npm run verify` passed 489 tests, zero failures/skips, native Redis 7.4.2, 311 security assertions and all bank/catalog/readiness, collection/archive, repository, economy and continuity checks. Production dependency audit: zero vulnerabilities. Real synthetic WebAuthn cryptography is exercised. Exact head, CI and release result belong in the associated PR; local checks alone do not establish merge or deployment.
 
 Production database backup scheduling, retention, restore and measured recovery time remain unverified. No production database or owner credential was read, changed, revoked or restored during this work. Physical-device recovery, credential-manager sync and independent review remain separate. The founder's successful phone flow is preserved. Draft #119 needs reconciliation; artwork #120 stays paused. All settlement, CCE and ownership holds remain unchanged.
+
+Release: merged at `9e43107c2a027ddf18900d2c072f19dcaaf5b94e` on October 16 at 12:41:36 UTC. Exact head `5a8ae292d8013d04e78b46d032f42bb7ffe119a3` passed GitHub verify (run 38902194798), Vercel Preview Comments and Vercel deployment checks. Merge-source Vercel succeeded. This is deployed repository tooling; no production restore was performed.
