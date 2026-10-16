@@ -588,10 +588,10 @@
     {
       "id": "UX-002",
       "priority": "P1",
-      "status": "active",
+      "status": "done",
       "title": "Bring GIGA, A.C.E. and seasonal cosmic styling throughout HQ",
       "owner": "Maintainer",
-      "nextAction": "Verify shared guide panels, star/coder styling, removed motion toggle and holiday rendering; publish the focused change and record actual browser/deployment evidence.",
+      "nextAction": "Shipped in PR #131 at 472249a0793b39e3c6f2f9cf5121167a0d970412. Preserve regression coverage; follow up on real-phone/narrow-viewport and rendered seasonal QA. Resume OPS-001 provider recovery evidence separately.",
       "acceptance": [
         "Existing GIGA and A.C.E. art and authored guide copy appear across public pages without changing selected player avatars or game state.",
         "Shared cosmic backgrounds and subtle code styling work at narrow widths; the old animation button is absent and motion respects reduced-motion/data-saver/visibility constraints.",
@@ -607,6 +607,11 @@
         "public/assets/site.js",
         "public/assets/holiday-theme.js",
         "tests/appearance.test.js"
+      ],
+      "completedAt": "2026-10-16",
+      "completionEvidence": [
+        "Exact head d5e86e48829e0bbc144a0cfdde17b3cd5403462b passed GitHub verify and Vercel; merge-source Vercel succeeded. 493 local tests, zero failures/skips, 311 security assertions and zero dependency vulnerabilities.",
+        "Preview desktop home/Quest/Duel/sign-in and canonical live home checked; portraits loaded, guides outside questions/forms and no horizontal overflow. Motion button absent. Actual phone/narrow-viewport and all rendered seasonal previews remain unverified; responsive CSS and seasonal logic/palettes were internally checked. No production appearance setting was changed."
       ]
     }
   ]
