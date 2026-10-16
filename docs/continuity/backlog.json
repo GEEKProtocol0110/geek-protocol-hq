@@ -84,9 +84,9 @@
       "id": "BANK-001",
       "priority": "P0",
       "status": "active",
-      "title": "Grow Kaspa from 500 toward 1,000 reviewed concepts",
+      "title": "Grow Kaspa from 580 toward 1,000 reviewed concepts",
       "owner": "Content maintainer; independent editor unassigned",
-      "nextAction": "Review unmerged PR #118: 80 additions across convention, KasWare integration and Toccata app-design batches, for 580 internally source-checked Kaspa concepts. Continue distinct primary-source facts toward 1,000 (420 remain). Introductory Study remains 537; independent editorial review is unassigned.",
+      "nextAction": "PR #118 merged at 606d06a861428f96b633152d32d3e8954e3e209d: 580 internally source-checked Kaspa concepts. Continue distinct primary-source facts toward 1,000 (420 remain). Introductory Study remains 537; independent editorial review is unassigned.",
       "acceptance": [
         "1,000 distinct source-checked Kaspa concepts with explanations and review dates.",
         "No padded variants; existing issued answers remain compatible.",
@@ -250,16 +250,21 @@
       "status": "needs-evidence",
       "title": "Verify operator access and managed-data recovery",
       "owner": "Founder; private account custodian unassigned",
-      "nextAction": "Verify owner MFA and a provider restore into an isolated destination; record evidence privately.",
+      "nextAction": "The offline restore-safety checks pass internally (489 full tests, 311 security assertions); see the associated PR for exact release status. Verify owner MFA, actual provider retention and a provider restore into an isolated destination next. Confirm both hosts independently, reconcile security changes after the backup point, and record evidence privately.",
       "acceptance": [
         "Named account custodians can recover access without publishing credentials.",
         "Provider backup retention and isolated restore are measured.",
-        "Restored sessions are revoked before any recovery exposure."
+        "Restored sessions are revoked before any recovery exposure.",
+        "Cleanup requires distinct explicit production/restored hosts even without application environment configuration, rejects malformed/ambiguous targeting, bounds provider requests without automatic write retries, and checks for remaining transient credentials.",
+        "A native snapshot test rejects restored bearer cookies and one-time proofs after cleanup, then recovers the same player and saved progress with a fresh signed passkey proof; provider/device acceptance remains separate."
       ],
       "dependsOn": [],
       "evidence": [
         "docs/OPERATOR-SECURITY.md",
-        "docs/BACKUP-RECOVERY.md"
+        "docs/BACKUP-RECOVERY.md",
+        "docs/RESTORE-SAFETY.md",
+        "tests/recovery-safety.test.js",
+        "tests/passkeys.test.js"
       ]
     },
     {

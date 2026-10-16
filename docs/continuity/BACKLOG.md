@@ -9,7 +9,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CONT-001 | P0 | done | Publish the continuation system | Maintainer; release reviewed by founder |
 | CONT-002 | P0 | planned | Make and verify an independent source backup | Founder or appointed repository custodian |
 | ARCH-001 | P1 | blocked | Ingest founding originals and reconcile chronology | Founder supplies originals; archivist unassigned |
-| BANK-001 | P0 | active | Grow Kaspa from 500 toward 1,000 reviewed concepts | Content maintainer; independent editor unassigned |
+| BANK-001 | P0 | active | Grow Kaspa from 580 toward 1,000 reviewed concepts | Content maintainer; independent editor unassigned |
 | BANK-002 | P1 | planned | Reach 1,000 reviewed Video games concepts | Content editor unassigned |
 | BANK-003 | P1 | planned | Reach 1,000 reviewed Science fiction concepts | Content editor unassigned |
 | BANK-004 | P1 | planned | Reach 1,000 reviewed Technology concepts | Content editor unassigned |
@@ -79,11 +79,11 @@ Acceptance:
 
 Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity/ARCHIVE-GUIDE.md), [docs/continuity/assets.json](../../docs/continuity/assets.json).
 
-## BANK-001: Grow Kaspa from 500 toward 1,000 reviewed concepts
+## BANK-001: Grow Kaspa from 580 toward 1,000 reviewed concepts
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Review unmerged PR #118: 80 additions across convention, KasWare integration and Toccata app-design batches, for 580 internally source-checked Kaspa concepts. Continue distinct primary-source facts toward 1,000 (420 remain). Introductory Study remains 537; independent editorial review is unassigned.
+Next action: PR #118 merged at 606d06a861428f96b633152d32d3e8954e3e209d: 580 internally source-checked Kaspa concepts. Continue distinct primary-source facts toward 1,000 (420 remain). Introductory Study remains 537; independent editorial review is unassigned.
 
 Acceptance:
 
@@ -209,15 +209,17 @@ Evidence/specification: [docs/FREE-BETA-READINESS.md](../../docs/FREE-BETA-READI
 
 **P0 / needs-evidence.** Owner: Founder; private account custodian unassigned. Dependencies: none.
 
-Next action: Verify owner MFA and a provider restore into an isolated destination; record evidence privately.
+Next action: The offline restore-safety checks pass internally (489 full tests, 311 security assertions); see the associated PR for exact release status. Verify owner MFA, actual provider retention and a provider restore into an isolated destination next. Confirm both hosts independently, reconcile security changes after the backup point, and record evidence privately.
 
 Acceptance:
 
 - Named account custodians can recover access without publishing credentials.
 - Provider backup retention and isolated restore are measured.
 - Restored sessions are revoked before any recovery exposure.
+- Cleanup requires distinct explicit production/restored hosts even without application environment configuration, rejects malformed/ambiguous targeting, bounds provider requests without automatic write retries, and checks for remaining transient credentials.
+- A native snapshot test rejects restored bearer cookies and one-time proofs after cleanup, then recovers the same player and saved progress with a fresh signed passkey proof; provider/device acceptance remains separate.
 
-Evidence/specification: [docs/OPERATOR-SECURITY.md](../../docs/OPERATOR-SECURITY.md), [docs/BACKUP-RECOVERY.md](../../docs/BACKUP-RECOVERY.md).
+Evidence/specification: [docs/OPERATOR-SECURITY.md](../../docs/OPERATOR-SECURITY.md), [docs/BACKUP-RECOVERY.md](../../docs/BACKUP-RECOVERY.md), [docs/RESTORE-SAFETY.md](../../docs/RESTORE-SAFETY.md), [tests/recovery-safety.test.js](../../tests/recovery-safety.test.js), [tests/passkeys.test.js](../../tests/passkeys.test.js).
 
 ## OPS-002: Appoint a successor and second trusted maintainer
 

@@ -12,7 +12,7 @@ import { identityPlayerKey } from '../server/identity-keys.js';
 import { resetRestoredSessions } from '../scripts/reset-restored-sessions.mjs';
 
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
-let beforeCommand = null;
+let beforeCommand = null, activeFixture = fixture;
 process.env.UPSTASH_REDIS_REST_URL = 'https://redis.passkeys.test';
 process.env.UPSTASH_REDIS_REST_TOKEN = 'synthetic-passkey-fixture';
 process.env.AUDIT_LOG_SECRET = 'synthetic-passkey-audit-32-characters';
@@ -20,8 +20,8 @@ globalThis.fetch = async (url, options) => {
   assert.ok(String(url).startsWith('https://redis.passkeys.test'));
   const command = JSON.parse(options.body);
   await beforeCommand?.(command);
-  const payload = String(url).endsWith('/multi-exec') ? (await fixture.commands([['MULTI'], ...command, ['EXEC']])).at(-1).map(result => ({ result }))
-    : String(url).endsWith('/pipeline') ? (await fixture.commands(command)).map(result => ({ result })) : { result: await fixture.command(...command) };
+  const payload = String(url).endsWith('/multi-exec') ? (await activeFixture.commands([['MULTI'], ...command, ['EXEC']])).at(-1).map(result => ({ result }))
+    : String(url).endsWith('/pipeline') ? (await activeFixture.commands(command)).map(result => ({ result })) : { result: await activeFixture.command(...command) };
   return new Response(JSON.stringify(payload));
 };
 after(async () => { globalThis.fetch = originalFetch; await fixture.close(); });
@@ -138,6 +138,56 @@ test('offline restore reset removes passkey challenges and management grants whi
   const dry = await resetRestoredSessions({command:fixture.command});assert.equal(dry.matched,2);assert.equal(dry.removed,0);
   const applied = await resetRestoredSessions({command:fixture.command,apply:true});assert.equal(applied.removed,2);
   assert.equal(await fixture.command('GET',account),'synthetic-durable-record');
+});
+
+test('native snapshot recovery rejects restored cookies and proofs, then signs into the same saved player with a fresh passkey proof', async () => {
+  const original = await session(), player = original.split('=')[1];
+  const oldSession = JSON.parse(await fixture.command('GET', 'geek:session:' + player));
+  oldSession.createdAt = 1700000000000;
+  await fixture.command('SET', 'geek:session:' + player, JSON.stringify(oldSession));
+  const enrolled = await enroll(original);
+  const pending = await call(passkeysHandler, enrolled.cookie, { action: 'begin-login' });
+  assert.equal(pending.statusCode, 200);
+  const staleProof = enrolled.key.login(pending.body.options, player);
+  const profile = JSON.stringify({ xp: 1234, balance: 87, journey: [{ id: 'restored-synthetic-progress' }] });
+  const samples = {
+    ['geek:profile:' + player]: profile,
+    ['geek:player-name:' + player]: 'Restored Geek',
+    [passkeyAccountKey(player)]: await fixture.command('GET', passkeyAccountKey(player)),
+    ['geek:passkey:credential:v1:' + hash(enrolled.key.id).toString('hex')]: player,
+    'geek:ops:totp:replay:synthetic': '42'
+  };
+  for (const [key, value] of Object.entries(samples)) await fixture.command('SET', key, value);
+  const restored = await redisFixture({ snapshot: await fixture.snapshot() });
+  try {
+    await fixture.command('FLUSHDB'); // Force every handler read to use the restored instance.
+    activeFixture = restored;
+    assert.equal((await call(passkeysHandler, enrolled.cookie, null, 'GET')).statusCode, 200);
+    const dry = await resetRestoredSessions({ command: restored.command });
+    assert.ok(dry.matched >= 3); assert.equal(dry.removed, 0);
+    const cleanup = await resetRestoredSessions({ command: restored.command, apply: true });
+    assert.equal(cleanup.removed, dry.matched);
+    assert.equal((await call(passkeysHandler, enrolled.cookie, null, 'GET')).statusCode, 401);
+    for (const [key, value] of Object.entries(samples)) assert.equal(await restored.command('GET', key), value);
+    assert.equal(await restored.command('GET', 'geek:passkey:challenge:v1:' + pending.body.challengeId), null);
+    assert.equal(await restored.command('GET', 'geek:passkey:grant:v1:' + hash(enrolled.grant).toString('hex')), null);
+
+    const guest = await session();
+    const stale = await call(passkeysHandler, guest, { action: 'finish-login', challengeId: pending.body.challengeId, response: staleProof });
+    assert.equal(stale.statusCode, 400); assert.equal(stale.headers['Set-Cookie'], undefined);
+    const begin = await call(passkeysHandler, guest, { action: 'begin-login' });
+    const finish = await call(passkeysHandler, guest, { action: 'finish-login', challengeId: begin.body.challengeId, response: enrolled.key.login(begin.body.options, player) });
+    assert.equal(finish.statusCode, 200, JSON.stringify(finish.body));
+    const cookie = cookieFrom(finish);
+    const saved = JSON.parse(await restored.command('GET', 'geek:session:' + cookie.split('=')[1]));
+    assert.equal(saved.playerId, player); assert.equal(saved.name, 'Restored Geek');
+    assert.equal(saved.createdAt, oldSession.createdAt);
+    assert.equal(await restored.command('GET', 'geek:profile:' + player), profile);
+    assert.equal((await call(passkeysHandler, cookie, null, 'GET')).body.signedIn, true);
+    const staleGrant = await call(passkeysHandler, cookie, { action: 'delete', token: enrolled.grant, credentialId: enrolled.key.id });
+    assert.equal(staleGrant.statusCode, 400); assert.equal(staleGrant.body.code, 'PASSKEY_REAUTH_REQUIRED');
+    assert.equal((await call(passkeysHandler, cookie, null, 'GET')).body.credentials.length, 1);
+  } finally { activeFixture = fixture; await restored.close(); }
 });
 
 test('linking a wallet after passkey-only signup preserves the player and requires explicit passkey re-enrollment', async () => {

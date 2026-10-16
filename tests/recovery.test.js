@@ -75,9 +75,27 @@ test('restore cleanup defaults read-only, deletes only bearer sessions and one-t
     for(const key of durable)assert.equal(await fixture.command('GET',key),'synthetic');
     assert.deepEqual(await resetRestoredSessions({command:fixture.command,apply:true}),{mode:'applied',matched:0,removed:0});
     const env={RECOVERY_REDIS_REST_URL:'https://restore.example',RECOVERY_REDIS_REST_TOKEN:'synthetic'};
-    assert.equal(recoveryTarget(env,'restore.example'),'https://restore.example');
-    assert.throws(()=>recoveryTarget(env,'wrong.example')); assert.throws(()=>recoveryTarget({...env,UPSTASH_REDIS_REST_URL:'https://restore.example/'},'restore.example'));
+    assert.equal(recoveryTarget(env,'restore.example','production.example'),'https://restore.example');
+    assert.throws(()=>recoveryTarget(env,'wrong.example','production.example')); assert.throws(()=>recoveryTarget({...env,UPSTASH_REDIS_REST_URL:'https://restore.example/'},'restore.example','production.example'));
     let wrote=false;
     await assert.rejects(resetRestoredSessions({apply:true,command:async name=>{if(name==='DEL')wrote=true;return ['0',['geek:profile:player']];}})); assert.equal(wrote,false);
   } finally {await fixture.close();}
+});
+
+test('a lost cleanup reply stops without retrying and a later offline rerun finishes the remaining batch', async () => {
+  const fixture = await redisFixture();
+  try {
+    for (let i = 0; i < 101; i++) await fixture.command('SET', `geek:session:synthetic-${i}`, 'synthetic');
+    await fixture.command('SET', 'geek:profile:synthetic', 'durable-profile');
+    let deletions = 0;
+    await assert.rejects(resetRestoredSessions({ apply: true, command: async (...values) => {
+      const result = await fixture.command(...values);
+      if (values[0] === 'DEL') { deletions++; throw new Error('synthetic-lost-reply'); }
+      return result;
+    } }), /synthetic-lost-reply/);
+    assert.equal(deletions, 1);
+    assert.deepEqual(await resetRestoredSessions({ command: fixture.command }), { mode: 'dry-run', matched: 1, removed: 0 });
+    assert.deepEqual(await resetRestoredSessions({ command: fixture.command, apply: true }), { mode: 'applied', matched: 1, removed: 1 });
+    assert.equal(await fixture.command('GET', 'geek:profile:synthetic'), 'durable-profile');
+  } finally { await fixture.close(); }
 });

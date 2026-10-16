@@ -25,9 +25,9 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**OPS-001: needs-evidence.** UX-001 shipped in PR #127. Prioritize independent authentication review and a production-provider recovery exercise; keep the working player/passkey intact. Founder phone success remains accepted; separate returning/cross-device/revocation evidence is still open.
+**OPS-001: needs-evidence.** Offline restore tooling internally verified: mandatory distinct production/restored hosts, fail-closed targeting/provider replies, a final transient-credential scan, and native-snapshot fresh-passkey recovery. Full verification passed 489 tests and 311 security assertions. Production provider retention/restore and independent review remain unverified; see the focused recovery PR for release state.
 
-Next task: **OPS-001**. Verify recoverable production backups and an isolated provider restore, then independent authentication/security review and physical-device recovery checks. Reconcile draft #119 before more features; artwork #120 stays paused. Do not enable settlement or collect recovery phrases.
+Next task: **OPS-001**. Verify actual production backup retention and an isolated provider restore privately; reconcile post-backup credential revocations before access reopens. Independent authentication review and physical-device recovery remain separate. Preserve the working phone player/passkey. Reconcile draft #119 before more features; artwork #120 stays paused; settlement stays disabled.
 
 ## Holds
 
