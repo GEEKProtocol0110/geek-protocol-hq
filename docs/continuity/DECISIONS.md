@@ -123,3 +123,13 @@ Reuse established GIGA and A.C.E. character art across public HQ pages, add more
 Basis: Founder request October 16, 2026; this visual scope does not resume the separate paused collection-art production draft.
 
 Evidence: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md).
+
+## DR-014: Reduce character prominence while more GIGA/A.C.E. art is pending
+
+**founder-direction** · 2026-10-16.
+
+Dial back the repeated GIGA/A.C.E. art and emphasize space/neon/glitch/coder backgrounds. Remove the new per-page character panels and large home portrait; retain established story contexts. Keep the revised holiday catalog, richer seasonal styling and removed motion button.
+
+Basis: Founder correction October 16 after reviewing PR #131: more character artwork will be supplied later. This supersedes the broad character-prominence choice, not the retained holiday direction.
+
+Evidence: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md). Supersedes DR-013.

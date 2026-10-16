@@ -8,7 +8,7 @@ Sign in to Operations with the existing owner key, then open **Holiday themes** 
 | Automatic | Follow the celebration windows below; standard appearance between holidays |
 | On | Choose a holiday and keep it on until changed |
 
-The preview is local until **Save holiday settings**. Saving applies fixed accent colors, seasonal header borders, edge ornaments, card glows, character badges and a greeting in the GIGA/A.C.E. guide panel to public pages using the shared site script. Each holiday has distinct motifs; Christmas uses snowflakes and trees, Halloween pumpkins and moons, Easter a cross and spring flowers, and Thanksgiving autumn leaves. The private workspace remains in its usual style. Decorations are static, use no external assets, and do not change questions, timers, scoring, profiles or funds.
+The preview is local until **Save holiday settings**. Saving applies fixed accent colors, seasonal header borders, edge ornaments, card glows, character badges and a compact seasonal greeting to public pages using the shared site script. Each holiday has distinct motifs; Christmas uses snowflakes and trees, Halloween pumpkins and moons, Easter a cross and spring flowers, and Thanksgiving autumn leaves. The private workspace remains in its usual style. Decorations are static, use no external assets, and do not change questions, timers, scoring, profiles or funds.
 
 ## Automatic calendar
 
@@ -51,6 +51,12 @@ Only the fixed catalog's IDs are accepted. Settings cannot supply CSS, HTML, arb
 
 MLK Day and Juneteenth are removed from manual choices and automatic windows at the founder’s request. A structurally valid saved selection for either retired ID displays Off without rewriting the underlying record; an owner can save a new listed holiday with its existing revision. New saves of retired IDs are rejected. Other malformed state still fails closed.
 
-Shared GIGA and A.C.E. guide panels use the existing local character art and authored page-specific copy; they are not a live AI chat. Seasonal greetings follow the selected theme and clear on Off, a retired ID or failed reads. Repeated reads of the same active theme do not duplicate ornaments. Holiday decoration remains static and click-through, and does not change questions, timers or scores. The operator preview includes matching seasonal motifs and borders.
+The initial release added shared GIGA/A.C.E. panels. The founder subsequently requested less repeated character art; those panels are retired. Compact seasonal greetings follow the selected theme and clear on Off, a retired ID or failed reads. Repeated reads of the same active theme do not duplicate ornaments. Holiday decoration remains static and click-through, and does not change questions, timers or scores. The operator preview includes matching seasonal motifs and borders.
 
 The public shell adds a star field, quiet nebula backgrounds, terminal labels and a brief hover code shift. The old space-animation toggle is removed. Canvas motion runs for at most five seconds of visible time per scene, with static stars afterward; reduced-motion, data-saver and hidden-page behavior remain supported. No recurring flashing effect or continuous code animation is added.
+
+## Background emphasis — October 16 correction
+
+The founder requested less GIGA/A.C.E. prominence while more character art is pending, and stronger space/neon/glitch/coder backgrounds. Remove the injected per-page character panels and extra A.C.E. portrait treatment. Replace the large home portrait with a local decorative neon constellation. Keep established story/learning characters in their existing contexts; original artwork remains unchanged.
+
+A fixed, click-through background combines cyan/violet nebula glows, brighter stars, a perspective neon grid, faint scanlines and decorative code fragments. Code-text flicker is a low-opacity, one-time 3.5-second entrance; reduced-motion and narrow layouts disable it. The existing bounded canvas motion remains unchanged and no animation button returns. The code texture is aria-hidden, authored decoration, not live terminal output or a data stream. Seasonal greeting space is absent when no holiday is active. The former characters.js URL imports the replacement atmosphere module for cached-shell compatibility.

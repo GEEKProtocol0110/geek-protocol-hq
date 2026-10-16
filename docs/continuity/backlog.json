@@ -613,6 +613,27 @@
         "Exact head d5e86e48829e0bbc144a0cfdde17b3cd5403462b passed GitHub verify and Vercel; merge-source Vercel succeeded. 493 local tests, zero failures/skips, 311 security assertions and zero dependency vulnerabilities.",
         "Preview desktop home/Quest/Duel/sign-in and canonical live home checked; portraits loaded, guides outside questions/forms and no horizontal overflow. Motion button absent. Actual phone/narrow-viewport and all rendered seasonal previews remain unverified; responsive CSS and seasonal logic/palettes were internally checked. No production appearance setting was changed."
       ]
+    },
+    {
+      "id": "UX-003",
+      "priority": "P1",
+      "status": "active",
+      "title": "Reduce repeated character art and emphasize the neon-space background",
+      "owner": "Maintainer",
+      "nextAction": "Verify and release the background-focused correction, including browser confirmation that repeated character panels are absent and the constellation asset loads.",
+      "acceptance": [
+        "Newly injected GIGA/A.C.E. panels and portrait treatment are removed; established story guides and original art remain available.",
+        "The large home portrait gives way to a decorative local constellation and stronger neon-space/coder backgrounds.",
+        "Background layers remain aria-hidden, click-through and bounded for motion preferences; holiday greetings and the reduced holiday catalog still work.",
+        "Relevant checks and actual release/browser evidence are recorded without claiming unperformed phone or seasonal QA."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/HOLIDAY-THEMES.md",
+        "public/assets/atmosphere.js",
+        "public/assets/atmosphere.css",
+        "public/assets/neon-constellation.svg"
+      ]
     }
   ]
 }

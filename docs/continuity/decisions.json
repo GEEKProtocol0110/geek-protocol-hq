@@ -148,6 +148,18 @@
       ],
       "recordedAt": "2026-10-16",
       "supersedes": null
+    },
+    {
+      "id": "DR-014",
+      "status": "founder-direction",
+      "title": "Reduce character prominence while more GIGA/A.C.E. art is pending",
+      "decision": "Dial back the repeated GIGA/A.C.E. art and emphasize space/neon/glitch/coder backgrounds. Remove the new per-page character panels and large home portrait; retain established story contexts. Keep the revised holiday catalog, richer seasonal styling and removed motion button.",
+      "basis": "Founder correction October 16 after reviewing PR #131: more character artwork will be supplied later. This supersedes the broad character-prominence choice, not the retained holiday direction.",
+      "evidence": [
+        "docs/HOLIDAY-THEMES.md"
+      ],
+      "recordedAt": "2026-10-16",
+      "supersedes": "DR-013"
     }
   ]
 }
