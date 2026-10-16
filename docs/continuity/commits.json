@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "capturedAt": "2026-10-16",
-  "through": "31be106bcecf01da78c18cd9afb37901f177d517",
-  "scope": "Preserved HQ commit metadata plus observed Git objects through PR #133. Runtime baseline is #133. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation.",
+  "through": "4a12ec8b4cff78c6042ec6c65b7b6027d3af7352",
+  "scope": "Preserved HQ commit metadata plus observed Git objects through PR #135. Runtime baseline is #135. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -1849,6 +1849,40 @@
       ],
       "authoredAt": "2026-10-16T11:23:25-04:00",
       "title": "Merge pull request #133 from GEEKProtocol0110/codex/neon-background-focus"
+    },
+    {
+      "commit": "c37796fd86864a4112aabe64d5e887236fc3a5ea",
+      "parents": [
+        "31be106bcecf01da78c18cd9afb37901f177d517"
+      ],
+      "authoredAt": "2026-10-16T11:25:32-04:00",
+      "title": "Record the deployed background correction and pending character art"
+    },
+    {
+      "commit": "99209b4198e1025171b1991d0f250a3f8b06df2a",
+      "parents": [
+        "31be106bcecf01da78c18cd9afb37901f177d517",
+        "c37796fd86864a4112aabe64d5e887236fc3a5ea"
+      ],
+      "authoredAt": "2026-10-16T11:27:15-04:00",
+      "title": "Merge pull request #134 from GEEKProtocol0110/codex/neon-focus-release"
+    },
+    {
+      "commit": "4f36f40372a9f367be0bbc4f316db1aa98f1b27c",
+      "parents": [
+        "99209b4198e1025171b1991d0f250a3f8b06df2a"
+      ],
+      "authoredAt": "2026-10-16T11:35:35-04:00",
+      "title": "Clarify Kaspa onboarding identity and add optional Grid discoveries"
+    },
+    {
+      "commit": "4a12ec8b4cff78c6042ec6c65b7b6027d3af7352",
+      "parents": [
+        "99209b4198e1025171b1991d0f250a3f8b06df2a",
+        "4f36f40372a9f367be0bbc4f316db1aa98f1b27c"
+      ],
+      "authoredAt": "2026-10-16T11:38:19-04:00",
+      "title": "Merge pull request #135 from GEEKProtocol0110/codex/grid-discoveries"
     }
   ]
 }

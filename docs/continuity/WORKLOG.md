@@ -282,3 +282,10 @@ Use one entry per substantive session/interruption: task ID, exact review/commit
 - **Verification:** targeted interaction tests, full verification and exact release/browser evidence follow.
 
 - **Full checks:** 496 tests passed, zero failures/skips, required real Redis 7.4.2, 311 security assertions and all supporting bank/catalog/archive/collection/repository/economy/continuity checks. Syntax and whitespace checks passed. Deployment and rendered browser evidence follow.
+
+
+## October 16, 2026 — UX-004 released
+
+- **Release:** [PR #135](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/135), merged `4a12ec8b4cff78c6042ec6c65b7b6027d3af7352` at 15:38:19 UTC. Exact head `4f36f40372a9f367be0bbc4f316db1aa98f1b27c`, tree `b6caa3bfd2a0cfaf5da44e800a8184455737a4c3`, passed GitHub verify run 38925222445 and Vercel; merge-source Vercel succeeded.
+- **Verification:** 496 full local tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and supporting checks. Preview desktop verified native open/closed discovery, binary shortcut, typed `/HoPe`, ping, one terminal, >=44px controls and no horizontal overflow. Canonical live home confirmed identity copy/title and working binary reveal. No production appearance setting changed. No physical-phone/narrow-viewport or complete seasonal visual acceptance; no new counted HTTP-monitor probes.
+- **Continuation:** UX-004 is shipped; baseline advances to #135. Append observed #134/#135 release metadata and four intervening Git records. Keep reduced character direction/pending art and all economic/security holds. Resume OPS-001 provider recovery and independent auth evidence. This checkpoint changes documentation only; regenerate/check continuity and whitespace, without rerunning the unchanged runtime suite.
