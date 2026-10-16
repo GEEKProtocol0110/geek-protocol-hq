@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "capturedAt": "2026-10-16",
-  "through": "9e43107c2a027ddf18900d2c072f19dcaaf5b94e",
-  "scope": "Preserved historical HQ commit records plus observed current-branch GitHub metadata through PR #129. Product runtime baseline remains #127. Git dates are metadata, not founding proof; this ledger does not export reviews, attachments or provider state.",
+  "through": "472249a0793b39e3c6f2f9cf5121167a0d970412",
+  "scope": "Preserved HQ commit metadata plus observed current-branch Git objects through PR #131. Runtime baseline is #131. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -1765,6 +1765,48 @@
       ],
       "authoredAt": "2026-10-16T12:41:35Z",
       "title": "Merge pull request #129 from GEEKProtocol0110/codex/restore-safety"
+    },
+    {
+      "commit": "1bea22e15500a07d6b728ea6b6ae02ebfdb54d37",
+      "parents": [
+        "9e43107c2a027ddf18900d2c072f19dcaaf5b94e"
+      ],
+      "authoredAt": "2026-10-16T08:43:17-04:00",
+      "title": "Record the shipped restore-safety release and next recovery evidence"
+    },
+    {
+      "commit": "0c3e89f16d7d5d5ee2b1ed54f078591ba5d8c48d",
+      "parents": [
+        "9e43107c2a027ddf18900d2c072f19dcaaf5b94e",
+        "1bea22e15500a07d6b728ea6b6ae02ebfdb54d37"
+      ],
+      "authoredAt": "2026-10-16T08:44:29-04:00",
+      "title": "Merge pull request #130 from GEEKProtocol0110/codex/restore-release"
+    },
+    {
+      "commit": "5a3fc0c54dffa679213d8c9235e370f975afc369",
+      "parents": [
+        "0c3e89f16d7d5d5ee2b1ed54f078591ba5d8c48d"
+      ],
+      "authoredAt": "2026-10-16T10:59:48-04:00",
+      "title": "Bring GIGA and A.C.E. throughout HQ with cosmic and holiday atmosphere"
+    },
+    {
+      "commit": "d5e86e48829e0bbc144a0cfdde17b3cd5403462b",
+      "parents": [
+        "5a3fc0c54dffa679213d8c9235e370f975afc369"
+      ],
+      "authoredAt": "2026-10-16T11:02:28-04:00",
+      "title": "Frame A.C.E. closer in the shared companion portrait"
+    },
+    {
+      "commit": "472249a0793b39e3c6f2f9cf5121167a0d970412",
+      "parents": [
+        "0c3e89f16d7d5d5ee2b1ed54f078591ba5d8c48d",
+        "d5e86e48829e0bbc144a0cfdde17b3cd5403462b"
+      ],
+      "authoredAt": "2026-10-16T11:04:08-04:00",
+      "title": "Merge pull request #131 from GEEKProtocol0110/codex/characters-cosmic-holidays"
     }
   ]
 }

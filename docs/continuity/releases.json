@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "checkedAt": "2026-10-16",
-  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127.",
+  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127. Observed #130/#131 merges added; #131 is the character/cosmic/holiday release.",
   "records": [
     {
       "number": 1,
@@ -814,6 +814,20 @@
       "mergedAt": "2026-10-16T12:41:36Z",
       "commit": "9e43107c2a027ddf18900d2c072f19dcaaf5b94e",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/129"
+    },
+    {
+      "number": 130,
+      "title": "Record released restore safety and the remaining provider recovery work",
+      "mergedAt": "2026-10-16T12:44:29Z",
+      "commit": "0c3e89f16d7d5d5ee2b1ed54f078591ba5d8c48d",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/130"
+    },
+    {
+      "number": 131,
+      "title": "Bring GIGA and A.C.E. across HQ with richer space and holiday themes",
+      "mergedAt": "2026-10-16T15:04:09Z",
+      "commit": "472249a0793b39e3c6f2f9cf5121167a0d970412",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/131"
     }
   ]
 }

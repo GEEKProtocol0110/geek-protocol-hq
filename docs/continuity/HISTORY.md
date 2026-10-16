@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-The ledger preserves **116 merged HQ PR records** and **215 Git commit records** through the declared commit snapshot `9e43107c2a027ddf18900d2c072f19dcaaf5b94e`. The product runtime baseline remains #127. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
+The ledger preserves **118 merged HQ PR records** and **220 Git commit records** through the declared commit snapshot `472249a0793b39e3c6f2f9cf5121167a0d970412`. The product runtime baseline remains #131. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
 
 ## Founding record
 
@@ -12,6 +12,8 @@ Three exact historical master/litepaper snapshots are preserved with source comm
 
 | PR | Merged (UTC) | Change | Commit |
 | --- | --- | --- | --- |
+| [#131](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/131) | 2026-10-16T15:04:09Z | Bring GIGA and A.C.E. across HQ with richer space and holiday themes | `472249a0793b` |
+| [#130](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/130) | 2026-10-16T12:44:29Z | Record released restore safety and the remaining provider recovery work | `0c3e89f16d7d` |
 | [#129](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/129) | 2026-10-16T12:41:36Z | Protect offline restore targets and verify passkey recovery | `9e43107c2a02` |
 | [#128](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/128) | 2026-10-16T12:19:59Z | Record deployed polish release and recovery handoff | `96a71d52d54c` |
 | [#127](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/127) | 2026-10-16T12:14:55Z | Simplify newcomer sign-in and harden saved-player reliability | `dfcb64f9ce3e` |

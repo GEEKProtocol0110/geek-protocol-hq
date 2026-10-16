@@ -34,7 +34,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ARCH-002 | P1 | done | Preserve the founder-supplied theme roster and trait sheet | Maintainer archives; founder reviews interpretation |
 | AUTH-002 | P0 | needs-evidence | Resolve mobile login when wallet message signing is unavailable | Maintainer implements and verifies; founder confirms physical-phone passkeys |
 | UX-001 | P0 | done | Simplify first visits and close current reliability gaps | Maintainer |
-| UX-002 | P1 | active | Bring GIGA, A.C.E. and seasonal cosmic styling throughout HQ | Maintainer |
+| UX-002 | P1 | done | Bring GIGA, A.C.E. and seasonal cosmic styling throughout HQ | Maintainer |
 
 ## CONT-001: Publish the continuation system
 
@@ -443,9 +443,9 @@ Evidence/specification: [docs/NEW-PLAYER-POLISH.md](../../docs/NEW-PLAYER-POLISH
 
 ## UX-002: Bring GIGA, A.C.E. and seasonal cosmic styling throughout HQ
 
-**P1 / active.** Owner: Maintainer. Dependencies: none.
+**P1 / done.** Owner: Maintainer. Dependencies: none.
 
-Next action: Verify shared guide panels, star/coder styling, removed motion toggle and holiday rendering; publish the focused change and record actual browser/deployment evidence.
+Next action: Shipped in PR #131 at 472249a0793b39e3c6f2f9cf5121167a0d970412. Preserve regression coverage; follow up on real-phone/narrow-viewport and rendered seasonal QA. Resume OPS-001 provider recovery evidence separately.
 
 Acceptance:
 
