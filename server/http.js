@@ -87,9 +87,11 @@ export const handleApiError = (res, error) => {
   if (code === 'REDIS_NOT_CONFIGURED') {
     return sendJson(res, 503, { ok: false, code: 'SERVICE_NOT_CONFIGURED', error: 'Community services are waiting for a database connection.' });
   }
+  if (code.startsWith('REDIS_')) return sendJson(res, 503, { ok: false, code: 'SERVICE_UNAVAILABLE', error: 'Saved-player services are temporarily unavailable. Reload to check your saved state before trying again.' });
   if (code === 'OPS_ROLE_FORBIDDEN') return sendJson(res, 403, { ok: false, error: 'Operator access was not accepted.' });
   if (code === 'OPS_NOT_CONFIGURED') return sendJson(res, 503, { ok: false, error: 'Private operator access is unavailable.' });
   if (code === 'RATE_LIMITED') return sendJson(res, 429, { ok: false, error: 'Slow down and try again in a moment.' });
+  if (code === 'SESSION_CHANGED') return sendJson(res, 409, { ok: false, code, error: 'Your player session changed. Reload to check your saved player before trying again.' });
   if (code === 'SESSION_REQUIRED') return sendJson(res, 401, { ok: false, error: 'Start a player session first.' });
   if (code === 'DUEL_NOT_FOUND') return sendJson(res, 404, { ok: false, code, error: 'This Duel invitation has expired.' });
   if (code === 'DUEL_FULL') return sendJson(res, 409, { ok: false, code, error: 'Both Duel seats are already reserved. Create a new Duel.' });

@@ -100,7 +100,7 @@ test('concurrent operator tabs cannot overwrite a newer choice and failed saves 
 
 test('lost save responses are recovered by reading the saved revision without repeating the write', async () => {
   const cookie = await login(); loseSaveReply = true;
-  assert.equal((await save(cookie, 0)).statusCode, 500);
+  assert.equal((await save(cookie, 0)).statusCode, 503);
   const read = await call({ cookie }); assert.equal(read.body.config.revision, 1); assert.equal(read.body.config.holiday, 'christmas');
   assert.equal((await save(cookie, 0, 'manual', 'halloween')).statusCode, 409); assert.equal((await record()).holiday, 'christmas');
 });

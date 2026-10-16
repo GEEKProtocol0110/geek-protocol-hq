@@ -222,9 +222,9 @@
     setText('[data-rank-title]', progression.title);
     setText('[data-rank-title-copy]', progression.title.toUpperCase());
     setText('[data-member-since]', safeDate(player.memberSince));
-    setText('[data-recovery]', player.walletProtected ? 'Kaspa wallet protected' : 'Saved in this browser');
-    setText('[data-protection]', player.walletProtected ? 'Recovery enabled' : 'Browser profile');
-    $('[data-protection]').classList.toggle('protected', player.walletProtected);
+    setText('[data-recovery]', player.walletProtected ? 'Kaspa wallet protected' : player.passkeyProtected ? 'Passkey protected' : 'Saved in this browser');
+    setText('[data-protection]', player.walletProtected || player.passkeyProtected ? 'Recovery enabled' : 'Browser profile');
+    $('[data-protection]').classList.toggle('protected', Boolean(player.walletProtected || player.passkeyProtected));
     setText('[data-level]', progression.level);
     setText('[data-prestige]', `PRESTIGE ${progression.prestige} / 25`);
     setText('[data-level-xp]', `${format.format(progression.levelXp)} / ${format.format(progression.levelXpRequired)} XP`);

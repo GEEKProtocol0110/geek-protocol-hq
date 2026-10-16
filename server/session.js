@@ -8,6 +8,23 @@ import { decodeIdentityRecord, decodeSessionRecord, validateSessionRecord } from
 const keyFor = (id) => `geek:session:${id}`;
 // Keep names separate from game profiles so concurrent score writes cannot undo an edit.
 const nameKeyFor = (id) => `geek:player-name:${id}`;
+// Keep the exact validated storage snapshot private to this request object.
+const snapshots = new WeakMap();
+const SAVE_SESSION = `-- geek-session-save-v1
+local current = redis.call('GET', KEYS[1])
+if ARGV[1] == '' then
+  if current then return 'CHANGED' end
+else
+  if not current then return 'MISSING' end
+  if current ~= ARGV[1] then return 'CHANGED' end
+end
+redis.call('SET', KEYS[1], ARGV[2], 'EX', ARGV[3])
+if ARGV[5] == 'rename' then
+  redis.call('SET', KEYS[2], ARGV[4])
+else
+  redis.call('SET', KEYS[2], ARGV[4], 'NX')
+end
+return 'OK'`;
 
 export const readSession = async (req) => {
   const id = readSessionId(req);
@@ -28,6 +45,7 @@ export const readSession = async (req) => {
   }
   const savedName = await redis('GET', nameKeyFor(playerIdFor(session)));
   if (savedName) session.name = cleanName(savedName, session.name);
+  snapshots.set(session, stored);
   return session;
 };
 
@@ -53,15 +71,14 @@ export const upsertSession = async (req, res, requestedName) => {
   };
   if (!session.playerId) session.playerId = session.id;
   validateSessionRecord(session, session.id);
-  if (typeof requestedName === 'string' && cleanName(requestedName, '')) {
-    await redis('SET', nameKeyFor(session.playerId), session.name);
-  } else {
-    // Migrate an older session name without letting a stale tab overwrite a chosen name.
-    await redis('SET', nameKeyFor(session.playerId), session.name, 'NX');
-  }
-  // A refresh that started before logout/rotation must not recreate a revoked cookie.
-  const saved = await redis('SET', keyFor(session.id), JSON.stringify(session), 'EX', sessionTtl, existing ? 'XX' : 'NX');
-  if (saved !== 'OK') throw new Error('SESSION_REQUIRED');
+  const previous = existing ? snapshots.get(existing) : '';
+  if (existing && typeof previous !== 'string') throw new Error('SESSION_STATE_INVALID');
+  // Session and name commit together, only against the exact validated snapshot.
+  // Never overwrite newer wallet/passkey protection or resurrect a revoked cookie.
+  const saved = await redis('EVAL', SAVE_SESSION, 2, keyFor(session.id), nameKeyFor(session.playerId),
+    previous, JSON.stringify(session), sessionTtl, session.name,
+    typeof requestedName === 'string' && cleanName(requestedName, '') ? 'rename' : 'refresh');
+  if (saved !== 'OK') throw new Error(saved === 'MISSING' ? 'SESSION_REQUIRED' : 'SESSION_CHANGED');
   setSessionCookie(res, session.id);
   return session;
 };

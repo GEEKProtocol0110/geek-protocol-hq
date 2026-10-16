@@ -33,6 +33,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CHAIN-002 | P1 | decision-needed | Evaluate KCC20 compatibility and preserve GEEK holder entitlements | Maintainer researches; founder selects policy; independent covenant reviewer unassigned |
 | ARCH-002 | P1 | done | Preserve the founder-supplied theme roster and trait sheet | Maintainer archives; founder reviews interpretation |
 | AUTH-002 | P0 | needs-evidence | Resolve mobile login when wallet message signing is unavailable | Maintainer implements and verifies; founder confirms physical-phone passkeys |
+| UX-001 | P0 | active | Simplify first visits and close current reliability gaps | Maintainer |
 
 ## CONT-001: Publish the continuation system
 
@@ -420,3 +421,19 @@ Acceptance:
 - Management uses fresh proof; session rotation, credential removal, wallet recovery invalidation, cancellation and bounded requests verified; exact deployment and real-phone results recorded separately.
 
 Evidence/specification: [public/sign-in/index.html](../../public/sign-in/index.html), [public/sign-in/assets/sign-in.js](../../public/sign-in/assets/sign-in.js), [tests/sign-in-copy.test.js](../../tests/sign-in-copy.test.js), [docs/IDENTITY-PROTOCOL.md](../../docs/IDENTITY-PROTOCOL.md), [docs/MOBILE-LOGIN-COPY-RELEASE.md](../../docs/MOBILE-LOGIN-COPY-RELEASE.md), [docs/PASSKEY-LOGIN.md](../../docs/PASSKEY-LOGIN.md), [server/passkeys.js](../../server/passkeys.js), [tests/passkeys.test.js](../../tests/passkeys.test.js), [tests/passkey-client.test.js](../../tests/passkey-client.test.js).
+
+## UX-001: Simplify first visits and close current reliability gaps
+
+**P0 / active.** Owner: Maintainer. Dependencies: none.
+
+Next action: Fix reproduced session races, bound database requests, simplify sign-in, align player labels and leaderboard names; verify the exact release before merge.
+
+Acceptance:
+
+- First visit has a clear guest, returning-passkey and save-current-player path; advanced wallet steps stay optional.
+- Session refresh cannot undo newer protection or resurrect revoked sessions; failed refresh cannot partially rename a player.
+- Provider requests have a deadline without automatic write retries; uncertainty prompts a saved-state check.
+- Passkey protection and renamed leaderboard display agree with saved state.
+- Full checks, exact PR/deployment evidence and remaining independent-review/restore work are recorded.
+
+Evidence/specification: [docs/NEW-PLAYER-POLISH.md](../../docs/NEW-PLAYER-POLISH.md), [tests/passkeys.test.js](../../tests/passkeys.test.js), [tests/redis-transport.test.js](../../tests/redis-transport.test.js), [tests/profile-client.test.js](../../tests/profile-client.test.js).

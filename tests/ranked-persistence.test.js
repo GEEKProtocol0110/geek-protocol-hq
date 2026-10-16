@@ -67,7 +67,7 @@ test('first-player path preserves name and Geek through a saved Daily result, pr
 
 test('a lost final-answer commit reply recovers one XP award and the full answered review without revealing a future answer', async () => {
   const cookie = await session(), payload = await beforeLast(cookie), id = pid(cookie);
-  loseReply = true; assert.equal((await answer(cookie, payload)).statusCode, 500);
+  loseReply = true; assert.equal((await answer(cookie, payload)).statusCode, 503);
   const raw = await fixture.command('GET', profileKeyFor(id));
   const recovered = await resume(cookie, payload.run.id); assert.equal(recovered.statusCode, 200);
   assert.equal(recovered.body.run.status, 'between-rounds'); assert.equal(recovered.body.question, null); assert.equal(recovered.body.run.answeredReview.length, 5);
@@ -141,7 +141,7 @@ test('leaderboards report damaged progression as unavailable while keeping the v
 
 test('a lost start reply can resume the same daily attempt without claiming a second one', async () => {
   const cookie = await session(); loseReply = true;
-  assert.equal((await ranked(cookie, 'start', { category: 'kaspa', mode: 'daily' })).statusCode, 500);
+  assert.equal((await ranked(cookie, 'start', { category: 'kaspa', mode: 'daily' })).statusCode, 503);
   const recovered = await call(rankedHandler, 'GET', undefined, cookie, { resume: '1' });
   assert.equal(recovered.statusCode, 200); assert.equal(recovered.body.run.status, 'question');
   const raw = await fixture.command('GET', `geek:run:${recovered.body.run.id}`);

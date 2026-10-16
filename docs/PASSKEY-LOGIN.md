@@ -32,7 +32,7 @@ Released in [PR #124](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/
 
 A disposable live API probe also passed session/status/begin-registration (200 each), correct RP ID, and required resident-key/user-verification options. No authenticator credential was created.
 
-Release follow-up: refreshing a session uses an update-only Redis write, so a request already in flight cannot resurrect a cookie deleted by logout or credential/session rotation. Fresh sessions use a create-only write; failed preconditions issue no cookie.
+Release follow-up: PR #125 introduced an update-only session write to prevent deleted-cookie resurrection. UX-001 strengthens this to an atomic compare-and-set against the exact validated session snapshot, with the durable name saved in the same script. A stale refresh cannot overwrite newer wallet protection; revoked/changed snapshots issue no cookie or partial name update. See `NEW-PLAYER-POLISH.md` for evidence and limitations.
 
 
 ## Founder phone result — October 16, 2026

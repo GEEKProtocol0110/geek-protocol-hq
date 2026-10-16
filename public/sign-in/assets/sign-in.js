@@ -36,7 +36,7 @@
       else if (response.status === 401 || (response.ok && !payload.identity?.linked)) status.textContent = 'Guest profile. Create a passkey to save this player, or sign in with one you already saved.';
       else throw new Error('Session check unavailable');
     })
-    .catch(() => { if (!signedIn) status.textContent = 'Your session could not be checked. You can retry wallet sign-in below or reload this page.'; })
+    .catch(() => { if (!signedIn) status.textContent = 'Your session could not be checked. Reload to check your saved player before trying again.'; })
     .finally(() => clearTimeout(timer));
 
   const addressForm = document.querySelector('[data-address-form]');
@@ -73,7 +73,9 @@
     } finally { clearTimeout(timer); }
   };
   document.addEventListener('geek:passkey-wallet-proof', () => {
-    invalidate(); proofIntent = 'passkey'; document.querySelector('[data-manual-method]').open = true;
+    invalidate(); proofIntent = 'passkey';
+    const methods = document.querySelector('[data-wallet-methods]'); if (methods) methods.open = true;
+    document.querySelector('[data-manual-method]').open = true;
     manualStatus.textContent = 'Enter your linked address and sign the passkey-authorization message. This grants another way to access this player.'; addressInput.focus();
   });
   addressInput.addEventListener('input', () => { invalidate(); manualStatus.textContent = 'Create a new message for this address.'; });

@@ -25,9 +25,9 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-002: needs-evidence.** Founder confirms the live passkey flow worked on the phone (October 16, 2:35 AM Detroit). First phone result is recorded; do not repeat the unavailable KasWare signing instructions or treat first phone use as still untested. Returning sign-in, cross-device/recovery and revocation acceptance remain separately unreported. Artwork stays paused.
+**UX-001: active.** Focused newcomer UX and reliability hardening: passkey-first recovery, correct player labels, current leaderboard names, atomic session/name save and bounded provider requests. Preserve prior phone success and saved players; artwork remains paused.
 
-Next task: **AUTH-002**. Preserve the working phone session and saved passkey. Next acceptance check is returning sign-in to the same saved player, followed by recovery/revocation checks as separate evidence; do not assume the brief success report covers those. Reconcile draft #119 before other feature merges. Keep artwork paused.
+Next task: **UX-001**. Complete verification and exact-head release evidence for the polish candidate. Then prioritize independent authentication review and a production-provider restore exercise before expanding protocol features. Reconcile draft #119; artwork stays paused.
 
 ## Holds
 

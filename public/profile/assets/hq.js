@@ -45,8 +45,8 @@ const renderQuest = () => {
   // Unknown status is never treated as a completed chapter.
   const chapter = questChapters.find(c => { const saved = campaign.find(s => s.chapterId === c.id); return !saved?.available || !saved.badge; });
   const saved = campaign.find(s => s.chapterId === chapter?.id);
-  text('[data-hq-quest-title]', chapter?.title || 'Three signals connected.');
-  text('[data-hq-quest-copy]', !chapter ? 'All three chapter badges saved. Replay a chapter or revisit your notes.' : !saved?.available ? 'Saved status unavailable. Open the chapter to retry.' : saved.locked ? `Complete ${saved.prerequisite.title} to continue.` : saved.status === 'unstarted' ? chapter.subtitle : `${saved.answered} / ${saved.total} checks attempted. Resume your saved visit.`);
+  text('[data-hq-quest-title]', chapter?.title || 'Chapter signals connected.');
+  text('[data-hq-quest-copy]', !chapter ? `All ${questChapters.length} chapter badges saved. Replay a chapter or revisit your notes.` : !saved?.available ? 'Saved status unavailable. Open the chapter to retry.' : saved.locked ? `Complete ${saved.prerequisite.title} to continue.` : saved.status === 'unstarted' ? chapter.subtitle : `${saved.answered} / ${saved.total} checks attempted. Resume your saved visit.`);
   $('[data-hq-quest-link]').href = !chapter ? '../profile/#quest-progress' : saved?.locked ? saved.prerequisite.href : `/quest/?chapter=${chapter.id}`;
   text('[data-hq-quest-link]', !chapter ? 'See your chapter badges →' : saved?.locked ? 'Open prerequisite →' : saved?.status === 'unstarted' ? 'Begin your next chapter →' : 'Resume adventure →');
 };

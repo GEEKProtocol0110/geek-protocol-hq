@@ -205,13 +205,39 @@ test('an in-flight session refresh cannot resurrect a cookie removed by sign-out
   const cookie = await session(), key = 'geek:session:'+cookie.split('=')[1];
   let interrupted = false;
   beforeCommand = async command => {
-    if (command[0] === 'SET' && command[1] === key && command.includes('XX')) {
+    if (command[0] === 'EVAL' && command[1].includes('geek-session-save-v1')) {
       beforeCommand = null; interrupted = true;
       await fixture.command('DEL',key);
     }
   };
-  const refreshed = await call(sessionHandler,cookie,{});
+  const refreshed = await call(sessionHandler,cookie,{action:'rename',displayName:'Uncommitted Name'});
   assert.equal(interrupted,true);assert.equal(refreshed.statusCode,401);
+  assert.equal(await fixture.command('GET','geek:player-name:'+cookie.split('=')[1]),'Passkey Tester');
   assert.equal(refreshed.headers['Set-Cookie'],undefined);
   assert.equal(await fixture.command('GET',key),null);
+});
+
+
+test('a stale session refresh cannot overwrite a newer wallet protection state', async () => {
+  const cookie = await session(), id = cookie.split('=')[1], key = 'geek:session:'+id;
+  const privateKey = '8'.padStart(64,'0'), wallet = new kaspa.PrivateKey(privateKey);
+  const addressObject = wallet.toAddress('mainnet'), address = addressObject.toString();addressObject.free();wallet.free();
+  const issued = await call(identityHandler,cookie,{action:'challenge',address});
+  assert.equal(issued.statusCode,201);
+  let interrupted = false;
+  beforeCommand = async command => {
+    if (command[0] === 'EVAL' && command[1].includes('geek-session-save-v1')) {
+      beforeCommand = null;interrupted = true;
+      const proof = issued.body.challenge;
+      const verified = await call(identityHandler,cookie,{action:'verify',challengeId:proof.challengeId,
+        signature:kaspa.signMessage({message:proof.message,privateKey})});
+      assert.equal(verified.statusCode,200);
+    }
+  };
+  const refreshed = await call(sessionHandler,cookie,{});
+  assert.equal(interrupted,true);
+  const saved = JSON.parse(await fixture.command('GET',key));
+  assert.equal(saved.identityVersion,1,'new wallet proof must survive an older session refresh');
+  assert.equal(refreshed.statusCode,409);
+  assert.equal(refreshed.headers['Set-Cookie'],undefined);
 });

@@ -56,7 +56,7 @@ test('answer and Next retries preserve a single result and never restart the clo
 test('concurrent clicks and lost commit replies cannot duplicate use or results',async()=>{
  reset();const p=await start(), body={action:'lifeline',runId:p.id,questionToken:p.question.token,item:'extra-time'}, deadline=p.question.expiresAt;
  const r=await Promise.all([call(body),call(body),call(body)]);assert.ok(r.every(x=>x.status===200));assert.equal(stateFor(p.id).current.deadline,deadline+10000);
- loseResponse=true;const answer={action:'answer',runId:p.id,questionToken:p.question.token,selectedIndex:answerFor(stateFor(p.id))};assert.equal((await call(answer)).status,500);
+ loseResponse=true;const answer={action:'answer',runId:p.id,questionToken:p.question.token,selectedIndex:answerFor(stateFor(p.id))};assert.equal((await call(answer)).status,503);
  const retry=await call(answer);assert.equal(retry.status,200);assert.equal(retry.body.practice.answered,1);assert.equal(stateFor(p.id).history.length,1);
 });
 test('answer and lifeline race settles one authoritative state',async()=>{
