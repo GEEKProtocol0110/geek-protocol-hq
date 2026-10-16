@@ -264,3 +264,11 @@ Use one entry per substantive session/interruption: task ID, exact review/commit
 - **Checks so far:** eight existing onboarding/motion tests passed. Full verification and release/browser evidence follow.
 
 - **Full verification:** `npm run verify` passed 493 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all supporting checks. No dependencies changed; exact-head CI also audits them. Browser preview and release evidence follow.
+
+
+## October 16, 2026 — UX-003 released
+
+- **Release:** [PR #133](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/133), merged `31be106bcecf01da78c18cd9afb37901f177d517` at 15:23:25 UTC / 11:23 AM Detroit. Exact head `579dc7ebc98dd88d72f0eab15085b2673bf968e6`, tree `9712c1916a8529e00d057d3f1b292a2815aa2cc1`, passed GitHub verify run 38923402664 and Vercel; merge-source Vercel succeeded.
+- **Checks:** 493 full local tests, zero failures/skips, real Redis 7.4.2, 311 security assertions and supporting checks. The final code-texture refinement passed syntax/whitespace checks and exact-head CI; no dependency change.
+- **Browser:** desktop preview home/Study and canonical live home inspected. Zero repeated companion panels; one aria-hidden, click-through cosmic background; local constellation loaded; no horizontal overflow. The existing active Halloween theme rendered its compact greeting, header and edge ornaments. No production appearance setting was changed by the agent. Phone/narrow-viewport and other seasonal visual QA remain unperformed. No new counted HTTP-monitor run.
+- **Continuation:** mark UX-003 shipped, advance baseline to #133, append observed #132/#133 releases and intervening Git metadata. DR-014 retains the founder correction; await supplied character artwork before another broad rollout. Resume OPS-001 provider recovery/independent auth evidence; preserve #119 separation, paused collection art #120 and all holds. This follow-up is documentation only; continuity generation/check and whitespace validation passed.

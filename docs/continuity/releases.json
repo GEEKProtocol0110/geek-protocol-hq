@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "checkedAt": "2026-10-16",
-  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127. Observed #130/#131 merges added; #131 is the character/cosmic/holiday release.",
+  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127. Observed #130/#131 merges added; #131 is the character/cosmic/holiday release. Observed #132/#133 merges added; #133 dials back repeated characters and emphasizes neon-space backgrounds.",
   "records": [
     {
       "number": 1,
@@ -828,6 +828,20 @@
       "mergedAt": "2026-10-16T15:04:09Z",
       "commit": "472249a0793b39e3c6f2f9cf5121167a0d970412",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/131"
+    },
+    {
+      "number": 132,
+      "title": "Record the deployed character, cosmic and holiday update",
+      "mergedAt": "2026-10-16T15:08:14Z",
+      "commit": "3fb1fe912e7c345c56de18216f5daf0905e70279",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/132"
+    },
+    {
+      "number": 133,
+      "title": "Dial back GIGA/A.C.E. and emphasize the neon-space background",
+      "mergedAt": "2026-10-16T15:23:25Z",
+      "commit": "31be106bcecf01da78c18cd9afb37901f177d517",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/133"
     }
   ]
 }

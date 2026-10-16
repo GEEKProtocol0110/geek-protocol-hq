@@ -617,10 +617,10 @@
     {
       "id": "UX-003",
       "priority": "P1",
-      "status": "active",
+      "status": "done",
       "title": "Reduce repeated character art and emphasize the neon-space background",
       "owner": "Maintainer",
-      "nextAction": "Verify and release the background-focused correction, including browser confirmation that repeated character panels are absent and the constellation asset loads.",
+      "nextAction": "Shipped in PR #133 at 31be106bcecf01da78c18cd9afb37901f177d517. Keep the background emphasis; await founder-supplied character art before another broad rollout. Phone/other-seasonal visual QA remains a separate follow-up.",
       "acceptance": [
         "Newly injected GIGA/A.C.E. panels and portrait treatment are removed; established story guides and original art remain available.",
         "The large home portrait gives way to a decorative local constellation and stronger neon-space/coder backgrounds.",
@@ -633,6 +633,11 @@
         "public/assets/atmosphere.js",
         "public/assets/atmosphere.css",
         "public/assets/neon-constellation.svg"
+      ],
+      "completedAt": "2026-10-16",
+      "completionEvidence": [
+        "Exact head 579dc7ebc98dd88d72f0eab15085b2673bf968e6 passed GitHub verify and Vercel; merge-source deployment succeeded. Full local verification: 493 tests, zero failures/skips and 311 security assertions.",
+        "Preview home/Study and canonical live home checked: repeated panels absent, constellation loaded, decoration aria-hidden/click-through and no horizontal overflow. Existing active Halloween greeting/header/ornaments rendered; no production appearance setting changed. No new actual-phone or complete seasonal visual acceptance claim."
       ]
     }
   ]
