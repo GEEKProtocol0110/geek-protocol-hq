@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "checkedAt": "2026-10-16",
-  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127. Observed #130/#131 merges added; #131 is the character/cosmic/holiday release. Observed #132/#133 merges added; #133 dials back repeated characters and emphasizes neon-space backgrounds.",
+  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127. Observed #130/#131 merges added; #131 is the character/cosmic/holiday release. Observed #132/#133 merges added; #133 dials back repeated characters and emphasizes neon-space backgrounds. Observed #134/#135 merges added; #135 clarifies the Kaspa onboarding identity and adds optional cosmetic Grid discoveries.",
   "records": [
     {
       "number": 1,
@@ -842,6 +842,20 @@
       "mergedAt": "2026-10-16T15:23:25Z",
       "commit": "31be106bcecf01da78c18cd9afb37901f177d517",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/133"
+    },
+    {
+      "number": 134,
+      "title": "Record the deployed neon background correction and art handoff",
+      "mergedAt": "2026-10-16T15:27:16Z",
+      "commit": "99209b4198e1025171b1991d0f250a3f8b06df2a",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/134"
+    },
+    {
+      "number": 135,
+      "title": "Clarify Geek Protocol\u2019s Kaspa onboarding identity and add Grid Easter eggs",
+      "mergedAt": "2026-10-16T15:38:19Z",
+      "commit": "4a12ec8b4cff78c6042ec6c65b7b6027d3af7352",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/135"
     }
   ]
 }

@@ -643,10 +643,10 @@
     {
       "id": "UX-004",
       "priority": "P1",
-      "status": "active",
+      "status": "done",
       "title": "Clarify the Kaspa onboarding identity and add playful Grid discoveries",
       "owner": "Maintainer",
-      "nextAction": "Verify and release the positioning and optional footer terminal; record exact release evidence.",
+      "nextAction": "Shipped in PR #135 at 4a12ec8b4cff78c6042ec6c65b7b6027d3af7352; preserve cosmetic isolation and direct learning links. Optional physical-phone discovery QA remains separate. Resume OPS-001.",
       "acceptance": [
         "Homepage, share metadata and project positioning describe a Kaspa onboarding ecosystem built for Proof of Learning.",
         "A small optional footer discovery supports typing and tapping without global keyboard handlers, tracking, storage, player mutations or rewards.",
@@ -658,6 +658,11 @@
         "docs/GRID-DISCOVERIES.md",
         "public/assets/easter-eggs.js",
         "tests/easter-eggs.test.js"
+      ],
+      "completedAt": "2026-10-16",
+      "completionEvidence": [
+        "Exact head 4f36f40372a9f367be0bbc4f316db1aa98f1b27c passed GitHub verify run 38925222445 and Vercel; merge-source deployment succeeded. Full local checks: 496 tests, zero failures/skips and 311 security assertions.",
+        "Desktop preview verified disclosure, binary shortcut, typed /HoPe and ping; native controls >=44px, one terminal and no horizontal overflow. Canonical live home verified identity/title and binary reveal. No physical-phone/narrow-viewport or all-season visual acceptance claim; no production appearance setting changed."
       ]
     }
   ]

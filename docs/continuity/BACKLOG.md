@@ -36,7 +36,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-001 | P0 | done | Simplify first visits and close current reliability gaps | Maintainer |
 | UX-002 | P1 | done | Bring GIGA, A.C.E. and seasonal cosmic styling throughout HQ | Maintainer |
 | UX-003 | P1 | done | Reduce repeated character art and emphasize the neon-space background | Maintainer |
-| UX-004 | P1 | active | Clarify the Kaspa onboarding identity and add playful Grid discoveries | Maintainer |
+| UX-004 | P1 | done | Clarify the Kaspa onboarding identity and add playful Grid discoveries | Maintainer |
 
 ## CONT-001: Publish the continuation system
 
@@ -476,9 +476,9 @@ Evidence/specification: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), 
 
 ## UX-004: Clarify the Kaspa onboarding identity and add playful Grid discoveries
 
-**P1 / active.** Owner: Maintainer. Dependencies: none.
+**P1 / done.** Owner: Maintainer. Dependencies: none.
 
-Next action: Verify and release the positioning and optional footer terminal; record exact release evidence.
+Next action: Shipped in PR #135 at 4a12ec8b4cff78c6042ec6c65b7b6027d3af7352; preserve cosmetic isolation and direct learning links. Optional physical-phone discovery QA remains separate. Resume OPS-001.
 
 Acceptance:
 
