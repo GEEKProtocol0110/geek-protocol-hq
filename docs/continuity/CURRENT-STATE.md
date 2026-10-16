@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**ARCH-003: in-progress.** Archive five newly supplied Sci-Fi Geek rarity PNGs in open PR #120 / codex/archive-scifi-originals, not merged. Separate draft PR #119 has passkey/testnet-wallet work at 3b291065aad6dd2901225ab2f83100cb0277030b with passing GitHub verification; device acceptance is outstanding.
+**ARCH-003: in-progress.** Archive ten newly supplied Sci-Fi and A.I. Geek rarity PNGs in open PR #120 / codex/archive-scifi-originals, not merged. Separate draft PR #119 has passkey/testnet-wallet work at 3b291065aad6dd2901225ab2f83100cb0277030b with passing GitHub verification; device acceptance is outstanding.
 
-Next task: **BANK-001**. Review the Sci-Fi original archive; PR #119 remains separate and awaits phone passkey/backup acceptance. BANK-001 continues from merged PR #118 / 580 Kaspa toward 1,000. CHAIN-001 still needs one actual reconciled testnet reward.
+Next task: **BANK-001**. Review the Sci-Fi and A.I. original archive; PR #119 remains separate and awaits phone passkey/backup acceptance. BANK-001 continues from merged PR #118 / 580 Kaspa toward 1,000. CHAIN-001 still needs one actual reconciled testnet reward.
 
 ## Holds
 
@@ -35,7 +35,7 @@ CCE: **bank-and-economy-hold**. Contributor rate: unselected; 1 or 5 GEEK are pr
 
 ## Unresolved
 
-- Original founding conversation and remaining phone files are still missing. Roster and trait PDF are preserved in merged PR #116; five newly supplied Sci-Fi Geek PNGs are archived on codex/archive-scifi-originals for review.
+- Original founding conversation and remaining phone files are still missing. Roster and trait PDF are preserved in merged PR #116; ten newly supplied Sci-Fi and A.I. Geek PNGs are archived on codex/archive-scifi-originals for review.
 - Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.
 - No successor or second trusted account administrator is appointed in this record.
 - No institutional contract, school partnership, legal-entity registration or accreditation is verified.

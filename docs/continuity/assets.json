@@ -84,7 +84,7 @@
       "status": "awaiting-original",
       "location": null,
       "sha256": null,
-      "provenance": "Seven supplied phone files are preserved as ARCH-011 through ARCH-017: the roster, trait PDF and five Sci-Fi Geek PNGs. Quantity and contents of remaining phone files are unknown; original conversation is still missing."
+      "provenance": "Twelve supplied phone originals are preserved as ARCH-011 through ARCH-022: the roster, trait PDF, five Sci-Fi Geek PNGs and five A.I. Geek PNGs. Quantity and contents of remaining phone files are unknown; original conversation is still missing."
     },
     {
       "id": "ARCH-010",
@@ -205,6 +205,86 @@
       "rights": "Founder-supplied project concept art, described in earlier context as made with Gemini. No independent authorship or third-party-rights certification; preservation does not approve commercial minting.",
       "derivedIndex": "docs/continuity/founding/sci-fi-geek-set.json",
       "review": "docs/continuity/founding/SCI-FI-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-018",
+      "title": "1 A.I. Geek Common.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/1 A.I. Geek Common.png",
+      "sha256": "2f18badd3acebf7c3ab183e088381778104b89b0ffc237e86dc4ce27e81464c4",
+      "gitBlobSha": "d5f22a873a68a0118e5855a3ad3ccbf1ce6ce7e5",
+      "sizeBytes": 150181,
+      "originalFilename": "1 A.I. Geek Common.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename; the Rare filename contains two spaces before Rare. No equal SHA-256 among tracked HQ archive branch files at ff82275941741170abd7ec01690ccc77b775598c. The Common is visually distinct from existing legacy-ai-geek-common (device/question bubble versus robot companion); it is a related variant, not an exact duplicate. Visible rarity labels retained; original creation date and edition mapping unverified.",
+      "rights": "Founder-supplied project concept art, described in earlier context as made with Gemini. Preservation does not independently certify authorship, third-party rights or commercial minting approval.",
+      "derivedIndex": "docs/continuity/founding/ai-geek-set.json",
+      "review": "docs/continuity/founding/AI-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-019",
+      "title": "2 A.I. Geek  Rare.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/2 A.I. Geek  Rare.png",
+      "sha256": "cc30bca649765e86fb9e20f4ca0d57eeedb4de59d2c7edf1852c5c20f8aa9841",
+      "gitBlobSha": "9ed4de6bd49adca5272a0a6e18862adca3c57440",
+      "sizeBytes": 215222,
+      "originalFilename": "2 A.I. Geek  Rare.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename; the Rare filename contains two spaces before Rare. No equal SHA-256 among tracked HQ archive branch files at ff82275941741170abd7ec01690ccc77b775598c. The Common is visually distinct from existing legacy-ai-geek-common (device/question bubble versus robot companion); it is a related variant, not an exact duplicate. Visible rarity labels retained; original creation date and edition mapping unverified.",
+      "rights": "Founder-supplied project concept art, described in earlier context as made with Gemini. Preservation does not independently certify authorship, third-party rights or commercial minting approval.",
+      "derivedIndex": "docs/continuity/founding/ai-geek-set.json",
+      "review": "docs/continuity/founding/AI-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-020",
+      "title": "3 A.I. Geek Epic.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/3 A.I. Geek Epic.png",
+      "sha256": "a5093092a2796ae09b527e24f2239c9b1af4c6413828c81fc5fae64173d27682",
+      "gitBlobSha": "d139b7568d788ae54a40b31bc2c79803b9d93a25",
+      "sizeBytes": 221476,
+      "originalFilename": "3 A.I. Geek Epic.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename; the Rare filename contains two spaces before Rare. No equal SHA-256 among tracked HQ archive branch files at ff82275941741170abd7ec01690ccc77b775598c. The Common is visually distinct from existing legacy-ai-geek-common (device/question bubble versus robot companion); it is a related variant, not an exact duplicate. Visible rarity labels retained; original creation date and edition mapping unverified.",
+      "rights": "Founder-supplied project concept art, described in earlier context as made with Gemini. Preservation does not independently certify authorship, third-party rights or commercial minting approval.",
+      "derivedIndex": "docs/continuity/founding/ai-geek-set.json",
+      "review": "docs/continuity/founding/AI-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-021",
+      "title": "4 A.I. Geek Legendary.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/4 A.I. Geek Legendary.png",
+      "sha256": "a843f1864972a39c70d874c8f9a72c16859fcb0b5e342fc9f2aee921d93fc787",
+      "gitBlobSha": "86f7fad5c75504964e000aaa5d0854b2fe3eeca9",
+      "sizeBytes": 191674,
+      "originalFilename": "4 A.I. Geek Legendary.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename; the Rare filename contains two spaces before Rare. No equal SHA-256 among tracked HQ archive branch files at ff82275941741170abd7ec01690ccc77b775598c. The Common is visually distinct from existing legacy-ai-geek-common (device/question bubble versus robot companion); it is a related variant, not an exact duplicate. Visible rarity labels retained; original creation date and edition mapping unverified.",
+      "rights": "Founder-supplied project concept art, described in earlier context as made with Gemini. Preservation does not independently certify authorship, third-party rights or commercial minting approval.",
+      "derivedIndex": "docs/continuity/founding/ai-geek-set.json",
+      "review": "docs/continuity/founding/AI-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-022",
+      "title": "5 A.I. Geek Mythic.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/5 A.I. Geek Mythic.png",
+      "sha256": "aa1e454a728990e91a59c2ffcb32bd2c5171ca262bce718b1c60a7c54a56af78",
+      "gitBlobSha": "1ff873bb7ab63eebc47795b2a5cf1861a8887d3e",
+      "sizeBytes": 324975,
+      "originalFilename": "5 A.I. Geek Mythic.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename; the Rare filename contains two spaces before Rare. No equal SHA-256 among tracked HQ archive branch files at ff82275941741170abd7ec01690ccc77b775598c. The Common is visually distinct from existing legacy-ai-geek-common (device/question bubble versus robot companion); it is a related variant, not an exact duplicate. Visible rarity labels retained; original creation date and edition mapping unverified.",
+      "rights": "Founder-supplied project concept art, described in earlier context as made with Gemini. Preservation does not independently certify authorship, third-party rights or commercial minting approval.",
+      "derivedIndex": "docs/continuity/founding/ai-geek-set.json",
+      "review": "docs/continuity/founding/AI-GEEK-SET.md"
     }
   ]
 }

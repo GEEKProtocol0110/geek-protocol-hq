@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "recordedOn": "2026-10-15",
+  "status": "preserved-unmapped-art-set",
+  "source": "Founder-supplied attachments in this conversation; supplied date uses America/Detroit. Upload filesystem timestamps are not original creation proof. Rare original filename has a double space.",
+  "character": "A.I. Geek",
+  "visibleCharacterLabel": "AI GEEK",
+  "tiers": [
+    "Common",
+    "Rare",
+    "Epic",
+    "Legendary",
+    "Mythic"
+  ],
+  "records": [
+    {
+      "assetId": "ARCH-018",
+      "originalFilename": "1 A.I. Geek Common.png",
+      "location": "docs/continuity/founding/phone/1 A.I. Geek Common.png",
+      "sha256": "2f18badd3acebf7c3ab183e088381778104b89b0ffc237e86dc4ce27e81464c4",
+      "gitBlobSha": "d5f22a873a68a0118e5855a3ad3ccbf1ce6ce7e5",
+      "sizeBytes": 150181,
+      "width": 1536,
+      "height": 1536,
+      "visibleTier": "Common",
+      "observedDesign": "human figure in circuit hoodie, cyan eyes and handheld device beneath a question bubble",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-019",
+      "originalFilename": "2 A.I. Geek  Rare.png",
+      "location": "docs/continuity/founding/phone/2 A.I. Geek  Rare.png",
+      "sha256": "cc30bca649765e86fb9e20f4ca0d57eeedb4de59d2c7edf1852c5c20f8aa9841",
+      "gitBlobSha": "9ed4de6bd49adca5272a0a6e18862adca3c57440",
+      "sizeBytes": 215222,
+      "width": 1536,
+      "height": 1536,
+      "visibleTier": "Rare",
+      "observedDesign": "masked figure with two cyan visor eyes and floating yellow question orb",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-020",
+      "originalFilename": "3 A.I. Geek Epic.png",
+      "location": "docs/continuity/founding/phone/3 A.I. Geek Epic.png",
+      "sha256": "a5093092a2796ae09b527e24f2239c9b1af4c6413828c81fc5fae64173d27682",
+      "gitBlobSha": "d139b7568d788ae54a40b31bc2c79803b9d93a25",
+      "sizeBytes": 221476,
+      "width": 1536,
+      "height": 1536,
+      "visibleTier": "Epic",
+      "observedDesign": "long-coated figure with a horizontal cyan visor and floating yellow question orb",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-021",
+      "originalFilename": "4 A.I. Geek Legendary.png",
+      "location": "docs/continuity/founding/phone/4 A.I. Geek Legendary.png",
+      "sha256": "a843f1864972a39c70d874c8f9a72c16859fcb0b5e342fc9f2aee921d93fc787",
+      "gitBlobSha": "86f7fad5c75504964e000aaa5d0854b2fe3eeca9",
+      "sizeBytes": 191674,
+      "width": 1536,
+      "height": 1536,
+      "visibleTier": "Legendary",
+      "observedDesign": "hooded figure with amber glyph face, cyan circuit trim and yellow question mark",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-022",
+      "originalFilename": "5 A.I. Geek Mythic.png",
+      "location": "docs/continuity/founding/phone/5 A.I. Geek Mythic.png",
+      "sha256": "aa1e454a728990e91a59c2ffcb32bd2c5171ca262bce718b1c60a7c54a56af78",
+      "gitBlobSha": "1ff873bb7ab63eebc47795b2a5cf1861a8887d3e",
+      "sizeBytes": 324975,
+      "width": 1024,
+      "height": 1536,
+      "visibleTier": "Mythic",
+      "observedDesign": "cyan-and-magenta luminous figure seated on a circuit throne with floating question marks",
+      "mappedEdition": null,
+      "approved": false
+    }
+  ],
+  "relations": {
+    "existingLegacyRecordId": "legacy-ai-geek-common",
+    "existingLegacyAsset": "public/collection/archive/legacy-art/ai-geek-common.webp",
+    "existingLegacyAssetSha256": "6f6a8b4ad595e31761219cd53a166c60a926e0488e40cacaf41edbd5dddc4aa9",
+    "comparison": "Related AI Geek Common design, visibly different: existing WebP holds a small robot companion; uploaded PNG holds a device beneath a question bubble. Neither replaces the other. Other tier names were not present as AI Geek records in the ten-concept legacy archive.",
+    "rosterExactNameMatches": [],
+    "traitSheetExactNameMatches": [],
+    "nameMatchPolicy": "No exact AI Geek or A.I. Geek entry found in the preserved roster or PDF extraction. Do not force a theme/edition mapping or equate the Mythic with A.C.E. solely by visual resemblance."
+  },
+  "limits": {
+    "mappedEdition": null,
+    "mintReady": false,
+    "onChainOwnershipActive": false,
+    "independentlyReviewed": false,
+    "originalCreationTimeVerified": false
+  }
+}

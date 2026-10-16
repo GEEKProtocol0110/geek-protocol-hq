@@ -23,6 +23,11 @@ Exact preserved bytes, indexed metadata and missing originals are different stat
 | ARCH-015 | 3 Sci-Fi Geek Epic.png | preserved-founder-upload | [docs/continuity/founding/phone/3 Sci-Fi Geek Epic.png](<../../docs/continuity/founding/phone/3 Sci-Fi Geek Epic.png>) |
 | ARCH-016 | 4 Sci-Fi Geek Legendary.png | preserved-founder-upload | [docs/continuity/founding/phone/4 Sci-Fi Geek Legendary.png](<../../docs/continuity/founding/phone/4 Sci-Fi Geek Legendary.png>) |
 | ARCH-017 | 5 Sci-Fi Geek Mythic.png | preserved-founder-upload | [docs/continuity/founding/phone/5 Sci-Fi Geek Mythic.png](<../../docs/continuity/founding/phone/5 Sci-Fi Geek Mythic.png>) |
+| ARCH-018 | 1 A.I. Geek Common.png | preserved-founder-upload | [docs/continuity/founding/phone/1 A.I. Geek Common.png](<../../docs/continuity/founding/phone/1 A.I. Geek Common.png>) |
+| ARCH-019 | 2 A.I. Geek  Rare.png | preserved-founder-upload | [docs/continuity/founding/phone/2 A.I. Geek  Rare.png](<../../docs/continuity/founding/phone/2 A.I. Geek  Rare.png>) |
+| ARCH-020 | 3 A.I. Geek Epic.png | preserved-founder-upload | [docs/continuity/founding/phone/3 A.I. Geek Epic.png](<../../docs/continuity/founding/phone/3 A.I. Geek Epic.png>) |
+| ARCH-021 | 4 A.I. Geek Legendary.png | preserved-founder-upload | [docs/continuity/founding/phone/4 A.I. Geek Legendary.png](<../../docs/continuity/founding/phone/4 A.I. Geek Legendary.png>) |
+| ARCH-022 | 5 A.I. Geek Mythic.png | preserved-founder-upload | [docs/continuity/founding/phone/5 A.I. Geek Mythic.png](<../../docs/continuity/founding/phone/5 A.I. Geek Mythic.png>) |
 
 ## ARCH-001: Master_Document_v1.3.html
 
@@ -70,7 +75,7 @@ Founder-supplied export and timestamp evidence needed; never reconstruct missing
 
 ## ARCH-009: Remaining phone founding files
 
-Seven supplied phone files are preserved as ARCH-011 through ARCH-017: the roster, trait PDF and five Sci-Fi Geek PNGs. Quantity and contents of remaining phone files are unknown; original conversation is still missing.
+Twelve supplied phone originals are preserved as ARCH-011 through ARCH-022: the roster, trait PDF, five Sci-Fi Geek PNGs and five A.I. Geek PNGs. Quantity and contents of remaining phone files are unknown; original conversation is still missing.
 
 ## ARCH-010: Guinness application kit
 
@@ -117,3 +122,33 @@ SHA-256: `29afd93eca1a8b76bcb4c7de4d33d563dd27bbc8b1d21d3eea2c2e820cef0b9f`.
 Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ files at main 606d06a861428f96b633152d32d3e8954e3e209d or draft PR #119 head 3b291065aad6dd2901225ab2f83100cb0277030b. No Sci-Fi Geek art record in the ten-concept legacy archive. Visible rarity label is preserved; original creation date and final edition mapping are unverified.
 
 SHA-256: `fb428f5229137d60eeeb1360404951841f5718a175e82d823a59f0c376cf6780`.
+
+## ARCH-018: 1 A.I. Geek Common.png
+
+Exact founder-supplied PNG bytes and original filename; the Rare filename contains two spaces before Rare. No equal SHA-256 among tracked HQ archive branch files at ff82275941741170abd7ec01690ccc77b775598c. The Common is visually distinct from existing legacy-ai-geek-common (device/question bubble versus robot companion); it is a related variant, not an exact duplicate. Visible rarity labels retained; original creation date and edition mapping unverified.
+
+SHA-256: `2f18badd3acebf7c3ab183e088381778104b89b0ffc237e86dc4ce27e81464c4`.
+
+## ARCH-019: 2 A.I. Geek  Rare.png
+
+Exact founder-supplied PNG bytes and original filename; the Rare filename contains two spaces before Rare. No equal SHA-256 among tracked HQ archive branch files at ff82275941741170abd7ec01690ccc77b775598c. The Common is visually distinct from existing legacy-ai-geek-common (device/question bubble versus robot companion); it is a related variant, not an exact duplicate. Visible rarity labels retained; original creation date and edition mapping unverified.
+
+SHA-256: `cc30bca649765e86fb9e20f4ca0d57eeedb4de59d2c7edf1852c5c20f8aa9841`.
+
+## ARCH-020: 3 A.I. Geek Epic.png
+
+Exact founder-supplied PNG bytes and original filename; the Rare filename contains two spaces before Rare. No equal SHA-256 among tracked HQ archive branch files at ff82275941741170abd7ec01690ccc77b775598c. The Common is visually distinct from existing legacy-ai-geek-common (device/question bubble versus robot companion); it is a related variant, not an exact duplicate. Visible rarity labels retained; original creation date and edition mapping unverified.
+
+SHA-256: `a5093092a2796ae09b527e24f2239c9b1af4c6413828c81fc5fae64173d27682`.
+
+## ARCH-021: 4 A.I. Geek Legendary.png
+
+Exact founder-supplied PNG bytes and original filename; the Rare filename contains two spaces before Rare. No equal SHA-256 among tracked HQ archive branch files at ff82275941741170abd7ec01690ccc77b775598c. The Common is visually distinct from existing legacy-ai-geek-common (device/question bubble versus robot companion); it is a related variant, not an exact duplicate. Visible rarity labels retained; original creation date and edition mapping unverified.
+
+SHA-256: `a843f1864972a39c70d874c8f9a72c16859fcb0b5e342fc9f2aee921d93fc787`.
+
+## ARCH-022: 5 A.I. Geek Mythic.png
+
+Exact founder-supplied PNG bytes and original filename; the Rare filename contains two spaces before Rare. No equal SHA-256 among tracked HQ archive branch files at ff82275941741170abd7ec01690ccc77b775598c. The Common is visually distinct from existing legacy-ai-geek-common (device/question bubble versus robot companion); it is a related variant, not an exact duplicate. Visible rarity labels retained; original creation date and edition mapping unverified.
+
+SHA-256: `aa1e454a728990e91a59c2ffcb32bd2c5171ca262bce718b1c60a7c54a56af78`.
