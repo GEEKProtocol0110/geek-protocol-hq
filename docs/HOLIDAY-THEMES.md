@@ -8,7 +8,7 @@ Sign in to Operations with the existing owner key, then open **Holiday themes** 
 | Automatic | Follow the celebration windows below; standard appearance between holidays |
 | On | Choose a holiday and keep it on until changed |
 
-The preview is local until **Save holiday settings**. Saving adds fixed accent colors, background glows and a small holiday mark to public pages using the shared site script. The private workspace remains in its usual style. Decorations are static, use no external assets, and do not change questions, timers, scoring, profiles or funds.
+The preview is local until **Save holiday settings**. Saving applies fixed accent colors, seasonal header borders, edge ornaments, card glows, character badges and a greeting in the GIGA/A.C.E. guide panel to public pages using the shared site script. Each holiday has distinct motifs; Christmas uses snowflakes and trees, Halloween pumpkins and moons, Easter a cross and spring flowers, and Thanksgiving autumn leaves. The private workspace remains in its usual style. Decorations are static, use no external assets, and do not change questions, timers, scoring, profiles or funds.
 
 ## Automatic calendar
 
@@ -17,13 +17,11 @@ Dates use Eastern time (`America/Detroit`). These are authored decoration window
 | Holiday | Automatic window |
 | --- | --- |
 | New Year's | December 29–January 2 |
-| Martin Luther King Jr. Day | Third Monday in January |
 | Valentine's Day | February 12–15 |
 | Presidents' Day | Third Monday in February |
 | St. Patrick's Day | March 16–18 |
 | Easter | Palm Sunday through Easter Monday |
 | Memorial Day | Friday through the last Monday in May |
-| Juneteenth | June 18–20 |
 | Independence Day | July 1–5 |
 | Labor Day | Friday through the first Monday in September |
 | Halloween | October 24–31 |
@@ -48,3 +46,11 @@ Only the fixed catalog's IDs are accepted. Settings cannot supply CSS, HTML, arb
 ## Verification
 
 `tests/appearance.test.js` uses real Redis to check holiday dates and Eastern midnight, cross-year windows, overlapping holidays, palette contrast, minimal public output, owner/role isolation, origin and JSON enforcement, strict inputs, audit integrity, concurrent-tab conflicts, lost replies, expiry, key rotation, malformed state, deployment isolation and audit-index failures. Browser QA uses synthetic owner credentials and isolated Redis to exercise all holiday previews, saved modes, public-page refresh, outages, expired access and 320–1280 px layouts. It does not read production keys or make production settings changes. This is internal verification, not an independent audit.
+
+## October 16 character and atmosphere update
+
+MLK Day and Juneteenth are removed from manual choices and automatic windows at the founder’s request. A structurally valid saved selection for either retired ID displays Off without rewriting the underlying record; an owner can save a new listed holiday with its existing revision. New saves of retired IDs are rejected. Other malformed state still fails closed.
+
+Shared GIGA and A.C.E. guide panels use the existing local character art and authored page-specific copy; they are not a live AI chat. Seasonal greetings follow the selected theme and clear on Off, a retired ID or failed reads. Repeated reads of the same active theme do not duplicate ornaments. Holiday decoration remains static and click-through, and does not change questions, timers or scores. The operator preview includes matching seasonal motifs and borders.
+
+The public shell adds a star field, quiet nebula backgrounds, terminal labels and a brief hover code shift. The old space-animation toggle is removed. Canvas motion runs for at most five seconds of visible time per scene, with static stars afterward; reduced-motion, data-saver and hidden-page behavior remain supported. No recurring flashing effect or continuous code animation is added.

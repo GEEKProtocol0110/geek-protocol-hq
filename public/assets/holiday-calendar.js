@@ -2,13 +2,11 @@
 export const HOLIDAY_TIMEZONE = 'America/Detroit';
 export const HOLIDAYS = Object.freeze([
   { id: 'new-year', label: "New Year's", icon: '✦', greeting: 'A new year of discovery', palette: 'gold', when: 'Dec 29–Jan 2' },
-  { id: 'mlk-day', label: 'Martin Luther King Jr. Day', icon: '🕊', greeting: 'Keep learning. Keep dreaming.', palette: 'blue', when: 'Third Monday in January' },
   { id: 'valentines', label: "Valentine's Day", icon: '♡', greeting: 'Share a little knowledge and kindness', palette: 'rose', when: 'Feb 12–15' },
   { id: 'presidents-day', label: "Presidents' Day", icon: '★', greeting: 'Discover the stories that shaped us', palette: 'patriotic', when: 'Third Monday in February' },
   { id: 'st-patricks', label: "St. Patrick's Day", icon: '☘', greeting: 'A little luck. A lot of learning.', palette: 'green', when: 'Mar 16–18' },
   { id: 'easter', label: 'Easter', icon: '✝', greeting: 'Hope, renewal, and new beginnings', palette: 'spring', when: 'Palm Sunday–Easter Monday' },
   { id: 'memorial-day', label: 'Memorial Day', icon: '★', greeting: 'Remember and honor', palette: 'patriotic', when: 'Friday–last Monday in May' },
-  { id: 'juneteenth', label: 'Juneteenth', icon: '✦', greeting: 'Celebrate freedom. Keep discovering.', palette: 'green', when: 'Jun 18–20' },
   { id: 'independence-day', label: 'Independence Day', icon: '★', greeting: 'Celebrate independence and curiosity', palette: 'patriotic', when: 'Jul 1–5' },
   { id: 'labor-day', label: 'Labor Day', icon: '⚒', greeting: 'Celebrate the people who build', palette: 'blue', when: 'Friday–first Monday in September' },
   { id: 'halloween', label: 'Halloween', icon: '🎃', greeting: 'A little spooky. A lot of Geek.', palette: 'autumn', when: 'Oct 24–31' },
@@ -39,11 +37,10 @@ export const holidayWindows = year => {
   const memorial = lastMonday(year, 5), labor = nthMonday(year, 9, 1), easter = easterDay(year);
   const ranges = {
     'new-year': [date(year - 1, 12, 29), date(year, 1, 2)],
-    'mlk-day': [nthMonday(year, 1, 3), nthMonday(year, 1, 3)],
     valentines: [date(year, 2, 12), date(year, 2, 15)],
     'presidents-day': [nthMonday(year, 2, 3), nthMonday(year, 2, 3)],
     'st-patricks': [date(year, 3, 16), date(year, 3, 18)], easter: [easter - 7 * DAY, easter + DAY],
-    'memorial-day': [memorial - 3 * DAY, memorial], juneteenth: [date(year, 6, 18), date(year, 6, 20)],
+    'memorial-day': [memorial - 3 * DAY, memorial],
     'independence-day': [date(year, 7, 1), date(year, 7, 5)], 'labor-day': [labor - 3 * DAY, labor],
     halloween: [date(year, 10, 24), date(year, 10, 31)], 'veterans-day': [date(year, 11, 10), date(year, 11, 12)],
     thanksgiving: [thanksgiving - 3 * DAY, thanksgiving + 3 * DAY], christmas: [date(year, 12, 1), date(year, 12, 26)]

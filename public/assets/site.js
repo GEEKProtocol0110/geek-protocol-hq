@@ -44,12 +44,12 @@ document.addEventListener('keydown', (event) => {
 
 // Decorative space scenes. One capped animation loop, only for visible panels.
 (() => {
-  const hosts = [...document.querySelectorAll('.hero, .grid-hero, .profile-hero, .geek-preview-stage, .kaspa-hero, .study-intro, .memory-intro, .mint-hero, .thanks-hero, .economy-hero, .start-copy')];
+  const hosts = [...document.querySelectorAll('.hero, .grid-hero, .profile-hero, .geek-preview-stage, .kaspa-hero, .study-intro, .memory-intro, .mint-hero, .thanks-hero, .economy-hero, .start-copy, .quest-intro, .royale-intro, .duel-intro')];
   if (!hosts.length) return;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   let reduceMotion = reduced.matches;
   const saveData = Boolean(navigator.connection?.saveData);
-  let paused = false, frame = 0, previous = 0, clock = 0;
+  let frame = 0, previous = 0, clock = 0;
   const scenes = [];
   const makeStar = () => ({ x: Math.random(), y: Math.random(), depth: .25 + Math.random() * .75, phase: Math.random() * Math.PI * 2, tint: Math.random(), glint: Math.random() > .93 });
   const draw = scene => {
@@ -67,9 +67,9 @@ document.addEventListener('keydown', (event) => {
         ctx.beginPath(); ctx.moveTo(x - 4, y); ctx.lineTo(x + 4, y); ctx.moveTo(x, y - 4); ctx.lineTo(x, y + 4); ctx.stroke();
       }
     }
-    // A quiet, short trail appears once per cycle, never in still mode.
+    // A quiet trail can appear during the bounded entrance, never in still mode.
     const flight = (clock + scene.offset) % 19;
-    if (!paused && !reduceMotion && !saveData && flight < 1.2 && w > 500) {
+    if (!reduceMotion && !saveData && scene.elapsed < 5 && flight < 1.2 && w > 500) {
       const x = w * .55 + flight * 190, y = h * .17 + flight * 70;
       const trail = ctx.createLinearGradient(x - 60, y - 22, x, y); trail.addColorStop(0, '#70e6dc00'); trail.addColorStop(1, '#c9f8f3');
       ctx.globalAlpha = Math.sin(flight / 1.2 * Math.PI) * .4; ctx.strokeStyle = trail; ctx.lineWidth = 1;
@@ -77,8 +77,8 @@ document.addEventListener('keydown', (event) => {
     }
     ctx.globalAlpha = 1;
   };
-  const active = () => scenes.some(scene => scene.visible);
-  const canMove = () => !paused && !reduceMotion && !saveData && !document.hidden && active();
+  const active = () => scenes.some(scene => scene.visible && scene.elapsed < 5);
+  const canMove = () => !reduceMotion && !saveData && !document.hidden && active();
   const loop = timestamp => {
     frame = 0;
     if (!canMove()) { previous = 0; return; }
@@ -86,31 +86,25 @@ document.addEventListener('keydown', (event) => {
     const delta = timestamp - previous;
     if (delta >= 1000 / 24) {
       clock += Math.min(delta, 100) / 1000; previous = timestamp;
-      for (const scene of scenes) if (scene.visible) draw(scene);
+      for (const scene of scenes) if (scene.visible && scene.elapsed < 5) { scene.elapsed += Math.min(delta, 100) / 1000; draw(scene); }
     }
     frame = requestAnimationFrame(loop);
   };
   const sync = () => {
     document.body.classList.toggle('space-still', reduceMotion || saveData || document.hidden);
-    document.body.classList.toggle('space-paused', paused);
-    button.textContent = reduceMotion || saveData ? 'Space effects · still' : paused ? 'Resume space effects' : 'Pause space effects';
-    button.disabled = reduceMotion || saveData;
-    button.setAttribute('aria-pressed', String(paused));
     if (canMove()) { if (!frame) frame = requestAnimationFrame(loop); }
     else { if (frame) cancelAnimationFrame(frame); frame = 0; previous = 0; }
   };
-  const button = document.createElement('button'); button.type = 'button'; button.className = 'space-toggle'; button.addEventListener('click', () => { paused = !paused; sync(); });
-  (document.querySelector('footer') || hosts[0]).append(button);
   for (const host of hosts) {
     const canvas = document.createElement('canvas'), context = canvas.getContext('2d', { alpha: true });
     if (!context) continue;
     canvas.className = 'space-canvas'; canvas.setAttribute('aria-hidden', 'true'); host.classList.add('space-scene'); host.prepend(canvas);
-    const scene = { host, canvas, context, width: 0, height: 0, stars: [], offset: 3 + Math.random() * 14, visible: false };
+    const scene = { host, canvas, context, width: 0, height: 0, stars: [], offset: 3 + Math.random() * 14, visible: false, elapsed: 0 };
     const resize = () => {
       const bounds = host.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, bounds.width < 600 ? 1 : 1.5);
       scene.width = Math.min(bounds.width, 2400); scene.height = Math.min(bounds.height, 1800);
       canvas.width = Math.round(scene.width * dpr); canvas.height = Math.round(scene.height * dpr); context.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.min(110, Math.max(20, Math.round(scene.width * scene.height / 10000)));
+      const count = Math.min(saveData ? 40 : 160, Math.max(30, Math.round(scene.width * scene.height / 6500)));
       if (scene.stars.length !== count) scene.stars = Array.from({ length: count }, makeStar);
       draw(scene);
     };
@@ -118,7 +112,7 @@ document.addEventListener('keydown', (event) => {
     if (typeof ResizeObserver === 'function') new ResizeObserver(resize).observe(host);
     else window.addEventListener('resize', resize, { passive: true });
   }
-  if (!scenes.length) { button.remove(); return; }
+  if (!scenes.length) return;
   if (typeof IntersectionObserver === 'function') {
     const observer = new IntersectionObserver(entries => {
       for (const entry of entries) { const scene = scenes.find(scene => scene.host === entry.target); scene.visible = entry.isIntersecting; }
@@ -135,3 +129,6 @@ document.addEventListener('keydown', (event) => {
 
 // Optional owner-selected decoration. A failed read keeps the standard site usable.
 import('/assets/holiday-theme.js').then(module => module.initHolidayTheme()).catch(() => {});
+
+// Shared GIGA and A.C.E. companions on every public page using this shell.
+import('/assets/characters.js').catch(() => {});

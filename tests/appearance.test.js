@@ -40,7 +40,10 @@ test('automatic dates cover moving holidays, Easter and the December/January bou
   const windows = Object.fromEntries(holidayWindows(2026).map(w => [w.id, w]));
   assert.equal(iso(easterDay(2026)), '2026-04-05');
   assert.equal(iso(easterDay(2027)), '2027-03-28');
-  assert.equal(windows['mlk-day'].start, '2026-01-19'); assert.equal(windows['presidents-day'].start, '2026-02-16');
+  assert.equal(windows['presidents-day'].start, '2026-02-16');
+  assert.equal(windows['mlk-day'], undefined); assert.equal(windows.juneteenth, undefined);
+  assert.equal(automaticHoliday(Date.parse('2026-01-19T17:00:00Z')), null);
+  assert.equal(automaticHoliday(Date.parse('2026-06-19T17:00:00Z')), null);
   assert.equal(windows['memorial-day'].end, '2026-05-25'); assert.equal(windows['labor-day'].end, '2026-09-07');
   assert.equal(windows.thanksgiving.start, '2026-11-23'); assert.equal(windows.thanksgiving.end, '2026-11-29');
   assert.equal(automaticHoliday(Date.parse('2026-12-31T17:00:00Z')).id, 'new-year');
@@ -123,4 +126,20 @@ test('a corrupt audit index cannot leave a partially saved appearance change', a
   const cookie = await login(); await fixture.command('SET', 'geek:audit:index', 'corrupt');
   assert.equal((await save(cookie, 0)).statusCode, 503);
   assert.equal(await fixture.command('GET', appearanceKey()), null);
+});
+
+test('retired stored holidays render Off without rewriting data and can be replaced through an audited owner save', async () => {
+  const cookie = await login();
+  for (const holiday of ['mlk-day', 'juneteenth']) {
+    const raw = JSON.stringify({ version: 1, revision: 7, mode: 'manual', holiday, updatedAt: Date.now() });
+    await fixture.command('SET', appearanceKey(), raw);
+    assert.deepEqual((await publicView()).body, { ok: true, theme: null });
+    const ownerView = await call({ cookie }); assert.equal(ownerView.statusCode, 200);
+    assert.equal(ownerView.body.config.mode, 'off'); assert.equal(ownerView.body.config.holiday, null);
+    assert.equal(ownerView.body.config.revision, 7); assert.equal(await fixture.command('GET', appearanceKey()), raw);
+    assert.equal((await save(cookie, 7, 'manual', holiday)).statusCode, 400);
+    const replacement = await save(cookie, 7, 'manual', 'christmas');
+    assert.equal(replacement.statusCode, 200); assert.equal(replacement.body.config.revision, 8);
+    assert.equal((await publicView()).body.theme.id, 'christmas');
+  }
 });

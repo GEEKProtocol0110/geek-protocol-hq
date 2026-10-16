@@ -236,3 +236,13 @@ Use one entry per substantive session/interruption: task ID, exact review/commit
 - **Evidence:** 489 full local tests, zero failures/skips, real Redis 7.4.2, 311 security assertions, supporting checks and zero dependency vulnerabilities. No new production probe, phone result or provider restore is claimed; no player-facing runtime changed. Runtime baseline remains #127.
 - **Record:** append missing observed #125/#126/#128/#129 release metadata and recent Git metadata without replacing prior history. Update the current OPS-001 checkpoint to the shipped tooling. This follow-up changes documentation only; continuity regeneration/validation and whitespace checks passed.
 - **Next:** owner MFA and actual provider backup retention/isolated-restore evidence, post-backup security-state reconciliation and independent authentication review. Keep founder phone success, #119 reconciliation, paused artwork #120 and all holds.
+
+
+## October 16, 2026 — UX-002 characters, cosmic styling and holidays
+
+- **Scope:** founder requests GIGA and A.C.E. throughout HQ, removal of the space-animation button, more cosmic/glitch-coder atmosphere, richer holiday feel per page, and removal of MLK Day and Juneteenth. Reuse existing local art; preserve the paused separate collection-art draft.
+- **Implementation:** shared authored guide panel with route-specific copy, star/nebula backgrounds, terminal labels and a short hover code shift. No motion button; visible canvas movement is bounded to five seconds per scene, with reduced-motion/data-saver/hidden-page support. Seasonal borders, edge ornaments, card glows, guide greetings and portrait badges use allowlisted static motifs and remain click-through.
+- **Compatibility:** retired holiday choices have no manual/automatic path; existing structurally valid stored choices display Off without an implicit write and can be replaced through the current audited/revision-checked owner save. Other malformed state still fails closed. No avatar ownership, game scoring/timer, auth or settlement changes.
+- **Verification so far:** all 11 focused real-Redis appearance tests passed, including retired-selection recovery. Full checks and browser/deployment evidence follow.
+
+- **Full checks:** `npm run verify` passed 493 tests, zero failures/skips, real Redis 7.4.2 and 311 security assertions, plus all supporting checks. Production dependency audit: zero vulnerabilities. Three shipped-loop tests confirm bounded motion, reduced-motion/data-saver stillness and hidden-page suspension. Browser layout/asset checks are next; no new physical-phone result is claimed.

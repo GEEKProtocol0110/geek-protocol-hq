@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-15",
+  "updatedAt": "2026-10-16",
   "records": [
     {
       "id": "DR-001",
@@ -135,6 +135,18 @@
         "server/mint.js"
       ],
       "recordedAt": "2026-10-15",
+      "supersedes": null
+    },
+    {
+      "id": "DR-013",
+      "status": "founder-direction",
+      "title": "Use GIGA/A.C.E. across HQ and revise seasonal decoration",
+      "decision": "Reuse established GIGA and A.C.E. character art across public HQ pages, add more cosmic/coder character and richer per-page holiday decoration, remove the space-animation button, and remove MLK Day and Juneteenth from selectable/automatic themes. Preserve motion preferences and game clarity.",
+      "basis": "Founder request October 16, 2026; this visual scope does not resume the separate paused collection-art production draft.",
+      "evidence": [
+        "docs/HOLIDAY-THEMES.md"
+      ],
+      "recordedAt": "2026-10-16",
       "supersedes": null
     }
   ]

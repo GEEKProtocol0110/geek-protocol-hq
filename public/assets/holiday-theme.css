@@ -1,9 +1,9 @@
 /* Fixed, reviewed palettes. No theme can supply CSS, markup or an asset URL. */
 :where(html,.holiday-preview)[data-holiday-theme='new-year']{--gold:#ffe19b;--gold-bright:#ffedc3;--cyan:#c8d8ff;--holiday-glow:rgba(157,121,48,.18);--holiday-cool:rgba(91,110,191,.15)}
-:where(html,.holiday-preview):is([data-holiday-theme='mlk-day'],[data-holiday-theme='labor-day']){--gold:#d8e7ff;--gold-bright:#ecf3ff;--cyan:#a9e4f5;--holiday-glow:rgba(63,118,174,.18);--holiday-cool:rgba(94,165,170,.12)}
+:where(html,.holiday-preview)[data-holiday-theme='labor-day']{--gold:#d8e7ff;--gold-bright:#ecf3ff;--cyan:#a9e4f5;--holiday-glow:rgba(63,118,174,.18);--holiday-cool:rgba(94,165,170,.12)}
 :where(html,.holiday-preview)[data-holiday-theme='valentines']{--gold:#ffc2d9;--gold-bright:#ffdeeb;--cyan:#e0ccff;--holiday-glow:rgba(172,64,109,.18);--holiday-cool:rgba(133,84,169,.12)}
 :where(html,.holiday-preview):is([data-holiday-theme='presidents-day'],[data-holiday-theme='memorial-day'],[data-holiday-theme='independence-day'],[data-holiday-theme='veterans-day']){--gold:#ffccd1;--gold-bright:#ffe5e7;--cyan:#b2d7ff;--holiday-glow:rgba(170,59,71,.15);--holiday-cool:rgba(63,121,192,.18)}
-:where(html,.holiday-preview):is([data-holiday-theme='st-patricks'],[data-holiday-theme='juneteenth']){--gold:#e1ec9e;--gold-bright:#f0f6c7;--cyan:#a9efbe;--holiday-glow:rgba(60,146,86,.18);--holiday-cool:rgba(141,158,54,.12)}
+:where(html,.holiday-preview)[data-holiday-theme='st-patricks']{--gold:#e1ec9e;--gold-bright:#f0f6c7;--cyan:#a9efbe;--holiday-glow:rgba(60,146,86,.18);--holiday-cool:rgba(141,158,54,.12)}
 :where(html,.holiday-preview)[data-holiday-theme='easter']{--gold:#ead3ff;--gold-bright:#f5e8ff;--cyan:#a9efe2;--holiday-glow:rgba(141,104,181,.18);--holiday-cool:rgba(70,151,124,.12)}
 :where(html,.holiday-preview)[data-holiday-theme='halloween']{--gold:#ffbd70;--gold-bright:#ffdaac;--cyan:#dfbbff;--holiday-glow:rgba(166,91,38,.18);--holiday-cool:rgba(114,65,162,.17)}
 :where(html,.holiday-preview)[data-holiday-theme='thanksgiving']{--gold:#ffd299;--gold-bright:#ffe9cb;--cyan:#e4d2a1;--holiday-glow:rgba(167,100,39,.18);--holiday-cool:rgba(146,116,68,.14)}
@@ -16,3 +16,31 @@ html[data-holiday-theme] :is(.site-header,.game-header)::after{content:'';positi
 .holiday-preview{position:relative;isolation:isolate;overflow:hidden;padding:1.5rem;border:1px solid var(--gold);border-radius:16px;background:radial-gradient(ellipse at 10% 0,var(--holiday-glow,rgba(157,121,48,.1)),transparent 75%),radial-gradient(ellipse at 95% 0,var(--holiday-cool,rgba(56,147,135,.1)),transparent 80%),#0b1210;color:#edf4ef;min-height:260px}
 .holiday-preview .preview-kicker{font-size:.7rem;font-weight:800;letter-spacing:.1em;color:var(--cyan)}.holiday-preview-icon{display:block;font-size:2.2rem;line-height:1.3;margin:1.1rem 0;color:var(--gold)}.holiday-preview h3{margin:.6rem 0;color:var(--gold);font-size:1.45rem;line-height:1.3;text-transform:none;letter-spacing:-.02em}.holiday-preview p{color:#becfc4}.preview-button{display:inline-block;margin-top:.7rem;padding:.5rem .8rem;background:var(--gold);color:#080b0b;border-radius:7px;font-weight:800;font-size:.8rem}
 @media(max-width:380px){.holiday-brand-mark{width:23px;height:23px;font-size:14px;margin-left:0}}
+
+/* Seasonal worlds: a distinct fringe, edge ornaments and character badges. */
+:where(html,.holiday-preview)[data-holiday-theme='new-year']{--holiday-badge:'✦';--holiday-fringe:repeating-linear-gradient(105deg,#ffe19b 0 10px,#152544 10px 23px,#b2caff 23px 26px);--holiday-pattern:'✦  ✧  ✦'}
+:where(html,.holiday-preview)[data-holiday-theme='valentines']{--holiday-badge:'♡';--holiday-fringe:repeating-linear-gradient(105deg,#e681a9 0 10px,#42243e 10px 22px,#c2a1ed 22px 25px);--holiday-pattern:'♡  ♥  ♡'}
+:where(html,.holiday-preview)[data-holiday-theme='presidents-day']{--holiday-badge:'★';--holiday-fringe:repeating-linear-gradient(90deg,#9d3446 0 18px,#e5e3d9 18px 36px,#234d80 36px 54px);--holiday-pattern:'★  ☆  ★'}
+:where(html,.holiday-preview)[data-holiday-theme='st-patricks']{--holiday-badge:'☘';--holiday-fringe:repeating-linear-gradient(105deg,#315f3c 0 16px,#c6d777 16px 20px,#123e2e 20px 36px);--holiday-pattern:'☘  ✧  ☘'}
+:where(html,.holiday-preview)[data-holiday-theme='easter']{--holiday-badge:'✝';--holiday-fringe:repeating-linear-gradient(105deg,#bba0da 0 18px,#8bcbbb 18px 36px,#e7d6a7 36px 54px);--holiday-pattern:'✝  🌷  ✧'}
+:where(html,.holiday-preview)[data-holiday-theme='memorial-day']{--holiday-badge:'★';--holiday-fringe:linear-gradient(90deg,#632837,#d2cbb2,#243d65);--holiday-pattern:'★  ❧  ★'}
+:where(html,.holiday-preview)[data-holiday-theme='independence-day']{--holiday-badge:'★';--holiday-fringe:repeating-linear-gradient(105deg,#9c3546 0 18px,#ece7de 18px 36px,#264b81 36px 54px);--holiday-pattern:'★  ✦  ☆'}
+:where(html,.holiday-preview)[data-holiday-theme='labor-day']{--holiday-badge:'⚒';--holiday-fringe:repeating-linear-gradient(105deg,#467a98 0 16px,#b2dce6 16px 20px,#1b3347 20px 36px);--holiday-pattern:'⚒  ⚙  ✦'}
+:where(html,.holiday-preview)[data-holiday-theme='halloween']{--holiday-badge:'🎃';--holiday-fringe:repeating-linear-gradient(105deg,#cf792d 0 18px,#27172e 18px 36px,#9e79bb 36px 40px);--holiday-pattern:'🎃  ☾  ✧';--holiday-glow:#c6642930;--holiday-cool:#6d3da333}
+:where(html,.holiday-preview)[data-holiday-theme='veterans-day']{--holiday-badge:'★';--holiday-fringe:linear-gradient(90deg,#762f3c,#d9ceae,#2b4f78);--holiday-pattern:'★  ❧  ★'}
+:where(html,.holiday-preview)[data-holiday-theme='thanksgiving']{--holiday-badge:'🍂';--holiday-fringe:repeating-linear-gradient(105deg,#9b5835 0 18px,#c6a259 18px 24px,#493721 24px 40px);--holiday-pattern:'🍂  ❧  🍁';--holiday-glow:#9c571e36;--holiday-cool:#6e47222e}
+:where(html,.holiday-preview)[data-holiday-theme='christmas']{--holiday-badge:'❄';--holiday-fringe:repeating-linear-gradient(105deg,#963544 0 16px,#e8e0c5 16px 22px,#2b6247 22px 38px,#e8e0c5 38px 44px);--holiday-pattern:'❄  ✦  🎄';--holiday-glow:#943a4936;--holiday-cool:#277b533a}
+html[data-holiday-theme] body{background-image:radial-gradient(ellipse at 8% 5%,var(--holiday-glow),transparent 55%),radial-gradient(ellipse at 95% 30%,var(--holiday-cool),transparent 60%),radial-gradient(1px 1px at 20px 40px,#e7dfc870 70%,transparent 100%);background-size:100% 1100px,100% 1400px,211px 239px;background-repeat:repeat-y,repeat-y,repeat}
+html[data-holiday-theme] :is(.site-header,.game-header)::after{height:8px;bottom:-8px;background:var(--holiday-fringe);opacity:.85}
+html[data-holiday-theme] :is(.hq-companions,.giga-guide,.welcome-cards>a,.welcome-panel){border-color:var(--gold);background-image:radial-gradient(ellipse at top left,var(--holiday-glow),transparent 75%),radial-gradient(ellipse at bottom right,var(--holiday-cool),transparent 75%)}
+html[data-holiday-theme] .hq-companions::after{content:var(--holiday-pattern);position:absolute;right:1rem;top:.65rem;font-size:1.35rem;opacity:.3;pointer-events:none;z-index:-1;letter-spacing:.25rem}
+html[data-holiday-theme] :is(.hq-portrait,.giga-portrait)::after{content:var(--holiday-badge);position:absolute;bottom:0;right:0;display:grid;place-items:center;min-width:24px;height:25px;border-radius:7px 0 0 0;background:#0b1427eF;color:var(--gold);font:16px/1 system-ui,sans-serif}
+.holiday-atmosphere{position:fixed;inset:90px 0 0;z-index:-1;pointer-events:none;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(6,1fr);align-items:center;padding:0 .45rem;opacity:.19;color:var(--gold);font-size:clamp(1.1rem,2.4vw,2.2rem)}
+.holiday-atmosphere span:nth-child(even){justify-self:end;transform:rotate(14deg)}
+.holiday-atmosphere span:nth-child(odd){transform:rotate(-14deg)}
+.holiday-preview{border-top:8px solid var(--gold)}
+.holiday-preview::after{content:var(--holiday-pattern,'');position:absolute;right:.7rem;bottom:.5rem;font-size:2.8rem;opacity:.18;pointer-events:none}
+.holiday-preview[data-holiday-theme]{background-image:var(--holiday-fringe),radial-gradient(ellipse at top left,var(--holiday-glow),transparent 80%),radial-gradient(ellipse at bottom right,var(--holiday-cool),transparent 80%);background-size:100% 6px,auto,auto;background-repeat:no-repeat;border-top:1px solid var(--gold)}
+html[data-holiday-theme] body>header:not(.site-header):not(.game-header){border-bottom:6px solid var(--gold);border-image:var(--holiday-fringe) 1}
+@media(max-width:650px){.holiday-atmosphere{opacity:.1;font-size:1.1rem}.hq-holiday-greeting{font-size:.83rem}html[data-holiday-theme] .hq-companions::after{font-size:1.1rem}}
+@media(forced-colors:active){.holiday-atmosphere{display:none}html[data-holiday-theme] :is(.hq-companions,.giga-guide,.welcome-panel){border-color:CanvasText}}

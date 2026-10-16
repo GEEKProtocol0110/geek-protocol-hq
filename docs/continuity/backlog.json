@@ -584,6 +584,30 @@
         "PR #127 merged at dfcb64f9ce3eb281f91ada9d3f6c7432c5b1855a; exact head aa0f8bc3626265289797ed6be235badd6b4b8763 passed GitHub verification and Vercel. Merge-source deployment succeeded.",
         "479 tests, zero failures/skips, 311 security assertions; six targeted live HTTP checks and desktop sign-in rendering passed. Independent review, provider restore and additional phone recovery evidence remain separate."
       ]
+    },
+    {
+      "id": "UX-002",
+      "priority": "P1",
+      "status": "active",
+      "title": "Bring GIGA, A.C.E. and seasonal cosmic styling throughout HQ",
+      "owner": "Maintainer",
+      "nextAction": "Verify shared guide panels, star/coder styling, removed motion toggle and holiday rendering; publish the focused change and record actual browser/deployment evidence.",
+      "acceptance": [
+        "Existing GIGA and A.C.E. art and authored guide copy appear across public pages without changing selected player avatars or game state.",
+        "Shared cosmic backgrounds and subtle code styling work at narrow widths; the old animation button is absent and motion respects reduced-motion/data-saver/visibility constraints.",
+        "Each listed holiday has distinct page motifs, borders, guide greetings and character badges; Off and failed reads clear decoration.",
+        "MLK Day and Juneteenth are absent from choices/automatic windows; old saved selections render Off and remain editable without an automatic data write.",
+        "Relevant checks, exact release evidence and remaining verification limits are recorded."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/HOLIDAY-THEMES.md",
+        "public/assets/characters.js",
+        "public/assets/atmosphere.css",
+        "public/assets/site.js",
+        "public/assets/holiday-theme.js",
+        "tests/appearance.test.js"
+      ]
     }
   ]
 }
