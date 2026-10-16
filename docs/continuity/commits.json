@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "capturedAt": "2026-10-16",
-  "through": "472249a0793b39e3c6f2f9cf5121167a0d970412",
-  "scope": "Preserved HQ commit metadata plus observed current-branch Git objects through PR #131. Runtime baseline is #131. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation.",
+  "through": "31be106bcecf01da78c18cd9afb37901f177d517",
+  "scope": "Preserved HQ commit metadata plus observed Git objects through PR #133. Runtime baseline is #133. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -1807,6 +1807,48 @@
       ],
       "authoredAt": "2026-10-16T11:04:08-04:00",
       "title": "Merge pull request #131 from GEEKProtocol0110/codex/characters-cosmic-holidays"
+    },
+    {
+      "commit": "09f29addfa799cfcc1c5d88ee64b1294f91716a0",
+      "parents": [
+        "472249a0793b39e3c6f2f9cf5121167a0d970412"
+      ],
+      "authoredAt": "2026-10-16T11:06:33-04:00",
+      "title": "Record deployed character and holiday release with verification limits"
+    },
+    {
+      "commit": "3fb1fe912e7c345c56de18216f5daf0905e70279",
+      "parents": [
+        "472249a0793b39e3c6f2f9cf5121167a0d970412",
+        "09f29addfa799cfcc1c5d88ee64b1294f91716a0"
+      ],
+      "authoredAt": "2026-10-16T11:08:13-04:00",
+      "title": "Merge pull request #132 from GEEKProtocol0110/codex/cosmic-release-record"
+    },
+    {
+      "commit": "4e685991ecbbcc433f371f222c9bf76fb7753d7e",
+      "parents": [
+        "3fb1fe912e7c345c56de18216f5daf0905e70279"
+      ],
+      "authoredAt": "2026-10-16T11:19:48-04:00",
+      "title": "Dial back repeated characters and emphasize the neon-space background"
+    },
+    {
+      "commit": "579dc7ebc98dd88d72f0eab15085b2673bf968e6",
+      "parents": [
+        "4e685991ecbbcc433f371f222c9bf76fb7753d7e"
+      ],
+      "authoredAt": "2026-10-16T11:22:20-04:00",
+      "title": "Carry faint code texture into the space-scene backgrounds"
+    },
+    {
+      "commit": "31be106bcecf01da78c18cd9afb37901f177d517",
+      "parents": [
+        "3fb1fe912e7c345c56de18216f5daf0905e70279",
+        "579dc7ebc98dd88d72f0eab15085b2673bf968e6"
+      ],
+      "authoredAt": "2026-10-16T11:23:25-04:00",
+      "title": "Merge pull request #133 from GEEKProtocol0110/codex/neon-background-focus"
     }
   ]
 }

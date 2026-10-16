@@ -35,7 +35,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | AUTH-002 | P0 | needs-evidence | Resolve mobile login when wallet message signing is unavailable | Maintainer implements and verifies; founder confirms physical-phone passkeys |
 | UX-001 | P0 | done | Simplify first visits and close current reliability gaps | Maintainer |
 | UX-002 | P1 | done | Bring GIGA, A.C.E. and seasonal cosmic styling throughout HQ | Maintainer |
-| UX-003 | P1 | active | Reduce repeated character art and emphasize the neon-space background | Maintainer |
+| UX-003 | P1 | done | Reduce repeated character art and emphasize the neon-space background | Maintainer |
 
 ## CONT-001: Publish the continuation system
 
@@ -460,9 +460,9 @@ Evidence/specification: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), 
 
 ## UX-003: Reduce repeated character art and emphasize the neon-space background
 
-**P1 / active.** Owner: Maintainer. Dependencies: none.
+**P1 / done.** Owner: Maintainer. Dependencies: none.
 
-Next action: Verify and release the background-focused correction, including browser confirmation that repeated character panels are absent and the constellation asset loads.
+Next action: Shipped in PR #133 at 31be106bcecf01da78c18cd9afb37901f177d517. Keep the background emphasis; await founder-supplied character art before another broad rollout. Phone/other-seasonal visual QA remains a separate follow-up.
 
 Acceptance:
 
