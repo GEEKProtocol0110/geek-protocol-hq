@@ -41,6 +41,8 @@
       : { clientDataJSON: encode(credential.response.clientDataJSON), authenticatorData: encode(credential.response.authenticatorData), signature: encode(credential.response.signature), userHandle: credential.response.userHandle ? encode(credential.response.userHandle) : null } });
   const refresh = async () => {
     const data = await request(); list.replaceChildren();
+    const playerName = panel.querySelector('[data-passkey-player]');
+    if (playerName) playerName.textContent = data.playerName || 'Name unavailable';
     panel.querySelector('[data-passkey-logout]').hidden = !data.signedIn && !data.walletLinked;
     for (const c of data.credentials) {
       const li = document.createElement('li'), label = document.createElement('span'), button = document.createElement('button');

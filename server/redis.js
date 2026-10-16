@@ -6,17 +6,21 @@ const config = () => ({
 const request = async (path, body) => {
   const { url, token } = config();
   if (!url || !token) throw new Error('REDIS_NOT_CONFIGURED');
-  const response = await fetch(`${url.replace(/\/$/, '')}${path}`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
-  });
-  const payload = await response.json().catch(() => ({}));
-  if (!response.ok || payload.error) throw new Error(payload.error || `REDIS_${response.status}`);
-  return payload;
+  const controller = new AbortController();
+  const deadline = setTimeout(() => controller.abort(), 8000);
+  try {
+    const response = await fetch(`${url.replace(/\/$/, '')}${path}`, {
+      method: 'POST', signal: controller.signal,
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    const payload = await response.json();
+    if (!response.ok || payload.error) throw new Error('REDIS_UNAVAILABLE');
+    return payload;
+  } catch (error) {
+    if (controller.signal.aborted) throw new Error('REDIS_TIMEOUT');
+    throw new Error('REDIS_UNAVAILABLE');
+  } finally { clearTimeout(deadline); }
 };
 
 export const redis = async (...command) => (await request('', command)).result;

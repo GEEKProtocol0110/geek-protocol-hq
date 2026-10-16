@@ -107,14 +107,14 @@ test('offers without public consent can be closed but cannot be published; withd
 
 test('storage faults leave no partial public credit; lost submission and publication responses can be recovered', async () => {
   const body = application(); loseReply = 'geek-community-create-v1';
-  assert.equal((await apply(body)).statusCode, 500);
+  assert.equal((await apply(body)).statusCode, 503);
   const id = (await apply(body)).body.receipt.id; assert.equal(await fixture.command('ZCARD', communityPrefix() + ':pending'), 1);
   const cookie = await login(); await fixture.command('SET', communityPrefix() + ':credits', 'wrong-type');
   assert.equal((await review(cookie, publish(id))).statusCode, 503);
   assert.equal(await fixture.command('EXISTS', communityPrefix() + ':credit:' + id), 0);
   assert.equal((await list(cookie)).body.items.length, 1);
   await fixture.command('DEL', communityPrefix() + ':credits'); loseReply = 'geek-community-decide-v1';
-  assert.equal((await review(cookie, publish(id))).statusCode, 500);
+  assert.equal((await review(cookie, publish(id))).statusCode, 503);
   assert.equal((await list(cookie)).body.items.length, 0); assert.equal((await list(cookie, 'published')).body.items.length, 1);
   assert.equal((await review(cookie, publish(id))).statusCode, 409);
   assert.equal((await call()).body.credits.length, 1);

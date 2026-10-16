@@ -1,4 +1,5 @@
 import { parseStoredJson, pipeline, redis } from './redis.js';
+import { cleanName } from './http.js';
 import { playerIdFor } from './session.js';
 import { parseProfile } from './profile.js';
 import { deriveProgression } from './progression.js';
@@ -17,14 +18,14 @@ export const listLeaderboard = async (category, mode = 'gauntlet', limit = 10) =
   const scores = raw.filter((_, index) => index % 2 === 1);
   const meta = await pipeline(ids.map((id) => ['HGET', metaKey(category, selectedMode), id]));
   const ranks = await pipeline(scores.map(score => ['ZCOUNT', boardKey(category, selectedMode), Number(score) + 1, '+inf']));
-  const profiles = await pipeline(ids.flatMap(id => [['GET', `geek:profile:${id}`], ['GET', prestigeKeyFor(id)]]));
+  const profiles = await pipeline(ids.flatMap(id => [['GET', `geek:profile:${id}`], ['GET', prestigeKeyFor(id)], ['GET', `geek:player-name:${id}`]]));
   return ids.map((id, index) => {
     const details = parseStoredJson(meta[index]) || {};
     let progression = null;
-    try { if (profiles[index * 2] === null) throw new Error('PROFILE_STATE_INVALID'); const profile = parseProfile(profiles[index * 2]); progression = deriveProgression({ ...profile, prestigeState: parseStoredJson(profiles[index * 2 + 1]) || migrateLegacyPrestige(profile) }); } catch { /* A damaged rank must not fabricate progression. */ }
+    try { if (profiles[index * 3] === null) throw new Error('PROFILE_STATE_INVALID'); const profile = parseProfile(profiles[index * 3]); progression = deriveProgression({ ...profile, prestigeState: parseStoredJson(profiles[index * 3 + 1]) || migrateLegacyPrestige(profile) }); } catch { /* A damaged rank must not fabricate progression. */ }
     return {
       rank: Number(ranks[index]) + 1,
-      name: details.name || 'Guest Geek',
+      name: cleanName(profiles[index * 3 + 2] || details.name),
       score: Number(scores[index] || 0),
       round: Number(details.round || 1),
       mode: selectedMode,

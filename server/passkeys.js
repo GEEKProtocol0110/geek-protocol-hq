@@ -82,7 +82,7 @@ const saveAndRotate = async (res, session, previous, account, credentialId, wall
 export const passkeyStatus = async session => {
   const { account } = await getAccount(pid(session));
   const wallet = await walletState(pid(session));
-  return { signedIn: Boolean(session.passkeyEpoch), walletLinked: wallet.version > 0,
+  return { playerName: session.name, signedIn: Boolean(session.passkeyEpoch), walletLinked: wallet.version > 0,
     credentials: account?.walletVersion === wallet.version ? account.credentials.map(c => ({ id: c.id, label: c.label, createdAt: c.createdAt })) : [],
     recovery: 'Use another saved or synced passkey, or your linked wallet. Geek cannot restore a lost passkey without a remaining recovery method.' };
 };

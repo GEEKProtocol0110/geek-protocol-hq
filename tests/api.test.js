@@ -175,6 +175,15 @@ const execute = (command) => {
     return withScores ? entries.flatMap(([member, score]) => [member, String(score)]) : entries.map(([member]) => member);
   }
   if (name === 'EVAL') {
+    if (String(args[0]).includes('geek-session-save-v1')) {
+      const [sessionKey,nameKey] = args.slice(2,4), [previous,next,ttl,name,action] = args.slice(4);
+      const current = strings.get(sessionKey);
+      if (previous && current === undefined) return 'MISSING';
+      if (previous ? current !== previous : current !== undefined) return 'CHANGED';
+      strings.set(sessionKey,next);
+      if (action === 'rename' || !strings.has(nameKey)) strings.set(nameKey,name);
+      return 'OK';
+    }
     if (String(args[0]).includes('geek-profile-audit-cas-v1')) {
       const count = Number(args[1]), [profileKey, prestigeKey] = args.slice(2, 2 + count);
       const [previous, prestigePrevious, next, commands] = args.slice(2 + count);
@@ -442,6 +451,8 @@ test('profile name edits belong to the authenticated player and survive stale ga
   const playerId = sessionIdFromCookie(cookie);
   const stranger = await startSession('Other Geek');
   const stale = await loadProfile(playerId);
+  const beforeScore = await recordVerifiedScore({ session: {id:playerId,name:'Original Geek'}, category:'technology', score:1234, round:1 });
+  const scoreTime = beforeScore.entries.find(entry => entry.name === 'Original Geek').updatedAt;
   const rename = async (body, auth = cookie) => {
     const res = response(); await sessionHandler(request('POST', { action: 'rename', ...body }, auth), res); return res;
   };
@@ -450,6 +461,9 @@ test('profile name edits belong to the authenticated player and survive stale ga
   const saved = await rename({ displayName: '  New <Geek>  ', playerId: sessionIdFromCookie(stranger) });
   assert.equal(saved.statusCode, 200);
   assert.equal(saved.body.player.name, 'New Geek');
+  const board = response(); await leaderboardHandler(request('GET', undefined, '', {category:'technology'}), board);
+  const renamed = board.body.entries.find(entry => entry.name === 'New Geek');
+  assert.equal(renamed.score,1234); assert.equal(renamed.updatedAt,scoreTime);
   stale.xp = 500; await saveProfile(playerId, stale);
   const profile = response(); await profileHandler(request('GET', undefined, cookie), profile);
   assert.equal(profile.body.profile.player.name, 'New Geek');
@@ -479,7 +493,7 @@ test('a name-store outage does not replace an existing player session', async ()
   };
   try {
     const res = response(); await sessionHandler(request('POST', {}, cookie), res);
-    assert.equal(res.statusCode, 500);
+    assert.equal(res.statusCode, 503);
     assert.equal(res.headers['set-cookie'], undefined);
     assert.equal(strings.get(`geek:session:${id}`), before);
     assert.equal(strings.get(`geek:player-name:${id}`), 'Outage Geek');

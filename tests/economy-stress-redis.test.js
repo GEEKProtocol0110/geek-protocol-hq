@@ -53,7 +53,7 @@ test('a hundred concurrent same-reference planning receipts commit once; conflic
 });
 test('a lost accepted journal reply returns the same receipt on retry without paying or allocating again', async () => {
   const player = 'b'.repeat(32), input = { reference: 'entry_stress_00001', kind: 'game-entry', grossRaw: '101', feeRaw: '101' };
-  lost = true; await assert.rejects(appendPlannedTransaction(player, input), /lost journal/);
+  lost = true; await assert.rejects(appendPlannedTransaction(player, input), /REDIS_UNAVAILABLE/);
   const retry = await appendPlannedTransaction(player, input); assert.equal(retry.duplicate, true);
   const state = await readLedger(player); assert.equal(state.sequence, 1); assert.equal(state.totals.recyclePendingRaw, '70'); assert.equal(state.totals.burnPendingRaw, '31');
   assert.equal(await fixture.command('EXISTS', 'geek:profile:' + player), 0);

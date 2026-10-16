@@ -229,3 +229,9 @@ test('a store handoff loads an unsaved preview, preserves it across profile read
   assert.equal(ui.node('[data-geek-part="outfit"]').value,'labcoat');assert.equal(ui.node('[data-geek-preview-state]').textContent,'UNSAVED PREVIEW');assert.equal(store.has(storePreviewKey),false);assert.equal(requests.length,0);
   await ui.node('[data-geek-cancel]').emit('click');assert.equal(ui.node('[data-geek-preview-state]').textContent,'YOUR CHARACTER PREVIEW');assert.equal(ui.node('[data-geek-part="outfit"]').value,geek.defaultGeek.outfit);
 });
+
+for (const protection of ['passkey', 'wallet', 'guest']) test(`${protection} recovery labels match the actual saved-player protection`, async () => {
+  const ui = await profilePage(path => path === '/api/profile' ? json({ ok:true, profile:{...profile(), player:{...profile().player, passkeyProtected:protection==='passkey',walletProtected:protection==='wallet'}} }) : undefined);
+  assert.equal(ui.node('[data-recovery]').textContent, protection==='passkey' ? 'Passkey protected' : protection==='wallet' ? 'Kaspa wallet protected' : 'Saved in this browser');
+  assert.equal(ui.node('[data-protection]').textContent, protection==='guest' ? 'Browser profile' : 'Recovery enabled');
+});

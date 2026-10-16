@@ -20,7 +20,7 @@ const mount = async ({ support=true, handle, prompt, walletLinked=false } = {}) 
     calls.push({path,body});
     const custom=await handle?.(path,body,options,calls); if(custom) return custom;
     if(path==='/api/session') return json({ok:true});
-    if(!body) return json({signedIn:false,walletLinked,credentials:[]});
+    if(!body) return json({playerName:'Saved Explorer',signedIn:false,walletLinked,credentials:[]});
     if(body.action.startsWith('begin-')) return json({challengeId:'test-challenge', options:{challenge:b64('challenge'),
       ...(body.action==='begin-register' ? {user:{id:b64('player'),name:'Geek'}} : {})}});
     if(body.action.startsWith('finish-')) return json({signedIn:true,grant:{token:'single-use-test-grant'}});
@@ -33,7 +33,7 @@ const mount = async ({ support=true, handle, prompt, walletLinked=false } = {}) 
   };
   ui.document.dispatchEvent=event => events.push(event);
   const panel=ui.node('[data-passkeys]');
-  for(const selector of ['note','list','label','wallet-help']) panel.append(ui.node(`[data-passkey-${selector}]`));
+  for(const selector of ['note','list','label','wallet-help','player']) panel.append(ui.node(`[data-passkey-${selector}]`));
   for(const selector of ['save','login','logout','wallet-authorize']) panel.append(ui.node(`[data-passkey-${selector}]`,'button'));
   ui.run(source);await tick();
   return {...ui,calls,prompts,events};
@@ -41,6 +41,7 @@ const mount = async ({ support=true, handle, prompt, walletLinked=false } = {}) 
 
 test('first-visit passkey enrollment requires a tap, serializes exact bytes and opens saved-player access',async () => {
   const ui=await mount();assert.equal(ui.prompts.length,0);
+  assert.equal(ui.node('[data-passkey-player]').textContent,'Saved Explorer');
   assert.equal(ui.node('[data-passkey-save]').disabled,false);
   ui.node('[data-passkey-label]').value='My phone';
   await ui.node('[data-passkey-save]').emit('click');

@@ -92,7 +92,7 @@ test('durable concurrent appends conserve totals and commit each reference once'
  const state=await readLedger(playerA);assert.equal(state.sequence,5);assert.equal(state.totals.feeRaw,'50000000000');assert.equal(results.filter(x=>x.duplicate).length,1);assert.equal(await readLedger(playerB).then(x=>x.sequence),0);
 });
 test('lost commit responses retry without a second allocation; repeated conflicts never overwrite state',async()=>{
- reset();loseCommittedResponse=true;await assert.rejects(appendPlannedTransaction(playerA,input()),/Lost committed response/);
+ reset();loseCommittedResponse=true;await assert.rejects(appendPlannedTransaction(playerA,input()),/REDIS_UNAVAILABLE/);
  const retry=await appendPlannedTransaction(playerA,input());assert.equal(retry.duplicate,true);assert.equal((await readLedger(playerA)).sequence,1);
  const before=store.get(ledgerKey(playerA));forcedConflicts=8;await assert.rejects(appendPlannedTransaction(playerA,input('conflict_00000002')),/LEDGER_BUSY/);assert.equal(store.get(ledgerKey(playerA)),before);
 });

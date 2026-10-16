@@ -552,6 +552,28 @@
         "result": "It worked",
         "scope": "Founder-reported phone-flow success; exact browser/app version and prompt method not supplied. Separate returning-login, cross-device recovery and revocation results not supplied."
       }
+    },
+    {
+      "id": "UX-001",
+      "priority": "P0",
+      "status": "active",
+      "title": "Simplify first visits and close current reliability gaps",
+      "owner": "Maintainer",
+      "nextAction": "Fix reproduced session races, bound database requests, simplify sign-in, align player labels and leaderboard names; verify the exact release before merge.",
+      "acceptance": [
+        "First visit has a clear guest, returning-passkey and save-current-player path; advanced wallet steps stay optional.",
+        "Session refresh cannot undo newer protection or resurrect revoked sessions; failed refresh cannot partially rename a player.",
+        "Provider requests have a deadline without automatic write retries; uncertainty prompts a saved-state check.",
+        "Passkey protection and renamed leaderboard display agree with saved state.",
+        "Full checks, exact PR/deployment evidence and remaining independent-review/restore work are recorded."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/NEW-PLAYER-POLISH.md",
+        "tests/passkeys.test.js",
+        "tests/redis-transport.test.js",
+        "tests/profile-client.test.js"
+      ]
     }
   ]
 }

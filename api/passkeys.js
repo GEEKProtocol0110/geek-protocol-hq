@@ -17,7 +17,7 @@ export default async function handler(req, res) {
   } catch (error) {
     if (error.message.startsWith('PASSKEY_')) return sendJson(res, error.message === 'PASSKEY_STATE_INVALID' ? 503 : 400, { ok: false, code: error.message,
       error: error.message === 'PASSKEY_REAUTH_REQUIRED' ? 'Sign in again with an existing passkey or verify your linked wallet before changing passkeys.' : 'Passkey verification was not completed. Your saved player has not been replaced. Try again or use your linked wallet.' });
-    if (!['SESSION_REQUIRED','SESSION_STATE_INVALID','REDIS_NOT_CONFIGURED','RATE_LIMITED','INVALID_BODY','IDENTITY_STATE_INVALID'].includes(error.message)) return sendJson(res, 400, { ok: false, error: 'The passkey was not verified. Try again or choose wallet sign-in.' });
+    if (!error.message.startsWith('REDIS_') && !['SESSION_REQUIRED','SESSION_CHANGED','SESSION_STATE_INVALID','RATE_LIMITED','INVALID_BODY','IDENTITY_STATE_INVALID'].includes(error.message)) return sendJson(res, 400, { ok: false, error: 'The passkey was not verified. Try again or choose wallet sign-in.' });
     return handleApiError(res, error);
   }
 }
