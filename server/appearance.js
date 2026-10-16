@@ -18,13 +18,16 @@ redis.call('SET', KEYS[2], ARGV[3])
 redis.call('ZADD', KEYS[3], ARGV[4], ARGV[5])
 return 'OK'
 `;
-const validConfig = c => c && c.version === 1 && Number.isSafeInteger(c.revision) && c.revision > 0 && ['off', 'auto', 'manual'].includes(c.mode) && (c.mode === 'manual' ? Boolean(holidayById(c.holiday)) : c.holiday === null) && Number.isSafeInteger(c.updatedAt) && c.updatedAt > 0;
+// Retired stored choices render Off and remain editable without silently rewriting Redis.
+const retiredHoliday = id => ['mlk-day', 'juneteenth'].includes(id);
+const validConfig = c => c && c.version === 1 && Number.isSafeInteger(c.revision) && c.revision > 0 && ['off', 'auto', 'manual'].includes(c.mode) && (c.mode === 'manual' ? Boolean(holidayById(c.holiday)) || retiredHoliday(c.holiday) : c.holiday === null) && Number.isSafeInteger(c.updatedAt) && c.updatedAt > 0;
 export const loadAppearance = async () => {
   const raw = await redis('GET', appearanceKey());
   if (raw === null) return { raw: '', config: { ...DEFAULT } };
   let config;
   try { config = JSON.parse(raw); } catch { throw new Error('APPEARANCE_STATE_INVALID'); }
   if (!validConfig(config)) throw new Error('APPEARANCE_STATE_INVALID');
+  if (config.mode === 'manual' && retiredHoliday(config.holiday)) config = { ...config, mode: 'off', holiday: null };
   return { raw, config };
 };
 const view = config => ({ config, active: effectiveHoliday(config), upcoming: upcomingHolidayWindows(), timeZone: HOLIDAY_TIMEZONE });

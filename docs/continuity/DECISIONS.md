@@ -113,3 +113,13 @@ For TN10 rehearsal, mirror the pinned Mainnet maximum of 144 billion, 100,000 pe
 Basis: Founder questioned the smaller test-supply proposal on October 15; it had not been deployed. Deployment-field parity is separate from wallet approval, rewards and settlement.
 
 Evidence: [docs/TESTNET-ASSET-SETUP.md](../../docs/TESTNET-ASSET-SETUP.md), [docs/testnet/geekt-deploy.json](../../docs/testnet/geekt-deploy.json), [server/mint.js](../../server/mint.js).
+
+## DR-013: Use GIGA/A.C.E. across HQ and revise seasonal decoration
+
+**founder-direction** · 2026-10-16.
+
+Reuse established GIGA and A.C.E. character art across public HQ pages, add more cosmic/coder character and richer per-page holiday decoration, remove the space-animation button, and remove MLK Day and Juneteenth from selectable/automatic themes. Preserve motion preferences and game clarity.
+
+Basis: Founder request October 16, 2026; this visual scope does not resume the separate paused collection-art production draft.
+
+Evidence: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md).

@@ -25,9 +25,9 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**OPS-001: needs-evidence.** Offline restore tooling released in PR #129, merge 9e43107c2a027ddf18900d2c072f19dcaaf5b94e. Exact head 5a8ae292d8013d04e78b46d032f42bb7ffe119a3 passed GitHub verify and Vercel; merge-source deployment succeeded. Full local verification passed 489 tests and 311 security assertions. Production provider retention/restore and independent review remain unverified; preserve the working founder phone passkey.
+**UX-002: active.** Founder requested GIGA/A.C.E. throughout HQ, more space and glitch/coder atmosphere, removal of the space animation button, richer holiday styling per page, and removal of MLK Day/Juneteenth from the holiday catalog. Existing art is reused; collection artwork #120 remains paused.
 
-Next task: **OPS-001**. Verify actual production backup retention and an isolated provider restore privately; reconcile post-backup credential revocations before access reopens. Independent authentication review and physical-device recovery remain separate. Preserve the working phone player/passkey. Reconcile draft #119 before more features; artwork #120 stays paused; settlement stays disabled.
+Next task: **UX-002**. Verify and release the character/cosmic/holiday visual update, record the exact release and browser limits, then return to OPS-001 provider recovery evidence and independent auth review. Preserve the working phone passkey and all holds.
 
 ## Holds
 

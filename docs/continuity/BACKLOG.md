@@ -34,6 +34,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ARCH-002 | P1 | done | Preserve the founder-supplied theme roster and trait sheet | Maintainer archives; founder reviews interpretation |
 | AUTH-002 | P0 | needs-evidence | Resolve mobile login when wallet message signing is unavailable | Maintainer implements and verifies; founder confirms physical-phone passkeys |
 | UX-001 | P0 | done | Simplify first visits and close current reliability gaps | Maintainer |
+| UX-002 | P1 | active | Bring GIGA, A.C.E. and seasonal cosmic styling throughout HQ | Maintainer |
 
 ## CONT-001: Publish the continuation system
 
@@ -439,3 +440,19 @@ Acceptance:
 - Full checks, exact PR/deployment evidence and remaining independent-review/restore work are recorded.
 
 Evidence/specification: [docs/NEW-PLAYER-POLISH.md](../../docs/NEW-PLAYER-POLISH.md), [tests/passkeys.test.js](../../tests/passkeys.test.js), [tests/redis-transport.test.js](../../tests/redis-transport.test.js), [tests/profile-client.test.js](../../tests/profile-client.test.js).
+
+## UX-002: Bring GIGA, A.C.E. and seasonal cosmic styling throughout HQ
+
+**P1 / active.** Owner: Maintainer. Dependencies: none.
+
+Next action: Verify shared guide panels, star/coder styling, removed motion toggle and holiday rendering; publish the focused change and record actual browser/deployment evidence.
+
+Acceptance:
+
+- Existing GIGA and A.C.E. art and authored guide copy appear across public pages without changing selected player avatars or game state.
+- Shared cosmic backgrounds and subtle code styling work at narrow widths; the old animation button is absent and motion respects reduced-motion/data-saver/visibility constraints.
+- Each listed holiday has distinct page motifs, borders, guide greetings and character badges; Off and failed reads clear decoration.
+- MLK Day and Juneteenth are absent from choices/automatic windows; old saved selections render Off and remain editable without an automatic data write.
+- Relevant checks, exact release evidence and remaining verification limits are recorded.
+
+Evidence/specification: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/characters.js](../../public/assets/characters.js), [public/assets/atmosphere.css](../../public/assets/atmosphere.css), [public/assets/site.js](../../public/assets/site.js), [public/assets/holiday-theme.js](../../public/assets/holiday-theme.js), [tests/appearance.test.js](../../tests/appearance.test.js).
