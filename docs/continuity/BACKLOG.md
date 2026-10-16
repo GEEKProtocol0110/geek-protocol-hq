@@ -32,6 +32,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | OPS-003 | P1 | done | Finish mint-availability monitoring for GitHub issue #14 | Maintainer; founder reviews release |
 | CHAIN-002 | P1 | decision-needed | Evaluate KCC20 compatibility and preserve GEEK holder entitlements | Maintainer researches; founder selects policy; independent covenant reviewer unassigned |
 | ARCH-002 | P1 | done | Preserve the founder-supplied theme roster and trait sheet | Maintainer archives; founder reviews interpretation |
+| ARCH-003 | P1 | in-progress | Preserve the five founder-supplied Sci-Fi Geek rarity originals | Maintainer archives; founder reviews interpretation |
 
 ## CONT-001: Publish the continuation system
 
@@ -65,9 +66,9 @@ Evidence/specification: [docs/continuity/OPERATING-GUIDE.md](../../docs/continui
 
 **P1 / blocked.** Owner: Founder supplies originals; archivist unassigned. Dependencies: none.
 
-Next action: Supply the original conversation export and remaining founding files from the phone.
+Next action: Seven phone originals are preserved. Continue supplying the original conversation export and remaining files; reconcile chronology only with original evidence.
 
-Blocker: Original conversation and remaining phone files have not been supplied in this working copy.
+Blocker: Original conversation and the complete remaining founding-file inventory have not been supplied; received files are preserved individually.
 
 Acceptance:
 
@@ -402,3 +403,17 @@ Acceptance:
 - Existing 500-edition manifest, five tiers, GIGA/A.C.E. anchors, art approvals and disabled ownership remain unchanged.
 
 Evidence/specification: [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md), [docs/continuity/founding/geek-roster-500.json](../../docs/continuity/founding/geek-roster-500.json), [docs/continuity/assets.json](../../docs/continuity/assets.json), [docs/continuity/founding/geek-trait-rarity-sheet.json](../../docs/continuity/founding/geek-trait-rarity-sheet.json).
+
+## ARCH-003: Preserve the five founder-supplied Sci-Fi Geek rarity originals
+
+**P1 / in-progress.** Owner: Maintainer archives; founder reviews interpretation. Dependencies: none.
+
+Next action: Review codex/archive-scifi-originals and its five byte-identical originals; retain null edition mappings until COLL-001 resolves the art specification.
+
+Acceptance:
+
+- Five original filenames and PNG bytes retained with SHA-256, Git blobs, dimensions and supplied provenance.
+- Duplicate check scope and links to roster source-252 / PDF row-252 recorded.
+- No change to collection supply, approved art, mint readiness, ownership or existing legacy-art records.
+
+Evidence/specification: [docs/continuity/founding/sci-fi-geek-set.json](../../docs/continuity/founding/sci-fi-geek-set.json), [docs/continuity/founding/SCI-FI-GEEK-SET.md](../../docs/continuity/founding/SCI-FI-GEEK-SET.md), [docs/continuity/assets.json](../../docs/continuity/assets.json).

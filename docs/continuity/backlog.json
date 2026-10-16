@@ -67,7 +67,7 @@
       "status": "blocked",
       "title": "Ingest founding originals and reconcile chronology",
       "owner": "Founder supplies originals; archivist unassigned",
-      "nextAction": "Supply the original conversation export and remaining founding files from the phone.",
+      "nextAction": "Seven phone originals are preserved. Continue supplying the original conversation export and remaining files; reconcile chronology only with original evidence.",
       "acceptance": [
         "Each received file has an original filename, byte hash, provenance, privacy/licensing disposition and duplicate result.",
         "Originals remain unchanged; public derivatives are identified separately.",
@@ -78,7 +78,7 @@
         "docs/continuity/ARCHIVE-GUIDE.md",
         "docs/continuity/assets.json"
       ],
-      "blocker": "Original conversation and remaining phone files have not been supplied in this working copy."
+      "blocker": "Original conversation and the complete remaining founding-file inventory have not been supplied; received files are preserved individually."
     },
     {
       "id": "BANK-001",
@@ -517,6 +517,25 @@
       "completionEvidence": [
         "PR #116 merged at 71ad0442e7b9c7ed957f94057db6b43bfa395905 on 2026-10-15T17:51:47Z; current-head GitHub verify and Vercel Preview Comments passed.",
         "Exact original/archive/staged bytes, SHA-256 and Git blobs matched; 500 roster positions and 358 PDF rows retained. Focused reconciliation checks passed and merged KCC20 research/history were preserved."
+      ]
+    },
+    {
+      "id": "ARCH-003",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Preserve the five founder-supplied Sci-Fi Geek rarity originals",
+      "owner": "Maintainer archives; founder reviews interpretation",
+      "nextAction": "Review codex/archive-scifi-originals and its five byte-identical originals; retain null edition mappings until COLL-001 resolves the art specification.",
+      "acceptance": [
+        "Five original filenames and PNG bytes retained with SHA-256, Git blobs, dimensions and supplied provenance.",
+        "Duplicate check scope and links to roster source-252 / PDF row-252 recorded.",
+        "No change to collection supply, approved art, mint readiness, ownership or existing legacy-art records."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/continuity/founding/sci-fi-geek-set.json",
+        "docs/continuity/founding/SCI-FI-GEEK-SET.md",
+        "docs/continuity/assets.json"
       ]
     }
   ]

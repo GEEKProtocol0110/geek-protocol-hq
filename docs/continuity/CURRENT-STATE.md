@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-001: active.** BANK-001 / PR #118 candidate adds 80 internally source-checked questions in three batches to the 500-concept baseline: 580 Kaspa / 8,185 active / 678 source reviews. Introductory Study remains 537 concepts; the new advanced Toccata topic is outside its existing filter. Candidate is unmerged and not deployed; answer keys and holds remain unchanged.
+**ARCH-003: in-progress.** Archive five newly supplied Sci-Fi Geek rarity PNGs on codex/archive-scifi-originals. Separate draft PR #119 has passkey/testnet-wallet work at 3b291065aad6dd2901225ab2f83100cb0277030b with passing GitHub verification; device acceptance is outstanding.
 
-Next task: **BANK-001**. Review PR #118 and all three pinned item registers, then continue distinct primary-source learning facts toward 1,000 Kaspa concepts (420 remain). CHAIN-001 still needs its first accepted manual testnet reward; CHAIN-002 needs policy/artifact decisions. Preserve all holds.
+Next task: **BANK-001**. Review the Sci-Fi original archive; PR #119 remains separate and awaits phone passkey/backup acceptance. BANK-001 continues from merged PR #118 / 580 Kaspa toward 1,000. CHAIN-001 still needs one actual reconciled testnet reward.
 
 ## Holds
 
@@ -35,7 +35,7 @@ CCE: **bank-and-economy-hold**. Contributor rate: unselected; 1 or 5 GEEK are pr
 
 ## Unresolved
 
-- Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.
+- Original founding conversation and remaining phone files are still missing. Roster and trait PDF are preserved in merged PR #116; five newly supplied Sci-Fi Geek PNGs are archived on codex/archive-scifi-originals for review.
 - Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.
 - No successor or second trusted account administrator is appointed in this record.
 - No institutional contract, school partnership, legal-entity registration or accreditation is verified.

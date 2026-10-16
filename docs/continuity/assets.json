@@ -84,7 +84,7 @@
       "status": "awaiting-original",
       "location": null,
       "sha256": null,
-      "provenance": "Two supplied phone files are preserved as ARCH-011 and ARCH-012. Quantity and contents of remaining phone files are unknown; original conversation is still missing."
+      "provenance": "Seven supplied phone files are preserved as ARCH-011 through ARCH-017: the roster, trait PDF and five Sci-Fi Geek PNGs. Quantity and contents of remaining phone files are unknown; original conversation is still missing."
     },
     {
       "id": "ARCH-010",
@@ -125,6 +125,86 @@
       "rights": "Founder-supplied planning sheet. Third-party themes remain historical concepts, not licensed artwork or endorsement.",
       "derivedIndex": "docs/continuity/founding/geek-trait-rarity-sheet.json",
       "review": "docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md"
+    },
+    {
+      "id": "ARCH-013",
+      "title": "1 Sci-Fi Geek Common.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/1 Sci-Fi Geek Common.png",
+      "sha256": "d74ae55b4275b99e381bd940304409e92a3b2c30f40a419a6170ce23330a87a9",
+      "gitBlobSha": "b7076e57dfa9cf5aeeaf1cdabc6bd97272f46201",
+      "sizeBytes": 161187,
+      "originalFilename": "1 Sci-Fi Geek Common.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ files at main 606d06a861428f96b633152d32d3e8954e3e209d or draft PR #119 head 3b291065aad6dd2901225ab2f83100cb0277030b. No Sci-Fi Geek art record in the ten-concept legacy archive. Visible rarity label is preserved; original creation date and final edition mapping are unverified.",
+      "rights": "Founder-supplied project concept art, described in earlier context as made with Gemini. No independent authorship or third-party-rights certification; preservation does not approve commercial minting.",
+      "derivedIndex": "docs/continuity/founding/sci-fi-geek-set.json",
+      "review": "docs/continuity/founding/SCI-FI-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-014",
+      "title": "2 Sci-Fi Geek Rare.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/2 Sci-Fi Geek Rare.png",
+      "sha256": "7605713f09230f6fc4ba6f9bacb23e330ad518163f65a50dbfd26b0355ea8c0d",
+      "gitBlobSha": "b1fd043acf9d9f0302ab77e7a0c6e5a70cea86db",
+      "sizeBytes": 174236,
+      "originalFilename": "2 Sci-Fi Geek Rare.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ files at main 606d06a861428f96b633152d32d3e8954e3e209d or draft PR #119 head 3b291065aad6dd2901225ab2f83100cb0277030b. No Sci-Fi Geek art record in the ten-concept legacy archive. Visible rarity label is preserved; original creation date and final edition mapping are unverified.",
+      "rights": "Founder-supplied project concept art, described in earlier context as made with Gemini. No independent authorship or third-party-rights certification; preservation does not approve commercial minting.",
+      "derivedIndex": "docs/continuity/founding/sci-fi-geek-set.json",
+      "review": "docs/continuity/founding/SCI-FI-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-015",
+      "title": "3 Sci-Fi Geek Epic.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/3 Sci-Fi Geek Epic.png",
+      "sha256": "8de5a4c0bebb7d5dd2fdb11b594bf4abd39c8247211520a99d0b7f04cfbffdbe",
+      "gitBlobSha": "05c6bf34a5c07e511bb34783b87ae794e94fbefd",
+      "sizeBytes": 204404,
+      "originalFilename": "3 Sci-Fi Geek Epic.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ files at main 606d06a861428f96b633152d32d3e8954e3e209d or draft PR #119 head 3b291065aad6dd2901225ab2f83100cb0277030b. No Sci-Fi Geek art record in the ten-concept legacy archive. Visible rarity label is preserved; original creation date and final edition mapping are unverified.",
+      "rights": "Founder-supplied project concept art, described in earlier context as made with Gemini. No independent authorship or third-party-rights certification; preservation does not approve commercial minting.",
+      "derivedIndex": "docs/continuity/founding/sci-fi-geek-set.json",
+      "review": "docs/continuity/founding/SCI-FI-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-016",
+      "title": "4 Sci-Fi Geek Legendary.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/4 Sci-Fi Geek Legendary.png",
+      "sha256": "29afd93eca1a8b76bcb4c7de4d33d563dd27bbc8b1d21d3eea2c2e820cef0b9f",
+      "gitBlobSha": "b14f1c430374d7cf650d40b38f4f87c451ef2716",
+      "sizeBytes": 239201,
+      "originalFilename": "4 Sci-Fi Geek Legendary.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ files at main 606d06a861428f96b633152d32d3e8954e3e209d or draft PR #119 head 3b291065aad6dd2901225ab2f83100cb0277030b. No Sci-Fi Geek art record in the ten-concept legacy archive. Visible rarity label is preserved; original creation date and final edition mapping are unverified.",
+      "rights": "Founder-supplied project concept art, described in earlier context as made with Gemini. No independent authorship or third-party-rights certification; preservation does not approve commercial minting.",
+      "derivedIndex": "docs/continuity/founding/sci-fi-geek-set.json",
+      "review": "docs/continuity/founding/SCI-FI-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-017",
+      "title": "5 Sci-Fi Geek Mythic.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/5 Sci-Fi Geek Mythic.png",
+      "sha256": "fb428f5229137d60eeeb1360404951841f5718a175e82d823a59f0c376cf6780",
+      "gitBlobSha": "e1cd4558d95652a89081a83856280f5a73c2ae61",
+      "sizeBytes": 261240,
+      "originalFilename": "5 Sci-Fi Geek Mythic.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ files at main 606d06a861428f96b633152d32d3e8954e3e209d or draft PR #119 head 3b291065aad6dd2901225ab2f83100cb0277030b. No Sci-Fi Geek art record in the ten-concept legacy archive. Visible rarity label is preserved; original creation date and final edition mapping are unverified.",
+      "rights": "Founder-supplied project concept art, described in earlier context as made with Gemini. No independent authorship or third-party-rights certification; preservation does not approve commercial minting.",
+      "derivedIndex": "docs/continuity/founding/sci-fi-geek-set.json",
+      "review": "docs/continuity/founding/SCI-FI-GEEK-SET.md"
     }
   ]
 }

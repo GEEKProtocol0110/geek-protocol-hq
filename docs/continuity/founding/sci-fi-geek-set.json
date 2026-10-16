@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "recordedOn": "2026-10-15",
+  "status": "preserved-unmapped-art-set",
+  "source": "Founder-supplied attachments in this conversation; supplied date uses America/Detroit. Upload filesystem timestamps are not original creation evidence.",
+  "character": "Sci-Fi Geek",
+  "tiers": [
+    "Common",
+    "Rare",
+    "Epic",
+    "Legendary",
+    "Mythic"
+  ],
+  "records": [
+    {
+      "assetId": "ARCH-013",
+      "originalFilename": "1 Sci-Fi Geek Common.png",
+      "location": "docs/continuity/founding/phone/1 Sci-Fi Geek Common.png",
+      "sha256": "d74ae55b4275b99e381bd940304409e92a3b2c30f40a419a6170ce23330a87a9",
+      "gitBlobSha": "b7076e57dfa9cf5aeeaf1cdabc6bd97272f46201",
+      "sizeBytes": 161187,
+      "width": 1536,
+      "height": 1536,
+      "visibleTier": "Common",
+      "observedDesign": "red flight suit, handheld blue device and hovering saucer",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-014",
+      "originalFilename": "2 Sci-Fi Geek Rare.png",
+      "location": "docs/continuity/founding/phone/2 Sci-Fi Geek Rare.png",
+      "sha256": "7605713f09230f6fc4ba6f9bacb23e330ad518163f65a50dbfd26b0355ea8c0d",
+      "gitBlobSha": "b1fd043acf9d9f0302ab77e7a0c6e5a70cea86db",
+      "sizeBytes": 174236,
+      "width": 1536,
+      "height": 1536,
+      "visibleTier": "Rare",
+      "observedDesign": "blue shoulder armor, orbiting saucers and a small companion drone",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-015",
+      "originalFilename": "3 Sci-Fi Geek Epic.png",
+      "location": "docs/continuity/founding/phone/3 Sci-Fi Geek Epic.png",
+      "sha256": "8de5a4c0bebb7d5dd2fdb11b594bf4abd39c8247211520a99d0b7f04cfbffdbe",
+      "gitBlobSha": "05c6bf34a5c07e511bb34783b87ae794e94fbefd",
+      "sizeBytes": 204404,
+      "width": 1536,
+      "height": 1536,
+      "visibleTier": "Epic",
+      "observedDesign": "dark armor, cyan chest light and holographic question display",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-016",
+      "originalFilename": "4 Sci-Fi Geek Legendary.png",
+      "location": "docs/continuity/founding/phone/4 Sci-Fi Geek Legendary.png",
+      "sha256": "29afd93eca1a8b76bcb4c7de4d33d563dd27bbc8b1d21d3eea2c2e820cef0b9f",
+      "gitBlobSha": "b14f1c430374d7cf650d40b38f4f87c451ef2716",
+      "sizeBytes": 239201,
+      "width": 1024,
+      "height": 1536,
+      "visibleTier": "Legendary",
+      "observedDesign": "fully helmeted figure, cyan eyes, holographic sphere and drones",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-017",
+      "originalFilename": "5 Sci-Fi Geek Mythic.png",
+      "location": "docs/continuity/founding/phone/5 Sci-Fi Geek Mythic.png",
+      "sha256": "fb428f5229137d60eeeb1360404951841f5718a175e82d823a59f0c376cf6780",
+      "gitBlobSha": "e1cd4558d95652a89081a83856280f5a73c2ae61",
+      "sizeBytes": 261240,
+      "width": 1024,
+      "height": 1536,
+      "visibleTier": "Mythic",
+      "observedDesign": "seated astronaut on a cosmic throne with a star-filled visor",
+      "mappedEdition": null,
+      "approved": false
+    }
+  ],
+  "historicalRelations": {
+    "roster": "docs/continuity/founding/geek-roster-500.json",
+    "rosterSourceId": "source-252",
+    "rosterSourceLine": 519,
+    "traitSheet": "docs/continuity/founding/geek-trait-rarity-sheet.json",
+    "traitSheetRowId": "pdf-row-252",
+    "traitSheetPage": 11,
+    "interpretation": "Five visibly labeled variants support a rarity-variant reading for this archetype. They do not establish copy counts, an edition mapping, collection supply or policy for every archetype."
+  },
+  "limits": {
+    "mappedEdition": null,
+    "mintReady": false,
+    "onChainOwnershipActive": false,
+    "independentlyReviewed": false,
+    "originalCreationTimeVerified": false
+  }
+}
