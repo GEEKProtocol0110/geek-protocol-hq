@@ -33,7 +33,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CHAIN-002 | P1 | decision-needed | Evaluate KCC20 compatibility and preserve GEEK holder entitlements | Maintainer researches; founder selects policy; independent covenant reviewer unassigned |
 | ARCH-002 | P1 | done | Preserve the founder-supplied theme roster and trait sheet | Maintainer archives; founder reviews interpretation |
 | AUTH-002 | P0 | needs-evidence | Resolve mobile login when wallet message signing is unavailable | Maintainer implements and verifies; founder confirms physical-phone passkeys |
-| UX-001 | P0 | active | Simplify first visits and close current reliability gaps | Maintainer |
+| UX-001 | P0 | done | Simplify first visits and close current reliability gaps | Maintainer |
 
 ## CONT-001: Publish the continuation system
 
@@ -424,9 +424,9 @@ Evidence/specification: [public/sign-in/index.html](../../public/sign-in/index.h
 
 ## UX-001: Simplify first visits and close current reliability gaps
 
-**P0 / active.** Owner: Maintainer. Dependencies: none.
+**P0 / done.** Owner: Maintainer. Dependencies: none.
 
-Next action: Fix reproduced session races, bound database requests, simplify sign-in, align player labels and leaderboard names; verify the exact release before merge.
+Next action: Shipped in PR #127 at dfcb64f9ce3eb281f91ada9d3f6c7432c5b1855a; preserve regression coverage. Independent auth review, provider restore and physical-device recovery evidence remain tracked separately.
 
 Acceptance:
 

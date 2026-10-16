@@ -1,6 +1,6 @@
 # First-visit polish and reliability
 
-Task: UX-001. October 16, 2026. Candidate branch: `codex/new-player-polish`, based on main `26b97263c36b63abe09028b536e838bd5bcc1f86`.
+Task: UX-001. October 16, 2026. Implementation branch: `codex/new-player-polish`, based on main `26b97263c36b63abe09028b536e838bd5bcc1f86`.
 
 ## Behavior
 
@@ -14,7 +14,7 @@ Task: UX-001. October 16, 2026. Candidate branch: `codex/new-player-polish`, bas
 
 The stale-refresh regression failed on the prior implementation (`identityVersion` became 0 instead of 1), then passed with the atomic save. Shipped API/client tests cover preserved wallet protection, revoked-session/name atomicity, renamed leaderboard score/time, guest/wallet/passkey badges, current name, timeout before headers or during JSON, no write retry, and cleared deadlines. Synthetic client DOM tests are not physical-phone or rendering evidence.
 
-Local `npm run verify` passed: 479 tests, zero failures/skips, required real Redis 7.4.2, 311 security assertions, bank/catalog/readiness, collection/archive, repository, economy and continuity checks. Production dependency audit returned zero vulnerabilities. Outage regression expectations now assert stable 503/REDIS_UNAVAILABLE responses while retaining saved-state and one-write recovery assertions. Exact review/deployment identifiers are recorded in the pull request and continuity work log. This candidate is not deployed until those checks complete.
+Local `npm run verify` passed: 479 tests, zero failures/skips, required real Redis 7.4.2, 311 security assertions, bank/catalog/readiness, collection/archive, repository, economy and continuity checks. Production dependency audit returned zero vulnerabilities. Outage regression expectations now assert stable 503/REDIS_UNAVAILABLE responses while retaining saved-state and one-write recovery assertions. Exact review/deployment identifiers are recorded in the pull request and continuity work log. Released in PR #127, merge `dfcb64f9ce3eb281f91ada9d3f6c7432c5b1855a`, exact head `aa0f8bc3626265289797ed6be235badd6b4b8763`. GitHub verify, preview and merge-source Vercel checks passed. Six targeted production HTTP checks and live desktop sign-in rendering passed; this is not a full production-monitor or physical-phone acceptance claim.
 
 ## Remaining work
 

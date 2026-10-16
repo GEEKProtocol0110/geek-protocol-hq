@@ -212,3 +212,10 @@ Use one entry per substantive session/interruption: task ID, exact review/commit
 - **Outcome:** simplified first-visit/sign-in hierarchy, correct passkey badges/current name, durable leaderboard names, accurate chapter count and hosting claims. Reproduced stale session refresh undoing a fresh wallet proof; atomic session/name save closes that race and partial rename. Provider calls now time out without automatic write retries.
 - **Evidence:** `docs/NEW-PLAYER-POLISH.md`; real-Redis race failed before the fix and passed afterward. Full local verification passed: 479 tests, zero failures/skips, required real Redis 7.4.2 and 311 security assertions; all supporting checks passed. Production dependency audit: zero vulnerabilities. Exact review/head/merge/deployment evidence belongs in the associated PR.
 - **Next:** finish checks and deploy this focused release; independent authentication review and provider restore remain priorities. Preserve phone success, saved players and all founder holds. Artwork remains paused.
+
+## October 16, 2026 — UX-001 released
+
+- **Merged/deployed:** PR #127, merge `dfcb64f9ce3eb281f91ada9d3f6c7432c5b1855a`, exact reviewed head `aa0f8bc3626265289797ed6be235badd6b4b8763`. GitHub verify and Vercel checks passed; merge-source deployment succeeded.
+- **Live validation:** six targeted HTTP checks passed after deployment, including new page/client markers, connected health and unauthenticated passkeys 401. Live desktop browser showed ready passkey status, current guest name and collapsed advanced wallet flow. No authenticator prompt or wallet transaction was initiated. Earlier protected-preview/browser transport interruption was not counted as a successful visual check.
+- **Local evidence:** 479 tests, zero failures/skips, real Redis 7.4.2, 311 security assertions, all supporting checks, dependency audit zero vulnerabilities.
+- **Next:** OPS-001 provider recovery evidence and independent authentication review. Preserve the founder's working phone session; returning/cross-device/revocation remain separate acceptance. Reconcile #119; artwork #120 remains paused and settlement stays disabled.

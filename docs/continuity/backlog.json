@@ -556,10 +556,10 @@
     {
       "id": "UX-001",
       "priority": "P0",
-      "status": "active",
+      "status": "done",
       "title": "Simplify first visits and close current reliability gaps",
       "owner": "Maintainer",
-      "nextAction": "Fix reproduced session races, bound database requests, simplify sign-in, align player labels and leaderboard names; verify the exact release before merge.",
+      "nextAction": "Shipped in PR #127 at dfcb64f9ce3eb281f91ada9d3f6c7432c5b1855a; preserve regression coverage. Independent auth review, provider restore and physical-device recovery evidence remain tracked separately.",
       "acceptance": [
         "First visit has a clear guest, returning-passkey and save-current-player path; advanced wallet steps stay optional.",
         "Session refresh cannot undo newer protection or resurrect revoked sessions; failed refresh cannot partially rename a player.",
@@ -573,6 +573,11 @@
         "tests/passkeys.test.js",
         "tests/redis-transport.test.js",
         "tests/profile-client.test.js"
+      ],
+      "completedAt": "2026-10-16",
+      "completionEvidence": [
+        "PR #127 merged at dfcb64f9ce3eb281f91ada9d3f6c7432c5b1855a; exact head aa0f8bc3626265289797ed6be235badd6b4b8763 passed GitHub verification and Vercel. Merge-source deployment succeeded.",
+        "479 tests, zero failures/skips, 311 security assertions; six targeted live HTTP checks and desktop sign-in rendering passed. Independent review, provider restore and additional phone recovery evidence remain separate."
       ]
     }
   ]
