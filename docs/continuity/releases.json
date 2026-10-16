@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "checkedAt": "2026-10-16",
-  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused.",
+  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1–2 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused.",
   "records": [
     {
       "number": 1,
@@ -439,7 +439,7 @@
     },
     {
       "number": 68,
-      "title": "Add Trivia Royale with configurable 2\u2013100-player rooms",
+      "title": "Add Trivia Royale with configurable 2–100-player rooms",
       "mergedAt": "2026-10-08T11:56:20Z",
       "commit": "053c7e708327c9b8448579bd2141bf09f7337662",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/68"
@@ -779,6 +779,13 @@
       "mergedAt": "2026-10-16T05:37:11Z",
       "commit": "c972e27301bc461a526230806d5e781adac05e50",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/124"
+    },
+    {
+      "number": 127,
+      "title": "Simplify newcomer sign-in and harden saved-player reliability",
+      "mergedAt": "2026-10-16T12:14:55Z",
+      "commit": "dfcb64f9ce3eb281f91ada9d3f6c7432c5b1855a",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/127"
     }
   ]
 }

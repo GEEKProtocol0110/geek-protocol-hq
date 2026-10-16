@@ -881,7 +881,7 @@
         "eb2ef291d319feade3e17fdf6bb947cf816b0ade"
       ],
       "authoredAt": "2026-10-08T07:41:15-04:00",
-      "title": "Add Trivia Royale with configurable 2\u2013100-player rooms"
+      "title": "Add Trivia Royale with configurable 2–100-player rooms"
     },
     {
       "commit": "51204af34d76a5554013346f0c089200ab80cce1",
@@ -1405,7 +1405,7 @@
         "e3fd589878d473939724b06882fb167b1e8d9b0a"
       ],
       "authoredAt": "2026-10-15T06:08:34-04:00",
-      "title": "Add durable project continuity, founding archive and 2026\u20132076 direction"
+      "title": "Add durable project continuity, founding archive and 2026–2076 direction"
     },
     {
       "commit": "bf8f60ef4a08d630aa92a98833a7810bbc09477d",
@@ -1680,6 +1680,57 @@
       ],
       "authoredAt": "2026-10-16T01:37:11-04:00",
       "title": "Merge pull request #124 from GEEKProtocol0110/codex/passkey-login"
+    },
+    {
+      "commit": "c77bbdfda122138ff43f60842a47d8faa3f958a7",
+      "parents": [
+        "c972e27301bc461a526230806d5e781adac05e50"
+      ],
+      "authoredAt": "2026-10-16T01:45:48-04:00",
+      "title": "Prevent session refresh from restoring revoked cookies and record passkey release"
+    },
+    {
+      "commit": "b8af2c9a5e359babca55e40771c409137848ad9b",
+      "parents": [
+        "c972e27301bc461a526230806d5e781adac05e50",
+        "c77bbdfda122138ff43f60842a47d8faa3f958a7"
+      ],
+      "authoredAt": "2026-10-16T01:47:44-04:00",
+      "title": "Merge pull request #125 from GEEKProtocol0110/codex/passkey-release"
+    },
+    {
+      "commit": "6c4dafbef8c474f20e3c3c957e818a1015d3f547",
+      "parents": [
+        "b8af2c9a5e359babca55e40771c409137848ad9b"
+      ],
+      "authoredAt": "2026-10-16T02:38:16-04:00",
+      "title": "Record founder-reported phone passkey success and remaining acceptance checks"
+    },
+    {
+      "commit": "26b97263c36b63abe09028b536e838bd5bcc1f86",
+      "parents": [
+        "b8af2c9a5e359babca55e40771c409137848ad9b",
+        "6c4dafbef8c474f20e3c3c957e818a1015d3f547"
+      ],
+      "authoredAt": "2026-10-16T02:39:18-04:00",
+      "title": "Merge pull request #126 from GEEKProtocol0110/codex/phone-passkey-result"
+    },
+    {
+      "commit": "aa0f8bc3626265289797ed6be235badd6b4b8763",
+      "parents": [
+        "26b97263c36b63abe09028b536e838bd5bcc1f86"
+      ],
+      "authoredAt": "2026-10-16T03:38:10-04:00",
+      "title": "Polish first visits and protect saved-player state during races and outages"
+    },
+    {
+      "commit": "dfcb64f9ce3eb281f91ada9d3f6c7432c5b1855a",
+      "parents": [
+        "26b97263c36b63abe09028b536e838bd5bcc1f86",
+        "aa0f8bc3626265289797ed6be235badd6b4b8763"
+      ],
+      "authoredAt": "2026-10-16T08:14:54-04:00",
+      "title": "Merge pull request #127 from GEEKProtocol0110/codex/new-player-polish"
     }
   ]
 }

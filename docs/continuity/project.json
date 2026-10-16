@@ -6,16 +6,16 @@
   "founder": "Michael Gee",
   "releaseChannel": "Public Alpha",
   "productBaseline": {
-    "pullRequest": 124,
-    "commit": "c972e27301bc461a526230806d5e781adac05e50",
-    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/124",
-    "status": "merged-deployed-founder-phone-reported",
+    "pullRequest": 127,
+    "commit": "dfcb64f9ce3eb281f91ada9d3f6c7432c5b1855a",
+    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/127",
+    "status": "merged-deployed",
     "checkedOn": "2026-10-16",
-    "testsPassed": 471,
+    "testsPassed": 479,
     "testsFailed": 0,
     "testsSkipped": 0,
-    "productionProbesPassed": 3,
-    "evidence": "PR #124 merged at 2026-10-16T05:37:11Z (1:37 AM Detroit), exact head 93d9ac6df3ceacac39b32fcf8e0e0d1790da1900 with passing GitHub verify and Vercel checks; merge-source Vercel success. Live canonical browser renders enabled passkey buttons and ready first-visit status (session/passkey-status API flow). Three targeted HTTP checks passed at 05:40 UTC: HTML 200, client 200, unauthenticated API 401. Full local checks: 471 tests, no failures/skips, real Redis 7.4.2, 311 security assertions; dependency audit zero vulnerabilities. Node monitor transport timed out; do not claim 21 probes passed for this release. Actual phone authenticator enrollment/returning login and independent auth review remain outstanding. A disposable guest API check also passed: session/status/begin-registration each 200, correct production RP ID, required discoverability/user verification. It created expiring options only, not an authenticator credential. Python HTTP following the existing method-preserving 308 redirect succeeded; terminal native-fetch failures are separate transport limits. Founder subsequently reported “It worked” at 2026-10-16T02:35:21-04:00 after the live phone passkey instructions. Record this as founder-reported phone-flow success, not a separately observed returning login, cross-device recovery, credential removal or independent review. Session-refresh follow-up PR #125 merged at b8af2c9a5e359babca55e40771c409137848ad9b with 472 full tests passed."
+    "productionProbesPassed": 6,
+    "evidence": "Exact head aa0f8bc3626265289797ed6be235badd6b4b8763 passed GitHub verify and Vercel checks. Merge-source Vercel succeeded. Six targeted live HTTP checks passed: sign-in HTML/client, profile client and security copy 200 with new markers, health 200 connected, unauthenticated passkeys 401. Live browser showed current guest name and ready passkey status, with advanced wallet instructions collapsed; desktop layout inspected. Prior physical-phone success remains accepted, but no new phone/cross-device/revocation or independent-audit claim. Local verification: 479 tests, zero failures/skips, Redis 7.4.2 and 311 security assertions; dependency audit zero vulnerabilities. These six targeted checks are not the full production monitor or continuous uptime evidence."
   },
   "questionCheckpoint": {
     "active": 8185,
@@ -35,12 +35,12 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "UX-001",
-    "status": "active",
-    "description": "Focused newcomer UX and reliability hardening: passkey-first recovery, correct player labels, current leaderboard names, atomic session/name save and bounded provider requests. Preserve prior phone success and saved players; artwork remains paused."
+    "id": "OPS-001",
+    "status": "needs-evidence",
+    "description": "UX-001 shipped in PR #127. Prioritize independent authentication review and a production-provider recovery exercise; keep the working player/passkey intact. Founder phone success remains accepted; separate returning/cross-device/revocation evidence is still open."
   },
-  "nextTask": "UX-001",
-  "nextAction": "Complete verification and exact-head release evidence for the polish candidate. Then prioritize independent authentication review and a production-provider restore exercise before expanding protocol features. Reconcile draft #119; artwork stays paused.",
+  "nextTask": "OPS-001",
+  "nextAction": "Verify recoverable production backups and an isolated provider restore, then independent authentication/security review and physical-device recovery checks. Reconcile draft #119 before more features; artwork #120 stays paused. Do not enable settlement or collect recovery phrases.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
