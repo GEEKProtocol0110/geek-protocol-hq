@@ -522,14 +522,15 @@
     {
       "id": "AUTH-002",
       "priority": "P0",
-      "status": "needs-evidence",
-      "title": "Restore a usable Android login-message copy path",
+      "status": "blocked",
+      "title": "Resolve mobile login when wallet message signing is unavailable",
       "owner": "Maintainer fixes; founder verifies physical KasWare phone flow",
-      "nextAction": "PR #121 is merged/deployed at 78e9c0e0a3e8f275d162a470448e4fa0b9abe4ca. Founder reloads the live sign-in page and verifies the phone copy/signature flow or KasWare Explore connection on Mainnet. Record device result; no physical-phone success is claimed yet.",
+      "nextAction": "Correct the unsupported KasWare Explore guidance, then isolate and verify wallet-independent passkeys from draft PR #119 against current main. Preserve existing-player proof requirements; new guest enrollment cannot recover an unrelated wallet-linked player. Record actual phone acceptance separately.",
       "acceptance": [
         "Exact server message copied/selected without modifying whitespace; selection copy runs during the tap, with Clipboard API/manual fallbacks.",
         "Denied/unavailable/stalled clipboard and expired/replaced challenges have usable, honest states; no copy action sends a signature or authenticates a player.",
-        "Existing server signature, origin, replay, recovery and session protections pass; exact release/deployment and remaining phone acceptance recorded."
+        "Existing server signature, origin, replay, recovery and session protections pass; exact release/deployment and remaining phone acceptance recorded.",
+        "Mobile guidance distinguishes wallet biometric unlock from message signing and offers guest play without implying saved-player recovery; no universal KasWare mobile support claim."
       ],
       "dependsOn": [],
       "evidence": [
@@ -538,7 +539,8 @@
         "tests/sign-in-copy.test.js",
         "docs/IDENTITY-PROTOCOL.md",
         "docs/MOBILE-LOGIN-COPY-RELEASE.md"
-      ]
+      ],
+      "blocker": "Founder reports the described mobile signing/connection feature is unavailable; no authenticated phone acceptance. Clipboard copying cannot supply missing wallet signing."
     }
   ]
 }

@@ -8,12 +8,12 @@ The exact merge source's Vercel status reported deployment completed. A browser 
 
 The page selects the full exact server message and attempts selection-based copying during the tap. Clipboard API fallback has a two-second UI deadline. Missing, denied or stalled clipboard support returns to clear touch-and-hold Copy instructions. An explicit Select entire message action is available. Late clipboard results cannot restore obsolete UI state; browser clipboard writes cannot themselves be cancelled once submitted.
 
-The existing KasWare in-app-browser connection route is explained on the page. There is no new provider, mobile deep link, signature scheme or account-recovery bypass. Backend APIs, wallet transport, dependencies, Mainnet identity requirement, five-minute expiry, origin/replay checks, saved-player recovery and payout protections remain unchanged.
+The original release included KasWare Explore instructions; the mobile capability correction below supersedes that guidance. There is no new provider, mobile deep link, signature scheme or account-recovery bypass. Backend APIs, wallet transport, dependencies, Mainnet identity requirement, five-minute expiry, origin/replay checks, saved-player recovery and payout protections remain unchanged.
 
-## Phone acceptance still needed
+## Mobile capability correction — October 16, 2026
 
-Reload the canonical sign-in page. With a fresh login message, try Copy message. If needed, choose Select entire message, touch and hold the selected text and choose Copy, then sign the entire message in the wallet and paste its signature into the same browser before expiry.
+The founder reports that the described KasWare mobile feature is unavailable. The clipboard release has not resolved their login. Its 455 passing tests and 21 public production probes did not verify the installed wallet’s message-signing capability.
 
-Alternatively, open KasWare Explore, visit the canonical sign-in page, select the usual Mainnet account and use Connect a browser wallet followed by Sign in with wallet. Preserve user control over approval. Record device/browser/wallet build and actual result without storing credentials, signed challenges or private keys in the repo.
+Updated sign-in guidance explains that biometric wallet unlocking is separate from Geek login-message signing. Manual signing requires the wallet’s actual Kaspa Sign message feature; browser signing requires an actual compatible provider. Do not direct a user without either feature through another copy attempt or promise Explore will support it. Guest learning remains available in the same browser, with no claim that it recovers another saved player.
 
-The agent did not sign into the user's account or operate the user's wallet. AUTH-002 remains needs-evidence until the founder confirms the phone result. Artwork intake/generation is paused; PR #120 keeps the original art and tracker. PR #119's optional passkeys/testnet wallet remain a separate unmerged candidate.
+AUTH-002 is blocked on this phone. Isolate and verify wallet-independent passkey login from draft PR #119 next; it is not live. New guest enrollment must not be represented as recovery of an existing wallet-linked player. Artwork remains paused in PR #120. No backend proof, wallet transport, credential, signature scheme or payout change is part of this guidance correction.

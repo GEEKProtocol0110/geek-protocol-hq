@@ -32,7 +32,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | OPS-003 | P1 | done | Finish mint-availability monitoring for GitHub issue #14 | Maintainer; founder reviews release |
 | CHAIN-002 | P1 | decision-needed | Evaluate KCC20 compatibility and preserve GEEK holder entitlements | Maintainer researches; founder selects policy; independent covenant reviewer unassigned |
 | ARCH-002 | P1 | done | Preserve the founder-supplied theme roster and trait sheet | Maintainer archives; founder reviews interpretation |
-| AUTH-002 | P0 | needs-evidence | Restore a usable Android login-message copy path | Maintainer fixes; founder verifies physical KasWare phone flow |
+| AUTH-002 | P0 | blocked | Resolve mobile login when wallet message signing is unavailable | Maintainer fixes; founder verifies physical KasWare phone flow |
 
 ## CONT-001: Publish the continuation system
 
@@ -404,16 +404,19 @@ Acceptance:
 
 Evidence/specification: [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md), [docs/continuity/founding/geek-roster-500.json](../../docs/continuity/founding/geek-roster-500.json), [docs/continuity/assets.json](../../docs/continuity/assets.json), [docs/continuity/founding/geek-trait-rarity-sheet.json](../../docs/continuity/founding/geek-trait-rarity-sheet.json).
 
-## AUTH-002: Restore a usable Android login-message copy path
+## AUTH-002: Resolve mobile login when wallet message signing is unavailable
 
-**P0 / needs-evidence.** Owner: Maintainer fixes; founder verifies physical KasWare phone flow. Dependencies: none.
+**P0 / blocked.** Owner: Maintainer fixes; founder verifies physical KasWare phone flow. Dependencies: none.
 
-Next action: PR #121 is merged/deployed at 78e9c0e0a3e8f275d162a470448e4fa0b9abe4ca. Founder reloads the live sign-in page and verifies the phone copy/signature flow or KasWare Explore connection on Mainnet. Record device result; no physical-phone success is claimed yet.
+Next action: Correct the unsupported KasWare Explore guidance, then isolate and verify wallet-independent passkeys from draft PR #119 against current main. Preserve existing-player proof requirements; new guest enrollment cannot recover an unrelated wallet-linked player. Record actual phone acceptance separately.
+
+Blocker: Founder reports the described mobile signing/connection feature is unavailable; no authenticated phone acceptance. Clipboard copying cannot supply missing wallet signing.
 
 Acceptance:
 
 - Exact server message copied/selected without modifying whitespace; selection copy runs during the tap, with Clipboard API/manual fallbacks.
 - Denied/unavailable/stalled clipboard and expired/replaced challenges have usable, honest states; no copy action sends a signature or authenticates a player.
 - Existing server signature, origin, replay, recovery and session protections pass; exact release/deployment and remaining phone acceptance recorded.
+- Mobile guidance distinguishes wallet biometric unlock from message signing and offers guest play without implying saved-player recovery; no universal KasWare mobile support claim.
 
 Evidence/specification: [public/sign-in/index.html](../../public/sign-in/index.html), [public/sign-in/assets/sign-in.js](../../public/sign-in/assets/sign-in.js), [tests/sign-in-copy.test.js](../../tests/sign-in-copy.test.js), [docs/IDENTITY-PROTOCOL.md](../../docs/IDENTITY-PROTOCOL.md), [docs/MOBILE-LOGIN-COPY-RELEASE.md](../../docs/MOBILE-LOGIN-COPY-RELEASE.md).
