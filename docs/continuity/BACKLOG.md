@@ -408,7 +408,7 @@ Evidence/specification: [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEE
 
 **P0 / needs-evidence.** Owner: Maintainer implements and verifies; founder confirms physical-phone passkeys. Dependencies: none.
 
-Next action: Verify the focused passkey release PR’s exact merge/deployment, then test phone enrollment and returning sign-in. Preserve existing-player recovery proof. PR #119 needs reconciliation before any remaining features merge; artwork stays paused.
+Next action: PR #124 is merged/deployed at c972e27301bc461a526230806d5e781adac05e50 with ready live UI and three targeted HTTP checks. Verify physical-phone enrollment and returning sign-in to the intended player. Existing wallet-linked players without an enrolled passkey still need wallet proof. Artwork remains paused; draft #119 needs reconciliation.
 
 Acceptance:
 

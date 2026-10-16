@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "capturedAt": "2026-10-16",
-  "through": "78e9c0e0a3e8f275d162a470448e4fa0b9abe4ca",
-  "scope": "HQ commit metadata through the PR #121 merge, preserving earlier records and adding merged 580-question and mobile login-copy history. Product baseline is PR #121. Git authored dates are metadata, not founding proof; bundles preserve underlying objects.",
+  "through": "c972e27301bc461a526230806d5e781adac05e50",
+  "scope": "HQ commit metadata through the focused passkey PR #124 merge, preserving earlier records. Product baseline is #124; Git dates are metadata, not founding proof.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -881,7 +881,7 @@
         "eb2ef291d319feade3e17fdf6bb947cf816b0ade"
       ],
       "authoredAt": "2026-10-08T07:41:15-04:00",
-      "title": "Add Trivia Royale with configurable 2–100-player rooms"
+      "title": "Add Trivia Royale with configurable 2\u2013100-player rooms"
     },
     {
       "commit": "51204af34d76a5554013346f0c089200ab80cce1",
@@ -1405,7 +1405,7 @@
         "e3fd589878d473939724b06882fb167b1e8d9b0a"
       ],
       "authoredAt": "2026-10-15T06:08:34-04:00",
-      "title": "Add durable project continuity, founding archive and 2026–2076 direction"
+      "title": "Add durable project continuity, founding archive and 2026\u20132076 direction"
     },
     {
       "commit": "bf8f60ef4a08d630aa92a98833a7810bbc09477d",
@@ -1629,6 +1629,57 @@
       ],
       "authoredAt": "2026-10-15T23:40:35-04:00",
       "title": "Merge pull request #121 from GEEKProtocol0110/codex/mobile-login-copy"
+    },
+    {
+      "commit": "62b54916c73f9369424dc2c65189a9edc8a2a64b",
+      "parents": [
+        "78e9c0e0a3e8f275d162a470448e4fa0b9abe4ca"
+      ],
+      "authoredAt": "2026-10-15T23:44:10-04:00",
+      "title": "Record deployed login-copy release and phone acceptance checkpoint"
+    },
+    {
+      "commit": "3defa649efeb2506595933635b980bc1b7d34438",
+      "parents": [
+        "78e9c0e0a3e8f275d162a470448e4fa0b9abe4ca",
+        "62b54916c73f9369424dc2c65189a9edc8a2a64b"
+      ],
+      "authoredAt": "2026-10-15T23:45:18-04:00",
+      "title": "Merge pull request #122 from GEEKProtocol0110/codex/mobile-login-release"
+    },
+    {
+      "commit": "6879ccf566fa1bac8df19a11a31c3e389fed1c6d",
+      "parents": [
+        "3defa649efeb2506595933635b980bc1b7d34438"
+      ],
+      "authoredAt": "2026-10-16T00:22:38-04:00",
+      "title": "Correct unsupported KasWare mobile sign-in guidance and record login blocker"
+    },
+    {
+      "commit": "b9a2e8ab2d58edc5ec3cb2af51bd7398e1940d83",
+      "parents": [
+        "3defa649efeb2506595933635b980bc1b7d34438",
+        "6879ccf566fa1bac8df19a11a31c3e389fed1c6d"
+      ],
+      "authoredAt": "2026-10-16T00:23:44-04:00",
+      "title": "Merge pull request #123 from GEEKProtocol0110/codex/mobile-wallet-guidance"
+    },
+    {
+      "commit": "93d9ac6df3ceacac39b32fcf8e0e0d1790da1900",
+      "parents": [
+        "b9a2e8ab2d58edc5ec3cb2af51bd7398e1940d83"
+      ],
+      "authoredAt": "2026-10-16T01:29:15-04:00",
+      "title": "Add wallet-independent Geek passkey enrollment and returning sign-in"
+    },
+    {
+      "commit": "c972e27301bc461a526230806d5e781adac05e50",
+      "parents": [
+        "b9a2e8ab2d58edc5ec3cb2af51bd7398e1940d83",
+        "93d9ac6df3ceacac39b32fcf8e0e0d1790da1900"
+      ],
+      "authoredAt": "2026-10-16T01:37:11-04:00",
+      "title": "Merge pull request #124 from GEEKProtocol0110/codex/passkey-login"
     }
   ]
 }

@@ -525,7 +525,7 @@
       "status": "needs-evidence",
       "title": "Resolve mobile login when wallet message signing is unavailable",
       "owner": "Maintainer implements and verifies; founder confirms physical-phone passkeys",
-      "nextAction": "Verify the focused passkey release PR\u2019s exact merge/deployment, then test phone enrollment and returning sign-in. Preserve existing-player recovery proof. PR #119 needs reconciliation before any remaining features merge; artwork stays paused.",
+      "nextAction": "PR #124 is merged/deployed at c972e27301bc461a526230806d5e781adac05e50 with ready live UI and three targeted HTTP checks. Verify physical-phone enrollment and returning sign-in to the intended player. Existing wallet-linked players without an enrolled passkey still need wallet proof. Artwork remains paused; draft #119 needs reconciliation.",
       "acceptance": [
         "Exact server message copied/selected without modifying whitespace; selection copy runs during the tap, with Clipboard API/manual fallbacks.",
         "Denied/unavailable/stalled clipboard and expired/replaced challenges have usable, honest states; no copy action sends a signature or authenticates a player.",
