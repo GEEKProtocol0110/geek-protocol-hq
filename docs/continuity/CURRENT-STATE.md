@@ -2,11 +2,11 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
-[PR #115](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/115), commit `b0bc952d14d06b34cf82ae7b3794f61f6916c900`. Founder-authorized PR #115 merged October 15 at 14:58:30 UTC. Production dpl_2koiXamNy5a1eVmMsbuHXnaKKMEG READY at 14:58:47.234 UTC on the exact merge source and assigned to both production domains. Standard proxy-aware Node monitor passed all 21 checks at 14:59:09.158 UTC under five-second deadlines; mint HTTP 200 in 4,550 ms. GitHub main verify and production-monitor check passed. Candidate full verification: 441 tests, no failures/skips, real Redis, 311 security assertions. Issue #14 closed completed; provider fallback 502 is not claimed repaired. No wallet signing or settlement activation. Recorded tests: 441 passed, 0 failed, 0 skipped; 21 read-only probes passed. Later documentation candidates are separate from this baseline.
+[PR #121](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/121), commit `78e9c0e0a3e8f275d162a470448e4fa0b9abe4ca`. Focused mobile login-copy PR #121 merged October 16 at 03:40:36 UTC (October 15 in Detroit). Exact merge source Vercel status reported Deployment has completed; live https://www.geekprotocol.xyz/sign-in/ rendered the new KasWare phone guidance. Read-only production monitor at 03:41:03.589 UTC passed 21/21 probes. Exact candidate-head GitHub verify and Vercel checks passed; full local verification 455 tests, no failures/skips, required real Redis and 311 security assertions. Physical Android clipboard/KasWare login remains unverified. No backend auth, signer, dependency, payout or settlement change. Recorded tests: 455 passed, 0 failed, 0 skipped; 21 read-only probes passed. Later documentation candidates are separate from this baseline.
 
 ## Current checkout counts
 
@@ -25,9 +25,9 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-002: active.** PR #121 / codex/mobile-login-copy fixes Android login copying with selection-based copy during the tap, a bounded Clipboard API fallback and explicit manual selection. Candidate passed 455 tests and rendered preview guidance was observed. Physical Android/KasWare acceptance remains outstanding; artwork work is paused.
+**AUTH-002: needs-evidence.** Mobile login-copy fix is merged/deployed in PR #121 with 455 candidate tests and 21 production probes passed. Live new phone guidance observed. Founder retries Android/KasWare login; artwork intake/generation is paused in unmerged PR #120.
 
-Next task: **AUTH-002**. Read PR #121 for the exact release/deployment result, then retry login on the phone. Art intake/generation is paused in PR #120. PR #119 passkey/testnet-wallet acceptance remains pending; BANK-001 and CHAIN-001 are still outstanding.
+Next task: **AUTH-002**. Retry the live login page on Android: Copy message, Select entire message/manual Copy, or connect from KasWare Explore on Mainnet. Record actual phone result under AUTH-002. PR #119 passkey/testnet-wallet acceptance remains pending. Keep art work paused; BANK-001 and CHAIN-001 remain outstanding.
 
 ## Holds
 

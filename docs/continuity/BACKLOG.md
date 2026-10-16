@@ -408,7 +408,7 @@ Evidence/specification: [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEE
 
 **P0 / needs-evidence.** Owner: Maintainer fixes; founder verifies physical KasWare phone flow. Dependencies: none.
 
-Next action: Use PR #121 for its exact merge/deployment result; founder retries the updated page on Android. Try Copy message or Select entire message, or connect from KasWare Explore on Mainnet. Physical phone acceptance remains outstanding; art is paused.
+Next action: PR #121 is merged/deployed at 78e9c0e0a3e8f275d162a470448e4fa0b9abe4ca. Founder reloads the live sign-in page and verifies the phone copy/signature flow or KasWare Explore connection on Mainnet. Record device result; no physical-phone success is claimed yet.
 
 Acceptance:
 
@@ -416,4 +416,4 @@ Acceptance:
 - Denied/unavailable/stalled clipboard and expired/replaced challenges have usable, honest states; no copy action sends a signature or authenticates a player.
 - Existing server signature, origin, replay, recovery and session protections pass; exact release/deployment and remaining phone acceptance recorded.
 
-Evidence/specification: [public/sign-in/index.html](../../public/sign-in/index.html), [public/sign-in/assets/sign-in.js](../../public/sign-in/assets/sign-in.js), [tests/sign-in-copy.test.js](../../tests/sign-in-copy.test.js), [docs/IDENTITY-PROTOCOL.md](../../docs/IDENTITY-PROTOCOL.md).
+Evidence/specification: [public/sign-in/index.html](../../public/sign-in/index.html), [public/sign-in/assets/sign-in.js](../../public/sign-in/assets/sign-in.js), [tests/sign-in-copy.test.js](../../tests/sign-in-copy.test.js), [docs/IDENTITY-PROTOCOL.md](../../docs/IDENTITY-PROTOCOL.md), [docs/MOBILE-LOGIN-COPY-RELEASE.md](../../docs/MOBILE-LOGIN-COPY-RELEASE.md).

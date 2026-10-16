@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-15",
+  "updatedAt": "2026-10-16",
   "priorityOrder": [
     "P0",
     "P1",
@@ -525,7 +525,7 @@
       "status": "needs-evidence",
       "title": "Restore a usable Android login-message copy path",
       "owner": "Maintainer fixes; founder verifies physical KasWare phone flow",
-      "nextAction": "Use PR #121 for its exact merge/deployment result; founder retries the updated page on Android. Try Copy message or Select entire message, or connect from KasWare Explore on Mainnet. Physical phone acceptance remains outstanding; art is paused.",
+      "nextAction": "PR #121 is merged/deployed at 78e9c0e0a3e8f275d162a470448e4fa0b9abe4ca. Founder reloads the live sign-in page and verifies the phone copy/signature flow or KasWare Explore connection on Mainnet. Record device result; no physical-phone success is claimed yet.",
       "acceptance": [
         "Exact server message copied/selected without modifying whitespace; selection copy runs during the tap, with Clipboard API/manual fallbacks.",
         "Denied/unavailable/stalled clipboard and expired/replaced challenges have usable, honest states; no copy action sends a signature or authenticates a player.",
@@ -536,7 +536,8 @@
         "public/sign-in/index.html",
         "public/sign-in/assets/sign-in.js",
         "tests/sign-in-copy.test.js",
-        "docs/IDENTITY-PROTOCOL.md"
+        "docs/IDENTITY-PROTOCOL.md",
+        "docs/MOBILE-LOGIN-COPY-RELEASE.md"
       ]
     }
   ]
