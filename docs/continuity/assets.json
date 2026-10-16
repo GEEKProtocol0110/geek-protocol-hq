@@ -84,7 +84,7 @@
       "status": "awaiting-original",
       "location": null,
       "sha256": null,
-      "provenance": "Twelve supplied phone originals are preserved as ARCH-011 through ARCH-022: the roster, trait PDF, five Sci-Fi Geek PNGs and five A.I. Geek PNGs. Quantity and contents of remaining phone files are unknown; original conversation is still missing."
+      "provenance": "Seventeen supplied phone originals are preserved as ARCH-011 through ARCH-027: the roster, trait PDF and fifteen PNGs across Sci-Fi, A.I. and Pro Gamer Geek. Remaining phone files and original conversation are still missing."
     },
     {
       "id": "ARCH-010",
@@ -285,6 +285,86 @@
       "rights": "Founder-supplied project concept art, described in earlier context as made with Gemini. Preservation does not independently certify authorship, third-party rights or commercial minting approval.",
       "derivedIndex": "docs/continuity/founding/ai-geek-set.json",
       "review": "docs/continuity/founding/AI-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-023",
+      "title": "1 Pro Gamer Geek Common.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/1 Pro Gamer Geek Common.png",
+      "sha256": "6dae5286a4d9cf6213463170b3c81ef8012851e32094db948e2ff3fe8bda0c78",
+      "gitBlobSha": "02146a1c65dfc46a823de5c47f51b13762c0f912",
+      "sizeBytes": 171971,
+      "originalFilename": "1 Pro Gamer Geek Common.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at 1b23cf93e5293a6a47a0ac036f6eb069b12b3b56; no Pro Gamer Geek record in the existing ten-concept legacy archive. Exact character-name match to roster source-002 and PDF row-002/page 1. Visible tier retained; no numbered edition assignment or original creation-time proof.",
+      "rights": "Founder-supplied project concept art, described in earlier context as Gemini-assisted. Independent authorship and third-party-rights certification remain unverified; ingestion does not authorize a mint.",
+      "derivedIndex": "docs/continuity/founding/pro-gamer-geek-set.json",
+      "review": "docs/continuity/founding/PRO-GAMER-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-024",
+      "title": "2 Pro Gamer Geek Rare.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/2 Pro Gamer Geek Rare.png",
+      "sha256": "4a5b95ca7f8f740309aee5a80240a6b5ba60494011756976241ac4f35660a659",
+      "gitBlobSha": "02f9ea1c52d53f811115e8d7be9b57582bf296ad",
+      "sizeBytes": 205855,
+      "originalFilename": "2 Pro Gamer Geek Rare.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at 1b23cf93e5293a6a47a0ac036f6eb069b12b3b56; no Pro Gamer Geek record in the existing ten-concept legacy archive. Exact character-name match to roster source-002 and PDF row-002/page 1. Visible tier retained; no numbered edition assignment or original creation-time proof.",
+      "rights": "Founder-supplied project concept art, described in earlier context as Gemini-assisted. Independent authorship and third-party-rights certification remain unverified; ingestion does not authorize a mint.",
+      "derivedIndex": "docs/continuity/founding/pro-gamer-geek-set.json",
+      "review": "docs/continuity/founding/PRO-GAMER-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-025",
+      "title": "3 Pro Gamer Geek Epic.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/3 Pro Gamer Geek Epic.png",
+      "sha256": "6fa74ef8c72c14c57fbaba6f3753289dad700c343d4ad959889a624148427967",
+      "gitBlobSha": "d664e2a72be8e5a5ceebf1d3c97e4bb70355380e",
+      "sizeBytes": 265495,
+      "originalFilename": "3 Pro Gamer Geek Epic.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at 1b23cf93e5293a6a47a0ac036f6eb069b12b3b56; no Pro Gamer Geek record in the existing ten-concept legacy archive. Exact character-name match to roster source-002 and PDF row-002/page 1. Visible tier retained; no numbered edition assignment or original creation-time proof.",
+      "rights": "Founder-supplied project concept art, described in earlier context as Gemini-assisted. Independent authorship and third-party-rights certification remain unverified; ingestion does not authorize a mint.",
+      "derivedIndex": "docs/continuity/founding/pro-gamer-geek-set.json",
+      "review": "docs/continuity/founding/PRO-GAMER-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-026",
+      "title": "4 Pro Gamer Geek Legendary.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/4 Pro Gamer Geek Legendary.png",
+      "sha256": "de6c990e1c6f6cae7c98b844d52a91aa052ab5a572c3f98883f64e2377d8d2bc",
+      "gitBlobSha": "6d090a61678477810ab2b31cbe5840a849c586f4",
+      "sizeBytes": 452448,
+      "originalFilename": "4 Pro Gamer Geek Legendary.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at 1b23cf93e5293a6a47a0ac036f6eb069b12b3b56; no Pro Gamer Geek record in the existing ten-concept legacy archive. Exact character-name match to roster source-002 and PDF row-002/page 1. Visible tier retained; no numbered edition assignment or original creation-time proof.",
+      "rights": "Founder-supplied project concept art, described in earlier context as Gemini-assisted. Independent authorship and third-party-rights certification remain unverified; ingestion does not authorize a mint.",
+      "derivedIndex": "docs/continuity/founding/pro-gamer-geek-set.json",
+      "review": "docs/continuity/founding/PRO-GAMER-GEEK-SET.md"
+    },
+    {
+      "id": "ARCH-027",
+      "title": "5 Pro Gamer Geek Mythic.png",
+      "status": "preserved-founder-upload",
+      "location": "docs/continuity/founding/phone/5 Pro Gamer Geek Mythic.png",
+      "sha256": "c1b36fed96330fa0306c54138a6628a45f94547d67980badd8605af9a5ef2f8d",
+      "gitBlobSha": "e148ba63c5460342b972e7c9543d4314b1cc9c39",
+      "sizeBytes": 542570,
+      "originalFilename": "5 Pro Gamer Geek Mythic.png",
+      "suppliedOn": "2026-10-15",
+      "originalCreatedAt": null,
+      "provenance": "Exact founder-supplied PNG bytes and original filename. No equal SHA-256 among tracked HQ archive files at 1b23cf93e5293a6a47a0ac036f6eb069b12b3b56; no Pro Gamer Geek record in the existing ten-concept legacy archive. Exact character-name match to roster source-002 and PDF row-002/page 1. Visible tier retained; no numbered edition assignment or original creation-time proof.",
+      "rights": "Founder-supplied project concept art, described in earlier context as Gemini-assisted. Independent authorship and third-party-rights certification remain unverified; ingestion does not authorize a mint.",
+      "derivedIndex": "docs/continuity/founding/pro-gamer-geek-set.json",
+      "review": "docs/continuity/founding/PRO-GAMER-GEEK-SET.md"
     }
   ]
 }

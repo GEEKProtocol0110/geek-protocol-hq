@@ -67,7 +67,7 @@
       "status": "blocked",
       "title": "Ingest founding originals and reconcile chronology",
       "owner": "Founder supplies originals; archivist unassigned",
-      "nextAction": "Twelve phone originals are preserved. Continue supplying the original conversation export and remaining files; reconcile chronology only with original evidence.",
+      "nextAction": "Seventeen phone originals are preserved. Continue supplying the original conversation and remaining files; chronology requires original evidence.",
       "acceptance": [
         "Each received file has an original filename, byte hash, provenance, privacy/licensing disposition and duplicate result.",
         "Originals remain unchanged; public derivatives are identified separately.",
@@ -322,9 +322,9 @@
       "status": "planned",
       "title": "Finish the 500-Geek art and ownership specification",
       "owner": "Art lead and ownership reviewer unassigned",
-      "nextAction": "Review the 18 repeated roster labels and incomplete trait PDF. Confirm whether historical 100/50/25/5/1 cells meant copies per archetype, recover missing sheet rows, and reconcile any proposed supply/theme/edition policy with the current 500-edition plan and GIGA/A.C.E. anchors before changing canon.",
+      "nextAction": "Implement founder clarification DR-012 as a versioned plan for 500 character concepts × five rarity artworks (2,500). Reconcile the historical duplicate names, incomplete trait sheet, generated 500-slot IDs and GIGA/A.C.E. anchors. Define collectible copies/supply and acquisition separately before any mint.",
       "acceptance": [
-        "Exactly 500 editions in five tiers are reconciled.",
+        "500 character concepts and five artworks per concept are represented without silent renumbering; distinguish 2,500 planned artworks from received/approved assets and collectible copies.",
         "Art provenance, metadata and acquisition allocations approved.",
         "Ownership remains disabled until its separate reviewed implementation."
       ],
@@ -332,7 +332,8 @@
       "evidence": [
         "docs/GEEK-500-ART-BIBLE.md",
         "docs/COLLECTIBLE-PROTOCOL.md",
-        "docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md"
+        "docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md",
+        "docs/GEEK-500-COLLECTION-STRUCTURE.md"
       ]
     },
     {
@@ -523,13 +524,13 @@
       "id": "ARCH-003",
       "priority": "P1",
       "status": "in-progress",
-      "title": "Preserve founder-supplied Sci-Fi and A.I. Geek rarity originals",
+      "title": "Preserve founder-supplied five-tier Geek art sets",
       "owner": "Maintainer archives; founder reviews interpretation",
-      "nextAction": "Review open PR #120 and both five-tier sets; preserve the alternative AI Common and double-spaced Rare filename. Keep null edition mappings until COLL-001 resolves the art specification.",
+      "nextAction": "Review open PR #120 with Sci-Fi, A.I. and Pro Gamer originals and founder decision DR-012. Preserve new uploads individually; COLL-001 must reconcile the runtime model with 500 characters × five artworks.",
       "acceptance": [
-        "Ten original filenames and PNG bytes retained with SHA-256, Git blobs, dimensions and supplied provenance.",
-        "Duplicate-check scope, Sci-Fi roster/PDF links, alternative AI Common and absent exact AI roster/PDF labels recorded.",
-        "No change to collection supply, approved art, mint readiness, ownership or existing legacy-art records."
+        "Fifteen original PNG filenames/bytes retained with SHA-256, Git blobs, dimensions and source provenance.",
+        "Duplicate scope, Sci-Fi/Pro Gamer roster/PDF links, alternative AI Common and absent exact AI source label recorded.",
+        "Founder correction recorded without changing runtime IDs, art approval, mint readiness or ownership; existing legacy records unchanged."
       ],
       "dependsOn": [],
       "evidence": [
@@ -537,7 +538,10 @@
         "docs/continuity/founding/SCI-FI-GEEK-SET.md",
         "docs/continuity/assets.json",
         "docs/continuity/founding/ai-geek-set.json",
-        "docs/continuity/founding/AI-GEEK-SET.md"
+        "docs/continuity/founding/AI-GEEK-SET.md",
+        "docs/continuity/founding/pro-gamer-geek-set.json",
+        "docs/GEEK-500-COLLECTION-STRUCTURE.md",
+        "docs/continuity/founding/character-art-sets.json"
       ]
     }
   ]

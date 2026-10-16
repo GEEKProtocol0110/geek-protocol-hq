@@ -53,7 +53,7 @@
     },
     {
       "id": "DR-005",
-      "status": "existing-direction",
+      "status": "superseded",
       "title": "Preserve the five-tier 500-Geek collection",
       "decision": "The edition plan is 500 in Common/Rare/Epic/Legendary/Mythic, separate from question counts.",
       "basis": "Existing founder collection direction and manifest.",
@@ -61,7 +61,8 @@
         "docs/GEEK-500-ART-BIBLE.md"
       ],
       "recordedAt": "2026-10-15",
-      "supersedes": null
+      "supersedes": null,
+      "supersededBy": "DR-012"
     },
     {
       "id": "DR-006",
@@ -136,6 +137,19 @@
       ],
       "recordedAt": "2026-10-15",
       "supersedes": null
+    },
+    {
+      "id": "DR-012",
+      "status": "founder-direction",
+      "title": "500 character concepts, each with five rarity artworks",
+      "decision": "Plan 500 Geek character concepts with Common, Rare, Epic, Legendary and Mythic artwork for every concept: 2,500 distinct planned images. This corrects the earlier interpretation of 500 total editions. Artwork count does not determine collectible copies per artwork, mint supply or acquisition allocations.",
+      "basis": "Founder clarified October 15, 2026: “So you see the direction I went with the 500 geek. 2500 different images.” Three supplied five-tier sets demonstrate the intended structure. Runtime manifest migration remains COLL-001 work.",
+      "evidence": [
+        "docs/GEEK-500-COLLECTION-STRUCTURE.md",
+        "docs/continuity/founding/character-art-sets.json"
+      ],
+      "recordedAt": "2026-10-15",
+      "supersedes": "DR-005"
     }
   ]
 }

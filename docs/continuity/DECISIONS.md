@@ -46,7 +46,7 @@ Evidence: [docs/ECONOMY-PROTOCOL.md](../../docs/ECONOMY-PROTOCOL.md), [docs/COLL
 
 ## DR-005: Preserve the five-tier 500-Geek collection
 
-**existing-direction** · 2026-10-15.
+**superseded** · 2026-10-15.
 
 The edition plan is 500 in Common/Rare/Epic/Legendary/Mythic, separate from question counts.
 
@@ -113,3 +113,13 @@ For TN10 rehearsal, mirror the pinned Mainnet maximum of 144 billion, 100,000 pe
 Basis: Founder questioned the smaller test-supply proposal on October 15; it had not been deployed. Deployment-field parity is separate from wallet approval, rewards and settlement.
 
 Evidence: [docs/TESTNET-ASSET-SETUP.md](../../docs/TESTNET-ASSET-SETUP.md), [docs/testnet/geekt-deploy.json](../../docs/testnet/geekt-deploy.json), [server/mint.js](../../server/mint.js).
+
+## DR-012: 500 character concepts, each with five rarity artworks
+
+**founder-direction** · 2026-10-15.
+
+Plan 500 Geek character concepts with Common, Rare, Epic, Legendary and Mythic artwork for every concept: 2,500 distinct planned images. This corrects the earlier interpretation of 500 total editions. Artwork count does not determine collectible copies per artwork, mint supply or acquisition allocations.
+
+Basis: Founder clarified October 15, 2026: “So you see the direction I went with the 500 geek. 2500 different images.” Three supplied five-tier sets demonstrate the intended structure. Runtime manifest migration remains COLL-001 work.
+
+Evidence: [docs/GEEK-500-COLLECTION-STRUCTURE.md](../../docs/GEEK-500-COLLECTION-STRUCTURE.md), [docs/continuity/founding/character-art-sets.json](../../docs/continuity/founding/character-art-sets.json). Supersedes DR-005.

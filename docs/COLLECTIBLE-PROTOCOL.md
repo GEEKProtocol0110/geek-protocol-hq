@@ -1,5 +1,7 @@
 # Geek Collectible Protocol
 
+**Founder clarification, October 15, 2026:** plan **500 character concepts × five rarity artworks = 2,500 distinct images**. [The structure decision](GEEK-500-COLLECTION-STRUCTURE.md) and DR-012 supersede the earlier interpretation of 500 total editions. The slot model described below is the preserved Alpha implementation awaiting versioned reconciliation; it does not implement the clarified full artwork plan. Copies per artwork and mint supply remain unspecified. Dated implementation sections retain their historical scope.
+
 ## Purpose
 
 The Omniscient Grid is a planned collection of 500 unique Geek identities. GIGA is the community heart and A.C.E. is the protocol mind. The remaining identities span eight knowledge districts and ten functional archetypes. Collectibles are cosmetic identity and learning-history objects; they do not improve scores, odds, rewards, or leaderboard placement.
@@ -14,15 +16,14 @@ The Omniscient Grid is a planned collection of 500 unique Geek identities. GIGA 
 
 This lets the community test the game loop before an irreversible collection deployment.
 
-## Collection blueprint
+## Earlier Alpha slot blueprint
 
 | Tier | Slots |
 | --- | ---: |
 | Common | 250 |
 | Rare | 125 |
 | Epic | 75 |
-| Legendary | 40 |
-| Elite | 8 |
+| Legendary | 48 |
 | Mythic | 2 |
 | Total | 500 |
 
@@ -48,7 +49,7 @@ Kaspa integration should use the maintained Rusty Kaspa WASM SDK for browser or 
 
 Before any on-chain Geek collection deployment:
 
-- freeze and content-address all 500 images and metadata records;
+- reconcile the character/tier catalog, then freeze and content-address all approved images and metadata records;
 - publish a complete provenance manifest and reproducible collection hash;
 - pin the exact network, deployment transaction, supply, royalty, and authority policy;
 - independently verify ownership against more than one data source where practical;

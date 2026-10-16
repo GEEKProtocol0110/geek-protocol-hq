@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "recordedOn": "2026-10-15",
+  "status": "preserved-unmapped-art-set",
+  "source": "Founder-supplied attachments in this conversation; supplied date uses America/Detroit. Upload filesystem timestamps are not original creation proof.",
+  "character": "Pro Gamer Geek",
+  "tiers": [
+    "Common",
+    "Rare",
+    "Epic",
+    "Legendary",
+    "Mythic"
+  ],
+  "records": [
+    {
+      "assetId": "ARCH-023",
+      "originalFilename": "1 Pro Gamer Geek Common.png",
+      "location": "docs/continuity/founding/phone/1 Pro Gamer Geek Common.png",
+      "sha256": "6dae5286a4d9cf6213463170b3c81ef8012851e32094db948e2ff3fe8bda0c78",
+      "gitBlobSha": "02146a1c65dfc46a823de5c47f51b13762c0f912",
+      "sizeBytes": 171971,
+      "width": 1536,
+      "height": 1536,
+      "visibleTier": "Common",
+      "observedDesign": "bearded gamer in blue cap and headset holding a controller",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-024",
+      "originalFilename": "2 Pro Gamer Geek Rare.png",
+      "location": "docs/continuity/founding/phone/2 Pro Gamer Geek Rare.png",
+      "sha256": "4a5b95ca7f8f740309aee5a80240a6b5ba60494011756976241ac4f35660a659",
+      "gitBlobSha": "02f9ea1c52d53f811115e8d7be9b57582bf296ad",
+      "sizeBytes": 205855,
+      "width": 1536,
+      "height": 1536,
+      "visibleTier": "Rare",
+      "observedDesign": "gamer seated in a red-trim chair with light glowing around the controller",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-025",
+      "originalFilename": "3 Pro Gamer Geek Epic.png",
+      "location": "docs/continuity/founding/phone/3 Pro Gamer Geek Epic.png",
+      "sha256": "6fa74ef8c72c14c57fbaba6f3753289dad700c343d4ad959889a624148427967",
+      "gitBlobSha": "d664e2a72be8e5a5ceebf1d3c97e4bb70355380e",
+      "sizeBytes": 265495,
+      "width": 1536,
+      "height": 1536,
+      "visibleTier": "Epic",
+      "observedDesign": "gamer with a cyan-lit controller and multicolor orbiting light trails",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-026",
+      "originalFilename": "4 Pro Gamer Geek Legendary.png",
+      "location": "docs/continuity/founding/phone/4 Pro Gamer Geek Legendary.png",
+      "sha256": "de6c990e1c6f6cae7c98b844d52a91aa052ab5a572c3f98883f64e2377d8d2bc",
+      "gitBlobSha": "6d090a61678477810ab2b31cbe5840a849c586f4",
+      "sizeBytes": 452448,
+      "width": 1536,
+      "height": 1536,
+      "visibleTier": "Legendary",
+      "observedDesign": "gamer surrounded by a gold aura, status bars and floating symbols",
+      "mappedEdition": null,
+      "approved": false
+    },
+    {
+      "assetId": "ARCH-027",
+      "originalFilename": "5 Pro Gamer Geek Mythic.png",
+      "location": "docs/continuity/founding/phone/5 Pro Gamer Geek Mythic.png",
+      "sha256": "c1b36fed96330fa0306c54138a6628a45f94547d67980badd8605af9a5ef2f8d",
+      "gitBlobSha": "e148ba63c5460342b972e7c9543d4314b1cc9c39",
+      "sizeBytes": 542570,
+      "width": 1024,
+      "height": 1536,
+      "visibleTier": "Mythic",
+      "observedDesign": "crowned gamer seated in an arena with cyan lightning around the controller",
+      "mappedEdition": null,
+      "approved": false
+    }
+  ],
+  "historicalRelations": {
+    "roster": "docs/continuity/founding/geek-roster-500.json",
+    "rosterSourceId": "source-002",
+    "rosterSourceLine": 14,
+    "traitSheet": "docs/continuity/founding/geek-trait-rarity-sheet.json",
+    "traitSheetRowId": "pdf-row-002",
+    "traitSheetPage": 1,
+    "interpretation": "Character-name matches establish a source relationship, not a numbered NFT edition. Founder clarified 500 character concepts with five rarity artworks each (2,500 planned images); copies per artwork remain unspecified."
+  },
+  "limits": {
+    "mappedEdition": null,
+    "mintReady": false,
+    "onChainOwnershipActive": false,
+    "independentlyReviewed": false,
+    "originalCreationTimeVerified": false
+  }
+}

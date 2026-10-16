@@ -13,3 +13,5 @@ The founder-supplied phone roster and incomplete trait PDF are preserved unchang
 Five further founder-supplied Sci-Fi Geek PNGs (Common through Mythic) are preserved as ARCH-013–ARCH-017. See [the set review](SCI-FI-GEEK-SET.md) and [exact-byte index](sci-fi-geek-set.json). Edition mapping and original creation dates remain unresolved.
 
 Five founder-supplied A.I. Geek PNGs are preserved as ARCH-018–ARCH-022. See [the variant review](AI-GEEK-SET.md) and [exact-byte index](ai-geek-set.json). The Common differs from the previously recovered robot-companion version; both remain preserved.
+
+Five Pro Gamer Geek originals are preserved as ARCH-023–ARCH-027. See [the set review](PRO-GAMER-GEEK-SET.md), [exact-byte index](pro-gamer-geek-set.json) and [three-set inventory](character-art-sets.json). The founder clarified **500 characters × five artworks = 2,500 planned images**; [the structure decision](../../GEEK-500-COLLECTION-STRUCTURE.md) supersedes the previous 500-total-edition interpretation.
