@@ -137,3 +137,20 @@ test('offline restore reset removes passkey challenges and management grants whi
   const applied = await resetRestoredSessions({command:fixture.command,apply:true});assert.equal(applied.removed,2);
   assert.equal(await fixture.command('GET',account),'synthetic-durable-record');
 });
+
+test('linking a wallet after passkey-only signup preserves the player and requires explicit passkey re-enrollment', async () => {
+  const guest = await session(), player = guest.split('=')[1], enrolled = await enroll(guest);
+  const key = new kaspa.PrivateKey('7'.padStart(64,'0')), addressObject = key.toAddress('mainnet');
+  const address = addressObject.toString();addressObject.free();key.free();
+  const issued = await call(identityHandler,enrolled.cookie,{action:'challenge',address});
+  assert.equal(issued.statusCode,201);
+  const linked = await call(identityHandler,enrolled.cookie,{action:'verify',challengeId:issued.body.challenge.challengeId,
+    signature:kaspa.signMessage({message:issued.body.challenge.message,privateKey:'7'.padStart(64,'0')})});
+  assert.equal(linked.statusCode,200);
+  const status = await call(passkeysHandler,enrolled.cookie,null,'GET');
+  assert.equal(status.statusCode,200,JSON.stringify(status.body));assert.equal(status.body.walletLinked,true);
+  assert.equal(status.body.signedIn,false);assert.equal(status.body.credentials.length,0);
+  const saved = JSON.parse(await fixture.command('GET','geek:session:'+enrolled.cookie.split('=')[1]));
+  assert.equal(saved.playerId,player);assert.equal(saved.identityVersion,1);assert.equal(saved.passkeyEpoch,undefined);
+  assert.equal((await call(passkeysHandler,enrolled.cookie,{action:'begin-register',token:enrolled.grant})).body.code,'PASSKEY_REAUTH_REQUIRED');
+});

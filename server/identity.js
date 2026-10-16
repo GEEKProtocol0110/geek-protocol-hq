@@ -322,6 +322,9 @@ export const verifyIdentityChallenge = async ({ req, session, challengeId, signa
     identityVersion: identity.sessionVersion,
     lastSeen: now
   };
+  // A freshly signed wallet proof establishes wallet-based access. Do not leave
+  // this session gated by a former passkey-only account's older wallet version.
+  delete updatedSession.passkeyEpoch;
   validateIdentityRecord(identity, targetPlayerId);
   validateSessionRecord(updatedSession, session.id);
   const audit = await createAuditRecord({

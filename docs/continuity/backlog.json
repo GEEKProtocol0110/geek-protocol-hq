@@ -525,7 +525,7 @@
       "status": "in-progress",
       "title": "Add passkey account access and recovery controls",
       "owner": "Maintainer; independent auth reviewer unassigned",
-      "nextAction": "Review draft PR #119, implementation checkpoint 5f77b7da606ee747fe6f5e25d82aa1fb903cec2b (459 tests passed). Complete Android/browser registration, recovery/removal and independent auth acceptance before claiming live readiness.",
+      "nextAction": "Review current-head draft PR #119 (460 tests passed locally), then complete Android/browser registration, wallet linking, recovery/removal and independent auth acceptance before live-readiness claims.",
       "acceptance": [
         "Real WebAuthn signature/origin/UV/replay/counter and session-rotation tests pass.",
         "Fresh-proof enrollment and wallet recovery invalidate obsolete credentials.",

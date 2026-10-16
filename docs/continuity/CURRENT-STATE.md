@@ -27,7 +27,7 @@ Record date: 2026-10-15. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 **AUTH-001: active.** Draft PR #119 / codex/five-leaps implementation candidate: passkey account access, testnet wallet creation/restore lab, merged 580-question release, clearer manual reward reconciliation and prepared pilot evaluation. Not yet merged/deployed; Mainnet wallet/rewards and real pilot acceptance are unfinished.
 
-Next task: **AUTH-001**. Review draft PR #119 (459 tests passed locally); complete Android/browser passkey and testnet backup acceptance. BANK-001 continues from merged 580 Kaspa toward 1,000. CHAIN-001 still needs the first actual testnet transfer; PILOT-002 needs a coordinator and approved charter.
+Next task: **AUTH-001**. Review draft PR #119 (460 tests passed locally); complete Android/browser passkey and testnet backup acceptance. BANK-001 continues from merged 580 Kaspa toward 1,000. CHAIN-001 still needs the first actual testnet transfer; PILOT-002 needs a coordinator and approved charter.
 
 ## Holds
 

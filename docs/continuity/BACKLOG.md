@@ -410,7 +410,7 @@ Evidence/specification: [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEE
 
 **P0 / in-progress.** Owner: Maintainer; independent auth reviewer unassigned. Dependencies: none.
 
-Next action: Review draft PR #119, implementation checkpoint 5f77b7da606ee747fe6f5e25d82aa1fb903cec2b (459 tests passed). Complete Android/browser registration, recovery/removal and independent auth acceptance before claiming live readiness.
+Next action: Review current-head draft PR #119 (460 tests passed locally), then complete Android/browser registration, wallet linking, recovery/removal and independent auth acceptance before live-readiness claims.
 
 Acceptance:
 
