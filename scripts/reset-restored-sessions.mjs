@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 
 const patterns = ['geek:session:*', 'geek:ops:session:*', 'geek:*:identity:challenge:*', 'geek:*:identity:authorization:*', 'geek:passkey:challenge:v1:*', 'geek:passkey:grant:v1:*'];
 const transient = key => /^geek:(session:|ops:session:|[a-z0-9-]+:identity:(challenge|authorization):|passkey:(challenge|grant):v1:)/.test(key);
-export const resetRestoredSessions = async ({ command, apply = false }) => {
+const scanSessions = async command => {
   const keys = new Set();
   for (const pattern of patterns) {
     let cursor = '0', pages = 0;
@@ -18,32 +18,65 @@ export const resetRestoredSessions = async ({ command, apply = false }) => {
       }
     } while (cursor !== '0');
   }
+  return keys;
+};
+export const resetRestoredSessions = async ({ command, apply = false }) => {
+  if (typeof apply !== 'boolean') throw new Error('Recovery mode must be explicit.');
+  const keys = await scanSessions(command);
   let removed = 0; const list = [...keys];
-  if (apply) for (let i = 0; i < list.length; i += 100) removed += Number(await command('DEL', ...list.slice(i, i + 100)));
+  if (apply) {
+    for (let i = 0; i < list.length; i += 100) {
+      const batch = list.slice(i, i + 100), count = await command('DEL', ...batch);
+      if (!Number.isSafeInteger(count) || count < 0 || count > batch.length) throw new Error('Invalid recovery deletion response; inspect the offline restore before retrying.');
+      removed += count;
+    }
+    if ((await scanSessions(command)).size) throw new Error('Restored sessions remain; keep the target offline and rerun cleanup.');
+  }
   return { mode: apply ? 'applied' : 'dry-run', matched: keys.size, removed };
 };
-export const recoveryTarget = (env, host) => {
+const validHost = host => {
+  if (typeof host !== 'string' || host.length > 253 || !host.split('.').every(label => /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(label))) return false;
+  try { return new URL(`https://${host}`).hostname === host; } catch { return false; }
+};
+export const recoveryTarget = (env, host, productionHost) => {
   let url;
   try { url = new URL(env.RECOVERY_REDIS_REST_URL); } catch { throw new Error('Configure a dedicated restored-database HTTPS endpoint.'); }
-  if (url.protocol !== 'https:' || url.username || url.password || url.pathname !== '/' || url.search || url.hash || url.hostname !== host || !env.RECOVERY_REDIS_REST_TOKEN) throw new Error('Restored host confirmation or credentials are missing.');
+  if (!validHost(host) || !validHost(productionHost) || host === productionHost) throw new Error('Confirm distinct production and restored database hosts.');
+  if (url.protocol !== 'https:' || url.username || url.password || url.port || url.pathname !== '/' || url.search || url.hash || url.hostname !== host || !env.RECOVERY_REDIS_REST_TOKEN?.trim()) throw new Error('Restored host confirmation or credentials are missing.');
   for (const current of [env.UPSTASH_REDIS_REST_URL, env.KV_REST_API_URL].filter(Boolean)) {
-    try { if (new URL(current).origin === url.origin) throw new Error('Refusing the configured application database.'); }
-    catch (error) { if (error.message === 'Refusing the configured application database.') throw error; }
+    let application;
+    try { application = new URL(current); } catch { throw new Error('Invalid configured application endpoint; recovery stopped.'); }
+    if (application.hostname.replace(/\.$/, '') === host) throw new Error('Refusing the configured application database.');
+    if (application.protocol !== 'https:' || application.username || application.password || application.pathname !== '/' || application.search || application.hash || !validHost(application.hostname.replace(/\.$/, ''))) throw new Error('Invalid configured application endpoint; recovery stopped.');
   }
   return url.origin;
 };
+export const recoveryCommand = ({ url, token }) => async (...values) => {
+  const controller = new AbortController(), deadline = setTimeout(() => controller.abort(), 15_000);
+  try {
+    const response = await fetch(url, { method: 'POST', redirect: 'error', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(values), signal: controller.signal });
+    const payload = await response.json();
+    if (!response.ok || !payload || Array.isArray(payload) || payload.error || !Object.hasOwn(payload, 'result')) throw new Error('Invalid recovery response.');
+    return payload.result;
+  } catch { throw new Error('Restored-database command failed; inspect saved state before retrying.'); }
+  finally { clearTimeout(deadline); }
+};
+export const recoveryArguments = args => {
+  const options = { apply: false };
+  for (let i = 0; i < args.length; i++) {
+    const flag = args[i];
+    if (flag === '--apply' && !options.apply) options.apply = true;
+    else if (['--production-host', '--restored-host'].includes(flag) && !Object.hasOwn(options, flag) && args[i + 1] && !args[i + 1].startsWith('--')) options[flag] = args[++i];
+    else throw new Error('Invalid recovery arguments.');
+  }
+  if (!options['--production-host'] || !options['--restored-host']) throw new Error('Both database host confirmations are required.');
+  return options;
+};
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
-    const args = process.argv.slice(2), apply = args.includes('--apply');
-    const clean = args.filter(value => value !== '--apply');
-    if (clean.length !== 2 || clean[0] !== '--restored-host' || args.filter(value=>value==='--apply').length > 1) throw new Error('Usage: node scripts/reset-restored-sessions.mjs --restored-host RESTORED_HOST [--apply]');
-    const url = recoveryTarget(process.env, clean[1]);
-    const command = async (...values) => {
-      const response = await fetch(url, { method: 'POST', headers: { Authorization: `Bearer ${process.env.RECOVERY_REDIS_REST_TOKEN}`, 'Content-Type': 'application/json' }, body: JSON.stringify(values), signal: AbortSignal.timeout(15_000) });
-      const payload = await response.json();
-      if (!response.ok || payload.error) throw new Error('Restored-database command failed.');
-      return payload.result;
-    };
+    const options = recoveryArguments(process.argv.slice(2)), apply = options.apply;
+    const url = recoveryTarget(process.env, options['--restored-host'], options['--production-host']);
+    const command = recoveryCommand({ url, token: process.env.RECOVERY_REDIS_REST_TOKEN });
     console.log(JSON.stringify(await resetRestoredSessions({command,apply})));
-  } catch { console.error('Recovery action stopped. Check the restored-only endpoint, explicit host, credentials and command arguments. If removal had started, rerun on the same offline restore to finish.'); process.exitCode = 1; }
+  } catch { console.error('Recovery action stopped. Confirm distinct --production-host and --restored-host, the restored-only credentials and offline isolation. If removal had started, inspect and rerun on the same offline restore to finish.'); process.exitCode = 1; }
 }
