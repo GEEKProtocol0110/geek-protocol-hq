@@ -6,6 +6,27 @@
   let busy = false, ready = false, grant = '';
   const controls = () => [...panel.querySelectorAll('button')];
   const setDisabled = () => controls().forEach(button => { button.disabled = busy || !ready; });
+  const device = panel.querySelector('[data-passkey-device]');
+  const deviceHelp = panel.querySelector('[data-passkey-device-help]');
+  const checkDevice = async () => {
+    // A missing platform authenticator does not rule out a phone or security key.
+    // This is a local capability check, never an authentication decision.
+    if (typeof window.PublicKeyCredential?.isUserVerifyingPlatformAuthenticatorAvailable !== 'function') return;
+    let deadline;
+    try {
+      const available = await Promise.race([
+        window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable(),
+        new Promise(resolve => { deadline = setTimeout(() => resolve(null), 2000); })
+      ]);
+      if (available === false) {
+        if (device) device.textContent = 'This browser reports no built-in passkey provider. It may still offer another device or a security key. A screen-lock PIN alone does not guarantee passkey support.';
+        if (deviceHelp) deviceHelp.open = true;
+      } else if (available === true && device) {
+        device.textContent = 'A built-in passkey provider is available. Your device still needs to complete the save or sign-in prompt.';
+      }
+    } catch { /* Unknown support must not block an external authenticator. */ }
+    finally { clearTimeout(deadline); }
+  };
   const encode = value => btoa(String.fromCharCode(...new Uint8Array(value))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   const decode = value => Uint8Array.from(atob(value.replace(/-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0));
   const fetchJson = async (path, body) => {
@@ -61,7 +82,14 @@
     busy = true; setDisabled();
     try { await operation(); }
     catch (error) {
-      note.textContent = ['NotAllowedError', 'AbortError'].includes(error.name) ? 'No passkey was completed. Try again in your browser when you’re ready. If this app cannot show passkeys, open Geek in an up-to-date browser such as Chrome.' : error.message;
+      note.textContent = ['NotAllowedError', 'AbortError'].includes(error.name)
+        ? 'No passkey was completed. Choose a saved Geek passkey, or another device or security key if your browser offers it. See device help below; your saved player has not been replaced.'
+        : error.name === 'NotSupportedError'
+          ? 'This browser or authenticator cannot complete the requested passkey. See device help below. You can keep learning as a guest without clearing your progress.'
+          : error.name === 'InvalidStateError'
+            ? 'A passkey may already be saved for this player on that authenticator. Try Sign in with a passkey instead.'
+            : error.message;
+      if (['NotAllowedError','AbortError','NotSupportedError'].includes(error.name) && deviceHelp) deviceHelp.open = true;
       if (error.code === 'PASSKEY_REAUTH_REQUIRED') document.querySelector('[data-passkey-wallet-help]').hidden = false;
     } finally { busy = false; setDisabled(); }
   };
@@ -91,8 +119,11 @@
   panel.querySelector('[data-passkey-wallet-authorize]').addEventListener('click', () => document.dispatchEvent(new CustomEvent('geek:passkey-wallet-proof')));
   setDisabled();
   if (!window.isSecureContext || !window.PublicKeyCredential || !navigator.credentials?.create || !navigator.credentials?.get) {
-    note.textContent = 'Passkeys are unavailable in this browser. Open Geek in an up-to-date browser such as Chrome. You can keep learning as a guest here.';
+    note.textContent = 'Passkeys are unavailable in this browser. Use an up-to-date browser on a device with passkey support, or keep learning as a guest here. Changing browsers alone may not add passkey support to an Amazon Fire tablet.';
+    if (device) device.textContent = 'This browser cannot request a passkey. Your existing player data has not been cleared.';
+    if (deviceHelp) deviceHelp.open = true;
   } else {
+    void checkDevice();
     (async () => {
       try {
         await fetchJson('/api/session', {});

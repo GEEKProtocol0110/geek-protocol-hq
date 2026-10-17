@@ -1,0 +1,708 @@
+{
+  "checkedAt": "2026-10-17T04:37:18.225Z",
+  "method": "HEAD, read-only, eight-second deadline; blocked responses are not proof of a dead link",
+  "results": [
+    {
+      "url": "https://geek-mini.vercel.app/daily",
+      "status": 200,
+      "destination": "https://geek-mini.vercel.app/daily",
+      "pages": [
+        "public/tools/index.html",
+        "public/start/index.html"
+      ]
+    },
+    {
+      "url": "https://geek-mini.vercel.app/speed",
+      "status": 200,
+      "destination": "https://geek-mini.vercel.app/speed",
+      "pages": [
+        "public/tools/index.html"
+      ]
+    },
+    {
+      "url": "https://geek-mini.vercel.app/",
+      "status": 200,
+      "destination": "https://geek-mini.vercel.app/",
+      "pages": [
+        "public/index.html",
+        "public/index.html",
+        "public/play/index.html",
+        "public/collection/index.html",
+        "public/collection/index.html",
+        "public/tools/index.html",
+        "public/tools/index.html",
+        "public/tools/index.html",
+        "public/litepaper/index.html",
+        "public/litepaper/index.html",
+        "public/rewards/index.html",
+        "public/rewards/index.html",
+        "public/security/index.html",
+        "public/security/index.html",
+        "public/practice/index.html",
+        "public/practice/index.html",
+        "public/challenges/index.html",
+        "public/challenges/index.html",
+        "public/memory/index.html",
+        "public/memory/index.html",
+        "public/kaspa/index.html",
+        "public/kaspa/index.html",
+        "public/economy/index.html",
+        "public/economy/index.html",
+        "public/vault/index.html",
+        "public/vault/index.html",
+        "public/study/index.html",
+        "public/study/index.html",
+        "public/thanks/index.html",
+        "public/thanks/index.html",
+        "public/profile/index.html",
+        "public/profile/index.html",
+        "public/mint/index.html",
+        "public/mint/index.html",
+        "public/contribute/index.html",
+        "public/contribute/index.html",
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://wallet.geekprotocol.xyz/",
+      "status": 200,
+      "destination": "https://wallet.geekprotocol.xyz/",
+      "pages": [
+        "public/index.html",
+        "public/index.html"
+      ]
+    },
+    {
+      "url": "https://geekjr.xyz/",
+      "status": 200,
+      "destination": "https://geekjr.xyz/",
+      "pages": [
+        "public/index.html",
+        "public/index.html",
+        "public/index.html",
+        "public/play/index.html",
+        "public/collection/index.html",
+        "public/tools/index.html",
+        "public/tools/index.html",
+        "public/litepaper/index.html",
+        "public/rewards/index.html",
+        "public/security/index.html",
+        "public/practice/index.html",
+        "public/challenges/index.html",
+        "public/memory/index.html",
+        "public/start/index.html",
+        "public/kaspa/index.html",
+        "public/economy/index.html",
+        "public/vault/index.html",
+        "public/study/index.html",
+        "public/study/index.html",
+        "public/thanks/index.html",
+        "public/profile/index.html",
+        "public/profile/index.html",
+        "public/mint/index.html",
+        "public/contribute/index.html"
+      ]
+    },
+    {
+      "url": "https://x.com/geekonkas",
+      "status": 200,
+      "destination": "https://x.com/geekonkas",
+      "pages": [
+        "public/index.html",
+        "public/kaspa/index.html",
+        "public/lobby/index.html",
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/ARCHITECTURE.md",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/ARCHITECTURE.md",
+      "pages": [
+        "public/litepaper/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/PRODUCT-ROADMAP.md",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/PRODUCT-ROADMAP.md",
+      "pages": [
+        "public/litepaper/index.html"
+      ]
+    },
+    {
+      "url": "https://geek-litepaper-nu.vercel.app/docs/Master_Document_v1.3.html",
+      "status": 200,
+      "destination": "https://geek-litepaper-nu.vercel.app/docs/Master_Document_v1.3.html",
+      "pages": [
+        "public/litepaper/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/PROJECT-STATUS.md",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/PROJECT-STATUS.md",
+      "pages": [
+        "public/litepaper/index.html"
+      ]
+    },
+    {
+      "url": "https://geek-litepaper-nu.vercel.app/docs/Litepaper_Themed_v1.3.html",
+      "status": 200,
+      "destination": "https://geek-litepaper-nu.vercel.app/docs/Litepaper_Themed_v1.3.html",
+      "pages": [
+        "public/litepaper/index.html"
+      ]
+    },
+    {
+      "url": "https://vercel.com/docs/analytics/privacy-policy",
+      "status": 200,
+      "destination": "https://vercel.com/docs/analytics/privacy-policy",
+      "pages": [
+        "public/security/index.html"
+      ]
+    },
+    {
+      "url": "https://kaspa.org/",
+      "status": 200,
+      "destination": "https://kaspa.org/",
+      "pages": [
+        "public/kaspa/index.html",
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/AUDIT-SCOPE.md",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/AUDIT-SCOPE.md",
+      "pages": [
+        "public/security/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/SECURITY.md",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/SECURITY.md",
+      "pages": [
+        "public/security/index.html"
+      ]
+    },
+    {
+      "url": "https://www.kasware.xyz/",
+      "status": 200,
+      "destination": "https://www.kasware.xyz/",
+      "pages": [
+        "public/sign-in/index.html",
+        "public/thanks/index.html",
+        "public/mint/index.html",
+        "public/mint/index.html"
+      ]
+    },
+    {
+      "url": "https://eprint.iacr.org/2018/104.pdf",
+      "status": 403,
+      "destination": "https://eprint.iacr.org/2018/104.pdf",
+      "pages": [
+        "public/kaspa/index.html"
+      ]
+    },
+    {
+      "url": "https://docs.kaspa.org/",
+      "status": 200,
+      "destination": "https://docs.kaspa.org/",
+      "pages": [
+        "public/kaspa/index.html",
+        "public/kaspa/index.html",
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://wiki.kaspa.org/en/tokenomics",
+      "status": 403,
+      "destination": "https://wiki.kaspa.org/en/tokenomics",
+      "pages": [
+        "public/kaspa/index.html"
+      ]
+    },
+    {
+      "url": "https://kaspa.org/lore",
+      "status": 200,
+      "destination": "https://kaspa.org/lore",
+      "pages": [
+        "public/kaspa/index.html"
+      ]
+    },
+    {
+      "url": "https://kgi.kaspad.net/",
+      "status": 200,
+      "destination": "https://kgi.kaspad.net/",
+      "pages": [
+        "public/kaspa/index.html"
+      ]
+    },
+    {
+      "url": "https://docs.kaspa.org/toccata",
+      "status": 200,
+      "destination": "https://docs.kaspa.org/toccata",
+      "pages": [
+        "public/kaspa/index.html"
+      ]
+    },
+    {
+      "url": "https://eprint.iacr.org/2022/1494.pdf",
+      "status": 403,
+      "destination": "https://eprint.iacr.org/2022/1494.pdf",
+      "pages": [
+        "public/kaspa/index.html"
+      ]
+    },
+    {
+      "url": "https://kaspa.com/learn-kaspa/post/dag-and-kaspa",
+      "status": 200,
+      "destination": "https://kaspa.com/learn-kaspa/post/dag-and-kaspa",
+      "pages": [
+        "public/kaspa/index.html",
+        "public/study/index.html",
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/kaspa-live/kaspa-graph-inspector",
+      "status": null,
+      "reason": "TimeoutError",
+      "pages": [
+        "public/kaspa/index.html",
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/kaspanet/rusty-kaspa",
+      "status": 200,
+      "destination": "https://github.com/kaspanet/rusty-kaspa",
+      "pages": [
+        "public/kaspa/index.html",
+        "public/thanks/index.html",
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/kaspanet/kips",
+      "status": 200,
+      "destination": "https://github.com/kaspanet/kips",
+      "pages": [
+        "public/kaspa/index.html",
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://t.me/GEEKonKAScommunity",
+      "status": 200,
+      "destination": "https://t.me/GEEKonKAScommunity",
+      "pages": [
+        "public/lobby/index.html",
+        "public/thanks/index.html",
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://kaspa.com/",
+      "status": 200,
+      "destination": "https://kaspa.com/",
+      "pages": [
+        "public/thanks/index.html",
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://kaspa.com/tokens/marketplace",
+      "status": 200,
+      "destination": "https://kaspa.com/tokens/marketplace",
+      "pages": [
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://kaspa.org/build",
+      "status": null,
+      "reason": "TimeoutError",
+      "pages": [
+        "public/kaspa/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/geek-protocol-hq",
+      "pages": [
+        "public/lobby/index.html",
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://kaspa-lens.com/kaspa/tokens",
+      "status": 200,
+      "destination": "https://kaspa-lens.com/kaspa/tokens",
+      "pages": [
+        "public/thanks/index.html",
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://nachothekat.xyz/",
+      "status": 200,
+      "destination": "https://nachothekat.xyz/",
+      "pages": [
+        "public/thanks/index.html",
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://tangem.com/en/",
+      "status": 403,
+      "destination": "https://tangem.com/en/",
+      "pages": [
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://www.kango.run/",
+      "status": 502,
+      "destination": "https://www.kango.run/",
+      "pages": [
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://kaspy.io/",
+      "status": 200,
+      "destination": "https://kaspy.io/",
+      "pages": [
+        "public/thanks/index.html",
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://kasplex.org/",
+      "status": 200,
+      "destination": "https://kasplex.org/",
+      "pages": [
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://www.npmjs.com/package/@dfns/kaspa-wasm",
+      "status": 403,
+      "destination": "https://www.npmjs.com/package/@dfns/kaspa-wasm",
+      "pages": [
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://vercel.com/",
+      "status": 200,
+      "destination": "https://vercel.com/",
+      "pages": [
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://upstash.com/",
+      "status": 200,
+      "destination": "https://upstash.com/",
+      "pages": [
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web",
+      "status": 200,
+      "destination": "https://developer.mozilla.org/en-US/docs/Web",
+      "pages": [
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://openai.com/",
+      "status": 200,
+      "destination": "https://openai.com/",
+      "pages": [
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://gemini.google.com/",
+      "status": null,
+      "reason": "TypeError",
+      "pages": [
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://nodejs.org/",
+      "status": 200,
+      "destination": "https://nodejs.org/en",
+      "pages": [
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://api.kasplex.org/v1/krc20/token/GEEK",
+      "status": 200,
+      "destination": "https://api.kasplex.org/v1/krc20/token/GEEK",
+      "pages": [
+        "public/mint/index.html"
+      ]
+    },
+    {
+      "url": "https://kaspa.com/tokens/marketplace/token/GEEK",
+      "status": 200,
+      "destination": "https://kaspa.com/tokens/marketplace/token/GEEK",
+      "pages": [
+        "public/trade/index.html",
+        "public/trade/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/DEPENDENCY-PROVENANCE.md",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/DEPENDENCY-PROVENANCE.md",
+      "pages": [
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/commits/main/public/thanks/index.html",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/geek-protocol-hq/commits/main/public/thanks/index.html",
+      "pages": [
+        "public/thanks/index.html"
+      ]
+    },
+    {
+      "url": "https://kaspacom.gitbook.io/kaspacom/krc-20-tokens/markdown",
+      "status": 200,
+      "destination": "https://kaspacom.gitbook.io/kaspacom/krc-20-tokens/markdown",
+      "pages": [
+        "public/trade/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/uberspot/OpenTriviaQA",
+      "status": 200,
+      "destination": "https://github.com/uberspot/OpenTriviaQA",
+      "pages": [
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/kasplex/sdk-kiwi",
+      "status": 200,
+      "destination": "https://github.com/kasplex/sdk-kiwi",
+      "pages": [
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "status": 200,
+      "destination": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "pages": [
+        "public/play/sources/index.html",
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "status": 200,
+      "destination": "https://creativecommons.org/licenses/by/4.0/",
+      "pages": [
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://opentdb.com/",
+      "status": 200,
+      "destination": "https://opentdb.com/",
+      "pages": [
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://www.dc.com/characters",
+      "status": 200,
+      "destination": "https://www.dc.com/characters",
+      "pages": [
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://www.starwars.com/databank",
+      "status": 200,
+      "destination": "https://www.starwars.com/databank",
+      "pages": [
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://www.nasa.gov/history/apollo-11-mission-overview/",
+      "status": 200,
+      "destination": "https://www.nasa.gov/history/apollo-11-mission-overview/",
+      "pages": [
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://www.archives.gov/milestone-documents/declaration-of-independence",
+      "status": 200,
+      "destination": "https://www.archives.gov/milestone-documents/declaration-of-independence",
+      "pages": [
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://www.nps.gov/articles/wrightflyer.htm",
+      "status": 200,
+      "destination": "https://www.nps.gov/articles/wrightflyer.htm",
+      "pages": [
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://www.nelsonmandela.org/biography",
+      "status": 200,
+      "destination": "https://www.nelsonmandela.org/biography",
+      "pages": [
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://history.state.gov/milestones/1989-1992/fall-of-communism",
+      "status": 200,
+      "destination": "https://history.state.gov/milestones/1989-1992/fall-of-communism",
+      "pages": [
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/QUESTION-MAINTENANCE.md",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/QUESTION-MAINTENANCE.md",
+      "pages": [
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://developer.mozilla.org/",
+      "status": null,
+      "reason": "TimeoutError",
+      "pages": [
+        "public/play/sources/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/kaspa-live-widget/issues",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/kaspa-live-widget/issues",
+      "pages": [
+        "public/tools/kaspa-widget/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/kaspa-live-widget/blob/main/scriptable/README.md",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/kaspa-live-widget/blob/main/scriptable/README.md",
+      "pages": [
+        "public/tools/kaspa-widget/index.html"
+      ]
+    },
+    {
+      "url": "https://apps.apple.com/us/app/scriptable/id1405459188",
+      "status": 200,
+      "destination": "https://apps.apple.com/us/app/scriptable/id1405459188",
+      "pages": [
+        "public/tools/kaspa-widget/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/kaspa-live-widget",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/kaspa-live-widget",
+      "pages": [
+        "public/tools/kaspa-widget/index.html",
+        "public/tools/kaspa-widget/privacy/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/kaspa-live-widget/releases/latest",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/kaspa-live-widget/releases/tag/v1.5.0",
+      "pages": [
+        "public/tools/kaspa-widget/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/kaspa-live-widget/releases/latest/download/kaspa-live-widget.apk",
+      "status": null,
+      "reason": "TimeoutError",
+      "pages": [
+        "public/tools/kaspa-widget/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/issues",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/geek-protocol-hq/issues",
+      "pages": [
+        "server/ops-ui/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/OPERATOR-SECURITY.md",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/OPERATOR-SECURITY.md",
+      "pages": [
+        "server/ops-ui/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/BACKUP-RECOVERY.md",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/BACKUP-RECOVERY.md",
+      "pages": [
+        "server/ops-ui/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/actions/workflows/production-monitor.yml",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/geek-protocol-hq/actions/workflows/production-monitor.yml",
+      "pages": [
+        "server/ops-ui/monitor/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/security/policy",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/geek-protocol-hq/security/policy",
+      "pages": [
+        "server/ops-ui/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/kaspa-live-widget/issues/new",
+      "status": 200,
+      "destination": "https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2FGEEKProtocol0110%2Fkaspa-live-widget%2Fissues%2Fnew",
+      "pages": [
+        "public/tools/kaspa-widget/privacy/index.html"
+      ]
+    },
+    {
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/ECONOMY-STRESS.md",
+      "status": 200,
+      "destination": "https://github.com/GEEKProtocol0110/geek-protocol-hq/blob/main/docs/ECONOMY-STRESS.md",
+      "pages": [
+        "server/ops-ui/stress/index.html"
+      ]
+    }
+  ]
+}

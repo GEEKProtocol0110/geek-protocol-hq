@@ -13,7 +13,7 @@ const credential = register => ({ id:b64('credential'), rawId:buffer('credential
     ? { attestationObject:buffer('attestation'), getTransports:() => ['internal'] }
     : { authenticatorData:buffer('auth-data'), signature:buffer('signature'), userHandle:buffer('player') }) } });
 
-const mount = async ({ support=true, handle, prompt, walletLinked=false } = {}) => {
+const mount = async ({ support=true, handle, prompt, walletLinked=false, platform } = {}) => {
   const calls=[], prompts=[], events=[];
   const ui=clientFixture(async (path, options={}) => {
     const body=options.body ? JSON.parse(options.body) : null;
@@ -27,13 +27,14 @@ const mount = async ({ support=true, handle, prompt, walletLinked=false } = {}) 
     throw new Error('Unexpected request '+body.action);
   }, {btoa,atob,DOMException});
   ui.window.isSecureContext=true;ui.window.PublicKeyCredential=support ? class {} : undefined;
+  if (support && platform) ui.window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable=platform;
   ui.context.navigator.credentials={};
   for(const method of ['create','get']) ui.context.navigator.credentials[method]=async options => {
     prompts.push({method,options});return prompt ? prompt(method,options) : credential(method==='create');
   };
   ui.document.dispatchEvent=event => events.push(event);
   const panel=ui.node('[data-passkeys]');
-  for(const selector of ['note','list','label','wallet-help','player']) panel.append(ui.node(`[data-passkey-${selector}]`));
+  for(const selector of ['note','list','label','wallet-help','player','device','device-help']) panel.append(ui.node(`[data-passkey-${selector}]`));
   for(const selector of ['save','login','logout','wallet-authorize']) panel.append(ui.node(`[data-passkey-${selector}]`,'button'));
   ui.run(source);await tick();
   return {...ui,calls,prompts,events};
@@ -51,6 +52,37 @@ test('first-visit passkey enrollment requires a tap, serializes exact bytes and 
   const finish=ui.calls.find(c=>c.body?.action==='finish-register').body;
   assert.equal(finish.response.response.attestationObject,b64('attestation'));
   assert.equal(finish.label,'My phone');assert.equal(ui.events[0].type,'geek:passkey-signed-in');
+});
+
+test('no platform provider explains device limits without blocking an external passkey or security key',async () => {
+  const ui=await mount({platform:async()=>false});
+  assert.match(ui.node('[data-passkey-device]').textContent,/no built-in passkey provider/);
+  assert.equal(ui.node('[data-passkey-device-help]').open,true);
+  assert.equal(ui.node('[data-passkey-login]').disabled,false);
+  assert.equal(ui.prompts.length,0);
+  await ui.node('[data-passkey-login]').emit('click');
+  assert.equal(ui.calls.some(c=>c.body?.action==='finish-login'),true);
+});
+
+test('a stalled or rejected device-support probe cannot block signing in or report a supported device',async () => {
+  for (const stall of [false,true]) {
+    const pending=deferred();
+    const ui=await mount({platform:()=>stall ? pending.promise : Promise.reject(new Error('Capability unavailable'))});
+    assert.equal(ui.node('[data-passkey-login]').disabled,false);
+    if(stall) { ui.expire(2000); await tick(); }
+    assert.doesNotMatch(ui.node('[data-passkey-device]').textContent,/provider is available/);
+    await ui.node('[data-passkey-login]').emit('click');
+    assert.equal(ui.calls.some(c=>c.body?.action==='finish-login'),true);
+  }
+});
+
+test('unsupported authenticator failures explain the available paths without submitting a credential',async () => {
+  const ui=await mount({prompt:async()=>{throw new DOMException('No authenticator','NotSupportedError');}});
+  await ui.node('[data-passkey-save]').emit('click');
+  assert.equal(ui.calls.some(c=>c.body?.action==='finish-register'),false);
+  assert.match(ui.node('[data-passkey-note]').textContent,/without clearing your progress/);
+  assert.equal(ui.node('[data-passkey-device-help]').open,true);
+  assert.equal(ui.node('[data-passkey-save]').disabled,false);
 });
 
 test('returning login sends the assertion and exposes access even if the credential list refresh fails',async () => {

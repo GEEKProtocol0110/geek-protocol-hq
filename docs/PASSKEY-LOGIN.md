@@ -38,3 +38,8 @@ Release follow-up: PR #125 introduced an update-only session write to prevent de
 ## Founder phone result — October 16, 2026
 
 At 2:35 AM Detroit the founder reported **“It worked”** in response to the live phone passkey instructions. This confirms founder-reported phone-flow success. Browser/app version and prompt method were not specified. Separate returning-login, cross-device recovery and revocation attempts remain unreported, and independent review remains pending. Preserve the working session and saved credential; do not repeat the original initial-enrollment request as though no phone result exists.
+
+
+## October 17 Silk report and compatibility candidate
+
+The founder reported that passkey creation failed on a family Amazon tablet and identified Amazon Silk. Keep the earlier founder phone success; this is a separate device report. The installed Fire OS/Silk versions and exact authenticator error are unknown. The candidate checks platform-authenticator availability locally with a two-second bound, explains absence/unknown support, and preserves external device/security-key options. Unsupported and cancelled prompts never become proof of identity. No browser data is cleared and no server proof requirement is weakened. Read [the cross-device plan](PLATFORM-NEXT-STEPS.md); parent-approved device linking and email recovery are not implemented. Actual Silk retesting remains required.

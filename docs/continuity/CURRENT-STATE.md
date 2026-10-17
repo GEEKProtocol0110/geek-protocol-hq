@@ -25,9 +25,9 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**OPS-001: needs-evidence.** BANK-001 PR #140 is merged and deployed: 600 internally source-reviewed Kaspa concepts, 400 remain toward 1,000. Resume independent source preservation and provider restore evidence; returning saved-player sign-in, Quest completion/replay and two-person Royale still require actual owner/device/participant observations.
+**SEO-001: in-progress.** Candidate updates all 40 HQ metadata templates, validates 863 internal links/fragments and 27 sitemap pages, adds local passkey-provider guidance for the Silk report and exact GEEKT amount display. 500 tests passed, zero failures/skips, real Redis and 311 security assertions; all site/repository/continuity checks passed. Review/merge/deployment pending; no new recovery method, AI model or signer.
 
-Next task: **OPS-001**. Resume independent source preservation and actual provider backup/isolated restore evidence. Preserve the confirmed phone passkey and edge-improvement observations; finish returning saved-player login, four-chapter Quest and two-person Royale on actual devices. Continue BANK-001 toward 1,000 while owner/device evidence is unavailable.
+Next task: **AUTH-003**. Review the metadata/device-readiness candidate. Prioritize a genuinely supported cross-device account path, then complete the existing first GEEKT receipt/transfer rehearsal. Scope the A.C.E. tutor and operations pilot and measure capacity before infrastructure migration; OPS-001 and real-device beta evidence remain open.
 
 ## Holds
 

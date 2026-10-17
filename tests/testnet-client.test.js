@@ -1,22 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { ownerClient, escapeHtml } from '../server/ops-ui/assets/ops-core.js';
+import { ownerClient, escapeHtml, formatTokenUnits } from '../server/ops-ui/assets/ops-core.js';
 import { clientFixture, deferred, json } from './helpers/client-fixture.js';
 
 const source = readFileSync(new URL('../server/ops-ui/assets/testnet.js', import.meta.url), 'utf8').replace(/^import[^\n]+\n/, '');
 const settle = () => new Promise(setImmediate);
 const run = { id: 'a'.repeat(40), status: 'finished', mode: 'daily', category: 'kaspa', completedRound: 1, questionCount: 5, questionIndex: 4, correct: 3 };
-const receipt = { id: 'b'.repeat(64), state: 'queued', ticker: 'GEEKT', amount: '100000000', network: 'testnet-10', recipient: 'synthetic-recipient', proof: { correct: 3, score: 100 } };
+const receipt = { id: 'b'.repeat(64), state: 'queued', ticker: 'GEEKT', amount: '100000000', decimals: '8', network: 'testnet-10', recipient: 'synthetic-recipient', proof: { correct: 3, score: 100 } };
 const setup = async (reply = () => json({ ok: true, run })) => {
   const requests = [];
   const fetchImpl = async (url, options) => {
     requests.push({ url, options });
     if (url === '/api/ranked?resume=1') return reply(options);
     if (options.method === 'POST') return json({ ok: true, record: receipt });
-    return json({ ok: true, enabled: true, network: 'testnet-10', config: { ticker: 'GEEKT', amount: '100000000' }, records: [receipt] });
+    return json({ ok: true, enabled: true, network: 'testnet-10', config: { ticker: 'GEEKT', amount: '100000000', decimals: '8' }, records: [receipt] });
   };
-  const ui = clientFixture(fetchImpl, { ownerClient: args => ownerClient({ ...args, fetchImpl }), escapeHtml });
+  const ui = clientFixture(fetchImpl, { ownerClient: args => ownerClient({ ...args, fetchImpl }), escapeHtml, formatTokenUnits });
   const form = ui.node('[data-queue]');
   form.elements = { runId: ui.make('input'), recipient: ui.make('input') };
   ui.run(source); await settle();
@@ -35,6 +35,19 @@ test('the pilot loads the owned finished Daily without copying JSON or creating 
   const writes = ui.requests.filter(r => r.options.method === 'POST');
   assert.equal(writes.length, 1);
   assert.deepEqual(JSON.parse(writes[0].options.body), { action: 'queue', runId: run.id, recipient: 'synthetic-recipient' });
+});
+
+test('wallet amounts preserve large integer precision and reject unknown or malformed decimals', async () => {
+  assert.equal(formatTokenUnits('100000000','8'),'1');
+  assert.equal(formatTokenUnits('14400000000000000000','8'),'144000000000');
+  assert.equal(formatTokenUnits('9007199254740993','8'),'90071992.54740993');
+  assert.equal(formatTokenUnits('1','18'),'0.000000000000000001');
+  assert.equal(formatTokenUnits('1','0'),'1');
+  for(const [raw,dec] of [['01','8'],['1.5','8'],['1','08'],['1','19'],['1',undefined],[9007199254740993,'8']]) assert.equal(formatTokenUnits(raw,dec),null);
+  const ui=await setup();
+  assert.match(ui.node('[data-config]').textContent,/1 GEEKT \(100000000 base units; 8 decimals\)/);
+  assert.match(ui.node('[data-records]').innerHTML,/queued receipt has not sent any tokens/);
+  assert.ok(ui.requests.every(r=>r.options.method==='GET'));
 });
 
 test('an expired run clears the old ID and explains recovery without disabling existing receipts', async () => {
