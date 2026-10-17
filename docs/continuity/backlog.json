@@ -887,10 +887,10 @@
     {
       "id": "UX-006",
       "priority": "P0",
-      "status": "in-progress",
+      "status": "needs-evidence",
       "title": "Make returning login clear and keep advanced setup optional",
       "owner": "Maintainer; founder confirms usability",
-      "nextAction": "Verify and release compact returning login and guest choice. Keep first-time setup, device approval, wallet proof and management collapsed; preserve existing accounts and proof requirements.",
+      "nextAction": "#144 merged/deployed with 522 full tests, exact-head CI/Vercel and live desktop/delivery checks passed. Gather founder phone usability/returning-login feedback; actual Silk and independent auth acceptance remain separate.",
       "acceptance": [
         "Main page presents a clear returning Sign in and guest path without automatically expanding technical help.",
         "An authenticated session offers continuation and its actual player; setup and management are not mistaken for login.",
@@ -903,7 +903,11 @@
         "public/sign-in/assets/sign-in.js",
         "public/sign-in/assets/passkeys.js",
         "tests/passkey-client.test.js",
-        "docs/TRUSTED-DEVICE-ACCESS.md"
+        "docs/TRUSTED-DEVICE-ACCESS.md",
+        "tests/sign-in-state.test.js"
+      ],
+      "releaseEvidence": [
+        "Merge 61305c23daf11dad97f939e1f6e4e778d1865433; CI 39011943414; production dpl_GEGMmAqCCVSqv7qY8UFNz6K4XGQW READY on both canonical domains. Five delivery checks passed; live enabled login/guest and closed optional flows verified. No actual phone/authenticator acceptance claim."
       ]
     }
   ]

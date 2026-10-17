@@ -959,7 +959,26 @@
       "title": "Keep approved-player status and sign-out usable on tablets without WebAuthn",
       "mergedAt": "2026-10-17T05:28:14Z",
       "commit": "0355013a5c1928274025ee678db7df3d285847dd",
-      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/143"
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/143",
+      "priorProductBaseline": {
+        "pullRequest": 143,
+        "commit": "0355013a5c1928274025ee678db7df3d285847dd",
+        "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/143",
+        "status": "merged-deployed",
+        "checkedOn": "2026-10-17",
+        "testsPassed": 517,
+        "testsFailed": 0,
+        "testsSkipped": 0,
+        "productionProbesPassed": 4,
+        "evidence": "PR #143 merged October 17 at 05:28:14 UTC as 0355013a5c1928274025ee678db7df3d285847dd. Exact head 21b05467784d3ba4876bc5ac3a5bc2dc20562692 and merge share tree 3810108787fe8e9863fc6e483902d1002612cfc9; GitHub Security verification 39006310631 and Vercel passed. Production dpl_BqFoW1bqJmh4oQ3W5W6f6U3DEQj2 READY on the exact merge, both canonical domains assigned. Four targeted public-delivery checks passed with 15-second bounds: sign-in, exact-byte passkeys.js/device-access.js and 27-entry sitemap. Full verification: 517 tests, zero failures/skips, required Redis and 311 security assertions. PR #142 retains the prior full monitor initial timeout/follow-up 21/21 and seven disposable request/cancel probes. No actual Silk/two-device, independent review or provider restore acceptance."
+      }
+    },
+    {
+      "number": 144,
+      "title": "Simplify login and hide optional setup until it is needed",
+      "mergedAt": "2026-10-17T07:06:55Z",
+      "commit": "61305c23daf11dad97f939e1f6e4e778d1865433",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/144"
     }
   ]
 }

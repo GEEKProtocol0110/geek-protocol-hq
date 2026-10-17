@@ -2043,6 +2043,31 @@
         "21b05467784d3ba4876bc5ac3a5bc2dc20562692"
       ],
       "title": "Merge pull request #143 from GEEKProtocol0110/codex/device-session-controls"
+    },
+    {
+      "commit": "facbc68f9f015c236b8ecc08c07cc98c26b229b8",
+      "authoredAt": "2026-10-17T01:29:45-04:00",
+      "parents": [
+        "0355013a5c1928274025ee678db7df3d285847dd"
+      ],
+      "title": "Record metadata and trusted-device releases with acceptance limits"
+    },
+    {
+      "commit": "1204ddea1f1d3056fb7ae0bff56129c9583c5ee9",
+      "authoredAt": "2026-10-17T02:59:20-04:00",
+      "parents": [
+        "facbc68f9f015c236b8ecc08c07cc98c26b229b8"
+      ],
+      "title": "Simplify returning login and keep advanced account flows optional"
+    },
+    {
+      "commit": "61305c23daf11dad97f939e1f6e4e778d1865433",
+      "authoredAt": "2026-10-17T03:06:55-04:00",
+      "parents": [
+        "facbc68f9f015c236b8ecc08c07cc98c26b229b8",
+        "1204ddea1f1d3056fb7ae0bff56129c9583c5ee9"
+      ],
+      "title": "Merge pull request #144 from GEEKProtocol0110/codex/simplify-sign-in"
     }
   ]
 }

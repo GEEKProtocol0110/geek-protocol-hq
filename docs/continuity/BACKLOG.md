@@ -47,7 +47,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | AUTH-003 | P0 | needs-evidence | Provide a cross-device account path beyond local passkey creation | Maintainer; family-account and recovery policy reviewed by founder |
 | ACE-001 | P1 | planned | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
 | PERF-001 | P1 | planned | Measure growth capacity and stage storage, delivery and worker improvements | Maintainer; performance/recovery reviewer unassigned |
-| UX-006 | P0 | in-progress | Make returning login clear and keep advanced setup optional | Maintainer; founder confirms usability |
+| UX-006 | P0 | needs-evidence | Make returning login clear and keep advanced setup optional | Maintainer; founder confirms usability |
 
 ## CONT-001: Publish the continuation system
 
@@ -646,9 +646,9 @@ Evidence/specification: [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-S
 
 ## UX-006: Make returning login clear and keep advanced setup optional
 
-**P0 / in-progress.** Owner: Maintainer; founder confirms usability. Dependencies: none.
+**P0 / needs-evidence.** Owner: Maintainer; founder confirms usability. Dependencies: none.
 
-Next action: Verify and release compact returning login and guest choice. Keep first-time setup, device approval, wallet proof and management collapsed; preserve existing accounts and proof requirements.
+Next action: #144 merged/deployed with 522 full tests, exact-head CI/Vercel and live desktop/delivery checks passed. Gather founder phone usability/returning-login feedback; actual Silk and independent auth acceptance remain separate.
 
 Acceptance:
 
@@ -657,4 +657,4 @@ Acceptance:
 - Existing passkey, wallet, device approval, single-use proof and fixed return-destination checks remain enforced.
 - Relevant tests, rendered preview and actual release evidence are recorded; founder/device acceptance remains distinct.
 
-Evidence/specification: [public/sign-in/index.html](../../public/sign-in/index.html), [public/sign-in/assets/sign-in.js](../../public/sign-in/assets/sign-in.js), [public/sign-in/assets/passkeys.js](../../public/sign-in/assets/passkeys.js), [tests/passkey-client.test.js](../../tests/passkey-client.test.js), [docs/TRUSTED-DEVICE-ACCESS.md](../../docs/TRUSTED-DEVICE-ACCESS.md).
+Evidence/specification: [public/sign-in/index.html](../../public/sign-in/index.html), [public/sign-in/assets/sign-in.js](../../public/sign-in/assets/sign-in.js), [public/sign-in/assets/passkeys.js](../../public/sign-in/assets/passkeys.js), [tests/passkey-client.test.js](../../tests/passkey-client.test.js), [docs/TRUSTED-DEVICE-ACCESS.md](../../docs/TRUSTED-DEVICE-ACCESS.md), [tests/sign-in-state.test.js](../../tests/sign-in-state.test.js).

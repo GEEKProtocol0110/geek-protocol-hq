@@ -6,16 +6,16 @@
   "founder": "Michael Gee",
   "releaseChannel": "Public Alpha",
   "productBaseline": {
-    "pullRequest": 143,
-    "commit": "0355013a5c1928274025ee678db7df3d285847dd",
-    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/143",
+    "pullRequest": 144,
+    "commit": "61305c23daf11dad97f939e1f6e4e778d1865433",
+    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/144",
     "status": "merged-deployed",
     "checkedOn": "2026-10-17",
-    "testsPassed": 517,
+    "testsPassed": 522,
     "testsFailed": 0,
     "testsSkipped": 0,
-    "productionProbesPassed": 4,
-    "evidence": "PR #143 merged October 17 at 05:28:14 UTC as 0355013a5c1928274025ee678db7df3d285847dd. Exact head 21b05467784d3ba4876bc5ac3a5bc2dc20562692 and merge share tree 3810108787fe8e9863fc6e483902d1002612cfc9; GitHub Security verification 39006310631 and Vercel passed. Production dpl_BqFoW1bqJmh4oQ3W5W6f6U3DEQj2 READY on the exact merge, both canonical domains assigned. Four targeted public-delivery checks passed with 15-second bounds: sign-in, exact-byte passkeys.js/device-access.js and 27-entry sitemap. Full verification: 517 tests, zero failures/skips, required Redis and 311 security assertions. PR #142 retains the prior full monitor initial timeout/follow-up 21/21 and seven disposable request/cancel probes. No actual Silk/two-device, independent review or provider restore acceptance."
+    "productionProbesPassed": 5,
+    "evidence": "UX-006 login simplification merged in #144 October 17 at 07:06:55 UTC as 61305c23daf11dad97f939e1f6e4e778d1865433. Exact head 1204ddea1f1d3056fb7ae0bff56129c9583c5ee9/tree 855c2e44bdf4b698661584db976d55872229242d passed GitHub verification 39011943414 and Vercel. Production dpl_GEGMmAqCCVSqv7qY8UFNz6K4XGQW READY on the exact merge with both canonical domains assigned. Five targeted delivery checks passed under 15-second bounds: sign-in plus exact-byte comparison of all three clients and CSS. Live desktop shows Not signed in, enabled Sign in, guest access, and closed help/device/wallet options. Preview showed 52px login, 49px guest and no horizontal overflow. Full verification: 522 tests, zero failures/skips, required Redis 7.4.2 and 311 security assertions, all required checks. No live authenticator, actual phone/Silk, narrow rendering or independent-review acceptance claimed."
   },
   "questionCheckpoint": {
     "active": 8205,
@@ -36,11 +36,11 @@
   },
   "currentWork": {
     "id": "UX-006",
-    "status": "in-progress",
-    "description": "Founder reports login became more confusing after device approval. Simplify the returning/guest paths, keep advanced setup behind closed disclosures, reuse one current-account status source and avoid passive help expansion. Full checks: 522 tests passed, zero failures/skips, required Redis and 311 security assertions; rendered preview/publication pending; account proof and records remain unchanged."
+    "status": "needs-evidence",
+    "description": "Compact login released in #144: returning Sign in and guest play first, advanced flows closed, existing sessions continue to HQ using one validated account-status source. Full checks and live desktop/delivery pass. Founder phone usability and actual authenticator/Silk acceptance remain outstanding."
   },
   "nextTask": "AUTH-003",
-  "nextAction": "Release the simplified login and confirm usability with the founder. Actual Silk/phone approval and independent auth review remain outstanding; GEEKT/ACE/performance work stays on the existing roadmap.",
+  "nextAction": "Preserve the founder\u2019s report that the prior device-access page made login more confusing. Confirm the simplified page on the actual phone; retain AUTH-003 Silk/approval/returning-session and independent-review acceptance separately. Existing GEEKT, ACE and capacity roadmap work remains staged.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
