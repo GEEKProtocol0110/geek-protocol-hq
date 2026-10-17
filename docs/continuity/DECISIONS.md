@@ -183,3 +183,13 @@ Implement a passkey-approved same-player tablet session with fresh proof, bounde
 Basis: Founder Make it so on October 17 authorizes work on the two-essential/five-system roadmap. This implementation shares the existing player explicitly; it does not establish parental authority or grant a tablet fresh account-management proof.
 
 Evidence: [docs/TRUSTED-DEVICE-ACCESS.md](../../docs/TRUSTED-DEVICE-ACCESS.md), [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md).
+
+## DR-019: Simplify login after the device-access usability regression
+
+**founder-direction** · 2026-10-17.
+
+Prioritize returning Sign in and guest play. Keep new-player saving, device linking, wallet message proof and access management optional and closed. Reuse the validated account-status response for session display rather than competing client checks; retain all server proof and account records.
+
+Basis: Founder October 17: Now login is even more confusing. This corrects presentation and state coordination; no new authentication provider or recovery authority is added.
+
+Evidence: [public/sign-in/index.html](../../public/sign-in/index.html), [public/sign-in/assets/passkeys.js](../../public/sign-in/assets/passkeys.js), [tests/passkey-client.test.js](../../tests/passkey-client.test.js).

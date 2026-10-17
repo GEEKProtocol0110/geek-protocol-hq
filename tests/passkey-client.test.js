@@ -36,8 +36,8 @@ const mount = async ({ support=true, handle, prompt, walletLinked=false, platfor
   ui.document.addEventListener=(type,fn)=>{const l=listeners.get(type)||[];listeners.set(type,[...l,fn]);};
   ui.document.dispatchEvent=event => { events.push(event); for(const fn of listeners.get(event.type)||[])fn(event); };
   const panel=ui.node('[data-passkeys]');
-  for(const selector of ['note','list','label','wallet-help','player','device','device-help']) panel.append(ui.node(`[data-passkey-${selector}]`));
-  for(const selector of ['save','login','logout','wallet-authorize']) panel.append(ui.node(`[data-passkey-${selector}]`,'button'));
+  for(const selector of ['note','list','label','wallet-help','player','device','device-help','login-area','account','player-row','new-title']) panel.append(ui.node(`[data-passkey-${selector}]`));
+  for(const selector of ['save','login','verify','logout','wallet-authorize']) panel.append(ui.node(`[data-passkey-${selector}]`,'button'));
   ui.run(source);await tick();
   return {...ui,calls,prompts,events};
 };
@@ -59,7 +59,7 @@ test('first-visit passkey enrollment requires a tap, serializes exact bytes and 
 test('no platform provider explains device limits without blocking an external passkey or security key',async () => {
   const ui=await mount({platform:async()=>false});
   assert.match(ui.node('[data-passkey-device]').textContent,/no built-in passkey provider/);
-  assert.equal(ui.node('[data-passkey-device-help]').open,true);
+  assert.notEqual(ui.node('[data-passkey-device-help]').open,true);
   assert.equal(ui.node('[data-passkey-login]').disabled,false);
   assert.equal(ui.prompts.length,0);
   await ui.node('[data-passkey-login]').emit('click');
@@ -101,7 +101,7 @@ test('unsupported browsers keep enrollment disabled and explain the browser and 
   const ui=await mount({support:false});assert.equal(ui.calls.length,2);
   assert.ok(ui.events.some(e=>e.type==='geek:device-ready'));assert.equal(ui.prompts.length,0);
   assert.equal(ui.node('[data-passkey-save]').disabled,true);
-  assert.match(ui.node('[data-passkey-note]').textContent,/up-to-date browser.*guest/);
+  assert.match(ui.node('[data-passkey-note]').textContent,/can’t use passkeys.*guest.*Use another device/);
 });
 
 test('cancelled or timed-out authenticator prompts never submit a proof and allow another tap',async () => {
@@ -128,10 +128,11 @@ test('a stalled API request stops after its deadline without retrying or opening
   assert.equal(ui.prompts.length,0);assert.equal(ui.node('[data-passkey-save]').disabled,false);
 });
 
-test('double taps cannot open overlapping prompts and linked players see the fresh-proof requirement',async () => {
+test('double taps cannot open overlapping prompts and linked players retain optional wallet authorization',async () => {
   const pending=deferred(),ui=await mount({walletLinked:true,prompt:()=>pending.promise});
   assert.equal(ui.node('[data-passkey-wallet-help]').hidden,false);
-  assert.match(ui.node('[data-passkey-note]').textContent,/fresh wallet proof/);
+  assert.match(ui.node('[data-passkey-note]').textContent,/signed in/);
+  assert.equal(ui.node('[data-passkey-account]').hidden,false);
   const first=ui.node('[data-passkey-login]').emit('click');await tick();
   await ui.node('[data-passkey-login]').emit('click');assert.equal(ui.prompts.length,1);
   pending.resolve(credential(false));await first;
@@ -150,4 +151,19 @@ test('an unsupported-passkey browser refreshes the approved player and can sign 
   assert.equal(ui.node('[data-passkey-save]').disabled,true);assert.equal(ui.node('[data-passkey-login]').disabled,true);
   ui.context.location.reload=()=>{};await ui.node('[data-passkey-logout]').emit('click');
   assert.equal(ui.calls.at(-1).body.action,'logout');assert.equal(ui.prompts.length,0);
+});
+
+
+test('an existing saved-player session shows continuation and management without another login prompt',async()=>{
+  const ui=await mount({handle:(path,body)=>path==='/api/passkeys'&&!body?json({playerName:'Returning Geek',signedIn:true,walletLinked:false,credentials:[]}):null});
+  assert.equal(ui.node('[data-passkey-login-area]').hidden,true);assert.equal(ui.node('[data-passkey-account]').hidden,false);
+  assert.equal(ui.node('[data-passkey-player-row]').hidden,false);assert.equal(ui.prompts.length,0);
+  assert.ok(ui.events.some(e=>e.type==='geek:account-status'&&e.detail.signedIn));
+  await ui.node('[data-passkey-verify]').emit('click');assert.equal(ui.prompts.length,1);assert.equal(ui.prompts[0].method,'get');
+});
+
+test('a guest sees the returning-login path and optional setup without saved-account management',async()=>{
+  const ui=await mount();assert.equal(ui.node('[data-passkey-login-area]').hidden,false);
+  assert.equal(ui.node('[data-passkey-account]').hidden,true);assert.equal(ui.node('[data-passkey-player-row]').hidden,true);
+  assert.match(ui.node('[data-passkey-new-title]').textContent,/New here/);assert.equal(ui.prompts.length,0);
 });
