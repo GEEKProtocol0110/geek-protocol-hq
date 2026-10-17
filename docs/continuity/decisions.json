@@ -225,6 +225,20 @@
       ],
       "recordedAt": "2026-10-17",
       "supersedes": null
+    },
+    {
+      "id": "DR-019",
+      "status": "founder-direction",
+      "title": "Simplify login after the device-access usability regression",
+      "decision": "Prioritize returning Sign in and guest play. Keep new-player saving, device linking, wallet message proof and access management optional and closed. Reuse the validated account-status response for session display rather than competing client checks; retain all server proof and account records.",
+      "basis": "Founder October 17: Now login is even more confusing. This corrects presentation and state coordination; no new authentication provider or recovery authority is added.",
+      "evidence": [
+        "public/sign-in/index.html",
+        "public/sign-in/assets/passkeys.js",
+        "tests/passkey-client.test.js"
+      ],
+      "recordedAt": "2026-10-17",
+      "supersedes": null
     }
   ]
 }

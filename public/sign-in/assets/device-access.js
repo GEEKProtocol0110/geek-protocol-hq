@@ -59,11 +59,11 @@
     const data = await api({action:'device-review',code});
     review = {...data,code}; el('review-panel').hidden = false; el('confirm').checked = false;
     el('review-text').textContent = `Approve “${data.label}” for player ${data.playerName}. Matching check: ${data.check}. Expires at ${new Date(data.expiresAt).toLocaleTimeString()}.`;
-    note.textContent = 'Compare both screens, then sign in with your passkey above and approve.';
+    note.textContent = 'Compare both screens. If you have not just signed in, use Verify with a passkey in Manage saved access above, then approve.';
   }));
   el('approve').addEventListener('click', () => act(async () => {
     if (!review || !el('confirm').checked) throw new Error('Review the device and confirm that the checks match first.');
-    if (!grant) throw new Error('Choose Sign in with a passkey above, then approve this device.');
+    if (!grant) throw new Error('Use Verify with a passkey in Manage saved access above, then approve this device.');
     await api({action:'device-approve',code:review.code,check:review.check,playerId:review.playerId,confirm:true,token:token()});
     review = null; el('review-panel').hidden = true; el('code-input').value = '';
     note.textContent = 'Approved. On your tablet, choose Check approval and confirm the player name.';
@@ -75,7 +75,7 @@
       label.textContent = `${d.label} · approved ${new Date(d.createdAt).toLocaleDateString()} `;
       remove.type = 'button'; remove.className = 'button button-secondary'; remove.textContent = 'Remove access';
       remove.addEventListener('click', () => act(async () => {
-        if (!grant) throw new Error('Sign in with a passkey above before removing access.');
+        if (!grant) throw new Error('Use Verify with a passkey in Manage saved access above before removing access.');
         if (!confirm(`Remove access for ${d.label}?`)) return;
         await api({action:'device-revoke',deviceId:d.id,token:token()});
         note.textContent = 'Device access removed. Its approved session can no longer sign in.'; await list();

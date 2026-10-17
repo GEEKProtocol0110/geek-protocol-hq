@@ -35,12 +35,12 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "AUTH-003",
-    "status": "needs-evidence",
-    "description": "Trusted-device same-player access is merged/deployed in #142 with the unsupported-browser sign-out/player-refresh follow-up #143. 517 full tests pass; actual phone/Silk approval, returning-session and revocation acceptance remain pending. No parent/child roles, email recovery, model service or automatic signer has been added."
+    "id": "UX-006",
+    "status": "in-progress",
+    "description": "Founder reports login became more confusing after device approval. Simplify the returning/guest paths, keep advanced setup behind closed disclosures, reuse one current-account status source and avoid passive help expansion. Full checks: 522 tests passed, zero failures/skips, required Redis and 311 security assertions; rendered preview/publication pending; account proof and records remain unchanged."
   },
-  "nextTask": "CHAIN-001",
-  "nextAction": "On the actual phone/Silk tablet, test same-player approval, returning access and device revocation. Complete the first real GEEKT receipt/transfer rehearsal through the existing wallet-owner flow. ACE-001/PERF-001 remain planned; OPS-001/CONT-002 still need privately controlled recovery/independent-backup evidence.",
+  "nextTask": "AUTH-003",
+  "nextAction": "Release the simplified login and confirm usability with the founder. Actual Silk/phone approval and independent auth review remain outstanding; GEEKT/ACE/performance work stays on the existing roadmap.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

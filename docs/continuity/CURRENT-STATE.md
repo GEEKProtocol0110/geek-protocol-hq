@@ -25,9 +25,9 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-003: needs-evidence.** Trusted-device same-player access is merged/deployed in #142 with the unsupported-browser sign-out/player-refresh follow-up #143. 517 full tests pass; actual phone/Silk approval, returning-session and revocation acceptance remain pending. No parent/child roles, email recovery, model service or automatic signer has been added.
+**UX-006: in-progress.** Founder reports login became more confusing after device approval. Simplify the returning/guest paths, keep advanced setup behind closed disclosures, reuse one current-account status source and avoid passive help expansion. Full checks: 522 tests passed, zero failures/skips, required Redis and 311 security assertions; rendered preview/publication pending; account proof and records remain unchanged.
 
-Next task: **CHAIN-001**. On the actual phone/Silk tablet, test same-player approval, returning access and device revocation. Complete the first real GEEKT receipt/transfer rehearsal through the existing wallet-owner flow. ACE-001/PERF-001 remain planned; OPS-001/CONT-002 still need privately controlled recovery/independent-backup evidence.
+Next task: **AUTH-003**. Release the simplified login and confirm usability with the founder. Actual Silk/phone approval and independent auth review remain outstanding; GEEKT/ACE/performance work stays on the existing roadmap.
 
 ## Holds
 

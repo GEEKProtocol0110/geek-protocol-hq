@@ -883,6 +883,28 @@
         "docs/PLATFORM-NEXT-STEPS.md",
         "docs/BACKUP-RECOVERY.md"
       ]
+    },
+    {
+      "id": "UX-006",
+      "priority": "P0",
+      "status": "in-progress",
+      "title": "Make returning login clear and keep advanced setup optional",
+      "owner": "Maintainer; founder confirms usability",
+      "nextAction": "Verify and release compact returning login and guest choice. Keep first-time setup, device approval, wallet proof and management collapsed; preserve existing accounts and proof requirements.",
+      "acceptance": [
+        "Main page presents a clear returning Sign in and guest path without automatically expanding technical help.",
+        "An authenticated session offers continuation and its actual player; setup and management are not mistaken for login.",
+        "Existing passkey, wallet, device approval, single-use proof and fixed return-destination checks remain enforced.",
+        "Relevant tests, rendered preview and actual release evidence are recorded; founder/device acceptance remains distinct."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "public/sign-in/index.html",
+        "public/sign-in/assets/sign-in.js",
+        "public/sign-in/assets/passkeys.js",
+        "tests/passkey-client.test.js",
+        "docs/TRUSTED-DEVICE-ACCESS.md"
+      ]
     }
   ]
 }

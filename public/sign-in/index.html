@@ -44,27 +44,44 @@
       <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="/study/">Learn</a><a href="/quest/">Adventure</a><a href="/play/">Play</a><a href="/profile/">My HQ</a><a href="/sign-in/" aria-current="page">Sign in</a></nav>
     </header>
     <main id="main" class="sign-in-main">
-      <div class="sign-in-intro"><span class="section-kicker">Your player account</span><h1>Welcome back,<br /><em>Geek.</em></h1><p>Continue as a guest to learn and play, or use a passkey or Kaspa wallet to protect and recover your saved player. Choose the path that works on your phone.</p></div>
-      <div class="sign-in-guest"><a href="/profile/" class="button button-secondary" data-sign-in-continue>Continue as a guest →</a><p>You can learn and play without a wallet. Guest progress stays with this browser’s session.</p></div>
-        <p class="sign-in-current" data-sign-in-status role="status" aria-live="polite">Checking your player session…</p>
-        <a class="button button-primary sign-in-hq" href="/profile/" data-sign-in-hq hidden>Open My HQ →</a>
-      <section class="sign-in-card" data-passkeys aria-labelledby="passkey-title">
-        <h2 id="passkey-title">Keep your place.</h2><p class="sign-in-player">Current player: <strong data-passkey-player>Checking player…</strong></p>
-        <p>Choose your saved passkey to recover your player. On supported devices, your passkey provider may use a fingerprint, face or screen lock.</p>
-        <p class="sign-in-note" data-passkey-device role="status" aria-live="polite">Passkey support depends on this browser, device and its credential provider.</p>
-        <details class="sign-in-method" data-passkey-device-help><summary>Amazon Fire tablet or passkeys unavailable?</summary><p>A browser can expose passkey controls without a working passkey provider. A tablet PIN or fingerprint alone does not create a passkey provider. On Amazon Fire with Silk, check for a system update and use another device or a security key only if the browser offers it.</p><p>You can keep learning as a guest on this tablet. Keep this browser’s data to preserve that guest player. A passkey saved on another device belongs to that device’s player until you sign in; creating a new passkey elsewhere does not move this tablet’s guest progress.</p><p>If this player already has a linked Kaspa wallet, use its verified sign-in method below. A public address alone cannot recover a player. Use “Approve another device” below if you have a saved Geek passkey on a trusted device. Email-code recovery is not available. Never enter a seed phrase or private key here.</p></details>
-        <p class="sign-in-note">Signing in switches this browser to that player. Separate guest progress is not merged.</p><p><b>Played before?</b> Sign in to your saved player.</p><div class="sign-in-actions"><button type="button" class="button button-primary" data-passkey-login disabled>Sign in with a passkey</button></div>
-        <details class="sign-in-method"><summary>First visit? Save this player with a passkey</summary><p>Your current player and progress stay together. Give the passkey a name you recognize.</p>
-        <label for="passkey-label">Passkey name</label><input id="passkey-label" data-passkey-label maxlength="40" placeholder="My phone" autocomplete="off" />
-        <div class="sign-in-actions"><button type="button" class="button button-secondary" data-passkey-save disabled>Create a passkey for this player</button></div>
+      <div class="sign-in-intro"><h1 data-sign-in-title>Sign in.</h1><p>Pick up where you left off.</p></div>
+      <p class="sign-in-current" data-sign-in-status role="status" aria-live="polite">Checking your player…</p>
+      <a class="button button-primary sign-in-hq" href="/profile/" data-sign-in-hq hidden>Open My HQ →</a>
+      <section class="sign-in-card sign-in-primary" data-passkeys aria-labelledby="passkey-title">
+        <div data-passkey-login-area>
+          <h2 id="passkey-title">Welcome back, Geek.</h2>
+          <p>Use the passkey you saved for Geek. Your device will ask you to confirm.</p>
+          <button type="button" class="button button-primary" data-passkey-login disabled>Sign in</button>
+        </div>
+        <p class="sign-in-player" data-passkey-player-row hidden>Signed in as <strong data-passkey-player>Checking player…</strong></p>
+        <p data-passkey-note role="status" aria-live="polite">Getting sign-in ready…</p>
+        <details class="sign-in-method" data-passkey-new>
+          <summary data-passkey-new-title>New here? Save your player</summary>
+          <p>Create a passkey to return to this player later. Your current progress stays with it.</p>
+          <label for="passkey-label">Name this passkey</label><input id="passkey-label" data-passkey-label maxlength="40" placeholder="My phone" autocomplete="off" />
+          <button type="button" class="button button-secondary" data-passkey-save disabled>Save my player</button>
         </details>
-        <p data-passkey-note role="status" aria-live="polite">Checking passkey support…</p><details class="sign-in-method"><summary>Passkeys &amp; recovery options</summary><ul data-passkey-list></ul><button type="button" class="button button-secondary" data-passkey-logout disabled>Sign out on this browser</button>
-        <div data-passkey-wallet-help hidden><p>For an existing player, sign in with a saved passkey first. If you have a linked wallet, verify it below to authorize a new passkey.</p><button type="button" class="button button-secondary" data-passkey-wallet-authorize>Authorize with my linked wallet</button></div>
-        <p class="sign-in-note">Signing into another player replaces this browser’s player; separate guest progress is not merged. Keep another passkey saved through your trusted credential manager, a second authenticator, or your linked wallet. Without a remaining recovery method, Geek cannot restore access. Never enter a wallet recovery phrase here.</p>
+        <details class="sign-in-method" data-passkey-device-help>
+          <summary>Can’t sign in?</summary>
+          <p class="sign-in-note" data-passkey-device>Passkey support depends on your device and browser.</p>
+          <p>If your tablet cannot use passkeys, open <b>Use another device</b> below, or keep learning as a guest. A screen-lock PIN alone does not guarantee passkey support.</p>
+          <p>A new passkey saves this browser’s player. It does not recover a different player. Signing into a saved player leaves separate guest progress unmerged.</p>
+          <p>A linked Kaspa wallet can also sign you in below. Never enter a seed phrase or private key here.</p>
+        </details>
+        <details class="sign-in-method" data-passkey-account hidden>
+          <summary>Manage saved access</summary>
+          <p>Verify with your saved passkey before changing access or approving another device.</p>
+          <button type="button" class="button button-secondary" data-passkey-verify disabled>Verify with a passkey</button>
+          <ul data-passkey-list></ul>
+          <button type="button" class="button button-secondary" data-passkey-logout disabled>Sign out</button>
+          <div data-passkey-wallet-help hidden><p>You can also verify your linked wallet to manage passkeys.</p><button type="button" class="button button-secondary" data-passkey-wallet-authorize>Verify my linked wallet</button></div>
+          <p class="sign-in-note">Keep another passkey or linked wallet available before removing access.</p>
         </details>
       </section>
-      <section class="sign-in-card" data-device-access aria-labelledby="device-title">
-        <h2 id="device-title">Approve another device</h2>
+      <div class="sign-in-guest" data-sign-in-guest><a href="/profile/" class="button button-secondary" data-sign-in-continue>Continue as a guest →</a><p>No wallet needed. Guest progress stays in this browser.</p></div>
+      <details class="sign-in-card sign-in-alternate" data-device-access>
+        <summary>Use another device</summary>
+        <h2>Sign in with help from your phone</h2>
         <p>Sign into the <b>same player</b> on a tablet that cannot create a passkey. This shares access to that player; it does not create a child account.</p>
         <p data-device-note role="status" aria-live="polite">Checking device access…</p>
         <details class="sign-in-method"><summary>On the tablet: request access</summary>
@@ -85,15 +102,15 @@
           <button type="button" class="button button-secondary" data-device-review disabled>Review device</button>
           <div data-device-review-panel hidden><p data-device-review-text></p>
             <p><label><input type="checkbox" data-device-confirm /> The check matches the device beside me, and I want it to access this player.</label></p>
-            <p>Now choose <b>Sign in with a passkey</b> above to provide fresh proof, then approve below.</p>
+            <p>If you have not just signed in, open <b>Manage saved access</b> above and choose <b>Verify with a passkey</b>. Then approve below.</p>
             <button type="button" class="button button-primary" data-device-approve disabled>Approve this device</button>
           </div>
         </details>
         <details class="sign-in-method"><summary>Manage approved devices</summary>
-          <p>Sign in with a passkey above before each removal. Removing access signs that approved browser out. Shared sessions still need fresh proof to change passkeys; wallet spending is separate.</p>
+          <p>Choose <b>Verify with a passkey</b> in Manage saved access before each removal. Removing access signs that approved browser out. Shared sessions still need fresh proof to change passkeys; wallet spending is separate.</p>
           <button type="button" class="button button-secondary" data-device-list disabled>Show approved devices</button><ul data-device-list-items></ul>
         </details>
-      </section>
+      </details>
       <details class="sign-in-card sign-in-alternate" data-wallet-methods><summary>Use a Kaspa wallet instead</summary><section aria-labelledby="sign-in-title">
         <h2 id="sign-in-title">Sign in with Kaspa</h2>
         <ol class="sign-in-steps"><li><b>Choose your address.</b> Connect a browser wallet or paste your Kaspa address.</li><li><b>Sign the login message.</b> Geek Protocol verifies a one-time signature.</li><li><b>Open My HQ.</b> Continue your progress or change your profile name.</li></ol>
@@ -138,7 +155,7 @@
         <p class="sign-in-note">Use the same wallet to recover your player on another browser. Recovery replaces this browser’s player session; separate guest progress is not merged.</p>
       </section></details>
 
-      <noscript><p>Enable JavaScript to sign in with a passkey or Kaspa wallet or edit your saved player profile.</p></noscript>
+      <noscript><p>Enable JavaScript to sign in. You can still <a href="/study/">read the Kaspa lessons</a>.</p></noscript>
     </main>
   </body>
 </html>

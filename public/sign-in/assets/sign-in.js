@@ -19,7 +19,7 @@
   const destination = nextPage[1].replace(' →', '') + ' when you’re ready.';
   let signedIn = false;
   let proofIntent = 'identity';
-  const showSignedIn = (message) => { status.textContent = message; hq.hidden = false; continueLink.textContent = nextPage[1]; };
+  const showSignedIn = (message) => { status.textContent = message; hq.hidden = false; continueLink.textContent = nextPage[1]; const title = document.querySelector('[data-sign-in-title]'); if (title) title.textContent = 'Welcome back.'; const guest = document.querySelector('[data-sign-in-guest]'); if (guest) guest.hidden = true; };
   document.addEventListener('geek:passkey-signed-in', () => { signedIn = true; invalidate(); manualStatus.textContent = ''; proofIntent = 'identity'; showSignedIn(`Signed in to your saved player. ${destination}`); hq.focus(); });
   document.addEventListener('geek:device-signed-in', event => { signedIn = true; invalidate(); showSignedIn(`Signed in to ${event.detail.playerName}. ${destination}`); hq.focus(); });
   document.addEventListener('geek:signed-in', (event) => {
@@ -27,18 +27,17 @@
     showSignedIn(event.detail.recovered ? `Signed in. Your saved player has been recovered. ${destination}` : `Signed in. Your player is protected by this wallet. ${destination}`);
     hq.focus();
   });
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 15000);
-  fetch('/api/identity', { credentials: 'same-origin', signal: controller.signal })
-    .then(async (response) => {
-      const payload = await response.json();
-      if (signedIn) return;
-      if (response.ok && payload.identity?.linked) showSignedIn(`You are already signed in with a verified wallet. ${destination}`);
-      else if (response.status === 401 || (response.ok && !payload.identity?.linked)) status.textContent = 'Guest player in this browser. Check the sign-in options below to save access or return to a player you already protected.';
-      else throw new Error('Session check unavailable');
-    })
-    .catch(() => { if (!signedIn) status.textContent = 'Your session could not be checked. Reload to check your saved player before trying again.'; })
-    .finally(() => clearTimeout(timer));
+  document.addEventListener('geek:account-status', event => {
+    if (event.detail.signedIn || event.detail.walletLinked) {
+      signedIn = true;
+      showSignedIn('You’re signed in.');
+    } else if (!signedIn) {
+      status.textContent = 'Not signed in.';
+    }
+  });
+  document.addEventListener('geek:device-unavailable', () => {
+    if (!signedIn) status.textContent = 'Sign-in is temporarily unavailable. You can continue as a guest.';
+  });
 
   const addressForm = document.querySelector('[data-address-form]');
   const signatureForm = document.querySelector('[data-signature-form]');
@@ -143,7 +142,7 @@
       const verified = await request('/api/identity', { action: 'verify', challengeId, signature });
       if (!verified.identity?.linked) throw new Error('Wallet ownership could not be verified.');
       if (verified.passkeyAuthorization) {
-        invalidate(); proofIntent = 'identity'; manualStatus.textContent = 'Wallet verified. Return to Create a passkey above.';
+        invalidate(); proofIntent = 'identity'; manualStatus.textContent = 'Wallet verified. Return to Add another passkey above.';
         document.dispatchEvent(new CustomEvent('geek:passkey-grant', { detail: { token: verified.passkeyAuthorization.token } })); return;
       }
       invalidate(); manualStatus.textContent = `Ownership verified. ${destination}`;
