@@ -6,16 +6,16 @@
   "founder": "Michael Gee",
   "releaseChannel": "Public Alpha",
   "productBaseline": {
-    "pullRequest": 146,
-    "commit": "2c63d28d187d69d4ce351b2b9809d8aec0f6219f",
-    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/146",
+    "pullRequest": 147,
+    "commit": "be463ecdcb303ae7a8ab3427b5cbf41709106bc5",
+    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/147",
     "status": "merged-deployed",
     "checkedOn": "2026-10-17",
-    "testsPassed": 538,
+    "testsPassed": 552,
     "testsFailed": 0,
     "testsSkipped": 0,
-    "productionProbesPassed": 10,
-    "evidence": "UX-007 rewarded challenges merged in #146 October 17 at 08:49:28 UTC as 2c63d28d187d69d4ce351b2b9809d8aec0f6219f. Exact head 503b7f7eb66ee32818bea5b2d6408a442523aa16/tree d2dd73dd442fb65a5338f833628fe726dbf9eec5 passed GitHub verification 39017597467 and Vercel; no submitted reviews or inline threads. Production dpl_DjwotsxcHfxmRWketvDaD1ixVr48 READY on the exact merge with both canonical domains assigned. Ten targeted delivery checks passed under 15-second bounds: five reveals/hub links, hub markup, exact bytes of two challenge clients and CSS, and unauthenticated private/no-store 401 status. Browser followed a preview Home signal into the hub using a fresh guest, redeemed its observed word for 25 XP, rejected a repeat with no extra XP, and retained the find after reload. Five clue cards, two tasks and periodic boards render together; 53px input/button and document width 1348 <= viewport 1363. Canonical live hub loads server-backed cards and enables an eligible prior-result task while leaving an unfinished task disabled; no canonical reward claim or game action was submitted. Full local verification: 538 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Actual phone/narrow rendering, live task gameplay and independent review acceptance remain unverified."
+    "productionProbesPassed": 11,
+    "evidence": "GAME-001 career mastery merged in #147 October 17 at 09:31:03 UTC as be463ecdcb303ae7a8ab3427b5cbf41709106bc5. Final head d37089d3a735627d3402bc370c5a16d21bcb8eb6/tree 730ca15287c833d143f77dedd9ea71a66c664434 passed GitHub verification 39020919100 and Vercel; no submitted reviews or inline threads. Production dpl_7CCPiCLoug5Du1juGRrLAdmRWboc READY on the exact merge, both canonical domains assigned. Eleven targeted delivery checks passed under 15-second bounds: four public page markers, six exact-byte clients/styles and private unauthenticated no-store 401 status. Corrected preview screenshot shows three recommended cards, 18 emblems, absolute canvas, intro height about 486px and width 1348 <= viewport 1363. A fresh preview guest saved a tracked path; My HQ retrieved it and rendered 102 achievements with only three shown in Next goals. First-head catalog All/Kaspa/Diamond filtering passed, but its canvas displacement was corrected on the final head. Canonical live hub loads three cards/18 emblems, absolute canvas and no horizontal overflow; no canonical tracking/reward/game action submitted. Full revised verification: 552 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Actual phone/narrow rendering, live gameplay/unlock/claim flow and independent review remain unverified."
   },
   "questionCheckpoint": {
     "active": 8205,
@@ -36,11 +36,11 @@
   },
   "currentWork": {
     "id": "GAME-001",
-    "status": "in-progress",
-    "description": "Career mastery candidate plus preview-discovered canvas styling correction implemented. Revised full verify: 552 tests, zero failures/skips, required Redis and all checks. Direct atmosphere/space CSS coverage is enforced for all 29 participating pages; missing canvas CSS skips insertion. Final rendered preview and exact-head release pending."
+    "status": "needs-evidence",
+    "description": "Career/mastery released in #147: 90 tiered challenges, 18 paths/emblems, 102 achievements, three recommended/saved tracked paths, atomic claims and round notices. Exact CI, corrected preview and live delivery pass. Founder actual-phone/game acceptance remains outstanding."
   },
   "nextTask": "UX-006",
-  "nextAction": "Verify and release the career/mastery system, then gather actual-phone usability and continue outstanding background/login/beta evidence and reviewed content.",
+  "nextAction": "Try the career tracks, claims and My HQ collection on the actual phone. Gather background/browser-bar and login/Silk acceptance separately, then continue reviewed-bank/beta and ACE/performance roadmap work within existing holds.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

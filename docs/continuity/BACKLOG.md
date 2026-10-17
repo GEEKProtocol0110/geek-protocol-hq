@@ -49,7 +49,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | PERF-001 | P1 | planned | Measure growth capacity and stage storage, delivery and worker improvements | Maintainer; performance/recovery reviewer unassigned |
 | UX-006 | P0 | needs-evidence | Make returning login clear and keep advanced setup optional | Maintainer; founder confirms usability |
 | UX-007 | P1 | needs-evidence | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
-| GAME-001 | P1 | in-progress | Build a deep career challenge and mastery ladder | Maintainer; founder confirms phone/game usability |
+| GAME-001 | P1 | needs-evidence | Build a deep career challenge and mastery ladder | Maintainer; founder confirms phone/game usability |
 
 ## CONT-001: Publish the continuation system
 
@@ -678,9 +678,9 @@ Evidence/specification: [docs/REWARDED-CHALLENGES.md](../../docs/REWARDED-CHALLE
 
 ## GAME-001: Build a deep career challenge and mastery ladder
 
-**P1 / in-progress.** Owner: Maintainer; founder confirms phone/game usability. Dependencies: none.
+**P1 / needs-evidence.** Owner: Maintainer; founder confirms phone/game usability. Dependencies: none.
 
-Next action: Finish full verification, inspect the checked preview and release the mastery catalog. Record exact CI/deployment evidence and actual-device limits.
+Next action: #147 merged/deployed; gather actual-phone challenge tracking, filters, gameplay unlock/claim and My HQ feedback. Keep independent review and unrelated auth/background acceptance separate.
 
 Acceptance:
 

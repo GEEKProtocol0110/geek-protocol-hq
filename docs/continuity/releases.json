@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "checkedAt": "2026-10-17",
-  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127. Observed #130/#131 merges added; #131 is the character/cosmic/holiday release. Observed #132/#133 merges added; #133 dials back repeated characters and emphasizes neon-space backgrounds. Observed #134/#135 merges added; #135 clarifies the Kaspa onboarding identity and adds optional cosmetic Grid discoveries. Observed #136/#137 merges added; #137 contains mobile decoration and stabilizes background edges. Physical-phone retest remains pending. Observed #138 documentation merge added during roadmap reconciliation; runtime baseline remains #137. Observed PR #139 roadmap and #140 PSKT content merges added October 17. Product baseline is now #140 with separately recorded production evidence; previous #137 baseline evidence is retained in its record. Observed #145 background stylesheet/guard release added; current product baseline #145 has separate production evidence. Earlier baseline evidence remains preserved. Observed #146 rewarded challenge release added; product baseline #146 has separate deployment/browser evidence and prior #145 baseline preserved.",
+  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127. Observed #130/#131 merges added; #131 is the character/cosmic/holiday release. Observed #132/#133 merges added; #133 dials back repeated characters and emphasizes neon-space backgrounds. Observed #134/#135 merges added; #135 clarifies the Kaspa onboarding identity and adds optional cosmetic Grid discoveries. Observed #136/#137 merges added; #137 contains mobile decoration and stabilizes background edges. Physical-phone retest remains pending. Observed #138 documentation merge added during roadmap reconciliation; runtime baseline remains #137. Observed PR #139 roadmap and #140 PSKT content merges added October 17. Product baseline is now #140 with separately recorded production evidence; previous #137 baseline evidence is retained in its record. Observed #145 background stylesheet/guard release added; current product baseline #145 has separate production evidence. Earlier baseline evidence remains preserved. Observed #146 rewarded challenge release added; product baseline #146 has separate deployment/browser evidence and prior #145 baseline preserved. Observed #147 career/mastery and canvas-style correction merged; product baseline #147 has separately recorded CI/deployment/browser evidence and previous #146 evidence is preserved.",
   "records": [
     {
       "number": 1,
@@ -1016,7 +1016,26 @@
       "title": "Add hidden-word hunt and once-only XP challenge rewards",
       "mergedAt": "2026-10-17T08:49:28Z",
       "commit": "2c63d28d187d69d4ce351b2b9809d8aec0f6219f",
-      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/146"
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/146",
+      "priorProductBaseline": {
+        "pullRequest": 146,
+        "commit": "2c63d28d187d69d4ce351b2b9809d8aec0f6219f",
+        "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/146",
+        "status": "merged-deployed",
+        "checkedOn": "2026-10-17",
+        "testsPassed": 538,
+        "testsFailed": 0,
+        "testsSkipped": 0,
+        "productionProbesPassed": 10,
+        "evidence": "UX-007 rewarded challenges merged in #146 October 17 at 08:49:28 UTC as 2c63d28d187d69d4ce351b2b9809d8aec0f6219f. Exact head 503b7f7eb66ee32818bea5b2d6408a442523aa16/tree d2dd73dd442fb65a5338f833628fe726dbf9eec5 passed GitHub verification 39017597467 and Vercel; no submitted reviews or inline threads. Production dpl_DjwotsxcHfxmRWketvDaD1ixVr48 READY on the exact merge with both canonical domains assigned. Ten targeted delivery checks passed under 15-second bounds: five reveals/hub links, hub markup, exact bytes of two challenge clients and CSS, and unauthenticated private/no-store 401 status. Browser followed a preview Home signal into the hub using a fresh guest, redeemed its observed word for 25 XP, rejected a repeat with no extra XP, and retained the find after reload. Five clue cards, two tasks and periodic boards render together; 53px input/button and document width 1348 <= viewport 1363. Canonical live hub loads server-backed cards and enables an eligible prior-result task while leaving an unfinished task disabled; no canonical reward claim or game action was submitted. Full local verification: 538 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Actual phone/narrow rendering, live task gameplay and independent review acceptance remain unverified."
+      }
+    },
+    {
+      "number": 147,
+      "title": "Build 90 career challenges, mastery emblems and saved goal tracking",
+      "mergedAt": "2026-10-17T09:31:03Z",
+      "commit": "be463ecdcb303ae7a8ab3427b5cbf41709106bc5",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/147"
     }
   ]
 }

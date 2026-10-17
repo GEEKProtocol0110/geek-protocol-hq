@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-The ledger preserves **133 merged HQ PR records** and **257 Git commit records** through the declared commit snapshot `2c63d28d187d69d4ce351b2b9809d8aec0f6219f`. The product runtime baseline remains #146. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
+The ledger preserves **134 merged HQ PR records** and **261 Git commit records** through the declared commit snapshot `be463ecdcb303ae7a8ab3427b5cbf41709106bc5`. The product runtime baseline remains #147. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
 
 ## Founding record
 
@@ -12,6 +12,7 @@ Three exact historical master/litepaper snapshots are preserved with source comm
 
 | PR | Merged (UTC) | Change | Commit |
 | --- | --- | --- | --- |
+| [#147](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/147) | 2026-10-17T09:31:03Z | Build 90 career challenges, mastery emblems and saved goal tracking | `be463ecdcb30` |
 | [#146](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/146) | 2026-10-17T08:49:28Z | Add hidden-word hunt and once-only XP challenge rewards | `2c63d28d187d` |
 | [#145](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/145) | 2026-10-17T08:07:36Z | Fix raw background code above Play and enforce stylesheet coverage | `bb4c5859c1e9` |
 | [#144](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/144) | 2026-10-17T07:06:55Z | Simplify login and hide optional setup until it is needed | `61305c23daf1` |

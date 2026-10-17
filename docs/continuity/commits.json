@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "capturedAt": "2026-10-17",
-  "through": "2c63d28d187d69d4ce351b2b9809d8aec0f6219f",
-  "scope": "Preserved HQ Git commit metadata through PR #140 merge. Product baseline is #140, with production/CI evidence in the project record. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation. Observed background release #145 and preceding login bookkeeping added October 17; product baseline #145 evidence is in project.json. Observed #146 rewarded challenges and preceding background release bookkeeping added; current baseline #146 evidence is in project.json.",
+  "through": "be463ecdcb303ae7a8ab3427b5cbf41709106bc5",
+  "scope": "Preserved HQ Git commit metadata through PR #140 merge. Product baseline is #140, with production/CI evidence in the project record. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation. Observed background release #145 and preceding login bookkeeping added October 17; product baseline #145 evidence is in project.json. Observed #146 rewarded challenges and preceding background release bookkeeping added; current baseline #146 evidence is in project.json. Observed #147 initial/final heads and merge plus preceding release bookkeeping added; current baseline #147 evidence is in project.json.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -2118,6 +2118,39 @@
         "503b7f7eb66ee32818bea5b2d6408a442523aa16"
       ],
       "title": "Merge pull request #146 from GEEKProtocol0110/codex/rewarded-grid-hunt"
+    },
+    {
+      "commit": "3a9dccf847b07acb88581f02fd7278ea9558681d",
+      "authoredAt": "2026-10-17T04:51:11-04:00",
+      "parents": [
+        "2c63d28d187d69d4ce351b2b9809d8aec0f6219f"
+      ],
+      "title": "Record rewarded challenge release and browser verification"
+    },
+    {
+      "commit": "daebe929c98aef3938be4a217142c042641acf77",
+      "authoredAt": "2026-10-17T05:19:25-04:00",
+      "parents": [
+        "3a9dccf847b07acb88581f02fd7278ea9558681d"
+      ],
+      "title": "Add tiered career challenges, mastery emblems and saved goal tracking"
+    },
+    {
+      "commit": "d37089d3a735627d3402bc370c5a16d21bcb8eb6",
+      "authoredAt": "2026-10-17T05:23:02-04:00",
+      "parents": [
+        "daebe929c98aef3938be4a217142c042641acf77"
+      ],
+      "title": "Keep star canvases behind content and guard missing scene styles"
+    },
+    {
+      "commit": "be463ecdcb303ae7a8ab3427b5cbf41709106bc5",
+      "authoredAt": "2026-10-17T05:31:03-04:00",
+      "parents": [
+        "3a9dccf847b07acb88581f02fd7278ea9558681d",
+        "d37089d3a735627d3402bc370c5a16d21bcb8eb6"
+      ],
+      "title": "Merge pull request #147 from GEEKProtocol0110/codex/career-mastery"
     }
   ]
 }

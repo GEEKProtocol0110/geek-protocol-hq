@@ -694,7 +694,8 @@
       ],
       "releaseEvidence": [
         "Exact head cb2650f3609b8d77ae1ca0b5164a571698e6f8af (tree 0b2499b3dc0fe03db7ef8fc3606099926999cbe2) passed GitHub verify run 38927170918 and Vercel; merge-source Vercel succeeded. Full local verification: 496 tests, zero failures/skips, required Redis 7.4.2 and 311 security assertions. Desktop preview/live computed root/body/hero overflow-x:clip, preview paint containment, loaded narrow rules with inset code, 100lvh background and no perspective. Desktop document width 1348 <= viewport 1363. Actual narrow rendering and physical-phone/browser-bar retest remain unverified; a local fixture URL was blocked and no workaround attempted. No new counted HTTP-monitor probes.",
-        "UX-005 background dependency fix merged in #145 October 17 at 08:07:36 UTC as bb4c5859c1e9766b8a8321757c762e955adbdc42. Exact head 41b165573c04b0dadfc177b8b07afac3cd268aee/tree 5124f71b112683421cb149f31bb14d51d1c4a4de passed GitHub verification 39015732075 and Vercel. Production dpl_8TLW6JpBmjoVAGkjByyN7MXxZyv2 READY on the exact merge with both canonical domains assigned. Six targeted delivery checks passed under 15-second bounds: Play, Memory, Royale and home declare atmosphere CSS; CSS and JS match local bytes exactly. Rendered preview of all four shells found one fixed background, header at y=0 and document width 1348 <= viewport 1363. Live Play screenshot and computed styles confirm fixed, z-index -1, overflow hidden, paint containment and no pointer capture, with the header at y=0. Full candidate verification: 525 tests, zero failures/skips, required Redis 7.4.2 and 311 security assertions, all required checks. Actual narrow rendering, physical-phone/browser-bar acceptance and independent review remain unverified."
+        "UX-005 background dependency fix merged in #145 October 17 at 08:07:36 UTC as bb4c5859c1e9766b8a8321757c762e955adbdc42. Exact head 41b165573c04b0dadfc177b8b07afac3cd268aee/tree 5124f71b112683421cb149f31bb14d51d1c4a4de passed GitHub verification 39015732075 and Vercel. Production dpl_8TLW6JpBmjoVAGkjByyN7MXxZyv2 READY on the exact merge with both canonical domains assigned. Six targeted delivery checks passed under 15-second bounds: Play, Memory, Royale and home declare atmosphere CSS; CSS and JS match local bytes exactly. Rendered preview of all four shells found one fixed background, header at y=0 and document width 1348 <= viewport 1363. Live Play screenshot and computed styles confirm fixed, z-index -1, overflow hidden, paint containment and no pointer capture, with the header at y=0. Full candidate verification: 525 tests, zero failures/skips, required Redis 7.4.2 and 311 security assertions, all required checks. Actual narrow rendering, physical-phone/browser-bar acceptance and independent review remain unverified.",
+        "During #147 preview, a separate missing-space.css dependency put the star canvas in normal flow on Challenges. Final #147 adds 13 direct space stylesheet links, enforces atmosphere/space CSS on all 29 participating pages and guards canvas insertion on computed style readiness. Corrected preview/live canvas is absolute; actual phone/browser-bar acceptance remains open."
       ],
       "phoneResult": {
         "reportedAt": "2026-10-16T13:00:27-04:00",
@@ -948,10 +949,10 @@
     {
       "id": "GAME-001",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "needs-evidence",
       "title": "Build a deep career challenge and mastery ladder",
       "owner": "Maintainer; founder confirms phone/game usability",
-      "nextAction": "Finish full verification, inspect the checked preview and release the mastery catalog. Record exact CI/deployment evidence and actual-device limits.",
+      "nextAction": "#147 merged/deployed; gather actual-phone challenge tracking, filters, gameplay unlock/claim and My HQ feedback. Keep independent review and unrelated auth/background acceptance separate.",
       "acceptance": [
         "Casual players see three suggested goals while dedicated players can search/filter all 90 challenges across 18 Bronze-to-Diamond paths.",
         "Achievements share server eligibility with rewards; legacy 12 achievements, five-word hunt and two issued claim IDs remain compatible.",
@@ -966,6 +967,9 @@
         "tests/career-challenges.test.js",
         "tests/rewarded-challenges.test.js",
         "tests/ranked-persistence.test.js"
+      ],
+      "releaseEvidence": [
+        "GAME-001 career mastery merged in #147 October 17 at 09:31:03 UTC as be463ecdcb303ae7a8ab3427b5cbf41709106bc5. Final head d37089d3a735627d3402bc370c5a16d21bcb8eb6/tree 730ca15287c833d143f77dedd9ea71a66c664434 passed GitHub verification 39020919100 and Vercel; no submitted reviews or inline threads. Production dpl_7CCPiCLoug5Du1juGRrLAdmRWboc READY on the exact merge, both canonical domains assigned. Eleven targeted delivery checks passed under 15-second bounds: four public page markers, six exact-byte clients/styles and private unauthenticated no-store 401 status. Corrected preview screenshot shows three recommended cards, 18 emblems, absolute canvas, intro height about 486px and width 1348 <= viewport 1363. A fresh preview guest saved a tracked path; My HQ retrieved it and rendered 102 achievements with only three shown in Next goals. First-head catalog All/Kaspa/Diamond filtering passed, but its canvas displacement was corrected on the final head. Canonical live hub loads three cards/18 emblems, absolute canvas and no horizontal overflow; no canonical tracking/reward/game action submitted. Full revised verification: 552 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Actual phone/narrow rendering, live gameplay/unlock/claim flow and independent review remain unverified."
       ]
     }
   ]
