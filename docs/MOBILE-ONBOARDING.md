@@ -45,3 +45,10 @@ Relevant existing onboarding/motion/holiday tests and the full verification suit
 ## Founder improvement report — October 16, 2026
 
 At 1:00 PM Detroit, after the #137 correction, the founder reported “Ok better.” This records a limited phone-layout improvement observation. It does not identify browser/version or explicitly complete browser-bar transitions, pinch zoom, expanded menus or the full device matrix. Preserve the report; do not treat it as no response or as full free-beta acceptance.
+
+
+## Missing background stylesheet — October 17, 2026
+
+The founder’s Play screenshot shows the binary/code rail as ordinary text above the header. Play uses its own game CSS and imports `site.js`, which imports `atmosphere.js`; it did not load either the shared `styles.css` (which imports atmosphere CSS) or atmosphere CSS directly. This is a stylesheet dependency defect, not the earlier home overflow geometry issue. Twenty-nine public pages initialize the atmosphere; three already had direct links. Add direct head links on the other twenty-six, including Play, Memory, Royale, Practice and account pages, and require this dependency in `site:check`. Keep the existing stable mobile grid, clipping and motion preferences.
+
+The atmosphere script checks the stylesheet’s computed readiness marker before adding any classes or decorative text. An absent/failed stylesheet leaves decoration absent; a late stylesheet can initialize at window load. No polling, inline styles, network retry, tracking or player changes. Tests cover absent/failed CSS, successful unique initialization and delayed styling. Browser/source checks and final release evidence remain separate from the founder’s actual-phone retest.

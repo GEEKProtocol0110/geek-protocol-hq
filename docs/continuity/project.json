@@ -35,12 +35,12 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "UX-006",
-    "status": "needs-evidence",
-    "description": "Compact login released in #144: returning Sign in and guest play first, advanced flows closed, existing sessions continue to HQ using one validated account-status source. Full checks and live desktop/delivery pass. Founder phone usability and actual authenticator/Silk acceptance remain outstanding."
+    "id": "UX-005",
+    "status": "in-progress",
+    "description": "Founder Play screenshot exposes decorative code in normal flow. Source shows Play loads site/atmosphere JavaScript but neither shared styles.css nor atmosphere.css. Add direct stylesheet coverage across all participating pages, fail closed on missing CSS and validate the dependency in CI. Full checks pass: 525 tests, zero failures/skips and all required checks. Rendered preview/release pending."
   },
-  "nextTask": "AUTH-003",
-  "nextAction": "Preserve the founder\u2019s report that the prior device-access page made login more confusing. Confirm the simplified page on the actual phone; retain AUTH-003 Silk/approval/returning-session and independent-review acceptance separately. Existing GEEKT, ACE and capacity roadmap work remains staged.",
+  "nextTask": "UX-006",
+  "nextAction": "Release the background stylesheet/guard correction and confirm the Play header on the actual phone. Keep login usability, actual Silk/phone authentication and independent-review acceptance separate.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

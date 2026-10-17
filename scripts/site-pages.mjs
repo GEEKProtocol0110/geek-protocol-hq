@@ -51,6 +51,10 @@ export function checkSitePages({ write = false } = {}) {
     assert.ok(existsSync(`public${image}`),'Share image must be a local asset');
     const input = readFileSync(page.file,'utf8'), html = renderMetadata(input,page,config);
     assert.equal(renderMetadata(html,page,config),html,'Metadata generation must be idempotent');
+    if (page.file.startsWith('public/') && /\bsrc=["'][^"']*(?:site|characters)\.js/.test(html)) {
+      const styles = [...html.matchAll(/<link\b[^>]*>/gi)].map(m => attrs(m[0])).filter(a => a.rel === 'stylesheet');
+      assert.ok(styles.some(a => new URL(a.href,origin+page.path).pathname === '/assets/atmosphere.css'),`Atmosphere script needs a direct stylesheet: ${page.file}`);
+    }
     outputs.set(page.file,html);
   }
   for (const [file,html] of outputs) {
