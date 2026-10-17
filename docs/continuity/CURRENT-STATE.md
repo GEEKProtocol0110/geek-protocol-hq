@@ -2,11 +2,11 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
-[PR #137](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/137), commit `b194970626b4864286fb25a210b33df14047d3bc`. Exact head cb2650f3609b8d77ae1ca0b5164a571698e6f8af (tree 0b2499b3dc0fe03db7ef8fc3606099926999cbe2) passed GitHub verify run 38927170918 and Vercel; merge-source Vercel succeeded. Full local verification: 496 tests, zero failures/skips, required Redis 7.4.2 and 311 security assertions. Desktop preview/live computed root/body/hero overflow-x:clip, preview paint containment, loaded narrow rules with inset code, 100lvh background and no perspective. Desktop document width 1348 &lt;= viewport 1363. Actual narrow rendering and physical-phone/browser-bar retest remain unverified; a local fixture URL was blocked and no workaround attempted. No new counted HTTP-monitor probes. Recorded tests: 496 passed, 0 failed, 0 skipped; 0 read-only probes passed. Later documentation candidates are separate from this baseline.
+[PR #140](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/140), commit `0a553b5b02bc4466f8302d89a5acad00b3f20b73`. Founder instructed Merge. PR #140 merged October 17 at 04:20:46 UTC. Exact head e9a427591afe4ac82861e720efe675ff13b22299 and the merge share tree d9344031549d18d84d43bc8e68996232d84141bf. Head GitHub Security verification run 38951703030 and Vercel passed; full local verification had 496 tests, zero failures/skips, required real Redis 7.4.2 and 311 security assertions, with zero production dependency vulnerabilities. Vercel production dpl_5VaifCsv3P7piogPpkW4vC6UK3Sp READY on this merge, with geekprotocol.xyz and www.geekprotocol.xyz assigned. Standard five-second proxy-aware production monitor passed 21/21 at 2026-10-17T04:21:21.251000+00:00. Live static readiness, server readiness and question catalog agree on 600 Kaspa / 8,205 active / 698 recorded reviews; CCE remains held. No new phone, multiplayer, wallet transfer, independent editorial review or provider restore acceptance. Recorded tests: 496 passed, 0 failed, 0 skipped; 21 read-only probes passed. Later documentation candidates are separate from this baseline.
 
 ## Current checkout counts
 
@@ -25,9 +25,9 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-001: active.** PR #140 adds twenty PSKT coordination questions: 600 Kaspa concepts in this checkout; 580 in the merged product. Candidate head 4b330f4760c249e35fff2c9bf0297437ccac4849 has the exact locally verified tree be663c25fa58df1ee67ab25be54c05912296b034: 496 tests, zero failures/skips, real Redis, 311 security assertions and zero production dependency vulnerabilities. Exact-head GitHub Security verification run 38951540803 and candidate Vercel status passed. Review/merge, final follow-up-head checks and production deployment remain pending. Provider recovery and device acceptance still need owner/participant evidence.
+**OPS-001: needs-evidence.** BANK-001 PR #140 is merged and deployed: 600 internally source-reviewed Kaspa concepts, 400 remain toward 1,000. Resume independent source preservation and provider restore evidence; returning saved-player sign-in, Quest completion/replay and two-person Royale still require actual owner/device/participant observations.
 
-Next task: **OPS-001**. Review the BANK-001 candidate, then resume independent source preservation and actual provider backup/isolated restore evidence. Returning saved-player login, four-chapter Quest and two-person Royale remain actual-device acceptance tasks. Continue reviewed content when owner/device evidence is unavailable.
+Next task: **OPS-001**. Resume independent source preservation and actual provider backup/isolated restore evidence. Preserve the confirmed phone passkey and edge-improvement observations; finish returning saved-player login, four-chapter Quest and two-person Royale on actual devices. Continue BANK-001 toward 1,000 while owner/device evidence is unavailable.
 
 ## Holds
 

@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-The ledger preserves **125 merged HQ PR records** and **235 Git commit records** through the declared commit snapshot `a7eaca32908b30214aaf04730f485c851963ee30`. The product runtime baseline remains #137. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
+The ledger preserves **127 merged HQ PR records** and **241 Git commit records** through the declared commit snapshot `0a553b5b02bc4466f8302d89a5acad00b3f20b73`. The product runtime baseline remains #140. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
 
 ## Founding record
 
@@ -12,6 +12,8 @@ Three exact historical master/litepaper snapshots are preserved with source comm
 
 | PR | Merged (UTC) | Change | Commit |
 | --- | --- | --- | --- |
+| [#140](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/140) | 2026-10-17T04:20:46Z | Grow Kaspa to 600 reviewed concepts with PSKT coordination questions | `0a553b5b02bc` |
+| [#139](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/139) | 2026-10-16T17:31:15Z | Reconcile roadmap priorities, superseded drafts and beta evidence | `b5429fe7939a` |
 | [#138](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/138) | 2026-10-16T15:57:50Z | Record the mobile edge correction and pending phone retest | `a7eaca32908b` |
 | [#137](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/137) | 2026-10-16T15:55:00Z | Contain mobile decoration and stabilize scrolling edges | `b194970626b4` |
 | [#136](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/136) | 2026-10-16T15:41:28Z | Record the deployed Kaspa positioning and Grid discoveries | `705a96361949` |

@@ -1,11 +1,11 @@
-# Roadmap checkpoint — October 16, 2026
+# Roadmap checkpoint — October 17, 2026
 
 Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. The next product milestone is a dependable free beta. The public label remains Alpha until the founder accepts the pilot evidence. This checkpoint reconciles the current build with older drafts; it does not open payment, ownership or contributor gates.
 
 ## Current position
 
-- Runtime: PR #137, merge `b194970626b4864286fb25a210b33df14047d3bc`; the maintained record carries exact CI/deployment evidence. Latest local runtime verification: 496 tests, zero failures/skips, 311 security assertions. Later documentation merges are separate.
-- Learning: merged PR #118 has 580 internally source-reviewed Kaspa concepts. The October 16 PSKT candidate adds 20 for 600 in this checkout (400 remain toward 1,000); it is not yet merged/deployed. Candidate totals are 698 recorded reviews, 7,302 still needed across all eight targets and 8,205 active questions. Study remains 537 concepts; Quest has four chapters.
+- Runtime/content: PR #140, merge `0a553b5b02bc4466f8302d89a5acad00b3f20b73`, is deployed. Exact-head GitHub verification and Vercel passed; 496 local tests, zero failures/skips and 311 security assertions. Standard production monitor passed 21/21. The maintained record carries exact source/deployment evidence; prior #137 edge-fix observations remain separate.
+- Learning: 600 internally source-reviewed Kaspa concepts are merged and deployed; 400 remain toward 1,000. Across all eight targets, 698 recorded reviews and 7,302 still needed. The 8,205 active questions are not all reviewed. Study remains 537 concepts; Quest has four chapters.
 - Phone evidence: initial passkey flow succeeded according to the founder on October 16 at 2:35 AM Detroit. After the edge fix, the founder reported “Ok better” at 1:00 PM. Preserve both observations; neither establishes every recovery, browser-bar, campaign or multiplayer scenario.
 - PR #119 is superseded as a merge candidate. Its unshipped work is retained at exact head and mapped to separate backlog IDs. PR #120 stays paused with its original art and tracker intact. See [PR reconciliation](PR-RECONCILIATION.md).
 

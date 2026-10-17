@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "capturedAt": "2026-10-16",
-  "through": "a7eaca32908b30214aaf04730f485c851963ee30",
-  "scope": "Preserved HQ commit metadata plus observed Git objects through documentation PR #138. Runtime baseline remains #137. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation.",
+  "capturedAt": "2026-10-17",
+  "through": "0a553b5b02bc4466f8302d89a5acad00b3f20b73",
+  "scope": "Preserved HQ Git commit metadata through PR #140 merge. Product baseline is #140, with production/CI evidence in the project record. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -1934,6 +1934,56 @@
       ],
       "authoredAt": "2026-10-16T11:57:49-04:00",
       "title": "Merge pull request #138 from GEEKProtocol0110/codex/mobile-edge-release"
+    },
+    {
+      "commit": "738b359b699eb9a0fa11702c49e51572b36f908a",
+      "parents": [
+        "a7eaca32908b30214aaf04730f485c851963ee30"
+      ],
+      "authoredAt": "2026-10-16T13:28:56-04:00",
+      "title": "Reconcile the roadmap, retained draft work and beta evidence"
+    },
+    {
+      "commit": "8efb02eb79ffc9870a2216df96afc892e023ed97",
+      "parents": [
+        "738b359b699eb9a0fa11702c49e51572b36f908a"
+      ],
+      "authoredAt": "2026-10-16T13:30:23-04:00",
+      "title": "Record confirmed draft dispositions and the next evidence queue"
+    },
+    {
+      "commit": "b5429fe7939a7196bb83b79c2c91ffece640fd45",
+      "parents": [
+        "a7eaca32908b30214aaf04730f485c851963ee30",
+        "8efb02eb79ffc9870a2216df96afc892e023ed97"
+      ],
+      "authoredAt": "2026-10-16T13:31:15-04:00",
+      "title": "Merge pull request #139 from GEEKProtocol0110/codex/roadmap-reconciliation"
+    },
+    {
+      "commit": "4b330f4760c249e35fff2c9bf0297437ccac4849",
+      "parents": [
+        "b5429fe7939a7196bb83b79c2c91ffece640fd45"
+      ],
+      "authoredAt": "2026-10-16T14:58:55-04:00",
+      "title": "Grow Kaspa to 600 reviewed concepts with pinned PSKT coordination content"
+    },
+    {
+      "commit": "e9a427591afe4ac82861e720efe675ff13b22299",
+      "parents": [
+        "4b330f4760c249e35fff2c9bf0297437ccac4849"
+      ],
+      "authoredAt": "2026-10-16T15:00:35-04:00",
+      "title": "Record PR 140 candidate verification and remaining beta evidence"
+    },
+    {
+      "commit": "0a553b5b02bc4466f8302d89a5acad00b3f20b73",
+      "parents": [
+        "b5429fe7939a7196bb83b79c2c91ffece640fd45",
+        "e9a427591afe4ac82861e720efe675ff13b22299"
+      ],
+      "authoredAt": "2026-10-17T00:20:46-04:00",
+      "title": "Merge pull request #140 from GEEKProtocol0110/codex/kaspa-600-pskt"
     }
   ]
 }

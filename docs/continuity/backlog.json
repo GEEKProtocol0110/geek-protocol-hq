@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-16",
+  "updatedAt": "2026-10-17",
   "priorityOrder": [
     "P0",
     "P1",
@@ -86,7 +86,7 @@
       "status": "active",
       "title": "Grow Kaspa from 600 toward 1,000 reviewed concepts",
       "owner": "Content maintainer; independent editor unassigned",
-      "nextAction": "PR #140 adds a 20-question PSKT coordination candidate, extending merged PR #118's 580 to 600 internally source-checked Kaspa concepts (400 remain). Local full verification, exact-head GitHub verification and candidate Vercel status passed. Review #140 and final follow-up-head checks before claiming a merged/deployed count. Continue distinct primary-source facts toward 1,000; introductory Study remains 537 and independent editorial review is unassigned.",
+      "nextAction": "PR #140 merged at 0a553b5b02bc4466f8302d89a5acad00b3f20b73 and production is verified: 600 internally source-checked Kaspa concepts, 400 remain toward 1,000. Continue distinct primary-source facts with complete evidence and preserved historical answer keys. Introductory Study remains 537; independent editorial review is unassigned. CCE and economic holds remain in force.",
       "acceptance": [
         "1,000 distinct source-checked Kaspa concepts with explanations and review dates.",
         "No padded variants; existing issued answers remain compatible.",
