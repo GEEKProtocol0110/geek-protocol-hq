@@ -4,8 +4,8 @@ Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. The n
 
 ## Current position
 
-- Runtime/content: PR #140, merge `0a553b5b02bc4466f8302d89a5acad00b3f20b73`, is deployed. Exact-head GitHub verification and Vercel passed; 496 local tests, zero failures/skips and 311 security assertions. Standard production monitor passed 21/21. The maintained record carries exact source/deployment evidence; prior #137 edge-fix observations remain separate.
-- Learning: 600 internally source-reviewed Kaspa concepts are merged and deployed; 400 remain toward 1,000. Across all eight targets, 698 recorded reviews and 7,302 still needed. The 8,205 active questions are not all reviewed. Study remains 537 concepts; Quest has four chapters.
+- Runtime/content: #148 is the latest deployed runtime baseline, with bounded A.C.E. authored lesson help, player regression coverage and separate CI/deployment evidence in the maintained record. Paid AI remains inactive pending model, budget, data policy and live evaluation. The 700-concept follow-up is a candidate until its release is recorded.
+- Learning: the current branch has 700 internally source-reviewed Kaspa concepts; 300 remain toward 1,000. Across all eight targets, 798 recorded reviews and 7,202 still needed. The 8,305 active questions are not all reviewed. Study remains 537 concepts; Quest has four chapters. Exact merge/deployment status is in the maintained state.
 - Phone evidence: initial passkey flow succeeded according to the founder on October 16 at 2:35 AM Detroit. After the edge fix, the founder reported “Ok better” at 1:00 PM. Preserve both observations; neither establishes every recovery, browser-bar, campaign or multiplayer scenario.
 - PR #119 is superseded as a merge candidate. Its unshipped work is retained at exact head and mapped to separate backlog IDs. PR #120 stays paused with its original art and tracker intact. See [PR reconciliation](PR-RECONCILIATION.md).
 

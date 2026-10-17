@@ -84,9 +84,9 @@
       "id": "BANK-001",
       "priority": "P0",
       "status": "active",
-      "title": "Grow Kaspa from 600 toward 1,000 reviewed concepts",
+      "title": "Grow Kaspa toward 1,000 reviewed concepts",
       "owner": "Content maintainer; independent editor unassigned",
-      "nextAction": "#148 merged/deployed 624 reviewed Kaspa / 8,229 active / 722 recorded reviews. Continue 376 distinct source-reviewed Kaspa concepts toward 1,000; independent editor remains unassigned. Preserve prior keys and all bank/economy holds.",
+      "nextAction": "Verify and release the 700-concept candidate (76 new integration/encoding objectives); then continue 300 distinct concepts toward 1,000. Independent editor remains unassigned. Preserve issued keys and bank/economy holds.",
       "acceptance": [
         "1,000 distinct source-checked Kaspa concepts with explanations and review dates.",
         "No padded variants; existing issued answers remain compatible.",
@@ -101,7 +101,9 @@
         "docs/kaspa-580-review-2026-10-15.json",
         "docs/kaspa-600-review-2026-10-16.json",
         "docs/PLAYER-READINESS-2026-10-17.md",
-        "docs/KASPA-SCRIPT-REVIEW-2026-10-17.md"
+        "docs/KASPA-SCRIPT-REVIEW-2026-10-17.md",
+        "docs/KASPA-700-REVIEW-2026-10-17.md",
+        "docs/kaspa-700-review-2026-10-17.json"
       ],
       "releaseEvidence": [
         "PR #148 merged October 17 at 11:07:47 UTC as 67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f. Exact checked head 0d3125792fbe1e46f4e99fcb3eda0cd0b832e53f/tree 3834af65cf3bd89d157fd64af08103e32225cd60 passed GitHub Security verification 39026911425 and Vercel. No submitted reviews or inline threads were present. Preview dpl_Gz7chXA2daWVY2yCnLiiiyTAKbkr READY: seven authenticated public delivery checks passed; browser returned authored lesson evidence/primary source and cleared question/answer/consent on topic change. Desktop screenshot inspected; width 1348 <= viewport 1363. Initial raw preview HTTP hit deployment protection; owner-route protected fetch did not expose app headers and is not owner acceptance. Production dpl_dmdhSBWZHDQjJGGJ7pCTX4swPa1f READY on the exact merge with both canonical domains assigned. Ten canonical delivery checks passed: Study page, exact three clients/styles and count-only catalog, inactive-AI/no-store status, 11-topic/537-concept Study catalog, two private/no-store 401 routes and 624 Kaspa/722-review held-bank status. The first bank probe used the wrong nested path; one corrected read passed without an application change. Canonical browser renders the new collapsed/open lesson-help entry with AI opt-in hidden and no horizontal overflow; no canonical question, game, reward, owner-login or wallet action submitted. Production deployment-scoped error/fatal log count query for the recent ten-minute window returned no groups; this early empty window is not a long-term observability guarantee. Full final verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Production dependency audit reports zero vulnerabilities; 37-component SBOM refreshed. Actual phone/Silk, live model quality/budget, first TN10 transfer, provider restore and independent review remain unverified."
@@ -337,7 +339,7 @@
       "status": "planned",
       "title": "Reconcile the 500-concept, five-tier artwork plan with the legacy runtime",
       "owner": "Art lead and ownership reviewer unassigned",
-      "nextAction": "DR-012 recovers the founder\u2019s 500 concepts \u00d7 five artwork tiers = 2,500-image direction from paused #120. Resolve repeated names, stable IDs and GIGA/A.C.E. anchors; specify versioned migration while retaining the older 500-slot runtime. Copies per artwork, mint supply and allocations remain unselected; art production stays paused.",
+      "nextAction": "DR-012 recovers the founder’s 500 concepts × five artwork tiers = 2,500-image direction from paused #120. Resolve repeated names, stable IDs and GIGA/A.C.E. anchors; specify versioned migration while retaining the older 500-slot runtime. Copies per artwork, mint supply and allocations remain unselected; art production stays paused.",
       "acceptance": [
         "500 character concepts and five artwork tiers are distinct from collectible copies/mint supply.",
         "Duplicate names, anchors and versioned character-plus-tier mapping preserve existing IDs/saves.",
@@ -729,7 +731,7 @@
       "status": "done",
       "title": "Reconcile roadmap, stale drafts and current acceptance evidence",
       "owner": "Maintainer",
-      "nextAction": "Roadmap checkpoint prepared in PR #139; #119 is closed as superseded with branch/head retained and all unshipped work tracked. #120 remains open/paused with the same head. Preserve the current record and resume OPS-001; final head/check/merge is in #139\u2019s review record.",
+      "nextAction": "Roadmap checkpoint prepared in PR #139; #119 is closed as superseded with branch/head retained and all unshipped work tracked. #120 remains open/paused with the same head. Preserve the current record and resume OPS-001; final head/check/merge is in #139’s review record.",
       "acceptance": [
         "Every old PR changed-file blob is inventoried at an exact head and retained work has stable backlog IDs.",
         "Current roadmap, beta source/dependency evidence and limited founder phone observations agree.",
@@ -818,7 +820,7 @@
       "nextAction": "Keep #120 and its exact twenty original PNGs/tracker intact. Await founder resumption; review against current continuity before any merge.",
       "acceptance": [
         "Original filenames/bytes/provenance remain intact at the pinned paused head.",
-        "500 concepts \u00d7 five artworks remain distinct from finished-image and collectible-supply counts.",
+        "500 concepts × five artworks remain distinct from finished-image and collectible-supply counts.",
         "A separate founder resumption precedes additional generation/production; runtime migration remains COLL-001."
       ],
       "dependsOn": [],

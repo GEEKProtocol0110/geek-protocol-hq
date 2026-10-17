@@ -2,7 +2,7 @@
   "maintainedAt": "2026-10-17",
   "originalRows": 8032,
   "cleanedBaseline": 4024,
-  "activeQuestions": 8229,
+  "activeQuestions": 8305,
   "retiredRows": 4289,
   "addedQuestions": 4024,
   "categories": {
@@ -15,13 +15,13 @@
       },
       "added": 92,
       "target": 184,
-      "after": 624,
+      "after": 700,
       "difficultyDistribution": {
-        "easy": 133,
-        "medium": 273,
-        "hard": 218
+        "easy": 144,
+        "medium": 313,
+        "hard": 243
       },
-      "postReviewAdditions": 440
+      "postReviewAdditions": 516
     },
     "comics": {
       "before": 1000,
@@ -180,5 +180,5 @@
   },
   "editorialRetiredRows": 281,
   "editorialReview": "docs/editorial-review.json",
-  "postReviewAdditions": 462
+  "postReviewAdditions": 538
 }
