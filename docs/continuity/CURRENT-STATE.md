@@ -25,7 +25,7 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-003: in-progress.** Trusted-device account access candidate: nearby phone with fresh passkey proof approves the same saved player on an exact-origin guest browser; five-minute single-use requests, explicit receiving confirmation, bounded device index and revocation. Separate guest progress preserved, no fresh management grant on tablet. Full verification: 515 tests passed, zero failures/skips, required Redis and 311 security assertions; publication pending; actual Silk and independent review remain outstanding.
+**AUTH-003: in-progress.** Trusted-device account access candidate: nearby phone with fresh passkey proof approves the same saved player on an exact-origin guest browser; five-minute single-use requests, explicit receiving confirmation, bounded device index and revocation. Separate guest progress preserved, no fresh management grant on tablet. Full verification: 516 tests passed, zero failures/skips, required Redis and 311 security assertions; publication pending; actual Silk and independent review remain outstanding.
 
 Next task: **CHAIN-001**. Verify/release AUTH-003 and obtain actual phone/Silk acceptance. Complete the existing manual first GEEKT receipt/transfer rehearsal with the wallet owner, then stage ACE-001/PERF-001 measured improvements. No new model service, signer or provider cutover is installed.
 

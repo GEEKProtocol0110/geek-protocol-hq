@@ -28,6 +28,7 @@
   const token = () => { const t = grant; grant = ''; document.dispatchEvent(new CustomEvent('geek:device-grant-used')); return t; };
   const resetTarget = () => { request = null; received = null; clearTimeout(expiry); el('request').hidden = true; el('received').hidden = true; el('code-display').value = ''; };
   document.addEventListener('geek:device-ready', () => { ready = true; disabled(); note.textContent = 'Choose the steps for the device you are using.'; });
+  document.addEventListener('geek:device-unavailable', event => { ready = false; disabled(); note.textContent = `Device access is unavailable here. ${event.detail.message} Reload to check your saved player.`; });
   document.addEventListener('geek:device-grant', event => { grant = event.detail.token; });
   el('start').addEventListener('click', () => act(async () => {
     const next = await api({action:'device-start',label:el('label').value,acknowledge:el('guest-ack').checked});

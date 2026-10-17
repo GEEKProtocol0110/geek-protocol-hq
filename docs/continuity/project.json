@@ -37,7 +37,7 @@
   "currentWork": {
     "id": "AUTH-003",
     "status": "in-progress",
-    "description": "Trusted-device account access candidate: nearby phone with fresh passkey proof approves the same saved player on an exact-origin guest browser; five-minute single-use requests, explicit receiving confirmation, bounded device index and revocation. Separate guest progress preserved, no fresh management grant on tablet. Full verification: 515 tests passed, zero failures/skips, required Redis and 311 security assertions; publication pending; actual Silk and independent review remain outstanding."
+    "description": "Trusted-device account access candidate: nearby phone with fresh passkey proof approves the same saved player on an exact-origin guest browser; five-minute single-use requests, explicit receiving confirmation, bounded device index and revocation. Separate guest progress preserved, no fresh management grant on tablet. Full verification: 516 tests passed, zero failures/skips, required Redis and 311 security assertions; publication pending; actual Silk and independent review remain outstanding."
   },
   "nextTask": "CHAIN-001",
   "nextAction": "Verify/release AUTH-003 and obtain actual phone/Silk acceptance. Complete the existing manual first GEEKT receipt/transfer rehearsal with the wallet owner, then stage ACE-001/PERF-001 measured improvements. No new model service, signer or provider cutover is installed.",

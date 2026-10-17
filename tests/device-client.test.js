@@ -64,3 +64,9 @@ test('device removal needs its own fresh proof and only exposes public device ID
   ui.emit('geek:device-grant',{token:'remove-proof'});await remove.emit('click');
   assert.equal(ui.calls[1].action,'device-revoke');assert.equal(ui.calls[1].deviceId,'public-id');assert.equal(ui.calls[1].token,'remove-proof');
 });
+
+
+test('failed initialization shows the service error and never enables approval controls',async()=>{
+  const ui=mount();ui.emit('geek:device-unavailable',{message:'Origin not accepted.'});
+  assert.match(ui.el('note').textContent,/unavailable.*Origin not accepted/);assert.equal(ui.el('start').disabled,true);assert.equal(ui.calls.length,0);
+});

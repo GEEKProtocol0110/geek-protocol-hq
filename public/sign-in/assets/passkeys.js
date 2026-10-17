@@ -138,6 +138,6 @@
           : 'First visit? Create a passkey for this player. Returning? Sign in with the passkey you already saved.';
         document.querySelector('[data-passkey-wallet-help]').hidden = !data.walletLinked;
         if (data.signedIn) document.dispatchEvent(new CustomEvent('geek:passkey-signed-in'));
-      } catch (error) { note.textContent = `${error.message} Reload to check your saved player.`; }
+      } catch (error) { note.textContent = `${error.message} Reload to check your saved player.`; document.dispatchEvent(new CustomEvent('geek:device-unavailable', {detail:{message:error.message}})); }
     })();
 })();
