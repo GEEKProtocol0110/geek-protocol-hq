@@ -38,4 +38,4 @@ A.C.E. currently uses authored, source-linked Study guidance and a simulated Due
 - [Vercel concurrency scaling](https://vercel.com/docs/functions/concurrency-scaling): platform scaling still requires application measurements.
 - [Vercel queues](https://vercel.com/docs/queues): candidate durable background-work service; not installed here.
 
-Release state: candidate only. Exact checks, PR/head and final merge/deployment result belong in the review record and continuity work log. Actual Silk, shared-device recovery and the first GEEKT transfer remain outstanding.
+Metadata/device-guidance release: PR #141 merged and deployed October 17 (8c0bdf165085add9fafbb2ead3dd4441af40539c; production monitor 21/21). The original candidate descriptions above are historical. [AUTH-003 trusted-device approval](TRUSTED-DEVICE-ACCESS.md) is now implemented as a separate candidate, with actual Silk acceptance pending. Other infrastructure/model directions remain planned. Exact checks, PR/head and final merge/deployment result belong in the review record and continuity work log. Actual Silk, shared-device recovery and the first GEEKT transfer remain outstanding.

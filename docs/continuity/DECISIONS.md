@@ -173,3 +173,13 @@ Update HQ page/link metadata, investigate Amazon Silk enrollment, preserve a pat
 Basis: Founder request October 17: two essential suggestions and five system improvements; confirmed Amazon Silk on the family tablet. This establishes product direction, not completed device pairing, a model service or automatic token signing.
 
 Evidence: [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md), [docs/site-pages.json](../../docs/site-pages.json).
+
+## DR-018: Implement nearby same-player approval without inventing family roles
+
+**implementation-choice** · 2026-10-17.
+
+Implement a passkey-approved same-player tablet session with fresh proof, bounded single-use requests, explicit same-player consent and revocation. Parent/child relationships, email recovery, ACE model provisioning and autonomous settlement remain separate.
+
+Basis: Founder Make it so on October 17 authorizes work on the two-essential/five-system roadmap. This implementation shares the existing player explicitly; it does not establish parental authority or grant a tablet fresh account-management proof.
+
+Evidence: [docs/TRUSTED-DEVICE-ACCESS.md](../../docs/TRUSTED-DEVICE-ACCESS.md), [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md).

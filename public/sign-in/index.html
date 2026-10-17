@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="./assets/sign-in.css" />
     <script defer src="/assets/site.js"></script>
     <script defer src="./assets/sign-in.js"></script>
+    <script defer src="./assets/device-access.js"></script>
     <script defer src="./assets/passkeys.js"></script>
     <script defer src="/assets/wallet.js"></script>
   </head>
@@ -51,7 +52,7 @@
         <h2 id="passkey-title">Keep your place.</h2><p class="sign-in-player">Current player: <strong data-passkey-player>Checking player…</strong></p>
         <p>Choose your saved passkey to recover your player. On supported devices, your passkey provider may use a fingerprint, face or screen lock.</p>
         <p class="sign-in-note" data-passkey-device role="status" aria-live="polite">Passkey support depends on this browser, device and its credential provider.</p>
-        <details class="sign-in-method" data-passkey-device-help><summary>Amazon Fire tablet or passkeys unavailable?</summary><p>A browser can expose passkey controls without a working passkey provider. A tablet PIN or fingerprint alone does not create a passkey provider. On Amazon Fire with Silk, check for a system update and use another device or a security key only if the browser offers it.</p><p>You can keep learning as a guest on this tablet. Keep this browser’s data to preserve that guest player. A passkey saved on another device belongs to that device’s player until you sign in; creating a new passkey elsewhere does not move this tablet’s guest progress.</p><p>If this player already has a linked Kaspa wallet, use its verified sign-in method below. A public address alone cannot recover a player. Geek does not yet offer parent-approved device linking or email-code recovery. Never enter a seed phrase or private key here.</p></details>
+        <details class="sign-in-method" data-passkey-device-help><summary>Amazon Fire tablet or passkeys unavailable?</summary><p>A browser can expose passkey controls without a working passkey provider. A tablet PIN or fingerprint alone does not create a passkey provider. On Amazon Fire with Silk, check for a system update and use another device or a security key only if the browser offers it.</p><p>You can keep learning as a guest on this tablet. Keep this browser’s data to preserve that guest player. A passkey saved on another device belongs to that device’s player until you sign in; creating a new passkey elsewhere does not move this tablet’s guest progress.</p><p>If this player already has a linked Kaspa wallet, use its verified sign-in method below. A public address alone cannot recover a player. Use “Approve another device” below if you have a saved Geek passkey on a trusted device. Email-code recovery is not available. Never enter a seed phrase or private key here.</p></details>
         <p class="sign-in-note">Signing in switches this browser to that player. Separate guest progress is not merged.</p><p><b>Played before?</b> Sign in to your saved player.</p><div class="sign-in-actions"><button type="button" class="button button-primary" data-passkey-login disabled>Sign in with a passkey</button></div>
         <details class="sign-in-method"><summary>First visit? Save this player with a passkey</summary><p>Your current player and progress stay together. Give the passkey a name you recognize.</p>
         <label for="passkey-label">Passkey name</label><input id="passkey-label" data-passkey-label maxlength="40" placeholder="My phone" autocomplete="off" />
@@ -60,6 +61,37 @@
         <p data-passkey-note role="status" aria-live="polite">Checking passkey support…</p><details class="sign-in-method"><summary>Passkeys &amp; recovery options</summary><ul data-passkey-list></ul><button type="button" class="button button-secondary" data-passkey-logout disabled>Sign out on this browser</button>
         <div data-passkey-wallet-help hidden><p>For an existing player, sign in with a saved passkey first. If you have a linked wallet, verify it below to authorize a new passkey.</p><button type="button" class="button button-secondary" data-passkey-wallet-authorize>Authorize with my linked wallet</button></div>
         <p class="sign-in-note">Signing into another player replaces this browser’s player; separate guest progress is not merged. Keep another passkey saved through your trusted credential manager, a second authenticator, or your linked wallet. Without a remaining recovery method, Geek cannot restore access. Never enter a wallet recovery phrase here.</p>
+        </details>
+      </section>
+      <section class="sign-in-card" data-device-access aria-labelledby="device-title">
+        <h2 id="device-title">Approve another device</h2>
+        <p>Sign into the <b>same player</b> on a tablet that cannot create a passkey. This shares access to that player; it does not create a child account.</p>
+        <p data-device-note role="status" aria-live="polite">Checking device access…</p>
+        <details class="sign-in-method"><summary>On the tablet: request access</summary>
+          <label for="device-label">Name for this device</label><input id="device-label" data-device-label maxlength="24" placeholder="My tablet" autocomplete="off" />
+          <p><label><input type="checkbox" data-device-guest-ack /> I understand this switches to the approved player. This browser’s separate guest progress will not merge and may be inaccessible after switching.</label></p>
+          <button type="button" class="button button-secondary" data-device-start disabled>Show approval code</button>
+          <div data-device-request hidden><p>On your trusted phone, open this same site’s Sign in page and enter this code under “On the phone.” Use the same www address on both screens.</p>
+            <label for="device-code-display">Approval code</label><input id="device-code-display" data-device-code-display readonly autocomplete="off" spellcheck="false" />
+            <p data-device-request-check></p><p data-device-expiry></p>
+            <button type="button" class="button button-secondary" data-device-check disabled>Check approval</button>
+            <button type="button" class="button button-secondary" data-device-cancel disabled>Cancel request</button>
+            <div data-device-received hidden><p data-device-player></p><button type="button" class="button button-primary" data-device-finish disabled>Switch to this player</button></div>
+          </div>
+        </details>
+        <details class="sign-in-method"><summary>On the phone: approve the tablet</summary>
+          <p>Only approve a code displayed on a device you control beside you. Never approve a code sent in a message or by someone claiming to be support.</p>
+          <label for="device-code-input">Code shown on your tablet</label><input id="device-code-input" data-device-code-input maxlength="27" autocomplete="off" autocapitalize="none" spellcheck="false" />
+          <button type="button" class="button button-secondary" data-device-review disabled>Review device</button>
+          <div data-device-review-panel hidden><p data-device-review-text></p>
+            <p><label><input type="checkbox" data-device-confirm /> The check matches the device beside me, and I want it to access this player.</label></p>
+            <p>Now choose <b>Sign in with a passkey</b> above to provide fresh proof, then approve below.</p>
+            <button type="button" class="button button-primary" data-device-approve disabled>Approve this device</button>
+          </div>
+        </details>
+        <details class="sign-in-method"><summary>Manage approved devices</summary>
+          <p>Sign in with a passkey above before each removal. Removing access signs that approved browser out. Shared sessions still need fresh proof to change passkeys; wallet spending is separate.</p>
+          <button type="button" class="button button-secondary" data-device-list disabled>Show approved devices</button><ul data-device-list-items></ul>
         </details>
       </section>
       <details class="sign-in-card sign-in-alternate" data-wallet-methods><summary>Use a Kaspa wallet instead</summary><section aria-labelledby="sign-in-title">

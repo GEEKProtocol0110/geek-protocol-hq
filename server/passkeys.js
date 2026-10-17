@@ -1,3 +1,4 @@
+import { deviceAccessAction } from './device-access.js';
 import { createAuditRecord, auditWriteCommands } from './audit.js';
 import { decodePasskeyAccount } from './passkey-records.js';
 import { createHash, randomBytes } from 'node:crypto';
@@ -88,6 +89,7 @@ export const passkeyStatus = async session => {
 };
 export const passkeyAction = async (req, res, session, body) => {
   const context = passkeyContext(req), id = pid(session);
+  if (typeof body.action === 'string' && body.action.startsWith('device-')) return deviceAccessAction(res, session, body, context.origin);
   if (body.action === 'begin-register') {
     const { raw, account } = await getAccount(id), wallet = await walletState(id);
     if (wallet.version || account) await consumePasskeyGrant(session, body.token, wallet.version);

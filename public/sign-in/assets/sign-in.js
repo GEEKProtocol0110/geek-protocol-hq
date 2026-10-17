@@ -20,7 +20,8 @@
   let signedIn = false;
   let proofIntent = 'identity';
   const showSignedIn = (message) => { status.textContent = message; hq.hidden = false; continueLink.textContent = nextPage[1]; };
-  document.addEventListener('geek:passkey-signed-in', () => { signedIn = true; invalidate(); manualStatus.textContent = ''; proofIntent = 'identity'; showSignedIn(`Signed in with a passkey. ${destination}`); hq.focus(); });
+  document.addEventListener('geek:passkey-signed-in', () => { signedIn = true; invalidate(); manualStatus.textContent = ''; proofIntent = 'identity'; showSignedIn(`Signed in to your saved player. ${destination}`); hq.focus(); });
+  document.addEventListener('geek:device-signed-in', event => { signedIn = true; invalidate(); showSignedIn(`Signed in to ${event.detail.playerName}. ${destination}`); hq.focus(); });
   document.addEventListener('geek:signed-in', (event) => {
     signedIn = true;
     showSignedIn(event.detail.recovered ? `Signed in. Your saved player has been recovered. ${destination}` : `Signed in. Your player is protected by this wallet. ${destination}`);

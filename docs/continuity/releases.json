@@ -902,7 +902,26 @@
       "title": "Grow Kaspa to 600 reviewed concepts with PSKT coordination questions",
       "mergedAt": "2026-10-17T04:20:46Z",
       "commit": "0a553b5b02bc4466f8302d89a5acad00b3f20b73",
-      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/140"
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/140",
+      "priorProductBaseline": {
+        "pullRequest": 140,
+        "commit": "0a553b5b02bc4466f8302d89a5acad00b3f20b73",
+        "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/140",
+        "status": "merged-deployed",
+        "checkedOn": "2026-10-17",
+        "testsPassed": 496,
+        "testsFailed": 0,
+        "testsSkipped": 0,
+        "productionProbesPassed": 21,
+        "evidence": "Founder instructed Merge. PR #140 merged October 17 at 04:20:46 UTC. Exact head e9a427591afe4ac82861e720efe675ff13b22299 and the merge share tree d9344031549d18d84d43bc8e68996232d84141bf. Head GitHub Security verification run 38951703030 and Vercel passed; full local verification had 496 tests, zero failures/skips, required real Redis 7.4.2 and 311 security assertions, with zero production dependency vulnerabilities. Vercel production dpl_5VaifCsv3P7piogPpkW4vC6UK3Sp READY on this merge, with geekprotocol.xyz and www.geekprotocol.xyz assigned. Standard five-second proxy-aware production monitor passed 21/21 at 2026-10-17T04:21:21.251000+00:00. Live static readiness, server readiness and question catalog agree on 600 Kaspa / 8,205 active / 698 recorded reviews; CCE remains held. No new phone, multiplayer, wallet transfer, independent editorial review or provider restore acceptance."
+      }
+    },
+    {
+      "number": 141,
+      "title": "Refresh every HQ page\u2019s metadata and clarify Silk login and GEEKT readiness",
+      "mergedAt": "2026-10-17T01:10:54-04:00",
+      "commit": "8c0bdf165085add9fafbb2ead3dd4441af40539c",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/141"
     }
   ]
 }
