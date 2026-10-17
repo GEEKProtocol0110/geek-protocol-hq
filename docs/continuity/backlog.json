@@ -86,7 +86,7 @@
       "status": "active",
       "title": "Grow Kaspa from 600 toward 1,000 reviewed concepts",
       "owner": "Content maintainer; independent editor unassigned",
-      "nextAction": "Candidate adds 24 pinned-source script execution concepts: 624 Kaspa / 8,229 active / 722 recorded reviews. Continue with 376 distinct reviewed Kaspa concepts toward 1,000; independent editor remains unassigned. Preserve issued/retired keys and all CCE/economy holds.",
+      "nextAction": "#148 merged/deployed 624 reviewed Kaspa / 8,229 active / 722 recorded reviews. Continue 376 distinct source-reviewed Kaspa concepts toward 1,000; independent editor remains unassigned. Preserve prior keys and all bank/economy holds.",
       "acceptance": [
         "1,000 distinct source-checked Kaspa concepts with explanations and review dates.",
         "No padded variants; existing issued answers remain compatible.",
@@ -102,6 +102,9 @@
         "docs/kaspa-600-review-2026-10-16.json",
         "docs/PLAYER-READINESS-2026-10-17.md",
         "docs/KASPA-SCRIPT-REVIEW-2026-10-17.md"
+      ],
+      "releaseEvidence": [
+        "PR #148 merged October 17 at 11:07:47 UTC as 67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f. Exact checked head 0d3125792fbe1e46f4e99fcb3eda0cd0b832e53f/tree 3834af65cf3bd89d157fd64af08103e32225cd60 passed GitHub Security verification 39026911425 and Vercel. No submitted reviews or inline threads were present. Preview dpl_Gz7chXA2daWVY2yCnLiiiyTAKbkr READY: seven authenticated public delivery checks passed; browser returned authored lesson evidence/primary source and cleared question/answer/consent on topic change. Desktop screenshot inspected; width 1348 <= viewport 1363. Initial raw preview HTTP hit deployment protection; owner-route protected fetch did not expose app headers and is not owner acceptance. Production dpl_dmdhSBWZHDQjJGGJ7pCTX4swPa1f READY on the exact merge with both canonical domains assigned. Ten canonical delivery checks passed: Study page, exact three clients/styles and count-only catalog, inactive-AI/no-store status, 11-topic/537-concept Study catalog, two private/no-store 401 routes and 624 Kaspa/722-review held-bank status. The first bank probe used the wrong nested path; one corrected read passed without an application change. Canonical browser renders the new collapsed/open lesson-help entry with AI opt-in hidden and no horizontal overflow; no canonical question, game, reward, owner-login or wallet action submitted. Production deployment-scoped error/fatal log count query for the recent ten-minute window returned no groups; this early empty window is not a long-term observability guarantee. Full final verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Production dependency audit reports zero vulnerabilities; 37-component SBOM refreshed. Actual phone/Silk, live model quality/budget, first TN10 transfer, provider restore and independent review remain unverified."
       ]
     },
     {
@@ -269,6 +272,9 @@
         "tests/recovery-safety.test.js",
         "tests/passkeys.test.js",
         "docs/PLAYER-READINESS-2026-10-17.md"
+      ],
+      "releaseEvidence": [
+        "PR #148 merged October 17 at 11:07:47 UTC as 67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f. Exact checked head 0d3125792fbe1e46f4e99fcb3eda0cd0b832e53f/tree 3834af65cf3bd89d157fd64af08103e32225cd60 passed GitHub Security verification 39026911425 and Vercel. No submitted reviews or inline threads were present. Preview dpl_Gz7chXA2daWVY2yCnLiiiyTAKbkr READY: seven authenticated public delivery checks passed; browser returned authored lesson evidence/primary source and cleared question/answer/consent on topic change. Desktop screenshot inspected; width 1348 <= viewport 1363. Initial raw preview HTTP hit deployment protection; owner-route protected fetch did not expose app headers and is not owner acceptance. Production dpl_dmdhSBWZHDQjJGGJ7pCTX4swPa1f READY on the exact merge with both canonical domains assigned. Ten canonical delivery checks passed: Study page, exact three clients/styles and count-only catalog, inactive-AI/no-store status, 11-topic/537-concept Study catalog, two private/no-store 401 routes and 624 Kaspa/722-review held-bank status. The first bank probe used the wrong nested path; one corrected read passed without an application change. Canonical browser renders the new collapsed/open lesson-help entry with AI opt-in hidden and no horizontal overflow; no canonical question, game, reward, owner-login or wallet action submitted. Production deployment-scoped error/fatal log count query for the recent ten-minute window returned no groups; this early empty window is not a long-term observability guarantee. Full final verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Production dependency audit reports zero vulnerabilities; 37-component SBOM refreshed. Actual phone/Silk, live model quality/budget, first TN10 transfer, provider restore and independent review remain unverified."
       ]
     },
     {
@@ -459,6 +465,9 @@
         "docs/TESTNET-REWARD-PILOT.md",
         "docs/TESTNET-ASSET-SETUP.md",
         "docs/PLAYER-READINESS-2026-10-17.md"
+      ],
+      "releaseEvidence": [
+        "PR #148 merged October 17 at 11:07:47 UTC as 67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f. Exact checked head 0d3125792fbe1e46f4e99fcb3eda0cd0b832e53f/tree 3834af65cf3bd89d157fd64af08103e32225cd60 passed GitHub Security verification 39026911425 and Vercel. No submitted reviews or inline threads were present. Preview dpl_Gz7chXA2daWVY2yCnLiiiyTAKbkr READY: seven authenticated public delivery checks passed; browser returned authored lesson evidence/primary source and cleared question/answer/consent on topic change. Desktop screenshot inspected; width 1348 <= viewport 1363. Initial raw preview HTTP hit deployment protection; owner-route protected fetch did not expose app headers and is not owner acceptance. Production dpl_dmdhSBWZHDQjJGGJ7pCTX4swPa1f READY on the exact merge with both canonical domains assigned. Ten canonical delivery checks passed: Study page, exact three clients/styles and count-only catalog, inactive-AI/no-store status, 11-topic/537-concept Study catalog, two private/no-store 401 routes and 624 Kaspa/722-review held-bank status. The first bank probe used the wrong nested path; one corrected read passed without an application change. Canonical browser renders the new collapsed/open lesson-help entry with AI opt-in hidden and no horizontal overflow; no canonical question, game, reward, owner-login or wallet action submitted. Production deployment-scoped error/fatal log count query for the recent ten-minute window returned no groups; this early empty window is not a long-term observability guarantee. Full final verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Production dependency audit reports zero vulnerabilities; 37-component SBOM refreshed. Actual phone/Silk, live model quality/budget, first TN10 transfer, provider restore and independent review remain unverified."
       ]
     },
     {
@@ -764,7 +773,7 @@
       "status": "needs-evidence",
       "title": "Review retained Testnet reward-desk amount and copy polish",
       "owner": "Maintainer",
-      "nextAction": "Exact selected amount, recipient and unsigned operation are implemented and client-checked; accept the fields/export on the founder phone during CHAIN-001. Automatic clipboard polish remains optional; no signer or send action was added.",
+      "nextAction": "#148 merged/deployed selected whole-token/recipient/raw-operation fields; accept the review/export on the founder phone during CHAIN-001. No signer/send action; optional automatic clipboard polish remains separate.",
       "acceptance": [
         "Integer base units and validated decimals produce exact wallet amounts.",
         "Copy failures have usable manual selection and never send a transaction.",
@@ -775,6 +784,9 @@
         "docs/PR-RECONCILIATION.md",
         "docs/TESTNET-REWARD-PILOT.md",
         "docs/PLAYER-READINESS-2026-10-17.md"
+      ],
+      "releaseEvidence": [
+        "PR #148 merged October 17 at 11:07:47 UTC as 67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f. Exact checked head 0d3125792fbe1e46f4e99fcb3eda0cd0b832e53f/tree 3834af65cf3bd89d157fd64af08103e32225cd60 passed GitHub Security verification 39026911425 and Vercel. No submitted reviews or inline threads were present. Preview dpl_Gz7chXA2daWVY2yCnLiiiyTAKbkr READY: seven authenticated public delivery checks passed; browser returned authored lesson evidence/primary source and cleared question/answer/consent on topic change. Desktop screenshot inspected; width 1348 <= viewport 1363. Initial raw preview HTTP hit deployment protection; owner-route protected fetch did not expose app headers and is not owner acceptance. Production dpl_dmdhSBWZHDQjJGGJ7pCTX4swPa1f READY on the exact merge with both canonical domains assigned. Ten canonical delivery checks passed: Study page, exact three clients/styles and count-only catalog, inactive-AI/no-store status, 11-topic/537-concept Study catalog, two private/no-store 401 routes and 624 Kaspa/722-review held-bank status. The first bank probe used the wrong nested path; one corrected read passed without an application change. Canonical browser renders the new collapsed/open lesson-help entry with AI opt-in hidden and no horizontal overflow; no canonical question, game, reward, owner-login or wallet action submitted. Production deployment-scoped error/fatal log count query for the recent ten-minute window returned no groups; this early empty window is not a long-term observability guarantee. Full final verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Production dependency audit reports zero vulnerabilities; 37-component SBOM refreshed. Actual phone/Silk, live model quality/budget, first TN10 transfer, provider restore and independent review remain unverified."
       ]
     },
     {
@@ -863,16 +875,17 @@
         "tests/passkeys.test.js"
       ],
       "releaseEvidence": [
-        "#142 merge 2f552d1046309e35c52c8b6f99ff6dc14cf72a0b; #143 merge 0355013a5c1928274025ee678db7df3d285847dd. Exact-head CI/Vercel passed; both production deployments READY on both domains. #142 initial monitor timed out 21/21; unchanged-budget follow-up passed 21/21 and seven disposable request/cancel probes passed. #143 four targeted delivery checks passed; all 517 full tests passed. No real two-device/Silk or independent acceptance claim."
+        "#142 merge 2f552d1046309e35c52c8b6f99ff6dc14cf72a0b; #143 merge 0355013a5c1928274025ee678db7df3d285847dd. Exact-head CI/Vercel passed; both production deployments READY on both domains. #142 initial monitor timed out 21/21; unchanged-budget follow-up passed 21/21 and seven disposable request/cancel probes passed. #143 four targeted delivery checks passed; all 517 full tests passed. No real two-device/Silk or independent acceptance claim.",
+        "PR #148 merged October 17 at 11:07:47 UTC as 67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f. Exact checked head 0d3125792fbe1e46f4e99fcb3eda0cd0b832e53f/tree 3834af65cf3bd89d157fd64af08103e32225cd60 passed GitHub Security verification 39026911425 and Vercel. No submitted reviews or inline threads were present. Preview dpl_Gz7chXA2daWVY2yCnLiiiyTAKbkr READY: seven authenticated public delivery checks passed; browser returned authored lesson evidence/primary source and cleared question/answer/consent on topic change. Desktop screenshot inspected; width 1348 <= viewport 1363. Initial raw preview HTTP hit deployment protection; owner-route protected fetch did not expose app headers and is not owner acceptance. Production dpl_dmdhSBWZHDQjJGGJ7pCTX4swPa1f READY on the exact merge with both canonical domains assigned. Ten canonical delivery checks passed: Study page, exact three clients/styles and count-only catalog, inactive-AI/no-store status, 11-topic/537-concept Study catalog, two private/no-store 401 routes and 624 Kaspa/722-review held-bank status. The first bank probe used the wrong nested path; one corrected read passed without an application change. Canonical browser renders the new collapsed/open lesson-help entry with AI opt-in hidden and no horizontal overflow; no canonical question, game, reward, owner-login or wallet action submitted. Production deployment-scoped error/fatal log count query for the recent ten-minute window returned no groups; this early empty window is not a long-term observability guarantee. Full final verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Production dependency audit reports zero vulnerabilities; 37-component SBOM refreshed. Actual phone/Silk, live model quality/budget, first TN10 transfer, provider restore and independent review remain unverified."
       ]
     },
     {
       "id": "ACE-001",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "needs-evidence",
       "title": "Build source-grounded A.C.E. tutoring and scoped operational automation",
       "owner": "Maintainer; AI/content evaluation reviewer unassigned",
-      "nextAction": "Bounded tutor, authored retrieval/fallback, explicit AI opt-in and read-only owner readiness are implemented in this candidate. Finish release verification, then select model/budget/data policy and perform bounded live citation/injection/usage evaluation. No activation settings or paid request exist at this checkpoint; autonomous operations remain future work.",
+      "nextAction": "#148 merged/deployed. Authored lesson help works; optional bounded Gateway path and private read-only readiness are installed. Select model/budget/data policy and record a bounded live citation/injection/usage evaluation before activation. Autonomous operational tools are not installed.",
       "acceptance": [
         "Tutor retrieves reviewed sources and keeps grading/reward authority deterministic.",
         "Typed role-checked tools, audit history, bounded budget/latency and authored fallback are tested.",
@@ -887,6 +900,9 @@
         "server/ace-tutor.js",
         "tests/ace-tutor.test.js",
         "tests/ace-client.test.js"
+      ],
+      "releaseEvidence": [
+        "PR #148 merged October 17 at 11:07:47 UTC as 67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f. Exact checked head 0d3125792fbe1e46f4e99fcb3eda0cd0b832e53f/tree 3834af65cf3bd89d157fd64af08103e32225cd60 passed GitHub Security verification 39026911425 and Vercel. No submitted reviews or inline threads were present. Preview dpl_Gz7chXA2daWVY2yCnLiiiyTAKbkr READY: seven authenticated public delivery checks passed; browser returned authored lesson evidence/primary source and cleared question/answer/consent on topic change. Desktop screenshot inspected; width 1348 <= viewport 1363. Initial raw preview HTTP hit deployment protection; owner-route protected fetch did not expose app headers and is not owner acceptance. Production dpl_dmdhSBWZHDQjJGGJ7pCTX4swPa1f READY on the exact merge with both canonical domains assigned. Ten canonical delivery checks passed: Study page, exact three clients/styles and count-only catalog, inactive-AI/no-store status, 11-topic/537-concept Study catalog, two private/no-store 401 routes and 624 Kaspa/722-review held-bank status. The first bank probe used the wrong nested path; one corrected read passed without an application change. Canonical browser renders the new collapsed/open lesson-help entry with AI opt-in hidden and no horizontal overflow; no canonical question, game, reward, owner-login or wallet action submitted. Production deployment-scoped error/fatal log count query for the recent ten-minute window returned no groups; this early empty window is not a long-term observability guarantee. Full final verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Production dependency audit reports zero vulnerabilities; 37-component SBOM refreshed. Actual phone/Silk, live model quality/budget, first TN10 transfer, provider restore and independent review remain unverified."
       ]
     },
     {
@@ -909,6 +925,9 @@
         "docs/PERFORMANCE-BASELINE.md",
         "scripts/performance-baseline.mjs",
         "docs/performance/2026-10-17-readiness.json"
+      ],
+      "releaseEvidence": [
+        "PR #148 merged October 17 at 11:07:47 UTC as 67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f. Exact checked head 0d3125792fbe1e46f4e99fcb3eda0cd0b832e53f/tree 3834af65cf3bd89d157fd64af08103e32225cd60 passed GitHub Security verification 39026911425 and Vercel. No submitted reviews or inline threads were present. Preview dpl_Gz7chXA2daWVY2yCnLiiiyTAKbkr READY: seven authenticated public delivery checks passed; browser returned authored lesson evidence/primary source and cleared question/answer/consent on topic change. Desktop screenshot inspected; width 1348 <= viewport 1363. Initial raw preview HTTP hit deployment protection; owner-route protected fetch did not expose app headers and is not owner acceptance. Production dpl_dmdhSBWZHDQjJGGJ7pCTX4swPa1f READY on the exact merge with both canonical domains assigned. Ten canonical delivery checks passed: Study page, exact three clients/styles and count-only catalog, inactive-AI/no-store status, 11-topic/537-concept Study catalog, two private/no-store 401 routes and 624 Kaspa/722-review held-bank status. The first bank probe used the wrong nested path; one corrected read passed without an application change. Canonical browser renders the new collapsed/open lesson-help entry with AI opt-in hidden and no horizontal overflow; no canonical question, game, reward, owner-login or wallet action submitted. Production deployment-scoped error/fatal log count query for the recent ten-minute window returned no groups; this early empty window is not a long-term observability guarantee. Full final verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Production dependency audit reports zero vulnerabilities; 37-component SBOM refreshed. Actual phone/Silk, live model quality/budget, first TN10 transfer, provider restore and independent review remain unverified."
       ]
     },
     {
@@ -935,7 +954,8 @@
         "docs/PLAYER-READINESS-2026-10-17.md"
       ],
       "releaseEvidence": [
-        "Merge 61305c23daf11dad97f939e1f6e4e778d1865433; CI 39011943414; production dpl_GEGMmAqCCVSqv7qY8UFNz6K4XGQW READY on both canonical domains. Five delivery checks passed; live enabled login/guest and closed optional flows verified. No actual phone/authenticator acceptance claim."
+        "Merge 61305c23daf11dad97f939e1f6e4e778d1865433; CI 39011943414; production dpl_GEGMmAqCCVSqv7qY8UFNz6K4XGQW READY on both canonical domains. Five delivery checks passed; live enabled login/guest and closed optional flows verified. No actual phone/authenticator acceptance claim.",
+        "PR #148 merged October 17 at 11:07:47 UTC as 67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f. Exact checked head 0d3125792fbe1e46f4e99fcb3eda0cd0b832e53f/tree 3834af65cf3bd89d157fd64af08103e32225cd60 passed GitHub Security verification 39026911425 and Vercel. No submitted reviews or inline threads were present. Preview dpl_Gz7chXA2daWVY2yCnLiiiyTAKbkr READY: seven authenticated public delivery checks passed; browser returned authored lesson evidence/primary source and cleared question/answer/consent on topic change. Desktop screenshot inspected; width 1348 <= viewport 1363. Initial raw preview HTTP hit deployment protection; owner-route protected fetch did not expose app headers and is not owner acceptance. Production dpl_dmdhSBWZHDQjJGGJ7pCTX4swPa1f READY on the exact merge with both canonical domains assigned. Ten canonical delivery checks passed: Study page, exact three clients/styles and count-only catalog, inactive-AI/no-store status, 11-topic/537-concept Study catalog, two private/no-store 401 routes and 624 Kaspa/722-review held-bank status. The first bank probe used the wrong nested path; one corrected read passed without an application change. Canonical browser renders the new collapsed/open lesson-help entry with AI opt-in hidden and no horizontal overflow; no canonical question, game, reward, owner-login or wallet action submitted. Production deployment-scoped error/fatal log count query for the recent ten-minute window returned no groups; this early empty window is not a long-term observability guarantee. Full final verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Production dependency audit reports zero vulnerabilities; 37-component SBOM refreshed. Actual phone/Silk, live model quality/budget, first TN10 transfer, provider restore and independent review remain unverified."
       ]
     },
     {

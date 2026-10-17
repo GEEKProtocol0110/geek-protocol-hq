@@ -1,6 +1,6 @@
 # Question Maintenance — October 8, 2026
 
-The October 7 expansion reached **8,048 active questions**, twice the **4,024-question cleaned baseline**. The October 8 editorial pass retired **272 additional items**, leaving **7,776 active questions** before the subsequent ten KRC-20 additions. The October 8 total was **7,786** (194 Kaspa). The current candidate total is **8,229** (624 Kaspa); see the dated follow-ups below. Historical expansion counts below describe October 7; current counts and review dispositions are in [Editorial Review](EDITORIAL-REVIEW.md). The previous 8,032 rows included generated variants, repeated facts, and unusable imports. **4,008 rows were retired** and **4,024 distinct questions added**. Retired records remain server-only for previously issued game IDs and are excluded from every new pool and public count.
+The October 7 expansion reached **8,048 active questions**, twice the **4,024-question cleaned baseline**. The October 8 editorial pass retired **272 additional items**, leaving **7,776 active questions** before the subsequent ten KRC-20 additions. The October 8 total was **7,786** (194 Kaspa). The current merged total is **8,229** (624 Kaspa); see the dated follow-ups below. Historical expansion counts below describe October 7; current counts and review dispositions are in [Editorial Review](EDITORIAL-REVIEW.md). The previous 8,032 rows included generated variants, repeated facts, and unusable imports. **4,008 rows were retired** and **4,024 distinct questions added**. Retired records remain server-only for previously issued game IDs and are excluded from every new pool and public count.
 
 | Category | Previous rows | Cleaned baseline | Added | Active questions |
 | --- | ---: | ---: | ---: | ---: |
@@ -144,3 +144,5 @@ Existing prompts, answer keys and retired lookup records are unchanged. These ad
 ## October 17 script execution follow-up
 
 [Internal primary-source review](KASPA-SCRIPT-REVIEW-2026-10-17.md) adds 24 distinct execution/lock-constraint questions on pinned Rusty Kaspa code. Candidate totals: 624 reviewed Kaspa, 8,229 active, 722 recorded source reviews. Existing keys remain unchanged; introductory Study remains 537 concepts. Kaspa needs 376 more toward 1,000; all CCE/economy gates remain held. Independent editorial review and device acceptance are separate.
+
+The 624-question checkpoint shipped in [PR #148](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/148). Live server readiness and count-only assets agree; CCE remains held.

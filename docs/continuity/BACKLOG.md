@@ -45,7 +45,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ART-001 | P2 | blocked | Preserve paused original art and resume production only on founder direction | Founder supplies art; production maintainer unassigned |
 | SEO-001 | P0 | done | Maintain metadata and link coverage for every HQ page | Maintainer |
 | AUTH-003 | P0 | needs-evidence | Provide a cross-device account path beyond local passkey creation | Maintainer; family-account and recovery policy reviewed by founder |
-| ACE-001 | P1 | in-progress | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
+| ACE-001 | P1 | needs-evidence | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
 | PERF-001 | P1 | needs-evidence | Measure growth capacity and stage storage, delivery and worker improvements | Maintainer; performance/recovery reviewer unassigned |
 | UX-006 | P0 | needs-evidence | Make returning login clear and keep advanced setup optional | Maintainer; founder confirms usability |
 | UX-007 | P1 | needs-evidence | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
@@ -99,7 +99,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Candidate adds 24 pinned-source script execution concepts: 624 Kaspa / 8,229 active / 722 recorded reviews. Continue with 376 distinct reviewed Kaspa concepts toward 1,000; independent editor remains unassigned. Preserve issued/retired keys and all CCE/economy holds.
+Next action: #148 merged/deployed 624 reviewed Kaspa / 8,229 active / 722 recorded reviews. Continue 376 distinct source-reviewed Kaspa concepts toward 1,000; independent editor remains unassigned. Preserve prior keys and all bank/economy holds.
 
 Acceptance:
 
@@ -550,7 +550,7 @@ Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION
 
 **P2 / needs-evidence.** Owner: Maintainer. Dependencies: none.
 
-Next action: Exact selected amount, recipient and unsigned operation are implemented and client-checked; accept the fields/export on the founder phone during CHAIN-001. Automatic clipboard polish remains optional; no signer or send action was added.
+Next action: #148 merged/deployed selected whole-token/recipient/raw-operation fields; accept the review/export on the founder phone during CHAIN-001. No signer/send action; optional automatic clipboard polish remains separate.
 
 Acceptance:
 
@@ -620,9 +620,9 @@ Evidence/specification: [docs/PASSKEY-LOGIN.md](../../docs/PASSKEY-LOGIN.md), [d
 
 ## ACE-001: Build source-grounded A.C.E. tutoring and scoped operational automation
 
-**P1 / in-progress.** Owner: Maintainer; AI/content evaluation reviewer unassigned. Dependencies: none.
+**P1 / needs-evidence.** Owner: Maintainer; AI/content evaluation reviewer unassigned. Dependencies: none.
 
-Next action: Bounded tutor, authored retrieval/fallback, explicit AI opt-in and read-only owner readiness are implemented in this candidate. Finish release verification, then select model/budget/data policy and perform bounded live citation/injection/usage evaluation. No activation settings or paid request exist at this checkpoint; autonomous operations remain future work.
+Next action: #148 merged/deployed. Authored lesson help works; optional bounded Gateway path and private read-only readiness are installed. Select model/budget/data policy and record a bounded live citation/injection/usage evaluation before activation. Autonomous operational tools are not installed.
 
 Acceptance:
 
