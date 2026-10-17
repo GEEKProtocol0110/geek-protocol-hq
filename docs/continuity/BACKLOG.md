@@ -48,7 +48,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ACE-001 | P1 | planned | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
 | PERF-001 | P1 | planned | Measure growth capacity and stage storage, delivery and worker improvements | Maintainer; performance/recovery reviewer unassigned |
 | UX-006 | P0 | needs-evidence | Make returning login clear and keep advanced setup optional | Maintainer; founder confirms usability |
-| UX-007 | P1 | in-progress | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
+| UX-007 | P1 | needs-evidence | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
 
 ## CONT-001: Publish the continuation system
 
@@ -662,9 +662,9 @@ Evidence/specification: [public/sign-in/index.html](../../public/sign-in/index.h
 
 ## UX-007: Add a five-word hunt and one-time rewarded challenges
 
-**P1 / in-progress.** Owner: Maintainer; founder confirms phone usability. Dependencies: none.
+**P1 / needs-evidence.** Owner: Maintainer; founder confirms phone usability. Dependencies: none.
 
-Next action: Verify and release server-bound claims and the Challenges UI; record exact CI/deployment and browser evidence. Actual phone usability remains separate.
+Next action: #146 merged/deployed; verify the hunt, entry, clue links, task claims and My HQ journey on the actual phone. Keep independent review and unrelated background/login acceptance separate.
 
 Acceptance:
 

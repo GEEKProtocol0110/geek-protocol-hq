@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "checkedAt": "2026-10-17",
-  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127. Observed #130/#131 merges added; #131 is the character/cosmic/holiday release. Observed #132/#133 merges added; #133 dials back repeated characters and emphasizes neon-space backgrounds. Observed #134/#135 merges added; #135 clarifies the Kaspa onboarding identity and adds optional cosmetic Grid discoveries. Observed #136/#137 merges added; #137 contains mobile decoration and stabilizes background edges. Physical-phone retest remains pending. Observed #138 documentation merge added during roadmap reconciliation; runtime baseline remains #137. Observed PR #139 roadmap and #140 PSKT content merges added October 17. Product baseline is now #140 with separately recorded production evidence; previous #137 baseline evidence is retained in its record. Observed #145 background stylesheet/guard release added; current product baseline #145 has separate production evidence. Earlier baseline evidence remains preserved.",
+  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127. Observed #130/#131 merges added; #131 is the character/cosmic/holiday release. Observed #132/#133 merges added; #133 dials back repeated characters and emphasizes neon-space backgrounds. Observed #134/#135 merges added; #135 clarifies the Kaspa onboarding identity and adds optional cosmetic Grid discoveries. Observed #136/#137 merges added; #137 contains mobile decoration and stabilizes background edges. Physical-phone retest remains pending. Observed #138 documentation merge added during roadmap reconciliation; runtime baseline remains #137. Observed PR #139 roadmap and #140 PSKT content merges added October 17. Product baseline is now #140 with separately recorded production evidence; previous #137 baseline evidence is retained in its record. Observed #145 background stylesheet/guard release added; current product baseline #145 has separate production evidence. Earlier baseline evidence remains preserved. Observed #146 rewarded challenge release added; product baseline #146 has separate deployment/browser evidence and prior #145 baseline preserved.",
   "records": [
     {
       "number": 1,
@@ -997,7 +997,26 @@
       "title": "Fix raw background code above Play and enforce stylesheet coverage",
       "mergedAt": "2026-10-17T08:07:36Z",
       "commit": "bb4c5859c1e9766b8a8321757c762e955adbdc42",
-      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/145"
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/145",
+      "priorProductBaseline": {
+        "pullRequest": 145,
+        "commit": "bb4c5859c1e9766b8a8321757c762e955adbdc42",
+        "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/145",
+        "status": "merged-deployed",
+        "checkedOn": "2026-10-17",
+        "testsPassed": 525,
+        "testsFailed": 0,
+        "testsSkipped": 0,
+        "productionProbesPassed": 6,
+        "evidence": "UX-005 background dependency fix merged in #145 October 17 at 08:07:36 UTC as bb4c5859c1e9766b8a8321757c762e955adbdc42. Exact head 41b165573c04b0dadfc177b8b07afac3cd268aee/tree 5124f71b112683421cb149f31bb14d51d1c4a4de passed GitHub verification 39015732075 and Vercel. Production dpl_8TLW6JpBmjoVAGkjByyN7MXxZyv2 READY on the exact merge with both canonical domains assigned. Six targeted delivery checks passed under 15-second bounds: Play, Memory, Royale and home declare atmosphere CSS; CSS and JS match local bytes exactly. Rendered preview of all four shells found one fixed background, header at y=0 and document width 1348 <= viewport 1363. Live Play screenshot and computed styles confirm fixed, z-index -1, overflow hidden, paint containment and no pointer capture, with the header at y=0. Full candidate verification: 525 tests, zero failures/skips, required Redis 7.4.2 and 311 security assertions, all required checks. Actual narrow rendering, physical-phone/browser-bar acceptance and independent review remain unverified."
+      }
+    },
+    {
+      "number": 146,
+      "title": "Add hidden-word hunt and once-only XP challenge rewards",
+      "mergedAt": "2026-10-17T08:49:28Z",
+      "commit": "2c63d28d187d69d4ce351b2b9809d8aec0f6219f",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/146"
     }
   ]
 }
