@@ -2,6 +2,8 @@ import { holidayById } from './holiday-calendar.js';
 
 // Decoration only: no player records, game state, telemetry or external resources.
 export const initAtmosphere = () => {
+  // Never place decorative text in normal document flow when its CSS is absent.
+  if (typeof window.getComputedStyle !== 'function' || window.getComputedStyle(document.documentElement).getPropertyValue('--hq-atmosphere-ready').trim() !== '1') return;
   const main = document.querySelector('main');
   if (!main || document.querySelector('[data-hq-cosmos]')) return;
   document.body.classList.add('hq-world');
@@ -34,3 +36,5 @@ export const initAtmosphere = () => {
 };
 
 initAtmosphere();
+// A late stylesheet can enable decoration at load; a failed one leaves it absent.
+window.addEventListener('load', initAtmosphere, { once:true });

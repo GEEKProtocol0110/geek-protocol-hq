@@ -25,9 +25,9 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**UX-006: needs-evidence.** Compact login released in #144: returning Sign in and guest play first, advanced flows closed, existing sessions continue to HQ using one validated account-status source. Full checks and live desktop/delivery pass. Founder phone usability and actual authenticator/Silk acceptance remain outstanding.
+**UX-005: in-progress.** Founder Play screenshot exposes decorative code in normal flow. Source shows Play loads site/atmosphere JavaScript but neither shared styles.css nor atmosphere.css. Add direct stylesheet coverage across all participating pages, fail closed on missing CSS and validate the dependency in CI. Full checks pass: 525 tests, zero failures/skips and all required checks. Rendered preview/release pending.
 
-Next task: **AUTH-003**. Preserve the founder’s report that the prior device-access page made login more confusing. Confirm the simplified page on the actual phone; retain AUTH-003 Silk/approval/returning-session and independent-review acceptance separately. Existing GEEKT, ACE and capacity roadmap work remains staged.
+Next task: **UX-006**. Release the background stylesheet/guard correction and confirm the Play header on the actual phone. Keep login usability, actual Silk/phone authentication and independent-review acceptance separate.
 
 ## Holds
 
