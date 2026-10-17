@@ -43,3 +43,7 @@ At 2:35 AM Detroit the founder reported **“It worked”** in response to the l
 ## October 17 Silk report and compatibility candidate
 
 The founder reported that passkey creation failed on a family Amazon tablet and identified Amazon Silk. Keep the earlier founder phone success; this is a separate device report. The installed Fire OS/Silk versions and exact authenticator error are unknown. The candidate checks platform-authenticator availability locally with a two-second bound, explains absence/unknown support, and preserves external device/security-key options. Unsupported and cancelled prompts never become proof of identity. No browser data is cleared and no server proof requirement is weakened. Read [the cross-device plan](PLATFORM-NEXT-STEPS.md); parent-approved device linking and email recovery are not implemented. Actual Silk retesting remains required.
+
+## Nearby trusted-device access candidate
+
+[AUTH-003](TRUSTED-DEVICE-ACCESS.md) implements explicit same-player approval from a freshly authenticated passkey device to a guest browser without local WebAuthn support. Five-minute requests, receiving-player confirmation, bounded device lists and fresh-proof revocation preserve existing account/economic gates. This does not create parent/child accounts or merge guest progress. Actual phone/Silk and independent security acceptance remain pending; the earlier no-device-link statement describes the prior release.

@@ -99,7 +99,7 @@
     const issued = await request({ action: 'begin-register', token });
     const credential = await credentialPrompt('create', issued.options);
     const result = await request({ action: 'finish-register', challengeId: issued.challengeId, response: serialize(credential), label: panel.querySelector('[data-passkey-label]').value });
-    grant = result.grant.token;
+    grant = result.grant.token; document.dispatchEvent(new CustomEvent('geek:device-grant', {detail:result.grant}));
     note.textContent = 'Passkey saved. Keep another saved/synced passkey or a linked wallet for recovery. Signing in does not approve wallet spending.';
     document.dispatchEvent(new CustomEvent('geek:passkey-signed-in'));
     try { await refresh(); } catch { note.textContent += ' Your player is signed in, but the passkey list could not refresh. Reload to check it.'; }
@@ -110,31 +110,34 @@
     const issued = await request({ action: 'begin-login' });
     const credential = await credentialPrompt('get', issued.options);
     const result = await request({ action: 'finish-login', challengeId: issued.challengeId, response: serialize(credential) });
-    grant = result.grant.token; note.textContent = 'Signed in to your saved player. You can add or remove a passkey during this fresh sign-in.';
+    grant = result.grant.token; document.dispatchEvent(new CustomEvent('geek:device-grant', {detail:result.grant})); note.textContent = 'Signed in to your saved player. You can add or remove a passkey during this fresh sign-in.';
     document.dispatchEvent(new CustomEvent('geek:passkey-signed-in'));
     try { await refresh(); } catch { note.textContent += ' Your player is signed in, but the passkey list could not refresh. Reload to check it.'; }
   }));
   panel.querySelector('[data-passkey-logout]').addEventListener('click', () => act(async () => { await request({ action: 'logout' }); grant = ''; location.reload(); }));
+  document.addEventListener('geek:device-grant-used', () => { grant = ''; });
   document.addEventListener('geek:passkey-grant', event => { grant = event.detail.token; note.textContent = 'Wallet control verified. Select Create a passkey to continue.'; });
   panel.querySelector('[data-passkey-wallet-authorize]').addEventListener('click', () => document.dispatchEvent(new CustomEvent('geek:passkey-wallet-proof')));
   setDisabled();
-  if (!window.isSecureContext || !window.PublicKeyCredential || !navigator.credentials?.create || !navigator.credentials?.get) {
+  const supported = Boolean(window.isSecureContext && window.PublicKeyCredential && navigator.credentials?.create && navigator.credentials?.get);
+  if (!supported) {
     note.textContent = 'Passkeys are unavailable in this browser. Use an up-to-date browser on a device with passkey support, or keep learning as a guest here. Changing browsers alone may not add passkey support to an Amazon Fire tablet.';
     if (device) device.textContent = 'This browser cannot request a passkey. Your existing player data has not been cleared.';
     if (deviceHelp) deviceHelp.open = true;
   } else {
     void checkDevice();
+  }
     (async () => {
       try {
         await fetchJson('/api/session', {});
         const data = await refresh();
-        ready = true; setDisabled();
-        note.textContent = data.signedIn ? 'Your passkey session is active.' : data.walletLinked
+        ready = supported; setDisabled();
+        document.dispatchEvent(new CustomEvent('geek:device-ready', { detail: {signedIn:data.signedIn,playerName:data.playerName} }));
+        if (supported) note.textContent = data.signedIn ? 'Your passkey session is active.' : data.walletLinked
           ? 'This player is linked to a wallet. Adding a passkey requires fresh wallet proof. A new guest passkey cannot recover an older wallet-linked player.'
           : 'First visit? Create a passkey for this player. Returning? Sign in with the passkey you already saved.';
         document.querySelector('[data-passkey-wallet-help]').hidden = !data.walletLinked;
         if (data.signedIn) document.dispatchEvent(new CustomEvent('geek:passkey-signed-in'));
       } catch (error) { note.textContent = `${error.message} Reload to check your saved player.`; }
     })();
-  }
 })();

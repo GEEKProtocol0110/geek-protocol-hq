@@ -43,8 +43,8 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CHAIN-003 | P2 | in-progress | Review retained Testnet reward-desk amount and copy polish | Maintainer |
 | PILOT-002 | P1 | planned | Review retained wallet-safety course and evaluation tooling | Pilot coordinator and instructor unassigned |
 | ART-001 | P2 | blocked | Preserve paused original art and resume production only on founder direction | Founder supplies art; production maintainer unassigned |
-| SEO-001 | P0 | in-progress | Maintain metadata and link coverage for every HQ page | Maintainer |
-| AUTH-003 | P0 | planned | Provide a cross-device account path beyond local passkey creation | Maintainer; family-account and recovery policy reviewed by founder |
+| SEO-001 | P0 | done | Maintain metadata and link coverage for every HQ page | Maintainer |
+| AUTH-003 | P0 | in-progress | Provide a cross-device account path beyond local passkey creation | Maintainer; family-account and recovery policy reviewed by founder |
 | ACE-001 | P1 | planned | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
 | PERF-001 | P1 | planned | Measure growth capacity and stage storage, delivery and worker improvements | Maintainer; performance/recovery reviewer unassigned |
 
@@ -589,9 +589,9 @@ Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION
 
 ## SEO-001: Maintain metadata and link coverage for every HQ page
 
-**P0 / in-progress.** Owner: Maintainer. Dependencies: none.
+**P0 / done.** Owner: Maintainer. Dependencies: none.
 
-Next action: Validate and publish the 40-template metadata/device-readiness candidate. Preserve private/noindex boundaries, all internal targets, source attribution and external-link uncertainty.
+Next action: Maintain catalog/CI as pages change; external blocked links remain unverified.
 
 Acceptance:
 
@@ -603,17 +603,17 @@ Evidence/specification: [docs/site-pages.json](../../docs/site-pages.json), [scr
 
 ## AUTH-003: Provide a cross-device account path beyond local passkey creation
 
-**P0 / planned.** Owner: Maintainer; family-account and recovery policy reviewed by founder. Dependencies: none.
+**P0 / in-progress.** Owner: Maintainer; family-account and recovery policy reviewed by founder. Dependencies: none.
 
-Next action: Specify parent-approved device pairing or a parent-controlled fallback. Bind a short-lived one-use link to the exact saved player and receiving browser; define revocation and handling of separate guest progress before implementation.
+Next action: Verify and release nearby same-player device approval, then test with the actual phone and Silk tablet. Parent/child roles remain separate; do not share a parent account expecting a separate child profile.
 
 Acceptance:
 
 - Unsupported-passkey devices have a tested, explicit authorized sign-in path.
 - Fresh proof, short expiry, replay protection, rate limits and device revocation preserve player ownership.
-- Parent/child policy and real Silk/phone recovery acceptance exist without seed phrases or an address-only bypass.
+- Same-player access is clearly distinguished from unimplemented parent/child roles; real Silk/phone recovery acceptance is recorded without seed phrases or an address-only bypass.
 
-Evidence/specification: [docs/PASSKEY-LOGIN.md](../../docs/PASSKEY-LOGIN.md), [docs/IDENTITY-PROTOCOL.md](../../docs/IDENTITY-PROTOCOL.md), [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md).
+Evidence/specification: [docs/PASSKEY-LOGIN.md](../../docs/PASSKEY-LOGIN.md), [docs/IDENTITY-PROTOCOL.md](../../docs/IDENTITY-PROTOCOL.md), [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md), [docs/TRUSTED-DEVICE-ACCESS.md](../../docs/TRUSTED-DEVICE-ACCESS.md).
 
 ## ACE-001: Build source-grounded A.C.E. tutoring and scoped operational automation
 

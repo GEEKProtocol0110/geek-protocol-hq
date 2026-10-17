@@ -1984,6 +1984,23 @@
       ],
       "authoredAt": "2026-10-17T00:20:46-04:00",
       "title": "Merge pull request #140 from GEEKProtocol0110/codex/kaspa-600-pskt"
+    },
+    {
+      "commit": "6042fe2c203af34236f0132d21a876d083713abe",
+      "authoredAt": "2026-10-17T00:51:27-04:00",
+      "parents": [
+        "75da5e619b0848ba57d2b1da54bbc91cad1b9323"
+      ],
+      "title": "Refresh all HQ page metadata and clarify device login and GEEKT readiness"
+    },
+    {
+      "commit": "8c0bdf165085add9fafbb2ead3dd4441af40539c",
+      "authoredAt": "2026-10-17T01:10:54-04:00",
+      "parents": [
+        "75da5e619b0848ba57d2b1da54bbc91cad1b9323",
+        "6042fe2c203af34236f0132d21a876d083713abe"
+      ],
+      "title": "Merge pull request #141 from GEEKProtocol0110/codex/site-metadata-device-readiness"
     }
   ]
 }

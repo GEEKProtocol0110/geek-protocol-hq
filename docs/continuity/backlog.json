@@ -804,10 +804,10 @@
     {
       "id": "SEO-001",
       "priority": "P0",
-      "status": "in-progress",
+      "status": "done",
       "title": "Maintain metadata and link coverage for every HQ page",
       "owner": "Maintainer",
-      "nextAction": "Validate and publish the 40-template metadata/device-readiness candidate. Preserve private/noindex boundaries, all internal targets, source attribution and external-link uncertainty.",
+      "nextAction": "Maintain catalog/CI as pages change; external blocked links remain unverified.",
       "acceptance": [
         "All public/operator HTML templates have maintained metadata and explicit indexing policy.",
         "Sitemap/canonical/share metadata and internal targets/fragments agree and are checked in CI.",
@@ -819,25 +819,30 @@
         "scripts/site-pages.mjs",
         "docs/site-link-review-2026-10-17.json",
         "docs/PLATFORM-NEXT-STEPS.md"
+      ],
+      "completedAt": "2026-10-17",
+      "completionEvidence": [
+        "PR #141 merged at 8c0bdf165085add9fafbb2ead3dd4441af40539c. Exact-head CI run 39004144459 and Vercel passed; production dpl_FDUNCtnpzXkuUuASkhN1jiNuNQ4L READY on both canonical domains; standard monitor 21/21 passed. 500 full tests, zero failures/skips."
       ]
     },
     {
       "id": "AUTH-003",
       "priority": "P0",
-      "status": "planned",
+      "status": "in-progress",
       "title": "Provide a cross-device account path beyond local passkey creation",
       "owner": "Maintainer; family-account and recovery policy reviewed by founder",
-      "nextAction": "Specify parent-approved device pairing or a parent-controlled fallback. Bind a short-lived one-use link to the exact saved player and receiving browser; define revocation and handling of separate guest progress before implementation.",
+      "nextAction": "Verify and release nearby same-player device approval, then test with the actual phone and Silk tablet. Parent/child roles remain separate; do not share a parent account expecting a separate child profile.",
       "acceptance": [
         "Unsupported-passkey devices have a tested, explicit authorized sign-in path.",
         "Fresh proof, short expiry, replay protection, rate limits and device revocation preserve player ownership.",
-        "Parent/child policy and real Silk/phone recovery acceptance exist without seed phrases or an address-only bypass."
+        "Same-player access is clearly distinguished from unimplemented parent/child roles; real Silk/phone recovery acceptance is recorded without seed phrases or an address-only bypass."
       ],
       "dependsOn": [],
       "evidence": [
         "docs/PASSKEY-LOGIN.md",
         "docs/IDENTITY-PROTOCOL.md",
-        "docs/PLATFORM-NEXT-STEPS.md"
+        "docs/PLATFORM-NEXT-STEPS.md",
+        "docs/TRUSTED-DEVICE-ACCESS.md"
       ]
     },
     {

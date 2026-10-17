@@ -51,7 +51,7 @@ test('first-visit passkey enrollment requires a tap, serializes exact bytes and 
   assert.equal(Buffer.from(ui.prompts[0].options.publicKey.user.id).toString(),'player');
   const finish=ui.calls.find(c=>c.body?.action==='finish-register').body;
   assert.equal(finish.response.response.attestationObject,b64('attestation'));
-  assert.equal(finish.label,'My phone');assert.equal(ui.events[0].type,'geek:passkey-signed-in');
+  assert.equal(finish.label,'My phone');assert.ok(ui.events.some(e=>e.type==='geek:passkey-signed-in'));
 });
 
 test('no platform provider explains device limits without blocking an external passkey or security key',async () => {
@@ -91,12 +91,13 @@ test('returning login sends the assertion and exposes access even if the credent
   const finish=ui.calls.find(c=>c.body?.action==='finish-login').body;
   assert.equal(finish.response.response.userHandle,b64('player'));
   assert.equal(finish.response.response.signature,b64('signature'));
-  assert.equal(ui.events[0].type,'geek:passkey-signed-in');
+  assert.ok(ui.events.some(e=>e.type==='geek:passkey-signed-in'));
   assert.match(ui.node('[data-passkey-note]').textContent,/player is signed in.*could not refresh/);
 });
 
 test('unsupported browsers keep enrollment disabled and explain the browser and guest options',async () => {
-  const ui=await mount({support:false});assert.equal(ui.calls.length,0);
+  const ui=await mount({support:false});assert.equal(ui.calls.length,2);
+  assert.ok(ui.events.some(e=>e.type==='geek:device-ready'));assert.equal(ui.prompts.length,0);
   assert.equal(ui.node('[data-passkey-save]').disabled,true);
   assert.match(ui.node('[data-passkey-note]').textContent,/up-to-date browser.*guest/);
 });

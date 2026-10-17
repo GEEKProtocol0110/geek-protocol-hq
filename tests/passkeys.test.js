@@ -291,3 +291,155 @@ test('a stale session refresh cannot overwrite a newer wallet protection state',
   assert.equal(refreshed.statusCode,409);
   assert.equal(refreshed.headers['Set-Cookie'],undefined);
 });
+
+const deviceCall = (cookie, action, body = {}, changed = {}) => call(passkeysHandler,cookie,{action:'device-'+action,...body},'POST',changed);
+const newDevice = async () => {
+  const cookie = await session(), start = await deviceCall(cookie,'start',{label:'My tablet',acknowledge:true});
+  assert.equal(start.statusCode,200,JSON.stringify(start.body));
+  return {cookie,...start.body};
+};
+const approveDevice = async (source,target,extra = {}) => {
+  const review = await deviceCall(source.cookie,'review',{code:target.code});
+  assert.equal(review.statusCode,200,JSON.stringify(review.body));
+  return deviceCall(source.cookie,'approve',{code:target.code,check:review.body.check,playerId:review.body.playerId,confirm:true,token:source.grant,...extra});
+};
+const finishDevice = async target => {
+  const status = await deviceCall(target.cookie,'status',{code:target.code});
+  assert.equal(status.statusCode,200,JSON.stringify(status.body));
+  return deviceCall(target.cookie,'finish',{code:target.code,approvalId:status.body.approvalId,confirm:true});
+};
+
+test('trusted-device approval rotates only the receiving cookie, preserves both profiles and grants no management proof',async()=>{
+  const sourceGuest=await session(), player=sourceGuest.split('=')[1], source=await enroll(sourceGuest), target=await newDevice();
+  const guest=target.cookie.split('=')[1];
+  await fixture.command('SET','geek:profile:'+player,'saved-source-profile');
+  await fixture.command('SET','geek:profile:'+guest,'separate-guest-profile');
+  assert.equal((await deviceCall(target.cookie,'status',{code:target.code})).body.approved,false);
+  assert.equal((await approveDevice(source,target)).statusCode,200);
+  assert.equal((await deviceCall(target.cookie,'finish',{code:target.code,confirm:true})).statusCode,400,'receiver must review the approved player');
+  const finish=await finishDevice(target);assert.equal(finish.statusCode,200,JSON.stringify(finish.body));
+  const cookie=cookieFrom(finish), linked=JSON.parse(await fixture.command('GET','geek:session:'+cookie.split('=')[1]));
+  assert.notEqual(cookie,target.cookie);assert.equal(linked.playerId,player);assert.equal(linked.passkeyEpoch,1);
+  assert.equal(finish.body.grant,undefined);
+  assert.equal((await call(passkeysHandler,cookie,{action:'begin-register'})).body.code,'PASSKEY_REAUTH_REQUIRED');
+  assert.equal((await call(passkeysHandler,target.cookie,null,'GET')).statusCode,401);
+  assert.equal((await call(passkeysHandler,source.cookie,null,'GET')).statusCode,200);
+  assert.equal(await fixture.command('GET','geek:profile:'+player),'saved-source-profile');
+  assert.equal(await fixture.command('GET','geek:profile:'+guest),'separate-guest-profile');
+  const list=await deviceCall(source.cookie,'list');assert.equal(list.body.devices.length,1);
+  assert.equal(list.body.devices[0].sessionId,undefined);assert.equal(list.body.devices[0].label,'My tablet');
+  const events=await fixture.command('KEYS','geek:audit:event:*');
+  const logs=(await Promise.all(events.map(k=>fixture.command('GET',k)))).join('');
+  assert.ok(logs.includes('identity.device.linked'));assert.ok(!logs.includes(target.code));assert.ok(!logs.includes(cookie.split('=')[1]));
+});
+
+test('approval requires a saved passkey session, fresh one-use proof, exact reviewed player, matching check and explicit confirmation',async()=>{
+  const source=await enroll(await session()), target=await newDevice(), guest=await session();
+  assert.equal((await deviceCall(guest,'review',{code:target.code})).body.code,'DEVICE_REAUTH_REQUIRED');
+  const review=(await deviceCall(source.cookie,'review',{code:target.code})).body;
+  const good={code:target.code,check:review.check,playerId:review.playerId,confirm:true,token:source.grant};
+  for(const change of [{token:undefined},{check:'wrong'},{confirm:false},{playerId:'a'.repeat(32)}]) {
+    const r=await deviceCall(source.cookie,'approve',{...good,...change});assert.equal(r.statusCode,400);assert.equal(r.headers['Set-Cookie'],undefined);
+  }
+  assert.equal((await deviceCall(source.cookie,'approve',good)).statusCode,200);
+  const second=await newDevice();assert.equal((await approveDevice(source,second)).body.code,'PASSKEY_REAUTH_REQUIRED');
+  assert.equal((await deviceCall(source.cookie,'start',{acknowledge:true})).body.code,'DEVICE_GUEST_REQUIRED');
+  assert.equal((await deviceCall(guest,'start',{})).body.code,'DEVICE_GUEST_REQUIRED');
+});
+
+test('only the requesting browser on the exact origin can check, cancel or finish a request',async()=>{
+  const source=await enroll(await session()), target=await newDevice(), other=await session();
+  await approveDevice(source,target);
+  for(const action of ['status','cancel','finish']) {
+    assert.equal((await deviceCall(other,action,{code:target.code,confirm:true})).statusCode,400,action);
+    assert.equal((await deviceCall(target.cookie,action,{code:target.code,confirm:true},{origin:'https://geekprotocol.xyz',host:'geekprotocol.xyz'})).statusCode,400,action);
+  }
+  const done=await finishDevice(target);assert.equal(done.statusCode,200);
+  assert.equal((await deviceCall(cookieFrom(done),'status',{code:target.code})).statusCode,400,'single use');
+});
+
+test('a new tablet code replaces the previous request and cancellation prevents approval',async()=>{
+  const source=await enroll(await session()), target=await newDevice();
+  const replacement=await deviceCall(target.cookie,'start',{acknowledge:true});assert.equal(replacement.statusCode,200);
+  assert.equal((await deviceCall(source.cookie,'review',{code:target.code})).statusCode,400);
+  assert.equal((await deviceCall(target.cookie,'cancel',{code:replacement.body.code})).statusCode,200);
+  assert.equal((await deviceCall(source.cookie,'review',{code:replacement.body.code})).statusCode,400);
+});
+
+test('expired or malformed requests fail closed without changing sessions',async()=>{
+  const target=await newDevice(), code=target.code.replaceAll('-',''), key='geek:device:request:v1:'+hash(code).toString('hex');
+  const r=JSON.parse(await fixture.command('GET',key));r.issuedAt=Date.now()-300001;r.expiresAt=r.issuedAt+300000;
+  for(const raw of [JSON.stringify(r),'null','{}','[]','{']) {
+    await fixture.command('SET',key,raw);
+    const status=await deviceCall(target.cookie,'status',{code:target.code});assert.equal(status.statusCode,400);assert.equal(status.headers['Set-Cookie'],undefined);
+  }
+  assert.equal((await call(passkeysHandler,target.cookie,null,'GET')).statusCode,200);
+});
+
+test('changing passkeys or signing the approving browser out invalidates pending approvals',async()=>{
+  for(const change of ['logout','epoch']) {
+    await fixture.command('FLUSHDB');
+    const source=await enroll(await session()), target=await newDevice();await approveDevice(source,target);
+    if(change==='logout') await call(passkeysHandler,source.cookie,{action:'logout'});
+    else {const id=(await deviceCall(target.cookie,'status',{code:target.code})).body;assert.equal(id.approved,true);
+      const accountKey=(await fixture.command('KEYS','geek:passkey:account:v1:*'))[0], account=JSON.parse(await fixture.command('GET',accountKey));account.epoch++;await fixture.command('SET',accountKey,JSON.stringify(account));}
+    const result=await finishDevice(target);assert.equal(result.statusCode,400,change);assert.equal(result.headers['Set-Cookie'],undefined);
+  }
+});
+
+test('removing approved-device access requires fresh proof and blocks stale session refresh resurrection',async()=>{
+  const guest=await session(), player=guest.split('=')[1], source=await enroll(guest), target=await newDevice();await approveDevice(source,target);
+  const linked=await finishDevice(target), cookie=cookieFrom(linked), devices=(await deviceCall(source.cookie,'list')).body.devices;
+  assert.equal((await deviceCall(source.cookie,'revoke',{deviceId:devices[0].id,token:source.grant})).body.code,'PASSKEY_REAUTH_REQUIRED');
+  const b=await call(passkeysHandler,source.cookie,{action:'begin-login'});
+  const auth=await call(passkeysHandler,source.cookie,{action:'finish-login',challengeId:b.body.challengeId,response:source.key.login(b.body.options,player)});
+  let revoked=false;
+  beforeCommand=async command=>{
+    if(command[0]==='EVAL'&&command[1].includes('geek-session-save-v1')) {
+      beforeCommand=null;
+      const r=await deviceCall(cookieFrom(auth),'revoke',{deviceId:devices[0].id,token:auth.body.grant.token});assert.equal(r.statusCode,200,JSON.stringify(r.body));revoked=true;
+    }
+  };
+  const refresh=await call(sessionHandler,cookie,{});assert.equal(revoked,true);assert.equal(refresh.statusCode,401);assert.equal(refresh.headers['Set-Cookie'],undefined);
+  assert.equal((await call(passkeysHandler,cookie,null,'GET')).statusCode,401);
+  assert.equal((await deviceCall(cookieFrom(auth),'list')).body.devices.length,0);
+});
+
+test('concurrent completion has one winner; invalid device registry is preserved and blocks writes',async()=>{
+  const source=await enroll(await session()), target=await newDevice();await approveDevice(source,target);
+  const state=(await deviceCall(target.cookie,'status',{code:target.code})).body;
+  const outcomes=await Promise.all([1,2].map(()=>deviceCall(target.cookie,'finish',{code:target.code,approvalId:state.approvalId,confirm:true})));
+  assert.equal(outcomes.filter(r=>r.statusCode===200).length,1);assert.equal(outcomes.filter(r=>r.headers['Set-Cookie']).length,1);
+  const player=JSON.parse(await fixture.command('GET','geek:session:'+source.cookie.split('=')[1])).playerId;
+  const key='geek:device:list:v1:'+player;await fixture.command('SET',key,'null');
+  const invalid=await deviceCall(source.cookie,'list');assert.equal(invalid.statusCode,503);assert.equal(await fixture.command('GET',key),'null');
+});
+
+test('restore cleanup deletes device requests, pending pointers and bearer indexes but preserves saved player credentials',async()=>{
+  const source=await enroll(await session()), target=await newDevice();await approveDevice(source,target);await finishDevice(target);
+  const pending=await newDevice();assert.ok(pending.code);
+  const accounts=await fixture.command('KEYS','geek:passkey:account:v1:*');
+  assert.ok((await fixture.command('KEYS','geek:device:*')).length>=3);
+  await resetRestoredSessions({command:fixture.command,apply:true});
+  assert.deepEqual(await fixture.command('KEYS','geek:device:*'),[]);
+  assert.deepEqual(await fixture.command('KEYS','geek:session:*'),[]);
+  assert.deepEqual(await fixture.command('KEYS','geek:passkey:account:v1:*'),accounts);
+});
+
+test('device cap, stale receiving state and audit-index corruption cannot partially switch a player',async()=>{
+  for(const change of ['cap','session','audit']) {
+    await fixture.command('FLUSHDB');
+    const source=await enroll(await session()), target=await newDevice();await approveDevice(source,target);
+    const player=JSON.parse(await fixture.command('GET','geek:session:'+source.cookie.split('=')[1])).playerId;
+    if(change==='cap') await fixture.command('SET','geek:device:list:v1:'+player,JSON.stringify(Array.from({length:10},(_,i)=>({id:(i+1).toString(16).padStart(32,'0'),sessionId:(i+21).toString(16).padStart(32,'0'),label:'Recorded device',createdAt:Date.now()}))));
+    if(change==='audit') await fixture.command('SET','geek:audit:index','malformed-index');
+    if(change==='session') beforeCommand=async command=>{
+      if(command[0]==='EVAL'&&command[1].includes('geek-device-finish-v1')) {
+        beforeCommand=null;const key='geek:session:'+target.cookie.split('=')[1],current=JSON.parse(await fixture.command('GET',key));current.name='Concurrent edit';await fixture.command('SET',key,JSON.stringify(current));
+      }
+    };
+    const result=await finishDevice(target);assert.equal(result.statusCode,400,change);assert.equal(result.headers['Set-Cookie'],undefined);
+    assert.ok(await fixture.command('GET','geek:session:'+target.cookie.split('=')[1]));
+    const list=await fixture.command('GET','geek:device:list:v1:'+player);assert.equal(list===null?0:JSON.parse(list).length,change==='cap'?10:0);
+  }
+});

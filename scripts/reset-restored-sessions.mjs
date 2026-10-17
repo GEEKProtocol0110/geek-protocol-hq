@@ -1,8 +1,8 @@
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const patterns = ['geek:session:*', 'geek:ops:session:*', 'geek:*:identity:challenge:*', 'geek:*:identity:authorization:*', 'geek:passkey:challenge:v1:*', 'geek:passkey:grant:v1:*'];
-const transient = key => /^geek:(session:|ops:session:|[a-z0-9-]+:identity:(challenge|authorization):|passkey:(challenge|grant):v1:)/.test(key);
+const patterns = ['geek:device:*', 'geek:session:*', 'geek:ops:session:*', 'geek:*:identity:challenge:*', 'geek:*:identity:authorization:*', 'geek:passkey:challenge:v1:*', 'geek:passkey:grant:v1:*'];
+const transient = key => /^geek:(device:|session:|ops:session:|[a-z0-9-]+:identity:(challenge|authorization):|passkey:(challenge|grant):v1:)/.test(key);
 const scanSessions = async command => {
   const keys = new Set();
   for (const pattern of patterns) {
