@@ -2,11 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#080b0b" />
-    <meta name="description" content="Sign in to Geek Protocol with a passkey or Kaspa wallet, recover your saved player, or continue as a guest." />
+    <!-- site-metadata:start -->
     <title>Sign in — Geek Protocol</title>
+    <meta name="description" content="Sign in to your Geek Protocol player with a supported passkey or linked Kaspa wallet, check device guidance, or continue learning as a guest." />
+    <meta name="theme-color" content="#080b0b" />
+    <meta name="robots" content="noindex,follow" />
+    <link rel="icon" type="image/png" href="/assets/geek-protocol-logo.png" />
     <link rel="canonical" href="https://www.geekprotocol.xyz/sign-in/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Geek Protocol" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Sign in — Geek Protocol" />
+    <meta property="og:description" content="Sign in to your Geek Protocol player with a supported passkey or linked Kaspa wallet, check device guidance, or continue learning as a guest." />
+    <meta property="og:url" content="https://www.geekprotocol.xyz/sign-in/" />
+    <meta property="og:image" content="https://www.geekprotocol.xyz/assets/kaspa-culture.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1024" />
+    <meta property="og:image:alt" content="GIGA, Geek Protocol&#39;s gold robot mascot, beside the Kaspa emblem." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@geekonkas" />
+    <meta name="twitter:title" content="Sign in — Geek Protocol" />
+    <meta name="twitter:description" content="Sign in to your Geek Protocol player with a supported passkey or linked Kaspa wallet, check device guidance, or continue learning as a guest." />
+    <meta name="twitter:image" content="https://www.geekprotocol.xyz/assets/kaspa-culture.png" />
+    <meta name="twitter:image:alt" content="GIGA, Geek Protocol&#39;s gold robot mascot, beside the Kaspa emblem." />
+    <!-- site-metadata:end -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/assets/styles.css" />
     <link rel="stylesheet" href="./assets/sign-in.css" />
     <script defer src="/assets/site.js"></script>
@@ -28,7 +49,9 @@
         <a class="button button-primary sign-in-hq" href="/profile/" data-sign-in-hq hidden>Open My HQ →</a>
       <section class="sign-in-card" data-passkeys aria-labelledby="passkey-title">
         <h2 id="passkey-title">Keep your place.</h2><p class="sign-in-player">Current player: <strong data-passkey-player>Checking player…</strong></p>
-        <p>Return with your device’s fingerprint, face or screen lock. Choose your saved passkey to recover your player.</p>
+        <p>Choose your saved passkey to recover your player. On supported devices, your passkey provider may use a fingerprint, face or screen lock.</p>
+        <p class="sign-in-note" data-passkey-device role="status" aria-live="polite">Passkey support depends on this browser, device and its credential provider.</p>
+        <details class="sign-in-method" data-passkey-device-help><summary>Amazon Fire tablet or passkeys unavailable?</summary><p>A browser can expose passkey controls without a working passkey provider. A tablet PIN or fingerprint alone does not create a passkey provider. On Amazon Fire with Silk, check for a system update and use another device or a security key only if the browser offers it.</p><p>You can keep learning as a guest on this tablet. Keep this browser’s data to preserve that guest player. A passkey saved on another device belongs to that device’s player until you sign in; creating a new passkey elsewhere does not move this tablet’s guest progress.</p><p>If this player already has a linked Kaspa wallet, use its verified sign-in method below. A public address alone cannot recover a player. Geek does not yet offer parent-approved device linking or email-code recovery. Never enter a seed phrase or private key here.</p></details>
         <p class="sign-in-note">Signing in switches this browser to that player. Separate guest progress is not merged.</p><p><b>Played before?</b> Sign in to your saved player.</p><div class="sign-in-actions"><button type="button" class="button button-primary" data-passkey-login disabled>Sign in with a passkey</button></div>
         <details class="sign-in-method"><summary>First visit? Save this player with a passkey</summary><p>Your current player and progress stay together. Give the passkey a name you recognize.</p>
         <label for="passkey-label">Passkey name</label><input id="passkey-label" data-passkey-label maxlength="40" placeholder="My phone" autocomplete="off" />

@@ -1,10 +1,15 @@
-import { ownerClient, escapeHtml } from './ops-core.js';
+import { ownerClient, escapeHtml, formatTokenUnits } from './ops-core.js';
 const $ = selector => document.querySelector(selector);
 const client = ownerClient({ endpoint: '/api/session?service=operations&action=testnet' });
 const runClient = ownerClient({ endpoint: '/api/ranked?resume=1' });
 const runId = () => $('[data-queue]').elements.runId;
 let records = [], selected = '', enabled = false, busy = false;
 const current = () => records.find(r => r.id === selected);
+const amountLabel = record => {
+  const units = formatTokenUnits(record.amount, record.decimals);
+  return units === null ? `${record.amount} base units · wallet amount unavailable; verify decimals before sending`
+    : `${units} ${record.ticker} (${record.amount} base units; ${record.decimals} decimals)`;
+};
 const controls = () => {
   document.querySelectorAll('button,input').forEach(el => { el.disabled = busy; });
   $('[data-queue-button]').disabled = busy || !enabled;
@@ -13,13 +18,13 @@ const controls = () => {
   $('[data-export]').disabled = busy || !current();
 };
 const render = () => {
-  $('[data-records]').innerHTML = records.length ? records.map(r => `<article class="workspace-card"><h2>${escapeHtml(r.state)}</h2><p>${escapeHtml(r.ticker)} · ${escapeHtml(r.amount)} raw units · ${escapeHtml(r.network)}</p><p>Receipt ${escapeHtml(r.id)}</p><p>To ${escapeHtml(r.recipient)}</p><p>Daily Signal: ${r.proof.correct} / 5 correct · score ${r.proof.score}</p>${r.transactionHash ? `<p>Reveal hash ${escapeHtml(r.transactionHash)}</p>` : '<p>No transaction hash attached.</p>'}<button type="button" data-select="${escapeHtml(r.id)}">${r.id === selected ? 'Selected receipt' : 'Select receipt'}</button>${r.transactionHash ? `<button type="button" data-check="${escapeHtml(r.id)}">Check same hash</button>` : ''}</article>`).join('') : '<p>No pilot receipts yet.</p>';
+  $('[data-records]').innerHTML = records.length ? records.map(r => `<article class="workspace-card"><h2>${escapeHtml(r.state)}</h2><p>${escapeHtml(amountLabel(r))} · ${escapeHtml(r.network)}</p><p>Receipt ${escapeHtml(r.id)}</p><p>To ${escapeHtml(r.recipient)}</p><p>Daily Signal: ${r.proof.correct} / 5 correct · score ${r.proof.score}</p>${r.transactionHash ? `<p>Reveal hash ${escapeHtml(r.transactionHash)}</p><p>Reconcile this same hash. Do not send another transfer.</p>` : '<p>No transaction hash attached. A queued receipt has not sent any tokens.</p>'}<button type="button" data-select="${escapeHtml(r.id)}">${r.id === selected ? 'Selected receipt' : 'Select receipt'}</button>${r.transactionHash ? `<button type="button" data-check="${escapeHtml(r.id)}">Check same hash</button>` : ''}</article>`).join('') : '<p>No pilot receipts yet. Complete and save an eligible Daily, load it here and queue within five minutes. Then export the receipt, send once in your TN10 wallet, attach its reveal hash and check that same hash.</p>';
   controls();
 };
 const load = async () => {
   const payload = await client.request(); records = payload.records; enabled = payload.enabled;
   if (!current()) selected = '';
-  $('[data-config]').textContent = enabled ? `${payload.config.ticker} on ${payload.network} · ${payload.config.amount} raw units per pilot run · no automatic signer.` : 'Disabled. Configure and verify a deployed testnet asset and approved test wallet before queuing.';
+  $('[data-config]').textContent = enabled ? `${amountLabel(payload.config)} on ${payload.network} per eligible pilot run. Configuration loaded; the server verifies the pinned asset when queuing. No automatic signer or token transfer.` : 'Disabled. Configure and verify a deployed testnet asset and approved test wallet before queuing.';
   render();
 };
 const task = async action => {

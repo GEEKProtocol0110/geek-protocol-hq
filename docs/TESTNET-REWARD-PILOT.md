@@ -68,3 +68,8 @@ Changing any asset configuration changes its fingerprint. Existing receipts rema
 Implementation was checked against [Kasplex SDK Kiwi](https://github.com/kasplex/sdk-kiwi/tree/06dc75ea1066aba4d78eb32711690f6f123a9575), especially its testnet constants, operation API and response types, and [Kasplex indexer executor](https://github.com/kasplex/indexer-executor/tree/0e4ee46fb6e7a148dfff38bac78bd8415c312c15) for accepted / rejected transfer semantics. These references do not establish the provenance of an unconfigured test asset or authorize its signer.
 
 Real-Redis tests exercise a completed ranked Daily run, atomic receipt creation, disabled and wrong-network configuration, private access, stale writes, asset mismatch, exact indexed transfer matching, replay protection and damaged records. The transfer/indexer fixtures are synthetic and perform no blockchain transaction.
+
+
+## October 17 amount-display candidate
+
+The owner desk now derives wallet-display amounts from canonical integer strings and verified decimal metadata. For GEEKT at eight decimals, 100000000 base units displays as 1 GEEKT; the raw units remain visible. Missing or malformed decimals produce an unavailable-display message rather than a guessed amount. Queued receipts explicitly say they have not sent tokens; attached hashes direct the owner to reconcile the same hash. This candidate adds no signer, broadcaster, automatic retry or receipt eligibility change. The first real transfer remains CHAIN-001 acceptance work.

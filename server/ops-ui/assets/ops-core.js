@@ -32,6 +32,16 @@ export const ownerClient = ({ endpoint, fetchImpl = globalThis.fetch }) => {
     }
   };
 };
+// Keep wallet display amounts exact; token quantities can exceed Number precision.
+export const formatTokenUnits = (raw, decimals) => {
+  if (typeof raw !== 'string' || !/^(?:0|[1-9][0-9]{0,19})$/.test(raw) ||
+      typeof decimals !== 'string' || !/^(?:[0-9]|1[0-8])$/.test(decimals)) return null;
+  const places = Number(decimals);
+  if (!places) return raw;
+  const digits = raw.padStart(places + 1, '0');
+  const fraction = digits.slice(-places).replace(/0+$/, '');
+  return digits.slice(0, -places) + (fraction ? `.${fraction}` : '');
+};
 export const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 export const sourceLink = value => {
   try { const url = new URL(String(value)); return ['https:', 'http:'].includes(url.protocol) && !url.username && !url.password ? url.href : ''; }

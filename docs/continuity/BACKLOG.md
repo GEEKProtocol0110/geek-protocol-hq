@@ -40,9 +40,13 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-005 | P0 | needs-evidence | Contain mobile decoration and stabilize page edges | Maintainer |
 | CONT-003 | P0 | done | Reconcile roadmap, stale drafts and current acceptance evidence | Maintainer |
 | WALLET-001 | P1 | planned | Review and isolate the optional Testnet wallet lab retained from #119 | Wallet maintainer; independent wallet reviewer unassigned |
-| CHAIN-003 | P2 | planned | Review retained Testnet reward-desk amount and copy polish | Maintainer |
+| CHAIN-003 | P2 | in-progress | Review retained Testnet reward-desk amount and copy polish | Maintainer |
 | PILOT-002 | P1 | planned | Review retained wallet-safety course and evaluation tooling | Pilot coordinator and instructor unassigned |
 | ART-001 | P2 | blocked | Preserve paused original art and resume production only on founder direction | Founder supplies art; production maintainer unassigned |
+| SEO-001 | P0 | in-progress | Maintain metadata and link coverage for every HQ page | Maintainer |
+| AUTH-003 | P0 | planned | Provide a cross-device account path beyond local passkey creation | Maintainer; family-account and recovery policy reviewed by founder |
+| ACE-001 | P1 | planned | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
+| PERF-001 | P1 | planned | Measure growth capacity and stage storage, delivery and worker improvements | Maintainer; performance/recovery reviewer unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -420,7 +424,7 @@ Evidence/specification: [docs/GEEK-500-FOUNDING-ROSTER-REVIEW.md](../../docs/GEE
 
 **P0 / needs-evidence.** Owner: Maintainer implements and verifies; founder confirms physical-phone passkeys. Dependencies: none.
 
-Next action: Founder reported the phone passkey flow worked on October 16 at 2:35 AM Detroit. Preserve that success and the working session. Confirm returning sign-in to the intended saved player next; cross-device recovery, revocation and independent review remain separately unreported. Do not ask for another initial enrollment or unavailable KasWare message signing.
+Next action: Preserve the founder's October 16 phone success. The founder reported passkey creation failing in Amazon Silk on a family Fire tablet October 17. The candidate adds a bounded local provider check and device-specific help, without disabling external authenticators or bypassing proof. Validate the candidate, then retest on the actual tablet; installed versions and the cause remain unverified. A genuinely alternative account path is AUTH-003.
 
 Acceptance:
 
@@ -431,7 +435,7 @@ Acceptance:
 - Passkey enrollment and returning login preserve stable player/progress/name/time with origin, RP, user-verification, single-use and credential-uniqueness checks.
 - Management uses fresh proof; session rotation, credential removal, wallet recovery invalidation, cancellation and bounded requests verified; exact deployment and real-phone results recorded separately.
 
-Evidence/specification: [public/sign-in/index.html](../../public/sign-in/index.html), [public/sign-in/assets/sign-in.js](../../public/sign-in/assets/sign-in.js), [tests/sign-in-copy.test.js](../../tests/sign-in-copy.test.js), [docs/IDENTITY-PROTOCOL.md](../../docs/IDENTITY-PROTOCOL.md), [docs/MOBILE-LOGIN-COPY-RELEASE.md](../../docs/MOBILE-LOGIN-COPY-RELEASE.md), [docs/PASSKEY-LOGIN.md](../../docs/PASSKEY-LOGIN.md), [server/passkeys.js](../../server/passkeys.js), [tests/passkeys.test.js](../../tests/passkeys.test.js), [tests/passkey-client.test.js](../../tests/passkey-client.test.js).
+Evidence/specification: [public/sign-in/index.html](../../public/sign-in/index.html), [public/sign-in/assets/sign-in.js](../../public/sign-in/assets/sign-in.js), [tests/sign-in-copy.test.js](../../tests/sign-in-copy.test.js), [docs/IDENTITY-PROTOCOL.md](../../docs/IDENTITY-PROTOCOL.md), [docs/MOBILE-LOGIN-COPY-RELEASE.md](../../docs/MOBILE-LOGIN-COPY-RELEASE.md), [docs/PASSKEY-LOGIN.md](../../docs/PASSKEY-LOGIN.md), [server/passkeys.js](../../server/passkeys.js), [tests/passkeys.test.js](../../tests/passkeys.test.js), [tests/passkey-client.test.js](../../tests/passkey-client.test.js), [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md).
 
 ## UX-001: Simplify first visits and close current reliability gaps
 
@@ -541,9 +545,9 @@ Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION
 
 ## CHAIN-003: Review retained Testnet reward-desk amount and copy polish
 
-**P2 / planned.** Owner: Maintainer. Dependencies: none.
+**P2 / in-progress.** Owner: Maintainer. Dependencies: none.
 
-Next action: Extract only the pinned exact-unit formatter/copy/state guidance onto current main. Review unavailable/denied/stalled clipboard and current owner-client boundaries before a separate implementation.
+Next action: Candidate extracts exact integer/decimal display for the existing manual TN10 desk and clarifies configured/queued/indexed states. Validate and review separately; clipboard/copy polish is not implemented and no signer is added. CHAIN-001 still requires its first real receipt and single transfer reconciliation.
 
 Acceptance:
 
@@ -582,3 +586,59 @@ Acceptance:
 - A separate founder resumption precedes additional generation/production; runtime migration remains COLL-001.
 
 Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION.md), [docs/continuity/pr-reconciliation.json](../../docs/continuity/pr-reconciliation.json), [docs/GEEK-500-COLLECTION-STRUCTURE.md](../../docs/GEEK-500-COLLECTION-STRUCTURE.md).
+
+## SEO-001: Maintain metadata and link coverage for every HQ page
+
+**P0 / in-progress.** Owner: Maintainer. Dependencies: none.
+
+Next action: Validate and publish the 40-template metadata/device-readiness candidate. Preserve private/noindex boundaries, all internal targets, source attribution and external-link uncertainty.
+
+Acceptance:
+
+- All public/operator HTML templates have maintained metadata and explicit indexing policy.
+- Sitemap/canonical/share metadata and internal targets/fragments agree and are checked in CI.
+- Actual candidate/PR/deployment evidence and external audit limits are recorded.
+
+Evidence/specification: [docs/site-pages.json](../../docs/site-pages.json), [scripts/site-pages.mjs](../../scripts/site-pages.mjs), [docs/site-link-review-2026-10-17.json](../../docs/site-link-review-2026-10-17.json), [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md).
+
+## AUTH-003: Provide a cross-device account path beyond local passkey creation
+
+**P0 / planned.** Owner: Maintainer; family-account and recovery policy reviewed by founder. Dependencies: none.
+
+Next action: Specify parent-approved device pairing or a parent-controlled fallback. Bind a short-lived one-use link to the exact saved player and receiving browser; define revocation and handling of separate guest progress before implementation.
+
+Acceptance:
+
+- Unsupported-passkey devices have a tested, explicit authorized sign-in path.
+- Fresh proof, short expiry, replay protection, rate limits and device revocation preserve player ownership.
+- Parent/child policy and real Silk/phone recovery acceptance exist without seed phrases or an address-only bypass.
+
+Evidence/specification: [docs/PASSKEY-LOGIN.md](../../docs/PASSKEY-LOGIN.md), [docs/IDENTITY-PROTOCOL.md](../../docs/IDENTITY-PROTOCOL.md), [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md).
+
+## ACE-001: Build source-grounded A.C.E. tutoring and scoped operational automation
+
+**P1 / planned.** Owner: Maintainer; AI/content evaluation reviewer unassigned. Dependencies: none.
+
+Next action: Select a model/runtime and budget, define separate tutor and read-only operations tools, create grounding/evaluation fixtures and a bounded opt-in pilot. No model service or unrestricted administrator is installed by this metadata candidate.
+
+Acceptance:
+
+- Tutor retrieves reviewed sources and keeps grading/reward authority deterministic.
+- Typed role-checked tools, audit history, bounded budget/latency and authored fallback are tested.
+- Citation/learning/injection evaluations and pilot evidence precede broader automation; existing publication, recovery and settlement gates remain enforced.
+
+Evidence/specification: [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md), [docs/PRODUCT-ROADMAP.md](../../docs/PRODUCT-ROADMAP.md).
+
+## PERF-001: Measure growth capacity and stage storage, delivery and worker improvements
+
+**P1 / planned.** Owner: Maintainer; performance/recovery reviewer unassigned. Dependencies: none.
+
+Next action: Measure representative phone and concurrent learning/game workloads; compare compact category indexes, versioned public assets and durable idempotent workers before a database or hosting cutover.
+
+Acceptance:
+
+- Record p50/p95/error/memory/Redis/model metrics and saturation under representative load.
+- Preserve issued answer keys, private/no-store boundaries and exactly-once receipt effects through retries.
+- Provider restore and rollout/rollback evidence support any selected infrastructure change.
+
+Evidence/specification: [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md), [docs/BACKUP-RECOVERY.md](../../docs/BACKUP-RECOVERY.md).

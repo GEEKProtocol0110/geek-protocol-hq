@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-16",
+  "updatedAt": "2026-10-17",
   "records": [
     {
       "id": "DR-001",
@@ -198,6 +198,19 @@
         "docs/PR-RECONCILIATION.md"
       ],
       "recordedAt": "2026-10-16",
+      "supersedes": null
+    },
+    {
+      "id": "DR-017",
+      "status": "founder-direction",
+      "title": "Refresh all page metadata and prioritize device access, GEEKT and A.C.E. readiness",
+      "decision": "Update HQ page/link metadata, investigate Amazon Silk enrollment, preserve a path for growing reviewed question content and plan A.C.E. as part of the product and operational automation. Complete the existing GEEKT pilot; existing proof, publication and Mainnet settlement holds remain applicable.",
+      "basis": "Founder request October 17: two essential suggestions and five system improvements; confirmed Amazon Silk on the family tablet. This establishes product direction, not completed device pairing, a model service or automatic token signing.",
+      "evidence": [
+        "docs/PLATFORM-NEXT-STEPS.md",
+        "docs/site-pages.json"
+      ],
+      "recordedAt": "2026-10-17",
       "supersedes": null
     }
   ]

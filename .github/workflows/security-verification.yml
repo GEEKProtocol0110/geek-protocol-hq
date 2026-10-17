@@ -35,6 +35,8 @@ jobs:
         run: npm run security:check
       - name: Verify distinct question banks and public counts
         run: npm run questions:check
+      - name: Verify page metadata, sitemap and internal links
+        run: npm run site:check
       - name: Verify the project continuation record
         run: npm run continuity:check
       - name: Verify economy stress baseline

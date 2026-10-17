@@ -163,3 +163,13 @@ Reconcile older PRs and current roadmap first, then close remaining beta evidenc
 Basis: Founder asked to regroup around the roadmap and loose ends, then approved the proposed roadmap-housekeeping/PR-reconciliation step on October 16. This does not authorize a new wallet, mainnet settlement, art production, recruitment or provider cutover.
 
 Evidence: [docs/ROADMAP-CHECKPOINT.md](../../docs/ROADMAP-CHECKPOINT.md), [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION.md).
+
+## DR-017: Refresh all page metadata and prioritize device access, GEEKT and A.C.E. readiness
+
+**founder-direction** · 2026-10-17.
+
+Update HQ page/link metadata, investigate Amazon Silk enrollment, preserve a path for growing reviewed question content and plan A.C.E. as part of the product and operational automation. Complete the existing GEEKT pilot; existing proof, publication and Mainnet settlement holds remain applicable.
+
+Basis: Founder request October 17: two essential suggestions and five system improvements; confirmed Amazon Silk on the family tablet. This establishes product direction, not completed device pairing, a model service or automatic token signing.
+
+Evidence: [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md), [docs/site-pages.json](../../docs/site-pages.json).

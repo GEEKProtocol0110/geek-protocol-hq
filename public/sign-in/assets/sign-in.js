@@ -33,7 +33,7 @@
       const payload = await response.json();
       if (signedIn) return;
       if (response.ok && payload.identity?.linked) showSignedIn(`You are already signed in with a verified wallet. ${destination}`);
-      else if (response.status === 401 || (response.ok && !payload.identity?.linked)) status.textContent = 'Guest profile. Create a passkey to save this player, or sign in with one you already saved.';
+      else if (response.status === 401 || (response.ok && !payload.identity?.linked)) status.textContent = 'Guest player in this browser. Check the sign-in options below to save access or return to a player you already protected.';
       else throw new Error('Session check unavailable');
     })
     .catch(() => { if (!signedIn) status.textContent = 'Your session could not be checked. Reload to check your saved player before trying again.'; })
