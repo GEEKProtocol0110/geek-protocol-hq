@@ -4,8 +4,8 @@ Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. The n
 
 ## Current position
 
-- Runtime/content: #148 is the latest deployed runtime baseline, with bounded A.C.E. authored lesson help, player regression coverage and separate CI/deployment evidence in the maintained record. Paid AI remains inactive pending model, budget, data policy and live evaluation. The 700-concept follow-up is a candidate until its release is recorded.
-- Learning: the current branch has 700 internally source-reviewed Kaspa concepts; 300 remain toward 1,000. Across all eight targets, 798 recorded reviews and 7,202 still needed. The 8,305 active questions are not all reviewed. Study remains 537 concepts; Quest has four chapters. Exact merge/deployment status is in the maintained state.
+- Runtime/content: #149 is the latest deployed baseline, adding 76 reviewed Kaspa integration/encoding concepts. #148 supplied bounded A.C.E. authored help and saved-player regression coverage. Exact CI/deployment evidence is in the maintained record; paid AI remains inactive pending model, budget, data policy and live evaluation.
+- Learning: the deployed bank has 700 internally source-reviewed Kaspa concepts; 300 remain toward 1,000. Across all eight targets, 798 recorded reviews and 7,202 still needed. The 8,305 active questions are not all reviewed. Study remains 537 concepts; Quest has four chapters. Exact merge/deployment status is in the maintained state.
 - Phone evidence: initial passkey flow succeeded according to the founder on October 16 at 2:35 AM Detroit. After the edge fix, the founder reported “Ok better” at 1:00 PM. Preserve both observations; neither establishes every recovery, browser-bar, campaign or multiplayer scenario.
 - PR #119 is superseded as a merge candidate. Its unshipped work is retained at exact head and mapped to separate backlog IDs. PR #120 stays paused with its original art and tracker intact. See [PR reconciliation](PR-RECONCILIATION.md).
 

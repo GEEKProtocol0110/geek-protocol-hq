@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "capturedAt": "2026-10-17",
-  "through": "67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f",
-  "scope": "Preserved HQ Git commit metadata through PR #140 merge. Product baseline is #140, with production/CI evidence in the project record. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation. Observed background release #145 and preceding login bookkeeping added October 17; product baseline #145 evidence is in project.json. Observed #146 rewarded challenges and preceding background release bookkeeping added; current baseline #146 evidence is in project.json. Observed #147 initial/final heads and merge plus preceding release bookkeeping added; current baseline #147 evidence is in project.json. Observed #148 head/merge and preceding documentation checkpoint added; current #148 production evidence is in project.json.",
+  "through": "28032004a0f46d0fd03c123cab4f5d1949245677",
+  "scope": "Preserved HQ Git commit metadata through PR #140 merge. Product baseline is #140, with production/CI evidence in the project record. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation. Observed background release #145 and preceding login bookkeeping added October 17; product baseline #145 evidence is in project.json. Observed #146 rewarded challenges and preceding background release bookkeeping added; current baseline #146 evidence is in project.json. Observed #147 initial/final heads and merge plus preceding release bookkeeping added; current baseline #147 evidence is in project.json. Observed #148 head/merge and preceding documentation checkpoint added; current #148 production evidence is in project.json. Observed #149 head/merge and preceding documentation checkpoint added; current #149 production evidence is in project.json.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -881,7 +881,7 @@
         "eb2ef291d319feade3e17fdf6bb947cf816b0ade"
       ],
       "authoredAt": "2026-10-08T07:41:15-04:00",
-      "title": "Add Trivia Royale with configurable 2\u2013100-player rooms"
+      "title": "Add Trivia Royale with configurable 2–100-player rooms"
     },
     {
       "commit": "51204af34d76a5554013346f0c089200ab80cce1",
@@ -1405,7 +1405,7 @@
         "e3fd589878d473939724b06882fb167b1e8d9b0a"
       ],
       "authoredAt": "2026-10-15T06:08:34-04:00",
-      "title": "Add durable project continuity, founding archive and 2026\u20132076 direction"
+      "title": "Add durable project continuity, founding archive and 2026–2076 direction"
     },
     {
       "commit": "bf8f60ef4a08d630aa92a98833a7810bbc09477d",
@@ -2176,6 +2176,31 @@
       ],
       "authoredAt": "2026-10-17T07:07:47-04:00",
       "title": "Merge pull request #148 from GEEKProtocol0110/codex/player-ace-readiness"
+    },
+    {
+      "commit": "3cc5350c6bff810e5e2c1bffeb69fee79912f23f",
+      "parents": [
+        "67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f"
+      ],
+      "authoredAt": "2026-10-17T07:11:09-04:00",
+      "title": "Record ACE and player readiness release evidence"
+    },
+    {
+      "commit": "22cb5132c9ff02e849fa37430ccdfd67f721812e",
+      "parents": [
+        "3cc5350c6bff810e5e2c1bffeb69fee79912f23f"
+      ],
+      "authoredAt": "2026-10-17T19:56:04-04:00",
+      "title": "Grow reviewed Kaspa bank to 700 distinct concepts"
+    },
+    {
+      "commit": "28032004a0f46d0fd03c123cab4f5d1949245677",
+      "parents": [
+        "3cc5350c6bff810e5e2c1bffeb69fee79912f23f",
+        "22cb5132c9ff02e849fa37430ccdfd67f721812e"
+      ],
+      "authoredAt": "2026-10-17T19:57:17-04:00",
+      "title": "Merge pull request #149 from GEEKProtocol0110/codex/kaspa-700-reviewed"
     }
   ]
 }

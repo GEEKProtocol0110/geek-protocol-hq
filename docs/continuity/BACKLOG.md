@@ -99,7 +99,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Verify and release the 700-concept candidate (76 new integration/encoding objectives); then continue 300 distinct concepts toward 1,000. Independent editor remains unassigned. Preserve issued keys and bank/economy holds.
+Next action: #149 merged/deployed: 700 reviewed Kaspa / 8,305 active / 798 recorded reviews. Continue 300 distinct source-reviewed Kaspa concepts toward 1,000; independent editor remains unassigned. Preserve issued keys and all bank/economy holds.
 
 Acceptance:
 
