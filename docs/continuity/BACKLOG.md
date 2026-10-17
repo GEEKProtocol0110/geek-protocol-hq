@@ -547,7 +547,7 @@ Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION
 
 **P2 / in-progress.** Owner: Maintainer. Dependencies: none.
 
-Next action: Candidate extracts exact integer/decimal display for the existing manual TN10 desk and clarifies configured/queued/indexed states. Validate and review separately; clipboard/copy polish is not implemented and no signer is added. CHAIN-001 still requires its first real receipt and single transfer reconciliation.
+Next action: Exact amount display and state guidance shipped in #141. Clipboard/copy polish remains separate; CHAIN-001 still requires its first real receipt and single TN10 transfer reconciliation. No signer was added.
 
 Acceptance:
 
@@ -605,7 +605,7 @@ Evidence/specification: [docs/site-pages.json](../../docs/site-pages.json), [scr
 
 **P0 / in-progress.** Owner: Maintainer; family-account and recovery policy reviewed by founder. Dependencies: none.
 
-Next action: Verify and release nearby same-player device approval, then test with the actual phone and Silk tablet. Parent/child roles remain separate; do not share a parent account expecting a separate child profile.
+Next action: PR #142 is merged/deployed with 516 tests and 21/21 follow-up production checks. Release the unsupported-browser sign-out/player-status correction, then gather actual phone/Silk and returning-session evidence. This shares one player; family roles remain separate.
 
 Acceptance:
 

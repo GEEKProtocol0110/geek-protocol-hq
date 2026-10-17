@@ -749,7 +749,7 @@
       "status": "in-progress",
       "title": "Review retained Testnet reward-desk amount and copy polish",
       "owner": "Maintainer",
-      "nextAction": "Candidate extracts exact integer/decimal display for the existing manual TN10 desk and clarifies configured/queued/indexed states. Validate and review separately; clipboard/copy polish is not implemented and no signer is added. CHAIN-001 still requires its first real receipt and single transfer reconciliation.",
+      "nextAction": "Exact amount display and state guidance shipped in #141. Clipboard/copy polish remains separate; CHAIN-001 still requires its first real receipt and single TN10 transfer reconciliation. No signer was added.",
       "acceptance": [
         "Integer base units and validated decimals produce exact wallet amounts.",
         "Copy failures have usable manual selection and never send a transaction.",
@@ -831,7 +831,7 @@
       "status": "in-progress",
       "title": "Provide a cross-device account path beyond local passkey creation",
       "owner": "Maintainer; family-account and recovery policy reviewed by founder",
-      "nextAction": "Verify and release nearby same-player device approval, then test with the actual phone and Silk tablet. Parent/child roles remain separate; do not share a parent account expecting a separate child profile.",
+      "nextAction": "PR #142 is merged/deployed with 516 tests and 21/21 follow-up production checks. Release the unsupported-browser sign-out/player-status correction, then gather actual phone/Silk and returning-session evidence. This shares one player; family roles remain separate.",
       "acceptance": [
         "Unsupported-passkey devices have a tested, explicit authorized sign-in path.",
         "Fresh proof, short expiry, replay protection, rate limits and device revocation preserve player ownership.",
