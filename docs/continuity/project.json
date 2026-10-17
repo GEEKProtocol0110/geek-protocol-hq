@@ -18,11 +18,11 @@
     "evidence": "GAME-001 career mastery merged in #147 October 17 at 09:31:03 UTC as be463ecdcb303ae7a8ab3427b5cbf41709106bc5. Final head d37089d3a735627d3402bc370c5a16d21bcb8eb6/tree 730ca15287c833d143f77dedd9ea71a66c664434 passed GitHub verification 39020919100 and Vercel; no submitted reviews or inline threads. Production dpl_7CCPiCLoug5Du1juGRrLAdmRWboc READY on the exact merge, both canonical domains assigned. Eleven targeted delivery checks passed under 15-second bounds: four public page markers, six exact-byte clients/styles and private unauthenticated no-store 401 status. Corrected preview screenshot shows three recommended cards, 18 emblems, absolute canvas, intro height about 486px and width 1348 <= viewport 1363. A fresh preview guest saved a tracked path; My HQ retrieved it and rendered 102 achievements with only three shown in Next goals. First-head catalog All/Kaspa/Diamond filtering passed, but its canvas displacement was corrected on the final head. Canonical live hub loads three cards/18 emblems, absolute canvas and no horizontal overflow; no canonical tracking/reward/game action submitted. Full revised verification: 552 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Actual phone/narrow rendering, live gameplay/unlock/claim flow and independent review remain unverified."
   },
   "questionCheckpoint": {
-    "active": 8205,
-    "reviewed": 698,
-    "remaining": 7302,
-    "kaspaActive": 600,
-    "kaspaReviewed": 600,
+    "active": 8229,
+    "reviewed": 722,
+    "remaining": 7278,
+    "kaspaActive": 624,
+    "kaspaReviewed": 624,
     "studyConcepts": 537,
     "questChapters": 4
   },
@@ -35,12 +35,12 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "GAME-001",
-    "status": "needs-evidence",
-    "description": "Career/mastery released in #147: 90 tiered challenges, 18 paths/emblems, 102 achievements, three recommended/saved tracked paths, atomic claims and round notices. Exact CI, corrected preview and live delivery pass. Founder actual-phone/game acceptance remains outstanding."
+    "id": "ACE-001",
+    "status": "in-progress",
+    "description": "Player/ACE readiness candidate after #147: saved-player cross-flow regression, selected GEEKT instructions, bounded opt-in tutor with authored default, read-only operations readiness, measured local performance/recovery and 24 reviewed Kaspa additions. Candidate verification/publication pending; actual device, wallet, live model and provider acceptance remain separate."
   },
-  "nextTask": "UX-006",
-  "nextAction": "Try the career tracks, claims and My HQ collection on the actual phone. Gather background/browser-bar and login/Silk acceptance separately, then continue reviewed-bank/beta and ACE/performance roadmap work within existing holds.",
+  "nextTask": "AUTH-003",
+  "nextAction": "Complete exact-head verification and preview/release evidence, then gather actual phone/Silk sign-in/return/revocation, the first manual TN10 receipt/transfer and a bounded model/budget/data-policy decision. Continue 624 Kaspa concepts toward 1,000 without variants.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

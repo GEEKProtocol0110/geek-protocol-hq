@@ -39,3 +39,8 @@ A.C.E. currently uses authored, source-linked Study guidance and a simulated Due
 - [Vercel queues](https://vercel.com/docs/queues): candidate durable background-work service; not installed here.
 
 Metadata/device-guidance release: PR #141 merged and deployed October 17 (8c0bdf165085add9fafbb2ead3dd4441af40539c; production monitor 21/21). The original candidate descriptions above are historical. [AUTH-003 trusted-device approval](TRUSTED-DEVICE-ACCESS.md) shipped in PR #142, with actual Silk acceptance pending. Other infrastructure/model directions remain planned. Exact checks, PR/head and final merge/deployment result belong in the review record and continuity work log. Actual Silk, shared-device recovery and the first GEEKT transfer remain outstanding.
+
+
+## October 17 roadmap implementation candidate after #147
+
+The [current candidate checkpoint](PLAYER-READINESS-2026-10-17.md) supersedes earlier not-implemented statements for the same-player approval path and bounded A.C.E. scaffolding. Phone/Silk approval is implemented but awaits actual-device acceptance. [A.C.E. lesson help](ACE-TUTOR.md) has an authored default, optional disabled-by-default Gateway path and private read-only readiness; no live model/budget is activated. [Local capacity measurements](PERFORMANCE-BASELINE.md) support measured staging, with no hosting/database migration. The GEEKT desk has exact selected instructions; its first actual transfer remains pending. Reviewed Kaspa is 624 in this candidate; 1,000 and the other bank/economy gates remain outstanding.

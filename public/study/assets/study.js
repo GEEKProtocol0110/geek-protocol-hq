@@ -111,6 +111,8 @@
     const topic = catalog.topics.find(t => t.id === id);
     if (!topic) return;
     selectedTopic = topic;
+    $('[data-lesson]').dataset.topic = topic.id;
+    window.dispatchEvent(new CustomEvent('geek:study-topic', { detail: { id: topic.id } }));
     lessonStep = 0;
     walkthroughTracked = false;
     $('[data-lesson]').hidden = false;

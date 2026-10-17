@@ -39,13 +39,15 @@
     "continuity:check": "node scripts/continuity.mjs",
     "continuity:snapshot": "node scripts/continuity-snapshot.mjs",
     "site:write": "node scripts/site-pages.mjs --write",
-    "site:check": "node scripts/site-pages.mjs"
+    "site:check": "node scripts/site-pages.mjs",
+    "performance:baseline": "node scripts/performance-baseline.mjs"
   },
   "engines": {
     "node": ">=22"
   },
   "dependencies": {
     "@dfns/kaspa-wasm": "0.14.1",
-    "@simplewebauthn/server": "14.0.3"
+    "@simplewebauthn/server": "14.0.3",
+    "ai": "7.0.143"
   }
 }

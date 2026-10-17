@@ -40,13 +40,13 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-005 | P0 | needs-evidence | Contain mobile decoration and stabilize page edges | Maintainer |
 | CONT-003 | P0 | done | Reconcile roadmap, stale drafts and current acceptance evidence | Maintainer |
 | WALLET-001 | P1 | planned | Review and isolate the optional Testnet wallet lab retained from #119 | Wallet maintainer; independent wallet reviewer unassigned |
-| CHAIN-003 | P2 | in-progress | Review retained Testnet reward-desk amount and copy polish | Maintainer |
+| CHAIN-003 | P2 | needs-evidence | Review retained Testnet reward-desk amount and copy polish | Maintainer |
 | PILOT-002 | P1 | planned | Review retained wallet-safety course and evaluation tooling | Pilot coordinator and instructor unassigned |
 | ART-001 | P2 | blocked | Preserve paused original art and resume production only on founder direction | Founder supplies art; production maintainer unassigned |
 | SEO-001 | P0 | done | Maintain metadata and link coverage for every HQ page | Maintainer |
 | AUTH-003 | P0 | needs-evidence | Provide a cross-device account path beyond local passkey creation | Maintainer; family-account and recovery policy reviewed by founder |
-| ACE-001 | P1 | planned | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
-| PERF-001 | P1 | planned | Measure growth capacity and stage storage, delivery and worker improvements | Maintainer; performance/recovery reviewer unassigned |
+| ACE-001 | P1 | in-progress | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
+| PERF-001 | P1 | needs-evidence | Measure growth capacity and stage storage, delivery and worker improvements | Maintainer; performance/recovery reviewer unassigned |
 | UX-006 | P0 | needs-evidence | Make returning login clear and keep advanced setup optional | Maintainer; founder confirms usability |
 | UX-007 | P1 | needs-evidence | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
 | GAME-001 | P1 | needs-evidence | Build a deep career challenge and mastery ladder | Maintainer; founder confirms phone/game usability |
@@ -99,7 +99,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: PR #140 merged at 0a553b5b02bc4466f8302d89a5acad00b3f20b73 and production is verified: 600 internally source-checked Kaspa concepts, 400 remain toward 1,000. Continue distinct primary-source facts with complete evidence and preserved historical answer keys. Introductory Study remains 537; independent editorial review is unassigned. CCE and economic holds remain in force.
+Next action: Candidate adds 24 pinned-source script execution concepts: 624 Kaspa / 8,229 active / 722 recorded reviews. Continue with 376 distinct reviewed Kaspa concepts toward 1,000; independent editor remains unassigned. Preserve issued/retired keys and all CCE/economy holds.
 
 Acceptance:
 
@@ -107,7 +107,7 @@ Acceptance:
 - No padded variants; existing issued answers remain compatible.
 - Tier capacity and bank/catalog/readiness checks pass.
 
-Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/QUESTION-MAINTENANCE.md](../../docs/QUESTION-MAINTENANCE.md), [docs/kaspa-520-review-2026-10-15.json](../../docs/kaspa-520-review-2026-10-15.json), [docs/kaspa-540-review-2026-10-15.json](../../docs/kaspa-540-review-2026-10-15.json), [docs/kaspa-580-review-2026-10-15.json](../../docs/kaspa-580-review-2026-10-15.json), [docs/kaspa-600-review-2026-10-16.json](../../docs/kaspa-600-review-2026-10-16.json).
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/QUESTION-MAINTENANCE.md](../../docs/QUESTION-MAINTENANCE.md), [docs/kaspa-520-review-2026-10-15.json](../../docs/kaspa-520-review-2026-10-15.json), [docs/kaspa-540-review-2026-10-15.json](../../docs/kaspa-540-review-2026-10-15.json), [docs/kaspa-580-review-2026-10-15.json](../../docs/kaspa-580-review-2026-10-15.json), [docs/kaspa-600-review-2026-10-16.json](../../docs/kaspa-600-review-2026-10-16.json), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md), [docs/KASPA-SCRIPT-REVIEW-2026-10-17.md](../../docs/KASPA-SCRIPT-REVIEW-2026-10-17.md).
 
 ## BANK-002: Reach 1,000 reviewed Video games concepts
 
@@ -225,7 +225,7 @@ Evidence/specification: [docs/FREE-BETA-READINESS.md](../../docs/FREE-BETA-READI
 
 **P0 / needs-evidence.** Owner: Founder; private account custodian unassigned. Dependencies: none.
 
-Next action: Offline restore safety shipped in PR #129 (merge 9e43107c2a027ddf18900d2c072f19dcaaf5b94e; exact-head GitHub/Vercel and merge-source deployment passed; 489 local tests, 311 security assertions). Verify owner MFA, actual provider retention and a provider restore into an isolated destination next. Confirm both hosts independently, reconcile security changes after the backup point, and record evidence privately.
+Next action: Rerun isolated native Redis recovery and fresh-passkey return in candidate verification. Actual owner MFA/provider retention/isolated provider restore and production recovery timing still require private operator evidence; local RDB tests do not close this task.
 
 Acceptance:
 
@@ -235,7 +235,7 @@ Acceptance:
 - Cleanup requires distinct explicit production/restored hosts even without application environment configuration, rejects malformed/ambiguous targeting, bounds provider requests without automatic write retries, and checks for remaining transient credentials.
 - A native snapshot test rejects restored bearer cookies and one-time proofs after cleanup, then recovers the same player and saved progress with a fresh signed passkey proof; provider/device acceptance remains separate.
 
-Evidence/specification: [docs/OPERATOR-SECURITY.md](../../docs/OPERATOR-SECURITY.md), [docs/BACKUP-RECOVERY.md](../../docs/BACKUP-RECOVERY.md), [docs/RESTORE-SAFETY.md](../../docs/RESTORE-SAFETY.md), [tests/recovery-safety.test.js](../../tests/recovery-safety.test.js), [tests/passkeys.test.js](../../tests/passkeys.test.js).
+Evidence/specification: [docs/OPERATOR-SECURITY.md](../../docs/OPERATOR-SECURITY.md), [docs/BACKUP-RECOVERY.md](../../docs/BACKUP-RECOVERY.md), [docs/RESTORE-SAFETY.md](../../docs/RESTORE-SAFETY.md), [tests/recovery-safety.test.js](../../tests/recovery-safety.test.js), [tests/passkeys.test.js](../../tests/passkeys.test.js), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md).
 
 ## OPS-002: Appoint a successor and second trusted maintainer
 
@@ -367,7 +367,7 @@ Evidence/specification: [docs/continuity/repositories.json](../../docs/continuit
 
 **P1 / needs-evidence.** Owner: Maintainer; founder controls the external testnet wallet. Dependencies: none.
 
-Next action: PR #114 is merged and deployed. Founder refreshes the pilot tab and accepts the new run-loading control on the phone. Complete the next eligible Daily in the same browser/player, save and return immediately, load the run and queue within five minutes. Preserve the UTC daily lock, verify fee funds/batch state, export the receipt, then send/reconcile exactly one manual transfer.
+Next action: Use the current selected-receipt whole-token/raw-unit fields and export for one eligible Daily receipt, owner-approved TN10 transfer, same-hash reconciliation and recipient balance evidence. Public indexer confirms GEEKT deployed/eight decimals October 17; no real transfer is established.
 
 Acceptance:
 
@@ -376,7 +376,7 @@ Acceptance:
 - One manual pilot transfer reconciled by the existing receipt desk; no Mainnet settlement enabled.
 - Test deployment maximum, mint limit, premint and decimals match pinned GEEK; test ticker/network/deployment remain distinct.
 
-Evidence/specification: [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md), [docs/TESTNET-ASSET-SETUP.md](../../docs/TESTNET-ASSET-SETUP.md).
+Evidence/specification: [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md), [docs/TESTNET-ASSET-SETUP.md](../../docs/TESTNET-ASSET-SETUP.md), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md).
 
 ## OPS-003: Finish mint-availability monitoring for GitHub issue #14
 
@@ -548,9 +548,9 @@ Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION
 
 ## CHAIN-003: Review retained Testnet reward-desk amount and copy polish
 
-**P2 / in-progress.** Owner: Maintainer. Dependencies: none.
+**P2 / needs-evidence.** Owner: Maintainer. Dependencies: none.
 
-Next action: Exact amount display and state guidance shipped in #141. Clipboard/copy polish remains separate; CHAIN-001 still requires its first real receipt and single TN10 transfer reconciliation. No signer was added.
+Next action: Exact selected amount, recipient and unsigned operation are implemented and client-checked; accept the fields/export on the founder phone during CHAIN-001. Automatic clipboard polish remains optional; no signer or send action was added.
 
 Acceptance:
 
@@ -558,7 +558,7 @@ Acceptance:
 - Copy failures have usable manual selection and never send a transaction.
 - One-send/same-hash reconciliation and existing Daily/receipt authorization remain unchanged.
 
-Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION.md), [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md).
+Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION.md), [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md).
 
 ## PILOT-002: Review retained wallet-safety course and evaluation tooling
 
@@ -608,7 +608,7 @@ Evidence/specification: [docs/site-pages.json](../../docs/site-pages.json), [scr
 
 **P0 / needs-evidence.** Owner: Maintainer; family-account and recovery policy reviewed by founder. Dependencies: none.
 
-Next action: Implementation released in #142/#143, 517 full tests pass and exact production delivery is verified. Gather actual phone/Silk same-player approval, returning-session and revocation evidence; independent security review remains unassigned. Parent/child roles remain separate.
+Next action: Cross-flow real-Redis/P-256 test now covers Study, complete Daily, XP claim, tracked path, receiving tablet, sign-out and fresh passkey return. Validate on the actual phone/Silk pair, including revocation. Synthetic tests are not device acceptance.
 
 Acceptance:
 
@@ -616,13 +616,13 @@ Acceptance:
 - Fresh proof, short expiry, replay protection, rate limits and device revocation preserve player ownership.
 - Same-player access is clearly distinguished from unimplemented parent/child roles; real Silk/phone recovery acceptance is recorded without seed phrases or an address-only bypass.
 
-Evidence/specification: [docs/PASSKEY-LOGIN.md](../../docs/PASSKEY-LOGIN.md), [docs/IDENTITY-PROTOCOL.md](../../docs/IDENTITY-PROTOCOL.md), [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md), [docs/TRUSTED-DEVICE-ACCESS.md](../../docs/TRUSTED-DEVICE-ACCESS.md).
+Evidence/specification: [docs/PASSKEY-LOGIN.md](../../docs/PASSKEY-LOGIN.md), [docs/IDENTITY-PROTOCOL.md](../../docs/IDENTITY-PROTOCOL.md), [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md), [docs/TRUSTED-DEVICE-ACCESS.md](../../docs/TRUSTED-DEVICE-ACCESS.md), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md), [tests/passkeys.test.js](../../tests/passkeys.test.js).
 
 ## ACE-001: Build source-grounded A.C.E. tutoring and scoped operational automation
 
-**P1 / planned.** Owner: Maintainer; AI/content evaluation reviewer unassigned. Dependencies: none.
+**P1 / in-progress.** Owner: Maintainer; AI/content evaluation reviewer unassigned. Dependencies: none.
 
-Next action: Select a model/runtime and budget, define separate tutor and read-only operations tools, create grounding/evaluation fixtures and a bounded opt-in pilot. No model service or unrestricted administrator is installed by this metadata candidate.
+Next action: Bounded tutor, authored retrieval/fallback, explicit AI opt-in and read-only owner readiness are implemented in this candidate. Finish release verification, then select model/budget/data policy and perform bounded live citation/injection/usage evaluation. No activation settings or paid request exist at this checkpoint; autonomous operations remain future work.
 
 Acceptance:
 
@@ -630,13 +630,13 @@ Acceptance:
 - Typed role-checked tools, audit history, bounded budget/latency and authored fallback are tested.
 - Citation/learning/injection evaluations and pilot evidence precede broader automation; existing publication, recovery and settlement gates remain enforced.
 
-Evidence/specification: [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md), [docs/PRODUCT-ROADMAP.md](../../docs/PRODUCT-ROADMAP.md).
+Evidence/specification: [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md), [docs/PRODUCT-ROADMAP.md](../../docs/PRODUCT-ROADMAP.md), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md), [docs/ACE-TUTOR.md](../../docs/ACE-TUTOR.md), [server/ace-tutor.js](../../server/ace-tutor.js), [tests/ace-tutor.test.js](../../tests/ace-tutor.test.js), [tests/ace-client.test.js](../../tests/ace-client.test.js).
 
 ## PERF-001: Measure growth capacity and stage storage, delivery and worker improvements
 
-**P1 / planned.** Owner: Maintainer; performance/recovery reviewer unassigned. Dependencies: none.
+**P1 / needs-evidence.** Owner: Maintainer; performance/recovery reviewer unassigned. Dependencies: none.
 
-Next action: Measure representative phone and concurrent learning/game workloads; compare compact category indexes, versioned public assets and durable idempotent workers before a database or hosting cutover.
+Next action: Local baseline recorded: 24 players/162 mixed requests/zero errors; fresh-process 10k/100k question growth; Study deployment content memoized. Gather phone/network and production saturation metrics, then evaluate compact indexes/versioned assets/durable workers. No hosting/database cutover is justified or performed yet.
 
 Acceptance:
 
@@ -644,13 +644,13 @@ Acceptance:
 - Preserve issued answer keys, private/no-store boundaries and exactly-once receipt effects through retries.
 - Provider restore and rollout/rollback evidence support any selected infrastructure change.
 
-Evidence/specification: [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md), [docs/BACKUP-RECOVERY.md](../../docs/BACKUP-RECOVERY.md).
+Evidence/specification: [docs/PLATFORM-NEXT-STEPS.md](../../docs/PLATFORM-NEXT-STEPS.md), [docs/BACKUP-RECOVERY.md](../../docs/BACKUP-RECOVERY.md), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md), [docs/PERFORMANCE-BASELINE.md](../../docs/PERFORMANCE-BASELINE.md), [scripts/performance-baseline.mjs](../../scripts/performance-baseline.mjs), [docs/performance/2026-10-17-readiness.json](../../docs/performance/2026-10-17-readiness.json).
 
 ## UX-006: Make returning login clear and keep advanced setup optional
 
 **P0 / needs-evidence.** Owner: Maintainer; founder confirms usability. Dependencies: none.
 
-Next action: #144 merged/deployed with 522 full tests, exact-head CI/Vercel and live desktop/delivery checks passed. Gather founder phone usability/returning-login feedback; actual Silk and independent auth acceptance remain separate.
+Next action: Preserve the simplified login UI. New full saved-player journey regression passes internally; gather actual returning-phone/Silk clarity and recovery evidence.
 
 Acceptance:
 
@@ -659,7 +659,7 @@ Acceptance:
 - Existing passkey, wallet, device approval, single-use proof and fixed return-destination checks remain enforced.
 - Relevant tests, rendered preview and actual release evidence are recorded; founder/device acceptance remains distinct.
 
-Evidence/specification: [public/sign-in/index.html](../../public/sign-in/index.html), [public/sign-in/assets/sign-in.js](../../public/sign-in/assets/sign-in.js), [public/sign-in/assets/passkeys.js](../../public/sign-in/assets/passkeys.js), [tests/passkey-client.test.js](../../tests/passkey-client.test.js), [docs/TRUSTED-DEVICE-ACCESS.md](../../docs/TRUSTED-DEVICE-ACCESS.md), [tests/sign-in-state.test.js](../../tests/sign-in-state.test.js).
+Evidence/specification: [public/sign-in/index.html](../../public/sign-in/index.html), [public/sign-in/assets/sign-in.js](../../public/sign-in/assets/sign-in.js), [public/sign-in/assets/passkeys.js](../../public/sign-in/assets/passkeys.js), [tests/passkey-client.test.js](../../tests/passkey-client.test.js), [docs/TRUSTED-DEVICE-ACCESS.md](../../docs/TRUSTED-DEVICE-ACCESS.md), [tests/sign-in-state.test.js](../../tests/sign-in-state.test.js), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md).
 
 ## UX-007: Add a five-word hunt and one-time rewarded challenges
 

@@ -86,7 +86,7 @@
       "status": "active",
       "title": "Grow Kaspa from 600 toward 1,000 reviewed concepts",
       "owner": "Content maintainer; independent editor unassigned",
-      "nextAction": "PR #140 merged at 0a553b5b02bc4466f8302d89a5acad00b3f20b73 and production is verified: 600 internally source-checked Kaspa concepts, 400 remain toward 1,000. Continue distinct primary-source facts with complete evidence and preserved historical answer keys. Introductory Study remains 537; independent editorial review is unassigned. CCE and economic holds remain in force.",
+      "nextAction": "Candidate adds 24 pinned-source script execution concepts: 624 Kaspa / 8,229 active / 722 recorded reviews. Continue with 376 distinct reviewed Kaspa concepts toward 1,000; independent editor remains unassigned. Preserve issued/retired keys and all CCE/economy holds.",
       "acceptance": [
         "1,000 distinct source-checked Kaspa concepts with explanations and review dates.",
         "No padded variants; existing issued answers remain compatible.",
@@ -99,7 +99,9 @@
         "docs/kaspa-520-review-2026-10-15.json",
         "docs/kaspa-540-review-2026-10-15.json",
         "docs/kaspa-580-review-2026-10-15.json",
-        "docs/kaspa-600-review-2026-10-16.json"
+        "docs/kaspa-600-review-2026-10-16.json",
+        "docs/PLAYER-READINESS-2026-10-17.md",
+        "docs/KASPA-SCRIPT-REVIEW-2026-10-17.md"
       ]
     },
     {
@@ -251,7 +253,7 @@
       "status": "needs-evidence",
       "title": "Verify operator access and managed-data recovery",
       "owner": "Founder; private account custodian unassigned",
-      "nextAction": "Offline restore safety shipped in PR #129 (merge 9e43107c2a027ddf18900d2c072f19dcaaf5b94e; exact-head GitHub/Vercel and merge-source deployment passed; 489 local tests, 311 security assertions). Verify owner MFA, actual provider retention and a provider restore into an isolated destination next. Confirm both hosts independently, reconcile security changes after the backup point, and record evidence privately.",
+      "nextAction": "Rerun isolated native Redis recovery and fresh-passkey return in candidate verification. Actual owner MFA/provider retention/isolated provider restore and production recovery timing still require private operator evidence; local RDB tests do not close this task.",
       "acceptance": [
         "Named account custodians can recover access without publishing credentials.",
         "Provider backup retention and isolated restore are measured.",
@@ -265,7 +267,8 @@
         "docs/BACKUP-RECOVERY.md",
         "docs/RESTORE-SAFETY.md",
         "tests/recovery-safety.test.js",
-        "tests/passkeys.test.js"
+        "tests/passkeys.test.js",
+        "docs/PLAYER-READINESS-2026-10-17.md"
       ]
     },
     {
@@ -444,7 +447,7 @@
       "status": "needs-evidence",
       "title": "Verify the TN10 test asset and wallet before a real pilot",
       "owner": "Maintainer; founder controls the external testnet wallet",
-      "nextAction": "PR #114 is merged and deployed. Founder refreshes the pilot tab and accepts the new run-loading control on the phone. Complete the next eligible Daily in the same browser/player, save and return immediately, load the run and queue within five minutes. Preserve the UTC daily lock, verify fee funds/batch state, export the receipt, then send/reconcile exactly one manual transfer.",
+      "nextAction": "Use the current selected-receipt whole-token/raw-unit fields and export for one eligible Daily receipt, owner-approved TN10 transfer, same-hash reconciliation and recipient balance evidence. Public indexer confirms GEEKT deployed/eight decimals October 17; no real transfer is established.",
       "acceptance": [
         "Exact TN10 token deployment, decimals, sender and amount verified against the fixed indexer.",
         "Wallet provider and TN10 signing workflow exercised with recorded transaction evidence.",
@@ -454,7 +457,8 @@
       "dependsOn": [],
       "evidence": [
         "docs/TESTNET-REWARD-PILOT.md",
-        "docs/TESTNET-ASSET-SETUP.md"
+        "docs/TESTNET-ASSET-SETUP.md",
+        "docs/PLAYER-READINESS-2026-10-17.md"
       ]
     },
     {
@@ -757,10 +761,10 @@
     {
       "id": "CHAIN-003",
       "priority": "P2",
-      "status": "in-progress",
+      "status": "needs-evidence",
       "title": "Review retained Testnet reward-desk amount and copy polish",
       "owner": "Maintainer",
-      "nextAction": "Exact amount display and state guidance shipped in #141. Clipboard/copy polish remains separate; CHAIN-001 still requires its first real receipt and single TN10 transfer reconciliation. No signer was added.",
+      "nextAction": "Exact selected amount, recipient and unsigned operation are implemented and client-checked; accept the fields/export on the founder phone during CHAIN-001. Automatic clipboard polish remains optional; no signer or send action was added.",
       "acceptance": [
         "Integer base units and validated decimals produce exact wallet amounts.",
         "Copy failures have usable manual selection and never send a transaction.",
@@ -769,7 +773,8 @@
       "dependsOn": [],
       "evidence": [
         "docs/PR-RECONCILIATION.md",
-        "docs/TESTNET-REWARD-PILOT.md"
+        "docs/TESTNET-REWARD-PILOT.md",
+        "docs/PLAYER-READINESS-2026-10-17.md"
       ]
     },
     {
@@ -842,7 +847,7 @@
       "status": "needs-evidence",
       "title": "Provide a cross-device account path beyond local passkey creation",
       "owner": "Maintainer; family-account and recovery policy reviewed by founder",
-      "nextAction": "Implementation released in #142/#143, 517 full tests pass and exact production delivery is verified. Gather actual phone/Silk same-player approval, returning-session and revocation evidence; independent security review remains unassigned. Parent/child roles remain separate.",
+      "nextAction": "Cross-flow real-Redis/P-256 test now covers Study, complete Daily, XP claim, tracked path, receiving tablet, sign-out and fresh passkey return. Validate on the actual phone/Silk pair, including revocation. Synthetic tests are not device acceptance.",
       "acceptance": [
         "Unsupported-passkey devices have a tested, explicit authorized sign-in path.",
         "Fresh proof, short expiry, replay protection, rate limits and device revocation preserve player ownership.",
@@ -853,7 +858,9 @@
         "docs/PASSKEY-LOGIN.md",
         "docs/IDENTITY-PROTOCOL.md",
         "docs/PLATFORM-NEXT-STEPS.md",
-        "docs/TRUSTED-DEVICE-ACCESS.md"
+        "docs/TRUSTED-DEVICE-ACCESS.md",
+        "docs/PLAYER-READINESS-2026-10-17.md",
+        "tests/passkeys.test.js"
       ],
       "releaseEvidence": [
         "#142 merge 2f552d1046309e35c52c8b6f99ff6dc14cf72a0b; #143 merge 0355013a5c1928274025ee678db7df3d285847dd. Exact-head CI/Vercel passed; both production deployments READY on both domains. #142 initial monitor timed out 21/21; unchanged-budget follow-up passed 21/21 and seven disposable request/cancel probes passed. #143 four targeted delivery checks passed; all 517 full tests passed. No real two-device/Silk or independent acceptance claim."
@@ -862,10 +869,10 @@
     {
       "id": "ACE-001",
       "priority": "P1",
-      "status": "planned",
+      "status": "in-progress",
       "title": "Build source-grounded A.C.E. tutoring and scoped operational automation",
       "owner": "Maintainer; AI/content evaluation reviewer unassigned",
-      "nextAction": "Select a model/runtime and budget, define separate tutor and read-only operations tools, create grounding/evaluation fixtures and a bounded opt-in pilot. No model service or unrestricted administrator is installed by this metadata candidate.",
+      "nextAction": "Bounded tutor, authored retrieval/fallback, explicit AI opt-in and read-only owner readiness are implemented in this candidate. Finish release verification, then select model/budget/data policy and perform bounded live citation/injection/usage evaluation. No activation settings or paid request exist at this checkpoint; autonomous operations remain future work.",
       "acceptance": [
         "Tutor retrieves reviewed sources and keeps grading/reward authority deterministic.",
         "Typed role-checked tools, audit history, bounded budget/latency and authored fallback are tested.",
@@ -874,16 +881,21 @@
       "dependsOn": [],
       "evidence": [
         "docs/PLATFORM-NEXT-STEPS.md",
-        "docs/PRODUCT-ROADMAP.md"
+        "docs/PRODUCT-ROADMAP.md",
+        "docs/PLAYER-READINESS-2026-10-17.md",
+        "docs/ACE-TUTOR.md",
+        "server/ace-tutor.js",
+        "tests/ace-tutor.test.js",
+        "tests/ace-client.test.js"
       ]
     },
     {
       "id": "PERF-001",
       "priority": "P1",
-      "status": "planned",
+      "status": "needs-evidence",
       "title": "Measure growth capacity and stage storage, delivery and worker improvements",
       "owner": "Maintainer; performance/recovery reviewer unassigned",
-      "nextAction": "Measure representative phone and concurrent learning/game workloads; compare compact category indexes, versioned public assets and durable idempotent workers before a database or hosting cutover.",
+      "nextAction": "Local baseline recorded: 24 players/162 mixed requests/zero errors; fresh-process 10k/100k question growth; Study deployment content memoized. Gather phone/network and production saturation metrics, then evaluate compact indexes/versioned assets/durable workers. No hosting/database cutover is justified or performed yet.",
       "acceptance": [
         "Record p50/p95/error/memory/Redis/model metrics and saturation under representative load.",
         "Preserve issued answer keys, private/no-store boundaries and exactly-once receipt effects through retries.",
@@ -892,7 +904,11 @@
       "dependsOn": [],
       "evidence": [
         "docs/PLATFORM-NEXT-STEPS.md",
-        "docs/BACKUP-RECOVERY.md"
+        "docs/BACKUP-RECOVERY.md",
+        "docs/PLAYER-READINESS-2026-10-17.md",
+        "docs/PERFORMANCE-BASELINE.md",
+        "scripts/performance-baseline.mjs",
+        "docs/performance/2026-10-17-readiness.json"
       ]
     },
     {
@@ -901,7 +917,7 @@
       "status": "needs-evidence",
       "title": "Make returning login clear and keep advanced setup optional",
       "owner": "Maintainer; founder confirms usability",
-      "nextAction": "#144 merged/deployed with 522 full tests, exact-head CI/Vercel and live desktop/delivery checks passed. Gather founder phone usability/returning-login feedback; actual Silk and independent auth acceptance remain separate.",
+      "nextAction": "Preserve the simplified login UI. New full saved-player journey regression passes internally; gather actual returning-phone/Silk clarity and recovery evidence.",
       "acceptance": [
         "Main page presents a clear returning Sign in and guest path without automatically expanding technical help.",
         "An authenticated session offers continuation and its actual player; setup and management are not mistaken for login.",
@@ -915,7 +931,8 @@
         "public/sign-in/assets/passkeys.js",
         "tests/passkey-client.test.js",
         "docs/TRUSTED-DEVICE-ACCESS.md",
-        "tests/sign-in-state.test.js"
+        "tests/sign-in-state.test.js",
+        "docs/PLAYER-READINESS-2026-10-17.md"
       ],
       "releaseEvidence": [
         "Merge 61305c23daf11dad97f939e1f6e4e778d1865433; CI 39011943414; production dpl_GEGMmAqCCVSqv7qY8UFNz6K4XGQW READY on both canonical domains. Five delivery checks passed; live enabled login/guest and closed optional flows verified. No actual phone/authenticator acceptance claim."

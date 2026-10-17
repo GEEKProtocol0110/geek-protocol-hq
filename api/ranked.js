@@ -11,6 +11,7 @@ import { rateLimit, redis } from '../server/redis.js';
 import { playerIdFor, requireSession } from '../server/session.js';
 import questHandler from '../server/quest.js';
 import studyHandler from '../server/study.js';
+import aceTutorHandler from '../server/ace-tutor.js';
 import challengesHandler from '../server/challenges.js';
 import assistedPracticeHandler from '../server/assisted-practice.js';
 import rewardedChallengesHandler from '../server/rewarded-challenges.js';
@@ -242,6 +243,7 @@ const answerQuestion = async (run, session, profile, body) => {
 };
 
 export default async function handler(req, res) {
+  if (req.query?.service === 'ace') return aceTutorHandler(req, res);
   if (req.query?.service === 'discoveries') return rewardedChallengesHandler(req, res);
   if (req.query?.service === 'quest') return questHandler(req, res);
   if (req.query?.service === 'practice') return assistedPracticeHandler(req, res);

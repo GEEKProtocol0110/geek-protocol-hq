@@ -1,0 +1,173 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-17T10:56:01.703Z",
+  "node": "v24.19.0",
+  "kind": "local-synthetic",
+  "note": "CPU/loopback Redis measurements; not phone, internet, serverless, production saturation or a capacity guarantee.",
+  "study": {
+    "catalog": {
+      "coldMs": 21.765821000000003,
+      "samples": 200,
+      "p50Ms": 0.00014999999999076863,
+      "p95Ms": 0.0005209999999920001,
+      "maxMs": 0.028272000000001185
+    },
+    "progressEmpty": {
+      "coldMs": 0.9246729999999985,
+      "samples": 200,
+      "p50Ms": 0.26430799999999977,
+      "p95Ms": 0.3546839999999918,
+      "maxMs": 0.7575510000000065
+    }
+  },
+  "rssBytes": 78041088,
+  "growth": [
+    {
+      "questions": 10000,
+      "coldLoadMs": 57.970529,
+      "selection": {
+        "samples": 20,
+        "p50Ms": 3.4635769999999866,
+        "p95Ms": 8.001740999999981,
+        "maxMs": 8.355244000000027
+      },
+      "rssBytes": 191434752,
+      "synthetic": true,
+      "excludesFixtureConstruction": true,
+      "bytes": 8580692
+    },
+    {
+      "questions": 100000,
+      "coldLoadMs": 639.506887,
+      "selection": {
+        "samples": 20,
+        "p50Ms": 50.58472599999982,
+        "p95Ms": 59.54639199999997,
+        "maxMs": 68.85718500000007
+      },
+      "rssBytes": 542728192,
+      "synthetic": true,
+      "excludesFixtureConstruction": true,
+      "bytes": 86126161
+    }
+  ],
+  "mixed": {
+    "players": 24,
+    "workload": "8 Study practices, 8 completed Daily rounds, 2 four-player Royale lobbies readied/started/viewed concurrently; Royale timed questions not advanced",
+    "elapsedMs": 303.8246979999999,
+    "operations": {
+      "session": {
+        "samples": 24,
+        "p50Ms": 40.967221999999765,
+        "p95Ms": 41.6762319999998,
+        "maxMs": 41.743586999999934
+      },
+      "study-start": {
+        "samples": 8,
+        "p50Ms": 40.42102299999988,
+        "p95Ms": 121.92452600000024,
+        "maxMs": 121.92452600000024
+      },
+      "royale-create": {
+        "samples": 2,
+        "p50Ms": 40.18860199999972,
+        "p95Ms": 42.83626400000003,
+        "maxMs": 42.83626400000003
+      },
+      "daily-start": {
+        "samples": 8,
+        "p50Ms": 127.06716299999971,
+        "p95Ms": 127.77583300000015,
+        "maxMs": 127.77583300000015
+      },
+      "royale-join": {
+        "samples": 6,
+        "p50Ms": 102.78463200000033,
+        "p95Ms": 106.57778300000018,
+        "maxMs": 106.57778300000018
+      },
+      "study-answer": {
+        "samples": 8,
+        "p50Ms": 105.04278000000022,
+        "p95Ms": 111.82396999999992,
+        "maxMs": 111.82396999999992
+      },
+      "daily-answer": {
+        "samples": 40,
+        "p50Ms": 15.42089900000019,
+        "p95Ms": 38.272805999999946,
+        "maxMs": 40.43971200000033
+      },
+      "study-progress": {
+        "samples": 8,
+        "p50Ms": 24.481788999999935,
+        "p95Ms": 30.809797000000344,
+        "maxMs": 30.809797000000344
+      },
+      "royale-ready": {
+        "samples": 8,
+        "p50Ms": 29.801782000000003,
+        "p95Ms": 30.52449400000023,
+        "maxMs": 30.52449400000023
+      },
+      "daily-next": {
+        "samples": 32,
+        "p50Ms": 10.96864400000004,
+        "p95Ms": 29.475175000000036,
+        "maxMs": 29.485169999999925
+      },
+      "royale-start": {
+        "samples": 2,
+        "p50Ms": 14.593814000000293,
+        "p95Ms": 15.643974000000071,
+        "maxMs": 15.643974000000071
+      },
+      "royale-view": {
+        "samples": 8,
+        "p50Ms": 13.744109000000208,
+        "p95Ms": 16.876228000000083,
+        "maxMs": 16.876228000000083
+      },
+      "daily-finish": {
+        "samples": 8,
+        "p50Ms": 20.283500000000004,
+        "p95Ms": 23.728380000000016,
+        "maxMs": 23.728380000000016
+      }
+    },
+    "requests": 162,
+    "errors": 0,
+    "failures": [],
+    "redisCommands": 1442,
+    "redisUsedBytes": 1610000,
+    "rssBytes": 138518528
+  },
+  "sourceBaseCommit": "afad33fae3828e53b57bbb108e7d650595c41c6f",
+  "beforeStudyMemoization": {
+    "node": "v24.19.0",
+    "samples": 200,
+    "catalog": {
+      "coldMs": 24.562593,
+      "p50Ms": 1.181407,
+      "p95Ms": 1.919807
+    },
+    "progressEmpty": {
+      "coldMs": 5.805389,
+      "p50Ms": 1.300025,
+      "p95Ms": 1.619435
+    },
+    "rssBytes": 89686016,
+    "note": "Separate pre-edit process on the same host; local timing comparisons, not internet performance."
+  },
+  "sourceDigests": {
+    "scripts/performance-baseline.mjs": "c2ac147fcd5cc4937719f65a8e4a9ee98720bee023d7745e4ef6d95b6ff3c4e0",
+    "server/study-curriculum.js": "81fe8d9e8a73a7ffb24e244f622beb57da448561000e58f0e695f5c4d615af13",
+    "server/study-progress.js": "263cabe47e76d80bf2f338af4528750ceb3b8a486631188ee716636036f58e8f",
+    "server/questions.js": "780ddee6880b37f52bf75fd78ce1e04a2da5f8ed4b554d4825bc7670de89c2d6"
+  },
+  "questionCheckpoint": {
+    "active": 8229,
+    "kaspa": 624,
+    "studyConcepts": 537
+  }
+}

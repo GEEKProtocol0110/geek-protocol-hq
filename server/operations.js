@@ -11,6 +11,7 @@ import { importedReviewHandler } from './imported-review.js';
 import { testnetRewardsHandler } from './testnet-rewards.js';
 import { operationsMonitorHandler } from './operations-monitor.js';
 import { operationsStressHandler } from './operations-stress.js';
+import { aceReadiness } from './ace-tutor.js';
 
 const files = new Map([
   ['', ['index.html', 'text/html; charset=utf-8']],
@@ -21,6 +22,8 @@ const files = new Map([
   ['assets/imported.js', ['assets/imported.js', 'text/javascript; charset=utf-8']],
   ['testnet', ['testnet/index.html', 'text/html; charset=utf-8']],
   ['assets/testnet.js', ['assets/testnet.js', 'text/javascript; charset=utf-8']],
+  ['ace', ['ace/index.html', 'text/html; charset=utf-8']],
+  ['assets/ace.js', ['assets/ace.js', 'text/javascript; charset=utf-8']],
   ['monitor', ['monitor/index.html', 'text/html; charset=utf-8']],
   ['stress', ['stress/index.html', 'text/html; charset=utf-8']],
   ['assets/stress.js', ['assets/stress.js', 'text/javascript; charset=utf-8']],
@@ -41,6 +44,14 @@ export default async function operationsHandler(req, res) {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   const action = typeof req.query?.action === 'string' ? req.query.action : '';
   try {
+    if (action === 'ace') {
+      if (req.method !== 'GET') return methodNotAllowed(res, 'GET');
+      if (!await operationsSession(req)) return sendJson(res, 401, { ok: false, error: 'Sign in to check A.C.E. readiness.' });
+      if (req.headers?.['sec-fetch-site'] === 'cross-site' || (req.headers?.origin && !trustedOrigin(req)) || ['authorization', 'x-cce-admin', 'x-audit-admin', 'x-payout-review-admin'].some(h => Object.hasOwn(req.headers || {}, h))) return sendJson(res, 403, { ok: false, error: 'Owner access is required.' });
+      await rateLimit('ops-ace', clientFingerprint(req), 40, 600);
+      try { return sendJson(res, 200, { ok: true, checkedAt: Date.now(), readiness: await aceReadiness() }); }
+      catch { return sendJson(res, 503, { ok: false, error: 'A.C.E. readiness could not be checked. No readiness is assumed.' }); }
+    }
     if (action === 'appearance') return ownerAppearanceHandler(req, res);
     if (action === 'community') return ownerCommunityHandler(req, res);
     if (action === 'attention') return operationsAttentionHandler(req, res);

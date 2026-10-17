@@ -7,6 +7,9 @@ import { redisFixture } from './helpers/redis-fixture.js';
 import sessionHandler from '../api/session.js';
 import passkeysHandler from '../api/passkeys.js';
 import identityHandler from '../api/identity.js';
+import rankedHandler from '../api/ranked.js';
+import { profileHandler } from '../server/player-api.js';
+import { loadQuestionBank } from '../server/questions.js';
 import { passkeyAccountKey } from '../server/passkey-grants.js';
 import { identityPlayerKey } from '../server/identity-keys.js';
 import { resetRestoredSessions } from '../scripts/reset-restored-sessions.mjs';
@@ -308,6 +311,49 @@ const finishDevice = async target => {
   assert.equal(status.statusCode,200,JSON.stringify(status.body));
   return deviceCall(target.cookie,'finish',{code:target.code,approvalId:status.body.approvalId,confirm:true});
 };
+
+test('play, claim, tablet approval, sign-out and fresh passkey return retain the same career and Study progress', async () => {
+  const guest = await session(), player = guest.split('=')[1], source = await enroll(guest);
+  const endpoint = service => (req, res) => rankedHandler({ ...req, query: service ? { service } : {} }, res);
+  const request = (handler, cookie, body, method = 'POST') => call(handler, cookie, body, method, { 'content-type': 'application/json' });
+  const study = endpoint('study'), discoveries = endpoint('discoveries'), ranked = endpoint();
+  let practice = await request(study, source.cookie, { action: 'start', topic: 'origins', level: 'foundations' });
+  assert.equal(practice.statusCode, 201);
+  const q = loadQuestionBank('kaspa').questions.find(q => q.prompt === practice.body.question.prompt);
+  practice = await request(study, source.cookie, { action: 'answer', runId: practice.body.run.id, questionToken: practice.body.question.token, selectedIndex: practice.body.question.options.indexOf(q.options[q.correctIndex]) });
+  assert.equal(practice.statusCode, 200);
+  let game = await request(ranked, source.cookie, { action: 'start', category: 'kaspa', mode: 'daily' });
+  assert.equal(game.statusCode, 201);
+  const runId = game.body.run.id;
+  for (let i = 0; i < 5; i++) {
+    const q = loadQuestionBank('kaspa').questions.find(q => q.prompt === game.body.question.prompt);
+    const result = await request(ranked, source.cookie, { action: 'answer', runId, questionToken: game.body.question.token, selectedIndex: game.body.question.options.indexOf(q.options[q.correctIndex]) });
+    assert.equal(result.statusCode, 200, JSON.stringify(result.body));
+    if (i < 4) game = await request(ranked, source.cookie, { action: 'next', runId });
+  }
+  assert.equal((await request(ranked, source.cookie, { action: 'finish', runId })).statusCode, 200);
+  assert.equal((await request(discoveries, source.cookie, { action: 'claim', id: 'first-scored-round' })).statusCode, 200);
+  assert.equal((await request(discoveries, source.cookie, { action: 'track', id: 'world-kaspa', tracked: true })).statusCode, 200);
+  const baseline = (await request(profileHandler, source.cookie, null, 'GET')).body.profile;
+  const learning = (await request(study, source.cookie, { action: 'progress' })).body.progress;
+  assert.equal(baseline.stats.totalCorrect, 5); assert.equal(learning.explored, 1);
+  const target = await newDevice();
+  assert.equal((await approveDevice(source, target)).statusCode, 200);
+  const tablet = cookieFrom(await finishDevice(target));
+  assert.deepEqual((await request(profileHandler, tablet, null, 'GET')).body.profile, baseline);
+  assert.deepEqual((await request(study, tablet, { action: 'progress' })).body.progress, learning);
+  assert.equal((await call(passkeysHandler, source.cookie, { action: 'logout' })).statusCode, 200);
+  const returning = await session(), begin = await call(passkeysHandler, returning, { action: 'begin-login' });
+  const login = await call(passkeysHandler, returning, { action: 'finish-login', challengeId: begin.body.challengeId, response: source.key.login(begin.body.options, player) });
+  assert.equal(login.statusCode, 200);
+  const recovered = cookieFrom(login);
+  assert.deepEqual((await request(profileHandler, recovered, null, 'GET')).body.profile, baseline);
+  assert.deepEqual((await request(study, recovered, { action: 'progress' })).body.progress, learning);
+  assert.equal((await request(ranked, recovered, { action: 'start', category: 'kaspa', mode: 'daily' })).statusCode, 409, 'returning login must not reset the Daily lock');
+  const raw = await fixture.command('GET', 'geek:profile:' + player);
+  assert.equal((await request(discoveries, recovered, { action: 'claim', id: 'first-scored-round' })).statusCode, 200);
+  assert.equal(await fixture.command('GET', 'geek:profile:' + player), raw, 'repeating a claimed reward after login must not grant extra XP');
+});
 
 test('trusted-device approval rotates only the receiving cookie, preserves both profiles and grants no management proof',async()=>{
   const sourceGuest=await session(), player=sourceGuest.split('=')[1], source=await enroll(sourceGuest), target=await newDevice();

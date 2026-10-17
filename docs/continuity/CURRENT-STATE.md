@@ -10,11 +10,11 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,205 active questions; 698 recorded internal source reviews; 7,302 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,229 active questions; 722 recorded internal source reviews; 7,278 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
-| Kaspa | 600 | 600 | 400 |
+| Kaspa | 624 | 624 | 376 |
 | Video games | 602 | 0 | 1000 |
 | Science fiction | 515 | 37 | 963 |
 | Technology | 1497 | 15 | 985 |
@@ -25,9 +25,9 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**GAME-001: needs-evidence.** Career/mastery released in #147: 90 tiered challenges, 18 paths/emblems, 102 achievements, three recommended/saved tracked paths, atomic claims and round notices. Exact CI, corrected preview and live delivery pass. Founder actual-phone/game acceptance remains outstanding.
+**ACE-001: in-progress.** Player/ACE readiness candidate after #147: saved-player cross-flow regression, selected GEEKT instructions, bounded opt-in tutor with authored default, read-only operations readiness, measured local performance/recovery and 24 reviewed Kaspa additions. Candidate verification/publication pending; actual device, wallet, live model and provider acceptance remain separate.
 
-Next task: **UX-006**. Try the career tracks, claims and My HQ collection on the actual phone. Gather background/browser-bar and login/Silk acceptance separately, then continue reviewed-bank/beta and ACE/performance roadmap work within existing holds.
+Next task: **AUTH-003**. Complete exact-head verification and preview/release evidence, then gather actual phone/Silk sign-in/return/revocation, the first manual TN10 receipt/transfer and a bounded model/budget/data-policy decision. Continue 624 Kaspa concepts toward 1,000 without variants.
 
 ## Holds
 
