@@ -6,7 +6,7 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Last verified product release
 
-[PR #142](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/142), commit `2f552d1046309e35c52c8b6f99ff6dc14cf72a0b`. PR #142 merged October 17 at 05:24:03 UTC as 2f552d1046309e35c52c8b6f99ff6dc14cf72a0b. Exact head 8421c5a296b610983d2d280871b0f9af4be1e4c6 and merge tree 76bb9f8ce7f5f4340b813f272e91ae94ded5c11f match; GitHub Security verification 39006045093 and Vercel passed. Production dpl_Bdf9twxEmAieVGuNUnJz1pGgJmSU READY on the exact merge with both canonical domains. First standard monitor timed out 21/21 at five seconds; one follow-up under unchanged deadlines passed 21/21. Seven focused disposable guest checks passed: session, no-store status, request creation, pending/no switch, wrong-browser rejection, cancellation and replay rejection. Live desktop controls initialize on the canonical origin. Full candidate: 516 tests, zero failures/skips, required Redis and 311 security assertions. No actual Silk/two-device, independent review or provider restore acceptance. Recorded tests: 516 passed, 0 failed, 0 skipped; 21 read-only probes passed. Later documentation candidates are separate from this baseline.
+[PR #143](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/143), commit `0355013a5c1928274025ee678db7df3d285847dd`. PR #143 merged October 17 at 05:28:14 UTC as 0355013a5c1928274025ee678db7df3d285847dd. Exact head 21b05467784d3ba4876bc5ac3a5bc2dc20562692 and merge share tree 3810108787fe8e9863fc6e483902d1002612cfc9; GitHub Security verification 39006310631 and Vercel passed. Production dpl_BqFoW1bqJmh4oQ3W5W6f6U3DEQj2 READY on the exact merge, both canonical domains assigned. Four targeted public-delivery checks passed with 15-second bounds: sign-in, exact-byte passkeys.js/device-access.js and 27-entry sitemap. Full verification: 517 tests, zero failures/skips, required Redis and 311 security assertions. PR #142 retains the prior full monitor initial timeout/follow-up 21/21 and seven disposable request/cancel probes. No actual Silk/two-device, independent review or provider restore acceptance. Recorded tests: 517 passed, 0 failed, 0 skipped; 4 read-only probes passed. Later documentation candidates are separate from this baseline.
 
 ## Current checkout counts
 
@@ -25,9 +25,9 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-003: in-progress.** PR #142 same-player device approval is merged/deployed. The unsupported-browser sign-out/player-refresh follow-up passes 517 tests, zero failures/skips and all required checks; its exact publication/release is in the PR review record. Actual phone/Silk and independent security acceptance remain outstanding.
+**AUTH-003: needs-evidence.** Trusted-device same-player access is merged/deployed in #142 with the unsupported-browser sign-out/player-refresh follow-up #143. 517 full tests pass; actual phone/Silk approval, returning-session and revocation acceptance remain pending. No parent/child roles, email recovery, model service or automatic signer has been added.
 
-Next task: **CHAIN-001**. Release the account-status/sign-out polish, obtain actual phone/Silk approval and returning-session evidence, then complete the first real GEEKT receipt/transfer rehearsal. ACE-001 and PERF-001 remain staged; no model service or automatic signer has been installed.
+Next task: **CHAIN-001**. On the actual phone/Silk tablet, test same-player approval, returning access and device revocation. Complete the first real GEEKT receipt/transfer rehearsal through the existing wallet-owner flow. ACE-001/PERF-001 remain planned; OPS-001/CONT-002 still need privately controlled recovery/independent-backup evidence.
 
 ## Holds
 

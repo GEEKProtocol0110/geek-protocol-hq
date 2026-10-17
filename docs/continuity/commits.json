@@ -2026,6 +2026,23 @@
         "8421c5a296b610983d2d280871b0f9af4be1e4c6"
       ],
       "title": "Merge pull request #142 from GEEKProtocol0110/codex/trusted-device-access"
+    },
+    {
+      "commit": "21b05467784d3ba4876bc5ac3a5bc2dc20562692",
+      "authoredAt": "2026-10-17T01:27:11-04:00",
+      "parents": [
+        "2f552d1046309e35c52c8b6f99ff6dc14cf72a0b"
+      ],
+      "title": "Keep approved-device status and sign-out usable without WebAuthn"
+    },
+    {
+      "commit": "0355013a5c1928274025ee678db7df3d285847dd",
+      "authoredAt": "2026-10-17T01:28:14-04:00",
+      "parents": [
+        "2f552d1046309e35c52c8b6f99ff6dc14cf72a0b",
+        "21b05467784d3ba4876bc5ac3a5bc2dc20562692"
+      ],
+      "title": "Merge pull request #143 from GEEKProtocol0110/codex/device-session-controls"
     }
   ]
 }

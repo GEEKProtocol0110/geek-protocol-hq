@@ -940,7 +940,26 @@
       "title": "Let a trusted passkey device approve tablet access to the same player",
       "mergedAt": "2026-10-17T05:24:03Z",
       "commit": "2f552d1046309e35c52c8b6f99ff6dc14cf72a0b",
-      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/142"
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/142",
+      "priorProductBaseline": {
+        "pullRequest": 142,
+        "commit": "2f552d1046309e35c52c8b6f99ff6dc14cf72a0b",
+        "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/142",
+        "status": "merged-deployed",
+        "checkedOn": "2026-10-17",
+        "testsPassed": 516,
+        "testsFailed": 0,
+        "testsSkipped": 0,
+        "productionProbesPassed": 21,
+        "evidence": "PR #142 merged October 17 at 05:24:03 UTC as 2f552d1046309e35c52c8b6f99ff6dc14cf72a0b. Exact head 8421c5a296b610983d2d280871b0f9af4be1e4c6 and merge tree 76bb9f8ce7f5f4340b813f272e91ae94ded5c11f match; GitHub Security verification 39006045093 and Vercel passed. Production dpl_Bdf9twxEmAieVGuNUnJz1pGgJmSU READY on the exact merge with both canonical domains. First standard monitor timed out 21/21 at five seconds; one follow-up under unchanged deadlines passed 21/21. Seven focused disposable guest checks passed: session, no-store status, request creation, pending/no switch, wrong-browser rejection, cancellation and replay rejection. Live desktop controls initialize on the canonical origin. Full candidate: 516 tests, zero failures/skips, required Redis and 311 security assertions. No actual Silk/two-device, independent review or provider restore acceptance."
+      }
+    },
+    {
+      "number": 143,
+      "title": "Keep approved-player status and sign-out usable on tablets without WebAuthn",
+      "mergedAt": "2026-10-17T05:28:14Z",
+      "commit": "0355013a5c1928274025ee678db7df3d285847dd",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/143"
     }
   ]
 }

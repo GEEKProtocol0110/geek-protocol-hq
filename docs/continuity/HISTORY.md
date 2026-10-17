@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-The ledger preserves **129 merged HQ PR records** and **246 Git commit records** through the declared commit snapshot `0a553b5b02bc4466f8302d89a5acad00b3f20b73`. The product runtime baseline remains #142. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
+The ledger preserves **130 merged HQ PR records** and **248 Git commit records** through the declared commit snapshot `0a553b5b02bc4466f8302d89a5acad00b3f20b73`. The product runtime baseline remains #143. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
 
 ## Founding record
 
@@ -12,6 +12,7 @@ Three exact historical master/litepaper snapshots are preserved with source comm
 
 | PR | Merged (UTC) | Change | Commit |
 | --- | --- | --- | --- |
+| [#143](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/143) | 2026-10-17T05:28:14Z | Keep approved-player status and sign-out usable on tablets without WebAuthn | `0355013a5c19` |
 | [#142](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/142) | 2026-10-17T05:24:03Z | Let a trusted passkey device approve tablet access to the same player | `2f552d104630` |
 | [#140](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/140) | 2026-10-17T04:20:46Z | Grow Kaspa to 600 reviewed concepts with PSKT coordination questions | `0a553b5b02bc` |
 | [#141](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/141) | 2026-10-17T01:10:54-04:00 | Refresh every HQ page’s metadata and clarify Silk login and GEEKT readiness | `8c0bdf165085` |

@@ -828,10 +828,10 @@
     {
       "id": "AUTH-003",
       "priority": "P0",
-      "status": "in-progress",
+      "status": "needs-evidence",
       "title": "Provide a cross-device account path beyond local passkey creation",
       "owner": "Maintainer; family-account and recovery policy reviewed by founder",
-      "nextAction": "PR #142 is merged/deployed with 516 tests and 21/21 follow-up production checks. Release the unsupported-browser sign-out/player-status correction, then gather actual phone/Silk and returning-session evidence. This shares one player; family roles remain separate.",
+      "nextAction": "Implementation released in #142/#143, 517 full tests pass and exact production delivery is verified. Gather actual phone/Silk same-player approval, returning-session and revocation evidence; independent security review remains unassigned. Parent/child roles remain separate.",
       "acceptance": [
         "Unsupported-passkey devices have a tested, explicit authorized sign-in path.",
         "Fresh proof, short expiry, replay protection, rate limits and device revocation preserve player ownership.",
@@ -843,6 +843,9 @@
         "docs/IDENTITY-PROTOCOL.md",
         "docs/PLATFORM-NEXT-STEPS.md",
         "docs/TRUSTED-DEVICE-ACCESS.md"
+      ],
+      "releaseEvidence": [
+        "#142 merge 2f552d1046309e35c52c8b6f99ff6dc14cf72a0b; #143 merge 0355013a5c1928274025ee678db7df3d285847dd. Exact-head CI/Vercel passed; both production deployments READY on both domains. #142 initial monitor timed out 21/21; unchanged-budget follow-up passed 21/21 and seven disposable request/cancel probes passed. #143 four targeted delivery checks passed; all 517 full tests passed. No real two-device/Silk or independent acceptance claim."
       ]
     },
     {

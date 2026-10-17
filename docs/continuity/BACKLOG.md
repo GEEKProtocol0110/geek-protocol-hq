@@ -44,7 +44,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | PILOT-002 | P1 | planned | Review retained wallet-safety course and evaluation tooling | Pilot coordinator and instructor unassigned |
 | ART-001 | P2 | blocked | Preserve paused original art and resume production only on founder direction | Founder supplies art; production maintainer unassigned |
 | SEO-001 | P0 | done | Maintain metadata and link coverage for every HQ page | Maintainer |
-| AUTH-003 | P0 | in-progress | Provide a cross-device account path beyond local passkey creation | Maintainer; family-account and recovery policy reviewed by founder |
+| AUTH-003 | P0 | needs-evidence | Provide a cross-device account path beyond local passkey creation | Maintainer; family-account and recovery policy reviewed by founder |
 | ACE-001 | P1 | planned | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
 | PERF-001 | P1 | planned | Measure growth capacity and stage storage, delivery and worker improvements | Maintainer; performance/recovery reviewer unassigned |
 
@@ -603,9 +603,9 @@ Evidence/specification: [docs/site-pages.json](../../docs/site-pages.json), [scr
 
 ## AUTH-003: Provide a cross-device account path beyond local passkey creation
 
-**P0 / in-progress.** Owner: Maintainer; family-account and recovery policy reviewed by founder. Dependencies: none.
+**P0 / needs-evidence.** Owner: Maintainer; family-account and recovery policy reviewed by founder. Dependencies: none.
 
-Next action: PR #142 is merged/deployed with 516 tests and 21/21 follow-up production checks. Release the unsupported-browser sign-out/player-status correction, then gather actual phone/Silk and returning-session evidence. This shares one player; family roles remain separate.
+Next action: Implementation released in #142/#143, 517 full tests pass and exact production delivery is verified. Gather actual phone/Silk same-player approval, returning-session and revocation evidence; independent security review remains unassigned. Parent/child roles remain separate.
 
 Acceptance:
 
