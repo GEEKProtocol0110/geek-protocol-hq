@@ -49,6 +49,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | PERF-001 | P1 | planned | Measure growth capacity and stage storage, delivery and worker improvements | Maintainer; performance/recovery reviewer unassigned |
 | UX-006 | P0 | needs-evidence | Make returning login clear and keep advanced setup optional | Maintainer; founder confirms usability |
 | UX-007 | P1 | needs-evidence | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
+| GAME-001 | P1 | in-progress | Build a deep career challenge and mastery ladder | Maintainer; founder confirms phone/game usability |
 
 ## CONT-001: Publish the continuation system
 
@@ -674,3 +675,19 @@ Acceptance:
 - No tokens, game credits, scores, question answers, CCE activation or settlement changes; relevant tests and release evidence recorded.
 
 Evidence/specification: [docs/REWARDED-CHALLENGES.md](../../docs/REWARDED-CHALLENGES.md), [server/rewarded-challenges.js](../../server/rewarded-challenges.js), [tests/rewarded-challenges.test.js](../../tests/rewarded-challenges.test.js), [tests/rewarded-challenges-client.test.js](../../tests/rewarded-challenges-client.test.js), [public/challenges/assets/rewarded.js](../../public/challenges/assets/rewarded.js).
+
+## GAME-001: Build a deep career challenge and mastery ladder
+
+**P1 / in-progress.** Owner: Maintainer; founder confirms phone/game usability. Dependencies: none.
+
+Next action: Finish full verification, inspect the checked preview and release the mastery catalog. Record exact CI/deployment evidence and actual-device limits.
+
+Acceptance:
+
+- Casual players see three suggested goals while dedicated players can search/filter all 90 challenges across 18 Bronze-to-Diamond paths.
+- Achievements share server eligibility with rewards; legacy 12 achievements, five-word hunt and two issued claim IDs remain compatible.
+- Three tracked paths persist for the resolved player and advance with claimed tiers; 18 mastery emblems and round-end notices recognize progress.
+- Permanent once-only receipts, atomic bounded multi-claim and profile/prestige CAS protect XP under replay, lost responses and concurrent updates. New mode/perfect counters are honestly prospective and commit with game results.
+- Relevant tests, browser observations, exact release and remaining phone/independent-review limits are retained; no token settlement or CCE hold changes.
+
+Evidence/specification: [docs/CAREER-MASTERY.md](../../docs/CAREER-MASTERY.md), [server/career-challenges.js](../../server/career-challenges.js), [tests/career-challenges.test.js](../../tests/career-challenges.test.js), [tests/rewarded-challenges.test.js](../../tests/rewarded-challenges.test.js), [tests/ranked-persistence.test.js](../../tests/ranked-persistence.test.js).

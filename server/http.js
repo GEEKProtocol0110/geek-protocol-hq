@@ -84,6 +84,7 @@ export const methodNotAllowed = (res, methods = 'GET, POST, OPTIONS') => {
 
 export const handleApiError = (res, error) => {
   const code = error?.message || 'UNKNOWN';
+  if (code === 'CHALLENGE_TRACK_LIMIT') return sendJson(res,400,{ok:false,code,error:'You can track three challenge paths. Untrack one before choosing another.'});
   if (code === 'DISCOVERY_WORD_UNKNOWN') return sendJson(res, 400, { ok: false, code, error: 'That signal is not one of the five words. Check the spelling and try another clue.' });
   if (code === 'CHALLENGE_NOT_READY') return sendJson(res, 409, { ok: false, code, error: 'Keep going! This task is not complete in your saved game results yet.' });
   if (code === 'REDIS_NOT_CONFIGURED') {

@@ -252,6 +252,19 @@
       ],
       "recordedAt": "2026-10-17",
       "supersedes": "DR-015"
+    },
+    {
+      "id": "DR-021",
+      "status": "founder-direction",
+      "title": "Offer accessible next goals and deep game-style mastery tracks",
+      "decision": "Expand achievements and rewarded challenges into Bronze-to-Diamond career paths, category specialization, skill/mode/Gauntlet goals, mastery emblems, three saved tracked paths and a shared authoritative catalog. Keep a short recommended view for casual players and an optional searchable catalog for dedicated completionists. Preserve lifetime progress, prior receipts and all token/CCE holds.",
+      "basis": "Founder October 17 requests a modern game-style breadth/depth system using Call of Duty and Xbox achievements as examples, with goals for regular and expert players. Maintainer selects 18 five-tier paths, modest once-only XP, 18 emblems and honest new-counter start dates; no external platform integration or certification is claimed.",
+      "evidence": [
+        "docs/CAREER-MASTERY.md",
+        "docs/REWARDED-CHALLENGES.md"
+      ],
+      "recordedAt": "2026-10-17",
+      "supersedes": null
     }
   ]
 }

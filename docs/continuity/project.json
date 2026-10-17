@@ -35,12 +35,12 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "UX-007",
-    "status": "needs-evidence",
-    "description": "Rewarded challenge list, five hidden words and once-only server-bound career XP released in #146. Full tests, exact-head CI, preview reward/replay/reload and live delivery/rendering passed. Founder actual-phone acceptance remains outstanding."
+    "id": "GAME-001",
+    "status": "in-progress",
+    "description": "Career mastery candidate implemented: 90 tiers, 18 paths/emblems, 102 total achievements, recommended goals, three saved tracked paths, atomic fixed-set claims and round notices. Full verify passes 551 tests, zero failures/skips, required Redis and all checks. Preview/exact-head release and actual-phone acceptance pending."
   },
   "nextTask": "UX-006",
-  "nextAction": "Try the word hunt and task claims on the actual phone. Keep background/browser-bar and login/Silk acceptance separate; resume the reviewed bank, beta evidence and ACE/performance roadmap without opening existing holds.",
+  "nextAction": "Verify and release the career/mastery system, then gather actual-phone usability and continue outstanding background/login/beta evidence and reviewed content.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

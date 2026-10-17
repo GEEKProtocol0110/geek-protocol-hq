@@ -14,6 +14,7 @@ import studyHandler from '../server/study.js';
 import challengesHandler from '../server/challenges.js';
 import assistedPracticeHandler from '../server/assisted-practice.js';
 import rewardedChallengesHandler from '../server/rewarded-challenges.js';
+import { careerChallengeState } from '../server/career-challenges.js';
 
 const RUN_TTL = 60 * 60 * 2;
 const QUESTION_MS = 15_000;
@@ -157,6 +158,7 @@ const answerQuestion = async (run, session, profile, body) => {
   const mode = modeConfig(run.mode);
   const modeClockExpired = Boolean(mode.overallMs && now >= run.overallDeadline);
   if (run.questionIndex === run.questionCount - 1 || modeClockExpired) {
+    const earlierAchievements=new Set(careerChallengeState(profile).tasks.filter(t=>t.complete).map(t=>t.id));
     const config = ROUND_CONFIG[run.round - 1];
     const reward = mode.rewards ? run.correct * config.reward : 0;
     const xpEarned = run.correct * 10 + Math.round(run.roundScore / 1000);
@@ -177,6 +179,7 @@ const answerQuestion = async (run, session, profile, body) => {
       reward,
       maxStreak: run.maxStreak
     });
+    const career=careerChallengeState(profile);
     if (run.mode === 'gauntlet') {
       profile.bestRound = Math.max(profile.bestRound, run.round);
       profile.bestScore = Math.max(profile.bestScore, run.totalScore);
@@ -188,6 +191,8 @@ const answerQuestion = async (run, session, profile, body) => {
     run.completedRound = run.round;
     run.status = 'between-rounds';
     roundResult = {
+      newAchievements: career.tasks.filter(t=>t.complete&&!earlierAchievements.has(t.id)).map(({id,name,tierName})=>({id,name,tierName})),
+      careerRewardsReady: career.ready,
       label: mode.label || config.label,
       correct: run.correct,
       answered: run.questionIndex + 1,

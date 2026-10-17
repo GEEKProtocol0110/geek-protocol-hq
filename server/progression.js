@@ -1,5 +1,6 @@
 import { awardRoundStickers } from './collectibles.js';
 import { initialPrestigeState, validatePrestigeState, MAX_PRESTIGE } from './prestige-state.js';
+import { careerAchievements, careerChallengeState } from './career-challenges.js';
 
 const XP_PER_LEVEL = 250;
 const LEVELS_PER_PRESTIGE = 50;
@@ -88,6 +89,12 @@ export const recordRoundJourney = (profile, input) => {
   const after = deriveProgression(profile);
   const answered = Math.floor(numeric(input.answered));
   const correct = Math.min(answered, Math.floor(numeric(input.correct)));
+  // Historical mode/perfect totals were not retained. Count new verified rounds only.
+  profile.careerCounters ||= { dailyRounds:0, speedRounds:0, perfectRounds:0 };
+  const increment=key=>{ if(!Number.isSafeInteger(profile.careerCounters[key]+1)) throw new Error('PROFILE_STATE_INVALID'); profile.careerCounters[key]++; };
+  if (input.mode === 'daily') increment('dailyRounds');
+  if (input.mode === 'speed') increment('speedRounds');
+  if (['gauntlet','daily','speed'].includes(input.mode) && answered === (input.mode==='daily'?5:10) && correct === answered) increment('perfectRounds');
   const category = Object.hasOwn(CATEGORY_LABELS, input.category) ? input.category : 'kaspa';
   const categoryStats = profile.categoryStats && typeof profile.categoryStats === 'object' ? { ...profile.categoryStats } : {};
   const previous = cleanCategoryStats(categoryStats[category]);
@@ -171,7 +178,8 @@ export const deriveAchievements = (profile = {}) => {
     { id: 'prestige-one', name: 'Prestige Operator', detail: 'Complete your first prestige.', unlocked: progression.prestige >= 1, progress: Math.min(1, progression.prestige), target: 1 },
     { id: 'prestige-ten', name: 'Omniscient Guardian', detail: 'Reach Prestige 10.', unlocked: progression.prestige >= 10, progress: Math.min(10, progression.prestige), target: 10 },
     { id: 'prestige-twenty-five', name: 'Genesis Vanguard', detail: 'Reach Prestige 25.', unlocked: progression.prestige >= 25, progress: progression.prestige, target: 25 },
-    { id: 'prestige-master', name: 'Prestige Master', detail: 'Reach level 50 at Prestige 25.', unlocked: progression.maxed, progress: progression.prestige === 25 ? progression.level : 0, target: 50 }
+    { id: 'prestige-master', name: 'Prestige Master', detail: 'Reach level 50 at Prestige 25.', unlocked: progression.maxed, progress: progression.prestige === 25 ? progression.level : 0, target: 50 },
+    ...careerAchievements(profile)
   ];
 };
 
@@ -193,6 +201,7 @@ export const deriveCareerMilestones = (profile = {}) => {
 };
 
 export const buildJourneyProfile = (profile = {}, player = {}) => {
+  const {tasks,...challengeCareer}=careerChallengeState(profile);
   const categories = profile.categoryStats && typeof profile.categoryStats === 'object' ? profile.categoryStats : {};
   const totalCorrect = Math.floor(numeric(profile.totalCorrect));
   const totalQuestions = Math.floor(numeric(profile.totalQuestions));
@@ -219,7 +228,8 @@ export const buildJourneyProfile = (profile = {}, player = {}) => {
     },
     categories: Object.entries(CATEGORY_LABELS).map(([key, label]) => ({ key, label, ...cleanCategoryStats(categories[key]) })),
     journey: [...(profile.prestigeState?.history || []), ...(Array.isArray(profile.journey) ? profile.journey : [])].sort((a, b) => b.at - a.at).slice(0, JOURNEY_LIMIT),
-    achievements: deriveAchievements(profile)
+    achievements: deriveAchievements(profile),
+    challengeCareer
   };
 };
 

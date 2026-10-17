@@ -2,7 +2,9 @@ import test, { after, beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { redisFixture } from './helpers/redis-fixture.js';
 import ranked from '../api/ranked.js';
-import { claimChallenge } from '../server/rewarded-challenges.js';
+import { claimChallenge, claimReadyChallenges, trackCareerChallenge } from '../server/rewarded-challenges.js';
+import { careerCatalog, careerChallengeState } from '../server/career-challenges.js';
+import { prestigeKeyFor } from '../server/prestige-state.js';
 import { defaultProfile, loadProfile, parseProfile, profileKeyFor, PROFILE_AUDIT_CAS_LUA } from '../server/profile.js';
 import { commitRankedState } from '../server/ranked-state.js';
 import { enterPrestige } from '../server/prestige.js';
@@ -32,7 +34,7 @@ test('challenge status requires a session, stays private, and does not reveal un
   assert.equal((await call({}, '', 'GET')).statusCode, 405);
   const cookie = await session(), status = await call({ action: 'status' }, cookie);
   assert.equal(status.statusCode, 200); assert.match(status.headers['Cache-Control'], /no-store/);
-  assert.equal(status.body.words.length, 5); assert.equal(status.body.tasks.length, 2);
+  assert.equal(status.body.words.length, 5); assert.equal(status.body.tasks.length, 90);
   assert.ok(status.body.words.every(w => !Object.hasOwn(w, 'word')));
   assert.equal(status.body.earnedXp, 0); assert.equal(await fixture.command('EXISTS', profileKeyFor(player)), 0);
   assert.equal((await call({ action: 'word', word: 'hope' }, cookie, 'POST', { 'sec-fetch-site': 'cross-site' })).statusCode, 403);
@@ -105,4 +107,37 @@ test('word guesses are bounded by player and IP rate limits', async () => {
   for(let i=0;i<60;i++) assert.equal((await call({action:'word',word:'wrong'},cookie)).statusCode,400);
   assert.equal((await call({action:'word',word:'hope'},cookie)).statusCode,429);
   assert.equal((await loadProfile(player)).xp,0);
+});
+
+test('earned upper tiers cannot skip claim prerequisites and legacy first rewards cannot pay again',async()=>{
+  const p=defaultProfile();p.categoryStats.kaspa={rounds:10,correct:25};await fixture.command('SET',profileKeyFor(player),JSON.stringify(p));
+  await assert.rejects(claimChallenge(player,{action:'claim',id:'career-rounds-10'}),/CHALLENGE_NOT_READY/);
+  await Promise.all(Array.from({length:8},()=>claimChallenge(player,{action:'claim',id:'first-scored-round'})));
+  await claimChallenge(player,{action:'claim',id:'career-rounds-10'});
+  assert.equal((await loadProfile(player)).xp,125);assert.equal((await claimChallenge(player,{action:'claim',id:'first-scored-round'})).awards.length,0);
+});
+test('bounded multi-claim is atomic, rejects locked/forged sets and retries the same IDs after a lost reply',async()=>{
+  const cookie=await session(),p=defaultProfile();p.categoryStats.kaspa={rounds:10,correct:25};await fixture.command('SET',profileKeyFor(player),JSON.stringify(p));
+  await assert.rejects(claimReadyChallenges(player,['first-scored-round','career-rounds-10']),/CHALLENGE_NOT_READY/);assert.equal((await loadProfile(player)).xp,0);
+  for(const ids of [[],['unknown'],Array(9).fill('first-scored-round'),['first-scored-round','first-scored-round']])await assert.rejects(claimReadyChallenges(player,ids),/INVALID_REQUEST/);
+  assert.equal((await call({action:'claim-ready',ids:['first-scored-round'],xp:999},cookie)).statusCode,400);
+  const ids=['first-scored-round','kaspa-25-correct'];loseReply=true;await assert.rejects(claimReadyChallenges(player,ids),/REDIS_UNAVAILABLE/);
+  const retry=await claimReadyChallenges(player,ids);assert.equal(retry.awards.length,0);assert.equal(retry.progression.xp,125);assert.equal(Object.keys((await loadProfile(player)).challengeClaims).length,2);
+});
+test('three tracked paths persist for the player, retry safely, and cannot create XP',async()=>{
+  await trackCareerChallenge(player,'rounds',true);await trackCareerChallenge(player,'correct',true);await trackCareerChallenge(player,'streak',true);
+  await assert.rejects(trackCareerChallenge(player,'worlds',true),/CHALLENGE_TRACK_LIMIT/);
+  await trackCareerChallenge(player,'rounds',false);loseReply=true;await assert.rejects(trackCareerChallenge(player,'worlds',true),/REDIS_UNAVAILABLE/);
+  await trackCareerChallenge(player,'worlds',true);const saved=await loadProfile(player);assert.deepEqual(saved.challengeTracks,['correct','streak','worlds']);assert.equal(saved.xp,0);assert.deepEqual(saved.challengeClaims,{});
+  const cookie=await session(recovered,player);assert.deepEqual((await call({action:'status'},cookie)).body.career.trackedSeries,saved.challengeTracks);
+  assert.equal((await call({action:'track',id:'rounds',tracked:true,xp:500},cookie)).statusCode,400);
+});
+test('all ninety career receipts survive pruning without a capacity reset or extra reward',async()=>{
+  const p=defaultProfile();p.totalCorrect=10000;p.longestStreak=25;p.bestRound=10;p.gauntletsCompleted=100;
+  p.careerCounters={dailyRounds:365,speedRounds:1000,perfectRounds:500};
+  for(const id of ['kaspa','video-games','science-fiction','technology','movies','history','comics','pop-culture'])p.categoryStats[id]={rounds:1000,correct:1000};
+  await fixture.command('SET',profileKeyFor(player),JSON.stringify(p));await fixture.command('SET',prestigeKeyFor(player),JSON.stringify({version:1,prestige:25,xpBaseline:0,history:[]}));
+  for(const t of careerCatalog)await claimChallenge(player,{action:'claim',id:t.id});
+  const saved=await loadProfile(player);assert.equal(saved.xp,11975);assert.equal(Object.keys(saved.challengeClaims).length,90);assert.equal(saved.journey.length,80);assert.equal(careerChallengeState(saved).mastered,18);assert.equal(saved.balance,0);
+  assert.equal((await claimChallenge(player,{action:'claim',id:'first-scored-round'})).alreadyClaimed,true);assert.equal((await loadProfile(player)).xp,11975);
 });
