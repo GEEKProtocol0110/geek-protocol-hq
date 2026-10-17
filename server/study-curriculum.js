@@ -20,15 +20,20 @@ export const studyTopics = [
   ...technologyTopics
 ];
 
+let reviewedBank;
+let catalog;
+// These files belong to the deployed revision. Player records are never cached.
 export const studyBank = () => {
+  if (reviewedBank) return reviewedBank;
   const unique = new Map();
   for (const bank of new Set(studyTopics.map(t => t.bank || 'kaspa'))) for (const q of loadQuestionBank(bank).questions) {
     if (q.reviewStatus === 'source-checked' && studyTopics.some(t => (t.bank || 'kaspa') === bank && t.category === q.topic) && !unique.has(q.conceptId)) unique.set(q.conceptId, q);
   }
-  return [...unique.values()];
+  reviewedBank = Object.freeze([...unique.values()]);
+  return reviewedBank;
 };
 
-export const studyCatalog = () => ({
+export const studyCatalog = () => catalog ||= ({
   reviewedAt: '2026-10-14',
   reviewNote: 'Internally checked against primary sources. Independent editorial review is still required before monetary rewards.',
   levels: studyLevels,

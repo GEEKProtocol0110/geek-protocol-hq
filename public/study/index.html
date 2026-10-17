@@ -70,6 +70,15 @@
           <div><span class="ace-label">A.C.E. // GUIDED LESSON</span><h3 id="lesson-title" data-lesson-title></h3><p class="learning-objective" data-objective></p><p data-lesson-text></p>
             <section class="lesson-step" aria-labelledby="lesson-step-title"><span class="ace-label" data-lesson-step-number></span><h4 id="lesson-step-title" data-lesson-step-title tabindex="-1"></h4><p data-lesson-step-text></p><p class="lesson-reflection" data-reflection hidden></p><div class="lesson-step-controls"><button class="study-button quiet" type="button" data-lesson-prev>Previous idea</button><button class="study-button" type="button" data-lesson-next>Next idea →</button></div></section>
             <div class="study-sources" data-lesson-sources></div>
+            <details class="ace-help" data-ace><summary>Ask A.C.E. about this lesson</summary>
+              <p data-ace-status role="status">Find help in the lesson and check its sources.</p>
+              <label for="ace-question">What would you like to understand?</label><textarea id="ace-question" data-ace-question rows="3" minlength="3" maxlength="400" required placeholder="For example: why does transaction order matter?"></textarea>
+              <label data-ace-opt-in hidden><input type="checkbox" data-ace-consent> Use an AI explanation. Send this question and lesson excerpts to the AI service.</label>
+              <small>Keep personal information, wallet addresses and recovery words out of your question. No chat history is saved in your player profile. The AI service may retain requests under its data policy.</small>
+              <button class="study-button" type="button" data-ace-ask>Find lesson help</button>
+              <p class="ace-answer" data-ace-answer role="status" aria-live="polite"></p>
+              <details><summary>Compare the lesson evidence</summary><ul data-ace-evidence></ul></details><div class="study-sources" data-ace-sources></div>
+            </details>
           </div>
           <div class="study-lesson-action"><label for="study-level">Choose your practice level</label><select id="study-level" data-level></select><p data-level-description></p><span data-practice-size></span><button class="study-button primary" type="button" data-start>Start practice →</button><button class="study-button" type="button" data-review-topic hidden>Review saved mistakes →</button><small>Read the lesson at your pace. You can practice whenever you feel ready.</small></div>
           <details class="concept-notes" data-concept-notes hidden><summary>Your practice notes for this topic</summary><ul data-concept-list></ul></details>
@@ -88,5 +97,6 @@
     <details class="grid-discovery hunt-signal"><summary>✦ A faint signal</summary><div class="grid-terminal"><p>// explorer series 01</p><p>Recovered word: <strong>VERIFY</strong></p><p>Keep this word. <a href="/challenges/#rewarded-challenges">Enter it in Rewarded Challenges →</a></p></div></details>
   </main>
     <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>Make learning feel worth doing.</p></div><div class="footer-links"><a href="/start/">Start here</a><a href="https://geek-mini.vercel.app/">Geek Mini ↗</a><a href="/tools/#kaspa-widget">Free Kaspa widget</a><a href="../">Home</a><a href="https://geekjr.xyz/">Geek Jr</a><a href="../kaspa/">Kaspa guide</a><a href="../play/">Play</a><a href="../contribute/">Contribute</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · Guided lessons checked October 2, 2026 · Internal source review, not independent editorial approval.</p><details class="welcome-panel" id="project-links"><summary><span><b>About Geek Protocol</b><small>Project information, community and optional wallet features.</small></span></summary><div class="welcome-panel-content"><div class="welcome-project-links"><a href="/thanks/">Hall of Thanks</a><a href="/litepaper/">Project roadmap</a><a href="/security/">Security</a><a href="/contribute/">Contribute a question</a><a href="/collection/">Collection</a><a href="/lobby/">Practice rooms</a><a href="/vault/">Daily vault</a><a href="/rewards/">Wallet & rewards</a><a href="/economy/">Power-ups & economy</a><a href="/mint/">Mint GEEK</a></div></div></details></footer>
-  </body>
+  <script defer src="/study/assets/ace.js"></script>
+</body>
 </html>

@@ -265,6 +265,20 @@
       ],
       "recordedAt": "2026-10-17",
       "supersedes": null
+    },
+    {
+      "id": "DR-022",
+      "status": "founder-direction",
+      "title": "Advance the saved-player, GEEKT, ACE, capacity and reviewed-content roadmap",
+      "decision": "Continue all five roadmap paths with concrete implementation and evidence: preserve saved-player access, prepare the manual GEEKT rehearsal, implement bounded lesson-grounded ACE with authored fallback and read-only readiness, measure capacity/recovery, and add distinct source-reviewed Kaspa content. Device acceptance, wallet approval, model/budget activation and provider restoration retain their separate real-world prerequisites.",
+      "basis": "Founder October 17 asks what is next, then approves all that. This does not invent a model spending amount, grant autonomous administrator/signing authority, bypass Daily eligibility or remove existing holds.",
+      "evidence": [
+        "docs/PLAYER-READINESS-2026-10-17.md",
+        "docs/ACE-TUTOR.md",
+        "docs/PERFORMANCE-BASELINE.md"
+      ],
+      "recordedAt": "2026-10-17",
+      "supersedes": null
     }
   ]
 }

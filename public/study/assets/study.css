@@ -106,3 +106,13 @@
 .study-how span{color:var(--paper-soft);font-size:.85rem;line-height:1.6;margin-top:.4rem}
 .study-how + .study-notice{margin-top:1rem}
 @media(max-width:760px){.study-how{grid-template-columns:minmax(0,1fr);gap:1rem}}
+
+.ace-help { margin-top:1.25rem; padding:1rem; border:1px solid var(--line,#354247); border-radius:12px; }
+.ace-help summary { cursor:pointer; font-weight:700; color:var(--teal,#80d8ce); }
+.ace-help label,.ace-help small { display:block; margin-block:.8rem; }
+.ace-help textarea { display:block; box-sizing:border-box; width:100%; max-width:100%; padding:.8rem; font:inherit; color:inherit; background:#0b1518; border:1px solid #53666b; border-radius:8px; resize:vertical; }
+.ace-help button { margin-block:.8rem; }
+.ace-answer { white-space:pre-wrap; overflow-wrap:anywhere; }
+.ace-help li { margin-bottom:.7rem; }
+
+.ace-help [hidden] { display:none !important; }

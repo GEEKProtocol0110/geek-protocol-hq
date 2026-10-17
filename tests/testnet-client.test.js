@@ -50,6 +50,21 @@ test('wallet amounts preserve large integer precision and reject unknown or malf
   assert.ok(ui.requests.every(r=>r.options.method==='GET'));
 });
 
+test('selected transfer fields distinguish whole tokens from raw units and clear with private records', async () => {
+  const ui = await setup();
+  assert.equal(ui.node('[data-transfer-review]').hidden, true);
+  const select = ui.make('button'); select.dataset.select = receipt.id;
+  await ui.node('[data-records]').emit('click', { target: select });
+  assert.equal(ui.node('[data-transfer-amount]').value, '1 GEEKT');
+  assert.equal(ui.node('[data-transfer-recipient]').value, receipt.recipient);
+  assert.deepEqual(JSON.parse(ui.node('[data-transfer-json]').value), { p:'krc-20',op:'transfer',tick:'GEEKT',amt:'100000000',to:receipt.recipient });
+  assert.match(ui.node('[data-transfer-note]').textContent, /Queued instructions only/);
+  ui.window.dispatchEvent(new Event('pagehide'));
+  assert.equal(ui.node('[data-transfer-review]').hidden, true);
+  assert.equal(ui.node('[data-transfer-json]').value, ''); assert.equal(ui.node('[data-transfer-recipient]').value, '');
+  assert.ok(ui.requests.every(r => r.options.method === 'GET'), 'review does not send a transfer or create a receipt');
+});
+
 test('an expired run clears the old ID and explains recovery without disabling existing receipts', async () => {
   let expired = false;
   const ui = await setup(() => expired ? json({ ok: false, error: 'That ranked run expired or is no longer active.' }, 404) : json({ ok: true, run }));

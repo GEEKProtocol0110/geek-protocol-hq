@@ -213,3 +213,13 @@ Expand achievements and rewarded challenges into Bronze-to-Diamond career paths,
 Basis: Founder October 17 requests a modern game-style breadth/depth system using Call of Duty and Xbox achievements as examples, with goals for regular and expert players. Maintainer selects 18 five-tier paths, modest once-only XP, 18 emblems and honest new-counter start dates; no external platform integration or certification is claimed.
 
 Evidence: [docs/CAREER-MASTERY.md](../../docs/CAREER-MASTERY.md), [docs/REWARDED-CHALLENGES.md](../../docs/REWARDED-CHALLENGES.md).
+
+## DR-022: Advance the saved-player, GEEKT, ACE, capacity and reviewed-content roadmap
+
+**founder-direction** · 2026-10-17.
+
+Continue all five roadmap paths with concrete implementation and evidence: preserve saved-player access, prepare the manual GEEKT rehearsal, implement bounded lesson-grounded ACE with authored fallback and read-only readiness, measure capacity/recovery, and add distinct source-reviewed Kaspa content. Device acceptance, wallet approval, model/budget activation and provider restoration retain their separate real-world prerequisites.
+
+Basis: Founder October 17 asks what is next, then approves all that. This does not invent a model spending amount, grant autonomous administrator/signing authority, bypass Daily eligibility or remove existing holds.
+
+Evidence: [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md), [docs/ACE-TUTOR.md](../../docs/ACE-TUTOR.md), [docs/PERFORMANCE-BASELINE.md](../../docs/PERFORMANCE-BASELINE.md).

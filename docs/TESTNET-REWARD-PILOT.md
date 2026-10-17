@@ -73,3 +73,8 @@ Real-Redis tests exercise a completed ranked Daily run, atomic receipt creation,
 ## October 17 amount-display candidate
 
 The owner desk now derives wallet-display amounts from canonical integer strings and verified decimal metadata. For GEEKT at eight decimals, 100000000 base units displays as 1 GEEKT; the raw units remain visible. Missing or malformed decimals produce an unavailable-display message rather than a guessed amount. Queued receipts explicitly say they have not sent tokens; attached hashes direct the owner to reconcile the same hash. This candidate adds no signer, broadcaster, automatic retry or receipt eligibility change. The first real transfer remains CHAIN-001 acceptance work.
+
+
+## October 17 selected-transfer review candidate
+
+The desk now shows selectable read-only fields for the selected receipt: wallet amount in whole tokens, recipient and unsigned KRC-20 operation using exact raw units. Missing/malformed decimals leave amount/operation unavailable. Clearing private records clears these fields. A receipt with an attached hash says to reconcile that same hash without another send. This changes neither eligibility nor signing/transfer behavior. A 10:48:51 UTC read of the fixed public token endpoint returned deployed/eight decimals for GEEKT; it does not verify sender funding, a receipt or any transfer. See [the concrete owner handoff](PLAYER-READINESS-2026-10-17.md).

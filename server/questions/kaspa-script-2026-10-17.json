@@ -1,0 +1,702 @@
+{
+  "metadata": {
+    "title": "GEEK Protocol \u2014 Kaspa script execution and lock constraints",
+    "version": "1.0.0",
+    "maintainedAt": "2026-10-17",
+    "questionCount": 24,
+    "conceptCount": 24,
+    "category": "Kaspa",
+    "difficultyDistribution": {
+      "medium": 12,
+      "hard": 8,
+      "easy": 4
+    },
+    "correctIndexDistribution": {
+      "0": 6,
+      "1": 6,
+      "2": 6,
+      "3": 6
+    },
+    "schema": "correctIndex is zero-based; options contains four distinct strings",
+    "sourceSnapshot": "01b532e8b553523216471682649693af92f0fd16",
+    "reviewNotice": "Internal source/wording/distractor review against the pinned Rusty Kaspa implementation. Implementation and opcode presence are not proof of mainnet activation or wallet compatibility. Advanced script items remain outside introductory Study. Difficulty is provisional; independent editorial review is unassigned.",
+    "attribution": "Original Geek Protocol questions based on pinned MIT-licensed Rusty Kaspa code; source prose and code are not imported.",
+    "licenses": [
+      "MIT"
+    ]
+  },
+  "questions": [
+    {
+      "id": "K624-0001",
+      "conceptId": "K624-0001",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "In the cited Kaspa engine, an executing OpNotIf receives a false condition. Which branch becomes active?",
+      "options": [
+        "Its conditional body becomes active",
+        "Its conditional body must be skipped",
+        "Every remaining branch becomes active",
+        "The condition is treated as a transaction signature"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "OpNotIf reverses the condition used by OpIf: a false input selects the body. This is script control flow, not a statement about transaction acceptance by itself.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L374",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0002",
+      "conceptId": "K624-0002",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "A Kaspa OpIf is nested inside a branch already being skipped in the cited engine. What happens to its condition operand?",
+      "options": [
+        "It always consumes a new signature",
+        "No data-stack condition is consumed; a skipped condition is recorded",
+        "It clears the entire data stack",
+        "It activates the skipped outer branch"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "When execution is already inactive, OpIf records a skip state instead of reading a Boolean from the data stack. Nested control flow therefore preserves the outer decision.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L358",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0003",
+      "conceptId": "K624-0003",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "What happens when OpEndIf executes with an empty condition stack in the cited Kaspa implementation?",
+      "options": [
+        "It silently creates an outer condition",
+        "It pushes the transaction version",
+        "It returns an invalid-state error",
+        "It treats the missing condition as a valid signature"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "OpEndIf closes a recorded conditional frame. With no frame to remove, the implementation reports invalid state rather than inventing a matching opening instruction.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L402",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0004",
+      "conceptId": "K624-0004",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "How does the cited Kaspa OpIfDup treat a top stack item that decodes to false?",
+      "options": [
+        "It duplicates the item twice",
+        "It removes the false item",
+        "It replaces the item with a public key",
+        "It leaves the item in place without duplicating it"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "OpIfDup inspects the existing top item and adds a copy only when its Boolean value is true. A false value remains unchanged.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L439",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0005",
+      "conceptId": "K624-0005",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "A cited Kaspa script has A, B, C on its data stack, with C on top. What does OpNip leave?",
+      "options": [
+        "A, C",
+        "B, C",
+        "A, B",
+        "A, B, C, C"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "OpNip removes the item immediately below the top. It therefore removes B from this three-item stack while retaining A and C.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L452",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0006",
+      "conceptId": "K624-0006",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "In the cited Kaspa engine, A is below B on a two-item stack. What does OpOver produce, with the top listed last?",
+      "options": [
+        "A, B, B",
+        "A, B, A",
+        "B, A",
+        "B"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "OpOver copies the second item to the top. The original second item stays where it was; this operation does not consume A.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L462",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0007",
+      "conceptId": "K624-0007",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "After a valid depth operand is consumed, how does the cited Kaspa OpRoll retrieve the chosen stack item?",
+      "options": [
+        "It always leaves the original and adds a copy",
+        "It hashes the item into a transaction ID",
+        "It removes that item from its old position and moves it to the top",
+        "It deletes every item above the chosen position"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "OpRoll moves an existing item. This differs from OpPick, which copies the selected item and leaves its original position intact. Depth is counted from the top after the operand is removed.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L472",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0008",
+      "conceptId": "K624-0008",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "What does the cited Kaspa OpRot do to the top three items A, B, C, with C on top?",
+      "options": [
+        "Changes their order to C, B, A",
+        "Leaves A, B, C and appends A",
+        "Removes A and B",
+        "Changes their order to B, C, A"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The one-item rotation shifts the trailing three-item frame left. Its oldest item becomes the new top, without creating or removing a data item.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L480",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0009",
+      "conceptId": "K624-0009",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "A cited Kaspa script has A below B. Which stack results from OpTuck, with the top listed last?",
+      "options": [
+        "B, A, B",
+        "A, B, A",
+        "B, A",
+        "A, A, B"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "OpTuck inserts a copy of the top item beneath the second item. Starting with A and B, the inserted B precedes A while the original B remains on top.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L483",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0010",
+      "conceptId": "K624-0010",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "The cited Kaspa OpSubstr selects bytes with start 1 and end 3 from [10, 20, 30, 40]. Which bytes are returned?",
+      "options": [
+        "[20, 30, 40]",
+        "[20, 30]",
+        "[10, 20, 30]",
+        "[30, 40]"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "Substring uses a start-inclusive, end-exclusive byte range. The end argument is an index rather than a requested length. These items describe the pinned implementation, not an activation claim.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L502",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0011",
+      "conceptId": "K624-0011",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "Which statement about OpLShift and OpRShift matches the cited Kaspa implementation?",
+      "options": [
+        "Both are alternate spellings for multiplication",
+        "Both are enabled only when their operand is zero",
+        "Both are disabled opcodes that return an opcode-disabled error",
+        "Both adjust mining difficulty rather than stack data"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "These shift opcode implementations return a disabled-opcode error. Recognizing an opcode name or byte does not establish that the instruction is usable.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L670",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0012",
+      "conceptId": "K624-0012",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "What does the cited Kaspa OpInvert do to each byte of its input?",
+      "options": [
+        "Reverses the order of all bytes",
+        "Encrypts the bytes with a wallet key",
+        "Converts the bytes into an address checksum",
+        "Complements every bit in the byte"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "OpInvert applies bitwise complement independently to each byte. It is a byte-string transformation and is different from numeric logical negation.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L524",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0013",
+      "conceptId": "K624-0013",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "Before later script checks, what does the cited Kaspa OpEqual push when two byte strings differ?",
+      "options": [
+        "An empty byte string representing false",
+        "An immediate EqualVerify error",
+        "The larger byte string",
+        "A new transaction output"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "OpEqual consumes the pair and pushes its comparison result. A false result can affect later execution or the final success check, but OpEqual itself does not use EqualVerify\u2019s immediate-failure behavior.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L560",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0014",
+      "conceptId": "K624-0014",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "Which numeric mapping does OpNot use in the cited Kaspa engine?",
+      "options": [
+        "Every negative input becomes its absolute value",
+        "Zero becomes 1; every nonzero input becomes 0",
+        "Each bit of the encoded byte string is reversed",
+        "Every input is increased by one"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "Numeric logical NOT tests whether the decoded number equals zero. This normalization differs from the bitwise transformation performed by OpInvert.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L621",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0015",
+      "conceptId": "K624-0015",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "A cited Kaspa OpSub consumes decoded operands a then b in stack order. Which arithmetic expression is evaluated?",
+      "options": [
+        "b minus a",
+        "a plus b",
+        "a minus b",
+        "a times b"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The implementation subtracts the upper operand b from the lower operand a using checked signed arithmetic. Operand order matters for subtraction.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L642",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0016",
+      "conceptId": "K624-0016",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "What does the cited Kaspa OpMod return for decoded operands -7 and 3, in that order?",
+      "options": [
+        "A normalized positive remainder of 2",
+        "A quotient of -2",
+        "An unsigned 64-bit maximum value",
+        "The signed remainder -1"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "The implementation uses checked signed remainder. Its result follows the dividend\u2019s sign, so -7 divided by 3 leaves remainder -1 rather than the nonnegative modulo value used by some other systems.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L663",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0017",
+      "conceptId": "K624-0017",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "In the cited Kaspa OpBoolAnd, what happens when both decoded operands are nonzero, even if neither equals 1?",
+      "options": [
+        "The result is numeric 1",
+        "The result is their bitwise AND",
+        "The script rejects them because only 1 is true",
+        "The result is their sum"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "OpBoolAnd treats any nonzero decoded integer as logically true and normalizes the conjunction to 1 or 0. It is not bytewise OpAnd.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L673",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0018",
+      "conceptId": "K624-0018",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "A cited Kaspa CheckLockTimeVerify compares a timestamp-style transaction lock time with a DAA-score-style operand. What happens?",
+      "options": [
+        "The operand is automatically converted using the current coin price",
+        "The mismatched lock-time types are rejected",
+        "The lower number always wins regardless of type",
+        "The opcode ignores the transaction lock time"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "Both values must lie on the same side of the lock-time threshold. Comparing incompatible lock-time kinds fails before the requirement can be accepted.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L874",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0019",
+      "conceptId": "K624-0019",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "In the cited Kaspa CheckLockTimeVerify, why is the currently executing input rejected when its sequence equals MAX_TX_IN_SEQUENCE_NUM?",
+      "options": [
+        "The transaction necessarily has too many outputs",
+        "The signature becomes a token deployment",
+        "That input is finalized, which would undermine enforcement of the script\u2019s lock-time requirement",
+        "The input amount automatically becomes zero"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The opcode requires its own input to retain a nonfinal sequence. Another nonfinal input elsewhere does not substitute for that check.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L874",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0020",
+      "conceptId": "K624-0020",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "What does the cited Kaspa CheckSequenceVerify do when its stack operand has SEQUENCE_LOCK_TIME_DISABLED set?",
+      "options": [
+        "It requires the transaction to have no inputs",
+        "It doubles the required relative lock time",
+        "It turns the operand into an absolute timestamp",
+        "It returns success without enforcing a sequence comparison"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "The operand\u2019s disable flag is an explicit extensibility path that makes this opcode act as a no-op. This is distinct from the disable flag in the actual input sequence.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L926",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0021",
+      "conceptId": "K624-0021",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "An active cited Kaspa CheckSequenceVerify requirement meets an input sequence with the disable flag set. How is this handled?",
+      "options": [
+        "The input is rejected for disabling sequence lock time",
+        "The requirement is silently removed from the script",
+        "The disable flag grants a fresh signature",
+        "The input is accepted solely because it has a larger raw number"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "When the requirement itself is active, the input cannot use its disable bit to escape that requirement. The implementation returns an unsatisfied-lock-time error.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L926",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0022",
+      "conceptId": "K624-0022",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "Before the cited Kaspa CheckSequenceVerify compares its requirement with the input sequence, what does it do with non-consensus bits?",
+      "options": [
+        "Treats them as extra time units",
+        "Masks them out of both values",
+        "Adds them to the fee",
+        "Copies them into the transaction payload"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "The comparison uses each value ANDed with SEQUENCE_LOCK_TIME_MASK. Unrelated bits are therefore excluded from the constrained sequence comparison.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L926",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0023",
+      "conceptId": "K624-0023",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "How does the cited Kaspa CheckLockTimeVerify decode a stack lock-time operand containing fewer than eight bytes?",
+      "options": [
+        "Decodes an address using the mainnet prefix",
+        "Reads a signed decimal string",
+        "Pads with zero bytes and reads an unsigned little-endian 64-bit value",
+        "Hashes it into an eight-byte value"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "This operand is decoded as an unsigned little-endian value after zero padding. More than eight bytes is rejected; the procedure differs from ordinary signed script-number decoding.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L874",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K624-0024",
+      "conceptId": "K624-0024",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Execution",
+      "prompt": "Which information does the cited Kaspa OpCheckSig remove from the end of a nonempty signature item before cryptographic verification?",
+      "options": [
+        "The recipient\u2019s full address",
+        "The transaction\u2019s output count",
+        "The complete public key",
+        "The signature-hash type byte"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The trailing byte selects the signature-hash mode and is validated as such. The remaining signature bytes and the separately supplied public key are then used by the Schnorr verification path.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L827",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "script-execution",
+        "pinned-implementation"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    }
+  ]
+}

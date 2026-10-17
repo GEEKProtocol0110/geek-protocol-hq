@@ -19,6 +19,12 @@ const controls = () => {
 };
 const render = () => {
   $('[data-records]').innerHTML = records.length ? records.map(r => `<article class="workspace-card"><h2>${escapeHtml(r.state)}</h2><p>${escapeHtml(amountLabel(r))} · ${escapeHtml(r.network)}</p><p>Receipt ${escapeHtml(r.id)}</p><p>To ${escapeHtml(r.recipient)}</p><p>Daily Signal: ${r.proof.correct} / 5 correct · score ${r.proof.score}</p>${r.transactionHash ? `<p>Reveal hash ${escapeHtml(r.transactionHash)}</p><p>Reconcile this same hash. Do not send another transfer.</p>` : '<p>No transaction hash attached. A queued receipt has not sent any tokens.</p>'}<button type="button" data-select="${escapeHtml(r.id)}">${r.id === selected ? 'Selected receipt' : 'Select receipt'}</button>${r.transactionHash ? `<button type="button" data-check="${escapeHtml(r.id)}">Check same hash</button>` : ''}</article>`).join('') : '<p>No pilot receipts yet. Complete and save an eligible Daily, load it here and queue within five minutes. Then export the receipt, send once in your TN10 wallet, attach its reveal hash and check that same hash.</p>';
+  const record = current(), amount = record ? formatTokenUnits(record.amount, record.decimals) : null;
+  $('[data-transfer-review]').hidden = !record;
+  $('[data-transfer-amount]').value = record && amount !== null ? `${amount} ${record.ticker}` : '';
+  $('[data-transfer-recipient]').value = record?.recipient || '';
+  $('[data-transfer-json]').value = record && amount !== null ? JSON.stringify({p:'krc-20',op:'transfer',tick:record.ticker,amt:record.amount,to:record.recipient},null,2) : '';
+  $('[data-transfer-note]').textContent = !record ? '' : record.transactionHash ? 'A reveal hash is already attached. Reconcile that same hash; do not send another transfer.' : amount === null ? 'Wallet amount unavailable. Verify the token decimals before sending anything.' : `${record.network} · Queued instructions only. Review the exported sender and deployment, then send exactly once in your TN10 wallet.`;
   controls();
 };
 const load = async () => {

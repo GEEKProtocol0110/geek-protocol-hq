@@ -148,7 +148,8 @@
       "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
     },
     "api/ranked.js": {
-      "includeFiles": "{server/questions/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}"
+      "includeFiles": "{server/questions/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}",
+      "maxDuration": 30
     },
     "api/lobbies.js": {
       "includeFiles": "{server/questions/**,node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm}"

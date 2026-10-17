@@ -1,6 +1,6 @@
 # Question Maintenance — October 8, 2026
 
-The October 7 expansion reached **8,048 active questions**, twice the **4,024-question cleaned baseline**. The October 8 editorial pass retired **272 additional items**, leaving **7,776 active questions** before the subsequent ten KRC-20 additions. The October 8 total was **7,786** (194 Kaspa). The current merged total is **8,205** (600 Kaspa); see the dated follow-ups below. Historical expansion counts below describe October 7; current counts and review dispositions are in [Editorial Review](EDITORIAL-REVIEW.md). The previous 8,032 rows included generated variants, repeated facts, and unusable imports. **4,008 rows were retired** and **4,024 distinct questions added**. Retired records remain server-only for previously issued game IDs and are excluded from every new pool and public count.
+The October 7 expansion reached **8,048 active questions**, twice the **4,024-question cleaned baseline**. The October 8 editorial pass retired **272 additional items**, leaving **7,776 active questions** before the subsequent ten KRC-20 additions. The October 8 total was **7,786** (194 Kaspa). The current candidate total is **8,229** (624 Kaspa); see the dated follow-ups below. Historical expansion counts below describe October 7; current counts and review dispositions are in [Editorial Review](EDITORIAL-REVIEW.md). The previous 8,032 rows included generated variants, repeated facts, and unusable imports. **4,008 rows were retired** and **4,024 distinct questions added**. Retired records remain server-only for previously issued game IDs and are excluded from every new pool and public count.
 
 | Category | Previous rows | Cleaned baseline | Added | Active questions |
 | --- | ---: | ---: | ---: | ---: |
@@ -139,3 +139,8 @@ Twenty original MIT-licensed questions in `kaspa-pskt-2026-10-16.json` extend th
 The [item review register](kaspa-600-review-2026-10-16.json) pins six Rusty Kaspa PSKT source files at `01b532e8b553523216471682649693af92f0fd16`, including their exact Git blobs, SHA-256 hashes, line evidence and complete question hashes. Topics cover coordinated signing, bundle transport, role responsibilities, metadata and merge constraints, lock-time selection, version gates and the distinction between finalization and checked script execution. The source's incomplete v1 compute-budget path is recorded; format gates do not certify end-to-end feature support.
 
 Existing prompts, answer keys and retired lookup records are unchanged. These advanced transaction-coordination questions remain outside the introductory Study filter, preserving its 537 concepts. CCE, contributor-rate selection, Mainnet settlement and collectible ownership remain held. Internal source checks and similarity screening do not establish independent editorial approval or exhaustive semantic uniqueness.
+
+
+## October 17 script execution follow-up
+
+[Internal primary-source review](KASPA-SCRIPT-REVIEW-2026-10-17.md) adds 24 distinct execution/lock-constraint questions on pinned Rusty Kaspa code. Candidate totals: 624 reviewed Kaspa, 8,229 active, 722 recorded source reviews. Existing keys remain unchanged; introductory Study remains 537 concepts. Kaspa needs 376 more toward 1,000; all CCE/economy gates remain held. Independent editorial review and device acceptance are separate.

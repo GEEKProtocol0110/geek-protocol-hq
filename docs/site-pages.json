@@ -331,6 +331,14 @@
       "description": "Private Geek Protocol operator workspace. Authorized role access is required; decisions and evidence remain subject to the existing controls.",
       "index": false,
       "private": true
+    },
+    {
+      "file": "server/ops-ui/ace/index.html",
+      "path": "/ops/ace/",
+      "title": "A.C.E. readiness \u2014 Geek Operations",
+      "description": "Private Geek Protocol operator workspace. Authorized role access is required; decisions and evidence remain subject to the existing controls.",
+      "index": false,
+      "private": true
     }
   ]
 }
