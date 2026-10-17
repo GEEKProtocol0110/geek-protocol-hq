@@ -53,7 +53,7 @@ export function checkSitePages({ write = false } = {}) {
     assert.equal(renderMetadata(html,page,config),html,'Metadata generation must be idempotent');
     if (page.file.startsWith('public/') && /\bsrc=["'][^"']*(?:site|characters)\.js/.test(html)) {
       const styles = [...html.matchAll(/<link\b[^>]*>/gi)].map(m => attrs(m[0])).filter(a => a.rel === 'stylesheet');
-      assert.ok(styles.some(a => new URL(a.href,origin+page.path).pathname === '/assets/atmosphere.css'),`Atmosphere script needs a direct stylesheet: ${page.file}`);
+      for (const asset of ['atmosphere','space']) assert.ok(styles.some(a => new URL(a.href,origin+page.path).pathname === `/assets/${asset}.css`),`Background script needs a direct ${asset} stylesheet: ${page.file}`);
     }
     outputs.set(page.file,html);
   }

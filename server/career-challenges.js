@@ -9,7 +9,7 @@ const worlds = p => Object.keys(categoryLabels).filter(id => category(p,id,'roun
 const play = '/play/';
 const series = (id,name,group,targets,xp,metric,detail,emblem,extra={}) => ({id,name,group,targets,xp,metric,detail,emblem,href:play,...extra});
 export const careerSeries = [
-  series('rounds','Keep the signal going','Core',[1,10,50,250,1000],[50,75,100,150,250],rounds,n=>`Complete ${n} scored rounds.`, 'Grid Vanguard', { firstId:'first-scored-round', firstName:'Make your first move' }),
+  series('rounds','Keep the signal going','Core',[1,10,50,250,1000],[50,75,100,150,250],rounds,n=>`Complete ${n} scored ${n===1?'round':'rounds'}.`, 'Grid Vanguard', { firstId:'first-scored-round', firstName:'Make your first move' }),
   series('correct','Knowledge collector','Core',[10,100,500,2500,10000],[25,50,100,150,250],p=>count(p.totalCorrect),n=>`Answer ${n} scored questions correctly.`, 'Knowledge Architect'),
   series('streak','Stay in the flow','Skill',[3,5,10,15,25],[25,50,75,100,150],p=>count(p.longestStreak),n=>`Build a ${n}-answer correct streak in scored play.`, 'Unbroken Signal'),
   series('gauntlet-depth','Climb the Gauntlet','Gauntlet',[2,4,6,8,10],[25,50,75,100,150],p=>count(p.bestRound),n=>`Complete Gauntlet round ${n}.`, 'Apex Pathfinder', {href:'/play/?mode=gauntlet#timed-games'}),

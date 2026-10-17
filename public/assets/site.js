@@ -43,9 +43,12 @@ document.addEventListener('keydown', (event) => {
 });
 
 // Decorative space scenes. One capped animation loop, only for visible panels.
-(() => {
+let spaceScenesReady = false;
+const initSpaceScenes = () => {
+  if (spaceScenesReady || typeof window.getComputedStyle !== 'function' || window.getComputedStyle(document.documentElement).getPropertyValue('--geek-space-ready').trim() !== '1') return;
   const hosts = [...document.querySelectorAll('.hero, .grid-hero, .profile-hero, .geek-preview-stage, .kaspa-hero, .study-intro, .memory-intro, .mint-hero, .thanks-hero, .economy-hero, .start-copy, .quest-intro, .royale-intro, .duel-intro')];
   if (!hosts.length) return;
+  spaceScenesReady = true;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   let reduceMotion = reduced.matches;
   const saveData = Boolean(navigator.connection?.saveData);
@@ -125,7 +128,9 @@ document.addEventListener('keydown', (event) => {
   window.addEventListener('pagehide', () => { if (frame) cancelAnimationFrame(frame); frame = 0; previous = 0; });
   window.addEventListener('pageshow', sync);
   sync();
-})();
+};
+initSpaceScenes();
+window.addEventListener('load', initSpaceScenes, { once: true });
 
 // Optional owner-selected decoration. A failed read keeps the standard site usable.
 import('/assets/holiday-theme.js').then(module => module.initHolidayTheme()).catch(() => {});
