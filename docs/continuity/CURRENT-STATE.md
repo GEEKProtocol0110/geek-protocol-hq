@@ -25,9 +25,9 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**UX-005: needs-evidence.** Background stylesheet coverage and fail-closed insertion shipped in #145. All 29 participating pages declare atmosphere CSS; three behavior tests and site validation prevent recurrence. Preview/live desktop checks pass. Founder physical-phone/browser-bar acceptance remains outstanding.
+**UX-007: in-progress.** Five hidden words and one-time rewarded challenges implemented. Full verification passes 538 tests, zero failures/skips, required Redis and 311 security assertions; metadata/link and continuity checks pass. Exact preview/release and actual-phone acceptance remain separate.
 
-Next task: **UX-006**. Confirm the fixed Play header and stable background on the actual phone; retain the prior improvement and later regression separately. UX-006 login usability and actual Silk/phone authentication acceptance remain separate.
+Next task: **UX-006**. Verify the five-word challenge and XP claims end to end, release the exact checked head, then gather actual phone challenge/background/login acceptance separately.
 
 ## Holds
 

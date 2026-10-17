@@ -193,3 +193,13 @@ Prioritize returning Sign in and guest play. Keep new-player saving, device link
 Basis: Founder October 17: Now login is even more confusing. This corrects presentation and state coordination; no new authentication provider or recovery authority is added.
 
 Evidence: [public/sign-in/index.html](../../public/sign-in/index.html), [public/sign-in/assets/passkeys.js](../../public/sign-in/assets/passkeys.js), [tests/passkey-client.test.js](../../tests/passkey-client.test.js).
+
+## DR-020: Reward hidden-word discoveries and verified tasks with career XP
+
+**founder-direction** · 2026-10-17.
+
+Expand optional discoveries into five hidden words, a rewarded challenge list and one-time career XP claims. Existing toy terminal commands stay cosmetic; token settlement and all CCE holds remain unchanged. Use stable player-bound claims, server eligibility and atomic XP/receipt writes.
+
+Basis: Founder October 17 asks to type hidden words for rewards, five words around the site, a rewarded challenge list and XP for completed tasks. Maintainer selects 25 XP per word plus a 75 XP set bonus, and two small scored-game milestones.
+
+Evidence: [docs/REWARDED-CHALLENGES.md](../../docs/REWARDED-CHALLENGES.md), [docs/GRID-DISCOVERIES.md](../../docs/GRID-DISCOVERIES.md). Supersedes DR-015.
