@@ -22,6 +22,8 @@ export const defaultProfile = () => ({
   categoryStats: {},
   journey: [],
   challengeClaims: {},
+  challengeTracks: [],
+  careerCounters: { dailyRounds: 0, speedRounds: 0, perfectRounds: 0 },
   avatarId: 'giga-genesis',
   stickerInventory: { 'giga-core': 2, 'kaspa-k': 2, 'dag-node': 1, 'signal-verified': 1 },
   stickerReserved: {},
@@ -53,12 +55,17 @@ export const parseProfile = raw => {
   }
   if (Object.hasOwn(value, 'challengeClaims')) {
     const claims = value.challengeClaims;
-    if (!claims || typeof claims !== 'object' || Array.isArray(claims) || Object.keys(claims).length > 32) throw new Error('PROFILE_STATE_INVALID');
+    if (!claims || typeof claims !== 'object' || Array.isArray(claims) || Object.keys(claims).length > 256) throw new Error('PROFILE_STATE_INVALID');
     for (const [id, claim] of Object.entries(claims)) {
       if (!/^[a-z0-9-]{1,64}$/.test(id) || !claim || typeof claim !== 'object' || Array.isArray(claim)
         || !Number.isSafeInteger(claim.xp) || claim.xp < 0 || claim.xp > 1000
         || !Number.isSafeInteger(claim.at) || claim.at <= 0) throw new Error('PROFILE_STATE_INVALID');
     }
+  }
+  if (Object.hasOwn(value,'challengeTracks') && (!Array.isArray(value.challengeTracks) || value.challengeTracks.length>3 || new Set(value.challengeTracks).size!==value.challengeTracks.length || value.challengeTracks.some(id=>typeof id!=='string'||!/^[a-z0-9-]{1,64}$/.test(id)))) throw new Error('PROFILE_STATE_INVALID');
+  if (Object.hasOwn(value,'careerCounters')) {
+    const counters=value.careerCounters;
+    if (!counters || typeof counters!=='object' || Array.isArray(counters) || ['dailyRounds','speedRounds','perfectRounds'].some(k=>!Number.isSafeInteger(counters[k])||counters[k]<0)) throw new Error('PROFILE_STATE_INVALID');
   }
   return { ...defaultProfile(), ...value };
 };

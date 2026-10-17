@@ -319,6 +319,9 @@
     elements.resultCorrect.textContent = `${result.correct}/${result.answered || result.questionCount}`;
     elements.resultScore.textContent = format.format(result.roundScore);
     elements.resultXp.textContent = `+${format.format(result.xpEarned)}`;
+    const careerNotice=$('[data-career-unlocks]');
+    careerNotice.hidden=!(result.newAchievements?.length||result.careerRewardsReady);
+    $('[data-career-unlock-copy]').textContent=`${result.newAchievements?.length?`${result.newAchievements.length} career ${result.newAchievements.length===1?'achievement':'achievements'} earned! `:''}${result.careerRewardsReady||0} challenge XP rewards ready to claim. Finish your run, then open Challenges.`;
     elements.resultReward.textContent = `+${format.format(result.reward)}`;
     elements.startBalance.textContent = `${format.format(run.startBalance)} Alpha GEEK`;
     elements.fees.textContent = `${format.format(run.fees)} Alpha GEEK`;

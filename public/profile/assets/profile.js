@@ -188,8 +188,9 @@
   };
 
   const achievementLink = id => id.startsWith('prestige') || id === 'level-fifty' ? '#prestige' : id === 'kaspa-initiate' ? '../play/?category=kaspa' : '../play/?mode=gauntlet';
-  const renderAchievements = (achievements) => {
-    $('[data-achievement-grid]').innerHTML = achievements.map((achievement, index) => `<article data-achievement-state="${achievement.unlocked ? 'unlocked' : 'locked'}" class="achievement-card ${achievement.unlocked ? 'unlocked' : 'locked'}"><span>${achievement.unlocked ? '✓' : String(index + 1).padStart(2, '0')}</span><h3>${escapeHtml(achievement.name)}</h3><p>${escapeHtml(achievement.detail)}</p><div class="achievement-progress"><b>${achievement.unlocked ? 'UNLOCKED' : 'IN PROGRESS'}</b><span>${format.format(achievement.progress)} / ${format.format(achievement.target)}</span></div><progress value="${achievement.progress}" max="${achievement.target}" aria-label="${escapeHtml(achievement.name)} progress"></progress><a href="${achievementLink(achievement.id)}">${achievement.unlocked ? 'Keep building your career' : 'Work toward this goal'} →</a></article>`).join('');
+  const renderAchievements = (achievements, career) => {
+    const nextIds=new Set([...(career?.recommended||[]),...(career?.tracked||[])].map(t=>t.id));
+    $('[data-achievement-grid]').innerHTML = achievements.map((achievement, index) => `<article data-achievement-next="${nextIds.has(achievement.id)}" data-achievement-state="${achievement.unlocked ? 'unlocked' : 'locked'}" class="achievement-card ${achievement.unlocked ? 'unlocked' : 'locked'}"><span>${achievement.unlocked ? '✓' : String(index + 1).padStart(2, '0')}</span><h3>${escapeHtml(achievement.name)}</h3><p>${escapeHtml(achievement.detail)}</p><div class="achievement-progress"><b>${achievement.unlocked ? 'UNLOCKED' : 'IN PROGRESS'}</b><span>${format.format(achievement.progress)} / ${format.format(achievement.target)}</span></div><progress value="${achievement.progress}" max="${achievement.target}" aria-label="${escapeHtml(achievement.name)} progress"></progress><a href="${escapeHtml(achievement.href || achievementLink(achievement.id))}">${achievement.seriesId ? 'Open challenge & XP reward' : achievement.unlocked ? 'Keep building your career' : 'Work toward this goal'} →</a></article>`).join('');
   };
 
   const eventCopy = (event) => {
@@ -241,7 +242,14 @@
     setText('[data-stat="totalRuns"]', format.format(stats.totalRuns));
     setText('[data-stat="alphaGeek"]', format.format(stats.alphaGeek));
     renderMastery(profile.categories);
-    renderAchievements(profile.achievements);
+    renderAchievements(profile.achievements, profile.challengeCareer);
+    const career=profile.challengeCareer;
+    if(career){
+      setText('[data-profile-career-summary]',`${career.completed} / ${career.total} tiered achievements · ${career.ready} XP rewards ready · ${career.mastered} mastery emblems`);
+      $('[data-profile-tracked]').innerHTML=career.tracked.length?career.tracked.map(t=>`<article><small>TRACKED · ${escapeHtml(t.tierName)}</small><h3>${escapeHtml(t.name)}</h3><p>${format.format(t.progress)} / ${format.format(t.target)} · ${t.eligible?'Ready to claim':`${format.format(t.xp)} XP reward`}</p><a href="/challenges/#career-challenges">Continue this path →</a></article>`).join(''):'<p>Track up to three paths in Challenges. Your next tiers will appear here.</p>';
+      const honors=career.masteries.filter(m=>m.unlocked);
+      $('[data-profile-emblems]').innerHTML=honors.length?honors.map(m=>`<span>◆ ${escapeHtml(m.name)}</span>`).join(''):'<p>Your first Diamond emblem is waiting. Each path has five tiers to earn.</p>';
+    }
     renderJourney(profile.journey);
     window.GeekProfile.currentProfile = profile;
     window.dispatchEvent(new CustomEvent('geek:profile', { detail: profile }));

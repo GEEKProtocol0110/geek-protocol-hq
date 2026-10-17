@@ -203,3 +203,13 @@ Expand optional discoveries into five hidden words, a rewarded challenge list an
 Basis: Founder October 17 asks to type hidden words for rewards, five words around the site, a rewarded challenge list and XP for completed tasks. Maintainer selects 25 XP per word plus a 75 XP set bonus, and two small scored-game milestones.
 
 Evidence: [docs/REWARDED-CHALLENGES.md](../../docs/REWARDED-CHALLENGES.md), [docs/GRID-DISCOVERIES.md](../../docs/GRID-DISCOVERIES.md). Supersedes DR-015.
+
+## DR-021: Offer accessible next goals and deep game-style mastery tracks
+
+**founder-direction** · 2026-10-17.
+
+Expand achievements and rewarded challenges into Bronze-to-Diamond career paths, category specialization, skill/mode/Gauntlet goals, mastery emblems, three saved tracked paths and a shared authoritative catalog. Keep a short recommended view for casual players and an optional searchable catalog for dedicated completionists. Preserve lifetime progress, prior receipts and all token/CCE holds.
+
+Basis: Founder October 17 requests a modern game-style breadth/depth system using Call of Duty and Xbox achievements as examples, with goals for regular and expert players. Maintainer selects 18 five-tier paths, modest once-only XP, 18 emblems and honest new-counter start dates; no external platform integration or certification is claimed.
+
+Evidence: [docs/CAREER-MASTERY.md](../../docs/CAREER-MASTERY.md), [docs/REWARDED-CHALLENGES.md](../../docs/REWARDED-CHALLENGES.md).

@@ -2,7 +2,7 @@ import { questChapters } from '../../quest/assets/chapter.js';
 
 const $ = selector => document.querySelector(selector);
 const text = (selector, value) => { $(selector).textContent = value; };
-let profile = window.GeekProfile?.currentProfile, campaign = window.GeekProfile?.campaign, filter = 'all';
+let profile = window.GeekProfile?.currentProfile, campaign = window.GeekProfile?.campaign, filter = 'next';
 const goalLink = id => id.startsWith('prestige') || id === 'level-fifty' ? '#prestige' : id === 'kaspa-initiate' ? '../play/?category=kaspa' : '../play/?mode=gauntlet';
 const renderCareer = () => {
   const root = $('[data-hq-milestones]'); root.replaceChildren();
@@ -52,7 +52,7 @@ const renderQuest = () => {
 };
 const filterAchievements = () => {
   const cards = [...document.querySelectorAll('[data-achievement-state]')];
-  for (const card of cards) card.hidden = filter !== 'all' && card.dataset.achievementState !== filter;
+  for (const card of cards) card.hidden = filter === 'next' ? card.dataset.achievementNext !== 'true' : filter !== 'all' && card.dataset.achievementState !== filter;
   for (const button of document.querySelectorAll('[data-achievement-filter]')) button.setAttribute('aria-pressed', String(button.dataset.achievementFilter === filter));
   text('[data-achievement-filter-count]', `${cards.filter(card => !card.hidden).length} achievements shown${cards.length && !cards.some(card => !card.hidden) ? ' · none in this view yet' : ''}`);
 };

@@ -60,6 +60,9 @@ test('first-player path preserves name and Geek through a saved Daily result, pr
   assert.equal(profile.player.name, 'Journey fixture'); assert.equal(profile.stats.xp, receipt.body.roundResult.xpEarned);
   assert.equal(profile.stats.totalQuestions, 5); assert.equal(profile.stats.totalCorrect, 5); assert.equal(profile.stats.totalRuns, 1);
   assert.equal(profile.achievements.find(a => a.id === 'first-signal').unlocked, true);
+  assert.deepEqual((await stored('geek:profile:'+pid(cookie))).careerCounters,{dailyRounds:1,speedRounds:0,perfectRounds:1});
+  assert.ok(receipt.body.roundResult.newAchievements.some(a=>a.id==='first-scored-round'));
+  assert.ok(receipt.body.roundResult.newAchievements.some(a=>a.id==='career-perfect-1'));
   assert.equal((await call(collectiblesHandler, 'GET', undefined, cookie)).body.collection.customization.palette, 'forest');
   const board = await call(leaderboardHandler, 'GET', undefined, cookie, { category: 'kaspa', mode: 'daily', mine: '1' });
   assert.equal(board.body.mine.score, receipt.body.run.totalScore); assert.equal(board.body.entries[0].level, profile.progression.level);
@@ -73,6 +76,8 @@ test('a lost final-answer commit reply recovers one XP award and the full answer
   assert.equal(recovered.body.run.status, 'between-rounds'); assert.equal(recovered.body.question, null); assert.equal(recovered.body.run.answeredReview.length, 5);
   const repeated = await answer(cookie, payload); assert.equal(repeated.statusCode, 200);
   assert.equal(repeated.body.roundResult.xpEarned, recovered.body.roundResult.xpEarned);
+  assert.deepEqual((await stored(profileKeyFor(id))).careerCounters,{dailyRounds:1,speedRounds:0,perfectRounds:1});
+  assert.deepEqual(repeated.body.roundResult.newAchievements,recovered.body.roundResult.newAchievements);
   assert.equal(await fixture.command('GET', profileKeyFor(id)), raw);
   assert.equal((await resume(await session(), payload.run.id)).statusCode, 404);
 });

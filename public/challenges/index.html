@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
     <!-- site-metadata:start -->
-    <title>Rewarded Challenges &amp; Hidden Words — Geek Protocol</title>
-    <meta name="description" content="Find five hidden words, complete learning challenges and earn one-time career XP in Geek Protocol. Try free weekly and monthly quiz standings. No token payouts." />
+    <title>Career Challenges, Mastery &amp; Hidden Words — Geek Protocol</title>
+    <meta name="description" content="Build your Geek career with 90 Bronze-to-Diamond challenges, mastery emblems, tracked goals and a five-word hunt. Earn one-time XP and try community quiz standings." />
     <meta name="theme-color" content="#080b0b" />
     <meta name="robots" content="index,follow" />
     <link rel="icon" type="image/png" href="/assets/geek-protocol-logo.png" />
@@ -12,8 +12,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Geek Protocol" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="Rewarded Challenges &amp; Hidden Words — Geek Protocol" />
-    <meta property="og:description" content="Find five hidden words, complete learning challenges and earn one-time career XP in Geek Protocol. Try free weekly and monthly quiz standings. No token payouts." />
+    <meta property="og:title" content="Career Challenges, Mastery &amp; Hidden Words — Geek Protocol" />
+    <meta property="og:description" content="Build your Geek career with 90 Bronze-to-Diamond challenges, mastery emblems, tracked goals and a five-word hunt. Earn one-time XP and try community quiz standings." />
     <meta property="og:url" content="https://www.geekprotocol.xyz/challenges/" />
     <meta property="og:image" content="https://www.geekprotocol.xyz/assets/kaspa-culture.png" />
     <meta property="og:image:type" content="image/png" />
@@ -22,13 +22,14 @@
     <meta property="og:image:alt" content="GIGA, Geek Protocol&#39;s gold robot mascot, beside the Kaspa emblem." />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@geekonkas" />
-    <meta name="twitter:title" content="Rewarded Challenges &amp; Hidden Words — Geek Protocol" />
-    <meta name="twitter:description" content="Find five hidden words, complete learning challenges and earn one-time career XP in Geek Protocol. Try free weekly and monthly quiz standings. No token payouts." />
+    <meta name="twitter:title" content="Career Challenges, Mastery &amp; Hidden Words — Geek Protocol" />
+    <meta name="twitter:description" content="Build your Geek career with 90 Bronze-to-Diamond challenges, mastery emblems, tracked goals and a five-word hunt. Earn one-time XP and try community quiz standings." />
     <meta name="twitter:image" content="https://www.geekprotocol.xyz/assets/kaspa-culture.png" />
     <meta name="twitter:image:alt" content="GIGA, Geek Protocol&#39;s gold robot mascot, beside the Kaspa emblem." />
     <!-- site-metadata:end -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/assets/atmosphere.css" />
+  <link rel="stylesheet" href="/assets/space.css" />
     <link rel="stylesheet" href="../assets/styles.css" /><link rel="stylesheet" href="../study/assets/study.css" /><link rel="stylesheet" href="./assets/challenges.css" />
   <script defer src="../assets/site.js"></script><script defer src="./assets/challenges.js"></script>
 <script defer src="/assets/analytics.js"></script><link rel="stylesheet" href="/assets/welcome.css" /><script defer src="/assets/welcome.js"></script></head>
@@ -42,25 +43,42 @@
   <main class="study-main challenges-main" id="challenge-main">
     <section class="study-intro"><div><div class="section-kicker">THE COMMUNITY CHALLENGE</div><h1>Follow your curiosity.<br /><em>Earn your XP.</em></h1><p>Find hidden words, complete learning tasks, and build your Geek career. Or test your knowledge in our weekly and monthly quizzes.</p><div class="study-tags"><span>Free entry</span><span>Accuracy first</span><span>Wallet optional</span></div></div><aside class="ace-intro"><span class="ace-label">A.C.E. // KEEP BUILDING</span><p>“Learn the idea. Test your understanding. Return with a stronger signal.”</p><small><a href="../study/">Prepare with guided Study →</a></small></aside></section>
     <section class="xp-challenges" id="rewarded-challenges" data-xp-challenges aria-labelledby="xp-title">
-      <div class="section-kicker">REWARDED CHALLENGES / EXPLORER SERIES 01</div>
-      <h2 id="xp-title">Five words. One hidden signal.</h2>
-      <p>Five words are tucked into quiet corners of the site. Look for <strong>✦ A faint signal</strong>, recover a word, then type it here. Each word earns <strong>25 XP</strong>; all five unlock a <strong>75 XP bonus</strong>.</p>
-      <p class="xp-progress" data-hunt-progress>0 / 5 words found · Loading saved progress…</p>
+      <div class="section-kicker">YOUR CAREER / CHALLENGES &amp; MASTERY</div>
+      <h2 id="xp-title">A first win. A bigger mountain.</h2>
+      <p>Start with a small goal. Follow a path from <strong>Bronze to Diamond</strong>, or chase a mastery emblem. Play at your pace; career challenges never expire.</p>
+      <p class="xp-progress" data-career-summary>Loading your challenge collection…</p>
       <p data-challenge-career></p>
       <p data-xp-status role="status" aria-live="polite" aria-atomic="true">Loading your challenge list…</p>
+      <button class="study-button quiet" type="button" data-xp-control data-xp-refresh>Load progress</button>
+      <section id="career-challenges" aria-labelledby="career-next-title"><h2 id="career-next-title">Your next three.</h2><p>Suggested from your saved progress. Complete a tier, claim its XP, and the next tier opens.</p><button class="study-button primary" type="button" data-xp-control data-claim-ready data-xp-locked="true" disabled>Claim ready XP</button><div class="xp-task-grid" data-xp-tasks></div></section>
+      <section aria-labelledby="tracked-title"><h3 id="tracked-title">Your tracked paths</h3><p>Track up to three paths. Your next tier follows you into My HQ.</p><div class="xp-task-grid" data-tracked-goals></div></section>
+      <details class="career-library" data-career-library><summary>Explore all 90 career challenges →</summary>
+        <div class="career-filters">
+          <label>Show<select data-career-view><option value="next">Next tier in each path</option><option value="all">All challenges</option><option value="ready">Ready to claim</option><option value="earned">Achievements earned</option><option value="claimed">XP claimed</option></select></label>
+          <label>Path<select data-career-path><option value="all">All paths</option></select></label>
+          <label>Tier<select data-career-tier><option value="all">All tiers</option><option value="Bronze">Bronze</option><option value="Silver">Silver</option><option value="Gold">Gold</option><option value="Platinum">Platinum</option><option value="Diamond">Diamond</option></select></label>
+          <label>Search<input type="search" maxlength="64" data-career-search placeholder="Kaspa, streak, perfect…" /></label>
+        </div>
+        <p data-career-count role="status"></p><div class="xp-task-grid" data-career-catalog></div>
+        <button class="study-button" type="button" data-xp-control data-career-more>Show more challenges</button>
+      </details>
+      <details class="career-library"><summary>Mastery emblems · finish a Diamond tier</summary><p>Each complete five-tier path earns a permanent career emblem. These recognize game milestones, not professional qualifications.</p><div class="mastery-emblems" data-career-emblems></div></details>
+      <details class="career-library" id="hidden-word-hunt"><summary>✦ Hidden word hunt · five signals, 200 XP</summary>
+      <h2 id="hunt-title">Five words. One hidden signal.</h2>
+      <p>Five words are tucked into quiet corners of the site. Look for <strong>✦ A faint signal</strong>, recover a word, then type it here. Each word earns <strong>25 XP</strong>; all five unlock a <strong>75 XP bonus</strong>.</p>
+      <p class="xp-progress" data-hunt-progress>0 / 5 words found · Loading saved progress…</p>
       <form class="hunt-form" data-hunt-form>
         <label for="hunt-word">Recovered word</label>
         <input id="hunt-word" name="word" data-hunt-word data-xp-control data-xp-needs-ready="true" disabled type="text" maxlength="32" autocomplete="off" autocapitalize="none" spellcheck="false" required placeholder="Type a word you found" />
         <button class="study-button primary" type="submit" data-xp-control data-xp-needs-ready="true" disabled>Check word &amp; claim XP →</button>
       </form>
-      <button class="study-button quiet" type="button" data-xp-control data-xp-refresh>Load progress</button>
+      <p data-hunt-feedback></p>
       <ul class="xp-grid" data-word-clues aria-label="Five hidden word challenges"></ul>
       <p class="xp-bonus" data-hunt-bonus>Find all five for an extra 75 XP. The bonus is added automatically.</p>
-      <h2>More ways to level up.</h2><p>Complete a task, then claim its one-time XP bonus here. Earlier saved results count too.</p>
-      <div class="xp-task-grid" data-xp-tasks></div>
+      </details>
       <p class="xp-note">One reward per challenge per player. These are career XP rewards. No tokens or game credits. Your finds stay with this player; <a href="/sign-in/">save your player</a> before changing browsers or clearing data. Finding words is a fun exploration challenge, not proof of learning.</p>
     </section>
-    <div class="study-notice"><strong>Community competition.</strong> Challenge scores are separate from Gauntlet, Daily, Speed, and Study. Weekly and monthly quiz standings award no XP, game credits, or tokens. The explorer challenges above offer separate one-time career XP rewards.</div>
+    <div class="study-notice"><strong>Community competition.</strong> Challenge scores are separate from Gauntlet, Daily, Speed, and Study. Weekly and monthly quiz standings award no XP, game credits, or tokens. Career and explorer challenges above offer separate one-time career XP rewards.</div>
     <div class="study-error" role="alert" data-error hidden><p data-error-text></p><button class="study-button" type="button" data-retry>Try again</button><button class="study-button quiet" type="button" data-error-home>Return to challenge cards</button></div>
     <section data-hub aria-labelledby="periods-title">
       <div class="study-section-head"><div><div class="section-kicker" data-period-kicker>CURRENT PERIODS / UTC</div><h2 id="periods-title" data-period-title>Two ways to return.</h2></div><nav class="period-tabs" aria-label="Challenge periods"><a href="./" data-current-link>Current</a><a href="./?previous=1" data-previous-link>Previous</a></nav></div>

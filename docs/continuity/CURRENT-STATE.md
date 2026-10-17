@@ -25,9 +25,9 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**UX-007: needs-evidence.** Rewarded challenge list, five hidden words and once-only server-bound career XP released in #146. Full tests, exact-head CI, preview reward/replay/reload and live delivery/rendering passed. Founder actual-phone acceptance remains outstanding.
+**GAME-001: in-progress.** Career mastery candidate plus preview-discovered canvas styling correction implemented. Revised full verify: 552 tests, zero failures/skips, required Redis and all checks. Direct atmosphere/space CSS coverage is enforced for all 29 participating pages; missing canvas CSS skips insertion. Final rendered preview and exact-head release pending.
 
-Next task: **UX-006**. Try the word hunt and task claims on the actual phone. Keep background/browser-bar and login/Silk acceptance separate; resume the reviewed bank, beta evidence and ACE/performance roadmap without opening existing holds.
+Next task: **UX-006**. Verify and release the career/mastery system, then gather actual-phone usability and continue outstanding background/login/beta evidence and reviewed content.
 
 ## Holds
 

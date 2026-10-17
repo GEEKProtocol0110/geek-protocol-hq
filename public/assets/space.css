@@ -1,2 +1,3 @@
+:root{--geek-space-ready:1}
 /* Space stays behind content; decoration never captures clicks or focus. */
 .space-scene{position:relative;isolation:isolate}.space-scene>.space-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;border-radius:inherit}.space-scene .space-canvas{display:block}.memory-intro.space-scene,.study-intro.space-scene{overflow:clip}

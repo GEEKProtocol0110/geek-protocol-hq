@@ -944,6 +944,29 @@
       "releaseEvidence": [
         "UX-007 rewarded challenges merged in #146 October 17 at 08:49:28 UTC as 2c63d28d187d69d4ce351b2b9809d8aec0f6219f. Exact head 503b7f7eb66ee32818bea5b2d6408a442523aa16/tree d2dd73dd442fb65a5338f833628fe726dbf9eec5 passed GitHub verification 39017597467 and Vercel; no submitted reviews or inline threads. Production dpl_DjwotsxcHfxmRWketvDaD1ixVr48 READY on the exact merge with both canonical domains assigned. Ten targeted delivery checks passed under 15-second bounds: five reveals/hub links, hub markup, exact bytes of two challenge clients and CSS, and unauthenticated private/no-store 401 status. Browser followed a preview Home signal into the hub using a fresh guest, redeemed its observed word for 25 XP, rejected a repeat with no extra XP, and retained the find after reload. Five clue cards, two tasks and periodic boards render together; 53px input/button and document width 1348 <= viewport 1363. Canonical live hub loads server-backed cards and enables an eligible prior-result task while leaving an unfinished task disabled; no canonical reward claim or game action was submitted. Full local verification: 538 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Actual phone/narrow rendering, live task gameplay and independent review acceptance remain unverified."
       ]
+    },
+    {
+      "id": "GAME-001",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Build a deep career challenge and mastery ladder",
+      "owner": "Maintainer; founder confirms phone/game usability",
+      "nextAction": "Finish full verification, inspect the checked preview and release the mastery catalog. Record exact CI/deployment evidence and actual-device limits.",
+      "acceptance": [
+        "Casual players see three suggested goals while dedicated players can search/filter all 90 challenges across 18 Bronze-to-Diamond paths.",
+        "Achievements share server eligibility with rewards; legacy 12 achievements, five-word hunt and two issued claim IDs remain compatible.",
+        "Three tracked paths persist for the resolved player and advance with claimed tiers; 18 mastery emblems and round-end notices recognize progress.",
+        "Permanent once-only receipts, atomic bounded multi-claim and profile/prestige CAS protect XP under replay, lost responses and concurrent updates. New mode/perfect counters are honestly prospective and commit with game results.",
+        "Relevant tests, browser observations, exact release and remaining phone/independent-review limits are retained; no token settlement or CCE hold changes."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/CAREER-MASTERY.md",
+        "server/career-challenges.js",
+        "tests/career-challenges.test.js",
+        "tests/rewarded-challenges.test.js",
+        "tests/ranked-persistence.test.js"
+      ]
     }
   ]
 }
