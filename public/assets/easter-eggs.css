@@ -13,3 +13,5 @@
 .grid-terminal-shortcuts{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
 .grid-terminal small{color:#aec3d5}
 @media(forced-colors:active){.grid-terminal,.grid-terminal-output{border:1px solid CanvasText}.grid-terminal input,.grid-terminal button,.grid-discovery summary{border:1px solid ButtonText}}
+
+.hunt-signal{margin:2rem auto;width:calc(100% - 2.5rem)}.hunt-signal strong{color:#a7ffe7;letter-spacing:.15em}.hunt-signal a{display:inline-flex;align-items:center;min-height:44px;color:#a7ffe7}

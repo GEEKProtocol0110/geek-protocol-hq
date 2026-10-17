@@ -21,6 +21,7 @@ export const defaultProfile = () => ({
   gauntletsCompleted: 0,
   categoryStats: {},
   journey: [],
+  challengeClaims: {},
   avatarId: 'giga-genesis',
   stickerInventory: { 'giga-core': 2, 'kaspa-k': 2, 'dag-node': 1, 'signal-verified': 1 },
   stickerReserved: {},
@@ -49,6 +50,15 @@ export const parseProfile = raw => {
   }
   for (const key of ['journey', 'payoutMutationHistory']) {
     if (Object.hasOwn(value, key) && !Array.isArray(value[key])) throw new Error('PROFILE_STATE_INVALID');
+  }
+  if (Object.hasOwn(value, 'challengeClaims')) {
+    const claims = value.challengeClaims;
+    if (!claims || typeof claims !== 'object' || Array.isArray(claims) || Object.keys(claims).length > 32) throw new Error('PROFILE_STATE_INVALID');
+    for (const [id, claim] of Object.entries(claims)) {
+      if (!/^[a-z0-9-]{1,64}$/.test(id) || !claim || typeof claim !== 'object' || Array.isArray(claim)
+        || !Number.isSafeInteger(claim.xp) || claim.xp < 0 || claim.xp > 1000
+        || !Number.isSafeInteger(claim.at) || claim.at <= 0) throw new Error('PROFILE_STATE_INVALID');
+    }
   }
   return { ...defaultProfile(), ...value };
 };

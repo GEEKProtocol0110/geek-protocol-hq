@@ -35,12 +35,12 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "UX-005",
-    "status": "needs-evidence",
-    "description": "Background stylesheet coverage and fail-closed insertion shipped in #145. All 29 participating pages declare atmosphere CSS; three behavior tests and site validation prevent recurrence. Preview/live desktop checks pass. Founder physical-phone/browser-bar acceptance remains outstanding."
+    "id": "UX-007",
+    "status": "in-progress",
+    "description": "Five hidden words and one-time rewarded challenges implemented. Full verification passes 538 tests, zero failures/skips, required Redis and 311 security assertions; metadata/link and continuity checks pass. Exact preview/release and actual-phone acceptance remain separate."
   },
   "nextTask": "UX-006",
-  "nextAction": "Confirm the fixed Play header and stable background on the actual phone; retain the prior improvement and later regression separately. UX-006 login usability and actual Silk/phone authentication acceptance remain separate.",
+  "nextAction": "Verify the five-word challenge and XP claims end to end, release the exact checked head, then gather actual phone challenge/background/login acceptance separately.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

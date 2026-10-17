@@ -48,6 +48,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ACE-001 | P1 | planned | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
 | PERF-001 | P1 | planned | Measure growth capacity and stage storage, delivery and worker improvements | Maintainer; performance/recovery reviewer unassigned |
 | UX-006 | P0 | needs-evidence | Make returning login clear and keep advanced setup optional | Maintainer; founder confirms usability |
+| UX-007 | P1 | in-progress | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
 
 ## CONT-001: Publish the continuation system
 
@@ -658,3 +659,18 @@ Acceptance:
 - Relevant tests, rendered preview and actual release evidence are recorded; founder/device acceptance remains distinct.
 
 Evidence/specification: [public/sign-in/index.html](../../public/sign-in/index.html), [public/sign-in/assets/sign-in.js](../../public/sign-in/assets/sign-in.js), [public/sign-in/assets/passkeys.js](../../public/sign-in/assets/passkeys.js), [tests/passkey-client.test.js](../../tests/passkey-client.test.js), [docs/TRUSTED-DEVICE-ACCESS.md](../../docs/TRUSTED-DEVICE-ACCESS.md), [tests/sign-in-state.test.js](../../tests/sign-in-state.test.js).
+
+## UX-007: Add a five-word hunt and one-time rewarded challenges
+
+**P1 / in-progress.** Owner: Maintainer; founder confirms phone usability. Dependencies: none.
+
+Next action: Verify and release server-bound claims and the Challenges UI; record exact CI/deployment and browser evidence. Actual phone usability remains separate.
+
+Acceptance:
+
+- Five page-local, accessible discoveries reveal words without blocking learning or navigation.
+- Challenges lists word clues, found/claimed state, automatic all-five bonus, existing-result tasks and clear career XP amounts.
+- Resolved-player claims and XP commit atomically with audit; duplicate, concurrent, lost-response and forged requests cannot add extra XP. Claims outlive journey pruning and prestige resets.
+- No tokens, game credits, scores, question answers, CCE activation or settlement changes; relevant tests and release evidence recorded.
+
+Evidence/specification: [docs/REWARDED-CHALLENGES.md](../../docs/REWARDED-CHALLENGES.md), [server/rewarded-challenges.js](../../server/rewarded-challenges.js), [tests/rewarded-challenges.test.js](../../tests/rewarded-challenges.test.js), [tests/rewarded-challenges-client.test.js](../../tests/rewarded-challenges-client.test.js), [public/challenges/assets/rewarded.js](../../public/challenges/assets/rewarded.js).

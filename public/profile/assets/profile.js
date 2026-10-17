@@ -193,6 +193,7 @@
   };
 
   const eventCopy = (event) => {
+    if (event.type === 'challenge') return { icon: '✦', title: event.name, detail: `Challenge complete · +${format.format(event.xp)} XP` };
     if (event.type === 'prestige') return { icon: `P${event.prestige}`, title: `Prestige ${event.prestige} reached`, detail: `${event.title} · ${event.cycleLevels === 50 ? 'A new 50-level cycle began.' : 'Earned under the earlier progression system.'}` };
     if (event.type === 'level') return { icon: `L${event.level}`, title: `Level ${event.level} reached`, detail: `${event.title} · Server-verified XP milestone.` };
     if (event.type === 'sticker') {

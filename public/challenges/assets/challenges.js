@@ -19,7 +19,7 @@
   const showError = (error, again) => { paused = true; $('[data-error-text]').textContent = error.message; $('[data-error]').hidden = false; $('[data-retry]').hidden = !again; retry = again; };
   const lock = value => {
     busy = value;
-    document.querySelectorAll('.challenges-main button, [data-player-name]').forEach(el => { el.disabled = value || el.dataset.locked === 'true'; });
+    document.querySelectorAll('.challenges-main button:not([data-xp-control]), [data-player-name]').forEach(el => { el.disabled = value || el.dataset.locked === 'true'; });
     $('[data-attempt]').setAttribute('aria-busy', String(value));
   };
   const element = (tag, text, className) => { const el = document.createElement(tag); if (text !== undefined) el.textContent = text; if (className) el.className = className; return el; };
@@ -108,10 +108,11 @@
   const boot = async (resume = true) => {
     clearError(); lock(true);
     try {
-      catalog = await request(api + (previous ? '&previous=1' : ''));
-      renderCards();
       const session = await request('/api/session/', {});
       $('[data-player-name]').value = session.player.name;
+      import('./rewarded.js').then(module => module.refreshRewards()).catch(() => { $('[data-xp-status]').textContent = 'The challenge list could not load. Reload this page to try again.'; });
+      catalog = await request(api + (previous ? '&previous=1' : ''));
+      renderCards();
       attempts = (await request(api, { action: 'status' })).attempts; renderCards();
       let saved = resume && recalled();
       if (['weekly', 'monthly'].includes(requestedKind) && saved && !saved.periodId?.startsWith(`${requestedKind}:`)) saved = null;

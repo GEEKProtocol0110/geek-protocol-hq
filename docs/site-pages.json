@@ -11,8 +11,8 @@
     {
       "file": "public/challenges/index.html",
       "path": "/challenges/",
-      "title": "Weekly & Monthly Challenges \u2014 Geek Protocol",
-      "description": "Try Geek Protocol's free weekly and monthly quiz challenges. Explore community standings and learn from each answer. No token rewards are enabled.",
+      "title": "Rewarded Challenges & Hidden Words \u2014 Geek Protocol",
+      "description": "Find five hidden words, complete learning challenges and earn one-time career XP in Geek Protocol. Try free weekly and monthly quiz standings. No token payouts.",
       "index": true,
       "private": false
     },

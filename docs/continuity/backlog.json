@@ -919,6 +919,28 @@
       "releaseEvidence": [
         "Merge 61305c23daf11dad97f939e1f6e4e778d1865433; CI 39011943414; production dpl_GEGMmAqCCVSqv7qY8UFNz6K4XGQW READY on both canonical domains. Five delivery checks passed; live enabled login/guest and closed optional flows verified. No actual phone/authenticator acceptance claim."
       ]
+    },
+    {
+      "id": "UX-007",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Add a five-word hunt and one-time rewarded challenges",
+      "owner": "Maintainer; founder confirms phone usability",
+      "nextAction": "Verify and release server-bound claims and the Challenges UI; record exact CI/deployment and browser evidence. Actual phone usability remains separate.",
+      "acceptance": [
+        "Five page-local, accessible discoveries reveal words without blocking learning or navigation.",
+        "Challenges lists word clues, found/claimed state, automatic all-five bonus, existing-result tasks and clear career XP amounts.",
+        "Resolved-player claims and XP commit atomically with audit; duplicate, concurrent, lost-response and forged requests cannot add extra XP. Claims outlive journey pruning and prestige resets.",
+        "No tokens, game credits, scores, question answers, CCE activation or settlement changes; relevant tests and release evidence recorded."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/REWARDED-CHALLENGES.md",
+        "server/rewarded-challenges.js",
+        "tests/rewarded-challenges.test.js",
+        "tests/rewarded-challenges-client.test.js",
+        "public/challenges/assets/rewarded.js"
+      ]
     }
   ]
 }

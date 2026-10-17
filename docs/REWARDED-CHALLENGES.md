@@ -1,0 +1,21 @@
+# Rewarded challenges — Explorer series 01
+
+Founder request October 17, 2026: hide five words around HQ, let players type them for a reward, and offer a challenge list with XP for completed tasks. UX-007 / DR-020 expands the earlier cosmetic discovery direction. The mission and existing toy-terminal commands remain intact.
+
+`/challenges/#rewarded-challenges` lists five clue cards, a labeled word-entry form, found/claimed progress, earned challenge XP and current career totals. Each word earns **25 career XP** once. The fifth word automatically grants the **75 XP** collection bonus in the same commit: **200 XP** for the complete hunt. Page-local, initially closed **✦ A faint signal** disclosures live in Home, Study, the Kaspa field guide, Tools and Hall of Thanks. No overlay, motion or global keyboard interception is added. Case and surrounding spaces are ignored. Words are accessible page content; sharing or inspecting them is possible. This is exploration, not verified learning or mastery.
+
+Two other one-time tasks use existing scored-game results: complete a scored Gauntlet/Daily/Speed round (**50 XP**), and reach 25 correct Kaspa answers in those rounds (**75 XP**). Earlier saved results count. Players claim eligible bonuses from the list; no browser assertion of task completion is accepted. Study, Memory, Quest and weekly/monthly standings retain their own existing rules. Total launch-series bonus capacity is **325 XP per player**, including the word hunt. No game credits, tokens, question scores or leaderboard submissions are granted.
+
+## Persistence and authorization
+
+`POST /api/ranked/?service=discoveries` accepts only `{action:"status"}`, `{action:"word",word:<text>}` or `{action:"claim",id:<task ID>}`. A valid session resolves the stable player; there is no caller-supplied player ID or XP. Status is private/no-store and omits unclaimed answers. Word length/syntax, action fields and both player/IP rates are bounded. Cross-site browser requests are rejected. Guests can participate with their current player; they need an existing supported saved-player login before moving browsers or clearing data. No new account/recovery method is introduced.
+
+`challengeClaims` is a bounded, validated map in the existing profile. Stable versioned-series IDs are permanent once-only receipts, independent of the 80-event journey view. XP, receipt(s), journey events and audit write together through the existing profile/prestige snapshot compare-and-set. Concurrent game/avatar/prestige changes trigger bounded fresh reads, never overwrite newer state. Duplicate claims return current state with zero new awards. A lost response can be retried safely. Final-word and all-five bonus commit together. Prestige and journey pruning cannot reset eligibility. Damaged claims or unsafe counters fail closed. Profile shape is backward-compatible for records without this field.
+
+The browser uses safe text output, labeled native controls, optional clue disclosures, status announcements, an independent loading state and a 15-second request deadline. Failed claims retain the word for correction/retry; no XP is displayed as newly earned before server confirmation. Load progress retrieves authoritative state after uncertainty. Existing periodic quizzes retain independent controls and score-only rules. Challenge awards appear in My HQ's journey.
+
+## Verification and limits
+
+Real Redis tests cover authorization, private status, malformed/forged inputs, repeat/concurrent claims, all-five atomic bonus, lost replies, stable player resolution, separate players, task eligibility, stale ranked writes, prestige and journey retention, corruption, unsafe XP and rate limits. Client execution tests cover actual submission payloads, in-flight duplicate suppression, confirmed rendering, disabled task claims and error/retry behavior. Five real HTML discoveries are redeemed against the implementation. Full project checks, exact publication/deployment and browser observations belong in the release record; they do not establish actual-phone or independent-review acceptance.
+
+Keep CCE, treasury settlement, collectible ownership and the separate Testnet pilot holds unchanged. Additional series need new stable IDs, explicit amounts, eligibility and receipt-capacity review; changing a word must never reopen an already claimed ID.

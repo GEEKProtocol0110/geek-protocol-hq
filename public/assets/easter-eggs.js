@@ -15,7 +15,7 @@ export const initGridDiscovery = () => {
   const summary = element('summary', '', '✦ Stray signal');
   const terminal = element('div', 'grid-terminal');
   const title = element('p', 'grid-terminal-title', '// curiosity channel');
-  const hint = element('p', '', 'A quiet corner of the Grid. Try help, decode or ping.');
+  const hint = element('p', '', 'A quiet corner of the Grid. Try help, decode or ping. Looking for hidden words? Visit Rewarded Challenges.');
   const output = element('p', 'grid-terminal-output', '> Signal found. Curiosity looks good on you.');
   output.dataset.gridOutput = '';
   output.setAttribute('role', 'status');
@@ -64,7 +64,8 @@ export const initGridDiscovery = () => {
     button.addEventListener('click', () => run(command));
     shortcuts.append(button);
   }
-  terminal.append(title, hint, output, form, shortcuts, element('small', '', 'Just for fun · no XP or rewards'));
+  const hunt = element('a', '', 'Explore Rewarded Challenges →'); hunt.href = '/challenges/#rewarded-challenges';
+  terminal.append(title, hint, output, form, shortcuts, hunt, element('small', '', 'Terminal commands are just for fun. Hidden words are claimed in Challenges.'));
   panel.append(summary, terminal);
   footer.append(panel);
 };
