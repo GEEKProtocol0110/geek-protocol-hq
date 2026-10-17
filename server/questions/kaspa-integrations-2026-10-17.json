@@ -1,0 +1,2158 @@
+{
+  "metadata": {
+    "title": "GEEK Protocol — Kaspa integration reliability and encoding",
+    "version": "1.0.0",
+    "maintainedAt": "2026-10-17",
+    "questionCount": 76,
+    "conceptCount": 76,
+    "category": "Kaspa",
+    "difficultyDistribution": {
+      "easy": 11,
+      "medium": 40,
+      "hard": 25
+    },
+    "correctIndexDistribution": {
+      "0": 19,
+      "1": 19,
+      "2": 19,
+      "3": 19
+    },
+    "schema": "correctIndex is zero-based; options contains four distinct strings",
+    "sourceSnapshot": "01b532e8b553523216471682649693af92f0fd16",
+    "reviewNotice": "Internal source/wording/distractor review of the pinned Rusty Kaspa revision. Advanced integration material remains outside introductory Study. Implementation behavior does not establish universal wallet compatibility or network activation. Difficulty is provisional; independent editorial review is unassigned.",
+    "attribution": "Original Geek Protocol questions based on pinned MIT-licensed Rusty Kaspa code; source prose and code are not imported.",
+    "licenses": [
+      "MIT"
+    ]
+  },
+  "questions": [
+    {
+      "id": "K700-0001",
+      "conceptId": "K700-0001",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Reliability",
+      "prompt": "What problem does the cited Kaspa Resolver solve for an application without a fixed node URL?",
+      "options": [
+        "Finding an available public wRPC endpoint",
+        "Confirming a transaction's acceptance without querying a node",
+        "Choosing the lowest fee for every future transaction",
+        "Providing the full node's consensus validation inside the browser"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "The resolver discovers node endpoints. Discovery does not authorize spending or make a returned node an independent proof of ledger state.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/wrpc/client/src/resolver.rs#L2",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0002",
+      "conceptId": "K700-0002",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Reliability",
+      "prompt": "Which two caller choices are included in a cited Kaspa resolver request alongside its TLS preference?",
+      "options": [
+        "Recipient address and transfer amount",
+        "Network ID and wRPC encoding",
+        "Transaction ID and output index",
+        "Account derivation depth and mnemonic word count"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The request path includes network_id and encoding, so discovery can select an endpoint for the intended network and wire format.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/wrpc/client/src/resolver.rs#L143",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0003",
+      "conceptId": "K700-0003",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Reliability",
+      "prompt": "When the cited resolver first builds a request in an HTTPS browser context, which endpoint transport does it request?",
+      "options": [
+        "Only unencrypted WebSocket transport",
+        "Only a local IPC transport",
+        "TLS-capable transport",
+        "The transport with the shortest URL regardless of encryption"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The browser branch recognizes HTTPS and selects the tls path. This avoids asking that secure page to use an insecure node connection.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/wrpc/client/src/resolver.rs#L137",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0004",
+      "conceptId": "K700-0004",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Reliability",
+      "prompt": "How can the cited Kaspa Resolver use an operator's own discovery services?",
+      "options": [
+        "Pass node WebSocket URLs as mnemonic recovery words",
+        "Put the discovery-service URL in a transaction's payload",
+        "Change only the transaction's signature-hash mode",
+        "Supply a custom list of resolver URLs"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "Custom URLs replace the bundled resolver-service list. Resolver services are distinct from the node endpoints that they return.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/wrpc/client/src/resolver.rs#L69",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0005",
+      "conceptId": "K700-0005",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Reliability",
+      "prompt": "How does the cited resolver choose the order in which it tries its configured services?",
+      "options": [
+        "It shuffles the list before trying services",
+        "It always picks the alphabetically first URL",
+        "It sorts services by their URL length",
+        "It always queries the bundled first service before any custom list"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "Randomizing the attempt order distributes first attempts across services. The fetch loop returns when a service supplies a descriptor.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/wrpc/client/src/resolver.rs#L157",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0006",
+      "conceptId": "K700-0006",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Reliability",
+      "prompt": "Every configured service fails in the cited Kaspa resolver fetch loop. What does the caller receive?",
+      "options": [
+        "An empty descriptor presented as successful discovery",
+        "An error containing the collected failures",
+        "A guaranteed cached descriptor even if none was fetched",
+        "An automatic successful connection to localhost"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "The loop collects service errors and returns failure after exhausting the list. An application must handle unavailable discovery explicitly.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/wrpc/client/src/resolver.rs#L166",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0007",
+      "conceptId": "K700-0007",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Reliability",
+      "prompt": "How do get_node and get_url differ in the cited Kaspa Resolver?",
+      "options": [
+        "One queries mainnet only; the other queries testnet only",
+        "One discovers Borsh only; the other discovers JSON only",
+        "One returns a node descriptor; the other returns its URL string",
+        "One requires TLS; the other always disables TLS"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "Both use the discovery fetch. get_url extracts the descriptor's URL, while get_node retains the descriptor information.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/wrpc/client/src/resolver.rs#L175",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0008",
+      "conceptId": "K700-0008",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Reliability",
+      "prompt": "What URL behavior does the cited KaspaRpcClient constructor documentation warn about?",
+      "options": [
+        "A constructor URL is used only for the first connection",
+        "A constructor URL is ignored whenever a resolver is present",
+        "A constructor URL is automatically replaced after every RPC call",
+        "A constructor URL fixes the endpoint used by that client"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "For an integration that needs to choose a URL on each connect call, the constructor documentation says to leave its URL argument as None.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/wrpc/client/src/client.rs#L276",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0009",
+      "conceptId": "K700-0009",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Reliability",
+      "prompt": "What does the cited KaspaRpcClient connect method do before starting its new connection attempt?",
+      "options": [
+        "Disconnects the previous connection",
+        "Retains the old socket until the new connection has fully succeeded",
+        "Immediately declares the new endpoint synchronized",
+        "Reuses the old socket while changing only its displayed URL"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "connect begins with disconnect, then acquires its connection guard and applies the new connection options.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/wrpc/client/src/client.rs#L435",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0010",
+      "conceptId": "K700-0010",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Reliability",
+      "prompt": "What does the block option described for the cited KaspaRpcClient connect operation wait for?",
+      "options": [
+        "Completion of the node's entire synchronization process",
+        "The first successful connection",
+        "Acceptance of the next submitted transaction",
+        "Delivery of the first UTXO-change notification"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "The documented option controls waiting for connection success. It is not a transaction confirmation or proof that a payment occurred.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/wrpc/client/src/client.rs#L428",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0011",
+      "conceptId": "K700-0011",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Reliability",
+      "prompt": "A cited KaspaRpcClient connection fails under ConnectStrategy::Fallback. What cleanup does this branch perform?",
+      "options": [
+        "Keeps those background services running in this error branch",
+        "Returns success with an empty RPC response",
+        "Shuts down the RPC client and stops background services",
+        "Retries without ever returning an error to the caller"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The fallback error branch explicitly shuts down the underlying client and stops services before returning the connection error.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/wrpc/client/src/client.rs#L464",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0012",
+      "conceptId": "K700-0012",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Reliability",
+      "prompt": "Besides closing the endpoint connection, what does the cited KaspaRpcClient disconnect method do?",
+      "options": [
+        "Only clears the displayed URL while services keep running",
+        "Submits a replacement for every outgoing transaction",
+        "Stops the remote node's background consensus services",
+        "Stops its background RPC services"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "disconnect calls the underlying shutdown and then stop. This is a client lifecycle operation, not an on-chain reversal.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/wrpc/client/src/client.rs#L474",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0013",
+      "conceptId": "K700-0013",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Reliability",
+      "prompt": "What is the intended use of the cited KaspaRpcClient trigger_abort helper?",
+      "options": [
+        "Testing application reconnection behavior by aborting the socket",
+        "Requesting a graceful server shutdown",
+        "Canceling an already accepted transaction",
+        "Forcing an immediate successful reconnection"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The source marks trigger_abort as a debug facility for disrupting the underlying WebSocket and exercising recovery logic.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/wrpc/client/src/client.rs#L605",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0014",
+      "conceptId": "K700-0014",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Reliability",
+      "prompt": "The cited parse_url helper receives wss://node.example with no explicit port. How does it handle the default wRPC port?",
+      "options": [
+        "Always appends the default Borsh port",
+        "Leaves the URL without an added port",
+        "Replaces the scheme with ws and adds the P2P port",
+        "Rejects the URL because its port was omitted"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "An explicit scheme or path suppresses insertion of a default port when none was supplied, preserving reverse-proxy style endpoints.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/wrpc/client/src/client.rs#L539",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0015",
+      "conceptId": "K700-0015",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Reliability",
+      "prompt": "When the cited parse_url helper needs a default port for a bare hostname, what determines that port?",
+      "options": [
+        "Only the host operating system's default HTTP port",
+        "Only the address's public-key version",
+        "The selected network type and wRPC encoding",
+        "Only the first available local port"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The helper selects a network-specific Borsh or JSON RPC port. An explicitly provided port takes precedence.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/wrpc/client/src/client.rs#L533",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0016",
+      "conceptId": "K700-0016",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "Why does the cited wallet scanner hold the processor's notification lock during a scan?",
+      "options": [
+        "To prevent the node from adding any new blocks",
+        "To guarantee an immutable remote snapshot across the entire network",
+        "To prevent account address derivation from ever advancing",
+        "To coordinate the scan with concurrent notification processing"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "The scan holds the guard across its address-manager or fixed-set scan. The processor's notification handler uses the corresponding write lock.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/scan.rs#L59",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0017",
+      "conceptId": "K700-0017",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "How does EmptyWindow differ from Depth in the cited wallet scanner's stopping policy?",
+      "options": [
+        "It searches for an empty address range rather than a specified derivation depth",
+        "It scans exactly one address regardless of the result",
+        "It stops immediately after the first funded address",
+        "It chooses its stopping rule from the amount of transaction fees"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The extent selects a discovery stopping rule. A bounded-depth scan and an empty-window scan can inspect different ranges.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/scan.rs#L17",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0018",
+      "conceptId": "K700-0018",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "Why can the first range in the cited address-manager scan exceed one ordinary window?",
+      "options": [
+        "It always covers the complete u32 derivation space",
+        "It includes the known address index as well as the minimum window",
+        "It uses one address for every block in the DAG",
+        "It expands the range only when the node changes network"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "The initial upper bound is the greater of last_address_index + 1 and window_size. Later ranges advance by the chosen window size.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/scan.rs#L79",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0019",
+      "conceptId": "K700-0019",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "Which address-manager index does the cited scan retain after discovering UTXOs at later derived addresses?",
+      "options": [
+        "The first empty address after every completed scan",
+        "The highest index requested even if no UTXO was found there",
+        "The latest discovered used address index",
+        "Always the default window size regardless of discovered use"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The scan tracks the greatest matching derived index that returned UTXOs and writes it back to the address manager when scanning finishes.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/scan.rs#L143",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0020",
+      "conceptId": "K700-0020",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "What context does the cited scanner use to classify each discovered UTXO's balance contribution?",
+      "options": [
+        "Only the sum of output amounts without maturity classification",
+        "Only the number of addresses queried",
+        "Only the current transaction fee estimate",
+        "Network parameters and the current DAA score"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "Each entry's balance calculation receives the selected network parameters and current score, rather than treating every discovered amount as mature.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/scan.rs#L113",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0021",
+      "conceptId": "K700-0021",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "Which scan provider suits a caller that already has the exact Kaspa address set it wants to inspect?",
+      "options": [
+        "AddressSet",
+        "AddressManager with an unbounded derivation extent",
+        "A list of block-template hashes",
+        "The connected node's peer-address table"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "The scanner supports both derived address-manager ranges and a supplied fixed address set. The latter does not discover further derivation ranges.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/scan.rs#L49",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0022",
+      "conceptId": "K700-0022",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "A cited fixed-set scan finds UTXOs for several supplied addresses. How is its returned balance built?",
+      "options": [
+        "By selecting only the largest discovered UTXO",
+        "By summing the classified contributions of the discovered entries",
+        "By multiplying the first address's balance by the set size",
+        "By treating every discovered output as immediately mature"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The fold accumulates mature and pending amounts and associated counts, then extends the context with the discovered UTXO references.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/scan.rs#L124",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0023",
+      "conceptId": "K700-0023",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "What separate condition does the cited wallet SyncMonitor track beyond having a network connection?",
+      "options": [
+        "Whether the socket has ever opened successfully",
+        "Whether the endpoint URL has a recognized scheme",
+        "Whether the connected node is synchronized",
+        "Whether a wallet has generated at least one address"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "A reachable node can still be synchronizing. The monitor tracks node sync state and communicates it to the wallet.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/sync.rs#L2",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0024",
+      "conceptId": "K700-0024",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "The cited SyncMonitor learns that its node is not synced and no monitoring task is running. What does it start?",
+      "options": [
+        "An automatic outgoing-transaction rebroadcast",
+        "A new wallet address-range scan on every poll",
+        "A permanent Synced state until the socket disconnects",
+        "A background sync-monitor task"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "track(false) marks the state unsynced, starts the task if needed and emits NotSynced. It does not authorize any payment.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/sync.rs#L61",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0025",
+      "conceptId": "K700-0025",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "When the cited SyncMonitor detects that the node has become synced, what wallet state does it report?",
+      "options": [
+        "SyncState::Synced",
+        "Only the original NotSynced state until the wallet restarts",
+        "A transaction-specific acceptance guarantee",
+        "An automatic change of the wallet's configured network"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The synced transition updates the atomic state and notifies the wallet. A running monitor task can then stop rather than keep polling unnecessarily.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/sync.rs#L56",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0026",
+      "conceptId": "K700-0026",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "How does the cited source characterize its StateObserver that extracts sync stages from node stdout?",
+      "options": [
+        "A consensus proof independent of log wording",
+        "A temporary log-parsing implementation",
+        "A stable wire protocol guaranteed across node releases",
+        "A replacement for node-reported synchronization status"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "The comment explicitly describes temporary extraction from stdout pending a proper notification API. Integrators should scope such behavior to the cited revision.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/sync.rs#L195",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0027",
+      "conceptId": "K700-0027",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "What happens during the cited wallet processor's initialization if the server's RPC API version is newer than the client supports?",
+      "options": [
+        "It assumes all newer APIs are backward compatible",
+        "It automatically upgrades the installed wallet code",
+        "Initialization returns an RPC API version error",
+        "It only changes the displayed version and continues"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The comparison rejects a newer server API version. This check does not claim that every differing revision or older version is incompatible.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/processor.rs#L513",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0028",
+      "conceptId": "K700-0028",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "The cited wallet processor connects to a server without a UTXO index. How does initialization respond?",
+      "options": [
+        "Reports a successful initialization with an assumed zero balance",
+        "Builds the missing remote index through this client call",
+        "Automatically changes to a random network with an index",
+        "Reports the missing index and returns an error"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The processor emits UtxoIndexNotEnabled and returns MissingUtxoIndex. Reachability alone is insufficient for this wallet workflow.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/processor.rs#L519",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0029",
+      "conceptId": "K700-0029",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "A wallet configured for testnet-10 reaches a mainnet server in the cited initialization flow. What happens?",
+      "options": [
+        "Initialization rejects the network mismatch",
+        "It treats matching address payload sizes as enough to continue",
+        "It changes the expected network without notifying the caller",
+        "It accepts the server if the RPC API version matches"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "The processor compares its expected network ID with the server-reported ID before accepting initialization.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/processor.rs#L525",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0030",
+      "conceptId": "K700-0030",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "Where does the cited wallet processor obtain its initial current DAA score during server initialization?",
+      "options": [
+        "The local machine's Unix timestamp",
+        "The server-info response's virtual_daa_score",
+        "The latest outgoing transaction's output index",
+        "The number of UTXOs returned by an address scan"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The server response supplies the virtual score, which is stored before normal wallet processing begins.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/processor.rs#L529",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0031",
+      "conceptId": "K700-0031",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "If the cited processor cannot negotiate its node connection, which behavior prevents silently continuing as initialized?",
+      "options": [
+        "It silently assumes an empty wallet and continues",
+        "It reports successful initialization before retrying forever",
+        "It reports a processor error and disconnects the RPC client when available",
+        "It changes the configured network until negotiation succeeds"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The failed handle_connect branch notifies the application and attempts to disconnect the client, then returns the original error.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/processor.rs#L579",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0032",
+      "conceptId": "K700-0032",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "Which local collections does the cited wallet processor clear during disconnect cleanup?",
+      "options": [
+        "The server's mempool and global UTXO index",
+        "The account's encrypted key storage and mnemonic",
+        "The remote node's blocks and peer database",
+        "Pending, stasis, outgoing and address-to-context tracking"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "These are local tracking collections. Clearing them is lifecycle cleanup and does not erase or spend the underlying on-chain outputs.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/processor.rs#L609",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0033",
+      "conceptId": "K700-0033",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "Why does the cited processor revisit pending and outgoing entries after a DAA-score change?",
+      "options": [
+        "Their local lifecycle state can depend on score progression",
+        "Every score increase automatically confirms every pending entry",
+        "A score change replaces the account's public keys",
+        "Only a manual balance refresh can change entry maturity"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "handle_daa_score_change stores and broadcasts the new score, then runs pending and outgoing processing.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/processor.rs#L266",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0034",
+      "conceptId": "K700-0034",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "Can a stasis entry move directly to the mature promotion list in the cited processor when its assessed maturity is Confirmed?",
+      "options": [
+        "No; an extra notification must always move it through pending",
+        "Yes; it need not be observed in pending first",
+        "No; confirmed stasis entries are always discarded",
+        "Only if the entry's amount exceeds the relay-fee threshold"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "The stasis branch handles Confirmed by adding the entry to mature_entries and removing it from stasis. Pending is handled separately.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/processor.rs#L280",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0035",
+      "conceptId": "K700-0035",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "The same address/outpoint appears in both added and removed UTXO lists in the cited processor. How is it handled?",
+      "options": [
+        "Counted once as a spend and once as unrelated new income",
+        "Ignored entirely, including any updated entry information",
+        "Separated as an update rather than an ordinary removal plus addition",
+        "Rejected as invalid without considering a context update"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The code extracts matching outpoints into common_added and later calls update_utxos, keeping this case distinct from genuine additions and removals.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/processor.rs#L416",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0036",
+      "conceptId": "K700-0036",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "For the ordinary unmatched entries in a cited UTXO-change batch, which pass runs first?",
+      "options": [
+        "Additions, followed by ordinary removals",
+        "Only additions; the batch's removals are ignored",
+        "Only removals; the batch's additions are ignored",
+        "Removals, followed by additions"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "After separating common outpoints, the processor handles remaining removed entries before the remaining added entries, then processes common updates.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/processor.rs#L442",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0037",
+      "conceptId": "K700-0037",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "How does the cited processor avoid refreshing the same affected context's balance once for every changed entry?",
+      "options": [
+        "Collects affected contexts in a set, then updates each context",
+        "Refreshes every context once for every entry in the batch",
+        "Refreshes only the context containing the largest amount",
+        "Updates all account balances before applying the entry changes"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "updated_contexts is a HashSet populated across the change passes. Balance refresh happens after processing those changes.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/processor.rs#L483",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0038",
+      "conceptId": "K700-0038",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Recovery",
+      "prompt": "Which notification scope does the cited wallet processor start when registering its persistent listener?",
+      "options": [
+        "Every block-template event",
+        "VirtualDaaScoreChanged",
+        "Only finality-conflict resolution events",
+        "A wildcard subscription to every address's UTXOs"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The listener registration starts virtual DAA-score notifications. Address tracking has its own UTXO subscription flow.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/processor.rs#L624",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0039",
+      "conceptId": "K700-0039",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Subscription Behavior",
+      "prompt": "In the cited UTXO subscription mutation parser, what does Start with an empty address list mean?",
+      "options": [
+        "Subscribe to no addresses",
+        "Subscribe only to addresses already present in this request",
+        "Subscribe to all addresses",
+        "Reject the request as missing a mandatory address"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "An empty list is a wildcard for Start. A caller must not assume that an empty filter always means no event delivery.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/notify/src/subscription/single.rs#L191",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0040",
+      "conceptId": "K700-0040",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Subscription Behavior",
+      "prompt": "In the cited UTXO subscription mutation parser, what does Stop with an empty address list request?",
+      "options": [
+        "Remove only the first tracked address",
+        "Keep the existing subscription unchanged",
+        "Convert a selective subscription into a wildcard",
+        "Stop the entire UTXO subscription"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The parser maps an empty Stop scope to None, distinct from removing a specified nonempty set of addresses.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/notify/src/subscription/single.rs#L188",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0041",
+      "conceptId": "K700-0041",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Subscription Behavior",
+      "prompt": "An already selective cited UTXO subscription receives Start for more addresses. How does its selection change?",
+      "options": [
+        "It becomes the union of the old and added address sets",
+        "It replaces the existing selection with only the new addresses",
+        "It retains only addresses shared by both sets",
+        "It removes the newly supplied addresses from the old selection"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The Selected plus Add branch registers additional addresses. Existing selected addresses remain in the selection.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/notify/src/subscription/single.rs#L507",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0042",
+      "conceptId": "K700-0042",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Subscription Behavior",
+      "prompt": "After a selective cited UTXO subscription removes its last tracked address, which state does it enter?",
+      "options": [
+        "All, the wildcard state",
+        "None, the inactive state",
+        "Selected with an active but permanently empty filter",
+        "A new subscription containing the previously removed addresses"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "The removal branch checks whether the tracked index set became empty and changes the subscription to None when it did.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/notify/src/subscription/single.rs#L481",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0043",
+      "conceptId": "K700-0043",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Subscription Behavior",
+      "prompt": "An All-state cited UTXO subscription receives Start for a specific nonempty address set. What is the resulting local selection?",
+      "options": [
+        "All addresses except that set",
+        "All addresses with no local change",
+        "Only that selected address set",
+        "The intersection with an empty set, making it inactive"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "This branch narrows the local state from All to Selected. Upstream mutations differ with AddressSet versus Wildcard policy.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/notify/src/subscription/single.rs#L547",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0044",
+      "conceptId": "K700-0044",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Subscription Behavior",
+      "prompt": "A cited All-state UTXO subscription receives Stop for a specific nonempty address list. What does this branch do?",
+      "options": [
+        "Creates an all-except-these exclusion filter",
+        "Stops the entire subscription regardless of the list",
+        "Replaces the wildcard with the listed addresses only",
+        "Leaves the All state unchanged"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "The All plus Remove branch is a no-op. It does not implement a wildcard subscription with individual exclusions.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/notify/src/subscription/single.rs#L543",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0045",
+      "conceptId": "K700-0045",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Subscription Behavior",
+      "prompt": "When adding addresses to an already selective subscription, how do the cited AddressSet and Wildcard policies differ upstream?",
+      "options": [
+        "AddressSet forwards the new-address start; Wildcard needs no new upstream mutation",
+        "Both always restart the entire upstream subscription",
+        "Wildcard must send each newly added address separately",
+        "AddressSet never forwards additions while Wildcard always does"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "The local selected set expands under either policy. An existing upstream wildcard already covers the additional addresses.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/notify/src/subscription/single.rs#L448",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0046",
+      "conceptId": "K700-0046",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Subscription Behavior",
+      "prompt": "What happens when an already All-state cited UTXO subscription receives another wildcard Start?",
+      "options": [
+        "Creates a second independent wildcard subscription state",
+        "No subscription change is produced",
+        "Converts the subscription into an empty selective state",
+        "Stops the current subscription before returning an error"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Repeated wildcard activation in the All state returns an empty mutation outcome, rather than creating another active subscription state.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/notify/src/subscription/single.rs#L560",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0047",
+      "conceptId": "K700-0047",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Events",
+      "prompt": "What remains in a cited active VirtualChainChanged notification when accepted transaction IDs are excluded?",
+      "options": [
+        "An empty notification without either chain-hash list",
+        "Only removed hashes, with added hashes discarded",
+        "Added and removed chain hashes, with an empty accepted-ID list",
+        "Only added hashes, with removed hashes discarded"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The subscription filter preserves both chain-hash lists while replacing the accepted-ID list with an empty vector.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/api/notifications.rs#L93",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0048",
+      "conceptId": "K700-0048",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Events",
+      "prompt": "What does the cited overall-notification filter return for an inactive subscription?",
+      "options": [
+        "A copy of the full notification",
+        "An empty payload still marked as a delivered event",
+        "The most recent previously delivered notification",
+        "No delivered notification"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "apply_overall_subscription returns None when inactive. Event filtering controls delivery, not the validity of the underlying chain event.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/api/notifications.rs#L75",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0049",
+      "conceptId": "K700-0049",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Events",
+      "prompt": "Which score does the cited SinkBlueScoreChanged event describe?",
+      "options": [
+        "The virtual selected parent's blue score",
+        "The virtual state's DAA score",
+        "The number of blocks the local node has downloaded",
+        "The number of transactions in the latest template"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The event exposes sink_blue_score. It should not be confused with a player's XP or the separate virtual DAA-score event.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/api/notifications.rs#L40",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0050",
+      "conceptId": "K700-0050",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Events",
+      "prompt": "Which cited RPC event distinguishes resolution of a finality conflict from its initial report?",
+      "options": [
+        "NewBlockTemplate",
+        "FinalityConflictResolved",
+        "UtxosChanged",
+        "SinkBlueScoreChanged"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The RPC notification enum includes separate conflict and conflict-resolved variants, rather than representing resolution as a new payment.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/api/notifications.rs#L35",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0051",
+      "conceptId": "K700-0051",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Events",
+      "prompt": "Which cited RPC notification tells a mining integration that a new block template is available?",
+      "options": [
+        "FinalityConflictResolved",
+        "SinkBlueScoreChanged",
+        "NewBlockTemplate",
+        "PruningPointUtxoSetOverride"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "A mining client can react to template availability through this event. Availability alone does not mean that proof of work has been found.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/api/notifications.rs#L50",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0052",
+      "conceptId": "K700-0052",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Construction",
+      "prompt": "Does successfully using the cited Kaspa ScriptBuilder establish that the resulting script will execute correctly?",
+      "options": [
+        "Yes; successful construction proves all signatures valid",
+        "Yes; every canonically encoded script must evaluate true",
+        "Yes; the builder proves the referenced UTXOs exist",
+        "No; construction checks do not prove execution success"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "The builder helps encode opcodes, integers and data within limits. Actual script semantics and spending validation remain separate checks.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/script_builder.rs#L43",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0053",
+      "conceptId": "K700-0053",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Construction",
+      "prompt": "An add_op call would exceed the cited builder's maximum script size. What happens to that attempted append?",
+      "options": [
+        "It returns an error without appending the opcode",
+        "It truncates the existing script to make space",
+        "It appends the opcode but marks the result invalid afterward",
+        "It replaces the final existing opcode with the new opcode"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The limit check runs before script.push. A rejected append does not become a partially added opcode.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/script_builder.rs#L98",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0054",
+      "conceptId": "K700-0054",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Construction",
+      "prompt": "Why can add_data encode a single-byte small positive integer as one opcode in the cited builder?",
+      "options": [
+        "It always emits a four-byte length prefix",
+        "It selects the corresponding canonical small-integer opcode",
+        "It strips the value and emits an empty-vector push",
+        "It stores every integer as an eight-byte two's-complement word"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The builder recognizes the small-integer range and Op1Negate representation, reducing the encoding instead of always emitting a length plus data.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/script_builder.rs#L129",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0055",
+      "conceptId": "K700-0055",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Construction",
+      "prompt": "When should a cited builder caller consider add_data_with_push_opcode instead of add_data?",
+      "options": [
+        "When the caller wants to bypass element-size checks",
+        "When the caller wants the builder to execute the script",
+        "When an explicit data-push form is needed without small-integer canonicalization",
+        "When the caller wants every data value converted to an integer opcode"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The explicit method chooses the push prefix from payload length and still validates the data push. It does not replace small integers with their integer opcodes.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/script_builder.rs#L216",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0056",
+      "conceptId": "K700-0056",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Construction",
+      "prompt": "Why can a data append fail in the cited builder even if the whole script would fit its total length limit?",
+      "options": [
+        "Every data element must have exactly eight bytes",
+        "Only the first element may contain nonzero bytes",
+        "Every data append requires a valid transaction signature",
+        "The individual element can exceed its own size limit"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "validate_data_push checks both total encoded script size and the separate maximum element length.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/script_builder.rs#L192",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0057",
+      "conceptId": "K700-0057",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Construction",
+      "prompt": "Which byte order does the cited builder use for multi-byte OpPushData2 and OpPushData4 length prefixes?",
+      "options": [
+        "Little-endian",
+        "Big-endian",
+        "Host-native order without conversion",
+        "Decimal text followed by a colon"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "The builder explicitly serializes u16 and u32 data lengths with to_le_bytes before appending the actual payload bytes.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/script_builder.rs#L264",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0058",
+      "conceptId": "K700-0058",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Construction",
+      "prompt": "What does drain do to the cited builder's accumulated script bytes?",
+      "options": [
+        "Returns a copy while retaining all accumulated bytes",
+        "Returns them and leaves an empty internal vector",
+        "Returns only the last appended opcode",
+        "Returns the script hash while retaining the script internally"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "drain takes ownership of the vector through mem::take. The source notes that the builder is not intended to retain its prior capacity for reuse afterward.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/script_builder.rs#L95",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0059",
+      "conceptId": "K700-0059",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Number Encoding",
+      "prompt": "How does the cited Kaspa script integer serializer represent a negative integer's sign?",
+      "options": [
+        "A UTF-8 minus sign before decimal digits",
+        "A fixed two's-complement eight-byte word",
+        "A sign bit in the final magnitude byte",
+        "A separate leading byte that is always 0xff"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "serialize_i64 emits magnitude bytes and sets the high bit of the last byte for negatives. This is signed-magnitude script encoding.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/data_stack.rs#L128",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0060",
+      "conceptId": "K700-0060",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Number Encoding",
+      "prompt": "Why can the cited script integer serializer append a zero byte to a positive magnitude?",
+      "options": [
+        "To force every integer to use exactly eight bytes",
+        "To distinguish a transaction input from an output",
+        "To store the address network prefix beside the number",
+        "To keep its high magnitude bit from being interpreted as a negative sign"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "When the highest magnitude byte has its high bit set, the serializer adds a sign-protection byte. The added byte is part of the integer encoding.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/data_stack.rs#L134",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0061",
+      "conceptId": "K700-0061",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Number Encoding",
+      "prompt": "What integer does the cited deserialize_i64 helper return for an empty byte vector?",
+      "options": [
+        "Zero",
+        "Negative one",
+        "The maximum signed 64-bit value",
+        "An unconditional missing-number error"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The empty-vector branch decodes to zero. This is a script-number representation, separate from missing transaction fields.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/data_stack.rs#L170",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0062",
+      "conceptId": "K700-0062",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Number Encoding",
+      "prompt": "What does the cited deserialize_i64 implementation say about nonminimal integer encodings that remain within eight bytes?",
+      "options": [
+        "Every redundant zero byte always causes failure",
+        "Minimal encoding is not required by this helper",
+        "Any numeric encoding up to 32 bytes is accepted",
+        "Only exactly eight-byte numeric encodings are accepted"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "The helper enforces an eight-byte width bound but explicitly permits nonminimal numeric encodings. Other execution requirements remain separate.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/data_stack.rs#L167",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0063",
+      "conceptId": "K700-0063",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Script Number Encoding",
+      "prompt": "How does the cited Boolean stack decoder treat the single byte 0x80, the negative-zero representation?",
+      "options": [
+        "As true because every nonempty vector is true",
+        "As true because its sign bit is set",
+        "As false",
+        "As a mandatory numeric-overflow error"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The Boolean decoder masks the sign bit in the final byte and checks the remaining magnitude bytes. Negative zero therefore remains false.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/data_stack.rs#L235",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0064",
+      "conceptId": "K700-0064",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Address Encoding",
+      "prompt": "Why is replacing kaspa: with kaspatest: in an already encoded address not a valid way to convert its network?",
+      "options": [
+        "The prefix changes the recipient's public key bytes by itself",
+        "Replacing the prefix automatically recalculates the suffix",
+        "The network is determined only by payload length",
+        "The checksum also commits to the network prefix"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The encoder and decoder incorporate the prefix into checksum calculation. A network change requires a correctly encoded address, not a text-only substitution.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/addresses/src/bech32.rs#L105",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0065",
+      "conceptId": "K700-0065",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Address Encoding",
+      "prompt": "How does the cited Kaspa address encoder turn payload bytes into alphabet indexes?",
+      "options": [
+        "Converts eight-bit bytes into five-bit groups",
+        "Converts every byte to two hexadecimal characters",
+        "Treats the entire payload as decimal digits",
+        "Uses each eight-bit byte directly as an alphabet index"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "Each five-bit value selects one character from the address alphabet. Any final partial group is padded on the right during conversion.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/addresses/src/bech32.rs#L51",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0066",
+      "conceptId": "K700-0066",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Address Encoding",
+      "prompt": "How many encoded characters does the cited decoder separate as the checksum suffix?",
+      "options": [
+        "Four",
+        "Eight",
+        "Sixteen",
+        "Thirty-two"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "decode_payload subtracts eight characters before separating payload groups from checksum groups. This is an encoding detail of the cited implementation.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/addresses/src/bech32.rs#L131",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0067",
+      "conceptId": "K700-0067",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Address Encoding",
+      "prompt": "An address payload contains a character outside the cited decoder's alphabet. What happens?",
+      "options": [
+        "The character is silently deleted",
+        "The character is replaced with the nearest alphabet entry",
+        "Decoding returns a character error",
+        "Checksum validation is skipped for that address"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "The reverse-alphabet scan records DecodingError rather than guessing a replacement, preserving strict parsing of the supplied address.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/addresses/src/bech32.rs#L123",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0068",
+      "conceptId": "K700-0068",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Address Encoding",
+      "prompt": "After checksum validation and five-to-eight-bit conversion, how does the cited decoder separate address type from data?",
+      "options": [
+        "Reads the last decoded byte as the version",
+        "Uses the checksum as the version and keeps all decoded bytes as payload",
+        "Uses the address's character count as its version",
+        "Reads the first decoded byte as the version and the remainder as payload"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "The decoded version and payload then go through type and payload-length validation in try_new. A good checksum is only one part of parsing.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/addresses/src/bech32.rs#L144",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0069",
+      "conceptId": "K700-0069",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Merkle Construction",
+      "prompt": "In the cited Kaspa Merkle helper, what is the root of a tree containing exactly one pre-hashed leaf?",
+      "options": [
+        "That leaf hash itself",
+        "The leaf hashed with itself once",
+        "The leaf hashed with ZERO_HASH once",
+        "ZERO_HASH regardless of the leaf"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The implementation uses the standard single-leaf convention. Its comment warns callers to separate valid leaf and internal-node hashing domains.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/merkle/src/lib.rs#L34",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0070",
+      "conceptId": "K700-0070",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Merkle Construction",
+      "prompt": "What root does the cited Kaspa Merkle helper return for an empty leaf sequence?",
+      "options": [
+        "The branch hash of two zero hashes",
+        "ZERO_HASH",
+        "The last root computed by this helper",
+        "A randomly generated empty-tree identifier"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The empty-input branch returns the fixed zero hash. It does not invent a leaf or reuse a root from another tree.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/merkle/src/lib.rs#L56",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0071",
+      "conceptId": "K700-0071",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Merkle Construction",
+      "prompt": "For three leaves, how does the cited Kaspa Merkle helper supply the missing sibling beside the third leaf?",
+      "options": [
+        "Duplicates the third leaf",
+        "Drops the third leaf completely",
+        "Uses ZERO_HASH as that sibling",
+        "Pairs the third leaf with the first leaf again"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The third leaf is paired with a zero hash before its branch is combined with the branch from the first two leaves.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/merkle/src/lib.rs#L48",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0072",
+      "conceptId": "K700-0072",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Merkle Construction",
+      "prompt": "Why must an integration preserve leaf order when reproducing the cited Kaspa Merkle root?",
+      "options": [
+        "The helper sorts every leaf before hashing",
+        "Only the number of leaves affects the root",
+        "Each internal hash is independent of left-right order",
+        "Swapping leaves can change the resulting root"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The branch function hashes left then right. The source includes a test showing that reversing two distinct leaves changes the root.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/merkle/src/lib.rs#L157",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0073",
+      "conceptId": "K700-0073",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Merkle Construction",
+      "prompt": "What memory advantage does the cited StreamingMerkleBuilder have over retaining an entire tree?",
+      "options": [
+        "It uses logarithmic stack space without heap allocation",
+        "It retains all leaves and all internal nodes on the heap",
+        "It avoids computing any internal branch hashes",
+        "It stores an independent full tree for each arriving leaf"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The builder processes leaves incrementally with a bounded stack of partial subtrees instead of allocating a complete tree vector.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/merkle/src/streaming.rs#L6",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0074",
+      "conceptId": "K700-0074",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Merkle Construction",
+      "prompt": "What must a caller pass to the cited StreamingMerkleBuilder add_leaf method?",
+      "options": [
+        "An unparsed transaction JSON string",
+        "An already computed leaf hash",
+        "An arbitrary-length raw transaction byte vector",
+        "The unhashed script public key of the first output"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "add_leaf accepts Hash directly. A caller remains responsible for selecting the correct leaf-hashing procedure for the commitment being reproduced.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/merkle/src/streaming.rs#L39",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0075",
+      "conceptId": "K700-0075",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Merkle Construction",
+      "prompt": "When adding a leaf, when does the cited streaming Merkle builder merge its current subtree with the top stacked subtree?",
+      "options": [
+        "Whenever their hash strings share a prefix",
+        "Only when their hashes are identical",
+        "When their levels match",
+        "Only after the caller invokes finalize"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "Equal-height subtrees merge left-to-right into the next level, repeating like a carry until a different level or empty stack is reached.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/merkle/src/streaming.rs#L46",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K700-0076",
+      "conceptId": "K700-0076",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Merkle Construction",
+      "prompt": "Under matching leaf order and branch hasher, how should the cited streaming builder's root compare with the batch Merkle helper's root?",
+      "options": [
+        "The streaming root is always the bitwise inverse",
+        "Only their first byte should match",
+        "They intentionally use unrelated commitments",
+        "They should be the same"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The module promises matching roots and tests multiple tree sizes. Streaming changes how the computation is performed, not the intended commitment.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/merkle/src/streaming.rs#L3",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-17",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "integration-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    }
+  ]
+}

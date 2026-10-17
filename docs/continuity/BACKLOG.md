@@ -9,7 +9,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CONT-001 | P0 | done | Publish the continuation system | Maintainer; release reviewed by founder |
 | CONT-002 | P0 | planned | Make and verify an independent source backup | Founder or appointed repository custodian |
 | ARCH-001 | P1 | blocked | Ingest founding originals and reconcile chronology | Founder supplies originals; archivist unassigned |
-| BANK-001 | P0 | active | Grow Kaspa from 600 toward 1,000 reviewed concepts | Content maintainer; independent editor unassigned |
+| BANK-001 | P0 | active | Grow Kaspa toward 1,000 reviewed concepts | Content maintainer; independent editor unassigned |
 | BANK-002 | P1 | planned | Reach 1,000 reviewed Video games concepts | Content editor unassigned |
 | BANK-003 | P1 | planned | Reach 1,000 reviewed Science fiction concepts | Content editor unassigned |
 | BANK-004 | P1 | planned | Reach 1,000 reviewed Technology concepts | Content editor unassigned |
@@ -95,11 +95,11 @@ Acceptance:
 
 Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity/ARCHIVE-GUIDE.md), [docs/continuity/assets.json](../../docs/continuity/assets.json).
 
-## BANK-001: Grow Kaspa from 600 toward 1,000 reviewed concepts
+## BANK-001: Grow Kaspa toward 1,000 reviewed concepts
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: #148 merged/deployed 624 reviewed Kaspa / 8,229 active / 722 recorded reviews. Continue 376 distinct source-reviewed Kaspa concepts toward 1,000; independent editor remains unassigned. Preserve prior keys and all bank/economy holds.
+Next action: Verify and release the 700-concept candidate (76 new integration/encoding objectives); then continue 300 distinct concepts toward 1,000. Independent editor remains unassigned. Preserve issued keys and bank/economy holds.
 
 Acceptance:
 
@@ -107,7 +107,7 @@ Acceptance:
 - No padded variants; existing issued answers remain compatible.
 - Tier capacity and bank/catalog/readiness checks pass.
 
-Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/QUESTION-MAINTENANCE.md](../../docs/QUESTION-MAINTENANCE.md), [docs/kaspa-520-review-2026-10-15.json](../../docs/kaspa-520-review-2026-10-15.json), [docs/kaspa-540-review-2026-10-15.json](../../docs/kaspa-540-review-2026-10-15.json), [docs/kaspa-580-review-2026-10-15.json](../../docs/kaspa-580-review-2026-10-15.json), [docs/kaspa-600-review-2026-10-16.json](../../docs/kaspa-600-review-2026-10-16.json), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md), [docs/KASPA-SCRIPT-REVIEW-2026-10-17.md](../../docs/KASPA-SCRIPT-REVIEW-2026-10-17.md).
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/QUESTION-MAINTENANCE.md](../../docs/QUESTION-MAINTENANCE.md), [docs/kaspa-520-review-2026-10-15.json](../../docs/kaspa-520-review-2026-10-15.json), [docs/kaspa-540-review-2026-10-15.json](../../docs/kaspa-540-review-2026-10-15.json), [docs/kaspa-580-review-2026-10-15.json](../../docs/kaspa-580-review-2026-10-15.json), [docs/kaspa-600-review-2026-10-16.json](../../docs/kaspa-600-review-2026-10-16.json), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md), [docs/KASPA-SCRIPT-REVIEW-2026-10-17.md](../../docs/KASPA-SCRIPT-REVIEW-2026-10-17.md), [docs/KASPA-700-REVIEW-2026-10-17.md](../../docs/KASPA-700-REVIEW-2026-10-17.md), [docs/kaspa-700-review-2026-10-17.json](../../docs/kaspa-700-review-2026-10-17.json).
 
 ## BANK-002: Reach 1,000 reviewed Video games concepts
 

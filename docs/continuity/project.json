@@ -18,11 +18,11 @@
     "evidence": "PR #148 merged October 17 at 11:07:47 UTC as 67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f. Exact checked head 0d3125792fbe1e46f4e99fcb3eda0cd0b832e53f/tree 3834af65cf3bd89d157fd64af08103e32225cd60 passed GitHub Security verification 39026911425 and Vercel. No submitted reviews or inline threads were present. Preview dpl_Gz7chXA2daWVY2yCnLiiiyTAKbkr READY: seven authenticated public delivery checks passed; browser returned authored lesson evidence/primary source and cleared question/answer/consent on topic change. Desktop screenshot inspected; width 1348 <= viewport 1363. Initial raw preview HTTP hit deployment protection; owner-route protected fetch did not expose app headers and is not owner acceptance. Production dpl_dmdhSBWZHDQjJGGJ7pCTX4swPa1f READY on the exact merge with both canonical domains assigned. Ten canonical delivery checks passed: Study page, exact three clients/styles and count-only catalog, inactive-AI/no-store status, 11-topic/537-concept Study catalog, two private/no-store 401 routes and 624 Kaspa/722-review held-bank status. The first bank probe used the wrong nested path; one corrected read passed without an application change. Canonical browser renders the new collapsed/open lesson-help entry with AI opt-in hidden and no horizontal overflow; no canonical question, game, reward, owner-login or wallet action submitted. Production deployment-scoped error/fatal log count query for the recent ten-minute window returned no groups; this early empty window is not a long-term observability guarantee. Full final verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Production dependency audit reports zero vulnerabilities; 37-component SBOM refreshed. Actual phone/Silk, live model quality/budget, first TN10 transfer, provider restore and independent review remain unverified."
   },
   "questionCheckpoint": {
-    "active": 8229,
-    "reviewed": 722,
-    "remaining": 7278,
-    "kaspaActive": 624,
-    "kaspaReviewed": 624,
+    "active": 8305,
+    "reviewed": 798,
+    "remaining": 7202,
+    "kaspaActive": 700,
+    "kaspaReviewed": 700,
     "studyConcepts": 537,
     "questChapters": 4
   },
@@ -35,12 +35,12 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "ACE-001",
-    "status": "needs-evidence",
-    "description": "#148 merged/deployed: A.C.E. authored lesson help, optional bounded Gateway integration and private read-only readiness; integrated saved-player regression, selected GEEKT instructions, local performance/recovery baseline and 624 reviewed Kaspa. Paid AI remains inactive pending model/budget/data-policy/live evaluation; actual phone/Silk/wallet/provider acceptance remains separate."
+    "id": "BANK-001",
+    "status": "active",
+    "description": "700-concept candidate internally verified: 76 source-pinned integration/encoding additions, 8,305 active and 798 recorded reviews. Full suite passed 568 tests with required Redis and all checks; exact CI/preview/merge/production remain pending. Existing question files and introductory Study are unchanged."
   },
-  "nextTask": "AUTH-003",
-  "nextAction": "Gather actual phone/Silk approval, returning login and revocation acceptance. Complete the first eligible Daily/manual TN10 receipt/transfer and same-hash balance reconciliation. Select an A.C.E. model, bounded budget and data policy, then record a live opt-in evaluation. Continue 624 reviewed Kaspa toward 1,000; production saturation/provider restore and independent backup remain open.",
+  "nextTask": "BANK-001",
+  "nextAction": "Verify and release the 700-concept candidate, then continue 300 distinct source-reviewed Kaspa concepts toward 1,000. Gather actual phone/Silk return/revocation, first manual TN10 transfer, bounded A.C.E. live model evaluation and provider recovery evidence separately.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

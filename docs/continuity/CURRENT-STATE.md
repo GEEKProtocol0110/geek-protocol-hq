@@ -10,11 +10,11 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,229 active questions; 722 recorded internal source reviews; 7,278 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,305 active questions; 798 recorded internal source reviews; 7,202 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
-| Kaspa | 624 | 624 | 376 |
+| Kaspa | 700 | 700 | 300 |
 | Video games | 602 | 0 | 1000 |
 | Science fiction | 515 | 37 | 963 |
 | Technology | 1497 | 15 | 985 |
@@ -25,9 +25,9 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**ACE-001: needs-evidence.** #148 merged/deployed: A.C.E. authored lesson help, optional bounded Gateway integration and private read-only readiness; integrated saved-player regression, selected GEEKT instructions, local performance/recovery baseline and 624 reviewed Kaspa. Paid AI remains inactive pending model/budget/data-policy/live evaluation; actual phone/Silk/wallet/provider acceptance remains separate.
+**BANK-001: active.** 700-concept candidate internally verified: 76 source-pinned integration/encoding additions, 8,305 active and 798 recorded reviews. Full suite passed 568 tests with required Redis and all checks; exact CI/preview/merge/production remain pending. Existing question files and introductory Study are unchanged.
 
-Next task: **AUTH-003**. Gather actual phone/Silk approval, returning login and revocation acceptance. Complete the first eligible Daily/manual TN10 receipt/transfer and same-hash balance reconciliation. Select an A.C.E. model, bounded budget and data policy, then record a live opt-in evaluation. Continue 624 reviewed Kaspa toward 1,000; production saturation/provider restore and independent backup remain open.
+Next task: **BANK-001**. Verify and release the 700-concept candidate, then continue 300 distinct source-reviewed Kaspa concepts toward 1,000. Gather actual phone/Silk return/revocation, first manual TN10 transfer, bounded A.C.E. live model evaluation and provider recovery evidence separately.
 
 ## Holds
 
