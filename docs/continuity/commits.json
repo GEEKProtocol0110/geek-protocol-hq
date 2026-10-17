@@ -2001,6 +2001,31 @@
         "6042fe2c203af34236f0132d21a876d083713abe"
       ],
       "title": "Merge pull request #141 from GEEKProtocol0110/codex/site-metadata-device-readiness"
+    },
+    {
+      "commit": "a4592772da94f34adc3eea88bb8acea0b1c8295b",
+      "authoredAt": "2026-10-17T01:20:27-04:00",
+      "parents": [
+        "8c0bdf165085add9fafbb2ead3dd4441af40539c"
+      ],
+      "title": "Add fresh-passkey trusted-device approval with revocation"
+    },
+    {
+      "commit": "8421c5a296b610983d2d280871b0f9af4be1e4c6",
+      "authoredAt": "2026-10-17T01:22:45-04:00",
+      "parents": [
+        "a4592772da94f34adc3eea88bb8acea0b1c8295b"
+      ],
+      "title": "Explain unavailable device access when session initialization fails"
+    },
+    {
+      "commit": "2f552d1046309e35c52c8b6f99ff6dc14cf72a0b",
+      "authoredAt": "2026-10-17T01:24:03-04:00",
+      "parents": [
+        "8c0bdf165085add9fafbb2ead3dd4441af40539c",
+        "8421c5a296b610983d2d280871b0f9af4be1e4c6"
+      ],
+      "title": "Merge pull request #142 from GEEKProtocol0110/codex/trusted-device-access"
     }
   ]
 }

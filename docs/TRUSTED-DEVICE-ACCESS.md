@@ -1,6 +1,6 @@
 # Trusted-device account access
 
-AUTH-003 — implemented candidate, October 17, 2026. Actual Fire/Silk acceptance and independent security review remain pending.
+AUTH-003 — Alpha implementation released in PR #142, October 17, 2026. Actual Fire/Silk acceptance and independent security review remain pending.
 
 ## What this does
 
@@ -36,3 +36,5 @@ Checks cover real P-256 WebAuthn proofs and real Redis Lua behavior; client test
 A trusted-device flow still relies on the user verifying the nearby device and refusing remote approval requests. The check is not a distance/proximity proof. Database compromise, a compromised browser/OS, stolen active cookies and social engineering are outside the cryptographic protection provided here. This is a custom same-site session delegation flow, not an implementation or certification of OAuth Device Authorization Grant. Its code entropy, expiry, confirmation and phishing boundaries were reviewed against the primary [RFC 8628 security considerations](https://www.rfc-editor.org/rfc/rfc8628.html#section-5).
 
 Source tests do not establish installed Fire OS/Silk behavior, a real two-device acceptance, a provider restore or independent review. Preserve the founder's separate October 16 successful phone-passkey report and October 17 failed Silk-enrollment report. Validate this alternate login with that actual tablet before calling the device issue resolved. Family roles and email recovery remain separate planned work; no model service, signer or wallet transfer is installed by this change.
+
+Release evidence: merge `2f552d1046309e35c52c8b6f99ff6dc14cf72a0b`, exact-head CI `39006045093`, Vercel `dpl_Bdf9twxEmAieVGuNUnJz1pGgJmSU` READY on both canonical domains. Full checks passed 516 tests with real Redis. An initial 21-request production monitor timed out under five-second limits; one unchanged-budget follow-up passed 21/21. Seven disposable guest request/cancel checks passed; no authenticator or approval was performed live. Follow-up client polish separates authenticator support from session readiness, enabling sign-out without WebAuthn and refreshing the current player after approval; its publication is recorded separately.

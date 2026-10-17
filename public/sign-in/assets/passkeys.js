@@ -4,8 +4,10 @@
   if (!panel) return;
   const note = panel.querySelector('[data-passkey-note]'), list = panel.querySelector('[data-passkey-list]');
   let busy = false, ready = false, grant = '';
+  const supported = Boolean(window.isSecureContext && window.PublicKeyCredential && navigator.credentials?.create && navigator.credentials?.get);
   const controls = () => [...panel.querySelectorAll('button')];
-  const setDisabled = () => controls().forEach(button => { button.disabled = busy || !ready; });
+  const setDisabled = () => controls().forEach(button => { button.disabled = busy || !ready
+    || (!supported && (button === panel.querySelector('[data-passkey-save]') || button === panel.querySelector('[data-passkey-login]'))); });
   const device = panel.querySelector('[data-passkey-device]');
   const deviceHelp = panel.querySelector('[data-passkey-device-help]');
   const checkDevice = async () => {
@@ -115,11 +117,15 @@
     try { await refresh(); } catch { note.textContent += ' Your player is signed in, but the passkey list could not refresh. Reload to check it.'; }
   }));
   panel.querySelector('[data-passkey-logout]').addEventListener('click', () => act(async () => { await request({ action: 'logout' }); grant = ''; location.reload(); }));
+  document.addEventListener('geek:device-signed-in', () => {
+    grant = '';
+    refresh().then(() => { note.textContent = 'Your approved player is active. You can sign out on this browser below.'; setDisabled(); })
+      .catch(() => { note.textContent = 'Your player was approved, but its status could not refresh. Reload to check your saved player.'; });
+  });
   document.addEventListener('geek:device-grant-used', () => { grant = ''; });
   document.addEventListener('geek:passkey-grant', event => { grant = event.detail.token; note.textContent = 'Wallet control verified. Select Create a passkey to continue.'; });
   panel.querySelector('[data-passkey-wallet-authorize]').addEventListener('click', () => document.dispatchEvent(new CustomEvent('geek:passkey-wallet-proof')));
   setDisabled();
-  const supported = Boolean(window.isSecureContext && window.PublicKeyCredential && navigator.credentials?.create && navigator.credentials?.get);
   if (!supported) {
     note.textContent = 'Passkeys are unavailable in this browser. Use an up-to-date browser on a device with passkey support, or keep learning as a guest here. Changing browsers alone may not add passkey support to an Amazon Fire tablet.';
     if (device) device.textContent = 'This browser cannot request a passkey. Your existing player data has not been cleared.';
@@ -131,7 +137,7 @@
       try {
         await fetchJson('/api/session', {});
         const data = await refresh();
-        ready = supported; setDisabled();
+        ready = true; setDisabled();
         document.dispatchEvent(new CustomEvent('geek:device-ready', { detail: {signedIn:data.signedIn,playerName:data.playerName} }));
         if (supported) note.textContent = data.signedIn ? 'Your passkey session is active.' : data.walletLinked
           ? 'This player is linked to a wallet. Adding a passkey requires fresh wallet proof. A new guest passkey cannot recover an older wallet-linked player.'

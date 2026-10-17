@@ -32,7 +32,9 @@ const mount = async ({ support=true, handle, prompt, walletLinked=false, platfor
   for(const method of ['create','get']) ui.context.navigator.credentials[method]=async options => {
     prompts.push({method,options});return prompt ? prompt(method,options) : credential(method==='create');
   };
-  ui.document.dispatchEvent=event => events.push(event);
+  const listeners=new Map();
+  ui.document.addEventListener=(type,fn)=>{const l=listeners.get(type)||[];listeners.set(type,[...l,fn]);};
+  ui.document.dispatchEvent=event => { events.push(event); for(const fn of listeners.get(event.type)||[])fn(event); };
   const panel=ui.node('[data-passkeys]');
   for(const selector of ['note','list','label','wallet-help','player','device','device-help']) panel.append(ui.node(`[data-passkey-${selector}]`));
   for(const selector of ['save','login','logout','wallet-authorize']) panel.append(ui.node(`[data-passkey-${selector}]`,'button'));
@@ -133,4 +135,19 @@ test('double taps cannot open overlapping prompts and linked players see the fre
   const first=ui.node('[data-passkey-login]').emit('click');await tick();
   await ui.node('[data-passkey-login]').emit('click');assert.equal(ui.prompts.length,1);
   pending.resolve(credential(false));await first;
+});
+
+
+test('an unsupported-passkey browser refreshes the approved player and can sign out without a local authenticator',async()=>{
+  let approved=false;
+  const ui=await mount({support:false,handle:(path,body)=>{
+    if(path==='/api/passkeys'&&!body) return json({playerName:approved?'Approved Geek':'Guest Geek',signedIn:approved,walletLinked:false,credentials:[]});
+    if(body?.action==='logout')return json({signedOut:true});
+  }});
+  approved=true;ui.document.dispatchEvent(new CustomEvent('geek:device-signed-in'));await tick();
+  assert.equal(ui.node('[data-passkey-player]').textContent,'Approved Geek');
+  assert.equal(ui.node('[data-passkey-logout]').hidden,false);assert.equal(ui.node('[data-passkey-logout]').disabled,false);
+  assert.equal(ui.node('[data-passkey-save]').disabled,true);assert.equal(ui.node('[data-passkey-login]').disabled,true);
+  ui.context.location.reload=()=>{};await ui.node('[data-passkey-logout]').emit('click');
+  assert.equal(ui.calls.at(-1).body.action,'logout');assert.equal(ui.prompts.length,0);
 });
