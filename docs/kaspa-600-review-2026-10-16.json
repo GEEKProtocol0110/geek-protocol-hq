@@ -1,0 +1,219 @@
+{
+  "reviewedAt": "2026-10-16",
+  "reviewKind": "internal-source-check",
+  "independentReview": false,
+  "difficultyCalibration": "provisional-editorial",
+  "sourceRepository": "kaspanet/rusty-kaspa",
+  "sourceSnapshot": "01b532e8b553523216471682649693af92f0fd16",
+  "questionCount": 20,
+  "sources": [
+    {
+      "path": "wallet/pskt/src/bundle.rs",
+      "commit": "01b532e8b553523216471682649693af92f0fd16",
+      "sha256": "2b504cb8c1e5bc96ffdef9cb480e954248a9c1f1f4d1c423933486c257c53112",
+      "gitBlobSha": "30c33150634f6d761ae648042634581a8197d4fc"
+    },
+    {
+      "path": "wallet/pskt/src/global.rs",
+      "commit": "01b532e8b553523216471682649693af92f0fd16",
+      "sha256": "91d7055ecb5b670ac3c598a5cbd67981359b9a222ebad0dc343e4118dcd8b35c",
+      "gitBlobSha": "f872868c64c7e6c346e322b9cde3f0c2a646ab0b"
+    },
+    {
+      "path": "wallet/pskt/src/input.rs",
+      "commit": "01b532e8b553523216471682649693af92f0fd16",
+      "sha256": "535c5206e9dc6d20d477cda206ef2fa98423ade372cf1418ddd425ee0e226d14",
+      "gitBlobSha": "fb828583d6728d55ed6a46071ffeb90c57bd5e47"
+    },
+    {
+      "path": "wallet/pskt/src/output.rs",
+      "commit": "01b532e8b553523216471682649693af92f0fd16",
+      "sha256": "754294dc5213ee086010e12fae2f1449ebca5420f13ee8a7d7463a5615c8d78b",
+      "gitBlobSha": "ca68f5360d4d810c81842a432b1f7b10fa0f920a"
+    },
+    {
+      "path": "wallet/pskt/src/pskt.rs",
+      "commit": "01b532e8b553523216471682649693af92f0fd16",
+      "sha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
+      "gitBlobSha": "8aeebb547ac98495ac7e1f15ea853fc67efe9ec4"
+    },
+    {
+      "path": "wallet/pskt/src/role.rs",
+      "commit": "01b532e8b553523216471682649693af92f0fd16",
+      "sha256": "d4dc11da64579911e9d7c15ddeaeb75133f2196682fce64e0b540a4ffbc58eb9",
+      "gitBlobSha": "2d6daa47df8d4e66a92fec714698e62180746eb0"
+    }
+  ],
+  "items": [
+    {
+      "id": "K600-0001",
+      "concept": "collaborative-incomplete-transaction",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L92",
+      "evidenceSymbol": "A Partially Signed Kaspa Transaction (PSKT)",
+      "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
+      "questionSha256": "c52899fae066e0e73b228350667a166471bf1f0feffe31b4e71094935cb91bad"
+    },
+    {
+      "id": "K600-0002",
+      "concept": "bundle-transport-container",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L104",
+      "evidenceSymbol": "is used to represent a collection of PSKTs",
+      "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
+      "questionSha256": "394f8b954abe8873cdf649aa84c2463d850ddc14b08a44729ae4c70964d8d1ac"
+    },
+    {
+      "id": "K600-0003",
+      "concept": "constructor-stage-input-output-assembly",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/role.rs#L7",
+      "evidenceSymbol": "Adds inputs and outputs to the PSKT.",
+      "sourceSha256": "d4dc11da64579911e9d7c15ddeaeb75133f2196682fce64e0b540a4ffbc58eb9",
+      "questionSha256": "70d8c113bb600691b1ce82b5b6a35bdd090e16a4eca04db061986a0eedfb6a4a"
+    },
+    {
+      "id": "K600-0004",
+      "concept": "updater-sequence-selection",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L289",
+      "evidenceSymbol": "pub fn set_sequence(mut self",
+      "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
+      "questionSha256": "6dbaeda4f2585ab22bd86629fc19bbac43184f31f80101f6d3fe529074816e74"
+    },
+    {
+      "id": "K600-0005",
+      "concept": "combine-records-versus-append-bundles",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/bundle.rs#L55",
+      "evidenceSymbol": "pub fn merge(&mut self, other: Bundle)",
+      "sourceSha256": "2b504cb8c1e5bc96ffdef9cb480e954248a9c1f1f4d1c423933486c257c53112",
+      "questionSha256": "2a62cc0b3c2b7cec95af5eb088f2287f9ba896e6dd6b581bc0bf929f5e67fd7a"
+    },
+    {
+      "id": "K600-0006",
+      "concept": "partial-signature-public-key-map",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L73",
+      "evidenceSymbol": "pub type PartialSigs =",
+      "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
+      "questionSha256": "984bf47a3b99ea08b1c5237354a8153c5838f32b8051bda3b44cb4328d392081"
+    },
+    {
+      "id": "K600-0007",
+      "concept": "format-versus-transaction-version",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/global.rs#L20",
+      "evidenceSymbol": "pub version: Version,",
+      "sourceSha256": "91d7055ecb5b670ac3c598a5cbd67981359b9a222ebad0dc343e4118dcd8b35c",
+      "questionSha256": "a983e12c8efe77150402bff281b68626708dd9d54e594fc4ea551c751872b0b0"
+    },
+    {
+      "id": "K600-0008",
+      "concept": "input-merge-outpoint-identity",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/input.rs#L85",
+      "evidenceSymbol": "if self.previous_outpoint.transaction_id != rhs.previous_outpoint.transaction_id",
+      "sourceSha256": "535c5206e9dc6d20d477cda206ef2fa98423ade372cf1418ddd425ee0e226d14",
+      "questionSha256": "f248c2bf85b91d2a362c10ae1df65747d1fb8422e9c2161fe3e40d41c3c226f5"
+    },
+    {
+      "id": "K600-0009",
+      "concept": "output-merge-payment-commitment",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/output.rs#L41",
+      "evidenceSymbol": "if self.script_public_key != rhs.script_public_key",
+      "sourceSha256": "754294dc5213ee086010e12fae2f1449ebca5420f13ee8a7d7463a5615c8d78b",
+      "questionSha256": "db6fb48fbfce89903c251e5b27b1f2be937ee52c06e775f504b30d49a1a928f1"
+    },
+    {
+      "id": "K600-0010",
+      "concept": "global-modification-flags-intersection",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/global.rs#L62",
+      "evidenceSymbol": "self.inputs_modifiable &= rhs.inputs_modifiable;",
+      "sourceSha256": "91d7055ecb5b670ac3c598a5cbd67981359b9a222ebad0dc343e4118dcd8b35c",
+      "questionSha256": "a3d6b4491c6c841ee6968014a14c99a61630353306450c6fc7581acff5acf188"
+    },
+    {
+      "id": "K600-0011",
+      "concept": "required-lock-time-maximum",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L172",
+      "evidenceSymbol": "fn determine_lock_time(&self)",
+      "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
+      "questionSha256": "97931490678969fdfb8a2e83ee8a298fb2d13ab4206ef419b014698810743bf8"
+    },
+    {
+      "id": "K600-0012",
+      "concept": "payload-format-version-gate",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L261",
+      "evidenceSymbol": "if payload.is_some() && self.inner_pskt.global.version < Version::One",
+      "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
+      "questionSha256": "f426fc22b193673943d97cbccb6b030515a079e4099c14325301b4d839f36387"
+    },
+    {
+      "id": "K600-0013",
+      "concept": "covenant-two-version-gate",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L248",
+      "evidenceSymbol": "pub fn output(mut self, output: Output)",
+      "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
+      "questionSha256": "2cb8fbf61635b123d2b0dcbed1e7c68587f4dfacd450fd980087c23db77c25a6"
+    },
+    {
+      "id": "K600-0014",
+      "concept": "finalizer-script-vector-cardinality",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L450",
+      "evidenceSymbol": "if sigs.len() != self.inputs.len()",
+      "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
+      "questionSha256": "db15c934cbf402ddce7c0ed83fb0b0a1caa5ad46d9f96fc3a159956455fb07a1"
+    },
+    {
+      "id": "K600-0015",
+      "concept": "finalizer-nonempty-script-requirement",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L455",
+      "evidenceSymbol": "return Err(FinalizeError::EmptySignature(idx));",
+      "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
+      "questionSha256": "251168ab799de90ace2260578c209eb09b3423411ce9dd540955a1ea04b37e56"
+    },
+    {
+      "id": "K600-0016",
+      "concept": "checked-extraction-script-validation",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L484",
+      "evidenceSymbol": "pub fn extract_tx(self, params: &Params)",
+      "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
+      "questionSha256": "37fe8a1f2ca667eb605ec286fc7d8200a8d7af39d6ee8a4eacd576a88fd06d54"
+    },
+    {
+      "id": "K600-0017",
+      "concept": "single-versus-bundle-serialization-prefix",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/bundle.rs#L67",
+      "evidenceSymbol": "Ok(format!(\"PSKB{}\"",
+      "sourceSha256": "2b504cb8c1e5bc96ffdef9cb480e954248a9c1f1f4d1c423933486c257c53112",
+      "questionSha256": "954dddfc603d4ea001d62f8ca0113d038fd20a75f9def5086e082f9cb1b32b88"
+    },
+    {
+      "id": "K600-0018",
+      "concept": "hex-serialization-confidentiality-boundary",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/bundle.rs#L67",
+      "evidenceSymbol": "hex::encode(serde_json::to_string(self)?)",
+      "sourceSha256": "2b504cb8c1e5bc96ffdef9cb480e954248a9c1f1f4d1c423933486c257c53112",
+      "questionSha256": "79e2cba254259d8603fabf9d254bf0d776d0100f86b09f871f8d43dc540ff6d5"
+    },
+    {
+      "id": "K600-0019",
+      "concept": "input-default-signature-hash-mode",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/input.rs#L69",
+      "evidenceSymbol": "sighash_type: SIG_HASH_ALL,",
+      "sourceSha256": "535c5206e9dc6d20d477cda206ef2fa98423ade372cf1418ddd425ee0e226d14",
+      "questionSha256": "636f713c6efe582ab732b1259e749449dea1ebfdb5828effa100e197e0c4f426"
+    },
+    {
+      "id": "K600-0020",
+      "concept": "extractor-transition-finalization-marker",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L440",
+      "evidenceSymbol": "pub fn extractor(self) -> Result<PSKT<Extractor>, TxNotFinalized>",
+      "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
+      "questionSha256": "239276668244bde465a06aead14942d738b37faae9c74a09ef10efb628063aff"
+    }
+  ],
+  "supplementalEvidence": {
+    "K600-0005": [
+      "wallet/pskt/src/pskt.rs#L374"
+    ],
+    "K600-0017": [
+      "wallet/pskt/src/pskt.rs#L176-L184"
+    ]
+  },
+  "overlapReview": "Compared all 580 active Kaspa prompts and neighboring explanations with this batch, including multisig threshold/watch-only facts, generic lock-time and SIGHASH behavior, transaction aggregation, and KasWare signPskt input selection. New objectives cover PSKT-specific coordination, metadata, merge behavior, format/version gates and finalization/extraction. Constructor, Updater and Combiner operations are distinct workflow responsibilities. Script-vector count, empty-vector rejection and checked extraction are separate stages, not assertions that a role marker validates a transaction. Automated similarity screening supplements this internal review; exhaustive semantic uniqueness and independent editorial approval are not established. Distractors were revised to distinguish plausible neighboring APIs, merge policies, version thresholds and validation stages rather than rely on unrelated coin, seed-phrase or price choices.",
+  "scope": "Pinned implementation snapshot only, not a universal wallet or hardware-device compatibility claim. The source contains TODOs, including v1 ComputeBudget support in unsigned_tx; a covenant-format gate does not establish end-to-end support. No signing, key custody, on-chain transfer, deployment, or independent security review is performed by this content change. Advanced transaction-coordination items remain outside the introductory Study filter."
+}

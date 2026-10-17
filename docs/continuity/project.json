@@ -18,11 +18,11 @@
     "evidence": "Exact head cb2650f3609b8d77ae1ca0b5164a571698e6f8af (tree 0b2499b3dc0fe03db7ef8fc3606099926999cbe2) passed GitHub verify run 38927170918 and Vercel; merge-source Vercel succeeded. Full local verification: 496 tests, zero failures/skips, required Redis 7.4.2 and 311 security assertions. Desktop preview/live computed root/body/hero overflow-x:clip, preview paint containment, loaded narrow rules with inset code, 100lvh background and no perspective. Desktop document width 1348 <= viewport 1363. Actual narrow rendering and physical-phone/browser-bar retest remain unverified; a local fixture URL was blocked and no workaround attempted. No new counted HTTP-monitor probes."
   },
   "questionCheckpoint": {
-    "active": 8185,
-    "reviewed": 678,
-    "remaining": 7322,
-    "kaspaActive": 580,
-    "kaspaReviewed": 580,
+    "active": 8205,
+    "reviewed": 698,
+    "remaining": 7302,
+    "kaspaActive": 600,
+    "kaspaReviewed": 600,
     "studyConcepts": 537,
     "questChapters": 4
   },
@@ -35,12 +35,12 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "OPS-001",
-    "status": "needs-evidence",
-    "description": "CONT-003 roadmap/PR reconciliation is prepared in #139: superseded #119 closed with work retained; #120 paused; beta and art direction clarified. Provider recovery/independent source preservation and authentication review evidence remain open."
+    "id": "BANK-001",
+    "status": "active",
+    "description": "PR #140 adds twenty PSKT coordination questions: 600 Kaspa concepts in this checkout; 580 in the merged product. Candidate head 4b330f4760c249e35fff2c9bf0297437ccac4849 has the exact locally verified tree be663c25fa58df1ee67ab25be54c05912296b034: 496 tests, zero failures/skips, real Redis, 311 security assertions and zero production dependency vulnerabilities. Exact-head GitHub Security verification run 38951540803 and candidate Vercel status passed. Review/merge, final follow-up-head checks and production deployment remain pending. Provider recovery and device acceptance still need owner/participant evidence."
   },
   "nextTask": "OPS-001",
-  "nextAction": "Resume independent source preservation and actual provider backup/isolated restore evidence. Current history is complete locally; a local bundle is not an independent copy. Device observations remain PILOT-001/AUTH-002/UX-005; continue BANK-001 while owner/device evidence is unavailable.",
+  "nextAction": "Review the BANK-001 candidate, then resume independent source preservation and actual provider backup/isolated restore evidence. Returning saved-player login, four-chapter Quest and two-person Royale remain actual-device acceptance tasks. Continue reviewed content when owner/device evidence is unavailable.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

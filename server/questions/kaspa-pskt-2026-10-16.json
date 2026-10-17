@@ -1,0 +1,590 @@
+{
+  "metadata": {
+    "title": "GEEK Protocol — Kaspa PSKT transaction coordination",
+    "version": "1.0.0",
+    "maintainedAt": "2026-10-16",
+    "questionCount": 20,
+    "conceptCount": 20,
+    "category": "Kaspa",
+    "difficultyDistribution": {
+      "easy": 4,
+      "medium": 10,
+      "hard": 6
+    },
+    "correctIndexDistribution": {
+      "0": 5,
+      "1": 5,
+      "2": 5,
+      "3": 5
+    },
+    "schema": "correctIndex is zero-based; options contains four distinct strings",
+    "sourceSnapshot": "01b532e8b553523216471682649693af92f0fd16",
+    "reviewNotice": "Pinned implementation snapshot only, not a universal wallet or hardware-device compatibility claim. The source contains TODOs, including v1 ComputeBudget support in unsigned_tx; a covenant-format gate does not establish end-to-end support. No signing, key custody, on-chain transfer, deployment, or independent security review is performed by this content change. Advanced transaction-coordination items remain outside the introductory Study filter. Difficulty remains provisional; review is internal.",
+    "attribution": "GEEK Protocol original questions based on pinned Rusty Kaspa source; source prose and code not imported.",
+    "licenses": [
+      "MIT"
+    ]
+  },
+  "questions": [
+    {
+      "id": "K600-0001",
+      "conceptId": "K600-0001",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "What workflow is a Partially Signed Kaspa Transaction (PSKT) designed to support?",
+      "options": [
+        "Participants exchanging incomplete transaction data and adding signatures in stages",
+        "Asking miners to store the private keys needed for later signatures",
+        "Replacing all transaction inputs with public addresses alone",
+        "Treating an unsigned payment request as an accepted on-chain payment"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "PSKT carries the information needed for coordinated transaction preparation and signing. The format supports cooperation without requiring participants to reveal their private keys.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L92",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0002",
+      "conceptId": "K600-0002",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "Which transport primitive does the cited Kaspa PSKT crate recommend for exchanging a collection of partially signed transactions?",
+      "options": [
+        "One raw transaction with a signature slot for every future transaction",
+        "Bundle, which carries multiple PSKT records in one exchange payload",
+        "A block-template request carrying all unsigned payments",
+        "A node UTXO snapshot used as the final signed transaction"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "A wallet operation may require multiple transactions. The crate identifies Bundle as their serialization and transport container; one PSKT represents one transaction.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L104",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0003",
+      "conceptId": "K600-0003",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "Which role in the cited Kaspa PSKT workflow assembles the transaction by adding inputs and outputs?",
+      "options": [
+        "Extractor",
+        "Finalizer",
+        "Constructor",
+        "Signer"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The Constructor assembles inputs and outputs. The separate signing and extraction stages serve different responsibilities.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/role.rs#L7",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0004",
+      "conceptId": "K600-0004",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "In the cited PSKT Updater, what does set_sequence(n, input_index) update?",
+      "options": [
+        "The sequence values of every input at once",
+        "The transaction's global fallback lock time",
+        "The minimum required timestamp of the selected input",
+        "The sequence value of the selected transaction input"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "set_sequence selects an input and sets its sequence metadata. An invalid input index returns an out-of-bounds error.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L289",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0005",
+      "conceptId": "K600-0005",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "How does Bundle::merge differ from combining compatible partial records for one transaction in the cited PSKT crate?",
+      "options": [
+        "Bundle::merge appends transaction records; PSKT combination merges their corresponding metadata",
+        "It merges signatures into one shared PSKT and removes the separate transaction records",
+        "It validates and broadcasts each appended transaction",
+        "It sorts records by fee and retains only the highest-fee transaction"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The Bundle merge loop appends its incoming records. PSKT combination separately merges global, input and output information, subject to compatibility checks.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/bundle.rs#L55",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0006",
+      "conceptId": "K600-0006",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "How does the cited PSKT PartialSigs type associate a collected signature with its signer?",
+      "options": [
+        "It maps an input index to one completed unlocking script",
+        "It maps a public key to its signature",
+        "It maps an output index to the UTXO entry being spent",
+        "It maps signature bytes to a master-key fingerprint"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "PartialSigs is a map keyed by public key. A signature entry can use the ECDSA or Schnorr representation defined by the crate.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L73",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0007",
+      "conceptId": "K600-0007",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "Why does the cited PSKT Global structure contain both version and tx_version?",
+      "options": [
+        "version is the underlying transaction version; tx_version is the PSKT format version",
+        "One selects address encoding; the other selects a signature algorithm",
+        "One identifies the PSKT format version; the other identifies the transaction version being built",
+        "One selects the network; the other identifies the node RPC revision"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The exchange format and the underlying transaction have distinct version fields. Combining global records checks agreement on each separately.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/global.rs#L20",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0008",
+      "conceptId": "K600-0008",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "Two PSKT input records refer to different spent outpoints. How does the cited input combiner handle them?",
+      "options": [
+        "It merges them whenever the same public key signed both",
+        "It automatically turns the two records into separate transaction inputs",
+        "It retains whichever record has a newer UTXO DAA score",
+        "It rejects the mismatch instead of treating them as one input"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The input combiner checks both the previous transaction ID and the spent output index. A mismatch in either identifies different spent outputs.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/input.rs#L85",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0009",
+      "conceptId": "K600-0009",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "Two PSKT records have matching output amounts but different output locking scripts. What does the cited output combiner do?",
+      "options": [
+        "It rejects them with a script-public-key mismatch",
+        "It retains the left script whenever the amounts agree",
+        "It accepts either script when both records lack a redeem script",
+        "It selects the script belonging to the record with more signatures"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The output combiner requires matching amounts and locking scripts. Agreeing on the quantity alone does not establish agreement on where it can be spent.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/output.rs#L41",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0010",
+      "conceptId": "K600-0010",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "When the cited PSKT global combiner merges modification flags, what happens if one record disallows adding inputs?",
+      "options": [
+        "The combined flag is true if either input record permits modification",
+        "The combined inputs_modifiable flag is false",
+        "The combined flag always keeps the left record's value",
+        "The merge always fails when the two flags differ"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "The combiner uses logical AND for the modification flags. A false flag on either side therefore remains false in the combined metadata.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/global.rs#L62",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0011",
+      "conceptId": "K600-0011",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "A cited PSKT has input min_time values of 1,000 and 2,000, with fallback_lock_time of 500. Which lock time does determine_lock_time choose?",
+      "options": [
+        "500, because fallback always overrides the inputs",
+        "1,000, the smallest input requirement",
+        "2,000, the greatest input requirement",
+        "3,500, the sum of every supplied time"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The helper chooses the maximum input min_time. It uses the global fallback when no input specifies a required time, and zero if neither supplies one.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L172",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0012",
+      "conceptId": "K600-0012",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "What happens when payload(Some(...)) is called on PSKT format Version::Zero in the cited constructor?",
+      "options": [
+        "It silently drops the payload and returns a successful result",
+        "It accepts the payload whenever the underlying transaction has version 1",
+        "It automatically upgrades the PSKT format before storing the payload",
+        "It returns an error because a payload requires PSKT version 1 or higher"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The constructor enforces the PSKT format gate before assigning a nonempty optional payload. This is a format check, not a claim of network acceptance.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L261",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0013",
+      "conceptId": "K600-0013",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "Under the cited PSKT constructor, what version conditions are required when adding an output with a covenant binding?",
+      "options": [
+        "PSKT format version at least Two and transaction version at least TX_VERSION_TOCCATA",
+        "PSKT format version at least One and transaction version at least TX_VERSION_TOCCATA",
+        "PSKT format version at least Two, regardless of the transaction version",
+        "Any PSKT format version if its outputs carry enough KAS"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "The output constructor rejects covenant bindings if either version requirement is missing. This guard does not establish that every later signing path supports all transaction features.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L248",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0014",
+      "conceptId": "K600-0014",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "A cited PSKT has three inputs, but its finalization callback returns two script byte vectors. What happens?",
+      "options": [
+        "The missing third vector is filled with an empty placeholder",
+        "Finalization returns WrongFinalizedSigsCount",
+        "The third input is removed before finalization completes",
+        "The second returned vector is reused for the third input"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The finalizer requires one final script byte vector per input. This cardinality check is separate from later execution of the spending scripts.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L450",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0015",
+      "conceptId": "K600-0015",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "Even with the right number of input script vectors, which callback result does the cited PSKT finalizer reject?",
+      "options": [
+        "An input with no BIP32 derivation metadata",
+        "An input whose sequence field was initially omitted",
+        "An empty final script vector for an input",
+        "An input with no separately supplied redeem script"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The finalizer reports EmptySignature for an empty script vector. A nonempty vector passing this check still needs the applicable script-validation step.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L455",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0016",
+      "conceptId": "K600-0016",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "Which additional check does extract_tx perform beyond extract_tx_unchecked in the cited Kaspa PSKT code?",
+      "options": [
+        "It only calculates transaction mass, without running the scripts",
+        "It only checks that the exchange text starts with PSKB",
+        "It submits the transaction and waits for a node acceptance response",
+        "It executes the populated input spending scripts with the script engine"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "Checked extraction invokes the transaction script engine for populated inputs. This local check does not broadcast the transaction or prove that the network has accepted it.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L484",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0017",
+      "conceptId": "K600-0017",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "Which prefix mapping distinguishes single-record and bundle hexadecimal serialization in the cited PSKT crate?",
+      "options": [
+        "PSKT for a single record; PSKB for a bundle",
+        "PSKB for a single record; PSKT for a bundle",
+        "PSKT for both single records and bundles",
+        "PSKB for both single records and bundles"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "PSKT::to_hex uses the PSKT marker, while Bundle::serialize uses PSKB. Their parsers expect the corresponding marker before decoding the data.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/bundle.rs#L67",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0018",
+      "conceptId": "K600-0018",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "Does the cited PSKB hexadecimal serialization encrypt the transaction details it contains?",
+      "options": [
+        "Yes; the serializer encrypts JSON with the recipient public key",
+        "No; it hex-encodes serialized JSON rather than encrypting it",
+        "Only signature bytes are encrypted; transaction amounts remain plaintext",
+        "It encrypts unsigned records but exposes finalized records"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "Encoding changes representation, not confidentiality. The serializer applies hex encoding to JSON and adds a marker; it does not apply an encryption scheme.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/bundle.rs#L67",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0019",
+      "conceptId": "K600-0019",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "Which signature-hash type does Input::default select in the cited Kaspa PSKT implementation?",
+      "options": [
+        "SIG_HASH_NONE",
+        "SIG_HASH_SINGLE",
+        "SIG_HASH_ALL",
+        "ANYONECANPAY without a base mode"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The default input record explicitly sets SIG_HASH_ALL. An integration must inspect the actual per-input mode rather than infer a signature policy from the PSKT label.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/input.rs#L69",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K600-0020",
+      "conceptId": "K600-0020",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Transaction Coordination",
+      "prompt": "What causes the cited PSKT Finalizer::extractor transition to return TxNotFinalized?",
+      "options": [
+        "The per-input partial_sigs maps are empty",
+        "The output count is zero",
+        "The inputs_modifiable and outputs_modifiable flags are false",
+        "The global finalized transaction ID is absent"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The role transition checks whether global.id is present. Script validity is addressed separately by checked extraction, so this marker alone is not proof of acceptance.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L440",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-16",
+      "volatile": false,
+      "tags": [
+        "kaspa",
+        "developer",
+        "pskt",
+        "transaction-coordination"
+      ],
+      "license": "MIT",
+      "attribution": "GEEK Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    }
+  ]
+}

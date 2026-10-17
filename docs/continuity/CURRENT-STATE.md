@@ -10,11 +10,11 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,185 active questions; 678 recorded internal source reviews; 7,322 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,205 active questions; 698 recorded internal source reviews; 7,302 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
-| Kaspa | 580 | 580 | 420 |
+| Kaspa | 600 | 600 | 400 |
 | Video games | 602 | 0 | 1000 |
 | Science fiction | 515 | 37 | 963 |
 | Technology | 1497 | 15 | 985 |
@@ -25,9 +25,9 @@ Record date: 2026-10-16. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**OPS-001: needs-evidence.** CONT-003 roadmap/PR reconciliation is prepared in #139: superseded #119 closed with work retained; #120 paused; beta and art direction clarified. Provider recovery/independent source preservation and authentication review evidence remain open.
+**BANK-001: active.** PR #140 adds twenty PSKT coordination questions: 600 Kaspa concepts in this checkout; 580 in the merged product. Candidate head 4b330f4760c249e35fff2c9bf0297437ccac4849 has the exact locally verified tree be663c25fa58df1ee67ab25be54c05912296b034: 496 tests, zero failures/skips, real Redis, 311 security assertions and zero production dependency vulnerabilities. Exact-head GitHub Security verification run 38951540803 and candidate Vercel status passed. Review/merge, final follow-up-head checks and production deployment remain pending. Provider recovery and device acceptance still need owner/participant evidence.
 
-Next task: **OPS-001**. Resume independent source preservation and actual provider backup/isolated restore evidence. Current history is complete locally; a local bundle is not an independent copy. Device observations remain PILOT-001/AUTH-002/UX-005; continue BANK-001 while owner/device evidence is unavailable.
+Next task: **OPS-001**. Review the BANK-001 candidate, then resume independent source preservation and actual provider backup/isolated restore evidence. Returning saved-player login, four-chapter Quest and two-person Royale remain actual-device acceptance tasks. Continue reviewed content when owner/device evidence is unavailable.
 
 ## Holds
 
