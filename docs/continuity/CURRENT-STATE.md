@@ -6,7 +6,7 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Last verified product release
 
-[PR #144](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/144), commit `61305c23daf11dad97f939e1f6e4e778d1865433`. UX-006 login simplification merged in #144 October 17 at 07:06:55 UTC as 61305c23daf11dad97f939e1f6e4e778d1865433. Exact head 1204ddea1f1d3056fb7ae0bff56129c9583c5ee9/tree 855c2e44bdf4b698661584db976d55872229242d passed GitHub verification 39011943414 and Vercel. Production dpl_GEGMmAqCCVSqv7qY8UFNz6K4XGQW READY on the exact merge with both canonical domains assigned. Five targeted delivery checks passed under 15-second bounds: sign-in plus exact-byte comparison of all three clients and CSS. Live desktop shows Not signed in, enabled Sign in, guest access, and closed help/device/wallet options. Preview showed 52px login, 49px guest and no horizontal overflow. Full verification: 522 tests, zero failures/skips, required Redis 7.4.2 and 311 security assertions, all required checks. No live authenticator, actual phone/Silk, narrow rendering or independent-review acceptance claimed. Recorded tests: 522 passed, 0 failed, 0 skipped; 5 read-only probes passed. Later documentation candidates are separate from this baseline.
+[PR #145](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/145), commit `bb4c5859c1e9766b8a8321757c762e955adbdc42`. UX-005 background dependency fix merged in #145 October 17 at 08:07:36 UTC as bb4c5859c1e9766b8a8321757c762e955adbdc42. Exact head 41b165573c04b0dadfc177b8b07afac3cd268aee/tree 5124f71b112683421cb149f31bb14d51d1c4a4de passed GitHub verification 39015732075 and Vercel. Production dpl_8TLW6JpBmjoVAGkjByyN7MXxZyv2 READY on the exact merge with both canonical domains assigned. Six targeted delivery checks passed under 15-second bounds: Play, Memory, Royale and home declare atmosphere CSS; CSS and JS match local bytes exactly. Rendered preview of all four shells found one fixed background, header at y=0 and document width 1348 &lt;= viewport 1363. Live Play screenshot and computed styles confirm fixed, z-index -1, overflow hidden, paint containment and no pointer capture, with the header at y=0. Full candidate verification: 525 tests, zero failures/skips, required Redis 7.4.2 and 311 security assertions, all required checks. Actual narrow rendering, physical-phone/browser-bar acceptance and independent review remain unverified. Recorded tests: 525 passed, 0 failed, 0 skipped; 6 read-only probes passed. Later documentation candidates are separate from this baseline.
 
 ## Current checkout counts
 
@@ -25,9 +25,9 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**UX-005: in-progress.** Founder Play screenshot exposes decorative code in normal flow. Source shows Play loads site/atmosphere JavaScript but neither shared styles.css nor atmosphere.css. Add direct stylesheet coverage across all participating pages, fail closed on missing CSS and validate the dependency in CI. Full checks pass: 525 tests, zero failures/skips and all required checks. Rendered preview/release pending.
+**UX-005: needs-evidence.** Background stylesheet coverage and fail-closed insertion shipped in #145. All 29 participating pages declare atmosphere CSS; three behavior tests and site validation prevent recurrence. Preview/live desktop checks pass. Founder physical-phone/browser-bar acceptance remains outstanding.
 
-Next task: **UX-006**. Release the background stylesheet/guard correction and confirm the Play header on the actual phone. Keep login usability, actual Silk/phone authentication and independent-review acceptance separate.
+Next task: **UX-006**. Confirm the fixed Play header and stable background on the actual phone; retain the prior improvement and later regression separately. UX-006 login usability and actual Silk/phone authentication acceptance remain separate.
 
 ## Holds
 

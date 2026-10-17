@@ -37,7 +37,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-002 | P1 | done | Bring GIGA, A.C.E. and seasonal cosmic styling throughout HQ | Maintainer |
 | UX-003 | P1 | done | Reduce repeated character art and emphasize the neon-space background | Maintainer |
 | UX-004 | P1 | done | Clarify the Kaspa onboarding identity and add playful Grid discoveries | Maintainer |
-| UX-005 | P0 | in-progress | Contain mobile decoration and stabilize page edges | Maintainer |
+| UX-005 | P0 | needs-evidence | Contain mobile decoration and stabilize page edges | Maintainer |
 | CONT-003 | P0 | done | Reconcile roadmap, stale drafts and current acceptance evidence | Maintainer |
 | WALLET-001 | P1 | planned | Review and isolate the optional Testnet wallet lab retained from #119 | Wallet maintainer; independent wallet reviewer unassigned |
 | CHAIN-003 | P2 | in-progress | Review retained Testnet reward-desk amount and copy polish | Maintainer |
@@ -502,9 +502,9 @@ Evidence/specification: [docs/GRID-DISCOVERIES.md](../../docs/GRID-DISCOVERIES.m
 
 ## UX-005: Contain mobile decoration and stabilize page edges
 
-**P0 / in-progress.** Owner: Maintainer. Dependencies: none.
+**P0 / needs-evidence.** Owner: Maintainer. Dependencies: none.
 
-Next action: Fix October 17 Play screenshot showing decorative code as normal text above the header. Give all 29 atmosphere-enabled public pages a direct stylesheet, guard insertion on stylesheet readiness and validate coverage in site checks. Preserve prior Ok better observation and remaining physical-phone acceptance.
+Next action: #145 is merged and deployed with direct CSS coverage and fail-closed decoration. Confirm Play, navigation and browser-bar/zoom stability on the actual phone; do not replace the earlier regression report with desktop acceptance.
 
 Acceptance:
 

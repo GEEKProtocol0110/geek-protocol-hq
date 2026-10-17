@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "checkedAt": "2026-10-17",
-  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127. Observed #130/#131 merges added; #131 is the character/cosmic/holiday release. Observed #132/#133 merges added; #133 dials back repeated characters and emphasizes neon-space backgrounds. Observed #134/#135 merges added; #135 clarifies the Kaspa onboarding identity and adds optional cosmetic Grid discoveries. Observed #136/#137 merges added; #137 contains mobile decoration and stabilizes background edges. Physical-phone retest remains pending. Observed #138 documentation merge added during roadmap reconciliation; runtime baseline remains #137. Observed PR #139 roadmap and #140 PSKT content merges added October 17. Product baseline is now #140 with separately recorded production evidence; previous #137 baseline evidence is retained in its record.",
+  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127. Observed #130/#131 merges added; #131 is the character/cosmic/holiday release. Observed #132/#133 merges added; #133 dials back repeated characters and emphasizes neon-space backgrounds. Observed #134/#135 merges added; #135 clarifies the Kaspa onboarding identity and adds optional cosmetic Grid discoveries. Observed #136/#137 merges added; #137 contains mobile decoration and stabilizes background edges. Physical-phone retest remains pending. Observed #138 documentation merge added during roadmap reconciliation; runtime baseline remains #137. Observed PR #139 roadmap and #140 PSKT content merges added October 17. Product baseline is now #140 with separately recorded production evidence; previous #137 baseline evidence is retained in its record. Observed #145 background stylesheet/guard release added; current product baseline #145 has separate production evidence. Earlier baseline evidence remains preserved.",
   "records": [
     {
       "number": 1,
@@ -978,7 +978,26 @@
       "title": "Simplify login and hide optional setup until it is needed",
       "mergedAt": "2026-10-17T07:06:55Z",
       "commit": "61305c23daf11dad97f939e1f6e4e778d1865433",
-      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/144"
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/144",
+      "priorProductBaseline": {
+        "pullRequest": 144,
+        "commit": "61305c23daf11dad97f939e1f6e4e778d1865433",
+        "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/144",
+        "status": "merged-deployed",
+        "checkedOn": "2026-10-17",
+        "testsPassed": 522,
+        "testsFailed": 0,
+        "testsSkipped": 0,
+        "productionProbesPassed": 5,
+        "evidence": "UX-006 login simplification merged in #144 October 17 at 07:06:55 UTC as 61305c23daf11dad97f939e1f6e4e778d1865433. Exact head 1204ddea1f1d3056fb7ae0bff56129c9583c5ee9/tree 855c2e44bdf4b698661584db976d55872229242d passed GitHub verification 39011943414 and Vercel. Production dpl_GEGMmAqCCVSqv7qY8UFNz6K4XGQW READY on the exact merge with both canonical domains assigned. Five targeted delivery checks passed under 15-second bounds: sign-in plus exact-byte comparison of all three clients and CSS. Live desktop shows Not signed in, enabled Sign in, guest access, and closed help/device/wallet options. Preview showed 52px login, 49px guest and no horizontal overflow. Full verification: 522 tests, zero failures/skips, required Redis 7.4.2 and 311 security assertions, all required checks. No live authenticator, actual phone/Silk, narrow rendering or independent-review acceptance claimed."
+      }
+    },
+    {
+      "number": 145,
+      "title": "Fix raw background code above Play and enforce stylesheet coverage",
+      "mergedAt": "2026-10-17T08:07:36Z",
+      "commit": "bb4c5859c1e9766b8a8321757c762e955adbdc42",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/145"
     }
   ]
 }

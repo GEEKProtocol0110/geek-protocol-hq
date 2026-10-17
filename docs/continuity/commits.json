@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "capturedAt": "2026-10-17",
-  "through": "0a553b5b02bc4466f8302d89a5acad00b3f20b73",
-  "scope": "Preserved HQ Git commit metadata through PR #140 merge. Product baseline is #140, with production/CI evidence in the project record. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation.",
+  "through": "bb4c5859c1e9766b8a8321757c762e955adbdc42",
+  "scope": "Preserved HQ Git commit metadata through PR #140 merge. Product baseline is #140, with production/CI evidence in the project record. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation. Observed background release #145 and preceding login bookkeeping added October 17; product baseline #145 evidence is in project.json.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -2068,6 +2068,31 @@
         "1204ddea1f1d3056fb7ae0bff56129c9583c5ee9"
       ],
       "title": "Merge pull request #144 from GEEKProtocol0110/codex/simplify-sign-in"
+    },
+    {
+      "commit": "ca6d1d5d34ea3d4d75a62c2bdaed66140e1468de",
+      "authoredAt": "2026-10-17T03:08:24-04:00",
+      "parents": [
+        "61305c23daf11dad97f939e1f6e4e778d1865433"
+      ],
+      "title": "Record simplified login release and outstanding usability acceptance"
+    },
+    {
+      "commit": "41b165573c04b0dadfc177b8b07afac3cd268aee",
+      "authoredAt": "2026-10-17T04:00:20-04:00",
+      "parents": [
+        "ca6d1d5d34ea3d4d75a62c2bdaed66140e1468de"
+      ],
+      "title": "Load background styles on every participating page and guard decorative text"
+    },
+    {
+      "commit": "bb4c5859c1e9766b8a8321757c762e955adbdc42",
+      "authoredAt": "2026-10-17T04:07:36-04:00",
+      "parents": [
+        "ca6d1d5d34ea3d4d75a62c2bdaed66140e1468de",
+        "41b165573c04b0dadfc177b8b07afac3cd268aee"
+      ],
+      "title": "Merge pull request #145 from GEEKProtocol0110/codex/background-style-guard"
     }
   ]
 }
