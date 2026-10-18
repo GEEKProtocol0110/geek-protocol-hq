@@ -192,7 +192,7 @@ const execute = (command) => {
     }
     if (String(args[0]).includes('geek-ranked-commit-v1')) {
       const [runKey, profileKey, prestigeKey, eventKey, auditIndex, dailyKey, activeKey] = args.slice(2, 9);
-      const [runPrevious, profilePrevious, prestigePrevious, runNext, profileNext, ttl, changed, daily, record, sequence, eventId, active] = args.slice(9);
+      const [runPrevious, profilePrevious, prestigePrevious, runNext, profileNext, ttl, changed, daily, record, sequence, eventId, active] = args.slice(2 + Number(args[1]));
       if ((strings.get(runKey) || '') !== runPrevious || (strings.get(profileKey) || '') !== profilePrevious || (strings.get(prestigeKey) || '') !== prestigePrevious) return 0;
       if (daily && strings.has(dailyKey)) return -1;
       strings.set(runKey, runNext);

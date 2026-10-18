@@ -42,3 +42,7 @@ The package is never given a player private key or seed phrase. The browser wall
 - `npm sbom --sbom-format spdx` can generate a release SBOM from the locked graph for the independent reviewer.
 
 Any version change requires new artifact hashes, compatibility tests, dependency review, and independent-audit delta review.
+
+## Isolated automatic testnet signer — October 18
+
+The separate `workers/testnet` service pins `@kasplex/kiwi` 1.0.29 with its own lockfile and install/audit checks. Its npm archive SRI is `sha512-oZYZdVCnpcAsRn7fmp4j6pXwtJT5sDt3FXrQr8WFzgYi5BdOFPxLYAOfTpOdZZfe76xXuqaUNOAkGaUIBuE1zg==`. Source inspection uses [official SDK commit 06dc75e](https://github.com/kasplex/sdk-kiwi/tree/06dc75ea1066aba4d78eb32711690f6f123a9575), including KRC20 commit/reveal, inscription, fee and synthetic reveal-entry construction. The production artifact is locked by npm integrity, not claimed reproducible from Git. The newer signer WASM is isolated from HQ identity verification; HQ retains its unchanged verifier dependency. No private signer key enters HQ, browser code, tests, Git or logs. See [automatic testnet protocol](AUTOMATIC-GEEKT-REWARDS.md) for actual scope and acceptance limits.

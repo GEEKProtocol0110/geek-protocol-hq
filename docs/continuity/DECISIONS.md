@@ -233,3 +233,13 @@ Make the next release about demonstrating the existing learning and reward-recei
 Basis: Founder October 18 Detroit: continue building, wrap this up and turn it on; improvement never stops but proving must be the start. This prioritizes implementation and proof, without fabricating device/wallet/provider evidence or overturning the bank-first CCE and economic holds.
 
 Evidence: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUNCH.md), [docs/FREE-BETA-READINESS.md](../../docs/FREE-BETA-READINESS.md).
+
+## DR-024: Automate the testnet reward path after the first transfer proof
+
+**founder-direction** · 2026-10-18.
+
+Move from the proven manual receipt workflow to one-time owner test enrollment, automatic eligible Daily admission and a separately hosted scheduled TN10 signing/reconciliation service. Use a dedicated bounded testnet wallet, persistent replay locks and immutable signed transaction journals. This direction authorizes testnet automation; it does not open Mainnet, CCE or collectible settlement.
+
+Basis: Founder October 18: Lol Manual pilot. This all needs to be automatic. The manual transfer is the baseline proof, not the finished player experience.
+
+Evidence: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md), [docs/GEEKT-FIRST-PAYOUT-2026-10-18.md](../../docs/GEEKT-FIRST-PAYOUT-2026-10-18.md). Supersedes DR-023.

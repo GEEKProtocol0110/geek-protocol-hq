@@ -292,6 +292,19 @@
       ],
       "recordedAt": "2026-10-18",
       "supersedes": null
+    },
+    {
+      "id": "DR-024",
+      "status": "founder-direction",
+      "title": "Automate the testnet reward path after the first transfer proof",
+      "decision": "Move from the proven manual receipt workflow to one-time owner test enrollment, automatic eligible Daily admission and a separately hosted scheduled TN10 signing/reconciliation service. Use a dedicated bounded testnet wallet, persistent replay locks and immutable signed transaction journals. This direction authorizes testnet automation; it does not open Mainnet, CCE or collectible settlement.",
+      "basis": "Founder October 18: Lol Manual pilot. This all needs to be automatic. The manual transfer is the baseline proof, not the finished player experience.",
+      "evidence": [
+        "docs/AUTOMATIC-GEEKT-REWARDS.md",
+        "docs/GEEKT-FIRST-PAYOUT-2026-10-18.md"
+      ],
+      "recordedAt": "2026-10-18",
+      "supersedes": "DR-023"
     }
   ]
 }

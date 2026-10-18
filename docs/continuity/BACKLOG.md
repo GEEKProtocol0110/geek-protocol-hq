@@ -51,6 +51,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-007 | P1 | needs-evidence | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
 | GAME-001 | P1 | needs-evidence | Build a deep career challenge and mastery ladder | Maintainer; founder confirms phone/game usability |
 | LAUNCH-001 | P0 | needs-evidence | Prove the core loop and close the first release scope | Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned |
+| CHAIN-004 | P0 | in-progress | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
 
 ## CONT-001: Publish the continuation system
 
@@ -707,3 +708,19 @@ Acceptance:
 - Founder reviews actual pilot results before a Beta label; full campaign, two-person Royale and capacity claims retain their existing acceptance checklist.
 
 Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUNCH.md), [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md), [tests/testnet-client.test.js](../../tests/testnet-client.test.js), [tests/testnet-rewards.test.js](../../tests/testnet-rewards.test.js), [docs/GEEKT-FIRST-PAYOUT-2026-10-18.md](../../docs/GEEKT-FIRST-PAYOUT-2026-10-18.md).
+
+## CHAIN-004: Automate eligible Daily GEEKT test rewards
+
+**P0 / in-progress.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
+
+Next action: Release the checked automatic flow, provision the isolated scheduled signer, fund only its dedicated TN10 address and record one real automatic payout. Keep prior manual receipt locked.
+
+Acceptance:
+
+- Owner enrolls a player once; eligible completed Daily and reward job commit together without copying run IDs.
+- Dedicated TN10 signer persists exact signed commit/reveal before broadcast; concurrency, lost responses and restarts never create a second payment.
+- Same-hash acceptance appears automatically for the enrolled player; private records stay private.
+- Separate scheduled signer deployed, funded and one actual automatic transfer accepted; implementation/offline checks alone are insufficient.
+- Mainnet settlement, CCE and collectible ownership remain disabled.
+
+Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md), [server/testnet-automatic.js](../../server/testnet-automatic.js), [workers/testnet/process.mjs](../../workers/testnet/process.mjs), [workers/testnet/signer.mjs](../../workers/testnet/signer.mjs), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [tests/testnet-worker.test.js](../../tests/testnet-worker.test.js).

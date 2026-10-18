@@ -1,0 +1,9 @@
+{
+  "name": "geek-testnet-payout-worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": { "start": "node worker.mjs", "check": "node --test check-signing.mjs" },
+  "dependencies": { "@kasplex/kiwi": "1.0.29" }
+}

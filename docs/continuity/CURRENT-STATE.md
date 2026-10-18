@@ -25,9 +25,9 @@ Record date: 2026-10-18. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**LAUNCH-001: needs-evidence.** First real manual GEEKT pilot completed October 18: eligible Daily, queued receipt, externally approved exact 1-GEEKT TN10 transfer, observed recipient balance and owner-phone indexed-confirmed receipt. CHAIN-001 and CHAIN-003 are complete; saved-player return/Silk, recovery and other scoped beta acceptance remain.
+**CHAIN-004: in-progress.** Founder requests automatic rewards after the completed manual pilot. Automatic Daily outbox, private test enrollment, player status, isolated SDK signer and production-only Vercel cron are implemented as a release candidate. Real automatic payout remains unaccepted.
 
-Next task: **LAUNCH-001**. Retain the final indexed-confirmed receipt export privately. Continue saved-player return/Silk and provider-recovery evidence, then remaining scoped beta scenarios. Do not send again for the completed receipt or infer automatic/Mainnet/CCE activation.
+Next task: **CHAIN-004**. Release and provision the isolated scheduled signer, fund its dedicated TN10 address and exercise one eligible enrolled Daily through automatic indexed confirmation. Prior manual payout must not be sent again. Remaining saved-player/Silk and recovery gates remain LAUNCH-001.
 
 ## Holds
 

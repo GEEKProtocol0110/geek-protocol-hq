@@ -16,6 +16,7 @@ import challengesHandler from '../server/challenges.js';
 import assistedPracticeHandler from '../server/assisted-practice.js';
 import rewardedChallengesHandler from '../server/rewarded-challenges.js';
 import { careerChallengeState } from '../server/career-challenges.js';
+import { prepareAutomaticReward, automaticError } from '../server/testnet-automatic.js';
 
 const RUN_TTL = 60 * 60 * 2;
 const QUESTION_MS = 15_000;
@@ -113,7 +114,8 @@ const finishRun = async (run, session, profile) => {
   if (run.mode === 'gauntlet' && run.completedRound >= 10) profile.gauntletsCompleted += 1;
   run.status = 'finished';
   run.current = null;
-  await commitRankedState({ playerId: playerIdFor(session), run, previousRun: runSnapshots.get(run), profile, ttl: 300 });
+  const automaticReward = await prepareAutomaticReward(playerIdFor(session), run);
+  await commitRankedState({ playerId: playerIdFor(session), run, previousRun: runSnapshots.get(run), profile, ttl: 300, automaticReward });
   const leaderboard = await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode });
   return { leaderboard };
 };
@@ -339,6 +341,7 @@ export default async function handler(req, res) {
     }
     throw new Error('INVALID_REQUEST');
   } catch (error) {
+    if (error.message?.startsWith('TESTNET_')) return automaticError(res, error);
     return handleApiError(res, error);
   }
 }

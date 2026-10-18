@@ -1055,6 +1055,32 @@
       "acceptanceEvidence": [
         "October 18, 2026: founder supplied a real queued Daily receipt and phone screenshots through indexed-confirmed on deployed #152. Exact receipt/configuration/address checks passed; fresh TN10 token/deploy and transfer-by-hash reads matched network, asset, distinct sender/recipient, 100000000 raw units at eight decimals and post-receipt time. Transaction/operation accepted with no error and valid checkpoint/score; existing server observation validator accepted. Recipient observation changed from no GEEKT row to 1 GEEKT / zero locked. Private identifiers and individual learning result are omitted from the public record. See docs/GEEKT-FIRST-PAYOUT-2026-10-18.md. This accepts one manual pilot, not automated/Mainnet settlement, general login/recovery, capacity or independent audit."
       ]
+    },
+    {
+      "id": "CHAIN-004",
+      "priority": "P0",
+      "status": "in-progress",
+      "title": "Automate eligible Daily GEEKT test rewards",
+      "owner": "Maintainer; founder controls test funding and device acceptance",
+      "nextAction": "Release the checked automatic flow, provision the isolated scheduled signer, fund only its dedicated TN10 address and record one real automatic payout. Keep prior manual receipt locked.",
+      "acceptance": [
+        "Owner enrolls a player once; eligible completed Daily and reward job commit together without copying run IDs.",
+        "Dedicated TN10 signer persists exact signed commit/reveal before broadcast; concurrency, lost responses and restarts never create a second payment.",
+        "Same-hash acceptance appears automatically for the enrolled player; private records stay private.",
+        "Separate scheduled signer deployed, funded and one actual automatic transfer accepted; implementation/offline checks alone are insufficient.",
+        "Mainnet settlement, CCE and collectible ownership remain disabled."
+      ],
+      "dependsOn": [
+        "CHAIN-001"
+      ],
+      "evidence": [
+        "docs/AUTOMATIC-GEEKT-REWARDS.md",
+        "server/testnet-automatic.js",
+        "workers/testnet/process.mjs",
+        "workers/testnet/signer.mjs",
+        "tests/testnet-automatic.test.js",
+        "tests/testnet-worker.test.js"
+      ]
     }
   ]
 }
