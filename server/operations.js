@@ -90,7 +90,7 @@ export default async function operationsHandler(req, res) {
     const session = await operationsSession(req);
     if (!session) {
       if (files.get(requestedPath)?.[1].startsWith('text/html')) {
-        if (action !== 'status') { res.setHeader('Location', '/ops-login/'); return res.status(303).end(); }
+        if (action !== 'status') { res.setHeader('Location', files.get(requestedPath)[0] === 'testnet/index.html' ? '/ops-login/?next=testnet' : '/ops-login/'); return res.status(303).end(); }
       }
       return sendJson(res, 401, { ok: false, error: 'Sign in to open Operations.' });
     }

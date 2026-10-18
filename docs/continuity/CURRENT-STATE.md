@@ -25,9 +25,9 @@ Record date: 2026-10-18. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**LAUNCH-001: needs-evidence.** #151 merged/deployed the same-player native-expiry preflight/countdown and return-to-desk refresh. Standard production monitoring passed on GitHub after deployment; earlier local failures remain. Live HTTP Study completed and resumed 5/5 on #150. First actual owner-phone/GEEKT and provider acceptance remain.
+**LAUNCH-001: active.** Founder updated Kasware mobile and reports access to GEEK, TKAS and GEEKT, but cannot find the payout desk. Fix owner-home discovery and lost Testnet login destination before continuing the manual transfer. Wallet access is founder-reported; no transfer or mobile provider acceptance is inferred.
 
-Next task: **LAUNCH-001**. On the saved-player phone, open /ops/testnet/, enter the recipient, complete and save Kaspa Daily, return to review the live countdown and queue once; approve exactly one TN10 transfer in the wallet and reconcile its same hash and recipient balance. Separately verify saved-player return/Silk and provider recovery, then review the scoped release. Mainnet/CCE/ownership/paid-AI and full beta acceptance remain separate.
+Next task: **LAUNCH-001**. Release the GEEKT desk entry correction, then reopen /ops/testnet/ in the founder saved-player browser. Verify the desk before starting Daily and continue one receipt / one manual TN10 transfer / same-hash reconciliation.
 
 ## Holds
 

@@ -233,3 +233,13 @@ run('attention reads are rate limited and do not extend owner sessions', async (
   const record = JSON.parse(original); record.expiresAt = Date.now() - 1; await fixture.command('SET', key, JSON.stringify(record));
   assert.equal((await call({ cookie, action: 'attention' })).statusCode, 401);
 });
+
+run('a private Testnet desk entry preserves only its fixed destination through owner sign-in',async()=>{
+  for(const path of ['testnet','testnet/']){
+    const response=await call({path});assert.equal(response.statusCode,303);
+    assert.equal(response.headers.Location,'/ops-login/?next=testnet');
+    assert.match(response.headers['Cache-Control'],/private, no-store/);assert.equal(response.body,undefined);
+  }
+  const cookie=await login();const response=await call({path:'testnet',cookie});
+  assert.equal(response.statusCode,200);assert.match(String(response.body),/Testnet reward receipts/);
+});

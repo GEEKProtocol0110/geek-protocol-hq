@@ -3,6 +3,10 @@
   // Clear the retired review desk's stored credential without reading or reusing it.
   try { sessionStorage.removeItem('geek-cce-admin'); } catch { /* Storage may be unavailable. */ }
   const form = document.querySelector('[data-ops-login]'), message = document.querySelector('[data-login-message]');
+  const params = new URLSearchParams(window.location.search);
+  // A fixed destination token, never an arbitrary URL or path supplied by a caller.
+  const destination = params.getAll('next').length === 1 && params.get('next') === 'testnet' ? '/ops/testnet/' : '/ops/';
+  if (destination === '/ops/testnet/') document.querySelector('[data-login-destination]').textContent = 'Sign in to open GEEKT test payout on Testnet-10.';
   let pending = false;
   form.addEventListener('submit', async event => {
     event.preventDefault(); if (pending) return;
@@ -15,7 +19,7 @@
       const response = await fetch('/api/session/?service=operations&action=login', { method: 'POST', credentials: 'same-origin', cache: 'no-store', signal: controller.signal, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ key, code }) });
       const result = await response.json();
       if (!response.ok || result.ok !== true) throw new Error(response.status === 429 ? 'Too many attempts. Wait before trying again.' : response.status === 503 ? 'Operator access is unavailable. Try again later.' : 'Access was not accepted. Check your owner key and authenticator code. If a code was already used, wait for the next one.');
-      window.location.replace('/ops/');
+      window.location.replace(destination);
     } catch (error) {
       message.textContent = error.name === 'AbortError' ? 'Access check timed out. Try signing in again.' : error.message || 'Access is unavailable.';
       message.dataset.error = 'true';
