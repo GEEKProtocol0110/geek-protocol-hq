@@ -456,10 +456,10 @@
     {
       "id": "CHAIN-001",
       "priority": "P1",
-      "status": "needs-evidence",
+      "status": "done",
       "title": "Verify the TN10 test asset and wallet before a real pilot",
       "owner": "Maintainer; founder controls the external testnet wallet",
-      "nextAction": "Use the current selected-receipt whole-token/raw-unit fields and export for one eligible Daily receipt, owner-approved TN10 transfer, same-hash reconciliation and recipient balance evidence. Public indexer confirms GEEKT deployed/eight decimals October 17; no real transfer is established.",
+      "nextAction": "Retain the final indexed-confirmed JSON export privately. The one-transfer manual pilot is complete; any repeat or automatic-signing rollout is separate scoped work.",
       "acceptance": [
         "Exact TN10 token deployment, decimals, sender and amount verified against the fixed indexer.",
         "Wallet provider and TN10 signing workflow exercised with recorded transaction evidence.",
@@ -470,10 +470,15 @@
       "evidence": [
         "docs/TESTNET-REWARD-PILOT.md",
         "docs/TESTNET-ASSET-SETUP.md",
-        "docs/PLAYER-READINESS-2026-10-17.md"
+        "docs/PLAYER-READINESS-2026-10-17.md",
+        "docs/GEEKT-FIRST-PAYOUT-2026-10-18.md"
       ],
       "releaseEvidence": [
         "PR #148 merged October 17 at 11:07:47 UTC as 67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f. Exact checked head 0d3125792fbe1e46f4e99fcb3eda0cd0b832e53f/tree 3834af65cf3bd89d157fd64af08103e32225cd60 passed GitHub Security verification 39026911425 and Vercel. No submitted reviews or inline threads were present. Preview dpl_Gz7chXA2daWVY2yCnLiiiyTAKbkr READY: seven authenticated public delivery checks passed; browser returned authored lesson evidence/primary source and cleared question/answer/consent on topic change. Desktop screenshot inspected; width 1348 <= viewport 1363. Initial raw preview HTTP hit deployment protection; owner-route protected fetch did not expose app headers and is not owner acceptance. Production dpl_dmdhSBWZHDQjJGGJ7pCTX4swPa1f READY on the exact merge with both canonical domains assigned. Ten canonical delivery checks passed: Study page, exact three clients/styles and count-only catalog, inactive-AI/no-store status, 11-topic/537-concept Study catalog, two private/no-store 401 routes and 624 Kaspa/722-review held-bank status. The first bank probe used the wrong nested path; one corrected read passed without an application change. Canonical browser renders the new collapsed/open lesson-help entry with AI opt-in hidden and no horizontal overflow; no canonical question, game, reward, owner-login or wallet action submitted. Production deployment-scoped error/fatal log count query for the recent ten-minute window returned no groups; this early empty window is not a long-term observability guarantee. Full final verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Production dependency audit reports zero vulnerabilities; 37-component SBOM refreshed. Actual phone/Silk, live model quality/budget, first TN10 transfer, provider restore and independent review remain unverified."
+      ],
+      "completedAt": "2026-10-18",
+      "completionEvidence": [
+        "October 18, 2026: founder supplied a real queued Daily receipt and phone screenshots through indexed-confirmed on deployed #152. Exact receipt/configuration/address checks passed; fresh TN10 token/deploy and transfer-by-hash reads matched network, asset, distinct sender/recipient, 100000000 raw units at eight decimals and post-receipt time. Transaction/operation accepted with no error and valid checkpoint/score; existing server observation validator accepted. Recipient observation changed from no GEEKT row to 1 GEEKT / zero locked. Private identifiers and individual learning result are omitted from the public record. See docs/GEEKT-FIRST-PAYOUT-2026-10-18.md. This accepts one manual pilot, not automated/Mainnet settlement, general login/recovery, capacity or independent audit."
       ]
     },
     {
@@ -776,10 +781,10 @@
     {
       "id": "CHAIN-003",
       "priority": "P2",
-      "status": "needs-evidence",
+      "status": "done",
       "title": "Review retained Testnet reward-desk amount and copy polish",
       "owner": "Maintainer",
-      "nextAction": "#151 merged/deployed; complete the real saved-player phone preflight and one manually approved GEEKT transfer with same-hash confirmation/recipient balance. Record phone return/Silk and provider recovery separately. Do not reopen optional feature expansion or infer Beta/Mainnet activation.",
+      "nextAction": "Retain the final indexed-confirmed JSON export privately. The one-transfer manual pilot is complete; any repeat or automatic-signing rollout is separate scoped work.",
       "acceptance": [
         "Integer base units and validated decimals produce exact wallet amounts.",
         "Copy failures have usable manual selection and never send a transaction.",
@@ -790,11 +795,16 @@
         "docs/PR-RECONCILIATION.md",
         "docs/TESTNET-REWARD-PILOT.md",
         "docs/PLAYER-READINESS-2026-10-17.md",
-        "docs/FIRST-PROOF-LAUNCH.md"
+        "docs/FIRST-PROOF-LAUNCH.md",
+        "docs/GEEKT-FIRST-PAYOUT-2026-10-18.md"
       ],
       "releaseEvidence": [
         "PR #148 merged October 17 at 11:07:47 UTC as 67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f. Exact checked head 0d3125792fbe1e46f4e99fcb3eda0cd0b832e53f/tree 3834af65cf3bd89d157fd64af08103e32225cd60 passed GitHub Security verification 39026911425 and Vercel. No submitted reviews or inline threads were present. Preview dpl_Gz7chXA2daWVY2yCnLiiiyTAKbkr READY: seven authenticated public delivery checks passed; browser returned authored lesson evidence/primary source and cleared question/answer/consent on topic change. Desktop screenshot inspected; width 1348 <= viewport 1363. Initial raw preview HTTP hit deployment protection; owner-route protected fetch did not expose app headers and is not owner acceptance. Production dpl_dmdhSBWZHDQjJGGJ7pCTX4swPa1f READY on the exact merge with both canonical domains assigned. Ten canonical delivery checks passed: Study page, exact three clients/styles and count-only catalog, inactive-AI/no-store status, 11-topic/537-concept Study catalog, two private/no-store 401 routes and 624 Kaspa/722-review held-bank status. The first bank probe used the wrong nested path; one corrected read passed without an application change. Canonical browser renders the new collapsed/open lesson-help entry with AI opt-in hidden and no horizontal overflow; no canonical question, game, reward, owner-login or wallet action submitted. Production deployment-scoped error/fatal log count query for the recent ten-minute window returned no groups; this early empty window is not a long-term observability guarantee. Full final verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Production dependency audit reports zero vulnerabilities; 37-component SBOM refreshed. Actual phone/Silk, live model quality/budget, first TN10 transfer, provider restore and independent review remain unverified.",
         "PR #151 merged October 18 at 05:11:03 UTC as e8fb6a70c29ead26188bff0da24010e757eba4c3. Checked head 899ccd393e18bd76b218debd27a919231011a6ca/tree 384b6ad0023d55229f9143f1a9efa7bb819696d7 matches verified local tree b0d79ca3425748e2d00da0de734f53ba9493efdb. Exact-head Security verification 39099595963 and merge verification 39099676983 succeeded. Production dpl_CdmM8gh38Z8MFvwvjb6pUtEQK93E READY on that merge with both canonical domains assigned. Standard 21-probe production monitoring 39099720197 succeeded after deployment with unchanged five-second limits. Three additional canonical protection checks passed under 15-second bounds: new preflight 401, desk 303 and client 401, all private/no-store. Two earlier local standard monitors failed (9/21 and 10/21 passed); four separate canonical health/catalog/economy/protection checks passed under 15-second bounds. Preserve both observations; runner variance does not prove root cause or sustained capacity. A fresh production HTTP Study session on the earlier #150 baseline completed five public questions correctly, received sourced explanations, saved 0 to 5 explored concepts and resumed the same completed run; no phone/authenticator acceptance is implied. Full verification: 574 tests, zero failures/skips, native Redis 7.0.15, 311 security assertions and supporting checks; no dependency or bank change. Preview build dpl_J3o1ArsfVrS5jRGwKWQPgucyuvxg READY, but authenticated fetch returned 401 and no CLI credentials were available; no preview owner/rendering acceptance is claimed. No submitted reviews/inline threads. Deployment-scoped error-level samples were Node DEP0169 url.parse deprecation warnings; do not claim a clean error window. Actual phone/Silk, owner preflight, first manual TN10 transfer, provider restore and independent review remain pending. No Beta label, paid-model, Mainnet settlement, CCE or ownership activation."
+      ],
+      "completedAt": "2026-10-18",
+      "completionEvidence": [
+        "October 18, 2026: founder supplied a real queued Daily receipt and phone screenshots through indexed-confirmed on deployed #152. Exact receipt/configuration/address checks passed; fresh TN10 token/deploy and transfer-by-hash reads matched network, asset, distinct sender/recipient, 100000000 raw units at eight decimals and post-receipt time. Transaction/operation accepted with no error and valid checkpoint/score; existing server observation validator accepted. Recipient observation changed from no GEEKT row to 1 GEEKT / zero locked. Private identifiers and individual learning result are omitted from the public record. See docs/GEEKT-FIRST-PAYOUT-2026-10-18.md. This accepts one manual pilot, not automated/Mainnet settlement, general login/recovery, capacity or independent audit."
       ]
     },
     {
@@ -1023,7 +1033,7 @@
       "status": "needs-evidence",
       "title": "Prove the core loop and close the first release scope",
       "owner": "Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned",
-      "nextAction": "Reopen /ops/testnet/ on the founder phone; #152 now preserves the desk through login and adds its main workspace card. Confirm receipts/recipient before Daily, then one receipt and one manual TN10 transfer.",
+      "nextAction": "First manual GEEKT pilot is complete. Retain its final confirmed export, then close saved-player return/Silk and provider recovery evidence and the remaining scoped beta scenarios. No additional transfer is needed for this receipt.",
       "acceptance": [
         "Owner desk checks the current same-browser Daily proof and native remaining run lifetime without renewing it; expired/ineligible runs cannot enable its queue button.",
         "Return from gameplay or browser back-forward cache refreshes private readiness without automatically queuing, signing or sending; late canceled responses cannot restore private state.",
@@ -1035,11 +1045,15 @@
         "docs/FIRST-PROOF-LAUNCH.md",
         "docs/TESTNET-REWARD-PILOT.md",
         "tests/testnet-client.test.js",
-        "tests/testnet-rewards.test.js"
+        "tests/testnet-rewards.test.js",
+        "docs/GEEKT-FIRST-PAYOUT-2026-10-18.md"
       ],
       "releaseEvidence": [
         "PR #151 merged October 18 at 05:11:03 UTC as e8fb6a70c29ead26188bff0da24010e757eba4c3. Checked head 899ccd393e18bd76b218debd27a919231011a6ca/tree 384b6ad0023d55229f9143f1a9efa7bb819696d7 matches verified local tree b0d79ca3425748e2d00da0de734f53ba9493efdb. Exact-head Security verification 39099595963 and merge verification 39099676983 succeeded. Production dpl_CdmM8gh38Z8MFvwvjb6pUtEQK93E READY on that merge with both canonical domains assigned. Standard 21-probe production monitoring 39099720197 succeeded after deployment with unchanged five-second limits. Three additional canonical protection checks passed under 15-second bounds: new preflight 401, desk 303 and client 401, all private/no-store. Two earlier local standard monitors failed (9/21 and 10/21 passed); four separate canonical health/catalog/economy/protection checks passed under 15-second bounds. Preserve both observations; runner variance does not prove root cause or sustained capacity. A fresh production HTTP Study session on the earlier #150 baseline completed five public questions correctly, received sourced explanations, saved 0 to 5 explored concepts and resumed the same completed run; no phone/authenticator acceptance is implied. Full verification: 574 tests, zero failures/skips, native Redis 7.0.15, 311 security assertions and supporting checks; no dependency or bank change. Preview build dpl_J3o1ArsfVrS5jRGwKWQPgucyuvxg READY, but authenticated fetch returned 401 and no CLI credentials were available; no preview owner/rendering acceptance is claimed. No submitted reviews/inline threads. Deployment-scoped error-level samples were Node DEP0169 url.parse deprecation warnings; do not claim a clean error window. Actual phone/Silk, owner preflight, first manual TN10 transfer, provider restore and independent review remain pending. No Beta label, paid-model, Mainnet settlement, CCE or ownership activation.",
         "PR #152 merged October 18 at 05:31:49 UTC as 0f73748b679c4c43149f0011720637a51230c911. Checked head a4b98a0f344d060249e8b6e772ec7f5e85ba31c2/tree f9a10ba4d550880bb8d8628d15e1f46e0d838c1f matches local 72aeac7b20a6879ff1132484167200f4485f40be. Exact-head CI 39100800781 passed; no submitted reviews/threads. Preview dpl_4vEaMUrmmedYZ15rJVdiw9o1FZs7 READY; HTTP login HTML and exact client bytes verified. Production dpl_4mvZxRkzuMQtC9koLSowGvKLAYsi READY on the exact merge with both canonical domains assigned. Four canonical checks passed under 15-second bounds: fixed Testnet 303 destination, exact login HTML, exact login script and private/no-store preflight 401. Full local verification passed 578 tests, zero failures/skips, native Redis 7.0.15, 311 security assertions and supporting checks. Owner-home card and same fixed login destination are covered by actual server/client tests; physical-phone rendering/login and first manual GEEKT transfer remain pending. No owner key, wallet signature, transfer, Beta/economic activation, dependency or bank change."
+      ],
+      "acceptanceEvidence": [
+        "October 18, 2026: founder supplied a real queued Daily receipt and phone screenshots through indexed-confirmed on deployed #152. Exact receipt/configuration/address checks passed; fresh TN10 token/deploy and transfer-by-hash reads matched network, asset, distinct sender/recipient, 100000000 raw units at eight decimals and post-receipt time. Transaction/operation accepted with no error and valid checkpoint/score; existing server observation validator accepted. Recipient observation changed from no GEEKT row to 1 GEEKT / zero locked. Private identifiers and individual learning result are omitted from the public record. See docs/GEEKT-FIRST-PAYOUT-2026-10-18.md. This accepts one manual pilot, not automated/Mainnet settlement, general login/recovery, capacity or independent audit."
       ]
     }
   ]

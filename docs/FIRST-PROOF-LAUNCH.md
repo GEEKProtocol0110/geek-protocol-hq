@@ -11,7 +11,7 @@ This work began from historical runtime #150 at `0654aa4ed5c4a0ebfa6c248b3f26073
 | Learning | Kaspa Study, source-linked authored A.C.E. help, feedback and saved practice progress | A real phone completes a lesson/practice, reloads and finds the same progress |
 | Player identity | Existing passkeys, profile and optional same-player tablet approval | Sign out and return to the same saved player; confirm name/progress. Amazon Silk approval/revocation remains its own device case |
 | Free game | Five-question Kaspa Daily, server grading and once-only career XP challenges | Real player finishes and saves a round, claims an eligible XP reward, reloads and sees the same result; Daily/reward replay stays blocked |
-| Reward proof | Owner-only manual GEEKT on TN10 | One eligible receipt, one wallet-approved transfer, same-hash indexed confirmation and recipient balance observation |
+| Reward proof | Owner-only manual GEEKT on TN10 | **Passed October 18:** one eligible receipt, manually approved exact transfer, same-hash indexed confirmation and recipient balance; [evidence](GEEKT-FIRST-PAYOUT-2026-10-18.md) |
 | Operations | Protected desks, monitoring, existing recovery controls | Passing current health checks and an isolated provider restore with custody and recovery evidence |
 
 This is a supervised proof scope. Full four-chapter campaign/replay and a two-person Royale are still pending in the [free-beta checklist](FREE-BETA-READINESS.md). A successful Study/API run does not accept those features, phone biometrics or production capacity. The founder reviews these actual results before changing the release label to Beta.
@@ -56,3 +56,10 @@ Founder reports updated Kasware mobile with GEEK/TKAS/GEEKT access, then cannot 
 PR #152 merged October 18 at 05:31:49 UTC as 0f73748b679c4c43149f0011720637a51230c911. Checked head a4b98a0f344d060249e8b6e772ec7f5e85ba31c2/tree f9a10ba4d550880bb8d8628d15e1f46e0d838c1f matches local 72aeac7b20a6879ff1132484167200f4485f40be. Exact-head CI 39100800781 passed; no submitted reviews/threads. Preview dpl_4vEaMUrmmedYZ15rJVdiw9o1FZs7 READY; HTTP login HTML and exact client bytes verified. Production dpl_4mvZxRkzuMQtC9koLSowGvKLAYsi READY on the exact merge with both canonical domains assigned. Four canonical checks passed under 15-second bounds: fixed Testnet 303 destination, exact login HTML, exact login script and private/no-store preflight 401. Full local verification passed 578 tests, zero failures/skips, native Redis 7.0.15, 311 security assertions and supporting checks. Owner-home card and same fixed login destination are covered by actual server/client tests; physical-phone rendering/login and first manual GEEKT transfer remain pending. No owner key, wallet signature, transfer, Beta/economic activation, dependency or bank change.
 
 Next: confirm the receipts desk on the existing owner phone before starting Daily.
+
+
+## First real manual payout completed — October 18
+
+October 18, 2026: founder supplied a real queued Daily receipt and phone screenshots through indexed-confirmed on deployed #152. Exact receipt/configuration/address checks passed; fresh TN10 token/deploy and transfer-by-hash reads matched network, asset, distinct sender/recipient, 100000000 raw units at eight decimals and post-receipt time. Transaction/operation accepted with no error and valid checkpoint/score; existing server observation validator accepted. Recipient observation changed from no GEEKT row to 1 GEEKT / zero locked. Private identifiers and individual learning result are omitted from the public record. See docs/GEEKT-FIRST-PAYOUT-2026-10-18.md. This accepts one manual pilot, not automated/Mainnet settlement, general login/recovery, capacity or independent audit.
+
+Next: retain the final confirmed export privately. The completed receipt needs no further token transfer. Remaining saved-player/provider/full-beta acceptance stays explicit.

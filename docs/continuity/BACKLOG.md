@@ -28,7 +28,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | GOV-001 | P2 | proposed | Develop an unclassified public-service refresher pilot | Founder with agency sponsor unassigned |
 | MIL-001 | P3 | proposed | Explore military and veteran professional learning | Founder with authorized institutional sponsor unassigned |
 | ECO-001 | P1 | planned | Audit each ecosystem component and preserve its handoff | Maintainer for each repository unassigned |
-| CHAIN-001 | P1 | needs-evidence | Verify the TN10 test asset and wallet before a real pilot | Maintainer; founder controls the external testnet wallet |
+| CHAIN-001 | P1 | done | Verify the TN10 test asset and wallet before a real pilot | Maintainer; founder controls the external testnet wallet |
 | OPS-003 | P1 | done | Finish mint-availability monitoring for GitHub issue #14 | Maintainer; founder reviews release |
 | CHAIN-002 | P1 | decision-needed | Evaluate KCC20 compatibility and preserve GEEK holder entitlements | Maintainer researches; founder selects policy; independent covenant reviewer unassigned |
 | ARCH-002 | P1 | done | Preserve the founder-supplied theme roster and trait sheet | Maintainer archives; founder reviews interpretation |
@@ -40,7 +40,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-005 | P0 | needs-evidence | Contain mobile decoration and stabilize page edges | Maintainer |
 | CONT-003 | P0 | done | Reconcile roadmap, stale drafts and current acceptance evidence | Maintainer |
 | WALLET-001 | P1 | planned | Review and isolate the optional Testnet wallet lab retained from #119 | Wallet maintainer; independent wallet reviewer unassigned |
-| CHAIN-003 | P2 | needs-evidence | Review retained Testnet reward-desk amount and copy polish | Maintainer |
+| CHAIN-003 | P2 | done | Review retained Testnet reward-desk amount and copy polish | Maintainer |
 | PILOT-002 | P1 | planned | Review retained wallet-safety course and evaluation tooling | Pilot coordinator and instructor unassigned |
 | ART-001 | P2 | blocked | Preserve paused original art and resume production only on founder direction | Founder supplies art; production maintainer unassigned |
 | SEO-001 | P0 | done | Maintain metadata and link coverage for every HQ page | Maintainer |
@@ -366,9 +366,9 @@ Evidence/specification: [docs/continuity/repositories.json](../../docs/continuit
 
 ## CHAIN-001: Verify the TN10 test asset and wallet before a real pilot
 
-**P1 / needs-evidence.** Owner: Maintainer; founder controls the external testnet wallet. Dependencies: none.
+**P1 / done.** Owner: Maintainer; founder controls the external testnet wallet. Dependencies: none.
 
-Next action: Use the current selected-receipt whole-token/raw-unit fields and export for one eligible Daily receipt, owner-approved TN10 transfer, same-hash reconciliation and recipient balance evidence. Public indexer confirms GEEKT deployed/eight decimals October 17; no real transfer is established.
+Next action: Retain the final indexed-confirmed JSON export privately. The one-transfer manual pilot is complete; any repeat or automatic-signing rollout is separate scoped work.
 
 Acceptance:
 
@@ -377,7 +377,7 @@ Acceptance:
 - One manual pilot transfer reconciled by the existing receipt desk; no Mainnet settlement enabled.
 - Test deployment maximum, mint limit, premint and decimals match pinned GEEK; test ticker/network/deployment remain distinct.
 
-Evidence/specification: [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md), [docs/TESTNET-ASSET-SETUP.md](../../docs/TESTNET-ASSET-SETUP.md), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md).
+Evidence/specification: [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md), [docs/TESTNET-ASSET-SETUP.md](../../docs/TESTNET-ASSET-SETUP.md), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md), [docs/GEEKT-FIRST-PAYOUT-2026-10-18.md](../../docs/GEEKT-FIRST-PAYOUT-2026-10-18.md).
 
 ## OPS-003: Finish mint-availability monitoring for GitHub issue #14
 
@@ -549,9 +549,9 @@ Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION
 
 ## CHAIN-003: Review retained Testnet reward-desk amount and copy polish
 
-**P2 / needs-evidence.** Owner: Maintainer. Dependencies: none.
+**P2 / done.** Owner: Maintainer. Dependencies: none.
 
-Next action: #151 merged/deployed; complete the real saved-player phone preflight and one manually approved GEEKT transfer with same-hash confirmation/recipient balance. Record phone return/Silk and provider recovery separately. Do not reopen optional feature expansion or infer Beta/Mainnet activation.
+Next action: Retain the final indexed-confirmed JSON export privately. The one-transfer manual pilot is complete; any repeat or automatic-signing rollout is separate scoped work.
 
 Acceptance:
 
@@ -559,7 +559,7 @@ Acceptance:
 - Copy failures have usable manual selection and never send a transaction.
 - One-send/same-hash reconciliation and existing Daily/receipt authorization remain unchanged.
 
-Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION.md), [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md), [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUNCH.md).
+Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION.md), [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md), [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUNCH.md), [docs/GEEKT-FIRST-PAYOUT-2026-10-18.md](../../docs/GEEKT-FIRST-PAYOUT-2026-10-18.md).
 
 ## PILOT-002: Review retained wallet-safety course and evaluation tooling
 
@@ -697,7 +697,7 @@ Evidence/specification: [docs/CAREER-MASTERY.md](../../docs/CAREER-MASTERY.md), 
 
 **P0 / needs-evidence.** Owner: Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned. Dependencies: none.
 
-Next action: Reopen /ops/testnet/ on the founder phone; #152 now preserves the desk through login and adds its main workspace card. Confirm receipts/recipient before Daily, then one receipt and one manual TN10 transfer.
+Next action: First manual GEEKT pilot is complete. Retain its final confirmed export, then close saved-player return/Silk and provider recovery evidence and the remaining scoped beta scenarios. No additional transfer is needed for this receipt.
 
 Acceptance:
 
@@ -706,4 +706,4 @@ Acceptance:
 - Publish the exact checked change and retain live monitoring failures, real-device/wallet/provider gaps and the finite pilot scope.
 - Founder reviews actual pilot results before a Beta label; full campaign, two-person Royale and capacity claims retain their existing acceptance checklist.
 
-Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUNCH.md), [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md), [tests/testnet-client.test.js](../../tests/testnet-client.test.js), [tests/testnet-rewards.test.js](../../tests/testnet-rewards.test.js).
+Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUNCH.md), [docs/TESTNET-REWARD-PILOT.md](../../docs/TESTNET-REWARD-PILOT.md), [tests/testnet-client.test.js](../../tests/testnet-client.test.js), [tests/testnet-rewards.test.js](../../tests/testnet-rewards.test.js), [docs/GEEKT-FIRST-PAYOUT-2026-10-18.md](../../docs/GEEKT-FIRST-PAYOUT-2026-10-18.md).

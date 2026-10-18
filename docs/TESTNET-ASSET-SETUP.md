@@ -1,6 +1,6 @@
 # GEEKT TN10 setup and deployment record
 
-**GEEKT is now deployed and accepted by the TN10 indexer.** The founder submitted the external Kasware operations. The operation JSON files remain unsigned reference data; this repository did not send them. Do not deploy this ticker again. The public HQ Mint page remains Mainnet-only. The owner-only manual TN10 receipt pilot is now configured on production; authenticated desk reads have passed on the founder phone; the first receipt and reward transfer remain pending.
+**GEEKT is now deployed and accepted by the TN10 indexer.** The founder submitted the external Kasware operations. The operation JSON files remain unsigned reference data; this repository did not send them. Do not deploy this ticker again. The public HQ Mint page remains Mainnet-only. The owner-only manual TN10 receipt pilot is now configured on production; the first manual 1-GEEKT transfer and indexed-confirmed receipt were completed on October 18. See [the dated acceptance evidence](GEEKT-FIRST-PAYOUT-2026-10-18.md); earlier checkpoints below remain historical.
 
 ## October 15 indexed deployment
 

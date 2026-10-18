@@ -25,9 +25,9 @@ Record date: 2026-10-18. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**LAUNCH-001: needs-evidence.** #152 merged/deployed a visible GEEKT test payout workspace card and fixed owner-login return destination after founder could not locate the desk. Four live delivery/protection checks passed. Actual phone discovery/login and first TN10 transfer remain.
+**LAUNCH-001: needs-evidence.** First real manual GEEKT pilot completed October 18: eligible Daily, queued receipt, externally approved exact 1-GEEKT TN10 transfer, observed recipient balance and owner-phone indexed-confirmed receipt. CHAIN-001 and CHAIN-003 are complete; saved-player return/Silk, recovery and other scoped beta acceptance remain.
 
-Next task: **LAUNCH-001**. Founder reopens /ops/testnet/ on the existing saved-player phone; owner sign-in now returns to that desk. Confirm Testnet reward receipts and the recipient before starting Daily, then complete one receipt and one manual GEEKT transfer with same-hash and balance evidence.
+Next task: **LAUNCH-001**. Retain the final indexed-confirmed receipt export privately. Continue saved-player return/Silk and provider-recovery evidence, then remaining scoped beta scenarios. Do not send again for the completed receipt or infer automatic/Mainnet/CCE activation.
 
 ## Holds
 
