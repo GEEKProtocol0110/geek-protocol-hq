@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-10-18. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -10,11 +10,11 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,305 active questions; 798 recorded internal source reviews; 7,202 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,355 active questions; 848 recorded internal source reviews; 7,152 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
-| Kaspa | 700 | 700 | 300 |
+| Kaspa | 750 | 750 | 250 |
 | Video games | 602 | 0 | 1000 |
 | Science fiction | 515 | 37 | 963 |
 | Technology | 1497 | 15 | 985 |
@@ -25,9 +25,9 @@ Record date: 2026-10-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-001: active.** #149 merged/deployed 76 distinct source-pinned integration/encoding concepts: 700 reviewed Kaspa, 8,305 active and 798 recorded reviews. Introductory Study remains 537 concepts; 300 Kaspa concepts remain toward 1,000. Internal source review is separate from independent approval.
+**BANK-001: active.** 750-concept candidate internally verified: 50 source-pinned wallet/node additions, 8,355 active and 848 recorded reviews. Full verification passed 568 tests with required Redis, 311 security assertions and all checks. Exact CI/preview/merge/production pending. Old bank files and introductory Study stay unchanged.
 
-Next task: **BANK-001**. Continue 300 distinct source-reviewed Kaspa concepts toward 1,000, then the remaining seven categories. In parallel with owner availability, gather actual phone/Silk return/revocation, first manual TN10 transfer, bounded A.C.E. model/budget/data-policy evaluation and provider recovery evidence. Preserve bank/economy holds and paused artwork.
+Next task: **BANK-001**. Verify and release the 750-concept batch, then continue 250 distinct reviewed Kaspa concepts toward 1,000. Actual phone/Silk return/revocation, first manual TN10 transfer, A.C.E. model/budget/data-policy evaluation and provider recovery remain separate.
 
 ## Holds
 

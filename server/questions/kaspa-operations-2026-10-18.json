@@ -1,0 +1,1430 @@
+{
+  "metadata": {
+    "title": "GEEK Protocol — Kaspa wallet storage and node operations",
+    "version": "1.0.0",
+    "maintainedAt": "2026-10-18",
+    "questionCount": 50,
+    "conceptCount": 50,
+    "category": "Kaspa",
+    "difficultyDistribution": {
+      "medium": 27,
+      "easy": 15,
+      "hard": 8
+    },
+    "correctIndexDistribution": {
+      "0": 13,
+      "1": 13,
+      "2": 12,
+      "3": 12
+    },
+    "schema": "correctIndex is zero-based; options contains four distinct strings",
+    "sourceSnapshot": "01b532e8b553523216471682649693af92f0fd16",
+    "reviewNotice": "Internal source/wording/distractor review against the pinned Rusty Kaspa revision. Operations and wallet-internal material remain outside introductory Study. This is not live-device compatibility, capacity certification or independent editorial review. Difficulty is provisional.",
+    "attribution": "Original Geek Protocol questions based on pinned MIT-licensed Rusty Kaspa code and documentation; source prose and code are not imported.",
+    "licenses": [
+      "MIT"
+    ]
+  },
+  "questions": [
+    {
+      "id": "K750-0001",
+      "conceptId": "K750-0001",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "How does the cited kaspad --connect setting differ from --addpeer at startup?",
+      "options": [
+        "It limits startup connections to the specified peers rather than adding peers to the usual selection",
+        "It adds only RPC clients while addpeer adds mining workers",
+        "It chooses mainnet while addpeer chooses testnet",
+        "It changes the wallet's address prefix rather than peer selection"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The CLI describes connect as an exclusive startup peer list; addpeer adds peers to connect with. They are not interchangeable discovery policies.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L290",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0002",
+      "conceptId": "K750-0002",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "Which cited kaspad setting chooses the node-to-node listening interface, rather than a gRPC or wRPC endpoint?",
+      "options": [
+        "--rpclisten",
+        "--listen",
+        "--rpclisten-json",
+        "--rpclisten-borsh"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "The P2P listener accepts peer connections. RPC listener options expose application interfaces and are configured separately.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L309",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0003",
+      "conceptId": "K750-0003",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "What distinction do the cited --outpeers and --maxinpeers settings make?",
+      "options": [
+        "A count of wallet inputs versus a count of outputs",
+        "A transaction fee cap versus a block subsidy cap",
+        "A target for outgoing peer connections versus a limit on incoming peers",
+        "A mainnet peer count versus a testnet peer count"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "Peer direction matters: initiating connections and accepting them are separate resource controls. Neither setting is an RPC-client quota.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L318",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0004",
+      "conceptId": "K750-0004",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "What resource does the cited kaspad --rpcmaxclients setting limit?",
+      "options": [
+        "The number of inputs in each transaction",
+        "The number of public keys in each wallet",
+        "The number of transactions a miner may ever submit",
+        "Standard RPC client connections"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "The CLI separates application RPC clients from P2P peers. A client connection cap does not by itself establish a tested request-rate capacity.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L336",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0005",
+      "conceptId": "K750-0005",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "What storage tradeoff does the cited --archival mode make when the pruning point advances?",
+      "options": [
+        "Retains old block data at a potentially heavy disk cost",
+        "Deletes every old block header immediately",
+        "Keeps only transaction fees and drops all block bodies",
+        "Replaces consensus validation with explorer queries"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "Archival mode preserves old block data instead of deleting it during pruning-point movement. This differs from the default storage-saving behavior.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L371",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0006",
+      "conceptId": "K750-0006",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "What additional authority is associated with the cited kaspad --unsaferpc option?",
+      "options": [
+        "Automatic access to every user's wallet keys",
+        "RPC commands that can affect the node's state",
+        "A guarantee that all RPC responses are encrypted",
+        "The ability to change Kaspa's coin supply arbitrarily"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "The option enables node-affecting RPC commands. It should be understood as an administrative capability, not a transport-encryption setting.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L281",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0007",
+      "conceptId": "K750-0007",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "What does the cited kaspad --nologfiles option turn off?",
+      "options": [
+        "All P2P communication",
+        "Consensus validation",
+        "Writing logs to files",
+        "Every RPC server"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "The flag controls file logging. It does not say that node networking, validation or all other forms of output are disabled.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L227",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0008",
+      "conceptId": "K750-0008",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "Why would a cited kaspad operator use a setting such as consensus=trace within --loglevel?",
+      "options": [
+        "To increase the network's consensus block rate",
+        "To bypass consensus checks while leaving other checks enabled",
+        "To set a wallet's derivation index",
+        "To increase detail for a particular subsystem"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The CLI supports subsystem-specific levels, allowing targeted diagnostic output instead of increasing verbosity uniformly.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L246",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0009",
+      "conceptId": "K750-0009",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "Why are --appdir and --logdir separate settings in the cited kaspad CLI?",
+      "options": [
+        "Node data and log output can be placed in different directories",
+        "One selects mainnet and the other selects testnet",
+        "One stores public keys and the other always stores plaintext private keys",
+        "Both are required to point to the same directory"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "The CLI identifies appdir as the data directory and logdir as the log-output directory. Storage layout is an operator choice.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L226",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0010",
+      "conceptId": "K750-0010",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "A cited kaspad TOML file supplies appdir, and the operator also supplies --appdir explicitly. Which value does this parser use?",
+      "options": [
+        "The TOML value regardless of the command line",
+        "The explicitly supplied command-line value",
+        "A random choice between the two values",
+        "Neither value; it always uses the compiled default"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The parser first loads configuration defaults, then selects an explicit appdir match before falling back to that default.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L504",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0011",
+      "conceptId": "K750-0011",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "How is the cited kaspad Args structure configured to handle an unknown TOML configuration field?",
+      "options": [
+        "Silently save it as a consensus parameter",
+        "Automatically treat it as a peer address",
+        "Reject it during deserialization",
+        "Ignore every configuration field after it"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The serde declaration denies unknown fields. This helps reveal misspelled or unsupported settings instead of pretending they were applied.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L27",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0012",
+      "conceptId": "K750-0012",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "Why should an operator avoid activating testnet and devnet together in the cited kaspad network selector?",
+      "options": [
+        "Both switches always select mainnet together",
+        "The combination automatically creates a bridge",
+        "The combination merges the two networks' UTXO sets",
+        "Only one alternative network may be selected"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "The network match handles one selected network at a time and treats conflicting selectors as invalid, rather than combining separate networks.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L212",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0013",
+      "conceptId": "K750-0013",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "Which resource measurements does the cited kaspad --perf-metrics help text identify?",
+      "options": [
+        "CPU, memory and disk I/O usage",
+        "Only token prices and exchange volumes",
+        "Only wallet balances and transaction recipients",
+        "Only block subsidies and maximum coin supply"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "These measurements help observe the process and storage workload. They are not an automatic certification of production capacity.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L401",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0014",
+      "conceptId": "K750-0014",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "What does the cited --perf-metrics-interval-sec setting change?",
+      "options": [
+        "Kaspa's consensus target block interval",
+        "The time between performance-metric collections",
+        "A transaction's required confirmation count",
+        "The number of days of archived block data"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The setting controls an observation interval measured in seconds, separate from consensus timing and data retention.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L408",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0015",
+      "conceptId": "K750-0015",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "What is the intended control provided by the cited kaspad --ram-scale option?",
+      "options": [
+        "Changing the amount of physical RAM installed",
+        "Reducing every transaction fee by the same factor",
+        "Scaling memory-allocation bounds for the node",
+        "Changing the maximum KAS supply"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The CLI describes a scale factor for memory bounds. Its suggested values are tuning guidance, not a measured guarantee for every workload.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L419",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0016",
+      "conceptId": "K750-0016",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "What discovery mechanism does the cited kaspad --nodnsseed switch disable?",
+      "options": [
+        "All outgoing peer connections under every configuration",
+        "The wallet's address checksum",
+        "The block-header Merkle commitment",
+        "DNS-based peer seeding"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "Disabling one peer-discovery source is distinct from disabling networking. Explicit peer settings remain separate configuration choices.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L411",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0017",
+      "conceptId": "K750-0017",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "Which cited kaspad option disables UPnP rather than the gRPC server or DNS seeding?",
+      "options": [
+        "--disable-upnp",
+        "--nogrpc",
+        "--nodnsseed",
+        "--nologfiles"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "The CLI has independent switches for UPnP, gRPC, DNS seeding and file logging. One switch should not be assumed to disable all of them.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L410",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0018",
+      "conceptId": "K750-0018",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "What policy does the cited kaspad --retention-period-days setting describe?",
+      "options": [
+        "How long a wallet password remains valid",
+        "How many total days of data to keep",
+        "How many days must pass before every transfer is final",
+        "How many days remain until the next subsidy halving"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "This is a node data-retention setting. It is separate from wallet-secret expiry and transaction-level confirmation requirements.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L427",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0019",
+      "conceptId": "K750-0019",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "Why does the cited kaspad help recommend its hdd RocksDB preset for an archive on hard disks?",
+      "options": [
+        "It converts an HDD into an NVMe device",
+        "It prevents old blocks from consuming any disk space",
+        "It is tuned for HDD storage with features such as compression and rate limiting",
+        "It removes the need to validate archived blocks"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The source identifies a storage-specific preset with BlobDB, compression and rate limiting. Suitability still depends on the actual workload and hardware.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L443",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0020",
+      "conceptId": "K750-0020",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "What hybrid-storage arrangement does the cited --rocksdb-wal-dir example support?",
+      "options": [
+        "Wallet seeds on the public RPC endpoint",
+        "Every block body on the GPU instead of disk",
+        "The same database shared across mainnet and testnet without separation",
+        "Database files on HDD and the write-ahead log on faster NVMe storage"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The WAL path can be configured independently of the main database location, allowing an operator to separate storage roles.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L451",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0021",
+      "conceptId": "K750-0021",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "What unit does the cited kaspad --rocksdb-cache-size option use?",
+      "options": [
+        "Megabytes",
+        "Number of blocks",
+        "Sompi",
+        "Number of RPC requests per second"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "This option sets the RocksDB block-cache size in MB. It should not be confused with transaction mass or a request-rate limit.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L460",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0022",
+      "conceptId": "K750-0022",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "A peer matches both an allow rule and a reject rule under the cited kaspad user-agent policy. What does the help text specify?",
+      "options": [
+        "Accept it because any allow match overrides rejection",
+        "Reject the peer",
+        "Ignore both rules and accept randomly",
+        "Change the peer's network ID"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "The documented policy gives a matching reject rule precedence. If allow rules exist, at least one must also match for admission.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L389",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0023",
+      "conceptId": "K750-0023",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "What is the purpose of the cited kaspad --uacomment setting?",
+      "options": [
+        "Defining a peer-admission allow or reject rule",
+        "Setting the transaction's payload bytes",
+        "Adding a comment to the node's advertised user agent",
+        "Setting an account's wallet password hint"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "A user-agent comment describes the node's advertised identification. Admission rules use the separate ua-rule option.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L380",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0024",
+      "conceptId": "K750-0024",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "What does zero mean for the cited --max-tracked-addresses setting?",
+      "options": [
+        "Disable all address tracking permanently",
+        "Preallocate every possible address immediately",
+        "Remove every existing UTXO from the index",
+        "Avoid preallocation while retaining a default maximum for later use"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "The help text distinguishes initial allocation from the allowed maximum. Zero is not documented as a universal off switch for tracking.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L356",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0025",
+      "conceptId": "K750-0025",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "What does the cited kaspad --yes option do?",
+      "options": [
+        "Automatically answers yes to interactive console questions",
+        "Signs every wallet transfer automatically",
+        "Makes all RPC methods read-only",
+        "Confirms every transaction on the network"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "This flag affects console prompts. It is not a wallet-signing permission or an on-chain confirmation mechanism.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L373",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0026",
+      "conceptId": "K750-0026",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "What testing exception does the cited --enable-unsynced-mining flag permit?",
+      "options": [
+        "Spending nonexistent outputs without validation",
+        "Accepting blocks submitted through RPC while the node is not synced",
+        "Using testnet coins as mainnet coins",
+        "Accepting every transaction regardless of its signatures"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The CLI marks this flag as mainly for testing. Allowing unsynced RPC block submission is not a general bypass of consensus validation.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L339",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0027",
+      "conceptId": "K750-0027",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "Why must an operator treat the cited --reset-db switch as a database-changing action?",
+      "options": [
+        "It only clears the displayed log window",
+        "It only resets the RPC request counter",
+        "It resets the database before node startup",
+        "It only restores the default font size"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "The option explicitly resets node data. It should not be mistaken for a harmless diagnostic or a normal wallet reconnect operation.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L338",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0028",
+      "conceptId": "K750-0028",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Operations",
+      "prompt": "Which interface is specifically disabled by the cited kaspad --nogrpc option?",
+      "options": [
+        "The P2P listener",
+        "Every wRPC endpoint by definition",
+        "The wallet's local storage interface",
+        "The gRPC server"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The help text names gRPC specifically. Separate listener and service settings describe other communication interfaces.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L412",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0029",
+      "conceptId": "K750-0029",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Storage",
+      "prompt": "What is the intended purpose of the user hint described in the cited Kaspa wallet storage module?",
+      "options": [
+        "A recognizable message shown when the wallet opens to help resist phishing",
+        "A public copy of the wallet's recovery phrase",
+        "A replacement for checking the actual website or application",
+        "An approval signature for every future transaction"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "The module describes a locally stored recognition hint. It can be a supporting cue, but the source does not make it proof that every page showing it is trustworthy.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/hint.rs#L4",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0030",
+      "conceptId": "K750-0030",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Storage",
+      "prompt": "Does encrypting the cited wallet payload imply that the title, user hint and account metadata are also inside that encrypted payload?",
+      "options": [
+        "Yes; every byte after the file header is necessarily encrypted together",
+        "No; those fields are serialized separately in the storage envelope",
+        "Yes; the title is used as the encryption key",
+        "No; the private-key payload is the only field that can never be encrypted"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "The serializer writes title, hint and metadata separately from the encrypted payload. A wallet file should not be described as hiding every field without inspecting its format.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/wallet.rs#L93",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0031",
+      "conceptId": "K750-0031",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Storage",
+      "prompt": "Which format does the cited WalletStorage loader use to decode its saved wallet-file bytes?",
+      "options": [
+        "A plain comma-separated value table",
+        "An HTML page containing a hidden form",
+        "Borsh binary serialization",
+        "A block explorer's transaction JSON response"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "try_load reads the bytes and passes them to the Borsh decoder. Renaming an unrelated JSON file does not turn it into this wallet format.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/wallet.rs#L52",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0032",
+      "conceptId": "K750-0032",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Storage",
+      "prompt": "Does constructing the cited WalletStorage envelope automatically bundle every historical wallet transaction?",
+      "options": [
+        "Yes; every historical transaction is automatically downloaded and embedded",
+        "Yes; the title field stores the complete transaction history",
+        "No; the format permanently forbids storing transaction records",
+        "No; its transactions field initially starts as None"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The constructor initializes transactions to None even though the structure supports an optional transaction map. A wallet-file envelope is not automatically a complete history archive.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/wallet.rs#L39",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0033",
+      "conceptId": "K750-0033",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Storage",
+      "prompt": "How does the cited wallet decoder handle a file version newer than the software supports?",
+      "options": [
+        "Rejects it and reports that the software needs upgrading",
+        "Silently drops unknown fields and opens it anyway",
+        "Rewrites the file as version zero without asking",
+        "Changes the wallet's network to match the file number"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The version guard prevents the decoder from pretending to understand a newer storage format. It does not prove compatibility with arbitrary future files.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/wallet.rs#L114",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0034",
+      "conceptId": "K750-0034",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Storage",
+      "prompt": "What happens when the cited WalletStorage try_load cannot find the requested wallet file?",
+      "options": [
+        "It silently creates and funds a new wallet",
+        "It returns a no-wallet-in-storage error",
+        "It fetches private keys from the nearest node",
+        "It assumes the user's balance is zero forever"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "The loader distinguishes a missing local file from a successfully loaded wallet. It does not manufacture replacement recovery material.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/wallet.rs#L55",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0035",
+      "conceptId": "K750-0035",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Storage",
+      "prompt": "How does the cited WalletStorage payload helper present a ChaCha20-Poly1305 decryption failure?",
+      "options": [
+        "As a successful empty payload",
+        "As proof that the wallet has no on-chain funds",
+        "As a wallet-decryption error",
+        "As an instruction to broadcast a reset transaction"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The helper maps the cryptographic decryption error to WalletDecrypt. Failure to open local encrypted data does not establish an on-chain balance.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/wallet.rs#L44",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0036",
+      "conceptId": "K750-0036",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Storage",
+      "prompt": "What operation does the cited Storage purge method perform?",
+      "options": [
+        "Spends every on-chain output belonging to the wallet",
+        "Deletes every node's record of the account's transactions",
+        "Revokes the underlying mnemonic throughout the network",
+        "Removes the local storage file at its path"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "purge removes a file through the storage filesystem interface. A local-file operation is distinct from signing and submitting an on-chain spend.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/storage.rs#L70",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0037",
+      "conceptId": "K750-0037",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Storage",
+      "prompt": "In the cited Storage try_new_with_folder helper, how is the filename formed in a web runtime?",
+      "options": [
+        "From name alone, without joining the supplied folder",
+        "By always joining folder and name as a native filesystem path",
+        "By using folder as a remote upload destination",
+        "By turning name into a new public address"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "The web branch uses PathBuf::from(name); the non-web branch joins the folder and name and resolves the resulting path.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/storage.rs#L47",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0038",
+      "conceptId": "K750-0038",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Storage",
+      "prompt": "When a cited wallet storage file does not exist, what can ensure_dir create before saving?",
+      "options": [
+        "A replacement mnemonic on the server",
+        "Its parent directory hierarchy",
+        "The recipient's on-chain UTXOs",
+        "A public copy of every wallet account"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "ensure_dir checks the storage path and creates its parent directories when needed. This prepares local storage rather than generating wallet keys.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/storage.rs#L90",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0039",
+      "conceptId": "K750-0039",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Message Encryption",
+      "prompt": "Which key combination initializes the cited Kaspa CryptoBox for communication with a peer?",
+      "options": [
+        "Both peers' public keys with no local secret",
+        "Only the peer's secret key supplied in a URL",
+        "The local secret key and the peer's public key",
+        "Only the transaction's recipient address"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The constructor passes peer_public_key and the local secret_key into ChaChaBox. It does not ask the peer to disclose its secret key.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/cryptobox.rs#L26",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0040",
+      "conceptId": "K750-0040",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Message Encryption",
+      "prompt": "How does the cited CryptoBox encrypt method obtain the nonce for a message?",
+      "options": [
+        "Uses the same all-zero nonce for every message",
+        "Uses the recipient's wallet balance as the nonce",
+        "Reuses the previous ciphertext's first byte only",
+        "Generates it with the operating-system random generator"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "Each encryption call generates a nonce through OsRng before encrypting. Nonce handling is part of the encryption construction.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/cryptobox.rs#L40",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0041",
+      "conceptId": "K750-0041",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Message Encryption",
+      "prompt": "How does the cited CryptoBox package its generated nonce with an encrypted message?",
+      "options": [
+        "Prefixes the nonce bytes to the encrypted output",
+        "Discards the nonce so the peer must guess it",
+        "Stores the nonce only in a block's coinbase",
+        "Replaces the ciphertext with the nonce alone"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "The output concatenates the nonce and encryption result. decrypt reads its first 24 bytes as the nonce and passes the remaining bytes to the codec.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/cryptobox.rs#L41",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0042",
+      "conceptId": "K750-0042",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Message Encryption",
+      "prompt": "What happens when the cited CryptoBox decrypt receives fewer than 25 bytes?",
+      "options": [
+        "It pads the bytes and always returns success",
+        "It returns a message-too-short error before invoking decryption",
+        "It interprets the short message as a wallet seed",
+        "It falls back to unauthenticated plaintext decoding"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The wrapper requires space beyond the 24-byte nonce before calling the codec. Passing this preliminary length check alone does not prove that a ciphertext is valid.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/cryptobox.rs#L46",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0043",
+      "conceptId": "K750-0043",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Key Records",
+      "prompt": "Can the cited key-data get_xprv helper turn its raw SecretKey variant directly into a hierarchical extended private key?",
+      "options": [
+        "Yes; it treats the raw key as a complete BIP39 mnemonic",
+        "Yes; it automatically invents a chain code without error",
+        "No; that variant returns XPrvSupport",
+        "Only when the public address uses a testnet prefix"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The helper has supported paths for mnemonic, BIP39 seed and extended-private-key variants. A raw secret-key record is handled differently.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/keydata/data.rs#L150",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0044",
+      "conceptId": "K750-0044",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Key Records",
+      "prompt": "The cited key payload contains an extended private key rather than mnemonic words. What does as_mnemonic return for that variant?",
+      "options": [
+        "A newly invented but equivalent twelve-word phrase",
+        "The extended key text relabeled as a mnemonic",
+        "A request to download the original phrase from the node",
+        "None, rather than reconstructing mnemonic words"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "as_mnemonic returns Some only for the Mnemonic variant. A stored seed or extended key does not automatically retain the original mnemonic representation.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/keydata/data.rs#L154",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0045",
+      "conceptId": "K750-0045",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Key Records",
+      "prompt": "During cited PrvKeyData::try_from_mnemonic construction, when is the key-data payload itself additionally encrypted?",
+      "options": [
+        "When an optional payment_secret is supplied",
+        "Only when the node's UTXO index is disabled",
+        "Whenever the title contains the word encrypted",
+        "Only after the wallet has received its first coinbase"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "The constructor starts with Encryptable::Plain and conditionally encrypts the key record. This record layer is distinct from the outer wallet-file payload encryption.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/keydata/data.rs#L238",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0046",
+      "conceptId": "K750-0046",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Key Records",
+      "prompt": "Which textual representation does the cited from_secret_key helper store in its SecretKey variant?",
+      "options": [
+        "The public address's network prefix only",
+        "Hexadecimal encoding of the secret-key bytes",
+        "A decimal rendering of the wallet balance",
+        "The node's last block hash"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The helper encodes secret_bytes as hex. Hex is a representation, not encryption; the surrounding storage protections remain important.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/keydata/data.rs#L81",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0047",
+      "conceptId": "K750-0047",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Key Records",
+      "prompt": "Why is the cited key variant's get_string return type more specific than an ordinary String?",
+      "options": [
+        "It guarantees the string can be safely published",
+        "It proves the secret text contains no private key material",
+        "It wraps the cloned sensitive text in Zeroizing",
+        "It automatically stores the text on an external backup service"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The returned copy uses a zeroizing wrapper. This is an in-memory cleanup measure, not a guarantee against every possible copy or disclosure.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/keydata/data.rs#L84",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0048",
+      "conceptId": "K750-0048",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Shell",
+      "prompt": "In the cited development wallet shell, what does create without arguments do on a new installation?",
+      "options": [
+        "Creates a funded testnet address with free coins automatically",
+        "Registers a remote custodial exchange account",
+        "Starts a new public Kaspa network",
+        "Creates a local wallet"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "The guide describes creating a local wallet and then preserving its mnemonic. Creating that wallet does not itself fund it or create a new network.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/README.md#L46",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0049",
+      "conceptId": "K750-0049",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Shell",
+      "prompt": "How do the cited wallet shell's server and connect commands differ?",
+      "options": [
+        "server configures the endpoint; connect initiates the connection",
+        "Both immediately create a new local wallet",
+        "server broadcasts a payment; connect signs it",
+        "connect changes the endpoint's consensus network automatically"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The guide separates choosing a Borsh server address from connecting. Without an explicit connect address, configured network and server help determine the endpoint.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/README.md#L44",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    },
+    {
+      "id": "K750-0050",
+      "conceptId": "K750-0050",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Wallet Shell",
+      "prompt": "Why might a cited wallet-shell user choose mute or track <type> when receiving many transactions?",
+      "options": [
+        "To erase those transactions from the blockDAG",
+        "To mute or select notification types shown by the shell",
+        "To disable every consensus check for those transactions",
+        "To make the corresponding UTXOs immediately mature"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "The guide presents these as notification controls. Adjusting displayed events does not reverse transfers or alter consensus state.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/README.md#L50",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-18",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "wallet-node-practice"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question based on the cited Rusty Kaspa revision; source prose and code not imported."
+    }
+  ]
+}

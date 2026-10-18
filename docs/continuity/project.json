@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-17",
+  "updatedAt": "2026-10-18",
   "canonicalRepository": "GEEKProtocol0110/geek-protocol-hq",
   "mission": "A Kaspa onboarding ecosystem built for Proof of Learning. Make knowledge useful through accessible learning, practice, feedback and carefully governed incentives.",
   "founder": "Michael Gee",
@@ -18,11 +18,11 @@
     "evidence": "PR #149 merged October 17 at 23:57:18 UTC as 28032004a0f46d0fd03c123cab4f5d1949245677. Exact checked head 22cb5132c9ff02e849fa37430ccdfd67f721812e/tree 75c8c53954db08a1467dcae0dca610f813148533 matches the locally verified tree. GitHub Security verification 39080904779 and Vercel passed. No submitted reviews or inline threads were present; independent editorial review remains unassigned. Preview dpl_6xmDktvMVQYJ4dBYcJBmzR5Qr1Js READY: five authenticated read-only checks passed (held/no-store runtime readiness and exact Play/Sources/two count assets). Production dpl_8HaqzCEoBafrML1u6mjAPYbPp3BU READY on the exact merge, with both canonical domains assigned. Eight canonical read-only delivery checks passed: exact Play/Sources/two count assets, held/no-store readiness at 700 Kaspa/798 reviews/8,305 active, unchanged 11-topic/537-concept Study catalog, inactive-AI/authored-available/no-store status and public server-only question path returning 404 without an answer key. Initial Study/ACE probes omitted the canonical API trailing slash and returned 308; corrected canonical reads passed without application changes. Full verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all supporting checks, including 41 pages/879 local links. Additional source-line and serialized-question-hash checks passed for all 76 additions; twelve source-file Git blob hashes matched upstream. No earlier active/retired bank file changed. A deployment-scoped recent error/fatal count query returned no groups; this early window is not long-term monitoring evidence. Actual tablet/return/revocation, first manual TN10 transfer, live paid AI model/budget/data-policy evaluation, provider recovery and independent review remain separate."
   },
   "questionCheckpoint": {
-    "active": 8305,
-    "reviewed": 798,
-    "remaining": 7202,
-    "kaspaActive": 700,
-    "kaspaReviewed": 700,
+    "active": 8355,
+    "reviewed": 848,
+    "remaining": 7152,
+    "kaspaActive": 750,
+    "kaspaReviewed": 750,
     "studyConcepts": 537,
     "questChapters": 4
   },
@@ -37,10 +37,10 @@
   "currentWork": {
     "id": "BANK-001",
     "status": "active",
-    "description": "#149 merged/deployed 76 distinct source-pinned integration/encoding concepts: 700 reviewed Kaspa, 8,305 active and 798 recorded reviews. Introductory Study remains 537 concepts; 300 Kaspa concepts remain toward 1,000. Internal source review is separate from independent approval."
+    "description": "750-concept candidate internally verified: 50 source-pinned wallet/node additions, 8,355 active and 848 recorded reviews. Full verification passed 568 tests with required Redis, 311 security assertions and all checks. Exact CI/preview/merge/production pending. Old bank files and introductory Study stay unchanged."
   },
   "nextTask": "BANK-001",
-  "nextAction": "Continue 300 distinct source-reviewed Kaspa concepts toward 1,000, then the remaining seven categories. In parallel with owner availability, gather actual phone/Silk return/revocation, first manual TN10 transfer, bounded A.C.E. model/budget/data-policy evaluation and provider recovery evidence. Preserve bank/economy holds and paused artwork.",
+  "nextAction": "Verify and release the 750-concept batch, then continue 250 distinct reviewed Kaspa concepts toward 1,000. Actual phone/Silk return/revocation, first manual TN10 transfer, A.C.E. model/budget/data-policy evaluation and provider recovery remain separate.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
