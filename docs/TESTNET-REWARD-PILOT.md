@@ -1,5 +1,7 @@
 # Isolated testnet reward pilot
 
+**Next product direction (October 18):** the founder requests automatic rewards. [CHAIN-004](AUTOMATIC-GEEKT-REWARDS.md) adds the separate automatic testnet flow. This page documents the retained manual desk and its historical acceptance.
+
 This is an owner-only **manual transfer receipt workflow**, disabled by default. It does not implement an automatic signer or broadcaster, enable Mainnet withdrawals, convert Alpha credits, or promise payments to players. A synthetic fixture acceptance is not a real payout. Production was configured for the one-token manual GEEKT test on October 15; see the [deployment checkpoint](TESTNET-ASSET-SETUP.md#production-manual-pilot-configuration--october-15). The first manual 1-GEEKT reward transfer and HQ indexed-confirmed receipt were completed on the founder phone on October 18. See [the dated acceptance evidence](GEEKT-FIRST-PAYOUT-2026-10-18.md). Earlier checkpoints below remain historical; no automatic signer or Mainnet rollout is implied.
 
 ## October 15 compatibility checkpoint — CHAIN-001

@@ -35,12 +35,12 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "LAUNCH-001",
-    "status": "needs-evidence",
-    "description": "First real manual GEEKT pilot completed October 18: eligible Daily, queued receipt, externally approved exact 1-GEEKT TN10 transfer, observed recipient balance and owner-phone indexed-confirmed receipt. CHAIN-001 and CHAIN-003 are complete; saved-player return/Silk, recovery and other scoped beta acceptance remain."
+    "id": "CHAIN-004",
+    "status": "in-progress",
+    "description": "Founder requests automatic rewards after the completed manual pilot. Automatic Daily outbox, private test enrollment, player status, isolated SDK signer and production-only Vercel cron are implemented as a release candidate. Real automatic payout remains unaccepted."
   },
-  "nextTask": "LAUNCH-001",
-  "nextAction": "Retain the final indexed-confirmed receipt export privately. Continue saved-player return/Silk and provider-recovery evidence, then remaining scoped beta scenarios. Do not send again for the completed receipt or infer automatic/Mainnet/CCE activation.",
+  "nextTask": "CHAIN-004",
+  "nextAction": "Release and provision the isolated scheduled signer, fund its dedicated TN10 address and exercise one eligible enrolled Daily through automatic indexed confirmation. Prior manual payout must not be sent again. Remaining saved-player/Silk and recovery gates remain LAUNCH-001.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

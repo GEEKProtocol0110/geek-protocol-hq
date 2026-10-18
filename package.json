@@ -22,6 +22,7 @@
   ],
   "scripts": {
     "test": "node --test",
+    "test:signer": "npm --prefix workers/testnet run check",
     "recovery:drill": "node --test tests/recovery.test.js",
     "security:check": "node scripts/public-answer-check.mjs && node scripts/security-check.mjs",
     "collection:generate": "node scripts/generate-geek-collection.mjs",
@@ -29,7 +30,7 @@
     "archive:generate": "node scripts/generate-legacy-art-archive.mjs",
     "archive:check": "node scripts/check-legacy-art-archive.mjs",
     "repository:check": "node scripts/check-repository-presentation.mjs",
-    "verify": "npm test && npm run questions:check && npm run collection:check && npm run archive:check && npm run security:check && npm run repository:check && npm run economy:stress:check && npm run continuity:check && npm run site:check",
+    "verify": "npm test && npm run test:signer && npm run questions:check && npm run collection:check && npm run archive:check && npm run security:check && npm run repository:check && npm run economy:stress:check && npm run continuity:check && npm run site:check",
     "questions:check": "node scripts/check-question-banks.mjs && node scripts/question-catalog.mjs && node scripts/question-bank-readiness.mjs",
     "questions:catalog": "node scripts/question-catalog.mjs --write",
     "monitor:production": "node scripts/production-monitor.mjs",

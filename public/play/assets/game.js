@@ -371,6 +371,7 @@
     try {
       const payload = await postRanked('finish', { runId: run.id });
       applyServerState(payload);
+      window.dispatchEvent(new Event('geek:run-saved'));
       elements.boardState.textContent = payload.leaderboard?.improved ? 'NEW VERIFIED BEST' : 'SERVER VERIFIED';
       if (payload.leaderboard) renderLeaderboard(payload.leaderboard.entries);
       rememberRun(null); $('[data-ranked-recovery]').hidden = true;

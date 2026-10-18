@@ -24,7 +24,7 @@ export function testnetConfig() {
       !/^[1-9][0-9]{0,19}$/.test(config.amount || '')) throw new Error('TESTNET_CONFIG_INVALID');
   return { ...config, fingerprint: fingerprint(config) };
 }
-const jsonFromIndexer = async path => {
+export const jsonFromIndexer = async path => {
   const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 8000);
   try {
     const response = await fetch(`${BASE}/${path}`, { signal: controller.signal, redirect: 'error', cache: 'no-store' });
@@ -36,7 +36,7 @@ const jsonFromIndexer = async path => {
   } catch { throw new Error('TESTNET_INDEXER_UNAVAILABLE'); }
   finally { clearTimeout(timer); }
 };
-const checkAsset = async config => {
+export const checkAsset = async config => {
   const [token, deployment] = await Promise.all([jsonFromIndexer(`token/${config.ticker}`), jsonFromIndexer(`op/${config.deploymentHash}`)]);
   if (!token || token.tick !== config.ticker || token.state !== 'deployed' || token.hashRev !== config.deploymentHash || token.dec !== config.decimals ||
       !deployment || deployment.p !== 'KRC-20' || deployment.op !== 'deploy' || deployment.tick !== config.ticker || deployment.hashRev !== config.deploymentHash ||

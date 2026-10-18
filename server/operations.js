@@ -9,6 +9,7 @@ import { ownerCommunityHandler } from './community-contributions.js';
 import { operationsAttentionHandler } from './operations-attention.js';
 import { importedReviewHandler } from './imported-review.js';
 import { testnetRewardsHandler } from './testnet-rewards.js';
+import { ownerAutomaticHandler } from './testnet-automatic-owner.js';
 import { operationsMonitorHandler } from './operations-monitor.js';
 import { operationsStressHandler } from './operations-stress.js';
 import { aceReadiness } from './ace-tutor.js';
@@ -22,6 +23,7 @@ const files = new Map([
   ['assets/imported.js', ['assets/imported.js', 'text/javascript; charset=utf-8']],
   ['testnet', ['testnet/index.html', 'text/html; charset=utf-8']],
   ['assets/testnet.js', ['assets/testnet.js', 'text/javascript; charset=utf-8']],
+  ['assets/testnet-auto.js', ['assets/testnet-auto.js', 'text/javascript; charset=utf-8']],
   ['ace', ['ace/index.html', 'text/html; charset=utf-8']],
   ['assets/ace.js', ['assets/ace.js', 'text/javascript; charset=utf-8']],
   ['monitor', ['monitor/index.html', 'text/html; charset=utf-8']],
@@ -57,6 +59,7 @@ export default async function operationsHandler(req, res) {
     if (action === 'attention') return operationsAttentionHandler(req, res);
     if (action === 'imported') return importedReviewHandler(req, res);
     if (action === 'testnet') return testnetRewardsHandler(req, res);
+    if (action === 'testnet-auto') return ownerAutomaticHandler(req, res);
     if (action === 'monitor') return operationsMonitorHandler(req, res);
     if (action === 'stress') return operationsStressHandler(req, res);
     if (action === 'login' || action === 'logout') {
