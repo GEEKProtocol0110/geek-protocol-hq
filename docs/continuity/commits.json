@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "capturedAt": "2026-10-18",
-  "through": "0654aa4ed5c4a0ebfa6c248b3f2607363379e4fb",
-  "scope": "Preserved HQ Git commit metadata through PR #140 merge. Product baseline is #140, with production/CI evidence in the project record. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation. Observed background release #145 and preceding login bookkeeping added October 17; product baseline #145 evidence is in project.json. Observed #146 rewarded challenges and preceding background release bookkeeping added; current baseline #146 evidence is in project.json. Observed #147 initial/final heads and merge plus preceding release bookkeeping added; current baseline #147 evidence is in project.json. Observed #148 head/merge and preceding documentation checkpoint added; current #148 production evidence is in project.json. Observed #149 head/merge and preceding documentation checkpoint added; current #149 production evidence is in project.json. Observed #150 head/merge and preceding documentation checkpoint added; current #150 production evidence is in project.json.",
+  "through": "eff74c91972aff5bf962237b4aa1104938d75a5e",
+  "scope": "Preserved HQ Git commit metadata through PR #140 merge. Product baseline is #140, with production/CI evidence in the project record. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation. Observed background release #145 and preceding login bookkeeping added October 17; product baseline #145 evidence is in project.json. Observed #146 rewarded challenges and preceding background release bookkeeping added; current baseline #146 evidence is in project.json. Observed #147 initial/final heads and merge plus preceding release bookkeeping added; current baseline #147 evidence is in project.json. Observed #148 head/merge and preceding documentation checkpoint added; current #148 production evidence is in project.json. Observed #149 head/merge and preceding documentation checkpoint added; current #149 production evidence is in project.json. Observed #150 head/merge and preceding documentation checkpoint added; current #150 production evidence is in project.json. Observed October 18 release/manual-proof documentation and #153 checked head/merge added. No provider restore or signer provisioning is implied.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -2244,6 +2244,39 @@
       ],
       "authoredAt": "2026-10-18T05:31:48Z",
       "title": "Merge pull request #152 from GEEKProtocol0110/codex/geekt-desk-entry"
+    },
+    {
+      "commit": "9e429cafda0baf90f5c49108fc2a096a3a095b3c",
+      "parents": [
+        "0f73748b679c4c43149f0011720637a51230c911"
+      ],
+      "authoredAt": "2026-10-18T01:33:29-04:00",
+      "title": "Record GEEKT desk navigation release and next phone acceptance"
+    },
+    {
+      "commit": "b014b07ecae2ae321841032d9d1d3e021cbcc8b5",
+      "parents": [
+        "9e429cafda0baf90f5c49108fc2a096a3a095b3c"
+      ],
+      "authoredAt": "2026-10-18T03:05:13-04:00",
+      "title": "Record the first verified manual GEEKT reward pilot"
+    },
+    {
+      "commit": "3605e65edbe85607a7e3f189e4b627493fca3cce",
+      "parents": [
+        "b014b07ecae2ae321841032d9d1d3e021cbcc8b5"
+      ],
+      "authoredAt": "2026-10-18T04:01:53-04:00",
+      "title": "Automate testnet Daily reward admission and durable signing"
+    },
+    {
+      "commit": "eff74c91972aff5bf962237b4aa1104938d75a5e",
+      "parents": [
+        "b014b07ecae2ae321841032d9d1d3e021cbcc8b5",
+        "3605e65edbe85607a7e3f189e4b627493fca3cce"
+      ],
+      "authoredAt": "2026-10-18T04:03:23-04:00",
+      "title": "Merge pull request #153 from GEEKProtocol0110/codex/automatic-geekt-rewards"
     }
   ]
 }
