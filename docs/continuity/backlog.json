@@ -1020,10 +1020,10 @@
     {
       "id": "LAUNCH-001",
       "priority": "P0",
-      "status": "needs-evidence",
+      "status": "active",
       "title": "Prove the core loop and close the first release scope",
       "owner": "Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned",
-      "nextAction": "#151 merged/deployed; complete the real saved-player phone preflight and one manually approved GEEKT transfer with same-hash confirmation/recipient balance. Record phone return/Silk and provider recovery separately. Do not reopen optional feature expansion or infer Beta/Mainnet activation.",
+      "nextAction": "Fix the founder-reported missing payout entry: add a prominent GEEKT test payout card and preserve the fixed Testnet destination through owner login. Release it, then resume the actual owner-phone receipt and manual wallet transfer; all later proof gates remain.",
       "acceptance": [
         "Owner desk checks the current same-browser Daily proof and native remaining run lifetime without renewing it; expired/ineligible runs cannot enable its queue button.",
         "Return from gameplay or browser back-forward cache refreshes private readiness without automatically queuing, signing or sending; late canceled responses cannot restore private state.",

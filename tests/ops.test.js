@@ -11,6 +11,7 @@ test('owner workspaces use cookies without role credentials, key fields or cross
   for(const {options} of requests){assert.deepEqual(options.headers,{'Content-Type':'application/json'});assert.equal(options.credentials,'same-origin');}
   for(const page of ['questions','activity','payouts']){const html=readFileSync(new URL(`../server/ops-ui/${page}/index.html`,import.meta.url),'utf8');assert.equal((html.match(/data-role=/g)||[]).length,1);assert.doesNotMatch(html,/name="key"|data-access|data-lock/);assert.match(html,/aria-current="page"/);}
   const home=readFileSync(new URL('../server/ops-ui/index.html',import.meta.url),'utf8');assert.doesNotMatch(home,/data-role=/);for(const path of ['questions','activity','payouts'])assert.match(home,new RegExp(`/ops/${path}/`));
+  assert.match(home, /class="workspace-card" href="\/ops\/testnet\/"[\s\S]*?<h2>GEEKT test payout<\/h2>/);
 });
 test('lock cancels pending access and rejects late replies even if transport ignores cancellation', async () => {
   let resolve, observedSignal;

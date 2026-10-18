@@ -46,8 +46,11 @@ const mintStatusValid = data => {
     (remaining > 0n ? mint.state === 'deployed' && mint.open === true : ['deployed', 'finished'].includes(mint.state) && mint.open === false);
 };
 export function validateProbe(spec, response, text) {
-  if (spec.kind === 'private-page') return response.status === 303 && privateHeaders(response) &&
-    ['/ops-login/', `${MONITOR_ORIGIN}/ops-login/`].includes(header(response, 'location')) && !text;
+  if (spec.kind === 'private-page') {
+    const target = spec.path === '/ops/testnet/' ? '/ops-login/?next=testnet' : '/ops-login/';
+    return response.status === 303 && privateHeaders(response) &&
+      [target, `${MONITOR_ORIGIN}${target}`].includes(header(response, 'location')) && !text;
+  }
   if (spec.kind === 'private-api') {
     if (response.status !== 401 || !privateHeaders(response)) return false;
     const data = JSON.parse(text);

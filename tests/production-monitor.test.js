@@ -96,3 +96,10 @@ test('oversized responses fail and scheduled monitoring is credential-free with 
   assert.doesNotMatch(workflow, /secrets\.|pull_request_target|issues: write|curl|npm ci/);
   for (const pin of workflow.matchAll(/uses: ([^\s]+)/g)) assert.match(pin[1], /@[a-f0-9]{40}$/);
 });
+
+test('Testnet page monitoring requires the fixed post-login desk destination',()=>{
+  const spec=monitorChecks.find(s=>s.id==='testnet-page');
+  const response=location=>new Response('',{status:303,headers:{Location:location,'Cache-Control':'private, no-store'}});
+  assert.equal(validateProbe(spec,response('/ops-login/?next=testnet'),''),true);
+  for(const location of ['/ops-login/','/ops-login/?next=https://evil.invalid','https://evil.invalid/ops-login/?next=testnet'])assert.equal(validateProbe(spec,response(location),''),false);
+});
