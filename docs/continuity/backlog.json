@@ -343,7 +343,7 @@
       "status": "planned",
       "title": "Reconcile the 500-concept, five-tier artwork plan with the legacy runtime",
       "owner": "Art lead and ownership reviewer unassigned",
-      "nextAction": "DR-012 recovers the founder’s 500 concepts × five artwork tiers = 2,500-image direction from paused #120. Resolve repeated names, stable IDs and GIGA/A.C.E. anchors; specify versioned migration while retaining the older 500-slot runtime. Copies per artwork, mint supply and allocations remain unselected; art production stays paused.",
+      "nextAction": "DR-012 recovers the founder\u2019s 500 concepts \u00d7 five artwork tiers = 2,500-image direction from paused #120. Resolve repeated names, stable IDs and GIGA/A.C.E. anchors; specify versioned migration while retaining the older 500-slot runtime. Copies per artwork, mint supply and allocations remain unselected; art production stays paused.",
       "acceptance": [
         "500 character concepts and five artwork tiers are distinct from collectible copies/mint supply.",
         "Duplicate names, anchors and versioned character-plus-tier mapping preserve existing IDs/saves.",
@@ -735,7 +735,7 @@
       "status": "done",
       "title": "Reconcile roadmap, stale drafts and current acceptance evidence",
       "owner": "Maintainer",
-      "nextAction": "Roadmap checkpoint prepared in PR #139; #119 is closed as superseded with branch/head retained and all unshipped work tracked. #120 remains open/paused with the same head. Preserve the current record and resume OPS-001; final head/check/merge is in #139’s review record.",
+      "nextAction": "Roadmap checkpoint prepared in PR #139; #119 is closed as superseded with branch/head retained and all unshipped work tracked. #120 remains open/paused with the same head. Preserve the current record and resume OPS-001; final head/check/merge is in #139\u2019s review record.",
       "acceptance": [
         "Every old PR changed-file blob is inventoried at an exact head and retained work has stable backlog IDs.",
         "Current roadmap, beta source/dependency evidence and limited founder phone observations agree.",
@@ -776,10 +776,10 @@
     {
       "id": "CHAIN-003",
       "priority": "P2",
-      "status": "needs-evidence",
+      "status": "active",
       "title": "Review retained Testnet reward-desk amount and copy polish",
       "owner": "Maintainer",
-      "nextAction": "#148 merged/deployed selected whole-token/recipient/raw-operation fields; accept the review/export on the founder phone during CHAIN-001. No signer/send action; optional automatic clipboard polish remains separate.",
+      "nextAction": "Ship the current same-player, native-lifetime receipt preflight and return-to-desk refresh under LAUNCH-001, then complete one actual manual TN10 transfer. Existing raw/whole-token review fields remain in use.",
       "acceptance": [
         "Integer base units and validated decimals produce exact wallet amounts.",
         "Copy failures have usable manual selection and never send a transaction.",
@@ -789,7 +789,8 @@
       "evidence": [
         "docs/PR-RECONCILIATION.md",
         "docs/TESTNET-REWARD-PILOT.md",
-        "docs/PLAYER-READINESS-2026-10-17.md"
+        "docs/PLAYER-READINESS-2026-10-17.md",
+        "docs/FIRST-PROOF-LAUNCH.md"
       ],
       "releaseEvidence": [
         "PR #148 merged October 17 at 11:07:47 UTC as 67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f. Exact checked head 0d3125792fbe1e46f4e99fcb3eda0cd0b832e53f/tree 3834af65cf3bd89d157fd64af08103e32225cd60 passed GitHub Security verification 39026911425 and Vercel. No submitted reviews or inline threads were present. Preview dpl_Gz7chXA2daWVY2yCnLiiiyTAKbkr READY: seven authenticated public delivery checks passed; browser returned authored lesson evidence/primary source and cleared question/answer/consent on topic change. Desktop screenshot inspected; width 1348 <= viewport 1363. Initial raw preview HTTP hit deployment protection; owner-route protected fetch did not expose app headers and is not owner acceptance. Production dpl_dmdhSBWZHDQjJGGJ7pCTX4swPa1f READY on the exact merge with both canonical domains assigned. Ten canonical delivery checks passed: Study page, exact three clients/styles and count-only catalog, inactive-AI/no-store status, 11-topic/537-concept Study catalog, two private/no-store 401 routes and 624 Kaspa/722-review held-bank status. The first bank probe used the wrong nested path; one corrected read passed without an application change. Canonical browser renders the new collapsed/open lesson-help entry with AI opt-in hidden and no horizontal overflow; no canonical question, game, reward, owner-login or wallet action submitted. Production deployment-scoped error/fatal log count query for the recent ten-minute window returned no groups; this early empty window is not a long-term observability guarantee. Full final verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Production dependency audit reports zero vulnerabilities; 37-component SBOM refreshed. Actual phone/Silk, live model quality/budget, first TN10 transfer, provider restore and independent review remain unverified."
@@ -824,7 +825,7 @@
       "nextAction": "Keep #120 and its exact twenty original PNGs/tracker intact. Await founder resumption; review against current continuity before any merge.",
       "acceptance": [
         "Original filenames/bytes/provenance remain intact at the pinned paused head.",
-        "500 concepts × five artworks remain distinct from finished-image and collectible-supply counts.",
+        "500 concepts \u00d7 five artworks remain distinct from finished-image and collectible-supply counts.",
         "A separate founder resumption precedes additional generation/production; runtime migration remains COLL-001."
       ],
       "dependsOn": [],
@@ -1013,6 +1014,27 @@
       ],
       "releaseEvidence": [
         "GAME-001 career mastery merged in #147 October 17 at 09:31:03 UTC as be463ecdcb303ae7a8ab3427b5cbf41709106bc5. Final head d37089d3a735627d3402bc370c5a16d21bcb8eb6/tree 730ca15287c833d143f77dedd9ea71a66c664434 passed GitHub verification 39020919100 and Vercel; no submitted reviews or inline threads. Production dpl_7CCPiCLoug5Du1juGRrLAdmRWboc READY on the exact merge, both canonical domains assigned. Eleven targeted delivery checks passed under 15-second bounds: four public page markers, six exact-byte clients/styles and private unauthenticated no-store 401 status. Corrected preview screenshot shows three recommended cards, 18 emblems, absolute canvas, intro height about 486px and width 1348 <= viewport 1363. A fresh preview guest saved a tracked path; My HQ retrieved it and rendered 102 achievements with only three shown in Next goals. First-head catalog All/Kaspa/Diamond filtering passed, but its canvas displacement was corrected on the final head. Canonical live hub loads three cards/18 emblems, absolute canvas and no horizontal overflow; no canonical tracking/reward/game action submitted. Full revised verification: 552 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Actual phone/narrow rendering, live gameplay/unlock/claim flow and independent review remain unverified."
+      ]
+    },
+    {
+      "id": "LAUNCH-001",
+      "priority": "P0",
+      "status": "active",
+      "title": "Prove the core loop and close the first release scope",
+      "owner": "Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned",
+      "nextAction": "Ship the owner-only receipt-window fix, then complete the bounded first-proof run in docs/FIRST-PROOF-LAUNCH.md. Record real phone save/return, one manual GEEKT receipt/transfer and provider recovery separately. Do not substitute more features or question counts for acceptance.",
+      "acceptance": [
+        "Owner desk checks the current same-browser Daily proof and native remaining run lifetime without renewing it; expired/ineligible runs cannot enable its queue button.",
+        "Return from gameplay or browser back-forward cache refreshes private readiness without automatically queuing, signing or sending; late canceled responses cannot restore private state.",
+        "Publish the exact checked change and retain live monitoring failures, real-device/wallet/provider gaps and the finite pilot scope.",
+        "Founder reviews actual pilot results before a Beta label; full campaign, two-person Royale and capacity claims retain their existing acceptance checklist."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/FIRST-PROOF-LAUNCH.md",
+        "docs/TESTNET-REWARD-PILOT.md",
+        "tests/testnet-client.test.js",
+        "tests/testnet-rewards.test.js"
       ]
     }
   ]

@@ -9,7 +9,11 @@ Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. The n
 - Phone evidence: initial passkey flow succeeded according to the founder on October 16 at 2:35 AM Detroit. After the edge fix, the founder reported “Ok better” at 1:00 PM. Preserve both observations; neither establishes every recovery, browser-bar, campaign or multiplayer scenario.
 - PR #119 is superseded as a merge candidate. Its unshipped work is retained at exact head and mapped to separate backlog IDs. PR #120 stays paused with its original art and tracker intact. See [PR reconciliation](PR-RECONCILIATION.md).
 
-## Execution order
+## Proof-first priority — October 18
+
+Founder direction now prioritizes [LAUNCH-001](FIRST-PROOF-LAUNCH.md): close the first-proof scope before further optional features or bank expansion. Current-Daily preflight and expiry feedback remove an immediate pilot obstacle; actual phone/return, one manual GEEKT transfer and provider recovery still require their owners. The earlier execution order below is retained for the wider roadmap; it does not make every content milestone a prerequisite to a supervised proof run.
+
+## Earlier execution order
 
 | Order | Work | Next concrete result | Completion boundary |
 | --- | --- | --- | --- |

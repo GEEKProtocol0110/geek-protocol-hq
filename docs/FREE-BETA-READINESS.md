@@ -1,8 +1,14 @@
 # Free-beta candidate and pilot checklist
 
-**Prepared October 9; refreshed October 16, 2026. Status: current runtime evidence recorded; broader production pilot acceptance pending. The public release remains Alpha.** This checklist covers Kaspa-first learning and free gameplay. It does not approve paid entry, GEEK rewards, cash-out, treasury settlement, burns, NFT ownership or collection minting.
+**Prepared October 9; current handoff refreshed October 18, 2026. Status: current runtime evidence recorded; broader production pilot acceptance pending. The public release remains Alpha.** This checklist covers Kaspa-first learning and free gameplay. It does not approve paid entry, GEEK rewards, cash-out, treasury settlement, burns, NFT ownership or collection minting.
 
-## Current runtime and acceptance checkpoint
+## Current first-proof handoff — October 18
+
+The immediate task is [LAUNCH-001: first proof, then expansion](FIRST-PROOF-LAUNCH.md). Runtime #150 is the latest recorded deployed baseline: 750 reviewed Kaspa concepts; 568 tests at that release. The maintained project record owns exact later release evidence. The receipt-window change and 574 local checks are a candidate until CI/merge/deployment are recorded. Phone, wallet, provider, campaign and Royale acceptance below remain explicit. Current monitoring failures are retained in the first-proof record.
+
+The October 16 and earlier checkpoints below are historical; they do not describe current main.
+
+## Historical October 16 runtime and acceptance checkpoint
 
 Runtime is [PR #137](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/137), merge `b194970626b4864286fb25a210b33df14047d3bc`, tree `0b2499b3dc0fe03db7ef8fc3606099926999cbe2`. Main also includes later documentation through #138. The maintained [project record](continuity/project.json) owns later exact runtime evidence.
 

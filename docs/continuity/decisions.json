@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-17",
+  "updatedAt": "2026-10-18",
   "records": [
     {
       "id": "DR-001",
@@ -278,6 +278,19 @@
         "docs/PERFORMANCE-BASELINE.md"
       ],
       "recordedAt": "2026-10-17",
+      "supersedes": null
+    },
+    {
+      "id": "DR-023",
+      "status": "founder-direction",
+      "title": "Prioritize a finite proof run before further expansion",
+      "decision": "Make the next release about demonstrating the existing learning and reward-receipt path, closing launch blockers and recording acceptance. Keep question growth and optional features from indefinitely expanding that scope. Public Alpha, full free-beta acceptance, testnet transfer proof, paid-model activation and Mainnet settlement remain distinct.",
+      "basis": "Founder October 18 Detroit: continue building, wrap this up and turn it on; improvement never stops but proving must be the start. This prioritizes implementation and proof, without fabricating device/wallet/provider evidence or overturning the bank-first CCE and economic holds.",
+      "evidence": [
+        "docs/FIRST-PROOF-LAUNCH.md",
+        "docs/FREE-BETA-READINESS.md"
+      ],
+      "recordedAt": "2026-10-18",
       "supersedes": null
     }
   ]
