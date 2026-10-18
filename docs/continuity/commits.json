@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "capturedAt": "2026-10-18",
-  "through": "eff74c91972aff5bf962237b4aa1104938d75a5e",
+  "through": "1f15c3e7a7ebfe84c8060e0351391681fbdca5cf",
   "scope": "Preserved HQ Git commit metadata through PR #140 merge. Product baseline is #140, with production/CI evidence in the project record. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation. Observed background release #145 and preceding login bookkeeping added October 17; product baseline #145 evidence is in project.json. Observed #146 rewarded challenges and preceding background release bookkeeping added; current baseline #146 evidence is in project.json. Observed #147 initial/final heads and merge plus preceding release bookkeeping added; current baseline #147 evidence is in project.json. Observed #148 head/merge and preceding documentation checkpoint added; current #148 production evidence is in project.json. Observed #149 head/merge and preceding documentation checkpoint added; current #149 production evidence is in project.json. Observed #150 head/merge and preceding documentation checkpoint added; current #150 production evidence is in project.json. Observed October 18 release/manual-proof documentation and #153 checked head/merge added. No provider restore or signer provisioning is implied.",
   "records": [
     {
@@ -2277,6 +2277,23 @@
       ],
       "authoredAt": "2026-10-18T04:03:23-04:00",
       "title": "Merge pull request #153 from GEEKProtocol0110/codex/automatic-geekt-rewards"
+    },
+    {
+      "commit": "828b493d2ca68369def5ba6841557329ca81f890",
+      "parents": [
+        "eff74c91972aff5bf962237b4aa1104938d75a5e"
+      ],
+      "authoredAt": "2026-10-18T04:06:38-04:00",
+      "title": "Use canonical reward worker API path and record deployment blocker"
+    },
+    {
+      "commit": "1f15c3e7a7ebfe84c8060e0351391681fbdca5cf",
+      "parents": [
+        "eff74c91972aff5bf962237b4aa1104938d75a5e",
+        "828b493d2ca68369def5ba6841557329ca81f890"
+      ],
+      "authoredAt": "2026-10-18T04:07:48-04:00",
+      "title": "Merge pull request #154 from GEEKProtocol0110/codex/geekt-worker-canonical-api"
     }
   ]
 }
