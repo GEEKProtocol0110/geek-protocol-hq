@@ -500,3 +500,10 @@ Use one entry per substantive session/interruption: task ID, exact review/commit
 - Founder reports Kasware mobile update/access to GEEK/TKAS/GEEKT and wants the first test reward tonight. Then reports the payout/receipts page is missing. No wallet transfer is established.
 - Source confirms no Testnet workspace card and a discarded destination after owner login. Candidate adds a prominent GEEKT test payout card, clear risk-review cross-link and a fixed `next=testnet` destination through existing private login. Reject arbitrary/external/duplicate tokens to Home. Keep all owner, Daily, receipt and signing controls.
 - Forty-seven targeted native-Redis/access/monitor/client tests passed. Full verification passed 578 tests, zero failures/skips with native Redis 7.0.15, 311 security assertions and supporting checks (41 pages / 880 local links). Exact release evidence follows. Actual phone acceptance remains the next step, before Daily is started.
+
+
+## October 18 — GEEKT navigation correction released (#152)
+
+PR #152 merged October 18 at 05:31:49 UTC as 0f73748b679c4c43149f0011720637a51230c911. Checked head a4b98a0f344d060249e8b6e772ec7f5e85ba31c2/tree f9a10ba4d550880bb8d8628d15e1f46e0d838c1f matches local 72aeac7b20a6879ff1132484167200f4485f40be. Exact-head CI 39100800781 passed; no submitted reviews/threads. Preview dpl_4vEaMUrmmedYZ15rJVdiw9o1FZs7 READY; HTTP login HTML and exact client bytes verified. Production dpl_4mvZxRkzuMQtC9koLSowGvKLAYsi READY on the exact merge with both canonical domains assigned. Four canonical checks passed under 15-second bounds: fixed Testnet 303 destination, exact login HTML, exact login script and private/no-store preflight 401. Full local verification passed 578 tests, zero failures/skips, native Redis 7.0.15, 311 security assertions and supporting checks. Owner-home card and same fixed login destination are covered by actual server/client tests; physical-phone rendering/login and first manual GEEKT transfer remain pending. No owner key, wallet signature, transfer, Beta/economic activation, dependency or bank change.
+
+Next: confirm the receipts desk on the existing owner phone before starting Daily.

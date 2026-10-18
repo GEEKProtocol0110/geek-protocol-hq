@@ -49,3 +49,10 @@ PR #151 merged October 18 at 05:11:03 UTC as e8fb6a70c29ead26188bff0da24010e757e
 ## Owner navigation blocker — October 18, after #151
 
 Founder reports updated Kasware mobile with GEEK/TKAS/GEEKT access, then cannot locate payout receipts. Source inspection finds a Testnet navigation link but no main workspace card; owner login always redirects to Home, losing a direct Testnet request. Candidate adds a first GEEKT test payout card and a fixed `next=testnet` login token that returns only to `/ops/testnet/`. Unknown, external or duplicate tokens go to Home. The risk-review page also names the test payout explicitly. Owner authentication, current-player proof and wallet/manual-transfer requirements are unchanged. Monitoring requires the new exact Testnet login redirect. Real-phone discovery and the first transfer remain pending.
+
+
+## October 18 — GEEKT navigation correction released (#152)
+
+PR #152 merged October 18 at 05:31:49 UTC as 0f73748b679c4c43149f0011720637a51230c911. Checked head a4b98a0f344d060249e8b6e772ec7f5e85ba31c2/tree f9a10ba4d550880bb8d8628d15e1f46e0d838c1f matches local 72aeac7b20a6879ff1132484167200f4485f40be. Exact-head CI 39100800781 passed; no submitted reviews/threads. Preview dpl_4vEaMUrmmedYZ15rJVdiw9o1FZs7 READY; HTTP login HTML and exact client bytes verified. Production dpl_4mvZxRkzuMQtC9koLSowGvKLAYsi READY on the exact merge with both canonical domains assigned. Four canonical checks passed under 15-second bounds: fixed Testnet 303 destination, exact login HTML, exact login script and private/no-store preflight 401. Full local verification passed 578 tests, zero failures/skips, native Redis 7.0.15, 311 security assertions and supporting checks. Owner-home card and same fixed login destination are covered by actual server/client tests; physical-phone rendering/login and first manual GEEKT transfer remain pending. No owner key, wallet signature, transfer, Beta/economic activation, dependency or bank change.
+
+Next: confirm the receipts desk on the existing owner phone before starting Daily.

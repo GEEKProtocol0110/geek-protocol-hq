@@ -6,16 +6,16 @@
   "founder": "Michael Gee",
   "releaseChannel": "Public Alpha",
   "productBaseline": {
-    "pullRequest": 151,
-    "commit": "e8fb6a70c29ead26188bff0da24010e757eba4c3",
-    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/151",
+    "pullRequest": 152,
+    "commit": "0f73748b679c4c43149f0011720637a51230c911",
+    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/152",
     "status": "merged-deployed",
     "checkedOn": "2026-10-18",
-    "testsPassed": 574,
+    "testsPassed": 578,
     "testsFailed": 0,
     "testsSkipped": 0,
-    "productionProbesPassed": 21,
-    "evidence": "PR #151 merged October 18 at 05:11:03 UTC as e8fb6a70c29ead26188bff0da24010e757eba4c3. Checked head 899ccd393e18bd76b218debd27a919231011a6ca/tree 384b6ad0023d55229f9143f1a9efa7bb819696d7 matches verified local tree b0d79ca3425748e2d00da0de734f53ba9493efdb. Exact-head Security verification 39099595963 and merge verification 39099676983 succeeded. Production dpl_CdmM8gh38Z8MFvwvjb6pUtEQK93E READY on that merge with both canonical domains assigned. Standard 21-probe production monitoring 39099720197 succeeded after deployment with unchanged five-second limits. Three additional canonical protection checks passed under 15-second bounds: new preflight 401, desk 303 and client 401, all private/no-store. Two earlier local standard monitors failed (9/21 and 10/21 passed); four separate canonical health/catalog/economy/protection checks passed under 15-second bounds. Preserve both observations; runner variance does not prove root cause or sustained capacity. A fresh production HTTP Study session on the earlier #150 baseline completed five public questions correctly, received sourced explanations, saved 0 to 5 explored concepts and resumed the same completed run; no phone/authenticator acceptance is implied. Full verification: 574 tests, zero failures/skips, native Redis 7.0.15, 311 security assertions and supporting checks; no dependency or bank change. Preview build dpl_J3o1ArsfVrS5jRGwKWQPgucyuvxg READY, but authenticated fetch returned 401 and no CLI credentials were available; no preview owner/rendering acceptance is claimed. No submitted reviews/inline threads. Deployment-scoped error-level samples were Node DEP0169 url.parse deprecation warnings; do not claim a clean error window. Actual phone/Silk, owner preflight, first manual TN10 transfer, provider restore and independent review remain pending. No Beta label, paid-model, Mainnet settlement, CCE or ownership activation."
+    "productionProbesPassed": 4,
+    "evidence": "PR #152 merged October 18 at 05:31:49 UTC as 0f73748b679c4c43149f0011720637a51230c911. Checked head a4b98a0f344d060249e8b6e772ec7f5e85ba31c2/tree f9a10ba4d550880bb8d8628d15e1f46e0d838c1f matches local 72aeac7b20a6879ff1132484167200f4485f40be. Exact-head CI 39100800781 passed; no submitted reviews/threads. Preview dpl_4vEaMUrmmedYZ15rJVdiw9o1FZs7 READY; HTTP login HTML and exact client bytes verified. Production dpl_4mvZxRkzuMQtC9koLSowGvKLAYsi READY on the exact merge with both canonical domains assigned. Four canonical checks passed under 15-second bounds: fixed Testnet 303 destination, exact login HTML, exact login script and private/no-store preflight 401. Full local verification passed 578 tests, zero failures/skips, native Redis 7.0.15, 311 security assertions and supporting checks. Owner-home card and same fixed login destination are covered by actual server/client tests; physical-phone rendering/login and first manual GEEKT transfer remain pending. No owner key, wallet signature, transfer, Beta/economic activation, dependency or bank change."
   },
   "questionCheckpoint": {
     "active": 8355,
@@ -36,11 +36,11 @@
   },
   "currentWork": {
     "id": "LAUNCH-001",
-    "status": "active",
-    "description": "Founder updated Kasware mobile and reports access to GEEK, TKAS and GEEKT, but cannot find the payout desk. Fix owner-home discovery and lost Testnet login destination before continuing the manual transfer. Wallet access is founder-reported; no transfer or mobile provider acceptance is inferred."
+    "status": "needs-evidence",
+    "description": "#152 merged/deployed a visible GEEKT test payout workspace card and fixed owner-login return destination after founder could not locate the desk. Four live delivery/protection checks passed. Actual phone discovery/login and first TN10 transfer remain."
   },
   "nextTask": "LAUNCH-001",
-  "nextAction": "Release the GEEKT desk entry correction, then reopen /ops/testnet/ in the founder saved-player browser. Verify the desk before starting Daily and continue one receipt / one manual TN10 transfer / same-hash reconciliation.",
+  "nextAction": "Founder reopens /ops/testnet/ on the existing saved-player phone; owner sign-in now returns to that desk. Confirm Testnet reward receipts and the recipient before starting Daily, then complete one receipt and one manual GEEKT transfer with same-hash and balance evidence.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

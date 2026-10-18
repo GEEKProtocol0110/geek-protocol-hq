@@ -50,7 +50,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-006 | P0 | needs-evidence | Make returning login clear and keep advanced setup optional | Maintainer; founder confirms usability |
 | UX-007 | P1 | needs-evidence | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
 | GAME-001 | P1 | needs-evidence | Build a deep career challenge and mastery ladder | Maintainer; founder confirms phone/game usability |
-| LAUNCH-001 | P0 | active | Prove the core loop and close the first release scope | Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned |
+| LAUNCH-001 | P0 | needs-evidence | Prove the core loop and close the first release scope | Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -695,9 +695,9 @@ Evidence/specification: [docs/CAREER-MASTERY.md](../../docs/CAREER-MASTERY.md), 
 
 ## LAUNCH-001: Prove the core loop and close the first release scope
 
-**P0 / active.** Owner: Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned. Dependencies: none.
+**P0 / needs-evidence.** Owner: Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned. Dependencies: none.
 
-Next action: Fix the founder-reported missing payout entry: add a prominent GEEKT test payout card and preserve the fixed Testnet destination through owner login. Release it, then resume the actual owner-phone receipt and manual wallet transfer; all later proof gates remain.
+Next action: Reopen /ops/testnet/ on the founder phone; #152 now preserves the desk through login and adds its main workspace card. Confirm receipts/recipient before Daily, then one receipt and one manual TN10 transfer.
 
 Acceptance:
 
