@@ -4,7 +4,7 @@ Founder direction, October 15, 2026: build 1,000 legitimate questions per catego
 
 ## The actual bank
 
-The audit began with 7,801 active questions and 285 recorded source reviews. Historical expansion and editorial corrections remain in the maintenance record. After #149 reached 700 reviewed Kaspa concepts, the wallet/node follow-up brings this branch to **750 Kaspa concepts, 8,355 active questions and 848 internally source-reviewed questions**, with **7,152 more reviews needed** across the eight per-category targets. Exact merge/deployment status is in the [maintained state](continuity/CURRENT-STATE.md). The 8,000-question quality goal remains incomplete.
+The audit began with 7,801 active questions and 285 recorded source reviews. Historical expansion and editorial corrections remain in the maintenance record. After #149 reached 700 reviewed Kaspa concepts, the wallet/node follow-up brings the deployed bank to **750 Kaspa concepts, 8,355 active questions and 848 internally source-reviewed questions**, with **7,152 more reviews needed** across the eight per-category targets. Exact merge/deployment status is in the [maintained state](continuity/CURRENT-STATE.md). The 8,000-question quality goal remains incomplete.
 
 | Category | Active | Recorded source reviews | Still needed for 1,000 | Additional distinct questions needed even if every current draft passes |
 | --- | ---: | ---: | ---: | ---: |

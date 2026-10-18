@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "capturedAt": "2026-10-17",
-  "through": "28032004a0f46d0fd03c123cab4f5d1949245677",
-  "scope": "Preserved HQ Git commit metadata through PR #140 merge. Product baseline is #140, with production/CI evidence in the project record. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation. Observed background release #145 and preceding login bookkeeping added October 17; product baseline #145 evidence is in project.json. Observed #146 rewarded challenges and preceding background release bookkeeping added; current baseline #146 evidence is in project.json. Observed #147 initial/final heads and merge plus preceding release bookkeeping added; current baseline #147 evidence is in project.json. Observed #148 head/merge and preceding documentation checkpoint added; current #148 production evidence is in project.json. Observed #149 head/merge and preceding documentation checkpoint added; current #149 production evidence is in project.json.",
+  "capturedAt": "2026-10-18",
+  "through": "0654aa4ed5c4a0ebfa6c248b3f2607363379e4fb",
+  "scope": "Preserved HQ Git commit metadata through PR #140 merge. Product baseline is #140, with production/CI evidence in the project record. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation. Observed background release #145 and preceding login bookkeeping added October 17; product baseline #145 evidence is in project.json. Observed #146 rewarded challenges and preceding background release bookkeeping added; current baseline #146 evidence is in project.json. Observed #147 initial/final heads and merge plus preceding release bookkeeping added; current baseline #147 evidence is in project.json. Observed #148 head/merge and preceding documentation checkpoint added; current #148 production evidence is in project.json. Observed #149 head/merge and preceding documentation checkpoint added; current #149 production evidence is in project.json. Observed #150 head/merge and preceding documentation checkpoint added; current #150 production evidence is in project.json.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -2201,6 +2201,31 @@
       ],
       "authoredAt": "2026-10-17T19:57:17-04:00",
       "title": "Merge pull request #149 from GEEKProtocol0110/codex/kaspa-700-reviewed"
+    },
+    {
+      "commit": "330ebe3c235ccf6ab626feef6001af426dd0c25a",
+      "parents": [
+        "28032004a0f46d0fd03c123cab4f5d1949245677"
+      ],
+      "authoredAt": "2026-10-17T19:59:09-04:00",
+      "title": "Record Kaspa 700-concept release evidence"
+    },
+    {
+      "commit": "81824793ac3bd9a7f4cec5c9b4a90fbade5aea1f",
+      "parents": [
+        "330ebe3c235ccf6ab626feef6001af426dd0c25a"
+      ],
+      "authoredAt": "2026-10-17T21:47:35-04:00",
+      "title": "Grow reviewed Kaspa bank to 750 wallet and node concepts"
+    },
+    {
+      "commit": "0654aa4ed5c4a0ebfa6c248b3f2607363379e4fb",
+      "parents": [
+        "330ebe3c235ccf6ab626feef6001af426dd0c25a",
+        "81824793ac3bd9a7f4cec5c9b4a90fbade5aea1f"
+      ],
+      "authoredAt": "2026-10-17T21:48:50-04:00",
+      "title": "Merge pull request #150 from GEEKProtocol0110/codex/kaspa-750-reviewed"
     }
   ]
 }

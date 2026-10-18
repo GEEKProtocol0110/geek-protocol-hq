@@ -1,6 +1,6 @@
 # Question Maintenance — October 8, 2026
 
-The October 7 expansion reached **8,048 active questions**, twice the **4,024-question cleaned baseline**. The October 8 editorial pass retired **272 additional items**, leaving **7,776 active questions** before the subsequent ten KRC-20 additions. The October 8 total was **7,786** (194 Kaspa). The current branch total is **8,355** (750 Kaspa); see the dated follow-ups below. Historical expansion counts below describe October 7; current counts and review dispositions are in [Editorial Review](EDITORIAL-REVIEW.md). The previous 8,032 rows included generated variants, repeated facts, and unusable imports. **4,008 rows were retired** and **4,024 distinct questions added**. Retired records remain server-only for previously issued game IDs and are excluded from every new pool and public count.
+The October 7 expansion reached **8,048 active questions**, twice the **4,024-question cleaned baseline**. The October 8 editorial pass retired **272 additional items**, leaving **7,776 active questions** before the subsequent ten KRC-20 additions. The October 8 total was **7,786** (194 Kaspa). The current merged total is **8,355** (750 Kaspa); see the dated follow-ups below. Historical expansion counts below describe October 7; current counts and review dispositions are in [Editorial Review](EDITORIAL-REVIEW.md). The previous 8,032 rows included generated variants, repeated facts, and unusable imports. **4,008 rows were retired** and **4,024 distinct questions added**. Retired records remain server-only for previously issued game IDs and are excluded from every new pool and public count.
 
 | Category | Previous rows | Cleaned baseline | Added | Active questions |
 | --- | ---: | ---: | ---: | ---: |
@@ -158,3 +158,5 @@ The 700-concept checkpoint shipped in [PR #149](https://github.com/GEEKProtocol0
 ## October 18, 2026 UTC — 750-concept wallet/node batch
 
 The October 17 Detroit continuation adds 50 internally source-reviewed node-operation, wallet-storage and message/key-record concepts. Candidate total: 750 Kaspa / 8,355 active / 848 recorded reviews / 7,152 reviews remaining across the eight category targets. [Review scope](KASPA-750-REVIEW-2026-10-18.md) and [exact item/source register](kaspa-750-review-2026-10-18.json) retain the pinned evidence and editorial limits. Old active/retired files remain unchanged, introductory Study stays 537, and CCE/economy holds remain in force. Exact release status belongs to the maintained state.
+
+The 750-concept checkpoint shipped in [PR #150](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/150). Live readiness and exact public count files agree; CCE remains held.

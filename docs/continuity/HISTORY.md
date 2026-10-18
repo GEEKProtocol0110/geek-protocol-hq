@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-The ledger preserves **136 merged HQ PR records** and **267 Git commit records** through the declared commit snapshot `28032004a0f46d0fd03c123cab4f5d1949245677`. The product runtime baseline remains #149. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
+The ledger preserves **137 merged HQ PR records** and **270 Git commit records** through the declared commit snapshot `0654aa4ed5c4a0ebfa6c248b3f2607363379e4fb`. The product runtime baseline remains #150. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
 
 ## Founding record
 
@@ -12,6 +12,7 @@ Three exact historical master/litepaper snapshots are preserved with source comm
 
 | PR | Merged (UTC) | Change | Commit |
 | --- | --- | --- | --- |
+| [#150](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/150) | 2026-10-18T01:48:51Z | Grow reviewed Kaspa bank to 750 wallet and node concepts | `0654aa4ed5c4` |
 | [#149](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/149) | 2026-10-17T23:57:18Z | Grow reviewed Kaspa bank to 700 distinct concepts | `28032004a0f4` |
 | [#148](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/148) | 2026-10-17T11:07:47Z | Add source-grounded ACE lesson help and verify player readiness | `67a687cedbfd` |
 | [#147](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/147) | 2026-10-17T09:31:03Z | Build 90 career challenges, mastery emblems and saved goal tracking | `be463ecdcb30` |

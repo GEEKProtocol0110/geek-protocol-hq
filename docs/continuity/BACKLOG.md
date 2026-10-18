@@ -99,7 +99,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Verify and release the 750-concept wallet/node candidate; then continue 250 distinct source-reviewed Kaspa concepts toward 1,000. Preserve issued keys, independent-review status and all bank/economy holds.
+Next action: #150 merged/deployed: 750 reviewed Kaspa / 8,355 active / 848 recorded reviews. Continue 250 distinct source-reviewed Kaspa concepts toward 1,000; independent editor remains unassigned. Preserve issued keys and all bank/economy holds.
 
 Acceptance:
 
