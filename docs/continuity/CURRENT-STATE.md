@@ -25,9 +25,9 @@ Record date: 2026-10-18. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-001: active.** #150 merged/deployed 50 distinct source-pinned wallet/node concepts: 750 reviewed Kaspa, 8,355 active and 848 recorded reviews. Introductory Study stays 537. Another 250 legitimate Kaspa concepts remain toward 1,000; internal review is separate from independent approval.
+**LAUNCH-001: active.** Founder directs proof before further expansion. Close a finite launch scope, ship current-Daily eligibility/native-expiry feedback and return-to-desk refresh, then record real-device, manual TN10 and recovery evidence. Runtime baseline remains #150 until the new release is verified.
 
-Next task: **BANK-001**. Continue 250 distinct source-reviewed Kaspa concepts toward 1,000, then the remaining seven categories. Gather actual phone/Silk return/revocation, first manual TN10 transfer, bounded A.C.E. model/budget/data-policy evaluation and provider recovery evidence when owners are available. Preserve bank/economy holds and paused artwork. Hall of Thanks changes were deferred by the founder.
+Next task: **LAUNCH-001**. Finish the first-proof release in docs/FIRST-PROOF-LAUNCH.md. Prioritize one actual saved-player learning/return run and one manually approved GEEKT receipt/transfer; preserve pending provider recovery and full beta acceptance. Reviewed-bank growth continues after immediate proof work; CCE still requires 1,000 reviewed concepts per category and separately approved economics. No Beta, paid-AI or Mainnet activation is inferred.
 
 ## Holds
 

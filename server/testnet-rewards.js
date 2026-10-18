@@ -93,6 +93,24 @@ export const transferObservation = (operation, record) => {
   if (!/^[0-9]+$/.test(operation.opScore || '') || !HASH.test(operation.checkpoint || '')) throw new Error('TESTNET_INDEXER_UNAVAILABLE');
   return { accepted: true, operationScore: operation.opScore, checkpoint: operation.checkpoint };
 };
+// Read the same current run and its actual remaining lifetime without renewing it.
+const RUN_WINDOW_LUA = `-- geek-testnet-run-window-v1
+if redis.call('GET', KEYS[1]) ~= ARGV[1] then return {} end
+return {redis.call('GET', KEYS[2]) or '', redis.call('PTTL', KEYS[2])}`;
+const latestPilotRun = async req => {
+  const session = await requireSession(req), activeKey = `geek:ranked:active:${session.id}`;
+  const id = await redis('GET', activeKey);
+  const base = { playerName: session.name, state: 'missing' };
+  if (!RUN.test(id || '')) return base;
+  const snapshot = await redis('EVAL', RUN_WINDOW_LUA, 2, activeKey, `geek:run:${id}`, id);
+  if (!Array.isArray(snapshot)) throw new Error('TESTNET_RECORD_INVALID');
+  if (!snapshot.length || !snapshot[0] || !Number.isSafeInteger(snapshot[1]) || snapshot[1] <= 0) return base;
+  let proof;
+  try { proof = verifiedPilotRun(snapshot[0], id, session.id); }
+  catch (error) { if (error.message !== 'TESTNET_RUN_INVALID') throw error; return { ...base, state: 'ineligible' }; }
+  if (snapshot[1] > 300000) return { ...base, state: 'ineligible' };
+  return { playerName: session.name, state: 'eligible', run: { id, correct: proof.correct, score: proof.score, remainingMs: snapshot[1] } };
+};
 export async function testnetRewardsHandler(req, res) {
   try {
     if (!['GET', 'POST'].includes(req.method)) return methodNotAllowed(res, 'GET, POST');
@@ -104,6 +122,10 @@ export async function testnetRewardsHandler(req, res) {
     await rateLimit('testnet-pilot', clientFingerprint(req), 40, 600);
     const config = testnetConfig();
     if (req.method === 'GET') {
+      if (req.query?.run !== undefined) {
+        if (req.query.run !== 'latest') throw new Error('INVALID_REQUEST');
+        return sendJson(res, 200, { ok: true, enabled: Boolean(config), ...(config ? await latestPilotRun(req) : { state: 'disabled' }), automaticSigning: false, mainnetSettlementEnabled: false });
+      }
       const ids = await redis('ZREVRANGE', testnetRewardIndex, 0, 19);
       if (!Array.isArray(ids) || ids.some(id => !HASH.test(id))) throw new Error('TESTNET_RECORD_INVALID');
       const rows = ids.length ? await redis('MGET', ...ids.map(testnetRewardKey)) : [];

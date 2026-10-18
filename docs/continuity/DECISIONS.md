@@ -223,3 +223,13 @@ Continue all five roadmap paths with concrete implementation and evidence: prese
 Basis: Founder October 17 asks what is next, then approves all that. This does not invent a model spending amount, grant autonomous administrator/signing authority, bypass Daily eligibility or remove existing holds.
 
 Evidence: [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md), [docs/ACE-TUTOR.md](../../docs/ACE-TUTOR.md), [docs/PERFORMANCE-BASELINE.md](../../docs/PERFORMANCE-BASELINE.md).
+
+## DR-023: Prioritize a finite proof run before further expansion
+
+**founder-direction** · 2026-10-18.
+
+Make the next release about demonstrating the existing learning and reward-receipt path, closing launch blockers and recording acceptance. Keep question growth and optional features from indefinitely expanding that scope. Public Alpha, full free-beta acceptance, testnet transfer proof, paid-model activation and Mainnet settlement remain distinct.
+
+Basis: Founder October 18 Detroit: continue building, wrap this up and turn it on; improvement never stops but proving must be the start. This prioritizes implementation and proof, without fabricating device/wallet/provider evidence or overturning the bank-first CCE and economic holds.
+
+Evidence: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUNCH.md), [docs/FREE-BETA-READINESS.md](../../docs/FREE-BETA-READINESS.md).

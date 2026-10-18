@@ -78,3 +78,8 @@ The owner desk now derives wallet-display amounts from canonical integer strings
 ## October 17 selected-transfer review candidate
 
 The desk now shows selectable read-only fields for the selected receipt: wallet amount in whole tokens, recipient and unsigned KRC-20 operation using exact raw units. Missing/malformed decimals leave amount/operation unavailable. Clearing private records clears these fields. A receipt with an attached hash says to reconcile that same hash without another send. This changes neither eligibility nor signing/transfer behavior. A 10:48:51 UTC read of the fixed public token endpoint returned deployed/eight decimals for GEEKT; it does not verify sender funding, a receipt or any transfer. See [the concrete owner handoff](PLAYER-READINESS-2026-10-17.md).
+
+
+## October 18 first-proof candidate
+
+The desk uses an owner-protected current-player preflight that applies the same completed/reviewed Daily proof checks as queuing and atomically reads the run with its remaining Redis lifetime. It returns only the run ID, correct count, score and remaining milliseconds; it never renews the saved run. A conservative local countdown subtracts the request duration and disables/clears expired readiness. Returning from a game tab or browser back-forward cache refreshes private records/readiness without queuing or sending. Queuing remains an explicit action with unchanged server checks and atomic replay locks. See [the finite launch scope](FIRST-PROOF-LAUNCH.md). This is candidate behavior until the release is recorded; real owner-phone and transfer acceptance remain pending.

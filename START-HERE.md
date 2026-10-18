@@ -19,7 +19,7 @@ Read [AGENTS.md](AGENTS.md) before editing. Inspect the current Git branch, open
 
 The central record is versioned text and structured data. A chat recollection is useful context; source files, dated decisions, tests and release evidence establish what is implemented. Merged code, a successful deployment and real-device acceptance are separate facts. Nothing in the fifty-year vision activates a reward or creates an institutional contract.
 
-**Immediate product priority:** continue the reviewed bank toward 1,000 questions in every category while completing the free-beta acceptance evidence. CCE remains on hold for the banks and contributor economy.
+**Immediate product priority:** complete the finite [first-proof launch](docs/FIRST-PROOF-LAUNCH.md): prove the saved-player learning path, one manual TN10 reward and recovery evidence before expanding the release. Reviewed-bank growth continues afterward; 1,000 reviewed questions per category and approved contributor economics still gate CCE.
 
 For a new assistant or developer, use this pickup instruction:
 
