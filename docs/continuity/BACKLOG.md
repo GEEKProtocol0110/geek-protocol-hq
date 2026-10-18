@@ -99,7 +99,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: #149 merged/deployed: 700 reviewed Kaspa / 8,305 active / 798 recorded reviews. Continue 300 distinct source-reviewed Kaspa concepts toward 1,000; independent editor remains unassigned. Preserve issued keys and all bank/economy holds.
+Next action: Verify and release the 750-concept wallet/node candidate; then continue 250 distinct source-reviewed Kaspa concepts toward 1,000. Preserve issued keys, independent-review status and all bank/economy holds.
 
 Acceptance:
 
@@ -107,7 +107,7 @@ Acceptance:
 - No padded variants; existing issued answers remain compatible.
 - Tier capacity and bank/catalog/readiness checks pass.
 
-Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/QUESTION-MAINTENANCE.md](../../docs/QUESTION-MAINTENANCE.md), [docs/kaspa-520-review-2026-10-15.json](../../docs/kaspa-520-review-2026-10-15.json), [docs/kaspa-540-review-2026-10-15.json](../../docs/kaspa-540-review-2026-10-15.json), [docs/kaspa-580-review-2026-10-15.json](../../docs/kaspa-580-review-2026-10-15.json), [docs/kaspa-600-review-2026-10-16.json](../../docs/kaspa-600-review-2026-10-16.json), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md), [docs/KASPA-SCRIPT-REVIEW-2026-10-17.md](../../docs/KASPA-SCRIPT-REVIEW-2026-10-17.md), [docs/KASPA-700-REVIEW-2026-10-17.md](../../docs/KASPA-700-REVIEW-2026-10-17.md), [docs/kaspa-700-review-2026-10-17.json](../../docs/kaspa-700-review-2026-10-17.json).
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/QUESTION-MAINTENANCE.md](../../docs/QUESTION-MAINTENANCE.md), [docs/kaspa-520-review-2026-10-15.json](../../docs/kaspa-520-review-2026-10-15.json), [docs/kaspa-540-review-2026-10-15.json](../../docs/kaspa-540-review-2026-10-15.json), [docs/kaspa-580-review-2026-10-15.json](../../docs/kaspa-580-review-2026-10-15.json), [docs/kaspa-600-review-2026-10-16.json](../../docs/kaspa-600-review-2026-10-16.json), [docs/PLAYER-READINESS-2026-10-17.md](../../docs/PLAYER-READINESS-2026-10-17.md), [docs/KASPA-SCRIPT-REVIEW-2026-10-17.md](../../docs/KASPA-SCRIPT-REVIEW-2026-10-17.md), [docs/KASPA-700-REVIEW-2026-10-17.md](../../docs/KASPA-700-REVIEW-2026-10-17.md), [docs/kaspa-700-review-2026-10-17.json](../../docs/kaspa-700-review-2026-10-17.json), [docs/KASPA-750-REVIEW-2026-10-18.md](../../docs/KASPA-750-REVIEW-2026-10-18.md), [docs/kaspa-750-review-2026-10-18.json](../../docs/kaspa-750-review-2026-10-18.json).
 
 ## BANK-002: Reach 1,000 reviewed Video games concepts
 
