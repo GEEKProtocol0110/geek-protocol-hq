@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-The ledger preserves **139 merged HQ PR records** and **272 Git commit records** through the declared commit snapshot `0654aa4ed5c4a0ebfa6c248b3f2607363379e4fb`. The product runtime baseline remains #152. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
+The ledger preserves **140 merged HQ PR records** and **276 Git commit records** through the declared commit snapshot `eff74c91972aff5bf962237b4aa1104938d75a5e`. The product runtime baseline remains #153. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
 
 ## Founding record
 
@@ -12,6 +12,7 @@ Three exact historical master/litepaper snapshots are preserved with source comm
 
 | PR | Merged (UTC) | Change | Commit |
 | --- | --- | --- | --- |
+| [#153](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/153) | 2026-10-18T08:03:24Z | Automate eligible Daily GEEKT test rewards with a separate scheduled signer | `eff74c91972a` |
 | [#152](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/152) | 2026-10-18T05:31:49Z | Show GEEKT test payout and return to its desk after owner login | `0f73748b679c` |
 | [#151](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/151) | 2026-10-18T05:11:03Z | Focus the launch on first proof and show the real Daily receipt window | `e8fb6a70c29e` |
 | [#150](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/150) | 2026-10-18T01:48:51Z | Grow reviewed Kaspa bank to 750 wallet and node concepts | `0654aa4ed5c4` |

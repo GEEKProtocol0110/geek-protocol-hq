@@ -6,16 +6,16 @@
   "founder": "Michael Gee",
   "releaseChannel": "Public Alpha",
   "productBaseline": {
-    "pullRequest": 152,
-    "commit": "0f73748b679c4c43149f0011720637a51230c911",
-    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/152",
+    "pullRequest": 153,
+    "commit": "eff74c91972aff5bf962237b4aa1104938d75a5e",
+    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/153",
     "status": "merged-deployed",
     "checkedOn": "2026-10-18",
-    "testsPassed": 578,
+    "testsPassed": 598,
     "testsFailed": 0,
     "testsSkipped": 0,
-    "productionProbesPassed": 4,
-    "evidence": "PR #152 merged October 18 at 05:31:49 UTC as 0f73748b679c4c43149f0011720637a51230c911. Checked head a4b98a0f344d060249e8b6e772ec7f5e85ba31c2/tree f9a10ba4d550880bb8d8628d15e1f46e0d838c1f matches local 72aeac7b20a6879ff1132484167200f4485f40be. Exact-head CI 39100800781 passed; no submitted reviews/threads. Preview dpl_4vEaMUrmmedYZ15rJVdiw9o1FZs7 READY; HTTP login HTML and exact client bytes verified. Production dpl_4mvZxRkzuMQtC9koLSowGvKLAYsi READY on the exact merge with both canonical domains assigned. Four canonical checks passed under 15-second bounds: fixed Testnet 303 destination, exact login HTML, exact login script and private/no-store preflight 401. Full local verification passed 578 tests, zero failures/skips, native Redis 7.0.15, 311 security assertions and supporting checks. Owner-home card and same fixed login destination are covered by actual server/client tests; physical-phone rendering/login and first manual GEEKT transfer remain pending. No owner key, wallet signature, transfer, Beta/economic activation, dependency or bank change."
+    "productionProbesPassed": 6,
+    "evidence": "PR #153 merged October 18 at 08:03:24 UTC as eff74c91972aff5bf962237b4aa1104938d75a5e. Exact head 3605e65edbe85607a7e3f189e4b627493fca3cce/tree 66283763efa1619e304bd874fc45ae7ab751f701 matches local 1f3dce63382d1d83ebbb0f7cfa567386bbf80c3d. CI 39109899250 passed; no submitted reviews/threads. Full verify passed 594 HQ tests plus four separate offline SDK tests, zero failures/skips, real Redis 7.0.15, 311 security assertions and supporting checks. Worker dependency audit: zero vulnerabilities. Preview dpl_kVpn59DxerfjGUtuLKeL1ZZkt8Ck READY; HTTP Play and worker GET/405 verified, player-status fetch was blocked by the preview authentication helper. Production dpl_JD8HQ2oF3bDZimGa8YT2aY4mEAnw READY on the exact merge with both canonical domains assigned. Six canonical checks passed under 15-second limits: Play HTML, exact status-client bytes, private player 401, unauthorized worker POST 401, private owner-auto 401 and Testnet desk 303. Initial unsuffixed API probes returned expected platform 308 redirects; corrected canonical paths passed. Follow-up fixes the isolated worker to use /api/session/ directly because its HTTP client rejects redirects. Error-level deployment samples were Node DEP0169 url.parse deprecation warnings. No rendered-device/automatic-transfer acceptance is claimed. Vercel denied creation of geek-geekt-testnet-worker in the existing team with 403 forbidden/no project-create permission; no CLI or CLI credentials are available. No signer wallet, production signing secret, new environment value, funded worker or actual automatic payment was created. Automatic admission remains off; manual proof stays complete, Mainnet/CCE/ownership holds unchanged."
   },
   "questionCheckpoint": {
     "active": 8355,
@@ -36,11 +36,11 @@
   },
   "currentWork": {
     "id": "CHAIN-004",
-    "status": "in-progress",
-    "description": "Founder requests automatic rewards after the completed manual pilot. Automatic Daily outbox, private test enrollment, player status, isolated SDK signer and production-only Vercel cron are implemented as a release candidate. Real automatic payout remains unaccepted."
+    "status": "blocked",
+    "description": "Automatic reward flow is merged/deployed in HQ; scheduled signer source is prepared. Vercel returned 403 for creating the separate signer project. A canonical API-path correction is the current source follow-up; no signing wallet/secret or automatic payout exists."
   },
   "nextTask": "CHAIN-004",
-  "nextAction": "Release and provision the isolated scheduled signer, fund its dedicated TN10 address and exercise one eligible enrolled Daily through automatic indexed confirmation. Prior manual payout must not be sent again. Remaining saved-player/Silk and recovery gates remain LAUNCH-001.",
+  "nextAction": "Create geek-geekt-testnet-worker in the existing Vercel team from GEEKProtocol0110/geek-protocol-hq, Root Directory workers/testnet, Node 24, no framework. Then provision distinct Production signer/worker/cron secrets, fund only the new TN10 signer, enable the two explicit service flags, enroll once and record a real automatic payout. Never send the completed manual receipt again.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

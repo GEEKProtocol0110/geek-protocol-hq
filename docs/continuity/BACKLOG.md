@@ -51,7 +51,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-007 | P1 | needs-evidence | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
 | GAME-001 | P1 | needs-evidence | Build a deep career challenge and mastery ladder | Maintainer; founder confirms phone/game usability |
 | LAUNCH-001 | P0 | needs-evidence | Prove the core loop and close the first release scope | Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned |
-| CHAIN-004 | P0 | in-progress | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
+| CHAIN-004 | P0 | blocked | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
 
 ## CONT-001: Publish the continuation system
 
@@ -711,9 +711,11 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 ## CHAIN-004: Automate eligible Daily GEEKT test rewards
 
-**P0 / in-progress.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
+**P0 / blocked.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Release the checked automatic flow, provision the isolated scheduled signer, fund only its dedicated TN10 address and record one real automatic payout. Keep prior manual receipt locked.
+Next action: Vercel project-create permission returned 403; founder/provider administrator must create the separate project with Root Directory workers/testnet. Then configure/fund the dedicated signer and verify one actual automatic payout. HQ release and offline tests do not satisfy live acceptance.
+
+Blocker: Vercel API denied project creation with 403 forbidden in the existing team; no CLI or CLI credentials are available. Separate signer project, secrets, funding and actual automatic acceptance remain absent.
 
 Acceptance:
 
