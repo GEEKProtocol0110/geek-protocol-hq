@@ -6,16 +6,16 @@
   "founder": "Michael Gee",
   "releaseChannel": "Public Alpha",
   "productBaseline": {
-    "pullRequest": 150,
-    "commit": "0654aa4ed5c4a0ebfa6c248b3f2607363379e4fb",
-    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/150",
+    "pullRequest": 151,
+    "commit": "e8fb6a70c29ead26188bff0da24010e757eba4c3",
+    "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/151",
     "status": "merged-deployed",
     "checkedOn": "2026-10-18",
-    "testsPassed": 568,
+    "testsPassed": 574,
     "testsFailed": 0,
     "testsSkipped": 0,
-    "productionProbesPassed": 8,
-    "evidence": "PR #150 merged October 18 at 01:48:51 UTC (October 17 Detroit) as 0654aa4ed5c4a0ebfa6c248b3f2607363379e4fb. Exact checked head 81824793ac3bd9a7f4cec5c9b4a90fbade5aea1f/tree 44ec4a40d5f59e0f7a2a718626c63e49be45cfe2 matches the locally verified tree. GitHub Security verification 39087771363 and Vercel passed. No submitted reviews or inline threads were present; independent editorial review remains unassigned. Preview dpl_41ZnnBkoJXfEpYSf5QFBKXR8KVJ8 READY: five authenticated read-only checks passed (exact Play/Sources/two count assets and held/no-store runtime readiness). Production dpl_6B7DBXPt8dMZeZmpow2An175CcE2 READY on the exact merge, both canonical domains assigned. Eight canonical read-only checks passed: exact Play/Sources/two count assets, held/no-store readiness at 750 reviewed Kaspa/848 reviews/8,355 active, unchanged 11-topic/537-concept Study, inactive-AI/authored-available/no-store status and public server-only bank path returning 404 without an answer key. Full verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all supporting checks (41 pages/879 local links). Exact serialized-question hashes and source-line references passed for all 50 additions; seven source-file Git blobs matched the pinned upstream tree. Existing active/retired question files did not change. A deployment-scoped recent error/fatal count query returned no groups; the early window is not long-term monitoring evidence. No live node configuration, wallet file, transfer, paid-model activation or Hall of Thanks change. Actual tablet/return/revocation, first manual TN10 transfer, live A.C.E. model/budget/data-policy evaluation, provider recovery and independent review remain separate."
+    "productionProbesPassed": 21,
+    "evidence": "PR #151 merged October 18 at 05:11:03 UTC as e8fb6a70c29ead26188bff0da24010e757eba4c3. Checked head 899ccd393e18bd76b218debd27a919231011a6ca/tree 384b6ad0023d55229f9143f1a9efa7bb819696d7 matches verified local tree b0d79ca3425748e2d00da0de734f53ba9493efdb. Exact-head Security verification 39099595963 and merge verification 39099676983 succeeded. Production dpl_CdmM8gh38Z8MFvwvjb6pUtEQK93E READY on that merge with both canonical domains assigned. Standard 21-probe production monitoring 39099720197 succeeded after deployment with unchanged five-second limits. Three additional canonical protection checks passed under 15-second bounds: new preflight 401, desk 303 and client 401, all private/no-store. Two earlier local standard monitors failed (9/21 and 10/21 passed); four separate canonical health/catalog/economy/protection checks passed under 15-second bounds. Preserve both observations; runner variance does not prove root cause or sustained capacity. A fresh production HTTP Study session on the earlier #150 baseline completed five public questions correctly, received sourced explanations, saved 0 to 5 explored concepts and resumed the same completed run; no phone/authenticator acceptance is implied. Full verification: 574 tests, zero failures/skips, native Redis 7.0.15, 311 security assertions and supporting checks; no dependency or bank change. Preview build dpl_J3o1ArsfVrS5jRGwKWQPgucyuvxg READY, but authenticated fetch returned 401 and no CLI credentials were available; no preview owner/rendering acceptance is claimed. No submitted reviews/inline threads. Deployment-scoped error-level samples were Node DEP0169 url.parse deprecation warnings; do not claim a clean error window. Actual phone/Silk, owner preflight, first manual TN10 transfer, provider restore and independent review remain pending. No Beta label, paid-model, Mainnet settlement, CCE or ownership activation."
   },
   "questionCheckpoint": {
     "active": 8355,
@@ -36,11 +36,11 @@
   },
   "currentWork": {
     "id": "LAUNCH-001",
-    "status": "active",
-    "description": "Founder directs proof before further expansion. Close a finite launch scope, ship current-Daily eligibility/native-expiry feedback and return-to-desk refresh, then record real-device, manual TN10 and recovery evidence. Runtime baseline remains #150 until the new release is verified."
+    "status": "needs-evidence",
+    "description": "#151 merged/deployed the same-player native-expiry preflight/countdown and return-to-desk refresh. Standard production monitoring passed on GitHub after deployment; earlier local failures remain. Live HTTP Study completed and resumed 5/5 on #150. First actual owner-phone/GEEKT and provider acceptance remain."
   },
   "nextTask": "LAUNCH-001",
-  "nextAction": "Finish the first-proof release in docs/FIRST-PROOF-LAUNCH.md. Prioritize one actual saved-player learning/return run and one manually approved GEEKT receipt/transfer; preserve pending provider recovery and full beta acceptance. Reviewed-bank growth continues after immediate proof work; CCE still requires 1,000 reviewed concepts per category and separately approved economics. No Beta, paid-AI or Mainnet activation is inferred.",
+  "nextAction": "On the saved-player phone, open /ops/testnet/, enter the recipient, complete and save Kaspa Daily, return to review the live countdown and queue once; approve exactly one TN10 transfer in the wallet and reconcile its same hash and recipient balance. Separately verify saved-player return/Silk and provider recovery, then review the scoped release. Mainnet/CCE/ownership/paid-AI and full beta acceptance remain separate.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

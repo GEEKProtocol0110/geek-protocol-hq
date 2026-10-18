@@ -4,7 +4,7 @@
 
 ## Current first-proof handoff — October 18
 
-The immediate task is [LAUNCH-001: first proof, then expansion](FIRST-PROOF-LAUNCH.md). Runtime #150 is the latest recorded deployed baseline: 750 reviewed Kaspa concepts; 568 tests at that release. The maintained project record owns exact later release evidence. The receipt-window change and 574 local checks are a candidate until CI/merge/deployment are recorded. Phone, wallet, provider, campaign and Royale acceptance below remain explicit. Current monitoring failures are retained in the first-proof record.
+The immediate task is [LAUNCH-001: first proof, then expansion](FIRST-PROOF-LAUNCH.md). Runtime #151 is the latest recorded deployed baseline: 750 reviewed Kaspa concepts; 574 tests at that release. The maintained project record owns exact later release evidence. PR #151 is now merged/deployed: 574 local tests passed, exact-head/merge CI passed and the standard 21-probe post-deployment monitor passed on GitHub. The [first-proof release record](FIRST-PROOF-LAUNCH.md#released-checkpoint--pr-151) preserves earlier local monitoring failures and all acceptance limits. Phone, wallet, provider, campaign and Royale acceptance below remain explicit. Current monitoring failures are retained in the first-proof record.
 
 The October 16 and earlier checkpoints below are historical; they do not describe current main.
 

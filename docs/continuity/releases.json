@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "checkedAt": "2026-10-18",
-  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1–2 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127. Observed #130/#131 merges added; #131 is the character/cosmic/holiday release. Observed #132/#133 merges added; #133 dials back repeated characters and emphasizes neon-space backgrounds. Observed #134/#135 merges added; #135 clarifies the Kaspa onboarding identity and adds optional cosmetic Grid discoveries. Observed #136/#137 merges added; #137 contains mobile decoration and stabilizes background edges. Physical-phone retest remains pending. Observed #138 documentation merge added during roadmap reconciliation; runtime baseline remains #137. Observed PR #139 roadmap and #140 PSKT content merges added October 17. Product baseline is now #140 with separately recorded production evidence; previous #137 baseline evidence is retained in its record. Observed #145 background stylesheet/guard release added; current product baseline #145 has separate production evidence. Earlier baseline evidence remains preserved. Observed #146 rewarded challenge release added; product baseline #146 has separate deployment/browser evidence and prior #145 baseline preserved. Observed #147 career/mastery and canvas-style correction merged; product baseline #147 has separately recorded CI/deployment/browser evidence and previous #146 evidence is preserved. Observed #148 bounded ACE/player readiness release added; current product baseline #148 has separate CI/deployment/browser evidence and #147 baseline is preserved. Observed #149 Kaspa 700-concept release added; current baseline #149 has separately checked CI/deployment/public delivery evidence and prior #148 baseline is preserved. Observed #150 wallet/node content release added; current baseline #150 has separate CI/deployment/delivery evidence and prior #149 baseline is preserved.",
+  "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1\u20132 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127. Observed #130/#131 merges added; #131 is the character/cosmic/holiday release. Observed #132/#133 merges added; #133 dials back repeated characters and emphasizes neon-space backgrounds. Observed #134/#135 merges added; #135 clarifies the Kaspa onboarding identity and adds optional cosmetic Grid discoveries. Observed #136/#137 merges added; #137 contains mobile decoration and stabilizes background edges. Physical-phone retest remains pending. Observed #138 documentation merge added during roadmap reconciliation; runtime baseline remains #137. Observed PR #139 roadmap and #140 PSKT content merges added October 17. Product baseline is now #140 with separately recorded production evidence; previous #137 baseline evidence is retained in its record. Observed #145 background stylesheet/guard release added; current product baseline #145 has separate production evidence. Earlier baseline evidence remains preserved. Observed #146 rewarded challenge release added; product baseline #146 has separate deployment/browser evidence and prior #145 baseline preserved. Observed #147 career/mastery and canvas-style correction merged; product baseline #147 has separately recorded CI/deployment/browser evidence and previous #146 evidence is preserved. Observed #148 bounded ACE/player readiness release added; current product baseline #148 has separate CI/deployment/browser evidence and #147 baseline is preserved. Observed #149 Kaspa 700-concept release added; current baseline #149 has separately checked CI/deployment/public delivery evidence and prior #148 baseline is preserved. Observed #150 wallet/node content release added; current baseline #150 has separate CI/deployment/delivery evidence and prior #149 baseline is preserved.",
   "records": [
     {
       "number": 1,
@@ -439,7 +439,7 @@
     },
     {
       "number": 68,
-      "title": "Add Trivia Royale with configurable 2–100-player rooms",
+      "title": "Add Trivia Royale with configurable 2\u2013100-player rooms",
       "mergedAt": "2026-10-08T11:56:20Z",
       "commit": "053c7e708327c9b8448579bd2141bf09f7337662",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/68"
@@ -796,7 +796,7 @@
     },
     {
       "number": 126,
-      "title": "Record the founder’s successful phone passkey result",
+      "title": "Record the founder\u2019s successful phone passkey result",
       "mergedAt": "2026-10-16T06:39:18Z",
       "commit": "26b97263c36b63abe09028b536e838bd5bcc1f86",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/126"
@@ -852,7 +852,7 @@
     },
     {
       "number": 135,
-      "title": "Clarify Geek Protocol’s Kaspa onboarding identity and add Grid Easter eggs",
+      "title": "Clarify Geek Protocol\u2019s Kaspa onboarding identity and add Grid Easter eggs",
       "mergedAt": "2026-10-16T15:38:19Z",
       "commit": "4a12ec8b4cff78c6042ec6c65b7b6027d3af7352",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/135"
@@ -918,7 +918,7 @@
     },
     {
       "number": 141,
-      "title": "Refresh every HQ page’s metadata and clarify Silk login and GEEKT readiness",
+      "title": "Refresh every HQ page\u2019s metadata and clarify Silk login and GEEKT readiness",
       "mergedAt": "2026-10-17T01:10:54-04:00",
       "commit": "8c0bdf165085add9fafbb2ead3dd4441af40539c",
       "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/141",
@@ -1104,6 +1104,17 @@
       "verification": {
         "status": "merged-deployed",
         "evidence": "PR #150 merged October 18 at 01:48:51 UTC (October 17 Detroit) as 0654aa4ed5c4a0ebfa6c248b3f2607363379e4fb. Exact checked head 81824793ac3bd9a7f4cec5c9b4a90fbade5aea1f/tree 44ec4a40d5f59e0f7a2a718626c63e49be45cfe2 matches the locally verified tree. GitHub Security verification 39087771363 and Vercel passed. No submitted reviews or inline threads were present; independent editorial review remains unassigned. Preview dpl_41ZnnBkoJXfEpYSf5QFBKXR8KVJ8 READY: five authenticated read-only checks passed (exact Play/Sources/two count assets and held/no-store runtime readiness). Production dpl_6B7DBXPt8dMZeZmpow2An175CcE2 READY on the exact merge, both canonical domains assigned. Eight canonical read-only checks passed: exact Play/Sources/two count assets, held/no-store readiness at 750 reviewed Kaspa/848 reviews/8,355 active, unchanged 11-topic/537-concept Study, inactive-AI/authored-available/no-store status and public server-only bank path returning 404 without an answer key. Full verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all supporting checks (41 pages/879 local links). Exact serialized-question hashes and source-line references passed for all 50 additions; seven source-file Git blobs matched the pinned upstream tree. Existing active/retired question files did not change. A deployment-scoped recent error/fatal count query returned no groups; the early window is not long-term monitoring evidence. No live node configuration, wallet file, transfer, paid-model activation or Hall of Thanks change. Actual tablet/return/revocation, first manual TN10 transfer, live A.C.E. model/budget/data-policy evaluation, provider recovery and independent review remain separate."
+      }
+    },
+    {
+      "number": 151,
+      "title": "Focus the launch on first proof and show the real Daily receipt window",
+      "mergedAt": "2026-10-18T05:11:03Z",
+      "commit": "e8fb6a70c29ead26188bff0da24010e757eba4c3",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/151",
+      "verification": {
+        "status": "merged-deployed",
+        "evidence": "PR #151 merged October 18 at 05:11:03 UTC as e8fb6a70c29ead26188bff0da24010e757eba4c3. Checked head 899ccd393e18bd76b218debd27a919231011a6ca/tree 384b6ad0023d55229f9143f1a9efa7bb819696d7 matches verified local tree b0d79ca3425748e2d00da0de734f53ba9493efdb. Exact-head Security verification 39099595963 and merge verification 39099676983 succeeded. Production dpl_CdmM8gh38Z8MFvwvjb6pUtEQK93E READY on that merge with both canonical domains assigned. Standard 21-probe production monitoring 39099720197 succeeded after deployment with unchanged five-second limits. Three additional canonical protection checks passed under 15-second bounds: new preflight 401, desk 303 and client 401, all private/no-store. Two earlier local standard monitors failed (9/21 and 10/21 passed); four separate canonical health/catalog/economy/protection checks passed under 15-second bounds. Preserve both observations; runner variance does not prove root cause or sustained capacity. A fresh production HTTP Study session on the earlier #150 baseline completed five public questions correctly, received sourced explanations, saved 0 to 5 explored concepts and resumed the same completed run; no phone/authenticator acceptance is implied. Full verification: 574 tests, zero failures/skips, native Redis 7.0.15, 311 security assertions and supporting checks; no dependency or bank change. Preview build dpl_J3o1ArsfVrS5jRGwKWQPgucyuvxg READY, but authenticated fetch returned 401 and no CLI credentials were available; no preview owner/rendering acceptance is claimed. No submitted reviews/inline threads. Deployment-scoped error-level samples were Node DEP0169 url.parse deprecation warnings; do not claim a clean error window. Actual phone/Silk, owner preflight, first manual TN10 transfer, provider restore and independent review remain pending. No Beta label, paid-model, Mainnet settlement, CCE or ownership activation."
       }
     }
   ]

@@ -83,3 +83,5 @@ The desk now shows selectable read-only fields for the selected receipt: wallet 
 ## October 18 first-proof candidate
 
 The desk uses an owner-protected current-player preflight that applies the same completed/reviewed Daily proof checks as queuing and atomically reads the run with its remaining Redis lifetime. It returns only the run ID, correct count, score and remaining milliseconds; it never renews the saved run. A conservative local countdown subtracts the request duration and disables/clears expired readiness. Returning from a game tab or browser back-forward cache refreshes private records/readiness without queuing or sending. Queuing remains an explicit action with unchanged server checks and atomic replay locks. See [the finite launch scope](FIRST-PROOF-LAUNCH.md). This is candidate behavior until the release is recorded; real owner-phone and transfer acceptance remain pending.
+
+Released in [PR #151](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/151), with exact CI/deployment and retained acceptance limits in [the first-proof release checkpoint](FIRST-PROOF-LAUNCH.md#released-checkpoint--pr-151).

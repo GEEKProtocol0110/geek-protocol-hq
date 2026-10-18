@@ -40,7 +40,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-005 | P0 | needs-evidence | Contain mobile decoration and stabilize page edges | Maintainer |
 | CONT-003 | P0 | done | Reconcile roadmap, stale drafts and current acceptance evidence | Maintainer |
 | WALLET-001 | P1 | planned | Review and isolate the optional Testnet wallet lab retained from #119 | Wallet maintainer; independent wallet reviewer unassigned |
-| CHAIN-003 | P2 | active | Review retained Testnet reward-desk amount and copy polish | Maintainer |
+| CHAIN-003 | P2 | needs-evidence | Review retained Testnet reward-desk amount and copy polish | Maintainer |
 | PILOT-002 | P1 | planned | Review retained wallet-safety course and evaluation tooling | Pilot coordinator and instructor unassigned |
 | ART-001 | P2 | blocked | Preserve paused original art and resume production only on founder direction | Founder supplies art; production maintainer unassigned |
 | SEO-001 | P0 | done | Maintain metadata and link coverage for every HQ page | Maintainer |
@@ -50,7 +50,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-006 | P0 | needs-evidence | Make returning login clear and keep advanced setup optional | Maintainer; founder confirms usability |
 | UX-007 | P1 | needs-evidence | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
 | GAME-001 | P1 | needs-evidence | Build a deep career challenge and mastery ladder | Maintainer; founder confirms phone/game usability |
-| LAUNCH-001 | P0 | active | Prove the core loop and close the first release scope | Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned |
+| LAUNCH-001 | P0 | needs-evidence | Prove the core loop and close the first release scope | Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -549,9 +549,9 @@ Evidence/specification: [docs/PR-RECONCILIATION.md](../../docs/PR-RECONCILIATION
 
 ## CHAIN-003: Review retained Testnet reward-desk amount and copy polish
 
-**P2 / active.** Owner: Maintainer. Dependencies: none.
+**P2 / needs-evidence.** Owner: Maintainer. Dependencies: none.
 
-Next action: Ship the current same-player, native-lifetime receipt preflight and return-to-desk refresh under LAUNCH-001, then complete one actual manual TN10 transfer. Existing raw/whole-token review fields remain in use.
+Next action: #151 merged/deployed; complete the real saved-player phone preflight and one manually approved GEEKT transfer with same-hash confirmation/recipient balance. Record phone return/Silk and provider recovery separately. Do not reopen optional feature expansion or infer Beta/Mainnet activation.
 
 Acceptance:
 
@@ -695,9 +695,9 @@ Evidence/specification: [docs/CAREER-MASTERY.md](../../docs/CAREER-MASTERY.md), 
 
 ## LAUNCH-001: Prove the core loop and close the first release scope
 
-**P0 / active.** Owner: Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned. Dependencies: none.
+**P0 / needs-evidence.** Owner: Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned. Dependencies: none.
 
-Next action: Ship the owner-only receipt-window fix, then complete the bounded first-proof run in docs/FIRST-PROOF-LAUNCH.md. Record real phone save/return, one manual GEEKT receipt/transfer and provider recovery separately. Do not substitute more features or question counts for acceptance.
+Next action: #151 merged/deployed; complete the real saved-player phone preflight and one manually approved GEEKT transfer with same-hash confirmation/recipient balance. Record phone return/Silk and provider recovery separately. Do not reopen optional feature expansion or infer Beta/Mainnet activation.
 
 Acceptance:
 
