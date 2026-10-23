@@ -714,9 +714,9 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 **P0 / blocked.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Owner/provider administrator: in the geek-protocols-projects Vercel team, import GEEKProtocol0110/geek-protocol-hq as geek-geekt-testnet-worker, Root Directory workers/testnet, Framework Other, Node 24. After creation, provision the dedicated Production secrets, test funding and explicit activation flags, then verify one automatic payout. Preserve the completed manual receipt; actual-phone recovery and provider restore stay separate.
+Next action: Obtain the required action-time approval for creating the scoped worker token shared by HQ and geek-protocol-hq-testnet, plus a distinct cron secret in the signer project. Complete secure Production provisioning without printing credentials, verify signer/address matching and dedicated test funding, deploy with processing paused, then explicitly activate and prove one automatic payout with same-hash recovery. Do not re-import the project, request the wallet key in chat, or resend the completed manual receipt.
 
-Blocker: October 23, 2026: a fresh exact-name project search was empty and Vercel again returned 403 forbidden/no project-create permission. No vercel/vc CLI is installed. Owner/provider project creation is required before secret provisioning, test funding and automatic acceptance.
+Blocker: Project creation is resolved and the correctly named signing Secret is stored. The worker token and cron Secret remain absent; dedicated funding, signer/address matching, deployment and actual automatic acceptance are unverified. Browser security policy requires action-time approval to create the new service access.
 
 Acceptance:
 

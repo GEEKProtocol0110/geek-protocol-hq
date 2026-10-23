@@ -25,9 +25,9 @@ Record date: 2026-10-23. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: blocked.** HQ status recovery #155 is merged/deployed and five canonical delivery/protection probes pass. Automatic reward activation remains blocked: Vercel again rejected separate project creation with 403 on October 23. No signer infrastructure, credentials, funding or actual automatic payout exists.
+**CHAIN-004: blocked.** The separate signer project geek-protocol-hq-testnet exists with the correct root/runtime and one-minute cron. The founder saved the correctly named Production signing secret. HQ sender/ten-job limit and explicit false flags are saved; authentication secrets, signer/address matching, funding, redeployment and real automatic acceptance remain outstanding.
 
-Next task: **CHAIN-004**. Owner/provider administrator: in the geek-protocols-projects Vercel team, import GEEKProtocol0110/geek-protocol-hq as geek-geekt-testnet-worker, Root Directory workers/testnet, Framework Other, Node 24. After creation, provision the dedicated Production secrets, test funding and explicit activation flags, then verify one automatic payout. Preserve the completed manual receipt; actual-phone recovery and provider restore stay separate.
+Next task: **CHAIN-004**. Obtain the required action-time approval for creating the scoped worker token shared by HQ and geek-protocol-hq-testnet, plus a distinct cron secret in the signer project. Complete secure Production provisioning without printing credentials, verify signer/address matching and dedicated test funding, deploy with processing paused, then explicitly activate and prove one automatic payout with same-hash recovery. Do not re-import the project, request the wallet key in chat, or resend the completed manual receipt.
 
 ## Holds
 
