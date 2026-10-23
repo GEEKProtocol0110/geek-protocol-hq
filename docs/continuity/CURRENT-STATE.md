@@ -25,9 +25,9 @@ Record date: 2026-10-23. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: blocked.** The separate signer project geek-protocol-hq-testnet exists with the correct root/runtime and one-minute cron. The founder saved the correctly named Production signing secret. HQ sender/ten-job limit and explicit false flags are saved; authentication secrets, signer/address matching, funding, redeployment and real automatic acceptance remain outstanding.
+**CHAIN-004: needs-evidence.** The separate signer and HQ have matching Production worker credentials, a distinct cron credential, and Ready paused deployments. Scheduled ticks return 200; unauthorized calls return private/no-store 401. Token/fee funding checks pass. Explicit activation, private-key/sender verification, one-time enrollment and actual automatic transfer acceptance remain outstanding.
 
-Next task: **CHAIN-004**. Obtain the required action-time approval for creating the scoped worker token shared by HQ and geek-protocol-hq-testnet, plus a distinct cron secret in the signer project. Complete secure Production provisioning without printing credentials, verify signer/address matching and dedicated test funding, deploy with processing paused, then explicitly activate and prove one automatic payout with same-hash recovery. Do not re-import the project, request the wallet key in chat, or resend the completed manual receipt.
+Next task: **CHAIN-004**. Obtain explicit approval to enable the bounded automatic TN10 test while preserving the ten-job UTC daily cap and one-recipient/day limit. Then enable the two processing flags and redeploy, verify scheduled processing without inventing signing-key acceptance, complete the owner-controlled one-time player enrollment with a distinct recipient, and prove one eligible Daily automatic payout plus same-hash recovery. The signer must verify its private key derives the configured sender before preparing any payment. Do not resend the completed manual receipt or expose credentials.
 
 ## Holds
 

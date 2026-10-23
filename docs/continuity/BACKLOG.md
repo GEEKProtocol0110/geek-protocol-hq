@@ -51,7 +51,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-007 | P1 | needs-evidence | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
 | GAME-001 | P1 | needs-evidence | Build a deep career challenge and mastery ladder | Maintainer; founder confirms phone/game usability |
 | LAUNCH-001 | P0 | needs-evidence | Prove the core loop and close the first release scope | Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned |
-| CHAIN-004 | P0 | blocked | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
+| CHAIN-004 | P0 | needs-evidence | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
 | CHAIN-005 | P1 | needs-evidence | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
 
 ## CONT-001: Publish the continuation system
@@ -712,11 +712,11 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 ## CHAIN-004: Automate eligible Daily GEEKT test rewards
 
-**P0 / blocked.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
+**P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Obtain the required action-time approval for creating the scoped worker token shared by HQ and geek-protocol-hq-testnet, plus a distinct cron secret in the signer project. Complete secure Production provisioning without printing credentials, verify signer/address matching and dedicated test funding, deploy with processing paused, then explicitly activate and prove one automatic payout with same-hash recovery. Do not re-import the project, request the wallet key in chat, or resend the completed manual receipt.
+Next action: Obtain explicit approval to enable the bounded automatic TN10 test while preserving the ten-job UTC daily cap and one-recipient/day limit. Then enable the two processing flags and redeploy, verify scheduled processing without inventing signing-key acceptance, complete the owner-controlled one-time player enrollment with a distinct recipient, and prove one eligible Daily automatic payout plus same-hash recovery. The signer must verify its private key derives the configured sender before preparing any payment. Do not resend the completed manual receipt or expose credentials.
 
-Blocker: Project creation is resolved and the correctly named signing Secret is stored. The worker token and cron Secret remain absent; dedicated funding, signer/address matching, deployment and actual automatic acceptance are unverified. Browser security policy requires action-time approval to create the new service access.
+Blocker: Authentication provisioning and paused scheduled operation are verified. Activation remains intentionally off pending explicit approval. The stored signing key has not been derived/checked against the configured sender, and no real automatic payment or recipient acceptance exists.
 
 Acceptance:
 
