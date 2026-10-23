@@ -36,11 +36,11 @@
   },
   "currentWork": {
     "id": "CHAIN-004",
-    "status": "needs-evidence",
-    "description": "Automatic TN10 admission and the separate signer are enabled after explicit founder approval. Both Production deployments are Ready; three active scheduled checks returned 200. Test funding was checked. Owner enrollment in the existing phone-player session, key/sender matching during a real job, first automatic payout and recovery acceptance still need evidence."
+    "status": "in-progress",
+    "description": "Automatic reward awaiting-indexer and scheduled 503 evidence reproduced a missing-operation recovery defect. Candidate now passes full local verification (606 HQ + four offline signer tests); publication, deployment and live same-hash acceptance remain pending."
   },
   "nextTask": "CHAIN-004",
-  "nextAction": "On the founder\u2019s phone in the existing HQ player browser, open the GEEKT Operations desk, authenticate with owner payout access, and use Automatic GEEKT test rewards to enroll that current player once. Select a checksum-valid testnet recipient different from the configured sender; do not use the dedicated signing wallet as its own recipient. Then complete all five Kaspa Daily questions, answer at least one correctly, choose Finish & save result, and verify one automatic indexed-confirmed receipt, exact recipient balance change and same-hash recovery. Never manually resend that run. Keep the ten-job UTC daily cap, one-recipient/day limit and Mainnet/CCE/ownership holds.",
+  "nextAction": "Review and release the checked missing-operation recovery correction, verify the HQ deployment, then observe the existing scheduled worker reconcile/rebroadcast only its immutable saved commit/reveal pair. Confirm the same reveal hash and exact recipient balance change before accepting the automatic pilot. If it remains unresolved, inspect the worker failure without deleting locks, replacing the journal, changing enrollment or manually resending. Keep all existing daily limits and economic holds.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

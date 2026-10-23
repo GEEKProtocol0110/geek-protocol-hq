@@ -24,13 +24,19 @@ export function testnetConfig() {
       !/^[1-9][0-9]{0,19}$/.test(config.amount || '')) throw new Error('TESTNET_CONFIG_INVALID');
   return { ...config, fingerprint: fingerprint(config) };
 }
-export const jsonFromIndexer = async path => {
+export const jsonFromIndexer = async (path, { allowMissingOperation = false } = {}) => {
   const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 8000);
   try {
     const response = await fetch(`${BASE}/${path}`, { signal: controller.signal, redirect: 'error', cache: 'no-store' });
     const text = await response.text();
-    if (!response.ok || text.length > 64000) throw new Error('unavailable');
+    if (text.length > 64000) throw new Error('unavailable');
     const payload = JSON.parse(text);
+    // Kasplex returns 403 (rather than a successful empty array) while an
+    // operation is absent. Only the explicit transfer-reconciliation callers
+    // may treat that exact response as pending. Asset/deploy checks fail closed.
+    if (allowMissingOperation && /^op\/[a-f0-9]{64}$/.test(path) &&
+        [403, 404].includes(response.status) && payload?.message === 'op not found' && payload.result === null) return null;
+    if (!response.ok) throw new Error('unavailable');
     if (payload.message !== 'successful' || !Array.isArray(payload.result) || payload.result.length > 1) throw new Error('unavailable');
     return payload.result[0] || null;
   } catch { throw new Error('TESTNET_INDEXER_UNAVAILABLE'); }
@@ -162,7 +168,7 @@ export async function testnetRewardsHandler(req, res) {
       record.transactionHash = body.transactionHash; record.state = 'awaiting-indexer'; record.attachedAt = Date.now();
     } else {
       if (record.state === 'queued') throw new Error('TESTNET_STATE_CHANGED');
-      observation = transferObservation(await jsonFromIndexer(`op/${record.transactionHash}`), record);
+      observation = transferObservation(await jsonFromIndexer(`op/${record.transactionHash}`, { allowMissingOperation: true }), record);
       // An absent, rejected or reorged observation never erases the transaction hash or permits another send.
       record.state = observation.accepted ? 'indexed-confirmed' : 'awaiting-indexer';
       record.lastCheckedAt = Date.now(); record.observation = observation;

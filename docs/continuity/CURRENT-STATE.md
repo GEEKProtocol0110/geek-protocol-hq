@@ -25,9 +25,9 @@ Record date: 2026-10-23. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: needs-evidence.** Automatic TN10 admission and the separate signer are enabled after explicit founder approval. Both Production deployments are Ready; three active scheduled checks returned 200. Test funding was checked. Owner enrollment in the existing phone-player session, key/sender matching during a real job, first automatic payout and recovery acceptance still need evidence.
+**CHAIN-004: in-progress.** Automatic reward awaiting-indexer and scheduled 503 evidence reproduced a missing-operation recovery defect. Candidate now passes full local verification (606 HQ + four offline signer tests); publication, deployment and live same-hash acceptance remain pending.
 
-Next task: **CHAIN-004**. On the founder’s phone in the existing HQ player browser, open the GEEKT Operations desk, authenticate with owner payout access, and use Automatic GEEKT test rewards to enroll that current player once. Select a checksum-valid testnet recipient different from the configured sender; do not use the dedicated signing wallet as its own recipient. Then complete all five Kaspa Daily questions, answer at least one correctly, choose Finish & save result, and verify one automatic indexed-confirmed receipt, exact recipient balance change and same-hash recovery. Never manually resend that run. Keep the ten-job UTC daily cap, one-recipient/day limit and Mainnet/CCE/ownership holds.
+Next task: **CHAIN-004**. Review and release the checked missing-operation recovery correction, verify the HQ deployment, then observe the existing scheduled worker reconcile/rebroadcast only its immutable saved commit/reveal pair. Confirm the same reveal hash and exact recipient balance change before accepting the automatic pilot. If it remains unresolved, inspect the worker failure without deleting locks, replacing the journal, changing enrollment or manually resending. Keep all existing daily limits and economic holds.
 
 ## Holds
 
