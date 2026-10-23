@@ -714,9 +714,9 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: On the founder’s phone in the existing HQ player browser, open the GEEKT Operations desk, authenticate with owner payout access, and use Automatic GEEKT test rewards to enroll that current player once. Select a checksum-valid testnet recipient different from the configured sender; do not use the dedicated signing wallet as its own recipient. Then complete all five Kaspa Daily questions, answer at least one correctly, choose Finish & save result, and verify one automatic indexed-confirmed receipt, exact recipient balance change and same-hash recovery. Never manually resend that run. Keep the ten-job UTC daily cap, one-recipient/day limit and Mainnet/CCE/ownership holds.
+Next action: Review and release the checked missing-operation recovery correction, verify the HQ deployment, then observe the existing scheduled worker reconcile/rebroadcast only its immutable saved commit/reveal pair. Confirm the same reveal hash and exact recipient balance change before accepting the automatic pilot. If it remains unresolved, inspect the worker failure without deleting locks, replacing the journal, changing enrollment or manually resending. Keep all existing daily limits and economic holds.
 
-Blocker: Infrastructure and explicit activation are complete. The cloud browser has no owner/player session for the founder’s existing phone player; the founder must perform one-time enrollment there. Actual automatic transfer, sender/key matching on a real job, recipient acceptance and recovery are unproved.
+Blocker: One enrolled automatic payment is awaiting indexer confirmation. The exact transfer lookup returns the Kasplex 403 op-not-found response; the deployed helper treats it as an unavailable indexer and aborts recovery before rebroadcast. This is a reproduced recovery defect, not proof of the initial submission failure. Code correction, deployment, exact-hash recipient acceptance and live recovery remain separate.
 
 Acceptance:
 
@@ -725,8 +725,9 @@ Acceptance:
 - Same-hash acceptance appears automatically for the enrolled player; private records stay private.
 - Separate scheduled signer deployed, funded and one actual automatic transfer accepted; implementation/offline checks alone are insufficient.
 - Mainnet settlement, CCE and collectible ownership remain disabled.
+- Exact Kasplex 403/404 op-not-found transfer lookups remain pending and permit immutable-journal recovery; other failures and pinned asset/deployment checks still stop work.
 
-Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md), [server/testnet-automatic.js](../../server/testnet-automatic.js), [workers/testnet/process.mjs](../../workers/testnet/process.mjs), [workers/testnet/signer.mjs](../../workers/testnet/signer.mjs), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [tests/testnet-worker.test.js](../../tests/testnet-worker.test.js).
+Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md), [server/testnet-automatic.js](../../server/testnet-automatic.js), [workers/testnet/process.mjs](../../workers/testnet/process.mjs), [workers/testnet/signer.mjs](../../workers/testnet/signer.mjs), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [tests/testnet-worker.test.js](../../tests/testnet-worker.test.js), [tests/testnet-indexer.test.js](../../tests/testnet-indexer.test.js), [docs/TESTNET-RECOVERY-2026-10-23.md](../../docs/TESTNET-RECOVERY-2026-10-23.md).
 
 ## CHAIN-005: Recover player reward status after interruptions
 

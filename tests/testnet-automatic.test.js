@@ -8,14 +8,16 @@ import operations from '../server/operations.js';
 import rewards from '../api/rewards.js';
 import { loadQuestionBank } from '../server/questions.js';
 import { autoIndex, autoJobKey, enrollmentKey, automaticConfig } from '../server/testnet-automatic.js';
+import { processPayment } from '../workers/testnet/process.mjs';
 const wallet = n => { const k = new kaspa.PrivateKey(n.toString(16).padStart(64, '0')); try { return k.toAddress('testnet').toString(); } finally { k.free(); } };
 const sender = wallet(7), recipient = wallet(3), deploy = 'a'.repeat(64), token = 'e'.repeat(64);
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
-let observed = null, loseReply = false, beforeCommit;
+let observed = null, loseReply = false, beforeCommit, missingOperationStatus = 200;
 globalThis.fetch = async (url, options) => {
   if (String(url).startsWith('https://tn10api.kasplex.org/v1/krc20/')) {
     const row = String(url).endsWith('token/GEEKT') ? { tick: 'GEEKT', hashRev: deploy, state: 'deployed', dec: '8' }
       : String(url).endsWith(`op/${deploy}`) ? { p: 'KRC-20', op: 'deploy', tick: 'GEEKT', hashRev: deploy, dec: '8', txAccept: '1', opAccept: '1' } : observed;
+    if (!row && missingOperationStatus !== 200) return Response.json({ message: 'op not found', result: null }, { status: missingOperationStatus });
     return Response.json({ message: 'successful', result: row ? [row] : [] });
   }
   assert.ok(String(url).startsWith('https://redis.automatic.test'), 'No production data or network sends');
@@ -29,7 +31,7 @@ globalThis.fetch = async (url, options) => {
 };
 after(async () => { globalThis.fetch = originalFetch; await fixture.close(); });
 beforeEach(async () => {
-  await fixture.command('FLUSHDB'); observed = null; loseReply = false; beforeCommit = null;
+  await fixture.command('FLUSHDB'); observed = null; loseReply = false; beforeCommit = null; missingOperationStatus = 200;
   Object.assign(process.env, { UPSTASH_REDIS_REST_URL: 'https://redis.automatic.test', UPSTASH_REDIS_REST_TOKEN: 'synthetic-token',
     AUDIT_LOG_SECRET: 'synthetic-automatic-audit-key-32-characters', CCE_ADMIN_TOKEN: 'synthetic-automatic-cce-key-32-characters',
     PAYOUT_REVIEW_ADMIN_TOKEN: 'synthetic-automatic-payout-key-32-characters', TESTNET_REWARDS_ENABLED: 'true',
@@ -162,4 +164,34 @@ test('immutable preparation, stale leases, worker restart and exact indexer acce
   assert.ok(!JSON.stringify(own.body).includes('journal'));
   const other = await call(rewards, 'GET', {}, await player(), { service: 'testnet' }); assert.deepEqual(other.body.records, []);
   await worker({ action: 'release', lease: claim.lease }); assert.equal((await worker({ action: 'claim' })).body.job, null);
+});
+
+test('a real 403 missing-operation response permits same-journal recovery and later exact confirmation', async () => {
+  const p = await player(); await enroll(p); const runId = await complete(p); await play(p, 'finish', { runId });
+  const claim = (await worker({ action: 'claim' })).body;
+  const prepared = await step('prepare', claim, claim.job, { journal }); assert.equal(prepared.statusCode, 200);
+  await worker({ action: 'release', lease: claim.lease });
+  missingOperationStatus = 403;
+  const sent = [];
+  const request = async body => {
+    const response = await worker(body);
+    assert.equal(response.statusCode, 200, JSON.stringify(response.body));
+    return response.body;
+  };
+  const signer = {
+    verify: async () => {},
+    prepare: async () => assert.fail('A persisted job must never construct another payment'),
+    submit: async saved => sent.push(structuredClone(saved))
+  };
+  assert.equal(await processPayment({ request, signer }), 'awaiting-indexer');
+  assert.deepEqual(sent, [journal.commit, journal.reveal]);
+  let [job] = await jobs(); assert.deepEqual(job.journal, journal);
+  assert.equal(job.observation.reason, 'not-indexed');
+  assert.equal(job.transactionHash, journal.reveal.id);
+  observed = { p: 'KRC-20', op: 'transfer', tick: job.ticker, hashRev: job.transactionHash, from: sender, to: recipient, amt: job.amount,
+    txAccept: '1', opAccept: '1', opError: '', mtsAdd: String(job.createdAt + 1), opScore: '100', checkpoint: 'd'.repeat(64) };
+  assert.equal(await processPayment({ request, signer }), 'indexed-confirmed');
+  assert.equal(sent.length, 2, 'Confirmation must not rebroadcast the accepted payment');
+  [job] = await jobs(); assert.deepEqual(job.journal, journal);
+  assert.equal((await jobs()).length, 1);
 });

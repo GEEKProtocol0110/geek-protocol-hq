@@ -175,7 +175,7 @@ export async function automaticWorkerHandler(req, res) {
     } else {
       if (job.state === 'queued') throw new Error('TESTNET_AUTO_STATE_CHANGED');
       await checkAsset(config);
-      job.observation = transferObservation(await jsonFromIndexer(`op/${job.transactionHash}`), job);
+      job.observation = transferObservation(await jsonFromIndexer(`op/${job.transactionHash}`, { allowMissingOperation: true }), job);
       job.state = job.observation.accepted ? 'indexed-confirmed' : 'awaiting-indexer';
       job.lastCheckedAt = Date.now();
     }
