@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-18",
+  "updatedAt": "2026-10-23",
   "priorityOrder": [
     "P0",
     "P1",
@@ -1086,6 +1086,30 @@
         "PR #154 merged October 18 at 08:07:48 UTC as 1f15c3e7a7ebfe84c8060e0351391681fbdca5cf. Exact head 828b493d2ca68369def5ba6841557329ca81f890/tree a258d121278ea89858503fc0eb7c11e8bc4a3800 matches local 270c8e1aa1845687de48c5f943e48b2992033ec8. CI 39110190459 passed; no submitted reviews/threads. Full verification passed 595 HQ tests plus four offline SDK tests, zero failures/skips, real Redis and all supporting checks. Production dpl_2bnMXoN68cGkX2BkaxnXTC1AsXRh READY on the exact merge. Four canonical no-redirect checks passed under 15-second bounds: exact player-status script, private player 401, unauthorized worker POST 401 and private owner-auto 401. The correction targets /api/session/ directly. HQ contains the released source/UI, but the separate signing service remains unprovisioned after Vercel project creation returned 403; no signer key/wallet, production environment mutation, funded sender or automatic payout was created. CHAIN-004 is blocked on owner/provider project creation, then secret provisioning, test funding and actual automated acceptance. Prior manual payout stays complete; no Mainnet/CCE/ownership activation."
       ],
       "blocker": "Vercel API denied project creation with 403 forbidden in the existing team; no CLI or CLI credentials are available. Separate signer project, secrets, funding and actual automatic acceptance remain absent."
+    },
+    {
+      "id": "CHAIN-005",
+      "priority": "P1",
+      "status": "active",
+      "title": "Recover player reward status after interruptions",
+      "owner": "Maintainer; founder confirms actual-phone behavior",
+      "nextAction": "Publish the checked candidate and record exact GitHub/preview results. Keep CHAIN-004 provider provisioning and actual automatic payment acceptance separate.",
+      "acceptance": [
+        "Private canonical status reads recover from temporary network, HTTP and timeout failures with one bounded request and a 15-second polling interval.",
+        "Queued or prepared payments report a pause when HQ automation is disabled; already confirmed payments retain their observed confirmation.",
+        "A saved-run event during a pending read triggers a fresh read without overlapping requests; enrolled and confirmed views can discover later jobs.",
+        "Lost access or enrollment clears the prior status; player changes, backgrounding and page-cache return invalidate late responses and request-specific deadlines.",
+        "Focused client tests, full required checks and exact release evidence are recorded; synthetic DOM tests do not establish real-device or automatic payment acceptance."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "public/play/assets/testnet-status.js",
+        "tests/testnet-status-client.test.js",
+        "docs/AUTOMATIC-GEEKT-REWARDS.md"
+      ],
+      "validationEvidence": [
+        "October 23, 2026: full npm run verify passed 603 HQ tests plus four offline SDK tests, zero failures/skips, required native Redis 7.0.15, 311 security assertions and all bank/content/archive/collection/repository/economy/continuity/site checks (41 pages / 880 local links). Eight new synthetic shipped-client behavior tests cover recovery, privacy and race conditions. GitHub CI, preview delivery and release are pending; no real-device or automatic transfer acceptance is inferred."
+      ]
     }
   ]
 }

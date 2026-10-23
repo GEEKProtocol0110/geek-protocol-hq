@@ -52,6 +52,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | GAME-001 | P1 | needs-evidence | Build a deep career challenge and mastery ladder | Maintainer; founder confirms phone/game usability |
 | LAUNCH-001 | P0 | needs-evidence | Prove the core loop and close the first release scope | Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned |
 | CHAIN-004 | P0 | blocked | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
+| CHAIN-005 | P1 | active | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
 
 ## CONT-001: Publish the continuation system
 
@@ -726,3 +727,19 @@ Acceptance:
 - Mainnet settlement, CCE and collectible ownership remain disabled.
 
 Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md), [server/testnet-automatic.js](../../server/testnet-automatic.js), [workers/testnet/process.mjs](../../workers/testnet/process.mjs), [workers/testnet/signer.mjs](../../workers/testnet/signer.mjs), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [tests/testnet-worker.test.js](../../tests/testnet-worker.test.js).
+
+## CHAIN-005: Recover player reward status after interruptions
+
+**P1 / active.** Owner: Maintainer; founder confirms actual-phone behavior. Dependencies: none.
+
+Next action: Publish the checked candidate and record exact GitHub/preview results. Keep CHAIN-004 provider provisioning and actual automatic payment acceptance separate.
+
+Acceptance:
+
+- Private canonical status reads recover from temporary network, HTTP and timeout failures with one bounded request and a 15-second polling interval.
+- Queued or prepared payments report a pause when HQ automation is disabled; already confirmed payments retain their observed confirmation.
+- A saved-run event during a pending read triggers a fresh read without overlapping requests; enrolled and confirmed views can discover later jobs.
+- Lost access or enrollment clears the prior status; player changes, backgrounding and page-cache return invalidate late responses and request-specific deadlines.
+- Focused client tests, full required checks and exact release evidence are recorded; synthetic DOM tests do not establish real-device or automatic payment acceptance.
+
+Evidence/specification: [public/play/assets/testnet-status.js](../../public/play/assets/testnet-status.js), [tests/testnet-status-client.test.js](../../tests/testnet-status-client.test.js), [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md).

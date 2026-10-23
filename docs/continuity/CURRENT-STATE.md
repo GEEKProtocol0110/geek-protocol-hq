@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-10-18. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-10-23. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -25,7 +25,7 @@ Record date: 2026-10-18. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: blocked.** Automatic reward flow and canonical worker transport are merged in #153/#154; HQ source/UI is deployed. Separate scheduled signer creation was denied by Vercel with 403. No signing wallet, secret, funding or actual automatic payout exists. Owner/provider must create the prepared separate project before activation can proceed.
+**CHAIN-005: active.** Player reward-status recovery candidate implemented. Full verify passed 603 HQ tests plus four offline signer tests, zero failures/skips, real Redis 7.0.15, 311 security assertions and all supporting checks. GitHub publication/release evidence is pending. CHAIN-004 remains blocked on the separate signer service.
 
 Next task: **CHAIN-004**. Create geek-geekt-testnet-worker in the existing Vercel team from GEEKProtocol0110/geek-protocol-hq, Root Directory workers/testnet, Node 24, no framework. Then provision distinct Production signer/worker/cron secrets, fund only the new TN10 signer, enable the two explicit service flags, enroll once and record a real automatic payout. Never send the completed manual receipt again.
 
