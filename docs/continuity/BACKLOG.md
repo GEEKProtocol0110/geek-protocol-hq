@@ -714,9 +714,9 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 **P0 / blocked.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Vercel project-create permission returned 403; founder/provider administrator must create the separate project with Root Directory workers/testnet. Then configure/fund the dedicated signer and verify one actual automatic payout. HQ release and offline tests do not satisfy live acceptance.
+Next action: Owner/provider administrator: in the geek-protocols-projects Vercel team, import GEEKProtocol0110/geek-protocol-hq as geek-geekt-testnet-worker, Root Directory workers/testnet, Framework Other, Node 24. After creation, provision the dedicated Production secrets, test funding and explicit activation flags, then verify one automatic payout. Preserve the completed manual receipt; actual-phone recovery and provider restore stay separate.
 
-Blocker: Vercel API denied project creation with 403 forbidden in the existing team; no CLI or CLI credentials are available. Separate signer project, secrets, funding and actual automatic acceptance remain absent.
+Blocker: October 23, 2026: a fresh exact-name project search was empty and Vercel again returned 403 forbidden/no project-create permission. No vercel/vc CLI is installed. Owner/provider project creation is required before secret provisioning, test funding and automatic acceptance.
 
 Acceptance:
 
@@ -732,7 +732,7 @@ Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-G
 
 **P1 / needs-evidence.** Owner: Maintainer; founder confirms actual-phone behavior. Dependencies: none.
 
-Next action: Review and release PR #155, verify production delivery and actual-phone behavior. The private preview check was blocked by provider authentication; do not infer application acceptance. Keep separate signer activation with CHAIN-004.
+Next action: #155 is merged and deployed; verify actual-phone status recovery, background/return and saved-player changes. Synthetic client tests and public delivery checks do not establish device acceptance.
 
 Acceptance:
 

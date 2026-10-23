@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "capturedAt": "2026-10-18",
-  "through": "1f15c3e7a7ebfe84c8060e0351391681fbdca5cf",
-  "scope": "Preserved HQ Git commit metadata through PR #140 merge. Product baseline is #140, with production/CI evidence in the project record. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation. Observed background release #145 and preceding login bookkeeping added October 17; product baseline #145 evidence is in project.json. Observed #146 rewarded challenges and preceding background release bookkeeping added; current baseline #146 evidence is in project.json. Observed #147 initial/final heads and merge plus preceding release bookkeeping added; current baseline #147 evidence is in project.json. Observed #148 head/merge and preceding documentation checkpoint added; current #148 production evidence is in project.json. Observed #149 head/merge and preceding documentation checkpoint added; current #149 production evidence is in project.json. Observed #150 head/merge and preceding documentation checkpoint added; current #150 production evidence is in project.json. Observed October 18 release/manual-proof documentation and #153 checked head/merge added. No provider restore or signer provisioning is implied.",
+  "capturedAt": "2026-10-23",
+  "through": "1476aa2d1a4469ed1eed30d9c72f94ca50e8bd4f",
+  "scope": "Preserved HQ Git commit metadata through PR #140 merge. Product baseline is #140, with production/CI evidence in the project record. Git dates are metadata, not founding proof; reviews, attachments and provider state need separate preservation. Observed background release #145 and preceding login bookkeeping added October 17; product baseline #145 evidence is in project.json. Observed #146 rewarded challenges and preceding background release bookkeeping added; current baseline #146 evidence is in project.json. Observed #147 initial/final heads and merge plus preceding release bookkeeping added; current baseline #147 evidence is in project.json. Observed #148 head/merge and preceding documentation checkpoint added; current #148 production evidence is in project.json. Observed #149 head/merge and preceding documentation checkpoint added; current #149 production evidence is in project.json. Observed #150 head/merge and preceding documentation checkpoint added; current #150 production evidence is in project.json. Observed October 18 release/manual-proof documentation and #153 checked head/merge added. No provider restore or signer provisioning is implied. Observed #155 checked heads and merge plus earlier release handoff added; this is source metadata, not provider backup evidence.",
   "records": [
     {
       "commit": "f7b60d3ef7447cd799fc19f7091d54484d91a45b",
@@ -2294,6 +2294,39 @@
       ],
       "authoredAt": "2026-10-18T04:07:48-04:00",
       "title": "Merge pull request #154 from GEEKProtocol0110/codex/geekt-worker-canonical-api"
+    },
+    {
+      "commit": "91b24d9a997724feff7828e92186758b02903fc0",
+      "parents": [
+        "1f15c3e7a7ebfe84c8060e0351391681fbdca5cf"
+      ],
+      "authoredAt": "2026-10-18T04:09:10-04:00",
+      "title": "Record automatic reward release and signer activation blocker"
+    },
+    {
+      "commit": "b002422d205289aeea0c80ff63ab2ae4e3662fa4",
+      "parents": [
+        "91b24d9a997724feff7828e92186758b02903fc0"
+      ],
+      "authoredAt": "2026-10-23T09:34:30-04:00",
+      "title": "Recover private player reward status after interruptions"
+    },
+    {
+      "commit": "ee1ce12bb3e961e2013d56a4dda29855a14d1810",
+      "parents": [
+        "b002422d205289aeea0c80ff63ab2ae4e3662fa4"
+      ],
+      "authoredAt": "2026-10-23T09:52:31-04:00",
+      "title": "Record reward status PR checks and remaining acceptance"
+    },
+    {
+      "commit": "1476aa2d1a4469ed1eed30d9c72f94ca50e8bd4f",
+      "parents": [
+        "91b24d9a997724feff7828e92186758b02903fc0",
+        "ee1ce12bb3e961e2013d56a4dda29855a14d1810"
+      ],
+      "authoredAt": "2026-10-23T12:21:55-04:00",
+      "title": "Merge pull request #155 from GEEKProtocol0110/codex/reward-status-recovery"
     }
   ]
 }
