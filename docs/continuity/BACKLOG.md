@@ -714,9 +714,9 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Obtain explicit approval to enable the bounded automatic TN10 test while preserving the ten-job UTC daily cap and one-recipient/day limit. Then enable the two processing flags and redeploy, verify scheduled processing without inventing signing-key acceptance, complete the owner-controlled one-time player enrollment with a distinct recipient, and prove one eligible Daily automatic payout plus same-hash recovery. The signer must verify its private key derives the configured sender before preparing any payment. Do not resend the completed manual receipt or expose credentials.
+Next action: On the founder’s phone in the existing HQ player browser, open the GEEKT Operations desk, authenticate with owner payout access, and use Automatic GEEKT test rewards to enroll that current player once. Select a checksum-valid testnet recipient different from the configured sender; do not use the dedicated signing wallet as its own recipient. Then complete all five Kaspa Daily questions, answer at least one correctly, choose Finish & save result, and verify one automatic indexed-confirmed receipt, exact recipient balance change and same-hash recovery. Never manually resend that run. Keep the ten-job UTC daily cap, one-recipient/day limit and Mainnet/CCE/ownership holds.
 
-Blocker: Authentication provisioning and paused scheduled operation are verified. Activation remains intentionally off pending explicit approval. The stored signing key has not been derived/checked against the configured sender, and no real automatic payment or recipient acceptance exists.
+Blocker: Infrastructure and explicit activation are complete. The cloud browser has no owner/player session for the founder’s existing phone player; the founder must perform one-time enrollment there. Actual automatic transfer, sender/key matching on a real job, recipient acceptance and recovery are unproved.
 
 Acceptance:
 

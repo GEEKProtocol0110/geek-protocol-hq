@@ -25,9 +25,9 @@ Record date: 2026-10-23. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: needs-evidence.** The separate signer and HQ have matching Production worker credentials, a distinct cron credential, and Ready paused deployments. Scheduled ticks return 200; unauthorized calls return private/no-store 401. Token/fee funding checks pass. Explicit activation, private-key/sender verification, one-time enrollment and actual automatic transfer acceptance remain outstanding.
+**CHAIN-004: needs-evidence.** Automatic TN10 admission and the separate signer are enabled after explicit founder approval. Both Production deployments are Ready; three active scheduled checks returned 200. Test funding was checked. Owner enrollment in the existing phone-player session, key/sender matching during a real job, first automatic payout and recovery acceptance still need evidence.
 
-Next task: **CHAIN-004**. Obtain explicit approval to enable the bounded automatic TN10 test while preserving the ten-job UTC daily cap and one-recipient/day limit. Then enable the two processing flags and redeploy, verify scheduled processing without inventing signing-key acceptance, complete the owner-controlled one-time player enrollment with a distinct recipient, and prove one eligible Daily automatic payout plus same-hash recovery. The signer must verify its private key derives the configured sender before preparing any payment. Do not resend the completed manual receipt or expose credentials.
+Next task: **CHAIN-004**. On the founder’s phone in the existing HQ player browser, open the GEEKT Operations desk, authenticate with owner payout access, and use Automatic GEEKT test rewards to enroll that current player once. Select a checksum-valid testnet recipient different from the configured sender; do not use the dedicated signing wallet as its own recipient. Then complete all five Kaspa Daily questions, answer at least one correctly, choose Finish & save result, and verify one automatic indexed-confirmed receipt, exact recipient balance change and same-hash recovery. Never manually resend that run. Keep the ten-job UTC daily cap, one-recipient/day limit and Mainnet/CCE/ownership holds.
 
 ## Holds
 
