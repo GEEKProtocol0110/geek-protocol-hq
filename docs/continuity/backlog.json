@@ -1090,10 +1090,10 @@
     {
       "id": "CHAIN-005",
       "priority": "P1",
-      "status": "active",
+      "status": "needs-evidence",
       "title": "Recover player reward status after interruptions",
       "owner": "Maintainer; founder confirms actual-phone behavior",
-      "nextAction": "Publish the checked candidate and record exact GitHub/preview results. Keep CHAIN-004 provider provisioning and actual automatic payment acceptance separate.",
+      "nextAction": "Review and release PR #155, verify production delivery and actual-phone behavior. The private preview check was blocked by provider authentication; do not infer application acceptance. Keep separate signer activation with CHAIN-004.",
       "acceptance": [
         "Private canonical status reads recover from temporary network, HTTP and timeout failures with one bounded request and a 15-second polling interval.",
         "Queued or prepared payments report a pause when HQ automation is disabled; already confirmed payments retain their observed confirmation.",
@@ -1109,6 +1109,9 @@
       ],
       "validationEvidence": [
         "October 23, 2026: full npm run verify passed 603 HQ tests plus four offline SDK tests, zero failures/skips, required native Redis 7.0.15, 311 security assertions and all bank/content/archive/collection/repository/economy/continuity/site checks (41 pages / 880 local links). Eight new synthetic shipped-client behavior tests cover recovery, privacy and race conditions. GitHub CI, preview delivery and release are pending; no real-device or automatic transfer acceptance is inferred."
+      ],
+      "releaseEvidence": [
+        "PR #155 is open at b002422d205289aeea0c80ff63ab2ae4e3662fa4, tree 36067cf96ae6591379144760b32e61b006b6425e, matching locally verified 539a89c722121b73d558cdd3a12b31a675a23e87. Exact-head GitHub Security verification 39962383983 succeeded and Vercel preview dpl_CxBmhd79nyc8FrF1UFprsbqBXgdj is READY on that head. Authenticated HTTP returned the updated status script with 200; the private status fetch was blocked by the Vercel share-link helper after redirect (401), without application headers, so private-route preview acceptance is unproved. No submitted reviews or inline threads. Production still served the previous script during this check; this candidate is unmerged and not live. Full local verification passed 603 HQ tests plus four offline signer tests, zero failures/skips, native Redis 7.0.15, 311 security assertions and all supporting checks. Physical-device and automatic-payment acceptance remain separate. CHAIN-004 signer provisioning/funding is still blocked."
       ]
     }
   ]

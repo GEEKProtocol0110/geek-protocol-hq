@@ -52,7 +52,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | GAME-001 | P1 | needs-evidence | Build a deep career challenge and mastery ladder | Maintainer; founder confirms phone/game usability |
 | LAUNCH-001 | P0 | needs-evidence | Prove the core loop and close the first release scope | Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned |
 | CHAIN-004 | P0 | blocked | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
-| CHAIN-005 | P1 | active | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
+| CHAIN-005 | P1 | needs-evidence | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
 
 ## CONT-001: Publish the continuation system
 
@@ -730,9 +730,9 @@ Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-G
 
 ## CHAIN-005: Recover player reward status after interruptions
 
-**P1 / active.** Owner: Maintainer; founder confirms actual-phone behavior. Dependencies: none.
+**P1 / needs-evidence.** Owner: Maintainer; founder confirms actual-phone behavior. Dependencies: none.
 
-Next action: Publish the checked candidate and record exact GitHub/preview results. Keep CHAIN-004 provider provisioning and actual automatic payment acceptance separate.
+Next action: Review and release PR #155, verify production delivery and actual-phone behavior. The private preview check was blocked by provider authentication; do not infer application acceptance. Keep separate signer activation with CHAIN-004.
 
 Acceptance:
 

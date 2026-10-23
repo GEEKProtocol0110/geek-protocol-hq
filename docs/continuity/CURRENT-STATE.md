@@ -25,9 +25,9 @@ Record date: 2026-10-23. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-005: active.** Player reward-status recovery candidate implemented. Full verify passed 603 HQ tests plus four offline signer tests, zero failures/skips, real Redis 7.0.15, 311 security assertions and all supporting checks. GitHub publication/release evidence is pending. CHAIN-004 remains blocked on the separate signer service.
+**CHAIN-005: needs-evidence.** PR #155 is open at b002422d205289aeea0c80ff63ab2ae4e3662fa4, tree 36067cf96ae6591379144760b32e61b006b6425e, matching locally verified 539a89c722121b73d558cdd3a12b31a675a23e87. Exact-head GitHub Security verification 39962383983 succeeded and Vercel preview dpl_CxBmhd79nyc8FrF1UFprsbqBXgdj is READY on that head. Authenticated HTTP returned the updated status script with 200; the private status fetch was blocked by the Vercel share-link helper after redirect (401), without application headers, so private-route preview acceptance is unproved. No submitted reviews or inline threads. Production still served the previous script during this check; this candidate is unmerged and not live. Full local verification passed 603 HQ tests plus four offline signer tests, zero failures/skips, native Redis 7.0.15, 311 security assertions and all supporting checks. Physical-device and automatic-payment acceptance remain separate. CHAIN-004 signer provisioning/funding is still blocked.
 
-Next task: **CHAIN-004**. Create geek-geekt-testnet-worker in the existing Vercel team from GEEKProtocol0110/geek-protocol-hq, Root Directory workers/testnet, Node 24, no framework. Then provision distinct Production signer/worker/cron secrets, fund only the new TN10 signer, enable the two explicit service flags, enroll once and record a real automatic payout. Never send the completed manual receipt again.
+Next task: **CHAIN-004**. Review and release checked PR #155, then verify production delivery and actual-phone status recovery. CHAIN-004 still needs owner/provider creation of the separate workers/testnet project, dedicated Production secrets and test funding before one real automatic payout. Never resend the completed manual receipt.
 
 ## Holds
 
