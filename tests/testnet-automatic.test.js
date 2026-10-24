@@ -9,6 +9,7 @@ import rewards from '../api/rewards.js';
 import { loadQuestionBank } from '../server/questions.js';
 import { autoIndex, autoJobKey, enrollmentKey, automaticConfig } from '../server/testnet-automatic.js';
 import { processPayment } from '../workers/testnet/process.mjs';
+import { identityPlayerKey } from '../server/identity-keys.js';
 const wallet = n => { const k = new kaspa.PrivateKey(n.toString(16).padStart(64, '0')); try { return k.toAddress('testnet').toString(); } finally { k.free(); } };
 const sender = wallet(7), recipient = wallet(3), deploy = 'a'.repeat(64), token = 'e'.repeat(64);
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
@@ -31,6 +32,7 @@ globalThis.fetch = async (url, options) => {
 };
 after(async () => { globalThis.fetch = originalFetch; await fixture.close(); });
 beforeEach(async () => {
+  delete process.env.TESTNET_AUTO_APPROVED_WALLETS;
   await fixture.command('FLUSHDB'); observed = null; loseReply = false; beforeCommit = null; missingOperationStatus = 200;
   Object.assign(process.env, { UPSTASH_REDIS_REST_URL: 'https://redis.automatic.test', UPSTASH_REDIS_REST_TOKEN: 'synthetic-token',
     AUDIT_LOG_SECRET: 'synthetic-automatic-audit-key-32-characters', CCE_ADMIN_TOKEN: 'synthetic-automatic-cce-key-32-characters',
@@ -68,6 +70,62 @@ const complete = async (p, mode = 'daily') => {
 const jobs = async () => { const ids = await fixture.command('ZRANGE', autoIndex, 0, -1); return Promise.all(ids.map(async id => JSON.parse(await fixture.command('GET', autoJobKey(id))))); };
 const journal = { commit: { id: 'b'.repeat(64), transaction: JSON.stringify({ synthetic: 'commit'.repeat(20) }) }, reveal: { id: 'c'.repeat(64), transaction: JSON.stringify({ synthetic: 'reveal'.repeat(20) }) } };
 const step = (action, claim, job, extra = {}) => worker({ action, lease: claim.lease, id: job.id, version: job.version, ...extra });
+const verifiedWallet = async (p, ecdsa = false) => {
+  const id = p.split('=')[1], key = new kaspa.PrivateKey('3'.padStart(64, '0'));
+  const pub = key.toPublicKey();
+  const now = Date.now();
+  const record = { version: 1, id, address: (ecdsa ? key.toAddressECDSA('mainnet') : key.toAddress('mainnet')).toString(), publicKey: pub.toString(),
+    network: 'kaspa-mainnet', scheme: 'kaspa-schnorr-personal-message-v1', linkedAt: now, verifiedAt: now,
+    lastRecoveredAt: 0, recoveryCount: 0, sessionVersion: 1, settlementEnabled: false };
+  pub.free(); key.free();
+  await fixture.command('SET', identityPlayerKey(id), JSON.stringify(record));
+  const sessionKey = `geek:session:${id}`, session = JSON.parse(await fixture.command('GET', sessionKey));
+  await fixture.command('SET', sessionKey, JSON.stringify({ ...session, playerId: id, identityVersion: 1 }));
+  return { id, record };
+};
+
+test('an approved verified wallet receives automatic admission without an owner enrollment action', async () => {
+  process.env.TESTNET_AUTO_APPROVED_WALLETS = recipient;
+  const p = await player(); await verifiedWallet(p);
+  const view = await call(rewards, 'GET', {}, p, { service: 'testnet' });
+  assert.equal(view.body.enrollment.source, 'verified-wallet'); assert.equal(view.body.enrollment.recipient, recipient);
+  assert.equal(await fixture.command('GET', enrollmentKey(p.split('=')[1])), null);
+  const id = await complete(p); assert.equal((await play(p, 'finish', { runId: id })).statusCode, 200);
+  const [job] = await jobs(); assert.equal(job.recipient, recipient); assert.equal((await jobs()).length, 1);
+  assert.equal((await play(p, 'finish', { runId: id })).statusCode, 200); assert.equal((await jobs()).length, 1);
+  delete process.env.TESTNET_AUTO_APPROVED_WALLETS;
+  const retained = await call(rewards, 'GET', {}, p, { service: 'testnet' });
+  assert.equal(retained.body.enrollment, null); assert.equal(retained.body.records[0].id, job.id);
+});
+
+test('guest addresses, unapproved wallets and explicitly disabled enrollments do not gain reward eligibility', async () => {
+  process.env.TESTNET_AUTO_APPROVED_WALLETS = recipient;
+  const guest = await player(); let id = await complete(guest); await play(guest, 'finish', { runId: id });
+  assert.equal((await jobs()).length, 0);
+  const p = await player(); await verifiedWallet(p); process.env.TESTNET_AUTO_APPROVED_WALLETS = wallet(4);
+  id = await complete(p); await play(p, 'finish', { runId: id }); assert.equal((await jobs()).length, 0);
+  const p2 = await player(), cookie = await enroll(p2); await verifiedWallet(p2);
+  const raw = JSON.parse(await fixture.command('GET', enrollmentKey(p2.split('=')[1])));
+  assert.equal((await ops({ action: 'enroll', recipient, enabled: false, version: raw.version }, cookie)).statusCode, 200);
+  process.env.TESTNET_AUTO_APPROVED_WALLETS = recipient;
+  id = await complete(p2); await play(p2, 'finish', { runId: id }); assert.equal((await jobs()).length, 0);
+});
+
+test('wallet proof changes during the atomic finish skip stale automatic admission', async () => {
+  process.env.TESTNET_AUTO_APPROVED_WALLETS = recipient;
+  const p = await player(), { id, record } = await verifiedWallet(p), runId = await complete(p);
+  beforeCommit = () => fixture.command('SET', identityPlayerKey(id), JSON.stringify({ ...record, verifiedAt: record.verifiedAt + 1 }));
+  assert.equal((await play(p, 'finish', { runId })).statusCode, 200); assert.equal((await jobs()).length, 0);
+});
+
+test('derived rewards preserve an ECDSA wallet address type on TN10', async () => {
+  const p = await player(); await verifiedWallet(p, true);
+  const key = new kaspa.PrivateKey('3'.padStart(64, '0'));
+  const expected = key.toAddressECDSA('testnet').toString(); key.free();
+  process.env.TESTNET_AUTO_APPROVED_WALLETS = expected;
+  const view = await call(rewards, 'GET', {}, p, { service: 'testnet' });
+  assert.equal(view.statusCode, 200); assert.equal(view.body.enrollment.recipient, expected);
+});
 
 test('only owner payout access enrolls the current player; stale enrollment and public writes fail', async () => {
   const p = await player();

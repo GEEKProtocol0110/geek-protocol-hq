@@ -89,7 +89,9 @@
     const isMainnet = state.network === MAINNET;
     roots().forEach((root) => {
       root.dataset.walletStatus = state.error ? 'error' : state.verified ? 'verified' : state.connected ? 'connected' : state.installed ? 'ready' : 'missing';
-      setText(root, '[data-wallet-state]', state.error ? 'CHECK WALLET' : state.verified ? 'SERVER VERIFIED' : state.connected ? 'WALLET CONNECTED' : state.installed ? `${state.providerName} ready` : 'No browser wallet detected');
+      setText(root, '[data-wallet-state]', root.hasAttribute('data-wallet-quick-login')
+        ? state.verified ? 'Signed in' : state.error ? 'Check your wallet' : state.installed ? `${state.providerName} ready` : 'Open Geek in a compatible wallet browser'
+        : state.error ? 'CHECK WALLET' : state.verified ? 'SERVER VERIFIED' : state.connected ? 'WALLET CONNECTED' : state.installed ? `${state.providerName} ready` : 'No browser wallet detected');
       setText(root, '[data-wallet-address]', shortAddress(state.address));
       setText(root, '[data-wallet-network]', state.connected ? networkLabel(state.network) : 'Connect to read network');
       setText(root, '[data-wallet-geek]', state.connected ? `${state.geekBalance} GEEK` : '—');
@@ -110,11 +112,11 @@
       const connect = root.querySelector('[data-wallet-connect]');
       if (connect) {
         connect.disabled = state.pending || !selected;
-        connect.textContent = state.pending ? 'Waiting for wallet…' : state.connected ? 'Refresh wallet' : selected ? `Connect ${selected.name}` : 'Connect browser wallet';
+        connect.textContent = state.pending ? 'Waiting for wallet…' : root.hasAttribute('data-wallet-quick-login') ? state.verified ? 'Continue to My HQ' : 'Connect & sign in' : state.connected ? 'Refresh wallet' : selected ? `Connect ${selected.name}` : 'Connect browser wallet';
       }
       const verify = root.querySelector('[data-wallet-verify]');
       if (verify) {
-        verify.hidden = !state.connected || state.verified || !isMainnet;
+        verify.hidden = root.hasAttribute('data-wallet-quick-login') || !state.connected || state.verified || !isMainnet;
         verify.disabled = state.pending;
         verify.textContent = root.hasAttribute('data-wallet-sign-in') ? 'Sign in with wallet' : state.identity?.linked ? 'Recover identity' : 'Verify & protect';
       }
@@ -140,7 +142,7 @@
     }
   };
 
-  const readWallet = async (accountsOverride) => {
+  const readWallet = async (accountsOverride, { skipBalances = false } = {}) => {
     const revision = ++readRevision;
     const provider = selected;
     if (!provider) {
@@ -171,7 +173,7 @@
       const [network, publicKey, balances] = await Promise.all([
         provider.getNetwork(),
         provider.getPublicKey(),
-        Promise.resolve().then(() => provider.getBalances()).catch(() => null)
+        skipBalances ? null : Promise.resolve().then(() => provider.getBalances()).catch(() => null)
       ]);
       if (provider !== selected || revision !== readRevision) return;
       state.network = normalizeNetwork(network || '');
@@ -185,7 +187,7 @@
     render();
   };
 
-  const connectWallet = async () => {
+  const connectWallet = async ({ signIn = false } = {}) => {
     if (state.pending) return;
     if (!selected) {
       state.installed = false;
@@ -197,7 +199,7 @@
     render();
     try {
       const accounts = await selected.requestAccounts();
-      await readWallet(accounts);
+      await readWallet(accounts, { skipBalances: signIn });
     } catch {
       state.error = 'Connection was not approved. Your wallet remains unchanged.';
     } finally {
@@ -211,7 +213,7 @@
     return selected.signMessage(challenge.message, state.address);
   };
 
-  const verifyOwnership = async () => {
+  const verifyOwnership = async (continueAfterSignIn = false) => {
     if (state.pending || !selected || !state.connected || state.network !== MAINNET) return;
     const provider = selected, address = state.address;
     state.pending = true;
@@ -231,7 +233,7 @@
       });
       state.identity = verified.identity;
       state.verified = Boolean(verified.identity?.linked && verified.identity.address === state.address);
-      if (state.verified) document.dispatchEvent(new CustomEvent('geek:signed-in', { detail: { recovered: Boolean(verified.recovered) } }));
+      if (state.verified) document.dispatchEvent(new CustomEvent('geek:signed-in', { detail: { recovered: Boolean(verified.recovered), ...(continueAfterSignIn ? { source: 'wallet-connect' } : {}) } }));
     } catch (error) {
       state.error = error.message || 'Ownership verification was canceled or rejected.';
       state.verified = false;
@@ -264,11 +266,28 @@
     return verified.authorization;
   };
 
+  const quickLogin = async () => {
+    if (state.pending) return;
+    if (!selected?.signMessage) {
+      state.error = 'Open Geek in a wallet browser that supports Kaspa message signing, or use another sign-in method below.';
+      render(); return;
+    }
+    await connectWallet({ signIn: true });
+    if (!state.connected || state.error) return;
+    if (state.verified) {
+      document.dispatchEvent(new CustomEvent('geek:signed-in', { detail: { recovered: false, source: 'wallet-connect' } })); return;
+    }
+    await verifyOwnership(true);
+  };
+
   document.addEventListener('click', (event) => {
     const connect = event.target.closest('[data-wallet-connect]');
-    if (connect) connectWallet();
+    if (connect) {
+      if (connect.closest('[data-wallet-quick-login]')) return quickLogin();
+      return connectWallet();
+    }
     const verify = event.target.closest('[data-wallet-verify]');
-    if (verify) verifyOwnership();
+    if (verify) return verifyOwnership();
   });
 
   const bindWalletEvents = (provider) => {
@@ -298,7 +317,7 @@
       requestAccounts: () => wallet.requestAccounts(), getAccounts: () => wallet.getAccounts(),
       getNetwork: () => wallet.getNetwork(), getPublicKey: () => wallet.getPublicKey(),
       getBalances: () => wallet.getKRC20Balance?.() || Promise.resolve([]),
-      signMessage: (message) => wallet.signMessage(message, { type: 'schnorr' }), on: wallet.on?.bind(wallet)
+      signMessage: typeof wallet.signMessage === 'function' ? (message) => wallet.signMessage(message, { type: 'schnorr' }) : null, on: wallet.on?.bind(wallet)
     });
     bindWalletEvents(providers.get('kasware'));
   }

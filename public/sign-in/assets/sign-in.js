@@ -26,6 +26,7 @@
     signedIn = true;
     showSignedIn(event.detail.recovered ? `Signed in. Your saved player has been recovered. ${destination}` : `Signed in. Your player is protected by this wallet. ${destination}`);
     hq.focus();
+    if (event.detail.source === 'wallet-connect') location.assign(nextPage[0]);
   });
   document.addEventListener('geek:account-status', event => {
     if (event.detail.signedIn || event.detail.walletLinked) {
@@ -75,6 +76,7 @@
   document.addEventListener('geek:passkey-wallet-proof', () => {
     invalidate(); proofIntent = 'passkey';
     const methods = document.querySelector('[data-wallet-methods]'); if (methods) methods.open = true;
+    const recovery = document.querySelector('[data-wallet-manual]'); if (recovery) recovery.open = true;
     document.querySelector('[data-manual-method]').open = true;
     manualStatus.textContent = 'Enter your linked address and sign the passkey-authorization message. This grants another way to access this player.'; addressInput.focus();
   });
@@ -150,10 +152,6 @@
     } catch (error) { invalidate(); manualStatus.textContent = `${error.message} Create a new login message before retrying.`; }
     finally { busy(false); }
   });
-  if (!window.kasware && !window.kaspire) {
-    document.querySelector('[data-manual-method]').open = true;
-    document.querySelector('[data-browser-method]').open = false;
-  }
   document.addEventListener('geek:wallet', event => {
     if (event.detail.installed && !addressInput.value && !challenge) {
       document.querySelector('[data-browser-method]').open = true;

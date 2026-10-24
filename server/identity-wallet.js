@@ -47,6 +47,20 @@ export const addressForPublicKey = (publicKey) => {
   }
 };
 
+export const testnetAddressForPublicKey = (publicKey, identityAddress) => {
+  try {
+    validateWalletProofInputs(identityAddress, publicKey);
+    const address = new kaspa.Address(identityAddress);
+    try {
+      // Re-encode the validated payload for TN10, retaining its script type.
+      address.setPrefix = 'kaspatest';
+      return address.toString().toLowerCase();
+    } finally { address.free(); }
+  } catch {
+    throw new Error('IDENTITY_PUBLIC_KEY_INVALID');
+  }
+};
+
 export const validateWalletProofInputs = (addressValue, publicKeyValue) => {
   if (!isValidKaspaMainnetAddress(addressValue)) throw new Error('INVALID_KASPA_ADDRESS');
   const address = normalizeKaspaAddress(addressValue);

@@ -4,6 +4,9 @@ import { playerIdFor, requireSession } from './session.js';
 import { isValidKaspaTestnetAddress, normalizeKaspaAddress } from './kaspa-address.js';
 import { checkAsset, jsonFromIndexer, testnetConfig, transferObservation, verifiedPilotRun } from './testnet-rewards.js';
 import { handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from './http.js';
+import { decodeIdentityRecord } from './identity-records.js';
+import { identityPlayerKey } from './identity-keys.js';
+import { testnetAddressForPublicKey } from './identity-wallet.js';
 
 const hash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const hex = (s, n) => typeof s === 'string' && new RegExp(`^[a-f0-9]{${n}}$`).test(s);
@@ -31,6 +34,25 @@ export function decodeEnrollment(raw, playerId) {
       !isValidKaspaTestnetAddress(e.recipient) || !Number.isSafeInteger(e.createdAt) || typeof e.enabled !== 'boolean') throw new Error('TESTNET_AUTO_RECORD_INVALID');
   return e;
 }
+// Operator approval stays on the server. A player never supplies a destination:
+// it is derived only from a durable, signature-verified wallet identity.
+async function rewardEnrollment(playerId, config) {
+  const key = enrollmentKey(playerId), raw = await redis('GET', key);
+  const enrollment = decodeEnrollment(raw, playerId);
+  if (enrollment || !config) return { key, raw, enrollment };
+  const approved = (process.env.TESTNET_AUTO_APPROVED_WALLETS || '').split(',').map(s => s.trim()).filter(Boolean);
+  if (!approved.length) return { key, raw, enrollment: null };
+  if (approved.length > 100 || approved.some(a => !isValidKaspaTestnetAddress(a) || a === config.sender)) throw new Error('TESTNET_AUTO_CONFIG_INVALID');
+  const identityKey = identityPlayerKey(playerId), identityRaw = await redis('GET', identityKey);
+  const identity = decodeIdentityRecord(identityRaw, playerId);
+  if (!identity) return { key, raw, enrollment: null };
+  const recipient = testnetAddressForPublicKey(identity.publicKey, identity.address);
+  if (!approved.includes(recipient)) return { key, raw, enrollment: null };
+  // Watch the exact identity in the existing atomic finish transaction. A
+  // concurrent recovery/change invalidates admission rather than using stale proof.
+  return { key: identityKey, raw: identityRaw, enrollment: { recipient, enabled: true,
+    version: '', createdAt: identity.linkedAt, source: 'verified-wallet' } };
+}
 export function decodeJob(raw, id) {
   let j; try { j = JSON.parse(raw); } catch { throw new Error('TESTNET_AUTO_RECORD_INVALID'); }
   if (!j || j.schema !== 1 || j.id !== id || !hex(id, 64) || !hex(j.version, 24) || !hex(j.playerId, 32) ||
@@ -53,7 +75,7 @@ export const validJournal = journal => Boolean(journal && Object.keys(journal).s
 export async function prepareAutomaticReward(playerId, run) {
   const config = automaticConfig();
   if (!config || run.mode !== 'daily' || run.category !== 'kaspa') return null;
-  const raw = await redis('GET', enrollmentKey(playerId)), enrollment = decodeEnrollment(raw, playerId);
+  const { key, raw, enrollment } = await rewardEnrollment(playerId, config);
   if (!enrollment?.enabled || enrollment.recipient === config.sender) return null;
   let proof;
   try { proof = verifiedPilotRun(JSON.stringify(run), run.id, run.sessionId); }
@@ -62,7 +84,7 @@ export async function prepareAutomaticReward(playerId, run) {
   const job = { schema: 1, id, version: nonce(), state: 'queued', playerId, network: config.network, ticker: config.ticker,
     sender: config.sender, recipient: enrollment.recipient, deploymentHash: config.deploymentHash,
     configFingerprint: config.fingerprint, amount: config.amount, decimals: config.decimals, proof, createdAt };
-  return { keys: [enrollmentKey(playerId), `geek:testnet-reward:run:${run.id}`, autoJobKey(id), autoIndex,
+  return { keys: [key, `geek:testnet-reward:run:${run.id}`, autoJobKey(id), autoIndex,
     `geek:testnet-auto:day:${date}`, `geek:testnet-auto:recipient-day:${hash([date, enrollment.recipient])}`],
   args: [raw, id, JSON.stringify(job), createdAt, config.dailyLimit] };
 }
@@ -94,13 +116,13 @@ end`;
 const publicJob = j => ({ id: j.id, state: j.state, network: j.network, ticker: j.ticker, amount: j.amount, decimals: j.decimals,
   recipient: j.recipient, createdAt: j.createdAt, ...(j.transactionHash ? { transactionHash: j.transactionHash } : {}) });
 export async function automaticPlayerView(session) {
-  const playerId = playerIdFor(session), enrollment = decodeEnrollment(await redis('GET', enrollmentKey(playerId)), playerId);
-  if (!enrollment) return { enabled: Boolean(automaticConfig()), enrollment: null, records: [], mainnetSettlementEnabled: false };
+  const playerId = playerIdFor(session), config = automaticConfig();
+  const { enrollment } = await rewardEnrollment(playerId, config);
   const ids = await redis('ZREVRANGE', autoIndex, 0, 99);
   if (!Array.isArray(ids) || ids.some(id => !hex(id, 64))) throw new Error('TESTNET_AUTO_RECORD_INVALID');
   const rows = ids.length ? await redis('MGET', ...ids.map(autoJobKey)) : [];
   if (!Array.isArray(rows) || rows.length !== ids.length) throw new Error('TESTNET_AUTO_RECORD_INVALID');
-  return { enabled: Boolean(automaticConfig()), enrollment, records: rows.map((raw, i) => decodeJob(raw, ids[i])).filter(j => j.playerId === playerId).map(publicJob), mainnetSettlementEnabled: false };
+  return { enabled: Boolean(config), enrollment, records: rows.map((raw, i) => decodeJob(raw, ids[i])).filter(j => j.playerId === playerId).map(publicJob), mainnetSettlementEnabled: false };
 }
 export async function automaticPlayerHandler(req, res) {
   setApiHeaders(res, 'GET'); res.setHeader('Cache-Control', 'private, no-store, max-age=0');

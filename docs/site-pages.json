@@ -172,7 +172,7 @@
       "file": "public/sign-in/index.html",
       "path": "/sign-in/",
       "title": "Sign in \u2014 Geek Protocol",
-      "description": "Sign in to your Geek Protocol player with a supported passkey or linked Kaspa wallet, check device guidance, or continue learning as a guest.",
+      "description": "Connect a supported Kaspa wallet and approve a free sign-in message to recover your Geek player. Saved passkeys and guest learning remain available.",
       "index": false,
       "private": false
     },

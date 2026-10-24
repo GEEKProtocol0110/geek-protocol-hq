@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-10-23. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -25,9 +25,9 @@ Record date: 2026-10-23. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: in-progress.** Automatic reward awaiting-indexer and scheduled 503 evidence reproduced a missing-operation recovery defect. Candidate now passes full local verification (606 HQ + four offline signer tests); publication, deployment and live same-hash acceptance remain pending.
+**AUTH-004: in-progress.** Wallet-first candidate passes full local verification: 615 HQ tests and four signer tests. One connect/sign-in action and backend-derived TN10 admission for operator-approved verified wallets are implemented; publication, mobile compatibility and live payout acceptance remain separate. Recovery #156 is merged and its HQ deployment Ready; the last exact reveal lookup remained op not found.
 
-Next task: **CHAIN-004**. Review and release the checked missing-operation recovery correction, verify the HQ deployment, then observe the existing scheduled worker reconcile/rebroadcast only its immutable saved commit/reveal pair. Confirm the same reveal hash and exact recipient balance change before accepting the automatic pilot. If it remains unresolved, inspect the worker failure without deleting locks, replacing the journal, changing enrollment or manually resending. Keep all existing daily limits and economic holds.
+Next task: **AUTH-004**. Check and publish the wallet-first candidate; keep operator-only pilot approval and payout diagnostics behind the scenes. Verify a supported mobile wallet and finish same-hash TN10 acceptance before opening public rewards.
 
 ## Holds
 
