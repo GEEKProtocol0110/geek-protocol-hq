@@ -35,12 +35,12 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "AUTH-004",
+    "id": "CHAIN-005",
     "status": "needs-evidence",
-    "description": "AUTH-004 account/address polish #162 is merged and deployed: clearer account creation, saved/draft states, per-network draft retention, guest access, retry and mobile control styling. Seven production byte checks and a live desktop guest visual/AX inspection passed. Backend behavior remains as #161. Actual-phone setup and automatic-payment acceptance remain separate."
+    "description": "Player-facing latest TN10 reward status is being added to Rewards, with exact amounts, original destinations, clear stages and interrupted-read recovery. Existing account flow is released. Automatic-payment acceptance remains unproved."
   },
-  "nextTask": "AUTH-004",
-  "nextAction": "Obtain actual-phone Geek account setup and receiving-address save acceptance, then confirm the existing same-hash automatic TN10 payment. Preserve the account-first direction and Mainnet/public reward gates.",
+  "nextTask": "CHAIN-005",
+  "nextAction": "Verify and release the player reward-status view; obtain actual-phone account/setup and existing same-hash automatic TN10 payment acceptance. Signer project logs remain inaccessible through the Vercel connection.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

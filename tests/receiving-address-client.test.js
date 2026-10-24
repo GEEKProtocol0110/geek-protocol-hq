@@ -30,6 +30,7 @@ const mount = async ({ canEdit = true, supported = true, prompt, handle } = {}) 
 
 test('saving a receiving address uses account confirmation and never opens a wallet', async () => {
   const ui = await mount(); assert.equal(ui.prompts.length, 0);
+  let savedEvents = 0; ui.window.addEventListener('geek:receiving-address-saved', () => savedEvents++);
   ui.node('[data-receiving-input]').value = 'kaspa:new-fixture'; ui.node('[data-receiving-confirm]').checked = true;
   await ui.form.emit('submit');
   assert.equal(ui.calls[1].address, 'kaspa:new-fixture'); assert.equal(ui.calls[1].network, 'mainnet');
@@ -39,10 +40,12 @@ test('saving a receiving address uses account confirmation and never opens a wal
   assert.equal(ui.node('[data-receiving-badge]').textContent, 'Saved');
   assert.equal(ui.node('[data-receiving-save]').disabled, true);
   assert.match(ui.node('[data-receiving-status]').textContent, /Mainnet receiving address saved.*disabled/);
+  assert.equal(savedEvents, 1);
 });
 
 test('canceling account confirmation cannot save an address or claim success', async () => {
   const ui = await mount({ prompt: () => { throw new DOMException('canceled', 'NotAllowedError'); } });
+  ui.window.addEventListener('geek:receiving-address-saved', () => assert.fail('Canceled confirmation cannot emit a saved-address event'));
   ui.node('[data-receiving-input]').value = 'kaspa:new-fixture';
   ui.node('[data-receiving-confirm]').checked = true;
   await ui.form.emit('submit');

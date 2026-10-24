@@ -80,6 +80,7 @@
         response: { clientDataJSON: encode(r.clientDataJSON), authenticatorData: encode(r.authenticatorData), signature: encode(r.signature), userHandle: r.userHandle ? encode(r.userHandle) : null }
       } });
       delete drafts[chosenNetwork]; showNetwork();
+      window.dispatchEvent(new CustomEvent('geek:receiving-address-saved'));
       note.textContent = operation === 'remove' ? 'Receiving address removed. Previously queued payments keep their original destination.'
         : chosenNetwork === 'mainnet' ? 'Mainnet receiving address saved to your account. Mainnet payouts remain disabled.'
           : 'Testnet-10 receiving address saved. Eligible approved test rewards are handled automatically.';
