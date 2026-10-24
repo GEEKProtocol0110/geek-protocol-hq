@@ -25,9 +25,9 @@ Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-004: in-progress.** Wallet-first candidate passes full local verification: 615 HQ tests and four signer tests. One connect/sign-in action and backend-derived TN10 admission for operator-approved verified wallets are implemented; publication, mobile compatibility and live payout acceptance remain separate. Recovery #156 is merged and its HQ deployment Ready; the last exact reveal lookup remained op not found.
+**AUTH-004: needs-evidence.** Wallet-first #157 is merged and HQ production Ready on 4cde22d1cdc52df7cb89f1610633a31181cf6c7a. Public delivery shows the one-action wallet card before optional passkeys. Full local verification and exact-head CI passed. Actual mobile wallet signing, private pilot approval configuration and live automatic payout acceptance remain unverified.
 
-Next task: **AUTH-004**. Check and publish the wallet-first candidate; keep operator-only pilot approval and payout diagnostics behind the scenes. Verify a supported mobile wallet and finish same-hash TN10 acceptance before opening public rewards.
+Next task: **AUTH-004**. Verify the supported phone wallet connection and complete same-hash TN10 payout acceptance. Operator approval configuration remains private and empty by default for the new derived-admission path; do not open public rewards or ask players to use operational tools.
 
 ## Holds
 

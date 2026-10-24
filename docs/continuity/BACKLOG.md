@@ -53,7 +53,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | LAUNCH-001 | P0 | needs-evidence | Prove the core loop and close the first release scope | Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned |
 | CHAIN-004 | P0 | needs-evidence | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
 | CHAIN-005 | P1 | needs-evidence | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
-| AUTH-004 | P0 | in-progress | Make wallet sign-in and eligible rewards automatic for players | Maintainer; founder controls bounded pilot approval and actual-device acceptance |
+| AUTH-004 | P0 | needs-evidence | Make wallet sign-in and eligible rewards automatic for players | Maintainer; founder controls bounded pilot approval and actual-device acceptance |
 
 ## CONT-001: Publish the continuation system
 
@@ -748,9 +748,9 @@ Evidence/specification: [public/play/assets/testnet-status.js](../../public/play
 
 ## AUTH-004: Make wallet sign-in and eligible rewards automatic for players
 
-**P0 / in-progress.** Owner: Maintainer; founder controls bounded pilot approval and actual-device acceptance. Dependencies: CHAIN-004.
+**P0 / needs-evidence.** Owner: Maintainer; founder controls bounded pilot approval and actual-device acceptance. Dependencies: CHAIN-004.
 
-Next action: Verify and publish the wallet-first candidate; test supported mobile wallet signing before claiming phone acceptance. Configure operator-approved TN10 recipients privately only after the pending pilot recovery is resolved. Existing users must not repeat their payment or disclose recovery material.
+Next action: Source/UI released as #157. Verify actual supported phone-wallet signing and same-hash TN10 payout acceptance; configure only the privately approved bounded pilot. Players should not handle enrollment forms, provider logs or transaction hashes.
 
 Acceptance:
 
