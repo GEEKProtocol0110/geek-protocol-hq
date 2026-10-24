@@ -53,3 +53,11 @@ test('only the explicit wallet sign-in action continues automatically to a fixed
     ui.emit('geek:signed-in',{recovered:false,source:'wallet-connect'});assert.deepEqual(ui.redirects,[expected]);
   }
 });
+
+test('returning after logout confirms the signed-out state without overriding a valid session',async()=>{
+  const guest=await mount({signedIn:false,walletLinked:false,credentials:[]},'?signedOut=1');
+  assert.match(guest.node('[data-sign-in-status]').textContent,/You’re signed out.*saved progress/);
+  const active=await mount({signedIn:true,walletLinked:false,credentials:[]},'?signedOut=1');
+  assert.match(active.node('[data-sign-in-status]').textContent,/Signed in|You’re signed in/);
+  assert.doesNotMatch(active.node('[data-sign-in-status]').textContent,/signed out/);
+});

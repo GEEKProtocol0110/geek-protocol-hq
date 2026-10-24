@@ -140,3 +140,6 @@ import('/assets/atmosphere.js').catch(() => {});
 
 // A small optional footer discovery, independent of gameplay and decoration.
 import('/assets/easter-eggs.js').catch(() => {});
+
+// Account controls live beside the player, outside optional recovery settings.
+import('/assets/session-access.js').catch(() => {});

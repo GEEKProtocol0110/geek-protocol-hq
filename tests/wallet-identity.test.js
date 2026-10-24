@@ -4,7 +4,8 @@ import kaspa from '@dfns/kaspa-wasm';
 import { redisFixture } from './helpers/redis-fixture.js';
 import sessionHandler from '../api/session.js';
 import identityHandler from '../api/identity.js';
-import { identityChallengeKey } from '../server/identity-keys.js';
+import passkeysHandler from '../api/passkeys.js';
+import { identityChallengeKey, identityPlayerKey } from '../server/identity-keys.js';
 import { verifyKaspaProof } from '../server/identity.js';
 
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
@@ -26,6 +27,26 @@ const session = async () => { const res = response(); await sessionHandler(reque
 const call = async (cookie, body, method = 'POST') => { const res = response(); await identityHandler(request(method, body, cookie), res); return res; };
 const wallet = n => { const privateKey = String(n).padStart(64, '0'), key = new kaspa.PrivateKey(privateKey); return { privateKey, publicKey: key.toPublicKey().toString(), address: key.toAddress('mainnet').toString() }; };
 const proof = async (cookie, w, fields = {}) => { const issued = await call(cookie, { action: 'challenge', address: w.address, ...fields }); assert.equal(issued.statusCode, 201); return call(cookie, { action: 'verify', challengeId: issued.body.challenge.challengeId, signature: kaspa.signMessage({ message: issued.body.challenge.message, privateKey: w.privateKey }) }); };
+
+test('wallet sign-out revokes the session while preserving the saved player for fresh wallet recovery', async () => {
+  await fixture.command('FLUSHDB');
+  const cookie = await session(), w = wallet(8);
+  assert.equal((await proof(cookie, w)).statusCode, 200);
+  const playerId = cookie.split('=')[1], identityKey = identityPlayerKey(playerId);
+  const identityBefore = await fixture.command('GET', identityKey);
+  assert.ok(identityBefore);
+  const profileKey = `geek:profile:${playerId}`, saved = JSON.stringify({ xp: 77, marker: 'retained-progress-fixture' });
+  await fixture.command('SET', profileKey, saved);
+  const out = response(); await passkeysHandler(request('POST', { action: 'logout' }, cookie), out);
+  assert.equal(out.statusCode, 200); assert.equal(out.body.signedOut, true); assert.match(out.headers['Set-Cookie'], /Max-Age=0/);
+  assert.equal((await call(cookie, null, 'GET')).statusCode, 401);
+  assert.equal(await fixture.command('GET', identityKey), identityBefore);
+  assert.equal(await fixture.command('GET', profileKey), saved);
+  const fresh = await session(), recovered = await proof(fresh, w);
+  assert.equal(recovered.statusCode, 200); assert.equal(recovered.body.recovered, true);
+  assert.equal(JSON.parse(await fixture.command('GET', `geek:session:${fresh.split('=')[1]}`)).playerId, playerId);
+  assert.equal(await fixture.command('GET', profileKey), saved);
+});
 
 test('x-only keys verify the published KIP-5 vector without relying on the local signer', () => {
   // https://github.com/kaspanet/kips/blob/master/kip-0005.md, vector 0.
