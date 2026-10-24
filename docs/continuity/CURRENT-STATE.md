@@ -25,9 +25,9 @@ Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-004: needs-evidence.** AUTH-004 Android Open KasWare action #160 is merged and deployed, using the package and scheme parsed from the checksum-verified official v0.5.3 APK. Production HTML/client bytes match. Physical-phone launch/signing, direct Chrome signature return and automatic payout remain unverified.
+**AUTH-004: needs-evidence.** AUTH-004/DR-026 account-first candidate separates passkey access from wallet-neutral receiving addresses. My HQ and Rewards save independent Mainnet/TN10 settings with fresh address-bound account proof. Automatic approved test rewards use the saved TN10 destination while preserving immutable jobs and limits. Candidate release and actual-device/payout acceptance remain pending.
 
-Next task: **AUTH-004**. Obtain actual-phone Open KasWare launch and in-app browser signing evidence. Establish a supported signature-return transport for direct Chrome login; app launch alone is not authentication. Continue same-hash TN10 acceptance and preserve existing holds.
+Next task: **AUTH-004**. Complete verification and release account sign-in with saved receiving addresses. Then obtain actual phone account/setup acceptance and same-hash automatic TN10 payment evidence; do not reopen Mainnet settlement or public rewards.
 
 ## Holds
 

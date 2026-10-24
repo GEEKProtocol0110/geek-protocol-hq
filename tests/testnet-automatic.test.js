@@ -10,6 +10,7 @@ import { loadQuestionBank } from '../server/questions.js';
 import { autoIndex, autoJobKey, enrollmentKey, automaticConfig } from '../server/testnet-automatic.js';
 import { processPayment } from '../workers/testnet/process.mjs';
 import { identityPlayerKey } from '../server/identity-keys.js';
+import { rewardAddressKey } from '../server/reward-addresses.js';
 const wallet = n => { const k = new kaspa.PrivateKey(n.toString(16).padStart(64, '0')); try { return k.toAddress('testnet').toString(); } finally { k.free(); } };
 const sender = wallet(7), recipient = wallet(3), deploy = 'a'.repeat(64), token = 'e'.repeat(64);
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
@@ -83,6 +84,65 @@ const verifiedWallet = async (p, ecdsa = false) => {
   await fixture.command('SET', sessionKey, JSON.stringify({ ...session, playerId: id, identityVersion: 1 }));
   return { id, record };
 };
+
+const savedReceiving = async (p, address = recipient) => {
+  const id = p.split('=')[1], record = { schema: 1, playerId: id, version: 'a'.repeat(24), mainnet: '', 'testnet-10': address,
+    updatedAt: Date.now(), mainnetEligibleAt: 0, authorizedBy: 'passkey' };
+  await fixture.command('SET', rewardAddressKey(id), JSON.stringify(record)); return record;
+};
+
+test('an account-confirmed receiving address admits an approved test reward without a wallet identity', async () => {
+  process.env.TESTNET_AUTO_APPROVED_WALLETS = recipient;
+  const p = await player(); await savedReceiving(p);
+  const view = await call(rewards, 'GET', {}, p, { service: 'testnet' });
+  assert.equal(view.body.enrollment.source, 'saved-account-address');
+  assert.equal(await fixture.command('GET', identityPlayerKey(p.split('=')[1])), null);
+  const runId = await complete(p); assert.equal((await play(p, 'finish', { runId })).statusCode, 200);
+  const [job] = await jobs(); assert.equal(job.recipient, recipient);
+  await savedReceiving(p, wallet(4));
+  assert.equal((await call(rewards, 'GET', {}, p, { service: 'testnet' })).body.records[0].recipient, recipient, 'a saved payment keeps its original recipient');
+});
+
+test('saved-address changes during finish skip stale admission while retaining the learning result', async () => {
+  process.env.TESTNET_AUTO_APPROVED_WALLETS = recipient;
+  const p = await player(); await savedReceiving(p); const runId = await complete(p);
+  beforeCommit = () => savedReceiving(p, wallet(4));
+  assert.equal((await play(p, 'finish', { runId })).statusCode, 200); assert.equal((await jobs()).length, 0);
+});
+
+test('an existing pilot approval accepts its same saved recipient and a concurrent owner pause still blocks admission', async () => {
+  const p = await player(); await enroll(p); await savedReceiving(p);
+  const runId = await complete(p);
+  beforeCommit = async () => {
+    const key = enrollmentKey(p.split('=')[1]), e = JSON.parse(await fixture.command('GET', key));
+    await fixture.command('SET', key, JSON.stringify({ ...e, enabled: false }));
+  };
+  assert.equal((await play(p, 'finish', { runId })).statusCode, 200); assert.equal((await jobs()).length, 0);
+  const p2 = await player(); await enroll(p2); await savedReceiving(p2);
+  const run2 = await complete(p2); await play(p2, 'finish', { runId: run2 });
+  assert.equal((await jobs())[0].recipient, recipient);
+});
+
+test('a newly saved or removed account destination prevents stale manual enrollment admission', async () => {
+  const p = await player(); await enroll(p); const runId = await complete(p);
+  beforeCommit = () => savedReceiving(p, '');
+  assert.equal((await play(p, 'finish', { runId })).statusCode, 200); assert.equal((await jobs()).length, 0);
+  const p2 = await player(); await enroll(p2); await savedReceiving(p2, wallet(4));
+  const run2 = await complete(p2); await play(p2, 'finish', { runId: run2 }); assert.equal((await jobs()).length, 0);
+});
+
+test('unapproved or removed saved destinations never fall back to an old verified wallet', async () => {
+  process.env.TESTNET_AUTO_APPROVED_WALLETS = recipient;
+  for (const address of [wallet(4), '']) {
+    const p = await player(); await verifiedWallet(p); await savedReceiving(p, address);
+    const runId = await complete(p); await play(p, 'finish', { runId });
+  }
+  assert.equal((await jobs()).length, 0);
+  const p = await player(); await savedReceiving(p); const cookie = await enroll(p);
+  const e = JSON.parse(await fixture.command('GET', enrollmentKey(p.split('=')[1])));
+  await ops({ action: 'enroll', recipient, enabled: false, version: e.version }, cookie);
+  const runId = await complete(p); await play(p, 'finish', { runId }); assert.equal((await jobs()).length, 0);
+});
 
 test('an approved verified wallet receives automatic admission without an owner enrollment action', async () => {
   process.env.TESTNET_AUTO_APPROVED_WALLETS = recipient;

@@ -1,5 +1,7 @@
 # Wallet-first player access
 
+Superseded for the primary player flow by DR-026 and [Geek accounts with receiving addresses](ACCOUNT-RECEIVING-ADDRESSES.md). The wallet-recovery implementation below remains compatible and optional.
+
 AUTH-004 implements the founder's October 24 direction: connect a wallet, approve a free sign-in message, and continue playing. Owner enrollment forms, provider dashboards, transaction hashes and manual payout instructions do not belong in the player journey.
 
 The sign-in page presents one **Connect & sign in** action. After connection, the client requests a fresh server challenge, asks the selected provider to sign that exact message, and submits the signature to the existing ownership verifier. Only successful verification continues to a fixed local destination. Connection alone never authenticates a player, and no signing prompt runs on page load. Rejected signatures restore the button. Mint-only connections keep their existing behavior. Saved passkeys, nearby-device access and manual recovery remain optional, closed sections.

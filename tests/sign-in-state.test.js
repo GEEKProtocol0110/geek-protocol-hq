@@ -56,6 +56,14 @@ test('only the explicit wallet sign-in action continues automatically to a fixed
   }
 });
 
+test('completed account sign-in continues to receiving settings while management reauthentication stays on the page',async()=>{
+  const ui=await mount({signedIn:false,walletLinked:false,credentials:[]},'?next=rewards');
+  ui.emit('geek:passkey-signed-in',{continue:false});assert.deepEqual(ui.redirects,[]);
+  ui.emit('geek:passkey-signed-in',{continue:true});assert.deepEqual(ui.redirects,['/profile/#reward-address']);
+  const other=await mount({signedIn:false,walletLinked:false,credentials:[]},'?next=https://evil.invalid');
+  other.emit('geek:passkey-signed-in',{continue:true});assert.deepEqual(other.redirects,['/profile/']);
+});
+
 test('returning after logout confirms the signed-out state without overriding a valid session',async()=>{
   const guest=await mount({signedIn:false,walletLinked:false,credentials:[]},'?signedOut=1');
   assert.match(guest.node('[data-sign-in-status]').textContent,/You’re signed out.*saved progress/);

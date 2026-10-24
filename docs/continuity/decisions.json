@@ -320,6 +320,21 @@
       ],
       "recordedAt": "2026-10-24",
       "supersedes": "DR-019"
+    },
+    {
+      "id": "DR-026",
+      "status": "founder-direction",
+      "title": "Separate Geek account access from saved receiving addresses",
+      "decision": "Use a Geek account with passkey authentication as the main sign-in path. Let the account save separate Mainnet and Testnet-10 receiving addresses from any Kaspa wallet, without connecting the wallet app or claiming ownership from an address. Require fresh account confirmation for changes; keep existing wallet recovery optional, bounded TN10 approval, immutable payment recipients and all settlement holds.",
+      "basis": "Founder October 24 proposes any Kaspa wallet: enter an address and save it to the account, then approves implementation after account access and address confirmation are explained. This supersedes wallet-first presentation in DR-025.",
+      "evidence": [
+        "docs/ACCOUNT-RECEIVING-ADDRESSES.md",
+        "server/reward-addresses.js",
+        "public/assets/receiving-address.js",
+        "server/testnet-automatic.js"
+      ],
+      "recordedAt": "2026-10-24",
+      "supersedes": "DR-025"
     }
   ]
 }

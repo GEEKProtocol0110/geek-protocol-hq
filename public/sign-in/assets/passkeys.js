@@ -3,7 +3,7 @@
   const panel = document.querySelector('[data-passkeys]');
   if (!panel) return;
   const note = panel.querySelector('[data-passkey-note]'), list = panel.querySelector('[data-passkey-list]');
-  let busy = false, ready = false, grant = '';
+  let busy = false, ready = false, grant = '', authenticated = false;
   const supported = Boolean(window.isSecureContext && window.PublicKeyCredential && navigator.credentials?.create && navigator.credentials?.get);
   const controls = () => [...panel.querySelectorAll('button')];
   const setDisabled = () => controls().forEach(button => { button.disabled = busy || !ready
@@ -63,12 +63,14 @@
       : { clientDataJSON: encode(credential.response.clientDataJSON), authenticatorData: encode(credential.response.authenticatorData), signature: encode(credential.response.signature), userHandle: credential.response.userHandle ? encode(credential.response.userHandle) : null } });
   const refresh = async () => {
     const data = await request(); list.replaceChildren();
-    const authenticated = Boolean(data.signedIn || data.walletLinked);
+    authenticated = Boolean(data.signedIn || data.walletLinked);
     const loginArea = panel.querySelector('[data-passkey-login-area]'), account = panel.querySelector('[data-passkey-account]'), playerRow = panel.querySelector('[data-passkey-player-row]'), newTitle = panel.querySelector('[data-passkey-new-title]');
     if (loginArea) loginArea.hidden = authenticated;
     if (account) account.hidden = !authenticated;
     if (playerRow) playerRow.hidden = !authenticated;
     if (newTitle) newTitle.textContent = authenticated ? 'Add another passkey' : 'New here? Save your player';
+    const newPlayer = panel.querySelector('[data-passkey-new]');
+    if (newPlayer && authenticated) newPlayer.open = false;
     document.dispatchEvent(new CustomEvent('geek:account-status', {detail:data}));
     const playerName = panel.querySelector('[data-passkey-player]');
     if (playerName) playerName.textContent = data.playerName || 'Name unavailable';
@@ -102,6 +104,7 @@
     } finally { busy = false; setDisabled(); }
   };
   const save = async () => {
+    const wasSignedIn = authenticated;
     note.textContent = 'Choose where to save your passkey. Your device may ask for fingerprint, face or screen lock.';
     const token = grant; grant = '';
     const issued = await request({ action: 'begin-register', token });
@@ -109,21 +112,21 @@
     const result = await request({ action: 'finish-register', challengeId: issued.challengeId, response: serialize(credential), label: panel.querySelector('[data-passkey-label]').value });
     grant = result.grant.token; document.dispatchEvent(new CustomEvent('geek:device-grant', {detail:result.grant}));
     note.textContent = 'Passkey saved. Keep another saved/synced passkey or a linked wallet for recovery. Signing in does not approve wallet spending.';
-    document.dispatchEvent(new CustomEvent('geek:passkey-signed-in'));
+    document.dispatchEvent(new CustomEvent('geek:passkey-signed-in', { detail: { continue: !wasSignedIn } }));
     try { await refresh(); } catch { note.textContent += ' Your player is signed in, but the passkey list could not refresh. Reload to check it.'; }
   };
   panel.querySelector('[data-passkey-save]').addEventListener('click', () => act(save));
-  const login = () => act(async () => {
+  const login = (reauthenticate = false) => act(async () => {
     note.textContent = 'Choose your Geek passkey…';
     const issued = await request({ action: 'begin-login' });
     const credential = await credentialPrompt('get', issued.options);
     const result = await request({ action: 'finish-login', challengeId: issued.challengeId, response: serialize(credential) });
     grant = result.grant.token; document.dispatchEvent(new CustomEvent('geek:device-grant', {detail:result.grant})); note.textContent = 'Signed in to your saved player. You can add or remove a passkey during this fresh sign-in.';
-    document.dispatchEvent(new CustomEvent('geek:passkey-signed-in'));
+    document.dispatchEvent(new CustomEvent('geek:passkey-signed-in', { detail: { continue: !reauthenticate } }));
     try { await refresh(); } catch { note.textContent += ' Your player is signed in, but the passkey list could not refresh. Reload to check it.'; }
   });
-  panel.querySelector('[data-passkey-login]').addEventListener('click', login);
-  panel.querySelector('[data-passkey-verify]')?.addEventListener('click', login);
+  panel.querySelector('[data-passkey-login]').addEventListener('click', () => login());
+  panel.querySelector('[data-passkey-verify]')?.addEventListener('click', () => login(true));
   panel.querySelector('[data-passkey-logout]').addEventListener('click', () => act(async () => { await request({ action: 'logout' }); grant = ''; location.reload(); }));
   document.addEventListener('geek:signed-in', () => { grant = ''; void refresh().catch(() => { note.textContent = 'Signed in. Reload to check your saved player.'; }); });
   document.addEventListener('geek:device-signed-in', () => {

@@ -13,6 +13,8 @@ import { loadQuestionBank } from '../server/questions.js';
 import { passkeyAccountKey } from '../server/passkey-grants.js';
 import { identityPlayerKey } from '../server/identity-keys.js';
 import { resetRestoredSessions } from '../scripts/reset-restored-sessions.mjs';
+import rewardsHandler from '../api/rewards.js';
+import { rewardAddressKey } from '../server/reward-addresses.js';
 
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
 let beforeCommand = null, activeFixture = fixture;
@@ -63,6 +65,91 @@ const enroll = async (cookie, key = authenticator(), token) => {
   assert.equal(finish.statusCode, 200, JSON.stringify(finish.body));
   return { cookie: cookieFrom(finish), grant: finish.body.grant.token, key };
 };
+
+const receivingHandler = (req, res) => rewardsHandler({ ...req, query: { service: 'addresses' } }, res);
+const receivingAddress = (n, network = 'testnet') => {
+  const key = new kaspa.PrivateKey(n.toString(16).padStart(64, '0'));
+  try { const a = key.toAddress(network); try { return a.toString(); } finally { a.free(); } } finally { key.free(); }
+};
+const beginAddress = async (cookie, network = 'testnet-10', address = receivingAddress(11), version = '', operation = 'set') =>
+  call(receivingHandler, cookie, { action: 'begin', network, address, version, operation, confirmed: true });
+
+test('a passkey-only account saves any receiving wallet, separates networks and recovers settings after logout', async () => {
+  const guest = await session(), player = guest.split('=')[1], account = await enroll(guest);
+  const tn = receivingAddress(11), main = receivingAddress(12, 'mainnet');
+  const b = await beginAddress(account.cookie); assert.equal(b.statusCode, 200, JSON.stringify(b.body));
+  const finish = await call(receivingHandler, account.cookie, { action: 'finish', challengeId: b.body.challengeId,
+    address: receivingAddress(13), response: account.key.login(b.body.options, player) });
+  assert.equal(finish.statusCode, 200, JSON.stringify(finish.body));
+  assert.equal(finish.body.addresses['testnet-10'], tn, 'finish input cannot replace the destination bound before verification');
+  assert.equal(finish.body.addresses.mainnet, ''); assert.equal(finish.body.mainnetSettlementEnabled, false);
+  const m = await beginAddress(account.cookie, 'mainnet', main, finish.body.addresses.version);
+  const saved = await call(receivingHandler, account.cookie, { action: 'finish', challengeId: m.body.challengeId, response: account.key.login(m.body.options, player, 2) });
+  assert.equal(saved.statusCode, 200, JSON.stringify(saved.body)); assert.equal(saved.body.addresses.mainnet, main); assert.equal(saved.body.addresses['testnet-10'], tn);
+  const stored = JSON.parse(await fixture.command('GET', rewardAddressKey(player)));
+  assert.ok(stored.mainnetEligibleAt >= Date.now() + 72 * 60 * 60 * 1000 - 2000);
+  assert.equal(await fixture.command('GET', identityPlayerKey(player)), null, 'receiving information never creates a wallet identity');
+  await call(passkeysHandler, account.cookie, { action: 'logout' });
+  const fresh = await session(), login = await call(passkeysHandler, fresh, { action: 'begin-login' });
+  const signed = await call(passkeysHandler, fresh, { action: 'finish-login', challengeId: login.body.challengeId, response: account.key.login(login.body.options, player, 3) });
+  const loaded = await call(receivingHandler, cookieFrom(signed), null, 'GET');
+  assert.equal(loaded.body.addresses.mainnet, main); assert.equal(loaded.body.addresses['testnet-10'], tn);
+  const remove = await beginAddress(cookieFrom(signed), 'testnet-10', '', loaded.body.addresses.version, 'remove');
+  const removed = await call(receivingHandler, cookieFrom(signed), { action: 'finish', challengeId: remove.body.challengeId, response: account.key.login(remove.body.options, player, 4) });
+  assert.equal(removed.statusCode, 200); assert.equal(removed.body.addresses['testnet-10'], ''); assert.equal(removed.body.addresses.mainnet, main);
+});
+
+test('a guest, pasted address, wrong network or stale settings cannot authorize a receiving change', async () => {
+  const guest = await session(), player = guest.split('=')[1];
+  assert.equal((await beginAddress(guest)).statusCode, 403);
+  const account = await enroll(guest);
+  for (const [network, address, version] of [['mainnet', receivingAddress(11), ''], ['testnet-10', receivingAddress(11, 'mainnet'), ''], ['mainnet', 'kaspa:bad', ''], ['other', receivingAddress(11), ''], ['testnet-10', receivingAddress(11), 'stale']]) {
+    const r = await beginAddress(account.cookie, network, address, version); assert.ok([400, 409].includes(r.statusCode));
+  }
+  assert.equal(await fixture.command('GET', rewardAddressKey(player)), null);
+});
+
+test('receiving changes reject wrong-account keys, absent UV, origin changes and replayed proof', async () => {
+  const guest = await session(), player = guest.split('=')[1], account = await enroll(guest), wrong = authenticator();
+  for (const kind of ['key', 'uv', 'origin', 'session']) {
+    const b = await beginAddress(account.cookie); const proof = (kind === 'key' ? wrong : account.key).login(b.body.options, player, 1, kind !== 'uv', kind === 'origin' ? { origin: 'https://evil.invalid' } : {});
+    const result = await call(receivingHandler, kind === 'session' ? await session() : account.cookie, { action: 'finish', challengeId: b.body.challengeId, response: proof });
+    assert.ok([400, 403].includes(result.statusCode), kind); assert.equal(await fixture.command('GET', rewardAddressKey(player)), null);
+  }
+  const b = await beginAddress(account.cookie), body = { action: 'finish', challengeId: b.body.challengeId, response: account.key.login(b.body.options, player) };
+  assert.equal((await call(receivingHandler, account.cookie, body)).statusCode, 200);
+  const before = await fixture.command('GET', rewardAddressKey(player));
+  assert.equal((await call(receivingHandler, account.cookie, body)).statusCode, 400);
+  assert.equal(await fixture.command('GET', rewardAddressKey(player)), before);
+  assert.equal((await call(receivingHandler, account.cookie, { action: 'begin' }, 'POST', { origin: 'https://evil.invalid' })).statusCode, 400);
+});
+
+test('logout, passkey revocation or address changes racing the atomic receiving save cannot commit', async () => {
+  for (const kind of ['logout', 'passkey', 'address']) {
+    await fixture.command('FLUSHDB'); const guest = await session(), player = guest.split('=')[1], account = await enroll(guest), b = await beginAddress(account.cookie);
+    beforeCommand = async command => {
+      if (command[0] !== 'EVAL' || !command[1].includes('geek-reward-address-save-v1')) return;
+      beforeCommand = null;
+      if (kind === 'logout') await fixture.command('DEL', 'geek:session:' + account.cookie.split('=')[1]);
+      if (kind === 'passkey') { const a = JSON.parse(await fixture.command('GET', passkeyAccountKey(player))); a.epoch++; a.credentials = []; await fixture.command('SET', passkeyAccountKey(player), JSON.stringify(a)); }
+      if (kind === 'address') await fixture.command('SET', rewardAddressKey(player), 'concurrent-state');
+    };
+    const r = await call(receivingHandler, account.cookie, { action: 'finish', challengeId: b.body.challengeId, response: account.key.login(b.body.options, player) });
+    assert.equal(r.statusCode, 409, kind);
+    assert.equal(await fixture.command('GET', rewardAddressKey(player)), kind === 'address' ? 'concurrent-state' : null);
+  }
+});
+
+test('legacy Mainnet receiving information survives confirmation without rewriting progress or payout review records', async () => {
+  const guest = await session(), player = guest.split('=')[1], account = await enroll(guest);
+  const legacy = JSON.stringify({ xp: 123, payoutAddress: receivingAddress(12, 'mainnet'), payoutReviewId: 'retained' });
+  await fixture.command('SET', 'geek:profile:' + player, legacy);
+  const before = await call(receivingHandler, account.cookie, null, 'GET'); assert.equal(before.body.addresses.mainnet, receivingAddress(12, 'mainnet'));
+  const b = await beginAddress(account.cookie);
+  const r = await call(receivingHandler, account.cookie, { action: 'finish', challengeId: b.body.challengeId, response: account.key.login(b.body.options, player) });
+  assert.equal(r.statusCode, 200); assert.equal(r.body.addresses.mainnet, receivingAddress(12, 'mainnet'));
+  assert.equal(await fixture.command('GET', 'geek:profile:' + player), legacy);
+});
 
 test('real WebAuthn registration and login rotate cookies and recover the same player without a wallet', async () => {
   const original = await session(), player = original.split('=')[1], e = await enroll(original);

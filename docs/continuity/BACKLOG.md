@@ -53,7 +53,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | LAUNCH-001 | P0 | needs-evidence | Prove the core loop and close the first release scope | Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned |
 | CHAIN-004 | P0 | needs-evidence | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
 | CHAIN-005 | P1 | needs-evidence | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
-| AUTH-004 | P0 | needs-evidence | Make wallet sign-in and eligible rewards automatic for players | Maintainer; founder controls bounded pilot approval and actual-device acceptance |
+| AUTH-004 | P0 | needs-evidence | Secure Geek account access and wallet-neutral receiving addresses | Maintainer; founder controls bounded pilot approval and actual-device acceptance |
 
 ## CONT-001: Publish the continuation system
 
@@ -746,19 +746,19 @@ Acceptance:
 
 Evidence/specification: [public/play/assets/testnet-status.js](../../public/play/assets/testnet-status.js), [tests/testnet-status-client.test.js](../../tests/testnet-status-client.test.js), [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md).
 
-## AUTH-004: Make wallet sign-in and eligible rewards automatic for players
+## AUTH-004: Secure Geek account access and wallet-neutral receiving addresses
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls bounded pilot approval and actual-device acceptance. Dependencies: CHAIN-004.
 
-Next action: Android launcher #160 is deployed. Obtain actual phone app-launch and in-app browser signing evidence; direct Chrome sign-in still needs a supported signature-return transport. Continue same-hash TN10 acceptance separately.
+Next action: Verify and release DR-026 account-first access, independent network receiving addresses and approved automatic admission. Obtain actual-phone and same-hash TN10 payout acceptance separately.
 
 Acceptance:
 
-- One user action connects a supported wallet, signs a server challenge, verifies ownership and continues to an allowed local destination.
-- No wallet/signature prompt on page load; cancellation and repeated taps cannot authenticate or duplicate proof. Existing mint-only connections remain separate.
-- Approved verified wallets derive TN10 destinations on the server and queue eligible Daily rewards without a player enrollment form. Guest/unsigned/unapproved users and explicit disabled enrollments do not gain reward authority.
-- Atomic admission watches the exact identity snapshot; existing recipient/day limits, replay locks, immutable signed journals and Mainnet/CCE/ownership holds remain.
-- Provider/device compatibility, release and actual automatic transfer acceptance are recorded separately.
-- Signed-in players have a visible Sign out control on My HQ and Sign in; logout revokes the current server session and retains saved progress and wallet/passkey recovery.
+- Geek passkey sign-in and account creation are primary; legacy linked-wallet recovery remains optional. An address alone cannot authenticate or recover an account.
+- My HQ and Rewards save a receiving address from any Kaspa wallet without opening its app. Mainnet and Testnet-10 fields remain independent and checksum/SDK validated.
+- Each save/removal requires a single-use, expiring, exact-origin, same-account passkey assertion with user verification, bound to the reviewed network, destination and prior settings. Cancellation, replay, guest access, logout/revocation races and cross-account proofs cannot change settings.
+- Atomic writes retain saved progress, credential counter integrity, audit evidence and the existing Mainnet future cooldown/settlement holds. Offline restore clears temporary receiving proofs and retains durable addresses.
+- An approved saved TN10 address can receive eligible Daily admission without wallet identity proof. Explicit operator pauses, exact receiving and enrollment snapshots, per-recipient/day/global limits and immutable signed journals remain enforced.
+- Sign out remains visible and saved accounts recover the same settings and progress. Physical-device account setup, production release and actual payment acceptance remain distinct evidence.
 
-Evidence/specification: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRST-ONBOARDING.md), [public/sign-in/index.html](../../public/sign-in/index.html), [public/assets/wallet.js](../../public/assets/wallet.js), [server/testnet-automatic.js](../../server/testnet-automatic.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [public/assets/session-access.js](../../public/assets/session-access.js), [tests/session-access-client.test.js](../../tests/session-access-client.test.js), [tests/sign-in-state.test.js](../../tests/sign-in-state.test.js), [docs/KASWARE-MOBILE-CONNECTION.md](../../docs/KASWARE-MOBILE-CONNECTION.md).
+Evidence/specification: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRST-ONBOARDING.md), [public/sign-in/index.html](../../public/sign-in/index.html), [public/assets/wallet.js](../../public/assets/wallet.js), [server/testnet-automatic.js](../../server/testnet-automatic.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [public/assets/session-access.js](../../public/assets/session-access.js), [tests/session-access-client.test.js](../../tests/session-access-client.test.js), [tests/sign-in-state.test.js](../../tests/sign-in-state.test.js), [docs/KASWARE-MOBILE-CONNECTION.md](../../docs/KASWARE-MOBILE-CONNECTION.md), [docs/ACCOUNT-RECEIVING-ADDRESSES.md](../../docs/ACCOUNT-RECEIVING-ADDRESSES.md), [server/reward-addresses.js](../../server/reward-addresses.js), [public/assets/receiving-address.js](../../public/assets/receiving-address.js), [tests/receiving-address-client.test.js](../../tests/receiving-address-client.test.js), [tests/passkeys.test.js](../../tests/passkeys.test.js).

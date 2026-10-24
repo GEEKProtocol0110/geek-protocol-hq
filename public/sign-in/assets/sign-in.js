@@ -6,6 +6,7 @@
   const returningToStart = new URLSearchParams(location.search).get('next') === 'start';
   const continueLink = document.querySelector('[data-sign-in-continue]');
   const nextPages = {
+    rewards: ['/profile/#reward-address', 'Add a receiving address →'],
     start: ['/start/#step-geek', 'Continue to your Geek →'],
     study: ['/study/', 'Continue learning →'],
     play: ['/play/#timed-games', 'Continue to your game →'],
@@ -53,7 +54,7 @@
   }
   let proofIntent = 'identity';
   const showSignedIn = (message) => { status.textContent = message; hq.hidden = false; continueLink.textContent = nextPage[1]; const title = document.querySelector('[data-sign-in-title]'); if (title) title.textContent = 'Welcome back.'; const guest = document.querySelector('[data-sign-in-guest]'); if (guest) guest.hidden = true; };
-  document.addEventListener('geek:passkey-signed-in', () => { signedIn = true; invalidate(); manualStatus.textContent = ''; proofIntent = 'identity'; showSignedIn(`Signed in to your saved player. ${destination}`); hq.focus(); });
+  document.addEventListener('geek:passkey-signed-in', event => { signedIn = true; invalidate(); manualStatus.textContent = ''; proofIntent = 'identity'; showSignedIn(`Signed in to your saved player. ${destination}`); hq.focus(); if (event.detail?.continue) location.assign(nextPage[0]); });
   document.addEventListener('geek:device-signed-in', event => { signedIn = true; invalidate(); showSignedIn(`Signed in to ${event.detail.playerName}. ${destination}`); hq.focus(); });
   document.addEventListener('geek:signed-in', (event) => {
     signedIn = true;
