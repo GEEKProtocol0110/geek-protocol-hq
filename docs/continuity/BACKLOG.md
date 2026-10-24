@@ -750,7 +750,7 @@ Evidence/specification: [public/play/assets/testnet-status.js](../../public/play
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls bounded pilot approval and actual-device acceptance. Dependencies: CHAIN-004.
 
-Next action: Release focused account/address UX polish: clear creation labels, saved/draft state, guest gating, per-network draft retention and mobile controls. Then continue actual-device and TN10 payment acceptance.
+Next action: Account/address polish #162 is live and visually checked as a desktop guest. Continue actual-phone account/setup acceptance and same-hash TN10 payment evidence; current settlement/public-reward gates remain.
 
 Acceptance:
 

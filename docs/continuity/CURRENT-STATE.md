@@ -25,9 +25,9 @@ Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-004: needs-evidence.** AUTH-004 polish candidate improves account-creation labels, mobile receiving controls, honest saved/draft states, guest access and recovery from errors. Unsaved drafts are retained separately by network in page memory. Backend authentication, address validation and reward admission remain as released in #161; actual-phone and automatic-payment acceptance remain pending.
+**AUTH-004: needs-evidence.** AUTH-004 account/address polish #162 is merged and deployed: clearer account creation, saved/draft states, per-network draft retention, guest access, retry and mobile control styling. Seven production byte checks and a live desktop guest visual/AX inspection passed. Backend behavior remains as #161. Actual-phone setup and automatic-payment acceptance remain separate.
 
-Next task: **AUTH-004**. Check and release the account/address polish, then obtain actual-phone setup/save acceptance and same-hash automatic TN10 payment evidence. Preserve existing Mainnet/public reward gates.
+Next task: **AUTH-004**. Obtain actual-phone Geek account setup and receiving-address save acceptance, then confirm the existing same-hash automatic TN10 payment. Preserve the account-first direction and Mainnet/public reward gates.
 
 ## Holds
 
