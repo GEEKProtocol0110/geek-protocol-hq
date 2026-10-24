@@ -2,12 +2,13 @@ import { timingSafeEqual } from 'node:crypto';
 import { workerRequest } from './request.mjs';
 import { processPayment } from './process.mjs';
 import { reportFailure, reportOutcome } from './diagnostics.mjs';
+import { rpcDeadline } from './rpc-health.mjs';
 
 async function runScheduledPayment() {
   const { createSigner, createRpc } = await import('./signer.mjs');
   const rpc = createRpc(), signer = createSigner(process.env.TESTNET_SIGNER_PRIVATE_KEY, rpc);
   try { return await processPayment({ request: workerRequest(), signer }); }
-  finally { signer.close(); await rpc.disconnect(); }
+  finally { signer.close(); await rpcDeadline(() => rpc.disconnect(), 'RPC_DISCONNECT_FAILED', 2000); }
 }
 export const createCronHandler = (run = runScheduledPayment, report) => async (req, res) => {
   res.setHeader('Cache-Control', 'private, no-store, max-age=0');

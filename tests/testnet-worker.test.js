@@ -61,3 +61,18 @@ test('uncertain commit and reveal submissions remain visible while preserving th
   s.report = () => { throw new Error('log sink unavailable'); };
   assert.equal(await processPayment(s), 'reconciling'); assert.equal(s.prepared, 0);
 });
+
+test('missing-input diagnostics inspect the same saved journal without changing recovery or leaking details', async () => {
+  const s = system({ persisted: true }); let inspections = 0;
+  s.signer.submit = async saved => { s.calls.push(saved.transaction); throw new Error('orphan transaction private-hash'); };
+  s.signer.inspect = async (config, job) => {
+    inspections++; assert.deepEqual(job.journal, journal);
+    return { commitInputsAvailable: false, revealInputAvailable: false, transaction: 'private bytes' };
+  };
+  assert.equal(await processPayment(s), 'reconciling'); assert.equal(inspections, 1); assert.equal(s.prepared, 0);
+  assert.deepEqual(s.events.at(-1), { event: 'tn10-worker-inputs', commitInputsAvailable: false, revealInputAvailable: false });
+  assert.doesNotMatch(JSON.stringify(s.events), /private|signed-commit|signed-reveal/);
+  s.signer.inspect = async () => { throw new Error('private API failure'); };
+  assert.equal(await processPayment(s), 'reconciling'); assert.equal(s.events.at(-1).stage, 'inspect-journal');
+  assert.equal(s.calls.filter(c => c === 'submitted').length, 2); assert.equal(s.prepared, 0);
+});

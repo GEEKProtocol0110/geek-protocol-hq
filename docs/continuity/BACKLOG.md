@@ -715,9 +715,9 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Release fixed stage/reason worker diagnostics, then read the naturally scheduled invocation in the accessible Vercel dashboard and diagnose the exact failing boundary. Preserve the existing journal, recipient and locks.
+Next action: Release checked read-only node fallback and saved-outpoint diagnostics, observe the scheduled result, and reconcile the retained payment. Preserve all journals, recipients, caps and locks.
 
-Blocker: October 24 dashboard fallback can now read signer request logs: 200 and 503 scheduled requests are interleaved. A sampled failure took 12.23 seconds of 90 with two HQ calls but no application exception output. Existing catch blocks suppress verification and submission causes. Connector access remains unavailable; add redacted diagnostics and observe the next scheduled run before selecting a payment fix.
+Blocker: The dashboard now supplies application failure evidence. Scheduled verification can hit RPC_TIMEOUT; connected runs reject both persisted phases with RPC_INPUT_UNAVAILABLE and return reconciling. The original reveal remains unaccepted. Determine saved outpoint availability and reconcile without replacing the immutable journal.
 
 Acceptance:
 
@@ -728,7 +728,7 @@ Acceptance:
 - Mainnet settlement, CCE and collectible ownership remain disabled.
 - Exact Kasplex 403/404 op-not-found transfer lookups remain pending and permit immutable-journal recovery; other failures and pinned asset/deployment checks still stop work.
 
-Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md), [server/testnet-automatic.js](../../server/testnet-automatic.js), [workers/testnet/process.mjs](../../workers/testnet/process.mjs), [workers/testnet/signer.mjs](../../workers/testnet/signer.mjs), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [tests/testnet-worker.test.js](../../tests/testnet-worker.test.js), [tests/testnet-indexer.test.js](../../tests/testnet-indexer.test.js), [docs/TESTNET-RECOVERY-2026-10-23.md](../../docs/TESTNET-RECOVERY-2026-10-23.md), [workers/testnet/diagnostics.mjs](../../workers/testnet/diagnostics.mjs), [tests/testnet-diagnostics.test.js](../../tests/testnet-diagnostics.test.js).
+Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md), [server/testnet-automatic.js](../../server/testnet-automatic.js), [workers/testnet/process.mjs](../../workers/testnet/process.mjs), [workers/testnet/signer.mjs](../../workers/testnet/signer.mjs), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [tests/testnet-worker.test.js](../../tests/testnet-worker.test.js), [tests/testnet-indexer.test.js](../../tests/testnet-indexer.test.js), [docs/TESTNET-RECOVERY-2026-10-23.md](../../docs/TESTNET-RECOVERY-2026-10-23.md), [workers/testnet/diagnostics.mjs](../../workers/testnet/diagnostics.mjs), [tests/testnet-diagnostics.test.js](../../tests/testnet-diagnostics.test.js), [workers/testnet/rpc-health.mjs](../../workers/testnet/rpc-health.mjs), [tests/testnet-rpc-health.test.js](../../tests/testnet-rpc-health.test.js).
 
 ## CHAIN-005: Recover player reward status after interruptions
 

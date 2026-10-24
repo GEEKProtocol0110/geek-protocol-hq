@@ -1,7 +1,9 @@
 // Provider logs receive only fixed categories, never exception text or payment data.
 const stages = new Set(['scheduled-run', 'claim', 'verify', 'prepare', 'persist-journal', 'reconcile-before-submit',
-  'submit-commit', 'submit-reveal', 'mark-submitted', 'reconcile-after-submit', 'release']);
+  'submit-commit', 'submit-reveal', 'inspect-journal', 'mark-submitted', 'reconcile-after-submit', 'release']);
 const reasons = new Set(['RPC_TIMEOUT', 'INDEXER_UNAVAILABLE', 'DEDICATED_SIGNER_KEY_REQUIRED', 'WORKER_TOKEN_REQUIRED',
+  'RPC_CONNECT_TIMEOUT', 'RPC_CONNECT_FAILED', 'RPC_SERVER_INFO_TIMEOUT', 'RPC_SERVER_INFO_FAILED', 'RPC_DISCONNECT_FAILED',
+  'JOURNAL_LINK_MISMATCH', 'JOURNAL_INSPECTION_FAILED',
   'CANONICAL_HQ_REQUIRED', 'TN10_SYNCED_NODE_REQUIRED', 'SIGNER_POLICY_MISMATCH', 'PINNED_ASSET_REQUIRED',
   'GEEKT_FUNDING_REQUIRED', 'FUNDED_UTXO_REQUIRED', 'CONSOLIDATION_NOT_ALLOWED', 'COMMIT_OUTPUT_INVALID',
   'FEE_LIMIT_EXCEEDED', 'JOURNAL_LIMIT_EXCEEDED', 'JOURNAL_HASH_MISMATCH', 'RPC_HASH_MISMATCH', 'HQ_REQUEST_FAILED']);
@@ -22,7 +24,12 @@ export function reportFailure(stage, error, report = write) {
   const event = { event: 'tn10-worker-failure', stage: stages.has(stage) ? stage : 'scheduled-run', code };
   if (code === 'HQ_REQUEST_FAILED' && Number.isInteger(error?.httpStatus) && error.httpStatus >= 400 && error.httpStatus <= 599) event.httpStatus = error.httpStatus;
   emit(event, report);
+  return code;
 }
 export function reportOutcome(state, report = write) {
   emit({ event: 'tn10-worker-result', state: outcomes.has(state) ? state : 'unknown' }, report);
+}
+export function reportJournalState(state, report = write) {
+  if (typeof state?.commitInputsAvailable !== 'boolean' || typeof state?.revealInputAvailable !== 'boolean') return;
+  emit({ event: 'tn10-worker-inputs', commitInputsAvailable: state.commitInputsAvailable, revealInputAvailable: state.revealInputAvailable }, report);
 }

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { reportFailure, reportOutcome } from '../workers/testnet/diagnostics.mjs';
+import { reportFailure, reportOutcome, reportJournalState } from '../workers/testnet/diagnostics.mjs';
 
 test('diagnostics emit only fixed stage/reason categories and never copy raw upstream data', () => {
   const events = [], report = event => events.push(event);
@@ -34,4 +34,7 @@ test('result summaries cannot leak arbitrary states and broken logging cannot al
   assert.deepEqual(events, [{ event: 'tn10-worker-result', state: 'reconciling' }, { event: 'tn10-worker-result', state: 'unknown' }]);
   assert.doesNotThrow(() => reportOutcome('idle', () => { throw new Error('logger failed'); }));
   assert.doesNotThrow(() => reportFailure('verify', new Error('RPC_TIMEOUT'), () => { throw new Error('logger failed'); }));
+  reportJournalState({ commitInputsAvailable: false, revealInputAvailable: true, recipient: 'private', hash: 'private' }, event => events.push(event));
+  assert.deepEqual(events.at(-1), { event: 'tn10-worker-inputs', commitInputsAvailable: false, revealInputAvailable: true });
+  reportJournalState({ commitInputsAvailable: 'private', revealInputAvailable: true }, () => assert.fail('Reject arbitrary values'));
 });

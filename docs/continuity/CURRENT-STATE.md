@@ -25,9 +25,9 @@ Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: needs-evidence.** Dashboard fallback now reads the separate signer logs. Scheduled requests alternate 200 and 503 without application error output; the worker suppresses all causes. Add fixed, redacted stage/reason diagnostics before diagnosing the retained payment.
+**CHAIN-004: needs-evidence.** Redacted diagnostics #164 are live on HQ and signer. Scheduled evidence identifies verification timeouts and missing inputs in both stored submission phases. Add bounded read-only node reconnection and exact saved-outpoint availability diagnosis without changing journals.
 
-Next task: **CHAIN-004**. Release checked signer diagnostics and observe a naturally scheduled production invocation. Diagnose its fixed failure category and reconcile only the existing journal; never replace or manually resend the pending payment.
+Next task: **CHAIN-004**. Release and observe bounded RPC health recovery plus read-only saved-input diagnostics, then reconcile only the original payment. Missing-input observations do not authorize rebuilding or resending.
 
 ## Holds
 

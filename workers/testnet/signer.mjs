@@ -1,11 +1,10 @@
 import { Wasm } from '@kasplex/kiwi';
+import { readRpcHealth, rpcDeadline } from './rpc-health.mjs';
 
 const hashPattern = /^[a-f0-9]{64}$/;
 const BASE = 'https://tn10api.kasplex.org/v1/krc20';
 const FUNDING = 130000000n, MAX_FEE = 5000000n;
-const bounded = promise => Promise.race([promise, new Promise((_, reject) => {
-  const timer = setTimeout(() => reject(new Error('RPC_TIMEOUT')), 12000); timer.unref();
-})]);
+const bounded = promise => rpcDeadline(() => promise);
 async function indexed(path) {
   const response = await fetch(`${BASE}/${path}`, { signal: AbortSignal.timeout(10000), redirect: 'error', cache: 'no-store' });
   const text = await response.text();
@@ -54,13 +53,36 @@ export async function prepareTransactions(key, job, entries) {
   } finally { commit?.free(); reveal?.free(); script.free(); spk.free(); address?.free(); }
 }
 
+export async function inspectJournal(job, rpc) {
+  let commit, reveal, spk, address;
+  try {
+    commit = Wasm.Transaction.deserializeFromSafeJSON(job.journal.commit.transaction);
+    reveal = Wasm.Transaction.deserializeFromSafeJSON(job.journal.reveal.transaction);
+    const c = commit.serializeToObject(), r = reveal.serializeToObject(), input = r.inputs[0];
+    if (job.network !== 'testnet-10' || !job.sender?.startsWith('kaspatest:') || commit.id !== job.journal.commit.id ||
+        reveal.id !== job.journal.reveal.id || c.inputs.length !== 1 || r.inputs.length !== 1 ||
+        input.transactionId !== commit.id || !Number.isInteger(input.index) || !c.outputs[input.index]) throw new Error('JOURNAL_LINK_MISMATCH');
+    const script = c.outputs[input.index].scriptPublicKey;
+    if (typeof script !== 'string' || !/^[a-f0-9]{6,}$/.test(script)) throw new Error('JOURNAL_LINK_MISMATCH');
+    spk = new Wasm.ScriptPublicKey(parseInt(script.slice(0, 4), 16), script.slice(4));
+    address = Wasm.addressFromScriptPublicKey(spk, 'testnet');
+    if (!address) throw new Error('JOURNAL_LINK_MISMATCH');
+    const { entries } = await bounded(rpc.getUtxosByAddresses({ addresses: [job.sender, address.toString()] }));
+    if (!Array.isArray(entries)) throw new Error('JOURNAL_INSPECTION_FAILED');
+    const available = input => entries.some(e => {
+      const point = e.outpoint || e.entry?.outpoint;
+      return String(point?.transactionId) === input.transactionId && point.index === input.index;
+    });
+    return { commitInputsAvailable: c.inputs.every(available), revealInputAvailable: available(input) };
+  } finally { commit?.free(); reveal?.free(); spk?.free(); address?.free(); }
+}
+
 export function createSigner(secret, rpc) {
   if (!hashPattern.test(secret || '')) throw new Error('DEDICATED_SIGNER_KEY_REQUIRED');
   const key = new Wasm.PrivateKey(secret);
   return {
     async verify(config, job) {
-      if (!rpc.isConnected && typeof rpc.connect === 'function') await bounded(rpc.connect({ timeoutDuration: 10000 }));
-      const info = await bounded(rpc.getServerInfo());
+      const info = await readRpcHealth(rpc);
       if (info.networkId !== 'testnet-10' || !info.isSynced || !info.hasUtxoIndex) throw new Error('TN10_SYNCED_NODE_REQUIRED');
       if (config.network !== 'testnet-10' || config.sender !== key.toPublicKey().toAddress('testnet').toString() ||
           ['sender', 'ticker', 'deploymentHash', 'amount', 'decimals'].some(k => config[k] !== job[k]) ||
@@ -88,6 +110,13 @@ export function createSigner(secret, rpc) {
         const result = await bounded(rpc.submitTransaction({ transaction: tx, allowOrphan: false }));
         if (result.transactionId !== saved.id) throw new Error('RPC_HASH_MISMATCH');
       } finally { tx.free(); }
+    },
+    async inspect(config, job) {
+      if (config.network !== 'testnet-10' || config.sender !== key.toPublicKey().toAddress('testnet').toString() ||
+          job.sender !== config.sender) throw new Error('SIGNER_POLICY_MISMATCH');
+      const info = await rpcDeadline(() => rpc.getServerInfo(), 'RPC_SERVER_INFO_TIMEOUT', 6000);
+      if (info.networkId !== 'testnet-10' || !info.isSynced || !info.hasUtxoIndex) throw new Error('TN10_SYNCED_NODE_REQUIRED');
+      return inspectJournal(job, rpc);
     },
     close() { key.free(); }
   };
