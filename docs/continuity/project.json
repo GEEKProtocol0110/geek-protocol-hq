@@ -37,10 +37,10 @@
   "currentWork": {
     "id": "AUTH-004",
     "status": "needs-evidence",
-    "description": "Wallet-first sign-in #157 and visible sign-out #158 are merged and deployed. My HQ and Sign in serve visible account controls outside optional settings; exact client delivery and session/progress/recovery tests pass. Actual mobile wallet signing and automatic payout acceptance remain unverified."
+    "description": "Investigating reported phone failure after wallet-first #157 and visible sign-out #158. The phone browser exposes no wallet provider. Candidate shows KasWare in-app browser guidance and a copyable HQ link, and retries provider discovery on a user tap. Direct Chrome-to-app launch, physical-phone signing and automatic payout remain unverified."
   },
   "nextTask": "AUTH-004",
-  "nextAction": "Verify the supported phone wallet connection and complete same-hash TN10 payout acceptance. Operator approval configuration remains private and empty by default for the new derived-admission path; do not open public rewards or ask players to use operational tools.",
+  "nextAction": "Check and publish the missing-provider correction, then establish actual phone signing through a supported wallet browser. A documented app-launch handoff remains unresolved. Continue same-hash TN10 acceptance without exposing operational tasks to players.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

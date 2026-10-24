@@ -6,6 +6,8 @@ The sign-in page presents one **Connect & sign in** action. After connection, th
 
 The existing provider integrations require Kaspa message signing and Mainnet identity addresses. This change does not invent a mobile deep link or guarantee that any mobile app exposes a browser provider. A supported phone-wallet/browser signing flow still needs actual-device evidence. Never request recovery phrases or private keys as a workaround.
 
+When no provider is available, Sign in presents KasWare in-app browser instructions and a selectable/copyable canonical HQ link instead of a disabled connect button. Only allowlisted continuation names are carried to that link; session parameters and arbitrary destinations are omitted. Clipboard denial leaves manual selection available. KasWare detection runs again on load, page return and an explicit connect tap, without requesting wallet accounts in the background. Official KasWare app release notes describe its in-app browser (https://github.com/kasware-wallet/kasware-app/releases); no Chrome-to-app launch scheme was verified. This is a supported route to try, not completed physical-phone acceptance or direct app launching.
+
 ## Backend-managed TN10 admission
 
 For the bounded GEEKT pilot, the operator may privately configure `TESTNET_AUTO_APPROVED_WALLETS` as a comma-separated list of at most 100 checksum-valid TN10 recipient addresses. It is empty by default; it must not contain the dedicated sender. This is an admission policy, not part of the immutable payment configuration fingerprint: removing an approval cannot change or rebuild an already saved payment.

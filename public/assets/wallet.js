@@ -25,6 +25,7 @@
     if (providers.has(id) || providers.size >= 20) return;
     providers.set(id, { id, name: String(name || 'Kaspa wallet').slice(0, 60), ...adapter });
     if (!selected) { selected = providers.get(id); state.providerName = selected.name; }
+    if (!state.installed) state.error = '';
     state.installed = true;
     document.querySelectorAll('[data-wallet-provider]').forEach(select => {
       const option = document.createElement('option'); option.value = id; option.textContent = providers.get(id).name; select.append(option);
@@ -111,9 +112,12 @@
 
       const connect = root.querySelector('[data-wallet-connect]');
       if (connect) {
-        connect.disabled = state.pending || !selected;
-        connect.textContent = state.pending ? 'Waiting for wallet…' : root.hasAttribute('data-wallet-quick-login') ? state.verified ? 'Continue to My HQ' : 'Connect & sign in' : state.connected ? 'Refresh wallet' : selected ? `Connect ${selected.name}` : 'Connect browser wallet';
+        const quick = root.hasAttribute('data-wallet-quick-login');
+        connect.disabled = state.pending || (!selected && !quick);
+        connect.textContent = state.pending ? 'Waiting for wallet…' : quick ? !selected ? 'How to connect on this phone' : state.verified ? 'Continue to My HQ' : 'Connect & sign in' : state.connected ? 'Refresh wallet' : selected ? `Connect ${selected.name}` : 'Connect browser wallet';
       }
+      const mobileHelp = root.querySelector('[data-wallet-mobile-help]');
+      if (mobileHelp) mobileHelp.hidden = !root.hasAttribute('data-wallet-quick-login') || state.installed;
       const verify = root.querySelector('[data-wallet-verify]');
       if (verify) {
         verify.hidden = root.hasAttribute('data-wallet-quick-login') || !state.connected || state.verified || !isMainnet;
@@ -268,6 +272,13 @@
 
   const quickLogin = async () => {
     if (state.pending) return;
+    detectKasware();
+    if (!selected) {
+      state.error = 'No wallet connection is available in this browser. Open KasWare’s in-app browser and load the HQ sign-in link below.';
+      render();
+      document.querySelector('[data-wallet-mobile-help]')?.scrollIntoView({ block: 'nearest' });
+      return;
+    }
     if (!selected?.signMessage) {
       state.error = 'Open Geek in a wallet browser that supports Kaspa message signing, or use another sign-in method below.';
       render(); return;
@@ -311,8 +322,9 @@
 
   window.GeekWallet = Object.freeze({ authorizePayout, refreshIdentity, snapshot });
   render();
-  if (window.kasware) {
+  const detectKasware = () => {
     const wallet = window.kasware;
+    if (!wallet || providers.has('kasware') || typeof wallet.requestAccounts !== 'function') return;
     addProvider('kasware', 'Kasware', {
       requestAccounts: () => wallet.requestAccounts(), getAccounts: () => wallet.getAccounts(),
       getNetwork: () => wallet.getNetwork(), getPublicKey: () => wallet.getPublicKey(),
@@ -320,7 +332,10 @@
       signMessage: typeof wallet.signMessage === 'function' ? (message) => wallet.signMessage(message, { type: 'schnorr' }) : null, on: wallet.on?.bind(wallet)
     });
     bindWalletEvents(providers.get('kasware'));
-  }
+  };
+  detectKasware();
+  window.addEventListener('load', detectKasware);
+  window.addEventListener('pageshow', detectKasware);
   const detectKaspire = () => {
     const wallet = window.kaspire;
     if (kaswareOnly || !wallet?.isKaspire || providers.has('kaspire')) return;
