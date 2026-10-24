@@ -750,7 +750,7 @@ Evidence/specification: [public/play/assets/testnet-status.js](../../public/play
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls bounded pilot approval and actual-device acceptance. Dependencies: CHAIN-004.
 
-Next action: Missing-provider help and late KasWare discovery are deployed in #159. Obtain actual phone signing evidence and establish a supported Chrome-to-app handoff; same-hash TN10 payout acceptance remains unresolved.
+Next action: Release and physically test the verified Android app launcher. Establish a supported wallet signature-return transport for direct Chrome sign-in; launching the app alone is not authentication. Continue same-hash TN10 acceptance separately.
 
 Acceptance:
 
@@ -761,4 +761,4 @@ Acceptance:
 - Provider/device compatibility, release and actual automatic transfer acceptance are recorded separately.
 - Signed-in players have a visible Sign out control on My HQ and Sign in; logout revokes the current server session and retains saved progress and wallet/passkey recovery.
 
-Evidence/specification: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRST-ONBOARDING.md), [public/sign-in/index.html](../../public/sign-in/index.html), [public/assets/wallet.js](../../public/assets/wallet.js), [server/testnet-automatic.js](../../server/testnet-automatic.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [public/assets/session-access.js](../../public/assets/session-access.js), [tests/session-access-client.test.js](../../tests/session-access-client.test.js), [tests/sign-in-state.test.js](../../tests/sign-in-state.test.js).
+Evidence/specification: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRST-ONBOARDING.md), [public/sign-in/index.html](../../public/sign-in/index.html), [public/assets/wallet.js](../../public/assets/wallet.js), [server/testnet-automatic.js](../../server/testnet-automatic.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [public/assets/session-access.js](../../public/assets/session-access.js), [tests/session-access-client.test.js](../../tests/session-access-client.test.js), [tests/sign-in-state.test.js](../../tests/sign-in-state.test.js), [docs/KASWARE-MOBILE-CONNECTION.md](../../docs/KASWARE-MOBILE-CONNECTION.md).

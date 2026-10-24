@@ -25,9 +25,9 @@ Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-004: needs-evidence.** Missing-provider correction #159 is merged and deployed after the founder reported no wallet opens. Sign in shows KasWare in-app browser guidance and a copyable canonical HQ link, and retries provider discovery on a user tap. Direct Chrome-to-app launch, physical-phone signing and automatic payout remain unverified.
+**AUTH-004: needs-evidence.** AUTH-004 Android launcher candidate uses the exact package and scheme parsed from the checksum-verified official KasWare v0.5.3 APK. It opens the wallet only; direct website/signature handoff was not established. Physical-phone launch/signing and automatic payout remain unverified.
 
-Next task: **AUTH-004**. Establish actual phone signing through a supported wallet browser; a documented Chrome-to-wallet app handoff remains unresolved. Continue same-hash TN10 acceptance without exposing operational tasks to players. Do not call this mobile login accepted from deployment or synthetic tests.
+Next task: **AUTH-004**. Check and release the package-pinned Android launcher, obtain actual-phone launch/signing evidence, and establish a supported signature-return transport for direct Chrome login. Preserve same-hash TN10 acceptance work and existing holds.
 
 ## Holds
 

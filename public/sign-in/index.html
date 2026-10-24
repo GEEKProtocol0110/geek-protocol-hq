@@ -61,11 +61,13 @@
           <div class="sign-in-actions"><button class="button button-primary" type="button" data-wallet-connect>Connect &amp; sign in</button><button type="button" data-wallet-verify hidden>Sign in with wallet</button><a class="button button-secondary" href="https://www.kasware.xyz/" target="_blank" rel="noopener noreferrer" data-wallet-install>Get KasWare ↗</a></div>
           <aside class="sign-in-mobile-help" data-wallet-mobile-help hidden aria-labelledby="mobile-connection-title">
             <h3 id="mobile-connection-title">Connect from inside KasWare</h3>
-            <p>This browser cannot currently see a wallet. The button does not launch the KasWare app.</p>
-            <ol><li>Open KasWare and choose its in-app browser.</li><li>Open the HQ sign-in link below.</li><li>Choose your wallet, then approve the sign-in message.</li></ol>
+            <p>Use KasWare’s browser to approve your sign-in message.</p>
+            <ol><li>Copy the HQ link below.</li><li>Open KasWare, choose Mainnet and open its in-app browser.</li><li>Paste the link, tap Connect &amp; sign in, then approve the message.</li></ol>
             <label for="wallet-hq-link">HQ sign-in link</label><input id="wallet-hq-link" data-wallet-hq-link readonly value="https://www.geekprotocol.xyz/sign-in/" aria-label="HQ link to open inside KasWare" />
             <button class="button button-secondary" type="button" data-wallet-copy-link>Copy HQ link</button>
             <p data-wallet-copy-status role="status" aria-live="polite"></p>
+            <a class="button button-primary" data-wallet-open-app href="/sign-in/?walletLaunch=unavailable" hidden>Open KasWare</a>
+            <p data-wallet-launch-status role="status" aria-live="polite"></p>
           </aside>
           <details class="sign-in-method" data-browser-method><summary>Wallet help</summary>
             <dl><div><dt>Wallet</dt><dd data-wallet-address>Not connected</dd></div><div><dt>Network</dt><dd data-wallet-network>—</dd></div></dl>

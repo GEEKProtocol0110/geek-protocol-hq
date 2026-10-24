@@ -25,3 +25,7 @@ Synthetic shipped-client tests cover a complete one-click connect/challenge/sign
 ## Visible sign out
 
 Authenticated players can choose **Sign out** beside their identity on My HQ or above the wallet card on Sign in. This calls the existing protected session-revocation endpoint and returns to Sign in with a signed-out message. It does not remove the saved player, wallet binding, passkeys or payment records. Guest sessions do not show the control. Server/read failures retain a usable retry, and an expired session can return directly to Sign in.
+
+## Android app launch
+
+Sign in offers an Android-only **Open KasWare** anchor using the package and scheme verified in the official v0.5.3 APK. This opens the wallet without requesting accounts or signatures and has a canonical HQ fallback. Players still copy the HQ link into KasWare's Mainnet browser. See [artifact and transport evidence](KASWARE-MOBILE-CONNECTION.md); direct Chrome signing and actual-device acceptance remain unresolved.

@@ -22,6 +22,22 @@
   const walletLink = document.querySelector('[data-wallet-hq-link]');
   if (walletLink) {
     walletLink.value = `https://www.geekprotocol.xyz/sign-in/${Object.hasOwn(nextPages, requestedNext) ? `?next=${requestedNext}` : ''}`;
+    const launch = document.querySelector('[data-wallet-open-app]');
+    const launchStatus = document.querySelector('[data-wallet-launch-status]');
+    if (launch && /Android/i.test(navigator.userAgent || '')) {
+      // Package and scheme verified in KasWare's official Android v0.5.3 APK.
+      // This launches the wallet only; it is not a URL/signature handoff API.
+      const fallback = new URL(walletLink.value);
+      fallback.searchParams.set('walletLaunch', 'unavailable');
+      launch.href = `intent://#Intent;scheme=com.kasware.app;package=com.kasware.app;S.browser_fallback_url=${encodeURIComponent(fallback.href)};end`;
+      launch.hidden = false;
+      launch.addEventListener('click', () => {
+        launchStatus.textContent = 'Opening KasWare. In its Mainnet browser, paste the copied HQ link to sign in.';
+      });
+    }
+    if (new URLSearchParams(location.search).get('walletLaunch') === 'unavailable') {
+      launchStatus.textContent = 'KasWare could not be opened from this browser. Open the app yourself, then paste the HQ link in its Mainnet browser.';
+    }
     document.querySelector('[data-wallet-copy-link]')?.addEventListener('click', async () => {
       walletLink.focus(); walletLink.select(); walletLink.setSelectionRange?.(0, walletLink.value.length);
       const note = document.querySelector('[data-wallet-copy-status]');

@@ -1128,7 +1128,7 @@
       "status": "needs-evidence",
       "title": "Make wallet sign-in and eligible rewards automatic for players",
       "owner": "Maintainer; founder controls bounded pilot approval and actual-device acceptance",
-      "nextAction": "Missing-provider help and late KasWare discovery are deployed in #159. Obtain actual phone signing evidence and establish a supported Chrome-to-app handoff; same-hash TN10 payout acceptance remains unresolved.",
+      "nextAction": "Release and physically test the verified Android app launcher. Establish a supported wallet signature-return transport for direct Chrome sign-in; launching the app alone is not authentication. Continue same-hash TN10 acceptance separately.",
       "acceptance": [
         "One user action connects a supported wallet, signs a server challenge, verifies ownership and continues to an allowed local destination.",
         "No wallet/signature prompt on page load; cancellation and repeated taps cannot authenticate or duplicate proof. Existing mint-only connections remain separate.",
@@ -1149,7 +1149,8 @@
         "tests/testnet-automatic.test.js",
         "public/assets/session-access.js",
         "tests/session-access-client.test.js",
-        "tests/sign-in-state.test.js"
+        "tests/sign-in-state.test.js",
+        "docs/KASWARE-MOBILE-CONNECTION.md"
       ],
       "releaseEvidence": [
         "PR #157 merged as 4cde22d1cdc52df7cb89f1610633a31181cf6c7a. Exact checked head aa9f858976e890a7cb801c5e955a7b431d521945/tree 651877ed0491ac860ebe620cf2be20d46a6cd06a. Security verification 40083417884 and both Vercel preview statuses succeeded; no submitted reviews/threads. HQ production dpl_4B1PWRTzSwUEqvtLee2UVAVmwrRb Ready on the merge with both canonical domains assigned. Public Sign-in returned 200 with the wallet-first card before optional passkeys. Full local verification passed 615 HQ tests plus four offline signer tests, zero failures/skips, required real Redis 7.0.15, 311 security assertions and all supporting checks. No production approval setting, credential or payment was changed. Physical-phone message signing, bounded derived-admission activation and actual payout acceptance remain unverified.",
