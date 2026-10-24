@@ -734,7 +734,7 @@ Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-G
 
 **P1 / needs-evidence.** Owner: Maintainer; founder confirms actual-phone behavior. Dependencies: none.
 
-Next action: Verify and release Rewards latest-payment view and My HQ navigation, then confirm on the real phone. Keep actual automatic-payment acceptance separate from rendered status.
+Next action: #163 is merged and live with six exact HTTP/protection checks. Confirm the authenticated Rewards view and account-change/background recovery on a real phone; automatic delivery remains CHAIN-004.
 
 Acceptance:
 

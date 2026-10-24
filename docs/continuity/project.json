@@ -37,10 +37,10 @@
   "currentWork": {
     "id": "CHAIN-005",
     "status": "needs-evidence",
-    "description": "Player-facing latest TN10 reward status is being added to Rewards, with exact amounts, original destinations, clear stages and interrupted-read recovery. Existing account flow is released. Automatic-payment acceptance remains unproved."
+    "description": "Player reward visibility #163 is merged and deployed. Rewards shows the current account\u2019s latest TN10 payment, clear observed stages, exact units, original destination, saved time and reveal details. Six production delivery/protection checks pass. Actual-phone account/status and automatic-payment acceptance remain outstanding."
   },
-  "nextTask": "CHAIN-005",
-  "nextAction": "Verify and release the player reward-status view; obtain actual-phone account/setup and existing same-hash automatic TN10 payment acceptance. Signer project logs remain inaccessible through the Vercel connection.",
+  "nextTask": "CHAIN-004",
+  "nextAction": "Obtain the separate signer\u2019s application failure evidence and reconcile only the existing saved payment, then confirm the same reveal hash and exact recipient acceptance. The current Vercel connection cannot access signer logs. Actual-phone account/setup and reward-status acceptance remain separate.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

@@ -25,9 +25,9 @@ Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-005: needs-evidence.** Player-facing latest TN10 reward status is being added to Rewards, with exact amounts, original destinations, clear stages and interrupted-read recovery. Existing account flow is released. Automatic-payment acceptance remains unproved.
+**CHAIN-005: needs-evidence.** Player reward visibility #163 is merged and deployed. Rewards shows the current account’s latest TN10 payment, clear observed stages, exact units, original destination, saved time and reveal details. Six production delivery/protection checks pass. Actual-phone account/status and automatic-payment acceptance remain outstanding.
 
-Next task: **CHAIN-005**. Verify and release the player reward-status view; obtain actual-phone account/setup and existing same-hash automatic TN10 payment acceptance. Signer project logs remain inaccessible through the Vercel connection.
+Next task: **CHAIN-004**. Obtain the separate signer’s application failure evidence and reconcile only the existing saved payment, then confirm the same reveal hash and exact recipient acceptance. The current Vercel connection cannot access signer logs. Actual-phone account/setup and reward-status acceptance remain separate.
 
 ## Holds
 
