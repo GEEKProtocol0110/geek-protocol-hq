@@ -25,9 +25,9 @@ Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: needs-evidence.** #164 redacted diagnostics and #165 bounded node recovery/input checks are deployed to HQ and signer. A real scheduled run reports both original commit funding inputs and reveal input unavailable; the original payment remains unconfirmed. Funding-history reconciliation is the remaining blocker.
+**CHAIN-004: blocked.** Payment journals remain preserved. Chain-history API access returns a verification challenge; automatic approval review blocked sending the known sender/recipient identifiers to the separate Kasplex history lookup. Explicit approval for those read-only disclosures is required before continuing that route.
 
-Next task: **CHAIN-004**. Reconcile the original signed payment’s funding outpoint history and exact reveal against chain/indexer and recipient evidence. Both saved outpoints are absent in the observed synced-node snapshot; do not erase locks, rebuild, replace, fund around or manually resend that payment. Any different payment requires a separately reviewed recovery decision after duplicate-payment risk is resolved.
+Next task: **CHAIN-004**. Await explicit founder approval to query the dedicated TN10 sender and recipient at the fixed Kasplex API for read-only operation history and recipient holdings, with private intermediate retention. Do not bypass the automatic-review rejection or the separate chain-history verification challenge. Continue original funding-history reconciliation only within approved access; preserve payment journals and all locks.
 
 ## Holds
 

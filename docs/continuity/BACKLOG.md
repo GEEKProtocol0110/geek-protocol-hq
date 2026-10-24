@@ -51,7 +51,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-007 | P1 | needs-evidence | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
 | GAME-001 | P1 | needs-evidence | Build a deep career challenge and mastery ladder | Maintainer; founder confirms phone/game usability |
 | LAUNCH-001 | P0 | needs-evidence | Prove the core loop and close the first release scope | Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned |
-| CHAIN-004 | P0 | needs-evidence | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
+| CHAIN-004 | P0 | blocked | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
 | CHAIN-005 | P1 | needs-evidence | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
 | AUTH-004 | P0 | needs-evidence | Secure Geek account access and wallet-neutral receiving addresses | Maintainer; founder controls bounded pilot approval and actual-device acceptance |
 
@@ -713,11 +713,11 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 ## CHAIN-004: Automate eligible Daily GEEKT test rewards
 
-**P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
+**P0 / blocked.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Reconcile original funding outpoint history, exact saved reveal and recipient acceptance before selecting another recovery action. Do not replace the journal, erase locks or manually resend. Provider/dashboard access is no longer the immediate blocker.
+Next action: Obtain explicit authorization for sending the supplied sender/recipient identifiers to the fixed Kasplex history API and privately retaining its response. Then perform the bounded read-only reconciliation; no new transaction, journal replacement or lock change is implied.
 
-Blocker: Observed scheduled #165 run verifies a synced TN10 node and pinned asset, but both saved submissions report RPC_INPUT_UNAVAILABLE; read-only inspection reports commitInputsAvailable=false and revealInputAvailable=false. Exact reveal lookup remains op not found. The current snapshot does not establish which historical transaction spent or invalidated the original funding input, so a replacement payment cannot be justified from this evidence.
+Blocker: Original payment still lacks confirmed acceptance and its saved outpoints were absent in the observed synced-node snapshot. The chain-history API returns a verification challenge. Automatic approval review rejected the proposed Kasplex sender-operation/recipient-holding lookups because disclosure of prior/private wallet identifiers was not clearly authorized. No bypass or alternative execution of the rejected queries is permitted without resolving that authorization.
 
 Acceptance:
 
