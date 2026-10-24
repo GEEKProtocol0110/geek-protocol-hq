@@ -65,13 +65,13 @@ test('isolated native Redis restore retains durable state and expiry while rotat
 
 test('restore cleanup defaults read-only, deletes only bearer sessions and one-time proofs, and preserves durable data', async () => {
   const fixture=await redisFixture();
-  const ephemeral=['geek:session:old-player','geek:ops:session:old-owner','geek:production:identity:challenge:old-proof','geek:preview:identity:authorization:old-proof'];
-  const durable=['geek:profile:player','geek:production:identity:player:player','geek:production:identity:wallet:wallet','geek:player-name:player','geek:ops:totp:replay','geek:study-progress:player'];
+  const ephemeral=['geek:session:old-player','geek:ops:session:old-owner','geek:production:identity:challenge:old-proof','geek:preview:identity:authorization:old-proof','geek:reward-address-proof:v1:old-proof'];
+  const durable=['geek:profile:player','geek:production:identity:player:player','geek:production:identity:wallet:wallet','geek:player-name:player','geek:ops:totp:replay','geek:study-progress:player','geek:reward-addresses:v1:player'];
   try {
     for(const key of [...ephemeral,...durable])await fixture.command('SET',key,'synthetic');
-    assert.deepEqual(await resetRestoredSessions({command:fixture.command}),{mode:'dry-run',matched:4,removed:0});
+    assert.deepEqual(await resetRestoredSessions({command:fixture.command}),{mode:'dry-run',matched:ephemeral.length,removed:0});
     for(const key of ephemeral)assert.equal(await fixture.command('GET',key),'synthetic');
-    assert.deepEqual(await resetRestoredSessions({command:fixture.command,apply:true}),{mode:'applied',matched:4,removed:4});
+    assert.deepEqual(await resetRestoredSessions({command:fixture.command,apply:true}),{mode:'applied',matched:ephemeral.length,removed:ephemeral.length});
     for(const key of durable)assert.equal(await fixture.command('GET',key),'synthetic');
     assert.deepEqual(await resetRestoredSessions({command:fixture.command,apply:true}),{mode:'applied',matched:0,removed:0});
     const env={RECOVERY_REDIS_REST_URL:'https://restore.example',RECOVERY_REDIS_REST_TOKEN:'synthetic'};

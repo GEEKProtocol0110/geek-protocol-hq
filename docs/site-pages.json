@@ -147,8 +147,8 @@
     {
       "file": "public/rewards/index.html",
       "path": "/rewards/",
-      "title": "Wallet & Rewards \u2014 Geek Protocol",
-      "description": "Review Geek Protocol's wallet and Alpha reward settings. Internal credits are separate from on-chain GEEK; Mainnet withdrawals and settlement remain disabled.",
+      "title": "Receiving Addresses & Rewards \u2014 Geek Protocol",
+      "description": "Save receiving addresses from any Kaspa wallet to your Geek account without connecting the wallet app. Mainnet payouts remain disabled; approved test rewards use GEEKT.",
       "index": true,
       "private": false
     },
@@ -172,7 +172,7 @@
       "file": "public/sign-in/index.html",
       "path": "/sign-in/",
       "title": "Sign in \u2014 Geek Protocol",
-      "description": "Connect a supported Kaspa wallet and approve a free sign-in message to recover your Geek player. Saved passkeys and guest learning remain available.",
+      "description": "Sign in to your Geek account with a passkey to keep your learning progress. Save a receiving address from any Kaspa wallet separately on My HQ.",
       "index": false,
       "private": false
     },

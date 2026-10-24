@@ -65,7 +65,7 @@ test('paginated duplicate scan keys are removed once, then the offline target is
     return cursor === '0' ? ['7', ['geek:session:first']] : ['0', [...keys]];
   } });
   assert.deepEqual(result, { mode: 'applied', matched: 2, removed: 2 });
-  assert.equal(deletions, 1); assert.equal(scans, 15);
+  assert.equal(deletions, 1); assert.equal(scans, 17);
 });
 
 for (const phase of ['headers', 'body']) test(`offline recovery ${phase} timeout ends without retrying a deletion`, async t => {

@@ -8,6 +8,7 @@ import { loadProfile, saveProfileWithAudit } from '../server/profile.js';
 import { rateLimit } from '../server/redis.js';
 import { playerIdFor, requireSession } from '../server/session.js';
 import { automaticPlayerHandler } from '../server/testnet-automatic.js';
+import { receivingAddressesHandler } from '../server/reward-addresses.js';
 
 const PAYOUT_CHANGE_COOLDOWN_MS = 72 * 60 * 60 * 1000;
 const PAYOUT_RISK_WINDOW_MS = 30 * 24 * 60 * 60 * 1000;
@@ -98,6 +99,7 @@ const recordRejectedChange = async (sessionId, reason, address = '') => {
 };
 
 export default async function handler(req, res) {
+  if (req.query?.service === 'addresses') return receivingAddressesHandler(req, res);
   if (req.query?.service === 'testnet') return automaticPlayerHandler(req, res);
   setApiHeaders(res, 'GET, POST, DELETE, OPTIONS');
   if (req.method === 'OPTIONS') return res.status(204).end();

@@ -35,12 +35,12 @@ export const commitRankedState = async ({ playerId, run, previousRun = '', profi
   const changed = next !== profileJson(parseProfile(snapshot.raw || null));
   const record = auditInput ? await createAuditRecord({ actorType: 'alpha-session', actorId: playerId, interactionId: run.id, ...auditInput }) : null;
   const [event, index] = record ? auditWriteCommands(record) : [];
-  const result = Number(await redis('EVAL', RANKED_COMMIT_LUA, 13,
+  const result = Number(await redis('EVAL', RANKED_COMMIT_LUA, 15,
     `geek:run:${run.id}`, profileKeyFor(playerId), prestigeKeyFor(playerId), event?.[1] || profileKeyFor(playerId), index?.[1] || profileKeyFor(playerId), dailyKey || profileKeyFor(playerId),
     activeKey || profileKeyFor(playerId),
-    ...(automaticReward?.keys || Array(6).fill(profileKeyFor(playerId))),
+    ...(automaticReward?.keys || Array(8).fill(profileKeyFor(playerId))),
     previousRun, snapshot.raw, snapshot.prestigeRaw, JSON.stringify(run), next, ttl, changed ? '1' : '0', dailyKey ? run.id : '', event?.[2] || '', index?.[2] || 0, index?.[3] || '', activeKey ? run.id : '',
-    ...(automaticReward?.args || ['', '', '', 0, 0])));
+    ...(automaticReward?.args || ['', '', '', 0, 0, '', ''])));
   if (result === -3) throw new Error('TESTNET_AUTO_RECORD_INVALID');
   if (result === -2) throw new Error('AUDIT_STATE_INVALID');
   if (result === -1) throw new Error('DAILY_ALREADY_PLAYED');

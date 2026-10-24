@@ -7,6 +7,7 @@ import { handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } 
 import { decodeIdentityRecord } from './identity-records.js';
 import { identityPlayerKey } from './identity-keys.js';
 import { testnetAddressForPublicKey } from './identity-wallet.js';
+import { decodeRewardAddresses, rewardAddressKey } from './reward-addresses.js';
 
 const hash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const hex = (s, n) => typeof s === 'string' && new RegExp(`^[a-f0-9]{${n}}$`).test(s);
@@ -34,25 +35,32 @@ export function decodeEnrollment(raw, playerId) {
       !isValidKaspaTestnetAddress(e.recipient) || !Number.isSafeInteger(e.createdAt) || typeof e.enabled !== 'boolean') throw new Error('TESTNET_AUTO_RECORD_INVALID');
   return e;
 }
-// Operator approval stays on the server. A player never supplies a destination:
-// it is derived only from a durable, signature-verified wallet identity.
+// Operator approval stays on the server. An account-confirmed receiving address
+// takes precedence over the older wallet-derived fallback.
 async function rewardEnrollment(playerId, config) {
-  const key = enrollmentKey(playerId), raw = await redis('GET', key);
-  const enrollment = decodeEnrollment(raw, playerId);
-  if (enrollment || !config) return { key, raw, enrollment };
+  const key = enrollmentKey(playerId), addressKey = rewardAddressKey(playerId);
+  const [raw, addressRaw] = await Promise.all([redis('GET', key), redis('GET', addressKey)]);
+  const enrollment = decodeEnrollment(raw, playerId), addresses = decodeRewardAddresses(addressRaw, playerId);
+  const watched = { manualRaw: raw || '', addressRaw: addressRaw || '' };
+  if (!config || enrollment?.enabled === false) return { key, raw, enrollment, ...watched };
   const approved = (process.env.TESTNET_AUTO_APPROVED_WALLETS || '').split(',').map(s => s.trim()).filter(Boolean);
-  if (!approved.length) return { key, raw, enrollment: null };
   if (approved.length > 100 || approved.some(a => !isValidKaspaTestnetAddress(a) || a === config.sender)) throw new Error('TESTNET_AUTO_CONFIG_INVALID');
+  if (addresses) {
+    const recipient = addresses['testnet-10'];
+    const admitted = recipient && (approved.includes(recipient) || enrollment?.recipient === recipient);
+    return { key: addressKey, raw: addressRaw, ...watched, enrollment: admitted
+      ? { recipient, enabled: true, version: addresses.version, createdAt: addresses.updatedAt, source: 'saved-account-address' } : null };
+  }
+  if (enrollment || !approved.length) return { key, raw, enrollment, ...watched };
   const identityKey = identityPlayerKey(playerId), identityRaw = await redis('GET', identityKey);
   const identity = decodeIdentityRecord(identityRaw, playerId);
-  if (!identity) return { key, raw, enrollment: null };
+  if (!identity) return { key, raw, enrollment: null, ...watched };
   const recipient = testnetAddressForPublicKey(identity.publicKey, identity.address);
-  if (!approved.includes(recipient)) return { key, raw, enrollment: null };
-  // Watch the exact identity in the existing atomic finish transaction. A
-  // concurrent recovery/change invalidates admission rather than using stale proof.
-  return { key: identityKey, raw: identityRaw, enrollment: { recipient, enabled: true,
+  if (!approved.includes(recipient)) return { key, raw, enrollment: null, ...watched };
+  return { key: identityKey, raw: identityRaw, ...watched, enrollment: { recipient, enabled: true,
     version: '', createdAt: identity.linkedAt, source: 'verified-wallet' } };
 }
+
 export function decodeJob(raw, id) {
   let j; try { j = JSON.parse(raw); } catch { throw new Error('TESTNET_AUTO_RECORD_INVALID'); }
   if (!j || j.schema !== 1 || j.id !== id || !hex(id, 64) || !hex(j.version, 24) || !hex(j.playerId, 32) ||
@@ -75,7 +83,7 @@ export const validJournal = journal => Boolean(journal && Object.keys(journal).s
 export async function prepareAutomaticReward(playerId, run) {
   const config = automaticConfig();
   if (!config || run.mode !== 'daily' || run.category !== 'kaspa') return null;
-  const { key, raw, enrollment } = await rewardEnrollment(playerId, config);
+  const { key, raw, enrollment, manualRaw, addressRaw } = await rewardEnrollment(playerId, config);
   if (!enrollment?.enabled || enrollment.recipient === config.sender) return null;
   let proof;
   try { proof = verifiedPilotRun(JSON.stringify(run), run.id, run.sessionId); }
@@ -85,15 +93,15 @@ export async function prepareAutomaticReward(playerId, run) {
     sender: config.sender, recipient: enrollment.recipient, deploymentHash: config.deploymentHash,
     configFingerprint: config.fingerprint, amount: config.amount, decimals: config.decimals, proof, createdAt };
   return { keys: [key, `geek:testnet-reward:run:${run.id}`, autoJobKey(id), autoIndex,
-    `geek:testnet-auto:day:${date}`, `geek:testnet-auto:recipient-day:${hash([date, enrollment.recipient])}`],
-  args: [raw, id, JSON.stringify(job), createdAt, config.dailyLimit] };
+    `geek:testnet-auto:day:${date}`, `geek:testnet-auto:recipient-day:${hash([date, enrollment.recipient])}`, enrollmentKey(playerId), rewardAddressKey(playerId)],
+  args: [raw, id, JSON.stringify(job), createdAt, config.dailyLimit, manualRaw, addressRaw] };
 }
 
 // Inserted into the SAME Redis transaction as the final ranked result. The shared
 // run lock excludes the old manual desk. Budget/recipient locks never expire.
 export const AUTO_PREFLIGHT_LUA = `
 if ARGV[13] ~= '' then
-  for _, i in ipairs({8,9,10,12,13}) do
+  for _, i in ipairs({8,9,10,12,13,14,15}) do
     local kind = redis.call('TYPE', KEYS[i]).ok
     if kind ~= 'none' and kind ~= 'string' then return -3 end
   end
@@ -103,7 +111,9 @@ if ARGV[13] ~= '' then
   if count and not string.match(count, '^%d+$') then return -3 end
 end`;
 export const AUTO_COMMIT_LUA = `
-if ARGV[13] ~= '' and redis.call('GET', KEYS[8]) == ARGV[13] and redis.call('EXISTS', KEYS[9]) == 0
+if ARGV[13] ~= '' and redis.call('GET', KEYS[8]) == ARGV[13]
+  and (redis.call('GET', KEYS[14]) or '') == ARGV[18] and (redis.call('GET', KEYS[15]) or '') == ARGV[19]
+  and redis.call('EXISTS', KEYS[9]) == 0
   and redis.call('EXISTS', KEYS[10]) == 0 and redis.call('EXISTS', KEYS[13]) == 0
   and redis.call('ZCARD', KEYS[11]) < 100 and tonumber(redis.call('GET', KEYS[12]) or '0') < tonumber(ARGV[17]) then
   redis.call('SET', KEYS[9], ARGV[14])

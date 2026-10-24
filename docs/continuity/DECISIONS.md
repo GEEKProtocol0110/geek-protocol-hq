@@ -253,3 +253,13 @@ Present one wallet connect-and-sign-in action, retain optional saved-access reco
 Basis: Founder October 24: This is too difficult for users. They need to log in with a wallet and everything else be taken care of on our end. This supersedes the passkey-first presentation in DR-019, without treating a connected address as authentication or granting public Mainnet payouts.
 
 Evidence: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRST-ONBOARDING.md), [public/sign-in/index.html](../../public/sign-in/index.html), [public/assets/wallet.js](../../public/assets/wallet.js), [server/testnet-automatic.js](../../server/testnet-automatic.js). Supersedes DR-019.
+
+## DR-026: Separate Geek account access from saved receiving addresses
+
+**founder-direction** · 2026-10-24.
+
+Use a Geek account with passkey authentication as the main sign-in path. Let the account save separate Mainnet and Testnet-10 receiving addresses from any Kaspa wallet, without connecting the wallet app or claiming ownership from an address. Require fresh account confirmation for changes; keep existing wallet recovery optional, bounded TN10 approval, immutable payment recipients and all settlement holds.
+
+Basis: Founder October 24 proposes any Kaspa wallet: enter an address and save it to the account, then approves implementation after account access and address confirmation are explained. This supersedes wallet-first presentation in DR-025.
+
+Evidence: [docs/ACCOUNT-RECEIVING-ADDRESSES.md](../../docs/ACCOUNT-RECEIVING-ADDRESSES.md), [server/reward-addresses.js](../../server/reward-addresses.js), [public/assets/receiving-address.js](../../public/assets/receiving-address.js), [server/testnet-automatic.js](../../server/testnet-automatic.js). Supersedes DR-025.

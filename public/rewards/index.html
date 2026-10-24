@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <!-- site-metadata:start -->
-    <title>Wallet &amp; Rewards — Geek Protocol</title>
-    <meta name="description" content="Review Geek Protocol&#39;s wallet and Alpha reward settings. Internal credits are separate from on-chain GEEK; Mainnet withdrawals and settlement remain disabled." />
+    <title>Receiving Addresses &amp; Rewards — Geek Protocol</title>
+    <meta name="description" content="Save receiving addresses from any Kaspa wallet to your Geek account without connecting the wallet app. Mainnet payouts remain disabled; approved test rewards use GEEKT." />
     <meta name="theme-color" content="#080b0b" />
     <meta name="robots" content="index,follow" />
     <link rel="icon" type="image/png" href="/assets/geek-protocol-logo.png" />
@@ -12,8 +12,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Geek Protocol" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="Wallet &amp; Rewards — Geek Protocol" />
-    <meta property="og:description" content="Review Geek Protocol&#39;s wallet and Alpha reward settings. Internal credits are separate from on-chain GEEK; Mainnet withdrawals and settlement remain disabled." />
+    <meta property="og:title" content="Receiving Addresses &amp; Rewards — Geek Protocol" />
+    <meta property="og:description" content="Save receiving addresses from any Kaspa wallet to your Geek account without connecting the wallet app. Mainnet payouts remain disabled; approved test rewards use GEEKT." />
     <meta property="og:url" content="https://www.geekprotocol.xyz/rewards/" />
     <meta property="og:image" content="https://www.geekprotocol.xyz/assets/kaspa-culture.png" />
     <meta property="og:image:type" content="image/png" />
@@ -22,8 +22,8 @@
     <meta property="og:image:alt" content="GIGA, Geek Protocol&#39;s gold robot mascot, beside the Kaspa emblem." />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@geekonkas" />
-    <meta name="twitter:title" content="Wallet &amp; Rewards — Geek Protocol" />
-    <meta name="twitter:description" content="Review Geek Protocol&#39;s wallet and Alpha reward settings. Internal credits are separate from on-chain GEEK; Mainnet withdrawals and settlement remain disabled." />
+    <meta name="twitter:title" content="Receiving Addresses &amp; Rewards — Geek Protocol" />
+    <meta name="twitter:description" content="Save receiving addresses from any Kaspa wallet to your Geek account without connecting the wallet app. Mainnet payouts remain disabled; approved test rewards use GEEKT." />
     <meta name="twitter:image" content="https://www.geekprotocol.xyz/assets/kaspa-culture.png" />
     <meta name="twitter:image:alt" content="GIGA, Geek Protocol&#39;s gold robot mascot, beside the Kaspa emblem." />
     <!-- site-metadata:end -->
@@ -34,9 +34,7 @@
     <link rel="stylesheet" href="../assets/wallet.css" />
     <link rel="stylesheet" href="./assets/rewards.css" />
     <script defer src="../assets/site.js"></script>
-    <script defer src="../assets/wallet.js"></script>
-    <script defer src="./assets/rewards.js"></script>
-  <script defer src="/assets/analytics.js"></script><link rel="stylesheet" href="/assets/welcome.css" /><script defer src="/assets/welcome.js"></script></head>
+  <script defer src="/assets/analytics.js"></script><link rel="stylesheet" href="/assets/welcome.css" /><script defer src="/assets/welcome.js"></script><link rel="stylesheet" href="/assets/receiving-address.css" /><script defer src="/assets/receiving-address.js"></script></head>
   <body class="welcome-page">
     <a class="skip-link" href="#main">Skip to wallet settings</a>
     <header class="site-header scrolled" data-header>
@@ -46,66 +44,21 @@
     </header>
 
     <main id="main" class="rewards-main">
-      <section class="rewards-hero" aria-labelledby="rewards-title">
-        <div>
-          <div class="section-kicker">WALLET-NEUTRAL SETTLEMENT · ALPHA</div>
-          <h1 id="rewards-title">YOUR GEEK.<br /><em>YOUR WALLET.</em></h1>
-          <p>Protect your Alpha history with a one-time Kaspa wallet signature, then choose the Kaspa mainnet address where future eligible GEEK rewards should go. Wallet proofs never authorize a transaction.</p>
-        </div>
-        <dl class="reward-summary" aria-label="Alpha reward profile">
-          <div><dt>ALPHA GEEK</dt><dd data-alpha-balance>0</dd></div>
-          <div><dt>PLAYER IDENTITY</dt><dd data-identity-state>SESSION ONLY</dd></div>
-          <div><dt>PAYOUT WALLET</dt><dd data-payout-state>NOT SET</dd></div>
-          <div><dt>RISK REVIEW</dt><dd data-review-state>NOT REQUIRED</dd></div>
-          <div><dt>ON-CHAIN STATUS</dt><dd>LOCKED</dd></div>
-        </dl>
-      </section>
-
-      <section class="wallet-workspace" id="payout">
-        <form class="payout-form" data-payout-form novalidate>
-          <div class="form-head"><div><span>01 / DESTINATION</span><h2>Set payout wallet</h2></div><span class="api-state" data-service-state>CONNECTING</span></div>
-          <p class="form-intro">Paste a <strong>Kaspa mainnet receiving address</strong>. This does not connect the wallet and cannot move funds.</p>
-          <label for="payout-address">Kaspa address</label>
-          <div class="address-control">
-            <input id="payout-address" name="address" inputmode="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="kaspa:q…" required />
-            <button type="button" data-use-connected disabled>Use connected</button>
-          </div>
-          <p class="address-help">Only the public receiving address is stored. Never enter a seed phrase or private key.</p>
-          <label class="confirm-row"><input name="acknowledged" type="checkbox" required /><span>I checked the address and understand on-chain withdrawals are not enabled yet.</span></label>
-          <div class="form-actions"><button class="save-address" type="submit">Save payout wallet <span>→</span></button><button class="remove-address" type="button" data-remove hidden>Remove</button></div>
-          <p class="form-message" data-form-message role="status" aria-live="polite">Every change starts a 72-hour future-settlement cooldown. Once an identity wallet is linked, changing or removing this setting also requires a fresh one-time wallet signature.</p>
-          <section class="payout-alert" data-payout-alert aria-live="polite" hidden><b data-payout-alert-title>SECURITY NOTICE</b><span data-payout-alert-copy></span><small data-payout-alert-reference></small></section>
-        </form>
-
-        <aside class="payout-policy" aria-labelledby="policy-title">
-          <span>02 / POLICY</span>
-          <h2 id="policy-title">Any wallet.<br />One safe address.</h2>
-          <ol>
-            <li><b>Wallet-neutral</b><span>The identity wallet protects the account; the payout destination may still be any valid Kaspa mainnet address.</span></li>
-            <li><b>No custody</b><span>Geek Protocol will never request or store your seed phrase or private key.</span></li>
-            <li><b>Recoverable</b><span>A fresh proof from the linked identity wallet can restore the same Alpha profile and invalidate its older signed-in sessions.</span></li>
-            <li><b>Change notice</b><span>Every saved or removed destination creates a persistent in-product security notice and pseudonymous audit receipt.</span></li>
-            <li><b>Risk review</b><span>Unverified, changed, recently recovered, or repeatedly changed destinations enter a private review queue. Review never enables settlement.</span></li>
-            <li><b>Review first</b><span>Real transfers remain disabled until token identity, treasury rules, settlement code, limits, and an external security review are complete.</span></li>
-          </ol>
-        </aside>
-      </section>
-
-      <p><a class="button button-secondary" href="../economy/">Power-ups, payout reserve &amp; 70/30 status →</a></p>
-
-      <section class="connected-wallet" aria-labelledby="connected-title">
-        <div><span>03 / IDENTITY PROOF</span><h2 id="connected-title">Recover the player. Never expose the key.</h2><p>Kasware signs a five-minute, single-use server challenge. The server checks the signature and public-key address match, stores no signature, and never asks for transaction permission. The linked wallet can recover this Alpha identity on another browser.</p></div>
-        <section class="wallet-panel" data-wallet-root aria-label="Optional Kaspa wallet connection">
-          <div>
-            <div class="wallet-panel__head"><i class="wallet-panel__dot"></i><span data-wallet-state>CHECKING WALLETS</span></div>
-            <div class="wallet-panel__identity"><strong data-wallet-address>Not connected</strong><span data-wallet-network>Connect to read network</span></div>
-            <div class="wallet-panel__facts"><span>HOLDING <b data-wallet-geek>—</b></span><span>OPTIONAL</span></div>
-            <p class="wallet-panel__message" data-wallet-message aria-live="polite">Choose a Kaspa signing wallet.</p>
-          </div>
-          <div class="wallet-panel__actions"><label class="wallet-panel__choice">Browser wallet<select data-wallet-provider aria-label="Choose a browser wallet" hidden></select></label><button type="button" data-wallet-connect>Connect wallet</button><button type="button" data-wallet-verify hidden>Verify &amp; protect</button><a href="/sign-in/">Other sign-in options →</a></div>
-          <p class="wallet-panel__safety"><b>Proof, not custody.</b> This feature signs human-readable text only. Settlement and withdrawals remain disabled.</p>
-        </section>
-      </section>
+      <section class="rewards-hero"><div><span>YOUR GEEK ACCOUNT</span><h1>Learn. Play. Get rewarded.</h1><p>Sign in to Geek, save a receiving address from your wallet, and keep playing. Your wallet app does not need to connect.</p><a class="button button-secondary" href="/profile/">Open My HQ →</a></div></section>
+      <section class="receiving-address" id="reward-address" data-receiving-address aria-labelledby="receiving-title">
+  <h2 id="receiving-title">Your receiving address</h2>
+  <p>Use an address from any Kaspa wallet. Save it once to this Geek account; eligible approved rewards are handled automatically.</p>
+  <form>
+    <label for="receiving-network">Network</label><select id="receiving-network" data-receiving-network><option value="mainnet">Kaspa Mainnet · kaspa:</option><option value="testnet-10">Testnet-10 · kaspatest:</option></select>
+    <label for="receiving-input">Receiving address</label><input id="receiving-input" data-receiving-input type="text" maxlength="120" required autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Paste your receiving address" disabled />
+    <label><input type="checkbox" data-receiving-confirm required disabled /> I checked this address and its network.</label>
+    <div class="receiving-actions"><button class="button button-primary" type="submit" data-receiving-save disabled>Save receiving address</button><button class="button button-secondary" type="button" data-receiving-remove hidden disabled>Remove address</button><button class="button button-secondary" type="button" data-receiving-retry>Reload addresses</button></div>
+  </form>
+  <a href="/sign-in/?next=rewards" data-receiving-access>Sign in or create your Geek account →</a>
+  <p data-receiving-status role="status" aria-live="polite">Loading your saved receiving addresses…</p>
+  <p>Mainnet payouts remain disabled. Test rewards use GEEKT on Testnet-10. Changing an address affects future eligible runs; previously queued payments keep their original destination.</p>
+</section>
+      <p>Career XP and Alpha game credits are separate from on-chain tokens. Saving an address does not enable withdrawals or Mainnet payments.</p>
     </main>
 
     <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>All hope, no hype. Settlement stays locked until it is safe.</p></div><div class="footer-links"><a href="https://geek-mini.vercel.app/">Geek Mini ↗</a><a href="/tools/#kaspa-widget">Free Kaspa widget</a><a href="../">Home</a><a href="../play/">Play</a><a href="../contribute/">Contribute</a><a href="../mint/">Mint GEEK</a><a href="../security/">Security</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · Alpha credits have no monetary value.</p><details class="welcome-panel" id="project-links"><summary><span><b>About Geek Protocol</b><small>Project information, community and optional wallet features.</small></span></summary><div class="welcome-panel-content"><div class="welcome-project-links"><a href="/thanks/">Hall of Thanks</a><a href="/litepaper/">Project roadmap</a><a href="/security/">Security</a><a href="/contribute/">Contribute a question</a><a href="/collection/">Collection</a><a href="/lobby/">Practice rooms</a><a href="/vault/">Daily vault</a><a href="/rewards/">Wallet & rewards</a><a href="/economy/">Power-ups & economy</a><a href="/mint/">Mint GEEK</a></div></div></details></footer>
