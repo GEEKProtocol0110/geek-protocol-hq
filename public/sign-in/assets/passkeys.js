@@ -68,7 +68,8 @@
     if (loginArea) loginArea.hidden = authenticated;
     if (account) account.hidden = !authenticated;
     if (playerRow) playerRow.hidden = !authenticated;
-    if (newTitle) newTitle.textContent = authenticated ? 'Add another passkey' : 'New here? Save your player';
+    if (newTitle) newTitle.textContent = authenticated ? data.credentials.length ? 'Add another passkey' : 'Add a passkey to this account' : 'New here? Create your account';
+    panel.querySelector('[data-passkey-save]').textContent = authenticated ? 'Add passkey' : 'Create Geek account';
     const newPlayer = panel.querySelector('[data-passkey-new]');
     if (newPlayer && authenticated) newPlayer.open = false;
     document.dispatchEvent(new CustomEvent('geek:account-status', {detail:data}));

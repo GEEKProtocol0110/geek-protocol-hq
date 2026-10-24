@@ -750,7 +750,7 @@ Evidence/specification: [public/play/assets/testnet-status.js](../../public/play
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls bounded pilot approval and actual-device acceptance. Dependencies: CHAIN-004.
 
-Next action: Account-first access and receiving-address settings are live in #161. Obtain actual-phone setup/save acceptance and same-hash automatic TN10 payout evidence. Mainnet/public reward gates remain unchanged.
+Next action: Release focused account/address UX polish: clear creation labels, saved/draft state, guest gating, per-network draft retention and mobile controls. Then continue actual-device and TN10 payment acceptance.
 
 Acceptance:
 
@@ -760,5 +760,6 @@ Acceptance:
 - Atomic writes retain saved progress, credential counter integrity, audit evidence and the existing Mainnet future cooldown/settlement holds. Offline restore clears temporary receiving proofs and retains durable addresses.
 - An approved saved TN10 address can receive eligible Daily admission without wallet identity proof. Explicit operator pauses, exact receiving and enrollment snapshots, per-recipient/day/global limits and immutable signed journals remain enforced.
 - Sign out remains visible and saved accounts recover the same settings and progress. Physical-device account setup, production release and actual payment acceptance remain distinct evidence.
+- Receiving drafts remain separate by network during page use and manual reload; only a successful server response marks a change saved. Guest/loading/error states retain usable account access and retry guidance.
 
 Evidence/specification: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRST-ONBOARDING.md), [public/sign-in/index.html](../../public/sign-in/index.html), [public/assets/wallet.js](../../public/assets/wallet.js), [server/testnet-automatic.js](../../server/testnet-automatic.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [public/assets/session-access.js](../../public/assets/session-access.js), [tests/session-access-client.test.js](../../tests/session-access-client.test.js), [tests/sign-in-state.test.js](../../tests/sign-in-state.test.js), [docs/KASWARE-MOBILE-CONNECTION.md](../../docs/KASWARE-MOBILE-CONNECTION.md), [docs/ACCOUNT-RECEIVING-ADDRESSES.md](../../docs/ACCOUNT-RECEIVING-ADDRESSES.md), [server/reward-addresses.js](../../server/reward-addresses.js), [public/assets/receiving-address.js](../../public/assets/receiving-address.js), [tests/receiving-address-client.test.js](../../tests/receiving-address-client.test.js), [tests/passkeys.test.js](../../tests/passkeys.test.js).
