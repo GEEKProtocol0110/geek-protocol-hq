@@ -25,9 +25,9 @@ Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-004: needs-evidence.** AUTH-004 Android launcher candidate uses the exact package and scheme parsed from the checksum-verified official KasWare v0.5.3 APK. It opens the wallet only; direct website/signature handoff was not established. Physical-phone launch/signing and automatic payout remain unverified.
+**AUTH-004: needs-evidence.** AUTH-004 Android Open KasWare action #160 is merged and deployed, using the package and scheme parsed from the checksum-verified official v0.5.3 APK. Production HTML/client bytes match. Physical-phone launch/signing, direct Chrome signature return and automatic payout remain unverified.
 
-Next task: **AUTH-004**. Check and release the package-pinned Android launcher, obtain actual-phone launch/signing evidence, and establish a supported signature-return transport for direct Chrome login. Preserve same-hash TN10 acceptance work and existing holds.
+Next task: **AUTH-004**. Obtain actual-phone Open KasWare launch and in-app browser signing evidence. Establish a supported signature-return transport for direct Chrome login; app launch alone is not authentication. Continue same-hash TN10 acceptance and preserve existing holds.
 
 ## Holds
 

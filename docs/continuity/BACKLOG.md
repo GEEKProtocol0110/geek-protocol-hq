@@ -750,7 +750,7 @@ Evidence/specification: [public/play/assets/testnet-status.js](../../public/play
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls bounded pilot approval and actual-device acceptance. Dependencies: CHAIN-004.
 
-Next action: Release and physically test the verified Android app launcher. Establish a supported wallet signature-return transport for direct Chrome sign-in; launching the app alone is not authentication. Continue same-hash TN10 acceptance separately.
+Next action: Android launcher #160 is deployed. Obtain actual phone app-launch and in-app browser signing evidence; direct Chrome sign-in still needs a supported signature-return transport. Continue same-hash TN10 acceptance separately.
 
 Acceptance:
 

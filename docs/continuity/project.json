@@ -37,10 +37,10 @@
   "currentWork": {
     "id": "AUTH-004",
     "status": "needs-evidence",
-    "description": "AUTH-004 Android launcher candidate uses the exact package and scheme parsed from the checksum-verified official KasWare v0.5.3 APK. It opens the wallet only; direct website/signature handoff was not established. Physical-phone launch/signing and automatic payout remain unverified."
+    "description": "AUTH-004 Android Open KasWare action #160 is merged and deployed, using the package and scheme parsed from the checksum-verified official v0.5.3 APK. Production HTML/client bytes match. Physical-phone launch/signing, direct Chrome signature return and automatic payout remain unverified."
   },
   "nextTask": "AUTH-004",
-  "nextAction": "Check and release the package-pinned Android launcher, obtain actual-phone launch/signing evidence, and establish a supported signature-return transport for direct Chrome login. Preserve same-hash TN10 acceptance work and existing holds.",
+  "nextAction": "Obtain actual-phone Open KasWare launch and in-app browser signing evidence. Establish a supported signature-return transport for direct Chrome login; app launch alone is not authentication. Continue same-hash TN10 acceptance and preserve existing holds.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
