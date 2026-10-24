@@ -25,9 +25,9 @@ Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-004: needs-evidence.** AUTH-004/DR-026 account-first candidate separates passkey access from wallet-neutral receiving addresses. My HQ and Rewards save independent Mainnet/TN10 settings with fresh address-bound account proof. Automatic approved test rewards use the saved TN10 destination while preserving immutable jobs and limits. Candidate release and actual-device/payout acceptance remain pending.
+**AUTH-004: needs-evidence.** AUTH-004/DR-026 account-first sign-in and wallet-neutral receiving addresses #161 are merged and deployed. My HQ and Rewards save independent Mainnet/TN10 settings with fresh account confirmation; approved test reward admission uses the saved destination without wallet identity proof. Exact production delivery and private API rejection checked. Actual-phone and automatic payment acceptance remain separate.
 
-Next task: **AUTH-004**. Complete verification and release account sign-in with saved receiving addresses. Then obtain actual phone account/setup acceptance and same-hash automatic TN10 payment evidence; do not reopen Mainnet settlement or public rewards.
+Next task: **AUTH-004**. Obtain actual-phone Geek account setup and saved-address acceptance, then confirm the existing same-hash automatic TN10 payment. Keep wallet recovery optional; do not resume Chrome app-handoff work as a primary-login requirement or enable Mainnet/public rewards.
 
 ## Holds
 

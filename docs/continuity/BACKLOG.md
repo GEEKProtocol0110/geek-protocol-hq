@@ -750,7 +750,7 @@ Evidence/specification: [public/play/assets/testnet-status.js](../../public/play
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls bounded pilot approval and actual-device acceptance. Dependencies: CHAIN-004.
 
-Next action: Verify and release DR-026 account-first access, independent network receiving addresses and approved automatic admission. Obtain actual-phone and same-hash TN10 payout acceptance separately.
+Next action: Account-first access and receiving-address settings are live in #161. Obtain actual-phone setup/save acceptance and same-hash automatic TN10 payout evidence. Mainnet/public reward gates remain unchanged.
 
 Acceptance:
 
