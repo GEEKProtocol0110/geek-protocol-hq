@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-23",
+  "updatedAt": "2026-10-24",
   "priorityOrder": [
     "P0",
     "P1",
@@ -1120,6 +1120,32 @@
       "releaseEvidence": [
         "PR #155 is open at b002422d205289aeea0c80ff63ab2ae4e3662fa4, tree 36067cf96ae6591379144760b32e61b006b6425e, matching locally verified 539a89c722121b73d558cdd3a12b31a675a23e87. Exact-head GitHub Security verification 39962383983 succeeded and Vercel preview dpl_CxBmhd79nyc8FrF1UFprsbqBXgdj is READY on that head. Authenticated HTTP returned the updated status script with 200; the private status fetch was blocked by the Vercel share-link helper after redirect (401), without application headers, so private-route preview acceptance is unproved. No submitted reviews or inline threads. Production still served the previous script during this check; this candidate is unmerged and not live. Full local verification passed 603 HQ tests plus four offline signer tests, zero failures/skips, native Redis 7.0.15, 311 security assertions and all supporting checks. Physical-device and automatic-payment acceptance remain separate. CHAIN-004 signer provisioning/funding is still blocked.",
         "PR #155 merged October 23, 2026 at 12:21:55 Detroit (16:21:55 UTC) as 1476aa2d1a4469ed1eed30d9c72f94ca50e8bd4f. Final checked head ee1ce12bb3e961e2013d56a4dda29855a14d1810/tree d8d0e4fd94564ba79cd7559ce7e4add355587a0b matches local 4da8aeb3dee54ed73e1172c16afa5f5206a38fa2; the merge has that same tree. Exact-head GitHub Security verification 39964886728 succeeded; no submitted reviews or inline threads were present before merge. Full local verification passed 603 HQ tests plus four offline signer tests, zero failures/skips, real Redis 7.0.15, 311 security assertions and all supporting checks. Production dpl_7FYxuRoLQ6VVpB5PLdnHGqFwaxzk is READY on the exact merge with both canonical domains assigned. Five no-redirect canonical checks passed under 15-second request bounds: exact status-client bytes, Play HTML referencing the client, private player 401, unauthorized worker POST 401 and private owner-auto 401; all protected responses were private/no-store. The earlier protected-preview private-fetch failure remains provider authentication evidence, not application acceptance. Actual-phone status recovery and actual automatic transfer remain unproved. Fresh project search found no geek-geekt-testnet-worker; creation in the existing Vercel team again returned 403 forbidden/no project-create permission. Neither vercel nor vc CLI is installed. No signer project, key, environment value, test funding or automatic payment was created. Mainnet/CCE/ownership holds remain unchanged."
+      ]
+    },
+    {
+      "id": "AUTH-004",
+      "priority": "P0",
+      "status": "in-progress",
+      "title": "Make wallet sign-in and eligible rewards automatic for players",
+      "owner": "Maintainer; founder controls bounded pilot approval and actual-device acceptance",
+      "nextAction": "Verify and publish the wallet-first candidate; test supported mobile wallet signing before claiming phone acceptance. Configure operator-approved TN10 recipients privately only after the pending pilot recovery is resolved. Existing users must not repeat their payment or disclose recovery material.",
+      "acceptance": [
+        "One user action connects a supported wallet, signs a server challenge, verifies ownership and continues to an allowed local destination.",
+        "No wallet/signature prompt on page load; cancellation and repeated taps cannot authenticate or duplicate proof. Existing mint-only connections remain separate.",
+        "Approved verified wallets derive TN10 destinations on the server and queue eligible Daily rewards without a player enrollment form. Guest/unsigned/unapproved users and explicit disabled enrollments do not gain reward authority.",
+        "Atomic admission watches the exact identity snapshot; existing recipient/day limits, replay locks, immutable signed journals and Mainnet/CCE/ownership holds remain.",
+        "Provider/device compatibility, release and actual automatic transfer acceptance are recorded separately."
+      ],
+      "dependsOn": [
+        "CHAIN-004"
+      ],
+      "evidence": [
+        "docs/WALLET-FIRST-ONBOARDING.md",
+        "public/sign-in/index.html",
+        "public/assets/wallet.js",
+        "server/testnet-automatic.js",
+        "tests/wallet-quick-login.test.js",
+        "tests/testnet-automatic.test.js"
       ]
     }
   ]

@@ -31,7 +31,7 @@ test('player status uses private canonical reads and distinguishes queued, pause
   payload = status({ enabled: false, records: [{ state: 'prepared' }] }); await ui.fire();
   assert.match(ui.panel.textContent, /saved.*paused/);
   payload = status({ enabled: false, records: [{ state: 'indexed-confirmed' }] }); await ui.fire();
-  assert.match(ui.panel.textContent, /confirmed by the indexer/);
+  assert.match(ui.panel.textContent, /test reward received/);
   for (const { url, options } of ui.requests) {
     assert.equal(url, '/api/rewards/?service=testnet');
     assert.equal(options.credentials, 'same-origin'); assert.equal(options.cache, 'no-store');
@@ -76,9 +76,9 @@ test('a saved-run event during an older read triggers a fresh read without overl
 test('enrollment and confirmed views continue discovering later rewards', async () => {
   let payload = status({ records: [] });
   const ui = await setup(() => json(payload));
-  assert.match(ui.panel.textContent, /enrolled/);
+  assert.match(ui.panel.textContent, /sent automatically/);
   payload = status({ records: [{ state: 'indexed-confirmed' }] }); await ui.fire();
-  assert.match(ui.panel.textContent, /confirmed by the indexer/);
+  assert.match(ui.panel.textContent, /test reward received/);
   payload = status(); await ui.fire(); assert.match(ui.panel.textContent, /queued/);
 });
 
@@ -97,7 +97,7 @@ test('backgrounding cancels private reads and a late reply cannot restore the hi
   pending.resolve(json(status())); await settle();
   assert.equal(ui.panel.hidden, true); assert.equal(ui.panel.textContent, ''); assert.equal(ui.timers.size, 0);
   ui.document.hidden = false; await ui.documentEvent('visibilitychange');
-  assert.match(ui.panel.textContent, /enrolled/); assert.equal(ui.requests.length, 2);
+  assert.match(ui.panel.textContent, /sent automatically/); assert.equal(ui.requests.length, 2);
 });
 
 test('new player and page-cache return discard old responses and old deadlines target only their own request', async () => {
@@ -107,7 +107,7 @@ test('new player and page-cache return discard old responses and old deadlines t
   await ui.documentEvent('geek:signed-in'); assert.equal(ui.requests.length, 2);
   oldDeadline(); assert.equal(ui.requests[1].options.signal.aborted, false);
   old.resolve(json(status())); await settle(); assert.equal(ui.panel.hidden, true);
-  current.resolve(json(status({ records: [] }))); await settle(); assert.match(ui.panel.textContent, /enrolled/);
+  current.resolve(json(status({ records: [] }))); await settle(); assert.match(ui.panel.textContent, /sent automatically/);
   await ui.window.emit('pagehide'); assert.equal(ui.panel.hidden, true); assert.equal(ui.panel.textContent, '');
   await ui.window.emit('pageshow', { persisted: true }); await settle();
   assert.equal(ui.requests.length, 3); assert.equal(ui.panel.hidden, true);

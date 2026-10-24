@@ -43,9 +43,10 @@ test('mobile sign-in and guest choices return to an allowlisted activity without
   }
   for (const next of ['__proto__', 'constructor', '//evil.invalid', 'javascript:alert(1)']) assert.equal((await signIn('?next=' + encodeURIComponent(next))).node('[data-sign-in-continue]').href, '/profile/');
 });
-test('the guest action precedes wallet setup and game pages carry their return intent', () => {
+test('wallet sign-in is primary, guest access precedes advanced recovery and games retain return intent', () => {
   const html = readFileSync(new URL('../public/sign-in/index.html', import.meta.url), 'utf8');
-  assert.ok(html.indexOf('data-sign-in-continue') < html.indexOf('data-wallet-root'));
+  assert.ok(html.indexOf('data-wallet-quick-login') < html.indexOf('data-passkeys'));
+  assert.ok(html.indexOf('data-sign-in-continue') < html.indexOf('data-wallet-manual'));
   for (const page of ['study', 'play', 'royale', 'quest']) {
     const body = readFileSync(new URL('../public/' + page + '/index.html', import.meta.url), 'utf8');
     // Some learning pages expose sign-in via the shared menu rather than their own link.

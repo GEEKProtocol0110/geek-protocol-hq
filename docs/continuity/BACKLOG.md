@@ -53,6 +53,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | LAUNCH-001 | P0 | needs-evidence | Prove the core loop and close the first release scope | Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned |
 | CHAIN-004 | P0 | needs-evidence | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
 | CHAIN-005 | P1 | needs-evidence | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
+| AUTH-004 | P0 | in-progress | Make wallet sign-in and eligible rewards automatic for players | Maintainer; founder controls bounded pilot approval and actual-device acceptance |
 
 ## CONT-001: Publish the continuation system
 
@@ -744,3 +745,19 @@ Acceptance:
 - Focused client tests, full required checks and exact release evidence are recorded; synthetic DOM tests do not establish real-device or automatic payment acceptance.
 
 Evidence/specification: [public/play/assets/testnet-status.js](../../public/play/assets/testnet-status.js), [tests/testnet-status-client.test.js](../../tests/testnet-status-client.test.js), [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md).
+
+## AUTH-004: Make wallet sign-in and eligible rewards automatic for players
+
+**P0 / in-progress.** Owner: Maintainer; founder controls bounded pilot approval and actual-device acceptance. Dependencies: CHAIN-004.
+
+Next action: Verify and publish the wallet-first candidate; test supported mobile wallet signing before claiming phone acceptance. Configure operator-approved TN10 recipients privately only after the pending pilot recovery is resolved. Existing users must not repeat their payment or disclose recovery material.
+
+Acceptance:
+
+- One user action connects a supported wallet, signs a server challenge, verifies ownership and continues to an allowed local destination.
+- No wallet/signature prompt on page load; cancellation and repeated taps cannot authenticate or duplicate proof. Existing mint-only connections remain separate.
+- Approved verified wallets derive TN10 destinations on the server and queue eligible Daily rewards without a player enrollment form. Guest/unsigned/unapproved users and explicit disabled enrollments do not gain reward authority.
+- Atomic admission watches the exact identity snapshot; existing recipient/day limits, replay locks, immutable signed journals and Mainnet/CCE/ownership holds remain.
+- Provider/device compatibility, release and actual automatic transfer acceptance are recorded separately.
+
+Evidence/specification: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRST-ONBOARDING.md), [public/sign-in/index.html](../../public/sign-in/index.html), [public/assets/wallet.js](../../public/assets/wallet.js), [server/testnet-automatic.js](../../server/testnet-automatic.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js).

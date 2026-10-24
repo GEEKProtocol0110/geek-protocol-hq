@@ -19,15 +19,15 @@ async function refresh() {
     const payload = await response.json();
     if (version !== generation) return;
     if (!payload.ok || !Array.isArray(payload.records)) throw new Error('STATUS_UNAVAILABLE');
-    if (!payload.enrollment) { retry = false; clearPanel(); return; }
+    if (!payload.enrollment && !payload.records.length) { retry = false; clearPanel(); return; }
     panel.hidden = false;
     const latest = payload.records[0];
     panel.textContent = latest
-      ? latest.state === 'indexed-confirmed' ? 'Test reward confirmed by the indexer. Your GEEKT payment is recorded.'
+      ? latest.state === 'indexed-confirmed' ? 'GEEKT test reward received. Your payment is recorded in My HQ.'
         : !payload.enabled ? 'Your test reward is saved. Automatic rewards are paused; no wallet action is needed.'
           : latest.state === 'queued' ? 'Your test reward is queued for the automatic reward service. No wallet action is needed.'
           : 'Your test reward is being confirmed. No wallet action is needed.'
-      : payload.enabled && payload.enrollment.enabled ? 'You’re enrolled for automatic GEEKT test rewards on eligible Kaspa Dailies.'
+      : payload.enabled && payload.enrollment?.enabled ? 'Complete today’s eligible Kaspa Daily. Your GEEKT test reward is sent automatically.'
         : 'Your GEEKT test enrollment is saved. New automatic rewards are currently paused.';
   } catch { if (version === generation && !panel.hidden) panel.textContent = 'Test reward status is unavailable. Your saved payment will be checked when service returns.'; }
   finally {

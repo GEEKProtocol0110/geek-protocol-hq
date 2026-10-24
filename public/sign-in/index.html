@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <!-- site-metadata:start -->
     <title>Sign in — Geek Protocol</title>
-    <meta name="description" content="Sign in to your Geek Protocol player with a supported passkey or linked Kaspa wallet, check device guidance, or continue learning as a guest." />
+    <meta name="description" content="Connect a supported Kaspa wallet and approve a free sign-in message to recover your Geek player. Saved passkeys and guest learning remain available." />
     <meta name="theme-color" content="#080b0b" />
     <meta name="robots" content="noindex,follow" />
     <link rel="icon" type="image/png" href="/assets/geek-protocol-logo.png" />
@@ -13,7 +13,7 @@
     <meta property="og:site_name" content="Geek Protocol" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="Sign in — Geek Protocol" />
-    <meta property="og:description" content="Sign in to your Geek Protocol player with a supported passkey or linked Kaspa wallet, check device guidance, or continue learning as a guest." />
+    <meta property="og:description" content="Connect a supported Kaspa wallet and approve a free sign-in message to recover your Geek player. Saved passkeys and guest learning remain available." />
     <meta property="og:url" content="https://www.geekprotocol.xyz/sign-in/" />
     <meta property="og:image" content="https://www.geekprotocol.xyz/assets/kaspa-culture.png" />
     <meta property="og:image:type" content="image/png" />
@@ -23,7 +23,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@geekonkas" />
     <meta name="twitter:title" content="Sign in — Geek Protocol" />
-    <meta name="twitter:description" content="Sign in to your Geek Protocol player with a supported passkey or linked Kaspa wallet, check device guidance, or continue learning as a guest." />
+    <meta name="twitter:description" content="Connect a supported Kaspa wallet and approve a free sign-in message to recover your Geek player. Saved passkeys and guest learning remain available." />
     <meta name="twitter:image" content="https://www.geekprotocol.xyz/assets/kaspa-culture.png" />
     <meta name="twitter:image:alt" content="GIGA, Geek Protocol&#39;s gold robot mascot, beside the Kaspa emblem." />
     <!-- site-metadata:end -->
@@ -46,10 +46,25 @@
       <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="/study/">Learn</a><a href="/quest/">Adventure</a><a href="/play/">Play</a><a href="/profile/">My HQ</a><a href="/sign-in/" aria-current="page">Sign in</a></nav>
     </header>
     <main id="main" class="sign-in-main">
-      <div class="sign-in-intro"><h1 data-sign-in-title>Sign in.</h1><p>Pick up where you left off.</p></div>
+      <div class="sign-in-intro"><h1 data-sign-in-title>Connect. Play. Level up.</h1><p>Your wallet brings your player with you.</p></div>
       <p class="sign-in-current" data-sign-in-status role="status" aria-live="polite">Checking your player…</p>
       <a class="button button-primary sign-in-hq" href="/profile/" data-sign-in-hq hidden>Open My HQ →</a>
-      <section class="sign-in-card sign-in-primary" data-passkeys aria-labelledby="passkey-title">
+      <section class="sign-in-card sign-in-primary" data-wallet-methods aria-labelledby="wallet-login-title">
+        <h2 id="wallet-login-title">Connect your wallet.</h2>
+        <p>Approve a free sign-in message in your wallet. Your player and eligible reward payments are handled automatically.</p>
+        <div class="sign-in-wallet" data-wallet-root data-wallet-sign-in data-wallet-quick-login>
+          <label for="wallet-provider" class="sr-only">Wallet</label><select id="wallet-provider" data-wallet-provider aria-label="Choose a wallet" hidden></select>
+          <span class="wallet-state" data-wallet-state>Checking available wallets…</span>
+          <p data-wallet-message role="status" aria-live="polite"></p>
+          <div class="sign-in-actions"><button class="button button-primary" type="button" data-wallet-connect>Connect &amp; sign in</button><button type="button" data-wallet-verify hidden>Sign in with wallet</button><a class="button button-secondary" href="https://www.kasware.xyz/" target="_blank" rel="noopener noreferrer" data-wallet-install>Get KasWare ↗</a></div>
+          <details class="sign-in-method" data-browser-method><summary>Wallet help</summary>
+            <dl><div><dt>Wallet</dt><dd data-wallet-address>Not connected</dd></div><div><dt>Network</dt><dd data-wallet-network>—</dd></div></dl>
+            <p>Use a wallet browser with Kaspa message signing. On a phone, open Geek inside a compatible wallet browser. If your wallet cannot sign in here, use a saved passkey below.</p>
+          </details>
+        </div>
+        <p class="sign-in-note">No seed phrase. No transaction or network fee to sign in. Test rewards use GEEKT; Mainnet payouts are not enabled.</p>
+      </section>
+      <details class="sign-in-card sign-in-alternate" data-passkeys aria-labelledby="passkey-title"><summary>Use a saved passkey</summary>
         <div data-passkey-login-area>
           <h2 id="passkey-title">Welcome back, Geek.</h2>
           <p>Use the passkey you saved for Geek. Your device will ask you to confirm.</p>
@@ -68,7 +83,7 @@
           <p class="sign-in-note" data-passkey-device>Passkey support depends on your device and browser.</p>
           <p>If your tablet cannot use passkeys, open <b>Use another device</b> below, or keep learning as a guest. A screen-lock PIN alone does not guarantee passkey support.</p>
           <p>A new passkey saves this browser’s player. It does not recover a different player. Signing into a saved player leaves separate guest progress unmerged.</p>
-          <p>A linked Kaspa wallet can also sign you in below. Never enter a seed phrase or private key here.</p>
+          <p>Your connected Kaspa wallet can also sign you in above. Never enter a seed phrase or private key here.</p>
         </details>
         <details class="sign-in-method" data-passkey-account hidden>
           <summary>Manage saved access</summary>
@@ -79,7 +94,7 @@
           <div data-passkey-wallet-help hidden><p>You can also verify your linked wallet to manage passkeys.</p><button type="button" class="button button-secondary" data-passkey-wallet-authorize>Verify my linked wallet</button></div>
           <p class="sign-in-note">Keep another passkey or linked wallet available before removing access.</p>
         </details>
-      </section>
+      </details>
       <div class="sign-in-guest" data-sign-in-guest><a href="/profile/" class="button button-secondary" data-sign-in-continue>Continue as a guest →</a><p>No wallet needed. Guest progress stays in this browser.</p></div>
       <details class="sign-in-card sign-in-alternate" data-device-access>
         <summary>Use another device</summary>
@@ -113,23 +128,7 @@
           <button type="button" class="button button-secondary" data-device-list disabled>Show approved devices</button><ul data-device-list-items></ul>
         </details>
       </details>
-      <details class="sign-in-card sign-in-alternate" data-wallet-methods><summary>Use a Kaspa wallet instead</summary><section aria-labelledby="sign-in-title">
-        <h2 id="sign-in-title">Sign in with Kaspa</h2>
-        <ol class="sign-in-steps"><li><b>Choose your address.</b> Connect a browser wallet or paste your Kaspa address.</li><li><b>Sign the login message.</b> Geek Protocol verifies a one-time signature.</li><li><b>Open My HQ.</b> Continue your progress or change your profile name.</li></ol>
-
-        <aside class="sign-in-mobile-help" aria-labelledby="mobile-wallet-title">
-          <h3 id="mobile-wallet-title">Using KasWare on your phone?</h3>
-          <p>Wallet unlock with a fingerprint or face is different from signing a Geek login message. Your mobile wallet must support Kaspa <b>Sign message</b> or a compatible browser connection with message signing.</p>
-          <p>If those features are missing, this wallet cannot complete Geek sign-in on your phone. Copying a message or entering an address will not sign you in. You can <a href="/profile/">continue as a guest</a> in this browser; guest play does not recover another player’s progress.</p>
-        </aside>
-        <details class="sign-in-method" data-browser-method open><summary>Connect a browser wallet</summary><div class="sign-in-wallet" data-wallet-root data-wallet-sign-in>
-          <label for="wallet-provider">Browser wallet</label><select id="wallet-provider" data-wallet-provider aria-label="Choose a browser wallet" hidden></select>
-          <span class="wallet-state" data-wallet-state>Checking browser wallets…</span>
-          <dl><div><dt>Wallet</dt><dd data-wallet-address>Not connected</dd></div><div><dt>Network</dt><dd data-wallet-network>—</dd></div></dl>
-          <p data-wallet-message role="status" aria-live="polite"></p>
-          <div class="sign-in-actions"><button class="button button-primary" type="button" data-wallet-connect>Connect browser wallet</button><button class="button button-primary" type="button" data-wallet-verify hidden>Sign in with wallet</button><a class="button button-secondary" href="https://www.kasware.xyz/" target="_blank" rel="noopener noreferrer" data-wallet-install>Get Kasware ↗</a></div>
-        </div>
-        </details>
+      <details class="sign-in-card sign-in-alternate" data-wallet-manual><summary>Advanced wallet recovery</summary>
         <details class="sign-in-method" data-manual-method><summary>Use an address from another wallet</summary>
           <p>Your wallet needs a <b>Sign message</b> feature for Kaspa. Sign the exact login message in that wallet, then paste its signature here. Connecting through Kasware is optional.</p>
           <form data-address-form>
@@ -152,10 +151,8 @@
           <p data-manual-status role="status" aria-live="polite"></p>
           <p class="sign-in-note">An address alone cannot sign you in. If your wallet cannot sign Kaspa login messages, continue as a guest for now. Exchange deposit and shared-script addresses may need another ownership method.</p>
         </details>
-
-        <p class="sign-in-note">Wallet sign-in uses Kaspa Mainnet. Signing this message has no network fee and moves no funds. Never enter a seed phrase or private key here.</p>
-        <p class="sign-in-note">Use the same wallet to recover your player on another browser. Recovery replaces this browser’s player session; separate guest progress is not merged.</p>
-      </section></details>
+        <p class="sign-in-note">Use the same wallet to recover your saved player. Separate guest progress is not merged.</p>
+      </details>
 
       <noscript><p>Enable JavaScript to sign in. You can still <a href="/study/">read the Kaspa lessons</a>.</p></noscript>
     </main>

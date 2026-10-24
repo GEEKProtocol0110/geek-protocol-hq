@@ -4,10 +4,11 @@ import {readFileSync} from 'node:fs';
 import {clientFixture,json} from './helpers/client-fixture.js';
 const scripts=['sign-in.js','passkeys.js'].map(p=>readFileSync(new URL('../public/sign-in/assets/'+p,import.meta.url),'utf8'));
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
-const mount=async state=>{
-  const calls=[],listeners=new Map();
+const mount=async (state, next='')=>{
+  const calls=[],listeners=new Map(),redirects=[];
   const ui=clientFixture(async(path,options={})=>{calls.push(path);return json(path==='/api/session'?{ok:true}:state);});
   ui.window.isSecureContext=true;ui.window.PublicKeyCredential=undefined;
+  ui.context.location.search=next;ui.context.location.assign=path=>redirects.push(path);
   ui.document.addEventListener=(type,fn)=>{const list=listeners.get(type)||[];listeners.set(type,[...list,fn]);};
   ui.document.dispatchEvent=event=>{for(const fn of listeners.get(event.type)||[])fn(event);};
   for(const name of ['address','signature'])ui.node(`[data-${name}-form]`).append(ui.make('button'));
@@ -16,7 +17,7 @@ const mount=async state=>{
   for(const name of ['save','login','verify','logout','wallet-authorize'])panel.append(ui.node(`[data-passkey-${name}]`,'button'));
   ui.node('[data-sign-in-hq]').hidden=true;
   for(const script of scripts)ui.run(script);
-  await tick();return {...ui,calls,emit:(type,detail)=>ui.document.dispatchEvent(new CustomEvent(type,{detail}))};
+  await tick();return {...ui,calls,redirects,emit:(type,detail)=>ui.document.dispatchEvent(new CustomEvent(type,{detail}))};
 };
 
 test('guest initialization has one account-status source and leaves the guest and returning choices available',async()=>{
@@ -43,4 +44,12 @@ test('an existing verified wallet uses the same continuation state without askin
   assert.equal(ui.node('[data-sign-in-hq]').hidden,false);assert.equal(ui.node('[data-sign-in-guest]').hidden,true);
   assert.equal(ui.node('[data-passkey-login-area]').hidden,true);assert.equal(ui.node('[data-passkey-account]').hidden,false);
   assert.equal(ui.node('[data-passkey-player]').textContent,'Wallet Geek');assert.equal(ui.calls.length,2);
+});
+
+test('only the explicit wallet sign-in action continues automatically to a fixed local destination',async()=>{
+  for(const [next,expected] of [['?next=play','/play/#timed-games'],['?next=https://evil.invalid','/profile/']]){
+    const ui=await mount({signedIn:false,walletLinked:false,credentials:[]},next);
+    ui.emit('geek:account-status',{walletLinked:true});assert.deepEqual(ui.redirects,[]);
+    ui.emit('geek:signed-in',{recovered:false,source:'wallet-connect'});assert.deepEqual(ui.redirects,[expected]);
+  }
 });

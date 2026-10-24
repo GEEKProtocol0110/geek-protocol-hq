@@ -243,3 +243,13 @@ Move from the proven manual receipt workflow to one-time owner test enrollment, 
 Basis: Founder October 18: Lol Manual pilot. This all needs to be automatic. The manual transfer is the baseline proof, not the finished player experience.
 
 Evidence: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md), [docs/GEEKT-FIRST-PAYOUT-2026-10-18.md](../../docs/GEEKT-FIRST-PAYOUT-2026-10-18.md). Supersedes DR-023.
+
+## DR-025: Use wallet-first sign-in and backend reward handling
+
+**founder-direction** · 2026-10-24.
+
+Present one wallet connect-and-sign-in action, retain optional saved-access recovery, and handle eligible reward destination selection, admission, payment retries and receipts on the server. Do not require players to use owner enrollment forms, transaction hashes or provider dashboards. Keep verified ownership, bounded TN10 approval and Mainnet settlement holds.
+
+Basis: Founder October 24: This is too difficult for users. They need to log in with a wallet and everything else be taken care of on our end. This supersedes the passkey-first presentation in DR-019, without treating a connected address as authentication or granting public Mainnet payouts.
+
+Evidence: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRST-ONBOARDING.md), [public/sign-in/index.html](../../public/sign-in/index.html), [public/assets/wallet.js](../../public/assets/wallet.js), [server/testnet-automatic.js](../../server/testnet-automatic.js). Supersedes DR-019.
