@@ -4,11 +4,13 @@ import {readFileSync} from 'node:fs';
 import {clientFixture,json} from './helpers/client-fixture.js';
 const scripts=['sign-in.js','passkeys.js'].map(p=>readFileSync(new URL('../public/sign-in/assets/'+p,import.meta.url),'utf8'));
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
-const mount=async (state, next='')=>{
+const mount=async (state, next='', userAgent='')=>{
   const calls=[],listeners=new Map(),redirects=[];
   const ui=clientFixture(async(path,options={})=>{calls.push(path);return json(path==='/api/session'?{ok:true}:state);});
   ui.window.isSecureContext=true;ui.window.PublicKeyCredential=undefined;
   ui.context.location.search=next;ui.context.location.assign=path=>redirects.push(path);
+  ui.context.navigator.userAgent=userAgent;
+  ui.node('[data-wallet-open-app]','a').hidden=true;
   ui.document.addEventListener=(type,fn)=>{const list=listeners.get(type)||[];listeners.set(type,[...list,fn]);};
   ui.document.dispatchEvent=event=>{for(const fn of listeners.get(event.type)||[])fn(event);};
   for(const name of ['address','signature'])ui.node(`[data-${name}-form]`).append(ui.make('button'));
@@ -82,4 +84,29 @@ test('denied mobile-link clipboard access leaves a complete manual selection',as
   assert.deepEqual(selection,[0,'https://www.geekprotocol.xyz/sign-in/'.length]);
   assert.match(ui.node('[data-wallet-copy-status]').textContent,/Link selected.*KasWare/);
   assert.deepEqual(ui.redirects,[]);
+});
+
+test('Android offers a package-pinned KasWare launch with a safe canonical fallback and no authentication claim',async()=>{
+  const ui=await mount({signedIn:false,walletLinked:false,credentials:[]},'?next=play&token=private','Mozilla/5.0 (Linux; Android 16) Chrome/140');
+  const link=ui.node('[data-wallet-open-app]');
+  assert.equal(link.hidden,false);
+  assert.match(link.href,/^intent:\/\/#Intent;scheme=com\.kasware\.app;package=com\.kasware\.app;/);
+  const fallback=decodeURIComponent(link.href.match(/S.browser_fallback_url=([^;]+);end$/)[1]);
+  assert.equal(fallback,'https://www.geekprotocol.xyz/sign-in/?next=play&walletLaunch=unavailable');
+  assert.doesNotMatch(link.href,/token|private/);
+  await link.emit('click');
+  assert.match(ui.node('[data-wallet-launch-status]').textContent,/Opening KasWare.*paste the copied HQ link/);
+  assert.deepEqual(ui.redirects,[]);assert.deepEqual(ui.calls,['/api/session','/api/passkeys']);
+  assert.equal(ui.node('[data-sign-in-hq]').hidden,true);
+});
+
+test('unsupported platforms hide the Android launcher and a failed launch retains honest recovery guidance',async()=>{
+  for(const ua of ['Mozilla/5.0 (iPhone; CPU iPhone OS 18_0)','Mozilla/5.0 (Windows NT 10.0)']){
+    const ui=await mount({signedIn:false,walletLinked:false,credentials:[]},'',ua);
+    assert.equal(ui.node('[data-wallet-open-app]').hidden,true);
+  }
+  const ui=await mount({signedIn:false,walletLinked:false,credentials:[]},'?next=https://evil.invalid&walletLaunch=unavailable','Android');
+  assert.match(ui.node('[data-wallet-launch-status]').textContent,/could not be opened/);
+  assert.equal(ui.node('[data-wallet-hq-link]').value,'https://www.geekprotocol.xyz/sign-in/');
+  assert.equal(ui.node('[data-sign-in-hq]').hidden,true);
 });
