@@ -750,7 +750,7 @@ Evidence/specification: [public/play/assets/testnet-status.js](../../public/play
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls bounded pilot approval and actual-device acceptance. Dependencies: CHAIN-004.
 
-Next action: Release the checked visible sign-out follow-up, then retain the pending phone-wallet and automatic-payout acceptance checks.
+Next action: Wallet-first sign-in and visible sign-out are released. Continue actual phone-wallet compatibility and same-hash TN10 payout acceptance; keep operational enrollment and diagnostics away from players.
 
 Acceptance:
 
