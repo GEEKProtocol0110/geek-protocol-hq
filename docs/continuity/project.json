@@ -37,10 +37,10 @@
   "currentWork": {
     "id": "AUTH-004",
     "status": "needs-evidence",
-    "description": "AUTH-004/DR-026 account-first sign-in and wallet-neutral receiving addresses #161 are merged and deployed. My HQ and Rewards save independent Mainnet/TN10 settings with fresh account confirmation; approved test reward admission uses the saved destination without wallet identity proof. Exact production delivery and private API rejection checked. Actual-phone and automatic payment acceptance remain separate."
+    "description": "AUTH-004 polish candidate improves account-creation labels, mobile receiving controls, honest saved/draft states, guest access and recovery from errors. Unsaved drafts are retained separately by network in page memory. Backend authentication, address validation and reward admission remain as released in #161; actual-phone and automatic-payment acceptance remain pending."
   },
   "nextTask": "AUTH-004",
-  "nextAction": "Obtain actual-phone Geek account setup and saved-address acceptance, then confirm the existing same-hash automatic TN10 payment. Keep wallet recovery optional; do not resume Chrome app-handoff work as a primary-login requirement or enable Mainnet/public rewards.",
+  "nextAction": "Check and release the account/address polish, then obtain actual-phone setup/save acceptance and same-hash automatic TN10 payment evidence. Preserve existing Mainnet/public reward gates.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

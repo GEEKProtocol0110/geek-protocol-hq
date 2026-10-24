@@ -1128,14 +1128,15 @@
       "status": "needs-evidence",
       "title": "Secure Geek account access and wallet-neutral receiving addresses",
       "owner": "Maintainer; founder controls bounded pilot approval and actual-device acceptance",
-      "nextAction": "Account-first access and receiving-address settings are live in #161. Obtain actual-phone setup/save acceptance and same-hash automatic TN10 payout evidence. Mainnet/public reward gates remain unchanged.",
+      "nextAction": "Release focused account/address UX polish: clear creation labels, saved/draft state, guest gating, per-network draft retention and mobile controls. Then continue actual-device and TN10 payment acceptance.",
       "acceptance": [
         "Geek passkey sign-in and account creation are primary; legacy linked-wallet recovery remains optional. An address alone cannot authenticate or recover an account.",
         "My HQ and Rewards save a receiving address from any Kaspa wallet without opening its app. Mainnet and Testnet-10 fields remain independent and checksum/SDK validated.",
         "Each save/removal requires a single-use, expiring, exact-origin, same-account passkey assertion with user verification, bound to the reviewed network, destination and prior settings. Cancellation, replay, guest access, logout/revocation races and cross-account proofs cannot change settings.",
         "Atomic writes retain saved progress, credential counter integrity, audit evidence and the existing Mainnet future cooldown/settlement holds. Offline restore clears temporary receiving proofs and retains durable addresses.",
         "An approved saved TN10 address can receive eligible Daily admission without wallet identity proof. Explicit operator pauses, exact receiving and enrollment snapshots, per-recipient/day/global limits and immutable signed journals remain enforced.",
-        "Sign out remains visible and saved accounts recover the same settings and progress. Physical-device account setup, production release and actual payment acceptance remain distinct evidence."
+        "Sign out remains visible and saved accounts recover the same settings and progress. Physical-device account setup, production release and actual payment acceptance remain distinct evidence.",
+        "Receiving drafts remain separate by network during page use and manual reload; only a successful server response marks a change saved. Guest/loading/error states retain usable account access and retry guidance."
       ],
       "dependsOn": [
         "CHAIN-004"
