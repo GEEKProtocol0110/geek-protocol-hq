@@ -1,7 +1,12 @@
 // Every restart reads the durable journal BEFORE any transaction construction.
 // Rebroadcasts use identical signed bytes and transaction IDs, never a new payment.
-export async function processPayment({ request, signer }) {
-  const claim = await request({ action: 'claim' });
+import { reportFailure } from './diagnostics.mjs';
+export async function processPayment({ request, signer, report }) {
+  const step = async (stage, action) => {
+    try { return await action(); }
+    catch (error) { reportFailure(stage, error, report); throw error; }
+  };
+  const claim = await step('claim', () => request({ action: 'claim' }));
   if (claim.busy) return 'busy';
   const { lease, config } = claim;
   let job = claim.job;
@@ -11,15 +16,15 @@ export async function processPayment({ request, signer }) {
   };
   try {
     if (!job) return 'idle';
-    await signer.verify(config, job);
+    await step('verify', () => signer.verify(config, job));
     if (!job.journal) {
-      const journal = await signer.prepare(config, job);
+      const journal = await step('prepare', () => signer.prepare(config, job));
       // A timeout here exits. The next claim retrieves the possibly committed
       // journal; nothing is broadcast from the unacknowledged local candidate.
-      await update('prepare', { journal });
+      await step('persist-journal', () => update('prepare', { journal }));
     } else {
       // Read-only reconciliation before any rebroadcast, including after a crash.
-      await update('check');
+      await step('reconcile-before-submit', () => update('check'));
       if (job.state === 'indexed-confirmed') return 'indexed-confirmed';
     }
     // Never trust transient RPC errors as proof of failure. Each submit receives
@@ -28,13 +33,13 @@ export async function processPayment({ request, signer }) {
     let uncertain = false;
     for (const phase of ['commit', 'reveal']) {
       try { await signer.submit(job.journal[phase]); }
-      catch { uncertain = true; }
+      catch (error) { uncertain = true; reportFailure(`submit-${phase}`, error, report); }
     }
-    await update('submitted');
-    await update('check');
+    await step('mark-submitted', () => update('submitted'));
+    await step('reconcile-after-submit', () => update('check'));
     return job.state === 'indexed-confirmed' ? job.state : uncertain ? 'reconciling' : 'awaiting-indexer';
   } finally {
     // Losing this response costs only the two-minute lease, never replay safety.
-    try { await request({ action: 'release', lease }); } catch { /* expires */ }
+    try { await request({ action: 'release', lease }); } catch (error) { reportFailure('release', error, report); /* expires */ }
   }
 }

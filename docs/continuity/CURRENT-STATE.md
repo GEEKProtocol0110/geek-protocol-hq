@@ -25,9 +25,9 @@ Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-005: needs-evidence.** Player reward visibility #163 is merged and deployed. Rewards shows the current account’s latest TN10 payment, clear observed stages, exact units, original destination, saved time and reveal details. Six production delivery/protection checks pass. Actual-phone account/status and automatic-payment acceptance remain outstanding.
+**CHAIN-004: needs-evidence.** Dashboard fallback now reads the separate signer logs. Scheduled requests alternate 200 and 503 without application error output; the worker suppresses all causes. Add fixed, redacted stage/reason diagnostics before diagnosing the retained payment.
 
-Next task: **CHAIN-004**. Obtain the separate signer’s application failure evidence and reconcile only the existing saved payment, then confirm the same reveal hash and exact recipient acceptance. The current Vercel connection cannot access signer logs. Actual-phone account/setup and reward-status acceptance remain separate.
+Next task: **CHAIN-004**. Release checked signer diagnostics and observe a naturally scheduled production invocation. Diagnose its fixed failure category and reconcile only the existing journal; never replace or manually resend the pending payment.
 
 ## Holds
 

@@ -7,7 +7,9 @@ export function workerRequest(env = process.env) {
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
       body: JSON.stringify(body), redirect: 'error', signal: AbortSignal.timeout(30000) });
     const payload = await response.json();
-    if (!response.ok || payload.ok !== true) throw new Error('HQ_REQUEST_FAILED');
+    if (!response.ok || payload.ok !== true) {
+      const error = new Error('HQ_REQUEST_FAILED'); error.httpStatus = response.status; throw error;
+    }
     return payload;
   };
 }

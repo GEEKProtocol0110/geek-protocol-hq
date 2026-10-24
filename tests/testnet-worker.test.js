@@ -5,7 +5,7 @@ import { processPayment } from '../workers/testnet/process.mjs';
 const journal = { commit: { id: 'commit', transaction: 'signed-commit' }, reveal: { id: 'reveal', transaction: 'signed-reveal' } };
 function system({ persisted = false, lostPrepare = false, throwSend = false, accepted = false } = {}) {
   let job = { id: 'job', version: 'v1', state: persisted ? 'prepared' : 'queued', ...(persisted ? { journal } : {}) };
-  const calls = []; let prepared = 0;
+  const calls = [], events = []; let prepared = 0;
   const request = async b => {
     calls.push(b.action);
     if (b.action === 'claim') return { lease: 'lease', job: structuredClone(job), config: {} };
@@ -15,7 +15,7 @@ function system({ persisted = false, lostPrepare = false, throwSend = false, acc
     if (b.action === 'check') job.state = accepted ? 'indexed-confirmed' : 'awaiting-indexer';
     return { job: structuredClone(job) };
   };
-  return { request, calls, get prepared() { return prepared; }, signer: { verify: async () => {}, prepare: async () => { prepared++; return journal; }, submit: async tx => { calls.push(tx.transaction); if (throwSend) throw new Error('uncertain RPC'); } } };
+  return { request, calls, events, report: event => events.push(event), get prepared() { return prepared; }, signer: { verify: async () => {}, prepare: async () => { prepared++; return journal; }, submit: async tx => { calls.push(tx.transaction); if (throwSend) throw new Error('uncertain RPC'); } } };
 }
 test('both signed transactions are durably acknowledged before their first broadcast', async () => {
   const s = system(); assert.equal(await processPayment(s), 'awaiting-indexer'); assert.equal(s.prepared, 1);
@@ -39,4 +39,25 @@ test('uncertain RPC sends retain identical signed bytes and do not construct ano
 test('configuration/network/funding and indexer failures stop payment work and release the lease', async () => {
   const s = system(); s.signer.verify = async () => { throw new Error('wrong network'); };
   await assert.rejects(processPayment(s)); assert.deepEqual(s.calls, ['claim', 'release']);
+});
+
+test('worker failures identify the failing stage without recording payment fields or raw errors', async () => {
+  const s = system({ persisted: true });
+  s.signer.verify = async () => { throw new Error('RPC_TIMEOUT'); };
+  await assert.rejects(processPayment(s), /RPC_TIMEOUT/);
+  assert.deepEqual(s.events, [{ event: 'tn10-worker-failure', stage: 'verify', code: 'RPC_TIMEOUT' }]);
+  assert.deepEqual(s.calls, ['claim', 'release']);
+  const lost = system({ lostPrepare: true }); await assert.rejects(processPayment(lost));
+  assert.equal(lost.events[0].stage, 'persist-journal');
+  assert.doesNotMatch(JSON.stringify(lost.events), /signed-commit|signed-reveal|lost response|lease|job/);
+});
+
+test('uncertain commit and reveal submissions remain visible while preserving the exact recovery sequence', async () => {
+  const s = system({ persisted: true, throwSend: true });
+  assert.equal(await processPayment(s), 'reconciling');
+  assert.deepEqual(s.events.map(e => e.stage), ['submit-commit', 'submit-reveal']);
+  assert.deepEqual(s.calls, ['claim', 'check', 'signed-commit', 'signed-reveal', 'submitted', 'check', 'release']);
+  assert.equal(s.prepared, 0);
+  s.report = () => { throw new Error('log sink unavailable'); };
+  assert.equal(await processPayment(s), 'reconciling'); assert.equal(s.prepared, 0);
 });
