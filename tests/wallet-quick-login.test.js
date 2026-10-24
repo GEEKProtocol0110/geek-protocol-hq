@@ -5,7 +5,7 @@ import { clientFixture, deferred, json } from './helpers/client-fixture.js';
 
 const source = readFileSync(new URL('../public/assets/wallet.js', import.meta.url), 'utf8');
 const settle = () => new Promise(setImmediate);
-async function mount({ rejectSignature = false, connectedOnly = false, requestAccounts } = {}) {
+async function mount({ rejectSignature = false, connectedOnly = false, requestAccounts, installed = true } = {}) {
   const calls = [], events = [], listeners = new Map(), walletEvents = new Map();
   const ui = clientFixture(async (path, options = {}) => {
     const body = options.body ? JSON.parse(options.body) : null;
@@ -22,7 +22,8 @@ async function mount({ rejectSignature = false, connectedOnly = false, requestAc
   if (!connectedOnly) root.setAttribute('data-wallet-quick-login', '');
   const button = ui.node('[data-wallet-connect]', 'button'); root.append(button);
   for (const name of ['state', 'message', 'address', 'network', 'provider', 'verify', 'install']) root.append(ui.node(`[data-wallet-${name}]`));
-  ui.window.kasware = {
+  const help = ui.node('[data-wallet-mobile-help]'); help.hidden = true; root.append(help);
+  const provider = {
     requestAccounts: async () => { calls.push('connect'); return requestAccounts ? requestAccounts() : ['kaspa:fixture']; },
     getAccounts: async () => ['kaspa:fixture'], getNetwork: async () => 'kaspa_mainnet', getPublicKey: async () => '02' + 'a'.repeat(64),
     getKRC20Balance: async () => { calls.push('balance'); return []; }, on: (name, handler) => walletEvents.set(name, handler),
@@ -32,9 +33,10 @@ async function mount({ rejectSignature = false, connectedOnly = false, requestAc
       return 'b'.repeat(128);
     }
   };
+  if (installed) ui.window.kasware = provider;
   ui.run(source); await settle();
   const click = () => Promise.all((listeners.get('click') || []).map(handler => handler({ target: button })));
-  return { ...ui, root, button, calls, events, walletEvents, click };
+  return { ...ui, root, button, help, provider, calls, events, walletEvents, click };
 }
 
 test('one user click connects, signs the exact server challenge and verifies before continuing', async () => {
@@ -69,5 +71,24 @@ test('repeated clicks during wallet approval cannot start a second sign-in', asy
   const first = ui.click(); await settle(); await ui.click();
   assert.equal(ui.calls.filter(x => x === 'connect').length, 1);
   wait.resolve(['kaspa:fixture']); await first;
+  assert.equal(ui.calls.filter(x => x.body?.action === 'verify').length, 1);
+});
+
+test('a phone browser without a provider shows an actionable in-app route without claiming to launch a wallet', async () => {
+  const ui = await mount({ installed: false });
+  assert.equal(ui.button.disabled, false); assert.equal(ui.help.hidden, false);
+  assert.match(ui.button.textContent, /How to connect on this phone/);
+  await ui.click();
+  assert.match(ui.node('[data-wallet-message]').textContent, /KasWare’s in-app browser/);
+  assert.equal(ui.calls.length, 0); assert.equal(ui.events.filter(e => e.type === 'geek:signed-in').length, 0);
+});
+
+test('KasWare injected after page load is discovered on tap without background wallet access', async () => {
+  const ui = await mount({ installed: false });
+  await ui.click(); ui.window.kasware = ui.provider;
+  assert.equal(ui.calls.length, 0);
+  await ui.click();
+  assert.equal(ui.help.hidden, true);
+  assert.equal(ui.calls.filter(x => x === 'connect').length, 1);
   assert.equal(ui.calls.filter(x => x.body?.action === 'verify').length, 1);
 });

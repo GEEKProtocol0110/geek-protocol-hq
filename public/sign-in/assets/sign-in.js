@@ -19,6 +19,22 @@
   if (returningToStart) { hq.href = '/start/#step-geek'; hq.textContent = 'Continue to your Geek →'; continueLink.href = '/start/#step-geek'; continueLink.textContent = 'Continue as a guest →'; }
   const destination = nextPage[1].replace(' →', '') + ' when you’re ready.';
   let signedIn = false;
+  const walletLink = document.querySelector('[data-wallet-hq-link]');
+  if (walletLink) {
+    walletLink.value = `https://www.geekprotocol.xyz/sign-in/${Object.hasOwn(nextPages, requestedNext) ? `?next=${requestedNext}` : ''}`;
+    document.querySelector('[data-wallet-copy-link]')?.addEventListener('click', async () => {
+      walletLink.focus(); walletLink.select(); walletLink.setSelectionRange?.(0, walletLink.value.length);
+      const note = document.querySelector('[data-wallet-copy-status]');
+      note.textContent = 'Link selected. Copy it, then open it in KasWare’s in-app browser.';
+      try {
+        if (document.execCommand?.('copy') === true) { note.textContent = 'HQ link copied. Open it in KasWare’s in-app browser.'; return; }
+        if (typeof navigator.clipboard?.writeText === 'function') {
+          await navigator.clipboard.writeText(walletLink.value);
+          note.textContent = 'HQ link copied. Open it in KasWare’s in-app browser.';
+        }
+      } catch { /* Selected text remains available when clipboard access is denied. */ }
+    });
+  }
   let proofIntent = 'identity';
   const showSignedIn = (message) => { status.textContent = message; hq.hidden = false; continueLink.textContent = nextPage[1]; const title = document.querySelector('[data-sign-in-title]'); if (title) title.textContent = 'Welcome back.'; const guest = document.querySelector('[data-sign-in-guest]'); if (guest) guest.hidden = true; };
   document.addEventListener('geek:passkey-signed-in', () => { signedIn = true; invalidate(); manualStatus.textContent = ''; proofIntent = 'identity'; showSignedIn(`Signed in to your saved player. ${destination}`); hq.focus(); });

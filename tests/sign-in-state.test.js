@@ -61,3 +61,25 @@ test('returning after logout confirms the signed-out state without overriding a 
   assert.match(active.node('[data-sign-in-status]').textContent,/Signed in|You’re signed in/);
   assert.doesNotMatch(active.node('[data-sign-in-status]').textContent,/signed out/);
 });
+
+test('the mobile handoff copies only the canonical HQ link and an allowed continuation',async()=>{
+  for(const [next,expected] of [['?next=play','https://www.geekprotocol.xyz/sign-in/?next=play'],['?next=https://evil.invalid&token=private','https://www.geekprotocol.xyz/sign-in/']]){
+    const ui=await mount({signedIn:false,walletLinked:false,credentials:[]},next);
+    const link=ui.node('[data-wallet-hq-link]');let selected=false,copied;
+    link.select=()=>{selected=true;};ui.document.execCommand=command=>{assert.equal(command,'copy');copied=link.value;return true;};
+    await ui.node('[data-wallet-copy-link]').emit('click');
+    assert.equal(selected,true);assert.equal(copied,expected);
+    assert.match(ui.node('[data-wallet-copy-status]').textContent,/HQ link copied/);
+    assert.deepEqual(ui.redirects,[]);assert.deepEqual(ui.calls,['/api/session','/api/passkeys']);
+  }
+});
+
+test('denied mobile-link clipboard access leaves a complete manual selection',async()=>{
+  const ui=await mount({signedIn:false,walletLinked:false,credentials:[]});let selection;
+  ui.node('[data-wallet-hq-link]').setSelectionRange=(start,end)=>{selection=[start,end];};
+  ui.context.navigator.clipboard={writeText:async()=>{throw Error('denied');}};
+  await ui.node('[data-wallet-copy-link]').emit('click');
+  assert.deepEqual(selection,[0,'https://www.geekprotocol.xyz/sign-in/'.length]);
+  assert.match(ui.node('[data-wallet-copy-status]').textContent,/Link selected.*KasWare/);
+  assert.deepEqual(ui.redirects,[]);
+});
