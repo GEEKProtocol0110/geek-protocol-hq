@@ -98,3 +98,9 @@ The Rewards page now reuses the private bounded status reader and shows the late
 ## Redacted signer diagnostics — October 24
 
 The signer emits fixed stage/reason categories on failures and a bounded result state after an authenticated active scheduled invocation. No raw exception, stack, payload, wallet address, transaction hash, signature, journal or credential is logged. Known HQ HTTP failures may include only a 400–599 numeric status. Uncertain submission remains recovery of the immutable pair, even when a log identifies a rejection category; a diagnostic is not payment acceptance or permission to rebuild. Logging failures cannot affect processing. Read naturally scheduled logs; do not use a manual Run action to manufacture acceptance.
+
+## Node health recovery and saved inputs
+
+Before signing or recovering, the signer makes at most two read-only connection/health attempts, disconnecting and awaiting acknowledgement before the second. SDK fallback avoids indefinite first-connect retries; exact TN10, synced and UTXO-index checks remain mandatory. A missing-input submission category triggers a bounded read of the saved pair’s original outpoints and reports only commit-input/reveal-input availability booleans. Neither a missing outpoint nor a successful HTTP request establishes acceptance, competing-spend history or permission to replace a payment. Journal, recipient and replay locks remain immutable.
+
+SDK behavior: [pinned API-compatible connection options](https://kaspa.aspectron.org/docs/interfaces/IConnectOptions.html), [Kaspa’s RPC getting-started guide](https://docs.kaspa.org/integrate/getting-started), and installed @kasplex/kiwi 1.0.29 declarations. No library/dependency upgrade or manually selected provider is introduced.

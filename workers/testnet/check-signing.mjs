@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Wasm } from '@kasplex/kiwi';
-import { inscription, prepareTransactions, createSigner } from './signer.mjs';
+import { inscription, prepareTransactions, createSigner, inspectJournal } from './signer.mjs';
 const key = new Wasm.PrivateKey('1'.padStart(64, '0')), sender = key.toPublicKey().toAddress('testnet');
 const recipient = new Wasm.PrivateKey('2'.padStart(64, '0')).toPublicKey().toAddress('testnet');
 const job = { network: 'testnet-10', sender: sender.toString(), recipient: recipient.toString(), ticker: 'GEEKT', amount: '100000000' };
@@ -52,4 +52,27 @@ test('the worker independently rejects a Mainnet, unsynced or unindexed RPC', as
     const signer = createSigner('1'.padStart(64, '0'), { getServerInfo: async () => info });
     await assert.rejects(signer.verify({}, job), /TN10_SYNCED_NODE/); signer.close();
   }
+});
+
+test('saved-journal inspection reads exact original outpoints without signing, sending or changing the pair', async () => {
+  const journal = await prepareTransactions(key, job, [entry]), serialized = JSON.stringify(journal);
+  const reveal = Wasm.Transaction.deserializeFromSafeJSON(journal.reveal.transaction);
+  const revealInput = reveal.serializeToObject().inputs[0]; reveal.free();
+  for (const [commitAvailable, revealAvailable] of [[true, false], [false, true], [false, false]]) {
+    let reads = 0;
+    const rpc = { async getUtxosByAddresses({ addresses }) {
+      reads++; assert.equal(addresses.length, 2); assert.equal(addresses[0], job.sender);
+      assert.ok(addresses[1].startsWith('kaspatest:')); assert.notEqual(addresses[1], job.sender);
+      return { entries: [...(commitAvailable ? [entry] : []), ...(revealAvailable ? [{ outpoint: { transactionId: revealInput.transactionId, index: revealInput.index } }] : [])] };
+    } };
+    assert.deepEqual(await inspectJournal({ ...job, journal }, rpc), { commitInputsAvailable: commitAvailable, revealInputAvailable: revealAvailable });
+    assert.equal(reads, 1); assert.equal(JSON.stringify(journal), serialized);
+  }
+});
+
+test('malformed saved-journal links cannot trigger a node inspection', async () => {
+  const journal = await prepareTransactions(key, job, [entry]);
+  const rpc = { getUtxosByAddresses() { assert.fail('Do not inspect an invalid journal'); } };
+  await assert.rejects(inspectJournal({ ...job, journal: { ...journal, commit: { ...journal.commit, id: 'f'.repeat(64) } } }, rpc), /JOURNAL_LINK_MISMATCH/);
+  await assert.rejects(inspectJournal({ ...job, network: 'mainnet', journal }, rpc), /JOURNAL_LINK_MISMATCH/);
 });
