@@ -11,7 +11,7 @@ test('worker targets the canonical HQ API path without redirects or automatic wr
       return Response.json({ ok: false }, { status: 503 });
     };
     const request = workerRequest({ TESTNET_AUTO_WORKER_TOKEN: 'e'.repeat(64) });
-    await assert.rejects(request({ action: 'claim' }), /HQ_REQUEST_FAILED/); assert.equal(calls, 1);
+    await assert.rejects(request({ action: 'claim' }), error => error.message === 'HQ_REQUEST_FAILED' && error.httpStatus === 503); assert.equal(calls, 1);
     assert.throws(() => workerRequest({ HQ_REWARD_ORIGIN: 'https://evil.invalid', TESTNET_AUTO_WORKER_TOKEN: 'e'.repeat(64) }), /CANONICAL/);
   } finally { globalThis.fetch = original; }
 });

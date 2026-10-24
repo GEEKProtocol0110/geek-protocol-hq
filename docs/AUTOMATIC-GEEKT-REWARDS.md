@@ -94,3 +94,7 @@ On the founder’s phone in the existing HQ player browser, open the GEEKT Opera
 ## Player reward visibility — October 24
 
 The Rewards page now reuses the private bounded status reader and shows the latest account payment: exact token units, observed stage, original recipient and saved reveal hash. A My HQ link leads there. Prepared does not imply broadcast or delivery; indexed confirmation is named as an indexer observation. Refresh and successful receiving-address saves make read-only requests, with no enrollment, new job or transfer action. Changed receiving settings never rewrite the displayed payment recipient. Errors retain clearly marked last-loaded details; loss of access, sign-out, account changes and backgrounding clear private details and invalidate pending replies. Actual-phone and same-hash automatic acceptance still require separate evidence.
+
+## Redacted signer diagnostics — October 24
+
+The signer emits fixed stage/reason categories on failures and a bounded result state after an authenticated active scheduled invocation. No raw exception, stack, payload, wallet address, transaction hash, signature, journal or credential is logged. Known HQ HTTP failures may include only a 400–599 numeric status. Uncertain submission remains recovery of the immutable pair, even when a log identifies a rejection category; a diagnostic is not payment acceptance or permission to rebuild. Logging failures cannot affect processing. Read naturally scheduled logs; do not use a manual Run action to manufacture acceptance.

@@ -35,12 +35,12 @@
     "collectionOwnership": "disabled"
   },
   "currentWork": {
-    "id": "CHAIN-005",
+    "id": "CHAIN-004",
     "status": "needs-evidence",
-    "description": "Player reward visibility #163 is merged and deployed. Rewards shows the current account\u2019s latest TN10 payment, clear observed stages, exact units, original destination, saved time and reveal details. Six production delivery/protection checks pass. Actual-phone account/status and automatic-payment acceptance remain outstanding."
+    "description": "Dashboard fallback now reads the separate signer logs. Scheduled requests alternate 200 and 503 without application error output; the worker suppresses all causes. Add fixed, redacted stage/reason diagnostics before diagnosing the retained payment."
   },
   "nextTask": "CHAIN-004",
-  "nextAction": "Obtain the separate signer\u2019s application failure evidence and reconcile only the existing saved payment, then confirm the same reveal hash and exact recipient acceptance. The current Vercel connection cannot access signer logs. Actual-phone account/setup and reward-status acceptance remain separate.",
+  "nextAction": "Release checked signer diagnostics and observe a naturally scheduled production invocation. Diagnose its fixed failure category and reconcile only the existing journal; never replace or manually resend the pending payment.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
