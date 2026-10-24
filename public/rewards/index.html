@@ -60,9 +60,18 @@
   <button class="button button-secondary" type="button" data-receiving-retry hidden>Reload saved addresses</button>
   <details class="receiving-details"><summary>How rewards use this address</summary><p>Approved GEEKT test rewards use Testnet-10. Mainnet payouts remain disabled. Address changes apply to future eligible runs; payments already queued keep their original destination.</p></details>
 </section>
+      <section class="testnet-dashboard" id="test-reward" data-testnet-dashboard aria-labelledby="testnet-title" hidden>
+        <div class="testnet-heading"><h2 id="testnet-title">Your latest test reward</h2><span class="testnet-badge" data-testnet-badge>Loading…</span></div>
+        <p data-testnet-status role="status" aria-live="polite" hidden></p>
+        <dl class="testnet-details" data-testnet-details></dl>
+        <p class="testnet-checked" data-testnet-checked></p>
+        <button class="button button-secondary" type="button" data-testnet-refresh>Refresh reward status</button>
+        <p class="testnet-help">We handle approved test payments on our end. Address changes apply to future runs; an existing payment keeps its original receiving address.</p>
+      </section>
       <p>Career XP and Alpha game credits are separate from on-chain tokens. Saving an address does not enable withdrawals or Mainnet payments.</p>
     </main>
 
     <footer class="site-footer"><div class="footer-brand"><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span><p>All hope, no hype. Settlement stays locked until it is safe.</p></div><div class="footer-links"><a href="https://geek-mini.vercel.app/">Geek Mini ↗</a><a href="/tools/#kaspa-widget">Free Kaspa widget</a><a href="../">Home</a><a href="../play/">Play</a><a href="../contribute/">Contribute</a><a href="../mint/">Mint GEEK</a><a href="../security/">Security</a></div><p class="footer-copy">© <span data-year></span> Geek Protocol · Alpha credits have no monetary value.</p><details class="welcome-panel" id="project-links"><summary><span><b>About Geek Protocol</b><small>Project information, community and optional wallet features.</small></span></summary><div class="welcome-panel-content"><div class="welcome-project-links"><a href="/thanks/">Hall of Thanks</a><a href="/litepaper/">Project roadmap</a><a href="/security/">Security</a><a href="/contribute/">Contribute a question</a><a href="/collection/">Collection</a><a href="/lobby/">Practice rooms</a><a href="/vault/">Daily vault</a><a href="/rewards/">Wallet & rewards</a><a href="/economy/">Power-ups & economy</a><a href="/mint/">Mint GEEK</a></div></div></details></footer>
+    <script type="module" src="/play/assets/testnet-status.js"></script>
   </body>
 </html>

@@ -715,9 +715,9 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Review and release the checked missing-operation recovery correction, verify the HQ deployment, then observe the existing scheduled worker reconcile/rebroadcast only its immutable saved commit/reveal pair. Confirm the same reveal hash and exact recipient balance change before accepting the automatic pilot. If it remains unresolved, inspect the worker failure without deleting locks, replacing the journal, changing enrollment or manually resending. Keep all existing daily limits and economic holds.
+Next action: The #156 recovery correction is released. Diagnose the still-unresolved original automatic payment from the separate scheduled signer’s application logs, then confirm the existing exact reveal and recipient balance. Preserve the saved journal and all locks; do not manually resend or replace it.
 
-Blocker: One enrolled automatic payment is awaiting indexer confirmation. The exact transfer lookup returns the Kasplex 403 op-not-found response; the deployed helper treats it as an unavailable indexer and aborts recovery before rebroadcast. This is a reproduced recovery defect, not proof of the initial submission failure. Code correction, deployment, exact-hash recipient acceptance and live recovery remain separate.
+Blocker: October 24 bounded exact-hash indexer read still returns HTTP 403, op not found, result null. #156 fixes that response as pending but does not establish why the original submission failed. The Vercel connection finds HQ only and returns 404 for signer logs/project; application failure evidence and actual same-hash acceptance remain unavailable.
 
 Acceptance:
 
@@ -734,7 +734,7 @@ Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-G
 
 **P1 / needs-evidence.** Owner: Maintainer; founder confirms actual-phone behavior. Dependencies: none.
 
-Next action: #155 is merged and deployed; verify actual-phone status recovery, background/return and saved-player changes. Synthetic client tests and public delivery checks do not establish device acceptance.
+Next action: Verify and release Rewards latest-payment view and My HQ navigation, then confirm on the real phone. Keep actual automatic-payment acceptance separate from rendered status.
 
 Acceptance:
 
@@ -743,6 +743,7 @@ Acceptance:
 - A saved-run event during a pending read triggers a fresh read without overlapping requests; enrolled and confirmed views can discover later jobs.
 - Lost access or enrollment clears the prior status; player changes, backgrounding and page-cache return invalidate late responses and request-specific deadlines.
 - Focused client tests, full required checks and exact release evidence are recorded; synthetic DOM tests do not establish real-device or automatic payment acceptance.
+- Rewards shows the current account’s latest test payment, exact units, original immutable destination and observed stage; guests and sign-out cannot retain private details, and stale reads cannot claim current confirmation.
 
 Evidence/specification: [public/play/assets/testnet-status.js](../../public/play/assets/testnet-status.js), [tests/testnet-status-client.test.js](../../tests/testnet-status-client.test.js), [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md).
 

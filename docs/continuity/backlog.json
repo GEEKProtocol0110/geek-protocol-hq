@@ -1062,7 +1062,7 @@
       "status": "needs-evidence",
       "title": "Automate eligible Daily GEEKT test rewards",
       "owner": "Maintainer; founder controls test funding and device acceptance",
-      "nextAction": "Review and release the checked missing-operation recovery correction, verify the HQ deployment, then observe the existing scheduled worker reconcile/rebroadcast only its immutable saved commit/reveal pair. Confirm the same reveal hash and exact recipient balance change before accepting the automatic pilot. If it remains unresolved, inspect the worker failure without deleting locks, replacing the journal, changing enrollment or manually resending. Keep all existing daily limits and economic holds.",
+      "nextAction": "The #156 recovery correction is released. Diagnose the still-unresolved original automatic payment from the separate scheduled signer\u2019s application logs, then confirm the existing exact reveal and recipient balance. Preserve the saved journal and all locks; do not manually resend or replace it.",
       "acceptance": [
         "Owner enrolls a player once; eligible completed Daily and reward job commit together without copying run IDs.",
         "Dedicated TN10 signer persists exact signed commit/reveal before broadcast; concurrency, lost responses and restarts never create a second payment.",
@@ -1092,7 +1092,10 @@
         "October 23, 2026, after explicit founder approval: generated two distinct cryptographically random 32-byte hex service credentials privately and saved TESTNET_AUTO_WORKER_TOKEN as matching Production Secrets in HQ and geek-protocol-hq-testnet, plus a separate Production CRON_SECRET in the signer. No credential value was printed, exported or committed; temporary in-memory values were cleared after storage. HQ redeployment dpl_6cEXmA9ReeJG6xFM8v2yeTfiJfeW is READY on 40de10afc52c72bc2f27ee724b7aa10bca130330 with canonical domains assigned. Signer redeployment Poxo9Y3VL5FN7gy4JWjnmP9SnMXU is Ready on the same source with its Production domain; both explicit processing flags remain false. A stale signer redeploy attempt was rejected before a fresh current-deployment redeploy succeeded. Browser logs show automatically recurring GET /api/tick returning 200 at 16:36:47, 16:37:47, 16:38:47, 16:39:47 and 16:40:47 Detroit; no Run action was submitted. With the deployed false flag, the handler authenticates and returns paused before loading the signing key. Canonical unauthenticated signer GET and HQ worker POST each returned private/no-store 401. Read-only fixed-indexer and synced TN10 RPC checks found sufficient GEEKT and test KAS for one fixed payout; individual balances and wallet addresses are withheld. Signing-key format/address matching, real automatic transfer and same-hash acceptance remain unproved. No payment was signed or sent.",
         "October 23, 2026 activation: the founder approved enabling the bounded automatic TN10 pilot with ten jobs per UTC day. HQ TESTNET_AUTO_ENABLED and signer TESTNET_SIGNER_ENABLED were changed to true; TESTNET_AUTO_DAILY_LIMIT remains 10. HQ Production deployment dpl_B5dS5PM3RZboppkEeRtBxb6JaP8N is READY on 7c03e1a1b21dd81615e706b21e21a8205b3af798 with both canonical domains assigned. Signer Production deployment FNRBLZEm68iDD9z2uJLM3mAuZvK9 is Ready on the same source with geek-protocol-hq-testnet.vercel.app assigned. The signer Config edit required Vercel step-up verification; no authentication code or stored signing secret was read. Active signer-host GET /api/tick returned 200 on scheduled runs at 17:01:47, 17:02:47 and 17:03:47 Detroit. These are active worker HTTP checks, not an observed automatic transfer or proof that the key derives the configured sender. The existing worker verifies sender/key matching before preparing a payment. No Run button was used. Funding evidence remains the prior bounded read-only GEEKT/indexer and synced TN10 RPC checks. Owner-controlled enrollment and a real eligible Daily-to-transfer acceptance remain outstanding."
       ],
-      "blocker": "One enrolled automatic payment is awaiting indexer confirmation. The exact transfer lookup returns the Kasplex 403 op-not-found response; the deployed helper treats it as an unavailable indexer and aborts recovery before rebroadcast. This is a reproduced recovery defect, not proof of the initial submission failure. Code correction, deployment, exact-hash recipient acceptance and live recovery remain separate."
+      "blocker": "October 24 bounded exact-hash indexer read still returns HTTP 403, op not found, result null. #156 fixes that response as pending but does not establish why the original submission failed. The Vercel connection finds HQ only and returns 404 for signer logs/project; application failure evidence and actual same-hash acceptance remain unavailable.",
+      "validationEvidence": [
+        "October 24 read-only continuation: the original reveal is still absent from the fixed TN10 operation endpoint (403 op not found/result null). HQ error samples are DEP0169 warnings; signer logs and project lookup return 404 through the current Vercel connection. No signing, send, replay, key/journal/recipient mutation or provider reconfiguration occurred."
+      ]
     },
     {
       "id": "CHAIN-005",
@@ -1100,13 +1103,14 @@
       "status": "needs-evidence",
       "title": "Recover player reward status after interruptions",
       "owner": "Maintainer; founder confirms actual-phone behavior",
-      "nextAction": "#155 is merged and deployed; verify actual-phone status recovery, background/return and saved-player changes. Synthetic client tests and public delivery checks do not establish device acceptance.",
+      "nextAction": "Verify and release Rewards latest-payment view and My HQ navigation, then confirm on the real phone. Keep actual automatic-payment acceptance separate from rendered status.",
       "acceptance": [
         "Private canonical status reads recover from temporary network, HTTP and timeout failures with one bounded request and a 15-second polling interval.",
         "Queued or prepared payments report a pause when HQ automation is disabled; already confirmed payments retain their observed confirmation.",
         "A saved-run event during a pending read triggers a fresh read without overlapping requests; enrolled and confirmed views can discover later jobs.",
         "Lost access or enrollment clears the prior status; player changes, backgrounding and page-cache return invalidate late responses and request-specific deadlines.",
-        "Focused client tests, full required checks and exact release evidence are recorded; synthetic DOM tests do not establish real-device or automatic payment acceptance."
+        "Focused client tests, full required checks and exact release evidence are recorded; synthetic DOM tests do not establish real-device or automatic payment acceptance.",
+        "Rewards shows the current account\u2019s latest test payment, exact units, original immutable destination and observed stage; guests and sign-out cannot retain private details, and stale reads cannot claim current confirmation."
       ],
       "dependsOn": [],
       "evidence": [

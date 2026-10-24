@@ -25,9 +25,9 @@ Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-004: needs-evidence.** AUTH-004 account/address polish #162 is merged and deployed: clearer account creation, saved/draft states, per-network draft retention, guest access, retry and mobile control styling. Seven production byte checks and a live desktop guest visual/AX inspection passed. Backend behavior remains as #161. Actual-phone setup and automatic-payment acceptance remain separate.
+**CHAIN-005: needs-evidence.** Player-facing latest TN10 reward status is being added to Rewards, with exact amounts, original destinations, clear stages and interrupted-read recovery. Existing account flow is released. Automatic-payment acceptance remains unproved.
 
-Next task: **AUTH-004**. Obtain actual-phone Geek account setup and receiving-address save acceptance, then confirm the existing same-hash automatic TN10 payment. Preserve the account-first direction and Mainnet/public reward gates.
+Next task: **CHAIN-005**. Verify and release the player reward-status view; obtain actual-phone account/setup and existing same-hash automatic TN10 payment acceptance. Signer project logs remain inaccessible through the Vercel connection.
 
 ## Holds
 
