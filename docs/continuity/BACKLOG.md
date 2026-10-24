@@ -750,7 +750,7 @@ Evidence/specification: [public/play/assets/testnet-status.js](../../public/play
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls bounded pilot approval and actual-device acceptance. Dependencies: CHAIN-004.
 
-Next action: Validate and publish missing-provider help and late KasWare detection. Obtain actual phone signing evidence; direct Chrome-to-app launch and same-hash TN10 payout acceptance remain unresolved.
+Next action: Missing-provider help and late KasWare discovery are deployed in #159. Obtain actual phone signing evidence and establish a supported Chrome-to-app handoff; same-hash TN10 payout acceptance remains unresolved.
 
 Acceptance:
 

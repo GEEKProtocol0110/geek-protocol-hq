@@ -25,9 +25,9 @@ Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**AUTH-004: needs-evidence.** Investigating reported phone failure after wallet-first #157 and visible sign-out #158. The phone browser exposes no wallet provider. Candidate shows KasWare in-app browser guidance and a copyable HQ link, and retries provider discovery on a user tap. Direct Chrome-to-app launch, physical-phone signing and automatic payout remain unverified.
+**AUTH-004: needs-evidence.** Missing-provider correction #159 is merged and deployed after the founder reported no wallet opens. Sign in shows KasWare in-app browser guidance and a copyable canonical HQ link, and retries provider discovery on a user tap. Direct Chrome-to-app launch, physical-phone signing and automatic payout remain unverified.
 
-Next task: **AUTH-004**. Check and publish the missing-provider correction, then establish actual phone signing through a supported wallet browser. A documented app-launch handoff remains unresolved. Continue same-hash TN10 acceptance without exposing operational tasks to players.
+Next task: **AUTH-004**. Establish actual phone signing through a supported wallet browser; a documented Chrome-to-wallet app handoff remains unresolved. Continue same-hash TN10 acceptance without exposing operational tasks to players. Do not call this mobile login accepted from deployment or synthetic tests.
 
 ## Holds
 
