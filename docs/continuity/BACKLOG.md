@@ -715,9 +715,9 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Release checked read-only node fallback and saved-outpoint diagnostics, observe the scheduled result, and reconcile the retained payment. Preserve all journals, recipients, caps and locks.
+Next action: Reconcile original funding outpoint history, exact saved reveal and recipient acceptance before selecting another recovery action. Do not replace the journal, erase locks or manually resend. Provider/dashboard access is no longer the immediate blocker.
 
-Blocker: The dashboard now supplies application failure evidence. Scheduled verification can hit RPC_TIMEOUT; connected runs reject both persisted phases with RPC_INPUT_UNAVAILABLE and return reconciling. The original reveal remains unaccepted. Determine saved outpoint availability and reconcile without replacing the immutable journal.
+Blocker: Observed scheduled #165 run verifies a synced TN10 node and pinned asset, but both saved submissions report RPC_INPUT_UNAVAILABLE; read-only inspection reports commitInputsAvailable=false and revealInputAvailable=false. Exact reveal lookup remains op not found. The current snapshot does not establish which historical transaction spent or invalidated the original funding input, so a replacement payment cannot be justified from this evidence.
 
 Acceptance:
 

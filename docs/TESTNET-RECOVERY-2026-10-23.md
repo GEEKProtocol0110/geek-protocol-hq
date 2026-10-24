@@ -11,3 +11,11 @@ No transaction construction, signature, journal, replay lock, enrollment, amount
 Regression evidence includes the exact 403 response failing before the correction and passing afterward. Real-Redis integration exercises recovery through the actual HQ worker handler, submitting only the original synthetic pair and later accepting an exact matching observation without another send or preparation. These are synthetic offline payments, not a live acceptance claim. Final verification and release results are recorded in the continuation worklog.
 
 Next: release the checked correction, verify delivery, observe the existing worker and require the same reveal hash to reach `indexed-confirmed` with the expected recipient balance change. If it remains unresolved, inspect the worker failure; do not erase locks, replace signed bytes, manually send or replay the Daily run. Mainnet settlement, CCE and collection ownership remain disabled.
+
+## October 24 — scheduled failure diagnosis
+
+The earlier missing-operation correction was released as #156. Dashboard fallback now reads signer request and application logs; the old connector access problem is no longer the immediate diagnosis blocker. #164 adds fixed redacted stages/reasons and #165 bounded read-only RPC health recovery plus exact saved-outpoint inspection. Both are merged and deployed; exact release evidence is in the maintained worklog.
+
+A natural October 24 16:37:47 Detroit run on #165 verifies the synced TN10 node and pinned asset, then reports RPC_INPUT_UNAVAILABLE for both stored submissions. Its read-only UTXO inspection reports commitInputsAvailable=false and revealInputAvailable=false, followed by reconciling/200. An earlier new-version run reports RPC_CONNECT_TIMEOUT. The exact reveal remains absent from the fixed indexer. A successful HTTP status is not payment acceptance.
+
+The observed node snapshot establishes unavailable saved outpoints, not which transaction consumed or invalidated them, historical reveal acceptance, recipient receipt or independent chain finality. Reconcile the original funding history and same reveal/recipient before choosing a recovery action. Preserve the signed journal and locks; no replacement, manual resend or new funding workaround is authorized by these diagnostic facts. No operator Run action or credential access was used.

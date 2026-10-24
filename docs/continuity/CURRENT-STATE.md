@@ -25,9 +25,9 @@ Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: needs-evidence.** Redacted diagnostics #164 are live on HQ and signer. Scheduled evidence identifies verification timeouts and missing inputs in both stored submission phases. Add bounded read-only node reconnection and exact saved-outpoint availability diagnosis without changing journals.
+**CHAIN-004: needs-evidence.** #164 redacted diagnostics and #165 bounded node recovery/input checks are deployed to HQ and signer. A real scheduled run reports both original commit funding inputs and reveal input unavailable; the original payment remains unconfirmed. Funding-history reconciliation is the remaining blocker.
 
-Next task: **CHAIN-004**. Release and observe bounded RPC health recovery plus read-only saved-input diagnostics, then reconcile only the original payment. Missing-input observations do not authorize rebuilding or resending.
+Next task: **CHAIN-004**. Reconcile the original signed payment’s funding outpoint history and exact reveal against chain/indexer and recipient evidence. Both saved outpoints are absent in the observed synced-node snapshot; do not erase locks, rebuild, replace, fund around or manually resend that payment. Any different payment requires a separately reviewed recovery decision after duplicate-payment risk is resolved.
 
 ## Holds
 
