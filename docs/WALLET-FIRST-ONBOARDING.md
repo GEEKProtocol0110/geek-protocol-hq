@@ -19,3 +19,7 @@ Player text says what happens next: finish an eligible Daily and the test reward
 ## Evidence and remaining acceptance
 
 Synthetic shipped-client tests cover a complete one-click connect/challenge/sign/verify sequence, cancellation, repeated clicks and ordinary connections without signatures. Real-Redis tests cover derived enrollment without an owner action, lack of authority for guests/unapproved wallets/disabled enrollments, exact identity snapshot races and retention of previous payment records. Existing cryptographic verification and journal-recovery tests remain required. These tests do not establish actual phone compatibility or a live automatic payment. Release results belong in the continuation worklog.
+
+## Visible sign out
+
+Authenticated players can choose **Sign out** beside their identity on My HQ or above the wallet card on Sign in. This calls the existing protected session-revocation endpoint and returns to Sign in with a signed-out message. It does not remove the saved player, wallet binding, passkeys or payment records. Guest sessions do not show the control. Server/read failures retain a usable retry, and an expired session can return directly to Sign in.

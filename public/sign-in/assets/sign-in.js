@@ -1,6 +1,7 @@
 (() => {
   'use strict';
   const status = document.querySelector('[data-sign-in-status]');
+  const signedOut = new URLSearchParams(location.search).get('signedOut') === '1';
   const hq = document.querySelector('[data-sign-in-hq]');
   const returningToStart = new URLSearchParams(location.search).get('next') === 'start';
   const continueLink = document.querySelector('[data-sign-in-continue]');
@@ -33,7 +34,7 @@
       signedIn = true;
       showSignedIn('You’re signed in.');
     } else if (!signedIn) {
-      status.textContent = 'Not signed in.';
+      status.textContent = signedOut ? 'You’re signed out. Your saved progress is ready when you sign in again.' : 'Not signed in.';
     }
   });
   document.addEventListener('geek:device-unavailable', () => {

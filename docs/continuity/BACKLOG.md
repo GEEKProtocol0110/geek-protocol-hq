@@ -750,7 +750,7 @@ Evidence/specification: [public/play/assets/testnet-status.js](../../public/play
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls bounded pilot approval and actual-device acceptance. Dependencies: CHAIN-004.
 
-Next action: Source/UI released as #157. Verify actual supported phone-wallet signing and same-hash TN10 payout acceptance; configure only the privately approved bounded pilot. Players should not handle enrollment forms, provider logs or transaction hashes.
+Next action: Release the checked visible sign-out follow-up, then retain the pending phone-wallet and automatic-payout acceptance checks.
 
 Acceptance:
 
@@ -759,5 +759,6 @@ Acceptance:
 - Approved verified wallets derive TN10 destinations on the server and queue eligible Daily rewards without a player enrollment form. Guest/unsigned/unapproved users and explicit disabled enrollments do not gain reward authority.
 - Atomic admission watches the exact identity snapshot; existing recipient/day limits, replay locks, immutable signed journals and Mainnet/CCE/ownership holds remain.
 - Provider/device compatibility, release and actual automatic transfer acceptance are recorded separately.
+- Signed-in players have a visible Sign out control on My HQ and Sign in; logout revokes the current server session and retains saved progress and wallet/passkey recovery.
 
-Evidence/specification: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRST-ONBOARDING.md), [public/sign-in/index.html](../../public/sign-in/index.html), [public/assets/wallet.js](../../public/assets/wallet.js), [server/testnet-automatic.js](../../server/testnet-automatic.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js).
+Evidence/specification: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRST-ONBOARDING.md), [public/sign-in/index.html](../../public/sign-in/index.html), [public/assets/wallet.js](../../public/assets/wallet.js), [server/testnet-automatic.js](../../server/testnet-automatic.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [public/assets/session-access.js](../../public/assets/session-access.js), [tests/session-access-client.test.js](../../tests/session-access-client.test.js).
