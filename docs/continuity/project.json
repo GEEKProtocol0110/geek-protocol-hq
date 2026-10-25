@@ -37,10 +37,10 @@
   "currentWork": {
     "id": "CHAIN-004",
     "status": "needs-evidence",
-    "description": "Live fixed-category diagnostics establish that the retained fresh commit fee is below TN10 relay policy. Candidate corrects new-pair fee/mass calculation and appends one same-funding-input correction for only that approved fresh child; both original journals and all earning/retirement locks remain intact."
+    "description": "Fee-recovery #168 is live; its pre-journal guard stops the smaller-input SDK mass-estimation shortfall before correction broadcast. A reproduced bounded same-input local rebuild corrects fee-induced change/mass growth and keeps the existing fee cap."
   },
   "nextTask": "CHAIN-004",
-  "nextAction": "Verify and release bounded same-input fee recovery; observe scheduled creation, submission and exact indexer acceptance of the acknowledged correction. No other funding input, independent fresh retry, journal deletion or separate blocked history disclosure is authorized. Real-device and provider restore evidence remain separate.",
+  "nextAction": "Release the verified bounded fee/mass-growth correction, then observe scheduled acknowledgement and exact corrected-hash indexer acceptance. Preserve both prior journals, sole funding outpoint and retirement/earning/budget records; no independent fresh retry or separate blocked history query.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

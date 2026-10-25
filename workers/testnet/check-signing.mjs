@@ -111,3 +111,23 @@ test('fee recovery signs one conflicting same-input pair and retains the exact p
     await assert.rejects(prepareFeeRepair(key, { ...saved, ...patch }, [entry]), /FEE_REPAIR_NOT_ALLOWED/);
   }
 });
+
+test('smaller funding inputs cover fee-induced mass growth before any journal is returned', async () => {
+  for (const amount of [200000000n, 500000000n, 1000000000n]) {
+    const smaller = { ...entry, amount }, journal = await legacyJournal(key, job, smaller);
+    const saved = { ...job, decimals: '8', journal, state: 'awaiting-indexer', freshTestOf: 'f'.repeat(64) };
+    const repaired = await prepareFeeRepair(key, saved, [smaller]);
+    assert.equal(validateFeeRepair(saved, repaired), true);
+    let total = 0n;
+    for (const item of Object.values(repaired)) {
+      const tx = Wasm.Transaction.deserializeFromSafeJSON(item.transaction);
+      try {
+        const o = tx.serializeToObject(), fee = BigInt(o.inputs[0].utxo.amount) - o.outputs.reduce((n, out) => n + out.value, 0n);
+        total += fee; assert.ok(fee >= Wasm.calculateTransactionMass('testnet-10', tx) * 100n);
+      } finally { tx.free(); }
+    }
+    assert.ok(total <= 5000000n);
+  }
+  await assert.rejects(prepareTransactions(key, job, [{ ...entry, amount: 150000000n }, entry]), /FEE_LIMIT_EXCEEDED/,
+    'Do not escape the fee cap or select another coin after choosing an input');
+});

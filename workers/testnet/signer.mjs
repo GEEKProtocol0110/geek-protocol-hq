@@ -20,7 +20,11 @@ function finalized(pending) {
     const mass = Wasm.calculateStorageMass('testnet-10', numbers(object.inputs.map(i => i.utxo.amount)), numbers(object.outputs.map(o => o.value)));
     const fullMass = Wasm.calculateTransactionMass('testnet-10', tx);
     const fee = object.inputs.reduce((n, i) => n + BigInt(i.utxo.amount), 0n) - object.outputs.reduce((n, o) => n + BigInt(o.value), 0n);
-    if (mass === undefined || mass > 100000n || fullMass > 100000n || fee < fullMass * BigInt(FEE_RATE) || fee > MAX_FEE) throw new Error('TRANSACTION_MASS_INVALID');
+    if (mass === undefined || mass > 100000n || fullMass > 100000n) throw new Error('TRANSACTION_MASS_INVALID');
+    if (fee > MAX_FEE) throw new Error('FEE_LIMIT_EXCEEDED');
+    if (fee < fullMass * BigInt(FEE_RATE)) {
+      const error = new Error('FEE_RATE_SHORTFALL'); error.shortfall = fullMass * BigInt(FEE_RATE) - fee; throw error;
+    }
     tx.mass = mass;
     if (tx.id !== pending.id) throw new Error('JOURNAL_HASH_MISMATCH');
     return { id: tx.id, transaction: tx.serializeToSafeJSON() };
@@ -51,10 +55,22 @@ export async function prepareTransactions(key, job, entries) {
     // One input bounds the journal and removes hidden consolidation transactions.
     const entry = entries.find(e => BigInt(e.amount ?? e.entry?.amount ?? 0) >= FUNDING + MAX_FEE);
     if (!entry) throw new Error('FUNDED_UTXO_REQUIRED');
-    const first = await Wasm.createTransactions({ entries: [entry], changeAddress: sender,
-      outputs: [{ address: address.toString(), amount: FUNDING }], priorityFee: 0n, feeRate: FEE_RATE, networkId: 'testnet-10' });
-    if (first.transactions.length !== 1) throw new Error('CONSOLIDATION_NOT_ALLOWED');
-    commit = first.transactions[0]; commit.sign([key]);
+    let savedCommit, padding = 0n;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const first = await Wasm.createTransactions({ entries: [entry], changeAddress: sender,
+        outputs: [{ address: address.toString(), amount: FUNDING }], priorityFee: padding, feeRate: FEE_RATE, networkId: 'testnet-10' });
+      if (first.transactions.length !== 1) throw new Error('CONSOLIDATION_NOT_ALLOWED');
+      commit = first.transactions[0]; commit.sign([key]);
+      try { savedCommit = finalized(commit); break; }
+      catch (error) {
+        // Paying the fee reduces change, which can raise contextual mass.
+        // Rebuild locally from the SAME input, at most twice, before journaling.
+        if (error.message !== 'FEE_RATE_SHORTFALL' || attempt === 2) throw error;
+        padding += error.shortfall + 100000n;
+        if (padding > MAX_FEE) throw new Error('FEE_LIMIT_EXCEEDED');
+        commit.free(); commit = null;
+      }
+    }
     const commitObject = commit.serializeToObject();
     const outputIndex = commitObject.outputs.findIndex(o => o.scriptPublicKey === spk.version.toString(16).padStart(4, '0') + spk.script && BigInt(o.value) === FUNDING);
     if (outputIndex < 0) throw new Error('COMMIT_OUTPUT_INVALID');
@@ -68,7 +84,7 @@ export async function prepareTransactions(key, job, entries) {
       reveal.fillInput(i, script.encodePayToScriptHashSignatureScript(signature));
     }
     if (commit.feeAmount + reveal.feeAmount > MAX_FEE) throw new Error('FEE_LIMIT_EXCEEDED');
-    const journal = { commit: finalized(commit), reveal: finalized(reveal) };
+    const journal = { commit: savedCommit, reveal: finalized(reveal) };
     if (Object.values(journal).some(tx => !hashPattern.test(tx.id) || tx.transaction.length > 2800)) throw new Error('JOURNAL_LIMIT_EXCEEDED');
     return journal;
   } finally { commit?.free(); reveal?.free(); script.free(); spk.free(); address?.free(); }

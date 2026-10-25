@@ -8,7 +8,7 @@ const reasons = new Set(['RPC_TIMEOUT', 'INDEXER_UNAVAILABLE', 'DEDICATED_SIGNER
   'CANONICAL_HQ_REQUIRED', 'TN10_SYNCED_NODE_REQUIRED', 'SIGNER_POLICY_MISMATCH', 'PINNED_ASSET_REQUIRED',
   'GEEKT_FUNDING_REQUIRED', 'FUNDED_UTXO_REQUIRED', 'CONSOLIDATION_NOT_ALLOWED', 'COMMIT_OUTPUT_INVALID',
   'FEE_LIMIT_EXCEEDED', 'JOURNAL_LIMIT_EXCEEDED', 'JOURNAL_HASH_MISMATCH', 'RPC_HASH_MISMATCH', 'HQ_REQUEST_FAILED',
-  'TRANSACTION_MASS_INVALID', 'FEE_REPAIR_NOT_ALLOWED', 'FEE_REPAIR_INPUT_UNAVAILABLE']);
+  'TRANSACTION_MASS_INVALID', 'FEE_RATE_SHORTFALL', 'FEE_REPAIR_NOT_ALLOWED', 'FEE_REPAIR_INPUT_UNAVAILABLE']);
 const outcomes = new Set(['idle', 'busy', 'indexed-confirmed', 'reconciling', 'awaiting-indexer']);
 const write = event => console[event.event === 'tn10-worker-failure' ? 'error' : 'info'](JSON.stringify(event));
 const emit = (event, report) => { try { report(event); } catch { /* Logging must not change payment recovery. */ } };
