@@ -10,7 +10,7 @@ const render = payload => {
   status.textContent = payload.enabled
     ? 'Automatic TN10 queue enabled. Enroll this player once; eligible future Dailies queue when saved. The separate funded signing worker sends and checks them.'
     : 'Automatic TN10 queue is off. You can save this player’s test enrollment now. Activation requires the dedicated funded signing worker and server configuration.';
-  list.innerHTML = payload.records.map(r => `<article class="workspace-card"><h3>${escapeHtml(r.state)}</h3><p>${escapeHtml(formatTokenUnits(r.amount, r.decimals))} ${escapeHtml(r.ticker)} · testnet-10</p><p>To ${escapeHtml(r.recipient)}</p>${r.transactionHash ? `<p>Reveal hash ${escapeHtml(r.transactionHash)}</p>` : '<p>Waiting for the signing worker.</p>'}<p>This payment is managed by the worker. Do not send it from Kasware.</p></article>`).join('');
+  list.innerHTML = payload.records.map(r => `<article class="workspace-card"><h3>${escapeHtml(r.serviceRetriesStopped ? 'Retries stopped · receipt retained' : r.state)}</h3>${r.freshTest ? '<p>Fresh test · original receipt retained.</p>' : ''}<p>${escapeHtml(formatTokenUnits(r.amount, r.decimals))} ${escapeHtml(r.ticker)} · testnet-10</p><p>To ${escapeHtml(r.recipient)}</p>${r.transactionHash ? `<p>Reveal hash ${escapeHtml(r.transactionHash)}</p>` : '<p>Waiting for the signing worker.</p>'}<p>${r.serviceRetriesStopped ? 'The service will not retry this original attempt. This does not prove chain cancellation.' : 'This payment is managed by the worker. Do not send it from Kasware.'}</p></article>`).join('');
 };
 const refresh = async body => {
   if (busy) return; const version = generation; busy = true; clearTimeout(timer);

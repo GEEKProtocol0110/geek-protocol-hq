@@ -263,3 +263,13 @@ Use a Geek account with passkey authentication as the main sign-in path. Let the
 Basis: Founder October 24 proposes any Kaspa wallet: enter an address and save it to the account, then approves implementation after account access and address confirmation are explained. This supersedes wallet-first presentation in DR-025.
 
 Evidence: [docs/ACCOUNT-RECEIVING-ADDRESSES.md](../../docs/ACCOUNT-RECEIVING-ADDRESSES.md), [server/reward-addresses.js](../../server/reward-addresses.js), [public/assets/receiving-address.js](../../public/assets/receiving-address.js), [server/testnet-automatic.js](../../server/testnet-automatic.js). Supersedes DR-025.
+
+## DR-027: Authorize one fresh TN10 test with explicit duplicate-payment risk acceptance
+
+**founder-direction** · 2026-10-25.
+
+For the specifically approved unresolved one-GEEKT test only, retain the original signed receipt and all earning locks, permanently stop its service retries, and atomically create one fresh same-recipient 1-GEEKT TN10 attempt within the existing daily/recipient/capacity limits. Preserve a durable one-time authorization/lineage marker; prohibit chained fresh attempts and never treat retirement as chain cancellation. Mainnet/public rewards and all other holds remain unchanged.
+
+Basis: Founder October 25 asks to skip and try again, then answers Yeah after the exact one-GEEKT same-recipient fresh test and the possibility that both payments could arrive are explained. This authorizes this bounded exception; it does not authorize unrelated address-history disclosure, journal deletion or general duplicate payments.
+
+Evidence: [docs/ONE-FRESH-GEEKT-TEST.md](../../docs/ONE-FRESH-GEEKT-TEST.md), [server/testnet-fresh-test.js](../../server/testnet-fresh-test.js), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js).

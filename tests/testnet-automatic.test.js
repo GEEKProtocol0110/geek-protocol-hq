@@ -11,10 +11,12 @@ import { autoIndex, autoJobKey, enrollmentKey, automaticConfig } from '../server
 import { processPayment } from '../workers/testnet/process.mjs';
 import { identityPlayerKey } from '../server/identity-keys.js';
 import { rewardAddressKey } from '../server/reward-addresses.js';
+import { retiredJobKey, freshTestId } from '../server/testnet-fresh-test.js';
+import { createHash } from 'node:crypto';
 const wallet = n => { const k = new kaspa.PrivateKey(n.toString(16).padStart(64, '0')); try { return k.toAddress('testnet').toString(); } finally { k.free(); } };
 const sender = wallet(7), recipient = wallet(3), deploy = 'a'.repeat(64), token = 'e'.repeat(64);
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
-let observed = null, loseReply = false, beforeCommit, missingOperationStatus = 200;
+let observed = null, loseReply = false, beforeCommit, missingOperationStatus = 200, loseFreshReply = false, beforeFreshCommit;
 globalThis.fetch = async (url, options) => {
   if (String(url).startsWith('https://tn10api.kasplex.org/v1/krc20/')) {
     const row = String(url).endsWith('token/GEEKT') ? { tick: 'GEEKT', hashRev: deploy, state: 'deployed', dec: '8' }
@@ -24,17 +26,21 @@ globalThis.fetch = async (url, options) => {
   }
   assert.ok(String(url).startsWith('https://redis.automatic.test'), 'No production data or network sends');
   const values = JSON.parse(options.body), commit = values[0] === 'EVAL' && values[1].includes('geek-ranked-commit-v1');
+  const fresh = values[0] === 'EVAL' && values[1].includes('geek-testnet-one-fresh-test-v1');
+  if (fresh && beforeFreshCommit) { const hook = beforeFreshCommit; beforeFreshCommit = null; await hook(values); }
   if (commit && beforeCommit) { const hook = beforeCommit; beforeCommit = null; await hook(values); }
   const result = String(url).endsWith('/pipeline') ? (await fixture.commands(values)).map(result => ({ result }))
     : String(url).endsWith('/multi-exec') ? (await fixture.commands([['MULTI'], ...values, ['EXEC']])).at(-1).map(result => ({ result }))
       : { result: await fixture.command(...values) };
   if (commit && loseReply) { loseReply = false; throw new Error('Synthetic lost reply'); }
+  if (fresh && loseFreshReply) { loseFreshReply = false; throw new Error('Synthetic lost fresh-test response'); }
   return Response.json(result);
 };
 after(async () => { globalThis.fetch = originalFetch; await fixture.close(); });
 beforeEach(async () => {
   delete process.env.TESTNET_AUTO_APPROVED_WALLETS;
-  await fixture.command('FLUSHDB'); observed = null; loseReply = false; beforeCommit = null; missingOperationStatus = 200;
+  delete process.env.TESTNET_AUTO_FRESH_TEST_APPROVAL;
+  await fixture.command('FLUSHDB'); observed = null; loseReply = false; beforeCommit = null; missingOperationStatus = 200; loseFreshReply = false; beforeFreshCommit = null;
   Object.assign(process.env, { UPSTASH_REDIS_REST_URL: 'https://redis.automatic.test', UPSTASH_REDIS_REST_TOKEN: 'synthetic-token',
     AUDIT_LOG_SECRET: 'synthetic-automatic-audit-key-32-characters', CCE_ADMIN_TOKEN: 'synthetic-automatic-cce-key-32-characters',
     PAYOUT_REVIEW_ADMIN_TOKEN: 'synthetic-automatic-payout-key-32-characters', TESTNET_REWARDS_ENABLED: 'true',
@@ -312,4 +318,134 @@ test('a real 403 missing-operation response permits same-journal recovery and la
   assert.equal(sent.length, 2, 'Confirmation must not rebroadcast the accepted payment');
   [job] = await jobs(); assert.deepEqual(job.journal, journal);
   assert.equal((await jobs()).length, 1);
+});
+
+const digest = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
+const leaseKeyForTest = 'geek:testnet-auto:sender-lease:v1';
+async function freshFixture(patch = {}) {
+  const cookie = await player(), playerId = cookie.split('=')[1], runId = '8'.repeat(40), id = digest(['testnet-pilot-v1', runId]);
+  const createdAt = Date.now() - 2 * 86400000, date = new Date(createdAt).toISOString().slice(0, 10), config = automaticConfig();
+  const job = { schema: 1, id, version: '9'.repeat(24), state: 'awaiting-indexer', playerId, network: 'testnet-10', ticker: 'GEEKT',
+    sender, recipient, deploymentHash: deploy, configFingerprint: config.fingerprint, amount: '100000000', decimals: '8',
+    proof: { runId, mode: 'daily', category: 'kaspa', correct: 1, answered: 5, score: 200 }, createdAt,
+    journal: structuredClone(journal), transactionHash: journal.reveal.id, ...patch };
+  const raw = JSON.stringify(job), runKey = `geek:testnet-reward:run:${runId}`,
+    recipientKey = `geek:testnet-auto:recipient-day:${digest([date, recipient])}`, dayKey = `geek:testnet-auto:day:${date}`;
+  await fixture.command('SET', autoJobKey(id), raw); await fixture.command('ZADD', autoIndex, createdAt, id);
+  await fixture.command('SET', runKey, id); await fixture.command('SET', recipientKey, id); await fixture.command('SET', dayKey, '1');
+  const consent = { originalRevealHash: job.transactionHash, recipient, riskAccepted: true, approvedAt: Date.now() };
+  process.env.TESTNET_AUTO_FRESH_TEST_APPROVAL = JSON.stringify(consent);
+  return { cookie, job, raw, consent, runKey, recipientKey, dayKey };
+}
+const releaseClaim = claim => worker({ action: 'release', lease: claim.lease });
+
+test('approved fresh test atomically retains the old signed receipt, consumes budget and never resumes old service retries', async () => {
+  const old = await freshFixture(), claim = (await worker({ action: 'claim' })).body, child = claim.job;
+  assert.equal(child.id, freshTestId(old.job.id)); assert.equal(child.freshTestOf, old.job.id);
+  assert.equal(child.state, 'queued'); assert.equal(child.journal, undefined); assert.equal(child.transactionHash, undefined);
+  assert.equal(child.recipient, old.job.recipient); assert.equal(child.amount, '100000000'); assert.deepEqual(child.proof, old.job.proof);
+  assert.equal(await fixture.command('GET', autoJobKey(old.job.id)), old.raw);
+  assert.equal(await fixture.command('GET', old.runKey), old.job.id);
+  assert.equal(await fixture.command('GET', old.recipientKey), old.job.id); assert.equal(await fixture.command('GET', old.dayKey), '1');
+  const today = new Date().toISOString().slice(0, 10);
+  assert.equal(await fixture.command('GET', `geek:testnet-auto:day:${today}`), '1');
+  assert.equal(await fixture.command('GET', `geek:testnet-auto:recipient-day:${digest([today, recipient])}`), child.id);
+  const marker = JSON.parse(await fixture.command('GET', retiredJobKey(old.job.id))); assert.equal(marker.riskAccepted, true);
+  const view = await call(rewards, 'GET', {}, old.cookie, { service: 'testnet' });
+  assert.equal(view.body.records[0].freshTest, true); assert.equal(view.body.records[1].serviceRetriesStopped, true);
+  assert.ok(!JSON.stringify(view.body).includes('journal')); assert.ok(!JSON.stringify(view.body).includes('authorizationHash'));
+  assert.equal((await step('submitted', claim, old.job)).statusCode, 409);
+  assert.equal((await step('check', claim, old.job)).statusCode, 409);
+  await releaseClaim(claim); delete process.env.TESTNET_AUTO_FRESH_TEST_APPROVAL;
+  const resumed = (await worker({ action: 'claim' })).body;
+  assert.equal(resumed.job.id, child.id); assert.equal((await jobs()).length, 2);
+  assert.equal(await fixture.command('GET', autoJobKey(old.job.id)), old.raw);
+});
+
+test('lost approval acknowledgement and concurrent claims cannot create a second fresh payment', async () => {
+  const old = await freshFixture(); loseFreshReply = true;
+  assert.notEqual((await worker({ action: 'claim' })).statusCode, 200);
+  const firstLease = await fixture.command('GET', leaseKeyForTest); await releaseClaim({ lease: firstLease });
+  const results = await Promise.all([worker({ action: 'claim' }), worker({ action: 'claim' })]);
+  assert.equal(results.filter(r => r.body.busy === true).length, 1);
+  const claimed = results.find(r => r.body.job).body;
+  assert.equal(claimed.job.id, freshTestId(old.job.id)); assert.equal((await jobs()).length, 2);
+  assert.equal(await fixture.command('GET', `geek:testnet-auto:day:${new Date().toISOString().slice(0, 10)}`), '1');
+  await releaseClaim(claimed);
+  const next = (await worker({ action: 'claim' })).body; assert.equal(next.job.id, claimed.job.id);
+});
+
+test('fresh-test authorization rejects different recipients, reveals, expired consent, amounts and chained retries', async () => {
+  for (const patch of [{ recipient: wallet(4) }, { originalRevealHash: 'f'.repeat(64) }, { riskAccepted: false }, { approvedAt: Date.now() - 2 * 86400000 }]) {
+    await fixture.command('FLUSHDB'); const old = await freshFixture();
+    process.env.TESTNET_AUTO_FRESH_TEST_APPROVAL = JSON.stringify({ ...old.consent, ...patch });
+    assert.equal((await worker({ action: 'claim' })).statusCode, 503);
+    assert.equal((await jobs()).length, 1); assert.equal(await fixture.command('GET', retiredJobKey(old.job.id)), null);
+  }
+  for (const patch of [{ amount: '200000000' }, { freshTestOf: 'a'.repeat(64) }]) {
+    await fixture.command('FLUSHDB'); const old = await freshFixture(patch);
+    assert.equal((await worker({ action: 'claim' })).statusCode, 503); assert.equal((await jobs()).length, 1);
+    assert.equal(await fixture.command('GET', autoJobKey(old.job.id)), old.raw);
+  }
+});
+
+test('fresh-test budget and recipient-day limits preserve the original attempt without partial retirement', async () => {
+  for (const cap of ['daily', 'recipient']) {
+    await fixture.command('FLUSHDB'); const old = await freshFixture(), date = new Date().toISOString().slice(0, 10);
+    if (cap === 'daily') await fixture.command('SET', `geek:testnet-auto:day:${date}`, '2');
+    else await fixture.command('SET', `geek:testnet-auto:recipient-day:${digest([date, recipient])}`, 'another-job');
+    assert.equal((await worker({ action: 'claim' })).statusCode, 503);
+    assert.equal(await fixture.command('GET', retiredJobKey(old.job.id)), null); assert.equal((await jobs()).length, 1);
+    assert.equal(await fixture.command('GET', autoJobKey(old.job.id)), old.raw);
+  }
+});
+
+test('fresh approval compares the live lease and original snapshot before any retirement or creation', async () => {
+  for (const race of ['lease', 'job']) {
+    await fixture.command('FLUSHDB'); const old = await freshFixture();
+    beforeFreshCommit = async () => {
+      if (race === 'lease') await fixture.command('SET', leaseKeyForTest, 'b'.repeat(24));
+      else await fixture.command('SET', autoJobKey(old.job.id), JSON.stringify({ ...old.job, version: 'a'.repeat(24) }));
+    };
+    assert.equal((await worker({ action: 'claim' })).statusCode, 409);
+    assert.equal(await fixture.command('GET', retiredJobKey(old.job.id)), null); assert.equal((await jobs()).length, 1);
+  }
+});
+
+test('an already-confirmed original never creates a fresh test or retirement', async () => {
+  const old = await freshFixture({ state: 'indexed-confirmed', observation: { accepted: true } });
+  const response = await worker({ action: 'claim' }); assert.equal(response.statusCode, 200); assert.equal(response.body.job, null);
+  assert.equal((await jobs()).length, 1); assert.equal(await fixture.command('GET', retiredJobKey(old.job.id)), null);
+});
+
+test('fresh-test confirmation preserves both distinct receipts and does not reactivate the original', async () => {
+  const old = await freshFixture(), claim = (await worker({ action: 'claim' })).body;
+  const freshJournal = { commit: { id: 'd'.repeat(64), transaction: 'fresh-commit'.repeat(10) }, reveal: { id: 'e'.repeat(64), transaction: 'fresh-reveal'.repeat(10) } };
+  let child = (await step('prepare', claim, claim.job, { journal: freshJournal })).body.job;
+  child = (await step('submitted', claim, child)).body.job;
+  observed = { p: 'KRC-20', op: 'transfer', tick: 'GEEKT', hashRev: freshJournal.reveal.id, from: sender, to: recipient,
+    amt: '100000000', txAccept: '1', opAccept: '1', opError: '', mtsAdd: String(child.createdAt + 1), opScore: '100', checkpoint: 'd'.repeat(64) };
+  child = (await step('check', claim, child)).body.job; assert.equal(child.state, 'indexed-confirmed');
+  await releaseClaim(claim); delete process.env.TESTNET_AUTO_FRESH_TEST_APPROVAL;
+  assert.equal((await worker({ action: 'claim' })).body.job, null);
+  assert.equal(await fixture.command('GET', autoJobKey(old.job.id)), old.raw);
+  const view = (await call(rewards, 'GET', {}, old.cookie, { service: 'testnet' })).body;
+  assert.equal(view.records.length, 2); assert.equal(view.records[0].state, 'indexed-confirmed'); assert.equal(view.records[0].freshTest, true);
+  assert.equal(view.records[1].serviceRetriesStopped, true); assert.equal(view.records[1].transactionHash, journal.reveal.id);
+});
+
+test('queue capacity and corrupt retirement lineage fail closed without dropping a saved receipt', async () => {
+  const old = await freshFixture();
+  for (let n = 0; n < 99; n++) {
+    const id = n.toString(16).padStart(64, '0'), revealId = (n + 1000).toString(16).padStart(64, '0');
+    const job = { ...old.job, id, recipient: wallet(4), journal: { ...journal, reveal: { ...journal.reveal, id: revealId } }, transactionHash: revealId };
+    await fixture.command('SET', autoJobKey(id), JSON.stringify(job)); await fixture.command('ZADD', autoIndex, old.job.createdAt + n + 1, id);
+  }
+  assert.equal((await worker({ action: 'claim' })).statusCode, 503);
+  assert.equal(await fixture.command('GET', retiredJobKey(old.job.id)), null); assert.equal((await jobs()).length, 100);
+  await fixture.command('FLUSHDB'); const second = await freshFixture(), claim = (await worker({ action: 'claim' })).body;
+  await releaseClaim(claim); delete process.env.TESTNET_AUTO_FRESH_TEST_APPROVAL;
+  const child = { ...claim.job, recipient: wallet(4) }; await fixture.command('SET', autoJobKey(child.id), JSON.stringify(child));
+  assert.equal((await worker({ action: 'claim' })).statusCode, 503);
+  assert.equal(await fixture.command('GET', autoJobKey(second.job.id)), second.raw);
 });

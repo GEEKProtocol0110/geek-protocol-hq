@@ -23,7 +23,8 @@ const renderDetails = latest => {
     const fraction = decimals ? raw.slice(-decimals).replace(/0+$/, '') : '';
     add('Amount', `${decimals ? raw.slice(0, -decimals) : raw}${fraction ? `.${fraction}` : ''} ${latest.ticker} · Testnet-10`);
   }
-  add('Payment stage', paymentLabel(latest.state));
+  add('Payment stage', latest.serviceRetriesStopped ? 'Service retries stopped · receipt retained' : paymentLabel(latest.state));
+  if (latest.freshTest) add('Attempt', 'Fresh test · original receipt retained');
   if (Number.isSafeInteger(latest.createdAt) && latest.createdAt > 0) add('Saved', new Date(latest.createdAt).toLocaleString());
   if (latest.recipient) add('Original receiving address', latest.recipient);
   if (latest.transactionHash) add('Reveal transaction', latest.transactionHash);
@@ -52,7 +53,8 @@ async function refresh() {
     if (!payload.enrollment && !latest && !dashboard) { retry = false; clearPanel(); return; }
     panel.hidden = false;
     panel.textContent = latest
-      ? latest.state === 'indexed-confirmed' ? 'GEEKT test reward confirmed by the indexer. View its details in Rewards.'
+      ? latest.serviceRetriesStopped ? 'The earlier test receipt is retained. Our service has stopped retrying that attempt.'
+        : latest.state === 'indexed-confirmed' ? 'GEEKT test reward confirmed by the indexer. View its details in Rewards.'
         : !payload.enabled ? 'Your test reward is saved. Automatic rewards are paused; no wallet action is needed.'
           : latest.state === 'queued' ? 'Your test reward is queued for the automatic reward service. No wallet action is needed.'
           : latest.state === 'prepared' ? 'Your test reward is prepared. Our service will handle submission and confirmation. No wallet action is needed.'
@@ -62,7 +64,7 @@ async function refresh() {
           : 'No test reward is queued for this account. Saving an address does not enroll you in the approved test pilot.';
     if (dashboard) {
       renderDetails(latest); dashboard.hidden = false;
-      badge.textContent = latest ? latest.state !== 'indexed-confirmed' && !payload.enabled ? 'Saved · service paused' : paymentLabel(latest.state) : 'No test reward yet';
+      badge.textContent = latest ? latest.serviceRetriesStopped ? 'Retries stopped' : latest.state !== 'indexed-confirmed' && !payload.enabled ? 'Saved · service paused' : paymentLabel(latest.state) : 'No test reward yet';
       checked.textContent = `Status checked at ${new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}.`;
       dashboard.dataset.testnetState = latest?.state || 'empty';
     }

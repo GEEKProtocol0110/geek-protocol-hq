@@ -66,7 +66,7 @@ test('isolated native Redis restore retains durable state and expiry while rotat
 test('restore cleanup defaults read-only, deletes only bearer sessions and one-time proofs, and preserves durable data', async () => {
   const fixture=await redisFixture();
   const ephemeral=['geek:session:old-player','geek:ops:session:old-owner','geek:production:identity:challenge:old-proof','geek:preview:identity:authorization:old-proof','geek:reward-address-proof:v1:old-proof'];
-  const durable=['geek:profile:player','geek:production:identity:player:player','geek:production:identity:wallet:wallet','geek:player-name:player','geek:ops:totp:replay','geek:study-progress:player','geek:reward-addresses:v1:player'];
+  const durable=['geek:profile:player','geek:production:identity:player:player','geek:production:identity:wallet:wallet','geek:player-name:player','geek:ops:totp:replay','geek:study-progress:player','geek:reward-addresses:v1:player','geek:testnet-auto:retired:v1:old-payment'];
   try {
     for(const key of [...ephemeral,...durable])await fixture.command('SET',key,'synthetic');
     assert.deepEqual(await resetRestoredSessions({command:fixture.command}),{mode:'dry-run',matched:ephemeral.length,removed:0});

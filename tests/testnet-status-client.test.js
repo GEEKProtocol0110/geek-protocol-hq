@@ -204,3 +204,14 @@ test('accounts without pilot enrollment see an honest empty dashboard and contin
   assert.match(ui.panel.textContent, /Saving an address does not enroll/);
   await ui.fire(); assert.equal(ui.requests.length, 2);
 });
+
+test('retained original attempts say retries stopped and a fresh attempt remains distinct from confirmation', async () => {
+  let latest = payment({ state: 'awaiting-indexer', serviceRetriesStopped: true });
+  const ui = await setup(() => json(status({ records: [latest] })), true);
+  assert.equal(ui.node('[data-testnet-badge]').textContent, 'Retries stopped');
+  assert.match(ui.panel.textContent, /receipt is retained.*stopped retrying/);
+  assert.doesNotMatch(ui.panel.textContent, /received|canceled|confirmed/);
+  latest = payment({ freshTest: true }); await ui.fire();
+  assert.equal(ui.node('[data-testnet-badge]').textContent, 'Queued');
+  assert.ok(descriptions(ui).includes('Fresh test · original receipt retained'));
+});

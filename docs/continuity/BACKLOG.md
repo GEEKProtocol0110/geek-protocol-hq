@@ -51,7 +51,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-007 | P1 | needs-evidence | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
 | GAME-001 | P1 | needs-evidence | Build a deep career challenge and mastery ladder | Maintainer; founder confirms phone/game usability |
 | LAUNCH-001 | P0 | needs-evidence | Prove the core loop and close the first release scope | Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned |
-| CHAIN-004 | P0 | blocked | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
+| CHAIN-004 | P0 | needs-evidence | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
 | CHAIN-005 | P1 | needs-evidence | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
 | AUTH-004 | P0 | needs-evidence | Secure Geek account access and wallet-neutral receiving addresses | Maintainer; founder controls bounded pilot approval and actual-device acceptance |
 
@@ -713,11 +713,11 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 ## CHAIN-004: Automate eligible Daily GEEKT test rewards
 
-**P0 / blocked.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
+**P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Obtain explicit authorization for sending the supplied sender/recipient identifiers to the fixed Kasplex history API and privately retaining its response. Then perform the bounded read-only reconciliation; no new transaction, journal replacement or lock change is implied.
+Next action: Release the verified DR-027 exception and activate only the exact approved unresolved reveal/recipient. Observe the old receipt retained with service retries stopped and one fresh 1-GEEKT job; confirm the actual scheduled result. Separate history disclosures remain unapproved.
 
-Blocker: Original payment still lacks confirmed acceptance and its saved outpoints were absent in the observed synced-node snapshot. The chain-history API returns a verification challenge. Automatic approval review rejected the proposed Kasplex sender-operation/recipient-holding lookups because disclosure of prior/private wallet identifiers was not clearly authorized. No bypass or alternative execution of the rejected queries is permitted without resolving that authorization.
+Blocker: Original funding-history evidence remains incomplete. Founder explicitly accepts possible arrival of both payments for one bounded fresh TN10 test. Implementation, deployment, exact private activation and actual fresh-transfer acceptance remain separate.
 
 Acceptance:
 
@@ -727,8 +727,9 @@ Acceptance:
 - Separate scheduled signer deployed, funded and one actual automatic transfer accepted; implementation/offline checks alone are insufficient.
 - Mainnet settlement, CCE and collectible ownership remain disabled.
 - Exact Kasplex 403/404 op-not-found transfer lookups remain pending and permit immutable-journal recovery; other failures and pinned asset/deployment checks still stop work.
+- The single DR-027 exception retains original job/journal/earning locks, permanently stops service retries with a durable marker, consumes the normal daily/recipient/capacity budget and creates only one same-recipient 1-GEEKT child despite restarts, lost replies and stale workers.
 
-Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md), [server/testnet-automatic.js](../../server/testnet-automatic.js), [workers/testnet/process.mjs](../../workers/testnet/process.mjs), [workers/testnet/signer.mjs](../../workers/testnet/signer.mjs), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [tests/testnet-worker.test.js](../../tests/testnet-worker.test.js), [tests/testnet-indexer.test.js](../../tests/testnet-indexer.test.js), [docs/TESTNET-RECOVERY-2026-10-23.md](../../docs/TESTNET-RECOVERY-2026-10-23.md), [workers/testnet/diagnostics.mjs](../../workers/testnet/diagnostics.mjs), [tests/testnet-diagnostics.test.js](../../tests/testnet-diagnostics.test.js), [workers/testnet/rpc-health.mjs](../../workers/testnet/rpc-health.mjs), [tests/testnet-rpc-health.test.js](../../tests/testnet-rpc-health.test.js).
+Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md), [server/testnet-automatic.js](../../server/testnet-automatic.js), [workers/testnet/process.mjs](../../workers/testnet/process.mjs), [workers/testnet/signer.mjs](../../workers/testnet/signer.mjs), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [tests/testnet-worker.test.js](../../tests/testnet-worker.test.js), [tests/testnet-indexer.test.js](../../tests/testnet-indexer.test.js), [docs/TESTNET-RECOVERY-2026-10-23.md](../../docs/TESTNET-RECOVERY-2026-10-23.md), [workers/testnet/diagnostics.mjs](../../workers/testnet/diagnostics.mjs), [tests/testnet-diagnostics.test.js](../../tests/testnet-diagnostics.test.js), [workers/testnet/rpc-health.mjs](../../workers/testnet/rpc-health.mjs), [tests/testnet-rpc-health.test.js](../../tests/testnet-rpc-health.test.js), [docs/ONE-FRESH-GEEKT-TEST.md](../../docs/ONE-FRESH-GEEKT-TEST.md), [server/testnet-fresh-test.js](../../server/testnet-fresh-test.js).
 
 ## CHAIN-005: Recover player reward status after interruptions
 

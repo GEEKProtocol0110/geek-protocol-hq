@@ -8,6 +8,7 @@ import { decodeIdentityRecord } from './identity-records.js';
 import { identityPlayerKey } from './identity-keys.js';
 import { testnetAddressForPublicKey } from './identity-wallet.js';
 import { decodeRewardAddresses, rewardAddressKey } from './reward-addresses.js';
+import { approvedFreshTest, readRetirements, retiredJobKey, validateRetirements } from './testnet-fresh-test.js';
 
 const hash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const hex = (s, n) => typeof s === 'string' && new RegExp(`^[a-f0-9]{${n}}$`).test(s);
@@ -72,6 +73,7 @@ export function decodeJob(raw, id) {
       (j.state !== 'queued' && !validJournal(j.journal)) ||
       (j.state !== 'queued' && j.transactionHash !== j.journal.reveal.id) ||
       (j.state === 'indexed-confirmed' && j.observation?.accepted !== true)) throw new Error('TESTNET_AUTO_RECORD_INVALID');
+  if (j.freshTestOf !== undefined && (!hex(j.freshTestOf, 64) || j.freshTestOf === id)) throw new Error('TESTNET_AUTO_RECORD_INVALID');
   return j;
 }
 export const validJournal = journal => Boolean(journal && Object.keys(journal).sort().join(',') === 'commit,reveal' &&
@@ -123,8 +125,9 @@ if ARGV[13] ~= '' and redis.call('GET', KEYS[8]) == ARGV[13]
   redis.call('SET', KEYS[13], ARGV[14])
 end`;
 
-const publicJob = j => ({ id: j.id, state: j.state, network: j.network, ticker: j.ticker, amount: j.amount, decimals: j.decimals,
-  recipient: j.recipient, createdAt: j.createdAt, ...(j.transactionHash ? { transactionHash: j.transactionHash } : {}) });
+const publicJob = (j, retired) => ({ id: j.id, state: j.state, network: j.network, ticker: j.ticker, amount: j.amount, decimals: j.decimals,
+  recipient: j.recipient, createdAt: j.createdAt, ...(j.transactionHash ? { transactionHash: j.transactionHash } : {}),
+  ...(retired ? { serviceRetriesStopped: true } : {}), ...(j.freshTestOf ? { freshTest: true } : {}) });
 export async function automaticPlayerView(session) {
   const playerId = playerIdFor(session), config = automaticConfig();
   const { enrollment } = await rewardEnrollment(playerId, config);
@@ -132,7 +135,9 @@ export async function automaticPlayerView(session) {
   if (!Array.isArray(ids) || ids.some(id => !hex(id, 64))) throw new Error('TESTNET_AUTO_RECORD_INVALID');
   const rows = ids.length ? await redis('MGET', ...ids.map(autoJobKey)) : [];
   if (!Array.isArray(rows) || rows.length !== ids.length) throw new Error('TESTNET_AUTO_RECORD_INVALID');
-  return { enabled: Boolean(config), enrollment, records: rows.map((raw, i) => decodeJob(raw, ids[i])).filter(j => j.playerId === playerId).map(publicJob), mainnetSettlementEnabled: false };
+  const owned = rows.map((raw, i) => decodeJob(raw, ids[i])).filter(j => j.playerId === playerId);
+  const retired = await readRetirements(owned.map(job => job.id));
+  return { enabled: Boolean(config), enrollment, records: owned.map(job => publicJob(job, retired.get(job.id))), mainnetSettlementEnabled: false };
 }
 export async function automaticPlayerHandler(req, res) {
   setApiHeaders(res, 'GET'); res.setHeader('Cache-Control', 'private, no-store, max-age=0');
@@ -156,7 +161,7 @@ redis.call('SET', KEYS[1], ARGV[2]); return 1`, 1, key, raw || '', JSON.stringif
   return record;
 }
 const UPDATE = `-- geek-testnet-auto-update-v1
-if redis.call('GET', KEYS[1]) ~= ARGV[1] or redis.call('GET', KEYS[2]) ~= ARGV[3] then return 0 end
+if redis.call('GET', KEYS[1]) ~= ARGV[1] or redis.call('GET', KEYS[2]) ~= ARGV[3] or redis.call('EXISTS', KEYS[3]) ~= 0 then return 0 end
 redis.call('SET', KEYS[1], ARGV[2]); return 1`;
 const validToken = req => {
   const expected = process.env.TESTNET_AUTO_WORKER_TOKEN || '', given = String(req.headers?.authorization || '');
@@ -179,10 +184,15 @@ export async function automaticWorkerHandler(req, res) {
       const ids = await redis('ZRANGE', autoIndex, 0, 99);
       if (!Array.isArray(ids) || ids.some(id => !hex(id, 64))) throw new Error('TESTNET_AUTO_RECORD_INVALID');
       let job = null;
+      const jobs = [];
+      for (const id of ids) jobs.push(decodeJob(await redis('GET', autoJobKey(id)), id));
+      const retirements = await readRetirements(ids);
+      validateRetirements(jobs, retirements);
+      job = await approvedFreshTest({ jobs, retirements, config, lease, leaseKey, jobKey: autoJobKey, index: autoIndex });
       // One unresolved payment at a time protects the sender UTXOs and token balance.
-      for (const id of ids) {
-        const candidate = decodeJob(await redis('GET', autoJobKey(id)), id);
-        if (candidate.state !== 'indexed-confirmed') { job = candidate; break; }
+      for (const candidate of jobs) {
+        if (job) break;
+        if (candidate.state !== 'indexed-confirmed' && !retirements.get(candidate.id)) { job = candidate; break; }
       }
       if (job && job.configFingerprint !== config.fingerprint) throw new Error('TESTNET_AUTO_CONFIG_CHANGED');
       return sendJson(res, 200, { ok: true, lease, job, config });
@@ -196,7 +206,8 @@ export async function automaticWorkerHandler(req, res) {
     if (!['prepare', 'submitted', 'check'].includes(body.action) || !hex(body.id, 64) || !hex(body.version, 24) ||
         Object.keys(body).some(k => !['action', 'lease', 'id', 'version', ...(body.action === 'prepare' ? ['journal'] : [])].includes(k))) throw new Error('INVALID_REQUEST');
     const key = autoJobKey(body.id), raw = await redis('GET', key), job = decodeJob(raw, body.id);
-    if (job.version !== body.version || job.configFingerprint !== config.fingerprint || await redis('GET', leaseKey) !== body.lease) throw new Error('TESTNET_AUTO_STATE_CHANGED');
+    if (job.version !== body.version || job.configFingerprint !== config.fingerprint || await redis('GET', leaseKey) !== body.lease ||
+        await redis('EXISTS', retiredJobKey(body.id))) throw new Error('TESTNET_AUTO_STATE_CHANGED');
     if (body.action === 'prepare') {
       if (job.state !== 'queued' || !validJournal(body.journal)) throw new Error('TESTNET_AUTO_STATE_CHANGED');
       await checkAsset(config);
@@ -212,7 +223,7 @@ export async function automaticWorkerHandler(req, res) {
       job.lastCheckedAt = Date.now();
     }
     job.version = nonce();
-    if (await redis('EVAL', UPDATE, 2, key, leaseKey, raw, JSON.stringify(job), body.lease) !== 1) throw new Error('TESTNET_AUTO_STATE_CHANGED');
+    if (await redis('EVAL', UPDATE, 3, key, leaseKey, retiredJobKey(body.id), raw, JSON.stringify(job), body.lease) !== 1) throw new Error('TESTNET_AUTO_STATE_CHANGED');
     return sendJson(res, 200, { ok: true, job });
   } catch (error) { return automaticError(res, error); }
 }
