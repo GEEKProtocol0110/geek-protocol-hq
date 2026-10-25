@@ -715,9 +715,9 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Release the verified bounded fee/mass-growth correction, then observe scheduled acknowledgement and exact corrected-hash indexer acceptance. Preserve both prior journals, sole funding outpoint and retirement/earning/budget records; no independent fresh retry or separate blocked history query.
+Next action: Automatic corrected-test indexed acceptance is established. Confirm the saved account’s Rewards receipt and one-GEEKT balance on the actual recipient wallet/phone, then complete the remaining first-proof account/status and provider-recovery acceptance. Preserve retained journals/lineage/locks; do not create another independent fresh test or resume separately blocked address-history queries.
 
-Blocker: The live fee-recovery pre-journal guard stops the SDK fee/mass shortfall on smaller inputs. A bounded same-input rebuild is verified offline; scheduled corrected-journal creation and indexer acceptance remain unproved.
+Blocker: Actual corrected automatic test now passes exact indexer acceptance. Recipient-wallet balance/display, physical-phone account/status and provider restore remain unverified; no independent finality claim is made.
 
 Acceptance:
 

@@ -27,3 +27,7 @@ HQ validates the same-input/output lineage, exact asset, higher fee and combined
 Primary protocol evidence: kaspanet/rusty-kaspa tn10-toc3 mining/src/mempool/config.rs specifies the 100-sompi/gram floor; consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs compares the committed field with calculated storage mass. Local offline and real-Redis checks are separate from actual scheduled acceptance.
 
 The SDK can under-estimate contextual mass when paying fees reduces the change output. Before returning any journal, commit construction checks the exact signed shape and may rebuild locally at most twice using the same input, adding the measured fee shortfall plus a bounded reserve. The combined fee cap still applies. Small-input regressions cover this feedback; a cap failure cannot select another coin or persist/broadcast a candidate.
+
+## Observed automatic acceptance
+
+October 25, 2026, 08:13:49 Detroit: the scheduled service acknowledges one same-input fee correction and submits its exact corrected pair. The 08:14:47 scheduled run reports indexed-confirmed through the existing exact asset, recipient, amount, timing, score and checkpoint checks. #167 supplies specific rejection diagnostics, #168 the bounded correction, and #169 the smaller-input fee/mass calculation fix. Full release evidence is in the maintained worklog. Recipient-wallet display, actual-phone rendering, provider restore and independent chain finality remain separate; no private identifiers are published here.
