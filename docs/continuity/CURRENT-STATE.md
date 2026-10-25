@@ -25,9 +25,9 @@ Record date: 2026-10-25. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**OPS-001: needs-evidence.** Forty focused local recovery/restore-safety/passkey checks pass with native Redis. Vercel Storage identifies HQ’s connected Upstash resource, but the provider console requires separate authentication before production backup and isolated-restore evidence can be collected.
+**OPS-001: needs-evidence.** Founder downloaded a manual provider export and chose to retain the free plan with daily backups off. The supplied snapshot passed native format parsing, isolated local restore, profile validation, restored-session cleanup and a second save/restore with preserved remaining values and expirations. Managed-provider restore and protected application recovery remain unverified.
 
-Next task: **OPS-001**. Complete secure Upstash sign-in for the existing HQ database, inspect completed backups and retention, then use a separate isolated database for the managed-provider restore drill in docs/BACKUP-RECOVERY.md. Do not restore into the live HQ resource or connect the restored copy to live workers; no backup or provider-restore acceptance is established yet.
+Next task: **OPS-001**. Retain the founder-downloaded manual export and make fresh exports before major updates and after important payout tests; automatic daily backups remain disabled to retain the free plan. When a separately isolated provider target is available, complete the managed restore and protected application recovery drill in docs/BACKUP-RECOVERY.md, including live-baseline comparison, audit integrity, post-backup credential changes and pending payout reconciliation. Keep the restored application disconnected from workers with payouts disabled; provider restore and production cutover are not accepted by this local result.
 
 ## Holds
 
@@ -39,7 +39,7 @@ CCE: **bank-and-economy-hold**. Contributor rate: unselected; 1 or 5 GEEK are pr
 - Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.
 - No successor or second trusted account administrator is appointed in this record.
 - No institutional contract, school partnership, legal-entity registration or accreditation is verified.
-- An independent off-provider repository copy and production-provider restore have not been demonstrated.
+- An independent off-provider repository copy and production-provider restore have not been demonstrated. A real manually exported database snapshot passed isolated local recovery October 25; this does not close managed-provider/application recovery acceptance.
 - KCC20 integration/migration is unapproved: eight-decimal supply representation, exact artifact/wallet compatibility and existing-holder accounting require a concrete design.
 - Founder paused further artwork uploads/generation October 15; four supplied sets/twenty original PNGs and the 2,500-image tracker remain preserved in paused PR #120. DR-012 recovers the 500-concept/five-artworks direction; runtime migration and supply remain separate.
 - Additional GIGA/A.C.E. artwork awaits founder supply. UX-003 removes repeated character panels and the large home portrait; do not restart a broad character rollout from the older UX-002 direction.

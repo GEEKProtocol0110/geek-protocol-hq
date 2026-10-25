@@ -1,6 +1,6 @@
 # Backup and recovery
 
-**Current evidence:** the repository has an isolated native Redis snapshot/restore drill and safe restored-session cleanup. Production backup scheduling, retention, successful provider restore and recovery time have not been verified. Operations reports **Verification required**; database PING does not certify backup coverage.
+**Current evidence:** the repository has an isolated native Redis snapshot/restore drill and safe restored-session cleanup. On October 25, a founder-downloaded manual provider export also passed isolated local restore, profile parsing, temporary-authentication cleanup and a second save/restore preserving the remaining typed values and absolute key expirations. The exporter disabled its embedded RDB checksum; format/load success is not embedded-checksum verification. The original upload was unchanged, fixtures were removed, and no live application or payout worker was connected. The founder retains the free plan with daily backups off and manual exports for now (DR-028). Managed-provider restore, independent live-source completeness, audit-HMAC verification, full application/device recovery and end-to-end recovery time remain unverified. Operations reports **Verification required**; database PING does not certify backup coverage.
 
 ## Production backup setup
 

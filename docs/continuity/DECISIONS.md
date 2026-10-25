@@ -273,3 +273,13 @@ For the specifically approved unresolved one-GEEKT test only, retain the origina
 Basis: Founder October 25 asks to skip and try again, then answers Yeah after the exact one-GEEKT same-recipient fresh test and the possibility that both payments could arrive are explained. This authorizes this bounded exception; it does not authorize unrelated address-history disclosure, journal deletion or general duplicate payments.
 
 Evidence: [docs/ONE-FRESH-GEEKT-TEST.md](../../docs/ONE-FRESH-GEEKT-TEST.md), [server/testnet-fresh-test.js](../../server/testnet-fresh-test.js), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js).
+
+## DR-028: Retain the free database plan with manual exports for now
+
+**founder-direction** · 2026-10-25.
+
+Keep automatic daily database backups disabled and retain the free plan for now. Preserve the downloaded manual export and create fresh exports before major updates and after important payout tests. Local recovery verification is separate from managed-provider restore and complete application recovery; this choice does not establish automated retention or a recovery-time guarantee.
+
+Basis: Founder October 25 reports that daily backups require pay-as-you-go or a monthly plan, accepts staying on the free plan, and supplies the downloaded manual RDB export for isolated verification.
+
+Evidence: [docs/BACKUP-RECOVERY.md](../../docs/BACKUP-RECOVERY.md), [docs/continuity/WORKLOG.md](../../docs/continuity/WORKLOG.md).

@@ -229,9 +229,9 @@ Evidence/specification: [docs/FREE-BETA-READINESS.md](../../docs/FREE-BETA-READI
 
 **P0 / needs-evidence.** Owner: Founder; private account custodian unassigned. Dependencies: none.
 
-Next action: Complete secure Upstash sign-in for the existing HQ database, inspect completed backups and retention, then use a separate isolated database for the managed-provider restore drill in docs/BACKUP-RECOVERY.md. Do not restore into the live HQ resource or connect the restored copy to live workers; no backup or provider-restore acceptance is established yet.
+Next action: Retain the founder-downloaded manual export and make fresh exports before major updates and after important payout tests; automatic daily backups remain disabled to retain the free plan. When a separately isolated provider target is available, complete the managed restore and protected application recovery drill in docs/BACKUP-RECOVERY.md, including live-baseline comparison, audit integrity, post-backup credential changes and pending payout reconciliation. Keep the restored application disconnected from workers with payouts disabled; provider restore and production cutover are not accepted by this local result.
 
-Blocker: The Upstash console requires separate sign-in. Vercel Storage identifies the connected resource but does not establish backup completion/retention or managed-provider restore; local passing tests cannot close those acceptance boundaries.
+Blocker: Manual export and local snapshot recoverability are verified. The founder retains the free plan with automatic daily backups off. Managed-provider restore, independent live-source comparison, protected audit verification and full application/device recovery remain open; no paid upgrade or production restore is authorized by this checkpoint.
 
 Acceptance:
 
