@@ -715,9 +715,9 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Automatic corrected-test indexed acceptance is established. Confirm the saved account’s Rewards receipt and one-GEEKT balance on the actual recipient wallet/phone, then complete the remaining first-proof account/status and provider-recovery acceptance. Preserve retained journals/lineage/locks; do not create another independent fresh test or resume separately blocked address-history queries.
+Next action: Automatic corrected-test indexer acceptance and founder-phone wallet receipt are established. Verify the saved account’s Rewards view and remaining account/status recovery on the actual phone, then complete provider-recovery acceptance. Preserve retained journals/lineage/locks; no independent fresh test or separately blocked address-history query is needed.
 
-Blocker: Actual corrected automatic test now passes exact indexer acceptance. Recipient-wallet balance/display, physical-phone account/status and provider restore remain unverified; no independent finality claim is made.
+Blocker: Automatic indexed acceptance and actual-phone wallet receipt/display are established. HQ saved-account Rewards rendering/account recovery and provider restore remain unverified; no independent finality claim is made.
 
 Acceptance:
 

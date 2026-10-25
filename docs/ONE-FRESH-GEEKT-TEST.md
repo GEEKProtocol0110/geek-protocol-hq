@@ -31,3 +31,5 @@ The SDK can under-estimate contextual mass when paying fees reduces the change o
 ## Observed automatic acceptance
 
 October 25, 2026, 08:13:49 Detroit: the scheduled service acknowledges one same-input fee correction and submits its exact corrected pair. The 08:14:47 scheduled run reports indexed-confirmed through the existing exact asset, recipient, amount, timing, score and checkpoint checks. #167 supplies specific rejection diagnostics, #168 the bounded correction, and #169 the smaller-input fee/mass calculation fix. Full release evidence is in the maintained worklog. Recipient-wallet display, actual-phone rendering, provider restore and independent chain finality remain separate; no private identifiers are published here.
+
+The founder subsequently supplies an actual-phone TN10 wallet screenshot showing the incoming +1 GEEKT transfer marked Success. This confirms wallet receipt/display in addition to the earlier exact-indexer acceptance. The image, unrelated history, balance and identifiers remain private. HQ account rendering/recovery, provider restore and independent finality remain separate.

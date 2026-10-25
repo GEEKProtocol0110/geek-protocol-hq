@@ -25,9 +25,9 @@ Record date: 2026-10-25. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: needs-evidence.** The retained approved fresh test is recovered: fixed TN10 fees/storage-mass handling and one acknowledged same-input correction are live. The natural October 25 08:14:47 Detroit worker reports indexed-confirmed. Physical-phone, recipient-wallet display and provider-recovery evidence remain separate.
+**CHAIN-004: needs-evidence.** The approved automatic test is recovered and indexed-confirmed. Founder-supplied TN10 phone wallet evidence now shows +1 GEEKT marked Success. The saved-account Rewards view and provider-recovery evidence remain separate.
 
-Next task: **CHAIN-004**. Automatic corrected-test indexed acceptance is established. Confirm the saved account’s Rewards receipt and one-GEEKT balance on the actual recipient wallet/phone, then complete the remaining first-proof account/status and provider-recovery acceptance. Preserve retained journals/lineage/locks; do not create another independent fresh test or resume separately blocked address-history queries.
+Next task: **CHAIN-004**. Automatic corrected-test indexer acceptance and founder-phone wallet receipt are established. Verify the saved account’s Rewards view and remaining account/status recovery on the actual phone, then complete provider-recovery acceptance. Preserve retained journals/lineage/locks; no independent fresh test or separately blocked address-history query is needed.
 
 ## Holds
 

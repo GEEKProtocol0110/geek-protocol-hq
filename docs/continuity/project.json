@@ -37,10 +37,10 @@
   "currentWork": {
     "id": "CHAIN-004",
     "status": "needs-evidence",
-    "description": "The retained approved fresh test is recovered: fixed TN10 fees/storage-mass handling and one acknowledged same-input correction are live. The natural October 25 08:14:47 Detroit worker reports indexed-confirmed. Physical-phone, recipient-wallet display and provider-recovery evidence remain separate."
+    "description": "The approved automatic test is recovered and indexed-confirmed. Founder-supplied TN10 phone wallet evidence now shows +1 GEEKT marked Success. The saved-account Rewards view and provider-recovery evidence remain separate."
   },
   "nextTask": "CHAIN-004",
-  "nextAction": "Automatic corrected-test indexed acceptance is established. Confirm the saved account\u2019s Rewards receipt and one-GEEKT balance on the actual recipient wallet/phone, then complete the remaining first-proof account/status and provider-recovery acceptance. Preserve retained journals/lineage/locks; do not create another independent fresh test or resume separately blocked address-history queries.",
+  "nextAction": "Automatic corrected-test indexer acceptance and founder-phone wallet receipt are established. Verify the saved account\u2019s Rewards view and remaining account/status recovery on the actual phone, then complete provider-recovery acceptance. Preserve retained journals/lineage/locks; no independent fresh test or separately blocked address-history query is needed.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
