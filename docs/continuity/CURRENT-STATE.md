@@ -25,9 +25,9 @@ Record date: 2026-10-25. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: needs-evidence.** The first automatic reward is phone-wallet received. After the founder reports the second-wallet account save and new Daily finish, the normal worker submits a new job at 08:47 and reports indexed-confirmed at 08:49 Detroit. Second-wallet receipt/display and the authenticated HQ Rewards view remain separate.
+**CHAIN-004: needs-evidence.** Both automatic test wallets now have founder-confirmed receipts. The second normal Kaspa Daily job was submitted automatically and indexed-confirmed without a recovery exception. The remaining first-proof checks are HQ account/Rewards rendering, sign-out/return and managed-provider recovery.
 
-Next task: **CHAIN-004**. The reported second-wallet Daily now correlates with normal automatic submission and indexed confirmation. Confirm +1 GEEKT in that TN10 wallet and the saved account’s Rewards view, then complete remaining account/status and provider-recovery acceptance. Preserve both established payments and all earning/recipient/budget/journal lineage; no new test or replay is needed for this verification.
+Next task: **CHAIN-004**. Both wallet test receipts are founder-confirmed and normal Daily automatic payout has passed its live pilot. Verify the authenticated HQ Rewards view and saved address/progress/receipt after sign-out and return under CHAIN-005/AUTH-004; complete managed-provider recovery under OPS-001. Preserve all payment journals, locks and lineage; another payout is not needed for these checks.
 
 ## Holds
 

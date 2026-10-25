@@ -715,9 +715,9 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: The reported second-wallet Daily now correlates with normal automatic submission and indexed confirmation. Confirm +1 GEEKT in that TN10 wallet and the saved account’s Rewards view, then complete remaining account/status and provider-recovery acceptance. Preserve both established payments and all earning/recipient/budget/journal lineage; no new test or replay is needed for this verification.
+Next action: Both wallet test receipts are founder-confirmed and normal Daily automatic payout has passed its live pilot. Verify the authenticated HQ Rewards view and saved address/progress/receipt after sign-out and return under CHAIN-005/AUTH-004; complete managed-provider recovery under OPS-001. Preserve all payment journals, locks and lineage; another payout is not needed for these checks.
 
-Blocker: New normal automatic submission and indexer acceptance are observed after the reported second-wallet Daily. Private-safe logs omit destination identifiers; the second wallet receipt and authenticated HQ Rewards rendering remain unverified, together with account recovery/provider restore. First-wallet phone receipt remains established.
+Blocker: Automatic indexed acceptance and recipient-wallet receipt are established for both tests, including the second normal Daily path. Authenticated HQ status/receipt presentation remains a separate acceptance boundary, with account recovery/provider restore tracked in CHAIN-005, AUTH-004 and OPS-001.
 
 Acceptance:
 
@@ -736,7 +736,7 @@ Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-G
 
 **P1 / needs-evidence.** Owner: Maintainer; founder confirms actual-phone behavior. Dependencies: none.
 
-Next action: #163 is merged and live with six exact HTTP/protection checks. Confirm the authenticated Rewards view and account-change/background recovery on a real phone; automatic delivery remains CHAIN-004.
+Next action: Both automatic test wallet receipts are now founder-confirmed. Verify the authenticated Rewards view, account switching, background return and sign-out/return on the real phone; actual automatic delivery is established under CHAIN-004.
 
 Acceptance:
 
@@ -753,7 +753,7 @@ Evidence/specification: [public/play/assets/testnet-status.js](../../public/play
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls bounded pilot approval and actual-device acceptance. Dependencies: CHAIN-004.
 
-Next action: Account/address polish #162 is live and visually checked as a desktop guest. Continue actual-phone account/setup acceptance and same-hash TN10 payment evidence; current settlement/public-reward gates remain.
+Next action: Founder reports saving the second TN10 address and confirms its normal automatic Daily reward arrived. Verify actual-phone passkey/sign-out/return recovery of the same saved address and progress; retain the existing Mainnet/public-reward gates.
 
 Acceptance:
 
