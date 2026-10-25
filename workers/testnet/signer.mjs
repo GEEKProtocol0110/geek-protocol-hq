@@ -4,7 +4,28 @@ import { readRpcHealth, rpcDeadline } from './rpc-health.mjs';
 const hashPattern = /^[a-f0-9]{64}$/;
 const BASE = 'https://tn10api.kasplex.org/v1/krc20';
 const FUNDING = 130000000n, MAX_FEE = 5000000n;
+// TN10 relay policy is 100 sompi/gram. The pinned SDK defaults to 1.
+const FEE_RATE = 100;
 const bounded = promise => rpcDeadline(() => promise);
+function finalized(pending) {
+  const tx = Wasm.Transaction.deserializeFromSafeJSON(pending.serializeToSafeJSON());
+  try {
+    const object = tx.serializeToObject();
+    const numbers = values => values.map(value => {
+      if (BigInt(value) > BigInt(Number.MAX_SAFE_INTEGER)) throw new Error('TRANSACTION_MASS_INVALID');
+      return Number(value);
+    });
+    // TN10 commits contextual STORAGE mass, not the old SDK's max mass.
+    // Fees still cover the full calculated mass and the signed P2SH script.
+    const mass = Wasm.calculateStorageMass('testnet-10', numbers(object.inputs.map(i => i.utxo.amount)), numbers(object.outputs.map(o => o.value)));
+    const fullMass = Wasm.calculateTransactionMass('testnet-10', tx);
+    const fee = object.inputs.reduce((n, i) => n + BigInt(i.utxo.amount), 0n) - object.outputs.reduce((n, o) => n + BigInt(o.value), 0n);
+    if (mass === undefined || mass > 100000n || fullMass > 100000n || fee < fullMass * BigInt(FEE_RATE) || fee > MAX_FEE) throw new Error('TRANSACTION_MASS_INVALID');
+    tx.mass = mass;
+    if (tx.id !== pending.id) throw new Error('JOURNAL_HASH_MISMATCH');
+    return { id: tx.id, transaction: tx.serializeToSafeJSON() };
+  } finally { tx.free(); }
+}
 async function indexed(path) {
   const response = await fetch(`${BASE}/${path}`, { signal: AbortSignal.timeout(10000), redirect: 'error', cache: 'no-store' });
   const text = await response.text();
@@ -31,7 +52,7 @@ export async function prepareTransactions(key, job, entries) {
     const entry = entries.find(e => BigInt(e.amount ?? e.entry?.amount ?? 0) >= FUNDING + MAX_FEE);
     if (!entry) throw new Error('FUNDED_UTXO_REQUIRED');
     const first = await Wasm.createTransactions({ entries: [entry], changeAddress: sender,
-      outputs: [{ address: address.toString(), amount: FUNDING }], priorityFee: 0n, networkId: 'testnet-10' });
+      outputs: [{ address: address.toString(), amount: FUNDING }], priorityFee: 0n, feeRate: FEE_RATE, networkId: 'testnet-10' });
     if (first.transactions.length !== 1) throw new Error('CONSOLIDATION_NOT_ALLOWED');
     commit = first.transactions[0]; commit.sign([key]);
     const commitObject = commit.serializeToObject();
@@ -39,7 +60,7 @@ export async function prepareTransactions(key, job, entries) {
     if (outputIndex < 0) throw new Error('COMMIT_OUTPUT_INVALID');
     const second = await Wasm.createTransactions({ entries: [{ address: address.toString(), amount: FUNDING,
       outpoint: { transactionId: commit.id, index: outputIndex }, scriptPublicKey: spk, blockDaaScore: 18446744073709551615n, isCoinbase: false }],
-    changeAddress: sender, outputs: [], priorityFee: 100000n, sigOpCount: 1, networkId: 'testnet-10' });
+    changeAddress: sender, outputs: [], priorityFee: 100000n, feeRate: FEE_RATE, sigOpCount: 1, networkId: 'testnet-10' });
     if (second.transactions.length !== 1) throw new Error('CONSOLIDATION_NOT_ALLOWED');
     reveal = second.transactions[0];
     for (let i = 0; i < reveal.transaction.inputs.length; i++) {
@@ -47,10 +68,34 @@ export async function prepareTransactions(key, job, entries) {
       reveal.fillInput(i, script.encodePayToScriptHashSignatureScript(signature));
     }
     if (commit.feeAmount + reveal.feeAmount > MAX_FEE) throw new Error('FEE_LIMIT_EXCEEDED');
-    const journal = { commit: { id: commit.id, transaction: commit.serializeToSafeJSON() }, reveal: { id: reveal.id, transaction: reveal.serializeToSafeJSON() } };
+    const journal = { commit: finalized(commit), reveal: finalized(reveal) };
     if (Object.values(journal).some(tx => !hashPattern.test(tx.id) || tx.transaction.length > 2800)) throw new Error('JOURNAL_LIMIT_EXCEEDED');
     return journal;
   } finally { commit?.free(); reveal?.free(); script.free(); spk.free(); address?.free(); }
+}
+
+export async function prepareFeeRepair(key, job, entries) {
+  if (!job.freshTestOf || job.feeRepair || !job.journal || job.state === 'indexed-confirmed') throw new Error('FEE_REPAIR_NOT_ALLOWED');
+  let commit, reveal;
+  try {
+    commit = Wasm.Transaction.deserializeFromSafeJSON(job.journal.commit.transaction);
+    reveal = Wasm.Transaction.deserializeFromSafeJSON(job.journal.reveal.transaction);
+    const c = commit.serializeToObject(), r = reveal.serializeToObject(), input = c.inputs[0];
+    if (commit.id !== job.journal.commit.id || reveal.id !== job.journal.reveal.id || c.inputs.length !== 1 || r.inputs.length !== 1 ||
+        r.inputs[0].transactionId !== commit.id) throw new Error('JOURNAL_LINK_MISMATCH');
+    // Never choose another coin. Conflicting commits cannot both reach the chain.
+    const entry = entries.find(e => {
+      const point = e.outpoint || e.entry?.outpoint;
+      return String(point?.transactionId) === input.transactionId && point.index === input.index;
+    });
+    const value = entry?.entry || entry;
+    const spk = value?.scriptPublicKey;
+    const encoded = typeof spk === 'string' ? spk : spk && spk.version.toString(16).padStart(4, '0') + spk.script;
+    if (!entry || BigInt(value.amount) !== BigInt(input.utxo.amount) ||
+        encoded !== input.utxo.scriptPublicKey ||
+        Boolean(value.isCoinbase) !== input.utxo.isCoinbase || BigInt(value.blockDaaScore) !== BigInt(input.utxo.blockDaaScore)) throw new Error('FEE_REPAIR_INPUT_UNAVAILABLE');
+    return prepareTransactions(key, job, [entry]);
+  } finally { commit?.free(); reveal?.free(); }
 }
 
 export async function inspectJournal(job, rpc) {
@@ -102,6 +147,14 @@ export function createSigner(secret, rpc) {
     async prepare(config, job) {
       const { entries } = await bounded(rpc.getUtxosByAddresses({ addresses: [config.sender] }));
       return prepareTransactions(key, job, entries);
+    },
+    async repair(config, job) {
+      const info = await readRpcHealth(rpc);
+      if (info.networkId !== 'testnet-10' || !info.isSynced || !info.hasUtxoIndex || config.network !== 'testnet-10' ||
+          ['sender', 'ticker', 'deploymentHash', 'amount', 'decimals'].some(k => config[k] !== job[k]) ||
+          config.fingerprint !== job.configFingerprint) throw new Error('TN10_SYNCED_NODE_REQUIRED');
+      const { entries } = await bounded(rpc.getUtxosByAddresses({ addresses: [config.sender] }));
+      return prepareFeeRepair(key, job, entries);
     },
     async submit(saved) {
       const tx = Wasm.Transaction.deserializeFromSafeJSON(saved.transaction);

@@ -76,3 +76,54 @@ test('missing-input diagnostics inspect the same saved journal without changing 
   assert.equal(await processPayment(s), 'reconciling'); assert.equal(s.events.at(-1).stage, 'inspect-journal');
   assert.equal(s.calls.filter(c => c === 'submitted').length, 2); assert.equal(s.prepared, 0);
 });
+
+test('same-input fee repair must be acknowledged; a lost reply recovers only the persisted correction', async () => {
+  const s = system({ persisted: true }), base = s.request;
+  const corrected = { commit: { id: 'fee-commit', transaction: 'corrected-commit' }, reveal: { id: 'fee-reveal', transaction: 'corrected-reveal' } };
+  let repair, repairs = 0, lost = true;
+  s.request = async body => {
+    if (body.action === 'repair-fee') {
+      s.calls.push(body.action); repair = { journal: body.journal };
+      if (lost) { lost = false; throw new Error('lost repair acknowledgement'); }
+    }
+    const result = await base(body);
+    if (result.job) result.job = { ...result.job, freshTestOf: 'original', ...(repair ? { feeRepair: repair } : {}) };
+    return result;
+  };
+  s.signer.submit = async saved => { s.calls.push(saved.transaction); if (saved.id === 'commit') throw new Error('transaction has 1 fees which is under the required amount of 100'); };
+  s.signer.repair = async () => { repairs++; return corrected; };
+  await assert.rejects(processPayment(s), /lost repair acknowledgement/);
+  assert.equal(repairs, 1); assert.equal(s.calls.includes('corrected-commit'), false);
+  assert.equal(s.calls.at(-1), 'release');
+  s.calls.length = 0;
+  assert.equal(await processPayment(s), 'awaiting-indexer');
+  assert.equal(repairs, 1); assert.equal(s.prepared, 0);
+  assert.deepEqual(s.calls, ['claim', 'check', 'corrected-commit', 'corrected-reveal', 'submitted', 'check', 'release']);
+});
+
+test('unknown submission errors never authorize a fee repair', async () => {
+  const s = system({ persisted: true, throwSend: true }), base = s.request;
+  s.request = async body => { const r = await base(body); if (r.job) r.job.freshTestOf = 'original'; return r; };
+  s.signer.repair = async () => assert.fail('Only a specific insufficient-fee commit rejection permits repair');
+  assert.equal(await processPayment(s), 'reconciling');
+});
+
+test('an acknowledged correction is submitted immediately, while acceptance before repair prevents construction', async () => {
+  for (const accepted of [false, true]) {
+    const s = system({ persisted: true }), base = s.request;
+    let checks = 0, repair, constructions = 0;
+    s.request = async body => {
+      if (body.action === 'repair-fee') { s.calls.push(body.action); repair = { journal: { commit: { transaction: 'corrected-commit' }, reveal: { transaction: 'corrected-reveal' } } }; }
+      const r = await base(body);
+      if (r.job) r.job = { ...r.job, freshTestOf: 'original', ...(repair ? { feeRepair: repair } : {}) };
+      if (body.action === 'check' && ++checks === 2 && accepted) r.job.state = 'indexed-confirmed';
+      return r;
+    };
+    s.signer.repair = async () => { constructions++; return {}; };
+    s.signer.submit = async saved => { s.calls.push(saved.transaction); if (saved.id === 'commit') throw new Error('insufficient fee'); };
+    assert.equal(await processPayment(s), accepted ? 'indexed-confirmed' : 'awaiting-indexer');
+    assert.equal(constructions, accepted ? 0 : 1);
+    if (!accepted) assert.ok(s.calls.indexOf('repair-fee') < s.calls.indexOf('corrected-commit'));
+    assert.equal(s.calls.at(-1), 'release');
+  }
+});

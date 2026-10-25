@@ -25,9 +25,9 @@ Record date: 2026-10-25. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: needs-evidence.** Diagnose the retained fresh test submission without exposing raw node errors or creating another payment. Candidate distinguishes exact node fee, mass, maturity, double-spend and policy rejection categories; saved journals and sender configuration remain intact.
+**CHAIN-004: needs-evidence.** Live fixed-category diagnostics establish that the retained fresh commit fee is below TN10 relay policy. Candidate corrects new-pair fee/mass calculation and appends one same-funding-input correction for only that approved fresh child; both original journals and all earning/retirement locks remain intact.
 
-Next task: **CHAIN-004**. Release the checked fixed-category diagnostic correction, observe one naturally scheduled same-journal attempt and use its specific node rejection to choose a repair. Do not create another fresh attempt or resume blocked separate history disclosures.
+Next task: **CHAIN-004**. Verify and release bounded same-input fee recovery; observe scheduled creation, submission and exact indexer acceptance of the acknowledged correction. No other funding input, independent fresh retry, journal deletion or separate blocked history disclosure is authorized. Real-device and provider restore evidence remain separate.
 
 ## Holds
 
