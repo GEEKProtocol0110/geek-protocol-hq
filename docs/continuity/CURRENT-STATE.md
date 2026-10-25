@@ -25,9 +25,9 @@ Record date: 2026-10-25. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: needs-evidence.** Both automatic test wallets now have founder-confirmed receipts. The second normal Kaspa Daily job was submitted automatically and indexed-confirmed without a recovery exception. The remaining first-proof checks are HQ account/Rewards rendering, sign-out/return and managed-provider recovery.
+**OPS-001: needs-evidence.** The normal Daily automatic TN10 payout, authenticated HQ Rewards display, and same-account phone sign-out/return are founder-confirmed. Managed-provider backup retention and isolated restore remain the next first-proof evidence gap.
 
-Next task: **CHAIN-004**. Both wallet test receipts are founder-confirmed and normal Daily automatic payout has passed its live pilot. Verify the authenticated HQ Rewards view and saved address/progress/receipt after sign-out and return under CHAIN-005/AUTH-004; complete managed-provider recovery under OPS-001. Preserve all payment journals, locks and lineage; another payout is not needed for these checks.
+Next task: **OPS-001**. Verify the actual managed Redis provider backup completion and retention, then restore a completed backup into a separate isolated database under docs/BACKUP-RECOVERY.md. Keep production pointed at its current database and prevent the recovery environment from processing payouts. Measure recovery time and data loss, revoke restored transient sessions offline, and verify durable account/progress/payment records before any separate cutover decision. Preserve all existing payment journals, lineage and locks; another payout is not needed.
 
 ## Holds
 

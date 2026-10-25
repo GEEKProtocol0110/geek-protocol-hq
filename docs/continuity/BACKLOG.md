@@ -715,9 +715,9 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Both wallet test receipts are founder-confirmed and normal Daily automatic payout has passed its live pilot. Verify the authenticated HQ Rewards view and saved address/progress/receipt after sign-out and return under CHAIN-005/AUTH-004; complete managed-provider recovery under OPS-001. Preserve all payment journals, locks and lineage; another payout is not needed for these checks.
+Next action: Automatic payout and actual-phone Rewards/sign-out/return acceptance are recorded. Continue managed-provider backup and isolated restore under OPS-001; preserve existing journals, lineage and replay locks. No additional payout is required.
 
-Blocker: Automatic indexed acceptance and recipient-wallet receipt are established for both tests, including the second normal Daily path. Authenticated HQ status/receipt presentation remains a separate acceptance boundary, with account recovery/provider restore tracked in CHAIN-005, AUTH-004 and OPS-001.
+Blocker: Managed-provider restore and recovery evidence remain under OPS-001. Normal automatic payout, wallet receipt and same-account phone Rewards/sign-out/return are founder-confirmed; separate account switching/background cases and independent review are not inferred.
 
 Acceptance:
 
@@ -736,7 +736,7 @@ Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-G
 
 **P1 / needs-evidence.** Owner: Maintainer; founder confirms actual-phone behavior. Dependencies: none.
 
-Next action: Both automatic test wallet receipts are now founder-confirmed. Verify the authenticated Rewards view, account switching, background return and sign-out/return on the real phone; actual automatic delivery is established under CHAIN-004.
+Next action: Authenticated Rewards rendering, signed-out privacy and same-account phone return are founder-confirmed. Verify separate account-switching and background/page-cache interruption cases before closing the full status-recovery task; provider recovery remains OPS-001.
 
 Acceptance:
 
@@ -753,7 +753,7 @@ Evidence/specification: [public/play/assets/testnet-status.js](../../public/play
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls bounded pilot approval and actual-device acceptance. Dependencies: CHAIN-004.
 
-Next action: Founder reports saving the second TN10 address and confirms its normal automatic Daily reward arrived. Verify actual-phone passkey/sign-out/return recovery of the same saved address and progress; retain the existing Mainnet/public-reward gates.
+Next action: Same-account phone sign-out/return restores saved progress, receiving address and receipt per founder confirmation. Preserve this acceptance and the existing Mainnet/public-reward gates; complete managed-provider recovery under OPS-001 without inferring separate-device or credential-manager recovery.
 
 Acceptance:
 
