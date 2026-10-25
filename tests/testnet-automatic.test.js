@@ -13,10 +13,13 @@ import { identityPlayerKey } from '../server/identity-keys.js';
 import { rewardAddressKey } from '../server/reward-addresses.js';
 import { retiredJobKey, freshTestId } from '../server/testnet-fresh-test.js';
 import { createHash } from 'node:crypto';
+import { Wasm, legacyJournal } from '../workers/testnet/fixtures/legacy-journal.mjs';
+import { prepareFeeRepair } from '../workers/testnet/signer.mjs';
+import { validateFeeRepair } from '../server/testnet-fee-repair.js';
 const wallet = n => { const k = new kaspa.PrivateKey(n.toString(16).padStart(64, '0')); try { return k.toAddress('testnet').toString(); } finally { k.free(); } };
 const sender = wallet(7), recipient = wallet(3), deploy = 'a'.repeat(64), token = 'e'.repeat(64);
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
-let observed = null, loseReply = false, beforeCommit, missingOperationStatus = 200, loseFreshReply = false, beforeFreshCommit;
+let observed = null, loseReply = false, beforeCommit, missingOperationStatus = 200, loseFreshReply = false, beforeFreshCommit, loseRepairReply = false;
 globalThis.fetch = async (url, options) => {
   if (String(url).startsWith('https://tn10api.kasplex.org/v1/krc20/')) {
     const row = String(url).endsWith('token/GEEKT') ? { tick: 'GEEKT', hashRev: deploy, state: 'deployed', dec: '8' }
@@ -34,13 +37,16 @@ globalThis.fetch = async (url, options) => {
       : { result: await fixture.command(...values) };
   if (commit && loseReply) { loseReply = false; throw new Error('Synthetic lost reply'); }
   if (fresh && loseFreshReply) { loseFreshReply = false; throw new Error('Synthetic lost fresh-test response'); }
+  if (loseRepairReply && values[0] === 'EVAL' && values[1].includes('geek-testnet-auto-update-v1') && JSON.parse(values[7]).feeRepair) {
+    loseRepairReply = false; throw new Error('Synthetic lost fee-repair response');
+  }
   return Response.json(result);
 };
 after(async () => { globalThis.fetch = originalFetch; await fixture.close(); });
 beforeEach(async () => {
   delete process.env.TESTNET_AUTO_APPROVED_WALLETS;
   delete process.env.TESTNET_AUTO_FRESH_TEST_APPROVAL;
-  await fixture.command('FLUSHDB'); observed = null; loseReply = false; beforeCommit = null; missingOperationStatus = 200; loseFreshReply = false; beforeFreshCommit = null;
+  await fixture.command('FLUSHDB'); observed = null; loseReply = false; beforeCommit = null; missingOperationStatus = 200; loseFreshReply = false; beforeFreshCommit = null; loseRepairReply = false;
   Object.assign(process.env, { UPSTASH_REDIS_REST_URL: 'https://redis.automatic.test', UPSTASH_REDIS_REST_TOKEN: 'synthetic-token',
     AUDIT_LOG_SECRET: 'synthetic-automatic-audit-key-32-characters', CCE_ADMIN_TOKEN: 'synthetic-automatic-cce-key-32-characters',
     PAYOUT_REVIEW_ADMIN_TOKEN: 'synthetic-automatic-payout-key-32-characters', TESTNET_REWARDS_ENABLED: 'true',
@@ -76,6 +82,87 @@ const complete = async (p, mode = 'daily') => {
 };
 const jobs = async () => { const ids = await fixture.command('ZRANGE', autoIndex, 0, -1); return Promise.all(ids.map(async id => JSON.parse(await fixture.command('GET', autoJobKey(id))))); };
 const journal = { commit: { id: 'b'.repeat(64), transaction: JSON.stringify({ synthetic: 'commit'.repeat(20) }) }, reveal: { id: 'c'.repeat(64), transaction: JSON.stringify({ synthetic: 'reveal'.repeat(20) }) } };
+
+async function feeFixture() {
+  const original = await freshFixture(), claim = (await worker({ action: 'claim' })).body;
+  const key = new Wasm.PrivateKey('7'.padStart(64, '0')), address = key.toPublicKey().toAddress('testnet');
+  const entry = { address: sender, amount: 2000000000n, outpoint: { transactionId: '4'.repeat(64), index: 2 },
+    scriptPublicKey: Wasm.payToAddressScript(address), blockDaaScore: 0n, isCoinbase: false };
+  try {
+    const legacy = await legacyJournal(key, claim.job, entry);
+    const saved = await step('prepare', claim, claim.job, { journal: legacy });
+    assert.equal(saved.statusCode, 200);
+    const job = saved.body.job, corrected = await prepareFeeRepair(key, job, [entry]);
+    return { original, claim, job, corrected };
+  } finally { key.free(); address.free(); }
+}
+
+test('same-input fee repair retains both journals, earning locks and budgets and confirms the corrected exact hash', async () => {
+  const { original, claim, job, corrected } = await feeFixture(), retained = JSON.stringify(job.journal);
+  const budget = await fixture.command('GET', `geek:testnet-auto:day:${new Date().toISOString().slice(0, 10)}`);
+  const result = await step('repair-fee', claim, job, { journal: corrected });
+  assert.equal(result.statusCode, 200, JSON.stringify(result.body));
+  let current = result.body.job;
+  assert.equal(JSON.stringify(current.journal), retained); assert.deepEqual(current.feeRepair.journal, corrected);
+  assert.equal(current.transactionHash, corrected.reveal.id); assert.equal(current.state, 'prepared');
+  assert.equal(await fixture.command('GET', autoJobKey(original.job.id)), original.raw);
+  assert.equal(await fixture.command('GET', original.runKey), original.job.id);
+  assert.equal(await fixture.command('GET', `geek:testnet-auto:day:${new Date().toISOString().slice(0, 10)}`), budget);
+  assert.equal((await jobs()).length, 2);
+  assert.equal((await step('repair-fee', claim, current, { journal: corrected })).statusCode, 409);
+  observed = { p: 'KRC-20', op: 'transfer', tick: 'GEEKT', hashRev: corrected.reveal.id, from: sender, to: recipient,
+    amt: '100000000', txAccept: '1', opAccept: '1', mtsAdd: String(Date.now()), opScore: '1', checkpoint: 'a'.repeat(64) };
+  current = (await step('check', claim, current)).body.job;
+  assert.equal(current.state, 'indexed-confirmed'); assert.equal(JSON.stringify(current.journal), retained);
+  const view = (await call(rewards, 'GET', {}, original.cookie, { service: 'testnet' })).body;
+  assert.equal(view.records[0].transactionHash, corrected.reveal.id);
+  assert.doesNotMatch(JSON.stringify(view), /signatureScript|originalJournalHash|signed-commit|feeRepair/);
+});
+
+test('lost fee-repair acknowledgement and stale leases cannot create another correction or discard receipts', async () => {
+  const { claim, job, corrected } = await feeFixture(); loseRepairReply = true;
+  const lost = await step('repair-fee', claim, job, { journal: corrected }); assert.notEqual(lost.statusCode, 200);
+  await worker({ action: 'release', lease: claim.lease });
+  const next = (await worker({ action: 'claim' })).body;
+  assert.equal(next.job.id, job.id); assert.deepEqual(next.job.journal, job.journal); assert.deepEqual(next.job.feeRepair.journal, corrected);
+  assert.equal((await step('repair-fee', next, next.job, { journal: corrected })).statusCode, 409);
+  assert.equal((await step('submitted', claim, job)).statusCode, 409);
+  assert.equal((await jobs()).length, 2);
+});
+
+test('fee-repair validation rejects different coins, destinations, scripts, extra inputs and fees outside the cap', async () => {
+  const { claim, job, corrected } = await feeFixture();
+  const mutate = (phase, change) => { const value = structuredClone(corrected), tx = JSON.parse(value[phase].transaction); change(tx); value[phase].transaction = JSON.stringify(tx); return value; };
+  const bad = [
+    mutate('commit', tx => { tx.inputs[0].transactionId = '5'.repeat(64); }),
+    mutate('commit', tx => { tx.inputs.push(structuredClone(tx.inputs[0])); }),
+    mutate('commit', tx => { tx.outputs[0].value = '129000000'; }),
+    mutate('commit', tx => { tx.outputs[1].scriptPublicKey = '000020' + 'a'.repeat(64); }),
+    mutate('commit', tx => { tx.outputs[1].value = '1'; }),
+    mutate('reveal', tx => { tx.inputs[0].transactionId = '6'.repeat(64); }),
+    mutate('reveal', tx => { tx.inputs[0].signatureScript += '00'; }),
+    mutate('reveal', tx => { tx.outputs[0].scriptPublicKey = '000020' + 'b'.repeat(64); })
+  ];
+  for (const journal of bad) {
+    assert.throws(() => validateFeeRepair(job, journal), /FEE_REPAIR_INVALID/);
+    assert.equal((await step('repair-fee', claim, job, { journal })).statusCode, 503);
+  }
+  assert.throws(() => validateFeeRepair({ ...job, freshTestOf: undefined }, corrected), /FEE_REPAIR_INVALID/);
+  assert.equal((await jobs()).find(x => x.id === job.id).feeRepair, undefined);
+});
+
+test('an accepted original fresh hash and corrupted saved repair lineage fail closed', async () => {
+  const { claim, job, corrected } = await feeFixture();
+  observed = { p: 'KRC-20', op: 'transfer', tick: 'GEEKT', hashRev: job.transactionHash, from: sender, to: recipient,
+    amt: '100000000', txAccept: '1', opAccept: '1', mtsAdd: String(Date.now()), opScore: '1', checkpoint: 'a'.repeat(64) };
+  assert.equal((await step('repair-fee', claim, job, { journal: corrected })).statusCode, 409);
+  assert.equal((await jobs()).find(x => x.id === job.id).feeRepair, undefined);
+  observed = null;
+  const repaired = (await step('repair-fee', claim, job, { journal: corrected })).body.job;
+  repaired.feeRepair.originalJournalHash = '0'.repeat(64);
+  await fixture.command('SET', autoJobKey(job.id), JSON.stringify(repaired)); await releaseClaim(claim);
+  assert.equal((await worker({ action: 'claim' })).statusCode, 503);
+});
 const step = (action, claim, job, extra = {}) => worker({ action, lease: claim.lease, id: job.id, version: job.version, ...extra });
 const verifiedWallet = async (p, ecdsa = false) => {
   const id = p.split('=')[1], key = new kaspa.PrivateKey('3'.padStart(64, '0'));

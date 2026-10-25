@@ -1,5 +1,6 @@
 // Every restart reads the durable journal BEFORE any transaction construction.
-// Rebroadcasts use identical signed bytes and transaction IDs, never a new payment.
+// A single same-input fee repair retains the original pair and is acknowledged
+// before broadcast. Restart recovery always uses that acknowledged active pair.
 import { reportFailure, reportJournalState } from './diagnostics.mjs';
 export async function processPayment({ request, signer, report }) {
   const step = async (stage, action) => {
@@ -30,17 +31,33 @@ export async function processPayment({ request, signer, report }) {
     // Never trust transient RPC errors as proof of failure. Each submit receives
     // only the immutable persisted bytes. Still try the dependent reveal if a
     // duplicate/already-mined commit response is uncertain.
-    let uncertain = false, missingInputs = false;
-    for (const phase of ['commit', 'reveal']) {
-      try { await signer.submit(job.journal[phase]); }
-      catch (error) {
-        uncertain = true;
-        if (reportFailure(`submit-${phase}`, error, report) === 'RPC_INPUT_UNAVAILABLE') missingInputs = true;
+    let uncertain = false;
+    for (let attempt = 0; attempt < 2; attempt++) {
+      let missingInputs = false, insufficientFee = false;
+      uncertain = false;
+      const journal = job.feeRepair?.journal || job.journal;
+      for (const phase of ['commit', 'reveal']) {
+        try { await signer.submit(journal[phase]); }
+        catch (error) {
+          uncertain = true;
+          const code = reportFailure(`submit-${phase}`, error, report);
+          if (code === 'RPC_INPUT_UNAVAILABLE') missingInputs = true;
+          if (phase === 'commit' && code === 'RPC_INSUFFICIENT_FEE') insufficientFee = true;
+        }
       }
-    }
-    if (missingInputs && typeof signer.inspect === 'function') {
-      try { reportJournalState(await signer.inspect(config, job), report); }
-      catch (error) { reportFailure('inspect-journal', error, report); }
+      if (insufficientFee && job.freshTestOf && !job.feeRepair && typeof signer.repair === 'function') {
+        await step('reconcile-before-repair', () => update('check'));
+        if (job.state === 'indexed-confirmed') return 'indexed-confirmed';
+        const repaired = await step('repair-fee', () => signer.repair(config, job));
+        // A lost acknowledgement exits without broadcasting the local candidate.
+        await step('persist-fee-repair', () => update('repair-fee', { journal: repaired }));
+        continue;
+      }
+      if (missingInputs && typeof signer.inspect === 'function') {
+        try { reportJournalState(await signer.inspect(config, { ...job, journal }), report); }
+        catch (error) { reportFailure('inspect-journal', error, report); }
+      }
+      break;
     }
     await step('mark-submitted', () => update('submitted'));
     await step('reconcile-after-submit', () => update('check'));

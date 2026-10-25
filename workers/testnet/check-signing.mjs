@@ -1,7 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Wasm } from '@kasplex/kiwi';
-import { inscription, prepareTransactions, createSigner, inspectJournal } from './signer.mjs';
+import { inscription, prepareTransactions, createSigner, inspectJournal, prepareFeeRepair } from './signer.mjs';
+import { legacyJournal } from './fixtures/legacy-journal.mjs';
+import { validateFeeRepair } from '../../server/testnet-fee-repair.js';
 const key = new Wasm.PrivateKey('1'.padStart(64, '0')), sender = key.toPublicKey().toAddress('testnet');
 const recipient = new Wasm.PrivateKey('2'.padStart(64, '0')).toPublicKey().toAddress('testnet');
 const job = { network: 'testnet-10', sender: sender.toString(), recipient: recipient.toString(), ticker: 'GEEKT', amount: '100000000' };
@@ -75,4 +77,37 @@ test('malformed saved-journal links cannot trigger a node inspection', async () 
   const rpc = { getUtxosByAddresses() { assert.fail('Do not inspect an invalid journal'); } };
   await assert.rejects(inspectJournal({ ...job, journal: { ...journal, commit: { ...journal.commit, id: 'f'.repeat(64) } } }, rpc), /JOURNAL_LINK_MISMATCH/);
   await assert.rejects(inspectJournal({ ...job, network: 'mainnet', journal }, rpc), /JOURNAL_LINK_MISMATCH/);
+});
+
+test('TN10 fees cover signed mass and each mass commitment contains storage mass only', async () => {
+  const journal = await prepareTransactions(key, job, [entry]);
+  for (const saved of Object.values(journal)) {
+    const tx = Wasm.Transaction.deserializeFromSafeJSON(saved.transaction);
+    try {
+      const o = tx.serializeToObject(), inputs = o.inputs.map(i => Number(i.utxo.amount)), outputs = o.outputs.map(o => Number(o.value));
+      const fee = inputs.reduce((a, b) => a + b, 0) - outputs.reduce((a, b) => a + b, 0);
+      assert.ok(BigInt(fee) >= Wasm.calculateTransactionMass('testnet-10', tx) * 100n);
+      assert.equal(tx.mass, Wasm.calculateStorageMass('testnet-10', inputs, outputs));
+      assert.equal(tx.id, saved.id);
+    } finally { tx.free(); }
+  }
+});
+
+test('fee recovery signs one conflicting same-input pair and retains the exact prior journal', async () => {
+  const journal = await legacyJournal(key, job, entry), retained = JSON.stringify(journal);
+  const saved = { ...job, decimals: '8', journal, state: 'awaiting-indexer', freshTestOf: 'f'.repeat(64) };
+  const repaired = await prepareFeeRepair(key, saved, [entry]);
+  assert.equal(validateFeeRepair(saved, repaired), true);
+  assert.equal(JSON.stringify(journal), retained);
+  assert.notEqual(repaired.commit.id, journal.commit.id);
+  const old = JSON.parse(journal.commit.transaction), next = JSON.parse(repaired.commit.transaction);
+  assert.equal(old.inputs[0].transactionId, next.inputs[0].transactionId); assert.equal(old.inputs[0].index, next.inputs[0].index);
+  const native = Wasm.Transaction.deserializeFromSafeJSON(repaired.commit.transaction);
+  try { const checked = Wasm.signTransaction(native, [], true); checked.free(); } finally { native.free(); }
+  for (const invalid of [[], [{ ...entry, outpoint: { transactionId: 'b'.repeat(64), index: 2 } }], [{ ...entry, amount: entry.amount + 1n }]]) {
+    await assert.rejects(prepareFeeRepair(key, saved, invalid), /FEE_REPAIR_INPUT_UNAVAILABLE/);
+  }
+  for (const patch of [{ freshTestOf: undefined }, { feeRepair: {} }, { state: 'indexed-confirmed' }]) {
+    await assert.rejects(prepareFeeRepair(key, { ...saved, ...patch }, [entry]), /FEE_REPAIR_NOT_ALLOWED/);
+  }
 });

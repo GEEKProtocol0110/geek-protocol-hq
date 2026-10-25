@@ -9,6 +9,7 @@ import { identityPlayerKey } from './identity-keys.js';
 import { testnetAddressForPublicKey } from './identity-wallet.js';
 import { decodeRewardAddresses, rewardAddressKey } from './reward-addresses.js';
 import { approvedFreshTest, readRetirements, retiredJobKey, validateRetirements } from './testnet-fresh-test.js';
+import { createFeeRepair, decodeFeeRepair } from './testnet-fee-repair.js';
 
 const hash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const hex = (s, n) => typeof s === 'string' && new RegExp(`^[a-f0-9]{${n}}$`).test(s);
@@ -71,9 +72,11 @@ export function decodeJob(raw, id) {
       !hex(j.proof?.runId, 40) || !Number.isSafeInteger(j.createdAt) || j.createdAt <= 0 ||
       !['queued', 'prepared', 'awaiting-indexer', 'indexed-confirmed'].includes(j.state) ||
       (j.state !== 'queued' && !validJournal(j.journal)) ||
-      (j.state !== 'queued' && j.transactionHash !== j.journal.reveal.id) ||
+      (j.state !== 'queued' && j.transactionHash !== (j.feeRepair?.journal?.reveal?.id || j.journal.reveal.id)) ||
       (j.state === 'indexed-confirmed' && j.observation?.accepted !== true)) throw new Error('TESTNET_AUTO_RECORD_INVALID');
   if (j.freshTestOf !== undefined && (!hex(j.freshTestOf, 64) || j.freshTestOf === id)) throw new Error('TESTNET_AUTO_RECORD_INVALID');
+  if (j.feeRepair !== undefined && j.state === 'queued') throw new Error('TESTNET_AUTO_RECORD_INVALID');
+  decodeFeeRepair(j);
   return j;
 }
 export const validJournal = journal => Boolean(journal && Object.keys(journal).sort().join(',') === 'commit,reveal' &&
@@ -203,8 +206,8 @@ export async function automaticWorkerHandler(req, res) {
       await redis('EVAL', `if redis.call('GET', KEYS[1]) == ARGV[1] then return redis.call('DEL', KEYS[1]) end return 0`, 1, leaseKey, body.lease);
       return sendJson(res, 200, { ok: true });
     }
-    if (!['prepare', 'submitted', 'check'].includes(body.action) || !hex(body.id, 64) || !hex(body.version, 24) ||
-        Object.keys(body).some(k => !['action', 'lease', 'id', 'version', ...(body.action === 'prepare' ? ['journal'] : [])].includes(k))) throw new Error('INVALID_REQUEST');
+    if (!['prepare', 'repair-fee', 'submitted', 'check'].includes(body.action) || !hex(body.id, 64) || !hex(body.version, 24) ||
+        Object.keys(body).some(k => !['action', 'lease', 'id', 'version', ...(['prepare', 'repair-fee'].includes(body.action) ? ['journal'] : [])].includes(k))) throw new Error('INVALID_REQUEST');
     const key = autoJobKey(body.id), raw = await redis('GET', key), job = decodeJob(raw, body.id);
     if (job.version !== body.version || job.configFingerprint !== config.fingerprint || await redis('GET', leaseKey) !== body.lease ||
         await redis('EXISTS', retiredJobKey(body.id))) throw new Error('TESTNET_AUTO_STATE_CHANGED');
@@ -212,6 +215,14 @@ export async function automaticWorkerHandler(req, res) {
       if (job.state !== 'queued' || !validJournal(body.journal)) throw new Error('TESTNET_AUTO_STATE_CHANGED');
       await checkAsset(config);
       job.journal = body.journal; job.transactionHash = body.journal.reveal.id; job.state = 'prepared';
+    } else if (body.action === 'repair-fee') {
+      if (!['prepared', 'awaiting-indexer'].includes(job.state) || job.feeRepair || !job.freshTestOf) throw new Error('TESTNET_AUTO_STATE_CHANGED');
+      const repair = createFeeRepair(job, body.journal);
+      await checkAsset(config);
+      const observation = transferObservation(await jsonFromIndexer(`op/${job.transactionHash}`, { allowMissingOperation: true }), job);
+      if (observation.accepted) throw new Error('TESTNET_AUTO_STATE_CHANGED');
+      job.feeRepair = repair; job.transactionHash = repair.journal.reveal.id; job.state = 'prepared';
+      delete job.observation; delete job.lastCheckedAt;
     } else if (body.action === 'submitted') {
       if (!['prepared', 'awaiting-indexer'].includes(job.state)) throw new Error('TESTNET_AUTO_STATE_CHANGED');
       job.state = 'awaiting-indexer';
@@ -224,11 +235,12 @@ export async function automaticWorkerHandler(req, res) {
     }
     job.version = nonce();
     if (await redis('EVAL', UPDATE, 3, key, leaseKey, retiredJobKey(body.id), raw, JSON.stringify(job), body.lease) !== 1) throw new Error('TESTNET_AUTO_STATE_CHANGED');
+    if (body.action === 'repair-fee') console.info(JSON.stringify({ event: 'tn10-fee-repair-created', sameFundingInput: true }));
     return sendJson(res, 200, { ok: true, job });
   } catch (error) { return automaticError(res, error); }
 }
 export function automaticError(res, error) {
   if (error.message === 'TESTNET_AUTO_STATE_CHANGED') return sendJson(res, 409, { ok: false, error: 'Saved payout state changed. Reload the same payment.' });
-  if (error.message.startsWith('TESTNET_')) return sendJson(res, 503, { ok: false, error: 'Automatic testnet payments are paused or could not be verified. Existing payments retain their original transaction hashes.' });
+  if (error.message.startsWith('TESTNET_')) return sendJson(res, 503, { ok: false, error: 'Automatic testnet payments are paused or could not be verified. Existing payment receipts are retained.' });
   return handleApiError(res, error);
 }

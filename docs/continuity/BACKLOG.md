@@ -715,9 +715,9 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Release the checked fixed-category diagnostic correction, observe one naturally scheduled same-journal attempt and use its specific node rejection to choose a repair. Do not create another fresh attempt or resume blocked separate history disclosures.
+Next action: Verify and release bounded same-input fee recovery; observe scheduled creation, submission and exact indexer acceptance of the acknowledged correction. No other funding input, independent fresh retry, journal deletion or separate blocked history disclosure is authorized. Real-device and provider restore evidence remain separate.
 
-Blocker: One approved fresh attempt is created and original service retries are durably stopped. Scheduled fresh commit submission fails with the current UNCLASSIFIED category while its input remains available; the dependent reveal input is absent. Actual indexed acceptance and real-device evidence are still missing. No second fresh attempt is authorized.
+Blocker: Specific live cause is insufficient commit fee. Bounded same-input fee recovery is a candidate; actual corrected submission/indexer acceptance remains unproved. The old independent original stays retired, and no second independent fresh payment is permitted.
 
 Acceptance:
 
@@ -728,8 +728,9 @@ Acceptance:
 - Mainnet settlement, CCE and collectible ownership remain disabled.
 - Exact Kasplex 403/404 op-not-found transfer lookups remain pending and permit immutable-journal recovery; other failures and pinned asset/deployment checks still stop work.
 - The single DR-027 exception retains original job/journal/earning locks, permanently stops service retries with a durable marker, consumes the normal daily/recipient/capacity budget and creates only one same-recipient 1-GEEKT child despite restarts, lost replies and stale workers.
+- A single fee correction for the approved fresh child preserves its prior journal, exact sole funding outpoint, inscription output and recipient, stays within the existing total fee cap, persists before broadcast and cannot produce an independently payable duplicate. Both conflicting variants cannot consume the same funding outpoint.
 
-Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md), [server/testnet-automatic.js](../../server/testnet-automatic.js), [workers/testnet/process.mjs](../../workers/testnet/process.mjs), [workers/testnet/signer.mjs](../../workers/testnet/signer.mjs), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [tests/testnet-worker.test.js](../../tests/testnet-worker.test.js), [tests/testnet-indexer.test.js](../../tests/testnet-indexer.test.js), [docs/TESTNET-RECOVERY-2026-10-23.md](../../docs/TESTNET-RECOVERY-2026-10-23.md), [workers/testnet/diagnostics.mjs](../../workers/testnet/diagnostics.mjs), [tests/testnet-diagnostics.test.js](../../tests/testnet-diagnostics.test.js), [workers/testnet/rpc-health.mjs](../../workers/testnet/rpc-health.mjs), [tests/testnet-rpc-health.test.js](../../tests/testnet-rpc-health.test.js), [docs/ONE-FRESH-GEEKT-TEST.md](../../docs/ONE-FRESH-GEEKT-TEST.md), [server/testnet-fresh-test.js](../../server/testnet-fresh-test.js).
+Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-GEEKT-REWARDS.md), [server/testnet-automatic.js](../../server/testnet-automatic.js), [workers/testnet/process.mjs](../../workers/testnet/process.mjs), [workers/testnet/signer.mjs](../../workers/testnet/signer.mjs), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [tests/testnet-worker.test.js](../../tests/testnet-worker.test.js), [tests/testnet-indexer.test.js](../../tests/testnet-indexer.test.js), [docs/TESTNET-RECOVERY-2026-10-23.md](../../docs/TESTNET-RECOVERY-2026-10-23.md), [workers/testnet/diagnostics.mjs](../../workers/testnet/diagnostics.mjs), [tests/testnet-diagnostics.test.js](../../tests/testnet-diagnostics.test.js), [workers/testnet/rpc-health.mjs](../../workers/testnet/rpc-health.mjs), [tests/testnet-rpc-health.test.js](../../tests/testnet-rpc-health.test.js), [docs/ONE-FRESH-GEEKT-TEST.md](../../docs/ONE-FRESH-GEEKT-TEST.md), [server/testnet-fresh-test.js](../../server/testnet-fresh-test.js), [server/testnet-fee-repair.js](../../server/testnet-fee-repair.js).
 
 ## CHAIN-005: Recover player reward status after interruptions
 
