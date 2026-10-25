@@ -25,9 +25,9 @@ Record date: 2026-10-25. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**OPS-001: needs-evidence.** The normal Daily automatic TN10 payout, authenticated HQ Rewards display, and same-account phone sign-out/return are founder-confirmed. Managed-provider backup retention and isolated restore remain the next first-proof evidence gap.
+**OPS-001: needs-evidence.** Forty focused local recovery/restore-safety/passkey checks pass with native Redis. Vercel Storage identifies HQ’s connected Upstash resource, but the provider console requires separate authentication before production backup and isolated-restore evidence can be collected.
 
-Next task: **OPS-001**. Verify the actual managed Redis provider backup completion and retention, then restore a completed backup into a separate isolated database under docs/BACKUP-RECOVERY.md. Keep production pointed at its current database and prevent the recovery environment from processing payouts. Measure recovery time and data loss, revoke restored transient sessions offline, and verify durable account/progress/payment records before any separate cutover decision. Preserve all existing payment journals, lineage and locks; another payout is not needed.
+Next task: **OPS-001**. Complete secure Upstash sign-in for the existing HQ database, inspect completed backups and retention, then use a separate isolated database for the managed-provider restore drill in docs/BACKUP-RECOVERY.md. Do not restore into the live HQ resource or connect the restored copy to live workers; no backup or provider-restore acceptance is established yet.
 
 ## Holds
 

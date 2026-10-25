@@ -229,7 +229,9 @@ Evidence/specification: [docs/FREE-BETA-READINESS.md](../../docs/FREE-BETA-READI
 
 **P0 / needs-evidence.** Owner: Founder; private account custodian unassigned. Dependencies: none.
 
-Next action: Rerun isolated native Redis recovery and fresh-passkey return in candidate verification. Actual owner MFA/provider retention/isolated provider restore and production recovery timing still require private operator evidence; local RDB tests do not close this task.
+Next action: Complete secure Upstash sign-in for the existing HQ database, inspect completed backups and retention, then use a separate isolated database for the managed-provider restore drill in docs/BACKUP-RECOVERY.md. Do not restore into the live HQ resource or connect the restored copy to live workers; no backup or provider-restore acceptance is established yet.
+
+Blocker: The Upstash console requires separate sign-in. Vercel Storage identifies the connected resource but does not establish backup completion/retention or managed-provider restore; local passing tests cannot close those acceptance boundaries.
 
 Acceptance:
 
