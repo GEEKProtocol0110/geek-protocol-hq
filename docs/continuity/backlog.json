@@ -1062,7 +1062,7 @@
       "status": "needs-evidence",
       "title": "Automate eligible Daily GEEKT test rewards",
       "owner": "Maintainer; founder controls test funding and device acceptance",
-      "nextAction": "Diagnose the fresh journal commit rejection using fixed private-safe categories; scheduled October 25 runs show UNCLASSIFIED at submit-commit, RPC_INPUT_UNAVAILABLE at submit-reveal, commitInputsAvailable=true/revealInputAvailable=false and reconciling. Preserve both receipts and the permanent retirement marker; do not create another fresh attempt or resume blocked separate address-history queries. Real-phone account/status and restore acceptance remain separate.",
+      "nextAction": "Release the checked fixed-category diagnostic correction, observe one naturally scheduled same-journal attempt and use its specific node rejection to choose a repair. Do not create another fresh attempt or resume blocked separate history disclosures.",
       "acceptance": [
         "Owner enrolls a player once; eligible completed Daily and reward job commit together without copying run IDs.",
         "Dedicated TN10 signer persists exact signed commit/reveal before broadcast; concurrency, lost responses and restarts never create a second payment.",
@@ -1106,7 +1106,8 @@
       "blocker": "One approved fresh attempt is created and original service retries are durably stopped. Scheduled fresh commit submission fails with the current UNCLASSIFIED category while its input remains available; the dependent reveal input is absent. Actual indexed acceptance and real-device evidence are still missing. No second fresh attempt is authorized.",
       "validationEvidence": [
         "October 24 read-only continuation: the original reveal is still absent from the fixed TN10 operation endpoint (403 op not found/result null). HQ error samples are DEP0169 warnings; signer logs and project lookup return 404 through the current Vercel connection. No signing, send, replay, key/journal/recipient mutation or provider reconfiguration occurred.",
-        "October 24 continuation after #165: the installed pinned Kasplex SDK confirms the operation-list path and query interface. A bounded chain-history OpenAPI read returns 403/non-JSON with a verification challenge; no challenge bypass is attempted. Automatic review rejects the separate wallet-identifier history queries. No successful history response or funding-spend attribution is established. Runtime/payment state remains unchanged."
+        "October 24 continuation after #165: the installed pinned Kasplex SDK confirms the operation-list path and query interface. A bounded chain-history OpenAPI read returns 403/non-JSON with a verification challenge; no challenge bypass is attempted. Automatic review rejects the separate wallet-identifier history queries. No successful history response or funding-spend attribution is established. Runtime/payment state remains unchanged.",
+        "October 25 candidate: fixed-category diagnostics now recognize primary upstream node fee, mass mismatch/limit, immature input, double-spend, version, sequence and nonstandard-script rejection display strings. Synthetic fixtures include both thrown strings and Errors and reject raw identifiers/numbers in emitted events. Offline SDK inspection finds saved reveal mass differs from a recalculation, which is a diagnostic lead only; no saved journal or submission behavior changes at this stage."
       ]
     },
     {

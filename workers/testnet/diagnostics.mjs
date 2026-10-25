@@ -16,9 +16,19 @@ export function reportFailure(stage, error, report = write) {
   if (code === 'UNCLASSIFIED') {
     if (['TimeoutError', 'AbortError'].includes(error?.name) || /timed?\s*out|timeout/i.test(message)) code = 'REQUEST_TIMEOUT';
     else if (error?.name === 'SyntaxError') code = 'INVALID_JSON_RESPONSE';
+    else if (/already spent by transaction|double spending|double spend/i.test(message)) code = 'RPC_DOUBLE_SPEND';
     else if (/already.*(?:accepted|mempool|pool|mined)|duplicate transaction/i.test(message)) code = 'RPC_ALREADY_KNOWN';
+    // Match node RuleError/NonStandardError display text before the broad
+    // script/orphan cases. Emit fixed categories only, never upstream values.
+    else if (/fees which is under the required amount|insufficient.*fee|fee rate.*not greater/i.test(message)) code = 'RPC_INSUFFICIENT_FEE';
+    else if (/calculated.*mass.*not equal.*committed mass|WrongMass/i.test(message)) code = 'RPC_MASS_MISMATCH';
+    else if (/mass.*(?:larger than max|exceeds maximum|incomputable)|incomputable.*mass/i.test(message)) code = 'RPC_MASS_LIMIT';
+    else if (/immature (?:UTXO|spend)|coinbase maturity|ImmatureCoinbaseSpend/i.test(message)) code = 'RPC_IMMATURE_INPUT';
+    else if (/transaction version.*(?:unknown|not in the valid range)/i.test(message)) code = 'RPC_VERSION_UNSUPPORTED';
+    else if (/sequence locks conditions was not met|input.*not finalized/i.test(message)) code = 'RPC_SEQUENCE_LOCKED';
+    else if (/non-standard script form|scriptPublicKey.*higher than the known version|signature script.*(?:above|larger than)/i.test(message)) code = 'RPC_NONSTANDARD';
     else if (/(?:signature|script).*(?:invalid|fail)|(?:invalid|fail).*signature/i.test(message)) code = 'RPC_SCRIPT_REJECTED';
-    else if (/orphan|missing.*(?:utxo|outpoint|parent)|(?:utxo|outpoint|parent).*not found/i.test(message)) code = 'RPC_INPUT_UNAVAILABLE';
+    else if (/orphan|missing.*(?:utxo|outpoint|parent)|(?:utxo|outpoint|parent).*not found|outpoint.*lacking a matching UTXO|outpoints.*missing from current utxo/i.test(message)) code = 'RPC_INPUT_UNAVAILABLE';
     else if (/(?:websocket|connection|connect).*(?:closed|fail|refused|reset|error)/i.test(message)) code = 'RPC_CONNECTION_FAILED';
   }
   const event = { event: 'tn10-worker-failure', stage: stages.has(stage) ? stage : 'scheduled-run', code };
