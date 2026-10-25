@@ -715,9 +715,9 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Automatic corrected-test indexer acceptance and founder-phone wallet receipt are established. Verify the saved account’s Rewards view and remaining account/status recovery on the actual phone, then complete provider-recovery acceptance. Preserve retained journals/lineage/locks; no independent fresh test or separately blocked address-history query is needed.
+Next action: Second-wallet normal Daily pilot approval is live. Founder saves the supplied TN10 receiving address in the Geek account, confirms on the device, completes a new eligible Kaspa Daily and chooses Finish & save result. Then observe normal automatic admission, scheduled exact-hash acceptance and the second wallet receipt. Do not reset Daily/earning locks or create another independent fresh-test exception.
 
-Blocker: Automatic indexed acceptance and actual-phone wallet receipt/display are established. HQ saved-account Rewards rendering/account recovery and provider restore remain unverified; no independent finality claim is made.
+Blocker: The second TN10 wallet is approved in live Production. The founder must save/account-confirm that receiving address and finish a new eligible Daily before a normal job can be admitted; the second payout is not yet observed. Prior first-wallet receipt evidence remains established.
 
 Acceptance:
 
