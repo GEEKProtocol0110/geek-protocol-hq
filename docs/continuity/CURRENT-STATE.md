@@ -25,9 +25,9 @@ Record date: 2026-10-25. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: needs-evidence.** Live fixed-category diagnostics establish that the retained fresh commit fee is below TN10 relay policy. Candidate corrects new-pair fee/mass calculation and appends one same-funding-input correction for only that approved fresh child; both original journals and all earning/retirement locks remain intact.
+**CHAIN-004: needs-evidence.** Fee-recovery #168 is live; its pre-journal guard stops the smaller-input SDK mass-estimation shortfall before correction broadcast. A reproduced bounded same-input local rebuild corrects fee-induced change/mass growth and keeps the existing fee cap.
 
-Next task: **CHAIN-004**. Verify and release bounded same-input fee recovery; observe scheduled creation, submission and exact indexer acceptance of the acknowledged correction. No other funding input, independent fresh retry, journal deletion or separate blocked history disclosure is authorized. Real-device and provider restore evidence remain separate.
+Next task: **CHAIN-004**. Release the verified bounded fee/mass-growth correction, then observe scheduled acknowledgement and exact corrected-hash indexer acceptance. Preserve both prior journals, sole funding outpoint and retirement/earning/budget records; no independent fresh retry or separate blocked history query.
 
 ## Holds
 

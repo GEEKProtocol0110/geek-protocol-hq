@@ -715,9 +715,9 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Verify and release bounded same-input fee recovery; observe scheduled creation, submission and exact indexer acceptance of the acknowledged correction. No other funding input, independent fresh retry, journal deletion or separate blocked history disclosure is authorized. Real-device and provider restore evidence remain separate.
+Next action: Release the verified bounded fee/mass-growth correction, then observe scheduled acknowledgement and exact corrected-hash indexer acceptance. Preserve both prior journals, sole funding outpoint and retirement/earning/budget records; no independent fresh retry or separate blocked history query.
 
-Blocker: Specific live cause is insufficient commit fee. Bounded same-input fee recovery is a candidate; actual corrected submission/indexer acceptance remains unproved. The old independent original stays retired, and no second independent fresh payment is permitted.
+Blocker: The live fee-recovery pre-journal guard stops the SDK fee/mass shortfall on smaller inputs. A bounded same-input rebuild is verified offline; scheduled corrected-journal creation and indexer acceptance remain unproved.
 
 Acceptance:
 
