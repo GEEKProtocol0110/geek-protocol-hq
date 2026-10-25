@@ -38,3 +38,27 @@ test('result summaries cannot leak arbitrary states and broken logging cannot al
   assert.deepEqual(events.at(-1), { event: 'tn10-worker-inputs', commitInputsAvailable: false, revealInputAvailable: true });
   reportJournalState({ commitInputsAvailable: 'private', revealInputAvailable: true }, () => assert.fail('Reject arbitrary values'));
 });
+
+test('node policy and consensus rejection reasons stay distinct and redact all upstream values', () => {
+  const cases = [
+    ['transaction private-hash is not standard: transaction has 7726 fees which is under the required amount of 203600 for compute mass 2036', 'RPC_INSUFFICIENT_FEE'],
+    ['calculated contextual mass (including storage mass) 1882 is not equal to the committed mass field 1624', 'RPC_MASS_MISMATCH'],
+    ['transaction storage mass of 700000 is larger than max allowed size of 500000', 'RPC_MASS_LIMIT'],
+    ['contextual mass (including storage mass) is incomputable', 'RPC_MASS_LIMIT'],
+    ['one of the transaction inputs spends an immature UTXO: private-outpoint', 'RPC_IMMATURE_INPUT'],
+    ['output private-outpoint already spent by transaction private-hash in the mempool', 'RPC_DOUBLE_SPEND'],
+    ['orphan transaction private-hash is double spending an input from already existing orphan private-other', 'RPC_DOUBLE_SPEND'],
+    ['transaction version 3 is unknown', 'RPC_VERSION_UNSUPPORTED'],
+    ['one of the transaction sequence locks conditions was not met', 'RPC_SEQUENCE_LOCKED'],
+    ['transaction input 0: non-standard script form', 'RPC_NONSTANDARD'],
+    ['outpoints corresponding to some transaction inputs are missing from current utxo context', 'RPC_INPUT_UNAVAILABLE'],
+    ['at least one outpoint of the transaction is lacking a matching UTXO entry', 'RPC_INPUT_UNAVAILABLE']
+  ];
+  for (const [message, code] of cases) {
+    for (const error of [message, new Error(message)]) {
+      const events = []; reportFailure('submit-commit', error, event => events.push(event));
+      assert.deepEqual(events, [{ event: 'tn10-worker-failure', stage: 'submit-commit', code }]);
+      assert.doesNotMatch(JSON.stringify(events), /private-|7726|203600|1882|1624|700000/);
+    }
+  }
+});

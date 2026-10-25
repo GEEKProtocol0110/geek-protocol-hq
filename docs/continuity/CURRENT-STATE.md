@@ -25,9 +25,9 @@ Record date: 2026-10-25. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: needs-evidence.** The founder-approved one-time fresh TN10 test is merged, live and activated. HQ logged atomic fresh creation/original service retirement; scheduled worker attempts persist their own receipt but commit submission is rejected and transfer acceptance remains unproved.
+**CHAIN-004: needs-evidence.** Diagnose the retained fresh test submission without exposing raw node errors or creating another payment. Candidate distinguishes exact node fee, mass, maturity, double-spend and policy rejection categories; saved journals and sender configuration remain intact.
 
-Next task: **CHAIN-004**. Diagnose the fresh journal commit rejection using fixed private-safe categories; scheduled October 25 runs show UNCLASSIFIED at submit-commit, RPC_INPUT_UNAVAILABLE at submit-reveal, commitInputsAvailable=true/revealInputAvailable=false and reconciling. Preserve both receipts and the permanent retirement marker; do not create another fresh attempt or resume blocked separate address-history queries. Real-phone account/status and restore acceptance remain separate.
+Next task: **CHAIN-004**. Release the checked fixed-category diagnostic correction, observe one naturally scheduled same-journal attempt and use its specific node rejection to choose a repair. Do not create another fresh attempt or resume blocked separate history disclosures.
 
 ## Holds
 
