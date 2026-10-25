@@ -25,9 +25,9 @@ Record date: 2026-10-25. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: needs-evidence.** The first automatic reward is indexed-confirmed and phone-wallet received. A second supplied TN10 wallet now has live private Production pilot approval for the normal account-saved-address/new-Daily flow. Account save, new run admission and second-wallet payout remain pending.
+**CHAIN-004: needs-evidence.** The first automatic reward is phone-wallet received. After the founder reports the second-wallet account save and new Daily finish, the normal worker submits a new job at 08:47 and reports indexed-confirmed at 08:49 Detroit. Second-wallet receipt/display and the authenticated HQ Rewards view remain separate.
 
-Next task: **CHAIN-004**. Second-wallet normal Daily pilot approval is live. Founder saves the supplied TN10 receiving address in the Geek account, confirms on the device, completes a new eligible Kaspa Daily and chooses Finish & save result. Then observe normal automatic admission, scheduled exact-hash acceptance and the second wallet receipt. Do not reset Daily/earning locks or create another independent fresh-test exception.
+Next task: **CHAIN-004**. The reported second-wallet Daily now correlates with normal automatic submission and indexed confirmation. Confirm +1 GEEKT in that TN10 wallet and the saved account’s Rewards view, then complete remaining account/status and provider-recovery acceptance. Preserve both established payments and all earning/recipient/budget/journal lineage; no new test or replay is needed for this verification.
 
 ## Holds
 
