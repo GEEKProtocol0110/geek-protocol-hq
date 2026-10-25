@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-10-25. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -25,9 +25,9 @@ Record date: 2026-10-24. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: blocked.** Payment journals remain preserved. Chain-history API access returns a verification challenge; automatic approval review blocked sending the known sender/recipient identifiers to the separate Kasplex history lookup. Explicit approval for those read-only disclosures is required before continuing that route.
+**CHAIN-004: needs-evidence.** Founder explicitly approves one fresh same-recipient 1-GEEKT TN10 test with duplicate-payment risk accepted. Candidate preserves the old journal and locks, permanently stops its service retries, and creates one linked fresh attempt under the sender lease and existing limits.
 
-Next task: **CHAIN-004**. Await explicit founder approval to query the dedicated TN10 sender and recipient at the fixed Kasplex API for read-only operation history and recipient holdings, with private intermediate retention. Do not bypass the automatic-review rejection or the separate chain-history verification challenge. Continue original funding-history reconciliation only within approved access; preserve payment journals and all locks.
+Next task: **CHAIN-004**. Verify and release the one-time fresh-test exception, store the exact approved reveal/recipient in private Production configuration, then observe the naturally scheduled worker. Confirm original retries stopped and exactly one fresh attempt; record observed indexer acceptance separately. Do not resume the separately blocked address-history queries.
 
 ## Holds
 

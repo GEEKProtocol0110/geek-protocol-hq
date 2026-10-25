@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-24",
+  "updatedAt": "2026-10-25",
   "priorityOrder": [
     "P0",
     "P1",
@@ -1059,17 +1059,18 @@
     {
       "id": "CHAIN-004",
       "priority": "P0",
-      "status": "blocked",
+      "status": "needs-evidence",
       "title": "Automate eligible Daily GEEKT test rewards",
       "owner": "Maintainer; founder controls test funding and device acceptance",
-      "nextAction": "Obtain explicit authorization for sending the supplied sender/recipient identifiers to the fixed Kasplex history API and privately retaining its response. Then perform the bounded read-only reconciliation; no new transaction, journal replacement or lock change is implied.",
+      "nextAction": "Release the verified DR-027 exception and activate only the exact approved unresolved reveal/recipient. Observe the old receipt retained with service retries stopped and one fresh 1-GEEKT job; confirm the actual scheduled result. Separate history disclosures remain unapproved.",
       "acceptance": [
         "Owner enrolls a player once; eligible completed Daily and reward job commit together without copying run IDs.",
         "Dedicated TN10 signer persists exact signed commit/reveal before broadcast; concurrency, lost responses and restarts never create a second payment.",
         "Same-hash acceptance appears automatically for the enrolled player; private records stay private.",
         "Separate scheduled signer deployed, funded and one actual automatic transfer accepted; implementation/offline checks alone are insufficient.",
         "Mainnet settlement, CCE and collectible ownership remain disabled.",
-        "Exact Kasplex 403/404 op-not-found transfer lookups remain pending and permit immutable-journal recovery; other failures and pinned asset/deployment checks still stop work."
+        "Exact Kasplex 403/404 op-not-found transfer lookups remain pending and permit immutable-journal recovery; other failures and pinned asset/deployment checks still stop work.",
+        "The single DR-027 exception retains original job/journal/earning locks, permanently stops service retries with a durable marker, consumes the normal daily/recipient/capacity budget and creates only one same-recipient 1-GEEKT child despite restarts, lost replies and stale workers."
       ],
       "dependsOn": [
         "CHAIN-001"
@@ -1086,7 +1087,9 @@
         "workers/testnet/diagnostics.mjs",
         "tests/testnet-diagnostics.test.js",
         "workers/testnet/rpc-health.mjs",
-        "tests/testnet-rpc-health.test.js"
+        "tests/testnet-rpc-health.test.js",
+        "docs/ONE-FRESH-GEEKT-TEST.md",
+        "server/testnet-fresh-test.js"
       ],
       "releaseEvidence": [
         "PR #153 merged October 18 at 08:03:24 UTC as eff74c91972aff5bf962237b4aa1104938d75a5e. Exact head 3605e65edbe85607a7e3f189e4b627493fca3cce/tree 66283763efa1619e304bd874fc45ae7ab751f701 matches local 1f3dce63382d1d83ebbb0f7cfa567386bbf80c3d. CI 39109899250 passed; no submitted reviews/threads. Full verify passed 594 HQ tests plus four separate offline SDK tests, zero failures/skips, real Redis 7.0.15, 311 security assertions and supporting checks. Worker dependency audit: zero vulnerabilities. Preview dpl_kVpn59DxerfjGUtuLKeL1ZZkt8Ck READY; HTTP Play and worker GET/405 verified, player-status fetch was blocked by the preview authentication helper. Production dpl_JD8HQ2oF3bDZimGa8YT2aY4mEAnw READY on the exact merge with both canonical domains assigned. Six canonical checks passed under 15-second limits: Play HTML, exact status-client bytes, private player 401, unauthorized worker POST 401, private owner-auto 401 and Testnet desk 303. Initial unsuffixed API probes returned expected platform 308 redirects; corrected canonical paths passed. Follow-up fixes the isolated worker to use /api/session/ directly because its HTTP client rejects redirects. Error-level deployment samples were Node DEP0169 url.parse deprecation warnings. No rendered-device/automatic-transfer acceptance is claimed. Vercel denied creation of geek-geekt-testnet-worker in the existing team with 403 forbidden/no project-create permission; no CLI or CLI credentials are available. No signer wallet, production signing secret, new environment value, funded worker or actual automatic payment was created. Automatic admission remains off; manual proof stays complete, Mainnet/CCE/ownership holds unchanged.",
@@ -1098,7 +1101,7 @@
         "Signer diagnostics #164 merged as c4d846173542e9cb25cbad4e4d31646dbbcbd30d; checked head 7390adad9a7e34ad73543cfabbd3ffc57319a3b7/tree e1729ca8bb1d0a10c6a91ded099b392dc56a7be9. Security verification 40129547510 and both previews succeeded; no submitted reviews/threads. HQ production dpl_3VBohe1mFj2iiLPM17ddnmcWsqdA is Ready on the merge with canonical domains. Browser confirms signer production dpl_F1vntjCrNJBdwHnR1M95HqMVuZEc Ready on the same merge. Unauthorized HQ worker and signer cron remain 401 private/no-store. Naturally scheduled October 24 16:25:47 Detroit logs show verify/RPC_TIMEOUT; the 16:28:47 run reaches both submit-commit and submit-reveal with RPC_INPUT_UNAVAILABLE and returns reconciling/200. HTTP 200 is therefore not acceptance. No Run action or new payment was performed.",
         "Node recovery/input diagnosis #165 merged as 55b034015d9f0cfe606b8f2edae42ca66995a90b; checked head b22fe82cfaf51fb11d6a7c54b62fe94b48b778a8/tree e62ea6a1519c6cbc7daccf00c6e9379edb00cfba. Exact-head Security verification 40130338386 and both previews succeeded; no submitted reviews/threads. HQ production dpl_3omRzkPccTTA6bYr4dGk4amuw46T is Ready on the merge with canonical domains. The browser confirms signer dpl_BVFKvroiQe8CwASFBPZn5Bnkhe7g Ready on the same merge. Unauthorized HQ worker and signer cron each return 401 private/no-store. Full verification passed 666 HQ tests plus six offline signer tests, zero failures/skips, required real Redis and 311 security assertions, with all supporting checks. The first new scheduled run at October 24 16:36:47 Detroit reports RPC_CONNECT_TIMEOUT. The 16:37:47 run verifies the node/asset, logs RPC_INPUT_UNAVAILABLE for commit and reveal, and reports commitInputsAvailable=false/revealInputAvailable=false before reconciling/200. This proves the current synced-node UTXO snapshot lacks both saved outpoints; it does not identify a competing spend, establish historical chain acceptance or authorize a replacement. No Run action, key read/change, manual send, journal replacement or lock/enrollment change occurred. Original automatic payment acceptance remains unresolved."
       ],
-      "blocker": "Original payment still lacks confirmed acceptance and its saved outpoints were absent in the observed synced-node snapshot. The chain-history API returns a verification challenge. Automatic approval review rejected the proposed Kasplex sender-operation/recipient-holding lookups because disclosure of prior/private wallet identifiers was not clearly authorized. No bypass or alternative execution of the rejected queries is permitted without resolving that authorization.",
+      "blocker": "Original funding-history evidence remains incomplete. Founder explicitly accepts possible arrival of both payments for one bounded fresh TN10 test. Implementation, deployment, exact private activation and actual fresh-transfer acceptance remain separate.",
       "validationEvidence": [
         "October 24 read-only continuation: the original reveal is still absent from the fixed TN10 operation endpoint (403 op not found/result null). HQ error samples are DEP0169 warnings; signer logs and project lookup return 404 through the current Vercel connection. No signing, send, replay, key/journal/recipient mutation or provider reconfiguration occurred.",
         "October 24 continuation after #165: the installed pinned Kasplex SDK confirms the operation-list path and query interface. A bounded chain-history OpenAPI read returns 403/non-JSON with a verification challenge; no challenge bypass is attempted. Automatic review rejects the separate wallet-identifier history queries. No successful history response or funding-spend attribution is established. Runtime/payment state remains unchanged."
