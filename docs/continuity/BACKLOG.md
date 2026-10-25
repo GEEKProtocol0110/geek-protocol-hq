@@ -715,9 +715,9 @@ Evidence/specification: [docs/FIRST-PROOF-LAUNCH.md](../../docs/FIRST-PROOF-LAUN
 
 **P0 / needs-evidence.** Owner: Maintainer; founder controls test funding and device acceptance. Dependencies: CHAIN-001.
 
-Next action: Release the verified DR-027 exception and activate only the exact approved unresolved reveal/recipient. Observe the old receipt retained with service retries stopped and one fresh 1-GEEKT job; confirm the actual scheduled result. Separate history disclosures remain unapproved.
+Next action: Diagnose the fresh journal commit rejection using fixed private-safe categories; scheduled October 25 runs show UNCLASSIFIED at submit-commit, RPC_INPUT_UNAVAILABLE at submit-reveal, commitInputsAvailable=true/revealInputAvailable=false and reconciling. Preserve both receipts and the permanent retirement marker; do not create another fresh attempt or resume blocked separate address-history queries. Real-phone account/status and restore acceptance remain separate.
 
-Blocker: Original funding-history evidence remains incomplete. Founder explicitly accepts possible arrival of both payments for one bounded fresh TN10 test. Implementation, deployment, exact private activation and actual fresh-transfer acceptance remain separate.
+Blocker: One approved fresh attempt is created and original service retries are durably stopped. Scheduled fresh commit submission fails with the current UNCLASSIFIED category while its input remains available; the dependent reveal input is absent. Actual indexed acceptance and real-device evidence are still missing. No second fresh attempt is authorized.
 
 Acceptance:
 

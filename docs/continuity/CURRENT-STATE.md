@@ -25,9 +25,9 @@ Record date: 2026-10-25. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**CHAIN-004: needs-evidence.** Founder explicitly approves one fresh same-recipient 1-GEEKT TN10 test with duplicate-payment risk accepted. Candidate preserves the old journal and locks, permanently stops its service retries, and creates one linked fresh attempt under the sender lease and existing limits.
+**CHAIN-004: needs-evidence.** The founder-approved one-time fresh TN10 test is merged, live and activated. HQ logged atomic fresh creation/original service retirement; scheduled worker attempts persist their own receipt but commit submission is rejected and transfer acceptance remains unproved.
 
-Next task: **CHAIN-004**. Verify and release the one-time fresh-test exception, store the exact approved reveal/recipient in private Production configuration, then observe the naturally scheduled worker. Confirm original retries stopped and exactly one fresh attempt; record observed indexer acceptance separately. Do not resume the separately blocked address-history queries.
+Next task: **CHAIN-004**. Diagnose the fresh journal commit rejection using fixed private-safe categories; scheduled October 25 runs show UNCLASSIFIED at submit-commit, RPC_INPUT_UNAVAILABLE at submit-reveal, commitInputsAvailable=true/revealInputAvailable=false and reconciling. Preserve both receipts and the permanent retirement marker; do not create another fresh attempt or resume blocked separate address-history queries. Real-phone account/status and restore acceptance remain separate.
 
 ## Holds
 

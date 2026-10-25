@@ -37,10 +37,10 @@
   "currentWork": {
     "id": "CHAIN-004",
     "status": "needs-evidence",
-    "description": "Founder explicitly approves one fresh same-recipient 1-GEEKT TN10 test with duplicate-payment risk accepted. Candidate preserves the old journal and locks, permanently stops its service retries, and creates one linked fresh attempt under the sender lease and existing limits."
+    "description": "The founder-approved one-time fresh TN10 test is merged, live and activated. HQ logged atomic fresh creation/original service retirement; scheduled worker attempts persist their own receipt but commit submission is rejected and transfer acceptance remains unproved."
   },
   "nextTask": "CHAIN-004",
-  "nextAction": "Verify and release the one-time fresh-test exception, store the exact approved reveal/recipient in private Production configuration, then observe the naturally scheduled worker. Confirm original retries stopped and exactly one fresh attempt; record observed indexer acceptance separately. Do not resume the separately blocked address-history queries.",
+  "nextAction": "Diagnose the fresh journal commit rejection using fixed private-safe categories; scheduled October 25 runs show UNCLASSIFIED at submit-commit, RPC_INPUT_UNAVAILABLE at submit-reveal, commitInputsAvailable=true/revealInputAvailable=false and reconciling. Preserve both receipts and the permanent retirement marker; do not create another fresh attempt or resume blocked separate address-history queries. Real-phone account/status and restore acceptance remain separate.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
