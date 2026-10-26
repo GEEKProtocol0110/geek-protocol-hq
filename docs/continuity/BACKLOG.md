@@ -738,7 +738,7 @@ Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-G
 
 **P1 / needs-evidence.** Owner: Maintainer; founder confirms actual-phone behavior. Dependencies: none.
 
-Next action: Authenticated Rewards rendering, signed-out privacy, same-account phone return and phone app-background/return/refresh receipt persistence are founder-confirmed. Verify separate account-switching and browser back-forward/page-cache interruption cases before closing the full status-recovery task; provider recovery remains OPS-001. Do not repeat the completed payout or infer cross-device acceptance.
+Next action: Authenticated Rewards rendering, signed-out privacy, same-account phone return, app-background/return/refresh receipt persistence, Back-navigation receipt rendering and signed-out Back-navigation privacy are founder-confirmed or screenshot-supported. Separate account-switching and broader browser/device coverage remain unverified; keep CHAIN-005 open for those cases. Continue the scoped Quest campaign/replay and two-person Royale checks under PILOT-001 without repeating the completed payout; provider recovery remains OPS-001.
 
 Acceptance:
 

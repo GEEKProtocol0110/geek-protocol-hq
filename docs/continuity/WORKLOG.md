@@ -787,3 +787,10 @@ Verification command: `node --test tests/recovery.test.js tests/recovery-safety.
 - **Outcome:** receipt persistence passed for this founder-reported sequence. No new payout was requested; an independently observed chain-level no-duplicate-payment result, exact timing and device/browser matrix are not inferred.
 - **Validation:** documentation-only update; continuity generation/validation and whitespace checks passed. No runtime, provider or payment configuration change.
 - **Next:** separate account-switching and browser back-forward/page-cache checks remain under CHAIN-005. Keep the completed payout and phone recovery acceptance; OPS-001 managed-provider/application recovery remains separate.
+
+## October 26, 2026 — CHAIN-005 phone Back-navigation and sign-out privacy
+
+- **Evidence/base:** two founder-supplied phone Rewards screenshots following the instructed return-with-Back and sign-out/Back sequences. Open PR #170 previously held checked tree `89839cda836b2435cebfb68dfa3a9b5f5565d93d`, remote head `a5d05caba8439afdce5ba804fbdd23d0a3dd9b97`.
+- **Outcome:** same confirmed receipt visible on the signed-in return; signed-out return shows sign-in prompts and no prior address/receipt details in the supplied view. Browser cache internals and complete hidden-DOM state were not instrumented. Private screenshots and identifiers are omitted. No new payout requested.
+- **Validation:** documentation-only continuity generation/validation and whitespace checks passed; no runtime, database or payment setting changed.
+- **Next:** separate-account switching and broader device coverage remain open. Continue PILOT-001 four-chapter Quest completion/replay and two-person Royale; managed-provider/application recovery remains OPS-001.
