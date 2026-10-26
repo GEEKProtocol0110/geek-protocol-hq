@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-10-25. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-10-26. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -25,9 +25,9 @@ Record date: 2026-10-25. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**OPS-001: needs-evidence.** Founder downloaded a manual provider export and chose to retain the free plan with daily backups off. The supplied snapshot passed native format parsing, isolated local restore, profile validation, restored-session cleanup and a second save/restore with preserved remaining values and expirations. Managed-provider restore and protected application recovery remain unverified.
+**PILOT-001: blocked.** One explicitly approved live Royale room confirmed two distinct guest seats, ready/start with two of four seats, and a shared question. Browser transport interrupted answer submission; both seats timed out, then saved-player service errors blocked final-result recovery. The message maps to the Redis failure handler, but provider/root cause is not observable. Preserve the 24 focused tests, 13 isolated browser passes, actual-phone checks and manual-export recovery evidence.
 
-Next task: **OPS-001**. Retain the founder-downloaded manual export and make fresh exports before major updates and after important payout tests; automatic daily backups remain disabled to retain the free plan. When a separately isolated provider target is available, complete the managed restore and protected application recovery drill in docs/BACKUP-RECOVERY.md, including live-baseline comparison, audit integrity, post-backup credential changes and pending payout reconciliation. Keep the restored application disconnected from workers with payouts disabled; provider restore and production cutover are not accepted by this local result.
+Next task: **PILOT-001**. Diagnose the live saved-player/Redis failure before another Royale run: add bounded, sanitized failure-class/status diagnostics without commands, tokens, keys, URLs or player data, then correlate the failing request with the provider and deployment. Do not retry payment/game writes, reset profiles, restore production or change billing as a diagnostic shortcut. Reconcile the existing test room before any separately authorized live retest; preserve the phone checks and 37 passing local checks without claiming full live acceptance.
 
 ## Holds
 

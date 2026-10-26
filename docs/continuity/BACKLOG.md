@@ -17,7 +17,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | BANK-006 | P1 | planned | Reach 1,000 reviewed History concepts | Content editor unassigned |
 | BANK-007 | P1 | planned | Reach 1,000 reviewed Comics concepts | Content editor unassigned |
 | BANK-008 | P1 | planned | Reach 1,000 reviewed Pop culture concepts | Content editor unassigned |
-| PILOT-001 | P0 | needs-evidence | Complete the real-device free-beta pilot | Founder and consenting pilot participants |
+| PILOT-001 | P0 | blocked | Complete the real-device free-beta pilot | Founder and consenting pilot participants |
 | OPS-001 | P0 | needs-evidence | Verify operator access and managed-data recovery | Founder; private account custodian unassigned |
 | OPS-002 | P1 | decision-needed | Appoint a successor and second trusted maintainer | Founder |
 | ECON-001 | P1 | decision-needed | Specify funded contributor and learner rewards | Founder with economic and legal review |
@@ -213,9 +213,11 @@ Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.m
 
 ## PILOT-001: Complete the real-device free-beta pilot
 
-**P0 / needs-evidence.** Owner: Founder and consenting pilot participants. Dependencies: none.
+**P0 / blocked.** Owner: Founder and consenting pilot participants. Dependencies: none.
 
-Next action: Retain phone Quest badge/replay acceptance and automated Royale results; do not repeat completed local scenarios manually. A deployed two-session guest match remains unverified pending explicit authorization for one private production test room. Broader device/learning coverage, independent human participation and Beta approval remain separate; no monetary or provider-recovery acceptance is implied.
+Next action: Diagnose the live saved-player/Redis failure before another Royale run: add bounded, sanitized failure-class/status diagnostics without commands, tokens, keys, URLs or player data, then correlate the failing request with the provider and deployment. Do not retry payment/game writes, reset profiles, restore production or change billing as a diagnostic shortcut. Reconcile the existing test room before any separately authorized live retest; preserve the phone checks and 37 passing local checks without claiming full live acceptance.
+
+Blocker: The approved live two-guest Royale room created, joined and started, but browser transport interrupted answer submission and subsequent views/reconnect showed the generic saved-player service-unavailable error. Source maps that message to Redis failures without diagnostic logging. The authoritative final result and live answer-lock/reload behavior remain unverified; no root cause is established.
 
 Acceptance:
 
