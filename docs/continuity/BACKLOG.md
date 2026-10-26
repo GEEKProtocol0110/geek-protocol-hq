@@ -738,7 +738,7 @@ Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-G
 
 **P1 / needs-evidence.** Owner: Maintainer; founder confirms actual-phone behavior. Dependencies: none.
 
-Next action: Authenticated Rewards rendering, signed-out privacy and same-account phone return are founder-confirmed. Verify separate account-switching and background/page-cache interruption cases before closing the full status-recovery task; provider recovery remains OPS-001.
+Next action: Authenticated Rewards rendering, signed-out privacy, same-account phone return and phone app-background/return/refresh receipt persistence are founder-confirmed. Verify separate account-switching and browser back-forward/page-cache interruption cases before closing the full status-recovery task; provider recovery remains OPS-001. Do not repeat the completed payout or infer cross-device acceptance.
 
 Acceptance:
 
