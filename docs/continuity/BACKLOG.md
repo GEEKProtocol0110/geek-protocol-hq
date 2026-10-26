@@ -215,7 +215,7 @@ Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.m
 
 **P0 / needs-evidence.** Owner: Founder and consenting pilot participants. Dependencies: none.
 
-Next action: Preserve the earlier Quest-resume, saved-account return and current phone Rewards privacy acceptance. Chapter 3/4 completion and saved badges are screenshot-supported; First Signal replay refresh/resume, badge retention and later unlock preservation are founder-confirmed. Next run the two-person Royale pilot with a four-seat limit: both ready, start with two, observe shared reveal and accepted-answer reload, then a valid result. Keep broader phone Study/profile/device coverage and complete beta acceptance separate; do not repeat the completed GEEKT payout.
+Next action: Retain phone Quest badge/replay acceptance and automated Royale results; do not repeat completed local scenarios manually. A deployed two-session guest match remains unverified pending explicit authorization for one private production test room. Broader device/learning coverage, independent human participation and Beta approval remain separate; no monetary or provider-recovery acceptance is implied.
 
 Acceptance:
 

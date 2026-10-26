@@ -801,3 +801,10 @@ Verification command: `node --test tests/recovery.test.js tests/recovery-safety.
 - **Outcome:** accept the shown badge persistence and founder-reported replay/resume sequence. Full chapter-by-chapter observation, exact replay step and device matrix are not inferred; private screenshots and player identifiers are omitted.
 - **Validation:** continuity generation/validation and whitespace checks passed. Documentation only; no runtime, player data, monetary configuration or Beta label change.
 - **Next:** two consenting participants test a four-seat Royale room starting with two, shared reveal, accepted-answer reload and result. Broader device/learning coverage and managed-provider recovery retain their own evidence limits.
+
+## October 26, 2026 — PILOT-001 automated two-browser Royale verification
+
+- **Scope/base:** shipped Royale page/API/native-Redis flow on checked tree `57017111953eee35262e92a6cffb42985493ef0c`, open PR #170.
+- **Validation:** 24 focused tests and 13 real Chromium HTTPS flow checks passed with zero final failures/skips; two independent browser contexts, disposable native Redis, normal deadlines, partial-room start, answer/reload/reveal/result, host tools and narrow/wide containment. Initial harness working-directory and private empty-collection assertions were corrected; no application fix was needed. No profile reward or payout jobs created.
+- **Limits:** deployed page and guest-ready rendering observed read-only; no live match or room creation. Independent human participation, physical-device and capacity acceptance remain separate.
+- **Next:** continue automated verification; explicit authorization is needed for a private production test room. Do not repeat the completed local checks manually.
