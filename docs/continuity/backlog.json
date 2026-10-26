@@ -245,7 +245,7 @@
       "status": "needs-evidence",
       "title": "Complete the real-device free-beta pilot",
       "owner": "Founder and consenting pilot participants",
-      "nextAction": "Use the refreshed #137 runtime checklist. Preserve the earlier Quest-resume success, October 16 phone passkey success and limited mobile-edge improvement. Record returning saved-player login, four-chapter completion/replay and a two-person Royale run on actual devices.",
+      "nextAction": "Preserve the earlier Quest-resume, saved-account return and current phone Rewards privacy acceptance. Chapter 3/4 completion and saved badges are screenshot-supported; First Signal replay refresh/resume, badge retention and later unlock preservation are founder-confirmed. Next run the two-person Royale pilot with a four-seat limit: both ready, start with two, observe shared reveal and accepted-answer reload, then a valid result. Keep broader phone Study/profile/device coverage and complete beta acceptance separate; do not repeat the completed GEEKT payout.",
       "acceptance": [
         "Four Quest chapters retain completion/replay state.",
         "Phone sign-in/profile/Study flow passes.",
@@ -254,6 +254,9 @@
       "dependsOn": [],
       "evidence": [
         "docs/FREE-BETA-READINESS.md"
+      ],
+      "validationEvidence": [
+        "October 26 founder phone Quest evidence: the supplied profile screenshot shows chapter 3 and chapter 4 as latest visit complete with their badges marked saved. After instructions to replay First Signal, refresh partway through, and verify the same step resumes with prior badges retained and later chapters unlocked, the founder confirms success. This records the shown chapter completion/badge persistence and founder-reported replay/resume behavior on the existing phone account. Exact replay step, timing, full chapter-by-chapter review coverage and additional devices were not independently captured. Two-person Royale and broader pilot acceptance remain pending; no Beta label or monetary gates are changed. Screenshots and individual player identifiers remain outside the public record."
       ]
     },
     {

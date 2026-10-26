@@ -794,3 +794,10 @@ Verification command: `node --test tests/recovery.test.js tests/recovery-safety.
 - **Outcome:** same confirmed receipt visible on the signed-in return; signed-out return shows sign-in prompts and no prior address/receipt details in the supplied view. Browser cache internals and complete hidden-DOM state were not instrumented. Private screenshots and identifiers are omitted. No new payout requested.
 - **Validation:** documentation-only continuity generation/validation and whitespace checks passed; no runtime, database or payment setting changed.
 - **Next:** separate-account switching and broader device coverage remain open. Continue PILOT-001 four-chapter Quest completion/replay and two-person Royale; managed-provider/application recovery remains OPS-001.
+
+## October 26, 2026 — PILOT-001 phone Quest badges and replay resume
+
+- **Evidence/base:** founder supplies profile view showing saved completed badges for chapters 3 and 4, then confirms the instructed First Signal replay refresh resumes the same step with badges and later unlocks retained. Documentation continues open PR #170 on checked tree `c59f82988d8ffad5b16d97012d91728af0d76109`, remote head `11da3dad24c67e3543fad353bfcfdc2324fe1c0e`.
+- **Outcome:** accept the shown badge persistence and founder-reported replay/resume sequence. Full chapter-by-chapter observation, exact replay step and device matrix are not inferred; private screenshots and player identifiers are omitted.
+- **Validation:** continuity generation/validation and whitespace checks passed. Documentation only; no runtime, player data, monetary configuration or Beta label change.
+- **Next:** two consenting participants test a four-seat Royale room starting with two, shared reveal, accepted-answer reload and result. Broader device/learning coverage and managed-provider recovery retain their own evidence limits.
