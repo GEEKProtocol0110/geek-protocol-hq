@@ -25,9 +25,9 @@ Record date: 2026-10-26. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**PILOT-001: blocked.** The approved live Royale run remains blocked at saved-player storage. A candidate now adds sanitized Redis failure class, request stage, operation type, HTTP status and bounded duration diagnostics; provider/transport root cause is still unknown. Earlier phone, recovery and 37 automated Royale checks remain evidence. The candidate is not merged or deployed.
+**PILOT-001: blocked.** PR #170 storage diagnostics are merged and deployed. One production read-only database health request returned 200 with storage connected. Recent deployment errors showed a deprecation warning, not a Redis failure. The earlier live Royale final result and storage root cause remain unverified; earlier phone, recovery and automated checks remain evidence.
 
-Next task: **PILOT-001**. Review and release the tested sanitized Redis diagnostics candidate in PR #170, then correlate a bounded read-only saved-player failure with deployment runtime logs and provider status. No storage cause or live match acceptance is established yet. Reconcile the original test room before any separately authorized live retest; preserve the completed payout and existing learning, phone and local verification evidence.
+Next task: **PILOT-001**. Keep the deployed sanitized diagnostics available for the next observed saved-player failure; correlate its deployment/request time with the provider before selecting a fix. The bounded post-release health read passed and did not reproduce the earlier fault. Reconcile the original test room before a separately authorized live retest; do not infer full Royale or Beta acceptance.
 
 ## Holds
 

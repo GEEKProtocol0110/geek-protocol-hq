@@ -215,9 +215,9 @@ Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.m
 
 **P0 / blocked.** Owner: Founder and consenting pilot participants. Dependencies: none.
 
-Next action: Review and release the tested sanitized Redis diagnostics candidate in PR #170, then correlate a bounded read-only saved-player failure with deployment runtime logs and provider status. No storage cause or live match acceptance is established yet. Reconcile the original test room before any separately authorized live retest; preserve the completed payout and existing learning, phone and local verification evidence.
+Next action: Keep the deployed sanitized diagnostics available for the next observed saved-player failure; correlate its deployment/request time with the provider before selecting a fix. The bounded post-release health read passed and did not reproduce the earlier fault. Reconcile the original test room before a separately authorized live retest; do not infer full Royale or Beta acceptance.
 
-Blocker: Live Royale final result remains unverified. Sanitized Redis diagnostics are implemented in the candidate but are not merged/deployed, so the production failure class and provider/transport root cause remain unknown.
+Blocker: The diagnostic is deployed, but the earlier live Royale failure was not reproduced by the bounded health read. No authoritative final match result or precise production storage cause is established.
 
 Acceptance:
 
