@@ -215,9 +215,9 @@ Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.m
 
 **P0 / blocked.** Owner: Founder and consenting pilot participants. Dependencies: none.
 
-Next action: When the browser service is available, recover the existing test tabs and reconcile the pending timing-retry room before creating or starting anything else. Do not repeat uncertain create/join/answer actions. Preserve completed room results and fixed expiries; no reset/restore, payment or billing change. Resume the bounded accepted-answer/reload/reveal/winner check only after state is known.
+Next action: Keep the successful deployed Study and original Royale recovery evidence. Reconcile the missing private retry invitation through an allowed source or establish disposition before another live match; no history-policy workaround, uncertain mutation replay, reset, restore or payment. Continue independent BANK-001 content work while this multiplayer evidence is unavailable.
 
-Blocker: The browser service stops responding, including a 300-second state-read timeout and a second documentation-call timeout. Retry-room creation/state is uncertain. Existing test state must be reconciled before additional mutations; no application failure is inferred from browser transport.
+Blocker: Browser access returned but the ephemeral test tabs are absent. The pending private retry invitation is missing, and browser security policy blocks chrome:// history access. Retry creation/state remains unverified. Do not bypass the browser restriction or create a duplicate match to recover it; preserve fixed event expiry and existing accepted results.
 
 Acceptance:
 

@@ -25,9 +25,9 @@ Record date: 2026-10-27. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**PILOT-001: blocked.** The released finalization fix and original-room recovery remain accepted. A fresh two-guest private four-seat room reached shared reveal and saved no-winner completion, but attempted clicks were not recorded before timeout. One timing retry was initiated; browser-service timeouts then prevented confirmation of its creation/state. Live answer locking, reload and winner acceptance remain unverified. No product regression or new Redis failure is established.
+**BANK-001: active.** Production health passed all 21 standard probes on the current #172 deployment. A deployed desktop guest Study flow completed Foundations, restored a mid-run answer and completed summary after reload, and reviewed only the intentionally missed concept while preserving explored progress. Continue a small primary-source Kaspa content batch while the missing Royale retry invitation prevents safe multiplayer reconciliation.
 
-Next task: **PILOT-001**. When the browser service is available, recover the existing test tabs and reconcile the pending timing-retry room before creating or starting anything else. Do not repeat uncertain create/join/answer actions. Preserve completed room results and fixed expiries; no reset/restore, payment or billing change. Resume the bounded accepted-answer/reload/reveal/winner check only after state is known.
+Next task: **BANK-001**. Continue a small distinct primary-source Kaspa review batch toward 1,000 under BANK-001, preserving issued keys and all economic holds. PILOT-001 retains the unreconciled private retry-room limitation: the browser is available but tabs were cleaned up, and browser policy blocks history access. Do not work around that restriction or repeat uncertain Royale actions; require known room state or disposition before another live match.
 
 ## Holds
 
