@@ -17,7 +17,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | BANK-006 | P1 | planned | Reach 1,000 reviewed History concepts | Content editor unassigned |
 | BANK-007 | P1 | planned | Reach 1,000 reviewed Comics concepts | Content editor unassigned |
 | BANK-008 | P1 | planned | Reach 1,000 reviewed Pop culture concepts | Content editor unassigned |
-| PILOT-001 | P0 | needs-evidence | Complete the real-device free-beta pilot | Founder and consenting pilot participants |
+| PILOT-001 | P0 | blocked | Complete the real-device free-beta pilot | Founder and consenting pilot participants |
 | OPS-001 | P0 | needs-evidence | Verify operator access and managed-data recovery | Founder; private account custodian unassigned |
 | OPS-002 | P1 | decision-needed | Appoint a successor and second trusted maintainer | Founder |
 | ECON-001 | P1 | decision-needed | Specify funded contributor and learner rewards | Founder with economic and legal review |
@@ -213,9 +213,11 @@ Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.m
 
 ## PILOT-001: Complete the real-device free-beta pilot
 
-**P0 / needs-evidence.** Owner: Founder and consenting pilot participants. Dependencies: none.
+**P0 / blocked.** Owner: Founder and consenting pilot participants. Dependencies: none.
 
-Next action: Preserve the accepted original-room recovery and the 710 passing automated checks. Remaining Royale acceptance needs a separately authorized fresh two-participant match covering accepted answers, locked-answer reload, shared reveal and winner result. Do not reuse the old timed-out game as proof of those interactions, repeat a payout, reset records or change billing.
+Next action: When the browser service is available, recover the existing test tabs and reconcile the pending timing-retry room before creating or starting anything else. Do not repeat uncertain create/join/answer actions. Preserve completed room results and fixed expiries; no reset/restore, payment or billing change. Resume the bounded accepted-answer/reload/reveal/winner check only after state is known.
+
+Blocker: The browser service stops responding, including a 300-second state-read timeout and a second documentation-call timeout. Retry-room creation/state is uncertain. Existing test state must be reconciled before additional mutations; no application failure is inferred from browser transport.
 
 Acceptance:
 

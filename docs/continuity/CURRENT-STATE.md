@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-10-26. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-10-27. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -25,9 +25,9 @@ Record date: 2026-10-26. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**PILOT-001: needs-evidence.** PR #171 finalization fix is merged and deployed. Reopening the original room with its existing temporary host session recovered the saved finished result: both test guests timed out, no survivors and no winner. The prior service-unavailable error was absent, and the targeted deployment Redis diagnostic query returned no entries. This accepts original-room finalization/recovery, not the interrupted live answers or a fresh complete match.
+**PILOT-001: blocked.** The released finalization fix and original-room recovery remain accepted. A fresh two-guest private four-seat room reached shared reveal and saved no-winner completion, but attempted clicks were not recorded before timeout. One timing retry was initiated; browser-service timeouts then prevented confirmation of its creation/state. Live answer locking, reload and winner acceptance remain unverified. No product regression or new Redis failure is established.
 
-Next task: **PILOT-001**. Preserve the accepted original-room recovery and the 710 passing automated checks. Remaining Royale acceptance needs a separately authorized fresh two-participant match covering accepted answers, locked-answer reload, shared reveal and winner result. Do not reuse the old timed-out game as proof of those interactions, repeat a payout, reset records or change billing.
+Next task: **PILOT-001**. When the browser service is available, recover the existing test tabs and reconcile the pending timing-retry room before creating or starting anything else. Do not repeat uncertain create/join/answer actions. Preserve completed room results and fixed expiries; no reset/restore, payment or billing change. Resume the bounded accepted-answer/reload/reveal/winner check only after state is known.
 
 ## Holds
 
