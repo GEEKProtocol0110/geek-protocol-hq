@@ -1,8 +1,14 @@
 # Free-beta candidate and pilot checklist
 
-**Prepared October 9; current handoff refreshed October 18, 2026. Status: current runtime evidence recorded; broader production pilot acceptance pending. The public release remains Alpha.** This checklist covers Kaspa-first learning and free gameplay. It does not approve paid entry, GEEK rewards, cash-out, treasury settlement, burns, NFT ownership or collection minting.
+**Prepared October 9; current handoff refreshed October 27, 2026. Status: current runtime evidence recorded; broader production pilot acceptance pending. The public release remains Alpha.** This checklist covers Kaspa-first learning and free gameplay. It does not approve paid entry, GEEK rewards, cash-out, treasury settlement, burns, NFT ownership or collection minting.
 
-## Current first-proof handoff — October 18
+## Current continuation — October 27
+
+PR #171 fixed Royale finalization and the original timed-out room recovered its saved no-winner result; #172 records that acceptance. The fresh Royale check remains incomplete, and the private retry invitation was lost when test tabs were cleaned up. Browser policy blocks internal history recovery; do not bypass that restriction or repeat uncertain room actions.
+
+All 21 standard production probes passed with unchanged five-second bounds. A deployed desktop guest completed introductory Study, recovered the same mid-run review and completed summary after reload, and corrected only a deliberately missed concept without losing explored progress. This is deployed agent-operated desktop evidence; physical-device, account-switching, independent learner and full multiplayer acceptance remain separate. The maintained state/backlog own exact release evidence and current tasks. Continue useful reviewed Kaspa content while multiplayer reconciliation is unavailable.
+
+## Historical first-proof handoff — October 18
 
 The immediate task is [LAUNCH-001: first proof, then expansion](FIRST-PROOF-LAUNCH.md). Runtime #151 is the latest recorded deployed baseline: 750 reviewed Kaspa concepts; 574 tests at that release. The maintained project record owns exact later release evidence. PR #151 is now merged/deployed: 574 local tests passed, exact-head/merge CI passed and the standard 21-probe post-deployment monitor passed on GitHub. The [first-proof release record](FIRST-PROOF-LAUNCH.md#released-checkpoint--pr-151) preserves earlier local monitoring failures and all acceptance limits. Phone, wallet, provider, campaign and Royale acceptance below remain explicit. Current monitoring failures are retained in the first-proof record.
 

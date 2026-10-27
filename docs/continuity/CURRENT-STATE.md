@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-10-26. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-10-27. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -25,9 +25,9 @@ Record date: 2026-10-26. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**PILOT-001: needs-evidence.** PR #171 finalization fix is merged and deployed. Reopening the original room with its existing temporary host session recovered the saved finished result: both test guests timed out, no survivors and no winner. The prior service-unavailable error was absent, and the targeted deployment Redis diagnostic query returned no entries. This accepts original-room finalization/recovery, not the interrupted live answers or a fresh complete match.
+**BANK-001: active.** Production health passed all 21 standard probes on the current #172 deployment. A deployed desktop guest Study flow completed Foundations, restored a mid-run answer and completed summary after reload, and reviewed only the intentionally missed concept while preserving explored progress. Continue a small primary-source Kaspa content batch while the missing Royale retry invitation prevents safe multiplayer reconciliation.
 
-Next task: **PILOT-001**. Preserve the accepted original-room recovery and the 710 passing automated checks. Remaining Royale acceptance needs a separately authorized fresh two-participant match covering accepted answers, locked-answer reload, shared reveal and winner result. Do not reuse the old timed-out game as proof of those interactions, repeat a payout, reset records or change billing.
+Next task: **BANK-001**. Continue a small distinct primary-source Kaspa review batch toward 1,000 under BANK-001, preserving issued keys and all economic holds. PILOT-001 retains the unreconciled private retry-room limitation: the browser is available but tabs were cleaned up, and browser policy blocks history access. Do not work around that restriction or repeat uncertain Royale actions; require known room state or disposition before another live match.
 
 ## Holds
 
