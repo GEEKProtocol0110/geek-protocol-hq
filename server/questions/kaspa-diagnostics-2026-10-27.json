@@ -1,0 +1,254 @@
+{
+  "metadata": {
+    "title": "GEEK Protocol — Kaspa node diagnostics",
+    "version": "1.0.0",
+    "maintainedAt": "2026-10-27",
+    "questionCount": 8,
+    "conceptCount": 8,
+    "category": "Kaspa",
+    "difficultyDistribution": {
+      "easy": 3,
+      "medium": 4,
+      "hard": 1
+    },
+    "correctIndexDistribution": {
+      "0": 2,
+      "1": 2,
+      "2": 2,
+      "3": 2
+    },
+    "schema": "correctIndex is zero-based; options contains four distinct strings",
+    "sourceSnapshot": "01b532e8b553523216471682649693af92f0fd16",
+    "reviewNotice": "Internal review of the pinned Rusty Kaspa implementation. No current-network or universal API capability claim. Advanced node diagnostics remain outside introductory Study; independent editorial review is unassigned and difficulty is provisional.",
+    "attribution": "Original Geek Protocol questions referencing ISC-licensed Rusty Kaspa sources; no source prose or code imported.",
+    "licenses": [
+      "MIT"
+    ]
+  },
+  "questions": [
+    {
+      "id": "K758-0001",
+      "conceptId": "K758-0001",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Diagnostics",
+      "prompt": "In the cited Kaspa process metrics, how does resident_set_size differ from virtual_memory_size?",
+      "options": [
+        "Resident physical memory versus the process's virtual-memory usage",
+        "Available disk space versus the size of the node log",
+        "Total host RAM versus the number of CPU cores",
+        "Confirmed wallet funds versus pending wallet funds"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The monitor documents resident memory separately from virtual memory. A large virtual-memory figure is not automatically the same amount of physical RAM in use.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/metrics/perf_monitor/src/counters.rs#L63",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "node-diagnostics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    },
+    {
+      "id": "K758-0002",
+      "conceptId": "K758-0002",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Diagnostics",
+      "prompt": "In the cited Kaspa I/O display, what distinguishes disk_io_read_bytes from disk_io_read_per_sec?",
+      "options": [
+        "Disk writes versus disk reads",
+        "A byte count versus a read rate in bytes per second",
+        "Network traffic versus disk traffic",
+        "Transaction fees versus an account balance"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "The display formats the first value with B and the second with B/s. A quantity and its rate have different units and should not be treated as interchangeable.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/metrics/perf_monitor/src/counters.rs#L126",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "node-diagnostics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    },
+    {
+      "id": "K758-0003",
+      "conceptId": "K758-0003",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Diagnostics",
+      "prompt": "A cited Kaspa Borsh metrics sample has many connection attempts but few live connections. What do these measurements distinguish?",
+      "options": [
+        "Synchronized peers from orphan transactions",
+        "Accepted blocks from unsuccessful proof-of-work hashes",
+        "Currently active connections from recorded connection attempts",
+        "Outbound peers from all connected peers"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The service maps live connections to active_connections and attempts to total_connections. An attempt count does not say that the same number of clients are connected now.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1244",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "node-diagnostics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    },
+    {
+      "id": "K758-0004",
+      "conceptId": "K758-0004",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Diagnostics",
+      "prompt": "For the cited Kaspa BandwidthMetrics, what does the tx/rx distinction describe?",
+      "options": [
+        "Transactions accepted and rejected by consensus",
+        "Database bytes retained and pruned",
+        "CPU threads running and waiting",
+        "Bytes sent and received, separated by the listed transport"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "The service reads transmit and receive byte counters separately for Borsh wRPC, JSON wRPC, P2P and gRPC. Here tx labels transmitted traffic, not a count of confirmed transactions.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1255",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "node-diagnostics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    },
+    {
+      "id": "K758-0005",
+      "conceptId": "K758-0005",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Diagnostics",
+      "prompt": "What errors does the cited ResolveFinalityConflict RPC handler return in safe mode and with unsafe RPC enabled?",
+      "options": [
+        "UnavailableInSafeMode in safe mode; NotImplemented with unsafe RPC enabled",
+        "NotImplemented in safe mode; a successful resolution with unsafe RPC enabled",
+        "A successful resolution in safe mode; UnavailableInSafeMode with unsafe RPC enabled",
+        "A successful resolution in both modes"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "The handler first checks the safe-mode restriction, then explicitly returns NotImplemented. A request type or an unsafe-mode setting does not by itself establish that this operation is implemented.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1190",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "node-diagnostics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    },
+    {
+      "id": "K758-0006",
+      "conceptId": "K758-0006",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Diagnostics",
+      "prompt": "What does network_mempool_size sample in the cited Kaspa get_metrics_call implementation?",
+      "options": [
+        "Every transaction waiting anywhere on the global Kaspa network",
+        "This node's non-orphan transactions in its ordinary mempool",
+        "Only this node's orphan transactions",
+        "All unspent outputs held by wallet addresses"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The value comes from this node's mining manager with TransactionsOnly. That query excludes the orphan pool; the network-prefixed field name does not make it a census of every node.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1285",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "node-diagnostics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    },
+    {
+      "id": "K758-0007",
+      "conceptId": "K758-0007",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Diagnostics",
+      "prompt": "The cited get_metrics_call sets storage_size_bytes to zero when requested. What does this implementation show?",
+      "options": [
+        "A verified absence of all stored blocks",
+        "Proof that pruning has removed every database file",
+        "A hard-coded value, not a measurement proving the database is empty",
+        "A coin amount that must be converted from sompi to KAS"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "This pinned service constructs the field with the literal value zero. Although the response model names a storage-size field, this implementation does not measure database usage for it.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1296",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "node-diagnostics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    },
+    {
+      "id": "K758-0008",
+      "conceptId": "K758-0008",
+      "category": "Kaspa",
+      "subcategory": "Kaspa Node Diagnostics",
+      "prompt": "Which time basis does server_time in the cited Kaspa metrics response use?",
+      "options": [
+        "Seconds since the node process started",
+        "The current virtual DAA score",
+        "The cumulative number of proof-of-work hashes",
+        "Milliseconds since the Unix epoch from the node's system clock"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "The handler calls unix_now, whose definition returns SystemTime since UNIX_EPOCH in milliseconds. This timestamp is distinct from node uptime and the separately reported virtual DAA score.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1300",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "node-diagnostics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    }
+  ]
+}

@@ -10,11 +10,11 @@ Record date: 2026-10-27. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,355 active questions; 848 recorded internal source reviews; 7,152 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,363 active questions; 856 recorded internal source reviews; 7,144 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
-| Kaspa | 750 | 750 | 250 |
+| Kaspa | 758 | 758 | 242 |
 | Video games | 602 | 0 | 1000 |
 | Science fiction | 515 | 37 | 963 |
 | Technology | 1497 | 15 | 985 |
@@ -25,9 +25,9 @@ Record date: 2026-10-27. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-001: active.** Production health passed all 21 standard probes on the current #172 deployment. A deployed desktop guest Study flow completed Foundations, restored a mid-run answer and completed summary after reload, and reviewed only the intentionally missed concept while preserving explored progress. Continue a small primary-source Kaspa content batch while the missing Royale retry invitation prevents safe multiplayer reconciliation.
+**BANK-001: active.** BANK-001 adds eight internally source-checked node-diagnostics concepts at this source checkpoint: 758 Kaspa / 8,363 active / 856 review records. Introductory Study remains 537 concepts. Full local verification and pinned-source/item-hash checks passed; exact CI/merge/deployment evidence is recorded separately in the scoped review record. Old question files are preserved. The unreconciled Royale retry limitation remains under PILOT-001.
 
-Next task: **BANK-001**. Continue a small distinct primary-source Kaspa review batch toward 1,000 under BANK-001, preserving issued keys and all economic holds. PILOT-001 retains the unreconciled private retry-room limitation: the browser is available but tabs were cleaned up, and browser policy blocks history access. Do not work around that restriction or repeat uncertain Royale actions; require known room state or disposition before another live match.
+Next task: **BANK-001**. Record the exact release of the checked node-diagnostics batch and verify aggregate count/readiness delivery, then continue the remaining 242 distinct Kaspa concepts toward 1,000. Preserve prior answer-key bytes, the introductory Study pool and all economic holds. Independent editorial review remains unassigned; the Royale retry must be reconciled before any further live-match mutation.
 
 ## Holds
 

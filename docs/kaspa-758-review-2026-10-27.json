@@ -1,0 +1,128 @@
+{
+  "reviewedAt": "2026-10-27",
+  "dateBasis": "America/Detroit review date",
+  "reviewKind": "internal-source-check",
+  "independentReview": false,
+  "difficultyCalibration": "provisional-editorial",
+  "sourceRepository": "kaspanet/rusty-kaspa",
+  "sourceSnapshot": "01b532e8b553523216471682649693af92f0fd16",
+  "sourceLicense": "ISC",
+  "questionCount": 8,
+  "sources": [
+    {
+      "path": "rpc/core/src/model/message.rs",
+      "commit": "01b532e8b553523216471682649693af92f0fd16",
+      "sha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
+      "gitBlobSha": "b60c39b4a31aab28cdfe3c787a1d21d1b87c473c"
+    },
+    {
+      "path": "rpc/service/src/service.rs",
+      "commit": "01b532e8b553523216471682649693af92f0fd16",
+      "sha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "gitBlobSha": "2b2f6f0ae9e471b4e995d04596697f8053c91ebf"
+    },
+    {
+      "path": "metrics/perf_monitor/src/counters.rs",
+      "commit": "01b532e8b553523216471682649693af92f0fd16",
+      "sha256": "95a269058f5e0fd2efdca296a3760c713d66ca5bccbeb2e52509aded1b8c0433",
+      "gitBlobSha": "117f6e386f5fe9f5d3915c2d064e4a9c3f569a0c"
+    },
+    {
+      "path": "mining/src/model/tx_query.rs",
+      "commit": "01b532e8b553523216471682649693af92f0fd16",
+      "sha256": "f2f046a3cd6574111560869f4406585538eddefcae3c48f4f914acdf329cf08c",
+      "gitBlobSha": "11918beaedbc4f5127f33a74729d7bbb3fcef16e"
+    },
+    {
+      "path": "core/src/time.rs",
+      "commit": "01b532e8b553523216471682649693af92f0fd16",
+      "sha256": "585b39332b2bc9ce1259005a2556b285c27a4a154a2fd860c0b48d7736c25f4b",
+      "gitBlobSha": "03555ec760d247d301484950ead6463e633f80a2"
+    },
+    {
+      "path": "LICENSE",
+      "commit": "01b532e8b553523216471682649693af92f0fd16",
+      "sha256": "fb06b99a835c4cdade7f2f180fd87c0198d552cf1e0cd14c34716411b009a92f",
+      "gitBlobSha": "b66757abcbb384c1b5d87bbb62122d8adba0546e"
+    }
+  ],
+  "items": [
+    {
+      "id": "K758-0001",
+      "concept": "resident-versus-virtual-memory",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/metrics/perf_monitor/src/counters.rs#L63",
+      "evidenceSymbol": "pub resident_set_size: u64",
+      "sourceSha256": "95a269058f5e0fd2efdca296a3760c713d66ca5bccbeb2e52509aded1b8c0433",
+      "questionSha256": "f331eb02b2e4401d60966b8a77856de3291d20c277b691ad74c15f9031be3524"
+    },
+    {
+      "id": "K758-0002",
+      "concept": "disk-byte-count-versus-rate",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/metrics/perf_monitor/src/counters.rs#L126",
+      "evidenceSymbol": "impl Display for IoMetricsDisplay",
+      "sourceSha256": "95a269058f5e0fd2efdca296a3760c713d66ca5bccbeb2e52509aded1b8c0433",
+      "questionSha256": "7886708a3be321afc417b564f1427046e1a8f2ea051863731e324f6b20e0d757"
+    },
+    {
+      "id": "K758-0003",
+      "concept": "connection-gauge-versus-attempts",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1244",
+      "evidenceSymbol": "borsh_live_connections: self.wrpc_borsh_counters.active_connections",
+      "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "questionSha256": "e4693354053e5bc12de800d1611ea070236a80c54a397ef206b00de79f934801"
+    },
+    {
+      "id": "K758-0004",
+      "concept": "transport-byte-direction",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1255",
+      "evidenceSymbol": "let bandwidth_metrics = req.bandwidth_metrics.then",
+      "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "questionSha256": "0d14a296f564ed7f65d87a26b83b6426e6719d0fa892867aebac2e57c1090081"
+    },
+    {
+      "id": "K758-0005",
+      "concept": "finality-rpc-implementation-gate",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1190",
+      "evidenceSymbol": "Err(RpcError::NotImplemented)",
+      "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "questionSha256": "91de8aaddbd72bd31c7a7eee7910a6dbb0beda3f60363ff61e0a05c874779490"
+    },
+    {
+      "id": "K758-0006",
+      "concept": "node-local-mempool-sample",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1285",
+      "evidenceSymbol": "network_mempool_size: self.mining_manager.transaction_count_sample(TransactionQuery::TransactionsOnly)",
+      "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "questionSha256": "aa6dbf715019bc440f8fed258ed5c7ffb20b59fff67a0179857fa7eeb9281081",
+      "additionalEvidence": [
+        {
+          "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/model/tx_query.rs#L1",
+          "evidenceSymbol": "Include only non-orphan transactions from the ordinary mempool tx pool"
+        }
+      ]
+    },
+    {
+      "id": "K758-0007",
+      "concept": "storage-metric-placeholder",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1296",
+      "evidenceSymbol": "let storage_metrics = req.storage_metrics.then_some(StorageMetrics { storage_size_bytes: 0 });",
+      "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "questionSha256": "8bccc391de32e1ef34160131b4e0dcc50fd8c9863d56450937e288409f152c62"
+    },
+    {
+      "id": "K758-0008",
+      "concept": "metrics-wall-clock-basis",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1300",
+      "evidenceSymbol": "let server_time = unix_now();",
+      "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "questionSha256": "b734e547e9289194435fcdb634c9dd7555a4e4de2fdabdfda86d3cd2e43883a2",
+      "additionalEvidence": [
+        {
+          "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/core/src/time.rs#L3",
+          "evidenceSymbol": "Returns the number of milliseconds since UNIX EPOCH"
+        }
+      ]
+    }
+  ],
+  "overlapReview": "Inspected the 750 active Kaspa prompts and keyed explanations for related metrics, mass, storage, time, connections and RPC topics. Existing client/peer count, metric-group optionality, CLI observation intervals and schema-level storage-size meaning are retained. This batch tests distinct interpretation and pinned handler behavior. A proposed processed-mass aggregation item was excluded to avoid overlap with existing mass-formula concepts. Similarity checks supplement, not replace, this internal review."
+}
