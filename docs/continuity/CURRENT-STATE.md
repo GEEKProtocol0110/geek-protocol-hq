@@ -25,9 +25,9 @@ Record date: 2026-10-26. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**PILOT-001: blocked.** Reopening the original test room reproduced saved-player unavailability. Deployed diagnostics correlate its GET with an HTTP 400 database rejection. The finalization script aliases pendingResult and result; a strict encoder compatibility model fails all three finish outcomes on the old code. A candidate consumes the pending reference before serialization and passes those regressions. Production cause and recovery remain unconfirmed until release and original-room verification.
+**PILOT-001: needs-evidence.** PR #171 finalization fix is merged and deployed. Reopening the original room with its existing temporary host session recovered the saved finished result: both test guests timed out, no survivors and no winner. The prior service-unavailable error was absent, and the targeted deployment Redis diagnostic query returned no entries. This accepts original-room finalization/recovery, not the interrupted live answers or a fresh complete match.
 
-Next task: **PILOT-001**. Review/release the bounded Royale finalization candidate in PR #171, then reopen the original room once with its existing guest session. Confirm the saved final result and compare diagnostics before any new room. Do not reset or restore records, replay answers/payments, change billing or claim full pilot acceptance from the compatibility model alone.
+Next task: **PILOT-001**. Preserve the accepted original-room recovery and the 710 passing automated checks. Remaining Royale acceptance needs a separately authorized fresh two-participant match covering accepted answers, locked-answer reload, shared reveal and winner result. Do not reuse the old timed-out game as proof of those interactions, repeat a payout, reset records or change billing.
 
 ## Holds
 
