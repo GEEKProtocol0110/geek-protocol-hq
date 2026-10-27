@@ -215,9 +215,9 @@ Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.m
 
 **P0 / blocked.** Owner: Founder and consenting pilot participants. Dependencies: none.
 
-Next action: Diagnose the live saved-player/Redis failure before another Royale run: add bounded, sanitized failure-class/status diagnostics without commands, tokens, keys, URLs or player data, then correlate the failing request with the provider and deployment. Do not retry payment/game writes, reset profiles, restore production or change billing as a diagnostic shortcut. Reconcile the existing test room before any separately authorized live retest; preserve the phone checks and 37 passing local checks without claiming full live acceptance.
+Next action: Review and release the tested sanitized Redis diagnostics candidate in PR #170, then correlate a bounded read-only saved-player failure with deployment runtime logs and provider status. No storage cause or live match acceptance is established yet. Reconcile the original test room before any separately authorized live retest; preserve the completed payout and existing learning, phone and local verification evidence.
 
-Blocker: The approved live two-guest Royale room created, joined and started, but browser transport interrupted answer submission and subsequent views/reconnect showed the generic saved-player service-unavailable error. Source maps that message to Redis failures without diagnostic logging. The authoritative final result and live answer-lock/reload behavior remain unverified; no root cause is established.
+Blocker: Live Royale final result remains unverified. Sanitized Redis diagnostics are implemented in the candidate but are not merged/deployed, so the production failure class and provider/transport root cause remain unknown.
 
 Acceptance:
 

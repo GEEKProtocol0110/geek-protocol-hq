@@ -25,9 +25,9 @@ Record date: 2026-10-26. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**PILOT-001: blocked.** One explicitly approved live Royale room confirmed two distinct guest seats, ready/start with two of four seats, and a shared question. Browser transport interrupted answer submission; both seats timed out, then saved-player service errors blocked final-result recovery. The message maps to the Redis failure handler, but provider/root cause is not observable. Preserve the 24 focused tests, 13 isolated browser passes, actual-phone checks and manual-export recovery evidence.
+**PILOT-001: blocked.** The approved live Royale run remains blocked at saved-player storage. A candidate now adds sanitized Redis failure class, request stage, operation type, HTTP status and bounded duration diagnostics; provider/transport root cause is still unknown. Earlier phone, recovery and 37 automated Royale checks remain evidence. The candidate is not merged or deployed.
 
-Next task: **PILOT-001**. Diagnose the live saved-player/Redis failure before another Royale run: add bounded, sanitized failure-class/status diagnostics without commands, tokens, keys, URLs or player data, then correlate the failing request with the provider and deployment. Do not retry payment/game writes, reset profiles, restore production or change billing as a diagnostic shortcut. Reconcile the existing test room before any separately authorized live retest; preserve the phone checks and 37 passing local checks without claiming full live acceptance.
+Next task: **PILOT-001**. Review and release the tested sanitized Redis diagnostics candidate in PR #170, then correlate a bounded read-only saved-player failure with deployment runtime logs and provider status. No storage cause or live match acceptance is established yet. Reconcile the original test room before any separately authorized live retest; preserve the completed payout and existing learning, phone and local verification evidence.
 
 ## Holds
 
