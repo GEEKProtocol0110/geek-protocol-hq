@@ -215,9 +215,9 @@ Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.m
 
 **P0 / blocked.** Owner: Founder and consenting pilot participants. Dependencies: none.
 
-Next action: Keep the deployed sanitized diagnostics available for the next observed saved-player failure; correlate its deployment/request time with the provider before selecting a fix. The bounded post-release health read passed and did not reproduce the earlier fault. Reconcile the original test room before a separately authorized live retest; do not infer full Royale or Beta acceptance.
+Next action: Review/release the bounded Royale finalization candidate in PR #171, then reopen the original room once with its existing guest session. Confirm the saved final result and compare diagnostics before any new room. Do not reset or restore records, replay answers/payments, change billing or claim full pilot acceptance from the compatibility model alone.
 
-Blocker: The diagnostic is deployed, but the earlier live Royale failure was not reproduced by the bounded health read. No authoritative final match result or precise production storage cause is established.
+Blocker: The original room still returns service-unavailable; its GET correlated with a sanitized HTTP 400 storage diagnostic. A finalization alias fix passes a local strict-encoder compatibility model but is not yet merged/deployed or verified against that room. The provider internal cause is not directly observed.
 
 Acceptance:
 

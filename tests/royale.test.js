@@ -9,15 +9,41 @@ import kaspa from '@dfns/kaspa-wasm';
 import { royaleKey, royaleQuestionsKey, royalePublicKey, buildRoyaleQuestions } from '../server/royale.js';
 
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
+let rejectRepeatedTables = false;
+// Compatibility model of encoders that mark every visited table, including
+// sibling aliases, as recursive (e.g. layeh/gopher-json jsonValue.MarshalJSON).
+// This is not a claim about provider internals.
+const strictEncoder = `
+local nativeEncode = cjson.encode
+local function encode(value)
+  local seen = {}
+  local function visit(item)
+    if type(item) ~= 'table' then return end
+    if seen[item] then error('cannot encode recursively nested tables to JSON') end
+    seen[item] = true
+    for _, child in pairs(item) do visit(child) end
+  end
+  visit(value)
+  return nativeEncode(value)
+end
+local cjson = {decode = cjson.decode, encode = encode, null = cjson.null}
+`;
 process.env.UPSTASH_REDIS_REST_URL = 'https://redis.royale.test';
 process.env.UPSTASH_REDIS_REST_TOKEN = 'synthetic-royale-fixture';
 process.env.AUDIT_LOG_SECRET = 'synthetic-royale-audit-key-32-characters';
 globalThis.fetch = async (url, options) => {
   assert.match(String(url), /^https:\/\/redis\.royale\.test/);
   const values = JSON.parse(options.body); let payload;
+  if (rejectRepeatedTables && values[0] === 'EVAL' && values[1].startsWith('-- geek-royale-transition-v1')) values[1] = strictEncoder + values[1];
   if (String(url).endsWith('/multi-exec')) payload = (await fixture.commands([['MULTI'], ...values, ['EXEC']])).at(-1).map(result => ({ result }));
   else if (String(url).endsWith('/pipeline')) payload = (await fixture.commands(values)).map(result => ({ result }));
-  else payload = { result: await fixture.command(...values) };
+  else {
+    try { payload = { result: await fixture.command(...values) }; }
+    catch (error) {
+      if (!rejectRepeatedTables) throw error;
+      return new Response(JSON.stringify({error:'Synthetic encoder rejected repeated table reference'}),{status:400});
+    }
+  }
   return new Response(JSON.stringify(payload));
 };
 after(async () => { globalThis.fetch = originalFetch; await fixture.close(); });
@@ -222,6 +248,39 @@ test('timeouts create no winner; leaving removes a waiting seat or eliminates an
   g = await group(); assert.equal((await call(g.cookies[2], 'leave', g.fields)).statusCode, 200); g.cookies.pop(); assert.equal((await call(g.cookies[0], 'view', g.fields)).body.royale.players.length, 2);
   await start(g); await call(g.cookies[1], 'leave', g.fields); const view = (await call(g.cookies[1], 'view', g.fields)).body.royale; assert.equal(view.players[1].alive, false); assert.equal(view.players[1].eliminationReason, 'left');
   assert.equal((await answer(g, 1, 0)).body.code, 'ROYALE_ELIMINATED');
+});
+for (const outcome of ['no-survivors', 'last-mind', 'shared-victory']) test(`final ${outcome} result survives an encoder that rejects repeated table references`, async () => {
+  const g = await group(2); await start(g);
+  const questionNumber = outcome === 'shared-victory' ? 100 : 1;
+  const correct = (await pack(g.fields.code))[questionNumber - 1].correctIndex;
+  await mutate(g.fields.code, (r, now) => {
+    r.questionNumber = questionNumber; r.reviewedQuestion = questionNumber - 1;
+    r.startsAt = now - (questionNumber - 1) * 20000 - 15001;
+    for (const [index,p] of Object.values(r.players).entries()) {
+      p.answer = outcome === 'no-survivors' || (outcome === 'last-mind' && index === 1) ? null : {questionNumber,selectedIndex:correct,elapsedMs:100};
+    }
+  });
+  rejectRepeatedTables = true;
+  try {
+    const review = await call(g.cookies[0], 'view', g.fields);
+    assert.equal(review.statusCode,200); assert.equal(review.body.royale.state,'review'); assert.equal(review.body.royale.result,null);
+    const before = await stored(g.fields.code), snapshot = await fixture.command('GET',royaleQuestionsKey(g.fields.code));
+    const ttlBefore = await fixture.command('PTTL',royaleKey(g.fields.code));
+    // Cross only the existing shared review deadline; preserve stored TTL.
+    await fixture.command('SET',royaleKey(g.fields.code),JSON.stringify({...before,startsAt:before.startsAt-5000}),'KEEPTTL');
+    const final = await call(g.cookies[0], 'view', g.fields);
+    assert.equal(final.statusCode,200); assert.equal(final.body.royale.state,'finished');
+    assert.equal(final.body.royale.result.reason,outcome);
+    assert.deepEqual(final.body.royale.result.winners,outcome==='no-survivors'?[]:outcome==='last-mind'?[1]:[1,2]);
+    const saved = await stored(g.fields.code);
+    assert.ok(saved.pendingResult == null); assert.equal(saved.expiresAt,before.expiresAt);
+    assert.equal(saved.id,before.id); assert.equal(saved.questionHash,before.questionHash);
+    assert.deepEqual(saved.players,before.players);
+    assert.equal(await fixture.command('GET',royaleQuestionsKey(g.fields.code)),snapshot);
+    assert.ok(await fixture.command('PTTL',royaleKey(g.fields.code)) <= ttlBefore);
+    const returned = await call(g.cookies[1],'view',g.fields);
+    assert.equal(returned.statusCode,200); assert.deepEqual(returned.body.royale.result,final.body.royale.result);
+  } finally { rejectRepeatedTables = false; }
 });
 test('offline readiness, missing snapshots and expired rooms fail without accepting an answer', async () => {
   const g = await group(); for (const cookie of g.cookies) await call(cookie, 'ready', { ...g.fields, ready: true });

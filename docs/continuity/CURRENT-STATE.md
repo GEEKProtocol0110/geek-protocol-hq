@@ -25,9 +25,9 @@ Record date: 2026-10-26. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**PILOT-001: blocked.** PR #170 storage diagnostics are merged and deployed. One production read-only database health request returned 200 with storage connected. Recent deployment errors showed a deprecation warning, not a Redis failure. The earlier live Royale final result and storage root cause remain unverified; earlier phone, recovery and automated checks remain evidence.
+**PILOT-001: blocked.** Reopening the original test room reproduced saved-player unavailability. Deployed diagnostics correlate its GET with an HTTP 400 database rejection. The finalization script aliases pendingResult and result; a strict encoder compatibility model fails all three finish outcomes on the old code. A candidate consumes the pending reference before serialization and passes those regressions. Production cause and recovery remain unconfirmed until release and original-room verification.
 
-Next task: **PILOT-001**. Keep the deployed sanitized diagnostics available for the next observed saved-player failure; correlate its deployment/request time with the provider before selecting a fix. The bounded post-release health read passed and did not reproduce the earlier fault. Reconcile the original test room before a separately authorized live retest; do not infer full Royale or Beta acceptance.
+Next task: **PILOT-001**. Review/release the bounded Royale finalization candidate in PR #171, then reopen the original room once with its existing guest session. Confirm the saved final result and compare diagnostics before any new room. Do not reset or restore records, replay answers/payments, change billing or claim full pilot acceptance from the compatibility model alone.
 
 ## Holds
 

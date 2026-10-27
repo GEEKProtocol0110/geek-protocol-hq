@@ -25,3 +25,9 @@ Regression coverage lives in `tests/redis-transport.test.js`; full-suite identit
 ## Released checkpoint
 
 PR #170 merged October 26 as `a235e3dc3899f493394a486c280ae31c2c46cb6b`, tree `ab1a8bbcf1346d225b62113de6bfe9240a683e81`, matching the checked candidate. Production `dpl_3naYTQPH2BZxL6kSVjw5HPMAwwVp` is READY on that merge with both canonical domains assigned. The single post-release health read returned 200 and storage connected. Recent runtime samples showed deprecation warnings and no storage failure cause. This establishes release and point-in-time connectivity, not saved-player recovery or resolution of the earlier live Royale failure.
+
+## Original room reproduced; finalization candidate
+
+A later original-room browser recovery reproduced saved-player unavailability, correlated with a fixed diagnostic of HTTP 400 at the body stage for a command request. This supersedes only the earlier nonreproduction, not its valid point-in-time health result. The authoritative final match result remains unverified.
+
+The finalization script assigned the same Lua table to both pending and final result fields. Some encoders reject repeated references: for example, [gopher-json’s encoder](https://github.com/layeh/gopher-json/blob/master/json.go) tracks visited tables throughout serialization. This is a compatibility hypothesis, not evidence that the provider runs that implementation. A native-Redis test model of this behavior fails all three old finish outcomes. The candidate clears the consumed pending reference before encoding; all three outcomes then pass. It preserves the computed final result and existing shared deadline, event identity and expiry. Production confirmation requires release followed by one original-room recovery; no new game or data reset is needed for that check.

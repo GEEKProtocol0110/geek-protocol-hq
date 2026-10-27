@@ -173,6 +173,9 @@ if room.phase ~= 'waiting' and room.phase ~= 'finished' and room.phase ~= 'cance
     if room.pendingResult and room.pendingResult ~= cjson.null then
       room.phase = 'finished'
       room.result = room.pendingResult
+      -- Consume the pending value before encoding. Some JSON encoders reject
+      -- sibling references to the same table as if they were recursive.
+      room.pendingResult = cjson.null
       room.result.finishedAt = nextAt
       dirty = true
       break
