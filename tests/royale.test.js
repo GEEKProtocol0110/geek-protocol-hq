@@ -256,8 +256,10 @@ for (const outcome of ['no-survivors', 'last-mind', 'shared-victory']) test(`fin
   await mutate(g.fields.code, (r, now) => {
     r.questionNumber = questionNumber; r.reviewedQuestion = questionNumber - 1;
     r.startsAt = now - (questionNumber - 1) * 20000 - 15001;
-    for (const [index,p] of Object.values(r.players).entries()) {
-      p.answer = outcome === 'no-survivors' || (outcome === 'last-mind' && index === 1) ? null : {questionNumber,selectedIndex:correct,elapsedMs:100};
+    // A player map's serialization order does not identify a seat. Exercise
+    // reversed seat order so the intended survivor cannot depend on it.
+    for (const p of Object.values(r.players).sort((a,b) => b.slot-a.slot)) {
+      p.answer = outcome === 'no-survivors' || (outcome === 'last-mind' && p.slot !== 1) ? null : {questionNumber,selectedIndex:correct,elapsedMs:100};
     }
   });
   rejectRepeatedTables = true;
