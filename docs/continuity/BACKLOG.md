@@ -17,7 +17,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | BANK-006 | P1 | planned | Reach 1,000 reviewed History concepts | Content editor unassigned |
 | BANK-007 | P1 | planned | Reach 1,000 reviewed Comics concepts | Content editor unassigned |
 | BANK-008 | P1 | planned | Reach 1,000 reviewed Pop culture concepts | Content editor unassigned |
-| PILOT-001 | P0 | needs-evidence | Complete the real-device free-beta pilot | Founder and consenting pilot participants |
+| PILOT-001 | P0 | blocked | Complete the real-device free-beta pilot | Founder and consenting pilot participants |
 | OPS-001 | P0 | needs-evidence | Verify operator access and managed-data recovery | Founder; private account custodian unassigned |
 | OPS-002 | P1 | decision-needed | Appoint a successor and second trusted maintainer | Founder |
 | ECON-001 | P1 | decision-needed | Specify funded contributor and learner rewards | Founder with economic and legal review |
@@ -213,9 +213,11 @@ Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.m
 
 ## PILOT-001: Complete the real-device free-beta pilot
 
-**P0 / needs-evidence.** Owner: Founder and consenting pilot participants. Dependencies: none.
+**P0 / blocked.** Owner: Founder and consenting pilot participants. Dependencies: none.
 
-Next action: Use the refreshed #137 runtime checklist. Preserve the earlier Quest-resume success, October 16 phone passkey success and limited mobile-edge improvement. Record returning saved-player login, four-chapter completion/replay and a two-person Royale run on actual devices.
+Next action: Review and release the tested sanitized Redis diagnostics candidate in PR #170, then correlate a bounded read-only saved-player failure with deployment runtime logs and provider status. No storage cause or live match acceptance is established yet. Reconcile the original test room before any separately authorized live retest; preserve the completed payout and existing learning, phone and local verification evidence.
+
+Blocker: Live Royale final result remains unverified. Sanitized Redis diagnostics are implemented in the candidate but are not merged/deployed, so the production failure class and provider/transport root cause remain unknown.
 
 Acceptance:
 
@@ -229,9 +231,9 @@ Evidence/specification: [docs/FREE-BETA-READINESS.md](../../docs/FREE-BETA-READI
 
 **P0 / needs-evidence.** Owner: Founder; private account custodian unassigned. Dependencies: none.
 
-Next action: Complete secure Upstash sign-in for the existing HQ database, inspect completed backups and retention, then use a separate isolated database for the managed-provider restore drill in docs/BACKUP-RECOVERY.md. Do not restore into the live HQ resource or connect the restored copy to live workers; no backup or provider-restore acceptance is established yet.
+Next action: Retain the founder-downloaded manual export and make fresh exports before major updates and after important payout tests; automatic daily backups remain disabled to retain the free plan. When a separately isolated provider target is available, complete the managed restore and protected application recovery drill in docs/BACKUP-RECOVERY.md, including live-baseline comparison, audit integrity, post-backup credential changes and pending payout reconciliation. Keep the restored application disconnected from workers with payouts disabled; provider restore and production cutover are not accepted by this local result.
 
-Blocker: The Upstash console requires separate sign-in. Vercel Storage identifies the connected resource but does not establish backup completion/retention or managed-provider restore; local passing tests cannot close those acceptance boundaries.
+Blocker: Manual export and local snapshot recoverability are verified. The founder retains the free plan with automatic daily backups off. Managed-provider restore, independent live-source comparison, protected audit verification and full application/device recovery remain open; no paid upgrade or production restore is authorized by this checkpoint.
 
 Acceptance:
 
@@ -738,7 +740,7 @@ Evidence/specification: [docs/AUTOMATIC-GEEKT-REWARDS.md](../../docs/AUTOMATIC-G
 
 **P1 / needs-evidence.** Owner: Maintainer; founder confirms actual-phone behavior. Dependencies: none.
 
-Next action: Authenticated Rewards rendering, signed-out privacy and same-account phone return are founder-confirmed. Verify separate account-switching and background/page-cache interruption cases before closing the full status-recovery task; provider recovery remains OPS-001.
+Next action: Authenticated Rewards rendering, signed-out privacy, same-account phone return, app-background/return/refresh receipt persistence, Back-navigation receipt rendering and signed-out Back-navigation privacy are founder-confirmed or screenshot-supported. Separate account-switching and broader browser/device coverage remain unverified; keep CHAIN-005 open for those cases. Continue the scoped Quest campaign/replay and two-person Royale checks under PILOT-001 without repeating the completed payout; provider recovery remains OPS-001.
 
 Acceptance:
 

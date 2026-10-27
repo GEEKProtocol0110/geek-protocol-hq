@@ -178,7 +178,7 @@
       "status": "founder-direction",
       "title": "500 character concepts, each with five rarity artworks",
       "decision": "Plan 500 Geek character concepts with Common, Rare, Epic, Legendary and Mythic artwork for every concept: 2,500 distinct planned images. This corrects the earlier interpretation of 500 total editions. Artwork count does not determine collectible copies per artwork, mint supply or acquisition allocations.",
-      "basis": "Founder clarified October 15, 2026: \u201cSo you see the direction I went with the 500 geek. 2500 different images.\u201d Three supplied five-tier sets demonstrate the intended structure. Runtime manifest migration remains COLL-001 work. Recovered into main during October 16 PR reconciliation; later fourth-set intake remains preserved in paused PR #120. No art production or runtime migration resumed.",
+      "basis": "Founder clarified October 15, 2026: “So you see the direction I went with the 500 geek. 2500 different images.” Three supplied five-tier sets demonstrate the intended structure. Runtime manifest migration remains COLL-001 work. Recovered into main during October 16 PR reconciliation; later fourth-set intake remains preserved in paused PR #120. No art production or runtime migration resumed.",
       "evidence": [
         "docs/GEEK-500-COLLECTION-STRUCTURE.md",
         "docs/PR-RECONCILIATION.md",
@@ -346,6 +346,19 @@
         "docs/ONE-FRESH-GEEKT-TEST.md",
         "server/testnet-fresh-test.js",
         "tests/testnet-automatic.test.js"
+      ],
+      "recordedAt": "2026-10-25",
+      "supersedes": null
+    },
+    {
+      "id": "DR-028",
+      "status": "founder-direction",
+      "title": "Retain the free database plan with manual exports for now",
+      "decision": "Keep automatic daily database backups disabled and retain the free plan for now. Preserve the downloaded manual export and create fresh exports before major updates and after important payout tests. Local recovery verification is separate from managed-provider restore and complete application recovery; this choice does not establish automated retention or a recovery-time guarantee.",
+      "basis": "Founder October 25 reports that daily backups require pay-as-you-go or a monthly plan, accepts staying on the free plan, and supplies the downloaded manual RDB export for isolated verification.",
+      "evidence": [
+        "docs/BACKUP-RECOVERY.md",
+        "docs/continuity/WORKLOG.md"
       ],
       "recordedAt": "2026-10-25",
       "supersedes": null
