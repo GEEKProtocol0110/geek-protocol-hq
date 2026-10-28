@@ -3,18 +3,18 @@
     "title": "GEEK Protocol — Pop Culture Question Bank",
     "version": "2.0.0-distinct",
     "maintainedAt": "2026-10-28",
-    "questionCount": 1569,
-    "conceptCount": 1569,
+    "questionCount": 1567,
+    "conceptCount": 1567,
     "category": "Pop Culture",
     "difficultyDistribution": {
-      "easy": 630,
+      "easy": 628,
       "medium": 625,
       "hard": 314
     },
     "correctIndexDistribution": {
-      "0": 388,
+      "0": 387,
       "1": 399,
-      "2": 381,
+      "2": 380,
       "3": 401
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
@@ -19674,33 +19674,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "What character does actor Eddie Murphy voice in the computer-animated Shrek movies?",
-      "options": [
-        "Donkey",
-        "Shrek",
-        "Puss in Boots",
-        "Pinocchio"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "celebrities",
-      "sourceOrdinal": 330,
-      "id": "POP-N-f9b081c8be26",
-      "conceptId": "POP-N-f9b081c8be26",
-      "category": "Pop Culture",
-      "subcategory": "Celebrities",
-      "funFact": null,
-      "tags": [
-        "pop-culture"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/celebrities",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "The show 60 Minutes was a top ten show for how many seasons in a row, starting in 1977?",
       "options": [
         "9",
@@ -33496,33 +33469,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/television",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "Which Spanish explorer conquered the Inca Empire?",
-      "options": [
-        "Juan Ponce de León",
-        "Hernán Cortés",
-        "Francisco Pizarro",
-        "Luis Váez de Torres"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "people",
-      "sourceOrdinal": 953,
-      "id": "POP-N-6b6114131628",
-      "conceptId": "POP-N-6b6114131628",
-      "category": "Pop Culture",
-      "subcategory": "People",
-      "funFact": null,
-      "tags": [
-        "pop-culture"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "She was Johnny Carsons first guest on The Tonight Show with Johnny Carson.",

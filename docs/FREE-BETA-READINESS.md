@@ -4,7 +4,7 @@
 
 ## Current continuation — October 28
 
-Release #176 deployed the whole-bank audit and fifteen duplicate retirements. The next [encoding-review batch](QUESTION-ENCODING-REVIEW-2026-10-28.md) repairs 77 cases under new draft identities and consolidates one newly exposed duplicate. Encoding triage does not complete the factual bank audit. Exact release evidence and next actions are in the maintained record.
+Release #176 deployed the whole-bank audit and fifteen duplicate retirements. Release #177 completed the [encoding-review batch](QUESTION-ENCODING-REVIEW-2026-10-28.md). The next [scope-review candidate](QUESTION-SCOPE-REVIEW-2026-10-28.md) resolves the eight pair and four time-wording cases, but does not complete the factual bank audit. Exact release evidence and next actions are in the maintained record.
 
 | Launch area | Accepted evidence | Still required |
 | --- | --- | --- |

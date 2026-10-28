@@ -3,18 +3,18 @@
     "title": "GEEK Protocol — History Question Bank",
     "version": "2.0.0-distinct",
     "maintainedAt": "2026-10-28",
-    "questionCount": 1503,
-    "conceptCount": 1503,
+    "questionCount": 1502,
+    "conceptCount": 1502,
     "category": "History",
     "difficultyDistribution": {
-      "easy": 557,
+      "easy": 556,
       "medium": 628,
       "hard": 318
     },
     "correctIndexDistribution": {
       "0": 396,
       "1": 355,
-      "2": 394,
+      "2": 393,
       "3": 358
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
@@ -7143,30 +7143,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0415",
-      "category": "History",
-      "prompt": "Who directed the 1986 movie Platoon?",
-      "options": [
-        "Willem Dafoe",
-        "Brian DePalma",
-        "Oliver Stone",
-        "Tom Berenger"
-      ],
-      "correctIndex": 2,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-history.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0415",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "HIST-0416",
       "category": "History",
       "prompt": "Which of these events did not happen in 1950?",
@@ -13008,30 +12984,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "HIST-0730",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "HIST-0731",
-      "category": "History",
-      "prompt": "This Spanish conquistador, the founder of the City of Lima, conquered the Inca Empire.",
-      "options": [
-        "Gonzalo Pizarro",
-        "Hernan Cortes",
-        "Francisco Pizarro",
-        "Alonso de Ojeda"
-      ],
-      "correctIndex": 2,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-history.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0731",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -29145,33 +29097,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "The first space tourist was this businessman.",
-      "options": [
-        "Mark Shuttleworth",
-        "Dennis Tito",
-        "Lance Bass",
-        "Toyohiro Akiyama"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "history",
-      "sourceOrdinal": 587,
-      "id": "HIS-N-98de493c60c3",
-      "conceptId": "HIS-N-98de493c60c3",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "Arsenic became a popular murder weapon in the Middle Ages, because symptoms resembled those of this disease.",
       "options": [
         "Plague",
@@ -38453,6 +38378,78 @@
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy",
       "reviewedAt": "2026-10-15"
+    },
+    {
+      "prompt": "Which paying private citizen launched toward the ISS aboard Soyuz TM-32 on April 28, 2001?",
+      "options": [
+        "Mark Shuttleworth",
+        "Dennis Tito",
+        "Lance Bass",
+        "Toyohiro Akiyama"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "history",
+      "sourceOrdinal": 587,
+      "id": "HIS-N-98de493c60c3-R50997e3f81",
+      "conceptId": "HIS-N-98de493c60c3-R50997e3f81",
+      "category": "History",
+      "subcategory": "Spaceflight History",
+      "funFact": "NASA identifies Dennis Tito as the first paying private citizen to make an orbital journey and gives this launch date. The mission and date narrow the question beyond an unqualified space-tourist label.",
+      "tags": [
+        "history",
+        "scope-reviewed"
+      ],
+      "volatile": false,
+      "license": "CC BY-SA 4.0",
+      "reviewStatus": "source-checked",
+      "maintenanceCheckedAt": "2026-10-07",
+      "source": "https://www.nasa.gov/history/space-station-20th-space-flight-participants/",
+      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
+      "difficulty": "medium",
+      "reviewedAt": "2026-10-28",
+      "scopeReview": {
+        "kind": "primary-source",
+        "reviewedAt": "2026-10-28",
+        "supersedes": [
+          "HIS-N-98de493c60c3",
+          "TECH-N-d2e7b82199de"
+        ]
+      }
+    },
+    {
+      "id": "HIST-0731-R9fa338d780",
+      "category": "History",
+      "prompt": "Which Spanish conquistador founded the colonial city of Lima on January 18, 1535?",
+      "options": [
+        "Gonzalo Pizarro",
+        "Hernan Cortes",
+        "Francisco Pizarro",
+        "Alonso de Ojeda"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "Peru’s national archive attributes the foundation of Ciudad de los Reyes, now Lima, to Francisco Pizarro on this date. The named place and event replace a broad conquest label.",
+      "tags": [
+        "history",
+        "scope-reviewed"
+      ],
+      "volatile": false,
+      "source": "https://fondosdocumentales.agn.gob.pe/index.php/fundacion-de-aniversario-2",
+      "sourceFile": "source-history.txt",
+      "license": "CC BY-SA 4.0",
+      "reviewStatus": "source-checked",
+      "conceptId": "HIST-0731-R9fa338d780",
+      "maintenanceCheckedAt": "2026-10-07",
+      "subcategory": "Colonial History",
+      "reviewedAt": "2026-10-28",
+      "scopeReview": {
+        "kind": "primary-source",
+        "reviewedAt": "2026-10-28",
+        "supersedes": [
+          "HIST-0731",
+          "POP-N-6b6114131628"
+        ]
+      }
     }
   ]
 }

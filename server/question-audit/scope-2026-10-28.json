@@ -1,0 +1,501 @@
+{
+  "schema": 1,
+  "reviewedAt": "2026-10-28",
+  "dateBasis": "America/Detroit",
+  "reviewKind": "internal-primary-source-scope-review",
+  "independentReview": false,
+  "difficultyCalibration": "provisional-editorial",
+  "scope": "Eight previously unresolved pairs and four contextual time-wording signals. No review of the entire remaining bank is implied.",
+  "pairs": [
+    {
+      "ids": [
+        "COM-0120",
+        "COM-0132"
+      ],
+      "categories": [
+        "comics",
+        "comics"
+      ],
+      "gradingHashes": [
+        "3ecd6441da91fb50701f98823bebae3e02a24b349d277dee51a7cb49bbcd184e",
+        "a61814bc5a037baa2504985d93836b7c572a48c606d2a7b0622bef1b3f7574b8"
+      ],
+      "disposition": "resolved",
+      "note": "Both test Bond-film casting, with a British television credit as a clue; no comic/manga learning objective is tested. Do not infer Marvel membership from the shared Avengers title.",
+      "reviewedAt": "2026-10-28",
+      "source": "https://www.televisionacademy.com/bios/diana-rigg",
+      "retiredIds": [
+        "COM-0120",
+        "COM-0132"
+      ],
+      "supersedesReview": "decisions-2026-10-27.json"
+    },
+    {
+      "ids": [
+        "COM-N-0bcbe65c8268",
+        "COM-N-b55e7840c099"
+      ],
+      "categories": [
+        "comics",
+        "comics"
+      ],
+      "gradingHashes": [
+        "6a3745f64dc4e607863c4b6829571f37a326ee36fdf18afbf033df1628aff404",
+        "e00ca0c69ec6bb24f21be809914b72f0d720ecd452c1d0785cb300358e649a1f"
+      ],
+      "disposition": "resolved",
+      "note": "Consolidate character identification into one explicitly supported captain-role item; discard the unnecessary fruit/powers clue.",
+      "reviewedAt": "2026-10-28",
+      "source": "https://www.onepiece-film.jp/wordpress/wp-content/themes/onepiece-film-red/common/character/chara03_en.html",
+      "retiredIds": [
+        "COM-N-0bcbe65c8268",
+        "COM-N-b55e7840c099"
+      ],
+      "canonicalId": "COM-N-b55e7840c099-R4fc022ea2f",
+      "canonicalCategory": "comics",
+      "supersedesReview": "decisions-2026-10-27.json"
+    },
+    {
+      "ids": [
+        "HIS-N-98de493c60c3",
+        "TECH-N-d2e7b82199de"
+      ],
+      "categories": [
+        "history",
+        "technology"
+      ],
+      "gradingHashes": [
+        "439786c601dcfef370e4f986138daea54f48ed17703d47513370484e689c31d9",
+        "e81b119fd8952d52742c78f99ee39bf75ea71fff962a557d108496462a81eff8"
+      ],
+      "disposition": "resolved",
+      "note": "Use one dated spaceflight-history item instead of repeating the same milestone in two categories.",
+      "reviewedAt": "2026-10-28",
+      "source": "https://www.nasa.gov/history/space-station-20th-space-flight-participants/",
+      "retiredIds": [
+        "HIS-N-98de493c60c3",
+        "TECH-N-d2e7b82199de"
+      ],
+      "canonicalId": "HIS-N-98de493c60c3-R50997e3f81",
+      "canonicalCategory": "history",
+      "supersedesReview": "decisions-2026-10-27.json"
+    },
+    {
+      "ids": [
+        "HIST-0415",
+        "MOV-N-ede9becfe72f"
+      ],
+      "categories": [
+        "history",
+        "movies"
+      ],
+      "gradingHashes": [
+        "7e256dc2e0e6d5fb212d5d635a20b32f6fa66e6a72c4356bdf75cd179d8de160",
+        "1fde5c88c301292fc7e5128c4c91572d78a681b0a42bf53cede09a8fe33a4cd0"
+      ],
+      "disposition": "resolved",
+      "note": "Consolidate the repeated production-credit fact under Movies; the war setting alone does not establish History category fit.",
+      "reviewedAt": "2026-10-28",
+      "source": "https://catalog.afi.com/Film/68355-PLATOON",
+      "retiredIds": [
+        "HIST-0415",
+        "MOV-N-ede9becfe72f"
+      ],
+      "canonicalId": "MOV-N-ede9becfe72f-Rd4d58f714b",
+      "canonicalCategory": "movies",
+      "supersedesReview": "decisions-2026-10-27.json"
+    },
+    {
+      "ids": [
+        "HIST-0731",
+        "POP-N-6b6114131628"
+      ],
+      "categories": [
+        "history",
+        "pop-culture"
+      ],
+      "gradingHashes": [
+        "7bfb8005c9a079003aa9ba199857bb48af20a7fd7039f8fcc1e5f27824fb9832",
+        "25460e2c33cb5f15bc1231283df080fca40b61efd20a1dbfaeb22d70871b577b"
+      ],
+      "disposition": "resolved",
+      "note": "Keep a specific archival historical event in History; retire the duplicate explorer-identification item from Pop Culture.",
+      "reviewedAt": "2026-10-28",
+      "source": "https://fondosdocumentales.agn.gob.pe/index.php/fundacion-de-aniversario-2",
+      "retiredIds": [
+        "HIST-0731",
+        "POP-N-6b6114131628"
+      ],
+      "canonicalId": "HIST-0731-R9fa338d780",
+      "canonicalCategory": "history",
+      "supersedesReview": "decisions-2026-10-27.json"
+    },
+    {
+      "ids": [
+        "MOV-0941",
+        "MOV-N-8cc0f5ef6c82"
+      ],
+      "categories": [
+        "movies",
+        "movies"
+      ],
+      "gradingHashes": [
+        "4006b5c2a8fe84c5ca39195595af6eeb2420dda11a5e716deb1c0bea59157931",
+        "cdf45c1b4a63497f305fbe30025149527aa7b2eddc7cc89255ea673c0448696a"
+      ],
+      "disposition": "resolved",
+      "note": "Retire both award-year versions rather than certify ambiguous film-year/ceremony-year wording. The replacement tests the independently supported title-role credit, not an inferred award date.",
+      "reviewedAt": "2026-10-28",
+      "source": "https://catalog.afi.com/Film/58003-THE-LONELY-LADY",
+      "retiredIds": [
+        "MOV-0941",
+        "MOV-N-8cc0f5ef6c82"
+      ],
+      "canonicalId": "MOV-0941-Re0f6eb54e3",
+      "canonicalCategory": "movies",
+      "supersedesReview": "decisions-2026-10-27.json"
+    },
+    {
+      "ids": [
+        "MOV-N-7643b4e97ddd",
+        "MOV-N-a3ddcb776338"
+      ],
+      "categories": [
+        "movies",
+        "movies"
+      ],
+      "gradingHashes": [
+        "23a18f08a479eb186782dfffc66482d3229d829b05e8941d7dd73f03aa3c632d",
+        "bdced5ed129eb387b78022b818a9a1e7229d9359ab4b1154832110be4dadf262"
+      ],
+      "disposition": "resolved",
+      "note": "Consolidate the broad franchise and sequel variants under a film/language-specific credit.",
+      "reviewedAt": "2026-10-28",
+      "source": "https://www.dreamworks.com/movies/shrek-2",
+      "retiredIds": [
+        "MOV-N-7643b4e97ddd",
+        "MOV-N-a3ddcb776338"
+      ],
+      "canonicalId": "MOV-N-a3ddcb776338-R49594521a5",
+      "canonicalCategory": "movies",
+      "supersedesReview": "decisions-2026-10-27.json"
+    },
+    {
+      "ids": [
+        "MOV-N-ffdb7dbe5996",
+        "POP-N-f9b081c8be26"
+      ],
+      "categories": [
+        "movies",
+        "pop-culture"
+      ],
+      "gradingHashes": [
+        "b4300c95f8d74b8986ec8bdb9317d4927b58997a3c546d2a62e61776b773ee31",
+        "9f1f71f1560e29daeb5413a0ed438073daf1607b53bee2b84da7a7011b7697f7"
+      ],
+      "disposition": "resolved",
+      "note": "Consolidate the shared voice-role fact under Movies and remove the question that reveals the character’s name in its stem.",
+      "reviewedAt": "2026-10-28",
+      "source": "https://www.dreamworks.com/movies/shrek",
+      "retiredIds": [
+        "MOV-N-ffdb7dbe5996",
+        "POP-N-f9b081c8be26"
+      ],
+      "canonicalId": "POP-N-f9b081c8be26-Rc38649ac9a",
+      "canonicalCategory": "movies",
+      "supersedesReview": "decisions-2026-10-27.json"
+    }
+  ],
+  "itemDecisions": [
+    {
+      "category": "movies",
+      "id": "MOV-N-82da6aa0f393",
+      "gradingHash": "b16a1694d66ac1c087885fdf723a1f3532c62b32a529f27b5dcb2ac6af685f04",
+      "reason": "time-scope-review",
+      "disposition": "corrected",
+      "canonicalId": "MOV-N-82da6aa0f393-Rd4e8f40a52",
+      "source": "https://www.adobe.com/uk/creativecloud/animation/discover/cgi-animation.html",
+      "reviewedAt": "2026-10-28",
+      "note": "Remove an unsupported undated popularity preface and source-check the acronym and alternatives."
+    },
+    {
+      "category": "kaspa",
+      "id": "K250-0053",
+      "gradingHash": "93b119f01e316c8e7b61952984ea7e58f71c72ec634022812204d462a7558f89",
+      "reason": "time-scope-review",
+      "disposition": "retained-nonvolatile",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L576",
+      "reviewedAt": "2026-10-28",
+      "note": "Currently modifies connected peers in the pinned API definition; it is not an undated external popularity/current-office claim."
+    },
+    {
+      "category": "kaspa",
+      "id": "K500-0218",
+      "gradingHash": "5a12bf3a15bde95a67f08ee5e5fbcc206f559fae2cb1dee4f6e462cc9b410c78",
+      "reason": "time-scope-review",
+      "disposition": "retained-nonvolatile",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/peer.rs#L14",
+      "reviewedAt": "2026-10-28",
+      "note": "Latest refers to the connection’s last_ping_duration observation, not a current product or release claim."
+    },
+    {
+      "category": "kaspa",
+      "id": "K624-0019",
+      "gradingHash": "cfdf10919318b5f46e9f2ec5037b10870c9e9b41ae7b5821b80a6874586168fe",
+      "reason": "time-scope-review",
+      "disposition": "retained-nonvolatile",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L917",
+      "reviewedAt": "2026-10-28",
+      "note": "Currently identifies the executing input. The pinned sequence/finalization check is a code relation, not an undated changing-world fact."
+    }
+  ],
+  "replacements": [
+    {
+      "category": "comics",
+      "id": "COM-N-b55e7840c099-R4fc022ea2f",
+      "from": [
+        "COM-N-0bcbe65c8268",
+        "COM-N-b55e7840c099"
+      ],
+      "gradingHash": "07d9c0ff4ef2a6746b917509df16d01c1da7e56d652eceb70fc552c3841a5b46",
+      "source": "https://www.onepiece-film.jp/wordpress/wp-content/themes/onepiece-film-red/common/character/chara03_en.html",
+      "sourceClaim": "The official character profile identifies Monkey D. Luffy as the crew’s captain. This question asks about that role rather than mixing protagonist, powers and adaptation-specific clues.",
+      "distractorReview": "All three alternatives checked against the source’s unique role, credit, dated event or acronym definition. No alternative satisfies the scoped relation."
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-98de493c60c3-R50997e3f81",
+      "from": [
+        "HIS-N-98de493c60c3",
+        "TECH-N-d2e7b82199de"
+      ],
+      "gradingHash": "f46a49bcf27c21694f749d0ece4b1acc9a9994709ab63be86e6fb4860eda78e7",
+      "source": "https://www.nasa.gov/history/space-station-20th-space-flight-participants/",
+      "sourceClaim": "NASA identifies Dennis Tito as the first paying private citizen to make an orbital journey and gives this launch date. The mission and date narrow the question beyond an unqualified space-tourist label.",
+      "distractorReview": "All three alternatives checked against the source’s unique role, credit, dated event or acronym definition. No alternative satisfies the scoped relation."
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-ede9becfe72f-Rd4d58f714b",
+      "from": [
+        "HIST-0415",
+        "MOV-N-ede9becfe72f"
+      ],
+      "gradingHash": "6200a71c6e2ab40ed5dc6c382d6f7d05ac3bcc7feb85aa4c8850b5d961a4401a",
+      "source": "https://catalog.afi.com/Film/68355-PLATOON",
+      "sourceClaim": "The AFI Catalog names Oliver Stone in both credits. A film’s historical setting does not turn a question about its production credits into a historical-event question.",
+      "distractorReview": "All three alternatives checked against the source’s unique role, credit, dated event or acronym definition. No alternative satisfies the scoped relation."
+    },
+    {
+      "category": "history",
+      "id": "HIST-0731-R9fa338d780",
+      "from": [
+        "HIST-0731",
+        "POP-N-6b6114131628"
+      ],
+      "gradingHash": "07f96c7b694d731091c322ddaec7bd48f44120bfd908404c42af74e0b846d1ba",
+      "source": "https://fondosdocumentales.agn.gob.pe/index.php/fundacion-de-aniversario-2",
+      "sourceClaim": "Peru’s national archive attributes the foundation of Ciudad de los Reyes, now Lima, to Francisco Pizarro on this date. The named place and event replace a broad conquest label.",
+      "distractorReview": "All three alternatives checked against the source’s unique role, credit, dated event or acronym definition. No alternative satisfies the scoped relation."
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0941-Re0f6eb54e3",
+      "from": [
+        "MOV-0941",
+        "MOV-N-8cc0f5ef6c82"
+      ],
+      "gradingHash": "aec74137b400073f8c17098159e96e7aac11ab6837ec1036a14443e5897049a0",
+      "source": "https://catalog.afi.com/Film/58003-THE-LONELY-LADY",
+      "sourceClaim": "The AFI production history identifies Pia Zadora in the title role. This replacement tests a fixed film credit; it does not repeat unqualified award-year claims.",
+      "distractorReview": "All three alternatives checked against the source’s unique role, credit, dated event or acronym definition. No alternative satisfies the scoped relation."
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-a3ddcb776338-R49594521a5",
+      "from": [
+        "MOV-N-7643b4e97ddd",
+        "MOV-N-a3ddcb776338"
+      ],
+      "gradingHash": "fe74c0bab9632c0a7aeea01f86156f82e56d2f5380fd90958b0f99046a83fec3",
+      "source": "https://www.dreamworks.com/movies/shrek-2",
+      "sourceClaim": "DreamWorks credits Cameron Diaz as Fiona for this 2004 film. Naming the film and language avoids making a claim about every installment or dubbed edition.",
+      "distractorReview": "All three alternatives checked against the source’s unique role, credit, dated event or acronym definition. No alternative satisfies the scoped relation."
+    },
+    {
+      "category": "movies",
+      "id": "POP-N-f9b081c8be26-Rc38649ac9a",
+      "from": [
+        "MOV-N-ffdb7dbe5996",
+        "POP-N-f9b081c8be26"
+      ],
+      "gradingHash": "b4db8ac4600fa50707d6542f5e071788ebd7b707c14222a25e404511b7ac20ef",
+      "source": "https://www.dreamworks.com/movies/shrek",
+      "sourceClaim": "The official DreamWorks page credits Eddie Murphy as Donkey. The question asks for the actor-to-character mapping without supplying the answer in its own wording.",
+      "distractorReview": "All three alternatives checked against the source’s unique role, credit, dated event or acronym definition. No alternative satisfies the scoped relation."
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-82da6aa0f393-Rd4e8f40a52",
+      "from": [
+        "MOV-N-82da6aa0f393"
+      ],
+      "gradingHash": "bf0867326e539f1e686b234d27f4606c5b1b620418bf6db0358b2dbdcfc6a5f3",
+      "source": "https://www.adobe.com/uk/creativecloud/animation/discover/cgi-animation.html",
+      "sourceClaim": "Adobe expands CGI as computer-generated imagery: images or effects created using computer software. The definition does not depend on an undated claim about how most films are made.",
+      "distractorReview": "All three alternatives checked against the source’s unique role, credit, dated event or acronym definition. No alternative satisfies the scoped relation."
+    }
+  ],
+  "retirements": [
+    {
+      "category": "comics",
+      "id": "COM-0120",
+      "gradingHash": "3ecd6441da91fb50701f98823bebae3e02a24b349d277dee51a7cb49bbcd184e",
+      "reason": "category-scope",
+      "source": "https://www.televisionacademy.com/bios/diana-rigg"
+    },
+    {
+      "category": "comics",
+      "id": "COM-0132",
+      "gradingHash": "a61814bc5a037baa2504985d93836b7c572a48c606d2a7b0622bef1b3f7574b8",
+      "reason": "category-scope",
+      "source": "https://www.televisionacademy.com/bios/diana-rigg"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-0bcbe65c8268",
+      "gradingHash": "6a3745f64dc4e607863c4b6829571f37a326ee36fdf18afbf033df1628aff404",
+      "canonicalId": "COM-N-b55e7840c099-R4fc022ea2f",
+      "canonicalCategory": "comics",
+      "reason": "source-correction",
+      "source": "https://www.onepiece-film.jp/wordpress/wp-content/themes/onepiece-film-red/common/character/chara03_en.html"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-b55e7840c099",
+      "gradingHash": "e00ca0c69ec6bb24f21be809914b72f0d720ecd452c1d0785cb300358e649a1f",
+      "canonicalId": "COM-N-b55e7840c099-R4fc022ea2f",
+      "canonicalCategory": "comics",
+      "reason": "source-correction",
+      "source": "https://www.onepiece-film.jp/wordpress/wp-content/themes/onepiece-film-red/common/character/chara03_en.html"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-98de493c60c3",
+      "gradingHash": "439786c601dcfef370e4f986138daea54f48ed17703d47513370484e689c31d9",
+      "canonicalId": "HIS-N-98de493c60c3-R50997e3f81",
+      "canonicalCategory": "history",
+      "reason": "source-correction",
+      "source": "https://www.nasa.gov/history/space-station-20th-space-flight-participants/"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-d2e7b82199de",
+      "gradingHash": "e81b119fd8952d52742c78f99ee39bf75ea71fff962a557d108496462a81eff8",
+      "canonicalId": "HIS-N-98de493c60c3-R50997e3f81",
+      "canonicalCategory": "history",
+      "reason": "source-correction",
+      "source": "https://www.nasa.gov/history/space-station-20th-space-flight-participants/"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0415",
+      "gradingHash": "7e256dc2e0e6d5fb212d5d635a20b32f6fa66e6a72c4356bdf75cd179d8de160",
+      "canonicalId": "MOV-N-ede9becfe72f-Rd4d58f714b",
+      "canonicalCategory": "movies",
+      "reason": "source-correction",
+      "source": "https://catalog.afi.com/Film/68355-PLATOON"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-ede9becfe72f",
+      "gradingHash": "1fde5c88c301292fc7e5128c4c91572d78a681b0a42bf53cede09a8fe33a4cd0",
+      "canonicalId": "MOV-N-ede9becfe72f-Rd4d58f714b",
+      "canonicalCategory": "movies",
+      "reason": "source-correction",
+      "source": "https://catalog.afi.com/Film/68355-PLATOON"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0731",
+      "gradingHash": "7bfb8005c9a079003aa9ba199857bb48af20a7fd7039f8fcc1e5f27824fb9832",
+      "canonicalId": "HIST-0731-R9fa338d780",
+      "canonicalCategory": "history",
+      "reason": "source-correction",
+      "source": "https://fondosdocumentales.agn.gob.pe/index.php/fundacion-de-aniversario-2"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-N-6b6114131628",
+      "gradingHash": "25460e2c33cb5f15bc1231283df080fca40b61efd20a1dbfaeb22d70871b577b",
+      "canonicalId": "HIST-0731-R9fa338d780",
+      "canonicalCategory": "history",
+      "reason": "source-correction",
+      "source": "https://fondosdocumentales.agn.gob.pe/index.php/fundacion-de-aniversario-2"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0941",
+      "gradingHash": "4006b5c2a8fe84c5ca39195595af6eeb2420dda11a5e716deb1c0bea59157931",
+      "canonicalId": "MOV-0941-Re0f6eb54e3",
+      "canonicalCategory": "movies",
+      "reason": "source-correction",
+      "source": "https://catalog.afi.com/Film/58003-THE-LONELY-LADY"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-8cc0f5ef6c82",
+      "gradingHash": "cdf45c1b4a63497f305fbe30025149527aa7b2eddc7cc89255ea673c0448696a",
+      "canonicalId": "MOV-0941-Re0f6eb54e3",
+      "canonicalCategory": "movies",
+      "reason": "source-correction",
+      "source": "https://catalog.afi.com/Film/58003-THE-LONELY-LADY"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-7643b4e97ddd",
+      "gradingHash": "23a18f08a479eb186782dfffc66482d3229d829b05e8941d7dd73f03aa3c632d",
+      "canonicalId": "MOV-N-a3ddcb776338-R49594521a5",
+      "canonicalCategory": "movies",
+      "reason": "source-correction",
+      "source": "https://www.dreamworks.com/movies/shrek-2"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-a3ddcb776338",
+      "gradingHash": "bdced5ed129eb387b78022b818a9a1e7229d9359ab4b1154832110be4dadf262",
+      "canonicalId": "MOV-N-a3ddcb776338-R49594521a5",
+      "canonicalCategory": "movies",
+      "reason": "source-correction",
+      "source": "https://www.dreamworks.com/movies/shrek-2"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-ffdb7dbe5996",
+      "gradingHash": "b4300c95f8d74b8986ec8bdb9317d4927b58997a3c546d2a62e61776b773ee31",
+      "canonicalId": "POP-N-f9b081c8be26-Rc38649ac9a",
+      "canonicalCategory": "movies",
+      "reason": "source-correction",
+      "source": "https://www.dreamworks.com/movies/shrek"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-N-f9b081c8be26",
+      "gradingHash": "9f1f71f1560e29daeb5413a0ed438073daf1607b53bee2b84da7a7011b7697f7",
+      "canonicalId": "POP-N-f9b081c8be26-Rc38649ac9a",
+      "canonicalCategory": "movies",
+      "reason": "source-correction",
+      "source": "https://www.dreamworks.com/movies/shrek"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-82da6aa0f393",
+      "gradingHash": "b16a1694d66ac1c087885fdf723a1f3532c62b32a529f27b5dcb2ac6af685f04",
+      "canonicalId": "MOV-N-82da6aa0f393-Rd4e8f40a52",
+      "canonicalCategory": "movies",
+      "reason": "source-correction",
+      "source": "https://www.adobe.com/uk/creativecloud/animation/discover/cgi-animation.html"
+    }
+  ],
+  "priorRetiredAliasUpdates": 0
+}

@@ -3,9 +3,9 @@
   "targetPerCategory": 1000,
   "requiredCategories": 8,
   "bankReady": false,
-  "active": 8355,
-  "reviewed": 864,
-  "remaining": 7136,
+  "active": 8346,
+  "reviewed": 872,
+  "remaining": 7128,
   "categories": [
     {
       "id": "kaspa",
@@ -58,9 +58,9 @@
     {
       "id": "technology",
       "name": "Technology",
-      "active": 1494,
+      "active": 1493,
       "reviewed": 15,
-      "needsReview": 1479,
+      "needsReview": 1478,
       "target": 1000,
       "remaining": 985,
       "additionalQuestionsNeeded": 0,
@@ -74,15 +74,15 @@
     {
       "id": "movies",
       "name": "Movies",
-      "active": 1492,
-      "reviewed": 0,
-      "needsReview": 1492,
+      "active": 1490,
+      "reviewed": 5,
+      "needsReview": 1485,
       "target": 1000,
-      "remaining": 1000,
+      "remaining": 995,
       "additionalQuestionsNeeded": 0,
       "tiers": {
-        "easy": 0,
-        "medium": 0,
+        "easy": 2,
+        "medium": 3,
         "hard": 0
       },
       "ready": false
@@ -90,15 +90,15 @@
     {
       "id": "history",
       "name": "History",
-      "active": 1503,
-      "reviewed": 7,
-      "needsReview": 1496,
+      "active": 1502,
+      "reviewed": 9,
+      "needsReview": 1493,
       "target": 1000,
-      "remaining": 993,
+      "remaining": 991,
       "additionalQuestionsNeeded": 0,
       "tiers": {
         "easy": 5,
-        "medium": 2,
+        "medium": 4,
         "hard": 0
       },
       "ready": false
@@ -106,14 +106,14 @@
     {
       "id": "comics",
       "name": "Comics",
-      "active": 416,
-      "reviewed": 39,
-      "needsReview": 377,
+      "active": 413,
+      "reviewed": 40,
+      "needsReview": 373,
       "target": 1000,
-      "remaining": 961,
-      "additionalQuestionsNeeded": 584,
+      "remaining": 960,
+      "additionalQuestionsNeeded": 587,
       "tiers": {
-        "easy": 16,
+        "easy": 17,
         "medium": 16,
         "hard": 7
       },
@@ -122,9 +122,9 @@
     {
       "id": "pop-culture",
       "name": "Pop culture",
-      "active": 1569,
+      "active": 1567,
       "reviewed": 0,
-      "needsReview": 1569,
+      "needsReview": 1567,
       "target": 1000,
       "remaining": 1000,
       "additionalQuestionsNeeded": 0,

@@ -15,7 +15,7 @@ const round = n => Math.round(n * 10000) / 10000;
 
 // These are review candidates, never automatic proof of duplication or bad facts.
 // A shared answer alone is insufficient: subject and relation still need reading.
-export function auditQuestionBanks(banks, decisions = []) {
+export function auditQuestionBanks(banks, decisions = [], itemDecisions = []) {
   const rows = [], ids = new Set(), categories = [];
   for (const [category, questions] of Object.entries(banks)) {
     assert.ok(Array.isArray(questions), 'Invalid audit bank');
@@ -34,9 +34,15 @@ export function auditQuestionBanks(banks, decisions = []) {
   const activeById = new Map(rows.map(r => [r.q.id,r.q]));
   for (const d of decisions) {
     assert.ok(Array.isArray(d.ids) && d.ids.length === 2 && d.ids[0] < d.ids[1] && d.gradingHashes?.length === 2, 'Invalid pair decision');
-    assert.ok(['retained-distinct', 'needs-scope-review', 'cross-category-review', 'retire-duplicate'].includes(d.disposition), 'Invalid pair decision');
+    assert.ok(['retained-distinct', 'needs-scope-review', 'cross-category-review', 'retire-duplicate', 'resolved'].includes(d.disposition), 'Invalid pair decision');
     // A changed prompt can leave the candidate set; it still invalidates its old decision.
     for (const [i,id] of d.ids.entries()) if (activeById.has(id)) assert.equal(gradingHash(activeById.get(id)),d.gradingHashes[i],'Stale pair decision');
+  }
+  const byItem = new Map();
+  for (const d of itemDecisions) {
+    assert.ok(typeof d.id==='string' && typeof d.reason==='string' && ['retained-nonvolatile','corrected'].includes(d.disposition), 'Invalid item decision');
+    const key=d.id+'|'+d.reason;assert.ok(!byItem.has(key),'Duplicate item decision');byItem.set(key,d);
+    if(activeById.has(d.id))assert.equal(gradingHash(activeById.get(d.id)),d.gradingHash,'Stale item decision');
   }
   const itemSignals = [];
   for (const { category, q } of rows) {
@@ -46,7 +52,8 @@ export function auditQuestionBanks(banks, decisions = []) {
     if (/\b(?:pictured|shown below|shown above|image below|audio clip|sound clip|in the picture|following (?:picture|image|poem|lyrics))\b/i.test(q.prompt)) reasons.push('possible-missing-media-context');
     if (/\b(?:currently|at present|nowadays|last year|this year|today|latest|most recent)\b/i.test(q.prompt)) reasons.push('time-scope-review');
     if (new Set(q.options.map(promptIdentity)).size !== 4) reasons.push('equivalent-option-text');
-    if (reasons.length) itemSignals.push({ category, id: q.id, gradingHash: gradingHash(q), reasons });
+    if (reasons.length) itemSignals.push({ category, id: q.id, gradingHash: gradingHash(q), reasons,
+      dispositions: Object.fromEntries(reasons.map(reason=>[reason,byItem.get(q.id+'|'+reason)?.disposition || 'unreviewed-candidate'])) });
   }
   const answers = new Map(), prompts = new Map(), pairMap = new Map();
   const addPair = (a, b, reason, shared, jaccard, containment) => {
@@ -77,7 +84,7 @@ export function auditQuestionBanks(banks, decisions = []) {
     const decision = byPair.get(key);
     if (decision) {
       assert.deepEqual(decision.gradingHashes, p.gradingHashes, 'Stale pair decision');
-      assert.ok(['retained-distinct', 'needs-scope-review', 'cross-category-review', 'retire-duplicate'].includes(decision.disposition), 'Invalid pair decision');
+      assert.ok(['retained-distinct', 'needs-scope-review', 'cross-category-review', 'retire-duplicate', 'resolved'].includes(decision.disposition), 'Invalid pair decision');
     }
     return { ...p, disposition: decision?.disposition || 'unreviewed-candidate' };
   });
@@ -89,6 +96,8 @@ export function auditQuestionBanks(banks, decisions = []) {
     needsFactualReview: categories.reduce((n,c)=>n+c.needsFactualReview,0), categories,
     signals: { items: itemSignals.length, pairs: pairs.length, withinCategoryPairs: pairs.filter(p=>p.scope==='within-category').length,
       crossCategoryPairs: pairs.filter(p=>p.scope==='cross-category').length,
+      unresolvedItems: itemSignals.filter(s=>Object.values(s.dispositions).includes('unreviewed-candidate')).length,
+      unresolvedPairs: pairs.filter(p=>!['retained-distinct','resolved'].includes(p.disposition)).length,
       byReason: Object.fromEntries([...new Set(itemSignals.flatMap(s=>s.reasons))].sort().map(reason=>[reason,itemSignals.filter(s=>s.reasons.includes(reason)).length])) },
     itemSignals, pairs };
 }
@@ -96,12 +105,25 @@ export function auditQuestionBanks(banks, decisions = []) {
 function main() {
   assert.ok(process.argv.slice(2).every(a=>a==='--write'), 'Usage: node scripts/audit-question-banks.mjs [--write]');
   const banks = Object.fromEntries(Object.keys(categoryFiles).map(c=>[c,loadQuestionBank(c).questions]));
-  const ledger = JSON.parse(readFileSync('server/question-audit/decisions-2026-10-27.json','utf8'));
-  for (const d of ledger.pairs) for (const [i,id] of d.ids.entries()) {
-    const q = loadQuestionBank(d.categories[i]).byId.get(id);
-    assert.ok(q && gradingHash(q)===d.gradingHashes[i], 'Changed audit evidence: '+id);
+  const index=JSON.parse(readFileSync('server/question-audit/reviews.json','utf8'));
+  assert.equal(index.schema,1);assert.ok(Array.isArray(index.files)&&index.files.length>0&&new Set(index.files).size===index.files.length,'Invalid review index');
+  const pairs=new Map(),items=new Map();
+  for(const file of index.files){
+    assert.match(file,/^[a-z0-9-]+\.json$/,'Invalid review path');
+    const ledger=JSON.parse(readFileSync('server/question-audit/'+file,'utf8'));
+    for (const d of ledger.pairs || []) {
+      for(const [i,id] of d.ids.entries()){
+        const q = loadQuestionBank(d.categories[i]).byId.get(id);
+        assert.ok(q && gradingHash(q)===d.gradingHashes[i], 'Changed audit evidence: '+id);
+      }
+      pairs.set(pairIdentity(d.ids),d);
+    }
+    for(const d of ledger.itemDecisions || []){
+      const q=loadQuestionBank(d.category).byId.get(d.id);assert.ok(q&&gradingHash(q)===d.gradingHash,'Changed item evidence: '+d.id);
+      items.set(d.id+'|'+d.reason,d);
+    }
   }
-  const report = auditQuestionBanks(banks, ledger.pairs);
+  const report = auditQuestionBanks(banks,[...pairs.values()],[...items.values()]);
   assert.ok(!Object.values(banks).flat().some(q=>[q.prompt,...q.options].some(hasRepairableEncoding)),
     'Repairable text-encoding damage in active questions; review a correction instead of refreshing the report');
   const text = JSON.stringify(report,null,2)+'\n', path='server/question-audit/latest.json';

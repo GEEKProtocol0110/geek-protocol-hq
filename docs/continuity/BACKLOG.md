@@ -104,7 +104,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Continue BANK-009: resolve eight scope/category pairs and four contextual time-wording signals, then review all 7,491 remaining drafts against primary evidence, every distractor, wording, context, category, license and difficulty. Preserve historical keys and canonical exclusions. Encoding triage is complete for the 77 reviewed cases; zero encoding signals does not close factual or independent review. Kaspa remains 766 / 234 to target. Keep launch device/account, private Royale retry disposition and provider-recovery acceptance separate.
+Next action: Continue BANK-009 with a bounded Technology batch: inspect category/context suitability and verify each retained key, all distractors and explanation against primary evidence; continue History and Comics next. The initial eight scope/category pairs and four time-wording cases are resolved, but 7,474 drafts still need factual review. Keep semantic-overlap checks on reviewed content and all historical keys/aliases. Independent editing and broader launch device/multiplayer/provider recovery remain open; Kaspa stays 766 / 234 to target.
 
 Acceptance:
 
@@ -114,7 +114,7 @@ Acceptance:
 - Corrections use new identities; original grading remains lookup-only and duplicate aliases prevent repeated concepts in subsequent rounds.
 - Independent editorial review is assigned and accepted before claiming independent completion; generated coverage, compatibility, tier capacity and public-answer protections pass.
 
-Evidence/specification: [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md), [scripts/audit-question-banks.mjs](../../scripts/audit-question-banks.mjs), [server/question-audit/decisions-2026-10-27.json](../../server/question-audit/decisions-2026-10-27.json), [server/question-audit/latest.json](../../server/question-audit/latest.json), [tests/question-audit.test.js](../../tests/question-audit.test.js), [docs/QUESTION-ENCODING-REVIEW-2026-10-28.md](../../docs/QUESTION-ENCODING-REVIEW-2026-10-28.md), [server/question-audit/encoding-2026-10-28.json](../../server/question-audit/encoding-2026-10-28.json), [scripts/question-encoding.mjs](../../scripts/question-encoding.mjs), [tests/question-encoding.test.js](../../tests/question-encoding.test.js).
+Evidence/specification: [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md), [scripts/audit-question-banks.mjs](../../scripts/audit-question-banks.mjs), [server/question-audit/decisions-2026-10-27.json](../../server/question-audit/decisions-2026-10-27.json), [server/question-audit/latest.json](../../server/question-audit/latest.json), [tests/question-audit.test.js](../../tests/question-audit.test.js), [docs/QUESTION-ENCODING-REVIEW-2026-10-28.md](../../docs/QUESTION-ENCODING-REVIEW-2026-10-28.md), [server/question-audit/encoding-2026-10-28.json](../../server/question-audit/encoding-2026-10-28.json), [scripts/question-encoding.mjs](../../scripts/question-encoding.mjs), [tests/question-encoding.test.js](../../tests/question-encoding.test.js), [docs/QUESTION-SCOPE-REVIEW-2026-10-28.md](../../docs/QUESTION-SCOPE-REVIEW-2026-10-28.md), [server/question-audit/scope-2026-10-28.json](../../server/question-audit/scope-2026-10-28.json), [server/question-audit/reviews.json](../../server/question-audit/reviews.json).
 
 ## BANK-001: Grow Kaspa toward 1,000 reviewed concepts
 

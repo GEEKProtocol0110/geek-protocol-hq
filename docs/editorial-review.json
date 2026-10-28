@@ -2907,9 +2907,128 @@
       "reason": "semantic-duplicate",
       "note": "Exact duplicate exposed by decoding; consolidated under HIST-0465-E35be54b60b. Original grading retained.",
       "answerKeyHash": "8a5847c9739c1eac16704e0f050222c1970ab7ed87c966c54c86b42893b231a6"
+    },
+    {
+      "category": "comics",
+      "id": "COM-0120",
+      "reason": "category-scope",
+      "note": "Both test Bond-film casting, with a British television credit as a clue; no comic/manga learning objective is tested. Do not infer Marvel membership from the shared Avengers title. No replacement in this batch.",
+      "answerKeyHash": "3ecd6441da91fb50701f98823bebae3e02a24b349d277dee51a7cb49bbcd184e"
+    },
+    {
+      "category": "comics",
+      "id": "COM-0132",
+      "reason": "category-scope",
+      "note": "Both test Bond-film casting, with a British television credit as a clue; no comic/manga learning objective is tested. Do not infer Marvel membership from the shared Avengers title. No replacement in this batch.",
+      "answerKeyHash": "a61814bc5a037baa2504985d93836b7c572a48c606d2a7b0622bef1b3f7574b8"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-0bcbe65c8268",
+      "reason": "source-correction",
+      "note": "Consolidate character identification into one explicitly supported captain-role item; discard the unnecessary fruit/powers clue. Canonical replacement: COM-N-b55e7840c099-R4fc022ea2f.",
+      "answerKeyHash": "6a3745f64dc4e607863c4b6829571f37a326ee36fdf18afbf033df1628aff404"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-b55e7840c099",
+      "reason": "source-correction",
+      "note": "Consolidate character identification into one explicitly supported captain-role item; discard the unnecessary fruit/powers clue. Canonical replacement: COM-N-b55e7840c099-R4fc022ea2f.",
+      "answerKeyHash": "e00ca0c69ec6bb24f21be809914b72f0d720ecd452c1d0785cb300358e649a1f"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-98de493c60c3",
+      "reason": "source-correction",
+      "note": "Use one dated spaceflight-history item instead of repeating the same milestone in two categories. Canonical replacement: HIS-N-98de493c60c3-R50997e3f81.",
+      "answerKeyHash": "439786c601dcfef370e4f986138daea54f48ed17703d47513370484e689c31d9"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-d2e7b82199de",
+      "reason": "source-correction",
+      "note": "Use one dated spaceflight-history item instead of repeating the same milestone in two categories. Canonical replacement: HIS-N-98de493c60c3-R50997e3f81.",
+      "answerKeyHash": "e81b119fd8952d52742c78f99ee39bf75ea71fff962a557d108496462a81eff8"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0415",
+      "reason": "source-correction",
+      "note": "Consolidate the repeated production-credit fact under Movies; the war setting alone does not establish History category fit. Canonical replacement: MOV-N-ede9becfe72f-Rd4d58f714b.",
+      "answerKeyHash": "7e256dc2e0e6d5fb212d5d635a20b32f6fa66e6a72c4356bdf75cd179d8de160"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-ede9becfe72f",
+      "reason": "source-correction",
+      "note": "Consolidate the repeated production-credit fact under Movies; the war setting alone does not establish History category fit. Canonical replacement: MOV-N-ede9becfe72f-Rd4d58f714b.",
+      "answerKeyHash": "1fde5c88c301292fc7e5128c4c91572d78a681b0a42bf53cede09a8fe33a4cd0"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0731",
+      "reason": "source-correction",
+      "note": "Keep a specific archival historical event in History; retire the duplicate explorer-identification item from Pop Culture. Canonical replacement: HIST-0731-R9fa338d780.",
+      "answerKeyHash": "7bfb8005c9a079003aa9ba199857bb48af20a7fd7039f8fcc1e5f27824fb9832"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-N-6b6114131628",
+      "reason": "source-correction",
+      "note": "Keep a specific archival historical event in History; retire the duplicate explorer-identification item from Pop Culture. Canonical replacement: HIST-0731-R9fa338d780.",
+      "answerKeyHash": "25460e2c33cb5f15bc1231283df080fca40b61efd20a1dbfaeb22d70871b577b"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0941",
+      "reason": "source-correction",
+      "note": "Retire both award-year versions rather than certify ambiguous film-year/ceremony-year wording. The replacement tests the independently supported title-role credit, not an inferred award date. Canonical replacement: MOV-0941-Re0f6eb54e3.",
+      "answerKeyHash": "4006b5c2a8fe84c5ca39195595af6eeb2420dda11a5e716deb1c0bea59157931"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-8cc0f5ef6c82",
+      "reason": "source-correction",
+      "note": "Retire both award-year versions rather than certify ambiguous film-year/ceremony-year wording. The replacement tests the independently supported title-role credit, not an inferred award date. Canonical replacement: MOV-0941-Re0f6eb54e3.",
+      "answerKeyHash": "cdf45c1b4a63497f305fbe30025149527aa7b2eddc7cc89255ea673c0448696a"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-7643b4e97ddd",
+      "reason": "source-correction",
+      "note": "Consolidate the broad franchise and sequel variants under a film/language-specific credit. Canonical replacement: MOV-N-a3ddcb776338-R49594521a5.",
+      "answerKeyHash": "23a18f08a479eb186782dfffc66482d3229d829b05e8941d7dd73f03aa3c632d"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-a3ddcb776338",
+      "reason": "source-correction",
+      "note": "Consolidate the broad franchise and sequel variants under a film/language-specific credit. Canonical replacement: MOV-N-a3ddcb776338-R49594521a5.",
+      "answerKeyHash": "bdced5ed129eb387b78022b818a9a1e7229d9359ab4b1154832110be4dadf262"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-ffdb7dbe5996",
+      "reason": "source-correction",
+      "note": "Consolidate the shared voice-role fact under Movies and remove the question that reveals the character’s name in its stem. Canonical replacement: POP-N-f9b081c8be26-Rc38649ac9a.",
+      "answerKeyHash": "b4300c95f8d74b8986ec8bdb9317d4927b58997a3c546d2a62e61776b773ee31"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-N-f9b081c8be26",
+      "reason": "source-correction",
+      "note": "Consolidate the shared voice-role fact under Movies and remove the question that reveals the character’s name in its stem. Canonical replacement: POP-N-f9b081c8be26-Rc38649ac9a.",
+      "answerKeyHash": "9f1f71f1560e29daeb5413a0ed438073daf1607b53bee2b84da7a7011b7697f7"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-82da6aa0f393",
+      "reason": "source-correction",
+      "note": "Remove an unsupported undated popularity preface and source-check the acronym and alternatives. Canonical replacement: MOV-N-82da6aa0f393-Rd4e8f40a52.",
+      "answerKeyHash": "b16a1694d66ac1c087885fdf723a1f3532c62b32a529f27b5dcb2ac6af685f04"
     }
   ],
-  "retirementCount": 374,
+  "retirementCount": 391,
   "newLicensedImportsRetired": 258,
   "activeNewLicensedImportsPending": 3598,
   "activeDraftQuestions": 7516,
@@ -2979,6 +3098,13 @@
       "scope": "77 publisher-byte-corrected draft replacements (76 original candidates plus one additional Polish-name case), with one newly exposed exact duplicate retired. No factual approval; active count falls by one.",
       "evidence": "docs/QUESTION-ENCODING-REVIEW-2026-10-28.md",
       "decisionRegister": "server/question-audit/encoding-2026-10-28.json"
+    },
+    {
+      "date": "2026-10-28",
+      "task": "BANK-009",
+      "scope": "Eight pair decisions and four time-wording cases resolved; seventeen original draft identities retired and eight primary-source-checked replacements added. No independent/full-bank certification.",
+      "evidence": "docs/QUESTION-SCOPE-REVIEW-2026-10-28.md",
+      "decisionRegister": "server/question-audit/scope-2026-10-28.json"
     }
   ]
 }

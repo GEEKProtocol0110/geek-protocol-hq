@@ -177,3 +177,7 @@ Founder prioritizes systematic review across all categories. The [first audit ba
 ## October 28 publisher-byte encoding review
 
 [BANK-009 encoding review](QUESTION-ENCODING-REVIEW-2026-10-28.md) replaces all 76 original text-damage candidates plus one additional Polish-name case. Exact raw publisher bytes establish the corrected text; seventy-seven new identities preserve factual draft status and historical grading. One exact History duplicate exposed by decoding is retired under the corrected survivor. Candidate totals: 8,355 active / 864 recorded checks / 7,491 drafts; Kaspa 766 / Study 537 unchanged. Zero encoding signals remain; factual/context/category/difficulty and independent review remain open. CI now rejects known reversible encoding defects in active text.
+
+## October 28 primary-source scope review
+
+[BANK-009 scope review](QUESTION-SCOPE-REVIEW-2026-10-28.md) resolves all eight pending pair decisions and four time-wording cases. Seventeen old draft identities retire; eight licensed source-checked corrections add explicit scope, primary evidence, original explanations and provisional difficulty. Candidate totals: 8,346 active / 872 recorded reviews / 7,474 drafts. Original grading is retained; the initial review register is unchanged and later dispositions are indexed separately. Zero open screening findings is not full factual or independent approval. Kaspa 766 and Study 537 remain unchanged.
