@@ -3,17 +3,17 @@
     "title": "GEEK Protocol — Technology Question Bank",
     "version": "2.0.0-distinct",
     "maintainedAt": "2026-10-28",
-    "questionCount": 1479,
-    "conceptCount": 1479,
+    "questionCount": 1478,
+    "conceptCount": 1478,
     "category": "Technology",
     "difficultyDistribution": {
       "easy": 576,
-      "medium": 604,
+      "medium": 603,
       "hard": 299
     },
     "correctIndexDistribution": {
       "0": 373,
-      "1": 344,
+      "1": 343,
       "2": 367,
       "3": 395
     },
@@ -27835,33 +27835,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "hard"
-    },
-    {
-      "prompt": "In April 28, 2001, this famous American multimillionaire became the first space tourist.",
-      "options": [
-        "Gregory Olsen",
-        "Dennis Tito",
-        "Mark Shuttleworth",
-        "Charles Simonyi"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 1184,
-      "id": "TECH-N-d2e7b82199de",
-      "conceptId": "TECH-N-d2e7b82199de",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "On Friday evenings it was the custom of Jewish families to invite college students over for a home cooked meal. One of the students the Einsteins often ate with introduced Albert to science. What was his name ?",

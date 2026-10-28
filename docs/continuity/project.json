@@ -18,9 +18,9 @@
     "evidence": "PR #155 merged October 23, 2026 at 12:21:55 Detroit (16:21:55 UTC) as 1476aa2d1a4469ed1eed30d9c72f94ca50e8bd4f. Final checked head ee1ce12bb3e961e2013d56a4dda29855a14d1810/tree d8d0e4fd94564ba79cd7559ce7e4add355587a0b matches local 4da8aeb3dee54ed73e1172c16afa5f5206a38fa2; the merge has that same tree. Exact-head GitHub Security verification 39964886728 succeeded; no submitted reviews or inline threads were present before merge. Full local verification passed 603 HQ tests plus four offline signer tests, zero failures/skips, real Redis 7.0.15, 311 security assertions and all supporting checks. Production dpl_7FYxuRoLQ6VVpB5PLdnHGqFwaxzk is READY on the exact merge with both canonical domains assigned. Five no-redirect canonical checks passed under 15-second request bounds: exact status-client bytes, Play HTML referencing the client, private player 401, unauthorized worker POST 401 and private owner-auto 401; all protected responses were private/no-store. The earlier protected-preview private-fetch failure remains provider authentication evidence, not application acceptance. Actual-phone status recovery and actual automatic transfer remain unproved. Fresh project search found no geek-geekt-testnet-worker; creation in the existing Vercel team again returned 403 forbidden/no project-create permission. Neither vercel nor vc CLI is installed. No signer project, key, environment value, test funding or automatic payment was created. Mainnet/CCE/ownership holds remain unchanged."
   },
   "questionCheckpoint": {
-    "active": 8355,
-    "reviewed": 864,
-    "remaining": 7136,
+    "active": 8346,
+    "reviewed": 872,
+    "remaining": 7128,
     "kaspaActive": 766,
     "kaspaReviewed": 766,
     "studyConcepts": 537,
@@ -37,10 +37,10 @@
   "currentWork": {
     "id": "BANK-009",
     "status": "active",
-    "description": "BANK-009 closes the encoding-triage step: 77 publisher-byte-corrected draft replacements, including one additional name case; one exact duplicate exposed by decoding is consolidated. Candidate totals: 8,355 active / 864 recorded source checks / 7,491 drafts. Zero encoding signals; eight scope/category pairs and four time-wording cases remain. Kaspa 766 and Study 537 unchanged. Full factual/independent review and broader launch acceptance remain open."
+    "description": "BANK-009 resolves the initial eight scope/category pairs and four contextual time-wording cases: 17 original drafts retired, eight internally primary-source-checked replacements added. Candidate totals: 8,346 active / 872 recorded reviews / 7,474 factual drafts. The screen retains classified matches and zero unresolved findings; this is not full factual or independent approval. Kaspa 766 and Study 537 remain unchanged."
   },
   "nextTask": "BANK-009",
-  "nextAction": "Continue BANK-009: resolve eight scope/category pairs and four contextual time-wording signals, then review all 7,491 remaining drafts against primary evidence, every distractor, wording, context, category, license and difficulty. Preserve historical keys and canonical exclusions. Encoding triage is complete for the 77 reviewed cases; zero encoding signals does not close factual or independent review. Kaspa remains 766 / 234 to target. Keep launch device/account, private Royale retry disposition and provider-recovery acceptance separate.",
+  "nextAction": "Continue BANK-009 with a bounded Technology batch: inspect category/context suitability and verify each retained key, all distractors and explanation against primary evidence; continue History and Comics next. The initial eight scope/category pairs and four time-wording cases are resolved, but 7,474 drafts still need factual review. Keep semantic-overlap checks on reviewed content and all historical keys/aliases. Independent editing and broader launch device/multiplayer/provider recovery remain open; Kaspa stays 766 / 234 to target.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

@@ -40,6 +40,43 @@ test('audit refuses retired, duplicate or malformed records rather than hiding c
   const q=row('a','Who designed the first bridge?');
   for(const qs of [[q,q],[{...q,correctIndex:9}],[{...q,retiredReason:'duplicate'}]])assert.throws(()=>auditQuestionBanks({fiction:qs}));
 });
+test('a contextual time-wording decision is visible, bound to grading evidence and invalidated by edits',()=>{
+  const q=row('time','Which field records the latest measured connection delay?');
+  const d={id:q.id,reason:'time-scope-review',gradingHash:gradingHash(q),disposition:'retained-nonvolatile'};
+  const report=auditQuestionBanks({network:[q]},[],[d]);
+  assert.equal(report.signals.items,1);assert.equal(report.signals.unresolvedItems,0);
+  assert.equal(report.itemSignals[0].dispositions['time-scope-review'],'retained-nonvolatile');
+  assert.throws(()=>auditQuestionBanks({network:[{...q,prompt:'Which field records a connection delay?'}]},[],[d]),/Stale item/);
+  assert.equal(auditQuestionBanks({network:[q]}).signals.unresolvedItems,1);
+});
+test('scope follow-up preserves earlier decisions and binds all replacements and retirements',async()=>{
+  const old=JSON.parse(readFileSync('server/question-audit/decisions-2026-10-27.json'));
+  const next=JSON.parse(readFileSync('server/question-audit/scope-2026-10-28.json'));
+  const pending=old.pairs.filter(p=>['needs-scope-review','cross-category-review'].includes(p.disposition));
+  assert.equal(pending.length,8);assert.equal(next.pairs.length,8);assert.equal(next.itemDecisions.length,4);
+  assert.equal(next.retirements.length,17);assert.equal(next.replacements.length,8);
+  for(const d of next.pairs){
+    const previous=pending.find(p=>p.ids.join('|')===d.ids.join('|'));assert.ok(previous);
+    assert.deepEqual(d.gradingHashes,previous.gradingHashes);assert.equal(d.disposition,'resolved');
+  }
+  for(const item of next.replacements){
+    const q=loadQuestionBank(item.category).questions.find(q=>q.id===item.id);
+    assert.ok(q);assert.equal(gradingHash(q),item.gradingHash);assert.equal(q.reviewStatus,'source-checked');
+    assert.equal(q.source,item.source);assert.equal(q.license,'CC BY-SA 4.0');assert.ok(q.funFact.length>=8);
+  }
+  for(const item of next.retirements){
+    const bank=loadQuestionBank(item.category),old=bank.byId.get(item.id);
+    assert.equal(gradingHash(old),item.gradingHash);assert.ok(old.retiredReason);assert.ok(!bank.questions.some(q=>q.id===old.id));
+    if(item.canonicalId){
+      const q=loadQuestionBank(item.canonicalCategory).questions.find(q=>q.id===item.canonicalId);assert.ok(q);
+      assert.equal(old.conceptId,q.conceptId);
+      if(item.category===item.canonicalCategory){
+        const round=q.difficulty==='easy'?1:q.difficulty==='medium'?4:8;
+        assert.ok(!(await selectRoundQuestionIds(item.category,round,[old.id])).includes(q.id));
+      }
+    }
+  }
+});
 test('audited duplicate retirements retain grading and exclude their surviving concept from later rounds',async()=>{
   const ledger=JSON.parse(readFileSync('server/question-audit/decisions-2026-10-27.json','utf8'));
   for(const d of ledger.pairs.filter(d=>d.disposition==='retire-duplicate')){

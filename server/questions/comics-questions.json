@@ -2,20 +2,20 @@
   "metadata": {
     "title": "GEEK Protocol — Comics Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-27",
-    "questionCount": 416,
-    "conceptCount": 416,
+    "maintainedAt": "2026-10-28",
+    "questionCount": 413,
+    "conceptCount": 413,
     "category": "Comics",
     "difficultyDistribution": {
-      "easy": 205,
-      "medium": 167,
-      "hard": 44
+      "easy": 204,
+      "medium": 166,
+      "hard": 43
     },
     "correctIndexDistribution": {
       "0": 108,
-      "1": 93,
+      "1": 92,
       "2": 105,
-      "3": 110
+      "3": 108
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -963,30 +963,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "COM-0120",
-      "category": "Comics",
-      "prompt": "This actress, known for her performance in the TV series The Avengers, portrayed Tracy Bond in Her Majestys Secret Service.",
-      "options": [
-        "Diana Smythe",
-        "Emma Peel",
-        "Kim Basinger",
-        "Diana Rigg"
-      ],
-      "correctIndex": 3,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-people.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0120",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "COM-0122",
       "category": "Comics",
       "prompt": "In the episode The Days of Future Past, the X-Men travel to the Savage Land, only to find that their mutant powers have been nullified. What card does Gambit fail to charge?",
@@ -1056,30 +1032,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "COM-0126",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "COM-0132",
-      "category": "Comics",
-      "prompt": "This actress, famous for playing in the series The Avengers, portrays Tracy Draco, in On Her Majestys Secret Service?",
-      "options": [
-        "Claudia Cardinale",
-        "Vanessa Redgrave",
-        "Senta Berger",
-        "Diana Rigg"
-      ],
-      "correctIndex": 3,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-movies.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0132",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -6858,33 +6810,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Who is the main character in One Piece?",
-      "options": [
-        "Zoro",
-        "Smoker",
-        "Luffy",
-        "Shanks"
-      ],
-      "correctIndex": 2,
-      "sourceCategoryId": 31,
-      "difficulty": "medium",
-      "sourceFile": "Entertainment: Japanese Anime &amp; Manga",
-      "id": "COM-N-b55e7840c099",
-      "conceptId": "COM-N-b55e7840c099",
-      "category": "Comics",
-      "subcategory": "Entertainment: Japanese Anime &Amp; Manga",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
       "prompt": "The Great Pumpkin is an unseen character in this comic strip created by Charles M. Schulz.",
       "options": [
         "Peanuts",
@@ -8584,33 +8509,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/rated",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
-    },
-    {
-      "prompt": "This One Piece character is the Captain of the Strawhat Pirates, and wears a straw hat himself. He gained elasticity powers after eating the Gomu Gomu Fruit.",
-      "options": [
-        "Sanji",
-        "Luffy",
-        "Usopp",
-        "Zoro"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "newest",
-      "sourceOrdinal": 1356,
-      "id": "COM-N-0bcbe65c8268",
-      "conceptId": "COM-N-0bcbe65c8268",
-      "category": "Comics",
-      "subcategory": "Newest",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/newest",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "Who was the Author of the manga Monster Hunter Orage?",
@@ -10582,6 +10480,43 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
+    },
+    {
+      "prompt": "Which One Piece character captains the Straw Hat Pirates?",
+      "options": [
+        "Zoro",
+        "Smoker",
+        "Luffy",
+        "Shanks"
+      ],
+      "correctIndex": 2,
+      "sourceCategoryId": 31,
+      "difficulty": "easy",
+      "sourceFile": "Entertainment: Japanese Anime &amp; Manga",
+      "id": "COM-N-b55e7840c099-R4fc022ea2f",
+      "conceptId": "COM-N-b55e7840c099-R4fc022ea2f",
+      "category": "Comics",
+      "subcategory": "One Piece",
+      "funFact": "The official character profile identifies Monkey D. Luffy as the crew’s captain. This question asks about that role rather than mixing protagonist, powers and adaptation-specific clues.",
+      "tags": [
+        "comics",
+        "scope-reviewed"
+      ],
+      "volatile": false,
+      "license": "CC BY-SA 4.0",
+      "reviewStatus": "source-checked",
+      "maintenanceCheckedAt": "2026-10-07",
+      "source": "https://www.onepiece-film.jp/wordpress/wp-content/themes/onepiece-film-red/common/character/chara03_en.html",
+      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol.",
+      "reviewedAt": "2026-10-28",
+      "scopeReview": {
+        "kind": "primary-source",
+        "reviewedAt": "2026-10-28",
+        "supersedes": [
+          "COM-N-0bcbe65c8268",
+          "COM-N-b55e7840c099"
+        ]
+      }
     }
   ]
 }

@@ -3,18 +3,18 @@
     "title": "GEEK Protocol — Movies Question Bank",
     "version": "2.0.0-distinct",
     "maintainedAt": "2026-10-28",
-    "questionCount": 1492,
-    "conceptCount": 1492,
+    "questionCount": 1490,
+    "conceptCount": 1490,
     "category": "Movies",
     "difficultyDistribution": {
-      "easy": 603,
-      "medium": 598,
-      "hard": 291
+      "easy": 600,
+      "medium": 600,
+      "hard": 290
     },
     "correctIndexDistribution": {
       "0": 361,
-      "1": 377,
-      "2": 368,
+      "1": 376,
+      "2": 367,
       "3": 386
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
@@ -17097,30 +17097,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0941",
-      "category": "Movies",
-      "prompt": "Which of these nominated actresses won the Razzie Award for Worst Actress for her role in the 1983 movie The Lonely Lady?",
-      "options": [
-        "Pia Zadora",
-        "Linda Blair",
-        "Olivia Newton-John",
-        "Faye Dunaway"
-      ],
-      "correctIndex": 0,
-      "difficulty": "hard",
-      "funFact": null,
-      "tags": [
-        "movies"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-movies.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0941",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "MOV-0946",
       "category": "Movies",
       "prompt": "What kind of animals does the G-force team primarily consist of?",
@@ -21426,33 +21402,6 @@
       "difficulty": "hard"
     },
     {
-      "prompt": "Nowadays most animated movies are made using CGI. What does CGI stand for?",
-      "options": [
-        "Compensated Generic Images",
-        "Computer Generated Imagery",
-        "Computer Generation I",
-        "Computerized Generated Illusions"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "movies",
-      "sourceOrdinal": 2232,
-      "id": "MOV-N-82da6aa0f393",
-      "conceptId": "MOV-N-82da6aa0f393",
-      "category": "Movies",
-      "subcategory": "Movies",
-      "funFact": null,
-      "tags": [
-        "movies"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "The quote, I wont kill you, but I dont have to save you is from what movie?",
       "options": [
         "Pirates of the Caribbean: The Curse of the Black Pearl",
@@ -22344,33 +22293,6 @@
       "difficulty": "medium"
     },
     {
-      "prompt": "Who wrote and directed the 1986 film 'Platoon'?",
-      "options": [
-        "Oliver Stone",
-        "Francis Ford Coppola",
-        "Stanley Kubrick",
-        "Michael Cimino"
-      ],
-      "correctIndex": 0,
-      "sourceCategoryId": 11,
-      "difficulty": "easy",
-      "sourceFile": "Entertainment: Film",
-      "id": "MOV-N-ede9becfe72f",
-      "conceptId": "MOV-N-ede9becfe72f",
-      "category": "Movies",
-      "subcategory": "Entertainment: Film",
-      "funFact": null,
-      "tags": [
-        "movies"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
       "prompt": "Without a Trace, a ful length animated film about a German ship sinking a ship of another nation, was released in 1918. In which country was the film made?",
       "options": [
         "England",
@@ -23071,33 +22993,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "She won the Worst Actress Razzies in 1982 for Butterfly and in 1983 for The Lonely Lady.",
-      "options": [
-        "Liza Minelli",
-        "Pia Zadora",
-        "Bo Derek",
-        "Faye Dunaway"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "movies",
-      "sourceOrdinal": 1711,
-      "id": "MOV-N-8cc0f5ef6c82",
-      "conceptId": "MOV-N-8cc0f5ef6c82",
-      "category": "Movies",
-      "subcategory": "Movies",
-      "funFact": null,
-      "tags": [
-        "movies"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "In the next to the last scene of the movie High Noon, Miller has caught Amy and demands that Will come out into the open or he will kill her. How does the scene end?",
@@ -27553,33 +27448,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "Who voices Princess Fiona in Shrek 2?",
-      "options": [
-        "Katie Holmes",
-        "Keira Knightley",
-        "Kirsten Dunst",
-        "Cameron Diaz"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "movies",
-      "sourceOrdinal": 248,
-      "id": "MOV-N-a3ddcb776338",
-      "conceptId": "MOV-N-a3ddcb776338",
-      "category": "Movies",
-      "subcategory": "Movies",
-      "funFact": null,
-      "tags": [
-        "movies"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "Talia Shire is probably best known for playing Adrian Pennino in the awesome Rocky movies. What was her characters name in the Godfather movies?",
@@ -33495,33 +33363,6 @@
       "difficulty": "medium"
     },
     {
-      "prompt": "What is the name of the donkey, voiced by Eddie Murphy, in the 2001 animated movie Shrek?",
-      "options": [
-        "Donkey",
-        "Edward",
-        "Russel",
-        "Thorn"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "movies",
-      "sourceOrdinal": 2959,
-      "id": "MOV-N-ffdb7dbe5996",
-      "conceptId": "MOV-N-ffdb7dbe5996",
-      "category": "Movies",
-      "subcategory": "Movies",
-      "funFact": null,
-      "tags": [
-        "movies"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "Robert De Niro won his first Academy Award for Best Actor for his performance in this movie.",
       "options": [
         "The Deer Hunter",
@@ -34587,33 +34428,6 @@
       "sourceOrdinal": 1582,
       "id": "MOV-N-7a3091b602e1",
       "conceptId": "MOV-N-7a3091b602e1",
-      "category": "Movies",
-      "subcategory": "Movies",
-      "funFact": null,
-      "tags": [
-        "movies"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "What actress voiced Princess Fiona in the Shrek movies?",
-      "options": [
-        "Catherine Zeta-Jones",
-        "Julia Roberts",
-        "Cameron Diaz",
-        "Jennifer Lopez"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "movies",
-      "sourceOrdinal": 2747,
-      "id": "MOV-N-7643b4e97ddd",
-      "conceptId": "MOV-N-7643b4e97ddd",
       "category": "Movies",
       "subcategory": "Movies",
       "funFact": null,
@@ -38191,6 +38005,188 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "hard"
+    },
+    {
+      "prompt": "Who is credited as both writer and director of Platoon (1986)?",
+      "options": [
+        "Oliver Stone",
+        "Francis Ford Coppola",
+        "Stanley Kubrick",
+        "Michael Cimino"
+      ],
+      "correctIndex": 0,
+      "sourceCategoryId": 11,
+      "difficulty": "medium",
+      "sourceFile": "Entertainment: Film",
+      "id": "MOV-N-ede9becfe72f-Rd4d58f714b",
+      "conceptId": "MOV-N-ede9becfe72f-Rd4d58f714b",
+      "category": "Movies",
+      "subcategory": "Film Credits",
+      "funFact": "The AFI Catalog names Oliver Stone in both credits. A film’s historical setting does not turn a question about its production credits into a historical-event question.",
+      "tags": [
+        "movies",
+        "scope-reviewed"
+      ],
+      "volatile": false,
+      "license": "CC BY-SA 4.0",
+      "reviewStatus": "source-checked",
+      "maintenanceCheckedAt": "2026-10-07",
+      "source": "https://catalog.afi.com/Film/68355-PLATOON",
+      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol.",
+      "reviewedAt": "2026-10-28",
+      "scopeReview": {
+        "kind": "primary-source",
+        "reviewedAt": "2026-10-28",
+        "supersedes": [
+          "HIST-0415",
+          "MOV-N-ede9becfe72f"
+        ]
+      }
+    },
+    {
+      "id": "MOV-0941-Re0f6eb54e3",
+      "category": "Movies",
+      "prompt": "Which actress plays the title role in The Lonely Lady (1983)?",
+      "options": [
+        "Pia Zadora",
+        "Linda Blair",
+        "Olivia Newton-John",
+        "Faye Dunaway"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The AFI production history identifies Pia Zadora in the title role. This replacement tests a fixed film credit; it does not repeat unqualified award-year claims.",
+      "tags": [
+        "movies",
+        "scope-reviewed"
+      ],
+      "volatile": false,
+      "source": "https://catalog.afi.com/Film/58003-THE-LONELY-LADY",
+      "sourceFile": "source-movies.txt",
+      "license": "CC BY-SA 4.0",
+      "reviewStatus": "source-checked",
+      "conceptId": "MOV-0941-Re0f6eb54e3",
+      "maintenanceCheckedAt": "2026-10-07",
+      "subcategory": "Film Credits",
+      "reviewedAt": "2026-10-28",
+      "scopeReview": {
+        "kind": "primary-source",
+        "reviewedAt": "2026-10-28",
+        "supersedes": [
+          "MOV-0941",
+          "MOV-N-8cc0f5ef6c82"
+        ]
+      }
+    },
+    {
+      "prompt": "Who provides Princess Fiona’s English-language voice in Shrek 2 (2004)?",
+      "options": [
+        "Katie Holmes",
+        "Keira Knightley",
+        "Kirsten Dunst",
+        "Cameron Diaz"
+      ],
+      "correctIndex": 3,
+      "sourceFile": "movies",
+      "sourceOrdinal": 248,
+      "id": "MOV-N-a3ddcb776338-R49594521a5",
+      "conceptId": "MOV-N-a3ddcb776338-R49594521a5",
+      "category": "Movies",
+      "subcategory": "Film Voice Cast",
+      "funFact": "DreamWorks credits Cameron Diaz as Fiona for this 2004 film. Naming the film and language avoids making a claim about every installment or dubbed edition.",
+      "tags": [
+        "movies",
+        "scope-reviewed"
+      ],
+      "volatile": false,
+      "license": "CC BY-SA 4.0",
+      "reviewStatus": "source-checked",
+      "maintenanceCheckedAt": "2026-10-07",
+      "source": "https://www.dreamworks.com/movies/shrek-2",
+      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
+      "difficulty": "easy",
+      "reviewedAt": "2026-10-28",
+      "scopeReview": {
+        "kind": "primary-source",
+        "reviewedAt": "2026-10-28",
+        "supersedes": [
+          "MOV-N-7643b4e97ddd",
+          "MOV-N-a3ddcb776338"
+        ]
+      }
+    },
+    {
+      "prompt": "Which character does Eddie Murphy voice in the original English-language Shrek (2001)?",
+      "options": [
+        "Donkey",
+        "Shrek",
+        "Puss in Boots",
+        "Pinocchio"
+      ],
+      "correctIndex": 0,
+      "sourceFile": "celebrities",
+      "sourceOrdinal": 330,
+      "id": "POP-N-f9b081c8be26-Rc38649ac9a",
+      "conceptId": "POP-N-f9b081c8be26-Rc38649ac9a",
+      "category": "Movies",
+      "subcategory": "Film Voice Cast",
+      "funFact": "The official DreamWorks page credits Eddie Murphy as Donkey. The question asks for the actor-to-character mapping without supplying the answer in its own wording.",
+      "tags": [
+        "movies",
+        "scope-reviewed"
+      ],
+      "volatile": false,
+      "license": "CC BY-SA 4.0",
+      "reviewStatus": "source-checked",
+      "maintenanceCheckedAt": "2026-10-07",
+      "source": "https://www.dreamworks.com/movies/shrek",
+      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
+      "difficulty": "easy",
+      "reviewedAt": "2026-10-28",
+      "scopeReview": {
+        "kind": "primary-source",
+        "reviewedAt": "2026-10-28",
+        "supersedes": [
+          "MOV-N-ffdb7dbe5996",
+          "POP-N-f9b081c8be26"
+        ]
+      }
+    },
+    {
+      "prompt": "In filmmaking, what does CGI stand for?",
+      "options": [
+        "Compensated Generic Images",
+        "Computer Generated Imagery",
+        "Computer Generation I",
+        "Computerized Generated Illusions"
+      ],
+      "correctIndex": 1,
+      "sourceFile": "movies",
+      "sourceOrdinal": 2232,
+      "id": "MOV-N-82da6aa0f393-Rd4e8f40a52",
+      "conceptId": "MOV-N-82da6aa0f393-Rd4e8f40a52",
+      "category": "Movies",
+      "subcategory": "Film Techniques",
+      "funFact": "Adobe expands CGI as computer-generated imagery: images or effects created using computer software. The definition does not depend on an undated claim about how most films are made.",
+      "tags": [
+        "movies",
+        "scope-reviewed"
+      ],
+      "volatile": false,
+      "license": "CC BY-SA 4.0",
+      "reviewStatus": "source-checked",
+      "maintenanceCheckedAt": "2026-10-07",
+      "source": "https://www.adobe.com/uk/creativecloud/animation/discover/cgi-animation.html",
+      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
+      "difficulty": "medium",
+      "reviewedAt": "2026-10-28",
+      "scopeReview": {
+        "kind": "primary-source",
+        "reviewedAt": "2026-10-28",
+        "supersedes": [
+          "MOV-N-82da6aa0f393"
+        ]
+      }
     }
   ]
 }

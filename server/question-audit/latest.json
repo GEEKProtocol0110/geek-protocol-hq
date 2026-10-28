@@ -5,10 +5,10 @@
   "independentReview": false,
   "scope": "All active static rows in the category registry, including source-checked rows; excludes retired lookup-only and held CCE rows.",
   "limit": "Heuristic screening and internal pair triage are not exhaustive semantic, factual, category, licensing or difficulty review. Unflagged drafts still need item-by-item primary-source review.",
-  "corpusHash": "58102320f1cc826b85297f15c5ceebf0deca96e3f5d11818037e417a9fa0e042",
-  "active": 8355,
-  "recordedSourceChecks": 864,
-  "needsFactualReview": 7491,
+  "corpusHash": "848cbd7e060136b676d0f3b267a6c3c4af95d0473b1434c85bea9389a0e2a3e6",
+  "active": 8346,
+  "recordedSourceChecks": 872,
+  "needsFactualReview": 7474,
   "categories": [
     {
       "category": "kaspa",
@@ -33,47 +33,49 @@
     },
     {
       "category": "technology",
-      "active": 1494,
+      "active": 1493,
       "recordedSourceChecks": 15,
-      "needsFactualReview": 1479,
-      "missingExplanation": 1479
+      "needsFactualReview": 1478,
+      "missingExplanation": 1478
     },
     {
       "category": "movies",
-      "active": 1492,
-      "recordedSourceChecks": 0,
-      "needsFactualReview": 1492,
-      "missingExplanation": 1492
+      "active": 1490,
+      "recordedSourceChecks": 5,
+      "needsFactualReview": 1485,
+      "missingExplanation": 1485
     },
     {
       "category": "history",
-      "active": 1503,
-      "recordedSourceChecks": 7,
-      "needsFactualReview": 1496,
-      "missingExplanation": 1496
+      "active": 1502,
+      "recordedSourceChecks": 9,
+      "needsFactualReview": 1493,
+      "missingExplanation": 1493
     },
     {
       "category": "comics",
-      "active": 416,
-      "recordedSourceChecks": 39,
-      "needsFactualReview": 377,
-      "missingExplanation": 377
+      "active": 413,
+      "recordedSourceChecks": 40,
+      "needsFactualReview": 373,
+      "missingExplanation": 373
     },
     {
       "category": "pop-culture",
-      "active": 1569,
+      "active": 1567,
       "recordedSourceChecks": 0,
-      "needsFactualReview": 1569,
-      "missingExplanation": 1569
+      "needsFactualReview": 1567,
+      "missingExplanation": 1567
     }
   ],
   "signals": {
-    "items": 4,
-    "pairs": 18,
-    "withinCategoryPairs": 11,
-    "crossCategoryPairs": 7,
+    "items": 3,
+    "pairs": 10,
+    "withinCategoryPairs": 7,
+    "crossCategoryPairs": 3,
+    "unresolvedItems": 0,
+    "unresolvedPairs": 0,
     "byReason": {
-      "time-scope-review": 4
+      "time-scope-review": 3
     }
   },
   "itemSignals": [
@@ -83,7 +85,10 @@
       "gradingHash": "93b119f01e316c8e7b61952984ea7e58f71c72ec634022812204d462a7558f89",
       "reasons": [
         "time-scope-review"
-      ]
+      ],
+      "dispositions": {
+        "time-scope-review": "retained-nonvolatile"
+      }
     },
     {
       "category": "kaspa",
@@ -91,7 +96,10 @@
       "gradingHash": "5a12bf3a15bde95a67f08ee5e5fbcc206f559fae2cb1dee4f6e462cc9b410c78",
       "reasons": [
         "time-scope-review"
-      ]
+      ],
+      "dispositions": {
+        "time-scope-review": "retained-nonvolatile"
+      }
     },
     {
       "category": "kaspa",
@@ -99,62 +107,13 @@
       "gradingHash": "cfdf10919318b5f46e9f2ec5037b10870c9e9b41ae7b5821b80a6874586168fe",
       "reasons": [
         "time-scope-review"
-      ]
-    },
-    {
-      "category": "movies",
-      "id": "MOV-N-82da6aa0f393",
-      "gradingHash": "b16a1694d66ac1c087885fdf723a1f3532c62b32a529f27b5dcb2ac6af685f04",
-      "reasons": [
-        "time-scope-review"
-      ]
+      ],
+      "dispositions": {
+        "time-scope-review": "retained-nonvolatile"
+      }
     }
   ],
   "pairs": [
-    {
-      "ids": [
-        "COM-0120",
-        "COM-0132"
-      ],
-      "categories": [
-        "comics",
-        "comics"
-      ],
-      "gradingHashes": [
-        "3ecd6441da91fb50701f98823bebae3e02a24b349d277dee51a7cb49bbcd184e",
-        "a61814bc5a037baa2504985d93836b7c572a48c606d2a7b0622bef1b3f7574b8"
-      ],
-      "scope": "within-category",
-      "reasons": [
-        "shared-answer-related-wording"
-      ],
-      "sharedTerms": 8,
-      "jaccard": 0.4706,
-      "containment": 0.6667,
-      "disposition": "needs-scope-review"
-    },
-    {
-      "ids": [
-        "COM-N-0bcbe65c8268",
-        "COM-N-b55e7840c099"
-      ],
-      "categories": [
-        "comics",
-        "comics"
-      ],
-      "gradingHashes": [
-        "6a3745f64dc4e607863c4b6829571f37a326ee36fdf18afbf033df1628aff404",
-        "e00ca0c69ec6bb24f21be809914b72f0d720ecd452c1d0785cb300358e649a1f"
-      ],
-      "scope": "within-category",
-      "reasons": [
-        "shared-answer-related-wording"
-      ],
-      "sharedTerms": 3,
-      "jaccard": 0.15,
-      "containment": 0.75,
-      "disposition": "needs-scope-review"
-    },
     {
       "ids": [
         "HIS-N-1e522f5009aa",
@@ -179,116 +138,6 @@
     },
     {
       "ids": [
-        "HIS-N-98de493c60c3",
-        "TECH-N-d2e7b82199de"
-      ],
-      "categories": [
-        "history",
-        "technology"
-      ],
-      "gradingHashes": [
-        "439786c601dcfef370e4f986138daea54f48ed17703d47513370484e689c31d9",
-        "e81b119fd8952d52742c78f99ee39bf75ea71fff962a557d108496462a81eff8"
-      ],
-      "scope": "cross-category",
-      "reasons": [
-        "shared-answer-related-wording"
-      ],
-      "sharedTerms": 4,
-      "jaccard": 0.3333,
-      "containment": 0.8,
-      "disposition": "cross-category-review"
-    },
-    {
-      "ids": [
-        "HIST-0415",
-        "MOV-N-ede9becfe72f"
-      ],
-      "categories": [
-        "history",
-        "movies"
-      ],
-      "gradingHashes": [
-        "7e256dc2e0e6d5fb212d5d635a20b32f6fa66e6a72c4356bdf75cd179d8de160",
-        "1fde5c88c301292fc7e5128c4c91572d78a681b0a42bf53cede09a8fe33a4cd0"
-      ],
-      "scope": "cross-category",
-      "reasons": [
-        "shared-answer-related-wording"
-      ],
-      "sharedTerms": 3,
-      "jaccard": 0.5,
-      "containment": 0.75,
-      "disposition": "cross-category-review"
-    },
-    {
-      "ids": [
-        "HIST-0731",
-        "POP-N-6b6114131628"
-      ],
-      "categories": [
-        "history",
-        "pop-culture"
-      ],
-      "gradingHashes": [
-        "7bfb8005c9a079003aa9ba199857bb48af20a7fd7039f8fcc1e5f27824fb9832",
-        "25460e2c33cb5f15bc1231283df080fca40b61efd20a1dbfaeb22d70871b577b"
-      ],
-      "scope": "cross-category",
-      "reasons": [
-        "shared-answer-related-wording"
-      ],
-      "sharedTerms": 4,
-      "jaccard": 0.4,
-      "containment": 0.8,
-      "disposition": "cross-category-review"
-    },
-    {
-      "ids": [
-        "MOV-0941",
-        "MOV-N-8cc0f5ef6c82"
-      ],
-      "categories": [
-        "movies",
-        "movies"
-      ],
-      "gradingHashes": [
-        "4006b5c2a8fe84c5ca39195595af6eeb2420dda11a5e716deb1c0bea59157931",
-        "cdf45c1b4a63497f305fbe30025149527aa7b2eddc7cc89255ea673c0448696a"
-      ],
-      "scope": "within-category",
-      "reasons": [
-        "shared-answer-related-wording"
-      ],
-      "sharedTerms": 7,
-      "jaccard": 0.4375,
-      "containment": 0.7,
-      "disposition": "needs-scope-review"
-    },
-    {
-      "ids": [
-        "MOV-N-7643b4e97ddd",
-        "MOV-N-a3ddcb776338"
-      ],
-      "categories": [
-        "movies",
-        "movies"
-      ],
-      "gradingHashes": [
-        "23a18f08a479eb186782dfffc66482d3229d829b05e8941d7dd73f03aa3c632d",
-        "bdced5ed129eb387b78022b818a9a1e7229d9359ab4b1154832110be4dadf262"
-      ],
-      "scope": "within-category",
-      "reasons": [
-        "shared-answer-related-wording"
-      ],
-      "sharedTerms": 3,
-      "jaccard": 0.375,
-      "containment": 0.6,
-      "disposition": "needs-scope-review"
-    },
-    {
-      "ids": [
         "MOV-N-9401124739ba",
         "SF-N-64c444dbf2f4"
       ],
@@ -308,28 +157,6 @@
       "jaccard": 0.375,
       "containment": 0.6,
       "disposition": "retained-distinct"
-    },
-    {
-      "ids": [
-        "MOV-N-ffdb7dbe5996",
-        "POP-N-f9b081c8be26"
-      ],
-      "categories": [
-        "movies",
-        "pop-culture"
-      ],
-      "gradingHashes": [
-        "b4300c95f8d74b8986ec8bdb9317d4927b58997a3c546d2a62e61776b773ee31",
-        "9f1f71f1560e29daeb5413a0ed438073daf1607b53bee2b84da7a7011b7697f7"
-      ],
-      "scope": "cross-category",
-      "reasons": [
-        "shared-answer-related-wording"
-      ],
-      "sharedTerms": 5,
-      "jaccard": 0.3846,
-      "containment": 0.5556,
-      "disposition": "cross-category-review"
     },
     {
       "ids": [
