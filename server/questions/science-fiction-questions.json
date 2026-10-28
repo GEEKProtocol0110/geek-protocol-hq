@@ -2,20 +2,20 @@
   "metadata": {
     "title": "GEEK Protocol — Science Fiction Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-08",
-    "questionCount": 515,
-    "conceptCount": 515,
+    "maintainedAt": "2026-10-27",
+    "questionCount": 514,
+    "conceptCount": 514,
     "category": "Science Fiction",
     "difficultyDistribution": {
       "easy": 295,
-      "medium": 166,
+      "medium": 165,
       "hard": 54
     },
     "correctIndexDistribution": {
-      "2": 142,
-      "3": 126,
+      "0": 118,
       "1": 129,
-      "0": 118
+      "2": 141,
+      "3": 126
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -9409,33 +9409,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/newest",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "hard"
-    },
-    {
-      "prompt": "According to The Hitchhiker's Guide to the Galaxy book, the answer to life, the universe and everything else is...",
-      "options": [
-        "Chocolate",
-        "Death",
-        "42",
-        "Loving everyone around you"
-      ],
-      "correctIndex": 2,
-      "sourceCategoryId": 10,
-      "difficulty": "medium",
-      "sourceFile": "Entertainment: Books",
-      "id": "SF-N-ad82e42e8c02",
-      "conceptId": "SF-N-ad82e42e8c02",
-      "category": "Science Fiction",
-      "subcategory": "Entertainment: Books",
-      "funFact": null,
-      "tags": [
-        "science-fiction"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
       "prompt": "The movie Back to the Future, directed by Robert Zemeckis, was released in what year?",

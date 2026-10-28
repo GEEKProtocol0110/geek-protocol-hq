@@ -2256,9 +2256,114 @@
       "reason": "owner-review",
       "note": "Retired following internal editorial review; original answer retained for saved runs.",
       "answerKeyHash": "a3394dd762eee3669d641b60edc36ed72356f2f04ef0f2cc506a11259d8ddc9c"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-fb1ae61a7478",
+      "reason": "semantic-duplicate",
+      "note": "Duplicate learning objective consolidated under COM-0306 after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
+      "answerKeyHash": "130747d5962d565f83371f2294df6c0a9696444171401e02974e5fa3df7d3220"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-cb3efa608363",
+      "reason": "semantic-duplicate",
+      "note": "Duplicate learning objective consolidated under HIS-N-579c91cd5f0a after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
+      "answerKeyHash": "5bae2e1fe95126f9fa8850ae78ced023fbb8967cbcf66c6e153929a34a8e1e77"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-9968535bb1ed",
+      "reason": "semantic-duplicate",
+      "note": "Duplicate learning objective consolidated under HIST-0207 after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
+      "answerKeyHash": "3cfdfe2a2e62f1174471fb74c7c5db1a620cebc1bd041492e5f48d100505520a"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-c4174e81a6c1",
+      "reason": "semantic-duplicate",
+      "note": "Duplicate learning objective consolidated under HIST-0807 after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
+      "answerKeyHash": "a3fa04b1025edc0ef5059230516b6ab2d2a1a706e1f4e1563ce836a1c9b7b5c9"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-e47647cf39d2",
+      "reason": "semantic-duplicate",
+      "note": "Duplicate learning objective consolidated under HIST-0320 after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
+      "answerKeyHash": "3966001863f02092b4b06b4fb5136dabcde4d5a2a9aee8e09b035baa5e277d63"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-8efe93a81871",
+      "reason": "semantic-duplicate",
+      "note": "Duplicate learning objective consolidated under MOV-0364 after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
+      "answerKeyHash": "84e5b60d6fc8bd6854cfd4d65181dd7f0c992fb45b5324b0cc6b3f49f7ae2c5c"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-84fed52068ff",
+      "reason": "semantic-duplicate",
+      "note": "Duplicate learning objective consolidated under MOV-N-748202f73bf2 after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
+      "answerKeyHash": "e559dbe63a5021103506a7c78e859241757df98dbd05071520c4709743af2556"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-d50d7e309f27",
+      "reason": "semantic-duplicate",
+      "note": "Duplicate learning objective consolidated under MOV-N-e8cc5f736270 after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
+      "answerKeyHash": "08cb104e0b029db523232bdbc363343eba0f964d86637b60a3534f8a380c5075"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-N-996d30e2806c",
+      "reason": "semantic-duplicate",
+      "note": "Duplicate learning objective consolidated under POP-N-edfc39b95197 after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
+      "answerKeyHash": "ea39b7a4078a66a20ead841be4f56a3c30be569e9615f48659dcf140db00df97"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-N-ac47b7759548",
+      "reason": "semantic-duplicate",
+      "note": "Duplicate learning objective consolidated under POP-N-d7f63a9eeb8b after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
+      "answerKeyHash": "f4014066bc3266aff53250258d5203746a598bfcaf9fa3bbf8b46a30a5e2fb7e"
+    },
+    {
+      "category": "science-fiction",
+      "id": "SF-N-ad82e42e8c02",
+      "reason": "semantic-duplicate",
+      "note": "Duplicate learning objective consolidated under SF-0394 after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
+      "answerKeyHash": "c45d87dab352562fa4c8bc15c8384e01ce6052bd2011a096b50bacdf44eba1fa"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-a55d9c20429f",
+      "reason": "semantic-duplicate",
+      "note": "Duplicate learning objective consolidated under TECH-0285 after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
+      "answerKeyHash": "3b835d3d6c7c1f5301787d122ee99600080c6cf93a7aec0cdf2dced2b5503add"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-34d6c9509cca",
+      "reason": "semantic-duplicate",
+      "note": "Duplicate learning objective consolidated under TECH-0388 after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
+      "answerKeyHash": "146157457b3175e53428b355c27e509c42e3ffccecc5a1a18fd53eb775adf8a6"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-5b5b64c3ae6d",
+      "reason": "semantic-duplicate",
+      "note": "Duplicate learning objective consolidated under TECH-0976 after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
+      "answerKeyHash": "11b2096d45d15c961a88476b274f57f7f1667f3a968cf1f9bfea0bb935ac5b69"
+    },
+    {
+      "category": "video-games",
+      "id": "VG-N-d2f453bbb4da",
+      "reason": "semantic-duplicate",
+      "note": "Duplicate learning objective consolidated under VG-N-726ba0f1ad72 after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
+      "answerKeyHash": "2feee42dbeb6836c1dc2769daa7a7765273392e1979cf6297b9d6edbccccd111"
     }
   ],
-  "retirementCount": 281,
+  "retirementCount": 296,
   "newLicensedImportsRetired": 258,
   "activeNewLicensedImportsPending": 3598,
   "activeDraftQuestions": 7516,
@@ -2312,5 +2417,15 @@
       "activeNewLicensedImportsPending": 785
     }
   },
-  "importCountCorrection": "The previous prose total of 3,868 licensed additions was incorrect: the original active snapshot has 3,856 new draft imports and 168 new source-checked authored items (92 Kaspa, 39 Comics, 37 Science Fiction)."
+  "importCountCorrection": "The previous prose total of 3,868 licensed additions was incorrect: the original active snapshot has 3,856 new draft imports and 168 new source-checked authored items (92 Kaspa, 39 Comics, 37 Science Fiction).",
+  "maintainedAt": "2026-10-27",
+  "followUpAudits": [
+    {
+      "date": "2026-10-27",
+      "task": "BANK-009",
+      "scope": "All 8371 active rows screened; 33 related-wording/shared-answer pairs internally triaged. Fifteen duplicate draft rows retired; no new factual certification.",
+      "evidence": "docs/QUESTION-BANK-AUDIT-2026-10-27.md",
+      "decisionRegister": "server/question-audit/decisions-2026-10-27.json"
+    }
+  ]
 }

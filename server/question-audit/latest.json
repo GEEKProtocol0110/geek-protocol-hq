@@ -1,0 +1,1120 @@
+{
+  "schema": 1,
+  "method": "bank-audit-v1",
+  "automaticRetirement": false,
+  "independentReview": false,
+  "scope": "All active static rows in the category registry, including source-checked rows; excludes retired lookup-only and held CCE rows.",
+  "limit": "Heuristic screening and internal pair triage are not exhaustive semantic, factual, category, licensing or difficulty review. Unflagged drafts still need item-by-item primary-source review.",
+  "corpusHash": "4eb00705a722bb00fe831dabad9c6cf4d2d0943f3a325d01bd0fa8726601168f",
+  "active": 8356,
+  "recordedSourceChecks": 864,
+  "needsFactualReview": 7492,
+  "categories": [
+    {
+      "category": "kaspa",
+      "active": 766,
+      "recordedSourceChecks": 766,
+      "needsFactualReview": 0,
+      "missingExplanation": 0
+    },
+    {
+      "category": "video-games",
+      "active": 601,
+      "recordedSourceChecks": 0,
+      "needsFactualReview": 601,
+      "missingExplanation": 601
+    },
+    {
+      "category": "science-fiction",
+      "active": 514,
+      "recordedSourceChecks": 37,
+      "needsFactualReview": 477,
+      "missingExplanation": 477
+    },
+    {
+      "category": "technology",
+      "active": 1494,
+      "recordedSourceChecks": 15,
+      "needsFactualReview": 1479,
+      "missingExplanation": 1479
+    },
+    {
+      "category": "movies",
+      "active": 1492,
+      "recordedSourceChecks": 0,
+      "needsFactualReview": 1492,
+      "missingExplanation": 1492
+    },
+    {
+      "category": "history",
+      "active": 1504,
+      "recordedSourceChecks": 7,
+      "needsFactualReview": 1497,
+      "missingExplanation": 1497
+    },
+    {
+      "category": "comics",
+      "active": 416,
+      "recordedSourceChecks": 39,
+      "needsFactualReview": 377,
+      "missingExplanation": 377
+    },
+    {
+      "category": "pop-culture",
+      "active": 1569,
+      "recordedSourceChecks": 0,
+      "needsFactualReview": 1569,
+      "missingExplanation": 1569
+    }
+  ],
+  "signals": {
+    "items": 80,
+    "pairs": 18,
+    "withinCategoryPairs": 11,
+    "crossCategoryPairs": 7,
+    "byReason": {
+      "suspected-encoding-damage": 76,
+      "time-scope-review": 4
+    }
+  },
+  "itemSignals": [
+    {
+      "category": "history",
+      "id": "HIST-0027",
+      "gradingHash": "bae2799f1acbb3abd0e91705371182990c1d4eb5380b42aed406e953de18a8c0",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "history",
+      "id": "HIST-0082",
+      "gradingHash": "a106dc5a4e64f1fa8ed87c4786aca2dfa88cdbd94ec4c25477fe96485c5d21bf",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "history",
+      "id": "HIST-0116",
+      "gradingHash": "3fea13d9123cd9ccbd1f84fb8c0b8b2f6ef7c8d6666bc03db24b779ea438729a",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "history",
+      "id": "HIST-0130",
+      "gradingHash": "1723cd1a353acea183173a1c7474c2f682b29aafafffb785cffe9413cef0de5d",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "history",
+      "id": "HIST-0362",
+      "gradingHash": "4caf114d0d9d732eb66bb161a89a63f7dfa8fc226d858fa6156ea59b5d70f564",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "history",
+      "id": "HIST-0446",
+      "gradingHash": "e9e1963228ae0e25471dac9a36dc27289b0decaa2df1144c16fa7697a7f3e627",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "history",
+      "id": "HIST-0465",
+      "gradingHash": "d90be30387b6b1e8100202a552cb3f8ca1d292144d47e0414f7219f50839fed0",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "history",
+      "id": "HIST-0512",
+      "gradingHash": "368084d92c05a311bad1d40e4df27192fed150b08d5cd3674ef5c8e4b0c56141",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "history",
+      "id": "HIST-0515",
+      "gradingHash": "a0455a3364a95b08ceeb9ec8fc7f06e3f15a53409534caef2e9d23806bcfa07d",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "history",
+      "id": "HIST-0567",
+      "gradingHash": "81385f6068de03a35a809c448f4048d845a539a0d9acd24d646cdb13cdc4fd8e",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "history",
+      "id": "HIST-0607",
+      "gradingHash": "b636a588f71c3fd4f90aa2153b9dc6a80c75c12e4aadbbf3b6247259970750df",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "history",
+      "id": "HIST-0735",
+      "gradingHash": "f334da6774201f65d92f6b5b6cc21c66cfc65ca33708b400635417c0b3e2ac94",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "history",
+      "id": "HIST-0759",
+      "gradingHash": "504a27acb1f07c7db6b55663508402900475b43153bf687290486dd20257a798",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "history",
+      "id": "HIST-0818",
+      "gradingHash": "03a85cfe7bdcf36c4ac2e596a74f57df4a258c9c52084dac8703e21dd3e341ec",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "history",
+      "id": "HIST-0864",
+      "gradingHash": "17ee8ffd32a5fce27c4d2eba9b7f87f373e91e29e7c8adbdcd93cd9aca42e7c4",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "history",
+      "id": "HIST-0976",
+      "gradingHash": "d959db88bc0479f37d69ac4a23901b53d6e1d880480635d01523a0794c39a9d9",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "kaspa",
+      "id": "K250-0053",
+      "gradingHash": "93b119f01e316c8e7b61952984ea7e58f71c72ec634022812204d462a7558f89",
+      "reasons": [
+        "time-scope-review"
+      ]
+    },
+    {
+      "category": "kaspa",
+      "id": "K500-0218",
+      "gradingHash": "5a12bf3a15bde95a67f08ee5e5fbcc206f559fae2cb1dee4f6e462cc9b410c78",
+      "reasons": [
+        "time-scope-review"
+      ]
+    },
+    {
+      "category": "kaspa",
+      "id": "K624-0019",
+      "gradingHash": "cfdf10919318b5f46e9f2ec5037b10870c9e9b41ae7b5821b80a6874586168fe",
+      "reasons": [
+        "time-scope-review"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0042",
+      "gradingHash": "d1d3731689fbe3f2226a04b50a17a043747b13c958520c3f76228a653c271443",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0046",
+      "gradingHash": "a4e9715973b80e6765d9b10636041b215d27fb44dd04b91e55ca4552c4e1fb99",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0083",
+      "gradingHash": "3e1ba72484f04f8985abd53d003463fd7805ea48e3d38af153bf227633394e2c",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0104",
+      "gradingHash": "933362b244fe1f425fdcedffbc0ecd9e2e104aceec135684e4898fe5559a4125",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0134",
+      "gradingHash": "6548b4bf68e574aa7c7e973ad28b9f17a38fa6c4e4900940983408d9456959eb",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0183",
+      "gradingHash": "e142c3c8a8b58bb8333a2a94a4d197e47fbadd0dbe72875487c624b6540a7ea0",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0211",
+      "gradingHash": "3cf97d3464f9900e755d70926a1ac03398a57bd7380b0194e0a7930f574c5cbc",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0213",
+      "gradingHash": "a6476bfaa30e63c10e9f667ddaebed8cb3c7b354c51ad630af6090092c42a2d2",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0224",
+      "gradingHash": "1b5c3eb446f3b962e7488532bc9fedcd24e6877de0c4fb7f861350cfc0326349",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0264",
+      "gradingHash": "cc30a4db05936c1e08ac6b24b2b1d1e08199c6dff3d66a8d0edabdfbb40d6ea2",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0278",
+      "gradingHash": "c8577eb59c3b6551be6cb38a2d42a9630e12ef684df0332ed1cf6d7f8188cef0",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0414",
+      "gradingHash": "76523e27fc76bc167c9554d90f54b5f0762f175911782f9431aedc1ee6f8d5b5",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0433",
+      "gradingHash": "f4e8cb3dafbc25aa6c337dcabd13a9e5546ca08c54ca435403a943c904599fa4",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0528",
+      "gradingHash": "33ad898b1a3a0258b8d500a0ee17e47abdf6b83b9b30d81b815f4bc57bbafbef",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0533",
+      "gradingHash": "1b8fd78536ce38331b96fcb03a1d4818dbc533306fc1c789a49366552ea8e018",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0645",
+      "gradingHash": "fc761c7373ba5731bc065754095926475afe3c26fa357f0ece781d4b01fb666e",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0694",
+      "gradingHash": "7b1e58de6f546efb41eadc1f691670e673e30ae042b1386d544cea1ac85b8814",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0700",
+      "gradingHash": "b76d916d537bd33cadc98c4e71b76e09efd5adbedadfab63224256c5d3c0dcc5",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0756",
+      "gradingHash": "e4a912969ceaae47b9d489627f1035d9bd66a1810dbb95066d4857d7e637ab52",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0758",
+      "gradingHash": "6f199ac83c9ce8d43bb01acc226323564cab00c8a5d7ce2c2d5f5af6768e8193",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0808",
+      "gradingHash": "39a7bd27746d949ac0e818efc9c8396fdd4fb4d41b61f15b29bc96c84b7dc5cc",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "movies",
+      "id": "MOV-N-82da6aa0f393",
+      "gradingHash": "b16a1694d66ac1c087885fdf723a1f3532c62b32a529f27b5dcb2ac6af685f04",
+      "reasons": [
+        "time-scope-review"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0014",
+      "gradingHash": "98e9200b9ff6671a4bbadc8195ddfaa01c5c0b938bffb3df7eda9112a787929b",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0077",
+      "gradingHash": "43ff7287387c3a7de99b71f91d85202c92fca74df0d65e9a99b84618bd1eb18e",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0115",
+      "gradingHash": "61a707d16a8f983679f3b6290b4cf539e9da32e67377b7c580aef54855508bb8",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0226",
+      "gradingHash": "3565a7ae0f8bee0f98fee43d82a50d8c53ce6582262609a7153e03802294ee42",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0274",
+      "gradingHash": "bb7462985ae773bd28755e856cf6fa4edb5691628b7de639758efa6a81324992",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0363",
+      "gradingHash": "6d0810f3118785ae41ed3676b004966f0f431ecfd03d8a63e7f4e36fb7d6fb2b",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0396",
+      "gradingHash": "9ad2a4ac583d4b56b574d9a54b5e8f7ab64c992cf1145a9c602809dae1601050",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0460",
+      "gradingHash": "9fb7beefebb97e051aeee62684a0b8d556b869549d439ae7d323e8b2e5874cb2",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0533",
+      "gradingHash": "12c90e25a5349dc92be47fb6c3f7413ff6d49a94d8756f0fda58131cfb7c39da",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0586",
+      "gradingHash": "b514314578359bb90a6fad7e8d686920aa329e2e16b1b8d3431473a8b7181508",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0605",
+      "gradingHash": "e73f743fde3a95a53020d5ef0ea0dd7bc6693f421d4d3f73a0a7f290233e3484",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0710",
+      "gradingHash": "f49c54e28f809bae79ff750d441a0a25e4e41dd8db39aaa9f278fb0213e84d61",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0724",
+      "gradingHash": "3feb70d3f9317fd29e08e41afa371737bcdff65955d867e83f5ecff8a494bf57",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0804",
+      "gradingHash": "46cc3bd18da588823452f29028986a496838823cc308f56651c7936fd1ae6844",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0852",
+      "gradingHash": "ca5731e8a99c969fdf8ccd423f27a0b3dc98c6cd87fb2d8b92a521b102a1447b",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0870",
+      "gradingHash": "5d6b15ed68036ae14200df88bf8093b2ca57f70e87f42384f355820cc8d799c2",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0944",
+      "gradingHash": "cfc00f8f7e35b0b31b689d7a4ed3395a3a5a0e166a31ee415295bd5d316953bd",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0972",
+      "gradingHash": "53bb030578369ed671670ef7f08463ec10e3259064b90050f87dfeefa7769e77",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "science-fiction",
+      "id": "SF-0102",
+      "gradingHash": "48a98d4d32de21b6088e7b046a7172b6be990332b1ce496becac66bc39ccf396",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "science-fiction",
+      "id": "SF-0313",
+      "gradingHash": "3d0f6ccd5ae3cc02284de8e1f30ecbbb7f35f32f41eab65e967f17c3bf6b4e34",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0010",
+      "gradingHash": "d30ec59db8562ca25db93634740539a1c6a8b64dcd4a1938da4e7580bef470d1",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0079",
+      "gradingHash": "4b8c14cf9e7d2d867c87fcfb28485cb10eb69254b76bb110eaef02e136d66b04",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0124",
+      "gradingHash": "d607795729edca1d40188d9c085bc8de045f26e6bb5ad5d10b9e0d931db5d48a",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0174",
+      "gradingHash": "2cdb6c7f7e6ae8cb968b2b729d0cc17abc014ea5584b75bf547b1ff5dc491147",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0201",
+      "gradingHash": "b02d3fd2eab486259b8d40eccd743c45ef64ed62beacb66a1378019440bd3108",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0239",
+      "gradingHash": "2286b558dbb065159f7fc6c5d347cf28e75b755cda1c626729da8325a8c98979",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0426",
+      "gradingHash": "0c5f2147cf290fd3a3a17e381f6308aeb2e4ceb03b890cd3d8504c3be1a3c1fc",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0440",
+      "gradingHash": "48b79965b8a02ecfbb5c37161bbe4f7604e954d811e09a266f715fe62adab32c",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0455",
+      "gradingHash": "2c867aa6ef4b888a456b60ae2f8f1434da37467bfd94e40c010aa482229c6075",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0535",
+      "gradingHash": "6114279309d00671562036988bfa5f94c6b319ac06994fa568848bf3ec04ed2b",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0553",
+      "gradingHash": "a32d5213b5df105308fa5d5b2174f5e27fdfbf8891ba0d251ecf2b384a672df0",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0566",
+      "gradingHash": "ed212e41b29efa4c70ad1092d4bcc66ad5cce9067ff4d13cb20a6f398858661d",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0569",
+      "gradingHash": "cf17a885a5a3b71bddaa240cc5ccdf46d04072499e4425d26e2d4d8e4b7af7ec",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0601",
+      "gradingHash": "1e8cfd8e1523b84fc76db89e9d94b758d7f37ed5ba6f4eaf38d389d89f07d7f5",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0640",
+      "gradingHash": "3ad0bfe6cb05b6d7212e4bb897232b986810a551f4af07efcbd478d44add016e",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0731",
+      "gradingHash": "ff99a3aab6cf41bd0ed58983c3d7767a0e7445b7181795b7d9eba4a80c7e0dae",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0852",
+      "gradingHash": "913d19f0602cf1b54acf06ba2f12c6788458a695e37161c9db23381ea96235b8",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0955",
+      "gradingHash": "084337403137adfaa8787c6f8e484abc33ce2afbec03dc95f8eb34c2fd99caba",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    },
+    {
+      "category": "video-games",
+      "id": "VG-0528",
+      "gradingHash": "c0fd9b138929a81870ee59d082b755a8945e02c5dccfe902e399c73e0a15eb9f",
+      "reasons": [
+        "suspected-encoding-damage"
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "ids": [
+        "COM-0120",
+        "COM-0132"
+      ],
+      "categories": [
+        "comics",
+        "comics"
+      ],
+      "gradingHashes": [
+        "3ecd6441da91fb50701f98823bebae3e02a24b349d277dee51a7cb49bbcd184e",
+        "a61814bc5a037baa2504985d93836b7c572a48c606d2a7b0622bef1b3f7574b8"
+      ],
+      "scope": "within-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 8,
+      "jaccard": 0.4706,
+      "containment": 0.6667,
+      "disposition": "needs-scope-review"
+    },
+    {
+      "ids": [
+        "COM-N-0bcbe65c8268",
+        "COM-N-b55e7840c099"
+      ],
+      "categories": [
+        "comics",
+        "comics"
+      ],
+      "gradingHashes": [
+        "6a3745f64dc4e607863c4b6829571f37a326ee36fdf18afbf033df1628aff404",
+        "e00ca0c69ec6bb24f21be809914b72f0d720ecd452c1d0785cb300358e649a1f"
+      ],
+      "scope": "within-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 3,
+      "jaccard": 0.15,
+      "containment": 0.75,
+      "disposition": "needs-scope-review"
+    },
+    {
+      "ids": [
+        "HIS-N-1e522f5009aa",
+        "POP-0555"
+      ],
+      "categories": [
+        "history",
+        "pop-culture"
+      ],
+      "gradingHashes": [
+        "df193cd18ec8e52c0cc3826f1b1f9cfb3ff38e9b92a0aa5b9ffb5fed45c0e23d",
+        "63e71ce3e8b0572a51a53c4234538b73a04cacebcee565abd6c5a98a3a5153a0"
+      ],
+      "scope": "cross-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 3,
+      "jaccard": 0.375,
+      "containment": 0.6,
+      "disposition": "retained-distinct"
+    },
+    {
+      "ids": [
+        "HIS-N-98de493c60c3",
+        "TECH-N-d2e7b82199de"
+      ],
+      "categories": [
+        "history",
+        "technology"
+      ],
+      "gradingHashes": [
+        "439786c601dcfef370e4f986138daea54f48ed17703d47513370484e689c31d9",
+        "e81b119fd8952d52742c78f99ee39bf75ea71fff962a557d108496462a81eff8"
+      ],
+      "scope": "cross-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 4,
+      "jaccard": 0.3333,
+      "containment": 0.8,
+      "disposition": "cross-category-review"
+    },
+    {
+      "ids": [
+        "HIST-0415",
+        "MOV-N-ede9becfe72f"
+      ],
+      "categories": [
+        "history",
+        "movies"
+      ],
+      "gradingHashes": [
+        "7e256dc2e0e6d5fb212d5d635a20b32f6fa66e6a72c4356bdf75cd179d8de160",
+        "1fde5c88c301292fc7e5128c4c91572d78a681b0a42bf53cede09a8fe33a4cd0"
+      ],
+      "scope": "cross-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 3,
+      "jaccard": 0.5,
+      "containment": 0.75,
+      "disposition": "cross-category-review"
+    },
+    {
+      "ids": [
+        "HIST-0731",
+        "POP-N-6b6114131628"
+      ],
+      "categories": [
+        "history",
+        "pop-culture"
+      ],
+      "gradingHashes": [
+        "7bfb8005c9a079003aa9ba199857bb48af20a7fd7039f8fcc1e5f27824fb9832",
+        "25460e2c33cb5f15bc1231283df080fca40b61efd20a1dbfaeb22d70871b577b"
+      ],
+      "scope": "cross-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 4,
+      "jaccard": 0.4,
+      "containment": 0.8,
+      "disposition": "cross-category-review"
+    },
+    {
+      "ids": [
+        "MOV-0941",
+        "MOV-N-8cc0f5ef6c82"
+      ],
+      "categories": [
+        "movies",
+        "movies"
+      ],
+      "gradingHashes": [
+        "4006b5c2a8fe84c5ca39195595af6eeb2420dda11a5e716deb1c0bea59157931",
+        "cdf45c1b4a63497f305fbe30025149527aa7b2eddc7cc89255ea673c0448696a"
+      ],
+      "scope": "within-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 7,
+      "jaccard": 0.4375,
+      "containment": 0.7,
+      "disposition": "needs-scope-review"
+    },
+    {
+      "ids": [
+        "MOV-N-7643b4e97ddd",
+        "MOV-N-a3ddcb776338"
+      ],
+      "categories": [
+        "movies",
+        "movies"
+      ],
+      "gradingHashes": [
+        "23a18f08a479eb186782dfffc66482d3229d829b05e8941d7dd73f03aa3c632d",
+        "bdced5ed129eb387b78022b818a9a1e7229d9359ab4b1154832110be4dadf262"
+      ],
+      "scope": "within-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 3,
+      "jaccard": 0.375,
+      "containment": 0.6,
+      "disposition": "needs-scope-review"
+    },
+    {
+      "ids": [
+        "MOV-N-9401124739ba",
+        "SF-N-64c444dbf2f4"
+      ],
+      "categories": [
+        "movies",
+        "science-fiction"
+      ],
+      "gradingHashes": [
+        "0de33fcda41dcb6b4e8386427964dd6e3b84c8ee52a69cbf0babfb1573b7e39d",
+        "0a5ed0239b4da80cc8f22f34ed0ce3f84e74f5f03c0e90e4838f578b93f0a8c0"
+      ],
+      "scope": "cross-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 3,
+      "jaccard": 0.375,
+      "containment": 0.6,
+      "disposition": "retained-distinct"
+    },
+    {
+      "ids": [
+        "MOV-N-ffdb7dbe5996",
+        "POP-N-f9b081c8be26"
+      ],
+      "categories": [
+        "movies",
+        "pop-culture"
+      ],
+      "gradingHashes": [
+        "b4300c95f8d74b8986ec8bdb9317d4927b58997a3c546d2a62e61776b773ee31",
+        "9f1f71f1560e29daeb5413a0ed438073daf1607b53bee2b84da7a7011b7697f7"
+      ],
+      "scope": "cross-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 5,
+      "jaccard": 0.3846,
+      "containment": 0.5556,
+      "disposition": "cross-category-review"
+    },
+    {
+      "ids": [
+        "POP-0234",
+        "POP-N-2e1c8c6b6c4d"
+      ],
+      "categories": [
+        "pop-culture",
+        "pop-culture"
+      ],
+      "gradingHashes": [
+        "0e31740a9c8d9fe66a1a305f317533a368b06a243f53201fba6fc8c8351d481e",
+        "795639ebb4c0e87c4b6624f05822a8086e1b1437ec161616dc3abee188d1c099"
+      ],
+      "scope": "within-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 4,
+      "jaccard": 0.3636,
+      "containment": 0.6667,
+      "disposition": "retained-distinct"
+    },
+    {
+      "ids": [
+        "SF-N-8856e2a1dafe",
+        "TECH-0285"
+      ],
+      "categories": [
+        "science-fiction",
+        "technology"
+      ],
+      "gradingHashes": [
+        "e3aaba2a96529977a2b405865913809c1ccfecd6f65faafe5876de1942807278",
+        "8b2425be3c312640670644641154cbe3dda889b3c9f3382da9f26df91344445b"
+      ],
+      "scope": "cross-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 3,
+      "jaccard": 0.2143,
+      "containment": 0.75,
+      "disposition": "retained-distinct"
+    },
+    {
+      "ids": [
+        "TECH-0172",
+        "TECH-N-3d8dbbdef58e"
+      ],
+      "categories": [
+        "technology",
+        "technology"
+      ],
+      "gradingHashes": [
+        "0850cb9b54b9ad5e12e91b309827d303468ccdf07a3deee0b60b6f7177b997e6",
+        "53047299e860f6177cc8484ca568bf01015e3bd029f5d2bfb2149de7d6d7ba33"
+      ],
+      "scope": "within-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 4,
+      "jaccard": 0.3636,
+      "containment": 0.5714,
+      "disposition": "retained-distinct"
+    },
+    {
+      "ids": [
+        "TECH-0285",
+        "TECH-N-e6ee4ded924e"
+      ],
+      "categories": [
+        "technology",
+        "technology"
+      ],
+      "gradingHashes": [
+        "8b2425be3c312640670644641154cbe3dda889b3c9f3382da9f26df91344445b",
+        "12f96e0109ad1d46aa66708f7818ae6ec460591a5990cec71d77ed633857a749"
+      ],
+      "scope": "within-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 3,
+      "jaccard": 0.3333,
+      "containment": 0.75,
+      "disposition": "retained-distinct"
+    },
+    {
+      "ids": [
+        "TECH-0361",
+        "TECH-0665"
+      ],
+      "categories": [
+        "technology",
+        "technology"
+      ],
+      "gradingHashes": [
+        "670a7cdf1a70cb60038d2a9edb9c21eedbce555bd175272daf28f5b8fbdf132d",
+        "d342c244e249426bd9b9c7e1c9f1a2e645cb45edc4f885f207384c58be896d8e"
+      ],
+      "scope": "within-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 3,
+      "jaccard": 0.375,
+      "containment": 0.6,
+      "disposition": "retained-distinct"
+    },
+    {
+      "ids": [
+        "TECH-0393",
+        "TECH-0707"
+      ],
+      "categories": [
+        "technology",
+        "technology"
+      ],
+      "gradingHashes": [
+        "00055951ec2f3ae8b9089d23f251aa981500a374634d5471f14eee6e7c29e746",
+        "0f12450b377c25fb6c203cd64de2ccfe8422fb5da190e1351ac95dc79da4fd42"
+      ],
+      "scope": "within-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 3,
+      "jaccard": 0.3333,
+      "containment": 0.75,
+      "disposition": "retained-distinct"
+    },
+    {
+      "ids": [
+        "VG-0260",
+        "VG-0376"
+      ],
+      "categories": [
+        "video-games",
+        "video-games"
+      ],
+      "gradingHashes": [
+        "f0da57c64d84431ef8b830a2a1322f0a3f084e83c4fcdfa0a03be13f84eec0f3",
+        "b317020a9f3d840eaed59a866c43765c4d7a609b8742144cc2390718bb7c4447"
+      ],
+      "scope": "within-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 4,
+      "jaccard": 0.3636,
+      "containment": 0.5714,
+      "disposition": "retained-distinct"
+    },
+    {
+      "ids": [
+        "VG-0634",
+        "VG-0647"
+      ],
+      "categories": [
+        "video-games",
+        "video-games"
+      ],
+      "gradingHashes": [
+        "882b3bb9f8f4aac208ab40ffd936972d472ccaa63cb7a69e2d53d1805d65ae7d",
+        "6d9151c82730f7b0322bc803caad5e8df7489808ee1b2476fbd2126e3f865778"
+      ],
+      "scope": "within-category",
+      "reasons": [
+        "shared-answer-related-wording"
+      ],
+      "sharedTerms": 4,
+      "jaccard": 0.5714,
+      "containment": 0.8,
+      "disposition": "retained-distinct"
+    }
+  ]
+}

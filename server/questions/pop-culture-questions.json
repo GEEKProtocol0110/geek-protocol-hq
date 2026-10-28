@@ -2,19 +2,19 @@
   "metadata": {
     "title": "GEEK Protocol — Pop Culture Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-08",
-    "questionCount": 1571,
-    "conceptCount": 1571,
+    "maintainedAt": "2026-10-27",
+    "questionCount": 1569,
+    "conceptCount": 1569,
     "category": "Pop Culture",
     "difficultyDistribution": {
       "easy": 630,
-      "medium": 626,
-      "hard": 315
+      "medium": 625,
+      "hard": 314
     },
     "correctIndexDistribution": {
       "0": 388,
       "1": 399,
-      "2": 383,
+      "2": 381,
       "3": 401
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
@@ -29205,33 +29205,6 @@
       "difficulty": "hard"
     },
     {
-      "prompt": "This singer had a big hit song in 1968 with a re-make of The Doors song Light My Fire.",
-      "options": [
-        "Harry Nilsson",
-        "Gordon Lighfoot",
-        "Jose Feliciano",
-        "Bill Withers"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "music",
-      "sourceOrdinal": 2132,
-      "id": "POP-N-996d30e2806c",
-      "conceptId": "POP-N-996d30e2806c",
-      "category": "Pop Culture",
-      "subcategory": "Music",
-      "funFact": null,
-      "tags": [
-        "pop-culture"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/music",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "This actor played a brawler accompanied by an orangutan named Clyde.",
       "options": [
         "Paul Newman",
@@ -35926,33 +35899,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/music",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "1991s #1 U.S. hit Baby Baby was the biggest hit to date for this singer.",
-      "options": [
-        "Samantha Fox",
-        "Karyn White",
-        "Amy Grant",
-        "Vanessa Williams"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "music",
-      "sourceOrdinal": 2562,
-      "id": "POP-N-ac47b7759548",
-      "conceptId": "POP-N-ac47b7759548",
-      "category": "Pop Culture",
-      "subcategory": "Music",
-      "funFact": null,
-      "tags": [
-        "pop-culture"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/music",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "What fruit does Spongebob live in?",

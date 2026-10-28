@@ -1,6 +1,6 @@
 # Geek Protocol — Full Product Roadmap
 
-**Reviewed direction:** October 16, 2026; earlier dated directions retained
+**Reviewed direction:** October 27, 2026; earlier dated directions retained
 **Public edition:** [HQ Litepaper v1.12](https://www.geekprotocol.xyz/litepaper/)
 **Purpose:** Carry the original project vision into an explicit implementation backlog.
 
@@ -12,10 +12,11 @@ Geek Protocol was born in Detroit, Michigan, USA. Use American English in public
 
 ## Current execution checkpoint
 
-Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. The October 16 regroup is [recorded here](ROADMAP-CHECKPOINT.md): close remaining free-beta device evidence, verify independent backup/provider recovery, continue reviewed Kaspa content, complete one manual Testnet reward receipt, then inspect each ecosystem component. Content work can continue while owner/device evidence is unavailable. The public release remains Alpha.
+The [October 27 roadmap checkpoint](ROADMAP-CHECKPOINT.md) prioritizes BANK-009: audit all eight question categories for duplicate facts, broken wording, context, category fit, answer/distractor correctness, sources and difficulty. The deployed #175 bank has 766 internally source-checked Kaspa concepts; 234 remain toward 1,000. The first audit candidate screens all 8,371 active rows and retires fifteen confirmed duplicate drafts across the other seven categories. Screening does not establish full factual or independent review. See the [audit and remaining workload](QUESTION-BANK-AUDIT-2026-10-27.md).
 
-The deployed runtime is #137 (496 tests, zero failures/skips; 311 security assertions). The founder reports initial phone passkey success and improved mobile edges; broader returning-login/Quest/Royale acceptance remains separate. [PR reconciliation](PR-RECONCILIATION.md) retires the old #119 merge candidate while retaining its wallet-lab, desk-polish and pilot work; #120 artwork remains paused. The art direction is [500 concepts × five tier artworks](GEEK-500-COLLECTION-STRUCTURE.md), with runtime migration and supply choices separate.
+The completed TN10 payout and founder-confirmed same-account phone/Rewards recovery are preserved. Deployed Study saved-review recovery has agent-operated desktop evidence. Royale original-room recovery passed; accepted-answer/winner, independent participant/device and unreconciled private-retry evidence remain open. Independent source custody and managed-provider restore remain open. Do not repeat the completed payout or uncertain live-room creation. Public Alpha, paid-AI approval and all economic holds remain.
 
+[PR reconciliation](PR-RECONCILIATION.md) preserves superseded #119 work and paused #120 artwork. The art direction remains [500 concepts × five tier artworks](GEEK-500-COLLECTION-STRUCTURE.md); migration, supply and ownership are separate.
 ## Current priorities: reviewed bank, then CCE and a small economy
 
 **Founder direction, October 15, 2026:** reach 1,000 distinct, source-reviewed questions in each of the eight categories before CCE reopens. Contributor reward amounts and prices remain unresolved. The first Geek Store release provides free cosmetic try-on and a studio handoff, with lifelines and later perks labeled by actual availability. New CCE intake, publication, selection and credits are held while the bank and contributor economy are prepared; existing history and issued-question lookup remain available. See [Bank-first release and Store](BANK-FIRST-STORE.md) for exact counts, the first source-review batch and remaining production work.

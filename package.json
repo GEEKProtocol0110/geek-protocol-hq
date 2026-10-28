@@ -31,7 +31,7 @@
     "archive:check": "node scripts/check-legacy-art-archive.mjs",
     "repository:check": "node scripts/check-repository-presentation.mjs",
     "verify": "npm test && npm run test:signer && npm run questions:check && npm run collection:check && npm run archive:check && npm run security:check && npm run repository:check && npm run economy:stress:check && npm run continuity:check && npm run site:check",
-    "questions:check": "node scripts/check-question-banks.mjs && node scripts/question-catalog.mjs && node scripts/question-bank-readiness.mjs",
+    "questions:check": "node scripts/check-question-banks.mjs && node scripts/question-catalog.mjs && node scripts/question-bank-readiness.mjs && npm run questions:audit",
     "questions:catalog": "node scripts/question-catalog.mjs --write",
     "monitor:production": "node scripts/production-monitor.mjs",
     "economy:stress": "node scripts/economy-stress.mjs",
@@ -41,7 +41,8 @@
     "continuity:snapshot": "node scripts/continuity-snapshot.mjs",
     "site:write": "node scripts/site-pages.mjs --write",
     "site:check": "node scripts/site-pages.mjs",
-    "performance:baseline": "node scripts/performance-baseline.mjs"
+    "performance:baseline": "node scripts/performance-baseline.mjs",
+    "questions:audit": "node scripts/audit-question-banks.mjs"
   },
   "engines": {
     "node": ">=22"

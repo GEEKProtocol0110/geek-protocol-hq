@@ -1,0 +1,642 @@
+{
+  "schema": 1,
+  "reviewedAt": "2026-10-27",
+  "dateBasis": "America/Detroit",
+  "reviewKind": "internal-semantic-pair-triage",
+  "independentReview": false,
+  "primaryFactualReview": false,
+  "baseline": {
+    "active": 8371,
+    "recordedSourceChecks": 864,
+    "needsFactualReview": 7507,
+    "corpusHash": "1559d66ece609a38b0e4683f41d435d417808f2d99077d835a12fc5d2bf63c9f",
+    "signals": {
+      "items": 80,
+      "pairs": 33,
+      "withinCategoryPairs": 26,
+      "crossCategoryPairs": 7,
+      "byReason": {
+        "suspected-encoding-damage": 76,
+        "time-scope-review": 4
+      }
+    },
+    "categories": [
+      {
+        "category": "kaspa",
+        "active": 766,
+        "recordedSourceChecks": 766,
+        "needsFactualReview": 0,
+        "missingExplanation": 0
+      },
+      {
+        "category": "video-games",
+        "active": 602,
+        "recordedSourceChecks": 0,
+        "needsFactualReview": 602,
+        "missingExplanation": 602
+      },
+      {
+        "category": "science-fiction",
+        "active": 515,
+        "recordedSourceChecks": 37,
+        "needsFactualReview": 478,
+        "missingExplanation": 478
+      },
+      {
+        "category": "technology",
+        "active": 1497,
+        "recordedSourceChecks": 15,
+        "needsFactualReview": 1482,
+        "missingExplanation": 1482
+      },
+      {
+        "category": "movies",
+        "active": 1495,
+        "recordedSourceChecks": 0,
+        "needsFactualReview": 1495,
+        "missingExplanation": 1495
+      },
+      {
+        "category": "history",
+        "active": 1508,
+        "recordedSourceChecks": 7,
+        "needsFactualReview": 1501,
+        "missingExplanation": 1501
+      },
+      {
+        "category": "comics",
+        "active": 417,
+        "recordedSourceChecks": 39,
+        "needsFactualReview": 378,
+        "missingExplanation": 378
+      },
+      {
+        "category": "pop-culture",
+        "active": 1571,
+        "recordedSourceChecks": 0,
+        "needsFactualReview": 1571,
+        "missingExplanation": 1571
+      }
+    ]
+  },
+  "pairs": [
+    {
+      "ids": [
+        "COM-0120",
+        "COM-0132"
+      ],
+      "categories": [
+        "comics",
+        "comics"
+      ],
+      "gradingHashes": [
+        "3ecd6441da91fb50701f98823bebae3e02a24b349d277dee51a7cb49bbcd184e",
+        "a61814bc5a037baa2504985d93836b7c572a48c606d2a7b0622bef1b3f7574b8"
+      ],
+      "disposition": "needs-scope-review",
+      "note": "The same television/Bond role appears in both, but the category may confuse the television series with Marvel. Verify franchise scope before choosing retirement or recategorization."
+    },
+    {
+      "ids": [
+        "COM-0306",
+        "COM-N-fb1ae61a7478"
+      ],
+      "categories": [
+        "comics",
+        "comics"
+      ],
+      "gradingHashes": [
+        "668008ea2d26fb35c7561fd03f291bff00cca60ddcdbe3327a9bf7c14d562dec",
+        "130747d5962d565f83371f2294df6c0a9696444171401e02974e5fa3df7d3220"
+      ],
+      "disposition": "retire-duplicate",
+      "note": "Both prompts ask for the same subject/relation with the same keyed answer. Extra descriptive clues do not add a separate learning objective. Retain one draft; this decision does not source-certify either answer.",
+      "retiredId": "COM-N-fb1ae61a7478",
+      "canonicalId": "COM-0306"
+    },
+    {
+      "ids": [
+        "COM-N-0bcbe65c8268",
+        "COM-N-b55e7840c099"
+      ],
+      "categories": [
+        "comics",
+        "comics"
+      ],
+      "gradingHashes": [
+        "6a3745f64dc4e607863c4b6829571f37a326ee36fdf18afbf033df1628aff404",
+        "e00ca0c69ec6bb24f21be809914b72f0d720ecd452c1d0785cb300358e649a1f"
+      ],
+      "disposition": "needs-scope-review",
+      "note": "Protagonist identification and a longer captain/ability clue overlap; check whether they test one identification or distinct story knowledge."
+    },
+    {
+      "ids": [
+        "HIS-N-1e522f5009aa",
+        "POP-0555"
+      ],
+      "categories": [
+        "history",
+        "pop-culture"
+      ],
+      "gradingHashes": [
+        "df193cd18ec8e52c0cc3826f1b1f9cfb3ff38e9b92a0aa5b9ffb5fed45c0e23d",
+        "63e71ce3e8b0572a51a53c4234538b73a04cacebcee565abd6c5a98a3a5153a0"
+      ],
+      "disposition": "retained-distinct",
+      "note": "Indo-European and Germanic families are different classification scopes."
+    },
+    {
+      "ids": [
+        "HIS-N-579c91cd5f0a",
+        "HIS-N-cb3efa608363"
+      ],
+      "categories": [
+        "history",
+        "history"
+      ],
+      "gradingHashes": [
+        "4c2011c56340ca05d9d4de2b65d4a18b23f9c2e5e1a57e568a3b68240be05adb",
+        "5bae2e1fe95126f9fa8850ae78ced023fbb8967cbcf66c6e153929a34a8e1e77"
+      ],
+      "disposition": "retire-duplicate",
+      "note": "Both prompts ask for the same subject/relation with the same keyed answer. Extra descriptive clues do not add a separate learning objective. Retain one draft; this decision does not source-certify either answer.",
+      "retiredId": "HIS-N-cb3efa608363",
+      "canonicalId": "HIS-N-579c91cd5f0a"
+    },
+    {
+      "ids": [
+        "HIS-N-98de493c60c3",
+        "TECH-N-d2e7b82199de"
+      ],
+      "categories": [
+        "history",
+        "technology"
+      ],
+      "gradingHashes": [
+        "439786c601dcfef370e4f986138daea54f48ed17703d47513370484e689c31d9",
+        "e81b119fd8952d52742c78f99ee39bf75ea71fff962a557d108496462a81eff8"
+      ],
+      "disposition": "cross-category-review",
+      "note": "Related cross-category facts need taxonomy/objective review. No automatic removal across categories."
+    },
+    {
+      "ids": [
+        "HIS-N-9968535bb1ed",
+        "HIST-0207"
+      ],
+      "categories": [
+        "history",
+        "history"
+      ],
+      "gradingHashes": [
+        "3cfdfe2a2e62f1174471fb74c7c5db1a620cebc1bd041492e5f48d100505520a",
+        "fa045d6cefd079ac4bd61ba435f29b4beefa0a4c884b73de78aabad27d796164"
+      ],
+      "disposition": "retire-duplicate",
+      "note": "Both prompts ask for the same subject/relation with the same keyed answer. Extra descriptive clues do not add a separate learning objective. Retain one draft; this decision does not source-certify either answer.",
+      "retiredId": "HIS-N-9968535bb1ed",
+      "canonicalId": "HIST-0207"
+    },
+    {
+      "ids": [
+        "HIS-N-c4174e81a6c1",
+        "HIST-0807"
+      ],
+      "categories": [
+        "history",
+        "history"
+      ],
+      "gradingHashes": [
+        "a3fa04b1025edc0ef5059230516b6ab2d2a1a706e1f4e1563ce836a1c9b7b5c9",
+        "795433643921fa8c1d321177e7f3445c9c127914f4435a0aeaac5b1e5f01f4a0"
+      ],
+      "disposition": "retire-duplicate",
+      "note": "Both prompts ask for the same subject/relation with the same keyed answer. Extra descriptive clues do not add a separate learning objective. Retain one draft; this decision does not source-certify either answer.",
+      "retiredId": "HIS-N-c4174e81a6c1",
+      "canonicalId": "HIST-0807"
+    },
+    {
+      "ids": [
+        "HIS-N-e47647cf39d2",
+        "HIST-0320"
+      ],
+      "categories": [
+        "history",
+        "history"
+      ],
+      "gradingHashes": [
+        "3966001863f02092b4b06b4fb5136dabcde4d5a2a9aee8e09b035baa5e277d63",
+        "1185650ecc055e72532970e14b2a947f68c1799615bd43bc8c8dff8890a448f6"
+      ],
+      "disposition": "retire-duplicate",
+      "note": "Both prompts ask for the same subject/relation with the same keyed answer. Extra descriptive clues do not add a separate learning objective. Retain one draft; this decision does not source-certify either answer.",
+      "retiredId": "HIS-N-e47647cf39d2",
+      "canonicalId": "HIST-0320"
+    },
+    {
+      "ids": [
+        "HIST-0415",
+        "MOV-N-ede9becfe72f"
+      ],
+      "categories": [
+        "history",
+        "movies"
+      ],
+      "gradingHashes": [
+        "7e256dc2e0e6d5fb212d5d635a20b32f6fa66e6a72c4356bdf75cd179d8de160",
+        "1fde5c88c301292fc7e5128c4c91572d78a681b0a42bf53cede09a8fe33a4cd0"
+      ],
+      "disposition": "cross-category-review",
+      "note": "Related cross-category facts need taxonomy/objective review. No automatic removal across categories."
+    },
+    {
+      "ids": [
+        "HIST-0731",
+        "POP-N-6b6114131628"
+      ],
+      "categories": [
+        "history",
+        "pop-culture"
+      ],
+      "gradingHashes": [
+        "7bfb8005c9a079003aa9ba199857bb48af20a7fd7039f8fcc1e5f27824fb9832",
+        "25460e2c33cb5f15bc1231283df080fca40b61efd20a1dbfaeb22d70871b577b"
+      ],
+      "disposition": "cross-category-review",
+      "note": "Related cross-category facts need taxonomy/objective review. No automatic removal across categories."
+    },
+    {
+      "ids": [
+        "MOV-0364",
+        "MOV-N-8efe93a81871"
+      ],
+      "categories": [
+        "movies",
+        "movies"
+      ],
+      "gradingHashes": [
+        "d25440185e681b84709f79a95a01557fb9066a456e89762e053199afce62a75c",
+        "84e5b60d6fc8bd6854cfd4d65181dd7f0c992fb45b5324b0cc6b3f49f7ae2c5c"
+      ],
+      "disposition": "retire-duplicate",
+      "note": "Both prompts ask for the same subject/relation with the same keyed answer. Extra descriptive clues do not add a separate learning objective. Retain one draft; this decision does not source-certify either answer.",
+      "retiredId": "MOV-N-8efe93a81871",
+      "canonicalId": "MOV-0364"
+    },
+    {
+      "ids": [
+        "MOV-0941",
+        "MOV-N-8cc0f5ef6c82"
+      ],
+      "categories": [
+        "movies",
+        "movies"
+      ],
+      "gradingHashes": [
+        "4006b5c2a8fe84c5ca39195595af6eeb2420dda11a5e716deb1c0bea59157931",
+        "cdf45c1b4a63497f305fbe30025149527aa7b2eddc7cc89255ea673c0448696a"
+      ],
+      "disposition": "needs-scope-review",
+      "note": "Single-film award identification overlaps a two-film award clue. Check the intended objective and primary award evidence."
+    },
+    {
+      "ids": [
+        "MOV-N-748202f73bf2",
+        "MOV-N-84fed52068ff"
+      ],
+      "categories": [
+        "movies",
+        "movies"
+      ],
+      "gradingHashes": [
+        "1860788297eb08cbb618e0d9674fdf4bdcb555b8da132356d2ddc0cc6be4989f",
+        "e559dbe63a5021103506a7c78e859241757df98dbd05071520c4709743af2556"
+      ],
+      "disposition": "retire-duplicate",
+      "note": "Both prompts ask for the same subject/relation with the same keyed answer. Extra descriptive clues do not add a separate learning objective. Retain one draft; this decision does not source-certify either answer.",
+      "retiredId": "MOV-N-84fed52068ff",
+      "canonicalId": "MOV-N-748202f73bf2"
+    },
+    {
+      "ids": [
+        "MOV-N-7643b4e97ddd",
+        "MOV-N-a3ddcb776338"
+      ],
+      "categories": [
+        "movies",
+        "movies"
+      ],
+      "gradingHashes": [
+        "23a18f08a479eb186782dfffc66482d3229d829b05e8941d7dd73f03aa3c632d",
+        "bdced5ed129eb387b78022b818a9a1e7229d9359ab4b1154832110be4dadf262"
+      ],
+      "disposition": "needs-scope-review",
+      "note": "A named sequel and an entire franchise have different scopes; verify voice-cast/edition coverage before collapsing them."
+    },
+    {
+      "ids": [
+        "MOV-N-9401124739ba",
+        "SF-N-64c444dbf2f4"
+      ],
+      "categories": [
+        "movies",
+        "science-fiction"
+      ],
+      "gradingHashes": [
+        "0de33fcda41dcb6b4e8386427964dd6e3b84c8ee52a69cbf0babfb1573b7e39d",
+        "0a5ed0239b4da80cc8f22f34ed0ce3f84e74f5f03c0e90e4838f578b93f0a8c0"
+      ],
+      "disposition": "retained-distinct",
+      "note": "The same director is asked about different films."
+    },
+    {
+      "ids": [
+        "MOV-N-d50d7e309f27",
+        "MOV-N-e8cc5f736270"
+      ],
+      "categories": [
+        "movies",
+        "movies"
+      ],
+      "gradingHashes": [
+        "08cb104e0b029db523232bdbc363343eba0f964d86637b60a3534f8a380c5075",
+        "9080d7d66fb0cd226135f0e75217960728c365f5d6bd9b50037f96947b49a3d0"
+      ],
+      "disposition": "retire-duplicate",
+      "note": "Both prompts ask for the same subject/relation with the same keyed answer. Extra descriptive clues do not add a separate learning objective. Retain one draft; this decision does not source-certify either answer.",
+      "retiredId": "MOV-N-d50d7e309f27",
+      "canonicalId": "MOV-N-e8cc5f736270"
+    },
+    {
+      "ids": [
+        "MOV-N-ffdb7dbe5996",
+        "POP-N-f9b081c8be26"
+      ],
+      "categories": [
+        "movies",
+        "pop-culture"
+      ],
+      "gradingHashes": [
+        "b4300c95f8d74b8986ec8bdb9317d4927b58997a3c546d2a62e61776b773ee31",
+        "9f1f71f1560e29daeb5413a0ed438073daf1607b53bee2b84da7a7011b7697f7"
+      ],
+      "disposition": "cross-category-review",
+      "note": "Related cross-category facts need taxonomy/objective review. No automatic removal across categories."
+    },
+    {
+      "ids": [
+        "POP-0234",
+        "POP-N-2e1c8c6b6c4d"
+      ],
+      "categories": [
+        "pop-culture",
+        "pop-culture"
+      ],
+      "gradingHashes": [
+        "0e31740a9c8d9fe66a1a305f317533a368b06a243f53201fba6fc8c8351d481e",
+        "795639ebb4c0e87c4b6624f05822a8086e1b1437ec161616dc3abee188d1c099"
+      ],
+      "disposition": "retained-distinct",
+      "note": "Different television shows share a premiere year."
+    },
+    {
+      "ids": [
+        "POP-N-996d30e2806c",
+        "POP-N-edfc39b95197"
+      ],
+      "categories": [
+        "pop-culture",
+        "pop-culture"
+      ],
+      "gradingHashes": [
+        "ea39b7a4078a66a20ead841be4f56a3c30be569e9615f48659dcf140db00df97",
+        "0b61fbacf1a49b2707d1541d549d1df158d4c0a6f99dd04302f0ffbd4ba52c52"
+      ],
+      "disposition": "retire-duplicate",
+      "note": "Both prompts ask for the same subject/relation with the same keyed answer. Extra descriptive clues do not add a separate learning objective. Retain one draft; this decision does not source-certify either answer.",
+      "retiredId": "POP-N-996d30e2806c",
+      "canonicalId": "POP-N-edfc39b95197"
+    },
+    {
+      "ids": [
+        "POP-N-ac47b7759548",
+        "POP-N-d7f63a9eeb8b"
+      ],
+      "categories": [
+        "pop-culture",
+        "pop-culture"
+      ],
+      "gradingHashes": [
+        "f4014066bc3266aff53250258d5203746a598bfcaf9fa3bbf8b46a30a5e2fb7e",
+        "fd360c0efd7dc7a22b4b8c415cd8dff45466aa619bdef1a9b7752443d0967e67"
+      ],
+      "disposition": "retire-duplicate",
+      "note": "Both prompts ask for the same subject/relation with the same keyed answer. Extra descriptive clues do not add a separate learning objective. Retain one draft; this decision does not source-certify either answer.",
+      "retiredId": "POP-N-ac47b7759548",
+      "canonicalId": "POP-N-d7f63a9eeb8b"
+    },
+    {
+      "ids": [
+        "SF-0394",
+        "SF-N-ad82e42e8c02"
+      ],
+      "categories": [
+        "science-fiction",
+        "science-fiction"
+      ],
+      "gradingHashes": [
+        "779b605d417d8a5cd3582e1ad5f4aafad2eddabcb6acd258f323d1a1868960f5",
+        "c45d87dab352562fa4c8bc15c8384e01ce6052bd2011a096b50bacdf44eba1fa"
+      ],
+      "disposition": "retire-duplicate",
+      "note": "Both prompts ask for the same subject/relation with the same keyed answer. Extra descriptive clues do not add a separate learning objective. Retain one draft; this decision does not source-certify either answer.",
+      "retiredId": "SF-N-ad82e42e8c02",
+      "canonicalId": "SF-0394"
+    },
+    {
+      "ids": [
+        "SF-N-8856e2a1dafe",
+        "TECH-0285"
+      ],
+      "categories": [
+        "science-fiction",
+        "technology"
+      ],
+      "gradingHashes": [
+        "e3aaba2a96529977a2b405865913809c1ccfecd6f65faafe5876de1942807278",
+        "8b2425be3c312640670644641154cbe3dda889b3c9f3382da9f26df91344445b"
+      ],
+      "disposition": "retained-distinct",
+      "note": "A fictional mission destination and physical planet size are different facts."
+    },
+    {
+      "ids": [
+        "TECH-0172",
+        "TECH-N-3d8dbbdef58e"
+      ],
+      "categories": [
+        "technology",
+        "technology"
+      ],
+      "gradingHashes": [
+        "0850cb9b54b9ad5e12e91b309827d303468ccdf07a3deee0b60b6f7177b997e6",
+        "53047299e860f6177cc8484ca568bf01015e3bd029f5d2bfb2149de7d6d7ba33"
+      ],
+      "disposition": "retained-distinct",
+      "note": "Different anatomical structures are named; a shared organ answer is insufficient for retirement. Category suitability still needs review."
+    },
+    {
+      "ids": [
+        "TECH-0285",
+        "TECH-N-a55d9c20429f"
+      ],
+      "categories": [
+        "technology",
+        "technology"
+      ],
+      "gradingHashes": [
+        "8b2425be3c312640670644641154cbe3dda889b3c9f3382da9f26df91344445b",
+        "3b835d3d6c7c1f5301787d122ee99600080c6cf93a7aec0cdf2dced2b5503add"
+      ],
+      "disposition": "retire-duplicate",
+      "note": "Both prompts ask for the same subject/relation with the same keyed answer. Extra descriptive clues do not add a separate learning objective. Retain one draft; this decision does not source-certify either answer.",
+      "retiredId": "TECH-N-a55d9c20429f",
+      "canonicalId": "TECH-0285"
+    },
+    {
+      "ids": [
+        "TECH-0285",
+        "TECH-N-e6ee4ded924e"
+      ],
+      "categories": [
+        "technology",
+        "technology"
+      ],
+      "gradingHashes": [
+        "8b2425be3c312640670644641154cbe3dda889b3c9f3382da9f26df91344445b",
+        "12f96e0109ad1d46aa66708f7818ae6ec460591a5990cec71d77ed633857a749"
+      ],
+      "disposition": "retained-distinct",
+      "note": "Largest planet and identification from moons are different relations."
+    },
+    {
+      "ids": [
+        "TECH-0361",
+        "TECH-0665"
+      ],
+      "categories": [
+        "technology",
+        "technology"
+      ],
+      "gradingHashes": [
+        "670a7cdf1a70cb60038d2a9edb9c21eedbce555bd175272daf28f5b8fbdf132d",
+        "d342c244e249426bd9b9c7e1c9f1a2e645cb45edc4f885f207384c58be896d8e"
+      ],
+      "disposition": "retained-distinct",
+      "note": "Largest terrestrial planet and nickname identification are different relations."
+    },
+    {
+      "ids": [
+        "TECH-0388",
+        "TECH-N-34d6c9509cca"
+      ],
+      "categories": [
+        "technology",
+        "technology"
+      ],
+      "gradingHashes": [
+        "64a71f37e62427367b802d78c9742620888898ad5ffe49b14c1bf15aaf7c47f8",
+        "146157457b3175e53428b355c27e509c42e3ffccecc5a1a18fd53eb775adf8a6"
+      ],
+      "disposition": "retire-duplicate",
+      "note": "Both prompts ask for the same subject/relation with the same keyed answer. Extra descriptive clues do not add a separate learning objective. Retain one draft; this decision does not source-certify either answer.",
+      "retiredId": "TECH-N-34d6c9509cca",
+      "canonicalId": "TECH-0388"
+    },
+    {
+      "ids": [
+        "TECH-0393",
+        "TECH-0707"
+      ],
+      "categories": [
+        "technology",
+        "technology"
+      ],
+      "gradingHashes": [
+        "00055951ec2f3ae8b9089d23f251aa981500a374634d5471f14eee6e7c29e746",
+        "0f12450b377c25fb6c203cd64de2ccfe8422fb5da190e1351ac95dc79da4fd42"
+      ],
+      "disposition": "retained-distinct",
+      "note": "A nickname and hottest-planet identification are different relations."
+    },
+    {
+      "ids": [
+        "TECH-0976",
+        "TECH-N-5b5b64c3ae6d"
+      ],
+      "categories": [
+        "technology",
+        "technology"
+      ],
+      "gradingHashes": [
+        "935e5d37d2f22ef2ea7fd3c3700d774dff29248acb420f809fa501fa6f021a0f",
+        "11b2096d45d15c961a88476b274f57f7f1667f3a968cf1f9bfea0bb935ac5b69"
+      ],
+      "disposition": "retire-duplicate",
+      "note": "Both prompts ask for the same subject/relation with the same keyed answer. Extra descriptive clues do not add a separate learning objective. Retain one draft; this decision does not source-certify either answer.",
+      "retiredId": "TECH-N-5b5b64c3ae6d",
+      "canonicalId": "TECH-0976"
+    },
+    {
+      "ids": [
+        "VG-0260",
+        "VG-0376"
+      ],
+      "categories": [
+        "video-games",
+        "video-games"
+      ],
+      "gradingHashes": [
+        "f0da57c64d84431ef8b830a2a1322f0a3f084e83c4fcdfa0a03be13f84eec0f3",
+        "b317020a9f3d840eaed59a866c43765c4d7a609b8742144cc2390718bb7c4447"
+      ],
+      "disposition": "retained-distinct",
+      "note": "Television appearance and antagonist portrayal are different yes/no facts."
+    },
+    {
+      "ids": [
+        "VG-0634",
+        "VG-0647"
+      ],
+      "categories": [
+        "video-games",
+        "video-games"
+      ],
+      "gradingHashes": [
+        "882b3bb9f8f4aac208ab40ffd936972d472ccaa63cb7a69e2d53d1805d65ae7d",
+        "6d9151c82730f7b0322bc803caad5e8df7489808ee1b2476fbd2126e3f865778"
+      ],
+      "disposition": "retained-distinct",
+      "note": "Different characters are named; sharing a power-shot answer does not make the character-specific questions duplicates."
+    },
+    {
+      "ids": [
+        "VG-N-726ba0f1ad72",
+        "VG-N-d2f453bbb4da"
+      ],
+      "categories": [
+        "video-games",
+        "video-games"
+      ],
+      "gradingHashes": [
+        "48fa084cdd1c63d9c27ee946be7b2aec41e6848e0a003527f72876426010535a",
+        "2feee42dbeb6836c1dc2769daa7a7765273392e1979cf6297b9d6edbccccd111"
+      ],
+      "disposition": "retire-duplicate",
+      "note": "Both prompts ask for the same subject/relation with the same keyed answer. Extra descriptive clues do not add a separate learning objective. Retain one draft; this decision does not source-certify either answer.",
+      "retiredId": "VG-N-d2f453bbb4da",
+      "canonicalId": "VG-N-726ba0f1ad72"
+    }
+  ]
+}

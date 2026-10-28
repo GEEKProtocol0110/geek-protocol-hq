@@ -2,20 +2,20 @@
   "metadata": {
     "title": "GEEK Protocol — Video Games Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-08",
-    "questionCount": 602,
-    "conceptCount": 602,
+    "maintainedAt": "2026-10-27",
+    "questionCount": 601,
+    "conceptCount": 601,
     "category": "Video Games",
     "difficultyDistribution": {
-      "easy": 280,
+      "easy": 279,
       "medium": 265,
       "hard": 57
     },
     "correctIndexDistribution": {
       "0": 149,
+      "1": 158,
       "2": 150,
-      "3": 144,
-      "1": 159
+      "3": 144
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -14848,33 +14848,6 @@
       "sourceFile": "Entertainment: Video Games",
       "id": "VG-N-6a4ac8bda804",
       "conceptId": "VG-N-6a4ac8bda804",
-      "category": "Video Games",
-      "subcategory": "Entertainment: Video Games",
-      "funFact": null,
-      "tags": [
-        "video-games"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "What was Frank West's job in \"Dead Rising\"?",
-      "options": [
-        "Taxi Driver",
-        "Photojournalist",
-        "Janitor",
-        "Chef"
-      ],
-      "correctIndex": 1,
-      "sourceCategoryId": 15,
-      "difficulty": "easy",
-      "sourceFile": "Entertainment: Video Games",
-      "id": "VG-N-d2f453bbb4da",
-      "conceptId": "VG-N-d2f453bbb4da",
       "category": "Video Games",
       "subcategory": "Entertainment: Video Games",
       "funFact": null,

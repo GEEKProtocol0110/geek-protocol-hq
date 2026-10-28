@@ -9,7 +9,8 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CONT-001 | P0 | done | Publish the continuation system | Maintainer; release reviewed by founder |
 | CONT-002 | P0 | planned | Make and verify an independent source backup | Founder or appointed repository custodian |
 | ARCH-001 | P1 | blocked | Ingest founding originals and reconcile chronology | Founder supplies originals; archivist unassigned |
-| BANK-001 | P0 | active | Grow Kaspa toward 1,000 reviewed concepts | Content maintainer; independent editor unassigned |
+| BANK-009 | P0 | active | Audit every question category before treating counts as quality | Content maintainer; independent editor unassigned |
+| BANK-001 | P0 | planned | Grow Kaspa toward 1,000 reviewed concepts | Content maintainer; independent editor unassigned |
 | BANK-002 | P1 | planned | Reach 1,000 reviewed Video games concepts | Content editor unassigned |
 | BANK-003 | P1 | planned | Reach 1,000 reviewed Science fiction concepts | Content editor unassigned |
 | BANK-004 | P1 | planned | Reach 1,000 reviewed Technology concepts | Content editor unassigned |
@@ -99,11 +100,27 @@ Acceptance:
 
 Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity/ARCHIVE-GUIDE.md), [docs/continuity/assets.json](../../docs/continuity/assets.json).
 
-## BANK-001: Grow Kaspa toward 1,000 reviewed concepts
+## BANK-009: Audit every question category before treating counts as quality
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Release the checked RPC data-boundaries batch with exact CI/tree/deployment and aggregate delivery evidence, then continue the remaining 234 distinct Kaspa concepts toward 1,000. Preserve prior answer-key bytes, the 537-concept introductory Study pool and all economic holds. Independent editorial review remains unassigned; reconcile the private Royale retry before further live-match mutations.
+Next action: Continue BANK-009: triage 76 suspected encoding issues and eight unresolved scope/category pairs, then perform item-by-item primary-source, distractor, wording, category, licensing and difficulty review across all 7,492 remaining drafts. Recheck existing source-checked rows for semantic overlap. Preserve historical keys and canonical exclusions; no count padding. BANK-001 retains 234 Kaspa concepts remaining. Independent editing is unassigned; PILOT-001 private retry and provider recovery remain separate.
+
+Acceptance:
+
+- All active identities have a recorded audit disposition; screening and factual review coverage are distinguished.
+- Semantic duplicates, inverse/paraphrased facts, key/distractor ambiguity, missing media/context, encoding, taxonomy, dates/editions and licensing are reviewed, including unflagged imports.
+- Each retained reviewed item has specific primary evidence, an original explanation, review date and provisional difficulty; no blanket source-checked promotion.
+- Corrections use new identities; original grading remains lookup-only and duplicate aliases prevent repeated concepts in subsequent rounds.
+- Independent editorial review is assigned and accepted before claiming independent completion; generated coverage, compatibility, tier capacity and public-answer protections pass.
+
+Evidence/specification: [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md), [scripts/audit-question-banks.mjs](../../scripts/audit-question-banks.mjs), [server/question-audit/decisions-2026-10-27.json](../../server/question-audit/decisions-2026-10-27.json), [server/question-audit/latest.json](../../server/question-audit/latest.json), [tests/question-audit.test.js](../../tests/question-audit.test.js).
+
+## BANK-001: Grow Kaspa toward 1,000 reviewed concepts
+
+**P0 / planned.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
+
+Next action: Retain the deployed 766-concept checkpoint and 234 remaining. BANK-009 is the immediate content priority; resume distinct Kaspa growth after its initial risk triage while the full-bank audit continues. Preserve prior keys and Study. Independent editing is unassigned.
 
 Acceptance:
 
@@ -117,7 +134,7 @@ Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.m
 
 **P1 / planned.** Owner: Content editor unassigned. Dependencies: none.
 
-Next action: Review a small Video games batch against specific primary sources; correct or retire unsuitable drafts.
+Next action: First complete the BANK-009 audit work for this category, including unflagged drafts, primary evidence, distractors, context, taxonomy, duplicates and difficulty; then add distinct reviewed concepts toward 1,000. Counts may fall after retirement; preserve issued keys and do not pad with rewordings.
 
 Acceptance:
 
@@ -125,13 +142,13 @@ Acceptance:
 - Keys, distractors, licensing, explanations, scope and difficulty reviewed.
 - Saved-game compatibility and generated counts verified.
 
-Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md).
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md), [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md).
 
 ## BANK-003: Reach 1,000 reviewed Science fiction concepts
 
 **P1 / planned.** Owner: Content editor unassigned. Dependencies: none.
 
-Next action: Review a small Science fiction batch against specific primary sources; correct or retire unsuitable drafts.
+Next action: First complete the BANK-009 audit work for this category, including unflagged drafts, primary evidence, distractors, context, taxonomy, duplicates and difficulty; then add distinct reviewed concepts toward 1,000. Counts may fall after retirement; preserve issued keys and do not pad with rewordings.
 
 Acceptance:
 
@@ -139,13 +156,13 @@ Acceptance:
 - Keys, distractors, licensing, explanations, scope and difficulty reviewed.
 - Saved-game compatibility and generated counts verified.
 
-Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md).
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md), [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md).
 
 ## BANK-004: Reach 1,000 reviewed Technology concepts
 
 **P1 / planned.** Owner: Content editor unassigned. Dependencies: none.
 
-Next action: Review a small Technology batch against specific primary sources; correct or retire unsuitable drafts.
+Next action: First complete the BANK-009 audit work for this category, including unflagged drafts, primary evidence, distractors, context, taxonomy, duplicates and difficulty; then add distinct reviewed concepts toward 1,000. Counts may fall after retirement; preserve issued keys and do not pad with rewordings.
 
 Acceptance:
 
@@ -153,13 +170,13 @@ Acceptance:
 - Keys, distractors, licensing, explanations, scope and difficulty reviewed.
 - Saved-game compatibility and generated counts verified.
 
-Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md).
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md), [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md).
 
 ## BANK-005: Reach 1,000 reviewed Movies concepts
 
 **P1 / planned.** Owner: Content editor unassigned. Dependencies: none.
 
-Next action: Review a small Movies batch against specific primary sources; correct or retire unsuitable drafts.
+Next action: First complete the BANK-009 audit work for this category, including unflagged drafts, primary evidence, distractors, context, taxonomy, duplicates and difficulty; then add distinct reviewed concepts toward 1,000. Counts may fall after retirement; preserve issued keys and do not pad with rewordings.
 
 Acceptance:
 
@@ -167,13 +184,13 @@ Acceptance:
 - Keys, distractors, licensing, explanations, scope and difficulty reviewed.
 - Saved-game compatibility and generated counts verified.
 
-Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md).
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md), [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md).
 
 ## BANK-006: Reach 1,000 reviewed History concepts
 
 **P1 / planned.** Owner: Content editor unassigned. Dependencies: none.
 
-Next action: Review a small History batch against specific primary sources; correct or retire unsuitable drafts.
+Next action: First complete the BANK-009 audit work for this category, including unflagged drafts, primary evidence, distractors, context, taxonomy, duplicates and difficulty; then add distinct reviewed concepts toward 1,000. Counts may fall after retirement; preserve issued keys and do not pad with rewordings.
 
 Acceptance:
 
@@ -181,13 +198,13 @@ Acceptance:
 - Keys, distractors, licensing, explanations, scope and difficulty reviewed.
 - Saved-game compatibility and generated counts verified.
 
-Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md).
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md), [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md).
 
 ## BANK-007: Reach 1,000 reviewed Comics concepts
 
 **P1 / planned.** Owner: Content editor unassigned. Dependencies: none.
 
-Next action: Review a small Comics batch against specific primary sources; correct or retire unsuitable drafts.
+Next action: First complete the BANK-009 audit work for this category, including unflagged drafts, primary evidence, distractors, context, taxonomy, duplicates and difficulty; then add distinct reviewed concepts toward 1,000. Counts may fall after retirement; preserve issued keys and do not pad with rewordings.
 
 Acceptance:
 
@@ -195,13 +212,13 @@ Acceptance:
 - Keys, distractors, licensing, explanations, scope and difficulty reviewed.
 - Saved-game compatibility and generated counts verified.
 
-Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md).
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md), [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md).
 
 ## BANK-008: Reach 1,000 reviewed Pop culture concepts
 
 **P1 / planned.** Owner: Content editor unassigned. Dependencies: none.
 
-Next action: Review a small Pop culture batch against specific primary sources; correct or retire unsuitable drafts.
+Next action: First complete the BANK-009 audit work for this category, including unflagged drafts, primary evidence, distractors, context, taxonomy, duplicates and difficulty; then add distinct reviewed concepts toward 1,000. Counts may fall after retirement; preserve issued keys and do not pad with rewordings.
 
 Acceptance:
 
@@ -209,7 +226,7 @@ Acceptance:
 - Keys, distractors, licensing, explanations, scope and difficulty reviewed.
 - Saved-game compatibility and generated counts verified.
 
-Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md).
+Evidence/specification: [docs/BANK-FIRST-STORE.md](../../docs/BANK-FIRST-STORE.md), [docs/IMPORTED-QUESTION-REVIEW.md](../../docs/IMPORTED-QUESTION-REVIEW.md), [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md).
 
 ## PILOT-001: Complete the real-device free-beta pilot
 

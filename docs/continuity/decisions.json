@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-25",
+  "updatedAt": "2026-10-27",
   "records": [
     {
       "id": "DR-001",
@@ -361,6 +361,19 @@
         "docs/continuity/WORKLOG.md"
       ],
       "recordedAt": "2026-10-25",
+      "supersedes": null
+    },
+    {
+      "id": "DR-029",
+      "status": "founder-direction",
+      "title": "Audit the whole bank for duplicates and question quality",
+      "decision": "Prioritize systematic review across every category for duplicate facts, broken or strange wording, missing context, category fit, answer/distractor correctness, sources, licensing and difficulty. Keep screening distinct from item-by-item primary-source review; preserve historical keys and permit counts to fall when unsuitable drafts are retired. Kaspa growth and the 1,000-reviewed-per-category CCE gate remain.",
+      "basis": "Founder October 27 asks to update the roadmap, pick up the work and audit the question bank really well because other categories may share the duplication and strange-instance problems seen in Kaspa.",
+      "evidence": [
+        "docs/QUESTION-BANK-AUDIT-2026-10-27.md",
+        "docs/ROADMAP-CHECKPOINT.md"
+      ],
+      "recordedAt": "2026-10-27",
       "supersedes": null
     }
   ]

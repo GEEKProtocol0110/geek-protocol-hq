@@ -2,20 +2,20 @@
   "metadata": {
     "title": "GEEK Protocol — Technology Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-08",
-    "questionCount": 1482,
-    "conceptCount": 1482,
+    "maintainedAt": "2026-10-27",
+    "questionCount": 1479,
+    "conceptCount": 1479,
     "category": "Technology",
     "difficultyDistribution": {
-      "easy": 579,
+      "easy": 576,
       "medium": 604,
       "hard": 299
     },
     "correctIndexDistribution": {
-      "0": 374,
+      "0": 373,
       "1": 344,
-      "3": 396,
-      "2": 368
+      "2": 367,
+      "3": 395
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -29241,33 +29241,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "This is the largest planet in our solar system. It is most famous for its Great Red Spot.",
-      "options": [
-        "Neptune",
-        "Saturn",
-        "Jupiter",
-        "Mars"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 34,
-      "id": "TECH-N-a55d9c20429f",
-      "conceptId": "TECH-N-a55d9c20429f",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "Antiseptic oils are used to treat these.",
       "options": [
         "Poor circulation and listlessness",
@@ -29995,33 +29968,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "As this is the closest planet to the Sun, its temperatures at the surface range between -300 and 800 F (hot enough for lead to melt).",
-      "options": [
-        "Pluto",
-        "Venus",
-        "Neptune",
-        "Mercury"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 31,
-      "id": "TECH-N-34d6c9509cca",
-      "conceptId": "TECH-N-34d6c9509cca",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "Scientists differentiate what three basic types of memory, based on the duration of memory retention?",
@@ -37717,33 +37663,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "Which natural satellite is Jupiters largest moon as well as the largest moon in the whole Solar System?",
-      "options": [
-        "Ganymede",
-        "Titan",
-        "Io",
-        "Europa"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 2316,
-      "id": "TECH-N-5b5b64c3ae6d",
-      "conceptId": "TECH-N-5b5b64c3ae6d",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "Which of the following is not a function of the pericardium?",

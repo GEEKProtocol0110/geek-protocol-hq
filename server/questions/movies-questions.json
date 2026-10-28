@@ -2,19 +2,19 @@
   "metadata": {
     "title": "GEEK Protocol — Movies Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-08",
-    "questionCount": 1495,
-    "conceptCount": 1495,
+    "maintainedAt": "2026-10-27",
+    "questionCount": 1492,
+    "conceptCount": 1492,
     "category": "Movies",
     "difficultyDistribution": {
-      "easy": 604,
-      "medium": 600,
+      "easy": 603,
+      "medium": 598,
       "hard": 291
     },
     "correctIndexDistribution": {
+      "0": 361,
       "1": 377,
-      "0": 363,
-      "2": 369,
+      "2": 368,
       "3": 386
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
@@ -22785,33 +22785,6 @@
       "difficulty": "hard"
     },
     {
-      "prompt": "What was the name of the character played by Dustin Hoffman in The Graduate?",
-      "options": [
-        "Benjamin Braddock",
-        "Benjamin Smith",
-        "Benjamin Williams",
-        "Benjamin Billings"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "movies",
-      "sourceOrdinal": 2205,
-      "id": "MOV-N-84fed52068ff",
-      "conceptId": "MOV-N-84fed52068ff",
-      "category": "Movies",
-      "subcategory": "Movies",
-      "funFact": null,
-      "tags": [
-        "movies"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "What actor played the part of Samanthas dad Jim Baker in Sixteen Candles?",
       "options": [
         "Paul Schmooley",
@@ -26241,33 +26214,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "What is the name of the character portrayed by actor John Cusack in the hilarious movie Sixteen Candles?",
-      "options": [
-        "Bryce",
-        "Cliff",
-        "Harvey",
-        "Rick"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "movies",
-      "sourceOrdinal": 103,
-      "id": "MOV-N-d50d7e309f27",
-      "conceptId": "MOV-N-d50d7e309f27",
-      "category": "Movies",
-      "subcategory": "Movies",
-      "funFact": null,
-      "tags": [
-        "movies"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "At the 56th Academy Awards in 1984, the Academy Award for Best Picture was given to this 1983 movie.",
       "options": [
         "Terms of Endearment",
@@ -27373,33 +27319,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "hard"
-    },
-    {
-      "prompt": "Fast Times at Ridgemont High, directed by Amy Heckerling, was released to theaters in what year?",
-      "options": [
-        "1972",
-        "1992",
-        "1982",
-        "1989"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "movies",
-      "sourceOrdinal": 233,
-      "id": "MOV-N-8efe93a81871",
-      "conceptId": "MOV-N-8efe93a81871",
-      "category": "Movies",
-      "subcategory": "Movies",
-      "funFact": null,
-      "tags": [
-        "movies"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "In this horror movie a six-year-old boy, named Michael Myers, is locked in a mental institution after brutally killing his older sister.",

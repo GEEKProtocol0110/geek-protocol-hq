@@ -10,24 +10,24 @@ Record date: 2026-10-27. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,371 active questions; 864 recorded internal source reviews; 7,136 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,356 active questions; 864 recorded internal source reviews; 7,136 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
 | Kaspa | 766 | 766 | 234 |
-| Video games | 602 | 0 | 1000 |
-| Science fiction | 515 | 37 | 963 |
-| Technology | 1497 | 15 | 985 |
-| Movies | 1495 | 0 | 1000 |
-| History | 1508 | 7 | 993 |
-| Comics | 417 | 39 | 961 |
-| Pop culture | 1571 | 0 | 1000 |
+| Video games | 601 | 0 | 1000 |
+| Science fiction | 514 | 37 | 963 |
+| Technology | 1494 | 15 | 985 |
+| Movies | 1492 | 0 | 1000 |
+| History | 1504 | 7 | 993 |
+| Comics | 416 | 39 | 961 |
+| Pop culture | 1569 | 0 | 1000 |
 
 ## Current work and pickup
 
-**BANK-001: active.** BANK-001 adds eight internally source-checked RPC data-boundary concepts at this source checkpoint: 766 Kaspa / 8,371 active / 864 review records. Introductory Study remains 537 concepts. The prior 758-concept batch is merged/deployed in #174. Full local verification and source/item compatibility checks passed; exact CI/release evidence is recorded separately; independent editorial review and the PILOT-001 private retry limitation remain open.
+**BANK-009: active.** Founder prioritizes a thorough audit of all categories. All 8,371 active baseline rows were screened and 33 candidate pairs internally triaged. This candidate retires 15 confirmed duplicate drafts across seven non-Kaspa categories, preserving historical grading and canonical exclusions. Candidate totals: 8,356 active / 864 recorded source checks / 7,492 drafts needing factual review. Kaspa remains 766 and Study 537. Screening is not a complete factual/semantic audit; independent editing remains unassigned.
 
-Next task: **BANK-001**. Release the checked RPC data-boundaries batch with exact CI/tree/deployment and aggregate delivery evidence, then continue the remaining 234 distinct Kaspa concepts toward 1,000. Preserve prior answer-key bytes, the 537-concept introductory Study pool and all economic holds. Independent editorial review remains unassigned; reconcile the private Royale retry before further live-match mutations.
+Next task: **BANK-009**. Continue BANK-009: triage 76 suspected encoding issues and eight unresolved scope/category pairs, then perform item-by-item primary-source, distractor, wording, category, licensing and difficulty review across all 7,492 remaining drafts. Recheck existing source-checked rows for semantic overlap. Preserve historical keys and canonical exclusions; no count padding. BANK-001 retains 234 Kaspa concepts remaining. Independent editing is unassigned; PILOT-001 private retry and provider recovery remain separate.
 
 ## Holds
 
