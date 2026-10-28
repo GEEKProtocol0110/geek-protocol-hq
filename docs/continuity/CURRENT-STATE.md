@@ -10,14 +10,14 @@ Record date: 2026-10-28. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,346 active questions; 872 recorded internal source reviews; 7,128 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,338 active questions; 876 recorded internal source reviews; 7,124 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
 | Kaspa | 766 | 766 | 234 |
 | Video games | 601 | 0 | 1000 |
 | Science fiction | 514 | 37 | 963 |
-| Technology | 1493 | 15 | 985 |
+| Technology | 1485 | 19 | 981 |
 | Movies | 1490 | 5 | 995 |
 | History | 1502 | 9 | 991 |
 | Comics | 413 | 40 | 960 |
@@ -25,9 +25,9 @@ Record date: 2026-10-28. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-009: active.** BANK-009 resolves the initial eight scope/category pairs and four contextual time-wording cases: 17 original drafts retired, eight internally primary-source-checked replacements added. Candidate totals: 8,346 active / 872 recorded reviews / 7,474 factual drafts. The screen retains classified matches and zero unresolved findings; this is not full factual or independent approval. Kaspa 766 and Study 537 remain unchanged.
+**BANK-009: active.** BANK-009 Technology risk batch: twelve original drafts retired, four corrected technical objectives added under internally primary-source-checked identities. Candidate totals: 8,338 active / 876 recorded reviews / 7,462 factual drafts; Technology 1,485 / 19 / 1,466. Earlier #178 scope release is preserved; independent/full-bank approval remains open.
 
-Next task: **BANK-009**. Continue BANK-009 with a bounded Technology batch: inspect category/context suitability and verify each retained key, all distractors and explanation against primary evidence; continue History and Comics next. The initial eight scope/category pairs and four time-wording cases are resolved, but 7,474 drafts still need factual review. Keep semantic-overlap checks on reviewed content and all historical keys/aliases. Independent editing and broader launch device/multiplayer/provider recovery remain open; Kaspa stays 766 / 234 to target.
+Next task: **BANK-009**. Continue BANK-009 with another bounded Technology batch, including hardware/OS context (the remaining 32-bit RAM item) and clinical/entertainment imports; then History and Comics. Review each key, all distractors, useful explanation, category, scope, license and provisional difficulty against primary evidence. The twelve-item batch leaves 7,462 factual drafts; retain semantic-overlap checks on reviewed material and every historical key/alias. Independent editing and broader device/multiplayer/provider recovery remain open; Kaspa stays 766 / 234 to target.
 
 ## Holds
 

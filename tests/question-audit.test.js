@@ -91,3 +91,33 @@ test('audited duplicate retirements retain grading and exclude their surviving c
     assert.equal(selected.length,10);assert.ok(!selected.includes(canonical.id));
   }
 });
+
+test('Technology corrections keep issued grading, licensed provenance and deterministic later-round exclusions',async()=>{
+  const ledger=JSON.parse(readFileSync('server/question-audit/technology-2026-10-28.json','utf8'));
+  const bank=loadQuestionBank('technology');
+  assert.equal(ledger.independentReview,false);
+  assert.equal(ledger.retirements.length,12);assert.equal(ledger.replacements.length,4);
+  for(const item of ledger.retirements){
+    const old=bank.byId.get(item.id);
+    assert.ok(old.retiredReason);assert.equal(gradingHash(old),item.gradingHash);
+    assert.equal(old.reviewStatus,'draft-needs-human-review');
+    assert.ok(!bank.questions.some(q=>q.id===item.id));
+  }
+  for(const item of ledger.replacements){
+    const q=bank.questions.find(q=>q.id===item.id);assert.ok(q);
+    assert.equal(gradingHash(q),item.gradingHash);assert.equal(q.reviewStatus,'source-checked');
+    assert.equal(q.source,item.source);assert.equal(q.license,'CC BY-SA 4.0');
+    assert.equal(q.originalSource,'https://github.com/uberspot/OpenTriviaQA');
+    assert.equal(q.reviewedAt,ledger.reviewedAt);assert.equal(item.distractorReview.length,4);
+    const old=bank.byId.get(item.fromIds[0]);assert.equal(old.conceptId,q.id);
+    // Leave exactly ten tier candidates including this correction. Excluding the
+    // saved old ID must remove its corrected concept, making a round impossible.
+    // A random ten-question sample could pass without exercising the alias.
+    const controls=bank.questions.filter(other=>other.difficulty===q.difficulty&&other.id!==q.id).slice(0,9);
+    const allowed=new Set([q.id,...controls.map(other=>other.id)]);
+    const excluded=bank.questions.filter(other=>other.difficulty===q.difficulty&&!allowed.has(other.id)).map(other=>other.id);
+    const round=q.difficulty==='easy'?1:q.difficulty==='medium'?4:8;
+    assert.ok((await selectRoundQuestionIds('technology',round,excluded)).includes(q.id));
+    await assert.rejects(selectRoundQuestionIds('technology',round,[...excluded,old.id]),/QUESTION_POOL_EXHAUSTED/);
+  }
+});

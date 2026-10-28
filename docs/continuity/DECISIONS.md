@@ -293,3 +293,13 @@ Prioritize systematic review across every category for duplicate facts, broken o
 Basis: Founder October 27 asks to update the roadmap, pick up the work and audit the question bank really well because other categories may share the duplication and strange-instance problems seen in Kaspa.
 
 Evidence: [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md), [docs/ROADMAP-CHECKPOINT.md](../../docs/ROADMAP-CHECKPOINT.md).
+
+## DR-030: Use bounded Technology review without a blanket science purge
+
+**implementation-choice** · 2026-10-28.
+
+Apply BANK-009 to a risk-selected Technology sample. Retire unrelated clinical/film objectives and malformed option sets; keep engineering, computing and instrument-application objectives with item-level primary evidence. Do not infer that all basic science or instrument anatomy is off-category, and do not transfer unverified facts into another active category. Corrections use new identities with old grading/aliases preserved.
+
+Basis: DR-029 and the maintained next action authorize thorough category/context and factual review. This is the maintainer’s scoped implementation choice, not a new founder taxonomy approval or full-bank certification.
+
+Evidence: [docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md), [server/question-audit/technology-2026-10-28.json](../../server/question-audit/technology-2026-10-28.json).
