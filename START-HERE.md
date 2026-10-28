@@ -19,7 +19,7 @@ Read [AGENTS.md](AGENTS.md) before editing. Inspect the current Git branch, open
 
 The central record is versioned text and structured data. A chat recollection is useful context; source files, dated decisions, tests and release evidence establish what is implemented. Merged code, a successful deployment and real-device acceptance are separate facts. Nothing in the fifty-year vision activates a reward or creates an institutional contract.
 
-**Immediate product priority:** automate the proven GEEKT test reward path ([CHAIN-004](docs/AUTOMATIC-GEEKT-REWARDS.md)) using a dedicated scheduled TN10 signer, then complete the finite [first-proof launch](docs/FIRST-PROOF-LAUNCH.md): prove the saved-player learning path, the completed manual TN10 proof, automatic testnet acceptance and recovery evidence before expanding the release. Reviewed-bank growth continues afterward; 1,000 reviewed questions per category and approved contributor economics still gate CCE.
+**Immediate content priority:** [BANK-009: audit the whole question bank](docs/QUESTION-BANK-AUDIT-2026-10-27.md). The deployed #175 checkpoint has 766 Kaspa concepts; this first audit candidate removes fifteen duplicate drafts in other categories while retaining saved-game grading. Complete encoding/context/category and item-by-item source review, including unflagged drafts, before treating bank counts as quality. The completed TN10 payout and founder phone recovery are preserved; broader pilot, independent backup and managed-provider recovery remain open under the [current roadmap](docs/ROADMAP-CHECKPOINT.md). Public Alpha and the 1,000-reviewed-per-category/economy CCE hold remain.
 
 For a new assistant or developer, use this pickup instruction:
 

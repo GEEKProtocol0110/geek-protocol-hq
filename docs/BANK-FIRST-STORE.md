@@ -4,18 +4,18 @@ Founder direction, October 15, 2026: build 1,000 legitimate questions per catego
 
 ## The actual bank
 
-The audit began with 7,801 active questions and 285 recorded source reviews. Historical expansion and editorial corrections remain in the maintenance record. The node-diagnostics release [#174](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/174) is deployed at **758 Kaspa concepts, 8,363 active questions and 856 internal source-review records**. The next RPC data-boundaries source checkpoint adds eight concepts: **766 Kaspa, 8,371 active and 864 internal review records**, with **7,136 reviews still needed** across the eight per-category targets. The table describes this source checkpoint, not a deployment claim; see [the item review](KASPA-766-REVIEW-2026-10-27.md) and [maintained state](continuity/CURRENT-STATE.md). The 8,000-question quality goal remains incomplete.
+The audit began with 7,801 active questions and 285 recorded source reviews. Historical expansion and editorial corrections remain in the maintenance record. Release [#175](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/175) is deployed at **766 Kaspa concepts, 8,371 active questions and 864 internal source-review records**. The [BANK-009 audit candidate](QUESTION-BANK-AUDIT-2026-10-27.md) retires fifteen duplicate drafts across the seven other categories, producing **8,356 active questions** with the same **864 recorded checks**. Kaspa remains 766 / 234 needed; all category targets need **7,136 further reviews**. The table describes the audit candidate, not its deployment. Screening does not certify all active rows as distinct or factually reviewed; **7,492 drafts still need factual review**. Exact releases are recorded in the scoped PRs and [maintained state](continuity/CURRENT-STATE.md).
 
 | Category | Active | Recorded source reviews | Still needed for 1,000 | Additional distinct questions needed even if every current draft passes |
 | --- | ---: | ---: | ---: | ---: |
 | Kaspa | 766 | 766 | 234 | 234 |
-| Video games | 602 | 0 | 1,000 | 398 |
-| Science fiction | 515 | 37 | 963 | 485 |
-| Technology | 1,497 | 15 | 985 | 0 |
-| Movies | 1,495 | 0 | 1,000 | 0 |
-| History | 1,508 | 7 | 993 | 0 |
-| Comics | 417 | 39 | 961 | 583 |
-| Pop culture | 1,571 | 0 | 1,000 | 0 |
+| Video games | 601 | 0 | 1,000 | 399 |
+| Science fiction | 514 | 37 | 963 | 486 |
+| Technology | 1,494 | 15 | 985 | 0 |
+| Movies | 1,492 | 0 | 1,000 | 0 |
+| History | 1,504 | 7 | 993 | 0 |
+| Comics | 416 | 39 | 961 | 584 |
+| Pop culture | 1,569 | 0 | 1,000 | 0 |
 
 `node scripts/question-bank-readiness.mjs --write` refreshes the counts-only public report and table. The check runs with `npm run questions:check` and fails on stale generated evidence. Runtime CCE status independently computes the same aggregates from deployed server-only banks. No question text or answer key enters the public report.
 

@@ -2,20 +2,20 @@
   "metadata": {
     "title": "GEEK Protocol — Comics Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-08",
-    "questionCount": 417,
-    "conceptCount": 417,
+    "maintainedAt": "2026-10-27",
+    "questionCount": 416,
+    "conceptCount": 416,
     "category": "Comics",
     "difficultyDistribution": {
       "easy": 205,
-      "medium": 168,
+      "medium": 167,
       "hard": 44
     },
     "correctIndexDistribution": {
       "0": 108,
-      "1": 94,
-      "3": 110,
-      "2": 105
+      "1": 93,
+      "2": 105,
+      "3": 110
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -8584,33 +8584,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/rated",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
-    },
-    {
-      "prompt": "What year did the TV series “Batman” premiere?",
-      "options": [
-        "1964",
-        "1966",
-        "1965",
-        "1967"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "rated",
-      "sourceOrdinal": 883,
-      "id": "COM-N-fb1ae61a7478",
-      "conceptId": "COM-N-fb1ae61a7478",
-      "category": "Comics",
-      "subcategory": "Rated",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/rated",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "This One Piece character is the Captain of the Strawhat Pirates, and wears a straw hat himself. He gained elasticity powers after eating the Gomu Gomu Fruit.",

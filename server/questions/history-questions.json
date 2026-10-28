@@ -2,20 +2,20 @@
   "metadata": {
     "title": "GEEK Protocol — History Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-07",
-    "questionCount": 1508,
-    "conceptCount": 1508,
+    "maintainedAt": "2026-10-27",
+    "questionCount": 1504,
+    "conceptCount": 1504,
     "category": "History",
     "difficultyDistribution": {
-      "easy": 558,
-      "medium": 630,
-      "hard": 322
+      "easy": 557,
+      "medium": 628,
+      "hard": 319
     },
     "correctIndexDistribution": {
-      "0": 399,
-      "1": 356,
-      "2": 396,
-      "3": 359
+      "0": 397,
+      "1": 355,
+      "2": 394,
+      "3": 358
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -24453,33 +24453,6 @@
       "difficulty": "hard"
     },
     {
-      "prompt": "What King of France was popularly known as the Sun King?",
-      "options": [
-        "Louis XIV",
-        "Louis XVI",
-        "Louis X",
-        "Louis XV"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "history",
-      "sourceOrdinal": 1267,
-      "id": "HIS-N-e47647cf39d2",
-      "conceptId": "HIS-N-e47647cf39d2",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "In which month of 1940 did the Soviet Union occupy Latvia, Lithuania, and Estonia?",
       "options": [
         "August",
@@ -34443,33 +34416,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "Who was the British Prime Minister at the outbreak of the Second World War in 1939?",
-      "options": [
-        "Stanley Baldwin",
-        "Winston Churchill",
-        "Ramsay MacDonald",
-        "Neville Chamberlain"
-      ],
-      "correctIndex": 3,
-      "sourceCategoryId": 23,
-      "difficulty": "hard",
-      "sourceFile": "History",
-      "id": "HIS-N-9968535bb1ed",
-      "conceptId": "HIS-N-9968535bb1ed",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
       "prompt": "This musician sang about an Uptown Girl in 1983.",
       "options": [
         "Billy Joel",
@@ -35062,33 +35008,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "hard"
-    },
-    {
-      "prompt": "Which German field marshal was known as the `Desert Fox`?",
-      "options": [
-        "Wilhelm List",
-        "Erwin Rommel",
-        "Ernst Busch",
-        "Wolfram Freiherr von Richthofen"
-      ],
-      "correctIndex": 1,
-      "sourceCategoryId": 23,
-      "difficulty": "easy",
-      "sourceFile": "History",
-      "id": "HIS-N-cb3efa608363",
-      "conceptId": "HIS-N-cb3efa608363",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
       "prompt": "Men were first to wear jewels. They considered them to be this.",
@@ -35995,33 +35914,6 @@
       "sourceFile": "History",
       "id": "HIS-N-4ccbd6cacad2",
       "conceptId": "HIS-N-4ccbd6cacad2",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Who assassinated Archduke Franz Ferdinand?",
-      "options": [
-        "Oskar Potiorek",
-        "Ferdinand Cohen-Blind",
-        "Gavrilo Princip",
-        "Nedeljko Čabrinović"
-      ],
-      "correctIndex": 2,
-      "sourceCategoryId": 23,
-      "difficulty": "medium",
-      "sourceFile": "History",
-      "id": "HIS-N-c4174e81a6c1",
-      "conceptId": "HIS-N-c4174e81a6c1",
       "category": "History",
       "subcategory": "History",
       "funFact": null,

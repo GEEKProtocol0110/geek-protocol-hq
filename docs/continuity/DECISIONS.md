@@ -283,3 +283,13 @@ Keep automatic daily database backups disabled and retain the free plan for now.
 Basis: Founder October 25 reports that daily backups require pay-as-you-go or a monthly plan, accepts staying on the free plan, and supplies the downloaded manual RDB export for isolated verification.
 
 Evidence: [docs/BACKUP-RECOVERY.md](../../docs/BACKUP-RECOVERY.md), [docs/continuity/WORKLOG.md](../../docs/continuity/WORKLOG.md).
+
+## DR-029: Audit the whole bank for duplicates and question quality
+
+**founder-direction** · 2026-10-27.
+
+Prioritize systematic review across every category for duplicate facts, broken or strange wording, missing context, category fit, answer/distractor correctness, sources, licensing and difficulty. Keep screening distinct from item-by-item primary-source review; preserve historical keys and permit counts to fall when unsuitable drafts are retired. Kaspa growth and the 1,000-reviewed-per-category CCE gate remain.
+
+Basis: Founder October 27 asks to update the roadmap, pick up the work and audit the question bank really well because other categories may share the duplication and strange-instance problems seen in Kaspa.
+
+Evidence: [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md), [docs/ROADMAP-CHECKPOINT.md](../../docs/ROADMAP-CHECKPOINT.md).
