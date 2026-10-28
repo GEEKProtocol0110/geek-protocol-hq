@@ -2,7 +2,7 @@
   "metadata": {
     "title": "GEEK Protocol — Video Games Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-27",
+    "maintainedAt": "2026-10-28",
     "questionCount": 601,
     "conceptCount": 601,
     "category": "Video Games",
@@ -6123,12 +6123,12 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "VG-0528",
+      "id": "VG-0528-E86ecbf44c7",
       "category": "Video Games",
       "prompt": "In Final Fantasy X, where does Yuna perform her first Sending?",
       "options": [
         "Besaid",
-        "DjosÃ©",
+        "Djosé",
         "Home",
         "Kilika"
       ],
@@ -6143,8 +6143,14 @@
       "sourceFile": "source-video-games.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "VG-0528",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "VG-0528-E86ecbf44c7",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "VG-0528",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/video-games#L1583"
+      }
     },
     {
       "id": "VG-0529",

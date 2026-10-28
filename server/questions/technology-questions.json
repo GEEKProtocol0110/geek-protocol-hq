@@ -2,7 +2,7 @@
   "metadata": {
     "title": "GEEK Protocol — Technology Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-27",
+    "maintainedAt": "2026-10-28",
     "questionCount": 1479,
     "conceptCount": 1479,
     "category": "Technology",
@@ -195,9 +195,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0010",
+      "id": "TECH-0010-Ebfe413e552",
       "category": "Technology",
-      "prompt": "Which is the highest layer of the Earthâ€™s atmosphere?",
+      "prompt": "Which is the highest layer of the Earth’s atmosphere?",
       "options": [
         "Iconosphere",
         "Exosphere",
@@ -215,8 +215,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0010",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0010-Ebfe413e552",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0010",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L10258"
+      }
     },
     {
       "id": "TECH-0011",
@@ -1347,9 +1353,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0079",
+      "id": "TECH-0079-Ee61689b6ff",
       "category": "Technology",
-      "prompt": "How many recognized constellations are there in Earthâ€™s entire view?",
+      "prompt": "How many recognized constellations are there in Earth’s entire view?",
       "options": [
         "244",
         "106",
@@ -1367,8 +1373,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0079",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0079-Ee61689b6ff",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0079",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L10634"
+      }
     },
     {
       "id": "TECH-0080",
@@ -2187,13 +2199,13 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0124",
+      "id": "TECH-0124-Eb80fe832c8",
       "category": "Technology",
       "prompt": "What is the name of the tornado that occurred on March 18, 1925 and became the deadliest in U.S. history?",
       "options": [
         "Oklahoma City Tornado",
         "Great Natchez Tornado",
-        "1896 St. Louis â€“ East St. Louis tornado",
+        "1896 St. Louis – East St. Louis tornado",
         "Tri-State Tornado"
       ],
       "correctIndex": 3,
@@ -2207,8 +2219,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0124",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0124-Eb80fe832c8",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0124",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L13048"
+      }
     },
     {
       "id": "TECH-0127",
@@ -3027,9 +3045,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0174",
+      "id": "TECH-0174-E4abb12bd63",
       "category": "Technology",
-      "prompt": "DÃ©jÃ Vu is one of the curios brain phenomenon. Which of these most accurately describes the term?",
+      "prompt": "Déjà Vu is one of the curios brain phenomenon. Which of these most accurately describes the term?",
       "options": [
         "A spontaneous involuntary creation of a false memory",
         "A sensation of something seen or experienced before",
@@ -3047,8 +3065,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0174",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0174-E4abb12bd63",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0174",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L696"
+      }
     },
     {
       "id": "TECH-0176",
@@ -3459,9 +3483,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0201",
+      "id": "TECH-0201-E186e38b3b9",
       "category": "Technology",
-      "prompt": "Which of Santa Klaus reindeersâ€™ name means lightning?",
+      "prompt": "Which of Santa Klaus reindeers’ name means lightning?",
       "options": [
         "Blitzen",
         "Dasher",
@@ -3479,8 +3503,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0201",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0201-E186e38b3b9",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0201",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L4155"
+      }
     },
     {
       "id": "TECH-0202",
@@ -4011,14 +4041,14 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0239",
+      "id": "TECH-0239-E6b8ffbe592",
       "category": "Technology",
-      "prompt": "Both Newton and Leibnitz claimed credit for inventingâ€ calculus. Which statement about calculus is true?",
+      "prompt": "Both Newton and Leibnitz claimed credit for inventing” calculus. Which statement about calculus is true?",
       "options": [
         "Gauss really invented it.",
         "Euler really invented it.",
         "Whoever invented it, we use Leibnitz notation.",
-        "Whoever invented it, we use Newtonâ€™s notation."
+        "Whoever invented it, we use Newton’s notation."
       ],
       "correctIndex": 2,
       "difficulty": "easy",
@@ -4031,8 +4061,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0239",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0239-E6b8ffbe592",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0239",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L5817"
+      }
     },
     {
       "id": "TECH-0240",
@@ -7251,14 +7287,14 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0426",
+      "id": "TECH-0426-E385e5c0e0b",
       "category": "Technology",
-      "prompt": "Alchemists were in search of â€˜panaceaâ€™. What is panacea?",
+      "prompt": "Alchemists were in search of ‘panacea’. What is panacea?",
       "options": [
         "The meaning of life",
         "Remedy for all ailments",
         "The Holy Grail",
-        "A piece of Jesus Christâ€™s cross"
+        "A piece of Jesus Christ’s cross"
       ],
       "correctIndex": 1,
       "difficulty": "medium",
@@ -7271,8 +7307,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0426",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0426-E385e5c0e0b",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0426",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L13444"
+      }
     },
     {
       "id": "TECH-0427",
@@ -7443,9 +7485,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0440",
+      "id": "TECH-0440-E63a1aad4fc",
       "category": "Technology",
-      "prompt": "Which of these statements about Petroleum, sometimes called â€˜black goldâ€™, is not true?",
+      "prompt": "Which of these statements about Petroleum, sometimes called ‘black gold’, is not true?",
       "options": [
         "It is used for the production of solvents, fertilizers and plastics.",
         "It is found in formations in he Earth.",
@@ -7463,8 +7505,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0440",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0440-E63a1aad4fc",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0440",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L4609"
+      }
     },
     {
       "id": "TECH-0442",
@@ -7731,9 +7779,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0455",
+      "id": "TECH-0455-E555c051c3a",
       "category": "Technology",
-      "prompt": "When a client complained that the roof in his building leaks, this famous architect who had designed the building replied: â€˜Thatâ€™s how you can tell itâ€™s a roofâ€™. Another work of his was the Guggenheim Museum in New York.",
+      "prompt": "When a client complained that the roof in his building leaks, this famous architect who had designed the building replied: ‘That’s how you can tell it’s a roof’. Another work of his was the Guggenheim Museum in New York.",
       "options": [
         "Aldo Rossi",
         "Michael Graves",
@@ -7751,8 +7799,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0455",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0455-E555c051c3a",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0455",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L3982"
+      }
     },
     {
       "id": "TECH-0456",
@@ -9243,9 +9297,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0535",
+      "id": "TECH-0535-E54cd5d5c7f",
       "category": "Technology",
-      "prompt": "What was the most important occupation to Socrates according to Xenophons â€˜Symposiumâ€™?",
+      "prompt": "What was the most important occupation to Socrates according to Xenophons ‘Symposium’?",
       "options": [
         "Creating beauty",
         "Studying sciences",
@@ -9263,8 +9317,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0535",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0535-E54cd5d5c7f",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0535",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L14044"
+      }
     },
     {
       "id": "TECH-0537",
@@ -9603,9 +9663,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0553",
+      "id": "TECH-0553-E53538f23ee",
       "category": "Technology",
-      "prompt": "Which planet was named after the ancient Romansâ€™ king of the gods?",
+      "prompt": "Which planet was named after the ancient Romans’ king of the gods?",
       "options": [
         "Jupiter",
         "Mars",
@@ -9623,8 +9683,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0553",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0553-E53538f23ee",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0553",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L2695"
+      }
     },
     {
       "id": "TECH-0554",
@@ -9843,9 +9909,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0566",
+      "id": "TECH-0566-E8e6fd50f9e",
       "category": "Technology",
-      "prompt": "This food is rich in omega â€“ 3 fatty acids, magnesium and potassium.",
+      "prompt": "This food is rich in omega – 3 fatty acids, magnesium and potassium.",
       "options": [
         "Salmon",
         "Oatmeal",
@@ -9863,18 +9929,24 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0566",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0566-E8e6fd50f9e",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0566",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L12587"
+      }
     },
     {
-      "id": "TECH-0569",
+      "id": "TECH-0569-E82c58bfb47",
       "category": "Technology",
       "prompt": "Which one of the following is indicative of Direct Disc Labeling capabilities?",
       "options": [
         "LightScribe",
         "SATA 3.0Gb/s",
         "Sharpie enabled",
-        "DL DVDÂ±RW/CD-RW"
+        "DL DVD±RW/CD-RW"
       ],
       "correctIndex": 0,
       "difficulty": "medium",
@@ -9887,8 +9959,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0569",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0569-E82c58bfb47",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0569",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L8967"
+      }
     },
     {
       "id": "TECH-0570",
@@ -10443,9 +10521,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0601",
+      "id": "TECH-0601-E9824b18701",
       "category": "Technology",
-      "prompt": "The word hurricaneâ€ comes from the name of a Caribbean god - Huracan. Huracan was god of what?",
+      "prompt": "The word hurricane” comes from the name of a Caribbean god - Huracan. Huracan was god of what?",
       "options": [
         "The storms",
         "The sea",
@@ -10463,8 +10541,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0601",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0601-E9824b18701",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0601",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L15138"
+      }
     },
     {
       "id": "TECH-0602",
@@ -11187,9 +11271,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0640",
+      "id": "TECH-0640-E18e13e7c34",
       "category": "Technology",
-      "prompt": "This famous mathematicianâ€™s main interest was set theory. He is famous for his diagonal methodâ€ of proof.",
+      "prompt": "This famous mathematician’s main interest was set theory. He is famous for his diagonal method” of proof.",
       "options": [
         "Euler",
         "Goedel",
@@ -11207,8 +11291,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0640",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0640-E18e13e7c34",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0640",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L5749"
+      }
     },
     {
       "id": "TECH-0642",
@@ -12915,9 +13005,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0731",
+      "id": "TECH-0731-E462b0b5d99",
       "category": "Technology",
-      "prompt": "Who is the author of the 1988 book â€˜The Alchemistâ€™?",
+      "prompt": "Who is the author of the 1988 book ‘The Alchemist’?",
       "options": [
         "J. K. Rowling",
         "Umberto Eco",
@@ -12935,8 +13025,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0731",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0731-E462b0b5d99",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0731",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L13486"
+      }
     },
     {
       "id": "TECH-0732",
@@ -15195,9 +15291,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0852",
+      "id": "TECH-0852-Ec242af006e",
       "category": "Technology",
-      "prompt": "In which movie does Bud Abbott â€œprove to Lou Costello that 13 x 7 = 28?",
+      "prompt": "In which movie does Bud Abbott “prove to Lou Costello that 13 x 7 = 28?",
       "options": [
         "Splinters in the Navy",
         "Youre in the Navy",
@@ -15215,8 +15311,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0852",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0852-Ec242af006e",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0852",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L4080"
+      }
     },
     {
       "id": "TECH-0854",
@@ -17091,14 +17193,14 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0955",
+      "id": "TECH-0955-E2555bc7261",
       "category": "Technology",
       "prompt": "There are seven tall buildings in Moscow, regarded as typical examples of Stalinist Architecture. What are these similarly designed buildings referred to?",
       "options": [
-        "â€˜Stalinâ€™s Seven Wondersâ€™",
-        "â€˜Stalinâ€™s Seven Giantsâ€™",
-        "â€˜Stalinâ€™s Seven Sistersâ€™",
-        "â€˜Stalinâ€™s Seven Brothersâ€™"
+        "‘Stalin’s Seven Wonders’",
+        "‘Stalin’s Seven Giants’",
+        "‘Stalin’s Seven Sisters’",
+        "‘Stalin’s Seven Brothers’"
       ],
       "correctIndex": 2,
       "difficulty": "hard",
@@ -17111,8 +17213,14 @@
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0955",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0955-E2555bc7261",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "TECH-0955",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L4017"
+      }
     },
     {
       "id": "TECH-0957",

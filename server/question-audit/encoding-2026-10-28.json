@@ -1,0 +1,1010 @@
+{
+  "schema": 1,
+  "reviewedAt": "2026-10-28",
+  "dateBasis": "America/Detroit",
+  "reviewKind": "internal-source-byte-encoding-review",
+  "primaryFactualReview": false,
+  "independentReview": false,
+  "sourceRepository": "uberspot/OpenTriviaQA",
+  "sourceSnapshot": "dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9",
+  "sourceLicense": "CC BY-SA 4.0",
+  "sources": [
+    {
+      "path": "categories/science-technology",
+      "commit": "dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9",
+      "bytes": 443701,
+      "gitBlobSha": "c544a1f1685323e6b37c85eb9d7d3bc7ece6777a",
+      "sha256": "50663ee5b9db905914f2706d238a369aa5a354dbe1dbaffa919b619bd4ec123f"
+    },
+    {
+      "path": "categories/history",
+      "commit": "dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9",
+      "bytes": 345374,
+      "gitBlobSha": "0f51a35097ff285ec82188c5eee3761bd704d3df",
+      "sha256": "ecd250a6d8465b61f47ccf36bd5275002e70ffc45faff1a1ca6b7894dbb19e10"
+    },
+    {
+      "path": "categories/movies",
+      "commit": "dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9",
+      "bytes": 838840,
+      "gitBlobSha": "7d913917ecb5d6fd57b63458c9257ffbc6b71fb8",
+      "sha256": "774945aa764551247a81ca50404e869bd09175534eee2ad8f920485f0442b6e8"
+    },
+    {
+      "path": "categories/people",
+      "commit": "dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9",
+      "bytes": 524248,
+      "gitBlobSha": "530fdace51dbb671afdb25b79ace0a5f12f5a830",
+      "sha256": "6765818b150e06d935fac29b06657b4aec8272d1a57a37f88e580617954ecdd2"
+    },
+    {
+      "path": "categories/general",
+      "commit": "dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9",
+      "bytes": 583903,
+      "gitBlobSha": "3d0130f7ee7fd234fb88896b8a1759149ee8bcdb",
+      "sha256": "09e75c1ce899a7699cd185a83bcf348328bdaa2ec97f70ef6fb0deca06ff17ec"
+    },
+    {
+      "path": "categories/video-games",
+      "commit": "dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9",
+      "bytes": 88599,
+      "gitBlobSha": "461bac6e3f312f46c42986d8fc85e94443fa32bc",
+      "sha256": "a174159be081b863cc13148e424fb9a65491b355f1abe568e52908718d88f86b"
+    },
+    {
+      "path": "LICENSE",
+      "commit": "dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9",
+      "bytes": 18474,
+      "gitBlobSha": "f20da5ef3be5606542da8dc0c3bc7d08afe52f95",
+      "sha256": "a35df1c4e30bcdf54c34b2491afca852d2167d4f532e8ef4c4f5786365438c8a"
+    }
+  ],
+  "scope": "All 76 original encoding candidates plus one additional Polish-name case caught by the broader byte-sequence guard. Raw publisher stems/options/key independently decode as strict UTF-8; earlier Windows-1252/Latin-1 misdecoding is reproduced. One exact duplicate exposed by decoding is consolidated. No factual, wording, category or difficulty certification.",
+  "items": [
+    {
+      "category": "technology",
+      "oldId": "TECH-0010",
+      "newId": "TECH-0010-Ebfe413e552",
+      "oldGradingHash": "d30ec59db8562ca25db93634740539a1c6a8b64dcd4a1938da4e7580bef470d1",
+      "newGradingHash": "bfe413e55282c727fb3486f21ed7057f58e5a7b34b65eaeb43c24b2dd383a12c",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L10258",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0079",
+      "newId": "TECH-0079-Ee61689b6ff",
+      "oldGradingHash": "4b8c14cf9e7d2d867c87fcfb28485cb10eb69254b76bb110eaef02e136d66b04",
+      "newGradingHash": "e61689b6ffb0da4bc6a77ee073737b895e0f93f2b9da66f94d2dffc705ec7b39",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L10634",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0124",
+      "newId": "TECH-0124-Eb80fe832c8",
+      "oldGradingHash": "d607795729edca1d40188d9c085bc8de045f26e6bb5ad5d10b9e0d931db5d48a",
+      "newGradingHash": "b80fe832c8c1365dc1ff1853238399b20b8effc8337745209bec05e9f7faba52",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L13048",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[2]"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0174",
+      "newId": "TECH-0174-E4abb12bd63",
+      "oldGradingHash": "2cdb6c7f7e6ae8cb968b2b729d0cc17abc014ea5584b75bf547b1ff5dc491147",
+      "newGradingHash": "4abb12bd63904254117b34ce106ce623d9ba0cb3a2dc40307445be8feb9405d0",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L696",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0201",
+      "newId": "TECH-0201-E186e38b3b9",
+      "oldGradingHash": "b02d3fd2eab486259b8d40eccd743c45ef64ed62beacb66a1378019440bd3108",
+      "newGradingHash": "186e38b3b95ef965380764fb3eaab849fff4c47a2241ba42a22b49c61cf34d31",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L4155",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0239",
+      "newId": "TECH-0239-E6b8ffbe592",
+      "oldGradingHash": "2286b558dbb065159f7fc6c5d347cf28e75b755cda1c626729da8325a8c98979",
+      "newGradingHash": "6b8ffbe592d6d08c1fac6695460e8d7b32af5249bf90dd1df1bf1ce523cca324",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L5817",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt",
+        "options[3]"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0426",
+      "newId": "TECH-0426-E385e5c0e0b",
+      "oldGradingHash": "0c5f2147cf290fd3a3a17e381f6308aeb2e4ceb03b890cd3d8504c3be1a3c1fc",
+      "newGradingHash": "385e5c0e0b9b2d74f1322b2280010e07c2bf3504a0f2528882ec272861273d31",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L13444",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt",
+        "options[3]"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0440",
+      "newId": "TECH-0440-E63a1aad4fc",
+      "oldGradingHash": "48b79965b8a02ecfbb5c37161bbe4f7604e954d811e09a266f715fe62adab32c",
+      "newGradingHash": "63a1aad4fcdc4229a2927955118d71e021c1765d75741cb4cc7c6da350db2c72",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L4609",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0455",
+      "newId": "TECH-0455-E555c051c3a",
+      "oldGradingHash": "2c867aa6ef4b888a456b60ae2f8f1434da37467bfd94e40c010aa482229c6075",
+      "newGradingHash": "555c051c3aa670d1682918b994e4937de7715cdfa0ad5064af5f1d17e439eb6b",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L3982",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0535",
+      "newId": "TECH-0535-E54cd5d5c7f",
+      "oldGradingHash": "6114279309d00671562036988bfa5f94c6b319ac06994fa568848bf3ec04ed2b",
+      "newGradingHash": "54cd5d5c7ff97d32911ec0ab4a01876aed2d40652c919c02b6bbf4f0bb5a9291",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L14044",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0553",
+      "newId": "TECH-0553-E53538f23ee",
+      "oldGradingHash": "a32d5213b5df105308fa5d5b2174f5e27fdfbf8891ba0d251ecf2b384a672df0",
+      "newGradingHash": "53538f23ee606e46f82593bf0ff5bdba991f0c77ad6f9ec5e5cc2d6c44e5d518",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L2695",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0566",
+      "newId": "TECH-0566-E8e6fd50f9e",
+      "oldGradingHash": "ed212e41b29efa4c70ad1092d4bcc66ad5cce9067ff4d13cb20a6f398858661d",
+      "newGradingHash": "8e6fd50f9e221494eddc985171e3a5a5edad41c033cd136eaa2eb9e409ba35b2",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L12587",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0569",
+      "newId": "TECH-0569-E82c58bfb47",
+      "oldGradingHash": "cf17a885a5a3b71bddaa240cc5ccdf46d04072499e4425d26e2d4d8e4b7af7ec",
+      "newGradingHash": "82c58bfb4787e058ad3fa57d17119ed406e8a2903e1808a8038b1a09689e8746",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L8967",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[3]"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0601",
+      "newId": "TECH-0601-E9824b18701",
+      "oldGradingHash": "1e8cfd8e1523b84fc76db89e9d94b758d7f37ed5ba6f4eaf38d389d89f07d7f5",
+      "newGradingHash": "9824b18701501c3253e28d43582df0a15d38c0f8cc8b8dcca9e813fa84d41b1d",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L15138",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0640",
+      "newId": "TECH-0640-E18e13e7c34",
+      "oldGradingHash": "3ad0bfe6cb05b6d7212e4bb897232b986810a551f4af07efcbd478d44add016e",
+      "newGradingHash": "18e13e7c34002a9cac1e2e02ae9ea2bd0e25a90e6e5f54517c5480be18b3d574",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L5749",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0731",
+      "newId": "TECH-0731-E462b0b5d99",
+      "oldGradingHash": "ff99a3aab6cf41bd0ed58983c3d7767a0e7445b7181795b7d9eba4a80c7e0dae",
+      "newGradingHash": "462b0b5d998db1a465fdacf03a9797603cc97d8b2b69495534ef99acc195aa7b",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L13486",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0852",
+      "newId": "TECH-0852-Ec242af006e",
+      "oldGradingHash": "913d19f0602cf1b54acf06ba2f12c6788458a695e37161c9db23381ea96235b8",
+      "newGradingHash": "c242af006ec33372d2e201202c87043a2c1b06f77ccbfacd5b1736a6a315fe8b",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L4080",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "technology",
+      "oldId": "TECH-0955",
+      "newId": "TECH-0955-E2555bc7261",
+      "oldGradingHash": "084337403137adfaa8787c6f8e484abc33ce2afbec03dc95f8eb34c2fd99caba",
+      "newGradingHash": "2555bc7261461a0a73850f1d49942f45472cfe1b5fdfe1931d6e244193b7ebbe",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology#L4017",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[0]",
+        "options[1]",
+        "options[2]",
+        "options[3]"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0027",
+      "newId": "HIST-0027-E569cb35754",
+      "oldGradingHash": "bae2799f1acbb3abd0e91705371182990c1d4eb5380b42aed406e953de18a8c0",
+      "newGradingHash": "569cb3575423855e6814a99151e78adad25892742646ef76a08638a392318a44",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L2297",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0082",
+      "newId": "HIST-0082-E3e2d7813c4",
+      "oldGradingHash": "a106dc5a4e64f1fa8ed87c4786aca2dfa88cdbd94ec4c25477fe96485c5d21bf",
+      "newGradingHash": "3e2d7813c4b83a120b5c72e8458ed667e4865535f5ac68abb942657050fdc089",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L3889",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0116",
+      "newId": "HIST-0116-Ed149fa4f23",
+      "oldGradingHash": "3fea13d9123cd9ccbd1f84fb8c0b8b2f6ef7c8d6666bc03db24b779ea438729a",
+      "newGradingHash": "d149fa4f23a228dba31889fc798acec3a14b8f576e12ebe70dda3bc71ff56fc7",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L7369",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[1]"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0130",
+      "newId": "HIST-0130-E7cc410a749",
+      "oldGradingHash": "1723cd1a353acea183173a1c7474c2f682b29aafafffb785cffe9413cef0de5d",
+      "newGradingHash": "7cc410a749804b85efd93ace9730d931037740349f37fcd04c05ffb1dad0373e",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L6907",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0362",
+      "newId": "HIST-0362-E12dd29438e",
+      "oldGradingHash": "4caf114d0d9d732eb66bb161a89a63f7dfa8fc226d858fa6156ea59b5d70f564",
+      "newGradingHash": "12dd29438eef4c86daa23cb0558c55d88d3a55a92f6535e391a451c8b61c3d6c",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L10768",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0446",
+      "newId": "HIST-0446-Ef1f7bc7b39",
+      "oldGradingHash": "e9e1963228ae0e25471dac9a36dc27289b0decaa2df1144c16fa7697a7f3e627",
+      "newGradingHash": "f1f7bc7b3957259af20102b6e1077f45041b664ede130246e0e78acae7ffce86",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L1492",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0465",
+      "newId": "HIST-0465-E35be54b60b",
+      "oldGradingHash": "d90be30387b6b1e8100202a552cb3f8ca1d292144d47e0414f7219f50839fed0",
+      "newGradingHash": "35be54b60b18f271a357812d1071a42dccc146667f579aec2b3533d535ae1217",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L4053",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt",
+        "options[0]",
+        "options[2]"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0512",
+      "newId": "HIST-0512-E8fa9555f5a",
+      "oldGradingHash": "368084d92c05a311bad1d40e4df27192fed150b08d5cd3674ef5c8e4b0c56141",
+      "newGradingHash": "8fa9555f5ae93d19a373302755f1c0a023002af738f38593b1b002d442e90d3d",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L9535",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0515",
+      "newId": "HIST-0515-Ecef9b70e5a",
+      "oldGradingHash": "a0455a3364a95b08ceeb9ec8fc7f06e3f15a53409534caef2e9d23806bcfa07d",
+      "newGradingHash": "cef9b70e5a34ec8e8d85928dd24a6d3c53b28875f9571391c890b4606880470b",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L1499",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[2]"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0567",
+      "newId": "HIST-0567-Ec5a1c6fd9e",
+      "oldGradingHash": "81385f6068de03a35a809c448f4048d845a539a0d9acd24d646cdb13cdc4fd8e",
+      "newGradingHash": "c5a1c6fd9ef5435b7d83d0e10d761ba6b582613b861e8f728b83b863cb88b483",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L2795",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0607",
+      "newId": "HIST-0607-E2297c9adda",
+      "oldGradingHash": "b636a588f71c3fd4f90aa2153b9dc6a80c75c12e4aadbbf3b6247259970750df",
+      "newGradingHash": "2297c9addafb450072e832ce14c64746f9a8d1e7f16c2dcae201ce9cc5413b1f",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L9577",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[2]"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0735",
+      "newId": "HIST-0735-E1257c4d825",
+      "oldGradingHash": "f334da6774201f65d92f6b5b6cc21c66cfc65ca33708b400635417c0b3e2ac94",
+      "newGradingHash": "1257c4d8256654fa7a653aa0cc1e52194eaa73dff93430173fbede5e60b56104",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L2330",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0759",
+      "newId": "HIST-0759-Ea69b9ab6c7",
+      "oldGradingHash": "504a27acb1f07c7db6b55663508402900475b43153bf687290486dd20257a798",
+      "newGradingHash": "a69b9ab6c7f56ca8e567c83357985dacbffef76ecee14b0b9b35472c829b8bd9",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L2311",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0818",
+      "newId": "HIST-0818-E417d644072",
+      "oldGradingHash": "03a85cfe7bdcf36c4ac2e596a74f57df4a258c9c52084dac8703e21dd3e341ec",
+      "newGradingHash": "417d644072e6d8d72364639996c9d71945a8b308c62efadf12c0d13ea52d0455",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L7523",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0864",
+      "newId": "HIST-0864-Efd85dd9022",
+      "oldGradingHash": "17ee8ffd32a5fce27c4d2eba9b7f87f373e91e29e7c8adbdcd93cd9aca42e7c4",
+      "newGradingHash": "fd85dd90223924607af16e22bebdccdb022f1c1613a5410254dc01eebee27c9d",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L802",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0976",
+      "newId": "HIST-0976-E2e07b078fb",
+      "oldGradingHash": "d959db88bc0479f37d69ac4a23901b53d6e1d880480635d01523a0794c39a9d9",
+      "newGradingHash": "2e07b078fb4c9b41269193710d6d311f036627774e976d6059fc6c66d547605b",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L2147",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "video-games",
+      "oldId": "VG-0528",
+      "newId": "VG-0528-E86ecbf44c7",
+      "oldGradingHash": "c0fd9b138929a81870ee59d082b755a8945e02c5dccfe902e399c73e0a15eb9f",
+      "newGradingHash": "86ecbf44c722fd5f696c0652f6515eae6f2944b7136896ab7269122351b89fa7",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/video-games#L1583",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[1]"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0042",
+      "newId": "MOV-0042-E2ff05bff32",
+      "oldGradingHash": "d1d3731689fbe3f2226a04b50a17a043747b13c958520c3f76228a653c271443",
+      "newGradingHash": "2ff05bff326af4cb3a6e70eff935dfef03aed44bd3eb7d0dfbe15cf1c5e2f2fb",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L1350",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0046",
+      "newId": "MOV-0046-Ed35d834ea0",
+      "oldGradingHash": "a4e9715973b80e6765d9b10636041b215d27fb44dd04b91e55ca4552c4e1fb99",
+      "newGradingHash": "d35d834ea0e435b430efd60ec0404b536827ca749f72a5e09da1dffa302f7132",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L7267",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0083",
+      "newId": "MOV-0083-Eaa9e3df1d6",
+      "oldGradingHash": "3e1ba72484f04f8985abd53d003463fd7805ea48e3d38af153bf227633394e2c",
+      "newGradingHash": "aa9e3df1d6b2f26ade291b53bdd85dc76a25869799a239a73acd75ac834fd0fb",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L23297",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0104",
+      "newId": "MOV-0104-E2530c79940",
+      "oldGradingHash": "933362b244fe1f425fdcedffbc0ecd9e2e104aceec135684e4898fe5559a4125",
+      "newGradingHash": "2530c7994038835d7982e9e93d5e484621457c84cbfb5263ff377bdbae9aa503",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L6443",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0134",
+      "newId": "MOV-0134-E74e127345d",
+      "oldGradingHash": "6548b4bf68e574aa7c7e973ad28b9f17a38fa6c4e4900940983408d9456959eb",
+      "newGradingHash": "74e127345daabbfabcf6cc77b21a8de2d8d586a2c9102ade204442a565fa6d54",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L28280",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0183",
+      "newId": "MOV-0183-Ede82f21f11",
+      "oldGradingHash": "e142c3c8a8b58bb8333a2a94a4d197e47fbadd0dbe72875487c624b6540a7ea0",
+      "newGradingHash": "de82f21f1162e0a3d29b405ce2cb21167d41f4b3b9b560707d84d0a0339d3765",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L11287",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0211",
+      "newId": "MOV-0211-E72bc59ebf6",
+      "oldGradingHash": "3cf97d3464f9900e755d70926a1ac03398a57bd7380b0194e0a7930f574c5cbc",
+      "newGradingHash": "72bc59ebf68387e91ae4f0186175f36d07b3c7b1e4ad8df0ca26645b7537ab30",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L2219",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0213",
+      "newId": "MOV-0213-E1c76ff0138",
+      "oldGradingHash": "a6476bfaa30e63c10e9f667ddaebed8cb3c7b354c51ad630af6090092c42a2d2",
+      "newGradingHash": "1c76ff013879b6f5f1036bc6379e5346e11b4e06ecb0ade6f271c289804147f8",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L6464",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0224",
+      "newId": "MOV-0224-E12d37f6871",
+      "oldGradingHash": "1b5c3eb446f3b962e7488532bc9fedcd24e6877de0c4fb7f861350cfc0326349",
+      "newGradingHash": "12d37f68711eab51506cb5bdfba2651ae61554428f13c183fb81aa8333692ef9",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L4257",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0264",
+      "newId": "MOV-0264-E1e35120572",
+      "oldGradingHash": "cc30a4db05936c1e08ac6b24b2b1d1e08199c6dff3d66a8d0edabdfbb40d6ea2",
+      "newGradingHash": "1e35120572ec81ebd6eeecb13646246196d56b269d655c9cc276c98d135a3ae5",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L16237",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0278",
+      "newId": "MOV-0278-Ee15d23e15a",
+      "oldGradingHash": "c8577eb59c3b6551be6cb38a2d42a9630e12ef684df0332ed1cf6d7f8188cef0",
+      "newGradingHash": "e15d23e15a83372b1fcfe8de96d4fad48ca4b353d60f06e6de0d86608e62a2e8",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L22967",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0414",
+      "newId": "MOV-0414-E76f4a6a845",
+      "oldGradingHash": "76523e27fc76bc167c9554d90f54b5f0762f175911782f9431aedc1ee6f8d5b5",
+      "newGradingHash": "76f4a6a845ae05642e32cf1ba68372a62f59dc5c6b004f36df17097ff6fb7cc8",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L18046",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[0]"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0433",
+      "newId": "MOV-0433-E3ebab72ded",
+      "oldGradingHash": "f4e8cb3dafbc25aa6c337dcabd13a9e5546ca08c54ca435403a943c904599fa4",
+      "newGradingHash": "3ebab72dedc83b29e23903d13e96fe2d9dbe4546db8ce6915b28af7c0c819467",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L11315",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0528",
+      "newId": "MOV-0528-E116237159d",
+      "oldGradingHash": "33ad898b1a3a0258b8d500a0ee17e47abdf6b83b9b30d81b815f4bc57bbafbef",
+      "newGradingHash": "116237159dc6ab7539b5f10a087fa2060017b74e67d13aa1b0e72653d11659c1",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L18072",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0533",
+      "newId": "MOV-0533-E9a10d673af",
+      "oldGradingHash": "1b8fd78536ce38331b96fcb03a1d4818dbc533306fc1c789a49366552ea8e018",
+      "newGradingHash": "9a10d673af7b08fa5800373019c8ef3e8a410a7ec61ae16fa213dad590f510ac",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L6703",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0645",
+      "newId": "MOV-0645-Efdfe987a21",
+      "oldGradingHash": "fc761c7373ba5731bc065754095926475afe3c26fa357f0ece781d4b01fb666e",
+      "newGradingHash": "fdfe987a216932b0e2817cbb18b5a875868fc5bc30d2d2b7a96dfdf06f01c3da",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L22981",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0694",
+      "newId": "MOV-0694-E4071d57bb4",
+      "oldGradingHash": "7b1e58de6f546efb41eadc1f691670e673e30ae042b1386d544cea1ac85b8814",
+      "newGradingHash": "4071d57bb490a3620ac8ccf43955fe4ad752981f2e245264eda087a5b7eb03ff",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L8792",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0700",
+      "newId": "MOV-0700-E45e42921f2",
+      "oldGradingHash": "b76d916d537bd33cadc98c4e71b76e09efd5adbedadfab63224256c5d3c0dcc5",
+      "newGradingHash": "45e42921f2cdbc7d744b37db7ce50cd2e4df54d1f3a10e20b4a8aba6db2e88f4",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L2226",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0756",
+      "newId": "MOV-0756-E7b560645d5",
+      "oldGradingHash": "e4a912969ceaae47b9d489627f1035d9bd66a1810dbb95066d4857d7e637ab52",
+      "newGradingHash": "7b560645d5675059cfe4fe38fafd0ab423d1c6107aff4af3885b44e8368f5f4d",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L16209",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0758",
+      "newId": "MOV-0758-Ef5c27b68e9",
+      "oldGradingHash": "6f199ac83c9ce8d43bb01acc226323564cab00c8a5d7ce2c2d5f5af6768e8193",
+      "newGradingHash": "f5c27b68e9c81c563b42ac2601cfe8d4ed9f5f1d3daa7cfff9a32eb47cde305e",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L18484",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[3]"
+      ]
+    },
+    {
+      "category": "movies",
+      "oldId": "MOV-0808",
+      "newId": "MOV-0808-E434f593954",
+      "oldGradingHash": "39a7bd27746d949ac0e818efc9c8396fdd4fb4d41b61f15b29bc96c84b7dc5cc",
+      "newGradingHash": "434f59395488ba838c4734dcf8acc2c6191b08cf655d837db80ce058553c7a58",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L25408",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0014",
+      "newId": "POP-0014-E31b3e79797",
+      "oldGradingHash": "98e9200b9ff6671a4bbadc8195ddfaa01c5c0b938bffb3df7eda9112a787929b",
+      "newGradingHash": "31b3e797976a9d78cf4fe19e91fc24facbc89d5177449d2a3a733c66347e8f84",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L16946",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0077",
+      "newId": "POP-0077-Ef6b441263a",
+      "oldGradingHash": "43ff7287387c3a7de99b71f91d85202c92fca74df0d65e9a99b84618bd1eb18e",
+      "newGradingHash": "f6b441263ab217b7e79346f514755680b15b58a4c02e583de8a18720d5956efb",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L51",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0115",
+      "newId": "POP-0115-E6199f58b8c",
+      "oldGradingHash": "61a707d16a8f983679f3b6290b4cf539e9da32e67377b7c580aef54855508bb8",
+      "newGradingHash": "6199f58b8cc35867ef058ac92ed123ccb9d24c9c8f7cc9d7dac77457acfeb658",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L16591",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[1]"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0226",
+      "newId": "POP-0226-E6cc07d44e2",
+      "oldGradingHash": "3565a7ae0f8bee0f98fee43d82a50d8c53ce6582262609a7153e03802294ee42",
+      "newGradingHash": "6cc07d44e2e0a6c9d28339c49ff61859481cab3b76ef0d70dd6a04722ad41d50",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L16040",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0274",
+      "newId": "POP-0274-E1d030ea5cd",
+      "oldGradingHash": "bb7462985ae773bd28755e856cf6fa4edb5691628b7de639758efa6a81324992",
+      "newGradingHash": "1d030ea5cd3ffc20ef7fc905a17c0f1e0fa99af3d7f8d48347785fe146f5d20e",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L8446",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[2]"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0363",
+      "newId": "POP-0363-Ed6e82c819a",
+      "oldGradingHash": "6d0810f3118785ae41ed3676b004966f0f431ecfd03d8a63e7f4e36fb7d6fb2b",
+      "newGradingHash": "d6e82c819ab86f3c4297dc1bdbe04af2814f2cdcffb8b1cd28f2a6e2da11adae",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general#L9938",
+      "legacyDecode": "latin-1",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0396",
+      "newId": "POP-0396-E8702e00b45",
+      "oldGradingHash": "9ad2a4ac583d4b56b574d9a54b5e8f7ab64c992cf1145a9c602809dae1601050",
+      "newGradingHash": "8702e00b454022dc8bbbdfee66100a70195ab6798319af1f63cbbab4db598ecd",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L3297",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[0]",
+        "options[2]",
+        "options[3]"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0460",
+      "newId": "POP-0460-Ef2d7d31bda",
+      "oldGradingHash": "9fb7beefebb97e051aeee62684a0b8d556b869549d439ae7d323e8b2e5874cb2",
+      "newGradingHash": "f2d7d31bda064d5f9d7ed3c54be5365cfed96cc204f3f0891664f8c95535b117",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L6424",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[1]"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0533",
+      "newId": "POP-0533-Ec245cc0c75",
+      "oldGradingHash": "12c90e25a5349dc92be47fb6c3f7413ff6d49a94d8756f0fda58131cfb7c39da",
+      "newGradingHash": "c245cc0c75bc842db9a04a80334e0e6ac996d5a873b88846197a9d3fbec4cdf9",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L16403",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0586",
+      "newId": "POP-0586-E5524170c58",
+      "oldGradingHash": "b514314578359bb90a6fad7e8d686920aa329e2e16b1b8d3431473a8b7181508",
+      "newGradingHash": "5524170c5812b08d6d5acf99b9ffd33238494024fb1472dfb8d872ee2c8de16d",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L8370",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0605",
+      "newId": "POP-0605-E3164badeff",
+      "oldGradingHash": "e73f743fde3a95a53020d5ef0ea0dd7bc6693f421d4d3f73a0a7f290233e3484",
+      "newGradingHash": "3164badeff421ae7a209507bce881748393d3f27bd764c6769c4000215e7f4d3",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L8342",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0710",
+      "newId": "POP-0710-E0946e5f0da",
+      "oldGradingHash": "f49c54e28f809bae79ff750d441a0a25e4e41dd8db39aaa9f278fb0213e84d61",
+      "newGradingHash": "0946e5f0daa054cac037b5074fe444d4c69e010893c2b9549788531c085db561",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L4067",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0724",
+      "newId": "POP-0724-E2f99d9e945",
+      "oldGradingHash": "3feb70d3f9317fd29e08e41afa371737bcdff65955d867e83f5ecff8a494bf57",
+      "newGradingHash": "2f99d9e9456fe889fe48d8fe84432fd385974236617e1b0ca1e9dc20c1b39c81",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L2543",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[2]"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0804",
+      "newId": "POP-0804-Eeefd99606e",
+      "oldGradingHash": "46cc3bd18da588823452f29028986a496838823cc308f56651c7936fd1ae6844",
+      "newGradingHash": "eefd99606efe70367160c9e1796f9b0152d53d3d4ca6201e614117b706856262",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L9",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0852",
+      "newId": "POP-0852-Ecae9e3086b",
+      "oldGradingHash": "ca5731e8a99c969fdf8ccd423f27a0b3dc98c6cd87fb2d8b92a521b102a1447b",
+      "newGradingHash": "cae9e3086b934c59f8a833ec4612f9dc34c9b6a55f4f04169ad7648d2fcfbdea",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L3079",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0870",
+      "newId": "POP-0870-E91496d4ac9",
+      "oldGradingHash": "5d6b15ed68036ae14200df88bf8093b2ca57f70e87f42384f355820cc8d799c2",
+      "newGradingHash": "91496d4ac9a788320d0f2e0937da7102d1d2ff19cfecfb356e5e202285a7d451",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general#L5382",
+      "legacyDecode": "latin-1",
+      "changedFields": [
+        "prompt",
+        "options[3]"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0944",
+      "newId": "POP-0944-Ed20cd2e0b6",
+      "oldGradingHash": "cfc00f8f7e35b0b31b689d7a4ed3395a3a5a0e166a31ee415295bd5d316953bd",
+      "newGradingHash": "d20cd2e0b69407cc8fd5363753c6b956877bcf5ec7c397f76816a2a59a8e06cc",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general#L16400",
+      "legacyDecode": "latin-1",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "pop-culture",
+      "oldId": "POP-0972",
+      "newId": "POP-0972-E5df91ee9d2",
+      "oldGradingHash": "53bb030578369ed671670ef7f08463ec10e3259064b90050f87dfeefa7769e77",
+      "newGradingHash": "5df91ee9d292ca53d06f2d447bc6b713bfc882180e41b2b13125eb44a81c4fda",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L9056",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[3]"
+      ]
+    },
+    {
+      "category": "science-fiction",
+      "oldId": "SF-0102",
+      "newId": "SF-0102-Eafeecff552",
+      "oldGradingHash": "48a98d4d32de21b6088e7b046a7172b6be990332b1ce496becac66bc39ccf396",
+      "newGradingHash": "afeecff5522a9f85f7a92dab9ee2ff9377d4c809c810fc9d470910c8acb15745",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L24432",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "prompt"
+      ]
+    },
+    {
+      "category": "science-fiction",
+      "oldId": "SF-0313",
+      "newId": "SF-0313-E0ccbd8c214",
+      "oldGradingHash": "3d0f6ccd5ae3cc02284de8e1f30ecbbb7f35f32f41eab65e967f17c3bf6b4e34",
+      "newGradingHash": "0ccbd8c2143223e69ac123419205adfb3f5fc2a13dbf176d458615654c88b16d",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L1525",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[0]"
+      ]
+    },
+    {
+      "category": "history",
+      "oldId": "HIST-0375",
+      "newId": "HIST-0375-Ee641416959",
+      "oldGradingHash": "c468e2c9d588fd5a737844c7a20cb0144868cb871b681af332f6df3cc7fb4ef1",
+      "newGradingHash": "e64141695935f873a4efa17051d7e423e0e0a0271345ad54102c9f8917446c0b",
+      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L4981",
+      "legacyDecode": "windows-1252",
+      "changedFields": [
+        "options[1]"
+      ]
+    }
+  ],
+  "previousRetiredAliasUpdates": 0,
+  "additionalDuplicateRetirements": [
+    {
+      "category": "history",
+      "retiredId": "HIS-N-2998821ee3cd",
+      "canonicalId": "HIST-0465-E35be54b60b",
+      "oldGradingHash": "8a5847c9739c1eac16704e0f050222c1970ab7ed87c966c54c86b42893b231a6",
+      "canonicalGradingHash": "35be54b60b18f271a357812d1071a42dccc146667f579aec2b3533d535ae1217",
+      "reason": "identical-decoded-stem-and-keyed-answer"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-27",
+  "updatedAt": "2026-10-28",
   "priorityOrder": [
     "P0",
     "P1",
@@ -86,7 +86,7 @@
       "status": "active",
       "title": "Audit every question category before treating counts as quality",
       "owner": "Content maintainer; independent editor unassigned",
-      "nextAction": "Continue BANK-009: triage 76 suspected encoding issues and eight unresolved scope/category pairs, then perform item-by-item primary-source, distractor, wording, category, licensing and difficulty review across all 7,492 remaining drafts. Recheck existing source-checked rows for semantic overlap. Preserve historical keys and canonical exclusions; no count padding. BANK-001 retains 234 Kaspa concepts remaining. Independent editing is unassigned; PILOT-001 private retry and provider recovery remain separate.",
+      "nextAction": "Continue BANK-009: resolve eight scope/category pairs and four contextual time-wording signals, then review all 7,491 remaining drafts against primary evidence, every distractor, wording, context, category, license and difficulty. Preserve historical keys and canonical exclusions. Encoding triage is complete for the 77 reviewed cases; zero encoding signals does not close factual or independent review. Kaspa remains 766 / 234 to target. Keep launch device/account, private Royale retry disposition and provider-recovery acceptance separate.",
       "acceptance": [
         "All active identities have a recorded audit disposition; screening and factual review coverage are distinguished.",
         "Semantic duplicates, inverse/paraphrased facts, key/distractor ambiguity, missing media/context, encoding, taxonomy, dates/editions and licensing are reviewed, including unflagged imports.",
@@ -100,11 +100,20 @@
         "scripts/audit-question-banks.mjs",
         "server/question-audit/decisions-2026-10-27.json",
         "server/question-audit/latest.json",
-        "tests/question-audit.test.js"
+        "tests/question-audit.test.js",
+        "docs/QUESTION-ENCODING-REVIEW-2026-10-28.md",
+        "server/question-audit/encoding-2026-10-28.json",
+        "scripts/question-encoding.mjs",
+        "tests/question-encoding.test.js"
       ],
       "validationEvidence": [
         "Initial full-bank screen: 8,371 baseline active / 864 recorded checks / 7,507 drafts; 33 candidate pairs, 26 within and seven cross-category. Internal triage: 15 duplicate retirements, ten retained distinct objectives, four scope and four category decisions outstanding. Candidate: 8,356 active / 7,492 drafts; 76 encoding and four time-wording signals. No factual certification added.",
-        "Full npm run verify passed with required native Redis 7.4.2: 708 HQ tests plus nine offline signer checks (717 total), zero failures/skips; 311 security assertions and all bank/schema/similarity/audit, catalog/readiness, archive/collection, repository, economy, continuity and site checks. A separate before/after comparison preserved all 12,660 historical grading tuples, all 4,289 prior retired objects and all 8,356 retained active objects. Exactly fifteen duplicate drafts moved to retirement with canonical aliases; no replacements or review-status promotions. Seven focused audit regressions include all fifteen saved-key/later-round exclusions. Site checks cover 41 pages / 882 local links. Independent source review of the remaining 7,492 drafts, encoding repair, taxonomy/scope review and independent editing remain incomplete."
+        "Full npm run verify passed with required native Redis 7.4.2: 708 HQ tests plus nine offline signer checks (717 total), zero failures/skips; 311 security assertions and all bank/schema/similarity/audit, catalog/readiness, archive/collection, repository, economy, continuity and site checks. A separate before/after comparison preserved all 12,660 historical grading tuples, all 4,289 prior retired objects and all 8,356 retained active objects. Exactly fifteen duplicate drafts moved to retirement with canonical aliases; no replacements or review-status promotions. Seven focused audit regressions include all fifteen saved-key/later-round exclusions. Site checks cover 41 pages / 882 local links. Independent source review of the remaining 7,492 drafts, encoding repair, taxonomy/scope review and independent editing remain incomplete.",
+        "October 28 candidate: 77 encoding replacements exactly match strict UTF-8 decoding of the pinned publisher stem/options/key. All seven raw Git source objects match upstream blobs; no factual review status is promoted. The stronger detector found one additional Polish-name case, and decoding exposed one exact History duplicate. Report has zero encoding signals; active 8,355 / recorded checks 864 / drafts 7,491.",
+        "Full npm run verify passed with required native Redis 7.4.2: 711 HQ tests plus nine offline signer checks (720 total), zero failures/skips, 311 security assertions and all bank/schema/similarity/audit, catalog/readiness, archive/collection, repository, economy, continuity and site checks. Ten focused audit/encoding checks pass, including source mismatch, valid Unicode, no factual promotion, all 77 correction hashes/aliases and the exposed duplicate exclusion. Independent before/after comparison preserved all 12,660 historical grading tuples, all 4,304 prior retired objects and 8,278 untouched active rows. Exactly 77 new draft replacements and one additional duplicate retirement; all seven raw source digests/Git blobs and all 77 strict UTF-8 source stem/options/key matches verified. The source register records provenance, not primary factual certification."
+      ],
+      "releaseEvidence": [
+        "PR #176 merged as ff422a5960f3c73c76987e34789c86ad2c83140d with checked tree 557e22fdc6e3d7c24e25281726bb43f8eca4ed5e and head a6b7837d425ffa3d6ddaed9e35cd7041b43cbf37. Exact-head Security verification 40622819782 and Vercel statuses passed; no submitted reviews/threads. Production dpl_5jFJuwqqeVCWH59AXqkiUpwRaEDA is READY on that merge with both canonical domains assigned. Five canonical reads passed: held/no-store readiness at 8,356 active / 864 recorded checks / 7,492 drafts; matching eight-category counts; unchanged 11-topic/537-concept Study; server-only audit path 404; and server-only bank path 404 without internal content. Full 708 HQ plus nine offline signer tests (717), zero failures/skips, and 311 security assertions passed. Fifteen duplicate drafts retired with historical grading/aliases retained. Screening is not independent or complete factual approval."
       ]
     },
     {
@@ -1094,7 +1103,7 @@
       "status": "needs-evidence",
       "title": "Prove the core loop and close the first release scope",
       "owner": "Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned",
-      "nextAction": "First manual GEEKT pilot is complete. Retain its final confirmed export, then close saved-player return/Silk and provider recovery evidence and the remaining scoped beta scenarios. No additional transfer is needed for this receipt.",
+      "nextAction": "Preserve the completed TN10 payout, founder-confirmed same-account phone/Rewards/Quest evidence and deployed desktop Study recovery. Continue BANK-009 content quality; close remaining device/account, independent multiplayer and managed-provider/application recovery evidence before a separately accepted Beta scope. Reconcile private retry disposition before further live-match mutations. No repeat transfer is required.",
       "acceptance": [
         "Owner desk checks the current same-browser Daily proof and native remaining run lifetime without renewing it; expired/ineligible runs cannot enable its queue button.",
         "Return from gameplay or browser back-forward cache refreshes private readiness without automatically queuing, signing or sending; late canceled responses cannot restore private state.",

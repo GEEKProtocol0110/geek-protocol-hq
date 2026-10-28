@@ -2,7 +2,7 @@
   "metadata": {
     "title": "GEEK Protocol — Movies Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-27",
+    "maintainedAt": "2026-10-28",
     "questionCount": 1492,
     "conceptCount": 1492,
     "category": "Movies",
@@ -699,9 +699,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0042",
+      "id": "MOV-0042-E2ff05bff32",
       "category": "Movies",
-      "prompt": "In Lord of the Rings, what is Boromirâ€™s younger brotherâ€™s name?",
+      "prompt": "In Lord of the Rings, what is Boromir’s younger brother’s name?",
       "options": [
         "Haldir",
         "Faramir",
@@ -719,8 +719,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0042",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0042-E2ff05bff32",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0042",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L1350"
+      }
     },
     {
       "id": "MOV-0043",
@@ -795,9 +801,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0046",
+      "id": "MOV-0046-Ed35d834ea0",
       "category": "Movies",
-      "prompt": "Who is James Bonds female ally, in A View to a Kill, who helps him discover the villainâ€™s real purpose?",
+      "prompt": "Who is James Bonds female ally, in A View to a Kill, who helps him discover the villain’s real purpose?",
       "options": [
         "Doris Pritchard",
         "Stacey Sutton",
@@ -815,8 +821,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0046",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0046-Ed35d834ea0",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0046",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L7267"
+      }
     },
     {
       "id": "MOV-0047",
@@ -1539,9 +1551,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0083",
+      "id": "MOV-0083-Eaa9e3df1d6",
       "category": "Movies",
-      "prompt": "In what Best Picture does Peter Lorre, playing a sniveling petty criminal, scream and beg Richard Blaine to save him, as the police arrest him in Blaineâ€™s nightclub and drag him away for murdering two soldiers?",
+      "prompt": "In what Best Picture does Peter Lorre, playing a sniveling petty criminal, scream and beg Richard Blaine to save him, as the police arrest him in Blaine’s nightclub and drag him away for murdering two soldiers?",
       "options": [
         "Lawrence of Arabia",
         "Treasure of the Sierra Madre",
@@ -1559,8 +1571,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0083",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0083-Eaa9e3df1d6",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0083",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L23297"
+      }
     },
     {
       "id": "MOV-0084",
@@ -1947,9 +1965,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0104",
+      "id": "MOV-0104-E2530c79940",
       "category": "Movies",
-      "prompt": "Who said the words Thereâ€™s your gawd-damned dinner!! ?",
+      "prompt": "Who said the words There’s your gawd-damned dinner!! ?",
       "options": [
         "Kevin Spacey in Seven",
         "Mel Brooks in To Be Or Not To Be",
@@ -1967,8 +1985,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0104",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0104-E2530c79940",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0104",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L6443"
+      }
     },
     {
       "id": "MOV-0105",
@@ -2523,9 +2547,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0134",
+      "id": "MOV-0134-E74e127345d",
       "category": "Movies",
-      "prompt": "Who sings the song Tell Me Something I Donâ€™t Know in the movie Another Cinderella Story?",
+      "prompt": "Who sings the song Tell Me Something I Don’t Know in the movie Another Cinderella Story?",
       "options": [
         "Joey and Mary",
         "Mary",
@@ -2543,8 +2567,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0134",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0134-E74e127345d",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0134",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L28280"
+      }
     },
     {
       "id": "MOV-0135",
@@ -3435,9 +3465,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0183",
+      "id": "MOV-0183-Ede82f21f11",
       "category": "Movies",
-      "prompt": "Prewitt squares off with â€œFatsoâ€ Borgnine in a back-ally knife fight and avenges Maggioâ€™s murder in this 1953 movie.",
+      "prompt": "Prewitt squares off with “Fatso” Borgnine in a back-ally knife fight and avenges Maggio’s murder in this 1953 movie.",
       "options": [
         "Bridge Over the River Kwai",
         "The Hustler",
@@ -3455,8 +3485,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0183",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0183-Ede82f21f11",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0183",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L11287"
+      }
     },
     {
       "id": "MOV-0185",
@@ -3867,9 +3903,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0211",
+      "id": "MOV-0211-E72bc59ebf6",
       "category": "Movies",
-      "prompt": "What year did the horror film â€œCarrieâ€ first hit the movie theatres?",
+      "prompt": "What year did the horror film “Carrie” first hit the movie theatres?",
       "options": [
         "1973",
         "1979",
@@ -3887,8 +3923,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0211",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0211-E72bc59ebf6",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0211",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L2219"
+      }
     },
     {
       "id": "MOV-0212",
@@ -3915,9 +3957,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0213",
+      "id": "MOV-0213-E1c76ff0138",
       "category": "Movies",
-      "prompt": "Who delivered these words: â€So youâ€™d better grow eyes in the back of your head cause you wonâ€™t see it coming?",
+      "prompt": "Who delivered these words: ”So you’d better grow eyes in the back of your head cause you won’t see it coming?",
       "options": [
         "Matt Dillon in My Bodyguard",
         "John Travolta in Pulp Fiction",
@@ -3935,8 +3977,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0213",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0213-E1c76ff0138",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0213",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L6464"
+      }
     },
     {
       "id": "MOV-0214",
@@ -4131,9 +4179,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0224",
+      "id": "MOV-0224-E12d37f6871",
       "category": "Movies",
-      "prompt": "The 2007 film 300 was losely based on the ancient Battle of Thermopylae. What does the name â€œThermopylaeâ€ mean translated from Greek?",
+      "prompt": "The 2007 film 300 was losely based on the ancient Battle of Thermopylae. What does the name “Thermopylae” mean translated from Greek?",
       "options": [
         "Gateway of death",
         "Wide gateway",
@@ -4151,8 +4199,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0224",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0224-E12d37f6871",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0224",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L4257"
+      }
     },
     {
       "id": "MOV-0225",
@@ -4899,9 +4953,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0264",
+      "id": "MOV-0264-E1e35120572",
       "category": "Movies",
-      "prompt": "What is the occupation of Jennifer Anistonâ€™s character, Grace, in the 2003 movie â€˜Bruce Almightyâ€™?",
+      "prompt": "What is the occupation of Jennifer Aniston’s character, Grace, in the 2003 movie ‘Bruce Almighty’?",
       "options": [
         "Florist",
         "Waitress",
@@ -4919,8 +4973,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0264",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0264-E1e35120572",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0264",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L16237"
+      }
     },
     {
       "id": "MOV-0265",
@@ -5139,9 +5199,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0278",
+      "id": "MOV-0278-Ee15d23e15a",
       "category": "Movies",
-      "prompt": "A great dog-hater, this villain ranked # 39 on AFIâ€™s list of the 50 top villains, is one of the three from the list coming from an animated film.",
+      "prompt": "A great dog-hater, this villain ranked # 39 on AFI’s list of the 50 top villains, is one of the three from the list coming from an animated film.",
       "options": [
         "The Queen",
         "Cruella De Vil",
@@ -5159,8 +5219,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0278",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0278-Ee15d23e15a",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0278",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L22967"
+      }
     },
     {
       "id": "MOV-0279",
@@ -7563,11 +7629,11 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0414",
+      "id": "MOV-0414-E76f4a6a845",
       "category": "Movies",
       "prompt": "What condition does the brother of Tom Cruises character suffer from in the 1988 Oscar-winning drama movie Rain Man?",
       "options": [
-        "Obsessiveâ€“compulsive disorder",
+        "Obsessive–compulsive disorder",
         "Autism",
         "Schizophrenia",
         "Bipolar disorder"
@@ -7583,8 +7649,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0414",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0414-E76f4a6a845",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0414",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L18046"
+      }
     },
     {
       "id": "MOV-0416",
@@ -7923,9 +7995,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0433",
+      "id": "MOV-0433-E3ebab72ded",
       "category": "Movies",
-      "prompt": "While playing gin rummy in the final scene of this movie, C.C. Baxter confesses his love for Fran, who simply tells him to â€œShut up and deal.â€",
+      "prompt": "While playing gin rummy in the final scene of this movie, C.C. Baxter confesses his love for Fran, who simply tells him to “Shut up and deal.”",
       "options": [
         "The Apartment",
         "The Hustler",
@@ -7943,8 +8015,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0433",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0433-E3ebab72ded",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0433",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L11315"
+      }
     },
     {
       "id": "MOV-0434",
@@ -9627,9 +9705,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0528",
+      "id": "MOV-0528-E116237159d",
       "category": "Movies",
-      "prompt": "How many Godzilla movies were produced in Japan from the movieâ€™s debut in 1954 to 2007?",
+      "prompt": "How many Godzilla movies were produced in Japan from the movie’s debut in 1954 to 2007?",
       "options": [
         "12",
         "20",
@@ -9647,8 +9725,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0528",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0528-E116237159d",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0528",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L18072"
+      }
     },
     {
       "id": "MOV-0529",
@@ -9747,9 +9831,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0533",
+      "id": "MOV-0533-E9a10d673af",
       "category": "Movies",
-      "prompt": "This duo had a critical success in 2002â€™s Unfaithful. In 2008 they sparkle in â€œNights in Rodanthe.",
+      "prompt": "This duo had a critical success in 2002’s Unfaithful. In 2008 they sparkle in “Nights in Rodanthe.",
       "options": [
         "Diane Lane and Richard Gere",
         "Julia Roberts and Richard Gere",
@@ -9767,8 +9851,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0533",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0533-E9a10d673af",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0533",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L6703"
+      }
     },
     {
       "id": "MOV-0534",
@@ -11739,9 +11829,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0645",
+      "id": "MOV-0645-Efdfe987a21",
       "category": "Movies",
-      "prompt": "A fierce eating machine, this creature is one of the few non-humans to appear on AFIâ€™s list of the top movie villains, at # 18.",
+      "prompt": "A fierce eating machine, this creature is one of the few non-humans to appear on AFI’s list of the top movie villains, at # 18.",
       "options": [
         "The Shark from Jaws",
         "Hal 9000 in 2001: A Space Odyssey",
@@ -11759,8 +11849,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0645",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0645-Efdfe987a21",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0645",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L22981"
+      }
     },
     {
       "id": "MOV-0647",
@@ -12555,9 +12651,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0694",
+      "id": "MOV-0694-E4071d57bb4",
       "category": "Movies",
-      "prompt": "In the film Napoleon Dynamite, Pedro is Napoleonâ€™s best friend. What was Pedros last name?",
+      "prompt": "In the film Napoleon Dynamite, Pedro is Napoleon’s best friend. What was Pedros last name?",
       "options": [
         "Rodriguez",
         "Sanchez",
@@ -12575,8 +12671,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0694",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0694-E4071d57bb4",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0694",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L8792"
+      }
     },
     {
       "id": "MOV-0695",
@@ -12699,9 +12801,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0700",
+      "id": "MOV-0700-E45e42921f2",
       "category": "Movies",
-      "prompt": "What actress played the part of Carrie White in the movie â€œCarrieâ€?",
+      "prompt": "What actress played the part of Carrie White in the movie “Carrie”?",
       "options": [
         "Betty Buckley",
         "Amy Irving",
@@ -12719,8 +12821,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0700",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0700-E45e42921f2",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0700",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L2226"
+      }
     },
     {
       "id": "MOV-0701",
@@ -13731,9 +13839,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0756",
+      "id": "MOV-0756-E7b560645d5",
       "category": "Movies",
-      "prompt": "What was the first question that Bruce asked God at the beginning of the movie â€˜Bruce Almightyâ€™?",
+      "prompt": "What was the first question that Bruce asked God at the beginning of the movie ‘Bruce Almighty’?",
       "options": [
         "Are you there at all, Lord?",
         "Are you kidding me?",
@@ -13751,18 +13859,24 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0756",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0756-E7b560645d5",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0756",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L16209"
+      }
     },
     {
-      "id": "MOV-0758",
+      "id": "MOV-0758-Ef5c27b68e9",
       "category": "Movies",
       "prompt": "What Academy Award-winning actress is not correctly matched with the Woody Allen movie in which she appeared?",
       "options": [
         "Mira Sorvino - Mighty Aphrodite",
         "Meryl Streep - Hannah and Her Sisters",
         "Diane Keaton - Manhattan",
-        "PenÃ©lope Cruz - Vicky Cristina Barcelona"
+        "Penélope Cruz - Vicky Cristina Barcelona"
       ],
       "correctIndex": 1,
       "difficulty": "medium",
@@ -13775,8 +13889,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0758",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0758-Ef5c27b68e9",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0758",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L18484"
+      }
     },
     {
       "id": "MOV-0760",
@@ -14667,9 +14787,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "MOV-0808",
+      "id": "MOV-0808-E434f593954",
       "category": "Movies",
-      "prompt": "In the movie Pretty in Pink, Andieâ€™s love interest finally makes the big move on her. How does he make it?",
+      "prompt": "In the movie Pretty in Pink, Andie’s love interest finally makes the big move on her. How does he make it?",
       "options": [
         "By sending a message through a friend",
         "By calling her on the phone",
@@ -14687,8 +14807,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "MOV-0808",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "MOV-0808-E434f593954",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "MOV-0808",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L25408"
+      }
     },
     {
       "id": "MOV-0809",

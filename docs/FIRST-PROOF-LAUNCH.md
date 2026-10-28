@@ -4,6 +4,10 @@ October 18, 2026. LAUNCH-001 / DR-023. HQ is already public as **Alpha**. The im
 
 This work began from historical runtime #150 at `0654aa4ed5c4a0ebfa6c248b3f2607363379e4fb`. The change is now released as #151; its exact CI, merge and deployment are recorded below. See [maintained state](continuity/CURRENT-STATE.md) for the latest release.
 
+## Current launch continuation — October 28
+
+The first TN10 payout and later founder phone/Rewards/Quest confirmations are preserved, along with deployed desktop Study recovery. Do not repeat a completed payment. Release #176 is the current whole-bank audit checkpoint; the [encoding-review candidate](QUESTION-ENCODING-REVIEW-2026-10-28.md) closes 77 text cases while factual review remains open. The [current launch matrix](FREE-BETA-READINESS.md#current-continuation--october-28) distinguishes content work, independent/device/account multiplayer evidence and provider/application recovery. Public Alpha and all economic holds remain. The dated October 18 scope and procedures below are historical, not fresh instructions to redo accepted evidence.
+
 ## Scope that can be proved now
 
 | Path | Included | Evidence still needed |
