@@ -18,11 +18,11 @@
     "evidence": "PR #155 merged October 23, 2026 at 12:21:55 Detroit (16:21:55 UTC) as 1476aa2d1a4469ed1eed30d9c72f94ca50e8bd4f. Final checked head ee1ce12bb3e961e2013d56a4dda29855a14d1810/tree d8d0e4fd94564ba79cd7559ce7e4add355587a0b matches local 4da8aeb3dee54ed73e1172c16afa5f5206a38fa2; the merge has that same tree. Exact-head GitHub Security verification 39964886728 succeeded; no submitted reviews or inline threads were present before merge. Full local verification passed 603 HQ tests plus four offline signer tests, zero failures/skips, real Redis 7.0.15, 311 security assertions and all supporting checks. Production dpl_7FYxuRoLQ6VVpB5PLdnHGqFwaxzk is READY on the exact merge with both canonical domains assigned. Five no-redirect canonical checks passed under 15-second request bounds: exact status-client bytes, Play HTML referencing the client, private player 401, unauthorized worker POST 401 and private owner-auto 401; all protected responses were private/no-store. The earlier protected-preview private-fetch failure remains provider authentication evidence, not application acceptance. Actual-phone status recovery and actual automatic transfer remain unproved. Fresh project search found no geek-geekt-testnet-worker; creation in the existing Vercel team again returned 403 forbidden/no project-create permission. Neither vercel nor vc CLI is installed. No signer project, key, environment value, test funding or automatic payment was created. Mainnet/CCE/ownership holds remain unchanged."
   },
   "questionCheckpoint": {
-    "active": 8363,
-    "reviewed": 856,
-    "remaining": 7144,
-    "kaspaActive": 758,
-    "kaspaReviewed": 758,
+    "active": 8371,
+    "reviewed": 864,
+    "remaining": 7136,
+    "kaspaActive": 766,
+    "kaspaReviewed": 766,
     "studyConcepts": 537,
     "questChapters": 4
   },
@@ -37,10 +37,10 @@
   "currentWork": {
     "id": "BANK-001",
     "status": "active",
-    "description": "BANK-001 adds eight internally source-checked node-diagnostics concepts at this source checkpoint: 758 Kaspa / 8,363 active / 856 review records. Introductory Study remains 537 concepts. Full local verification and pinned-source/item-hash checks passed; exact CI/merge/deployment evidence is recorded separately in the scoped review record. Old question files are preserved. The unreconciled Royale retry limitation remains under PILOT-001."
+    "description": "BANK-001 adds eight internally source-checked RPC data-boundary concepts at this source checkpoint: 766 Kaspa / 8,371 active / 864 review records. Introductory Study remains 537 concepts. The prior 758-concept batch is merged/deployed in #174. Full local verification and source/item compatibility checks passed; exact CI/release evidence is recorded separately; independent editorial review and the PILOT-001 private retry limitation remain open."
   },
   "nextTask": "BANK-001",
-  "nextAction": "Record the exact release of the checked node-diagnostics batch and verify aggregate count/readiness delivery, then continue the remaining 242 distinct Kaspa concepts toward 1,000. Preserve prior answer-key bytes, the introductory Study pool and all economic holds. Independent editorial review remains unassigned; the Royale retry must be reconciled before any further live-match mutation.",
+  "nextAction": "Release the checked RPC data-boundaries batch with exact CI/tree/deployment and aggregate delivery evidence, then continue the remaining 234 distinct Kaspa concepts toward 1,000. Preserve prior answer-key bytes, the 537-concept introductory Study pool and all economic holds. Independent editorial review remains unassigned; reconcile the private Royale retry before further live-match mutations.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

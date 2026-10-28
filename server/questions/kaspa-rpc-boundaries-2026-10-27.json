@@ -1,0 +1,254 @@
+{
+  "metadata": {
+    "title": "GEEK Protocol — Kaspa RPC data boundaries",
+    "version": "1.0.0",
+    "maintainedAt": "2026-10-27",
+    "questionCount": 8,
+    "conceptCount": 8,
+    "category": "Kaspa",
+    "difficultyDistribution": {
+      "medium": 5,
+      "easy": 2,
+      "hard": 1
+    },
+    "correctIndexDistribution": {
+      "0": 2,
+      "1": 2,
+      "2": 2,
+      "3": 2
+    },
+    "schema": "correctIndex is zero-based; options contains four distinct strings",
+    "sourceSnapshot": "01b532e8b553523216471682649693af92f0fd16",
+    "reviewNotice": "Internal review of the pinned Rusty Kaspa implementation. No current-network or universal API capability claim. Advanced RPC concepts remain outside introductory Study; independent editorial review is unassigned and difficulty is provisional.",
+    "attribution": "Original Geek Protocol questions referencing ISC-licensed Rusty Kaspa sources; no source prose or code imported.",
+    "licenses": [
+      "MIT"
+    ]
+  },
+  "questions": [
+    {
+      "id": "K766-0001",
+      "conceptId": "K766-0001",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Data Boundaries",
+      "prompt": "In the cited Kaspa GetBlocks handler, which flag combination returns InvalidGetBlocksRequest?",
+      "options": [
+        "include_transactions true with include_blocks false",
+        "include_transactions false with include_blocks true",
+        "Both flags false",
+        "Both flags true"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "Transactions cannot be requested without their containing blocks in this handler. The rejected flag combination is a request-validation error, not an empty successful result.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L527",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "rpc-data-boundaries"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    },
+    {
+      "id": "K766-0002",
+      "conceptId": "K766-0002",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Data Boundaries",
+      "prompt": "A client pages from an existing low_hash with the cited Kaspa GetBlocks handler. How is that starting hash treated?",
+      "options": [
+        "It is always excluded from the response",
+        "It is included at the beginning of block_hashes",
+        "It is replaced by an unrelated random hash",
+        "It is returned only if it is a transaction ID"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The handler prepends low_hash to the returned hash sequence. A paging client must account for this inclusive cursor rather than assume every returned hash is new.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L565",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "rpc-data-boundaries"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    },
+    {
+      "id": "K766-0003",
+      "conceptId": "K766-0003",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Data Boundaries",
+      "prompt": "What does the cited Kaspa GetBalanceByAddress handler return when the node has no UTXO index enabled?",
+      "options": [
+        "A successful zero balance for every address",
+        "The total supply as the address balance",
+        "A NoUtxoIndex error",
+        "An instruction to reveal the wallet seed"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "The handler checks the node capability before reading balances and returns NoUtxoIndex when it is absent. An unavailable balance query must not be displayed as a successful zero balance.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L811",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "rpc-data-boundaries"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    },
+    {
+      "id": "K766-0004",
+      "conceptId": "K766-0004",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Data Boundaries",
+      "prompt": "With its UTXO index enabled, how does the cited Kaspa GetUtxosByAddresses handler respond during a transitional IBD state?",
+      "options": [
+        "It silently reports an empty UTXO set",
+        "It returns a wallet private key",
+        "It disables consensus validation for the query",
+        "It returns ConsensusInTransitionalIbdState"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The handler explicitly refuses this read during the unstable initial-block-download transition. Having an index enabled does not remove the separate consistency guard.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L796",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "rpc-data-boundaries"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    },
+    {
+      "id": "K766-0005",
+      "conceptId": "K766-0005",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Data Boundaries",
+      "prompt": "Which assumption does the cited Kaspa GetUtxosByAddresses implementation explicitly warn clients against?",
+      "options": [
+        "Assuming returned entries follow the requested address order",
+        "Reading the address attached to each returned entry",
+        "Allowing an address to have multiple unspent outputs",
+        "Recognizing an outpoint by transaction ID and output index"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "The source notes that its entry order does not match the request-address order. Clients should associate results using their identifying fields instead of positional pairing.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L801",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "rpc-data-boundaries"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    },
+    {
+      "id": "K766-0006",
+      "conceptId": "K766-0006",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Data Boundaries",
+      "prompt": "In the cited Kaspa GetBalancesByAddresses handler, what balance value is built when an address has no entry in the returned balance map?",
+      "options": [
+        "An automatic numeric zero",
+        "None, preserving an absent optional value",
+        "The maximum native coin supply",
+        "The balance of the preceding address"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The lookup uses get followed by copied, so a missing map key produces None. This handler does not replace that absence with zero or prove a particular reason for the missing entry.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L846",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "rpc-data-boundaries"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    },
+    {
+      "id": "K766-0007",
+      "conceptId": "K766-0007",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Data Boundaries",
+      "prompt": "When does the cited Kaspa SubmitTransaction handler pass Orphan::Allowed to transaction submission?",
+      "options": [
+        "Whenever any RPC client is connected",
+        "Whenever the transaction pays a fee",
+        "Only when unsafe RPC and the request allow_orphan flag are both enabled",
+        "Only when both of those settings are disabled"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The effective permission is the logical AND of the node setting and request flag. In safe RPC mode a requested allowance becomes Orphan::Forbidden; the permission alone does not guarantee acceptance.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L657",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "rpc-data-boundaries"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    },
+    {
+      "id": "K766-0008",
+      "conceptId": "K766-0008",
+      "category": "Kaspa",
+      "subcategory": "Kaspa RPC Data Boundaries",
+      "prompt": "With unsafe RPC enabled, what happens if the cited EstimateNetworkHashesPerSecond request exceeds the configured pruning depth?",
+      "options": [
+        "The handler reconstructs all pruned history",
+        "The window is silently reduced to one block",
+        "The safe-mode maximum is the only remaining restriction",
+        "The handler still returns WindowSizeExceedingPruningDepth"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "Unsafe RPC removes the separate safe-window restriction, but the next pruning-depth check is unconditional. It does not grant an estimate over a window beyond that configured boundary.",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1078",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-10-27",
+      "tags": [
+        "kaspa",
+        "pinned-implementation",
+        "rpc-data-boundaries"
+      ],
+      "volatile": false,
+      "priority": false,
+      "license": "MIT",
+      "attribution": "Geek Protocol original question referencing ISC-licensed Rusty Kaspa code; source prose and code are not imported."
+    }
+  ]
+}
