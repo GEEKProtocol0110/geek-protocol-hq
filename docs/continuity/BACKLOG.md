@@ -104,7 +104,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Continue BANK-009: triage 76 suspected encoding issues and eight unresolved scope/category pairs, then perform item-by-item primary-source, distractor, wording, category, licensing and difficulty review across all 7,492 remaining drafts. Recheck existing source-checked rows for semantic overlap. Preserve historical keys and canonical exclusions; no count padding. BANK-001 retains 234 Kaspa concepts remaining. Independent editing is unassigned; PILOT-001 private retry and provider recovery remain separate.
+Next action: Continue BANK-009: resolve eight scope/category pairs and four contextual time-wording signals, then review all 7,491 remaining drafts against primary evidence, every distractor, wording, context, category, license and difficulty. Preserve historical keys and canonical exclusions. Encoding triage is complete for the 77 reviewed cases; zero encoding signals does not close factual or independent review. Kaspa remains 766 / 234 to target. Keep launch device/account, private Royale retry disposition and provider-recovery acceptance separate.
 
 Acceptance:
 
@@ -114,7 +114,7 @@ Acceptance:
 - Corrections use new identities; original grading remains lookup-only and duplicate aliases prevent repeated concepts in subsequent rounds.
 - Independent editorial review is assigned and accepted before claiming independent completion; generated coverage, compatibility, tier capacity and public-answer protections pass.
 
-Evidence/specification: [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md), [scripts/audit-question-banks.mjs](../../scripts/audit-question-banks.mjs), [server/question-audit/decisions-2026-10-27.json](../../server/question-audit/decisions-2026-10-27.json), [server/question-audit/latest.json](../../server/question-audit/latest.json), [tests/question-audit.test.js](../../tests/question-audit.test.js).
+Evidence/specification: [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md), [scripts/audit-question-banks.mjs](../../scripts/audit-question-banks.mjs), [server/question-audit/decisions-2026-10-27.json](../../server/question-audit/decisions-2026-10-27.json), [server/question-audit/latest.json](../../server/question-audit/latest.json), [tests/question-audit.test.js](../../tests/question-audit.test.js), [docs/QUESTION-ENCODING-REVIEW-2026-10-28.md](../../docs/QUESTION-ENCODING-REVIEW-2026-10-28.md), [server/question-audit/encoding-2026-10-28.json](../../server/question-audit/encoding-2026-10-28.json), [scripts/question-encoding.mjs](../../scripts/question-encoding.mjs), [tests/question-encoding.test.js](../../tests/question-encoding.test.js).
 
 ## BANK-001: Grow Kaspa toward 1,000 reviewed concepts
 
@@ -721,7 +721,7 @@ Evidence/specification: [docs/CAREER-MASTERY.md](../../docs/CAREER-MASTERY.md), 
 
 **P0 / needs-evidence.** Owner: Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned. Dependencies: none.
 
-Next action: First manual GEEKT pilot is complete. Retain its final confirmed export, then close saved-player return/Silk and provider recovery evidence and the remaining scoped beta scenarios. No additional transfer is needed for this receipt.
+Next action: Preserve the completed TN10 payout, founder-confirmed same-account phone/Rewards/Quest evidence and deployed desktop Study recovery. Continue BANK-009 content quality; close remaining device/account, independent multiplayer and managed-provider/application recovery evidence before a separately accepted Beta scope. Reconcile private retry disposition before further live-match mutations. No repeat transfer is required.
 
 Acceptance:
 

@@ -3,7 +3,7 @@
   "targetPerCategory": 1000,
   "requiredCategories": 8,
   "bankReady": false,
-  "active": 8356,
+  "active": 8355,
   "reviewed": 864,
   "remaining": 7136,
   "categories": [
@@ -90,9 +90,9 @@
     {
       "id": "history",
       "name": "History",
-      "active": 1504,
+      "active": 1503,
       "reviewed": 7,
-      "needsReview": 1497,
+      "needsReview": 1496,
       "target": 1000,
       "remaining": 993,
       "additionalQuestionsNeeded": 0,

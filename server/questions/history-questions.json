@@ -2,17 +2,17 @@
   "metadata": {
     "title": "GEEK Protocol — History Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-27",
-    "questionCount": 1504,
-    "conceptCount": 1504,
+    "maintainedAt": "2026-10-28",
+    "questionCount": 1503,
+    "conceptCount": 1503,
     "category": "History",
     "difficultyDistribution": {
       "easy": 557,
       "medium": 628,
-      "hard": 319
+      "hard": 318
     },
     "correctIndexDistribution": {
-      "0": 397,
+      "0": 396,
       "1": 355,
       "2": 394,
       "3": 358
@@ -459,9 +459,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0027",
+      "id": "HIST-0027-E569cb35754",
       "category": "History",
-      "prompt": "This instrument of torture was thrust into the victimsâ€™ chin and sternum rendering them motionless.",
+      "prompt": "This instrument of torture was thrust into the victims’ chin and sternum rendering them motionless.",
       "options": [
         "The Princes Prod",
         "The Sorcerers Staff",
@@ -479,8 +479,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0027",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0027-E569cb35754",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0027",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L2297"
+      }
     },
     {
       "id": "HIST-0028",
@@ -1395,9 +1401,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0082",
+      "id": "HIST-0082-E3e2d7813c4",
       "category": "History",
-      "prompt": "The following words belong to which famous World War II general: Crete was the grave of the German parachutists.â€?",
+      "prompt": "The following words belong to which famous World War II general: Crete was the grave of the German parachutists.”?",
       "options": [
         "General Henri Giraud",
         "General Kurt Student",
@@ -1415,8 +1421,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0082",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0082-E3e2d7813c4",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0082",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L3889"
+      }
     },
     {
       "id": "HIST-0083",
@@ -1971,12 +1983,12 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0116",
+      "id": "HIST-0116-Ed149fa4f23",
       "category": "History",
       "prompt": "This war, which took place in Europe in the first half of the 17th century, is one of the deadliest conflicts in history.",
       "options": [
         "Franco-Prussian War",
-        "Mexicanâ€“American War",
+        "Mexican–American War",
         "Napoleonic Wars",
         "Thirty Years War"
       ],
@@ -1991,8 +2003,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0116",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0116-Ed149fa4f23",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0116",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L7369"
+      }
     },
     {
       "id": "HIST-0117",
@@ -2211,9 +2229,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0130",
+      "id": "HIST-0130-E7cc410a749",
       "category": "History",
-      "prompt": "In 451, Flavius AÃ«tius, in alliance with the Visigoths, finally defeated Attila the Hun. Where did the famous battle take place?",
+      "prompt": "In 451, Flavius Aëtius, in alliance with the Visigoths, finally defeated Attila the Hun. Where did the famous battle take place?",
       "options": [
         "Near the Volga river",
         "On the Catalaunian Fields",
@@ -2231,8 +2249,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0130",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0130-E7cc410a749",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0130",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L6907"
+      }
     },
     {
       "id": "HIST-0131",
@@ -6243,9 +6267,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0362",
+      "id": "HIST-0362-E12dd29438e",
       "category": "History",
-      "prompt": "If you recall well the performances of these men, it wonâ€™t be hard to guess which one of them holds a patent for a device that allows a performer to lean forward past his center of gravity.",
+      "prompt": "If you recall well the performances of these men, it won’t be hard to guess which one of them holds a patent for a device that allows a performer to lean forward past his center of gravity.",
       "options": [
         "Axl Rose",
         "Michael Jackson",
@@ -6263,8 +6287,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0362",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0362-E12dd29438e",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0362",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L10768"
+      }
     },
     {
       "id": "HIST-0367",
@@ -6459,12 +6489,12 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0375",
+      "id": "HIST-0375-Ee641416959",
       "category": "History",
       "prompt": "Which freedom movement leader was also a writer and dramatist?",
       "options": [
         "Mikhail Gorbatchev",
-        "Lech WaÅ‚Ä™sa",
+        "Lech Wałęsa",
         "Vaclav Havel",
         "Erich Honnecker"
       ],
@@ -6479,8 +6509,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0375",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0375-Ee641416959",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0375",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L4981"
+      }
     },
     {
       "id": "HIST-0376",
@@ -7731,9 +7767,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0446",
+      "id": "HIST-0446-Ef1f7bc7b39",
       "category": "History",
-      "prompt": "On October 16, 1978, the Papal Conclave elected Karol JÃ³zef WojtyÅ‚a, who became known as Pope John Paul II. How old was he when this happened?",
+      "prompt": "On October 16, 1978, the Papal Conclave elected Karol Józef Wojtyła, who became known as Pope John Paul II. How old was he when this happened?",
       "options": [
         "48",
         "58",
@@ -7751,8 +7787,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0446",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0446-Ef1f7bc7b39",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0446",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L1492"
+      }
     },
     {
       "id": "HIST-0447",
@@ -8067,13 +8109,13 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0465",
+      "id": "HIST-0465-E35be54b60b",
       "category": "History",
-      "prompt": "Who was the first wife of NapolÃ©on Bonaparte and the first Empress of the French?",
+      "prompt": "Who was the first wife of Napoléon Bonaparte and the first Empress of the French?",
       "options": [
-        "JosÃ©phine de Beauharnais",
+        "Joséphine de Beauharnais",
         "Marie Louise of Austria",
-        "Louise Catherine ElÃ©onore Denuelle de la Plaigne",
+        "Louise Catherine Eléonore Denuelle de la Plaigne",
         "Marie, Countess Walewski"
       ],
       "correctIndex": 0,
@@ -8087,8 +8129,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0465",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0465-E35be54b60b",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0465",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L4053"
+      }
     },
     {
       "id": "HIST-0466",
@@ -9027,9 +9075,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0512",
+      "id": "HIST-0512-E8fa9555f5a",
       "category": "History",
-      "prompt": "This invention was first used in 1969 at UCLA as a means of communication between engineers and scientists associated with academics or government. It was not available for public use until the 1990â€™s.",
+      "prompt": "This invention was first used in 1969 at UCLA as a means of communication between engineers and scientists associated with academics or government. It was not available for public use until the 1990’s.",
       "options": [
         "E-mails",
         "The Telephone",
@@ -9047,8 +9095,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0512",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0512-E8fa9555f5a",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0512",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L9535"
+      }
     },
     {
       "id": "HIST-0514",
@@ -9075,13 +9129,13 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0515",
+      "id": "HIST-0515-Ecef9b70e5a",
       "category": "History",
       "prompt": "On October 18, 1968, a police raid on John Lennon and Yoko Onos apartment revealed 168 grams of marijuana. This is what happened to Lennon and Ono as a result.",
       "options": [
         "The evidence mysteriously disappeared and the case was dismissed",
         "They were found guilty and were sent to prison",
-        "They plead guilty and were fined Â£150",
+        "They plead guilty and were fined £150",
         "They were found not guilty and released, due to Lennons great contribution to British music"
       ],
       "correctIndex": 2,
@@ -9095,8 +9149,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0515",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0515-Ecef9b70e5a",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0515",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L1499"
+      }
     },
     {
       "id": "HIST-0516",
@@ -9939,9 +9999,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0567",
+      "id": "HIST-0567-Ec5a1c6fd9e",
       "category": "History",
-      "prompt": "The first photograph is considered to be an image produced by the French inventor NicÃ©phore NiÃ©pce, in what year?",
+      "prompt": "The first photograph is considered to be an image produced by the French inventor Nicéphore Niépce, in what year?",
       "options": [
         "1865",
         "1546",
@@ -9959,8 +10019,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0567",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0567-Ec5a1c6fd9e",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0567",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L2795"
+      }
     },
     {
       "id": "HIST-0568",
@@ -10635,13 +10701,13 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0607",
+      "id": "HIST-0607-E2297c9adda",
       "category": "History",
       "prompt": "In 1895, this German physicist invented the use of electromagnetic radiation to take images of bones and organs inside the human body, which later led to the invention of the X-Ray Machine.",
       "options": [
         "Paul Lauterbur",
         "Peter Mansfield",
-        "Wilhelm Conrad RÃ¶ntgen",
+        "Wilhelm Conrad Röntgen",
         "Godfrey Newbold Hounsfield"
       ],
       "correctIndex": 2,
@@ -10655,8 +10721,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0607",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0607-E2297c9adda",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0607",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L9577"
+      }
     },
     {
       "id": "HIST-0608",
@@ -13035,9 +13107,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0735",
+      "id": "HIST-0735-E1257c4d825",
       "category": "History",
-      "prompt": "This device was commonly used on witches who were believed to be carrying the Satanâ€™s child.",
+      "prompt": "This device was commonly used on witches who were believed to be carrying the Satan’s child.",
       "options": [
         "The pear",
         "The sword",
@@ -13055,8 +13127,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0735",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0735-E1257c4d825",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0735",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L2330"
+      }
     },
     {
       "id": "HIST-0736",
@@ -13539,9 +13617,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0759",
+      "id": "HIST-0759-Ea69b9ab6c7",
       "category": "History",
-      "prompt": "This torture device was used to rip the victimâ€™s flesh to shreds. Once this was accomplished, the victim would be left to dangle alive, with arms bound, left at the mercy of flies and other insects.",
+      "prompt": "This torture device was used to rip the victim’s flesh to shreds. Once this was accomplished, the victim would be left to dangle alive, with arms bound, left at the mercy of flies and other insects.",
       "options": [
         "The shredder",
         "Cats claws",
@@ -13559,8 +13637,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0759",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0759-Ea69b9ab6c7",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0759",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L2311"
+      }
     },
     {
       "id": "HIST-0760",
@@ -14619,9 +14703,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0818",
+      "id": "HIST-0818-E417d644072",
       "category": "History",
-      "prompt": "What year did â€œCusters Last Stand (Battle of the Little Bighorn) take place?",
+      "prompt": "What year did “Custers Last Stand (Battle of the Little Bighorn) take place?",
       "options": [
         "1868",
         "1876",
@@ -14639,8 +14723,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0818",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0818-E417d644072",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0818",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L7523"
+      }
     },
     {
       "id": "HIST-0819",
@@ -15387,9 +15477,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0864",
+      "id": "HIST-0864-Efd85dd9022",
       "category": "History",
-      "prompt": "This US President introduced his policy of â€˜vietnamizationâ€™- enabling the South Vietnamese to take more responsibility for fighting the war on their own.",
+      "prompt": "This US President introduced his policy of ‘vietnamization’- enabling the South Vietnamese to take more responsibility for fighting the war on their own.",
       "options": [
         "Lyndon Johnson",
         "Harry Truman",
@@ -15407,8 +15497,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0864",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0864-Efd85dd9022",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0864",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L802"
+      }
     },
     {
       "id": "HIST-0865",
@@ -17547,9 +17643,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0976",
+      "id": "HIST-0976-E2e07b078fb",
       "category": "History",
-      "prompt": "What star of Willowâ€ who passed away in 2000, founded the organization Little People of America in 1957?",
+      "prompt": "What star of Willow” who passed away in 2000, founded the organization Little People of America in 1957?",
       "options": [
         "Jerald Laverne",
         "Jerry Lavish",
@@ -17567,8 +17663,14 @@
       "sourceFile": "source-history.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0976",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "HIST-0976-E2e07b078fb",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "HIST-0976",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history#L2147"
+      }
     },
     {
       "id": "HIST-0978",
@@ -30175,33 +30277,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "Who was the first wife of Napoléon Bonaparte and the first Empress of the French?",
-      "options": [
-        "Joséphine de Beauharnais",
-        "Marie, Countess Walewski",
-        "Marie Louise of Austria",
-        "Louise Catherine Eléonore Denuelle de la Plaigne"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "history",
-      "sourceOrdinal": 603,
-      "id": "HIS-N-2998821ee3cd",
-      "conceptId": "HIS-N-2998821ee3cd",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "The \"Trail of Tears\" was a result of which United States President's Indian Removal Policy?",

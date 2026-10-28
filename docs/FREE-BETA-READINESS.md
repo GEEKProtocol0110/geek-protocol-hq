@@ -1,12 +1,22 @@
 # Free-beta candidate and pilot checklist
 
-**Prepared October 9; current handoff refreshed October 27, 2026. Status: current runtime evidence recorded; broader production pilot acceptance pending. The public release remains Alpha.** This checklist covers Kaspa-first learning and free gameplay. It does not approve paid entry, GEEK rewards, cash-out, treasury settlement, burns, NFT ownership or collection minting.
+**Prepared October 9; current handoff refreshed October 28, 2026. Status: current runtime evidence recorded; broader production pilot acceptance pending. The public release remains Alpha.** This checklist covers Kaspa-first learning and free gameplay. It does not approve paid entry, GEEK rewards, cash-out, treasury settlement, burns, NFT ownership or collection minting.
 
-## Current continuation — October 27
+## Current continuation — October 28
 
-PR #171 fixed Royale finalization and the original timed-out room recovered its saved no-winner result; #172 records that acceptance. The fresh Royale check remains incomplete, and the private retry invitation was lost when test tabs were cleaned up. Browser policy blocks internal history recovery; do not bypass that restriction or repeat uncertain room actions.
+Release #176 deployed the whole-bank audit and fifteen duplicate retirements. The next [encoding-review batch](QUESTION-ENCODING-REVIEW-2026-10-28.md) repairs 77 cases under new draft identities and consolidates one newly exposed duplicate. Encoding triage does not complete the factual bank audit. Exact release evidence and next actions are in the maintained record.
 
-All 21 standard production probes passed with unchanged five-second bounds. A deployed desktop guest completed introductory Study, recovered the same mid-run review and completed summary after reload, and corrected only a deliberately missed concept without losing explored progress. This is deployed agent-operated desktop evidence; physical-device, account-switching, independent learner and full multiplayer acceptance remain separate. The maintained state/backlog own exact release evidence and current tasks. Continue useful reviewed Kaspa content while multiplayer reconciliation is unavailable.
+| Launch area | Accepted evidence | Still required |
+| --- | --- | --- |
+| Learning/account | Founder-confirmed same-account phone return, saved progress/address/receipt, background/refresh and signed-out Back privacy; deployed agent-operated desktop Study review/reload/correction | Broader actual-device/account-switch coverage and independent learner observations |
+| Quest | Founder-confirmed or screenshot-supported chapter completion/replay and saved badges | Broader device/independent coverage; historical pending rows below are superseded for the accepted founder sequence |
+| TN10 reward | Completed GEEKT test payout confirmed by founder in HQ and wallet | Wider automation/recovery acceptance; no repeat payout is needed for this proof |
+| Royale | Original-room recovery and shared timeout/result observations | Private retry disposition, accepted-answer/reload/winner and independent participant/device evidence; no uncertain live write replay or history-policy workaround |
+| Content | 766 source-checked Kaspa concepts; duplicate cleanup; encoding review candidate | Full primary-source/distractor/context/category/license/difficulty review and independent editing; 1,000 per category and approved economics still gate CCE |
+| Recovery/security | Real manual export passed isolated local recovery; existing protected desks | Independent source custody, managed-provider/application restore and actual owner/provider account recovery |
+| Release decision | Public Alpha is deployed | Founder acceptance of a defined Beta scope; this matrix does not open Mainnet, paid-model or ownership gates |
+
+The October 27 standard production check passed all 21 probes with unchanged five-second bounds; the October 28 12:27 AM Detroit read-only check on #176 also passed 21/21 within the unchanged limits. Tests and health reads cannot substitute for private owner/provider or independent participant acceptance. Older checklists below retain their historical dates and procedures; do not repeat already completed payout or saved-player observations merely because an older row still says pending.
 
 ## Historical first-proof handoff — October 18
 

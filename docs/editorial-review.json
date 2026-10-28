@@ -2361,9 +2361,555 @@
       "reason": "semantic-duplicate",
       "note": "Duplicate learning objective consolidated under VG-N-726ba0f1ad72 after internal semantic review; original grading bytes retained. The retained item remains a draft pending primary-source review.",
       "answerKeyHash": "2feee42dbeb6836c1dc2769daa7a7765273392e1979cf6297b9d6edbccccd111"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0010",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0010-Ebfe413e552 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "d30ec59db8562ca25db93634740539a1c6a8b64dcd4a1938da4e7580bef470d1"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0079",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0079-Ee61689b6ff after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "4b8c14cf9e7d2d867c87fcfb28485cb10eb69254b76bb110eaef02e136d66b04"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0124",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0124-Eb80fe832c8 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "d607795729edca1d40188d9c085bc8de045f26e6bb5ad5d10b9e0d931db5d48a"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0174",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0174-E4abb12bd63 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "2cdb6c7f7e6ae8cb968b2b729d0cc17abc014ea5584b75bf547b1ff5dc491147"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0201",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0201-E186e38b3b9 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "b02d3fd2eab486259b8d40eccd743c45ef64ed62beacb66a1378019440bd3108"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0239",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0239-E6b8ffbe592 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "2286b558dbb065159f7fc6c5d347cf28e75b755cda1c626729da8325a8c98979"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0426",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0426-E385e5c0e0b after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "0c5f2147cf290fd3a3a17e381f6308aeb2e4ceb03b890cd3d8504c3be1a3c1fc"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0440",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0440-E63a1aad4fc after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "48b79965b8a02ecfbb5c37161bbe4f7604e954d811e09a266f715fe62adab32c"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0455",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0455-E555c051c3a after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "2c867aa6ef4b888a456b60ae2f8f1434da37467bfd94e40c010aa482229c6075"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0535",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0535-E54cd5d5c7f after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "6114279309d00671562036988bfa5f94c6b319ac06994fa568848bf3ec04ed2b"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0553",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0553-E53538f23ee after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "a32d5213b5df105308fa5d5b2174f5e27fdfbf8891ba0d251ecf2b384a672df0"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0566",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0566-E8e6fd50f9e after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "ed212e41b29efa4c70ad1092d4bcc66ad5cce9067ff4d13cb20a6f398858661d"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0569",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0569-E82c58bfb47 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "cf17a885a5a3b71bddaa240cc5ccdf46d04072499e4425d26e2d4d8e4b7af7ec"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0601",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0601-E9824b18701 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "1e8cfd8e1523b84fc76db89e9d94b758d7f37ed5ba6f4eaf38d389d89f07d7f5"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0640",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0640-E18e13e7c34 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "3ad0bfe6cb05b6d7212e4bb897232b986810a551f4af07efcbd478d44add016e"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0731",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0731-E462b0b5d99 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "ff99a3aab6cf41bd0ed58983c3d7767a0e7445b7181795b7d9eba4a80c7e0dae"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0852",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0852-Ec242af006e after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "913d19f0602cf1b54acf06ba2f12c6788458a695e37161c9db23381ea96235b8"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0955",
+      "reason": "encoding-correction",
+      "note": "Replaced by TECH-0955-E2555bc7261 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "084337403137adfaa8787c6f8e484abc33ce2afbec03dc95f8eb34c2fd99caba"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0027",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0027-E569cb35754 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "bae2799f1acbb3abd0e91705371182990c1d4eb5380b42aed406e953de18a8c0"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0082",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0082-E3e2d7813c4 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "a106dc5a4e64f1fa8ed87c4786aca2dfa88cdbd94ec4c25477fe96485c5d21bf"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0116",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0116-Ed149fa4f23 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "3fea13d9123cd9ccbd1f84fb8c0b8b2f6ef7c8d6666bc03db24b779ea438729a"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0130",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0130-E7cc410a749 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "1723cd1a353acea183173a1c7474c2f682b29aafafffb785cffe9413cef0de5d"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0362",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0362-E12dd29438e after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "4caf114d0d9d732eb66bb161a89a63f7dfa8fc226d858fa6156ea59b5d70f564"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0446",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0446-Ef1f7bc7b39 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "e9e1963228ae0e25471dac9a36dc27289b0decaa2df1144c16fa7697a7f3e627"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0465",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0465-E35be54b60b after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "d90be30387b6b1e8100202a552cb3f8ca1d292144d47e0414f7219f50839fed0"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0512",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0512-E8fa9555f5a after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "368084d92c05a311bad1d40e4df27192fed150b08d5cd3674ef5c8e4b0c56141"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0515",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0515-Ecef9b70e5a after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "a0455a3364a95b08ceeb9ec8fc7f06e3f15a53409534caef2e9d23806bcfa07d"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0567",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0567-Ec5a1c6fd9e after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "81385f6068de03a35a809c448f4048d845a539a0d9acd24d646cdb13cdc4fd8e"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0607",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0607-E2297c9adda after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "b636a588f71c3fd4f90aa2153b9dc6a80c75c12e4aadbbf3b6247259970750df"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0735",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0735-E1257c4d825 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "f334da6774201f65d92f6b5b6cc21c66cfc65ca33708b400635417c0b3e2ac94"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0759",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0759-Ea69b9ab6c7 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "504a27acb1f07c7db6b55663508402900475b43153bf687290486dd20257a798"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0818",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0818-E417d644072 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "03a85cfe7bdcf36c4ac2e596a74f57df4a258c9c52084dac8703e21dd3e341ec"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0864",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0864-Efd85dd9022 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "17ee8ffd32a5fce27c4d2eba9b7f87f373e91e29e7c8adbdcd93cd9aca42e7c4"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0976",
+      "reason": "encoding-correction",
+      "note": "Replaced by HIST-0976-E2e07b078fb after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "d959db88bc0479f37d69ac4a23901b53d6e1d880480635d01523a0794c39a9d9"
+    },
+    {
+      "category": "video-games",
+      "id": "VG-0528",
+      "reason": "encoding-correction",
+      "note": "Replaced by VG-0528-E86ecbf44c7 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "c0fd9b138929a81870ee59d082b755a8945e02c5dccfe902e399c73e0a15eb9f"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0042",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0042-E2ff05bff32 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "d1d3731689fbe3f2226a04b50a17a043747b13c958520c3f76228a653c271443"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0046",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0046-Ed35d834ea0 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "a4e9715973b80e6765d9b10636041b215d27fb44dd04b91e55ca4552c4e1fb99"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0083",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0083-Eaa9e3df1d6 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "3e1ba72484f04f8985abd53d003463fd7805ea48e3d38af153bf227633394e2c"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0104",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0104-E2530c79940 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "933362b244fe1f425fdcedffbc0ecd9e2e104aceec135684e4898fe5559a4125"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0134",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0134-E74e127345d after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "6548b4bf68e574aa7c7e973ad28b9f17a38fa6c4e4900940983408d9456959eb"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0183",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0183-Ede82f21f11 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "e142c3c8a8b58bb8333a2a94a4d197e47fbadd0dbe72875487c624b6540a7ea0"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0211",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0211-E72bc59ebf6 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "3cf97d3464f9900e755d70926a1ac03398a57bd7380b0194e0a7930f574c5cbc"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0213",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0213-E1c76ff0138 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "a6476bfaa30e63c10e9f667ddaebed8cb3c7b354c51ad630af6090092c42a2d2"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0224",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0224-E12d37f6871 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "1b5c3eb446f3b962e7488532bc9fedcd24e6877de0c4fb7f861350cfc0326349"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0264",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0264-E1e35120572 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "cc30a4db05936c1e08ac6b24b2b1d1e08199c6dff3d66a8d0edabdfbb40d6ea2"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0278",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0278-Ee15d23e15a after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "c8577eb59c3b6551be6cb38a2d42a9630e12ef684df0332ed1cf6d7f8188cef0"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0414",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0414-E76f4a6a845 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "76523e27fc76bc167c9554d90f54b5f0762f175911782f9431aedc1ee6f8d5b5"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0433",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0433-E3ebab72ded after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "f4e8cb3dafbc25aa6c337dcabd13a9e5546ca08c54ca435403a943c904599fa4"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0528",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0528-E116237159d after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "33ad898b1a3a0258b8d500a0ee17e47abdf6b83b9b30d81b815f4bc57bbafbef"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0533",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0533-E9a10d673af after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "1b8fd78536ce38331b96fcb03a1d4818dbc533306fc1c789a49366552ea8e018"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0645",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0645-Efdfe987a21 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "fc761c7373ba5731bc065754095926475afe3c26fa357f0ece781d4b01fb666e"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0694",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0694-E4071d57bb4 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "7b1e58de6f546efb41eadc1f691670e673e30ae042b1386d544cea1ac85b8814"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0700",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0700-E45e42921f2 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "b76d916d537bd33cadc98c4e71b76e09efd5adbedadfab63224256c5d3c0dcc5"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0756",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0756-E7b560645d5 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "e4a912969ceaae47b9d489627f1035d9bd66a1810dbb95066d4857d7e637ab52"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0758",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0758-Ef5c27b68e9 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "6f199ac83c9ce8d43bb01acc226323564cab00c8a5d7ce2c2d5f5af6768e8193"
+    },
+    {
+      "category": "movies",
+      "id": "MOV-0808",
+      "reason": "encoding-correction",
+      "note": "Replaced by MOV-0808-E434f593954 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "39a7bd27746d949ac0e818efc9c8396fdd4fb4d41b61f15b29bc96c84b7dc5cc"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0014",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0014-E31b3e79797 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "98e9200b9ff6671a4bbadc8195ddfaa01c5c0b938bffb3df7eda9112a787929b"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0077",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0077-Ef6b441263a after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "43ff7287387c3a7de99b71f91d85202c92fca74df0d65e9a99b84618bd1eb18e"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0115",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0115-E6199f58b8c after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "61a707d16a8f983679f3b6290b4cf539e9da32e67377b7c580aef54855508bb8"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0226",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0226-E6cc07d44e2 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "3565a7ae0f8bee0f98fee43d82a50d8c53ce6582262609a7153e03802294ee42"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0274",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0274-E1d030ea5cd after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "bb7462985ae773bd28755e856cf6fa4edb5691628b7de639758efa6a81324992"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0363",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0363-Ed6e82c819a after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "6d0810f3118785ae41ed3676b004966f0f431ecfd03d8a63e7f4e36fb7d6fb2b"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0396",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0396-E8702e00b45 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "9ad2a4ac583d4b56b574d9a54b5e8f7ab64c992cf1145a9c602809dae1601050"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0460",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0460-Ef2d7d31bda after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "9fb7beefebb97e051aeee62684a0b8d556b869549d439ae7d323e8b2e5874cb2"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0533",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0533-Ec245cc0c75 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "12c90e25a5349dc92be47fb6c3f7413ff6d49a94d8756f0fda58131cfb7c39da"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0586",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0586-E5524170c58 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "b514314578359bb90a6fad7e8d686920aa329e2e16b1b8d3431473a8b7181508"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0605",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0605-E3164badeff after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "e73f743fde3a95a53020d5ef0ea0dd7bc6693f421d4d3f73a0a7f290233e3484"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0710",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0710-E0946e5f0da after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "f49c54e28f809bae79ff750d441a0a25e4e41dd8db39aaa9f278fb0213e84d61"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0724",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0724-E2f99d9e945 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "3feb70d3f9317fd29e08e41afa371737bcdff65955d867e83f5ecff8a494bf57"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0804",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0804-Eeefd99606e after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "46cc3bd18da588823452f29028986a496838823cc308f56651c7936fd1ae6844"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0852",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0852-Ecae9e3086b after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "ca5731e8a99c969fdf8ccd423f27a0b3dc98c6cd87fb2d8b92a521b102a1447b"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0870",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0870-E91496d4ac9 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "5d6b15ed68036ae14200df88bf8093b2ca57f70e87f42384f355820cc8d799c2"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0944",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0944-Ed20cd2e0b6 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "cfc00f8f7e35b0b31b689d7a4ed3395a3a5a0e166a31ee415295bd5d316953bd"
+    },
+    {
+      "category": "pop-culture",
+      "id": "POP-0972",
+      "reason": "encoding-correction",
+      "note": "Replaced by POP-0972-E5df91ee9d2 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "53bb030578369ed671670ef7f08463ec10e3259064b90050f87dfeefa7769e77"
+    },
+    {
+      "category": "science-fiction",
+      "id": "SF-0102",
+      "reason": "encoding-correction",
+      "note": "Replaced by SF-0102-Eafeecff552 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "48a98d4d32de21b6088e7b046a7172b6be990332b1ce496becac66bc39ccf396"
+    },
+    {
+      "category": "science-fiction",
+      "id": "SF-0313",
+      "reason": "encoding-correction",
+      "note": "Replaced by SF-0313-E0ccbd8c214 after publisher-byte encoding review; original grading retained for saved runs. Replacement remains an unverified draft for factual review.",
+      "answerKeyHash": "3d0f6ccd5ae3cc02284de8e1f30ecbbb7f35f32f41eab65e967f17c3bf6b4e34"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0375",
+      "reason": "encoding-correction",
+      "note": "Publisher-byte encoding correction; replacement remains a draft pending factual review.",
+      "answerKeyHash": "c468e2c9d588fd5a737844c7a20cb0144868cb871b681af332f6df3cc7fb4ef1"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-2998821ee3cd",
+      "reason": "semantic-duplicate",
+      "note": "Exact duplicate exposed by decoding; consolidated under HIST-0465-E35be54b60b. Original grading retained.",
+      "answerKeyHash": "8a5847c9739c1eac16704e0f050222c1970ab7ed87c966c54c86b42893b231a6"
     }
   ],
-  "retirementCount": 296,
+  "retirementCount": 374,
   "newLicensedImportsRetired": 258,
   "activeNewLicensedImportsPending": 3598,
   "activeDraftQuestions": 7516,
@@ -2418,7 +2964,7 @@
     }
   },
   "importCountCorrection": "The previous prose total of 3,868 licensed additions was incorrect: the original active snapshot has 3,856 new draft imports and 168 new source-checked authored items (92 Kaspa, 39 Comics, 37 Science Fiction).",
-  "maintainedAt": "2026-10-27",
+  "maintainedAt": "2026-10-28",
   "followUpAudits": [
     {
       "date": "2026-10-27",
@@ -2426,6 +2972,13 @@
       "scope": "All 8371 active rows screened; 33 related-wording/shared-answer pairs internally triaged. Fifteen duplicate draft rows retired; no new factual certification.",
       "evidence": "docs/QUESTION-BANK-AUDIT-2026-10-27.md",
       "decisionRegister": "server/question-audit/decisions-2026-10-27.json"
+    },
+    {
+      "date": "2026-10-28",
+      "task": "BANK-009",
+      "scope": "77 publisher-byte-corrected draft replacements (76 original candidates plus one additional Polish-name case), with one newly exposed exact duplicate retired. No factual approval; active count falls by one.",
+      "evidence": "docs/QUESTION-ENCODING-REVIEW-2026-10-28.md",
+      "decisionRegister": "server/question-audit/encoding-2026-10-28.json"
     }
   ]
 }

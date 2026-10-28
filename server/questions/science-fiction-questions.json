@@ -2,7 +2,7 @@
   "metadata": {
     "title": "GEEK Protocol — Science Fiction Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-27",
+    "maintainedAt": "2026-10-28",
     "questionCount": 514,
     "conceptCount": 514,
     "category": "Science Fiction",
@@ -1563,9 +1563,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "SF-0102",
+      "id": "SF-0102-Eafeecff552",
       "category": "Science Fiction",
-      "prompt": "What does the drunk say when entering the aliensâ€™ spaceship at the end of the 1996 movie Independence Day?",
+      "prompt": "What does the drunk say when entering the aliens’ spaceship at the end of the 1996 movie Independence Day?",
       "options": [
         "Die!",
         "Im Back!",
@@ -1583,8 +1583,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "SF-0102",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "SF-0102-Eafeecff552",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "SF-0102",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L24432"
+      }
     },
     {
       "id": "SF-0103",
@@ -4203,11 +4209,11 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "SF-0313",
+      "id": "SF-0313-E0ccbd8c214",
       "category": "Science Fiction",
       "prompt": "On the fictional Star Wars planet Geonosis, Obi-Wan learns that Count Dooku and Nute Gunray have built a new droid army, and that Gunray has ordered the assassination of which one of these?",
       "options": [
-        "PadmÃ©",
+        "Padmé",
         "Senator Bail Organa",
         "Master Yoda",
         "The Jedi Council"
@@ -4223,8 +4229,14 @@
       "sourceFile": "source-movies.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "SF-0313",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "SF-0313-E0ccbd8c214",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "SF-0313",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/movies#L1525"
+      }
     },
     {
       "id": "SF-0316",

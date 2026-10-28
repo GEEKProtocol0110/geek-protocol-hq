@@ -5,6 +5,7 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { categoryFiles, loadQuestionBank } from '../server/questions.js';
 import { promptIdentity, promptTerms } from '../server/question-identity.js';
+import { hasRepairableEncoding } from './question-encoding.mjs';
 
 const digest = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export const gradingHash = q => digest([q.prompt, q.options, q.correctIndex]);
@@ -40,7 +41,7 @@ export function auditQuestionBanks(banks, decisions = []) {
   const itemSignals = [];
   for (const { category, q } of rows) {
     const text = [q.prompt, ...q.options].join(' '), reasons = [];
-    if (/[ÃÂ]|â[€\u0080-\u00bf]|\uFFFD/u.test(text)) reasons.push('suspected-encoding-damage');
+    if (hasRepairableEncoding(text) || /[ÃÂ]|â[€\u0080-\u00bf]|\uFFFD/u.test(text)) reasons.push('suspected-encoding-damage');
     if (/&(?:#\d+|#x[a-f\d]+|[a-z]+);/i.test(text)) reasons.push('unrendered-entity');
     if (/\b(?:pictured|shown below|shown above|image below|audio clip|sound clip|in the picture|following (?:picture|image|poem|lyrics))\b/i.test(q.prompt)) reasons.push('possible-missing-media-context');
     if (/\b(?:currently|at present|nowadays|last year|this year|today|latest|most recent)\b/i.test(q.prompt)) reasons.push('time-scope-review');
@@ -101,6 +102,8 @@ function main() {
     assert.ok(q && gradingHash(q)===d.gradingHashes[i], 'Changed audit evidence: '+id);
   }
   const report = auditQuestionBanks(banks, ledger.pairs);
+  assert.ok(!Object.values(banks).flat().some(q=>[q.prompt,...q.options].some(hasRepairableEncoding)),
+    'Repairable text-encoding damage in active questions; review a correction instead of refreshing the report');
   const text = JSON.stringify(report,null,2)+'\n', path='server/question-audit/latest.json';
   if (process.argv.includes('--write')) writeFileSync(path,text);
   else assert.equal(readFileSync(path,'utf8'),text,'Stale question audit: run npm run questions:audit -- --write');

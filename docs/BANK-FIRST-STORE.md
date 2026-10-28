@@ -4,7 +4,7 @@ Founder direction, October 15, 2026: build 1,000 legitimate questions per catego
 
 ## The actual bank
 
-The audit began with 7,801 active questions and 285 recorded source reviews. Historical expansion and editorial corrections remain in the maintenance record. Release [#175](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/175) is deployed at **766 Kaspa concepts, 8,371 active questions and 864 internal source-review records**. The [BANK-009 audit candidate](QUESTION-BANK-AUDIT-2026-10-27.md) retires fifteen duplicate drafts across the seven other categories, producing **8,356 active questions** with the same **864 recorded checks**. Kaspa remains 766 / 234 needed; all category targets need **7,136 further reviews**. The table describes the audit candidate, not its deployment. Screening does not certify all active rows as distinct or factually reviewed; **7,492 drafts still need factual review**. Exact releases are recorded in the scoped PRs and [maintained state](continuity/CURRENT-STATE.md).
+Release [#176](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/176) is deployed at **8,356 active / 864 recorded internal source checks / 766 Kaspa concepts**, after fifteen duplicate-draft retirements. The [encoding-review candidate](QUESTION-ENCODING-REVIEW-2026-10-28.md) replaces 77 damaged-text drafts and consolidates one newly exposed exact duplicate: **8,355 active / 864 recorded checks / 7,491 drafts needing factual review**. Kaspa remains 766 / 234 to target; all category targets need **7,136 further reviews**. The table describes this candidate, not its deployment. Byte/provenance checks and zero encoding signals do not certify all facts, distractors, category fit or independent review. Historical expansion and retirement evidence remains in the maintenance and audit records.
 
 | Category | Active | Recorded source reviews | Still needed for 1,000 | Additional distinct questions needed even if every current draft passes |
 | --- | ---: | ---: | ---: | ---: |
@@ -13,7 +13,7 @@ The audit began with 7,801 active questions and 285 recorded source reviews. His
 | Science fiction | 514 | 37 | 963 | 486 |
 | Technology | 1,494 | 15 | 985 | 0 |
 | Movies | 1,492 | 0 | 1,000 | 0 |
-| History | 1,504 | 7 | 993 | 0 |
+| History | 1,503 | 7 | 993 | 0 |
 | Comics | 416 | 39 | 961 | 584 |
 | Pop culture | 1,569 | 0 | 1,000 | 0 |
 

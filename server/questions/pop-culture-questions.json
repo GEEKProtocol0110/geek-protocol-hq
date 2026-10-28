@@ -2,7 +2,7 @@
   "metadata": {
     "title": "GEEK Protocol — Pop Culture Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-27",
+    "maintainedAt": "2026-10-28",
     "questionCount": 1569,
     "conceptCount": 1569,
     "category": "Pop Culture",
@@ -315,9 +315,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0014",
+      "id": "POP-0014-E31b3e79797",
       "category": "Pop Culture",
-      "prompt": "In 1944, this French actor and singer was discovered by Ã‰dith Piaf in Paris and she made him part of her act. He was married to Simone Signored and they co-starred in several films.",
+      "prompt": "In 1944, this French actor and singer was discovered by Édith Piaf in Paris and she made him part of her act. He was married to Simone Signored and they co-starred in several films.",
       "options": [
         "Pierre Richard",
         "Yves Montand",
@@ -335,8 +335,14 @@
       "sourceFile": "source-people.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0014",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0014-E31b3e79797",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0014",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L16946"
+      }
     },
     {
       "id": "POP-0015",
@@ -1419,9 +1425,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0077",
+      "id": "POP-0077-Ef6b441263a",
       "category": "Pop Culture",
-      "prompt": "â€œThat which is called firmness in a king is called obstinacy in a donkeyâ€ is a quote by an American author and educator.",
+      "prompt": "“That which is called firmness in a king is called obstinacy in a donkey” is a quote by an American author and educator.",
       "options": [
         "John Erskine",
         "Jerome Allen",
@@ -1439,8 +1445,14 @@
       "sourceFile": "source-people.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0077",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0077-Ef6b441263a",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0077",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L51"
+      }
     },
     {
       "id": "POP-0078",
@@ -2163,12 +2175,12 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0115",
+      "id": "POP-0115-E6199f58b8c",
       "category": "Pop Culture",
       "prompt": "This French actress gained international fame with her performances in Braveheart and the James Bond movie The World Is Not Enough.",
       "options": [
         "Laetitia Casta",
-        "Emmanuelle BÃ©art",
+        "Emmanuelle Béart",
         "Sophie Marceau",
         "Catherine Deneuve"
       ],
@@ -2183,8 +2195,14 @@
       "sourceFile": "source-people.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0115",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0115-E6199f58b8c",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0115",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L16591"
+      }
     },
     {
       "id": "POP-0116",
@@ -4347,9 +4365,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0226",
+      "id": "POP-0226-E6cc07d44e2",
       "category": "Pop Culture",
-      "prompt": "Isaac Newtonâ€™s mother removed him from school as she wanted him to be which of the following?",
+      "prompt": "Isaac Newton’s mother removed him from school as she wanted him to be which of the following?",
       "options": [
         "Painter",
         "Farmer",
@@ -4367,8 +4385,14 @@
       "sourceFile": "source-people.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0226",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0226-E6cc07d44e2",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0226",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L16040"
+      }
     },
     {
       "id": "POP-0227",
@@ -5307,13 +5331,13 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0274",
+      "id": "POP-0274-E1d030ea5cd",
       "category": "Pop Culture",
       "prompt": "Stephen Cranes war novel The Red Badge of Courage is set during this war.",
       "options": [
         "WWII",
         "American Civil War",
-        "Spanishâ€“American War",
+        "Spanish–American War",
         "Revolutionary War"
       ],
       "correctIndex": 1,
@@ -5327,8 +5351,14 @@
       "sourceFile": "source-people.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0274",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0274-E1d030ea5cd",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0274",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L8446"
+      }
     },
     {
       "id": "POP-0275",
@@ -6843,9 +6873,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0363",
+      "id": "POP-0363-Ed6e82c819a",
       "category": "Pop Culture",
-      "prompt": "Which is the Sanskrit word for âunion?â",
+      "prompt": "Which is the Sanskrit word for “union?”",
       "options": [
         "shiva",
         "sri",
@@ -6863,8 +6893,14 @@
       "sourceFile": "source-general.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0363",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0363-Ed6e82c819a",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0363",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general#L9938"
+      }
     },
     {
       "id": "POP-0364",
@@ -7515,14 +7551,14 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0396",
+      "id": "POP-0396-E8702e00b45",
       "category": "Pop Culture",
       "prompt": "In 1492, Christopher Columbus set sail on his first voyage in search of the Indies with which three ships?",
       "options": [
-        "Navidad, Isabella and NiÃ±a",
+        "Navidad, Isabella and Niña",
         "Santa Maria, Navidad and Pinta",
-        "Isabella, Castilla and NiÃ±a",
-        "Santa Maria, Pinta and NiÃ±a"
+        "Isabella, Castilla and Niña",
+        "Santa Maria, Pinta and Niña"
       ],
       "correctIndex": 3,
       "difficulty": "easy",
@@ -7535,8 +7571,14 @@
       "sourceFile": "source-people.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0396",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0396-E8702e00b45",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0396",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L3297"
+      }
     },
     {
       "id": "POP-0397",
@@ -8739,12 +8781,12 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0460",
+      "id": "POP-0460-Ef2d7d31bda",
       "category": "Pop Culture",
       "prompt": "Which Spanish explorer was the first recorded European to reach the Mississippi River?",
       "options": [
         "Pedro Sarmiento de Gamboa",
-        "HernÃ¡n CortÃ©s",
+        "Hernán Cortés",
         "Vasco da Gama",
         "Hernando de Soto"
       ],
@@ -8759,8 +8801,14 @@
       "sourceFile": "source-people.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0460",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0460-Ef2d7d31bda",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0460",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L6424"
+      }
     },
     {
       "id": "POP-0461",
@@ -10131,9 +10179,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0533",
+      "id": "POP-0533-Ec245cc0c75",
       "category": "Pop Culture",
-      "prompt": "This Italian actress appeared in some of the most prominent European films of the 1960s and 1970s, including Federico Fellinis 8Â½ and Sergio Leones epic Once Upon a Time in the West.",
+      "prompt": "This Italian actress appeared in some of the most prominent European films of the 1960s and 1970s, including Federico Fellinis 8½ and Sergio Leones epic Once Upon a Time in the West.",
       "options": [
         "Claudia Cardinale",
         "Ornella Mutti",
@@ -10151,8 +10199,14 @@
       "sourceFile": "source-people.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0533",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0533-Ec245cc0c75",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0533",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L16403"
+      }
     },
     {
       "id": "POP-0537",
@@ -11139,9 +11193,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0586",
+      "id": "POP-0586-E5524170c58",
       "category": "Pop Culture",
-      "prompt": "Which Canadian Prime Ministerâ€™s photo is on the Canadian $5 bill?",
+      "prompt": "Which Canadian Prime Minister’s photo is on the Canadian $5 bill?",
       "options": [
         "Sir John Thompson",
         "Sir Wilfrid Laurier",
@@ -11159,8 +11213,14 @@
       "sourceFile": "source-people.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0586",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0586-E5524170c58",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0586",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L8370"
+      }
     },
     {
       "id": "POP-0587",
@@ -11451,9 +11511,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0605",
+      "id": "POP-0605-E3164badeff",
       "category": "Pop Culture",
-      "prompt": "This Canadian Prime Minister is considered to be â€œthe father of confederation.",
+      "prompt": "This Canadian Prime Minister is considered to be “the father of confederation.",
       "options": [
         "Sir John A. Macdonald",
         "Sir John Thompson",
@@ -11471,8 +11531,14 @@
       "sourceFile": "source-people.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0605",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0605-E3164badeff",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0605",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L8342"
+      }
     },
     {
       "id": "POP-0606",
@@ -13563,9 +13629,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0710",
+      "id": "POP-0710-E0946e5f0da",
       "category": "Pop Culture",
-      "prompt": "This future general was educated at the expense of King Louis XVI, at Brienne and the Ã‰cole Militaire in Paris. He graduated in 1785, at the age of 16, and joined the artillery as a second lieutenant.",
+      "prompt": "This future general was educated at the expense of King Louis XVI, at Brienne and the École Militaire in Paris. He graduated in 1785, at the age of 16, and joined the artillery as a second lieutenant.",
       "options": [
         "Napoleon Bonaparte II",
         "Napoleon Bonaparte",
@@ -13583,8 +13649,14 @@
       "sourceFile": "source-people.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0710",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0710-E0946e5f0da",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0710",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L4067"
+      }
     },
     {
       "id": "POP-0711",
@@ -13851,13 +13923,13 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0724",
+      "id": "POP-0724-E2f99d9e945",
       "category": "Pop Culture",
       "prompt": "1974, Argentina. She became the first ever female president.",
       "options": [
         "Lydia Gueiler Tejada",
         "Agatha Barbara",
-        "FinnbogadÃ³ttir",
+        "Finnbogadóttir",
         "Isabel Peron"
       ],
       "correctIndex": 3,
@@ -13871,8 +13943,14 @@
       "sourceFile": "source-people.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0724",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0724-E2f99d9e945",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0724",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L2543"
+      }
     },
     {
       "id": "POP-0725",
@@ -15195,9 +15273,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0804",
+      "id": "POP-0804-Eeefd99606e",
       "category": "Pop Culture",
-      "prompt": "Which statesman uttered these words: â€œThus, by every device from the stick to the carrot, the emaciated Austrian donkey is made to pull the Nazi barrow up an ever-steepening hillâ€?",
+      "prompt": "Which statesman uttered these words: “Thus, by every device from the stick to the carrot, the emaciated Austrian donkey is made to pull the Nazi barrow up an ever-steepening hill”?",
       "options": [
         "Joseph Stalin",
         "Franklin D. Roosevelt",
@@ -15215,8 +15293,14 @@
       "sourceFile": "source-people.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0804",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0804-Eeefd99606e",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0804",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L9"
+      }
     },
     {
       "id": "POP-0805",
@@ -16107,9 +16191,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0852",
+      "id": "POP-0852-Ecae9e3086b",
       "category": "Pop Culture",
-      "prompt": "Which Queen of France was guillotined in 1793 during the French Revolution of 1789â€“1799?",
+      "prompt": "Which Queen of France was guillotined in 1793 during the French Revolution of 1789–1799?",
       "options": [
         "Margrethe II",
         "Elisabeth I",
@@ -16127,8 +16211,14 @@
       "sourceFile": "source-people.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0852",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0852-Ecae9e3086b",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0852",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L3079"
+      }
     },
     {
       "id": "POP-0853",
@@ -16467,14 +16557,14 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0870",
+      "id": "POP-0870-E91496d4ac9",
       "category": "Pop Culture",
-      "prompt": "The original name of which city is translated as The Great City of Angelsâ?",
+      "prompt": "The original name of which city is translated as The Great City of Angels”?",
       "options": [
         "Vadodara",
         "Bangkok",
         "Los Angeles",
-        "BogotÃ¡"
+        "Bogotá"
       ],
       "correctIndex": 1,
       "difficulty": "hard",
@@ -16487,8 +16577,14 @@
       "sourceFile": "source-general.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0870",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0870-E91496d4ac9",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0870",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general#L5382"
+      }
     },
     {
       "id": "POP-0872",
@@ -17835,9 +17931,9 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0944",
+      "id": "POP-0944-Ed20cd2e0b6",
       "category": "Pop Culture",
-      "prompt": "In Ambrose Bierces satirical book The Devils Dictionary, what is called âone of the sauces which serve the French in place of a state religionâ?",
+      "prompt": "In Ambrose Bierces satirical book The Devils Dictionary, what is called “one of the sauces which serve the French in place of a state religion”?",
       "options": [
         "Ketchup",
         "Hollendaise",
@@ -17855,8 +17951,14 @@
       "sourceFile": "source-general.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0944",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0944-Ed20cd2e0b6",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0944",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/general#L16400"
+      }
     },
     {
       "id": "POP-0945",
@@ -18339,14 +18441,14 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "POP-0972",
+      "id": "POP-0972-E5df91ee9d2",
       "category": "Pop Culture",
       "prompt": "Who completed the first circumnavigation of the globe in a single expedition in September 1522?",
       "options": [
         "Ferdinand Magellan",
         "Vasco da Gama",
         "Marco Polo",
-        "Juan SebastiÃ¡n Elcano"
+        "Juan Sebastián Elcano"
       ],
       "correctIndex": 3,
       "difficulty": "hard",
@@ -18359,8 +18461,14 @@
       "sourceFile": "source-people.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "POP-0972",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "POP-0972-E5df91ee9d2",
+      "maintenanceCheckedAt": "2026-10-07",
+      "encodingReview": {
+        "kind": "publisher-byte-decoding",
+        "reviewedAt": "2026-10-28",
+        "supersedes": "POP-0972",
+        "evidence": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/people#L9056"
+      }
     },
     {
       "id": "POP-0973",

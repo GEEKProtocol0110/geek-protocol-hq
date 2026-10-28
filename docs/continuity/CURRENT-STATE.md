@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-10-27. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-10-28. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -10,7 +10,7 @@ Record date: 2026-10-27. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,356 active questions; 864 recorded internal source reviews; 7,136 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,355 active questions; 864 recorded internal source reviews; 7,136 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
@@ -19,15 +19,15 @@ Record date: 2026-10-27. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 | Science fiction | 514 | 37 | 963 |
 | Technology | 1494 | 15 | 985 |
 | Movies | 1492 | 0 | 1000 |
-| History | 1504 | 7 | 993 |
+| History | 1503 | 7 | 993 |
 | Comics | 416 | 39 | 961 |
 | Pop culture | 1569 | 0 | 1000 |
 
 ## Current work and pickup
 
-**BANK-009: active.** Founder prioritizes a thorough audit of all categories. All 8,371 active baseline rows were screened and 33 candidate pairs internally triaged. This candidate retires 15 confirmed duplicate drafts across seven non-Kaspa categories, preserving historical grading and canonical exclusions. Candidate totals: 8,356 active / 864 recorded source checks / 7,492 drafts needing factual review. Kaspa remains 766 and Study 537. Screening is not a complete factual/semantic audit; independent editing remains unassigned.
+**BANK-009: active.** BANK-009 closes the encoding-triage step: 77 publisher-byte-corrected draft replacements, including one additional name case; one exact duplicate exposed by decoding is consolidated. Candidate totals: 8,355 active / 864 recorded source checks / 7,491 drafts. Zero encoding signals; eight scope/category pairs and four time-wording cases remain. Kaspa 766 and Study 537 unchanged. Full factual/independent review and broader launch acceptance remain open.
 
-Next task: **BANK-009**. Continue BANK-009: triage 76 suspected encoding issues and eight unresolved scope/category pairs, then perform item-by-item primary-source, distractor, wording, category, licensing and difficulty review across all 7,492 remaining drafts. Recheck existing source-checked rows for semantic overlap. Preserve historical keys and canonical exclusions; no count padding. BANK-001 retains 234 Kaspa concepts remaining. Independent editing is unassigned; PILOT-001 private retry and provider recovery remain separate.
+Next task: **BANK-009**. Continue BANK-009: resolve eight scope/category pairs and four contextual time-wording signals, then review all 7,491 remaining drafts against primary evidence, every distractor, wording, context, category, license and difficulty. Preserve historical keys and canonical exclusions. Encoding triage is complete for the 77 reviewed cases; zero encoding signals does not close factual or independent review. Kaspa remains 766 / 234 to target. Keep launch device/account, private Royale retry disposition and provider-recovery acceptance separate.
 
 ## Holds
 
