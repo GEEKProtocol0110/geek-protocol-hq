@@ -1,0 +1,185 @@
+{
+  "schema": 1,
+  "reviewedAt": "2026-10-28",
+  "dateBasis": "America/Detroit",
+  "task": "BANK-009",
+  "reviewKind": "internal-primary-source-technology-batch",
+  "independentReview": false,
+  "difficultyCalibration": "provisional-editorial",
+  "scope": "Twelve selected Technology draft identities: four corrected technical objectives and eight category/context/option retirements. Risk-selected sample, not a contiguous prefix or full-category audit. Pure science and instrument anatomy are not blanket-retired.",
+  "baselineCommit": "954a7b24b6e6c84522bc51c83c18bef5c28482d0",
+  "replacements": [
+    {
+      "category": "technology",
+      "id": "TECH-0007-R71610b1e90",
+      "fromIds": [
+        "TECH-0007"
+      ],
+      "gradingHash": "71610b1e9043dd6977d58bf9e513844e204775d14ab39b744a3a8cdcae89eb6f",
+      "source": "https://science.nasa.gov/moon/solar-wind/",
+      "supportingSources": [
+        "https://cosmicopia.gsfc.nasa.gov/qa_earth.html"
+      ],
+      "sourceClaim": "NASA distinguishes absent global lunar magnetism from localized magnetic regions. Its Cosmicopia compass answer separately explains the navigation limitation.",
+      "distractorReview": [
+        "Key: NASA identifies no global lunar field, while retaining localized fields.",
+        "Air: the cited compass explanation identifies magnetic reference, not an atmosphere requirement.",
+        "Liquid water: neither source makes a body of water a compass operating requirement.",
+        "Sunlight: the cited magnetism explanation says a carried magnet still attracts iron on the Moon; sunlight is not an off switch."
+      ],
+      "contextDecision": "Replace the absolute cannot-be-used claim and no-magnetic-field choice with a navigation-specific global/local distinction."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0023-R11eab24d41",
+      "fromIds": [
+        "TECH-0023"
+      ],
+      "gradingHash": "11eab24d41fed53e96f378986f76eba68897718754a2b212af584d59cd7dc646",
+      "source": "https://semiconductor.samsung.com/support/tools-resources/dictionary/semiconductor-glossary-integrated-circuit-ic/",
+      "supportingSources": [
+        "https://www.analog.com/en/resources/glossary/ic-integrated-circuit.html"
+      ],
+      "sourceClaim": "Samsung explicitly expands IC as integrated circuit and describes combined components. Analog Devices confirms the device definition but also lists an alternate pin-label use, so the stem specifies the device context.",
+      "distractorReview": [
+        "Input controller: not the source’s device-name expansion.",
+        "Instruction counter: not the source’s device-name expansion.",
+        "Key: both manufacturers explicitly name the device integrated circuit.",
+        "Interface cable: a cable is not the combined semiconductor device in the definition."
+      ],
+      "contextDecision": "Scope the acronym to the semiconductor device and remove Integrated Chip as a competing synonym."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0046-R7e5d1009b6",
+      "fromIds": [
+        "TECH-0046"
+      ],
+      "gradingHash": "7e5d1009b6e8bc1e4dc98db8e82d5d18f713ef14cc45dc49c354e0792c9087f5",
+      "source": "https://www.hpe.com/us/en/announcements/cray-innovation.html",
+      "supportingSources": [],
+      "sourceClaim": "HPE’s Where does the name Cray come from section names Seymour Cray, the 1972 founding, and his Cray-1 design. A separate HPE history URL timed out and is not relied on as a successful page read.",
+      "distractorReview": [
+        "Charles Babbage: not the founder/designer named in HPE’s account.",
+        "Key: the source names Seymour Cray for this specific relation.",
+        "Bill Gates: not the founder/designer named in this account.",
+        "Steve Jobs: not the founder/designer named in this account."
+      ],
+      "contextDecision": "Correct the keyed person’s misspelled surname Gray to Cray under a new identity; replace a vague honorific with a dated company/design relation."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0131-R2644d64816",
+      "fromIds": [
+        "TECH-0131"
+      ],
+      "gradingHash": "2644d6481607b040de879cbd5452824c1d425feb1d4c4626fd14d9a95c61ef72",
+      "source": "https://www.intel.com/content/www/us/en/support/articles/000028294/graphics.html",
+      "supportingSources": [
+        "https://www.intel.com/content/www/us/en/support/articles/000020962.html"
+      ],
+      "sourceClaim": "Intel article 000028294 states that system memory dedicated solely to IGD is never available for regular system memory. Article 000020962 distinguishes a reported shared-memory limit from an ongoing reservation. This item assumes an explicit firmware reservation rather than diagnosing a numeric RAM discrepancy.",
+      "distractorReview": [
+        "Fully available: contradicts the documented solely dedicated reservation.",
+        "Disk storage: source assigns this portion to graphics uses, not permanent storage.",
+        "Key: source expressly excludes the reserved portion from regular system memory.",
+        "Doubled capacity: dedicating part of existing RAM does not create more physical memory."
+      ],
+      "contextDecision": "Replace the unproved most-likely diagnosis from a numeric discrepancy with an explicit firmware-reservation premise; no universal shared-memory reservation or byte-unit claim."
+    }
+  ],
+  "retirements": [
+    {
+      "category": "technology",
+      "id": "TECH-0002",
+      "gradingHash": "d73f6f3fb0f7205dd5287bdcd918292413d72d2480eeb8e82a163a77afaa1f59",
+      "reason": "off-category",
+      "note": "Clinical symptom identification without a named technology or engineering learning objective. Retire on category/context grounds; no medical claim is certified."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0007",
+      "gradingHash": "31552e0bb09ffdbeb45dd2f640b87131f1a726ebde59cacc827f05151841d8a3",
+      "reason": "source-correction",
+      "note": "Replace the absolute cannot-be-used claim and no-magnetic-field choice with a navigation-specific global/local distinction. Canonical replacement: TECH-0007-R71610b1e90.",
+      "canonicalId": "TECH-0007-R71610b1e90",
+      "canonicalCategory": "technology"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0016",
+      "gradingHash": "51180205221fb29ab56a0d5032f8ea8d0a73bf8d3244409444406bf06d542f96",
+      "reason": "off-category",
+      "note": "Film-title trivia; a planet in the story does not make the objective a technology question. Do not migrate an unverified fact into another active category."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0017",
+      "gradingHash": "51a50bfc5c7516bfab8041faafad88bfaae207809fbac979f96782704f455722",
+      "reason": "invalid-options",
+      "note": "Binary travel/time-zone stem padded with unrelated pearl and temperature choices. No jurisdiction/time-zone fact is certified; preserve only for saved grading."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0023",
+      "gradingHash": "2a4c3ca408c9cca031dfabfc614acc1123afe193ec30423b33fa52c19c5d0a4d",
+      "reason": "source-correction",
+      "note": "Scope the acronym to the semiconductor device and remove Integrated Chip as a competing synonym. Canonical replacement: TECH-0023-R11eab24d41.",
+      "canonicalId": "TECH-0023-R11eab24d41",
+      "canonicalCategory": "technology"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0027",
+      "gradingHash": "32f03947a61018bfd4a78926f9608cedcf52b569530ad8ec6e3809054df5176a",
+      "reason": "off-category",
+      "note": "Clinical neuroanatomy exclusion question without an instrument or technical application. Retire without endorsing its key or clinical classification."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0029",
+      "gradingHash": "7a18a955351b513e85a172886710a89dd47a4537bf1c4b608416dafd01b20710",
+      "reason": "off-category",
+      "note": "Anatomical duct identification without a technological application. This does not retire instrument/anatomy questions categorically."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0030",
+      "gradingHash": "31085ea05e7c9f8446d49a8bf1e100ceff4da37be1a1defe954df20d2737d4d4",
+      "reason": "off-category",
+      "note": "Clinical diagnostic-classification exclusion question, with no edition specified and no technology objective. No medical classification is certified."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0034",
+      "gradingHash": "adc3fec47f232c5f8dbf3e1032a7e50193e4098c924d6e608c063a296dfd0cc5",
+      "reason": "off-category",
+      "note": "Film plot/casting identification rather than technology knowledge; no unverified transfer into Movies."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0046",
+      "gradingHash": "d549adaffa2061854e83b03491c511ba32deba7f6b792acee451f6a98c78bbfe",
+      "reason": "source-correction",
+      "note": "Correct the keyed person’s misspelled surname Gray to Cray under a new identity; replace a vague honorific with a dated company/design relation. Canonical replacement: TECH-0046-R7e5d1009b6.",
+      "canonicalId": "TECH-0046-R7e5d1009b6",
+      "canonicalCategory": "technology"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0131",
+      "gradingHash": "88088cd16fe1b5fbfcc29c9dc09ffc72441bdb6f18c5cae0bc836f943b749d81",
+      "reason": "source-correction",
+      "note": "Replace the unproved most-likely diagnosis from a numeric discrepancy with an explicit firmware-reservation premise; no universal shared-memory reservation or byte-unit claim. Canonical replacement: TECH-0131-R2644d64816.",
+      "canonicalId": "TECH-0131-R2644d64816",
+      "canonicalCategory": "technology"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0278",
+      "gradingHash": "9b4deccb1801583c3819c61678b26bb5a930ba12909119b8bed8e6a7ec842812",
+      "reason": "invalid-options",
+      "note": "Binary hardware-upgrade question padded with a medicine and a body part; broad RAM-capacity premise also lacks platform support. Retire without adding a second RAM question."
+    }
+  ]
+}

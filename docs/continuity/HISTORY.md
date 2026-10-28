@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-The ledger preserves **142 merged HQ PR records** and **282 Git commit records** through the declared commit snapshot `1476aa2d1a4469ed1eed30d9c72f94ca50e8bd4f`. The product runtime baseline remains #155. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
+The ledger preserves **143 merged HQ PR records** and **282 Git commit records** through the declared commit snapshot `1476aa2d1a4469ed1eed30d9c72f94ca50e8bd4f`. The product runtime baseline remains #155. Merged means code reached the target branch; it does not establish deployment, independent review or learning outcomes. Git metadata dates are not original founding proof.
 
 ## Founding record
 
@@ -12,6 +12,7 @@ Three exact historical master/litepaper snapshots are preserved with source comm
 
 | PR | Merged (UTC) | Change | Commit |
 | --- | --- | --- | --- |
+| [#178](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/178) | 2026-10-28T11:10:19Z | Resolve question scope findings and add eight reviewed replacements | `954a7b24b6e6` |
 | [#155](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/155) | 2026-10-23T16:21:55Z | Recover player reward status after network and session interruptions | `1476aa2d1a44` |
 | [#154](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/154) | 2026-10-18T08:07:48Z | Use the canonical worker API URL and retain the blocked activation handoff | `1f15c3e7a7eb` |
 | [#153](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/153) | 2026-10-18T08:03:24Z | Automate eligible Daily GEEKT test rewards with a separate scheduled signer | `eff74c91972a` |

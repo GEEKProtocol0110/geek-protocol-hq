@@ -4,7 +4,7 @@
 
 ## Current continuation — October 28
 
-Release #176 deployed the whole-bank audit and fifteen duplicate retirements. Release #177 completed the [encoding-review batch](QUESTION-ENCODING-REVIEW-2026-10-28.md). The next [scope-review candidate](QUESTION-SCOPE-REVIEW-2026-10-28.md) resolves the eight pair and four time-wording cases, but does not complete the factual bank audit. Exact release evidence and next actions are in the maintained record.
+Releases #176–178 deployed duplicate cleanup, encoding repair and the initial scope/time-wording decisions. The [Technology candidate](TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md) adds four reviewed corrections and retires eight unsuitable items, leaving 7,462 drafts needing factual review. This does not complete the bank audit or independent editing. Exact release evidence and next actions are in the maintained record.
 
 | Launch area | Accepted evidence | Still required |
 | --- | --- | --- |
@@ -12,7 +12,7 @@ Release #176 deployed the whole-bank audit and fifteen duplicate retirements. Re
 | Quest | Founder-confirmed or screenshot-supported chapter completion/replay and saved badges | Broader device/independent coverage; historical pending rows below are superseded for the accepted founder sequence |
 | TN10 reward | Completed GEEKT test payout confirmed by founder in HQ and wallet | Wider automation/recovery acceptance; no repeat payout is needed for this proof |
 | Royale | Original-room recovery and shared timeout/result observations | Private retry disposition, accepted-answer/reload/winner and independent participant/device evidence; no uncertain live write replay or history-policy workaround |
-| Content | 766 source-checked Kaspa concepts; duplicate cleanup; encoding review candidate | Full primary-source/distractor/context/category/license/difficulty review and independent editing; 1,000 per category and approved economics still gate CCE |
+| Content | 766 source-checked Kaspa concepts; deployed duplicate/encoding/scope cleanup; Technology review candidate | Full primary-source/distractor/context/category/license/difficulty review and independent editing; 1,000 per category and approved economics still gate CCE |
 | Recovery/security | Real manual export passed isolated local recovery; existing protected desks | Independent source custody, managed-provider/application restore and actual owner/provider account recovery |
 | Release decision | Public Alpha is deployed | Founder acceptance of a defined Beta scope; this matrix does not open Mainnet, paid-model or ownership gates |
 

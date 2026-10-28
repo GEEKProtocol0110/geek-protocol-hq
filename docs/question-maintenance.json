@@ -2,8 +2,8 @@
   "maintainedAt": "2026-10-28",
   "originalRows": 8032,
   "cleanedBaseline": 4024,
-  "activeQuestions": 8346,
-  "retiredRows": 4399,
+  "activeQuestions": 8338,
+  "retiredRows": 4411,
   "addedQuestions": 4024,
   "categories": {
     "kaspa": {
@@ -113,23 +113,25 @@
     "technology": {
       "before": 1000,
       "cleaned": 752,
-      "removed": 292,
+      "removed": 304,
       "reasons": {
         "invalid-or-ambiguous": 244,
         "duplicate-or-similar": 4,
-        "editorial-off-category": 21,
-        "editorial-unsupported-claim": 1
+        "editorial-off-category": 27,
+        "editorial-unsupported-claim": 1,
+        "editorial-invalid-options": 2,
+        "editorial-source-correction": 4
       },
       "added": 752,
       "target": 1504,
-      "after": 1493,
+      "after": 1485,
       "difficultyDistribution": {
-        "easy": 585,
+        "easy": 577,
         "medium": 609,
         "hard": 299
       },
-      "editorialRemoved": 44,
-      "postReviewAdditions": 33
+      "editorialRemoved": 56,
+      "postReviewAdditions": 37
     },
     "movies": {
       "before": 1000,
@@ -183,7 +185,7 @@
     "KasWareExtension": "78bb30045edd4d898c4d61c4c75ba1bc37e18748",
     "KaspanetDocs": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9"
   },
-  "editorialRetiredRows": 391,
+  "editorialRetiredRows": 403,
   "editorialReview": "docs/editorial-review.json",
-  "postReviewAdditions": 689
+  "postReviewAdditions": 693
 }

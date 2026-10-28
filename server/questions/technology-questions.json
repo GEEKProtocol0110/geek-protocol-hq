@@ -3,19 +3,19 @@
     "title": "GEEK Protocol — Technology Question Bank",
     "version": "2.0.0-distinct",
     "maintainedAt": "2026-10-28",
-    "questionCount": 1478,
-    "conceptCount": 1478,
+    "questionCount": 1470,
+    "conceptCount": 1470,
     "category": "Technology",
     "difficultyDistribution": {
-      "easy": 576,
+      "easy": 568,
       "medium": 603,
       "hard": 299
     },
     "correctIndexDistribution": {
-      "0": 373,
-      "1": 343,
-      "2": 367,
-      "3": 395
+      "0": 372,
+      "1": 339,
+      "2": 365,
+      "3": 394
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -48,30 +48,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "TECH-0001",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "TECH-0002",
-      "category": "Technology",
-      "prompt": "This common side effect is caused by the hormone, progesterone, which relaxes the valve that separates your esophagus from your stomach, allowing gastric acids to seep back up, which causes this uncomfortable sensation.",
-      "options": [
-        "Back pain",
-        "Heartburn",
-        "Constipation",
-        "Nausea"
-      ],
-      "correctIndex": 1,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0002",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -123,28 +99,34 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0007",
+      "id": "TECH-0007-R71610b1e90",
       "category": "Technology",
-      "prompt": "A compass cannot be used on the Moon. What factor is responsible for this?",
+      "prompt": "Why is an ordinary magnetic compass unreliable for finding a consistent north direction on the Moon?",
       "options": [
-        "Influence of Earths gravity",
-        "Asteroid impacts",
-        "Lack of a magnetic field",
-        "Lack of gravity on the Moon"
+        "The Moon lacks a global magnetic field like Earth’s",
+        "A compass needs air to turn its needle",
+        "A compass works only when liquid water is nearby",
+        "Sunlight switches off a compass needle’s magnetism"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "difficulty": "easy",
-      "funFact": null,
+      "funFact": "A magnetic compass needs a useful directional magnetic reference. The Moon has localized magnetic patches, but no Earth-like global field for ordinary compass navigation.",
       "tags": [
         "technology"
       ],
       "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
+      "source": "https://science.nasa.gov/moon/solar-wind/",
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0007",
-      "maintenanceCheckedAt": "2026-10-07"
+      "reviewStatus": "source-checked",
+      "conceptId": "TECH-0007-R71610b1e90",
+      "maintenanceCheckedAt": "2026-10-07",
+      "reviewedAt": "2026-10-28",
+      "attribution": "Adapted by Geek Protocol from OpenTriviaQA contributors (CC BY-SA 4.0); primary factual references linked individually. Original explanation; source-site prose not reproduced.",
+      "originalSource": "https://github.com/uberspot/OpenTriviaQA",
+      "supersedesQuestionIds": [
+        "TECH-0007"
+      ]
     },
     {
       "id": "TECH-0008",
@@ -297,54 +279,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0016",
-      "category": "Technology",
-      "prompt": "Name the 1962 film about the planet Uranus?",
-      "options": [
-        "Meet me on Uranus",
-        "Escaping the Blue Planet",
-        "I Love Uranus",
-        "Journey to the Seventh Planet"
-      ],
-      "correctIndex": 3,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0016",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "TECH-0017",
-      "category": "Technology",
-      "prompt": "A flight attendant lands at OHare Airport in Chicago, in the winter months, and drives to Gary, Indiana. Will he or she have to reset his/ her watch upon arrival in Gary?",
-      "options": [
-        "No",
-        "Yes",
-        "Natural pearls that are perfectly spherical",
-        "Warmer"
-      ],
-      "correctIndex": 0,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0017",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "TECH-0019",
       "category": "Technology",
       "prompt": "Who was first to prove that beside an irrational number, pi is also transcendental number (i.e. is not a root to any polynomial equation with rational coefficients)?",
@@ -417,28 +351,34 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0023",
+      "id": "TECH-0023-R11eab24d41",
       "category": "Technology",
-      "prompt": "What does IC stand for in a computer?",
+      "prompt": "In semiconductor electronics, what does IC stand for when naming a chip that combines circuit components?",
       "options": [
-        "Integrated Chip",
-        "InterChip",
-        "Integrated Circuit",
-        "InterCircuit"
+        "Input controller",
+        "Instruction counter",
+        "Integrated circuit",
+        "Interface cable"
       ],
       "correctIndex": 2,
       "difficulty": "easy",
-      "funFact": null,
+      "funFact": "An integrated circuit combines electronic components and their connections on a semiconductor chip. The abbreviation here names that device, rather than a separate controller or cable.",
       "tags": [
         "technology"
       ],
       "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
+      "source": "https://semiconductor.samsung.com/support/tools-resources/dictionary/semiconductor-glossary-integrated-circuit-ic/",
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0023",
-      "maintenanceCheckedAt": "2026-10-07"
+      "reviewStatus": "source-checked",
+      "conceptId": "TECH-0023-R11eab24d41",
+      "maintenanceCheckedAt": "2026-10-07",
+      "reviewedAt": "2026-10-28",
+      "attribution": "Adapted by Geek Protocol from OpenTriviaQA contributors (CC BY-SA 4.0); primary factual references linked individually. Original explanation; source-site prose not reproduced.",
+      "originalSource": "https://github.com/uberspot/OpenTriviaQA",
+      "supersedesQuestionIds": [
+        "TECH-0023"
+      ]
     },
     {
       "id": "TECH-0025",
@@ -462,30 +402,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "TECH-0025",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "TECH-0027",
-      "category": "Technology",
-      "prompt": "The extrapyramidal system in human brain, which consists of related neurons is not responsible for what?",
-      "options": [
-        "Decrease of the erratic motions",
-        "Muscle tone",
-        "The aural memory",
-        "Stability of the human body"
-      ],
-      "correctIndex": 2,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0027",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -513,54 +429,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0029",
-      "category": "Technology",
-      "prompt": "What type of duct is the Whartons duct found in the human body?",
-      "options": [
-        "Salivary duct",
-        "Tear duct",
-        "Sweat duct",
-        "Bile duct"
-      ],
-      "correctIndex": 0,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0029",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "TECH-0030",
-      "category": "Technology",
-      "prompt": "Which of the following disorders is NOT a form of anxiety?",
-      "options": [
-        "Body Dysmorphic Disorder",
-        "Cyclothymia",
-        "Somatization Disorder",
-        "Panic Disorder"
-      ],
-      "correctIndex": 1,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0030",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "TECH-0032",
       "category": "Technology",
       "prompt": "What system of the human body provides a site for blood cell formation?",
@@ -582,30 +450,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "TECH-0032",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "TECH-0034",
-      "category": "Technology",
-      "prompt": "In this movie Ayla, played by Daryl Hannah, teaches her new family to count all the way to ten.",
-      "options": [
-        "Caveman and Cavewoman",
-        "The Clan of the Cave Bear",
-        "Way of the Caveman",
-        "Land of the Tribe"
-      ],
-      "correctIndex": 1,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0034",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -801,28 +645,34 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0046",
+      "id": "TECH-0046-R7e5d1009b6",
       "category": "Technology",
-      "prompt": "This engineer, called the father of supercomputing, has been credited with creating the supercomputer industry.",
+      "prompt": "Which engineer founded Cray Research in 1972 and led the creation of the Cray-1 supercomputer?",
       "options": [
         "Charles Babbage",
-        "Seymour Gray",
+        "Seymour Cray",
         "Bill Gates",
         "Steve Jobs"
       ],
       "correctIndex": 1,
       "difficulty": "easy",
-      "funFact": null,
+      "funFact": "Seymour Cray founded Cray Research in 1972. HPE’s company history connects him and his engineering team to the Cray-1, making this a specific computing-history fact.",
       "tags": [
         "technology"
       ],
       "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
+      "source": "https://www.hpe.com/us/en/announcements/cray-innovation.html",
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0046",
-      "maintenanceCheckedAt": "2026-10-07"
+      "reviewStatus": "source-checked",
+      "conceptId": "TECH-0046-R7e5d1009b6",
+      "maintenanceCheckedAt": "2026-10-07",
+      "reviewedAt": "2026-10-28",
+      "attribution": "Adapted by Geek Protocol from OpenTriviaQA contributors (CC BY-SA 4.0); primary factual references linked individually. Original explanation; source-site prose not reproduced.",
+      "originalSource": "https://github.com/uberspot/OpenTriviaQA",
+      "supersedesQuestionIds": [
+        "TECH-0046"
+      ]
     },
     {
       "id": "TECH-0047",
@@ -2277,28 +2127,34 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0131",
+      "id": "TECH-0131-R2644d64816",
       "category": "Technology",
-      "prompt": "If a computer system displays less memory than what is installed, what are the most likely causes for this discrepancy? ( example: a system comes with 2 GB of RAM installed but system info displays 1896 MB of RAM)",
+      "prompt": "A PC’s firmware dedicates part of installed RAM solely to integrated graphics. How does this affect regular system memory?",
       "options": [
-        "System has 2 separate 1 GB sticks installed to equal 1896 MB of Ram. If a single 2B stick was installed it would read correctly.",
-        "RAM measurements are similar to the hard drive discrepancy in that a GB definition difference exists between the manufacturer and the operating system.",
-        "There are a full 2 GB of ram installed, however other devices (video card etc) have been designated a portion of the system RAM to function.",
-        "The manufacturer rounds up to the measurement to the nearest GB for ease of sale. The Operating system reads the actual amount of the chip(s)."
+        "It remains fully available to ordinary applications",
+        "It becomes permanent disk storage",
+        "It is unavailable as regular system memory",
+        "It doubles the physical RAM capacity"
       ],
       "correctIndex": 2,
       "difficulty": "easy",
-      "funFact": null,
+      "funFact": "Intel distinguishes memory dedicated to integrated graphics from regular system memory. A reported shared-memory limit alone is not an ongoing reservation, so the firmware reservation is stated explicitly.",
       "tags": [
         "technology"
       ],
       "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
+      "source": "https://www.intel.com/content/www/us/en/support/articles/000028294/graphics.html",
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0131",
-      "maintenanceCheckedAt": "2026-10-07"
+      "reviewStatus": "source-checked",
+      "conceptId": "TECH-0131-R2644d64816",
+      "maintenanceCheckedAt": "2026-10-07",
+      "reviewedAt": "2026-10-28",
+      "attribution": "Adapted by Geek Protocol from OpenTriviaQA contributors (CC BY-SA 4.0); primary factual references linked individually. Original explanation; source-site prose not reproduced.",
+      "originalSource": "https://github.com/uberspot/OpenTriviaQA",
+      "supersedesQuestionIds": [
+        "TECH-0131"
+      ]
     },
     {
       "id": "TECH-0132",
@@ -4716,30 +4572,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "TECH-0276",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "TECH-0278",
-      "category": "Technology",
-      "prompt": "Generally computers are sold with RAM in 1GB denominations. Is it generally possible to add RAM to the system later to have 1.5 GB of RAM?",
-      "options": [
-        "No",
-        "Yes",
-        "DDAVP (Arginine Vasopressin)",
-        "Thigh"
-      ],
-      "correctIndex": 1,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0278",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {

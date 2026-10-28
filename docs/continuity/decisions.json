@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-27",
+  "updatedAt": "2026-10-28",
   "records": [
     {
       "id": "DR-001",
@@ -374,6 +374,19 @@
         "docs/ROADMAP-CHECKPOINT.md"
       ],
       "recordedAt": "2026-10-27",
+      "supersedes": null
+    },
+    {
+      "id": "DR-030",
+      "status": "implementation-choice",
+      "title": "Use bounded Technology review without a blanket science purge",
+      "decision": "Apply BANK-009 to a risk-selected Technology sample. Retire unrelated clinical/film objectives and malformed option sets; keep engineering, computing and instrument-application objectives with item-level primary evidence. Do not infer that all basic science or instrument anatomy is off-category, and do not transfer unverified facts into another active category. Corrections use new identities with old grading/aliases preserved.",
+      "basis": "DR-029 and the maintained next action authorize thorough category/context and factual review. This is the maintainer’s scoped implementation choice, not a new founder taxonomy approval or full-bank certification.",
+      "evidence": [
+        "docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md",
+        "server/question-audit/technology-2026-10-28.json"
+      ],
+      "recordedAt": "2026-10-28",
       "supersedes": null
     }
   ]

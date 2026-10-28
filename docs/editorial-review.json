@@ -3026,9 +3026,93 @@
       "reason": "source-correction",
       "note": "Remove an unsupported undated popularity preface and source-check the acronym and alternatives. Canonical replacement: MOV-N-82da6aa0f393-Rd4e8f40a52.",
       "answerKeyHash": "b16a1694d66ac1c087885fdf723a1f3532c62b32a529f27b5dcb2ac6af685f04"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0002",
+      "reason": "off-category",
+      "note": "Clinical symptom identification without a named technology or engineering learning objective. Retire on category/context grounds; no medical claim is certified.",
+      "answerKeyHash": "d73f6f3fb0f7205dd5287bdcd918292413d72d2480eeb8e82a163a77afaa1f59"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0007",
+      "reason": "source-correction",
+      "note": "Replace the absolute cannot-be-used claim and no-magnetic-field choice with a navigation-specific global/local distinction. Canonical replacement: TECH-0007-R71610b1e90.",
+      "answerKeyHash": "31552e0bb09ffdbeb45dd2f640b87131f1a726ebde59cacc827f05151841d8a3"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0016",
+      "reason": "off-category",
+      "note": "Film-title trivia; a planet in the story does not make the objective a technology question. Do not migrate an unverified fact into another active category.",
+      "answerKeyHash": "51180205221fb29ab56a0d5032f8ea8d0a73bf8d3244409444406bf06d542f96"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0017",
+      "reason": "invalid-options",
+      "note": "Binary travel/time-zone stem padded with unrelated pearl and temperature choices. No jurisdiction/time-zone fact is certified; preserve only for saved grading.",
+      "answerKeyHash": "51a50bfc5c7516bfab8041faafad88bfaae207809fbac979f96782704f455722"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0023",
+      "reason": "source-correction",
+      "note": "Scope the acronym to the semiconductor device and remove Integrated Chip as a competing synonym. Canonical replacement: TECH-0023-R11eab24d41.",
+      "answerKeyHash": "2a4c3ca408c9cca031dfabfc614acc1123afe193ec30423b33fa52c19c5d0a4d"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0027",
+      "reason": "off-category",
+      "note": "Clinical neuroanatomy exclusion question without an instrument or technical application. Retire without endorsing its key or clinical classification.",
+      "answerKeyHash": "32f03947a61018bfd4a78926f9608cedcf52b569530ad8ec6e3809054df5176a"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0029",
+      "reason": "off-category",
+      "note": "Anatomical duct identification without a technological application. This does not retire instrument/anatomy questions categorically.",
+      "answerKeyHash": "7a18a955351b513e85a172886710a89dd47a4537bf1c4b608416dafd01b20710"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0030",
+      "reason": "off-category",
+      "note": "Clinical diagnostic-classification exclusion question, with no edition specified and no technology objective. No medical classification is certified.",
+      "answerKeyHash": "31085ea05e7c9f8446d49a8bf1e100ceff4da37be1a1defe954df20d2737d4d4"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0034",
+      "reason": "off-category",
+      "note": "Film plot/casting identification rather than technology knowledge; no unverified transfer into Movies.",
+      "answerKeyHash": "adc3fec47f232c5f8dbf3e1032a7e50193e4098c924d6e608c063a296dfd0cc5"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0046",
+      "reason": "source-correction",
+      "note": "Correct the keyed person’s misspelled surname Gray to Cray under a new identity; replace a vague honorific with a dated company/design relation. Canonical replacement: TECH-0046-R7e5d1009b6.",
+      "answerKeyHash": "d549adaffa2061854e83b03491c511ba32deba7f6b792acee451f6a98c78bbfe"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0131",
+      "reason": "source-correction",
+      "note": "Replace the unproved most-likely diagnosis from a numeric discrepancy with an explicit firmware-reservation premise; no universal shared-memory reservation or byte-unit claim. Canonical replacement: TECH-0131-R2644d64816.",
+      "answerKeyHash": "88088cd16fe1b5fbfcc29c9dc09ffc72441bdb6f18c5cae0bc836f943b749d81"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0278",
+      "reason": "invalid-options",
+      "note": "Binary hardware-upgrade question padded with a medicine and a body part; broad RAM-capacity premise also lacks platform support. Retire without adding a second RAM question.",
+      "answerKeyHash": "9b4deccb1801583c3819c61678b26bb5a930ba12909119b8bed8e6a7ec842812"
     }
   ],
-  "retirementCount": 391,
+  "retirementCount": 403,
   "newLicensedImportsRetired": 258,
   "activeNewLicensedImportsPending": 3598,
   "activeDraftQuestions": 7516,
@@ -3105,6 +3189,13 @@
       "scope": "Eight pair decisions and four time-wording cases resolved; seventeen original draft identities retired and eight primary-source-checked replacements added. No independent/full-bank certification.",
       "evidence": "docs/QUESTION-SCOPE-REVIEW-2026-10-28.md",
       "decisionRegister": "server/question-audit/scope-2026-10-28.json"
+    },
+    {
+      "date": "2026-10-28",
+      "task": "BANK-009",
+      "scope": "Twelve selected Technology drafts: four primary-source-checked corrections plus eight category/context/option retirements. Risk sample only; original grading preserved.",
+      "evidence": "docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md",
+      "decisionRegister": "server/question-audit/technology-2026-10-28.json"
     }
   ]
 }
