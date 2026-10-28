@@ -10,11 +10,11 @@ Record date: 2026-10-27. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,363 active questions; 856 recorded internal source reviews; 7,144 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,371 active questions; 864 recorded internal source reviews; 7,136 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
-| Kaspa | 758 | 758 | 242 |
+| Kaspa | 766 | 766 | 234 |
 | Video games | 602 | 0 | 1000 |
 | Science fiction | 515 | 37 | 963 |
 | Technology | 1497 | 15 | 985 |
@@ -25,9 +25,9 @@ Record date: 2026-10-27. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-001: active.** BANK-001 adds eight internally source-checked node-diagnostics concepts at this source checkpoint: 758 Kaspa / 8,363 active / 856 review records. Introductory Study remains 537 concepts. Full local verification and pinned-source/item-hash checks passed; exact CI/merge/deployment evidence is recorded separately in the scoped review record. Old question files are preserved. The unreconciled Royale retry limitation remains under PILOT-001.
+**BANK-001: active.** BANK-001 adds eight internally source-checked RPC data-boundary concepts at this source checkpoint: 766 Kaspa / 8,371 active / 864 review records. Introductory Study remains 537 concepts. The prior 758-concept batch is merged/deployed in #174. Full local verification and source/item compatibility checks passed; exact CI/release evidence is recorded separately; independent editorial review and the PILOT-001 private retry limitation remain open.
 
-Next task: **BANK-001**. Record the exact release of the checked node-diagnostics batch and verify aggregate count/readiness delivery, then continue the remaining 242 distinct Kaspa concepts toward 1,000. Preserve prior answer-key bytes, the introductory Study pool and all economic holds. Independent editorial review remains unassigned; the Royale retry must be reconciled before any further live-match mutation.
+Next task: **BANK-001**. Release the checked RPC data-boundaries batch with exact CI/tree/deployment and aggregate delivery evidence, then continue the remaining 234 distinct Kaspa concepts toward 1,000. Preserve prior answer-key bytes, the 537-concept introductory Study pool and all economic holds. Independent editorial review remains unassigned; reconcile the private Royale retry before further live-match mutations.
 
 ## Holds
 

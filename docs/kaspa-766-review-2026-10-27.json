@@ -1,0 +1,92 @@
+{
+  "reviewedAt": "2026-10-27",
+  "dateBasis": "America/Detroit review date",
+  "reviewKind": "internal-source-check",
+  "independentReview": false,
+  "difficultyCalibration": "provisional-editorial",
+  "sourceRepository": "kaspanet/rusty-kaspa",
+  "sourceSnapshot": "01b532e8b553523216471682649693af92f0fd16",
+  "sourceLicense": "ISC",
+  "questionCount": 8,
+  "sources": [
+    {
+      "path": "rpc/service/src/service.rs",
+      "commit": "01b532e8b553523216471682649693af92f0fd16",
+      "sha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "gitBlobSha": "2b2f6f0ae9e471b4e995d04596697f8053c91ebf"
+    },
+    {
+      "path": "LICENSE",
+      "commit": "01b532e8b553523216471682649693af92f0fd16",
+      "sha256": "fb06b99a835c4cdade7f2f180fd87c0198d552cf1e0cd14c34716411b009a92f",
+      "gitBlobSha": "b66757abcbb384c1b5d87bbb62122d8adba0546e"
+    }
+  ],
+  "items": [
+    {
+      "id": "K766-0001",
+      "concept": "getblocks-dependent-flags",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L527",
+      "evidenceSymbol": "if !request.include_blocks && request.include_transactions",
+      "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "questionSha256": "f27a912cd57b69b9c0e5c9f9536a134f07ab6a4c00b00899fdc8a68860810b61"
+    },
+    {
+      "id": "K766-0002",
+      "concept": "getblocks-inclusive-cursor",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L565",
+      "evidenceSymbol": "let block_hashes = once(low_hash)",
+      "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "questionSha256": "be1616f19a1a28b5682ea9ac354e27db9dec597098f59de4c6719847f2a80f2a"
+    },
+    {
+      "id": "K766-0003",
+      "concept": "balance-without-node-index",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L811",
+      "evidenceSymbol": "if !self.config.utxoindex",
+      "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "questionSha256": "3207e90158274c6da0a8a00bb4e12600f6d45c1d5e68ef24e27a8d18c97f4ab3"
+    },
+    {
+      "id": "K766-0004",
+      "concept": "utxo-transitional-consensus-guard",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L796",
+      "evidenceSymbol": "if session.async_is_consensus_in_transitional_ibd_state()",
+      "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "questionSha256": "8ed3341b8423c80584e08cc690a7d782852b1cec614a5c3d34c999fe4e9bb9e4"
+    },
+    {
+      "id": "K766-0005",
+      "concept": "utxo-response-order-not-promised",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L801",
+      "evidenceSymbol": "the current impl does not retain an entry order",
+      "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "questionSha256": "bb0bac319ab8d1dc9d179b0b4d6cc5a48a5f35710de7978ed30cd3d5e6f21cdd"
+    },
+    {
+      "id": "K766-0006",
+      "concept": "batch-balance-absence-versus-zero",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L846",
+      "evidenceSymbol": "let balance = entry_map.get(&script_public_key).copied();",
+      "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "questionSha256": "6d16ce3cd660b5e84c4514092f40f22e0bfd17ab4068a5ed627143e9ee12b248"
+    },
+    {
+      "id": "K766-0007",
+      "concept": "rpc-orphan-two-part-permission",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L657",
+      "evidenceSymbol": "let allow_orphan = self.config.unsafe_rpc && request.allow_orphan;",
+      "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "questionSha256": "fae7bba6eea7f84379cdfba090a10a09a3650f04956de4aed667074a9fad8d2a"
+    },
+    {
+      "id": "K766-0008",
+      "concept": "hashrate-pruning-bound-survives-unsafe",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1078",
+      "evidenceSymbol": "if request.window_size as u64 > self.config.pruning_depth()",
+      "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
+      "questionSha256": "b19e98f6078ba4b843523a6c5fcb306144a65fa7336e9e00e9af480dd9558450"
+    }
+  ],
+  "overlapReview": "Compared all 758 active Kaspa prompts and explanations, with focused inspection of RPC, index, orphan, pruning, ordering and synchronization objectives. K500-0005 covers GetBlock transaction inclusion, K500-0015 identifies the optional GetBlocks cursor and K500-0024 identifies a hashrate window. This batch instead tests dependent GetBlocks flags, cursor inclusivity and the unconditional pruning bound. Existing index-capability reporting, wallet initialization failure and orphan-definition items do not test the specific node response/data semantics added here. Proposed genesis-fallback and extra sync-status items were omitted to keep the batch distinct. Conservative automated similarity checks supplement internal semantic review; independent editorial review remains unassigned."
+}

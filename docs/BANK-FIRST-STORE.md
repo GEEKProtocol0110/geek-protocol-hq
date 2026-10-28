@@ -4,11 +4,11 @@ Founder direction, October 15, 2026: build 1,000 legitimate questions per catego
 
 ## The actual bank
 
-The audit began with 7,801 active questions and 285 recorded source reviews. Historical expansion and editorial corrections remain in the maintenance record. After #149 reached 700 reviewed Kaspa concepts, the wallet/node follow-up brings the deployed bank to **750 Kaspa concepts, 8,355 active questions and 848 internally source-reviewed questions**, with **7,152 more reviews needed** across the eight per-category targets. Exact merge/deployment status is in the [maintained state](continuity/CURRENT-STATE.md). The current node-diagnostics candidate adds eight distinct concepts, bringing its counts to **758 Kaspa, 8,363 active and 856 recorded source reviews**, with **7,144 reviews still needed**. The prior 750-concept release remains production until this candidate is released. The table below describes the candidate; see [the review register](KASPA-758-REVIEW-2026-10-27.md). The 8,000-question quality goal remains incomplete.
+The audit began with 7,801 active questions and 285 recorded source reviews. Historical expansion and editorial corrections remain in the maintenance record. The node-diagnostics release [#174](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/174) is deployed at **758 Kaspa concepts, 8,363 active questions and 856 internal source-review records**. The next RPC data-boundaries source checkpoint adds eight concepts: **766 Kaspa, 8,371 active and 864 internal review records**, with **7,136 reviews still needed** across the eight per-category targets. The table describes this source checkpoint, not a deployment claim; see [the item review](KASPA-766-REVIEW-2026-10-27.md) and [maintained state](continuity/CURRENT-STATE.md). The 8,000-question quality goal remains incomplete.
 
 | Category | Active | Recorded source reviews | Still needed for 1,000 | Additional distinct questions needed even if every current draft passes |
 | --- | ---: | ---: | ---: | ---: |
-| Kaspa | 758 | 758 | 242 | 242 |
+| Kaspa | 766 | 766 | 234 | 234 |
 | Video games | 602 | 0 | 1,000 | 398 |
 | Science fiction | 515 | 37 | 963 | 485 |
 | Technology | 1,497 | 15 | 985 | 0 |
