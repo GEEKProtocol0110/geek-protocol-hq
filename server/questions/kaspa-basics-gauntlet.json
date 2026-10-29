@@ -18,11 +18,12 @@
       "3": 27
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
-    "reviewNotice": "Draft for owner review: 10 rounds x 10 (gauntletRound), easy rounds 1-3, medium 4-7, hard 8-10. Gauntlet rewards are XP and off-chain Alpha credits only; no token payouts.",
+    "reviewNotice": "Draft, practice-only and unranked: every row has practiceOnly true, is excluded from ranked, daily, lobby, duel and royale selection, and is not counted as source-checked. 10 rounds x 10 (round-N tags): easy rounds 1-3, medium 4-7, hard 8-10. Facts still need owner/editorial review before any status change.",
     "attribution": "GEEK Protocol original questions",
     "licenses": [
       "MIT"
-    ]
+    ],
+    "practiceOnly": true
   },
   "questions": [
     {
@@ -50,7 +51,8 @@
       "source": "https://kaspa.org/",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0001",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0002",
@@ -77,7 +79,8 @@
       "source": "https://kaspa.org/",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0002",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0003",
@@ -104,7 +107,8 @@
       "source": "https://kaspa.org/",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0003",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0004",
@@ -131,7 +135,8 @@
       "source": "https://kaspa.org/",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0004",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0005",
@@ -158,7 +163,8 @@
       "source": "https://kaspa.org/",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0005",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0006",
@@ -185,7 +191,8 @@
       "source": "https://kaspa.org/",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0006",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0007",
@@ -212,7 +219,8 @@
       "source": "https://kaspa.org/",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0007",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0008",
@@ -239,7 +247,8 @@
       "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0008",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0009",
@@ -266,7 +275,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0009",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0010",
@@ -293,7 +303,8 @@
       "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-events",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0010",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0011",
@@ -320,7 +331,8 @@
       "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0011",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0012",
@@ -347,7 +359,8 @@
       "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0012",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0013",
@@ -374,7 +387,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0013",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0014",
@@ -401,7 +415,8 @@
       "source": "https://github.com/kaspanet/rusty-kaspa",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0014",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0015",
@@ -428,7 +443,8 @@
       "source": "https://kaspa.org/",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0015",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0016",
@@ -455,7 +471,8 @@
       "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-account",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0016",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0017",
@@ -482,7 +499,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0017",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0018",
@@ -509,7 +527,8 @@
       "source": "https://eprint.iacr.org/2018/104",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0018",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0019",
@@ -536,7 +555,8 @@
       "source": "https://kaspa.org/",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0019",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0020",
@@ -563,7 +583,8 @@
       "source": "https://kaspa.org/",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0020",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0021",
@@ -590,7 +611,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/init.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0021",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0022",
@@ -617,7 +639,8 @@
       "source": "https://kaspa.org/",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0022",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0023",
@@ -644,7 +667,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_transfer.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0023",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0024",
@@ -671,7 +695,8 @@
       "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0024",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0025",
@@ -698,7 +723,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_burn.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0025",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0026",
@@ -725,7 +751,8 @@
       "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0026",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0027",
@@ -752,7 +779,8 @@
       "source": "https://kaspa.network/mining/",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0027",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0028",
@@ -779,7 +807,8 @@
       "source": "https://kaspa.org/",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0028",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0029",
@@ -806,7 +835,8 @@
       "source": "https://wiki.kaspa.org/en/tokenomics",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0029",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0030",
@@ -833,7 +863,8 @@
       "source": "https://wiki.kaspa.org/en/tokenomics",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0030",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0031",
@@ -860,7 +891,8 @@
       "source": "https://wiki.kaspa.org/en/tokenomics",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0031",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0032",
@@ -887,7 +919,8 @@
       "source": "https://wiki.kaspa.org/en/tokenomics",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0032",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0033",
@@ -914,7 +947,8 @@
       "source": "https://wiki.kaspa.org/en/tokenomics",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0033",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0034",
@@ -941,7 +975,8 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/4edcbbccb449f84832afb1ca157904b35f37d006/consensus/core/src/config/bps.rs",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0034",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0035",
@@ -968,7 +1003,8 @@
       "source": "https://eprint.iacr.org/2018/104",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0035",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0036",
@@ -995,7 +1031,8 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/4edcbbccb449f84832afb1ca157904b35f37d006/consensus/core/src/config/bps.rs",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0036",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0037",
@@ -1019,10 +1056,11 @@
       ],
       "volatile": false,
       "priority": false,
-      "source": "https://github.com/kaspanet/rusty-kaspa",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/4edcbbccb449f84832afb1ca157904b35f37d006/consensus/src/processes/ghostdag/protocol.rs",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0037",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0038",
@@ -1049,7 +1087,8 @@
       "source": "https://github.com/kaspanet/rusty-kaspa",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0038",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0039",
@@ -1076,7 +1115,8 @@
       "source": "https://github.com/kaspanet/rusty-kaspa",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0039",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0040",
@@ -1103,7 +1143,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/init.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0040",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0041",
@@ -1130,7 +1171,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0041",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0042",
@@ -1157,7 +1199,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_mint.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0042",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0043",
@@ -1184,7 +1227,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_mint.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0043",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0044",
@@ -1211,7 +1255,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_mint.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0044",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0045",
@@ -1238,7 +1283,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0045",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0046",
@@ -1265,7 +1311,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0046",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0047",
@@ -1280,7 +1327,7 @@
       ],
       "correctIndex": 3,
       "difficulty": "medium",
-      "funFact": "Marketplace orders start with a list operation.",
+      "funFact": "The Kasplex list operation moves the amount from the seller's balance to locked and records a market order.",
       "tags": [
         "kaspa",
         "gauntlet",
@@ -1292,7 +1339,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_list.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0047",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0048",
@@ -1319,7 +1367,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_transfer.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0048",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0049",
@@ -1346,7 +1395,8 @@
       "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0049",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0050",
@@ -1373,7 +1423,8 @@
       "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0050",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0051",
@@ -1400,7 +1451,8 @@
       "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0051",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0052",
@@ -1427,7 +1479,8 @@
       "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0052",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0053",
@@ -1454,7 +1507,8 @@
       "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0053",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0054",
@@ -1481,7 +1535,8 @@
       "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0054",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0055",
@@ -1508,7 +1563,8 @@
       "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-events",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0055",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0056",
@@ -1535,7 +1591,8 @@
       "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0056",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0057",
@@ -1550,7 +1607,7 @@
       ],
       "correctIndex": 3,
       "difficulty": "medium",
-      "funFact": "getAccounts returns already-connected accounts.",
+      "funFact": "getAccounts returns the connected current account address (an array) and is used to check whether the site is connected.",
       "tags": [
         "kaspa",
         "gauntlet",
@@ -1562,7 +1619,8 @@
       "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0057",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0058",
@@ -1589,7 +1647,8 @@
       "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0058",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0059",
@@ -1616,13 +1675,14 @@
       "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0059",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0060",
       "category": "Kaspa",
       "subcategory": "Gauntlet: Kaspa Basics",
-      "prompt": "Coinbase outputs mature after about how many blocks?",
+      "prompt": "At mainnet's 10 BPS, coinbase outputs mature after how many blocks?",
       "options": [
         "100,000",
         "1,000",
@@ -1631,7 +1691,7 @@
       ],
       "correctIndex": 1,
       "difficulty": "medium",
-      "funFact": "At 10 BPS, coinbase maturity is 1,000 blocks (about 100 seconds).",
+      "funFact": "Rusty Kaspa sets coinbase maturity to BPS x 100 seconds, so 10 BPS gives 1,000 blocks (about 100 seconds).",
       "tags": [
         "kaspa",
         "gauntlet",
@@ -1640,10 +1700,11 @@
       ],
       "volatile": true,
       "priority": false,
-      "source": "https://github.com/kaspanet/rusty-kaspa",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/4edcbbccb449f84832afb1ca157904b35f37d006/consensus/core/src/config/bps.rs",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0060",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0061",
@@ -1670,7 +1731,8 @@
       "source": "https://wiki.kaspa.org/en/tokenomics",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0061",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0062",
@@ -1697,7 +1759,8 @@
       "source": "https://wiki.kaspa.org/en/tokenomics",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0062",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0063",
@@ -1724,7 +1787,8 @@
       "source": "https://github.com/kaspanet/rusty-kaspa",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0063",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0064",
@@ -1748,10 +1812,11 @@
       ],
       "volatile": false,
       "priority": false,
-      "source": "https://github.com/kaspanet/rusty-kaspa",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/4edcbbccb449f84832afb1ca157904b35f37d006/consensus/src/processes/ghostdag/protocol.rs",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0064",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0065",
@@ -1778,7 +1843,8 @@
       "source": "https://eprint.iacr.org/2018/104",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0065",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0066",
@@ -1805,7 +1871,8 @@
       "source": "https://wiki.kaspa.org/en/tokenomics",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0066",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0067",
@@ -1832,7 +1899,8 @@
       "source": "https://github.com/kaspanet/kips/blob/master/kip-0014.md",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0067",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0068",
@@ -1859,7 +1927,8 @@
       "source": "https://kaspa.org/",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0068",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0069",
@@ -1886,7 +1955,8 @@
       "source": "https://wiki.kaspa.org/en/tokenomics",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0069",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0070",
@@ -1913,7 +1983,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_mint.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0070",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0071",
@@ -1940,7 +2011,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/init.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0071",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0072",
@@ -1967,7 +2039,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_mint.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0072",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0073",
@@ -1994,7 +2067,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/init.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0073",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0074",
@@ -2021,7 +2095,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0074",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0075",
@@ -2048,7 +2123,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_transfer.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0075",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0076",
@@ -2075,7 +2151,8 @@
       "source": "https://eprint.iacr.org/2018/104",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0076",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0077",
@@ -2102,7 +2179,8 @@
       "source": "https://eprint.iacr.org/2018/104",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0077",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0078",
@@ -2129,7 +2207,8 @@
       "source": "https://eprint.iacr.org/2018/104",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0078",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0079",
@@ -2156,7 +2235,8 @@
       "source": "https://github.com/kaspanet/rusty-kaspa",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0079",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0080",
@@ -2183,7 +2263,8 @@
       "source": "https://github.com/kaspanet/rusty-kaspa",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0080",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0081",
@@ -2210,7 +2291,8 @@
       "source": "https://github.com/kaspanet/kips/blob/master/kip-0002.md",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0081",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0082",
@@ -2234,10 +2316,11 @@
       ],
       "volatile": false,
       "priority": false,
-      "source": "https://eprint.iacr.org/2018/104",
+      "source": "https://eprint.iacr.org/2016/1159",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0082",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0083",
@@ -2264,7 +2347,8 @@
       "source": "https://wiki.kaspa.org/en/tokenomics",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0083",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0084",
@@ -2291,7 +2375,8 @@
       "source": "https://wiki.kaspa.org/en/tokenomics",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0084",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0085",
@@ -2318,7 +2403,8 @@
       "source": "https://wiki.kaspa.org/en/tokenomics",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0085",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0086",
@@ -2345,7 +2431,8 @@
       "source": "https://wiki.kaspa.org/en/tokenomics",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0086",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0087",
@@ -2372,7 +2459,8 @@
       "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0087",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0088",
@@ -2399,7 +2487,8 @@
       "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-account",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0088",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0089",
@@ -2426,7 +2515,8 @@
       "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0089",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0090",
@@ -2453,7 +2543,8 @@
       "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0090",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0091",
@@ -2477,10 +2568,11 @@
       ],
       "volatile": false,
       "priority": false,
-      "source": "https://github.com/kaspanet/rusty-kaspa",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/4edcbbccb449f84832afb1ca157904b35f37d006/crypto/hashes/src/pow_hashers.rs",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0091",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0092",
@@ -2507,7 +2599,8 @@
       "source": "https://wiki.kaspa.org/en/tokenomics",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0092",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0093",
@@ -2531,10 +2624,11 @@
       ],
       "volatile": false,
       "priority": false,
-      "source": "https://github.com/kaspanet/rusty-kaspa",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/4edcbbccb449f84832afb1ca157904b35f37d006/crypto/addresses/src/lib.rs",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0093",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0094",
@@ -2549,7 +2643,7 @@
       ],
       "correctIndex": 3,
       "difficulty": "hard",
-      "funFact": "The paper is 'PHANTOM GHOSTDAG: A Scalable Generalization of Nakamoto Consensus'.",
+      "funFact": "The paper is 'PHANTOM and GHOSTDAG: A Scalable Generalization of Nakamoto Consensus' (IACR ePrint 2018/104).",
       "tags": [
         "kaspa",
         "gauntlet",
@@ -2561,7 +2655,8 @@
       "source": "https://eprint.iacr.org/2018/104",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0094",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0095",
@@ -2588,7 +2683,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0095",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0096",
@@ -2615,7 +2711,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0096",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0097",
@@ -2642,7 +2739,8 @@
       "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0097",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0098",
@@ -2669,7 +2767,8 @@
       "source": "https://wiki.kaspa.org/en/tokenomics",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0098",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0099",
@@ -2696,7 +2795,8 @@
       "source": "https://github.com/kaspanet/rusty-kaspa",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0099",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     },
     {
       "id": "KGNT-0100",
@@ -2723,7 +2823,8 @@
       "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "KGNT-0100",
-      "reviewedAt": "2026-10-29"
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
     }
   ]
 }
