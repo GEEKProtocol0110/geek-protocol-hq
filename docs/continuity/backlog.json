@@ -1285,6 +1285,27 @@
       "validationEvidence": [
         "October 25 founder phone acceptance: the supplied HQ Rewards screenshot shows the latest 1-GEEKT TN10 payment as Confirmed by indexer, with its saved time, original recipient and reveal transaction; the supplied wallet screenshot shows +1 GEEKT marked Success. After explicit instructions to sign out, confirm Rewards hides private address/receipt details, and sign back into the same account to recover progress, saved address and receipt, the founder reports: Its all there. Good to go. This records founder-confirmed same-account phone recovery and signed-out privacy, not an independently observed browser session. Screenshots, wallet identifiers and transaction hashes remain outside the public record. No new payment or account/provider mutation is performed."
       ]
+    },
+    {
+      "id": "SEC-010",
+      "priority": "P0",
+      "status": "proposed",
+      "title": "Serve future ranked questions and answers from private storage; treat published banks as exposed",
+      "owner": "Maintainer; founder selects private storage and approves rollout",
+      "nextAction": "Founder chooses a private storage option and provides read-only access; then author new-ID private ranked rows and follow docs/MIGRATION-private-ranked-bank.md rollout. Draft PR only; not merged or deployed.",
+      "acceptance": [
+        "Ranked rounds draw only from a configured private source or fail closed in production.",
+        "Published and retired public rows stay addressable so saved runs grade with their original keys; private IDs cannot collide with them.",
+        "Issued questions never include correctIndex; a public fixture bank with no real answers supports dev/tests.",
+        "Payouts stay disabled."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/MIGRATION-private-ranked-bank.md",
+        "server/question-source.js",
+        "server/questions.js",
+        "tests/private-ranked-bank.test.js"
+      ]
     }
   ]
 }

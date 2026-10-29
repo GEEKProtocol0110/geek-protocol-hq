@@ -102,7 +102,7 @@ const startRound = async (run, profile) => {
   run.correct = 0;
   run.roundScore = 0;
   run.roundAnswers = [];
-  run.roundQuestionIds = (await selectRoundQuestionIds(run.category, run.round, run.usedQuestionIds, run.focus)).slice(0, mode.questionCount);
+  run.roundQuestionIds = (await selectRoundQuestionIds(run.category, run.round, run.usedQuestionIds, run.focus, { ranked: true })).slice(0, mode.questionCount);
   run.usedQuestionIds.push(...run.roundQuestionIds);
   if (mode.overallMs) run.overallDeadline = Date.now() + mode.overallMs;
   return issueQuestion(run);

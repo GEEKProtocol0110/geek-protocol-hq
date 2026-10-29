@@ -5,6 +5,7 @@ import { publishedCommunityQuestionById, publishedCommunityQuestions } from './c
 import { promptIdentity, similarQuestion } from './question-identity.js';
 
 import { categoryFiles } from './question-categories.js';
+import { loadRankedSource } from './question-source.js';
 export { categoryFiles };
 
 const bankCache = new Map();
@@ -22,6 +23,13 @@ const normalizeQuestion = (question) => ({
   practiceOnly: Boolean(question.practiceOnly),
   tags: Array.isArray(question.tags) ? question.tags : []
 });
+// Everything committed under server/questions/ was published with its answer
+// key, so it is exposed: practice/study/grading only, never new ranked play
+// once a private ranked source is configured (see docs/MIGRATION-private-ranked-bank.md).
+// Tracked out-of-band so row objects (and the audit corpus hash) stay unchanged.
+const exposedRows = new WeakSet();
+const normalizePublicQuestion = (question) => { const row = normalizeQuestion(question); exposedRows.add(row); return row; };
+export const isExposedQuestion = (question) => exposedRows.has(question);
 
 const secureShuffle = (values) => {
   const copy = [...values];
@@ -39,14 +47,48 @@ export const loadQuestionBank = (category) => {
     const path = join(process.cwd(), 'server', 'questions', filename);
     const parsed = JSON.parse(readFileSync(path, 'utf8'));
     return parsed.questions || [];
-  }).map(normalizeQuestion);
+  }).map(normalizePublicQuestion);
   // Retired rows are lookup-only: saved games keep their original answer keys.
   // They never enter the pool used for a new ranked, lobby, duel, or practice run.
-  const retired = JSON.parse(readFileSync(join(process.cwd(), 'server', 'questions', `${category}-retired.json`), 'utf8')).questions.map(normalizeQuestion);
+  const retired = JSON.parse(readFileSync(join(process.cwd(), 'server', 'questions', `${category}-retired.json`), 'utf8')).questions.map(normalizePublicQuestion);
   const byId = new Map([...retired, ...questions].map((question) => [question.id, question]));
   const bank = { questions, byId };
   bankCache.set(category, bank);
   return bank;
+};
+
+const rankedBankCache = new Map();
+// Ranked pool for new runs. Private/fixture questions never fall back to the
+// exposed public pool; production without a private source fails closed.
+export const loadRankedBank = async (category) => {
+  if (!categoryFiles[category]) throw new Error('INVALID_REQUEST');
+  const source = await loadRankedSource();
+  if (source.mode === 'unavailable') throw new Error('RANKED_BANK_UNAVAILABLE');
+  if (source.mode === 'exposed') return loadQuestionBank(category);
+  const cacheKey = `${category}|${source.mode}`;
+  if (rankedBankCache.get(cacheKey)?.source === source) return rankedBankCache.get(cacheKey).bank;
+  const publicIds = loadQuestionBank(category).byId;
+  const questions = (source.banks[category] || []).map((question) => normalizeQuestion(question));
+  const byId = new Map();
+  for (const question of questions) {
+    // A private ID must never shadow a published one: saved games keyed by the
+    // published ID have to keep grading against the answer they were issued.
+    if (publicIds.has(question.id) || byId.has(question.id)) throw new Error('PRIVATE_BANK_ID_COLLISION');
+    byId.set(question.id, question);
+  }
+  const bank = { questions, byId, private: true };
+  rankedBankCache.set(cacheKey, { source, bank });
+  return bank;
+};
+
+const rankedLookup = async (category, id) => {
+  try {
+    const bank = await loadRankedBank(category);
+    return bank.private ? bank.byId.get(id) : undefined;
+  } catch (error) {
+    if (error.message === 'RANKED_BANK_UNAVAILABLE') return undefined;
+    throw error;
+  }
 };
 
 export const questionById = async (category, id) => {
@@ -55,17 +97,19 @@ export const questionById = async (category, id) => {
     if (question.category !== category) throw new Error('QUESTION_NOT_FOUND');
     return question;
   }
-  const question = loadQuestionBank(category).byId.get(id);
+  // Previously issued runs keep their original answer key: published and
+  // retired rows stay addressable by ID, and private rows are looked up by ID.
+  const question = loadQuestionBank(category).byId.get(id) || await rankedLookup(category, id);
   if (!question) throw new Error('QUESTION_NOT_FOUND');
   return question;
 };
 
-export const selectRoundQuestionIds = async (category, round, excludedIds = [], focus = '') => {
+export const selectRoundQuestionIds = async (category, round, excludedIds = [], focus = '', { ranked = false } = {}) => {
   const tier = round <= 3 ? 'easy' : round <= 7 ? 'medium' : 'hard';
   const excluded = new Set(excludedIds);
-  const bank = loadQuestionBank(category);
+  const bank = ranked ? await loadRankedBank(category) : loadQuestionBank(category);
   const previous = await Promise.all(excludedIds.map(async (id) => {
-    if (!String(id).startsWith('cce_')) return bank.byId.get(id);
+    if (!String(id).startsWith('cce_')) return bank.byId.get(id) || loadQuestionBank(category).byId.get(id);
     return questionById(category, id);
   }));
   const excludedConcepts = new Set(previous.filter(Boolean).map(q => q.conceptId || q.id));
@@ -73,7 +117,7 @@ export const selectRoundQuestionIds = async (category, round, excludedIds = [], 
   const previousCommunity = previous.filter(q => q?.community);
   const available = q => !excluded.has(q.id) && !excludedConcepts.has(q.conceptId || q.id)
     && !excludedPrompts.has(promptIdentity(q.prompt)) && !previousCommunity.some(old => similarQuestion(old, q));
-  const communityPool = secureShuffle((await publishedCommunityQuestions(category, tier))
+  const communityPool = bank.private ? [] : secureShuffle((await publishedCommunityQuestions(category, tier))
     .filter(q => available(q) && !previous.filter(Boolean).some(old => similarQuestion(old, q))));
   const pool = secureShuffle([
     ...communityPool,

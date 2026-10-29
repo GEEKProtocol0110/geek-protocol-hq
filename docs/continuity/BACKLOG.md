@@ -55,6 +55,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CHAIN-004 | P0 | needs-evidence | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
 | CHAIN-005 | P1 | needs-evidence | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
 | AUTH-004 | P0 | needs-evidence | Secure Geek account access and wallet-neutral receiving addresses | Maintainer; founder controls bounded pilot approval and actual-device acceptance |
+| SEC-010 | P0 | proposed | Serve future ranked questions and answers from private storage; treat published banks as exposed | Maintainer; founder selects private storage and approves rollout |
 
 ## CONT-001: Publish the continuation system
 
@@ -787,3 +788,18 @@ Acceptance:
 - Receiving drafts remain separate by network during page use and manual reload; only a successful server response marks a change saved. Guest/loading/error states retain usable account access and retry guidance.
 
 Evidence/specification: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRST-ONBOARDING.md), [public/sign-in/index.html](../../public/sign-in/index.html), [public/assets/wallet.js](../../public/assets/wallet.js), [server/testnet-automatic.js](../../server/testnet-automatic.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [public/assets/session-access.js](../../public/assets/session-access.js), [tests/session-access-client.test.js](../../tests/session-access-client.test.js), [tests/sign-in-state.test.js](../../tests/sign-in-state.test.js), [docs/KASWARE-MOBILE-CONNECTION.md](../../docs/KASWARE-MOBILE-CONNECTION.md), [docs/ACCOUNT-RECEIVING-ADDRESSES.md](../../docs/ACCOUNT-RECEIVING-ADDRESSES.md), [server/reward-addresses.js](../../server/reward-addresses.js), [public/assets/receiving-address.js](../../public/assets/receiving-address.js), [tests/receiving-address-client.test.js](../../tests/receiving-address-client.test.js), [tests/passkeys.test.js](../../tests/passkeys.test.js).
+
+## SEC-010: Serve future ranked questions and answers from private storage; treat published banks as exposed
+
+**P0 / proposed.** Owner: Maintainer; founder selects private storage and approves rollout. Dependencies: none.
+
+Next action: Founder chooses a private storage option and provides read-only access; then author new-ID private ranked rows and follow docs/MIGRATION-private-ranked-bank.md rollout. Draft PR only; not merged or deployed.
+
+Acceptance:
+
+- Ranked rounds draw only from a configured private source or fail closed in production.
+- Published and retired public rows stay addressable so saved runs grade with their original keys; private IDs cannot collide with them.
+- Issued questions never include correctIndex; a public fixture bank with no real answers supports dev/tests.
+- Payouts stay disabled.
+
+Evidence/specification: [docs/MIGRATION-private-ranked-bank.md](../../docs/MIGRATION-private-ranked-bank.md), [server/question-source.js](../../server/question-source.js), [server/questions.js](../../server/questions.js), [tests/private-ranked-bank.test.js](../../tests/private-ranked-bank.test.js).
