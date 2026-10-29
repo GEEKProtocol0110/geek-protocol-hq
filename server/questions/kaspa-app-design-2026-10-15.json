@@ -31,12 +31,12 @@
       "conceptId": "K580-0001",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "In the cited Toccata counter example, how does max_step differ from the count state field?",
+      "prompt": "In the official Kaspa Toccata counter example, how does max_step differ from the count state field?",
       "options": [
         "max_step is baked into the instance as a constructor constant; count encodes its current state",
         "Both are mutable account-storage slots held by the node",
         "count is a constructor-only constant while max_step is the changing state",
-        "Both values come from a mandatory market-price feed"
+        "Both values are read from an external oracle input at spend time"
       ],
       "correctIndex": 0,
       "difficulty": "medium",
@@ -44,7 +44,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/covenant-state.mdx#L27",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -58,7 +58,7 @@
       "conceptId": "K580-0002",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Which distinction does the cited Toccata guide make between an auth group and a covenant group?",
+      "prompt": "Which distinction does the official Kaspa Toccata guide make between an auth group and a covenant group?",
       "options": [
         "Auth groups contain all network UTXOs; covenant groups contain only fees",
         "Auth groups find outputs authorized by one input; covenant groups find transaction members sharing an ID",
@@ -71,7 +71,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/covenant-state.mdx#L190",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -85,7 +85,7 @@
       "conceptId": "K580-0003",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "How are Toccata covenant count/index opcode pairs used in the cited guide?",
+      "prompt": "How are Toccata covenant count/index opcode pairs used in the official Kaspa Toccata guide?",
       "options": [
         "Assume every matching item has the same transaction index",
         "Interpret the count as a token balance and the index as a signature",
@@ -98,7 +98,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/covenant-state.mdx#L207",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -112,9 +112,9 @@
       "conceptId": "K580-0004",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "May a covenant transaction also carry ordinary fee/change items or another covenant flow in the cited Toccata design?",
+      "prompt": "May a covenant transaction also carry ordinary fee/change items or another covenant flow in the official Kaspa Toccata design?",
       "options": [
-        "No; every input and output must belong to one covenant",
+        "No; every input and output must belong to the one covenant being spent",
         "Only if all covenant identifiers are deleted",
         "Only if ordinary inputs bypass consensus validation",
         "Yes; scripts identify and validate their relevant subsets"
@@ -125,7 +125,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/covenant-state.mdx#L236",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -139,7 +139,7 @@
       "conceptId": "K580-0005",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Why does forcing every update through one live state UTXO limit an application in the cited Toccata guide?",
+      "prompt": "Why does forcing every update through one live state UTXO limit an application in the official Kaspa Toccata guide?",
       "options": [
         "Each transition must spend and replace that same state UTXO in sequence",
         "A single UTXO cannot have any spending script",
@@ -152,7 +152,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/covenant-state.mdx#L252",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -166,7 +166,7 @@
       "conceptId": "K580-0006",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "How does the cited Toccata decision guide characterize miner-resolved covenant inputs that name a covenant ID rather than a specific UTXO?",
+      "prompt": "How does the official Kaspa Toccata decision guide characterize miner-resolved covenant inputs that name a covenant ID rather than a specific UTXO?",
       "options": [
         "The required standard transaction format for all new apps",
         "A research path likely needing mempool and node support",
@@ -179,7 +179,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/decision-guide.mdx#L109",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -193,7 +193,7 @@
       "conceptId": "K580-0007",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Why does a covenant-aware indexer need preimage or witness material in the cited Toccata state model?",
+      "prompt": "Why does a covenant-aware indexer need preimage or witness material in the official Kaspa Toccata state model?",
       "options": [
         "A commitment contains an automatically readable JSON state object",
         "Witness material supplies permission to ignore the covenant ID",
@@ -206,7 +206,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/covenant-state.mdx#L305",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -220,9 +220,9 @@
       "conceptId": "K580-0008",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "What division of work does the cited Silverscript token example illustrate?",
+      "prompt": "What division of work does the official Kaspa Toccata Silverscript token example illustrate?",
       "options": [
-        "The macro decides token price while the policy selects the browser theme",
+        "The macro checks token conservation while the policy only formats outputs",
         "The compiler replaces application invariants with miner discretion",
         "The developer must hand-write every generated stack operation",
         "The policy checks token conservation; the macro describes transaction layout and generates its wrapper"
@@ -233,7 +233,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/silverscript.mdx#L90",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -247,11 +247,11 @@
       "conceptId": "K580-0009",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "What construction does the cited Silverscript guide use when validating state under a foreign contract template?",
+      "prompt": "What construction does the official Kaspa Toccata Silverscript guide use when validating state under a foreign contract template?",
       "options": [
         "Expected template prefix, encoded state and template suffix",
         "An arbitrary output label plus a matching token ticker",
-        "Only the successor transaction ID",
+        "Only the successor transaction ID and its output index",
         "Only the current account address and its balance"
       ],
       "correctIndex": 0,
@@ -260,7 +260,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/silverscript.mdx#L176",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -274,7 +274,7 @@
       "conceptId": "K580-0010",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Which tool is identified as the compiler in the cited Silverscript workspace?",
+      "prompt": "Which tool is identified as the compiler in the official Kaspa Toccata Silverscript workspace?",
       "options": [
         "kaspad",
         "silverc",
@@ -287,7 +287,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/silverscript.mdx#L220",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -301,7 +301,7 @@
       "conceptId": "K580-0011",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Which cited Silverscript tooling facility supports building the signature script for an entrypoint ABI?",
+      "prompt": "Which Silverscript tooling facility in the official Kaspa Toccata guide supports building the signature script for an entrypoint ABI?",
       "options": [
         "OpChainblockSeqCommit",
         "getVirtualChainFromBlock",
@@ -314,7 +314,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/silverscript.mdx#L222",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -328,11 +328,11 @@
       "conceptId": "K580-0012",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Which compilation direction does the cited experimental Argent guide describe?",
+      "prompt": "Which compilation direction does the official Kaspa Toccata experimental Argent guide describe?",
       "options": [
         "Argent source to an Ethereum account-state database",
         "Kaspa block headers to Java bytecode to Argent",
-        "Silverscript to a mandatory custodial wallet service",
+        "Silverscript source to Argent actors to a custodial wallet service",
         "Argent source to generated Silverscript to Kaspa script"
       ],
       "correctIndex": 3,
@@ -341,7 +341,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/argent.mdx#L11",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -355,7 +355,7 @@
       "conceptId": "K580-0013",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Why must ordinary transitions preserve hidden template fields in the cited Argent design?",
+      "prompt": "Why must ordinary transitions preserve hidden template fields in the official Kaspa Toccata Argent design?",
       "options": [
         "Later transitions need those fields to validate routes under the intended templates",
         "They are temporary UI labels that never affect validation",
@@ -368,7 +368,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/argent.mdx#L101",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -382,12 +382,12 @@
       "conceptId": "K580-0014",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "How does the cited Argent route-commitment pattern keep long-lived state compact?",
+      "prompt": "How does the official Kaspa Toccata Argent route-commitment pattern keep long-lived state compact?",
       "options": [
         "Store every possible route witness in each user account",
         "Store a route root, then supply a route leaf, Merkle branch and template material when used",
-        "Replace route validation with a shared display name",
-        "Reconstruct the route root from a wallet password"
+        "Replace route validation with a covenant ID lookup in node storage",
+        "Reconstruct the route root by replaying every past transaction"
       ],
       "correctIndex": 1,
       "difficulty": "hard",
@@ -395,7 +395,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/argent.mdx#L113",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -409,7 +409,7 @@
       "conceptId": "K580-0015",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Can a shared covenant ID alone establish that one input is a Player actor and an output is a Game actor in the cited Argent model?",
+      "prompt": "Can a shared covenant ID alone establish that one input is a Player actor and an output is a Game actor in the official Kaspa Toccata Argent model?",
       "options": [
         "Yes; every shared covenant ID encodes all actor types",
         "Yes; an actor role is determined only by the output position",
@@ -422,7 +422,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/argent.mdx#L88",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -436,10 +436,10 @@
       "conceptId": "K580-0016",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "What do consumes and emits describe in the cited Argent source model?",
+      "prompt": "What do consumes and emits describe in the official Kaspa Toccata Argent source model?",
       "options": [
         "The native coin emission schedule and a mining hash rate",
-        "A wallet password and its recovery phrase",
+        "Inputs burned for fees and outputs reserved for change",
         "The number of proof workers and their memory limit",
         "Peer actors consumed in the transaction and named authorized outputs"
       ],
@@ -449,7 +449,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/argent.mdx#L57",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -463,7 +463,7 @@
       "conceptId": "K580-0017",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Must each based-app user operation itself spend the settlement covenant in the cited Toccata model?",
+      "prompt": "Must each based-app user operation itself spend the settlement covenant in the official Kaspa Toccata model?",
       "options": [
         "No; a user operation can be an ordinary v1 L1 transaction carrying lane and payload data",
         "Yes; the settlement covenant must be consumed by every user operation",
@@ -476,7 +476,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L8",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -490,7 +490,7 @@
       "conceptId": "K580-0018",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Who supplies the meaning of a based-app operation payload in the cited Toccata guide?",
+      "prompt": "Who supplies the meaning of a based-app operation payload in the official Kaspa Toccata guide?",
       "options": [
         "Kaspa consensus by executing each app policy directly",
         "The application runtime",
@@ -503,7 +503,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L36",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -517,7 +517,7 @@
       "conceptId": "K580-0019",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "What does the cited based-app settlement covenant track rather than directly executing every user operation?",
+      "prompt": "What does the official Kaspa Toccata based-app settlement covenant track rather than directly executing every user operation?",
       "options": [
         "The complete off-chain database as mutable node account storage",
         "Only a user-selected app name with no state commitment",
@@ -530,7 +530,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L42",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -544,10 +544,10 @@
       "conceptId": "K580-0020",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Which boundary evidence brackets a lane-local transition proof in the cited based-app model?",
+      "prompt": "Which boundary evidence brackets a lane-local transition proof in the official Kaspa Toccata based-app model?",
       "options": [
         "Only a receipt from an unrelated wallet",
-        "A current token price before and after execution",
+        "A state root before execution and a fee receipt after",
         "Only a list of transactions that the executor chose to keep",
         "App-lane inclusion at both a start anchor and an end anchor"
       ],
@@ -557,7 +557,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L112",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -571,12 +571,12 @@
       "conceptId": "K580-0021",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Why must a based-app proof bind to the sequencing commitment actually read by its settlement script in the cited guide?",
+      "prompt": "Why must a based-app proof bind to the sequencing commitment actually read by its settlement script in the official Kaspa Toccata guide?",
       "options": [
         "A correct transition over unrelated L1 activity must not satisfy the settlement check",
         "The commitment is only a UI label and should be ignored",
         "The proof can choose any activity if its new state root is well formed",
-        "The commitment determines the wallet password used for signing"
+        "The commitment only fixes the fee the settlement transaction pays"
       ],
       "correctIndex": 0,
       "difficulty": "hard",
@@ -584,7 +584,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L126",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -598,7 +598,7 @@
       "conceptId": "K580-0022",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "What does OpChainblockSeqCommit expose to a settlement script in the cited Toccata guide?",
+      "prompt": "What does OpChainblockSeqCommit expose to a settlement script in the official Kaspa Toccata guide?",
       "options": [
         "The current wallet seed phrase",
         "The sequencing commitment of an eligible recent selected-parent-chain block",
@@ -611,7 +611,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L120",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -625,10 +625,10 @@
       "conceptId": "K580-0023",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "How does the cited vprogs runtime pattern relate execution to later proof production?",
+      "prompt": "How does the official Kaspa Toccata vprogs runtime pattern relate execution to later proof production?",
       "options": [
         "Every user operation waits for its final L1 aggregate proof before any execution",
-        "Proof workers replace the execution stage entirely",
+        "Proof workers replace the execution stage entirely and commit app state directly",
         "Execution can commit app state while proof workers build later settlement artifacts",
         "Executing an operation automatically proves final settlement"
       ],
@@ -638,7 +638,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L151",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -652,7 +652,7 @@
       "conceptId": "K580-0024",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "How does the cited evolving vprogs pattern represent an L1 chain block containing no app operations?",
+      "prompt": "How does the official Kaspa Toccata evolving vprogs pattern represent an L1 chain block containing no app operations?",
       "options": [
         "It silently removes the block from the processing sequence",
         "It invents a no-fee user transfer to fill the batch",
@@ -665,7 +665,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L155",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -679,11 +679,11 @@
       "conceptId": "K580-0025",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Which receipt-composition order does the cited vprogs guide describe?",
+      "prompt": "Which receipt-composition order does the official Kaspa Toccata vprogs guide describe?",
       "options": [
         "Transaction receipts into batch receipts, then batch receipts into aggregates",
-        "Aggregate receipts into wallet mnemonics, then into transactions",
-        "Block headers into token tickers, then into account passwords",
+        "Aggregate receipts into batch receipts, then into transaction receipts",
+        "Block headers into lane receipts, then into per-user receipts",
         "One independent final settlement proof per opcode with no batching"
       ],
       "correctIndex": 0,
@@ -692,7 +692,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L157",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -706,12 +706,12 @@
       "conceptId": "K580-0026",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Besides state and lane commitments, which program identities appear in the cited vprogs StateTransition journal?",
+      "prompt": "Besides state and lane commitments, which program identities appear in the official Kaspa Toccata vprogs StateTransition journal?",
       "options": [
-        "The user’s browser-extension name and theme",
+        "The settlement covenant ID and the prover's long-term public key",
         "Transaction-processor and batch-processor guest image IDs",
-        "The explorer operator’s username and email",
-        "Only the transaction’s recipient nickname"
+        "The L1 block hash and the miner's coinbase script",
+        "Only the transaction's recipient address"
       ],
       "correctIndex": 1,
       "difficulty": "hard",
@@ -719,7 +719,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L211",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -733,7 +733,7 @@
       "conceptId": "K580-0027",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Which question does the cited Toccata decision guide prioritize when choosing an application architecture?",
+      "prompt": "Which question does the official Kaspa Toccata decision guide prioritize when choosing an application architecture?",
       "options": [
         "Does the application have the largest possible feature list?",
         "Can every user choose a different native coin supply?",
@@ -746,7 +746,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/decision-guide.mdx#L8",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -760,7 +760,7 @@
       "conceptId": "K580-0028",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "What design burden does the cited Toccata guide assign to replicated shared-state UTXOs?",
+      "prompt": "What design burden does the official Kaspa Toccata guide assign to replicated shared-state UTXOs?",
       "options": [
         "Assume consensus automatically merges all replica updates",
         "Remove all indexer evidence because replicas cannot disagree",
@@ -773,7 +773,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/decision-guide.mdx#L98",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -787,7 +787,7 @@
       "conceptId": "K580-0029",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Which proof-system tag mapping is described in the cited Toccata Inline ZK guide?",
+      "prompt": "Which proof-system tag mapping is described in the official Kaspa Toccata Inline ZK guide?",
       "options": [
         "0x20 for Groth16 and 0x21 for RISC Zero Succinct",
         "0x20 for Schnorr and 0x21 for ECDSA",
@@ -796,11 +796,11 @@
       ],
       "correctIndex": 0,
       "difficulty": "hard",
-      "funFact": "The precompile dispatches to the named proof verifier by tag. That tag must be interpreted under the cited revision’s verification rules.",
+      "funFact": "The precompile dispatches to the named proof verifier by tag. That tag must be interpreted under the Toccata revision’s verification rules.",
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/inline-zk.mdx#L51",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -814,7 +814,7 @@
       "conceptId": "K580-0030",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Which limitation does the cited Toccata guide explicitly attach to its compact BN254 Groth16 proof mode?",
+      "prompt": "Which limitation does the official Kaspa Toccata guide explicitly attach to its compact BN254 Groth16 proof mode?",
       "options": [
         "It cannot be verified by a script",
         "It is not post-quantum",
@@ -827,7 +827,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/inline-zk.mdx#L51",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -841,7 +841,7 @@
       "conceptId": "K580-0031",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "In the cited Inline ZK model, how can L1 represent state while detailed transition data remains private?",
+      "prompt": "In the official Kaspa Toccata Inline ZK model, how can L1 represent state while detailed transition data remains private?",
       "options": [
         "Put every private witness in a plaintext block header",
         "Hide the existence of all transactions from consensus",
@@ -854,7 +854,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/inline-zk.mdx#L25",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -868,7 +868,7 @@
       "conceptId": "K580-0032",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "What does the gas field represent in the cited Toccata based-app operation table?",
+      "prompt": "What does the gas field represent in the official Kaspa Toccata based-app operation table?",
       "options": [
         "The app’s final accepted state root",
         "A plaintext copy of the private proving witness",
@@ -881,7 +881,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L32",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -895,7 +895,7 @@
       "conceptId": "K580-0033",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "How does the cited Toccata pricing table make Groth16 verification cost depend on public inputs?",
+      "prompt": "How does the official Kaspa Toccata pricing table make Groth16 verification cost depend on public inputs?",
       "options": [
         "A fixed base plus 250,000 script units multiplied by (public-input count + 1)",
         "A flat one-script-unit cost regardless of input count",
@@ -904,11 +904,11 @@
       ],
       "correctIndex": 0,
       "difficulty": "hard",
-      "funFact": "The cited formula is 14,000,000 + 250,000 × (public inputs + 1) script units, following the gamma_abc element count.",
+      "funFact": "The Toccata pricing formula is 14,000,000 + 250,000 × (public inputs + 1) script units, following the gamma_abc element count.",
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L125",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -922,7 +922,7 @@
       "conceptId": "K580-0034",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "How many committed script units does one v1 compute-budget unit buy in the cited Toccata pricing ladder, before the separate free allowance?",
+      "prompt": "How many committed script units does one v1 compute-budget unit buy in the official Kaspa Toccata pricing ladder, before the separate free allowance?",
       "options": [
         "100 script units",
         "10,000 script units",
@@ -935,7 +935,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L29",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -949,10 +949,10 @@
       "conceptId": "K580-0035",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Why does the cited Toccata guide recommend estimating a tight valid compute budget instead of setting it unnecessarily high?",
+      "prompt": "Why does the official Kaspa Toccata guide recommend estimating a tight valid compute budget instead of setting it unnecessarily high?",
       "options": [
         "A higher budget permanently changes the application’s token supply",
-        "An excessive budget disables every spending rule",
+        "An excessive budget is refunded but blocks the covenant from other spends",
         "An excessive budget raises mass and fees and worsens block admission",
         "A lower declared budget is always valid regardless of runtime work"
       ],
@@ -962,7 +962,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L90",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -976,7 +976,7 @@
       "conceptId": "K580-0036",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "What is the charging unit for signature verification in the cited Toccata pricing guide?",
+      "prompt": "What is the charging unit for signature verification in the official Kaspa Toccata pricing guide?",
       "options": [
         "Only a whole transaction that ultimately succeeds",
         "Only the first valid signature in an entire block",
@@ -989,7 +989,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L119",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -1003,10 +1003,10 @@
       "conceptId": "K580-0037",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Which extra script-public-key size cost appears in the cited Toccata pricing table?",
+      "prompt": "Which extra script-public-key size cost appears in the official Kaspa Toccata pricing table?",
       "options": [
         "100 script units per spent-UTXO script-public-key byte beyond 35 bytes",
-        "One sompi for each character in the recipient nickname",
+        "One script unit for each byte of the transaction payload",
         "No charge for script-public-key bytes of any size",
         "100 script units for every unspent output on the network"
       ],
@@ -1016,7 +1016,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L111",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -1030,12 +1030,12 @@
       "conceptId": "K580-0038",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Which stack event is charged at one script unit per byte in the cited Toccata pricing table?",
+      "prompt": "Which stack event is charged at one script unit per byte in the official Kaspa Toccata pricing table?",
       "options": [
-        "Every byte in the node’s entire historical database",
+        "Every byte read from the UTXO set during validation",
         "Bytes newly pushed into execution stacks",
-        "The number of output addresses shown by an explorer",
-        "The decimal digits in the current KAS market price"
+        "Each byte of the signature script before execution",
+        "Each byte of the transaction's output scripts"
       ],
       "correctIndex": 1,
       "difficulty": "medium",
@@ -1043,7 +1043,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L110",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -1057,7 +1057,7 @@
       "conceptId": "K580-0039",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "What does the cited ComputeBudget::checked_covering_script_units helper return when the covering budget cannot fit the v1 u16 field?",
+      "prompt": "What does the official Kaspa Toccata ComputeBudget::checked_covering_script_units helper return when the covering budget cannot fit the v1 u16 field?",
       "options": [
         "A wrapped smaller budget",
         "A negative budget",
@@ -1070,7 +1070,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L179",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",
@@ -1084,7 +1084,7 @@
       "conceptId": "K580-0040",
       "category": "Kaspa",
       "subcategory": "Toccata Programmability",
-      "prompt": "Why can a relayer adjust compute_budget without invalidating v1 signatures in the cited Toccata design?",
+      "prompt": "Why can a relayer adjust compute_budget without invalidating v1 signatures in the official Kaspa Toccata design?",
       "options": [
         "V1 signatures never commit to any transaction data",
         "The relayer automatically receives every signer’s private key",
@@ -1097,7 +1097,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L183",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
-      "volatile": false,
+      "volatile": true,
       "tags": [
         "kaspa",
         "toccata",

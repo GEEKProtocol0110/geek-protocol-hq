@@ -31,7 +31,7 @@
       "conceptId": "K700-0001",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Reliability",
-      "prompt": "What problem does the cited Kaspa Resolver solve for an application without a fixed node URL?",
+      "prompt": "What problem does Rusty Kaspa's Resolver solve for an application without a fixed node URL?",
       "options": [
         "Finding an available public wRPC endpoint",
         "Confirming a transaction's acceptance without querying a node",
@@ -59,7 +59,7 @@
       "conceptId": "K700-0002",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Reliability",
-      "prompt": "Which two caller choices are included in a cited Kaspa resolver request alongside its TLS preference?",
+      "prompt": "Which two caller choices are included in a Rusty Kaspa resolver request alongside its TLS preference?",
       "options": [
         "Recipient address and transfer amount",
         "Network ID and wRPC encoding",
@@ -87,7 +87,7 @@
       "conceptId": "K700-0003",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Reliability",
-      "prompt": "When the cited resolver first builds a request in an HTTPS browser context, which endpoint transport does it request?",
+      "prompt": "When Rusty Kaspa's resolver first builds a request in an HTTPS browser context, which endpoint transport does it request?",
       "options": [
         "Only unencrypted WebSocket transport",
         "Only a local IPC transport",
@@ -115,7 +115,7 @@
       "conceptId": "K700-0004",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Reliability",
-      "prompt": "How can the cited Kaspa Resolver use an operator's own discovery services?",
+      "prompt": "How can Rusty Kaspa's Resolver use an operator's own discovery services?",
       "options": [
         "Pass node WebSocket URLs as mnemonic recovery words",
         "Put the discovery-service URL in a transaction's payload",
@@ -143,7 +143,7 @@
       "conceptId": "K700-0005",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Reliability",
-      "prompt": "How does the cited resolver choose the order in which it tries its configured services?",
+      "prompt": "How does Rusty Kaspa's resolver choose the order in which it tries its configured services?",
       "options": [
         "It shuffles the list before trying services",
         "It always picks the alphabetically first URL",
@@ -171,7 +171,7 @@
       "conceptId": "K700-0006",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Reliability",
-      "prompt": "Every configured service fails in the cited Kaspa resolver fetch loop. What does the caller receive?",
+      "prompt": "Every configured service fails in Rusty Kaspa's resolver fetch loop. What does the caller receive?",
       "options": [
         "An empty descriptor presented as successful discovery",
         "An error containing the collected failures",
@@ -199,7 +199,7 @@
       "conceptId": "K700-0007",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Reliability",
-      "prompt": "How do get_node and get_url differ in the cited Kaspa Resolver?",
+      "prompt": "How do get_node and get_url differ in Rusty Kaspa's Resolver?",
       "options": [
         "One queries mainnet only; the other queries testnet only",
         "One discovers Borsh only; the other discovers JSON only",
@@ -227,7 +227,7 @@
       "conceptId": "K700-0008",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Reliability",
-      "prompt": "What URL behavior does the cited KaspaRpcClient constructor documentation warn about?",
+      "prompt": "What URL behavior does Rusty Kaspa's KaspaRpcClient constructor documentation warn about?",
       "options": [
         "A constructor URL is used only for the first connection",
         "A constructor URL is ignored whenever a resolver is present",
@@ -255,7 +255,7 @@
       "conceptId": "K700-0009",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Reliability",
-      "prompt": "What does the cited KaspaRpcClient connect method do before starting its new connection attempt?",
+      "prompt": "What does Rusty Kaspa's KaspaRpcClient connect method do before starting its new connection attempt?",
       "options": [
         "Disconnects the previous connection",
         "Retains the old socket until the new connection has fully succeeded",
@@ -283,7 +283,7 @@
       "conceptId": "K700-0010",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Reliability",
-      "prompt": "What does the block option described for the cited KaspaRpcClient connect operation wait for?",
+      "prompt": "What does the block option described for Rusty Kaspa's KaspaRpcClient connect operation wait for?",
       "options": [
         "Completion of the node's entire synchronization process",
         "The first successful connection",
@@ -311,7 +311,7 @@
       "conceptId": "K700-0011",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Reliability",
-      "prompt": "A cited KaspaRpcClient connection fails under ConnectStrategy::Fallback. What cleanup does this branch perform?",
+      "prompt": "A Rusty Kaspa KaspaRpcClient connection fails under ConnectStrategy::Fallback. What cleanup does this branch perform?",
       "options": [
         "Keeps those background services running in this error branch",
         "Returns success with an empty RPC response",
@@ -339,7 +339,7 @@
       "conceptId": "K700-0012",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Reliability",
-      "prompt": "Besides closing the endpoint connection, what does the cited KaspaRpcClient disconnect method do?",
+      "prompt": "Besides closing the endpoint connection, what does Rusty Kaspa's KaspaRpcClient disconnect method do?",
       "options": [
         "Only clears the displayed URL while services keep running",
         "Submits a replacement for every outgoing transaction",
@@ -367,7 +367,7 @@
       "conceptId": "K700-0013",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Reliability",
-      "prompt": "What is the intended use of the cited KaspaRpcClient trigger_abort helper?",
+      "prompt": "What is the intended use of Rusty Kaspa's KaspaRpcClient trigger_abort helper?",
       "options": [
         "Testing application reconnection behavior by aborting the socket",
         "Requesting a graceful server shutdown",
@@ -395,7 +395,7 @@
       "conceptId": "K700-0014",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Reliability",
-      "prompt": "The cited parse_url helper receives wss://node.example with no explicit port. How does it handle the default wRPC port?",
+      "prompt": "Rusty Kaspa's parse_url helper receives wss://node.example with no explicit port. How does it handle the default wRPC port?",
       "options": [
         "Always appends the default Borsh port",
         "Leaves the URL without an added port",
@@ -423,7 +423,7 @@
       "conceptId": "K700-0015",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Reliability",
-      "prompt": "When the cited parse_url helper needs a default port for a bare hostname, what determines that port?",
+      "prompt": "When Rusty Kaspa's parse_url helper needs a default port for a bare hostname, what determines that port?",
       "options": [
         "Only the host operating system's default HTTP port",
         "Only the address's public-key version",
@@ -451,7 +451,7 @@
       "conceptId": "K700-0016",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "Why does the cited wallet scanner hold the processor's notification lock during a scan?",
+      "prompt": "Why does Rusty Kaspa's wallet scanner hold the processor's notification lock during a scan?",
       "options": [
         "To prevent the node from adding any new blocks",
         "To guarantee an immutable remote snapshot across the entire network",
@@ -479,7 +479,7 @@
       "conceptId": "K700-0017",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "How does EmptyWindow differ from Depth in the cited wallet scanner's stopping policy?",
+      "prompt": "How does EmptyWindow differ from Depth in Rusty Kaspa's wallet scanner's stopping policy?",
       "options": [
         "It searches for an empty address range rather than a specified derivation depth",
         "It scans exactly one address regardless of the result",
@@ -507,7 +507,7 @@
       "conceptId": "K700-0018",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "Why can the first range in the cited address-manager scan exceed one ordinary window?",
+      "prompt": "Why can the first range in Rusty Kaspa's address-manager scan exceed one ordinary window?",
       "options": [
         "It always covers the complete u32 derivation space",
         "It includes the known address index as well as the minimum window",
@@ -535,7 +535,7 @@
       "conceptId": "K700-0019",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "Which address-manager index does the cited scan retain after discovering UTXOs at later derived addresses?",
+      "prompt": "Which address-manager index does Rusty Kaspa's scan retain after discovering UTXOs at later derived addresses?",
       "options": [
         "The first empty address after every completed scan",
         "The highest index requested even if no UTXO was found there",
@@ -563,7 +563,7 @@
       "conceptId": "K700-0020",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "What context does the cited scanner use to classify each discovered UTXO's balance contribution?",
+      "prompt": "What context does Rusty Kaspa's scanner use to classify each discovered UTXO's balance contribution?",
       "options": [
         "Only the sum of output amounts without maturity classification",
         "Only the number of addresses queried",
@@ -619,7 +619,7 @@
       "conceptId": "K700-0022",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "A cited fixed-set scan finds UTXOs for several supplied addresses. How is its returned balance built?",
+      "prompt": "A Rusty Kaspa fixed-set scan finds UTXOs for several supplied addresses. How is its returned balance built?",
       "options": [
         "By selecting only the largest discovered UTXO",
         "By summing the classified contributions of the discovered entries",
@@ -647,7 +647,7 @@
       "conceptId": "K700-0023",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "What separate condition does the cited wallet SyncMonitor track beyond having a network connection?",
+      "prompt": "What separate condition does Rusty Kaspa's wallet SyncMonitor track beyond having a network connection?",
       "options": [
         "Whether the socket has ever opened successfully",
         "Whether the endpoint URL has a recognized scheme",
@@ -675,7 +675,7 @@
       "conceptId": "K700-0024",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "The cited SyncMonitor learns that its node is not synced and no monitoring task is running. What does it start?",
+      "prompt": "Rusty Kaspa's SyncMonitor learns that its node is not synced and no monitoring task is running. What does it start?",
       "options": [
         "An automatic outgoing-transaction rebroadcast",
         "A new wallet address-range scan on every poll",
@@ -703,7 +703,7 @@
       "conceptId": "K700-0025",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "When the cited SyncMonitor detects that the node has become synced, what wallet state does it report?",
+      "prompt": "When Rusty Kaspa's SyncMonitor detects that the node has become synced, what wallet state does it report?",
       "options": [
         "SyncState::Synced",
         "Only the original NotSynced state until the wallet restarts",
@@ -731,7 +731,7 @@
       "conceptId": "K700-0026",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "How does the cited source characterize its StateObserver that extracts sync stages from node stdout?",
+      "prompt": "How does Rusty Kaspa's source characterize its StateObserver that extracts sync stages from node stdout?",
       "options": [
         "A consensus proof independent of log wording",
         "A temporary log-parsing implementation",
@@ -740,7 +740,7 @@
       ],
       "correctIndex": 1,
       "difficulty": "hard",
-      "funFact": "The comment explicitly describes temporary extraction from stdout pending a proper notification API. Integrators should scope such behavior to the cited revision.",
+      "funFact": "The comment explicitly describes temporary extraction from stdout pending a proper notification API. Integrators should scope such behavior to Rusty Kaspa's revision.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/sync.rs#L195",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-17",
@@ -759,7 +759,7 @@
       "conceptId": "K700-0027",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "What happens during the cited wallet processor's initialization if the server's RPC API version is newer than the client supports?",
+      "prompt": "What happens during Rusty Kaspa's wallet processor's initialization if the server's RPC API version is newer than the client supports?",
       "options": [
         "It assumes all newer APIs are backward compatible",
         "It automatically upgrades the installed wallet code",
@@ -787,7 +787,7 @@
       "conceptId": "K700-0028",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "The cited wallet processor connects to a server without a UTXO index. How does initialization respond?",
+      "prompt": "Rusty Kaspa's wallet processor connects to a server without a UTXO index. How does initialization respond?",
       "options": [
         "Reports a successful initialization with an assumed zero balance",
         "Builds the missing remote index through this client call",
@@ -815,7 +815,7 @@
       "conceptId": "K700-0029",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "A wallet configured for testnet-10 reaches a mainnet server in the cited initialization flow. What happens?",
+      "prompt": "A wallet configured for testnet-10 reaches a mainnet server in Rusty Kaspa's initialization flow. What happens?",
       "options": [
         "Initialization rejects the network mismatch",
         "It treats matching address payload sizes as enough to continue",
@@ -843,7 +843,7 @@
       "conceptId": "K700-0030",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "Where does the cited wallet processor obtain its initial current DAA score during server initialization?",
+      "prompt": "Where does Rusty Kaspa's wallet processor obtain its initial current DAA score during server initialization?",
       "options": [
         "The local machine's Unix timestamp",
         "The server-info response's virtual_daa_score",
@@ -871,7 +871,7 @@
       "conceptId": "K700-0031",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "If the cited processor cannot negotiate its node connection, which behavior prevents silently continuing as initialized?",
+      "prompt": "If Rusty Kaspa's processor cannot negotiate its node connection, which behavior prevents silently continuing as initialized?",
       "options": [
         "It silently assumes an empty wallet and continues",
         "It reports successful initialization before retrying forever",
@@ -899,7 +899,7 @@
       "conceptId": "K700-0032",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "Which local collections does the cited wallet processor clear during disconnect cleanup?",
+      "prompt": "Which local collections does Rusty Kaspa's wallet processor clear during disconnect cleanup?",
       "options": [
         "The server's mempool and global UTXO index",
         "The account's encrypted key storage and mnemonic",
@@ -927,7 +927,7 @@
       "conceptId": "K700-0033",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "Why does the cited processor revisit pending and outgoing entries after a DAA-score change?",
+      "prompt": "Why does Rusty Kaspa's processor revisit pending and outgoing entries after a DAA-score change?",
       "options": [
         "Their local lifecycle state can depend on score progression",
         "Every score increase automatically confirms every pending entry",
@@ -955,7 +955,7 @@
       "conceptId": "K700-0034",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "Can a stasis entry move directly to the mature promotion list in the cited processor when its assessed maturity is Confirmed?",
+      "prompt": "Can a stasis entry move directly to the mature promotion list in Rusty Kaspa's processor when its assessed maturity is Confirmed?",
       "options": [
         "No; an extra notification must always move it through pending",
         "Yes; it need not be observed in pending first",
@@ -983,7 +983,7 @@
       "conceptId": "K700-0035",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "The same address/outpoint appears in both added and removed UTXO lists in the cited processor. How is it handled?",
+      "prompt": "The same address/outpoint appears in both added and removed UTXO lists in Rusty Kaspa's processor. How is it handled?",
       "options": [
         "Counted once as a spend and once as unrelated new income",
         "Ignored entirely, including any updated entry information",
@@ -1011,7 +1011,7 @@
       "conceptId": "K700-0036",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "For the ordinary unmatched entries in a cited UTXO-change batch, which pass runs first?",
+      "prompt": "For the ordinary unmatched entries in a Rusty Kaspa UTXO-change batch, which pass runs first?",
       "options": [
         "Additions, followed by ordinary removals",
         "Only additions; the batch's removals are ignored",
@@ -1039,7 +1039,7 @@
       "conceptId": "K700-0037",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "How does the cited processor avoid refreshing the same affected context's balance once for every changed entry?",
+      "prompt": "How does Rusty Kaspa's processor avoid refreshing the same affected context's balance once for every changed entry?",
       "options": [
         "Collects affected contexts in a set, then updates each context",
         "Refreshes every context once for every entry in the batch",
@@ -1067,7 +1067,7 @@
       "conceptId": "K700-0038",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Recovery",
-      "prompt": "Which notification scope does the cited wallet processor start when registering its persistent listener?",
+      "prompt": "Which notification scope does Rusty Kaspa's wallet processor start when registering its persistent listener?",
       "options": [
         "Every block-template event",
         "VirtualDaaScoreChanged",
@@ -1095,7 +1095,7 @@
       "conceptId": "K700-0039",
       "category": "Kaspa",
       "subcategory": "Kaspa Subscription Behavior",
-      "prompt": "In the cited UTXO subscription mutation parser, what does Start with an empty address list mean?",
+      "prompt": "In Rusty Kaspa's UTXO subscription mutation parser, what does Start with an empty address list mean?",
       "options": [
         "Subscribe to no addresses",
         "Subscribe only to addresses already present in this request",
@@ -1123,7 +1123,7 @@
       "conceptId": "K700-0040",
       "category": "Kaspa",
       "subcategory": "Kaspa Subscription Behavior",
-      "prompt": "In the cited UTXO subscription mutation parser, what does Stop with an empty address list request?",
+      "prompt": "In Rusty Kaspa's UTXO subscription mutation parser, what does Stop with an empty address list request?",
       "options": [
         "Remove only the first tracked address",
         "Keep the existing subscription unchanged",
@@ -1151,7 +1151,7 @@
       "conceptId": "K700-0041",
       "category": "Kaspa",
       "subcategory": "Kaspa Subscription Behavior",
-      "prompt": "An already selective cited UTXO subscription receives Start for more addresses. How does its selection change?",
+      "prompt": "An already selective Rusty Kaspa's UTXO subscription receives Start for more addresses. How does its selection change?",
       "options": [
         "It becomes the union of the old and added address sets",
         "It replaces the existing selection with only the new addresses",
@@ -1179,7 +1179,7 @@
       "conceptId": "K700-0042",
       "category": "Kaspa",
       "subcategory": "Kaspa Subscription Behavior",
-      "prompt": "After a selective cited UTXO subscription removes its last tracked address, which state does it enter?",
+      "prompt": "After a selective Rusty Kaspa's UTXO subscription removes its last tracked address, which state does it enter?",
       "options": [
         "All, the wildcard state",
         "None, the inactive state",
@@ -1207,7 +1207,7 @@
       "conceptId": "K700-0043",
       "category": "Kaspa",
       "subcategory": "Kaspa Subscription Behavior",
-      "prompt": "An All-state cited UTXO subscription receives Start for a specific nonempty address set. What is the resulting local selection?",
+      "prompt": "An All-state Rusty Kaspa's UTXO subscription receives Start for a specific nonempty address set. What is the resulting local selection?",
       "options": [
         "All addresses except that set",
         "All addresses with no local change",
@@ -1235,7 +1235,7 @@
       "conceptId": "K700-0044",
       "category": "Kaspa",
       "subcategory": "Kaspa Subscription Behavior",
-      "prompt": "A cited All-state UTXO subscription receives Stop for a specific nonempty address list. What does this branch do?",
+      "prompt": "A Rusty Kaspa All-state UTXO subscription receives Stop for a specific nonempty address list. What does this branch do?",
       "options": [
         "Creates an all-except-these exclusion filter",
         "Stops the entire subscription regardless of the list",
@@ -1263,7 +1263,7 @@
       "conceptId": "K700-0045",
       "category": "Kaspa",
       "subcategory": "Kaspa Subscription Behavior",
-      "prompt": "When adding addresses to an already selective subscription, how do the cited AddressSet and Wildcard policies differ upstream?",
+      "prompt": "When adding addresses to an already selective subscription, how do Rusty Kaspa's AddressSet and Wildcard policies differ upstream?",
       "options": [
         "AddressSet forwards the new-address start; Wildcard needs no new upstream mutation",
         "Both always restart the entire upstream subscription",
@@ -1291,7 +1291,7 @@
       "conceptId": "K700-0046",
       "category": "Kaspa",
       "subcategory": "Kaspa Subscription Behavior",
-      "prompt": "What happens when an already All-state cited UTXO subscription receives another wildcard Start?",
+      "prompt": "What happens when an already All-state Rusty Kaspa's UTXO subscription receives another wildcard Start?",
       "options": [
         "Creates a second independent wildcard subscription state",
         "No subscription change is produced",
@@ -1319,7 +1319,7 @@
       "conceptId": "K700-0047",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Events",
-      "prompt": "What remains in a cited active VirtualChainChanged notification when accepted transaction IDs are excluded?",
+      "prompt": "What remains in a Rusty Kaspa active VirtualChainChanged notification when accepted transaction IDs are excluded?",
       "options": [
         "An empty notification without either chain-hash list",
         "Only removed hashes, with added hashes discarded",
@@ -1347,7 +1347,7 @@
       "conceptId": "K700-0048",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Events",
-      "prompt": "What does the cited overall-notification filter return for an inactive subscription?",
+      "prompt": "What does Rusty Kaspa's overall-notification filter return for an inactive subscription?",
       "options": [
         "A copy of the full notification",
         "An empty payload still marked as a delivered event",
@@ -1375,7 +1375,7 @@
       "conceptId": "K700-0049",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Events",
-      "prompt": "Which score does the cited SinkBlueScoreChanged event describe?",
+      "prompt": "Which score does Rusty Kaspa's SinkBlueScoreChanged event describe?",
       "options": [
         "The virtual selected parent's blue score",
         "The virtual state's DAA score",
@@ -1403,11 +1403,11 @@
       "conceptId": "K700-0050",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Events",
-      "prompt": "Which cited RPC event distinguishes resolution of a finality conflict from its initial report?",
+      "prompt": "Which Rusty Kaspa RPC event distinguishes resolution of a finality conflict from its initial report?",
       "options": [
-        "NewBlockTemplate",
+        "FinalityConflictCleared",
         "FinalityConflictResolved",
-        "UtxosChanged",
+        "VirtualChainChanged",
         "SinkBlueScoreChanged"
       ],
       "correctIndex": 1,
@@ -1431,7 +1431,7 @@
       "conceptId": "K700-0051",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Events",
-      "prompt": "Which cited RPC notification tells a mining integration that a new block template is available?",
+      "prompt": "Which Rusty Kaspa RPC notification tells a mining integration that a new block template is available?",
       "options": [
         "FinalityConflictResolved",
         "SinkBlueScoreChanged",
@@ -1459,7 +1459,7 @@
       "conceptId": "K700-0052",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Construction",
-      "prompt": "Does successfully using the cited Kaspa ScriptBuilder establish that the resulting script will execute correctly?",
+      "prompt": "Does successfully using Rusty Kaspa's ScriptBuilder establish that the resulting script will execute correctly?",
       "options": [
         "Yes; successful construction proves all signatures valid",
         "Yes; every canonically encoded script must evaluate true",
@@ -1487,7 +1487,7 @@
       "conceptId": "K700-0053",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Construction",
-      "prompt": "An add_op call would exceed the cited builder's maximum script size. What happens to that attempted append?",
+      "prompt": "An add_op call would exceed Rusty Kaspa's builder's maximum script size. What happens to that attempted append?",
       "options": [
         "It returns an error without appending the opcode",
         "It truncates the existing script to make space",
@@ -1515,7 +1515,7 @@
       "conceptId": "K700-0054",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Construction",
-      "prompt": "Why can add_data encode a single-byte small positive integer as one opcode in the cited builder?",
+      "prompt": "Why can add_data encode a single-byte small positive integer as one opcode in Rusty Kaspa's builder?",
       "options": [
         "It always emits a four-byte length prefix",
         "It selects the corresponding canonical small-integer opcode",
@@ -1543,7 +1543,7 @@
       "conceptId": "K700-0055",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Construction",
-      "prompt": "When should a cited builder caller consider add_data_with_push_opcode instead of add_data?",
+      "prompt": "When should a Rusty Kaspa builder caller consider add_data_with_push_opcode instead of add_data?",
       "options": [
         "When the caller wants to bypass element-size checks",
         "When the caller wants the builder to execute the script",
@@ -1571,7 +1571,7 @@
       "conceptId": "K700-0056",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Construction",
-      "prompt": "Why can a data append fail in the cited builder even if the whole script would fit its total length limit?",
+      "prompt": "Why can a data append fail in Rusty Kaspa's builder even if the whole script would fit its total length limit?",
       "options": [
         "Every data element must have exactly eight bytes",
         "Only the first element may contain nonzero bytes",
@@ -1599,7 +1599,7 @@
       "conceptId": "K700-0057",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Construction",
-      "prompt": "Which byte order does the cited builder use for multi-byte OpPushData2 and OpPushData4 length prefixes?",
+      "prompt": "Which byte order does Rusty Kaspa's builder use for multi-byte OpPushData2 and OpPushData4 length prefixes?",
       "options": [
         "Little-endian",
         "Big-endian",
@@ -1627,7 +1627,7 @@
       "conceptId": "K700-0058",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Construction",
-      "prompt": "What does drain do to the cited builder's accumulated script bytes?",
+      "prompt": "What does drain do to Rusty Kaspa's builder's accumulated script bytes?",
       "options": [
         "Returns a copy while retaining all accumulated bytes",
         "Returns them and leaves an empty internal vector",
@@ -1655,7 +1655,7 @@
       "conceptId": "K700-0059",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Number Encoding",
-      "prompt": "How does the cited Kaspa script integer serializer represent a negative integer's sign?",
+      "prompt": "How does Rusty Kaspa's script integer serializer represent a negative integer's sign?",
       "options": [
         "A UTF-8 minus sign before decimal digits",
         "A fixed two's-complement eight-byte word",
@@ -1683,7 +1683,7 @@
       "conceptId": "K700-0060",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Number Encoding",
-      "prompt": "Why can the cited script integer serializer append a zero byte to a positive magnitude?",
+      "prompt": "Why can Rusty Kaspa's script integer serializer append a zero byte to a positive magnitude?",
       "options": [
         "To force every integer to use exactly eight bytes",
         "To distinguish a transaction input from an output",
@@ -1711,7 +1711,7 @@
       "conceptId": "K700-0061",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Number Encoding",
-      "prompt": "What integer does the cited deserialize_i64 helper return for an empty byte vector?",
+      "prompt": "What integer does Rusty Kaspa's deserialize_i64 helper return for an empty byte vector?",
       "options": [
         "Zero",
         "Negative one",
@@ -1739,7 +1739,7 @@
       "conceptId": "K700-0062",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Number Encoding",
-      "prompt": "What does the cited deserialize_i64 implementation say about nonminimal integer encodings that remain within eight bytes?",
+      "prompt": "What does Rusty Kaspa's deserialize_i64 implementation say about nonminimal integer encodings that remain within eight bytes?",
       "options": [
         "Every redundant zero byte always causes failure",
         "Minimal encoding is not required by this helper",
@@ -1767,7 +1767,7 @@
       "conceptId": "K700-0063",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Number Encoding",
-      "prompt": "How does the cited Boolean stack decoder treat the single byte 0x80, the negative-zero representation?",
+      "prompt": "How does Rusty Kaspa's Boolean stack decoder treat the single byte 0x80, the negative-zero representation?",
       "options": [
         "As true because every nonempty vector is true",
         "As true because its sign bit is set",
@@ -1823,7 +1823,7 @@
       "conceptId": "K700-0065",
       "category": "Kaspa",
       "subcategory": "Kaspa Address Encoding",
-      "prompt": "How does the cited Kaspa address encoder turn payload bytes into alphabet indexes?",
+      "prompt": "How does Rusty Kaspa's address encoder turn payload bytes into alphabet indexes?",
       "options": [
         "Converts eight-bit bytes into five-bit groups",
         "Converts every byte to two hexadecimal characters",
@@ -1851,7 +1851,7 @@
       "conceptId": "K700-0066",
       "category": "Kaspa",
       "subcategory": "Kaspa Address Encoding",
-      "prompt": "How many encoded characters does the cited decoder separate as the checksum suffix?",
+      "prompt": "How many encoded characters does Rusty Kaspa's decoder separate as the checksum suffix?",
       "options": [
         "Four",
         "Eight",
@@ -1860,7 +1860,7 @@
       ],
       "correctIndex": 1,
       "difficulty": "medium",
-      "funFact": "decode_payload subtracts eight characters before separating payload groups from checksum groups. This is an encoding detail of the cited implementation.",
+      "funFact": "decode_payload subtracts eight characters before separating payload groups from checksum groups. This is an encoding detail of Rusty Kaspa's implementation.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/addresses/src/bech32.rs#L131",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-17",
@@ -1879,7 +1879,7 @@
       "conceptId": "K700-0067",
       "category": "Kaspa",
       "subcategory": "Kaspa Address Encoding",
-      "prompt": "An address payload contains a character outside the cited decoder's alphabet. What happens?",
+      "prompt": "An address payload contains a character outside Rusty Kaspa's decoder's alphabet. What happens?",
       "options": [
         "The character is silently deleted",
         "The character is replaced with the nearest alphabet entry",
@@ -1907,9 +1907,9 @@
       "conceptId": "K700-0068",
       "category": "Kaspa",
       "subcategory": "Kaspa Address Encoding",
-      "prompt": "After checksum validation and five-to-eight-bit conversion, how does the cited decoder separate address type from data?",
+      "prompt": "After checksum validation and five-to-eight-bit conversion, how does Rusty Kaspa's decoder separate address type from data?",
       "options": [
-        "Reads the last decoded byte as the version",
+        "Reads the last decoded byte as the version and the rest as payload",
         "Uses the checksum as the version and keeps all decoded bytes as payload",
         "Uses the address's character count as its version",
         "Reads the first decoded byte as the version and the remainder as payload"
@@ -1935,7 +1935,7 @@
       "conceptId": "K700-0069",
       "category": "Kaspa",
       "subcategory": "Kaspa Merkle Construction",
-      "prompt": "In the cited Kaspa Merkle helper, what is the root of a tree containing exactly one pre-hashed leaf?",
+      "prompt": "In Rusty Kaspa's Merkle helper, what is the root of a tree containing exactly one pre-hashed leaf?",
       "options": [
         "That leaf hash itself",
         "The leaf hashed with itself once",
@@ -1963,7 +1963,7 @@
       "conceptId": "K700-0070",
       "category": "Kaspa",
       "subcategory": "Kaspa Merkle Construction",
-      "prompt": "What root does the cited Kaspa Merkle helper return for an empty leaf sequence?",
+      "prompt": "What root does Rusty Kaspa's Merkle helper return for an empty leaf sequence?",
       "options": [
         "The branch hash of two zero hashes",
         "ZERO_HASH",
@@ -1991,7 +1991,7 @@
       "conceptId": "K700-0071",
       "category": "Kaspa",
       "subcategory": "Kaspa Merkle Construction",
-      "prompt": "For three leaves, how does the cited Kaspa Merkle helper supply the missing sibling beside the third leaf?",
+      "prompt": "For three leaves, how does Rusty Kaspa's Merkle helper supply the missing sibling beside the third leaf?",
       "options": [
         "Duplicates the third leaf",
         "Drops the third leaf completely",
@@ -2019,7 +2019,7 @@
       "conceptId": "K700-0072",
       "category": "Kaspa",
       "subcategory": "Kaspa Merkle Construction",
-      "prompt": "Why must an integration preserve leaf order when reproducing the cited Kaspa Merkle root?",
+      "prompt": "Why must an integration preserve leaf order when reproducing Rusty Kaspa's Merkle root?",
       "options": [
         "The helper sorts every leaf before hashing",
         "Only the number of leaves affects the root",
@@ -2047,7 +2047,7 @@
       "conceptId": "K700-0073",
       "category": "Kaspa",
       "subcategory": "Kaspa Merkle Construction",
-      "prompt": "What memory advantage does the cited StreamingMerkleBuilder have over retaining an entire tree?",
+      "prompt": "What memory advantage does Rusty Kaspa's StreamingMerkleBuilder have over retaining an entire tree?",
       "options": [
         "It uses logarithmic stack space without heap allocation",
         "It retains all leaves and all internal nodes on the heap",
@@ -2075,7 +2075,7 @@
       "conceptId": "K700-0074",
       "category": "Kaspa",
       "subcategory": "Kaspa Merkle Construction",
-      "prompt": "What must a caller pass to the cited StreamingMerkleBuilder add_leaf method?",
+      "prompt": "What must a caller pass to Rusty Kaspa's StreamingMerkleBuilder add_leaf method?",
       "options": [
         "An unparsed transaction JSON string",
         "An already computed leaf hash",
@@ -2103,7 +2103,7 @@
       "conceptId": "K700-0075",
       "category": "Kaspa",
       "subcategory": "Kaspa Merkle Construction",
-      "prompt": "When adding a leaf, when does the cited streaming Merkle builder merge its current subtree with the top stacked subtree?",
+      "prompt": "When adding a leaf, when does Rusty Kaspa's streaming Merkle builder merge its current subtree with the top stacked subtree?",
       "options": [
         "Whenever their hash strings share a prefix",
         "Only when their hashes are identical",
@@ -2131,7 +2131,7 @@
       "conceptId": "K700-0076",
       "category": "Kaspa",
       "subcategory": "Kaspa Merkle Construction",
-      "prompt": "Under matching leaf order and branch hasher, how should the cited streaming builder's root compare with the batch Merkle helper's root?",
+      "prompt": "Under matching leaf order and branch hasher, how should Rusty Kaspa's streaming builder's root compare with the batch Merkle helper's root?",
       "options": [
         "The streaming root is always the bitwise inverse",
         "Only their first byte should match",

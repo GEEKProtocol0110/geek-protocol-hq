@@ -5,7 +5,7 @@
   "independentReview": false,
   "scope": "All active static rows in the category registry, including source-checked rows; excludes retired lookup-only and held CCE rows.",
   "limit": "Heuristic screening and internal pair triage are not exhaustive semantic, factual, category, licensing or difficulty review. Unflagged drafts still need item-by-item primary-source review.",
-  "corpusHash": "fe07583ea4cbb22a12df355c2dd88d407d96e07b6a96186267ad3fa24aed9ef6",
+  "corpusHash": "677c7ec6d2a7fbcf20acd635a330fd4ca2a5c95c094d67987ab42fd03050a7b2",
   "active": 8338,
   "recordedSourceChecks": 876,
   "needsFactualReview": 7462,
@@ -82,7 +82,7 @@
     {
       "category": "kaspa",
       "id": "K250-0053",
-      "gradingHash": "93b119f01e316c8e7b61952984ea7e58f71c72ec634022812204d462a7558f89",
+      "gradingHash": "ca6d706e2e11247dad1e4841cda2a99a333ba6312f072c9b5625dce33c527f30",
       "reasons": [
         "time-scope-review"
       ],
@@ -104,7 +104,7 @@
     {
       "category": "kaspa",
       "id": "K624-0019",
-      "gradingHash": "cfdf10919318b5f46e9f2ec5037b10870c9e9b41ae7b5821b80a6874586168fe",
+      "gradingHash": "9421bed6efc73015e99a28a454b94aba59c69ec70c64ff4b06d4e0d545addfa9",
       "reasons": [
         "time-scope-review"
       ],

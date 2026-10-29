@@ -45,7 +45,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L510",
       "evidenceSymbol": "interface Window",
       "sourceSha256": "f7f3d0cdf2c4a3e5b4a0b2441aa6d5c826ca0e29384df41a4df752d6cbcd1768",
-      "questionSha256": "0006f6647b4533659fdcb8b80edae6d15e339b820e32ef1ad8aac86ecd2ecdd2"
+      "questionSha256": "16ee429471991ba94b0557e4807536fc694f09135a64e1744ca19cbed5df4f51"
     },
     {
       "id": "K540-0002",
@@ -53,7 +53,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L531",
       "evidenceSymbol": "window.dispatchEvent(new Event('kasware#initialized'))",
       "sourceSha256": "f7f3d0cdf2c4a3e5b4a0b2441aa6d5c826ca0e29384df41a4df752d6cbcd1768",
-      "questionSha256": "e7d7ba8ed3ce0d2c078324d22f095ce53f41633268ef1ff0982559ab567edacd"
+      "questionSha256": "376f3245fd56758c36e18fbf54576c4742ea3a31e57332909a552df6c8e0a8bc"
     },
     {
       "id": "K540-0003",
@@ -61,7 +61,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/controller.ts#L36",
       "evidenceSymbol": "getAccounts = async",
       "sourceSha256": "d5269c7dd08c3e67226f2df63b90a3fafa0ea6d117058bb03643a0273a994300",
-      "questionSha256": "88f5ec704f4f1c061dc840b963210b1a613293c023b33b781c757368a2f2da64"
+      "questionSha256": "f589bc9965c946b8232125c47193c9154db9ebebb3664fe19ab949ab952f940a"
     },
     {
       "id": "K540-0004",
@@ -69,7 +69,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/service/permission.ts#L117",
       "evidenceSymbol": "hasPermission = (origin)",
       "sourceSha256": "0a727c95615c2f86be6ea1f2da935a1a48cbeccbe43b67470f270aa0e1f286db",
-      "questionSha256": "ca13dc8fabeecfe0149137e4167802488b4d78bf8604555199bcc9738694b0d2"
+      "questionSha256": "572122dccc812f381efe2bd9a449b6420526e3f7eac7d367b8f9f0d3f41106d7"
     },
     {
       "id": "K540-0005",
@@ -77,7 +77,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/rpcFlow.ts#L89",
       "evidenceSymbol": "if (approvalType &&",
       "sourceSha256": "468978a63d3ac28978f1230065f728dd4f67f92fc730c4bcaae3add77672b678",
-      "questionSha256": "b9ad8cc8a6449a5de01747142634cc6c0ba7eb1f085d31b5f9b68182e74f72da"
+      "questionSha256": "8661b7b07997ce97fad47202359c7aaa3dcdb6efcfd4edd932d67328892db886"
     },
     {
       "id": "K540-0006",
@@ -85,7 +85,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/rpcFlow.ts#L41",
       "evidenceSymbol": "if (!isUnlock)",
       "sourceSha256": "468978a63d3ac28978f1230065f728dd4f67f92fc730c4bcaae3add77672b678",
-      "questionSha256": "737d656962b3a5b33ffc3e0ed0b3e61d5f02521be811aeb67368bcb030a7d3ee"
+      "questionSha256": "1509fa632d68639de473d39fa0f7cf330b421203a86919df25ce87389ef562d6"
     },
     {
       "id": "K540-0007",
@@ -93,7 +93,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L402",
       "evidenceSymbol": "sendKaspa = async",
       "sourceSha256": "f7f3d0cdf2c4a3e5b4a0b2441aa6d5c826ca0e29384df41a4df752d6cbcd1768",
-      "questionSha256": "0bd0369bb4f41ad03e28ca28ddceb1ceaf0fef58766d5544637d5a4226796d7e"
+      "questionSha256": "92e299abec6aa8947b789e581f9fd8fb7078ea5d3cc625a22912037e31ecd896"
     },
     {
       "id": "K540-0008",
@@ -101,7 +101,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/controller.ts#L144",
       "evidenceSymbol": "getKRC20Balance = async",
       "sourceSha256": "d5269c7dd08c3e67226f2df63b90a3fafa0ea6d117058bb03643a0273a994300",
-      "questionSha256": "4e8786a28c179d6bf36e7345e2e62f2a6e8ccfab7651cdd1f98fbfc4ebe58128"
+      "questionSha256": "b1959dbe8e97733bf3826373960e51d4a5cb849c8f782278ff872224865faca3"
     },
     {
       "id": "K540-0009",
@@ -109,7 +109,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/pushEventHandlers.ts#L47",
       "evidenceSymbol": "accountsChanged = (accounts: string[])",
       "sourceSha256": "cdd55b84dcb6915510ce845e8fa4b383193cd177554e7110bafed9612fd4d9e5",
-      "questionSha256": "d41df51f2edc471e8c067d67442e06059c009369824a4d6d1cc319b9c9de1336"
+      "questionSha256": "68d2c036ddd9a616ea6a3a29ff429053ba1cb063a6781c38585ba0cf4a00d731"
     },
     {
       "id": "K540-0010",
@@ -117,7 +117,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/pushEventHandlers.ts#L62",
       "evidenceSymbol": "this._emit('networkChanged', network)",
       "sourceSha256": "cdd55b84dcb6915510ce845e8fa4b383193cd177554e7110bafed9612fd4d9e5",
-      "questionSha256": "3d0884c58be2ba4ff14f3c6b9701ec3ce2afa9090e58bad40135abd35f8bedcf"
+      "questionSha256": "ba24342570dce0888e3171a36bc162f67661bd0016a59438d59c02ddb1e277c0"
     },
     {
       "id": "K540-0011",
@@ -125,7 +125,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/pushEventHandlers.ts#L38",
       "evidenceSymbol": "this.provider._state.accounts = null",
       "sourceSha256": "cdd55b84dcb6915510ce845e8fa4b383193cd177554e7110bafed9612fd4d9e5",
-      "questionSha256": "07e2d7dae34a3e39545edceecfbf3344f91b40c19476e2e31ce01fe806fd8b3e"
+      "questionSha256": "1a0a47f05edc8ca576df29a69ab042d6881139547cf1491468b5d51b68578723"
     },
     {
       "id": "K540-0012",
@@ -133,7 +133,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/controller.ts#L552",
       "evidenceSymbol": "getVersion = async",
       "sourceSha256": "d5269c7dd08c3e67226f2df63b90a3fafa0ea6d117058bb03643a0273a994300",
-      "questionSha256": "059a13b0e05dff66ff15d116fddf903ef8f3be883a0d85e739a7ca8aa3a263a4"
+      "questionSha256": "13d07203ad7b6e3e7e4ca8706b862fbdcb9d9a708c647fd528e571e2f94a3b7a"
     },
     {
       "id": "K540-0013",
@@ -141,7 +141,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L465",
       "evidenceSymbol": "pushTx = async (rawtx: string)",
       "sourceSha256": "f7f3d0cdf2c4a3e5b4a0b2441aa6d5c826ca0e29384df41a4df752d6cbcd1768",
-      "questionSha256": "1eaa1689a0fe89b6ace4eb4b847c3feb081b1b7e38efdb367ca3703af68e9951"
+      "questionSha256": "78c71c6b073bd0de95ff6da87eb6061c5855bc652679a3cf90d624adee53431e"
     },
     {
       "id": "K540-0014",
@@ -149,7 +149,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L431",
       "evidenceSymbol": "throw new Error('deprecated. please use krc20BatchTransferTransaction() instead')",
       "sourceSha256": "f7f3d0cdf2c4a3e5b4a0b2441aa6d5c826ca0e29384df41a4df752d6cbcd1768",
-      "questionSha256": "1f28e78aff321b96b69a95d7da5089717ab6af40f9c858163357322efd99033e"
+      "questionSha256": "2e70aa79cf9968a854931e4feb7f1f93eea83dd53c3e2ed2eac0a3512b936124"
     },
     {
       "id": "K540-0015",
@@ -157,7 +157,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L486",
       "evidenceSymbol": "signInputs: {",
       "sourceSha256": "f7f3d0cdf2c4a3e5b4a0b2441aa6d5c826ca0e29384df41a4df752d6cbcd1768",
-      "questionSha256": "96f500c079afaadce6cc3a501be232d4c2ce14e6f91df5825ec01330dd9f5cbc"
+      "questionSha256": "30592e1777b9b314cff203d510dcd39871205f7ceb965644e824b579cda4780a"
     },
     {
       "id": "K540-0016",
@@ -165,7 +165,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/controller.ts#L168",
       "evidenceSymbol": "typeof value === 'bigint' ? Number(value) : value",
       "sourceSha256": "d5269c7dd08c3e67226f2df63b90a3fafa0ea6d117058bb03643a0273a994300",
-      "questionSha256": "f057412f6183c1746d8c1512b57b7428ded0b7117841b0a533c1265e16164dad"
+      "questionSha256": "708fccf1373cd68a8b3adea37b3ad4fbfb6d37fd5c7821a1acbc87ed0016529b"
     },
     {
       "id": "K540-0017",
@@ -173,7 +173,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/controller.ts#L167",
       "evidenceSymbol": "address ? [address] : [account.address]",
       "sourceSha256": "d5269c7dd08c3e67226f2df63b90a3fafa0ea6d117058bb03643a0273a994300",
-      "questionSha256": "0fbb416381d692579ae27ed0357c5f49a810396cc87b36197915eb5cc5fe3d6b"
+      "questionSha256": "baecd1c4720407297adea7a35140d6dc51ee4ca08302d1e158e5959762c6473a"
     },
     {
       "id": "K540-0018",
@@ -181,7 +181,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L371",
       "evidenceSymbol": "verifyMessage = async (pubkey: string, message: string, sig: string)",
       "sourceSha256": "f7f3d0cdf2c4a3e5b4a0b2441aa6d5c826ca0e29384df41a4df752d6cbcd1768",
-      "questionSha256": "dbf70fc829046681b3cd1a71cf0924f963a101d961657ffc0fd434597834fd06"
+      "questionSha256": "424175c68e94c1ecf04d8702aa0424e7efef0c5b94047f8fe902aef2ab1b2e91"
     },
     {
       "id": "K540-0019",
@@ -189,7 +189,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/background/controller/provider/rpcFlow.ts#L27",
       "evidenceSymbol": "throw ethErrors.rpc.methodNotFound",
       "sourceSha256": "468978a63d3ac28978f1230065f728dd4f67f92fc730c4bcaae3add77672b678",
-      "questionSha256": "c45dd7c3a4bec257f6bd91f7aac867480b558e0cce80dc019ce890c5367f6fe4"
+      "questionSha256": "bc897a2a4bbe2518ae630730d115504ec7f6804c2614337a2f3f576a59d21982"
     },
     {
       "id": "K540-0020",
@@ -197,7 +197,7 @@
       "source": "https://github.com/kasware-wallet/extension/blob/78bb30045edd4d898c4d61c4c75ba1bc37e18748/src/content-script/pageProvider/index.ts#L160",
       "evidenceSymbol": "throw serializeError(err)",
       "sourceSha256": "f7f3d0cdf2c4a3e5b4a0b2441aa6d5c826ca0e29384df41a4df752d6cbcd1768",
-      "questionSha256": "1d084f5cd259091fc8b4b6de34a4d857ada98000c5792058b6473113edcb0c9a"
+      "questionSha256": "ff80824df88fe661c8fd10ad19dfc23b8a4349ac645bbcf17d3a52532f2bbf69"
     }
   ],
   "overlapReview": "Compared the new concepts with active Kaspa prompts, especially wallet lifecycle, signatures, balances, RPC and existing convention questions. KasWare browser-provider behavior is distinct from the high-level Wallet SDK APIs already covered. Checked answer choices and explanations against the pinned source. Exact/similarity checks supplement internal editorial review; they do not prove exhaustive semantic uniqueness.",

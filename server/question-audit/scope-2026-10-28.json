@@ -221,7 +221,7 @@
     {
       "category": "kaspa",
       "id": "K250-0053",
-      "gradingHash": "93b119f01e316c8e7b61952984ea7e58f71c72ec634022812204d462a7558f89",
+      "gradingHash": "ca6d706e2e11247dad1e4841cda2a99a333ba6312f072c9b5625dce33c527f30",
       "reason": "time-scope-review",
       "disposition": "retained-nonvolatile",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L576",
@@ -241,7 +241,7 @@
     {
       "category": "kaspa",
       "id": "K624-0019",
-      "gradingHash": "cfdf10919318b5f46e9f2ec5037b10870c9e9b41ae7b5821b80a6874586168fe",
+      "gradingHash": "9421bed6efc73015e99a28a454b94aba59c69ec70c64ff4b06d4e0d545addfa9",
       "reason": "time-scope-review",
       "disposition": "retained-nonvolatile",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L917",

@@ -31,11 +31,11 @@
       "conceptId": "K520-0001",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Under the cited KCC-0 guidelines, what kind of proposal belongs in a KIP rather than a KCC?",
+      "prompt": "Under the KCC-0 guidelines, what kind of proposal belongs in a KIP rather than a KCC?",
       "options": [
         "A change to Kaspa consensus or core-node behavior",
         "A shared wallet discovery convention",
-        "A common application interface layout",
+        "A common application interface layout for wallet integrations",
         "An ecosystem token interoperability convention"
       ],
       "correctIndex": 0,
@@ -166,12 +166,12 @@
       "conceptId": "K520-0006",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Why does the cited KCC-20 convention require a token program artifact?",
+      "prompt": "Why does the KCC-20 convention require a token program artifact?",
       "options": [
-        "To publish the private keys of all token holders",
+        "To publish every holder's balance on L1",
         "To describe how clients decode token state and construct transfers",
-        "To guarantee a token receives an exchange listing",
-        "To replace transaction validation with a token logo"
+        "To register the token with a central KCC registry",
+        "To replace transaction validation with off-chain indexing"
       ],
       "correctIndex": 1,
       "difficulty": "medium",
@@ -193,7 +193,7 @@
       "conceptId": "K520-0007",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Within one KCC-20 covenant family, when does the cited standard treat states as fungible with one another?",
+      "prompt": "Within one KCC-20 covenant family, when does the KCC specification's standard treat states as fungible with one another?",
       "options": [
         "Whenever their displayed tickers are identical",
         "Whenever their KAS carrier values are identical",
@@ -222,8 +222,8 @@
       "subcategory": "KRC-20 & Smart Contracts",
       "prompt": "Why must a KCC-20 transfer reject a successor owner scheme that the token configuration does not support?",
       "options": [
-        "Different owner schemes always change the token price",
-        "Every recipient must use the sender's private key",
+        "Different owner schemes always change the token's decimals",
+        "Every recipient must reuse the sender's original owner scheme and key",
         "Owner schemes determine the Kaspa block production rate",
         "The resulting token state could otherwise become unspendable"
       ],
@@ -301,7 +301,7 @@
       "conceptId": "K520-0011",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Under the cited KCC-20 amount-threshold borrow scheme, the effective threshold is 10 base units. Which increase satisfies the amount rule?",
+      "prompt": "Under the KCC-20 amount-threshold borrow scheme, the effective threshold is 10 base units. Which increase satisfies the amount rule?",
       "options": [
         "An increase of exactly 10 base units",
         "An increase of 9 base units",
@@ -355,7 +355,7 @@
       "conceptId": "K520-0013",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "In the cited KCC-20 multi-input transfer convention, how do leader and delegator checks differ?",
+      "prompt": "In the KCC-20 multi-input transfer convention, how do leader and delegator checks differ?",
       "options": [
         "The leader checks the complete transition; each delegator authenticates its local owner",
         "Delegators may create extra token quantity independently",
@@ -382,11 +382,11 @@
       "conceptId": "K520-0014",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "How must an implementation treat an unassigned KCC-20 borrow-scheme value under the cited convention?",
+      "prompt": "How must an implementation treat an unassigned KCC-20 borrow-scheme value under the KCC specification's convention?",
       "options": [
         "Interpret it as unrestricted borrowing by default",
         "Reject it as invalid rather than invent a local meaning",
-        "Treat it as the most recently supported scheme",
+        "Treat it as the most recently supported scheme in the token family",
         "Accept it whenever the transaction fee is high enough"
       ],
       "correctIndex": 1,
@@ -490,12 +490,12 @@
       "conceptId": "K520-0018",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "In the cited KCC-23 metadata convention, where is the JSON declaration placed before covenant genesis?",
+      "prompt": "In the KCC-23 metadata convention, where is the JSON declaration placed before covenant genesis?",
       "options": [
         "In every future token transfer's recipient signature",
         "In the payload of a preparation transaction whose output genesis spends",
-        "Only in the token holder's wallet password",
-        "In the private key used to mine the genesis transaction"
+        "Only in an off-chain JSON file hosted by the issuer",
+        "In the coinbase payload of the block mining the genesis"
       ],
       "correctIndex": 1,
       "difficulty": "easy",
@@ -520,7 +520,7 @@
       "prompt": "Under KCC-23, which metadata representation does the covenant binding commit to?",
       "options": [
         "Only the token name with all other fields ignored",
-        "Any JSON text that happens to display the same logo",
+        "Any JSON text that parses to the same object",
         "The exact payload bytes, including codec prefix, whitespace and property order",
         "A freely editable description kept only by one explorer"
       ],
@@ -546,7 +546,7 @@
       "subcategory": "Kaspa Ecosystem",
       "prompt": "Does declaring metadata through KCC-23 itself grant a new right to spend the covenant's tokens?",
       "options": [
-        "Yes; whoever supplies a logo becomes the token owner",
+        "Yes; the declarer becomes the token's mint authority",
         "Yes; any explorer may then spend a holder's balance",
         "Yes; changing a displayed name replaces the token's signatures",
         "No; it binds descriptive metadata without changing spending authority"

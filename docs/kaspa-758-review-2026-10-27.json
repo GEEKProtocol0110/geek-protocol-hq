@@ -53,7 +53,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/metrics/perf_monitor/src/counters.rs#L63",
       "evidenceSymbol": "pub resident_set_size: u64",
       "sourceSha256": "95a269058f5e0fd2efdca296a3760c713d66ca5bccbeb2e52509aded1b8c0433",
-      "questionSha256": "f331eb02b2e4401d60966b8a77856de3291d20c277b691ad74c15f9031be3524"
+      "questionSha256": "0b41088d15c74fd347bbda2c727f2bd123d967644c1146d29d80f498cdf21e88"
     },
     {
       "id": "K758-0002",
@@ -61,7 +61,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/metrics/perf_monitor/src/counters.rs#L126",
       "evidenceSymbol": "impl Display for IoMetricsDisplay",
       "sourceSha256": "95a269058f5e0fd2efdca296a3760c713d66ca5bccbeb2e52509aded1b8c0433",
-      "questionSha256": "7886708a3be321afc417b564f1427046e1a8f2ea051863731e324f6b20e0d757"
+      "questionSha256": "2b9d5e9342a91e9853c3ba464e19d6a2e62c1bd303863eea6d950e7ee8453a46"
     },
     {
       "id": "K758-0003",
@@ -69,7 +69,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1244",
       "evidenceSymbol": "borsh_live_connections: self.wrpc_borsh_counters.active_connections",
       "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
-      "questionSha256": "e4693354053e5bc12de800d1611ea070236a80c54a397ef206b00de79f934801"
+      "questionSha256": "d13ca37bc0ccb74c1cb4912d86c4432e8ecc96251ea6add3451c4339d258e9ab"
     },
     {
       "id": "K758-0004",
@@ -77,7 +77,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1255",
       "evidenceSymbol": "let bandwidth_metrics = req.bandwidth_metrics.then",
       "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
-      "questionSha256": "0d14a296f564ed7f65d87a26b83b6426e6719d0fa892867aebac2e57c1090081"
+      "questionSha256": "a5b8c12b129e543d48fdf5602bd96aacf9838cf9ea3f0ecfaca86ed99bcadfe2"
     },
     {
       "id": "K758-0005",
@@ -85,7 +85,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1190",
       "evidenceSymbol": "Err(RpcError::NotImplemented)",
       "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
-      "questionSha256": "91de8aaddbd72bd31c7a7eee7910a6dbb0beda3f60363ff61e0a05c874779490"
+      "questionSha256": "ef6a850f04f447e3fd46dc685bcc9ded96893bf0f220091afe0ae5d79875da12"
     },
     {
       "id": "K758-0006",
@@ -93,7 +93,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1285",
       "evidenceSymbol": "network_mempool_size: self.mining_manager.transaction_count_sample(TransactionQuery::TransactionsOnly)",
       "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
-      "questionSha256": "aa6dbf715019bc440f8fed258ed5c7ffb20b59fff67a0179857fa7eeb9281081",
+      "questionSha256": "b4fbf5515835c86b4a6b5c6ffcec9bd3efb8a300dbda959183590a33972a925b",
       "additionalEvidence": [
         {
           "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/model/tx_query.rs#L1",
@@ -107,7 +107,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1296",
       "evidenceSymbol": "let storage_metrics = req.storage_metrics.then_some(StorageMetrics { storage_size_bytes: 0 });",
       "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
-      "questionSha256": "8bccc391de32e1ef34160131b4e0dcc50fd8c9863d56450937e288409f152c62"
+      "questionSha256": "60b1601a22c2e19ff296e97ead52e26cde45253a1e36f4e8db3511ec2aea7be0"
     },
     {
       "id": "K758-0008",
@@ -115,7 +115,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1300",
       "evidenceSymbol": "let server_time = unix_now();",
       "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
-      "questionSha256": "b734e547e9289194435fcdb634c9dd7555a4e4de2fdabdfda86d3cd2e43883a2",
+      "questionSha256": "453e25da7bf182111384966fcf51f33ff2ae603f9ee367ab296f91604e3a9328",
       "additionalEvidence": [
         {
           "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/core/src/time.rs#L3",

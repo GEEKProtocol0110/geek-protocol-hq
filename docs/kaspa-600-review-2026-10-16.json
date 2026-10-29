@@ -59,7 +59,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L104",
       "evidenceSymbol": "is used to represent a collection of PSKTs",
       "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
-      "questionSha256": "394f8b954abe8873cdf649aa84c2463d850ddc14b08a44729ae4c70964d8d1ac"
+      "questionSha256": "92929097e01ac491aef88f8b68c936b60ea21f4945d9cdda28deffe874800579"
     },
     {
       "id": "K600-0003",
@@ -67,7 +67,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/role.rs#L7",
       "evidenceSymbol": "Adds inputs and outputs to the PSKT.",
       "sourceSha256": "d4dc11da64579911e9d7c15ddeaeb75133f2196682fce64e0b540a4ffbc58eb9",
-      "questionSha256": "70d8c113bb600691b1ce82b5b6a35bdd090e16a4eca04db061986a0eedfb6a4a"
+      "questionSha256": "5cffb4b715ff3bc9bba989c8a64884ce34e6c1f86473858f508851759d6217b5"
     },
     {
       "id": "K600-0004",
@@ -75,7 +75,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L289",
       "evidenceSymbol": "pub fn set_sequence(mut self",
       "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
-      "questionSha256": "6dbaeda4f2585ab22bd86629fc19bbac43184f31f80101f6d3fe529074816e74"
+      "questionSha256": "5616de05b63665d51d2a0e83210dfa4229f3908e4607fef1439f50cbcbbc981b"
     },
     {
       "id": "K600-0005",
@@ -83,7 +83,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/bundle.rs#L55",
       "evidenceSymbol": "pub fn merge(&mut self, other: Bundle)",
       "sourceSha256": "2b504cb8c1e5bc96ffdef9cb480e954248a9c1f1f4d1c423933486c257c53112",
-      "questionSha256": "2a62cc0b3c2b7cec95af5eb088f2287f9ba896e6dd6b581bc0bf929f5e67fd7a"
+      "questionSha256": "0217aea7391e5c154360e011359de9db8d09edd6b6cc09572db75db6222c681e"
     },
     {
       "id": "K600-0006",
@@ -91,7 +91,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L73",
       "evidenceSymbol": "pub type PartialSigs =",
       "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
-      "questionSha256": "984bf47a3b99ea08b1c5237354a8153c5838f32b8051bda3b44cb4328d392081"
+      "questionSha256": "0138a4877d1fdd98aa47bf528658b41ec560c99711ef109757b1bdbe536f025a"
     },
     {
       "id": "K600-0007",
@@ -99,7 +99,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/global.rs#L20",
       "evidenceSymbol": "pub version: Version,",
       "sourceSha256": "91d7055ecb5b670ac3c598a5cbd67981359b9a222ebad0dc343e4118dcd8b35c",
-      "questionSha256": "a983e12c8efe77150402bff281b68626708dd9d54e594fc4ea551c751872b0b0"
+      "questionSha256": "e6aaa229a078460dc5d5773508e0b9e8d64073bc46245185e5d63cc36155cc6a"
     },
     {
       "id": "K600-0008",
@@ -107,7 +107,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/input.rs#L85",
       "evidenceSymbol": "if self.previous_outpoint.transaction_id != rhs.previous_outpoint.transaction_id",
       "sourceSha256": "535c5206e9dc6d20d477cda206ef2fa98423ade372cf1418ddd425ee0e226d14",
-      "questionSha256": "f248c2bf85b91d2a362c10ae1df65747d1fb8422e9c2161fe3e40d41c3c226f5"
+      "questionSha256": "a0ebb9db8464a1b8fe73a7034b7f3a6c343ea15f5b045149921dc7f02e77c81e"
     },
     {
       "id": "K600-0009",
@@ -115,7 +115,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/output.rs#L41",
       "evidenceSymbol": "if self.script_public_key != rhs.script_public_key",
       "sourceSha256": "754294dc5213ee086010e12fae2f1449ebca5420f13ee8a7d7463a5615c8d78b",
-      "questionSha256": "db6fb48fbfce89903c251e5b27b1f2be937ee52c06e775f504b30d49a1a928f1"
+      "questionSha256": "dc9ea9479cc7c4bfb83f08d23b9631108d0aaef86208ee91450e91d778cd6550"
     },
     {
       "id": "K600-0010",
@@ -123,7 +123,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/global.rs#L62",
       "evidenceSymbol": "self.inputs_modifiable &= rhs.inputs_modifiable;",
       "sourceSha256": "91d7055ecb5b670ac3c598a5cbd67981359b9a222ebad0dc343e4118dcd8b35c",
-      "questionSha256": "a3d6b4491c6c841ee6968014a14c99a61630353306450c6fc7581acff5acf188"
+      "questionSha256": "2f75c238a7644c3960d7381b58c447c2adf856e6f3ebb588491fb2ebcb91fdd9"
     },
     {
       "id": "K600-0011",
@@ -131,7 +131,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L172",
       "evidenceSymbol": "fn determine_lock_time(&self)",
       "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
-      "questionSha256": "97931490678969fdfb8a2e83ee8a298fb2d13ab4206ef419b014698810743bf8"
+      "questionSha256": "4121f258c59cebc408f5cda3aa051f45be937bc2b31b1b8fd3056effc5224089"
     },
     {
       "id": "K600-0012",
@@ -139,7 +139,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L261",
       "evidenceSymbol": "if payload.is_some() && self.inner_pskt.global.version < Version::One",
       "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
-      "questionSha256": "f426fc22b193673943d97cbccb6b030515a079e4099c14325301b4d839f36387"
+      "questionSha256": "128d45e6b39715ef41d8ef17d164ead2e1e5d85e6173f42fd669923e48939b99"
     },
     {
       "id": "K600-0013",
@@ -147,7 +147,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L248",
       "evidenceSymbol": "pub fn output(mut self, output: Output)",
       "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
-      "questionSha256": "2cb8fbf61635b123d2b0dcbed1e7c68587f4dfacd450fd980087c23db77c25a6"
+      "questionSha256": "347e7faee4d51d8b85afa64870350402d1b1a9a9bdf9a63df8aa6d5359136a22"
     },
     {
       "id": "K600-0014",
@@ -155,7 +155,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L450",
       "evidenceSymbol": "if sigs.len() != self.inputs.len()",
       "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
-      "questionSha256": "db15c934cbf402ddce7c0ed83fb0b0a1caa5ad46d9f96fc3a159956455fb07a1"
+      "questionSha256": "2162c43eb1e116a6ff9884606c4abae9bc1d6e506f0a139ef6682405ca060b29"
     },
     {
       "id": "K600-0015",
@@ -163,7 +163,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L455",
       "evidenceSymbol": "return Err(FinalizeError::EmptySignature(idx));",
       "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
-      "questionSha256": "251168ab799de90ace2260578c209eb09b3423411ce9dd540955a1ea04b37e56"
+      "questionSha256": "f3fd93b0f97a07c6f18d3df4f9200f7516710d5e29dd9dbbf58cd8592ed84096"
     },
     {
       "id": "K600-0016",
@@ -171,7 +171,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L484",
       "evidenceSymbol": "pub fn extract_tx(self, params: &Params)",
       "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
-      "questionSha256": "37fe8a1f2ca667eb605ec286fc7d8200a8d7af39d6ee8a4eacd576a88fd06d54"
+      "questionSha256": "1f3e2b7db7aa8e0030c07befd9a3cc9fbd3e4cc4ee36b1af9175c3dbed27aba5"
     },
     {
       "id": "K600-0017",
@@ -179,7 +179,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/bundle.rs#L67",
       "evidenceSymbol": "Ok(format!(\"PSKB{}\"",
       "sourceSha256": "2b504cb8c1e5bc96ffdef9cb480e954248a9c1f1f4d1c423933486c257c53112",
-      "questionSha256": "954dddfc603d4ea001d62f8ca0113d038fd20a75f9def5086e082f9cb1b32b88"
+      "questionSha256": "24903a84b1003d953f953300ea6930604bd60c5bbbbe5e9608eba35438bcf7c5"
     },
     {
       "id": "K600-0018",
@@ -187,7 +187,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/bundle.rs#L67",
       "evidenceSymbol": "hex::encode(serde_json::to_string(self)?)",
       "sourceSha256": "2b504cb8c1e5bc96ffdef9cb480e954248a9c1f1f4d1c423933486c257c53112",
-      "questionSha256": "79e2cba254259d8603fabf9d254bf0d776d0100f86b09f871f8d43dc540ff6d5"
+      "questionSha256": "67a7276e2e6f433f1d85a09819f1b2e1ccc49ec12ec9478448c8bd5eb257d789"
     },
     {
       "id": "K600-0019",
@@ -195,7 +195,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/input.rs#L69",
       "evidenceSymbol": "sighash_type: SIG_HASH_ALL,",
       "sourceSha256": "535c5206e9dc6d20d477cda206ef2fa98423ade372cf1418ddd425ee0e226d14",
-      "questionSha256": "636f713c6efe582ab732b1259e749449dea1ebfdb5828effa100e197e0c4f426"
+      "questionSha256": "484cdb917bef337217905d99cfc43d9015377059f18787d66f160dcbe72f11d5"
     },
     {
       "id": "K600-0020",
@@ -203,7 +203,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/pskt/src/pskt.rs#L440",
       "evidenceSymbol": "pub fn extractor(self) -> Result<PSKT<Extractor>, TxNotFinalized>",
       "sourceSha256": "1eeef03d0235e4b8e60f02544267701af4eabfd8721c5c0c022058de544d329b",
-      "questionSha256": "239276668244bde465a06aead14942d738b37faae9c74a09ef10efb628063aff"
+      "questionSha256": "851214e4e5c35ff225016258ef416b8895917d6e76f4cb725add29d3333f14fd"
     }
   ],
   "supplementalEvidence": {

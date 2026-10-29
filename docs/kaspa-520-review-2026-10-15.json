@@ -39,7 +39,7 @@
       "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0000.md#L51",
       "evidenceSymbol": "KCCs do not propose changes to Kaspa consensus",
       "sourceSha256": "3edb59cabc77e70c3a9ee08d57e7bad7c06df06b4adf6e4c8811bdf6fd81bb38",
-      "questionSha256": "610bf8e09a15a1234804cee6284df0779b1426e1ef186afebbed0eb2e232eef3"
+      "questionSha256": "63d6536d6bc51f5cc064cf76a6fb78fd8023def5c373746278600fd6a2559471"
     },
     {
       "id": "K520-0002",
@@ -79,7 +79,7 @@
       "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md#L154",
       "evidenceSymbol": "required to decode its",
       "sourceSha256": "d5d0f2431cf42e49624e7b8ff8c900d6ba068906b4e37c4df5a2a40c8b34f91d",
-      "questionSha256": "b1a3b64d55978ae9a71e633848017a81532c4709ec25a56fe78af15ada0b64ed"
+      "questionSha256": "e1417b7a910f0483976ce86c8cb56ca8060ae0c1c16248e807cb8211d4b122b7"
     },
     {
       "id": "K520-0007",
@@ -87,7 +87,7 @@
       "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md#L213",
       "evidenceSymbol": "fungible with one another only when",
       "sourceSha256": "d5d0f2431cf42e49624e7b8ff8c900d6ba068906b4e37c4df5a2a40c8b34f91d",
-      "questionSha256": "bf5a5986ae2b021a4af933a132dd01ba750f5005f2a73a6b441ab5c96a4bd853"
+      "questionSha256": "407732094358ec47c7f3f79a970888e6eae2390511e8e60703538bd07a3bb467"
     },
     {
       "id": "K520-0008",
@@ -95,7 +95,7 @@
       "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md#L104",
       "evidenceSymbol": "This prevents a transfer from",
       "sourceSha256": "d5d0f2431cf42e49624e7b8ff8c900d6ba068906b4e37c4df5a2a40c8b34f91d",
-      "questionSha256": "768c095b421efca3f776b9400a16f2846d93d0023a2570739cfb94ea55b802c4"
+      "questionSha256": "ae5269a83617bd02c024e9ca1c68fdca7b336aa2a2ad5d93510532f57d3360fc"
     },
     {
       "id": "K520-0009",
@@ -119,7 +119,7 @@
       "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md#L300",
       "evidenceSymbol": "greater than the effective threshold",
       "sourceSha256": "d5d0f2431cf42e49624e7b8ff8c900d6ba068906b4e37c4df5a2a40c8b34f91d",
-      "questionSha256": "3c85e9dffe1716b5ca895f13e0c0434985ec87927d56f9424a42e01fba47d257"
+      "questionSha256": "d28138050a2e289b93176bd0dbcf8b9ad82481ad25402d87d7f85fc85bba4d33"
     },
     {
       "id": "K520-0012",
@@ -135,7 +135,7 @@
       "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md#L134",
       "evidenceSymbol": "The leader validates the complete transition",
       "sourceSha256": "d5d0f2431cf42e49624e7b8ff8c900d6ba068906b4e37c4df5a2a40c8b34f91d",
-      "questionSha256": "2102ebd9ec479cc214670be943c0841e861a6bb687cd9025103d2de575141f10"
+      "questionSha256": "e83b0e6a15b841c07616792ad9e98e7f4574d6b9816d0ad3e4add881fcb97609"
     },
     {
       "id": "K520-0014",
@@ -143,7 +143,7 @@
       "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0020.md#L196",
       "evidenceSymbol": "Unassigned `borrow_scheme` values are reserved",
       "sourceSha256": "d5d0f2431cf42e49624e7b8ff8c900d6ba068906b4e37c4df5a2a40c8b34f91d",
-      "questionSha256": "e00740be00e06673b8c3852774279216d9d68ca058d4fb79ac26df64f61be6e9"
+      "questionSha256": "806d5f7ca7c54f45947ed32498cfc649915dbd3c60f55c3cb3bf1d8dda0d742e"
     },
     {
       "id": "K520-0015",
@@ -175,7 +175,7 @@
       "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0023.md#L70",
       "evidenceSymbol": "A version 1 preparation transaction carrying",
       "sourceSha256": "a2a3b868796433e59e1b2cb4b2a30350d37def4c869a24601e1bc4b1ec6adee3",
-      "questionSha256": "3a673abf6a2a036d97cc9cf7ea6fab12013e2057f12cc3af73d3395d5b6cff8f"
+      "questionSha256": "d8d3d1e7000d7b08fb202317ccdb7833db7e394de58878a654d3f54479214437"
     },
     {
       "id": "K520-0019",
@@ -183,7 +183,7 @@
       "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0023.md#L63",
       "evidenceSymbol": "including the codec prefix,",
       "sourceSha256": "a2a3b868796433e59e1b2cb4b2a30350d37def4c869a24601e1bc4b1ec6adee3",
-      "questionSha256": "8750696f3feb26b41a73dc3f74f5d4b0bf88267e865612a1a78dfd68bc06f278"
+      "questionSha256": "00f9b77c1bfa83e70d9165c318abd1f342f23fa6904ecb426e61d9b99eec4590"
     },
     {
       "id": "K520-0020",
@@ -191,7 +191,7 @@
       "source": "https://github.com/kaspanet/kccs/blob/1516a6c4cef59940fc3af3096dbcdd9c08690254/kcc-0023.md#L204",
       "evidenceSymbol": "KCC-23 binds descriptive metadata",
       "sourceSha256": "a2a3b868796433e59e1b2cb4b2a30350d37def4c869a24601e1bc4b1ec6adee3",
-      "questionSha256": "501cafed206544d2fa3aaf502ffb677abe7cd3147e6e245a63e935cddc266455"
+      "questionSha256": "e199a883108674d127a2fcc02ce9adb6c604cd008bfea0ba493a1cc53bcca0f6"
     }
   ],
   "overlapReview": "Compared with the 500 active Kaspa prompts and their concept tags. New concepts are convention lifecycle, conformance, token transfer roles, borrowing controls, authority scope and metadata binding; they do not repeat general covenant, KIP, key or transaction definitions. Automated similarity screening supplements this scoped editorial review; semantic exhaustiveness is not certified."

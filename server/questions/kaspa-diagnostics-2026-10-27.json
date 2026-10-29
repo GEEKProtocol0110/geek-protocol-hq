@@ -31,7 +31,7 @@
       "conceptId": "K758-0001",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Diagnostics",
-      "prompt": "In the cited Kaspa process metrics, how does resident_set_size differ from virtual_memory_size?",
+      "prompt": "In Rusty Kaspa's process metrics, how does resident_set_size differ from virtual_memory_size?",
       "options": [
         "Resident physical memory versus the process's virtual-memory usage",
         "Available disk space versus the size of the node log",
@@ -59,7 +59,7 @@
       "conceptId": "K758-0002",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Diagnostics",
-      "prompt": "In the cited Kaspa I/O display, what distinguishes disk_io_read_bytes from disk_io_read_per_sec?",
+      "prompt": "In Rusty Kaspa's I/O display, what distinguishes disk_io_read_bytes from disk_io_read_per_sec?",
       "options": [
         "Disk writes versus disk reads",
         "A byte count versus a read rate in bytes per second",
@@ -87,7 +87,7 @@
       "conceptId": "K758-0003",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Diagnostics",
-      "prompt": "A cited Kaspa Borsh metrics sample has many connection attempts but few live connections. What do these measurements distinguish?",
+      "prompt": "A Rusty Kaspa Borsh metrics sample has many connection attempts but few live connections. What do these measurements distinguish?",
       "options": [
         "Synchronized peers from orphan transactions",
         "Accepted blocks from unsuccessful proof-of-work hashes",
@@ -115,7 +115,7 @@
       "conceptId": "K758-0004",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Diagnostics",
-      "prompt": "For the cited Kaspa BandwidthMetrics, what does the tx/rx distinction describe?",
+      "prompt": "For Rusty Kaspa's BandwidthMetrics, what does the tx/rx distinction describe?",
       "options": [
         "Transactions accepted and rejected by consensus",
         "Database bytes retained and pruned",
@@ -143,7 +143,7 @@
       "conceptId": "K758-0005",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Diagnostics",
-      "prompt": "What errors does the cited ResolveFinalityConflict RPC handler return in safe mode and with unsafe RPC enabled?",
+      "prompt": "What errors does Rusty Kaspa's ResolveFinalityConflict RPC handler return in safe mode and with unsafe RPC enabled?",
       "options": [
         "UnavailableInSafeMode in safe mode; NotImplemented with unsafe RPC enabled",
         "NotImplemented in safe mode; a successful resolution with unsafe RPC enabled",
@@ -171,7 +171,7 @@
       "conceptId": "K758-0006",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Diagnostics",
-      "prompt": "What does network_mempool_size sample in the cited Kaspa get_metrics_call implementation?",
+      "prompt": "What does network_mempool_size sample in Rusty Kaspa's get_metrics_call implementation?",
       "options": [
         "Every transaction waiting anywhere on the global Kaspa network",
         "This node's non-orphan transactions in its ordinary mempool",
@@ -199,7 +199,7 @@
       "conceptId": "K758-0007",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Diagnostics",
-      "prompt": "The cited get_metrics_call sets storage_size_bytes to zero when requested. What does this implementation show?",
+      "prompt": "Rusty Kaspa's get_metrics_call sets storage_size_bytes to zero when requested. What does this implementation show?",
       "options": [
         "A verified absence of all stored blocks",
         "Proof that pruning has removed every database file",
@@ -208,7 +208,7 @@
       ],
       "correctIndex": 2,
       "difficulty": "medium",
-      "funFact": "This pinned service constructs the field with the literal value zero. Although the response model names a storage-size field, this implementation does not measure database usage for it.",
+      "funFact": "This Rusty Kaspa's service constructs the field with the literal value zero. Although the response model names a storage-size field, this implementation does not measure database usage for it.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1296",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-27",
@@ -227,7 +227,7 @@
       "conceptId": "K758-0008",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Diagnostics",
-      "prompt": "Which time basis does server_time in the cited Kaspa metrics response use?",
+      "prompt": "Which time basis does server_time in Rusty Kaspa's metrics response use?",
       "options": [
         "Seconds since the node process started",
         "The current virtual DAA score",
