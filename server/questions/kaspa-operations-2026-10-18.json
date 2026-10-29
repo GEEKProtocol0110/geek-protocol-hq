@@ -31,7 +31,7 @@
       "conceptId": "K750-0001",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "How does Rusty Kaspa's kaspad --connect setting differ from --addpeer at startup?",
+      "prompt": "How does the cited kaspad --connect setting differ from --addpeer at startup?",
       "options": [
         "It limits startup connections to the specified peers rather than adding peers to the usual selection",
         "It adds only RPC clients while addpeer adds mining workers",
@@ -59,7 +59,7 @@
       "conceptId": "K750-0002",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "Which Rusty Kaspa kaspad setting chooses the node-to-node listening interface, rather than a gRPC or wRPC endpoint?",
+      "prompt": "Which cited kaspad setting chooses the node-to-node listening interface, rather than a gRPC or wRPC endpoint?",
       "options": [
         "--rpclisten",
         "--listen",
@@ -87,7 +87,7 @@
       "conceptId": "K750-0003",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "What distinction do Rusty Kaspa's --outpeers and --maxinpeers settings make?",
+      "prompt": "What distinction do the cited --outpeers and --maxinpeers settings make?",
       "options": [
         "A count of wallet inputs versus a count of outputs",
         "A transaction fee cap versus a block subsidy cap",
@@ -115,7 +115,7 @@
       "conceptId": "K750-0004",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "What resource does Rusty Kaspa's kaspad --rpcmaxclients setting limit?",
+      "prompt": "What resource does the cited kaspad --rpcmaxclients setting limit?",
       "options": [
         "The number of inputs in each transaction",
         "The number of public keys in each wallet",
@@ -143,10 +143,10 @@
       "conceptId": "K750-0005",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "What storage tradeoff does Rusty Kaspa's --archival mode make when the pruning point advances?",
+      "prompt": "What storage tradeoff does the cited --archival mode make when the pruning point advances?",
       "options": [
         "Retains old block data at a potentially heavy disk cost",
-        "Deletes old block headers immediately while keeping all bodies",
+        "Deletes every old block header immediately",
         "Keeps only transaction fees and drops all block bodies",
         "Replaces consensus validation with explorer queries"
       ],
@@ -171,7 +171,7 @@
       "conceptId": "K750-0006",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "What additional authority is associated with Rusty Kaspa's kaspad --unsaferpc option?",
+      "prompt": "What additional authority is associated with the cited kaspad --unsaferpc option?",
       "options": [
         "Automatic access to every user's wallet keys",
         "RPC commands that can affect the node's state",
@@ -199,7 +199,7 @@
       "conceptId": "K750-0007",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "What does Rusty Kaspa's kaspad --nologfiles option turn off?",
+      "prompt": "What does the cited kaspad --nologfiles option turn off?",
       "options": [
         "All P2P communication",
         "Consensus validation",
@@ -227,7 +227,7 @@
       "conceptId": "K750-0008",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "Why would a Rusty Kaspa kaspad operator use a setting such as consensus=trace within --loglevel?",
+      "prompt": "Why would a cited kaspad operator use a setting such as consensus=trace within --loglevel?",
       "options": [
         "To increase the network's consensus block rate",
         "To bypass consensus checks while leaving other checks enabled",
@@ -255,7 +255,7 @@
       "conceptId": "K750-0009",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "Why are --appdir and --logdir separate settings in Rusty Kaspa's kaspad CLI?",
+      "prompt": "Why are --appdir and --logdir separate settings in the cited kaspad CLI?",
       "options": [
         "Node data and log output can be placed in different directories",
         "One selects mainnet and the other selects testnet",
@@ -283,7 +283,7 @@
       "conceptId": "K750-0010",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "A Rusty Kaspa kaspad TOML file supplies appdir, and the operator also supplies --appdir explicitly. Which value does this parser use?",
+      "prompt": "A cited kaspad TOML file supplies appdir, and the operator also supplies --appdir explicitly. Which value does this parser use?",
       "options": [
         "The TOML value regardless of the command line",
         "The explicitly supplied command-line value",
@@ -311,7 +311,7 @@
       "conceptId": "K750-0011",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "How is Rusty Kaspa's kaspad Args structure configured to handle an unknown TOML configuration field?",
+      "prompt": "How is the cited kaspad Args structure configured to handle an unknown TOML configuration field?",
       "options": [
         "Silently save it as a consensus parameter",
         "Automatically treat it as a peer address",
@@ -339,7 +339,7 @@
       "conceptId": "K750-0012",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "Why should an operator avoid activating testnet and devnet together in Rusty Kaspa's kaspad network selector?",
+      "prompt": "Why should an operator avoid activating testnet and devnet together in the cited kaspad network selector?",
       "options": [
         "Both switches always select mainnet together",
         "The combination automatically creates a bridge",
@@ -367,11 +367,11 @@
       "conceptId": "K750-0013",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "Which resource measurements does Rusty Kaspa's kaspad --perf-metrics help text identify?",
+      "prompt": "Which resource measurements does the cited kaspad --perf-metrics help text identify?",
       "options": [
         "CPU, memory and disk I/O usage",
-        "Only network bandwidth and peer latency",
-        "Only mempool size and fee rates",
+        "Only token prices and exchange volumes",
+        "Only wallet balances and transaction recipients",
         "Only block subsidies and maximum coin supply"
       ],
       "correctIndex": 0,
@@ -395,9 +395,9 @@
       "conceptId": "K750-0014",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "What does Rusty Kaspa's --perf-metrics-interval-sec setting change?",
+      "prompt": "What does the cited --perf-metrics-interval-sec setting change?",
       "options": [
-        "Kaspa's consensus target block interval in seconds",
+        "Kaspa's consensus target block interval",
         "The time between performance-metric collections",
         "A transaction's required confirmation count",
         "The number of days of archived block data"
@@ -423,7 +423,7 @@
       "conceptId": "K750-0015",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "What is the intended control provided by Rusty Kaspa's kaspad --ram-scale option?",
+      "prompt": "What is the intended control provided by the cited kaspad --ram-scale option?",
       "options": [
         "Changing the amount of physical RAM installed",
         "Reducing every transaction fee by the same factor",
@@ -451,7 +451,7 @@
       "conceptId": "K750-0016",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "What discovery mechanism does Rusty Kaspa's kaspad --nodnsseed switch disable?",
+      "prompt": "What discovery mechanism does the cited kaspad --nodnsseed switch disable?",
       "options": [
         "All outgoing peer connections under every configuration",
         "The wallet's address checksum",
@@ -479,10 +479,10 @@
       "conceptId": "K750-0017",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "Which Rusty Kaspa kaspad option disables UPnP rather than the gRPC server or DNS seeding?",
+      "prompt": "Which cited kaspad option disables UPnP rather than the gRPC server or DNS seeding?",
       "options": [
         "--disable-upnp",
-        "--nogrpc-server",
+        "--nogrpc",
         "--nodnsseed",
         "--nologfiles"
       ],
@@ -507,9 +507,9 @@
       "conceptId": "K750-0018",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "What policy does Rusty Kaspa's kaspad --retention-period-days setting describe?",
+      "prompt": "What policy does the cited kaspad --retention-period-days setting describe?",
       "options": [
-        "How long banned peers stay banned",
+        "How long a wallet password remains valid",
         "How many total days of data to keep",
         "How many days must pass before every transfer is final",
         "How many days remain until the next subsidy halving"
@@ -535,7 +535,7 @@
       "conceptId": "K750-0019",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "Why does Rusty Kaspa's kaspad help recommend its hdd RocksDB preset for an archive on hard disks?",
+      "prompt": "Why does the cited kaspad help recommend its hdd RocksDB preset for an archive on hard disks?",
       "options": [
         "It converts an HDD into an NVMe device",
         "It prevents old blocks from consuming any disk space",
@@ -563,7 +563,7 @@
       "conceptId": "K750-0020",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "What hybrid-storage arrangement does Rusty Kaspa's --rocksdb-wal-dir example support?",
+      "prompt": "What hybrid-storage arrangement does the cited --rocksdb-wal-dir example support?",
       "options": [
         "Wallet seeds on the public RPC endpoint",
         "Every block body on the GPU instead of disk",
@@ -591,7 +591,7 @@
       "conceptId": "K750-0021",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "What unit does Rusty Kaspa's kaspad --rocksdb-cache-size option use?",
+      "prompt": "What unit does the cited kaspad --rocksdb-cache-size option use?",
       "options": [
         "Megabytes",
         "Number of blocks",
@@ -619,7 +619,7 @@
       "conceptId": "K750-0022",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "A peer matches both an allow rule and a reject rule under Rusty Kaspa's kaspad user-agent policy. What does the help text specify?",
+      "prompt": "A peer matches both an allow rule and a reject rule under the cited kaspad user-agent policy. What does the help text specify?",
       "options": [
         "Accept it because any allow match overrides rejection",
         "Reject the peer",
@@ -647,12 +647,12 @@
       "conceptId": "K750-0023",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "What is the purpose of Rusty Kaspa's kaspad --uacomment setting?",
+      "prompt": "What is the purpose of the cited kaspad --uacomment setting?",
       "options": [
         "Defining a peer-admission allow or reject rule",
-        "Setting extra payload bytes for transactions the node relays",
+        "Setting the transaction's payload bytes",
         "Adding a comment to the node's advertised user agent",
-        "Setting a custom network ID suffix for the node"
+        "Setting an account's wallet password hint"
       ],
       "correctIndex": 2,
       "difficulty": "medium",
@@ -675,7 +675,7 @@
       "conceptId": "K750-0024",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "What does zero mean for Rusty Kaspa's --max-tracked-addresses setting?",
+      "prompt": "What does zero mean for the cited --max-tracked-addresses setting?",
       "options": [
         "Disable all address tracking permanently",
         "Preallocate every possible address immediately",
@@ -703,7 +703,7 @@
       "conceptId": "K750-0025",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "What does Rusty Kaspa's kaspad --yes option do?",
+      "prompt": "What does the cited kaspad --yes option do?",
       "options": [
         "Automatically answers yes to interactive console questions",
         "Signs every wallet transfer automatically",
@@ -731,7 +731,7 @@
       "conceptId": "K750-0026",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "What testing exception does Rusty Kaspa's --enable-unsynced-mining flag permit?",
+      "prompt": "What testing exception does the cited --enable-unsynced-mining flag permit?",
       "options": [
         "Spending nonexistent outputs without validation",
         "Accepting blocks submitted through RPC while the node is not synced",
@@ -759,12 +759,12 @@
       "conceptId": "K750-0027",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "Why must an operator treat Rusty Kaspa's --reset-db switch as a database-changing action?",
+      "prompt": "Why must an operator treat the cited --reset-db switch as a database-changing action?",
       "options": [
-        "It only clears the node's log files and keeps the database",
+        "It only clears the displayed log window",
         "It only resets the RPC request counter",
         "It resets the database before node startup",
-        "It only restores default configuration values"
+        "It only restores the default font size"
       ],
       "correctIndex": 2,
       "difficulty": "easy",
@@ -787,7 +787,7 @@
       "conceptId": "K750-0028",
       "category": "Kaspa",
       "subcategory": "Kaspa Node Operations",
-      "prompt": "Which interface is specifically disabled by Rusty Kaspa's kaspad --nogrpc option?",
+      "prompt": "Which interface is specifically disabled by the cited kaspad --nogrpc option?",
       "options": [
         "The P2P listener",
         "Every wRPC endpoint by definition",
@@ -815,7 +815,7 @@
       "conceptId": "K750-0029",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Storage",
-      "prompt": "What is the intended purpose of the user hint described in Rusty Kaspa's wallet storage module?",
+      "prompt": "What is the intended purpose of the user hint described in the cited Kaspa wallet storage module?",
       "options": [
         "A recognizable message shown when the wallet opens to help resist phishing",
         "A public copy of the wallet's recovery phrase",
@@ -843,7 +843,7 @@
       "conceptId": "K750-0030",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Storage",
-      "prompt": "Does encrypting Rusty Kaspa's wallet payload imply that the title, user hint and account metadata are also inside that encrypted payload?",
+      "prompt": "Does encrypting the cited wallet payload imply that the title, user hint and account metadata are also inside that encrypted payload?",
       "options": [
         "Yes; every byte after the file header is necessarily encrypted together",
         "No; those fields are serialized separately in the storage envelope",
@@ -871,10 +871,10 @@
       "conceptId": "K750-0031",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Storage",
-      "prompt": "Which format does Rusty Kaspa's WalletStorage loader use to decode its saved wallet-file bytes?",
+      "prompt": "Which format does the cited WalletStorage loader use to decode its saved wallet-file bytes?",
       "options": [
         "A plain comma-separated value table",
-        "A gzip-compressed JSON document",
+        "An HTML page containing a hidden form",
         "Borsh binary serialization",
         "A block explorer's transaction JSON response"
       ],
@@ -899,7 +899,7 @@
       "conceptId": "K750-0032",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Storage",
-      "prompt": "Does constructing Rusty Kaspa's WalletStorage envelope automatically bundle every historical wallet transaction?",
+      "prompt": "Does constructing the cited WalletStorage envelope automatically bundle every historical wallet transaction?",
       "options": [
         "Yes; every historical transaction is automatically downloaded and embedded",
         "Yes; the title field stores the complete transaction history",
@@ -927,10 +927,10 @@
       "conceptId": "K750-0033",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Storage",
-      "prompt": "How does Rusty Kaspa's wallet decoder handle a file version newer than the software supports?",
+      "prompt": "How does the cited wallet decoder handle a file version newer than the software supports?",
       "options": [
         "Rejects it and reports that the software needs upgrading",
-        "Silently drops unknown fields and opens the wallet file anyway",
+        "Silently drops unknown fields and opens it anyway",
         "Rewrites the file as version zero without asking",
         "Changes the wallet's network to match the file number"
       ],
@@ -955,7 +955,7 @@
       "conceptId": "K750-0034",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Storage",
-      "prompt": "What happens when Rusty Kaspa's WalletStorage try_load cannot find the requested wallet file?",
+      "prompt": "What happens when the cited WalletStorage try_load cannot find the requested wallet file?",
       "options": [
         "It silently creates and funds a new wallet",
         "It returns a no-wallet-in-storage error",
@@ -983,7 +983,7 @@
       "conceptId": "K750-0035",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Storage",
-      "prompt": "How does Rusty Kaspa's WalletStorage payload helper present a ChaCha20-Poly1305 decryption failure?",
+      "prompt": "How does the cited WalletStorage payload helper present a ChaCha20-Poly1305 decryption failure?",
       "options": [
         "As a successful empty payload",
         "As proof that the wallet has no on-chain funds",
@@ -1011,7 +1011,7 @@
       "conceptId": "K750-0036",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Storage",
-      "prompt": "What operation does Rusty Kaspa's Storage purge method perform?",
+      "prompt": "What operation does the cited Storage purge method perform?",
       "options": [
         "Spends every on-chain output belonging to the wallet",
         "Deletes every node's record of the account's transactions",
@@ -1039,7 +1039,7 @@
       "conceptId": "K750-0037",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Storage",
-      "prompt": "In Rusty Kaspa's Storage try_new_with_folder helper, how is the filename formed in a web runtime?",
+      "prompt": "In the cited Storage try_new_with_folder helper, how is the filename formed in a web runtime?",
       "options": [
         "From name alone, without joining the supplied folder",
         "By always joining folder and name as a native filesystem path",
@@ -1067,7 +1067,7 @@
       "conceptId": "K750-0038",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Storage",
-      "prompt": "When a Rusty Kaspa wallet storage file does not exist, what can ensure_dir create before saving?",
+      "prompt": "When a cited wallet storage file does not exist, what can ensure_dir create before saving?",
       "options": [
         "A replacement mnemonic on the server",
         "Its parent directory hierarchy",
@@ -1095,9 +1095,9 @@
       "conceptId": "K750-0039",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Message Encryption",
-      "prompt": "Which key combination initializes Rusty Kaspa's CryptoBox for communication with a peer?",
+      "prompt": "Which key combination initializes the cited Kaspa CryptoBox for communication with a peer?",
       "options": [
-        "Both peers' public keys combined without any local secret key",
+        "Both peers' public keys with no local secret",
         "Only the peer's secret key supplied in a URL",
         "The local secret key and the peer's public key",
         "Only the transaction's recipient address"
@@ -1123,7 +1123,7 @@
       "conceptId": "K750-0040",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Message Encryption",
-      "prompt": "How does Rusty Kaspa's CryptoBox encrypt method obtain the nonce for a message?",
+      "prompt": "How does the cited CryptoBox encrypt method obtain the nonce for a message?",
       "options": [
         "Uses the same all-zero nonce for every message",
         "Uses the recipient's wallet balance as the nonce",
@@ -1151,11 +1151,11 @@
       "conceptId": "K750-0041",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Message Encryption",
-      "prompt": "How does Rusty Kaspa's CryptoBox package its generated nonce with an encrypted message?",
+      "prompt": "How does the cited CryptoBox package its generated nonce with an encrypted message?",
       "options": [
         "Prefixes the nonce bytes to the encrypted output",
-        "Sends the nonce in a separate message before the ciphertext",
-        "Derives the nonce from the message hash",
+        "Discards the nonce so the peer must guess it",
+        "Stores the nonce only in a block's coinbase",
         "Replaces the ciphertext with the nonce alone"
       ],
       "correctIndex": 0,
@@ -1179,7 +1179,7 @@
       "conceptId": "K750-0042",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Message Encryption",
-      "prompt": "What happens when Rusty Kaspa's CryptoBox decrypt receives fewer than 25 bytes?",
+      "prompt": "What happens when the cited CryptoBox decrypt receives fewer than 25 bytes?",
       "options": [
         "It pads the bytes and always returns success",
         "It returns a message-too-short error before invoking decryption",
@@ -1207,7 +1207,7 @@
       "conceptId": "K750-0043",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Key Records",
-      "prompt": "Can Rusty Kaspa's key-data get_xprv helper turn its raw SecretKey variant directly into a hierarchical extended private key?",
+      "prompt": "Can the cited key-data get_xprv helper turn its raw SecretKey variant directly into a hierarchical extended private key?",
       "options": [
         "Yes; it treats the raw key as a complete BIP39 mnemonic",
         "Yes; it automatically invents a chain code without error",
@@ -1235,7 +1235,7 @@
       "conceptId": "K750-0044",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Key Records",
-      "prompt": "Rusty Kaspa's key payload contains an extended private key rather than mnemonic words. What does as_mnemonic return for that variant?",
+      "prompt": "The cited key payload contains an extended private key rather than mnemonic words. What does as_mnemonic return for that variant?",
       "options": [
         "A newly invented but equivalent twelve-word phrase",
         "The extended key text relabeled as a mnemonic",
@@ -1263,7 +1263,7 @@
       "conceptId": "K750-0045",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Key Records",
-      "prompt": "During Rusty Kaspa's PrvKeyData::try_from_mnemonic construction, when is the key-data payload itself additionally encrypted?",
+      "prompt": "During cited PrvKeyData::try_from_mnemonic construction, when is the key-data payload itself additionally encrypted?",
       "options": [
         "When an optional payment_secret is supplied",
         "Only when the node's UTXO index is disabled",
@@ -1291,12 +1291,12 @@
       "conceptId": "K750-0046",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Key Records",
-      "prompt": "Which textual representation does Rusty Kaspa's from_secret_key helper store in its SecretKey variant?",
+      "prompt": "Which textual representation does the cited from_secret_key helper store in its SecretKey variant?",
       "options": [
-        "The public address string with its network prefix",
+        "The public address's network prefix only",
         "Hexadecimal encoding of the secret-key bytes",
-        "A Base58 encoding of the secret key with a checksum",
-        "The derived public key in compressed form"
+        "A decimal rendering of the wallet balance",
+        "The node's last block hash"
       ],
       "correctIndex": 1,
       "difficulty": "medium",
@@ -1319,7 +1319,7 @@
       "conceptId": "K750-0047",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Key Records",
-      "prompt": "Why is Rusty Kaspa's key variant's get_string return type more specific than an ordinary String?",
+      "prompt": "Why is the cited key variant's get_string return type more specific than an ordinary String?",
       "options": [
         "It guarantees the string can be safely published",
         "It proves the secret text contains no private key material",
@@ -1347,10 +1347,10 @@
       "conceptId": "K750-0048",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Shell",
-      "prompt": "In Rusty Kaspa's development wallet shell, what does create without arguments do on a new installation?",
+      "prompt": "In the cited development wallet shell, what does create without arguments do on a new installation?",
       "options": [
         "Creates a funded testnet address with free coins automatically",
-        "Connects to a remote node and imports a wallet",
+        "Registers a remote custodial exchange account",
         "Starts a new public Kaspa network",
         "Creates a local wallet"
       ],
@@ -1375,12 +1375,12 @@
       "conceptId": "K750-0049",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Shell",
-      "prompt": "How do Rusty Kaspa's wallet shell's server and connect commands differ?",
+      "prompt": "How do the cited wallet shell's server and connect commands differ?",
       "options": [
         "server configures the endpoint; connect initiates the connection",
         "Both immediately create a new local wallet",
         "server broadcasts a payment; connect signs it",
-        "connect changes the endpoint's consensus network automatically on start"
+        "connect changes the endpoint's consensus network automatically"
       ],
       "correctIndex": 0,
       "difficulty": "medium",
@@ -1403,7 +1403,7 @@
       "conceptId": "K750-0050",
       "category": "Kaspa",
       "subcategory": "Kaspa Wallet Shell",
-      "prompt": "Why might a Rusty Kaspa wallet-shell user choose mute or track <type> when receiving many transactions?",
+      "prompt": "Why might a cited wallet-shell user choose mute or track <type> when receiving many transactions?",
       "options": [
         "To erase those transactions from the blockDAG",
         "To mute or select notification types shown by the shell",

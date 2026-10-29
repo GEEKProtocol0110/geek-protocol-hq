@@ -31,7 +31,7 @@
       "conceptId": "K624-0001",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "In Rusty Kaspa's engine, an executing OpNotIf receives a false condition. Which branch becomes active?",
+      "prompt": "In the cited Kaspa engine, an executing OpNotIf receives a false condition. Which branch becomes active?",
       "options": [
         "Its conditional body becomes active",
         "Its conditional body must be skipped",
@@ -59,7 +59,7 @@
       "conceptId": "K624-0002",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "A Kaspa OpIf is nested inside a branch already being skipped in Rusty Kaspa's engine. What happens to its condition operand?",
+      "prompt": "A Kaspa OpIf is nested inside a branch already being skipped in the cited engine. What happens to its condition operand?",
       "options": [
         "It always consumes a new signature",
         "No data-stack condition is consumed; a skipped condition is recorded",
@@ -87,7 +87,7 @@
       "conceptId": "K624-0003",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "What happens when OpEndIf executes with an empty condition stack in Rusty Kaspa's implementation?",
+      "prompt": "What happens when OpEndIf executes with an empty condition stack in the cited Kaspa implementation?",
       "options": [
         "It silently creates an outer condition",
         "It pushes the transaction version",
@@ -115,7 +115,7 @@
       "conceptId": "K624-0004",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "How does Rusty Kaspa's OpIfDup treat a top stack item that decodes to false?",
+      "prompt": "How does the cited Kaspa OpIfDup treat a top stack item that decodes to false?",
       "options": [
         "It duplicates the item twice",
         "It removes the false item",
@@ -143,7 +143,7 @@
       "conceptId": "K624-0005",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "A Rusty Kaspa script has A, B, C on its data stack, with C on top. What does OpNip leave?",
+      "prompt": "A cited Kaspa script has A, B, C on its data stack, with C on top. What does OpNip leave?",
       "options": [
         "A, C",
         "B, C",
@@ -171,7 +171,7 @@
       "conceptId": "K624-0006",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "In Rusty Kaspa's engine, A is below B on a two-item stack. What does OpOver produce, with the top listed last?",
+      "prompt": "In the cited Kaspa engine, A is below B on a two-item stack. What does OpOver produce, with the top listed last?",
       "options": [
         "A, B, B",
         "A, B, A",
@@ -199,7 +199,7 @@
       "conceptId": "K624-0007",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "After a valid depth operand is consumed, how does Rusty Kaspa's OpRoll retrieve the chosen stack item?",
+      "prompt": "After a valid depth operand is consumed, how does the cited Kaspa OpRoll retrieve the chosen stack item?",
       "options": [
         "It always leaves the original and adds a copy",
         "It hashes the item into a transaction ID",
@@ -227,7 +227,7 @@
       "conceptId": "K624-0008",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "What does Rusty Kaspa's OpRot do to the top three items A, B, C, with C on top?",
+      "prompt": "What does the cited Kaspa OpRot do to the top three items A, B, C, with C on top?",
       "options": [
         "Changes their order to C, B, A",
         "Leaves A, B, C and appends A",
@@ -255,7 +255,7 @@
       "conceptId": "K624-0009",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "A Rusty Kaspa script has A below B. Which stack results from OpTuck, with the top listed last?",
+      "prompt": "A cited Kaspa script has A below B. Which stack results from OpTuck, with the top listed last?",
       "options": [
         "B, A, B",
         "A, B, A",
@@ -283,7 +283,7 @@
       "conceptId": "K624-0010",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "Rusty Kaspa's OpSubstr selects bytes with start 1 and end 3 from [10, 20, 30, 40]. Which bytes are returned?",
+      "prompt": "The cited Kaspa OpSubstr selects bytes with start 1 and end 3 from [10, 20, 30, 40]. Which bytes are returned?",
       "options": [
         "[20, 30, 40]",
         "[20, 30]",
@@ -292,7 +292,7 @@
       ],
       "correctIndex": 1,
       "difficulty": "hard",
-      "funFact": "Substring uses a start-inclusive, end-exclusive byte range. The end argument is an index rather than a requested length. These items describe Rusty Kaspa's implementation, not an activation claim.",
+      "funFact": "Substring uses a start-inclusive, end-exclusive byte range. The end argument is an index rather than a requested length. These items describe the pinned implementation, not an activation claim.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L502",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-17",
@@ -311,7 +311,7 @@
       "conceptId": "K624-0011",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "Which statement about OpLShift and OpRShift matches Rusty Kaspa's implementation?",
+      "prompt": "Which statement about OpLShift and OpRShift matches the cited Kaspa implementation?",
       "options": [
         "Both are alternate spellings for multiplication",
         "Both are enabled only when their operand is zero",
@@ -339,7 +339,7 @@
       "conceptId": "K624-0012",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "What does Rusty Kaspa's OpInvert do to each byte of its input?",
+      "prompt": "What does the cited Kaspa OpInvert do to each byte of its input?",
       "options": [
         "Reverses the order of all bytes",
         "Encrypts the bytes with a wallet key",
@@ -367,7 +367,7 @@
       "conceptId": "K624-0013",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "Before later script checks, what does Rusty Kaspa's OpEqual push when two byte strings differ?",
+      "prompt": "Before later script checks, what does the cited Kaspa OpEqual push when two byte strings differ?",
       "options": [
         "An empty byte string representing false",
         "An immediate EqualVerify error",
@@ -395,7 +395,7 @@
       "conceptId": "K624-0014",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "Which numeric mapping does OpNot use in Rusty Kaspa's engine?",
+      "prompt": "Which numeric mapping does OpNot use in the cited Kaspa engine?",
       "options": [
         "Every negative input becomes its absolute value",
         "Zero becomes 1; every nonzero input becomes 0",
@@ -423,7 +423,7 @@
       "conceptId": "K624-0015",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "A Rusty Kaspa OpSub consumes decoded operands a then b in stack order. Which arithmetic expression is evaluated?",
+      "prompt": "A cited Kaspa OpSub consumes decoded operands a then b in stack order. Which arithmetic expression is evaluated?",
       "options": [
         "b minus a",
         "a plus b",
@@ -451,7 +451,7 @@
       "conceptId": "K624-0016",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "What does Rusty Kaspa's OpMod return for decoded operands -7 and 3, in that order?",
+      "prompt": "What does the cited Kaspa OpMod return for decoded operands -7 and 3, in that order?",
       "options": [
         "A normalized positive remainder of 2",
         "A quotient of -2",
@@ -479,7 +479,7 @@
       "conceptId": "K624-0017",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "In Rusty Kaspa's OpBoolAnd, what happens when both decoded operands are nonzero, even if neither equals 1?",
+      "prompt": "In the cited Kaspa OpBoolAnd, what happens when both decoded operands are nonzero, even if neither equals 1?",
       "options": [
         "The result is numeric 1",
         "The result is their bitwise AND",
@@ -507,9 +507,9 @@
       "conceptId": "K624-0018",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "A Rusty Kaspa CheckLockTimeVerify compares a timestamp-style transaction lock time with a DAA-score-style operand. What happens?",
+      "prompt": "A cited Kaspa CheckLockTimeVerify compares a timestamp-style transaction lock time with a DAA-score-style operand. What happens?",
       "options": [
-        "The operand is automatically converted using the network's target block rate",
+        "The operand is automatically converted using the current coin price",
         "The mismatched lock-time types are rejected",
         "The lower number always wins regardless of type",
         "The opcode ignores the transaction lock time"
@@ -535,7 +535,7 @@
       "conceptId": "K624-0019",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "In Rusty Kaspa's CheckLockTimeVerify, why is the currently executing input rejected when its sequence equals MAX_TX_IN_SEQUENCE_NUM?",
+      "prompt": "In the cited Kaspa CheckLockTimeVerify, why is the currently executing input rejected when its sequence equals MAX_TX_IN_SEQUENCE_NUM?",
       "options": [
         "The transaction necessarily has too many outputs",
         "The signature becomes a token deployment",
@@ -563,7 +563,7 @@
       "conceptId": "K624-0020",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "What does Rusty Kaspa's CheckSequenceVerify do when its stack operand has SEQUENCE_LOCK_TIME_DISABLED set?",
+      "prompt": "What does the cited Kaspa CheckSequenceVerify do when its stack operand has SEQUENCE_LOCK_TIME_DISABLED set?",
       "options": [
         "It requires the transaction to have no inputs",
         "It doubles the required relative lock time",
@@ -591,7 +591,7 @@
       "conceptId": "K624-0021",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "An active Rusty Kaspa's CheckSequenceVerify requirement meets an input sequence with the disable flag set. How is this handled?",
+      "prompt": "An active cited Kaspa CheckSequenceVerify requirement meets an input sequence with the disable flag set. How is this handled?",
       "options": [
         "The input is rejected for disabling sequence lock time",
         "The requirement is silently removed from the script",
@@ -619,7 +619,7 @@
       "conceptId": "K624-0022",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "Before Rusty Kaspa's CheckSequenceVerify compares its requirement with the input sequence, what does it do with non-consensus bits?",
+      "prompt": "Before the cited Kaspa CheckSequenceVerify compares its requirement with the input sequence, what does it do with non-consensus bits?",
       "options": [
         "Treats them as extra time units",
         "Masks them out of both values",
@@ -647,7 +647,7 @@
       "conceptId": "K624-0023",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "How does Rusty Kaspa's CheckLockTimeVerify decode a stack lock-time operand containing fewer than eight bytes?",
+      "prompt": "How does the cited Kaspa CheckLockTimeVerify decode a stack lock-time operand containing fewer than eight bytes?",
       "options": [
         "Decodes an address using the mainnet prefix",
         "Reads a signed decimal string",
@@ -675,7 +675,7 @@
       "conceptId": "K624-0024",
       "category": "Kaspa",
       "subcategory": "Kaspa Script Execution",
-      "prompt": "Which information does Rusty Kaspa's OpCheckSig remove from the end of a nonempty signature item before cryptographic verification?",
+      "prompt": "Which information does the cited Kaspa OpCheckSig remove from the end of a nonempty signature item before cryptographic verification?",
       "options": [
         "The recipient\u2019s full address",
         "The transaction\u2019s output count",

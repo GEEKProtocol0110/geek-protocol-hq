@@ -12,7 +12,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L123",
       "evidenceSymbol": "pub pay_address:",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "49b3834cf9e40f5d4ddad9480d28531694281b85b96539778389aa2d8783fe04"
+      "questionSha256": "419358bab09916cf7f488a727ab5c7906c03cff5f7970532ec7528fc82c4c945"
     },
     {
       "id": "K500-0002",
@@ -20,7 +20,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L116",
       "evidenceSymbol": "Callers are expected to solve",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "49858911874ab4e4d65ec7f83122898f86dacb9e6381410c3dc07c4a5d16316d"
+      "questionSha256": "2316924c49f6cb69f4aee2363838d92ed4679ca69d5f37bac70b6221f375751f"
     },
     {
       "id": "K500-0003",
@@ -28,7 +28,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L160",
       "evidenceSymbol": "high",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "8c8e46bee9ef2fcc634e6e080d0d39d6801339cca38e2db85ab29c057b947ab4"
+      "questionSha256": "92f4f6403ba3365e387dd1a3f2067e2bc646c751dfea770ff8211d2deb696f1c"
     },
     {
       "id": "K500-0004",
@@ -36,7 +36,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L189",
       "evidenceSymbol": "The hash of the requested block",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "224f5674a563601d39e7eacefffd3996af51854970835e1ea9fc0f8deb70c004"
+      "questionSha256": "f86e997379edbdaaaecb774179010de4ec40e38f82f9eacb6e369ab2d8a7aff5"
     },
     {
       "id": "K500-0005",
@@ -60,7 +60,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L270",
       "evidenceSymbol": "pub is_utxo_indexed: bool",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "4ebd0cb835b51ca72295437044f9772a2092e0af73663dee56b65ba1e96b4570"
+      "questionSha256": "82a8861a3d5e009e028ce2c29df304101b92702ea4a6d5a02989ba6820e28b30"
     },
     {
       "id": "K500-0008",
@@ -84,7 +84,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L706",
       "evidenceSymbol": "pub struct SubmitTransactionResponse",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "018d552f21282d523f337da66e003591989981ae85ea2dbb18e398b5c8ea0b70"
+      "questionSha256": "d07163a0efcfe81647a0a39acf0a5b939c6f74e8640e199641b5a2407628f0bd"
     },
     {
       "id": "K500-0011",
@@ -92,7 +92,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L768",
       "evidenceSymbol": "pub replaced_transaction:",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "2908ac303196604413774362155336bfe691ebe33a498c346dc0c2713f4cd2e9"
+      "questionSha256": "ee773189c451907659f95e802ea266f06177a63d6252d7d3a5998b1a3ecfb3f9"
     },
     {
       "id": "K500-0012",
@@ -108,7 +108,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L861",
       "evidenceSymbol": "pub include_accepted_transaction_ids:",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "d9dfb6dd6716df077fca0becef3c5f8fecff44b0d7ebcc3267dfac8e1a040a55"
+      "questionSha256": "7ee8690b3f21e9958de85f51331210720b00a93602e2ef58f3a65be0da9b22f0"
     },
     {
       "id": "K500-0014",
@@ -116,7 +116,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L862",
       "evidenceSymbol": "pub min_confirmation_count:",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "dc4cc29dedd783989a4f1175cb530ccc040b60143f37da521b24aa84be81d3aa"
+      "questionSha256": "053ff4e55b907ab2387d18487f9dfd0c2f3943d93a833ae6538de5af875dcfb4"
     },
     {
       "id": "K500-0015",
@@ -132,7 +132,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L1046",
       "evidenceSymbol": "pub header_count: u64",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "11060bdea294dec819db4362abed0a4a5ae69082029aebefea408283e593cc9d"
+      "questionSha256": "43d11269e090efa0a8a7798f69466fd896780c64ca92efb9a7a2b8766abae069"
     },
     {
       "id": "K500-0017",
@@ -140,7 +140,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L1050",
       "evidenceSymbol": "pub virtual_parent_hashes:",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "f2b4679d6fe2a8c9d945708914aa0c5a556ef439281ef086cf8c1408fcd397ab"
+      "questionSha256": "9ecefa661bb5a00590413aa5588e74baae7dd3031335156c9429025830cfcf6b"
     },
     {
       "id": "K500-0018",
@@ -172,7 +172,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L1283",
       "evidenceSymbol": "pub struct GetBalanceByAddressRequest",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "1a52d937eb46f56fdc91fc561fae532cf8aa8ee0b40831750b612dacee350325"
+      "questionSha256": "386afd3ac3f65dfa47db1ceec92e950508145893651d860c8cdd146e69edffcd"
     },
     {
       "id": "K500-0022",
@@ -196,7 +196,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L1608",
       "evidenceSymbol": "pub window_size: u32",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "e84851d3d29c4f8e5619856cc720a784847a8a727dc20cc758646d6b7c0f5829"
+      "questionSha256": "6d2905ad4c9b7acefabfe90dd45338015fb4960580d61ed9e97e14dc98aa7cf4"
     },
     {
       "id": "K500-0025",
@@ -244,7 +244,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L2981",
       "evidenceSymbol": "added (NOT accepted)",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "cf3090d3a90478cb092cee3049f2485cc6cd7a084e8bdd8cb646d079070505da"
+      "questionSha256": "6b1a27a1ca51143f54775ebee3f214297454aebb89488bd1ca36c2c63df2a797"
     },
     {
       "id": "K500-0031",
@@ -252,7 +252,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L3307",
       "evidenceSymbol": "pub struct UtxosChangedNotification",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "8b89faef74cdb69c5c3177d36e7fd9455b74bb52c90501ac821a719c9deeef9b"
+      "questionSha256": "654221f897d0003d8a752893c1572068686d8700aae3fd3b0768bef96840900c"
     },
     {
       "id": "K500-0032",
@@ -284,7 +284,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L3712",
       "evidenceSymbol": "must be a chain (selected-parent-chain) block",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "b46aa759087f3648e809cd107839f17bc9cfff206e3ba1814c25a319cf8511f5"
+      "questionSha256": "eec0e8cf00c2dbfddd7155e587b5884ddefde55158d273718d6d70126c57fe32"
     },
     {
       "id": "K500-0036",
@@ -292,7 +292,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L3776",
       "evidenceSymbol": "non-inclusion proof",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "46e0fe716edfc322c3d67de377bc3d6e0dc312e0d9631bf36209a830c37804fd"
+      "questionSha256": "ad974bcfdc3f8b0d577f9b4c5a1d58e159c21d74f26c6fac5936efda1878801e"
     },
     {
       "id": "K500-0037",
@@ -316,7 +316,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L82",
       "evidenceSymbol": "pub enum SubmitBlockReport",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "a8000ecdaaa1d18d3def5f4e9dd06fa3529c934faa6e3000ebd38d408f9e0053"
+      "questionSha256": "fe4cc3a01b3ca090cd8c2298bdf5d386dc5d18a25f9bbbea21ba6f56418edf4e"
     },
     {
       "id": "K500-0040",
@@ -324,7 +324,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L60",
       "evidenceSymbol": "RouteIsFull = 3",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "f478a7f57b8f1bf13944706093c3f58c54bfbaed50075a8a3cc2e378e25c2ea1"
+      "questionSha256": "88818ccc8a09508a28e7af5997d0c2f492ba65029d71544e7bedacf999c56852"
     },
     {
       "id": "K500-0041",
@@ -332,7 +332,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L2242",
       "evidenceSymbol": "pub struct StorageMetrics",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "afad5b17786ba762d248e3232ba6a12ae6ac2b0e3cbc8a55cbe8699d3b7a5bd5"
+      "questionSha256": "158153c3a1bb887804717607d9e7d7a222725899024ed63c74860638def32143"
     },
     {
       "id": "K500-0042",
@@ -356,7 +356,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L2751",
       "evidenceSymbol": "pub merging_chain_block_hash:",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "959fdaaf5c17f54eb80cd1c2a3c6c52a006eccdfb74b500faa664c6aa8c5f489"
+      "questionSha256": "20e887caf17925516f1b85f31ab8dee52616455ced931d77f05c20c1a5a2df53"
     },
     {
       "id": "K500-0045",
@@ -364,7 +364,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L59",
       "evidenceSymbol": "IsInIBD = 2",
       "sourceSha256": "d62aa1fa911e30a153a7356fdd1c8f0a48635733f0fb491c58fc993ee2e9eb96",
-      "questionSha256": "1aecf24b679d0fde3ffa66eace0c2a6559fdd011c3c332e7f3541de974895eba"
+      "questionSha256": "f1e271447351305520911f6a5b72e3309b7c1c91daf25d68b2103d0bb11c7401"
     },
     {
       "id": "K500-0046",
@@ -372,7 +372,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/pre_ghostdag_validation.rs#L30",
       "evidenceSymbol": "fn check_header_version",
       "sourceSha256": "7a1ca0ec2032d5fd8ed042c30d2ec1bb070a51ba1b918b6d48c68d07083fb767",
-      "questionSha256": "1645f64e4f139b2bc2dbba9bd2476a4e8b5de9748fd1a9f7b5905e8ef5f12df7"
+      "questionSha256": "6596de98ba6f7a22b52b1ad7fa533af3d82acee72250fcd0fa6cbaaeea5434bb"
     },
     {
       "id": "K500-0047",
@@ -388,7 +388,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/pre_ghostdag_validation.rs#L47",
       "evidenceSymbol": "fn check_parents_limit",
       "sourceSha256": "7a1ca0ec2032d5fd8ed042c30d2ec1bb070a51ba1b918b6d48c68d07083fb767",
-      "questionSha256": "477d610923f833a4fae8c62719892ae5a64243ef4fa26a384f353557250da6d0"
+      "questionSha256": "2bc5f30c050cf842efbbf6cc365050872d871b5ba4a0e7005df7c4d3a4b45759"
     },
     {
       "id": "K500-0049",
@@ -396,7 +396,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/pre_ghostdag_validation.rs#L60",
       "evidenceSymbol": "fn check_parents_not_origin",
       "sourceSha256": "7a1ca0ec2032d5fd8ed042c30d2ec1bb070a51ba1b918b6d48c68d07083fb767",
-      "questionSha256": "6f636d39fb6f1273050aad999963966aa6adca42bab5ab6087a87db404c7ea46"
+      "questionSha256": "bda476e1d1781f7851ce353660bb686d6e5823b0013c94a9d13cd9d803669366"
     },
     {
       "id": "K500-0050",
@@ -412,7 +412,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/pre_ghostdag_validation.rs#L80",
       "evidenceSymbol": "RuleError::MissingParents(missing_parents)",
       "sourceSha256": "7a1ca0ec2032d5fd8ed042c30d2ec1bb070a51ba1b918b6d48c68d07083fb767",
-      "questionSha256": "33c1c14be6e229ee7cd41efbf67fdd473281145f1be4380eb8b045debc17dae0"
+      "questionSha256": "4cce431c8e2792adfa80d07ab5ea8ebae182510314d2fcf359444432d20f9710"
     },
     {
       "id": "K500-0052",
@@ -420,7 +420,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/pre_ghostdag_validation.rs#L85",
       "evidenceSymbol": "fn check_parents_incest",
       "sourceSha256": "7a1ca0ec2032d5fd8ed042c30d2ec1bb070a51ba1b918b6d48c68d07083fb767",
-      "questionSha256": "a5f208bd8bf10e6ea864fa63c3d05786ba94ffea01d939bc02abb66982036d2b"
+      "questionSha256": "b8ad81bc13c29fb8786c5e8d05ce0826f0573c4d50f2b1353e76ddc603b73ed6"
     },
     {
       "id": "K500-0053",
@@ -428,7 +428,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/pre_pow_validation.rs#L14",
       "evidenceSymbol": "fn check_pruning_violation",
       "sourceSha256": "eb7fff5ab623244161ccb68ef9b4e3c67d6900c7dc2607e39e39ea667ffc3c04",
-      "questionSha256": "10716ee25fa30d73df0b048286f2b299cf4ec19e7c9d705abe1242e06b0f7862"
+      "questionSha256": "759dd78db2e53e45c9b301cf19a8a15d5268c36a237db60b331fb4a0145e98cb"
     },
     {
       "id": "K500-0054",
@@ -436,7 +436,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/pre_pow_validation.rs#L30",
       "evidenceSymbol": "daa_window.daa_score != header.daa_score",
       "sourceSha256": "eb7fff5ab623244161ccb68ef9b4e3c67d6900c7dc2607e39e39ea667ffc3c04",
-      "questionSha256": "ceb870df3026eb6aa834e38e1ae66e2f9c078c243766220ade727a88a3dbf86b"
+      "questionSha256": "9a7e22c029b49532d20fd34564a4d9ee708ed7818bc00a7fb033661fea5d4b3d"
     },
     {
       "id": "K500-0055",
@@ -444,7 +444,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/pre_pow_validation.rs#L37",
       "evidenceSymbol": "header.bits != expected_bits",
       "sourceSha256": "eb7fff5ab623244161ccb68ef9b4e3c67d6900c7dc2607e39e39ea667ffc3c04",
-      "questionSha256": "759e58831a8a4d41fce17ee26a9a54dd0be734ba8707a85c5dc13a32203d4f8f"
+      "questionSha256": "b6d7d1bb480faab55dfb8f499b6ff11a1df5256e7d34c3d0c4423f19d5d9ce82"
     },
     {
       "id": "K500-0056",
@@ -452,7 +452,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/post_pow_validation.rs#L23",
       "evidenceSymbol": "header.timestamp <= past_median_time",
       "sourceSha256": "0858b59dd43b1435ee548ee5af97320fca6b8c70b9bde51b9cef49d5b016e970",
-      "questionSha256": "370521162d79d4e207db144ab56bd18c22d2fb8f61b510939cc4f32303164207"
+      "questionSha256": "8db059e364566226bbd09567299995e3448fd3d05b7a6278f2d88f49c613adf1"
     },
     {
       "id": "K500-0057",
@@ -468,7 +468,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/post_pow_validation.rs#L49",
       "evidenceSymbol": "gd_blue_work != header.blue_work",
       "sourceSha256": "0858b59dd43b1435ee548ee5af97320fca6b8c70b9bde51b9cef49d5b016e970",
-      "questionSha256": "a36bff6803137657a30a70f6f41a29c914ed2352615eb5e55603f9b7aaa74f72"
+      "questionSha256": "0faa324e77a61091baaa381b88a4f8f3e95651cfc48bcd43fdc2ceee8a0bf088"
     },
     {
       "id": "K500-0059",
@@ -476,7 +476,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/post_pow_validation.rs#L67",
       "evidenceSymbol": "HashSet::<&Hash>::from_iter",
       "sourceSha256": "0858b59dd43b1435ee548ee5af97320fca6b8c70b9bde51b9cef49d5b016e970",
-      "questionSha256": "612bc5d98a63f9f0e58280f57346b24b0a283cc65d7e3212aaeb82a10639a990"
+      "questionSha256": "88ca61b39e75bd36ee2a538946af180d808471281e9dcaab61bdcf6327f41320"
     },
     {
       "id": "K500-0060",
@@ -484,7 +484,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/body_processor/body_validation_in_isolation.rs#L29",
       "evidenceSymbol": "fn check_has_transactions",
       "sourceSha256": "d8278a4e88859717eb369dc77eda66018ccb40d7530793db779e9745ca5ca218",
-      "questionSha256": "8b2148f9a5bc97e889d2643063647bdeb57c089cf2f5fb66b93c34dfb5d27919"
+      "questionSha256": "58a753ae384e3f380a0886cc25fd3bad279b9e4bf0e2374c022f6d2a099c10ea"
     },
     {
       "id": "K500-0061",
@@ -508,7 +508,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/body_processor/body_validation_in_isolation.rs#L38",
       "evidenceSymbol": "fn check_hash_merkle_root",
       "sourceSha256": "d8278a4e88859717eb369dc77eda66018ccb40d7530793db779e9745ca5ca218",
-      "questionSha256": "7e35e1168e28ec97c592f55f160d6d1fc0b0b72b537f38dfc6b9422ceda5f319"
+      "questionSha256": "c61a507177d8f7413009e44ff500f8123391a31a69e5a6da29e9e8774db39b78"
     },
     {
       "id": "K500-0064",
@@ -516,7 +516,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/body_processor/body_validation_in_isolation.rs#L156",
       "evidenceSymbol": "RuleError::DuplicateTransactions",
       "sourceSha256": "d8278a4e88859717eb369dc77eda66018ccb40d7530793db779e9745ca5ca218",
-      "questionSha256": "2912a88d8c7dda6edeba670de9a41f33e3403bd43bbdbc89a504bf090f51e19d"
+      "questionSha256": "72b3d4001ed121e48bdbc1e50f4e59b5b3239dbe82735712eb63a04e7c548887"
     },
     {
       "id": "K500-0065",
@@ -524,7 +524,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/body_processor/body_validation_in_isolation.rs#L130",
       "evidenceSymbol": "RuleError::DoubleSpendInSameBlock",
       "sourceSha256": "d8278a4e88859717eb369dc77eda66018ccb40d7530793db779e9745ca5ca218",
-      "questionSha256": "87db5b3b3698ec3211308106cf5d9ff7f0699c647b1204aa26a35f0c7e093f06"
+      "questionSha256": "bba13b96ba831ccb6897a630e3c33dde26a2d643a434a3087fbfece44c130ccd"
     },
     {
       "id": "K500-0066",
@@ -532,7 +532,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/body_processor/body_validation_in_isolation.rs#L146",
       "evidenceSymbol": "RuleError::ChainedTransaction",
       "sourceSha256": "d8278a4e88859717eb369dc77eda66018ccb40d7530793db779e9745ca5ca218",
-      "questionSha256": "c1bae5774261df0d70a6d343073217ab1e73f328cdae5aefc89813b905a212ee"
+      "questionSha256": "362181243bf6bc9ff6c98c85984a2b2420b6a7e65fff5495cf3c89cd3ac25e08"
     },
     {
       "id": "K500-0067",
@@ -540,7 +540,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/body_processor/body_validation_in_isolation.rs#L87",
       "evidenceSymbol": "Verify each dimension against its own limit",
       "sourceSha256": "d8278a4e88859717eb369dc77eda66018ccb40d7530793db779e9745ca5ca218",
-      "questionSha256": "8a68957214f6069789948e32c469f82277f62c8cd9878c19b77436010f3fd7c8"
+      "questionSha256": "2c2d0db2dc9ac87ca71b9af94b04f8b9cc1e3ddecdd600f119096645f97ea49d"
     },
     {
       "id": "K500-0068",
@@ -548,7 +548,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/body_processor/body_validation_in_isolation.rs#L105",
       "evidenceSymbol": "*gas = gas.saturating_add(tx.gas)",
       "sourceSha256": "d8278a4e88859717eb369dc77eda66018ccb40d7530793db779e9745ca5ca218",
-      "questionSha256": "a1175da61e5110955b95efec5aa2e7816dd21c363237b991aad4e309ec921728"
+      "questionSha256": "98676b42c2f60f9f55566e4e7ef3c7e3df8bee76e79489a7d94c6dfbc84287dd"
     },
     {
       "id": "K500-0069",
@@ -556,7 +556,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/body_processor/body_validation_in_isolation.rs#L110",
       "evidenceSymbol": "RuleError::ExceedsLanesPerBlockLimit",
       "sourceSha256": "d8278a4e88859717eb369dc77eda66018ccb40d7530793db779e9745ca5ca218",
-      "questionSha256": "87177e6b833f867a57426b4ee5d32633d5000c59b14f32a191fa774b5fb0b886"
+      "questionSha256": "feb9ab11416bf9ec551938ba4801418d228eb249708f82f52e2da0fedfab7fd6"
     },
     {
       "id": "K500-0070",
@@ -564,7 +564,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/body_processor/body_validation_in_context.rs#L48",
       "evidenceSymbol": "fn check_parent_bodies_exist",
       "sourceSha256": "69b316fe40aeb1f35b57258085cb2fa1fd0d8fd10251eb058568bfd2a864d2f0",
-      "questionSha256": "fdd0daf08e976aebc60f2c1a30331860d3fbb1daf736bdba0c49f37d061568bf"
+      "questionSha256": "b881c19f7b1d5396ea3c66c3ff5a298774bc971477c60e93bf9e8ea439ef27dd"
     },
     {
       "id": "K500-0071",
@@ -572,7 +572,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/body_processor/body_validation_in_context.rs#L70",
       "evidenceSymbol": "data.blue_score != block.header.blue_score",
       "sourceSha256": "69b316fe40aeb1f35b57258085cb2fa1fd0d8fd10251eb058568bfd2a864d2f0",
-      "questionSha256": "fe2cfaba14203f2797c979b52eee1f7cf5d1289181e1746f0c9ca0a19b011dae"
+      "questionSha256": "a233d74a0bf6608a808f46fbfa4d7c3f81b8feea513a3241f9ea4028f917dbfa"
     },
     {
       "id": "K500-0072",
@@ -604,7 +604,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/pow/src/lib.rs#L31",
       "evidenceSymbol": "hash_override_nonce_time(header, 0, 0)",
       "sourceSha256": "5bd2384bf40b6fe087d66c7227179450a02d928cf480b5a4338c7fde79bb10bb",
-      "questionSha256": "02f5c57c486cfa5704d13272d8c9f4e946e88530e2b7366bc77cd3d666c8481d"
+      "questionSha256": "a6a1b0f54c6d7acca183da670e42d15debb15f99bbf7f0c3a185c059edfc8885"
     },
     {
       "id": "K500-0076",
@@ -612,7 +612,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/pow/src/lib.rs#L34",
       "evidenceSymbol": "Matrix::generate(pre_pow_hash)",
       "sourceSha256": "5bd2384bf40b6fe087d66c7227179450a02d928cf480b5a4338c7fde79bb10bb",
-      "questionSha256": "914629909a28482b85ae73060186b3ffc54756973a5ca53aa1f236513721a2ee"
+      "questionSha256": "62c931a23528c9b852cb84b6b63b6d319406d0dd66c7deca6d4ea4b9799c0f90"
     },
     {
       "id": "K500-0077",
@@ -628,7 +628,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/pow/src/lib.rs#L46",
       "evidenceSymbol": "Uint256::from_le_bytes(hash.as_bytes())",
       "sourceSha256": "5bd2384bf40b6fe087d66c7227179450a02d928cf480b5a4338c7fde79bb10bb",
-      "questionSha256": "fef1bee427ae3e046ebeca8545569e2f325bf9eda000d866603a85ad727f7ac3"
+      "questionSha256": "1f4e5f6a2a16dc4ca0ff10878bee007a85491d9ab472252eb14777400129db6a"
     },
     {
       "id": "K500-0079",
@@ -636,7 +636,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/pow/src/lib.rs#L65",
       "evidenceSymbol": "Genesis has the max block level",
       "sourceSha256": "5bd2384bf40b6fe087d66c7227179450a02d928cf480b5a4338c7fde79bb10bb",
-      "questionSha256": "bea5b79aa859d873cf085da7640ef0f0f6f453d923916e9041c4a5085812a2bf"
+      "questionSha256": "4dddc83f15202a10af0bed6bc42d2239acdcd6f575f78782719894e22f5ea5d4"
     },
     {
       "id": "K500-0080",
@@ -644,7 +644,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/protocol/p2p/src/handshake.rs#L33",
       "evidenceSymbol": "Payload::Verack, VerackMessage",
       "sourceSha256": "f12bb28b5416caf18e6624f5ad1caa68f8c80164290306e3af8a4511f7ea1535",
-      "questionSha256": "1b7a416f22eb6b432e246f8111d73e885603a9b9173e48388e10f2afd70a5f0e"
+      "questionSha256": "35562bb13871b00e4bf2d6981a21953cf142cbd1d3c6606a24d9a763a48c4544"
     },
     {
       "id": "K500-0081",
@@ -652,7 +652,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/protocol/p2p/src/handshake.rs#L56",
       "evidenceSymbol": "This is the final step of the handshake protocol",
       "sourceSha256": "f12bb28b5416caf18e6624f5ad1caa68f8c80164290306e3af8a4511f7ea1535",
-      "questionSha256": "7335a4b79c8b5ad8d00748d70c69fe09ddbe622132be68e84d2fab0bac0d5c11"
+      "questionSha256": "f1d5b1078bc4a7f6e328ad35871124622d37d5df24b784bd2754b36d7faf6779"
     },
     {
       "id": "K500-0082",
@@ -660,7 +660,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/protocol/p2p/src/handshake.rs#L72",
       "evidenceSymbol": "avoid a handshake deadlock",
       "sourceSha256": "f12bb28b5416caf18e6624f5ad1caa68f8c80164290306e3af8a4511f7ea1535",
-      "questionSha256": "4f8d2355d2bd6a92db7ae8e434e5c112d3faf22abb528cb389a6650bc221a185"
+      "questionSha256": "41ec01e0815d14bfd1ff749a4a6c993a431bc4b45e7d5a56f39931613aa47a3b"
     },
     {
       "id": "K500-0083",
@@ -668,7 +668,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/protocol/p2p/src/handshake.rs#L30",
       "evidenceSymbol": "Duration::from_secs(4)",
       "sourceSha256": "f12bb28b5416caf18e6624f5ad1caa68f8c80164290306e3af8a4511f7ea1535",
-      "questionSha256": "77b6b2bee424f67c7f419db77adf270ef3cc86b4fd90ba6d77080ba09d3366df"
+      "questionSha256": "2e854e953789ce15f08d9f0e61859c1daefc874a5212b31433b4e30c1e17bc72"
     },
     {
       "id": "K500-0084",
@@ -676,7 +676,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/check_transaction_standard.rs#L17",
       "evidenceSymbol": "const MAX_STANDARD_P2SH_SIG_OPS: u16 = 15",
       "sourceSha256": "9de15e3df1d932520c3051712c0a0cbcd66fd734b4727e82f7722d996656e571",
-      "questionSha256": "09335f2156ea6a5c76758728e4bcf29b6bf426c71befd0b8dbfcaa0879b94753"
+      "questionSha256": "b33b1492a84b784185a4827700d10935a6ac9a9e38babced5315e1b37ba3e130"
     },
     {
       "id": "K500-0085",
@@ -684,7 +684,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/check_transaction_standard.rs#L30",
       "evidenceSymbol": "RejectOutputScriptClass",
       "sourceSha256": "9de15e3df1d932520c3051712c0a0cbcd66fd734b4727e82f7722d996656e571",
-      "questionSha256": "5d8e73ae4d776aa6daab5b1b95af9b8576bdab5e8f026c83c7fb58e3a6fb0157"
+      "questionSha256": "5f1a6f554bc2d1ad9dfdbf21675d2ae22bbfd1e39f3c016f00cd2df298f41478"
     },
     {
       "id": "K500-0086",
@@ -692,7 +692,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/check_transaction_standard.rs#L26",
       "evidenceSymbol": "RejectScriptPublicKeyVersion",
       "sourceSha256": "9de15e3df1d932520c3051712c0a0cbcd66fd734b4727e82f7722d996656e571",
-      "questionSha256": "416cf7ff19a198d66f79d6a9217f9d9ed37284a611ead6dcf74e1d8318616349"
+      "questionSha256": "a2c40a0a5a96e8641904c0203b95222444326d9596aaa46b7366d60d66ea5d12"
     },
     {
       "id": "K500-0087",
@@ -700,7 +700,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/check_transaction_standard.rs#L54",
       "evidenceSymbol": "RejectInputScriptClass",
       "sourceSha256": "9de15e3df1d932520c3051712c0a0cbcd66fd734b4727e82f7722d996656e571",
-      "questionSha256": "1e8d9a45d031b5a9be13b5fae21be6c4aee5fb605787e8bd6fd2bb164d43295e"
+      "questionSha256": "0bd28ae4498f46386706295fc55ed598bbdadf967e5d52ccc16488553b9d915a"
     },
     {
       "id": "K500-0088",
@@ -708,7 +708,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/check_transaction_standard.rs#L75",
       "evidenceSymbol": "let fee_mass = masses.compute_mass.max(normalized_transient_mass)",
       "sourceSha256": "9de15e3df1d932520c3051712c0a0cbcd66fd734b4727e82f7722d996656e571",
-      "questionSha256": "e9ca7e9b1a2bcfc081ac2e5fbc44e208344304919f3e05c68433f09775c1c019"
+      "questionSha256": "6ab2a19a93027136233c3a7461e280aa785bbf420ac9c030099b60db5c25534c"
     },
     {
       "id": "K500-0089",
@@ -724,7 +724,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/check_transaction_standard.rs#L98",
       "evidenceSymbol": "if minimum_fee == 0",
       "sourceSha256": "9de15e3df1d932520c3051712c0a0cbcd66fd734b4727e82f7722d996656e571",
-      "questionSha256": "6f23d17a13d7e5d9e47ab5038555cbf88316a8646e228c7e5b66b83948bac370"
+      "questionSha256": "a51e5c302ac6b41e96a253afa87244dfcbf32f46dbd188139a0f2a957ec5fb9f"
     },
     {
       "id": "K500-0091",
@@ -732,7 +732,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/replace_by_fee.rs#L22",
       "evidenceSymbol": "RbfPolicy::Forbidden =>",
       "sourceSha256": "8891f13fd76362fdac6fb45b20dc465b9d7f82f3cda0908d370e66c93a41974e",
-      "questionSha256": "38abe027ca94927fafd340723f689925f0cf0d4af35243850daeab08912872e2"
+      "questionSha256": "2d5638f7fc2570c32de21b63de00e6714d728a2660a34e686467fb9b3913ff8e"
     },
     {
       "id": "K500-0092",
@@ -740,7 +740,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/replace_by_fee.rs#L44",
       "evidenceSymbol": "exactly one double spending transaction",
       "sourceSha256": "8891f13fd76362fdac6fb45b20dc465b9d7f82f3cda0908d370e66c93a41974e",
-      "questionSha256": "aa154668b49568d292d83531dc37f7a43a7d597f716f7e630bec315bdb243dac"
+      "questionSha256": "1eb95eade0406473f371e756c467c3eb8373b683321c591a70a6448b09c32a61"
     },
     {
       "id": "K500-0093",
@@ -748,7 +748,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/replace_by_fee.rs#L29",
       "evidenceSymbol": "both insertion and replacement are possible",
       "sourceSha256": "8891f13fd76362fdac6fb45b20dc465b9d7f82f3cda0908d370e66c93a41974e",
-      "questionSha256": "553139e9d221b6d7a2ace409ca7058395699a378d675bdda12a3b003cd0fa34f"
+      "questionSha256": "69bf31a169c20b1e7e230c62f62355320a6027a8a5f9a8c4f4e74017ddf5891f"
     },
     {
       "id": "K500-0094",
@@ -756,7 +756,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/replace_by_fee.rs#L36",
       "evidenceSymbol": "We take the max over all double spends",
       "sourceSha256": "8891f13fd76362fdac6fb45b20dc465b9d7f82f3cda0908d370e66c93a41974e",
-      "questionSha256": "b7982686daed18c266b36a7cb5e645e15444d7c4a20f3a86db6c9cbbd7459a49"
+      "questionSha256": "422ff80754bb87005e7ce9b5fae9a939fad42500b478552f56f94835668aa74c"
     },
     {
       "id": "K500-0095",
@@ -764,7 +764,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/replace_by_fee.rs#L160",
       "evidenceSymbol": "transaction_feerate > double_spend_feerate",
       "sourceSha256": "8891f13fd76362fdac6fb45b20dc465b9d7f82f3cda0908d370e66c93a41974e",
-      "questionSha256": "aa80f207be36362b05af4e561e64f3d3a56e29d2246e9420e57598f3ca0a9609"
+      "questionSha256": "7bebe614f496ffab4f10fb42d0bf96d86cbb8b920388555a2386f3636469631c"
     },
     {
       "id": "K500-0096",
@@ -772,7 +772,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/replace_by_fee.rs#L104",
       "evidenceSymbol": "removal only after we fully validate",
       "sourceSha256": "8891f13fd76362fdac6fb45b20dc465b9d7f82f3cda0908d370e66c93a41974e",
-      "questionSha256": "b850524ad533cf7501ce4c8e1ec9d9df7488536eae6e700c7fed306bcd88bc19"
+      "questionSha256": "5b727f06c27f0421673d25a589ac1adfb3d1d905c03248b6b9923300b00fa705"
     },
     {
       "id": "K500-0097",
@@ -780,7 +780,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/model/orphan_pool.rs#L19",
       "evidenceSymbol": "Pool of orphan transactions depending on some missing utxo entries",
       "sourceSha256": "7105956eb598b943827f80e38cd15bbfd506d113d920fe1e65bb77ee38e33e06",
-      "questionSha256": "16a24cdf06a15b91df2179e847c075e25f89aea31ac2e9f22dd322d145d32284"
+      "questionSha256": "b11d459a7583112bd65243817f929abd774df68f580013bc47a576e4cc8ecfff"
     },
     {
       "id": "K500-0098",
@@ -788,7 +788,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/model/orphan_pool.rs#L69",
       "evidenceSymbol": "self.config.maximum_orphan_transaction_count",
       "sourceSha256": "7105956eb598b943827f80e38cd15bbfd506d113d920fe1e65bb77ee38e33e06",
-      "questionSha256": "c50a04832424c52ee13392550cfb7a0178754557785b9c2243b37f9c43768114"
+      "questionSha256": "47e50e5fe6bbb105a521106964dd2aff57bd1cacd4d57ae9d5b8a3a83bcde1d4"
     },
     {
       "id": "K500-0099",
@@ -796,7 +796,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/model/orphan_pool.rs#L90",
       "evidenceSymbol": "get_random_low_priority_orphan",
       "sourceSha256": "7105956eb598b943827f80e38cd15bbfd506d113d920fe1e65bb77ee38e33e06",
-      "questionSha256": "b9fa2bfd5674d145160011238a28c4515ddc9fa1fea5be5743d59a83acf1ef00"
+      "questionSha256": "6f174343508d9a64e4ba2807d5757bc05f97e71d54a5335a66deccb661ee5a58"
     },
     {
       "id": "K500-0100",
@@ -804,7 +804,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/model/orphan_pool.rs#L92",
       "evidenceSymbol": "all orphans are high priority",
       "sourceSha256": "7105956eb598b943827f80e38cd15bbfd506d113d920fe1e65bb77ee38e33e06",
-      "questionSha256": "06d96157d5369af8f0974310d4b6100bedd210be4fc5a19762dca0313c8c38e5"
+      "questionSha256": "23f1a19ceb13ff0e118831a606787224eadb51b34456399ffba01d7462fdd9b2"
     },
     {
       "id": "K500-0101",
@@ -812,7 +812,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/model/orphan_pool.rs#L104",
       "evidenceSymbol": "fn check_orphan_mass",
       "sourceSha256": "7105956eb598b943827f80e38cd15bbfd506d113d920fe1e65bb77ee38e33e06",
-      "questionSha256": "83b2632a0e89003150bc4fc43ec2feea1c54952bd857605306f8bb49f14c11c4"
+      "questionSha256": "ddec4072ab8874aff96a735202e3ba5c526153fc7a84029e5b67c0ee97fbc37b"
     },
     {
       "id": "K500-0102",
@@ -820,7 +820,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/model/orphan_pool.rs#L115",
       "evidenceSymbol": "RejectDuplicateOrphan",
       "sourceSha256": "7105956eb598b943827f80e38cd15bbfd506d113d920fe1e65bb77ee38e33e06",
-      "questionSha256": "9a5787616cbcb902811f0f024d30f871903e1f741255f0cbcbe0ef16caada492"
+      "questionSha256": "57ce96009bb2581af18146e71cd2b22b6050684f3d20503f36f018de035c0bdc"
     },
     {
       "id": "K500-0103",
@@ -828,7 +828,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/model/orphan_pool.rs#L125",
       "evidenceSymbol": "RejectDoubleSpendOrphan",
       "sourceSha256": "7105956eb598b943827f80e38cd15bbfd506d113d920fe1e65bb77ee38e33e06",
-      "questionSha256": "dc92d664fe63b91cfe2a458594e0b87f127eedd4823ce583068ca9f404f61fa6"
+      "questionSha256": "90b968c735a2b10d7f3c961185c9d1ed5ddbb951799df3b546c42446aa470a82"
     },
     {
       "id": "K500-0104",
@@ -836,7 +836,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/model/orphan_pool.rs#L97",
       "evidenceSymbol": "Don't remove redeemers in the case of a random eviction",
       "sourceSha256": "7105956eb598b943827f80e38cd15bbfd506d113d920fe1e65bb77ee38e33e06",
-      "questionSha256": "96b37f5b06db113354b66997e06f53e1291bdb21aaa56ae669734aa7a56c8e53"
+      "questionSha256": "7fb33169ea9820191288b5ced8a08e0a53beaced01e550c9f19741bccb34e727"
     },
     {
       "id": "K500-0105",
@@ -844,7 +844,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L25",
       "evidenceSymbol": "Word count for a BIP39 mnemonic phrase",
       "sourceSha256": "6b62c6a82a1dfe5293c1fc9c22340f9c70a9c29eb003f6beeb177fe46e11cdea",
-      "questionSha256": "ee051c30b7752849110ffe899cd496c88163a6055ab5c51dd3aa97a36170e88b"
+      "questionSha256": "559c6a9f62fff39ad53464f3cb6cba14e72863560045bca2e718b353f8699599"
     },
     {
       "id": "K500-0106",
@@ -852,7 +852,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L89",
       "evidenceSymbol": "word_count.unwrap_or(24)",
       "sourceSha256": "6b62c6a82a1dfe5293c1fc9c22340f9c70a9c29eb003f6beeb177fe46e11cdea",
-      "questionSha256": "e4deed52286b64a858c5497c8f031129bcb907ea70cf38f7cf119dcf6c144d23"
+      "questionSha256": "3134c8ff485ac614b39b95a512203cb94451d7995ea6bf3d2c9a26f31790bf75"
     },
     {
       "id": "K500-0107",
@@ -860,7 +860,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L134",
       "evidenceSymbol": "Entropy length should be 16 or 32.",
       "sourceSha256": "6b62c6a82a1dfe5293c1fc9c22340f9c70a9c29eb003f6beeb177fe46e11cdea",
-      "questionSha256": "6595071d6003c9484bacae927be36600594cf8b2325dcc7d8e4e5f1334f5178b"
+      "questionSha256": "32958423327d0451c63ee14bf943e45ab2f8371c598ded5ccb54345768a9509d"
     },
     {
       "id": "K500-0108",
@@ -868,7 +868,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L145",
       "evidenceSymbol": "returns 11 bits at a",
       "sourceSha256": "6b62c6a82a1dfe5293c1fc9c22340f9c70a9c29eb003f6beeb177fe46e11cdea",
-      "questionSha256": "812912789a6b31ca1538f7702298075393223816bcc286e0442f4e011a00d135"
+      "questionSha256": "515017f5df46ded84dcb3042449258f1a7f58067ad3cb9fc6c8fdd23e8232773"
     },
     {
       "id": "K500-0109",
@@ -876,7 +876,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L202",
       "evidenceSymbol": "Sha256::digest(entropy)",
       "sourceSha256": "6b62c6a82a1dfe5293c1fc9c22340f9c70a9c29eb003f6beeb177fe46e11cdea",
-      "questionSha256": "1701f26098a689e78453a3869f1b477da22ce485976c766545b2309dd49c64a9"
+      "questionSha256": "5b0daaa5567e32df7c54758570aea5654d8ca57e0b7b7fdbf5c7e0e048bc3143"
     },
     {
       "id": "K500-0110",
@@ -884,7 +884,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L235",
       "evidenceSymbol": "pbkdf2::pbkdf2::<Hmac<Sha512>>",
       "sourceSha256": "6b62c6a82a1dfe5293c1fc9c22340f9c70a9c29eb003f6beeb177fe46e11cdea",
-      "questionSha256": "dfc95ce231eccf662a5ad00d1e4d82f3cbaadaea95599e8cb6d6743e83a1f40c"
+      "questionSha256": "85b1e1bd137a1a4bf370513331d57b8e32c1f1c5d0bfbab9b555e9f62fb0280a"
     },
     {
       "id": "K500-0111",
@@ -892,7 +892,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L19",
       "evidenceSymbol": "const PBKDF2_ROUNDS: u32 = 2048",
       "sourceSha256": "6b62c6a82a1dfe5293c1fc9c22340f9c70a9c29eb003f6beeb177fe46e11cdea",
-      "questionSha256": "ed27b28bdfb208d0a92445fc9e74279623b1d52364f140832e2719cb56ffb998"
+      "questionSha256": "b6c906dc95dc4d0686d51b2792014fae4124a4f1f5fc809f9bf47b93f6eb95ac"
     },
     {
       "id": "K500-0112",
@@ -900,7 +900,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L174",
       "evidenceSymbol": "wordmap.get_bits(word).ok_or(Error::Bip39)",
       "sourceSha256": "6b62c6a82a1dfe5293c1fc9c22340f9c70a9c29eb003f6beeb177fe46e11cdea",
-      "questionSha256": "84c35365d26c90f8d9b8fc1e95793f526361240d626470236d5798e9e6400239"
+      "questionSha256": "f3c5f514f672a4b12f781fc3073680b58f3ec75c4de2f08a6b5cce1098b99bce"
     },
     {
       "id": "K500-0113",
@@ -908,7 +908,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/mnemonic/phrase.rs#L242",
       "evidenceSymbol": "self.phrase.zeroize()",
       "sourceSha256": "6b62c6a82a1dfe5293c1fc9c22340f9c70a9c29eb003f6beeb177fe46e11cdea",
-      "questionSha256": "f45bd70337cf5efa99690bc17d3f8a6a8bb475a25a06cf83eccfb25133541f2a"
+      "questionSha256": "bd44bb87d06f4fb3b3fd6f85a469a13d86e2ad95f6b9b5c4710d34104a54beff"
     },
     {
       "id": "K500-0114",
@@ -916,7 +916,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/child_number.rs#L19",
       "evidenceSymbol": "pub const HARDENED_FLAG: u32 = 1 << 31",
       "sourceSha256": "e5ed43a443f8947ecb904decd6c2c4f817f7856935ff21e35cbce4a6f6a3bbb4",
-      "questionSha256": "f8da55dbddddfb91c1bc3d968226489db596bd138d0de8f13131c8bf5b297f8b"
+      "questionSha256": "8b1ec9744cfff1aacaa2a8d45dc228c834198660bff401f055e08d0bbf674418"
     },
     {
       "id": "K500-0115",
@@ -924,7 +924,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/child_number.rs#L41",
       "evidenceSymbol": "self.0.to_be_bytes()",
       "sourceSha256": "e5ed43a443f8947ecb904decd6c2c4f817f7856935ff21e35cbce4a6f6a3bbb4",
-      "questionSha256": "bdb9f4a4adf60d06a0a1ad87af8c751b9ee622cdbe76ee212dac6ab9031a070d"
+      "questionSha256": "dcc9332d6f225cedff3d614b57a81611cf47cc33bb17ce754cbfe5d73d777f8c"
     },
     {
       "id": "K500-0116",
@@ -940,7 +940,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/xprivate_key.rs#L39",
       "evidenceSymbol": "if ![16, 32, 64].contains",
       "sourceSha256": "1789bb137704ab098c95c646b2fda84b51e9c89b6dce7e55ab82aba1f6df26dc",
-      "questionSha256": "0b3c8ee842d98cf3189232d4c690efaf53f911e5710a3f82acb74988a3275ab2"
+      "questionSha256": "1ea41c5c0b9fcf90cec8c84ba2ea52519e8928bd311f6dd771ab4e7549052e2f"
     },
     {
       "id": "K500-0118",
@@ -948,7 +948,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/xprivate_key.rs#L51",
       "evidenceSymbol": "depth: 0,",
       "sourceSha256": "1789bb137704ab098c95c646b2fda84b51e9c89b6dce7e55ab82aba1f6df26dc",
-      "questionSha256": "e80239407f925f65f6d09be11ee6b1782c94de46373f57bbf4ad2bd066ee3106"
+      "questionSha256": "e7261b7c57c1664702e9d06489a675cd51c8028dcafa73a952570c364e11da3c"
     },
     {
       "id": "K500-0119",
@@ -956,7 +956,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/xprivate_key.rs#L62",
       "evidenceSymbol": "self.attrs.depth.checked_add(1)",
       "sourceSha256": "1789bb137704ab098c95c646b2fda84b51e9c89b6dce7e55ab82aba1f6df26dc",
-      "questionSha256": "1e53bdf46549fffccd9fd2584c3afed3ac29797f5877cb1f68b1eeeb36211f41"
+      "questionSha256": "175ca4ed2cddaca06e1f7a86b19fea5d58556c454961bcebf4cdab0074a99ce6"
     },
     {
       "id": "K500-0120",
@@ -964,7 +964,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/xprivate_key.rs#L165",
       "evidenceSymbol": "field(\"private_key\", &\"...\")",
       "sourceSha256": "1789bb137704ab098c95c646b2fda84b51e9c89b6dce7e55ab82aba1f6df26dc",
-      "questionSha256": "9b15bff6c45fc9f6adae2c730eb50186cc25d03fdb0a0a6bb421738f492004ff"
+      "questionSha256": "6349348440728c29511ee5985928ab953d10c24e15297c715aa235bb33cbed43"
     },
     {
       "id": "K500-0121",
@@ -972,7 +972,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/xpublic_key.rs#L103",
       "evidenceSymbol": "impl<K> From<&ExtendedPrivateKey<K>>",
       "sourceSha256": "f5a1fc1e9f1a3a4bf2ebf357b60a783488056e5af985e27b3e72966597a128df",
-      "questionSha256": "8eeea8ad1745c964871800f4505d67cce2408ccfe9cd4fb72b6c149ece04da95"
+      "questionSha256": "5e91167957110bb390472e63708a5508a80d78d8d99d71eedfd22c52e7cc91bf"
     },
     {
       "id": "K500-0122",
@@ -980,7 +980,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/xpublic_key.rs#L46",
       "evidenceSymbol": "Compute a 4-byte key fingerprint",
       "sourceSha256": "f5a1fc1e9f1a3a4bf2ebf357b60a783488056e5af985e27b3e72966597a128df",
-      "questionSha256": "9c4f38c67160b471ca625f11c964f03557ae9b585ac59a0a0f6cfed933314173"
+      "questionSha256": "f83d2db7bcf2970778cf8b6f3ffb072b25bb0ad7a77e6f5aeae49d0306436a9b"
     },
     {
       "id": "K500-0123",
@@ -988,7 +988,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/xpublic_key.rs#L52",
       "evidenceSymbol": "pub fn derive_child",
       "sourceSha256": "f5a1fc1e9f1a3a4bf2ebf357b60a783488056e5af985e27b3e72966597a128df",
-      "questionSha256": "791fc5ae4668f18e374e02280c1cd2d6a6b7798ba392b5a5c2ed6146c795abb6"
+      "questionSha256": "dade59f5e6e5a9bb64c7a9784420ea9259cfd6a326b46613dab86c328f5363e2"
     },
     {
       "id": "K500-0124",
@@ -996,7 +996,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/bip32/src/xpublic_key.rs#L180",
       "evidenceSymbol": "Invalid extended public key magic value",
       "sourceSha256": "f5a1fc1e9f1a3a4bf2ebf357b60a783488056e5af985e27b3e72966597a128df",
-      "questionSha256": "a2873f3c5db0b60050c8ba7720316b26f89646be3744321f63e04b78e92a9eb6"
+      "questionSha256": "5971b2a1c1e1950e419aed81432ca1142f4f855307307eed85737ac04ce27ce8"
     },
     {
       "id": "K500-0125",
@@ -1004,7 +1004,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/account/variants/watchonly.rs#L205",
       "evidenceSymbol": "Err(Error::WatchOnlyAccount)",
       "sourceSha256": "d9b5221341edca3f626800707674938f69e833eed9861d48d61c11179ad87361",
-      "questionSha256": "46f41b4b1c2b5c8dc7f5420bff10623e54c5678926fad80cab26590e0ab63e3b"
+      "questionSha256": "726e7f2344fb66a2309876dfde5e8163f4fe8636ca71d0fb8b73455a8730aab6"
     },
     {
       "id": "K500-0126",
@@ -1012,7 +1012,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/account/variants/watchonly.rs#L103",
       "evidenceSymbol": "Error::WatchOnlyXpubRequired",
       "sourceSha256": "d9b5221341edca3f626800707674938f69e833eed9861d48d61c11179ad87361",
-      "questionSha256": "ac7de44e12dbbd7f28283c2088792a32d3e897bca1b2e75fa236682b6f744f58"
+      "questionSha256": "ab9326fdfbf6d0880013161b68b7e41f31d3c2303c56f37d13541ea6672c3a37"
     },
     {
       "id": "K500-0127",
@@ -1020,7 +1020,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/account/variants/watchonly.rs#L109",
       "evidenceSymbol": "from_watch_only_multisig",
       "sourceSha256": "d9b5221341edca3f626800707674938f69e833eed9861d48d61c11179ad87361",
-      "questionSha256": "ae53ddea424723b16dec58f298879d6426d7793cce70b84712dfccfd3fc433e5"
+      "questionSha256": "1ddf80287686806b8ab992c31d755ff078a46571cef38466908d0fda809e2f2b"
     },
     {
       "id": "K500-0128",
@@ -1028,7 +1028,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/account/variants/multisig.rs#L161",
       "evidenceSymbol": "self.prv_key_data_ids.is_none()",
       "sourceSha256": "65013a85a48f96c47b0f10af29654d8da912b2467ce8df669db6f266b3cb9c34",
-      "questionSha256": "3517b31958ddcba1d777418034f9125d6dfaf61de9d244cba124c980b64fa501"
+      "questionSha256": "93db4b00f53b29430cd6d8e35e7896162f76a86029ef279d1d6516f1216b4f5f"
     },
     {
       "id": "K500-0129",
@@ -1044,7 +1044,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/addresses/src/lib.rs#L212",
       "evidenceSymbol": "pub struct Address {",
       "sourceSha256": "2eacbab4999b626adfaf017a471515050d7e1425fa4d0d2c5503fb1eb7447bad",
-      "questionSha256": "78d27d1b99547019ff0fe1a0d38ee2a4c304426080fae2fdc47b441ad1807ab2"
+      "questionSha256": "0837f43f42f13a8ac2449fb7d3dc60056e477f2186e90285b49bae42aa3cf66b"
     },
     {
       "id": "K500-0131",
@@ -1052,7 +1052,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/addresses/src/lib.rs#L183",
       "evidenceSymbol": "_ => Err(AddressError::InvalidVersion(value))",
       "sourceSha256": "2eacbab4999b626adfaf017a471515050d7e1425fa4d0d2c5503fb1eb7447bad",
-      "questionSha256": "cc695f8ac1dec5485e5ef665f8a56444b456284af788f3b95a0395effeaa604f"
+      "questionSha256": "141136899860c959389a598eb1e71837ff2433b23dc16d4df036ad3c92b033a2"
     },
     {
       "id": "K500-0132",
@@ -1060,7 +1060,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/addresses/src/lib.rs#L170",
       "evidenceSymbol": "Version::ScriptHash => 32",
       "sourceSha256": "2eacbab4999b626adfaf017a471515050d7e1425fa4d0d2c5503fb1eb7447bad",
-      "questionSha256": "073f578204712debfe81d9227e3fd3e825d3945ff9c3e526ff9ea04c1c418d1a"
+      "questionSha256": "159f3e827609d8c92810b0a141399cf7876d2bb9a617846fd349985b1f842ae7"
     },
     {
       "id": "K500-0133",
@@ -1068,7 +1068,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/addresses/src/lib.rs#L70",
       "evidenceSymbol": "Address prefix identifying the network type",
       "sourceSha256": "2eacbab4999b626adfaf017a471515050d7e1425fa4d0d2c5503fb1eb7447bad",
-      "questionSha256": "925b2765f7818c014ffd6bd2d8d4b612758c74eb0a15302f730e0dfea76bb5a6"
+      "questionSha256": "527bbcaf5e92cf9acb2d1120fe99d550788bea3d95c0174db78a984023e587ac"
     },
     {
       "id": "K500-0134",
@@ -1092,7 +1092,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/balance.rs#L61",
       "evidenceSymbol": "received and is pending confirmation",
       "sourceSha256": "8e5e3e54d472026573efbfc1e5fb3dc9c89166b64c6016726941c450363ff8be",
-      "questionSha256": "965d9fe184328f43847439069647de08f93f70487e8a0fd0022a29604c5061e9"
+      "questionSha256": "daa59ac4e58a5b3ff4e210313b078f1f0bfba243d73b68e33611b3a3a9013994"
     },
     {
       "id": "K500-0137",
@@ -1100,7 +1100,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/balance.rs#L66",
       "evidenceSymbol": "being sent as a part of the outgoing transaction",
       "sourceSha256": "8e5e3e54d472026573efbfc1e5fb3dc9c89166b64c6016726941c450363ff8be",
-      "questionSha256": "2e014d30a1ded16679cd849418055bf2ea43816eb7ca770bc1ab0cb0a06a8181"
+      "questionSha256": "eb42eb12d487eb91fbbcf4e2b0c6f45e3a6f2720ce8342cefa13431473be832d"
     },
     {
       "id": "K500-0138",
@@ -1108,7 +1108,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/balance.rs#L83",
       "evidenceSymbol": "stasis->pending->mature",
       "sourceSha256": "8e5e3e54d472026573efbfc1e5fb3dc9c89166b64c6016726941c450363ff8be",
-      "questionSha256": "ae1d0c78107ea93071f03edcf7441106ce8c015e504d8d360bf534d76aa68cf2"
+      "questionSha256": "529d40f28fa8fd6ca0c760c8d6bbf9c09ded2c719aea72c3cc6ea4efea396a11"
     },
     {
       "id": "K500-0139",
@@ -1116,7 +1116,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/balance.rs#L85",
       "evidenceSymbol": "process transactions only when",
       "sourceSha256": "8e5e3e54d472026573efbfc1e5fb3dc9c89166b64c6016726941c450363ff8be",
-      "questionSha256": "9adf0dc6e19919099271e9b3a12153f7a33744c9582d47f2c4239e9d5d008b88"
+      "questionSha256": "7a37e6fd1747ce9a43691014757f323e17c887390fccaafa6b153b8c18ff952d"
     },
     {
       "id": "K500-0140",
@@ -1124,7 +1124,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/balance.rs#L71",
       "evidenceSymbol": "Number of UTXOs available for spending",
       "sourceSha256": "8e5e3e54d472026573efbfc1e5fb3dc9c89166b64c6016726941c450363ff8be",
-      "questionSha256": "1162b8ed49423a51731bd5488287498d3d363a062ed37ee7d19340a499abb107"
+      "questionSha256": "48a159cacf97313afaf1ba1f68e7126d76915798d4967df64064a7ea124671a8"
     },
     {
       "id": "K500-0141",
@@ -1132,7 +1132,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/balance.rs#L58",
       "evidenceSymbol": "mature: bigint;",
       "sourceSha256": "8e5e3e54d472026573efbfc1e5fb3dc9c89166b64c6016726941c450363ff8be",
-      "questionSha256": "1b52df79f30542adb18f1f77228d0c01b48db2ed5d3614c18d38170bafb0319a"
+      "questionSha256": "644f35b9a15665b918ddbafdff5e213bf46c5abff38830e330d96ec16394f122"
     },
     {
       "id": "K500-0142",
@@ -1140,7 +1140,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/balance.rs#L137",
       "evidenceSymbol": "self.mature.cmp(&previous.mature)",
       "sourceSha256": "8e5e3e54d472026573efbfc1e5fb3dc9c89166b64c6016726941c450363ff8be",
-      "questionSha256": "f45dabfe2395a1c56a39db2b6632bd7e2869733e26e525021eb91a81f10ec124"
+      "questionSha256": "0895ea01df0bf06a9c1b6c3411a95fe11c41c063b2763c8253f1e791ccc875e9"
     },
     {
       "id": "K500-0143",
@@ -1148,7 +1148,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/fees.rs#L12",
       "evidenceSymbol": "priority` fees - optional",
       "sourceSha256": "c81841442754c63a06a9b8e368b236ff77cf6d1165051ed6a37b6686478a41a3",
-      "questionSha256": "8ffbff704d89d827b01f8af658a4d959808f6b12619bc2ebb105eaef92a6e764"
+      "questionSha256": "e1981aea34b17926c3baeb6b9743ce032d71a73b90c612b940ee03649081d613"
     },
     {
       "id": "K500-0144",
@@ -1156,7 +1156,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/fees.rs#L35",
       "evidenceSymbol": "all fees are subtracted from the final transaction value",
       "sourceSha256": "c81841442754c63a06a9b8e368b236ff77cf6d1165051ed6a37b6686478a41a3",
-      "questionSha256": "78c93e4bae71e6188eb92a0252aa038b21e410cb7da3ebf9046cfb2b462ae34b"
+      "questionSha256": "848f4b80fb4092723a6c92884b69cbe66b1fe78247feeda6acd69041b0c8a4b1"
     },
     {
       "id": "K500-0145",
@@ -1164,7 +1164,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/fees.rs#L33",
       "evidenceSymbol": "all fees are added to the final transaction value",
       "sourceSha256": "c81841442754c63a06a9b8e368b236ff77cf6d1165051ed6a37b6686478a41a3",
-      "questionSha256": "f8590d2686f4d45293e0d8789813383f8e872bdbc0642adcb699d76c6ed7b65d"
+      "questionSha256": "9ea6cbe29b9b751fa66b8b270995b72c1fe4f9da530ec09011208f2940b0d4ae"
     },
     {
       "id": "K500-0146",
@@ -1172,7 +1172,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/fees.rs#L31",
       "evidenceSymbol": "Fee management disabled (sweep transactions, pays all fees)",
       "sourceSha256": "c81841442754c63a06a9b8e368b236ff77cf6d1165051ed6a37b6686478a41a3",
-      "questionSha256": "c70ed9d16918c777737cfcd61bd6e697570e72672fb8669fa296c1eeba96d3d0"
+      "questionSha256": "60937b282fdd9710d19a56d64653a1d408f68052f527f6203b05d623a4195d1a"
     },
     {
       "id": "K500-0147",
@@ -1180,7 +1180,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/fees.rs#L22",
       "evidenceSymbol": "ReceiverPays` variants can fail",
       "sourceSha256": "c81841442754c63a06a9b8e368b236ff77cf6d1165051ed6a37b6686478a41a3",
-      "questionSha256": "30caa60a4e0206eacf357959682c664625288dac9a0919feeacf87d40dd6b4de"
+      "questionSha256": "102ce101bdf9125891af262e77550aed054ea41f94664c0ad01836064d03e949"
     },
     {
       "id": "K500-0148",
@@ -1196,7 +1196,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/generator/summary.rs#L22",
       "evidenceSymbol": "pub number_of_generated_stages: usize",
       "sourceSha256": "80f63067299d9bdf5754730589bf2992ca986b57c5cdee8be2b8dcd97075347a",
-      "questionSha256": "28159c52c0455dade010aad4784df52f6afb4cf917360360da4d544a92def402"
+      "questionSha256": "a0b0cbd2c135b6c5be2425865bde2dc7f942112f46f5509e06d48f9fae91fe0f"
     },
     {
       "id": "K500-0150",
@@ -1204,7 +1204,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L450",
       "evidenceSymbol": "opcode OpDup<",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "5adfbc83b3e77936e466cd01809f3947aba324ded96d9423ac836585c821adf9"
+      "questionSha256": "ecaaae6a3e9da0670b7bc27c6b81846df050f813b70317cc5dd03ae049d07eef"
     },
     {
       "id": "K500-0151",
@@ -1220,7 +1220,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L481",
       "evidenceSymbol": "opcode OpSwap<",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "b40926259edc2fd03692a68c788f1da5c58ad79491137921ebe799196fbd1f24"
+      "questionSha256": "86239f6e3614aa04ba36690399cac3d5a91d2550b207a7129d842b94bfd87c10"
     },
     {
       "id": "K500-0153",
@@ -1228,7 +1228,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L464",
       "evidenceSymbol": "opcode OpPick<",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "4432c864adc738cf89565e08bb54a574de433fb2fb48d4ad438cd2641807ed68"
+      "questionSha256": "e85ecddfa9eec0d1ca4ee831e344cfb97fee21b70a9b24b2e82a54b0b3bf3e47"
     },
     {
       "id": "K500-0154",
@@ -1236,7 +1236,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L420",
       "evidenceSymbol": "opcode OpToAltStack<",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "5582ce3b0214fcbc50aa85f2258bdef0b283f5a1f38548a2e5c3dce24f32d879"
+      "questionSha256": "89fe25e907dd2c0f2c4a280b279ed666b066cb0bc5f6c612063c4cd1a7366bb7"
     },
     {
       "id": "K500-0155",
@@ -1244,7 +1244,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L447",
       "evidenceSymbol": "opcode OpDepth<",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "46bdb20d3e4fee175d5e83d1a5d48c40352e1f1dafb15b349331947f4816e13d"
+      "questionSha256": "10a30b4f56ae3b44dac668f17e9f58e464305179c374a96377f0b683b12aca24"
     },
     {
       "id": "K500-0156",
@@ -1252,7 +1252,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L494",
       "evidenceSymbol": "opcode OpCat<",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "eb1bc96e1446b3a5584916c5df670a890942b8520167afb4e3e852156cdc59cb"
+      "questionSha256": "d08ad1fffbd32272f60645aec262963ed6da6aa92461112ff649b2bd28af7af8"
     },
     {
       "id": "K500-0157",
@@ -1260,7 +1260,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L513",
       "evidenceSymbol": "opcode OpSize<",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "e026e7bf8c3fe0752a1c58b65c8dbdc52439d8af16cd77188c5dc04f0eddf9c5"
+      "questionSha256": "0e991a713549d507e9323fb2984de329dc5ca2157540ebe21fc593bd72ce662e"
     },
     {
       "id": "K500-0158",
@@ -1276,7 +1276,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L409",
       "evidenceSymbol": "opcode OpVerify<",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "934d4baac20ff6bda718a0182a006451638adff49214ec778d0fcf17c1ecc2df"
+      "questionSha256": "3026aecbf81002b84ef83b2f4f67933cb574aadc73b05b50e16f1ee4e033008c"
     },
     {
       "id": "K500-0160",
@@ -1284,7 +1284,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L417",
       "evidenceSymbol": "opcode OpReturn<",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "947be71c4766b06bff37bc2309daca6f273832117525249429e4c00351e2bb21"
+      "questionSha256": "bd080494a29f58210f8ef3fbe7b2533cca6c319093c91256bc93f50f88c54ba9"
     },
     {
       "id": "K500-0161",
@@ -1300,7 +1300,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L637",
       "evidenceSymbol": "Sum exceeds 64-bit signed integer range",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "bec185514a42d80c3bd28720d0ca6dd27e6dc76f6da27f190f098f1a8b51adff"
+      "questionSha256": "e4256337307e2295a01cd649ad413006f8a17941242286964d3c9ae491e7b282"
     },
     {
       "id": "K500-0163",
@@ -1308,7 +1308,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L658",
       "evidenceSymbol": "or there was a division by zero",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "3ce64a45a7e9cbb6418d17b704b9472c38fd2a536836c96040e1f605bc711f2b"
+      "questionSha256": "a4c72dd4c5e9a03819f88d7d60e26bd5bb6e6724750018b6a230ce17c8b50519"
     },
     {
       "id": "K500-0164",
@@ -1316,7 +1316,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L753",
       "evidenceSymbol": "let r = (x >= l && x < u)",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "7fb057b94cc62be1d9e65c8fa9a7d35dcf7a00cae818b9974abb5691540166a4"
+      "questionSha256": "1122b5d52d2c3a9625573cc185cd076c2671b78312a9e80ed1bd4793e82d8856"
     },
     {
       "id": "K500-0165",
@@ -1324,7 +1324,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L534",
       "evidenceSymbol": "AND operands must be of equal length",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "85a2a6f9db00ce49f985a156f7fdd77e95bc44ea3dde0c804a536b97436f58ab"
+      "questionSha256": "42d67f9d177bdc60c11e6beb05bc3c92980b4c12f402466220536be3350afc8a"
     },
     {
       "id": "K500-0166",
@@ -1332,7 +1332,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L969",
       "evidenceSymbol": "opcode OpTxVersion<",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "661a5ff2fd9398a7be7c1683aa737a2669e4bba202ca69eadd9bda6cb651d9dc"
+      "questionSha256": "13cb819af860abee61f8bb356d34e30a26c8ea2348e4c2cc52bb9f80519a78a4"
     },
     {
       "id": "K500-0167",
@@ -1404,7 +1404,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L1020",
       "evidenceSymbol": "OpTxGas only applies to transaction inputs",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "edbf6cff882d2b91651ad62ef740e138bdc96b1ca96628f0fa99c82149259db7"
+      "questionSha256": "0183deb56661c1dbd0e2d9d072b8e9f081cc22b0140083f6c805ea4b3ff1743e"
     },
     {
       "id": "K500-0176",
@@ -1412,7 +1412,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/standard.rs#L22",
       "evidenceSymbol": "once(OpCheckSig)",
       "sourceSha256": "4b7f6132bc927c8daffdfd9d704cd55c338f9e15498c3a9ec39f79f0074ae765",
-      "questionSha256": "fd6571bf4fe9f53cd9a9362bdbd6a533807b5468ad7b2c0af7416d7b09999209"
+      "questionSha256": "f708cc65182e9d81fd0bf7e3b835f4fa6495cd898270b6e3a424becba98d51b8"
     },
     {
       "id": "K500-0177",
@@ -1420,7 +1420,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/standard.rs#L29",
       "evidenceSymbol": "once(OpCheckSigECDSA)",
       "sourceSha256": "4b7f6132bc927c8daffdfd9d704cd55c338f9e15498c3a9ec39f79f0074ae765",
-      "questionSha256": "d00cfc2e756a2ff9c465e544c9412c20a10c36053b6b168b17d11ca2b7c75d5a"
+      "questionSha256": "de8083cd70cd45b77b75a22f4151f082383a5f2369dff0f04c161f9d2bc049dc"
     },
     {
       "id": "K500-0178",
@@ -1428,7 +1428,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L764",
       "evidenceSymbol": "vm.consume_script_units(tag.cost())?",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "3f30308f7d34797d2bfa85837906969545c6dda4941e588e7b3bb1abfd76609b"
+      "questionSha256": "a260412ac79f9a9c9793ecc80e229c685c99f133e04dc7f36b4195a1cde75fc7"
     },
     {
       "id": "K500-0179",
@@ -1436,7 +1436,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/standard.rs#L82",
       "evidenceSymbol": "extract_script_pub_key_address(script_public_key: &ScriptPublicKey, prefix: Prefix)",
       "sourceSha256": "4b7f6132bc927c8daffdfd9d704cd55c338f9e15498c3a9ec39f79f0074ae765",
-      "questionSha256": "8309345df35f9804c0de39116cf9df5bac9398d7aa2bf8a5edb1c21d71d6a7d0"
+      "questionSha256": "1d58d6c115459c50a614e17867339f7e893f31dc39f38d1e2c52d2e23f4285cd"
     },
     {
       "id": "K500-0180",
@@ -1460,7 +1460,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/generator/generator.rs#L39",
       "evidenceSymbol": "interface or via an async Stream interface",
       "sourceSha256": "f54a52aa076769ba8c4e16b7187334ef945213df0af35771a868cc22e3624852",
-      "questionSha256": "111796c0b2ee5ab95707b2d5c0ef3af5f3010799cb0f77380556dc496c8a2cb9"
+      "questionSha256": "9633766b016997a05e72a5b01594d8ca9ba57aa9d38c5d64e5a74fa2c97f363c"
     },
     {
       "id": "K500-0183",
@@ -1476,7 +1476,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/generator/generator.rs#L57",
       "evidenceSymbol": "browser UI freezing",
       "sourceSha256": "f54a52aa076769ba8c4e16b7187334ef945213df0af35771a868cc22e3624852",
-      "questionSha256": "30944cd5759ba232a7d940d8adf39c9c63a86f7509f582acaaeb376341f966b7"
+      "questionSha256": "9a2062ba6cdb1eb6e9b271db5cf31fee055a52abd61087ee40deec17cc21f9ac"
     },
     {
       "id": "K500-0185",
@@ -1484,7 +1484,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/generator/generator.rs#L52",
       "evidenceSymbol": "OOM conditions",
       "sourceSha256": "f54a52aa076769ba8c4e16b7187334ef945213df0af35771a868cc22e3624852",
-      "questionSha256": "ddf3e75a6ce3afbd81bb76059c8989005cf821a7dfd07ff7c407c8ebeea1bda8"
+      "questionSha256": "6f356d883156eaba771eb3080d51690e522de2270d45b79ab4899adb1feee485"
     },
     {
       "id": "K500-0186",
@@ -1500,7 +1500,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/generator/generator.rs#L419",
       "evidenceSymbol": "Error::GeneratorChangeAddressNetworkTypeMismatch",
       "sourceSha256": "f54a52aa076769ba8c4e16b7187334ef945213df0af35771a868cc22e3624852",
-      "questionSha256": "35713e4706f57f5bef842e6608b057ed05d68b34f9c237094844d261ee55f9c3"
+      "questionSha256": "776140fa7c17a7662968ee4ebc82f963e90adba4654957e7e83627f060a9abe6"
     },
     {
       "id": "K500-0188",
@@ -1508,7 +1508,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/generator/generator.rs#L377",
       "evidenceSymbol": "Error::GeneratorFeesInSweepTransaction",
       "sourceSha256": "f54a52aa076769ba8c4e16b7187334ef945213df0af35771a868cc22e3624852",
-      "questionSha256": "a748e340f7c94800481d42c99ae514f7b8679e41e528e2c0fca43a721f41851f"
+      "questionSha256": "f4000147f647e9404b0184f5f99f0c9ff8ceffae92dc1079b48cff9df7075c42"
     },
     {
       "id": "K500-0189",
@@ -1516,7 +1516,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/generator/settings.rs#L23",
       "evidenceSymbol": "Priority utxo entries that are consumed before others",
       "sourceSha256": "224c9a6817ed13058f43ef60a96db68e50019bec7f3ec77b068931b12cf699cc",
-      "questionSha256": "77b6270b106aa11c1df96b7d03e0a4a47d0e449ddf091106cb859696cf085ae8"
+      "questionSha256": "08822fefc4730daa87ed9dbd37207e251abdcc1339a243717c1936dafcae0908"
     },
     {
       "id": "K500-0190",
@@ -1524,7 +1524,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/generator/generator.rs#L424",
       "evidenceSymbol": "calc_compute_mass_for_signature(minimum_signatures)",
       "sourceSha256": "f54a52aa076769ba8c4e16b7187334ef945213df0af35771a868cc22e3624852",
-      "questionSha256": "defa26b5d516801f85090d69559891fcde727c84dfa67ae6dcfad009884abd93"
+      "questionSha256": "9f4a5e99ded169445fe533fea40eb6cc9855f4b730021a439833277148dbad48"
     },
     {
       "id": "K500-0191",
@@ -1540,7 +1540,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/generator/generator.rs#L179",
       "evidenceSymbol": "into a single transaction to the supplied change address",
       "sourceSha256": "f54a52aa076769ba8c4e16b7187334ef945213df0af35771a868cc22e3624852",
-      "questionSha256": "4e5f273b7f7b1d935f56082127ef78febe8b8bd5449e2817330eafba649a1e62"
+      "questionSha256": "eace8d1f4c8238eb4f15cc0dcbbdda9f35741d5cc86a916d2b0eb59371e0f502"
     },
     {
       "id": "K500-0193",
@@ -1548,7 +1548,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/generator/generator.rs#L185",
       "evidenceSymbol": "Final transaction combining the entire aggregated UTXO set",
       "sourceSha256": "f54a52aa076769ba8c4e16b7187334ef945213df0af35771a868cc22e3624852",
-      "questionSha256": "069b404208e368b0f987bcee16cf77f7a0821db849dea6763d4eb4c60abee604"
+      "questionSha256": "49a73011d9af9925f25ab4c087bb0f4c9978058b2800cdf5a53c3c9c76b25910"
     },
     {
       "id": "K500-0194",
@@ -1556,7 +1556,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/generator/generator.rs#L260",
       "evidenceSymbol": "change is dust or the change is below the fees",
       "sourceSha256": "f54a52aa076769ba8c4e16b7187334ef945213df0af35771a868cc22e3624852",
-      "questionSha256": "cd926407f52fc0d0694056c8c43e40ccda7c49eadc468eb64b88a223356b2fe7"
+      "questionSha256": "2ed62b0a9fa4eea55eba3919bb2e0de59236bde29e98e0b70e3cbecd59f8c3be"
     },
     {
       "id": "K500-0195",
@@ -1564,7 +1564,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/tx/generator/generator.rs#L371",
       "evidenceSymbol": "NetworkParams::from(network_id)",
       "sourceSha256": "f54a52aa076769ba8c4e16b7187334ef945213df0af35771a868cc22e3624852",
-      "questionSha256": "e09fe8b7fddf8c54217f11dbe397fc9db3eabca83527b29fe537091c0934ec22"
+      "questionSha256": "f41c6b9f0987947ebfaec5d08921e95dded0935613e73e2185b38396beb5f992"
     },
     {
       "id": "K500-0196",
@@ -1588,7 +1588,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/tx.rs#L19",
       "evidenceSymbol": "this is different than the transaction ID",
       "sourceSha256": "965772f8daf6a941625c1c3b4601c1ee2dc4031d402bae98339064113c0ac5f1",
-      "questionSha256": "2e464aac3ab84b67b57e718182c540ceef5420d56b9b77b35855100e4b7bb47f"
+      "questionSha256": "8e72b7576e89e2b9c91c5ec9fddf2442f80910e7fa0201de4cca184022ee640d"
     },
     {
       "id": "K500-0199",
@@ -1604,7 +1604,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/tx.rs#L77",
       "evidenceSymbol": "Hash the mass field only for tx::hash",
       "sourceSha256": "965772f8daf6a941625c1c3b4601c1ee2dc4031d402bae98339064113c0ac5f1",
-      "questionSha256": "8b4ca5e9893dbdef609f912dffe1a0652ad667a5f6d413266db8386547beda46"
+      "questionSha256": "2bb9eb26277f6fbd489c8cb195ee7a5e537ed06d5be593ba9efd00a4770cb8ec"
     },
     {
       "id": "K500-0201",
@@ -1612,7 +1612,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/tx.rs#L216",
       "evidenceSymbol": "hasher.update(payload_digest).update(rest_digest)",
       "sourceSha256": "965772f8daf6a941625c1c3b4601c1ee2dc4031d402bae98339064113c0ac5f1",
-      "questionSha256": "ac273afa40035f2c76feca29d7d19c1ebf667d3903206e80b84c56f696ce50c5"
+      "questionSha256": "5e1c3dc5f13c5b02eb9b1f1f34449e2c16f377061e77b831919b51bce6c94ded"
     },
     {
       "id": "K500-0202",
@@ -1620,7 +1620,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/tx.rs#L227",
       "evidenceSymbol": "mass commit field excluded",
       "sourceSha256": "965772f8daf6a941625c1c3b4601c1ee2dc4031d402bae98339064113c0ac5f1",
-      "questionSha256": "253201115e598585b20d66228d15e3b6fe3579dd8159be07b99a6cc56fc56a97"
+      "questionSha256": "332e896a3da23c2089a744663ad04451d217dda6a9227fd36e7b6751c015bd4d"
     },
     {
       "id": "K500-0203",
@@ -1628,7 +1628,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/tx.rs#L222",
       "evidenceSymbol": "if payload.is_empty() { ZERO_PAYLOAD_DIGEST }",
       "sourceSha256": "965772f8daf6a941625c1c3b4601c1ee2dc4031d402bae98339064113c0ac5f1",
-      "questionSha256": "a324675aecd90ef424bf35dcf828de269715001d775119809d454abb284ae3da"
+      "questionSha256": "9e37c903f1afc9a6a586cda6cf0a49346545306afd00cf5863e620047e9f0336"
     },
     {
       "id": "K500-0204",
@@ -1636,7 +1636,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/tx.rs#L45",
       "evidenceSymbol": "pub type TransactionIndexType = u32",
       "sourceSha256": "bec0ba712a976e227a184ee3130bc0fd1222a452dade5820af92173ca5961656",
-      "questionSha256": "26d4a4ed8db538da13bc14652fa289bb2b7a52c932b048503924f0a3636ee7da"
+      "questionSha256": "8be747f6b4b37165fe2af34cb2ad8723afd826f203d25a348f3803c111a2b65c"
     },
     {
       "id": "K500-0205",
@@ -1644,7 +1644,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/tx.rs#L637",
       "evidenceSymbol": "self.entries.iter().all(|e| e.is_some())",
       "sourceSha256": "bec0ba712a976e227a184ee3130bc0fd1222a452dade5820af92173ca5961656",
-      "questionSha256": "5e655c308e0a0bab1d5332dc3801f4ccee7fee125f5ff1f4888c95ad388296e9"
+      "questionSha256": "b67adb2734e0bb20accc069f67156d10ecb30c4e96ed93d3260654bcaa56fa15"
     },
     {
       "id": "K500-0206",
@@ -1660,7 +1660,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/tx.rs#L177",
       "evidenceSymbol": "pub covenant: Option<CovenantBinding>",
       "sourceSha256": "bec0ba712a976e227a184ee3130bc0fd1222a452dade5820af92173ca5961656",
-      "questionSha256": "6206b6c08dd730a3fddb302147522ac54d1a7550bf86f81f6a4f4e1ed48b8100"
+      "questionSha256": "eff80308c894974cea37692fba0fc3a87a22c161b150d41c0954092a0a0d97f2"
     },
     {
       "id": "K500-0208",
@@ -1668,7 +1668,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/tx.rs#L195",
       "evidenceSymbol": "pub covenant_id: Hash",
       "sourceSha256": "bec0ba712a976e227a184ee3130bc0fd1222a452dade5820af92173ca5961656",
-      "questionSha256": "1f47612e610a962efb39432b47a79bd41779e84680256aa829ce4010f9805c45"
+      "questionSha256": "494c52ff50db9205e9df336b76bb63669b5ef474d15b9c6ab669606a386281a0"
     },
     {
       "id": "K500-0209",
@@ -1676,7 +1676,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/tx.rs#L35",
       "evidenceSymbol": "if tx.version == 0 { id_v0(tx) } else { id_v1(tx) }",
       "sourceSha256": "965772f8daf6a941625c1c3b4601c1ee2dc4031d402bae98339064113c0ac5f1",
-      "questionSha256": "00a96dda75e40f2088e4107526890128f0a7925fe67d5efe1b6554fd934e8f90"
+      "questionSha256": "b1b462280dd88f1c900ce442d94e4f7e2c6e98c26a1f21e012dbbe5ef3f8e3ab"
     },
     {
       "id": "K500-0210",
@@ -1684,7 +1684,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/network.rs#L7",
       "evidenceSymbol": "differentiate between multiple networks of the same type",
       "sourceSha256": "546a986537a9791fd71659eb673ba7f7e919331357714f3fb11b7e8c83a58a1e",
-      "questionSha256": "dfefc02048dff99a9404eefc4f080ac2049a71ec1290878ac241c274c3578540"
+      "questionSha256": "d625d9e1c464fb2642d2c539026ac504e5f90e28b902ffa5ba8c43653a6b76c5"
     },
     {
       "id": "K500-0211",
@@ -1692,7 +1692,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/network.rs#L216",
       "evidenceSymbol": "NetworkSuffixRequired(network_type.to_string())",
       "sourceSha256": "546a986537a9791fd71659eb673ba7f7e919331357714f3fb11b7e8c83a58a1e",
-      "questionSha256": "7a6e400ca19f57d07e2dfca7d7a371b7a71bf43bdc161cdebf065cb145bd5f8e"
+      "questionSha256": "2e8fa3e9ae91de48f8a13f3b1197961d3001ff53daa1c7897fecbbc9aa14c2eb"
     },
     {
       "id": "K500-0212",
@@ -1700,7 +1700,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/network.rs#L244",
       "evidenceSymbol": "NetworkType::Mainnet => 16111",
       "sourceSha256": "546a986537a9791fd71659eb673ba7f7e919331357714f3fb11b7e8c83a58a1e",
-      "questionSha256": "7a365d08c859981fd78d9d0ed96d21e16394ee4e806701788e3ef7f6eb0b43a2"
+      "questionSha256": "4e410196ce25e61ac96e9ea4b46d5c4b51650e8c10e4acb0878fe14b41b660e2"
     },
     {
       "id": "K500-0213",
@@ -1708,7 +1708,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/network.rs#L53",
       "evidenceSymbol": "NetworkType::Mainnet => 17110",
       "sourceSha256": "546a986537a9791fd71659eb673ba7f7e919331357714f3fb11b7e8c83a58a1e",
-      "questionSha256": "fd871f9a78971ed295936ad89a14f8f148c5996e8e47f545d9f66a39fb66b961"
+      "questionSha256": "ecb4a7ca0dfe748345405537e0746aa745763d3987588a136f6a8c566812f2e5"
     },
     {
       "id": "K500-0214",
@@ -1716,7 +1716,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/network.rs#L105",
       "evidenceSymbol": "match network_type.to_lowercase().as_str()",
       "sourceSha256": "546a986537a9791fd71659eb673ba7f7e919331357714f3fb11b7e8c83a58a1e",
-      "questionSha256": "9cbbafc446b66ccbeba66367c046c66c2144ddd646e06145e7b8e1709f88f6c1"
+      "questionSha256": "4f6567659ac92ea2c8e7cf6dd98f35547c17b5157208b80723236fac3167e11a"
     },
     {
       "id": "K500-0215",
@@ -1724,7 +1724,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/network.rs#L240",
       "evidenceSymbol": "avoiding repeatedly failing P2P handshakes",
       "sourceSha256": "546a986537a9791fd71659eb673ba7f7e919331357714f3fb11b7e8c83a58a1e",
-      "questionSha256": "1b29209f7b6c4cd8460a6c238fa7f7c3b3a64c07f0f0b9c63ae11bdcfac7774d"
+      "questionSha256": "b5ca2ab6fb56e89ca50161a7ce24210c309a6b7546f8b69a49657143d27eded4"
     },
     {
       "id": "K500-0216",
@@ -1740,7 +1740,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/peer.rs#L20",
       "evidenceSymbol": "pub advertised_protocol_version: u32",
       "sourceSha256": "ff911c4edd3c4e5230eed53bad649dea0f8cb4528e8ecabcb4d908e03aafb6fe",
-      "questionSha256": "d0d8da5b2e7c95abba906d6d1afedca85bfd62d36db28de41b3b1814f9067f86"
+      "questionSha256": "0ff42d81faef1323c7dcbd04fe1de666d3df7cd15ceabf7d063ee660ef52b69f"
     },
     {
       "id": "K500-0218",
@@ -1756,7 +1756,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/peer.rs#L22",
       "evidenceSymbol": "pub is_ibd_peer: bool",
       "sourceSha256": "ff911c4edd3c4e5230eed53bad649dea0f8cb4528e8ecabcb4d908e03aafb6fe",
-      "questionSha256": "231c9270ca9cbfb78cbbadb9f5f8e85720cb0aa4d6561aecb301a95eaf47895a"
+      "questionSha256": "79965dc5d597caa16a02b4260b282ff53329c78b8232f704d1a74c583846f7f1"
     },
     {
       "id": "K500-0220",
@@ -1780,7 +1780,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/block.rs#L77",
       "evidenceSymbol": "pub is_chain_block: bool",
       "sourceSha256": "9f298be673d4a34d682440eecfccc24a4322ba019e77c7dbb92c49ce9a2a2897",
-      "questionSha256": "8bc916de96ee9718559017f0afa4133a2db9a11919c05a2fda2064f6d4be15b0"
+      "questionSha256": "056b6a6bb20b0d680378770a1f29fe9e77b604ebb95a8706bc71a78f1cc97857"
     },
     {
       "id": "K500-0223",
@@ -1788,7 +1788,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/block.rs#L6",
       "evidenceSymbol": "without a cached header hash and without verbose data",
       "sourceSha256": "9f298be673d4a34d682440eecfccc24a4322ba019e77c7dbb92c49ce9a2a2897",
-      "questionSha256": "16fb69d53596b7fd82615b667ca59e1845bfa23c2f9c4bb3bc20738fd1826750"
+      "questionSha256": "260b0e4f740b78f9417426b8d7291be11094561161e58184da1dff916c290bde"
     },
     {
       "id": "K500-0224",
@@ -1796,7 +1796,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/subnets.rs#L10",
       "evidenceSymbol": "pub const SUBNETWORK_ID_SIZE: usize = 20",
       "sourceSha256": "0c6da97ca94e8a4fe4a52078e16bc8913ae7ec03dc34e0f47f556cb3bf31a9db",
-      "questionSha256": "7606ea308bc5379f5911ea93211b98d5e905cbe98afc57f2dd23489ad9db2023"
+      "questionSha256": "4d4fdbf813697adc8a5fd28761be1ccb4342cf9e9e09eaaab015995b87c3c6d8"
     },
     {
       "id": "K500-0225",
@@ -1804,7 +1804,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/subnets.rs#L13",
       "evidenceSymbol": "namespace (4 bytes), zero tail (16 bytes)",
       "sourceSha256": "0c6da97ca94e8a4fe4a52078e16bc8913ae7ec03dc34e0f47f556cb3bf31a9db",
-      "questionSha256": "a766a165782a74d9072b219007f584d59f15c23cbe7cc7dd3bec9c475b70c3de"
+      "questionSha256": "e591eb9408bcd71db7ba038793508b5aa58f1ea6ef0264756320b768fddfd617"
     },
     {
       "id": "K500-0226",
@@ -1812,7 +1812,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/subnets.rs#L70",
       "evidenceSymbol": "an all-zero",
       "sourceSha256": "0c6da97ca94e8a4fe4a52078e16bc8913ae7ec03dc34e0f47f556cb3bf31a9db",
-      "questionSha256": "db87cfaedb648d55a7f6a9638495f56faeb157e9a3a1c2c26b28016520bdf49c"
+      "questionSha256": "b22db45eb648b88cf036b13c9eebec107b0f2119d3fa222524a098510db4d3b1"
     },
     {
       "id": "K500-0227",
@@ -1820,7 +1820,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/difficulty.rs#L29",
       "evidenceSymbol": "ghostdag_data.mergeset_size() - mergeset_non_daa.len()",
       "sourceSha256": "06119bc7d5e818f7be3ab207f4df5f5407e7e879e0e62af2dbcbd6a166a80c0d",
-      "questionSha256": "abe99244a692cf95fe4921fdde2d33c8042e874079d289649299234ce9e350a6"
+      "questionSha256": "890d1143426ab4ca59334ac8a6fd82dbeb4e794a0bfbd3519259a509f0dad444"
     },
     {
       "id": "K500-0228",
@@ -1828,7 +1828,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/difficulty.rs#L44",
       "evidenceSymbol": "const MIN_WINDOW_SIZE: usize = 1000",
       "sourceSha256": "06119bc7d5e818f7be3ab207f4df5f5407e7e879e0e62af2dbcbd6a166a80c0d",
-      "questionSha256": "2c7797cbe061238a0655ce8b7c45811aa5eb836bd54b701651d3d72ede3bdaf5"
+      "questionSha256": "581dcc940cd695975de7f6cafbbfb7c640724d68ed1a5e24a2d7dc1ce3b5e54c"
     },
     {
       "id": "K500-0229",
@@ -1836,7 +1836,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/difficulty.rs#L52",
       "evidenceSymbol": "DifficultyError::EmptyTimestampRange",
       "sourceSha256": "06119bc7d5e818f7be3ab207f4df5f5407e7e879e0e62af2dbcbd6a166a80c0d",
-      "questionSha256": "e8641c156cd4027801cfe0fa8bda020118a868ef9eec3a68061c7d292f8454e3"
+      "questionSha256": "8dc45091317acbedcf8e0ebcf9a9ecb5066d97f680ee0e0f114fbff93f6fd72b"
     },
     {
       "id": "K500-0230",
@@ -1844,7 +1844,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/difficulty.rs#L62",
       "evidenceSymbol": "max_blue_work - min_blue_work",
       "sourceSha256": "06119bc7d5e818f7be3ab207f4df5f5407e7e879e0e62af2dbcbd6a166a80c0d",
-      "questionSha256": "d5468021c5e587e202280cffdfff6d1c8dea56f27605c6de2211b450c4c052cd"
+      "questionSha256": "6b96416a021746324669e592e968eb72cf516069296f2f57c0668002e9336ede"
     },
     {
       "id": "K500-0231",
@@ -1852,7 +1852,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/difficulty.rs#L176",
       "evidenceSymbol": "We will use the selected parent as a source",
       "sourceSha256": "06119bc7d5e818f7be3ab207f4df5f5407e7e879e0e62af2dbcbd6a166a80c0d",
-      "questionSha256": "dc32841d707b6331fc26da22af679dd013ec100f5e87f9086d2dc4004778a30e"
+      "questionSha256": "42cf987f298c85b533da8dc09eba128b740072bad07ea49b31878fcc34a7cf2c"
     },
     {
       "id": "K500-0232",
@@ -1860,7 +1860,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/difficulty.rs#L138",
       "evidenceSymbol": "self.difficulty_window_size as u64 * self.difficulty_sample_rate",
       "sourceSha256": "06119bc7d5e818f7be3ab207f4df5f5407e7e879e0e62af2dbcbd6a166a80c0d",
-      "questionSha256": "c399d57d36d6d8e2350d0fc9eb402c7d7d14aea40c233487016482771b827c38"
+      "questionSha256": "e6fdd4311676fc0915d311e7cf0a288f2be4a0f74e141e4afaa216f0ee1bcc34"
     },
     {
       "id": "K500-0233",
@@ -1868,7 +1868,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/difficulty.rs#L197",
       "evidenceSymbol": "new_target.min(self.max_difficulty_target)",
       "sourceSha256": "06119bc7d5e818f7be3ab207f4df5f5407e7e879e0e62af2dbcbd6a166a80c0d",
-      "questionSha256": "904d54bea1f3455716dc7191cc6cc29f6cea8dd40fbb332e0a9f406f49fce6f6"
+      "questionSha256": "510c36d0dc7ef1b897cc4886b56ef993c4d119d1c3ad741fcd4efba6aca247ef"
     },
     {
       "id": "K500-0234",
@@ -1876,7 +1876,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/past_median_time.rs#L19",
       "evidenceSymbol": "average of the 11 values closest to the center",
       "sourceSha256": "9224da7582fea61e4269d0444d874f058b2386076c55c9e637f73ae1ffc6d2b1",
-      "questionSha256": "bee74a73ee8ccc6dcd6ffe78d0ae0b7e62e77f491b8c2a60fc18511ccea70e5b"
+      "questionSha256": "c8ea68aaee878147a3ce67bab06fd5aec7e938bed2beea75dda776038a64f8b3"
     },
     {
       "id": "K500-0235",
@@ -1884,7 +1884,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/processes/past_median_time.rs#L26",
       "evidenceSymbol": "return Ok(self.headers_store.get_timestamp(selected_parent)",
       "sourceSha256": "9224da7582fea61e4269d0444d874f058b2386076c55c9e637f73ae1ffc6d2b1",
-      "questionSha256": "031bd7c2592558a4d3fd2eaa5ce5e5e6beee77bed6a91a464309e64c77aa055d"
+      "questionSha256": "891bff9eaa975bfc73a25d28fbb0e130b366ad77a4ec657a897dff8147772b5c"
     },
     {
       "id": "K500-0236",
@@ -1892,7 +1892,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/context.rs#L294",
       "evidenceSymbol": "The insert will be ignored if already present",
       "sourceSha256": "a94c0033881e3c254163a385a94cfd50c4389c680b2c5b5fd58bab0821c9efd9",
-      "questionSha256": "7a314a84a130f20f37cdfacd0d1a8d462093c00f5e45f626c3bcee3fbcac7b41"
+      "questionSha256": "383bfb8c7e5c30091b17532a8dc06b17561e9af7254db63258fa6a784de21f0e"
     },
     {
       "id": "K500-0237",
@@ -1900,7 +1900,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/context.rs#L300",
       "evidenceSymbol": "context.mature.sorted_insert_binary_asc_by_key",
       "sourceSha256": "a94c0033881e3c254163a385a94cfd50c4389c680b2c5b5fd58bab0821c9efd9",
-      "questionSha256": "1d7c83a2446d3b974c4e01580babc35391b50ed628ecbc3c117c4f0c5d968019"
+      "questionSha256": "6c950eb2ffd12ec28afef30ecf8dc86212861554b1ebf99d7fc5df9be92e4e31"
     },
     {
       "id": "K500-0238",
@@ -1908,7 +1908,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/context.rs#L718",
       "evidenceSymbol": "if local.insert(address.clone())",
       "sourceSha256": "a94c0033881e3c254163a385a94cfd50c4389c680b2c5b5fd58bab0821c9efd9",
-      "questionSha256": "5a955160cdf70bb7364788d3413369cee07dad041b71bee56c4fc6f1929c5052"
+      "questionSha256": "d1b4414181449ddad7480964c5b93dadefe887da090b3f0402a48511acead86d"
     },
     {
       "id": "K500-0239",
@@ -1916,7 +1916,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/context.rs#L745",
       "evidenceSymbol": "self.register_addresses(&addresses).await?",
       "sourceSha256": "a94c0033881e3c254163a385a94cfd50c4389c680b2c5b5fd58bab0821c9efd9",
-      "questionSha256": "e61a65e8f805d5779b96d7687864efe8b94ccefc7cc597755c3a5d77e9c4ea5f"
+      "questionSha256": "1724439fb334b290a81dcabdec7646104ec9ac19219a46a6489a9388cc4267e0"
     },
     {
       "id": "K500-0240",
@@ -1924,7 +1924,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/context.rs#L751",
       "evidenceSymbol": "You might be accessing UtxoProcessor APIs before it is initialized",
       "sourceSha256": "a94c0033881e3c254163a385a94cfd50c4389c680b2c5b5fd58bab0821c9efd9",
-      "questionSha256": "26376ed84aef1dd8658a78170c93968d05f6531965ae7b6164a4fbde545bd0db"
+      "questionSha256": "b780ed8506ba385004a0cbb039cf778c9c294f9fd9a0ed41f95d779bfa5c80d7"
     },
     {
       "id": "K500-0241",
@@ -1932,7 +1932,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/context.rs#L758",
       "evidenceSymbol": "let utxos = &self.context().mature",
       "sourceSha256": "a94c0033881e3c254163a385a94cfd50c4389c680b2c5b5fd58bab0821c9efd9",
-      "questionSha256": "87d5ead1c51b38c1462f7eaae8177d014c15c5f3edcd765969c9dc0f57f58017"
+      "questionSha256": "b5fded3b2e6c240491c38cfd50ee7509eb99d3f1ff60ff9eacfc26f14a482823"
     },
     {
       "id": "K500-0242",
@@ -1940,7 +1940,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/context.rs#L355",
       "evidenceSymbol": "pub async fn remove(&self, utxos:",
       "sourceSha256": "a94c0033881e3c254163a385a94cfd50c4389c680b2c5b5fd58bab0821c9efd9",
-      "questionSha256": "6649f43c48b1a93094ebf5e8a9587ff1c1578126ce1677c4ce9caca75a9750a4"
+      "questionSha256": "c6f1c00c06afc2f64eb98d52afd22aa76b0957b2502ae9ea05f16a4166ef2151"
     },
     {
       "id": "K500-0243",
@@ -1948,7 +1948,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/tx.rs#L338",
       "evidenceSymbol": "Phase 1: Validate all groups without mutating.",
       "sourceSha256": "bec0ba712a976e227a184ee3130bc0fd1222a452dade5820af92173ca5961656",
-      "questionSha256": "c9e21ea404ed89b922a4d348a2e94492503dd17d725a389a76a41b3538cb0929"
+      "questionSha256": "74cf4c4338507ca8a3376331ce58c91a5632460d9557ff4e756f4e4b4e61ffa9"
     },
     {
       "id": "K500-0244",
@@ -1956,7 +1956,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/tx.rs#L333",
       "evidenceSymbol": "outputs across groups must be disjoint",
       "sourceSha256": "bec0ba712a976e227a184ee3130bc0fd1222a452dade5820af92173ca5961656",
-      "questionSha256": "1148ac30c821be37267b304a45f22d86fccc2ec969d9a2fd68787b4ef58326b4"
+      "questionSha256": "9116668b5945b94b133694b63b2dbca7640e1a86e09f7d71fb65977c3d896977"
     },
     {
       "id": "K500-0245",
@@ -1964,7 +1964,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/tx.rs#L368",
       "evidenceSymbol": "CovenantAlreadyPopulated(out)",
       "sourceSha256": "bec0ba712a976e227a184ee3130bc0fd1222a452dade5820af92173ca5961656",
-      "questionSha256": "98798bf7257d8bc714a8a15f02b748498cd5d655cad682ad9dcfc1c65146d6a9"
+      "questionSha256": "88ba32535aeb64444546378a4267530665e197cf2771ee69b522d902ff04e5d0"
     },
     {
       "id": "K500-0246",
@@ -1980,7 +1980,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L787",
       "evidenceSymbol": "HashOpcodePricing::Sha256.script_units_for_data(last.len())",
       "sourceSha256": "201d69b5a8de3db27b94b3e850a7ee62c4920532886c1d19544baed7fd163731",
-      "questionSha256": "b939215b7143b8729033eb99f0e937a89cb9afc7f1d6778bad4e4c59195672cd"
+      "questionSha256": "f18a3bd7256a220136903367b2e6ea4febcc6047ee37e48306d65c61fd9c76a1"
     },
     {
       "id": "K500-0248",
@@ -1996,7 +1996,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/tx.rs#L93",
       "evidenceSymbol": "for version >= 1 we always include the mass field",
       "sourceSha256": "965772f8daf6a941625c1c3b4601c1ee2dc4031d402bae98339064113c0ac5f1",
-      "questionSha256": "e019ea11a80dec95dd3e961dc1543f6a8d3660f4e880328e80cb2ba661b4b999"
+      "questionSha256": "062d864eb4a0caa09258ac979ca49e63f91032cebd3afbd69dda030d92a6d131"
     },
     {
       "id": "K500-0250",
@@ -2004,7 +2004,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/hashing/tx.rs#L26",
       "evidenceSymbol": "Returns the transaction hash pre-crescendo",
       "sourceSha256": "965772f8daf6a941625c1c3b4601c1ee2dc4031d402bae98339064113c0ac5f1",
-      "questionSha256": "63404dc91c539abe93b7057fc87d611e2abf4e95ee9ea6b00c0e34036bf0bc63"
+      "questionSha256": "d35982d1f0712df881088645e0c244b4ca640759fe63aa6dd1071ea3911a26ee"
     }
   ]
 }

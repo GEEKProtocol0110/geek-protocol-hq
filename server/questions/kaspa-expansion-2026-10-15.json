@@ -247,7 +247,7 @@
       "conceptId": "K250-0009",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "How does Rusty Kaspa's validator treat an output worth exactly zero sompi?",
+      "prompt": "How does the pinned Rusty Kaspa validator treat an output worth exactly zero sompi?",
       "options": [
         "It rejects that output",
         "It accepts it whenever the transaction fee is positive",
@@ -490,7 +490,7 @@
       "conceptId": "K250-0018",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "How is the feerate-threshold check described in Rusty Kaspa's transaction validator?",
+      "prompt": "How is the feerate-threshold check described in the pinned Rusty Kaspa transaction validator?",
       "options": [
         "A consensus minimum fee enforced for every block transaction",
         "A mempool Replace by Fee policy check rather than a consensus rule",
@@ -574,7 +574,7 @@
       "prompt": "When the matching output exists, which output is hashed by Kaspa SIGHASH_SINGLE?",
       "options": [
         "The output at the same index as the input being signed",
-        "The output paying the same address as the input's UTXO",
+        "The output with the same address as the input UTXO",
         "The output with the largest amount",
         "The first output, regardless of the input index"
       ],
@@ -922,7 +922,7 @@
       "conceptId": "K250-0034",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "How many bytes are in the BIP39 Seed value in Rusty Kaspa's implementation?",
+      "prompt": "How many bytes are in the BIP39 Seed value in the pinned Rusty Kaspa implementation?",
       "options": [
         "16 bytes",
         "64 bytes",
@@ -1057,9 +1057,9 @@
       "conceptId": "K250-0039",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "For a mergeset red block outside the DAA set, what does Rusty Kaspa's coinbase builder add to the merging miner's red reward?",
+      "prompt": "For a mergeset red block outside the DAA set, what does the pinned coinbase builder add to the merging miner's red reward?",
       "options": [
-        "Its subsidy plus its total fees, paid to the original miner",
+        "Its subsidy plus its total fees",
         "Its subsidy only, without fees",
         "Its total fees, without its subsidy",
         "Neither its subsidy nor any fees"
@@ -1248,7 +1248,7 @@
       "subcategory": "Wallets & Addresses",
       "prompt": "Which opcode ends the multisig script produced by the Rusty Kaspa ECDSA multisig builder?",
       "options": [
-        "OpCheckMultiSigVerifyECDSA",
+        "OpCheckMultiSig",
         "OpCheckMultiSigECDSA",
         "OpCheckSigECDSA",
         "OpEqual"
@@ -1438,7 +1438,7 @@
       "prompt": "Which Kaspa RPC call requests information about peers currently connected to a node?",
       "options": [
         "GetConnectedPeerInfo",
-        "GetPeerAddressesAndBans",
+        "GetPeerAddresses",
         "GetBlockDagInfo",
         "GetCurrentNetwork"
       ],

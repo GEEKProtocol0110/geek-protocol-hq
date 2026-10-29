@@ -29,7 +29,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L527",
       "evidenceSymbol": "if !request.include_blocks && request.include_transactions",
       "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
-      "questionSha256": "d2c317f99800b1eb6c7850454a99208315e1eebe28fb00dabb8bf1d77d0fd20a"
+      "questionSha256": "f27a912cd57b69b9c0e5c9f9536a134f07ab6a4c00b00899fdc8a68860810b61"
     },
     {
       "id": "K766-0002",
@@ -37,7 +37,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L565",
       "evidenceSymbol": "let block_hashes = once(low_hash)",
       "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
-      "questionSha256": "418744c5110cfd19df93b3fb9e495eef0f9465cf97f2053130ca3caf2426084e"
+      "questionSha256": "be1616f19a1a28b5682ea9ac354e27db9dec597098f59de4c6719847f2a80f2a"
     },
     {
       "id": "K766-0003",
@@ -45,7 +45,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L811",
       "evidenceSymbol": "if !self.config.utxoindex",
       "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
-      "questionSha256": "7e8ef4707fd08ad13f01ab221be19e9220774036959bd296070898e95dfe719a"
+      "questionSha256": "3207e90158274c6da0a8a00bb4e12600f6d45c1d5e68ef24e27a8d18c97f4ab3"
     },
     {
       "id": "K766-0004",
@@ -53,7 +53,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L796",
       "evidenceSymbol": "if session.async_is_consensus_in_transitional_ibd_state()",
       "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
-      "questionSha256": "304740d290fd0309f97796c4295c3887972cbc42ac9fca6fce724c4a2451da24"
+      "questionSha256": "8ed3341b8423c80584e08cc690a7d782852b1cec614a5c3d34c999fe4e9bb9e4"
     },
     {
       "id": "K766-0005",
@@ -61,7 +61,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L801",
       "evidenceSymbol": "the current impl does not retain an entry order",
       "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
-      "questionSha256": "23e9e1df9c72648d3616bad713bd5302c3fa9183844d9741a31cb04af59a865c"
+      "questionSha256": "bb0bac319ab8d1dc9d179b0b4d6cc5a48a5f35710de7978ed30cd3d5e6f21cdd"
     },
     {
       "id": "K766-0006",
@@ -69,7 +69,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L846",
       "evidenceSymbol": "let balance = entry_map.get(&script_public_key).copied();",
       "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
-      "questionSha256": "69f9ab5f430d85bf90f1ad3ffc82d0c95f175dc735613422f813e3f94c418733"
+      "questionSha256": "6d16ce3cd660b5e84c4514092f40f22e0bfd17ab4068a5ed627143e9ee12b248"
     },
     {
       "id": "K766-0007",
@@ -77,7 +77,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L657",
       "evidenceSymbol": "let allow_orphan = self.config.unsafe_rpc && request.allow_orphan;",
       "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
-      "questionSha256": "bf738fdd1daa1d7ac4dd9e77a19dfc29900f32e1492ae441c5093b062beb283c"
+      "questionSha256": "fae7bba6eea7f84379cdfba090a10a09a3650f04956de4aed667074a9fad8d2a"
     },
     {
       "id": "K766-0008",
@@ -85,7 +85,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/service/src/service.rs#L1078",
       "evidenceSymbol": "if request.window_size as u64 > self.config.pruning_depth()",
       "sourceSha256": "1bd23aedce198ce3f7d4731c37008e98ad7d7ef7119361a25572b94c157ac33d",
-      "questionSha256": "c5d0d1ad03996eb85905846c9ec44508b8fdaae63026f977e6ccf4bb474858e0"
+      "questionSha256": "b19e98f6078ba4b843523a6c5fcb306144a65fa7336e9e00e9af480dd9558450"
     }
   ],
   "overlapReview": "Compared all 758 active Kaspa prompts and explanations, with focused inspection of RPC, index, orphan, pruning, ordering and synchronization objectives. K500-0005 covers GetBlock transaction inclusion, K500-0015 identifies the optional GetBlocks cursor and K500-0024 identifies a hashrate window. This batch instead tests dependent GetBlocks flags, cursor inclusivity and the unconditional pruning bound. Existing index-capability reporting, wallet initialization failure and orphan-definition items do not test the specific node response/data semantics added here. Proposed genesis-fallback and extra sync-status items were omitted to keep the batch distinct. Conservative automated similarity checks supplement internal semantic review; independent editorial review remains unassigned."

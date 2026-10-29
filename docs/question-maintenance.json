@@ -1,17 +1,18 @@
 {
-  "maintainedAt": "2026-10-28",
+  "maintainedAt": "2026-10-29",
   "originalRows": 8032,
   "cleanedBaseline": 4024,
   "activeQuestions": 8338,
-  "retiredRows": 4411,
+  "retiredRows": 4415,
   "addedQuestions": 4024,
   "categories": {
     "kaspa": {
       "before": 1032,
       "cleaned": 92,
-      "removed": 940,
+      "removed": 944,
       "reasons": {
-        "same-concept": 940
+        "same-concept": 940,
+        "editorial-source-correction": 4
       },
       "added": 92,
       "target": 184,
@@ -21,7 +22,8 @@
         "medium": 349,
         "hard": 253
       },
-      "postReviewAdditions": 582
+      "postReviewAdditions": 586,
+      "editorialRemoved": 4
     },
     "comics": {
       "before": 1000,
@@ -185,7 +187,7 @@
     "KasWareExtension": "78bb30045edd4d898c4d61c4c75ba1bc37e18748",
     "KaspanetDocs": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9"
   },
-  "editorialRetiredRows": 403,
+  "editorialRetiredRows": 407,
   "editorialReview": "docs/editorial-review.json",
-  "postReviewAdditions": 693
+  "postReviewAdditions": 697
 }

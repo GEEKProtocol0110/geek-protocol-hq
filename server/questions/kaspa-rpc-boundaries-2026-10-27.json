@@ -31,7 +31,7 @@
       "conceptId": "K766-0001",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Data Boundaries",
-      "prompt": "In Rusty Kaspa's GetBlocks handler, which flag combination returns InvalidGetBlocksRequest?",
+      "prompt": "In the cited Kaspa GetBlocks handler, which flag combination returns InvalidGetBlocksRequest?",
       "options": [
         "include_transactions true with include_blocks false",
         "include_transactions false with include_blocks true",
@@ -59,9 +59,9 @@
       "conceptId": "K766-0002",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Data Boundaries",
-      "prompt": "A client pages from an existing low_hash with Rusty Kaspa's GetBlocks handler. How is that starting hash treated?",
+      "prompt": "A client pages from an existing low_hash with the cited Kaspa GetBlocks handler. How is that starting hash treated?",
       "options": [
-        "It is always excluded from the response's block_hashes list",
+        "It is always excluded from the response",
         "It is included at the beginning of block_hashes",
         "It is replaced by an unrelated random hash",
         "It is returned only if it is a transaction ID"
@@ -87,7 +87,7 @@
       "conceptId": "K766-0003",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Data Boundaries",
-      "prompt": "What does Rusty Kaspa's GetBalanceByAddress handler return when the node has no UTXO index enabled?",
+      "prompt": "What does the cited Kaspa GetBalanceByAddress handler return when the node has no UTXO index enabled?",
       "options": [
         "A successful zero balance for every address",
         "The total supply as the address balance",
@@ -115,7 +115,7 @@
       "conceptId": "K766-0004",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Data Boundaries",
-      "prompt": "With its UTXO index enabled, how does Rusty Kaspa's GetUtxosByAddresses handler respond during a transitional IBD state?",
+      "prompt": "With its UTXO index enabled, how does the cited Kaspa GetUtxosByAddresses handler respond during a transitional IBD state?",
       "options": [
         "It silently reports an empty UTXO set",
         "It returns a wallet private key",
@@ -143,10 +143,10 @@
       "conceptId": "K766-0005",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Data Boundaries",
-      "prompt": "Which assumption does Rusty Kaspa's GetUtxosByAddresses implementation explicitly warn clients against?",
+      "prompt": "Which assumption does the cited Kaspa GetUtxosByAddresses implementation explicitly warn clients against?",
       "options": [
         "Assuming returned entries follow the requested address order",
-        "Reading the address attached to each returned entry instead of the request",
+        "Reading the address attached to each returned entry",
         "Allowing an address to have multiple unspent outputs",
         "Recognizing an outpoint by transaction ID and output index"
       ],
@@ -171,11 +171,11 @@
       "conceptId": "K766-0006",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Data Boundaries",
-      "prompt": "In Rusty Kaspa's GetBalancesByAddresses handler, what balance value is built when an address has no entry in the returned balance map?",
+      "prompt": "In the cited Kaspa GetBalancesByAddresses handler, what balance value is built when an address has no entry in the returned balance map?",
       "options": [
         "An automatic numeric zero",
         "None, preserving an absent optional value",
-        "An error that aborts the whole batch request",
+        "The maximum native coin supply",
         "The balance of the preceding address"
       ],
       "correctIndex": 1,
@@ -199,7 +199,7 @@
       "conceptId": "K766-0007",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Data Boundaries",
-      "prompt": "When does Rusty Kaspa's SubmitTransaction handler pass Orphan::Allowed to transaction submission?",
+      "prompt": "When does the cited Kaspa SubmitTransaction handler pass Orphan::Allowed to transaction submission?",
       "options": [
         "Whenever any RPC client is connected",
         "Whenever the transaction pays a fee",
@@ -227,10 +227,10 @@
       "conceptId": "K766-0008",
       "category": "Kaspa",
       "subcategory": "Kaspa RPC Data Boundaries",
-      "prompt": "With unsafe RPC enabled, what happens if Rusty Kaspa's EstimateNetworkHashesPerSecond request exceeds the configured pruning depth?",
+      "prompt": "With unsafe RPC enabled, what happens if the cited EstimateNetworkHashesPerSecond request exceeds the configured pruning depth?",
       "options": [
         "The handler reconstructs all pruned history",
-        "The window is silently reduced to the pruning depth and a value returned",
+        "The window is silently reduced to one block",
         "The safe-mode maximum is the only remaining restriction",
         "The handler still returns WindowSizeExceedingPruningDepth"
       ],

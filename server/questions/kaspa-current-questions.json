@@ -43,7 +43,7 @@
         "toccata",
         "mainnet"
       ],
-      "volatile": true,
+      "volatile": false,
       "priority": true,
       "source": "https://kaspa.org/lore/",
       "reviewStatus": "source-checked",
@@ -69,7 +69,7 @@
         "toccata",
         "daa-score"
       ],
-      "volatile": true,
+      "volatile": false,
       "priority": true,
       "source": "https://kaspa.org/lore/",
       "reviewStatus": "source-checked",
@@ -85,11 +85,11 @@
         "KIP-1, KIP-2, KIP-3, KIP-4",
         "KIP-9, KIP-10, KIP-13, KIP-15",
         "KIP-5, KIP-6, KIP-7, KIP-8",
-        "KIP-16, KIP-17, KIP-20, KIP-21"
+        "KIP-20, KIP-21, KIP-22, KIP-23"
       ],
       "correctIndex": 1,
       "difficulty": "hard",
-      "funFact": "KIP-14 (Crescendo) bundled KIP-9 storage mass, KIP-10 opcodes, KIP-13 transient storage and KIP-15 sequencing commitments.",
+      "funFact": "Kaspa Improvement Proposals document coordinated protocol changes.",
       "tags": [
         "kaspa",
         "crescendo",
@@ -121,7 +121,7 @@
         "toccata",
         "transaction-v1"
       ],
-      "volatile": true,
+      "volatile": false,
       "priority": true,
       "source": "https://docs.kaspa.org/toccata/transaction-v1",
       "reviewStatus": "source-checked",
@@ -135,8 +135,8 @@
       "prompt": "In a UTXO design, what does a covenant primarily restrict?",
       "options": [
         "The future spending conditions of an output",
-        "The miner's choice of parent blocks",
-        "The transaction's fee rate",
+        "The miner's geographic location",
+        "The wallet's screen color",
         "The block reward schedule"
       ],
       "correctIndex": 0,
@@ -147,7 +147,7 @@
         "toccata",
         "covenants"
       ],
-      "volatile": true,
+      "volatile": false,
       "priority": true,
       "source": "https://docs.kaspa.org/toccata/covenant-state",
       "reviewStatus": "source-checked",
@@ -161,8 +161,8 @@
       "prompt": "What is the purpose of Toccata script pricing?",
       "options": [
         "To meter computational resources",
-        "To set a fixed fee per transaction",
-        "To limit the number of covenants per block",
+        "To set the market price of KAS",
+        "To choose a wallet theme",
         "To replace proof of work"
       ],
       "correctIndex": 0,
@@ -173,7 +173,7 @@
         "toccata",
         "script-pricing"
       ],
-      "volatile": true,
+      "volatile": false,
       "priority": true,
       "source": "https://docs.kaspa.org/toccata/script-pricing",
       "reviewStatus": "source-checked",
@@ -187,7 +187,7 @@
       "prompt": "Which Toccata feature groups application transaction activity for app-specific ordering commitments?",
       "options": [
         "User lanes",
-        "Covenant shards",
+        "Premine lanes",
         "Validator committees",
         "Rollup sequencer keys"
       ],
@@ -199,7 +199,7 @@
         "toccata",
         "user-lanes"
       ],
-      "volatile": true,
+      "volatile": false,
       "priority": true,
       "source": "https://docs.kaspa.org/toccata/transaction-v1",
       "reviewStatus": "source-checked",
@@ -215,7 +215,7 @@
         "Zero-knowledge proof verification primitives",
         "A centralized identity database",
         "Proof-of-stake delegation",
-        "A trusted off-chain oracle feed"
+        "A fixed token exchange rate"
       ],
       "correctIndex": 0,
       "difficulty": "medium",
@@ -225,7 +225,7 @@
         "toccata",
         "zero-knowledge"
       ],
-      "volatile": true,
+      "volatile": false,
       "priority": true,
       "source": "https://docs.kaspa.org/toccata/inline-zk",
       "reviewStatus": "source-checked",
@@ -251,7 +251,7 @@
         "toccata",
         "based-apps"
       ],
-      "volatile": true,
+      "volatile": false,
       "priority": true,
       "source": "https://docs.kaspa.org/toccata/based-apps",
       "reviewStatus": "source-checked",
@@ -265,7 +265,7 @@
       "prompt": "Which language does the reviewed Kaspa guide recommend for authoring Toccata covenants?",
       "options": [
         "Silverscript",
-        "Solidity (via an EVM layer)",
+        "Solidity",
         "Move",
         "Michelson"
       ],
@@ -355,7 +355,7 @@
         "covenants",
         "state"
       ],
-      "volatile": true,
+      "volatile": false,
       "priority": true,
       "source": "https://docs.kaspa.org/toccata/covenant-state",
       "reviewStatus": "source-checked",
@@ -369,9 +369,9 @@
       "prompt": "What checks a Kaspa covenant's spending rules when the transaction is validated?",
       "options": [
         "Network consensus validation",
-        "An off-chain indexer",
-        "The wallet that built the transaction",
-        "A designated sequencer node"
+        "A social media poll",
+        "A single web server",
+        "A wallet color scheme"
       ],
       "correctIndex": 0,
       "difficulty": "easy",
@@ -381,7 +381,7 @@
         "covenants",
         "consensus"
       ],
-      "volatile": true,
+      "volatile": false,
       "priority": true,
       "source": "https://docs.kaspa.org/toccata/covenant-state",
       "reviewStatus": "source-checked",
@@ -422,7 +422,7 @@
       "options": [
         "kaspa.org/build",
         "A random token explorer",
-        "A mining pool dashboard",
+        "An exchange referral page",
         "A validator marketplace"
       ],
       "correctIndex": 0,
@@ -474,7 +474,7 @@
       "options": [
         "Responsiveness to actual network conditions",
         "Replacing mining with staking",
-        "Fixing the block interval to a single predetermined delay bound",
+        "Fixing every block interval at one minute",
         "Creating a centralized sequencer"
       ],
       "correctIndex": 0,
@@ -485,7 +485,7 @@
         "dagknight",
         "responsiveness"
       ],
-      "volatile": true,
+      "volatile": false,
       "priority": true,
       "source": "https://eprint.iacr.org/2022/1494.pdf",
       "reviewStatus": "source-checked",

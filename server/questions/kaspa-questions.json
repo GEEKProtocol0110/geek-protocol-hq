@@ -2,7 +2,7 @@
   "metadata": {
     "title": "GEEK Protocol — Kaspa Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-08",
+    "maintainedAt": "2026-10-29",
     "questionCount": 176,
     "conceptCount": 176,
     "category": "Kaspa",
@@ -12,10 +12,10 @@
       "hard": 38
     },
     "correctIndexDistribution": {
+      "0": 45,
       "1": 45,
       "2": 55,
-      "3": 31,
-      "0": 45
+      "3": 31
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -34,7 +34,7 @@
       "options": [
         "Satoshi Nakamoto",
         "Yonatan Sompolinsky",
-        "Gavin Andresen",
+        "Gavin Wood",
         "Vitalik Buterin"
       ],
       "correctIndex": 1,
@@ -178,7 +178,7 @@
       "options": [
         "rusty-kaspa",
         "kaspa-js",
-        "kaspa-core-rs",
+        "dag-core",
         "ghost-node"
       ],
       "correctIndex": 0,
@@ -272,10 +272,10 @@
       "subcategory": "GHOSTDAG & BlockDAG",
       "prompt": "How does Kaspa treat valid blocks created in parallel?",
       "options": [
-        "It merges them into one combined block",
+        "It merges them into one block",
         "It includes and orders them in the DAG",
-        "It keeps only the one with the most work",
-        "It discards all but the first one received"
+        "It stores them outside consensus",
+        "It discards all but one"
       ],
       "correctIndex": 1,
       "difficulty": "easy",
@@ -464,7 +464,7 @@
       "subcategory": "GHOSTDAG & BlockDAG",
       "prompt": "Why is consistent transaction ordering important?",
       "options": [
-        "It sets block rewards",
+        "It fixes coin prices",
         "It lets nodes agree which conflicting spend came first",
         "It hides wallet balances",
         "It eliminates private keys"
@@ -512,7 +512,7 @@
       "subcategory": "Mining & Consensus",
       "prompt": "Which proof-of-work algorithm does Kaspa use?",
       "options": [
-        "Blake3 double-hash",
+        "RandomX",
         "kHeavyHash",
         "Ethash",
         "Scrypt"
@@ -560,7 +560,7 @@
       "subcategory": "Mining & Consensus",
       "prompt": "At a target of 10 BPS, what is the average target interval per block?",
       "options": [
-        "1,000 milliseconds",
+        "10 milliseconds",
         "10 seconds",
         "100 milliseconds",
         "1 second"
@@ -633,7 +633,7 @@
       "prompt": "What does network hashrate measure?",
       "options": [
         "Coins held by miners",
-        "Transactions confirmed per second",
+        "Number of exchange listings",
         "Transactions stored per wallet",
         "Computational work attempted per second"
       ],
@@ -658,7 +658,7 @@
       "options": [
         "Replace consensus rules",
         "Combine hash power and share rewards",
-        "Set block difficulty for all of its members",
+        "Set market prices",
         "Issue private keys"
       ],
       "correctIndex": 1,
@@ -681,9 +681,9 @@
       "prompt": "What does ASIC mean in cryptocurrency mining?",
       "options": [
         "Application-Specific Integrated Circuit",
-        "Advanced Silicon Integrated Compute module",
+        "Applied System Interchange Code",
         "Advanced Staking Identity Card",
-        "Accelerated Serial Instruction Core"
+        "Automatic Secure Internet Consensus"
       ],
       "correctIndex": 0,
       "difficulty": "medium",
@@ -704,7 +704,7 @@
       "subcategory": "Tokenomics",
       "prompt": "Approximately what is Kaspa's maximum supply?",
       "options": [
-        "21 billion KAS (fixed)",
+        "144 billion KAS",
         "28.7 billion KAS",
         "1 billion KAS",
         "21 million KAS"
@@ -800,9 +800,9 @@
       "subcategory": "Tokenomics",
       "prompt": "What mathematical factor is applied monthly during Kaspa's deflationary phase?",
       "options": [
-        "A fixed ten percent reduction",
+        "Ten percent",
         "The twelfth root of one-half",
-        "One-half, applied every month",
+        "One-half exactly",
         "The square root of two"
       ],
       "correctIndex": 1,
@@ -824,7 +824,7 @@
       "subcategory": "Tokenomics",
       "prompt": "In a conventional proof-of-work blockchain, who generally receives transaction fees?",
       "options": [
-        "Wallet developers whose software built the transaction",
+        "Wallet developers automatically",
         "Central validators",
         "Miners who include the transactions",
         "Token creators"
@@ -867,7 +867,7 @@
       "reviewedAt": "2026-10-01"
     },
     {
-      "id": "KASPA-0501",
+      "id": "KASPA-0501-Re583c05838",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
       "prompt": "Which prefix identifies a Kaspa mainnet address?",
@@ -887,11 +887,14 @@
       "volatile": false,
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/master/crypto/addresses/src/lib.rs",
       "reviewStatus": "source-checked",
-      "conceptId": "KASPA-0501",
-      "reviewedAt": "2026-10-01"
+      "conceptId": "KASPA-0501-Re583c05838",
+      "reviewedAt": "2026-10-29",
+      "supersedesQuestionIds": [
+        "KASPA-0501"
+      ]
     },
     {
-      "id": "KASPA-0502",
+      "id": "KASPA-0502-R8ff83eedfc",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
       "prompt": "Which prefix identifies a Kaspa testnet address?",
@@ -911,8 +914,11 @@
       "volatile": false,
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/master/crypto/addresses/src/lib.rs",
       "reviewStatus": "source-checked",
-      "conceptId": "KASPA-0502",
-      "reviewedAt": "2026-10-01"
+      "conceptId": "KASPA-0502-R8ff83eedfc",
+      "reviewedAt": "2026-10-29",
+      "supersedesQuestionIds": [
+        "KASPA-0502"
+      ]
     },
     {
       "id": "KASPA-0503",
@@ -946,8 +952,8 @@
       "options": [
         "Mining difficulty",
         "The wallet's private keys",
-        "Coins sent to a mistyped address",
-        "The network's mining difficulty settings"
+        "A lost exchange password",
+        "The market price"
       ],
       "correctIndex": 1,
       "difficulty": "easy",
@@ -968,7 +974,7 @@
       "subcategory": "Wallets & Addresses",
       "prompt": "What should never be shared with a website or stranger?",
       "options": [
-        "Public receiving address or xpub",
+        "Public receiving address",
         "Private key or seed phrase",
         "Block hash",
         "Transaction ID"
@@ -992,9 +998,9 @@
       "subcategory": "Wallets & Addresses",
       "prompt": "What does a valid wallet message signature demonstrate?",
       "options": [
-        "Ownership of every coin sent to that address",
+        "Ownership of every coin in a block",
         "That a transaction was mined",
-        "A verified real-world identity",
+        "A guaranteed identity",
         "Control of the corresponding private key"
       ],
       "correctIndex": 3,
@@ -1016,7 +1022,7 @@
       "subcategory": "Wallets & Addresses",
       "prompt": "What is an address checksum designed to catch?",
       "options": [
-        "Double-spend attempts",
+        "Slow internet",
         "Price volatility",
         "Typing or transcription errors",
         "Mining centralization"
@@ -1064,9 +1070,9 @@
       "subcategory": "Wallets & Addresses",
       "prompt": "What should a user compare before approving a wallet transaction?",
       "options": [
-        "Only the wallet's display name",
+        "Only the app color",
         "Only the current block height",
-        "Only the network's current hashrate",
+        "Only the token logo",
         "Destination, amount, and fee"
       ],
       "correctIndex": 3,
@@ -1191,7 +1197,7 @@
       ],
       "correctIndex": 1,
       "difficulty": "easy",
-      "funFact": "Mint reads the existing deployment and its mint limit. The Kasplex indexer executor rejects a missing deployment or an incompatible mode and checks the remaining supply.",
+      "funFact": "Mint reads the existing deployment and its mint limit. The cited executor rejects a missing deployment or an incompatible mode and checks the remaining supply.",
       "tags": [
         "kaspa",
         "mint"
@@ -1209,7 +1215,7 @@
       "prompt": "Which KRC-20 operation requests moving existing token units between addresses?",
       "options": [
         "mine",
-        "send-token",
+        "index",
         "transfer",
         "deploy"
       ],
@@ -1232,7 +1238,7 @@
       "subcategory": "KRC-20 & Smart Contracts",
       "prompt": "What role does a KRC-20 indexer perform for token applications?",
       "options": [
-        "Mines KRC-20 blocks",
+        "Guarantees token prices",
         "Controls Kaspa consensus",
         "Interprets protocol operations and calculates token state",
         "Stores users' seed phrases"
@@ -1282,8 +1288,8 @@
       "options": [
         "The exact ticker/deployment and trusted source information",
         "Only its name similarity",
-        "Only its listing on a single explorer",
-        "Only its holder count"
+        "Only its logo",
+        "Only its follower count"
       ],
       "correctIndex": 0,
       "difficulty": "easy",
@@ -1352,10 +1358,10 @@
       "subcategory": "Kaspa Ecosystem",
       "prompt": "What does a full node independently verify?",
       "options": [
-        "Other nodes' uptime",
+        "Exchange prices",
         "Blocks and transactions against consensus rules",
-        "Mining pool payouts",
-        "Wallet seed backups"
+        "Token logos",
+        "Social media accounts"
       ],
       "correctIndex": 1,
       "difficulty": "easy",
@@ -1376,7 +1382,7 @@
       "subcategory": "Kaspa Ecosystem",
       "prompt": "What is Kaspa testnet primarily for?",
       "options": [
-        "Mining mainnet KAS at low difficulty",
+        "Setting the mainnet price",
         "Recovering mainnet wallets",
         "Buying discounted mainnet KAS",
         "Testing software with valueless test coins"
@@ -1400,8 +1406,8 @@
       "subcategory": "Kaspa Ecosystem",
       "prompt": "What is an RPC interface used for?",
       "options": [
-        "Encrypting the wallet file",
-        "Mining blocks directly",
+        "Printing a seed phrase",
+        "Fixing market prices",
         "Letting software communicate with a node",
         "Cooling an ASIC"
       ],
@@ -1448,8 +1454,8 @@
       "subcategory": "Kaspa Ecosystem",
       "prompt": "What is a KIP?",
       "options": [
-        "A Kaspa Indexer Protocol",
-        "A Kaspa Integration Package for wallets",
+        "A token price index",
+        "A mining pool share",
         "A Kaspa Improvement Proposal",
         "A Kaspa private key"
       ],
@@ -1472,7 +1478,7 @@
       "subcategory": "Kaspa Ecosystem",
       "prompt": "What was the focus of KIP-1?",
       "options": [
-        "Defining the KRC-20 token standard",
+        "Creating KRC-20",
         "Rewriting the full node in Rust",
         "Switching to proof of stake",
         "Changing the ticker"
@@ -1569,7 +1575,7 @@
       "prompt": "What is a cryptographic hash function?",
       "options": [
         "A one-way mapping from input data to fixed-size output",
-        "A reversible encryption scheme using a key",
+        "A reversible password vault",
         "A mining pool account",
         "A wallet balance table"
       ],
@@ -1641,7 +1647,7 @@
       "prompt": "What is a private key used for?",
       "options": [
         "Authorizing ownership actions through signatures",
-        "Publishing a receiving address",
+        "Calculating market cap",
         "Looking up a block height",
         "Selecting mining pools"
       ],
@@ -1664,7 +1670,7 @@
       "subcategory": "Crypto Fundamentals",
       "prompt": "What does transaction finality describe?",
       "options": [
-        "Removal of a transaction from the mempool",
+        "A wallet logout",
         "The final coin ever mined",
         "The largest possible fee",
         "Confidence that an accepted transaction will not be reversed"
@@ -1737,9 +1743,9 @@
       "prompt": "What is a transaction fee intended to incentivize?",
       "options": [
         "Inclusion and processing by miners",
-        "Faster synchronization of wallet balances",
-        "Higher block subsidies",
-        "Lower mining difficulty"
+        "Wallet password recovery",
+        "Token price growth",
+        "Exchange listing"
       ],
       "correctIndex": 0,
       "difficulty": "easy",
@@ -1760,9 +1766,9 @@
       "subcategory": "Crypto Fundamentals",
       "prompt": "What does self-custody mean?",
       "options": [
-        "A regulated custodian insures the wallet's funds",
+        "The government insures the wallet",
         "A miner stores the seed",
-        "A custodian holds the keys",
+        "An exchange guarantees the balance",
         "The user controls the keys to the funds"
       ],
       "correctIndex": 3,
@@ -1809,9 +1815,9 @@
       "prompt": "What does a transaction input refer to when spending KAS?",
       "options": [
         "A previous transaction output",
-        "The sender's address balance",
-        "The block that mined the sender's coins",
-        "A pending mempool entry"
+        "A miner's email address",
+        "A token price chart",
+        "A website cookie"
       ],
       "correctIndex": 0,
       "funFact": "Each input identifies the earlier output it intends to spend.",
@@ -1835,8 +1841,8 @@
       "prompt": "Which part of a KAS transaction specifies newly created payments?",
       "options": [
         "Parent block timestamps",
-        "Inputs",
-        "Signature scripts",
+        "Mining pool names",
+        "Network peer nicknames",
         "Outputs"
       ],
       "correctIndex": 3,
@@ -1860,10 +1866,10 @@
       "difficulty": "easy",
       "prompt": "What is an outpoint in a Kaspa transaction?",
       "options": [
-        "A block hash paired with a DAA score",
-        "A script public key paired with its script version number",
+        "A block rate paired with a mining fee",
+        "A ticker paired with a market price",
         "A transaction ID paired with an output index",
-        "An address paired with a derivation index"
+        "A wallet password paired with a username"
       ],
       "correctIndex": 2,
       "funFact": "The ID identifies a transaction and the index selects one of its outputs.",
@@ -1886,9 +1892,9 @@
       "difficulty": "easy",
       "prompt": "Where does a transaction output record its spending conditions?",
       "options": [
-        "Its signature script",
-        "Its outpoint",
-        "Its signature script field",
+        "Its market capitalization",
+        "Its peer address",
+        "Its display color",
         "Its script public key"
       ],
       "correctIndex": 3,
@@ -1912,7 +1918,7 @@
       "difficulty": "easy",
       "prompt": "Can one ordinary KAS transaction have more than one recipient output?",
       "options": [
-        "Only if the network enables a special multi-payment mode",
+        "Only if the network switches to proof of stake",
         "Only if the transaction contains no inputs",
         "Yes, separate outputs can pay different recipients",
         "No, every output must pay the sender"
@@ -2017,9 +2023,9 @@
       "prompt": "What does a transaction's lock_time field help specify?",
       "options": [
         "When the transaction becomes eligible under lock-time rules",
-        "The transaction's fee priority",
-        "How long it may wait in the mempool",
-        "When its outputs mature for spending"
+        "The current exchange price",
+        "The miner's physical location",
+        "The wallet's login duration"
       ],
       "correctIndex": 0,
       "funFact": "Transaction lock time is a consensus eligibility condition rather than a browser timeout.",
@@ -2043,9 +2049,9 @@
       "prompt": "Why must a transaction builder know the values of the inputs it spends?",
       "options": [
         "To account for outputs and fees without creating value",
-        "To pick the receiver's address version",
-        "To estimate the block reward",
-        "To compute the transaction's signature hash type"
+        "To choose a social media handle",
+        "To calculate the miner's electricity bill",
+        "To change the network's ticker"
       ],
       "correctIndex": 0,
       "funFact": "Input value must cover output value and the fee under the transaction rules.",
@@ -2095,8 +2101,8 @@
       "prompt": "Which compute commitment does a transaction version 1 input use in the reference implementation?",
       "options": [
         "A mining difficulty target",
-        "A storage mass limit",
-        "A signature operation count",
+        "A wallet PIN",
+        "A fiat exchange rate",
         "ComputeBudget"
       ],
       "correctIndex": 3,
@@ -2120,10 +2126,10 @@
       "difficulty": "hard",
       "prompt": "What does a covenant binding record about the input authorizing an output?",
       "options": [
-        "Its signature script",
-        "Its sequence number",
+        "Its mining pool password",
+        "Its browser language",
         "Its input index",
-        "Its previous outpoint's block hash"
+        "Its owner's legal name"
       ],
       "correctIndex": 2,
       "funFact": "CovenantBinding contains an authorizing_input index and a covenant identifier.",
@@ -2146,10 +2152,10 @@
       "difficulty": "hard",
       "prompt": "What information contributes to the identifier of a genesis covenant group?",
       "options": [
-        "Only the authorizing transaction's fee",
-        "The hash of the block that includes the transaction",
+        "Only the current KAS price",
+        "A random website session cookie",
         "The authorizing outpoint and ordered output list",
-        "Only the output values in sompi"
+        "Only the wallet's display name"
       ],
       "correctIndex": 2,
       "funFact": "The genesis covenant identifier binds the authorizing input's outpoint and the group's exact ordered output list.",
@@ -2225,9 +2231,9 @@
       "prompt": "What does an address version identify?",
       "options": [
         "The address payload type",
-        "The network the address belongs to",
-        "The checksum algorithm",
-        "The derivation path depth"
+        "The owner's age",
+        "The coin's market price",
+        "The mining pool's rank"
       ],
       "correctIndex": 0,
       "funFact": "Address versions distinguish supported forms such as public-key and script-hash payloads.",
@@ -2380,10 +2386,10 @@
       "difficulty": "easy",
       "prompt": "Which program name starts the Rusty Kaspa full node?",
       "options": [
-        "kaspa-cli",
-        "rothschild",
+        "kaspost",
+        "kasprice",
         "kaspad",
-        "kaspaminer"
+        "kaspaint"
       ],
       "correctIndex": 2,
       "funFact": "The repository's running-the-node instructions use the kaspad binary.",
@@ -2432,10 +2438,10 @@
       "difficulty": "easy",
       "prompt": "What is a peer in a Kaspa node network?",
       "options": [
-        "A wallet connected over wRPC",
-        "A mining pool worker",
+        "An exchange price display",
+        "An NFT image file",
         "Another node connected for network communication",
-        "A block in the DAG's anticone"
+        "A wallet's password"
       ],
       "correctIndex": 2,
       "funFact": "Nodes exchange network information with other nodes called peers.",
@@ -2458,10 +2464,10 @@
       "difficulty": "easy",
       "prompt": "Which tool builds the Rust crates used by Rusty Kaspa?",
       "options": [
-        "npm",
+        "PowerPoint",
         "Cargo",
-        "Make",
-        "Bazel"
+        "Photoshop",
+        "Excel"
       ],
       "correctIndex": 1,
       "funFact": "The repository uses Cargo commands to build and run Rust components.",
@@ -2484,10 +2490,10 @@
       "difficulty": "medium",
       "prompt": "Which Rusty Kaspa command-line option enables the wallet UTXO index?",
       "options": [
-        "--archival",
-        "--txindex",
+        "--premine",
+        "--stake-only",
         "--utxoindex",
-        "--perf-metrics"
+        "--show-price"
       ],
       "correctIndex": 2,
       "funFact": "The node's UTXO index supports wallet queries and is enabled with --utxoindex.",
@@ -2511,9 +2517,9 @@
       "prompt": "Which branch does the Rusty Kaspa README recommend for a stable release build?",
       "options": [
         "stable",
-        "master",
-        "devnet",
-        "release-candidate"
+        "experimental-ui",
+        "price-feed",
+        "wallet-colors"
       ],
       "correctIndex": 0,
       "funFact": "The README distinguishes the continuously changing master branch from stable release builds.",
@@ -2537,9 +2543,9 @@
       "prompt": "Which transport frames messages in Rusty Kaspa's wRPC implementation?",
       "options": [
         "WebSocket",
-        "gRPC over HTTP/2",
-        "Raw TCP sockets",
-        "QUIC"
+        "SMTP",
+        "FTP",
+        "DNS"
       ],
       "correctIndex": 0,
       "funFact": "wRPC uses WebSocket-framed RPC communication.",
@@ -2562,10 +2568,10 @@
       "difficulty": "medium",
       "prompt": "Which pair of message encodings does Rusty Kaspa wRPC support?",
       "options": [
-        "Protobuf and JSON",
-        "CBOR and MessagePack",
+        "MP3 and WAV",
+        "HTML and CSS",
         "JSON and Borsh",
-        "Protobuf and Borsh"
+        "JPEG and PNG"
       ],
       "correctIndex": 2,
       "funFact": "The wRPC subsystem supports JSON and Borsh protocol encodings.",
@@ -2588,9 +2594,9 @@
       "difficulty": "medium",
       "prompt": "What is the purpose of the Simpa tool in the Rusty Kaspa repository?",
       "options": [
-        "Benchmarking RPC throughput",
-        "Generating test wallets",
-        "Fuzzing the script engine",
+        "Displaying token exchange prices",
+        "Generating seed phrases for strangers",
+        "Replacing every consensus rule",
         "Simulating DAG production and network delay"
       ],
       "correctIndex": 3,
@@ -2614,9 +2620,9 @@
       "difficulty": "medium",
       "prompt": "Which option selects a configuration file when starting kaspad?",
       "options": [
-        "--appdir",
-        "--logdir",
-        "--override-params-file",
+        "--imagefile",
+        "--soundfile",
+        "--pricefile",
         "--configfile"
       ],
       "correctIndex": 3,
@@ -2640,10 +2646,10 @@
       "difficulty": "medium",
       "prompt": "Which format does the README show for kaspad configuration files?",
       "options": [
-        "YAML",
+        "PDF",
         "TOML",
-        "INI sections",
-        "JSON"
+        "PNG",
+        "MP4"
       ],
       "correctIndex": 1,
       "funFact": "The configuration examples use TOML key-value entries.",
@@ -2718,10 +2724,10 @@
       "difficulty": "hard",
       "prompt": "Which kaspad option explicitly enables a JSON wRPC listening endpoint?",
       "options": [
-        "--rpclisten-borsh",
-        "--rpclisten",
+        "--json-premine",
+        "--wallet-price-json",
         "--rpclisten-json",
-        "--unsaferpc"
+        "--rpc-disable-signatures"
       ],
       "correctIndex": 2,
       "funFact": "The optional wRPC subsystem exposes a JSON endpoint through --rpclisten-json.",
@@ -2770,10 +2776,10 @@
       "difficulty": "easy",
       "prompt": "What is a dust attack on a UTXO network designed to create?",
       "options": [
-        "A flood of high-fee transactions that crowds out blocks",
-        "Large payloads that inflate block sizes",
+        "A new browser theme",
+        "An unlimited supply of private keys",
         "Many very small outputs that increase stored state",
-        "Many orphan blocks that slow consensus"
+        "A shorter native coin ticker"
       ],
       "correctIndex": 2,
       "funFact": "KIP-9 describes state bloat caused by large numbers of minuscule UTXOs.",
@@ -2797,9 +2803,9 @@
       "prompt": "What does transaction mass measure in Kaspa?",
       "options": [
         "Resource usage charged under transaction rules",
-        "The serialized byte size of the transaction alone",
-        "The total value transferred in sompi",
-        "The proof-of-work spent on the including block"
+        "The physical weight of a mining computer",
+        "The market price of KAS",
+        "A wallet owner's height"
       ],
       "correctIndex": 0,
       "funFact": "Mass accounts for resources such as computation and storage rather than physical weight.",
@@ -2848,10 +2854,10 @@
       "difficulty": "medium",
       "prompt": "What does compute mass primarily account for in KIP-9?",
       "options": [
-        "Persistent UTXO storage costs",
+        "The market price of electricity",
         "Computational resource costs",
-        "Transient payload bytes",
-        "Network propagation delay"
+        "The owner's exchange account balance",
+        "The geographical distance between miners"
       ],
       "correctIndex": 1,
       "funFact": "Compute mass represents transaction computational costs; storage mass accounts for persistent state costs.",
@@ -2875,9 +2881,9 @@
       "prompt": "What does persistent storage mass discourage?",
       "options": [
         "Creating excessive low-value UTXO state",
-        "Large transaction payloads",
-        "Signature-heavy scripts",
-        "High-fee transactions"
+        "Downloading a new wallet theme",
+        "Reading public documentation",
+        "Verifying a message signature"
       ],
       "correctIndex": 0,
       "funFact": "The storage mass formula makes state-bloating output creation more expensive.",
@@ -2926,9 +2932,9 @@
       "difficulty": "hard",
       "prompt": "What extra context is needed to calculate KIP-9 storage mass?",
       "options": [
-        "The block's DAA score",
-        "The current network-wide fee rate estimate",
-        "The sender's derivation path",
+        "The sender's email address",
+        "The exchange's current KAS price",
+        "The node operator's street address",
         "The values of the spent UTXOs"
       ],
       "correctIndex": 3,
@@ -2978,9 +2984,9 @@
       "difficulty": "hard",
       "prompt": "What does KIP-9's UTXO plurality adjustment account for?",
       "options": [
-        "Transactions with many inputs",
-        "Outputs below the dust threshold",
-        "Coinbase outputs awaiting maturity",
+        "The number of a player's game wins",
+        "The number of browsers open on a phone",
+        "The miner's preferred exchange",
         "Nonstandard scripts using more persistent storage"
       ],
       "correctIndex": 3,
@@ -3004,10 +3010,10 @@
       "difficulty": "medium",
       "prompt": "Which resource issue does KIP-13 address directly?",
       "options": [
-        "Signature verification cost",
-        "UTXO set growth caused by many tiny outputs",
+        "Private-key generation speed",
+        "The number of token ticker characters",
         "Transient transaction byte storage",
-        "Difficulty window size"
+        "Wallet password length"
       ],
       "correctIndex": 2,
       "funFact": "KIP-13 adds transient storage mass to bound block byte sizes and related storage demand.",
@@ -3030,9 +3036,9 @@
       "difficulty": "medium",
       "prompt": "Why are compute and persistent storage limits alone insufficient to bound block byte size?",
       "options": [
-        "Payload bytes are already fully counted as persistent storage mass",
-        "Compute mass already scales with byte size",
-        "Block size is fixed by the header format",
+        "Payloads always contain zero bytes",
+        "Every block has exactly one byte",
+        "Mining difficulty determines the sender's name",
         "Large payloads can still consume substantial bytes"
       ],
       "correctIndex": 3,
@@ -3054,7 +3060,7 @@
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
       "difficulty": "hard",
-      "prompt": "What is the transient byte-to-mass factor in Rusty Kaspa's implementation?",
+      "prompt": "What is the transient byte-to-mass factor in the cited Kaspa implementation?",
       "options": [
         "4 mass units per byte",
         "1 mass unit per kilobyte",
@@ -3062,7 +3068,7 @@
         "0 mass units per byte"
       ],
       "correctIndex": 0,
-      "funFact": "TRANSIENT_BYTE_TO_MASS_FACTOR is set to 4 in Rusty Kaspa's implementation.",
+      "funFact": "TRANSIENT_BYTE_TO_MASS_FACTOR is set to 4 in the cited implementation.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/constants.rs",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
@@ -3082,8 +3088,8 @@
       "difficulty": "hard",
       "prompt": "Which implementation flag disables interpretation of input sequence as relative lock time?",
       "options": [
-        "The transaction's subnetwork ID set to native",
-        "A lock_time value above the threshold",
+        "The transaction's category label",
+        "The block explorer's URL",
         "The highest bit, 1 shifted left by 63",
         "The lowest bit only"
       ],
@@ -3108,7 +3114,7 @@
       "difficulty": "easy",
       "prompt": "What do parent references in a block header point to?",
       "options": [
-        "Previous transaction outputs",
+        "Exchange order books",
         "Future blocks that have not been mined",
         "Earlier blocks",
         "Private wallet seed phrases"
@@ -3135,9 +3141,9 @@
       "prompt": "What is a block header?",
       "options": [
         "A compact structure describing and committing to a block",
-        "The coinbase transaction of a block",
-        "A block's full list of transactions",
-        "A peer's announcement of a new block"
+        "The miner's social media biography",
+        "The complete list of wallet passwords",
+        "A token exchange price history"
       ],
       "correctIndex": 0,
       "funFact": "Kaspa headers include consensus fields and cryptographic commitments.",
@@ -3160,9 +3166,9 @@
       "difficulty": "easy",
       "prompt": "What is a nonce in a proof-of-work block header?",
       "options": [
-        "A counter of transactions in the block",
-        "The block's DAA score",
-        "A random ID assigned by the node",
+        "A recipient's legal name",
+        "A seed-phrase backup",
+        "A fixed exchange rate",
         "A value miners vary while searching for valid work"
       ],
       "correctIndex": 3,
@@ -3186,10 +3192,10 @@
       "difficulty": "medium",
       "prompt": "Which header field commits to the block's transaction hashes?",
       "options": [
-        "accepted_id_merkle_root",
+        "peer_email",
         "hash_merkle_root",
-        "utxo_commitment",
-        "pruning_point"
+        "wallet_password",
+        "market_price"
       ],
       "correctIndex": 1,
       "funFact": "A Merkle root summarizes transaction hashes with a cryptographic commitment.",
@@ -3212,10 +3218,10 @@
       "difficulty": "medium",
       "prompt": "What does the UTXO commitment in a Kaspa header support?",
       "options": [
-        "Ordering parallel blocks in the DAG",
+        "Assigning usernames to miners",
         "Checking the integrity of a UTXO state snapshot",
-        "Proving a block's proof-of-work",
-        "Recovering keys from addresses"
+        "Predicting the next KAS market price",
+        "Recovering private keys from addresses"
       ],
       "correctIndex": 1,
       "funFact": "The header commits to the UTXO set so downloaded state can be validated.",
@@ -3238,10 +3244,10 @@
       "difficulty": "medium",
       "prompt": "What does a block's blue work quantify?",
       "options": [
-        "The number of blue blocks in its past",
+        "A wallet's display color",
         "Accumulated proof-of-work associated with its blue history",
-        "The fees collected by its miner",
-        "Its difficulty target alone"
+        "A miner's electricity tariff",
+        "A token's social media mentions"
       ],
       "correctIndex": 1,
       "funFact": "Blue work is a consensus quantity based on accumulated work, not elapsed wall-clock time alone.",
@@ -3293,7 +3299,7 @@
         "Address Type Authentication Number",
         "Annual Transaction Audit Nonce",
         "Accepted Transactions Archival Node",
-        "Automatic Transaction Acceptance Network"
+        "Automatic Token Allocation Network"
       ],
       "correctIndex": 2,
       "funFact": "KIP-15 uses ATAN for a node that archives accepted transactions and their order.",
@@ -3316,9 +3322,9 @@
       "difficulty": "hard",
       "prompt": "Why must a layer built on Kaspa preserve layer-one transaction acceptance order?",
       "options": [
-        "It must reuse layer-one transaction IDs as its own",
+        "It must replace every transaction ID with a username",
         "Its execution order should match the underlying accepted order",
-        "It must sort transactions by fee rate",
+        "It must sort transactions by social media popularity",
         "It must ignore conflicting spends"
       ],
       "correctIndex": 1,
@@ -3342,9 +3348,9 @@
       "difficulty": "hard",
       "prompt": "What does KIP-15 call the commitment that replaces AcceptedIDMerkleRoot?",
       "options": [
-        "UTXOCommitment",
-        "HashMerkleRoot",
-        "AcceptedTransactionOrderRoot",
+        "WalletPasswordRoot",
+        "ExchangePriceCommitment",
+        "SeedPhraseMerkleRoot",
         "SequencingCommitment"
       ],
       "correctIndex": 3,
@@ -3369,9 +3375,9 @@
       "prompt": "Which two values are combined in KIP-15's sequencing commitment?",
       "options": [
         "The selected parent's sequencing commitment and the accepted-ID Merkle root",
-        "The block's hash and its DAA score",
-        "The UTXO commitment and the pruning point hash",
-        "The previous block's nonce and its timestamp"
+        "The wallet balance and current market price",
+        "The user's name and browser timezone",
+        "The mining pool password and server URL"
       ],
       "correctIndex": 0,
       "funFact": "The chained commitment links the selected parent's prior commitment with the accepted transactions' root.",
@@ -3396,8 +3402,8 @@
       "options": [
         "It verifies no transaction information",
         "It stores accepted transaction data and ordering without requiring all historical DAG structure",
-        "It stores only headers and no transactions",
-        "It stores only the current UTXO set"
+        "It stores only token prices",
+        "It stores only private keys"
       ],
       "correctIndex": 1,
       "funFact": "KIP-15 describes archival accepted data without archiving all DAG or block data.",
@@ -3421,9 +3427,9 @@
       "prompt": "What happens to a UTXO after it is validly spent?",
       "options": [
         "It can be spent indefinitely by anyone",
-        "It stays in the set until the block is pruned",
+        "It becomes an exchange price quote",
         "It is removed from the unspent set",
-        "It is converted into a new output automatically"
+        "It becomes a wallet seed phrase"
       ],
       "correctIndex": 2,
       "funFact": "The unspent set tracks outputs still available to spend; spent outputs leave that set.",
@@ -3447,9 +3453,9 @@
       "prompt": "What does a coinbase flag on a Kaspa UTXO identify?",
       "options": [
         "An output created by a block's coinbase transaction",
-        "An output locked by a covenant",
-        "An output below the dust threshold",
-        "An output created by a KRC-20 mint"
+        "An account at an exchange named Coinbase",
+        "A browser session cookie",
+        "A KRC-20 token's logo"
       ],
       "correctIndex": 0,
       "funFact": "is_coinbase identifies mining-reward outputs rather than a commercial exchange account.",
@@ -3472,10 +3478,10 @@
       "difficulty": "medium",
       "prompt": "Which unit does a Kaspa UTXO entry use for its amount field?",
       "options": [
-        "Grams of mass",
+        "Mining shares",
         "Sompi",
-        "Whole KAS",
-        "Script units"
+        "US dollars",
+        "Kilowatt-hours"
       ],
       "correctIndex": 1,
       "funFact": "The UTXO amount is an integer coin value expressed in the smallest native unit.",
@@ -3498,10 +3504,10 @@
       "difficulty": "medium",
       "prompt": "Why does a UTXO entry retain its script public key?",
       "options": [
-        "It lets nodes rebuild the transaction ID",
-        "It records which block created the output",
+        "It publishes the sender's seed phrase",
+        "It sets the market exchange rate",
         "Validators need the spending conditions when the output is consumed",
-        "It stores the owner's derivation path"
+        "It stores the owner's social media password"
       ],
       "correctIndex": 2,
       "funFact": "Validating a spend requires the earlier output's locking script as well as its amount.",
@@ -3524,10 +3530,10 @@
       "difficulty": "medium",
       "prompt": "What does the block_daa_score field of a UTXO entry record?",
       "options": [
-        "The DAA score when the output was spent",
-        "The current virtual DAA score of the node",
+        "The wallet's fiat balance",
+        "The node's internet subscription cost",
         "The DAA score associated with its creation",
-        "The blue score of the spending block"
+        "The miner's game leaderboard score"
       ],
       "correctIndex": 2,
       "funFact": "The entry retains its creation-related consensus score along with amount, script, and coinbase status.",
@@ -3551,9 +3557,9 @@
       "prompt": "What should a builder report when software behaves unexpectedly?",
       "options": [
         "A reproducible issue with the relevant version and steps",
-        "Only a short summary without version details",
-        "A request to roll back mainnet",
-        "A screenshot of the wallet balance"
+        "A stranger's seed phrase",
+        "A guaranteed token price forecast",
+        "A fabricated mainnet activation date"
       ],
       "correctIndex": 0,
       "funFact": "Open-source development depends on actionable, reproducible issue reports and version information.",
@@ -3602,10 +3608,10 @@
       "difficulty": "easy",
       "prompt": "Why is a very large transaction payload subject to limits?",
       "options": [
-        "Its size changes the transaction's version",
+        "Its size changes the native ticker",
         "It is always free of resource costs",
         "Its bytes consume network and node resources",
-        "Its text must be validated as UTF-8 by every consensus node"
+        "Its text determines the sender's nationality"
       ],
       "correctIndex": 2,
       "funFact": "Payload bytes count toward transaction size and transient mass.",
@@ -3681,9 +3687,9 @@
       "prompt": "Which Wallet API action begins wallet processing and event delivery?",
       "options": [
         "start()",
-        "connect()",
-        "open()",
-        "init()"
+        "getPrice()",
+        "mineAll()",
+        "eraseConsensus()"
       ],
       "correctIndex": 0,
       "funFact": "Connecting attaches to a node; start begins wallet processing.",
@@ -3706,10 +3712,10 @@
       "difficulty": "easy",
       "prompt": "What is a wallet account used to organize?",
       "options": [
-        "A single receiving address and its full transaction history",
+        "The global exchange order book",
         "A set of addresses and related wallet activity",
-        "The node's list of connected peers",
-        "The coinbase rewards of one miner"
+        "The network's entire proof-of-work history",
+        "Every miner's physical location"
       ],
       "correctIndex": 1,
       "funFact": "The Wallet API supports account enumeration, selection, and activation.",
@@ -3784,7 +3790,7 @@
       "difficulty": "medium",
       "prompt": "What should a Wallet API integration activate before sending from an account?",
       "options": [
-        "A KRC-20 indexer session",
+        "An exchange trading pair",
         "A different native coin ticker",
         "The selected wallet account",
         "A new proof-of-stake validator"
@@ -3810,9 +3816,9 @@
       "difficulty": "medium",
       "prompt": "Where do documented browser wallet builds store transaction records?",
       "options": [
-        "Session storage only",
-        "The node's RocksDB database",
-        "A remote explorer API",
+        "The user's public profile bio",
+        "A mining pool's password list",
+        "The block header's nonce field",
         "IndexedDB"
       ],
       "correctIndex": 3,
@@ -3836,10 +3842,10 @@
       "difficulty": "medium",
       "prompt": "Why should a transaction ingestion service save a durable checkpoint?",
       "options": [
-        "To skip transaction validation",
+        "To skip transaction validation forever",
         "To resume from its last successfully processed position",
-        "To lower RPC fees",
-        "To reserve outputs in the mempool"
+        "To predict the exchange price",
+        "To publish its wallet password"
       ],
       "correctIndex": 1,
       "funFact": "A stored checkpoint lets a pull-based service resume after interruption.",
@@ -3966,10 +3972,10 @@
       "difficulty": "hard",
       "prompt": "Which RPC method does the guide use when accepted transaction payloads and fields are required?",
       "options": [
-        "getVirtualChainFromBlockV1",
+        "setPremineAllocation",
         "getVirtualChainFromBlockV2",
-        "getBlocks",
-        "getMempoolEntries"
+        "getWalletPassword",
+        "getMarketPrediction"
       ],
       "correctIndex": 1,
       "funFact": "The V2 method supplies transaction data rather than only accepted IDs.",
@@ -3992,10 +3998,10 @@
       "difficulty": "hard",
       "prompt": "Which RPC response field is rollback input for accepted-transaction ingestion?",
       "options": [
-        "addedChainBlockHashes",
+        "browserTheme",
         "removedChainBlockHashes",
-        "acceptedTransactionIdsByBlock",
-        "sinkHash"
+        "walletSecret",
+        "marketPrice"
       ],
       "correctIndex": 1,
       "funFact": "Removed chain block hashes identify previously processed data that may need invalidation.",
@@ -4018,10 +4024,10 @@
       "difficulty": "hard",
       "prompt": "Which RPC field identifies the oldest retained starting checkpoint in the guide?",
       "options": [
-        "sinkHash",
-        "virtualParentHashes",
+        "exchangeTicker",
+        "paymentPassword",
         "pruningPointHash",
-        "tipHashes"
+        "walletNickname"
       ],
       "correctIndex": 2,
       "funFact": "The first-run pull example falls back to the node's pruning point hash.",
@@ -4070,10 +4076,10 @@
       "difficulty": "medium",
       "prompt": "What must a verifier hash when checking a KIP-5 personal-message signature?",
       "options": [
-        "The message's transaction ID",
-        "The signer's address string",
+        "The current exchange price",
+        "The node operator's username",
         "The same raw message with the specified hashing parameters",
-        "The message hashed with the transaction sighash"
+        "An unrelated message of the same length"
       ],
       "correctIndex": 2,
       "funFact": "Verification must reproduce the signed message digest before checking the signature.",
@@ -4122,7 +4128,7 @@
       "difficulty": "hard",
       "prompt": "Which hash algorithm does KIP-5 use before signing a personal message?",
       "options": [
-        "SHA-256d",
+        "MD5",
         "SHA-1",
         "CRC32",
         "Blake2B"
@@ -4174,10 +4180,10 @@
       "difficulty": "medium",
       "prompt": "Why must difficulty-window sampling be deterministic across nodes?",
       "options": [
-        "Every node must sample from its own local clock",
-        "Nodes need the same peer list",
+        "Every wallet must have the same password",
+        "All users must live in one timezone",
         "They must calculate the same consensus result from the same DAG",
-        "Every miner must use the same hardware"
+        "Every miner must use the same computer brand"
       ],
       "correctIndex": 2,
       "funFact": "KIP-4 requires node-independent sampling derived from the DAG.",
@@ -4199,7 +4205,7 @@
       "conceptId": "KRC20-2026-001",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "In the Kasplex Kiwi SDK example, what value identifies the protocol in the p field?",
+      "prompt": "In the cited Kiwi example, what value identifies the protocol in the p field?",
       "options": [
         "erc-20",
         "krc-20",
@@ -4222,8 +4228,8 @@
       "attribution": "GEEK Protocol; original question based on cited primary source."
     },
     {
-      "id": "KRC20-2026-002",
-      "conceptId": "KRC20-2026-002",
+      "id": "KRC20-2026-002-Rfafa1fea73",
+      "conceptId": "KRC20-2026-002-Rfafa1fea73",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
       "prompt": "In the Kasplex Kiwi SDK's transferByPayload method, which field supplies the token quantity?",
@@ -4244,13 +4250,16 @@
       "volatile": false,
       "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/krc20.ts",
       "reviewStatus": "source-checked",
-      "reviewedAt": "2026-10-08",
+      "reviewedAt": "2026-10-29",
       "license": "CC BY 4.0",
-      "attribution": "GEEK Protocol; original question based on cited primary source."
+      "attribution": "GEEK Protocol; original question based on cited primary source.",
+      "supersedesQuestionIds": [
+        "KRC20-2026-002"
+      ]
     },
     {
-      "id": "KRC20-2026-003",
-      "conceptId": "KRC20-2026-003",
+      "id": "KRC20-2026-003-R2f503d98bb",
+      "conceptId": "KRC20-2026-003-R2f503d98bb",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
       "prompt": "In the Kasplex Kiwi SDK's transferByPayload method, which field supplies the recipient?",
@@ -4271,16 +4280,19 @@
       "volatile": false,
       "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/krc20.ts",
       "reviewStatus": "source-checked",
-      "reviewedAt": "2026-10-08",
+      "reviewedAt": "2026-10-29",
       "license": "CC BY 4.0",
-      "attribution": "GEEK Protocol; original question based on cited primary source."
+      "attribution": "GEEK Protocol; original question based on cited primary source.",
+      "supersedesQuestionIds": [
+        "KRC20-2026-003"
+      ]
     },
     {
       "id": "KRC20-2026-004",
       "conceptId": "KRC20-2026-004",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Which two stages does the Kasplex Kiwi SDK's executeOperation method use for its P2SH flow?",
+      "prompt": "Which two stages does the cited Kiwi executeOperation method use for its P2SH flow?",
       "options": [
         "Deposit and stake",
         "Register and vote",
@@ -4307,7 +4319,7 @@
       "conceptId": "KRC20-2026-005",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "In the Kasplex Kiwi SDK, why can a custom wrapper around KRC-20 payload data cause a problem?",
+      "prompt": "In the cited Kiwi SDK, why can a custom wrapper around KRC-20 payload data cause a problem?",
       "options": [
         "The wrapper guarantees faster finality",
         "A standard indexer may not recognize the operation",
@@ -4334,7 +4346,7 @@
       "conceptId": "KRC20-2026-006",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "For a numeric dec value, what inclusive bounds does the Kasplex Kiwi SDK's validateDec check use?",
+      "prompt": "For a numeric dec value, what inclusive bounds does the cited Kiwi validateDec check use?",
       "options": [
         "1 through 6",
         "0 through 8",
@@ -4361,7 +4373,7 @@
       "conceptId": "KRC20-2026-007",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "With no mod field, what ticker length does the Kasplex Kiwi SDK's validateTick check require?",
+      "prompt": "With no mod field, what ticker length does the cited Kiwi validateTick check require?",
       "options": [
         "4 to 6 characters",
         "1 to 3 characters",

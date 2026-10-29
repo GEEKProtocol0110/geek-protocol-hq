@@ -57,7 +57,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/covenant-state.mdx#L27",
       "evidenceSymbol": "are constructor arguments",
       "sourceSha256": "0dc71fb36f3cb04991775047bdb2824cc7aa9a0ef82723993077bd29375f2535",
-      "questionSha256": "e220c3e4cdbd26dba7810e7d9e4c6a0029e14fdd9e7ed1c0861b7d95a1ffb4ab"
+      "questionSha256": "832a9f38902d97f185413f6a97c851995dec0e4d707cde93a9a65f2706e172fc"
     },
     {
       "id": "K580-0002",
@@ -65,7 +65,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/covenant-state.mdx#L190",
       "evidenceSymbol": "The auth question is local",
       "sourceSha256": "0dc71fb36f3cb04991775047bdb2824cc7aa9a0ef82723993077bd29375f2535",
-      "questionSha256": "f7493e4d0abf08933fd32e8c5eb1d287fe11b71862c6c7e7659086b8b5a45a53"
+      "questionSha256": "200834498e3bf8172976a3aa5c00662e740722c559de968dbab0d9febb1c8e53"
     },
     {
       "id": "K580-0003",
@@ -73,7 +73,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/covenant-state.mdx#L207",
       "evidenceSymbol": "Each count/index pair acts like an iterator",
       "sourceSha256": "0dc71fb36f3cb04991775047bdb2824cc7aa9a0ef82723993077bd29375f2535",
-      "questionSha256": "8cdcad49bf079eed693e67a2539899d1a2176316679dc318a38b83f42dda68b4"
+      "questionSha256": "95139cd0a29099ae0e73c646afbdfa15ca79b7f442b8c3f888158cbd6f3ec849"
     },
     {
       "id": "K580-0004",
@@ -81,7 +81,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/covenant-state.mdx#L236",
       "evidenceSymbol": "A covenant script should not have to assume",
       "sourceSha256": "0dc71fb36f3cb04991775047bdb2824cc7aa9a0ef82723993077bd29375f2535",
-      "questionSha256": "4d0eb4ab63aeab7f63738b8950ecb81cb8eb3798ae42687d9a25d10851556553"
+      "questionSha256": "9e093f69584d74393f20911ec26d90c61c64a9fcd697153bf0354ee7afdcb6da"
     },
     {
       "id": "K580-0005",
@@ -89,7 +89,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/covenant-state.mdx#L252",
       "evidenceSymbol": "It is simple, but it is sequential",
       "sourceSha256": "0dc71fb36f3cb04991775047bdb2824cc7aa9a0ef82723993077bd29375f2535",
-      "questionSha256": "f7f4407492c26ed3e981fcc2175745099677ecce33cd911426d986e5f6641762"
+      "questionSha256": "702e57330f60252b5cd6ccb7e9926a2adbf16df71950bb732380e4bfcb2f1c3e"
     },
     {
       "id": "K580-0006",
@@ -97,7 +97,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/decision-guide.mdx#L109",
       "evidenceSymbol": "This likely needs mempool and node support.",
       "sourceSha256": "023206bce55241713b24389d96d025facdc7d191e39d6742bf9386fe218be46a",
-      "questionSha256": "c9745d43f83ad93a7f338cf546b744d8c1a46c15bf2482f9de1f9ef109efe9a9"
+      "questionSha256": "379636918c26f3dae18a47050f84cf39cc9caa632bf78a166e60d9442beb7d16"
     },
     {
       "id": "K580-0007",
@@ -105,7 +105,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/covenant-state.mdx#L305",
       "evidenceSymbol": "The live UTXO stores a P2SH commitment, not a decoded state object",
       "sourceSha256": "0dc71fb36f3cb04991775047bdb2824cc7aa9a0ef82723993077bd29375f2535",
-      "questionSha256": "4a3892ec97b83a9d8804bea57a549a44b5ed0baf7ab2017cdb811bd5d52e541c"
+      "questionSha256": "7e922eca89623e35cd05efdbaaf01da199d5392500b05c836ff55c937ea975a6"
     },
     {
       "id": "K580-0008",
@@ -113,7 +113,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/silverscript.mdx#L90",
       "evidenceSymbol": "The policy says conservation. The macro says",
       "sourceSha256": "c3fe99b003972b06af41e74b87db8cc920fc5d8e1e9d27c7d129414ec19a89dc",
-      "questionSha256": "8a1b8be1656ec090464f580c0a0a3f6fc294cb8f1d4869f43d9164372d9926d6"
+      "questionSha256": "9ba0175dc82a2234c4b87e00e91f28e8bd8f3b2d6529f2c32b9caf11e4cbe868"
     },
     {
       "id": "K580-0009",
@@ -121,7 +121,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/silverscript.mdx#L176",
       "evidenceSymbol": "template prefix + state bytes + template suffix",
       "sourceSha256": "c3fe99b003972b06af41e74b87db8cc920fc5d8e1e9d27c7d129414ec19a89dc",
-      "questionSha256": "f6a4d5091f6d56f36f67ed4749ba60cb153b4f7bcfc6906c75ed7193cbd89adf"
+      "questionSha256": "57fff5fdd3e0ba89ef02949b192152968cafae53271c6f1420b71dcb1d3cbfa2"
     },
     {
       "id": "K580-0010",
@@ -129,7 +129,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/silverscript.mdx#L220",
       "evidenceSymbol": "`silverc`, the compiler",
       "sourceSha256": "c3fe99b003972b06af41e74b87db8cc920fc5d8e1e9d27c7d129414ec19a89dc",
-      "questionSha256": "4aa0089c71cd5e20eba0a73513c0c58ab4c0a6371bafbe509938b8af81744f62"
+      "questionSha256": "9ee74c0f533fdd561bdba3d2c4dcf05d5798697c6bcf4a382f26a6d60fbd2ec6"
     },
     {
       "id": "K580-0011",
@@ -137,7 +137,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/silverscript.mdx#L222",
       "evidenceSymbol": "`build_sig_script` support for entrypoint ABI",
       "sourceSha256": "c3fe99b003972b06af41e74b87db8cc920fc5d8e1e9d27c7d129414ec19a89dc",
-      "questionSha256": "cc8ba140107d83e0ee24017c89abfdc95582a3c60dd6c02968f8446cb9226974"
+      "questionSha256": "47eace4de389558bb053b6ca28e4ec1e1c463638161c91488c3055a771d452dd"
     },
     {
       "id": "K580-0012",
@@ -145,7 +145,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/argent.mdx#L11",
       "evidenceSymbol": "Argent source -> generated Silverscript -> Kaspa script",
       "sourceSha256": "a4a28d33063e6065fc735af0e07bc937192fb2a264bc35656638e43070f98155",
-      "questionSha256": "e31b0fe732d707b3f914e9d68acaecfe83338aac7f74a5d56e2f662cc77f46f5"
+      "questionSha256": "cc8e65a9c004edc6ba121b5a54ee0014c3a64aba52688337b2b265679217ef34"
     },
     {
       "id": "K580-0013",
@@ -153,7 +153,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/argent.mdx#L101",
       "evidenceSymbol": "Those fields are route-safety state",
       "sourceSha256": "a4a28d33063e6065fc735af0e07bc937192fb2a264bc35656638e43070f98155",
-      "questionSha256": "0bb505600a0349d74363577662d3993a9aafca1afa72fd6cd5284bb5bce527de"
+      "questionSha256": "3bce9344a9776c1c77fbedb97e5ed65039d25e048b39c4d8a8e9dc5c8a65e950"
     },
     {
       "id": "K580-0014",
@@ -161,7 +161,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/argent.mdx#L113",
       "evidenceSymbol": "entry witness: route leaf + Merkle branch",
       "sourceSha256": "a4a28d33063e6065fc735af0e07bc937192fb2a264bc35656638e43070f98155",
-      "questionSha256": "6e01e931f2599bacfcb2858ad549e4b386807f1d2601f6c40c829ca9b84bec6f"
+      "questionSha256": "152823f8cc33c5a385f961468c7e46b9adad2f759ac0989fbe88d20bf9de1caf"
     },
     {
       "id": "K580-0015",
@@ -169,7 +169,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/argent.mdx#L88",
       "evidenceSymbol": "Template validation carries the role identity",
       "sourceSha256": "a4a28d33063e6065fc735af0e07bc937192fb2a264bc35656638e43070f98155",
-      "questionSha256": "10456371afd95da5b3abeddbdcfd6a836a57b5ccc1bba1b6f9af381f53bad8bd"
+      "questionSha256": "a0acc8e719a19e6063af591fb377079bed42a4d7c978ceba992c8d028c21612f"
     },
     {
       "id": "K580-0016",
@@ -177,7 +177,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/argent.mdx#L57",
       "evidenceSymbol": "| `consumes`",
       "sourceSha256": "a4a28d33063e6065fc735af0e07bc937192fb2a264bc35656638e43070f98155",
-      "questionSha256": "957f73e2dd53a8271989d295fbd07492fe199edb78d45ae9b6d23657ece78c66"
+      "questionSha256": "9328b6e8cb822bb7854ffabef3f0fa147d97a7f20e244b56b090d994a4c4ba87"
     },
     {
       "id": "K580-0017",
@@ -185,7 +185,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L8",
       "evidenceSymbol": "Not a covenant spend.",
       "sourceSha256": "f0fcc902759b126e11549535d2989ee025d3b46ff873950577aba7cc03021b9f",
-      "questionSha256": "b16c953caf0dbe6e9a86f46131bbfe55802efc1c093d1735df6202829f3daa30"
+      "questionSha256": "f7e1622ab05d214e2ef947ad53a708d8fab64409542121760b4d392efa7c14ed"
     },
     {
       "id": "K580-0018",
@@ -193,7 +193,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L36",
       "evidenceSymbol": "The app runtime decides what those bytes mean",
       "sourceSha256": "f0fcc902759b126e11549535d2989ee025d3b46ff873950577aba7cc03021b9f",
-      "questionSha256": "ca621e0fcb8091b172a09ba52c50941247dbcdf59b022d2bfb9f6c75564780b6"
+      "questionSha256": "7a2f198d408023ed3ae6cbaeaad4210b7c1c34b51bdf72dce1e837ac424618a4"
     },
     {
       "id": "K580-0019",
@@ -201,7 +201,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L42",
       "evidenceSymbol": "It tracks a compact commitment to the app state",
       "sourceSha256": "f0fcc902759b126e11549535d2989ee025d3b46ff873950577aba7cc03021b9f",
-      "questionSha256": "d7766dbe8ce11b9ce2e118c51290836249f3633588bd6e543b06a242649e0ca9"
+      "questionSha256": "f36dfa91d07f6e1080942fbe57f8439b1ab34c22afbe3d250602c8ec05d40213"
     },
     {
       "id": "K580-0020",
@@ -209,7 +209,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L112",
       "evidenceSymbol": "prove the app lane is included at a start anchor",
       "sourceSha256": "f0fcc902759b126e11549535d2989ee025d3b46ff873950577aba7cc03021b9f",
-      "questionSha256": "b1c90112e76b4e54a9ab16036642cb9a94198862e9d1cee2738562ac6e20e0a7"
+      "questionSha256": "431d0941f22c43cfa8640956bcc3d11ae56c1dd523ec147856a3d4aef5f34a73"
     },
     {
       "id": "K580-0021",
@@ -217,7 +217,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L126",
       "evidenceSymbol": "Otherwise the executor could prove a valid transition over the wrong L1 activity",
       "sourceSha256": "f0fcc902759b126e11549535d2989ee025d3b46ff873950577aba7cc03021b9f",
-      "questionSha256": "624293d32b1022099bcef8c538eb32ba2c90b22db3fd9e634dde358f466d2882"
+      "questionSha256": "870555af4108edddefa652c31216ab6ff07d382de5d5f1e1eb599ff32c9ce307"
     },
     {
       "id": "K580-0022",
@@ -225,7 +225,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L120",
       "evidenceSymbol": "lets script read the sequencing commitment of a recent selected-parent-chain block",
       "sourceSha256": "f0fcc902759b126e11549535d2989ee025d3b46ff873950577aba7cc03021b9f",
-      "questionSha256": "555a67e71eb916b1bb59033d3ac85fe75213f9063bed86b8a3c10cf244c95487"
+      "questionSha256": "c61850172d0de9e1b681d6f5822618d5fad2a77e5ecc44b62df447fccee6528f"
     },
     {
       "id": "K580-0023",
@@ -233,7 +233,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L151",
       "evidenceSymbol": "proofs do not sit on the user-operation critical path",
       "sourceSha256": "f0fcc902759b126e11549535d2989ee025d3b46ff873950577aba7cc03021b9f",
-      "questionSha256": "89f40cccd33283f0a21751d46c5a1e7f260d66032855c23aa031cce81ddaf446"
+      "questionSha256": "3b6a7546e7ee5cf5957a7ccc3d12ff155611ed9efd81b8430e7ed54684c98801"
     },
     {
       "id": "K580-0024",
@@ -241,7 +241,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L155",
       "evidenceSymbol": "every L1 chain block becomes a batch, even if empty",
       "sourceSha256": "f0fcc902759b126e11549535d2989ee025d3b46ff873950577aba7cc03021b9f",
-      "questionSha256": "31952d429d1091e2579fd3356b8b49710bcf1188edb3814f3f5be2ef91ce804f"
+      "questionSha256": "b4c9ffb2774ba0f640bff1f10dad3cb360e4988e6423bfffafa44126130749fe"
     },
     {
       "id": "K580-0025",
@@ -249,7 +249,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L157",
       "evidenceSymbol": "transaction receipts compose into batch receipts",
       "sourceSha256": "f0fcc902759b126e11549535d2989ee025d3b46ff873950577aba7cc03021b9f",
-      "questionSha256": "ef21928cc269e38099163f34b907cca4bd199c7affb74563c003e8b396dbc7a0"
+      "questionSha256": "2f5b61d884b2ef5be2f0d59b218544d59c9dc7012f2937c28ed318175f0b0efa"
     },
     {
       "id": "K580-0026",
@@ -257,7 +257,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L211",
       "evidenceSymbol": "| `tx_image_id`",
       "sourceSha256": "f0fcc902759b126e11549535d2989ee025d3b46ff873950577aba7cc03021b9f",
-      "questionSha256": "4220fd69abb4bc9222c596e6614ea9eb29971981a3d98da4815256eee8a66d2b"
+      "questionSha256": "9aa256b64fbb53a121352b7a2fd05adc410c713b8c192a797f37778878748e1c"
     },
     {
       "id": "K580-0027",
@@ -265,7 +265,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/decision-guide.mdx#L8",
       "evidenceSymbol": "Complexity is not the axis. Shared state is.",
       "sourceSha256": "023206bce55241713b24389d96d025facdc7d191e39d6742bf9386fe218be46a",
-      "questionSha256": "cd59d5609951d6f7f2f519764bea6d753fd23809fbc5fa9e3dfbc39389096616"
+      "questionSha256": "4952797e6f28985c2a12de5151a848c87ea536c680ca1dba43474af84da1c26a"
     },
     {
       "id": "K580-0028",
@@ -273,7 +273,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/decision-guide.mdx#L98",
       "evidenceSymbol": "how conflicts resolve",
       "sourceSha256": "023206bce55241713b24389d96d025facdc7d191e39d6742bf9386fe218be46a",
-      "questionSha256": "8a87d2f145075c475cf2b22fae5a3669ae203d91febec221bc82abf2cb22031c"
+      "questionSha256": "39ee386b72e048e62f089d8af9e4440bc38a9d60c80730cbdeadc37d6758981d"
     },
     {
       "id": "K580-0029",
@@ -281,7 +281,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/inline-zk.mdx#L51",
       "evidenceSymbol": "| `0x20` | Groth16",
       "sourceSha256": "9d982ad45b186923af6a0ed72fbeb6e976bf9945a0d4e44fa970d839962337fc",
-      "questionSha256": "f1d7ea06679114c62b9c493c071a942666c8af07896be878003a14522b48e9c2"
+      "questionSha256": "0f7082fa2ee041e7448b4bef6e664ef3f60215b5d3c03a9a2dcc1a5a08b551f4"
     },
     {
       "id": "K580-0030",
@@ -289,7 +289,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/inline-zk.mdx#L51",
       "evidenceSymbol": "compact BN254 proof, not post-quantum",
       "sourceSha256": "9d982ad45b186923af6a0ed72fbeb6e976bf9945a0d4e44fa970d839962337fc",
-      "questionSha256": "e7942bde9357e6cf33192992eedf6179e98c78171587500d0140432e119750f8"
+      "questionSha256": "c81230dcd6bee5824e97a4bfddcb81980bdcb0c815e2926cded9a85db4cc6660"
     },
     {
       "id": "K580-0031",
@@ -297,7 +297,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/inline-zk.mdx#L25",
       "evidenceSymbol": "The L1 state can be a commitment instead of the full state",
       "sourceSha256": "9d982ad45b186923af6a0ed72fbeb6e976bf9945a0d4e44fa970d839962337fc",
-      "questionSha256": "8687e1a020d52de144b69b74ecd7e904d84aee97f3f2d0001f80ca8ab2c66a19"
+      "questionSha256": "4bbd0ca146727f241172f11bc31c831b96ab460ab7eff814ae880a6035ca9edc"
     },
     {
       "id": "K580-0032",
@@ -305,7 +305,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/based-apps.mdx#L32",
       "evidenceSymbol": "| `gas`",
       "sourceSha256": "f0fcc902759b126e11549535d2989ee025d3b46ff873950577aba7cc03021b9f",
-      "questionSha256": "867b8b6146c09cbc3d46aad9b654d6971f7ac9d9d87fe942cebbaee4b9f1a10a"
+      "questionSha256": "2e952a6089a4941df75e543aba761f7d052049f6cf086f9ef9b7e3eef34e1397"
     },
     {
       "id": "K580-0033",
@@ -313,7 +313,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L125",
       "evidenceSymbol": "14,000,000 SU + 250,000 SU * (public inputs + 1)",
       "sourceSha256": "12abd52f43ce8ee50630f81fb58f9dc2690e2d6480e2a0f294461cbe79303a1f",
-      "questionSha256": "e367af8dd119592c2f9537c4b685faa03ba8cc7459d105092d7072a03d0f06d6"
+      "questionSha256": "a4b3c7b5c6d497fd70194d277951ae0d29587ab8d7b527b5928d491daa4adee0"
     },
     {
       "id": "K580-0034",
@@ -321,7 +321,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L29",
       "evidenceSymbol": "1 compute_budget = 100 compute grams = 10,000 script units",
       "sourceSha256": "12abd52f43ce8ee50630f81fb58f9dc2690e2d6480e2a0f294461cbe79303a1f",
-      "questionSha256": "fec7ee3399a1dfac52f22ecf163f9f32ccfcb0bac76d6851e28b716f480af18b"
+      "questionSha256": "095bae91e26f421cf33272b3d68ff5d32ebfa5f58011534e237c43262d889096"
     },
     {
       "id": "K580-0035",
@@ -329,7 +329,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L90",
       "evidenceSymbol": "Budget too high has the opposite cost",
       "sourceSha256": "12abd52f43ce8ee50630f81fb58f9dc2690e2d6480e2a0f294461cbe79303a1f",
-      "questionSha256": "d95936014c8b6422c13c2f254f414ab2ce086c1225963320780cbb4c127e0724"
+      "questionSha256": "eae4c1cb368e9e4d6bc0f6c3eba0ec4f799f76feeef524085888c122c7176d7d"
     },
     {
       "id": "K580-0036",
@@ -337,7 +337,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L119",
       "evidenceSymbol": "each cryptographic verification attempt inside multisig-style opcodes",
       "sourceSha256": "12abd52f43ce8ee50630f81fb58f9dc2690e2d6480e2a0f294461cbe79303a1f",
-      "questionSha256": "3b4f4d436b91f7d588cbb22b0e8b3d24b23fc99bde82aa506d419dd3a2d786c6"
+      "questionSha256": "3e87cb916105750b4dceecb3dc157bfce8dc4a76f806dffc74814f69ca24a2cc"
     },
     {
       "id": "K580-0037",
@@ -345,7 +345,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L111",
       "evidenceSymbol": "Spent UTXO script public key above standard 35 bytes",
       "sourceSha256": "12abd52f43ce8ee50630f81fb58f9dc2690e2d6480e2a0f294461cbe79303a1f",
-      "questionSha256": "cdf8b43f790caf4b3ca6d0f4a50f059a3610d0ba5df256f9aba9fdfa0408003d"
+      "questionSha256": "72bfc1e884bab3dabc8a58df91241d946e355f97e3c89eeb608cb4616830b566"
     },
     {
       "id": "K580-0038",
@@ -353,7 +353,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L110",
       "evidenceSymbol": "Bytes newly pushed into execution stacks",
       "sourceSha256": "12abd52f43ce8ee50630f81fb58f9dc2690e2d6480e2a0f294461cbe79303a1f",
-      "questionSha256": "11a1726e6b4d6611482078d823aa38a63a8e15d6903ee278827dd80cc836fb48"
+      "questionSha256": "39e3c5e914d2ed7d9fca45ce6b07268f5f77c5d69209798f2b069f80adeed986"
     },
     {
       "id": "K580-0039",
@@ -361,7 +361,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L179",
       "evidenceSymbol": "returns `None` if the result cannot fit",
       "sourceSha256": "12abd52f43ce8ee50630f81fb58f9dc2690e2d6480e2a0f294461cbe79303a1f",
-      "questionSha256": "c5e8e18ec35f51f25ab9598f8bb2163e9445f73666373eb236db4ebd318a89c0"
+      "questionSha256": "c61ff00ee8a4ef6c1416b4ef63d9bed20ec8e718fd701b0ba7ac177598b6e301"
     },
     {
       "id": "K580-0040",
@@ -369,7 +369,7 @@
       "source": "https://github.com/kaspanet/docs/blob/0ac77d043a802fc8196abfd5812ac2afbd97a2b9/content/docs/toccata/script-pricing.mdx#L183",
       "evidenceSymbol": "V1 signatures do not sign `compute_budget`",
       "sourceSha256": "12abd52f43ce8ee50630f81fb58f9dc2690e2d6480e2a0f294461cbe79303a1f",
-      "questionSha256": "b14d8643c37b4838f5dbda98f99295ecc4d323b5700ab2ffd84311e66336ea77"
+      "questionSha256": "423c1297e209db5e3b7904d64f4ebd598bb00202d9b31c0056ba24b93603ec8a"
     }
   ],
   "overlapReview": "Compared draft facts with active Kaspa prompts and nearby explanations, especially existing Toccata overview, KCC authority/metadata, script-engine implementation, free per-input allowance, transaction hashing and wallet integration questions. New items target distinct application-design, compiler, routing, settlement, proof-mode and runtime-pricing facts rather than reword existing keys. Automated screening supplements internal review and does not establish exhaustive semantic uniqueness. Excluded another leader/delegator fact already covered by K520-0013 and kept the local-versus-batched architecture distinction from becoming a second variant of the state-layout decision question.",

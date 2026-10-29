@@ -34,8 +34,8 @@
       "prompt": "What does the pay_address in a Kaspa block-template request tell the node?",
       "options": [
         "Where the mining reward should be paid",
-        "Which peer should be asked to validate the finished block",
-        "Which node should broadcast the block",
+        "Which peer should validate the block",
+        "Which exchange sets the KAS price",
         "Where to upload the wallet seed"
       ],
       "correctIndex": 0,
@@ -60,7 +60,7 @@
       "subcategory": "Kaspa Ecosystem",
       "prompt": "What must a miner do with a Kaspa block template before submitting a mined block?",
       "options": [
-        "Sign it with the node's key",
+        "Ask an exchange to sign it",
         "Find a proof-of-work solution",
         "Replace its rewards with token balances",
         "Remove its parent references"
@@ -88,7 +88,7 @@
       "prompt": "Why does the Kaspa template API discourage mining when the node is unsynchronized?",
       "options": [
         "It automatically exposes the miner's seed",
-        "The node rejects every template request until it is synchronized",
+        "It converts every fee into test coins",
         "Its block may not be accepted by the network",
         "It disables all proof-of-work checks"
       ],
@@ -114,9 +114,9 @@
       "subcategory": "Kaspa Ecosystem",
       "prompt": "Which identifier does Kaspa GetBlock use to select a particular block?",
       "options": [
-        "Its DAA score",
-        "Its blue score",
-        "Its selected parent's hash",
+        "A wallet seed phrase",
+        "An exchange order number",
+        "A miner's email address",
         "Its block hash"
       ],
       "correctIndex": 3,
@@ -198,7 +198,7 @@
         "Whether every wallet is unlocked",
         "Whether a token is fully minted",
         "Whether the node has the UTXO index enabled",
-        "Whether the node also keeps a full transaction index"
+        "Whether the node owns every listed output"
       ],
       "correctIndex": 2,
       "difficulty": "medium",
@@ -278,7 +278,7 @@
       "options": [
         "A replacement wallet seed",
         "A transaction ID",
-        "The including block's hash",
+        "A guaranteed fiat receipt",
         "A newly deployed token ticker"
       ],
       "correctIndex": 1,
@@ -303,10 +303,10 @@
       "subcategory": "Kaspa Ecosystem",
       "prompt": "Besides the new ID, what does SubmitTransactionReplacement return?",
       "options": [
-        "The new transaction's fee estimate",
-        "The current mempool size",
+        "The miner's private key",
+        "The entire address book",
         "The replaced transaction",
-        "The list of conflicting outpoints"
+        "An NFT ownership certificate"
       ],
       "correctIndex": 2,
       "difficulty": "medium",
@@ -359,7 +359,7 @@
       "options": [
         "Accepted transaction identifiers alongside the chain changes",
         "Private keys for accepted payments",
-        "Unaccepted mempool transactions",
+        "Unconfirmed exchange orders",
         "Only invalid transaction hashes"
       ],
       "correctIndex": 0,
@@ -387,7 +387,7 @@
         "gas_limit",
         "min_confirmation_count",
         "is_permanent",
-        "include_accepted_transaction_ids"
+        "allow_non_daa_blocks"
       ],
       "correctIndex": 1,
       "difficulty": "hard",
@@ -438,9 +438,9 @@
       "subcategory": "Kaspa Ecosystem",
       "prompt": "Why does GetBlockDagInfo expose separate block_count and header_count fields?",
       "options": [
-        "Headers and blocks use different hash functions",
-        "Every block must carry two separate bodies",
-        "It hides headers that arrive before their bodies",
+        "It represents two token prices",
+        "It requires every block to have two bodies",
+        "It hides the number of headers",
         "It reports block and header totals separately"
       ],
       "correctIndex": 3,
@@ -466,8 +466,8 @@
       "prompt": "Which GetBlockDagInfo field lists the virtual state's parent blocks?",
       "options": [
         "virtual_parent_hashes",
-        "selected_parent_chain_tips",
-        "tip_hashes_in_anticone",
+        "banned_addresses",
+        "circulating_sompi",
         "mempool_entries"
       ],
       "correctIndex": 0,
@@ -576,7 +576,7 @@
         "GetBalanceByAddress",
         "GetBlockTemplate",
         "AddPeer",
-        "GetUtxosByAddressesSummary"
+        "GetHeaders"
       ],
       "correctIndex": 0,
       "difficulty": "easy",
@@ -654,9 +654,9 @@
       "subcategory": "Kaspa Ecosystem",
       "prompt": "What does window_size specify in EstimateNetworkHashesPerSecond?",
       "options": [
-        "The number of peers sampled for the estimate",
-        "The block-template refresh interval",
-        "The maximum mempool size in transactions",
+        "The size of a wallet screen",
+        "The required mnemonic length",
+        "The number of tokens to mint",
         "The size of the estimation window"
       ],
       "correctIndex": 3,
@@ -816,7 +816,7 @@
       "subcategory": "Kaspa Ecosystem",
       "prompt": "Does a Kaspa BlockAdded notification by itself establish transaction acceptance?",
       "options": [
-        "Yes; it certifies every transaction in that block as accepted and final",
+        "Yes; it certifies every transaction as final",
         "No; it reports that a block was added to the DAG",
         "Yes; it proves every output is spendable",
         "Yes; it guarantees no later chain changes"
@@ -843,10 +843,10 @@
       "subcategory": "Kaspa Ecosystem",
       "prompt": "What two lists does a Kaspa UtxosChanged notification carry?",
       "options": [
-        "Spent and unspent transaction IDs",
-        "Accepted and rejected block hashes",
+        "Buy and sell exchange orders",
+        "Old and new seed phrases",
         "Added and removed UTXO entries",
-        "Pending and confirmed mempool entries"
+        "Approved and rejected NFTs"
       ],
       "correctIndex": 2,
       "difficulty": "medium",
@@ -949,7 +949,7 @@
       "conceptId": "K500-0035",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "In Rusty Kaspa's lane-proof API, what kind of block must block_hash identify?",
+      "prompt": "In the cited lane-proof API, what kind of block must block_hash identify?",
       "options": [
         "Any block with a valid PoW solution",
         "Any retained header-only block",
@@ -958,7 +958,7 @@
       ],
       "correctIndex": 2,
       "difficulty": "hard",
-      "funFact": "The lane-proof request is anchored to a chain block in Rusty Kaspa's implementation.",
+      "funFact": "The lane-proof request is anchored to a chain block in the pinned implementation.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/rpc/core/src/model/message.rs#L3712",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
@@ -976,7 +976,7 @@
       "conceptId": "K500-0036",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "What does a lane value of None mean in Rusty Kaspa's GetSeqCommitLaneProof response?",
+      "prompt": "What does a lane value of None mean in the cited GetSeqCommitLaneProof response?",
       "options": [
         "The lane has an entry with zero gas",
         "The proof is missing and cannot be checked",
@@ -1057,7 +1057,7 @@
       "conceptId": "K500-0039",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "How does Rusty Kaspa's SubmitBlock response distinguish accepted submission from rejection?",
+      "prompt": "How does the cited SubmitBlock response distinguish accepted submission from rejection?",
       "options": [
         "A guaranteed increase in wallet balance",
         "A new seed phrase",
@@ -1084,7 +1084,7 @@
       "conceptId": "K500-0040",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Which Rusty Kaspa SubmitBlock rejection reason indicates a full processing route?",
+      "prompt": "Which cited SubmitBlock rejection reason indicates a full processing route?",
       "options": [
         "Unknown",
         "ReceiverPays",
@@ -1115,7 +1115,7 @@
       "options": [
         "The node's storage size in bytes",
         "The maximum native coin supply",
-        "The number of blocks retained since the pruning point",
+        "The count of signed messages",
         "A token's decimal precision"
       ],
       "correctIndex": 0,
@@ -1196,7 +1196,7 @@
       "options": [
         "circulating_sompi",
         "server_version",
-        "selected_parent_chain_block_hash",
+        "filter_transaction_pool",
         "merging_chain_block_hash"
       ],
       "correctIndex": 3,
@@ -1222,9 +1222,9 @@
       "prompt": "What condition does SubmitBlockRejectReason IsInIBD describe in its human-readable message?",
       "options": [
         "The node is not synchronized",
-        "The block failed proof-of-work validation",
-        "The block's parents are unknown",
-        "The block exceeds the mass limit"
+        "The sender used a wrong seed word",
+        "The token supply is exhausted",
+        "The wallet has no NFTs"
       ],
       "correctIndex": 0,
       "difficulty": "medium",
@@ -1250,12 +1250,12 @@
       "options": [
         "It trusts the sender's wallet balance",
         "It compares it with the expected block version",
-        "It accepts any version above the minimum",
+        "It uses the newest exchange listing",
         "It accepts every integer version"
       ],
       "correctIndex": 1,
       "difficulty": "medium",
-      "funFact": "A version mismatch yields WrongBlockVersion in Rusty Kaspa's validator.",
+      "funFact": "A version mismatch yields WrongBlockVersion in the pinned validator.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/pre_ghostdag_validation.rs#L30",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
@@ -1309,7 +1309,7 @@
       ],
       "correctIndex": 3,
       "difficulty": "medium",
-      "funFact": "Rusty Kaspa's check rejects empty direct-parent lists and lists exceeding the maximum.",
+      "funFact": "The cited check rejects empty direct-parent lists and lists exceeding the maximum.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/pre_ghostdag_validation.rs#L47",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
@@ -1327,7 +1327,7 @@
       "conceptId": "K500-0049",
       "category": "Kaspa",
       "subcategory": "GHOSTDAG & BlockDAG",
-      "prompt": "Can a normal header directly name Kaspa's special origin sentinel as a parent in Rusty Kaspa's validator?",
+      "prompt": "Can a normal header directly name Kaspa's special origin sentinel as a parent in the cited validator?",
       "options": [
         "No; OriginParent is returned",
         "Yes; the sentinel is equivalent to any genesis hash",
@@ -1383,10 +1383,10 @@
       "subcategory": "GHOSTDAG & BlockDAG",
       "prompt": "What does the parent-existence check report when referenced parents are unavailable?",
       "options": [
-        "The selected parent's blue score",
-        "The pruning point hash",
+        "The sender's wallet password",
+        "The coin price on an exchange",
         "The missing parent hashes",
-        "The virtual DAA score"
+        "A replacement seed phrase"
       ],
       "correctIndex": 2,
       "difficulty": "medium",
@@ -1417,7 +1417,7 @@
       ],
       "correctIndex": 3,
       "difficulty": "hard",
-      "funFact": "Rusty Kaspa's relationship check requires the listed parents not to include an ancestor-descendant pair.",
+      "funFact": "The cited relationship check requires the listed parents not to include an ancestor-descendant pair.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/pre_ghostdag_validation.rs#L85",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
@@ -1435,7 +1435,7 @@
       "conceptId": "K500-0053",
       "category": "Kaspa",
       "subcategory": "GHOSTDAG & BlockDAG",
-      "prompt": "What relationship must at least one known parent have to the pruning point in Rusty Kaspa's check?",
+      "prompt": "What relationship must at least one known parent have to the pruning point in the cited check?",
       "options": [
         "Be the pruning point or lie in its future",
         "Be strictly in the pruning point's past",
@@ -1471,7 +1471,7 @@
       ],
       "correctIndex": 1,
       "difficulty": "hard",
-      "funFact": "Rusty Kaspa's validator compares the header field with a calculated value.",
+      "funFact": "The cited validator compares the header field with a calculated value.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/pre_pow_validation.rs#L30",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
@@ -1491,8 +1491,8 @@
       "subcategory": "GHOSTDAG & BlockDAG",
       "prompt": "Can a miner choose easier header difficulty bits than the node calculates and still pass this check?",
       "options": [
-        "Yes; a long enough payload overrides the difficulty bits",
-        "Yes; paying a higher fee exempts the block",
+        "Yes; a long payload overrides difficulty",
+        "Yes; paying a fee exempts the block",
         "No; the bits must match the expected difficulty",
         "Yes; any valid address is sufficient"
       ],
@@ -1518,14 +1518,14 @@
       "subcategory": "GHOSTDAG & BlockDAG",
       "prompt": "How must a valid header timestamp compare with its calculated past median time?",
       "options": [
-        "It must be within one second of the past median time",
+        "It must be exactly equal",
         "It must always be smaller",
         "It is never compared",
         "It must be strictly greater"
       ],
       "correctIndex": 3,
       "difficulty": "hard",
-      "funFact": "Rusty Kaspa's check rejects timestamps less than or equal to past median time.",
+      "funFact": "The cited check rejects timestamps less than or equal to past median time.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/post_pow_validation.rs#L23",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
@@ -1579,7 +1579,7 @@
       ],
       "correctIndex": 1,
       "difficulty": "hard",
-      "funFact": "Rusty Kaspa's check rejects a declared blue-work value that differs from the computed value.",
+      "funFact": "The pinned check rejects a declared blue-work value that differs from the computed value.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/header_processor/post_pow_validation.rs#L49",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
@@ -1597,9 +1597,9 @@
       "conceptId": "K500-0059",
       "category": "Kaspa",
       "subcategory": "GHOSTDAG & BlockDAG",
-      "prompt": "How does Rusty Kaspa's indirect-parent check treat different ordering of the same parent set within a level?",
+      "prompt": "How does the cited indirect-parent check treat different ordering of the same parent set within a level?",
       "options": [
-        "It always rejects any parent list whose order differs from its own",
+        "It always rejects a different list order",
         "It compares only the number of parent hashes",
         "It can accept the same set despite a different order",
         "It compares only the first parent at each level"
@@ -1624,7 +1624,7 @@
       "conceptId": "K500-0060",
       "category": "Kaspa",
       "subcategory": "GHOSTDAG & BlockDAG",
-      "prompt": "Can a block body with no transactions pass Rusty Kaspa's body-isolation checks?",
+      "prompt": "Can a block body with no transactions pass Kaspa's cited body-isolation checks?",
       "options": [
         "Yes; proof of work replaces its body",
         "Yes; every empty body is a genesis block",
@@ -1707,10 +1707,10 @@
       "subcategory": "GHOSTDAG & BlockDAG",
       "prompt": "What does the block-body Merkle-root check compare?",
       "options": [
-        "The coinbase payload with the block subsidy",
-        "The UTXO commitment with the pruning point",
+        "The miner's address with an exchange balance",
+        "The node's IP with a token ticker",
         "The root calculated from transactions with the header commitment",
-        "The block timestamp with the past median time"
+        "The block timestamp with a wallet password"
       ],
       "correctIndex": 2,
       "difficulty": "medium",
@@ -1732,7 +1732,7 @@
       "conceptId": "K500-0064",
       "category": "Kaspa",
       "subcategory": "GHOSTDAG & BlockDAG",
-      "prompt": "May the same transaction ID appear twice in a block that passes Rusty Kaspa's duplicate check?",
+      "prompt": "May the same transaction ID appear twice in a block that passes the cited duplicate check?",
       "options": [
         "Yes; each copy creates another payment",
         "Yes; repeated copies are ignored without checking",
@@ -1759,7 +1759,7 @@
       "conceptId": "K500-0065",
       "category": "Kaspa",
       "subcategory": "GHOSTDAG & BlockDAG",
-      "prompt": "Can two different transactions in one Kaspa block spend the same outpoint under Rusty Kaspa's body rules?",
+      "prompt": "Can two different transactions in one Kaspa block spend the same outpoint under the cited body rules?",
       "options": [
         "No; the block fails the double-spend check",
         "Yes; each receives half the input automatically",
@@ -1786,7 +1786,7 @@
       "conceptId": "K500-0066",
       "category": "Kaspa",
       "subcategory": "GHOSTDAG & BlockDAG",
-      "prompt": "Does Rusty Kaspa's body validator allow a transaction to spend an output created elsewhere in that same block?",
+      "prompt": "Does the cited Kaspa body validator allow a transaction to spend an output created elsewhere in that same block?",
       "options": [
         "Yes; a topological order is sufficient",
         "No; it rejects a chained transaction",
@@ -1813,7 +1813,7 @@
       "conceptId": "K500-0067",
       "category": "Kaspa",
       "subcategory": "GHOSTDAG & BlockDAG",
-      "prompt": "How are compute, transient and storage mass limits checked for a block in Rusty Kaspa's code?",
+      "prompt": "How are compute, transient and storage mass limits checked for a block in the cited code?",
       "options": [
         "Only the largest single transaction is checked",
         "The sum of all three dimensions is checked against one limit",
@@ -1822,7 +1822,7 @@
       ],
       "correctIndex": 2,
       "difficulty": "hard",
-      "funFact": "Rusty Kaspa's body validator enforces separate resource limits.",
+      "funFact": "The pinned body validator enforces separate resource limits.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/src/pipeline/body_processor/body_validation_in_isolation.rs#L87",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
@@ -1840,7 +1840,7 @@
       "conceptId": "K500-0068",
       "category": "Kaspa",
       "subcategory": "GHOSTDAG & BlockDAG",
-      "prompt": "For non-coinbase transactions sharing a subnetwork lane, how does Rusty Kaspa's body check track gas?",
+      "prompt": "For non-coinbase transactions sharing a subnetwork lane, how does the cited body check track gas?",
       "options": [
         "It takes the maximum gas value in that lane",
         "It averages gas across transactions in that lane",
@@ -1867,7 +1867,7 @@
       "conceptId": "K500-0069",
       "category": "Kaspa",
       "subcategory": "GHOSTDAG & BlockDAG",
-      "prompt": "Which condition triggers ExceedsLanesPerBlockLimit in Rusty Kaspa's validator?",
+      "prompt": "Which condition triggers ExceedsLanesPerBlockLimit in the cited validator?",
       "options": [
         "Adding a new lane beyond the allowed distinct-lane count",
         "Adding another transaction to an existing lane",
@@ -1896,10 +1896,10 @@
       "subcategory": "GHOSTDAG & BlockDAG",
       "prompt": "Why can body-context validation report missing parents even when their headers are known?",
       "options": [
-        "A header automatically discards its body after validation",
+        "A header automatically destroys its body",
         "The parent block bodies may still be unavailable",
-        "The parents' headers failed proof-of-work checks",
-        "Body validation runs before header validation"
+        "The miner used two receiving addresses",
+        "The node needs an exchange password"
       ],
       "correctIndex": 1,
       "difficulty": "medium",
@@ -1921,7 +1921,7 @@
       "conceptId": "K500-0071",
       "category": "Kaspa",
       "subcategory": "GHOSTDAG & BlockDAG",
-      "prompt": "Which two blue scores must agree in Rusty Kaspa's coinbase-context check?",
+      "prompt": "Which two blue scores must agree in the cited coinbase-context check?",
       "options": [
         "The selected parent's score and the current header score",
         "The payload score and the current DAA score",
@@ -2029,7 +2029,7 @@
       "conceptId": "K500-0075",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "Which two header fields are zeroed when constructing Kaspa's pre-PoW hash in Rusty Kaspa's implementation?",
+      "prompt": "Which two header fields are zeroed when constructing Kaspa's pre-PoW hash in the cited implementation?",
       "options": [
         "Nonce and blue score",
         "Timestamp and version",
@@ -2056,7 +2056,7 @@
       "conceptId": "K500-0076",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "What seeds the heavy-hash matrix in Rusty Kaspa's proof-of-work code?",
+      "prompt": "What seeds the heavy-hash matrix in the cited Kaspa proof-of-work code?",
       "options": [
         "The transaction ID of the coinbase",
         "The header's nonce alone",
@@ -2110,7 +2110,7 @@
       "conceptId": "K500-0078",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "How is the heavy-hash output interpreted as an integer in Rusty Kaspa's PoW calculation?",
+      "prompt": "How is the heavy-hash output interpreted as an integer in the cited PoW calculation?",
       "options": [
         "As a big-endian Uint256",
         "As a little-endian Uint256",
@@ -2137,7 +2137,7 @@
       "conceptId": "K500-0079",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "What block level does Rusty Kaspa's PoW helper assign to genesis?",
+      "prompt": "What block level does the cited PoW helper assign to genesis?",
       "options": [
         "Level zero",
         "The level of the first peer that announces it",
@@ -2164,7 +2164,7 @@
       "conceptId": "K500-0080",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Which message acknowledges receipt of a peer's Version message in Rusty Kaspa's handshake?",
+      "prompt": "Which message acknowledges receipt of a peer's Version message in the cited Kaspa handshake?",
       "options": [
         "Coinbase",
         "SubmitTransaction",
@@ -2191,7 +2191,7 @@
       "conceptId": "K500-0081",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Which exchange is the final step of Rusty Kaspa's peer handshake?",
+      "prompt": "Which exchange is the final step of the cited Kaspa peer handshake?",
       "options": [
         "Ready messages",
         "Wallet seed phrases",
@@ -2218,7 +2218,7 @@
       "conceptId": "K500-0082",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Why does Rusty Kaspa's peer handshake run version-send and version-receive flows concurrently?",
+      "prompt": "Why does the cited peer handshake run version-send and version-receive flows concurrently?",
       "options": [
         "To ensure the outbound side always finishes first",
         "To avoid a handshake deadlock",
@@ -2245,7 +2245,7 @@
       "conceptId": "K500-0083",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "How does Rusty Kaspa's version-handshake code limit waiting for Version or Verack?",
+      "prompt": "How does the cited version-handshake code limit waiting for Version or Verack?",
       "options": [
         "It waits indefinitely without a limit",
         "It asks the wallet owner to send KAS",
@@ -2272,7 +2272,7 @@
       "conceptId": "K500-0084",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "In Rusty Kaspa's mempool standardness policy, what is the classic P2SH signature-operation limit?",
+      "prompt": "In the cited mempool standardness policy, what is the classic P2SH signature-operation limit?",
       "options": [
         "1",
         "64",
@@ -2299,7 +2299,7 @@
       "conceptId": "K500-0085",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "What can cause an output to fail Rusty Kaspa's mempool standardness check?",
+      "prompt": "What can cause an output to fail the cited mempool standardness check?",
       "options": [
         "A locking script classified as NonStandard",
         "Using a standard receiving address",
@@ -2326,7 +2326,7 @@
       "conceptId": "K500-0086",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "How does Rusty Kaspa's standardness check treat a script-public-key version above the supported maximum?",
+      "prompt": "How does the cited standardness check treat a script-public-key version above the supported maximum?",
       "options": [
         "It truncates the version to the supported maximum",
         "It rejects the output",
@@ -2355,10 +2355,10 @@
       "subcategory": "Mining & Consensus",
       "prompt": "Why does input standardness require the referenced UTXO entry?",
       "options": [
-        "To look up the sender's public key for signature checks",
+        "To discover the owner's email",
         "To change the transaction's destination",
         "To classify the locking script being spent",
-        "To recompute the transaction ID"
+        "To obtain the private key from the node"
       ],
       "correctIndex": 2,
       "difficulty": "medium",
@@ -2380,7 +2380,7 @@
       "conceptId": "K500-0088",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "Which mass determines the minimum relay fee in Rusty Kaspa's policy?",
+      "prompt": "Which mass determines the minimum relay fee in the cited policy?",
       "options": [
         "The maximum of raw compute and storage mass only",
         "The sum of compute and normalized transient mass",
@@ -2434,7 +2434,7 @@
       "conceptId": "K500-0090",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "What does Rusty Kaspa's relay-fee helper do when integer scaling would produce zero?",
+      "prompt": "What does the cited relay-fee helper do when integer scaling would produce zero?",
       "options": [
         "It permits a zero-fee relay",
         "It uses the configured base relay fee",
@@ -2461,12 +2461,12 @@
       "conceptId": "K500-0091",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "What does Rusty Kaspa's Forbidden RBF policy do when an incoming transaction conflicts with the pool?",
+      "prompt": "What does the cited Forbidden RBF policy do when an incoming transaction conflicts with the pool?",
       "options": [
         "It replaces the older transaction regardless of fee",
         "It adds both spends as accepted outputs",
         "It rejects the double spend",
-        "It keeps the higher-fee transaction"
+        "It asks an exchange to choose"
       ],
       "correctIndex": 2,
       "difficulty": "medium",
@@ -2488,7 +2488,7 @@
       "conceptId": "K500-0092",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "How many existing conflicting transactions does Rusty Kaspa's Mandatory RBF policy require?",
+      "prompt": "How many existing conflicting transactions does the cited Mandatory RBF policy require?",
       "options": [
         "Zero",
         "At least ten",
@@ -2515,7 +2515,7 @@
       "conceptId": "K500-0093",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "Must an incoming transaction replace an existing one under Rusty Kaspa's Allowed RBF policy?",
+      "prompt": "Must an incoming transaction replace an existing one under the cited Allowed RBF policy?",
       "options": [
         "No; ordinary insertion is also permitted",
         "Yes; every incoming transaction must replace one",
@@ -2542,7 +2542,7 @@
       "conceptId": "K500-0094",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "When Allowed RBF encounters several conflicting transactions, what threshold does Rusty Kaspa's helper calculate?",
+      "prompt": "When Allowed RBF encounters several conflicting transactions, what threshold does the cited helper calculate?",
       "options": [
         "The mean conflicting feerate",
         "The highest conflicting feerate",
@@ -2569,7 +2569,7 @@
       "conceptId": "K500-0095",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "Is an equal feerate sufficient to pass Rusty Kaspa's replacement feerate comparison?",
+      "prompt": "Is an equal feerate sufficient to pass the cited replacement feerate comparison?",
       "options": [
         "Yes; equality always replaces the older entry",
         "Yes; all fees are ignored for replacement",
@@ -2605,7 +2605,7 @@
       ],
       "correctIndex": 3,
       "difficulty": "hard",
-      "funFact": "Rusty Kaspa's code delays removal until all conflicting feerate checks succeed.",
+      "funFact": "The cited code delays removal until all conflicting feerate checks succeed.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/mining/src/mempool/replace_by_fee.rs#L104",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
@@ -2623,7 +2623,7 @@
       "conceptId": "K500-0097",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "What makes a transaction an orphan for Rusty Kaspa's orphan pool?",
+      "prompt": "What makes a transaction an orphan for the cited Kaspa orphan pool?",
       "options": [
         "It depends on missing UTXO entries",
         "It was sent from an unfamiliar wallet brand",
@@ -2650,12 +2650,12 @@
       "conceptId": "K500-0098",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "What bounds the number of transactions Rusty Kaspa's orphan pool can retain?",
+      "prompt": "What bounds the number of transactions the cited orphan pool can retain?",
       "options": [
         "The total number of KAS holders",
         "A configured maximum orphan count",
-        "The mempool's total storage mass limit in grams",
-        "The number of connected peers"
+        "The latest exchange price",
+        "The number of recovery words"
       ],
       "correctIndex": 1,
       "difficulty": "medium",
@@ -2677,7 +2677,7 @@
       "conceptId": "K500-0099",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "Which kind of orphan does Rusty Kaspa's capacity routine try to evict?",
+      "prompt": "Which kind of orphan does the cited capacity routine try to evict?",
       "options": [
         "The highest-feerate orphan, regardless of priority",
         "The oldest high-priority orphan",
@@ -2704,7 +2704,7 @@
       "conceptId": "K500-0100",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "What happens when Rusty Kaspa's orphan pool is full and no low-priority entry can be evicted?",
+      "prompt": "What happens when the cited orphan pool is full and no low-priority entry can be evicted?",
       "options": [
         "It evicts a high-priority orphan anyway",
         "It raises the configured limit temporarily",
@@ -2731,7 +2731,7 @@
       "conceptId": "K500-0101",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "Besides count capacity, what resource condition does Rusty Kaspa's orphan admission code check?",
+      "prompt": "Besides count capacity, what resource condition does the cited orphan admission code check?",
       "options": [
         "A maximum normalized mass for the orphan",
         "A minimum absolute orphan fee",
@@ -2758,7 +2758,7 @@
       "conceptId": "K500-0102",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "What happens when the same transaction ID is submitted twice to Rusty Kaspa's orphan pool?",
+      "prompt": "What happens when the same transaction ID is submitted twice to the cited orphan pool?",
       "options": [
         "Both copies earn rewards",
         "The duplicate orphan is rejected",
@@ -2785,7 +2785,7 @@
       "conceptId": "K500-0103",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "Can two different orphans in Rusty Kaspa's pool claim the same input outpoint?",
+      "prompt": "Can two different orphans in the cited pool claim the same input outpoint?",
       "options": [
         "Yes; conflicts are resolved only after both leave the pool",
         "Yes; orphan outpoints are not indexed",
@@ -2812,9 +2812,9 @@
       "conceptId": "K500-0104",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "Why does random capacity eviction keep the evicted orphan's redeemers in Rusty Kaspa's implementation?",
+      "prompt": "Why does random capacity eviction keep the evicted orphan's redeemers in the cited implementation?",
       "options": [
-        "All redeemers are already accepted by consensus and cannot be evicted",
+        "All redeemers are already accepted by consensus",
         "A capacity eviction proves that every descendant is valid",
         "The pool automatically replaces the missing parent with a coinbase",
         "Eviction for space does not establish that the transaction is invalid"
@@ -2839,7 +2839,7 @@
       "conceptId": "K500-0105",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Which mnemonic word counts does Rusty Kaspa's WordCount enum support?",
+      "prompt": "Which mnemonic word counts does the cited Rusty Kaspa WordCount enum support?",
       "options": [
         "12 and 24",
         "8 and 16",
@@ -2866,7 +2866,7 @@
       "conceptId": "K500-0106",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "When no word count is supplied to Rusty Kaspa's JavaScript random-mnemonic helper, what is the default?",
+      "prompt": "When no word count is supplied to the cited JavaScript random-mnemonic helper, what is the default?",
       "options": [
         "6 words",
         "24 words",
@@ -2893,7 +2893,7 @@
       "conceptId": "K500-0107",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Which entropy lengths does Rusty Kaspa's Mnemonic::from_entropy accept?",
+      "prompt": "Which entropy lengths does the cited Mnemonic::from_entropy accept?",
       "options": [
         "1 or 2 bytes",
         "12 or 24 bytes",
@@ -2920,7 +2920,7 @@
       "conceptId": "K500-0108",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "How many bits at a time does Rusty Kaspa's mnemonic encoder map to a word-list entry?",
+      "prompt": "How many bits at a time does the cited mnemonic encoder map to a word-list entry?",
       "options": [
         "8",
         "16",
@@ -2947,7 +2947,7 @@
       "conceptId": "K500-0109",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Which hash produces checksum bits for Rusty Kaspa's BIP39 mnemonic implementation?",
+      "prompt": "Which hash produces checksum bits for the cited BIP39 mnemonic implementation?",
       "options": [
         "SHA-256",
         "MD5",
@@ -2974,12 +2974,12 @@
       "conceptId": "K500-0110",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Which password-based construction derives the seed from a mnemonic in Rusty Kaspa's implementation?",
+      "prompt": "Which password-based construction derives the seed from a mnemonic in the cited implementation?",
       "options": [
         "Plain base64 encoding",
         "PBKDF2-HMAC-SHA512",
         "A block's mining target",
-        "scrypt key derivation"
+        "An exchange API signature"
       ],
       "correctIndex": 1,
       "difficulty": "hard",
@@ -3001,7 +3001,7 @@
       "conceptId": "K500-0111",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "How many PBKDF2 rounds does Rusty Kaspa's mnemonic code use?",
+      "prompt": "How many PBKDF2 rounds does the cited Kaspa mnemonic code use?",
       "options": [
         "12",
         "256",
@@ -3028,7 +3028,7 @@
       "conceptId": "K500-0112",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "How does Rusty Kaspa's mnemonic parser treat a word absent from its chosen word list?",
+      "prompt": "How does the cited mnemonic parser treat a word absent from its chosen word list?",
       "options": [
         "It silently replaces the word",
         "It mints a new wallet balance",
@@ -3055,7 +3055,7 @@
       "conceptId": "K500-0113",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Which sensitive Mnemonic fields does Rusty Kaspa's destructor attempt to clear?",
+      "prompt": "Which sensitive Mnemonic fields does the cited destructor attempt to clear?",
       "options": [
         "The phrase and entropy",
         "The server's peer count",
@@ -3082,7 +3082,7 @@
       "conceptId": "K500-0114",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Which bit marks a hardened BIP32 child number in Rusty Kaspa's implementation?",
+      "prompt": "Which bit marks a hardened BIP32 child number in the cited implementation?",
       "options": [
         "Bit 0, with value 1",
         "Bit 31, with value 2^31",
@@ -3109,7 +3109,7 @@
       "conceptId": "K500-0115",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "How does Rusty Kaspa's BIP32 ChildNumber serialize its integer bytes?",
+      "prompt": "How does the cited BIP32 ChildNumber serialize its integer bytes?",
       "options": [
         "Little-endian",
         "As four mnemonic words",
@@ -3163,7 +3163,7 @@
       "conceptId": "K500-0117",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Which seed byte lengths does Rusty Kaspa's extended-private-key root constructor accept?",
+      "prompt": "Which seed byte lengths does the cited extended-private-key root constructor accept?",
       "options": [
         "16, 32 or 64",
         "Only 12 or 24",
@@ -3190,7 +3190,7 @@
       "conceptId": "K500-0118",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "What derivation depth does a newly created root extended private key have in Rusty Kaspa's code?",
+      "prompt": "What derivation depth does a newly created root extended private key have in the cited code?",
       "options": [
         "One",
         "Zero",
@@ -3217,7 +3217,7 @@
       "conceptId": "K500-0119",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "How does Rusty Kaspa's extended-key derivation avoid wrapping its depth counter?",
+      "prompt": "How does the cited extended-key derivation avoid wrapping its depth counter?",
       "options": [
         "It wraps the counter back to zero",
         "It saturates depth and keeps deriving the same child",
@@ -3244,7 +3244,7 @@
       "conceptId": "K500-0120",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "How does Rusty Kaspa's ExtendedPrivateKey debug formatter represent the private-key field?",
+      "prompt": "How does the cited ExtendedPrivateKey debug formatter represent the private-key field?",
       "options": [
         "By printing the raw secret bytes",
         "By printing the wallet mnemonic",
@@ -3271,7 +3271,7 @@
       "conceptId": "K500-0121",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Can Rusty Kaspa's code construct an extended public key from an extended private key?",
+      "prompt": "Can the cited code construct an extended public key from an extended private key?",
       "options": [
         "Yes, by retaining the derived public key and attributes",
         "No, a new seed is always required",
@@ -3298,7 +3298,7 @@
       "conceptId": "K500-0122",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "How large is the key fingerprint described by Rusty Kaspa's extended-public-key API?",
+      "prompt": "How large is the key fingerprint described by the cited extended-public-key API?",
       "options": [
         "8 bytes",
         "4 bytes",
@@ -3325,7 +3325,7 @@
       "conceptId": "K500-0123",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "What kind of child derivation can Rusty Kaspa's extended-public-key method perform without private key material?",
+      "prompt": "What kind of child derivation can the cited extended-public-key method perform without private key material?",
       "options": [
         "Hardened private-child derivation",
         "Recovery of every parent's private key",
@@ -3352,7 +3352,7 @@
       "conceptId": "K500-0124",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Why can Rusty Kaspa's extended-public-key binary decoder reject a record before reading its key?",
+      "prompt": "Why can the cited extended-public-key binary decoder reject a record before reading its key?",
       "options": [
         "Its public-key prefix refers to a different key type",
         "Its chain code has the same length as the previous key's",
@@ -3379,12 +3379,12 @@
       "conceptId": "K500-0125",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Does Rusty Kaspa's WatchOnly account provide a private-key-data ID for signing?",
+      "prompt": "Does the cited WatchOnly account provide a private-key-data ID for signing?",
       "options": [
         "No; requesting it returns a watch-only error",
         "Yes; it downloads the private key from a node",
         "Yes; every public address contains the seed",
-        "Only after importing an xpub"
+        "Only if the coin price increases"
       ],
       "correctIndex": 0,
       "difficulty": "easy",
@@ -3406,7 +3406,7 @@
       "conceptId": "K500-0126",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "What happens when Rusty Kaspa's WatchOnly constructor receives no extended public keys?",
+      "prompt": "What happens when the cited WatchOnly constructor receives no extended public keys?",
       "options": [
         "It invents a private key with the same balance",
         "It returns WatchOnlyXpubRequired",
@@ -3433,9 +3433,9 @@
       "conceptId": "K500-0127",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Can Rusty Kaspa's WatchOnly account construction represent multiple cosigner public keys?",
+      "prompt": "Can the cited WatchOnly account construction represent multiple cosigner public keys?",
       "options": [
-        "No; only secret-key accounts can monitor multisig addresses",
+        "No, only secret-key accounts can monitor multisig",
         "Only by disabling address derivation",
         "Yes, it has a multisig watch-only construction path",
         "Only by copying coinbase rewards"
@@ -3460,7 +3460,7 @@
       "conceptId": "K500-0128",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "What makes Rusty Kaspa's MultiSig account report itself as watch-only?",
+      "prompt": "What makes the cited MultiSig account report itself as watch-only?",
       "options": [
         "It has more than one receiving address",
         "It holds fewer than two KAS",
@@ -3516,10 +3516,10 @@
       "subcategory": "Wallets & Addresses",
       "prompt": "Which three components does Rusty Kaspa's Address structure retain?",
       "options": [
-        "Private key, public key and checksum",
+        "Private key, password and email",
         "Network prefix, version and payload",
-        "Network prefix, checksum and derivation path",
-        "Version, payload hash and DAA score"
+        "Exchange, price and order number",
+        "Nonce, subsidy and mining pool"
       ],
       "correctIndex": 1,
       "difficulty": "easy",
@@ -3541,7 +3541,7 @@
       "conceptId": "K500-0131",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "How does Rusty Kaspa's address-version parser treat an unrecognized numeric version?",
+      "prompt": "How does the cited address-version parser treat an unrecognized numeric version?",
       "options": [
         "It interprets it as any available private key",
         "It changes it to mainnet automatically",
@@ -3568,7 +3568,7 @@
       "conceptId": "K500-0132",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "How many bytes long is a P2SH (ScriptHash) address hash in Rusty Kaspa?",
+      "prompt": "What is the required ScriptHash address payload length in the cited version table?",
       "options": [
         "20 bytes",
         "33 bytes",
@@ -3598,9 +3598,9 @@
       "prompt": "What should an integration inspect to distinguish a mainnet address from a testnet address?",
       "options": [
         "The address's network prefix",
-        "The address's version byte",
-        "The address's checksum",
-        "The payload length"
+        "The owner's display name",
+        "The current coin price",
+        "The wallet's theme color"
       ],
       "correctIndex": 0,
       "difficulty": "easy",
@@ -3678,9 +3678,9 @@
       "subcategory": "Wallets & Addresses",
       "prompt": "What does the Wallet SDK pending amount describe?",
       "options": [
-        "Funds permanently burned",
-        "Outgoing funds already spent and confirmed",
-        "Only coinbase rewards still maturing for miners",
+        "Funds permanently destroyed",
+        "The wallet's password strength",
+        "Only the number of network peers",
         "Received funds awaiting confirmation"
       ],
       "correctIndex": 3,
@@ -3707,7 +3707,7 @@
       "options": [
         "Funds being sent but not yet accepted by the network",
         "Funds received and already mature",
-        "Fees reserved for the next transaction",
+        "An exchange's daily volume",
         "The wallet's future mining reward"
       ],
       "correctIndex": 0,
@@ -3730,11 +3730,11 @@
       "conceptId": "K500-0138",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Which stage precedes pending for coinbase UTXOs in Rusty Kaspa's Wallet SDK lifecycle?",
+      "prompt": "Which stage precedes pending for coinbase UTXOs in the cited Wallet SDK lifecycle?",
       "options": [
         "Burned",
         "Stasis",
-        "Confirmed",
+        "Exchanged",
         "Redeployed"
       ],
       "correctIndex": 1,
@@ -3757,10 +3757,10 @@
       "conceptId": "K500-0139",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "When does Rusty Kaspa's Wallet SDK advise client applications to begin processing coinbase receipts beyond informative stasis display?",
+      "prompt": "When does the cited Wallet SDK advise client applications to begin processing coinbase receipts beyond informative stasis display?",
       "options": [
         "As soon as a seed phrase is shown",
-        "Only after they reach the mature stage",
+        "Only after an exchange lists them",
         "When they reach the pending stage",
         "Whenever any peer connects"
       ],
@@ -3786,9 +3786,9 @@
       "subcategory": "Wallets & Addresses",
       "prompt": "What is the distinction between mature and matureUtxoCount in IBalance?",
       "options": [
-        "Confirmed versus unconfirmed amounts",
+        "Two different token prices",
+        "A public key versus a seed phrase",
         "Two spellings for the same amount",
-        "A spendable amount versus pending incoming value",
         "A spendable amount versus a count of spendable outputs"
       ],
       "correctIndex": 3,
@@ -3811,7 +3811,7 @@
       "conceptId": "K500-0141",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Which JavaScript type does Rusty Kaspa's IBalance interface use for native-coin amounts?",
+      "prompt": "Which JavaScript type does the cited IBalance interface use for native-coin amounts?",
       "options": [
         "bigint",
         "boolean",
@@ -3838,12 +3838,12 @@
       "conceptId": "K500-0142",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "How does Rusty Kaspa's Balance::delta method determine whether mature funds increased or decreased?",
+      "prompt": "How does the cited Balance::delta method determine whether mature funds increased or decreased?",
       "options": [
-        "By comparing pending and outgoing totals",
+        "By comparing two exchange prices",
         "By comparing the current mature value with the previous one",
-        "By counting the wallet's UTXO entries",
-        "By reading the latest DAA score change"
+        "By counting mnemonic words",
+        "By reading a token ticker"
       ],
       "correctIndex": 1,
       "difficulty": "medium",
@@ -3865,7 +3865,7 @@
       "conceptId": "K500-0143",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "How does Rusty Kaspa's Wallet SDK describe priority fees relative to relay fees?",
+      "prompt": "How does the cited Wallet SDK describe priority fees relative to relay fees?",
       "options": [
         "A replacement for every relay requirement",
         "Always equal to the full payment",
@@ -3892,7 +3892,7 @@
       "conceptId": "K500-0144",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Under Rusty Kaspa's ReceiverPays fee mode, what happens to the final payment value?",
+      "prompt": "Under the cited ReceiverPays fee mode, what happens to the final payment value?",
       "options": [
         "Fees create extra native coins",
         "It is automatically doubled",
@@ -3919,12 +3919,12 @@
       "conceptId": "K500-0145",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Under Rusty Kaspa's SenderPays fee mode, what must the sender cover beyond the payment amount?",
+      "prompt": "Under the cited SenderPays fee mode, what must the sender cover beyond the payment amount?",
       "options": [
         "The transaction fees",
-        "The receiver's change output",
-        "The storage mass of the receiver's UTXOs",
-        "The coinbase maturity deposit"
+        "The receiver's seed phrase",
+        "The full circulating supply",
+        "Every peer's server bill"
       ],
       "correctIndex": 0,
       "difficulty": "easy",
@@ -3946,7 +3946,7 @@
       "conceptId": "K500-0146",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Does Fees::None in Rusty Kaspa's Wallet SDK mean sweep transactions pay no network fees?",
+      "prompt": "Does Fees::None in the cited Wallet SDK mean sweep transactions pay no network fees?",
       "options": [
         "Yes; it exempts all transactions from relay policy",
         "No; it disables that fee-management mode, and sweeps still pay fees",
@@ -3973,7 +3973,7 @@
       "conceptId": "K500-0147",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Why can Rusty Kaspa's ReceiverPays mode still fail during aggregation?",
+      "prompt": "Why can the cited ReceiverPays mode still fail during aggregation?",
       "options": [
         "The receiver must own every peer",
         "A public key has no checksum",
@@ -4027,7 +4027,7 @@
       "conceptId": "K500-0149",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "What does number_of_generated_stages describe in Rusty Kaspa's GeneratorSummary?",
+      "prompt": "What does number_of_generated_stages describe in the cited GeneratorSummary?",
       "options": [
         "The number of generation stages",
         "The number of mnemonic words",
@@ -4054,7 +4054,7 @@
       "conceptId": "K500-0150",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "In Rusty Kaspa's script engine, what does OpDup do to the top stack item?",
+      "prompt": "In the cited Kaspa script engine, what does OpDup do to the top stack item?",
       "options": [
         "Deletes the entire stack",
         "Duplicates it",
@@ -4108,11 +4108,11 @@
       "conceptId": "K500-0152",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What does OpSwap do in Rusty Kaspa's script engine?",
+      "prompt": "What does OpSwap do in the cited Kaspa script engine?",
       "options": [
-        "Concatenates the top two byte strings",
-        "Duplicates the top two stack items",
-        "Rotates the top three stack items",
+        "Combines their byte strings",
+        "Verifies a mining nonce",
+        "Creates a transaction output",
         "Exchanges the top two stack items"
       ],
       "correctIndex": 3,
@@ -4135,7 +4135,7 @@
       "conceptId": "K500-0153",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What does OpPick do with a valid stack-depth argument in Rusty Kaspa's engine?",
+      "prompt": "What does OpPick do with a valid stack-depth argument in the cited engine?",
       "options": [
         "Copies the selected item to the top",
         "Moves the selected item to the top without copying it",
@@ -4162,7 +4162,7 @@
       "conceptId": "K500-0154",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What is moved by OpToAltStack in Rusty Kaspa's engine?",
+      "prompt": "What is moved by OpToAltStack in the cited Kaspa engine?",
       "options": [
         "The entire data stack to the alternative stack",
         "The top data-stack item to the alternative stack",
@@ -4191,10 +4191,10 @@
       "subcategory": "KRC-20 & Smart Contracts",
       "prompt": "What does OpDepth push onto the Kaspa script stack?",
       "options": [
-        "The byte size of the current top stack item",
-        "The alt-stack item count",
+        "The total KAS supply",
+        "The selected parent's blue work",
         "The current data-stack item count",
-        "The number of executed opcodes"
+        "The current exchange price"
       ],
       "correctIndex": 2,
       "difficulty": "medium",
@@ -4216,7 +4216,7 @@
       "conceptId": "K500-0156",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "When the lower byte string is A and the top byte string is B, what does Rusty Kaspa's OpCat produce?",
+      "prompt": "When the lower byte string is A and the top byte string is B, what does the cited OpCat produce?",
       "options": [
         "B followed by A",
         "Only A, with B discarded",
@@ -4243,7 +4243,7 @@
       "conceptId": "K500-0157",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "In Rusty Kaspa's OpSize implementation, what happens to the original top byte string?",
+      "prompt": "In the cited OpSize implementation, what happens to the original top byte string?",
       "options": [
         "It remains while its length is pushed",
         "It is popped and replaced by its length",
@@ -4297,7 +4297,7 @@
       "conceptId": "K500-0159",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What happens when OpVerify consumes a false value in Rusty Kaspa's engine?",
+      "prompt": "What happens when OpVerify consumes a false value in the cited Kaspa engine?",
       "options": [
         "The script silently mints a coin",
         "The node accepts the input without checking",
@@ -4324,7 +4324,7 @@
       "conceptId": "K500-0160",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What is the result of executing OpReturn in Rusty Kaspa's script engine?",
+      "prompt": "What is the result of executing OpReturn in the cited Kaspa script engine?",
       "options": [
         "A guaranteed successful spend",
         "A transfer of all remaining KAS",
@@ -4333,7 +4333,7 @@
       ],
       "correctIndex": 3,
       "difficulty": "medium",
-      "funFact": "Rusty Kaspa's opcode returns an error rather than a spend-success value.",
+      "funFact": "The cited opcode returns an error rather than a spend-success value.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/crypto/txscript/src/opcodes/mod.rs#L417",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
@@ -4378,7 +4378,7 @@
       "conceptId": "K500-0162",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "How does Rusty Kaspa's OpAdd handle a sum outside the signed 64-bit range?",
+      "prompt": "How does the cited OpAdd handle a sum outside the signed 64-bit range?",
       "options": [
         "It wraps to the signed minimum",
         "It returns NumberTooBig",
@@ -4405,7 +4405,7 @@
       "conceptId": "K500-0163",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What happens when Rusty Kaspa's OpDiv attempts division by zero?",
+      "prompt": "What happens when the cited OpDiv attempts division by zero?",
       "options": [
         "It pushes zero",
         "It pushes the numerator unchanged",
@@ -4432,7 +4432,7 @@
       "conceptId": "K500-0164",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Which interval does OpWithin test in Rusty Kaspa's engine?",
+      "prompt": "Which interval does OpWithin test in the cited Kaspa engine?",
       "options": [
         "Both bounds inclusive",
         "Both bounds exclusive",
@@ -4459,7 +4459,7 @@
       "conceptId": "K500-0165",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What precondition does Rusty Kaspa's bitwise OpAnd impose on its two byte strings?",
+      "prompt": "What precondition does the cited bitwise OpAnd impose on its two byte strings?",
       "options": [
         "They must have equal lengths",
         "They must be exactly thirty-two bytes each",
@@ -4486,9 +4486,9 @@
       "conceptId": "K500-0166",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Which opcode exposes the transaction version to a spending script in Rusty Kaspa's engine?",
+      "prompt": "Which opcode exposes the transaction version to a spending script in the cited engine?",
       "options": [
-        "OpTxInputCount",
+        "OpDepth",
         "OpTxVersion",
         "OpReturn",
         "OpCheckSig"
@@ -4729,7 +4729,7 @@
       "conceptId": "K500-0175",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Why does Rusty Kaspa's OpTxGas reject a script source other than TxInput?",
+      "prompt": "Why does the cited OpTxGas reject a script source other than TxInput?",
       "options": [
         "It needs the transaction's output count as its source tag",
         "It operates only while checking a block header",
@@ -4756,9 +4756,9 @@
       "conceptId": "K500-0176",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Which signature-check opcode ends the standard PubKey locking script in Rusty Kaspa's builder?",
+      "prompt": "Which signature-check opcode ends the standard PubKey locking script in the cited Kaspa builder?",
       "options": [
-        "OpCheckSigVerify",
+        "OpEqual",
         "OpReturn",
         "OpTxGas",
         "OpCheckSig"
@@ -4786,9 +4786,9 @@
       "prompt": "Which signature-check opcode does the standard PubKeyECDSA payment script use?",
       "options": [
         "OpCheckSigECDSA",
-        "OpCheckSig with a 32-byte Schnorr key",
-        "OpCheckMultiSigECDSA",
-        "OpCheckSigVerify"
+        "OpBlake2b",
+        "OpDepth",
+        "OpIf"
       ],
       "correctIndex": 0,
       "difficulty": "medium",
@@ -4810,7 +4810,7 @@
       "conceptId": "K500-0178",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What does Rusty Kaspa's OpZkPrecompile do after parsing its tag and before verifying the proof?",
+      "prompt": "What does the cited OpZkPrecompile do after parsing its tag and before verifying the proof?",
       "options": [
         "Updates the transaction gas field",
         "Consumes the tag-specific script-unit cost",
@@ -4839,7 +4839,7 @@
       "subcategory": "KRC-20 & Smart Contracts",
       "prompt": "Why does extracting an address from a standard locking script take a separate network prefix?",
       "options": [
-        "The prefix is recovered from the locking script's version field",
+        "The prefix is recovered from the script's last opcode",
         "The script always implies mainnet",
         "The caller supplies the network for the resulting address",
         "The prefix is obtained from the output amount"
@@ -4918,12 +4918,12 @@
       "conceptId": "K500-0182",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Which two consumption styles does Rusty Kaspa's transaction generator support?",
+      "prompt": "Which two consumption styles does the cited transaction generator support?",
       "options": [
-        "Only a single batch callback",
+        "Only an exchange CSV download",
         "An iterator and an asynchronous stream",
-        "Only a blocking vector of transactions",
-        "A synchronous loop and a thread pool"
+        "Only a wallet seed export",
+        "An NFT mint and a token deployment"
       ],
       "correctIndex": 1,
       "difficulty": "medium",
@@ -4972,11 +4972,11 @@
       "conceptId": "K500-0184",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Why does Rusty Kaspa's Wallet SDK favor asynchronous generation for large UTXO sets in browsers?",
+      "prompt": "Why does the cited Wallet SDK favor asynchronous generation for large UTXO sets in browsers?",
       "options": [
-        "To bypass wallet approval prompts",
-        "To reduce the transaction's storage mass",
-        "To skip fee estimation for large sets",
+        "To bypass wallet approval",
+        "To hide the payment recipient",
+        "To skip fee estimation",
         "To avoid freezing the user interface"
       ],
       "correctIndex": 3,
@@ -4999,7 +4999,7 @@
       "conceptId": "K500-0185",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Why does Rusty Kaspa's generator avoid aggregating every generated transaction in memory at once?",
+      "prompt": "Why does the cited generator avoid aggregating every generated transaction in memory at once?",
       "options": [
         "To reduce the risk of running out of memory",
         "To make all transactions anonymous",
@@ -5053,9 +5053,9 @@
       "conceptId": "K500-0187",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Does Rusty Kaspa's generator also check the network type of the change address?",
+      "prompt": "Does the cited generator also check the network type of the change address?",
       "options": [
-        "No; change may use any network prefix the wallet supports",
+        "No; change may use any network",
         "Only if the wallet name is empty",
         "Yes; a mismatch causes a separate error",
         "Only when a token indexer is offline"
@@ -5080,9 +5080,9 @@
       "conceptId": "K500-0188",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "What happens if Rusty Kaspa's generator receives PaymentDestination::Change with a fee mode other than Fees::None?",
+      "prompt": "What happens if the cited generator receives PaymentDestination::Change with a fee mode other than Fees::None?",
       "options": [
-        "It automatically adds a separate priority-fee output",
+        "It automatically creates a payment output",
         "It silently treats priority fees as zero",
         "It changes the destination to mainnet",
         "It returns GeneratorFeesInSweepTransaction"
@@ -5110,9 +5110,9 @@
       "prompt": "What is the role of priority_utxo_entries in GeneratorSettings?",
       "options": [
         "Inputs to consume before other available UTXOs",
-        "Outputs that must be paid before change",
-        "UTXOs excluded from the selection",
-        "Inputs that receive priority fees"
+        "Recipients entitled to newly minted tokens",
+        "Peers allowed to ignore proof of work",
+        "Mnemonic words to skip"
       ],
       "correctIndex": 0,
       "difficulty": "medium",
@@ -5134,7 +5134,7 @@
       "conceptId": "K500-0190",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Which signature parameter does Rusty Kaspa's constructor use to estimate signature compute mass per input?",
+      "prompt": "Which signature parameter does the cited constructor use to estimate signature compute mass per input?",
       "options": [
         "The number of final payment outputs",
         "minimum_signatures",
@@ -5188,7 +5188,7 @@
       "conceptId": "K500-0192",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Where does Rusty Kaspa's generator direct an intermediate Node aggregation transaction?",
+      "prompt": "Where does the cited generator direct an intermediate Node aggregation transaction?",
       "options": [
         "The first final recipient address",
         "The original miner's coinbase script",
@@ -5215,7 +5215,7 @@
       "conceptId": "K500-0193",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "What distinguishes DataKind::Final from an intermediate relay in Rusty Kaspa's generator?",
+      "prompt": "What distinguishes DataKind::Final from an intermediate relay in the cited generator?",
       "options": [
         "It creates the supplied final output set",
         "It creates another aggregation relay to the change address",
@@ -5242,7 +5242,7 @@
       "conceptId": "K500-0194",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Why can Rusty Kaspa's generator choose to absorb change into fees?",
+      "prompt": "Why can the cited generator choose to absorb change into fees?",
       "options": [
         "All change is always paid to miners",
         "The change can be dust or uneconomic relative to its storage-mass fees",
@@ -5271,10 +5271,10 @@
       "subcategory": "Wallets & Addresses",
       "prompt": "Why does the generator obtain network parameters from network_id?",
       "options": [
-        "The ID selects the wallet's derivation path",
-        "The network ID determines the fee rate",
+        "The ID contains a wallet password",
+        "A network ID determines the market price",
         "Its construction and mass calculations use the selected network's parameters",
-        "It disables mass limits on testnets"
+        "It disables all transaction limits"
       ],
       "correctIndex": 2,
       "difficulty": "medium",
@@ -5350,7 +5350,7 @@
       "conceptId": "K500-0198",
       "category": "Kaspa",
       "subcategory": "Crypto Fundamentals",
-      "prompt": "Are a Kaspa transaction's full hash and transaction ID defined as the same computation in Rusty Kaspa's code?",
+      "prompt": "Are a Kaspa transaction's full hash and transaction ID defined as the same computation in the cited code?",
       "options": [
         "Yes; they are interchangeable by definition",
         "No; they are separate hashing definitions",
@@ -5404,7 +5404,7 @@
       "conceptId": "K500-0200",
       "category": "Kaspa",
       "subcategory": "Crypto Fundamentals",
-      "prompt": "In Rusty Kaspa's v0 hashing design, which digest commits to a positive storage-mass field while the transaction ID excludes it?",
+      "prompt": "In the cited v0 hashing design, which digest commits to a positive storage-mass field while the transaction ID excludes it?",
       "options": [
         "The version-0 transaction ID",
         "The public address checksum",
@@ -5431,7 +5431,7 @@
       "conceptId": "K500-0201",
       "category": "Kaspa",
       "subcategory": "Crypto Fundamentals",
-      "prompt": "Which two digest components produce a version-1 Kaspa transaction ID in Rusty Kaspa's code?",
+      "prompt": "Which two digest components produce a version-1 Kaspa transaction ID in the cited code?",
       "options": [
         "Payload digest and rest digest",
         "Input digest and signature digest only",
@@ -5458,7 +5458,7 @@
       "conceptId": "K500-0202",
       "category": "Kaspa",
       "subcategory": "Crypto Fundamentals",
-      "prompt": "Which fields are excluded from Rusty Kaspa's version-1 rest-digest preimage?",
+      "prompt": "Which fields are excluded from the cited version-1 rest-digest preimage?",
       "options": [
         "Only signature scripts",
         "Payload, signature scripts and mass commitment",
@@ -5485,7 +5485,7 @@
       "conceptId": "K500-0203",
       "category": "Kaspa",
       "subcategory": "Crypto Fundamentals",
-      "prompt": "How does Rusty Kaspa's payload_digest helper handle an empty payload?",
+      "prompt": "How does the cited payload_digest helper handle an empty payload?",
       "options": [
         "It substitutes an all-zero digest",
         "It hashes the transaction ID instead",
@@ -5512,7 +5512,7 @@
       "conceptId": "K500-0204",
       "category": "Kaspa",
       "subcategory": "Crypto Fundamentals",
-      "prompt": "Which integer type represents an output index in Rusty Kaspa's TransactionOutpoint?",
+      "prompt": "Which integer type represents an output index in the cited TransactionOutpoint?",
       "options": [
         "u8",
         "i8",
@@ -5539,7 +5539,7 @@
       "conceptId": "K500-0205",
       "category": "Kaspa",
       "subcategory": "Crypto Fundamentals",
-      "prompt": "When does Rusty Kaspa's MutableTransaction::is_verifiable check return true after its entry-count assertion?",
+      "prompt": "When does the cited MutableTransaction::is_verifiable check return true after its entry-count assertion?",
       "options": [
         "Every input has a populated UTXO entry",
         "At least one input has a UTXO entry",
@@ -5593,7 +5593,7 @@
       "conceptId": "K500-0207",
       "category": "Kaspa",
       "subcategory": "Crypto Fundamentals",
-      "prompt": "Must every output in Rusty Kaspa's transaction structure have a covenant binding?",
+      "prompt": "Must every output in the cited transaction structure have a covenant binding?",
       "options": [
         "Yes; even outputs created by new() require one",
         "Only outputs with zero value may omit it",
@@ -5620,7 +5620,7 @@
       "conceptId": "K500-0208",
       "category": "Kaspa",
       "subcategory": "Crypto Fundamentals",
-      "prompt": "What type is used for covenant_id in Rusty Kaspa's CovenantBinding?",
+      "prompt": "What type is used for covenant_id in the cited CovenantBinding?",
       "options": [
         "An unsigned 16-bit input index",
         "A network-address prefix",
@@ -5647,7 +5647,7 @@
       "conceptId": "K500-0209",
       "category": "Kaspa",
       "subcategory": "Crypto Fundamentals",
-      "prompt": "How does Rusty Kaspa's transaction-ID helper select its versioned hashing path?",
+      "prompt": "How does the cited transaction-ID helper select its versioned hashing path?",
       "options": [
         "Version zero uses id_v0; later versions use id_v1",
         "Version zero uses id_v1; later versions use id_v0",
@@ -5676,10 +5676,10 @@
       "subcategory": "Kaspa Ecosystem",
       "prompt": "Why can a Kaspa NetworkId include a numerical suffix?",
       "options": [
-        "To encode the node's P2P protocol version number",
+        "To encode the owner's seed phrase",
         "To distinguish network instances of the same type",
-        "To mark the network's address prefix version",
-        "To count the hardforks a network has passed"
+        "To set a token's exchange price",
+        "To add an output to a transaction"
       ],
       "correctIndex": 1,
       "difficulty": "medium",
@@ -5701,7 +5701,7 @@
       "conceptId": "K500-0211",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Can Rusty Kaspa's NetworkId::try_new create an unsuffixed Testnet identifier?",
+      "prompt": "Can the cited NetworkId::try_new create an unsuffixed Testnet identifier?",
       "options": [
         "Yes; it assumes testnet-10",
         "Yes; it uses the mainnet suffix",
@@ -5728,7 +5728,7 @@
       "conceptId": "K500-0212",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "What is the mainnet default P2P port in Rusty Kaspa's NetworkId table?",
+      "prompt": "What is the mainnet default P2P port in the cited NetworkId table?",
       "options": [
         "16110",
         "17110",
@@ -5755,7 +5755,7 @@
       "conceptId": "K500-0213",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "What is the default mainnet Borsh wRPC port in Rusty Kaspa's NetworkType table?",
+      "prompt": "What is the default mainnet Borsh wRPC port in the cited NetworkType table?",
       "options": [
         "17110",
         "16111",
@@ -5782,7 +5782,7 @@
       "conceptId": "K500-0214",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "How does Rusty Kaspa's NetworkType string parser treat capitalization in a recognized network name?",
+      "prompt": "How does the cited NetworkType string parser treat capitalization in a recognized network name?",
       "options": [
         "It accepts only uppercase names",
         "It lowercases the name before matching",
@@ -5809,7 +5809,7 @@
       "conceptId": "K500-0215",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Why does Rusty Kaspa's code vary default testnet P2P ports with the network suffix?",
+      "prompt": "Why does the cited code vary default testnet P2P ports with the network suffix?",
       "options": [
         "To make RPC methods differ between testnet instances",
         "To select a distinct address checksum algorithm for each suffix",
@@ -5866,7 +5866,7 @@
       "prompt": "What does advertised_protocol_version in RpcPeerInfo describe?",
       "options": [
         "The protocol version the peer advertises",
-        "The P2P protocol version this node negotiated as its minimum",
+        "The node's measured ping duration",
         "The peer's advertised coinbase subsidy",
         "The negotiated wallet derivation path"
       ],
@@ -5917,7 +5917,7 @@
       "conceptId": "K500-0219",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "What does is_ibd_peer identify in Rusty Kaspa's peer-info model?",
+      "prompt": "What does is_ibd_peer identify in the cited peer-info model?",
       "options": [
         "Whether the connection was initiated outbound",
         "Whether the peer is banned from future connections",
@@ -5998,7 +5998,7 @@
       "conceptId": "K500-0222",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "What does is_chain_block report in Rusty Kaspa's verbose block model?",
+      "prompt": "What does is_chain_block report in the cited verbose block model?",
       "options": [
         "Whether only the header is stored",
         "Whether the block is a selected-chain block",
@@ -6025,7 +6025,7 @@
       "conceptId": "K500-0223",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "What distinguishes RpcRawBlock from the richer RPC block form in Rusty Kaspa's mining model?",
+      "prompt": "What distinguishes RpcRawBlock from the richer RPC block form in the cited mining model?",
       "options": [
         "It includes only cached header hashes, without transactions",
         "It includes verbose data but no block header",
@@ -6052,7 +6052,7 @@
       "conceptId": "K500-0224",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "How many bytes hold a Kaspa subnetwork identifier in Rusty Kaspa's code?",
+      "prompt": "How many bytes hold a Kaspa subnetwork identifier in the cited code?",
       "options": [
         "4",
         "32",
@@ -6079,7 +6079,7 @@
       "conceptId": "K500-0225",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "What byte layout does Rusty Kaspa's code define for a user-lane subnetwork ID?",
+      "prompt": "What byte layout does the cited code define for a user-lane subnetwork ID?",
       "options": [
         "A four-byte namespace followed by sixteen zero bytes",
         "A sixteen-byte namespace followed by four zero bytes",
@@ -6088,7 +6088,7 @@
       ],
       "correctIndex": 0,
       "difficulty": "hard",
-      "funFact": "The user-lane namespace shape is explicitly documented in Rusty Kaspa's implementation.",
+      "funFact": "The user-lane namespace shape is explicitly documented in the pinned implementation.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/consensus/core/src/subnets.rs#L13",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
@@ -6106,7 +6106,7 @@
       "conceptId": "K500-0226",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "What does an all-zero namespace produce in Rusty Kaspa's subnetwork construction?",
+      "prompt": "What does an all-zero namespace produce in the cited subnetwork construction?",
       "options": [
         "A valid non-native user lane",
         "The native reserved ID",
@@ -6133,7 +6133,7 @@
       "conceptId": "K500-0227",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "When updating DAA score from the selected parent, how does Rusty Kaspa's helper treat non-DAA mergeset blocks?",
+      "prompt": "When updating DAA score from the selected parent, how does the cited helper treat non-DAA mergeset blocks?",
       "options": [
         "It includes them twice in the increment",
         "It replaces them with the direct-parent count",
@@ -6160,7 +6160,7 @@
       "conceptId": "K500-0228",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "What minimum window count does Rusty Kaspa's internal network-hashrate estimator require?",
+      "prompt": "What minimum window count does the cited internal network-hashrate estimator require?",
       "options": [
         "One entry",
         "Twelve entries",
@@ -6187,10 +6187,10 @@
       "conceptId": "K500-0229",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "Why does Rusty Kaspa's hashrate estimator reject a window whose minimum and maximum timestamps are equal?",
+      "prompt": "Why does the cited hashrate estimator reject a window whose minimum and maximum timestamps are equal?",
       "options": [
         "There is no nonzero timestamp range for estimating a rate",
-        "The window contains more block hashes than the pruning depth allows",
+        "The window contains too many block hashes",
         "The minimum timestamp is not the genesis timestamp",
         "The selected parent's blue score is zero"
       ],
@@ -6214,12 +6214,12 @@
       "conceptId": "K500-0230",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "Which quantities form the core of Rusty Kaspa's network-hashrate estimate?",
+      "prompt": "Which quantities form the core of the cited network-hashrate estimate?",
       "options": [
         "The block-count range divided by total transaction fees",
         "The blue-work range divided by the window duration in seconds",
         "The average target multiplied by the current wallet balance",
-        "The byte size of headers divided by the maximum blue score observed"
+        "The byte size of headers divided by the maximum blue score"
       ],
       "correctIndex": 1,
       "difficulty": "hard",
@@ -6241,7 +6241,7 @@
       "conceptId": "K500-0231",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "Before a non-genesis difficulty window has enough entries, which bits does Rusty Kaspa's calculator reuse?",
+      "prompt": "Before a non-genesis difficulty window has enough entries, which bits does the cited calculator reuse?",
       "options": [
         "The most recent timestamp encoded as difficulty bits",
         "The arithmetic mean of every incomplete-window target",
@@ -6268,7 +6268,7 @@
       "conceptId": "K500-0232",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "How does difficulty_full_window_size account for sampling in Rusty Kaspa's manager?",
+      "prompt": "How does difficulty_full_window_size account for sampling in the cited manager?",
       "options": [
         "It divides the sample rate by the sampled count",
         "It adds the sampled count to the sample rate",
@@ -6295,7 +6295,7 @@
       "conceptId": "K500-0233",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "How does Rusty Kaspa's calculator bound a newly calculated difficulty target?",
+      "prompt": "How does the cited calculator bound a newly calculated difficulty target?",
       "options": [
         "It caps the target at the configured maximum",
         "It caps the timestamp instead of the target",
@@ -6322,7 +6322,7 @@
       "conceptId": "K500-0234",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "How does Rusty Kaspa's sampled past-median-time manager summarize a sufficiently large sorted timestamp window?",
+      "prompt": "How does the cited sampled past-median-time manager summarize a sufficiently large sorted timestamp window?",
       "options": [
         "It uses only the middle timestamp",
         "It averages the eleven central timestamps",
@@ -6349,7 +6349,7 @@
       "conceptId": "K500-0235",
       "category": "Kaspa",
       "subcategory": "Mining & Consensus",
-      "prompt": "What does Rusty Kaspa's past-median-time manager use when its window is empty?",
+      "prompt": "What does the cited past-median-time manager use when its window is empty?",
       "options": [
         "The current node wall clock",
         "The genesis timestamp in every case",
@@ -6376,7 +6376,7 @@
       "conceptId": "K500-0236",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "What happens when Rusty Kaspa's wallet UTXO context inserts an entry whose identity is already present?",
+      "prompt": "What happens when the cited wallet UTXO context inserts an entry whose identity is already present?",
       "options": [
         "The balance is automatically counted twice",
         "The entry creates another coinbase",
@@ -6403,7 +6403,7 @@
       "conceptId": "K500-0237",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "By what value does Rusty Kaspa's context maintain its mature UTXO list in ascending order?",
+      "prompt": "By what value does the cited context maintain its mature UTXO list in ascending order?",
       "options": [
         "UTXO amount",
         "Transaction ID bytes",
@@ -6430,9 +6430,9 @@
       "conceptId": "K500-0238",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "How does Rusty Kaspa's wallet context avoid repeatedly registering an address it already tracks?",
+      "prompt": "How does the cited wallet context avoid repeatedly registering an address it already tracks?",
       "options": [
-        "It asks the node whether each address is already indexed",
+        "It publishes the wallet mnemonic",
         "It filters through its local address set",
         "It raises the transaction fee each time",
         "It changes the address's network prefix"
@@ -6460,13 +6460,13 @@
       "prompt": "In scan_and_register_addresses, which operation precedes fetching the existing address UTXOs?",
       "options": [
         "Fetching the existing UTXOs first",
-        "Clearing every previously registered address in the wallet",
+        "Clearing every registered address",
         "Registering those addresses for tracking",
         "Promoting all pending entries to mature"
       ],
       "correctIndex": 2,
       "difficulty": "hard",
-      "funFact": "Rusty Kaspa's method registers addresses before retrieving their UTXO snapshot.",
+      "funFact": "The cited method registers addresses before retrieving their UTXO snapshot.",
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/utxo/context.rs#L745",
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-15",
@@ -6486,9 +6486,9 @@
       "subcategory": "Wallets & Addresses",
       "prompt": "Why can scan_and_register_addresses fail when no DAA score is supplied and the processor has not initialized?",
       "options": [
-        "It requires a fully synced UTXO index snapshot",
-        "It cannot register addresses whose checksum has not been revalidated",
-        "It requires a connected peer's address list",
+        "It needs the token's market price",
+        "It cannot use addresses with a checksum",
+        "It requires the recipient's seed phrase",
         "It has no current DAA score for processing the scan"
       ],
       "correctIndex": 3,
@@ -6511,7 +6511,7 @@
       "conceptId": "K500-0241",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Which local pool does Rusty Kaspa's UtxoContext::get_utxos select from?",
+      "prompt": "Which local pool does the cited UtxoContext::get_utxos select from?",
       "options": [
         "Mature UTXOs",
         "Only coinbase entries still in stasis",
@@ -6538,7 +6538,7 @@
       "conceptId": "K500-0242",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
-      "prompt": "Why does removing a known UTXO from Rusty Kaspa's wallet context also inspect its pending, stasis or mature membership?",
+      "prompt": "Why does removing a known UTXO from the cited wallet context also inspect its pending, stasis or mature membership?",
       "options": [
         "To move every removed output to the mature list",
         "To remove the entry from its corresponding local state collection",
@@ -6565,7 +6565,7 @@
       "conceptId": "K500-0243",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "How does populate_genesis_covenants avoid partially applying invalid groups in Rusty Kaspa's helper?",
+      "prompt": "How does populate_genesis_covenants avoid partially applying invalid groups in the cited helper?",
       "options": [
         "It mutates each group immediately and ignores later errors",
         "It rolls invalid groups into a different transaction version",
@@ -6592,7 +6592,7 @@
       "conceptId": "K500-0244",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "Can one output index belong to two genesis covenant groups passed to Rusty Kaspa's population helper?",
+      "prompt": "Can one output index belong to two genesis covenant groups passed to the cited population helper?",
       "options": [
         "Yes; the last group overwrites the first binding",
         "Yes; groups may share indices if their authorizing inputs differ",
@@ -6619,7 +6619,7 @@
       "conceptId": "K500-0245",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "What happens if Rusty Kaspa's genesis-covenant population helper targets an already bound output?",
+      "prompt": "What happens if the cited genesis-covenant population helper targets an already bound output?",
       "options": [
         "It returns CovenantAlreadyPopulated",
         "It silently overwrites the previous binding",
@@ -6673,7 +6673,7 @@
       "conceptId": "K500-0247",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "How does Rusty Kaspa's OpSHA256 account for input size in script pricing?",
+      "prompt": "How does the cited OpSHA256 account for input size in script pricing?",
       "options": [
         "It charges a fixed amount independent of data size",
         "It charges only for the output digest length",
@@ -6727,7 +6727,7 @@
       "conceptId": "K500-0249",
       "category": "Kaspa",
       "subcategory": "Crypto Fundamentals",
-      "prompt": "In Rusty Kaspa's full transaction hashing path for version 1 or later, is a zero storage-mass field omitted?",
+      "prompt": "In the cited full transaction hashing path for version 1 or later, is a zero storage-mass field omitted?",
       "options": [
         "No; the field is always encoded",
         "Yes; zero mass is omitted for every transaction version",
@@ -6754,7 +6754,7 @@
       "conceptId": "K500-0250",
       "category": "Kaspa",
       "subcategory": "Crypto Fundamentals",
-      "prompt": "Which field does hash_pre_crescendo exclude compared with Rusty Kaspa's full transaction hashing path?",
+      "prompt": "Which field does hash_pre_crescendo exclude compared with the cited full transaction hashing path?",
       "options": [
         "Every signature script",
         "The mass commitment",

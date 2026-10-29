@@ -31,12 +31,12 @@
       "conceptId": "K540-0001",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Where does KasWare's extension expose its browser wallet API?",
+      "prompt": "Where does the cited KasWare extension expose its browser wallet API?",
       "options": [
         "window.kasware",
         "window.kaspad",
-        "window.kastle",
-        "window.ethereum"
+        "document.walletSecret",
+        "navigator.krc20"
       ],
       "correctIndex": 0,
       "difficulty": "easy",
@@ -58,7 +58,7 @@
       "conceptId": "K540-0002",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Which browser event does KasWare's code dispatch after exposing its injected provider?",
+      "prompt": "Which browser event does the cited KasWare code dispatch after exposing its injected provider?",
       "options": [
         "accountsChanged",
         "kasware#initialized",
@@ -85,7 +85,7 @@
       "conceptId": "K540-0003",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Which KasWare method reads available authorized accounts and returns an empty list for an unauthorized site?",
+      "prompt": "Which cited KasWare method reads available authorized accounts and returns an empty list for an unauthorized site?",
       "options": [
         "requestAccounts()",
         "getPublicKey()",
@@ -112,7 +112,7 @@
       "conceptId": "K540-0004",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "For an ordinary external site, what does KasWare's permission service use to look up connection authorization?",
+      "prompt": "For an ordinary external site, what does the cited KasWare permission service use to look up connection authorization?",
       "options": [
         "The requested token ticker",
         "The recipient's address prefix",
@@ -139,10 +139,10 @@
       "conceptId": "K540-0005",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "In KasWare's request flow, does an existing site connection by itself skip a required signing approval?",
+      "prompt": "In the cited KasWare request flow, does an existing site connection by itself skip a required signing approval?",
       "options": [
         "No; the operation approval check runs after the connection check",
-        "Yes; a connection permanently approves all later signature requests",
+        "Yes; connection permanently approves all later signatures",
         "Yes; every connected site becomes a SAFE method",
         "Only if the site requests an unrecognized method"
       ],
@@ -166,7 +166,7 @@
       "conceptId": "K540-0006",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "What does KasWare's flow request when a non-SAFE operation reaches a locked keyring?",
+      "prompt": "What does the cited KasWare flow request when a non-SAFE operation reaches a locked keyring?",
       "options": [
         "An automatic wallet reset",
         "An unlock approval before continuing",
@@ -193,7 +193,7 @@
       "conceptId": "K540-0007",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "What unit should an application use for the payment amount passed to KasWare's sendKaspa method?",
+      "prompt": "What unit should an application use for the payment amount passed to the cited KasWare sendKaspa method?",
       "options": [
         "Whole KAS entered as a decimal string",
         "The number of recipient UTXOs",
@@ -220,11 +220,11 @@
       "conceptId": "K540-0008",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Which KasWare provider method requests KRC-20 holdings rather than the native KAS balance summary?",
+      "prompt": "Which cited KasWare provider method requests KRC-20 holdings rather than the native KAS balance summary?",
       "options": [
         "getBalance()",
         "getPublicKey()",
-        "getKRC20TokenList()",
+        "getUtxoEntries()",
         "getKRC20Balance()"
       ],
       "correctIndex": 3,
@@ -247,10 +247,10 @@
       "conceptId": "K540-0009",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "When KasWare's accountsChanged handler detects a changed active account, what does it emit to the application?",
+      "prompt": "When the cited KasWare accountsChanged handler detects a changed active account, what does it emit to the application?",
       "options": [
         "The updated account-address array",
-        "Only the transaction ID of the switch event",
+        "Only a transaction ID",
         "The mnemonic for the new account",
         "Only the network name"
       ],
@@ -274,7 +274,7 @@
       "conceptId": "K540-0010",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Which provider event carries a changed network name in KasWare's implementation?",
+      "prompt": "Which provider event carries a changed network name in the cited KasWare implementation?",
       "options": [
         "accountsChanged",
         "networkChanged",
@@ -301,7 +301,7 @@
       "conceptId": "K540-0011",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "How does KasWare's disconnect handler change its cached account state?",
+      "prompt": "How does the cited KasWare disconnect handler change its cached account state?",
       "options": [
         "It retains both as currently authorized",
         "It replaces the address with a new seed phrase",
@@ -328,7 +328,7 @@
       "conceptId": "K540-0012",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Which KasWare method returns the wallet software VERSION value for compatibility checks?",
+      "prompt": "Which cited KasWare method returns the wallet software VERSION value for compatibility checks?",
       "options": [
         "getNetwork()",
         "getPublicKey()",
@@ -355,7 +355,7 @@
       "conceptId": "K540-0013",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "What does a caller supply to KasWare's pushTx method?",
+      "prompt": "What does a caller supply to the cited KasWare pushTx method?",
       "options": [
         "A raw transaction string to submit",
         "A mnemonic to import",
@@ -382,7 +382,7 @@
       "conceptId": "K540-0014",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "What happens when an application calls signKRC20BatchTransferTransaction in KasWare's page provider?",
+      "prompt": "What happens when an application calls signKRC20BatchTransferTransaction in the cited KasWare page provider?",
       "options": [
         "It silently executes a native KAS payment",
         "It throws a deprecation error naming krc20BatchTransferTransaction",
@@ -409,10 +409,10 @@
       "conceptId": "K540-0015",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "In KasWare's signPskt options, what does each signInputs entry specify?",
+      "prompt": "In the cited KasWare signPskt options, what does each signInputs entry specify?",
       "options": [
-        "An output index and its amount",
-        "An account index and a derivation path",
+        "An output address and a token ticker",
+        "An account nickname and a password hint",
         "An input index and its sighashType",
         "A block hash and a confirmation count"
       ],
@@ -436,7 +436,7 @@
       "conceptId": "K540-0016",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Why should an integrator examine numeric precision in KasWare's getUtxoEntries serialization?",
+      "prompt": "Why should an integrator examine numeric precision in the cited KasWare getUtxoEntries serialization?",
       "options": [
         "It encodes all integers as exact decimal strings",
         "It encrypts every amount with a public address",
@@ -463,7 +463,7 @@
       "conceptId": "K540-0017",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "For an authorized caller with a current account, how does KasWare's getUtxoEntries choose the queried address?",
+      "prompt": "For an authorized caller with a current account, how does the cited KasWare getUtxoEntries choose the queried address?",
       "options": [
         "It uses the supplied address when truthy, otherwise the current account address",
         "It always queries every account in the wallet",
@@ -490,9 +490,9 @@
       "conceptId": "K540-0018",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "Which three values does KasWare's verifyMessage interface accept?",
+      "prompt": "Which three values does the cited KasWare verifyMessage interface accept?",
       "options": [
-        "An address, amount and fee",
+        "A private key, mnemonic and password",
         "A public key, message and signature",
         "A block hash, nonce and difficulty target",
         "A token ticker, mint limit and maximum supply"
@@ -517,7 +517,7 @@
       "conceptId": "K540-0019",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "How does KasWare's RPC flow handle a method with no corresponding provider-controller handler?",
+      "prompt": "How does the cited KasWare RPC flow handle a method with no corresponding provider-controller handler?",
       "options": [
         "It falls back to sendKaspa",
         "It treats the method name as a message to sign",
@@ -544,7 +544,7 @@
       "conceptId": "K540-0020",
       "category": "Kaspa",
       "subcategory": "Kaspa Ecosystem",
-      "prompt": "If a background request rejects, what does KasWare's page provider do with the error?",
+      "prompt": "If a background request rejects, what does the cited KasWare page provider do with the error?",
       "options": [
         "It replaces the error with a successful transaction ID",
         "It hides the rejection and returns an empty signature",

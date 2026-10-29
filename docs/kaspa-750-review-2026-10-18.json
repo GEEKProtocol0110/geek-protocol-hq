@@ -58,7 +58,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L290",
       "evidenceSymbol": "Connect only to the specified peers at startup.",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "96dee99d50ffb8a7328a3d0956c40d6bea2be7d1f7d886ea58dbb1ce32a16512"
+      "questionSha256": "9d0e6c9048d02e3ac65a2583728f27005665d1976f6186992dccd4698d87cd60"
     },
     {
       "id": "K750-0002",
@@ -66,7 +66,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L309",
       "evidenceSymbol": "Add an interface:port to listen for connections",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "2943a66e7f182f9a13d792f79c181488a8f4ae03cde64cfd9a21e3f06689921c"
+      "questionSha256": "ef060d8c0d148b4d0ced1c3aa52c906404457c7eafc57e0f04b4fb59d5e79de4"
     },
     {
       "id": "K750-0003",
@@ -74,7 +74,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L318",
       "evidenceSymbol": "Target number of outbound peers",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "30e8199d7823756621486c811f0522c1f9d1b60d159a9fc54f5896c9976b9a06"
+      "questionSha256": "cc2a13359f9b37da28eabfd48d1f747caa6880318fdbd80f2a3aa5b6811f1dec"
     },
     {
       "id": "K750-0004",
@@ -82,7 +82,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L336",
       "evidenceSymbol": "Max number of RPC clients for standard connections",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "0093afa5889cc2ca1c64b15c3f507a91cf6016eb2d965e365e526f355ea67545"
+      "questionSha256": "19929c7dcfd85a9491e2af984515fee9f7931fc1a8fd34a9ecff6817eb59ef1e"
     },
     {
       "id": "K750-0005",
@@ -90,7 +90,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L371",
       "evidenceSymbol": "avoids deleting old block data when moving the pruning point",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "a163eab4adf8a88cb263d676434e879e56acf91f5cb90b54210220f639956149"
+      "questionSha256": "4b5190d74c3a12b6268d80d8695ef681ee60accc2f5eb330ba21623d18e74b37"
     },
     {
       "id": "K750-0006",
@@ -98,7 +98,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L281",
       "evidenceSymbol": "Enable RPC commands which affect the state of the node",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "222b6b7739ba14298b84429a8d2f6a0b5284a45e03f31428f67826c200f776f6"
+      "questionSha256": "8440b0aa1e840780c150c86bf3b54c1e903378967bf3c079aa95963ef9b6e856"
     },
     {
       "id": "K750-0007",
@@ -106,7 +106,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L227",
       "evidenceSymbol": "Disable logging to files.",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "d573825694a13dba9f8f2b9aae3d43be6519e0f40d55c310998c3e9277c069b7"
+      "questionSha256": "8e473d663fffc561e0d0a836eba4cb34f68085c5cae0c3e673495306e264d64b"
     },
     {
       "id": "K750-0008",
@@ -114,7 +114,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L246",
       "evidenceSymbol": "set the log level for individual subsystems",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "542300ba7f518984a61dcb6c90d393fac1ed0a4e97e4fe04243fa53f758c73d9"
+      "questionSha256": "4a23212e89efd00e5dc6d89623bb51b838ba6c778c7917e0069437a8a52cc8e2"
     },
     {
       "id": "K750-0009",
@@ -122,7 +122,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L226",
       "evidenceSymbol": "Directory to log output.",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "4e6fd22d1d3577dac8f1c8f2190f51ca065d9f909523bd5c3b87a5853d37b2fc"
+      "questionSha256": "153639c226d03f4ae8a9d7b97fccee657d7f45a5b7a5ae0231f225979368f8c6"
     },
     {
       "id": "K750-0010",
@@ -130,7 +130,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L504",
       "evidenceSymbol": "appdir: m.get_one::<String>(\"appdir\").cloned().or(defaults.appdir)",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "0ef2784f7059e296924b6400624a751e56df811d30b27f2b4256233230673926"
+      "questionSha256": "05c92f9693196039849392333e3fef5eebcffac3abbb7644cd129027603d4286"
     },
     {
       "id": "K750-0011",
@@ -138,7 +138,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L27",
       "evidenceSymbol": "deny_unknown_fields",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "f2c5f0adae9bf762a53ba6a33fc5608fa81f1d8921b4933db7d6a1aa5b3f765e"
+      "questionSha256": "c9356ec45315d36819f95c373a24b5d7dfb24b464e9989933ec3977606670f87"
     },
     {
       "id": "K750-0012",
@@ -146,7 +146,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L212",
       "evidenceSymbol": "only a single net should be activated",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "be842498f8a1a0399eb68279ef079ad3f497523a04186b3bce6ad139dfccbfbf"
+      "questionSha256": "fabb6372f7a04846323c74ffb270f784672ca19e199c2752e54d1cae6525e606"
     },
     {
       "id": "K750-0013",
@@ -154,7 +154,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L401",
       "evidenceSymbol": "Enable performance metrics: cpu, memory, disk io usage",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "7429604c58a79762b8eeb25015695914565fe7456694abcf551b65776b7e40b1"
+      "questionSha256": "5a509d0346db38e71d51551b7e87cced2f980c09a5b514e9c4dfab9682bcb010"
     },
     {
       "id": "K750-0014",
@@ -162,7 +162,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L408",
       "evidenceSymbol": "Interval in seconds for performance metrics collection.",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "e9bab74c46e434dde0b9cd779599d4655c7b2383b92dba34c17d8fca1930526d"
+      "questionSha256": "72668eeb7a3ae915baf1cb201313d80b414b4640f200db651ec03c4bd3a3f186"
     },
     {
       "id": "K750-0015",
@@ -170,7 +170,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L419",
       "evidenceSymbol": "Apply a scale factor to memory allocation bounds",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "731bf4ced0322c6bb7460dd3eb27538d8df02ad2649d1629ba91ed4602aa680b"
+      "questionSha256": "548d274eaff9df04a8681b0d7cfdd742f12bdfbeba80826a403cb1cf45e82801"
     },
     {
       "id": "K750-0016",
@@ -178,7 +178,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L411",
       "evidenceSymbol": "Disable DNS seeding for peers",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "4f2e437a06cc324a238e58acd7ffaa2ae71f52d78a26a29bd6d9b7cb9ed43f14"
+      "questionSha256": "1dd10b0e286a90a881b0da34b7598290f50126a2270a402f2d9a5ffd13a6ee20"
     },
     {
       "id": "K750-0017",
@@ -186,7 +186,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L410",
       "evidenceSymbol": "arg!(--\"disable-upnp\"",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "d5b2ba6a4dad6250c89fb66813cd75210d81f9b3ce665c846bc725b9c04391c5"
+      "questionSha256": "df82bc3eb0e5368db080edca521c4cdddd7917725672174347e2d972ac4ca0ac"
     },
     {
       "id": "K750-0018",
@@ -194,7 +194,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L427",
       "evidenceSymbol": "The number of total days of data to keep.",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "0615c3c6cd556ec40f5f78b3ea73b2e4c341bfee806b07308bf805d4037f967b"
+      "questionSha256": "fd6fb18fd64f04ce8f82f3df8b0c159518e6dffc440f803a88bceeccc1c6cc29"
     },
     {
       "id": "K750-0019",
@@ -202,7 +202,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L443",
       "evidenceSymbol": "HDD preset recommended for archival nodes on HDD storage",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "a6584d94670b2c4c4382a36b44cfd9d059935c06f549373b738041a322843fe8"
+      "questionSha256": "f9e639bacc0cfeb864e09d3f7fda04a715499aeee9d989885b3c713ee8d5a296"
     },
     {
       "id": "K750-0020",
@@ -210,7 +210,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L451",
       "evidenceSymbol": "database on HDD, WAL on fast NVMe SSD",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "d835133a6b4a480389a8f7cce59e8a321bd304a67fdb37986b49a30faa88c597"
+      "questionSha256": "b15dcde93e29d3c67d2782974578d07d4107a1d6f4f74c7ce0c70991d3f88a75"
     },
     {
       "id": "K750-0021",
@@ -218,7 +218,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L460",
       "evidenceSymbol": "RocksDB block cache size in MB.",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "de2029c8c4986b02a2320798150ac545d9005caeb7f1f890bab3dea350f9bd30"
+      "questionSha256": "6fb5f85bffb8bf4f8a4a4e4c2f7f65775fad0af31a93f0a53af3cb14d38b532f"
     },
     {
       "id": "K750-0022",
@@ -226,7 +226,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L389",
       "evidenceSymbol": "if any reject rule matches, reject",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "d04a96228ab3969d4895738900aff3071168498af4d3fb71db48780ab362d820"
+      "questionSha256": "431569af27e95e6abf702b99234a34ce771ff9156c59b9a346d4b4c95099f0f6"
     },
     {
       "id": "K750-0023",
@@ -234,7 +234,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L380",
       "evidenceSymbol": "Comment to add to the user agent",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "b22ed839e2cf0e476d0df62e2d2e8f966c245f1ae20edaaf34761a68b35ed834"
+      "questionSha256": "f00e9406d4484240a9eee82fd85753a6fd4c9a775d1e93639376e6a8f901c349"
     },
     {
       "id": "K750-0024",
@@ -242,7 +242,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L356",
       "evidenceSymbol": "Setting to 0 prevents the preallocation",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "8ab3f064b3e77c140884306a051d116aa27557e6fd785be2d67fa73723a4b32c"
+      "questionSha256": "42766dc29c65e281957225e28cfefaedec732fa4b733d326ea7d9b4fd59dfc98"
     },
     {
       "id": "K750-0025",
@@ -250,7 +250,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L373",
       "evidenceSymbol": "Answer yes to all interactive console questions",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "135a7b32f2a29886677dce9867e30c7446b28ee7ec72d903c631f2ae38074aa4"
+      "questionSha256": "f51a5515c73d797504d3138ba8d68c22ea51eeb632c904a15a819372b310351d"
     },
     {
       "id": "K750-0026",
@@ -258,7 +258,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L339",
       "evidenceSymbol": "Allow the node to accept blocks from RPC while not synced",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "afc5ff0ff62d4f1904d4fb86394c155cab58246af79554f6237656ecabf34263"
+      "questionSha256": "adfc2e8d574c1465e931044075c140a9150d13f96c9a49967d6372b97349cded"
     },
     {
       "id": "K750-0027",
@@ -266,7 +266,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L338",
       "evidenceSymbol": "Reset database before starting node.",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "692a48bdf3d6beea2db5fcad4a6147fc12a8dadbcbdc2d9dc0630a8b6913fbb5"
+      "questionSha256": "6849ef6cc43c17e0d988d6c3f7cecca9745e10b450a155a8093e94831b1217f6"
     },
     {
       "id": "K750-0028",
@@ -274,7 +274,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/kaspad/src/args.rs#L412",
       "evidenceSymbol": "Disable gRPC server",
       "sourceSha256": "ecd20afb46f75749fe912a7054973694ce032031a7e56c44b60d9f9098a5a248",
-      "questionSha256": "d9ad45030bf39309395036c13c045c226df4a169584126f5d2054a469e526f4d"
+      "questionSha256": "793c2356790db8a17b7ec032364d776cd153e261963edbb14f333df8772553a3"
     },
     {
       "id": "K750-0029",
@@ -282,7 +282,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/hint.rs#L4",
       "evidenceSymbol": "prevent phishing attacks.",
       "sourceSha256": "e4b1e5e74dd67be5f1f9051c383dd3bd8a3472c3beb8a5c03f52efc5af20cd91",
-      "questionSha256": "ffe0c3b44c974347f86bc89fd17a6e6072875ff8e237957ba910b7510439267f"
+      "questionSha256": "eb2a762b5e023750ce7bb7df6b9f9a73000864272ff9398e8c0eef7804a59416"
     },
     {
       "id": "K750-0030",
@@ -290,7 +290,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/wallet.rs#L93",
       "evidenceSymbol": "BorshSerialize::serialize(&self.user_hint, writer)?",
       "sourceSha256": "61923e5d4988b6704c3a2d81cae35f98067837ba576334d548f82403fa7276ff",
-      "questionSha256": "2f9fa29376dd3b189249184b816aaab75bca947816ef0985a8b13a2cb9f8db5f"
+      "questionSha256": "dd25ec4e3c2f0683a4e4204896a6a7b28bcb27a71416d4c4a056f415bf692a29"
     },
     {
       "id": "K750-0031",
@@ -298,7 +298,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/wallet.rs#L52",
       "evidenceSymbol": "BorshDeserialize::try_from_slice(bytes.as_slice())?",
       "sourceSha256": "61923e5d4988b6704c3a2d81cae35f98067837ba576334d548f82403fa7276ff",
-      "questionSha256": "bce2217262d11856aed08143efc8f2add3a03f55fbceb0182aff3649e90714e2"
+      "questionSha256": "c0cc61bed0f57f4c7392d356d58c14b8a202f9887c957366c5f7ca43065e3bfb"
     },
     {
       "id": "K750-0032",
@@ -306,7 +306,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/wallet.rs#L39",
       "evidenceSymbol": "transactions: None",
       "sourceSha256": "61923e5d4988b6704c3a2d81cae35f98067837ba576334d548f82403fa7276ff",
-      "questionSha256": "00681facc43e8496c2e7003acdad8333fc550b30e42dc28d049288b8ef752cf1"
+      "questionSha256": "c9bcad85bc7552e7161704602f99e3afa99b7e2819005c24e0bb0681f02f3f23"
     },
     {
       "id": "K750-0033",
@@ -314,7 +314,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/wallet.rs#L114",
       "evidenceSymbol": "if version > Self::STORAGE_VERSION",
       "sourceSha256": "61923e5d4988b6704c3a2d81cae35f98067837ba576334d548f82403fa7276ff",
-      "questionSha256": "0eb5f4ed68deb0c50c85d40c33de4c977738fea90ade843ed63d11d2dcf96d59"
+      "questionSha256": "68420e3db6a6bbe3a84feedb064de9881d629e6c1d98592c7cbb660ad5837335"
     },
     {
       "id": "K750-0034",
@@ -322,7 +322,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/wallet.rs#L55",
       "evidenceSymbol": "Err(Error::NoWalletInStorage",
       "sourceSha256": "61923e5d4988b6704c3a2d81cae35f98067837ba576334d548f82403fa7276ff",
-      "questionSha256": "c83f3114d473a3f54f5f205941157c19bd56683db40d63e0ff1ba197d4b23456"
+      "questionSha256": "bda841577fbf021e88084fd4b7048471eb27bc32fcbdc3ec1d61677fe1cd9442"
     },
     {
       "id": "K750-0035",
@@ -330,7 +330,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/wallet.rs#L44",
       "evidenceSymbol": "Error::Chacha20poly1305(e) => Error::WalletDecrypt(e)",
       "sourceSha256": "61923e5d4988b6704c3a2d81cae35f98067837ba576334d548f82403fa7276ff",
-      "questionSha256": "e1035ffd98e0948bd3a913da3b302a9c581b2874523e4f5b449506823728beae"
+      "questionSha256": "1df83ec8067bdf9da31b97bfdfc941a570bccdfe9170436f834db8abbe3c0b5e"
     },
     {
       "id": "K750-0036",
@@ -338,7 +338,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/storage.rs#L70",
       "evidenceSymbol": "workflow_store::fs::remove(self.filename()).await?",
       "sourceSha256": "15d75440316adb53b36c7bd9732d8754119f0a33011079d5bacccd3cdcbdbcf6",
-      "questionSha256": "21ff91fa5f5e39fb607e58c8abd19bee6c9bc88afc0555adafe2d6a6f8254db5"
+      "questionSha256": "efbc902e415ee9a0c3bc30786a648ae6fd0c41f67be49c1b60057c0f8dcfa046"
     },
     {
       "id": "K750-0037",
@@ -346,7 +346,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/storage.rs#L47",
       "evidenceSymbol": "pub fn try_new_with_folder",
       "sourceSha256": "15d75440316adb53b36c7bd9732d8754119f0a33011079d5bacccd3cdcbdbcf6",
-      "questionSha256": "d348aa324ba9d47563d099c4aa1df9e42fd8eef138207ef4716a527ccc51b86c"
+      "questionSha256": "72087ffb8a4e87b776103057325585533a867cea035b9fab3a1c3db775ce1442"
     },
     {
       "id": "K750-0038",
@@ -354,7 +354,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/local/storage.rs#L90",
       "evidenceSymbol": "fs::create_dir_all(dir).await?",
       "sourceSha256": "15d75440316adb53b36c7bd9732d8754119f0a33011079d5bacccd3cdcbdbcf6",
-      "questionSha256": "058be085f70a4d0a00f95ad7b3d8c6013d8db6ede8a6c58f10fc6370923cc334"
+      "questionSha256": "4982cef5ff2bec09de61df7b42eac6e220f79da4b1721814623f543dfe060d25"
     },
     {
       "id": "K750-0039",
@@ -362,7 +362,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/cryptobox.rs#L26",
       "evidenceSymbol": "ChaChaBox::new(peer_public_key, secret_key)",
       "sourceSha256": "1aa3ce807f039a073574d21338ef5dd23947d545b16396b14b7988fedf024930",
-      "questionSha256": "800af522efb919ad8d437abe7aa8f1daaf928b5417936190f39317033373acf7"
+      "questionSha256": "fa1c33fe06a1e0c85aad80a41894a9b07255ecf492daace04def1c18bcd94862"
     },
     {
       "id": "K750-0040",
@@ -370,7 +370,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/cryptobox.rs#L40",
       "evidenceSymbol": "ChaChaBox::generate_nonce(&mut OsRng)",
       "sourceSha256": "1aa3ce807f039a073574d21338ef5dd23947d545b16396b14b7988fedf024930",
-      "questionSha256": "02f9121b9e15179a2521cfb52ed3b35f7677f0cfbf7c0b44e09d33ea003f7cfd"
+      "questionSha256": "ab7bbab5f5768a90a7fdd9276c1cff3826319d5b22b713d8e5dac12e906e3bf9"
     },
     {
       "id": "K750-0041",
@@ -378,7 +378,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/cryptobox.rs#L41",
       "evidenceSymbol": "nonce.into_iter().chain",
       "sourceSha256": "1aa3ce807f039a073574d21338ef5dd23947d545b16396b14b7988fedf024930",
-      "questionSha256": "84c4ed529308b998f4e51cf79ed398bfd148a45ba9d8f941cfecc92866adc1e0"
+      "questionSha256": "7dca2dec2bda49b66edda5ba9029646227fabfc36ce2cbf6dfd736836df7070b"
     },
     {
       "id": "K750-0042",
@@ -386,7 +386,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/cryptobox.rs#L46",
       "evidenceSymbol": "Error::CipherMessageTooShort",
       "sourceSha256": "1aa3ce807f039a073574d21338ef5dd23947d545b16396b14b7988fedf024930",
-      "questionSha256": "797fe0a614c9919f713bf2e059095c6283c04f08086f6e5bd6bb390533e236f2"
+      "questionSha256": "14ac18339148980bb1d5949f0bb2f1cdb9086069f9b96044b6bcd745e9a88fad"
     },
     {
       "id": "K750-0043",
@@ -394,7 +394,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/keydata/data.rs#L150",
       "evidenceSymbol": "PrvKeyDataVariant::SecretKey(_) => Err(Error::XPrvSupport)",
       "sourceSha256": "2c0b4c5df7209539a0c9ecc895958dd79eb0b6caed7899efcb7dcccdce6f4e19",
-      "questionSha256": "f63179585f410eb1975a39a0b862566a951cfcd26ebb6ab8970f9c678c166f81"
+      "questionSha256": "28cfccef22b34b37300019eeb2f7e5c1a118844e14bcf64c3cd4718eb75be9e1"
     },
     {
       "id": "K750-0044",
@@ -402,7 +402,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/keydata/data.rs#L154",
       "evidenceSymbol": "pub fn as_mnemonic(&self)",
       "sourceSha256": "2c0b4c5df7209539a0c9ecc895958dd79eb0b6caed7899efcb7dcccdce6f4e19",
-      "questionSha256": "a1d38e606819410232bf62d56b9cc0e696639f02b71bd2f7503d137ab55ff84a"
+      "questionSha256": "a20b12c310a7c81f0a3d1cfcfcdbde4d3d63e35bc6517ce97555d8e7d21d3ee9"
     },
     {
       "id": "K750-0045",
@@ -410,7 +410,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/keydata/data.rs#L238",
       "evidenceSymbol": "prv_key_data.encrypt(payment_secret, encryption_kind)?",
       "sourceSha256": "2c0b4c5df7209539a0c9ecc895958dd79eb0b6caed7899efcb7dcccdce6f4e19",
-      "questionSha256": "5352076074dc5b4167c741c6e937f11b65ee933529e2ed83494b6c91c2bec5d8"
+      "questionSha256": "b625a11e273494a0e31879942f98134af933a429e2061e70753e8b8891a4ae1f"
     },
     {
       "id": "K750-0046",
@@ -418,7 +418,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/keydata/data.rs#L81",
       "evidenceSymbol": "secret_key.secret_bytes().to_vec().to_hex()",
       "sourceSha256": "2c0b4c5df7209539a0c9ecc895958dd79eb0b6caed7899efcb7dcccdce6f4e19",
-      "questionSha256": "d70239cefd1113bdb8c635ea4d906178cecfa91707e7843025d1e2aacbd94050"
+      "questionSha256": "ab76909c87843157bf85d6f17feeb962855b3fc866c7cc128f3d0d4a3a3d6d15"
     },
     {
       "id": "K750-0047",
@@ -426,7 +426,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/core/src/storage/keydata/data.rs#L84",
       "evidenceSymbol": "pub fn get_string(&self) -> Zeroizing<String>",
       "sourceSha256": "2c0b4c5df7209539a0c9ecc895958dd79eb0b6caed7899efcb7dcccdce6f4e19",
-      "questionSha256": "23e5daea885a70a823fc9d3083098c19647e1af7326ac2b58fc4b8e4301448f3"
+      "questionSha256": "402779864b67a6b9fd8069ef6e1efe056f636a6266039c666bfd725fb0f27734"
     },
     {
       "id": "K750-0048",
@@ -434,7 +434,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/README.md#L46",
       "evidenceSymbol": "without arguments (on a new installation)",
       "sourceSha256": "6609aaad93a49a839bc6b8ee29ac6f2fc05a3837bf04177fc711a778832cdf74",
-      "questionSha256": "5aea219151ec56d02e93d897af6387c08f630f42cbf7fc8ea9b6edc963a61293"
+      "questionSha256": "4094c11d724b7f3f817088904e3eaecb07065985d79bcb7b3d872fa3e8a7a25f"
     },
     {
       "id": "K750-0049",
@@ -442,7 +442,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/README.md#L44",
       "evidenceSymbol": "configures the server address for wRPC Borsh connection",
       "sourceSha256": "6609aaad93a49a839bc6b8ee29ac6f2fc05a3837bf04177fc711a778832cdf74",
-      "questionSha256": "c6d6769e5da33554ab467318e743b6a3458fc3119ea60159063165c25e907e62"
+      "questionSha256": "91eaf62b8f69278d1e6cbf4067fa1ce31e335d4b15c1d3d616d7b3e91ce7af96"
     },
     {
       "id": "K750-0050",
@@ -450,7 +450,7 @@
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/01b532e8b553523216471682649693af92f0fd16/wallet/README.md#L50",
       "evidenceSymbol": "commands to mute and toggle specific types of notifications",
       "sourceSha256": "6609aaad93a49a839bc6b8ee29ac6f2fc05a3837bf04177fc711a778832cdf74",
-      "questionSha256": "5f046e032ffb465837cadcc72049462267bcd14ad7652931adc3de00cd329942"
+      "questionSha256": "db2ca42d8395f41054b6f6f1aa795d0272b502c60ac71e01408b2d3fdc69cc30"
     }
   ],
   "overlapReview": [
