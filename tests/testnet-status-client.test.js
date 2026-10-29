@@ -6,9 +6,14 @@ import { clientFixture, deferred, json, aborted } from './helpers/client-fixture
 const source = readFileSync(new URL('../public/play/assets/testnet-status.js', import.meta.url), 'utf8');
 const settle = () => new Promise(setImmediate);
 const status = (patch = {}) => ({ ok: true, enabled: true, enrollment: { enabled: true }, records: [{ state: 'queued' }], ...patch });
-async function setup(reply = () => json(status()), withDashboard = false) {
-  const requests = [], listeners = new Map();
-  const ui = clientFixture(async (url, options) => { requests.push({ url, options }); return reply(options, requests.length); });
+async function setup(reply = () => json(status()), withDashboard = false, sessionReply = null) {
+  const requests = [], sessions = [], listeners = new Map();
+  const ui = clientFixture(async (url, options) => {
+    // The guest-first session bootstrap is recorded separately so existing request counts
+    // keep describing the rewards read they were written against (issue #183).
+    if (url === '/api/session') { sessions.push({ url, options }); return sessionReply || json({ ok: true }); }
+    requests.push({ url, options }); return reply(options, requests.length);
+  });
   const panel = ui.node('[data-testnet-status]'); panel.hidden = true;
   let dashboard;
   if (withDashboard) {
@@ -18,7 +23,7 @@ async function setup(reply = () => json(status()), withDashboard = false) {
   }
   ui.document.addEventListener = (name, handler) => listeners.set(name, handler);
   ui.run(source); await settle();
-  return { ...ui, requests, panel, dashboard,
+  return { ...ui, requests, sessions, panel, dashboard,
     async documentEvent(name) { await listeners.get(name)?.(); await settle(); },
     async fire(delay = 15000) {
       const [id, timer] = [...ui.timers].find(([, t]) => t.delay === delay) || [];
@@ -26,6 +31,37 @@ async function setup(reply = () => json(status()), withDashboard = false) {
     }
   };
 }
+
+test('a guest is given the shared session bootstrap before the rewards read, so no 401 is requested', async () => {
+  const ui = await setup(() => json(status({ enrollment: null, records: [] })));
+  assert.equal(ui.sessions.length, 1);
+  assert.equal(ui.sessions[0].url, '/api/session');
+  assert.equal(ui.sessions[0].options.method, 'POST');
+  assert.equal(ui.sessions[0].options.credentials, 'same-origin');
+  assert.equal(ui.sessions[0].options.body, '{}');
+  assert.equal(ui.requests.length, 1);
+  assert.equal(ui.requests[0].url, '/api/rewards/?service=testnet');
+  // A guest without enrollment stays quiet on the panel-only play page (nothing at all).
+  assert.equal(ui.panel.hidden, true); assert.equal(ui.panel.textContent, '');
+  // The rewards dashboard shows the neutral signed-out state instead of a failed read,
+  // later polls skip the bootstrap (one session per visit), and polling continues.
+  const dashboard = await setup(() => json(status({ enrollment: null, records: [] })), true);
+  assert.equal(dashboard.requests.length, 1);
+  assert.match(dashboard.panel.textContent, /Saving an address does not enroll/);
+  await dashboard.fire();
+  assert.equal(dashboard.sessions.length, 1);
+  assert.equal(dashboard.requests.length, 2);
+});
+
+test('a failed session bootstrap never sends the rewards read and retries the bootstrap quietly', async () => {
+  const ui = await setup(() => json(status()), false, json({}, 503));
+  assert.equal(ui.sessions.length, 1);
+  assert.equal(ui.requests.length, 0);
+  assert.equal(ui.panel.hidden, true); assert.equal(ui.panel.textContent, '');
+  await ui.fire();
+  assert.equal(ui.sessions.length, 2);
+  assert.equal(ui.requests.length, 0);
+});
 
 test('player status uses private canonical reads and distinguishes queued, paused and confirmed payments', async () => {
   let payload = status();
