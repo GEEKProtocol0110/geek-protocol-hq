@@ -5,7 +5,7 @@
   "independentReview": false,
   "scope": "All active static rows in the category registry, including source-checked rows; excludes retired lookup-only and held CCE rows.",
   "limit": "Heuristic screening and internal pair triage are not exhaustive semantic, factual, category, licensing or difficulty review. Unflagged drafts still need item-by-item primary-source review.",
-  "corpusHash": "fd12d872efe37639ec479ecdc0c2c9a091b48835bb2bf08b96b1fe6730b036ee",
+  "corpusHash": "25fac8ef73f18cab4010cdf3606dc025ab866cfa235a26889f498941ea35c2a9",
   "active": 8439,
   "recordedSourceChecks": 876,
   "needsFactualReview": 7563,

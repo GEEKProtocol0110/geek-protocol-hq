@@ -4,9 +4,9 @@
   "requiredCategories": 8,
   "bankReady": false,
   "active": 8439,
-  "practiceOnly": 129,
-  "reviewed": 876,
-  "remaining": 7124,
+  "practiceOnly": 205,
+  "reviewed": 800,
+  "remaining": 7200,
   "categories": [
     {
       "id": "kaspa",
@@ -46,16 +46,16 @@
       "id": "science-fiction",
       "name": "Science fiction",
       "active": 514,
-      "practiceOnly": 0,
-      "reviewed": 37,
-      "needsReview": 477,
+      "practiceOnly": 37,
+      "reviewed": 0,
+      "needsReview": 514,
       "target": 1000,
-      "remaining": 963,
+      "remaining": 1000,
       "additionalQuestionsNeeded": 486,
       "tiers": {
-        "easy": 9,
-        "medium": 18,
-        "hard": 10
+        "easy": 0,
+        "medium": 0,
+        "hard": 0
       },
       "ready": false
     },
@@ -114,16 +114,16 @@
       "id": "comics",
       "name": "Comics",
       "active": 413,
-      "practiceOnly": 14,
-      "reviewed": 40,
-      "needsReview": 373,
+      "practiceOnly": 53,
+      "reviewed": 1,
+      "needsReview": 412,
       "target": 1000,
-      "remaining": 960,
+      "remaining": 999,
       "additionalQuestionsNeeded": 587,
       "tiers": {
-        "easy": 17,
-        "medium": 16,
-        "hard": 7
+        "easy": 1,
+        "medium": 0,
+        "hard": 0
       },
       "ready": false
     },

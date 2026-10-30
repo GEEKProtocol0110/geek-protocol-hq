@@ -2,21 +2,21 @@
 window.GEEK_QUESTION_COUNTS = Object.freeze({
   "kaspa": 766,
   "video-games": 601,
-  "science-fiction": 514,
+  "science-fiction": 477,
   "technology": 1485,
   "movies": 1490,
   "history": 1488,
-  "comics": 399,
+  "comics": 360,
   "pop-culture": 1567
 });
 // Practice-only, unranked draft rows (not source-checked; excluded from ranked selection).
 window.GEEK_PRACTICE_ONLY_COUNTS = Object.freeze({
   "kaspa": 100,
   "video-games": 0,
-  "science-fiction": 0,
+  "science-fiction": 37,
   "technology": 0,
   "movies": 0,
   "history": 14,
-  "comics": 14,
+  "comics": 53,
   "pop-culture": 1
 });
