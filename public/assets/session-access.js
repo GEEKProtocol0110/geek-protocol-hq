@@ -1,17 +1,37 @@
 // Shared by visible account controls; no wallet prompt or guest session creation.
 (() => {
+  // Last known session state survives page loads and new tabs (localStorage), so a 429/5xx status
+  // check never looks like sign-out. The freshness stamp is per tab (sessionStorage).
+  const KEY = 'geek:last-session-state', CHECKED = 'geek:last-session-checked', FRESH_MS = 15000;
+  const area = name => { try { return window[name] || null; } catch { return null; } };
+  const recall = () => { try { return area('localStorage')?.getItem(KEY) ?? area('sessionStorage')?.getItem(KEY) ?? null; } catch { return null; } };
+  const fresh = () => { try { return Date.now() - Number(area('sessionStorage')?.getItem(CHECKED) || 0) < FRESH_MS; } catch { return false; } };
+  // The nav reflects the known session with no extra request; unknown keeps the safe default "Sign in".
+  const navLinks = () => [...document.querySelectorAll('[data-nav]')].flatMap(nav => [...nav.querySelectorAll('a')])
+    .filter(a => a.getAttribute('href') === '/sign-in/').concat([...document.querySelectorAll('[data-nav-account]')]);
+  const nav = state => navLinks().forEach(a => {
+    a.textContent = state === 'signed-in' ? 'Account' : 'Sign in';
+    a.setAttribute('aria-label', state === 'signed-in' ? 'Account: you’re signed in' : 'Sign in');
+  });
+  const remember = signedIn => {
+    const value = signedIn ? 'signed-in' : 'signed-out';
+    try { area('localStorage')?.setItem(KEY, value); } catch {}
+    try { area('sessionStorage')?.setItem(KEY, value); area('sessionStorage')?.setItem(CHECKED, String(Date.now())); } catch {}
+    nav(value);
+  };
+  if (recall() === 'signed-in') nav('signed-in');
   const buttons = [...document.querySelectorAll('[data-sign-out]')];
-  if (!buttons.length) return;
+  // Pages without account controls still follow announced status changes for the nav.
+  if (!buttons.length) {
+    document.addEventListener('geek:account-status', event => remember(Boolean(event.detail?.signedIn || event.detail?.walletLinked)));
+    return;
+  }
+  // On /sign-in the page status region owns retry messages; this script never repeats them there.
+  const ownsMessages = !document.querySelectorAll('[data-passkeys]').length;
   const messages = [...document.querySelectorAll('[data-sign-out-status]')];
   let pending = false, signedOut = false, revision = 0;
   const show = visible => buttons.forEach(button => { button.hidden = !visible; });
   const message = text => messages.forEach(node => { node.textContent = text; });
-  // Last known session state survives page loads so a 429/5xx status check never looks like sign-out.
-  const KEY = 'geek:last-session-state', CHECKED = 'geek:last-session-checked', FRESH_MS = 15000;
-  const store = () => { try { return window.sessionStorage || null; } catch { return null; } };
-  const recall = () => { try { return store()?.getItem(KEY) ?? null; } catch { return null; } };
-  const remember = signedIn => { try { store()?.setItem(KEY, signedIn ? 'signed-in' : 'signed-out'); store()?.setItem(CHECKED, String(Date.now())); } catch {} };
-  const fresh = () => { try { return Date.now() - Number(store()?.getItem(CHECKED) || 0) < FRESH_MS; } catch { return false; } };
   // Seconds from Retry-After, or from the body's retryAfter / reset (epoch ms). Always a bounded number.
   const retrySeconds = (response, payload) => {
     const header = Number.parseInt(response?.headers?.get?.('Retry-After') ?? '', 10);
@@ -22,7 +42,7 @@
   let retryTimer = null;
   const unknown = (seconds = null) => {
     if (recall() === 'signed-in') show(true);
-    message(seconds === null ? 'We couldn’t check your sign-in right now. Your session has not changed. Try again in a moment.'
+    if (ownsMessages) message(seconds === null ? 'We couldn’t check your sign-in right now. Your session has not changed. Try again in a moment.'
       : `Temporarily rate limited. Your session has not changed. Try again in ${seconds} seconds.`);
     if (seconds !== null) { clearTimeout(retryTimer); retryTimer = setTimeout(() => { retryTimer = null; refresh(); }, seconds * 1000); }
   };
@@ -54,7 +74,7 @@
     for (const area of ['localStorage', 'sessionStorage']) {
       try { const s = window[area]; for (const key of ACCOUNT_KEYS) s?.removeItem?.(key); } catch { /* storage is optional */ }
     }
-    try { window.sessionStorage?.removeItem?.(CHECKED); } catch {}
+    try { area('sessionStorage')?.removeItem?.(CHECKED); } catch {}
   };
   const signOut = async () => {
     if (pending || signedOut) return;
@@ -79,7 +99,12 @@
     if (!pending && !signedOut) { revision++; const known = Boolean(event.detail.signedIn || event.detail.walletLinked); remember(known); show(known); }
   });
   // The initial page-load announcement already carried its status via geek:account-status; refetching it was a duplicate request.
-  for (const name of ['geek:signed-in', 'geek:passkey-signed-in', 'geek:device-signed-in']) document.addEventListener(name, event => { if (!event?.detail?.initial) refresh(); });
+  // A completed sign-in shows Sign out immediately (and on the next page) before any status refetch.
+  for (const name of ['geek:signed-in', 'geek:passkey-signed-in', 'geek:device-signed-in']) document.addEventListener(name, event => {
+    if (pending || signedOut) return;
+    remember(true); show(true); message('');
+    if (!event?.detail?.initial) refresh();
+  });
   document.addEventListener('geek:account-status-unknown', event => { if (!pending && !signedOut) unknown(event.detail?.retryAfter ?? null); });
   window.addEventListener('pageshow', event => { if (event.persisted) refresh(); });
   // Dedupe: the sign-in page's passkey panel already fetches status and reports it by event,

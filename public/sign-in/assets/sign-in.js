@@ -71,9 +71,19 @@
     }
   });
   document.addEventListener('geek:device-unavailable', event => {
-    // An unavailable status check is not a sign-out: keep the last known state and show a fixed retry message.
-    let last = null; try { last = window.sessionStorage?.getItem('geek:last-session-state'); } catch {}
-    if (!signedIn && last === 'signed-in') { signedIn = true; showSignedIn('You’re signed in.'); }
+    // An unavailable status check is not a sign-out. This status region is the single owner of the
+    // retry message, and no sign-in or create-account form is offered while the state is unconfirmed.
+    let last = null;
+    try { last = window.localStorage?.getItem('geek:last-session-state') ?? window.sessionStorage?.getItem('geek:last-session-state') ?? null; } catch {}
+    const known = signedIn || last === 'signed-in';
+    for (const selector of ['[data-passkey-login-area]', '[data-passkey-new]', '[data-passkey-account]', '[data-wallet-methods]', '[data-device-access]']) {
+      for (const node of document.querySelectorAll(selector)) node.hidden = true;
+    }
+    if (known) { signedIn = true; showSignedIn('You’re signed in.'); }
+    else {
+      hq.hidden = true;
+      for (const node of document.querySelectorAll('[data-sign-in-guest]')) node.hidden = true;
+    }
     const seconds = Number(event?.detail?.retryAfter);
     status.textContent = Number.isFinite(seconds) && seconds > 0
       ? `Temporarily rate limited. Your session has not changed. Try again in ${Math.round(seconds)} seconds.`
