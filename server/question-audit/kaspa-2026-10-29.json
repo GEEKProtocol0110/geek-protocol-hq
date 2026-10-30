@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "reviewedAt": "2026-10-29",
+  "dateBasis": "America/Detroit",
+  "task": "BANK-009",
+  "reviewKind": "internal-primary-source-kaspa-cross-item-leak-batch",
+  "independentReview": false,
+  "difficultyCalibration": "provisional-editorial",
+  "scope": "Four Kaspa items from the PR #180 audit whose options or explanation reveal another active item's key. All other PR #180 wording/distractor/volatile edits are withdrawn so existing identities, text and review fingerprints stay unchanged.",
+  "baselineCommit": "29ed0436592d9dcc0c46183b4a648ac29e175ad5",
+  "replacements": [
+    {
+      "category": "kaspa",
+      "id": "KASPA-0501-Re583c05838",
+      "fromIds": [
+        "KASPA-0501"
+      ],
+      "gradingHash": "e583c058381b0ebf99adeeeb3d0864f62998737c9c89e6ccc412c54bea425f48",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/master/crypto/addresses/src/lib.rs",
+      "supportingSources": [],
+      "sourceClaim": "rusty-kaspa Prefix enum maps Mainnet/Testnet/Simnet/Devnet to kaspa/kaspatest/kaspasim/kaspadev.",
+      "distractorReview": [
+        "kaspamain:: not a Prefix variant in rusty-kaspa crypto/addresses.",
+        "Key: Prefix::Mainnet renders as kaspa.",
+        "0x: Ethereum-style hex prefix, not a Kaspa address prefix.",
+        "bc1: Bitcoin bech32 prefix."
+      ],
+      "contextDecision": "Distractor kaspatest: is the keyed answer of KASPA-0502, so a round containing both items leaks an answer. Replace it with a non-existent prefix; key unchanged."
+    },
+    {
+      "category": "kaspa",
+      "id": "KASPA-0502-R8ff83eedfc",
+      "fromIds": [
+        "KASPA-0502"
+      ],
+      "gradingHash": "8ff83eedfcd57d2c98af977bece9d27455cee1f8bad3b0e0519bfb8df0c84ddc",
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/master/crypto/addresses/src/lib.rs",
+      "supportingSources": [],
+      "sourceClaim": "rusty-kaspa Prefix enum maps Mainnet/Testnet/Simnet/Devnet to kaspa/kaspatest/kaspasim/kaspadev.",
+      "distractorReview": [
+        "Key: Prefix::Testnet renders as kaspatest.",
+        "kaspadev: Prefix::Devnet, not testnet.",
+        "kaspasim: Prefix::Simnet, not testnet.",
+        "kaspatestnet:: not a Prefix variant."
+      ],
+      "contextDecision": "Distractor kaspa: is the keyed answer of KASPA-0501, so a round containing both items leaks an answer. Replace distractors with other real non-testnet prefixes and a near-miss; key unchanged."
+    },
+    {
+      "category": "kaspa",
+      "id": "KRC20-2026-002-Rfafa1fea73",
+      "fromIds": [
+        "KRC20-2026-002"
+      ],
+      "gradingHash": "fafa1fea7348e2d8b45030277f1ec2c54c3f24d57e552f18fd2d152e96b0ed58",
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/krc20.ts",
+      "supportingSources": [],
+      "sourceClaim": "transferByPayload throws unless data.to and data.amt are provided.",
+      "distractorReview": [
+        "lim: a mint-limit deploy field, not the transfer quantity.",
+        "memo: not a field checked by transferByPayload.",
+        "Key: transferByPayload requires data.amt.",
+        "p: protocol tag, not quantity."
+      ],
+      "contextDecision": "Distractor to is the keyed answer of KRC20-2026-003 and that item's explanation names amt, so the pair leaks answers. Replace to with lim and name the SDK instead of 'the cited' method; key unchanged."
+    },
+    {
+      "category": "kaspa",
+      "id": "KRC20-2026-003-R2f503d98bb",
+      "fromIds": [
+        "KRC20-2026-003"
+      ],
+      "gradingHash": "2f503d98bb7c54a96c4b104d2a51ac190de86e5562a0ac729fd89798b884c6cc",
+      "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/krc20.ts",
+      "supportingSources": [],
+      "sourceClaim": "transferByPayload throws unless data.to and data.amt are provided.",
+      "distractorReview": [
+        "Key: transferByPayload requires data.to.",
+        "dec: deploy decimals field.",
+        "max: deploy max-supply field.",
+        "pre: deploy pre-allocation field."
+      ],
+      "contextDecision": "Explanation named amt, the keyed answer of KRC20-2026-002. Remove it and name the SDK instead of 'the cited' method; options and key unchanged."
+    }
+  ],
+  "retirements": [
+    {
+      "category": "kaspa",
+      "id": "KASPA-0501",
+      "gradingHash": "80f22beeedd2eaf286cfcfceab391408b0538866a5d4211c9850c7030c079de9",
+      "reason": "source-correction",
+      "note": "Distractor kaspatest: is the keyed answer of KASPA-0502, so a round containing both items leaks an answer. Replace it with a non-existent prefix; key unchanged. Canonical replacement: KASPA-0501-Re583c05838.",
+      "canonicalId": "KASPA-0501-Re583c05838",
+      "canonicalCategory": "kaspa"
+    },
+    {
+      "category": "kaspa",
+      "id": "KASPA-0502",
+      "gradingHash": "3454d56fa0ebcf9adf48e1e52a6594f5fc6053da204b7ed506c13f0b29d010bb",
+      "reason": "source-correction",
+      "note": "Distractor kaspa: is the keyed answer of KASPA-0501, so a round containing both items leaks an answer. Replace distractors with other real non-testnet prefixes and a near-miss; key unchanged. Canonical replacement: KASPA-0502-R8ff83eedfc.",
+      "canonicalId": "KASPA-0502-R8ff83eedfc",
+      "canonicalCategory": "kaspa"
+    },
+    {
+      "category": "kaspa",
+      "id": "KRC20-2026-002",
+      "gradingHash": "fbd5e22a05346ef4a84ae86eb197d5754abc495927610722b2c722c514091456",
+      "reason": "source-correction",
+      "note": "Distractor to is the keyed answer of KRC20-2026-003 and that item's explanation names amt, so the pair leaks answers. Replace to with lim and name the SDK instead of 'the cited' method; key unchanged. Canonical replacement: KRC20-2026-002-Rfafa1fea73.",
+      "canonicalId": "KRC20-2026-002-Rfafa1fea73",
+      "canonicalCategory": "kaspa"
+    },
+    {
+      "category": "kaspa",
+      "id": "KRC20-2026-003",
+      "gradingHash": "31f0e581ccd6e72576dbf6b4739f9c8f732fc74d8cd1da0e447275f114b79ce3",
+      "reason": "source-correction",
+      "note": "Explanation named amt, the keyed answer of KRC20-2026-002. Remove it and name the SDK instead of 'the cited' method; options and key unchanged. Canonical replacement: KRC20-2026-003-R2f503d98bb.",
+      "canonicalId": "KRC20-2026-003-R2f503d98bb",
+      "canonicalCategory": "kaspa"
+    }
+  ]
+}

@@ -3110,9 +3110,37 @@
       "reason": "invalid-options",
       "note": "Binary hardware-upgrade question padded with a medicine and a body part; broad RAM-capacity premise also lacks platform support. Retire without adding a second RAM question.",
       "answerKeyHash": "9b4deccb1801583c3819c61678b26bb5a930ba12909119b8bed8e6a7ec842812"
+    },
+    {
+      "category": "kaspa",
+      "id": "KASPA-0501",
+      "reason": "source-correction",
+      "note": "Distractor kaspatest: is the keyed answer of KASPA-0502, so a round containing both items leaks an answer. Replace it with a non-existent prefix; key unchanged. Canonical replacement: KASPA-0501-Re583c05838.",
+      "answerKeyHash": "80f22beeedd2eaf286cfcfceab391408b0538866a5d4211c9850c7030c079de9"
+    },
+    {
+      "category": "kaspa",
+      "id": "KASPA-0502",
+      "reason": "source-correction",
+      "note": "Distractor kaspa: is the keyed answer of KASPA-0501, so a round containing both items leaks an answer. Replace distractors with other real non-testnet prefixes and a near-miss; key unchanged. Canonical replacement: KASPA-0502-R8ff83eedfc.",
+      "answerKeyHash": "3454d56fa0ebcf9adf48e1e52a6594f5fc6053da204b7ed506c13f0b29d010bb"
+    },
+    {
+      "category": "kaspa",
+      "id": "KRC20-2026-002",
+      "reason": "source-correction",
+      "note": "Distractor to is the keyed answer of KRC20-2026-003 and that item's explanation names amt, so the pair leaks answers. Replace to with lim and name the SDK instead of 'the cited' method; key unchanged. Canonical replacement: KRC20-2026-002-Rfafa1fea73.",
+      "answerKeyHash": "fbd5e22a05346ef4a84ae86eb197d5754abc495927610722b2c722c514091456"
+    },
+    {
+      "category": "kaspa",
+      "id": "KRC20-2026-003",
+      "reason": "source-correction",
+      "note": "Explanation named amt, the keyed answer of KRC20-2026-002. Remove it and name the SDK instead of 'the cited' method; options and key unchanged. Canonical replacement: KRC20-2026-003-R2f503d98bb.",
+      "answerKeyHash": "31f0e581ccd6e72576dbf6b4739f9c8f732fc74d8cd1da0e447275f114b79ce3"
     }
   ],
-  "retirementCount": 403,
+  "retirementCount": 407,
   "newLicensedImportsRetired": 258,
   "activeNewLicensedImportsPending": 3598,
   "activeDraftQuestions": 7516,
@@ -3167,7 +3195,7 @@
     }
   },
   "importCountCorrection": "The previous prose total of 3,868 licensed additions was incorrect: the original active snapshot has 3,856 new draft imports and 168 new source-checked authored items (92 Kaspa, 39 Comics, 37 Science Fiction).",
-  "maintainedAt": "2026-10-28",
+  "maintainedAt": "2026-10-29",
   "followUpAudits": [
     {
       "date": "2026-10-27",

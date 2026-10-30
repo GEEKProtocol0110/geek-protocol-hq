@@ -2,7 +2,7 @@
   "metadata": {
     "title": "GEEK Protocol — Kaspa Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-08",
+    "maintainedAt": "2026-10-29",
     "questionCount": 176,
     "conceptCount": 176,
     "category": "Kaspa",
@@ -12,10 +12,10 @@
       "hard": 38
     },
     "correctIndexDistribution": {
+      "0": 45,
       "1": 45,
       "2": 55,
-      "3": 31,
-      "0": 45
+      "3": 31
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -867,12 +867,12 @@
       "reviewedAt": "2026-10-01"
     },
     {
-      "id": "KASPA-0501",
+      "id": "KASPA-0501-Re583c05838",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
       "prompt": "Which prefix identifies a Kaspa mainnet address?",
       "options": [
-        "kaspatest:",
+        "kaspamain:",
         "kaspa:",
         "0x",
         "bc1"
@@ -887,19 +887,22 @@
       "volatile": false,
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/master/crypto/addresses/src/lib.rs",
       "reviewStatus": "source-checked",
-      "conceptId": "KASPA-0501",
-      "reviewedAt": "2026-10-01"
+      "conceptId": "KASPA-0501-Re583c05838",
+      "reviewedAt": "2026-10-29",
+      "supersedesQuestionIds": [
+        "KASPA-0501"
+      ]
     },
     {
-      "id": "KASPA-0502",
+      "id": "KASPA-0502-R8ff83eedfc",
       "category": "Kaspa",
       "subcategory": "Wallets & Addresses",
       "prompt": "Which prefix identifies a Kaspa testnet address?",
       "options": [
         "kaspatest:",
-        "test0x",
-        "kaspa:",
-        "tb1"
+        "kaspadev:",
+        "kaspasim:",
+        "kaspatestnet:"
       ],
       "correctIndex": 0,
       "difficulty": "medium",
@@ -911,8 +914,11 @@
       "volatile": false,
       "source": "https://github.com/kaspanet/rusty-kaspa/blob/master/crypto/addresses/src/lib.rs",
       "reviewStatus": "source-checked",
-      "conceptId": "KASPA-0502",
-      "reviewedAt": "2026-10-01"
+      "conceptId": "KASPA-0502-R8ff83eedfc",
+      "reviewedAt": "2026-10-29",
+      "supersedesQuestionIds": [
+        "KASPA-0502"
+      ]
     },
     {
       "id": "KASPA-0503",
@@ -4222,13 +4228,13 @@
       "attribution": "GEEK Protocol; original question based on cited primary source."
     },
     {
-      "id": "KRC20-2026-002",
-      "conceptId": "KRC20-2026-002",
+      "id": "KRC20-2026-002-Rfafa1fea73",
+      "conceptId": "KRC20-2026-002-Rfafa1fea73",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "In the cited Kiwi transferByPayload method, which field supplies the token quantity?",
+      "prompt": "In the Kasplex Kiwi SDK's transferByPayload method, which field supplies the token quantity?",
       "options": [
-        "to",
+        "lim",
         "memo",
         "amt",
         "p"
@@ -4244,16 +4250,19 @@
       "volatile": false,
       "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/krc20.ts",
       "reviewStatus": "source-checked",
-      "reviewedAt": "2026-10-08",
+      "reviewedAt": "2026-10-29",
       "license": "CC BY 4.0",
-      "attribution": "GEEK Protocol; original question based on cited primary source."
+      "attribution": "GEEK Protocol; original question based on cited primary source.",
+      "supersedesQuestionIds": [
+        "KRC20-2026-002"
+      ]
     },
     {
-      "id": "KRC20-2026-003",
-      "conceptId": "KRC20-2026-003",
+      "id": "KRC20-2026-003-R2f503d98bb",
+      "conceptId": "KRC20-2026-003-R2f503d98bb",
       "category": "Kaspa",
       "subcategory": "KRC-20 & Smart Contracts",
-      "prompt": "In the cited Kiwi transferByPayload method, which field supplies the recipient?",
+      "prompt": "In the Kasplex Kiwi SDK's transferByPayload method, which field supplies the recipient?",
       "options": [
         "to",
         "dec",
@@ -4262,7 +4271,7 @@
       ],
       "correctIndex": 0,
       "difficulty": "easy",
-      "funFact": "The method requires to for the recipient and amt for the quantity. These field names describe the cited SDK snapshot.",
+      "funFact": "The method requires to for the recipient. These field names describe the Kasplex Kiwi SDK snapshot.",
       "tags": [
         "kaspa",
         "krc-20",
@@ -4271,9 +4280,12 @@
       "volatile": false,
       "source": "https://github.com/kasplex/sdk-kiwi/blob/06dc75ea1066aba4d78eb32711690f6f123a9575/src/krc20.ts",
       "reviewStatus": "source-checked",
-      "reviewedAt": "2026-10-08",
+      "reviewedAt": "2026-10-29",
       "license": "CC BY 4.0",
-      "attribution": "GEEK Protocol; original question based on cited primary source."
+      "attribution": "GEEK Protocol; original question based on cited primary source.",
+      "supersedesQuestionIds": [
+        "KRC20-2026-003"
+      ]
     },
     {
       "id": "KRC20-2026-004",
