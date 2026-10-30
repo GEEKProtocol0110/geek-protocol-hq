@@ -2,20 +2,20 @@
   "metadata": {
     "title": "GEEK Protocol — Technology Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-28",
+    "maintainedAt": "2026-10-30",
     "questionCount": 1470,
     "conceptCount": 1470,
     "category": "Technology",
     "difficultyDistribution": {
-      "easy": 568,
-      "medium": 603,
-      "hard": 299
+      "easy": 567,
+      "medium": 605,
+      "hard": 298
     },
     "correctIndexDistribution": {
       "0": 372,
       "1": 339,
-      "2": 365,
-      "3": 394
+      "2": 366,
+      "3": 393
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -1233,30 +1233,6 @@
       }
     },
     {
-      "id": "TECH-0080",
-      "category": "Technology",
-      "prompt": "Jupiter, the largest planet in the Solar system, is the ruling planet of which astrological sign?",
-      "options": [
-        "Aries",
-        "Gemini",
-        "Libra",
-        "Sagittarius"
-      ],
-      "correctIndex": 3,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0080",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "TECH-0081",
       "category": "Technology",
       "prompt": "This mineral, an important component of all living creatures cellular membranes, is one of the major minerals required in the structural composition of bones and teeth.",
@@ -1710,30 +1686,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "TECH-0108",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "TECH-0109",
-      "category": "Technology",
-      "prompt": "Which of these statements is true?",
-      "options": [
-        "Humans and elephants are the only mammals that cry.",
-        "Humans are the only mammals that cry.",
-        "All land mammals cry.",
-        "All mammals cry."
-      ],
-      "correctIndex": 0,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0109",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -4476,30 +4428,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "TECH-0270",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "TECH-0271",
-      "category": "Technology",
-      "prompt": "This planet is has the largest group of moons - 31, but it is best known for its ring system.",
-      "options": [
-        "Neptune",
-        "Mars",
-        "Saturn",
-        "Venus"
-      ],
-      "correctIndex": 2,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0271",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -17079,30 +17007,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0958",
-      "category": "Technology",
-      "prompt": "During this month of the pregnancy women go through a lot of mood swings like being easily irritated or start crying when they hear a song on the radio.",
-      "options": [
-        "7th month",
-        "1st month",
-        "9th month",
-        "4th month"
-      ],
-      "correctIndex": 1,
-      "difficulty": "hard",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0958",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "TECH-0959",
       "category": "Technology",
       "prompt": "In geometry, what is the value of the number which is represented by the Greek letter pi (Ï€)?",
@@ -19176,33 +19080,6 @@
       "sourceOrdinal": 1880,
       "id": "TECH-N-f4d51cedb9b6",
       "conceptId": "TECH-N-f4d51cedb9b6",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "The halting problem computability theory was solved in what year?",
-      "options": [
-        "1937",
-        "1956",
-        "1980",
-        "It cannot be solved for all possible cases."
-      ],
-      "correctIndex": 3,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 1059,
-      "id": "TECH-N-476a068a904e",
-      "conceptId": "TECH-N-476a068a904e",
       "category": "Technology",
       "subcategory": "Science Technology",
       "funFact": null,
@@ -36066,33 +35943,6 @@
       "difficulty": "medium"
     },
     {
-      "prompt": "All telephones in the USA were shut down on August 2, 1922. Why?",
-      "options": [
-        "It was the day when Alexander Graham Bell died.",
-        "It was the day for the Orson Welles War of the Worlds radio telecast.",
-        "The International Brotherhod of Communications Workers went on strike.",
-        "The electrical workers in New York, Chicago, and Washington went on strike."
-      ],
-      "correctIndex": 0,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 630,
-      "id": "TECH-N-f625db225471",
-      "conceptId": "TECH-N-f625db225471",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "What do abbreviations Rx, Tx, Hx and Sx mean?",
       "options": [
         "Prescription, Treatment, History and Symptom",
@@ -37630,6 +37480,174 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
+    },
+    {
+      "id": "TECH-ST-016",
+      "conceptId": "TECH-ST-016",
+      "category": "Technology",
+      "subcategory": "Web Protocols",
+      "prompt": "When a URL begins with https:// and names no port, which TCP port does the client connect to by default?",
+      "options": [
+        "443",
+        "80",
+        "21",
+        "25"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "RFC 9110 (HTTP Semantics) says that when the port is empty or not given for an https URI, TCP port 443 is the default. Port 80 is the default for plain http.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9110#section-4.2.2",
+      "tags": [
+        "technology",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "TECH-ST-017",
+      "conceptId": "TECH-ST-017",
+      "category": "Technology",
+      "subcategory": "Networking",
+      "prompt": "How many bits long is an IPv6 address?",
+      "options": [
+        "128",
+        "32",
+        "64",
+        "256"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "RFC 4291 defines IPv6 addresses as 128-bit identifiers. IPv4 addresses are 32 bits.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4291#section-2",
+      "tags": [
+        "technology",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "TECH-ST-018",
+      "conceptId": "TECH-ST-018",
+      "category": "Technology",
+      "subcategory": "Networking",
+      "prompt": "Which Internet system is primarily used to look up the IP addresses of host names such as example.com?",
+      "options": [
+        "ARP",
+        "DHCP",
+        "DNS",
+        "SMTP"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "The Domain Name System (RFC 1034) maps domain names to resources such as host addresses. ARP maps IP to link-layer addresses, DHCP assigns configuration and SMTP transfers mail.",
+      "source": "https://www.rfc-editor.org/rfc/rfc1034",
+      "tags": [
+        "technology",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "TECH-ST-019",
+      "conceptId": "TECH-ST-019",
+      "category": "Technology",
+      "subcategory": "Computing History",
+      "prompt": "Which mathematician described abstract \"automatic machines\" in a 1936 paper, later named after him by Alonzo Church?",
+      "options": [
+        "Kurt Gödel",
+        "John von Neumann",
+        "Claude Shannon",
+        "Alan Turing"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "Turing introduced his \"automatic machines\" in \"On Computable Numbers\" (1936–7); Church named them Turing machines in his 1937 review.",
+      "source": "https://plato.stanford.edu/entries/turing-machine/",
+      "tags": [
+        "technology",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "TECH-ST-020",
+      "conceptId": "TECH-ST-020",
+      "category": "Technology",
+      "subcategory": "Text Encoding",
+      "prompt": "Under RFC 3629, what is the maximum number of bytes UTF-8 uses to encode a single Unicode character?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "8"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "RFC 3629 restricts UTF-8 to U+0000–U+10FFFF, encoded as sequences of 1 to 4 octets. Older ISO 10646 text allowed up to 6 bytes, which RFC 3629 removed.",
+      "source": "https://www.rfc-editor.org/rfc/rfc3629#section-3",
+      "tags": [
+        "technology",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "TECH-ST-021",
+      "conceptId": "TECH-ST-021",
+      "category": "Technology",
+      "subcategory": "Web Basics",
+      "prompt": "Which HTML element creates a clickable hyperlink to another page or resource in a document body?",
+      "options": [
+        "<link>",
+        "<a>",
+        "<nav>",
+        "<href>"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "MDN: the <a> element, with its href attribute, creates a hyperlink. <link> declares a relationship to an external resource, <nav> marks a navigation section, and href is an attribute, not an element.",
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a",
+      "tags": [
+        "technology",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
     }
   ]
 }
