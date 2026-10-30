@@ -135,11 +135,25 @@ export const recordSeasonBank = async (run, env = process.env) => {
   if (env.VERCEL_ENV !== 'production' || !seasonConfig(env).monthly || !run?.bankVersion || run.season === SEASON_ZERO.id || !run.season) return false;
   try {
     if (configuredSeasonBankVersion(run.season, env)) return false;
-    return (await redis('SET', seasonBankKey(run.season, env), run.bankVersion, 'NX')) === 'OK';
+    const key = seasonBankKey(run.season, env);
+    if ((await redis('SET', key, run.bankVersion, 'NX')) === 'OK') return true;
+    const recorded = await redis('GET', key);
+    if (recorded && recorded !== run.bankVersion) console.warn('Geek season bank mismatch', run.season, recorded, run.bankVersion);
+    return false;
   } catch (error) {
     console.error('Geek API error code', /^[A-Z_]{1,64}$/.test(error?.message || '') ? error.message : 'SEASON_BANK_PIN_FAILED');
     return false;
   }
+};
+// Score-time check: a run scores into its season board only if its bank version
+// matches the season's configured version or recorded pin (rollout race: two
+// instances on different banks before a pin exists). Mismatch -> unranked.
+export const seasonBankAllowsScore = async (run, env = process.env) => {
+  if (!run?.season || run.season === SEASON_ZERO.id || !seasonConfig(env).monthly) return true;
+  const expected = configuredSeasonBankVersion(run.season, env) ?? await redis('GET', seasonBankKey(run.season, env));
+  if (!expected || expected === run.bankVersion) return true;
+  console.warn('Geek season bank mismatch', run.season, expected, String(run.bankVersion || ''));
+  return false;
 };
 export const seasonFor = (run) => seasonForRun(run);
 
