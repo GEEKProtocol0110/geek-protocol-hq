@@ -30,6 +30,7 @@ export const parseArgs = argv => {
   if (!/^season-[1-9]\d{0,3}$/.test(args.season || '') || !/^[a-z0-9-]{1,32}$/.test(args.env || '')) throw new Error('USAGE');
   return args;
 };
+export const maskVersion = value => { const text = String(value); return text.length > 8 ? `${text.slice(0, 8)}…` : text; };
 export const resetKeyFor = ({ season, env }) => seasonBankKey(season, { VERCEL_ENV: env });
 
 export const main = async (argv = process.argv.slice(2), { redis, log = console.log, error = console.error } = {}) => {
@@ -42,7 +43,7 @@ export const main = async (argv = process.argv.slice(2), { redis, log = console.
   try {
     const command = redis || (await import('../server/redis.js')).redis;
     const current = await command('GET', key);
-    log(`${key} = ${current ?? '(not set)'}`);
+    log(`${key} = ${current == null ? '(not set)' : maskVersion(current)}`);
     if (!args.confirm) { log('Dry run. Re-run with --confirm to delete this pin.'); return 0; }
     const deleted = await command('DEL', key);
     log(deleted ? `Deleted ${key}.` : `Nothing to delete at ${key}.`);
