@@ -1,0 +1,774 @@
+{
+ "metadata": {
+  "purpose": "Public sample ranked bank for development and tests. Contains no real ranked questions or answers.",
+  "category": "pop-culture",
+  "questionCount": 45
+ },
+ "questions": [
+  {
+   "id": "SAMPLE-POP-CULTURE-E01",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 1",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE pop-culture easy 1] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-E02",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 2",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE pop-culture easy 2] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-E03",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 3",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE pop-culture easy 3] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-E04",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 4",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE pop-culture easy 4] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-E05",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 5",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE pop-culture easy 5] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-E06",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 1",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE pop-culture easy 6] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-E07",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 2",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE pop-culture easy 7] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-E08",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 3",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE pop-culture easy 8] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-E09",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 4",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE pop-culture easy 9] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-E10",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 5",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE pop-culture easy 10] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-E11",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 1",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE pop-culture easy 11] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-E12",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 2",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE pop-culture easy 12] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-E13",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 3",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE pop-culture easy 13] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-E14",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 4",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE pop-culture easy 14] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-E15",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 5",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE pop-culture easy 15] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-M01",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 1",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE pop-culture medium 1] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-M02",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 2",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE pop-culture medium 2] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-M03",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 3",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE pop-culture medium 3] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-M04",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 4",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE pop-culture medium 4] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-M05",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 5",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE pop-culture medium 5] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-M06",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 1",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE pop-culture medium 6] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-M07",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 2",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE pop-culture medium 7] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-M08",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 3",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE pop-culture medium 8] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-M09",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 4",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE pop-culture medium 9] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-M10",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 5",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE pop-culture medium 10] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-M11",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 1",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE pop-culture medium 11] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-M12",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 2",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE pop-culture medium 12] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-M13",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 3",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE pop-culture medium 13] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-M14",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 4",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE pop-culture medium 14] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-M15",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 5",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE pop-culture medium 15] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-H01",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 1",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE pop-culture hard 1] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-H02",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 2",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE pop-culture hard 2] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-H03",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 3",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE pop-culture hard 3] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-H04",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 4",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE pop-culture hard 4] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-H05",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 5",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE pop-culture hard 5] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-H06",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 1",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE pop-culture hard 6] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-H07",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 2",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE pop-culture hard 7] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-H08",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 3",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE pop-culture hard 8] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-H09",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 4",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE pop-culture hard 9] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-H10",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 5",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE pop-culture hard 10] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-H11",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 1",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE pop-culture hard 11] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-H12",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 2",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE pop-culture hard 12] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-H13",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 3",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE pop-culture hard 13] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-H14",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 4",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE pop-culture hard 14] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-POP-CULTURE-H15",
+   "category": "pop-culture",
+   "subcategory": "Sample topic 5",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE pop-culture hard 15] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  }
+ ]
+}

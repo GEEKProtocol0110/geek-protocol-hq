@@ -1,8 +1,9 @@
 import { categories, handleApiError, methodNotAllowed, sendJson, setApiHeaders } from '../server/http.js';
-import { listLeaderboard, leaderboardStanding } from '../server/leaderboard.js';
+import { SEASON_LABELS, listLeaderboard, leaderboardStanding } from '../server/leaderboard.js';
 import { playerIdFor, requireSession } from '../server/session.js';
 import { rateLimit } from '../server/redis.js';
 import { clientFingerprint } from '../server/http.js';
+import { rankedSourceMode } from '../server/question-source.js';
 
 export default async function handler(req, res) {
   setApiHeaders(res, 'GET, OPTIONS');
@@ -13,8 +14,15 @@ export default async function handler(req, res) {
     const category = categories.has(req.query?.category) ? req.query.category : 'kaspa';
     const mode = ['gauntlet', 'daily', 'speed'].includes(req.query?.mode) ? req.query.mode : 'gauntlet';
     const limit = req.query?.limit === '50' ? 50 : 10;
-    const mine = req.query?.mine === '1' ? await leaderboardStanding(category, mode, playerIdFor(await requireSession(req))) : undefined;
-    return sendJson(res, 200, { ok: true, category, mode, verified: true, limit, mine, entries: await listLeaderboard(category, mode, limit) });
+    // Default board is Season 0 — Public-bank Alpha (legacy keys, history preserved).
+    // A misconfigured ranked source (e.g. fixture on a preview) must not take
+    // the read-only leaderboard down; fall back to the legacy Season 0 board.
+    const currentSeason = () => { try { return rankedSourceMode() === 'private' ? 'season-1' : 'legacy'; } catch { return 'legacy'; } };
+    const season = req.query?.season === 'current'
+      ? currentSeason()
+      : Object.hasOwn(SEASON_LABELS, req.query?.season) ? req.query.season : 'legacy';
+    const mine = req.query?.mine === '1' ? await leaderboardStanding(category, mode, playerIdFor(await requireSession(req)), season) : undefined;
+    return sendJson(res, 200, { ok: true, category, mode, verified: true, limit, season, seasonLabel: SEASON_LABELS[season], seasons: ['current', ...Object.keys(SEASON_LABELS)], mine, entries: await listLeaderboard(category, mode, limit, season) });
   } catch (error) {
     return handleApiError(res, error);
   }

@@ -42,6 +42,7 @@
   let activeCategory = Object.hasOwn(CATEGORY_BANKS, queryParams.get('category')) ? queryParams.get('category') : 'kaspa';
   let activeMode = Object.hasOwn(GAME_MODES, queryParams.get('mode')) ? queryParams.get('mode') : 'gauntlet';
   let communityReady = false;
+  let boardSequence = 0;
   let profile = { balance: 0, xp: 0, bestRound: 0, bestScore: 0, totalRuns: 0, totalCorrect: 0, progression: { level: 1, prestige: 0 } };
   let run = null;
   let currentQuestion = null;
@@ -97,12 +98,21 @@
     renderLadder(run?.round || Math.max(1, profile.bestRound + 1));
   };
 
+  // Deferred ranked rounds: the server withholds correct/streak until the round
+  // locks, so show a neutral pending mark rather than a misleading 0.
+  const talliesPending = () => !run || run.feedback === 'deferred' && !['between-rounds', 'finished'].includes(run.status) || !Number.isInteger(run.correct);
+  const renderTallies = () => {
+    const pending = talliesPending();
+    elements.correct.textContent = pending ? '—' : String(run.correct);
+    elements.streak.textContent = pending ? '—' : `${run.streak || 0}×`;
+  };
   const applyServerState = (payload, resetReview = false) => {
     if (payload.profile) profile = payload.profile;
     if (payload.run) {
       const roundAnswers = payload.run.answeredReview || (resetReview ? [] : run?.roundAnswers || []);
       run = { ...payload.run, roundAnswers };
       rememberRun(run.id);
+      renderTallies();
     }
     updateProfileUI();
   };
@@ -125,13 +135,28 @@
       : '<li class="board-empty">No verified scores yet. Set the first signal.</li>';
   };
 
+  // Remember the leaderboard season pick across reloads; validated against the server's list.
+  const seasonStorageKey = 'geek_hq_board_season_v1';
+  const storedSeason = () => { try { const value = localStorage.getItem(seasonStorageKey); return /^[a-z0-9-]{1,32}$/.test(value || '') ? value : null; } catch { return null; } };
+  const storeSeason = value => { try { value && value !== 'current' ? localStorage.setItem(seasonStorageKey, value) : localStorage.removeItem(seasonStorageKey); } catch { /* Storage is optional. */ } };
+  const restoreSeason = () => { const select = $('[data-board-season]'), saved = storedSeason(); if (saved && (!select.options || [...select.options].some(option => option.value === saved))) select.value = saved; };
+  // Returns true when the requested season is unknown to the server (pick reset to current).
+  const rejectUnknownSeason = (season, payload) => {
+    if (season === 'current' || !Array.isArray(payload.seasons) || payload.seasons.includes(season)) return false;
+    $('[data-board-season]').value = 'current'; storeSeason(null); return true;
+  };
   const loadLeaderboard = async (category = activeCategory, mode = activeMode) => {
+    const sequence = ++boardSequence;
     elements.boardState.textContent = communityReady ? 'REFRESHING' : 'CONNECTING';
     try {
-      const payload = await api(`/api/leaderboard?category=${encodeURIComponent(category)}&mode=${encodeURIComponent(mode)}`);
-      elements.boardState.textContent = 'SERVER VERIFIED';
+      const season = $('[data-board-season]').value || 'current';
+      const payload = await api(`/api/leaderboard?${new URLSearchParams({ category, mode, season })}`);
+      if (sequence !== boardSequence) return;
+      if (rejectUnknownSeason(season, payload)) return loadLeaderboard(category, mode);
+      elements.boardState.textContent = payload.seasonLabel || 'SERVER VERIFIED';
       renderLeaderboard(payload.entries);
     } catch {
+      if (sequence !== boardSequence) return;
       elements.boardState.textContent = 'OFFLINE';
       elements.leaderboard.innerHTML = '<li class="board-empty">Verified leaderboard unavailable.</li>';
     }
@@ -205,9 +230,8 @@
     elements.roundTotal.textContent = String(run.maxRounds || 1);
     elements.questionNumber.textContent = pad(question.number);
     elements.questionTotal.textContent = String(run.questionCount || 10);
-    elements.correct.textContent = String(run.correct);
-    elements.streak.textContent = `${run.streak || 0}×`;
-    elements.score.textContent = format.format(run.totalScore + (['question', 'awaiting-next'].includes(run.status) ? run.roundScore : 0));
+    renderTallies();
+    elements.score.textContent = format.format(run.totalScore + (['question', 'awaiting-next'].includes(run.status) ? (run.roundScore || 0) : 0));
     elements.questionProgress.style.width = `${((question.number - 1) / (run.questionCount || 10)) * 100}%`;
     elements.category.textContent = displayTopic(question.topic).toUpperCase();
     elements.difficulty.textContent = question.difficulty.toUpperCase();
@@ -272,6 +296,16 @@
       const payload = await postRanked('answer', { runId: run.id, questionToken: currentQuestion.token, selectedIndex });
       applyServerState(payload);
       const result = payload.result;
+      if (result.feedback === 'deferred') {
+        // Ranked answers are locked in; correctness is revealed after the round locks.
+        if (selectedIndex >= 0) buttons[selectedIndex]?.classList.add('selected');
+        elements.feedback.textContent = result.timedOut ? 'Server clock expired · answer recorded' : 'Answer locked · results after the round';
+        elements.feedback.className = 'feedback';
+        elements.ace.textContent = 'Ranked feedback is revealed when the round locks.';
+        elements.questionProgress.style.width = `${Math.min(100, (currentQuestion.number / (run.questionCount || 10)) * 100)}%`;
+        transitionTimer = window.setTimeout(() => payload.roundResult ? completeRound(payload.roundResult) : nextQuestion(), 600);
+        return;
+      }
       buttons.forEach((button, index) => {
         if (index === result.correctIndex) button.classList.add('correct');
         if (index === selectedIndex && !result.correct) button.classList.add('wrong');
@@ -372,7 +406,9 @@
       const payload = await postRanked('finish', { runId: run.id });
       applyServerState(payload);
       window.dispatchEvent(new Event('geek:run-saved'));
-      elements.boardState.textContent = payload.leaderboard?.improved ? 'NEW VERIFIED BEST' : 'SERVER VERIFIED';
+      ++boardSequence;
+      $('[data-board-season]').value = run.season === 'season-1' ? 'season-1' : 'legacy';
+      elements.boardState.textContent = `${run.seasonLabel || 'Season 0 — Public-bank Alpha'}${payload.leaderboard?.improved ? ' · NEW VERIFIED BEST' : ''}`;
       if (payload.leaderboard) renderLeaderboard(payload.leaderboard.entries);
       rememberRun(null); $('[data-ranked-recovery]').hidden = true;
       if (apex) {
@@ -427,7 +463,9 @@
       else if (run.status === 'awaiting-next') {
         currentQuestion = null; locked = true; showScreen('quiz'); elements.answers.innerHTML = '';
         elements.question.textContent = 'Your answer is saved.';
-        elements.feedback.textContent = payload.result ? `Correct answer: ${payload.result.answer}. ${payload.result.correct ? 'Your answer was correct.' : 'Read the feedback, then continue.'}` : 'Continue to your next question.';
+        elements.feedback.textContent = payload.result?.feedback === 'deferred'
+          ? 'Answer saved — results after the round.'
+          : payload.result ? `Correct answer: ${payload.result.answer}. ${payload.result.correct ? 'Your answer was correct.' : 'Read the feedback, then continue.'}` : 'Continue to your next question.';
         elements.ace.textContent = payload.result?.funFact || '';
         $('[data-ranked-recovery]').hidden = false; $('[data-ranked-next]').hidden = false;
         $('[data-ranked-recovery-status]').textContent = 'Your last answer is confirmed. Continue when you’re ready.';
@@ -445,6 +483,8 @@
     } finally { requestBusy = false; $('[data-ranked-reconnect]').disabled = false; }
   };
   $('[data-ranked-reconnect]').addEventListener('click', reconnectRun);
+  restoreSeason();
+  $('[data-board-season]').addEventListener('change', () => { storeSeason($('[data-board-season]').value); return loadLeaderboard(); });
   $('[data-ranked-next]').addEventListener('click', nextQuestion);
   $('[data-ranked-finish]').addEventListener('click', async () => { $('[data-ranked-finish]').hidden = true; $('[data-ranked-recovery]').hidden = true; await finishRun(true); });
 

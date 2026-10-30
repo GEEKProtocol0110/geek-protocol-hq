@@ -13,7 +13,7 @@ import { emptyLedger, ledgerKey, planTransaction } from '../server/economy-ledge
 
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
 process.env.UPSTASH_REDIS_REST_URL = 'https://redis.release-boundary.test';
-process.env.UPSTASH_REDIS_REST_TOKEN = 'synthetic-release-boundary-token';
+process.env.UPSTASH_REDIS_REST_TOKEN = 'test-release-boundary-token';
 process.env.AUDIT_LOG_SECRET = 'synthetic-release-boundary-audit-32-characters';
 process.env.PAYOUT_REVIEW_ADMIN_TOKEN = 'synthetic-release-boundary-reviewer';
 process.env.OPS_ACCESS_TOKEN = '';
@@ -27,7 +27,7 @@ globalThis.fetch = async (url, options) => {
     return new Response(JSON.stringify({ message: 'successful', result: [{ tick: d.ticker, max: d.maxRaw, lim: d.limitRaw, pre: d.premintRaw, dec: String(d.decimals), mod: d.mode, to: d.deployer, hashRev: d.deploymentHash, minted: '174500000000000000', burned: '0', state: 'deployed' }] }));
   }
   assert.ok(String(url).startsWith('https://redis.release-boundary.test'), 'No unmocked external request is allowed');
-  assert.equal(options.headers.Authorization, 'Bearer synthetic-release-boundary-token');
+  assert.equal(options.headers.Authorization, 'Bearer test-release-boundary-token');
   const values = JSON.parse(options.body); let payload;
   if (String(url).endsWith('/multi-exec')) payload = (await fixture.commands([['MULTI'], ...values, ['EXEC']])).at(-1).map(result => ({ result }));
   else if (String(url).endsWith('/pipeline')) payload = (await fixture.commands(values)).map(result => ({ result }));
@@ -85,8 +85,10 @@ for (const mode of ['gauntlet', 'daily', 'speed']) {
       }
       const receipt = await call(rankedHandler, 'POST', answer, cookie);
       assert.equal(receipt.statusCode, 200);
-      assert.equal(receipt.body.result.answer, pack[0].options[pack[0].correctIndex]);
-      assert.equal(started.body.question.options[receipt.body.result.correctIndex], receipt.body.result.answer);
+      // Ranked feedback is deferred until the round locks: no correctness, answer, or score movement mid-round.
+      assert.deepEqual(receipt.body.result, { feedback: 'deferred', recorded: true, timedOut: false, locked: false });
+      for (const field of ['correct', 'streak', 'roundScore', 'maxStreak']) assert.equal(field in receipt.body.run, false, field);
+      assert.deepEqual(receipt.body.run.answeredReview, []);
       assert.equal((await stored(runKey)).current, null);
       const { result, ...rest } = receipt.body; hidden(rest); noFuturePack(receipt.body, pack, 0);
       const retry = await call(rankedHandler, 'POST', { ...answer, selectedIndex: 0, correctIndex: 0 }, cookie);

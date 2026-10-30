@@ -476,7 +476,7 @@ test('profile name edits belong to the authenticated player and survive stale ga
 
 test('rate-limited profile edits cannot change a saved name', async () => {
   const cookie = await startSession('Limited Geek');
-  strings.set(`geek:rate:session:${sessionIdFromCookie(cookie)}`, '40');
+  strings.set(`geek:rate:session-write:${sessionIdFromCookie(cookie)}`, '20');
   const res = response(); await sessionHandler(request('POST', { action: 'rename', displayName: 'Blocked Edit' }, cookie), res);
   assert.equal(res.statusCode, 429);
   const profile = response(); await profileHandler(request('GET', undefined, cookie), profile);
@@ -657,7 +657,18 @@ test('sessions, live rooms, and server-authoritative leaderboard work together',
       action: 'answer', runId: rankedPayload.run.id, questionToken: rankedPayload.question.token, selectedIndex
     }, hostCookie), answerRes);
     assert.equal(answerRes.statusCode, 200);
-    assert.equal(answerRes.body.result.correct, true);
+    if (questionNumber < 10) {
+      // Ranked correctness stays hidden until the round locks.
+      assert.deepEqual(answerRes.body.result, { feedback: 'deferred', recorded: true, timedOut: false, locked: false });
+      assert.equal('correct' in answerRes.body.run, false);
+      assert.equal('roundScore' in answerRes.body.run, false);
+      assert.deepEqual(answerRes.body.run.answeredReview, []);
+    } else {
+      assert.equal(answerRes.body.result.correct, true);
+      assert.equal(answerRes.body.run.answeredReview.length, 10);
+      assert.ok(answerRes.body.run.answeredReview.every((row) => row.correct === true));
+      assert.equal(answerRes.body.roundResult.review.length, 10);
+    }
     rankedPayload = answerRes.body;
     if (questionNumber === 1) {
       const retryRes = response();
@@ -665,8 +676,8 @@ test('sessions, live rooms, and server-authoritative leaderboard work together',
         action: 'answer', runId: rankedPayload.run.id, questionToken: startRes.body.question.token, selectedIndex: (selectedIndex + 1) % 4
       }, hostCookie), retryRes);
       assert.equal(retryRes.statusCode, 200);
-      assert.equal(retryRes.body.result.correct, true);
-      assert.equal(retryRes.body.run.roundScore, rankedPayload.run.roundScore);
+      assert.deepEqual(retryRes.body.result, rankedPayload.result);
+      assert.deepEqual(retryRes.body.run, rankedPayload.run);
     }
     if (questionNumber < 10) {
       const nextRes = response();
@@ -1740,5 +1751,78 @@ test('technology Study grades privately, saves missed concepts and resumes revie
     const fixed = (await studyAnswer(review, cookie)).body;
     assert.equal(fixed.result.correct, true);
     assert.equal(fixed.progress.topics.find(t => t.id === topic).review, 0);
+  }
+});
+
+
+test('current leaderboard follows the ranked source while explicit Season 0 history stays separate', async () => {
+  const envKeys = ['GEEK_RANKED_QUESTION_SOURCE', 'GEEK_PRIVATE_QUESTION_URL'];
+  const saved = Object.fromEntries(envKeys.map(key => [key, process.env[key]]));
+  const query = async season => {
+    const res = response();
+    await leaderboardHandler(request('GET', undefined, '', { category: 'pop-culture', mode: 'speed', ...(season ? { season } : {}) }), res);
+    assert.equal(res.statusCode, 200); return res.body;
+  };
+  try {
+    await recordVerifiedScore({ session: { id: 'season-ui-player', name: 'Season Player' }, category: 'pop-culture', mode: 'speed', score: 321, round: 1, season: 'season-1' });
+    process.env.GEEK_RANKED_QUESTION_SOURCE = 'private';
+    process.env.GEEK_PRIVATE_QUESTION_URL = 'https://example.invalid/private-bank.json';
+    const current = await query('current');
+    assert.equal(current.season, 'season-1'); assert.equal(current.seasonLabel, 'Season 1 — Private-bank');
+    assert.ok(current.entries.some(entry => entry.score === 321));
+    for (const selection of ['legacy', undefined]) {
+      const legacy = await query(selection);
+      assert.equal(legacy.season, 'legacy');
+      assert.ok(!legacy.entries.some(entry => entry.score === 321));
+    }
+    process.env.GEEK_RANKED_QUESTION_SOURCE = 'exposed';
+    assert.equal((await query('current')).season, 'legacy');
+  } finally {
+    for (const key of envKeys) saved[key] === undefined ? delete process.env[key] : process.env[key] = saved[key];
+  }
+});
+
+test('finishing a deferred ranked run mid-round hides correctness, streak, round score and review', async () => {
+  for (const midState of ['question', 'awaiting-next']) {
+    const cookie = await startSession(`Mid ${midState}`);
+    const startRes = response();
+    await rankedHandler(request('POST', { action: 'start', category: 'kaspa' }, cookie), startRes);
+    let payload = startRes.body;
+    const privateQuestion = loadQuestionBank('kaspa').questions.find((item) => item.prompt === payload.question.prompt);
+    const selectedIndex = payload.question.options.indexOf(privateQuestion.options[privateQuestion.correctIndex]);
+    const answerRes = response();
+    await rankedHandler(request('POST', { action: 'answer', runId: payload.run.id, questionToken: payload.question.token, selectedIndex }, cookie), answerRes);
+    payload = answerRes.body;
+    if (midState === 'question') {
+      const nextRes = response();
+      await rankedHandler(request('POST', { action: 'next', runId: payload.run.id }, cookie), nextRes);
+      payload = nextRes.body;
+    }
+    assert.equal(payload.run.status, midState);
+    const finishRes = response();
+    await rankedHandler(request('POST', { action: 'finish', runId: payload.run.id }, cookie), finishRes);
+    assert.equal(finishRes.statusCode, 200);
+    assert.equal(finishRes.body.run.status, 'finished');
+    for (const key of ['correct', 'streak', 'roundScore', 'maxStreak']) assert.equal(key in finishRes.body.run, false, `${midState}: ${key} leaked`);
+    assert.deepEqual(finishRes.body.run.answeredReview, []);
+    assert.equal(finishRes.body.roundResult, undefined);
+    const again = response();
+    await rankedHandler(request('POST', { action: 'finish', runId: payload.run.id }, cookie), again);
+    assert.equal('correct' in again.body.run, false);
+  }
+});
+
+test('leaderboard season=current falls back to the legacy board when the ranked source is misconfigured', async () => {
+  const saved = { VERCEL_ENV: process.env.VERCEL_ENV, GEEK_RANKED_QUESTION_SOURCE: process.env.GEEK_RANKED_QUESTION_SOURCE };
+  process.env.VERCEL_ENV = 'preview';
+  process.env.GEEK_RANKED_QUESTION_SOURCE = 'fixture';
+  try {
+    const r = response();
+    await leaderboardHandler(request('GET', undefined, '', { category: 'kaspa', season: 'current' }), r);
+    assert.equal(r.statusCode, 200);
+    assert.equal(r.body.season, 'legacy');
+    assert.deepEqual(r.body.seasons, ['current', 'legacy', 'season-1']);
+  } finally {
+    for (const [k, v] of Object.entries(saved)) if (v === undefined) delete process.env[k]; else process.env[k] = v;
   }
 });

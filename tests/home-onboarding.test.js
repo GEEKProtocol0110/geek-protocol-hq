@@ -19,7 +19,7 @@ test('the first actions go directly to Daily Signal and the beginner Kaspa lesso
 });
 test('sign-in is outside the collapsed navigation and explains saved-player recovery without a save requirement',()=>{
  const header=home.slice(home.indexOf('<header'),home.indexOf('</header>'));
- assert.match(header,/<div class="home-header-actions"><a class="home-sign-in" href="\/sign-in\/">Sign in<\/a>/);
+ assert.match(header,/<div class="home-header-actions"><a class="home-sign-in" href="\/sign-in\/" data-nav-account>Sign in<\/a>/);
  assert.ok(header.indexOf('data-menu-toggle')<header.indexOf('<nav '),'Keyboard order reaches the opened menu after its toggle');
  assert.match(hero,/Recover a saved player/);assert.match(hero,/Guest progress follows this browser/);
 });

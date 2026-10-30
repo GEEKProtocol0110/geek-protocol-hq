@@ -1,0 +1,118 @@
+{
+  "questions": [
+    {
+      "id": "PRK-KAS-202611-0001",
+      "category": "kaspa",
+      "subcategory": "Example topic",
+      "difficulty": "easy",
+      "prompt": "EXAMPLE \u2014 Fake kaspa easy question number 1. Which option is labeled 'Example answer'?",
+      "options": [
+        "Example distractor A",
+        "Example answer",
+        "Example distractor B",
+        "Example distractor C"
+      ],
+      "correctIndex": 1,
+      "funFact": "This is a fake example row for tooling tests; it is not a real question.",
+      "source": "https://example.com/not-a-real-source",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-11-01",
+      "example": true
+    },
+    {
+      "id": "PRK-KAS-202611-0002",
+      "category": "kaspa",
+      "subcategory": "Example topic",
+      "difficulty": "medium",
+      "prompt": "EXAMPLE \u2014 Fake kaspa medium question number 2. Which option is labeled 'Example answer'?",
+      "options": [
+        "Example distractor A",
+        "Example answer",
+        "Example distractor B",
+        "Example distractor C"
+      ],
+      "correctIndex": 1,
+      "funFact": "This is a fake example row for tooling tests; it is not a real question.",
+      "source": "https://example.com/not-a-real-source",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-11-01",
+      "example": true
+    },
+    {
+      "id": "PRK-KAS-202611-0003",
+      "category": "kaspa",
+      "subcategory": "Example topic",
+      "difficulty": "hard",
+      "prompt": "EXAMPLE \u2014 Fake kaspa hard question number 3. Which option is labeled 'Example answer'?",
+      "options": [
+        "Example distractor A",
+        "Example answer",
+        "Example distractor B",
+        "Example distractor C"
+      ],
+      "correctIndex": 1,
+      "funFact": "This is a fake example row for tooling tests; it is not a real question.",
+      "source": "https://example.com/not-a-real-source",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-11-01",
+      "example": true
+    },
+    {
+      "id": "PRK-KAS-202611-0004",
+      "category": "kaspa",
+      "subcategory": "Example topic",
+      "difficulty": "easy",
+      "prompt": "EXAMPLE \u2014 Fake kaspa easy question number 4. Which option is labeled 'Example answer'?",
+      "options": [
+        "Example distractor A",
+        "Example answer",
+        "Example distractor B",
+        "Example distractor C"
+      ],
+      "correctIndex": 1,
+      "funFact": "This is a fake example row for tooling tests; it is not a real question.",
+      "source": "https://example.com/not-a-real-source",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-11-01",
+      "example": true
+    },
+    {
+      "id": "PRK-KAS-202611-0005",
+      "category": "kaspa",
+      "subcategory": "Example topic",
+      "difficulty": "medium",
+      "prompt": "EXAMPLE \u2014 Fake kaspa medium question number 5. Which option is labeled 'Example answer'?",
+      "options": [
+        "Example distractor A",
+        "Example answer",
+        "Example distractor B",
+        "Example distractor C"
+      ],
+      "correctIndex": 1,
+      "funFact": "This is a fake example row for tooling tests; it is not a real question.",
+      "source": "https://example.com/not-a-real-source",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-11-01",
+      "example": true
+    },
+    {
+      "id": "PRK-KAS-202611-0006",
+      "category": "kaspa",
+      "subcategory": "Example topic",
+      "difficulty": "hard",
+      "prompt": "EXAMPLE \u2014 Fake kaspa hard question number 6. Which option is labeled 'Example answer'?",
+      "options": [
+        "Example distractor A",
+        "Example answer",
+        "Example distractor B",
+        "Example distractor C"
+      ],
+      "correctIndex": 1,
+      "funFact": "This is a fake example row for tooling tests; it is not a real question.",
+      "source": "https://example.com/not-a-real-source",
+      "reviewStatus": "source-checked",
+      "reviewedAt": "2026-11-01",
+      "example": true
+    }
+  ]
+}
