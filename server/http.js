@@ -173,3 +173,21 @@ export const handleApiError = (res, error) => {
   console.error('Geek API error', error);
   return sendJson(res, 500, { ok: false, error: 'The community service hit an unexpected error.' });
 };
+
+// Rate-limit buckets per endpoint class (count per window, seconds). Reads that every page load
+// performs (session checks, passkey status) get generous separate buckets, so normal browsing can
+// never use up the strict buckets for account creation, login attempts or other writes.
+export const RATE_LIMITS = Object.freeze({
+  sessionIp: { maximum: 600, seconds: 600 },          // shared networks / events (unchanged)
+  sessionCreateIp: { maximum: 120, seconds: 600 },    // new guest sessions per client (unchanged)
+  sessionRead: { maximum: 240, seconds: 600 },        // was 'session' 40 per 60 s, shared with renames
+  sessionWrite: { maximum: 20, seconds: 600 },        // renames / display names
+  passkeyReadSession: { maximum: 240, seconds: 600 }, // GET status; was shared 30 per 600 s
+  passkeyReadClient: { maximum: 600, seconds: 600 },  // was shared 60 per 600 s
+  passkeyCreateSession: { maximum: 10, seconds: 600 },// begin/finish-register: 5 creations
+  passkeyCreateClient: { maximum: 20, seconds: 600 },
+  passkeyLoginSession: { maximum: 20, seconds: 600 }, // begin/finish-login: 10 attempts
+  passkeyLoginClient: { maximum: 40, seconds: 600 },
+  passkeyWriteSession: { maximum: 30, seconds: 600 }, // logout, delete, device-* (as before)
+  passkeyWriteClient: { maximum: 60, seconds: 600 }
+});

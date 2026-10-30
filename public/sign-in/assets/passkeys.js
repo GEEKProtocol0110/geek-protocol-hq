@@ -37,7 +37,7 @@
       const response = await fetch(path, { method: body ? 'POST' : 'GET', credentials: 'same-origin', signal: controller.signal,
         headers: { 'Content-Type': 'application/json' }, ...(body ? { body: JSON.stringify(body) } : {}) });
       const data = await response.json();
-      if (!response.ok) { const error = new Error(data.error || 'Passkeys are unavailable.'); error.code = data.code; throw error; }
+      if (!response.ok) { const error = new Error(data.error || 'Passkeys are unavailable.'); error.code = data.code; error.status = response.status; throw error; }
       return data;
     } catch (error) {
       if (controller.signal.aborted) throw new Error('The request took too long. Reload to check your saved player before trying again.');
@@ -75,7 +75,6 @@
     document.dispatchEvent(new CustomEvent('geek:account-status', {detail:data}));
     const playerName = panel.querySelector('[data-passkey-player]');
     if (playerName) playerName.textContent = data.playerName || 'Name unavailable';
-    panel.querySelector('[data-passkey-logout]').hidden = !data.signedIn && !data.walletLinked;
     for (const c of data.credentials) {
       const li = document.createElement('li'), label = document.createElement('span'), button = document.createElement('button');
       label.textContent = `${c.label} · added ${new Date(c.createdAt).toLocaleDateString()}`;
@@ -128,7 +127,6 @@
   });
   panel.querySelector('[data-passkey-login]').addEventListener('click', () => login());
   panel.querySelector('[data-passkey-verify]')?.addEventListener('click', () => login(true));
-  panel.querySelector('[data-passkey-logout]').addEventListener('click', () => act(async () => { await request({ action: 'logout' }); grant = ''; location.reload(); }));
   document.addEventListener('geek:signed-in', () => { grant = ''; void refresh().catch(() => { note.textContent = 'Signed in. Reload to check your saved player.'; }); });
   document.addEventListener('geek:device-signed-in', () => {
     grant = '';
@@ -155,6 +153,12 @@
         else if (supported) note.textContent = 'Choose Sign in to open your device’s passkey prompt.';
         document.querySelector('[data-passkey-wallet-help]').hidden = !data.walletLinked;
         if (data.signedIn) document.dispatchEvent(new CustomEvent('geek:passkey-signed-in'));
-      } catch (error) { note.textContent = `${error.message} Reload to check your saved player.`; document.dispatchEvent(new CustomEvent('geek:device-unavailable', {detail:{message:error.message}})); }
+      } catch (error) {
+        if (error.status === 401) { ready = true; setDisabled(); document.dispatchEvent(new CustomEvent('geek:account-status', {detail:{signedIn:false,walletLinked:false}})); return; }
+        // 429, 5xx or a network failure: session state is unknown, never signed out.
+        note.textContent = 'We couldn’t check your sign-in right now. Your session has not changed. Try again in a moment.';
+        document.dispatchEvent(new CustomEvent('geek:account-status-unknown'));
+        document.dispatchEvent(new CustomEvent('geek:device-unavailable', {detail:{message:'Status check unavailable.'}}));
+      }
     })();
 })();

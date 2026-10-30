@@ -71,7 +71,10 @@
     }
   });
   document.addEventListener('geek:device-unavailable', () => {
-    if (!signedIn) status.textContent = 'Sign-in is temporarily unavailable. You can continue as a guest.';
+    // An unavailable status check is not a sign-out: keep the last known state and show a fixed retry message.
+    let last = null; try { last = window.sessionStorage?.getItem('geek:last-session-state'); } catch {}
+    if (!signedIn && last === 'signed-in') { signedIn = true; showSignedIn('You’re signed in.'); }
+    status.textContent = 'We couldn’t check your sign-in right now. Your session has not changed. Try again in a moment.';
   });
 
   const addressForm = document.querySelector('[data-address-form]');

@@ -139,7 +139,7 @@ test('double taps cannot open overlapping prompts and linked players retain opti
 });
 
 
-test('an unsupported-passkey browser refreshes the approved player and can sign out without a local authenticator',async()=>{
+test('an unsupported-passkey browser refreshes the approved player without a local authenticator',async()=>{
   let approved=false;
   const ui=await mount({support:false,handle:(path,body)=>{
     if(path==='/api/passkeys'&&!body) return json({playerName:approved?'Approved Geek':'Guest Geek',signedIn:approved,walletLinked:false,credentials:[]});
@@ -147,10 +147,8 @@ test('an unsupported-passkey browser refreshes the approved player and can sign 
   }});
   approved=true;ui.document.dispatchEvent(new CustomEvent('geek:device-signed-in'));await tick();
   assert.equal(ui.node('[data-passkey-player]').textContent,'Approved Geek');
-  assert.equal(ui.node('[data-passkey-logout]').hidden,false);assert.equal(ui.node('[data-passkey-logout]').disabled,false);
   assert.equal(ui.node('[data-passkey-save]').disabled,true);assert.equal(ui.node('[data-passkey-login]').disabled,true);
-  ui.context.location.reload=()=>{};await ui.node('[data-passkey-logout]').emit('click');
-  assert.equal(ui.calls.at(-1).body.action,'logout');assert.equal(ui.prompts.length,0);
+  assert.equal(ui.prompts.length,0);
 });
 
 
