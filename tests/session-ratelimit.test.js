@@ -143,7 +143,7 @@ test('sign-in page under 429 keeps a known signed-in user signed in, without the
   assert.doesNotMatch(status, /temporarily unavailable|continue as a guest/i);
   assert.equal(status, 'Temporarily rate limited. Your session has not changed. Try again in 42 seconds.');
   assert.equal(ui.node('[data-sign-in-hq]').hidden, false);
-  assert.match(ui.node('[data-passkey-note]').textContent, /Temporarily rate limited\. .*42 seconds/);
+  assert.equal(ui.node('[data-passkey-note]').textContent, '', 'the retry message is owned by the page status region only');
 });
 
 test('sign-in page with 401 on status shows signed out', async () => {

@@ -134,7 +134,7 @@
       const question = document.createElement('p'); question.id = 'passkey-claim-question';
       question.textContent = 'Keep this browser’s guest progress?';
       const detail = document.createElement('p'); detail.className = 'sign-in-note';
-      detail.textContent = 'Keep adds this browser’s guest progress to your new account. Start fresh creates an empty account and leaves the guest progress in this browser’s guest player.';
+      detail.textContent = 'Keep adds this browser’s guest progress to your new account. Start fresh creates an empty account. Your guest progress is not added to it and will be cleared from this browser when you sign out.';
       const keep = document.createElement('button'), fresh = document.createElement('button');
       keep.type = fresh.type = 'button'; keep.className = fresh.className = 'button button-secondary';
       keep.textContent = 'Keep'; fresh.textContent = 'Start fresh';
@@ -194,9 +194,9 @@
       } catch (error) {
         if (error.status === 401) { ready = true; setDisabled(); document.dispatchEvent(new CustomEvent('geek:account-status', {detail:{signedIn:false,walletLinked:false}})); return; }
         // 429, 5xx or a network failure: session state is unknown, never signed out.
+        // The page status region (sign-in.js) shows the one retry message; the note stays empty.
         const limited = error.status === 429, seconds = limited ? error.retryAfter : null;
-        note.textContent = limited ? `Temporarily rate limited. Your session has not changed. Try again in ${seconds} seconds.`
-          : 'We couldn’t check your sign-in right now. Your session has not changed. Try again in a moment.';
+        note.textContent = '';
         document.dispatchEvent(new CustomEvent('geek:account-status-unknown', {detail:{retryAfter:seconds}}));
         document.dispatchEvent(new CustomEvent('geek:device-unavailable', {detail:{message:'Status check unavailable.', retryAfter:seconds}}));
       }
