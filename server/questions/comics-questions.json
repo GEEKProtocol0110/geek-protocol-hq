@@ -8,14 +8,14 @@
     "category": "Comics",
     "difficultyDistribution": {
       "easy": 202,
-      "medium": 167,
-      "hard": 44
+      "medium": 170,
+      "hard": 41
     },
     "correctIndexDistribution": {
-      "0": 107,
-      "1": 92,
-      "2": 107,
-      "3": 107
+      "0": 106,
+      "1": 95,
+      "2": 106,
+      "3": 106
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -6426,33 +6426,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Name the Red Baron hunting Beagle from Charles Schultz popular comic strip, Peanuts.",
-      "options": [
-        "Lassie",
-        "Odie",
-        "Snoopy",
-        "Scooby"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "animals",
-      "sourceOrdinal": 1115,
-      "id": "COM-N-617a4bc8a8df",
-      "conceptId": "COM-N-617a4bc8a8df",
-      "category": "Comics",
-      "subcategory": "Animals",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/animals",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "What position did cartoon character Snoopy play in Charlie Browns Little League baseball team?",
       "options": [
         "Short Stop",
@@ -9045,33 +9018,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "Who portrays Batman’s nemesis, The Joker, on the TV series “Batman”?",
-      "options": [
-        "George Sanders",
-        "Dick Grayson",
-        "Alan Napier",
-        "Cesar Romero"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "rated",
-      "sourceOrdinal": 890,
-      "id": "COM-N-50fefca2ad90",
-      "conceptId": "COM-N-50fefca2ad90",
-      "category": "Comics",
-      "subcategory": "Rated",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/rated",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "What famous person from WWI does Snoopy pretend to battle from the top of his dog house in the comic strip Peanuts?",
       "options": [
         "Fritz Fischer",
@@ -9828,33 +9774,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "What character did Arnold Schwarzenegger play in the 1997 movie Batman Robin?",
-      "options": [
-        "Batman",
-        "Alfred Pennyworth",
-        "Dr. Jason Woodrue",
-        "Mr. Freeze"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "celebrities",
-      "sourceOrdinal": 342,
-      "id": "COM-N-505731206150",
-      "conceptId": "COM-N-505731206150",
-      "category": "Comics",
-      "subcategory": "Celebrities",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/celebrities",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "Which unforgettable character does Jim Carrey portray in the 1995 superhero movie Batman Forever?",
       "options": [
         "Mr. Freeze",
@@ -10152,33 +10071,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "What popular fictional villain did Jack Nicholson portray in the 1989 movie Batman?",
-      "options": [
-        "The Penguin",
-        "The Mad Hatter",
-        "The Joker",
-        "The Riddler"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "celebrities",
-      "sourceOrdinal": 1364,
-      "id": "COM-N-a12594245150",
-      "conceptId": "COM-N-a12594245150",
-      "category": "Comics",
-      "subcategory": "Celebrities",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/celebrities",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "The success of DC Comics' Swamp Thing, Sandman, and other books in a similar style, led to the creation of what new imprint in 1993?",
       "options": [
         "Impact",
@@ -10204,33 +10096,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Who does Linus wait for every year at Halloween in the Peanuts comic strip?",
-      "options": [
-        "The Great Pumpkin",
-        "The West Witch",
-        "The Jumpin Jack-o-latern",
-        "Santa Claus"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "rated",
-      "sourceOrdinal": 485,
-      "id": "COM-N-3750b3976cdf",
-      "conceptId": "COM-N-3750b3976cdf",
-      "category": "Comics",
-      "subcategory": "Rated",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/rated",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "In \"One Piece\", who confirms the existence of the legendary treasure, One Piece?",
@@ -10545,6 +10410,146 @@
       "reviewStatus": "draft-needs-human-review",
       "license": "evidence-only",
       "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-010",
+      "conceptId": "COM-ST-010",
+      "category": "Comics",
+      "subcategory": "DC Comics",
+      "prompt": "What is the name of the wife whose illness drives Victor Fries, better known as Mr. Freeze?",
+      "options": [
+        "Martha",
+        "Nora",
+        "Selina",
+        "Harleen"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Batman: The Animated Series introduced Nora in the episode \"Heart of Ice\", and comics later adopted the tragic origin.",
+      "source": "https://www.dc.com/blog/2021/01/04/fury-and-frost-five-chilling-facts-you-dont-know-about-mr-freeze",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 licence-replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-011",
+      "conceptId": "COM-ST-011",
+      "category": "Comics",
+      "subcategory": "DC Comics",
+      "prompt": "Harley Quinn made her first appearance in which medium in 1992?",
+      "options": [
+        "A Detective Comics issue",
+        "An animated TV series",
+        "A live-action film",
+        "A newspaper strip"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "She debuted in the Batman: The Animated Series episode \"Joker's Favor\", voiced by Arleen Sorkin, before joining the comics.",
+      "source": "https://www.dc.com/blog/2022/09/29/lady-of-lunacy-twelve-moments-that-defined-harley-quinn",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 licence-replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-012",
+      "conceptId": "COM-ST-012",
+      "category": "Comics",
+      "subcategory": "DC Comics",
+      "prompt": "Which artist illustrated Watchmen, written by Alan Moore?",
+      "options": [
+        "Brian Bolland",
+        "Frank Miller",
+        "Dave Gibbons",
+        "Kevin O'Neill"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "DC credits Watchmen to writer Alan Moore and artist Dave Gibbons, with colours by John Higgins.",
+      "source": "https://www.dc.com/graphic-novels/watchmen-1986/watchmen",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 licence-replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-013",
+      "conceptId": "COM-ST-013",
+      "category": "Comics",
+      "subcategory": "Comic Strips",
+      "prompt": "In what year did the Peanuts comic strip debut in newspapers?",
+      "options": [
+        "1947",
+        "1950",
+        "1955",
+        "1962"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Peanuts debuted on 2 October 1950 in seven newspapers; Schulz's earlier panel Li'l Folks began in 1947.",
+      "source": "https://schulzmuseum.org/about-schulz/schulz-biography/",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 licence-replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-014",
+      "conceptId": "COM-ST-014",
+      "category": "Comics",
+      "subcategory": "Comic Strips",
+      "prompt": "What is the name of Snoopy's little yellow bird friend in Peanuts?",
+      "options": [
+        "Tweety",
+        "Spike",
+        "Marcie",
+        "Woodstock"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "The bird first appeared in 1967 and was named Woodstock in 1970.",
+      "source": "https://www.peanuts.com/about/woodstock",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 licence-replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
       "maintenanceCheckedAt": "2026-10-30",
       "factCheckedAt": "2026-10-30"
     }

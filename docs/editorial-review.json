@@ -3255,18 +3255,88 @@
       "category": "comics",
       "id": "COM-0698",
       "reason": "off-category",
-      "note": "BANK-009: wrestling trademark trivia, not comics, and the stem gives away the answer. Retired; original answer retained for saved runs. Practice-only replacement draft: COM-ST-008.",
+      "note": "BANK-009: wrestling trademark trivia, not comics, and the stem gives away the answer. Retired; original answer retained for saved runs. Practice-only replacement draft: COM-ST-008. Policy 2026-10-30: valid wrestling fact re-categorised as practice-only COM-0698-R0b847a4bfe in Pop Culture with the giveaway removed; COM-ST-008 replacement kept.",
       "answerKeyHash": "df1b463a089479ea4aafea9dc01a811a9cce07beeaf670b3f530f913bbfea461"
     },
     {
       "category": "comics",
       "id": "COM-0056",
       "reason": "off-category",
-      "note": "BANK-009: Three Gorges Dam engineering trivia, not comics; inverse of TECH-0816. Retired; original answer retained for saved runs. Practice-only replacement draft: COM-ST-009.",
+      "note": "BANK-009: Three Gorges Dam engineering trivia, not comics; inverse of TECH-0816. Retired; original answer retained for saved runs. Practice-only replacement draft: COM-ST-009. Policy 2026-10-30 re-check: not re-categorised. Technology already tests the same fact (TECH-0816, the inverse) and the 2008 completion date is imprecise (final generators entered service in 2012), so it stays retired; COM-ST-009 replacement kept.",
       "answerKeyHash": "84db70e57384f2580096337bc1d1c2b2c3abba249145fde208d12f7635e51114"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-9b8424ec93b7",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: inverse of HIS-N-5466359e71cc (D-Day date); CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: HIST-ST-010.",
+      "answerKeyHash": "b9d9e7be417d2e84e73c83135048859fed8b77dc290dbe0a7d32149a587a5bfd"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-8ca52b76d79c",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: duplicates HIS-N-46d5e028fc09, whose stem names Normandy; CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: HIST-ST-011.",
+      "answerKeyHash": "7f09059f0464147293b19352eec88bd83cedc25a5a9f8fc50f0b282d042675ea"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-31b1cebaf324",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: duplicates HIST-0406, whose stem states September 1, 1939; CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: HIST-ST-012.",
+      "answerKeyHash": "0c6e438466239eb0a2511b33c4f552042dbd5a41affd903a4ca1ee232a2c381d"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-a2aa1e2a2407",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: inverse of HIS-N-86039efb7404, whose stem states 1986; CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: HIST-ST-013.",
+      "answerKeyHash": "3582cb870454886203d2443f434483e2f9fab090d2a0997846f53d9b2afa8846"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-cbbfb81c487a",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: overlaps HIS-N-361f98530d02 and HIST-0888 (Gettysburg dates); CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: HIST-ST-014.",
+      "answerKeyHash": "0588ae8d135c032e3cf60d5cf323575284c47430cee90dc689614d42e6108197"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-505731206150",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: inverse of COM-0020 (Mr. Freeze / Schwarzenegger); CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: COM-ST-010.",
+      "answerKeyHash": "abbcb4e6303df36cdd9309a5a00f2f3b8f4a447d34c2b45d4f95b96e4951c316"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-a12594245150",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: inverse of COM-0176 (Joker / Nicholson); CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: COM-ST-011.",
+      "answerKeyHash": "6a44fe4161e34b0beff3ac4d5af6f076fc585cf568a20285b516af5b2698d5fd"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-50fefca2ad90",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: inverse of COM-N-ca15d057bbf7 (Cesar Romero / Joker); CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: COM-ST-012.",
+      "answerKeyHash": "8bc274fbae9550683eae4121e2ac97e604d9ce79ef293f9273ae7baa8a036bdc"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-3750b3976cdf",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: inverse of COM-N-7610d7077c10 (Great Pumpkin); CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: COM-ST-013.",
+      "answerKeyHash": "273d7cd87c8613f32a8dff62a13e9100ee6a48721ad1c59bea18193ed5456831"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-617a4bc8a8df",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: inverse of COM-N-9f5a4ee772b8 (Snoopy / Red Baron); CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: COM-ST-014.",
+      "answerKeyHash": "35dd9191832fc79444b6202ae7f4250b8ac76b6756a412ceab5a000e6d21bbc6"
     }
   ],
-  "retirementCount": 425,
+  "retirementCount": 435,
   "newLicensedImportsRetired": 258,
   "activeNewLicensedImportsPending": 3598,
   "activeDraftQuestions": 7516,

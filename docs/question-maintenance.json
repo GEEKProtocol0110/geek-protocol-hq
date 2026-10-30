@@ -2,10 +2,10 @@
   "maintainedAt": "2026-10-29",
   "originalRows": 8032,
   "cleanedBaseline": 4024,
-  "activeQuestions": 8438,
-  "practiceOnlyQuestions": 118,
-  "rankedEligibleActiveQuestions": 8320,
-  "retiredRows": 4433,
+  "activeQuestions": 8439,
+  "practiceOnlyQuestions": 129,
+  "rankedEligibleActiveQuestions": 8310,
+  "retiredRows": 4443,
   "addedQuestions": 4024,
   "categories": {
     "kaspa": {
@@ -31,7 +31,7 @@
     "comics": {
       "before": 1000,
       "cleaned": 231,
-      "removed": 828,
+      "removed": 833,
       "reasons": {
         "invalid-or-ambiguous": 139,
         "off-category": 352,
@@ -39,18 +39,19 @@
         "editorial-off-category": 46,
         "editorial-missing-context": 2,
         "editorial-unsupported-claim": 5,
-        "editorial-invalid-options": 1
+        "editorial-invalid-options": 1,
+        "editorial-semantic-duplicate": 5
       },
       "added": 231,
       "target": 462,
       "after": 413,
       "difficultyDistribution": {
         "easy": 202,
-        "medium": 167,
-        "hard": 44
+        "medium": 170,
+        "hard": 41
       },
-      "editorialRemoved": 59,
-      "postReviewAdditions": 10
+      "editorialRemoved": 64,
+      "postReviewAdditions": 15
     },
     "science-fiction": {
       "before": 1000,
@@ -101,23 +102,24 @@
     "history": {
       "before": 1000,
       "cleaned": 755,
-      "removed": 288,
+      "removed": 293,
       "reasons": {
         "invalid-or-ambiguous": 243,
         "duplicate-or-similar": 2,
         "editorial-unsupported-claim": 7,
-        "editorial-invalid-options": 2
+        "editorial-invalid-options": 2,
+        "editorial-semantic-duplicate": 5
       },
       "added": 755,
       "target": 1510,
       "after": 1502,
       "difficultyDistribution": {
-        "easy": 554,
-        "medium": 631,
-        "hard": 317
+        "easy": 552,
+        "medium": 632,
+        "hard": 318
       },
-      "editorialRemoved": 43,
-      "postReviewAdditions": 35
+      "editorialRemoved": 48,
+      "postReviewAdditions": 40
     },
     "technology": {
       "before": 1000,
@@ -173,14 +175,14 @@
       },
       "added": 786,
       "target": 1572,
-      "after": 1567,
+      "after": 1568,
       "difficultyDistribution": {
         "easy": 628,
         "medium": 625,
-        "hard": 314
+        "hard": 315
       },
       "editorialRemoved": 23,
-      "postReviewAdditions": 18
+      "postReviewAdditions": 19
     }
   },
   "method": "Canonical Kaspa concepts; removal of generated variants, incomplete/unsupported-media/ambiguous choices, unsuitable language, unclassified narrow-category prompts, and exact or conservative token/answer similarity matches. Distinct retained content gets doubled with licensed imports and original source-checked questions. Similarity screening is conservative, not a guarantee of exhaustive semantic equivalence or factual accuracy.",
@@ -194,7 +196,7 @@
     "KasWareExtension": "78bb30045edd4d898c4d61c4c75ba1bc37e18748",
     "KaspanetDocs": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9"
   },
-  "editorialRetiredRows": 425,
+  "editorialRetiredRows": 435,
   "editorialReview": "docs/editorial-review.json",
-  "postReviewAdditions": 815
+  "postReviewAdditions": 826
 }

@@ -5,8 +5,8 @@ window.GEEK_QUESTION_COUNTS = Object.freeze({
   "science-fiction": 514,
   "technology": 1485,
   "movies": 1490,
-  "history": 1493,
-  "comics": 404,
+  "history": 1488,
+  "comics": 399,
   "pop-culture": 1567
 });
 // Practice-only, unranked draft rows (not source-checked; excluded from ranked selection).
@@ -16,7 +16,7 @@ window.GEEK_PRACTICE_ONLY_COUNTS = Object.freeze({
   "science-fiction": 0,
   "technology": 0,
   "movies": 0,
-  "history": 9,
-  "comics": 9,
-  "pop-culture": 0
+  "history": 14,
+  "comics": 14,
+  "pop-culture": 1
 });

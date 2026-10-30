@@ -7,15 +7,15 @@
     "conceptCount": 1502,
     "category": "History",
     "difficultyDistribution": {
-      "easy": 554,
-      "medium": 631,
-      "hard": 317
+      "easy": 552,
+      "medium": 632,
+      "hard": 318
     },
     "correctIndexDistribution": {
-      "0": 396,
+      "0": 395,
       "1": 355,
-      "2": 392,
-      "3": 359
+      "2": 394,
+      "3": 358
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -21363,33 +21363,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "On what day did Germany invade Poland?",
-      "options": [
-        "December 7, 1941",
-        "June 22, 1941",
-        "July 7, 1937",
-        "September 1, 1939"
-      ],
-      "correctIndex": 3,
-      "sourceCategoryId": 23,
-      "difficulty": "medium",
-      "sourceFile": "History",
-      "id": "HIS-N-31b1cebaf324",
-      "conceptId": "HIS-N-31b1cebaf324",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
       "prompt": "Who was among those killed in the 2010 Smolensk, Russia plane crash tragedy?",
       "options": [
         "Bang-Ding Ow",
@@ -22360,33 +22333,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "medium"
-    },
-    {
-      "prompt": "Where did the D-Day invasion occur?",
-      "options": [
-        "Normandy",
-        "Cherbourg",
-        "Minsk",
-        "Warsaw"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "history",
-      "sourceOrdinal": 896,
-      "id": "HIS-N-8ca52b76d79c",
-      "conceptId": "HIS-N-8ca52b76d79c",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "Roman Emperors Caligula, Augustus, Claudius and Nero lived in this century.",
@@ -27330,33 +27276,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "The Battle of Gettysburg was fought on these dates.",
-      "options": [
-        "July 1-2-3, 1863",
-        "June 28-29-30, 1863",
-        "September 4-5-6, 1863",
-        "July 10-11-12, 1863"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "history",
-      "sourceOrdinal": 169,
-      "id": "HIS-N-cbbfb81c487a",
-      "conceptId": "HIS-N-cbbfb81c487a",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "Who is attributed credit for recording the epic poem The Odyssey?",
       "options": [
         "Socrates",
@@ -31258,33 +31177,6 @@
       "sourceFile": "History",
       "id": "HIS-N-beea0ce3a6c5",
       "conceptId": "HIS-N-beea0ce3a6c5",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "In what year did the nuclear power plant in Chernobyl melt down?",
-      "options": [
-        "1998",
-        "1986",
-        "1991",
-        "1975"
-      ],
-      "correctIndex": 1,
-      "sourceCategoryId": 23,
-      "difficulty": "easy",
-      "sourceFile": "History",
-      "id": "HIS-N-a2aa1e2a2407",
-      "conceptId": "HIS-N-a2aa1e2a2407",
       "category": "History",
       "subcategory": "History",
       "funFact": null,
@@ -35349,33 +35241,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "What happened on June 6, 1944?",
-      "options": [
-        "Atomic bombings of Hiroshima and Nagasaki",
-        "Attack on Pearl Harbor",
-        "The Liberation of Paris",
-        "D-Day"
-      ],
-      "correctIndex": 3,
-      "sourceCategoryId": 23,
-      "difficulty": "medium",
-      "sourceFile": "History",
-      "id": "HIS-N-9b8424ec93b7",
-      "conceptId": "HIS-N-9b8424ec93b7",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
       "prompt": "The creator of the Enigma Cypher and Machine was of what nationality?",
       "options": [
         "British",
@@ -38472,6 +38337,146 @@
       "reviewStatus": "draft-needs-human-review",
       "license": "CC BY 4.0",
       "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference is a U.S. government public-domain source, linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "HIST-ST-010",
+      "conceptId": "HIST-ST-010",
+      "category": "History",
+      "subcategory": "World War II",
+      "prompt": "Who was Supreme Commander of the Allied Expeditionary Force for the June 1944 invasion of Normandy?",
+      "options": [
+        "Bernard Montgomery",
+        "Dwight D. Eisenhower",
+        "Omar Bradley",
+        "George S. Patton"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "Eisenhower was named Supreme Commander in December 1943 and issued his Order of the Day to the Allied Expeditionary Force on 6 June 1944.",
+      "source": "https://www.eisenhowerlibrary.gov/research/online-documents/world-war-ii-d-day-invasion-normandy",
+      "tags": [
+        "history",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 licence-replacement draft); factual reference is a U.S. government public-domain source, linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "HIST-ST-011",
+      "conceptId": "HIST-ST-011",
+      "category": "History",
+      "subcategory": "World War II",
+      "prompt": "What was the code name of the westernmost of the five D-Day landing beaches?",
+      "options": [
+        "Omaha",
+        "Gold",
+        "Utah",
+        "Sword"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The 4th Infantry Division landed at Utah on the Cotentin Peninsula; the Department of Defense lists casualties there as the lightest of all the landings.",
+      "source": "https://dod.defense.gov/Portals/1/features/2016/0516_dday/docs/d-day-fact-sheet-the-beaches.pdf",
+      "tags": [
+        "history",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 licence-replacement draft); factual reference is a U.S. government public-domain source, linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "HIST-ST-012",
+      "conceptId": "HIST-ST-012",
+      "category": "History",
+      "subcategory": "World War II",
+      "prompt": "Troops of which country crossed into eastern Poland on 17 September 1939?",
+      "options": [
+        "Lithuania",
+        "Romania",
+        "The Soviet Union",
+        "Hungary"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The U.S. ambassador in Moscow reported that morning that Soviet troops had entered eastern Poland along the entire frontier.",
+      "source": "https://history.state.gov/historicaldocuments/frus1939v01/d437",
+      "tags": [
+        "history",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 licence-replacement draft); factual reference is a U.S. government public-domain source, linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "HIST-ST-013",
+      "conceptId": "HIST-ST-013",
+      "category": "History",
+      "subcategory": "Cold War",
+      "prompt": "Which reactor unit at the Chernobyl plant was destroyed in the April 1986 accident?",
+      "options": [
+        "Unit 1",
+        "Unit 2",
+        "Unit 3",
+        "Unit 4"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "A power surge during a systems test destroyed the unit; the plant's other three reactors were later restarted, and the last one closed in December 2000.",
+      "source": "https://www.nrc.gov/reading-rm/doc-collections/fact-sheets/chernobyl-bg",
+      "tags": [
+        "history",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 licence-replacement draft); factual reference is a U.S. government public-domain source, linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "HIST-ST-014",
+      "conceptId": "HIST-ST-014",
+      "category": "History",
+      "subcategory": "U.S. Civil War",
+      "prompt": "Which general commanded the Union Army of the Potomac at the Battle of Gettysburg?",
+      "options": [
+        "George G. Meade",
+        "Joseph Hooker",
+        "Ulysses S. Grant",
+        "George B. McClellan"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "Meade was given command on 28 June 1863, replacing Joseph Hooker, three days before the battle began.",
+      "source": "https://www.nps.gov/people/george-g-meade.htm",
+      "tags": [
+        "history",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 licence-replacement draft); factual reference is a U.S. government public-domain source, linked individually.",
       "maintenanceCheckedAt": "2026-10-30",
       "factCheckedAt": "2026-10-30"
     }
