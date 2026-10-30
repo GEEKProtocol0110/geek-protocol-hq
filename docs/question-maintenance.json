@@ -3,6 +3,8 @@
   "originalRows": 8032,
   "cleanedBaseline": 4024,
   "activeQuestions": 8438,
+  "practiceOnlyQuestions": 100,
+  "rankedEligibleActiveQuestions": 8338,
   "retiredRows": 4415,
   "addedQuestions": 4024,
   "categories": {
@@ -23,7 +25,8 @@
         "hard": 283
       },
       "postReviewAdditions": 686,
-      "editorialRemoved": 4
+      "editorialRemoved": 4,
+      "practiceOnly": 100
     },
     "comics": {
       "before": 1000,

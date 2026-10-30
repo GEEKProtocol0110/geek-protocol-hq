@@ -44,7 +44,8 @@ export function maintainContinuity({ write = false } = {}) {
   const releases = read('releases.json'), commits = read('commits.json'), repositories = read('repositories.json'), assets = read('assets.json');
   const readiness = questionBankReadiness(), cce = cceReadiness();
   const kaspa = readiness.categories.find(c => c.id === 'kaspa');
-  const counts = { active: readiness.active, reviewed: readiness.reviewed, remaining: readiness.remaining, kaspaActive: kaspa.active, kaspaReviewed: kaspa.reviewed, studyConcepts: studyBank().length, questChapters: questChapters.length };
+  // Practice-only drafts are unranked and never source-checked: keep them out of ranked-eligible counts.
+  const counts = { active: readiness.active - readiness.practiceOnly, reviewed: readiness.reviewed, remaining: readiness.remaining, kaspaActive: kaspa.active - kaspa.practiceOnly, kaspaReviewed: kaspa.reviewed, practiceOnly: readiness.practiceOnly, kaspaPracticeOnly: kaspa.practiceOnly, studyConcepts: studyBank().length, questChapters: questChapters.length };
   if (write && JSON.stringify(project.questionCheckpoint) !== JSON.stringify(counts)) {
     project.questionCheckpoint = counts;
     project.updatedAt = new Date().toISOString().slice(0, 10);
@@ -120,7 +121,7 @@ export function maintainContinuity({ write = false } = {}) {
   outputs.set('CURRENT-STATE.md', header('Current project state') +
     `Record date: ${project.updatedAt}. **${md(project.releaseChannel)}**. Canonical: [${project.canonicalRepository}](https://github.com/${project.canonicalRepository}).\n\n` +
     `## Last verified product release\n\n[PR #${project.productBaseline.pullRequest}](${project.productBaseline.url}), commit \`${project.productBaseline.commit}\`. ${md(project.productBaseline.evidence)} Recorded tests: ${project.productBaseline.testsPassed} passed, ${project.productBaseline.testsFailed} failed, ${project.productBaseline.testsSkipped} skipped; ${project.productBaseline.productionProbesPassed} read-only probes passed. Later documentation candidates are separate from this baseline.\n\n` +
-    `## Current checkout counts\n\n${counts.active.toLocaleString('en-US')} active questions; ${counts.reviewed} recorded internal source reviews; ${counts.remaining.toLocaleString('en-US')} further reviews needed across eight targets. ${counts.studyConcepts} Study concepts and ${counts.questChapters} Quest chapters. These are local code counts, not independent educational certification.\n\n` +
+    `## Current checkout counts\n\n${counts.active.toLocaleString('en-US')} active ranked-eligible questions, plus ${counts.practiceOnly} practice-only unranked draft questions (not ranked-eligible, not source-checked); ${counts.reviewed} recorded internal source reviews; ${counts.remaining.toLocaleString('en-US')} further reviews needed across eight targets. ${counts.studyConcepts} Study concepts and ${counts.questChapters} Quest chapters. These are local code counts, not independent educational certification.\n\n` +
     table(['Category', 'Active', 'Recorded reviews', 'Still needed'], readiness.categories.map(c => [c.name, c.active, c.reviewed, c.remaining])) +
     `\n## Current work and pickup\n\n**${project.currentWork.id}: ${md(project.currentWork.status)}.** ${md(project.currentWork.description)}\n\nNext task: **${project.nextTask}**. ${md(project.nextAction)}\n\n## Holds\n\nCCE: **${md(project.holds.cce)}**. Contributor rate: ${md(project.holds.contributorRate)}. Settlement: ${project.holds.settlement}. Collection ownership: ${project.holds.collectionOwnership}. Counts cannot reopen these gates.\n\n## Unresolved\n\n` + project.unresolved.map(x => `- ${md(x)}`).join('\n') + '\n');
   outputs.set('BACKLOG.md', header('Maintained backlog') +
