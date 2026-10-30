@@ -20,3 +20,7 @@
 [data-wallet-mobile-help] input{width:100%;box-sizing:border-box;min-height:48px;margin:.6rem 0 1rem;padding:.8rem;border:1px solid #638574;border-radius:8px;background:#080f0b;color:#edf4ef;font:inherit;font-size:16px}[data-wallet-mobile-help] ol{padding-left:1.2rem;line-height:1.7;color:#becfc4}
 
 .sign-in-primary [data-passkey-save]{min-height:48px;width:100%}.sign-in-main input{font-size:16px}.sign-in-primary button:disabled{cursor:not-allowed}.sign-in-primary [data-passkey-new]>summary{line-height:1.5}.sign-in-main [data-sign-out-status]:empty{display:none}
+/* Account buttons: explicit colors for every state so native button chrome never shows through (WCAG AA). */
+.sign-in-main .button-secondary{background:#101c16;color:#edf4ef;border:1px solid #638574;border-radius:0;min-height:48px;cursor:pointer;font-family:inherit}.sign-in-main .button-secondary:hover{background:#1a3127;color:#70e6dc;border-color:#70e6dc}.sign-in-main .button-secondary:focus-visible{outline:3px solid #70e6dc;outline-offset:4px}.sign-in-main .button-secondary:active{background:#0b1510;color:#edf4ef;border-color:#70e6dc;transform:none}.sign-in-main .button-secondary:disabled,.sign-in-main .button-secondary:disabled:hover{background:#101c16;color:#a9bbb0;border-color:#4a6355;opacity:1;transform:none}
+.sign-in-main>[data-sign-out]{margin:.75rem 0 0}.sign-in-main>[data-sign-out-status]{margin:.5rem 0 0}
+@media(max-width:420px){.sign-in-main>[data-sign-out],.sign-in-mobile-help [data-wallet-copy-link]{width:100%}}
