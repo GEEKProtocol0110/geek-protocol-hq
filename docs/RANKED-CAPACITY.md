@@ -19,7 +19,7 @@ Pinned sources: `main` = `33f74c0aee05e416f91b8331cf4236d9ddd758a4`, PR #200 hea
 | Matches per player | ≤30 ranked starts/hour (shared) | 1 per player per UTC day (all categories) | ≤30 ranked starts/hour (shared) |
 | Category | one category per run (8 categories) | same | same |
 | Repeat exclusion | within a run only (ID, concept, prompt) | within a run | within a run |
-| Season length | not defined in code; Season 1 = whole private-bank period | same | same |
+| Season length | not defined in code; monthly, approved by Gee (§6): Season 1 = first private-bank month, then Season 2, 3, … | same | same |
 
 Consequences:
 
@@ -82,6 +82,14 @@ rather than all eight at the minimum.
 
 Proposal: **season = 1 calendar month** (UTC), one pinned bank version per season.
 
+Season mapping (resolved, see PRIVATE-BANK-REVIEW §10 Q5):
+
+- **Season 0 history is preserved.** Season 0 keys and results are kept as-is, not renamed or merged.
+- **Monthly seasons are numbered in order:** Season 1 is the first private-bank month, then Season 2, Season 3, and so on (FAKE example: if Season 1 is a given month, the next month is Season 2 with key `geek:leaderboard:season-2:*`).
+- **Royale, Duel and Lobby stay outside Season 1 ranked** (and later seasons) until their private-bank handling is ready. They are not counted in the demand math above.
+
+Each season boundary below is therefore one season-number increment.
+
 | Trigger | Action |
 |---|---|
 | Every season boundary (monthly) | Retire 33% of easy, 25% of medium, 25% of hard; replace with new IDs; bump bank ref |
@@ -92,7 +100,7 @@ Proposal: **season = 1 calendar month** (UTC), one pinned bank version per seaso
 Reasoning: under the regular profile a tier with the recommended pool is
 ~50–75% seen by month end, and shared leakage approaches full exposure, so a
 quarterly cadence would leave most rows known. Retiring the oldest third or
-quarter monthly caps any row's lifetime at about 3–4 seasons. Monthly
+quarter monthly caps any row's lifetime at about 3–4 seasons (e.g. a row introduced in Season 1 retires by about Season 4). Monthly
 authoring load at the target pool: about 0.33·550 + 0.25·460 + 0.25·350 ≈ 385 rows per category.
 
 ## 7. Example row format (FAKE)
@@ -127,9 +135,9 @@ future ranked questions or answers appear in this document.
 3. **Uniform draw assumed.** The `priority`, topic-spread, and Kaspa focus logic (and focus terms) skew draws, so effective N is smaller than row count; add 10–20% headroom.
 4. **Speed early stop.** 10 easy are assigned per Speed run, but the 30 s clock may cut answering short. Assigned-but-unseen rows still count as drawn here (conservative).
 5. **Daily category split.** The Daily key is per player per day, not per category; the per-category Dd split is assumed.
-6. **Season length is not in code.** "Monthly" is a proposal that needs founder sign-off, as #200 itself notes.
+6. **Season length is not in code.** Monthly seasons are approved by Gee (Season 1, 2, 3, …); the code still needs to implement the boundary.
 7. **Concept collapsing.** Exclusion is by concept as well as ID. Rows sharing a `conceptId` count as one for capacity.
 8. **#200 is a draft** (head `5f1e909`). Line numbers may move before merge.
-9. **Royale/Duel/Lobby** are out of scope. Per #200 they keep the exposed public pool; verify this before merge.
+9. **Royale/Duel/Lobby** are out of scope and stay outside Season 1 ranked until their private-bank handling is ready (§6). Per #200 they keep the exposed public pool; verify this before merge.
 10. **Leakage is not size-bounded.** The leakage model assumes sharing is limited; a coordinated harvester defeats any pool size within the rate limits.
 11. **Private-bank authoring throughput** (about 385 rows per category per month at target) is unverified against editorial capacity.
