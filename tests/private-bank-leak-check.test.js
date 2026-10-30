@@ -4,10 +4,10 @@ import { mkdtempSync, readFileSync, rmSync, writeFileSync, mkdirSync } from 'nod
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
-import { answerHashes, isScanned, loadPrivateIndex, scanRepo, scanText } from '../scripts/private-bank-leak-check.mjs';
+import { answerHashes, isTextScanned, loadPrivateIndex, scanRepo, scanText, validRetiredAt } from '../scripts/private-bank-leak-check.mjs';
 
 const TEMPLATE_ROW = JSON.parse(readFileSync(new URL('../private-bank-template/bank/kaspa.json', import.meta.url), 'utf8')).questions[0];
-const retired = { ...TEMPLATE_ROW, retiredReason: 'rotation', retiredAt: '2026-11-15' };
+const retired = { ...TEMPLATE_ROW, retiredReason: 'rotation', retiredAt: '2026-10-15' };
 
 test('the public repo passes the leak check', async () => {
   const { files, violations } = await scanRepo(new URL('..', import.meta.url).pathname);
@@ -25,9 +25,9 @@ test('active private ids in public question files fail; retired rows may be publ
 
 test('per-question answer hashes fail unless retired or already public; one whole-bank version hash is allowed', () => {
   const h = 'a'.repeat(64);
-  assert.match(scanText('docs/x.json', JSON.stringify([{ id: 'NEW-1', answerKeyHash: h }])).join(), /per-question hash "answerKeyHash" for unknown id NEW-1/);
+  assert.match(scanText('docs/x.json', JSON.stringify([{ id: 'NEW-1', prompt: 'p', answerKeyHash: h }])).join(), /per-question hash "answerKeyHash" for unknown id NEW-1/);
   assert.deepEqual(scanText('docs/x.json', JSON.stringify([{ id: 'KAS-1', answerKeyHash: h }]), { publicIds: new Set(['KAS-1']) }), []);
-  assert.deepEqual(scanText('docs/kaspa-retired.json', JSON.stringify([{ id: ['PRK', 'KAS', '202611', '0001'].join('-'), retiredAt: '2026-11-15', answerKeyHash: h }])), []);
+  assert.deepEqual(scanText('docs/kaspa-retired.json', JSON.stringify([{ id: ['PRK', 'KAS', '202611', '0001'].join('-'), retiredAt: '2026-10-15', answerKeyHash: h }])), []);
   assert.deepEqual(scanText('docs/manifest.json', JSON.stringify({ version: `sha256:${h}`, bankVersion: `sha256:${h}` })), []);
   assert.deepEqual(scanText('docs/x.json', JSON.stringify({ files: [{ name: 'a', sha256: h }] })), [], 'file hashes are not per-question answer hashes');
 });
@@ -43,11 +43,10 @@ test('with a private index, verbatim ids, prompts and answer-derived hashes are 
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
 
-test('scope: JSON files and served assets, never the fake template', () => {
-  assert.equal(isScanned('server/questions/kaspa-questions.json'), true);
-  assert.equal(isScanned('public/play/assets/game.js'), true);
-  assert.equal(isScanned('private-bank-template/bank/kaspa.json'), false);
-  assert.equal(isScanned('tests/api.test.js'), false);
+test('scope: every tracked text file except binaries and the fake template', () => {
+  for (const p of ['server/questions/kaspa-questions.json', 'public/play/assets/game.js', 'tests/api.test.js', 'docs/x.md', 'deploy/x.yaml', 'notes.txt']) assert.equal(isTextScanned(p), true, p);
+  assert.equal(isTextScanned('private-bank-template/bank/kaspa.json'), false);
+  assert.equal(isTextScanned('public/img/logo.png'), false);
 });
 
 // Secret-looking literals are assembled at runtime so this file never contains them.
@@ -119,4 +118,58 @@ test('the CLI exits non-zero on a violation and zero on a clean tree', () => {
     assert.equal(bad.status, 1);
     assert.match(bad.stderr, /under private\//);
   } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('text search still runs after JSON parses: ids in notes, questionId rows, invalid JSON', () => {
+  const id = ['PRK', 'KAS', '202611', '0003'].join('-');
+  assert.match(scanText('docs/review.json', JSON.stringify({ notes: `see ${id} later` })).join(), /private ranked id/);
+  const msgs = scanText('docs/grades.json', JSON.stringify([{ questionId: id, correctIndex: 2 }])).join('\n');
+  assert.match(msgs, /active private ranked id/); assert.match(msgs, /answer field "correctIndex"/);
+  assert.match(scanText('docs/broken.json', `{ "id": "${id}", `).join(), /private ranked id/);
+});
+
+test('private ids are matched case- and separator-insensitively', () => {
+  const parts = ['kas', '202611', '0004'];
+  for (const variant of [['prk', ...parts].join('-'), ['PRK', ...parts].join('_').toUpperCase(), ['Prk', 'Kas', '202611', '0004'].join('.'), ['prk', ...parts].join(' '), ['PRK', ...parts].join('').toUpperCase()]) {
+    assert.match(scanText('docs/x.md', `row ${variant} end`).join(), /private ranked id/, variant);
+    assert.match(scanText('server/q.json', JSON.stringify([{ id: variant, prompt: 'p' }])).join(), /active private ranked id/, variant);
+  }
+  assert.deepEqual(scanText('docs/x.md', 'PRKSOMETHING and prk-kas-2026-01 are not ids'), []);
+});
+
+test('hash-like keys and short/base64 hashes on non-retired private or question rows fail', () => {
+  const id = ['PRK', 'HIS', '202611', '0005'].join('-');
+  for (const [key, value] of [['gradingHash', 'deadbeefcafe'], ['checksum', 'a1b2c3d4'], ['digest', 'q83vEjRWeJA+ZmZmZmZmZg=='], ['answerHash', 'sha1:0123456789abcdef'], ['keyFingerprint', 'Zm9vYmFyYmF6cXV4MTIz']]) {
+    assert.match(scanText('docs/x.json', JSON.stringify([{ id, [key]: value }])).join(), new RegExp(`per-question hash "${key}"`), key);
+    assert.match(scanText('docs/x.json', JSON.stringify([{ id: 'Q-NEW', prompt: 'p', [key]: value }])).join(), /unknown id Q-NEW/, key);
+  }
+  assert.deepEqual(scanText('docs/x-retired.json', JSON.stringify([{ id, retiredAt: '2026-01-02', gradingHash: 'deadbeefcafe' }])), []);
+  assert.deepEqual(scanText('docs/assets.json', JSON.stringify([{ id: 'ARCH-1', path: 'a.png', sha256: 'f'.repeat(64) }])), [], 'non-question records keep file hashes');
+});
+
+test('retiredAt must be a valid past ISO date for the retired exemption', () => {
+  const now = new Date('2026-10-30T12:00:00Z');
+  assert.equal(validRetiredAt('2026-10-01', now), true);
+  for (const bad of ['2026-11-15', '2026-02-30', 'yesterday', '', 20261001, '2026-1-1']) assert.equal(validRetiredAt(bad, now), false, String(bad));
+  const id = ['PRK', 'KAS', '202611', '0006'].join('-');
+  for (const retiredAt of ['2099-01-01', '2026-13-01', 'soon']) {
+    const msgs = scanText('server/kaspa-retired.json', JSON.stringify({ questions: [{ id, retiredAt, correctIndex: 1 }] }), { now }).join('\n');
+    assert.match(msgs, /not a valid past ISO date/, retiredAt); assert.match(msgs, /answer field "correctIndex"/, retiredAt);
+  }
+  assert.deepEqual(scanText('server/kaspa-retired.json', JSON.stringify({ questions: [{ id, retiredAt: '2026-10-01', correctIndex: 1 }] }), { now }), []);
+});
+
+test('root private/ is gitignored', () => {
+  const ignore = readFileSync(new URL('../.gitignore', import.meta.url), 'utf8').split('\n').map((l) => l.trim());
+  assert.ok(ignore.includes('/private/'));
+});
+
+test('--private / --root without a path is a usage error, not a crash', () => {
+  const cli = new URL('../scripts/private-bank-leak-check.mjs', import.meta.url).pathname;
+  for (const args of [['--private'], ['--private', '--root'], ['--root'], ['--private', '/nonexistent-dir-xyz']]) {
+    const r = spawnSync(process.execPath, [cli, ...args], { encoding: 'utf8' });
+    assert.equal(r.status, 2, args.join(' '));
+    assert.match(r.stderr, /Usage:/);
+    assert.doesNotMatch(r.stderr, /TypeError|at file:/);
+  }
 });

@@ -13,14 +13,10 @@
 // also searched for verbatim across tracked public files.
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-export const PRIVATE_ID = /PRK-[A-Z]{2,6}-\d{6}-\d{4}/gi;
-const PRIVATE_ID_EXACT = /^PRK-[A-Z]{2,6}-\d{6}-\d{4}$/i;
-const HEX64 = /^(?:sha256:)?[a-f0-9]{64}$/i;
-const ANSWER_HASH_KEY = /^(?:answer|key|correct|item|question|prompt)[a-z]*hash$/i;
 const TEMPLATE_DIR = 'private-bank-template/';
 const ANSWER_FIELDS = ['correctIndex', 'answer', 'correct', 'correctAnswer', 'answerIndex'];
 export const isRankedFlagged = (node) => node.ranked === true || node.rankedOnly === true || node.pool === 'ranked' || node.bank === 'private';
@@ -74,44 +70,61 @@ const listFiles = (root) => {
   }
 };
 
-// Question-bearing files: every JSON file plus everything the site serves.
-// JSON-structure checks: every JSON file plus everything the site serves.
-export const isScanned = (path) => !path.startsWith(TEMPLATE_DIR) && (path.endsWith('.json') || path.startsWith('public/'));
-// Text checks (ids, secrets, private/): every tracked text file except the fake template.
+// Every tracked text file except the fake template is scanned (JSON structure + text).
 export const isTextScanned = (path) => !path.startsWith(TEMPLATE_DIR) && !/\.(?:png|jpe?g|gif|webp|ico|woff2?|ttf|otf|mp[34]|wasm|zip|gz|br|pdf)$/i.test(path);
 
-const walkJson = (node, visit, parentId) => {
-  if (Array.isArray(node)) { for (const v of node) walkJson(v, visit, parentId); return; }
+const walkJson = (node, visit) => {
+  if (Array.isArray(node)) { for (const v of node) walkJson(v, visit); return; }
   if (!node || typeof node !== 'object') return;
-  const id = typeof node.id === 'string' ? node.id : parentId;
-  visit(node, id);
-  for (const v of Object.values(node)) walkJson(v, visit, id);
+  visit(node);
+  for (const v of Object.values(node)) walkJson(v, visit);
 };
 
-export const scanText = (path, text, { publicIds = new Set(), privateIndex = null } = {}) => {
+// Format-insensitive private ID: any case, with '-', '_', '.', ' ' or no separators.
+export const PRIVATE_ID_LOOSE = /(?<![a-z0-9])prk[-_ .]?[a-z]{2,6}[-_ .]?\d{6}[-_ .]?\d{4}(?![0-9])/gi;
+const canonicalId = (value) => String(value).toUpperCase().replace(/[^A-Z0-9]/g, '');
+const isPrivateId = (value) => typeof value === 'string' && new RegExp(`^${PRIVATE_ID_LOOSE.source}$`, 'i').test(value.trim());
+const rowId = (node) => [node.id, node.questionId, node.qid, node.question_id].find((v) => typeof v === 'string');
+// Hash-like keys and values that could be per-question answer fingerprints.
+const HASH_KEY = /hash$|hash[_-]|checksum|digest|fingerprint|^sha(?:1|256|384|512)?$|^md5$|signature$/i;
+const HASH_VALUE = /^(?:(?:sha(?:1|256|384|512)|md5|blake2b?):)?(?:[a-f0-9]{8,}|[A-Za-z0-9+/_-]{16,}={0,2})$/i;
+const looksLikeQuestion = (node) => ['prompt', 'options', 'question', 'correctIndex', 'answer', 'category'].some((k) => Object.hasOwn(node, k)) || Object.hasOwn(node, 'questionId');
+const BANK_VERSION_KEYS = new Set(['version', 'bankVersion']);
+export const validRetiredAt = (value, now = new Date()) => {
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}(?:T[\d:.]+Z)?$/.test(value)) return false;
+  const t = Date.parse(value);
+  return Number.isFinite(t) && new Date(t).toISOString().slice(0, 10) === value.slice(0, 10) && t <= now.getTime();
+};
+
+export const scanText = (path, text, { publicIds = new Set(), privateIndex = null, now = new Date() } = {}) => {
   const violations = [];
-  const retiredFile = /-retired\.json$/.test(path);
+  const retiredFile = /-retired\.json$/i.test(path);
+  const allowedRetiredIds = new Set();
   let json = null;
-  if (path.endsWith('.json')) { try { json = JSON.parse(text); } catch { /* scanned as text */ } }
+  if (/\.json$/i.test(path)) { try { json = JSON.parse(text); } catch { /* text checks below still run */ } }
   if (json) {
-    walkJson(json, (node, id) => {
-      const isPrivate = (typeof id === 'string' && PRIVATE_ID_EXACT.test(id)) || isRankedFlagged(node);
-      const retiredRow = retiredFile && node.retiredAt;
-      if (isPrivate && node.id === id && !retiredRow) violations.push(`${path}: active private ranked id ${id}`);
+    walkJson(json, (node) => {
+      const id = rowId(node);
+      const ranked = isRankedFlagged(node);
+      const isPrivate = isPrivateId(id) || ranked;
+      const retiredRow = retiredFile && Object.hasOwn(node, 'retiredAt') && validRetiredAt(node.retiredAt, now);
+      if (retiredFile && Object.hasOwn(node, 'retiredAt') && !retiredRow) violations.push(`${path}: retiredAt ${JSON.stringify(node.retiredAt)} on ${id ?? '(no id)'} is not a valid past ISO date`);
+      if (retiredRow && isPrivateId(id)) { allowedRetiredIds.add(canonicalId(id)); return; }
+      if (retiredRow) return;
+      if (isPrivate && id !== undefined) violations.push(`${path}: active private ranked id ${id}`);
       // Answer fields on private / ranked-flagged rows (public practice rows keep correctIndex).
-      if (isPrivate && !retiredRow) for (const key of ANSWER_FIELDS) if (Object.hasOwn(node, key)) violations.push(`${path}: answer field "${key}" on private/ranked question ${id ?? '(no id)'}`);
+      if (isPrivate) for (const key of ANSWER_FIELDS) if (Object.hasOwn(node, key)) violations.push(`${path}: answer field "${key}" on private/ranked question ${id ?? '(no id)'}`);
+      if (id === undefined && !isPrivate) return; // file/manifest-level hashes are not per-question
       for (const [key, value] of Object.entries(node)) {
-        if (typeof value !== 'string' || !HEX64.test(value)) continue;
-        if (['version', 'bankVersion'].includes(key)) continue; // one whole-bank version hash
-        if (!ANSWER_HASH_KEY.test(key)) continue;
-        const retired = retiredFile && node.retiredAt;
-        if (isPrivate && !retired) violations.push(`${path}: per-question hash "${key}" for private id ${id}`);
-        else if (!isPrivate && !publicIds.has(id) && !retired) violations.push(`${path}: per-question hash "${key}" for unknown id ${id ?? '(none)'}`);
+        if (typeof value !== 'string' || !HASH_KEY.test(key) || !HASH_VALUE.test(value)) continue;
+        if (BANK_VERSION_KEYS.has(key)) continue; // one whole-bank version hash
+        if (isPrivate) violations.push(`${path}: per-question hash "${key}" for private/ranked id ${id ?? '(no id)'}`);
+        else if (looksLikeQuestion(node) && !publicIds.has(id)) violations.push(`${path}: per-question hash "${key}" for unknown id ${id}`);
       }
     });
-  } else {
-    for (const m of text.matchAll(PRIVATE_ID)) violations.push(`${path}: private ranked id ${m[0]} outside the template`);
   }
+  // Text search always runs (notes fields, strings, non-JSON files, invalid JSON).
+  for (const m of text.matchAll(PRIVATE_ID_LOOSE)) if (!allowedRetiredIds.has(canonicalId(m[0]))) violations.push(`${path}: private ranked id ${m[0]} outside the template`);
   violations.push(...secretViolations(path, text));
   if (privateIndex) {
     const lower = text.toLowerCase();
@@ -147,13 +160,17 @@ export const scanRepo = async (root, { privateDir } = {}) => {
     if (!st.isFile() || st.size > 32 * 1024 * 1024) continue;
     files += 1;
     const text = readFileSync(abs, 'utf8');
-    violations.push(...(isScanned(path) ? scanText(path, text, { publicIds, privateIndex }) : [...secretViolations(path, text), ...[...text.matchAll(PRIVATE_ID)].map((m) => `${path}: private ranked id ${m[0]} outside the template`)]));
+    violations.push(...scanText(path, text, { publicIds, privateIndex }));
   }
   return { files, violations };
 };
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
+  const usage = 'Usage: node scripts/private-bank-leak-check.mjs [--private <private-repo>/bank] [--root <repo>]';
   const i = process.argv.indexOf('--private');
+  const r0 = process.argv.indexOf('--root');
+  for (const flag of [i, r0]) if (flag > 0 && (!process.argv[flag + 1] || process.argv[flag + 1].startsWith('--'))) { console.error(usage); process.exit(2); }
+  if (i > 0 && !existsSync(process.argv[i + 1])) { console.error(`--private directory not found: ${process.argv[i + 1]}\n${usage}`); process.exit(2); }
   const r = process.argv.indexOf('--root');
   const root = r > 0 ? resolve(process.argv[r + 1]) : resolve(new URL('..', import.meta.url).pathname);
   const { files, violations } = await scanRepo(root, { privateDir: i > 0 ? process.argv[i + 1] : undefined });

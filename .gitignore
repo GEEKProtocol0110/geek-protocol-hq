@@ -3,3 +3,6 @@ node_modules/
 .DS_Store
 *.log
 server/private-questions/
+
+# Never commit a private bank checkout into the public repo.
+/private/
