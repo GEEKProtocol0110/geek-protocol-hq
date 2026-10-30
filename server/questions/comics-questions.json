@@ -2,20 +2,20 @@
   "metadata": {
     "title": "GEEK Protocol — Comics Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-28",
+    "maintainedAt": "2026-10-30",
     "questionCount": 413,
     "conceptCount": 413,
     "category": "Comics",
     "difficultyDistribution": {
-      "easy": 204,
-      "medium": 166,
-      "hard": 43
+      "easy": 202,
+      "medium": 167,
+      "hard": 44
     },
     "correctIndexDistribution": {
-      "0": 108,
+      "0": 107,
       "1": 92,
-      "2": 105,
-      "3": 108
+      "2": 107,
+      "3": 107
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -531,30 +531,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "COM-0056",
-      "category": "Comics",
-      "prompt": "Mostly completed in 2008 and located on the Yangtze River, what construction marvel is billed as the Worlds Largest Electricity-Generating Plant?",
-      "options": [
-        "Hoover Dam",
-        "Gezhouba Dam",
-        "Aswan Dam",
-        "Three Gorges Dam"
-      ],
-      "correctIndex": 3,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-newest.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0056",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "COM-0057",
       "category": "Comics",
       "prompt": "Which of these is the alter ego of Iron Man?",
@@ -960,30 +936,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "COM-0117",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "COM-0122",
-      "category": "Comics",
-      "prompt": "In the episode The Days of Future Past, the X-Men travel to the Savage Land, only to find that their mutant powers have been nullified. What card does Gambit fail to charge?",
-      "options": [
-        "Jack of Spades",
-        "5 of Diamonds",
-        "Ace of Spades",
-        "5 of Hearts"
-      ],
-      "correctIndex": 1,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-television.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0122",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -2331,30 +2283,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "COM-0294",
-      "category": "Comics",
-      "prompt": "Who plays the Comedian in the film adaption of Watchmen?",
-      "options": [
-        "Ralph Maggio",
-        "Jefferey Blake Morgan",
-        "Robert Downey Junior",
-        "David Dean Walters"
-      ],
-      "correctIndex": 1,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-movies.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0294",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "COM-0295",
       "category": "Comics",
       "prompt": "In what year did Snoopy first make his first appearance in a comic strip?",
@@ -2808,30 +2736,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "COM-0347",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "COM-0349",
-      "category": "Comics",
-      "prompt": "What is the real name of the Joker, Batmans archenemy?",
-      "options": [
-        "Jack Napier",
-        "Ras Aghul",
-        "John Repton",
-        "Tim Frely"
-      ],
-      "correctIndex": 0,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-television.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0349",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -4155,30 +4059,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "COM-0557",
-      "category": "Comics",
-      "prompt": "Which antagonist of the X-Men is responsible for the death of Wolverine in the comic books?",
-      "options": [
-        "Magneto",
-        "Juggarnaut",
-        "Sabretooth",
-        "Lady Deathstrike"
-      ],
-      "correctIndex": 0,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-entertainment.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0557",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "COM-0559",
       "category": "Comics",
       "prompt": "How many episodes of Wonder Woman were aired?",
@@ -5019,30 +4899,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "COM-0667",
-      "category": "Comics",
-      "prompt": "Which of these characters of the X-Men series is the only person whom Rogue can touch and not absorb his/her powers?",
-      "options": [
-        "Cyclops",
-        "Storm",
-        "Sauron",
-        "Gambit"
-      ],
-      "correctIndex": 2,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-television.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0667",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "COM-0675",
       "category": "Comics",
       "prompt": "In 2007 Marvel started a series of comic books based on The Dark Tower. What is the name of the first volume?",
@@ -5160,30 +5016,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "COM-0696",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "COM-0698",
-      "category": "Comics",
-      "prompt": "Who bought the rights to the name Hulk Hogan in 2005?",
-      "options": [
-        "Marvel Comics",
-        "Hulk Hogan",
-        "Vince McMahon",
-        "Hiro Matsuda"
-      ],
-      "correctIndex": 1,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-entertainment.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0698",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -7620,33 +7452,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "Which universe crossover was introduced in the \"Sonic the Hedgehog\" comic issue #247?",
-      "options": [
-        "Super Mario Brothers",
-        "Alex Kidd",
-        "Super Monkey Ball",
-        "Mega Man"
-      ],
-      "correctIndex": 3,
-      "sourceCategoryId": 29,
-      "difficulty": "easy",
-      "sourceFile": "Entertainment: Comics",
-      "id": "COM-N-7e4a62127807",
-      "conceptId": "COM-N-7e4a62127807",
-      "category": "Comics",
-      "subcategory": "Entertainment: Comics",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
       "prompt": "Namikaze Sateraito is the opening song for the first 22 episodes of which Naruto season?",
       "options": [
         "7",
@@ -10050,33 +9855,6 @@
       "difficulty": "hard"
     },
     {
-      "prompt": "What is the real hair colour of the mainstream comic book version (Earth-616) of Daredevil?",
-      "options": [
-        "Black",
-        "Blonde",
-        "Auburn",
-        "Brown"
-      ],
-      "correctIndex": 1,
-      "sourceCategoryId": 29,
-      "difficulty": "hard",
-      "sourceFile": "Entertainment: Comics",
-      "id": "COM-N-d6feb19a6bcb",
-      "conceptId": "COM-N-d6feb19a6bcb",
-      "category": "Comics",
-      "subcategory": "Entertainment: Comics",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
       "prompt": "Which unforgettable character does Jim Carrey portray in the 1995 superhero movie Batman Forever?",
       "options": [
         "Mr. Freeze",
@@ -10517,6 +10295,258 @@
           "COM-N-b55e7840c099"
         ]
       }
+    },
+    {
+      "id": "COM-ST-001",
+      "conceptId": "COM-ST-001",
+      "category": "Comics",
+      "subcategory": "Comic Adaptations",
+      "prompt": "In the 2009 film Watchmen, which actor played Edward Blake, the Comedian?",
+      "options": [
+        "Patrick Wilson",
+        "Billy Crudup",
+        "Jeffrey Dean Morgan",
+        "Matthew Goode"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "The other three are also in the cast: Patrick Wilson played Nite Owl II, Billy Crudup played Doctor Manhattan and Matthew Goode played Ozymandias.",
+      "source": "https://www.imdb.com/title/tt0409459/fullcredits/",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-002",
+      "conceptId": "COM-ST-002",
+      "category": "Comics",
+      "subcategory": "Marvel",
+      "prompt": "Which artist co-created Daredevil with writer Stan Lee for Daredevil #1 (1964)?",
+      "options": [
+        "Steve Ditko",
+        "Bill Everett",
+        "Don Heck",
+        "Gene Colan"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Bill Everett pencilled and inked the main story of Daredevil #1 (April 1964). Gene Colan drew the series later.",
+      "source": "https://www.marvel.com/comics/issue/8073/daredevil-1964-1",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-003",
+      "conceptId": "COM-ST-003",
+      "category": "Comics",
+      "subcategory": "Marvel",
+      "prompt": "In which comic did Wolverine make his first full appearance?",
+      "options": [
+        "The Incredible Hulk #181",
+        "Giant-Size X-Men #1",
+        "X-Men #1",
+        "Marvel Comics Presents #1"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The Incredible Hulk #181 (cover-dated November 1974) is Wolverine's first full appearance; he fights the Hulk and the Wendigo. He joined the X-Men in Giant-Size X-Men #1 (1975).",
+      "source": "https://www.marvel.com/comics/issue/17198/incredible-hulk-1962-181",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-004",
+      "conceptId": "COM-ST-004",
+      "category": "Comics",
+      "subcategory": "Marvel",
+      "prompt": "In Marvel's 2014 story Death of Wolverine, which Weapon X scientist is Logan confronting when he dies?",
+      "options": [
+        "Bolivar Trask",
+        "Mister Sinister",
+        "Zander Rice",
+        "Abraham Cornelius"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "In Death of Wolverine #4, Logan stops Dr. Abraham Cornelius, who originally bonded metal to his skeleton, and dies as molten adamantium hardens around him.",
+      "source": "https://www.marvel.com/characters/wolverine-logan/in-comics",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-005",
+      "conceptId": "COM-ST-005",
+      "category": "Comics",
+      "subcategory": "DC",
+      "prompt": "In which comic did the Joker make his first appearance?",
+      "options": [
+        "Detective Comics #27",
+        "Batman #1",
+        "Detective Comics #38",
+        "Action Comics #1"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "DC notes that when the Joker debuted in Batman #1 (1940), he had no known origin or civilian identity. Detective Comics #27 introduced Batman in 1939, and Detective Comics #38 introduced Robin.",
+      "source": "https://www.dc.com/blog/2024/02/09/who-is-the-joker",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-006",
+      "conceptId": "COM-ST-006",
+      "category": "Comics",
+      "subcategory": "Marvel",
+      "prompt": "In which comic did Rogue first appear, absorbing Carol Danvers's powers?",
+      "options": [
+        "Uncanny X-Men #171",
+        "Ms. Marvel #1",
+        "Avengers Annual #10",
+        "Giant-Size X-Men #1"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "Avengers Annual #10 (1981) introduced Rogue as a villain. She later joined the X-Men in Uncanny X-Men #171 (1983).",
+      "source": "https://www.marvel.com/comics/issue/6924/avengers-annual-1967-10",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-007",
+      "conceptId": "COM-ST-007",
+      "category": "Comics",
+      "subcategory": "Archie Comics",
+      "prompt": "Archie Comics' 2013 crossover Worlds Collide teamed Sonic the Hedgehog with which Capcom hero?",
+      "options": [
+        "Strider Hiryu",
+        "Mega Man",
+        "Ryu",
+        "Dante"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "The 12-part crossover ran in 2013 across the Sonic the Hedgehog, Mega Man and Sonic Universe titles.",
+      "source": "https://gameinformer.com/b/features/archive/2013/04/29/talking-with-archie-comics-about-sonic-amp-mega-man-worlds-collide",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-008",
+      "conceptId": "COM-ST-008",
+      "category": "Comics",
+      "subcategory": "Dark Horse",
+      "prompt": "Which writer-artist created Hellboy, who debuted in 1993?",
+      "options": [
+        "Frank Miller",
+        "Jim Lee",
+        "Mike Mignola",
+        "Todd McFarlane"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "Hellboy first appeared in a four-page story by Mike Mignola in Dark Horse's San Diego Comic-Con Comics #2 (August 1993).",
+      "source": "https://www.cgccomics.com/news/article/7210/cgc-comic-of-the-month-march-2019/",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-009",
+      "conceptId": "COM-ST-009",
+      "category": "Comics",
+      "subcategory": "Graphic Novels",
+      "prompt": "In what year did Art Spiegelman receive a Pulitzer Prize special award for Maus?",
+      "options": [
+        "1986",
+        "1992",
+        "2001",
+        "1987"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The Pulitzer Prizes list Spiegelman's Maus among the 1992 Special Awards and Citations.",
+      "source": "https://www.pulitzer.org/winners/art-spiegelman",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
     }
   ]
 }

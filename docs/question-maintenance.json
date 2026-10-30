@@ -3,9 +3,9 @@
   "originalRows": 8032,
   "cleanedBaseline": 4024,
   "activeQuestions": 8438,
-  "practiceOnlyQuestions": 100,
-  "rankedEligibleActiveQuestions": 8338,
-  "retiredRows": 4415,
+  "practiceOnlyQuestions": 118,
+  "rankedEligibleActiveQuestions": 8320,
+  "retiredRows": 4433,
   "addedQuestions": 4024,
   "categories": {
     "kaspa": {
@@ -31,24 +31,26 @@
     "comics": {
       "before": 1000,
       "cleaned": 231,
-      "removed": 819,
+      "removed": 828,
       "reasons": {
         "invalid-or-ambiguous": 139,
         "off-category": 352,
         "generated-variant": 278,
-        "editorial-off-category": 44,
-        "editorial-missing-context": 1
+        "editorial-off-category": 46,
+        "editorial-missing-context": 2,
+        "editorial-unsupported-claim": 5,
+        "editorial-invalid-options": 1
       },
       "added": 231,
       "target": 462,
       "after": 413,
       "difficultyDistribution": {
-        "easy": 204,
-        "medium": 166,
-        "hard": 43
+        "easy": 202,
+        "medium": 167,
+        "hard": 44
       },
-      "editorialRemoved": 50,
-      "postReviewAdditions": 1
+      "editorialRemoved": 59,
+      "postReviewAdditions": 10
     },
     "science-fiction": {
       "before": 1000,
@@ -99,21 +101,23 @@
     "history": {
       "before": 1000,
       "cleaned": 755,
-      "removed": 279,
+      "removed": 288,
       "reasons": {
         "invalid-or-ambiguous": 243,
-        "duplicate-or-similar": 2
+        "duplicate-or-similar": 2,
+        "editorial-unsupported-claim": 7,
+        "editorial-invalid-options": 2
       },
       "added": 755,
       "target": 1510,
       "after": 1502,
       "difficultyDistribution": {
-        "easy": 556,
-        "medium": 628,
-        "hard": 318
+        "easy": 554,
+        "medium": 631,
+        "hard": 317
       },
-      "editorialRemoved": 34,
-      "postReviewAdditions": 26
+      "editorialRemoved": 43,
+      "postReviewAdditions": 35
     },
     "technology": {
       "before": 1000,
@@ -190,7 +194,7 @@
     "KasWareExtension": "78bb30045edd4d898c4d61c4c75ba1bc37e18748",
     "KaspanetDocs": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9"
   },
-  "editorialRetiredRows": 407,
+  "editorialRetiredRows": 425,
   "editorialReview": "docs/editorial-review.json",
-  "postReviewAdditions": 797
+  "postReviewAdditions": 815
 }

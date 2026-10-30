@@ -2,20 +2,20 @@
   "metadata": {
     "title": "GEEK Protocol — History Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-28",
+    "maintainedAt": "2026-10-30",
     "questionCount": 1502,
     "conceptCount": 1502,
     "category": "History",
     "difficultyDistribution": {
-      "easy": 556,
-      "medium": 628,
-      "hard": 318
+      "easy": 554,
+      "medium": 631,
+      "hard": 317
     },
     "correctIndexDistribution": {
       "0": 396,
       "1": 355,
-      "2": 393,
-      "3": 358
+      "2": 392,
+      "3": 359
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -561,30 +561,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0034",
-      "category": "History",
-      "prompt": "Which of the following is the longest war in American history?",
-      "options": [
-        "Civil War",
-        "Vietnam War",
-        "Gulf War",
-        "American Revolution"
-      ],
-      "correctIndex": 1,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-history.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0034",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "HIST-0035",
       "category": "History",
       "prompt": "This 2003 movie won seven Razzies. It had an all-star cast that included Al Pacino, Lainie Kazan, Christopher Walken and a very hot couple. What is the name of this flop directed and written by Martin Brest?",
@@ -774,30 +750,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "HIST-0042",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "HIST-0043",
-      "category": "History",
-      "prompt": "Which of the following was invented by Hiram Maxim?",
-      "options": [
-        "The automatic pistol",
-        "The sniper rifle",
-        "The silencer",
-        "The assault rifle"
-      ],
-      "correctIndex": 2,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-history.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0043",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -2304,30 +2256,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "HIST-0134",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "HIST-0135",
-      "category": "History",
-      "prompt": "According to statistics, approximately how many people lost their lives in World War II?",
-      "options": [
-        "52 million",
-        "42 million",
-        "62 million",
-        "72 million"
-      ],
-      "correctIndex": 2,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-history.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0135",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -6732,30 +6660,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "HIST-0387",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "HIST-0388",
-      "category": "History",
-      "prompt": "This significant battle on the WW II Eastern front is largely regarded as the largest armed conflict of all time.",
-      "options": [
-        "The battle of Leningrad",
-        "The battle of Sevastopol",
-        "The battle of Moscow",
-        "The battle of Kursk"
-      ],
-      "correctIndex": 3,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-history.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0388",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -14583,30 +14487,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "HIST-0815",
-      "category": "History",
-      "prompt": "Who was the first woman said to wear trousers?",
-      "options": [
-        "Paula Abdul",
-        "Gretta Garbo",
-        "Sarah Bernhardt",
-        "Elizabeth Taylor"
-      ],
-      "correctIndex": 2,
-      "difficulty": "hard",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-history.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "HIST-0815",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "HIST-0816",
       "category": "History",
       "prompt": "Australia was officially settled in 1788 as the penal colony of New South Wales. Over the course of the 19th century this many new self-governing Crown Colonies were established on the continent.",
@@ -21145,33 +21025,6 @@
       "sourceFile": "History",
       "id": "HIS-N-7f84f258726e",
       "conceptId": "HIS-N-7f84f258726e",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "What was the first recorded object to ever reach space?",
-      "options": [
-        "Bumper-WAC",
-        "American Manhole Cover",
-        "Sputnik I",
-        "Sputnik II"
-      ],
-      "correctIndex": 0,
-      "sourceCategoryId": 23,
-      "difficulty": "hard",
-      "sourceFile": "History",
-      "id": "HIS-N-91b1dddf06b0",
-      "conceptId": "HIS-N-91b1dddf06b0",
       "category": "History",
       "subcategory": "History",
       "funFact": null,
@@ -28449,33 +28302,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "President Roosevelt met with other Allied leaders several times at several places during WWII. Which is the only leader he met in the White House in Washington?",
-      "options": [
-        "Chiang Kai-shek",
-        "Winston Churchill",
-        "Charles de Gaulle",
-        "Joseph Stalin"
-      ],
-      "correctIndex": 1,
-      "sourceFile": "history",
-      "sourceOrdinal": 1101,
-      "id": "HIS-N-b503e6d74b68",
-      "conceptId": "HIS-N-b503e6d74b68",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "When did Spanish Peninsular War start?",
       "options": [
         "1808",
@@ -29502,33 +29328,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "Which is the most accurate number of casualties (including killed, wounded or lost) of World War II?",
-      "options": [
-        "16,354,000",
-        "7,457,000",
-        "9,127,000",
-        "11,147,000"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "history",
-      "sourceOrdinal": 1499,
-      "id": "HIS-N-e7724a29f63d",
-      "conceptId": "HIS-N-e7724a29f63d",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
-    },
-    {
       "prompt": "In what year did the popular sitcom, Friends, first air?",
       "options": [
         "1995",
@@ -30243,33 +30042,6 @@
       "sourceOrdinal": 236,
       "id": "HIS-N-f3aed138f17f",
       "conceptId": "HIS-N-f3aed138f17f",
-      "category": "History",
-      "subcategory": "History",
-      "funFact": null,
-      "tags": [
-        "history"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/history",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
-      "prompt": "Where did the biggest amphibious operation during WW2 take place?",
-      "options": [
-        "Okinawa",
-        "Normandy",
-        "Africa",
-        "Italy"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "history",
-      "sourceOrdinal": 677,
-      "id": "HIS-N-bb218245de59",
-      "conceptId": "HIS-N-bb218245de59",
       "category": "History",
       "subcategory": "History",
       "funFact": null,
@@ -38450,6 +38222,258 @@
           "POP-N-6b6114131628"
         ]
       }
+    },
+    {
+      "id": "HIST-ST-001",
+      "conceptId": "HIST-ST-001",
+      "category": "History",
+      "subcategory": "U.S. Military History",
+      "prompt": "The final U.S. military flight of the 2021 evacuation departed on 30 August 2021. The Department of Defense said this also ended which conflict, calling it America's longest war?",
+      "options": [
+        "The Iraq War",
+        "The Vietnam War",
+        "The war in Afghanistan",
+        "The Korean War"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "Announcing the end of the evacuation, CENTCOM commander Gen. Frank McKenzie described the end of the nearly 20-year mission that began in Afghanistan after the 11 September 2001 attacks; DoD headlined it as the end of America's longest war.",
+      "source": "https://www.defense.gov/News/News-Stories/Article/Article/2759031/military-phase-of-evacuation-ends-as-does-americas-longest-war/",
+      "tags": [
+        "history",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference is a U.S. government public-domain source, linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "HIST-ST-002",
+      "conceptId": "HIST-ST-002",
+      "category": "History",
+      "subcategory": "World War II",
+      "prompt": "Which U.S. field army made the main landing on Okinawa on 1 April 1945?",
+      "options": [
+        "Tenth Army",
+        "Third Army",
+        "Eighth Army",
+        "First Army"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The Naval History and Heritage Command notes that the U.S. Tenth Army, under Lt. Gen. Simon Bolivar Buckner Jr. and made up of Army and Marine divisions, landed on Okinawa's west coast on 1 April 1945; the battle lasted until 22 June 1945.",
+      "source": "https://www.history.navy.mil/browse-by-topic/wars-conflicts-and-operations/world-war-ii/1945/battle-of-okinawa/okinawa-historic-overview-importance.html",
+      "tags": [
+        "history",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference is a U.S. government public-domain source, linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "HIST-ST-003",
+      "conceptId": "HIST-ST-003",
+      "category": "History",
+      "subcategory": "Space History",
+      "prompt": "Launched on 31 January 1958, what was the first satellite the United States successfully placed in orbit?",
+      "options": [
+        "Vanguard 1",
+        "Telstar 1",
+        "Pioneer 1",
+        "Explorer 1"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "NASA records Explorer 1's launch on a Jupiter-C rocket from Cape Canaveral on 31 January 1958. Vanguard 1 followed on 17 March 1958.",
+      "source": "https://science.nasa.gov/mission/explorer-1/",
+      "tags": [
+        "history",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference is a U.S. government public-domain source, linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "HIST-ST-004",
+      "conceptId": "HIST-ST-004",
+      "category": "History",
+      "subcategory": "World War II",
+      "prompt": "In July 1944, which French leader did President Franklin D. Roosevelt receive at the White House?",
+      "options": [
+        "Henri Giraud",
+        "Charles de Gaulle",
+        "Philippe Pétain",
+        "Paul Reynaud"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The FDR Library's day-by-day log records General Charles de Gaulle arriving at the White House on 6 July 1944, where Roosevelt received him before tea on the South Portico.",
+      "source": "https://www.fdrlibrary.marist.edu/daybyday/daylog/july-6th-1944/",
+      "tags": [
+        "history",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference is a U.S. government public-domain source, linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "HIST-ST-005",
+      "conceptId": "HIST-ST-005",
+      "category": "History",
+      "subcategory": "Inventions",
+      "prompt": "U.S. Patent 916,885, granted in March 1909 to Hiram Percy Maxim, covered what device?",
+      "options": [
+        "A firearm silencer",
+        "A recoil-operated machine gun",
+        "A carbon-filament lamp",
+        "A smokeless gunpowder"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "Titled 'Silent Firearm', the patent is signed by Hiram Percy Maxim of Hartford, Connecticut. His father, Hiram Stevens Maxim, is known for the Maxim machine gun.",
+      "source": "https://patents.google.com/patent/US916885A/en",
+      "tags": [
+        "history",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference is a U.S. government public-domain source, linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "HIST-ST-006",
+      "conceptId": "HIST-ST-006",
+      "category": "History",
+      "subcategory": "World War II",
+      "prompt": "In WWII, the U.S. Marine Corps created a special code using the language of which Native American nation?",
+      "options": [
+        "Cherokee",
+        "Lakota",
+        "Navajo",
+        "Choctaw"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "The Marine Corps History Division says the Navajo Code Talker program began in 1942. Its first 29 recruits created a code from Navajo words for military terms.",
+      "source": "https://www.usmcu.edu/Research/Marine-Corps-History-Division/People/Navajo-Code-Talkers-in-WWII/",
+      "tags": [
+        "history",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference is a U.S. government public-domain source, linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "HIST-ST-007",
+      "conceptId": "HIST-ST-007",
+      "category": "History",
+      "subcategory": "U.S. Military History",
+      "prompt": "According to the U.S. Department of Veterans Affairs, about how many Americans served in the U.S. armed forces during World War II?",
+      "options": [
+        "About 4.7 million",
+        "About 5.7 million",
+        "About 8.7 million",
+        "About 16.1 million"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "The VA's 'America's Wars' fact sheet lists 16,112,566 total servicemembers for WWII (1941-1945), compared with about 4.7 million for WWI.",
+      "source": "https://department.va.gov/americas-wars/",
+      "tags": [
+        "history",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference is a U.S. government public-domain source, linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "HIST-ST-008",
+      "conceptId": "HIST-ST-008",
+      "category": "History",
+      "subcategory": "World War II",
+      "prompt": "How many Japanese aircraft carriers were sunk at the Battle of Midway in June 1942?",
+      "options": [
+        "Two",
+        "Four",
+        "Six",
+        "One"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Akagi, Kaga, Soryu and Hiryu were all lost. The U.S. lost the carrier Yorktown.",
+      "source": "https://www.history.navy.mil/browse-by-topic/wars-conflicts-and-operations/world-war-ii/1942/midway.html",
+      "tags": [
+        "history",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference is a U.S. government public-domain source, linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "HIST-ST-009",
+      "conceptId": "HIST-ST-009",
+      "category": "History",
+      "subcategory": "Social History",
+      "prompt": "In the early 1850s, a reform outfit of a knee-length dress worn over trousers became popularly named after which editor of the newspaper The Lily?",
+      "options": [
+        "Amelia Bloomer",
+        "Elizabeth Cady Stanton",
+        "Lucretia Mott",
+        "Susan B. Anthony"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The National Park Service notes that Amelia Bloomer wrote about the outfit and printed illustrations of it in The Lily. She refused to take credit for inventing it, but it became known as the 'Bloomer costume'.",
+      "source": "https://www.nps.gov/wori/learn/historyculture/amelia-bloomer.htm",
+      "tags": [
+        "history",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "CC BY 4.0",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft); factual reference is a U.S. government public-domain source, linked individually.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
     }
   ]
 }
