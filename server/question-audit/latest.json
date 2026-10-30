@@ -5,16 +5,16 @@
   "independentReview": false,
   "scope": "All active static rows in the category registry, including source-checked rows; excludes retired lookup-only and held CCE rows.",
   "limit": "Heuristic screening and internal pair triage are not exhaustive semantic, factual, category, licensing or difficulty review. Unflagged drafts still need item-by-item primary-source review.",
-  "corpusHash": "9198e3301ee34b792a2403ef8fc4c9f8e290a379905c650f735b75c0252ebb7f",
-  "active": 8338,
+  "corpusHash": "13d144b244a06a5e40ba127b343bc6d4b671a9691ed5b77fbf86eab68e1744a0",
+  "active": 8438,
   "recordedSourceChecks": 876,
-  "needsFactualReview": 7462,
+  "needsFactualReview": 7562,
   "categories": [
     {
       "category": "kaspa",
-      "active": 766,
+      "active": 866,
       "recordedSourceChecks": 766,
-      "needsFactualReview": 0,
+      "needsFactualReview": 100,
       "missingExplanation": 0
     },
     {

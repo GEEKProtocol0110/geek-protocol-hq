@@ -3,19 +3,19 @@
   "targetPerCategory": 1000,
   "requiredCategories": 8,
   "bankReady": false,
-  "active": 8338,
+  "active": 8438,
   "reviewed": 876,
   "remaining": 7124,
   "categories": [
     {
       "id": "kaspa",
       "name": "Kaspa",
-      "active": 766,
+      "active": 866,
       "reviewed": 766,
-      "needsReview": 0,
+      "needsReview": 100,
       "target": 1000,
       "remaining": 234,
-      "additionalQuestionsNeeded": 234,
+      "additionalQuestionsNeeded": 134,
       "tiers": {
         "easy": 164,
         "medium": 349,
