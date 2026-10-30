@@ -1,0 +1,2830 @@
+{
+  "metadata": {
+    "title": "GEEK Protocol — Kaspa Basics Gauntlet (DRAFT)",
+    "version": "0.1.0-draft",
+    "maintainedAt": "2026-10-29",
+    "questionCount": 100,
+    "conceptCount": 100,
+    "category": "Kaspa",
+    "difficultyDistribution": {
+      "easy": 30,
+      "medium": 40,
+      "hard": 30
+    },
+    "correctIndexDistribution": {
+      "0": 26,
+      "1": 23,
+      "2": 24,
+      "3": 27
+    },
+    "schema": "correctIndex is zero-based; options contains four distinct strings",
+    "reviewNotice": "Draft, practice-only and unranked: every row has practiceOnly true, is excluded from ranked, daily, lobby, duel and royale selection, and is not counted as source-checked. 10 rounds x 10 (round-N tags): easy rounds 1-3, medium 4-7, hard 8-10. Facts still need owner/editorial review before any status change.",
+    "attribution": "GEEK Protocol original questions",
+    "licenses": [
+      "MIT"
+    ],
+    "practiceOnly": true
+  },
+  "questions": [
+    {
+      "id": "KGNT-0001",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "Kaspa's ledger is structured as a what?",
+      "options": [
+        "Merkle tree",
+        "Single blockchain",
+        "BlockDAG",
+        "Hashgraph"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "Kaspa keeps parallel blocks in a directed acyclic graph instead of a single chain.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-1",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://kaspa.org/",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0001",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0002",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "Who earns newly minted KAS?",
+      "options": [
+        "Stakers",
+        "Validators",
+        "Token deployers",
+        "Miners"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "Block rewards go to proof-of-work miners; Kaspa has no staking.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-1",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://kaspa.org/",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0002",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0003",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: BlockDAG",
+      "prompt": "Which way do Kaspa block links point?",
+      "options": [
+        "Parent to child",
+        "Child to parent",
+        "To a central hub",
+        "Both directions"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "Each new block references earlier blocks as parents.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-1",
+        "blockdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://kaspa.org/",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0003",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0004",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: BlockDAG",
+      "prompt": "In a DAG, what does 'acyclic' mean?",
+      "options": [
+        "Blocks form one line",
+        "Every block links to all others",
+        "No path loops back",
+        "Blocks have no parents"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "Following parent links never returns to the starting block.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-1",
+        "blockdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://kaspa.org/",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0004",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0005",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "How were Kaspa's first coins distributed?",
+      "options": [
+        "Private presale",
+        "Fair launch via mining",
+        "Founder premine",
+        "Public ICO with vesting"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "Kaspa launched with no premine, insider allocation or presale.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-1",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://kaspa.org/",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0005",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0006",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: BlockDAG",
+      "prompt": "What happens to parallel blocks in Kaspa?",
+      "options": [
+        "They are deleted",
+        "They are sent back",
+        "They stay in the DAG",
+        "They are orphaned"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "Kaspa merges parallel blocks rather than discarding them as orphans.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-1",
+        "blockdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://kaspa.org/",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0006",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0007",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "Besides Hebrew University, Kaspa research continued at?",
+      "options": [
+        "Oxford",
+        "Princeton",
+        "Caltech",
+        "Harvard"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "Kaspa's lore traces its research to the Hebrew University and later Harvard.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-1",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://kaspa.org/",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0007",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0008",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "What kind of product is KasWare?",
+      "options": [
+        "A mining pool",
+        "A block explorer",
+        "A Kaspa wallet",
+        "A KRC-20 indexer"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "KasWare is a Kaspa wallet that dApps reach through window.kasware.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-1",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0008",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0009",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "KRC-20 is a Kaspa standard for what?",
+      "options": [
+        "NFT galleries",
+        "Mining shares",
+        "Validator stakes",
+        "Fungible tokens"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "KRC-20 defines deploy, mint and transfer operations for fungible tokens.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-1",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0009",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0010",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare event fires when the balance changes?",
+      "options": [
+        "fundsUpdated",
+        "balanceChanged",
+        "accountsChanged",
+        "utxoChanged"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "Listen for balanceChanged to refresh displayed funds.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-1",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-events",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0010",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0011",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare method changes the wallet's network?",
+      "options": [
+        "setNetwork",
+        "getNetwork",
+        "changeChain",
+        "switchNetwork"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "switchNetwork asks the wallet to move to another Kaspa network.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-2",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0011",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0012",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare method ends a dApp's connection?",
+      "options": [
+        "closeWallet",
+        "revokeAccounts",
+        "disconnect",
+        "logout"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "disconnect removes the site's wallet connection.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-2",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0012",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0013",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "KRC-20 tokens live on which network?",
+      "options": [
+        "Ethereum",
+        "Bitcoin",
+        "Kaspa",
+        "Solana"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "KRC-20 operations ride on ordinary Kaspa transactions.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-2",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0013",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0014",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: BlockDAG",
+      "prompt": "How does a Kaspa block identify its parents?",
+      "options": [
+        "By their heights",
+        "By their miners",
+        "By their timestamps",
+        "By their hashes"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "Headers list parent block hashes.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-2",
+        "blockdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kaspanet/rusty-kaspa",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0014",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0015",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: BlockDAG",
+      "prompt": "How many parents can a Kaspa block reference?",
+      "options": [
+        "Several at once",
+        "Exactly one",
+        "None at all",
+        "Exactly two"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "Kaspa blocks reference multiple parent tips, merging parallel work.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-2",
+        "blockdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://kaspa.org/",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0015",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0016",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare method returns the account's public key?",
+      "options": [
+        "getPublicKey",
+        "getAccounts",
+        "getAddress",
+        "exportKey"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "getPublicKey returns the public key, never the private key.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-2",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-account",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0016",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0017",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "Which protocol defines the KRC-20 standard?",
+      "options": [
+        "Kaspa Graph",
+        "Kaspium",
+        "Kasplex",
+        "KasWare"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "KRC-20 operations are processed by the Kasplex indexer.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-2",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0017",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0018",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: GHOSTDAG",
+      "prompt": "GHOSTDAG colors blocks blue or what?",
+      "options": [
+        "Orange",
+        "Green",
+        "Black",
+        "Red"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "Well-connected blocks are blue; the rest are red.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-2",
+        "ghostdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://eprint.iacr.org/2018/104",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0018",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0019",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "Kaspa's research began at which university?",
+      "options": [
+        "Hebrew University",
+        "Stanford",
+        "MIT",
+        "University of Cambridge"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "Kaspa grew out of blockDAG research at the Hebrew University of Jerusalem.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-2",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://kaspa.org/",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0019",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0020",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "In Kaspa, what does BPS stand for?",
+      "options": [
+        "Bytes per second",
+        "Blocks per second",
+        "Bits per sompi",
+        "Basis points"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "Mainnet targets 10 BPS.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-2",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://kaspa.org/",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0020",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0021",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "What does a KRC-20 'tick' field hold?",
+      "options": [
+        "The decimals",
+        "The supply cap",
+        "The ticker symbol",
+        "The owner key"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "The indexer validates and uppercases the tick.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-3",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/init.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0021",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0022",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: BlockDAG",
+      "prompt": "What does a higher block rate mainly cut?",
+      "options": [
+        "Node count",
+        "Confirmation wait",
+        "Coin supply",
+        "Address length"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "More frequent blocks mean transactions are included sooner.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-3",
+        "blockdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://kaspa.org/",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0022",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0023",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "What do KRC-20 transfers pay network fees in?",
+      "options": [
+        "Nothing at all",
+        "The token itself",
+        "USDT",
+        "KAS"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "Every KRC-20 operation is a Kaspa transaction paying KAS fees.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-3",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_transfer.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0023",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0024",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "A KasWare signMessage signature proves control of?",
+      "options": [
+        "An address",
+        "A token deploy",
+        "A full node",
+        "A mining pool"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "Signing a message proves key control without moving funds.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-3",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0024",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0025",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "Which KRC-20 operation destroys tokens?",
+      "options": [
+        "burn",
+        "mint",
+        "list",
+        "send"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "The burn operation removes units from a holder's balance.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-3",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_burn.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0025",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0026",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare method asks the user to connect?",
+      "options": [
+        "connectWallet",
+        "getAccounts",
+        "enable",
+        "requestAccounts"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "Call requestAccounts only after a user action, such as a click.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-3",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0026",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0027",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "What do Kaspa miners race to find?",
+      "options": [
+        "A validator vote",
+        "A staking slot",
+        "A token ticker",
+        "A valid PoW hash"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "A block is valid when its kHeavyHash result meets the target.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-3",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://kaspa.network/mining/",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0027",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0028",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "Which upgrade came right before Toccata?",
+      "options": [
+        "Crescendo",
+        "Andante",
+        "DAGKnight",
+        "Allegro"
+      ],
+      "correctIndex": 0,
+      "difficulty": "easy",
+      "funFact": "Crescendo (2025) preceded Toccata (2026).",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-3",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://kaspa.org/",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0028",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0029",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "What is Kaspa's emission schedule called?",
+      "options": [
+        "Tail emission",
+        "Quarterly halving",
+        "Chromatic halving",
+        "Fixed inflation"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "Rewards fall smoothly each month, halving every year.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-3",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://wiki.kaspa.org/en/tokenomics",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0029",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0030",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "Kaspa's DAA score is used in place of?",
+      "options": [
+        "Fee rate",
+        "Hash rate",
+        "Block height",
+        "Wallet nonce"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "In a DAG there is no single height, so a DAA score orders time.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-3",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://wiki.kaspa.org/en/tokenomics",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0030",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0031",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "How often do Kaspa block rewards step down?",
+      "options": [
+        "Every four years",
+        "Yearly",
+        "Monthly",
+        "Daily"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "Each month the reward drops by a factor of (1/2)^(1/12).",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-4",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://wiki.kaspa.org/en/tokenomics",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0031",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0032",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "Chromatic halving cuts emission by how much per year?",
+      "options": [
+        "A quarter",
+        "Two thirds",
+        "Half",
+        "A tenth"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "Twelve monthly steps combine into one halving per year.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-4",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://wiki.kaspa.org/en/tokenomics",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0032",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0033",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "Each monthly reward step multiplies by what?",
+      "options": [
+        "(1/2)^(1/12)",
+        "1/2",
+        "1/12",
+        "11/12"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "That ratio mirrors one semitone on a tempered scale.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-4",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://wiki.kaspa.org/en/tokenomics",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0033",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0034",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: GHOSTDAG",
+      "prompt": "GHOSTDAG's k at 10 BPS is set to?",
+      "options": [
+        "124",
+        "64",
+        "18",
+        "248"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "k scales with block rate; at 1 BPS it was 18.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-4",
+        "ghostdag"
+      ],
+      "volatile": true,
+      "priority": false,
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/4edcbbccb449f84832afb1ca157904b35f37d006/consensus/core/src/config/bps.rs",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0034",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0035",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: GHOSTDAG",
+      "prompt": "In what year was the PHANTOM paper first posted?",
+      "options": [
+        "2018",
+        "2016",
+        "2021",
+        "2014"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "It appeared as IACR ePrint 2018/104.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-4",
+        "ghostdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://eprint.iacr.org/2018/104",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0035",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0036",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: BlockDAG",
+      "prompt": "Max parents per block at 10 BPS?",
+      "options": [
+        "16",
+        "8",
+        "2",
+        "124"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "Rusty Kaspa caps parents at 16 to bound processing.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-4",
+        "blockdag"
+      ],
+      "volatile": true,
+      "priority": false,
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/4edcbbccb449f84832afb1ca157904b35f37d006/consensus/core/src/config/bps.rs",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0036",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0037",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: BlockDAG",
+      "prompt": "How does Kaspa choose a block's selected parent?",
+      "options": [
+        "Largest fee",
+        "Earliest timestamp",
+        "Most blue work",
+        "Lowest hash"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The parent with the highest accumulated blue work is selected.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-4",
+        "blockdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/4edcbbccb449f84832afb1ca157904b35f37d006/consensus/src/processes/ghostdag/protocol.rs",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0037",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0038",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: BlockDAG",
+      "prompt": "Linked selected parents form which chain?",
+      "options": [
+        "Mempool chain",
+        "Main fork-choice chain",
+        "Selected parent chain",
+        "Red chain"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "Kaspa's ordering follows the selected parent chain back from the virtual block.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-4",
+        "blockdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kaspanet/rusty-kaspa",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0038",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0039",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: BlockDAG",
+      "prompt": "What does Kaspa's 'virtual' block represent?",
+      "options": [
+        "A testnet block",
+        "A pruned block",
+        "A view over all DAG tips",
+        "A block mined offline"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The virtual block merges current tips to define the node's state.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-4",
+        "blockdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kaspanet/rusty-kaspa",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0039",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0040",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "How long must a KRC-20 ticker be?",
+      "options": [
+        "4 to 6 letters",
+        "3 to 5 letters",
+        "Up to 10 letters",
+        "1 to 3 letters"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "Ticker validation rejects names shorter than 4 or longer than 6.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-4",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/init.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0040",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0041",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "Minimum indexer fee to deploy a KRC-20 token?",
+      "options": [
+        "10 KAS",
+        "100 KAS",
+        "10,000 KAS",
+        "1,000 KAS"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "Deploys below 1,000 KAS fail with 'fee not enough'; rules may change.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-5",
+        "krc-20"
+      ],
+      "volatile": true,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0041",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0042",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "Minimum indexer fee per KRC-20 mint?",
+      "options": [
+        "1 KAS",
+        "0.1 KAS",
+        "100 KAS",
+        "10 KAS"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "Each mint must pay at least 1 KAS; rules may change.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-5",
+        "krc-20"
+      ],
+      "volatile": true,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_mint.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0042",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0043",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "Which KRC-20 deploy field sets the amount per mint?",
+      "options": [
+        "dec",
+        "lim",
+        "pre",
+        "max"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "lim is the amount each mint receives.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-5",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_mint.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0043",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0044",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "Which KRC-20 deploy field caps total supply?",
+      "options": [
+        "max",
+        "lim",
+        "amt",
+        "pre"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "Mints stop once minted supply reaches max.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-5",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_mint.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0044",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0045",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "Which KRC-20 deploy field pre-allocates supply?",
+      "options": [
+        "pre",
+        "max",
+        "lim",
+        "dec"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "pre credits tokens to the deploy's to address.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-5",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0045",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0046",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "Default KRC-20 decimals when dec is omitted?",
+      "options": [
+        "0",
+        "18",
+        "6",
+        "8"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "Validation fills a missing dec with 8.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-5",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0046",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0047",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "Which KRC-20 operation offers tokens for sale?",
+      "options": [
+        "sell",
+        "offer",
+        "post",
+        "list"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "The Kasplex list operation moves the amount from the seller's balance to locked and records a market order.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-5",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_list.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0047",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0048",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "Who computes KRC-20 token balances?",
+      "options": [
+        "Coinbase outputs",
+        "Off-chain indexers",
+        "KasWare servers",
+        "Kaspa consensus"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Kaspa nodes do not track KRC-20; the Kasplex indexer derives balances.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-5",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_transfer.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0048",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0049",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "How is KRC-20 data placed on Kaspa?",
+      "options": [
+        "Coinbase payloads",
+        "DNS records",
+        "Contract storage slots",
+        "Commit-reveal scripts"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "Wallets build a commit then a reveal transaction carrying the operation.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-5",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0049",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0050",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare method reads the active network?",
+      "options": [
+        "switchNetwork",
+        "getNetwork",
+        "getAccounts",
+        "getChain"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "getNetwork is read-only and needs no approval.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-5",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0050",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0051",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "What does KasWare's getNetwork return on mainnet?",
+      "options": [
+        "mainnet",
+        "kaspa_mainnet",
+        "kas_mainnet",
+        "kaspa-main"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Testnet 10 returns kaspa_testnet_10.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-6",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0051",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0052",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare method sends KAS to an address?",
+      "options": [
+        "sendKaspa",
+        "pushPskt",
+        "sendTransaction",
+        "transferKas"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "sendKaspa builds and sends a native KAS payment.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-6",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0052",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0053",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare method signs a text message?",
+      "options": [
+        "signMessage",
+        "personalSign",
+        "signText",
+        "signPskt"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "signMessage proves address control without spending.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-6",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0053",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0054",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare event fires on an account switch?",
+      "options": [
+        "accountsChanged",
+        "networkChanged",
+        "walletSwitched",
+        "balanceChanged"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "dApps listen for accountsChanged to refresh the address.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-6",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0054",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0055",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare event follows a fee-bump replacement?",
+      "options": [
+        "rbfReplaced",
+        "feeBumpConfirmed",
+        "transactionDropped",
+        "transactionReplacementResponse"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "KasWare emits transactionReplacementResponse after a replacement attempt.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-6",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-events",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0055",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0056",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "When should a dApp call KasWare's requestAccounts?",
+      "options": [
+        "On page load",
+        "Before rendering",
+        "After a user click",
+        "On every page refresh"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "KasWare's docs say never to request a connection on page load.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-6",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0056",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0057",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare call reads already-connected accounts?",
+      "options": [
+        "disconnect",
+        "requestAccounts",
+        "signMessage",
+        "getAccounts"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "getAccounts returns the connected current account address (an array) and is used to check whether the site is connected.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-6",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0057",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0058",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "In PSKT, what does the 'T' stand for?",
+      "options": [
+        "Tick",
+        "Transaction",
+        "Token",
+        "Transfer"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "PSKT means partially signed Kaspa transaction.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-6",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0058",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0059",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare method signs a PSKT?",
+      "options": [
+        "signPskt",
+        "sendKaspa",
+        "signMessage",
+        "pushPskt"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "signPskt signs; pushPskt broadcasts.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-6",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0059",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0060",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "At mainnet's 10 BPS, coinbase outputs mature after how many blocks?",
+      "options": [
+        "100,000",
+        "1,000",
+        "10,000",
+        "10"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Rusty Kaspa sets coinbase maturity to BPS x 100 seconds, so 10 BPS gives 1,000 blocks (about 100 seconds).",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-6",
+        "kaspa-basics"
+      ],
+      "volatile": true,
+      "priority": false,
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/4edcbbccb449f84832afb1ca157904b35f37d006/consensus/core/src/config/bps.rs",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0060",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0061",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "Kaspa's minimum relay fee is quoted per what mass unit?",
+      "options": [
+        "Byte",
+        "Gram",
+        "Ounce",
+        "Kilobyte"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The baseline is 1 sompi per gram of transaction mass.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-7",
+        "kaspa-basics"
+      ],
+      "volatile": true,
+      "priority": false,
+      "source": "https://wiki.kaspa.org/en/tokenomics",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0061",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0062",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "How long did Kaspa's pre-chromatic phase last?",
+      "options": [
+        "About 6 months",
+        "About 1 month",
+        "About 4 years",
+        "About 2 years"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "It ran from November 2021 to May 2022.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-7",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://wiki.kaspa.org/en/tokenomics",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0062",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0063",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: BlockDAG",
+      "prompt": "Blocks a block newly adds to its past form its?",
+      "options": [
+        "Red set",
+        "Anticone",
+        "Mergeset",
+        "Future"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The mergeset is what a block merges beyond its selected parent's past.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-7",
+        "blockdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kaspanet/rusty-kaspa",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0063",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0064",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: GHOSTDAG",
+      "prompt": "What does a block's blue score count?",
+      "options": [
+        "Its parent count",
+        "Blue blocks in its past",
+        "Red blocks it merges",
+        "All the blocks in its past"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Blue score grows with the blue blocks a block inherits.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-7",
+        "ghostdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/4edcbbccb449f84832afb1ca157904b35f37d006/consensus/src/processes/ghostdag/protocol.rs",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0064",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0065",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: GHOSTDAG",
+      "prompt": "GHOSTDAG treats blue blocks as what?",
+      "options": [
+        "Token-carrying blocks",
+        "Well-connected blocks",
+        "High-fee blocks",
+        "Pool-mined blocks"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Blocks published promptly by honest miners tend to be blue.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-7",
+        "ghostdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://eprint.iacr.org/2018/104",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0065",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0066",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "In 'DAA score', what does DAA stand for?",
+      "options": [
+        "Difficulty adjustment algorithm",
+        "DAG acceptance audit",
+        "Data availability anchor",
+        "Directed acyclic architecture"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "DAA score is a monotonic counter used in place of block height.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-7",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://wiki.kaspa.org/en/tokenomics",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0066",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0067",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "Which KIP specified the Crescendo hardfork?",
+      "options": [
+        "KIP-9",
+        "KIP-2",
+        "KIP-21",
+        "KIP-14"
+      ],
+      "correctIndex": 3,
+      "difficulty": "medium",
+      "funFact": "KIP-14 bundled KIP-9, 10, 13 and 15.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-7",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kaspanet/kips/blob/master/kip-0014.md",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0067",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0068",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "What did Kaspa's Toccata upgrade add?",
+      "options": [
+        "A larger supply cap",
+        "L1 programmability",
+        "Proof of stake",
+        "Merged mining"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Toccata brought covenants and ZK verification to layer 1.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-7",
+        "kaspa-basics"
+      ],
+      "volatile": true,
+      "priority": false,
+      "source": "https://kaspa.org/",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0068",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0069",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "What reward mix did Kaspa's first two weeks use?",
+      "options": [
+        "Random 1-1000 KAS",
+        "Zero subsidy",
+        "Fixed 500 KAS",
+        "Fixed 440 KAS"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The random-reward subphase averaged about 750 KAS per block.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-7",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://wiki.kaspa.org/en/tokenomics",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0069",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0070",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "A KRC-20 mint after max supply is reached is?",
+      "options": [
+        "Rejected by miners",
+        "Added to supply",
+        "Marked failed",
+        "Refunded in KAS"
+      ],
+      "correctIndex": 2,
+      "difficulty": "medium",
+      "funFact": "The KAS transaction confirms, but the indexer credits no tokens.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-7",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_mint.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0070",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0071",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "A ticker submitted as 'kasp' is stored as?",
+      "options": [
+        "Kasp (title case)",
+        "kasp (unchanged)",
+        "KASP-20",
+        "KASP"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "Ticker validation uppercases the tick.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-8",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/init.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0071",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0072",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "Besides deploy, which KRC-20 op has a minimum fee?",
+      "options": [
+        "burn",
+        "mint",
+        "list",
+        "transfer"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "Transfer, burn and list have no minimum indexer fee.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-8",
+        "krc-20"
+      ],
+      "volatile": true,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_mint.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0072",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0073",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "Which characters may a KRC-20 ticker use?",
+      "options": [
+        "Letters and digits",
+        "Letters A-Z only",
+        "Any UTF-8 text",
+        "Letters and hyphens"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "Each tick character must fall in A-Z after uppercasing.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-8",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/init.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0073",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0074",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "A KRC-20 'issue'-mode deploy is keyed by?",
+      "options": [
+        "Its deploy txid",
+        "Its name field",
+        "The deployer address",
+        "A random nonce"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "Issue mode sets the tick to the deploy transaction ID.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-8",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0074",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0075",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "How does the indexer treat a transfer from a blacklisted holder?",
+      "options": [
+        "Delays it",
+        "Burns it",
+        "Doubles its fee",
+        "Rejects it"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "The transfer check fails when the sender is blacklisted for that token.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-8",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_transfer.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0075",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0076",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: GHOSTDAG",
+      "prompt": "In PHANTOM, k mainly reflects what?",
+      "options": [
+        "Total network hashrate",
+        "Propagation delay",
+        "Fee pressure",
+        "Coin supply"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "k is chosen so honest blocks rarely exceed k in each other's anticone.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-8",
+        "ghostdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://eprint.iacr.org/2018/104",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0076",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0077",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: GHOSTDAG",
+      "prompt": "Why is GHOSTDAG called greedy?",
+      "options": [
+        "It picks the newest tip",
+        "It maximizes fees",
+        "It inherits the selected parent's coloring",
+        "It skips red checks"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "Each block extends its selected parent's blue set instead of solving globally.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-8",
+        "ghostdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://eprint.iacr.org/2018/104",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0077",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0078",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: GHOSTDAG",
+      "prompt": "Finding PHANTOM's exact max k-cluster is?",
+      "options": [
+        "Constant time",
+        "Linear time",
+        "NP-hard",
+        "Undecidable"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "That hardness motivated the greedy GHOSTDAG approximation.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-8",
+        "ghostdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://eprint.iacr.org/2018/104",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0078",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0079",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: BlockDAG",
+      "prompt": "What does pruning keep intact?",
+      "options": [
+        "All raw payloads",
+        "The UTXO set",
+        "Every old block",
+        "Mempool history"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "Pruned nodes still hold full spendable state.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-8",
+        "blockdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kaspanet/rusty-kaspa",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0079",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0080",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: BlockDAG",
+      "prompt": "How do Kaspa nodes drop old block data?",
+      "options": [
+        "Rollups",
+        "Checkpoint voting",
+        "Pruning",
+        "Sharding"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "Pruning discards old block bodies to bound storage.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-8",
+        "blockdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kaspanet/rusty-kaspa",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0080",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0081",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: GHOSTDAG",
+      "prompt": "Which proposal makes Kaspa's k adapt to latency?",
+      "options": [
+        "SPECTRE",
+        "GHOSTDAG",
+        "Crescendo",
+        "DAGKnight"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "DAGKnight (KIP-2) is still proposed; details may change.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-9",
+        "ghostdag"
+      ],
+      "volatile": true,
+      "priority": false,
+      "source": "https://github.com/kaspanet/kips/blob/master/kip-0002.md",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0081",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0082",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: GHOSTDAG",
+      "prompt": "What did SPECTRE lack that PHANTOM added?",
+      "options": [
+        "A full linear order",
+        "Parallel block mining",
+        "A fixed supply",
+        "Proof of work"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "SPECTRE ordered pairs of blocks, which suits payments but not smart contracts.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-9",
+        "ghostdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://eprint.iacr.org/2016/1159",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0082",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0083",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "Before chromatic halving, KAS was minted at what rate?",
+      "options": [
+        "440 KAS per second",
+        "50 KAS per second",
+        "500 KAS per second",
+        "1,000 KAS per second"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The pre-deflationary phase ran until May 2022.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-9",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://wiki.kaspa.org/en/tokenomics",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0083",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0084",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "What rate did chromatic emission start at?",
+      "options": [
+        "500 KAS per second",
+        "880 KAS per second",
+        "220 KAS per second",
+        "440 KAS per second"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "440 matches the frequency of the note A4.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-9",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://wiki.kaspa.org/en/tokenomics",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0084",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0085",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "The 440 starting rate echoes which musical note?",
+      "options": [
+        "E4",
+        "A4",
+        "G4",
+        "C4"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "Each monthly step is a semitone; each year is an octave.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-9",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://wiki.kaspa.org/en/tokenomics",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0085",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0086",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "In which year did the chromatic phase begin?",
+      "options": [
+        "2023",
+        "2024",
+        "2022",
+        "2021"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "The pre-deflationary phase ended on May 8, 2022.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-9",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://wiki.kaspa.org/en/tokenomics",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0086",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0087",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "What does getNetwork return on Testnet 10?",
+      "options": [
+        "kaspa_simnet",
+        "kaspa_testnet_10",
+        "kaspatest_10",
+        "kaspa_devnet"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "Network names may change as testnets are replaced.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-9",
+        "kasware"
+      ],
+      "volatile": true,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-connection",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0087",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0088",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare method returns spendable UTXOs?",
+      "options": [
+        "getUtxoEntries",
+        "listUnspent",
+        "getBalance",
+        "getOutputs"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "getUtxoEntries returns the account's UTXO entries.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-9",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/developer-documentation/kaspa/kaspa-account",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0088",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0089",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare call broadcasts a signed PSKT?",
+      "options": [
+        "submitPskt",
+        "signPskt",
+        "sendKaspa",
+        "pushPskt"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "Sign with signPskt, then broadcast with pushPskt.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-9",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0089",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0090",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare call builds a KRC-20 inscription script?",
+      "options": [
+        "buildScript",
+        "makeScript",
+        "createInscription",
+        "encodeKRC20"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "buildScript prepares the script for KRC-20 commit-reveal.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-9",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0090",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0091",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "kHeavyHash wraps its matrix step in which hash?",
+      "options": [
+        "Scrypt",
+        "cSHAKE256",
+        "Blake2b",
+        "SHA-256d"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "Rusty Kaspa's PoW hashers are cSHAKE256 instances.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-10",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/4edcbbccb449f84832afb1ca157904b35f37d006/crypto/hashes/src/pow_hashers.rs",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0091",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0092",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "Kaspa's emission is fixed per what unit?",
+      "options": [
+        "Per transaction",
+        "Per epoch vote",
+        "Per block",
+        "Per second"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "Raising BPS splits the same per-second subsidy across more blocks.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-10",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://wiki.kaspa.org/en/tokenomics",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0092",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0093",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "Kaspa addresses sign with which default scheme?",
+      "options": [
+        "RSA",
+        "BLS",
+        "EdDSA",
+        "Schnorr"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "Standard Kaspa addresses use Schnorr public keys.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-10",
+        "kaspa-basics"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kaspanet/rusty-kaspa/blob/4edcbbccb449f84832afb1ca157904b35f37d006/crypto/addresses/src/lib.rs",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0093",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0094",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: GHOSTDAG",
+      "prompt": "Who co-authored the GHOSTDAG paper with Sompolinsky and Zohar?",
+      "options": [
+        "Michael Sutton",
+        "Elichai Turkel",
+        "Ori Newman",
+        "Shai Wyborski"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "The paper is 'PHANTOM and GHOSTDAG: A Scalable Generalization of Nakamoto Consensus' (IACR ePrint 2018/104).",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-10",
+        "ghostdag"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://eprint.iacr.org/2018/104",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0094",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0095",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "Where do a deploy's pre-allocated tokens go?",
+      "options": [
+        "The to address",
+        "The first minter",
+        "The indexer",
+        "A burn address"
+      ],
+      "correctIndex": 0,
+      "difficulty": "hard",
+      "funFact": "The indexer verifies the to address before crediting pre.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-10",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0095",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0096",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "A deploy reusing an existing ticker is?",
+      "options": [
+        "Merged with the old one",
+        "Queued until free",
+        "Renamed automatically",
+        "Rejected as a duplicate"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "Each tick can be deployed only once.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-10",
+        "krc-20"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0096",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0097",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KRC-20",
+      "prompt": "Error for a deploy paying under 1,000 KAS?",
+      "options": [
+        "mode invalid",
+        "fee unknown",
+        "fee not enough",
+        "tick reserved"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "'fee unknown' applies when no fee is detected.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-10",
+        "krc-20"
+      ],
+      "volatile": true,
+      "priority": false,
+      "source": "https://github.com/kasplex/indexer-executor/blob/0e4ee46fb6e7a148dfff38bac78bd8415c312c15/operation/op_deploy.go",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0097",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0098",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: Kaspa Basics",
+      "prompt": "About when will KAS rewards fall below 1 sompi?",
+      "options": [
+        "About 21 years in",
+        "About 12 years in",
+        "About 100 years in",
+        "About 36 years in"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "The wiki's 1-BPS estimate counts from mainnet start.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-10",
+        "kaspa-basics"
+      ],
+      "volatile": true,
+      "priority": false,
+      "source": "https://wiki.kaspa.org/en/tokenomics",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0098",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0099",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: BlockDAG",
+      "prompt": "What caps how many blocks one block may merge?",
+      "options": [
+        "Pruning depth",
+        "Coinbase maturity depth",
+        "Fee rate",
+        "Mergeset size limit"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "Mergesets over the limit make a block invalid.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-10",
+        "blockdag"
+      ],
+      "volatile": true,
+      "priority": false,
+      "source": "https://github.com/kaspanet/rusty-kaspa",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0099",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    },
+    {
+      "id": "KGNT-0100",
+      "category": "Kaspa",
+      "subcategory": "Gauntlet: KasWare",
+      "prompt": "Which KasWare method signs a KRC-20 transaction?",
+      "options": [
+        "signPskt",
+        "signKRC20Transaction",
+        "sendKaspa",
+        "buildScript"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard",
+      "funFact": "KasWare's KRC-20 API pairs buildScript with signing helpers.",
+      "tags": [
+        "kaspa",
+        "gauntlet",
+        "round-10",
+        "kasware"
+      ],
+      "volatile": false,
+      "priority": false,
+      "source": "https://docs.kasware.xyz/wallet/dev-base/dev-integration",
+      "reviewStatus": "draft-needs-human-review",
+      "conceptId": "KGNT-0100",
+      "reviewedAt": "2026-10-29",
+      "practiceOnly": true
+    }
+  ]
+}

@@ -9,3 +9,14 @@ window.GEEK_QUESTION_COUNTS = Object.freeze({
   "comics": 413,
   "pop-culture": 1567
 });
+// Practice-only, unranked draft rows (not source-checked; excluded from ranked selection).
+window.GEEK_PRACTICE_ONLY_COUNTS = Object.freeze({
+  "kaspa": 100,
+  "video-games": 0,
+  "science-fiction": 0,
+  "technology": 0,
+  "movies": 0,
+  "history": 0,
+  "comics": 0,
+  "pop-culture": 0
+});

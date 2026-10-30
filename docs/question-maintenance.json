@@ -2,7 +2,9 @@
   "maintainedAt": "2026-10-29",
   "originalRows": 8032,
   "cleanedBaseline": 4024,
-  "activeQuestions": 8338,
+  "activeQuestions": 8438,
+  "practiceOnlyQuestions": 100,
+  "rankedEligibleActiveQuestions": 8338,
   "retiredRows": 4415,
   "addedQuestions": 4024,
   "categories": {
@@ -16,14 +18,15 @@
       },
       "added": 92,
       "target": 184,
-      "after": 766,
+      "after": 866,
       "difficultyDistribution": {
-        "easy": 164,
-        "medium": 349,
-        "hard": 253
+        "easy": 194,
+        "medium": 389,
+        "hard": 283
       },
-      "postReviewAdditions": 586,
-      "editorialRemoved": 4
+      "postReviewAdditions": 686,
+      "editorialRemoved": 4,
+      "practiceOnly": 100
     },
     "comics": {
       "before": 1000,
@@ -189,5 +192,5 @@
   },
   "editorialRetiredRows": 407,
   "editorialReview": "docs/editorial-review.json",
-  "postReviewAdditions": 697
+  "postReviewAdditions": 797
 }

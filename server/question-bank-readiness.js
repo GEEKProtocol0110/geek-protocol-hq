@@ -21,7 +21,7 @@ export function evaluateBankReadiness(banks, today = new Date().toISOString().sl
       const unique = !ids.has(q.id) && !concepts.has(concept) && !prompts.has(prompt);
       ids.add(q.id); concepts.add(concept); prompts.add(prompt);
       if (!unique) throw new Error('QUESTION_READINESS_UNAVAILABLE');
-      const eligible = q.reviewStatus === 'source-checked' && dateValid(q.reviewedAt) && q.reviewedAt <= today &&
+      const eligible = !q.practiceOnly && q.reviewStatus === 'source-checked' && dateValid(q.reviewedAt) && q.reviewedAt <= today &&
         q.id === concept && !q.retiredReason && !q.derivedVariant && https(q.source) &&
         typeof q.funFact === 'string' && q.funFact.trim().length >= 8 && q.prompt.trim().length >= 12 &&
         Array.isArray(q.options) && q.options.length === 4 && q.options.every(o => typeof o === 'string' && o.trim()) &&
@@ -30,9 +30,9 @@ export function evaluateBankReadiness(banks, today = new Date().toISOString().sl
     }
     const remaining = Math.max(0, reviewedTarget - reviewed);
     const tierCapacity = tiers.easy >= 30 && tiers.medium >= 40 && tiers.hard >= 30;
-    return { id, name: categoryNames[id], active: banks[id].length, reviewed, needsReview: banks[id].length - reviewed, target: reviewedTarget, remaining, additionalQuestionsNeeded: Math.max(0, reviewedTarget - banks[id].length), tiers, ready: remaining === 0 && tierCapacity };
+    return { id, name: categoryNames[id], active: banks[id].length, practiceOnly: banks[id].filter(q => q.practiceOnly).length, reviewed, needsReview: banks[id].length - reviewed, target: reviewedTarget, remaining, additionalQuestionsNeeded: Math.max(0, reviewedTarget - banks[id].length), tiers, ready: remaining === 0 && tierCapacity };
   });
-  return { schema: 1, targetPerCategory: reviewedTarget, requiredCategories: categories.length, bankReady: categories.every(c => c.ready), active: categories.reduce((n, c) => n + c.active, 0), reviewed: categories.reduce((n, c) => n + c.reviewed, 0), remaining: categories.reduce((n, c) => n + c.remaining, 0), categories };
+  return { schema: 1, targetPerCategory: reviewedTarget, requiredCategories: categories.length, bankReady: categories.every(c => c.ready), active: categories.reduce((n, c) => n + c.active, 0), practiceOnly: categories.reduce((n, c) => n + c.practiceOnly, 0), reviewed: categories.reduce((n, c) => n + c.reviewed, 0), remaining: categories.reduce((n, c) => n + c.remaining, 0), categories };
 }
 
 let cached, cachedDate;

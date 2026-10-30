@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-10-28. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-10-30. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -10,11 +10,11 @@ Record date: 2026-10-28. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,338 active questions; 876 recorded internal source reviews; 7,124 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,338 active ranked-eligible questions, plus 100 practice-only unranked draft questions (not ranked-eligible, not source-checked); 876 recorded internal source reviews; 7,124 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
-| Kaspa | 766 | 766 | 234 |
+| Kaspa | 866 | 766 | 234 |
 | Video games | 601 | 0 | 1000 |
 | Science fiction | 514 | 37 | 963 |
 | Technology | 1485 | 19 | 981 |

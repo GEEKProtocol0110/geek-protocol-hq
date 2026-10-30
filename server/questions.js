@@ -18,6 +18,8 @@ const normalizeQuestion = (question) => ({
   reviewedAt: question.reviewedAt || '',
   volatile: Boolean(question.volatile),
   priority: Boolean(question.priority),
+  // Practice-only drafts are unranked: never selected for ranked, daily, lobby, duel or royale runs.
+  practiceOnly: Boolean(question.practiceOnly),
   tags: Array.isArray(question.tags) ? question.tags : []
 });
 
@@ -75,7 +77,7 @@ export const selectRoundQuestionIds = async (category, round, excludedIds = [], 
     .filter(q => available(q) && !previous.filter(Boolean).some(old => similarQuestion(old, q))));
   const pool = secureShuffle([
     ...communityPool,
-    ...bank.questions.filter((question) => question.difficulty === tier && available(question))
+    ...bank.questions.filter((question) => !question.practiceOnly && question.difficulty === tier && available(question))
   ]);
   const focusTerms = focus === 'ghostdag'
     ? ['ghostdag', 'consensus', 'blockdag']
