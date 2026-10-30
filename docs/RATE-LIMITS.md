@@ -18,3 +18,14 @@ Each endpoint class has its own bucket, so page-load reads can never use up acco
 Ranked and score-submit limits (`api/ranked.js`, `server/*`) are unchanged.
 
 Client rule: only an explicit 401 or a successful "not signed in" response means signed out. A 429, a 5xx or a network failure keeps the last known state (from sessionStorage) and shows a fixed retry message set with textContent.
+
+## Root cause of the trip after about 15 page loads
+
+1. Every page load ran passkey status checks in a single bucket shared with account creation and login (30 per session per 10 min).
+2. The sign-in page fetched passkey status three times per load: once in `sign-in/assets/passkeys.js`; once in `assets/session-access.js` on load; and once more after passkeys.js announced `geek:passkey-signed-in` on load. Other pages also re-checked status on every navigation.
+
+Fixes: session-access skips its own fetch when the passkey panel is on the page. It ignores the initial (`detail.initial`) announcement and reuses a status checked less than 15 s earlier (sessionStorage). The buckets are now separate, as in the table above.
+
+## 429 responses
+
+`rateLimit` reads the bucket TTL. A 429 response carries `Retry-After` (seconds) and a body `{ code: 'RATE_LIMITED', retryAfter, reset }`. The client shows "Temporarily rate limited. Your session has not changed. Try again in N seconds." N is taken from Retry-After, then retryAfter, then reset, and is limited to 1–3600. The client keeps the last known signed-in state and checks again after N seconds, without a new sign-in.

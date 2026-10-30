@@ -46,6 +46,11 @@ test('account creation stays limited, and browsing does not consume its bucket',
     if ((await call(passkeysHandler, cookie, { action: 'begin-register' })).statusCode === 429) limited++;
   }
   assert.ok(limited >= 4, 'repeated account-creation attempts are still limited');
+  const blocked = await call(passkeysHandler, cookie, { action: 'begin-register' });
+  assert.equal(blocked.statusCode, 429);
+  assert.ok(Number(blocked.headers['Retry-After']) > 0 && Number(blocked.headers['Retry-After']) <= RATE_LIMITS.passkeyCreateSession.seconds);
+  assert.equal(blocked.body.retryAfter, Number(blocked.headers['Retry-After']));
+  assert.ok(blocked.body.reset > Date.now());
   assert.equal((await call(passkeysHandler, cookie, undefined, 'GET')).statusCode, 200, 'a limited create bucket leaves status reads working');
   assert.ok(RATE_LIMITS.passkeyCreateSession.maximum <= 10 && RATE_LIMITS.passkeyLoginSession.maximum <= 20);
 });
@@ -62,16 +67,48 @@ const mountAccess = async (reply, store) => {
   ui.run(accessSource); await settle(); return { ...ui, button };
 };
 
-test('a 429 or 5xx on the session check keeps a signed-in UI and shows a fixed retry message', async () => {
-  for (const status of [429, 503]) {
-    const store = storage();
-    const ok = await mountAccess(() => json({ ok: true, signedIn: true }), store);
-    assert.equal(ok.button.hidden, false);
-    const limited = await mountAccess(() => json({ ok: false, error: '<b>Slow down</b>' }, status), store);
-    assert.equal(limited.button.hidden, false, `signed-in UI kept on ${status}`);
-    assert.match(limited.node('[data-sign-out-status]').textContent, /couldn’t check your sign-in/);
-    assert.doesNotMatch(limited.node('[data-sign-out-status]').textContent, /Slow down/);
-  }
+const limitedReply = (seconds = 42) => new Response(JSON.stringify({ ok: false, code: 'RATE_LIMITED', retryAfter: seconds, error: '<b>Slow down</b>' }), { status: 429, headers: { 'Retry-After': String(seconds) } });
+
+test('hitting the limit while signed in keeps the signed-in UI and shows the retry time from Retry-After', async () => {
+  const store = storage();
+  const ok = await mountAccess(() => json({ ok: true, signedIn: true }), store);
+  assert.equal(ok.button.hidden, false);
+  store.setItem('geek:last-session-checked', '0'); // force a fresh check on the next page
+  const limited = await mountAccess(() => limitedReply(42), store);
+  assert.equal(limited.button.hidden, false, 'never shown as signed out on 429');
+  const text = limited.node('[data-sign-out-status]').textContent;
+  assert.equal(text, 'Temporarily rate limited. Your session has not changed. Try again in 42 seconds.');
+  assert.equal(store.getItem('geek:last-session-state'), 'signed-in');
+});
+
+test('the retry time falls back to the body reset field, and a 5xx is unknown rather than signed out', async () => {
+  const store = storage({ 'geek:last-session-state': 'signed-in' });
+  const reset = await mountAccess(() => json({ ok: false, reset: Date.now() + 30000 }, 429), store);
+  assert.match(reset.node('[data-sign-out-status]').textContent, /^Temporarily rate limited\. .* Try again in (29|30) seconds\.$/);
+  const down = await mountAccess(() => json({ ok: false }, 503), storage({ 'geek:last-session-state': 'signed-in' }));
+  assert.equal(down.button.hidden, false);
+  assert.match(down.node('[data-sign-out-status]').textContent, /couldn’t check your sign-in/);
+});
+
+test('after the limit clears the UI recovers without signing in again', async () => {
+  let limited = true; const calls = [];
+  const store = storage({ 'geek:last-session-state': 'signed-in' });
+  const ui = await mountAccess(() => { calls.push(1); return limited ? limitedReply(5) : json({ ok: true, signedIn: true }); }, store);
+  assert.match(ui.node('[data-sign-out-status]').textContent, /Try again in 5 seconds/);
+  const retry = [...ui.timers.values()].find(t => t.delay === 5000);
+  assert.ok(retry, 'a retry is scheduled for the Retry-After time');
+  limited = false; retry.fn(); await settle();
+  assert.equal(calls.length, 2);
+  assert.equal(ui.button.hidden, false);
+  assert.equal(ui.node('[data-sign-out-status]').textContent, '');
+  assert.equal(store.getItem('geek:last-session-state'), 'signed-in');
+});
+
+test('a status checked moments ago on the previous page is reused instead of refetched', async () => {
+  let calls = 0; const store = storage();
+  await mountAccess(() => { calls++; return json({ ok: true, signedIn: true }); }, store);
+  const next = await mountAccess(() => { calls++; return json({ ok: true, signedIn: true }); }, store);
+  assert.equal(calls, 1); assert.equal(next.button.hidden, false);
 });
 
 test('an explicit 401 shows signed out', async () => {
@@ -101,12 +138,12 @@ const mountSignIn = async (statusReply, store) => {
 };
 
 test('sign-in page under 429 keeps a known signed-in user signed in, without the guest-unavailable copy', async () => {
-  const ui = await mountSignIn(() => json({ ok: false, error: 'Slow down and try again in a moment.' }, 429), storage({ 'geek:last-session-state': 'signed-in' }));
+  const ui = await mountSignIn(() => limitedReply(42), storage({ 'geek:last-session-state': 'signed-in' }));
   const status = ui.node('[data-sign-in-status]').textContent;
   assert.doesNotMatch(status, /temporarily unavailable|continue as a guest/i);
-  assert.match(status, /couldn’t check your sign-in/);
+  assert.equal(status, 'Temporarily rate limited. Your session has not changed. Try again in 42 seconds.');
   assert.equal(ui.node('[data-sign-in-hq]').hidden, false);
-  assert.match(ui.node('[data-passkey-note]').textContent, /couldn’t check your sign-in/);
+  assert.match(ui.node('[data-passkey-note]').textContent, /Temporarily rate limited\. .*42 seconds/);
 });
 
 test('sign-in page with 401 on status shows signed out', async () => {
@@ -121,4 +158,23 @@ test('the sign-in and profile pages render exactly one Sign out control', () => 
     assert.equal((html.match(/>\s*Sign out\s*</g) || []).length, 1, page);
     assert.equal((html.match(/data-passkey-logout/g) || []).length, 0, page);
   }
+});
+
+test('the sign-in page makes one passkey status request per load (no duplicate from session-access)', async () => {
+  const listeners = new Map(), calls = [];
+  const ui = clientFixture(async (path, options = {}) => { calls.push(`${options.method || 'GET'} ${path}`); return json(path === '/api/session' ? { ok: true } : { ok: true, signedIn: true, credentials: [] }); });
+  ui.window.isSecureContext = true; ui.window.PublicKeyCredential = undefined; ui.window.sessionStorage = storage();
+  ui.context.navigator.userAgent = ''; ui.node('[data-wallet-open-app]', 'a').hidden = true;
+  ui.document.addEventListener = (type, fn) => listeners.set(type, [...(listeners.get(type) || []), fn]);
+  ui.document.dispatchEvent = event => { for (const fn of listeners.get(event.type) || []) fn(event); };
+  for (const name of ['address', 'signature']) ui.node(`[data-${name}-form]`).append(ui.make('button'));
+  const panel = ui.node('[data-passkeys]');
+  for (const name of ['note', 'list', 'label', 'wallet-help', 'player', 'device', 'device-help', 'login-area', 'account', 'player-row', 'new-title']) panel.append(ui.node(`[data-passkey-${name}]`));
+  for (const name of ['save', 'login', 'verify', 'wallet-authorize']) panel.append(ui.node(`[data-passkey-${name}]`, 'button'));
+  const button = ui.node('[data-sign-out]', 'button'); button.hidden = true; ui.node('[data-sign-out-status]');
+  ui.node('[data-sign-in-hq]').hidden = true;
+  for (const script of [...signInScripts, accessSource]) ui.run(script);
+  await settle(); await settle();
+  assert.equal(calls.filter(c => c.includes('/api/passkeys')).length, 1, calls.join(', '));
+  assert.equal(button.hidden, false, 'the single Sign out control follows the panel status');
 });

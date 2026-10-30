@@ -30,6 +30,12 @@
   };
   const encode = value => btoa(String.fromCharCode(...new Uint8Array(value))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   const decode = value => Uint8Array.from(atob(value.replace(/-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0));
+  const retrySeconds = (response, data) => {
+    const header = Number.parseInt(response?.headers?.get?.('Retry-After') ?? '', 10);
+    const fromReset = Number(data?.reset) > 0 ? Math.ceil((Number(data.reset) - Date.now()) / 1000) : NaN;
+    const value = [header, Number(data?.retryAfter), fromReset].find(n => Number.isFinite(n) && n > 0);
+    return Math.min(3600, Math.max(1, Math.round(value || 60)));
+  };
   const fetchJson = async (path, body) => {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 15000);
@@ -37,7 +43,7 @@
       const response = await fetch(path, { method: body ? 'POST' : 'GET', credentials: 'same-origin', signal: controller.signal,
         headers: { 'Content-Type': 'application/json' }, ...(body ? { body: JSON.stringify(body) } : {}) });
       const data = await response.json();
-      if (!response.ok) { const error = new Error(data.error || 'Passkeys are unavailable.'); error.code = data.code; error.status = response.status; throw error; }
+      if (!response.ok) { const error = new Error(data.error || 'Passkeys are unavailable.'); error.code = data.code; error.status = response.status; error.retryAfter = retrySeconds(response, data); throw error; }
       return data;
     } catch (error) {
       if (controller.signal.aborted) throw new Error('The request took too long. Reload to check your saved player before trying again.');
@@ -152,13 +158,15 @@
         if (data.signedIn || data.walletLinked) note.textContent = 'You’re signed in. Open My HQ to continue.';
         else if (supported) note.textContent = 'Choose Sign in to open your device’s passkey prompt.';
         document.querySelector('[data-passkey-wallet-help]').hidden = !data.walletLinked;
-        if (data.signedIn) document.dispatchEvent(new CustomEvent('geek:passkey-signed-in'));
+        if (data.signedIn) document.dispatchEvent(new CustomEvent('geek:passkey-signed-in', {detail:{initial:true}}));
       } catch (error) {
         if (error.status === 401) { ready = true; setDisabled(); document.dispatchEvent(new CustomEvent('geek:account-status', {detail:{signedIn:false,walletLinked:false}})); return; }
         // 429, 5xx or a network failure: session state is unknown, never signed out.
-        note.textContent = 'We couldn’t check your sign-in right now. Your session has not changed. Try again in a moment.';
-        document.dispatchEvent(new CustomEvent('geek:account-status-unknown'));
-        document.dispatchEvent(new CustomEvent('geek:device-unavailable', {detail:{message:'Status check unavailable.'}}));
+        const limited = error.status === 429, seconds = limited ? error.retryAfter : null;
+        note.textContent = limited ? `Temporarily rate limited. Your session has not changed. Try again in ${seconds} seconds.`
+          : 'We couldn’t check your sign-in right now. Your session has not changed. Try again in a moment.';
+        document.dispatchEvent(new CustomEvent('geek:account-status-unknown', {detail:{retryAfter:seconds}}));
+        document.dispatchEvent(new CustomEvent('geek:device-unavailable', {detail:{message:'Status check unavailable.', retryAfter:seconds}}));
       }
     })();
 })();
