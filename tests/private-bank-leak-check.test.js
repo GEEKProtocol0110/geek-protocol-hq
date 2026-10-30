@@ -5,7 +5,7 @@ import { mkdtempSync, readFileSync, rmSync, writeFileSync, mkdirSync, truncateSy
 import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { existsSync } from 'node:fs';
+import { existsSync, symlinkSync } from 'node:fs';
 import test from 'node:test';
 import { readAllowlist, FAKE_EXAMPLE_ID, OPAQUE_ALLOWLIST, answerHashes, highEntropy, isTextScanned, loadPrivateIndex, MAX_SCAN_BYTES, scanRepo, scanText, validRetiredAt } from '../scripts/private-bank-leak-check.mjs';
 
@@ -282,4 +282,30 @@ test('only the exact documented FAKE example id is skipped, never under public/'
   for (const near of [['prk', 'fake', '000000', '0000'], ['PRK', 'FAKE', '000000', '0000', '_'], ['PRK', 'FAKE', '000000', '0001'], ['PRK', 'FAKE', '202611', '0001'], ['PRK', 'KAS', '000000', '0000']].map((p) => p.slice(0, 4).join(p[4] || '-'))) assert.match(scanText('docs/x.md', near).join(), /outside the template/, near);
   assert.match(scanText('public/x.md', FAKE_EXAMPLE_ID).join(), /outside the template/);
   assert.match(scanText('docs/x.json', JSON.stringify({ id: FAKE_EXAMPLE_ID, ranked: true })).join(), /active private ranked id/);
+});
+
+test('tracked symlinks in served folders fail; allowlist entries reject unknown keys', async () => {
+  const root = mkdtempSync(join(tmpdir(), 'leak-link-'));
+  try {
+    execFileSync('git', ['init', '-q'], { cwd: root });
+    for (const d of ['scripts', 'public', 'docs', 'site']) mkdirSync(join(root, d));
+    writeFileSync(join(root, 'vercel.json'), JSON.stringify({ outputDirectory: 'site' }));
+    const gz = gzipSync('x'); const sha = createHash('sha256').update(gz).digest('hex');
+    writeFileSync(join(root, 'docs/bank.json.gz'), gz);
+    symlinkSync('../docs/bank.json.gz', join(root, 'public/data.txt'));
+    symlinkSync('../docs/bank.json.gz', join(root, 'site/data.txt'));
+    symlinkSync('bank.json.gz', join(root, 'docs/alias.txt'));
+    writeFileSync(join(root, OPAQUE_ALLOWLIST), JSON.stringify({ files: [{ path: 'docs/bank.json.gz', sha256: sha, reason: 'reviewed fixture archive', approvedBy: 'me' }] }));
+    execFileSync('git', ['add', '-A'], { cwd: root });
+    let v = (await scanRepo(root)).violations.join('\n');
+    assert.match(v, /public\/data\.txt: symlink inside a served folder/);
+    assert.match(v, /site\/data\.txt: symlink inside a served folder/);
+    assert.doesNotMatch(v, /docs\/alias\.txt: symlink/);
+    assert.match(v, /docs\/bank\.json\.gz: unsupported entry keys approvedBy/);
+    assert.match(v, /docs\/bank\.json\.gz: opaque/, 'entry with unknown keys is not honoured');
+    writeFileSync(join(root, OPAQUE_ALLOWLIST), JSON.stringify({ files: [{ path: 'docs/bank.json.gz', sha256: sha, reason: 'reviewed fixture archive' }] }));
+    v = (await scanRepo(root)).violations.join('\n');
+    assert.doesNotMatch(v, /docs\/bank\.json\.gz/);
+    assert.match(v, /public\/data\.txt: symlink/);
+  } finally { rmSync(root, { recursive: true, force: true }); }
 });

@@ -13,7 +13,7 @@
 // also searched for verbatim across tracked public files.
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync, lstatSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { categoryFiles } from '../server/question-categories.js';
@@ -107,7 +107,9 @@ export function readAllowlist(root) {
   if (extra.length) violations.push(`${OPAQUE_ALLOWLIST}: unsupported keys ${extra.join(', ')}`);
   for (const e of Array.isArray(json?.files) ? json.files : []) {
     const path = typeof e?.path === 'string' ? e.path : '';
-    const bad = !path || path.startsWith('/') || path.split('/').includes('..') ? 'invalid path'
+    const unknown = e && typeof e === 'object' ? Object.keys(e).filter((k) => !['path', 'sha256', 'reason'].includes(k)) : [];
+    const bad = unknown.length ? `unsupported entry keys ${unknown.join(', ')}`
+      : !path || path.startsWith('/') || path.split('/').includes('..') ? 'invalid path'
       : isServedPath(root, path) ? 'served/static path cannot be allowlisted'
       : !/^[0-9a-f]{64}$/.test(e?.sha256 || '') ? 'sha256 must be 64 hex chars'
       : typeof e?.reason !== 'string' || e.reason.trim().length < MIN_REASON ? `reason must be at least ${MIN_REASON} characters`
@@ -210,6 +212,9 @@ export const scanRepo = async (root, { privateDir } = {}) => {
   const violations = [...allow.violations];
   let files = 0;
   for (const path of listFiles(root)) {
+    // A tracked symlink in a served folder could publish any file (e.g. an archive) the scan treats as private.
+    let lst; try { lst = lstatSync(join(root, path)); } catch { lst = null; }
+    if (lst?.isSymbolicLink() && isServedPath(root, path)) { violations.push(`${path}: symlink inside a served folder`); continue; }
     if (!isTextScanned(path)) continue;
     const abs = join(root, path);
     let st; try { st = statSync(abs); } catch { continue; }
