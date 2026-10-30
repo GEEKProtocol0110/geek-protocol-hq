@@ -316,3 +316,133 @@ test('Play picker drops stale picks the server no longer lists and falls back to
   assert.equal(gone.select.value, 'current'); assert.equal(gone.storage.has(storageKey), false);
   assert.deepEqual(gone.select.options.map(o => o.value), ['current', 'legacy', 'season-1']);
 });
+
+// ---------------------------------------------------------------------------
+// Error mapping: clear season errors, fail-closed bank errors with code-only logs
+// ---------------------------------------------------------------------------
+import { cpSync } from 'node:fs';
+import { handleApiError } from '../server/http.js';
+import { seasonBankKey } from '../server/questions.js';
+
+const captureLogs = async fn => {
+  const lines = [], original = console.error;
+  console.error = (...args) => lines.push(args);
+  try { await fn(); } finally { console.error = original; }
+  return lines;
+};
+const assertCleanLogs = (lines, forbidden) => {
+  for (const args of lines) {
+    for (const arg of args) assert.equal(typeof arg, 'string', 'only strings (no Error objects / stacks) are logged');
+    const text = args.join(' ');
+    for (const bad of forbidden) assert.equal(text.includes(bad), false, `log leaked ${bad}`);
+    assert.doesNotMatch(text, /\/|\\|\bat\s|Fake|prompt/);
+  }
+};
+const fakeRes = () => ({ statusCode: 0, body: null, headers: {}, setHeader(k, v) { this.headers[k] = v; }, status(n) { this.statusCode = n; return this; }, json(v) { this.body = v; return this; }, end() {} });
+const withBankDir = async (dir, fn) => {
+  process.env.GEEK_PRIVATE_QUESTION_DIR = dir; resetRankedSourceCache();
+  try { return await fn(); } finally { process.env.GEEK_PRIVATE_QUESTION_DIR = bankDir; resetRankedSourceCache(); }
+};
+
+test('season errors map to 409 SEASON_UNSUPPORTED and 503 SEASON_CONFIG_INVALID', async () => {
+  const logs = await captureLogs(() => {
+    let res = fakeRes(); handleApiError(res, new Error('SEASON_UNSUPPORTED'));
+    assert.equal(res.statusCode, 409); assert.equal(res.body.error, 'SEASON_UNSUPPORTED'); assert.equal(res.body.message, 'This season is not accepting scores');
+    res = fakeRes(); handleApiError(res, new Error('SEASON_CONFIG_INVALID'));
+    assert.equal(res.statusCode, 503); assert.equal(res.body.error, 'SEASON_CONFIG_INVALID');
+  });
+  assert.deepEqual(logs, [['Geek API error code', 'SEASON_UNSUPPORTED'], ['Geek API error code', 'SEASON_CONFIG_INVALID']]);
+});
+
+test('private-bank fail-closed errors map to a generic 503 and log only the code', async () => {
+  const codes = ['PRIVATE_BANK_INVALID', 'PRIVATE_BANK_ID_COLLISION', 'PRIVATE_BANK_URL_INVALID', 'PRIVATE_BANK_REF_INVALID', 'PRIVATE_BANK_REF_REQUIRED', 'PRIVATE_BANK_TIMEOUT', 'PRIVATE_BANK_UNREACHABLE', 'PRIVATE_BANK_TOO_LARGE', 'RANKED_SOURCE_INVALID', 'RANKED_BANK_UNAVAILABLE', 'RANKED_BANK_SEASON_MISMATCH'];
+  const logs = await captureLogs(() => {
+    for (const code of codes) {
+      const error = new Error(code); error.stack = `${code}\n    at /secret/private-bank/kaspa.json:1:1`;
+      const res = fakeRes(); handleApiError(res, error);
+      assert.equal(res.statusCode, 503, code);
+      assert.deepEqual(res.body, { ok: false, code: 'RANKED_BANK_UNAVAILABLE', error: 'Ranked play is temporarily unavailable. Practice remains open.' });
+    }
+  });
+  assert.deepEqual(logs, codes.map(code => ['Geek API error code', code]));
+  assertCleanLogs(logs, ['/secret', 'kaspa.json']);
+  // A version change mid-run is still the existing 409, not a bank outage.
+  const res = fakeRes(); handleApiError(res, new Error('RANKED_BANK_VERSION_CHANGED')); assert.equal(res.statusCode, 409);
+});
+
+test('a missing private dir fails closed at run start with 503 and no path in logs or body', async () => {
+  const missing = join(tmpdir(), 'geek-monthly-missing-bank-dir-xyz');
+  setClock('2026-11-10T00:00:00.000Z');
+  const cookie = await session();
+  let res;
+  const logs = await captureLogs(() => withBankDir(missing, async () => { res = await ranked(cookie, 'start', { category: 'kaspa', mode: 'speed' }); }));
+  assert.equal(res.statusCode, 503); assert.equal(res.body.code, 'RANKED_BANK_UNAVAILABLE');
+  assert.equal(JSON.stringify(res.body).includes(missing), false);
+  assert.ok(logs.length >= 1); assertCleanLogs(logs, [missing, 'geek-monthly-missing']);
+  assert.equal(await fixture.command('GET', seasonBankKey('season-1')), null, 'no season pin from a failed load');
+});
+
+test('a private-bank id collision fails closed with 503 and code-only logs', async () => {
+  const dir = mkdtempSync(join(tmpdir(), 'geek-monthly-collide-'));
+  cpSync(bankDir, dir, { recursive: true });
+  const dup = JSON.parse(readFileSync(join(dir, 'kaspa-fake.json'), 'utf8'));
+  dup.questions[1].id = dup.questions[0].id;
+  writeFileSync(join(dir, 'kaspa-fake.json'), JSON.stringify(dup));
+  setClock('2026-11-10T00:00:00.000Z');
+  const cookie = await session();
+  let res;
+  const logs = await captureLogs(() => withBankDir(dir, async () => { res = await ranked(cookie, 'start', { category: 'kaspa', mode: 'speed' }); }));
+  assert.equal(res.statusCode, 503); assert.equal(res.body.code, 'RANKED_BANK_UNAVAILABLE');
+  assertCleanLogs(logs, [dir, 'FAKE-MS', 'Fake kaspa']);
+});
+
+// ---------------------------------------------------------------------------
+// Bank version pinned per monthly season
+// ---------------------------------------------------------------------------
+test('the first run of a season pins its bank version; later runs reuse it', async () => {
+  setClock('2026-11-10T00:00:00.000Z');
+  const first = await ranked(await session('Pin A'), 'start', { category: 'kaspa', mode: 'speed' });
+  assert.equal(first.statusCode, 201);
+  const pinned = await fixture.command('GET', seasonBankKey('season-1'));
+  const binding = await rankedRunBinding(Date.now());
+  assert.equal(pinned, binding.bankVersion);
+  const second = await ranked(await session('Pin B'), 'start', { category: 'kaspa', mode: 'speed' });
+  assert.equal(second.statusCode, 201);
+  assert.equal(await fixture.command('GET', seasonBankKey('season-1')), pinned);
+  assert.equal(JSON.parse(await fixture.command('GET', `geek:run:${second.body.run.id}`)).bankVersion, pinned);
+});
+
+test('a live bank that differs from the season pin refuses new runs (503) but the next season pins the new bank', async () => {
+  setClock('2026-11-20T00:00:00.000Z');
+  assert.equal((await ranked(await session('Old bank'), 'start', { category: 'kaspa', mode: 'speed' })).statusCode, 201);
+  const oldVersion = await fixture.command('GET', seasonBankKey('season-1'));
+  const dir = mkdtempSync(join(tmpdir(), 'geek-monthly-rotated-'));
+  cpSync(bankDir, dir, { recursive: true });
+  const changed = JSON.parse(readFileSync(join(dir, 'kaspa-fake.json'), 'utf8'));
+  changed.questions[0].prompt = 'Fake kaspa rotated prompt?';
+  writeFileSync(join(dir, 'kaspa-fake.json'), JSON.stringify(changed));
+  await withBankDir(dir, async () => {
+    let res;
+    const logs = await captureLogs(async () => { res = await ranked(await session('New bank'), 'start', { category: 'kaspa', mode: 'speed' }); });
+    assert.equal(res.statusCode, 503); assert.equal(res.body.code, 'RANKED_BANK_UNAVAILABLE');
+    assert.deepEqual(logs, [['Geek API error code', 'RANKED_BANK_SEASON_MISMATCH']]);
+    assert.equal(await fixture.command('GET', seasonBankKey('season-1')), oldVersion, 'pin never overwritten');
+    assert.equal((await fixture.command('KEYS', 'geek:run:*')).length, 1, 'no run created on the mismatched bank');
+    // Next month: Season 2 pins the new bank and plays normally.
+    setClock('2026-12-01T00:00:01.000Z');
+    res = await ranked(await session('December bank'), 'start', { category: 'kaspa', mode: 'speed' });
+    assert.equal(res.statusCode, 201); assert.equal(res.body.run.season, 'season-2');
+    const newVersion = await fixture.command('GET', seasonBankKey('season-2'));
+    assert.ok(newVersion); assert.notEqual(newVersion, oldVersion);
+  });
+});
+
+test('with GEEK_SEASON_1_START_MONTH unset no season bank pin is written (behavior unchanged)', async () => {
+  delete process.env.GEEK_SEASON_1_START_MONTH;
+  try {
+    setClock('2026-12-15T00:00:00.000Z');
+    const res = await ranked(await session('Unset'), 'start', { category: 'kaspa', mode: 'speed' });
+    assert.equal(res.statusCode, 201); assert.equal(res.body.run.season, 'season-1');
+    assert.deepEqual(await fixture.command('KEYS', 'geek:season-bank:*'), []);
+  } finally { process.env.GEEK_SEASON_1_START_MONTH = START; }
+});
