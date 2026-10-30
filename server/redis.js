@@ -73,7 +73,14 @@ export const rateLimit = async (scope, id, maximum = 30, seconds = 60) => {
     ['INCR', key],
     ['EXPIRE', key, seconds, 'NX']
   ]);
-  if (Number(count) > maximum) throw new Error('RATE_LIMITED');
+  if (Number(count) > maximum) {
+    const error = new Error('RATE_LIMITED');
+    let ttl = null;
+    try { ttl = await redis('TTL', key); } catch { /* fall back to the full window */ }
+    // Seconds until this bucket resets, so clients can show a real retry time.
+    error.retryAfter = Number.isInteger(Number(ttl)) && Number(ttl) > 0 ? Number(ttl) : seconds;
+    throw error;
+  }
 };
 
 export const parseStoredJson = (value) => {

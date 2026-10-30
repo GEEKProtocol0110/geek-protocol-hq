@@ -476,7 +476,7 @@ test('profile name edits belong to the authenticated player and survive stale ga
 
 test('rate-limited profile edits cannot change a saved name', async () => {
   const cookie = await startSession('Limited Geek');
-  strings.set(`geek:rate:session:${sessionIdFromCookie(cookie)}`, '40');
+  strings.set(`geek:rate:session-write:${sessionIdFromCookie(cookie)}`, '20');
   const res = response(); await sessionHandler(request('POST', { action: 'rename', displayName: 'Blocked Edit' }, cookie), res);
   assert.equal(res.statusCode, 429);
   const profile = response(); await profileHandler(request('GET', undefined, cookie), profile);

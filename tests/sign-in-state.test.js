@@ -35,7 +35,7 @@ test('a saved session continues directly to HQ, including a receiving browser wi
   assert.equal(ui.node('[data-sign-in-hq]').hidden,false);assert.equal(ui.node('[data-sign-in-guest]').hidden,true);
   assert.equal(ui.node('[data-sign-in-title]').textContent,'Welcome back.');
   assert.equal(ui.node('[data-passkey-player]').textContent,'Saved Geek');assert.equal(ui.node('[data-passkey-login-area]').hidden,true);
-  assert.match(ui.node('[data-passkey-note]').textContent,/You’re signed in/);assert.equal(ui.node('[data-passkey-logout]').disabled,false);
+  assert.match(ui.node('[data-passkey-note]').textContent,/You’re signed in/);
   assert.equal(ui.node('[data-passkey-verify]').disabled,true);
   ui.emit('geek:account-status',{signedIn:false,walletLinked:false});
   assert.equal(ui.node('[data-sign-in-hq]').hidden,false,'late guest status cannot replace successful sign-in');

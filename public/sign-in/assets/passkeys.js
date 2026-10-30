@@ -30,6 +30,12 @@
   };
   const encode = value => btoa(String.fromCharCode(...new Uint8Array(value))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   const decode = value => Uint8Array.from(atob(value.replace(/-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0));
+  const retrySeconds = (response, data) => {
+    const header = Number.parseInt(response?.headers?.get?.('Retry-After') ?? '', 10);
+    const fromReset = Number(data?.reset) > 0 ? Math.ceil((Number(data.reset) - Date.now()) / 1000) : NaN;
+    const value = [header, Number(data?.retryAfter), fromReset].find(n => Number.isFinite(n) && n > 0);
+    return Math.min(3600, Math.max(1, Math.round(value || 60)));
+  };
   const fetchJson = async (path, body) => {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 15000);
@@ -37,7 +43,7 @@
       const response = await fetch(path, { method: body ? 'POST' : 'GET', credentials: 'same-origin', signal: controller.signal,
         headers: { 'Content-Type': 'application/json' }, ...(body ? { body: JSON.stringify(body) } : {}) });
       const data = await response.json();
-      if (!response.ok) { const error = new Error(data.error || 'Passkeys are unavailable.'); error.code = data.code; throw error; }
+      if (!response.ok) { const error = new Error(data.error || 'Passkeys are unavailable.'); error.code = data.code; error.status = response.status; error.retryAfter = retrySeconds(response, data); throw error; }
       return data;
     } catch (error) {
       if (controller.signal.aborted) throw new Error('The request took too long. Reload to check your saved player before trying again.');
@@ -75,7 +81,6 @@
     document.dispatchEvent(new CustomEvent('geek:account-status', {detail:data}));
     const playerName = panel.querySelector('[data-passkey-player]');
     if (playerName) playerName.textContent = data.playerName || 'Name unavailable';
-    panel.querySelector('[data-passkey-logout]').hidden = !data.signedIn && !data.walletLinked;
     for (const c of data.credentials) {
       const li = document.createElement('li'), label = document.createElement('span'), button = document.createElement('button');
       label.textContent = `${c.label} · added ${new Date(c.createdAt).toLocaleDateString()}`;
@@ -104,19 +109,51 @@
       if (error.code === 'PASSKEY_REAUTH_REQUIRED') document.querySelector('[data-passkey-wallet-help]').hidden = false;
     } finally { busy = false; setDisabled(); }
   };
-  const save = async () => {
+  const save = async (claimGuestProgress = false) => {
     const wasSignedIn = authenticated;
     note.textContent = 'Choose where to save your passkey. Your device may ask for fingerprint, face or screen lock.';
     const token = grant; grant = '';
-    const issued = await request({ action: 'begin-register', token });
+    // Adding a passkey to an existing account never sends a claim; a new account sends an explicit boolean.
+    const claim = wasSignedIn ? {} : { claimGuestProgress: claimGuestProgress === true };
+    const issued = await request({ action: 'begin-register', token, ...claim });
     const credential = await credentialPrompt('create', issued.options);
-    const result = await request({ action: 'finish-register', challengeId: issued.challengeId, response: serialize(credential), label: panel.querySelector('[data-passkey-label]').value });
+    const result = await request({ action: 'finish-register', challengeId: issued.challengeId, response: serialize(credential), label: panel.querySelector('[data-passkey-label]').value, ...claim });
     grant = result.grant.token; document.dispatchEvent(new CustomEvent('geek:device-grant', {detail:result.grant}));
     note.textContent = 'Passkey saved. Keep another saved/synced passkey or a linked wallet for recovery. Signing in does not approve wallet spending.';
     document.dispatchEvent(new CustomEvent('geek:passkey-signed-in', { detail: { continue: !wasSignedIn } }));
     try { await refresh(); } catch { note.textContent += ' Your player is signed in, but the passkey list could not refresh. Reload to check it.'; }
   };
-  panel.querySelector('[data-passkey-save]').addEventListener('click', () => act(save));
+  // Explicit choice before a new account: keep this browser's guest progress, or start fresh.
+  let choice = null;
+  const closeChoice = () => { if (choice) choice.hidden = true; };
+  const askGuestClaim = () => {
+    if (!choice) {
+      choice = document.createElement('div');
+      choice.setAttribute('role', 'group'); choice.setAttribute('aria-labelledby', 'passkey-claim-question');
+      choice.dataset.passkeyClaim = '';
+      const question = document.createElement('p'); question.id = 'passkey-claim-question';
+      question.textContent = 'Keep this browser’s guest progress?';
+      const detail = document.createElement('p'); detail.className = 'sign-in-note';
+      detail.textContent = 'Keep adds this browser’s guest progress to your new account. Start fresh creates an empty account and leaves the guest progress in this browser’s guest player.';
+      const keep = document.createElement('button'), fresh = document.createElement('button');
+      keep.type = fresh.type = 'button'; keep.className = fresh.className = 'button button-secondary';
+      keep.textContent = 'Keep'; fresh.textContent = 'Start fresh';
+      keep.dataset.passkeyClaimKeep = ''; fresh.dataset.passkeyClaimFresh = '';
+      keep.addEventListener('click', () => { closeChoice(); return act(() => save(true)); });
+      fresh.addEventListener('click', () => { closeChoice(); return act(() => save(false)); });
+      choice.append(question, detail, keep, fresh);
+      const saveButton = panel.querySelector('[data-passkey-save]');
+      if (typeof saveButton.after === 'function') saveButton.after(choice); else panel.append(choice);
+      setDisabled();
+    }
+    choice.hidden = false;
+    choice.querySelector('[data-passkey-claim-keep]')?.focus?.();
+  };
+  panel.querySelector('[data-passkey-save]').addEventListener('click', () => {
+    if (busy || !ready) return;
+    if (authenticated) return act(() => save());
+    askGuestClaim();
+  });
   const login = (reauthenticate = false) => act(async () => {
     note.textContent = 'Choose your Geek passkey…';
     const issued = await request({ action: 'begin-login' });
@@ -128,7 +165,6 @@
   });
   panel.querySelector('[data-passkey-login]').addEventListener('click', () => login());
   panel.querySelector('[data-passkey-verify]')?.addEventListener('click', () => login(true));
-  panel.querySelector('[data-passkey-logout]').addEventListener('click', () => act(async () => { await request({ action: 'logout' }); grant = ''; location.reload(); }));
   document.addEventListener('geek:signed-in', () => { grant = ''; void refresh().catch(() => { note.textContent = 'Signed in. Reload to check your saved player.'; }); });
   document.addEventListener('geek:device-signed-in', () => {
     grant = '';
@@ -154,7 +190,15 @@
         if (data.signedIn || data.walletLinked) note.textContent = 'You’re signed in. Open My HQ to continue.';
         else if (supported) note.textContent = 'Choose Sign in to open your device’s passkey prompt.';
         document.querySelector('[data-passkey-wallet-help]').hidden = !data.walletLinked;
-        if (data.signedIn) document.dispatchEvent(new CustomEvent('geek:passkey-signed-in'));
-      } catch (error) { note.textContent = `${error.message} Reload to check your saved player.`; document.dispatchEvent(new CustomEvent('geek:device-unavailable', {detail:{message:error.message}})); }
+        if (data.signedIn) document.dispatchEvent(new CustomEvent('geek:passkey-signed-in', {detail:{initial:true}}));
+      } catch (error) {
+        if (error.status === 401) { ready = true; setDisabled(); document.dispatchEvent(new CustomEvent('geek:account-status', {detail:{signedIn:false,walletLinked:false}})); return; }
+        // 429, 5xx or a network failure: session state is unknown, never signed out.
+        const limited = error.status === 429, seconds = limited ? error.retryAfter : null;
+        note.textContent = limited ? `Temporarily rate limited. Your session has not changed. Try again in ${seconds} seconds.`
+          : 'We couldn’t check your sign-in right now. Your session has not changed. Try again in a moment.';
+        document.dispatchEvent(new CustomEvent('geek:account-status-unknown', {detail:{retryAfter:seconds}}));
+        document.dispatchEvent(new CustomEvent('geek:device-unavailable', {detail:{message:'Status check unavailable.', retryAfter:seconds}}));
+      }
     })();
 })();
