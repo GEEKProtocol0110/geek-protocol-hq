@@ -109,19 +109,51 @@
       if (error.code === 'PASSKEY_REAUTH_REQUIRED') document.querySelector('[data-passkey-wallet-help]').hidden = false;
     } finally { busy = false; setDisabled(); }
   };
-  const save = async () => {
+  const save = async (claimGuestProgress = false) => {
     const wasSignedIn = authenticated;
     note.textContent = 'Choose where to save your passkey. Your device may ask for fingerprint, face or screen lock.';
     const token = grant; grant = '';
-    const issued = await request({ action: 'begin-register', token });
+    // Adding a passkey to an existing account never sends a claim; a new account sends an explicit boolean.
+    const claim = wasSignedIn ? {} : { claimGuestProgress: claimGuestProgress === true };
+    const issued = await request({ action: 'begin-register', token, ...claim });
     const credential = await credentialPrompt('create', issued.options);
-    const result = await request({ action: 'finish-register', challengeId: issued.challengeId, response: serialize(credential), label: panel.querySelector('[data-passkey-label]').value });
+    const result = await request({ action: 'finish-register', challengeId: issued.challengeId, response: serialize(credential), label: panel.querySelector('[data-passkey-label]').value, ...claim });
     grant = result.grant.token; document.dispatchEvent(new CustomEvent('geek:device-grant', {detail:result.grant}));
     note.textContent = 'Passkey saved. Keep another saved/synced passkey or a linked wallet for recovery. Signing in does not approve wallet spending.';
     document.dispatchEvent(new CustomEvent('geek:passkey-signed-in', { detail: { continue: !wasSignedIn } }));
     try { await refresh(); } catch { note.textContent += ' Your player is signed in, but the passkey list could not refresh. Reload to check it.'; }
   };
-  panel.querySelector('[data-passkey-save]').addEventListener('click', () => act(save));
+  // Explicit choice before a new account: keep this browser's guest progress, or start fresh.
+  let choice = null;
+  const closeChoice = () => { if (choice) choice.hidden = true; };
+  const askGuestClaim = () => {
+    if (!choice) {
+      choice = document.createElement('div');
+      choice.setAttribute('role', 'group'); choice.setAttribute('aria-labelledby', 'passkey-claim-question');
+      choice.dataset.passkeyClaim = '';
+      const question = document.createElement('p'); question.id = 'passkey-claim-question';
+      question.textContent = 'Keep this browser’s guest progress?';
+      const detail = document.createElement('p'); detail.className = 'sign-in-note';
+      detail.textContent = 'Keep adds this browser’s guest progress to your new account. Start fresh creates an empty account and leaves the guest progress in this browser’s guest player.';
+      const keep = document.createElement('button'), fresh = document.createElement('button');
+      keep.type = fresh.type = 'button'; keep.className = fresh.className = 'button button-secondary';
+      keep.textContent = 'Keep'; fresh.textContent = 'Start fresh';
+      keep.dataset.passkeyClaimKeep = ''; fresh.dataset.passkeyClaimFresh = '';
+      keep.addEventListener('click', () => { closeChoice(); return act(() => save(true)); });
+      fresh.addEventListener('click', () => { closeChoice(); return act(() => save(false)); });
+      choice.append(question, detail, keep, fresh);
+      const saveButton = panel.querySelector('[data-passkey-save]');
+      if (typeof saveButton.after === 'function') saveButton.after(choice); else panel.append(choice);
+      setDisabled();
+    }
+    choice.hidden = false;
+    choice.querySelector('[data-passkey-claim-keep]')?.focus?.();
+  };
+  panel.querySelector('[data-passkey-save]').addEventListener('click', () => {
+    if (busy || !ready) return;
+    if (authenticated) return act(() => save());
+    askGuestClaim();
+  });
   const login = (reauthenticate = false) => act(async () => {
     note.textContent = 'Choose your Geek passkey…';
     const issued = await request({ action: 'begin-login' });

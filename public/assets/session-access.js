@@ -48,6 +48,14 @@
       unknown(response.status === 429 ? retrySeconds(response, payload) : null);
     } catch { if (version === revision && !pending) unknown(); }
   };
+  // Per-account browser state must not carry over to the new guest created after sign-out.
+  const ACCOUNT_KEYS = ['geek_hq_ranked_run_v1', 'geek-lobby-identity-v1', 'geek-cce-name-v1', 'geek-challenge-active-v1', 'geek-assisted-run'];
+  const forgetAccountState = () => {
+    for (const area of ['localStorage', 'sessionStorage']) {
+      try { const s = window[area]; for (const key of ACCOUNT_KEYS) s?.removeItem?.(key); } catch { /* storage is optional */ }
+    }
+    try { window.sessionStorage?.removeItem?.(CHECKED); } catch {}
+  };
   const signOut = async () => {
     if (pending || signedOut) return;
     pending = true; revision++;
@@ -56,7 +64,7 @@
     try {
       const { response, payload } = await request({ method: 'POST', body: JSON.stringify({ action: 'logout' }) });
       if (response.status !== 401 && (!response.ok || !payload.ok || !payload.signedOut)) throw new Error('SIGN_OUT_FAILED');
-      signedOut = true; remember(false); show(false);
+      signedOut = true; remember(false); show(false); forgetAccountState();
       document.dispatchEvent(new CustomEvent('geek:signed-out'));
       location.replace('/sign-in/?signedOut=1');
     } catch {

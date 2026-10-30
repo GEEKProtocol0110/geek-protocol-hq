@@ -13,6 +13,8 @@ const credential = register => ({ id:b64('credential'), rawId:buffer('credential
     ? { attestationObject:buffer('attestation'), getTransports:() => ['internal'] }
     : { authenticatorData:buffer('auth-data'), signature:buffer('signature'), userHandle:buffer('player') }) } });
 
+// New accounts ask before carrying guest progress; these tests choose Keep unless stated.
+const choose = (ui, which = 'keep') => ui.document.querySelectorAll(`[data-passkey-claim-${which}]`)[0].emit('click');
 const mount = async ({ support=true, handle, prompt, walletLinked=false, platform } = {}) => {
   const calls=[], prompts=[], events=[];
   const ui=clientFixture(async (path, options={}) => {
@@ -47,7 +49,7 @@ test('first-visit passkey enrollment requires a tap, serializes exact bytes and 
   assert.equal(ui.node('[data-passkey-player]').textContent,'Saved Explorer');
   assert.equal(ui.node('[data-passkey-save]').disabled,false);
   ui.node('[data-passkey-label]').value='My phone';
-  await ui.node('[data-passkey-save]').emit('click');
+  await ui.node('[data-passkey-save]').emit('click'); await choose(ui);
   assert.equal(ui.prompts[0].method,'create');
   assert.equal(Buffer.from(ui.prompts[0].options.publicKey.challenge).toString(),'challenge');
   assert.equal(Buffer.from(ui.prompts[0].options.publicKey.user.id).toString(),'player');
@@ -80,7 +82,7 @@ test('a stalled or rejected device-support probe cannot block signing in or repo
 
 test('unsupported authenticator failures explain the available paths without submitting a credential',async () => {
   const ui=await mount({prompt:async()=>{throw new DOMException('No authenticator','NotSupportedError');}});
-  await ui.node('[data-passkey-save]').emit('click');
+  await ui.node('[data-passkey-save]').emit('click'); await choose(ui);
   assert.equal(ui.calls.some(c=>c.body?.action==='finish-register'),false);
   assert.match(ui.node('[data-passkey-note]').textContent,/without clearing your progress/);
   assert.equal(ui.node('[data-passkey-device-help]').open,true);
@@ -122,7 +124,7 @@ test('a stalled API request stops after its deadline without retrying or opening
   const ui=await mount({handle:async(path,body,options)=>{
     if(body?.action==='begin-register') {await aborted(options.signal);throw new Error('Aborted');}
   }});
-  const action=ui.node('[data-passkey-save]').emit('click');await tick();ui.expire();await action;
+  await ui.node('[data-passkey-save]').emit('click');const action=choose(ui);await tick();ui.expire();await action;
   assert.match(ui.node('[data-passkey-note]').textContent,/Reload to check your saved player/);
   assert.equal(ui.calls.filter(c=>c.body?.action==='begin-register').length,1);
   assert.equal(ui.prompts.length,0);assert.equal(ui.node('[data-passkey-save]').disabled,false);
@@ -164,4 +166,23 @@ test('a guest sees the returning-login path and optional setup without saved-acc
   const ui=await mount();assert.equal(ui.node('[data-passkey-login-area]').hidden,false);
   assert.equal(ui.node('[data-passkey-account]').hidden,true);assert.equal(ui.node('[data-passkey-player-row]').hidden,true);
   assert.match(ui.node('[data-passkey-new-title]').textContent,/New here/);assert.equal(ui.prompts.length,0);
+});
+
+test('creating an account asks "Keep this browser’s guest progress?" and sends the explicit choice to begin and finish', async () => {
+  for (const [which, expected] of [['keep', true], ['fresh', false]]) {
+    const ui = await mount();
+    await ui.node('[data-passkey-save]').emit('click');
+    assert.equal(ui.prompts.length, 0, 'no authenticator prompt before the choice');
+    const group = ui.document.querySelectorAll('[data-passkey-claim]')[0];
+    assert.equal(group.hidden, false); assert.equal(group.getAttribute('role'), 'group');
+    assert.equal(group.getAttribute('aria-labelledby'), 'passkey-claim-question');
+    const question = ui.document.querySelectorAll('#passkey-claim-question')[0];
+    assert.equal(question.textContent, 'Keep this browser’s guest progress?');
+    assert.equal(ui.document.querySelectorAll('[data-passkey-claim-keep]')[0].textContent, 'Keep');
+    assert.equal(ui.document.querySelectorAll('[data-passkey-claim-fresh]')[0].textContent, 'Start fresh');
+    await choose(ui, which);
+    const begin = ui.calls.find(c => c.body?.action === 'begin-register').body, finish = ui.calls.find(c => c.body?.action === 'finish-register').body;
+    assert.equal(begin.claimGuestProgress, expected); assert.equal(finish.claimGuestProgress, expected);
+    assert.equal(group.hidden, true);
+  }
 });

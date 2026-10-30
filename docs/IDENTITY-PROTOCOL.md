@@ -143,3 +143,12 @@ AUTH-002 remains blocked for this phone. The next implementation task is to isol
 ## Wallet-independent passkey access — October 16, 2026
 
 The focused [passkey login protocol](PASSKEY-LOGIN.md) adds a separate player-access credential without changing Kaspa proof validation or payout authorization. Passkeys protect the current player and recover a player with an enrolled credential; first-time guest enrollment cannot bypass ownership of an older wallet-linked identity. Wallet-linked enrollment still requires fresh explicit authorization. This supersedes the earlier statement that all passkey work remains only in the broad PR #119; consult the focused release PR for merged/deployed status and actual phone acceptance.
+
+## Guest progress at account creation (explicit claim)
+
+When a guest creates a passkey account, the sign-in page asks "Keep this browser’s guest progress?" and offers **Keep** or **Start fresh**. Both `begin-register` and `finish-register` send `claimGuestProgress`.
+- Literal `true` in both calls: the account is built from the guest player, as before.
+- `false`, missing or any non-boolean: a new random player ID is used. The guest player's records are not modified and are not linked to the account.
+- A claim sent at begin but missing at finish is rejected (`PASSKEY_STATE_CHANGED`).
+
+Adding a passkey to an existing account and signing in are unchanged (no merge). Sign-out deletes the session, so the next request creates a new guest player. The browser also clears per-account local keys (saved ranked run, lobby/CCE names, active challenge, assisted run).

@@ -58,7 +58,7 @@ test('account creation stays limited, and browsing does not consume its bucket',
 // ---- client: session-access.js ----
 const accessSource = readFileSync(new URL('../public/assets/session-access.js', import.meta.url), 'utf8');
 const settle = () => new Promise(setImmediate);
-const storage = (initial = {}) => { const m = new Map(Object.entries(initial)); return { getItem: k => m.get(k) ?? null, setItem: (k, v) => m.set(k, v), m }; };
+const storage = (initial = {}) => { const m = new Map(Object.entries(initial)); return { getItem: k => m.get(k) ?? null, setItem: (k, v) => m.set(k, v), removeItem: k => m.delete(k), m }; };
 const mountAccess = async (reply, store) => {
   const ui = clientFixture(async () => reply());
   ui.window.sessionStorage = store;
@@ -177,4 +177,19 @@ test('the sign-in page makes one passkey status request per load (no duplicate f
   await settle(); await settle();
   assert.equal(calls.filter(c => c.includes('/api/passkeys')).length, 1, calls.join(', '));
   assert.equal(button.hidden, false, 'the single Sign out control follows the panel status');
+});
+
+test('sign-out clears per-account browser state so the next guest starts clean', async () => {
+  const session = storage({ 'geek-assisted-run': 'run', 'geek-challenge-active-v1': 'c1' });
+  const local = storage({ geek_hq_ranked_run_v1: 'a'.repeat(40), 'geek-lobby-identity-v1': 'Account Name', 'geek-cce-name-v1': 'Account Name', geek_hq_board_season_v1: 'season-1' });
+  const ui = clientFixture(async (path, options = {}) => options.method === 'POST' ? json({ ok: true, signedOut: true }) : json({ ok: true, signedIn: true }));
+  ui.window.sessionStorage = session; ui.window.localStorage = local; ui.context.location.replace = () => {};
+  ui.document.addEventListener = () => {}; ui.document.dispatchEvent = () => {};
+  const button = ui.node('[data-sign-out]', 'button'); ui.node('[data-sign-out-status]');
+  ui.run(accessSource); await settle();
+  await button.emit('click');
+  for (const key of ['geek_hq_ranked_run_v1', 'geek-lobby-identity-v1', 'geek-cce-name-v1']) assert.equal(local.getItem(key), null, key);
+  for (const key of ['geek-assisted-run', 'geek-challenge-active-v1']) assert.equal(session.getItem(key), null, key);
+  assert.equal(local.getItem('geek_hq_board_season_v1'), 'season-1', 'non-account preferences stay');
+  assert.equal(session.getItem('geek:last-session-state'), 'signed-out');
 });
