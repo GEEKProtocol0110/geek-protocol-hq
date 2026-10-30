@@ -832,3 +832,17 @@ test('finding 3: break config mid-run then next -> 503 RANKED_BANK_UNAVAILABLE (
   assert.equal(logs.length, 1); assert.equal(logs[0][0], 'Geek API error code');
   assertCleanLogs(logs, [missing, 'geek-f3', 'QUESTION_NOT_FOUND', 'FAKE-MS']);
 });
+
+test('catch-all: an unknown error logs only its name and code, never message, path or bank text', async () => {
+  const error = new Error("ENOENT: no such file or directory, open '/secret/private-bank/kaspa-fake.json' Fake secret prompt FAKE-CATCHALL-1?");
+  error.code = 'ENOENT';
+  error.stack = `${error.message}\n    at readFileSync (/secret/private-bank/loader.js:1:1)`;
+  let res;
+  const logs = await captureLogs(() => { res = fakeRes(); handleApiError(res, error); });
+  assert.equal(res.statusCode, 500);
+  assert.deepEqual(logs, [['Geek API error', 'Error', 'ENOENT']]);
+  assertCleanLogs(logs, ['/secret', 'kaspa-fake.json', 'FAKE-CATCHALL', 'no such file']);
+  const weird = new Error('Fake bank text'); weird.name = 'Bad /secret name'; weird.code = { path: '/secret' };
+  const logs2 = await captureLogs(() => handleApiError(fakeRes(), weird));
+  assert.deepEqual(logs2, [['Geek API error', 'UNKNOWN', 'UNKNOWN']]);
+});

@@ -177,6 +177,10 @@ export const handleApiError = (res, error) => {
   if (code === 'STICKER_TRADE_FORBIDDEN') return sendJson(res, 403, { ok: false, code, error: 'Only the player who created this offer can cancel it.' });
   if (code === 'STICKER_TRADE_FAILED') return sendJson(res, 503, { ok: false, code, error: 'The sticker exchange could not be completed safely.' });
   if (code === 'INVALID_BODY' || code === 'INVALID_REQUEST') return sendJson(res, 400, { ok: false, error: 'The request was not valid.' });
-  console.error('Geek API error', error);
+  // Unknown errors: log only the error's name and code (both restricted to
+  // identifier characters), never its message or stack, which may carry paths
+  // or private bank text.
+  const safe = (v) => (typeof v === 'string' && /^[A-Za-z0-9_]{1,64}$/.test(v) ? v : 'UNKNOWN');
+  console.error('Geek API error', safe(error?.name), safe(error?.code));
   return sendJson(res, 500, { ok: false, error: 'The community service hit an unexpected error.' });
 };
