@@ -26,6 +26,7 @@ const withEnv = async (values, fetchImpl, run) => {
     resetRankedSourceCache();
   }
 };
+const BRANCH_NAME_PIN = 'main'; // a mutable branch name, which must be rejected
 const prod = (extra = {}) => ({ VERCEL_ENV: 'preview', GEEK_PRIVATE_QUESTION_URL: URL_, GEEK_PRIVATE_QUESTION_TOKEN: TOKEN, GEEK_PRIVATE_QUESTION_REF: REF_A, ...extra });
 const noSecret = (error) => { assert.doesNotMatch(String(error?.message), new RegExp(`${TOKEN}|fake-private-bank`)); return true; };
 const ranked = () => selectRoundQuestionIds('history', 1, [], '', { ranked: true });
@@ -90,7 +91,7 @@ test('version rollback: repinning an older commit serves exactly that version; r
     assert.equal(await loadRankedSource(process.env), a);
     assert.equal(requested.length, fetchesBefore);
     // A malformed or missing pin blocks instead of floating to the latest bank.
-    process.env.GEEK_PRIVATE_QUESTION_REF = 'main';
+    process.env.GEEK_PRIVATE_QUESTION_REF = BRANCH_NAME_PIN;
     await assert.rejects(loadRankedSource(process.env), /PRIVATE_BANK_REF_INVALID/);
     delete process.env.GEEK_PRIVATE_QUESTION_REF;
     await assert.rejects(loadRankedSource(process.env), /PRIVATE_BANK_REF_REQUIRED/);
