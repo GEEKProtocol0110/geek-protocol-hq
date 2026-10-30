@@ -80,6 +80,7 @@
     BAD_RESPONSE: 'The game sent an unexpected reply. Reconnect to check your saved run.',
     RUN_NOT_FOUND: 'That ranked run expired or is no longer active.',
     INSUFFICIENT_BALANCE: 'Your server Alpha GEEK balance is too low for the next round.',
+    QUESTIONS_UNAVAILABLE: 'Questions are temporarily unavailable. Please try again shortly.',
     RANKED_BANK_UNAVAILABLE: 'Ranked play is temporarily unavailable. Practice remains open.',
     RATE_LIMITED: 'Slow down and try again in a moment.',
     400: 'That request was not accepted.', 401: 'Your player session expired. Reload the page to continue.', 403: 'That action was not allowed.',

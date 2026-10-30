@@ -58,7 +58,7 @@ const secureShuffle = (values) => {
 export const loadQuestionBank = (category) => {
   if (!categoryFiles[category]) throw new Error('INVALID_REQUEST');
   if (bankCache.has(category)) return bankCache.get(category);
-  try { return readPublicBank(category); } catch { throw new Error('RANKED_BANK_UNAVAILABLE'); }
+  try { return readPublicBank(category); } catch { throw new Error('QUESTIONS_UNAVAILABLE'); }
 };
 const readPublicBank = (category) => {
   const questions = categoryFiles[category].flatMap((filename) => {

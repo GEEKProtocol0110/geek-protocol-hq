@@ -106,6 +106,8 @@ export const handleApiError = (res, error) => {
   if (code === 'SEASON_CONFIG_INVALID' || code === 'SEASON_CLOCK_INVALID') { console.error('Geek API error code', code); return sendJson(res, 503, { ok: false, code, error: 'Ranked seasons are temporarily unavailable. Practice remains open.' }); }
   // Private-bank fail-closed errors: generic body, log only the fixed code
   // (never the error object, stack, paths or bank text).
+  // Public bank unreadable: practice is down too, so the message must not promise it.
+  if (code === 'QUESTIONS_UNAVAILABLE') { console.error('Geek API error code', code); return sendJson(res, 503, { ok: false, code, error: 'Questions are temporarily unavailable. Please try again shortly.' }); }
   if (code === 'RANKED_BANK_UNAVAILABLE' || code === 'RANKED_BANK_SEASON_MISMATCH' || code === 'RANKED_WRITES_DISABLED' || code === 'RANKED_ENV_UNKNOWN' || code === 'RANKED_SOURCE_INVALID' || /^PRIVATE_BANK_[A-Z_]+$/.test(code)) {
     console.error('Geek API error code', code);
     return sendJson(res, 503, { ok: false, code: 'RANKED_BANK_UNAVAILABLE', error: 'Ranked play is temporarily unavailable. Practice remains open.' });
