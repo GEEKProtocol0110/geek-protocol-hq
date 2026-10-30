@@ -5,7 +5,7 @@
   "independentReview": false,
   "scope": "All active static rows in the category registry, including source-checked rows; excludes retired lookup-only and held CCE rows.",
   "limit": "Heuristic screening and internal pair triage are not exhaustive semantic, factual, category, licensing or difficulty review. Unflagged drafts still need item-by-item primary-source review.",
-  "corpusHash": "f27cf8cd85b8f153bab667ca22cf75dd6d8636dc5d9033ffca45c70926f2f591",
+  "corpusHash": "d315009a9cf45767504dc3b74ff7d18d2d15fddb7d34d71c63a79adb80179fc4",
   "active": 8438,
   "recordedSourceChecks": 876,
   "needsFactualReview": 7562,
@@ -36,7 +36,7 @@
       "active": 1485,
       "recordedSourceChecks": 19,
       "needsFactualReview": 1466,
-      "missingExplanation": 1466
+      "missingExplanation": 1460
     },
     {
       "category": "movies",

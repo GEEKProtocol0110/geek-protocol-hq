@@ -10,7 +10,7 @@ Record date: 2026-10-30. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,338 active ranked-eligible questions, plus 100 practice-only unranked draft questions (not ranked-eligible, not source-checked); 876 recorded internal source reviews; 7,124 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,332 active ranked-eligible questions, plus 106 practice-only unranked draft questions (not ranked-eligible, not source-checked); 876 recorded internal source reviews; 7,124 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
