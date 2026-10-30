@@ -16,34 +16,47 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { categoryFiles } from '../server/question-categories.js';
 
 const TEMPLATE_DIR = 'private-bank-template/';
 const ANSWER_FIELDS = ['correctIndex', 'answer', 'correct', 'correctAnswer', 'answerIndex'];
+export const CATEGORY_NAMES = Object.keys(categoryFiles);
 export const isRankedFlagged = (node) => node.ranked === true || node.rankedOnly === true || node.pool === 'ranked' || node.bank === 'private';
 
 // Env var names the loader reads (server/question-source.js). Assigning any of
 // them a literal value in a tracked file leaks config (host, token, ref, mode).
 const LOADER_VARS = /\b(GEEK_PRIVATE_QUESTION_(?:URL|TOKEN|DIR|REF)|GEEK_RANKED_[A-Z0-9_]+)\b/;
 const PLACEHOLDER = /^(?:|<[^>]*>|\$\{?[A-Z0-9_]+\}?|changeme|replace-me|your[-_].*|x+|\.\.\.)$/i;
-const ASSIGNMENT = new RegExp(String.raw`["']?${LOADER_VARS.source}["']?\s*(?::(?!:)|(?<![=!<>])=(?!=))\s*(?!process\.env|env\.)(["'\x60]?)([^\s"'\x60,;})#]*)\2`, 'g');
-const TOKEN_LITERALS = [/\bgithub_pat_[A-Za-z0-9_]{20,}/, /\bgh[pousr]_[A-Za-z0-9]{30,}/];
-const BEARER = /\bBearer\s+(?!\$\{)([A-Za-z0-9._~+/-]{16,}=*)/;
-const PRIVATE_REPO_URL = /\b(?:api\.github\.com\/repos|raw\.githubusercontent\.com)\/([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]*(?:private|ranked|bank|answer)[A-Za-z0-9_.-]*)/i;
-// Test fixtures legitimately assign env vars and synthetic bearer values.
+const ASSIGNMENT = new RegExp(String.raw`["']?${LOADER_VARS.source}["']?\s*(?::(?!:)|(?<![=!<>])=(?!=))[ \t]*(?!process\.env|env\.)(["'\x60]?)([^\s"'\x60,;})#]*)\2`, 'g');
+const TOKEN_LITERALS = [/\bgithub_pat_[A-Za-z0-9_]{20,}/, /\bgh[pousr]_[A-Za-z0-9]{30,}/, /\bvercel_blob_rw_[A-Za-z0-9_]{16,}/];
+const BEARER = /\bBearer\s+(?!\$\{)([A-Za-z0-9._~+/-]{16,}=*)/g;
+const PRIVATE_REPO_URL = /\b(?:api\.github\.com\/repos|raw\.githubusercontent\.com)\/([A-Za-z0-9_.<>-]+)\/([A-Za-z0-9_.<>-]*(?:private|ranked|bank|answer)[A-Za-z0-9_.<>-]*)/gi;
 const isTestFixture = (path) => path.startsWith('tests/');
+// In tests/ only obviously fake values pass: test-/fake- prefixes or .invalid hosts.
+export const obviouslyFake = (value) => /(?:^|[/.:@])(?:test|fake)[-_]/i.test(value) || /^(?:https?:\/\/)?[^/\s]*\.invalid(?:[:/]|$)/i.test(value);
+// Non-secret mode values the loader accepts (GEEK_RANKED_QUESTION_SOURCE, GEEK_RANKED_ALLOW_EXPOSED).
+const ENUM_VALUE = /^(?:true|false|0|1|private|fixture|exposed|unavailable|other)$/i;
+export const shannon = (value) => { const counts = {}; for (const c of value) counts[c] = (counts[c] || 0) + 1; return Object.values(counts).reduce((h, n) => h - (n / value.length) * Math.log2(n / value.length), 0); };
+export const highEntropy = (value) => value.length >= 20 && shannon(value) >= 3.5;
 
 export const secretViolations = (path, text) => {
   const out = [];
+  const test = isTestFixture(path);
   if (/^private\//i.test(path)) out.push(`${path}: tracked file under private/`);
-  for (const re of TOKEN_LITERALS) if (re.test(text)) out.push(`${path}: GitHub token literal (${re.source.slice(2, 12)}…)`);
-  if (isTestFixture(path)) return out;
-  if (BEARER.test(text)) out.push(`${path}: Bearer token literal`);
-  const repo = text.match(PRIVATE_REPO_URL);
-  if (repo && !repo[1].startsWith('<') && !repo[2].startsWith('<')) out.push(`${path}: URL to private bank repo ${repo[1]}/${repo[2]}`);
+  for (const re of TOKEN_LITERALS) if (re.test(text)) out.push(`${path}: token literal (${re.source.slice(2, 14)}…)`);
+  for (const m of text.matchAll(BEARER)) if (!(test && obviouslyFake(m[1]))) { out.push(`${path}: Bearer token literal`); break; }
+  for (const m of text.matchAll(PRIVATE_REPO_URL)) {
+    if (m[1].includes('<') || m[2].includes('<')) continue; // documented placeholder
+    if (test && obviouslyFake(m[1]) && obviouslyFake(m[2])) continue;
+    out.push(`${path}: URL to private bank repo ${m[1]}/${m[2]}`);
+  }
   const envExample = /(^|\/)\.env\.example$/.test(path);
   for (const m of text.matchAll(ASSIGNMENT)) {
     const value = m[3];
-    if (PLACEHOLDER.test(value) || (envExample && !/^https?:|^[a-f0-9]{40}$|^(true|private|exposed|fixture)$/i.test(value))) continue;
+    if (PLACEHOLDER.test(value)) continue;
+    if (!m[2] && /\.(?:c|m)?[jt]sx?$/i.test(path)) continue; // unquoted in JS/TS = an identifier, not a literal
+    if (highEntropy(value) && !(test && obviouslyFake(value))) { out.push(`${path}: ${m[1]} assigned a high-entropy literal (possible secret)`); continue; }
+    if (test ? ENUM_VALUE.test(value) || obviouslyFake(value) : envExample && !/^https?:|^[a-f0-9]{40}$|^(true|private|exposed|fixture)$/i.test(value)) continue;
     out.push(`${path}: ${m[1]} assigned a literal value`);
   }
   return out;
@@ -71,7 +84,17 @@ const listFiles = (root) => {
 };
 
 // Every tracked text file except the fake template is scanned (JSON structure + text).
-export const isTextScanned = (path) => !path.startsWith(TEMPLATE_DIR) && !/\.(?:png|jpe?g|gif|webp|ico|woff2?|ttf|otf|mp[34]|wasm|zip|gz|br|pdf)$/i.test(path);
+export const isTextScanned = (path) => !path.startsWith(TEMPLATE_DIR) && !/\.(?:png|jpe?g|gif|webp|ico|woff2?|ttf|otf|mp[34]|wasm)$/i.test(path);
+// Opaque containers cannot be scanned reliably, so committing one is itself a violation.
+export const OPAQUE = /\.(?:gz|tgz|zip|br|pdf|7z|rar|tar|xz|bz2)$/i;
+// Reviewed opaque files: { "files": [{ "path", "sha256", "reason" }] }. The hash pins the exact bytes.
+export const OPAQUE_ALLOWLIST = 'scripts/private-bank-leak-allowlist.json';
+const reviewedOpaque = (root, path) => {
+  let list; try { list = JSON.parse(readFileSync(join(root, OPAQUE_ALLOWLIST), 'utf8')).files || []; } catch { return false; }
+  const entry = list.find((item) => item.path === path);
+  return Boolean(entry && entry.reason && createHash('sha256').update(readFileSync(join(root, path))).digest('hex') === entry.sha256);
+};
+export const MAX_SCAN_BYTES = 32 * 1024 * 1024;
 
 const walkJson = (node, visit) => {
   if (Array.isArray(node)) { for (const v of node) walkJson(v, visit); return; }
@@ -98,7 +121,9 @@ export const validRetiredAt = (value, now = new Date()) => {
 
 export const scanText = (path, text, { publicIds = new Set(), privateIndex = null, now = new Date() } = {}) => {
   const violations = [];
-  const retiredFile = /-retired\.json$/i.test(path);
+  // Retired rows are only exempt in the server-side bank directory, never in served assets.
+  const retiredFile = new RegExp(`^server/questions/(?:${CATEGORY_NAMES.join('|')})-retired\\.json$`).test(path);
+  const servedPath = /^public\//i.test(path);
   const allowedRetiredIds = new Set();
   let json = null;
   if (/\.json$/i.test(path)) { try { json = JSON.parse(text); } catch { /* text checks below still run */ } }
@@ -115,16 +140,20 @@ export const scanText = (path, text, { publicIds = new Set(), privateIndex = nul
       // Answer fields on private / ranked-flagged rows (public practice rows keep correctIndex).
       if (isPrivate) for (const key of ANSWER_FIELDS) if (Object.hasOwn(node, key)) violations.push(`${path}: answer field "${key}" on private/ranked question ${id ?? '(no id)'}`);
       if (id === undefined && !isPrivate) return; // file/manifest-level hashes are not per-question
-      for (const [key, value] of Object.entries(node)) {
-        if (typeof value !== 'string' || !HASH_KEY.test(key) || !HASH_VALUE.test(value)) continue;
-        if (BANK_VERSION_KEYS.has(key)) continue; // one whole-bank version hash
-        if (isPrivate) violations.push(`${path}: per-question hash "${key}" for private/ranked id ${id ?? '(no id)'}`);
+      const questionRow = isPrivate || looksLikeQuestion(node);
+      for (const [key, raw] of Object.entries(node)) {
+        const values = Array.isArray(raw) ? raw : [raw];
+        const hashKey = HASH_KEY.test(key) || (BANK_VERSION_KEYS.has(key) && questionRow);
+        if (!hashKey || !values.some((value) => typeof value === 'string' && HASH_VALUE.test(value))) continue;
+        // Whole-bank version hashes are fine on manifests, not as per-row versions on question rows.
+        if (BANK_VERSION_KEYS.has(key)) violations.push(`${path}: per-row version hash "${key}" on question ${id ?? '(no id)'}`);
+        else if (isPrivate) violations.push(`${path}: per-question hash "${key}" for private/ranked id ${id ?? '(no id)'}`);
         else if (looksLikeQuestion(node) && !publicIds.has(id)) violations.push(`${path}: per-question hash "${key}" for unknown id ${id}`);
       }
     });
   }
   // Text search always runs (notes fields, strings, non-JSON files, invalid JSON).
-  for (const m of text.matchAll(PRIVATE_ID_LOOSE)) if (!allowedRetiredIds.has(canonicalId(m[0]))) violations.push(`${path}: private ranked id ${m[0]} outside the template`);
+  for (const m of text.matchAll(PRIVATE_ID_LOOSE)) if (servedPath || !allowedRetiredIds.has(canonicalId(m[0]))) violations.push(`${path}: private ranked id ${m[0]} outside the template`);
   violations.push(...secretViolations(path, text));
   if (privateIndex) {
     const lower = text.toLowerCase();
@@ -157,7 +186,9 @@ export const scanRepo = async (root, { privateDir } = {}) => {
     if (!isTextScanned(path)) continue;
     const abs = join(root, path);
     let st; try { st = statSync(abs); } catch { continue; }
-    if (!st.isFile() || st.size > 32 * 1024 * 1024) continue;
+    if (!st.isFile()) continue;
+    if (OPAQUE.test(path) && !reviewedOpaque(root, path)) { violations.push(`${path}: opaque archive/PDF cannot be scanned; keep it out of the repo`); continue; }
+    if (st.size > MAX_SCAN_BYTES) { violations.push(`${path}: larger than 32 MB, cannot be scanned`); continue; }
     files += 1;
     const text = readFileSync(abs, 'utf8');
     violations.push(...scanText(path, text, { publicIds, privateIndex }));

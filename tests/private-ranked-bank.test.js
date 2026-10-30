@@ -35,7 +35,7 @@ test('ranked source mode fails closed in production without a private source', (
   assert.equal(rankedSourceMode({ VERCEL_ENV: 'production' }), 'unavailable');
   assert.equal(rankedSourceMode({ NODE_ENV: 'production' }), 'unavailable');
   assert.equal(rankedSourceMode({ VERCEL_ENV: 'production', GEEK_RANKED_ALLOW_EXPOSED: 'true' }), 'exposed');
-  assert.equal(rankedSourceMode({ VERCEL_ENV: 'production', GEEK_PRIVATE_QUESTION_DIR: '/x' }), 'private');
+  assert.equal(rankedSourceMode({ VERCEL_ENV: 'production', GEEK_PRIVATE_QUESTION_DIR: '/fake-bank' }), 'private');
   assert.equal(rankedSourceMode({ GEEK_PRIVATE_QUESTION_URL: 'https://example.invalid/bank' }), 'private');
   assert.equal(rankedSourceMode({ GEEK_RANKED_QUESTION_SOURCE: 'fixture' }), 'fixture');
   assert.throws(() => rankedSourceMode({ GEEK_RANKED_QUESTION_SOURCE: 'fixture', VERCEL_ENV: 'production' }), /RANKED_SOURCE_INVALID/);
@@ -138,7 +138,7 @@ test('GitHub Contents API: raw media type and base64 JSON wrapper both load', as
   assert.throws(() => decodeBankDocument('not json'), /PRIVATE_BANK_INVALID/);
   let seen;
   const fetch = async (url, init) => { seen = { url, init }; return jsonResponse(wrapper); };
-  const loaded = await readUrlBanks('https://api.github.com/repos/o/private-bank/contents/bank.json', 'tok', { fetch, ref: SHA_A });
+  const loaded = await readUrlBanks('https://api.github.com/repos/fake-owner/fake-private-bank/contents/bank.json', 'test-token', { fetch, ref: SHA_A });
   assert.equal(loaded.banks.history.length, 36);
   assert.match(seen.init.headers.accept, /application\/vnd\.github\.raw/);
   assert.equal(new URL(seen.url).searchParams.get('ref'), SHA_A, 'Contents API is pinned to an immutable commit');
@@ -177,7 +177,7 @@ test('runs bind to an immutable pinned bank version; no fetch per answer; histor
   const docs = { [SHA_A]: bankDoc('HVER', 0), [SHA_B]: bankDoc('HVER', 1) };
   globalThis.__savedFetch = globalThis.fetch;
   globalThis.fetch = async (url) => { fetches += 1; return jsonResponse(docs[new URL(url).searchParams.get('ref')]); };
-  const base = { GEEK_PRIVATE_QUESTION_URL: 'https://api.github.com/repos/o/private-bank/contents/bank.json', GEEK_PRIVATE_QUESTION_TOKEN: 't', VERCEL_ENV: 'production' };
+  const base = { GEEK_PRIVATE_QUESTION_URL: 'https://api.github.com/repos/fake-owner/fake-private-bank/contents/bank.json', GEEK_PRIVATE_QUESTION_TOKEN: 'test-token', VERCEL_ENV: 'production' };
   try {
     await withEnv({ ...base }, async () => {
       await assert.rejects(rankedRunBinding(), /PRIVATE_BANK_REF_REQUIRED/, 'production URL sources must be pinned');
@@ -229,12 +229,12 @@ test('Vercel previews fail closed like production (no exposed or fixture fallbac
   assert.equal(rankedSourceMode({ VERCEL_ENV: 'preview' }), 'unavailable');
   assert.throws(() => rankedSourceMode({ VERCEL_ENV: 'preview', GEEK_RANKED_QUESTION_SOURCE: 'fixture' }), /RANKED_SOURCE_INVALID/);
   assert.equal(rankedSourceMode({ VERCEL_ENV: 'preview', GEEK_RANKED_QUESTION_SOURCE: 'exposed' }), 'unavailable');
-  assert.equal(rankedSourceMode({ VERCEL_ENV: 'preview', GEEK_PRIVATE_QUESTION_DIR: '/x' }), 'private');
+  assert.equal(rankedSourceMode({ VERCEL_ENV: 'preview', GEEK_PRIVATE_QUESTION_DIR: '/fake-bank' }), 'private');
   assert.equal(rankedSourceMode({ VERCEL_ENV: 'development' }), 'exposed');
   await withEnv({ VERCEL_ENV: 'preview' }, async () => {
     await assert.rejects(selectRoundQuestionIds('history', 1, [], '', { ranked: true }), /RANKED_BANK_UNAVAILABLE/);
   });
-  await withEnv({ VERCEL_ENV: 'preview', GEEK_PRIVATE_QUESTION_URL: 'https://api.github.com/repos/o/p/contents/bank.json' }, async () => {
+  await withEnv({ VERCEL_ENV: 'preview', GEEK_PRIVATE_QUESTION_URL: 'https://api.github.com/repos/fake-owner/fake-p/contents/bank.json' }, async () => {
     await assert.rejects(rankedRunBinding(), /PRIVATE_BANK_REF_REQUIRED/);
   });
 });
