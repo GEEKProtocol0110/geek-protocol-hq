@@ -8,6 +8,9 @@ import { promptIdentity, similarQuestion } from './question-identity.js';
 
 import { categoryFiles } from './question-categories.js';
 import { loadRankedSource as loadRankedSourceRaw, loadRankedSourceVersion as loadRankedSourceVersionRaw } from './question-source.js';
+// Bank mismatch log: season id, fixed code, at most 8-char version prefixes.
+export const versionPrefix = v => String(v || '').slice(0, 8);
+const logBankMismatch = (season, expected, actual) => console.warn('Geek season bank mismatch', String(season || ''), 'RANKED_BANK_SEASON_MISMATCH', versionPrefix(expected), versionPrefix(actual));
 
 // Fail closed without leaking details: any bank failure that is not already a
 // coded ranked-bank error (e.g. a missing private dir surfacing as an fs error
@@ -138,7 +141,7 @@ export const recordSeasonBank = async (run, env = process.env) => {
     const key = seasonBankKey(run.season, env);
     if ((await redis('SET', key, run.bankVersion, 'NX')) === 'OK') return true;
     const recorded = await redis('GET', key);
-    if (recorded && recorded !== run.bankVersion) console.warn('Geek season bank mismatch', run.season, recorded, run.bankVersion);
+    if (recorded && recorded !== run.bankVersion) logBankMismatch(run.season, recorded, run.bankVersion);
     return false;
   } catch (error) {
     console.error('Geek API error code', /^[A-Z_]{1,64}$/.test(error?.message || '') ? error.message : 'SEASON_BANK_PIN_FAILED');
@@ -152,7 +155,7 @@ export const seasonBankAllowsScore = async (run, env = process.env) => {
   if (!run?.season || run.season === SEASON_ZERO.id || !seasonConfig(env).monthly) return true;
   const expected = configuredSeasonBankVersion(run.season, env) ?? await redis('GET', seasonBankKey(run.season, env));
   if (!expected || expected === run.bankVersion) return true;
-  console.warn('Geek season bank mismatch', run.season, expected, String(run.bankVersion || ''));
+  logBankMismatch(run.season, expected, run.bankVersion);
   return false;
 };
 export const seasonFor = (run) => seasonForRun(run);

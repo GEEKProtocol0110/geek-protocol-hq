@@ -105,8 +105,8 @@ test('the current-run read supports the pilot, while expiry preserves the Daily 
   const restored = await resume();
   assert.equal(restored.statusCode, 200); assert.equal(restored.body.run.id, g.runId);
   assert.equal(restored.body.run.status, 'finished');
-  assert.ok(await fixture.command('TTL', `geek:run:${g.runId}`) <= 300);
-  await fixture.command('DEL', `geek:run:${g.runId}`);
+  assert.ok(await fixture.command('TTL', `geek:development:run:${g.runId}`) <= 300);
+  await fixture.command('DEL', `geek:development:run:${g.runId}`);
   assert.equal((await resume()).statusCode, 404);
   assert.equal((await queue(g)).statusCode, 409);
   assert.equal((await play(g.player, 'start', { mode: 'daily', category: 'kaspa' })).statusCode, 409);
@@ -130,7 +130,7 @@ test('wrong transfers, stale versions, reused transaction hashes and damaged rec
 
 const windowRead = (cookie, headers = {}, run = 'latest') => call(operations, 'GET', {}, cookie, { action: 'testnet', run }, headers);
 test('owner preflight returns only the owned eligible proof and its decreasing native Redis lifetime', async () => {
-  const g = await finished(), key = `geek:run:${g.runId}`;
+  const g = await finished(), key = `geek:development:run:${g.runId}`;
   await fixture.command('PEXPIRE', key, 90000);
   const raw = await fixture.command('GET', key), before = await fixture.command('PTTL', key);
   const result = await windowRead(g.cookie);
@@ -152,15 +152,15 @@ test('preflight requires both owner and player sessions and never substitutes an
   assert.equal((await windowRead(await login())).statusCode, 401);
   assert.equal((await windowRead(g.cookie, {origin:'https://evil.invalid'})).statusCode, 403);
   assert.equal((await windowRead(g.cookie, {}, 'other')).statusCode, 400);
-  const activeKey = `geek:ranked:active:${g.player.split('=')[1]}`;
+  const activeKey = `geek:development:ranked:active:${g.player.split('=')[1]}`;
   await fixture.command('SET', activeKey, foreign.runId);
   const denied = await windowRead(g.cookie);
   assert.equal(denied.body.state, 'ineligible'); assert.equal(denied.body.run, undefined);
   assert.equal(await fixture.command('ZCARD', testnetRewardIndex), 0);
 });
 test('expired, unfinished, corrupt and unbounded runs cannot produce a ready preflight or reset the Daily lock', async () => {
-  const g = await finished(), key = `geek:run:${g.runId}`, raw = await fixture.command('GET', key);
-  for (const patch of [{status:'question'},{mode:'speed'},{category:'movies'},{correct:0}]) {
+  const g = await finished(), key = `geek:development:run:${g.runId}`, raw = await fixture.command('GET', key);
+  for (const patch of [{status:'question'},{mode:'speed'},{category:'movies'},{correct:0},{unranked:true}]) {
     await fixture.command('SET', key, JSON.stringify({...JSON.parse(raw),...patch}), 'PX', 90000);
     assert.equal((await windowRead(g.cookie)).body.state, 'ineligible');
   }

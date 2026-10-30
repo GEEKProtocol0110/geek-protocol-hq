@@ -53,7 +53,7 @@ export function verifiedPilotRun(raw, id, sessionId) {
   let run;
   try { run = JSON.parse(raw); } catch { throw new Error('TESTNET_RUN_INVALID'); }
   const bank = loadQuestionBank('kaspa');
-  if (!run || run.id !== id || run.sessionId !== sessionId || run.status !== 'finished' || run.mode !== 'daily' || run.category !== 'kaspa' ||
+  if (!run || run.id !== id || run.sessionId !== sessionId || run.status !== 'finished' || run.unranked || run.mode !== 'daily' || run.category !== 'kaspa' ||
       run.completedRound !== 1 || run.questionCount !== 5 || run.questionIndex !== 4 || !Array.isArray(run.roundQuestionIds) || run.roundQuestionIds.length !== 5 ||
       new Set(run.roundQuestionIds).size !== 5 || !run.roundQuestionIds.every(id => bank.byId.get(id)?.reviewStatus === 'source-checked') ||
       !Array.isArray(run.roundAnswers) || run.roundAnswers.length !== 5 || run.roundAnswers.some(a => typeof a?.correct !== 'boolean') ||

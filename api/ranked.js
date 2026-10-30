@@ -152,7 +152,7 @@ const startRound = async (run, profile) => {
 // still completes (career progress saved) but is unranked practice: no board write.
 const recordRunScore = async (run, session) => {
   const season = seasonFor(run).leaderboard;
-  if (!(await seasonBankAllowsScore(run))) return { improved: false, unranked: true, season, entries: await listLeaderboard(run.category, run.mode, 10, season) };
+  if (run.unranked || !(await seasonBankAllowsScore(run))) return { improved: false, unranked: true, season, entries: await listLeaderboard(run.category, run.mode, 10, season) };
   return recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode, season });
 };
 const finishRun = async (run, session, profile) => {
@@ -162,6 +162,8 @@ const finishRun = async (run, session, profile) => {
   if (run.mode === 'gauntlet' && run.completedRound >= 10) profile.gauntletsCompleted += 1;
   run.status = 'finished';
   run.current = null;
+  // Persist the first mismatch so retries (even after a pin reset) stay unranked.
+  if (!run.unranked && !(await seasonBankAllowsScore(run))) run.unranked = true;
   const automaticReward = await prepareAutomaticReward(playerIdFor(session), run);
   await commitRankedState({ playerId: playerIdFor(session), run, previousRun: runSnapshots.get(run), profile, ttl: 300, automaticReward });
   const leaderboard = await recordRunScore(run, session);
@@ -211,7 +213,10 @@ const answerQuestion = async (run, session, profile, body) => {
   if (run.questionIndex === run.questionCount - 1 || modeClockExpired) {
     const earlierAchievements=new Set(careerChallengeState(profile).tasks.filter(t=>t.complete).map(t=>t.id));
     const config = ROUND_CONFIG[run.round - 1];
-    const reward = mode.rewards ? run.correct * config.reward : 0;
+    // Bank-version mismatch: the run continues as unranked practice (XP only,
+    // no in-game reward, no season credit, no testnet reward).
+    if (!run.unranked && !(await seasonBankAllowsScore(run))) run.unranked = true;
+    const reward = mode.rewards && !run.unranked ? run.correct * config.reward : 0;
     const xpEarned = run.correct * 10 + Math.round(run.roundScore / 1000);
     run.totalScore += run.roundScore;
     run.rewards += reward;
