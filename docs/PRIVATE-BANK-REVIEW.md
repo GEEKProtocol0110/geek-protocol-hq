@@ -185,7 +185,7 @@ Start about 10 days before month end:
 - [ ] `node scripts/private-bank.mjs check <private-repo>` passes (schema, duplicates, public-exposure, manifest current) [#200-DEP].
 - [ ] `manifest --write [--commit <previous sha>]` run, committed and pushed to the private repo. Record the new commit SHA. No force-push or history rewrite.
 - [ ] Per-category concept counts ≥ floor (target: ≥ launch / steady-state numbers).
-- [ ] Public-exposure check: rely on `private-bank.mjs check` above. `scripts/public-answer-check.mjs` is **pending** (does not exist yet; owned by Geek Bot in #200). Do not treat it as a cutover gate until it exists [#200-DEP].
+- [ ] Public-exposure check: run `npm run private-bank:check` and `npm run private-bank:leak-check` (`scripts/private-bank-leak-check.mjs`, added in #200 at 47212a1; use `--private` to cross-check against the private repo). It fails on active `PRK-*` IDs in the public repo and on per-question answer hashes outside `*-retired.json` rows with `retiredAt`. `scripts/public-answer-check.mjs` (run by `security:check`) scans only the served `public/` output and is not a substitute [#200-DEP].
 - [ ] Preview: set `GEEK_PRIVATE_QUESTION_REF` to the new SHA. Run `npm run verify`, manual Gauntlet/Daily/Speed runs, check deferred feedback, and confirm no `RANKED_BANK_UNAVAILABLE` / `PRIVATE_BANK_*` errors.
 - [ ] Production: update `GEEK_PRIVATE_QUESTION_REF` at 00:00 UTC on the 1st. Do **not** set `GEEK_RANKED_ALLOW_EXPOSED`. Confirm in-flight runs still grade (old `git:<sha>` stays readable) [#200-DEP].
 - [ ] Publish counts and the version string only (no rows) in a dated public note. Update the metrics (§9).
@@ -240,7 +240,7 @@ Kept in the private repo. Counts and aggregates may be published.
 1. ~~Review metadata in the row or a separate file?~~ **Resolved:** separate private review file; #200 row format unchanged (§4).
 2. ~~Should `conceptId` be mandatory?~~ **Resolved:** required on every row (§4, §8).
 3. ~~Per-file hashes public?~~ **Resolved:** only one whole-bank-version hash plus counts; no per-file, per-question or per-answer hashes (§1).
-4. Who is the standing second reviewer when Gee authors? **Open, pending Gee's decision.**
+4. Who is the standing second reviewer when Gee authors? **Resolved:** Question Bot fact-checks and validates every incoming question, including Gee's and CCE submissions; Gee remains final approver.
 5. How do monthly seasons map onto leaderboard season keys beyond Season 0/1? **Open, pending Gee's decision.**
 6. Should there be a mid-season 15% easy refresh trigger threshold (RANKED-CAPACITY §6)?
 7. Is a length-bias threshold of 40% the right trigger?
