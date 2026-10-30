@@ -99,6 +99,13 @@ export const leaderboardSeasonLabel = (id, env = process.env) => {
   return number ? privateSeason(number, env).label : null;
 };
 
+// Deployed non-production environments (VERCEL_ENV set and !== 'production', e.g.
+// preview) may not write ranked state to shared keys (Season 0 boards, profiles).
+// Local runs without VERCEL_ENV (dev server, tests) are unaffected.
+export const assertRankedWritesAllowed = (env = process.env) => {
+  if (env.VERCEL_ENV && env.VERCEL_ENV !== 'production') throw new Error('RANKED_WRITES_DISABLED');
+};
+
 // Environment namespace for season-scoped write keys (season-bank pins and
 // Season 1+ leaderboards). Production keeps the original `geek:` keys so existing
 // data and Season 0 history are untouched; every other environment (Vercel

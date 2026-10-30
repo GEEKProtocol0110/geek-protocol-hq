@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { cachedBankVersions, decodeBankDocument, loadRankedSource, loadRankedSourceVersion, pinnedUrl, rankedSourceMode, readUrlBanks, resetRankedSourceCache } from '../server/question-source.js';
 import { SEASONS, isExposedQuestion, loadQuestionBank, loadRankedBank, questionById, rankedRunBinding, seasonFor, selectRoundQuestionIds } from '../server/questions.js';
-import { SEASON_LABELS } from '../server/leaderboard.js';
+import { leaderboardSeasonLabel } from '../server/seasons.js';
 
 const KEYS = ['GEEK_PRIVATE_QUESTION_DIR', 'GEEK_PRIVATE_QUESTION_REF', 'GEEK_PRIVATE_QUESTION_URL', 'GEEK_PRIVATE_QUESTION_TOKEN', 'GEEK_RANKED_QUESTION_SOURCE', 'GEEK_RANKED_ALLOW_EXPOSED', 'VERCEL_ENV', 'NODE_ENV'];
 const withEnv = async (values, run) => {
@@ -209,7 +209,7 @@ test('seasons: legacy runs are Season 0 — Public-bank Alpha with a separate pr
   assert.equal(seasonFor({}).label, 'Season 0 — Public-bank Alpha');
   assert.equal(seasonFor({}).leaderboard, 'legacy');
   assert.equal(seasonFor({ season: 'season-1' }).leaderboard, 'season-1');
-  assert.equal(SEASON_LABELS.legacy, SEASONS['season-0'].label);
+  assert.equal(leaderboardSeasonLabel('legacy'), SEASONS['season-0'].label);
   await withEnv({}, async () => assert.equal((await rankedRunBinding()).season, 'season-0'));
   const leaderboard = readFileSync(join(process.cwd(), 'server', 'leaderboard.js'), 'utf8');
   assert.match(leaderboard, /'legacy' \? 'geek:leaderboard' : `geek:leaderboard:\$\{cleanSeason\(season\)\}`/, 'legacy keys preserved; private season separate');

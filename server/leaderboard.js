@@ -1,5 +1,5 @@
 import { parseStoredJson, pipeline, redis } from './redis.js';
-import { seasonKeyNamespace, assertWritableLeaderboardSeason, isLeaderboardSeasonId, leaderboardSeasonLabel } from './seasons.js';
+import { seasonKeyNamespace, assertRankedWritesAllowed, assertWritableLeaderboardSeason, isLeaderboardSeasonId, leaderboardSeasonLabel } from './seasons.js';
 import { cleanName } from './http.js';
 import { playerIdFor } from './session.js';
 import { parseProfile } from './profile.js';
@@ -17,7 +17,6 @@ const cleanSeason = (season) => isLeaderboardSeasonId(season) ? season : 'legacy
 // (production unchanged: geek:leaderboard:season-N; elsewhere geek:<env>:leaderboard:season-N).
 const seasonPrefix = (season) => envScoped(cleanSeason(season) === 'legacy' ? 'geek:leaderboard' : `geek:leaderboard:${cleanSeason(season)}`);
 const envScoped = key => key === 'geek:leaderboard' ? key : seasonKeyNamespace() + key.slice('geek:'.length);
-export const SEASON_LABELS = Object.freeze({ legacy: 'Season 0 — Public-bank Alpha', 'season-1': 'Season 1 — Private-bank' });
 const boardKey = (category, mode = 'gauntlet', season = 'legacy') => cleanMode(mode) === 'gauntlet' ? `${seasonPrefix(season)}:${category}` : `${seasonPrefix(season)}:${cleanMode(mode)}:${category}`;
 const metaKey = (category, mode = 'gauntlet', season = 'legacy') => `${boardKey(category, mode, season)}:meta`;
 const boardKeyFor = boardKey, metaKeyFor = metaKey;
@@ -65,6 +64,7 @@ redis.call('HSET', KEYS[2], ARGV[1], ARGV[3])
 return 1`;
 
 export const recordVerifiedScore = async ({ session, category, score, round, mode = 'gauntlet', season = 'legacy' }) => {
+  assertRankedWritesAllowed();
   assertWritableLeaderboardSeason(season);
   const selectedMode = cleanMode(mode);
   const boardKey = (c, m) => boardKeyFor(c, m, season), metaKey = (c, m) => metaKeyFor(c, m, season);
