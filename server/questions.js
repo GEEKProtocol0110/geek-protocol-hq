@@ -164,14 +164,18 @@ const rankedLookup = async (category, id, bankVersion) => {
   try {
     if (bankVersion && bankVersion !== 'public') {
       const source = await loadRankedSourceVersion(bankVersion);
-      if (source) return privateBankFor(category, source).byId.get(id);
-      return undefined;
+      // A run bound to a private version whose bank can no longer be read is a
+      // bank outage, not a missing question.
+      if (!source) throw new Error('RANKED_BANK_UNAVAILABLE');
+      return privateBankFor(category, source).byId.get(id);
     }
     const bank = await loadRankedBank(category);
     return bank.private ? bank.byId.get(id) : undefined;
   } catch (error) {
-    if (['RANKED_BANK_UNAVAILABLE', 'PRIVATE_BANK_REF_REQUIRED'].includes(error.message)) return undefined;
-    throw error;
+    const coded = bankFailure(error);
+    if (bankVersion && bankVersion !== 'public') throw coded;
+    if (['RANKED_BANK_UNAVAILABLE', 'PRIVATE_BANK_REF_REQUIRED'].includes(coded.message)) return undefined;
+    throw coded;
   }
 };
 
@@ -241,7 +245,9 @@ export const selectRoundQuestionIds = async (category, round, excludedIds = [], 
   pool.forEach((question) => {
     if (selected.length < 10) addUnique(question);
   });
-  if (selected.length !== 10) throw new Error('QUESTION_POOL_EXHAUSTED');
+  // A ranked pool too small to fill a round (e.g. an empty private bank) is a
+  // bank outage for players; practice keeps the original code.
+  if (selected.length !== 10) throw new Error(ranked ? 'RANKED_BANK_UNAVAILABLE' : 'QUESTION_POOL_EXHAUSTED');
   return secureShuffle(selected).map((question) => question.id);
 };
 

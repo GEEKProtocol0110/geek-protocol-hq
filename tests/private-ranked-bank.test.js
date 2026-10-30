@@ -83,7 +83,7 @@ test('private directory bank feeds ranked play and grades private and retired ID
     assert.equal(isExposedQuestion(q), false);
     const retired = JSON.parse(readFileSync(join(process.cwd(), 'server', 'questions', 'history-retired.json'), 'utf8')).questions[0];
     assert.equal((await questionById('history', retired.id)).correctIndex, retired.correctIndex);
-    await assert.rejects(selectRoundQuestionIds('kaspa', 1, [], '', { ranked: true }), /QUESTION_POOL_EXHAUSTED/, 'a category without private rows does not fall back to exposed rows');
+    await assert.rejects(selectRoundQuestionIds('kaspa', 1, [], '', { ranked: true }), /RANKED_BANK_UNAVAILABLE/, 'a category without private rows does not fall back to exposed rows');
   });
 });
 

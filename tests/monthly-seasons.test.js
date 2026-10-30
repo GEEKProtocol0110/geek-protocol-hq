@@ -762,3 +762,73 @@ test('mismatched-bank run: practice XP only, no in-game reward, no season credit
   assert.equal(JSON.stringify(warns).includes(pinned), false);
   assert.deepEqual((await board('season-1', 'gauntlet')).body.entries.map(e => e.name).includes('Mismatched'), false);
 });
+
+// ---------------------------------------------------------------------------
+// Security finding 3: fail-closed ranked paths return 503 with code-only logs.
+// ---------------------------------------------------------------------------
+const assertUnavailable = res => {
+  assert.equal(res.statusCode, 503, JSON.stringify(res.body));
+  assert.deepEqual(res.body, { ok: false, code: 'RANKED_BANK_UNAVAILABLE', error: 'Ranked play is temporarily unavailable. Practice remains open.' });
+};
+
+test('finding 3: missing private folder -> 503 RANKED_BANK_UNAVAILABLE, no path/stack in logs', async () => {
+  const missing = join(tmpdir(), 'geek-f3-missing-dir-q9');
+  setClock('2026-11-10T00:00:00.000Z');
+  const cookie = await session();
+  let res;
+  const logs = await captureLogs(() => withBankDir(missing, async () => { res = await ranked(cookie, 'start', { category: 'kaspa', mode: 'speed' }); }));
+  assertUnavailable(res);
+  assert.deepEqual(logs, [['Geek API error code', 'RANKED_BANK_UNAVAILABLE']]);
+  assertCleanLogs(logs, [missing, 'geek-f3', 'ENOENT']);
+});
+
+test('finding 3: broken JSON bank -> 503 RANKED_BANK_UNAVAILABLE, no bank text in logs', async () => {
+  const dir = mkdtempSync(join(tmpdir(), 'geek-f3-broken-'));
+  writeFileSync(join(dir, 'kaspa-fake.json'), '{"questions":[{"id":"FAKE-F3-SECRET","prompt":"Fake secret prompt?" ');
+  setClock('2026-11-10T00:00:00.000Z');
+  const cookie = await session();
+  let res;
+  const logs = await captureLogs(() => withBankDir(dir, async () => { res = await ranked(cookie, 'start', { category: 'kaspa', mode: 'speed' }); }));
+  assertUnavailable(res);
+  assert.equal(logs.length, 1); assert.equal(logs[0][0], 'Geek API error code');
+  assertCleanLogs(logs, [dir, 'FAKE-F3-SECRET', 'Fake secret', 'SyntaxError', 'JSON']);
+});
+
+test('finding 3: empty private bank -> 503 RANKED_BANK_UNAVAILABLE (not 500 QUESTION_POOL_EXHAUSTED)', async () => {
+  const dir = mkdtempSync(join(tmpdir(), 'geek-f3-empty-'));
+  writeFileSync(join(dir, 'kaspa-fake.json'), JSON.stringify({ questions: [] }));
+  setClock('2026-11-10T00:00:00.000Z');
+  const cookie = await session();
+  let res;
+  const logs = await captureLogs(() => withBankDir(dir, async () => { res = await ranked(cookie, 'start', { category: 'kaspa', mode: 'speed' }); }));
+  assertUnavailable(res);
+  assert.equal(logs.length, 1); assert.equal(logs[0][0], 'Geek API error code');
+  assertCleanLogs(logs, [dir, 'QUESTION_POOL_EXHAUSTED']);
+});
+
+test('finding 3: fixture mode in production -> 503 RANKED_BANK_UNAVAILABLE, code-only log', async () => {
+  process.env.VERCEL_ENV = 'production'; process.env.GEEK_RANKED_QUESTION_SOURCE = 'fixture'; resetRankedSourceCache();
+  try {
+    setClock('2026-11-10T00:00:00.000Z');
+    const cookie = await session();
+    let res;
+    const logs = await captureLogs(async () => { res = await ranked(cookie, 'start', { category: 'kaspa', mode: 'speed' }); });
+    assertUnavailable(res);
+    assert.equal(logs.length, 1); assert.equal(logs[0][0], 'Geek API error code');
+    assertCleanLogs(logs, ['question-fixtures']);
+  } finally { delete process.env.GEEK_RANKED_QUESTION_SOURCE; resetRankedSourceCache(); }
+});
+
+test('finding 3: break config mid-run then next -> 503 RANKED_BANK_UNAVAILABLE (not 500 QUESTION_NOT_FOUND)', async () => {
+  setClock('2026-11-10T00:00:00.000Z');
+  const cookie = await session();
+  let res = await ranked(cookie, 'start', { category: 'kaspa', mode: 'speed' }); assert.equal(res.statusCode, 201, JSON.stringify(res.body));
+  const start = res.body;
+  res = await ranked(cookie, 'answer', { runId: start.run.id, questionToken: start.question.token, selectedIndex: right(start) });
+  assert.equal(res.statusCode, 200);
+  const missing = join(tmpdir(), 'geek-f3-broken-after-start-q9');
+  const logs = await captureLogs(() => withBankDir(missing, async () => { res = await ranked(cookie, 'next', { runId: start.run.id }); }));
+  assertUnavailable(res);
+  assert.equal(logs.length, 1); assert.equal(logs[0][0], 'Geek API error code');
+  assertCleanLogs(logs, [missing, 'geek-f3', 'QUESTION_NOT_FOUND', 'FAKE-MS']);
+});
