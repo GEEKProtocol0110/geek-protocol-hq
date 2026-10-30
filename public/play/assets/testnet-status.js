@@ -3,7 +3,7 @@ const dashboard = document.querySelectorAll('[data-testnet-dashboard]')[0];
 const find = selector => dashboard?.querySelector(selector);
 const badge = find('[data-testnet-badge]'), details = find('[data-testnet-details]');
 const checked = find('[data-testnet-checked]'), reload = find('[data-testnet-refresh]');
-let timer, controller, generation = 0, followUp = false;
+let timer, controller, generation = 0, followUp = false, accountReady = false;
 const clearPanel = () => {
   if (panel) { panel.hidden = true; panel.textContent = ''; }
   if (dashboard) { dashboard.hidden = true; details.replaceChildren(); checked.textContent = ''; badge.textContent = ''; }
@@ -33,6 +33,20 @@ const suspend = () => {
   generation += 1; controller?.abort(); controller = null; followUp = false;
   clearTimeout(timer); clearPanel();
 };
+// The rewards read is private to an account session, so it never runs for visitors without one.
+// The passkey status GET reports whether this browser already has a signed-in account without
+// creating anything; a 401 means there is no session at all. No session is bootstrapped here
+// (issue #199), and guests see no panel, no dashboard, and make no rewards request (issue #183).
+const ensureAccount = async signal => {
+  if (accountReady) return true;
+  const response = await fetch('/api/passkeys/', { credentials: 'same-origin', cache: 'no-store', signal });
+  if (response.status === 401) return false;
+  if (!response.ok) throw new Error('STATUS_UNAVAILABLE');
+  const payload = await response.json();
+  if (!payload.ok) throw new Error('STATUS_UNAVAILABLE');
+  accountReady = Boolean(payload.signedIn || payload.walletLinked);
+  return accountReady;
+};
 async function refresh() {
   if (!panel || document.hidden) return;
   if (controller) { followUp = true; return; }
@@ -41,9 +55,10 @@ async function refresh() {
   const deadline = setTimeout(() => request.abort(), 10000);
   let retry = true;
   try {
+    if (!await ensureAccount(request.signal)) { retry = false; clearPanel(); return; }
     const response = await fetch('/api/rewards/?service=testnet', { credentials: 'same-origin', cache: 'no-store', signal: request.signal });
     if (version !== generation) return;
-    if (response.status === 401 || response.status === 403) { retry = false; clearPanel(); return; }
+    if (response.status === 401 || response.status === 403) { retry = false; accountReady = false; clearPanel(); return; }
     if (!response.ok) throw new Error('STATUS_UNAVAILABLE');
     const payload = await response.json();
     if (version !== generation) return;
@@ -89,7 +104,7 @@ async function refresh() {
 }
 window.addEventListener('geek:run-saved', refresh);
 for (const name of ['geek:signed-in', 'geek:passkey-signed-in', 'geek:device-signed-in']) document.addEventListener(name, () => { suspend(); refresh(); });
-document.addEventListener('geek:signed-out', suspend);
+document.addEventListener('geek:signed-out', () => { accountReady = false; suspend(); });
 window.addEventListener('geek:receiving-address-saved', refresh);
 reload?.addEventListener('click', refresh);
 window.addEventListener('pagehide', suspend);
