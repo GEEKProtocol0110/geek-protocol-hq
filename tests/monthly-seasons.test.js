@@ -62,7 +62,7 @@ after(async () => {
   ENV_KEYS.forEach(k => savedEnv[k] === undefined ? delete process.env[k] : process.env[k] = savedEnv[k]);
   resetRankedSourceCache(); await fixture.close();
 });
-beforeEach(async () => { await fixture.command('FLUSHDB'); clockBase = null; failCommit = false; blockPin = false; delete process.env.VERCEL_ENV; delete process.env.GEEK_SEASON_BANK_VERSIONS; });
+beforeEach(async () => { await fixture.command('FLUSHDB'); clockBase = null; failCommit = false; blockPin = false; delete process.env.VERCEL_ENV; delete process.env.VERCEL; delete process.env.GEEK_SEASON_BANK_VERSIONS; });
 
 let ipCounter = 0;
 const call = async (handler, method, body, cookie = '', query = {}) => {
@@ -173,7 +173,7 @@ test('run start binds season, month and bank version on the server', async () =>
   const res = await ranked(cookie, 'start', { category: 'kaspa', mode: 'speed', season: 'season-9', bankVersion: 'forged' });
   assert.equal(res.statusCode, 201);
   assert.equal(res.body.run.season, 'season-2', 'client-supplied season is ignored');
-  const stored = JSON.parse(await fixture.command('GET', `geek:run:${res.body.run.id}`));
+  const stored = JSON.parse(await fixture.command('GET', runKeyFor(res.body.run.id)));
   assert.equal(stored.season, 'season-2'); assert.equal(stored.seasonMonth, '2026-12'); assert.equal(stored.bankVersion, binding.bankVersion);
 });
 
@@ -239,7 +239,7 @@ test('a stored run with a tampered season cannot finish into Season 0', async ()
   setClock('2026-11-10T00:00:00.000Z');
   const cookie = await session('Tamper');
   const { start } = await playSpeed(cookie);
-  const key = `geek:run:${start.run.id}`;
+  const key = runKeyFor(start.run.id);
   const stored = JSON.parse(await fixture.command('GET', key));
   stored.season = 'season-x';
   await fixture.command('SET', key, JSON.stringify(stored), 'KEEPTTL');
@@ -414,7 +414,7 @@ test('production: the first saved run of a season pins its bank version; later r
   const second = await ranked(await session('Pin B'), 'start', { category: 'kaspa', mode: 'speed' });
   assert.equal(second.statusCode, 201);
   assert.equal(await fixture.command('GET', seasonBankKey('season-1')), pinned);
-  assert.equal(JSON.parse(await fixture.command('GET', `geek:run:${second.body.run.id}`)).bankVersion, pinned);
+  assert.equal(JSON.parse(await fixture.command('GET', runKeyFor(second.body.run.id))).bankVersion, pinned);
 });
 
 test('production: a live bank that differs from the season pin refuses new runs (503) but the next season pins the new bank', async () => {
@@ -433,7 +433,7 @@ test('production: a live bank that differs from the season pin refuses new runs 
     assert.equal(res.statusCode, 503); assert.equal(res.body.code, 'RANKED_BANK_UNAVAILABLE');
     assert.deepEqual(logs, [['Geek API error code', 'RANKED_BANK_SEASON_MISMATCH']]);
     assert.equal(await fixture.command('GET', seasonBankKey('season-1')), oldVersion, 'pin never overwritten');
-    assert.equal((await fixture.command('KEYS', 'geek:run:*')).length, 1, 'no run created on the mismatched bank');
+    assert.equal((await fixture.command('KEYS', `${rankedKeyNamespace()}run:*`)).length, 1, 'no run created on the mismatched bank');
     // Next month: Season 2 pins the new bank and plays normally.
     setClock('2026-12-01T00:00:01.000Z');
     res = await ranked(await session('December bank'), 'start', { category: 'kaspa', mode: 'speed' });
@@ -489,7 +489,7 @@ test('production pins only after the run is saved; a failed save leaves no pin',
   assert.equal(await fixture.command('GET', seasonBankKey('season-1')), null, 'no pin from an unsaved run');
   const ok = await ranked(await session('Saved'), 'start', { category: 'kaspa', mode: 'speed' });
   assert.equal(ok.statusCode, 201);
-  assert.equal(await fixture.command('GET', seasonBankKey('season-1')), JSON.parse(await fixture.command('GET', `geek:run:${ok.body.run.id}`)).bankVersion);
+  assert.equal(await fixture.command('GET', seasonBankKey('season-1')), JSON.parse(await fixture.command('GET', runKeyFor(ok.body.run.id))).bankVersion);
 });
 
 test('GEEK_SEASON_BANK_VERSIONS overrides first-run-wins and is validated', async () => {
@@ -540,22 +540,26 @@ test('no HTTP route exposes the season-bank reset', () => {
 // ---------------------------------------------------------------------------
 // Re-review: preview write guard, env-scoped run keys, score-time bank check
 // ---------------------------------------------------------------------------
-import { activeRunKeyFor, dailyKeyFor, runKeyFor } from '../server/ranked-state.js';
+import { activeRunKeyFor, dailyKeyFor, rankedKeyNamespace, runKeyFor } from '../server/ranked-state.js';
 import { recordSeasonBank, seasonBankAllowsScore } from '../server/questions.js';
 import { maskVersion } from '../scripts/season-bank-reset.mjs';
 
 const allKeys = async () => (await fixture.command('KEYS', '*')).sort();
 
-test('run, active-run and Daily keys: production and local unchanged, deployed non-production namespaced', () => {
-  for (const env of [{ VERCEL_ENV: 'production' }, {}]) {
-    assert.equal(runKeyFor('r1', env), 'geek:run:r1');
-    assert.equal(activeRunKeyFor('s1', env), 'geek:ranked:active:s1');
-    assert.equal(dailyKeyFor('p1', '2026-11-01', env), 'geek:daily:p1:2026-11-01');
+test('run, active-run and Daily keys share the season namespace; production keeps original names', () => {
+  const prod = { VERCEL_ENV: 'production', VERCEL: '1' };
+  assert.equal(runKeyFor('r1', prod), 'geek:run:r1');
+  assert.equal(activeRunKeyFor('s1', prod), 'geek:ranked:active:s1');
+  assert.equal(dailyKeyFor('p1', '2026-11-01', prod), 'geek:daily:p1:2026-11-01');
+  for (const env of [{}, { VERCEL_ENV: 'development' }]) {
+    assert.equal(runKeyFor('r1', env), 'geek:development:run:r1');
+    assert.equal(activeRunKeyFor('s1', env), 'geek:development:ranked:active:s1');
+    assert.equal(dailyKeyFor('p1', '2026-11-01', env), 'geek:development:daily:p1:2026-11-01');
+    assert.equal(rankedKeyNamespace(env), seasonKeyNamespace(env));
   }
   assert.equal(runKeyFor('r1', { VERCEL_ENV: 'preview' }), 'geek:preview:run:r1');
-  assert.equal(activeRunKeyFor('s1', { VERCEL_ENV: 'preview' }), 'geek:preview:ranked:active:s1');
-  assert.equal(dailyKeyFor('p1', '2026-11-01', { VERCEL_ENV: 'development' }), 'geek:development:daily:p1:2026-11-01');
-  assert.equal(runKeyFor('r1', { VERCEL_ENV: 'Weird Env' }), 'geek:nonproduction:run:r1');
+  assert.throws(() => runKeyFor('r1', { VERCEL: '1' }), /RANKED_ENV_UNKNOWN/);
+  assert.throws(() => seasonKeyNamespace({ VERCEL: '1' }), /RANKED_ENV_UNKNOWN/);
 });
 
 test('preview refuses ranked writes (503) and never touches production run, board or profile keys', async () => {
@@ -621,22 +625,29 @@ test('rollout race: two instances, no pin yet, different banks -> only the match
   assert.deepEqual(await fixture.command('KEYS', '*season-bank*'), []);
   blockPin = false;
   // A's delayed pin write wins; B's loses SET NX and logs version ids only.
-  const runA = JSON.parse(await fixture.command('GET', `geek:run:${a.start.run.id}`));
-  const runB = JSON.parse(await fixture.command('GET', `geek:run:${b.start.run.id}`));
+  const runA = JSON.parse(await fixture.command('GET', runKeyFor(a.start.run.id)));
+  const runB = JSON.parse(await fixture.command('GET', runKeyFor(b.start.run.id)));
   assert.notEqual(runA.bankVersion, runB.bankVersion);
   assert.equal(await recordSeasonBank(runA), true);
   const warns = await captureWarn(async () => assert.equal(await recordSeasonBank(runB), false));
-  assert.deepEqual(warns, [['Geek season bank mismatch', 'season-1', runA.bankVersion, runB.bankVersion]]);
+  assert.deepEqual(warns, [['Geek season bank mismatch', 'season-1', 'RANKED_BANK_SEASON_MISMATCH', runA.bankVersion.slice(0, 8), runB.bankVersion.slice(0, 8)]]);
   // B finishes: career saved, but unranked (no board write), version ids logged.
   let finishB;
   const finishWarns = await captureWarn(() => withBankDir(rotated, async () => { finishB = await ranked(cookieB, 'finish', { runId: b.start.run.id }); }));
   assert.equal(finishB.statusCode, 200); assert.equal(finishB.body.leaderboard.unranked, true);
-  assert.deepEqual(finishWarns, [['Geek season bank mismatch', 'season-1', runA.bankVersion, runB.bankVersion]]);
+  assert.deepEqual(finishWarns, [['Geek season bank mismatch', 'season-1', 'RANKED_BANK_SEASON_MISMATCH', runA.bankVersion.slice(0, 8), runB.bankVersion.slice(0, 8)]]);
+  const logged = JSON.stringify([...warns, ...finishWarns]);
+  for (const full of [runA.bankVersion, runB.bankVersion]) { assert.ok(full.length > 8); assert.equal(logged.includes(full), false, 'full version never logged'); }
+  assert.equal(JSON.parse(await fixture.command('GET', runKeyFor(b.start.run.id))).unranked, true, 'first mismatch persisted');
   for (const [, ...ids] of finishWarns) for (const id of ids) assert.doesNotMatch(String(id), /Fake|prompt|\//);
   const finishA = await ranked(cookieA, 'finish', { runId: a.start.run.id });
   assert.equal(finishA.statusCode, 200); assert.notEqual(finishA.body.leaderboard.unranked, true);
   assert.deepEqual((await board('season-1')).body.entries.map(e => e.name), ['Instance A']);
   // A retried finish for B stays unranked.
+  await captureWarn(() => withBankDir(rotated, async () => { assert.equal((await ranked(cookieB, 'finish', { runId: b.start.run.id })).body.leaderboard.unranked, true); }));
+  assert.deepEqual((await board('season-1')).body.entries.map(e => e.name), ['Instance A']);
+  // Operator resets the pin to B's version: B's retried finish still stays unranked.
+  await fixture.command('SET', seasonBankKey('season-1'), runB.bankVersion);
   await captureWarn(() => withBankDir(rotated, async () => { assert.equal((await ranked(cookieB, 'finish', { runId: b.start.run.id })).body.leaderboard.unranked, true); }));
   assert.deepEqual((await board('season-1')).body.entries.map(e => e.name), ['Instance A']);
 });
@@ -650,7 +661,7 @@ test('score-time check honours GEEK_SEASON_BANK_VERSIONS and ignores Season 0 / 
     assert.equal(await seasonBankAllowsScore({ bankVersion: 'public' }), true);
     assert.equal(await seasonBankAllowsScore({ season: 'season-2', bankVersion: 'v-other' }, { GEEK_SEASON_BANK_VERSIONS: process.env.GEEK_SEASON_BANK_VERSIONS }), true, 'monthly off');
   });
-  assert.deepEqual(warns, [['Geek season bank mismatch', 'season-2', 'v-configured', 'v-other']]);
+  assert.deepEqual(warns, [['Geek season bank mismatch', 'season-2', 'RANKED_BANK_SEASON_MISMATCH', 'v-config', 'v-other']]);
 });
 
 test('reset CLI masks the stored version', async () => {
@@ -661,4 +672,93 @@ test('reset CLI masks the stored version', async () => {
   await resetMain(['--season', 'season-5', '--env', 'production'], { redis: (...a) => fixture.command(...a), log: l => out.push(l), error: l => out.push(l) });
   assert.equal(out.join('\n').includes('0123456789secret'), false);
   assert.match(out[0], /= abcdef01…$/);
+});
+
+// ---------------------------------------------------------------------------
+// Unified env helper, fail-closed deploys, unranked practice economics
+// ---------------------------------------------------------------------------
+test('deployed (VERCEL set) without VERCEL_ENV fails closed: 503, code-only log, no keys', async () => {
+  setClock('2026-11-10T00:00:00.000Z');
+  const cookie = await session('Unknown env');
+  const before = (await allKeys()).filter(k => !k.startsWith('geek:rate:'));
+  process.env.VERCEL = '1';
+  const logs = await captureLogs(async () => {
+    const res = await ranked(cookie, 'start', { category: 'kaspa', mode: 'speed' });
+    assert.equal(res.statusCode, 503); assert.equal(res.body.code, 'RANKED_BANK_UNAVAILABLE');
+  });
+  assert.deepEqual(logs, [['Geek API error code', 'RANKED_ENV_UNKNOWN']]);
+  assert.deepEqual((await allKeys()).filter(k => !k.startsWith('geek:rate:')), before);
+});
+
+test('production: a run active before the deploy (original geek: keys) still resolves and finishes', async () => {
+  process.env.VERCEL_ENV = 'production'; process.env.VERCEL = '1';
+  setClock('2026-11-10T00:00:00.000Z');
+  const cookie = await session('Pre-deploy');
+  const start = await ranked(cookie, 'start', { category: 'kaspa', mode: 'speed' });
+  assert.equal(start.statusCode, 201);
+  const activeKeys = await fixture.command('KEYS', 'geek:ranked:active:*');
+  assert.equal(activeKeys.length, 1, 'active key uses the original production name');
+  assert.ok(await fixture.command('GET', `geek:run:${start.body.run.id}`));
+  assert.deepEqual(await fixture.command('KEYS', 'geek:development:*'), []);
+  // Simulate records written by the pre-change code: copy them byte-for-byte to the
+  // literal legacy names, delete, restore, then resume through the new code.
+  const runRaw = await fixture.command('GET', `geek:run:${start.body.run.id}`), activeRaw = await fixture.command('GET', activeKeys[0]);
+  await fixture.command('DEL', `geek:run:${start.body.run.id}`, activeKeys[0]);
+  await fixture.command('SET', `geek:run:${start.body.run.id}`, runRaw, 'EX', 3600);
+  await fixture.command('SET', activeKeys[0], activeRaw, 'EX', 3600);
+  const resumed = await call(rankedHandler, 'GET', undefined, cookie, { resume: '1' });
+  assert.equal(resumed.statusCode, 200, JSON.stringify(resumed.body));
+  assert.equal(JSON.stringify(resumed.body).includes(start.body.run.id), true, 'active run resolves');
+  const ans = await ranked(cookie, 'answer', { runId: start.body.run.id, questionToken: start.body.question.token, selectedIndex: right(start.body) });
+  assert.equal(ans.statusCode, 200);
+});
+
+const playRound = async (cookie, mode) => {
+  let res = await ranked(cookie, 'start', { category: 'kaspa', mode }); assert.equal(res.statusCode, 201, JSON.stringify(res.body));
+  const start = res.body; let payload = start;
+  for (let i = 0; i < start.run.questionCount; i++) {
+    res = await ranked(cookie, 'answer', { runId: start.run.id, questionToken: payload.question.token, selectedIndex: right(payload) });
+    assert.equal(res.statusCode, 200);
+    if (res.body.roundResult) return { start, last: res.body };
+    res = await ranked(cookie, 'next', { runId: start.run.id }); assert.equal(res.statusCode, 200); payload = res.body;
+  }
+  throw new Error('round did not lock');
+};
+
+test('mismatched-bank run: practice XP only, no in-game reward, no season credit; persisted unranked', async () => {
+  process.env.VERCEL_ENV = 'production';
+  setClock('2026-11-10T00:00:00.000Z');
+  const control = await playRound(await session('Matching'), 'gauntlet');
+  assert.ok(control.last.roundResult.reward > 0, 'control run earns the normal reward');
+  const pinned = JSON.parse(await fixture.command('GET', runKeyFor(control.start.run.id))).bankVersion;
+  assert.equal(await fixture.command('GET', seasonBankKey('season-1')), pinned);
+  // B started before the pin landed on a different bank, then plays after it.
+  await fixture.command('DEL', seasonBankKey('season-1'));
+  const rotated = fakeBankDirWithChange();
+  let b;
+  const warns = await captureWarn(() => withBankDir(rotated, async () => {
+    const cookie = await session('Mismatched');
+    blockPin = true;
+    const res = await ranked(cookie, 'start', { category: 'kaspa', mode: 'gauntlet' }); assert.equal(res.statusCode, 201);
+    blockPin = false;
+    await fixture.command('SET', seasonBankKey('season-1'), pinned);
+    let payload = res.body, last;
+    for (let i = 0; i < res.body.run.questionCount; i++) {
+      last = await ranked(cookie, 'answer', { runId: res.body.run.id, questionToken: payload.question.token, selectedIndex: right(payload) });
+      if (last.body.roundResult) break;
+      payload = (await ranked(cookie, 'next', { runId: res.body.run.id })).body;
+    }
+    const fin = await ranked(cookie, 'finish', { runId: res.body.run.id });
+    b = { start: res.body, last: last.body, fin: fin.body };
+  }));
+  assert.equal(b.last.roundResult.reward, 0, 'no in-game reward');
+  assert.ok(b.last.roundResult.xpEarned > 0, 'practice XP still earned');
+  assert.equal(b.last.roundResult.xpEarned, control.last.roundResult.xpEarned, 'same XP formula as any run');
+  assert.equal(b.fin.leaderboard.unranked, true);
+  const stored = JSON.parse(await fixture.command('GET', runKeyFor(b.start.run.id)));
+  assert.equal(stored.unranked, true); assert.equal(stored.rewards, 0);
+  assert.ok(warns.length >= 1);
+  for (const w of warns) { assert.equal(w[2], 'RANKED_BANK_SEASON_MISMATCH'); assert.ok(w[3].length <= 8 && w[4].length <= 8); }
+  assert.equal(JSON.stringify(warns).includes(pinned), false);
+  assert.deepEqual((await board('season-1', 'gauntlet')).body.entries.map(e => e.name).includes('Mismatched'), false);
 });
