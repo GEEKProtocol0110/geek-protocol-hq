@@ -6,7 +6,7 @@ placeholders in PR #200's `docs/MIGRATION-private-ranked-bank.md`
 tier per run"). No code changes. Rewards remain XP and off-chain Alpha credits
 only; token payouts stay disabled, and nothing here promises any payout.
 
-Pinned sources: `main` = `33f74c0aee05e416f91b8331cf4236d9ddd758a4`, PR #200 head = `85b8a440cd4240618a4458405d148366bec69df4` (draft).
+Pinned sources: `main` = `33f74c0aee05e416f91b8331cf4236d9ddd758a4`, PR #200 head = `5f1e909a4dedb829dd20fc09df4fd7c3356f7e98` (draft).
 
 ## 1. How ranked draws work today
 
@@ -104,20 +104,20 @@ future ranked questions or answers appear in this document.
 
 | Figure | Source |
 |---|---|
-| Mode config 10/5/10 questions, max rounds 10/1/1, Speed 30 s | `api/ranked.js` L29–31 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4`; L31–33 @ `85b8a440cd4240618a4458405d148366bec69df4` |
+| Mode config 10/5/10 questions, max rounds 10/1/1, Speed 30 s | `api/ranked.js` L29–31 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4`; L31–33 @ `5f1e909a4dedb829dd20fc09df4fd7c3356f7e98` |
 | 15 s per question | `api/ranked.js` L22 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4` |
-| Tier by round (≤3 easy, ≤7 medium, else hard) | `server/questions.js` L64 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4`; L142 @ `85b8a440cd4240618a4458405d148366bec69df4` |
-| ≤10 selected per round | `server/questions.js` L91 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4`; L169 @ `85b8a440cd4240618a4458405d148366bec69df4` |
-| Within-run exclusion by ID/concept/prompt | `server/questions.js` L65–75 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4`; `api/ranked.js` L105–106 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4`, L143–144 @ `85b8a440cd4240618a4458405d148366bec69df4` |
-| Daily once per player per UTC day | `api/ranked.js` L284 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4`; L327 @ `85b8a440cd4240618a4458405d148366bec69df4` |
-| 30 ranked starts/hour per player | `api/ranked.js` L23 @ `85b8a440cd4240618a4458405d148366bec69df4` |
+| Tier by round (≤3 easy, ≤7 medium, else hard) | `server/questions.js` L64 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4`; L142 @ `5f1e909a4dedb829dd20fc09df4fd7c3356f7e98` |
+| ≤10 selected per round | `server/questions.js` L91 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4`; L169 @ `5f1e909a4dedb829dd20fc09df4fd7c3356f7e98` |
+| Within-run exclusion by ID/concept/prompt | `server/questions.js` L65–75 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4`; `api/ranked.js` L105–106 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4`, L145–146 @ `5f1e909a4dedb829dd20fc09df4fd7c3356f7e98` |
+| Daily once per player per UTC day | `api/ranked.js` L284 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4`; L330 @ `5f1e909a4dedb829dd20fc09df4fd7c3356f7e98` |
+| 30 ranked starts/hour per player | `api/ranked.js` L23 @ `5f1e909a4dedb829dd20fc09df4fd7c3356f7e98` |
 | Gauntlet continues to round 10 only with credits for entry | `api/ranked.js` L206, L310–312 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4` |
-| Season 0 / Season 1 definitions, no end date | `server/questions.js` L102–111 @ `85b8a440cd4240618a4458405d148366bec69df4` |
+| Season 0 / Season 1 definitions, no end date | `server/questions.js` L102–111 @ `5f1e909a4dedb829dd20fc09df4fd7c3356f7e98` |
 | 8 categories | `server/question-categories.js` L3–10 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4` |
-| Sample fixture 15 easy/15 medium/15 hard | `server/question-fixtures/ranked-sample/kaspa.json` @ `85b8a440cd4240618a4458405d148366bec69df4` |
-| Placeholders "rotate at least once per season", "≥ 3×" | `docs/MIGRATION-private-ranked-bank.md` L104–111 @ `85b8a440cd4240618a4458405d148366bec69df4` |
-| Answers revealed for whole round at round end | `docs/MIGRATION-private-ranked-bank.md` L89–94 @ `85b8a440cd4240618a4458405d148366bec69df4` |
-| Settlement disabled on ranked entries/rewards | `api/ranked.js` L228, L331 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4`; L266, L374 @ `85b8a440cd4240618a4458405d148366bec69df4` |
+| Sample fixture 15 easy/15 medium/15 hard | `server/question-fixtures/ranked-sample/kaspa.json` @ `5f1e909a4dedb829dd20fc09df4fd7c3356f7e98` |
+| Placeholders "rotate at least once per season", "≥ 3×" | `docs/MIGRATION-private-ranked-bank.md` L104–111 @ `5f1e909a4dedb829dd20fc09df4fd7c3356f7e98` |
+| Answers revealed for whole round at round end | `docs/MIGRATION-private-ranked-bank.md` L89–94 @ `5f1e909a4dedb829dd20fc09df4fd7c3356f7e98` |
+| Settlement disabled on ranked entries/rewards | `api/ranked.js` L228, L331 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4`; L269, L377 @ `5f1e909a4dedb829dd20fc09df4fd7c3356f7e98` |
 | Only load data: 24 synthetic players | `docs/PERFORMANCE-BASELINE.md` L14 @ `33f74c0aee05e416f91b8331cf4236d9ddd758a4` |
 
 ## 9. Flags (uncertain facts and assumptions)
@@ -129,7 +129,7 @@ future ranked questions or answers appear in this document.
 5. **Daily category split.** The Daily key is per player per day, not per category; the per-category Dd split is assumed.
 6. **Season length is not in code.** "Monthly" is a proposal that needs founder sign-off, as #200 itself notes.
 7. **Concept collapsing.** Exclusion is by concept as well as ID. Rows sharing a `conceptId` count as one for capacity.
-8. **#200 is a draft** (head `85b8a44`). Line numbers may move before merge.
+8. **#200 is a draft** (head `5f1e909`). Line numbers may move before merge.
 9. **Royale/Duel/Lobby** are out of scope. Per #200 they keep the exposed public pool; verify this before merge.
 10. **Leakage is not size-bounded.** The leakage model assumes sharing is limited; a coordinated harvester defeats any pool size within the rate limits.
 11. **Private-bank authoring throughput** (about 385 rows per category per month at target) is unverified against editorial capacity.
