@@ -156,6 +156,15 @@ are never copied into the private bank; rewrite materially with a new ID.
 - Rotation cadence and pool-size multiple (policy above) need founder sign-off.
 - Non-ranked modes continue to use exposed rows; rewards tied to those modes
   must stay unpaid (payouts remain disabled).
-- CI uses the fixture bank; the private repo needs its own schema/duplicate CI.
-- Run `scripts/public-answer-check.mjs` against a private checkout before each
-  release so no private ID/prompt leaks into public files.
+- CI uses the fixture bank; the private repo needs its own schema/duplicate CI
+  (`node scripts/private-bank.mjs check <private-repo>`; `npm run private-bank:check`
+  runs the same checks on the fake template in this repo).
+- `npm run private-bank:leak-check` (part of `npm run verify`) scans this public
+  repo's JSON files and served `public/` assets: active private ranked IDs
+  (`PRK-*`) and per-question answer-derived hashes fail; only retired rows (in
+  `*-retired.json` with `retiredAt`) and whole-bank version hashes may be public.
+  Before each release also run it with the private checkout,
+  `node scripts/private-bank-leak-check.mjs --private <private-repo>/bank`, to
+  search for every active private ID, prompt and answer hash verbatim.
+  (`scripts/public-answer-check.mjs`, run by `security:check`, is a different
+  check: it keeps the server-only public banks out of the served output.)
