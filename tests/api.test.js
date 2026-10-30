@@ -1781,3 +1781,47 @@ test('current leaderboard follows the ranked source while explicit Season 0 hist
     for (const key of envKeys) saved[key] === undefined ? delete process.env[key] : process.env[key] = saved[key];
   }
 });
+
+test('finishing a deferred ranked run mid-round hides correctness, streak, round score and review', async () => {
+  for (const midState of ['question', 'awaiting-next']) {
+    const cookie = await startSession(`Mid ${midState}`);
+    const startRes = response();
+    await rankedHandler(request('POST', { action: 'start', category: 'kaspa' }, cookie), startRes);
+    let payload = startRes.body;
+    const privateQuestion = loadQuestionBank('kaspa').questions.find((item) => item.prompt === payload.question.prompt);
+    const selectedIndex = payload.question.options.indexOf(privateQuestion.options[privateQuestion.correctIndex]);
+    const answerRes = response();
+    await rankedHandler(request('POST', { action: 'answer', runId: payload.run.id, questionToken: payload.question.token, selectedIndex }, cookie), answerRes);
+    payload = answerRes.body;
+    if (midState === 'question') {
+      const nextRes = response();
+      await rankedHandler(request('POST', { action: 'next', runId: payload.run.id }, cookie), nextRes);
+      payload = nextRes.body;
+    }
+    assert.equal(payload.run.status, midState);
+    const finishRes = response();
+    await rankedHandler(request('POST', { action: 'finish', runId: payload.run.id }, cookie), finishRes);
+    assert.equal(finishRes.statusCode, 200);
+    assert.equal(finishRes.body.run.status, 'finished');
+    for (const key of ['correct', 'streak', 'roundScore', 'maxStreak']) assert.equal(key in finishRes.body.run, false, `${midState}: ${key} leaked`);
+    assert.deepEqual(finishRes.body.run.answeredReview, []);
+    assert.equal(finishRes.body.roundResult, undefined);
+    const again = response();
+    await rankedHandler(request('POST', { action: 'finish', runId: payload.run.id }, cookie), again);
+    assert.equal('correct' in again.body.run, false);
+  }
+});
+
+test('leaderboard season=current falls back to the legacy board when the ranked source is misconfigured', async () => {
+  const saved = { VERCEL_ENV: process.env.VERCEL_ENV, GEEK_RANKED_QUESTION_SOURCE: process.env.GEEK_RANKED_QUESTION_SOURCE };
+  process.env.VERCEL_ENV = 'preview';
+  process.env.GEEK_RANKED_QUESTION_SOURCE = 'fixture';
+  try {
+    const r = response();
+    await leaderboardHandler(request('GET', undefined, '', { category: 'kaspa', season: 'current' }), r);
+    assert.equal(r.statusCode, 200);
+    assert.equal(r.body.season, 'legacy');
+  } finally {
+    for (const [k, v] of Object.entries(saved)) if (v === undefined) delete process.env[k]; else process.env[k] = v;
+  }
+});

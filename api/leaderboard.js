@@ -15,8 +15,11 @@ export default async function handler(req, res) {
     const mode = ['gauntlet', 'daily', 'speed'].includes(req.query?.mode) ? req.query.mode : 'gauntlet';
     const limit = req.query?.limit === '50' ? 50 : 10;
     // Default board is Season 0 — Public-bank Alpha (legacy keys, history preserved).
+    // A misconfigured ranked source (e.g. fixture on a preview) must not take
+    // the read-only leaderboard down; fall back to the legacy Season 0 board.
+    const currentSeason = () => { try { return rankedSourceMode() === 'private' ? 'season-1' : 'legacy'; } catch { return 'legacy'; } };
     const season = req.query?.season === 'current'
-      ? rankedSourceMode() === 'private' ? 'season-1' : 'legacy'
+      ? currentSeason()
       : Object.hasOwn(SEASON_LABELS, req.query?.season) ? req.query.season : 'legacy';
     const mine = req.query?.mine === '1' ? await leaderboardStanding(category, mode, playerIdFor(await requireSession(req)), season) : undefined;
     return sendJson(res, 200, { ok: true, category, mode, verified: true, limit, season, seasonLabel: SEASON_LABELS[season], mine, entries: await listLeaderboard(category, mode, limit, season) });

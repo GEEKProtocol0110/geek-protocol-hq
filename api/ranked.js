@@ -37,7 +37,9 @@ const modeConfig = (mode) => Object.hasOwn(MODE_CONFIG, mode) ? MODE_CONFIG[mode
 // Ranked feedback policy: correctness, answers, explanations and anything that
 // would reveal them (score, streak, review rows) stay server-side until the
 // round locks. Practice/Study keep immediate teaching feedback elsewhere.
-const roundLocked = (run) => ['between-rounds', 'finished'].includes(run.status);
+// A run finished mid-round (from 'question' or 'awaiting-next') never locks that
+// round, so its correctness, streak, round score and review stay hidden.
+const roundLocked = (run) => run.status === 'between-rounds' || (run.status === 'finished' && !run.finishedMidRound);
 // Runs without an explicit 'immediate' setting (including runs started before
 // this deploy) default to deferred feedback.
 const deferredFeedback = (run) => run.feedback !== 'immediate';
@@ -148,6 +150,7 @@ const startRound = async (run, profile) => {
 
 const finishRun = async (run, session, profile) => {
   if (run.status === 'finished') return { leaderboard: await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode, season: seasonFor(run).leaderboard }) };
+  if (['question', 'awaiting-next'].includes(run.status)) run.finishedMidRound = true;
   profile.totalRuns += 1;
   if (run.mode === 'gauntlet' && run.completedRound >= 10) profile.gauntletsCompleted += 1;
   run.status = 'finished';
