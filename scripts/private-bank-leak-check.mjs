@@ -89,16 +89,36 @@ export const isTextScanned = (path) => !path.startsWith(TEMPLATE_DIR) && !/\.(?:
 export const OPAQUE = /\.(?:gz|tgz|zip|br|pdf|7z|rar|tar|xz|bz2)$/i;
 // Reviewed opaque files: { "files": [{ "path", "sha256", "reason" }] }. The hash pins the exact bytes.
 export const OPAQUE_ALLOWLIST = 'scripts/private-bank-leak-allowlist.json';
-// Documented placeholder IDs (exact path + id + reason); never honoured under public/.
-export function exampleIdAllowed(root, path, id) {
-  if (/^public\//.test(path)) return false;
-  let list; try { list = JSON.parse(readFileSync(join(root, OPAQUE_ALLOWLIST), 'utf8')).exampleIds || []; } catch { return false; }
-  return list.some((e) => e.path === path && e.idSha256 === createHash('sha256').update(id).digest('hex') && typeof e.reason === 'string' && e.reason.length > 0);
+// The single documented example ID. Exact string only: no case, separator or digit variants.
+export const FAKE_EXAMPLE_ID = 'PRK-FAKE-000000-0000';
+export const MIN_REASON = 10;
+// Served/bundled locations: Vercel's outputDirectory (from vercel.json), public/, and api/ (functions).
+export const servedDirs = (root) => {
+  const dirs = new Set(['public', 'api']);
+  try { const out = JSON.parse(readFileSync(join(root, 'vercel.json'), 'utf8')).outputDirectory; if (typeof out === 'string' && out.trim()) dirs.add(out.trim().replace(/^\.?\/+|\/+$/g, '')); } catch {}
+  return [...dirs].filter(Boolean);
+};
+export const isServedPath = (root, path) => servedDirs(root).some((d) => path === d || path.startsWith(`${d}/`));
+// Validates every entry; an invalid entry is a violation and is never honoured.
+export function readAllowlist(root) {
+  const entries = new Map(); const violations = [];
+  let json; try { json = JSON.parse(readFileSync(join(root, OPAQUE_ALLOWLIST), 'utf8')); } catch (e) { if (e.code === 'ENOENT') return { entries, violations }; return { entries, violations: [`${OPAQUE_ALLOWLIST}: invalid JSON`] }; }
+  const extra = Object.keys(json || {}).filter((k) => k !== 'files');
+  if (extra.length) violations.push(`${OPAQUE_ALLOWLIST}: unsupported keys ${extra.join(', ')}`);
+  for (const e of Array.isArray(json?.files) ? json.files : []) {
+    const path = typeof e?.path === 'string' ? e.path : '';
+    const bad = !path || path.startsWith('/') || path.split('/').includes('..') ? 'invalid path'
+      : isServedPath(root, path) ? 'served/static path cannot be allowlisted'
+      : !/^[0-9a-f]{64}$/.test(e?.sha256 || '') ? 'sha256 must be 64 hex chars'
+      : typeof e?.reason !== 'string' || e.reason.trim().length < MIN_REASON ? `reason must be at least ${MIN_REASON} characters`
+      : null;
+    if (bad) violations.push(`${OPAQUE_ALLOWLIST}: ${path || '(no path)'}: ${bad}`); else entries.set(path, e);
+  }
+  return { entries, violations };
 }
-const reviewedOpaque = (root, path) => {
-  let list; try { list = JSON.parse(readFileSync(join(root, OPAQUE_ALLOWLIST), 'utf8')).files || []; } catch { return false; }
-  const entry = list.find((item) => item.path === path);
-  return Boolean(entry && entry.reason && createHash('sha256').update(readFileSync(join(root, path))).digest('hex') === entry.sha256);
+const reviewedOpaque = (root, path, entries) => {
+  const entry = entries.get(path);
+  return Boolean(entry && !isServedPath(root, path) && createHash('sha256').update(readFileSync(join(root, path))).digest('hex') === entry.sha256);
 };
 export const MAX_SCAN_BYTES = 32 * 1024 * 1024;
 
@@ -125,7 +145,7 @@ export const validRetiredAt = (value, now = new Date()) => {
   return Number.isFinite(t) && new Date(t).toISOString().slice(0, 10) === value.slice(0, 10) && t <= now.getTime();
 };
 
-export const scanText = (path, text, { publicIds = new Set(), privateIndex = null, now = new Date(), root = null } = {}) => {
+export const scanText = (path, text, { publicIds = new Set(), privateIndex = null, now = new Date() } = {}) => {
   const violations = [];
   // Retired rows are only exempt in the server-side bank directory, never in served assets.
   const retiredFile = new RegExp(`^server/questions/(?:${CATEGORY_NAMES.join('|')})-retired\\.json$`).test(path);
@@ -159,7 +179,7 @@ export const scanText = (path, text, { publicIds = new Set(), privateIndex = nul
     });
   }
   // Text search always runs (notes fields, strings, non-JSON files, invalid JSON).
-  for (const m of text.matchAll(PRIVATE_ID_LOOSE)) if ((servedPath || !allowedRetiredIds.has(canonicalId(m[0]))) && !(root && exampleIdAllowed(root, path, m[0]))) violations.push(`${path}: private ranked id ${m[0]} outside the template`);
+  for (const m of text.matchAll(PRIVATE_ID_LOOSE)) if ((servedPath || !allowedRetiredIds.has(canonicalId(m[0]))) && !(m[0] === FAKE_EXAMPLE_ID && !servedPath)) violations.push(`${path}: private ranked id ${m[0]} outside the template`);
   violations.push(...secretViolations(path, text));
   if (privateIndex) {
     const lower = text.toLowerCase();
@@ -186,18 +206,19 @@ export const scanRepo = async (root, { privateDir } = {}) => {
   const { loadQuestionBank } = await import('../server/questions.js');
   const publicIds = new Set(Object.keys(categoryFiles).flatMap((c) => [...loadQuestionBank(c).byId.keys()]));
   const privateIndex = privateDir ? loadPrivateIndex(resolve(privateDir)) : null;
-  const violations = [];
+  const allow = readAllowlist(root);
+  const violations = [...allow.violations];
   let files = 0;
   for (const path of listFiles(root)) {
     if (!isTextScanned(path)) continue;
     const abs = join(root, path);
     let st; try { st = statSync(abs); } catch { continue; }
     if (!st.isFile()) continue;
-    if (OPAQUE.test(path) && !reviewedOpaque(root, path)) { violations.push(`${path}: opaque archive/PDF cannot be scanned; keep it out of the repo`); continue; }
+    if (OPAQUE.test(path) && !reviewedOpaque(root, path, allow.entries)) { violations.push(`${path}: opaque archive/PDF cannot be scanned; keep it out of the repo`); continue; }
     if (st.size > MAX_SCAN_BYTES) { violations.push(`${path}: larger than 32 MB, cannot be scanned`); continue; }
     files += 1;
     const text = readFileSync(abs, 'utf8');
-    violations.push(...scanText(path, text, { publicIds, privateIndex, root }));
+    violations.push(...scanText(path, text, { publicIds, privateIndex }));
   }
   return { files, violations };
 };

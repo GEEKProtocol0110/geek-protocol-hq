@@ -1,11 +1,13 @@
 import assert from 'node:assert/strict';
-import { spawnSync } from 'node:child_process';
+import { spawnSync, execFileSync } from 'node:child_process';
+import { gzipSync } from 'node:zlib';
 import { mkdtempSync, readFileSync, rmSync, writeFileSync, mkdirSync, truncateSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { existsSync } from 'node:fs';
 import test from 'node:test';
-import { answerHashes, highEntropy, isTextScanned, loadPrivateIndex, MAX_SCAN_BYTES, scanRepo, scanText, validRetiredAt } from '../scripts/private-bank-leak-check.mjs';
+import { readAllowlist, FAKE_EXAMPLE_ID, OPAQUE_ALLOWLIST, answerHashes, highEntropy, isTextScanned, loadPrivateIndex, MAX_SCAN_BYTES, scanRepo, scanText, validRetiredAt } from '../scripts/private-bank-leak-check.mjs';
 
 const TEMPLATE_ROW = JSON.parse(readFileSync(new URL('../private-bank-template/bank/kaspa.json', import.meta.url), 'utf8')).questions[0];
 const retired = { ...TEMPLATE_ROW, retiredReason: 'rotation', retiredAt: '2026-10-15' };
@@ -193,7 +195,7 @@ test('opaque archives/PDFs and oversized files are violations unless hash-pinned
     for (const name of ['a.gz', 'b.zip', 'c.br', 'd.pdf']) assert.ok(violations.some((v) => v.startsWith(`docs/${name}: opaque`)), name);
     const sha = createHash('sha256').update('x').digest('hex');
     mkdirSync(join(root, 'scripts'));
-    writeFileSync(join(root, 'scripts/private-bank-leak-allowlist.json'), JSON.stringify({ files: [{ path: 'docs/d.pdf', sha256: sha, reason: 'reviewed' }, { path: 'docs/a.gz', sha256: '0'.repeat(64), reason: 'stale hash' }] }));
+    writeFileSync(join(root, 'scripts/private-bank-leak-allowlist.json'), JSON.stringify({ files: [{ path: 'docs/d.pdf', sha256: sha, reason: 'reviewed fixture pdf' }, { path: 'docs/a.gz', sha256: '0'.repeat(64), reason: 'stale hash' }] }));
     ({ violations } = await scanRepo(root));
     assert.ok(!violations.some((v) => v.startsWith('docs/d.pdf')), 'pinned file passes');
     assert.ok(violations.some((v) => v.startsWith('docs/a.gz')), 'wrong hash still fails');
@@ -236,16 +238,48 @@ test('vercel_blob_rw_ tokens and high-entropy GEEK_* values fail, even in tests'
   assert.deepEqual(scanText('tests/x.test.js', `({ ${V}: 'test-${secret}' })`), [], 'fake-prefixed values pass in tests');
 });
 
-test('documented placeholder ids are allowed only at the exact allowlisted path, never under public/', () => {
-  const root = mkdtempSync(join(tmpdir(), 'leak-ex-'));
+const REPO = new URL('..', import.meta.url).pathname;
+
+test('the allowlist contents are pinned: any change needs a test edit', () => {
+  assert.deepEqual(JSON.parse(readFileSync(join(REPO, OPAQUE_ALLOWLIST), 'utf8')).files.map(({ path, sha256 }) => ({ path, sha256 })), [
+    { path: 'docs/continuity/founding/phone/trait_rarity_sheet_organized.pdf', sha256: '02cbd63e222f891998b946d07d79c68297fb77d81a16c717b538c89a71f111dc' },
+  ]);
+  const { violations, entries } = readAllowlist(REPO);
+  assert.deepEqual(violations, []);
+  for (const path of entries.keys()) assert.ok(existsSync(join(REPO, path)), `allowlisted path exists: ${path}`);
+});
+
+test('the allowlist cannot approve served paths, short reasons, bad hashes or extra keys', async () => {
+  const root = mkdtempSync(join(tmpdir(), 'leak-allow-'));
   try {
-    const id = ['PRK', 'KAS', '202611', '9999'].join('-');
-    mkdirSync(join(root, 'scripts'));
-    writeFileSync(join(root, 'scripts/private-bank-leak-allowlist.json'), JSON.stringify({ files: [], exampleIds: [{ path: 'docs/R.md', idSha256: createHash('sha256').update(id).digest('hex'), reason: 'schema example' }, { path: 'public/x.md', idSha256: createHash('sha256').update(id).digest('hex'), reason: 'nope' }] }));
-    assert.deepEqual(scanText('docs/R.md', `"id": "${id}"`, { root }), []);
-    assert.match(scanText('docs/other.md', id, { root }).join(), /outside the template/);
-    assert.match(scanText('docs/R.md', id.replace('9999', '0001'), { root }).join(), /outside the template/);
-    assert.match(scanText('public/x.md', id, { root }).join(), /outside the template/);
-    assert.match(scanText('docs/R.md', id).join(), /outside the template/, 'no root, no allowlist');
+    execFileSync('git', ['init', '-q'], { cwd: root });
+    mkdirSync(join(root, 'scripts')); mkdirSync(join(root, 'public')); mkdirSync(join(root, 'site'));
+    writeFileSync(join(root, 'vercel.json'), JSON.stringify({ outputDirectory: 'site' }));
+    const gz = gzipSync(JSON.stringify({ id: ['PRK', 'KAS', '202611', '0001'].join('-'), correctIndex: 2 }));
+    const sha = createHash('sha256').update(gz).digest('hex');
+    for (const p of ['public/bank.json.gz', 'site/bank.json.gz', 'docs.gz']) writeFileSync(join(root, p), gz);
+    const write = (files, extra = {}) => writeFileSync(join(root, OPAQUE_ALLOWLIST), JSON.stringify({ files, ...extra }));
+    write([{ path: 'public/bank.json.gz', sha256: sha, reason: 'reviewed and safe to ship' }, { path: 'site/bank.json.gz', sha256: sha, reason: 'reviewed and safe to ship' }, { path: 'docs.gz', sha256: sha, reason: '   short   ' }, { path: '../x.gz', sha256: sha, reason: 'reviewed and safe' }]);
+    execFileSync('git', ['add', '-A'], { cwd: root });
+    let v = (await scanRepo(root)).violations.join('\n');
+    assert.match(v, /public\/bank\.json\.gz: served\/static path cannot be allowlisted/);
+    assert.match(v, /site\/bank\.json\.gz: served\/static path cannot be allowlisted/, 'vercel.json outputDirectory is served');
+    assert.match(v, /docs\.gz: reason must be at least 10 characters/);
+    assert.match(v, /\.\.\/x\.gz: invalid path/);
+    for (const p of ['public/bank.json.gz', 'site/bank.json.gz', 'docs.gz']) assert.match(v, new RegExp(`${p.replace(/\./g, '\\.')}: opaque`));
+    write([{ path: 'docs.gz', sha256: 'abc', reason: 'reviewed archive of docs' }], { exampleIds: [] });
+    v = (await scanRepo(root)).violations.join('\n');
+    assert.match(v, /sha256 must be 64 hex/); assert.match(v, /unsupported keys exampleIds/);
+    write([{ path: 'docs.gz', sha256: sha, reason: 'reviewed archive of docs' }]);
+    v = (await scanRepo(root)).violations.join('\n');
+    assert.doesNotMatch(v, /docs\.gz/);
   } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('only the exact documented FAKE example id is skipped, never under public/', () => {
+  assert.equal(FAKE_EXAMPLE_ID, 'PRK-FAKE-000000-0000');
+  assert.deepEqual(scanText('docs/PRIVATE-BANK-REVIEW.md', `"id": "${FAKE_EXAMPLE_ID}"`), []);
+  for (const near of [['prk', 'fake', '000000', '0000'], ['PRK', 'FAKE', '000000', '0000', '_'], ['PRK', 'FAKE', '000000', '0001'], ['PRK', 'FAKE', '202611', '0001'], ['PRK', 'KAS', '000000', '0000']].map((p) => p.slice(0, 4).join(p[4] || '-'))) assert.match(scanText('docs/x.md', near).join(), /outside the template/, near);
+  assert.match(scanText('public/x.md', FAKE_EXAMPLE_ID).join(), /outside the template/);
+  assert.match(scanText('docs/x.json', JSON.stringify({ id: FAKE_EXAMPLE_ID, ranked: true })).join(), /active private ranked id/);
 });

@@ -5,12 +5,5 @@
       "sha256": "02cbd63e222f891998b946d07d79c68297fb77d81a16c717b538c89a71f111dc",
       "reason": "Founding trait rarity sheet (art metadata, no questions); reviewed 2026-10-30."
     }
-  ],
-  "exampleIds": [
-    {
-      "path": "docs/PRIVATE-BANK-REVIEW.md",
-      "idSha256": "80ba5e5294585f632f9621d15a067e941f94c7a1f667caece5108a27e169b548",
-      "reason": "Schema example placeholder (NNNN=9999) in the review doc; no real row."
-    }
   ]
 }

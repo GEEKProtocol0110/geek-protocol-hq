@@ -120,7 +120,7 @@ FAKE row (illustrative only; the shape matches the template):
 
 ```json
 {
-  "id": "PRK-KAS-202611-9999",
+  "id": "PRK-FAKE-000000-0000",
   "category": "kaspa",
   "difficulty": "easy",
   "prompt": "EXAMPLE — Which option is labeled 'Example answer'?",

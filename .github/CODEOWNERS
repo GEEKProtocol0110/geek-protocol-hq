@@ -1,0 +1,3 @@
+# Changes to the private-bank leak check or its allowlist need owner review.
+/scripts/private-bank-leak-allowlist.json @GEEKProtocol0110
+/scripts/private-bank-leak-check.mjs @GEEKProtocol0110
