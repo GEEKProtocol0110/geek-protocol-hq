@@ -19,7 +19,8 @@ test('reviewed Kaspa banks contain canonical distinct items with individual sour
     assert.ok(Number.isInteger(q.correctIndex) && q.correctIndex >= 0 && q.correctIndex < 4, q.id);
     assert.ok(q.prompt.trim() && q.funFact.trim(), q.id);
     assert.equal(new URL(q.source).protocol, 'https:', q.id);
-    assert.equal(q.reviewStatus, 'source-checked', q.id);
+    // Practice-only drafts are unranked and must not claim a source check.
+    assert.equal(q.reviewStatus, q.practiceOnly ? 'draft-needs-human-review' : 'source-checked', q.id);
     assert.match(q.reviewedAt, /^\d{4}-\d{2}-\d{2}$/, q.id);
     assert.ok(q.reviewedAt <= report.maintainedAt, `${q.id}: future review date`);
     assert.ok(q.conceptId, q.id);

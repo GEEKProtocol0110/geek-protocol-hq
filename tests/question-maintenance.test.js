@@ -41,7 +41,11 @@ test('public counts match only active questions and contain no answer keys', () 
   vm.runInNewContext(readFileSync('public/play/assets/question-catalog.js', 'utf8'), { window });
   const html = readFileSync('public/play/index.html', 'utf8');
   assert.ok(html.indexOf('question-catalog.js') < html.indexOf('assets/game.js'));
-  for (const category of Object.keys(categoryFiles)) assert.equal(window.GEEK_QUESTION_COUNTS[category], loadQuestionBank(category).questions.length);
+  for (const category of Object.keys(categoryFiles)) {
+    const qs = loadQuestionBank(category).questions;
+    assert.equal(window.GEEK_QUESTION_COUNTS[category], qs.filter(q => !q.practiceOnly).length);
+    assert.equal(window.GEEK_PRACTICE_ONLY_COUNTS[category], qs.filter(q => q.practiceOnly).length);
+  }
   assert.deepEqual(Object.values(window.GEEK_QUESTION_COUNTS).map(value => typeof value), Array(8).fill('number'));
   assert.ok(!JSON.stringify(window).includes('correctIndex'));
 });
