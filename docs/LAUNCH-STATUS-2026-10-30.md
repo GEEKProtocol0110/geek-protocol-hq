@@ -19,6 +19,21 @@ This record checks each item against main, the open PRs and the deployments. It 
 | #200 Private ranked bank (SEC-010) | Yes, on draft branch | CI [41059613671](https://github.com/GEEKProtocol0110/geek-protocol-hq/actions/runs/41059613671/job/124075778285): 777/777 + signer 9/9; local full `npm run verify` with real Redis passed on `8f1993c` (see [CI plan](CI-ENFORCEMENT-PLAN.md)) | **No, draft** (last checked head `8f1993c`) | Preview only | No. Security Bot reviews 5707066368 → 5712580885 are addressed; the prerequisites below are open |
 | #203 Optional read-only CCE reviewer key (CCE-001) | Yes, on draft branch (`af3364f`) | PR tests | No, draft | Preview only | No. Optional; does not reopen CCE |
 | #204 Season mapping docs (DR-031) | Docs (`cb80344`) | — | No, draft | — | Founder decision recorded; **does not implement rollover** (SEASON-001) |
+| #197 Profile CSP inline-style fix (closes #184) | Yes | PR verify passed; local verify on merge with `0941392` passed 715/715 + signer 9/9 | 2026-10-30 `598f8cc` | Production deploy follows main | Browser console check on `/profile/` not yet observed |
+| #199 Guest session before testnet rewards read (#183) | Yes, outside contributor | Local verify on merge passed 717/717; fork CI not yet approved | No: **changes requested** | — | No. Only partly fixes #183 (bootstraps a session for every guest; the `/study/` source of the 401 is not addressed) |
+| #206 Monthly ranked seasons (SEASON-001; into #200) | Draft (`22d3f77`) | PR checks | No, draft | — | No. Season 1 starts **2026-12-01 00:00 UTC**; Season 0 is preserved |
+| #207 Security hardening: leak check and question-source pin | Draft (`10ab3ff`) | PR checks | No, draft | — | No. Security review pending |
+| #208 Technology question fixes (BANK-009): retires 6, adds 6 practice-only | Draft (`0a2c749`) | PR checks | No, draft | — | No. Content review pending |
+
+## Founder question policy (Gee, 2026-10-30)
+
+- Valid questions that are off-topic for their category move to a fitting **practice** category; they are not deleted.
+- Questions under CC BY-SA get **original replacements** rather than adapted copies.
+- Questions whose authorship is uncertain stay **out of ranked play** until authorship is checked.
+
+## #200 merge gate
+
+#200 stays **unmerged** until (1) the complete ranked flow passes on a restricted Vercel Preview that uses the private bank, and (2) UX review is accepted. Passing CI and local tests alone does not clear this gate. The founder actions come first, in order: protect `main`; create the private bank repo and add its read-only token to Preview only; confirm Preview has separate Redis and that rewards, payouts and signing are disabled there; choose who authors private questions (real ranked answers stay off the shared bot computer).
 
 ## Preserved evidence (do not repeat)
 
