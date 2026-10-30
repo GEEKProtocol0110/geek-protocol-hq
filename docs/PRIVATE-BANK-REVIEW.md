@@ -193,8 +193,10 @@ Start about 10 days before month end:
 - [ ] Token expiry checked. Rotate the PAT before it lapses.
 
 Season numbering and leaderboard keys (`geek:leaderboard:season-1:*`) follow #200.
-How later monthly seasons map onto leaderboard seasons is an **open question,
-pending Gee's decision** (#200 defines only Season 0 and Season 1) [#200-DEP].
+Monthly seasons map onto leaderboard seasons in order (resolved, §10 Q5):
+Season 0 history is preserved; Season 1 is the first private-bank month, then
+Season 2, Season 3, and so on (`geek:leaderboard:season-N:*`). Royale, Duel and
+Lobby stay outside Season 1 ranked until their private-bank handling is ready [#200-DEP].
 
 ## 8. Exposure and leaks
 
@@ -241,6 +243,6 @@ Kept in the private repo. Counts and aggregates may be published.
 2. ~~Should `conceptId` be mandatory?~~ **Resolved:** required on every row (§4, §8).
 3. ~~Per-file hashes public?~~ **Resolved:** only one whole-bank-version hash plus counts; no per-file, per-question or per-answer hashes (§1).
 4. Who is the standing second reviewer when Gee authors? **Resolved:** Question Bot fact-checks and validates every incoming question, including Gee's and CCE submissions; Gee remains final approver.
-5. How do monthly seasons map onto leaderboard season keys beyond Season 0/1? **Open, pending Gee's decision.**
+5. ~~How do monthly seasons map onto leaderboard season keys beyond Season 0/1?~~ **Resolved:** Season 0 history is preserved; monthly seasons are numbered in order (Season 1, 2, 3, …); Royale, Duel and Lobby stay outside Season 1 ranked until their private-bank handling is ready (§7, RANKED-CAPACITY §6).
 6. Should there be a mid-season 15% easy refresh trigger threshold (RANKED-CAPACITY §6)?
 7. Is a length-bias threshold of 40% the right trigger?
