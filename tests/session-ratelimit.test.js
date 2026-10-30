@@ -82,17 +82,17 @@ test('hitting the limit while signed in keeps the signed-in UI and shows the ret
 });
 
 test('the retry time falls back to the body reset field, and a 5xx is unknown rather than signed out', async () => {
-  const store = storage({ 'geek:last-session-state': 'signed-in' });
+  const store = storage({ 'geek:last-session-state': 'signed-in', 'geek:last-session-at': String(Date.now()) });
   const reset = await mountAccess(() => json({ ok: false, reset: Date.now() + 30000 }, 429), store);
   assert.match(reset.node('[data-sign-out-status]').textContent, /^Temporarily rate limited\. .* Try again in (29|30) seconds\.$/);
-  const down = await mountAccess(() => json({ ok: false }, 503), storage({ 'geek:last-session-state': 'signed-in' }));
+  const down = await mountAccess(() => json({ ok: false }, 503), storage({ 'geek:last-session-state': 'signed-in', 'geek:last-session-at': String(Date.now()) }));
   assert.equal(down.button.hidden, false);
   assert.match(down.node('[data-sign-out-status]').textContent, /couldn’t check your sign-in/);
 });
 
 test('after the limit clears the UI recovers without signing in again', async () => {
   let limited = true; const calls = [];
-  const store = storage({ 'geek:last-session-state': 'signed-in' });
+  const store = storage({ 'geek:last-session-state': 'signed-in', 'geek:last-session-at': String(Date.now()) });
   const ui = await mountAccess(() => { calls.push(1); return limited ? limitedReply(5) : json({ ok: true, signedIn: true }); }, store);
   assert.match(ui.node('[data-sign-out-status]').textContent, /Try again in 5 seconds/);
   const retry = [...ui.timers.values()].find(t => t.delay === 5000);
@@ -112,7 +112,7 @@ test('a status checked moments ago on the previous page is reused instead of ref
 });
 
 test('an explicit 401 shows signed out', async () => {
-  const store = storage({ 'geek:last-session-state': 'signed-in' });
+  const store = storage({ 'geek:last-session-state': 'signed-in', 'geek:last-session-at': String(Date.now()) });
   const ui = await mountAccess(() => json({ ok: false }, 401), store);
   assert.equal(ui.button.hidden, true);
   assert.equal(store.getItem('geek:last-session-state'), 'signed-out');
@@ -138,7 +138,7 @@ const mountSignIn = async (statusReply, store) => {
 };
 
 test('sign-in page under 429 keeps a known signed-in user signed in, without the guest-unavailable copy', async () => {
-  const ui = await mountSignIn(() => limitedReply(42), storage({ 'geek:last-session-state': 'signed-in' }));
+  const ui = await mountSignIn(() => limitedReply(42), storage({ 'geek:last-session-state': 'signed-in', 'geek:last-session-at': String(Date.now()) }));
   const status = ui.node('[data-sign-in-status]').textContent;
   assert.doesNotMatch(status, /temporarily unavailable|continue as a guest/i);
   assert.equal(status, 'Temporarily rate limited. Your session has not changed. Try again in 42 seconds.');

@@ -74,7 +74,11 @@
     // An unavailable status check is not a sign-out. This status region is the single owner of the
     // retry message, and no sign-in or create-account form is offered while the state is unconfirmed.
     let last = null;
-    try { last = window.localStorage?.getItem('geek:last-session-state') ?? window.sessionStorage?.getItem('geek:last-session-state') ?? null; } catch {}
+    try {
+      last = window.localStorage?.getItem('geek:last-session-state') ?? window.sessionStorage?.getItem('geek:last-session-state') ?? null;
+      // Same 24h cap as session-access.js: a stale hint is treated as unknown, not signed in.
+      if (last === 'signed-in' && !(Date.now() - Number(window.localStorage?.getItem('geek:last-session-at') ?? window.sessionStorage?.getItem('geek:last-session-at') ?? 0) < 24 * 3600 * 1000)) last = null;
+    } catch {}
     const known = signedIn || last === 'signed-in';
     for (const selector of ['[data-passkey-login-area]', '[data-passkey-new]', '[data-passkey-account]', '[data-wallet-methods]', '[data-device-access]']) {
       for (const node of document.querySelectorAll(selector)) node.hidden = true;
