@@ -190,16 +190,27 @@ export const scanText = (path, text, { publicIds = new Set(), privateIndex = nul
   return [...new Set(violations)];
 };
 
+// Never echo private file contents: parse failures report only the file name.
+export class PrivateIndexError extends Error {}
 export const loadPrivateIndex = (dir) => {
   const index = new Map();
-  for (const name of readdirSync(dir)) {
+  let rows = 0, names;
+  try { names = readdirSync(dir); } catch { throw new PrivateIndexError(`${dir}: not a readable directory`); }
+  for (const name of names.sort()) {
     if (!name.endsWith('.json') || name.endsWith('-retired.json')) continue;
-    for (const q of JSON.parse(readFileSync(join(dir, name), 'utf8')).questions || []) {
+    let parsed;
+    try { parsed = JSON.parse(readFileSync(join(dir, name), 'utf8')); } catch { throw new PrivateIndexError(`${name}: invalid JSON`); }
+    const questions = parsed?.questions;
+    if (questions !== undefined && !Array.isArray(questions)) throw new PrivateIndexError(`${name}: "questions" must be an array`);
+    for (const q of questions || []) {
+      if (!q || typeof q.id !== 'string' || !q.id) throw new PrivateIndexError(`${name}: a row has no string id`);
+      rows += 1;
       index.set(q.id.toLowerCase(), `active private id ${q.id}`);
-      if (q.prompt?.length >= 24) index.set(q.prompt.toLowerCase(), `prompt of active private question ${q.id}`);
+      if (typeof q.prompt === 'string' && q.prompt.length >= 24) index.set(q.prompt.toLowerCase(), `prompt of active private question ${q.id}`);
       for (const h of answerHashes(q)) index.set(h, `answer-derived hash of active private question ${q.id}`);
     }
   }
+  Object.defineProperty(index, 'rows', { value: rows });
   return index;
 };
 
@@ -225,7 +236,7 @@ export const scanRepo = async (root, { privateDir } = {}) => {
     const text = readFileSync(abs, 'utf8');
     violations.push(...scanText(path, text, { publicIds, privateIndex }));
   }
-  return { files, violations };
+  return { files, violations, privateRows: privateIndex ? privateIndex.rows : null };
 };
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
@@ -236,7 +247,15 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   if (i > 0 && !existsSync(process.argv[i + 1])) { console.error(`--private directory not found: ${process.argv[i + 1]}\n${usage}`); process.exit(2); }
   const r = process.argv.indexOf('--root');
   const root = r > 0 ? resolve(process.argv[r + 1]) : resolve(new URL('..', import.meta.url).pathname);
-  const { files, violations } = await scanRepo(root, { privateDir: i > 0 ? process.argv[i + 1] : undefined });
+  let result;
+  try { result = await scanRepo(root, { privateDir: i > 0 ? process.argv[i + 1] : undefined }); }
+  catch (error) {
+    // Only our own sanitized messages are printed; anything else gets its error name, never its message or stack.
+    console.error(error instanceof PrivateIndexError ? `--private: ${error.message}` : `Private bank leak check could not run (${error?.name || 'Error'}).`);
+    process.exit(2);
+  }
+  const { files, violations, privateRows } = result;
+  if (i > 0 && privateRows === 0) { console.error(`--private: indexed 0 private rows in ${process.argv[i + 1]}; point --private at the private repo's bank/ directory.\n${usage}`); process.exit(2); }
   if (violations.length) { console.error(violations.join('\n')); process.exitCode = 1; }
-  else console.log(`Private bank leak check passed (${files} tracked files; ${i > 0 ? 'with private index' : 'pattern mode'}).`);
+  else console.log(`Private bank leak check passed (${files} tracked files; ${i > 0 ? `with private index of ${privateRows} rows` : 'pattern mode'}).`);
 }
