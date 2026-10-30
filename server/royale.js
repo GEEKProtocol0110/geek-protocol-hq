@@ -22,7 +22,7 @@ const cache = (hash, questions) => {
 // Freeze distinct active questions for this event; retired rows never enter selection.
 export const buildRoyaleQuestions = category => {
   const concepts = new Set(), prompts = new Set(), selected = [];
-  for (const q of shuffleOptions(loadQuestionBank(category).questions)) {
+  for (const q of shuffleOptions(loadQuestionBank(category).questions.filter(q => !q.practiceOnly))) {
     const concept = q.conceptId || q.id, prompt = promptIdentity(q.prompt);
     if (concepts.has(concept) || prompts.has(prompt)) continue;
     concepts.add(concept); prompts.add(prompt);
