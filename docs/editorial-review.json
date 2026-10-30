@@ -3138,9 +3138,205 @@
       "reason": "source-correction",
       "note": "Explanation named amt, the keyed answer of KRC20-2026-002. Remove it and name the SDK instead of 'the cited' method; options and key unchanged. Canonical replacement: KRC20-2026-003-R2f503d98bb.",
       "answerKeyHash": "31f0e581ccd6e72576dbf6b4739f9c8f732fc74d8cd1da0e447275f114b79ce3"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0034",
+      "reason": "unsupported-claim",
+      "note": "BANK-009: outdated superlative; the U.S. Department of Defense called the Afghanistan war (2001-2021) America's longest war, not Vietnam. Retired; original answer retained for saved runs. Practice-only replacement draft: HIST-ST-001.",
+      "answerKeyHash": "02445007ab6c2121d6474e2e5ad8c184666a6ed4d41139bba558f526f74021c6"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-bb218245de59",
+      "reason": "invalid-options",
+      "note": "BANK-009: ambiguous key; NHHC calls the Okinawa force the largest amphibious assault force of WWII while Normandy is widely cited as the largest amphibious invasion, so two options are defensible. Retired; original answer retained for saved runs. Practice-only replacement draft: HIST-ST-002.",
+      "answerKeyHash": "87991a48d242c8bea045ff3609f0b11916e19d5936c5fd63c4992f1ebd94083d"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-91b1dddf06b0",
+      "reason": "unsupported-claim",
+      "note": "BANK-009: wrong key; German A-4/V-2 test rockets reached space years before Bumper-WAC (1949), e.g. MW 18014 on 20 June 1944. Retired; original answer retained for saved runs. Practice-only replacement draft: HIST-ST-003.",
+      "answerKeyHash": "8c1c82fb4580dc55fa64f4479969f92637fc3d0989dfeb6d6d9516c7db64668a"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-b503e6d74b68",
+      "reason": "unsupported-claim",
+      "note": "BANK-009: false premise; FDR also received Charles de Gaulle at the White House on 6 July 1944 (FDR Library Day by Day). Retired; original answer retained for saved runs. Practice-only replacement draft: HIST-ST-004.",
+      "answerKeyHash": "7386da48887cbebeec7e142e7c75a102d21b2c8075fc293fac39cc74a78478d4"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0043",
+      "reason": "unsupported-claim",
+      "note": "BANK-009: wrong attribution; the silencer was patented by Hiram Percy Maxim (US 916,885, 1909), not Hiram S. Maxim. Retired; original answer retained for saved runs. Practice-only replacement draft: HIST-ST-005.",
+      "answerKeyHash": "579ddb64c760f4604c772f137d010a7fc6c511487153b296f8c382b012c56ad2"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0135",
+      "reason": "invalid-options",
+      "note": "BANK-009: contradicts HIST-0915; WWII death estimates range from about 60 million (National WWII Museum) to 70-85 million, so 62 million and 72 million are both defensible. HIST-0915 is kept because its key (World War II) holds under every estimate. Retired; original answer retained for saved runs. Practice-only replacement draft: HIST-ST-006.",
+      "answerKeyHash": "f3d4092e16c4f2b791b5327ec58b7f5a4dfd8bf1ecdba9096c89927b59236f2f"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-e7724a29f63d",
+      "reason": "unsupported-claim",
+      "note": "BANK-009: unverifiable; 16,354,000 matches the number of Americans who served in WWII, not total casualties, and no source supports the claim. Retired; original answer retained for saved runs. Practice-only replacement draft: HIST-ST-007.",
+      "answerKeyHash": "6b1cb521b360d821daf7a2449f90ceb7faf7ec893c451052c2684156900ab344"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0388",
+      "reason": "unsupported-claim",
+      "note": "BANK-009: unverifiable superlative; Kursk is known as the largest tank battle (covered by HIST-0322), not the largest armed conflict of all time. Retired; original answer retained for saved runs. Practice-only replacement draft: HIST-ST-008.",
+      "answerKeyHash": "428f013c29ac3ecea658c27f4a0cd7877562131f2c0e76177f04ccc9adb1d167"
+    },
+    {
+      "category": "history",
+      "id": "HIST-0815",
+      "reason": "unsupported-claim",
+      "note": "BANK-009: unverifiable false premise (women wore trousers long before Sarah Bernhardt) with absurd distractors. Retired; original answer retained for saved runs. Practice-only replacement draft: HIST-ST-009.",
+      "answerKeyHash": "4a56baafd26ddd2a0659231f9efd8c7a4eb7652665e8fc4c8e5bd831c714ef3b"
+    },
+    {
+      "category": "comics",
+      "id": "COM-0294",
+      "reason": "unsupported-claim",
+      "note": "BANK-009: wrong key; the Comedian in Watchmen (2009) was played by Jeffrey Dean Morgan, not \"Jefferey Blake Morgan\". Retired; original answer retained for saved runs. Practice-only replacement draft: COM-ST-001.",
+      "answerKeyHash": "7b501b54a87c7fbfc8cb487c0889779831c9b9285e40a60716f31d6a4461be04"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-d6feb19a6bcb",
+      "reason": "invalid-options",
+      "note": "BANK-009: Earth-616 Matt Murdock has red hair, which is not an option; the keyed Blonde is wrong. Retired; original answer retained for saved runs. Practice-only replacement draft: COM-ST-002.",
+      "answerKeyHash": "d19b7772a02836c25fd8ef078dda2e10b496a80acdf4923a007cba6ca9095c03"
+    },
+    {
+      "category": "comics",
+      "id": "COM-0122",
+      "reason": "unsupported-claim",
+      "note": "BANK-009: wrong episode (the Savage Land power-nullification story is \"Reunion\", not \"Days of Future Past\") and the card detail is unverified. Retired; original answer retained for saved runs. Practice-only replacement draft: COM-ST-003.",
+      "answerKeyHash": "c1d4b8bfd46ca0f003ac7181837596ae163678a906b6578875b1bd2d31935b76"
+    },
+    {
+      "category": "comics",
+      "id": "COM-0557",
+      "reason": "unsupported-claim",
+      "note": "BANK-009: wrong key; Magneto did not cause Wolverine's death. In Death of Wolverine #4 (2014) he dies encased in adamantium at Abraham Cornelius's facility. Retired; original answer retained for saved runs. Practice-only replacement draft: COM-ST-004.",
+      "answerKeyHash": "7895ec1e86be7a708904cf8b246d125c75dec77d94159f7c838f29ce403b9761"
+    },
+    {
+      "category": "comics",
+      "id": "COM-0349",
+      "reason": "unsupported-claim",
+      "note": "BANK-009: scope error; Jack Napier is the Joker's name in Batman (1989), while DC comics leave his real identity a mystery (dc.com, 2024). Retired; original answer retained for saved runs. Practice-only replacement draft: COM-ST-005.",
+      "answerKeyHash": "510f59d96fbce35a0fbb3bfeb41717a7ca88f55b025c7690e3ec00bfd69e86b7"
+    },
+    {
+      "category": "comics",
+      "id": "COM-0667",
+      "reason": "unsupported-claim",
+      "note": "BANK-009: unsupported claim that Sauron is the only person Rogue can touch safely; no source supports it. Retired; original answer retained for saved runs. Practice-only replacement draft: COM-ST-006.",
+      "answerKeyHash": "7fd47d5677dcb096523cb8b3f10a8e62df3dcea25096c71ee2fcc6876ebc75e8"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-7e4a62127807",
+      "reason": "missing-context",
+      "note": "BANK-009: edition ambiguity; Sonic #247 only teases the prologue of Worlds Collide, whose Part 1 is Mega Man #24. Retired; original answer retained for saved runs. Practice-only replacement draft: COM-ST-007.",
+      "answerKeyHash": "35efcb0356c316d26d3b233fda422ddb418040782c407bcd1e6c44686dd13b49"
+    },
+    {
+      "category": "comics",
+      "id": "COM-0698",
+      "reason": "off-category",
+      "note": "BANK-009: wrestling trademark trivia, not comics, and the stem gives away the answer. Retired; original answer retained for saved runs. Practice-only replacement draft: COM-ST-008. Policy 2026-10-30: valid wrestling fact re-categorised as practice-only COM-0698-R0b847a4bfe in Pop Culture with the giveaway removed; COM-ST-008 replacement kept.",
+      "answerKeyHash": "df1b463a089479ea4aafea9dc01a811a9cce07beeaf670b3f530f913bbfea461"
+    },
+    {
+      "category": "comics",
+      "id": "COM-0056",
+      "reason": "off-category",
+      "note": "BANK-009: Three Gorges Dam engineering trivia, not comics; inverse of TECH-0816. Retired; original answer retained for saved runs. Practice-only replacement draft: COM-ST-009. Policy 2026-10-30 re-check: not re-categorised. Technology already tests the same fact (TECH-0816, the inverse) and the 2008 completion date is imprecise (final generators entered service in 2012), so it stays retired; COM-ST-009 replacement kept.",
+      "answerKeyHash": "84db70e57384f2580096337bc1d1c2b2c3abba249145fde208d12f7635e51114"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-9b8424ec93b7",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: inverse of HIS-N-5466359e71cc (D-Day date); CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: HIST-ST-010.",
+      "answerKeyHash": "b9d9e7be417d2e84e73c83135048859fed8b77dc290dbe0a7d32149a587a5bfd"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-8ca52b76d79c",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: duplicates HIS-N-46d5e028fc09, whose stem names Normandy; CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: HIST-ST-011.",
+      "answerKeyHash": "7f09059f0464147293b19352eec88bd83cedc25a5a9f8fc50f0b282d042675ea"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-31b1cebaf324",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: duplicates HIST-0406, whose stem states September 1, 1939; CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: HIST-ST-012.",
+      "answerKeyHash": "0c6e438466239eb0a2511b33c4f552042dbd5a41affd903a4ca1ee232a2c381d"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-a2aa1e2a2407",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: inverse of HIS-N-86039efb7404, whose stem states 1986; CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: HIST-ST-013.",
+      "answerKeyHash": "3582cb870454886203d2443f434483e2f9fab090d2a0997846f53d9b2afa8846"
+    },
+    {
+      "category": "history",
+      "id": "HIS-N-cbbfb81c487a",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: overlaps HIS-N-361f98530d02 and HIST-0888 (Gettysburg dates); CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: HIST-ST-014.",
+      "answerKeyHash": "0588ae8d135c032e3cf60d5cf323575284c47430cee90dc689614d42e6108197"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-505731206150",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: inverse of COM-0020 (Mr. Freeze / Schwarzenegger); CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: COM-ST-010.",
+      "answerKeyHash": "abbcb4e6303df36cdd9309a5a00f2f3b8f4a447d34c2b45d4f95b96e4951c316"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-a12594245150",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: inverse of COM-0176 (Joker / Nicholson); CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: COM-ST-011.",
+      "answerKeyHash": "6a44fe4161e34b0beff3ac4d5af6f076fc585cf568a20285b516af5b2698d5fd"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-50fefca2ad90",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: inverse of COM-N-ca15d057bbf7 (Cesar Romero / Joker); CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: COM-ST-012.",
+      "answerKeyHash": "8bc274fbae9550683eae4121e2ac97e604d9ce79ef293f9273ae7baa8a036bdc"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-3750b3976cdf",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: inverse of COM-N-7610d7077c10 (Great Pumpkin); CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: COM-ST-013.",
+      "answerKeyHash": "273d7cd87c8613f32a8dff62a13e9100ee6a48721ad1c59bea18193ed5456831"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-617a4bc8a8df",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009: inverse of COM-N-9f5a4ee772b8 (Snoopy / Red Baron); CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: COM-ST-014.",
+      "answerKeyHash": "35dd9191832fc79444b6202ae7f4250b8ac76b6756a412ceab5a000e6d21bbc6"
     }
   ],
-  "retirementCount": 407,
+  "retirementCount": 435,
   "newLicensedImportsRetired": 258,
   "activeNewLicensedImportsPending": 3598,
   "activeDraftQuestions": 7516,
@@ -3225,5 +3421,317 @@
       "evidence": "docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md",
       "decisionRegister": "server/question-audit/technology-2026-10-28.json"
     }
-  ]
+  ],
+  "practiceOnlyHolds": {
+    "date": "2026-10-30",
+    "reason": "uncertain-authorship",
+    "note": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review.",
+    "count": 76,
+    "items": [
+      {
+        "category": "comics",
+        "id": "COM-N-bed9179e1afb"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-d34e9b838b54"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-f441384591db"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-e707b9f03fbf"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-d6f4772e9031"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-e1f0ac201acf"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-df23441b90ee"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-4117f2ddd38f"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-503da7c09ff8"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-68a6ea6f2d7c"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-097293810b52"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-e440eec966b0"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-93944da4129a"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-621f1bc56f2b"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-f66a601a9b0f"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-78b439028d9d"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-42a6fd6784ff"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-990e894b3bfa"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-3dc006bc49dd"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-6186e4c38562"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-3b2a4a69995f"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-e53628b4889c"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-5c85124baff5"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-16ae2d087287"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-009c2264274c"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-bd1b239c83dc"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-c037b979035f"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-306a525c8e96"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-7532de966afe"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-aa7c35d63596"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-90062ac28819"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-cf9ee9223e0a"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-ceddd669652f"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-7afd85e3c75a"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-9a0375d2c8e4"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-1a0c475b7f26"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-5d086f0e2d23"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-b411eaba39d7"
+      },
+      {
+        "category": "comics",
+        "id": "COM-N-a6ffdb80f094"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-1b1be3dbe1d9"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-9da2d8d41733"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-4a699789ba18"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-e39b450929c9"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-7c88e899476c"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-dacc3ca83fca"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-c15413378c11"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-4d1f685402c0"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-18fb53c7c8d0"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-4fa638a11d14"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-e79119fa0a88"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-08d10fc54427"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-6e5fc3cf4800"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-f64ab5787786"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-ab74ebab0165"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-b726f51541d5"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-eb4eeaf21c69"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-d43b4e612a68"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-8b7e9a93cdf4"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-a4060f8139af"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-ce178a09aa5b"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-c62d8afccba6"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-557fa430462e"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-644ee5b273f8"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-e6b7d777c7a5"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-216a3c07b18a"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-070aa7a1b4cf"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-cc493e973d30"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-129b6316efa6"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-4b283a6835c2"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-f58ee0c0395e"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-01b5a3e00ea5"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-b7c2c4ca277e"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-88d6b9e1797c"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-d5924fb5c4d2"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-cd2412a2277c"
+      },
+      {
+        "category": "science-fiction",
+        "id": "SF-N-c318f204ce93"
+      }
+    ]
+  }
 }
