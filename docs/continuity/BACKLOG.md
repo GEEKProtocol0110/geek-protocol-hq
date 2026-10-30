@@ -55,6 +55,15 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CHAIN-004 | P0 | needs-evidence | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
 | CHAIN-005 | P1 | needs-evidence | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
 | AUTH-004 | P0 | needs-evidence | Secure Geek account access and wallet-neutral receiving addresses | Maintainer; founder controls bounded pilot approval and actual-device acceptance |
+| CI-001 | P0 | blocked | Make the dedicated security verification a required, enforced check | CI Bot prepares; founder grants workflow scope and sets branch protection |
+| INFRA-001 | P0 | blocked | Provision the private answer-bank repository and read-only Preview credential | Infrastructure/Operations Bot prepares docs; founder creates the repository and enters the credential |
+| SEASON-001 | P0 | planned | Implement monthly ranked seasons in server logic and leaderboards | Grok / Gameplay Bot |
+| CCE-001 | P1 | needs-evidence | Optional read-only CCE reviewer access | Maintainer; founder decides whether to configure the key |
+| MILE-001 | P0 | planned | Milestone A: ranked candidate ready | Geek Bot coordinates; founder approves |
+| MILE-002 | P0 | planned | Milestone B: approved ranked release | Founder approves; maintainer executes cutover |
+| MILE-003 | P1 | planned | Milestone C: broader beta complete | Founder, UX/Acceptance Bot and pilot participants |
+| MILE-004 | P1 | planned | Milestone D: reviewed content and economy readiness | Question Bot content; founder approves economy |
+| MILE-005 | P2 | planned | Milestone E: post-launch expansion | Founder decides |
 
 ## CONT-001: Publish the continuation system
 
@@ -721,7 +730,7 @@ Evidence/specification: [docs/CAREER-MASTERY.md](../../docs/CAREER-MASTERY.md), 
 
 **P0 / needs-evidence.** Owner: Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned. Dependencies: none.
 
-Next action: Preserve the completed TN10 payout, founder-confirmed same-account phone/Rewards/Quest evidence and deployed desktop Study recovery. Continue BANK-009 content quality; close remaining device/account, independent multiplayer and managed-provider/application recovery evidence before a separately accepted Beta scope. Reconcile private retry disposition before further live-match mutations. No repeat transfer is required.
+Next action: Preserve the completed TN10 payout, founder-confirmed same-account phone/Rewards/Quest evidence and deployed desktop Study recovery. Continue BANK-009 content quality; close remaining device/account, independent multiplayer and managed-provider/application recovery evidence before a separately accepted Beta scope. Reconcile private retry disposition before further live-match mutations. No repeat transfer is required. Milestones A–E (DR-032, MILE-001…005) now structure the remaining launch work.
 
 Acceptance:
 
@@ -787,3 +796,131 @@ Acceptance:
 - Receiving drafts remain separate by network during page use and manual reload; only a successful server response marks a change saved. Guest/loading/error states retain usable account access and retry guidance.
 
 Evidence/specification: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRST-ONBOARDING.md), [public/sign-in/index.html](../../public/sign-in/index.html), [public/assets/wallet.js](../../public/assets/wallet.js), [server/testnet-automatic.js](../../server/testnet-automatic.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [public/assets/session-access.js](../../public/assets/session-access.js), [tests/session-access-client.test.js](../../tests/session-access-client.test.js), [tests/sign-in-state.test.js](../../tests/sign-in-state.test.js), [docs/KASWARE-MOBILE-CONNECTION.md](../../docs/KASWARE-MOBILE-CONNECTION.md), [docs/ACCOUNT-RECEIVING-ADDRESSES.md](../../docs/ACCOUNT-RECEIVING-ADDRESSES.md), [server/reward-addresses.js](../../server/reward-addresses.js), [public/assets/receiving-address.js](../../public/assets/receiving-address.js), [tests/receiving-address-client.test.js](../../tests/receiving-address-client.test.js), [tests/passkeys.test.js](../../tests/passkeys.test.js).
+
+## CI-001: Make the dedicated security verification a required, enforced check
+
+**P0 / blocked.** Owner: CI Bot prepares; founder grants workflow scope and sets branch protection. Dependencies: none.
+
+Next action: Push the saved workflow patch from a session with workflow scope; after branch protection requires code-owner review and the security-verification check, open a throwaway draft PR with a deliberate fake leak and confirm the check fails and blocks merge (plan in docs/CI-ENFORCEMENT-PLAN.md).
+
+Blocker: The maintainer GitHub token lacks the workflow scope, so the security-verification workflow patch for #200 cannot be pushed; branch protection on main is a founder setting.
+
+Acceptance:
+
+- Dedicated workflow runs private-bank:leak-check and full verification with Redis on every PR to main.
+- Branch protection on main requires the check and code-owner review.
+- A deliberate failing candidate is shown blocked, then closed without merge.
+- Environment failures are recorded as failures, never as a pass.
+
+Evidence/specification: [docs/CI-ENFORCEMENT-PLAN.md](../../docs/CI-ENFORCEMENT-PLAN.md).
+
+## INFRA-001: Provision the private answer-bank repository and read-only Preview credential
+
+**P0 / blocked.** Owner: Infrastructure/Operations Bot prepares docs; founder creates the repository and enters the credential. Dependencies: none.
+
+Next action: Founder follows docs/PRIVATE-BANK-INFRA.md: create the private repository from the template structure, protect its main branch, create a fine-grained read-only token limited to it, and enter it directly in Vercel Preview. Then run the restricted Preview test.
+
+Blocker: Creating the private repository and entering a credential in Vercel Preview are founder-only actions.
+
+Acceptance:
+
+- Private repository exists with the immutable version structure and protected history.
+- Fine-grained token is read-only, limited to that repository, has an expiry, and is entered only in Vercel Preview.
+- Preview uses separate storage from production scores, accounts and payment workers.
+- Unavailable storage, expired credential, invalid document and version rollback block ranked play safely (tests pass).
+
+Evidence/specification: [docs/PRIVATE-BANK-INFRA.md](../../docs/PRIVATE-BANK-INFRA.md).
+
+## SEASON-001: Implement monthly ranked seasons in server logic and leaderboards
+
+**P0 / planned.** Owner: Grok / Gameplay Bot. Dependencies: none.
+
+Next action: Implement per DR-031: Season 1, 2, 3 and later; preserve Season 0; bind season and bank version at run start; keep unfinished runs on their original season across rollover; reject unsupported season values instead of writing into Season 0; test month boundaries, reloads, reconnects, retries, old-run completion and score isolation.
+
+Acceptance:
+
+- Season and bank version are bound server-side at run start.
+- Rollover never moves an unfinished run or writes scores into Season 0.
+- Royale, Duel and Lobby stay outside private ranked seasons.
+- Tests cover month boundaries, reloads, reconnects, retries and score isolation.
+
+Evidence/specification: [docs/LAUNCH-STATUS-2026-10-30.md](../../docs/LAUNCH-STATUS-2026-10-30.md).
+
+## CCE-001: Optional read-only CCE reviewer access
+
+**P1 / needs-evidence.** Owner: Maintainer; founder decides whether to configure the key. Dependencies: none.
+
+Next action: Review open draft PR #203 (head af3364f). It adds an optional view-only CCE moderation key that fails closed when unset or misconfigured. Merging or configuring it does not reopen CCE.
+
+Acceptance:
+
+- Read-only key can only GET the moderation queue; every mutation and owner login refuses it.
+- Disabled when unset, malformed or equal to an admin/ops credential.
+- CCE hold is unchanged.
+
+Evidence/specification: [docs/LAUNCH-STATUS-2026-10-30.md](../../docs/LAUNCH-STATUS-2026-10-30.md).
+
+## MILE-001: Milestone A: ranked candidate ready
+
+**P0 / planned.** Owner: Geek Bot coordinates; founder approves. Dependencies: CI-001, INFRA-001, SEASON-001, BANK-009.
+
+Next action: Complete private storage, reviewed launch content, season handling, leak protection, enforced CI and restricted Preview acceptance; deliver one release packet. Keep #200 draft until its prerequisites are satisfied.
+
+Acceptance:
+
+- Release packet lists exact commits, checks, security findings, content capacity, exclusions, rollback steps and unresolved decisions.
+- #200 prerequisites satisfied; #200 still draft until founder approval.
+
+Evidence/specification: [docs/LAUNCH-STATUS-2026-10-30.md](../../docs/LAUNCH-STATUS-2026-10-30.md).
+
+## MILE-002: Milestone B: approved ranked release
+
+**P0 / planned.** Owner: Founder approves; maintainer executes cutover. Dependencies: MILE-001.
+
+Next action: After founder approval, run the documented cutover, merge #200 at cutover, verify the exact deployed revision and run bounded production checks.
+
+Acceptance:
+
+- Deployed revision equals the approved merge.
+- Historical scores and saved runs remain correct.
+- Rollback keeps private-bank protection and never reopens the exposed bank.
+
+Evidence/specification: [docs/LAUNCH-STATUS-2026-10-30.md](../../docs/LAUNCH-STATUS-2026-10-30.md).
+
+## MILE-003: Milestone C: broader beta complete
+
+**P1 / planned.** Owner: Founder, UX/Acceptance Bot and pilot participants. Dependencies: MILE-002, PILOT-001, OPS-001.
+
+Next action: Close device/account, independent multiplayer, capacity and recovery evidence; measure the intended concurrent-player target under realistic traffic.
+
+Acceptance:
+
+- Factual beta checklist with every item passed, excluded by approved scope, or explicitly blocked.
+- Observed capacity limits reported.
+
+Evidence/specification: [docs/LAUNCH-STATUS-2026-10-30.md](../../docs/LAUNCH-STATUS-2026-10-30.md).
+
+## MILE-004: Milestone D: reviewed content and economy readiness
+
+**P1 / planned.** Owner: Question Bot content; founder approves economy. Dependencies: BANK-009, ECON-001.
+
+Next action: Complete whole-bank audit coverage and reach 1,000 reviewed concepts in each of eight categories before CCE resumes; separately prepare funded reward rules, contributor rates, abuse controls, reconciliation and limits.
+
+Acceptance:
+
+- 1,000 reviewed per category in all eight categories (the 680 ranked figure is only a capacity baseline).
+- Mainnet rewards have their own security review and founder authorization; testnet proof does not authorize them.
+
+Evidence/specification: [docs/LAUNCH-STATUS-2026-10-30.md](../../docs/LAUNCH-STATUS-2026-10-30.md).
+
+## MILE-005: Milestone E: post-launch expansion
+
+**P2 / planned.** Owner: Founder decides. Dependencies: MILE-003.
+
+Next action: Advance A.C.E. tutoring with an approved model/budget, store improvements and ecosystem handoffs. Collection art, ownership, KCC20 migration and institutional pilots keep their separate decisions.
+
+Acceptance:
+
+- Each expansion item has its own approval and evidence.
+
+Evidence/specification: [docs/LAUNCH-STATUS-2026-10-30.md](../../docs/LAUNCH-STATUS-2026-10-30.md).

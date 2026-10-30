@@ -25,9 +25,9 @@ Record date: 2026-10-30. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-009: active.** BANK-009 Technology risk batch: twelve original drafts retired, four corrected technical objectives added under internally primary-source-checked identities. Candidate totals: 8,338 active / 876 recorded reviews / 7,462 factual drafts; Technology 1,485 / 19 / 1,466. Earlier #178 scope release is preserved; independent/full-bank approval remains open.
+**BANK-009: active.** BANK-009 continues. The Technology risk batch is merged and deployed (#179): 8,338 ranked-eligible active / 876 recorded source checks / 7,462 ranked-eligible factual drafts; Technology 1,485 / 19 / 1,466. #180 (Kaspa audit fixes), #198 (100 practice-only Kaspa Gauntlet drafts, counted separately), #202 (account button contrast) and #201 (capacity docs) are merged and in production deployment 0941392. #200 (private ranked bank, SEC-010) stays draft; last checked head 8f1993c. Open drafts: #203 read-only CCE reviewer key, #204 season mapping docs. Launch work is organized as Milestones A–E (DR-032).
 
-Next task: **BANK-009**. Continue BANK-009 with another bounded Technology batch, including hardware/OS context (the remaining 32-bit RAM item) and clinical/entertainment imports; then History and Comics. Review each key, all distractors, useful explanation, category, scope, license and provisional difficulty against primary evidence. The twelve-item batch leaves 7,462 factual drafts; retain semantic-overlap checks on reviewed material and every historical key/alias. Independent editing and broader device/multiplayer/provider recovery remain open; Kaspa stays 766 / 234 to target.
+Next task: **BANK-009**. Milestone A (MILE-001): finish #200 prerequisites (CI-001 workflow scope + branch protection, INFRA-001 private repository + Preview credential, SEASON-001 monthly seasons, restricted Preview test) while Question Bot continues BANK-009 (Technology, then History and Comics) and private ranked authoring. Preserve completed GEEKT payout and phone acceptance evidence; do not repeat payment tests. 7,124 further reviews are needed to reach the eight 1,000-reviewed category targets; Kaspa needs 234.
 
 ## Holds
 

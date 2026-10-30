@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-28",
+  "updatedAt": "2026-10-30",
   "priorityOrder": [
     "P0",
     "P1",
@@ -1114,7 +1114,7 @@
       "status": "needs-evidence",
       "title": "Prove the core loop and close the first release scope",
       "owner": "Maintainer implements and checks; founder supplies real-device and wallet approval; provider custodian unassigned",
-      "nextAction": "Preserve the completed TN10 payout, founder-confirmed same-account phone/Rewards/Quest evidence and deployed desktop Study recovery. Continue BANK-009 content quality; close remaining device/account, independent multiplayer and managed-provider/application recovery evidence before a separately accepted Beta scope. Reconcile private retry disposition before further live-match mutations. No repeat transfer is required.",
+      "nextAction": "Preserve the completed TN10 payout, founder-confirmed same-account phone/Rewards/Quest evidence and deployed desktop Study recovery. Continue BANK-009 content quality; close remaining device/account, independent multiplayer and managed-provider/application recovery evidence before a separately accepted Beta scope. Reconcile private retry disposition before further live-match mutations. No repeat transfer is required. Milestones A–E (DR-032, MILE-001…005) now structure the remaining launch work.",
       "acceptance": [
         "Owner desk checks the current same-browser Daily proof and native remaining run lifetime without renewing it; expired/ineligible runs cannot enable its queue button.",
         "Return from gameplay or browser back-forward cache refreshes private readiness without automatically queuing, signing or sending; late canceled responses cannot restore private state.",
@@ -1284,6 +1284,175 @@
       ],
       "validationEvidence": [
         "October 25 founder phone acceptance: the supplied HQ Rewards screenshot shows the latest 1-GEEKT TN10 payment as Confirmed by indexer, with its saved time, original recipient and reveal transaction; the supplied wallet screenshot shows +1 GEEKT marked Success. After explicit instructions to sign out, confirm Rewards hides private address/receipt details, and sign back into the same account to recover progress, saved address and receipt, the founder reports: Its all there. Good to go. This records founder-confirmed same-account phone recovery and signed-out privacy, not an independently observed browser session. Screenshots, wallet identifiers and transaction hashes remain outside the public record. No new payment or account/provider mutation is performed."
+      ]
+    },
+    {
+      "priority": "P0",
+      "dependsOn": [],
+      "evidence": [
+        "docs/CI-ENFORCEMENT-PLAN.md"
+      ],
+      "id": "CI-001",
+      "status": "blocked",
+      "title": "Make the dedicated security verification a required, enforced check",
+      "owner": "CI Bot prepares; founder grants workflow scope and sets branch protection",
+      "blocker": "The maintainer GitHub token lacks the workflow scope, so the security-verification workflow patch for #200 cannot be pushed; branch protection on main is a founder setting.",
+      "nextAction": "Push the saved workflow patch from a session with workflow scope; after branch protection requires code-owner review and the security-verification check, open a throwaway draft PR with a deliberate fake leak and confirm the check fails and blocks merge (plan in docs/CI-ENFORCEMENT-PLAN.md).",
+      "acceptance": [
+        "Dedicated workflow runs private-bank:leak-check and full verification with Redis on every PR to main.",
+        "Branch protection on main requires the check and code-owner review.",
+        "A deliberate failing candidate is shown blocked, then closed without merge.",
+        "Environment failures are recorded as failures, never as a pass."
+      ]
+    },
+    {
+      "priority": "P0",
+      "dependsOn": [],
+      "evidence": [
+        "docs/PRIVATE-BANK-INFRA.md"
+      ],
+      "id": "INFRA-001",
+      "status": "blocked",
+      "title": "Provision the private answer-bank repository and read-only Preview credential",
+      "owner": "Infrastructure/Operations Bot prepares docs; founder creates the repository and enters the credential",
+      "blocker": "Creating the private repository and entering a credential in Vercel Preview are founder-only actions.",
+      "nextAction": "Founder follows docs/PRIVATE-BANK-INFRA.md: create the private repository from the template structure, protect its main branch, create a fine-grained read-only token limited to it, and enter it directly in Vercel Preview. Then run the restricted Preview test.",
+      "acceptance": [
+        "Private repository exists with the immutable version structure and protected history.",
+        "Fine-grained token is read-only, limited to that repository, has an expiry, and is entered only in Vercel Preview.",
+        "Preview uses separate storage from production scores, accounts and payment workers.",
+        "Unavailable storage, expired credential, invalid document and version rollback block ranked play safely (tests pass)."
+      ]
+    },
+    {
+      "priority": "P0",
+      "dependsOn": [],
+      "evidence": [
+        "docs/LAUNCH-STATUS-2026-10-30.md"
+      ],
+      "id": "SEASON-001",
+      "status": "planned",
+      "title": "Implement monthly ranked seasons in server logic and leaderboards",
+      "owner": "Grok / Gameplay Bot",
+      "nextAction": "Implement per DR-031: Season 1, 2, 3 and later; preserve Season 0; bind season and bank version at run start; keep unfinished runs on their original season across rollover; reject unsupported season values instead of writing into Season 0; test month boundaries, reloads, reconnects, retries, old-run completion and score isolation.",
+      "acceptance": [
+        "Season and bank version are bound server-side at run start.",
+        "Rollover never moves an unfinished run or writes scores into Season 0.",
+        "Royale, Duel and Lobby stay outside private ranked seasons.",
+        "Tests cover month boundaries, reloads, reconnects, retries and score isolation."
+      ]
+    },
+    {
+      "priority": "P1",
+      "dependsOn": [],
+      "evidence": [
+        "docs/LAUNCH-STATUS-2026-10-30.md"
+      ],
+      "id": "CCE-001",
+      "status": "needs-evidence",
+      "title": "Optional read-only CCE reviewer access",
+      "owner": "Maintainer; founder decides whether to configure the key",
+      "nextAction": "Review open draft PR #203 (head af3364f). It adds an optional view-only CCE moderation key that fails closed when unset or misconfigured. Merging or configuring it does not reopen CCE.",
+      "acceptance": [
+        "Read-only key can only GET the moderation queue; every mutation and owner login refuses it.",
+        "Disabled when unset, malformed or equal to an admin/ops credential.",
+        "CCE hold is unchanged."
+      ]
+    },
+    {
+      "priority": "P0",
+      "dependsOn": [
+        "CI-001",
+        "INFRA-001",
+        "SEASON-001",
+        "BANK-009"
+      ],
+      "evidence": [
+        "docs/LAUNCH-STATUS-2026-10-30.md"
+      ],
+      "id": "MILE-001",
+      "status": "planned",
+      "title": "Milestone A: ranked candidate ready",
+      "owner": "Geek Bot coordinates; founder approves",
+      "nextAction": "Complete private storage, reviewed launch content, season handling, leak protection, enforced CI and restricted Preview acceptance; deliver one release packet. Keep #200 draft until its prerequisites are satisfied.",
+      "acceptance": [
+        "Release packet lists exact commits, checks, security findings, content capacity, exclusions, rollback steps and unresolved decisions.",
+        "#200 prerequisites satisfied; #200 still draft until founder approval."
+      ]
+    },
+    {
+      "priority": "P0",
+      "dependsOn": [
+        "MILE-001"
+      ],
+      "evidence": [
+        "docs/LAUNCH-STATUS-2026-10-30.md"
+      ],
+      "id": "MILE-002",
+      "status": "planned",
+      "title": "Milestone B: approved ranked release",
+      "owner": "Founder approves; maintainer executes cutover",
+      "nextAction": "After founder approval, run the documented cutover, merge #200 at cutover, verify the exact deployed revision and run bounded production checks.",
+      "acceptance": [
+        "Deployed revision equals the approved merge.",
+        "Historical scores and saved runs remain correct.",
+        "Rollback keeps private-bank protection and never reopens the exposed bank."
+      ]
+    },
+    {
+      "priority": "P1",
+      "dependsOn": [
+        "MILE-002",
+        "PILOT-001",
+        "OPS-001"
+      ],
+      "evidence": [
+        "docs/LAUNCH-STATUS-2026-10-30.md"
+      ],
+      "id": "MILE-003",
+      "status": "planned",
+      "title": "Milestone C: broader beta complete",
+      "owner": "Founder, UX/Acceptance Bot and pilot participants",
+      "nextAction": "Close device/account, independent multiplayer, capacity and recovery evidence; measure the intended concurrent-player target under realistic traffic.",
+      "acceptance": [
+        "Factual beta checklist with every item passed, excluded by approved scope, or explicitly blocked.",
+        "Observed capacity limits reported."
+      ]
+    },
+    {
+      "priority": "P1",
+      "dependsOn": [
+        "BANK-009",
+        "ECON-001"
+      ],
+      "evidence": [
+        "docs/LAUNCH-STATUS-2026-10-30.md"
+      ],
+      "id": "MILE-004",
+      "status": "planned",
+      "title": "Milestone D: reviewed content and economy readiness",
+      "owner": "Question Bot content; founder approves economy",
+      "nextAction": "Complete whole-bank audit coverage and reach 1,000 reviewed concepts in each of eight categories before CCE resumes; separately prepare funded reward rules, contributor rates, abuse controls, reconciliation and limits.",
+      "acceptance": [
+        "1,000 reviewed per category in all eight categories (the 680 ranked figure is only a capacity baseline).",
+        "Mainnet rewards have their own security review and founder authorization; testnet proof does not authorize them."
+      ]
+    },
+    {
+      "priority": "P2",
+      "dependsOn": [
+        "MILE-003"
+      ],
+      "evidence": [
+        "docs/LAUNCH-STATUS-2026-10-30.md"
+      ],
+      "id": "MILE-005",
+      "status": "planned",
+      "title": "Milestone E: post-launch expansion",
+      "owner": "Founder decides",
+      "nextAction": "Advance A.C.E. tutoring with an approved model/budget, store improvements and ecosystem handoffs. Collection art, ownership, KCC20 migration and institutional pilots keep their separate decisions.",
+      "acceptance": [
+        "Each expansion item has its own approval and evidence."
       ]
     }
   ]

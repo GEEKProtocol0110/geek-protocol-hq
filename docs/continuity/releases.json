@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "checkedAt": "2026-10-28",
+  "checkedAt": "2026-10-30",
   "scope": "Merged HQ PR metadata: historical GitHub REST closed-PR pages 1–2 plus observed #114/#115/#117/#116 merges. Merge order is retained by timestamps; a merge is not deployment or independent audit evidence. Observed PR #118/#121 merges added; PR #119 and #120 remain unmerged. Observed #122/#123/#124 merges added; #124 isolates passkey login. PR #119 remains a draft requiring reconciliation; #120 artwork remains paused. Observed #125/#126/#128/#129 merges added October 16; #129 is offline recovery tooling, not a production restore. Runtime baseline remains #127. Observed #130/#131 merges added; #131 is the character/cosmic/holiday release. Observed #132/#133 merges added; #133 dials back repeated characters and emphasizes neon-space backgrounds. Observed #134/#135 merges added; #135 clarifies the Kaspa onboarding identity and adds optional cosmetic Grid discoveries. Observed #136/#137 merges added; #137 contains mobile decoration and stabilizes background edges. Physical-phone retest remains pending. Observed #138 documentation merge added during roadmap reconciliation; runtime baseline remains #137. Observed PR #139 roadmap and #140 PSKT content merges added October 17. Product baseline is now #140 with separately recorded production evidence; previous #137 baseline evidence is retained in its record. Observed #145 background stylesheet/guard release added; current product baseline #145 has separate production evidence. Earlier baseline evidence remains preserved. Observed #146 rewarded challenge release added; product baseline #146 has separate deployment/browser evidence and prior #145 baseline preserved. Observed #147 career/mastery and canvas-style correction merged; product baseline #147 has separately recorded CI/deployment/browser evidence and previous #146 evidence is preserved. Observed #148 bounded ACE/player readiness release added; current product baseline #148 has separate CI/deployment/browser evidence and #147 baseline is preserved. Observed #149 Kaspa 700-concept release added; current baseline #149 has separately checked CI/deployment/public delivery evidence and prior #148 baseline is preserved. Observed #150 wallet/node content release added; current baseline #150 has separate CI/deployment/delivery evidence and prior #149 baseline is preserved. Observed automatic-reward source release #153 added October 18; HQ deployed, separate signer provisioning explicitly blocked by project-create permission. Observed #155 merged October 23; production delivery and signer provisioning denial are recorded separately. Observed #178 scope-review merge added October 28 from PR metadata; its separate verification evidence retains both the first 15/21 monitoring failure and the 21/21 recheck.",
   "records": [
     {
@@ -1170,6 +1170,61 @@
       "verification": {
         "status": "merged-deployed",
         "evidence": "PR #178 merged October 28 at 11:10:19 UTC as 954a7b24b6e6c84522bc51c83c18bef5c28482d0; merge tree d8b027cba0baac76f12f2d38e2767a83d0508d12 matches checked head c947196de5bb0108c729d8264702d12660cb785c. Exact-head Security verification 40677635018 and both Vercel statuses succeeded. HQ production dpl_wANoLDQmxc9A44HXQMS9q1KzKHBJ READY on the merge with canonical domains; five canonical reads passed at 8,346 active / 872 checks / 7,474 drafts, with server-only paths 404. First standard monitoring run passed 15/21 with six protected-route five-second timeouts; focused protection reads then passed, followed by a standard 21/21 recheck at 7:13 AM Detroit. Retain the failure: later point-in-time health does not explain its cause or prove sustained capacity. Full local checks passed 713 HQ plus nine signer tests (722), zero failures/skips, 311 security assertions. Independent editing remains unassigned."
+      }
+    },
+    {
+      "number": 179,
+      "title": "Correct four Technology questions and retire eight unsuitable drafts",
+      "mergedAt": "2026-10-28T21:39:45Z",
+      "commit": "29ed0436592d9dcc0c46183b4a648ac29e175ad5",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/179",
+      "verification": {
+        "status": "merged-deployed",
+        "evidence": "PR #179 merged 2026-10-28T21:39:45Z as 29ed0436592d9dcc0c46183b4a648ac29e175ad5 (checked head 8ff018b869c6373361f9fdf72b03bd9a64736aa6). Technology risk batch (DR-030). Source counts at main 0941392: 8,338 ranked-eligible active / 876 recorded source checks / 7,462 ranked-eligible factual drafts; Technology 1,485 / 19 / 1,466. Independent editing remains unassigned. HQ production deployment for main 0941392 (Vercel status success, GitHub deployment 2026-10-30 12:42:25 UTC) contains this merge; production-monitor runs 41063534113, 41065301179 and 41067375309 on 0941392 succeeded (latest 13:55:59 UTC). Deployed is not accepted."
+      }
+    },
+    {
+      "number": 180,
+      "title": "Kaspa question bank: audit fixes",
+      "mergedAt": "2026-10-30T01:06:20Z",
+      "commit": "a3b2441f82636e511658be09d47a7171b89472d4",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/180",
+      "verification": {
+        "status": "merged-deployed",
+        "evidence": "PR #180 merged 2026-10-30T01:06:20Z as a3b2441f82636e511658be09d47a7171b89472d4 (checked head 2c08387896762840d06e2f78d381aa5b10e0eb7d). Kaspa audit fixes; verify run 40983815939 succeeded on the merge. HQ production deployment for main 0941392 (Vercel status success, GitHub deployment 2026-10-30 12:42:25 UTC) contains this merge; production-monitor runs 41063534113, 41065301179 and 41067375309 on 0941392 succeeded (latest 13:55:59 UTC). Deployed is not accepted."
+      }
+    },
+    {
+      "number": 198,
+      "title": "Kaspa Basics Gauntlet (KGNT-0001..0100)",
+      "mergedAt": "2026-10-30T01:06:42Z",
+      "commit": "33f74c0aee05e416f91b8331cf4236d9ddd758a4",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/198",
+      "verification": {
+        "status": "merged-deployed",
+        "evidence": "PR #198 merged 2026-10-30T01:06:42Z as 33f74c0aee05e416f91b8331cf4236d9ddd758a4 (checked head f8521cbee17e406085d080c9558cb69c56185665). Adds 100 practice-only Kaspa Gauntlet drafts (unranked, not source-checked; counted separately as practiceOnly=100). Readiness shows them apart from ranked-eligible counts. HQ production deployment for main 0941392 (Vercel status success, GitHub deployment 2026-10-30 12:42:25 UTC) contains this merge; production-monitor runs 41063534113, 41065301179 and 41067375309 on 0941392 succeeded (latest 13:55:59 UTC). Deployed is not accepted."
+      }
+    },
+    {
+      "number": 202,
+      "title": "Fix account button contrast (sign-out white-on-white)",
+      "mergedAt": "2026-10-30T12:40:50Z",
+      "commit": "b9cf0db80e5ef0030b5a0f164139f076565b7377",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/202",
+      "verification": {
+        "status": "merged-deployed",
+        "evidence": "PR #202 merged 2026-10-30T12:40:50Z as b9cf0db80e5ef0030b5a0f164139f076565b7377 (checked head b56b4c4bef72c4aad3bd9338c546d011cd052c3d). Sign-in/My HQ account button contrast. verify run 41057167617 succeeded. Real mobile-screen acceptance (including sign-out) is still open (UX/Acceptance). HQ production deployment for main 0941392 (Vercel status success, GitHub deployment 2026-10-30 12:42:25 UTC) contains this merge; production-monitor runs 41063534113, 41065301179 and 41067375309 on 0941392 succeeded (latest 13:55:59 UTC). Deployed is not accepted."
+      }
+    },
+    {
+      "number": 201,
+      "title": "docs: ranked bank capacity and rotation plan",
+      "mergedAt": "2026-10-30T12:42:01Z",
+      "commit": "094139293d30f27b9eeeacdbbc4b6ee5e74a9e29",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/201",
+      "verification": {
+        "status": "merged-deployed",
+        "evidence": "PR #201 merged 2026-10-30T12:42:01Z as 094139293d30f27b9eeeacdbbc4b6ee5e74a9e29 (checked head cf8240a3d72c7dbc58e2049208cd829969b781f2). Documentation only (docs/RANKED-CAPACITY.md). The 680-per-category recommendation is a capacity-planning baseline; it does not replace the 1,000-reviewed-per-category CCE gate. HQ production deployment for main 0941392 (Vercel status success, GitHub deployment 2026-10-30 12:42:25 UTC) contains this merge; production-monitor runs 41063534113, 41065301179 and 41067375309 on 0941392 succeeded (latest 13:55:59 UTC). Deployed is not accepted."
       }
     }
   ]

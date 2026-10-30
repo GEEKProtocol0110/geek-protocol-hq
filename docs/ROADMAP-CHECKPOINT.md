@@ -1,4 +1,34 @@
-# Roadmap checkpoint — October 28, 2026
+# Roadmap checkpoint — October 30, 2026
+
+Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. Public release remains Alpha. This checkpoint adds the founder's launch milestones (DR-032) and the season mapping (DR-031) to the October 28 checkpoint below. It does not open payment, ownership, contributor, CCE or Mainnet gates. Founder approval is still required for merges and production cutover. The item-by-item record (implemented, tested, merged, deployed, accepted) is the [October 30 launch status](LAUNCH-STATUS-2026-10-30.md).
+
+## Since October 28
+
+- **Merged and in production deployment `0941392`:** #179 (Technology risk batch), #180 (Kaspa audit fixes), #198 (100 practice-only Kaspa Gauntlet drafts, counted separately), #202 (account button contrast; mobile acceptance still open) and #201 (ranked capacity docs).
+- **Draft #200** (private ranked bank, SEC-010): last checked head `8f1993c`. CI shows 777/777 tests and signer 9/9, and a local full `npm run verify` with real Redis passed. It stays draft until its prerequisites are met.
+- **Draft #203:** optional read-only CCE reviewer key (CCE-001). It does not reopen CCE.
+- **Draft #204:** season mapping docs (DR-031). It does not implement rollover (SEASON-001).
+- **Counts at main:**
+  - 8,338 ranked-eligible active + 100 practice-only;
+  - 876 recorded checks;
+  - 7,462 ranked-eligible factual drafts;
+  - 7,124 reviews still needed for the eight 1,000-reviewed targets (Kaspa 766, so 234 needed).
+
+## Milestones
+
+| Milestone | Backlog | Completion boundary |
+| --- | --- | --- |
+| **A — ranked candidate ready** | MILE-001 (CI-001, INFRA-001, SEASON-001, BANK-009, SEC-010 on #200) | Private storage, reviewed launch content, season handling, leak protection, enforced CI and restricted Preview acceptance. One release packet with exact commits, checks, security findings, content capacity, exclusions, rollback steps and unresolved decisions. #200 stays draft until then |
+| **B — approved ranked release** | MILE-002 | After founder approval: the documented cutover, #200 merged at cutover, the exact deployed revision verified, bounded production checks. Historical scores and saved runs stay correct. Rollback keeps private-bank protection and never reopens the exposed bank |
+| **C — broader beta complete** | MILE-003 | Device/account, independent multiplayer, capacity and recovery evidence. The intended concurrent-player target measured under realistic traffic. A factual beta checklist in which every item is passed, excluded by approved scope, or explicitly blocked |
+| **D — reviewed content and economy readiness** | MILE-004 | Whole-bank audit coverage and **1,000 reviewed concepts in each of eight categories before CCE resumes**. The 680-per-category ranked figure in [RANKED-CAPACITY.md](RANKED-CAPACITY.md) is only a capacity baseline. Funded reward rules, contributor rates, abuse controls, reconciliation and limits are prepared separately. Mainnet rewards need their own security review and founder authorization; testnet proof does not authorize them |
+| **E — post-launch expansion** | MILE-005 | A.C.E. tutoring with an approved model/budget, store improvements and ecosystem handoffs. Collection art, ownership, KCC20 migration and institutional pilots keep their separate decisions |
+
+**Preserved:** the completed GEEKT test payout and the founder phone acceptance evidence. Do not repeat payment tests.
+
+---
+
+# Previous checkpoint — October 28, 2026
 
 Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. Public release remains Alpha. This checkpoint supersedes the older execution summary with observed releases and the founder's whole-bank audit direction; it does not open payment, ownership, contributor or paid-model gates.
 

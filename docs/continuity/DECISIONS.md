@@ -303,3 +303,23 @@ Apply BANK-009 to a risk-selected Technology sample. Retire unrelated clinical/f
 Basis: DR-029 and the maintained next action authorize thorough category/context and factual review. This is the maintainer’s scoped implementation choice, not a new founder taxonomy approval or full-bank certification.
 
 Evidence: [docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md), [server/question-audit/technology-2026-10-28.json](../../server/question-audit/technology-2026-10-28.json).
+
+## DR-031: Season mapping: preserve Season 0, number monthly seasons, keep multiplayer modes out of private ranked seasons
+
+**founder-direction** · 2026-10-30.
+
+Season 0 (legacy) history is preserved unchanged. Monthly ranked seasons are numbered sequentially: Season 1, 2, 3 and later. Royale, Duel and Lobby stay outside Season 1 ranked until their private-bank handling is separately ready. Documentation of the mapping (#204) does not implement rollover; season server logic is separate work (SEASON-001).
+
+Basis: Founder (Gee) decision relayed October 30, 2026 and recorded in open draft PR #204 and the #200 description. Not yet merged code.
+
+Evidence: [docs/LAUNCH-STATUS-2026-10-30.md](../../docs/LAUNCH-STATUS-2026-10-30.md).
+
+## DR-032: Launch milestones A–E and the content gate distinction
+
+**founder-direction** · 2026-10-30.
+
+Milestone A: ranked candidate ready. B: approved ranked release. C: broader beta complete. D: reviewed content and economy readiness, with 1,000 reviewed concepts in each of eight categories before CCE resumes. E: post-launch expansion. The 680-per-category ranked figure is only a capacity-planning baseline and does not replace the 1,000-reviewed CCE requirement. Founder approval remains required for merges and production cutover.
+
+Basis: Founder (Gee) coordination instruction of October 30, 2026. Does not open CCE, contributor rates, Mainnet settlement, payouts or collection ownership.
+
+Evidence: [docs/ROADMAP-CHECKPOINT.md](../../docs/ROADMAP-CHECKPOINT.md), [docs/LAUNCH-STATUS-2026-10-30.md](../../docs/LAUNCH-STATUS-2026-10-30.md).

@@ -2,6 +2,24 @@
 
 Use one entry per substantive session/interruption: task ID, exact review/commit, outcome, validation, blocker and next action. Earlier release/decision records retain their meaning. A proposal is not shipped behavior.
 
+## October 30, 2026 — Launch record reconciliation (CONT-003 follow-up, CI-001, INFRA-001)
+
+- **Checked:** main `0941392`; HQ production deployment for `0941392` (Vercel success, 12:42:25 UTC); production-monitor runs on `0941392` succeeded. #180, #198, #201 and #202 merged; #179 had been missing from the release ledger. #200 is draft at `8f1993c`; #203 (read-only CCE reviewer key) and #204 (season mapping docs) are open drafts. main is not branch-protected.
+- **Outcome:**
+  - Added release records #179, #180, #198, #201 and #202.
+  - Added decisions DR-031 (season mapping) and DR-032 (milestones A–E; 680 is a capacity baseline, 1,000 reviewed is the CCE gate).
+  - Added backlog items CI-001, INFRA-001, SEASON-001, CCE-001 and MILE-001…005.
+  - Corrected the stale "candidate" wording for the merged Technology batch, and labeled the 7,462-draft and 7,124-to-target figures separately.
+  - Added the launch status matrix, CI enforcement plan, private-bank infrastructure guide and backup evidence checklist.
+- **Validation:**
+  - Full `npm run verify` on #200 head `8f1993c` with a user-space Redis 7.2.4 passed: 777/777 tests, signer 9/9, 311 security assertions, leak check (587 files) and all other checks.
+  - The new private-bank resilience tests (unavailable storage, expired credential, invalid document, version rollback) passed 4/4 locally against `8f1993c`. They are held as a patch for #200.
+  - `npm run continuity:check` passed on this branch.
+- **Blockers:**
+  - The token lacks `workflow` scope, so the security workflow patch is not pushed.
+  - Branch protection, the private repository, the Preview credential and Preview Redis separation are founder actions.
+- **Next:** the founder actions in [CI-ENFORCEMENT-PLAN.md](../CI-ENFORCEMENT-PLAN.md) and [PRIVATE-BANK-INFRA.md](../PRIVATE-BANK-INFRA.md), then the restricted Preview test and the CI blocking proof.
+
 ## October 15, 2026 — PR #113 product baseline
 
 - **Evidence:** [merged PR #113](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/113), commit `e3fd589878d473939724b06882fb167b1e8d9b0a`.
