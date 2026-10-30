@@ -235,3 +235,17 @@ test('vercel_blob_rw_ tokens and high-entropy GEEK_* values fail, even in tests'
   assert.match(scanText('.env.example', `${V}=${secret}`).join(), /high-entropy literal/);
   assert.deepEqual(scanText('tests/x.test.js', `({ ${V}: 'test-${secret}' })`), [], 'fake-prefixed values pass in tests');
 });
+
+test('documented placeholder ids are allowed only at the exact allowlisted path, never under public/', () => {
+  const root = mkdtempSync(join(tmpdir(), 'leak-ex-'));
+  try {
+    const id = ['PRK', 'KAS', '202611', '9999'].join('-');
+    mkdirSync(join(root, 'scripts'));
+    writeFileSync(join(root, 'scripts/private-bank-leak-allowlist.json'), JSON.stringify({ files: [], exampleIds: [{ path: 'docs/R.md', idSha256: createHash('sha256').update(id).digest('hex'), reason: 'schema example' }, { path: 'public/x.md', idSha256: createHash('sha256').update(id).digest('hex'), reason: 'nope' }] }));
+    assert.deepEqual(scanText('docs/R.md', `"id": "${id}"`, { root }), []);
+    assert.match(scanText('docs/other.md', id, { root }).join(), /outside the template/);
+    assert.match(scanText('docs/R.md', id.replace('9999', '0001'), { root }).join(), /outside the template/);
+    assert.match(scanText('public/x.md', id, { root }).join(), /outside the template/);
+    assert.match(scanText('docs/R.md', id).join(), /outside the template/, 'no root, no allowlist');
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});

@@ -89,6 +89,12 @@ export const isTextScanned = (path) => !path.startsWith(TEMPLATE_DIR) && !/\.(?:
 export const OPAQUE = /\.(?:gz|tgz|zip|br|pdf|7z|rar|tar|xz|bz2)$/i;
 // Reviewed opaque files: { "files": [{ "path", "sha256", "reason" }] }. The hash pins the exact bytes.
 export const OPAQUE_ALLOWLIST = 'scripts/private-bank-leak-allowlist.json';
+// Documented placeholder IDs (exact path + id + reason); never honoured under public/.
+export function exampleIdAllowed(root, path, id) {
+  if (/^public\//.test(path)) return false;
+  let list; try { list = JSON.parse(readFileSync(join(root, OPAQUE_ALLOWLIST), 'utf8')).exampleIds || []; } catch { return false; }
+  return list.some((e) => e.path === path && e.idSha256 === createHash('sha256').update(id).digest('hex') && typeof e.reason === 'string' && e.reason.length > 0);
+}
 const reviewedOpaque = (root, path) => {
   let list; try { list = JSON.parse(readFileSync(join(root, OPAQUE_ALLOWLIST), 'utf8')).files || []; } catch { return false; }
   const entry = list.find((item) => item.path === path);
@@ -119,7 +125,7 @@ export const validRetiredAt = (value, now = new Date()) => {
   return Number.isFinite(t) && new Date(t).toISOString().slice(0, 10) === value.slice(0, 10) && t <= now.getTime();
 };
 
-export const scanText = (path, text, { publicIds = new Set(), privateIndex = null, now = new Date() } = {}) => {
+export const scanText = (path, text, { publicIds = new Set(), privateIndex = null, now = new Date(), root = null } = {}) => {
   const violations = [];
   // Retired rows are only exempt in the server-side bank directory, never in served assets.
   const retiredFile = new RegExp(`^server/questions/(?:${CATEGORY_NAMES.join('|')})-retired\\.json$`).test(path);
@@ -153,7 +159,7 @@ export const scanText = (path, text, { publicIds = new Set(), privateIndex = nul
     });
   }
   // Text search always runs (notes fields, strings, non-JSON files, invalid JSON).
-  for (const m of text.matchAll(PRIVATE_ID_LOOSE)) if (servedPath || !allowedRetiredIds.has(canonicalId(m[0]))) violations.push(`${path}: private ranked id ${m[0]} outside the template`);
+  for (const m of text.matchAll(PRIVATE_ID_LOOSE)) if ((servedPath || !allowedRetiredIds.has(canonicalId(m[0]))) && !(root && exampleIdAllowed(root, path, m[0]))) violations.push(`${path}: private ranked id ${m[0]} outside the template`);
   violations.push(...secretViolations(path, text));
   if (privateIndex) {
     const lower = text.toLowerCase();
@@ -191,7 +197,7 @@ export const scanRepo = async (root, { privateDir } = {}) => {
     if (st.size > MAX_SCAN_BYTES) { violations.push(`${path}: larger than 32 MB, cannot be scanned`); continue; }
     files += 1;
     const text = readFileSync(abs, 'utf8');
-    violations.push(...scanText(path, text, { publicIds, privateIndex }));
+    violations.push(...scanText(path, text, { publicIds, privateIndex, root }));
   }
   return { files, violations };
 };
