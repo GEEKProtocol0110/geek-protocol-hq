@@ -3,8 +3,9 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { loadRankedSource, rankedSourceMode, resetRankedSourceCache } from '../server/question-source.js';
-import { isExposedQuestion, loadQuestionBank, loadRankedBank, questionById, selectRoundQuestionIds } from '../server/questions.js';
+import { cachedBankVersions, decodeBankDocument, loadRankedSource, loadRankedSourceVersion, pinnedUrl, rankedSourceMode, readUrlBanks, resetRankedSourceCache } from '../server/question-source.js';
+import { SEASONS, isExposedQuestion, loadQuestionBank, loadRankedBank, questionById, rankedRunBinding, seasonFor, selectRoundQuestionIds } from '../server/questions.js';
+import { SEASON_LABELS } from '../server/leaderboard.js';
 
 const KEYS = ['GEEK_PRIVATE_QUESTION_DIR', 'GEEK_PRIVATE_QUESTION_URL', 'GEEK_PRIVATE_QUESTION_TOKEN', 'GEEK_RANKED_QUESTION_SOURCE', 'GEEK_RANKED_ALLOW_EXPOSED', 'VERCEL_ENV', 'NODE_ENV'];
 const withEnv = async (values, run) => {
@@ -102,7 +103,7 @@ test('production without a private source refuses new ranked rounds but keeps gr
 
 test('private URL source is fetched with a bearer token and validated', async () => {
   let seen;
-  const fetch = async (url, init) => { seen = { url, init }; return { ok: true, json: async () => ({ banks: { history: tiers('HURL') } }) }; };
+  const fetch = async (url, init) => { seen = { url, init }; return new Response(JSON.stringify({ banks: { history: tiers('HURL') } })); };
   const env = { GEEK_PRIVATE_QUESTION_URL: 'https://storage.invalid/bank.json', GEEK_PRIVATE_QUESTION_TOKEN: 'test-token' };
   resetRankedSourceCache();
   const source = await loadRankedSource(env, { fetch });
@@ -111,7 +112,7 @@ test('private URL source is fetched with a bearer token and validated', async ()
   resetRankedSourceCache();
   await assert.rejects(loadRankedSource({ GEEK_PRIVATE_QUESTION_URL: 'http://insecure.invalid' }), /PRIVATE_BANK_URL_INVALID/);
   resetRankedSourceCache();
-  const bad = async () => ({ ok: true, json: async () => ({ banks: { history: [{ id: 'x', prompt: 'p', options: ['a'], correctIndex: 9, difficulty: 'easy' }] } }) });
+  const bad = async () => new Response(JSON.stringify({ banks: { history: [{ id: 'x', prompt: 'p', options: ['a'], correctIndex: 9, difficulty: 'easy' }] } }));
   await assert.rejects(loadRankedSource(env, { fetch: bad }), /PRIVATE_BANK_INVALID/);
   resetRankedSourceCache();
 });
@@ -121,5 +122,105 @@ test('issued ranked questions never carry the answer key', () => {
   const publicQuestion = source.slice(source.indexOf('const publicQuestion'), source.indexOf('const issueQuestion'));
   assert.ok(publicQuestion.length > 0);
   assert.doesNotMatch(publicQuestion, /correctIndex|question\.answer\b/);
-  assert.match(source, /selectRoundQuestionIds\([^)]*\{ ranked: true \}\)/);
+  assert.match(source, /selectRoundQuestionIds\([^)]*\{ ranked: true, bankVersion: run\.bankVersion \}\)/);
 });
+
+const SHA_A = 'a'.repeat(40), SHA_B = 'b'.repeat(40);
+const jsonResponse = (text, { status = 200, headers = {} } = {}) => new Response(text, { status, headers });
+const bankDoc = (prefix, correctOffset = 0, retired = []) => JSON.stringify({ banks: { history: tiers(prefix).map((q) => ({ ...q, correctIndex: (q.correctIndex + correctOffset) % 4 })) }, retired: { history: retired } });
+
+test('GitHub Contents API: raw media type and base64 JSON wrapper both load', async () => {
+  const raw = bankDoc('HRAW');
+  const wrapper = JSON.stringify({ type: 'file', encoding: 'base64', name: 'bank.json', content: Buffer.from(raw).toString('base64').replace(/(.{60})/g, '$1\n') });
+  assert.deepEqual(decodeBankDocument(wrapper).banks.history.length, 36);
+  assert.deepEqual(decodeBankDocument(raw).banks.history.length, 36);
+  assert.throws(() => decodeBankDocument(JSON.stringify({ type: 'file', encoding: 'none', content: '' })), /PRIVATE_BANK_TOO_LARGE/);
+  assert.throws(() => decodeBankDocument('not json'), /PRIVATE_BANK_INVALID/);
+  let seen;
+  const fetch = async (url, init) => { seen = { url, init }; return jsonResponse(wrapper); };
+  const loaded = await readUrlBanks('https://api.github.com/repos/o/private-bank/contents/bank.json', 'tok', { fetch, ref: SHA_A });
+  assert.equal(loaded.banks.history.length, 36);
+  assert.match(seen.init.headers.accept, /application\/vnd\.github\.raw/);
+  assert.equal(new URL(seen.url).searchParams.get('ref'), SHA_A, 'Contents API is pinned to an immutable commit');
+  assert.ok(seen.init.signal instanceof AbortSignal, 'fetch carries a timeout signal');
+  assert.equal(pinnedUrl('https://storage.invalid/bank.json', SHA_A), 'https://storage.invalid/bank.json');
+});
+
+test('private bank fetches are bounded by size and time', async () => {
+  const big = 'x'.repeat(2048);
+  await assert.rejects(readUrlBanks('https://storage.invalid/b', '', { fetch: async () => jsonResponse(big), maxBytes: 1024 }), /PRIVATE_BANK_TOO_LARGE/);
+  await assert.rejects(readUrlBanks('https://storage.invalid/b', '', { fetch: async () => jsonResponse('{}', { headers: { 'content-length': '999999999' } }) }), /PRIVATE_BANK_TOO_LARGE/);
+  const hang = (url, init) => new Promise((resolve, reject) => init.signal.addEventListener('abort', () => reject(init.signal.reason)));
+  await assert.rejects(readUrlBanks('https://storage.invalid/b', '', { fetch: hang, timeoutMs: 20 }), /PRIVATE_BANK_TIMEOUT/);
+  await assert.rejects(readUrlBanks('https://storage.invalid/b', '', { fetch: async () => jsonResponse('nope', { status: 404 }) }), /PRIVATE_BANK_UNREACHABLE/);
+});
+
+test('private *-retired.json rows are lookup-only, never selectable', async () => {
+  const dir = privateDir(tiers('HACT'));
+  const retired = ['easy', 'medium', 'hard'].flatMap((tier) => Array.from({ length: 12 }, (_, i) => privateQuestion(`HRET-${tier}-${i}`, tier, i)));
+  writeFileSync(join(dir, 'history-retired.json'), JSON.stringify({ questions: retired }));
+  await withEnv({ GEEK_PRIVATE_QUESTION_DIR: dir }, async () => {
+    const bank = await loadRankedBank('history');
+    assert.equal(bank.questions.length, 36);
+    assert.ok(bank.questions.every((q) => q.id.startsWith('HACT-')));
+    assert.ok(bank.byId.has('HRET-easy-1'));
+    for (let round = 1; round <= 10; round += 1) {
+      const ids = await selectRoundQuestionIds('history', round, [], '', { ranked: true });
+      assert.ok(ids.every((id) => !id.startsWith('HRET-')), 'retired rows never selected');
+    }
+    assert.equal((await questionById('history', 'HRET-hard-2')).correctIndex, 2, 'retired rows still grade saved runs');
+  });
+});
+
+test('runs bind to an immutable pinned bank version; no fetch per answer; history keeps grading', async () => {
+  let fetches = 0;
+  const docs = { [SHA_A]: bankDoc('HVER', 0), [SHA_B]: bankDoc('HVER', 1) };
+  globalThis.__savedFetch = globalThis.fetch;
+  globalThis.fetch = async (url) => { fetches += 1; return jsonResponse(docs[new URL(url).searchParams.get('ref')]); };
+  const base = { GEEK_PRIVATE_QUESTION_URL: 'https://api.github.com/repos/o/private-bank/contents/bank.json', GEEK_PRIVATE_QUESTION_TOKEN: 't', VERCEL_ENV: 'production' };
+  try {
+    await withEnv({ ...base }, async () => {
+      await assert.rejects(rankedRunBinding(), /PRIVATE_BANK_REF_REQUIRED/, 'production URL sources must be pinned');
+    });
+    let bound;
+    await withEnv({ ...base, GEEK_PRIVATE_QUESTION_REF: SHA_A }, async () => {
+      bound = await rankedRunBinding();
+      assert.deepEqual(bound, { season: 'season-1', seasonLabel: 'Season 1 — Private-bank', bankVersion: `git:${SHA_A}` });
+      for (let i = 0; i < 25; i += 1) await questionById('history', 'HVER-easy-1', { bankVersion: bound.bankVersion });
+      await selectRoundQuestionIds('history', 2, [], '', { ranked: true, bankVersion: bound.bankVersion });
+      assert.equal(fetches, 1, 'one cached fetch, no GitHub request per answer');
+      assert.equal((await questionById('history', 'HVER-easy-1', { bankVersion: bound.bankVersion })).correctIndex, 1);
+    });
+    await withEnv({ ...base, GEEK_PRIVATE_QUESTION_REF: SHA_B }, async () => {
+      // Same ID, changed key in the new version.
+      assert.equal((await questionById('history', 'HVER-easy-1')).correctIndex, 2);
+      // A run bound to version A keeps grading and selecting from A.
+      assert.equal((await questionById('history', 'HVER-easy-1', { bankVersion: bound.bankVersion })).correctIndex, 1);
+      const ids = await selectRoundQuestionIds('history', 2, [], '', { ranked: true, bankVersion: bound.bankVersion });
+      assert.equal(ids.length, 10);
+      assert.ok(cachedBankVersions().includes(`git:${SHA_A}`) && cachedBankVersions().includes(`git:${SHA_B}`));
+      assert.equal((await loadRankedSourceVersion(`git:${SHA_A}`)).version, `git:${SHA_A}`);
+      await assert.rejects(selectRoundQuestionIds('history', 2, [], '', { ranked: true, bankVersion: 'public' }), /RANKED_BANK_VERSION_CHANGED/);
+    });
+  } finally { globalThis.fetch = globalThis.__savedFetch; delete globalThis.__savedFetch; }
+});
+
+test('seasons: legacy runs are Season 0 — Public-bank Alpha with a separate private-bank board', async () => {
+  assert.equal(seasonFor({}).label, 'Season 0 — Public-bank Alpha');
+  assert.equal(seasonFor({}).leaderboard, 'legacy');
+  assert.equal(seasonFor({ season: 'season-1' }).leaderboard, 'season-1');
+  assert.equal(SEASON_LABELS.legacy, SEASONS['season-0'].label);
+  await withEnv({}, async () => assert.equal((await rankedRunBinding()).season, 'season-0'));
+  const leaderboard = readFileSync(join(process.cwd(), 'server', 'leaderboard.js'), 'utf8');
+  assert.match(leaderboard, /'legacy' \? 'geek:leaderboard' : `geek:leaderboard:\$\{cleanSeason\(season\)\}`/, 'legacy keys preserved; private season separate');
+});
+
+test('ranked answer responses defer correctness until the round locks', () => {
+  const source = readFileSync(join(process.cwd(), 'api', 'ranked.js'), 'utf8');
+  assert.match(source, /feedback: 'deferred'/);
+  assert.match(source, /result: hidden \? \{ feedback: 'deferred', recorded: true, timedOut, locked: false \} : result/);
+  const deferredRun = source.slice(source.indexOf('const safeRun'), source.indexOf(") : ({"));
+  for (const field of ['correct:', 'streak:', 'roundScore:', 'maxStreak:', 'answeredReview: run.roundAnswers']) assert.equal(deferredRun.includes(field), false, field);
+  assert.match(source, /run\.lastResponse = response;/, 'saved/retried responses reuse the masked response');
+});
+

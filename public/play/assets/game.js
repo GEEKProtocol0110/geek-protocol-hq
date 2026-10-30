@@ -205,9 +205,10 @@
     elements.roundTotal.textContent = String(run.maxRounds || 1);
     elements.questionNumber.textContent = pad(question.number);
     elements.questionTotal.textContent = String(run.questionCount || 10);
-    elements.correct.textContent = String(run.correct);
-    elements.streak.textContent = `${run.streak || 0}×`;
-    elements.score.textContent = format.format(run.totalScore + (['question', 'awaiting-next'].includes(run.status) ? run.roundScore : 0));
+    const hiddenRound = run.feedback === 'deferred';
+    elements.correct.textContent = hiddenRound ? '—' : String(run.correct);
+    elements.streak.textContent = hiddenRound ? '—' : `${run.streak || 0}×`;
+    elements.score.textContent = format.format(run.totalScore + (['question', 'awaiting-next'].includes(run.status) ? (run.roundScore || 0) : 0));
     elements.questionProgress.style.width = `${((question.number - 1) / (run.questionCount || 10)) * 100}%`;
     elements.category.textContent = displayTopic(question.topic).toUpperCase();
     elements.difficulty.textContent = question.difficulty.toUpperCase();
@@ -272,6 +273,16 @@
       const payload = await postRanked('answer', { runId: run.id, questionToken: currentQuestion.token, selectedIndex });
       applyServerState(payload);
       const result = payload.result;
+      if (result.feedback === 'deferred') {
+        // Ranked answers are locked in; correctness is revealed after the round locks.
+        if (selectedIndex >= 0) buttons[selectedIndex]?.classList.add('selected');
+        elements.feedback.textContent = result.timedOut ? 'Server clock expired · answer recorded' : 'Answer locked · results after the round';
+        elements.feedback.className = 'feedback';
+        elements.ace.textContent = 'Ranked feedback is revealed when the round locks.';
+        elements.questionProgress.style.width = `${Math.min(100, (currentQuestion.number / (run.questionCount || 10)) * 100)}%`;
+        transitionTimer = window.setTimeout(() => payload.roundResult ? completeRound(payload.roundResult) : nextQuestion(), 600);
+        return;
+      }
       buttons.forEach((button, index) => {
         if (index === result.correctIndex) button.classList.add('correct');
         if (index === selectedIndex && !result.correct) button.classList.add('wrong');

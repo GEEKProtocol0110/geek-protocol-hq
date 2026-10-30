@@ -657,7 +657,18 @@ test('sessions, live rooms, and server-authoritative leaderboard work together',
       action: 'answer', runId: rankedPayload.run.id, questionToken: rankedPayload.question.token, selectedIndex
     }, hostCookie), answerRes);
     assert.equal(answerRes.statusCode, 200);
-    assert.equal(answerRes.body.result.correct, true);
+    if (questionNumber < 10) {
+      // Ranked correctness stays hidden until the round locks.
+      assert.deepEqual(answerRes.body.result, { feedback: 'deferred', recorded: true, timedOut: false, locked: false });
+      assert.equal('correct' in answerRes.body.run, false);
+      assert.equal('roundScore' in answerRes.body.run, false);
+      assert.deepEqual(answerRes.body.run.answeredReview, []);
+    } else {
+      assert.equal(answerRes.body.result.correct, true);
+      assert.equal(answerRes.body.run.answeredReview.length, 10);
+      assert.ok(answerRes.body.run.answeredReview.every((row) => row.correct === true));
+      assert.equal(answerRes.body.roundResult.review.length, 10);
+    }
     rankedPayload = answerRes.body;
     if (questionNumber === 1) {
       const retryRes = response();
@@ -665,8 +676,8 @@ test('sessions, live rooms, and server-authoritative leaderboard work together',
         action: 'answer', runId: rankedPayload.run.id, questionToken: startRes.body.question.token, selectedIndex: (selectedIndex + 1) % 4
       }, hostCookie), retryRes);
       assert.equal(retryRes.statusCode, 200);
-      assert.equal(retryRes.body.result.correct, true);
-      assert.equal(retryRes.body.run.roundScore, rankedPayload.run.roundScore);
+      assert.deepEqual(retryRes.body.result, rankedPayload.result);
+      assert.deepEqual(retryRes.body.run, rankedPayload.run);
     }
     if (questionNumber < 10) {
       const nextRes = response();

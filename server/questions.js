@@ -5,7 +5,7 @@ import { publishedCommunityQuestionById, publishedCommunityQuestions } from './c
 import { promptIdentity, similarQuestion } from './question-identity.js';
 
 import { categoryFiles } from './question-categories.js';
-import { loadRankedSource } from './question-source.js';
+import { loadRankedSource, loadRankedSourceVersion } from './question-source.js';
 export { categoryFiles };
 
 const bankCache = new Map();
@@ -58,40 +58,74 @@ export const loadQuestionBank = (category) => {
 };
 
 const rankedBankCache = new Map();
+// Builds the selectable pool (active private rows only) plus a lookup map that
+// also holds private *-retired rows, which are never selectable.
+const privateBankFor = (category, source) => {
+  const cacheKey = `${category}|${source.version}`;
+  if (rankedBankCache.get(cacheKey)?.source === source) return rankedBankCache.get(cacheKey).bank;
+  const publicIds = loadQuestionBank(category).byId;
+  const questions = (source.banks[category] || []).map((question) => normalizeQuestion(question));
+  const retired = (source.retired?.[category] || []).map((question) => normalizeQuestion(question));
+  const byId = new Map();
+  for (const question of [...questions, ...retired]) {
+    // A private ID must never shadow a published one: saved games keyed by the
+    // published ID have to keep grading against the answer they were issued.
+    if (publicIds.has(question.id) || byId.has(question.id)) throw new Error('PRIVATE_BANK_ID_COLLISION');
+    byId.set(question.id, question);
+  }
+  const bank = { questions, byId, private: true, version: source.version };
+  rankedBankCache.set(cacheKey, { source, bank });
+  return bank;
+};
+
 // Ranked pool for new runs. Private/fixture questions never fall back to the
 // exposed public pool; production without a private source fails closed.
 export const loadRankedBank = async (category) => {
   if (!categoryFiles[category]) throw new Error('INVALID_REQUEST');
   const source = await loadRankedSource();
   if (source.mode === 'unavailable') throw new Error('RANKED_BANK_UNAVAILABLE');
-  if (source.mode === 'exposed') return loadQuestionBank(category);
-  const cacheKey = `${category}|${source.mode}`;
-  if (rankedBankCache.get(cacheKey)?.source === source) return rankedBankCache.get(cacheKey).bank;
-  const publicIds = loadQuestionBank(category).byId;
-  const questions = (source.banks[category] || []).map((question) => normalizeQuestion(question));
-  const byId = new Map();
-  for (const question of questions) {
-    // A private ID must never shadow a published one: saved games keyed by the
-    // published ID have to keep grading against the answer they were issued.
-    if (publicIds.has(question.id) || byId.has(question.id)) throw new Error('PRIVATE_BANK_ID_COLLISION');
-    byId.set(question.id, question);
-  }
-  const bank = { questions, byId, private: true };
-  rankedBankCache.set(cacheKey, { source, bank });
-  return bank;
+  if (source.mode === 'exposed') return { ...loadQuestionBank(category), version: source.version };
+  return privateBankFor(category, source);
 };
 
-const rankedLookup = async (category, id) => {
+// A run keeps drawing later rounds from the bank version it was bound to.
+export const rankedBankForVersion = async (category, bankVersion = '') => {
+  const current = await loadRankedBank(category);
+  if (!bankVersion || current.version === bankVersion) return current;
+  const source = bankVersion === 'public' ? null : await loadRankedSourceVersion(bankVersion);
+  if (!source) throw new Error('RANKED_BANK_VERSION_CHANGED');
+  return privateBankFor(category, source);
+};
+
+// Season and bank version are assigned server-side when a ranked run starts.
+export const SEASONS = Object.freeze({
+  'season-0': Object.freeze({ id: 'season-0', label: 'Season 0 — Public-bank Alpha', leaderboard: 'legacy' }),
+  'season-1': Object.freeze({ id: 'season-1', label: 'Season 1 — Private-bank', leaderboard: 'season-1' })
+});
+export const rankedRunBinding = async () => {
+  const source = await loadRankedSource();
+  if (source.mode === 'unavailable') throw new Error('RANKED_BANK_UNAVAILABLE');
+  const season = source.mode === 'private' ? SEASONS['season-1'] : SEASONS['season-0'];
+  return { season: season.id, seasonLabel: season.label, bankVersion: source.version };
+};
+export const seasonFor = (run) => SEASONS[run?.season] || SEASONS['season-0'];
+
+const rankedLookup = async (category, id, bankVersion) => {
   try {
+    if (bankVersion && bankVersion !== 'public') {
+      const source = await loadRankedSourceVersion(bankVersion);
+      if (source) return privateBankFor(category, source).byId.get(id);
+      return undefined;
+    }
     const bank = await loadRankedBank(category);
     return bank.private ? bank.byId.get(id) : undefined;
   } catch (error) {
-    if (error.message === 'RANKED_BANK_UNAVAILABLE') return undefined;
+    if (['RANKED_BANK_UNAVAILABLE', 'PRIVATE_BANK_REF_REQUIRED'].includes(error.message)) return undefined;
     throw error;
   }
 };
 
-export const questionById = async (category, id) => {
+export const questionById = async (category, id, { bankVersion = '' } = {}) => {
   if (String(id || '').startsWith('cce_')) {
     const question = await publishedCommunityQuestionById(id);
     if (question.category !== category) throw new Error('QUESTION_NOT_FOUND');
@@ -99,15 +133,15 @@ export const questionById = async (category, id) => {
   }
   // Previously issued runs keep their original answer key: published and
   // retired rows stay addressable by ID, and private rows are looked up by ID.
-  const question = loadQuestionBank(category).byId.get(id) || await rankedLookup(category, id);
+  const question = loadQuestionBank(category).byId.get(id) || await rankedLookup(category, id, bankVersion);
   if (!question) throw new Error('QUESTION_NOT_FOUND');
   return question;
 };
 
-export const selectRoundQuestionIds = async (category, round, excludedIds = [], focus = '', { ranked = false } = {}) => {
+export const selectRoundQuestionIds = async (category, round, excludedIds = [], focus = '', { ranked = false, bankVersion = '' } = {}) => {
   const tier = round <= 3 ? 'easy' : round <= 7 ? 'medium' : 'hard';
   const excluded = new Set(excludedIds);
-  const bank = ranked ? await loadRankedBank(category) : loadQuestionBank(category);
+  const bank = ranked ? await rankedBankForVersion(category, bankVersion) : loadQuestionBank(category);
   const previous = await Promise.all(excludedIds.map(async (id) => {
     if (!String(id).startsWith('cce_')) return bank.byId.get(id) || loadQuestionBank(category).byId.get(id);
     return questionById(category, id);

@@ -85,8 +85,10 @@ for (const mode of ['gauntlet', 'daily', 'speed']) {
       }
       const receipt = await call(rankedHandler, 'POST', answer, cookie);
       assert.equal(receipt.statusCode, 200);
-      assert.equal(receipt.body.result.answer, pack[0].options[pack[0].correctIndex]);
-      assert.equal(started.body.question.options[receipt.body.result.correctIndex], receipt.body.result.answer);
+      // Ranked feedback is deferred until the round locks: no correctness, answer, or score movement mid-round.
+      assert.deepEqual(receipt.body.result, { feedback: 'deferred', recorded: true, timedOut: false, locked: false });
+      for (const field of ['correct', 'streak', 'roundScore', 'maxStreak']) assert.equal(field in receipt.body.run, false, field);
+      assert.deepEqual(receipt.body.run.answeredReview, []);
       assert.equal((await stored(runKey)).current, null);
       const { result, ...rest } = receipt.body; hidden(rest); noFuturePack(receipt.body, pack, 0);
       const retry = await call(rankedHandler, 'POST', { ...answer, selectedIndex: 0, correctIndex: 0 }, cookie);
