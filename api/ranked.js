@@ -6,7 +6,7 @@ import { recordVerifiedScore } from '../server/leaderboard.js';
 import { loadProfile } from '../server/profile.js';
 import { commitRankedState } from '../server/ranked-state.js';
 import { recordRoundJourney, withProgression } from '../server/progression.js';
-import { questionById, rankedRunBinding, seasonFor, selectRoundQuestionIds, shuffleOptions } from '../server/questions.js';
+import { questionById, rankedRunBinding, recordSeasonBank, seasonFor, selectRoundQuestionIds, shuffleOptions } from '../server/questions.js';
 import { rateLimit, redis } from '../server/redis.js';
 import { playerIdFor, requireSession } from '../server/session.js';
 import questHandler from '../server/quest.js';
@@ -330,6 +330,7 @@ export default async function handler(req, res) {
       const dailyKey = mode === 'daily' ? `geek:daily:${playerId}:${new Date().toISOString().slice(0, 10)}` : undefined;
       const question = await startRound(run, profile);
       await commitRankedState({ playerId, run, profile, dailyKey, activeKey: `geek:ranked:active:${session.id}` });
+      await recordSeasonBank(run);
       return sendJson(res, 201, { ok: true, verified: true, run: safeRun(run), profile: withProgression(profile), question });
     }
     const run = await loadRun(body.runId, session);

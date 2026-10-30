@@ -1,5 +1,5 @@
 import { parseStoredJson, pipeline, redis } from './redis.js';
-import { assertWritableLeaderboardSeason, isLeaderboardSeasonId, leaderboardSeasonLabel } from './seasons.js';
+import { seasonKeyNamespace, assertWritableLeaderboardSeason, isLeaderboardSeasonId, leaderboardSeasonLabel } from './seasons.js';
 import { cleanName } from './http.js';
 import { playerIdFor } from './session.js';
 import { parseProfile } from './profile.js';
@@ -13,7 +13,10 @@ const cleanMode = (mode) => validModes.has(mode) ? mode : 'gauntlet';
 // Private seasons are numbered monthly ('season-1', 'season-2', ...; see seasons.js).
 // Reads of a malformed id show Season 0; writes validate first and never fall back.
 const cleanSeason = (season) => isLeaderboardSeasonId(season) ? season : 'legacy';
-const seasonPrefix = (season) => cleanSeason(season) === 'legacy' ? 'geek:leaderboard' : `geek:leaderboard:${cleanSeason(season)}`;
+// Season 0 keeps its original keys; Season 1+ boards are environment-namespaced
+// (production unchanged: geek:leaderboard:season-N; elsewhere geek:<env>:leaderboard:season-N).
+const seasonPrefix = (season) => envScoped(cleanSeason(season) === 'legacy' ? 'geek:leaderboard' : `geek:leaderboard:${cleanSeason(season)}`);
+const envScoped = key => key === 'geek:leaderboard' ? key : seasonKeyNamespace() + key.slice('geek:'.length);
 export const SEASON_LABELS = Object.freeze({ legacy: 'Season 0 — Public-bank Alpha', 'season-1': 'Season 1 — Private-bank' });
 const boardKey = (category, mode = 'gauntlet', season = 'legacy') => cleanMode(mode) === 'gauntlet' ? `${seasonPrefix(season)}:${category}` : `${seasonPrefix(season)}:${cleanMode(mode)}:${category}`;
 const metaKey = (category, mode = 'gauntlet', season = 'legacy') => `${boardKey(category, mode, season)}:meta`;

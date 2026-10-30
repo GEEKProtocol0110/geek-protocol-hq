@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { SEASON_ZERO, currentSeasonNumber, privateSeason, seasonConfig, seasonForRun } from './seasons.js';
+import { SEASON_ZERO, configuredSeasonBankVersion, currentSeasonNumber, privateSeason, seasonBankKey, seasonConfig, seasonForRun } from './seasons.js';
 import { redis } from './redis.js';
 import { randomInt } from 'node:crypto';
 import { join } from 'node:path';
@@ -109,27 +109,37 @@ export const rankedBankForVersion = async (category, bankVersion = '') => {
 
 // Season and bank version are assigned server-side when a ranked run starts.
 // Private-bank seasons are numbered monthly (see server/seasons.js).
-export const SEASONS = Object.freeze({
-  'season-0': SEASON_ZERO,
-  'season-1': Object.freeze({ id: 'season-1', label: 'Season 1 — Private-bank', leaderboard: 'season-1' })
-});
-// Monthly seasons only (GEEK_SEASON_1_START_MONTH set): the first ranked run of
-// a season records that season's bank version; later runs must match it, so a
-// season never mixes banks. A mismatch refuses new runs fail-closed.
-export const seasonBankKey = seasonId => `geek:season-bank:${seasonId}`;
-const pinSeasonBank = async (seasonId, version) => {
-  if (!version) throw new Error('RANKED_BANK_UNAVAILABLE');
-  const key = seasonBankKey(seasonId);
-  await redis('SET', key, version, 'NX');
-  const recorded = await redis('GET', key);
-  if (recorded !== version) throw new Error('RANKED_BANK_SEASON_MISMATCH');
-};
+export const SEASONS = Object.freeze({ 'season-0': SEASON_ZERO });
+// Monthly seasons only (GEEK_SEASON_1_START_MONTH set, private bank): each season
+// uses one bank version. The expected version comes from GEEK_SEASON_BANK_VERSIONS
+// when configured, else from the season's recorded pin. A live bank that differs
+// refuses new runs fail-closed (RANKED_BANK_SEASON_MISMATCH -> 503).
+// The pin is written only in production, only after a run was saved
+// (recordSeasonBank), and can be cleared with scripts/season-bank-reset.mjs.
+export { seasonBankKey };
+const expectedSeasonBank = async seasonId => configuredSeasonBankVersion(seasonId) ?? await redis('GET', seasonBankKey(seasonId));
 export const rankedRunBinding = async (now = Date.now()) => {
   const source = await loadRankedSource();
   if (source.mode === 'unavailable') throw new Error('RANKED_BANK_UNAVAILABLE');
   const season = source.mode === 'private' ? privateSeason(currentSeasonNumber(now)) : SEASON_ZERO;
-  if (source.mode === 'private' && seasonConfig().monthly) await pinSeasonBank(season.id, source.version);
+  if (source.mode === 'private' && seasonConfig().monthly) {
+    if (!source.version) throw new Error('RANKED_BANK_UNAVAILABLE');
+    const expected = await expectedSeasonBank(season.id);
+    if (expected && expected !== source.version) throw new Error('RANKED_BANK_SEASON_MISMATCH');
+  }
   return { season: season.id, seasonLabel: season.label, ...(season.month ? { seasonMonth: season.month } : {}), bankVersion: source.version };
+};
+// Call after the run is saved. First-run-wins pin, production only; never fails
+// the already-saved start (a pin error is logged by code and retried next start).
+export const recordSeasonBank = async (run, env = process.env) => {
+  if (env.VERCEL_ENV !== 'production' || !seasonConfig(env).monthly || !run?.bankVersion || run.season === SEASON_ZERO.id || !run.season) return false;
+  try {
+    if (configuredSeasonBankVersion(run.season, env)) return false;
+    return (await redis('SET', seasonBankKey(run.season, env), run.bankVersion, 'NX')) === 'OK';
+  } catch (error) {
+    console.error('Geek API error code', /^[A-Z_]{1,64}$/.test(error?.message || '') ? error.message : 'SEASON_BANK_PIN_FAILED');
+    return false;
+  }
 };
 export const seasonFor = (run) => seasonForRun(run);
 

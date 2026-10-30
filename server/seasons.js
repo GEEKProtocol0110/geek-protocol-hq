@@ -98,3 +98,34 @@ export const leaderboardSeasonLabel = (id, env = process.env) => {
   const number = parseRunSeasonId(id);
   return number ? privateSeason(number, env).label : null;
 };
+
+// Environment namespace for season-scoped write keys (season-bank pins and
+// Season 1+ leaderboards). Production keeps the original `geek:` keys so existing
+// data and Season 0 history are untouched; every other environment (Vercel
+// preview, local development, tests) writes under `geek:<env>:` so it can never
+// land on production keys even when pointed at the same database.
+const ENV_NAME = /^[a-z0-9-]{1,32}$/;
+export const seasonKeyNamespace = (env = process.env) => {
+  if (env.VERCEL_ENV === 'production') return 'geek:';
+  return `geek:${ENV_NAME.test(env.VERCEL_ENV || '') ? env.VERCEL_ENV : 'development'}:`;
+};
+export const seasonScopedKey = (suffix, env = process.env) => `${seasonKeyNamespace(env)}${suffix}`;
+export const seasonBankKey = (seasonId, env = process.env) => {
+  if (!SEASON_ID_PATTERN.test(seasonId || '')) throw new Error('SEASON_UNSUPPORTED');
+  return seasonScopedKey(`season-bank:${seasonId}`, env);
+};
+
+// Optional operator config: GEEK_SEASON_BANK_VERSIONS='{"season-2":"<bank version>"}'
+// sets the expected bank version per season and overrides first-run-wins pins.
+// Invalid JSON or entries fail closed (SEASON_CONFIG_INVALID).
+export const configuredSeasonBankVersion = (seasonId, env = process.env) => {
+  const raw = env.GEEK_SEASON_BANK_VERSIONS;
+  if (!raw) return null;
+  let map;
+  try { map = JSON.parse(raw); } catch { throw new Error('SEASON_CONFIG_INVALID'); }
+  if (!map || typeof map !== 'object' || Array.isArray(map)) throw new Error('SEASON_CONFIG_INVALID');
+  for (const [key, value] of Object.entries(map)) {
+    if (!SEASON_ID_PATTERN.test(key) || typeof value !== 'string' || !value || value.length > 200) throw new Error('SEASON_CONFIG_INVALID');
+  }
+  return Object.hasOwn(map, seasonId) ? map[seasonId] : null;
+};
