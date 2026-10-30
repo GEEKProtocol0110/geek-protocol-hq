@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-28",
+  "updatedAt": "2026-10-30",
   "records": [
     {
       "id": "DR-001",
@@ -387,6 +387,31 @@
         "server/question-audit/technology-2026-10-28.json"
       ],
       "recordedAt": "2026-10-28",
+      "supersedes": null
+    },
+    {
+      "id": "DR-031",
+      "status": "founder-direction",
+      "title": "Season mapping: preserve Season 0, number monthly seasons, keep multiplayer modes out of private ranked seasons",
+      "decision": "Season 0 (legacy) history is preserved unchanged. Monthly ranked seasons are numbered sequentially: Season 1, 2, 3 and later. Royale, Duel and Lobby stay outside Season 1 ranked until their private-bank handling is separately ready. Documentation of the mapping (#204) does not implement rollover; season server logic is separate work (SEASON-001).",
+      "basis": "Founder (Gee) decision relayed October 30, 2026 and recorded in open draft PR #204 and the #200 description. Not yet merged code.",
+      "evidence": [
+        "docs/LAUNCH-STATUS-2026-10-30.md"
+      ],
+      "recordedAt": "2026-10-30",
+      "supersedes": null
+    },
+    {
+      "id": "DR-032",
+      "status": "founder-direction",
+      "title": "Launch milestones A–E and the content gate distinction",
+      "decision": "Milestone A: ranked candidate ready. B: approved ranked release. C: broader beta complete. D: reviewed content and economy readiness, with 1,000 reviewed concepts in each of eight categories before CCE resumes. E: post-launch expansion. The 680-per-category ranked figure is only a capacity-planning baseline and does not replace the 1,000-reviewed CCE requirement. Founder approval remains required for merges and production cutover.",
+      "basis": "Founder (Gee) coordination instruction of October 30, 2026. Does not open CCE, contributor rates, Mainnet settlement, payouts or collection ownership.",
+      "evidence": [
+        "docs/ROADMAP-CHECKPOINT.md",
+        "docs/LAUNCH-STATUS-2026-10-30.md"
+      ],
+      "recordedAt": "2026-10-30",
       "supersedes": null
     }
   ]

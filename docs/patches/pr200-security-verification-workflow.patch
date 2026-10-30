@@ -1,0 +1,54 @@
+From ea1a782ea07aec764cde1b87f1ea1f553b28f32e Mon Sep 17 00:00:00 2001
+From: GEEKProtocol0110 <GEEKProtocol0110@users.noreply.github.com>
+Date: Thu, 29 Oct 2026 21:31:10 -0400
+Subject: [PATCH] CI: run full npm run verify with native Redis required
+
+---
+ .github/workflows/security-verification.yml | 20 +++++---------------
+ 1 file changed, 5 insertions(+), 15 deletions(-)
+
+diff --git a/.github/workflows/security-verification.yml b/.github/workflows/security-verification.yml
+index 868425d..4975cd0 100644
+--- a/.github/workflows/security-verification.yml
++++ b/.github/workflows/security-verification.yml
+@@ -12,7 +12,7 @@ permissions:
+ jobs:
+   verify:
+     runs-on: ubuntu-latest
+-    timeout-minutes: 10
++    timeout-minutes: 20
+     steps:
+       - name: Check out pinned source
+         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+@@ -28,24 +28,14 @@ jobs:
+         run: find api server public scripts \( -name '*.js' -o -name '*.mjs' \) | sort | xargs -n1 node --check
+       - name: Install Redis for atomic game and chapter integration tests
+         run: sudo apt-get update -qq && sudo apt-get install -y redis-server
+-      - name: Run integration tests
++      - name: Confirm native Redis is available
++        run: redis-server --version
++      - name: Run full verification with Redis-required integration suites
+         env:
+           DUEL_REQUIRE_REDIS: "1"
+           QUEST_REQUIRE_REDIS: "1"
+-        run: npm test
+-      - name: Verify security evidence
+-        run: npm run security:check
+-      - name: Verify real SDK transaction construction offline
+-        run: npm run test:signer
++        run: npm run verify
+       - name: Audit isolated testnet worker dependencies
+         run: npm audit --prefix workers/testnet --omit=dev --audit-level=high
+-      - name: Verify distinct question banks and public counts
+-        run: npm run questions:check
+-      - name: Verify page metadata, sitemap and internal links
+-        run: npm run site:check
+-      - name: Verify the project continuation record
+-        run: npm run continuity:check
+-      - name: Verify economy stress baseline
+-        run: npm run economy:stress:check
+       - name: Audit production dependencies
+         run: npm audit --omit=dev --audit-level=high
+-- 
+2.47.3
+
