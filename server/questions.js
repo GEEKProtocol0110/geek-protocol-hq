@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { SEASON_ZERO, currentSeasonNumber, privateSeason, seasonForRun } from './seasons.js';
 import { randomInt } from 'node:crypto';
 import { join } from 'node:path';
 import { publishedCommunityQuestionById, publishedCommunityQuestions } from './cce.js';
@@ -98,17 +99,18 @@ export const rankedBankForVersion = async (category, bankVersion = '') => {
 };
 
 // Season and bank version are assigned server-side when a ranked run starts.
+// Private-bank seasons are numbered monthly (see server/seasons.js).
 export const SEASONS = Object.freeze({
-  'season-0': Object.freeze({ id: 'season-0', label: 'Season 0 — Public-bank Alpha', leaderboard: 'legacy' }),
+  'season-0': SEASON_ZERO,
   'season-1': Object.freeze({ id: 'season-1', label: 'Season 1 — Private-bank', leaderboard: 'season-1' })
 });
-export const rankedRunBinding = async () => {
+export const rankedRunBinding = async (now = Date.now()) => {
   const source = await loadRankedSource();
   if (source.mode === 'unavailable') throw new Error('RANKED_BANK_UNAVAILABLE');
-  const season = source.mode === 'private' ? SEASONS['season-1'] : SEASONS['season-0'];
-  return { season: season.id, seasonLabel: season.label, bankVersion: source.version };
+  const season = source.mode === 'private' ? privateSeason(currentSeasonNumber(now)) : SEASON_ZERO;
+  return { season: season.id, seasonLabel: season.label, ...(season.month ? { seasonMonth: season.month } : {}), bankVersion: source.version };
 };
-export const seasonFor = (run) => SEASONS[run?.season] || SEASONS['season-0'];
+export const seasonFor = (run) => seasonForRun(run);
 
 const rankedLookup = async (category, id, bankVersion) => {
   try {

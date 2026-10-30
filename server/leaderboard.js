@@ -1,4 +1,5 @@
 import { parseStoredJson, pipeline, redis } from './redis.js';
+import { assertWritableLeaderboardSeason, isLeaderboardSeasonId, leaderboardSeasonLabel } from './seasons.js';
 import { cleanName } from './http.js';
 import { playerIdFor } from './session.js';
 import { parseProfile } from './profile.js';
@@ -9,8 +10,9 @@ const validModes = new Set(['gauntlet', 'daily', 'speed']);
 const cleanMode = (mode) => validModes.has(mode) ? mode : 'gauntlet';
 // Season 0 — Public-bank Alpha keeps the original (legacy) keys so history and
 // XP are preserved. Each private-bank season gets its own separate board.
-const validSeasons = new Set(['legacy', 'season-1']);
-const cleanSeason = (season) => validSeasons.has(season) ? season : 'legacy';
+// Private seasons are numbered monthly ('season-1', 'season-2', ...; see seasons.js).
+// Reads of a malformed id show Season 0; writes validate first and never fall back.
+const cleanSeason = (season) => isLeaderboardSeasonId(season) ? season : 'legacy';
 const seasonPrefix = (season) => cleanSeason(season) === 'legacy' ? 'geek:leaderboard' : `geek:leaderboard:${cleanSeason(season)}`;
 export const SEASON_LABELS = Object.freeze({ legacy: 'Season 0 — Public-bank Alpha', 'season-1': 'Season 1 — Private-bank' });
 const boardKey = (category, mode = 'gauntlet', season = 'legacy') => cleanMode(mode) === 'gauntlet' ? `${seasonPrefix(season)}:${category}` : `${seasonPrefix(season)}:${cleanMode(mode)}:${category}`;
@@ -38,7 +40,7 @@ export const listLeaderboard = async (category, mode = 'gauntlet', limit = 10, s
       round: Number(details.round || 1),
       mode: selectedMode,
       season: cleanSeason(season),
-      seasonLabel: SEASON_LABELS[cleanSeason(season)],
+      seasonLabel: leaderboardSeasonLabel(cleanSeason(season)),
       level: progression?.level ?? null,
       prestige: progression?.prestige ?? null,
       updatedAt: Number(details.updatedAt || 0)
@@ -60,6 +62,7 @@ redis.call('HSET', KEYS[2], ARGV[1], ARGV[3])
 return 1`;
 
 export const recordVerifiedScore = async ({ session, category, score, round, mode = 'gauntlet', season = 'legacy' }) => {
+  assertWritableLeaderboardSeason(season);
   const selectedMode = cleanMode(mode);
   const boardKey = (c, m) => boardKeyFor(c, m, season), metaKey = (c, m) => metaKeyFor(c, m, season);
   if (!Number.isInteger(score) || score <= 0) return { improved: false, season: cleanSeason(season), entries: await listLeaderboard(category, selectedMode, 10, season) };
