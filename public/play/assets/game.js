@@ -145,6 +145,27 @@
     if (season === 'current' || !Array.isArray(payload.seasons) || payload.seasons.includes(season)) return false;
     $('[data-board-season]').value = 'current'; storeSeason(null); return true;
   };
+  // Monthly seasons: mirror the server's season list in the picker (Season 0 and
+  // Seasons 1..current). Returns true when a remembered pick became available.
+  const seasonIdPattern = /^(legacy|season-[1-9]\d{0,3})$/;
+  const ensureSeasonOption = (id, label) => {
+    const select = $('[data-board-season]');
+    if (!select.options || typeof document.createElement !== 'function' || !seasonIdPattern.test(id || '')) return;
+    let option = [...select.options].find(item => item.value === id);
+    if (!option) { option = document.createElement('option'); option.value = id; select.append(option); }
+    if (label) option.textContent = label;
+  };
+  const syncSeasonOptions = payload => {
+    const select = $('[data-board-season]');
+    if (!Array.isArray(payload.seasons) || !select.options || typeof document.createElement !== 'function') return false;
+    const listed = payload.seasons.filter(id => seasonIdPattern.test(id || ''));
+    [...select.options].filter(option => option.value !== 'current' && !listed.includes(option.value) && option.value !== select.value).forEach(option => option.remove());
+    listed.forEach(id => ensureSeasonOption(id, payload.seasonLabels?.[id]));
+    const saved = storedSeason();
+    if (saved && !listed.includes(saved)) { storeSeason(null); return false; }
+    if (saved && select.value === 'current') { select.value = saved; return true; }
+    return false;
+  };
   const loadLeaderboard = async (category = activeCategory, mode = activeMode) => {
     const sequence = ++boardSequence;
     elements.boardState.textContent = communityReady ? 'REFRESHING' : 'CONNECTING';
@@ -152,7 +173,8 @@
       const season = $('[data-board-season]').value || 'current';
       const payload = await api(`/api/leaderboard?${new URLSearchParams({ category, mode, season })}`);
       if (sequence !== boardSequence) return;
-      if (rejectUnknownSeason(season, payload)) return loadLeaderboard(category, mode);
+      if (rejectUnknownSeason(season, payload)) { syncSeasonOptions(payload); return loadLeaderboard(category, mode); }
+      if (syncSeasonOptions(payload)) return loadLeaderboard(category, mode);
       elements.boardState.textContent = payload.seasonLabel || 'SERVER VERIFIED';
       renderLeaderboard(payload.entries);
     } catch {
@@ -407,7 +429,9 @@
       applyServerState(payload);
       window.dispatchEvent(new Event('geek:run-saved'));
       ++boardSequence;
-      $('[data-board-season]').value = run.season === 'season-1' ? 'season-1' : 'legacy';
+      const runBoard = seasonIdPattern.test(run.season || '') ? run.season : 'legacy';
+      ensureSeasonOption(runBoard, runBoard === 'legacy' ? 'Season 0 — Public-bank Alpha' : run.seasonLabel);
+      $('[data-board-season]').value = runBoard;
       elements.boardState.textContent = `${run.seasonLabel || 'Season 0 — Public-bank Alpha'}${payload.leaderboard?.improved ? ' · NEW VERIFIED BEST' : ''}`;
       if (payload.leaderboard) renderLeaderboard(payload.leaderboard.entries);
       rememberRun(null); $('[data-ranked-recovery]').hidden = true;
