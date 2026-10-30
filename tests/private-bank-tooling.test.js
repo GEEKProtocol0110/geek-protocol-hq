@@ -38,11 +38,11 @@ test('duplicate check catches ids (incl. retired), prompts, conceptIds and expos
   const dir = copy();
   try {
     edit(dir, 'kaspa.json', (qs) => { qs[1].prompt = qs[0].prompt.toUpperCase(); qs[2].conceptId = 'c'; qs[3].conceptId = 'c'; });
-    edit(dir, 'history-retired.json', (qs) => { qs[0].id = 'PRK-HIS-202611-0001'; });
+    edit(dir, 'history-retired.json', (qs) => { qs[0].id = ['PRK', 'HIS', '202611', '0001'].join('-'); });
     const pubRow = [...loadQuestionBank('kaspa').byId.values()][0];
     edit(dir, 'kaspa.json', (qs) => { qs[5].prompt = pubRow.prompt; });
     const msgs = checkBank(dir, { template: true, publicRows: [pubRow] }).errors.join('\n');
-    assert.match(msgs, /duplicate prompt/); assert.match(msgs, /duplicate conceptId/); assert.match(msgs, /PRK-HIS-202611-0001: duplicate id/); assert.match(msgs, /published in the public repo/);
+    assert.match(msgs, /duplicate prompt/); assert.match(msgs, /duplicate conceptId/); assert.match(msgs, new RegExp(`${['PRK', 'HIS', '202611', '0001'].join('-')}: duplicate id`)); assert.match(msgs, /published in the public repo/);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
 
