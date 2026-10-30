@@ -102,7 +102,14 @@ export const handleApiError = (res, error) => {
   if (['DUEL_CHANGED', 'DUEL_STATE_INVALID', 'DUEL_QUESTION_CLOSED', 'DUEL_ANSWER_RECORDED'].includes(code)) return sendJson(res, 409, { ok: false, code, error: 'That Duel action is no longer available. Refresh the match and try again.' });
   if (code === 'RUN_NOT_FOUND') return sendJson(res, 404, { ok: false, error: 'That ranked run expired or is no longer active.' });
   if (code === 'RANKED_BANK_VERSION_CHANGED') return sendJson(res, 409, { ok: false, code, error: 'This ranked season has rotated. Finish this run to submit its completed rounds, then start a new run.' });
-  if (['RANKED_BANK_UNAVAILABLE', 'PRIVATE_BANK_REF_REQUIRED', 'PRIVATE_BANK_TIMEOUT', 'PRIVATE_BANK_UNREACHABLE', 'PRIVATE_BANK_TOO_LARGE'].includes(code)) return sendJson(res, 503, { ok: false, code: 'RANKED_BANK_UNAVAILABLE', error: 'Ranked play is temporarily unavailable. Practice remains open.' });
+  if (code === 'SEASON_UNSUPPORTED') { console.error('Geek API error code', code); return sendJson(res, 409, { ok: false, code, error: 'This season is not accepting scores.', message: 'This season is not accepting scores' }); }
+  if (code === 'SEASON_CONFIG_INVALID' || code === 'SEASON_CLOCK_INVALID') { console.error('Geek API error code', code); return sendJson(res, 503, { ok: false, code, error: 'Ranked seasons are temporarily unavailable. Practice remains open.' }); }
+  // Private-bank fail-closed errors: generic body, log only the fixed code
+  // (never the error object, stack, paths or bank text).
+  if (code === 'RANKED_BANK_UNAVAILABLE' || code === 'RANKED_BANK_SEASON_MISMATCH' || code === 'RANKED_WRITES_DISABLED' || code === 'RANKED_ENV_UNKNOWN' || code === 'RANKED_SOURCE_INVALID' || /^PRIVATE_BANK_[A-Z_]+$/.test(code)) {
+    console.error('Geek API error code', code);
+    return sendJson(res, 503, { ok: false, code: 'RANKED_BANK_UNAVAILABLE', error: 'Ranked play is temporarily unavailable. Practice remains open.' });
+  }
   if (code === 'RUN_STATE_INVALID') return sendJson(res, 409, { ok: false, error: 'That ranked action is not available right now.' });
   if (code === 'ANSWER_IN_PROGRESS') return sendJson(res, 409, { ok: false, error: 'That answer is already being locked. Retry once to retrieve its result.' });
   if (code === 'INSUFFICIENT_BALANCE') return sendJson(res, 409, { ok: false, code, error: 'Your server Alpha GEEK balance is too low for the next round.' });
@@ -170,6 +177,10 @@ export const handleApiError = (res, error) => {
   if (code === 'STICKER_TRADE_FORBIDDEN') return sendJson(res, 403, { ok: false, code, error: 'Only the player who created this offer can cancel it.' });
   if (code === 'STICKER_TRADE_FAILED') return sendJson(res, 503, { ok: false, code, error: 'The sticker exchange could not be completed safely.' });
   if (code === 'INVALID_BODY' || code === 'INVALID_REQUEST') return sendJson(res, 400, { ok: false, error: 'The request was not valid.' });
-  console.error('Geek API error', error);
+  // Unknown errors: log only the error's name and code (both restricted to
+  // identifier characters), never its message or stack, which may carry paths
+  // or private bank text.
+  const safe = (v) => (typeof v === 'string' && /^[A-Za-z0-9_]{1,64}$/.test(v) ? v : 'UNKNOWN');
+  console.error('Geek API error', safe(error?.name), safe(error?.code));
   return sendJson(res, 500, { ok: false, error: 'The community service hit an unexpected error.' });
 };

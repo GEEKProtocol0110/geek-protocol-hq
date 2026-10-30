@@ -71,16 +71,43 @@
     cashoutButton: $('[data-cashout]'), startScreen: $('[data-screen="start"]'), resultScreen: $('[data-screen="result"]'), completeKicker: $('[data-complete-kicker]'), completeTitle: $('[data-complete-title]')
   };
 
+  // User-facing errors are fixed client strings chosen by failure type / status code.
+  // Server bodies and raw error messages are never displayed.
+  const FAILURE_TEXT = {
+    TIMEOUT: 'The game took too long to respond. Reconnect to check your saved run.',
+    OFFLINE: 'You appear to be offline. Check your connection, then reconnect to continue.',
+    NETWORK: 'The game could not be reached. Check your connection, then reconnect to continue.',
+    BAD_RESPONSE: 'The game sent an unexpected reply. Reconnect to check your saved run.',
+    RUN_NOT_FOUND: 'That ranked run expired or is no longer active.',
+    INSUFFICIENT_BALANCE: 'Your server Alpha GEEK balance is too low for the next round.',
+    RANKED_BANK_UNAVAILABLE: 'Ranked play is temporarily unavailable. Practice remains open.',
+    RATE_LIMITED: 'Slow down and try again in a moment.',
+    400: 'That request was not accepted.', 401: 'Your player session expired. Reload the page to continue.', 403: 'That action was not allowed.',
+    404: 'That ranked run expired or is no longer active.', 409: 'That action is not available right now. Reconnect to check your saved run.',
+    429: 'Slow down and try again in a moment.', 503: 'The game service is temporarily unavailable. Try again shortly.',
+    5: 'The game service hit a problem. Try again shortly.', DEFAULT: 'Something went wrong. Reconnect to check your saved run.'
+  };
+  const failure = (code, status = 0) => {
+    const text = FAILURE_TEXT[code] || FAILURE_TEXT[status] || (status >= 500 ? FAILURE_TEXT[5] : FAILURE_TEXT.DEFAULT);
+    const error = new Error(text); error.code = code; error.status = status; error.userMessage = text; return error;
+  };
+  const userMessage = error => error?.userMessage || FAILURE_TEXT.DEFAULT;
   const api = async (path, options = {}) => {
     const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 15000);
     try {
       const response = await fetch(path, { credentials: 'same-origin', headers: { 'Content-Type': 'application/json', ...(options.headers || {}) }, ...options, signal: controller.signal });
-      const payload = await response.json();
-      if (!response.ok) { const error = new Error(payload.error || 'Ranked service unavailable.'); error.code = payload.code || response.status; throw error; }
+      // Read text first: an HTML 502/503 page must never reach JSON.parse errors or the UI.
+      let payload = null;
+      try { payload = typeof response.text === 'function' ? JSON.parse(await response.text()) : await response.json(); } catch { payload = null; }
+      if (!response.ok || !payload || typeof payload !== 'object') {
+        const code = typeof payload?.code === 'string' && /^[A-Z_]{1,64}$/.test(payload.code) ? payload.code : response.status;
+        throw failure(response.ok ? 'BAD_RESPONSE' : code, response.ok ? 0 : response.status);
+      }
       return payload;
     } catch (error) {
-      if (controller.signal.aborted) throw new Error('The game took too long to respond. Reconnect to check your saved run.');
-      throw error;
+      if (controller.signal.aborted) throw failure('TIMEOUT');
+      if (error?.userMessage) throw error;
+      throw failure(navigator?.onLine === false ? 'OFFLINE' : 'NETWORK');
     } finally { clearTimeout(timeout); }
   };
 
@@ -145,6 +172,27 @@
     if (season === 'current' || !Array.isArray(payload.seasons) || payload.seasons.includes(season)) return false;
     $('[data-board-season]').value = 'current'; storeSeason(null); return true;
   };
+  // Monthly seasons: mirror the server's season list in the picker (Season 0 and
+  // Seasons 1..current). Returns true when a remembered pick became available.
+  const seasonIdPattern = /^(legacy|season-[1-9]\d{0,3})$/;
+  const ensureSeasonOption = (id, label) => {
+    const select = $('[data-board-season]');
+    if (!select.options || typeof document.createElement !== 'function' || !seasonIdPattern.test(id || '')) return;
+    let option = [...select.options].find(item => item.value === id);
+    if (!option) { option = document.createElement('option'); option.value = id; select.append(option); }
+    if (label) option.textContent = label;
+  };
+  const syncSeasonOptions = payload => {
+    const select = $('[data-board-season]');
+    if (!Array.isArray(payload.seasons) || !select.options || typeof document.createElement !== 'function') return false;
+    const listed = payload.seasons.filter(id => seasonIdPattern.test(id || ''));
+    [...select.options].filter(option => option.value !== 'current' && !listed.includes(option.value) && option.value !== select.value).forEach(option => option.remove());
+    listed.forEach(id => ensureSeasonOption(id, payload.seasonLabels?.[id]));
+    const saved = storedSeason();
+    if (saved && !listed.includes(saved)) { storeSeason(null); return false; }
+    if (saved && select.value === 'current') { select.value = saved; return true; }
+    return false;
+  };
   const loadLeaderboard = async (category = activeCategory, mode = activeMode) => {
     const sequence = ++boardSequence;
     elements.boardState.textContent = communityReady ? 'REFRESHING' : 'CONNECTING';
@@ -152,7 +200,8 @@
       const season = $('[data-board-season]').value || 'current';
       const payload = await api(`/api/leaderboard?${new URLSearchParams({ category, mode, season })}`);
       if (sequence !== boardSequence) return;
-      if (rejectUnknownSeason(season, payload)) return loadLeaderboard(category, mode);
+      if (rejectUnknownSeason(season, payload)) { syncSeasonOptions(payload); return loadLeaderboard(category, mode); }
+      if (syncSeasonOptions(payload)) return loadLeaderboard(category, mode);
       elements.boardState.textContent = payload.seasonLabel || 'SERVER VERIFIED';
       renderLeaderboard(payload.entries);
     } catch {
@@ -215,8 +264,8 @@
       showScreen('quiz');
       showQuestion(payload.question);
     } catch (error) {
-      elements.localNote.innerHTML = `<b>Could not start:</b> ${escapeHtml(error.message)}`;
-      showRecovery(`${error.message} Reconnect to check whether your run started before trying again.`);
+      elements.localNote.textContent = `Could not start: ${userMessage(error)}`;
+      showRecovery(`${userMessage(error)} Reconnect to check whether your run started before trying again.`);
     } finally { requestBusy = false; }
   };
 
@@ -324,7 +373,7 @@
       elements.questionProgress.style.width = `${Math.min(100, (currentQuestion.number / (run.questionCount || 10)) * 100)}%`;
       transitionTimer = window.setTimeout(() => payload.roundResult ? completeRound(payload.roundResult) : nextQuestion(), 1250);
     } catch (error) {
-      showRecovery(`${error.message} Your answer has not been confirmed. Reconnect before answering again.`);
+      showRecovery(`${userMessage(error)} Your answer has not been confirmed. Reconnect before answering again.`);
     } finally { requestBusy = false; }
   };
 
@@ -336,7 +385,7 @@
       applyServerState(payload);
       recoveryNeeded = false; $('[data-ranked-recovery]').hidden = true;
       showQuestion(payload.question);
-    } catch (error) { showRecovery(error.message); }
+    } catch (error) { showRecovery(userMessage(error)); }
     finally { requestBusy = false; $('[data-ranked-next]').disabled = false; }
   };
 
@@ -394,7 +443,7 @@
       showScreen('quiz');
       showQuestion(payload.question);
     } catch (error) {
-      showRecovery(error.message);
+      showRecovery(userMessage(error));
     } finally { requestBusy = false; elements.continueButton.disabled = recoveryNeeded; }
   };
 
@@ -407,7 +456,9 @@
       applyServerState(payload);
       window.dispatchEvent(new Event('geek:run-saved'));
       ++boardSequence;
-      $('[data-board-season]').value = run.season === 'season-1' ? 'season-1' : 'legacy';
+      const runBoard = seasonIdPattern.test(run.season || '') ? run.season : 'legacy';
+      ensureSeasonOption(runBoard, runBoard === 'legacy' ? 'Season 0 — Public-bank Alpha' : run.seasonLabel);
+      $('[data-board-season]').value = runBoard;
       elements.boardState.textContent = `${run.seasonLabel || 'Season 0 — Public-bank Alpha'}${payload.leaderboard?.improved ? ' · NEW VERIFIED BEST' : ''}`;
       if (payload.leaderboard) renderLeaderboard(payload.leaderboard.entries);
       rememberRun(null); $('[data-ranked-recovery]').hidden = true;
@@ -426,18 +477,20 @@
         showScreen('start');
       }
     } catch (error) {
-      showRecovery(error.message);
+      showRecovery(userMessage(error));
     } finally { requestBusy = false; elements.continueButton.disabled = recoveryNeeded; elements.cashoutButton.disabled = recoveryNeeded; }
   };
 
   const renderRoundReview = () => {
     elements.roundReview.innerHTML = run.roundAnswers.map((item, index) => {
       const result = item.correct ? 'Correct' : `${item.selected === 'No answer' ? 'No answer' : `Your answer: ${item.selected}`} · Correct: ${item.answer}`;
-      const source = item.source ? `<a href="${escapeHtml(item.source)}" target="_blank" rel="noreferrer">Open source ↗</a>` : '<span>No source recorded</span>';
+      const source = safeHttpsUrl(item.source) ? `<a href="${escapeHtml(safeHttpsUrl(item.source))}" target="_blank" rel="noreferrer">Open source ↗</a>` : '<span>No source recorded</span>';
       return `<li class="${item.correct ? 'correct-review' : 'wrong-review'}"><div><b>${index + 1}. ${escapeHtml(item.prompt)}</b><small>${escapeHtml(result)} · ${escapeHtml(item.sourceState)}</small></div>${source}</li>`;
     }).join('') || '<li>Your last answer is saved. Earlier answers from an older run are not available for review here.</li>';
   };
 
+  // Only absolute https: links are rendered; anything else (javascript:, data:, http:, relative) shows no link.
+  const safeHttpsUrl = value => { try { const url = new URL(String(value || '')); return url.protocol === 'https:' ? url.href : ''; } catch { return ''; } };
   const showRecovery = message => {
     recoveryNeeded = true; locked = true; clearTimer();
     $$('.answer', elements.answers).forEach(button => { button.disabled = true; });
@@ -454,6 +507,9 @@
     requestBusy = true; clearTimer(); $('[data-ranked-reconnect]').disabled = true;
     try {
       const payload = await api(`/api/ranked?${new URLSearchParams(id === 'pending' ? { resume: '1' } : { runId: id })}`);
+      // Reflect the reconnected run's own mode/category (mode-specific notes, e.g. Speed is not Gauntlet).
+      if (!run && Object.hasOwn(GAME_MODES, payload.run?.mode)) selectMode(payload.run.mode);
+      if (!run && Object.hasOwn(CATEGORY_BANKS, payload.run?.category)) selectCategory(payload.run.category);
       if (Object.hasOwn(GAME_MODES, payload.run?.mode)) activeMode = payload.run.mode;
       if (Object.hasOwn(CATEGORY_BANKS, payload.run?.category)) activeCategory = payload.run.category;
       applyServerState(payload); recoveryNeeded = false;
@@ -478,8 +534,13 @@
         $('[data-ranked-recovery-status]').textContent = 'Your run is finished. Confirm its leaderboard submission or visit My HQ.';
       } else throw new Error('The saved run could not be displayed. Your progress has not been reset.');
     } catch (error) {
-      showRecovery(error.message);
-      if (error.code === 404 || error.code === 'RUN_NOT_FOUND') { rememberRun(null); run = null; recoveryNeeded = false; selectCategory(activeCategory); showScreen('start'); $('[data-ranked-reconnect]').hidden = true; }
+      showRecovery(userMessage(error));
+      if (error.code === 404 || error.code === 'RUN_NOT_FOUND' || error.status === 404) {
+        const neverStarted = id === 'pending';
+        rememberRun(null); run = null; recoveryNeeded = false; selectCategory(activeCategory); showScreen('start'); $('[data-ranked-reconnect]').hidden = true;
+        const message = neverStarted ? 'No run was started, so nothing was lost. You can start a new run.' : 'That ranked run expired or is no longer active. You can start a new run.';
+        $('[data-ranked-recovery-status]').textContent = message; elements.feedback.textContent = message; elements.entryWarning.textContent = message;
+      }
     } finally { requestBusy = false; $('[data-ranked-reconnect]').disabled = false; }
   };
   $('[data-ranked-reconnect]').addEventListener('click', reconnectRun);
@@ -504,7 +565,11 @@
       elements.bankStatus.textContent = 'OFFLINE';
       elements.startButton.disabled = true;
       elements.startButton.textContent = 'Game unavailable · reload to retry';
-      elements.localNote.innerHTML = `<b>Ranked service unavailable:</b> ${escapeHtml(error.message)} Answers are not exposed for insecure browser-only play.`;
+      elements.localNote.textContent = `Ranked service unavailable: ${userMessage(error)} Timed games stay off until the server is reachable; answers are never exposed for browser-only play.`;
+      // Make the outage visible at the front door: expand the notice and disable the CTA.
+      const panel = document.getElementById?.('timed-games') || $('#timed-games'); if (panel) panel.open = true;
+      const cta = $('[data-gauntlet-setup]');
+      if (cta) { cta.disabled = true; cta.setAttribute('aria-disabled', 'true'); cta.textContent = 'Timed games unavailable · reload to retry'; }
     }
   };
 
