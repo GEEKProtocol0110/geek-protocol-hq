@@ -235,3 +235,20 @@ for (const protection of ['passkey', 'wallet', 'guest']) test(`${protection} rec
   assert.equal(ui.node('[data-recovery]').textContent, protection==='passkey' ? 'Passkey protected' : protection==='wallet' ? 'Kaspa wallet protected' : 'Saved in this browser');
   assert.equal(ui.node('[data-protection]').textContent, protection==='guest' ? 'Browser profile' : 'Recovery enabled');
 });
+
+
+test('My HQ refresh keeps the selected season and displays its label even on an empty board', async () => {
+  const requests = [];
+  const ui = dashboardPage(path => {
+    requests.push(path);
+    return json({ ok: true, entries: [], seasonLabel: path.includes('season=legacy') ? 'Season 0 — Public-bank Alpha' : 'Season 1 — Private-bank' });
+  });
+  await ui.node('[data-board-refresh]').emit('click');
+  assert.match(requests.at(-1), /season=current/);
+  assert.match(ui.node('[data-dashboard-board-note]').textContent, /Season 1 — Private-bank/);
+  ui.node('[data-board-season]').value = 'legacy';
+  await ui.node('[data-board-season]').emit('change');
+  await ui.node('[data-board-refresh]').emit('click');
+  assert.match(requests.at(-1), /season=legacy/);
+  assert.match(ui.node('[data-dashboard-board-note]').textContent, /Season 0 — Public-bank Alpha/);
+});

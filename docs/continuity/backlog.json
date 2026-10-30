@@ -1289,22 +1289,32 @@
     {
       "id": "SEC-010",
       "priority": "P0",
-      "status": "proposed",
+      "status": "in-progress",
       "title": "Serve future ranked questions and answers from private storage; treat published banks as exposed",
       "owner": "Maintainer; founder selects private storage and approves rollout",
-      "nextAction": "Founder chooses a private storage option and provides read-only access; then author new-ID private ranked rows and follow docs/MIGRATION-private-ranked-bank.md rollout. Draft PR only; not merged or deployed.",
+      "nextAction": "Finish the unmerged #200 browser fixes and required verification. Then provision the separate private bank and read-only access, author reviewed new-ID questions, and validate the restricted Preview before cutover. Do not enable the exposed-bank production override.",
       "acceptance": [
         "Ranked rounds draw only from a configured private source or fail closed in production.",
         "Published and retired public rows stay addressable so saved runs grade with their original keys; private IDs cannot collide with them.",
         "Issued questions never include correctIndex; a public fixture bank with no real answers supports dev/tests.",
-        "Payouts stay disabled."
+        "Payouts stay disabled.",
+        "Play and My HQ default to the current ranked season, label every board and preserve selectable Season 0 history.",
+        "Deferred answer recovery confirms saving without showing correctness before round lock."
       ],
       "dependsOn": [],
       "evidence": [
         "docs/MIGRATION-private-ranked-bank.md",
         "server/question-source.js",
         "server/questions.js",
-        "tests/private-ranked-bank.test.js"
+        "tests/private-ranked-bank.test.js",
+        "tests/ranked-client.test.js",
+        "tests/profile-client.test.js",
+        "api/leaderboard.js"
+      ],
+      "validationEvidence": [
+        "#180 merged as a3b2441f82636e511658be09d47a7171b89472d4; #198 merged as 33f74c0aee05e416f91b8331cf4236d9ddd758a4. Main tree matches reviewed f8521cbee17e406085d080c9558cb69c56185665. Production dpl_7VJFZmLJ9NqZdhbx8b6s1bGFehFg is READY on the #198 merge. #200 remains draft and unmerged.",
+        "Browser candidate based on #200 head 981c9f6e396ddd3869be49ad6d56629b4d947f19: current-season queries, explicit historical season choices, labeled empty boards and deferred reconnect text. Focused client/API tests: 73 passed, zero failures/skips. This is synthetic client verification, not restricted Preview or phone acceptance.",
+        "Full browser-candidate npm run verify with required native Redis 7.0.15: 738 HQ tests + nine offline signer checks = 747 passed, zero failures/skips, all supporting checks passed. #200 still requires private-bank/restricted-Preview acceptance before cutover."
       ]
     }
   ]

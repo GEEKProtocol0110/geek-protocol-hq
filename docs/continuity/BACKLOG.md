@@ -55,7 +55,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CHAIN-004 | P0 | needs-evidence | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
 | CHAIN-005 | P1 | needs-evidence | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
 | AUTH-004 | P0 | needs-evidence | Secure Geek account access and wallet-neutral receiving addresses | Maintainer; founder controls bounded pilot approval and actual-device acceptance |
-| SEC-010 | P0 | proposed | Serve future ranked questions and answers from private storage; treat published banks as exposed | Maintainer; founder selects private storage and approves rollout |
+| SEC-010 | P0 | in-progress | Serve future ranked questions and answers from private storage; treat published banks as exposed | Maintainer; founder selects private storage and approves rollout |
 
 ## CONT-001: Publish the continuation system
 
@@ -791,9 +791,9 @@ Evidence/specification: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRS
 
 ## SEC-010: Serve future ranked questions and answers from private storage; treat published banks as exposed
 
-**P0 / proposed.** Owner: Maintainer; founder selects private storage and approves rollout. Dependencies: none.
+**P0 / in-progress.** Owner: Maintainer; founder selects private storage and approves rollout. Dependencies: none.
 
-Next action: Founder chooses a private storage option and provides read-only access; then author new-ID private ranked rows and follow docs/MIGRATION-private-ranked-bank.md rollout. Draft PR only; not merged or deployed.
+Next action: Finish the unmerged #200 browser fixes and required verification. Then provision the separate private bank and read-only access, author reviewed new-ID questions, and validate the restricted Preview before cutover. Do not enable the exposed-bank production override.
 
 Acceptance:
 
@@ -801,5 +801,7 @@ Acceptance:
 - Published and retired public rows stay addressable so saved runs grade with their original keys; private IDs cannot collide with them.
 - Issued questions never include correctIndex; a public fixture bank with no real answers supports dev/tests.
 - Payouts stay disabled.
+- Play and My HQ default to the current ranked season, label every board and preserve selectable Season 0 history.
+- Deferred answer recovery confirms saving without showing correctness before round lock.
 
-Evidence/specification: [docs/MIGRATION-private-ranked-bank.md](../../docs/MIGRATION-private-ranked-bank.md), [server/question-source.js](../../server/question-source.js), [server/questions.js](../../server/questions.js), [tests/private-ranked-bank.test.js](../../tests/private-ranked-bank.test.js).
+Evidence/specification: [docs/MIGRATION-private-ranked-bank.md](../../docs/MIGRATION-private-ranked-bank.md), [server/question-source.js](../../server/question-source.js), [server/questions.js](../../server/questions.js), [tests/private-ranked-bank.test.js](../../tests/private-ranked-bank.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/profile-client.test.js](../../tests/profile-client.test.js), [api/leaderboard.js](../../api/leaderboard.js).

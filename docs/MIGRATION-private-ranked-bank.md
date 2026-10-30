@@ -117,7 +117,10 @@ Delayed feedback still lets a player harvest answers over many runs. Controls:
   stats and journey entries are preserved.
 - Runs bound to a private bank are Season 1 and record to
   `geek:leaderboard:season-1:*` only. `GET /api/leaderboard?season=season-1`
-  reads it; the default remains Season 0.
+  reads it; requests without a season retain the Season 0 default. Play and
+  My HQ use `?season=current`, resolved from the server’s ranked-source
+  configuration, and display the returned season label. Both offer explicit
+  Season 0/Season 1 choices so historical scores remain accessible.
 - Alpha play stays Season 0 until cutover.
 - Payouts, treasury settlement and collection ownership gates are unchanged
   and remain disabled; seasons do not add any monetary flow.
@@ -143,7 +146,7 @@ are never copied into the private bank; rewrite materially with a new ID.
    prefix e.g. `PRK-<CAT>-<YYYYMM>-NNNN`; nothing ever published here).
 5. Preview acceptance: `npm run verify`, manual ranked runs in each mode,
    confirm deferred feedback, Season 1 board, no `RANKED_BANK_UNAVAILABLE`.
-6. Merge order: #180, then #198, then **#200 last at cutover**.
+6. #180 and #198 are merged (main `33f74c0`). **#200 still merges last at cutover**.
 7. Cutover: set the same vars in Production. Do **not** set
    `GEEK_RANKED_ALLOW_EXPOSED`. Announce Season 1.
 8. Rotate per the policy above.

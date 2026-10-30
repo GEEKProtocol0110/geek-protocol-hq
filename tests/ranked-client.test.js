@@ -27,7 +27,7 @@ const page = async (intercept = () => undefined, saved = null) => {
   const answers = ui.node('[data-answers]'); let markup = '', buttons = [];
   Object.defineProperty(answers, 'innerHTML', { get: () => markup, set: value => { markup = value; buttons = [...value.matchAll(/data-answer="(\d)"/g)].map(match => { const button = ui.make('button'); button.dataset.answer = match[1]; button.classList.add = () => {}; return button; }); } });
   answers.querySelectorAll = selector => selector === '.answer' ? buttons : [];
-  ui.run(source.replace('  initialize();\n})();', '  globalThis.actions = { startNewRun, answerQuestion, nextQuestion, reconnectRun, finishRun }; globalThis.startup = initialize();\n})();'));
+  ui.run(source.replace('  initialize();\n})();', '  globalThis.actions = { startNewRun, answerQuestion, nextQuestion, reconnectRun, finishRun, loadLeaderboard }; globalThis.startup = initialize();\n})();'));
   await ui.context.startup; return { ...ui, requests, storage };
 };
 
@@ -76,4 +76,38 @@ test('a stalled answer response body times out and offers recovery without repea
   await ui.context.actions.startNewRun(); const pending = ui.context.actions.answerQuestion(0); await new Promise(resolve => setImmediate(resolve)); ui.expire(); await pending;
   assert.match(ui.node('[data-ranked-recovery-status]').textContent, /too long/);
   assert.equal(ui.requests.filter(r => r.body?.action === 'answer').length, 1);
+});
+
+
+test('deferred answer recovery confirms saving without inventing correctness', async () => {
+  const pending = state('awaiting-next');
+  pending.run.feedback = 'deferred'; pending.run.answeredReview = [];
+  for (const field of ['correct', 'streak', 'roundScore']) delete pending.run[field];
+  pending.result = { feedback: 'deferred', recorded: true, timedOut: false, locked: false };
+  const ui = await page(path => path.includes('runId=') ? json(pending) : undefined, id);
+  await ui.context.actions.reconnectRun();
+  assert.equal(ui.node('[data-feedback]').textContent, 'Answer saved — results after the round.');
+  assert.equal(ui.node('[data-ranked-next]').hidden, false);
+  assert.equal(ui.requests.filter(r => r.body?.action === 'next').length, 0);
+});
+
+test('Play loads the current season after reload and labels historical boards', async () => {
+  const ui = await page(path => path.startsWith('/api/leaderboard') ? json({ entries: [], seasonLabel: new URL(path, 'https://example.test').searchParams.get('season') === 'legacy' ? 'Season 0 — Public-bank Alpha' : 'Season 1 — Private-bank' }) : undefined);
+  await ui.context.actions.loadLeaderboard();
+  assert.match(ui.requests.at(-1).path, /season=current/);
+  assert.equal(ui.node('[data-board-state]').textContent, 'Season 1 — Private-bank');
+  ui.node('[data-board-season]').value = 'legacy';
+  await ui.node('[data-board-season]').emit('change');
+  assert.match(ui.requests.at(-1).path, /season=legacy/);
+  assert.equal(ui.node('[data-board-state]').textContent, 'Season 0 — Public-bank Alpha');
+});
+
+test('an older leaderboard reply cannot replace a newly selected season', async () => {
+  let stalled = false; const old = deferred();
+  const ui = await page(path => path.startsWith('/api/leaderboard') ? stalled ? old.promise : json({ entries: [], seasonLabel: 'Season 1 — Private-bank' }) : undefined);
+  stalled = true; const pending = ui.context.actions.loadLeaderboard();
+  stalled = false; ui.node('[data-board-season]').value = 'season-1';
+  await ui.node('[data-board-season]').emit('change');
+  old.resolve(json({ entries: [], seasonLabel: 'Season 0 — Public-bank Alpha' })); await pending;
+  assert.equal(ui.node('[data-board-state]').textContent, 'Season 1 — Private-bank');
 });

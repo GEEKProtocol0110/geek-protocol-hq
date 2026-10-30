@@ -1753,3 +1753,31 @@ test('technology Study grades privately, saves missed concepts and resumes revie
     assert.equal(fixed.progress.topics.find(t => t.id === topic).review, 0);
   }
 });
+
+
+test('current leaderboard follows the ranked source while explicit Season 0 history stays separate', async () => {
+  const envKeys = ['GEEK_RANKED_QUESTION_SOURCE', 'GEEK_PRIVATE_QUESTION_URL'];
+  const saved = Object.fromEntries(envKeys.map(key => [key, process.env[key]]));
+  const query = async season => {
+    const res = response();
+    await leaderboardHandler(request('GET', undefined, '', { category: 'pop-culture', mode: 'speed', ...(season ? { season } : {}) }), res);
+    assert.equal(res.statusCode, 200); return res.body;
+  };
+  try {
+    await recordVerifiedScore({ session: { id: 'season-ui-player', name: 'Season Player' }, category: 'pop-culture', mode: 'speed', score: 321, round: 1, season: 'season-1' });
+    process.env.GEEK_RANKED_QUESTION_SOURCE = 'private';
+    process.env.GEEK_PRIVATE_QUESTION_URL = 'https://example.test/private-bank.json';
+    const current = await query('current');
+    assert.equal(current.season, 'season-1'); assert.equal(current.seasonLabel, 'Season 1 — Private-bank');
+    assert.ok(current.entries.some(entry => entry.score === 321));
+    for (const selection of ['legacy', undefined]) {
+      const legacy = await query(selection);
+      assert.equal(legacy.season, 'legacy');
+      assert.ok(!legacy.entries.some(entry => entry.score === 321));
+    }
+    process.env.GEEK_RANKED_QUESTION_SOURCE = 'exposed';
+    assert.equal((await query('current')).season, 'legacy');
+  } finally {
+    for (const key of envKeys) saved[key] === undefined ? delete process.env[key] : process.env[key] = saved[key];
+  }
+});

@@ -42,6 +42,7 @@
   let activeCategory = Object.hasOwn(CATEGORY_BANKS, queryParams.get('category')) ? queryParams.get('category') : 'kaspa';
   let activeMode = Object.hasOwn(GAME_MODES, queryParams.get('mode')) ? queryParams.get('mode') : 'gauntlet';
   let communityReady = false;
+  let boardSequence = 0;
   let profile = { balance: 0, xp: 0, bestRound: 0, bestScore: 0, totalRuns: 0, totalCorrect: 0, progression: { level: 1, prestige: 0 } };
   let run = null;
   let currentQuestion = null;
@@ -126,12 +127,16 @@
   };
 
   const loadLeaderboard = async (category = activeCategory, mode = activeMode) => {
+    const sequence = ++boardSequence;
     elements.boardState.textContent = communityReady ? 'REFRESHING' : 'CONNECTING';
     try {
-      const payload = await api(`/api/leaderboard?category=${encodeURIComponent(category)}&mode=${encodeURIComponent(mode)}`);
-      elements.boardState.textContent = 'SERVER VERIFIED';
+      const season = $('[data-board-season]').value || 'current';
+      const payload = await api(`/api/leaderboard?${new URLSearchParams({ category, mode, season })}`);
+      if (sequence !== boardSequence) return;
+      elements.boardState.textContent = payload.seasonLabel || 'SERVER VERIFIED';
       renderLeaderboard(payload.entries);
     } catch {
+      if (sequence !== boardSequence) return;
       elements.boardState.textContent = 'OFFLINE';
       elements.leaderboard.innerHTML = '<li class="board-empty">Verified leaderboard unavailable.</li>';
     }
@@ -383,7 +388,9 @@
       const payload = await postRanked('finish', { runId: run.id });
       applyServerState(payload);
       window.dispatchEvent(new Event('geek:run-saved'));
-      elements.boardState.textContent = payload.leaderboard?.improved ? 'NEW VERIFIED BEST' : 'SERVER VERIFIED';
+      ++boardSequence;
+      $('[data-board-season]').value = run.season === 'season-1' ? 'season-1' : 'legacy';
+      elements.boardState.textContent = `${run.seasonLabel || 'Season 0 — Public-bank Alpha'}${payload.leaderboard?.improved ? ' · NEW VERIFIED BEST' : ''}`;
       if (payload.leaderboard) renderLeaderboard(payload.leaderboard.entries);
       rememberRun(null); $('[data-ranked-recovery]').hidden = true;
       if (apex) {
@@ -438,7 +445,9 @@
       else if (run.status === 'awaiting-next') {
         currentQuestion = null; locked = true; showScreen('quiz'); elements.answers.innerHTML = '';
         elements.question.textContent = 'Your answer is saved.';
-        elements.feedback.textContent = payload.result ? `Correct answer: ${payload.result.answer}. ${payload.result.correct ? 'Your answer was correct.' : 'Read the feedback, then continue.'}` : 'Continue to your next question.';
+        elements.feedback.textContent = payload.result?.feedback === 'deferred'
+          ? 'Answer saved — results after the round.'
+          : payload.result ? `Correct answer: ${payload.result.answer}. ${payload.result.correct ? 'Your answer was correct.' : 'Read the feedback, then continue.'}` : 'Continue to your next question.';
         elements.ace.textContent = payload.result?.funFact || '';
         $('[data-ranked-recovery]').hidden = false; $('[data-ranked-next]').hidden = false;
         $('[data-ranked-recovery-status]').textContent = 'Your last answer is confirmed. Continue when you’re ready.';
@@ -456,6 +465,7 @@
     } finally { requestBusy = false; $('[data-ranked-reconnect]').disabled = false; }
   };
   $('[data-ranked-reconnect]').addEventListener('click', reconnectRun);
+  $('[data-board-season]').addEventListener('change', () => loadLeaderboard());
   $('[data-ranked-next]').addEventListener('click', nextQuestion);
   $('[data-ranked-finish]').addEventListener('click', async () => { $('[data-ranked-finish]').hidden = true; $('[data-ranked-recovery]').hidden = true; await finishRun(true); });
 
