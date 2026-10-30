@@ -46,9 +46,14 @@ Bank document: `{ "banks": { "<category>": [rows] }, "retired": { "<category>": 
 
 ### Loader behaviour
 
+- `VERCEL_ENV=preview` is treated like production: no exposed/fixture
+  fallback; a preview without a private source fails closed
+  (`RANKED_BANK_UNAVAILABLE`), and URL sources need a pinned ref.
+
 - Sends `Accept: application/vnd.github.raw` (raw file body). If a JSON
   Contents wrapper (`{ "encoding": "base64", "content": ... }`) comes back it is
   decoded. `encoding: "none"` (file >1 MB without raw media type) is rejected.
+- Redirects are refused (`redirect: "error"`) so the token is never forwarded.
 - Bounded: 8 s timeout (`AbortSignal.timeout`), 8 MiB max (Content-Length and
   streamed byte count). Errors: `PRIVATE_BANK_TIMEOUT`, `PRIVATE_BANK_TOO_LARGE`,
   `PRIVATE_BANK_UNREACHABLE`, `PRIVATE_BANK_INVALID` → HTTP 503
@@ -86,14 +91,15 @@ Bank document: `{ "banks": { "<category>": [rows] }, "retired": { "<category>": 
   - `profile`/`totalScore`/XP/Alpha balance change only at round lock.
 - When the round locks the final answer response carries the full result,
   `run.answeredReview` and `roundResult.review` for the whole round.
-- Runs created before deploy (no `feedback` field) keep immediate feedback until they expire (2 h TTL).
+- Runs created before deploy (no `feedback` field) also default to deferred feedback; only an explicit `feedback: "immediate"` reveals per answer (no ranked path sets it).
 
 ### Question reuse / rotation policy
 
 Delayed feedback still lets a player harvest answers over many runs. Controls:
 
-1. Existing rate limits stay: 240 ranked actions / 5 min per player and the
-   `RANKED_START_IP_LIMIT` per client fingerprint.
+1. Rate limits: 240 ranked actions / 5 min per player, `RANKED_START_IP_LIMIT`
+   per client fingerprint, and (new) 30 ranked run starts / hour per player
+   (`RANKED_START_PLAYER_LIMIT`).
 2. A run never repeats an ID, concept or prompt (`usedQuestionIds`).
 3. Each private season ships with a pinned bank version. Rotate at least once
    per season (target: monthly, or sooner if a row's exposure is reported):

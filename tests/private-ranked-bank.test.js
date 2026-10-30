@@ -7,7 +7,7 @@ import { cachedBankVersions, decodeBankDocument, loadRankedSource, loadRankedSou
 import { SEASONS, isExposedQuestion, loadQuestionBank, loadRankedBank, questionById, rankedRunBinding, seasonFor, selectRoundQuestionIds } from '../server/questions.js';
 import { SEASON_LABELS } from '../server/leaderboard.js';
 
-const KEYS = ['GEEK_PRIVATE_QUESTION_DIR', 'GEEK_PRIVATE_QUESTION_URL', 'GEEK_PRIVATE_QUESTION_TOKEN', 'GEEK_RANKED_QUESTION_SOURCE', 'GEEK_RANKED_ALLOW_EXPOSED', 'VERCEL_ENV', 'NODE_ENV'];
+const KEYS = ['GEEK_PRIVATE_QUESTION_DIR', 'GEEK_PRIVATE_QUESTION_REF', 'GEEK_PRIVATE_QUESTION_URL', 'GEEK_PRIVATE_QUESTION_TOKEN', 'GEEK_RANKED_QUESTION_SOURCE', 'GEEK_RANKED_ALLOW_EXPOSED', 'VERCEL_ENV', 'NODE_ENV'];
 const withEnv = async (values, run) => {
   const saved = Object.fromEntries(KEYS.map((key) => [key, process.env[key]]));
   KEYS.forEach((key) => delete process.env[key]);
@@ -224,3 +224,31 @@ test('ranked answer responses defer correctness until the round locks', () => {
   assert.match(source, /run\.lastResponse = response;/, 'saved/retried responses reuse the masked response');
 });
 
+
+test('Vercel previews fail closed like production (no exposed or fixture fallback)', async () => {
+  assert.equal(rankedSourceMode({ VERCEL_ENV: 'preview' }), 'unavailable');
+  assert.throws(() => rankedSourceMode({ VERCEL_ENV: 'preview', GEEK_RANKED_QUESTION_SOURCE: 'fixture' }), /RANKED_SOURCE_INVALID/);
+  assert.equal(rankedSourceMode({ VERCEL_ENV: 'preview', GEEK_RANKED_QUESTION_SOURCE: 'exposed' }), 'unavailable');
+  assert.equal(rankedSourceMode({ VERCEL_ENV: 'preview', GEEK_PRIVATE_QUESTION_DIR: '/x' }), 'private');
+  assert.equal(rankedSourceMode({ VERCEL_ENV: 'development' }), 'exposed');
+  await withEnv({ VERCEL_ENV: 'preview' }, async () => {
+    await assert.rejects(selectRoundQuestionIds('history', 1, [], '', { ranked: true }), /RANKED_BANK_UNAVAILABLE/);
+  });
+  await withEnv({ VERCEL_ENV: 'preview', GEEK_PRIVATE_QUESTION_URL: 'https://api.github.com/repos/o/p/contents/bank.json' }, async () => {
+    await assert.rejects(rankedRunBinding(), /PRIVATE_BANK_REF_REQUIRED/);
+  });
+});
+
+test('token fetch refuses redirects', async () => {
+  let init;
+  await readUrlBanks('https://storage.invalid/b', 'tok', { fetch: async (url, i) => { init = i; return new Response(bankDoc('HRED')); } });
+  assert.equal(init.redirect, 'error');
+});
+
+test('runs without a feedback setting default to deferred; per-player start limit exists', () => {
+  const source = readFileSync(join(process.cwd(), 'api', 'ranked.js'), 'utf8');
+  assert.match(source, /const deferredFeedback = \(run\) => run\.feedback !== 'immediate';/);
+  assert.match(source, /const hidden = deferredFeedback\(run\) && !roundResult;/);
+  assert.doesNotMatch(source, /run\.feedback === 'deferred'/);
+  assert.match(source, /rateLimit\('ranked-start-player', playerId, RANKED_START_PLAYER_LIMIT\.maximum, RANKED_START_PLAYER_LIMIT\.seconds\)/);
+});

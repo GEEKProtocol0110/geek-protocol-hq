@@ -33,7 +33,9 @@ import { categoryFiles } from './question-categories.js';
 
 export const FIXTURE_DIR = join(process.cwd(), 'server', 'question-fixtures', 'ranked-sample');
 
-const isProduction = (env) => env.VERCEL_ENV === 'production' || env.NODE_ENV === 'production';
+// Vercel previews are treated like production for ranked play: no exposed or
+// fixture fallback, so a preview without a private source fails closed.
+const isProduction = (env) => ['production', 'preview'].includes(env.VERCEL_ENV) || env.NODE_ENV === 'production';
 
 export const rankedSourceMode = (env = process.env) => {
   const explicit = String(env.GEEK_RANKED_QUESTION_SOURCE || '').trim().toLowerCase();
@@ -139,7 +141,8 @@ export const readUrlBanks = async (url, token, { fetch: fetchImpl = globalThis.f
   let response;
   try {
     response = await fetchImpl(pinnedUrl(url, ref), {
-      redirect: 'follow',
+      // Never follow redirects with the bearer token attached.
+      redirect: 'error',
       signal: AbortSignal.timeout(timeoutMs),
       headers: {
         accept: 'application/vnd.github.raw, application/json;q=0.9',

@@ -19,6 +19,8 @@ import { careerChallengeState } from '../server/career-challenges.js';
 import { prepareAutomaticReward, automaticError } from '../server/testnet-automatic.js';
 
 const RUN_TTL = 60 * 60 * 2;
+// Per-player ranked run starts: limits answer harvesting across repeated runs.
+export const RANKED_START_PLAYER_LIMIT = Object.freeze({ maximum: 30, seconds: 60 * 60 });
 const QUESTION_MS = 15_000;
 const NETWORK_GRACE_MS = 350;
 const runKey = (id) => `geek:run:${id}`;
@@ -36,7 +38,10 @@ const modeConfig = (mode) => Object.hasOwn(MODE_CONFIG, mode) ? MODE_CONFIG[mode
 // would reveal them (score, streak, review rows) stay server-side until the
 // round locks. Practice/Study keep immediate teaching feedback elsewhere.
 const roundLocked = (run) => ['between-rounds', 'finished'].includes(run.status);
-const deferred = (run) => run.feedback === 'deferred' && !roundLocked(run);
+// Runs without an explicit 'immediate' setting (including runs started before
+// this deploy) default to deferred feedback.
+const deferredFeedback = (run) => run.feedback !== 'immediate';
+const deferred = (run) => deferredFeedback(run) && !roundLocked(run);
 const safeRun = (run) => deferred(run) ? ({
   id: run.id,
   mode: run.mode,
@@ -60,7 +65,7 @@ const safeRun = (run) => deferred(run) ? ({
   id: run.id,
   season: seasonFor(run).id,
   seasonLabel: seasonFor(run).label,
-  feedback: run.feedback || 'immediate',
+  feedback: deferredFeedback(run) ? 'deferred' : 'immediate',
   mode: run.mode,
   category: run.category,
   round: run.round,
@@ -265,8 +270,8 @@ const answerQuestion = async (run, session, profile, body) => {
   } else {
     run.status = 'awaiting-next';
   }
-  const hidden = run.feedback === 'deferred' && !roundResult;
-  if (roundResult && run.feedback === 'deferred') roundResult.review = run.roundAnswers;
+  const hidden = deferredFeedback(run) && !roundResult;
+  if (roundResult && deferredFeedback(run)) roundResult.review = run.roundAnswers;
   const response = {
     questionToken: body.questionToken,
     result: hidden ? { feedback: 'deferred', recorded: true, timedOut, locked: false } : result,
@@ -305,6 +310,7 @@ export default async function handler(req, res) {
     const action = String(body.action || '');
     await rateLimit('ranked', playerId, 240, 60 * 5);
     if (action === 'start') {
+      await rateLimit('ranked-start-player', playerId, RANKED_START_PLAYER_LIMIT.maximum, RANKED_START_PLAYER_LIMIT.seconds);
       await rateLimit('ranked-start-ip', clientFingerprint(req), RANKED_START_IP_LIMIT.maximum, RANKED_START_IP_LIMIT.seconds);
       const category = categories.has(body.category) ? body.category : 'kaspa';
       const mode = Object.hasOwn(MODE_CONFIG, body.mode) ? body.mode : 'gauntlet';
