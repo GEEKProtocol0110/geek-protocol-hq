@@ -484,11 +484,13 @@
   const renderRoundReview = () => {
     elements.roundReview.innerHTML = run.roundAnswers.map((item, index) => {
       const result = item.correct ? 'Correct' : `${item.selected === 'No answer' ? 'No answer' : `Your answer: ${item.selected}`} · Correct: ${item.answer}`;
-      const source = item.source ? `<a href="${escapeHtml(item.source)}" target="_blank" rel="noreferrer">Open source ↗</a>` : '<span>No source recorded</span>';
+      const source = safeHttpsUrl(item.source) ? `<a href="${escapeHtml(safeHttpsUrl(item.source))}" target="_blank" rel="noreferrer">Open source ↗</a>` : '<span>No source recorded</span>';
       return `<li class="${item.correct ? 'correct-review' : 'wrong-review'}"><div><b>${index + 1}. ${escapeHtml(item.prompt)}</b><small>${escapeHtml(result)} · ${escapeHtml(item.sourceState)}</small></div>${source}</li>`;
     }).join('') || '<li>Your last answer is saved. Earlier answers from an older run are not available for review here.</li>';
   };
 
+  // Only absolute https: links are rendered; anything else (javascript:, data:, http:, relative) shows no link.
+  const safeHttpsUrl = value => { try { const url = new URL(String(value || '')); return url.protocol === 'https:' ? url.href : ''; } catch { return ''; } };
   const showRecovery = message => {
     recoveryNeeded = true; locked = true; clearTimer();
     $$('.answer', elements.answers).forEach(button => { button.disabled = true; });
