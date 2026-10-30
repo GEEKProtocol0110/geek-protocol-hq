@@ -102,8 +102,8 @@ export const handleApiError = (res, error) => {
   if (['DUEL_CHANGED', 'DUEL_STATE_INVALID', 'DUEL_QUESTION_CLOSED', 'DUEL_ANSWER_RECORDED'].includes(code)) return sendJson(res, 409, { ok: false, code, error: 'That Duel action is no longer available. Refresh the match and try again.' });
   if (code === 'RUN_NOT_FOUND') return sendJson(res, 404, { ok: false, error: 'That ranked run expired or is no longer active.' });
   if (code === 'RANKED_BANK_VERSION_CHANGED') return sendJson(res, 409, { ok: false, code, error: 'This ranked season has rotated. Finish this run to submit its completed rounds, then start a new run.' });
-  if (code === 'SEASON_UNSUPPORTED') { console.error('Geek API error code', code); return sendJson(res, 409, { ok: false, code, error: 'SEASON_UNSUPPORTED', message: 'This season is not accepting scores' }); }
-  if (code === 'SEASON_CONFIG_INVALID') { console.error('Geek API error code', code); return sendJson(res, 503, { ok: false, code, error: 'SEASON_CONFIG_INVALID', message: 'Ranked seasons are temporarily unavailable. Practice remains open.' }); }
+  if (code === 'SEASON_UNSUPPORTED') { console.error('Geek API error code', code); return sendJson(res, 409, { ok: false, code, error: 'This season is not accepting scores.', message: 'This season is not accepting scores' }); }
+  if (code === 'SEASON_CONFIG_INVALID' || code === 'SEASON_CLOCK_INVALID') { console.error('Geek API error code', code); return sendJson(res, 503, { ok: false, code, error: 'Ranked seasons are temporarily unavailable. Practice remains open.' }); }
   // Private-bank fail-closed errors: generic body, log only the fixed code
   // (never the error object, stack, paths or bank text).
   if (code === 'RANKED_BANK_UNAVAILABLE' || code === 'RANKED_BANK_SEASON_MISMATCH' || code === 'RANKED_SOURCE_INVALID' || /^PRIVATE_BANK_[A-Z_]+$/.test(code)) {
