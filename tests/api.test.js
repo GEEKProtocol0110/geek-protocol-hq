@@ -1766,7 +1766,7 @@ test('current leaderboard follows the ranked source while explicit Season 0 hist
   try {
     await recordVerifiedScore({ session: { id: 'season-ui-player', name: 'Season Player' }, category: 'pop-culture', mode: 'speed', score: 321, round: 1, season: 'season-1' });
     process.env.GEEK_RANKED_QUESTION_SOURCE = 'private';
-    process.env.GEEK_PRIVATE_QUESTION_URL = 'https://example.test/private-bank.json';
+    process.env.GEEK_PRIVATE_QUESTION_URL = 'https://example.invalid/private-bank.json';
     const current = await query('current');
     assert.equal(current.season, 'season-1'); assert.equal(current.seasonLabel, 'Season 1 — Private-bank');
     assert.ok(current.entries.some(entry => entry.score === 321));
@@ -1821,6 +1821,7 @@ test('leaderboard season=current falls back to the legacy board when the ranked 
     await leaderboardHandler(request('GET', undefined, '', { category: 'kaspa', season: 'current' }), r);
     assert.equal(r.statusCode, 200);
     assert.equal(r.body.season, 'legacy');
+    assert.deepEqual(r.body.seasons, ['current', 'legacy', 'season-1']);
   } finally {
     for (const [k, v] of Object.entries(saved)) if (v === undefined) delete process.env[k]; else process.env[k] = v;
   }

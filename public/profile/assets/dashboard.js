@@ -35,16 +35,28 @@
     if (p?.legacyPrestige) $('[data-legacy-note]').hidden = false;
   };
 
+  // Remember the leaderboard season pick across reloads; validated against the server's list.
+  const seasonStorageKey = 'geek_hq_board_season_v1';
+  const storedSeason = () => { try { const value = localStorage.getItem(seasonStorageKey); return /^[a-z0-9-]{1,32}$/.test(value || '') ? value : null; } catch { return null; } };
+  const storeSeason = value => { try { value && value !== 'current' ? localStorage.setItem(seasonStorageKey, value) : localStorage.removeItem(seasonStorageKey); } catch { /* Storage is optional. */ } };
+  const restoreSeason = () => { const select = $('[data-board-season]'), saved = storedSeason(); if (saved && (!select.options || [...select.options].some(option => option.value === saved))) select.value = saved; };
+  // Returns true when the requested season is unknown to the server (pick reset to current).
+  const rejectUnknownSeason = (season, payload) => {
+    if (season === 'current' || !Array.isArray(payload.seasons) || payload.seasons.includes(season)) return false;
+    $('[data-board-season]').value = 'current'; storeSeason(null); return true;
+  };
   const refreshBoard = async () => {
     const sequence = ++boardSequence;
     $('[data-board-panel]').setAttribute('aria-busy', 'true');
     $('[data-dashboard-board]').replaceChildren();
     $('[data-dashboard-rank]').textContent = '';
     $('[data-dashboard-board-note]').textContent = 'Loading verified standings…';
-    const query = new URLSearchParams({ category: $('[data-board-category]').value, mode: $('[data-board-mode]').value, season: $('[data-board-season]').value || 'current', limit: '50', ...(profile ? { mine: '1' } : {}) });
+    const season = $('[data-board-season]').value || 'current';
+    const query = new URLSearchParams({ category: $('[data-board-category]').value, mode: $('[data-board-mode]').value, season, limit: '50', ...(profile ? { mine: '1' } : {}) });
     try {
       const data = await api(`/api/leaderboard/?${query}`);
       if (sequence !== boardSequence) return;
+      if (rejectUnknownSeason(season, data)) return refreshBoard();
       const note = data.entries.length ? 'Best verified score per player · top 50 · equal scores share rank' : 'No submitted scores in this mode and category yet. Complete a verified run to join.';
       $('[data-dashboard-board-note]').textContent = `${data.seasonLabel || 'Verified scores'} · ${note}`;
       $('[data-dashboard-rank]').textContent = !profile ? 'Connect your profile to see your standing.' : data.mine ? `Your rank: #${data.mine.rank} · ${format.format(data.mine.score)} best score` : 'Your rank: no submitted score here yet';
@@ -129,7 +141,8 @@
     } finally { busy = false; $('[data-prestige-cancel]').disabled = false; renderPrestige(); }
   });
   $('[data-board-mode]').addEventListener('change', refreshBoard);
-  $('[data-board-season]').addEventListener('change', refreshBoard);
+  restoreSeason();
+  $('[data-board-season]').addEventListener('change', () => { storeSeason($('[data-board-season]').value); return refreshBoard(); });
   $('[data-board-category]').addEventListener('change', refreshBoard);
   $('[data-board-refresh]').addEventListener('click', refreshBoard);
   window.addEventListener('geek:profile', event => { if (prestigeNeedsRefresh) return; profile = event.detail; renderPrestige(); refreshBoard(); refreshChallenges(); });

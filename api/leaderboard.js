@@ -22,7 +22,7 @@ export default async function handler(req, res) {
       ? currentSeason()
       : Object.hasOwn(SEASON_LABELS, req.query?.season) ? req.query.season : 'legacy';
     const mine = req.query?.mine === '1' ? await leaderboardStanding(category, mode, playerIdFor(await requireSession(req)), season) : undefined;
-    return sendJson(res, 200, { ok: true, category, mode, verified: true, limit, season, seasonLabel: SEASON_LABELS[season], mine, entries: await listLeaderboard(category, mode, limit, season) });
+    return sendJson(res, 200, { ok: true, category, mode, verified: true, limit, season, seasonLabel: SEASON_LABELS[season], seasons: ['current', ...Object.keys(SEASON_LABELS)], mine, entries: await listLeaderboard(category, mode, limit, season) });
   } catch (error) {
     return handleApiError(res, error);
   }

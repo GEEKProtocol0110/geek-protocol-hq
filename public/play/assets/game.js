@@ -98,12 +98,21 @@
     renderLadder(run?.round || Math.max(1, profile.bestRound + 1));
   };
 
+  // Deferred ranked rounds: the server withholds correct/streak until the round
+  // locks, so show a neutral pending mark rather than a misleading 0.
+  const talliesPending = () => !run || run.feedback === 'deferred' && !['between-rounds', 'finished'].includes(run.status) || !Number.isInteger(run.correct);
+  const renderTallies = () => {
+    const pending = talliesPending();
+    elements.correct.textContent = pending ? '—' : String(run.correct);
+    elements.streak.textContent = pending ? '—' : `${run.streak || 0}×`;
+  };
   const applyServerState = (payload, resetReview = false) => {
     if (payload.profile) profile = payload.profile;
     if (payload.run) {
       const roundAnswers = payload.run.answeredReview || (resetReview ? [] : run?.roundAnswers || []);
       run = { ...payload.run, roundAnswers };
       rememberRun(run.id);
+      renderTallies();
     }
     updateProfileUI();
   };
@@ -126,6 +135,16 @@
       : '<li class="board-empty">No verified scores yet. Set the first signal.</li>';
   };
 
+  // Remember the leaderboard season pick across reloads; validated against the server's list.
+  const seasonStorageKey = 'geek_hq_board_season_v1';
+  const storedSeason = () => { try { const value = localStorage.getItem(seasonStorageKey); return /^[a-z0-9-]{1,32}$/.test(value || '') ? value : null; } catch { return null; } };
+  const storeSeason = value => { try { value && value !== 'current' ? localStorage.setItem(seasonStorageKey, value) : localStorage.removeItem(seasonStorageKey); } catch { /* Storage is optional. */ } };
+  const restoreSeason = () => { const select = $('[data-board-season]'), saved = storedSeason(); if (saved && (!select.options || [...select.options].some(option => option.value === saved))) select.value = saved; };
+  // Returns true when the requested season is unknown to the server (pick reset to current).
+  const rejectUnknownSeason = (season, payload) => {
+    if (season === 'current' || !Array.isArray(payload.seasons) || payload.seasons.includes(season)) return false;
+    $('[data-board-season]').value = 'current'; storeSeason(null); return true;
+  };
   const loadLeaderboard = async (category = activeCategory, mode = activeMode) => {
     const sequence = ++boardSequence;
     elements.boardState.textContent = communityReady ? 'REFRESHING' : 'CONNECTING';
@@ -133,6 +152,7 @@
       const season = $('[data-board-season]').value || 'current';
       const payload = await api(`/api/leaderboard?${new URLSearchParams({ category, mode, season })}`);
       if (sequence !== boardSequence) return;
+      if (rejectUnknownSeason(season, payload)) return loadLeaderboard(category, mode);
       elements.boardState.textContent = payload.seasonLabel || 'SERVER VERIFIED';
       renderLeaderboard(payload.entries);
     } catch {
@@ -210,9 +230,7 @@
     elements.roundTotal.textContent = String(run.maxRounds || 1);
     elements.questionNumber.textContent = pad(question.number);
     elements.questionTotal.textContent = String(run.questionCount || 10);
-    const hiddenRound = run.feedback === 'deferred';
-    elements.correct.textContent = hiddenRound ? '—' : String(run.correct);
-    elements.streak.textContent = hiddenRound ? '—' : `${run.streak || 0}×`;
+    renderTallies();
     elements.score.textContent = format.format(run.totalScore + (['question', 'awaiting-next'].includes(run.status) ? (run.roundScore || 0) : 0));
     elements.questionProgress.style.width = `${((question.number - 1) / (run.questionCount || 10)) * 100}%`;
     elements.category.textContent = displayTopic(question.topic).toUpperCase();
@@ -465,7 +483,8 @@
     } finally { requestBusy = false; $('[data-ranked-reconnect]').disabled = false; }
   };
   $('[data-ranked-reconnect]').addEventListener('click', reconnectRun);
-  $('[data-board-season]').addEventListener('change', () => loadLeaderboard());
+  restoreSeason();
+  $('[data-board-season]').addEventListener('change', () => { storeSeason($('[data-board-season]').value); return loadLeaderboard(); });
   $('[data-ranked-next]').addEventListener('click', nextQuestion);
   $('[data-ranked-finish]').addEventListener('click', async () => { $('[data-ranked-finish]').hidden = true; $('[data-ranked-recovery]').hidden = true; await finishRun(true); });
 

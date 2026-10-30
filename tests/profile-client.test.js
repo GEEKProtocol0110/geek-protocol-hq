@@ -164,8 +164,8 @@ test('character-save timeout includes waiting for response JSON and sends the de
   assert.equal(calls, 1); assert.equal(ui.timers.size, 0);
 });
 
-const dashboardPage = fetch => {
-  const ui = clientFixture(fetch);
+const dashboardPage = (fetch, extra = {}) => {
+  const ui = clientFixture(fetch, extra);
   ui.window.GeekProfile = { refreshCollectibles: async () => {}, renderProfile(p) { this.currentProfile = p; ui.window.dispatchEvent(new CustomEvent('geek:profile', { detail: p })); } };
   ui.run(source('dashboard') + '\n');
   return ui;
@@ -251,4 +251,35 @@ test('My HQ refresh keeps the selected season and displays its label even on an 
   await ui.node('[data-board-refresh]').emit('click');
   assert.match(requests.at(-1), /season=legacy/);
   assert.match(ui.node('[data-dashboard-board-note]').textContent, /Season 0 — Public-bank Alpha/);
+});
+
+const memoryStorage = (initial = {}) => { const map = new Map(Object.entries(initial)); return { map, getItem: k => map.get(k) ?? null, setItem: (k, v) => map.set(k, String(v)), removeItem: k => map.delete(k) }; };
+const seasonList = ['current', 'legacy', 'season-1'];
+
+test('My HQ remembers the season pick across reloads', async () => {
+  const storage = memoryStorage(), requests = [];
+  const board = path => { requests.push(path); return json({ ok: true, entries: [], seasons: seasonList, seasonLabel: 'x' }); };
+  const first = dashboardPage(board, { localStorage: storage });
+  first.node('[data-board-season]').value = 'legacy';
+  await first.node('[data-board-season]').emit('change');
+  assert.equal(storage.map.get('geek_hq_board_season_v1'), 'legacy');
+  const reloaded = dashboardPage(board, { localStorage: storage });
+  assert.equal(reloaded.node('[data-board-season]').value, 'legacy');
+  await reloaded.node('[data-board-refresh]').emit('click');
+  assert.match(requests.at(-1), /season=legacy/);
+  reloaded.node('[data-board-season]').value = 'current';
+  await reloaded.node('[data-board-season]').emit('change');
+  assert.equal(storage.map.has('geek_hq_board_season_v1'), false);
+});
+
+test('My HQ falls back to the current season when the saved pick is not in the server list', async () => {
+  const storage = memoryStorage({ geek_hq_board_season_v1: 'season-9' }), requests = [];
+  const ui = dashboardPage(path => { requests.push(path); return json({ ok: true, entries: [], seasons: seasonList, seasonLabel: 'Season 1 — Private-bank' }); }, { localStorage: storage });
+  await ui.node('[data-board-refresh]').emit('click');
+  await new Promise(r => setTimeout(r, 0));
+  assert.match(requests.at(-1), /season=current/);
+  assert.equal(ui.node('[data-board-season]').value, 'current');
+  assert.equal(storage.map.has('geek_hq_board_season_v1'), false);
+  const junk = dashboardPage(() => json({ ok: true, entries: [], seasons: seasonList }), { localStorage: memoryStorage({ geek_hq_board_season_v1: '<script>' }) });
+  assert.notEqual(junk.node('[data-board-season]').value, '<script>');
 });
