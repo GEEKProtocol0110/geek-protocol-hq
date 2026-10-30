@@ -102,7 +102,11 @@ export const leaderboardSeasonLabel = (id, env = process.env) => {
 // Deployed non-production environments (VERCEL_ENV set and !== 'production', e.g.
 // preview) may not write ranked state to shared keys (Season 0 boards, profiles).
 // Local runs without VERCEL_ENV (dev server, tests) are unaffected.
+// Deployed on Vercel (VERCEL set) but VERCEL_ENV missing: we cannot tell whether
+// this is production, so fail closed rather than guess a key namespace.
+const assertKnownEnvironment = env => { if (env.VERCEL && !env.VERCEL_ENV) throw new Error('RANKED_ENV_UNKNOWN'); };
 export const assertRankedWritesAllowed = (env = process.env) => {
+  assertKnownEnvironment(env);
   if (env.VERCEL_ENV && env.VERCEL_ENV !== 'production') throw new Error('RANKED_WRITES_DISABLED');
 };
 
@@ -113,6 +117,7 @@ export const assertRankedWritesAllowed = (env = process.env) => {
 // land on production keys even when pointed at the same database.
 const ENV_NAME = /^[a-z0-9-]{1,32}$/;
 export const seasonKeyNamespace = (env = process.env) => {
+  assertKnownEnvironment(env);
   if (env.VERCEL_ENV === 'production') return 'geek:';
   return `geek:${ENV_NAME.test(env.VERCEL_ENV || '') ? env.VERCEL_ENV : 'development'}:`;
 };

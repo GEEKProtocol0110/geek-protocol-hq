@@ -3,15 +3,14 @@ import { profileJson, profileKeyFor, profileSnapshot, parseProfile } from './pro
 import { prestigeKeyFor } from './prestige-state.js';
 import { redis } from './redis.js';
 import { AUTO_PREFLIGHT_LUA, AUTO_COMMIT_LUA } from './testnet-automatic.js';
-import { assertRankedWritesAllowed } from './seasons.js';
+import { assertRankedWritesAllowed, seasonKeyNamespace } from './seasons.js';
 
-// Ranked run, active-run and Daily keys. Production and local runs without
-// VERCEL_ENV (tests, scripts) keep the original `geek:` keys; any other deployed
-// environment (VERCEL_ENV set and !== 'production', e.g. preview, development)
-// uses `geek:<env>:` so it can never read or overwrite production runs.
-const deployedNonProduction = (env = process.env) => Boolean(env.VERCEL_ENV) && env.VERCEL_ENV !== 'production';
-export const rankedKeyNamespace = (env = process.env) => deployedNonProduction(env)
-  ? `geek:${/^[a-z0-9-]{1,32}$/.test(env.VERCEL_ENV) ? env.VERCEL_ENV : 'nonproduction'}:` : 'geek:';
+// Ranked run, active-run and Daily keys share the season key namespace:
+// production keeps the original `geek:` keys (runs active across a deploy keep
+// resolving); preview/development and local runs without VERCEL_ENV use
+// `geek:<env>:` / `geek:development:`. Deployed (VERCEL set) without VERCEL_ENV
+// fails closed with RANKED_ENV_UNKNOWN.
+export const rankedKeyNamespace = (env = process.env) => seasonKeyNamespace(env);
 export const runKeyFor = (id, env = process.env) => `${rankedKeyNamespace(env)}run:${id}`;
 export const activeRunKeyFor = (sessionId, env = process.env) => `${rankedKeyNamespace(env)}ranked:active:${sessionId}`;
 export const dailyKeyFor = (playerId, day, env = process.env) => `${rankedKeyNamespace(env)}daily:${playerId}:${day}`;
