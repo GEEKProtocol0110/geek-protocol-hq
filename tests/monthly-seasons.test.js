@@ -43,13 +43,14 @@ Object.assign(process.env, {
 });
 resetRankedSourceCache();
 
-let failCommit = false, clockBase = null, clockStartedAt = 0;
+let blockPin = false, failCommit = false, clockBase = null, clockStartedAt = 0;
 const setClock = iso => { clockBase = at(iso); clockStartedAt = realNow(); };
 Date.now = () => clockBase === null ? realNow() : clockBase + (realNow() - clockStartedAt);
 
 globalThis.fetch = async (url, options) => {
   assert.ok(String(url).startsWith(process.env.UPSTASH_REDIS_REST_URL), 'only the synthetic Redis endpoint');
   const values = JSON.parse(options.body); let payload;
+  if (blockPin && values[0] === 'SET' && String(values[1]).includes('season-bank')) return new Response(JSON.stringify({ result: null }));
   if (failCommit && values[0] === 'EVAL' && String(values[1]).includes('geek-ranked-commit-v1')) { failCommit = false; throw new TypeError('Synthetic commit failure'); }
   if (String(url).endsWith('/multi-exec')) payload = (await fixture.commands([['MULTI'], ...values, ['EXEC']])).at(-1).map(result => ({ result }));
   else if (String(url).endsWith('/pipeline')) payload = (await fixture.commands(values)).map(result => ({ result }));
@@ -61,7 +62,7 @@ after(async () => {
   ENV_KEYS.forEach(k => savedEnv[k] === undefined ? delete process.env[k] : process.env[k] = savedEnv[k]);
   resetRankedSourceCache(); await fixture.close();
 });
-beforeEach(async () => { await fixture.command('FLUSHDB'); clockBase = null; failCommit = false; delete process.env.VERCEL_ENV; delete process.env.GEEK_SEASON_BANK_VERSIONS; });
+beforeEach(async () => { await fixture.command('FLUSHDB'); clockBase = null; failCommit = false; blockPin = false; delete process.env.VERCEL_ENV; delete process.env.GEEK_SEASON_BANK_VERSIONS; });
 
 let ipCounter = 0;
 const call = async (handler, method, body, cookie = '', query = {}) => {
@@ -478,38 +479,6 @@ test('season key namespace: production unchanged, every other environment prefix
   assert.throws(() => seasonBankKey('season-0'), /SEASON_UNSUPPORTED/);
 });
 
-test('preview runs and scores never land on production season keys; Season 0 keys unchanged', async () => {
-  process.env.VERCEL_ENV = 'preview';
-  setClock('2026-11-10T00:00:00.000Z');
-  const cookie = await session('Preview player');
-  const { start } = await playSpeed(cookie);
-  assert.equal((await ranked(cookie, 'finish', { runId: start.run.id })).statusCode, 200);
-  await recordVerifiedScore({ session: { id: 'preview-legacy', name: 'Legacy' }, category: 'kaspa', mode: 'speed', score: 10, round: 1 });
-  assert.deepEqual(await boardKeys(), ['geek:leaderboard:speed:kaspa', 'geek:preview:leaderboard:season-1:speed:kaspa']);
-  assert.deepEqual(await fixture.command('KEYS', 'geek:leaderboard:season-*'), [], 'no production season board written');
-  assert.deepEqual(await fixture.command('KEYS', '*season-bank*'), [], 'preview never writes a pin');
-  assert.equal((await board('season-1')).body.entries.length, 1, 'preview reads its own board');
-  process.env.VERCEL_ENV = 'production';
-  assert.equal((await board('season-1')).body.entries.length, 0, 'production board untouched');
-});
-
-test('non-production never writes a pin but still enforces one in its own namespace', async () => {
-  process.env.VERCEL_ENV = 'preview';
-  setClock('2026-11-10T00:00:00.000Z');
-  assert.equal((await ranked(await session('No pin'), 'start', { category: 'kaspa', mode: 'speed' })).statusCode, 201);
-  assert.deepEqual(await fixture.command('KEYS', '*season-bank*'), []);
-  await fixture.command('SET', 'geek:preview:season-bank:season-1', 'some-other-version');
-  const logs = await captureLogs(async () => {
-    const res = await ranked(await session('Enforced'), 'start', { category: 'kaspa', mode: 'speed' });
-    assert.equal(res.statusCode, 503); assert.equal(res.body.code, 'RANKED_BANK_UNAVAILABLE');
-  });
-  assert.deepEqual(logs, [['Geek API error code', 'RANKED_BANK_SEASON_MISMATCH']]);
-  // A production-namespace pin does not affect preview.
-  await fixture.command('DEL', 'geek:preview:season-bank:season-1');
-  await fixture.command('SET', 'geek:season-bank:season-1', 'some-other-version');
-  assert.equal((await ranked(await session('Other ns'), 'start', { category: 'kaspa', mode: 'speed' })).statusCode, 201);
-});
-
 test('production pins only after the run is saved; a failed save leaves no pin', async () => {
   process.env.VERCEL_ENV = 'production';
   setClock('2026-11-10T00:00:00.000Z');
@@ -566,4 +535,130 @@ test('season-bank reset CLI: explicit args, dry run by default, deletes only wit
 
 test('no HTTP route exposes the season-bank reset', () => {
   for (const file of ['api/ranked.js', 'api/leaderboard.js', 'server/http.js']) assert.doesNotMatch(readFileSync(join(process.cwd(), file), 'utf8'), /season-bank-reset|DEL['"]?,\s*seasonBankKey/);
+});
+
+// ---------------------------------------------------------------------------
+// Re-review: preview write guard, env-scoped run keys, score-time bank check
+// ---------------------------------------------------------------------------
+import { activeRunKeyFor, dailyKeyFor, runKeyFor } from '../server/ranked-state.js';
+import { recordSeasonBank, seasonBankAllowsScore } from '../server/questions.js';
+import { maskVersion } from '../scripts/season-bank-reset.mjs';
+
+const allKeys = async () => (await fixture.command('KEYS', '*')).sort();
+
+test('run, active-run and Daily keys: production and local unchanged, deployed non-production namespaced', () => {
+  for (const env of [{ VERCEL_ENV: 'production' }, {}]) {
+    assert.equal(runKeyFor('r1', env), 'geek:run:r1');
+    assert.equal(activeRunKeyFor('s1', env), 'geek:ranked:active:s1');
+    assert.equal(dailyKeyFor('p1', '2026-11-01', env), 'geek:daily:p1:2026-11-01');
+  }
+  assert.equal(runKeyFor('r1', { VERCEL_ENV: 'preview' }), 'geek:preview:run:r1');
+  assert.equal(activeRunKeyFor('s1', { VERCEL_ENV: 'preview' }), 'geek:preview:ranked:active:s1');
+  assert.equal(dailyKeyFor('p1', '2026-11-01', { VERCEL_ENV: 'development' }), 'geek:development:daily:p1:2026-11-01');
+  assert.equal(runKeyFor('r1', { VERCEL_ENV: 'Weird Env' }), 'geek:nonproduction:run:r1');
+});
+
+test('preview refuses ranked writes (503) and never touches production run, board or profile keys', async () => {
+  // Production data first (Season 0 board + a saved production run).
+  process.env.VERCEL_ENV = 'production';
+  setClock('2026-11-10T00:00:00.000Z');
+  await recordVerifiedScore({ session: { id: 'prod-veteran', name: 'Prod Veteran' }, category: 'kaspa', mode: 'speed', score: 900, round: 1 });
+  const prodCookie = await session('Prod player');
+  const prodStart = await ranked(prodCookie, 'start', { category: 'kaspa', mode: 'speed' });
+  assert.equal(prodStart.statusCode, 201);
+  assert.ok(await fixture.command('GET', `geek:run:${prodStart.body.run.id}`), 'production run uses the original key');
+  const before = await allKeys();
+  const snapshot = Object.fromEntries(await Promise.all(before.map(async k => [k, await fixture.command('DUMP', k)])));
+  for (const vercelEnv of ['preview', 'development']) {
+    process.env.VERCEL_ENV = vercelEnv;
+    const cookie = await session(`${vercelEnv} player`);
+    const sessionKeys = new Set(await allKeys());
+    let res;
+    const logs = await captureLogs(async () => { res = await ranked(cookie, 'start', { category: 'kaspa', mode: 'speed' }); });
+    assert.equal(res.statusCode, 503, vercelEnv); assert.equal(res.body.code, 'RANKED_BANK_UNAVAILABLE');
+    assert.deepEqual(logs, [['Geek API error code', 'RANKED_WRITES_DISABLED']]);
+    await assert.rejects(recordVerifiedScore({ session: { id: 'preview-x', name: 'X' }, category: 'kaspa', mode: 'speed', score: 5, round: 1 }), /RANKED_WRITES_DISABLED/);
+    // Preview cannot even read the production run through its namespaced key.
+    assert.equal((await resume(prodCookie, prodStart.body.run.id)).statusCode, 404);
+    const after = await allKeys();
+    assert.deepEqual(after.filter(k => !sessionKeys.has(k) && !k.startsWith('geek:rate:')), [], 'no new keys from refused ranked writes');
+  }
+  for (const k of before) assert.equal(await fixture.command('DUMP', k), snapshot[k], `production key unchanged: ${k}`);
+  process.env.VERCEL_ENV = 'production';
+  assert.equal((await board('legacy')).body.entries.map(e => e.name).join(), 'Prod Veteran');
+});
+
+test('local development (no VERCEL_ENV) never writes a pin but enforces one in its own namespace', async () => {
+  setClock('2026-11-10T00:00:00.000Z');
+  assert.equal((await ranked(await session('No pin'), 'start', { category: 'kaspa', mode: 'speed' })).statusCode, 201);
+  assert.deepEqual(await fixture.command('KEYS', '*season-bank*'), []);
+  await fixture.command('SET', 'geek:development:season-bank:season-1', 'some-other-version');
+  const logs = await captureLogs(async () => {
+    const res = await ranked(await session('Enforced'), 'start', { category: 'kaspa', mode: 'speed' });
+    assert.equal(res.statusCode, 503); assert.equal(res.body.code, 'RANKED_BANK_UNAVAILABLE');
+  });
+  assert.deepEqual(logs, [['Geek API error code', 'RANKED_BANK_SEASON_MISMATCH']]);
+  await fixture.command('DEL', 'geek:development:season-bank:season-1');
+  await fixture.command('SET', 'geek:season-bank:season-1', 'some-other-version');
+  assert.equal((await ranked(await session('Other ns'), 'start', { category: 'kaspa', mode: 'speed' })).statusCode, 201, 'a production pin does not affect local dev');
+});
+
+const captureWarn = async fn => {
+  const lines = [], original = console.warn;
+  console.warn = (...args) => lines.push(args);
+  try { await fn(); } finally { console.warn = original; }
+  return lines;
+};
+
+test('rollout race: two instances, no pin yet, different banks -> only the matching-version run lands on the board', async () => {
+  process.env.VERCEL_ENV = 'production';
+  setClock('2026-11-10T00:00:00.000Z');
+  blockPin = true; // both instances start before either pin write lands
+  const cookieA = await session('Instance A'), a = await playSpeed(cookieA);
+  const rotated = fakeBankDirWithChange();
+  let cookieB, b;
+  await withBankDir(rotated, async () => { cookieB = await session('Instance B'); b = await playSpeed(cookieB); });
+  assert.deepEqual(await fixture.command('KEYS', '*season-bank*'), []);
+  blockPin = false;
+  // A's delayed pin write wins; B's loses SET NX and logs version ids only.
+  const runA = JSON.parse(await fixture.command('GET', `geek:run:${a.start.run.id}`));
+  const runB = JSON.parse(await fixture.command('GET', `geek:run:${b.start.run.id}`));
+  assert.notEqual(runA.bankVersion, runB.bankVersion);
+  assert.equal(await recordSeasonBank(runA), true);
+  const warns = await captureWarn(async () => assert.equal(await recordSeasonBank(runB), false));
+  assert.deepEqual(warns, [['Geek season bank mismatch', 'season-1', runA.bankVersion, runB.bankVersion]]);
+  // B finishes: career saved, but unranked (no board write), version ids logged.
+  let finishB;
+  const finishWarns = await captureWarn(() => withBankDir(rotated, async () => { finishB = await ranked(cookieB, 'finish', { runId: b.start.run.id }); }));
+  assert.equal(finishB.statusCode, 200); assert.equal(finishB.body.leaderboard.unranked, true);
+  assert.deepEqual(finishWarns, [['Geek season bank mismatch', 'season-1', runA.bankVersion, runB.bankVersion]]);
+  for (const [, ...ids] of finishWarns) for (const id of ids) assert.doesNotMatch(String(id), /Fake|prompt|\//);
+  const finishA = await ranked(cookieA, 'finish', { runId: a.start.run.id });
+  assert.equal(finishA.statusCode, 200); assert.notEqual(finishA.body.leaderboard.unranked, true);
+  assert.deepEqual((await board('season-1')).body.entries.map(e => e.name), ['Instance A']);
+  // A retried finish for B stays unranked.
+  await captureWarn(() => withBankDir(rotated, async () => { assert.equal((await ranked(cookieB, 'finish', { runId: b.start.run.id })).body.leaderboard.unranked, true); }));
+  assert.deepEqual((await board('season-1')).body.entries.map(e => e.name), ['Instance A']);
+});
+
+test('score-time check honours GEEK_SEASON_BANK_VERSIONS and ignores Season 0 / non-monthly runs', async () => {
+  process.env.GEEK_SEASON_BANK_VERSIONS = JSON.stringify({ 'season-2': 'v-configured' });
+  const warns = await captureWarn(async () => {
+    assert.equal(await seasonBankAllowsScore({ season: 'season-2', bankVersion: 'v-configured' }), true);
+    assert.equal(await seasonBankAllowsScore({ season: 'season-2', bankVersion: 'v-other' }), false);
+    assert.equal(await seasonBankAllowsScore({ season: 'season-3', bankVersion: 'v-any' }), true, 'no config, no pin');
+    assert.equal(await seasonBankAllowsScore({ bankVersion: 'public' }), true);
+    assert.equal(await seasonBankAllowsScore({ season: 'season-2', bankVersion: 'v-other' }, { GEEK_SEASON_BANK_VERSIONS: process.env.GEEK_SEASON_BANK_VERSIONS }), true, 'monthly off');
+  });
+  assert.deepEqual(warns, [['Geek season bank mismatch', 'season-2', 'v-configured', 'v-other']]);
+});
+
+test('reset CLI masks the stored version', async () => {
+  assert.equal(maskVersion('0123456789abcdef'), '01234567…');
+  assert.equal(maskVersion('short'), 'short');
+  await fixture.command('SET', 'geek:season-bank:season-5', 'abcdef0123456789secret');
+  const out = [];
+  await resetMain(['--season', 'season-5', '--env', 'production'], { redis: (...a) => fixture.command(...a), log: l => out.push(l), error: l => out.push(l) });
+  assert.equal(out.join('\n').includes('0123456789secret'), false);
+  assert.match(out[0], /= abcdef01…$/);
 });

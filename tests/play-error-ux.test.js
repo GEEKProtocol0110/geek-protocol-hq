@@ -121,3 +121,14 @@ test('reconnecting a Speed run shows the Speed note, not the Gauntlet Alpha note
   assert.doesNotMatch(note, /Alpha play/); assert.match(note, /Quick mode/);
   assert.match(ui.node('[data-selected-mode]').textContent, /Speed/i);
 });
+
+test('round review renders source links only for https: URLs', async () => {
+  const review = sources => ({ ...state('between-rounds'), run: { ...state('between-rounds').run, answeredReview: sources.map((source, i) => ({ prompt: `Q${i}`, correct: true, answer: 'One', sourceState: 'ok', source })) } });
+  const sources = ['https://example.test/ok', 'javascript:alert(1)', 'http://example.test/plain', 'data:text/html,x', '/relative', '', '  JAVASCRIPT:alert(2)'];
+  const ui = await page(path => path.includes('runId=') ? json(review(sources)) : undefined, { [key]: id });
+  await ui.context.actions.reconnectRun();
+  const markup = ui.node('[data-round-review]').innerHTML;
+  assert.equal((markup.match(/<a href=/g) || []).length, 1, markup);
+  assert.match(markup, /href="https:\/\/example\.test\/ok"/);
+  for (const bad of ['javascript', 'JAVASCRIPT', 'data:text', 'http://example', 'href="/relative"']) assert.equal(markup.includes(bad), false, bad);
+});
