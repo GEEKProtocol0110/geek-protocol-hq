@@ -5,8 +5,9 @@ import { clientFixture, deferred, json } from './helpers/client-fixture.js';
 
 // Synthetic DOM and fake responses only; no network, preview or production traffic.
 const read = p => readFileSync(new URL(p, import.meta.url), 'utf8');
-const access = read('../public/assets/session-access.js');
-const signIn = ['sign-in.js', 'passkeys.js'].map(p => read('../public/sign-in/assets/' + p));
+const hint = read('../public/assets/session-hint.js');
+const access = hint + read('../public/assets/session-access.js');
+const signIn = ['sign-in.js', 'passkeys.js'].map(p => hint + read('../public/sign-in/assets/' + p));
 const settle = async () => { for (let i = 0; i < 4; i++) await new Promise(setImmediate); };
 const storage = (initial = {}) => { const m = new Map(Object.entries(initial)); return { getItem: k => m.get(k) ?? null, setItem: (k, v) => m.set(k, v), removeItem: k => m.delete(k), m }; };
 const RL = 'Temporarily rate limited. Your session has not changed. Try again in 42 seconds.';
@@ -38,7 +39,7 @@ const page = ({ reply, local = {}, session = {}, signInPage = false, signOut = t
 const signInReply = status => path => path === '/api/session' ? json({ ok: true }) : status();
 
 test('(1) 429 on /sign-in with a cached signed-in state (new tab: localStorage only) keeps the signed-in view and Sign out, with no forms', async () => {
-  const p = page({ reply: signInReply(limited), local: { 'geek:last-session-state': 'signed-in' }, signInPage: true });
+  const p = page({ reply: signInReply(limited), local: { 'geek:last-session-state': 'signed-in', 'geek:last-session-at': String(Date.now()) }, signInPage: true });
   await p.run();
   for (const s of FORMS) assert.equal(p.ui.node(s).hidden, true, `${s} hidden`);
   assert.equal(p.ui.node('[data-sign-in-guest]').hidden, true);
@@ -57,14 +58,14 @@ test('(1) 429 on /sign-in with no cached state shows only the retry message, nev
 });
 
 test('(1) 429 on /profile in a new tab keeps Sign out from the cached signed-in state', async () => {
-  const p = page({ reply: limited, local: { 'geek:last-session-state': 'signed-in' } });
+  const p = page({ reply: limited, local: { 'geek:last-session-state': 'signed-in', 'geek:last-session-at': String(Date.now()) } });
   await p.run();
   assert.equal(p.button.hidden, false);
   assert.equal(p.ui.node('[data-sign-out-status]').textContent, RL);
 });
 
 test('(2) the rate-limit message renders exactly once on /sign-in', async () => {
-  const p = page({ reply: signInReply(limited), local: { 'geek:last-session-state': 'signed-in' }, signInPage: true });
+  const p = page({ reply: signInReply(limited), local: { 'geek:last-session-state': 'signed-in', 'geek:last-session-at': String(Date.now()) }, signInPage: true });
   await p.run();
   const regions = ['[data-sign-in-status]', '[data-passkey-note]', '[data-sign-out-status]', '[data-device-note]', '[data-manual-status]'];
   const shown = regions.filter(s => p.ui.node(s).textContent.includes('Temporarily rate limited'));
@@ -75,16 +76,16 @@ test('(3) the nav says Account when signed in and Sign in for guests, using the 
   const signedIn = page({ reply: () => json({ ok: true, signedIn: true }) });
   await signedIn.run();
   assert.equal(signedIn.link.textContent, 'Account'); assert.equal(signedIn.calls.length, 1);
-  const guest = page({ reply: () => json({ ok: true, signedIn: false }), local: { 'geek:last-session-state': 'signed-in' } });
+  const guest = page({ reply: () => json({ ok: true, signedIn: false }), local: { 'geek:last-session-state': 'signed-in', 'geek:last-session-at': String(Date.now()) } });
   await guest.run(); assert.equal(guest.link.textContent, 'Sign in');
-  const expired = page({ reply: () => json({ ok: false }, 401), local: { 'geek:last-session-state': 'signed-in' } });
+  const expired = page({ reply: () => json({ ok: false }, 401), local: { 'geek:last-session-state': 'signed-in', 'geek:last-session-at': String(Date.now()) } });
   await expired.run(); assert.equal(expired.link.textContent, 'Sign in');
 });
 
 test('(3) unknown state degrades to the default Sign in link, and pages without account controls make no request', async () => {
   const unknown = page({ reply: limited });
   await unknown.run(); assert.equal(unknown.link.textContent, 'Sign in');
-  const plain = page({ reply: () => assert.fail('no extra request'), local: { 'geek:last-session-state': 'signed-in' }, signOut: false });
+  const plain = page({ reply: () => assert.fail('no extra request'), local: { 'geek:last-session-state': 'signed-in', 'geek:last-session-at': String(Date.now()) }, signOut: false });
   await plain.run();
   assert.equal(plain.calls.length, 0); assert.equal(plain.link.textContent, 'Account');
   plain.emit('geek:account-status', { signedIn: false }); assert.equal(plain.link.textContent, 'Sign in');

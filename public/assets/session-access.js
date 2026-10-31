@@ -3,20 +3,25 @@
   // Last known session state survives page loads and new tabs (localStorage), so a 429/5xx status
   // check never looks like sign-out. The freshness stamp is per tab (sessionStorage).
   const KEY = 'geek:last-session-state', CHECKED = 'geek:last-session-checked', FRESH_MS = 15000;
+  const AT = window.geekSessionHint?.AT; // without the helper, no timestamp is written and the hint is never trusted
   const area = name => { try { return window[name] || null; } catch { return null; } };
-  const recall = () => { try { return area('localStorage')?.getItem(KEY) ?? area('sessionStorage')?.getItem(KEY) ?? null; } catch { return null; } };
+  // A saved "signed-in" hint expires after 24h so a session revoked elsewhere cannot keep showing Account forever.
+  // Shared 24h / no-future-stamp rule; fails closed (unknown) if the helper did not load.
+  const recall = () => { try { return window.geekSessionHint?.read(window) ?? null; } catch { return null; } };
   const fresh = () => { try { return Date.now() - Number(area('sessionStorage')?.getItem(CHECKED) || 0) < FRESH_MS; } catch { return false; } };
   // The nav reflects the known session with no extra request; unknown keeps the safe default "Sign in".
   const navLinks = () => [...document.querySelectorAll('[data-nav]')].flatMap(nav => [...nav.querySelectorAll('a')])
     .filter(a => a.getAttribute('href') === '/sign-in/').concat([...document.querySelectorAll('[data-nav-account]')]);
-  const nav = state => navLinks().forEach(a => {
+  // Sign-in and recover prompts are only for signed-out visitors (shown again whenever the state is unknown).
+  const nav = state => { document.querySelectorAll('[data-signed-out-only]').forEach(node => { node.hidden = state === 'signed-in'; }); navEach(state); };
+  const navEach = state => navLinks().forEach(a => {
     a.textContent = state === 'signed-in' ? 'Account' : 'Sign in';
     a.setAttribute('aria-label', state === 'signed-in' ? 'Account: you’re signed in' : 'Sign in');
   });
   const remember = signedIn => {
     const value = signedIn ? 'signed-in' : 'signed-out';
-    try { area('localStorage')?.setItem(KEY, value); } catch {}
-    try { area('sessionStorage')?.setItem(KEY, value); area('sessionStorage')?.setItem(CHECKED, String(Date.now())); } catch {}
+    try { area('localStorage')?.setItem(KEY, value); if (AT) area('localStorage')?.setItem(AT, String(Date.now())); } catch {}
+    try { area('sessionStorage')?.setItem(KEY, value); area('sessionStorage')?.setItem(CHECKED, String(Date.now())); if (AT) area('sessionStorage')?.setItem(AT, String(Date.now())); } catch {}
     nav(value);
   };
   if (recall() === 'signed-in') nav('signed-in');
@@ -29,7 +34,7 @@
   // On /sign-in the page status region owns retry messages; this script never repeats them there.
   const ownsMessages = !document.querySelectorAll('[data-passkeys]').length;
   const messages = [...document.querySelectorAll('[data-sign-out-status]')];
-  let pending = false, signedOut = false, revision = 0;
+  let pending = false, signedOut = false, revision = 0, inFlight = false, lastEventCheck = 0, queuedCheck = null;
   const show = visible => buttons.forEach(button => { button.hidden = !visible; });
   const message = text => messages.forEach(node => { node.textContent = text; });
   // Seconds from Retry-After, or from the body's retryAfter / reset (epoch ms). Always a bounded number.
@@ -59,6 +64,7 @@
   const refresh = async () => {
     if (signedOut) return;
     const version = ++revision;
+    inFlight = true;
     try {
       const { response, payload } = await request();
       if (version !== revision || pending) return;
@@ -66,7 +72,7 @@
       if (response.status === 401) { remember(false); show(false); message(''); return; }
       if (response.ok && payload.ok) { const known = Boolean(payload.signedIn || payload.walletLinked); remember(known); show(known); message(''); return; }
       unknown(response.status === 429 ? retrySeconds(response, payload) : null);
-    } catch { if (version === revision && !pending) unknown(); }
+    } catch { if (version === revision && !pending) unknown(); } finally { inFlight = false; }
   };
   // Per-account browser state must not carry over to the new guest created after sign-out.
   const ACCOUNT_KEYS = ['geek_hq_ranked_run_v1', 'geek-lobby-identity-v1', 'geek-cce-name-v1', 'geek-challenge-active-v1', 'geek-assisted-run'];
@@ -95,15 +101,23 @@
     }
   };
   buttons.forEach(button => button.addEventListener('click', signOut));
+  const confirmFromEvent = () => {
+    // Throttled events are never dropped: one check is queued for the end of the window.
+    const wait = inFlight ? 1000 : 5000 - (Date.now() - lastEventCheck);
+    if (wait > 0) { if (!queuedCheck) queuedCheck = setTimeout(() => { queuedCheck = null; lastEventCheck = Date.now(); refresh(); }, wait); return; }
+    lastEventCheck = Date.now(); refresh();
+  };
   document.addEventListener('geek:account-status', event => {
     if (!pending && !signedOut) { revision++; const known = Boolean(event.detail.signedIn || event.detail.walletLinked); remember(known); show(known); }
   });
-  // The initial page-load announcement already carried its status via geek:account-status; refetching it was a duplicate request.
-  // A completed sign-in shows Sign out immediately (and on the next page) before any status refetch.
+  // A sign-in event shows Sign out immediately, but the server is always asked to confirm it:
+  // events are page-level and any script can dispatch them.
   for (const name of ['geek:signed-in', 'geek:passkey-signed-in', 'geek:device-signed-in']) document.addEventListener(name, event => {
     if (pending || signedOut) return;
     remember(true); show(true); message('');
-    if (!event?.detail?.initial) refresh();
+    // Always confirmed with the server (any page script can dispatch these events). Bounded: no new
+    // request while one is in flight, and at most one event-triggered check every 5 seconds.
+    confirmFromEvent();
   });
   document.addEventListener('geek:account-status-unknown', event => { if (!pending && !signedOut) unknown(event.detail?.retryAfter ?? null); });
   window.addEventListener('pageshow', event => { if (event.persisted) refresh(); });

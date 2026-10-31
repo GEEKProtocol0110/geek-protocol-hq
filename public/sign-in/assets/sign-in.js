@@ -74,7 +74,7 @@
     // An unavailable status check is not a sign-out. This status region is the single owner of the
     // retry message, and no sign-in or create-account form is offered while the state is unconfirmed.
     let last = null;
-    try { last = window.localStorage?.getItem('geek:last-session-state') ?? window.sessionStorage?.getItem('geek:last-session-state') ?? null; } catch {}
+    try { last = window.geekSessionHint?.read(window) ?? null; } catch {}
     const known = signedIn || last === 'signed-in';
     for (const selector of ['[data-passkey-login-area]', '[data-passkey-new]', '[data-passkey-account]', '[data-wallet-methods]', '[data-device-access]']) {
       for (const node of document.querySelectorAll(selector)) node.hidden = true;
