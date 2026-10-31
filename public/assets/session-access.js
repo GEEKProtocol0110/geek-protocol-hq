@@ -14,7 +14,9 @@
   // The nav reflects the known session with no extra request; unknown keeps the safe default "Sign in".
   const navLinks = () => [...document.querySelectorAll('[data-nav]')].flatMap(nav => [...nav.querySelectorAll('a')])
     .filter(a => a.getAttribute('href') === '/sign-in/').concat([...document.querySelectorAll('[data-nav-account]')]);
-  const nav = state => navLinks().forEach(a => {
+  // Sign-in and recover prompts are only for signed-out visitors (shown again whenever the state is unknown).
+  const nav = state => { document.querySelectorAll('[data-signed-out-only]').forEach(node => { node.hidden = state === 'signed-in'; }); navEach(state); };
+  const navEach = state => navLinks().forEach(a => {
     a.textContent = state === 'signed-in' ? 'Account' : 'Sign in';
     a.setAttribute('aria-label', state === 'signed-in' ? 'Account: you’re signed in' : 'Sign in');
   });
