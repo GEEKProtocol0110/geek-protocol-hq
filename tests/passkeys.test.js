@@ -59,9 +59,10 @@ const authenticator = () => {
     }
   };
 };
-const enroll = async (cookie, key = authenticator(), token) => {
-  const begin = await call(passkeysHandler, cookie, { action: 'begin-register', token }); assert.equal(begin.statusCode, 200, JSON.stringify(begin.body));
-  const finish = await call(passkeysHandler, cookie, { action: 'finish-register', challengeId: begin.body.challengeId, response: key.register(begin.body.options), label: 'Test authenticator' });
+// Existing tests model a guest who explicitly keeps progress; claim tests below cover fresh/missing.
+const enroll = async (cookie, key = authenticator(), token, claim = { claimGuestProgress: true }) => {
+  const begin = await call(passkeysHandler, cookie, { action: 'begin-register', token, ...claim }); assert.equal(begin.statusCode, 200, JSON.stringify(begin.body));
+  const finish = await call(passkeysHandler, cookie, { action: 'finish-register', challengeId: begin.body.challengeId, response: key.register(begin.body.options), label: 'Test authenticator', ...claim });
   assert.equal(finish.statusCode, 200, JSON.stringify(finish.body));
   return { cookie: cookieFrom(finish), grant: finish.body.grant.token, key };
 };
@@ -317,14 +318,14 @@ test('passkey recovery keeps saved progress, chosen name and original membership
 
 test('a credential cannot be attached to a second player and expired challenges cannot enroll', async () => {
   const guest = await session(), first = await enroll(guest), second = await session();
-  const begin = await call(passkeysHandler,second,{action:'begin-register'});
-  const collision = await call(passkeysHandler,second,{action:'finish-register',challengeId:begin.body.challengeId,response:first.key.register(begin.body.options)});
+  const begin = await call(passkeysHandler,second,{action:'begin-register',claimGuestProgress:true});
+  const collision = await call(passkeysHandler,second,{action:'finish-register',challengeId:begin.body.challengeId,response:first.key.register(begin.body.options),claimGuestProgress:true});
   assert.equal(collision.statusCode,400);assert.equal(collision.headers['Set-Cookie'],undefined);
-  const other = authenticator(), b = await call(passkeysHandler,second,{action:'begin-register'});
+  const other = authenticator(), b = await call(passkeysHandler,second,{action:'begin-register',claimGuestProgress:true});
   const ck = 'geek:passkey:challenge:v1:'+b.body.challengeId;
   const c = JSON.parse(await fixture.command('GET',ck));c.issuedAt=Date.now()-300001;c.expiresAt=c.issuedAt+300000;
   await fixture.command('SET',ck,JSON.stringify(c));
-  const expired = await call(passkeysHandler,second,{action:'finish-register',challengeId:b.body.challengeId,response:other.register(b.body.options)});
+  const expired = await call(passkeysHandler,second,{action:'finish-register',challengeId:b.body.challengeId,response:other.register(b.body.options),claimGuestProgress:true});
   assert.equal(expired.statusCode,400);assert.equal(await fixture.command('GET',ck),null);
 });
 
@@ -575,4 +576,65 @@ test('device cap, stale receiving state and audit-index corruption cannot partia
     assert.ok(await fixture.command('GET','geek:session:'+target.cookie.split('=')[1]));
     const list=await fixture.command('GET','geek:device:list:v1:'+player);assert.equal(list===null?0:JSON.parse(list).length,change==='cap'?10:0);
   }
+});
+
+// ---- Explicit guest-progress claim at account creation (synthetic data only) ----
+const playerOf = async cookie => { const s = JSON.parse(await fixture.command('GET', 'geek:session:' + cookie.split('=')[1])); return s.playerId || s.id; };
+const seedGuest = async () => {
+  const guest = await session(), player = await playerOf(guest);
+  const profile = JSON.stringify({ xp: 4321, balance: 55, journey: [{ id: 'synthetic-guest-progress' }] });
+  await fixture.command('SET', 'geek:profile:' + player, profile);
+  await fixture.command('SET', 'geek:player-name:' + player, 'Seeded Guest');
+  return { guest, player, profile };
+};
+const profileOf = async cookie => (await call(profileHandler, cookie, null, 'GET')).body.profile;
+
+test('claimGuestProgress true builds the new account from the guest player and carries its progress', async () => {
+  const { guest, player, profile } = await seedGuest();
+  const account = await enroll(guest, authenticator(), undefined, { claimGuestProgress: true });
+  assert.equal(await playerOf(account.cookie), player);
+  assert.equal(await fixture.command('GET', 'geek:profile:' + player), profile);
+  assert.equal((await profileOf(account.cookie)).player.name, 'Seeded Guest');
+});
+
+test('claimGuestProgress false, missing or non-boolean creates a fresh account and leaves the guest untouched and unlinked', async () => {
+  for (const claim of [{ claimGuestProgress: false }, {}, { claimGuestProgress: 'true' }]) {
+    await fixture.command('FLUSHDB');
+    const { guest, player, profile } = await seedGuest();
+    const before = Object.fromEntries(await Promise.all(['geek:profile:', 'geek:player-name:', 'geek:passkey:account:v1:'].map(async k => [k, await fixture.command('GET', k + player)])));
+    const key = authenticator(), account = await enroll(guest, key, undefined, claim);
+    const fresh = await playerOf(account.cookie);
+    assert.notEqual(fresh, player, JSON.stringify(claim));
+    assert.equal(await fixture.command('GET', 'geek:profile:' + fresh), null, 'fresh account has no carried progress');
+    const view = await profileOf(account.cookie);
+    assert.equal(view.player.name, 'Guest Geek'); assert.notEqual(view.player.name, 'Seeded Guest');
+    assert.equal(JSON.stringify(view).includes('synthetic-guest-progress'), false);
+    assert.equal(await fixture.command('GET', 'geek:profile:' + player), profile, 'guest progress unchanged');
+    for (const [k, v] of Object.entries(before)) assert.equal(await fixture.command('GET', k + player), v, `guest ${k} unchanged`);
+    assert.equal(await fixture.command('GET', passkeyAccountKey(player)), null, 'guest not linked to any passkey account');
+    // The fresh account can sign in again with its own player handle.
+    const returning = await session(), begin = await call(passkeysHandler, returning, { action: 'begin-login' });
+    const login = await call(passkeysHandler, returning, { action: 'finish-login', challengeId: begin.body.challengeId, response: key.login(begin.body.options, fresh) });
+    assert.equal(login.statusCode, 200); assert.equal(await playerOf(cookieFrom(login)), fresh);
+  }
+});
+
+test('a claim made at begin but missing at finish fails safe without creating or merging an account', async () => {
+  const { guest, player } = await seedGuest(), key = authenticator();
+  const begin = await call(passkeysHandler, guest, { action: 'begin-register', claimGuestProgress: true });
+  const finish = await call(passkeysHandler, guest, { action: 'finish-register', challengeId: begin.body.challengeId, response: key.register(begin.body.options) });
+  assert.equal(finish.statusCode, 400); assert.equal(finish.body.code, 'PASSKEY_STATE_CHANGED');
+  assert.equal(await fixture.command('GET', passkeyAccountKey(player)), null);
+});
+
+test('play after sign-out belongs to a new guest player, not the signed-out account', async () => {
+  const { guest, player } = await seedGuest(), account = await enroll(guest, authenticator(), undefined, { claimGuestProgress: true });
+  assert.equal((await call(passkeysHandler, account.cookie, { action: 'logout' })).statusCode, 200);
+  assert.equal((await call(passkeysHandler, account.cookie, undefined, 'GET')).statusCode, 401);
+  const next = await session(), nextPlayer = await playerOf(next);
+  assert.notEqual(nextPlayer, player);
+  const view = await profileOf(next);
+  assert.notEqual(view.player.name, 'Seeded Guest'); assert.equal(JSON.stringify(view).includes('synthetic-guest-progress'), false);
+  const status = (await call(passkeysHandler, next, undefined, 'GET')).body;
+  assert.equal(status.signedIn, false); assert.deepEqual(status.credentials, []);
 });

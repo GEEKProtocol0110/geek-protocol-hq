@@ -93,7 +93,11 @@ export const handleApiError = (res, error) => {
   if (code.startsWith('REDIS_')) return sendJson(res, 503, { ok: false, code: 'SERVICE_UNAVAILABLE', error: 'Saved-player services are temporarily unavailable. Reload to check your saved state before trying again.' });
   if (code === 'OPS_ROLE_FORBIDDEN') return sendJson(res, 403, { ok: false, error: 'Operator access was not accepted.' });
   if (code === 'OPS_NOT_CONFIGURED') return sendJson(res, 503, { ok: false, error: 'Private operator access is unavailable.' });
-  if (code === 'RATE_LIMITED') return sendJson(res, 429, { ok: false, error: 'Slow down and try again in a moment.' });
+  if (code === 'RATE_LIMITED') {
+    const retryAfter = Number.isInteger(error.retryAfter) && error.retryAfter > 0 ? error.retryAfter : 60;
+    res.setHeader('Retry-After', String(retryAfter));
+    return sendJson(res, 429, { ok: false, code, retryAfter, reset: Date.now() + retryAfter * 1000, error: 'Slow down and try again in a moment.' });
+  }
   if (code === 'SESSION_CHANGED') return sendJson(res, 409, { ok: false, code, error: 'Your player session changed. Reload to check your saved player before trying again.' });
   if (code === 'SESSION_REQUIRED') return sendJson(res, 401, { ok: false, error: 'Start a player session first.' });
   if (code === 'DUEL_NOT_FOUND') return sendJson(res, 404, { ok: false, code, error: 'This Duel invitation has expired.' });
@@ -184,3 +188,21 @@ export const handleApiError = (res, error) => {
   console.error('Geek API error', safe(error?.name), safe(error?.code));
   return sendJson(res, 500, { ok: false, error: 'The community service hit an unexpected error.' });
 };
+
+// Rate-limit buckets per endpoint class (count per window, seconds). Reads that every page load
+// performs (session checks, passkey status) get generous separate buckets, so normal browsing can
+// never use up the strict buckets for account creation, login attempts or other writes.
+export const RATE_LIMITS = Object.freeze({
+  sessionIp: { maximum: 600, seconds: 600 },          // shared networks / events (unchanged)
+  sessionCreateIp: { maximum: 120, seconds: 600 },    // new guest sessions per client (unchanged)
+  sessionRead: { maximum: 240, seconds: 600 },        // was 'session' 40 per 60 s, shared with renames
+  sessionWrite: { maximum: 20, seconds: 600 },        // renames / display names
+  passkeyReadSession: { maximum: 240, seconds: 600 }, // GET status; was shared 30 per 600 s
+  passkeyReadClient: { maximum: 600, seconds: 600 },  // was shared 60 per 600 s
+  passkeyCreateSession: { maximum: 10, seconds: 600 },// begin/finish-register: 5 creations
+  passkeyCreateClient: { maximum: 20, seconds: 600 },
+  passkeyLoginSession: { maximum: 20, seconds: 600 }, // begin/finish-login: 10 attempts
+  passkeyLoginClient: { maximum: 40, seconds: 600 },
+  passkeyWriteSession: { maximum: 30, seconds: 600 }, // logout, delete, device-* (as before)
+  passkeyWriteClient: { maximum: 60, seconds: 600 }
+});

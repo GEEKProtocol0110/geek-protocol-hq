@@ -70,8 +70,28 @@
       status.textContent = signedOut ? 'You’re signed out. Your saved progress is ready when you sign in again.' : 'Not signed in.';
     }
   });
-  document.addEventListener('geek:device-unavailable', () => {
-    if (!signedIn) status.textContent = 'Sign-in is temporarily unavailable. You can continue as a guest.';
+  document.addEventListener('geek:device-unavailable', event => {
+    // An unavailable status check is not a sign-out. This status region is the single owner of the
+    // retry message, and no sign-in or create-account form is offered while the state is unconfirmed.
+    let last = null;
+    try {
+      last = window.localStorage?.getItem('geek:last-session-state') ?? window.sessionStorage?.getItem('geek:last-session-state') ?? null;
+      // Same 24h cap as session-access.js: a stale hint is treated as unknown, not signed in.
+      if (last === 'signed-in' && !(Date.now() - Number(window.localStorage?.getItem('geek:last-session-at') ?? window.sessionStorage?.getItem('geek:last-session-at') ?? 0) < 24 * 3600 * 1000)) last = null;
+    } catch {}
+    const known = signedIn || last === 'signed-in';
+    for (const selector of ['[data-passkey-login-area]', '[data-passkey-new]', '[data-passkey-account]', '[data-wallet-methods]', '[data-device-access]']) {
+      for (const node of document.querySelectorAll(selector)) node.hidden = true;
+    }
+    if (known) { signedIn = true; showSignedIn('You’re signed in.'); }
+    else {
+      hq.hidden = true;
+      for (const node of document.querySelectorAll('[data-sign-in-guest]')) node.hidden = true;
+    }
+    const seconds = Number(event?.detail?.retryAfter);
+    status.textContent = Number.isFinite(seconds) && seconds > 0
+      ? `Temporarily rate limited. Your session has not changed. Try again in ${Math.round(seconds)} seconds.`
+      : 'We couldn’t check your sign-in right now. Your session has not changed. Try again in a moment.';
   });
 
   const addressForm = document.querySelector('[data-address-form]');
