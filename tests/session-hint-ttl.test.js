@@ -5,8 +5,9 @@ import { clientFixture, deferred, json } from './helpers/client-fixture.js';
 
 // Synthetic DOM and fake responses only; no network, preview or production traffic.
 const read = p => readFileSync(new URL(p, import.meta.url), 'utf8');
-const access = read('../public/assets/session-access.js');
-const signIn = ['sign-in.js', 'passkeys.js'].map(p => read('../public/sign-in/assets/' + p));
+const hint = read('../public/assets/session-hint.js');
+const access = hint + read('../public/assets/session-access.js');
+const signIn = ['sign-in.js', 'passkeys.js'].map(p => hint + read('../public/sign-in/assets/' + p));
 const settle = async () => { for (let i = 0; i < 4; i++) await new Promise(setImmediate); };
 const storage = (initial = {}) => { const m = new Map(Object.entries(initial)); return { getItem: k => m.get(k) ?? null, setItem: (k, v) => m.set(k, v), removeItem: k => m.delete(k), m }; };
 const RL = 'Temporarily rate limited. Your session has not changed. Try again in 42 seconds.';
@@ -77,18 +78,47 @@ test('a sign-in event always asks the server, and a spoofed event is undone by i
   assert.equal(p.button.hidden, true); assert.equal(p.link.textContent, 'Sign in');
 });
 
-test('an event marked initial still asks the server unless this page load already confirmed the session', async () => {
-  const p = page({ reply: () => json({ ok: true, signedIn: false }), session: { 'geek:last-session-state': 'signed-out', 'geek:last-session-checked': String(Date.now()) }, local: { 'geek:last-session-state': 'signed-out' } });
-  await p.run();
-  p.emit('geek:passkey-signed-in', { initial: true }); await settle();
-  assert.equal(p.calls.length, 1, 'unconfirmed initial event is checked');
-  assert.equal(p.button.hidden, true);
-  const q = page({ reply: () => json({ ok: true, signedIn: true }), session: { 'geek:last-session-state': 'signed-out', 'geek:last-session-checked': String(Date.now()) }, local: { 'geek:last-session-state': 'signed-out' } });
+test('an event marked initial is always confirmed with the server, even after a status event (any script can fire both)', async () => {
+  const q = page({ reply: () => json({ ok: true, signedIn: false }), session: { 'geek:last-session-state': 'signed-out', 'geek:last-session-checked': String(Date.now()) }, local: { 'geek:last-session-state': 'signed-out' } });
   await q.run();
   q.emit('geek:account-status', { signedIn: true });
   q.emit('geek:passkey-signed-in', { initial: true }); await settle();
-  assert.equal(q.calls.length, 0, 'no duplicate request when the status was just confirmed');
-  assert.equal(q.button.hidden, false);
+  assert.equal(q.calls.length, 1, 'server asked despite the spoofed confirmation');
+  assert.equal(q.button.hidden, true, 'spoofed state undone by the server');
+});
+
+test('event-triggered checks are bounded but never dropped: a burst queues one more check', async () => {
+  const p = page({ reply: () => json({ ok: true, signedIn: false }), session: { 'geek:last-session-state': 'signed-out', 'geek:last-session-checked': String(Date.now()) }, local: { 'geek:last-session-state': 'signed-out' } });
+  await p.run();
+  for (let i = 0; i < 20; i++) p.emit('geek:signed-in', {});
+  await settle();
+  assert.equal(p.calls.length, 1, 'one request for the burst');
+  const queued = [...p.ui.timers.values()].filter(t => t.delay > 0 && t.delay <= 5000);
+  assert.equal(queued.length, 1, 'exactly one follow-up check queued');
+  queued[0].fn(); await settle();
+  assert.equal(p.calls.length, 2); assert.equal(p.button.hidden, true);
+});
+
+test('a future-dated hint is never trusted (session-access, sign-in page and the shared helper)', async () => {
+  const future = { 'geek:last-session-state': 'signed-in', 'geek:last-session-at': String(Date.now() + DAY * 365) };
+  const p = page({ reply: limited, local: future });
+  await p.run();
+  assert.equal(p.link.textContent, 'Sign in'); assert.equal(p.button.hidden, true);
+  const s = page({ reply: signInReply(limited), local: future, signInPage: true });
+  await s.run();
+  assert.equal(s.ui.node('[data-sign-in-hq]').hidden, true);
+  assert.equal(p.ui.window.geekSessionHint.read(p.ui.window), null);
+  assert.equal(p.ui.window.geekSessionHint.read({ localStorage: storage({ 'geek:last-session-state': 'signed-in', 'geek:last-session-at': 'junk' }) }), null);
+});
+
+test('one shared hint rule: neither client file carries its own 24h check', () => {
+  for (const f of ['../public/assets/session-access.js', '../public/sign-in/assets/sign-in.js']) {
+    const src = read(f);
+    assert.match(src, /geekSessionHint\?\.read\(window\)/, f);
+    assert.doesNotMatch(src, /24 \* 3600|last-session-at/, f);
+  }
+  assert.match(read('../public/sign-in/index.html'), /session-hint\.js"><\/script>\n\s*<script defer src="\.\/assets\/sign-in\.js">/);
+  assert.match(read('../public/assets/site.js'), /import\('\/assets\/session-hint\.js'\)[^\n]*import\('\/assets\/session-access\.js'\)/);
 });
 
 test('home page sign-in and recover prompts hide when signed in and come back after sign-out or expiry', async () => {

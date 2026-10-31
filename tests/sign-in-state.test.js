@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {clientFixture,json} from './helpers/client-fixture.js';
-const scripts=['sign-in.js','passkeys.js'].map(p=>readFileSync(new URL('../public/sign-in/assets/'+p,import.meta.url),'utf8'));
+const scripts=['sign-in.js','passkeys.js'].map(p=>readFileSync(new URL('../public/assets/session-hint.js', import.meta.url), 'utf8') + readFileSync(new URL('../public/sign-in/assets/'+p,import.meta.url),'utf8'));
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
 const mount=async (state, next='', userAgent='')=>{
   const calls=[],listeners=new Map(),redirects=[];

@@ -142,4 +142,4 @@ import('/assets/atmosphere.js').catch(() => {});
 import('/assets/easter-eggs.js').catch(() => {});
 
 // Account controls live beside the player, outside optional recovery settings.
-import('/assets/session-access.js').catch(() => {});
+import('/assets/session-hint.js').catch(() => {}).then(() => import('/assets/session-access.js')).catch(() => {});

@@ -56,7 +56,7 @@ test('account creation stays limited, and browsing does not consume its bucket',
 });
 
 // ---- client: session-access.js ----
-const accessSource = readFileSync(new URL('../public/assets/session-access.js', import.meta.url), 'utf8');
+const accessSource = readFileSync(new URL('../public/assets/session-hint.js', import.meta.url), 'utf8') + readFileSync(new URL('../public/assets/session-access.js', import.meta.url), 'utf8');
 const settle = () => new Promise(setImmediate);
 const storage = (initial = {}) => { const m = new Map(Object.entries(initial)); return { getItem: k => m.get(k) ?? null, setItem: (k, v) => m.set(k, v), removeItem: k => m.delete(k), m }; };
 const mountAccess = async (reply, store) => {
@@ -119,7 +119,7 @@ test('an explicit 401 shows signed out', async () => {
 });
 
 // ---- client: sign-in page ----
-const signInScripts = ['sign-in.js', 'passkeys.js'].map(p => readFileSync(new URL('../public/sign-in/assets/' + p, import.meta.url), 'utf8'));
+const signInScripts = ['sign-in.js', 'passkeys.js'].map(p => readFileSync(new URL('../public/assets/session-hint.js', import.meta.url), 'utf8') + readFileSync(new URL('../public/sign-in/assets/' + p, import.meta.url), 'utf8'));
 const mountSignIn = async (statusReply, store) => {
   const listeners = new Map();
   const ui = clientFixture(async path => path === '/api/session' ? json({ ok: true }) : statusReply());
@@ -160,7 +160,7 @@ test('the sign-in and profile pages render exactly one Sign out control', () => 
   }
 });
 
-test('the sign-in page makes one passkey status request per load (no duplicate from session-access)', async () => {
+test('the sign-in page makes at most two passkey status requests per load (panel check plus one server confirmation of its sign-in event)', async () => {
   const listeners = new Map(), calls = [];
   const ui = clientFixture(async (path, options = {}) => { calls.push(`${options.method || 'GET'} ${path}`); return json(path === '/api/session' ? { ok: true } : { ok: true, signedIn: true, credentials: [] }); });
   ui.window.isSecureContext = true; ui.window.PublicKeyCredential = undefined; ui.window.sessionStorage = storage();
@@ -175,7 +175,7 @@ test('the sign-in page makes one passkey status request per load (no duplicate f
   ui.node('[data-sign-in-hq]').hidden = true;
   for (const script of [...signInScripts, accessSource]) ui.run(script);
   await settle(); await settle();
-  assert.equal(calls.filter(c => c.includes('/api/passkeys')).length, 1, calls.join(', '));
+  assert.ok(calls.filter(c => c.includes('/api/passkeys')).length <= 2, calls.join(', '));
   assert.equal(button.hidden, false, 'the single Sign out control follows the panel status');
 });
 

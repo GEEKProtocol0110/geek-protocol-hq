@@ -5,8 +5,9 @@ import { clientFixture, deferred, json } from './helpers/client-fixture.js';
 
 // Synthetic DOM and fake responses only; no network, preview or production traffic.
 const read = p => readFileSync(new URL(p, import.meta.url), 'utf8');
-const access = read('../public/assets/session-access.js');
-const signIn = ['sign-in.js', 'passkeys.js'].map(p => read('../public/sign-in/assets/' + p));
+const hint = read('../public/assets/session-hint.js');
+const access = hint + read('../public/assets/session-access.js');
+const signIn = ['sign-in.js', 'passkeys.js'].map(p => hint + read('../public/sign-in/assets/' + p));
 const settle = async () => { for (let i = 0; i < 4; i++) await new Promise(setImmediate); };
 const storage = (initial = {}) => { const m = new Map(Object.entries(initial)); return { getItem: k => m.get(k) ?? null, setItem: (k, v) => m.set(k, v), removeItem: k => m.delete(k), m }; };
 const RL = 'Temporarily rate limited. Your session has not changed. Try again in 42 seconds.';
