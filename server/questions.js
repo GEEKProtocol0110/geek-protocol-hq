@@ -53,9 +53,14 @@ const secureShuffle = (values) => {
   return copy;
 };
 
+// Unreadable or malformed public bank files fail closed as a 503, never a 500,
+// and never leak the fs path or parse message.
 export const loadQuestionBank = (category) => {
   if (!categoryFiles[category]) throw new Error('INVALID_REQUEST');
   if (bankCache.has(category)) return bankCache.get(category);
+  try { return readPublicBank(category); } catch { throw new Error('QUESTIONS_UNAVAILABLE'); }
+};
+const readPublicBank = (category) => {
   const questions = categoryFiles[category].flatMap((filename) => {
     const path = join(process.cwd(), 'server', 'questions', filename);
     const parsed = JSON.parse(readFileSync(path, 'utf8'));
