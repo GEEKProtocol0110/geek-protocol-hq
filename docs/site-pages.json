@@ -3,10 +3,10 @@
   "origin": "https://www.geekprotocol.xyz",
   "siteName": "Geek Protocol",
   "socialHandle": "@geekonkas",
-  "image": "/assets/kaspa-culture.png",
-  "imageAlt": "GIGA, Geek Protocol's gold robot mascot, beside the Kaspa emblem.",
-  "imageWidth": 1024,
-  "imageHeight": 1024,
+  "image": "/assets/share-default-v1.png",
+  "imageAlt": "Geek Protocol: Your first steps into Kaspa. GIGA, the gold robot mascot, beside the Kaspa emblem.",
+  "imageWidth": 1200,
+  "imageHeight": 630,
   "pages": [
     {
       "file": "public/challenges/index.html",
@@ -62,7 +62,11 @@
       "title": "Kaspa 101 \u2014 Geek Protocol",
       "description": "Explore Kaspa basics: blockDAG, proof of work, KAS, wallets and token protocols. Find source links and continue learning with Geek Protocol.",
       "index": true,
-      "private": false
+      "private": false,
+      "image": "/assets/share-kaspa-v1.png",
+      "imageAlt": "Kaspa, without the hype. Kaspa 101 field guide from Geek Protocol.",
+      "imageWidth": 1200,
+      "imageHeight": 630
     },
     {
       "file": "public/litepaper/index.html",
@@ -70,7 +74,11 @@
       "title": "Litepaper \u2014 Geek Protocol",
       "description": "Read Geek Protocol's litepaper: Kaspa onboarding, Proof of Learning, product direction and the distinction between live Alpha features and future plans.",
       "index": true,
-      "private": false
+      "private": false,
+      "image": "/assets/share-litepaper-v1.png",
+      "imageAlt": "Knowledge with proof. The Geek Protocol litepaper, with the Omniscient Grid map.",
+      "imageWidth": 1200,
+      "imageHeight": 630
     },
     {
       "file": "public/lobby/index.html",
@@ -110,7 +118,11 @@
       "title": "Game Modes \u2014 Geek Protocol",
       "description": "Explore free Geek Protocol quizzes: Daily Signal, Speed Round and the ten-round Geek Gauntlet. Learn from each answer and track your Alpha progress.",
       "index": true,
-      "private": false
+      "private": false,
+      "image": "/assets/share-play-v1.png",
+      "imageAlt": "Find your kind of play. Geek Protocol game modes, with the Quiz Quest map.",
+      "imageWidth": 1200,
+      "imageHeight": 630
     },
     {
       "file": "public/play/sources/index.html",
