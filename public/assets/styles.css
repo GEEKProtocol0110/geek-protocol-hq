@@ -633,7 +633,7 @@ h1 em { color: var(--gold); font-style: normal; }
 .footer-links { display: flex; gap: 1.5rem; }
 .footer-links a { color: var(--paper-soft); font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
 .footer-links a:hover { color: var(--gold); }
-.footer-copy { grid-column: 1 / -1; margin: 0; color: #5e6864; font-size: .68rem; }
+.footer-copy { grid-column: 1 / -1; margin: 0; color: #7a8480; font-size: .68rem; }
 
 @media (max-width: 1050px) {
   .hero { height: auto; max-height: none; grid-template-columns: 1fr; padding-top: 150px; }
