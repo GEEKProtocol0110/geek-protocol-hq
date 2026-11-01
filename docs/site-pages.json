@@ -14,7 +14,8 @@
       "title": "Career Challenges, Mastery & Hidden Words \u2014 Geek Protocol",
       "description": "Build your Geek career with 90 Bronze-to-Diamond challenges, mastery emblems, tracked goals and a five-word hunt. Earn one-time XP and try community quiz standings.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/collection/index.html",
@@ -22,7 +23,8 @@
       "title": "The Omniscient Grid \u2014 Geek Protocol",
       "description": "Explore Geek Protocol characters and Omniscient Grid lore. Profile cosmetics and concept art are separate from future verified on-chain collectibles.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/contribute/index.html",
@@ -30,7 +32,8 @@
       "title": "Community Content Engine \u2014 Geek Protocol",
       "description": "Read about Geek Protocol's Community Content Engine and the reviewed question-bank targets. New publishing and contributor rewards remain on hold.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/duel/index.html",
@@ -38,7 +41,8 @@
       "title": "Geek Duel \u2014 Geek Protocol",
       "description": "Play a free one-on-one Geek Duel against a friend or the simulated A.C.E. opponent. Choose a difficulty and learn from the shared quiz results.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/economy/index.html",
@@ -46,7 +50,8 @@
       "title": "Power-ups & Economy \u2014 Geek Protocol",
       "description": "Explore Geek Protocol power-ups and economy plans. Distinguish free practice tools, internal Alpha credits and proposed future token features.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/index.html",
@@ -54,7 +59,8 @@
       "title": "Geek Protocol \u2014 Kaspa Onboarding & Proof of Learning",
       "description": "Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. Explore lessons, free quizzes and community tools. No wallet needed to start.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/kaspa/index.html",
@@ -62,7 +68,8 @@
       "title": "Kaspa 101 \u2014 Geek Protocol",
       "description": "Explore Kaspa basics: blockDAG, proof of work, KAS, wallets and token protocols. Find source links and continue learning with Geek Protocol.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/litepaper/index.html",
@@ -70,7 +77,8 @@
       "title": "Litepaper \u2014 Geek Protocol",
       "description": "Read Geek Protocol's litepaper: Kaspa onboarding, Proof of Learning, product direction and the distinction between live Alpha features and future plans.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/lobby/index.html",
@@ -78,7 +86,8 @@
       "title": "Community Lobbies \u2014 Geek Protocol",
       "description": "Host a free Geek Protocol quiz lobby or join friends with a room code. Play shared questions and see results together without token entry fees.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/memory/index.html",
@@ -86,7 +95,8 @@
       "title": "Memory Grid \u2014 Geek Protocol",
       "description": "Match Kaspa terms with their meanings in Memory Grid. An untimed learning game from Geek Protocol, with no wallet or token payment required.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/mint/index.html",
@@ -94,7 +104,8 @@
       "title": "Mint $GEEK \u2014 Official Fair Mint",
       "description": "Use Geek Protocol's official GEEK fair-mint interface. Review the pinned Kaspa KRC-20 deployment and remaining supply, then approve any mint in your wallet.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/ops-login/index.html",
@@ -110,7 +121,8 @@
       "title": "Game Modes \u2014 Geek Protocol",
       "description": "Explore free Geek Protocol quizzes: Daily Signal, Speed Round and the ten-round Geek Gauntlet. Learn from each answer and track your Alpha progress.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-28"
     },
     {
       "file": "public/play/sources/index.html",
@@ -118,7 +130,8 @@
       "title": "Question Sources \u2014 Geek Protocol",
       "description": "See Geek Protocol question sources, licenses and reviewed-bank progress. Understand what internal source review means and which content still needs review.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-29"
     },
     {
       "file": "public/practice/index.html",
@@ -126,7 +139,8 @@
       "title": "Assisted Practice \u2014 Geek Protocol",
       "description": "Practice Kaspa with free 50/50 and Extra Time assists. Read explanations after each answer in a separate Geek Protocol practice session.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/profile/index.html",
@@ -142,7 +156,8 @@
       "title": "Quiz Quest \u2014 Geek Protocol",
       "description": "Explore Quiz Quest with GIGA. Complete four Kaspa learning chapters, save your progress and replay adventures in Geek Protocol's free Alpha.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/rewards/index.html",
@@ -150,7 +165,8 @@
       "title": "Receiving Addresses & Rewards \u2014 Geek Protocol",
       "description": "Save receiving addresses from any Kaspa wallet to your Geek account without connecting the wallet app. Mainnet payouts remain disabled; approved test rewards use GEEKT.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-24"
     },
     {
       "file": "public/royale/index.html",
@@ -158,7 +174,8 @@
       "title": "Trivia Royale \u2014 Geek Protocol",
       "description": "Create or join a free Trivia Royale room on Geek Protocol. Choose a room size, invite friends and play a shared quiz when your group is ready.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/security/index.html",
@@ -166,7 +183,8 @@
       "title": "Security & Audit Readiness \u2014 Geek Protocol",
       "description": "Review Geek Protocol security controls, audit readiness and reporting guidance. Independent security review and future settlement audits remain separate gates.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/sign-in/index.html",
@@ -182,7 +200,8 @@
       "title": "Start Here \u2014 Geek Protocol",
       "description": "Start Geek Protocol in five simple steps: learn about Kaspa, try a free quiz, create your Geek and keep your progress with a supported sign-in method.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/store/index.html",
@@ -190,7 +209,8 @@
       "title": "Geek Store \u2014 Make It Your Own",
       "description": "Explore the Geek Store fitting room and preview free character cosmetics. Review lifelines and future equipment plans; purchases are not enabled.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/study/index.html",
@@ -198,7 +218,8 @@
       "title": "Study with A.C.E. \u2014 Geek Protocol",
       "description": "Learn Kaspa and practical technology with A.C.E. Read source-linked lessons, practice without a timer and revisit your saved mistakes. No wallet needed.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/thanks/index.html",
@@ -210,7 +231,8 @@
       "image": "/assets/hall-of-thanks-share-v1.png",
       "imageAlt": "Hall of Thanks. No Geek stands alone. Built on Kaspa. Carried by community.",
       "imageWidth": 1200,
-      "imageHeight": 630
+      "imageHeight": 630,
+      "lastmod": "2026-10-31"
     },
     {
       "file": "public/tools/index.html",
@@ -218,7 +240,8 @@
       "title": "Free Kaspa Tools \u2014 Geek Mini & Kaspa Live Widget",
       "description": "Explore free Geek Protocol tools: Geek Mini quizzes, the Kaspa Live Widget and Geek Wallet's public-address tracker. No GEEK required to get started.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/tools/kaspa-widget/index.html",
@@ -226,7 +249,8 @@
       "title": "Kaspa Widget for Android & iPhone \u2014 Geek Protocol",
       "description": "Get the Kaspa Live Widget for Android, explore the early iPhone setup and read installation help, permissions and release details from Geek Protocol.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/tools/kaspa-widget/privacy/index.html",
@@ -234,7 +258,8 @@
       "title": "Kaspa Live Widget Privacy \u2014 Geek Protocol",
       "description": "Read the Kaspa Live Widget privacy notice, including public market and network data, permissions and how to contact Geek Protocol.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/trade/index.html",
@@ -242,7 +267,8 @@
       "title": "Trade GEEK \u2014 Buy & Sell on Kaspacom",
       "description": "Find GEEK trading links on Kaspacom and learn what to check before trading. Geek Protocol links to external markets and does not operate an exchange.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "public/vault/index.html",
@@ -250,7 +276,8 @@
       "title": "Daily Vault \u2014 Geek Protocol",
       "description": "Open Geek Protocol's Daily Vault for a free cosmetic seal. Keep a private collection of daily discoveries; seals do not award XP, credits or tokens.",
       "index": true,
-      "private": false
+      "private": false,
+      "lastmod": "2026-10-17"
     },
     {
       "file": "server/ops-ui/activity/index.html",
