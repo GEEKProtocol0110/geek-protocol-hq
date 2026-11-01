@@ -2,20 +2,20 @@
   "metadata": {
     "title": "GEEK Protocol — Comics Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-28",
-    "questionCount": 413,
-    "conceptCount": 413,
+    "maintainedAt": "2026-11-01",
+    "questionCount": 412,
+    "conceptCount": 412,
     "category": "Comics",
     "difficultyDistribution": {
-      "easy": 204,
-      "medium": 166,
-      "hard": 43
+      "easy": 202,
+      "medium": 170,
+      "hard": 40
     },
     "correctIndexDistribution": {
-      "0": 108,
-      "1": 92,
-      "2": 105,
-      "3": 108
+      "0": 106,
+      "1": 95,
+      "2": 106,
+      "3": 105
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -531,30 +531,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "COM-0056",
-      "category": "Comics",
-      "prompt": "Mostly completed in 2008 and located on the Yangtze River, what construction marvel is billed as the Worlds Largest Electricity-Generating Plant?",
-      "options": [
-        "Hoover Dam",
-        "Gezhouba Dam",
-        "Aswan Dam",
-        "Three Gorges Dam"
-      ],
-      "correctIndex": 3,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-newest.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0056",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "COM-0057",
       "category": "Comics",
       "prompt": "Which of these is the alter ego of Iron Man?",
@@ -960,30 +936,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "COM-0117",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "COM-0122",
-      "category": "Comics",
-      "prompt": "In the episode The Days of Future Past, the X-Men travel to the Savage Land, only to find that their mutant powers have been nullified. What card does Gambit fail to charge?",
-      "options": [
-        "Jack of Spades",
-        "5 of Diamonds",
-        "Ace of Spades",
-        "5 of Hearts"
-      ],
-      "correctIndex": 1,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-television.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0122",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -2331,30 +2283,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "COM-0294",
-      "category": "Comics",
-      "prompt": "Who plays the Comedian in the film adaption of Watchmen?",
-      "options": [
-        "Ralph Maggio",
-        "Jefferey Blake Morgan",
-        "Robert Downey Junior",
-        "David Dean Walters"
-      ],
-      "correctIndex": 1,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-movies.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0294",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "COM-0295",
       "category": "Comics",
       "prompt": "In what year did Snoopy first make his first appearance in a comic strip?",
@@ -2808,30 +2736,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "COM-0347",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "COM-0349",
-      "category": "Comics",
-      "prompt": "What is the real name of the Joker, Batmans archenemy?",
-      "options": [
-        "Jack Napier",
-        "Ras Aghul",
-        "John Repton",
-        "Tim Frely"
-      ],
-      "correctIndex": 0,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-television.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0349",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -4155,30 +4059,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "COM-0557",
-      "category": "Comics",
-      "prompt": "Which antagonist of the X-Men is responsible for the death of Wolverine in the comic books?",
-      "options": [
-        "Magneto",
-        "Juggarnaut",
-        "Sabretooth",
-        "Lady Deathstrike"
-      ],
-      "correctIndex": 0,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-entertainment.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0557",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "COM-0559",
       "category": "Comics",
       "prompt": "How many episodes of Wonder Woman were aired?",
@@ -5019,30 +4899,6 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "COM-0667",
-      "category": "Comics",
-      "prompt": "Which of these characters of the X-Men series is the only person whom Rogue can touch and not absorb his/her powers?",
-      "options": [
-        "Cyclops",
-        "Storm",
-        "Sauron",
-        "Gambit"
-      ],
-      "correctIndex": 2,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-television.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0667",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
       "id": "COM-0675",
       "category": "Comics",
       "prompt": "In 2007 Marvel started a series of comic books based on The Dark Tower. What is the name of the first volume?",
@@ -5160,30 +5016,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "COM-0696",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "COM-0698",
-      "category": "Comics",
-      "prompt": "Who bought the rights to the name Hulk Hogan in 2005?",
-      "options": [
-        "Marvel Comics",
-        "Hulk Hogan",
-        "Vince McMahon",
-        "Hiro Matsuda"
-      ],
-      "correctIndex": 1,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-entertainment.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "COM-0698",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -5403,7 +5235,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-d34e9b838b54",
@@ -5430,7 +5264,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-f441384591db",
@@ -5457,7 +5293,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-e707b9f03fbf",
@@ -5484,7 +5322,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-d6f4772e9031",
@@ -5511,34 +5351,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "COM-N-e1f0ac201acf",
-      "conceptId": "COM-N-e1f0ac201acf",
-      "category": "Comics",
-      "subcategory": "Dc Comics",
-      "prompt": "Which 1940 issue introduced both Catwoman and the Joker?",
-      "options": [
-        "Superman #76",
-        "Detective Comics #60",
-        "Batman #232",
-        "Batman #1"
-      ],
-      "correctIndex": 3,
-      "difficulty": "hard",
-      "funFact": "Both villains debuted in Batman's first solo issue.",
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://www.dc.com/characters/batman",
-      "license": "CC BY 4.0",
-      "attribution": "GEEK Protocol; original question based on the cited DC character profile.",
-      "reviewStatus": "source-checked",
-      "reviewedAt": "2026-10-07",
-      "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-df23441b90ee",
@@ -5565,7 +5380,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-4117f2ddd38f",
@@ -5592,7 +5409,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-503da7c09ff8",
@@ -5619,7 +5438,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-68a6ea6f2d7c",
@@ -5646,7 +5467,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-097293810b52",
@@ -5673,7 +5496,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-e440eec966b0",
@@ -5700,7 +5525,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-93944da4129a",
@@ -5727,7 +5554,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-621f1bc56f2b",
@@ -5754,7 +5583,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-f66a601a9b0f",
@@ -5781,7 +5612,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-78b439028d9d",
@@ -5808,7 +5641,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-42a6fd6784ff",
@@ -5835,7 +5670,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-990e894b3bfa",
@@ -5862,7 +5699,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-3dc006bc49dd",
@@ -5889,7 +5728,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-6186e4c38562",
@@ -5916,7 +5757,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-3b2a4a69995f",
@@ -5943,7 +5786,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-e53628b4889c",
@@ -5970,7 +5815,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-5c85124baff5",
@@ -5997,7 +5844,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-16ae2d087287",
@@ -6024,7 +5873,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-009c2264274c",
@@ -6051,7 +5902,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-bd1b239c83dc",
@@ -6078,7 +5931,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-c037b979035f",
@@ -6105,7 +5960,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-306a525c8e96",
@@ -6132,7 +5989,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-7532de966afe",
@@ -6159,7 +6018,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-aa7c35d63596",
@@ -6186,7 +6047,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-90062ac28819",
@@ -6213,7 +6076,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-cf9ee9223e0a",
@@ -6240,7 +6105,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-ceddd669652f",
@@ -6267,7 +6134,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-7afd85e3c75a",
@@ -6294,7 +6163,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-9a0375d2c8e4",
@@ -6321,7 +6192,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-1a0c475b7f26",
@@ -6348,7 +6221,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-5d086f0e2d23",
@@ -6375,7 +6250,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-b411eaba39d7",
@@ -6402,7 +6279,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "id": "COM-N-a6ffdb80f094",
@@ -6429,7 +6308,9 @@
       "reviewStatus": "source-checked",
       "reviewedAt": "2026-10-07",
       "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "practiceOnly": true,
+      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
     },
     {
       "prompt": "Who was the creator of the “Peanuts” cartoon, that featured characters like Lucy, Linus, Snoopy and Charlie Brown?",
@@ -6592,33 +6473,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Name the Red Baron hunting Beagle from Charles Schultz popular comic strip, Peanuts.",
-      "options": [
-        "Lassie",
-        "Odie",
-        "Snoopy",
-        "Scooby"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "animals",
-      "sourceOrdinal": 1115,
-      "id": "COM-N-617a4bc8a8df",
-      "conceptId": "COM-N-617a4bc8a8df",
-      "category": "Comics",
-      "subcategory": "Animals",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/animals",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
     },
     {
       "prompt": "What position did cartoon character Snoopy play in Charlie Browns Little League baseball team?",
@@ -7608,33 +7462,6 @@
       "conceptId": "COM-N-6ecf5b188266",
       "category": "Comics",
       "subcategory": "Entertainment: Japanese Anime &Amp; Manga",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Which universe crossover was introduced in the \"Sonic the Hedgehog\" comic issue #247?",
-      "options": [
-        "Super Mario Brothers",
-        "Alex Kidd",
-        "Super Monkey Ball",
-        "Mega Man"
-      ],
-      "correctIndex": 3,
-      "sourceCategoryId": 29,
-      "difficulty": "easy",
-      "sourceFile": "Entertainment: Comics",
-      "id": "COM-N-7e4a62127807",
-      "conceptId": "COM-N-7e4a62127807",
-      "category": "Comics",
-      "subcategory": "Entertainment: Comics",
       "funFact": null,
       "tags": [
         "comics"
@@ -9240,33 +9067,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "Who portrays Batman’s nemesis, The Joker, on the TV series “Batman”?",
-      "options": [
-        "George Sanders",
-        "Dick Grayson",
-        "Alan Napier",
-        "Cesar Romero"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "rated",
-      "sourceOrdinal": 890,
-      "id": "COM-N-50fefca2ad90",
-      "conceptId": "COM-N-50fefca2ad90",
-      "category": "Comics",
-      "subcategory": "Rated",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/rated",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "What famous person from WWI does Snoopy pretend to battle from the top of his dog house in the comic strip Peanuts?",
       "options": [
         "Fritz Fischer",
@@ -10023,60 +9823,6 @@
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
     },
     {
-      "prompt": "What character did Arnold Schwarzenegger play in the 1997 movie Batman Robin?",
-      "options": [
-        "Batman",
-        "Alfred Pennyworth",
-        "Dr. Jason Woodrue",
-        "Mr. Freeze"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "celebrities",
-      "sourceOrdinal": 342,
-      "id": "COM-N-505731206150",
-      "conceptId": "COM-N-505731206150",
-      "category": "Comics",
-      "subcategory": "Celebrities",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/celebrities",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
-      "prompt": "What is the real hair colour of the mainstream comic book version (Earth-616) of Daredevil?",
-      "options": [
-        "Black",
-        "Blonde",
-        "Auburn",
-        "Brown"
-      ],
-      "correctIndex": 1,
-      "sourceCategoryId": 29,
-      "difficulty": "hard",
-      "sourceFile": "Entertainment: Comics",
-      "id": "COM-N-d6feb19a6bcb",
-      "conceptId": "COM-N-d6feb19a6bcb",
-      "category": "Comics",
-      "subcategory": "Entertainment: Comics",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://opentdb.com/",
-      "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
       "prompt": "Which unforgettable character does Jim Carrey portray in the 1995 superhero movie Batman Forever?",
       "options": [
         "Mr. Freeze",
@@ -10374,33 +10120,6 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "What popular fictional villain did Jack Nicholson portray in the 1989 movie Batman?",
-      "options": [
-        "The Penguin",
-        "The Mad Hatter",
-        "The Joker",
-        "The Riddler"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "celebrities",
-      "sourceOrdinal": 1364,
-      "id": "COM-N-a12594245150",
-      "conceptId": "COM-N-a12594245150",
-      "category": "Comics",
-      "subcategory": "Celebrities",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/celebrities",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
-    },
-    {
       "prompt": "The success of DC Comics' Swamp Thing, Sandman, and other books in a similar style, led to the creation of what new imprint in 1993?",
       "options": [
         "Impact",
@@ -10426,33 +10145,6 @@
       "maintenanceCheckedAt": "2026-10-07",
       "source": "https://opentdb.com/",
       "attribution": "Open Trivia Database / PIXELTAIL GAMES LLC; decoded and normalized for GEEK Protocol."
-    },
-    {
-      "prompt": "Who does Linus wait for every year at Halloween in the Peanuts comic strip?",
-      "options": [
-        "The Great Pumpkin",
-        "The West Witch",
-        "The Jumpin Jack-o-latern",
-        "Santa Claus"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "rated",
-      "sourceOrdinal": 485,
-      "id": "COM-N-3750b3976cdf",
-      "conceptId": "COM-N-3750b3976cdf",
-      "category": "Comics",
-      "subcategory": "Rated",
-      "funFact": null,
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/rated",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
     },
     {
       "prompt": "In \"One Piece\", who confirms the existence of the legendary treasure, One Piece?",
@@ -10517,6 +10209,398 @@
           "COM-N-b55e7840c099"
         ]
       }
+    },
+    {
+      "id": "COM-ST-001",
+      "conceptId": "COM-ST-001",
+      "category": "Comics",
+      "subcategory": "Comic Adaptations",
+      "prompt": "In the 2009 film Watchmen, which actor played Edward Blake, the Comedian?",
+      "options": [
+        "Patrick Wilson",
+        "Billy Crudup",
+        "Jeffrey Dean Morgan",
+        "Matthew Goode"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "The other three are also in the cast: Patrick Wilson played Nite Owl II, Billy Crudup played Doctor Manhattan and Matthew Goode played Ozymandias.",
+      "source": "https://www.imdb.com/title/tt0409459/fullcredits/",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-002",
+      "conceptId": "COM-ST-002",
+      "category": "Comics",
+      "subcategory": "Marvel",
+      "prompt": "Which artist co-created Daredevil with writer Stan Lee for Daredevil #1 (1964)?",
+      "options": [
+        "Steve Ditko",
+        "Bill Everett",
+        "Don Heck",
+        "Gene Colan"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Bill Everett pencilled and inked the main story of Daredevil #1 (April 1964). Gene Colan drew the series later.",
+      "source": "https://www.marvel.com/comics/issue/8073/daredevil-1964-1",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-003",
+      "conceptId": "COM-ST-003",
+      "category": "Comics",
+      "subcategory": "Marvel",
+      "prompt": "In which comic did Wolverine make his first full appearance?",
+      "options": [
+        "The Incredible Hulk #181",
+        "Giant-Size X-Men #1",
+        "X-Men #1",
+        "Marvel Comics Presents #1"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium",
+      "funFact": "The Incredible Hulk #181 (cover-dated November 1974) is Wolverine's first full appearance; he fights the Hulk and the Wendigo. He joined the X-Men in Giant-Size X-Men #1 (1975).",
+      "source": "https://www.marvel.com/comics/issue/17198/incredible-hulk-1962-181",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-004",
+      "conceptId": "COM-ST-004",
+      "category": "Comics",
+      "subcategory": "Marvel",
+      "prompt": "In Marvel's 2014 story Death of Wolverine, which Weapon X scientist is Logan confronting when he dies?",
+      "options": [
+        "Bolivar Trask",
+        "Mister Sinister",
+        "Zander Rice",
+        "Abraham Cornelius"
+      ],
+      "correctIndex": 3,
+      "difficulty": "hard",
+      "funFact": "In Death of Wolverine #4, Logan stops Dr. Abraham Cornelius, who originally bonded metal to his skeleton, and dies as molten adamantium hardens around him.",
+      "source": "https://www.marvel.com/characters/wolverine-logan/in-comics",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-005",
+      "conceptId": "COM-ST-005",
+      "category": "Comics",
+      "subcategory": "DC",
+      "prompt": "In which comic did the Joker make his first appearance?",
+      "options": [
+        "Detective Comics #27",
+        "Batman #1",
+        "Detective Comics #38",
+        "Action Comics #1"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "DC notes that when the Joker debuted in Batman #1 (1940), he had no known origin or civilian identity. Detective Comics #27 introduced Batman in 1939, and Detective Comics #38 introduced Robin.",
+      "source": "https://www.dc.com/blog/2024/02/09/who-is-the-joker",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-006",
+      "conceptId": "COM-ST-006",
+      "category": "Comics",
+      "subcategory": "Marvel",
+      "prompt": "In which comic did Rogue first appear, absorbing Carol Danvers's powers?",
+      "options": [
+        "Uncanny X-Men #171",
+        "Ms. Marvel #1",
+        "Avengers Annual #10",
+        "Giant-Size X-Men #1"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "Avengers Annual #10 (1981) introduced Rogue as a villain. She later joined the X-Men in Uncanny X-Men #171 (1983).",
+      "source": "https://www.marvel.com/comics/issue/6924/avengers-annual-1967-10",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-007",
+      "conceptId": "COM-ST-007",
+      "category": "Comics",
+      "subcategory": "Archie Comics",
+      "prompt": "Archie Comics' 2013 crossover Worlds Collide teamed Sonic the Hedgehog with which Capcom hero?",
+      "options": [
+        "Strider Hiryu",
+        "Mega Man",
+        "Ryu",
+        "Dante"
+      ],
+      "correctIndex": 1,
+      "difficulty": "easy",
+      "funFact": "The 12-part crossover ran in 2013 across the Sonic the Hedgehog, Mega Man and Sonic Universe titles.",
+      "source": "https://gameinformer.com/b/features/archive/2013/04/29/talking-with-archie-comics-about-sonic-amp-mega-man-worlds-collide",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-008",
+      "conceptId": "COM-ST-008",
+      "category": "Comics",
+      "subcategory": "Dark Horse",
+      "prompt": "Which writer-artist created Hellboy, who debuted in 1993?",
+      "options": [
+        "Frank Miller",
+        "Jim Lee",
+        "Mike Mignola",
+        "Todd McFarlane"
+      ],
+      "correctIndex": 2,
+      "difficulty": "easy",
+      "funFact": "Hellboy first appeared in a four-page story by Mike Mignola in Dark Horse's San Diego Comic-Con Comics #2 (August 1993).",
+      "source": "https://www.cgccomics.com/news/article/7210/cgc-comic-of-the-month-march-2019/",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-009",
+      "conceptId": "COM-ST-009",
+      "category": "Comics",
+      "subcategory": "Graphic Novels",
+      "prompt": "In what year did Art Spiegelman receive a Pulitzer Prize special award for Maus?",
+      "options": [
+        "1986",
+        "1992",
+        "2001",
+        "1987"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "The Pulitzer Prizes list Spiegelman's Maus among the 1992 Special Awards and Citations.",
+      "source": "https://www.pulitzer.org/winners/art-spiegelman",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-010",
+      "conceptId": "COM-ST-010",
+      "category": "Comics",
+      "subcategory": "DC Comics",
+      "prompt": "What is the name of the wife whose illness drives Victor Fries, better known as Mr. Freeze?",
+      "options": [
+        "Martha",
+        "Nora",
+        "Selina",
+        "Harleen"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Batman: The Animated Series introduced Nora in the episode \"Heart of Ice\", and comics later adopted the tragic origin.",
+      "source": "https://www.dc.com/blog/2021/01/04/fury-and-frost-five-chilling-facts-you-dont-know-about-mr-freeze",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 licence-replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-011",
+      "conceptId": "COM-ST-011",
+      "category": "Comics",
+      "subcategory": "DC Comics",
+      "prompt": "Harley Quinn made her first appearance in which medium in 1992?",
+      "options": [
+        "A Detective Comics issue",
+        "An animated TV series",
+        "A live-action film",
+        "A newspaper strip"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "She debuted in the Batman: The Animated Series episode \"Joker's Favor\", voiced by Arleen Sorkin, before joining the comics.",
+      "source": "https://www.dc.com/blog/2022/09/29/lady-of-lunacy-twelve-moments-that-defined-harley-quinn",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 licence-replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-012",
+      "conceptId": "COM-ST-012",
+      "category": "Comics",
+      "subcategory": "DC Comics",
+      "prompt": "Which artist illustrated Watchmen, written by Alan Moore?",
+      "options": [
+        "Brian Bolland",
+        "Frank Miller",
+        "Dave Gibbons",
+        "Kevin O'Neill"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "DC credits Watchmen to writer Alan Moore and artist Dave Gibbons, with colours by John Higgins.",
+      "source": "https://www.dc.com/graphic-novels/watchmen-1986/watchmen",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 licence-replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-013",
+      "conceptId": "COM-ST-013",
+      "category": "Comics",
+      "subcategory": "Comic Strips",
+      "prompt": "In what year did the Peanuts comic strip debut in newspapers?",
+      "options": [
+        "1947",
+        "1950",
+        "1955",
+        "1962"
+      ],
+      "correctIndex": 1,
+      "difficulty": "medium",
+      "funFact": "Peanuts debuted on 2 October 1950 in seven newspapers; Schulz's earlier panel Li'l Folks began in 1947.",
+      "source": "https://schulzmuseum.org/about-schulz/schulz-biography/",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 licence-replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
+    },
+    {
+      "id": "COM-ST-014",
+      "conceptId": "COM-ST-014",
+      "category": "Comics",
+      "subcategory": "Comic Strips",
+      "prompt": "What is the name of Snoopy's little yellow bird friend in Peanuts?",
+      "options": [
+        "Tweety",
+        "Spike",
+        "Marcie",
+        "Woodstock"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy",
+      "funFact": "The bird first appeared in 1967 and was named Woodstock in 1970.",
+      "source": "https://www.peanuts.com/about/woodstock",
+      "tags": [
+        "comics",
+        "practice"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Original question by Geek Protocol (BANK-009 licence-replacement draft). The linked source is copyrighted and is cited as factual evidence only; no source text was copied and no CC licence is claimed from it.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30"
     }
   ]
 }
