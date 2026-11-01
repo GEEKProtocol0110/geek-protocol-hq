@@ -4,7 +4,7 @@
   "requiredCategories": 8,
   "bankReady": false,
   "active": 8438,
-  "practiceOnly": 100,
+  "practiceOnly": 106,
   "reviewed": 876,
   "remaining": 7124,
   "categories": [
@@ -63,7 +63,7 @@
       "id": "technology",
       "name": "Technology",
       "active": 1485,
-      "practiceOnly": 0,
+      "practiceOnly": 6,
       "reviewed": 19,
       "needsReview": 1466,
       "target": 1000,
