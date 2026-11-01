@@ -45,6 +45,7 @@ export function checkSitePages({ write = false } = {}) {
   const outputs = new Map();
   for (const page of config.pages) {
     assert.match(page.path,/^\/(?:[a-z0-9-]+\/)*$/);
+    if (page.lastmod !== undefined) assert.match(page.lastmod,/^\d{4}-\d{2}-\d{2}$/,`lastmod must be YYYY-MM-DD: ${page.file}`);
     assert.ok(page.title.trim() && page.description.trim().length >= 40, page.file);
     if (page.file.startsWith('server/') || page.path === '/ops-login/') assert.ok(page.private && !page.index);
     const image = page.image || config.image;
@@ -78,7 +79,7 @@ export function checkSitePages({ write = false } = {}) {
     }
   }
   const indexed = config.pages.filter(p => p.index);
-  outputs.set('public/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+indexed.map(p=>`  <url><loc>${origin}${p.path}</loc></url>`).join('\n')+'\n</urlset>\n');
+  outputs.set('public/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+indexed.map(p=>`  <url><loc>${origin}${p.path}</loc>${p.lastmod ? `<lastmod>${p.lastmod}</lastmod>` : ''}</url>`).join('\n')+'\n</urlset>\n');
   outputs.set('public/robots.txt',`User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /ops/\n\nSitemap: ${origin}/sitemap.xml\n`);
   for (const [file,content] of outputs) {
     if (write) writeFileSync(file,content);
