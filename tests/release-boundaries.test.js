@@ -74,7 +74,7 @@ for (const mode of ['gauntlet', 'daily', 'speed']) {
       const cookie = await session('Boundary player');
       const started = await call(rankedHandler, 'POST', { action: 'start', category, mode }, cookie);
       assert.equal(started.statusCode, 201);
-      const runId = started.body.run.id, runKey = `geek:run:${runId}`, run = await stored(runKey);
+      const runId = started.body.run.id, runKey = `geek:development:run:${runId}`, run = await stored(runKey);
       const pack = run.roundQuestionIds.map(id => loadQuestionBank(category).byId.get(id));
       hidden(started.body); noFuturePack(started.body, pack, 0);
       assert.deepEqual(new Set(started.body.question.options), new Set(pack[0].options));

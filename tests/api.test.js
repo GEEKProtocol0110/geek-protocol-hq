@@ -1198,7 +1198,7 @@ test('Daily and Speed modes keep answers and timing under server control', async
   assert.equal(speedStart.body.run.mode, 'speed');
   assert.ok(speedStart.body.question.durationMs <= 30_000);
 
-  const storedKey = `geek:run:${speedStart.body.run.id}`;
+  const storedKey = `geek:development:run:${speedStart.body.run.id}`;
   const storedRun = JSON.parse(strings.get(storedKey));
   storedRun.overallDeadline = Date.now() - 1_000;
   storedRun.current.deadline = Date.now() - 1_000;

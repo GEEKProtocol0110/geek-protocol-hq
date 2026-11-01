@@ -1,11 +1,24 @@
 import { readFileSync } from 'node:fs';
+import { SEASON_ZERO, configuredSeasonBankVersion, currentSeasonNumber, privateSeason, seasonBankKey, seasonConfig, seasonForRun } from './seasons.js';
+import { redis } from './redis.js';
 import { randomInt } from 'node:crypto';
 import { join } from 'node:path';
 import { publishedCommunityQuestionById, publishedCommunityQuestions } from './cce.js';
 import { promptIdentity, similarQuestion } from './question-identity.js';
 
 import { categoryFiles } from './question-categories.js';
-import { loadRankedSource, loadRankedSourceVersion } from './question-source.js';
+import { loadRankedSource as loadRankedSourceRaw, loadRankedSourceVersion as loadRankedSourceVersionRaw } from './question-source.js';
+// Bank mismatch log: season id, fixed code, at most 8-char version prefixes.
+export const versionPrefix = v => String(v || '').slice(0, 8);
+const logBankMismatch = (season, expected, actual) => console.warn('Geek season bank mismatch', String(season || ''), 'RANKED_BANK_SEASON_MISMATCH', versionPrefix(expected), versionPrefix(actual));
+
+// Fail closed without leaking details: any bank failure that is not already a
+// coded ranked-bank error (e.g. a missing private dir surfacing as an fs error
+// whose message contains a path) becomes RANKED_BANK_UNAVAILABLE.
+const RANKED_BANK_CODE = /^(PRIVATE_BANK_[A-Z_]+|RANKED_BANK_[A-Z_]+|RANKED_SOURCE_INVALID)$/;
+const bankFailure = error => (typeof error?.message === 'string' && RANKED_BANK_CODE.test(error.message) ? error : new Error('RANKED_BANK_UNAVAILABLE'));
+const loadRankedSource = (...args) => loadRankedSourceRaw(...args).catch(error => { throw bankFailure(error); });
+const loadRankedSourceVersion = (...args) => loadRankedSourceVersionRaw(...args).catch(error => { throw bankFailure(error); });
 export { categoryFiles };
 
 const bankCache = new Map();
@@ -98,30 +111,71 @@ export const rankedBankForVersion = async (category, bankVersion = '') => {
 };
 
 // Season and bank version are assigned server-side when a ranked run starts.
-export const SEASONS = Object.freeze({
-  'season-0': Object.freeze({ id: 'season-0', label: 'Season 0 — Public-bank Alpha', leaderboard: 'legacy' }),
-  'season-1': Object.freeze({ id: 'season-1', label: 'Season 1 — Private-bank', leaderboard: 'season-1' })
-});
-export const rankedRunBinding = async () => {
+// Private-bank seasons are numbered monthly (see server/seasons.js).
+export const SEASONS = Object.freeze({ 'season-0': SEASON_ZERO });
+// Monthly seasons only (GEEK_SEASON_1_START_MONTH set, private bank): each season
+// uses one bank version. The expected version comes from GEEK_SEASON_BANK_VERSIONS
+// when configured, else from the season's recorded pin. A live bank that differs
+// refuses new runs fail-closed (RANKED_BANK_SEASON_MISMATCH -> 503).
+// The pin is written only in production, only after a run was saved
+// (recordSeasonBank), and can be cleared with scripts/season-bank-reset.mjs.
+export { seasonBankKey };
+const expectedSeasonBank = async seasonId => configuredSeasonBankVersion(seasonId) ?? await redis('GET', seasonBankKey(seasonId));
+export const rankedRunBinding = async (now = Date.now()) => {
   const source = await loadRankedSource();
   if (source.mode === 'unavailable') throw new Error('RANKED_BANK_UNAVAILABLE');
-  const season = source.mode === 'private' ? SEASONS['season-1'] : SEASONS['season-0'];
-  return { season: season.id, seasonLabel: season.label, bankVersion: source.version };
+  const season = source.mode === 'private' ? privateSeason(currentSeasonNumber(now)) : SEASON_ZERO;
+  if (source.mode === 'private' && seasonConfig().monthly) {
+    if (!source.version) throw new Error('RANKED_BANK_UNAVAILABLE');
+    const expected = await expectedSeasonBank(season.id);
+    if (expected && expected !== source.version) throw new Error('RANKED_BANK_SEASON_MISMATCH');
+  }
+  return { season: season.id, seasonLabel: season.label, ...(season.month ? { seasonMonth: season.month } : {}), bankVersion: source.version };
 };
-export const seasonFor = (run) => SEASONS[run?.season] || SEASONS['season-0'];
+// Call after the run is saved. First-run-wins pin, production only; never fails
+// the already-saved start (a pin error is logged by code and retried next start).
+export const recordSeasonBank = async (run, env = process.env) => {
+  if (env.VERCEL_ENV !== 'production' || !seasonConfig(env).monthly || !run?.bankVersion || run.season === SEASON_ZERO.id || !run.season) return false;
+  try {
+    if (configuredSeasonBankVersion(run.season, env)) return false;
+    const key = seasonBankKey(run.season, env);
+    if ((await redis('SET', key, run.bankVersion, 'NX')) === 'OK') return true;
+    const recorded = await redis('GET', key);
+    if (recorded && recorded !== run.bankVersion) logBankMismatch(run.season, recorded, run.bankVersion);
+    return false;
+  } catch (error) {
+    console.error('Geek API error code', /^[A-Z_]{1,64}$/.test(error?.message || '') ? error.message : 'SEASON_BANK_PIN_FAILED');
+    return false;
+  }
+};
+// Score-time check: a run scores into its season board only if its bank version
+// matches the season's configured version or recorded pin (rollout race: two
+// instances on different banks before a pin exists). Mismatch -> unranked.
+export const seasonBankAllowsScore = async (run, env = process.env) => {
+  if (!run?.season || run.season === SEASON_ZERO.id || !seasonConfig(env).monthly) return true;
+  const expected = configuredSeasonBankVersion(run.season, env) ?? await redis('GET', seasonBankKey(run.season, env));
+  if (!expected || expected === run.bankVersion) return true;
+  logBankMismatch(run.season, expected, run.bankVersion);
+  return false;
+};
+export const seasonFor = (run) => seasonForRun(run);
 
 const rankedLookup = async (category, id, bankVersion) => {
   try {
     if (bankVersion && bankVersion !== 'public') {
       const source = await loadRankedSourceVersion(bankVersion);
-      if (source) return privateBankFor(category, source).byId.get(id);
-      return undefined;
+      // A run bound to a private version whose bank can no longer be read is a
+      // bank outage, not a missing question.
+      if (!source) throw new Error('RANKED_BANK_UNAVAILABLE');
+      return privateBankFor(category, source).byId.get(id);
     }
     const bank = await loadRankedBank(category);
     return bank.private ? bank.byId.get(id) : undefined;
   } catch (error) {
-    if (['RANKED_BANK_UNAVAILABLE', 'PRIVATE_BANK_REF_REQUIRED'].includes(error.message)) return undefined;
-    throw error;
+    const coded = bankFailure(error);
+    if (bankVersion && bankVersion !== 'public') throw coded;
+    if (['RANKED_BANK_UNAVAILABLE', 'PRIVATE_BANK_REF_REQUIRED'].includes(coded.message)) return undefined;
+    throw coded;
   }
 };
 
@@ -191,7 +245,9 @@ export const selectRoundQuestionIds = async (category, round, excludedIds = [], 
   pool.forEach((question) => {
     if (selected.length < 10) addUnique(question);
   });
-  if (selected.length !== 10) throw new Error('QUESTION_POOL_EXHAUSTED');
+  // A ranked pool too small to fill a round (e.g. an empty private bank) is a
+  // bank outage for players; practice keeps the original code.
+  if (selected.length !== 10) throw new Error(ranked ? 'RANKED_BANK_UNAVAILABLE' : 'QUESTION_POOL_EXHAUSTED');
   return secureShuffle(selected).map((question) => question.id);
 };
 
