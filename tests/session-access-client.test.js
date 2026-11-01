@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { clientFixture, deferred, json } from './helpers/client-fixture.js';
-const source = readFileSync(new URL('../public/assets/session-access.js', import.meta.url), 'utf8');
+const source = readFileSync(new URL('../public/assets/session-hint.js', import.meta.url), 'utf8') + readFileSync(new URL('../public/assets/session-access.js', import.meta.url), 'utf8');
 const settle = () => new Promise(setImmediate);
 async function mount(reply, controls = true) {
   const calls = [], redirects = [], events = [], listeners = new Map();

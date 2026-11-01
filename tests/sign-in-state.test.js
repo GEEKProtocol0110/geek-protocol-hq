@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {clientFixture,json} from './helpers/client-fixture.js';
-const scripts=['sign-in.js','passkeys.js'].map(p=>readFileSync(new URL('../public/sign-in/assets/'+p,import.meta.url),'utf8'));
+const scripts=['sign-in.js','passkeys.js'].map(p=>readFileSync(new URL('../public/assets/session-hint.js', import.meta.url), 'utf8') + readFileSync(new URL('../public/sign-in/assets/'+p,import.meta.url),'utf8'));
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
 const mount=async (state, next='', userAgent='')=>{
   const calls=[],listeners=new Map(),redirects=[];
@@ -35,7 +35,7 @@ test('a saved session continues directly to HQ, including a receiving browser wi
   assert.equal(ui.node('[data-sign-in-hq]').hidden,false);assert.equal(ui.node('[data-sign-in-guest]').hidden,true);
   assert.equal(ui.node('[data-sign-in-title]').textContent,'Welcome back.');
   assert.equal(ui.node('[data-passkey-player]').textContent,'Saved Geek');assert.equal(ui.node('[data-passkey-login-area]').hidden,true);
-  assert.match(ui.node('[data-passkey-note]').textContent,/You’re signed in/);assert.equal(ui.node('[data-passkey-logout]').disabled,false);
+  assert.match(ui.node('[data-passkey-note]').textContent,/You’re signed in/);
   assert.equal(ui.node('[data-passkey-verify]').disabled,true);
   ui.emit('geek:account-status',{signedIn:false,walletLinked:false});
   assert.equal(ui.node('[data-sign-in-hq]').hidden,false,'late guest status cannot replace successful sign-in');

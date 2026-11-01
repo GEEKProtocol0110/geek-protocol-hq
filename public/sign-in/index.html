@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="/assets/styles.css" />
     <link rel="stylesheet" href="./assets/sign-in.css" />
     <script defer src="/assets/site.js"></script>
+    <script defer src="/assets/session-hint.js"></script>
     <script defer src="./assets/sign-in.js"></script>
     <script defer src="./assets/device-access.js"></script>
     <script defer src="./assets/passkeys.js"></script>
@@ -77,7 +78,6 @@
           <p>Verify with your saved passkey before changing access or approving another device.</p>
           <button type="button" class="button button-secondary" data-passkey-verify disabled>Verify with a passkey</button>
           <ul data-passkey-list></ul>
-          <button type="button" class="button button-secondary" data-passkey-logout disabled>Sign out</button>
           <div data-passkey-wallet-help hidden><p>You can also verify your linked wallet to manage passkeys.</p><button type="button" class="button button-secondary" data-passkey-wallet-authorize>Verify my linked wallet</button></div>
           <p class="sign-in-note">Keep another passkey or linked wallet available before removing access.</p>
         </details>

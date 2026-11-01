@@ -6,7 +6,7 @@ import { recordVerifiedScore } from '../server/leaderboard.js';
 import { loadProfile } from '../server/profile.js';
 import { commitRankedState } from '../server/ranked-state.js';
 import { recordRoundJourney, withProgression } from '../server/progression.js';
-import { questionById, selectRoundQuestionIds, shuffleOptions } from '../server/questions.js';
+import { questionById, rankedRunBinding, seasonFor, selectRoundQuestionIds, shuffleOptions } from '../server/questions.js';
 import { rateLimit, redis } from '../server/redis.js';
 import { playerIdFor, requireSession } from '../server/session.js';
 import questHandler from '../server/quest.js';
@@ -19,6 +19,8 @@ import { careerChallengeState } from '../server/career-challenges.js';
 import { prepareAutomaticReward, automaticError } from '../server/testnet-automatic.js';
 
 const RUN_TTL = 60 * 60 * 2;
+// Per-player ranked run starts: limits answer harvesting across repeated runs.
+export const RANKED_START_PLAYER_LIMIT = Object.freeze({ maximum: 30, seconds: 60 * 60 });
 const QUESTION_MS = 15_000;
 const NETWORK_GRACE_MS = 350;
 const runKey = (id) => `geek:run:${id}`;
@@ -32,8 +34,40 @@ const MODE_CONFIG = {
 };
 const modeConfig = (mode) => Object.hasOwn(MODE_CONFIG, mode) ? MODE_CONFIG[mode] : MODE_CONFIG.gauntlet;
 
-const safeRun = (run) => ({
+// Ranked feedback policy: correctness, answers, explanations and anything that
+// would reveal them (score, streak, review rows) stay server-side until the
+// round locks. Practice/Study keep immediate teaching feedback elsewhere.
+// A run finished mid-round (from 'question' or 'awaiting-next') never locks that
+// round, so its correctness, streak, round score and review stay hidden.
+const roundLocked = (run) => run.status === 'between-rounds' || (run.status === 'finished' && !run.finishedMidRound);
+// Runs without an explicit 'immediate' setting (including runs started before
+// this deploy) default to deferred feedback.
+const deferredFeedback = (run) => run.feedback !== 'immediate';
+const deferred = (run) => deferredFeedback(run) && !roundLocked(run);
+const safeRun = (run) => deferred(run) ? ({
   id: run.id,
+  mode: run.mode,
+  category: run.category,
+  season: seasonFor(run).id,
+  seasonLabel: seasonFor(run).label,
+  feedback: 'deferred',
+  round: run.round,
+  completedRound: run.completedRound || 0,
+  questionIndex: run.questionIndex,
+  answered: (run.roundAnswers || []).length,
+  totalScore: run.totalScore,
+  startBalance: run.startBalance,
+  fees: run.fees,
+  rewards: run.rewards,
+  questionCount: run.questionCount,
+  maxRounds: run.maxRounds,
+  status: run.status,
+  answeredReview: []
+}) : ({
+  id: run.id,
+  season: seasonFor(run).id,
+  seasonLabel: seasonFor(run).label,
+  feedback: deferredFeedback(run) ? 'deferred' : 'immediate',
   mode: run.mode,
   category: run.category,
   round: run.round,
@@ -76,14 +110,20 @@ const publicQuestion = (run, question) => ({
   serverNow: Date.now()
 });
 
+// Grading uses the exact row issued from the run's bound bank version; the key
+// snapshot stays in server-side run state and is never serialized to clients.
+const keySnapshot = (question) => JSON.parse(JSON.stringify(question));
+const runQuestion = async (run) => run.current?.key || questionById(run.category, run.current.questionId, { bankVersion: run.bankVersion });
+
 const issueQuestion = async (run) => {
-  const question = await questionById(run.category, run.roundQuestionIds[run.questionIndex]);
+  const question = await questionById(run.category, run.roundQuestionIds[run.questionIndex], { bankVersion: run.bankVersion });
   const config = modeConfig(run.mode);
   const questionDeadline = Date.now() + config.questionMs;
   run.current = {
     token: randomBytes(16).toString('hex'),
     questionId: question.id,
     options: shuffleOptions(question.options),
+    key: keySnapshot(question),
     deadline: config.overallMs ? Math.min(questionDeadline, run.overallDeadline) : questionDeadline
   };
   run.status = 'question';
@@ -102,28 +142,29 @@ const startRound = async (run, profile) => {
   run.correct = 0;
   run.roundScore = 0;
   run.roundAnswers = [];
-  run.roundQuestionIds = (await selectRoundQuestionIds(run.category, run.round, run.usedQuestionIds, run.focus)).slice(0, mode.questionCount);
+  run.roundQuestionIds = (await selectRoundQuestionIds(run.category, run.round, run.usedQuestionIds, run.focus, { ranked: true, bankVersion: run.bankVersion })).slice(0, mode.questionCount);
   run.usedQuestionIds.push(...run.roundQuestionIds);
   if (mode.overallMs) run.overallDeadline = Date.now() + mode.overallMs;
   return issueQuestion(run);
 };
 
 const finishRun = async (run, session, profile) => {
-  if (run.status === 'finished') return { leaderboard: await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode }) };
+  if (run.status === 'finished') return { leaderboard: await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode, season: seasonFor(run).leaderboard }) };
+  if (['question', 'awaiting-next'].includes(run.status)) run.finishedMidRound = true;
   profile.totalRuns += 1;
   if (run.mode === 'gauntlet' && run.completedRound >= 10) profile.gauntletsCompleted += 1;
   run.status = 'finished';
   run.current = null;
   const automaticReward = await prepareAutomaticReward(playerIdFor(session), run);
   await commitRankedState({ playerId: playerIdFor(session), run, previousRun: runSnapshots.get(run), profile, ttl: 300, automaticReward });
-  const leaderboard = await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode });
+  const leaderboard = await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode, season: seasonFor(run).leaderboard });
   return { leaderboard };
 };
 
 const answerQuestion = async (run, session, profile, body) => {
   if (run.lastResponse?.questionToken === body.questionToken && ['awaiting-next', 'between-rounds'].includes(run.status)) return run.lastResponse;
   if (run.status !== 'question' || run.current?.token !== body.questionToken) throw new Error('RUN_STATE_INVALID');
-  const question = await questionById(run.category, run.current.questionId);
+  const question = await runQuestion(run);
   const now = Date.now();
   const timedOut = now > run.current.deadline + NETWORK_GRACE_MS;
   const selectedIndex = timedOut ? -1 : Number(body.selectedIndex);
@@ -232,9 +273,11 @@ const answerQuestion = async (run, session, profile, body) => {
   } else {
     run.status = 'awaiting-next';
   }
+  const hidden = deferredFeedback(run) && !roundResult;
+  if (roundResult && deferredFeedback(run)) roundResult.review = run.roundAnswers;
   const response = {
     questionToken: body.questionToken,
-    result,
+    result: hidden ? { feedback: 'deferred', recorded: true, timedOut, locked: false } : result,
     roundResult,
     run: safeRun(run),
     profile: withProgression(profile)
@@ -261,7 +304,7 @@ export default async function handler(req, res) {
       if (!req.query?.runId && req.query?.resume !== '1') return sendJson(res, 200, { ok: true, profile, verified: true });
       const id = req.query?.resume === '1' ? await redis('GET', `geek:ranked:active:${session.id}`) : req.query.runId;
       const run = await loadRun(id, session);
-      const question = run.current ? publicQuestion(run, await questionById(run.category, run.current.questionId)) : null;
+      const question = run.current ? publicQuestion(run, await runQuestion(run)) : null;
       // Only the latest committed grade is available here; never future answers.
       return sendJson(res, 200, { ok: true, verified: true, ...(run.lastResponse || {}), run: safeRun(run), profile, question });
     }
@@ -270,12 +313,15 @@ export default async function handler(req, res) {
     const action = String(body.action || '');
     await rateLimit('ranked', playerId, 240, 60 * 5);
     if (action === 'start') {
+      await rateLimit('ranked-start-player', playerId, RANKED_START_PLAYER_LIMIT.maximum, RANKED_START_PLAYER_LIMIT.seconds);
       await rateLimit('ranked-start-ip', clientFingerprint(req), RANKED_START_IP_LIMIT.maximum, RANKED_START_IP_LIMIT.seconds);
       const category = categories.has(body.category) ? body.category : 'kaspa';
       const mode = Object.hasOwn(MODE_CONFIG, body.mode) ? body.mode : 'gauntlet';
       const focus = ['ghostdag', 'builders'].includes(body.focus) ? body.focus : '';
       const profile = await loadProfile(playerId);
+      const binding = await rankedRunBinding();
       const run = {
+        ...binding, feedback: 'deferred',
         id: randomBytes(20).toString('hex'), sessionId: session.id, category, focus, mode, round: 1,
         questionIndex: 0, correct: 0, roundScore: 0, totalScore: 0, streak: 0, maxStreak: 0,
         completedRound: 0, startBalance: profile.balance, fees: 0, rewards: 0, usedQuestionIds: [], status: 'starting',

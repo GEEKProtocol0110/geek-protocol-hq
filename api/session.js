@@ -1,4 +1,4 @@
-import { cleanName, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
+import { RATE_LIMITS, cleanName, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
 import { rateLimit } from '../server/redis.js';
 import { readSession, upsertSession } from '../server/session.js';
 import { collectiblesHandler, profileHandler } from '../server/player-api.js';
@@ -34,11 +34,14 @@ export default async function handler(req, res) {
     }
     // A shared network can onboard a 100-player event without disabling per-player limits.
     const fingerprint = clientFingerprint(req);
-    await rateLimit('session-ip', fingerprint, 600, 60 * 10);
-    if (!existing) await rateLimit('session-create-ip', fingerprint, 120, 60 * 10);
-    if (existing) await rateLimit('session', existing.id, 40, 60);
+    const L = RATE_LIMITS, write = body.action === 'rename' || typeof body.displayName === 'string';
+    await rateLimit('session-ip', fingerprint, L.sessionIp.maximum, L.sessionIp.seconds);
+    if (!existing) await rateLimit('session-create-ip', fingerprint, L.sessionCreateIp.maximum, L.sessionCreateIp.seconds);
+    // Page-load session checks and renames use separate buckets.
+    const bucket = write ? ['session-write', L.sessionWrite] : ['session-read', L.sessionRead];
+    if (existing) await rateLimit(bucket[0], existing.id, bucket[1].maximum, bucket[1].seconds);
     const session = await upsertSession(req, res, body.displayName);
-    if (!existing) await rateLimit('session', session.id, 40, 60);
+    if (!existing) await rateLimit(bucket[0], session.id, bucket[1].maximum, bucket[1].seconds);
     return sendJson(res, 200, { ok: true, player: { name: session.name, createdAt: session.createdAt } });
   } catch (error) {
     return handleApiError(res, error);

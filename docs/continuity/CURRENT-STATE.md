@@ -25,9 +25,9 @@ Record date: 2026-10-30. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-009: active.** BANK-009 Technology risk batch: twelve original drafts retired, four corrected technical objectives added under internally primary-source-checked identities. Candidate totals: 8,338 active / 876 recorded reviews / 7,462 factual drafts; Technology 1,485 / 19 / 1,466. Earlier #178 scope release is preserved; independent/full-bank approval remains open.
+**SEC-010: in-progress.** Unmerged #200 private ranked-bank rollout preparation: fix current-season boards and deferred reconnect feedback. #180 and #198 merged/deployed; Technology OS work remains paused in a separate worktree.
 
-Next task: **BANK-009**. Continue BANK-009 with another bounded Technology batch, including hardware/OS context (the remaining 32-bit RAM item) and clinical/entertainment imports; then History and Comics. Review each key, all distractors, useful explanation, category, scope, license and provisional difficulty against primary evidence. The twelve-item batch leaves 7,462 factual drafts; retain semantic-overlap checks on reviewed material and every historical key/alias. Independent editing and broader device/multiplayer/provider recovery remain open; Kaspa stays 766 / 234 to target.
+Next task: **SEC-010**. Finish the unmerged #200 browser fixes and required verification. Then provision the separate private bank and read-only access, author reviewed new-ID questions, and validate the restricted Preview before cutover. Do not enable the exposed-bank production override.
 
 ## Holds
 

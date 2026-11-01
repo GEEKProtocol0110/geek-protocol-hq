@@ -1,0 +1,774 @@
+{
+ "metadata": {
+  "purpose": "Public sample ranked bank for development and tests. Contains no real ranked questions or answers.",
+  "category": "science-fiction",
+  "questionCount": 45
+ },
+ "questions": [
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-E01",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 1",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE science-fiction easy 1] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-E02",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 2",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE science-fiction easy 2] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-E03",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 3",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE science-fiction easy 3] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-E04",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 4",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE science-fiction easy 4] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-E05",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 5",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE science-fiction easy 5] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-E06",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 1",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE science-fiction easy 6] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-E07",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 2",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE science-fiction easy 7] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-E08",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 3",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE science-fiction easy 8] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-E09",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 4",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE science-fiction easy 9] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-E10",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 5",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE science-fiction easy 10] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-E11",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 1",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE science-fiction easy 11] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-E12",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 2",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE science-fiction easy 12] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-E13",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 3",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE science-fiction easy 13] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-E14",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 4",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE science-fiction easy 14] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-E15",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 5",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE science-fiction easy 15] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-M01",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 1",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE science-fiction medium 1] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-M02",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 2",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE science-fiction medium 2] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-M03",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 3",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE science-fiction medium 3] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-M04",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 4",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE science-fiction medium 4] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-M05",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 5",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE science-fiction medium 5] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-M06",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 1",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE science-fiction medium 6] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-M07",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 2",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE science-fiction medium 7] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-M08",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 3",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE science-fiction medium 8] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-M09",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 4",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE science-fiction medium 9] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-M10",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 5",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE science-fiction medium 10] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-M11",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 1",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE science-fiction medium 11] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-M12",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 2",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE science-fiction medium 12] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-M13",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 3",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE science-fiction medium 13] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-M14",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 4",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE science-fiction medium 14] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-M15",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 5",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE science-fiction medium 15] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-H01",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 1",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE science-fiction hard 1] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-H02",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 2",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE science-fiction hard 2] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-H03",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 3",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE science-fiction hard 3] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-H04",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 4",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE science-fiction hard 4] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-H05",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 5",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE science-fiction hard 5] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-H06",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 1",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE science-fiction hard 6] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-H07",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 2",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE science-fiction hard 7] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-H08",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 3",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE science-fiction hard 8] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-H09",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 4",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE science-fiction hard 9] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-H10",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 5",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE science-fiction hard 10] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-H11",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 1",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE science-fiction hard 11] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-H12",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 2",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE science-fiction hard 12] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-H13",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 3",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE science-fiction hard 13] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-H14",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 4",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE science-fiction hard 14] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-SCIENCE-FICTION-H15",
+   "category": "science-fiction",
+   "subcategory": "Sample topic 5",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE science-fiction hard 15] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  }
+ ]
+}
