@@ -6,9 +6,14 @@ import { clientFixture, deferred, json, aborted } from './helpers/client-fixture
 const source = readFileSync(new URL('../public/play/assets/testnet-status.js', import.meta.url), 'utf8');
 const settle = () => new Promise(setImmediate);
 const status = (patch = {}) => ({ ok: true, enabled: true, enrollment: { enabled: true }, records: [{ state: 'queued' }], ...patch });
-async function setup(reply = () => json(status()), withDashboard = false) {
-  const requests = [], listeners = new Map();
-  const ui = clientFixture(async (url, options) => { requests.push({ url, options }); return reply(options, requests.length); });
+async function setup(reply = () => json(status()), withDashboard = false, accountReply = null) {
+  const requests = [], accounts = [], listeners = new Map();
+  const ui = clientFixture(async (url, options) => {
+    // The account check is recorded separately so request counts keep describing the
+    // rewards read they were written against (issues #183, #199).
+    if (url === '/api/passkeys/') { accounts.push({ url, options }); return typeof accountReply === 'function' ? accountReply() : accountReply || json({ ok: true, signedIn: true }); }
+    requests.push({ url, options }); return reply(options, requests.length);
+  });
   const panel = ui.node('[data-testnet-status]'); panel.hidden = true;
   let dashboard;
   if (withDashboard) {
@@ -18,7 +23,7 @@ async function setup(reply = () => json(status()), withDashboard = false) {
   }
   ui.document.addEventListener = (name, handler) => listeners.set(name, handler);
   ui.run(source); await settle();
-  return { ...ui, requests, panel, dashboard,
+  return { ...ui, requests, accounts, panel, dashboard,
     async documentEvent(name) { await listeners.get(name)?.(); await settle(); },
     async fire(delay = 15000) {
       const [id, timer] = [...ui.timers].find(([, t]) => t.delay === delay) || [];
@@ -26,6 +31,49 @@ async function setup(reply = () => json(status()), withDashboard = false) {
     }
   };
 }
+
+test('a visitor without an account session sends no rewards request and sees nothing', async () => {
+  for (const accountReply of [() => json({}, 401), () => json({ ok: true, signedIn: false, walletLinked: false })]) {
+    const ui = await setup(() => json(status({ enrollment: null, records: [] })), false, accountReply);
+    assert.equal(ui.accounts.length, 1);
+    assert.equal(ui.accounts[0].url, '/api/passkeys/');
+    assert.equal(ui.accounts[0].options.method, undefined);
+    assert.equal(ui.accounts[0].options.body, undefined);
+    assert.equal(ui.accounts[0].options.credentials, 'same-origin');
+    assert.equal(ui.requests.length, 0);
+    assert.equal(ui.panel.hidden, true); assert.equal(ui.panel.textContent, '');
+    assert.equal(ui.timers.size, 0);
+    // The rewards dashboard stays hidden for a guest too, and no timed poll starts.
+    const dashboard = await setup(() => json(status({ enrollment: null, records: [] })), true, accountReply);
+    assert.equal(dashboard.requests.length, 0);
+    assert.equal(dashboard.dashboard.hidden, true);
+    assert.equal(dashboard.timers.size, 0);
+  }
+});
+
+test('a signed-in visitor reads rewards after one account check and keeps polling that read', async () => {
+  const ui = await setup(() => json(status({ enrollment: null, records: [] })));
+  assert.equal(ui.accounts.length, 1);
+  assert.equal(ui.requests.length, 1);
+  assert.equal(ui.requests[0].url, '/api/rewards/?service=testnet');
+  assert.equal(ui.panel.hidden, true); assert.equal(ui.panel.textContent, '');
+  const dashboard = await setup(() => json(status({ enrollment: null, records: [] })), true);
+  assert.equal(dashboard.requests.length, 1);
+  assert.match(dashboard.panel.textContent, /Saving an address does not enroll/);
+  await dashboard.fire();
+  assert.equal(dashboard.accounts.length, 1);
+  assert.equal(dashboard.requests.length, 2);
+});
+
+test('a failed account check never sends the rewards read and retries quietly', async () => {
+  const ui = await setup(() => json(status()), false, () => json({}, 503));
+  assert.equal(ui.accounts.length, 1);
+  assert.equal(ui.requests.length, 0);
+  assert.equal(ui.panel.hidden, true); assert.equal(ui.panel.textContent, '');
+  await ui.fire();
+  assert.equal(ui.accounts.length, 2);
+  assert.equal(ui.requests.length, 0);
+});
 
 test('player status uses private canonical reads and distinguishes queued, paused and confirmed payments', async () => {
   let payload = status();
