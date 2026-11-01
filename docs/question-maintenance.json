@@ -1,11 +1,11 @@
 {
-  "maintainedAt": "2026-10-29",
+  "maintainedAt": "2026-11-01",
   "originalRows": 8032,
   "cleanedBaseline": 4024,
-  "activeQuestions": 8439,
-  "practiceOnlyQuestions": 205,
-  "rankedEligibleActiveQuestions": 8234,
-  "retiredRows": 4443,
+  "activeQuestions": 8438,
+  "practiceOnlyQuestions": 210,
+  "rankedEligibleActiveQuestions": 8228,
+  "retiredRows": 4450,
   "addedQuestions": 4024,
   "categories": {
     "kaspa": {
@@ -31,7 +31,7 @@
     "comics": {
       "before": 1000,
       "cleaned": 231,
-      "removed": 833,
+      "removed": 834,
       "reasons": {
         "invalid-or-ambiguous": 139,
         "off-category": 352,
@@ -40,17 +40,19 @@
         "editorial-missing-context": 2,
         "editorial-unsupported-claim": 5,
         "editorial-invalid-options": 1,
-        "editorial-semantic-duplicate": 5
+        "editorial-semantic-duplicate": 7,
+        "editorial-category-scope": 2,
+        "editorial-source-correction": 2
       },
       "added": 231,
       "target": 462,
-      "after": 413,
+      "after": 412,
       "difficultyDistribution": {
         "easy": 202,
         "medium": 170,
-        "hard": 41
+        "hard": 40
       },
-      "editorialRemoved": 64,
+      "editorialRemoved": 65,
       "postReviewAdditions": 15
     },
     "science-fiction": {
@@ -63,7 +65,9 @@
         "generated-variant": 471,
         "editorial-off-category": 66,
         "editorial-missing-context": 2,
-        "editorial-corrupt-text": 1
+        "editorial-corrupt-text": 1,
+        "editorial-semantic-duplicate": 1,
+        "editorial-encoding-correction": 2
       },
       "added": 292,
       "target": 584,
@@ -86,7 +90,9 @@
         "duplicate-or-similar": 5,
         "generated-variant": 231,
         "editorial-missing-context": 3,
-        "editorial-off-category": 131
+        "editorial-off-category": 131,
+        "editorial-semantic-duplicate": 1,
+        "editorial-encoding-correction": 1
       },
       "added": 368,
       "target": 736,
@@ -108,7 +114,10 @@
         "duplicate-or-similar": 2,
         "editorial-unsupported-claim": 7,
         "editorial-invalid-options": 2,
-        "editorial-semantic-duplicate": 5
+        "editorial-semantic-duplicate": 10,
+        "editorial-source-correction": 10,
+        "editorial-owner-review": 2,
+        "editorial-encoding-correction": 17
       },
       "added": 755,
       "target": 1510,
@@ -124,25 +133,27 @@
     "technology": {
       "before": 1000,
       "cleaned": 752,
-      "removed": 304,
+      "removed": 310,
       "reasons": {
         "invalid-or-ambiguous": 244,
         "duplicate-or-similar": 4,
-        "editorial-off-category": 27,
-        "editorial-unsupported-claim": 1,
-        "editorial-invalid-options": 2,
-        "editorial-source-correction": 4
+        "editorial-off-category": 29,
+        "editorial-unsupported-claim": 4,
+        "editorial-invalid-options": 3,
+        "editorial-source-correction": 5,
+        "editorial-semantic-duplicate": 3,
+        "editorial-encoding-correction": 18
       },
       "added": 752,
       "target": 1504,
       "after": 1485,
       "difficultyDistribution": {
-        "easy": 577,
-        "medium": 609,
-        "hard": 299
+        "easy": 576,
+        "medium": 611,
+        "hard": 298
       },
-      "editorialRemoved": 56,
-      "postReviewAdditions": 37
+      "editorialRemoved": 62,
+      "postReviewAdditions": 43
     },
     "movies": {
       "before": 1000,
@@ -151,7 +162,10 @@
       "reasons": {
         "invalid-or-ambiguous": 206,
         "duplicate-or-similar": 46,
-        "editorial-missing-context": 1
+        "editorial-missing-context": 1,
+        "editorial-semantic-duplicate": 3,
+        "editorial-encoding-correction": 21,
+        "editorial-source-correction": 7
       },
       "added": 748,
       "target": 1496,
@@ -171,7 +185,10 @@
       "reasons": {
         "invalid-or-ambiguous": 193,
         "duplicate-or-similar": 21,
-        "editorial-missing-context": 1
+        "editorial-missing-context": 1,
+        "editorial-semantic-duplicate": 2,
+        "editorial-encoding-correction": 18,
+        "editorial-source-correction": 2
       },
       "added": 786,
       "target": 1572,
@@ -196,7 +213,7 @@
     "KasWareExtension": "78bb30045edd4d898c4d61c4c75ba1bc37e18748",
     "KaspanetDocs": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9"
   },
-  "editorialRetiredRows": 435,
+  "editorialRetiredRows": 442,
   "editorialReview": "docs/editorial-review.json",
-  "postReviewAdditions": 826
+  "postReviewAdditions": 832
 }

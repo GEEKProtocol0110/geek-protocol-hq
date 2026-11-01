@@ -2,20 +2,20 @@
   "metadata": {
     "title": "GEEK Protocol — Comics Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-30",
-    "questionCount": 413,
-    "conceptCount": 413,
+    "maintainedAt": "2026-11-01",
+    "questionCount": 412,
+    "conceptCount": 412,
     "category": "Comics",
     "difficultyDistribution": {
       "easy": 202,
       "medium": 170,
-      "hard": 41
+      "hard": 40
     },
     "correctIndexDistribution": {
       "0": 106,
       "1": 95,
       "2": 106,
-      "3": 106
+      "3": 105
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -5341,35 +5341,6 @@
       "correctIndex": 0,
       "difficulty": "medium",
       "funFact": "Dick Grayson was Batman's first Robin.",
-      "tags": [
-        "comics"
-      ],
-      "volatile": false,
-      "source": "https://www.dc.com/characters/batman",
-      "license": "CC BY 4.0",
-      "attribution": "GEEK Protocol; original question based on the cited DC character profile.",
-      "reviewStatus": "source-checked",
-      "reviewedAt": "2026-10-07",
-      "sourceFile": "DC Comics",
-      "maintenanceCheckedAt": "2026-10-07",
-      "practiceOnly": true,
-      "editorialReviewNote": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review."
-    },
-    {
-      "id": "COM-N-e1f0ac201acf",
-      "conceptId": "COM-N-e1f0ac201acf",
-      "category": "Comics",
-      "subcategory": "Dc Comics",
-      "prompt": "Which 1940 issue introduced both Catwoman and the Joker?",
-      "options": [
-        "Superman #76",
-        "Detective Comics #60",
-        "Batman #232",
-        "Batman #1"
-      ],
-      "correctIndex": 3,
-      "difficulty": "hard",
-      "funFact": "Both villains debuted in Batman's first solo issue.",
       "tags": [
         "comics"
       ],

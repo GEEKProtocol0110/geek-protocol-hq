@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-10-30. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-11-01. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -10,7 +10,7 @@ Record date: 2026-10-30. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,234 active ranked-eligible questions, plus 205 practice-only unranked draft questions (not ranked-eligible, not source-checked); 800 recorded internal source reviews; 7,200 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,228 active ranked-eligible questions, plus 210 practice-only unranked draft questions (not ranked-eligible, not source-checked); 800 recorded internal source reviews; 7,200 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
@@ -20,14 +20,14 @@ Record date: 2026-10-30. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 | Technology | 1485 | 19 | 981 |
 | Movies | 1490 | 5 | 995 |
 | History | 1502 | 9 | 991 |
-| Comics | 413 | 1 | 999 |
+| Comics | 412 | 1 | 999 |
 | Pop culture | 1568 | 0 | 1000 |
 
 ## Current work and pickup
 
-**BANK-009: active.** BANK-009 Technology risk batch: twelve original drafts retired, four corrected technical objectives added under internally primary-source-checked identities. Candidate totals: 8,338 active / 876 recorded reviews / 7,462 factual drafts; Technology 1,485 / 19 / 1,466. Earlier #178 scope release is preserved; independent/full-bank approval remains open.
+**BANK-009: active.** BANK-009: #208 Technology corrections merged; #209 History/Comics final integration removes the overlapping Joker objective while retaining historical grading, practice-only replacements and unresolved-authorship holds. Independent/full-bank acceptance remains open.
 
-Next task: **BANK-009**. Continue BANK-009 with another bounded Technology batch, including hardware/OS context (the remaining 32-bit RAM item) and clinical/entertainment imports; then History and Comics. Review each key, all distractors, useful explanation, category, scope, license and provisional difficulty against primary evidence. The twelve-item batch leaves 7,462 factual drafts; retain semantic-overlap checks on reviewed material and every historical key/alias. Independent editing and broader device/multiplayer/provider recovery remain open; Kaspa stays 766 / 234 to target.
+Next task: **BANK-009**. Complete the corrected #209 integration with fresh exact-head checks, then continue the remaining BANK-009 factual, semantic, category and authorship audit. Preserve all historical grading and keep new drafts practice-only. Private-ranked-bank end-to-end and UX acceptance remain separate cutover gates.
 
 ## Holds
 

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-30",
+  "updatedAt": "2026-11-01",
   "canonicalRepository": "GEEKProtocol0110/geek-protocol-hq",
   "mission": "A Kaspa onboarding ecosystem built for Proof of Learning. Make knowledge useful through accessible learning, practice, feedback and carefully governed incentives.",
   "founder": "Michael Gee",
@@ -18,12 +18,12 @@
     "evidence": "PR #155 merged October 23, 2026 at 12:21:55 Detroit (16:21:55 UTC) as 1476aa2d1a4469ed1eed30d9c72f94ca50e8bd4f. Final checked head ee1ce12bb3e961e2013d56a4dda29855a14d1810/tree d8d0e4fd94564ba79cd7559ce7e4add355587a0b matches local 4da8aeb3dee54ed73e1172c16afa5f5206a38fa2; the merge has that same tree. Exact-head GitHub Security verification 39964886728 succeeded; no submitted reviews or inline threads were present before merge. Full local verification passed 603 HQ tests plus four offline signer tests, zero failures/skips, real Redis 7.0.15, 311 security assertions and all supporting checks. Production dpl_7FYxuRoLQ6VVpB5PLdnHGqFwaxzk is READY on the exact merge with both canonical domains assigned. Five no-redirect canonical checks passed under 15-second request bounds: exact status-client bytes, Play HTML referencing the client, private player 401, unauthorized worker POST 401 and private owner-auto 401; all protected responses were private/no-store. The earlier protected-preview private-fetch failure remains provider authentication evidence, not application acceptance. Actual-phone status recovery and actual automatic transfer remain unproved. Fresh project search found no geek-geekt-testnet-worker; creation in the existing Vercel team again returned 403 forbidden/no project-create permission. Neither vercel nor vc CLI is installed. No signer project, key, environment value, test funding or automatic payment was created. Mainnet/CCE/ownership holds remain unchanged."
   },
   "questionCheckpoint": {
-    "active": 8234,
+    "active": 8228,
     "reviewed": 800,
     "remaining": 7200,
     "kaspaActive": 766,
     "kaspaReviewed": 766,
-    "practiceOnly": 205,
+    "practiceOnly": 210,
     "kaspaPracticeOnly": 100,
     "studyConcepts": 537,
     "questChapters": 4
@@ -39,10 +39,10 @@
   "currentWork": {
     "id": "BANK-009",
     "status": "active",
-    "description": "BANK-009 Technology risk batch: twelve original drafts retired, four corrected technical objectives added under internally primary-source-checked identities. Candidate totals: 8,338 active / 876 recorded reviews / 7,462 factual drafts; Technology 1,485 / 19 / 1,466. Earlier #178 scope release is preserved; independent/full-bank approval remains open."
+    "description": "BANK-009: #208 Technology corrections merged; #209 History/Comics final integration removes the overlapping Joker objective while retaining historical grading, practice-only replacements and unresolved-authorship holds. Independent/full-bank acceptance remains open."
   },
   "nextTask": "BANK-009",
-  "nextAction": "Continue BANK-009 with another bounded Technology batch, including hardware/OS context (the remaining 32-bit RAM item) and clinical/entertainment imports; then History and Comics. Review each key, all distractors, useful explanation, category, scope, license and provisional difficulty against primary evidence. The twelve-item batch leaves 7,462 factual drafts; retain semantic-overlap checks on reviewed material and every historical key/alias. Independent editing and broader device/multiplayer/provider recovery remain open; Kaspa stays 766 / 234 to target.",
+  "nextAction": "Complete the corrected #209 integration with fresh exact-head checks, then continue the remaining BANK-009 factual, semantic, category and authorship audit. Preserve all historical grading and keep new drafts practice-only. Private-ranked-bank end-to-end and UX acceptance remain separate cutover gates.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",

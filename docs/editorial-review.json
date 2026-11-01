@@ -3140,6 +3140,48 @@
       "answerKeyHash": "31f0e581ccd6e72576dbf6b4739f9c8f732fc74d8cd1da0e447275f114b79ce3"
     },
     {
+      "category": "technology",
+      "id": "TECH-0271",
+      "reason": "unsupported-claim",
+      "note": "BANK-009: outdated Saturn moon count (31); NASA lists far more. Retired; original answer retained for saved runs.",
+      "answerKeyHash": "96c6aaa92f4effdb0e82fd67141b978b2e2e3d3617dea505944419569b7ec814"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-f625db225471",
+      "reason": "unsupported-claim",
+      "note": "BANK-009: wrong date and reason (US phones were silenced Aug 4, 1922 for Bell's funeral, not on Aug 2 when he died). Retired; original answer retained for saved runs.",
+      "answerKeyHash": "e03c2da5ed309850581c769c2dad993bcad08e1edea4cf57f6415d81fa4f9ebf"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0109",
+      "reason": "unsupported-claim",
+      "note": "BANK-009: keyed answer (elephants cry emotional tears) is unsupported. Retired; original answer retained for saved runs.",
+      "answerKeyHash": "3d6aa0bddd687112ed8940c6c250e486ae28ce2392f0be916d671bfc0c3b1729"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-476a068a904e",
+      "reason": "invalid-options",
+      "note": "BANK-009: ambiguous key; Turing 1936-37 makes the 1937 distractor defensible and the problem was settled, not solved. Retired; original answer retained for saved runs.",
+      "answerKeyHash": "73d880008622b1e5fd0dd3dee1e35d346490268022547d16bddf43284400a423"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0080",
+      "reason": "off-category",
+      "note": "BANK-009: astrology presented as fact; not a Technology objective. Retired; original answer retained for saved runs.",
+      "answerKeyHash": "1b4f388070ef7d70259a004f9eace78e097daa0feed1fc856153866e58527e76"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0958",
+      "reason": "off-category",
+      "note": "BANK-009: unsupported pseudo-medical pregnancy claim; not a Technology objective. Retired; original answer retained for saved runs.",
+      "answerKeyHash": "28f0175986f8fb37259828d97fc4394aed010a6318c8c3441f50c20f497a9765"
+    },
+    {
       "category": "history",
       "id": "HIST-0034",
       "reason": "unsupported-claim",
@@ -3334,9 +3376,16 @@
       "reason": "semantic-duplicate",
       "note": "BANK-009: inverse of COM-N-9f5a4ee772b8 (Snoopy / Red Baron); CC BY-SA import. Retired under the CC BY-SA replacement policy; replaced by an original practice-only draft. Original answer retained for saved runs. Practice-only replacement draft: COM-ST-014.",
       "answerKeyHash": "35dd9191832fc79444b6202ae7f4250b8ac76b6756a412ceab5a000e6d21bbc6"
+    },
+    {
+      "category": "comics",
+      "id": "COM-N-e1f0ac201acf",
+      "reason": "semantic-duplicate",
+      "note": "BANK-009 final review: overlaps the debut-issue objective of COM-ST-005. Retired rather than keeping two active versions. Original prompt, options and grading are retained for saved runs; canonical concept is COM-ST-005, which remains practice-only. The earlier uncertain-authorship hold is not cleared by this retirement.",
+      "answerKeyHash": "cd938866517ed7d35de867bce3e411ee24e3feb00b91d5828521642836a02b92"
     }
   ],
-  "retirementCount": 435,
+  "retirementCount": 442,
   "newLicensedImportsRetired": 258,
   "activeNewLicensedImportsPending": 3598,
   "activeDraftQuestions": 7516,
@@ -3391,7 +3440,7 @@
     }
   },
   "importCountCorrection": "The previous prose total of 3,868 licensed additions was incorrect: the original active snapshot has 3,856 new draft imports and 168 new source-checked authored items (92 Kaspa, 39 Comics, 37 Science Fiction).",
-  "maintainedAt": "2026-10-29",
+  "maintainedAt": "2026-11-01",
   "followUpAudits": [
     {
       "date": "2026-10-27",
@@ -3426,7 +3475,7 @@
     "date": "2026-10-30",
     "reason": "uncertain-authorship",
     "note": "Policy 2026-10-30 (uncertain authorship): row is tagged CC BY 4.0 but is sourced from a copyrighted publisher page and its authorship cannot be confirmed, so it is held practice-only and is not eligible for ranked play. Licence text unchanged pending owner review.",
-    "count": 76,
+    "count": 75,
     "items": [
       {
         "category": "comics",
@@ -3447,10 +3496,6 @@
       {
         "category": "comics",
         "id": "COM-N-d6f4772e9031"
-      },
-      {
-        "category": "comics",
-        "id": "COM-N-e1f0ac201acf"
       },
       {
         "category": "comics",
@@ -3731,6 +3776,14 @@
       {
         "category": "science-fiction",
         "id": "SF-N-c318f204ce93"
+      }
+    ],
+    "retiredItems": [
+      {
+        "category": "comics",
+        "id": "COM-N-e1f0ac201acf",
+        "retiredAt": "2026-11-01",
+        "disposition": "semantic duplicate moved to lookup-only retirement; authorship remains unresolved"
       }
     ]
   }
