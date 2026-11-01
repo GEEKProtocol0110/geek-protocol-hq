@@ -104,7 +104,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Continue BANK-009 with another bounded Technology batch, including hardware/OS context (the remaining 32-bit RAM item) and clinical/entertainment imports; then History and Comics. Review each key, all distractors, useful explanation, category, scope, license and provisional difficulty against primary evidence. The twelve-item batch leaves 7,462 factual drafts; retain semantic-overlap checks on reviewed material and every historical key/alias. Independent editing and broader device/multiplayer/provider recovery remain open; Kaspa stays 766 / 234 to target.
+Next action: Complete the corrected #209 integration with fresh exact-head checks, then continue the remaining BANK-009 factual, semantic, category and authorship audit. Preserve all historical grading and keep new drafts practice-only. Private-ranked-bank end-to-end and UX acceptance remain separate cutover gates.
 
 Acceptance:
 
@@ -422,7 +422,7 @@ Evidence/specification: [docs/MINT-AVAILABILITY-ISSUE-14.md](../../docs/MINT-AVA
 
 **P1 / decision-needed.** Owner: Maintainer researches; founder selects policy; independent covenant reviewer unassigned. Dependencies: none.
 
-Next action: Research PR #117 is merged at a4e34cd6c7146ed268729cb37b1bcb0ba051e5d7. Resolve the 144-billion/eight-decimal integer issue, select exact conforming artifacts and a test wallet, and specify a disabled prototype. Holder migration or funded deployment requires a separate concrete proposal; BANK-001 remains next product priority.
+Next action: Continue migration design in GitHub issue #216 after merged factual refresh #212: resolve burn-preserving holder/unminted accounting, exact eight-decimal limits, reproducible conforming artifacts, wallet compatibility and independent review. No funded deployment or monetary-policy choice is approved by the factual refresh.
 
 Acceptance:
 
