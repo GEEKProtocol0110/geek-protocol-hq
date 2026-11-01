@@ -10,24 +10,24 @@ Record date: 2026-11-01. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,332 active ranked-eligible questions, plus 106 practice-only unranked draft questions (not ranked-eligible, not source-checked); 876 recorded internal source reviews; 7,124 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,228 active ranked-eligible questions, plus 210 practice-only unranked draft questions (not ranked-eligible, not source-checked); 800 recorded internal source reviews; 7,200 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
 | Kaspa | 866 | 766 | 234 |
 | Video games | 601 | 0 | 1000 |
-| Science fiction | 514 | 37 | 963 |
+| Science fiction | 514 | 0 | 1000 |
 | Technology | 1485 | 19 | 981 |
 | Movies | 1490 | 5 | 995 |
 | History | 1502 | 9 | 991 |
-| Comics | 413 | 40 | 960 |
-| Pop culture | 1567 | 0 | 1000 |
+| Comics | 412 | 1 | 999 |
+| Pop culture | 1568 | 0 | 1000 |
 
 ## Current work and pickup
 
-**BANK-009: active.** BANK-009 final integration of reviewed Technology and History/Comics corrections. Original grading stays compatible; practice-only drafts, authorship holds and independent editorial acceptance remain distinct.
+**BANK-009: active.** BANK-009: #208 Technology corrections merged; #209 History/Comics final integration removes the overlapping Joker objective while retaining historical grading, practice-only replacements and unresolved-authorship holds. Independent/full-bank acceptance remains open.
 
-Next task: **BANK-009**. Finalize reviewed Technology corrections in #208 and the duplicate correction in History/Comics #209 with combined generated data and fresh checks. Continue the remaining BANK-009 category audit without promoting practice-only drafts; independent editing and full-bank acceptance remain open.
+Next task: **BANK-009**. Complete the corrected #209 integration with fresh exact-head checks, then continue the remaining BANK-009 factual, semantic, category and authorship audit. Preserve all historical grading and keep new drafts practice-only. Private-ranked-bank end-to-end and UX acceptance remain separate cutover gates.
 
 ## Holds
 

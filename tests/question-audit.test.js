@@ -121,3 +121,29 @@ test('Technology corrections keep issued grading, licensed provenance and determ
     await assert.rejects(selectRoundQuestionIds('technology',round,[...excluded,old.id]),/QUESTION_POOL_EXHAUSTED/);
   }
 });
+
+test('retired overlapping Joker objective keeps saved grading and excludes its replacement after later eligibility',async()=>{
+  const bank=loadQuestionBank('comics');
+  const old=bank.byId.get('COM-N-e1f0ac201acf');
+  const canonical=bank.questions.find(q=>q.id==='COM-ST-005');
+  assert.equal(gradingHash(old),'cd938866517ed7d35de867bce3e411ee24e3feb00b91d5828521642836a02b92');
+  assert.ok(old.retiredReason && canonical);
+  assert.ok(!bank.questions.some(q=>q.id===old.id));
+  assert.equal(old.conceptId,canonical.conceptId);
+  assert.equal(canonical.practiceOnly,true);
+  assert.equal(canonical.reviewStatus,'draft-needs-human-review');
+  // Simulate a future eligibility decision in this isolated in-memory fixture.
+  // Exactly ten candidates prove that the historical ID removes the alias;
+  // a random ten-question sample could otherwise pass without exercising it.
+  canonical.practiceOnly=false;
+  try {
+    const controls=bank.questions.filter(q=>!q.practiceOnly&&q.difficulty===canonical.difficulty&&q.id!==canonical.id).slice(0,9);
+    const allowed=new Set([canonical.id,...controls.map(q=>q.id)]);
+    const excluded=bank.questions.filter(q=>q.difficulty===canonical.difficulty&&!allowed.has(q.id)).map(q=>q.id);
+    const round=canonical.difficulty==='easy'?1:canonical.difficulty==='medium'?4:8;
+    assert.ok((await selectRoundQuestionIds('comics',round,excluded)).includes(canonical.id));
+    await assert.rejects(selectRoundQuestionIds('comics',round,[...excluded,old.id]),/QUESTION_POOL_EXHAUSTED/);
+  } finally {
+    canonical.practiceOnly=true;
+  }
+});

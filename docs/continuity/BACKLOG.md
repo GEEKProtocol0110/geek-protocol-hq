@@ -104,7 +104,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Finalize reviewed Technology corrections in #208 and the duplicate correction in History/Comics #209 with combined generated data and fresh checks. Continue the remaining BANK-009 category audit without promoting practice-only drafts; independent editing and full-bank acceptance remain open.
+Next action: Complete the corrected #209 integration with fresh exact-head checks, then continue the remaining BANK-009 factual, semantic, category and authorship audit. Preserve all historical grading and keep new drafts practice-only. Private-ranked-bank end-to-end and UX acceptance remain separate cutover gates.
 
 Acceptance:
 
@@ -422,7 +422,7 @@ Evidence/specification: [docs/MINT-AVAILABILITY-ISSUE-14.md](../../docs/MINT-AVA
 
 **P1 / decision-needed.** Owner: Maintainer researches; founder selects policy; independent covenant reviewer unassigned. Dependencies: none.
 
-Next action: Finalize the reviewed factual refresh in PR #212, then continue the migration design in GitHub issue #216: prove burn-preserving holder/unminted accounting and exact eight-decimal integer limits, choose reproducible conforming artifacts, and collect wallet and independent-review evidence. No funded deployment, migration or monetary-policy choice is approved by this documentation refresh.
+Next action: Continue migration design in GitHub issue #216 after merged factual refresh #212: resolve burn-preserving holder/unminted accounting, exact eight-decimal limits, reproducible conforming artifacts, wallet compatibility and independent review. No funded deployment or monetary-policy choice is approved by the factual refresh.
 
 Acceptance:
 

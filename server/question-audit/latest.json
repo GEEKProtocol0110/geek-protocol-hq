@@ -5,10 +5,10 @@
   "independentReview": false,
   "scope": "All active static rows in the category registry, including source-checked rows; excludes retired lookup-only and held CCE rows.",
   "limit": "Heuristic screening and internal pair triage are not exhaustive semantic, factual, category, licensing or difficulty review. Unflagged drafts still need item-by-item primary-source review.",
-  "corpusHash": "a847acb43e74166e9ea492592f7fd992452f617c3e53df99edd2be28c76a791b",
+  "corpusHash": "30f634b847d849bedfa1fe1bfc7bf59b4a211083aa0d8d06f964e9c2a681e27d",
   "active": 8438,
-  "recordedSourceChecks": 876,
-  "needsFactualReview": 7562,
+  "recordedSourceChecks": 875,
+  "needsFactualReview": 7563,
   "categories": [
     {
       "category": "kaspa",
@@ -50,20 +50,20 @@
       "active": 1502,
       "recordedSourceChecks": 9,
       "needsFactualReview": 1493,
-      "missingExplanation": 1493
+      "missingExplanation": 1479
     },
     {
       "category": "comics",
-      "active": 413,
-      "recordedSourceChecks": 40,
+      "active": 412,
+      "recordedSourceChecks": 39,
       "needsFactualReview": 373,
-      "missingExplanation": 373
+      "missingExplanation": 359
     },
     {
       "category": "pop-culture",
-      "active": 1567,
+      "active": 1568,
       "recordedSourceChecks": 0,
-      "needsFactualReview": 1567,
+      "needsFactualReview": 1568,
       "missingExplanation": 1567
     }
   ],
