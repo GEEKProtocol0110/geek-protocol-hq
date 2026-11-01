@@ -143,3 +143,8 @@ import('/assets/easter-eggs.js').catch(() => {});
 
 // Account controls live beside the player, outside optional recovery settings.
 import('/assets/session-access.js').catch(() => {});
+
+// UX-only session hint read by /play/ and /rewards/ status panels so signed-out visitors skip a
+// private status read. It is not an auth signal; the server authorizes every request.
+for (const name of ['geek:signed-in', 'geek:passkey-signed-in', 'geek:device-signed-in']) document.addEventListener(name, () => { try { localStorage.setItem('geek-session-hint', 'signed-in'); } catch { /* Storage is optional. */ } });
+document.addEventListener('geek:signed-out', () => { try { localStorage.removeItem('geek-session-hint'); } catch { /* Storage is optional. */ } });
