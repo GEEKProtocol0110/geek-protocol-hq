@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-28",
+  "updatedAt": "2026-11-01",
   "priorityOrder": [
     "P0",
     "P1",
@@ -593,7 +593,7 @@
       "status": "decision-needed",
       "title": "Evaluate KCC20 compatibility and preserve GEEK holder entitlements",
       "owner": "Maintainer researches; founder selects policy; independent covenant reviewer unassigned",
-      "nextAction": "Research PR #117 is merged at a4e34cd6c7146ed268729cb37b1bcb0ba051e5d7. Resolve the 144-billion/eight-decimal integer issue, select exact conforming artifacts and a test wallet, and specify a disabled prototype. Holder migration or funded deployment requires a separate concrete proposal; BANK-001 remains next product priority.",
+      "nextAction": "Finalize the reviewed factual refresh in PR #212, then continue the migration design in GitHub issue #216: prove burn-preserving holder/unminted accounting and exact eight-decimal integer limits, choose reproducible conforming artifacts, and collect wallet and independent-review evidence. No funded deployment, migration or monetary-policy choice is approved by this documentation refresh.",
       "acceptance": [
         "Current specification and implementation distinctions, pinned sources and research limits recorded.",
         "Existing holder and still-unminted GEEK accounting, decimal precision and integer bounds explicitly resolved.",
@@ -604,6 +604,10 @@
       "evidence": [
         "docs/KCC20-RESEARCH.md",
         "docs/research/kcc20-2026-10-15.json"
+      ],
+      "validationEvidence": [
+        "November 1: reviewed PR #212 at 4af47ac25ebcf8f1553fadfcc65aa2b7d5376eec against the official KCC index and Silverscript v1.0.0 release. Exact-head Security verification 41146226986 and both Vercel contexts passed. Original prompts/options/grading keys and dependency pins are unchanged. Current main b37f08d was merged normally before final verification; no independent covenant audit or migration acceptance is claimed.",
+        "November 1 final integration: npm run verify passed locally with native Redis 7.4.2, including 717 HQ tests and nine offline signer tests, zero failures/skips, 311 security assertions, question/schema/audit/catalog/readiness, archive/collection, repository, economy, continuity and site checks. No production or wallet mutation was performed. Fresh CI on the published integration head is still required before merging."
       ]
     },
     {
