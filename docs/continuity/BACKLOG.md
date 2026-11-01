@@ -422,7 +422,7 @@ Evidence/specification: [docs/MINT-AVAILABILITY-ISSUE-14.md](../../docs/MINT-AVA
 
 **P1 / decision-needed.** Owner: Maintainer researches; founder selects policy; independent covenant reviewer unassigned. Dependencies: none.
 
-Next action: Research PR #117 is merged at a4e34cd6c7146ed268729cb37b1bcb0ba051e5d7. Resolve the 144-billion/eight-decimal integer issue, select exact conforming artifacts and a test wallet, and specify a disabled prototype. Holder migration or funded deployment requires a separate concrete proposal; BANK-001 remains next product priority.
+Next action: Finalize the reviewed factual refresh in PR #212, then continue the migration design in GitHub issue #216: prove burn-preserving holder/unminted accounting and exact eight-decimal integer limits, choose reproducible conforming artifacts, and collect wallet and independent-review evidence. No funded deployment, migration or monetary-policy choice is approved by this documentation refresh.
 
 Acceptance:
 
