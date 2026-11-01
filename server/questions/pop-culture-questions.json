@@ -2,19 +2,19 @@
   "metadata": {
     "title": "GEEK Protocol — Pop Culture Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-28",
-    "questionCount": 1567,
-    "conceptCount": 1567,
+    "maintainedAt": "2026-10-30",
+    "questionCount": 1568,
+    "conceptCount": 1568,
     "category": "Pop Culture",
     "difficultyDistribution": {
       "easy": 628,
       "medium": 625,
-      "hard": 314
+      "hard": 315
     },
     "correctIndexDistribution": {
       "0": 387,
       "1": 399,
-      "2": 380,
+      "2": 381,
       "3": 401
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
@@ -40084,6 +40084,42 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/celebrities",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
+    },
+    {
+      "id": "COM-0698-R0b847a4bfe",
+      "category": "Pop Culture",
+      "subcategory": "Wrestling",
+      "prompt": "In 2005, Marvel transferred its rights in the wrestling ring name \"Hulk Hogan\" to whom?",
+      "options": [
+        "WWE",
+        "Vince McMahon",
+        "Terry Bollea",
+        "Hiro Matsuda"
+      ],
+      "correctIndex": 2,
+      "difficulty": "hard",
+      "funFact": "Marvel had held the trademark since 1985 because of the Incredible Hulk. Court filings in WWE v. Marvel (S.D.N.Y. 2005) show the rights were assigned to Bollea, the wrestler's legal name.",
+      "source": "https://comicbook.com/wwe/news/hulk-hogan-marvel-comics-trademark-battle-incredible-hulk-naming-rights-wwe/",
+      "tags": [
+        "pop-culture",
+        "practice",
+        "scope-reviewed"
+      ],
+      "volatile": false,
+      "practiceOnly": true,
+      "reviewStatus": "draft-needs-human-review",
+      "license": "evidence-only",
+      "attribution": "Corrected re-categorisation of retired COM-0698 by Geek Protocol: rewritten stem and options, cited as factual evidence only.",
+      "maintenanceCheckedAt": "2026-10-30",
+      "factCheckedAt": "2026-10-30",
+      "conceptId": "COM-0698-R0b847a4bfe",
+      "scopeReview": {
+        "kind": "category-transfer",
+        "reviewedAt": "2026-10-30",
+        "supersedes": [
+          "COM-0698"
+        ]
+      }
     }
   ]
 }
