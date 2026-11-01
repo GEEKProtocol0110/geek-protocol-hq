@@ -104,7 +104,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Continue BANK-009 with another bounded Technology batch, including hardware/OS context (the remaining 32-bit RAM item) and clinical/entertainment imports; then History and Comics. Review each key, all distractors, useful explanation, category, scope, license and provisional difficulty against primary evidence. The twelve-item batch leaves 7,462 factual drafts; retain semantic-overlap checks on reviewed material and every historical key/alias. Independent editing and broader device/multiplayer/provider recovery remain open; Kaspa stays 766 / 234 to target.
+Next action: Finalize reviewed Technology corrections in #208 and the duplicate correction in History/Comics #209 with combined generated data and fresh checks. Continue the remaining BANK-009 category audit without promoting practice-only drafts; independent editing and full-bank acceptance remain open.
 
 Acceptance:
 
@@ -422,7 +422,7 @@ Evidence/specification: [docs/MINT-AVAILABILITY-ISSUE-14.md](../../docs/MINT-AVA
 
 **P1 / decision-needed.** Owner: Maintainer researches; founder selects policy; independent covenant reviewer unassigned. Dependencies: none.
 
-Next action: Research PR #117 is merged at a4e34cd6c7146ed268729cb37b1bcb0ba051e5d7. Resolve the 144-billion/eight-decimal integer issue, select exact conforming artifacts and a test wallet, and specify a disabled prototype. Holder migration or funded deployment requires a separate concrete proposal; BANK-001 remains next product priority.
+Next action: Finalize the reviewed factual refresh in PR #212, then continue the migration design in GitHub issue #216: prove burn-preserving holder/unminted accounting and exact eight-decimal integer limits, choose reproducible conforming artifacts, and collect wallet and independent-review evidence. No funded deployment, migration or monetary-policy choice is approved by this documentation refresh.
 
 Acceptance:
 
