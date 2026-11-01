@@ -1171,6 +1171,29 @@
         "status": "merged-deployed",
         "evidence": "PR #178 merged October 28 at 11:10:19 UTC as 954a7b24b6e6c84522bc51c83c18bef5c28482d0; merge tree d8b027cba0baac76f12f2d38e2767a83d0508d12 matches checked head c947196de5bb0108c729d8264702d12660cb785c. Exact-head Security verification 40677635018 and both Vercel statuses succeeded. HQ production dpl_wANoLDQmxc9A44HXQMS9q1KzKHBJ READY on the merge with canonical domains; five canonical reads passed at 8,346 active / 872 checks / 7,474 drafts, with server-only paths 404. First standard monitoring run passed 15/21 with six protected-route five-second timeouts; focused protection reads then passed, followed by a standard 21/21 recheck at 7:13 AM Detroit. Retain the failure: later point-in-time health does not explain its cause or prove sustained capacity. Full local checks passed 713 HQ plus nine signer tests (722), zero failures/skips, 311 security assertions. Independent editing remains unassigned."
       }
+    },
+    {
+      "number": 212,
+      "title": "Refresh Kaspa standards facts and SDK scope",
+      "mergedAt": "2026-11-01T17:32:17Z",
+      "commit": "3197d1cbff913c16291dbf5a6fcf0d54399bbd81",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/212",
+      "verification": {
+        "status": "merged",
+        "evidence": "PR #212 merged as 3197d1cbff913c16291dbf5a6fcf0d54399bbd81 after exact-head Security verification 41331830899 and both Vercel contexts passed on b95775073be769e9a616434e223974ca6109835e. Local npm run verify passed 717 HQ tests plus nine offline signer checks with native Redis 7.4.2 and no failures/skips. This records a merge; production deployment and real-device acceptance are separate evidence. No private-bank cutover, token migration, payout or CCE activation."
+      }
+    },
+    {
+      "number": 208,
+      "title": "Retire wrong Technology questions and preserve practice drafts",
+      "mergedAt": "2026-11-01T17:37:30Z",
+      "commit": "7157d0c4b802b7605541f1743d868831b19a625c",
+      "url": "https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/208",
+      "verification": {
+        "status": "merged",
+        "evidence": "PR #208 merged as 7157d0c4b802b7605541f1743d868831b19a625c after exact-head Security verification 41332306615 and both Vercel contexts passed on a5728cc0fa80c811e6916dfea20d0173e657f403. Local npm run verify passed 717 HQ tests plus nine offline signer checks with native Redis 7.4.2 and no failures/skips. This records a merge; production deployment and real-device acceptance are separate evidence. No private-bank cutover, token migration, payout or CCE activation."
+      }
     }
-  ]
+  ],
+  "updatedAt": "2026-11-01"
 }
