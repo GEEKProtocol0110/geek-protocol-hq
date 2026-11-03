@@ -973,6 +973,30 @@ November 1 final #208 integration passed npm run verify with native Redis 7.4.2:
 
 Final combined local npm run verify passed with native Redis 7.4.2: 718 HQ tests and nine offline signer tests, zero failures/skips; 311 security assertions and all question/generated-data, collection/archive, repository, economy, continuity and site checks. Focused audit regression suite passed 11/11. Post-evidence continuity generation/check and whitespace checks passed. Fresh published-head CI is required before merge.
 
+## November 2, 2026 - DOC-001 / UX-008 local review candidate
+
+- Founder requests the first full whitepaper and a live timer centered behind four glass answer panels.
+- Draft v0.1 preserves the litepaper, describes canonical HQ architecture and distinguishes published historical banks from the pending private-bank cutover. Mainnet/CCE/ownership gates remain held.
+- Play moves its existing timer into the answer stage; CSS retains a 2x2 layout on phones, a clear center readout and translucent answer panels. No game JavaScript, API or scoring change.
+- Scope, validation and publication disposition: docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md. This is a local candidate; no push, merge, deployment or real-phone acceptance is claimed.
+- Validation complete: 725 HQ tests + nine signer checks, all supporting checks, five Chromium widths and shipped-client ticking/keys pass. Eight-page PDF visually inspected; physical-phone acceptance remains pending.
+
+## November 2, 2026 - DOC-001 formal whitepaper edition
+
+- Replaced the v0.1 review text with a full v1.0 publication candidate (about 4,500 words) and regenerated the web edition and 11-page PDF. It preserves all financial and editorial gates and the independent private-bank cutover. Founder publication acceptance remains pending; this candidate is local only.
+
+## November 2, 2026 - DOC-001 final editorial and visual polish
+
+- Tightened repeated explanations; added token and record tables and two exact vector diagrams.
+- Rebuilt the publication candidate with a dark branded cover, clickable page-numbered contents, 14 bookmarks, and 13 visually reviewed pages. The reproducible PDF/figure builder is scripts/build-whitepaper-pdf.py (ReportLab and pypdf required).
+- Source/web parity, site metadata and 311 security assertions pass. Chromium widths 320/375/768/1280 cover figures, tables, references and document containment. No application logic changed; prior 725+9 tests remain the software baseline. Local candidate only, publication pending.
+
 ## November 2, 2026 - UX-009 apex homepage asset failure
 
 Founder screenshots show unstyled HTML and broken images after opening the apex domain from Vercel. Reproduced in a clean cloud browser at https://geekprotocol.xyz/: six stylesheet sheets absent, visible images have zero natural width. Unauthenticated HTTP root returns 200 HTML while apex CSS and logo return 308 to www. Destination CSS is 200 with same-origin resource policy; the HTML uses self-only resource directives. Canonical www previously rendered correctly. Add an explicit host-scoped root redirect before the existing wildcard. This is an isolated local candidate, not a completed deployment. See docs/APEX-HOMEPAGE-ASSET-FAILURE.md.
+
+## November 2, 2026 - DOC-001 / UX-008 preview preparation
+
+- Founder authorizes the next preparation step: inspect deep links, integrate current main and prepare a review preview. This does not approve the production merge.
+- Merged main ea73348 normally, preserving both continuity records. Fresh full verify with native Redis and required Redis modes passes. Existing PDF and browser layout evidence remains applicable: production changes since the candidate are the isolated root redirect, its regression and records.
+- Bare-domain Play still returns 200; Learn points to Study, not /learn/. Keep directory routing remediation separate; retain #227 routing/security configuration in the whitepaper/timer batch. Exact published PR/head and preview acceptance follow in the PR record.

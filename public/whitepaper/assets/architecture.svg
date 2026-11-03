@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="491.27559055118115" height="233" preserveAspectRatio="xMinYMin meet" viewBox="0 0 491 233" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="491.27559055118115" height="233"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-233)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="155" width="140" height="53" rx="6" ry="0" style="stroke: rgb(71%,82%,78%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="46.8359375" y="187" style="font-family: Bold; font-size: 10px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,374) scale(1,-1)">Browser</text>
+			<text x="27.28515625" y="170" style="font-family: Body; font-size: 8px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,340) scale(1,-1)">Displays and submits</text>
+			<rect x="175" y="155" width="140" height="53" rx="6" ry="0" style="stroke: rgb(71%,82%,78%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="225.4296875" y="187" style="font-family: Bold; font-size: 10px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,374) scale(1,-1)">HQ API</text>
+			<text x="200.7890625" y="170" style="font-family: Body; font-size: 8px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,340) scale(1,-1)">Authorizes and scores</text>
+			<rect x="350" y="155" width="141.27559055118115" height="53" rx="6" ry="0" style="stroke: rgb(71%,82%,78%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="405.1275413693406" y="187" style="font-family: Bold; font-size: 10px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,374) scale(1,-1)">Redis</text>
+			<text x="386.4170921505906" y="170" style="font-family: Body; font-size: 8px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,340) scale(1,-1)">Private app state</text>
+			<path d="M 140,181 L 175,181 Z" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<polygon points="175 181, 170 178, 170 184" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1; fill: rgb(3%,49%,44%); fill-rule: evenodd;"/>
+			<path d="M 315,181 L 350,181 Z" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<polygon points="350 181, 345 178, 345 184" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1; fill: rgb(3%,49%,44%); fill-rule: evenodd;"/>
+			<rect x="0" y="40" width="140" height="53" rx="6" ry="0" style="stroke: rgb(71%,82%,78%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="38.1640625" y="72" style="font-family: Bold; font-size: 10px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,144) scale(1,-1)">User wallet</text>
+			<text x="25.3515625" y="55" style="font-family: Body; font-size: 8px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,110) scale(1,-1)">User approves signing</text>
+			<rect x="175" y="40" width="140" height="53" rx="6" ry="0" style="stroke: rgb(71%,82%,78%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="202.8955078125" y="72" style="font-family: Bold; font-size: 10px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,144) scale(1,-1)">Kaspa network</text>
+			<text x="208.474609375" y="55" style="font-family: Body; font-size: 8px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,110) scale(1,-1)">Wallet transaction</text>
+			<rect x="350" y="40" width="141.27559055118115" height="53" rx="6" ry="0" style="stroke: rgb(71%,82%,78%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="399.1656273068406" y="72" style="font-family: Bold; font-size: 10px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,144) scale(1,-1)">Indexer</text>
+			<text x="377.3897484005906" y="55" style="font-family: Body; font-size: 8px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,110) scale(1,-1)">Observed token state</text>
+			<path d="M 140,66 L 175,66 Z" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<polygon points="175 66, 170 63, 170 69" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1; fill: rgb(3%,49%,44%); fill-rule: evenodd;"/>
+			<path d="M 315,66 L 350,66 Z" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<polygon points="350 66, 345 63, 345 69" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1; fill: rgb(3%,49%,44%); fill-rule: evenodd;"/>
+			<path d="M 70,93 L 70,145 Z" style="stroke: rgb(32%,42%,40%); stroke-linecap: butt; stroke-width: 1; stroke-dasharray: 3, 3;"/>
+			<text x="35.37109375" y="116" style="font-family: Body; font-size: 7.5px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,232) scale(1,-1)">Separate approval</text>
+			<path d="M 420,103 L 245,103 Z" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1.2;"/>
+			<path d="M 420,93 L 420,103 Z" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1;"/>
+			<path d="M 245,103 L 245,155 Z" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<polygon points="245 155, 242 160, 248 160" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1; fill: rgb(3%,49%,44%); fill-rule: evenodd;"/>
+			<text x="308.88671875" y="113" style="font-family: Body; font-size: 8px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,226) scale(1,-1)">Status read</text>
+			<text x="111.27070543184058" y="12" style="font-family: Body; font-size: 8.2px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,24) scale(1,-1)">Application records and wallet operations have distinct authority.</text>
+		</g>
+	</g>
+</svg>

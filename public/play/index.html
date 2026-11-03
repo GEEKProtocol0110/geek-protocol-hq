@@ -145,13 +145,6 @@
           <div><small>CORRECT</small><strong data-correct>0</strong></div>
           <div><small>STREAK</small><strong data-streak>0×</strong></div>
           <div><small>RUN SCORE</small><strong data-score>0</strong></div>
-          <div class="timer-wrap" aria-label="Time remaining">
-            <svg viewBox="0 0 48 48" aria-hidden="true">
-              <circle class="timer-track" cx="24" cy="24" r="20"></circle>
-              <circle class="timer-line" data-timer-line cx="24" cy="24" r="20"></circle>
-            </svg>
-            <strong data-timer>15</strong>
-          </div>
         </div>
 
         <div class="question-progress" aria-label="Round question progress"><i data-question-progress></i></div>
@@ -163,7 +156,16 @@
             <span>DIFFICULTY <b data-difficulty>01</b></span>
           </div>
           <h2 data-question tabindex="-1">Question loads here.</h2>
-          <div class="answers" data-answers></div>
+          <div class="answer-stage">
+            <div class="timer-wrap" role="timer" aria-label="Time remaining in seconds" aria-live="off">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <circle class="timer-track" cx="24" cy="24" r="20"></circle>
+                <circle class="timer-line" data-timer-line cx="24" cy="24" r="20"></circle>
+              </svg>
+              <strong data-timer>15</strong>
+            </div>
+            <div class="answers" data-answers></div>
+          </div>
           <div class="feedback" data-feedback role="status"></div>
           <div class="key-hint">Keyboard: press 1–4 to answer</div>
         </div>
