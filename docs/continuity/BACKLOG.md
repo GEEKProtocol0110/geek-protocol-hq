@@ -55,6 +55,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CHAIN-004 | P0 | needs-evidence | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
 | CHAIN-005 | P1 | needs-evidence | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
 | AUTH-004 | P0 | needs-evidence | Secure Geek account access and wallet-neutral receiving addresses | Maintainer; founder controls bounded pilot approval and actual-device acceptance |
+| UX-009 | P0 | in-progress | Redirect the apex homepage before its assets cross origins | Maintainer; founder approves release |
 
 ## CONT-001: Publish the continuation system
 
@@ -787,3 +788,17 @@ Acceptance:
 - Receiving drafts remain separate by network during page use and manual reload; only a successful server response marks a change saved. Guest/loading/error states retain usable account access and retry guidance.
 
 Evidence/specification: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRST-ONBOARDING.md), [public/sign-in/index.html](../../public/sign-in/index.html), [public/assets/wallet.js](../../public/assets/wallet.js), [server/testnet-automatic.js](../../server/testnet-automatic.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [public/assets/session-access.js](../../public/assets/session-access.js), [tests/session-access-client.test.js](../../tests/session-access-client.test.js), [tests/sign-in-state.test.js](../../tests/sign-in-state.test.js), [docs/KASWARE-MOBILE-CONNECTION.md](../../docs/KASWARE-MOBILE-CONNECTION.md), [docs/ACCOUNT-RECEIVING-ADDRESSES.md](../../docs/ACCOUNT-RECEIVING-ADDRESSES.md), [server/reward-addresses.js](../../server/reward-addresses.js), [public/assets/receiving-address.js](../../public/assets/receiving-address.js), [tests/receiving-address-client.test.js](../../tests/receiving-address-client.test.js), [tests/passkeys.test.js](../../tests/passkeys.test.js).
+
+## UX-009: Redirect the apex homepage before its assets cross origins
+
+**P0 / in-progress.** Owner: Maintainer; founder approves release. Dependencies: none.
+
+Next action: Publish the scoped root redirect after founder approval, then verify apex root returns 308 and actual phone renders at www. If an edge root remains cached, use the project-level domain redirect or provider cache remediation rather than weakening CSP.
+
+Acceptance:
+
+- Apex homepage redirects to the canonical www origin before serving HTML.
+- Styles and images load on the destination with existing security headers.
+- Preview, production and founder phone acceptance are recorded separately.
+
+Evidence/specification: [docs/APEX-HOMEPAGE-ASSET-FAILURE.md](../../docs/APEX-HOMEPAGE-ASSET-FAILURE.md), [vercel.json](../../vercel.json).

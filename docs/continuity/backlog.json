@@ -1297,6 +1297,24 @@
       "validationEvidence": [
         "October 25 founder phone acceptance: the supplied HQ Rewards screenshot shows the latest 1-GEEKT TN10 payment as Confirmed by indexer, with its saved time, original recipient and reveal transaction; the supplied wallet screenshot shows +1 GEEKT marked Success. After explicit instructions to sign out, confirm Rewards hides private address/receipt details, and sign back into the same account to recover progress, saved address and receipt, the founder reports: Its all there. Good to go. This records founder-confirmed same-account phone recovery and signed-out privacy, not an independently observed browser session. Screenshots, wallet identifiers and transaction hashes remain outside the public record. No new payment or account/provider mutation is performed."
       ]
+    },
+    {
+      "id": "UX-009",
+      "priority": "P0",
+      "status": "in-progress",
+      "title": "Redirect the apex homepage before its assets cross origins",
+      "owner": "Maintainer; founder approves release",
+      "nextAction": "Publish the scoped root redirect after founder approval, then verify apex root returns 308 and actual phone renders at www. If an edge root remains cached, use the project-level domain redirect or provider cache remediation rather than weakening CSP.",
+      "acceptance": [
+        "Apex homepage redirects to the canonical www origin before serving HTML.",
+        "Styles and images load on the destination with existing security headers.",
+        "Preview, production and founder phone acceptance are recorded separately."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/APEX-HOMEPAGE-ASSET-FAILURE.md",
+        "vercel.json"
+      ]
     }
   ]
 }
