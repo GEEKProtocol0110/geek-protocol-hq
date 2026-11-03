@@ -218,6 +218,17 @@
   ],
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "geekprotocol.xyz"
+        }
+      ],
+      "destination": "https://www.geekprotocol.xyz/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {

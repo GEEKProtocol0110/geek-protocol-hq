@@ -972,3 +972,7 @@ November 1 final #208 integration passed npm run verify with native Redis 7.4.2:
 ### Final combined validation
 
 Final combined local npm run verify passed with native Redis 7.4.2: 718 HQ tests and nine offline signer tests, zero failures/skips; 311 security assertions and all question/generated-data, collection/archive, repository, economy, continuity and site checks. Focused audit regression suite passed 11/11. Post-evidence continuity generation/check and whitespace checks passed. Fresh published-head CI is required before merge.
+
+## November 2, 2026 - UX-009 apex homepage asset failure
+
+Founder screenshots show unstyled HTML and broken images after opening the apex domain from Vercel. Reproduced in a clean cloud browser at https://geekprotocol.xyz/: six stylesheet sheets absent, visible images have zero natural width. Unauthenticated HTTP root returns 200 HTML while apex CSS and logo return 308 to www. Destination CSS is 200 with same-origin resource policy; the HTML uses self-only resource directives. Canonical www previously rendered correctly. Add an explicit host-scoped root redirect before the existing wildcard. This is an isolated local candidate, not a completed deployment. See docs/APEX-HOMEPAGE-ASSET-FAILURE.md.
