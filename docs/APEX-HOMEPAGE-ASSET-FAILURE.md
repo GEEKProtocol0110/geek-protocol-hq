@@ -31,3 +31,15 @@ No live configuration, repository push, merge or deployment was performed during
 ## Release verification
 
 Founder authorized push and merge. PR #227 first run exposed the older regression assertion that only one apex rule exists; update it to verify the explicit root followed by the unchanged wildcard, with no www loop. Full local verify then passed: 725 HQ tests and nine signer checks, zero failures/skips, and all supporting checks. Final remote CI and production verification follow against the updated head.
+
+## Homepage release and directory follow-up (UX-010)
+
+PR #227 merged as ea73348ec325ce6b26f30011e023793a9ae77121; production dpl_Fko7NmAfx5t7uz4CWjSXnVFsNrAr is READY on that commit. Apex `/` now returns 308 to www and a fresh cloud browser visibly renders the styled destination with images. Founder replies “Perfect thx.” This confirms the homepage release disposition; directory routes are a separate finding.
+
+Follow-up no-redirect probes show `/play/` and `/study/` return 200 at the apex; `/play` and `/study` redirect to their apex slash versions. `/play/assets/game.css` redirects to www. Learn's actual product target is `/study/`; `/learn/` returns 404 on both origins and is not evidence of a broken Learn navigation link.
+
+Vercel's official `@vercel/routing-utils` 6.6.1 (`sourceToRegex`, `superstatic.js`) compiles sources with `strict: true`. The existing `/:path*` matches slashless paths but excludes a trailing slash and `/`. This explains the reproduced mismatch rather than assuming a stale cache. The root rule from #227 handles `/`. A separate `/:path*/` rule before the unchanged slashless fallback handles directory paths while retaining the trailing slash in its www destination. Official source: https://github.com/vercel/vercel/tree/main/packages/routing-utils ; configuration reference: https://vercel.com/docs/project-configuration/vercel-json#redirects .
+
+No dependency change is needed in HQ: the pinned compiler is used only for isolated validation. Do not weaken security headers or add middleware for this path-pattern correction. Validate compiled route coverage, preservation of queries, no www loop, exact-head CI and preview. Actual apex routing must be checked after a separately approved production release.
+
+Candidate validation: full `npm run verify` with native Redis 7.4.2 and required Redis modes passes (725 HQ tests plus nine signer checks, zero failures/skips), including 311 security assertions and all supporting checks. The official compiler returns no configuration error and produces the exact expected www target for eight paths: root, Play, Study, nested Play sources, Whitepaper, API session, CSS and slashless Play. The www host matches none of these apex rules. Before/after comparisons show headers, functions, rewrites and all preexisting redirects are unchanged. The compiler's compatibility instrumentation emits an existing nonfatal path-template log; conversion returns `error: null`. Query-string propagation is a hosted acceptance requirement, not established by these path checks.

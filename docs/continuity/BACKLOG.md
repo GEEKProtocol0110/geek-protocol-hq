@@ -56,6 +56,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CHAIN-005 | P1 | needs-evidence | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
 | AUTH-004 | P0 | needs-evidence | Secure Geek account access and wallet-neutral receiving addresses | Maintainer; founder controls bounded pilot approval and actual-device acceptance |
 | UX-009 | P0 | in-progress | Redirect the apex homepage before its assets cross origins | Maintainer; founder approves release |
+| UX-010 | P0 | in-progress | Redirect trailing-slash apex page links to the canonical host | Maintainer; founder approves production merge |
 
 ## CONT-001: Publish the continuation system
 
@@ -802,3 +803,17 @@ Acceptance:
 - Preview, production and founder phone acceptance are recorded separately.
 
 Evidence/specification: [docs/APEX-HOMEPAGE-ASSET-FAILURE.md](../../docs/APEX-HOMEPAGE-ASSET-FAILURE.md), [vercel.json](../../vercel.json).
+
+## UX-010: Redirect trailing-slash apex page links to the canonical host
+
+**P0 / in-progress.** Owner: Maintainer; founder approves production merge. Dependencies: none.
+
+Next action: Verify the separate draft PR and preview, obtain production merge approval, then confirm Play/Study and nested paths preserve query strings at www.
+
+Acceptance:
+
+- Apex page paths ending in a slash redirect before HTML is served.
+- Slashless links, nested routes and assets still resolve without a www loop; query parameters survive.
+- Security headers, API handlers, scoring and all economic gates are unchanged.
+
+Evidence/specification: [docs/APEX-HOMEPAGE-ASSET-FAILURE.md](../../docs/APEX-HOMEPAGE-ASSET-FAILURE.md), [vercel.json](../../vercel.json), [tests/apex-www-redirect.test.js](../../tests/apex-www-redirect.test.js).

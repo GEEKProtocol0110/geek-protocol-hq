@@ -54,5 +54,11 @@
     "Additional GIGA/A.C.E. artwork awaits founder supply. UX-003 removes repeated character panels and the large home portrait; do not restart a broad character rollout from the older UX-002 direction.",
     "Superseded #119 retains wallet-lab, reward-desk polish and pilot tools at its exact preserved head; follow-up work is WALLET-001, CHAIN-003 and PILOT-002. Do not merge its old authentication/infrastructure over main."
   ],
-  "recordPolicy": "Update after each substantive change. Baseline records stay historical; append later releases and replace only current checkpoint fields with evidence."
+  "recordPolicy": "Update after each substantive change. Baseline records stay historical; append later releases and replace only current checkpoint fields with evidence.",
+  "canonicalRoutingFollowup": {
+    "task": "UX-010",
+    "status": "draft-preparation",
+    "evidence": "docs/APEX-HOMEPAGE-ASSET-FAILURE.md",
+    "nextAction": "Verify trailing-slash route coverage in a separate candidate; production merge remains pending founder approval."
+  }
 }

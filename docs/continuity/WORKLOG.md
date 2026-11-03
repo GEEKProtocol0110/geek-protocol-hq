@@ -976,3 +976,11 @@ Final combined local npm run verify passed with native Redis 7.4.2: 718 HQ tests
 ## November 2, 2026 - UX-009 apex homepage asset failure
 
 Founder screenshots show unstyled HTML and broken images after opening the apex domain from Vercel. Reproduced in a clean cloud browser at https://geekprotocol.xyz/: six stylesheet sheets absent, visible images have zero natural width. Unauthenticated HTTP root returns 200 HTML while apex CSS and logo return 308 to www. Destination CSS is 200 with same-origin resource policy; the HTML uses self-only resource directives. Canonical www previously rendered correctly. Add an explicit host-scoped root redirect before the existing wildcard. This is an isolated local candidate, not a completed deployment. See docs/APEX-HOMEPAGE-ASSET-FAILURE.md.
+
+## November 2, 2026 - UX-010 directory redirect follow-up
+
+- Founder authorizes checking deep links and preparing the next review preview. #227 homepage release is merged/deployed and accepted as working; separate Play/Study trailing-slash links still serve apex HTML.
+- Official Vercel routing compiler uses strict path matching: the slashless wildcard excludes `/` and directory trailing slashes. Add a host-scoped slash-ending wildcard after the explicit homepage rule and before the existing fallback. Preserve all headers and handlers.
+- Candidate remains separate from DOC-001/UX-008 PR #228. Compiled-path checks, existing redirect regression and continuity/security/site verification precede draft publication. Production approval and actual apex acceptance remain pending.
+
+- Validation complete: 725 HQ tests and nine signer checks, zero failures/skips; 311 security assertions and all supporting checks. Eight official-compiler path targets match; no www loop, no header/handler/rewrite/preexisting-redirect change. Exact-head PR/CI/preview evidence will be retained in the PR description; actual apex/query acceptance follows only an approved production release.
