@@ -58,6 +58,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | DOC-001 | P1 | in-progress | Prepare the full Geek Protocol whitepaper for founder publication review | Maintainer; founder reviews publication |
 | UX-008 | P1 | in-progress | Center the question timer behind four glass answer panels | Maintainer; founder accepts device presentation |
 | UX-009 | P0 | in-progress | Redirect the apex homepage before its assets cross origins | Maintainer; founder approves release |
+| UX-010 | P0 | needs-evidence | Redirect trailing-slash apex page links to the canonical host | Maintainer; founder approves production merge |
 
 ## CONT-001: Publish the continuation system
 
@@ -795,7 +796,7 @@ Evidence/specification: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRS
 
 **P1 / in-progress.** Owner: Maintainer; founder reviews publication. Dependencies: none.
 
-Next action: Verify the authorized draft PR and exact-head preview; obtain founder approval for production publication and then physical-phone acceptance.
+Next action: Complete the founder-approved #228 merge after fresh assembled-head checks; verify production and record physical-phone acceptance separately.
 
 Acceptance:
 
@@ -809,7 +810,7 @@ Evidence/specification: [docs/WHITEPAPER.md](../../docs/WHITEPAPER.md), [scripts
 
 **P1 / in-progress.** Owner: Maintainer; founder accepts device presentation. Dependencies: none.
 
-Next action: Verify the authorized draft PR and exact-head preview; obtain founder approval for production publication and then physical-phone acceptance.
+Next action: Complete the founder-approved #228 merge after fresh assembled-head checks; verify production and record physical-phone acceptance separately.
 
 Acceptance:
 
@@ -832,3 +833,17 @@ Acceptance:
 - Preview, production and founder phone acceptance are recorded separately.
 
 Evidence/specification: [docs/APEX-HOMEPAGE-ASSET-FAILURE.md](../../docs/APEX-HOMEPAGE-ASSET-FAILURE.md), [vercel.json](../../vercel.json).
+
+## UX-010: Redirect trailing-slash apex page links to the canonical host
+
+**P0 / needs-evidence.** Owner: Maintainer; founder approves production merge. Dependencies: none.
+
+Next action: Record actual phone deep-link rendering acceptance; production path/query HTTP checks passed.
+
+Acceptance:
+
+- Apex page paths ending in a slash redirect before HTML is served.
+- Slashless links, nested routes and assets still resolve without a www loop; query parameters survive.
+- Security headers, API handlers, scoring and all economic gates are unchanged.
+
+Evidence/specification: [docs/APEX-HOMEPAGE-ASSET-FAILURE.md](../../docs/APEX-HOMEPAGE-ASSET-FAILURE.md), [vercel.json](../../vercel.json), [tests/apex-www-redirect.test.js](../../tests/apex-www-redirect.test.js).

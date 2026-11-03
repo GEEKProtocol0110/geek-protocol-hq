@@ -60,8 +60,14 @@
       "DOC-001",
       "UX-008"
     ],
-    "status": "preview-preparation",
+    "status": "approved-release-integration",
     "evidence": "docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md",
-    "nextAction": "Publish the authorized draft PR, verify the exact-head preview, and request founder approval for production publication."
+    "nextAction": "Complete the authorized #228 merge after fresh exact-head checks, verify production and obtain physical-phone acceptance."
+  },
+  "canonicalRoutingFollowup": {
+    "task": "UX-010",
+    "status": "deployed-http-verified",
+    "evidence": "docs/APEX-HOMEPAGE-ASSET-FAILURE.md",
+    "nextAction": "Retain actual phone rendering acceptance separately; canonical path/query HTTP checks passed."
   }
 }

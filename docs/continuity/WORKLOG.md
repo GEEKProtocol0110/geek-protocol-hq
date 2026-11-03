@@ -1000,3 +1000,18 @@ Founder screenshots show unstyled HTML and broken images after opening the apex 
 - Founder authorizes the next preparation step: inspect deep links, integrate current main and prepare a review preview. This does not approve the production merge.
 - Merged main ea73348 normally, preserving both continuity records. Fresh full verify with native Redis and required Redis modes passes. Existing PDF and browser layout evidence remains applicable: production changes since the candidate are the isolated root redirect, its regression and records.
 - Bare-domain Play still returns 200; Learn points to Study, not /learn/. Keep directory routing remediation separate; retain #227 routing/security configuration in the whitepaper/timer batch. Exact published PR/head and preview acceptance follow in the PR record.
+
+## November 2, 2026 - UX-010 directory redirect follow-up
+
+- Founder authorizes checking deep links and preparing the next review preview. #227 homepage release is merged/deployed and accepted as working; separate Play/Study trailing-slash links still serve apex HTML.
+- Official Vercel routing compiler uses strict path matching: the slashless wildcard excludes `/` and directory trailing slashes. Add a host-scoped slash-ending wildcard after the explicit homepage rule and before the existing fallback. Preserve all headers and handlers.
+- Candidate remains separate from DOC-001/UX-008 PR #228. Compiled-path checks, existing redirect regression and continuity/security/site verification precede draft publication. Production approval and actual apex acceptance remain pending.
+
+- Validation complete: 725 HQ tests and nine signer checks, zero failures/skips; 311 security assertions and all supporting checks. Eight official-compiler path targets match; no www loop, no header/handler/rewrite/preexisting-redirect change. Exact-head PR/CI/preview evidence will be retained in the PR description; actual apex/query acceptance follows only an approved production release.
+
+## November 2, 2026 - approved #229 / #228 release integration
+
+- Founder explicitly approves merging both reviewed PRs. #229 merged first as 65ddeb3; exact-head security and previews passed, no reviews/threads, production dpl_HzDZDHSv8WJg4vnDKu4UfeBG3KBr READY.
+- Integrate that main normally into #228, preserving both project records and regenerating continuity views. No feature change during reconciliation. Recheck full local verification and published-head CI before the authorized second merge. PR descriptions retain the final merge, deployment and live acceptance evidence.
+
+- Assembled local verification passed: 725 HQ tests + nine signer checks, zero failures/skips, 311 security assertions and all supporting checks. Production #229 probes confirm exact canonical redirects and query preservation on root, Play, Study and nested sources; www Play is 200 without a loop. Physical-phone rendering remains separate.

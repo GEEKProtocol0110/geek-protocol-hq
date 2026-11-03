@@ -7,10 +7,16 @@ const site = JSON.parse(readFileSync('docs/site-pages.json', 'utf8'));
 
 test('apex host 308-redirects to the canonical www host with the path kept and no loop', () => {
   const apex = cfg.redirects.filter(r => r.has?.some(h => h.type === 'host' && h.value === 'geekprotocol.xyz'));
-  assert.equal(apex.length, 2);
-  const [home, rule] = apex;
+  assert.equal(apex.length, 3);
+  const [home, directory, rule] = apex;
   assert.equal(cfg.redirects[0], home, 'explicit homepage redirect runs first');
-  assert.equal(cfg.redirects[1], rule, 'wildcard follows homepage before path redirects');
+  assert.equal(cfg.redirects[1], directory, 'trailing-slash paths are handled before the slashless wildcard');
+  assert.equal(cfg.redirects[2], rule, 'slashless paths and assets follow before legacy path redirects');
+  assert.equal(directory.source, '/:path*/');
+  assert.equal(directory.destination, `${site.origin}/:path*/`);
+  assert.equal(directory.permanent, true);
+  assert.equal(directory.statusCode, undefined);
+  assert.deepEqual(directory.has, [{ type: 'host', value: 'geekprotocol.xyz' }]);
   assert.equal(home.source, '/');
   assert.equal(home.destination, `${site.origin}/`);
   assert.equal(home.permanent, true);
