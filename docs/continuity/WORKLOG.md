@@ -952,3 +952,98 @@ Read-only standard monitoring of released #178 passed 21/21 at October 28, 5:36 
 - **Recovery:** a saved deferred answer displays “Answer saved — results after the round.” It offers manual next without inventing correctness or issuing another answer mutation.
 - **Validation:** 73 focused API/client tests passed, zero failures/skips, including current/private vs legacy separation, empty-board labels, stale response ordering and deferred recovery. Full `npm run verify` passed with required native Redis 7.0.15: 738 HQ tests plus nine offline signer checks (747 total), zero failures/skips, all question, security, continuity, site, archive, collection, repository and economy checks. Synthetic DOM tests do not establish real-device rendering or restricted Preview acceptance.
 - **Holds/next:** #200 is unmerged and undeployed. Separate private storage, scoped server credential, reviewed private questions, rotation acceptance and restricted Preview remain prerequisites. No private bank, token, environment setting, production cutover or payment was created. The independent Technology OS candidate remains paused.
+
+
+## November 1, 2026 — CHAIN-002 final factual refresh review (#212)
+
+- Reviewed KCC Final status and the Silverscript v1.0.0 release date against upstream primary references. The SDK scope note changes documentation only; no dependency pin, grading key, signer or migration runtime changes.
+- Integrated current main b37f08d by a normal merge, preserving Hall of Thanks music. Original PR head 4af47ac had passing Security verification and both Vercel contexts; the new integration head requires fresh checks.
+- Migration design is tracked in issue #216. Supply/decimal design, wallet compatibility and independent covenant review remain open. No private-bank cutover, migration, payout, CCE or Mainnet authorization is implied.
+- Final local verification and exact published-head/merge evidence will be recorded after they complete.
+
+### Final local verification
+
+November 1 final integration: npm run verify passed locally with native Redis 7.4.2, including 717 HQ tests and nine offline signer tests, zero failures/skips, 311 security assertions, question/schema/audit/catalog/readiness, archive/collection, repository, economy, continuity and site checks. No production or wallet mutation was performed. Fresh CI on the published integration head is still required before merging.
+
+
+## November 1, 2026 — BANK-009 Technology final integration (#208)
+
+- Integrated current main with merged #212 and Hall of Thanks music. Resolved the overlapping generated question audit by regenerating it from the combined corpus.
+- Six retired Technology identities retain their original options and correct indices; six replacements remain practice-only drafts. Exact original-head CI and both Vercel statuses passed before integration.
+- Final local verification and published-head checks are pending. History/Comics duplicate correction remains separate in #209; no private-bank cutover or economic/ownership gate is opened.
+
+### Final local verification
+
+November 1 final #208 integration passed npm run verify with native Redis 7.4.2: 717 HQ tests plus nine signer tests, zero failures/skips, 311 security assertions and all question, generated-data, repository, economy, continuity and site checks. The combined audit includes #212; historical grading keys remain unchanged. Fresh published-head CI is required before merge.
+
+
+## November 1, 2026 — BANK-009 History/Comics duplicate correction and final integration (#209)
+
+- Retired the older overlapping Joker debut objective, preserved its original grading, and linked its concept to the clearer practice-only replacement. The deterministic regression proves later-round exclusion even if the replacement is made eligible in an isolated test fixture; shipped eligibility remains unchanged.
+- November 1 #209 correction: retired the older overlapping Joker debut objective and linked its historical concept to the clearer practice-only replacement. All 12,859 grading tuples and all 4,421 prior retired objects from current main are unchanged. The deterministic alias regression passes, including future-eligibility simulation. Combined corpus after #212/#208: 8,438 active rows, 210 practice-only, 8,228 ranked-eligible; 800 meet readiness review criteria. Seventy-five active authorship holds plus one retired unresolved-authorship row remain; this is not authorship clearance or full-bank factual certification.
+- Integrated merged #212 and #208 normally. Reconciled both retirement lists and regenerated maintenance/readiness/catalog/audit/continuity data from the combined corpus. Preserved the original retired-row formatting and every previous retired object.
+- Recorded the actual #212/#208 merges in the release ledger; deployment is not inferred from a merge. #209 final verification and published-head checks are recorded separately after completion. All private-bank, migration and economic holds remain.
+
+### Final combined validation
+
+Final combined local npm run verify passed with native Redis 7.4.2: 718 HQ tests and nine offline signer tests, zero failures/skips; 311 security assertions and all question/generated-data, collection/archive, repository, economy, continuity and site checks. Focused audit regression suite passed 11/11. Post-evidence continuity generation/check and whitespace checks passed. Fresh published-head CI is required before merge.
+
+## November 2, 2026 - DOC-001 / UX-008 local review candidate
+
+- Founder requests the first full whitepaper and a live timer centered behind four glass answer panels.
+- Draft v0.1 preserves the litepaper, describes canonical HQ architecture and distinguishes published historical banks from the pending private-bank cutover. Mainnet/CCE/ownership gates remain held.
+- Play moves its existing timer into the answer stage; CSS retains a 2x2 layout on phones, a clear center readout and translucent answer panels. No game JavaScript, API or scoring change.
+- Scope, validation and publication disposition: docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md. This is a local candidate; no push, merge, deployment or real-phone acceptance is claimed.
+- Validation complete: 725 HQ tests + nine signer checks, all supporting checks, five Chromium widths and shipped-client ticking/keys pass. Eight-page PDF visually inspected; physical-phone acceptance remains pending.
+
+## November 2, 2026 - DOC-001 formal whitepaper edition
+
+- Replaced the v0.1 review text with a full v1.0 publication candidate (about 4,500 words) and regenerated the web edition and 11-page PDF. It preserves all financial and editorial gates and the independent private-bank cutover. Founder publication acceptance remains pending; this candidate is local only.
+
+## November 2, 2026 - DOC-001 final editorial and visual polish
+
+- Tightened repeated explanations; added token and record tables and two exact vector diagrams.
+- Rebuilt the publication candidate with a dark branded cover, clickable page-numbered contents, 14 bookmarks, and 13 visually reviewed pages. The reproducible PDF/figure builder is scripts/build-whitepaper-pdf.py (ReportLab and pypdf required).
+- Source/web parity, site metadata and 311 security assertions pass. Chromium widths 320/375/768/1280 cover figures, tables, references and document containment. No application logic changed; prior 725+9 tests remain the software baseline. Local candidate only, publication pending.
+
+## November 2, 2026 - UX-009 apex homepage asset failure
+
+Founder screenshots show unstyled HTML and broken images after opening the apex domain from Vercel. Reproduced in a clean cloud browser at https://geekprotocol.xyz/: six stylesheet sheets absent, visible images have zero natural width. Unauthenticated HTTP root returns 200 HTML while apex CSS and logo return 308 to www. Destination CSS is 200 with same-origin resource policy; the HTML uses self-only resource directives. Canonical www previously rendered correctly. Add an explicit host-scoped root redirect before the existing wildcard. This is an isolated local candidate, not a completed deployment. See docs/APEX-HOMEPAGE-ASSET-FAILURE.md.
+
+## November 2, 2026 - DOC-001 / UX-008 preview preparation
+
+- Founder authorizes the next preparation step: inspect deep links, integrate current main and prepare a review preview. This does not approve the production merge.
+- Merged main ea73348 normally, preserving both continuity records. Fresh full verify with native Redis and required Redis modes passes. Existing PDF and browser layout evidence remains applicable: production changes since the candidate are the isolated root redirect, its regression and records.
+- Bare-domain Play still returns 200; Learn points to Study, not /learn/. Keep directory routing remediation separate; retain #227 routing/security configuration in the whitepaper/timer batch. Exact published PR/head and preview acceptance follow in the PR record.
+
+## November 2, 2026 - UX-010 directory redirect follow-up
+
+- Founder authorizes checking deep links and preparing the next review preview. #227 homepage release is merged/deployed and accepted as working; separate Play/Study trailing-slash links still serve apex HTML.
+- Official Vercel routing compiler uses strict path matching: the slashless wildcard excludes `/` and directory trailing slashes. Add a host-scoped slash-ending wildcard after the explicit homepage rule and before the existing fallback. Preserve all headers and handlers.
+- Candidate remains separate from DOC-001/UX-008 PR #228. Compiled-path checks, existing redirect regression and continuity/security/site verification precede draft publication. Production approval and actual apex acceptance remain pending.
+
+- Validation complete: 725 HQ tests and nine signer checks, zero failures/skips; 311 security assertions and all supporting checks. Eight official-compiler path targets match; no www loop, no header/handler/rewrite/preexisting-redirect change. Exact-head PR/CI/preview evidence will be retained in the PR description; actual apex/query acceptance follows only an approved production release.
+
+## November 2, 2026 - approved #229 / #228 release integration
+
+- Founder explicitly approves merging both reviewed PRs. #229 merged first as 65ddeb3; exact-head security and previews passed, no reviews/threads, production dpl_HzDZDHSv8WJg4vnDKu4UfeBG3KBr READY.
+- Integrate that main normally into #228, preserving both project records and regenerating continuity views. No feature change during reconciliation. Recheck full local verification and published-head CI before the authorized second merge. PR descriptions retain the final merge, deployment and live acceptance evidence.
+
+- Assembled local verification passed: 725 HQ tests + nine signer checks, zero failures/skips, 311 security assertions and all supporting checks. Production #229 probes confirm exact canonical redirects and query preservation on root, Play, Study and nested sources; www Play is 200 without a loop. Physical-phone rendering remains separate.
+
+## November 2, 2026 - DOC-002 homepage document discovery
+
+- Founder requests Whitepaper/Litepaper links on the front page and a Contributors button so visitors and crawlers can reach the project material. The screenshot identifies the homepage footer.
+- Add native visible links below the hero and in the footer. Contributors opens the existing public Hall of Thanks, which includes static builder credits and participation paths. Existing approved community credits continue to load separately through the public client; no names or application details are republished.
+- Permit whitepaper indexing through the maintained metadata and canonical sitemap; preserve API/operator crawler exclusions, security headers and all economic holds. Correct the stale v0.1 litepaper cross-link to v1.0. No claim of acceptance, ranking or a grade by an external crawler is implied.
+- #228 merged as 755a6ce with exact checked tree ccb623f; production dpl_6ZfPQhr8dYP6UKTUFrHHe25HrErU READY and seven exact-byte delivery checks passed. DOC-002 is a separate review batch.
+
+- Validation: all six native homepage links are outside closed disclosures; target metadata, canonical paths and sitemap membership pass. Whitepaper/site/continuity/repository checks, 311 security assertions and whitespace checks pass. Full backend/signer suites not rerun for this low-impact presentation/metadata change; exact-head remote CI and preview verification follow.
+
+## November 2, 2026 - SEC-010 assembled private-bank review
+
+- Founder approves starting combined review, reconciliation and testing of #200/#206/#207/#213; no main cutover is authorized. Merge current main 12a0228 and all four pinned draft heads normally in an isolated review branch. Preserve current question files, public docs/buttons, timer, artwork, headers and routing.
+- Fix bank-tool JSON parser error snippets and enforce the already-required concept ID in tooling. Update only fake templates/manifest and add two synthetic regressions. Stabilize the existing XP comparison by freezing its synthetic clock; game formulas are unchanged.
+- Full native-Redis verify: 893 HQ tests (892 pass, zero fail, one root-only permission skip) and nine signer checks, with all supporting checks and 311 security assertions passing. Non-root execution is unavailable in this runner; remote normal-user CI remains separate evidence.
+- Metadata-only readiness review finds a missing immutable source pin, distinct linked Preview/Production storage and disabled Preview reward/signing flags. #206 blocks Preview ranked writes; December start also clamps November private runs to Season 1. Keep these rollout gates explicit; no setting is changed and no real private question is read.
+- Detailed disposition, source inputs, known limits and next action: docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md. Publish only a separate draft assembly review into #200, with original PRs and production unchanged.

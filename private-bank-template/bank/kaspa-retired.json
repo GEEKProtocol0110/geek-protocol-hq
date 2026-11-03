@@ -5,7 +5,7 @@
       "category": "kaspa",
       "subcategory": "Example topic",
       "difficulty": "easy",
-      "prompt": "EXAMPLE \u2014 Fake kaspa easy question number 90 (retired). Which option is labeled 'Example answer'?",
+      "prompt": "EXAMPLE — Fake kaspa easy question number 90 (retired). Which option is labeled 'Example answer'?",
       "options": [
         "Example distractor A",
         "Example answer",
@@ -19,7 +19,8 @@
       "reviewedAt": "2026-11-01",
       "example": true,
       "retiredReason": "rotation",
-      "retiredAt": "2026-11-15"
+      "retiredAt": "2026-11-15",
+      "conceptId": "example-kaspa-retired-01"
     }
   ]
 }

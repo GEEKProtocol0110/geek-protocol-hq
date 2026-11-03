@@ -16,6 +16,7 @@ The `TEMPLATE` marker file makes the tooling enforce example-only rows here.
 
 Categories: the keys of `categoryFiles` in `server/question-categories.js`.
 IDs: `PRK-<CAT>-<YYYYMM>-<NNNN>`, never reused (also across retired rows).
+Every active and retired row requires a non-empty `conceptId` for duplicate screening and concept-level retirement.
 
 ## Workflow (run from a checkout of this public repo)
 

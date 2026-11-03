@@ -96,7 +96,7 @@ Fields checked by `scripts/private-bank.mjs` [#200-DEP]:
 | `reviewStatus` | `source-checked` (required for ranked rows) |
 | `reviewedAt` | `YYYY-MM-DD` |
 | `retiredReason`, `retiredAt` | retired files only |
-| `conceptId` | **required on every row** (decided; #200 currently treats it as optional). The 24-hour exposure retirement in §8 retires by `conceptId`, so it cannot be missing |
+| `conceptId` | **required on every row** (enforced by the assembled review tooling). The 24-hour exposure retirement in §8 retires by `conceptId`, so it cannot be missing |
 
 Process-only fields live in a **separate private review file** in the private
 repo, keyed by row ID (decided). #200's row format is unchanged:

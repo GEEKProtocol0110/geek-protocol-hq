@@ -6,6 +6,7 @@ import { isValidKaspaTestnetAddress, normalizeKaspaAddress } from './kaspa-addre
 import { loadQuestionBank } from './questions.js';
 import { redis, rateLimit } from './redis.js';
 import { recordAuditEvent } from './audit.js';
+import { activeRunKeyFor, runKeyFor } from './ranked-state.js';
 
 const HASH = /^[a-f0-9]{64}$/;
 const VERSION = /^[a-f0-9]{24}$/;
@@ -52,7 +53,7 @@ export function verifiedPilotRun(raw, id, sessionId) {
   let run;
   try { run = JSON.parse(raw); } catch { throw new Error('TESTNET_RUN_INVALID'); }
   const bank = loadQuestionBank('kaspa');
-  if (!run || run.id !== id || run.sessionId !== sessionId || run.status !== 'finished' || run.mode !== 'daily' || run.category !== 'kaspa' ||
+  if (!run || run.id !== id || run.sessionId !== sessionId || run.status !== 'finished' || run.unranked || run.mode !== 'daily' || run.category !== 'kaspa' ||
       run.completedRound !== 1 || run.questionCount !== 5 || run.questionIndex !== 4 || !Array.isArray(run.roundQuestionIds) || run.roundQuestionIds.length !== 5 ||
       new Set(run.roundQuestionIds).size !== 5 || !run.roundQuestionIds.every(id => bank.byId.get(id)?.reviewStatus === 'source-checked') ||
       !Array.isArray(run.roundAnswers) || run.roundAnswers.length !== 5 || run.roundAnswers.some(a => typeof a?.correct !== 'boolean') ||
@@ -104,11 +105,11 @@ const RUN_WINDOW_LUA = `-- geek-testnet-run-window-v1
 if redis.call('GET', KEYS[1]) ~= ARGV[1] then return {} end
 return {redis.call('GET', KEYS[2]) or '', redis.call('PTTL', KEYS[2])}`;
 const latestPilotRun = async req => {
-  const session = await requireSession(req), activeKey = `geek:ranked:active:${session.id}`;
+  const session = await requireSession(req), activeKey = activeRunKeyFor(session.id);
   const id = await redis('GET', activeKey);
   const base = { playerName: session.name, state: 'missing' };
   if (!RUN.test(id || '')) return base;
-  const snapshot = await redis('EVAL', RUN_WINDOW_LUA, 2, activeKey, `geek:run:${id}`, id);
+  const snapshot = await redis('EVAL', RUN_WINDOW_LUA, 2, activeKey, runKeyFor(id), id);
   if (!Array.isArray(snapshot)) throw new Error('TESTNET_RECORD_INVALID');
   if (!snapshot.length || !snapshot[0] || !Number.isSafeInteger(snapshot[1]) || snapshot[1] <= 0) return base;
   let proof;
@@ -142,14 +143,14 @@ export async function testnetRewardsHandler(req, res) {
     const body = parseBody(req);
     if (body.action === 'queue') {
       if (Object.keys(body).some(k => !['action', 'runId', 'recipient'].includes(k)) || !RUN.test(body.runId || '') || !isValidKaspaTestnetAddress(body.recipient)) throw new Error('INVALID_REQUEST');
-      const session = await requireSession(req), raw = await redis('GET', `geek:run:${body.runId}`);
+      const session = await requireSession(req), raw = await redis('GET', runKeyFor(body.runId));
       const proof = verifiedPilotRun(raw, body.runId, session.id);
       await checkAsset(config);
       const id = fingerprint(['testnet-pilot-v1', body.runId]), createdAt = Date.now();
       const record = { schema: 1, id, version: randomBytes(12).toString('hex'), state: 'queued', network: config.network, configFingerprint: config.fingerprint,
         ticker: config.ticker, deploymentHash: config.deploymentHash, sender: config.sender, recipient: normalizeKaspaAddress(body.recipient), amount: config.amount, decimals: config.decimals, proof, createdAt };
       await recordAuditEvent({ type: 'testnet.reward.queue.requested', actorType: 'owner-session', actorId: clientFingerprint(req), objectType: 'testnet-reward', objectId: id, outcome: 'success', reason: 'owner-pilot', details: { mainnet: false } });
-      const saved = await redis('EVAL', QUEUE_LUA, 4, `geek:run:${body.runId}`, `geek:testnet-reward:run:${body.runId}`, testnetRewardKey(id), testnetRewardIndex, raw, id, JSON.stringify(record), createdAt);
+      const saved = await redis('EVAL', QUEUE_LUA, 4, runKeyFor(body.runId), `geek:testnet-reward:run:${body.runId}`, testnetRewardKey(id), testnetRewardIndex, raw, id, JSON.stringify(record), createdAt);
       if (saved === 'CHANGED' || saved === 'FULL') throw new Error('TESTNET_STATE_CHANGED');
       if (saved !== id) throw new Error('TESTNET_RECORD_INVALID');
       const committed = decode(await redis('GET', testnetRewardKey(id)), id);

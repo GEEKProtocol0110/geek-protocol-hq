@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-10-30. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-11-02. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -10,24 +10,24 @@ Record date: 2026-10-30. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,338 active ranked-eligible questions, plus 100 practice-only unranked draft questions (not ranked-eligible, not source-checked); 876 recorded internal source reviews; 7,124 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,228 active ranked-eligible questions, plus 210 practice-only unranked draft questions (not ranked-eligible, not source-checked); 800 recorded internal source reviews; 7,200 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
 | Kaspa | 866 | 766 | 234 |
 | Video games | 601 | 0 | 1000 |
-| Science fiction | 514 | 37 | 963 |
+| Science fiction | 514 | 0 | 1000 |
 | Technology | 1485 | 19 | 981 |
 | Movies | 1490 | 5 | 995 |
 | History | 1502 | 9 | 991 |
-| Comics | 413 | 40 | 960 |
-| Pop culture | 1567 | 0 | 1000 |
+| Comics | 412 | 1 | 999 |
+| Pop culture | 1568 | 0 | 1000 |
 
 ## Current work and pickup
 
-**SEC-010: in-progress.** Unmerged #200 private ranked-bank rollout preparation: fix current-season boards and deferred reconnect feedback. #180 and #198 merged/deployed; Technology OS work remains paused in a separate worktree.
+**BANK-009: active.** BANK-009: #208 Technology corrections merged; #209 History/Comics final integration removes the overlapping Joker objective while retaining historical grading, practice-only replacements and unresolved-authorship holds. Independent/full-bank acceptance remains open.
 
-Next task: **SEC-010**. Finish the unmerged #200 browser fixes and required verification. Then provision the separate private bank and read-only access, author reviewed new-ID questions, and validate the restricted Preview before cutover. Do not enable the exposed-bank production override.
+Next task: **BANK-009**. Complete the corrected #209 integration with fresh exact-head checks, then continue the remaining BANK-009 factual, semantic, category and authorship audit. Preserve all historical grading and keep new drafts practice-only. Private-ranked-bank end-to-end and UX acceptance remain separate cutover gates.
 
 ## Holds
 

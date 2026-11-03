@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-28",
+  "updatedAt": "2026-11-02",
   "records": [
     {
       "id": "DR-001",
@@ -387,6 +387,19 @@
         "server/question-audit/technology-2026-10-28.json"
       ],
       "recordedAt": "2026-10-28",
+      "supersedes": null
+    },
+    {
+      "id": "DR-031",
+      "status": "founder-direction",
+      "title": "Create the whitepaper and center the question timer behind glass answers",
+      "decision": "Draft a full whitepaper alongside the existing litepaper. Move the live Play timer to the center behind four translucent answer panels, preserving game authority and accessibility. Draft preparation does not approve release, economic activation or private-bank cutover.",
+      "basis": "Founder November 2 asks for the first whitepaper and a timer directly in the middle of the four answers, behind glass-like panels.",
+      "evidence": [
+        "docs/WHITEPAPER.md",
+        "docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md"
+      ],
+      "recordedAt": "2026-11-02",
       "supersedes": null
     }
   ]

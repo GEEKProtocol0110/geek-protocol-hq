@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { cpSync, mkdtempSync, readFileSync, writeFileSync, rmSync, readdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
+import { spawnSync } from 'node:child_process';
 import { join } from 'node:path';
 import test from 'node:test';
 import { buildDocument, buildManifest, checkBank, readBankDir, verifyManifest, EXAMPLE_PREFIX } from '../scripts/private-bank.mjs';
@@ -32,6 +33,31 @@ test('schema check rejects malformed rows and real rows in template / example ro
     for (const needle of ['correctIndex', 'options must be distinct', 'id must match', 'template rows must have', 'active rows must not carry', 'retired rows need']) assert.match(msgs, new RegExp(needle));
     assert.match(checkBank(TEMPLATE).errors.join('\n'), /example rows are not allowed/);
   } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test('concept-level retirement requires a non-empty string conceptId on active and retired rows', () => {
+  const dir = copy();
+  try {
+    edit(dir, 'kaspa.json', qs => { delete qs[0].conceptId; qs[1].conceptId = '  '; qs[2].conceptId = 3; });
+    edit(dir, 'kaspa-retired.json', qs => { delete qs[0].conceptId; });
+    const errors = checkBank(dir, { template: true }).errors;
+    assert.equal(errors.filter(e => e.includes('conceptId must be a non-empty string')).length, 4);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test('bank CLI never echoes malformed bank or manifest source text', () => {
+  const canary = 'SYNTHETIC_BANK_CANARY_DO_NOT_LOG';
+  const script = new URL('../scripts/private-bank.mjs', import.meta.url).pathname;
+  for (const filename of ['bank/kaspa.json', 'manifest.json']) {
+    const dir = copy();
+    try {
+      writeFileSync(join(dir, filename), canary + '{"questions":[]');
+      const run = spawnSync(process.execPath, [script, 'check', dir, '--template'], { encoding: 'utf8' });
+      assert.equal(run.status, 1);
+      assert.match(run.stderr, /(?:kaspa|manifest)\.json: invalid JSON/);
+      assert.ok(!`${run.stdout}${run.stderr}`.includes(canary));
+    } finally { rmSync(dir, { recursive: true, force: true }); }
+  }
 });
 
 test('duplicate check catches ids (incl. retired), prompts, conceptIds and exposed public prompts', () => {

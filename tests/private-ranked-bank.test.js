@@ -1,11 +1,12 @@
 import test from 'node:test';
+import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { cachedBankVersions, decodeBankDocument, loadRankedSource, loadRankedSourceVersion, pinnedUrl, rankedSourceMode, readUrlBanks, resetRankedSourceCache } from '../server/question-source.js';
 import { SEASONS, isExposedQuestion, loadQuestionBank, loadRankedBank, questionById, rankedRunBinding, seasonFor, selectRoundQuestionIds } from '../server/questions.js';
-import { SEASON_LABELS } from '../server/leaderboard.js';
+import { leaderboardSeasonLabel } from '../server/seasons.js';
 
 const KEYS = ['GEEK_PRIVATE_QUESTION_DIR', 'GEEK_PRIVATE_QUESTION_REF', 'GEEK_PRIVATE_QUESTION_URL', 'GEEK_PRIVATE_QUESTION_TOKEN', 'GEEK_RANKED_QUESTION_SOURCE', 'GEEK_RANKED_ALLOW_EXPOSED', 'VERCEL_ENV', 'NODE_ENV'];
 const withEnv = async (values, run) => {
@@ -83,7 +84,7 @@ test('private directory bank feeds ranked play and grades private and retired ID
     assert.equal(isExposedQuestion(q), false);
     const retired = JSON.parse(readFileSync(join(process.cwd(), 'server', 'questions', 'history-retired.json'), 'utf8')).questions[0];
     assert.equal((await questionById('history', retired.id)).correctIndex, retired.correctIndex);
-    await assert.rejects(selectRoundQuestionIds('kaspa', 1, [], '', { ranked: true }), /QUESTION_POOL_EXHAUSTED/, 'a category without private rows does not fall back to exposed rows');
+    await assert.rejects(selectRoundQuestionIds('kaspa', 1, [], '', { ranked: true }), /RANKED_BANK_UNAVAILABLE/, 'a category without private rows does not fall back to exposed rows');
   });
 });
 
@@ -209,7 +210,7 @@ test('seasons: legacy runs are Season 0 — Public-bank Alpha with a separate pr
   assert.equal(seasonFor({}).label, 'Season 0 — Public-bank Alpha');
   assert.equal(seasonFor({}).leaderboard, 'legacy');
   assert.equal(seasonFor({ season: 'season-1' }).leaderboard, 'season-1');
-  assert.equal(SEASON_LABELS.legacy, SEASONS['season-0'].label);
+  assert.equal(leaderboardSeasonLabel('legacy'), SEASONS['season-0'].label);
   await withEnv({}, async () => assert.equal((await rankedRunBinding()).season, 'season-0'));
   const leaderboard = readFileSync(join(process.cwd(), 'server', 'leaderboard.js'), 'utf8');
   assert.match(leaderboard, /'legacy' \? 'geek:leaderboard' : `geek:leaderboard:\$\{cleanSeason\(season\)\}`/, 'legacy keys preserved; private season separate');
@@ -251,4 +252,41 @@ test('runs without a feedback setting default to deferred; per-player start limi
   assert.match(source, /const hidden = deferredFeedback\(run\) && !roundResult;/);
   assert.doesNotMatch(source, /run\.feedback === 'deferred'/);
   assert.match(source, /rateLimit\('ranked-start-player', playerId, RANKED_START_PLAYER_LIMIT\.maximum, RANKED_START_PLAYER_LIMIT\.seconds\)/);
+});
+
+test('production/preview refuse non-Contents URLs unless GEEK_PRIVATE_QUESTION_SHA256 matches the fetched bytes', async () => {
+  const doc = bankDoc('HSHA');
+  const sha = createHash('sha256').update(Buffer.from(doc)).digest('hex');
+  const blob = 'https://fake-bank.invalid/bank.json';
+  let fetches = 0;
+  const fetch = async () => { fetches += 1; return jsonResponse(doc); };
+  for (const VERCEL_ENV of ['production', 'preview']) {
+    for (const url of [blob, 'https://raw.githubusercontent.com/fake-owner/fake-private-bank/main/bank.json', 'https://api.github.com/repos/fake-owner/fake-private-bank/git/blobs/abc']) {
+      resetRankedSourceCache(); fetches = 0;
+      await assert.rejects(loadRankedSource({ VERCEL_ENV, GEEK_PRIVATE_QUESTION_URL: url, GEEK_PRIVATE_QUESTION_REF: SHA_A }, { fetch }), (e) => e.message === 'RANKED_BANK_UNAVAILABLE' && e.reason === 'PRIVATE_BANK_URL_UNPINNED');
+      assert.equal(fetches, 0, 'refused before any fetch');
+    }
+    resetRankedSourceCache();
+    await assert.rejects(loadRankedSource({ VERCEL_ENV, GEEK_PRIVATE_QUESTION_URL: blob, GEEK_PRIVATE_QUESTION_SHA256: '0'.repeat(64) }, { fetch }), (e) => e.message === 'RANKED_BANK_UNAVAILABLE' && e.reason === 'PRIVATE_BANK_SHA256_MISMATCH');
+    resetRankedSourceCache();
+    await assert.rejects(loadRankedSource({ VERCEL_ENV, GEEK_PRIVATE_QUESTION_URL: blob, GEEK_PRIVATE_QUESTION_SHA256: 'abc' }, { fetch }), (e) => e.reason === 'PRIVATE_BANK_SHA256_INVALID');
+    resetRankedSourceCache();
+    const ok = await loadRankedSource({ VERCEL_ENV, GEEK_PRIVATE_QUESTION_URL: blob, GEEK_PRIVATE_QUESTION_SHA256: sha.toUpperCase(), GEEK_PRIVATE_QUESTION_REF: SHA_A }, { fetch });
+    assert.equal(ok.version, `sha256:${sha}`, 'a REF that cannot pin the fetch never labels the version');
+    assert.equal(ok.banks.history.length, 36);
+  }
+  // Contents API: REF still required, and an optional SHA256 is verified too.
+  const contents = 'https://api.github.com/repos/fake-owner/fake-private-bank/contents/bank.json';
+  resetRankedSourceCache();
+  await assert.rejects(loadRankedSource({ VERCEL_ENV: 'production', GEEK_PRIVATE_QUESTION_URL: contents }, { fetch }), /PRIVATE_BANK_REF_REQUIRED/);
+  resetRankedSourceCache();
+  await assert.rejects(loadRankedSource({ VERCEL_ENV: 'production', GEEK_PRIVATE_QUESTION_URL: contents, GEEK_PRIVATE_QUESTION_REF: SHA_A, GEEK_PRIVATE_QUESTION_SHA256: 'f'.repeat(64) }, { fetch }), (e) => e.reason === 'PRIVATE_BANK_SHA256_MISMATCH');
+  resetRankedSourceCache();
+  assert.equal((await loadRankedSource({ VERCEL_ENV: 'production', GEEK_PRIVATE_QUESTION_URL: contents, GEEK_PRIVATE_QUESTION_REF: SHA_A }, { fetch })).version, `git:${SHA_A}`);
+  // Through the ranked flow the refusal is the 503 RANKED_BANK_UNAVAILABLE code and never falls back.
+  await withEnv({ VERCEL_ENV: 'production', GEEK_PRIVATE_QUESTION_URL: blob, GEEK_PRIVATE_QUESTION_REF: SHA_A }, async () => {
+    await assert.rejects(rankedRunBinding(), /^Error: RANKED_BANK_UNAVAILABLE$/);
+    await assert.rejects(selectRoundQuestionIds('history', 1, [], '', { ranked: true }), /RANKED_BANK_UNAVAILABLE/);
+  });
+  resetRankedSourceCache();
 });

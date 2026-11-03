@@ -6,7 +6,8 @@ import {clientFixture} from './helpers/client-fixture.js';
 const home=readFileSync(new URL('../public/index.html',import.meta.url),'utf8');
 const welcome=readFileSync(new URL('../public/assets/welcome.js',import.meta.url),'utf8');
 const decode=value=>value.replaceAll('&amp;','&');
-const hero=home.slice(home.indexOf('<section class="hero"'),home.indexOf('<section class="home-first-steps"'));
+const heroStart=home.indexOf('<section class="hero"');
+const hero=home.slice(heroStart,home.indexOf('</section>',heroStart)+'</section>'.length);
 const actions=[...hero.matchAll(/<a class="button ([^"]+)" href="([^"]+)"/g)];
 
 test('the first actions go directly to Daily Signal and the beginner Kaspa lesson without a setup detour',()=>{

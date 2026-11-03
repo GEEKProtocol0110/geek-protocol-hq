@@ -4,6 +4,15 @@ const find = selector => dashboard?.querySelector(selector);
 const badge = find('[data-testnet-badge]'), details = find('[data-testnet-details]');
 const checked = find('[data-testnet-checked]'), reload = find('[data-testnet-refresh]');
 let timer, controller, generation = 0, followUp = false;
+// UX-only hint: the automatic status read runs only after this browser has seen a sign-in
+// (or a successful read), so signed-out and unknown visitors make no request and log no 401.
+// It never grants access; the server still authorizes every request.
+const sessionHintKey = 'geek-session-hint';
+const hint = {
+  signedIn() { try { return localStorage.getItem(sessionHintKey) === 'signed-in'; } catch { return true; } },
+  set() { try { localStorage.setItem(sessionHintKey, 'signed-in'); } catch { /* Storage is optional. */ } },
+  clear() { try { localStorage.removeItem(sessionHintKey); } catch { /* Storage is optional. */ } },
+};
 const clearPanel = () => {
   if (panel) { panel.hidden = true; panel.textContent = ''; }
   if (dashboard) { dashboard.hidden = true; details.replaceChildren(); checked.textContent = ''; badge.textContent = ''; }
@@ -33,8 +42,9 @@ const suspend = () => {
   generation += 1; controller?.abort(); controller = null; followUp = false;
   clearTimeout(timer); clearPanel();
 };
-async function refresh() {
+async function refresh({ automatic = false } = {}) {
   if (!panel || document.hidden) return;
+  if (automatic && !hint.signedIn()) { clearPanel(); return; }
   if (controller) { followUp = true; return; }
   clearTimeout(timer); const version = generation, request = new AbortController(); controller = request;
   if (dashboard) { reload.disabled = true; dashboard.setAttribute('aria-busy', 'true'); }
@@ -43,8 +53,9 @@ async function refresh() {
   try {
     const response = await fetch('/api/rewards/?service=testnet', { credentials: 'same-origin', cache: 'no-store', signal: request.signal });
     if (version !== generation) return;
-    if (response.status === 401 || response.status === 403) { retry = false; clearPanel(); return; }
+    if (response.status === 401 || response.status === 403) { retry = false; hint.clear(); clearPanel(); return; }
     if (!response.ok) throw new Error('STATUS_UNAVAILABLE');
+    hint.set();
     const payload = await response.json();
     if (version !== generation) return;
     if (!payload.ok || !Array.isArray(payload.records)) throw new Error('STATUS_UNAVAILABLE');
@@ -83,16 +94,16 @@ async function refresh() {
       controller = null;
       if (dashboard) { reload.disabled = false; dashboard.setAttribute('aria-busy', 'false'); }
       if (followUp) { followUp = false; refresh(); }
-      else if (retry && !document.hidden) timer = setTimeout(refresh, 15000);
+      else if (retry && !document.hidden) timer = setTimeout(() => refresh({ automatic: true }), 15000);
     }
   }
 }
-window.addEventListener('geek:run-saved', refresh);
-for (const name of ['geek:signed-in', 'geek:passkey-signed-in', 'geek:device-signed-in']) document.addEventListener(name, () => { suspend(); refresh(); });
-document.addEventListener('geek:signed-out', suspend);
-window.addEventListener('geek:receiving-address-saved', refresh);
-reload?.addEventListener('click', refresh);
+window.addEventListener('geek:run-saved', () => refresh());
+for (const name of ['geek:signed-in', 'geek:passkey-signed-in', 'geek:device-signed-in']) document.addEventListener(name, () => { suspend(); hint.set(); refresh(); });
+document.addEventListener('geek:signed-out', () => { suspend(); hint.clear(); });
+window.addEventListener('geek:receiving-address-saved', () => refresh());
+reload?.addEventListener('click', () => refresh());
 window.addEventListener('pagehide', suspend);
-window.addEventListener('pageshow', event => { if (event.persisted) refresh(); });
-document.addEventListener('visibilitychange', () => { if (document.hidden) suspend(); else refresh(); });
-refresh();
+window.addEventListener('pageshow', event => { if (event.persisted) refresh({ automatic: true }); });
+document.addEventListener('visibilitychange', () => { if (document.hidden) suspend(); else refresh({ automatic: true }); });
+refresh({ automatic: true });

@@ -271,7 +271,7 @@
       ],
       "correctIndex": 0,
       "difficulty": "medium",
-      "funFact": "Silverscript lets developers describe state and transition policy, then compiles the supporting script checks. Tooling and release status still need review for a particular deployment.",
+      "funFact": "Silverscript lets developers describe state and transition policy, then compiles the supporting script checks. Silverscript v1.0.0 was tagged on Sep 9, 2026; check the audit status in the Kaspa docs before relying on it for a deployment.",
       "tags": [
         "kaspa",
         "silverscript",
