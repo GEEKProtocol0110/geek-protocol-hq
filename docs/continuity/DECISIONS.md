@@ -303,3 +303,13 @@ Apply BANK-009 to a risk-selected Technology sample. Retire unrelated clinical/f
 Basis: DR-029 and the maintained next action authorize thorough category/context and factual review. This is the maintainer’s scoped implementation choice, not a new founder taxonomy approval or full-bank certification.
 
 Evidence: [docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md), [server/question-audit/technology-2026-10-28.json](../../server/question-audit/technology-2026-10-28.json).
+
+## DR-031: Create the whitepaper and center the question timer behind glass answers
+
+**founder-direction** · 2026-11-02.
+
+Draft a full whitepaper alongside the existing litepaper. Move the live Play timer to the center behind four translucent answer panels, preserving game authority and accessibility. Draft preparation does not approve release, economic activation or private-bank cutover.
+
+Basis: Founder November 2 asks for the first whitepaper and a timer directly in the middle of the four answers, behind glass-like panels.
+
+Evidence: [docs/WHITEPAPER.md](../../docs/WHITEPAPER.md), [docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md](../../docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md).

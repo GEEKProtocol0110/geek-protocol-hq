@@ -55,8 +55,10 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CHAIN-004 | P0 | needs-evidence | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
 | CHAIN-005 | P1 | needs-evidence | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
 | AUTH-004 | P0 | needs-evidence | Secure Geek account access and wallet-neutral receiving addresses | Maintainer; founder controls bounded pilot approval and actual-device acceptance |
+| DOC-001 | P1 | in-progress | Prepare the full Geek Protocol whitepaper for founder publication review | Maintainer; founder reviews publication |
+| UX-008 | P1 | in-progress | Center the question timer behind four glass answer panels | Maintainer; founder accepts device presentation |
 | UX-009 | P0 | in-progress | Redirect the apex homepage before its assets cross origins | Maintainer; founder approves release |
-| UX-010 | P0 | in-progress | Redirect trailing-slash apex page links to the canonical host | Maintainer; founder approves production merge |
+| UX-010 | P0 | needs-evidence | Redirect trailing-slash apex page links to the canonical host | Maintainer; founder approves production merge |
 
 ## CONT-001: Publish the continuation system
 
@@ -790,6 +792,34 @@ Acceptance:
 
 Evidence/specification: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRST-ONBOARDING.md), [public/sign-in/index.html](../../public/sign-in/index.html), [public/assets/wallet.js](../../public/assets/wallet.js), [server/testnet-automatic.js](../../server/testnet-automatic.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [public/assets/session-access.js](../../public/assets/session-access.js), [tests/session-access-client.test.js](../../tests/session-access-client.test.js), [tests/sign-in-state.test.js](../../tests/sign-in-state.test.js), [docs/KASWARE-MOBILE-CONNECTION.md](../../docs/KASWARE-MOBILE-CONNECTION.md), [docs/ACCOUNT-RECEIVING-ADDRESSES.md](../../docs/ACCOUNT-RECEIVING-ADDRESSES.md), [server/reward-addresses.js](../../server/reward-addresses.js), [public/assets/receiving-address.js](../../public/assets/receiving-address.js), [tests/receiving-address-client.test.js](../../tests/receiving-address-client.test.js), [tests/passkeys.test.js](../../tests/passkeys.test.js).
 
+## DOC-001: Prepare the full Geek Protocol whitepaper for founder publication review
+
+**P1 / in-progress.** Owner: Maintainer; founder reviews publication. Dependencies: none.
+
+Next action: Complete the founder-approved #228 merge after fresh assembled-head checks; verify production and record physical-phone acceptance separately.
+
+Acceptance:
+
+- Whitepaper covers the learning model, canonical architecture, content integrity, economy, security, governance and launch criteria.
+- Current implementation, pending proposals and independent acceptance remain distinct.
+- Printable and web editions derive from the same Markdown source.
+
+Evidence/specification: [docs/WHITEPAPER.md](../../docs/WHITEPAPER.md), [scripts/whitepaper.mjs](../../scripts/whitepaper.mjs), [public/whitepaper/index.html](../../public/whitepaper/index.html), [docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md](../../docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md).
+
+## UX-008: Center the question timer behind four glass answer panels
+
+**P1 / in-progress.** Owner: Maintainer; founder accepts device presentation. Dependencies: none.
+
+Next action: Complete the founder-approved #228 merge after fresh assembled-head checks; verify production and record physical-phone acceptance separately.
+
+Acceptance:
+
+- A single live timer is centered behind a two-by-two answer grid at desktop and phone widths.
+- Answer text, keyboard input, focus and click targets remain usable; long options do not overflow.
+- Existing server timing, scoring and answer handling remain unchanged.
+
+Evidence/specification: [public/play/index.html](../../public/play/index.html), [public/play/assets/game.css](../../public/play/assets/game.css), [docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md](../../docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md).
+
 ## UX-009: Redirect the apex homepage before its assets cross origins
 
 **P0 / in-progress.** Owner: Maintainer; founder approves release. Dependencies: none.
@@ -806,9 +836,9 @@ Evidence/specification: [docs/APEX-HOMEPAGE-ASSET-FAILURE.md](../../docs/APEX-HO
 
 ## UX-010: Redirect trailing-slash apex page links to the canonical host
 
-**P0 / in-progress.** Owner: Maintainer; founder approves production merge. Dependencies: none.
+**P0 / needs-evidence.** Owner: Maintainer; founder approves production merge. Dependencies: none.
 
-Next action: Verify the separate draft PR and preview, obtain production merge approval, then confirm Play/Study and nested paths preserve query strings at www.
+Next action: Record actual phone deep-link rendering acceptance; production path/query HTTP checks passed.
 
 Acceptance:
 
