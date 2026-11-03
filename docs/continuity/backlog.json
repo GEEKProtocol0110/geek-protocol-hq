@@ -1388,6 +1388,33 @@
         "Founder approved merge. #229 merged as 65ddeb3281cc85b28e5cee4f3a91ebb90f7826cc after exact-head Security verification 41559430546 and both Vercel previews passed; production dpl_HzDZDHSv8WJg4vnDKu4UfeBG3KBr READY on the merge. Live canonical checks follow separately.",
         "Production after #229: root, Play, Study and nested sources return exact 308 www locations, preserving daily mode and a multi-parameter URL with an encoded space. Canonical www Play returns 200 without a loop. Physical-phone acceptance remains separate."
       ]
+    },
+    {
+      "id": "DOC-002",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Expose project documents and contributors on the homepage",
+      "owner": "Maintainer; founder approves merge",
+      "nextAction": "Verify the exact preview, obtain approval for the small publication batch, and confirm live homepage links and indexing signals after deployment.",
+      "acceptance": [
+        "Whitepaper, Litepaper and Contributors have visible native links near the top and in the homepage footer, outside collapsed menus.",
+        "Document and contributor targets are public and reachable from plain HTML without JavaScript.",
+        "Whitepaper permits indexing and appears in the canonical sitemap; robots rules keep API and operator routes excluded.",
+        "Mobile links remain readable and keyboard accessible without horizontal overflow."
+      ],
+      "dependsOn": [
+        "DOC-001"
+      ],
+      "evidence": [
+        "public/index.html",
+        "public/assets/home.css",
+        "docs/site-pages.json",
+        "public/sitemap.xml",
+        "docs/HOMEPAGE-DOCUMENT-DISCOVERY.md"
+      ],
+      "validationEvidence": [
+        "Six native homepage links are outside disclosures; all three targets are public, canonical, indexable and in the sitemap. Metadata, whitepaper, site-link, continuity, repository, 311 security assertions and whitespace checks pass. No game/API/server/header/deployment change. Preview and exact-head CI recorded separately in the PR."
+      ]
     }
   ]
 }
