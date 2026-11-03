@@ -27,3 +27,7 @@ Add an explicit `/` redirect conditioned on the apex host before the existing wi
 Verify the exact preview configuration, deploy the approved scoped change, then confirm the apex root returns 308 and lands on www with loaded CSS and images. Verify page paths and query strings still follow the existing wildcard correctly. Check the actual founder phone path from Vercel. If the old root response persists, investigate provider cache or a project-level domain redirect; do not claim this candidate is a proven production fix.
 
 No live configuration, repository push, merge or deployment was performed during this diagnosis. Current www is a working interim entry point.
+
+## Release verification
+
+Founder authorized push and merge. PR #227 first run exposed the older regression assertion that only one apex rule exists; update it to verify the explicit root followed by the unchanged wildcard, with no www loop. Full local verify then passed: 725 HQ tests and nine signer checks, zero failures/skips, and all supporting checks. Final remote CI and production verification follow against the updated head.
