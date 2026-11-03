@@ -1024,3 +1024,10 @@ Founder screenshots show unstyled HTML and broken images after opening the apex 
 - #228 merged as 755a6ce with exact checked tree ccb623f; production dpl_6ZfPQhr8dYP6UKTUFrHHe25HrErU READY and seven exact-byte delivery checks passed. DOC-002 is a separate review batch.
 
 - Validation: all six native homepage links are outside closed disclosures; target metadata, canonical paths and sitemap membership pass. Whitepaper/site/continuity/repository checks, 311 security assertions and whitespace checks pass. Full backend/signer suites not rerun for this low-impact presentation/metadata change; exact-head remote CI and preview verification follow.
+
+## November 3, 2026 — SEO-002 project facts and search discovery
+
+- **Scope:** founder approved the recommended facts/FAQ, indexation review and outdated-source cleanup batch. Add static `/about/`, visible homepage/footer and README links, matching Organization/AboutPage identity, metadata and sitemap. Keep all financial/security claims bounded by the whitepaper/security statement.
+- **Audit:** ordinary canonical public requests pass; robots allows public pages. The live Alpha README is already corrected, while its search snippet is stale. The older litepaper still serves publicly, but its source project was not found in the connected team. Provider active-firewall inspection returned a scoped 404, so verified crawler access is not established. No console ownership/submission or index status is claimed.
+- **Continuity:** reconcile DOC-002 to the already merged/deployed #230 with exact release/check evidence. Preserve BANK-009 and private-bank review priorities.
+- **Validation/disposition:** site parity (43 pages / 948 local links), whitepaper parity, repository presentation, continuity, 311 security assertions, five homepage tests, a separate initial-HTML discovery/identity audit and whitespace checks pass. Prepare a reviewable candidate; no merge, provider setting, external submission, private-bank cutover or economic activation.

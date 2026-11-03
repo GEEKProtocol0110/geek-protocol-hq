@@ -10,7 +10,7 @@
 
   **A Kaspa onboarding ecosystem built for Proof of Learning.**
 
-  [Live HQ](https://www.geekprotocol.xyz/) · [Play](https://www.geekprotocol.xyz/play/) · [Explore the Grid](https://www.geekprotocol.xyz/collection/) · [Security](https://www.geekprotocol.xyz/security/) · [Documentation](docs/README.md)
+  [Live HQ](https://www.geekprotocol.xyz/) · [Project facts & FAQ](https://www.geekprotocol.xyz/about/) · [Play](https://www.geekprotocol.xyz/play/) · [Explore the Grid](https://www.geekprotocol.xyz/collection/) · [Security](https://www.geekprotocol.xyz/security/) · [Documentation](docs/README.md)
 </div>
 
 ---
