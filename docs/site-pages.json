@@ -60,7 +60,7 @@
       "description": "Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. Explore lessons, free quizzes and community tools. No wallet needed to start.",
       "index": true,
       "private": false,
-      "lastmod": "2026-11-02"
+      "lastmod": "2026-11-03"
     },
     {
       "file": "public/kaspa/index.html",
@@ -387,6 +387,15 @@
       "index": true,
       "private": false,
       "lastmod": "2026-11-02"
+    },
+    {
+      "file": "public/about/index.html",
+      "path": "/about/",
+      "title": "About Geek Protocol: Project Facts & FAQ",
+      "description": "Official Geek Protocol project facts and FAQ: Kaspa learning, current Alpha features, Proof of Learning, GEEK token boundaries, contributors and official links.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-03"
     }
   ]
 }

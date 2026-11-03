@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-02",
+  "updatedAt": "2026-11-03",
   "canonicalRepository": "GEEKProtocol0110/geek-protocol-hq",
   "mission": "A Kaspa onboarding ecosystem built for Proof of Learning. Make knowledge useful through accessible learning, practice, feedback and carefully governed incentives.",
   "founder": "Michael Gee",
@@ -72,8 +72,14 @@
   },
   "documentDiscovery": {
     "task": "DOC-002",
-    "status": "in-progress",
+    "status": "merged-deployed-http-and-browser-verified",
     "evidence": "docs/HOMEPAGE-DOCUMENT-DISCOVERY.md",
-    "nextAction": "Prepare and verify visible document/contributor links and whitepaper indexing; production approval remains separate."
+    "nextAction": "Preserve the live #230 links and indexing policy; SEO-002 adds a facts/FAQ destination."
+  },
+  "searchDiscovery": {
+    "task": "SEO-002",
+    "status": "in-progress",
+    "evidence": "docs/SEARCH-DISCOVERY-REVIEW-2026-11-03.md",
+    "nextAction": "Review the source candidate; verify external indexing through property-owner consoles and identify the historical litepaper owner. No production or bot/security setting changed."
   }
 }

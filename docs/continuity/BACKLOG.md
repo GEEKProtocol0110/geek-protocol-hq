@@ -59,7 +59,8 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-008 | P1 | in-progress | Center the question timer behind four glass answer panels | Maintainer; founder accepts device presentation |
 | UX-009 | P0 | in-progress | Redirect the apex homepage before its assets cross origins | Maintainer; founder approves release |
 | UX-010 | P0 | needs-evidence | Redirect trailing-slash apex page links to the canonical host | Maintainer; founder approves production merge |
-| DOC-002 | P1 | in-progress | Expose project documents and contributors on the homepage | Maintainer; founder approves merge |
+| DOC-002 | P1 | done | Expose project documents and contributors on the homepage | Maintainer; founder approves merge |
+| SEO-002 | P1 | in-progress | Publish clear project facts and verify search discovery | Maintainer prepares source; founder approves merge; verified property owner handles search-console evidence |
 
 ## CONT-001: Publish the continuation system
 
@@ -851,9 +852,9 @@ Evidence/specification: [docs/APEX-HOMEPAGE-ASSET-FAILURE.md](../../docs/APEX-HO
 
 ## DOC-002: Expose project documents and contributors on the homepage
 
-**P1 / in-progress.** Owner: Maintainer; founder approves merge. Dependencies: DOC-001.
+**P1 / done.** Owner: Maintainer; founder approves merge. Dependencies: DOC-001.
 
-Next action: Verify the exact preview, obtain approval for the small publication batch, and confirm live homepage links and indexing signals after deployment.
+Next action: Maintain public links and sitemap; SEO-002 follows with a project facts/FAQ page and indexation evidence.
 
 Acceptance:
 
@@ -863,3 +864,18 @@ Acceptance:
 - Mobile links remain readable and keyboard accessible without horizontal overflow.
 
 Evidence/specification: [public/index.html](../../public/index.html), [public/assets/home.css](../../public/assets/home.css), [docs/site-pages.json](../../docs/site-pages.json), [public/sitemap.xml](../../public/sitemap.xml), [docs/HOMEPAGE-DOCUMENT-DISCOVERY.md](../../docs/HOMEPAGE-DOCUMENT-DISCOVERY.md).
+
+## SEO-002: Publish clear project facts and verify search discovery
+
+**P1 / in-progress.** Owner: Maintainer prepares source; founder approves merge; verified property owner handles search-console evidence. Dependencies: DOC-002.
+
+Next action: Validate the project facts/FAQ candidate and review it for merge. Record Google/Bing indexing and verified crawler evidence separately; identify the owner/source of the earlier litepaper deployment before proposing a redirect.
+
+Acceptance:
+
+- Visible native homepage/footer links lead to a public, canonical, indexable facts/FAQ page in the sitemap.
+- Project identity, live Alpha features, token boundaries, audit status and official profiles agree with published source evidence; no founder personal name is added.
+- All answers remain readable without JavaScript; narrow-screen and keyboard access are checked.
+- Record actual source/crawl findings, provider limits and the remaining console/legacy-deployment actions without claiming indexing, citations or external grading.
+
+Evidence/specification: [public/about/index.html](../../public/about/index.html), [public/about/assets/about.css](../../public/about/assets/about.css), [public/index.html](../../public/index.html), [docs/site-pages.json](../../docs/site-pages.json), [docs/SEARCH-DISCOVERY-REVIEW-2026-11-03.md](../../docs/SEARCH-DISCOVERY-REVIEW-2026-11-03.md).
