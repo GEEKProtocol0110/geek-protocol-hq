@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="491.27559055118115" height="151" preserveAspectRatio="xMinYMin meet" viewBox="0 0 491 151" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="491.27559055118115" height="151"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-151)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="0" y="105" width="491.27559055118115" height="35" rx="4" ry="0" style="stroke: rgb(2%,10%,12%); stroke-linecap: butt; stroke-width: 1; fill: rgb(2%,10%,12%); fill-rule: evenodd;"/>
+			<text x="127.90171129121556" y="118" style="font-family: Bold; font-size: 9px;fill: rgb(100%,100%,100%); stroke:none;" transform="translate(0,236) scale(1,-1)">ELIGIBLE PLATFORM FEE  /  PROPOSED POLICY</text>
+			<path d="M 127.731654,105 L 127.731654,83 Z" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<polygon points="127.7317 83, 124.7317 88, 130.7317 88" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1; fill: rgb(3%,49%,44%); fill-rule: evenodd;"/>
+			<path d="M 373.369449,105 L 373.369449,83 Z" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1.4;"/>
+			<polygon points="373.3694 83, 370.3694 88, 376.3694 88" style="stroke: rgb(3%,49%,44%); stroke-linecap: butt; stroke-width: 1; fill: rgb(3%,49%,44%); fill-rule: evenodd;"/>
+			<rect x="0" y="28" width="314.41637795275597" height="53" rx="6" ry="0" style="stroke: rgb(71%,82%,78%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="91.70525928887798" y="60" style="font-family: Bold; font-size: 10px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,120) scale(1,-1)">70%  /  Reward funding</text>
+			<text x="95.47381397637798" y="43" style="font-family: Body; font-size: 8px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,86) scale(1,-1)">Recycle pending: floor(7F / 10)</text>
+			<rect x="329.15464566929137" y="28" width="162.12094488188978" height="53" rx="6" ry="0" style="stroke: rgb(71%,82%,78%); stroke-linecap: butt; stroke-width: 1; fill: rgb(92%,96%,94%); fill-rule: evenodd;"/>
+			<text x="351.3601376414863" y="60" style="font-family: Bold; font-size: 10px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,120) scale(1,-1)">30%  /  Burn pending</text>
+			<text x="364.9866024852363" y="43" style="font-family: Body; font-size: 8px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,86) scale(1,-1)">Remainder: F - recycle</text>
+			<text x="88.22763902559058" y="8" style="font-family: Body; font-size: 8px;fill: rgb(8%,23%,21%); stroke:none;" transform="translate(0,16) scale(1,-1)">F is the fee portion. Planned allocations require separate settlement evidence.</text>
+		</g>
+	</g>
+</svg>

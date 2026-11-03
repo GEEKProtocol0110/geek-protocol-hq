@@ -55,6 +55,11 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CHAIN-004 | P0 | needs-evidence | Automate eligible Daily GEEKT test rewards | Maintainer; founder controls test funding and device acceptance |
 | CHAIN-005 | P1 | needs-evidence | Recover player reward status after interruptions | Maintainer; founder confirms actual-phone behavior |
 | AUTH-004 | P0 | needs-evidence | Secure Geek account access and wallet-neutral receiving addresses | Maintainer; founder controls bounded pilot approval and actual-device acceptance |
+| DOC-001 | P1 | in-progress | Prepare the full Geek Protocol whitepaper for founder publication review | Maintainer; founder reviews publication |
+| UX-008 | P1 | in-progress | Center the question timer behind four glass answer panels | Maintainer; founder accepts device presentation |
+| UX-009 | P0 | in-progress | Redirect the apex homepage before its assets cross origins | Maintainer; founder approves release |
+| UX-010 | P0 | needs-evidence | Redirect trailing-slash apex page links to the canonical host | Maintainer; founder approves production merge |
+| DOC-002 | P1 | in-progress | Expose project documents and contributors on the homepage | Maintainer; founder approves merge |
 | SEC-010 | P0 | in-progress | Serve future ranked questions and answers from private storage; treat published banks as exposed | Maintainer; founder selects private storage and approves rollout |
 
 ## CONT-001: Publish the continuation system
@@ -105,7 +110,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Continue BANK-009 with another bounded Technology batch, including hardware/OS context (the remaining 32-bit RAM item) and clinical/entertainment imports; then History and Comics. Review each key, all distractors, useful explanation, category, scope, license and provisional difficulty against primary evidence. The twelve-item batch leaves 7,462 factual drafts; retain semantic-overlap checks on reviewed material and every historical key/alias. Independent editing and broader device/multiplayer/provider recovery remain open; Kaspa stays 766 / 234 to target.
+Next action: Complete the corrected #209 integration with fresh exact-head checks, then continue the remaining BANK-009 factual, semantic, category and authorship audit. Preserve all historical grading and keep new drafts practice-only. Private-ranked-bank end-to-end and UX acceptance remain separate cutover gates.
 
 Acceptance:
 
@@ -423,7 +428,7 @@ Evidence/specification: [docs/MINT-AVAILABILITY-ISSUE-14.md](../../docs/MINT-AVA
 
 **P1 / decision-needed.** Owner: Maintainer researches; founder selects policy; independent covenant reviewer unassigned. Dependencies: none.
 
-Next action: Research PR #117 is merged at a4e34cd6c7146ed268729cb37b1bcb0ba051e5d7. Resolve the 144-billion/eight-decimal integer issue, select exact conforming artifacts and a test wallet, and specify a disabled prototype. Holder migration or funded deployment requires a separate concrete proposal; BANK-001 remains next product priority.
+Next action: Continue migration design in GitHub issue #216 after merged factual refresh #212: resolve burn-preserving holder/unminted accounting, exact eight-decimal limits, reproducible conforming artifacts, wallet compatibility and independent review. No funded deployment or monetary-policy choice is approved by the factual refresh.
 
 Acceptance:
 
@@ -789,11 +794,82 @@ Acceptance:
 
 Evidence/specification: [docs/WALLET-FIRST-ONBOARDING.md](../../docs/WALLET-FIRST-ONBOARDING.md), [public/sign-in/index.html](../../public/sign-in/index.html), [public/assets/wallet.js](../../public/assets/wallet.js), [server/testnet-automatic.js](../../server/testnet-automatic.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/testnet-automatic.test.js](../../tests/testnet-automatic.test.js), [public/assets/session-access.js](../../public/assets/session-access.js), [tests/session-access-client.test.js](../../tests/session-access-client.test.js), [tests/sign-in-state.test.js](../../tests/sign-in-state.test.js), [docs/KASWARE-MOBILE-CONNECTION.md](../../docs/KASWARE-MOBILE-CONNECTION.md), [docs/ACCOUNT-RECEIVING-ADDRESSES.md](../../docs/ACCOUNT-RECEIVING-ADDRESSES.md), [server/reward-addresses.js](../../server/reward-addresses.js), [public/assets/receiving-address.js](../../public/assets/receiving-address.js), [tests/receiving-address-client.test.js](../../tests/receiving-address-client.test.js), [tests/passkeys.test.js](../../tests/passkeys.test.js).
 
+## DOC-001: Prepare the full Geek Protocol whitepaper for founder publication review
+
+**P1 / in-progress.** Owner: Maintainer; founder reviews publication. Dependencies: none.
+
+Next action: Complete the founder-approved #228 merge after fresh assembled-head checks; verify production and record physical-phone acceptance separately.
+
+Acceptance:
+
+- Whitepaper covers the learning model, canonical architecture, content integrity, economy, security, governance and launch criteria.
+- Current implementation, pending proposals and independent acceptance remain distinct.
+- Printable and web editions derive from the same Markdown source.
+
+Evidence/specification: [docs/WHITEPAPER.md](../../docs/WHITEPAPER.md), [scripts/whitepaper.mjs](../../scripts/whitepaper.mjs), [public/whitepaper/index.html](../../public/whitepaper/index.html), [docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md](../../docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md).
+
+## UX-008: Center the question timer behind four glass answer panels
+
+**P1 / in-progress.** Owner: Maintainer; founder accepts device presentation. Dependencies: none.
+
+Next action: Complete the founder-approved #228 merge after fresh assembled-head checks; verify production and record physical-phone acceptance separately.
+
+Acceptance:
+
+- A single live timer is centered behind a two-by-two answer grid at desktop and phone widths.
+- Answer text, keyboard input, focus and click targets remain usable; long options do not overflow.
+- Existing server timing, scoring and answer handling remain unchanged.
+
+Evidence/specification: [public/play/index.html](../../public/play/index.html), [public/play/assets/game.css](../../public/play/assets/game.css), [docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md](../../docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md).
+
+## UX-009: Redirect the apex homepage before its assets cross origins
+
+**P0 / in-progress.** Owner: Maintainer; founder approves release. Dependencies: none.
+
+Next action: Publish the scoped root redirect after founder approval, then verify apex root returns 308 and actual phone renders at www. If an edge root remains cached, use the project-level domain redirect or provider cache remediation rather than weakening CSP.
+
+Acceptance:
+
+- Apex homepage redirects to the canonical www origin before serving HTML.
+- Styles and images load on the destination with existing security headers.
+- Preview, production and founder phone acceptance are recorded separately.
+
+Evidence/specification: [docs/APEX-HOMEPAGE-ASSET-FAILURE.md](../../docs/APEX-HOMEPAGE-ASSET-FAILURE.md), [vercel.json](../../vercel.json).
+
+## UX-010: Redirect trailing-slash apex page links to the canonical host
+
+**P0 / needs-evidence.** Owner: Maintainer; founder approves production merge. Dependencies: none.
+
+Next action: Record actual phone deep-link rendering acceptance; production path/query HTTP checks passed.
+
+Acceptance:
+
+- Apex page paths ending in a slash redirect before HTML is served.
+- Slashless links, nested routes and assets still resolve without a www loop; query parameters survive.
+- Security headers, API handlers, scoring and all economic gates are unchanged.
+
+Evidence/specification: [docs/APEX-HOMEPAGE-ASSET-FAILURE.md](../../docs/APEX-HOMEPAGE-ASSET-FAILURE.md), [vercel.json](../../vercel.json), [tests/apex-www-redirect.test.js](../../tests/apex-www-redirect.test.js).
+
+## DOC-002: Expose project documents and contributors on the homepage
+
+**P1 / in-progress.** Owner: Maintainer; founder approves merge. Dependencies: DOC-001.
+
+Next action: Verify the exact preview, obtain approval for the small publication batch, and confirm live homepage links and indexing signals after deployment.
+
+Acceptance:
+
+- Whitepaper, Litepaper and Contributors have visible native links near the top and in the homepage footer, outside collapsed menus.
+- Document and contributor targets are public and reachable from plain HTML without JavaScript.
+- Whitepaper permits indexing and appears in the canonical sitemap; robots rules keep API and operator routes excluded.
+- Mobile links remain readable and keyboard accessible without horizontal overflow.
+
+Evidence/specification: [public/index.html](../../public/index.html), [public/assets/home.css](../../public/assets/home.css), [docs/site-pages.json](../../docs/site-pages.json), [public/sitemap.xml](../../public/sitemap.xml), [docs/HOMEPAGE-DOCUMENT-DISCOVERY.md](../../docs/HOMEPAGE-DOCUMENT-DISCOVERY.md).
+
 ## SEC-010: Serve future ranked questions and answers from private storage; treat published banks as exposed
 
 **P0 / in-progress.** Owner: Maintainer; founder selects private storage and approves rollout. Dependencies: none.
 
-Next action: Finish the unmerged #200 browser fixes and required verification. Then provision the separate private bank and read-only access, author reviewed new-ID questions, and validate the restricted Preview before cutover. Do not enable the exposed-bank production override.
+Next action: Review the assembled #200/#206/#207/#213 candidate on current main. Resolve the immutable pin, bounded playable Preview plan and pre-start season behavior before requesting production cutover.
 
 Acceptance:
 
@@ -804,4 +880,4 @@ Acceptance:
 - Play and My HQ default to the current ranked season, label every board and preserve selectable Season 0 history.
 - Deferred answer recovery confirms saving without showing correctness before round lock.
 
-Evidence/specification: [docs/MIGRATION-private-ranked-bank.md](../../docs/MIGRATION-private-ranked-bank.md), [server/question-source.js](../../server/question-source.js), [server/questions.js](../../server/questions.js), [tests/private-ranked-bank.test.js](../../tests/private-ranked-bank.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/profile-client.test.js](../../tests/profile-client.test.js), [api/leaderboard.js](../../api/leaderboard.js).
+Evidence/specification: [docs/MIGRATION-private-ranked-bank.md](../../docs/MIGRATION-private-ranked-bank.md), [server/question-source.js](../../server/question-source.js), [server/questions.js](../../server/questions.js), [tests/private-ranked-bank.test.js](../../tests/private-ranked-bank.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/profile-client.test.js](../../tests/profile-client.test.js), [api/leaderboard.js](../../api/leaderboard.js), [docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md](../../docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md).

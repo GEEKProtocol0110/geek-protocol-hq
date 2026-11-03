@@ -87,7 +87,7 @@ export const validJournal = journal => Boolean(journal && Object.keys(journal).s
 // This is prepared on the server only, before the ranked finish commit. No chain IO.
 export async function prepareAutomaticReward(playerId, run) {
   const config = automaticConfig();
-  if (!config || run.mode !== 'daily' || run.category !== 'kaspa') return null;
+  if (!config || run.unranked || run.mode !== 'daily' || run.category !== 'kaspa') return null;
   const { key, raw, enrollment, manualRaw, addressRaw } = await rewardEnrollment(playerId, config);
   if (!enrollment?.enabled || enrollment.recipient === config.sender) return null;
   let proof;

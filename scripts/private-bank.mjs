@@ -24,6 +24,12 @@ const SHA_PATTERN = /^[a-f0-9]{40}$/;
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 export const EXAMPLE_PREFIX = 'EXAMPLE —';
 
+// Never let Node's JSON parser echo a private source line through CLI errors.
+const parseBankJson = (text, label) => {
+  try { return JSON.parse(text); }
+  catch { throw new Error(`${label}: invalid JSON`); }
+};
+
 const normalizePrompt = (text) => String(text).toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, ' ').trim();
 
 export const fileCategory = (name) => {
@@ -40,7 +46,7 @@ export const readBankDir = (dir) => {
     const category = fileCategory(name);
     assert.ok(category, `Unknown bank file name: ${name} (use <category>.json or <category>-retired.json)`);
     const text = readFileSync(join(bankDir, name), 'utf8');
-    const parsed = JSON.parse(text);
+    const parsed = parseBankJson(text, name);
     assert.ok(Array.isArray(parsed.questions), `${name}: expected { "questions": [...] }`);
     files.push({ name, category, retired: name.endsWith('-retired.json'), text, questions: parsed.questions });
   }
@@ -63,6 +69,7 @@ export const schemaErrors = (q, { category, retired, template }) => {
   if (typeof q.source !== 'string' || !/^https:\/\//.test(q.source)) at('source must be an https URL');
   if (typeof q.funFact !== 'string' || q.funFact.trim().length < 8) at('funFact (explanation) required');
   if (!ISO_DATE.test(String(q.reviewedAt || ''))) at('reviewedAt must be YYYY-MM-DD');
+  if (typeof q.conceptId !== 'string' || !q.conceptId.trim()) at('conceptId must be a non-empty string');
   if (q.reviewStatus !== 'source-checked') at('reviewStatus must be source-checked for ranked rows');
   if (retired && (typeof q.retiredReason !== 'string' || !ISO_DATE.test(String(q.retiredAt || '')))) at('retired rows need retiredReason and retiredAt');
   if (!retired && (q.retiredReason || q.retiredAt)) at('active rows must not carry retiredReason/retiredAt (move them to <category>-retired.json)');
@@ -156,7 +163,7 @@ const main = async () => {
   if (errors.length) { console.error(errors.join('\n')); process.exit(1); }
   const manifestPath = join(dir, 'manifest.json');
   if (command === 'check') {
-    verifyManifest(files, JSON.parse(readFileSync(manifestPath, 'utf8')));
+    verifyManifest(files, parseBankJson(readFileSync(manifestPath, 'utf8'), 'manifest.json'));
     console.log(`Private bank OK (${template ? 'template, fake rows only' : 'real'}): ${files.reduce((n, f) => n + f.questions.length, 0)} rows, manifest current.`);
   } else if (command === 'manifest') {
     const commitIndex = rest.indexOf('--commit');
@@ -166,7 +173,7 @@ const main = async () => {
   } else {
     const outIndex = rest.indexOf('--out');
     assert.ok(outIndex >= 0 && rest[outIndex + 1], 'build needs --out <file>');
-    const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+    const manifest = parseBankJson(readFileSync(manifestPath, 'utf8'), 'manifest.json');
     verifyManifest(files, manifest);
     writeFileSync(resolve(rest[outIndex + 1]), JSON.stringify(buildDocument(files, manifest)) + '\n');
   }

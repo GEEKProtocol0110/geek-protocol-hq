@@ -309,3 +309,41 @@ test('tracked symlinks in served folders fail; allowlist entries reject unknown 
     assert.match(v, /public\/data\.txt: symlink/);
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
+
+const CLI = new URL('../scripts/private-bank-leak-check.mjs', import.meta.url).pathname;
+const runPrivate = (dir) => spawnSync(process.execPath, [CLI, '--private', dir], { encoding: 'utf8' });
+const fakeRow = (n) => ({ id: ['PRK', 'FAKE', '000000', String(n).padStart(4, '0')].join('-'), category: 'kaspa', difficulty: 'easy', prompt: `FAKE leak-check prompt number ${n} for the index?`, options: ['FAKE opt a', 'FAKE opt b', 'FAKE opt c', 'FAKE opt d'], correctIndex: n % 4 });
+
+test('--private never echoes file contents on malformed JSON and exits 2', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'leak-priv-bad-'));
+  try {
+    const marker = 'FAKE-SECRET-MARKER-should-never-print';
+    for (const text of [`x{"questions":[{"id":"x","prompt":"${marker}"}]}`, `{"questions":[{"prompt":"${marker}"`, `{"questions":[{"prompt":"${marker}", }]}`]) {
+      writeFileSync(join(dir, 'kaspa.json'), text);
+      const out = runPrivate(dir);
+      assert.equal(out.status, 2, out.stderr);
+      assert.equal(out.stderr.trim(), '--private: kaspa.json: invalid JSON');
+      assert.doesNotMatch(out.stdout + out.stderr, new RegExp(marker));
+      assert.doesNotMatch(out.stdout + out.stderr, /questions|SyntaxError|at JSON\.parse/);
+    }
+    writeFileSync(join(dir, 'kaspa.json'), JSON.stringify({ questions: [{ prompt: 'FAKE-SECRET-MARKER-should-never-print' }] }));
+    const noId = runPrivate(dir);
+    assert.equal(noId.status, 2); assert.match(noId.stderr, /kaspa\.json: a row has no string id/); assert.doesNotMatch(noId.stderr, /MARKER/);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+test('--private exits 2 when it indexes zero rows and reports the row count on success', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'leak-priv-count-'));
+  try {
+    let out = runPrivate(dir);
+    assert.equal(out.status, 2); assert.match(out.stderr, /indexed 0 private rows/);
+    writeFileSync(join(dir, 'kaspa.json'), JSON.stringify({ questions: [] }));
+    writeFileSync(join(dir, 'kaspa-retired.json'), JSON.stringify({ questions: [fakeRow(9)] }));
+    out = runPrivate(dir);
+    assert.equal(out.status, 2, 'retired-only and empty banks index nothing'); assert.match(out.stderr, /indexed 0 private rows/);
+    writeFileSync(join(dir, 'kaspa.json'), JSON.stringify({ questions: [fakeRow(1), fakeRow(2), fakeRow(3)] }));
+    out = runPrivate(dir);
+    assert.equal(out.status, 0, out.stderr); assert.match(out.stdout, /with private index of 3 rows/);
+    assert.doesNotMatch(out.stdout + out.stderr, /FAKE leak-check prompt|FAKE opt/);
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});

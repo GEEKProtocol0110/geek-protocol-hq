@@ -3,6 +3,20 @@ import { profileJson, profileKeyFor, profileSnapshot, parseProfile } from './pro
 import { prestigeKeyFor } from './prestige-state.js';
 import { redis } from './redis.js';
 import { AUTO_PREFLIGHT_LUA, AUTO_COMMIT_LUA } from './testnet-automatic.js';
+import { assertRankedWritesAllowed, seasonKeyNamespace } from './seasons.js';
+
+// Ranked run, active-run and Daily keys share the season key namespace:
+// production keeps the original `geek:` keys (runs active across a deploy keep
+// resolving); preview/development and local runs without VERCEL_ENV use
+// `geek:<env>:` / `geek:development:`. Deployed (VERCEL set) without VERCEL_ENV
+// fails closed with RANKED_ENV_UNKNOWN.
+export const rankedKeyNamespace = (env = process.env) => seasonKeyNamespace(env);
+export const runKeyFor = (id, env = process.env) => `${rankedKeyNamespace(env)}run:${id}`;
+export const activeRunKeyFor = (sessionId, env = process.env) => `${rankedKeyNamespace(env)}ranked:active:${sessionId}`;
+export const dailyKeyFor = (playerId, day, env = process.env) => `${rankedKeyNamespace(env)}daily:${playerId}:${day}`;
+// Season 0 boards and player profiles are shared, un-namespaced keys. Deployed
+// non-production environments may not write ranked state to them at all.
+export { assertRankedWritesAllowed };
 
 // Grades, career changes, entry debits and their receipt commit together.
 // Exact snapshots prevent a game from overwriting an avatar, trade or prestige.
@@ -28,6 +42,7 @@ ${AUTO_COMMIT_LUA}
 return 1`;
 
 export const commitRankedState = async ({ playerId, run, previousRun = '', profile, ttl = 7200, auditInput, dailyKey, activeKey, automaticReward }) => {
+  assertRankedWritesAllowed();
   const snapshot = profileSnapshot(profile);
   if (!snapshot) throw new Error('PROFILE_STATE_INVALID');
   const next = profileJson(profile);
@@ -36,7 +51,7 @@ export const commitRankedState = async ({ playerId, run, previousRun = '', profi
   const record = auditInput ? await createAuditRecord({ actorType: 'alpha-session', actorId: playerId, interactionId: run.id, ...auditInput }) : null;
   const [event, index] = record ? auditWriteCommands(record) : [];
   const result = Number(await redis('EVAL', RANKED_COMMIT_LUA, 15,
-    `geek:run:${run.id}`, profileKeyFor(playerId), prestigeKeyFor(playerId), event?.[1] || profileKeyFor(playerId), index?.[1] || profileKeyFor(playerId), dailyKey || profileKeyFor(playerId),
+    runKeyFor(run.id), profileKeyFor(playerId), prestigeKeyFor(playerId), event?.[1] || profileKeyFor(playerId), index?.[1] || profileKeyFor(playerId), dailyKey || profileKeyFor(playerId),
     activeKey || profileKeyFor(playerId),
     ...(automaticReward?.keys || Array(8).fill(profileKeyFor(playerId))),
     previousRun, snapshot.raw, snapshot.prestigeRaw, JSON.stringify(run), next, ttl, changed ? '1' : '0', dailyKey ? run.id : '', event?.[2] || '', index?.[2] || 0, index?.[3] || '', activeKey ? run.id : '',

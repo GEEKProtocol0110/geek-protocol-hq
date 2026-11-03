@@ -1,3 +1,4 @@
+import { runKeyFor } from '../server/ranked-state.js';
 import test, { beforeEach, after } from 'node:test';
 import assert from 'node:assert/strict';
 import kaspa from '@dfns/kaspa-wasm';
@@ -297,7 +298,7 @@ test('eligible Daily finish atomically queues once, survives expiry and excludes
   assert.equal(job.recipient, recipient); assert.equal(job.sender, sender);
   assert.equal((await play(p, 'finish', { runId })).statusCode, 200); assert.equal((await jobs()).length, 1);
   assert.equal((await call(operations, 'POST', { action: 'queue', runId, recipient }, cookie, { action: 'testnet' })).statusCode, 503);
-  await fixture.command('DEL', `geek:run:${runId}`);
+  await fixture.command('DEL', `geek:development:run:${runId}`);
   assert.equal(await fixture.command('TTL', autoJobKey(job.id)), -1);
   assert.equal(await fixture.command('GET', `geek:testnet-reward:run:${runId}`), job.id);
 });
@@ -333,7 +334,7 @@ test('changed enrollment skips stale admission and corrupt queue storage stops b
   const p2 = await player(); await enroll(p2); const id2 = await complete(p2);
   await fixture.command('SET', autoIndex, 'broken');
   assert.equal((await play(p2, 'finish', { runId: id2 })).statusCode, 503);
-  assert.equal(JSON.parse(await fixture.command('GET', `geek:run:${id2}`)).status, 'between-rounds');
+  assert.equal(JSON.parse(await fixture.command('GET', `geek:development:run:${id2}`)).status, 'between-rounds');
 });
 test('the dedicated testnet sender and bounded worker token/config fail closed', () => {
   for (const [field, value] of Object.entries({ TESTNET_AUTO_SENDER: wallet(6), TESTNET_AUTO_WORKER_TOKEN: 'short', TESTNET_AUTO_DAILY_LIMIT: '101', TESTNET_REWARDS_NETWORK: 'mainnet' })) {
@@ -535,4 +536,15 @@ test('queue capacity and corrupt retirement lineage fail closed without dropping
   const child = { ...claim.job, recipient: wallet(4) }; await fixture.command('SET', autoJobKey(child.id), JSON.stringify(child));
   assert.equal((await worker({ action: 'claim' })).statusCode, 503);
   assert.equal(await fixture.command('GET', autoJobKey(second.job.id)), second.raw);
+});
+
+test('an unranked (bank-mismatch) Daily run never queues an automatic testnet reward', async () => {
+  process.env.TESTNET_AUTO_APPROVED_WALLETS = recipient;
+  const p = await player(); await savedReceiving(p);
+  const runId = await complete(p);
+  const key = runKeyFor(runId), raw = JSON.parse(await fixture.command('GET', key));
+  await fixture.command('SET', key, JSON.stringify({ ...raw, unranked: true }), 'KEEPTTL');
+  assert.equal((await play(p, 'finish', { runId })).statusCode, 200);
+  assert.deepEqual(await jobs(), []);
+  assert.equal(await fixture.command('GET', `geek:testnet-reward:run:${runId}`), null);
 });

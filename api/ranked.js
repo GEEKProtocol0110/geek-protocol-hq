@@ -2,11 +2,11 @@ import { ROUND_CONFIG, RANKED_START_IP_LIMIT } from '../server/game-economy.js';
 import { randomBytes } from 'node:crypto';
 import { recordCommunityQuestionUse } from '../server/cce.js';
 import { categories, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
-import { recordVerifiedScore } from '../server/leaderboard.js';
+import { listLeaderboard, recordVerifiedScore } from '../server/leaderboard.js';
 import { loadProfile } from '../server/profile.js';
-import { commitRankedState } from '../server/ranked-state.js';
+import { activeRunKeyFor, assertRankedWritesAllowed, commitRankedState, dailyKeyFor, runKeyFor } from '../server/ranked-state.js';
 import { recordRoundJourney, withProgression } from '../server/progression.js';
-import { questionById, rankedRunBinding, seasonFor, selectRoundQuestionIds, shuffleOptions } from '../server/questions.js';
+import { questionById, rankedRunBinding, recordSeasonBank, seasonBankAllowsScore, seasonFor, selectRoundQuestionIds, shuffleOptions } from '../server/questions.js';
 import { rateLimit, redis } from '../server/redis.js';
 import { playerIdFor, requireSession } from '../server/session.js';
 import questHandler from '../server/quest.js';
@@ -23,7 +23,7 @@ const RUN_TTL = 60 * 60 * 2;
 export const RANKED_START_PLAYER_LIMIT = Object.freeze({ maximum: 30, seconds: 60 * 60 });
 const QUESTION_MS = 15_000;
 const NETWORK_GRACE_MS = 350;
-const runKey = (id) => `geek:run:${id}`;
+const runKey = (id) => runKeyFor(id);
 const runSnapshots = new WeakMap();
 const runIdPattern = /^[a-f0-9]{40}$/;
 
@@ -148,16 +148,25 @@ const startRound = async (run, profile) => {
   return issueQuestion(run);
 };
 
+// A run whose bank version differs from its season's configured/pinned version
+// still completes (career progress saved) but is unranked practice: no board write.
+const recordRunScore = async (run, session) => {
+  const season = seasonFor(run).leaderboard;
+  if (run.unranked || !(await seasonBankAllowsScore(run))) return { improved: false, unranked: true, season, entries: await listLeaderboard(run.category, run.mode, 10, season) };
+  return recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode, season });
+};
 const finishRun = async (run, session, profile) => {
-  if (run.status === 'finished') return { leaderboard: await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode, season: seasonFor(run).leaderboard }) };
+  if (run.status === 'finished') return { leaderboard: await recordRunScore(run, session) };
   if (['question', 'awaiting-next'].includes(run.status)) run.finishedMidRound = true;
   profile.totalRuns += 1;
   if (run.mode === 'gauntlet' && run.completedRound >= 10) profile.gauntletsCompleted += 1;
   run.status = 'finished';
   run.current = null;
+  // Persist the first mismatch so retries (even after a pin reset) stay unranked.
+  if (!run.unranked && !(await seasonBankAllowsScore(run))) run.unranked = true;
   const automaticReward = await prepareAutomaticReward(playerIdFor(session), run);
   await commitRankedState({ playerId: playerIdFor(session), run, previousRun: runSnapshots.get(run), profile, ttl: 300, automaticReward });
-  const leaderboard = await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode, season: seasonFor(run).leaderboard });
+  const leaderboard = await recordRunScore(run, session);
   return { leaderboard };
 };
 
@@ -204,7 +213,10 @@ const answerQuestion = async (run, session, profile, body) => {
   if (run.questionIndex === run.questionCount - 1 || modeClockExpired) {
     const earlierAchievements=new Set(careerChallengeState(profile).tasks.filter(t=>t.complete).map(t=>t.id));
     const config = ROUND_CONFIG[run.round - 1];
-    const reward = mode.rewards ? run.correct * config.reward : 0;
+    // Bank-version mismatch: the run continues as unranked practice (XP only,
+    // no in-game reward, no season credit, no testnet reward).
+    if (!run.unranked && !(await seasonBankAllowsScore(run))) run.unranked = true;
+    const reward = mode.rewards && !run.unranked ? run.correct * config.reward : 0;
     const xpEarned = run.correct * 10 + Math.round(run.roundScore / 1000);
     run.totalScore += run.roundScore;
     run.rewards += reward;
@@ -302,7 +314,7 @@ export default async function handler(req, res) {
     if (req.method === 'GET') {
       const profile = withProgression(await loadProfile(playerId));
       if (!req.query?.runId && req.query?.resume !== '1') return sendJson(res, 200, { ok: true, profile, verified: true });
-      const id = req.query?.resume === '1' ? await redis('GET', `geek:ranked:active:${session.id}`) : req.query.runId;
+      const id = req.query?.resume === '1' ? await redis('GET', activeRunKeyFor(session.id)) : req.query.runId;
       const run = await loadRun(id, session);
       const question = run.current ? publicQuestion(run, await runQuestion(run)) : null;
       // Only the latest committed grade is available here; never future answers.
@@ -313,6 +325,7 @@ export default async function handler(req, res) {
     const action = String(body.action || '');
     await rateLimit('ranked', playerId, 240, 60 * 5);
     if (action === 'start') {
+      assertRankedWritesAllowed();
       await rateLimit('ranked-start-player', playerId, RANKED_START_PLAYER_LIMIT.maximum, RANKED_START_PLAYER_LIMIT.seconds);
       await rateLimit('ranked-start-ip', clientFingerprint(req), RANKED_START_IP_LIMIT.maximum, RANKED_START_IP_LIMIT.seconds);
       const category = categories.has(body.category) ? body.category : 'kaspa';
@@ -327,9 +340,10 @@ export default async function handler(req, res) {
         completedRound: 0, startBalance: profile.balance, fees: 0, rewards: 0, usedQuestionIds: [], status: 'starting',
         questionCount: modeConfig(mode).questionCount, maxRounds: modeConfig(mode).maxRounds, overallDeadline: 0
       };
-      const dailyKey = mode === 'daily' ? `geek:daily:${playerId}:${new Date().toISOString().slice(0, 10)}` : undefined;
+      const dailyKey = mode === 'daily' ? dailyKeyFor(playerId, new Date().toISOString().slice(0, 10)) : undefined;
       const question = await startRound(run, profile);
-      await commitRankedState({ playerId, run, profile, dailyKey, activeKey: `geek:ranked:active:${session.id}` });
+      await commitRankedState({ playerId, run, profile, dailyKey, activeKey: activeRunKeyFor(session.id) });
+      await recordSeasonBank(run);
       return sendJson(res, 201, { ok: true, verified: true, run: safeRun(run), profile: withProgression(profile), question });
     }
     const run = await loadRun(body.runId, session);

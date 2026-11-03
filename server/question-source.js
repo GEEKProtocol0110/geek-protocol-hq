@@ -17,6 +17,11 @@
 //   GEEK_PRIVATE_QUESTION_TOKEN optional bearer token for the URL.
 //   GEEK_PRIVATE_QUESTION_REF   40-hex commit SHA pinning the bank version
 //                               (required for URL sources in production).
+//   GEEK_PRIVATE_QUESTION_SHA256 optional 64-hex sha256 of the exact fetched
+//                               bytes. When set it is always verified. In
+//                               production/preview a URL that is not the GitHub
+//                               Contents API (where REF cannot pin the bytes)
+//                               is refused unless this is set.
 //   GEEK_RANKED_QUESTION_SOURCE "private" | "fixture" | "exposed"
 //                               Overrides the automatic choice. "fixture" uses
 //                               the public sample bank (no real answers) for
@@ -95,7 +100,7 @@ const readBounded = async (response, maxBytes) => {
   if (!response.body?.getReader) {
     const text = await response.text();
     if (Buffer.byteLength(text) > maxBytes) throw new Error('PRIVATE_BANK_TOO_LARGE');
-    return text;
+    return { text, bytesHash: createHash('sha256').update(Buffer.from(text, 'utf8')).digest('hex') };
   }
   const reader = response.body.getReader();
   const chunks = [];
@@ -107,7 +112,8 @@ const readBounded = async (response, maxBytes) => {
     if (size > maxBytes) { await reader.cancel().catch(() => {}); throw new Error('PRIVATE_BANK_TOO_LARGE'); }
     chunks.push(Buffer.from(value));
   }
-  return Buffer.concat(chunks).toString('utf8');
+  const bytes = Buffer.concat(chunks);
+  return { text: bytes.toString('utf8'), bytesHash: createHash('sha256').update(bytes).digest('hex') };
 };
 
 // Accepts either the raw bank document (Accept: application/vnd.github.raw) or
@@ -128,6 +134,15 @@ export const decodeBankDocument = (text, maxBytes = MAX_PRIVATE_BANK_BYTES) => {
   return { banks: parsed.banks, retired: parsed.retired || {} };
 };
 
+// Only the GitHub Contents API can be pinned to a commit with ?ref=<sha>.
+export const isContentsApiUrl = (url) => {
+  try { const t = new URL(url); return t.protocol === 'https:' && t.hostname === 'api.github.com' && /^\/repos\/[^/]+\/[^/]+\/contents\//.test(t.pathname); } catch { return false; }
+};
+const SHA256_PATTERN = /^[a-f0-9]{64}$/;
+// Fail-closed error: the message stays on the 503 RANKED_BANK_UNAVAILABLE path;
+// `reason` carries the specific cause for tests and operators (never the URL or bytes).
+const unavailable = (reason) => Object.assign(new Error('RANKED_BANK_UNAVAILABLE'), { reason });
+
 // Pin the GitHub Contents API to an immutable commit: ?ref=<sha>.
 export const pinnedUrl = (url, ref) => {
   if (!ref) return url;
@@ -136,7 +151,7 @@ export const pinnedUrl = (url, ref) => {
   return target.toString();
 };
 
-export const readUrlBanks = async (url, token, { fetch: fetchImpl = globalThis.fetch, ref = '', timeoutMs = PRIVATE_BANK_FETCH_TIMEOUT_MS, maxBytes = MAX_PRIVATE_BANK_BYTES } = {}) => {
+export const readUrlBanks = async (url, token, { fetch: fetchImpl = globalThis.fetch, ref = '', expectedSha256 = '', timeoutMs = PRIVATE_BANK_FETCH_TIMEOUT_MS, maxBytes = MAX_PRIVATE_BANK_BYTES } = {}) => {
   if (!/^https:\/\//.test(url)) throw new Error('PRIVATE_BANK_URL_INVALID');
   let response;
   try {
@@ -155,9 +170,10 @@ export const readUrlBanks = async (url, token, { fetch: fetchImpl = globalThis.f
     throw new Error('PRIVATE_BANK_UNREACHABLE');
   }
   if (!response.ok) throw new Error('PRIVATE_BANK_UNREACHABLE');
-  const text = await readBounded(response, maxBytes);
+  const { text, bytesHash } = await readBounded(response, maxBytes);
+  if (expectedSha256 && bytesHash !== expectedSha256) throw unavailable('PRIVATE_BANK_SHA256_MISMATCH');
   const document = decodeBankDocument(text, maxBytes);
-  return { ...document, contentHash: createHash('sha256').update(text).digest('hex') };
+  return { ...document, contentHash: bytesHash };
 };
 
 // Immutable bank versions loaded by this instance. A version never changes once
@@ -183,6 +199,12 @@ const buildVersion = (mode, raw, pin) => {
   return value;
 };
 
+const expectedShaFor = (env) => {
+  const sha = String(env.GEEK_PRIVATE_QUESTION_SHA256 || '').trim().toLowerCase();
+  if (sha && !SHA256_PATTERN.test(sha)) throw unavailable('PRIVATE_BANK_SHA256_INVALID');
+  return sha;
+};
+
 const pinFor = (env) => {
   const pin = String(env.GEEK_PRIVATE_QUESTION_REF || '').trim().toLowerCase();
   if (pin && !SHA_PATTERN.test(pin)) throw new Error('PRIVATE_BANK_REF_INVALID');
@@ -194,16 +216,24 @@ const pinFor = (env) => {
 export const loadRankedSource = async (env = process.env, options = {}) => {
   const mode = rankedSourceMode(env);
   const pin = mode === 'private' ? pinFor(env) : '';
-  const key = `${mode}|${env.GEEK_PRIVATE_QUESTION_DIR || ''}|${env.GEEK_PRIVATE_QUESTION_URL || ''}|${pin}`;
+  const key = `${mode}|${env.GEEK_PRIVATE_QUESTION_DIR || ''}|${env.GEEK_PRIVATE_QUESTION_URL || ''}|${pin}|${env.GEEK_PRIVATE_QUESTION_SHA256 || ''}`;
   if (current?.key === key) return current.value;
-  if (mode === 'private' && env.GEEK_PRIVATE_QUESTION_URL && !env.GEEK_PRIVATE_QUESTION_DIR && isProduction(env) && !pin) throw new Error('PRIVATE_BANK_REF_REQUIRED');
+  const urlSource = mode === 'private' && env.GEEK_PRIVATE_QUESTION_URL && !env.GEEK_PRIVATE_QUESTION_DIR;
+  const expectedSha256 = urlSource ? expectedShaFor(env) : '';
+  const contentsApi = urlSource && isContentsApiUrl(env.GEEK_PRIVATE_QUESTION_URL);
+  // A non-Contents URL ignores REF, so in production/preview it must be pinned by content hash instead.
+  if (urlSource && isProduction(env) && !contentsApi && !expectedSha256) throw unavailable('PRIVATE_BANK_URL_UNPINNED');
+  if (urlSource && isProduction(env) && contentsApi && !pin) throw new Error('PRIVATE_BANK_REF_REQUIRED');
   let value;
   if (mode === 'fixture') value = buildVersion(mode, readDirectoryBanks(FIXTURE_DIR), '');
   else if (mode === 'private') {
     if (env.GEEK_PRIVATE_QUESTION_DIR) value = buildVersion(mode, readDirectoryBanks(env.GEEK_PRIVATE_QUESTION_DIR), pin);
     else if (env.GEEK_PRIVATE_QUESTION_URL) {
-      if (pin && versions.has(`git:${pin}`)) value = versions.get(`git:${pin}`);
-      else value = buildVersion(mode, await readUrlBanks(env.GEEK_PRIVATE_QUESTION_URL, env.GEEK_PRIVATE_QUESTION_TOKEN, { ...options, ref: pin }), pin);
+      // REF only names the version when it actually pins the fetch (Contents API).
+      const versionPin = contentsApi ? pin : '';
+      if (versionPin && versions.has(`git:${versionPin}`)) value = versions.get(`git:${versionPin}`);
+      else if (!versionPin && expectedSha256 && versions.has(`sha256:${expectedSha256}`)) value = versions.get(`sha256:${expectedSha256}`);
+      else value = buildVersion(mode, await readUrlBanks(env.GEEK_PRIVATE_QUESTION_URL, env.GEEK_PRIVATE_QUESTION_TOKEN, { ...options, ref: versionPin, expectedSha256 }), versionPin);
     } else throw new Error('RANKED_BANK_UNAVAILABLE');
   } else value = Object.freeze({ mode, version: mode === 'exposed' ? 'public' : '', banks: {}, retired: {} });
   current = { key, value };
@@ -218,6 +248,6 @@ export const loadRankedSourceVersion = async (version, env = process.env, option
   if (!versions.has(version)) { try { await loadRankedSource(env, options); } catch { /* fall through */ } }
   if (versions.has(version)) return versions.get(version);
   const match = /^git:([a-f0-9]{40})$/.exec(String(version || ''));
-  if (!match || !env.GEEK_PRIVATE_QUESTION_URL || env.GEEK_PRIVATE_QUESTION_DIR) return null;
+  if (!match || !env.GEEK_PRIVATE_QUESTION_URL || env.GEEK_PRIVATE_QUESTION_DIR || !isContentsApiUrl(env.GEEK_PRIVATE_QUESTION_URL)) return null;
   return buildVersion('private', await readUrlBanks(env.GEEK_PRIVATE_QUESTION_URL, env.GEEK_PRIVATE_QUESTION_TOKEN, { ...options, ref: match[1] }), match[1]);
 };
