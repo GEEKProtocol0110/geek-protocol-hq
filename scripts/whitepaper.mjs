@@ -25,7 +25,6 @@ const content = blocks.slice(4).map(block => {
 const html = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="robots" content="noindex,follow" />
 <title>Whitepaper - Geek Protocol</title>
 <link rel="stylesheet" href="/assets/atmosphere.css" />
 <link rel="stylesheet" href="/assets/space.css" />

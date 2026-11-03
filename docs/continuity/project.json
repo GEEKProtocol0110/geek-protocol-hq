@@ -60,14 +60,20 @@
       "DOC-001",
       "UX-008"
     ],
-    "status": "approved-release-integration",
+    "status": "merged-deployed",
     "evidence": "docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md",
-    "nextAction": "Complete the authorized #228 merge after fresh exact-head checks, verify production and obtain physical-phone acceptance."
+    "nextAction": "Whitepaper/timer #228 is merged/deployed; phone timer acceptance remains separate. DOC-002 improves public document discovery."
   },
   "canonicalRoutingFollowup": {
     "task": "UX-010",
     "status": "deployed-http-verified",
     "evidence": "docs/APEX-HOMEPAGE-ASSET-FAILURE.md",
     "nextAction": "Retain actual phone rendering acceptance separately; canonical path/query HTTP checks passed."
+  },
+  "documentDiscovery": {
+    "task": "DOC-002",
+    "status": "in-progress",
+    "evidence": "docs/HOMEPAGE-DOCUMENT-DISCOVERY.md",
+    "nextAction": "Prepare and verify visible document/contributor links and whitepaper indexing; production approval remains separate."
   }
 }

@@ -1015,3 +1015,12 @@ Founder screenshots show unstyled HTML and broken images after opening the apex 
 - Integrate that main normally into #228, preserving both project records and regenerating continuity views. No feature change during reconciliation. Recheck full local verification and published-head CI before the authorized second merge. PR descriptions retain the final merge, deployment and live acceptance evidence.
 
 - Assembled local verification passed: 725 HQ tests + nine signer checks, zero failures/skips, 311 security assertions and all supporting checks. Production #229 probes confirm exact canonical redirects and query preservation on root, Play, Study and nested sources; www Play is 200 without a loop. Physical-phone rendering remains separate.
+
+## November 2, 2026 - DOC-002 homepage document discovery
+
+- Founder requests Whitepaper/Litepaper links on the front page and a Contributors button so visitors and crawlers can reach the project material. The screenshot identifies the homepage footer.
+- Add native visible links below the hero and in the footer. Contributors opens the existing public Hall of Thanks, which includes static builder credits and participation paths. Existing approved community credits continue to load separately through the public client; no names or application details are republished.
+- Permit whitepaper indexing through the maintained metadata and canonical sitemap; preserve API/operator crawler exclusions, security headers and all economic holds. Correct the stale v0.1 litepaper cross-link to v1.0. No claim of acceptance, ranking or a grade by an external crawler is implied.
+- #228 merged as 755a6ce with exact checked tree ccb623f; production dpl_6ZfPQhr8dYP6UKTUFrHHe25HrErU READY and seven exact-byte delivery checks passed. DOC-002 is a separate review batch.
+
+- Validation: all six native homepage links are outside closed disclosures; target metadata, canonical paths and sitemap membership pass. Whitepaper/site/continuity/repository checks, 311 security assertions and whitespace checks pass. Full backend/signer suites not rerun for this low-impact presentation/metadata change; exact-head remote CI and preview verification follow.
