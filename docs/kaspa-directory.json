@@ -3,36 +3,6 @@
   "reviewedAt": "2026-11-05",
   "categories": [
     {
-      "id": "krc20",
-      "name": "KRC-20 projects",
-      "description": "Project destinations inspected for matching content, plus accepted KRC-20 activity observed within 90 days of the dated check. This is a reviewed subset, not every deployed ticker or proof of ongoing development. Social profiles may require sign-in. Check dates use America/Detroit.",
-      "links": [
-        {
-          "url": "https://kasbay.org/categories/krc_20_tokens",
-          "label": "Browse more KRC-20 projects"
-        },
-        {
-          "url": "https://kaspa-lens.com/kaspa/tokens",
-          "label": "Explore token data and network types"
-        }
-      ]
-    },
-    {
-      "id": "krc20-reference",
-      "name": "KRC-20 holder lookup",
-      "description": "Token records remain useful to holders even when project links or recent activity are unconfirmed. These listings link matching Kasplex records without claiming an active team or promoting an unverified website. Quiet activity is not evidence that holders disappeared.",
-      "links": [
-        {
-          "url": "https://kaspa-lens.com/kaspa/tokens",
-          "label": "Explore token data"
-        },
-        {
-          "url": "https://kasbay.org/categories/krc_20_tokens",
-          "label": "Browse more token projects"
-        }
-      ]
-    },
-    {
       "id": "learn",
       "name": "Start & learn"
     },
@@ -71,6 +41,36 @@
     {
       "id": "directories",
       "name": "More directories"
+    },
+    {
+      "id": "krc20",
+      "name": "KRC-20 projects",
+      "description": "Project destinations inspected for matching content, plus accepted KRC-20 activity observed within 90 days of the dated check. This is a reviewed subset, not every deployed ticker or proof of ongoing development. Social profiles may require sign-in. Check dates use America/Detroit.",
+      "links": [
+        {
+          "url": "https://kasbay.org/categories/krc_20_tokens",
+          "label": "Browse more KRC-20 projects"
+        },
+        {
+          "url": "https://kaspa-lens.com/kaspa/tokens",
+          "label": "Explore token data and network types"
+        }
+      ]
+    },
+    {
+      "id": "krc20-reference",
+      "name": "KRC-20 holder lookup",
+      "description": "Token records remain useful to holders even when project links or recent activity are unconfirmed. These listings link matching Kasplex records without claiming an active team or promoting an unverified website. Quiet activity is not evidence that holders disappeared.",
+      "links": [
+        {
+          "url": "https://kaspa-lens.com/kaspa/tokens",
+          "label": "Explore token data"
+        },
+        {
+          "url": "https://kasbay.org/categories/krc_20_tokens",
+          "label": "Browse more token projects"
+        }
+      ]
     },
     {
       "id": "geek",
@@ -1903,7 +1903,7 @@
       }
     }
   ],
-  "updatedAt": "2026-11-05T05:27:14.604890+00:00",
+  "updatedAt": "2026-11-05T16:19:58.817685+00:00",
   "krc20Review": {
     "windowDays": 90,
     "candidateCount": 45,
