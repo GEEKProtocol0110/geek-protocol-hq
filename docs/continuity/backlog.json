@@ -1482,7 +1482,7 @@
       "status": "in-progress",
       "title": "Expand KRC-20 project links and preserve token lookups for holders",
       "owner": "Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned",
-      "nextAction": "Review revised candidate: 24 checked project destinations and 20 holder references across 45 researched names. KAEN has a verified token record; its official project site/profile remains unverified. One other identity (GHOADFI) remains unresolved. Merge/deployment remain separate.",
+      "nextAction": "Review the revised 45-name candidate: 25 project destinations and 19 holder lookups. KAEN now uses founder-supplied @kaenarchitect with a matching public profile read and its separate KRC-20 record. GHOADFI remains unresolved. Merge/deployment remain separate.",
       "acceptance": [
         "Review all 45 sourced candidates, including founder-requested KAEN, and retain every confirmed KRC-20 asset as a project listing or holder lookup with status separate from token existence.",
         "Publish native project links where inspected and native matching token-record lookups for holders otherwise; label status and dated evidence without declaring coins dead.",

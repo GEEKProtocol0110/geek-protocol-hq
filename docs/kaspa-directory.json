@@ -1870,33 +1870,45 @@
       }
     },
     {
-      "id": "krc20-ref-kaen",
-      "category": "krc20-reference",
-      "name": "KAEN — token record",
-      "url": "https://api.kasplex.org/v1/krc20/token/KAEN",
-      "description": "KAEN KRC-20 token lookup on Kaspa Mainnet. A verified project website or public profile is still needed.",
-      "source": "https://api.kasplex.org/v1/krc20/token/KAEN",
+      "id": "krc20-kaen",
+      "category": "krc20",
+      "name": "KAEN (@kaenarchitect)",
+      "url": "https://x.com/kaenarchitect",
+      "description": "KAEN project profile on X. Its Kaspa Mainnet KRC-20 record and dated activity source are linked below.",
+      "source": "https://x.com/kaenarchitect",
       "reviewedAt": "2026-11-05",
       "status": "listed",
-      "tokenReference": {
+      "krc20": {
         "ticker": "KAEN",
         "standard": "KRC-20",
         "network": "Kaspa Mainnet",
         "recordUrl": "https://api.kasplex.org/v1/krc20/token/KAEN",
-        "recordCheckedAt": "2026-11-05T05:18:07.713864+00:00",
-        "recordStatus": 200,
-        "deploymentHash": "429d772ebbb05eeacd27624cadea73e2a439c9df02746e82ddf5e7a921296a87",
-        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=KAEN",
-        "statusNote": "Official project website or profile not yet verified"
+        "linkCheck": {
+          "checkedAt": "2026-11-05T05:25:12.752616+00:00",
+          "status": 200,
+          "finalUrl": "https://x.com/kaenarchitect",
+          "kind": "social",
+          "identity": "Project-specific content inspected",
+          "identityBasis": "Founder supplied @kaenarchitect; matching Kaen profile title returned from X."
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T05:25:12.752616+00:00",
+          "occurredAt": "2026-09-03T13:24:07.780000+00:00",
+          "operation": "transfer",
+          "hash": "79fd8c57c430249a9b4abbb11b4dabefdb024b877db3278b645014da7a66af42",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=KAEN",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
       }
     }
   ],
-  "updatedAt": "2026-11-05T05:18:07.713864+00:00",
+  "updatedAt": "2026-11-05T05:27:14.604890+00:00",
   "krc20Review": {
     "windowDays": 90,
     "candidateCount": 45,
     "reviewedOn": "2026-11-05",
     "timeZone": "America/Detroit",
-    "scope": "45 researched names; 24 project listings and 20 additional holder references, including founder-requested KAEN. GHOADFI identity remains unconfirmed."
+    "scope": "45 researched names; 25 project listings and 19 additional holder references. KAEN uses the supplied matching X profile; GHOADFI identity remains unconfirmed."
   }
 }

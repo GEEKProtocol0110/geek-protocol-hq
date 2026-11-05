@@ -2,7 +2,7 @@
 
 Task ECO-003. Revised November 5, 2026 (America/Detroit), based on deployed main `c7d780da18fb12e80b190c620476ee6b2409bf90` (#235). The founder asks for KRC-20 coverage and points out that people still hold tokens when a project website is uncertain or transfers are quiet. Confirmed token records must remain discoverable independently of project-link and activity status.
 
-The candidate now contains 24 project listings and 20 additional holder references: 44 confirmed assets from 45 researched names, 104 total directory resources and 14 categories. All 60 earlier resource records and Hall credits are preserved. GHOADFI remains an unconfirmed asset identity after its record request returned 403; this is not evidence that it has no holders. The candidate is not merged or deployed at this revision.
+The candidate now contains 25 project listings and 19 additional holder references: 44 confirmed assets from 45 researched names, 104 total directory resources and 14 categories. All 60 earlier resource records and Hall credits are preserved. GHOADFI remains an unconfirmed asset identity after its record request returned 403; this is not evidence that it has no holders. The candidate is not merged or deployed at this revision.
 
 ## What each listing establishes
 
@@ -48,12 +48,13 @@ Dates below use America/Detroit. Exact check/event timestamps, public hashes and
 | SZAR | [SZAR (SZAR)](https://szar.ourosociety.com/) | 2026-11-03 | website |
 | WOLFY | [Wolfy’s (WOLFY)](https://linktr.ee/wolfysbar) | 2026-11-04 | hub |
 | ZEAL | [Zealous Swap (ZEAL)](https://zealousswap.com/) | 2026-11-04 | website |
+| KAEN | [KAEN (@kaenarchitect)](https://x.com/kaenarchitect) | 2026-09-03 | social |
 
 ## Additional holder references
 
-KAEN, BTAI, DOGK, FOMOON, GRASS, HERPES, KASFAM, KEIRO, KPAW, KPTKAS, KYSOO, MODENG, NEIRO, PARROT, POPKAT, SHADOW, SNOWDN, SOMPS, WORI, YORAN. Each has a matching public record and deployment hash. Project and recent-activity uncertainty is shown separately rather than suppressing the token.
+BTAI, DOGK, FOMOON, GRASS, HERPES, KASFAM, KEIRO, KPAW, KPTKAS, KYSOO, MODENG, NEIRO, PARROT, POPKAT, SHADOW, SNOWDN, SOMPS, WORI, YORAN. Each has a matching public record and deployment hash. Project and recent-activity uncertainty is shown separately rather than suppressing the token.
 
-KAEN is additionally included as a holder reference after its matching public Kasplex token record was retrieved (deployment hash `429d772ebbb05eeacd27624cadea73e2a439c9df02746e82ddf5e7a921296a87`). The founder identifies it as Tony’s project; no personal attribution or guessed project website is added to the public card. A verified official project destination remains outstanding.
+KAEN was initially included as a holder reference after its matching public Kasplex token record was retrieved (deployment hash `429d772ebbb05eeacd27624cadea73e2a439c9df02746e82ddf5e7a921296a87`). The founder then supplied @kaenarchitect. A direct X read returned HTTP 200 and the matching title Kaen (@KaenArchitect); the entry now uses that project profile, with its token record and accepted activity linked separately. No personal attribution or guessed website is added.
 
 The original 21-name review queue was: BTAI, DOGK, FOMOON, GHOADFI, GRASS, HERPES, KASFAM, KEIRO, KPAW, KPTKAS, KYSOO, MODENG, NEIRO, PARROT, POPKAT, SHADOW, SNOWDN, SOMPS, WORI, YORAN, ZEAL. These names were not determined to have no holders. Original observations remain in `docs/krc20-directory-review.json`.
 

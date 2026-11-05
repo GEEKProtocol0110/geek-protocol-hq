@@ -902,7 +902,7 @@ Evidence/specification: [docs/KASPA-DIRECTORY.md](../../docs/KASPA-DIRECTORY.md)
 
 **P1 / in-progress.** Owner: Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned. Dependencies: ECO-002.
 
-Next action: Review revised candidate: 24 checked project destinations and 20 holder references across 45 researched names. KAEN has a verified token record; its official project site/profile remains unverified. One other identity (GHOADFI) remains unresolved. Merge/deployment remain separate.
+Next action: Review the revised 45-name candidate: 25 project destinations and 19 holder lookups. KAEN now uses founder-supplied @kaenarchitect with a matching public profile read and its separate KRC-20 record. GHOADFI remains unresolved. Merge/deployment remain separate.
 
 Acceptance:
 

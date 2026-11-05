@@ -1068,3 +1068,8 @@ Founder screenshots show unstyled HTML and broken images after opening the apex 
 
 - Founder asks about KAEN and identifies it as Tony’s project. KAEN was absent from the earlier candidate set. A fresh public Kasplex Mainnet token request returns matching KAEN metadata and deployment hash 429d772ebbb05eeacd27624cadea73e2a439c9df02746e82ddf5e7a921296a87; add its holder-reference card.
 - No verified official website/profile was found through the project-name searches; do not guess one or publish a personal attribution from inference. Counts become 45 researched names, 44 confirmed assets (24 project listings/20 holder references), 104 resources/14 categories. GHOADFI remains the single unresolved identity. This is a PR #236 source revision, not a production release.
+
+## November 5, 2026 (Detroit) — attach the supplied KAEN profile
+
+- Founder supplies @kaenarchitect after the KAEN lookup addition. Direct X read returns HTTP 200 with the matching title Kaen (@KaenArchitect). Use https://x.com/kaenarchitect as KAEN’s project destination and preserve the separate Mainnet KRC-20 record/activity links. A fresh accepted-transfer sample remains within the recorded 90-day project snapshot window.
+- KAEN moves from holder-only reference to the project category. Counts are 25 project destinations plus 19 additional holder lookups, 104 total resources and 44 confirmed assets from 45 researched names. No personal identity, partnership or guessed standalone website is published. PR #236 remains unmerged.

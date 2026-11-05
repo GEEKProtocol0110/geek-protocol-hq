@@ -71,7 +71,7 @@
     "The mixed KaspaScreener dataset was not treated as a KRC-20 project registry because its records were L2 addresses.",
     "No raw holder lists, wallet records or learner data are included.",
     "Holder references do not require recent operations or a current project website; only a matching token record is asserted. GHOADFI remains an unconfirmed identity, not a declared inactive coin.",
-    "Founder identifies KAEN as Tony\u2019s project. Only its matching Mainnet KRC-20 record is independently confirmed here; a project website/profile and public personal attribution have not been verified."
+    "KAEN profile @kaenarchitect was supplied by the founder and returned a matching Kaen profile title with HTTP 200. It is used as the project destination; no personal identity or formal relationship is inferred."
   ],
   "previouslyHeld": [
     {
@@ -224,6 +224,7 @@
     "FAST",
     "GEEK",
     "GHOAD",
+    "KAEN",
     "KANGO",
     "KAPA",
     "KAPSA",
@@ -250,7 +251,6 @@
     "FOMOON",
     "GRASS",
     "HERPES",
-    "KAEN",
     "KASFAM",
     "KEIRO",
     "KPAW",
