@@ -409,6 +409,15 @@
       "imageAlt": "Kaspa resources and learning from Geek Protocol.",
       "imageWidth": 1200,
       "imageHeight": 630
+    },
+    {
+      "file": "public/leaderboard/index.html",
+      "path": "/leaderboard/",
+      "title": "Global Leaderboard \u2014 Geek Protocol & Geek Mini",
+      "description": "Explore public Geek Protocol and Geek Mini quiz standings. Compare players within each game, mode and category, with separate Mini Daily and Speed boards.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-05"
     }
   ]
 }

@@ -84,8 +84,14 @@
   },
   "ecosystemDirectory": {
     "task": "ECO-003",
-    "status": "kaspa-first-ordering-in-progress",
+    "status": "merged-deployed-http-verified",
     "evidence": "docs/KASPA-DIRECTORY.md",
-    "nextAction": "Expansion #236 is merged/deployed and HTTP-verified. Review the Kaspa-first directory ordering follow-up; preserve 104 listings, including KAEN, and the holder-reference policy. Rendering/phone acceptance remains separate."
+    "nextAction": "Kaspa-first ordering #237 merged/deployed as 478dfc16b6843eef93603b3905d63b7a31f2f1ef with exact public HTML verification; maintain the 104 listings and holder-reference policy. Rendering/phone acceptance remains separate."
+  },
+  "publicLeaderboard": {
+    "task": "UX-011",
+    "status": "implementation-in-progress",
+    "evidence": "docs/PUBLIC-LEADERBOARD.md",
+    "nextAction": "Review the paired HQ/Mini leaderboard and server-graded public practice flow. Public Alpha standings remain separate from future private ranked seasons and payouts."
   }
 }

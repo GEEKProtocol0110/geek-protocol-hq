@@ -63,6 +63,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | SEO-002 | P1 | in-progress | Publish clear project facts and verify search discovery | Maintainer prepares source; founder approves merge; verified property owner handles search-console evidence |
 | ECO-002 | P1 | done | Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream | Maintainer prepares source; founder reviews release and supplies additional Hall links |
 | ECO-003 | P1 | in-progress | Expand KRC-20 project links and preserve token lookups for holders | Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned |
+| UX-011 | P1 | in-progress | Public HQ global leaderboard and separate shared Mini standings | Maintainer prepares source and verification; founder approves release; independent abuse review unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -914,3 +915,20 @@ Acceptance:
 - Place both KRC-20 sections after the ten general Kaspa categories, with matching navigation, filter and structured-data order; preserve all 104 entry records.
 
 Evidence/specification: [docs/KRC20-DIRECTORY-REVIEW.md](../../docs/KRC20-DIRECTORY-REVIEW.md), [docs/krc20-directory-review.json](../../docs/krc20-directory-review.json), [docs/kaspa-directory.json](../../docs/kaspa-directory.json), [scripts/kaspa-directory.mjs](../../scripts/kaspa-directory.mjs), [tests/kaspa-directory.test.js](../../tests/kaspa-directory.test.js), [public/kaspa/directory/index.html](../../public/kaspa/directory/index.html).
+
+## UX-011: Public HQ global leaderboard and separate shared Mini standings
+
+**P1 / in-progress.** Owner: Maintainer prepares source and verification; founder approves release; independent abuse review unassigned. Dependencies: none.
+
+Next action: Review the paired HQ/Mini source candidates, exact-head CI and cross-site public-round rehearsal. Deploy HQ first, then Mini after founder merge approval. Rendered/device acceptance remains separate.
+
+Acceptance:
+
+- Provide a public /leaderboard/ in HQ with separate HQ and Mini filters and native entry points from Home, Play and My HQ; no sign-in to view.
+- Mini provides a Mini-only /leaderboard and an explicit public challenge opt-in; existing local scores are never imported or ranked.
+- Server owns Mini selection, grading, deadline and attempt state; atomic retries cannot change answers or create duplicate scores; equal scores share rank.
+- Keep HQ accounts, rewards, private-bank seasons and all economic/ownership holds separate; do not claim that public practice banks prevent lookup, bots or repeat browser identities.
+- Use the existing HQ Redis in an isolated namespace and a same-origin Mini proxy with HttpOnly identity cookie, origin checks, bounded quotas, expiry and self-removal. No provider secret is copied to Mini.
+- Test real Redis concurrency, expiry, authorization, mode/topic separation and removal races; run regression, metadata, security and continuity checks.
+
+Evidence/specification: [docs/PUBLIC-LEADERBOARD.md](../../docs/PUBLIC-LEADERBOARD.md), [server/mini/competition.js](../../server/mini/competition.js), [api/mini.js](../../api/mini.js), [public/leaderboard/index.html](../../public/leaderboard/index.html), [public/leaderboard/leaderboard.js](../../public/leaderboard/leaderboard.js), [tests/mini-competition.test.js](../../tests/mini-competition.test.js).
