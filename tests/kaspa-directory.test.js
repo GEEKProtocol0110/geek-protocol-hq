@@ -55,9 +55,25 @@ test('KRC-20 listings require matching records, accepted recent activity and ins
   assert.match(rendered,/KRC-20 record/);
   assert.match(rendered,/Activity source/);
   const report=JSON.parse(readFileSync('docs/krc20-directory-review.json','utf8'));
-  assert.deepEqual(catalog.entries.filter(e=>e.krc20).map(e=>e.krc20.ticker).sort(),report.includedTickers);
+  assert.deepEqual(catalog.entries.flatMap(e=>e.krc20 ? [e.krc20.ticker] : e.tokenReference ? [e.tokenReference.ticker] : []).sort(),report.includedTickers);
   assert.equal(report.includedCount+report.held.length,report.candidateCount);
   assert.ok(report.notExhaustive);
+});
+
+test('holder lookups preserve quiet tokens without asserting a current project website', () => {
+  const index=catalog.entries.findIndex(e=>e.tokenReference);
+  assert.ok(index>=0);
+  const quiet=structuredClone(catalog);
+  quiet.entries[index].tokenReference.lastObservedActivityAt='2020-01-01T00:00:00Z';
+  validateCatalog(quiet);
+  const output=renderCatalog(quiet).catalog;
+  assert.match(output,/Token record available/);
+  assert.match(output,/Earlier sampled operation/);
+  for(const mutate of [
+    token=>{token.recordStatus=404;}, token=>{token.deploymentHash='unknown';},
+    token=>{token.recordUrl='https://example.invalid/';},
+    token=>{token.ticker=catalog.entries.find(e=>e.krc20).krc20.ticker;}
+  ]) {const copy=structuredClone(catalog);mutate(copy.entries[index].tokenReference);assert.throws(()=>validateCatalog(copy));}
 });
 
 test('shipped filters combine words and category, handle no matches and reset accessibly', async () => {

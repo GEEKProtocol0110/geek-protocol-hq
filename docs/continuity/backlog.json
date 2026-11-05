@@ -1480,13 +1480,13 @@
       "id": "ECO-003",
       "priority": "P1",
       "status": "in-progress",
-      "title": "Expand the directory with checked KRC-20 projects and dated activity evidence",
+      "title": "Expand KRC-20 project links and preserve token lookups for holders",
       "owner": "Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned",
-      "nextAction": "Validate the 23-project candidate and publish a reviewable PR. Preserve the 21-item needs-review queue and state coverage limits; merge and production evidence remain separate.",
+      "nextAction": "Review the revised 44-name candidate: 24 checked project destinations, 19 additional verified holder lookups and one unconfirmed identity. Quiet activity or an uncertain website does not remove a confirmed token record. Merge/deployment remain separate.",
       "acceptance": [
-        "Review all 32 KasBay KRC-20 project candidates plus 12 additional sourced projects; include every reviewed candidate with an inspected matching destination and accepted KRC-20 activity within the 90-day snapshot window.",
-        "List the project destination, ticker, explicit Kaspa Mainnet/KRC-20 record, dated link check and activity source in crawlable HTML. Social hubs can replace unavailable project sites when identity is checked.",
-        "Keep KRC-20 distinct from KCC-20 and L2 versions, explain known migration context and avoid claiming that token activity proves an active team or complete ecosystem coverage.",
+        "Review all 44 sourced candidates and retain every confirmed KRC-20 asset as a project listing or holder lookup, with link/activity status separate from token existence.",
+        "Publish native project links where inspected and native matching token-record lookups for holders otherwise; label status and dated evidence without declaring coins dead.",
+        "Keep KRC-20 distinct from KCC-20/L2 versions, explain known migrations and the unresolved GHOADFI identity, and avoid active-team or exhaustive-coverage claims.",
         "Record held links and insufficient evidence without labeling the entire project dead. Preserve existing directory and Hall credits; make no automated publication or visitor-side third-party call.",
         "Verify data/HTML/schema parity, accepted activity dates and token/source identity, search/category shortcuts, metadata and continuity. Record actual CI/preview and browser limits."
       ],

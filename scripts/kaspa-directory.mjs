@@ -33,6 +33,14 @@ function projectEvidence(entry, policy) {
   }
 }
 function renderEvidence(entry) {
+  if (entry.tokenReference) {
+    const token=entry.tokenReference;
+    return `<div class="directory-evidence"><span class="directory-activity">Token record available</span><dl>
+            <div><dt>Record checked</dt><dd>${time(token.recordCheckedAt)}</dd></div>
+            <div><dt>Project status</dt><dd>${esc(token.statusNote)}</dd></div>${token.lastObservedActivityAt ? `
+            <div><dt>Earlier sampled operation</dt><dd>${time(token.lastObservedActivityAt)}</dd></div>` : ''}
+          </dl><div class="directory-evidence-links">${link(token.recordUrl,'KRC-20 record ↗')}${link(token.activityUrl,'Activity lookup ↗')}</div></div>`;
+  }
   if (!entry.krc20) return '';
   const token = entry.krc20;
   return `<div class="directory-evidence"><span class="directory-activity">KRC-20 activity observed</span><dl>
@@ -67,6 +75,20 @@ export function validateCatalog(data) {
       assert.equal(entry.status,'listed'); projectEvidence(entry,data.krc20Review);
       assert.ok(!tickers.has(entry.krc20.ticker),`Duplicate KRC-20 ticker: ${entry.krc20.ticker}`); tickers.add(entry.krc20.ticker);
     } else assert.ok(!entry.krc20,'KRC-20 project evidence belongs in its dedicated category');
+    if (entry.category === 'krc20-reference') {
+      const token=entry.tokenReference;
+      assert.ok(token && !entry.krc20); assert.equal(entry.status,'listed');
+      assert.match(token.ticker,/^[A-Z][A-Z0-9]{3,5}$/);
+      assert.equal(token.standard,'KRC-20'); assert.equal(token.network,'Kaspa Mainnet');
+      assert.equal(token.recordUrl,`https://api.kasplex.org/v1/krc20/token/${token.ticker}`);
+      assert.equal(entry.url,token.recordUrl); assert.equal(entry.source,token.recordUrl);
+      assert.equal(token.activityUrl,`https://api.kasplex.org/v1/krc20/oplist?tick=${token.ticker}`);
+      assert.match(token.deploymentHash,/^[a-f0-9]{64}$/); assert.equal(token.recordStatus,200);
+      const checked=instant(token.recordCheckedAt);
+      if(token.lastObservedActivityAt) assert.ok(instant(token.lastObservedActivityAt)<=checked);
+      assert.ok(token.statusNote.trim());
+      assert.ok(!tickers.has(token.ticker),`Duplicate KRC-20 ticker: ${token.ticker}`);tickers.add(token.ticker);
+    } else assert.ok(!entry.tokenReference,'Holder references belong in their dedicated category');
     for (const field of ['url','source']) {
       const url = new URL(entry[field]);
       assert.ok(url.protocol === 'https:' && !url.username && !url.password, entry.id);
@@ -86,9 +108,9 @@ export function renderCatalog(data) {
         <p class="directory-category-note">${esc(category.description)}</p>` : ''}${category.links ? `
         <div class="directory-category-links">${category.links.map(item=>link(item.url,esc(item.label)+' ↗')).join('')}</div>` : ''}
         <div class="directory-grid">${entries.map(entry => `<article class="directory-card" id="resource-${entry.id}" data-directory-card data-category="${entry.category}" data-search="${esc([entry.name,category.name,entry.description,entry.url,entry.status].join(' '))}">
-          <span class="directory-kind">${entry.status === 'legacy' ? 'Legacy · service closed' : esc(category.name)}</span>
+          <span class="directory-kind">${entry.status === 'legacy' ? 'Legacy · service closed' : entry.tokenReference ? 'Holder reference · token record' : esc(category.name)}</span>
           <h3>${link(entry.url, `${esc(entry.name)} <span aria-hidden="true">↗</span>`)}</h3>
-          <p>${esc(entry.description)}</p><span class="directory-domain">${esc(new URL(entry.url).hostname)}</span>${entry.krc20 ? '\n          '+renderEvidence(entry) : ''}
+          <p>${esc(entry.description)}</p><span class="directory-domain">${esc(new URL(entry.url).hostname)}</span>${entry.krc20 || entry.tokenReference ? '\n          '+renderEvidence(entry) : ''}
           <div class="directory-source">${link(entry.source, 'Source <span aria-hidden="true">↗</span>')}<span>Reviewed <time datetime="${entry.reviewedAt}">${entry.reviewedAt}</time></span></div>
         </article>`).join('\n')}</div>
       </section>`;

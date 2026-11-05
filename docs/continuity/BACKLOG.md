@@ -62,7 +62,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | DOC-002 | P1 | done | Expose project documents and contributors on the homepage | Maintainer; founder approves merge |
 | SEO-002 | P1 | in-progress | Publish clear project facts and verify search discovery | Maintainer prepares source; founder approves merge; verified property owner handles search-console evidence |
 | ECO-002 | P1 | done | Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream | Maintainer prepares source; founder reviews release and supplies additional Hall links |
-| ECO-003 | P1 | in-progress | Expand the directory with checked KRC-20 projects and dated activity evidence | Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned |
+| ECO-003 | P1 | in-progress | Expand KRC-20 project links and preserve token lookups for holders | Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -898,17 +898,17 @@ Acceptance:
 
 Evidence/specification: [docs/KASPA-DIRECTORY.md](../../docs/KASPA-DIRECTORY.md), [docs/kaspa-directory.json](../../docs/kaspa-directory.json), [scripts/kaspa-directory.mjs](../../scripts/kaspa-directory.mjs), [tests/kaspa-directory.test.js](../../tests/kaspa-directory.test.js), [public/kaspa/directory/index.html](../../public/kaspa/directory/index.html), [public/thanks/index.html](../../public/thanks/index.html).
 
-## ECO-003: Expand the directory with checked KRC-20 projects and dated activity evidence
+## ECO-003: Expand KRC-20 project links and preserve token lookups for holders
 
 **P1 / in-progress.** Owner: Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned. Dependencies: ECO-002.
 
-Next action: Validate the 23-project candidate and publish a reviewable PR. Preserve the 21-item needs-review queue and state coverage limits; merge and production evidence remain separate.
+Next action: Review the revised 44-name candidate: 24 checked project destinations, 19 additional verified holder lookups and one unconfirmed identity. Quiet activity or an uncertain website does not remove a confirmed token record. Merge/deployment remain separate.
 
 Acceptance:
 
-- Review all 32 KasBay KRC-20 project candidates plus 12 additional sourced projects; include every reviewed candidate with an inspected matching destination and accepted KRC-20 activity within the 90-day snapshot window.
-- List the project destination, ticker, explicit Kaspa Mainnet/KRC-20 record, dated link check and activity source in crawlable HTML. Social hubs can replace unavailable project sites when identity is checked.
-- Keep KRC-20 distinct from KCC-20 and L2 versions, explain known migration context and avoid claiming that token activity proves an active team or complete ecosystem coverage.
+- Review all 44 sourced candidates and retain every confirmed KRC-20 asset as a project listing or holder lookup, with link/activity status separate from token existence.
+- Publish native project links where inspected and native matching token-record lookups for holders otherwise; label status and dated evidence without declaring coins dead.
+- Keep KRC-20 distinct from KCC-20/L2 versions, explain known migrations and the unresolved GHOADFI identity, and avoid active-team or exhaustive-coverage claims.
 - Record held links and insufficient evidence without labeling the entire project dead. Preserve existing directory and Hall credits; make no automated publication or visitor-side third-party call.
 - Verify data/HTML/schema parity, accepted activity dates and token/source identity, search/category shortcuts, metadata and continuity. Record actual CI/preview and browser limits.
 
