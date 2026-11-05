@@ -61,7 +61,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-010 | P0 | needs-evidence | Redirect trailing-slash apex page links to the canonical host | Maintainer; founder approves production merge |
 | DOC-002 | P1 | done | Expose project documents and contributors on the homepage | Maintainer; founder approves merge |
 | SEO-002 | P1 | in-progress | Publish clear project facts and verify search discovery | Maintainer prepares source; founder approves merge; verified property owner handles search-console evidence |
-| ECO-002 | P1 | in-progress | Build a public Kaspa directory and acknowledge Kas.fyi | Maintainer prepares source; founder reviews release and supplies additional Hall links |
+| ECO-002 | P1 | in-progress | Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream | Maintainer prepares source; founder reviews release and supplies additional Hall links |
 
 ## CONT-001: Publish the continuation system
 
@@ -881,15 +881,15 @@ Acceptance:
 
 Evidence/specification: [public/about/index.html](../../public/about/index.html), [public/about/assets/about.css](../../public/about/assets/about.css), [public/index.html](../../public/index.html), [docs/site-pages.json](../../docs/site-pages.json), [docs/SEARCH-DISCOVERY-REVIEW-2026-11-03.md](../../docs/SEARCH-DISCOVERY-REVIEW-2026-11-03.md).
 
-## ECO-002: Build a public Kaspa directory and acknowledge Kas.fyi
+## ECO-002: Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream
 
 **P1 / in-progress.** Owner: Maintainer prepares source; founder reviews release and supplies additional Hall links. Dependencies: none.
 
-Next action: Complete checks and publish a reviewable PR. Record exact-head CI and preview evidence before release review; add other Hall acknowledgments when supplied.
+Next action: Directory and Kas.fyi credit shipped in #233; review the dedicated Kaspa Stream Hall card requested afterward. Other Hall links await founder supply.
 
 Acceptance:
 
-- Keep the Kaspa beginner guide and all existing Hall credits intact; add the founder-requested Kas.fyi thank-you with accurate legacy status.
+- Keep the Kaspa beginner guide and existing Hall credits intact; credit Kas.fyi with legacy status and give Kaspa Stream a dedicated thank-you card.
 - Provide native HTML resource links, useful categories, accessible search/reset and a no-JavaScript browsing path.
 - Record primary sources and editorial review dates; distinguish sourced listings from availability, audits and endorsements.
 - Expose the directory from Home, Kaspa and the Hall, with canonical metadata and sitemap coverage.

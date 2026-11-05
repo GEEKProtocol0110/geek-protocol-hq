@@ -35,3 +35,9 @@ No backend, dependency, API, wallet, payment, account, provider security or bot-
 ## Validation record
 
 Initial targeted checks: 10/10 tests for directory behavior/parity, homepage flow and Thanks music. Final targeted suite: 15/15 pass, zero failures/skips. Final local catalog, metadata/sitemap (44 HTML records, 30 indexed routes), continuity, whitepaper parity, repository presentation and security checks pass (311 security assertions); whitespace and changed-JavaScript syntax checks pass. Browser automation is unavailable in this session, so rendered desktop/narrow-screen and physical-phone acceptance are not claimed. Exact-head CI and protected-preview HTTP delivery will be recorded in the PR description. Not merged or deployed at candidate preparation.
+
+## Released directory and Hall follow-up — November 5, 2026
+
+Founder-approved #233 merged as `4d83352dcf2e1d42301261997d14161c2d881c89`, matching checked tree `81ff95c140312180242ab752316582b7ab9b6034`. CI 41961204573 passed 728 HQ tests and nine signer checks. Production `dpl_EvPcBFWmVfpM9dDAJHMVRVa5RQZ9` is READY on that source with both domains assigned. Seven canonical HTTP responses match the checked files exactly, including the 60-card directory, Hall and homepage links. Rendering/phone acceptance remains separate. Full evidence is retained in https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/233.
+
+The founder then requested a dedicated Kaspa Stream thank-you card. Its directory entry and secondary link under Kas.fyi were already live; the separate Hall acknowledgment is this follow-up candidate. See `docs/HALL-OF-THANKS.md`. This adds no directory resource, backend flow or relationship claim.
