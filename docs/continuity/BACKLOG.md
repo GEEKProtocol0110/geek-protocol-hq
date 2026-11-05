@@ -885,11 +885,11 @@ Evidence/specification: [public/about/index.html](../../public/about/index.html)
 
 **P1 / in-progress.** Owner: Maintainer prepares source; founder reviews release and supplies additional Hall links. Dependencies: none.
 
-Next action: Directory and Kas.fyi credit shipped in #233; review the dedicated Kaspa Stream Hall card requested afterward. Other Hall links await founder supply.
+Next action: Directory and both explorer acknowledgments shipped in #233/#234; review the requested final-position Kas.fyi card labeled Special thank you. Other Hall links await founder supply.
 
 Acceptance:
 
-- Keep the Kaspa beginner guide and existing Hall credits intact; credit Kas.fyi with legacy status and give Kaspa Stream a dedicated thank-you card.
+- Keep the Kaspa beginner guide and existing Hall credits intact; Kas.fyi is the final ecosystem card labeled Special thank you, and Kaspa Stream has its own thank-you card.
 - Provide native HTML resource links, useful categories, accessible search/reset and a no-JavaScript browsing path.
 - Record primary sources and editorial review dates; distinguish sourced listings from availability, audits and endorsements.
 - Expose the directory from Home, Kaspa and the Hall, with canonical metadata and sitemap coverage.
