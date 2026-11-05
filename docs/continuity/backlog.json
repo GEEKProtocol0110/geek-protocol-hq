@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-03",
+  "updatedAt": "2026-11-05",
   "priorityOrder": [
     "P0",
     "P1",
@@ -1442,6 +1442,30 @@
         "public/index.html",
         "docs/site-pages.json",
         "docs/SEARCH-DISCOVERY-REVIEW-2026-11-03.md"
+      ]
+    },
+    {
+      "id": "ECO-002",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Build a public Kaspa directory and acknowledge Kas.fyi",
+      "owner": "Maintainer prepares source; founder reviews release and supplies additional Hall links",
+      "nextAction": "Complete checks and publish a reviewable PR. Record exact-head CI and preview evidence before release review; add other Hall acknowledgments when supplied.",
+      "acceptance": [
+        "Keep the Kaspa beginner guide and all existing Hall credits intact; add the founder-requested Kas.fyi thank-you with accurate legacy status.",
+        "Provide native HTML resource links, useful categories, accessible search/reset and a no-JavaScript browsing path.",
+        "Record primary sources and editorial review dates; distinguish sourced listings from availability, audits and endorsements.",
+        "Expose the directory from Home, Kaspa and the Hall, with canonical metadata and sitemap coverage.",
+        "Run catalog, filter, metadata, continuity and relevant regression checks; record preview and physical-device limits honestly."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/KASPA-DIRECTORY.md",
+        "docs/kaspa-directory.json",
+        "scripts/kaspa-directory.mjs",
+        "tests/kaspa-directory.test.js",
+        "public/kaspa/directory/index.html",
+        "public/thanks/index.html"
       ]
     }
   ]

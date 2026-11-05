@@ -1,0 +1,656 @@
+{
+  "schema": 1,
+  "reviewedAt": "2026-11-05",
+  "categories": [
+    {
+      "id": "learn",
+      "name": "Start & learn"
+    },
+    {
+      "id": "wallets",
+      "name": "Wallets"
+    },
+    {
+      "id": "explorers",
+      "name": "Explorers & data"
+    },
+    {
+      "id": "developers",
+      "name": "Developer tools"
+    },
+    {
+      "id": "research",
+      "name": "Research & proposals"
+    },
+    {
+      "id": "mining",
+      "name": "Nodes & mining"
+    },
+    {
+      "id": "ecosystem",
+      "name": "Apps & token ecosystems"
+    },
+    {
+      "id": "payments",
+      "name": "Payments & merchants"
+    },
+    {
+      "id": "community",
+      "name": "News & community"
+    },
+    {
+      "id": "directories",
+      "name": "More directories"
+    },
+    {
+      "id": "geek",
+      "name": "From Geek"
+    },
+    {
+      "id": "legacy",
+      "name": "Legacy contributions"
+    }
+  ],
+  "entries": [
+    {
+      "id": "kaspa",
+      "category": "learn",
+      "name": "Kaspa.org",
+      "url": "https://kaspa.org/",
+      "description": "Community entry point for Kaspa and its ecosystem.",
+      "source": "https://kaspa.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "lore",
+      "category": "learn",
+      "name": "Kaspa LORE",
+      "url": "https://kaspa.org/lore",
+      "description": "Background on Kaspa and the ideas behind its blockDAG.",
+      "source": "https://kaspa.org/lore",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "docs",
+      "category": "learn",
+      "name": "Kaspa documentation",
+      "url": "https://docs.kaspa.org/",
+      "description": "Protocol and integration documentation.",
+      "source": "https://docs.kaspa.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "wiki",
+      "category": "learn",
+      "name": "Kaspa Wiki",
+      "url": "https://wiki.kaspa.org/en/faq",
+      "description": "Community-maintained answers and reference material.",
+      "source": "https://wiki.kaspa.org/en/faq",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "hodl",
+      "category": "learn",
+      "name": "Kaspa wallet guide",
+      "url": "https://kaspa.org/hodl",
+      "description": "Compare wallet platforms and read the self-custody introduction.",
+      "source": "https://kaspa.org/hodl",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "kaspium",
+      "category": "wallets",
+      "name": "Kaspium",
+      "url": "https://kaspium.io/",
+      "description": "Open-source Kaspa wallet for Android and iOS.",
+      "source": "https://github.com/azbuky/kaspium_wallet",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "ng",
+      "category": "wallets",
+      "name": "Kaspa NG",
+      "url": "https://kaspa-ng.org/",
+      "description": "Desktop node, wallet and blockDAG visualizer.",
+      "source": "https://github.com/aspectron/kaspa-ng",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "kasware",
+      "category": "wallets",
+      "name": "KasWare",
+      "url": "https://www.kasware.xyz/",
+      "description": "Wallet with browser and mobile interfaces.",
+      "source": "https://docs.kasware.xyz/wallet",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "wallet-directory",
+      "category": "wallets",
+      "name": "Kaspa Hub wallet directory",
+      "url": "https://kaspahub.org/wallets/",
+      "description": "Browse wallet options by platform and features.",
+      "source": "https://kaspahub.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "stream",
+      "category": "explorers",
+      "name": "Kaspa Stream",
+      "url": "https://kaspa.stream/",
+      "description": "Block explorer and network data.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "explorer",
+      "category": "explorers",
+      "name": "Kaspa Explorer",
+      "url": "https://explorer.kaspa.org/",
+      "description": "Look up blocks, transactions and public addresses.",
+      "source": "https://kaspa.org/hodl",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "graph",
+      "category": "explorers",
+      "name": "Graph Inspector",
+      "url": "https://kgi.kaspad.net/",
+      "description": "Watch the blockDAG take shape.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "api",
+      "category": "explorers",
+      "name": "Kaspa REST API",
+      "url": "https://api.kaspa.org/docs",
+      "description": "Browse public API endpoints and response formats.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "build",
+      "category": "developers",
+      "name": "Build on Kaspa",
+      "url": "https://kaspa.org/build",
+      "description": "Entry point for developer resources.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "rusty",
+      "category": "developers",
+      "name": "Rusty Kaspa",
+      "url": "https://github.com/kaspanet/rusty-kaspa",
+      "description": "Core implementation and development source.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "releases",
+      "category": "developers",
+      "name": "Rusty Kaspa releases",
+      "url": "https://github.com/kaspanet/rusty-kaspa/releases",
+      "description": "Published release notes and artifacts.",
+      "source": "https://github.com/kaspanet/rusty-kaspa",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "wasm",
+      "category": "developers",
+      "name": "Kaspa WASM SDK",
+      "url": "https://kaspa.aspectron.org/docs/",
+      "description": "Browser and Node.js SDK reference.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "python",
+      "category": "developers",
+      "name": "Kaspa Python SDK",
+      "url": "https://github.com/kaspanet/kaspa-python-sdk",
+      "description": "Python integration library.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "indexer",
+      "category": "developers",
+      "name": "Simply Kaspa Indexer",
+      "url": "https://github.com/supertypo/simply-kaspa-indexer",
+      "description": "Standalone indexing project.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "js",
+      "category": "developers",
+      "name": "kaspa-js",
+      "url": "https://github.com/K-Kluster/kaspa-js",
+      "description": "Community JavaScript tooling.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "silverscript",
+      "category": "developers",
+      "name": "Silverscript",
+      "url": "https://github.com/kaspanet/silverscript",
+      "description": "Covenant scripting tooling; consult current project documentation.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "toccata",
+      "category": "developers",
+      "name": "Toccata developer guide",
+      "url": "https://docs.kaspa.org/toccata",
+      "description": "Documentation for Toccata development.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "faucet",
+      "category": "developers",
+      "name": "Kaspa testnet faucet",
+      "url": "https://faucet-testnet.kaspanet.io/",
+      "description": "Test coins for development, separate from Mainnet KAS.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "forum",
+      "category": "research",
+      "name": "Kaspa Research",
+      "url": "https://research.kas.pa/",
+      "description": "Technical research and protocol discussion.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "kips",
+      "category": "research",
+      "name": "Kaspa Improvement Proposals",
+      "url": "https://github.com/kaspanet/kips",
+      "description": "Proposals and their recorded status.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "ghostdag",
+      "category": "research",
+      "name": "PHANTOM / GHOSTDAG paper",
+      "url": "https://eprint.iacr.org/2018/104",
+      "description": "Original blockDAG ordering research on IACR.",
+      "source": "https://eprint.iacr.org/2018/104",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "dagknight",
+      "category": "research",
+      "name": "DAG-KNIGHT paper",
+      "url": "https://eprint.iacr.org/2022/1494",
+      "description": "Consensus research paper on IACR; research is distinct from deployment.",
+      "source": "https://eprint.iacr.org/2022/1494",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "programmability",
+      "category": "research",
+      "name": "Programmability documentation",
+      "url": "https://docs.kaspa.org/programmability",
+      "description": "Read the current development models and their status.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "pnn",
+      "category": "mining",
+      "name": "Public Node Network",
+      "url": "https://kaspa.aspectron.org/rpc/pnn.html",
+      "description": "Connection information for public nodes.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "docker",
+      "category": "mining",
+      "name": "Rusty Kaspad container",
+      "url": "https://hub.docker.com/r/kaspanet/rusty-kaspad",
+      "description": "Node container distribution.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "dns",
+      "category": "mining",
+      "name": "Kaspa DNS Seeder",
+      "url": "https://github.com/kaspanet/dnsseeder",
+      "description": "Peer discovery infrastructure.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "khost",
+      "category": "mining",
+      "name": "kHost",
+      "url": "https://github.com/aspectron/khost",
+      "description": "Node hosting tooling.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "mining-links",
+      "category": "mining",
+      "name": "KasBay mining resources",
+      "url": "https://kasbay.org/categories/pools",
+      "description": "Explore community mining listings.",
+      "source": "https://kasbay.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "kasplex",
+      "category": "ecosystem",
+      "name": "Kasplex",
+      "url": "https://kasplex.org/",
+      "description": "Project home for Kasplex token protocols and layer-two work.",
+      "source": "https://kasplex.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "kasplex-explorer",
+      "category": "ecosystem",
+      "name": "Kasplex Explorer",
+      "url": "https://explorer.kasplex.org/",
+      "description": "Explore the Kasplex network, separate from the Kaspa base-layer explorer.",
+      "source": "https://explorer.kasplex.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "kaspacom",
+      "category": "ecosystem",
+      "name": "KaspaCom",
+      "url": "https://kaspa.com/",
+      "description": "Community platform for Kaspa ecosystem tools and tokens.",
+      "source": "https://kaspa.com/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "projects",
+      "category": "ecosystem",
+      "name": "Kaspa Hub projects",
+      "url": "https://kaspahub.org/projects/",
+      "description": "Discover applications and community projects.",
+      "source": "https://kaspahub.org/ecosystem/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "merchants",
+      "category": "payments",
+      "name": "Kaspa Hub merchants",
+      "url": "https://kaspahub.org/merchants/",
+      "description": "Directory of businesses listing Kaspa payment support.",
+      "source": "https://kaspahub.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "solutions",
+      "category": "payments",
+      "name": "Kaspa Hub payment solutions",
+      "url": "https://kaspahub.org/solutions/",
+      "description": "Browse merchant integration tools.",
+      "source": "https://kaspahub.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "kasmap",
+      "category": "payments",
+      "name": "KasMap",
+      "url": "https://www.kasmap.org/",
+      "description": "Explore community locations and events.",
+      "source": "https://kaspahub.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "kasmedia",
+      "category": "community",
+      "name": "KASmedia",
+      "url": "https://kasmedia.com/",
+      "description": "Reporting, interviews and technology coverage.",
+      "source": "https://kaspa.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "qa",
+      "category": "community",
+      "name": "Kaspa Q&A",
+      "url": "https://qa.kas.pa/",
+      "description": "Ask and explore technical questions.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "discord",
+      "category": "community",
+      "name": "Kaspa Discord",
+      "url": "https://discord.gg/kaspa",
+      "description": "Community discussion server.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "rnd",
+      "category": "community",
+      "name": "Kaspa R&D Telegram",
+      "url": "https://t.me/kasparnd",
+      "description": "Research and development discussion.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "smiths",
+      "category": "community",
+      "name": "Kas Smiths",
+      "url": "https://kas-smiths.org/",
+      "description": "Builder discussion and workshop.",
+      "source": "https://kaspa.org/build",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "communities",
+      "category": "community",
+      "name": "Kaspa Hub communities",
+      "url": "https://kaspahub.org/communities/",
+      "description": "Find additional community chats and regional groups.",
+      "source": "https://kaspahub.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "news",
+      "category": "community",
+      "name": "Kaspa Hub news sources",
+      "url": "https://kaspahub.org/sources/",
+      "description": "Browse additional publications and channels.",
+      "source": "https://kaspahub.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "hub",
+      "category": "directories",
+      "name": "Kaspa Hub",
+      "url": "https://kaspahub.org/",
+      "description": "A broader community resource directory.",
+      "source": "https://kaspahub.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "kasbay",
+      "category": "directories",
+      "name": "KasBay",
+      "url": "https://kasbay.org/",
+      "description": "Browse ecosystem services by category.",
+      "source": "https://kasbay.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "ecosystem",
+      "category": "directories",
+      "name": "Kaspa Hub ecosystem",
+      "url": "https://kaspahub.org/ecosystem/",
+      "description": "Expand your search across community projects.",
+      "source": "https://kaspahub.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "resources",
+      "category": "directories",
+      "name": "Kaspa Hub resources",
+      "url": "https://kaspahub.org/resources/",
+      "description": "More learning and reference links.",
+      "source": "https://kaspahub.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "developer-directory",
+      "category": "directories",
+      "name": "Kaspa Hub developer directory",
+      "url": "https://kaspahub.org/developers/",
+      "description": "More libraries and integration tools.",
+      "source": "https://kaspahub.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "exchanges",
+      "category": "directories",
+      "name": "Kaspa Hub exchanges",
+      "url": "https://kaspahub.org/exchanges/",
+      "description": "Compare exchange listings; availability varies by location.",
+      "source": "https://kaspahub.org/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "geek-guide",
+      "category": "geek",
+      "name": "Geek Kaspa field guide",
+      "url": "https://www.geekprotocol.xyz/kaspa/",
+      "description": "Our beginner-friendly introduction to Kaspa.",
+      "source": "https://www.geekprotocol.xyz/kaspa/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "geek-study",
+      "category": "geek",
+      "name": "Geek guided Study",
+      "url": "https://www.geekprotocol.xyz/study/",
+      "description": "Short lessons and untimed practice without a wallet.",
+      "source": "https://www.geekprotocol.xyz/study/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "geek-widget",
+      "category": "geek",
+      "name": "Geek Kaspa widget",
+      "url": "https://www.geekprotocol.xyz/tools/kaspa-widget/",
+      "description": "Setup guides for Geek’s Kaspa home-screen widget.",
+      "source": "https://www.geekprotocol.xyz/tools/kaspa-widget/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "kasfyi",
+      "category": "legacy",
+      "name": "Kas.fyi",
+      "url": "https://kas.fyi/",
+      "description": "Thank you for helping people explore Kaspa. The explorer has closed; its farewell directs visitors to Kaspa Stream.",
+      "source": "https://kas.fyi/",
+      "reviewedAt": "2026-11-05",
+      "status": "legacy"
+    },
+    {
+      "id": "tangem",
+      "category": "wallets",
+      "name": "Tangem Kaspa guide",
+      "url": "https://tangem.com/en/wallet-for/kaspa/",
+      "description": "Vendor information on its Kaspa hardware wallet offering.",
+      "source": "https://tangem.com/en/wallet-for/kaspa/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "ledger",
+      "category": "wallets",
+      "name": "Ledger Kaspa guide",
+      "url": "https://www.ledger.com/coin/wallet/kaspa",
+      "description": "Vendor information on Kaspa support and compatible wallet interfaces.",
+      "source": "https://www.ledger.com/coin/wallet/kaspa",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "onekey",
+      "category": "wallets",
+      "name": "OneKey Kaspa guide",
+      "url": "https://onekey.so/cryptos/kaspa-3f5bd4/",
+      "description": "Vendor information on its Kaspa wallet offering.",
+      "source": "https://onekey.so/cryptos/kaspa-3f5bd4/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed"
+    }
+  ]
+}

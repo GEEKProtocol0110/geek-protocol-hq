@@ -44,7 +44,9 @@
     "performance:baseline": "node scripts/performance-baseline.mjs",
     "questions:audit": "node scripts/audit-question-banks.mjs",
     "whitepaper:write": "node scripts/whitepaper.mjs --write",
-    "whitepaper:check": "node scripts/whitepaper.mjs"
+    "whitepaper:check": "node scripts/whitepaper.mjs",
+    "directory:write": "node scripts/kaspa-directory.mjs --write",
+    "directory:check": "node scripts/kaspa-directory.mjs"
   },
   "engines": {
     "node": ">=22"
