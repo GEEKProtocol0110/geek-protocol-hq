@@ -400,8 +400,8 @@
     {
       "file": "public/kaspa/directory/index.html",
       "path": "/kaspa/directory/",
-      "title": "Kaspa Directory \u2014 Wallets, Explorers, Tools & Community | Geek Protocol",
-      "description": "Explore public Kaspa resources: wallets, explorers, developer tools, research, mining, payments and community links. A growing, searchable directory from Geek Protocol.",
+      "title": "Kaspa Directory \u2014 KRC-20 Projects, Wallets & Tools | Geek Protocol",
+      "description": "Find Kaspa resources and checked KRC-20 project links, plus wallets, explorers, developer tools, research and community. Sources and dated activity checks included.",
       "index": true,
       "private": false,
       "lastmod": "2026-11-05",

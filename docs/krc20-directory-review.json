@@ -1,0 +1,191 @@
+{
+  "schema": 1,
+  "reviewedOn": "2026-11-04",
+  "timeZone": "America/Detroit",
+  "windowDays": 90,
+  "candidateCount": 44,
+  "includedCount": 23,
+  "notExhaustive": true,
+  "discoverySources": [
+    "https://kasbay.org/api/services",
+    "https://kaspa-lens.com/kaspa/tokens",
+    "Individual project websites and public profiles"
+  ],
+  "includedTickers": [
+    "BAKA",
+    "BURTLE",
+    "FAST",
+    "GEEK",
+    "GHOAD",
+    "KANGO",
+    "KAPA",
+    "KAPSA",
+    "KASBOT",
+    "KASMO",
+    "KASPER",
+    "KASPY",
+    "KEKE",
+    "KONAN",
+    "KREX",
+    "LULZ",
+    "NACHO",
+    "PEPE",
+    "PLUTO",
+    "PPKAS",
+    "SHIT",
+    "SZAR",
+    "WOLFY"
+  ],
+  "held": [
+    {
+      "ticker": "BTAI",
+      "disposition": "needs-review",
+      "reason": "No accepted operation within the 90-day snapshot window was confirmed.",
+      "observedLinkStatus": 200,
+      "lastObservedActivity": "2026-01-11T11:36:07.696000+00:00"
+    },
+    {
+      "ticker": "DOGK",
+      "disposition": "needs-review",
+      "reason": "Project destination or recent activity not confirmed.",
+      "observedLinkStatus": null,
+      "lastObservedActivity": "2026-11-02T14:55:25.570000+00:00"
+    },
+    {
+      "ticker": "FOMOON",
+      "disposition": "needs-review",
+      "reason": "Project destination or recent activity not confirmed.",
+      "observedLinkStatus": null,
+      "lastObservedActivity": "2026-10-22T07:36:06.727000+00:00"
+    },
+    {
+      "ticker": "GHOADFI",
+      "disposition": "needs-review",
+      "reason": "No accepted operation within the 90-day snapshot window was confirmed.",
+      "observedLinkStatus": null,
+      "lastObservedActivity": null
+    },
+    {
+      "ticker": "GRASS",
+      "disposition": "needs-review",
+      "reason": "Project destination or recent activity not confirmed.",
+      "observedLinkStatus": null,
+      "lastObservedActivity": "2026-10-23T14:31:15.487000+00:00"
+    },
+    {
+      "ticker": "HERPES",
+      "disposition": "needs-review",
+      "reason": "Earlier destination did not show matching project content; not published as a project link.",
+      "observedLinkStatus": 200,
+      "lastObservedActivity": "2026-10-09T11:32:37.042000+00:00"
+    },
+    {
+      "ticker": "KASFAM",
+      "disposition": "needs-review",
+      "reason": "Project destination or recent activity not confirmed.",
+      "observedLinkStatus": null,
+      "lastObservedActivity": "2026-10-08T15:54:39.893000+00:00"
+    },
+    {
+      "ticker": "KEIRO",
+      "disposition": "needs-review",
+      "reason": "Recent KRC-20 activity observed, but project destination returned a transport error."
+    },
+    {
+      "ticker": "KPAW",
+      "disposition": "needs-review",
+      "reason": "Earlier destination did not show matching project content; not published as a project link.",
+      "observedLinkStatus": 200,
+      "lastObservedActivity": "2026-11-03T21:39:15.373000+00:00"
+    },
+    {
+      "ticker": "KPTKAS",
+      "disposition": "needs-review",
+      "reason": "Recent KRC-20 activity observed, but project destination returned a transport error."
+    },
+    {
+      "ticker": "KYSOO",
+      "disposition": "needs-review",
+      "reason": "No accepted operation within the 90-day snapshot window was confirmed.",
+      "observedLinkStatus": 200,
+      "lastObservedActivity": "2025-12-05T02:59:02.810000+00:00"
+    },
+    {
+      "ticker": "MODENG",
+      "disposition": "needs-review",
+      "reason": "No accepted operation within the 90-day snapshot window was confirmed.",
+      "observedLinkStatus": null,
+      "lastObservedActivity": "2025-09-14T00:34:27.655000+00:00"
+    },
+    {
+      "ticker": "NEIRO",
+      "disposition": "needs-review",
+      "reason": "No accepted operation within the 90-day snapshot window was confirmed.",
+      "observedLinkStatus": 200,
+      "lastObservedActivity": "2025-10-02T18:54:33.430000+00:00"
+    },
+    {
+      "ticker": "PARROT",
+      "disposition": "needs-review",
+      "reason": "No accepted operation within the 90-day snapshot window was confirmed.",
+      "observedLinkStatus": 200,
+      "lastObservedActivity": "2026-07-15T17:56:19.968000+00:00"
+    },
+    {
+      "ticker": "POPKAT",
+      "disposition": "needs-review",
+      "reason": "Earlier destination did not show matching project content; not published as a project link.",
+      "observedLinkStatus": 200,
+      "lastObservedActivity": "2026-11-03T20:05:49.375000+00:00"
+    },
+    {
+      "ticker": "SHADOW",
+      "disposition": "needs-review",
+      "reason": "Project destination or recent activity not confirmed.",
+      "observedLinkStatus": null,
+      "lastObservedActivity": "2026-10-22T04:04:39.254000+00:00"
+    },
+    {
+      "ticker": "SNOWDN",
+      "disposition": "needs-review",
+      "reason": "Project destination or recent activity not confirmed.",
+      "observedLinkStatus": null,
+      "lastObservedActivity": "2026-11-05T03:08:50.911000+00:00"
+    },
+    {
+      "ticker": "SOMPS",
+      "disposition": "needs-review",
+      "reason": "Earlier destination did not show matching project content; not published as a project link.",
+      "observedLinkStatus": 200,
+      "lastObservedActivity": "2026-10-22T04:04:50.543000+00:00"
+    },
+    {
+      "ticker": "WORI",
+      "disposition": "needs-review",
+      "reason": "No accepted operation within the 90-day snapshot window was confirmed.",
+      "observedLinkStatus": 200,
+      "lastObservedActivity": "2026-06-19T10:36:27.631000+00:00"
+    },
+    {
+      "ticker": "YORAN",
+      "disposition": "needs-review",
+      "reason": "Project destination or recent activity not confirmed.",
+      "observedLinkStatus": null,
+      "lastObservedActivity": "2026-10-22T04:06:06.293000+00:00"
+    },
+    {
+      "ticker": "ZEAL",
+      "disposition": "needs-review",
+      "reason": "Project destination or recent activity not confirmed.",
+      "observedLinkStatus": 200,
+      "lastObservedActivity": "2026-11-05T04:32:20.227000+00:00"
+    }
+  ],
+  "limits": [
+    "Link HTTP 200 is not security or feature verification. Project identity content was inspected separately.",
+    "Accepted token activity does not establish an active team, real trading volume or ongoing development.",
+    "Public X profiles and community hubs are used when a matching destination is available; some require sign-in.",
+    "The mixed KaspaScreener dataset was not treated as a KRC-20 project registry because its records were L2 addresses.",
+    "No raw holder lists, wallet records or learner data are included."
+  ]
+}
