@@ -902,7 +902,7 @@ Evidence/specification: [docs/KASPA-DIRECTORY.md](../../docs/KASPA-DIRECTORY.md)
 
 **P1 / in-progress.** Owner: Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned. Dependencies: ECO-002.
 
-Next action: Review the revised 45-name candidate: 25 project destinations and 19 holder lookups. KAEN now uses founder-supplied @kaenarchitect with a matching public profile read and its separate KRC-20 record. GHOADFI remains unresolved. Merge/deployment remain separate.
+Next action: KRC-20 expansion #236 is merged/deployed (b38e27dedeec5ac6a014ff6647401d127749ea4e; CI 41974695614; production dpl_CRhPA23oi9PEs51aRjUU2P3GGnDw; exact canonical HTML/CSS/JS verified). Review the founder-requested Kaspa-first ordering follow-up: ten general Kaspa categories, then projects/holder lookups, then Geek/legacy. Preserve all 104 listings and evidence; follow-up merge/deployment remain separate.
 
 Acceptance:
 
@@ -911,5 +911,6 @@ Acceptance:
 - Keep KRC-20 distinct from KCC-20/L2 versions, explain known migrations and the unresolved GHOADFI identity, and avoid active-team or exhaustive-coverage claims.
 - Record held links and insufficient evidence without labeling the entire project dead. Preserve existing directory and Hall credits; make no automated publication or visitor-side third-party call.
 - Verify data/HTML/schema parity, accepted activity dates and token/source identity, search/category shortcuts, metadata and continuity. Record actual CI/preview and browser limits.
+- Place both KRC-20 sections after the ten general Kaspa categories, with matching navigation, filter and structured-data order; preserve all 104 entry records.
 
 Evidence/specification: [docs/KRC20-DIRECTORY-REVIEW.md](../../docs/KRC20-DIRECTORY-REVIEW.md), [docs/krc20-directory-review.json](../../docs/krc20-directory-review.json), [docs/kaspa-directory.json](../../docs/kaspa-directory.json), [scripts/kaspa-directory.mjs](../../scripts/kaspa-directory.mjs), [tests/kaspa-directory.test.js](../../tests/kaspa-directory.test.js), [public/kaspa/directory/index.html](../../public/kaspa/directory/index.html).

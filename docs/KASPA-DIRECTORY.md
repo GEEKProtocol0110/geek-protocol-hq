@@ -51,3 +51,9 @@ ECO-003 prepares a dedicated KRC-20 section with 23 projects from 44 researched 
 ### Holder-reference correction — November 5, 2026 (Detroit)
 
 The founder points out that quiet tokens still have holders. ECO-003 therefore preserves confirmed token records independently of website and recent-operation checks: 24 project listings plus 19 holder lookups, 103 resources/14 categories overall. ZEAL was mistakenly held despite passing evidence and is corrected. Of the earlier 21 names, 20 have freshly matched KRC-20 records; GHOADFI identity remains unconfirmed after a blocked fetch. This is not a no-holders or dead-token classification. The review document and JSON retain the original queue and the corrected current result.
+
+## Kaspa-first ordering — November 5, 2026 (Detroit)
+
+The founder requests KRC-20 after the Kaspa links. Put the ten general Kaspa resource categories first, followed by KRC-20 projects and holder lookups, then Geek resources and legacy contributions. The beginner field-guide link also precedes the KRC-20 shortcut. Preserve all 104 entry records and their relative order within categories. Generate section, category navigation, filter-option and structured-data order from the same maintained category array. This source follow-up does not refresh link/activity evidence or change the holder-reference policy.
+
+The preceding founder-approved #236 is merged as b38e27dedeec5ac6a014ff6647401d127749ea4e, with checked tree 3c73119f1bfce6d354b071f9468f03c9023a9835. CI 41974695614 succeeded. Production dpl_CRhPA23oi9PEs51aRjUU2P3GGnDw is READY on that merge with both canonical domains assigned; canonical HTML/CSS/JS returned HTTP 200 and matched source exactly. It shipped 104 resources, including 25 project listings and 19 holder lookups, with the supplied KAEN profile. Rendering/phone acceptance remains separate. This ordering follow-up awaits its own review and release.

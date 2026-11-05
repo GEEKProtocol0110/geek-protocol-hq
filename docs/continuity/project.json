@@ -84,8 +84,8 @@
   },
   "ecosystemDirectory": {
     "task": "ECO-003",
-    "status": "krc20-expansion-in-progress",
-    "evidence": "docs/KRC20-DIRECTORY-REVIEW.md",
-    "nextAction": "Review ECO-003: 25 project links and 19 holder lookups. KAEN now links @kaenarchitect with its separate confirmed KRC-20 record; GHOADFI identity remains unresolved."
+    "status": "kaspa-first-ordering-in-progress",
+    "evidence": "docs/KASPA-DIRECTORY.md",
+    "nextAction": "Expansion #236 is merged/deployed and HTTP-verified. Review the Kaspa-first directory ordering follow-up; preserve 104 listings, including KAEN, and the holder-reference policy. Rendering/phone acceptance remains separate."
   }
 }
