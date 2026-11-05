@@ -902,11 +902,11 @@ Evidence/specification: [docs/KASPA-DIRECTORY.md](../../docs/KASPA-DIRECTORY.md)
 
 **P1 / in-progress.** Owner: Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned. Dependencies: ECO-002.
 
-Next action: Review the revised 44-name candidate: 24 checked project destinations, 19 additional verified holder lookups and one unconfirmed identity. Quiet activity or an uncertain website does not remove a confirmed token record. Merge/deployment remain separate.
+Next action: Review revised candidate: 24 checked project destinations and 20 holder references across 45 researched names. KAEN has a verified token record; its official project site/profile remains unverified. One other identity (GHOADFI) remains unresolved. Merge/deployment remain separate.
 
 Acceptance:
 
-- Review all 44 sourced candidates and retain every confirmed KRC-20 asset as a project listing or holder lookup, with link/activity status separate from token existence.
+- Review all 45 sourced candidates, including founder-requested KAEN, and retain every confirmed KRC-20 asset as a project listing or holder lookup with status separate from token existence.
 - Publish native project links where inspected and native matching token-record lookups for holders otherwise; label status and dated evidence without declaring coins dead.
 - Keep KRC-20 distinct from KCC-20/L2 versions, explain known migrations and the unresolved GHOADFI identity, and avoid active-team or exhaustive-coverage claims.
 - Record held links and insufficient evidence without labeling the entire project dead. Preserve existing directory and Hall credits; make no automated publication or visitor-side third-party call.

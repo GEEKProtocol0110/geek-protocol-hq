@@ -2,7 +2,7 @@
 
 Task ECO-003. Revised November 5, 2026 (America/Detroit), based on deployed main `c7d780da18fb12e80b190c620476ee6b2409bf90` (#235). The founder asks for KRC-20 coverage and points out that people still hold tokens when a project website is uncertain or transfers are quiet. Confirmed token records must remain discoverable independently of project-link and activity status.
 
-The candidate now contains 24 project listings and 19 additional holder references: 43 confirmed assets from 44 researched names, 103 total directory resources and 14 categories. All 60 earlier resource records and Hall credits are preserved. GHOADFI remains an unconfirmed asset identity after its record request returned 403; this is not evidence that it has no holders. The candidate is not merged or deployed at this revision.
+The candidate now contains 24 project listings and 20 additional holder references: 44 confirmed assets from 45 researched names, 104 total directory resources and 14 categories. All 60 earlier resource records and Hall credits are preserved. GHOADFI remains an unconfirmed asset identity after its record request returned 403; this is not evidence that it has no holders. The candidate is not merged or deployed at this revision.
 
 ## What each listing establishes
 
@@ -14,7 +14,7 @@ KRC-20 is distinct from KCC-20 and EVM/L2 versions. Every confirmed listing link
 
 ## Review scope and correction
 
-Sources cover all 32 KasBay KRC-20 project listings plus 12 additional sourced names, 44 candidates total. The earlier 23-project selection incorrectly omitted ZEAL despite passing evidence; it is corrected as the 24th project listing. A fresh record pass matched 20 of the earlier 21 held names. The other 19 now have holder-reference cards. The earlier queue is retained in JSON as `previouslyHeld`, not as a blacklist or dead-token label. The single current unresolved record is GHOADFI.
+Sources cover all 32 KasBay KRC-20 project listings plus 12 additional sourced names and the founder-requested KAEN lookup, 45 candidates total. The earlier 23-project selection incorrectly omitted ZEAL despite passing evidence; it is corrected as the 24th project listing. A fresh record pass matched 20 of the earlier 21 held names. The other 19 now have holder-reference cards. The earlier queue is retained in JSON as `previouslyHeld`, not as a blacklist or dead-token label. The single current unresolved record is GHOADFI.
 
 This remains a source-bounded review rather than a complete registry of every KRC-20 project. Native links to KasBay's broader token directory and KasLens support further discovery. No claimed active-team label follows simply from trading-table rows, directory presence or accepted operations.
 
@@ -51,7 +51,9 @@ Dates below use America/Detroit. Exact check/event timestamps, public hashes and
 
 ## Additional holder references
 
-BTAI, DOGK, FOMOON, GRASS, HERPES, KASFAM, KEIRO, KPAW, KPTKAS, KYSOO, MODENG, NEIRO, PARROT, POPKAT, SHADOW, SNOWDN, SOMPS, WORI, YORAN. Each has a matching public record and deployment hash. Project and recent-activity uncertainty is shown separately rather than suppressing the token.
+KAEN, BTAI, DOGK, FOMOON, GRASS, HERPES, KASFAM, KEIRO, KPAW, KPTKAS, KYSOO, MODENG, NEIRO, PARROT, POPKAT, SHADOW, SNOWDN, SOMPS, WORI, YORAN. Each has a matching public record and deployment hash. Project and recent-activity uncertainty is shown separately rather than suppressing the token.
+
+KAEN is additionally included as a holder reference after its matching public Kasplex token record was retrieved (deployment hash `429d772ebbb05eeacd27624cadea73e2a439c9df02746e82ddf5e7a921296a87`). The founder identifies it as Tony’s project; no personal attribution or guessed project website is added to the public card. A verified official project destination remains outstanding.
 
 The original 21-name review queue was: BTAI, DOGK, FOMOON, GHOADFI, GRASS, HERPES, KASFAM, KEIRO, KPAW, KPTKAS, KYSOO, MODENG, NEIRO, PARROT, POPKAT, SHADOW, SNOWDN, SOMPS, WORI, YORAN, ZEAL. These names were not determined to have no holders. Original observations remain in `docs/krc20-directory-review.json`.
 

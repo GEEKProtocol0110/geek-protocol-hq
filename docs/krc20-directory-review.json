@@ -3,8 +3,8 @@
   "reviewedOn": "2026-11-05",
   "timeZone": "America/Detroit",
   "windowDays": 90,
-  "candidateCount": 44,
-  "includedCount": 43,
+  "candidateCount": 45,
+  "includedCount": 44,
   "notExhaustive": true,
   "discoverySources": [
     "https://kasbay.org/api/services",
@@ -22,6 +22,7 @@
     "GHOAD",
     "GRASS",
     "HERPES",
+    "KAEN",
     "KANGO",
     "KAPA",
     "KAPSA",
@@ -69,7 +70,8 @@
     "Public X profiles and community hubs are used when a matching destination is available; some require sign-in.",
     "The mixed KaspaScreener dataset was not treated as a KRC-20 project registry because its records were L2 addresses.",
     "No raw holder lists, wallet records or learner data are included.",
-    "Holder references do not require recent operations or a current project website; only a matching token record is asserted. GHOADFI remains an unconfirmed identity, not a declared inactive coin."
+    "Holder references do not require recent operations or a current project website; only a matching token record is asserted. GHOADFI remains an unconfirmed identity, not a declared inactive coin.",
+    "Founder identifies KAEN as Tony\u2019s project. Only its matching Mainnet KRC-20 record is independently confirmed here; a project website/profile and public personal attribution have not been verified."
   ],
   "previouslyHeld": [
     {
@@ -248,6 +250,7 @@
     "FOMOON",
     "GRASS",
     "HERPES",
+    "KAEN",
     "KASFAM",
     "KEIRO",
     "KPAW",

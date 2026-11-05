@@ -1868,14 +1868,35 @@
         "statusNote": "Project website or contact link unconfirmed",
         "lastObservedActivityAt": "2026-10-22T04:06:06.293000+00:00"
       }
+    },
+    {
+      "id": "krc20-ref-kaen",
+      "category": "krc20-reference",
+      "name": "KAEN — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/KAEN",
+      "description": "KAEN KRC-20 token lookup on Kaspa Mainnet. A verified project website or public profile is still needed.",
+      "source": "https://api.kasplex.org/v1/krc20/token/KAEN",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "KAEN",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KAEN",
+        "recordCheckedAt": "2026-11-05T05:18:07.713864+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "429d772ebbb05eeacd27624cadea73e2a439c9df02746e82ddf5e7a921296a87",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=KAEN",
+        "statusNote": "Official project website or profile not yet verified"
+      }
     }
   ],
-  "updatedAt": "2026-11-05T05:10:44.837099+00:00",
+  "updatedAt": "2026-11-05T05:18:07.713864+00:00",
   "krc20Review": {
     "windowDays": 90,
-    "candidateCount": 44,
+    "candidateCount": 45,
     "reviewedOn": "2026-11-05",
     "timeZone": "America/Detroit",
-    "scope": "44 researched names; 24 project listings and 19 additional holder references. GHOADFI identity remains unconfirmed."
+    "scope": "45 researched names; 24 project listings and 20 additional holder references, including founder-requested KAEN. GHOADFI identity remains unconfirmed."
   }
 }
