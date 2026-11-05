@@ -175,6 +175,10 @@
     },
     "api/passkeys.js": {
       "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
+    },
+    "api/mini.js": {
+      "includeFiles": "server/mini/public-practice-bank.json",
+      "maxDuration": 30
     }
   },
   "headers": [
