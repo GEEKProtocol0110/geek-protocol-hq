@@ -84,8 +84,8 @@
   },
   "ecosystemDirectory": {
     "task": "ECO-002",
-    "status": "in-progress",
+    "status": "directory-deployed-hall-follow-up-in-progress",
     "evidence": "docs/KASPA-DIRECTORY.md",
-    "nextAction": "Check and prepare the directory/Kas.fyi candidate for review; other requested Hall links await founder supply."
+    "nextAction": "#233 directory/Kas.fyi release is deployed and HTTP-verified; review the newly requested dedicated Kaspa Stream thank-you card. Other Hall links await founder supply."
   }
 }

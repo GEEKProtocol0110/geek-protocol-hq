@@ -1448,11 +1448,11 @@
       "id": "ECO-002",
       "priority": "P1",
       "status": "in-progress",
-      "title": "Build a public Kaspa directory and acknowledge Kas.fyi",
+      "title": "Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream",
       "owner": "Maintainer prepares source; founder reviews release and supplies additional Hall links",
-      "nextAction": "Complete checks and publish a reviewable PR. Record exact-head CI and preview evidence before release review; add other Hall acknowledgments when supplied.",
+      "nextAction": "Directory and Kas.fyi credit shipped in #233; review the dedicated Kaspa Stream Hall card requested afterward. Other Hall links await founder supply.",
       "acceptance": [
-        "Keep the Kaspa beginner guide and all existing Hall credits intact; add the founder-requested Kas.fyi thank-you with accurate legacy status.",
+        "Keep the Kaspa beginner guide and existing Hall credits intact; credit Kas.fyi with legacy status and give Kaspa Stream a dedicated thank-you card.",
         "Provide native HTML resource links, useful categories, accessible search/reset and a no-JavaScript browsing path.",
         "Record primary sources and editorial review dates; distinguish sourced listings from availability, audits and endorsements.",
         "Expose the directory from Home, Kaspa and the Hall, with canonical metadata and sitemap coverage.",
@@ -1466,6 +1466,9 @@
         "tests/kaspa-directory.test.js",
         "public/kaspa/directory/index.html",
         "public/thanks/index.html"
+      ],
+      "releaseEvidence": [
+        "#233 merged/deployed as 4d83352dcf2e1d42301261997d14161c2d881c89; tree matches reviewed candidate. CI 41961204573 passed 728 HQ tests plus nine signer checks. Production dpl_EvPcBFWmVfpM9dDAJHMVRVa5RQZ9 READY with seven exact-byte canonical HTTP checks. Dedicated Kaspa Stream credit remains an unmerged follow-up."
       ]
     }
   ]
