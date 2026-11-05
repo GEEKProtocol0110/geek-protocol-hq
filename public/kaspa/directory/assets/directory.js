@@ -26,6 +26,9 @@
   search.addEventListener('input',filter);
   category.addEventListener('change',filter);
   reset.addEventListener('click',() => { search.value = ''; category.value = 'all'; filter(); search.focus(); });
+  for (const shortcut of document.querySelectorAll('[data-directory-category-link]')) shortcut.addEventListener('click',() => {
+    search.value = ''; category.value = shortcut.dataset.directoryCategoryLink; filter();
+  });
   document.querySelector('[data-directory-jump]').hidden = true;
   controls.hidden = false;
   filter();

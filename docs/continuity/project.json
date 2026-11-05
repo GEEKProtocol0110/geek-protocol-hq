@@ -83,9 +83,9 @@
     "nextAction": "Review the source candidate; verify external indexing through property-owner consoles and identify the historical litepaper owner. No production or bot/security setting changed."
   },
   "ecosystemDirectory": {
-    "task": "ECO-002",
-    "status": "directory-deployed-hall-follow-up-in-progress",
-    "evidence": "docs/KASPA-DIRECTORY.md",
-    "nextAction": "#233 directory and #234 dedicated Kaspa Stream credit are deployed and HTTP-verified; review Kas.fyi final-position Special thank you presentation. Other Hall links await founder supply."
+    "task": "ECO-003",
+    "status": "krc20-expansion-in-progress",
+    "evidence": "docs/KRC20-DIRECTORY-REVIEW.md",
+    "nextAction": "Review ECO-003: 25 project links and 19 holder lookups. KAEN now links @kaenarchitect with its separate confirmed KRC-20 record; GHOADFI identity remains unresolved."
   }
 }

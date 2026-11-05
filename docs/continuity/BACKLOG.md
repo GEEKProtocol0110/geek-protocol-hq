@@ -61,7 +61,8 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-010 | P0 | needs-evidence | Redirect trailing-slash apex page links to the canonical host | Maintainer; founder approves production merge |
 | DOC-002 | P1 | done | Expose project documents and contributors on the homepage | Maintainer; founder approves merge |
 | SEO-002 | P1 | in-progress | Publish clear project facts and verify search discovery | Maintainer prepares source; founder approves merge; verified property owner handles search-console evidence |
-| ECO-002 | P1 | in-progress | Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream | Maintainer prepares source; founder reviews release and supplies additional Hall links |
+| ECO-002 | P1 | done | Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream | Maintainer prepares source; founder reviews release and supplies additional Hall links |
+| ECO-003 | P1 | in-progress | Expand KRC-20 project links and preserve token lookups for holders | Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -883,9 +884,9 @@ Evidence/specification: [public/about/index.html](../../public/about/index.html)
 
 ## ECO-002: Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream
 
-**P1 / in-progress.** Owner: Maintainer prepares source; founder reviews release and supplies additional Hall links. Dependencies: none.
+**P1 / done.** Owner: Maintainer prepares source; founder reviews release and supplies additional Hall links. Dependencies: none.
 
-Next action: Directory and both explorer acknowledgments shipped in #233/#234; review the requested final-position Kas.fyi card labeled Special thank you. Other Hall links await founder supply.
+Next action: Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope.
 
 Acceptance:
 
@@ -896,3 +897,19 @@ Acceptance:
 - Run catalog, filter, metadata, continuity and relevant regression checks; record preview and physical-device limits honestly.
 
 Evidence/specification: [docs/KASPA-DIRECTORY.md](../../docs/KASPA-DIRECTORY.md), [docs/kaspa-directory.json](../../docs/kaspa-directory.json), [scripts/kaspa-directory.mjs](../../scripts/kaspa-directory.mjs), [tests/kaspa-directory.test.js](../../tests/kaspa-directory.test.js), [public/kaspa/directory/index.html](../../public/kaspa/directory/index.html), [public/thanks/index.html](../../public/thanks/index.html).
+
+## ECO-003: Expand KRC-20 project links and preserve token lookups for holders
+
+**P1 / in-progress.** Owner: Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned. Dependencies: ECO-002.
+
+Next action: Review the revised 45-name candidate: 25 project destinations and 19 holder lookups. KAEN now uses founder-supplied @kaenarchitect with a matching public profile read and its separate KRC-20 record. GHOADFI remains unresolved. Merge/deployment remain separate.
+
+Acceptance:
+
+- Review all 45 sourced candidates, including founder-requested KAEN, and retain every confirmed KRC-20 asset as a project listing or holder lookup with status separate from token existence.
+- Publish native project links where inspected and native matching token-record lookups for holders otherwise; label status and dated evidence without declaring coins dead.
+- Keep KRC-20 distinct from KCC-20/L2 versions, explain known migrations and the unresolved GHOADFI identity, and avoid active-team or exhaustive-coverage claims.
+- Record held links and insufficient evidence without labeling the entire project dead. Preserve existing directory and Hall credits; make no automated publication or visitor-side third-party call.
+- Verify data/HTML/schema parity, accepted activity dates and token/source identity, search/category shortcuts, metadata and continuity. Record actual CI/preview and browser limits.
+
+Evidence/specification: [docs/KRC20-DIRECTORY-REVIEW.md](../../docs/KRC20-DIRECTORY-REVIEW.md), [docs/krc20-directory-review.json](../../docs/krc20-directory-review.json), [docs/kaspa-directory.json](../../docs/kaspa-directory.json), [scripts/kaspa-directory.mjs](../../scripts/kaspa-directory.mjs), [tests/kaspa-directory.test.js](../../tests/kaspa-directory.test.js), [public/kaspa/directory/index.html](../../public/kaspa/directory/index.html).

@@ -35,6 +35,16 @@
 .directory-domain{font-size:.75rem;color:#afc2ba;overflow-wrap:anywhere}
 .directory-source{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.1rem .6rem;border-top:1px solid #35464d;margin-top:.8rem;font-size:.7rem;color:#afc2ba}
 .directory-source a{display:inline-flex;align-items:center;min-height:44px}
+.directory-category-note{color:#c4d3cd;line-height:1.8;max-width:800px;font-size:.9rem;margin:0 0 .8rem}
+.directory-category-links,.directory-evidence-links{display:flex;flex-wrap:wrap;gap:.25rem 1rem}
+.directory-category-links{margin-bottom:1rem;font-size:.85rem}
+.directory-category-links a,.directory-evidence-links a{display:inline-flex;align-items:center;min-height:44px}
+.directory-evidence{border-top:1px solid #35464d;padding-top:1rem;margin-top:1rem;font-size:.75rem;line-height:1.7}
+.directory-activity{color:#70e6dc;font-weight:700}
+.directory-evidence dl{margin:.65rem 0 0}
+.directory-evidence dl>div{margin:.5rem 0}
+.directory-evidence dt{color:#afc2ba}
+.directory-evidence dd{margin:0;color:#eef5f2;overflow-wrap:anywhere}
 #legacy .directory-card{border-color:#917641}
 #legacy .directory-kind{color:#e7c675}
 .directory-empty{padding:2rem 1rem;color:#d1ded9;line-height:1.75}

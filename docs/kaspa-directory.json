@@ -3,6 +3,36 @@
   "reviewedAt": "2026-11-05",
   "categories": [
     {
+      "id": "krc20",
+      "name": "KRC-20 projects",
+      "description": "Project destinations inspected for matching content, plus accepted KRC-20 activity observed within 90 days of the dated check. This is a reviewed subset, not every deployed ticker or proof of ongoing development. Social profiles may require sign-in. Check dates use America/Detroit.",
+      "links": [
+        {
+          "url": "https://kasbay.org/categories/krc_20_tokens",
+          "label": "Browse more KRC-20 projects"
+        },
+        {
+          "url": "https://kaspa-lens.com/kaspa/tokens",
+          "label": "Explore token data and network types"
+        }
+      ]
+    },
+    {
+      "id": "krc20-reference",
+      "name": "KRC-20 holder lookup",
+      "description": "Token records remain useful to holders even when project links or recent activity are unconfirmed. These listings link matching Kasplex records without claiming an active team or promoting an unverified website. Quiet activity is not evidence that holders disappeared.",
+      "links": [
+        {
+          "url": "https://kaspa-lens.com/kaspa/tokens",
+          "label": "Explore token data"
+        },
+        {
+          "url": "https://kasbay.org/categories/krc_20_tokens",
+          "label": "Browse more token projects"
+        }
+      ]
+    },
+    {
       "id": "learn",
       "name": "Start & learn"
     },
@@ -651,6 +681,1234 @@
       "source": "https://onekey.so/cryptos/kaspa-3f5bd4/",
       "reviewedAt": "2026-11-05",
       "status": "listed"
+    },
+    {
+      "id": "krc20-baka",
+      "category": "krc20",
+      "name": "Baka the Kappa (BAKA)",
+      "url": "https://bakakappa.com/",
+      "description": "Entertainment and meme project built around Baka the Kappa.",
+      "source": "https://bakakappa.com/",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "BAKA",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/BAKA",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "status": 200,
+          "finalUrl": "https://bakakappa.com/",
+          "kind": "website",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "occurredAt": "2026-11-01T09:08:59.470000+00:00",
+          "operation": "send",
+          "hash": "d912376621df781c8d74441160dec268bd1a737855d80733e0d532d6bbc56529",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=BAKA",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-burtle",
+      "category": "krc20",
+      "name": "Burtle (BURTLE)",
+      "url": "https://x.com/burtle_on_kaspa",
+      "description": "Bitcoin/Kaspa community and education profile. The separate project website is under construction.",
+      "source": "https://x.com/burtle_on_kaspa",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "BURTLE",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/BURTLE",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:49:11.706709+00:00",
+          "status": 200,
+          "finalUrl": "https://x.com/burtle_on_kaspa",
+          "kind": "social",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:49:11.706709+00:00",
+          "occurredAt": "2026-11-05T04:11:26.250000+00:00",
+          "operation": "list",
+          "hash": "edc864e3e47ff970ccca6aee2b2833d4f7e3601cc4af7b8dd243efce7af1f557",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=BURTLE",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-fast",
+      "category": "krc20",
+      "name": "FAST (FAST)",
+      "url": "https://gofast.money/",
+      "description": "Art-focused community project. Read the project’s own materials for its scope and claims.",
+      "source": "https://gofast.money/",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "FAST",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/FAST",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "status": 200,
+          "finalUrl": "https://gofast.money/",
+          "kind": "website",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "occurredAt": "2026-11-03T20:00:25.553000+00:00",
+          "operation": "transfer",
+          "hash": "733c16d62125d16400d361c4576af03df3066c50f329e2ed1310f0d23ca2e77d",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=FAST",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-geek",
+      "category": "krc20",
+      "name": "Geek Protocol (GEEK)",
+      "url": "https://www.geekprotocol.xyz/",
+      "description": "Learning ecosystem with a separate GEEK KRC-20 token. Internal Alpha credits are not withdrawable tokens.",
+      "source": "https://www.geekprotocol.xyz/",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "GEEK",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/GEEK",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "status": 200,
+          "finalUrl": "https://www.geekprotocol.xyz/",
+          "kind": "website",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "occurredAt": "2026-11-04T13:20:07.218000+00:00",
+          "operation": "mint",
+          "hash": "7a722d37619fdd4630b53ba35185a05c19ea70b2ac2bc614704e12ff65e90ec4",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=GEEK",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-ghoad",
+      "category": "krc20",
+      "name": "Ghoad (GHOAD)",
+      "url": "https://x.com/GhoadCoin",
+      "description": "Ghost/toad-themed community profile. Its old project website is excluded from this listing.",
+      "source": "https://x.com/GhoadCoin",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "GHOAD",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/GHOAD",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:49:11.706709+00:00",
+          "status": 200,
+          "finalUrl": "https://x.com/GhoadCoin",
+          "kind": "social",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:49:11.706709+00:00",
+          "occurredAt": "2026-11-03T20:30:21.215000+00:00",
+          "operation": "transfer",
+          "hash": "068546b73b2efbbd2c8e451cb922d90ce115ed5d43c4d040e073647d47e265b1",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=GHOAD",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-kango",
+      "category": "krc20",
+      "name": "Kango (KANGO)",
+      "url": "https://linktr.ee/kango_on_kas",
+      "description": "KANGO community link hub. Its earlier standalone website could not be confirmed working.",
+      "source": "https://linktr.ee/kango_on_kas",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "KANGO",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KANGO",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:49:11.706709+00:00",
+          "status": 200,
+          "finalUrl": "https://linktr.ee/kango_on_kas",
+          "kind": "hub",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:49:11.706709+00:00",
+          "occurredAt": "2026-11-05T03:08:16.956000+00:00",
+          "operation": "transfer",
+          "hash": "2eca0d2f99ec1c43579e0c6fb88b699579b1efed599de102d86f5377dca2f93f",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=KANGO",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-kapa",
+      "category": "krc20",
+      "name": "KasPaw (KAPA)",
+      "url": "https://kaspaw.com/",
+      "description": "Pet-themed community and gaming project. See its own site for current feature details.",
+      "source": "https://kaspaw.com/",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "KAPA",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KAPA",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "status": 200,
+          "finalUrl": "https://kaspaw.com/",
+          "kind": "website",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "occurredAt": "2026-10-05T14:12:43.516000+00:00",
+          "operation": "list",
+          "hash": "1f3fdcde5472b60f1fd12e60644cb3ccca89bbad50d25235eb2476e81cd77c02",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=KAPA",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-kapsa",
+      "category": "krc20",
+      "name": "Kapsa (KAPSA)",
+      "url": "https://x.com/kapsacoin",
+      "description": "Public profile for the KAPSA community token.",
+      "source": "https://x.com/kapsacoin",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "KAPSA",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KAPSA",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "status": 200,
+          "finalUrl": "https://x.com/kapsacoin",
+          "kind": "social",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "occurredAt": "2026-11-03T21:36:00.277000+00:00",
+          "operation": "transfer",
+          "hash": "7d6e90c4ca050c14a4d8ad3e820c3e56fbee71e9ccc56d3afcef874f9fe2fe44",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=KAPSA",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-kasbot",
+      "category": "krc20",
+      "name": "Kasbot (KASBOT)",
+      "url": "https://x.com/kasbotcoin",
+      "description": "Kasbot community profile. Its earlier standalone website could not be confirmed working.",
+      "source": "https://x.com/kasbotcoin",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "KASBOT",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KASBOT",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:47:17.252210+00:00",
+          "status": 200,
+          "finalUrl": "https://x.com/kasbotcoin",
+          "kind": "social",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:47:17.252210+00:00",
+          "occurredAt": "2026-11-03T20:38:53.009000+00:00",
+          "operation": "transfer",
+          "hash": "fea2bcf6928efb49dd9c65b040095aa9b6491a5721b33285aaebf07877e51e98",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=KASBOT",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-kasmo",
+      "category": "krc20",
+      "name": "Kasmo (KASMO)",
+      "url": "https://linktr.ee/kasmonauts",
+      "description": "KASMOnaut community link hub. KRC-20 and bridged L2 versions have separate records.",
+      "source": "https://linktr.ee/kasmonauts",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "KASMO",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KASMO",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:49:11.706709+00:00",
+          "status": 200,
+          "finalUrl": "https://linktr.ee/kasmonauts",
+          "kind": "hub",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:49:11.706709+00:00",
+          "occurredAt": "2026-10-26T09:06:21.825000+00:00",
+          "operation": "transfer",
+          "hash": "7423a5368bbc016f436806c8cccd02b1e3b7b670240b6844a85bbe2a641e20b5",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=KASMO",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-kasper",
+      "category": "krc20",
+      "name": "Kasper (KASPER)",
+      "url": "https://linktr.ee/kaspercoin",
+      "description": "Ghost-themed Kaspa community project; public hub of project links.",
+      "source": "https://linktr.ee/kaspercoin",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "KASPER",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KASPER",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "status": 200,
+          "finalUrl": "https://linktr.ee/kaspercoin",
+          "kind": "hub",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "occurredAt": "2026-11-05T03:10:24.129000+00:00",
+          "operation": "transfer",
+          "hash": "0b09b4ceb5a72f0779add1b8ed244154f32876a5e6b56aa0155516ca11a500f3",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=KASPER",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-kaspy",
+      "category": "krc20",
+      "name": "Kaspy (KASPY)",
+      "url": "https://kaspy.io",
+      "description": "Three-legged cat community project with stories, memes and game links.",
+      "source": "https://kaspy.io",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "KASPY",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KASPY",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "status": 200,
+          "finalUrl": "https://kaspy.io",
+          "kind": "website",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "occurredAt": "2026-11-05T03:52:29.158000+00:00",
+          "operation": "transfer",
+          "hash": "6b9c9abe5c4382410f169dfa75ce2976ee26e60809d92cbf823c84eabd8a13cd",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=KASPY",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-keke",
+      "category": "krc20",
+      "name": "Keke (KEKE)",
+      "url": "https://www.kekecoin.org/",
+      "description": "Frog-themed Kaspa community and meme project.",
+      "source": "https://www.kekecoin.org/",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "KEKE",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KEKE",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:47:17.252210+00:00",
+          "status": 200,
+          "finalUrl": "https://www.kekecoin.org/",
+          "kind": "website",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:47:17.252210+00:00",
+          "occurredAt": "2026-11-05T03:09:27.990000+00:00",
+          "operation": "transfer",
+          "hash": "d34e6136993ef81be5ca4f69d40d51f0e55153acf4cef491f4e487d1044f1fb6",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=KEKE",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-konan",
+      "category": "krc20",
+      "name": "Konan of Kaspa (KONAN)",
+      "url": "https://konanofkaspa.io/",
+      "description": "Dog-themed community project with creative content and game links.",
+      "source": "https://konanofkaspa.io/",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "KONAN",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KONAN",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:47:17.252210+00:00",
+          "status": 200,
+          "finalUrl": "https://konanofkaspa.io/",
+          "kind": "website",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:47:17.252210+00:00",
+          "occurredAt": "2026-11-05T03:07:41.909000+00:00",
+          "operation": "transfer",
+          "hash": "e4aabb50d6e8bab9d11a754301b6d1224b6cabecd5105488559da99d81ce5ead",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=KONAN",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-krex",
+      "category": "krc20",
+      "name": "Kasparex (KREX)",
+      "url": "https://www.kasparex.com/",
+      "description": "Community, storytelling and development project associated with the KREX ticker.",
+      "source": "https://www.kasparex.com/",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "KREX",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KREX",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "status": 200,
+          "finalUrl": "https://www.kasparex.com/",
+          "kind": "website",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "occurredAt": "2026-11-05T03:06:55.189000+00:00",
+          "operation": "transfer",
+          "hash": "c9cc44ec16a199caee216f2896305c559980145dd7cbdd29d82811c3fdd7a3b6",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=KREX",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-lulz",
+      "category": "krc20",
+      "name": "LULZ (LULZ)",
+      "url": "https://lulztoken.fyi/",
+      "description": "Community token project with a public project site.",
+      "source": "https://lulztoken.fyi/",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "LULZ",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/LULZ",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "status": 200,
+          "finalUrl": "https://lulztoken.fyi/",
+          "kind": "website",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "occurredAt": "2026-09-11T12:10:20.373000+00:00",
+          "operation": "list",
+          "hash": "51d8793184ca968f05c60e2d83200c82e65e71e19b2cafe097df49e765465322",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=LULZ",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-nacho",
+      "category": "krc20",
+      "name": "Nacho the Kat (NACHO)",
+      "url": "https://nachothekat.xyz/",
+      "description": "Community project with a published KRC-20 to KCC-20 migration. Read its current guidance for token-version differences.",
+      "source": "https://nachothekat.xyz/",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "NACHO",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/NACHO",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "status": 200,
+          "finalUrl": "https://nachothekat.xyz/",
+          "kind": "website",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "occurredAt": "2026-11-05T04:31:22.911000+00:00",
+          "operation": "transfer",
+          "hash": "5b129accec9163837fba21ec50a878d6449aebb0016d10b863fc05dd4bbe850f",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=NACHO",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-pepe",
+      "category": "krc20",
+      "name": "Pepe on Kaspa (PEPE)",
+      "url": "https://pepekrc20.com",
+      "description": "Pepe community project with KRC-20 origins and bridged L2 versions. Check the network-specific record.",
+      "source": "https://pepekrc20.com",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "PEPE",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/PEPE",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "status": 200,
+          "finalUrl": "https://eeso5t7ozhre6nbieb4ipahdiucno7kwkojcrfauciaa5xwpy5na.arweave.net/ISTuz-7J4k80KCB4h4DjRQTXfVZTkiiUFBIADt7Px1o",
+          "kind": "website",
+          "identity": "Project-specific content inspected",
+          "redirectReviewed": true,
+          "redirectReason": "The project domain redirects to its Arweave-hosted Pepe on Kaspa page; matching KRC-20 project content was inspected after the redirect."
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "occurredAt": "2026-11-03T21:16:19.845000+00:00",
+          "operation": "transfer",
+          "hash": "954b93276e08c5bf5e5c890161f3fcff56204fd670a814886e00bd1c20fca6ca",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=PEPE",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-pluto",
+      "category": "krc20",
+      "name": "Pluto (PLUTO)",
+      "url": "https://x.com/Plutokaspa",
+      "description": "Cat-themed Kaspa community profile. KRC-20 and other versions must be distinguished.",
+      "source": "https://x.com/Plutokaspa",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "PLUTO",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/PLUTO",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:49:11.706709+00:00",
+          "status": 200,
+          "finalUrl": "https://x.com/Plutokaspa",
+          "kind": "social",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:49:11.706709+00:00",
+          "occurredAt": "2026-11-04T19:32:01.658000+00:00",
+          "operation": "list",
+          "hash": "27a993c2f99c9ba66c43cc5518e06203a571676a8140e4ced0dab8d47c55a3e2",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=PLUTO",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-ppkas",
+      "category": "krc20",
+      "name": "PPKAS (PPKAS)",
+      "url": "https://x.com/PPKAS_space",
+      "description": "Public community profile. The earlier website currently serves a hosting placeholder and is excluded here.",
+      "source": "https://x.com/PPKAS_space",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "PPKAS",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/PPKAS",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:49:11.706709+00:00",
+          "status": 200,
+          "finalUrl": "https://x.com/PPKAS_space",
+          "kind": "social",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:49:11.706709+00:00",
+          "occurredAt": "2026-11-05T03:04:35.208000+00:00",
+          "operation": "send",
+          "hash": "8530af076b987a3696dbf9eda343d2796119599b9f25dd1ddb61488af1c3f0d1",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=PPKAS",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-shit",
+      "category": "krc20",
+      "name": "Paska (SHIT)",
+      "url": "https://paskacoin.org",
+      "description": "Kaspa community meme project using the SHIT ticker.",
+      "source": "https://paskacoin.org",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "SHIT",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/SHIT",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "status": 200,
+          "finalUrl": "https://paskacoin.org",
+          "kind": "website",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "occurredAt": "2026-10-26T13:50:00.626000+00:00",
+          "operation": "send",
+          "hash": "53811a05f3107481dbe4c624e5a733652f25546f7ec20a18b9e323a860b2bb47",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=SHIT",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-szar",
+      "category": "krc20",
+      "name": "SZAR (SZAR)",
+      "url": "https://szar.ourosociety.com/",
+      "description": "Snake-themed community project with published lore and arcade links.",
+      "source": "https://szar.ourosociety.com/",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "SZAR",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/SZAR",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:47:17.252210+00:00",
+          "status": 200,
+          "finalUrl": "https://szar.ourosociety.com/",
+          "kind": "website",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:47:17.252210+00:00",
+          "occurredAt": "2026-11-03T20:03:36.363000+00:00",
+          "operation": "transfer",
+          "hash": "a3586b7516b85fa67419b81df316787a8f3e6f8bdf8035c67c4a99b5b3c7002e",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=SZAR",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-wolfy",
+      "category": "krc20",
+      "name": "Wolfy’s (WOLFY)",
+      "url": "https://linktr.ee/wolfysbar",
+      "description": "Hospitality and community link hub with WOLFY token and membership information.",
+      "source": "https://linktr.ee/wolfysbar",
+      "reviewedAt": "2026-11-04",
+      "status": "listed",
+      "krc20": {
+        "ticker": "WOLFY",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/WOLFY",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "status": 200,
+          "finalUrl": "https://linktr.ee/wolfysbar",
+          "kind": "hub",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "occurredAt": "2026-11-05T03:06:33.645000+00:00",
+          "operation": "transfer",
+          "hash": "9721b3a0a7353012473e5c9b739d117653e1a0490767c4932d966ea47d36a414",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=WOLFY",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-zeal",
+      "category": "krc20",
+      "name": "Zealous Swap (ZEAL)",
+      "url": "https://zealousswap.com/",
+      "description": "Project home for Zealous Swap. KRC-20 and L2 records are separate; check its current service notices.",
+      "source": "https://zealousswap.com/",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "krc20": {
+        "ticker": "ZEAL",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/ZEAL",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "status": 200,
+          "finalUrl": "https://www.zealousswap.com/",
+          "kind": "website",
+          "identity": "Project-specific content inspected"
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T04:45:03.544575+00:00",
+          "occurredAt": "2026-11-05T04:32:20.227000+00:00",
+          "operation": "transfer",
+          "hash": "8a9204c913d12a8db387471e73a215cdeb0d94b603e80d142d69954513a18857",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=ZEAL",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
+    },
+    {
+      "id": "krc20-ref-btai",
+      "category": "krc20-reference",
+      "name": "BTAI — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/BTAI",
+      "description": "Kaspa Mainnet KRC-20 lookup for BTAI. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/BTAI",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "BTAI",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/BTAI",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "ac141e0c8bc09f01355e36ef97dcbf9f5a1e038f6078b6bb167ccf8a5d03c341",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=BTAI",
+        "statusNote": "Recent token activity not confirmed in the earlier snapshot",
+        "lastObservedActivityAt": "2026-01-11T11:36:07.696000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-dogk",
+      "category": "krc20-reference",
+      "name": "DOGK — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/DOGK",
+      "description": "Kaspa Mainnet KRC-20 lookup for DOGK. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/DOGK",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "DOGK",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/DOGK",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "016ebe03fc79f6682965adea53d47321c4bfca77fb58de936e0d43e010e5ceef",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=DOGK",
+        "statusNote": "Project website or contact link unconfirmed",
+        "lastObservedActivityAt": "2026-11-02T14:55:25.570000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-fomoon",
+      "category": "krc20-reference",
+      "name": "FOMOON — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/FOMOON",
+      "description": "Kaspa Mainnet KRC-20 lookup for FOMOON. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/FOMOON",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "FOMOON",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/FOMOON",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "bc96ceb01aca91afff6f69da686d02c45de504940a7ae3d6361bc05744fc8c43",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=FOMOON",
+        "statusNote": "Project website or contact link unconfirmed",
+        "lastObservedActivityAt": "2026-10-22T07:36:06.727000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-grass",
+      "category": "krc20-reference",
+      "name": "GRASS — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/GRASS",
+      "description": "Kaspa Mainnet KRC-20 lookup for GRASS. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/GRASS",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "GRASS",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/GRASS",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "be38675173c9dea5333688f7179342530e5063d092ca146cf1f75facd3d6f441",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=GRASS",
+        "statusNote": "Project website or contact link unconfirmed",
+        "lastObservedActivityAt": "2026-10-23T14:31:15.487000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-herpes",
+      "category": "krc20-reference",
+      "name": "HERPES — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/HERPES",
+      "description": "Kaspa Mainnet KRC-20 lookup for HERPES. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/HERPES",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "HERPES",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/HERPES",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "c61e80d722eeffa25482c952855dd6e10423fa5fe3319ea790ca0800896e4e96",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=HERPES",
+        "statusNote": "Project website or contact link unconfirmed",
+        "lastObservedActivityAt": "2026-10-09T11:32:37.042000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-kasfam",
+      "category": "krc20-reference",
+      "name": "KASFAM — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/KASFAM",
+      "description": "Kaspa Mainnet KRC-20 lookup for KASFAM. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/KASFAM",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "KASFAM",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KASFAM",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "b95739fc8295ba5dbea52d00383b7fce82bb71a15f7ad4f3376572bda4622f51",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=KASFAM",
+        "statusNote": "Project website or contact link unconfirmed",
+        "lastObservedActivityAt": "2026-10-08T15:54:39.893000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-keiro",
+      "category": "krc20-reference",
+      "name": "KEIRO — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/KEIRO",
+      "description": "Kaspa Mainnet KRC-20 lookup for KEIRO. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/KEIRO",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "KEIRO",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KEIRO",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "869ad3f4a1897091057f7ec92ac6765346a85b3ef7f417115e24e0065ec78fc0",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=KEIRO",
+        "statusNote": "Project website or contact link unconfirmed",
+        "lastObservedActivityAt": "2026-10-31T13:15:17.205000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-kpaw",
+      "category": "krc20-reference",
+      "name": "KPAW — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/KPAW",
+      "description": "Kaspa Mainnet KRC-20 lookup for KPAW. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/KPAW",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "KPAW",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KPAW",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "3592e20d1f4f93e7745411436df05fc69e69227ff18bd9a664eed9ddbbfefb1c",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=KPAW",
+        "statusNote": "Project website or contact link unconfirmed",
+        "lastObservedActivityAt": "2026-11-03T21:39:15.373000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-kptkas",
+      "category": "krc20-reference",
+      "name": "KPTKAS — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/KPTKAS",
+      "description": "Kaspa Mainnet KRC-20 lookup for KPTKAS. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/KPTKAS",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "KPTKAS",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KPTKAS",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "2cc4d908ea868403dee0bd514195242bbf9db54f7069b024eb3f738f91667a04",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=KPTKAS",
+        "statusNote": "Project website or contact link unconfirmed"
+      }
+    },
+    {
+      "id": "krc20-ref-kysoo",
+      "category": "krc20-reference",
+      "name": "KYSOO — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/KYSOO",
+      "description": "Kaspa Mainnet KRC-20 lookup for KYSOO. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/KYSOO",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "KYSOO",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KYSOO",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "a1bf35b920e77a60afea91372d32ef6fd97694e82a34ea1f204defe690207399",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=KYSOO",
+        "statusNote": "Recent token activity not confirmed in the earlier snapshot",
+        "lastObservedActivityAt": "2025-12-05T02:59:02.810000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-modeng",
+      "category": "krc20-reference",
+      "name": "MODENG — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/MODENG",
+      "description": "Kaspa Mainnet KRC-20 lookup for MODENG. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/MODENG",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "MODENG",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/MODENG",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "b76a9e9b16b255a111a5d554c28be74796711e3be7809479021e785225a05b2e",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=MODENG",
+        "statusNote": "Recent token activity not confirmed in the earlier snapshot",
+        "lastObservedActivityAt": "2025-09-14T00:34:27.655000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-neiro",
+      "category": "krc20-reference",
+      "name": "NEIRO — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/NEIRO",
+      "description": "Kaspa Mainnet KRC-20 lookup for NEIRO. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/NEIRO",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "NEIRO",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/NEIRO",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "6377e98ccbece190c51ead1119bd3a3d74f3110a256dcf3c01de371cc0d5774f",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=NEIRO",
+        "statusNote": "Recent token activity not confirmed in the earlier snapshot",
+        "lastObservedActivityAt": "2025-10-02T18:54:33.430000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-parrot",
+      "category": "krc20-reference",
+      "name": "PARROT — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/PARROT",
+      "description": "Kaspa Mainnet KRC-20 lookup for PARROT. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/PARROT",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "PARROT",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/PARROT",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "b08ee7c00d77a499859cf48e5507b7efa91157493ec998345eef11600b422122",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=PARROT",
+        "statusNote": "Recent token activity not confirmed in the earlier snapshot",
+        "lastObservedActivityAt": "2026-07-15T17:56:19.968000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-popkat",
+      "category": "krc20-reference",
+      "name": "POPKAT — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/POPKAT",
+      "description": "Kaspa Mainnet KRC-20 lookup for POPKAT. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/POPKAT",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "POPKAT",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/POPKAT",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "8dbc3757620f2777dfb5148c999d9f42e50c85ac143a3f5361bf9f1fb71aebee",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=POPKAT",
+        "statusNote": "Project website or contact link unconfirmed",
+        "lastObservedActivityAt": "2026-11-03T20:05:49.375000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-shadow",
+      "category": "krc20-reference",
+      "name": "SHADOW — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/SHADOW",
+      "description": "Kaspa Mainnet KRC-20 lookup for SHADOW. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/SHADOW",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "SHADOW",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/SHADOW",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "4b3650e4b67639f8c48284457938ff5608d1908397d5720a4f24cb69e0544e82",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=SHADOW",
+        "statusNote": "Project website or contact link unconfirmed",
+        "lastObservedActivityAt": "2026-10-22T04:04:39.254000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-snowdn",
+      "category": "krc20-reference",
+      "name": "SNOWDN — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/SNOWDN",
+      "description": "Kaspa Mainnet KRC-20 lookup for SNOWDN. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/SNOWDN",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "SNOWDN",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/SNOWDN",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "8ae1d9fd92e3c2259e865609c6cef065260b253f78cc0c7200761027ce0bdc70",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=SNOWDN",
+        "statusNote": "Project website or contact link unconfirmed",
+        "lastObservedActivityAt": "2026-11-05T03:08:50.911000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-somps",
+      "category": "krc20-reference",
+      "name": "SOMPS — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/SOMPS",
+      "description": "Kaspa Mainnet KRC-20 lookup for SOMPS. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/SOMPS",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "SOMPS",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/SOMPS",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "4f5dea0b7e99ee7a75b8e085098580b6db61a0c4e4880e28d7c012f5acf809d7",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=SOMPS",
+        "statusNote": "Project website or contact link unconfirmed",
+        "lastObservedActivityAt": "2026-10-22T04:04:50.543000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-wori",
+      "category": "krc20-reference",
+      "name": "WORI — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/WORI",
+      "description": "Kaspa Mainnet KRC-20 lookup for WORI. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/WORI",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "WORI",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/WORI",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "33861de2183e4ea6aafc4a8c54bb2ab91db0685baac5a0a448ed75a6de071dd5",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=WORI",
+        "statusNote": "Recent token activity not confirmed in the earlier snapshot",
+        "lastObservedActivityAt": "2026-06-19T10:36:27.631000+00:00"
+      }
+    },
+    {
+      "id": "krc20-ref-yoran",
+      "category": "krc20-reference",
+      "name": "YORAN — token record",
+      "url": "https://api.kasplex.org/v1/krc20/token/YORAN",
+      "description": "Kaspa Mainnet KRC-20 lookup for YORAN. Holder reference; project status is shown separately from the token record.",
+      "source": "https://api.kasplex.org/v1/krc20/token/YORAN",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "tokenReference": {
+        "ticker": "YORAN",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/YORAN",
+        "recordCheckedAt": "2026-11-05T05:10:44.837099+00:00",
+        "recordStatus": 200,
+        "deploymentHash": "935370999401f2015ad790f0e02dcd1e77cd2a93b3accc9817d5b62741c5a458",
+        "activityUrl": "https://api.kasplex.org/v1/krc20/oplist?tick=YORAN",
+        "statusNote": "Project website or contact link unconfirmed",
+        "lastObservedActivityAt": "2026-10-22T04:06:06.293000+00:00"
+      }
+    },
+    {
+      "id": "krc20-kaen",
+      "category": "krc20",
+      "name": "KAEN (@kaenarchitect)",
+      "url": "https://x.com/kaenarchitect",
+      "description": "KAEN project profile on X. Its Kaspa Mainnet KRC-20 record and dated activity source are linked below.",
+      "source": "https://x.com/kaenarchitect",
+      "reviewedAt": "2026-11-05",
+      "status": "listed",
+      "krc20": {
+        "ticker": "KAEN",
+        "standard": "KRC-20",
+        "network": "Kaspa Mainnet",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/KAEN",
+        "linkCheck": {
+          "checkedAt": "2026-11-05T05:25:12.752616+00:00",
+          "status": 200,
+          "finalUrl": "https://x.com/kaenarchitect",
+          "kind": "social",
+          "identity": "Project-specific content inspected",
+          "identityBasis": "Founder supplied @kaenarchitect; matching Kaen profile title returned from X."
+        },
+        "activity": {
+          "checkedAt": "2026-11-05T05:25:12.752616+00:00",
+          "occurredAt": "2026-09-03T13:24:07.780000+00:00",
+          "operation": "transfer",
+          "hash": "79fd8c57c430249a9b4abbb11b4dabefdb024b877db3278b645014da7a66af42",
+          "url": "https://api.kasplex.org/v1/krc20/oplist?tick=KAEN",
+          "txAccept": "1",
+          "opAccept": "1"
+        }
+      }
     }
-  ]
+  ],
+  "updatedAt": "2026-11-05T05:27:14.604890+00:00",
+  "krc20Review": {
+    "windowDays": 90,
+    "candidateCount": 45,
+    "reviewedOn": "2026-11-05",
+    "timeZone": "America/Detroit",
+    "scope": "45 researched names; 25 project listings and 19 additional holder references. KAEN uses the supplied matching X profile; GHOADFI identity remains unconfirmed."
+  }
 }

@@ -1447,10 +1447,10 @@
     {
       "id": "ECO-002",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "done",
       "title": "Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream",
       "owner": "Maintainer prepares source; founder reviews release and supplies additional Hall links",
-      "nextAction": "Directory and both explorer acknowledgments shipped in #233/#234; review the requested final-position Kas.fyi card labeled Special thank you. Other Hall links await founder supply.",
+      "nextAction": "Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope.",
       "acceptance": [
         "Keep the Kaspa beginner guide and existing Hall credits intact; Kas.fyi is the final ecosystem card labeled Special thank you, and Kaspa Stream has its own thank-you card.",
         "Provide native HTML resource links, useful categories, accessible search/reset and a no-JavaScript browsing path.",
@@ -1470,6 +1470,36 @@
       "releaseEvidence": [
         "#233 merged/deployed as 4d83352dcf2e1d42301261997d14161c2d881c89; tree matches reviewed candidate. CI 41961204573 passed 728 HQ tests plus nine signer checks. Production dpl_EvPcBFWmVfpM9dDAJHMVRVa5RQZ9 READY with seven exact-byte canonical HTTP checks. Dedicated Kaspa Stream credit remains an unmerged follow-up.",
         "#234 merged as 730babacb698ad4ca6eec41bdba36fb0856967d1 with checked tree e0dd28371eeae01e5a90dd034688514f50d387e6. CI 41963435552 passed; production dpl_AGqewHZAmdW2ZsbtFfPCTMMjCjRo READY with exact public Hall HTML, separate Kaspa Stream card and preserved Kas.fyi credit. Kas.fyi placement/label is the current unmerged follow-up."
+      ],
+      "completedAt": "2026-11-04",
+      "completionEvidence": [
+        "Founder-approved #233/#234/#235 are merged and deployed. Directory/Kas.fyi: 4d83352dcf2e1d42301261997d14161c2d881c89, production dpl_EvPcBFWmVfpM9dDAJHMVRVa5RQZ9, seven exact-byte canonical checks. Dedicated Kaspa Stream: 730babacb698ad4ca6eec41bdba36fb0856967d1, production dpl_AGqewHZAmdW2ZsbtFfPCTMMjCjRo, exact Hall bytes. Final Kas.fyi placement: c7d780da18fb12e80b190c620476ee6b2409bf90, production dpl_6Tg4xPAMg2cgRBMb8LiqTdrLZRsf, exact Hall bytes with Kas.fyi last/SPECIAL THANK YOU and separate Kaspa Stream preserved. All exact-head CI and both Vercel statuses succeeded. Source/HTTP acceptance only; rendering/phone acceptance remains unverified."
+      ]
+    },
+    {
+      "id": "ECO-003",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Expand KRC-20 project links and preserve token lookups for holders",
+      "owner": "Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned",
+      "nextAction": "Review the revised 45-name candidate: 25 project destinations and 19 holder lookups. KAEN now uses founder-supplied @kaenarchitect with a matching public profile read and its separate KRC-20 record. GHOADFI remains unresolved. Merge/deployment remain separate.",
+      "acceptance": [
+        "Review all 45 sourced candidates, including founder-requested KAEN, and retain every confirmed KRC-20 asset as a project listing or holder lookup with status separate from token existence.",
+        "Publish native project links where inspected and native matching token-record lookups for holders otherwise; label status and dated evidence without declaring coins dead.",
+        "Keep KRC-20 distinct from KCC-20/L2 versions, explain known migrations and the unresolved GHOADFI identity, and avoid active-team or exhaustive-coverage claims.",
+        "Record held links and insufficient evidence without labeling the entire project dead. Preserve existing directory and Hall credits; make no automated publication or visitor-side third-party call.",
+        "Verify data/HTML/schema parity, accepted activity dates and token/source identity, search/category shortcuts, metadata and continuity. Record actual CI/preview and browser limits."
+      ],
+      "dependsOn": [
+        "ECO-002"
+      ],
+      "evidence": [
+        "docs/KRC20-DIRECTORY-REVIEW.md",
+        "docs/krc20-directory-review.json",
+        "docs/kaspa-directory.json",
+        "scripts/kaspa-directory.mjs",
+        "tests/kaspa-directory.test.js",
+        "public/kaspa/directory/index.html"
       ]
     }
   ]
