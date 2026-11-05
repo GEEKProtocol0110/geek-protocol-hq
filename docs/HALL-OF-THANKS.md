@@ -75,3 +75,7 @@ The founder explicitly requested a Kas.fyi shout-out. Add a static ecosystem car
 ## Dedicated Kaspa Stream acknowledgment — November 5, 2026
 
 The founder clarifies that Kaspa Stream needs its own Hall credit. #233 included it in the directory and as a link inside the Kas.fyi card, which did not give it a dedicated acknowledgment. Add a separate static ecosystem card (`credit-kaspa-stream`), thanking its public block explorer and network insights with a direct https://kaspa.stream/ link. Its primary home page identifies those functions. This is an independent project credit, without an inferred partnership, sponsorship or HQ integration. Keep the existing Kas.fyi tribute and directory entry.
+
+## Kas.fyi special thank-you placement — November 4, 2026 (Detroit)
+
+The founder requests Kas.fyi at the bottom of the ecosystem card group, labeled “Special thank you.” Move the existing `credit-kasfyi` article to the final position in that grid and replace its category label with `SPECIAL THANK YOU`. Retain the tribute, legacy-service explanation, links and stable fragment. Kaspa Stream keeps its separate card. This is a presentation correction; it does not change the directory or recognition policy.
