@@ -74,7 +74,7 @@ See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness
 
 ## Hall of Thanks
 
-[The Hall of Thanks](https://www.geekprotocol.xyz/thanks/) honors Kaspa, our community, the tools behind HQ and the sources behind its learning content. Its first dedication is preserved in the repository history. [Attribution and maintenance](docs/HALL-OF-THANKS.md).
+[The Hall of Thanks](https://www.geekprotocol.xyz/thanks/) honors Kaspa, our community, the tools behind HQ and the sources behind its learning content. Its first dedication is preserved in the repository history. [Attribution and maintenance](docs/HALL-OF-THANKS.md). Explore the [Kaspa directory](https://www.geekprotocol.xyz/kaspa/directory/) for public learning resources, wallets, explorers, developer tools and community links. [Directory maintenance](docs/KASPA-DIRECTORY.md).
 
 ## Personal Geek character studio
 

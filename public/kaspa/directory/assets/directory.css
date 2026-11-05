@@ -1,0 +1,47 @@
+.directory-page{background:#080b0b;color:#eef5f2}
+.directory-page [hidden]{display:none!important}
+.directory-page a{color:#70e6dc;text-underline-offset:4px;overflow-wrap:anywhere}
+.directory-page :is(a,input,select,button):focus-visible{outline:3px solid #70e6dc;outline-offset:4px}
+.directory-nav,.directory-footer{max-width:1200px;margin:auto;padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-bottom:1px solid #35464d}
+.directory-nav .brand{font-size:.9rem;letter-spacing:.02em;gap:.65rem}
+.directory-nav .brand img{width:40px;height:40px}
+.directory-page nav{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem}
+.directory-page nav a{display:inline-flex;align-items:center;min-height:44px}
+.directory-main{max-width:1140px;margin:auto;padding:3.5rem 1.5rem}
+.directory-intro{max-width:880px;margin-bottom:2rem}
+.directory-intro h1{font-size:clamp(2.2rem,5vw,4rem);line-height:1.12;letter-spacing:-.04em;margin:1.1rem 0 1.5rem}
+.directory-intro h1 em{color:#70e6dc}
+.directory-lede{font-size:1.2rem;line-height:1.75;color:#d1ded9;max-width:760px}
+.directory-summary{font-size:.85rem;color:#70e6dc;line-height:1.8}
+.directory-summary span{color:#afc2ba}
+.directory-context{max-width:800px;font-size:.9rem;line-height:1.8;color:#afc2ba}
+.directory-jump{padding:1rem 0 2rem}
+.directory-controls{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) auto;gap:1rem;align-items:end;padding:1.5rem;background:#131e22;border:1px solid #35464d;border-radius:16px}
+.directory-controls label{display:block;font-size:.85rem;font-weight:700;margin-bottom:.6rem;color:#eef5f2}
+.directory-controls input,.directory-controls select,.directory-controls button{font:inherit;min-height:48px;border-radius:8px;border:1px solid #566e76;padding:.7rem .85rem;background:#080e11;color:#eef5f2;width:100%;min-width:0}
+.directory-controls button{cursor:pointer;width:auto;color:#70e6dc}
+.directory-controls button:disabled{opacity:.55;cursor:default}
+.directory-controls p{grid-column:1/-1;margin:0;color:#afc2ba;font-size:.85rem}
+.directory-section{padding:2.5rem 0 .5rem;scroll-margin-top:1rem}
+.directory-heading{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;border-bottom:1px solid #35464d;margin-bottom:1.25rem;padding-bottom:.8rem}
+.directory-heading h2{font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.3;letter-spacing:-.025em;margin:0}
+.directory-heading>span{color:#afc2ba;font-size:.8rem;white-space:nowrap}
+.directory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.directory-card{display:flex;flex-direction:column;min-width:0;padding:1.4rem;border:1px solid #35464d;border-radius:14px;background:linear-gradient(150deg,#142126,#10181c)}
+.directory-kind{font-size:.65rem;letter-spacing:.07em;text-transform:uppercase;color:#afc2ba;line-height:1.5}
+.directory-card h3{font-size:1.08rem;line-height:1.5;margin:.6rem 0 .5rem;text-transform:none;letter-spacing:0}
+.directory-card h3 a{display:block;min-height:44px}
+.directory-card p{font-size:.9rem;line-height:1.75;color:#c4d3cd;margin:0 0 1rem;flex:1}
+.directory-domain{font-size:.75rem;color:#afc2ba;overflow-wrap:anywhere}
+.directory-source{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.1rem .6rem;border-top:1px solid #35464d;margin-top:.8rem;font-size:.7rem;color:#afc2ba}
+.directory-source a{display:inline-flex;align-items:center;min-height:44px}
+#legacy .directory-card{border-color:#917641}
+#legacy .directory-kind{color:#e7c675}
+.directory-empty{padding:2rem 1rem;color:#d1ded9;line-height:1.75}
+.directory-contribute{margin:3rem 0 0;padding:2rem;border:1px solid #35464d;border-radius:16px;background:#131e22}
+.directory-contribute h2{font-size:1.8rem;line-height:1.3;margin:.6rem 0 1rem}
+.directory-contribute p{max-width:780px;line-height:1.8;color:#c4d3cd}
+.directory-footer{border-top:1px solid #35464d;border-bottom:0;color:#afc2ba;font-size:.8rem;line-height:1.7}
+@media(max-width:900px){.directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.directory-nav{align-items:flex-start;flex-direction:column}.directory-main{padding:2.25rem 1.15rem}.directory-grid,.directory-controls{grid-template-columns:1fr}.directory-controls{padding:1.15rem}.directory-controls button{width:100%}.directory-heading{align-items:flex-start}.directory-card{padding:1.25rem}.directory-contribute{padding:1.3rem}}
+@media(forced-colors:active){.directory-card,.directory-controls,.directory-contribute{background:Canvas;border-color:CanvasText}.directory-page a{color:LinkText}}

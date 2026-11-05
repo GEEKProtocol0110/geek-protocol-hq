@@ -67,3 +67,7 @@ GEEK-specific Tangem compatibility remains a separate task requiring the current
 ## Community participation — October 8, 2026
 
 The founder subsequently requested a Hall application/contribution flow and supplied the fund address. This is the separate product request required by the initial maintenance guidance. `/thanks/#join` accepts private offers to help and opt-in recognition applications, displays the designated fund and loads only owner-approved credits. `/ops/community/` provides review and withdrawal. See [Community Contributions](COMMUNITY-CONTRIBUTIONS.md) for address, consent, retention, abuse controls and validation. Founding dedications remain in Git; application credits live in Redis with audit events and require database backup/recovery coverage.
+
+## Kas.fyi acknowledgment — November 5, 2026
+
+The founder explicitly requested a Kas.fyi shout-out. Add a static ecosystem card (`credit-kasfyi`) thanking its public explorer contribution, with the original project link and a separately labeled Kaspa Stream link. The source-owned farewell indexed at https://kas.fyi/ states that the explorer closed and directs visitors to Kaspa Stream. Its old address/token pages also expose that notice in search results. Preserve this as legacy recognition, not an active-service, endorsement, partnership or HQ-integration claim. The [Kaspa directory](KASPA-DIRECTORY.md) includes the same legacy distinction and the Hall links to it. Other new Hall links await founder supply; no individual or project credit was inferred from directory inclusion.

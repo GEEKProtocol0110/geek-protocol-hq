@@ -60,7 +60,7 @@
       "description": "Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. Explore lessons, free quizzes and community tools. No wallet needed to start.",
       "index": true,
       "private": false,
-      "lastmod": "2026-11-03"
+      "lastmod": "2026-11-05"
     },
     {
       "file": "public/kaspa/index.html",
@@ -73,7 +73,7 @@
       "imageAlt": "Kaspa, without the hype. Kaspa 101 field guide from Geek Protocol.",
       "imageWidth": 1200,
       "imageHeight": 630,
-      "lastmod": "2026-10-17"
+      "lastmod": "2026-11-05"
     },
     {
       "file": "public/litepaper/index.html",
@@ -244,7 +244,7 @@
       "imageAlt": "Hall of Thanks. No Geek stands alone. Built on Kaspa. Carried by community.",
       "imageWidth": 1200,
       "imageHeight": 630,
-      "lastmod": "2026-10-31"
+      "lastmod": "2026-11-05"
     },
     {
       "file": "public/tools/index.html",
@@ -396,6 +396,19 @@
       "index": true,
       "private": false,
       "lastmod": "2026-11-03"
+    },
+    {
+      "file": "public/kaspa/directory/index.html",
+      "path": "/kaspa/directory/",
+      "title": "Kaspa Directory \u2014 Wallets, Explorers, Tools & Community | Geek Protocol",
+      "description": "Explore public Kaspa resources: wallets, explorers, developer tools, research, mining, payments and community links. A growing, searchable directory from Geek Protocol.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-05",
+      "image": "/assets/share-kaspa-v1.png",
+      "imageAlt": "Kaspa resources and learning from Geek Protocol.",
+      "imageWidth": 1200,
+      "imageHeight": 630
     }
   ]
 }

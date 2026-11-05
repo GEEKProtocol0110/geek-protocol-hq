@@ -61,6 +61,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-010 | P0 | needs-evidence | Redirect trailing-slash apex page links to the canonical host | Maintainer; founder approves production merge |
 | DOC-002 | P1 | done | Expose project documents and contributors on the homepage | Maintainer; founder approves merge |
 | SEO-002 | P1 | in-progress | Publish clear project facts and verify search discovery | Maintainer prepares source; founder approves merge; verified property owner handles search-console evidence |
+| ECO-002 | P1 | in-progress | Build a public Kaspa directory and acknowledge Kas.fyi | Maintainer prepares source; founder reviews release and supplies additional Hall links |
 
 ## CONT-001: Publish the continuation system
 
@@ -879,3 +880,19 @@ Acceptance:
 - Record actual source/crawl findings, provider limits and the remaining console/legacy-deployment actions without claiming indexing, citations or external grading.
 
 Evidence/specification: [public/about/index.html](../../public/about/index.html), [public/about/assets/about.css](../../public/about/assets/about.css), [public/index.html](../../public/index.html), [docs/site-pages.json](../../docs/site-pages.json), [docs/SEARCH-DISCOVERY-REVIEW-2026-11-03.md](../../docs/SEARCH-DISCOVERY-REVIEW-2026-11-03.md).
+
+## ECO-002: Build a public Kaspa directory and acknowledge Kas.fyi
+
+**P1 / in-progress.** Owner: Maintainer prepares source; founder reviews release and supplies additional Hall links. Dependencies: none.
+
+Next action: Complete checks and publish a reviewable PR. Record exact-head CI and preview evidence before release review; add other Hall acknowledgments when supplied.
+
+Acceptance:
+
+- Keep the Kaspa beginner guide and all existing Hall credits intact; add the founder-requested Kas.fyi thank-you with accurate legacy status.
+- Provide native HTML resource links, useful categories, accessible search/reset and a no-JavaScript browsing path.
+- Record primary sources and editorial review dates; distinguish sourced listings from availability, audits and endorsements.
+- Expose the directory from Home, Kaspa and the Hall, with canonical metadata and sitemap coverage.
+- Run catalog, filter, metadata, continuity and relevant regression checks; record preview and physical-device limits honestly.
+
+Evidence/specification: [docs/KASPA-DIRECTORY.md](../../docs/KASPA-DIRECTORY.md), [docs/kaspa-directory.json](../../docs/kaspa-directory.json), [scripts/kaspa-directory.mjs](../../scripts/kaspa-directory.mjs), [tests/kaspa-directory.test.js](../../tests/kaspa-directory.test.js), [public/kaspa/directory/index.html](../../public/kaspa/directory/index.html), [public/thanks/index.html](../../public/thanks/index.html).
