@@ -1479,10 +1479,10 @@
     {
       "id": "ECO-003",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "done",
       "title": "Expand KRC-20 project links and preserve token lookups for holders",
       "owner": "Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned",
-      "nextAction": "KRC-20 expansion #236 is merged/deployed (b38e27dedeec5ac6a014ff6647401d127749ea4e; CI 41974695614; production dpl_CRhPA23oi9PEs51aRjUU2P3GGnDw; exact canonical HTML/CSS/JS verified). Review the founder-requested Kaspa-first ordering follow-up: ten general Kaspa categories, then projects/holder lookups, then Geek/legacy. Preserve all 104 listings and evidence; follow-up merge/deployment remain separate.",
+      "nextAction": "Maintain the 104 released resources and holder-reference policy. Founder-approved ordering #237 is merged/deployed with exact public HTML verification; exchange expansion continues separately under ECO-004.",
       "acceptance": [
         "Review all 45 sourced candidates, including founder-requested KAEN, and retain every confirmed KRC-20 asset as a project listing or holder lookup with status separate from token existence.",
         "Publish native project links where inspected and native matching token-record lookups for holders otherwise; label status and dated evidence without declaring coins dead.",
@@ -1501,15 +1501,19 @@
         "scripts/kaspa-directory.mjs",
         "tests/kaspa-directory.test.js",
         "public/kaspa/directory/index.html"
+      ],
+      "completedAt": "2026-11-05",
+      "completionEvidence": [
+        "#237 merged 478dfc16b6843eef93603b3905d63b7a31f2f1ef; checked tree 0b0311ddff28150aa1a8a4ae7341d2f76c6054f3; CI 42063638109 succeeded; production dpl_6VGBV45EHRDo6EfcLr1xfx932mfo READY and exact canonical HTML confirms Kaspa-first order/all 104 entries. Rendering/phone acceptance remains separate."
       ]
     },
     {
       "id": "UX-011",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "needs-evidence",
       "title": "Public HQ global leaderboard and separate shared Mini standings",
       "owner": "Maintainer prepares source and verification; founder approves release; independent abuse review unassigned",
-      "nextAction": "Review the paired HQ/Mini source candidates, exact-head CI and cross-site public-round rehearsal. Deploy HQ first, then Mini after founder merge approval. Rendered/device acceptance remains separate.",
+      "nextAction": "HQ #238 and Mini #13 are merged/deployed with source/HTTP/API acceptance. Verify rendered desktop/mobile behavior and independent abuse limits separately; public practice does not open private-ranked seasons or economic gates.",
       "acceptance": [
         "Provide a public /leaderboard/ in HQ with separate HQ and Mini filters and native entry points from Home, Play and My HQ; no sign-in to view.",
         "Mini provides a Mini-only /leaderboard and an explicit public challenge opt-in; existing local scores are never imported or ranked.",
@@ -1526,6 +1530,34 @@
         "public/leaderboard/index.html",
         "public/leaderboard/leaderboard.js",
         "tests/mini-competition.test.js"
+      ],
+      "releaseEvidence": [
+        "Founder-approved HQ #238 merged 3a98a38dee7eb3d7d7fa2733ab38c324fce88cf4, checked tree 64a2f01a74fd306143b20bcc5e318a6b1c45c25f, CI 42115327072 succeeded, production dpl_GQDZHv5VKYhJQkx1KffcZnxyygUR READY; leaderboard HTML/JS/CSS exact and Mini API read succeeds. Mini #13 merged 845eef9fec91acf5109362750e82a05a56e23711, CI 42115333430 and both production statuses succeeded; public Mini routes/proxy read succeed. No synthetic scores written to production. Rendered/device and independent abuse acceptance remain separate."
+      ]
+    },
+    {
+      "id": "ECO-004",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Add native-KAS exchanges, brokers and swaps to the Kaspa directory",
+      "owner": "Maintainer prepares source and evidence; founder approves release; independent coverage reviewer unassigned",
+      "nextAction": "Review the prepared source and dated provider evidence; run exact-head CI and preview HTTP verification after publishing the candidate PR. Founder merge approval, production deployment and device acceptance remain separate.",
+      "acceptance": [
+        "Add broadly researched native-KAS purchase links with provider-owned primary sources and honest editorial dates; spot markets, brokers/on-ramps and swaps have separate alphabetical sections.",
+        "Preserve all 104 prior resources, the KRC-20 holder policy, Hall credits and Kaspa-first category order. New purchase sections belong with the general Kaspa links.",
+        "Distinguish listing evidence from eligibility, execution, liquidity and native-network transfer availability. Exclude derivative-only, unavailable, sell-only or unconfirmed purchase routes; retain the review queue.",
+        "Serve all new links and context in native HTML with matching category/filter/schema output; add a buy-KAS shortcut and update directory search metadata. No affiliate links or visitor-side external fetches.",
+        "Run directory behavior/parity, metadata and continuity checks; record exact CI/preview evidence and actual rendering limits without certifying live trades or exhaustive global coverage."
+      ],
+      "dependsOn": [
+        "ECO-003"
+      ],
+      "evidence": [
+        "docs/KASPA-EXCHANGE-REVIEW.md",
+        "docs/kaspa-exchange-review.json",
+        "docs/kaspa-directory.json",
+        "public/kaspa/directory/index.html",
+        "docs/site-pages.json"
       ]
     }
   ]

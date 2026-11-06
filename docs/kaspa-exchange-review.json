@@ -1,0 +1,1291 @@
+{
+  "schema": 1,
+  "task": "ECO-004",
+  "reviewedAt": "2026-11-05",
+  "checkedAt": "2026-11-06T00:32:01.241912+00:00",
+  "timeZone": "America/Detroit",
+  "notExhaustive": true,
+  "scope": "Native Kaspa KAS purchase routes; separate spot markets, brokers/on-ramps and swaps. Excludes derivative-only and unsupported wrapped-asset inferences. Listing review is not transaction, eligibility or security acceptance.",
+  "discoverySources": [
+    {
+      "url": "https://kaspa.org/hodl",
+      "role": "Kaspa project acquisition guidance and provider discovery"
+    },
+    {
+      "url": "https://kaspahub.org/exchanges/",
+      "role": "95 provider names in the fetched inline catalog; descriptions not copied"
+    },
+    {
+      "url": "https://api.coingecko.com/api/v3/coins/kaspa/tickers?order=volume_desc&page=1&depth=false",
+      "role": "47 sampled market rows; stale/anomaly flags guide further primary checks"
+    },
+    {
+      "url": "https://coinranking.com/coin/V8GxkwWow+kaspa-kas/exchanges",
+      "role": "Additional name discovery; affiliate links not used"
+    }
+  ],
+  "candidateCount": 102,
+  "includedCount": 60,
+  "included": [
+    {
+      "id": "kas-altcointrader",
+      "name": "AltCoinTrader",
+      "kind": "spot",
+      "url": "https://altcointrader.co.za/?market=kaszar",
+      "primarySources": [
+        "https://altcointrader.co.za/?market=kaszar"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.altcointrader.co.za/kas",
+        "result": "200 https://altcointrader.co.za/?market=kaszar",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-biconomy",
+      "name": "Biconomy",
+      "kind": "spot",
+      "url": "https://www.biconomy.com/exchange/KAS_USDC",
+      "primarySources": [
+        "https://biconomy.zendesk.com/hc/en-us/articles/54652654750105--Biconomy-New-Listing-KAS-POL-and-RLUSD-USDC-Trading-Pairs",
+        "https://www.biconomy.com/exchange/KAS_USDC"
+      ],
+      "basis": "Provider spot directory, listing information or KAS-specific spot links; current market discovery cross-check where available. Direct-fetch limits recorded separately.",
+      "delivery": {
+        "requestedUrl": "https://www.biconomy.com/exchange/KAS_USDT",
+        "result": "200 https://www.biconomy.com/exchange/KAS_USDT",
+        "classification": "javascript-shell; destination changed to separately reviewed official route"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-bigone",
+      "name": "BigONE",
+      "kind": "spot",
+      "url": "https://big.one/en/trade/KAS-USDT",
+      "primarySources": [
+        "https://big.one/en/trade/KAS-USDT"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://big.one/trade/KAS-USDT",
+        "result": "200 https://big.one/en/trade/KAS-USDT",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-bingx",
+      "name": "BingX",
+      "kind": "spot",
+      "url": "https://bingx.com/en/spot/KASUSDT",
+      "primarySources": [
+        "https://bingx.com/en/spot/KASUSDT"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://bingx.com/en/spot/KASUSDT",
+        "result": "200 https://bingx.com/en/spot/KASUSDT",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-bit2me",
+      "name": "Bit2Me",
+      "kind": "spot",
+      "url": "https://pro.bit2me.com/exchange/KAS-EUR",
+      "primarySources": [
+        "https://bit2me.com/price/kaspa",
+        "https://pro.bit2me.com/exchange/KAS-EUR"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://pro.bit2me.com/exchange/KAS-EUR",
+        "result": "204 https://pro.bit2me.com/exchange/KAS-EUR",
+        "classification": "http-204"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-bitget",
+      "name": "Bitget",
+      "kind": "spot",
+      "url": "https://www.bitget.com/spot/KASUSDT",
+      "primarySources": [
+        "https://www.bitget.com/spot/KASUSDT"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.bitget.com/spot/KASUSDT",
+        "result": "200 https://www.bitget.com/spot/KASUSDT",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-bitpanda",
+      "name": "Bitpanda",
+      "kind": "broker",
+      "url": "https://www.bitpanda.com/en/prices/kaspa-kas",
+      "primarySources": [
+        "https://www.bitpanda.com/en/prices/kaspa-kas"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.bitpanda.com/en/prices/kaspa-kas",
+        "result": "200 https://www.bitpanda.com/en/prices/kaspa-kas",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-bitrue",
+      "name": "Bitrue",
+      "kind": "spot",
+      "url": "https://www.bitrue.com/trade/kas_usdt",
+      "primarySources": [
+        "https://support.bitrue.com/hc/en-001/articles/25771740967577-Bitrue-Will-List-Kaspa-KAS",
+        "https://www.bitrue.com/trade/kas_usdt"
+      ],
+      "basis": "Provider spot directory, listing information or KAS-specific spot links; current market discovery cross-check where available. Direct-fetch limits recorded separately.",
+      "delivery": {
+        "requestedUrl": "https://www.bitrue.com/trade/kas_usdt",
+        "result": "200 https://www.bitrue.com/trade/kas_usdt",
+        "classification": "unavailable-response"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-bittime",
+      "name": "Bittime",
+      "kind": "spot",
+      "url": "https://www.bittime.com/en/trade/kas-idr",
+      "primarySources": [
+        "https://www.bittime.com/en/price/KAS",
+        "https://www.bittime.com/en/trade/kas-idr"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.bittime.com/en/trade/kas-idr",
+        "result": "200 https://www.bittime.com/en/trade/kas-idr",
+        "classification": "javascript-shell"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-bitvavo",
+      "name": "Bitvavo",
+      "kind": "spot",
+      "url": "https://account.bitvavo.com/markets/KAS-EUR",
+      "primarySources": [
+        "https://account.bitvavo.com/markets/KAS-EUR"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://account.bitvavo.com/markets/KAS-EUR",
+        "result": "200 https://account.bitvavo.com/markets/KAS-EUR",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-btcc",
+      "name": "BTCC",
+      "kind": "spot",
+      "url": "https://www.btcc.com/en-US/spot/KASUSDT",
+      "primarySources": [
+        "https://www.btcc.com/en-US/spot/KASUSDT"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.btcc.com/en-US/spot/KASUSDT",
+        "result": "200 https://www.btcc.com/en-US/spot/KASUSDT",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-btse",
+      "name": "BTSE",
+      "kind": "spot",
+      "url": "https://www.btse.com/en/trading/KAS-USDT",
+      "primarySources": [
+        "https://api.btse.com/spot/api/v3.2/market_summary?symbol=KAS-USDT",
+        "https://www.btse.com/en/trading/KAS-USDT"
+      ],
+      "basis": "Provider public spot API returned the matching KAS market; no private API or order used.",
+      "delivery": {
+        "requestedUrl": "https://www.btse.com/en/trading/KAS-USDT",
+        "result": "200 https://www.btse.com/en/trading/KAS-USDT",
+        "classification": "javascript-shell"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-bybit",
+      "name": "Bybit",
+      "kind": "spot",
+      "url": "https://www.bybit.com/trade/spot/KAS/USDT",
+      "primarySources": [
+        "https://www.bybit.com/sitemap/spot/en.html",
+        "https://www.bybit.com/trade/spot/KAS/USDT"
+      ],
+      "basis": "Provider spot directory, listing information or KAS-specific spot links; current market discovery cross-check where available. Direct-fetch limits recorded separately.",
+      "delivery": {
+        "requestedUrl": "https://www.bybit.com/trade/spot/KAS/USDT",
+        "result": "200 https://www.bybit.com/trade/spot/KAS/USDT",
+        "classification": "unavailable-response"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-bydfi",
+      "name": "BYDFi",
+      "kind": "spot",
+      "url": "https://www.bydfi.com/exchange/KAS_USDT",
+      "primarySources": [
+        "https://www.bydfi.com/exchange/KAS_USDT"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.bydfi.com/exchange/KAS_USDT",
+        "result": "200 https://www.bydfi.com/exchange/KAS_USDT",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-cex-io",
+      "name": "CEX.IO",
+      "kind": "broker",
+      "url": "https://wallet.cex.io/kas",
+      "primarySources": [
+        "https://wallet.cex.io/kas"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://wallet.cex.io/kas",
+        "result": "200 https://wallet.cex.io/kas",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-changehero",
+      "name": "ChangeHero",
+      "kind": "swap",
+      "url": "https://changehero.io/coins/kaspa",
+      "primarySources": [
+        "https://changehero.io/coins/kaspa"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://changehero.io/coins/kaspa",
+        "result": "200 https://changehero.io/coins/kaspa",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-changelly",
+      "name": "Changelly",
+      "kind": "swap",
+      "url": "https://changelly.com/buy/kas",
+      "primarySources": [
+        "https://changelly.com/buy/kas"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://changelly.com/buy/kas",
+        "result": "200 https://changelly.com/buy/kas",
+        "classification": "unavailable-response"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-changenow",
+      "name": "ChangeNOW",
+      "kind": "swap",
+      "url": "https://changenow.io/currencies/kaspa",
+      "primarySources": [
+        "https://changenow.io/currencies/kaspa"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://changenow.io/currencies/kaspa",
+        "result": "200 https://changenow.io/currencies/kaspa",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-coindcx",
+      "name": "CoinDCX",
+      "kind": "spot",
+      "url": "https://coindcx.com/trade/KASUSDT",
+      "primarySources": [
+        "https://api.coindcx.com/exchange/v1/markets_details",
+        "https://coindcx.com/trade/KASUSDT"
+      ],
+      "basis": "Provider public spot API returned the matching KAS market; no private API or order used.",
+      "delivery": {
+        "requestedUrl": "https://coindcx.com/trade/KASUSDT",
+        "result": "200 https://coindcx.com/trade/KASUSDT",
+        "classification": "javascript-shell"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-coinex",
+      "name": "CoinEx",
+      "kind": "spot",
+      "url": "https://www.coinex.com/en/exchange/KAS-USDT",
+      "primarySources": [
+        "https://www.coinex.com/en/price/kas",
+        "https://www.coinex.com/en/exchange/KAS-USDT"
+      ],
+      "basis": "Provider spot directory, listing information or KAS-specific spot links; current market discovery cross-check where available. Direct-fetch limits recorded separately.",
+      "delivery": {
+        "requestedUrl": "https://www.coinex.com/en/exchange/KAS-USDT",
+        "result": "200 https://www.coinex.com/en/exchange/KAS-USDT",
+        "classification": "unavailable-response"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-coinmerce",
+      "name": "Coinmerce",
+      "kind": "broker",
+      "url": "https://coinmerce.io/en/kaspa/",
+      "primarySources": [
+        "https://coinmerce.io/en/kaspa/"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://coinmerce.io/en/kaspa/",
+        "result": "200 https://coinmerce.io/en/kaspa/",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-coinone",
+      "name": "Coinone",
+      "kind": "spot",
+      "url": "https://coinone.co.kr/exchange/trade/kas/krw",
+      "primarySources": [
+        "https://coinone.co.kr/info/notice/2463",
+        "https://coinone.co.kr/exchange/trade/kas/krw"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://coinone.co.kr/exchange/trade/kas/krw",
+        "result": "200 https://coinone.co.kr/exchange/trade/kas/krw",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-coinspot",
+      "name": "CoinSpot",
+      "kind": "broker",
+      "url": "https://www.coinspot.com.au/buy/kas",
+      "primarySources": [
+        "https://www.coinspot.com.au/buy/kas"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.coinspot.com.au/buy/kas",
+        "result": "200 https://www.coinspot.com.au/buy/kas",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-coinstash",
+      "name": "Coinstash",
+      "kind": "broker",
+      "url": "https://coinstash.com.au/kas/buy",
+      "primarySources": [
+        "https://coinstash.com.au/kas/buy"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://coinstash.com.au/kas/buy",
+        "result": "403 https://coinstash.com.au/kas/buy",
+        "classification": "http-403"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-cointr",
+      "name": "CoinTR",
+      "kind": "spot",
+      "url": "https://www.cointr.com/en/announcement/new-listings/esp-era-kas-linea-listed-on-cointr",
+      "primarySources": [
+        "https://www.cointr.com/en/announcement/new-listings/esp-era-kas-linea-listed-on-cointr"
+      ],
+      "basis": "Provider spot directory, listing information or KAS-specific spot links; current market discovery cross-check where available. Direct-fetch limits recorded separately.",
+      "delivery": {
+        "requestedUrl": "https://www.cointr.com/en/spot/KASUSDT",
+        "result": "403 https://www.cointr.com/en/spot/KASUSDT",
+        "classification": "http-403; destination changed to separately reviewed official route"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-coinw",
+      "name": "CoinW",
+      "kind": "spot",
+      "url": "https://www.coinw.com/spot/kasusdt",
+      "primarySources": [
+        "https://www.coinw.com/spot/kasusdt"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.coinw.com/spot/kasusdt",
+        "result": "200 https://www.coinw.com/spot/kasusdt",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-digital-surge",
+      "name": "Digital Surge",
+      "kind": "broker",
+      "url": "https://digitalsurge.com.au/buy/kas/",
+      "primarySources": [
+        "https://digitalsurge.com.au/buy/kas/"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://digitalsurge.com.au/buy/kas/",
+        "result": "200 https://digitalsurge.com.au/buy/kas/",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-exolix",
+      "name": "Exolix",
+      "kind": "swap",
+      "url": "https://exolix.com/currencies/kas",
+      "primarySources": [
+        "https://exolix.com/currencies/kas"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://exolix.com/currencies/kas",
+        "result": "403 https://exolix.com/currencies/kas",
+        "classification": "http-403"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-finchpay",
+      "name": "FinchPay",
+      "kind": "broker",
+      "url": "https://finchpay.io/currencies",
+      "primarySources": [
+        "https://finchpay.io/currencies"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://finchpay.io/currencies",
+        "result": "200 https://finchpay.io/currencies",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-gate",
+      "name": "Gate",
+      "kind": "spot",
+      "url": "https://www.gate.com/trade/KAS_USDT",
+      "primarySources": [
+        "https://www.gate.com/en-au/trade/KAS_USDT",
+        "https://www.gate.com/trade/KAS_USDT"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.gate.com/trade/KAS_USDT",
+        "result": "403 https://www.gate.com/trade/KAS_USDT",
+        "classification": "http-403"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-godex",
+      "name": "Godex",
+      "kind": "swap",
+      "url": "https://godex.io/coin/kas",
+      "primarySources": [
+        "https://godex.io/coin/kas"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://godex.io/coin/kas",
+        "result": "200 https://godex.io/coin/kas",
+        "classification": "javascript-shell"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-hibt",
+      "name": "HiBT",
+      "kind": "spot",
+      "url": "https://hibt.com/trade/KAS-USDT",
+      "primarySources": [
+        "https://hibt.com/trade/KAS-USDT"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://hibt.com/trade/KAS-USDT",
+        "result": "200 https://hibt.com/trade/KAS-USDT",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-hotcoin",
+      "name": "Hotcoin",
+      "kind": "spot",
+      "url": "https://www.hotcoin.com/en_US/spot/kas-usdt/",
+      "primarySources": [
+        "https://www.hotcoin.com/en_US/price/kaspa-kas/",
+        "https://www.hotcoin.com/en_US/spot/kas-usdt/",
+        "https://www.hotcoin.com/en_US/status/"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.hotcoin.com/en_US/trade/exchange/?tradeCode=kas_usdt",
+        "result": "200 https://www.hotcoin.com/en_US/spot/kas-usdt/",
+        "classification": "javascript-shell"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-htx",
+      "name": "HTX",
+      "kind": "spot",
+      "url": "https://www.htx.com/trade/kas_usdt",
+      "primarySources": [
+        "https://api.huobi.pro/market/detail/merged?symbol=kasusdt",
+        "https://www.htx.com/trade/kas_usdt"
+      ],
+      "basis": "Provider public spot API returned the matching KAS market; no private API or order used.",
+      "delivery": {
+        "requestedUrl": "https://www.htx.com/trade/kas_usdt",
+        "result": "200 https://www.htx.com/trade/kas_usdt",
+        "classification": "javascript-shell"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-kraken",
+      "name": "Kraken",
+      "kind": "spot",
+      "url": "https://pro.kraken.com/app/trade/KAS-USD",
+      "primarySources": [
+        "https://www.kraken.com/buy/kas",
+        "https://pro.kraken.com/app/trade/KAS-USD"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.kraken.com/buy/kas",
+        "result": "200 https://www.kraken.com/buy/kas",
+        "classification": "asset-specific-html; destination changed to separately reviewed official route"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-kucoin",
+      "name": "KuCoin",
+      "kind": "spot",
+      "url": "https://www.kucoin.com/trade/KAS-USDT",
+      "primarySources": [
+        "https://www.kucoin.com/how-to-buy/kaspa",
+        "https://www.kucoin.com/trade/KAS-USDT"
+      ],
+      "basis": "Provider spot directory, listing information or KAS-specific spot links; current market discovery cross-check where available. Direct-fetch limits recorded separately.",
+      "delivery": {
+        "requestedUrl": "https://www.kucoin.com/trade/KAS-USDT",
+        "result": "200 https://www.kucoin.com/trade/KAS-USDT",
+        "classification": "unavailable-response"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-lbank",
+      "name": "LBank",
+      "kind": "spot",
+      "url": "https://www.lbank.com/trade/kas_usdt",
+      "primarySources": [
+        "https://www.lbank.com/trade/kas_usdt"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.lbank.com/trade/kas_usdt",
+        "result": "200 https://www.lbank.com/trade/kas_usdt",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-lcx",
+      "name": "LCX",
+      "kind": "spot",
+      "url": "https://lcx.com/en/how-to-buy-kaspa",
+      "primarySources": [
+        "https://lcx.com/en/how-to-buy-kaspa"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://lcx.com/en/how-to-buy-kaspa",
+        "result": "403 https://lcx.com/en/how-to-buy-kaspa",
+        "classification": "http-403"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-mexc",
+      "name": "MEXC",
+      "kind": "spot",
+      "url": "https://www.mexc.com/exchange/KAS_USDT",
+      "primarySources": [
+        "https://www.mexc.com/exchange/kas_USDT",
+        "https://www.mexc.com/exchange/KAS_USDT"
+      ],
+      "basis": "Provider spot directory, listing information or KAS-specific spot links; current market discovery cross-check where available. Direct-fetch limits recorded separately.",
+      "delivery": {
+        "requestedUrl": "https://www.mexc.com/exchange/KAS_USDT",
+        "result": "200 https://www.mexc.com/exchange/KAS_USDT",
+        "classification": "unavailable-response"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-mudrex",
+      "name": "Mudrex",
+      "kind": "broker",
+      "url": "https://mudrex.com/buy-kas",
+      "primarySources": [
+        "https://mudrex.com/buy-kas"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://mudrex.com/buy-kas",
+        "result": "403 https://mudrex.com/buy-kas",
+        "classification": "http-403"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-nexo",
+      "name": "Nexo",
+      "kind": "broker",
+      "url": "https://nexo.com/buy-kaspa-kas",
+      "primarySources": [
+        "https://nexo.com/buy-kaspa-kas"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://nexo.com/buy-kaspa-kas",
+        "result": "200 https://nexo.com/buy-kaspa-kas",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-nonkyc-io",
+      "name": "NonKYC.io",
+      "kind": "spot",
+      "url": "https://nonkyc.io/market/KAS_USDT",
+      "primarySources": [
+        "https://api.nonkyc.io/api/v2/market/getbysymbol/KAS_USDT",
+        "https://nonkyc.io/market/KAS_USDT"
+      ],
+      "basis": "Provider public spot API returned the matching KAS market; no private API or order used.",
+      "delivery": {
+        "requestedUrl": "https://nonkyc.io/market/KAS_USDT",
+        "result": "403 https://nonkyc.io/market/KAS_USDT",
+        "classification": "http-403"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-onramp-money",
+      "name": "Onramp.money",
+      "kind": "broker",
+      "url": "https://onramp.money/coins/kaspa",
+      "primarySources": [
+        "https://onramp.money/coins/kaspa"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://onramp.money/coins/kaspa",
+        "result": "200 https://onramp.money/coins/kaspa",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-orangex",
+      "name": "OrangeX",
+      "kind": "spot",
+      "url": "https://www.orangex.com/spot/KAS-USDT-SPOT",
+      "primarySources": [
+        "https://www.orangex.com/spot/KAS-USDT-SPOT"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.orangex.com/spot/KAS-USDT-SPOT",
+        "result": "200 https://www.orangex.com/spot/KAS-USDT-SPOT",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-ourbit",
+      "name": "Ourbit",
+      "kind": "spot",
+      "url": "https://www.ourbit.com/exchange/KASUSDT",
+      "primarySources": [
+        "https://www.ourbit.com/exchange/KASUSDT"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.ourbit.com/exchange/KAS_USDT",
+        "result": "200 https://www.ourbit.com/exchange/KASUSDT",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-phemex",
+      "name": "Phemex",
+      "kind": "spot",
+      "url": "https://phemex.com/trade/KAS-USDT",
+      "primarySources": [
+        "https://phemex.com/announcements/new-spot-listing-kas",
+        "https://phemex.com/trade/KAS-USDT"
+      ],
+      "basis": "Provider spot directory, listing information or KAS-specific spot links; current market discovery cross-check where available. Direct-fetch limits recorded separately.",
+      "delivery": {
+        "requestedUrl": "https://phemex.com/trade/KAS-USDT",
+        "result": "200 https://phemex.com/trade/KAS-USDT",
+        "classification": "unavailable-response"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-pionex",
+      "name": "Pionex",
+      "kind": "spot",
+      "url": "https://www.pionex.com/en/trade/KAS_USDT/Bot",
+      "primarySources": [
+        "https://api.pionex.com/api/v1/common/symbols?type=SPOT",
+        "https://www.pionex.com/en/trade/KAS_USDT/Bot"
+      ],
+      "basis": "Provider public spot API returned the matching KAS market; no private API or order used.",
+      "delivery": {
+        "requestedUrl": "https://www.pionex.com/en/trade/KAS_USDT/Bot",
+        "result": "200 https://www.pionex.com/en/trade/KAS_USDT/Bot",
+        "classification": "javascript-shell"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-reku",
+      "name": "Reku",
+      "kind": "spot",
+      "url": "https://reku.id/trade/KAS-IDR",
+      "primarySources": [
+        "https://reku.id/trade/KAS-IDR"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://reku.id/trade/KAS-IDR",
+        "result": "403 https://reku.id/trade/KAS-IDR",
+        "classification": "http-403"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-simpleswap",
+      "name": "SimpleSwap",
+      "kind": "swap",
+      "url": "https://simpleswap.io/coins/kas",
+      "primarySources": [
+        "https://simpleswap.io/coins/kas"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://simpleswap.io/coins/kas",
+        "result": "200 https://simpleswap.io/coins/kas",
+        "classification": "unavailable-response"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-stealthex",
+      "name": "StealthEX",
+      "kind": "swap",
+      "url": "https://stealthex.io/coin/kaspa/",
+      "primarySources": [
+        "https://stealthex.io/coin/kaspa/"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://stealthex.io/coin/kaspa/",
+        "result": "200 https://stealthex.io/coin/kaspa/",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-swapspace",
+      "name": "SwapSpace",
+      "kind": "swap",
+      "url": "https://swapspace.co/exchange/kas",
+      "primarySources": [
+        "https://swapspace.co/exchange/kas"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://swapspace.co/exchange/kas",
+        "result": "200 https://swapspace.co/exchange/kas",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-swapzone",
+      "name": "Swapzone",
+      "kind": "swap",
+      "url": "https://swapzone.io/exchange/kaspa",
+      "primarySources": [
+        "https://swapzone.io/exchange/kaspa"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://swapzone.io/exchange/kaspa",
+        "result": "200 https://swapzone.io/exchange/kaspa",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-swissborg",
+      "name": "SwissBorg",
+      "kind": "broker",
+      "url": "https://swissborg.com/crypto-market/coins/kaspa",
+      "primarySources": [
+        "https://swissborg.com/supported-assets",
+        "https://swissborg.com/crypto-market/coins/kaspa"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://swissborg.com/crypto-market/coins/kaspa",
+        "result": "200 https://swissborg.com/crypto-market/coins/kaspa",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-swyftx",
+      "name": "Swyftx",
+      "kind": "broker",
+      "url": "https://swyftx.com/au/buy/kaspa/",
+      "primarySources": [
+        "https://swyftx.com/network-withdrawal-fees/",
+        "https://swyftx.com/au/buy/kaspa/",
+        "https://swyftx.com/au/buy/kaspa/"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://swyftx.com/au/buy/kaspa/",
+        "result": "200 https://swyftx.com/au/buy/kaspa/",
+        "classification": "javascript-shell"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-topper",
+      "name": "Topper",
+      "kind": "broker",
+      "url": "https://www.topperpay.com/digital-assets",
+      "primarySources": [
+        "https://www.topperpay.com/digital-assets"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.topperpay.com/digital-assets",
+        "result": "200 https://www.topperpay.com/digital-assets",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-uphold",
+      "name": "Uphold",
+      "kind": "broker",
+      "url": "https://uphold.com/en-us/prices/crypto/kaspa",
+      "primarySources": [
+        "https://support.uphold.com/hc/en-us/articles/39966029596571-Fees-Limits-Processing-times",
+        "https://uphold.com/en-us/prices/crypto/kaspa"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://uphold.com/en-us/prices/crypto/kaspa",
+        "result": "200 https://uphold.com/en-us/prices/crypto/kaspa",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-wazirx",
+      "name": "WazirX",
+      "kind": "spot",
+      "url": "https://wazirx.com/exchange/KAS-USDT",
+      "primarySources": [
+        "https://api.wazirx.com/sapi/v1/exchangeInfo",
+        "https://wazirx.com/exchange/KAS-USDT"
+      ],
+      "basis": "Provider public spot API returned the matching KAS market; no private API or order used.",
+      "delivery": {
+        "requestedUrl": "https://wazirx.com/exchange/KAS-USDT",
+        "result": "200 https://wazirx.com/exchange/KAS-USDT",
+        "classification": "javascript-shell"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-webot",
+      "name": "Webot",
+      "kind": "spot",
+      "url": "https://www.webot.com/us/en/trade/KAS_USD",
+      "primarySources": [
+        "https://intercom.help/webot/en/collections/19059931-new-listings",
+        "https://www.webot.com/us/en/trade/KAS_USD"
+      ],
+      "basis": "Provider spot directory, listing information or KAS-specific spot links; current market discovery cross-check where available. Direct-fetch limits recorded separately.",
+      "delivery": {
+        "requestedUrl": "https://www.webot.com/us/en/trade/KAS_USD",
+        "result": "200 https://www.webot.com/us/en/trade/KAS_USD",
+        "classification": "javascript-shell"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-weex",
+      "name": "WEEX",
+      "kind": "spot",
+      "url": "https://www.weex.com/spot/KAS-USDT",
+      "primarySources": [
+        "https://www.weex.com/spot/KAS-USDT"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.weex.com/spot/KAS-USDT",
+        "result": "200 https://www.weex.com/spot/KAS-USDT",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    },
+    {
+      "id": "kas-xt-com",
+      "name": "XT.COM",
+      "kind": "spot",
+      "url": "https://www.xt.com/en/trade/kas_usdt",
+      "primarySources": [
+        "https://www.xt.com/en/trade/kas_usdt"
+      ],
+      "basis": "Provider-specific page or indexed primary-page evidence; no order or account functionality tested.",
+      "delivery": {
+        "requestedUrl": "https://www.xt.com/en/trade/kas_usdt",
+        "result": "200 https://www.xt.com/en/trade/kas_usdt",
+        "classification": "asset-specific-html"
+      },
+      "limitation": "Listing evidence only; eligibility, execution, liquidity and native-network deposit/withdrawal availability are not certified."
+    }
+  ],
+  "heldCount": 42,
+  "held": [
+    {
+      "name": "Baltex",
+      "url": "https://baltex.io",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Binance",
+      "url": "https://www.binance.com/en/futures/KASUSDT",
+      "reason": "A futures contract is not evidence of a native KAS spot purchase route.",
+      "primarySources": [
+        "https://www.binance.com/en/futures/KASUSDT"
+      ]
+    },
+    {
+      "name": "BITmarkets",
+      "url": "https://bitmarkets.com",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "BitMart",
+      "url": "https://www.bitmart.com/crypto/KAS",
+      "reason": "An old spot listing exists, but the current asset page retrieved only a perpetual market and the public API response was unavailable. Current spot purchase route not established.",
+      "primarySources": [
+        "https://www.bitmart.com/crypto/KAS"
+      ]
+    },
+    {
+      "name": "Bridgers",
+      "url": "https://app.bridgers.xyz",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Caleb & Brown",
+      "url": "https://calebandbrown.com",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Coinbase",
+      "url": "https://www.coinbase.com/price/kaspa",
+      "reason": "A reference price page is not evidence that native KAS can be purchased on the exchange.",
+      "primarySources": [
+        "https://www.coinbase.com/price/kaspa"
+      ]
+    },
+    {
+      "name": "CoinoSwap",
+      "url": "https://www.coinoswap.com",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "CoinRabbit",
+      "url": "https://coinrabbit.io",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Coinstore",
+      "url": "https://www.coinstore.com",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Dex-Trade",
+      "url": "https://dex-trade.com",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "DigiFinex",
+      "url": "https://www.digifinex.com",
+      "reason": "Provider notice suspends KAS deposits, withdrawals and trading; no superseding resumption confirmed.",
+      "primarySources": [
+        "https://support.digifinex.com/hc/en-us/articles/52230473108377--Deposit-Withdrawal-Trading-Suspend-CHEEMS-KAS-DOGINME-AGI"
+      ]
+    },
+    {
+      "name": "Eclipse Exchange",
+      "url": "https://eclipseex.com",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Giottus",
+      "url": "https://www.giottus.com/tradeview/kas-inr",
+      "reason": "Sampled KAS row was stale/anomalous and primary page fetch was blocked. Current purchasable market not established.",
+      "primarySources": []
+    },
+    {
+      "name": "GoExme",
+      "url": "https://goexme.io",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "GroveX",
+      "url": "https://www.grovex.io",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Guardarian",
+      "url": "https://guardarian.com",
+      "reason": "KAS buy page explicitly reported that the coin was unavailable to buy/sell at the reviewed quote form. Generic purchase instructions are insufficient.",
+      "primarySources": [
+        "https://guardarian.com/buy-kas"
+      ]
+    },
+    {
+      "name": "Houdini Swap",
+      "url": "https://houdiniswap.com",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Ju.com",
+      "url": "https://www.ju.com",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "KCEX",
+      "url": "https://www.kcex.com",
+      "reason": "Attempted KAS market rendered an undefined/undefined title; current KAS spot listing not confirmed.",
+      "primarySources": []
+    },
+    {
+      "name": "LetsExchange",
+      "url": "https://letsexchange.io",
+      "reason": "Attempted asset-specific /coin/kas route redirected to the generic home page. A current native-KAS receiving route still needs confirmation.",
+      "primarySources": []
+    },
+    {
+      "name": "Nanswap",
+      "url": "https://nanswap.com",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Neoxa Exchange",
+      "url": "https://neoxa.exchange",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Neverless",
+      "url": "https://neverless.com",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "NovaDAX",
+      "url": "https://www.novadax.com.br",
+      "reason": "Kaspa article remains online, but the site prominently links an exchange discontinuation notice. Current purchase availability not established.",
+      "primarySources": [
+        "https://www.novadax.com.br/criptomoedas/kas"
+      ]
+    },
+    {
+      "name": "Paxful",
+      "url": "https://paxful.com",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Poloniex",
+      "url": "https://www.poloniex.com",
+      "reason": "CoinGecko flagged its sampled KAS spot row stale/anomalous; direct primary response was unavailable. Confirm current spot status before inclusion.",
+      "primarySources": []
+    },
+    {
+      "name": "Quickex",
+      "url": "https://quickex.io/from-kaskaspa",
+      "reason": "Indexed KAS network-pair pages exist, but an attempted receiving-route page later returned 404 through web retrieval and ordinary GET met a bot check. A current KAS receiving route remains unconfirmed.",
+      "primarySources": [
+        "https://quickex.io/from-kaskaspa",
+        "https://quickex.io/exchange-kaskas-kaskaspa"
+      ]
+    },
+    {
+      "name": "RocketX",
+      "url": "https://www.rocketx.exchange",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Simplex",
+      "url": "https://www.simplex.com",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "SolCex",
+      "url": "https://www.solcex.cc",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "StereoSwap",
+      "url": "https://stereoswap.app",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "SuperEx",
+      "url": "https://www.superex.com",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Swapswop",
+      "url": "https://swapswop.io",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Swapter",
+      "url": "https://swapter.io",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Swapuz",
+      "url": "https://swapuz.com",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Tapbit",
+      "url": "https://www.tapbit.com",
+      "reason": "Current how-to-buy page explicitly says KAS is not yet available, despite an older listing notice. Do not infer availability from its generic instructions.",
+      "primarySources": [
+        "https://www.tapbit.com/en/how-to-buy/kaspa"
+      ]
+    },
+    {
+      "name": "Trocador",
+      "url": "https://trocador.app",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "UEX.US",
+      "url": "https://uex.us",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Wirex",
+      "url": "https://wirexapp.com",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Xgram",
+      "url": "https://xgram.io",
+      "reason": "Discovery listing only; a provider-owned current native-KAS purchase route was not established in this pass. Keep in the review queue, not the purchase cards.",
+      "primarySources": []
+    },
+    {
+      "name": "Young Platform",
+      "url": "https://youngplatform.com",
+      "reason": "Provider’s current KAS page explicitly limits KAS to selling; buying and deposits are unavailable. Old generic buy instructions conflict with this restriction.",
+      "primarySources": [
+        "https://youngplatform.com/en/exchange/kas/"
+      ]
+    }
+  ],
+  "deliveryPolicy": "HTTP 200 alone is not confirmation: unavailable responses, bot checks and JavaScript shells are labeled. Indexed provider pages and public APIs supply separate evidence where recorded. No anti-bot bypass, account, quote acceptance, test purchase or withdrawal was attempted."
+}

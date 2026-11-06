@@ -83,15 +83,15 @@
     "nextAction": "Review the source candidate; verify external indexing through property-owner consoles and identify the historical litepaper owner. No production or bot/security setting changed."
   },
   "ecosystemDirectory": {
-    "task": "ECO-003",
-    "status": "merged-deployed-http-verified",
-    "evidence": "docs/KASPA-DIRECTORY.md",
-    "nextAction": "Kaspa-first ordering #237 merged/deployed as 478dfc16b6843eef93603b3905d63b7a31f2f1ef with exact public HTML verification; maintain the 104 listings and holder-reference policy. Rendering/phone acceptance remains separate."
+    "task": "ECO-004",
+    "status": "candidate-source-prepared",
+    "evidence": "docs/KASPA-EXCHANGE-REVIEW.md",
+    "nextAction": "Review the 60 native-KAS purchase/swap listings, category ordering, dated primary evidence and provider limitations. All 104 prior resources are preserved and local checks pass. Finish exact-head CI/preview verification; founder merge approval and deployment acceptance remain separate."
   },
   "publicLeaderboard": {
     "task": "UX-011",
-    "status": "implementation-in-progress",
+    "status": "merged-deployed-http-verified",
     "evidence": "docs/PUBLIC-LEADERBOARD.md",
-    "nextAction": "Review the paired HQ/Mini leaderboard and server-graded public practice flow. Public Alpha standings remain separate from future private ranked seasons and payouts."
+    "nextAction": "Founder-approved HQ #238 and Mini #13 are merged/deployed, with exact source and public API/route HTTP checks recorded in their PRs. Rendered/device acceptance and independent abuse review remain separate. Preserve public-practice limits and all economic/private-ranked holds."
   }
 }
