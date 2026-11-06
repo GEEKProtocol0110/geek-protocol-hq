@@ -12,7 +12,7 @@
     };
     status.textContent = 'Loading the top 100 by CoinGecko market cap…';
     try {
-      const response = await fetch('/api/widget?service=markets', { credentials: 'omit', signal });
+      const response = await fetch('/api/widget?service=markets', { credentials: 'same-origin', signal });
       if (!response.ok) throw new Error('Feed unavailable');
       const data = await response.json();
       if (signal.aborted) return;

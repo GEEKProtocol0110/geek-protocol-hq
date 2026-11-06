@@ -33,7 +33,7 @@ test('public market service rejects mutation methods and failures never fabricat
 });
 test('native table renders 100 rows, filters coins locally, preserves zeros and uses text-safe names', async () => {
   let calls=0; const data=normalizeMarkets(rows(),Date.now()); data.coins[0].name='<img src=x onerror=alert(1)>';
-  const f=clientFixture(async (url,options) => {calls++;assert.equal(url,'/api/widget?service=markets');assert.equal(options.credentials,'omit');return Response.json(data);});
+  const f=clientFixture(async (url,options) => {calls++;assert.equal(url,'/api/widget?service=markets');assert.equal(options.credentials,'same-origin');return Response.json(data);});
   f.run(source); const host=f.node('#host'),status=f.node('#status'); const control=new AbortController();
   await f.window.GeekCrypto100({host,status,signal:control.signal});
   const body=host.querySelector('tbody'); assert.equal(body.children.length,100);
