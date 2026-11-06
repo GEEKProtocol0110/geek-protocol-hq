@@ -989,7 +989,7 @@ Evidence/specification: [docs/GEEK-NEWS.md](../../docs/GEEK-NEWS.md), [public/ne
 
 **P1 / needs-evidence.** Owner: Maintainer prepares source and checks; founder approves release; physical-phone and independent review unassigned. Dependencies: none.
 
-Next action: Verify the candidate and preview before founder merge. Keep physical-phone, account recovery and independent acceptance separate.
+Next action: Verify the #243 address-viewing fix on its immutable preview, then founder review. Physical-phone and actual passkey/address mutation acceptance remain separate.
 
 Acceptance:
 
@@ -997,5 +997,6 @@ Acceptance:
 - Saved quiz results expose My HQ, continued learning and the matching public category/mode board. Focus result headings without repeating game writes.
 - Shared HQ category and Mini Speed focus links retain their filters; allowlist query values and keep boards separate.
 - Run client behavior and full regression checks. Record rendered preview evidence and actual device limits without touching existing production player progress.
+- Receiving-address GETs remain session-authenticated and private without requiring WebAuthn origin setup. Address mutations retain exact origin and proof checks; guest views explain that adding an address is optional.
 
-Evidence/specification: [public/start/index.html](../../public/start/index.html), [public/play/assets/game.js](../../public/play/assets/game.js), [public/leaderboard/leaderboard.js](../../public/leaderboard/leaderboard.js), [tests/start-client.test.js](../../tests/start-client.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/leaderboard-client.test.js](../../tests/leaderboard-client.test.js).
+Evidence/specification: [public/start/index.html](../../public/start/index.html), [public/play/assets/game.js](../../public/play/assets/game.js), [public/leaderboard/leaderboard.js](../../public/leaderboard/leaderboard.js), [tests/start-client.test.js](../../tests/start-client.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/leaderboard-client.test.js](../../tests/leaderboard-client.test.js), [server/reward-addresses.js](../../server/reward-addresses.js), [public/assets/receiving-address.js](../../public/assets/receiving-address.js), [tests/passkeys.test.js](../../tests/passkeys.test.js), [tests/receiving-address-client.test.js](../../tests/receiving-address-client.test.js).

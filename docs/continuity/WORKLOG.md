@@ -1149,3 +1149,10 @@ Full local npm run verify passed on Node 24.22.1 with native Redis 7.0.15: 755 H
 - **Validation:** client behavior tests cover reordered checklist migration, saved-result focus/context, shared filters, invalid queries and stale response isolation. Full regression/preview evidence will be recorded in the PR.
 - **Limits:** cloud browser exposes no mobile viewport control. Physical-phone, passkey/account recovery and independent acceptance remain separate; no production quiz was started, no wallet or economic setting changed.
 - **Next:** full verification and protected-preview walkthrough, then founder review before merge.
+
+## November 6, 2026 — UX-012 preview address-viewing correction (#243 follow-up)
+
+- **Cause:** receiving-address GET called WebAuthn origin validation before reading the session. Immutable preview hosts differ from the configured passkey origin, so a read was mislabeled as a failed account-confirmation attempt.
+- **Fix:** read-only viewing keeps session/account isolation and private/no-store responses without invoking WebAuthn origin validation. Both POST actions still validate the configured origin before any work; unsupported origins receive an accurate site-address error. Guest copy explains optional address setup and requires no passkey prompt. No origin allowlist, provider environment or wallet permission is broadened.
+- **Checks:** real-Redis regression covers unauthenticated denial, guest state, saved-address reads, another player's isolation and denied begin/finish writes on a mismatched preview host. Client coverage checks guest copy, hidden edit/retry controls and no confirmation prompt. Final regression and rendered preview evidence belongs in #243.
+- **Status:** source candidate; no merge or production deployment. Actual passkey/address change and physical-phone acceptance remain separate.

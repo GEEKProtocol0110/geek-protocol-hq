@@ -1637,12 +1637,13 @@
       "status": "needs-evidence",
       "title": "Connect the first-player learning, quiz, results and leaderboard journey",
       "owner": "Maintainer prepares source and checks; founder approves release; physical-phone and independent review unassigned",
-      "nextAction": "Verify the candidate and preview before founder merge. Keep physical-phone, account recovery and independent acceptance separate.",
+      "nextAction": "Verify the #243 address-viewing fix on its immutable preview, then founder review. Physical-phone and actual passkey/address mutation acceptance remain separate.",
       "acceptance": [
         "Lead the first-visit guide with learning, explicit Daily setup and saved progress; account and customization follow as optional steps. Preserve existing checklist IDs and migration.",
         "Saved quiz results expose My HQ, continued learning and the matching public category/mode board. Focus result headings without repeating game writes.",
         "Shared HQ category and Mini Speed focus links retain their filters; allowlist query values and keep boards separate.",
-        "Run client behavior and full regression checks. Record rendered preview evidence and actual device limits without touching existing production player progress."
+        "Run client behavior and full regression checks. Record rendered preview evidence and actual device limits without touching existing production player progress.",
+        "Receiving-address GETs remain session-authenticated and private without requiring WebAuthn origin setup. Address mutations retain exact origin and proof checks; guest views explain that adding an address is optional."
       ],
       "dependsOn": [],
       "evidence": [
@@ -1651,7 +1652,11 @@
         "public/leaderboard/leaderboard.js",
         "tests/start-client.test.js",
         "tests/ranked-client.test.js",
-        "tests/leaderboard-client.test.js"
+        "tests/leaderboard-client.test.js",
+        "server/reward-addresses.js",
+        "public/assets/receiving-address.js",
+        "tests/passkeys.test.js",
+        "tests/receiving-address-client.test.js"
       ]
     }
   ]

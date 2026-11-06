@@ -77,7 +77,10 @@ export async function receivingAddressesHandler(req, res) {
   setApiHeaders(res, 'GET, POST'); res.setHeader('Cache-Control', 'private, no-store, max-age=0');
   if (!['GET', 'POST'].includes(req.method)) return methodNotAllowed(res, 'GET, POST');
   try {
-    const context = passkeyContext(req), session = await requireSession(req), id = playerIdFor(session);
+    // Viewing account settings does not issue or verify a WebAuthn proof.
+    // Mutations still require the exact configured origin before any work.
+    const context = req.method === 'POST' ? passkeyContext(req) : null;
+    const session = await requireSession(req), id = playerIdFor(session);
     await rateLimit('reward-address', session.id, 30, 600);
     const [state, access] = await Promise.all([savedState(id), accountState(session)]);
     if (req.method === 'GET') return sendJson(res, 200, { ok: true, ...view(state, access) });
@@ -128,6 +131,7 @@ export async function receivingAddressesHandler(req, res) {
     return sendJson(res, 200, { ok: true, ...view({ record }, access) });
   } catch (error) {
     const code = error.message || '';
+    if (code === 'PASSKEY_ORIGIN_INVALID') return sendJson(res, 400, { ok: false, code, error: 'Address confirmation is unavailable at this site address. Open your usual Geek Protocol address and try again. Your saved addresses have not changed.' });
     if (code === 'REWARD_ADDRESS_PASSKEY_REQUIRED') return sendJson(res, 403, { ok: false, code, error: 'Save or sign in with a Geek passkey before changing receiving addresses.' });
     if (code === 'REWARD_ADDRESS_CHANGED') return sendJson(res, 409, { ok: false, code, error: 'Your saved account or address changed. Reload before trying again.' });
     if (code === 'REWARD_ADDRESS_INVALID') return sendJson(res, 400, { ok: false, code, error: 'Check the address and its selected network, then confirm it before saving.' });
