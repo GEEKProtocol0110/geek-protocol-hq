@@ -972,7 +972,7 @@ Evidence/specification: [docs/MEDIA-BUILDERS.md](../../docs/MEDIA-BUILDERS.md), 
 
 **P1 / in-progress.** Owner: Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned. Dependencies: none.
 
-Next action: Verify the native CoinGecko Top 100 snapshot on the fresh #241 preview, including 100 valid rows, provider timestamps, API failure behavior and exact-head CI; then present for founder review. Phone and independent acceptance remain separate.
+Next action: Verify the HQ gold/cyan Geek News polish on the fresh #241 preview and exact-head CI. Keep the verified Top 100 data/search behavior and CSP. Founder merge review and physical-phone/independent acceptance remain separate.
 
 Acceptance:
 

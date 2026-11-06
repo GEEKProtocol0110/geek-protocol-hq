@@ -41,15 +41,20 @@
     </header>
     <main id="main" class="news-main">
       <header class="news-hero">
-        <p class="news-kicker"><span aria-hidden="true"></span>GEEK NEWS / MARKETS &amp; IDEAS</p>
+        <div class="news-hero-copy">
+        <p class="news-kicker"><span aria-hidden="true"></span>GEEK // NEWSROOM</p>
         <h1>Geek News.<br /><em>Stay curious.</em></h1>
         <p class="news-lede">From Kaspa to the wider economy. Follow global indexes, stocks, currencies, metals, energy, bond yields and futures — with the headlines behind the moves.</p>
-        <div class="news-hero-links"><a href="#market-desk">Open the market desk ↓</a><a href="#kaspa-sources">Go straight to Kaspa →</a></div>
+        <div class="news-hero-links"><a class="news-primary-link" href="#market-desk">Enter the market desk <span aria-hidden="true">↗</span></a><a href="#kaspa-sources">Kaspa first. Always. →</a></div>
+        <p class="news-hero-motto">ALL HOPE, NO HYPE. <span>Bring your curiosity.</span></p>
+        </div>
+        <div class="news-signal-art" aria-hidden="true"><span class="news-art-coordinate">GEEK PROTOCOL / SIGNAL DESK</span><div class="news-orbit"><div class="news-orbit-core"><span>GEEK</span><b>//</b><small>SIGNAL OVER NOISE</small></div></div><div class="news-art-steps"><span>01 / OBSERVE</span><span>02 / LEARN</span><span>03 / LEVEL UP</span></div></div>
       </header>
+      <nav class="news-section-strip" aria-label="Explore Geek News"><a href="#market-desk"><span>01</span> Markets &amp; Top 100 <b aria-hidden="true">↘</b></a><a href="#kaspa-sources"><span>02</span> Kaspa connections <b aria-hidden="true">↘</b></a><a href="#geek-field-notes"><span>03</span> Geek field notes <b aria-hidden="true">↘</b></a></nav>
 
       <div class="news-board">
         <section id="market-desk" class="news-terminal" aria-labelledby="desk-title">
-          <div class="news-terminal-heading"><h2 id="desk-title">The market desk</h2><span class="news-provider">TradingView feeds</span></div>
+          <div class="news-terminal-heading"><div><span class="news-kicker">EXPLORE / UNDERSTAND / REPEAT</span><h2 id="desk-title">The GEEK market desk<span aria-hidden="true">_</span></h2></div><span class="news-provider">PUBLIC MARKET DATA</span></div>
           <p class="news-control-label">MARKETS</p>
           <div class="news-controls" role="group" aria-label="Choose a market">
             <button type="button" data-news-panel="overview" aria-pressed="true" aria-controls="news-feed">World overview</button>
@@ -73,13 +78,13 @@
           <p class="news-attribution"><a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">Embedded market data and news by TradingView ↗</a> · <a href="https://www.coingecko.com/en/api" target="_blank" rel="noopener noreferrer">Top 100 data provided by CoinGecko ↗</a> · External publishers retain their content.</p>
         </section>
         <aside class="news-sidebar" aria-label="Kaspa and market sources">
-          <section class="news-source-card" id="kaspa-sources" aria-labelledby="kaspa-title"><span class="news-kicker">01 / KASPA FIRST</span><h2 id="kaspa-title">Follow the source.</h2><p>Project updates, public network data and builders across the Kaspa ecosystem.</p><ul>
+          <section class="news-source-card" id="kaspa-sources" aria-labelledby="kaspa-title"><span class="news-kicker">KASPA // HOME BASE</span><h2 id="kaspa-title">Follow the source.</h2><p>Project updates, public network data and builders across the Kaspa ecosystem.</p><ul>
             <li><a href="https://kaspa.org/" target="_blank" rel="noopener noreferrer">Kaspa official updates ↗</a></li>
             <li><a href="https://github.com/kaspanet/rusty-kaspa/releases" target="_blank" rel="noopener noreferrer">Kaspa software releases ↗</a></li>
             <li><a href="https://kas.fyi/" target="_blank" rel="noopener noreferrer">Kas.fyi network explorer ↗</a></li>
             <li><a href="/kaspa/directory/">Explore the full Kaspa directory →</a></li>
           </ul></section>
-          <section class="news-source-card news-source-card--gold" aria-labelledby="sources-title"><span class="news-kicker">02 / OPEN THE SOURCE</span><h2 id="sources-title">Explore every market.</h2><p>Direct links work even when an embedded feed is unavailable.</p><ul>
+          <section class="news-source-card news-source-card--gold" aria-labelledby="sources-title"><span class="news-kicker">GO DEEPER // OPEN THE SOURCE</span><h2 id="sources-title">Explore every market.</h2><p>Direct links work even when an embedded feed is unavailable.</p><ul>
             <li><a href="https://www.coingecko.com/" target="_blank" rel="noopener noreferrer">Top crypto rankings · CoinGecko ↗</a></li>
             <li><a href="https://www.tradingview.com/symbols/KASUSD/?exchange=KRAKEN" target="_blank" rel="noopener noreferrer">Kaspa spot chart · USD ↗</a></li>
             <li><a href="https://www.tradingview.com/markets/indices/" target="_blank" rel="noopener noreferrer">World indexes ↗</a></li>
@@ -94,6 +99,7 @@
         </aside>
       </div>
 
+      <div class="news-field-heading" id="geek-field-notes"><p class="news-kicker">LEVEL UP YOUR MARKET KNOWLEDGE</p><h2>Geek field notes<span aria-hidden="true">.</span></h2><p>A little understanding goes a long way.</p></div>
       <section class="news-explainers" aria-label="Understand what you are reading">
         <article class="news-explainer"><span class="news-kicker">SPOT</span><h2>A price has a pair.</h2><p>Spot quotes show a particular asset, exchange and quote currency. KAS/USD and KAS/USDT are different pairs; prices can differ between venues.</p><a href="/study/?topic=wallets&amp;level=foundations">Build your Kaspa foundations →</a></article>
         <article class="news-explainer"><span class="news-kicker">FUTURES</span><h2>A contract, not a forecast.</h2><p>Global futures track index, commodity and Treasury contracts; continuous series roll between expiries. Crypto perpetuals are a separate USDT view with no fixed expiry. Both differ from spot ownership.</p><a href="https://www.tradingview.com/symbols/KASUSDT.P/?exchange=BINANCE" target="_blank" rel="noopener noreferrer">Inspect the KAS perpetual contract ↗</a></article>

@@ -1601,7 +1601,7 @@
       "status": "in-progress",
       "title": "Add Geek News with provider market, news and futures feeds",
       "owner": "Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned",
-      "nextAction": "Verify the native CoinGecko Top 100 snapshot on the fresh #241 preview, including 100 valid rows, provider timestamps, API failure behavior and exact-head CI; then present for founder review. Phone and independent acceptance remain separate.",
+      "nextAction": "Verify the HQ gold/cyan Geek News polish on the fresh #241 preview and exact-head CI. Keep the verified Top 100 data/search behavior and CSP. Founder merge review and physical-phone/independent acceptance remain separate.",
       "acceptance": [
         "Provide /news/ with native Home links, canonical metadata and sitemap coverage.",
         "Show Kaspa and major crypto spot prices, crypto/global market headlines and distinct USDT perpetual futures through attributed provider frames.",
