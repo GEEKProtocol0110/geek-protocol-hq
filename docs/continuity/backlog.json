@@ -1538,10 +1538,10 @@
     {
       "id": "ECO-004",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "done",
       "title": "Add native-KAS exchanges, brokers and swaps to the Kaspa directory",
       "owner": "Maintainer prepares source and evidence; founder approves release; independent coverage reviewer unassigned",
-      "nextAction": "Review the prepared source and dated provider evidence; run exact-head CI and preview HTTP verification after publishing the candidate PR. Founder merge approval, production deployment and device acceptance remain separate.",
+      "nextAction": "Maintain the 164-resource directory and dated provider evidence. #239 is merged/deployed with exact public HTML/CSS/JS verification; keep the 42-item held review queue and transfer/eligibility limits. Rendering/device and live transaction acceptance remain separate.",
       "acceptance": [
         "Add broadly researched native-KAS purchase links with provider-owned primary sources and honest editorial dates; spot markets, brokers/on-ramps and swaps have separate alphabetical sections.",
         "Preserve all 104 prior resources, the KRC-20 holder policy, Hall credits and Kaspa-first category order. New purchase sections belong with the general Kaspa links.",
@@ -1557,6 +1557,37 @@
         "docs/kaspa-exchange-review.json",
         "docs/kaspa-directory.json",
         "public/kaspa/directory/index.html",
+        "docs/site-pages.json"
+      ],
+      "completedAt": "2026-11-05",
+      "completionEvidence": [
+        "#239 merged 898eaa366cb100bca55dea7b00fffda3ffee6e84; checked tree 896a39074c6d560d8dc8ddcabad909e8e7f4e27c; CI 42141825207 succeeded. Production dpl_Hg4jfYLqSeq7uNqHTNhUdqQ86bJT READY with both canonical aliases; public directory HTML/CSS/JS HTTP 200 and exact source, 164 cards/17 categories."
+      ]
+    },
+    {
+      "id": "ECO-005",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Publish Media and Builders resources for ecosystem listings and sharing",
+      "owner": "Maintainer prepares source and checks; founder reviews release; independent builder/device acceptance unassigned",
+      "nextAction": "Review the prepared /media/ page and local validation, then verify exact-head CI/preview delivery after publishing its PR. Founder merge approval and rendered/device acceptance remain separate. External submissions remain unsent and need their own authorization/contact details.",
+      "acceptance": [
+        "Provide a native public /media/ page with copy-ready project descriptions, current Alpha facts, original logo/share downloads, official source/document links and Geek Mini sharing resources.",
+        "Keep native labelled text available without JavaScript; reveal copy controls progressively, report actual clipboard success, select text on denial/unavailability and prevent overlapping writes.",
+        "Package exact published image bytes and a small README in a public ZIP; omit private outreach drafts, owner contact details and internal trackers. No new brand generation or screenshot claim.",
+        "Expose the route from Home, About and Free Tools with canonical metadata, sitemap and matching download/CollectionPage data. Preserve all 164 directory records, question content, backend, privacy and existing CSP.",
+        "Verify meaningful copy behavior, asset archive contents, metadata/internal links, supporting regressions and continuity. Record exact CI/preview source delivery and actual browser/device limits."
+      ],
+      "dependsOn": [
+        "DOC-002"
+      ],
+      "evidence": [
+        "docs/MEDIA-BUILDERS.md",
+        "public/media/index.html",
+        "public/media/assets/media.js",
+        "public/media/assets/media.css",
+        "public/media/downloads/geek-protocol-brand-kit.zip",
+        "tests/media-copy.test.js",
         "docs/site-pages.json"
       ]
     }
