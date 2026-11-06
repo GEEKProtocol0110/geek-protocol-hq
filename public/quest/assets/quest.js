@@ -20,10 +20,10 @@ const drawCampaign = () => {
 };
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 let prerequisite = getChapter(chapter.prerequisite);
-let quest = null, connected = false, busy = false, selection = null, locked = false, accessPending = Boolean(chapter.prerequisite), recordUnavailable = false;
+let quest = null, connected = false, busy = false, initializing = false, selection = null, locked = false, accessPending = Boolean(chapter.prerequisite), recordUnavailable = false;
 const say = message => { $('[data-status]').textContent = message; };
 const api = async (path, body) => {
-  const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 12_000);
+  const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), initializing ? 6_000 : 12_000);
   try {
     const response = await fetch(path, { credentials: 'same-origin', signal: controller.signal,
       ...(body ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {}) });
@@ -31,7 +31,7 @@ const api = async (path, body) => {
     if (!response.ok) throw Object.assign(new Error(data.error || 'Chapter service unavailable.'), { status: response.status, code: data.code, supportCode: data.supportCode, prerequisite: data.prerequisite });
     return data;
   } catch (error) {
-    if (error.name === 'AbortError') throw new Error('The chapter service took too long to respond.');
+    if (error.name === 'AbortError') throw new Error(initializing ? 'Still loading your chapter. Use Retry loading to try again.' : 'The chapter service took too long to respond.');
     throw error;
   } finally { clearTimeout(timeout); }
 };
@@ -101,7 +101,7 @@ const controls = () => {
   $('[data-replay]').hidden = a?.status !== 'complete'; $('[data-replay]').disabled = !enabled;
   $('[data-next]').hidden = a?.status !== 'complete';
   $('[data-resume]').hidden = connected; $('[data-resume]').disabled = busy;
-  document.querySelectorAll('[data-answer]').forEach(button => { button.disabled = !enabled || a?.status !== 'question'; button.classList.toggle('chosen', selection === Number(button.dataset.answer)); });
+  document.querySelectorAll('[data-answer]').forEach(button => { button.disabled = !enabled || a?.status !== 'question'; const selected = selection === Number(button.dataset.answer); button.classList.toggle('chosen', selected); button.classList.toggle('is-selected', busy && selected && a?.status === 'question'); button.setAttribute('aria-pressed', String(selected)); });
   $('[data-story]').setAttribute('aria-busy', String(busy));
 };
 const map = () => {
@@ -202,7 +202,7 @@ $('[data-resume]').addEventListener('click', async () => { if (!quest) return in
 $('[data-replay]').addEventListener('click', () => $('[data-replay-dialog]').showModal());
 $('[data-replay-dialog]').addEventListener('close', () => { if ($('[data-replay-dialog]').returnValue === 'replay') act('replay'); });
 const initialize = async () => {
-  if (busy) return; busy = true; say('Checking your saved chapter…'); controls();
+  if (busy) return; busy = true; initializing = true; $('[data-initial-loading]').hidden = false; say('Checking your saved chapter…'); controls();
   try {
     const session = await api('/api/session', {}); $('[data-player-name]').textContent = session.player.name;
     const results = await Promise.allSettled([validChapter ? api(apiPath) : Promise.reject(new Error('That chapter is not in this campaign. Choose a chapter from the map.')), api('/api/collectibles'), refreshCampaign()]);
@@ -210,6 +210,6 @@ const initialize = async () => {
     if (results[0].status !== 'fulfilled') throw results[0].reason;
     render(results[0].value.quest);
   } catch (error) { failure(error); }
-  finally { busy = false; controls(); }
+  finally { busy = false; initializing = false; $('[data-initial-loading]').hidden = true; controls(); }
 };
 map(); drawCampaign(); initialize();

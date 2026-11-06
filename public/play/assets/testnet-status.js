@@ -9,7 +9,7 @@ let timer, controller, generation = 0, followUp = false;
 // It never grants access; the server still authorizes every request.
 const sessionHintKey = 'geek-session-hint';
 const hint = {
-  signedIn() { try { return localStorage.getItem(sessionHintKey) === 'signed-in'; } catch { return true; } },
+  signedIn() { try { return localStorage.getItem(sessionHintKey) === 'signed-in'; } catch { return false; } },
   set() { try { localStorage.setItem(sessionHintKey, 'signed-in'); } catch { /* Storage is optional. */ } },
   clear() { try { localStorage.removeItem(sessionHintKey); } catch { /* Storage is optional. */ } },
 };

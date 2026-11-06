@@ -9,3 +9,7 @@
 .story-actions{position:relative}.story-actions button,.link-button{touch-action:manipulation}main{padding-bottom:max(2rem,env(safe-area-inset-bottom))}@media(max-width:680px){.story-actions{position:static;padding:.8rem 0 max(.8rem,env(safe-area-inset-bottom));border-top:1px solid #354b5b}.story-actions>*{flex:1;min-width:120px;text-align:center}.chapter-lock a{min-height:48px}.sources a{display:inline-flex;align-items:center;min-height:44px}.review-card summary{min-height:48px}}
 
 .story-panel h2,.story-panel h3{scroll-margin-top:6rem}.story-actions button,.story-actions .link-button{min-height:48px}
+
+.initial-loading{margin:1rem 0;padding:1rem;border:1px solid #476155;border-radius:12px}.initial-loading[hidden]{display:none}.initial-loading i{display:block;height:1rem;margin:.7rem 0;border-radius:4px;background:#294236}.initial-loading i:nth-child(2){width:80%}.initial-loading i:nth-child(3){width:60%}
+
+.answers button.is-selected:disabled{opacity:1;outline:2px solid var(--gold);outline-offset:2px}

@@ -104,8 +104,8 @@ export const handleApiError = (res, error) => {
   if (code === 'RUN_STATE_INVALID') return sendJson(res, 409, { ok: false, error: 'That ranked action is not available right now.' });
   if (code === 'ANSWER_IN_PROGRESS') return sendJson(res, 409, { ok: false, error: 'That answer is already being locked. Retry once to retrieve its result.' });
   if (code === 'INSUFFICIENT_BALANCE') return sendJson(res, 409, { ok: false, code, error: 'Your server Alpha GEEK balance is too low for the next round.' });
-  if (code === 'ROOM_NOT_FOUND') return sendJson(res, 404, { ok: false, error: 'That lobby is no longer active.' });
-  if (code === 'ROOM_FULL') return sendJson(res, 409, { ok: false, error: 'That lobby is full.' });
+  if (code === 'ROOM_NOT_FOUND') return sendJson(res, 404, { ok: false, code, error: 'That lobby is no longer active.' });
+  if (code === 'ROOM_FULL') return sendJson(res, 409, { ok: false, code, error: 'That lobby is full.' });
   if (code === 'ROOM_NOT_MEMBER') return sendJson(res, 403, { ok: false, code, error: 'Your room seat expired. Rejoin with the invitation link.' });
   if (code === 'MATCH_ALREADY_STARTED') return sendJson(res, 409, { ok: false, code, error: 'This room already started a shared round. Create a new room to play again.' });
   if (code === 'MATCH_HOST_REQUIRED') return sendJson(res, 403, { ok: false, code, error: 'Only the room host can start the shared round.' });

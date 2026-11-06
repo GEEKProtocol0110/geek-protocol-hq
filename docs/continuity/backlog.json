@@ -1630,6 +1630,60 @@
       "completionEvidence": [
         "Founder-approved #241 squash-merged as 0a8a53fa9acc62262b5493c4eb9aa95811b88f67 after exact-head CI 42262924168 and both Vercel checks passed. Production dpl_J6BvCnjY33YSkbkbwDGxBi5rzHoU READY. Canonical /news/ HTTP 200 has the GEEK market desk and News CSP; /api/widget?service=markets returns 100 rows, ranks 1–100; Profile retains its baseline CSP. Desktop preview rendered all 100 rows and working search. Production HTTP verification does not establish physical-phone or independent acceptance."
       ]
+    },
+    {
+      "id": "UX-012",
+      "priority": "P1",
+      "status": "needs-evidence",
+      "title": "Connect the first-player learning, quiz, results and leaderboard journey",
+      "owner": "Maintainer prepares source and checks; founder approves release; physical-phone and independent review unassigned",
+      "nextAction": "Verify the #243 address-viewing fix on its immutable preview, then founder review. Physical-phone and actual passkey/address mutation acceptance remain separate.",
+      "acceptance": [
+        "Lead the first-visit guide with learning, explicit Daily setup and saved progress; account and customization follow as optional steps. Preserve existing checklist IDs and migration.",
+        "Saved quiz results expose My HQ, continued learning and the matching public category/mode board. Focus result headings without repeating game writes.",
+        "Shared HQ category and Mini Speed focus links retain their filters; allowlist query values and keep boards separate.",
+        "Run client behavior and full regression checks. Record rendered preview evidence and actual device limits without touching existing production player progress.",
+        "Receiving-address GETs remain session-authenticated and private without requiring WebAuthn origin setup. Address mutations retain exact origin and proof checks; guest views explain that adding an address is optional."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "public/start/index.html",
+        "public/play/assets/game.js",
+        "public/leaderboard/leaderboard.js",
+        "tests/start-client.test.js",
+        "tests/ranked-client.test.js",
+        "tests/leaderboard-client.test.js",
+        "server/reward-addresses.js",
+        "public/assets/receiving-address.js",
+        "tests/passkeys.test.js",
+        "tests/receiving-address-client.test.js"
+      ]
+    },
+    {
+      "id": "UX-013",
+      "priority": "P1",
+      "status": "needs-evidence",
+      "title": "Review all 17 open HQ reports and fix verified interface defects",
+      "owner": "Maintainer prepares source, tests and triage; founder approves merge; device/accessibility and independent content reviewers unassigned",
+      "nextAction": "Verify the issue-review candidate, reconcile existing coverage, and review the PR. Keep content, translation, CI enhancement, migration and coordination tasks distinct from confirmed defects.",
+      "acceptance": [
+        "Read and classify every open report with evidence; do not label feature proposals or stale tickets as current bugs.",
+        "Provide immediate answer selection in Play, Practice and Quest without duplicate writes or client grading.",
+        "Bound initial Duel/Quest loading, provide static skeletons and manual recovery, and keep uncertain writes from automatic replay.",
+        "Give Lobby full/closed/offline states safe next actions and working reconnection; preserve server authority.",
+        "Align setup documentation and add contribution/mint guidance; enforce static image and landmark accessibility rules.",
+        "Run regression and exact-head CI; distinguish source, preview, production and actual-device acceptance."
+      ],
+      "dependsOn": [
+        "UX-012"
+      ],
+      "evidence": [
+        "docs/OPEN-ISSUE-REVIEW-2026-11-06.md",
+        "tests/issue-clients.test.js",
+        "tests/ranked-client.test.js",
+        "tests/quest-client.test.js",
+        "scripts/site-pages.mjs"
+      ]
     }
   ]
 }

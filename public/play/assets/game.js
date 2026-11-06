@@ -105,6 +105,7 @@
       rememberRun(run.id);
     }
     updateProfileUI();
+    updateBoardLinks();
   };
 
   const renderLadder = (currentRound = 1) => {
@@ -117,6 +118,8 @@
   const showScreen = (name) => {
     elements.screens.forEach((screen) => screen.classList.toggle('active', screen.dataset.screen === name));
     window.scrollTo({ top: 0, behavior: 'instant' });
+    if (name === 'result') elements.resultTitle.focus({ preventScroll: true });
+    if (name === 'complete') elements.completeTitle.focus({ preventScroll: true });
   };
 
   const renderLeaderboard = (entries = []) => {
@@ -137,7 +140,13 @@
     }
   };
 
+  const updateBoardLinks = () => {
+    const params = new URLSearchParams({ source: 'hq', mode: activeMode, category: activeCategory });
+    $$('[data-public-board-link]').forEach(link => { link.href = `/leaderboard/?${params}`; });
+  };
+
   const refreshSelection = () => {
+    updateBoardLinks();
     const category = CATEGORY_BANKS[activeCategory];
     const mode = GAME_MODES[activeMode];
     elements.startScreen.dataset.mode = activeMode;
@@ -265,7 +274,7 @@
     locked = true;
     clearTimer();
     const buttons = $$('.answer', elements.answers);
-    buttons.forEach((button) => { button.disabled = true; });
+    buttons.forEach((button, index) => { button.disabled = true; button.classList.toggle('is-selected', index === selectedIndex); button.setAttribute('aria-pressed', String(index === selectedIndex)); });
     elements.feedback.textContent = 'Server verifying answer…';
     const selected = selectedIndex >= 0 ? currentQuestion.options[selectedIndex] : 'No answer';
     try {
@@ -273,6 +282,7 @@
       applyServerState(payload);
       const result = payload.result;
       buttons.forEach((button, index) => {
+        button.classList.toggle('is-selected', false); button.setAttribute('aria-pressed', 'false');
         if (index === result.correctIndex) button.classList.add('correct');
         if (index === selectedIndex && !result.correct) button.classList.add('wrong');
       });
@@ -314,7 +324,7 @@
     elements.resultKicker.textContent = quickMode ? `${GAME_MODES[run.mode].name.toUpperCase()} · SERVER VERIFIED` : `ROUND ${pad(run.round)} VERIFIED · ${result.label}`;
     elements.resultTitle.textContent = quickMode ? 'Challenge complete!' : result.correct >= 8 ? 'Great round!' : result.correct >= 5 ? 'Nice progress!' : 'Round complete!';
     elements.resultMessage.textContent = quickMode
-      ? `${result.answered} questions completed. The server calculated your score and XP. No Alpha GEEK is awarded in quick modes.`
+      ? `${result.answered} questions completed. Your XP is saved. Choose Finish & save result to submit this score to the leaderboard. No Alpha GEEK is awarded in quick modes.`
       : `${result.correct} answers were scored by the server, producing ${format.format(result.reward)} Alpha GEEK in the practice ledger.`;
     elements.resultCorrect.textContent = `${result.correct}/${result.answered || result.questionCount}`;
     elements.resultScore.textContent = format.format(result.roundScore);

@@ -131,7 +131,7 @@ docs/         Protocol, architecture, audit, and product documentation
 
 ### Requirements
 
-- Node.js 20 or newer
+- Node.js 22 or newer
 - npm
 - An Upstash Redis database for persistent sessions and ranked features
 

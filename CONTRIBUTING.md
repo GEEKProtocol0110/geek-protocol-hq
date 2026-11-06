@@ -9,6 +9,8 @@ Thank you for helping build a stronger Proof-of-Learning platform for Kaspa. Con
 - Keep treasury settlement, reward withdrawals, collection ownership, and other value-moving behavior disabled unless the change is explicitly scoped for independent review.
 - Never add seed-phrase collection, private-key handling, browser-owned scores, or public ranked answer keys.
 
+New here? Follow [Your first contribution](docs/FIRST-CONTRIBUTION.md).
+
 ## Development setup
 
 ```sh
@@ -19,7 +21,7 @@ cp .env.example .env.local
 npm run verify
 ```
 
-Use Node.js 20 or newer. Stateful Alpha features require Upstash Redis credentials. Never use production secrets in local development or commit an environment file containing credentials.
+Use Node.js 22 or newer. Stateful Alpha features require Upstash Redis credentials. Never use production secrets in local development or commit an environment file containing credentials.
 
 ## Pull-request standard
 

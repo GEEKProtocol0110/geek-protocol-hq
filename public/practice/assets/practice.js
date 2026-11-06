@@ -39,7 +39,9 @@
   controls();
  };
  const act = async body => {
-  if (busy) return;busy=true;controls();$('[data-error]').hidden=true;
+  if (busy) return;busy=true;
+  if (body.action==='answer') document.querySelectorAll('[data-choice]').forEach(button=>{const selected=Number(button.dataset.choice)===body.selectedIndex;button.classList.toggle('is-selected',selected);button.setAttribute('aria-pressed',String(selected));});
+  controls();$('[data-error]').hidden=true;
   try {
    if (!state && body.action==='start') await request('/api/session/',{});
    const payload=await request('/api/ranked/?service=practice',{...body,...(body.runId?{}:state?{runId:state.id}:{})}); state=payload.practice;saveId(state.id);render();

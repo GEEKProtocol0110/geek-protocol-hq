@@ -8,7 +8,7 @@ const settle = () => new Promise(setImmediate);
 const status = (patch = {}) => ({ ok: true, enabled: true, enrollment: { enabled: true }, records: [{ state: 'queued' }], ...patch });
 async function setup(reply = () => json(status()), withDashboard = false) {
   const requests = [], listeners = new Map();
-  const ui = clientFixture(async (url, options) => { requests.push({ url, options }); return reply(options, requests.length); });
+  const ui = clientFixture(async (url, options) => { requests.push({ url, options }); return reply(options, requests.length); }, { localStorage: { getItem: () => 'signed-in', setItem() {}, removeItem() {} } });
   const panel = ui.node('[data-testnet-status]'); panel.hidden = true;
   let dashboard;
   if (withDashboard) {

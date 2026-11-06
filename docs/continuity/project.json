@@ -105,5 +105,19 @@
     "status": "merged-deployed-http-verified",
     "evidence": "docs/GEEK-NEWS.md",
     "nextAction": "Founder-approved #241 squash-merged as 0a8a53fa9acc62262b5493c4eb9aa95811b88f67 after exact-head CI 42262924168 and both Vercel checks passed. Production dpl_J6BvCnjY33YSkbkbwDGxBi5rzHoU READY. Canonical /news/ HTTP 200 has the GEEK market desk and News CSP; /api/widget?service=markets returns 100 rows, ranks 1–100; Profile retains its baseline CSP. Desktop preview rendered all 100 rows and working search. Production HTTP verification does not establish physical-phone or independent acceptance. Maintain provider availability and retain device/independent acceptance as separate work."
+  },
+  "firstPlayerJourney": {
+    "task": "UX-012",
+    "status": "source-candidate",
+    "checkedOn": "2026-11-06",
+    "evidence": "public/start/index.html; public/play/assets/game.js; public/leaderboard/leaderboard.js; client behavior tests",
+    "nextAction": "PR #243 adds the learning-first journey and fixes address viewing on immutable previews: GET remains session-authenticated; POST retains configured origin/proof validation. Verify final checks and preview, then founder review. Physical-phone and actual address mutation acceptance remain separate."
+  },
+  "openIssueReview": {
+    "task": "UX-013",
+    "checkedOn": "2026-11-06",
+    "status": "source-candidate",
+    "evidence": "docs/OPEN-ISSUE-REVIEW-2026-11-06.md",
+    "nextAction": "Verify all confirmed interface fixes and publish the 17-ticket disposition. Content review/new packs, translations, fast-CI proposal, device/assistive-technology acceptance and migration design remain open with their own criteria."
   }
 }

@@ -131,7 +131,7 @@
           <ol data-ladder></ol>
           <a class="ranked-profile-note" href="../profile/#prestige">SERVER-RANKED CAREER · PRESTIGE AT LEVEL 50 →</a>
           <section class="community-leaderboard" aria-labelledby="leaderboard-title">
-            <div><h2 id="leaderboard-title">Community top ten</h2><a href="/leaderboard/">View the global leaderboard →</a><span data-board-state>CONNECTING</span></div>
+            <div><h2 id="leaderboard-title">Community top ten</h2><a href="/leaderboard/" data-public-board-link>View the global leaderboard →</a><span data-board-state>CONNECTING</span></div>
             <ol data-leaderboard><li class="board-empty">Checking the practice board…</li></ol>
             <p>Only completed rounds scored by the server appear here. Verified scores still do not earn tokens or determine payouts.</p>
           </section>
@@ -180,7 +180,7 @@
       <section class="screen result-screen" data-screen="result" aria-labelledby="result-title">
         <div class="result-main">
           <div class="result-kicker" data-result-kicker>ROUND 01 COMPLETE</div>
-          <h2 id="result-title" data-result-title>ACCESS GRANTED</h2>
+          <h2 id="result-title" tabindex="-1" data-result-title>ACCESS GRANTED</h2>
           <p data-result-message>You survived the round.</p>
 
           <div class="result-stats">
@@ -216,10 +216,10 @@
         <div class="completion-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
         <img src="../assets/kaspa-culture.png" alt="GIGA, the golden Geek Protocol mascot, beside the Kaspa emblem" />
         <div class="eyebrow" data-complete-kicker>APEX PROTOCOL // COMPLETE</div>
-        <h2 id="complete-title" data-complete-title>GAUNTLET<br /><span>CONQUERED</span></h2>
+        <h2 id="complete-title" tabindex="-1" data-complete-title>GAUNTLET<br /><span>CONQUERED</span></h2>
         <p data-complete-message>You cleared all ten rounds.</p>
         <div class="complete-score"><small>FINAL RUN SCORE</small><strong data-final-score>0</strong></div>
-        <div class="result-actions complete-actions"><a class="quiet-action" href="/profile/#progression-title">See My HQ progress →</a><a class="quiet-action" href="/start/">First-visit guide</a>
+        <div class="result-actions complete-actions"><a class="quiet-action" href="/profile/#progression-title">See My HQ progress →</a><a class="quiet-action" href="/leaderboard/?source=hq&amp;mode=gauntlet&amp;category=kaspa" data-public-board-link>See this leaderboard →</a><a class="quiet-action" href="/study/">Keep learning →</a>
           <button class="primary-action" type="button" data-new-run>Start a New Run <span>↻</span></button>
           <a class="quiet-action" href="../">Return to Protocol</a>
         </div>

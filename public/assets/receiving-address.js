@@ -54,7 +54,9 @@
     if (busy) return; rememberDraft(); busy = true; phase = 'loading'; controls();
     try {
       state = await api(); needsRetry = false; signInRequired = false; showNetwork();
-      note.textContent = state.canEdit ? 'Your device will confirm address changes with your Geek passkey.' : 'Your receiving address will be saved to your Geek account.';
+      note.textContent = !state.signedIn && !state.canEdit
+        ? 'Adding a receiving address is optional. Sign in when you want to save one; no wallet is needed to learn or play.'
+        : state.canEdit ? 'Your device will confirm address changes with your Geek passkey.' : 'Your receiving address will be saved to your Geek account.';
     } catch (e) { state = null; signInRequired = e.status === 401; if (signInRequired) clearDrafts(); needsRetry = !signInRequired; note.textContent = signInRequired ? 'Sign in to save a receiving address to your Geek account.' : e.message; }
     finally { busy = false; phase = ''; controls(); }
   };
