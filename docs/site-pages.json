@@ -253,7 +253,7 @@
       "description": "Explore free Geek Protocol tools: Geek Mini quizzes, the Kaspa Live Widget and Geek Wallet's public-address tracker. No GEEK required to get started.",
       "index": true,
       "private": false,
-      "lastmod": "2026-10-17"
+      "lastmod": "2026-11-05"
     },
     {
       "file": "public/tools/kaspa-widget/index.html",
@@ -395,7 +395,7 @@
       "description": "Official Geek Protocol project facts and FAQ: Kaspa learning, current Alpha features, Proof of Learning, GEEK token boundaries, contributors and official links.",
       "index": true,
       "private": false,
-      "lastmod": "2026-11-03"
+      "lastmod": "2026-11-05"
     },
     {
       "file": "public/kaspa/directory/index.html",
@@ -415,6 +415,15 @@
       "path": "/leaderboard/",
       "title": "Global Leaderboard \u2014 Geek Protocol & Geek Mini",
       "description": "Explore public Geek Protocol and Geek Mini quiz standings. Compare players within each game, mode and category, with separate Mini Daily and Speed boards.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-05"
+    },
+    {
+      "file": "public/media/index.html",
+      "path": "/media/",
+      "title": "Media & Builders \u2014 Geek Protocol",
+      "description": "Download Geek Protocol logos and share artwork, copy project descriptions, find official sources and share Geek Mini challenges with your community.",
       "index": true,
       "private": false,
       "lastmod": "2026-11-05"

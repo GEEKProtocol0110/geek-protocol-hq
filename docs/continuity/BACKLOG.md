@@ -64,7 +64,8 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ECO-002 | P1 | done | Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream | Maintainer prepares source; founder reviews release and supplies additional Hall links |
 | ECO-003 | P1 | done | Expand KRC-20 project links and preserve token lookups for holders | Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned |
 | UX-011 | P1 | needs-evidence | Public HQ global leaderboard and separate shared Mini standings | Maintainer prepares source and verification; founder approves release; independent abuse review unassigned |
-| ECO-004 | P1 | in-progress | Add native-KAS exchanges, brokers and swaps to the Kaspa directory | Maintainer prepares source and evidence; founder approves release; independent coverage reviewer unassigned |
+| ECO-004 | P1 | done | Add native-KAS exchanges, brokers and swaps to the Kaspa directory | Maintainer prepares source and evidence; founder approves release; independent coverage reviewer unassigned |
+| ECO-005 | P1 | in-progress | Publish Media and Builders resources for ecosystem listings and sharing | Maintainer prepares source and checks; founder reviews release; independent builder/device acceptance unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -936,9 +937,9 @@ Evidence/specification: [docs/PUBLIC-LEADERBOARD.md](../../docs/PUBLIC-LEADERBOA
 
 ## ECO-004: Add native-KAS exchanges, brokers and swaps to the Kaspa directory
 
-**P1 / in-progress.** Owner: Maintainer prepares source and evidence; founder approves release; independent coverage reviewer unassigned. Dependencies: ECO-003.
+**P1 / done.** Owner: Maintainer prepares source and evidence; founder approves release; independent coverage reviewer unassigned. Dependencies: ECO-003.
 
-Next action: Review the prepared source and dated provider evidence; run exact-head CI and preview HTTP verification after publishing the candidate PR. Founder merge approval, production deployment and device acceptance remain separate.
+Next action: Maintain the 164-resource directory and dated provider evidence. #239 is merged/deployed with exact public HTML/CSS/JS verification; keep the 42-item held review queue and transfer/eligibility limits. Rendering/device and live transaction acceptance remain separate.
 
 Acceptance:
 
@@ -949,3 +950,19 @@ Acceptance:
 - Run directory behavior/parity, metadata and continuity checks; record exact CI/preview evidence and actual rendering limits without certifying live trades or exhaustive global coverage.
 
 Evidence/specification: [docs/KASPA-EXCHANGE-REVIEW.md](../../docs/KASPA-EXCHANGE-REVIEW.md), [docs/kaspa-exchange-review.json](../../docs/kaspa-exchange-review.json), [docs/kaspa-directory.json](../../docs/kaspa-directory.json), [public/kaspa/directory/index.html](../../public/kaspa/directory/index.html), [docs/site-pages.json](../../docs/site-pages.json).
+
+## ECO-005: Publish Media and Builders resources for ecosystem listings and sharing
+
+**P1 / in-progress.** Owner: Maintainer prepares source and checks; founder reviews release; independent builder/device acceptance unassigned. Dependencies: DOC-002.
+
+Next action: Review the prepared /media/ page and local validation, then verify exact-head CI/preview delivery after publishing its PR. Founder merge approval and rendered/device acceptance remain separate. External submissions remain unsent and need their own authorization/contact details.
+
+Acceptance:
+
+- Provide a native public /media/ page with copy-ready project descriptions, current Alpha facts, original logo/share downloads, official source/document links and Geek Mini sharing resources.
+- Keep native labelled text available without JavaScript; reveal copy controls progressively, report actual clipboard success, select text on denial/unavailability and prevent overlapping writes.
+- Package exact published image bytes and a small README in a public ZIP; omit private outreach drafts, owner contact details and internal trackers. No new brand generation or screenshot claim.
+- Expose the route from Home, About and Free Tools with canonical metadata, sitemap and matching download/CollectionPage data. Preserve all 164 directory records, question content, backend, privacy and existing CSP.
+- Verify meaningful copy behavior, asset archive contents, metadata/internal links, supporting regressions and continuity. Record exact CI/preview source delivery and actual browser/device limits.
+
+Evidence/specification: [docs/MEDIA-BUILDERS.md](../../docs/MEDIA-BUILDERS.md), [public/media/index.html](../../public/media/index.html), [public/media/assets/media.js](../../public/media/assets/media.js), [public/media/assets/media.css](../../public/media/assets/media.css), [public/media/downloads/geek-protocol-brand-kit.zip](../../public/media/downloads/geek-protocol-brand-kit.zip), [tests/media-copy.test.js](../../tests/media-copy.test.js), [docs/site-pages.json](../../docs/site-pages.json).

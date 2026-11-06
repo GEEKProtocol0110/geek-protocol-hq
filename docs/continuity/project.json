@@ -84,14 +84,20 @@
   },
   "ecosystemDirectory": {
     "task": "ECO-004",
-    "status": "candidate-source-prepared",
+    "status": "merged-deployed-http-verified",
     "evidence": "docs/KASPA-EXCHANGE-REVIEW.md",
-    "nextAction": "Review the 60 native-KAS purchase/swap listings, category ordering, dated primary evidence and provider limitations. All 104 prior resources are preserved and local checks pass. Finish exact-head CI/preview verification; founder merge approval and deployment acceptance remain separate."
+    "nextAction": "Founder-approved #239 merged/deployed as 898eaa366cb100bca55dea7b00fffda3ffee6e84, with exact public directory HTML/CSS/JS (164 cards/17 categories). Preserve the 60 KAS provider additions, prior resources and held review queue. Provider availability and rendered/device acceptance remain separate."
   },
   "publicLeaderboard": {
     "task": "UX-011",
     "status": "merged-deployed-http-verified",
     "evidence": "docs/PUBLIC-LEADERBOARD.md",
     "nextAction": "Founder-approved HQ #238 and Mini #13 are merged/deployed, with exact source and public API/route HTTP checks recorded in their PRs. Rendered/device acceptance and independent abuse review remain separate. Preserve public-practice limits and all economic/private-ranked holds."
+  },
+  "mediaAndBuilders": {
+    "task": "ECO-005",
+    "status": "candidate-source-prepared",
+    "evidence": "docs/MEDIA-BUILDERS.md",
+    "nextAction": "Review the /media/ page, original-image download ZIP, copy fallback and Mini sharing examples. Finish exact-head CI/preview checks. Founder merge approval, production delivery and rendered/device acceptance remain separate; no external submissions are sent."
   }
 }
