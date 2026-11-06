@@ -102,8 +102,8 @@
   },
   "geekNews": {
     "task": "ECO-006",
-    "status": "candidate-preview-header-fix",
+    "status": "expanded-market-candidate",
     "evidence": "docs/GEEK-NEWS.md",
-    "nextAction": "Verify the explicit /news/ CSP rule on a fresh preview and exact-head CI, then present #241 for founder merge review. Earlier preview served /news/ without CSP; Home/Profile retained theirs. No production change."
+    "nextAction": "Verify expanded global market views in the fresh #241 preview and exact-head CI; founder merge review follows. Physical-device and actual quote coverage acceptance remain separate."
   }
 }

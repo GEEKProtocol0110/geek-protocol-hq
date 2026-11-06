@@ -431,8 +431,8 @@
     {
       "file": "public/news/index.html",
       "path": "/news/",
-      "title": "Geek News \u2014 Kaspa, Crypto Markets & Futures",
-      "description": "Follow Kaspa and crypto spot prices, crypto and world market news, and perpetual futures with provider feeds and direct source links from Geek Protocol.",
+      "title": "Geek News \u2014 Crypto & Global Markets",
+      "description": "Explore Kaspa, crypto, global indexes, stocks, forex, commodities, bond yields, futures and financial headlines with Geek Protocol.",
       "index": true,
       "private": false,
       "lastmod": "2026-11-06"

@@ -4,7 +4,7 @@ ECO-006 / DR-032. Source prepared November 6, 2026 (America/Detroit) from main `
 
 ## Experience
 
-`/news/` provides four selected views: Kraken KAS/BTC/ETH/SOL spot quotes in USD, crypto headlines, global financial-market headlines, and Binance KAS/BTC/ETH/SOL perpetual futures quoted in USDT. The futures view is explicitly derivatives, not price predictions. All prices and headline content come from the provider; no example prices, invented headlines, AI summaries, order actions, affiliates or paid API accounts are added.
+`/news/` originally provided four selected views (expanded below): Kraken KAS/BTC/ETH/SOL spot quotes in USD, crypto headlines, global financial-market headlines, and Binance KAS/BTC/ETH/SOL perpetual futures quoted in USDT. The futures view is explicitly derivatives, not price predictions. All prices and headline content come from the provider; no example prices, invented headlines, AI summaries, order actions, affiliates or paid API accounts are added.
 
 Home's main navigation and footer link to Geek News. Native Kaspa official updates, rusty-kaspa releases, Kas.fyi, directory and TradingView source links remain useful without the embed or JavaScript. Introductory explanations distinguish pairs, derivatives and headline interpretation. Data coverage/timing, content attribution and provider privacy links are visible. Metadata and sitemap include the public route.
 
@@ -35,3 +35,9 @@ The Kaspa directory's 164 resources, account/game authority, private ranked work
 ## Preview routing correction
 
 Preview check at source 45bee79: /news/ returned HTTP 200 without Content-Security-Policy, while Home/Profile retained their baseline and the News script received the intended policy. Added an explicit /news/ document rule alongside /news/:path* and a configuration regression. Fresh deployment/header and CI verification are required; source changes alone do not prove the fix.
+
+## Expanded global market desk
+
+Expanded the candidate after founder feedback that markets/global markets were lacking. The default world overview covers US, Europe and Japan benchmarks plus currency/commodity context. Ten views now include eight crypto spot pairs, ten US stocks, eight forex pairs, metals/energy, six government yields, seven traditional futures, four crypto perpetuals and two news feeds. Market groups and headline controls are distinct; each selected view has an instrument explanation and a matching external market link. Native links expose broader indexes/stocks/currencies/futures/bonds without JavaScript. Broker index CFDs, spot metals, continuous futures and yields are labeled separately; no invented prices or market-open claims. One-frame/pause/CSP isolation is preserved. Four focused tests pass locally; fresh exact-head CI and deployed source/header checks pending. Actual per-symbol quote availability, physical phone rendering and independent data review are not established by source tests.
+
+Primary configuration references: [Market quotes index demo](https://www.tradingview.com/widget-docs/widgets/watchlists/market-quotes/demos/indices/), [Market overview presets](https://www.tradingview.com/widget-docs/widgets/watchlists/market-overview/), [government yields](https://www.tradingview.com/symbols/TVC-US10Y/) and [listed futures instruments](https://www.tradingview.com/the-leap/amp-futures-september-2026/rules/). Provider embedding rights and coverage vary by instrument; direct market links remain available.

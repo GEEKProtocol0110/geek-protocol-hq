@@ -53,5 +53,14 @@
 
 .news-page h2 { text-transform: none; letter-spacing: -.02em; }
 
-.news-feed[data-news-kind="market-quotes"] { min-height: 300px; }
-.news-feed[data-news-kind="market-quotes"] iframe { height: 300px; }
+.news-feed[data-news-kind="market-quotes"] { min-height: 560px; }
+.news-feed[data-news-kind="market-quotes"] iframe { height: 560px; }
+
+.news-control-label { margin: 0 24px 8px; color: #9fb4b9; font: 700 .68rem/1.5 ui-monospace, monospace; letter-spacing: .14em; }
+.news-controls--headlines { border-bottom: 1px solid #26373e; }
+.news-view-heading { padding: 18px 24px 22px; }
+.news-view-heading h3 { margin: 0 0 10px; font-size: 1.15rem; text-transform: none; }
+.news-view-heading p { color: #b5c8c9; font-size: .88rem; line-height: 1.65; margin: 0 0 12px; }
+.news-view-heading a { display: inline-block; min-height: 32px; font-size: .85rem; }
+.news-terminal { min-width: 0; }
+@media (max-width: 620px) { .news-control-label { margin-inline: 16px; } .news-view-heading { padding-inline: 16px; } .news-controls button { flex: 1 1 42%; } }

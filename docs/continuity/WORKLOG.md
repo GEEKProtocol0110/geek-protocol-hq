@@ -1118,3 +1118,8 @@ Reconciled founder-approved Media & Builders #240 as merged/deployed: bbb58bf95d
 ## 2026-11-06 — ECO-006 preview header correction
 
 Preview check at source 45bee79: /news/ returned HTTP 200 without Content-Security-Policy, while Home/Profile retained their baseline and the News script received the intended policy. Added an explicit /news/ document rule alongside /news/:path* and a configuration regression. Fresh deployment/header and CI verification are required; source changes alone do not prove the fix.
+
+
+## 2026-11-06 — ECO-006 broader markets
+
+Expanded the candidate after founder feedback that markets/global markets were lacking. The default world overview covers US, Europe and Japan benchmarks plus currency/commodity context. Ten views now include eight crypto spot pairs, ten US stocks, eight forex pairs, metals/energy, six government yields, seven traditional futures, four crypto perpetuals and two news feeds. Market groups and headline controls are distinct; each selected view has an instrument explanation and a matching external market link. Native links expose broader indexes/stocks/currencies/futures/bonds without JavaScript. Broker index CFDs, spot metals, continuous futures and yields are labeled separately; no invented prices or market-open claims. One-frame/pause/CSP isolation is preserved. Four focused tests pass locally; fresh exact-head CI and deployed source/header checks pending. Actual per-symbol quote availability, physical phone rendering and independent data review are not established by source tests.

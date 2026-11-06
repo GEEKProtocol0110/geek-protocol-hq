@@ -972,7 +972,7 @@ Evidence/specification: [docs/MEDIA-BUILDERS.md](../../docs/MEDIA-BUILDERS.md), 
 
 **P1 / in-progress.** Owner: Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned. Dependencies: none.
 
-Next action: Verify the explicit /news/ CSP rule and exact-head CI after the preview exposed a missing document CSP. Present #241 for founder merge review only after that check; production/device acceptance remains separate.
+Next action: Verify expanded global market views in the fresh #241 preview and exact-head CI; founder merge review follows. Physical-device and actual quote coverage acceptance remain separate.
 
 Acceptance:
 
