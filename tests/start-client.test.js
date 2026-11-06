@@ -2,17 +2,19 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { clientFixture, json } from './helpers/client-fixture.js';
+const html = readFileSync(new URL('../public/start/index.html', import.meta.url), 'utf8');
+const order = [...html.matchAll(/data-step-check="([^"]+)"/g)].map(match => match[1]);
 const source = readFileSync(new URL('../public/start/assets/start.js', import.meta.url), 'utf8');
 const page = (initial = {}, blocked = false) => {
   const storage = new Map(Object.entries(initial));
   const ui = clientFixture(() => { throw new Error('The checklist must not write server progress'); }, { localStorage: { getItem: k => storage.get(k) ?? null, setItem(k, v) { if (blocked) throw new Error('Storage blocked'); storage.set(k, v); } } });
-  const boxes = ['account', 'geek', 'learn', 'play', 'progress'].map(id => { const box = ui.make('input'); box.dataset.stepCheck = id; return box; });
+  const boxes = order.map(id => { const box = ui.make('input'); box.dataset.stepCheck = id; return box; });
   ui.run(source); return { ...ui, boxes, storage };
 };
 test('the old Mini checklist migrates only learning and customization, leaving HQ play unchecked', () => {
   const ui = page({ geek_start_checklist_v1: JSON.stringify(['learn', 'geek', 'play', 'unknown']) });
-  assert.deepEqual(ui.boxes.map(b => b.checked), [false, true, true, false, false]);
-  assert.equal(ui.node('[data-start-next]').href, '#step-account'); assert.equal(ui.node('[data-start-progress]').value, 2);
+  assert.deepEqual(ui.boxes.map(b => b.checked), [true, false, false, false, true]);
+  assert.equal(ui.node('[data-start-next]').href, '#step-play'); assert.equal(ui.node('[data-start-progress]').value, 2);
 });
 test('all five steps and reset save only a local checklist', async () => {
   const ui = page(); ui.boxes.forEach(box => { box.checked = true; }); await ui.boxes[4].emit('change');
@@ -21,7 +23,7 @@ test('all five steps and reset save only a local checklist', async () => {
 });
 test('blocked checklist storage keeps the current visit usable and announces the limitation', async () => {
   const ui = page({}, true); ui.boxes[0].checked = true; await ui.boxes[0].emit('change');
-  assert.equal(ui.node('[data-start-next]').href, '#step-geek'); assert.match(ui.node('[data-storage-note]').textContent, /could not save/);
+  assert.equal(ui.node('[data-start-next]').href, '#step-play'); assert.match(ui.node('[data-storage-note]').textContent, /could not save/);
 });
 const signIn = async search => {
   const ui = clientFixture(async () => json({ identity: { linked: false } }), { location: { search } });
@@ -53,4 +55,18 @@ test('account sign-in is primary, wallet recovery is optional and games retain r
     // Some learning pages expose sign-in via the shared menu rather than their own link.
     if (body.includes('/sign-in/')) assert.ok(body.includes('/sign-in/?next=' + page));
   }
+});
+
+test('first visit leads with learning, then an explicit Daily setup and progress', () => {
+  assert.deepEqual(order, ['learn', 'play', 'progress', 'account', 'geek']);
+  const ui = page();
+  assert.equal(ui.node('[data-start-next]').href, '#step-learn');
+  assert.equal(ui.node('[data-start-next]').textContent, 'Learn one idea →');
+  assert.match(html, /href="\/play\/\?mode=daily&amp;category=kaspa#timed-games"/);
+  assert.match(html, /No wallet needed to play/);
+});
+test('saved checklist IDs keep their meaning after reordering and optional guidance stays accurate', () => {
+  const ui = page({ geek_start_checklist_v2: JSON.stringify(['learn', 'play', 'progress']) });
+  assert.equal(ui.node('[data-start-next]').href, '#step-account');
+  assert.equal(ui.node('[data-start-next]').textContent, 'Choose your player (optional) →');
 });

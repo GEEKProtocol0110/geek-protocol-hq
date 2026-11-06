@@ -1630,6 +1630,29 @@
       "completionEvidence": [
         "Founder-approved #241 squash-merged as 0a8a53fa9acc62262b5493c4eb9aa95811b88f67 after exact-head CI 42262924168 and both Vercel checks passed. Production dpl_J6BvCnjY33YSkbkbwDGxBi5rzHoU READY. Canonical /news/ HTTP 200 has the GEEK market desk and News CSP; /api/widget?service=markets returns 100 rows, ranks 1–100; Profile retains its baseline CSP. Desktop preview rendered all 100 rows and working search. Production HTTP verification does not establish physical-phone or independent acceptance."
       ]
+    },
+    {
+      "id": "UX-012",
+      "priority": "P1",
+      "status": "needs-evidence",
+      "title": "Connect the first-player learning, quiz, results and leaderboard journey",
+      "owner": "Maintainer prepares source and checks; founder approves release; physical-phone and independent review unassigned",
+      "nextAction": "Verify the candidate and preview before founder merge. Keep physical-phone, account recovery and independent acceptance separate.",
+      "acceptance": [
+        "Lead the first-visit guide with learning, explicit Daily setup and saved progress; account and customization follow as optional steps. Preserve existing checklist IDs and migration.",
+        "Saved quiz results expose My HQ, continued learning and the matching public category/mode board. Focus result headings without repeating game writes.",
+        "Shared HQ category and Mini Speed focus links retain their filters; allowlist query values and keep boards separate.",
+        "Run client behavior and full regression checks. Record rendered preview evidence and actual device limits without touching existing production player progress."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "public/start/index.html",
+        "public/play/assets/game.js",
+        "public/leaderboard/leaderboard.js",
+        "tests/start-client.test.js",
+        "tests/ranked-client.test.js",
+        "tests/leaderboard-client.test.js"
+      ]
     }
   ]
 }

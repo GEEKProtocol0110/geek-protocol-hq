@@ -67,6 +67,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ECO-004 | P1 | done | Add native-KAS exchanges, brokers and swaps to the Kaspa directory | Maintainer prepares source and evidence; founder approves release; independent coverage reviewer unassigned |
 | ECO-005 | P1 | done | Publish Media and Builders resources for ecosystem listings and sharing | Maintainer prepares source and checks; founder reviews release; independent builder/device acceptance unassigned |
 | ECO-006 | P1 | done | Add Geek News with provider market, news and futures feeds | Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned |
+| UX-012 | P1 | needs-evidence | Connect the first-player learning, quiz, results and leaderboard journey | Maintainer prepares source and checks; founder approves release; physical-phone and independent review unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -983,3 +984,18 @@ Acceptance:
 - Run functional and security/header checks; record actual browser, CI, preview, production and physical-device evidence separately.
 
 Evidence/specification: [docs/GEEK-NEWS.md](../../docs/GEEK-NEWS.md), [public/news/index.html](../../public/news/index.html), [public/news/assets/news.js](../../public/news/assets/news.js), [public/news/assets/news.css](../../public/news/assets/news.css), [tests/geek-news.test.js](../../tests/geek-news.test.js), [vercel.json](../../vercel.json), [server/crypto-markets.js](../../server/crypto-markets.js), [public/news/assets/crypto100.js](../../public/news/assets/crypto100.js), [tests/crypto100.test.js](../../tests/crypto100.test.js).
+
+## UX-012: Connect the first-player learning, quiz, results and leaderboard journey
+
+**P1 / needs-evidence.** Owner: Maintainer prepares source and checks; founder approves release; physical-phone and independent review unassigned. Dependencies: none.
+
+Next action: Verify the candidate and preview before founder merge. Keep physical-phone, account recovery and independent acceptance separate.
+
+Acceptance:
+
+- Lead the first-visit guide with learning, explicit Daily setup and saved progress; account and customization follow as optional steps. Preserve existing checklist IDs and migration.
+- Saved quiz results expose My HQ, continued learning and the matching public category/mode board. Focus result headings without repeating game writes.
+- Shared HQ category and Mini Speed focus links retain their filters; allowlist query values and keep boards separate.
+- Run client behavior and full regression checks. Record rendered preview evidence and actual device limits without touching existing production player progress.
+
+Evidence/specification: [public/start/index.html](../../public/start/index.html), [public/play/assets/game.js](../../public/play/assets/game.js), [public/leaderboard/leaderboard.js](../../public/leaderboard/leaderboard.js), [tests/start-client.test.js](../../tests/start-client.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/leaderboard-client.test.js](../../tests/leaderboard-client.test.js).
