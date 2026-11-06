@@ -10,14 +10,14 @@ Record date: 2026-11-06. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,228 active ranked-eligible questions, plus 210 practice-only unranked draft questions (not ranked-eligible, not source-checked); 800 recorded internal source reviews; 7,200 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,225 active ranked-eligible questions, plus 213 practice-only unranked draft questions (not ranked-eligible, not source-checked); 803 recorded internal source reviews; 7,197 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
 | Kaspa | 866 | 766 | 234 |
 | Video games | 601 | 0 | 1000 |
 | Science fiction | 514 | 0 | 1000 |
-| Technology | 1485 | 19 | 981 |
+| Technology | 1485 | 22 | 978 |
 | Movies | 1490 | 5 | 995 |
 | History | 1502 | 9 | 991 |
 | Comics | 412 | 1 | 999 |
@@ -25,9 +25,9 @@ Record date: 2026-11-06. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-009: active.** BANK-009: #208 Technology corrections merged; #209 History/Comics final integration removes the overlapping Joker objective while retaining historical grading, practice-only replacements and unresolved-authorship holds. Independent/full-bank acceptance remains open.
+**BANK-009: active.** BANK-009: #208 Technology and #209 History/Comics corrections are merged. Resume the full-bank audit with a six-item November 6 Technology candidate: three grading-preserving internal confirmations and three corrected practice-only replacements. Full-bank and independent acceptance remain open.
 
-Next task: **BANK-009**. Complete the corrected #209 integration with fresh exact-head checks, then continue the remaining BANK-009 factual, semantic, category and authorship audit. Preserve all historical grading and keep new drafts practice-only. Private-ranked-bank end-to-end and UX acceptance remain separate cutover gates.
+Next task: **BANK-009**. Review the six-item November 6 Technology candidate and its exact-head checks, then continue item-by-item factual, semantic, category and authorship review. #209 is already merged; preserve historical grading, keep new replacement drafts practice-only, and treat private-ranked end-to-end acceptance separately.
 
 ## Holds
 

@@ -51,3 +51,7 @@ This supersedes the no-news-API integration boundary in DR-032 only for public c
 ## HQ visual polish
 
 Founder requested polish and more GEEK identity. News adopts the existing HQ gold (#f6c643), Kaspa cyan (#70e6dc), dark green panels, technical grid/orbit typography, clear gold entry control, native section links and Geek field notes. Market controls have 48px minimum height; Top 100 retains a distinct cyan outline, sticky table headers, numeric alignment and signed change colors. Decorative signal artwork is hidden from assistive technology and removed on narrow screens. No new images, portrait rollout, network dependency or data/security behavior. Focused News/Top100/APK regressions passed 15/15. Earlier native Top100 CI 42261263638 passed; browser rendered 100 rows, bitcoin search narrowed to Bitcoin/Bitcoin Cash and clearing restored 100. Final polish preview/rendered acceptance and CI remain pending at this checkpoint.
+
+## Founder-approved release
+
+Founder-approved #241 squash-merged as 0a8a53fa9acc62262b5493c4eb9aa95811b88f67 after exact-head CI 42262924168 and both Vercel checks passed. Production dpl_J6BvCnjY33YSkbkbwDGxBi5rzHoU READY. Canonical /news/ HTTP 200 has the GEEK market desk and News CSP; /api/widget?service=markets returns 100 rows, ranks 1–100; Profile retains its baseline CSP. Desktop preview rendered all 100 rows and working search. Production HTTP verification does not establish physical-phone or independent acceptance.

@@ -1,4 +1,38 @@
-# Roadmap checkpoint — October 28, 2026
+# Roadmap checkpoint — November 6, 2026
+
+Public Alpha. This dated queue supersedes the historical October 28 execution order retained below. Merged code, production HTTP verification, physical-device acceptance and independent review remain distinct.
+
+## Completed since the older checkpoint
+
+| Work | Evidence | Remaining boundary |
+| --- | --- | --- |
+| Technology / History / Comics corrections | #208 merged `7157d0c`; #209 merged `5a860ff` after exact-head verification | Replacement drafts and authorship holds remain; this does not complete the audit |
+| Whitepaper and centered glass-answer timer | #228 recorded merged/deployed; docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md | Physical-phone timer acceptance is separate |
+| Public HQ / Mini standings | HQ #238 and Mini #13 recorded merged/deployed; docs/PUBLIC-LEADERBOARD.md | Rendered/device and independent abuse acceptance are separate |
+| Expanded Kaspa exchange directory | #239 merged `898eaa3`; 164 resources / 17 categories; docs/KASPA-EXCHANGE-REVIEW.md | Provider availability and rendered/device review remain separate |
+| Media & Builders | #240 merged `bbb58bf`; docs/MEDIA-BUILDERS.md | External listing submissions remain unsent |
+| Geek News and native Top 100 | #241 merged `0a8a53f`; CI 42262924168; production deployment READY; canonical News/API/Profile HTTP checks | Physical-phone and independent data review remain separate |
+
+## Next execution order
+
+1. **BANK-009:** review the [six-item Technology candidate](TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md), then continue bounded factual, semantic, context/category and authorship review across all eight categories. #209 is already merged; do not queue it again. Unflagged drafts still require review.
+2. **Private ranked bank / seasons:** refresh and test the #200 work against current main, including version-bound runs, deferred feedback, storage failure/recovery and leak checks. Draft code or a season date does not authorize cutover. Do not expose private-bank contents or activate ranked rewards.
+3. **Account/device/multiplayer acceptance:** preserve completed phone, Study and TN10 results; reconcile the unresolved private Royale retry before creating another match. Finish remaining independent scenarios without replaying uncertain live writes.
+4. **CONT-002 / OPS-001:** independently controlled source custody and isolated provider/application restore. Record actual provider plan and recovery evidence; no billing change is part of this candidate.
+5. **BANK-001–008:** grow distinct reviewed content alongside the audit after risk triage. Kaspa has 766 reviewed concepts; 234 remain to its 1,000 target. Do not pad counts or reopen CCE from a count alone.
+6. **ECO-001:** inspect Jr, Mini, Wallet and widget individually, recording exact source/deployment, behavior, custodian and next action. External ecosystem submissions remain a separate founder task.
+
+## Counts and candidate boundary
+
+Released baseline before this candidate: 8,438 active static rows, 8,228 ranked-eligible, 210 practice-only and 800 eligible internal source reviews. The November 6 candidate keeps 8,438 active rows, moves three corrections into practice-only drafts (8,225 ranked-eligible / 213 practice-only), and adds three item-specific internal confirmations (803 eligible reviews / 7,197 target deficit). Kaspa/Study stay at 766 / 537. These counts describe internal records; they are not independent certification.
+
+Keep original saved grading, original license/provenance, canonical concept exclusions, server-only question data and separate human/independent acceptance. Mainnet settlement, CCE intake/rewards, contributor rates and collection ownership remain held or unselected. No wallet, payment, account, production database or provider setting is changed by this audit candidate.
+
+## Historical October 28 snapshot
+
+The following is preserved as dated evidence, including then-current failures and limits. Its candidates, counts, billing statements and execution queue are historical, not current instructions.
+
+### Roadmap checkpoint — October 28, 2026
 
 Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. Public release remains Alpha. This checkpoint supersedes the older execution summary with observed releases and the founder's whole-bank audit direction; it does not open payment, ownership, contributor or paid-model gates.
 

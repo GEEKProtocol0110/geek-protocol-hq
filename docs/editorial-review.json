@@ -3383,9 +3383,30 @@
       "reason": "semantic-duplicate",
       "note": "BANK-009 final review: overlaps the debut-issue objective of COM-ST-005. Retired rather than keeping two active versions. Original prompt, options and grading are retained for saved runs; canonical concept is COM-ST-005, which remains practice-only. The earlier uncertain-authorship hold is not cleared by this retirement.",
       "answerKeyHash": "cd938866517ed7d35de867bce3e411ee24e3feb00b91d5828521642836a02b92"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0810",
+      "reason": "source-correction",
+      "note": "The old generic physical-RAM limit ignores PAE and confuses physical memory, total virtual space and the process user-space share. Practice-only replacement: TECH-0810-Rfcd02b1e2f.",
+      "answerKeyHash": "b5c12ffc2c94b7750f9fbd26d8eee73d44227a8bb0ba00fc908e952fe0f2eb14"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-0461c5e98b88",
+      "reason": "source-correction",
+      "note": "Replace the imprecise human-memory analogy with an explicit saved-file/nonvolatile-storage objective. Practice-only replacement: TECH-N-0461c5e98b88-Rbc490ae047.",
+      "answerKeyHash": "aabdce4441b1643f145e7617614d9df09ec875882c1ffaacc439553c9daa7b25"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-d0bbfb636d98",
+      "reason": "source-correction",
+      "note": "Replace an undated intended-to-succeed claim and code-name lore with the explicit historical release date. Practice-only replacement: TECH-N-d0bbfb636d98-R488e1b3347.",
+      "answerKeyHash": "861c578d5a98507b3cc4a276b584ea5355f07855f44b198293a9d4dec5c86d45"
     }
   ],
-  "retirementCount": 442,
+  "retirementCount": 445,
   "newLicensedImportsRetired": 258,
   "activeNewLicensedImportsPending": 3598,
   "activeDraftQuestions": 7516,
@@ -3440,7 +3461,7 @@
     }
   },
   "importCountCorrection": "The previous prose total of 3,868 licensed additions was incorrect: the original active snapshot has 3,856 new draft imports and 168 new source-checked authored items (92 Kaspa, 39 Comics, 37 Science Fiction).",
-  "maintainedAt": "2026-11-01",
+  "maintainedAt": "2026-11-06",
   "followUpAudits": [
     {
       "date": "2026-10-27",
@@ -3469,6 +3490,13 @@
       "scope": "Twelve selected Technology drafts: four primary-source-checked corrections plus eight category/context/option retirements. Risk sample only; original grading preserved.",
       "evidence": "docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md",
       "decisionRegister": "server/question-audit/technology-2026-10-28.json"
+    },
+    {
+      "date": "2026-11-06",
+      "task": "BANK-009",
+      "scope": "Six selected hardware/OS/interface drafts, not a whole-category or contiguous-prefix approval. Three existing identities retain exact grading and receive item-specific internal source checks; three corrected replacements remain practice-only drafts pending separate review.",
+      "evidence": "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md",
+      "decisionRegister": "server/question-audit/technology-2026-11-06.json"
     }
   ],
   "practiceOnlyHolds": {

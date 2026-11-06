@@ -18,12 +18,12 @@
     "evidence": "PR #155 merged October 23, 2026 at 12:21:55 Detroit (16:21:55 UTC) as 1476aa2d1a4469ed1eed30d9c72f94ca50e8bd4f. Final checked head ee1ce12bb3e961e2013d56a4dda29855a14d1810/tree d8d0e4fd94564ba79cd7559ce7e4add355587a0b matches local 4da8aeb3dee54ed73e1172c16afa5f5206a38fa2; the merge has that same tree. Exact-head GitHub Security verification 39964886728 succeeded; no submitted reviews or inline threads were present before merge. Full local verification passed 603 HQ tests plus four offline signer tests, zero failures/skips, real Redis 7.0.15, 311 security assertions and all supporting checks. Production dpl_7FYxuRoLQ6VVpB5PLdnHGqFwaxzk is READY on the exact merge with both canonical domains assigned. Five no-redirect canonical checks passed under 15-second request bounds: exact status-client bytes, Play HTML referencing the client, private player 401, unauthorized worker POST 401 and private owner-auto 401; all protected responses were private/no-store. The earlier protected-preview private-fetch failure remains provider authentication evidence, not application acceptance. Actual-phone status recovery and actual automatic transfer remain unproved. Fresh project search found no geek-geekt-testnet-worker; creation in the existing Vercel team again returned 403 forbidden/no project-create permission. Neither vercel nor vc CLI is installed. No signer project, key, environment value, test funding or automatic payment was created. Mainnet/CCE/ownership holds remain unchanged."
   },
   "questionCheckpoint": {
-    "active": 8228,
-    "reviewed": 800,
-    "remaining": 7200,
+    "active": 8225,
+    "reviewed": 803,
+    "remaining": 7197,
     "kaspaActive": 766,
     "kaspaReviewed": 766,
-    "practiceOnly": 210,
+    "practiceOnly": 213,
     "kaspaPracticeOnly": 100,
     "studyConcepts": 537,
     "questChapters": 4
@@ -39,10 +39,10 @@
   "currentWork": {
     "id": "BANK-009",
     "status": "active",
-    "description": "BANK-009: #208 Technology corrections merged; #209 History/Comics final integration removes the overlapping Joker objective while retaining historical grading, practice-only replacements and unresolved-authorship holds. Independent/full-bank acceptance remains open."
+    "description": "BANK-009: #208 Technology and #209 History/Comics corrections are merged. Resume the full-bank audit with a six-item November 6 Technology candidate: three grading-preserving internal confirmations and three corrected practice-only replacements. Full-bank and independent acceptance remain open."
   },
   "nextTask": "BANK-009",
-  "nextAction": "Complete the corrected #209 integration with fresh exact-head checks, then continue the remaining BANK-009 factual, semantic, category and authorship audit. Preserve all historical grading and keep new drafts practice-only. Private-ranked-bank end-to-end and UX acceptance remain separate cutover gates.",
+  "nextAction": "Review the six-item November 6 Technology candidate and its exact-head checks, then continue item-by-item factual, semantic, category and authorship review. #209 is already merged; preserve historical grading, keep new replacement drafts practice-only, and treat private-ranked end-to-end acceptance separately.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
@@ -102,8 +102,8 @@
   },
   "geekNews": {
     "task": "ECO-006",
-    "status": "brand-polish-candidate",
+    "status": "merged-deployed-http-verified",
     "evidence": "docs/GEEK-NEWS.md",
-    "nextAction": "Verify the HQ gold/cyan Geek News polish on the fresh #241 preview and exact-head CI. Keep the verified Top 100 data/search behavior and CSP. Founder merge review and physical-phone/independent acceptance remain separate."
+    "nextAction": "Founder-approved #241 squash-merged as 0a8a53fa9acc62262b5493c4eb9aa95811b88f67 after exact-head CI 42262924168 and both Vercel checks passed. Production dpl_J6BvCnjY33YSkbkbwDGxBi5rzHoU READY. Canonical /news/ HTTP 200 has the GEEK market desk and News CSP; /api/widget?service=markets returns 100 rows, ranks 1–100; Profile retains its baseline CSP. Desktop preview rendered all 100 rows and working search. Production HTTP verification does not establish physical-phone or independent acceptance. Maintain provider availability and retain device/independent acceptance as separate work."
   }
 }

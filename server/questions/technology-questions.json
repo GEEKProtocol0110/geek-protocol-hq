@@ -2,7 +2,7 @@
   "metadata": {
     "title": "GEEK Protocol — Technology Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-10-30",
+    "maintainedAt": "2026-11-06",
     "questionCount": 1470,
     "conceptCount": 1470,
     "category": "Technology",
@@ -14211,28 +14211,35 @@
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
-      "id": "TECH-0810",
+      "id": "TECH-0810-Rfcd02b1e2f",
       "category": "Technology",
-      "prompt": "When running a 32-bit operating system which amount of RAM can you not functionally upgrade your system to?",
+      "prompt": "In the 32-bit Windows address model described by Microsoft, how large is the total virtual address space before it is split into user and system portions?",
       "options": [
-        "3.5 GB",
-        "4 GB",
-        "1 GB",
-        "3 GB"
+        "1 GiB",
+        "2 GiB",
+        "4 GiB",
+        "8 GiB"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "difficulty": "hard",
-      "funFact": null,
+      "funFact": "The total address space is 2^32 bytes, or 4 GiB. Its user/system split is a separate limit; PAE can let capable 32-bit Windows systems use more physical RAM without enlarging that virtual address space.",
       "tags": [
         "technology"
       ],
       "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
+      "source": "https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/virtual-address-spaces",
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0810",
-      "maintenanceCheckedAt": "2026-10-07"
+      "conceptId": "TECH-0810-Rfcd02b1e2f",
+      "maintenanceCheckedAt": "2026-10-07",
+      "originalSource": "https://github.com/uberspot/OpenTriviaQA",
+      "practiceOnly": true,
+      "factualCheckedAt": "2026-11-06",
+      "supersedesQuestionIds": [
+        "TECH-0810"
+      ],
+      "attribution": "Adapted by Geek Protocol from OpenTriviaQA contributors (CC BY-SA 4.0); original explanation and individually linked factual references. Source-site prose is not reproduced."
     },
     {
       "id": "TECH-0811",
@@ -25062,21 +25069,21 @@
       "difficulty": "hard"
     },
     {
-      "prompt": "What is the long term memory of the computer?",
+      "prompt": "Which listed computer component normally keeps saved user files without requiring continuous electrical power?",
       "options": [
-        "Networking Cards",
-        "RAM",
-        "Motherboards",
-        "Hard Drive"
+        "DRAM working memory",
+        "A hard disk drive",
+        "CPU registers",
+        "CPU cache"
       ],
-      "correctIndex": 3,
+      "correctIndex": 1,
       "sourceFile": "science-technology",
       "sourceOrdinal": 821,
-      "id": "TECH-N-0461c5e98b88",
-      "conceptId": "TECH-N-0461c5e98b88",
+      "id": "TECH-N-0461c5e98b88-Rbc490ae047",
+      "conceptId": "TECH-N-0461c5e98b88-Rbc490ae047",
       "category": "Technology",
       "subcategory": "Science Technology",
-      "funFact": null,
+      "funFact": "A hard disk drive provides nonvolatile storage for saved files. Ordinary RAM is working memory and loses its contents without power; storage and working memory serve different roles.",
       "tags": [
         "technology"
       ],
@@ -25084,9 +25091,15 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
+      "source": "https://www.corsair.com/us/en/explorer/diy-builder/memory/volatile-vs-non-volatile-memory-whats-the-difference/",
+      "attribution": "Adapted by Geek Protocol from OpenTriviaQA contributors (CC BY-SA 4.0); original explanation and individually linked factual references. Source-site prose is not reproduced.",
+      "difficulty": "medium",
+      "originalSource": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
+      "practiceOnly": true,
+      "factualCheckedAt": "2026-11-06",
+      "supersedesQuestionIds": [
+        "TECH-N-0461c5e98b88"
+      ]
     },
     {
       "prompt": "Which of the following fast food items provides the consumer with the greatest amount of calories from fat?",
@@ -32096,17 +32109,19 @@
       "conceptId": "TECH-N-7ce1893db2ea",
       "category": "Technology",
       "subcategory": "Science Technology",
-      "funFact": null,
+      "funFact": "USB expands to Universal Serial Bus. The name describes the interface specification rather than a special kind of storage bank.",
       "tags": [
         "technology"
       ],
       "volatile": false,
       "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
+      "reviewStatus": "source-checked",
       "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
+      "source": "https://www.usb.org/about",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "originalSource": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
+      "reviewedAt": "2026-11-06"
     },
     {
       "prompt": "An effective minimum price imposed by the government, called price floor in economics, is usually expected to result in what?",
@@ -32852,17 +32867,19 @@
       "conceptId": "TECH-N-b61820698c2e",
       "category": "Technology",
       "subcategory": "Science Technology",
-      "funFact": null,
+      "funFact": "ROM means read-only memory. A CD-ROM is intended for reading its recorded data; recordable and rewritable optical formats are different media types.",
       "tags": [
         "technology"
       ],
       "volatile": false,
       "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
+      "reviewStatus": "source-checked",
       "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
+      "source": "https://www.ibm.com/support/pages/dvd-ram-media-types-and-media-formats",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "originalSource": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
+      "reviewedAt": "2026-11-06"
     },
     {
       "prompt": "What color is Arterial Blood?",
@@ -34863,21 +34880,21 @@
       "difficulty": "easy"
     },
     {
-      "prompt": "This Microsoft operating system, formerly codenamed Blackcomb and Vienna, is intended to succeed Windows Vista.",
+      "prompt": "Which Microsoft desktop operating system became generally available worldwide on October 22, 2009?",
       "options": [
-        "Mojave",
-        "Vista",
-        "Mac OS X Leopard",
-        "7"
+        "Windows XP",
+        "Windows Vista",
+        "Windows 8",
+        "Windows 7"
       ],
       "correctIndex": 3,
       "sourceFile": "science-technology",
       "sourceOrdinal": 1338,
-      "id": "TECH-N-d0bbfb636d98",
-      "conceptId": "TECH-N-d0bbfb636d98",
+      "id": "TECH-N-d0bbfb636d98-R488e1b3347",
+      "conceptId": "TECH-N-d0bbfb636d98-R488e1b3347",
       "category": "Technology",
       "subcategory": "Science Technology",
-      "funFact": null,
+      "funFact": "Microsoft announced worldwide availability of Windows 7 on October 22, 2009. This is a dated release-history question, not a claim about a future or currently supported Windows version.",
       "tags": [
         "technology"
       ],
@@ -34885,9 +34902,15 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
+      "source": "https://news.microsoft.com/source/2009/10/22/microsoft-simplifies-the-pc-with-windows-7/",
+      "attribution": "Adapted by Geek Protocol from OpenTriviaQA contributors (CC BY-SA 4.0); original explanation and individually linked factual references. Source-site prose is not reproduced.",
+      "difficulty": "medium",
+      "originalSource": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
+      "practiceOnly": true,
+      "factualCheckedAt": "2026-11-06",
+      "supersedesQuestionIds": [
+        "TECH-N-d0bbfb636d98"
+      ]
     },
     {
       "prompt": "How many separate rings does the planet Uranus have according to observations made with the Hubble Space Telescope in 2005?",
@@ -35336,17 +35359,19 @@
       "conceptId": "TECH-N-0802a9e35a49",
       "category": "Technology",
       "subcategory": "Science Technology",
-      "funFact": null,
+      "funFact": "On Windows, ipconfig /all displays the full TCP/IP configuration for adapters, including DHCP configuration details when applicable. Plain ipconfig shows a shorter address, subnet and gateway summary.",
       "tags": [
         "technology"
       ],
       "volatile": false,
       "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
+      "reviewStatus": "source-checked",
       "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
+      "source": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "originalSource": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
+      "reviewedAt": "2026-11-06"
     },
     {
       "prompt": "For which of the following tubes is the blood to additive ratio most critical?",
