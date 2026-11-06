@@ -66,7 +66,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-011 | P1 | needs-evidence | Public HQ global leaderboard and separate shared Mini standings | Maintainer prepares source and verification; founder approves release; independent abuse review unassigned |
 | ECO-004 | P1 | done | Add native-KAS exchanges, brokers and swaps to the Kaspa directory | Maintainer prepares source and evidence; founder approves release; independent coverage reviewer unassigned |
 | ECO-005 | P1 | done | Publish Media and Builders resources for ecosystem listings and sharing | Maintainer prepares source and checks; founder reviews release; independent builder/device acceptance unassigned |
-| ECO-006 | P1 | in-progress | Add Geek News with provider market, news and futures feeds | Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned |
+| ECO-006 | P1 | done | Add Geek News with provider market, news and futures feeds | Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -116,7 +116,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Complete the corrected #209 integration with fresh exact-head checks, then continue the remaining BANK-009 factual, semantic, category and authorship audit. Preserve all historical grading and keep new drafts practice-only. Private-ranked-bank end-to-end and UX acceptance remain separate cutover gates.
+Next action: Review the six-item November 6 Technology candidate and its exact-head checks, then continue item-by-item factual, semantic, category and authorship review. #209 is already merged; preserve historical grading, keep new replacement drafts practice-only, and treat private-ranked end-to-end acceptance separately.
 
 Acceptance:
 
@@ -126,7 +126,7 @@ Acceptance:
 - Corrections use new identities; original grading remains lookup-only and duplicate aliases prevent repeated concepts in subsequent rounds.
 - Independent editorial review is assigned and accepted before claiming independent completion; generated coverage, compatibility, tier capacity and public-answer protections pass.
 
-Evidence/specification: [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md), [scripts/audit-question-banks.mjs](../../scripts/audit-question-banks.mjs), [server/question-audit/decisions-2026-10-27.json](../../server/question-audit/decisions-2026-10-27.json), [server/question-audit/latest.json](../../server/question-audit/latest.json), [tests/question-audit.test.js](../../tests/question-audit.test.js), [docs/QUESTION-ENCODING-REVIEW-2026-10-28.md](../../docs/QUESTION-ENCODING-REVIEW-2026-10-28.md), [server/question-audit/encoding-2026-10-28.json](../../server/question-audit/encoding-2026-10-28.json), [scripts/question-encoding.mjs](../../scripts/question-encoding.mjs), [tests/question-encoding.test.js](../../tests/question-encoding.test.js), [docs/QUESTION-SCOPE-REVIEW-2026-10-28.md](../../docs/QUESTION-SCOPE-REVIEW-2026-10-28.md), [server/question-audit/scope-2026-10-28.json](../../server/question-audit/scope-2026-10-28.json), [server/question-audit/reviews.json](../../server/question-audit/reviews.json), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md), [server/question-audit/technology-2026-10-28.json](../../server/question-audit/technology-2026-10-28.json).
+Evidence/specification: [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md), [scripts/audit-question-banks.mjs](../../scripts/audit-question-banks.mjs), [server/question-audit/decisions-2026-10-27.json](../../server/question-audit/decisions-2026-10-27.json), [server/question-audit/latest.json](../../server/question-audit/latest.json), [tests/question-audit.test.js](../../tests/question-audit.test.js), [docs/QUESTION-ENCODING-REVIEW-2026-10-28.md](../../docs/QUESTION-ENCODING-REVIEW-2026-10-28.md), [server/question-audit/encoding-2026-10-28.json](../../server/question-audit/encoding-2026-10-28.json), [scripts/question-encoding.mjs](../../scripts/question-encoding.mjs), [tests/question-encoding.test.js](../../tests/question-encoding.test.js), [docs/QUESTION-SCOPE-REVIEW-2026-10-28.md](../../docs/QUESTION-SCOPE-REVIEW-2026-10-28.md), [server/question-audit/scope-2026-10-28.json](../../server/question-audit/scope-2026-10-28.json), [server/question-audit/reviews.json](../../server/question-audit/reviews.json), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md), [server/question-audit/technology-2026-10-28.json](../../server/question-audit/technology-2026-10-28.json), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md), [server/question-audit/technology-2026-11-06.json](../../server/question-audit/technology-2026-11-06.json).
 
 ## BANK-001: Grow Kaspa toward 1,000 reviewed concepts
 
@@ -970,9 +970,9 @@ Evidence/specification: [docs/MEDIA-BUILDERS.md](../../docs/MEDIA-BUILDERS.md), 
 
 ## ECO-006: Add Geek News with provider market, news and futures feeds
 
-**P1 / in-progress.** Owner: Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned. Dependencies: none.
+**P1 / done.** Owner: Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned. Dependencies: none.
 
-Next action: Verify the HQ gold/cyan Geek News polish on the fresh #241 preview and exact-head CI. Keep the verified Top 100 data/search behavior and CSP. Founder merge review and physical-phone/independent acceptance remain separate.
+Next action: Maintain the released Geek News page and provider availability; retain physical-phone and independent market-data acceptance separately.
 
 Acceptance:
 
@@ -982,4 +982,4 @@ Acceptance:
 - State provider delays/availability and distinguish spot from derivatives; no fabricated quotes, news, forecasts or paid API/AI plan.
 - Run functional and security/header checks; record actual browser, CI, preview, production and physical-device evidence separately.
 
-Evidence/specification: [docs/GEEK-NEWS.md](../../docs/GEEK-NEWS.md), [public/news/index.html](../../public/news/index.html), [public/news/assets/news.js](../../public/news/assets/news.js), [public/news/assets/news.css](../../public/news/assets/news.css), [tests/geek-news.test.js](../../tests/geek-news.test.js), [vercel.json](../../vercel.json).
+Evidence/specification: [docs/GEEK-NEWS.md](../../docs/GEEK-NEWS.md), [public/news/index.html](../../public/news/index.html), [public/news/assets/news.js](../../public/news/assets/news.js), [public/news/assets/news.css](../../public/news/assets/news.css), [tests/geek-news.test.js](../../tests/geek-news.test.js), [vercel.json](../../vercel.json), [server/crypto-markets.js](../../server/crypto-markets.js), [public/news/assets/crypto100.js](../../public/news/assets/crypto100.js), [tests/crypto100.test.js](../../tests/crypto100.test.js).

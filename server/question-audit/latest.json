@@ -5,10 +5,10 @@
   "independentReview": false,
   "scope": "All active static rows in the category registry, including source-checked rows; excludes retired lookup-only and held CCE rows.",
   "limit": "Heuristic screening and internal pair triage are not exhaustive semantic, factual, category, licensing or difficulty review. Unflagged drafts still need item-by-item primary-source review.",
-  "corpusHash": "30f634b847d849bedfa1fe1bfc7bf59b4a211083aa0d8d06f964e9c2a681e27d",
+  "corpusHash": "37f7149e9edcd6cf0814165c5aeae91086f0827409a6b76b35c23f45151cfbdc",
   "active": 8438,
-  "recordedSourceChecks": 875,
-  "needsFactualReview": 7563,
+  "recordedSourceChecks": 878,
+  "needsFactualReview": 7560,
   "categories": [
     {
       "category": "kaspa",
@@ -34,9 +34,9 @@
     {
       "category": "technology",
       "active": 1485,
-      "recordedSourceChecks": 19,
-      "needsFactualReview": 1466,
-      "missingExplanation": 1460
+      "recordedSourceChecks": 22,
+      "needsFactualReview": 1463,
+      "missingExplanation": 1454
     },
     {
       "category": "movies",

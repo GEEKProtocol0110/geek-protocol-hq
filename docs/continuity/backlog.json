@@ -86,7 +86,7 @@
       "status": "active",
       "title": "Audit every question category before treating counts as quality",
       "owner": "Content maintainer; independent editor unassigned",
-      "nextAction": "Complete the corrected #209 integration with fresh exact-head checks, then continue the remaining BANK-009 factual, semantic, category and authorship audit. Preserve all historical grading and keep new drafts practice-only. Private-ranked-bank end-to-end and UX acceptance remain separate cutover gates.",
+      "nextAction": "Review the six-item November 6 Technology candidate and its exact-head checks, then continue item-by-item factual, semantic, category and authorship review. #209 is already merged; preserve historical grading, keep new replacement drafts practice-only, and treat private-ranked end-to-end acceptance separately.",
       "acceptance": [
         "All active identities have a recorded audit disposition; screening and factual review coverage are distinguished.",
         "Semantic duplicates, inverse/paraphrased facts, key/distractor ambiguity, missing media/context, encoding, taxonomy, dates/editions and licensing are reviewed, including unflagged imports.",
@@ -109,7 +109,9 @@
         "server/question-audit/scope-2026-10-28.json",
         "server/question-audit/reviews.json",
         "docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md",
-        "server/question-audit/technology-2026-10-28.json"
+        "server/question-audit/technology-2026-10-28.json",
+        "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md",
+        "server/question-audit/technology-2026-11-06.json"
       ],
       "validationEvidence": [
         "Initial full-bank screen: 8,371 baseline active / 864 recorded checks / 7,507 drafts; 33 candidate pairs, 26 within and seven cross-category. Internal triage: 15 duplicate retirements, ten retained distinct objectives, four scope and four category decisions outstanding. Candidate: 8,356 active / 7,492 drafts; 76 encoding and four time-wording signals. No factual certification added.",
@@ -123,13 +125,16 @@
         "November 1 final review of PR #208 at 046368ea296f0c2939660a09b3de7c78b9ee486b: six old Technology grading keys preserved in lookup-only retirement and six replacements remain practice-only drafts. Integrated current main including #212, and regenerated the audit from the combined corpus rather than selecting either old corpus hash. Final integration checks are pending.",
         "November 1 final #208 integration passed npm run verify with native Redis 7.4.2: 717 HQ tests plus nine signer tests, zero failures/skips, 311 security assertions and all question, generated-data, repository, economy, continuity and site checks. The combined audit includes #212; historical grading keys remain unchanged. Fresh published-head CI is required before merge.",
         "November 1 #209 correction: retired the older overlapping Joker debut objective and linked its historical concept to the clearer practice-only replacement. All 12,859 grading tuples and all 4,421 prior retired objects from current main are unchanged. The deterministic alias regression passes, including future-eligibility simulation. Combined corpus after #212/#208: 8,438 active rows, 210 practice-only, 8,228 ranked-eligible; 800 meet readiness review criteria. Seventy-five active authorship holds plus one retired unresolved-authorship row remain; this is not authorship clearance or full-bank factual certification.",
-        "Final combined local npm run verify passed with native Redis 7.4.2: 718 HQ tests and nine offline signer tests, zero failures/skips; 311 security assertions and all question/generated-data, collection/archive, repository, economy, continuity and site checks. Focused audit regression suite passed 11/11. Post-evidence continuity generation/check and whitespace checks passed. Fresh published-head CI is required before merge."
+        "Final combined local npm run verify passed with native Redis 7.4.2: 718 HQ tests and nine offline signer tests, zero failures/skips; 311 security assertions and all question/generated-data, collection/archive, repository, economy, continuity and site checks. Focused audit regression suite passed 11/11. Post-evidence continuity generation/check and whitespace checks passed. Fresh published-head CI is required before merge.",
+        "November 6 candidate reviews six Technology identities: three exact-grading confirmations and three corrected practice-only drafts. Static active count stays 8,438; ranked-eligible 8,225; practice-only 213; recorded eligible reviews 803; target deficit 7,197. Primary evidence comes from Microsoft, USB-IF, IBM and Corsair; no independent certification or new-draft eligibility. Final checks recorded in the scoped PR.",
+        "Full local npm run verify passed on Node 24.22.1 with native Redis 7.0.15: 755 HQ tests plus nine offline signer checks (764 total), zero failures/skips; 311 security assertions and bank/schema/similarity/catalog/readiness/audit, collection/archive, repository, economy, continuity, site and whitepaper checks. Focused audit tests passed 13/13. Separate baseline comparison preserves all 12,888 historical grading tuples and all 4,450 previously retired objects unchanged; exactly three new identities and three retirement records are added. Fresh published-head CI remains required."
       ],
       "releaseEvidence": [
         "PR #176 merged as ff422a5960f3c73c76987e34789c86ad2c83140d with checked tree 557e22fdc6e3d7c24e25281726bb43f8eca4ed5e and head a6b7837d425ffa3d6ddaed9e35cd7041b43cbf37. Exact-head Security verification 40622819782 and Vercel statuses passed; no submitted reviews/threads. Production dpl_5jFJuwqqeVCWH59AXqkiUpwRaEDA is READY on that merge with both canonical domains assigned. Five canonical reads passed: held/no-store readiness at 8,356 active / 864 recorded checks / 7,492 drafts; matching eight-category counts; unchanged 11-topic/537-concept Study; server-only audit path 404; and server-only bank path 404 without internal content. Full 708 HQ plus nine offline signer tests (717), zero failures/skips, and 311 security assertions passed. Fifteen duplicate drafts retired with historical grading/aliases retained. Screening is not independent or complete factual approval.",
         "PR #177 merged as 4297709f7ab201516cdcf86ca7ad9e1385b70927 with checked tree c92baa365b968a39a4f40cc6be0c9b188091ca2f and head b82418049447855ca67ca8d5dc69828242b88a10. Exact-head Security verification 40632784556 and Vercel statuses succeeded; no submitted reviews/threads. Production dpl_BabbEA1nfHm7poVMhdjgK4oVWRwk is READY on that merge with both canonical domains assigned. Five canonical reads passed: held/no-store readiness at 8,355 active / 864 checks / 7,491 drafts; matching eight-category counts; unchanged 11-topic/537-concept Study; server-only encoding register and History bank paths 404 without internal content. Full 711 HQ plus nine offline signer tests (720) passed, zero failures/skips, 311 security assertions. Standard post-release monitoring passed 21/21 at October 28 12:34 AM Detroit, unchanged five-second bounds. Seventy-seven encoding corrections and one revealed duplicate were released without factual promotion; independent editing and broader launch acceptance remain open.",
         "PR #178 merged October 28 at 11:10:19 UTC as 954a7b24b6e6c84522bc51c83c18bef5c28482d0; merge tree d8b027cba0baac76f12f2d38e2767a83d0508d12 matches checked head c947196de5bb0108c729d8264702d12660cb785c. Exact-head Security verification 40677635018 and both Vercel statuses succeeded. HQ production dpl_wANoLDQmxc9A44HXQMS9q1KzKHBJ READY on the merge with canonical domains; five canonical reads passed at 8,346 active / 872 checks / 7,474 drafts, with server-only paths 404. First standard monitoring run passed 15/21 with six protected-route five-second timeouts; focused protection reads then passed, followed by a standard 21/21 recheck at 7:13 AM Detroit. Retain the failure: later point-in-time health does not explain its cause or prove sustained capacity. Full local checks passed 713 HQ plus nine signer tests (722), zero failures/skips, 311 security assertions. Independent editing remains unassigned.",
-        "PR #208 merged as 7157d0c4b802b7605541f1743d868831b19a625c after exact-head Security verification 41332306615 and both Vercel contexts succeeded. New Technology rows remain practice-only; 717 HQ and nine signer tests passed locally before push."
+        "PR #208 merged as 7157d0c4b802b7605541f1743d868831b19a625c after exact-head Security verification 41332306615 and both Vercel contexts succeeded. New Technology rows remain practice-only; 717 HQ and nine signer tests passed locally before push.",
+        "PR #209 is already merged as 5a860ff072bde1c90ba912da843f3bf41f523b2a after exact-head CI 41332799495 and both Vercel contexts passed. Its 29 replacements remain practice-only; the overlapping Joker objective retains saved grading and canonical exclusion."
       ]
     },
     {
@@ -1598,10 +1603,10 @@
     {
       "id": "ECO-006",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "done",
       "title": "Add Geek News with provider market, news and futures feeds",
       "owner": "Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned",
-      "nextAction": "Verify the HQ gold/cyan Geek News polish on the fresh #241 preview and exact-head CI. Keep the verified Top 100 data/search behavior and CSP. Founder merge review and physical-phone/independent acceptance remain separate.",
+      "nextAction": "Maintain the released Geek News page and provider availability; retain physical-phone and independent market-data acceptance separately.",
       "acceptance": [
         "Provide /news/ with native Home links, canonical metadata and sitemap coverage.",
         "Show Kaspa and major crypto spot prices, crypto/global market headlines and distinct USDT perpetual futures through attributed provider frames.",
@@ -1616,7 +1621,14 @@
         "public/news/assets/news.js",
         "public/news/assets/news.css",
         "tests/geek-news.test.js",
-        "vercel.json"
+        "vercel.json",
+        "server/crypto-markets.js",
+        "public/news/assets/crypto100.js",
+        "tests/crypto100.test.js"
+      ],
+      "completedAt": "2026-11-06",
+      "completionEvidence": [
+        "Founder-approved #241 squash-merged as 0a8a53fa9acc62262b5493c4eb9aa95811b88f67 after exact-head CI 42262924168 and both Vercel checks passed. Production dpl_J6BvCnjY33YSkbkbwDGxBi5rzHoU READY. Canonical /news/ HTTP 200 has the GEEK market desk and News CSP; /api/widget?service=markets returns 100 rows, ranks 1–100; Profile retains its baseline CSP. Desktop preview rendered all 100 rows and working search. Production HTTP verification does not establish physical-phone or independent acceptance."
       ]
     }
   ]
