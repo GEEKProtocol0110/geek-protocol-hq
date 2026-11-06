@@ -62,8 +62,9 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | DOC-002 | P1 | done | Expose project documents and contributors on the homepage | Maintainer; founder approves merge |
 | SEO-002 | P1 | in-progress | Publish clear project facts and verify search discovery | Maintainer prepares source; founder approves merge; verified property owner handles search-console evidence |
 | ECO-002 | P1 | done | Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream | Maintainer prepares source; founder reviews release and supplies additional Hall links |
-| ECO-003 | P1 | in-progress | Expand KRC-20 project links and preserve token lookups for holders | Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned |
-| UX-011 | P1 | in-progress | Public HQ global leaderboard and separate shared Mini standings | Maintainer prepares source and verification; founder approves release; independent abuse review unassigned |
+| ECO-003 | P1 | done | Expand KRC-20 project links and preserve token lookups for holders | Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned |
+| UX-011 | P1 | needs-evidence | Public HQ global leaderboard and separate shared Mini standings | Maintainer prepares source and verification; founder approves release; independent abuse review unassigned |
+| ECO-004 | P1 | in-progress | Add native-KAS exchanges, brokers and swaps to the Kaspa directory | Maintainer prepares source and evidence; founder approves release; independent coverage reviewer unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -901,9 +902,9 @@ Evidence/specification: [docs/KASPA-DIRECTORY.md](../../docs/KASPA-DIRECTORY.md)
 
 ## ECO-003: Expand KRC-20 project links and preserve token lookups for holders
 
-**P1 / in-progress.** Owner: Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned. Dependencies: ECO-002.
+**P1 / done.** Owner: Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned. Dependencies: ECO-002.
 
-Next action: KRC-20 expansion #236 is merged/deployed (b38e27dedeec5ac6a014ff6647401d127749ea4e; CI 41974695614; production dpl_CRhPA23oi9PEs51aRjUU2P3GGnDw; exact canonical HTML/CSS/JS verified). Review the founder-requested Kaspa-first ordering follow-up: ten general Kaspa categories, then projects/holder lookups, then Geek/legacy. Preserve all 104 listings and evidence; follow-up merge/deployment remain separate.
+Next action: Maintain the 104 released resources and holder-reference policy. Founder-approved ordering #237 is merged/deployed with exact public HTML verification; exchange expansion continues separately under ECO-004.
 
 Acceptance:
 
@@ -918,9 +919,9 @@ Evidence/specification: [docs/KRC20-DIRECTORY-REVIEW.md](../../docs/KRC20-DIRECT
 
 ## UX-011: Public HQ global leaderboard and separate shared Mini standings
 
-**P1 / in-progress.** Owner: Maintainer prepares source and verification; founder approves release; independent abuse review unassigned. Dependencies: none.
+**P1 / needs-evidence.** Owner: Maintainer prepares source and verification; founder approves release; independent abuse review unassigned. Dependencies: none.
 
-Next action: Review the paired HQ/Mini source candidates, exact-head CI and cross-site public-round rehearsal. Deploy HQ first, then Mini after founder merge approval. Rendered/device acceptance remains separate.
+Next action: HQ #238 and Mini #13 are merged/deployed with source/HTTP/API acceptance. Verify rendered desktop/mobile behavior and independent abuse limits separately; public practice does not open private-ranked seasons or economic gates.
 
 Acceptance:
 
@@ -932,3 +933,19 @@ Acceptance:
 - Test real Redis concurrency, expiry, authorization, mode/topic separation and removal races; run regression, metadata, security and continuity checks.
 
 Evidence/specification: [docs/PUBLIC-LEADERBOARD.md](../../docs/PUBLIC-LEADERBOARD.md), [server/mini/competition.js](../../server/mini/competition.js), [api/mini.js](../../api/mini.js), [public/leaderboard/index.html](../../public/leaderboard/index.html), [public/leaderboard/leaderboard.js](../../public/leaderboard/leaderboard.js), [tests/mini-competition.test.js](../../tests/mini-competition.test.js).
+
+## ECO-004: Add native-KAS exchanges, brokers and swaps to the Kaspa directory
+
+**P1 / in-progress.** Owner: Maintainer prepares source and evidence; founder approves release; independent coverage reviewer unassigned. Dependencies: ECO-003.
+
+Next action: Review the prepared source and dated provider evidence; run exact-head CI and preview HTTP verification after publishing the candidate PR. Founder merge approval, production deployment and device acceptance remain separate.
+
+Acceptance:
+
+- Add broadly researched native-KAS purchase links with provider-owned primary sources and honest editorial dates; spot markets, brokers/on-ramps and swaps have separate alphabetical sections.
+- Preserve all 104 prior resources, the KRC-20 holder policy, Hall credits and Kaspa-first category order. New purchase sections belong with the general Kaspa links.
+- Distinguish listing evidence from eligibility, execution, liquidity and native-network transfer availability. Exclude derivative-only, unavailable, sell-only or unconfirmed purchase routes; retain the review queue.
+- Serve all new links and context in native HTML with matching category/filter/schema output; add a buy-KAS shortcut and update directory search metadata. No affiliate links or visitor-side external fetches.
+- Run directory behavior/parity, metadata and continuity checks; record exact CI/preview evidence and actual rendering limits without certifying live trades or exhaustive global coverage.
+
+Evidence/specification: [docs/KASPA-EXCHANGE-REVIEW.md](../../docs/KASPA-EXCHANGE-REVIEW.md), [docs/kaspa-exchange-review.json](../../docs/kaspa-exchange-review.json), [docs/kaspa-directory.json](../../docs/kaspa-directory.json), [public/kaspa/directory/index.html](../../public/kaspa/directory/index.html), [docs/site-pages.json](../../docs/site-pages.json).

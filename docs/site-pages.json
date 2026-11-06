@@ -400,8 +400,8 @@
     {
       "file": "public/kaspa/directory/index.html",
       "path": "/kaspa/directory/",
-      "title": "Kaspa Directory \u2014 KRC-20 Projects, Wallets & Tools | Geek Protocol",
-      "description": "Find Kaspa resources, KRC-20 project links and token lookups for holders, plus wallets, explorers and developer tools. Sources and dated status checks included.",
+      "title": "Kaspa Directory \u2014 Exchanges, Wallets & KRC-20 | Geek Protocol",
+      "description": "Find where to buy native KAS: spot exchanges, brokers and swaps, plus Kaspa wallets, explorers, developer tools, KRC-20 projects and holder lookups.",
       "index": true,
       "private": false,
       "lastmod": "2026-11-05",
