@@ -102,8 +102,8 @@
   },
   "geekNews": {
     "task": "ECO-006",
-    "status": "candidate-source-prepared",
+    "status": "candidate-preview-header-fix",
     "evidence": "docs/GEEK-NEWS.md",
-    "nextAction": "Finish exact-head CI and Vercel preview/header checks for /news/. Founder merge approval and production/device acceptance remain separate. Preserve one-frame loading, provider attribution and data-timing labels."
+    "nextAction": "Verify the explicit /news/ CSP rule on a fresh preview and exact-head CI, then present #241 for founder merge review. Earlier preview served /news/ without CSP; Home/Profile retained theirs. No production change."
   }
 }

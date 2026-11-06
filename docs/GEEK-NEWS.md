@@ -31,3 +31,7 @@ The status describes the selected feed and warns of delays; an iframe `load` eve
 Three synthetic client/config regressions cover one-frame isolation, fixed-origin/config handling despite hostile URL parameters, repeated selections, four futures symbols, pause/resume, filtered/unfiltered news, no false live state, route CSP separation and native discovery links. Existing Home/Media checks also pass (10 combined tests). Security evidence check passes all 311 assertions; public-answer checks pass. Local desktop browser observed actual spot quotes and attributed crypto/global headlines. Desktop browser also observed numeric KAS/BTC/ETH/SOL perpetual quotes, and Pause removed the frame while Resume reconnected. Final Vercel headers/CI remain to be checked at this checkpoint. No physical phone or independent market-data validation is claimed. Final exact-head CI/preview evidence belongs in the PR review record.
 
 The Kaspa directory's 164 resources, account/game authority, private ranked work and all CCE/reward/ownership holds remain intact.
+
+## Preview routing correction
+
+Preview check at source 45bee79: /news/ returned HTTP 200 without Content-Security-Policy, while Home/Profile retained their baseline and the News script received the intended policy. Added an explicit /news/ document rule alongside /news/:path* and a configuration regression. Fresh deployment/header and CI verification are required; source changes alone do not prove the fix.

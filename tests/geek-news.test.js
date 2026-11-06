@@ -51,6 +51,7 @@ test('news permits only the provider frame; other pages keep their existing stri
   const config = JSON.parse(readFileSync('vercel.json', 'utf8'));
   const baseline = config.headers.find(h => h.source === '/((?!news(?:/|$)).*)');
   const news = config.headers.find(h => h.source === '/news/:path*');
+  assert.deepEqual(config.headers.find(h => h.source === '/news/').headers, news.headers, 'the trailing-slash document needs an explicit deployed header rule');
   const csp = h => h.headers.find(v => v.key === 'Content-Security-Policy').value;
   assert.equal(csp(news), csp(baseline).replace('frame-src https://kgi.kaspad.net;', 'frame-src https://www.tradingview-widget.com;'));
   for (const path of ['/news', '/news/', '/news/assets/news.js']) assert.equal(new RegExp(`^${baseline.source}$`).test(path), false);

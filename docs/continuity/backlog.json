@@ -1601,7 +1601,7 @@
       "status": "in-progress",
       "title": "Add Geek News with provider market, news and futures feeds",
       "owner": "Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned",
-      "nextAction": "Finish CI and preview headers/feed checks, then present the concrete PR for founder merge review. Record deployment separately.",
+      "nextAction": "Verify the explicit /news/ CSP rule and exact-head CI after the preview exposed a missing document CSP. Present #241 for founder merge review only after that check; production/device acceptance remains separate.",
       "acceptance": [
         "Provide /news/ with native Home links, canonical metadata and sitemap coverage.",
         "Show Kaspa and major crypto spot prices, crypto/global market headlines and distinct USDT perpetual futures through attributed provider frames.",
