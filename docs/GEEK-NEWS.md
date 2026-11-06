@@ -1,0 +1,33 @@
+# Geek News
+
+ECO-006 / DR-032. Source prepared November 6, 2026 (America/Detroit) from main `bbb58bf95d4babf4f2e0e244e58fe08011da9d39` (#240). Founder requests a news page with markets, crypto world news and futures. Merge, production and device acceptance are separate from this source candidate.
+
+## Experience
+
+`/news/` provides four selected views: Kraken KAS/BTC/ETH/SOL spot quotes in USD, crypto headlines, global financial-market headlines, and Binance KAS/BTC/ETH/SOL perpetual futures quoted in USDT. The futures view is explicitly derivatives, not price predictions. All prices and headline content come from the provider; no example prices, invented headlines, AI summaries, order actions, affiliates or paid API accounts are added.
+
+Home's main navigation and footer link to Geek News. Native Kaspa official updates, rusty-kaspa releases, Kas.fyi, directory and TradingView source links remain useful without the embed or JavaScript. Introductory explanations distinguish pairs, derivatives and headline interpretation. Data coverage/timing, content attribution and provider privacy links are visible. Metadata and sitemap include the public route.
+
+## Integration and boundaries
+
+The shipped local client builds fixed cross-origin iframe URLs in the format emitted by TradingView's official current `embed-widget-market-quotes.js` and `embed-widget-timeline.js`. It does not execute those remote bootstrap scripts in the Geek origin. `locale`/`market` parameters and URL-encoded settings match the inspected bootstraps. Timeline's current bootstrap filters out older `feedMode` configuration: crypto uses the actual `market=crypto` query; the unfiltered view supplies global market stories. Changing provider URL/config formats will require checking this adapter again.
+
+Frames allow scripts, their separate origin and new source tabs, but no forms, top navigation, wallet/identity permissions or account API access. Since the frame is cross-origin, `allow-same-origin` preserves the provider's origin, not Geek's. Fixed canonical public page URI and attribution parameters are supplied; browser location/query/hash/account data never enter settings. The page's scripts and connection CSP remain self-only. The existing strict CSP is applied outside `/news`; an exclusive `/news/:path*` rule changes only `frame-src` to `https://www.tradingview-widget.com`. Common HSTS, framing denial and other response headers remain global. Preview must confirm a single effective CSP on News and the original policy elsewhere; static local preview does not emulate Vercel headers.
+
+Only the selected feed runs. Repeated selection does not reload it. Switching destroys the previous frame. Pause removes the frame; Resume or selecting another view reconnects. No background polling, local storage, service worker, news proxy, API key or new server function is added. Provider frames may make their own requests and apply provider privacy practices. No claim is made that external provider usage is zero or available forever.
+
+The status describes the selected feed and warns of delays; an iframe `load` event never becomes a verified-live/data-fresh assertion. Browsers cannot reliably inspect cross-origin feed health. Permanent fallback links and honest notices cover blocks, stale data, missing symbols and provider outages. News selection is provider-controlled and can include older stories. Headline presence is not independent fact verification. Do not scrape or redistribute full articles; preserve the widget's own links and attribution.
+
+## Primary references checked November 6
+
+- [TradingView free widgets](https://www.tradingview.com/widget/) and [iframe integration tutorial](https://www.tradingview.com/widget-docs/tutorials/iframe/build-page/widget-integration/).
+- [Market Data widget](https://www.tradingview.com/widget-docs/widgets/watchlists/market-data/) and [legacy Top Stories](https://www.tradingview.com/widget-docs/widgets/news/legacy-top-stories/).
+- Official bootstrap bytes inspected: [market quotes](https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js), [timeline](https://s3.tradingview.com/external-embedding/embed-widget-timeline.js). These generate the `www.tradingview-widget.com/embed-widget/` URLs used here.
+- [KAS spot on Kraken](https://www.tradingview.com/symbols/KASUSD/?exchange=KRAKEN), [BTC](https://www.tradingview.com/symbols/BTCUSD/?exchange=KRAKEN), [ETH](https://www.tradingview.com/symbols/ETHUSD/?exchange=KRAKEN), [SOL](https://www.tradingview.com/symbols/SOLUSD/?exchange=KRAKEN), [KAS perpetual on Binance](https://www.tradingview.com/symbols/KASUSDT.P/?exchange=BINANCE), [BTC perpetual](https://www.tradingview.com/symbols/BTCUSDT.P/?exchange=BINANCE).
+- [Provider data coverage](https://www.tradingview.com/data-coverage/) and [Vercel header configuration](https://vercel.com/docs/project-configuration/vercel-json#headers).
+
+## Verification
+
+Three synthetic client/config regressions cover one-frame isolation, fixed-origin/config handling despite hostile URL parameters, repeated selections, four futures symbols, pause/resume, filtered/unfiltered news, no false live state, route CSP separation and native discovery links. Existing Home/Media checks also pass (10 combined tests). Security evidence check passes all 311 assertions; public-answer checks pass. Local desktop browser observed actual spot quotes and attributed crypto/global headlines. Desktop browser also observed numeric KAS/BTC/ETH/SOL perpetual quotes, and Pause removed the frame while Resume reconnected. Final Vercel headers/CI remain to be checked at this checkpoint. No physical phone or independent market-data validation is claimed. Final exact-head CI/preview evidence belongs in the PR review record.
+
+The Kaspa directory's 164 resources, account/game authority, private ranked work and all CCE/reward/ownership holds remain intact.

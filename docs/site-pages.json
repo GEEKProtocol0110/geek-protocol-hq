@@ -427,6 +427,15 @@
       "index": true,
       "private": false,
       "lastmod": "2026-11-05"
+    },
+    {
+      "file": "public/news/index.html",
+      "path": "/news/",
+      "title": "Geek News \u2014 Kaspa, Crypto Markets & Futures",
+      "description": "Follow Kaspa and crypto spot prices, crypto and world market news, and perpetual futures with provider feeds and direct source links from Geek Protocol.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-06"
     }
   ]
 }

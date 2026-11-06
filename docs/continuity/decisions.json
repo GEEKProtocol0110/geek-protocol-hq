@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-02",
+  "updatedAt": "2026-11-06",
   "records": [
     {
       "id": "DR-001",
@@ -400,6 +400,21 @@
         "docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md"
       ],
       "recordedAt": "2026-11-02",
+      "supersedes": null
+    },
+    {
+      "id": "DR-032",
+      "status": "implementation-choice",
+      "title": "Use isolated provider feeds for Geek News",
+      "decision": "Provide Geek News with one selected TradingView cross-origin iframe at a time. Fixed configurations reproduce the current official bootstrap iframe format, retain attribution and canonical public page URI, and send no account or query-string data. Keep local scripts and account-origin policies; permit the provider frame only under /news/. Preserve direct sources and explain data delays. No paid API account, AI reporting or trading flow is introduced.",
+      "basis": "Founder November 6 requests Geek News with live markets, crypto world news and futures. Futures are interpreted as separately labeled crypto perpetual derivatives.",
+      "evidence": [
+        "docs/GEEK-NEWS.md",
+        "public/news/assets/news.js",
+        "tests/geek-news.test.js",
+        "vercel.json"
+      ],
+      "recordedAt": "2026-11-06",
       "supersedes": null
     }
   ]
