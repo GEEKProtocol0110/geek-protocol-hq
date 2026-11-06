@@ -9,6 +9,7 @@
   // Fixed provider configurations only. No query-string URLs or page/account data enter the frame.
   const quotes = (title, description, href, groups) => ({ title, description, href, widget: 'market-quotes', settings: { showSymbolLogo: true, symbolsGroups: groups.map(([name, symbols]) => group(name, symbols)) } });
   const panels = {
+    top100: { title: 'Top 100 crypto by market cap', description: 'CoinGecko’s top 100 by USD market capitalization, including stablecoins and wrapped assets. Search the table by name or symbol. This ranking changes with the market; Kaspa remains available in its own watchlist even outside the top 100.', href: 'https://www.coingecko.com/', widget: 'native-crypto100' },
     overview: quotes('World market overview', 'US, European and Asian benchmarks, major currencies and commodities. Index-linked CFDs are labeled; they are broker quotes, not the underlying cash index.', 'https://www.tradingview.com/markets/indices/', [
       ['United States · index CFDs', [['FOREXCOM:SPXUSD', 'US 500 · CFD'], ['FOREXCOM:NSXUSD', 'US 100 · CFD'], ['FOREXCOM:DJI', 'Wall Street 30 · CFD']]],
       ['Europe & Asia', [['FOREXCOM:UKXGBP', 'UK 100 · CFD'], ['INDEX:DEU40', 'Germany DAX'], ['INDEX:NKY', 'Japan Nikkei 225']]],
@@ -39,8 +40,9 @@
     world: { title: 'Global market news headlines', description: 'Global financial headlines covering stocks, economies and markets. Coverage and ordering are selected by the provider.', href: 'https://www.tradingview.com/news/', widget: 'timeline', settings: { displayMode: 'regular' } },
     futures: { title: 'Crypto perpetual futures · USDT', description: 'KAS, BTC, ETH and SOL perpetual derivatives on Binance, quoted in USDT. These have no fixed expiry and differ from spot ownership.', href: 'https://www.tradingview.com/markets/cryptocurrencies/prices-all/', widget: 'market-quotes', settings: { showSymbolLogo: true, symbolsGroups: [group('Perpetual futures · USDT', [['BINANCE:KASUSDT.P', 'KAS perpetual / USDT'], ['BINANCE:BTCUSDT.P', 'BTC perpetual / USDT'], ['BINANCE:ETHUSDT.P', 'ETH perpetual / USDT'], ['BINANCE:SOLUSDT.P', 'SOL perpetual / USDT']])] } },
   };
-  let selected = 'overview', paused = false;
+  let selected = 'overview', paused = false, request; 
   const render = () => {
+    if (request) request.abort();
     host.replaceChildren();
     for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.newsPanel === selected));
     pause.textContent = paused ? 'Resume feed' : 'Pause feed';
@@ -54,6 +56,12 @@
     if (description) description.textContent = panel.description;
     if (sourceLink) sourceLink.href = panel.href;
     host.dataset.newsKind = panel.widget;
+    if (panel.widget === 'native-crypto100') {
+      request = new AbortController();
+      if (typeof window.GeekCrypto100 === 'function') window.GeekCrypto100({ host, status, signal: request.signal });
+      else status.textContent = 'Top 100 could not load. Open CoinGecko using the source link above.';
+      return;
+    }
     const frame = document.createElement('iframe');
     frame.title = panel.title;
     frame.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox');
@@ -71,7 +79,7 @@
   for (const button of buttons) button.addEventListener('click', () => {
     const key = button.dataset.newsPanel;
     if (!Object.hasOwn(panels, key)) return;
-    if (selected === key && !paused) return;
+    if (selected === key && !paused && key !== 'top100') return;
     selected = key; paused = false; render();
   });
   pause.hidden = false;

@@ -64,3 +64,18 @@
 .news-view-heading a { display: inline-block; min-height: 32px; font-size: .85rem; }
 .news-terminal { min-width: 0; }
 @media (max-width: 620px) { .news-control-label { margin-inline: 16px; } .news-view-heading { padding-inline: 16px; } .news-controls button { flex: 1 1 42%; } }
+
+.crypto100 { padding: 20px; }
+.crypto100-tools label { display: flex; flex-direction: column; gap: 10px; color: #ccdcde; font-size: .9rem; }
+.crypto100 input { box-sizing: border-box; width: 100%; min-height: 46px; padding: 12px; border: 1px solid #38505a; border-radius: 8px; background: #101b20; color: #edf5f4; font: inherit; }
+.crypto100 > p { color: #b5c8c9; font-size: .85rem; }
+.crypto100-scroll { max-height: 600px; overflow: auto; border: 1px solid #30474d; border-radius: 10px; }
+.crypto100 table { width: 100%; min-width: 650px; border-collapse: collapse; font-size: .86rem; font-variant-numeric: tabular-nums; }
+.crypto100 caption { text-align: left; padding: 14px; color: #b5c8c9; line-height: 1.6; }
+.crypto100 th, .crypto100 td { padding: 14px 12px; border-bottom: 1px solid #26373e; text-align: right; white-space: nowrap; }
+.crypto100 th { position: sticky; top: 0; background: #17272c; color: #edf5f4; z-index: 1; }
+.crypto100 th:nth-child(2), .crypto100 td:nth-child(2) { text-align: left; }
+.crypto100-symbol { display: block; margin-top: 5px; color: #a1b5ba; font-size: .75rem; }
+.crypto100-up { color: #86e1d5; } .crypto100-down { color: #ffaaaa; }
+.crypto100-fallback { display: inline-block; margin: 30px; padding: 15px; }
+@media (max-width: 620px) { .crypto100 { padding: 12px; } .crypto100-scroll { max-height: 520px; } }

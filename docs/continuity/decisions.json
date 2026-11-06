@@ -416,6 +416,21 @@
       ],
       "recordedAt": "2026-11-06",
       "supersedes": null
+    },
+    {
+      "id": "DR-033",
+      "status": "implementation-choice",
+      "title": "Provide native top-100 crypto rankings",
+      "decision": "Use a fixed public CoinGecko market-cap endpoint through the existing widget function to provide exactly 100 native searchable USD rows. Cache snapshots for five minutes and show unavailable on invalid/partial/provider failure; retain attribution, fetch-time limits, no account data and no background polling. TradingView frames continue for other feeds. This replaces the no-news-API portion of DR-032 for crypto rankings only.",
+      "basis": "Founder requests more crypto markets, like the top 100. Direct testing of the legacy crypto screener returned no matches.",
+      "evidence": [
+        "docs/GEEK-NEWS.md",
+        "server/crypto-markets.js",
+        "public/news/assets/crypto100.js",
+        "tests/crypto100.test.js"
+      ],
+      "recordedAt": "2026-11-06",
+      "supersedes": "DR-032"
     }
   ]
 }

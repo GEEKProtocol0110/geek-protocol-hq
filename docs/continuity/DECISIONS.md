@@ -323,3 +323,13 @@ Provide Geek News with one selected TradingView cross-origin iframe at a time. F
 Basis: Founder November 6 requests Geek News with live markets, crypto world news and futures. Futures are interpreted as separately labeled crypto perpetual derivatives.
 
 Evidence: [docs/GEEK-NEWS.md](../../docs/GEEK-NEWS.md), [public/news/assets/news.js](../../public/news/assets/news.js), [tests/geek-news.test.js](../../tests/geek-news.test.js), [vercel.json](../../vercel.json).
+
+## DR-033: Provide native top-100 crypto rankings
+
+**implementation-choice** · 2026-11-06.
+
+Use a fixed public CoinGecko market-cap endpoint through the existing widget function to provide exactly 100 native searchable USD rows. Cache snapshots for five minutes and show unavailable on invalid/partial/provider failure; retain attribution, fetch-time limits, no account data and no background polling. TradingView frames continue for other feeds. This replaces the no-news-API portion of DR-032 for crypto rankings only.
+
+Basis: Founder requests more crypto markets, like the top 100. Direct testing of the legacy crypto screener returned no matches.
+
+Evidence: [docs/GEEK-NEWS.md](../../docs/GEEK-NEWS.md), [server/crypto-markets.js](../../server/crypto-markets.js), [public/news/assets/crypto100.js](../../public/news/assets/crypto100.js), [tests/crypto100.test.js](../../tests/crypto100.test.js). Supersedes DR-032.

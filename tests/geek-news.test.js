@@ -11,7 +11,7 @@ function setup() {
   const host = f.node('[data-news-feed]');
   const status = f.node('[data-news-status]');
   const pause = f.node('[data-news-pause]', 'button'); pause.hidden = true;
-  const buttons = Object.fromEntries(['overview', 'markets', 'stocks', 'forex', 'commodities', 'bonds', 'macrofutures', 'crypto', 'world', 'futures', 'https://attacker.test/'].map(key => [key, f.node(`[data-news-panel="${key}"]`, 'button')]));
+  const buttons = Object.fromEntries(['top100', 'overview', 'markets', 'stocks', 'forex', 'commodities', 'bonds', 'macrofutures', 'crypto', 'world', 'futures', 'https://attacker.test/'].map(key => [key, f.node(`[data-news-panel="${key}"]`, 'button')]));
   f.run(source); return { f, host, status, pause, buttons, heading, description, sourceLink };
 }
 const payload = frame => JSON.parse(decodeURIComponent(new URL(frame.src).hash.slice(1)));
@@ -97,4 +97,15 @@ test('market desk covers world benchmarks and distinct asset classes with matchi
   assert.match(html, /broker quotes/);
   assert.match(source, /yields in percent, not bond prices/);
   assert.match(source, /Continuous front-contract series/);
+});
+
+test('top 100 selection replaces the frame and cancels its request on pause or view change', async () => {
+  const x = setup(); let options;
+  x.f.window.GeekCrypto100 = value => { options = value; };
+  await x.buttons.top100.emit('click');
+  assert.equal(x.host.children.length, 0); assert.equal(options.signal.aborted, false);
+  await x.pause.emit('click'); assert.equal(options.signal.aborted, true);
+  await x.pause.emit('click'); assert.equal(options.signal.aborted, false);
+  await x.buttons.stocks.emit('click'); assert.equal(options.signal.aborted, true);
+  assert.equal(x.host.children.length, 1);
 });

@@ -30,6 +30,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/assets/styles.css" />
     <link rel="stylesheet" href="/news/assets/news.css" />
+    <script defer src="/news/assets/crypto100.js"></script>
     <script defer src="/news/assets/news.js"></script>
   </head>
   <body class="news-page">
@@ -52,7 +53,8 @@
           <p class="news-control-label">MARKETS</p>
           <div class="news-controls" role="group" aria-label="Choose a market">
             <button type="button" data-news-panel="overview" aria-pressed="true" aria-controls="news-feed">World overview</button>
-            <button type="button" data-news-panel="markets" aria-pressed="false" aria-controls="news-feed">Crypto prices</button>
+            <button type="button" data-news-panel="top100" aria-pressed="false" aria-controls="news-feed">Top 100 crypto</button>
+            <button type="button" data-news-panel="markets" aria-pressed="false" aria-controls="news-feed">Kaspa watchlist</button>
             <button type="button" data-news-panel="stocks" aria-pressed="false" aria-controls="news-feed">Stocks</button>
             <button type="button" data-news-panel="forex" aria-pressed="false" aria-controls="news-feed">Forex</button>
             <button type="button" data-news-panel="commodities" aria-pressed="false" aria-controls="news-feed">Metals & energy</button>
@@ -68,7 +70,7 @@
           <div class="news-view-heading"><h3 data-news-heading>World market overview</h3><p data-news-description>US, European and Asian benchmarks, major currencies and commodities. Index-linked CFDs are broker quotes, not the underlying cash index.</p><a data-news-source href="https://www.tradingview.com/markets/indices/" target="_blank" rel="noopener noreferrer">Explore this market on TradingView ↗</a></div>
           <div id="news-feed" class="news-feed" data-news-feed></div>
           <div class="news-feed-note"><p class="news-status" data-news-status role="status" aria-live="polite" aria-atomic="true">Enable JavaScript to load the feeds, or use the source links below. Quotes may be delayed; check the provider’s timestamps.</p><button type="button" class="news-pause" data-news-pause aria-pressed="false" hidden>Pause feed</button></div>
-          <p class="news-attribution"><a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">Market data and news by TradingView ↗</a> · External publishers retain their content.</p>
+          <p class="news-attribution"><a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">Embedded market data and news by TradingView ↗</a> · <a href="https://www.coingecko.com/en/api" target="_blank" rel="noopener noreferrer">Top 100 data provided by CoinGecko ↗</a> · External publishers retain their content.</p>
         </section>
         <aside class="news-sidebar" aria-label="Kaspa and market sources">
           <section class="news-source-card" id="kaspa-sources" aria-labelledby="kaspa-title"><span class="news-kicker">01 / KASPA FIRST</span><h2 id="kaspa-title">Follow the source.</h2><p>Project updates, public network data and builders across the Kaspa ecosystem.</p><ul>
@@ -78,6 +80,7 @@
             <li><a href="/kaspa/directory/">Explore the full Kaspa directory →</a></li>
           </ul></section>
           <section class="news-source-card news-source-card--gold" aria-labelledby="sources-title"><span class="news-kicker">02 / OPEN THE SOURCE</span><h2 id="sources-title">Explore every market.</h2><p>Direct links work even when an embedded feed is unavailable.</p><ul>
+            <li><a href="https://www.coingecko.com/" target="_blank" rel="noopener noreferrer">Top crypto rankings · CoinGecko ↗</a></li>
             <li><a href="https://www.tradingview.com/symbols/KASUSD/?exchange=KRAKEN" target="_blank" rel="noopener noreferrer">Kaspa spot chart · USD ↗</a></li>
             <li><a href="https://www.tradingview.com/markets/indices/" target="_blank" rel="noopener noreferrer">World indexes ↗</a></li>
             <li><a href="https://www.tradingview.com/markets/stocks-usa/" target="_blank" rel="noopener noreferrer">Stock markets ↗</a></li>
@@ -96,7 +99,7 @@
         <article class="news-explainer"><span class="news-kicker">FUTURES</span><h2>A contract, not a forecast.</h2><p>Global futures track index, commodity and Treasury contracts; continuous series roll between expiries. Crypto perpetuals are a separate USDT view with no fixed expiry. Both differ from spot ownership.</p><a href="https://www.tradingview.com/symbols/KASUSDT.P/?exchange=BINANCE" target="_blank" rel="noopener noreferrer">Inspect the KAS perpetual contract ↗</a></article>
         <article class="news-explainer"><span class="news-kicker">NEWS</span><h2>Read beyond a headline.</h2><p>Open the publisher, check the date and compare reporting with primary sources. A headline or a price move does not establish what will happen next.</p><a href="/kaspa/">Explore the Kaspa field guide →</a></article>
       </section>
-      <details class="news-method"><summary>About these feeds &amp; data timing</summary><p>TradingView supplies the embedded market data and publisher headlines. Quotes can be real-time, delayed or unavailable depending on the exchange, instrument and provider coverage. Follow the timestamps and notices inside the feed. Geek Protocol does not verify each quote or headline, and loading a frame does not establish that its data is current.</p><p>One selected feed loads at a time. Pause removes it; Resume reconnects. Loading a feed connects your browser to TradingView, whose privacy practices apply. This page adds no AI-generated reporting or AI subscription. Provider availability and terms may change.</p><p>Independent Kaspa community project. Educational information, not investment advice. Listing a market or publisher does not imply endorsement. <a href="https://www.tradingview.com/data-coverage/" target="_blank" rel="noopener noreferrer">Check TradingView’s data coverage ↗</a> · <a href="https://www.tradingview.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Provider privacy policy ↗</a></p></details>
+      <details class="news-method"><summary>About these feeds &amp; data timing</summary><p>CoinGecko supplies the native top-100 crypto ranking; TradingView supplies the other embedded market data and publisher headlines. The top-100 snapshot is cached for up to five minutes; its fetch time is shown separately from provider quote freshness. CoinGecko ranks can include stablecoins and wrapped assets. Search filters the supplied 100 coins, not the entire crypto market. Quotes can be real-time, delayed or unavailable depending on the exchange, instrument and provider coverage. Follow the timestamps and notices inside the feed. Geek Protocol does not verify each quote or headline, and loading a frame does not establish that its data is current.</p><p>One selected feed loads at a time. Selecting Top 100 requests a public market snapshot from Geek Protocol; its server contacts CoinGecko without account or wallet information. There is no automatic background refresh. Pausing or switching views cancels the browser request and removes the table or frame. Pause removes it; Resume reconnects. Loading a feed connects your browser to TradingView, whose privacy practices apply. This page adds no AI-generated reporting or AI subscription. Provider availability and terms may change.</p><p>Independent Kaspa community project. Educational information, not investment advice. Listing a market or publisher does not imply endorsement. <a href="https://www.tradingview.com/data-coverage/" target="_blank" rel="noopener noreferrer">Check TradingView’s data coverage ↗</a> · <a href="https://www.tradingview.com/privacy-policy/" target="_blank" rel="noopener noreferrer">Provider privacy policy ↗</a></p></details>
     </main>
     <footer class="news-footer"><nav aria-label="Footer navigation"><a href="/">GEEK // PROTOCOL</a><a href="/about/">Project facts</a><a href="/media/">Media &amp; Builders</a><a href="/kaspa/directory/">Kaspa directory</a></nav><p>All Hope, No Hype. Learning becomes value.</p></footer>
   </body>
