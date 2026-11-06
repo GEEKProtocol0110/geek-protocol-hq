@@ -53,10 +53,10 @@ test('unknown state: unrecognised hint skips the automatic read; sign-in or a sa
   assert.equal(store.map.has('geek-session-hint'), false);
 });
 
-test('storage unavailable: falls back to the previous behaviour and still asks the server', async () => {
+test('storage unavailable: unknown visitors skip automatic private reads', async () => {
   const blocked = { getItem() { throw new Error('blocked'); }, setItem() { throw new Error('blocked'); }, removeItem() { throw new Error('blocked'); } };
   const { requests } = await setup(blocked);
-  assert.deepEqual(requests, ['/api/rewards/?service=testnet']);
+  assert.deepEqual(requests, []);
 });
 
 test('site.js records the hint on any page sign-in and clears it on sign-out', () => {

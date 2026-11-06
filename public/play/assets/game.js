@@ -274,7 +274,7 @@
     locked = true;
     clearTimer();
     const buttons = $$('.answer', elements.answers);
-    buttons.forEach((button) => { button.disabled = true; });
+    buttons.forEach((button, index) => { button.disabled = true; button.classList.toggle('is-selected', index === selectedIndex); button.setAttribute('aria-pressed', String(index === selectedIndex)); });
     elements.feedback.textContent = 'Server verifying answer…';
     const selected = selectedIndex >= 0 ? currentQuestion.options[selectedIndex] : 'No answer';
     try {
@@ -282,6 +282,7 @@
       applyServerState(payload);
       const result = payload.result;
       buttons.forEach((button, index) => {
+        button.classList.toggle('is-selected', false); button.setAttribute('aria-pressed', 'false');
         if (index === result.correctIndex) button.classList.add('correct');
         if (index === selectedIndex && !result.correct) button.classList.add('wrong');
       });

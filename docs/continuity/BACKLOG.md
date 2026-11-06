@@ -68,6 +68,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ECO-005 | P1 | done | Publish Media and Builders resources for ecosystem listings and sharing | Maintainer prepares source and checks; founder reviews release; independent builder/device acceptance unassigned |
 | ECO-006 | P1 | done | Add Geek News with provider market, news and futures feeds | Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned |
 | UX-012 | P1 | needs-evidence | Connect the first-player learning, quiz, results and leaderboard journey | Maintainer prepares source and checks; founder approves release; physical-phone and independent review unassigned |
+| UX-013 | P1 | needs-evidence | Review all 17 open HQ reports and fix verified interface defects | Maintainer prepares source, tests and triage; founder approves merge; device/accessibility and independent content reviewers unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1000,3 +1001,20 @@ Acceptance:
 - Receiving-address GETs remain session-authenticated and private without requiring WebAuthn origin setup. Address mutations retain exact origin and proof checks; guest views explain that adding an address is optional.
 
 Evidence/specification: [public/start/index.html](../../public/start/index.html), [public/play/assets/game.js](../../public/play/assets/game.js), [public/leaderboard/leaderboard.js](../../public/leaderboard/leaderboard.js), [tests/start-client.test.js](../../tests/start-client.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/leaderboard-client.test.js](../../tests/leaderboard-client.test.js), [server/reward-addresses.js](../../server/reward-addresses.js), [public/assets/receiving-address.js](../../public/assets/receiving-address.js), [tests/passkeys.test.js](../../tests/passkeys.test.js), [tests/receiving-address-client.test.js](../../tests/receiving-address-client.test.js).
+
+## UX-013: Review all 17 open HQ reports and fix verified interface defects
+
+**P1 / needs-evidence.** Owner: Maintainer prepares source, tests and triage; founder approves merge; device/accessibility and independent content reviewers unassigned. Dependencies: UX-012.
+
+Next action: Verify the issue-review candidate, reconcile existing coverage, and review the PR. Keep content, translation, CI enhancement, migration and coordination tasks distinct from confirmed defects.
+
+Acceptance:
+
+- Read and classify every open report with evidence; do not label feature proposals or stale tickets as current bugs.
+- Provide immediate answer selection in Play, Practice and Quest without duplicate writes or client grading.
+- Bound initial Duel/Quest loading, provide static skeletons and manual recovery, and keep uncertain writes from automatic replay.
+- Give Lobby full/closed/offline states safe next actions and working reconnection; preserve server authority.
+- Align setup documentation and add contribution/mint guidance; enforce static image and landmark accessibility rules.
+- Run regression and exact-head CI; distinguish source, preview, production and actual-device acceptance.
+
+Evidence/specification: [docs/OPEN-ISSUE-REVIEW-2026-11-06.md](../../docs/OPEN-ISSUE-REVIEW-2026-11-06.md), [tests/issue-clients.test.js](../../tests/issue-clients.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/quest-client.test.js](../../tests/quest-client.test.js), [scripts/site-pages.mjs](../../scripts/site-pages.mjs).

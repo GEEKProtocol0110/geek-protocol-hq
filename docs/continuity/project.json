@@ -112,5 +112,12 @@
     "checkedOn": "2026-11-06",
     "evidence": "public/start/index.html; public/play/assets/game.js; public/leaderboard/leaderboard.js; client behavior tests",
     "nextAction": "PR #243 adds the learning-first journey and fixes address viewing on immutable previews: GET remains session-authenticated; POST retains configured origin/proof validation. Verify final checks and preview, then founder review. Physical-phone and actual address mutation acceptance remain separate."
+  },
+  "openIssueReview": {
+    "task": "UX-013",
+    "checkedOn": "2026-11-06",
+    "status": "source-candidate",
+    "evidence": "docs/OPEN-ISSUE-REVIEW-2026-11-06.md",
+    "nextAction": "Verify all confirmed interface fixes and publish the 17-ticket disposition. Content review/new packs, translations, fast-CI proposal, device/assistive-technology acceptance and migration design remain open with their own criteria."
   }
 }

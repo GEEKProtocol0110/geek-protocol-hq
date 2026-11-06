@@ -51,6 +51,11 @@ export function checkSitePages({ write = false } = {}) {
     const image = page.image || config.image;
     assert.ok(existsSync(`public${image}`),'Share image must be a local asset');
     const input = readFileSync(page.file,'utf8'), html = renderMetadata(input,page,config);
+    if (page.file.startsWith('public/')) {
+      assert.equal([...html.matchAll(/<main\b/gi)].length, 1, `Expected one main landmark: ${page.file}`);
+      for (const tag of html.matchAll(/<img\b[^>]*>/gi)) assert.ok(Object.hasOwn(attrs(tag[0]), 'alt'), `Image needs an alt attribute: ${page.file}`);
+      for (const tag of html.matchAll(/<nav\b[^>]*>/gi)) { const a = attrs(tag[0]); assert.ok(a['aria-label'] || a['aria-labelledby'], `Navigation needs a label: ${page.file}`); }
+    }
     assert.equal(renderMetadata(html,page,config),html,'Metadata generation must be idempotent');
     if (page.file.startsWith('public/') && /\bsrc=["'][^"']*(?:site|characters)\.js/.test(html)) {
       const styles = [...html.matchAll(/<link\b[^>]*>/gi)].map(m => attrs(m[0])).filter(a => a.rel === 'stylesheet');

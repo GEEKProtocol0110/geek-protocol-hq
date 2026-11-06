@@ -94,3 +94,18 @@ test('saved and recovered runs link to their matching mode and category without 
   assert.match(html, /id="complete-title" tabindex="-1"/);
   assert.match(html, /Keep learning →/);
 });
+
+
+test('an answer is visibly selected before a delayed reply and is cleared only after grading', async () => {
+  const waiting = deferred();
+  const ui = await page((path, options, body) => body?.action === 'answer' ? waiting.promise : undefined);
+  await ui.context.actions.startNewRun();
+  const buttons = ui.node('[data-answers]').querySelectorAll('.answer');
+  const pending = ui.context.actions.answerQuestion(1);
+  assert.equal(buttons[1].getAttribute('aria-pressed'), 'true');
+  assert.ok(buttons.every(b => b.disabled));
+  await ui.context.actions.answerQuestion(0);
+  assert.equal(ui.requests.filter(r => r.body?.action === 'answer').length, 1);
+  waiting.resolve(json(state())); await pending;
+  assert.ok(buttons.every(b => b.getAttribute('aria-pressed') === 'false'));
+});

@@ -1658,6 +1658,32 @@
         "tests/passkeys.test.js",
         "tests/receiving-address-client.test.js"
       ]
+    },
+    {
+      "id": "UX-013",
+      "priority": "P1",
+      "status": "needs-evidence",
+      "title": "Review all 17 open HQ reports and fix verified interface defects",
+      "owner": "Maintainer prepares source, tests and triage; founder approves merge; device/accessibility and independent content reviewers unassigned",
+      "nextAction": "Verify the issue-review candidate, reconcile existing coverage, and review the PR. Keep content, translation, CI enhancement, migration and coordination tasks distinct from confirmed defects.",
+      "acceptance": [
+        "Read and classify every open report with evidence; do not label feature proposals or stale tickets as current bugs.",
+        "Provide immediate answer selection in Play, Practice and Quest without duplicate writes or client grading.",
+        "Bound initial Duel/Quest loading, provide static skeletons and manual recovery, and keep uncertain writes from automatic replay.",
+        "Give Lobby full/closed/offline states safe next actions and working reconnection; preserve server authority.",
+        "Align setup documentation and add contribution/mint guidance; enforce static image and landmark accessibility rules.",
+        "Run regression and exact-head CI; distinguish source, preview, production and actual-device acceptance."
+      ],
+      "dependsOn": [
+        "UX-012"
+      ],
+      "evidence": [
+        "docs/OPEN-ISSUE-REVIEW-2026-11-06.md",
+        "tests/issue-clients.test.js",
+        "tests/ranked-client.test.js",
+        "tests/quest-client.test.js",
+        "scripts/site-pages.mjs"
+      ]
     }
   ]
 }
