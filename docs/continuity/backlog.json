@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-05",
+  "updatedAt": "2026-11-06",
   "priorityOrder": [
     "P0",
     "P1",
@@ -1567,10 +1567,10 @@
     {
       "id": "ECO-005",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "done",
       "title": "Publish Media and Builders resources for ecosystem listings and sharing",
       "owner": "Maintainer prepares source and checks; founder reviews release; independent builder/device acceptance unassigned",
-      "nextAction": "Review the prepared /media/ page and local validation, then verify exact-head CI/preview delivery after publishing its PR. Founder merge approval and rendered/device acceptance remain separate. External submissions remain unsent and need their own authorization/contact details.",
+      "nextAction": "Maintain the released Media & Builders resources and exact original artwork. Rendered/device acceptance remains separate. No external listing submissions have been sent.",
       "acceptance": [
         "Provide a native public /media/ page with copy-ready project descriptions, current Alpha facts, original logo/share downloads, official source/document links and Geek Mini sharing resources.",
         "Keep native labelled text available without JavaScript; reveal copy controls progressively, report actual clipboard success, select text on denial/unavailability and prevent overlapping writes.",
@@ -1589,6 +1589,34 @@
         "public/media/downloads/geek-protocol-brand-kit.zip",
         "tests/media-copy.test.js",
         "docs/site-pages.json"
+      ],
+      "completedAt": "2026-11-06",
+      "completionEvidence": [
+        "Founder-approved #240 merged as bbb58bf95d4babf4f2e0e244e58fe08011da9d39 with checked tree 31c0af154bd4054b0174ff653f1094b0dda62915. CI 42151062253 succeeded. Production dpl_DDd7qpW3PUQxnR7K1wa4dCtjwfbU READY, both canonical aliases, eight exact public HTTP responses. Artwork ZIP passes CRC and contains only the two original PNGs plus README. Source/HTTP acceptance; no phone/browser or independent builder acceptance claimed."
+      ]
+    },
+    {
+      "id": "ECO-006",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Add Geek News with provider market, news and futures feeds",
+      "owner": "Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned",
+      "nextAction": "Verify the HQ gold/cyan Geek News polish on the fresh #241 preview and exact-head CI. Keep the verified Top 100 data/search behavior and CSP. Founder merge review and physical-phone/independent acceptance remain separate.",
+      "acceptance": [
+        "Provide /news/ with native Home links, canonical metadata and sitemap coverage.",
+        "Show Kaspa and major crypto spot prices, crypto/global market headlines and distinct USDT perpetual futures through attributed provider frames.",
+        "Keep one selected frame at a time, pause/resume, fixed allowlisted feed settings, account-origin isolation and native source fallbacks.",
+        "State provider delays/availability and distinguish spot from derivatives; no fabricated quotes, news, forecasts or paid API/AI plan.",
+        "Run functional and security/header checks; record actual browser, CI, preview, production and physical-device evidence separately."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/GEEK-NEWS.md",
+        "public/news/index.html",
+        "public/news/assets/news.js",
+        "public/news/assets/news.css",
+        "tests/geek-news.test.js",
+        "vercel.json"
       ]
     }
   ]

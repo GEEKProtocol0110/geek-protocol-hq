@@ -313,3 +313,23 @@ Draft a full whitepaper alongside the existing litepaper. Move the live Play tim
 Basis: Founder November 2 asks for the first whitepaper and a timer directly in the middle of the four answers, behind glass-like panels.
 
 Evidence: [docs/WHITEPAPER.md](../../docs/WHITEPAPER.md), [docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md](../../docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md).
+
+## DR-032: Use isolated provider feeds for Geek News
+
+**implementation-choice** · 2026-11-06.
+
+Provide Geek News with one selected TradingView cross-origin iframe at a time. Fixed configurations reproduce the current official bootstrap iframe format, retain attribution and canonical public page URI, and send no account or query-string data. Keep local scripts and account-origin policies; permit the provider frame only under /news/. Preserve direct sources and explain data delays. No paid API account, AI reporting or trading flow is introduced.
+
+Basis: Founder November 6 requests Geek News with live markets, crypto world news and futures. Futures are interpreted as separately labeled crypto perpetual derivatives.
+
+Evidence: [docs/GEEK-NEWS.md](../../docs/GEEK-NEWS.md), [public/news/assets/news.js](../../public/news/assets/news.js), [tests/geek-news.test.js](../../tests/geek-news.test.js), [vercel.json](../../vercel.json).
+
+## DR-033: Provide native top-100 crypto rankings
+
+**implementation-choice** · 2026-11-06.
+
+Use a fixed public CoinGecko market-cap endpoint through the existing widget function to provide exactly 100 native searchable USD rows. Cache snapshots for five minutes and show unavailable on invalid/partial/provider failure; retain attribution, fetch-time limits, no account data and no background polling. TradingView frames continue for other feeds. This replaces the no-news-API portion of DR-032 for crypto rankings only.
+
+Basis: Founder requests more crypto markets, like the top 100. Direct testing of the legacy crypto screener returned no matches.
+
+Evidence: [docs/GEEK-NEWS.md](../../docs/GEEK-NEWS.md), [server/crypto-markets.js](../../server/crypto-markets.js), [public/news/assets/crypto100.js](../../public/news/assets/crypto100.js), [tests/crypto100.test.js](../../tests/crypto100.test.js). Supersedes DR-032.

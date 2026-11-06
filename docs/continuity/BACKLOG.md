@@ -65,7 +65,8 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ECO-003 | P1 | done | Expand KRC-20 project links and preserve token lookups for holders | Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned |
 | UX-011 | P1 | needs-evidence | Public HQ global leaderboard and separate shared Mini standings | Maintainer prepares source and verification; founder approves release; independent abuse review unassigned |
 | ECO-004 | P1 | done | Add native-KAS exchanges, brokers and swaps to the Kaspa directory | Maintainer prepares source and evidence; founder approves release; independent coverage reviewer unassigned |
-| ECO-005 | P1 | in-progress | Publish Media and Builders resources for ecosystem listings and sharing | Maintainer prepares source and checks; founder reviews release; independent builder/device acceptance unassigned |
+| ECO-005 | P1 | done | Publish Media and Builders resources for ecosystem listings and sharing | Maintainer prepares source and checks; founder reviews release; independent builder/device acceptance unassigned |
+| ECO-006 | P1 | in-progress | Add Geek News with provider market, news and futures feeds | Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -953,9 +954,9 @@ Evidence/specification: [docs/KASPA-EXCHANGE-REVIEW.md](../../docs/KASPA-EXCHANG
 
 ## ECO-005: Publish Media and Builders resources for ecosystem listings and sharing
 
-**P1 / in-progress.** Owner: Maintainer prepares source and checks; founder reviews release; independent builder/device acceptance unassigned. Dependencies: DOC-002.
+**P1 / done.** Owner: Maintainer prepares source and checks; founder reviews release; independent builder/device acceptance unassigned. Dependencies: DOC-002.
 
-Next action: Review the prepared /media/ page and local validation, then verify exact-head CI/preview delivery after publishing its PR. Founder merge approval and rendered/device acceptance remain separate. External submissions remain unsent and need their own authorization/contact details.
+Next action: Maintain the released Media & Builders resources and exact original artwork. Rendered/device acceptance remains separate. No external listing submissions have been sent.
 
 Acceptance:
 
@@ -966,3 +967,19 @@ Acceptance:
 - Verify meaningful copy behavior, asset archive contents, metadata/internal links, supporting regressions and continuity. Record exact CI/preview source delivery and actual browser/device limits.
 
 Evidence/specification: [docs/MEDIA-BUILDERS.md](../../docs/MEDIA-BUILDERS.md), [public/media/index.html](../../public/media/index.html), [public/media/assets/media.js](../../public/media/assets/media.js), [public/media/assets/media.css](../../public/media/assets/media.css), [public/media/downloads/geek-protocol-brand-kit.zip](../../public/media/downloads/geek-protocol-brand-kit.zip), [tests/media-copy.test.js](../../tests/media-copy.test.js), [docs/site-pages.json](../../docs/site-pages.json).
+
+## ECO-006: Add Geek News with provider market, news and futures feeds
+
+**P1 / in-progress.** Owner: Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned. Dependencies: none.
+
+Next action: Verify the HQ gold/cyan Geek News polish on the fresh #241 preview and exact-head CI. Keep the verified Top 100 data/search behavior and CSP. Founder merge review and physical-phone/independent acceptance remain separate.
+
+Acceptance:
+
+- Provide /news/ with native Home links, canonical metadata and sitemap coverage.
+- Show Kaspa and major crypto spot prices, crypto/global market headlines and distinct USDT perpetual futures through attributed provider frames.
+- Keep one selected frame at a time, pause/resume, fixed allowlisted feed settings, account-origin isolation and native source fallbacks.
+- State provider delays/availability and distinguish spot from derivatives; no fabricated quotes, news, forecasts or paid API/AI plan.
+- Run functional and security/header checks; record actual browser, CI, preview, production and physical-device evidence separately.
+
+Evidence/specification: [docs/GEEK-NEWS.md](../../docs/GEEK-NEWS.md), [public/news/index.html](../../public/news/index.html), [public/news/assets/news.js](../../public/news/assets/news.js), [public/news/assets/news.css](../../public/news/assets/news.css), [tests/geek-news.test.js](../../tests/geek-news.test.js), [vercel.json](../../vercel.json).
