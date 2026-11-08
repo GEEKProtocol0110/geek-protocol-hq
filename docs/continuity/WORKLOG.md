@@ -1163,3 +1163,13 @@ Full local npm run verify passed on Node 24.22.1 with native Redis 7.0.15: 755 H
 - **Changes:** immediate Play/Practice/Quest selected feedback; six-second initial Duel/Quest requests and static skeletons; safe Lobby state messages and manual offline reconnection; unknown reward-status visitors with blocked storage skip private reads; Node setup consistency, contribution walkthrough and mint checklist; static image/main/nav guards. No gameplay authority, grading key, paid action or provider configuration changed.
 - **Validation:** deferred replies and duplicate answer guards cover all three clients; Duel timeout/retry and Lobby full/closed/provider-failure behavior execute shipped code. Existing reward-status and Quest recovery tests remain in the regression suite. Full verify and rendered preview evidence belong in the PR.
 - **Open:** this is not completion of the full question audit, a 25-question pack, translations, separate fast CI, actual-device/axe acceptance, migration or coordination work. No production multiplayer retry or transaction was performed. Founder merge remains separate.
+
+
+## November 7, 2026 — UX-014 readability polish
+
+Founder reported bold bright blurry white text on black. Removed reading-text shadows and the foreground grain overlay, reduced extra-bold typography to 700, softened white copy and shared/Play dark surfaces. Gold/cyan accents, focus and answer states remain. Source candidate; validation and preview evidence belong in the PR. Physical-phone acceptance remains open.
+
+
+### UX-014 — founder preview correction
+
+Founder rejected the first preview as too plain. Restored restrained centered cyan title/timer glow and cyan/gold edge lighting, while keeping body/answer copy sharp, softer white, reduced extra-bold weights and no grain/chromatic double-shadow. Preview and new exact-head checks remain pending.
