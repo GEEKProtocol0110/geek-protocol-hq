@@ -30,9 +30,9 @@ function choose(square){
  const p=game.get(square);selected=p&&p.color===game.turn()&&selected!==square?square:null;render();
  document.querySelector(`[data-square="${square}"]`).focus();
 }
-$('start').addEventListener('click',()=>{game=new Chess();selected=null;pending=null;flipped=false;$('setup').hidden=true;$('play').hidden=false;render();$('status').focus();});
+$('start').addEventListener('click',()=>{game=new Chess();selected=null;pending=null;flipped=false;document.body.classList.add('is-playing');$('setup').hidden=true;$('play').hidden=false;render();$('status').focus();});
 $('undo').addEventListener('click',()=>{if(!pending){game.undo();selected=null;render();$('status').focus();}});
 $('flip').addEventListener('click',()=>{flipped=!flipped;render();});
-$('exit').addEventListener('click',()=>{if(game.history().length&&!confirm('End this game and return to setup?'))return;game=null;selected=null;pending=null;$('play').hidden=true;$('setup').hidden=false;$('start').focus();});
+$('exit').addEventListener('click',()=>{if(game.history().length&&!confirm('End this game and return to setup?'))return;game=null;selected=null;pending=null;document.body.classList.remove('is-playing');$('play').hidden=true;$('setup').hidden=false;$('start').focus();});
 for(const b of document.querySelectorAll('[data-promotion]'))b.addEventListener('click',()=>{if(pending)move({...pending,promotion:b.dataset.promotion});});
 $('cancel-promotion').addEventListener('click',()=>{pending=null;selected=null;render();$('status').focus();});

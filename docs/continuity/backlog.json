@@ -1801,7 +1801,7 @@
       ]
     },
     {
-      "id": "UX-018",
+      "id": "UX-019",
       "priority": "P2",
       "status": "in-progress",
       "title": "Add playable Geek Chess",
@@ -1818,6 +1818,51 @@
       "evidence": [
         "docs/CLASSIC-GAMES.md",
         "tests/chess.test.js"
+      ]
+    },
+    {
+      "id": "UX-018",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Fit Geek games to phone screens and compact active play",
+      "owner": "Maintainer fixes layout and checks; founder approves release; physical-phone acceptance unassigned",
+      "nextAction": "Review responsive game preview at phone widths, then release review.",
+      "acceptance": [
+        "Remove forced 320px/540px board minima; fit eight checker squares and all seven solitaire columns to available width.",
+        "Overlap solitaire cards while keeping rank/suit labels and numbered destinations reachable.",
+        "Compact active-play headers, tips and controls on phones without clipping reading content; prevent mobile input auto-zoom.",
+        "Preserve gameplay and undo behavior; verify tests and report actual browser/device limits."
+      ],
+      "dependsOn": [
+        "UX-016",
+        "UX-017"
+      ],
+      "evidence": [
+        "docs/MOBILE-GAMES.md",
+        "public/games/assets/geek-play.css",
+        "public/games/assets/games.css",
+        "public/games/classics/classics.js",
+        "public/games/brain/brain.js"
+      ]
+    },
+    {
+      "id": "UX-020",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Unify the Geek Games visual feel and play controls",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review combined chess, mobile-fit and polish preview in PR #253.",
+      "acceptance": [
+        "Crisp typography with gold/cyan accents across the games hub, Brain Lab and classics.",
+        "Responsive boards, consistent controls, compact active play and useful local-game navigation.",
+        "Focused gameplay, site and continuity checks pass; rendered-device acceptance recorded separately."
+      ],
+      "dependsOn": [
+        "UX-018",
+        "UX-019"
+      ],
+      "evidence": [
+        "docs/GAME-POLISH.md"
       ]
     }
   ]

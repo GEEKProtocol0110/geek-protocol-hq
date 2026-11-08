@@ -147,6 +147,18 @@
     "task": "UX-017",
     "status": "source-candidate",
     "evidence": "docs/CLASSIC-GAMES.md",
-    "nextAction": "Review Geek Chess candidate UX-018. Checkers and solitaire shipped in #250; backgammon remains planned."
+    "nextAction": "Review combined candidate PR #253: chess UX-019, mobile fit UX-018 and visual polish UX-020; backgammon remains planned."
+  },
+  "mobileGameFit": {
+    "task": "UX-018",
+    "status": "source-candidate",
+    "evidence": "docs/MOBILE-GAMES.md",
+    "nextAction": "Inspect compact boards and active-play layouts at narrow widths; retain physical-phone acceptance separately."
+  },
+  "gamePolish": {
+    "task": "UX-020",
+    "status": "source-candidate",
+    "evidence": "docs/GAME-POLISH.md",
+    "nextAction": "Review PR #253; rendered-browser and physical-phone acceptance remain open."
   }
 }

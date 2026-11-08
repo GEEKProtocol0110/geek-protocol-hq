@@ -42,7 +42,7 @@ function fixture(stored='{}',blocked=false) {
     setItem(k,v){if(blocked)throw Error('blocked');memory.set(k,v);},
     removeItem(k){if(blocked)throw Error('blocked');memory.delete(k);}
   }});
-  f.document.getElementById=id=>f.node('#'+id);
+  f.document.getElementById=id=>f.node('#'+id);f.document.body=f.make('body');
   f.node('#mode').value='sequence';f.node('#level').value='easy';
   f.run(readFileSync('public/games/brain/brain.js','utf8').replace(/^import .*\n/,''));
   return {...f,memory};

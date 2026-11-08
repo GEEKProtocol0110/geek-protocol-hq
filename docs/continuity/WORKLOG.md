@@ -1221,6 +1221,15 @@ Founder screenshot exposed inherited Impact headings in News after earlier typog
 
 Directory included in UX-014 follow-up after the founder reported the same heavy text: replace inherited heading font, soften white, retain cyan/gold accents and refresh CSS revision. Catalog and filtering unchanged.
 
-### November 8, 2026 — UX-018 Geek Chess candidate
+### November 8, 2026 — UX-019 Geek Chess candidate
 
 Added first-party local chess, Geek visual finish and responsive board, using licensed vendored chess.js 1.4.0. Special moves, promotion choice, legal hints, undo, flip and move history; no server/economy changes. Rule tests and site/continuity checks run before PR. Rendered/physical-device acceptance remains open.
+
+
+### November 8, 2026 — UX-018 responsive games correction
+
+Founder reports games do not fit screens/mobile. Removed fixed checker/solitaire board minima, made seven columns fluid and overlapped cards, compacted active-play header/tips, adjusted phone controls/input sizes and corrected classic header text. Desktop live inspection confirmed tall card stacks; preview width checks and test limits recorded in docs/MOBILE-GAMES.md. No game rules or persistence changes.
+
+### November 8, 2026 — UX-020 consistent game-room polish
+
+Combined mobile-fit #252 into the chess candidate #253, preserving mobile UX-018 and renumbering chess UX-019. Added shared game switching, brand lockups, quiet typography, framed boards and feedback, consistent controls and distinct Geek hub emblems. Chess uses the compact active-play state. Focused game/home checks and site/continuity/security validation run before updating #253. Browser preview timed out; no rendered or physical-phone acceptance. No merge or deployment.
