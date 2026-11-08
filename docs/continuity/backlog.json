@@ -1768,6 +1768,30 @@
         "public/games/brain/",
         "tests/brain-games.test.js"
       ]
+    },
+    {
+      "id": "UX-017",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Add classic strategy and card games, starting with checkers and solitaire",
+      "owner": "Maintainer builds and checks; founder approves release; browser/physical-device acceptance unassigned",
+      "nextAction": "Review checkers and solitaire with Brain Games in #250. Chess and backgammon remain planned follow-ups.",
+      "acceptance": [
+        "Add beginner-friendly local two-player checkers with legal move hints, forced captures, multi-jumps, kings, wins and practice undo.",
+        "Add draw-one Klondike with seven columns, same-suit foundations, legal alternating runs, stock recycling, win detection and undo.",
+        "Make every action keyboard/tap usable without dragging; explain local-only unsaved state, draw conventions and restart.",
+        "Keep games free of account, wallet, leaderboard, XP and reward changes; verify engine rules and shipped-client behavior."
+      ],
+      "dependsOn": [
+        "UX-015"
+      ],
+      "evidence": [
+        "docs/CLASSIC-GAMES.md",
+        "public/games/classics/",
+        "public/games/checkers/index.html",
+        "public/games/solitaire/index.html",
+        "tests/classic-games.test.js"
+      ]
     }
   ]
 }

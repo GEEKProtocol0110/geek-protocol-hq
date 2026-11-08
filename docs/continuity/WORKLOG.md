@@ -1206,3 +1206,7 @@ Founder approved a hub with clear game cards. Added /games/ with eight existing 
 ### November 8, 2026 — UX-016 Brain Games candidate
 
 Added Signal Sequence, Number Forge and Rule Shift in a shared Brain Lab, with three levels and ten untimed rounds. Explicit start, per-answer explanations, exit/replay and local best-score clearing. No server, account, leaderboard, XP or reward writes. Memory Grid remains linked for visual matching. Tests and release evidence belong in the PR; rendered/phone acceptance remains separate.
+
+### November 8, 2026 — UX-017 classic strategy and cards candidate
+
+Founder agreed to classic games, starting with checkers and solitaire. Added same-device two-player checkers and solo draw-one Klondike, with instructions, legal move validation and practice undo; no server, account, reward or persistence writes. Chess/backgammon remain planned. Bundled with pending Brain Games #250; source tests are not rendered/phone acceptance.

@@ -73,6 +73,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ECO-007 | P1 | in-progress | Expand the ecosystem directory with KaspaDollar, social apps, builder resources and games | Maintainer prepares source and checks; founder reviews release |
 | UX-015 | P1 | in-progress | Give existing Geek modes a clear Games hub | Maintainer prepares source and checks; founder approves release; physical-device acceptance unassigned |
 | UX-016 | P1 | in-progress | Add Brain Games for recall, arithmetic and attention practice | Maintainer builds and checks; founder approves release; physical-device acceptance unassigned |
+| UX-017 | P1 | in-progress | Add classic strategy and card games, starting with checkers and solitaire | Maintainer builds and checks; founder approves release; browser/physical-device acceptance unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1082,3 +1083,18 @@ Acceptance:
 - Add crawlable Brain Games cards, metadata, keyboard-friendly controls and narrow-screen styles; verify game and client behavior.
 
 Evidence/specification: [docs/BRAIN-GAMES.md](../../docs/BRAIN-GAMES.md), [public/games/brain/](../../public/games/brain/), [tests/brain-games.test.js](../../tests/brain-games.test.js).
+
+## UX-017: Add classic strategy and card games, starting with checkers and solitaire
+
+**P1 / in-progress.** Owner: Maintainer builds and checks; founder approves release; browser/physical-device acceptance unassigned. Dependencies: UX-015.
+
+Next action: Review checkers and solitaire with Brain Games in #250. Chess and backgammon remain planned follow-ups.
+
+Acceptance:
+
+- Add beginner-friendly local two-player checkers with legal move hints, forced captures, multi-jumps, kings, wins and practice undo.
+- Add draw-one Klondike with seven columns, same-suit foundations, legal alternating runs, stock recycling, win detection and undo.
+- Make every action keyboard/tap usable without dragging; explain local-only unsaved state, draw conventions and restart.
+- Keep games free of account, wallet, leaderboard, XP and reward changes; verify engine rules and shipped-client behavior.
+
+Evidence/specification: [docs/CLASSIC-GAMES.md](../../docs/CLASSIC-GAMES.md), [public/games/classics/](../../public/games/classics/), [public/games/checkers/index.html](../../public/games/checkers/index.html), [public/games/solitaire/index.html](../../public/games/solitaire/index.html), [tests/classic-games.test.js](../../tests/classic-games.test.js).

@@ -142,5 +142,11 @@
     "status": "source-candidate",
     "evidence": "docs/BRAIN-GAMES.md",
     "nextAction": "Review playable Brain Lab and its tests/preview. No economic or intelligence claims introduced."
+  },
+  "classicGames": {
+    "task": "UX-017",
+    "status": "source-candidate",
+    "evidence": "docs/CLASSIC-GAMES.md",
+    "nextAction": "Review playable checkers and solitaire in #250 alongside Brain Games. Chess and backgammon remain planned."
   }
 }

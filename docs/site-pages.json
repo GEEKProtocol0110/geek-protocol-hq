@@ -441,7 +441,7 @@
       "file": "public/games/index.html",
       "path": "/games/",
       "title": "Geek Games — Find Your Next Challenge",
-      "description": "Explore Geek quizzes, adventures, multiplayer and Brain Games. Practice sequence recall, mental math and attention with free, untimed challenges.",
+      "description": "Explore Geek quizzes, Brain Games, checkers and solitaire. Play untimed strategy and card games, practice number skills, or challenge friends.",
       "index": true,
       "private": false,
       "lastmod": "2026-11-08"
@@ -451,6 +451,24 @@
       "path": "/games/brain/",
       "title": "Brain Games — Geek Protocol",
       "description": "Practice recall, mental math and attention in Signal Sequence, Number Forge and Rule Shift. Three difficulty levels, ten untimed rounds and device-only scores.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-08"
+    },
+    {
+      "file": "public/games/checkers/index.html",
+      "path": "/games/checkers/",
+      "title": "Geek Checkers — Local Strategy Game",
+      "description": "Play two-player American-style checkers on one device. Legal moves, required captures, kings, beginner rules and practice undo.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-08"
+    },
+    {
+      "file": "public/games/solitaire/index.html",
+      "path": "/games/solitaire/",
+      "title": "Geek Solitaire — Draw-One Klondike",
+      "description": "Play untimed draw-one Klondike solitaire with tap-to-move controls, unlimited redeals, instructions and undo. No account or wallet needed.",
       "index": true,
       "private": false,
       "lastmod": "2026-11-08"
