@@ -9,3 +9,8 @@ Practice is the product claim, not higher IQ or prevention/treatment of cognitiv
 Metadata/link/continuity and game/client tests are required. This is a source candidate; exact-head CI, rendered preview, physical-device acceptance, merge and deployment are separate evidence. Existing Games hub #249 is merged/deployed and its canonical HTML/CSS matched source. Brain Games adds no external embed or vendor service.
 
 Local validation: six engine/shipped-client tests and five homepage regressions pass; site metadata/link and continuity checks pass; public-answer and security checks pass (311 assertions). No rendered-browser or physical-phone acceptance is claimed.
+
+
+## Geek visual finish — November 8, 2026
+
+Founder requires a consistent Geek look for every new game. Shared /games/assets/geek-play.css adds branded headers, existing GIGA artwork in compact practice-tip panels, gold primary controls, cyan/gold rimmed checker pieces, a framed board and circuit-patterned dark card backs. Card fronts retain readable rank/suit symbols on dark blue panels with distinct red-suit text; no color-only cues. Brain prompts use a framed signal panel. No new game logic, image generation, external requests or score behavior. Site and all 19 focused game/client/homepage checks pass. Visual browser/phone acceptance remains unclaimed.

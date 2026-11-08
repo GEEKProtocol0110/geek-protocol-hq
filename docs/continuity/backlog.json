@@ -1753,12 +1753,13 @@
       "status": "in-progress",
       "title": "Add Brain Games for recall, arithmetic and attention practice",
       "owner": "Maintainer builds and checks; founder approves release; physical-device acceptance unassigned",
-      "nextAction": "Review three playable games and preview; retain physical-device and independent acceptance separately.",
+      "nextAction": "Review updated #250 with the Geek visual finish; rendered desktop/phone acceptance remains separate.",
       "acceptance": [
         "Provide three untimed ten-round games with three difficulty levels, explicit start, answer feedback and exit/replay.",
         "Prevent duplicate scoring; preserve leading-zero recall; explain every answer; no IQ or broad cognitive-benefit claims.",
         "Keep only bounded per-game/level best scores on device, tolerate blocked storage and provide clearing. No account, server scores, XP or token rewards.",
-        "Add crawlable Brain Games cards, metadata, keyboard-friendly controls and narrow-screen styles; verify game and client behavior."
+        "Add crawlable Brain Games cards, metadata, keyboard-friendly controls and narrow-screen styles; verify game and client behavior.",
+        "Apply the shared Geek game styling, GIGA practice tips and crisp cyan/gold accents; retain readable text, rank/suit labels and focus outlines."
       ],
       "dependsOn": [
         "UX-015"
@@ -1766,7 +1767,8 @@
       "evidence": [
         "docs/BRAIN-GAMES.md",
         "public/games/brain/",
-        "tests/brain-games.test.js"
+        "tests/brain-games.test.js",
+        "public/games/assets/geek-play.css"
       ]
     },
     {
@@ -1775,12 +1777,13 @@
       "status": "in-progress",
       "title": "Add classic strategy and card games, starting with checkers and solitaire",
       "owner": "Maintainer builds and checks; founder approves release; browser/physical-device acceptance unassigned",
-      "nextAction": "Review checkers and solitaire with Brain Games in #250. Chess and backgammon remain planned follow-ups.",
+      "nextAction": "Review updated #250 with the Geek visual finish; rendered desktop/phone acceptance remains separate.",
       "acceptance": [
         "Add beginner-friendly local two-player checkers with legal move hints, forced captures, multi-jumps, kings, wins and practice undo.",
         "Add draw-one Klondike with seven columns, same-suit foundations, legal alternating runs, stock recycling, win detection and undo.",
         "Make every action keyboard/tap usable without dragging; explain local-only unsaved state, draw conventions and restart.",
-        "Keep games free of account, wallet, leaderboard, XP and reward changes; verify engine rules and shipped-client behavior."
+        "Keep games free of account, wallet, leaderboard, XP and reward changes; verify engine rules and shipped-client behavior.",
+        "Apply the shared Geek game styling, GIGA practice tips and crisp cyan/gold accents; retain readable text, rank/suit labels and focus outlines."
       ],
       "dependsOn": [
         "UX-015"
@@ -1790,7 +1793,8 @@
         "public/games/classics/",
         "public/games/checkers/index.html",
         "public/games/solitaire/index.html",
-        "tests/classic-games.test.js"
+        "tests/classic-games.test.js",
+        "public/games/assets/geek-play.css"
       ]
     }
   ]

@@ -1210,3 +1210,7 @@ Added Signal Sequence, Number Forge and Rule Shift in a shared Brain Lab, with t
 ### November 8, 2026 — UX-017 classic strategy and cards candidate
 
 Founder agreed to classic games, starting with checkers and solitaire. Added same-device two-player checkers and solo draw-one Klondike, with instructions, legal move validation and practice undo; no server, account, reward or persistence writes. Chess/backgammon remain planned. Bundled with pending Brain Games #250; source tests are not rendered/phone acceptance.
+
+### November 8, 2026 — UX-016/017 Geek visual finish
+
+Founder requests all new games carry Geek identity. Added shared Geek game stylesheet, GIGA practice tips using existing artwork, logo headers, gold primary actions, custom checker rims, framed boards and dark circuit card backs/fronts. Behavior unchanged; 19 focused tests and site checks pass. Visual/phone acceptance remains separate.

@@ -1073,7 +1073,7 @@ Evidence/specification: [public/games/index.html](../../public/games/index.html)
 
 **P1 / in-progress.** Owner: Maintainer builds and checks; founder approves release; physical-device acceptance unassigned. Dependencies: UX-015.
 
-Next action: Review three playable games and preview; retain physical-device and independent acceptance separately.
+Next action: Review updated #250 with the Geek visual finish; rendered desktop/phone acceptance remains separate.
 
 Acceptance:
 
@@ -1081,14 +1081,15 @@ Acceptance:
 - Prevent duplicate scoring; preserve leading-zero recall; explain every answer; no IQ or broad cognitive-benefit claims.
 - Keep only bounded per-game/level best scores on device, tolerate blocked storage and provide clearing. No account, server scores, XP or token rewards.
 - Add crawlable Brain Games cards, metadata, keyboard-friendly controls and narrow-screen styles; verify game and client behavior.
+- Apply the shared Geek game styling, GIGA practice tips and crisp cyan/gold accents; retain readable text, rank/suit labels and focus outlines.
 
-Evidence/specification: [docs/BRAIN-GAMES.md](../../docs/BRAIN-GAMES.md), [public/games/brain/](../../public/games/brain/), [tests/brain-games.test.js](../../tests/brain-games.test.js).
+Evidence/specification: [docs/BRAIN-GAMES.md](../../docs/BRAIN-GAMES.md), [public/games/brain/](../../public/games/brain/), [tests/brain-games.test.js](../../tests/brain-games.test.js), [public/games/assets/geek-play.css](../../public/games/assets/geek-play.css).
 
 ## UX-017: Add classic strategy and card games, starting with checkers and solitaire
 
 **P1 / in-progress.** Owner: Maintainer builds and checks; founder approves release; browser/physical-device acceptance unassigned. Dependencies: UX-015.
 
-Next action: Review checkers and solitaire with Brain Games in #250. Chess and backgammon remain planned follow-ups.
+Next action: Review updated #250 with the Geek visual finish; rendered desktop/phone acceptance remains separate.
 
 Acceptance:
 
@@ -1096,5 +1097,6 @@ Acceptance:
 - Add draw-one Klondike with seven columns, same-suit foundations, legal alternating runs, stock recycling, win detection and undo.
 - Make every action keyboard/tap usable without dragging; explain local-only unsaved state, draw conventions and restart.
 - Keep games free of account, wallet, leaderboard, XP and reward changes; verify engine rules and shipped-client behavior.
+- Apply the shared Geek game styling, GIGA practice tips and crisp cyan/gold accents; retain readable text, rank/suit labels and focus outlines.
 
-Evidence/specification: [docs/CLASSIC-GAMES.md](../../docs/CLASSIC-GAMES.md), [public/games/classics/](../../public/games/classics/), [public/games/checkers/index.html](../../public/games/checkers/index.html), [public/games/solitaire/index.html](../../public/games/solitaire/index.html), [tests/classic-games.test.js](../../tests/classic-games.test.js).
+Evidence/specification: [docs/CLASSIC-GAMES.md](../../docs/CLASSIC-GAMES.md), [public/games/classics/](../../public/games/classics/), [public/games/checkers/index.html](../../public/games/checkers/index.html), [public/games/solitaire/index.html](../../public/games/solitaire/index.html), [tests/classic-games.test.js](../../tests/classic-games.test.js), [public/games/assets/geek-play.css](../../public/games/assets/geek-play.css).
