@@ -481,6 +481,15 @@
       "index": true,
       "private": false,
       "lastmod": "2026-11-08"
+    },
+    {
+      "file": "public/games/online/index.html",
+      "path": "/games/online/",
+      "title": "Geek Multiplayer \u2014 Chess & Checkers Lobbies",
+      "description": "Create a public or private chess or checkers lobby, request a game and play live turns with a friend on Geek Games.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-08"
     }
   ]
 }

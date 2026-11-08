@@ -1233,3 +1233,13 @@ Founder reports games do not fit screens/mobile. Removed fixed checker/solitaire
 ### November 8, 2026 — UX-020 consistent game-room polish
 
 Combined mobile-fit #252 into the chess candidate #253, preserving mobile UX-018 and renumbering chess UX-019. Added shared game switching, brand lockups, quiet typography, framed boards and feedback, consistent controls and distinct Geek hub emblems. Chess uses the compact active-play state. Focused game/home checks and site/continuity/security validation run before updating #253. Browser preview timed out; no rendered or physical-phone acceptance. No merge or deployment.
+
+### November 8, 2026 — GAME-002 chess/checkers multiplayer
+
+Added the online game lounge, public/private rooms, host-approved requests, authoritative chess/checkers moves, reconnect, draw offers and resignation. Existing lobby function routes the new classic service; no extra Vercel Function. Redis CAS serializes competing acceptance and versioned moves. Guest or existing player sessions are explicitly started by Enter. No XP/rewards, chat, bot, tournament clocks or solo-game races. Rules, API/real-Redis and shipped-client tests run before PR; two-browser/device acceptance remains outstanding. Stacked on #253; no merge/production claim.
+
+GAME-002 validation: full npm test 800/800 with real Redis 7.2, signer 9/9, site/continuity and 311 security assertions pass. Twelve multiplayer tests cover domain permissions/rules, API concurrency/storage and shipped-client flows. No skipped tests in the final full suite. Two-device browser/Preview acceptance remains separate.
+
+### November 8, 2026 — Founder-approved games release
+
+Founder explicitly requested Merge. #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 after exact-head verify and both Vercel checks succeeded. #254 retargeted to main and updated against that squash merge; gameplay tree preserved. Final exact-head CI, merge commit and production deployment disposition are recorded in the #254 review record. Rendered two-device/physical-phone acceptance remains open and is not implied by release authorization.
