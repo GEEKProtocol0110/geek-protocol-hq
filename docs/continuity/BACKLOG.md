@@ -72,6 +72,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-014 | P1 | in-progress | Make page typography calmer and easier to read | Maintainer prepares source and checks; founder reviews merge; physical-phone acceptance unassigned |
 | ECO-007 | P1 | in-progress | Expand the ecosystem directory with KaspaDollar, social apps, builder resources and games | Maintainer prepares source and checks; founder reviews release |
 | UX-015 | P1 | in-progress | Give existing Geek modes a clear Games hub | Maintainer prepares source and checks; founder approves release; physical-device acceptance unassigned |
+| UX-016 | P1 | in-progress | Add Brain Games for recall, arithmetic and attention practice | Maintainer builds and checks; founder approves release; physical-device acceptance unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1066,3 +1067,18 @@ Acceptance:
 - Link from homepage and existing game navigation; register metadata and crawlable routes.
 
 Evidence/specification: [public/games/index.html](../../public/games/index.html), [public/games/assets/games.css](../../public/games/assets/games.css), [docs/GAMES-HUB.md](../../docs/GAMES-HUB.md).
+
+## UX-016: Add Brain Games for recall, arithmetic and attention practice
+
+**P1 / in-progress.** Owner: Maintainer builds and checks; founder approves release; physical-device acceptance unassigned. Dependencies: UX-015.
+
+Next action: Review three playable games and preview; retain physical-device and independent acceptance separately.
+
+Acceptance:
+
+- Provide three untimed ten-round games with three difficulty levels, explicit start, answer feedback and exit/replay.
+- Prevent duplicate scoring; preserve leading-zero recall; explain every answer; no IQ or broad cognitive-benefit claims.
+- Keep only bounded per-game/level best scores on device, tolerate blocked storage and provide clearing. No account, server scores, XP or token rewards.
+- Add crawlable Brain Games cards, metadata, keyboard-friendly controls and narrow-screen styles; verify game and client behavior.
+
+Evidence/specification: [docs/BRAIN-GAMES.md](../../docs/BRAIN-GAMES.md), [public/games/brain/](../../public/games/brain/), [tests/brain-games.test.js](../../tests/brain-games.test.js).

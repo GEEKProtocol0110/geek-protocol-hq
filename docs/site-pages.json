@@ -11,7 +11,7 @@
     {
       "file": "public/challenges/index.html",
       "path": "/challenges/",
-      "title": "Career Challenges, Mastery & Hidden Words \u2014 Geek Protocol",
+      "title": "Career Challenges, Mastery & Hidden Words — Geek Protocol",
       "description": "Build your Geek career with 90 Bronze-to-Diamond challenges, mastery emblems, tracked goals and a five-word hunt. Earn one-time XP and try community quiz standings.",
       "index": true,
       "private": false,
@@ -20,7 +20,7 @@
     {
       "file": "public/collection/index.html",
       "path": "/collection/",
-      "title": "The Omniscient Grid \u2014 Geek Protocol",
+      "title": "The Omniscient Grid — Geek Protocol",
       "description": "Explore Geek Protocol characters and Omniscient Grid lore. Profile cosmetics and concept art are separate from future verified on-chain collectibles.",
       "index": true,
       "private": false,
@@ -29,7 +29,7 @@
     {
       "file": "public/contribute/index.html",
       "path": "/contribute/",
-      "title": "Community Content Engine \u2014 Geek Protocol",
+      "title": "Community Content Engine — Geek Protocol",
       "description": "Read about Geek Protocol's Community Content Engine and the reviewed question-bank targets. New publishing and contributor rewards remain on hold.",
       "index": true,
       "private": false,
@@ -38,7 +38,7 @@
     {
       "file": "public/duel/index.html",
       "path": "/duel/",
-      "title": "Geek Duel \u2014 Geek Protocol",
+      "title": "Geek Duel — Geek Protocol",
       "description": "Play a free one-on-one Geek Duel against a friend or the simulated A.C.E. opponent. Choose a difficulty and learn from the shared quiz results.",
       "index": true,
       "private": false,
@@ -47,7 +47,7 @@
     {
       "file": "public/economy/index.html",
       "path": "/economy/",
-      "title": "Power-ups & Economy \u2014 Geek Protocol",
+      "title": "Power-ups & Economy — Geek Protocol",
       "description": "Explore Geek Protocol power-ups and economy plans. Distinguish free practice tools, internal Alpha credits and proposed future token features.",
       "index": true,
       "private": false,
@@ -56,7 +56,7 @@
     {
       "file": "public/index.html",
       "path": "/",
-      "title": "Geek Protocol \u2014 Kaspa Onboarding & Proof of Learning",
+      "title": "Geek Protocol — Kaspa Onboarding & Proof of Learning",
       "description": "Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. Explore lessons, free quizzes and community tools. No wallet needed to start.",
       "index": true,
       "private": false,
@@ -65,7 +65,7 @@
     {
       "file": "public/kaspa/index.html",
       "path": "/kaspa/",
-      "title": "Kaspa 101 \u2014 Geek Protocol",
+      "title": "Kaspa 101 — Geek Protocol",
       "description": "Explore Kaspa basics: blockDAG, proof of work, KAS, wallets and token protocols. Find source links and continue learning with Geek Protocol.",
       "index": true,
       "private": false,
@@ -78,7 +78,7 @@
     {
       "file": "public/litepaper/index.html",
       "path": "/litepaper/",
-      "title": "Litepaper \u2014 Geek Protocol",
+      "title": "Litepaper — Geek Protocol",
       "description": "Read Geek Protocol's litepaper: Kaspa onboarding, Proof of Learning, product direction and the distinction between live Alpha features and future plans.",
       "index": true,
       "private": false,
@@ -91,7 +91,7 @@
     {
       "file": "public/lobby/index.html",
       "path": "/lobby/",
-      "title": "Community Lobbies \u2014 Geek Protocol",
+      "title": "Community Lobbies — Geek Protocol",
       "description": "Host a free Geek Protocol quiz lobby or join friends with a room code. Play shared questions and see results together without token entry fees.",
       "index": true,
       "private": false,
@@ -100,7 +100,7 @@
     {
       "file": "public/memory/index.html",
       "path": "/memory/",
-      "title": "Memory Grid \u2014 Geek Protocol",
+      "title": "Memory Grid — Geek Protocol",
       "description": "Match Kaspa terms with their meanings in Memory Grid. An untimed learning game from Geek Protocol, with no wallet or token payment required.",
       "index": true,
       "private": false,
@@ -109,7 +109,7 @@
     {
       "file": "public/mint/index.html",
       "path": "/mint/",
-      "title": "Mint $GEEK \u2014 Official Fair Mint",
+      "title": "Mint $GEEK — Official Fair Mint",
       "description": "Use Geek Protocol's official GEEK fair-mint interface. Review the pinned Kaspa KRC-20 deployment and remaining supply, then approve any mint in your wallet.",
       "index": true,
       "private": false,
@@ -118,7 +118,7 @@
     {
       "file": "public/ops-login/index.html",
       "path": "/ops-login/",
-      "title": "Private access \u2014 Geek Protocol",
+      "title": "Private access — Geek Protocol",
       "description": "Private Geek Protocol operator sign-in. Authorized access is required to use operational tools.",
       "index": false,
       "private": true
@@ -126,7 +126,7 @@
     {
       "file": "public/play/index.html",
       "path": "/play/",
-      "title": "Game Modes \u2014 Geek Protocol",
+      "title": "Game Modes — Geek Protocol",
       "description": "Explore free Geek Protocol quizzes: Daily Signal, Speed Round and the ten-round Geek Gauntlet. Learn from each answer and track your Alpha progress.",
       "index": true,
       "private": false,
@@ -139,7 +139,7 @@
     {
       "file": "public/play/sources/index.html",
       "path": "/play/sources/",
-      "title": "Question Sources \u2014 Geek Protocol",
+      "title": "Question Sources — Geek Protocol",
       "description": "See Geek Protocol question sources, licenses and reviewed-bank progress. Understand what internal source review means and which content still needs review.",
       "index": true,
       "private": false,
@@ -148,7 +148,7 @@
     {
       "file": "public/practice/index.html",
       "path": "/practice/",
-      "title": "Assisted Practice \u2014 Geek Protocol",
+      "title": "Assisted Practice — Geek Protocol",
       "description": "Practice Kaspa with free 50/50 and Extra Time assists. Read explanations after each answer in a separate Geek Protocol practice session.",
       "index": true,
       "private": false,
@@ -157,7 +157,7 @@
     {
       "file": "public/profile/index.html",
       "path": "/profile/",
-      "title": "Player Dashboard \u2014 Geek Protocol",
+      "title": "Player Dashboard — Geek Protocol",
       "description": "Return to your Geek Protocol player dashboard, edit your display name and character, and review saved learning progress, achievements and game records.",
       "index": false,
       "private": false
@@ -165,7 +165,7 @@
     {
       "file": "public/quest/index.html",
       "path": "/quest/",
-      "title": "Quiz Quest \u2014 Geek Protocol",
+      "title": "Quiz Quest — Geek Protocol",
       "description": "Explore Quiz Quest with GIGA. Complete four Kaspa learning chapters, save your progress and replay adventures in Geek Protocol's free Alpha.",
       "index": true,
       "private": false,
@@ -174,7 +174,7 @@
     {
       "file": "public/rewards/index.html",
       "path": "/rewards/",
-      "title": "Receiving Addresses & Rewards \u2014 Geek Protocol",
+      "title": "Receiving Addresses & Rewards — Geek Protocol",
       "description": "Save receiving addresses from any Kaspa wallet to your Geek account without connecting the wallet app. Mainnet payouts remain disabled; approved test rewards use GEEKT.",
       "index": true,
       "private": false,
@@ -183,7 +183,7 @@
     {
       "file": "public/royale/index.html",
       "path": "/royale/",
-      "title": "Trivia Royale \u2014 Geek Protocol",
+      "title": "Trivia Royale — Geek Protocol",
       "description": "Create or join a free Trivia Royale room on Geek Protocol. Choose a room size, invite friends and play a shared quiz when your group is ready.",
       "index": true,
       "private": false,
@@ -192,7 +192,7 @@
     {
       "file": "public/security/index.html",
       "path": "/security/",
-      "title": "Security & Audit Readiness \u2014 Geek Protocol",
+      "title": "Security & Audit Readiness — Geek Protocol",
       "description": "Review Geek Protocol security controls, audit readiness and reporting guidance. Independent security review and future settlement audits remain separate gates.",
       "index": true,
       "private": false,
@@ -201,7 +201,7 @@
     {
       "file": "public/sign-in/index.html",
       "path": "/sign-in/",
-      "title": "Sign in \u2014 Geek Protocol",
+      "title": "Sign in — Geek Protocol",
       "description": "Sign in to your Geek account with a passkey to keep your learning progress. Save a receiving address from any Kaspa wallet separately on My HQ.",
       "index": false,
       "private": false
@@ -209,7 +209,7 @@
     {
       "file": "public/start/index.html",
       "path": "/start/",
-      "title": "Start Here \u2014 Geek Protocol",
+      "title": "Start Here — Geek Protocol",
       "description": "Start Geek Protocol in five simple steps: learn about Kaspa, try a free quiz, create your Geek and keep your progress with a supported sign-in method.",
       "index": true,
       "private": false,
@@ -218,7 +218,7 @@
     {
       "file": "public/store/index.html",
       "path": "/store/",
-      "title": "Geek Store \u2014 Make It Your Own",
+      "title": "Geek Store — Make It Your Own",
       "description": "Explore the Geek Store fitting room and preview free character cosmetics. Review lifelines and future equipment plans; purchases are not enabled.",
       "index": true,
       "private": false,
@@ -227,7 +227,7 @@
     {
       "file": "public/study/index.html",
       "path": "/study/",
-      "title": "Study with A.C.E. \u2014 Geek Protocol",
+      "title": "Study with A.C.E. — Geek Protocol",
       "description": "Learn Kaspa and practical technology with A.C.E. Read source-linked lessons, practice without a timer and revisit your saved mistakes. No wallet needed.",
       "index": true,
       "private": false,
@@ -236,7 +236,7 @@
     {
       "file": "public/thanks/index.html",
       "path": "/thanks/",
-      "title": "Hall of Thanks \u2014 Geek Protocol",
+      "title": "Hall of Thanks — Geek Protocol",
       "description": "No Geek stands alone. Meet the Kaspa community, open-source builders and creative tools that help Geek Protocol bring learning to life.",
       "index": true,
       "private": false,
@@ -249,7 +249,7 @@
     {
       "file": "public/tools/index.html",
       "path": "/tools/",
-      "title": "Free Kaspa Tools \u2014 Geek Mini & Kaspa Live Widget",
+      "title": "Free Kaspa Tools — Geek Mini & Kaspa Live Widget",
       "description": "Explore free Geek Protocol tools: Geek Mini quizzes, the Kaspa Live Widget and Geek Wallet's public-address tracker. No GEEK required to get started.",
       "index": true,
       "private": false,
@@ -258,7 +258,7 @@
     {
       "file": "public/tools/kaspa-widget/index.html",
       "path": "/tools/kaspa-widget/",
-      "title": "Kaspa Widget for Android & iPhone \u2014 Geek Protocol",
+      "title": "Kaspa Widget for Android & iPhone — Geek Protocol",
       "description": "Get the Kaspa Live Widget for Android, explore the early iPhone setup and read installation help, permissions and release details from Geek Protocol.",
       "index": true,
       "private": false,
@@ -267,7 +267,7 @@
     {
       "file": "public/tools/kaspa-widget/privacy/index.html",
       "path": "/tools/kaspa-widget/privacy/",
-      "title": "Kaspa Live Widget Privacy \u2014 Geek Protocol",
+      "title": "Kaspa Live Widget Privacy — Geek Protocol",
       "description": "Read the Kaspa Live Widget privacy notice, including public market and network data, permissions and how to contact Geek Protocol.",
       "index": true,
       "private": false,
@@ -276,7 +276,7 @@
     {
       "file": "public/trade/index.html",
       "path": "/trade/",
-      "title": "Trade GEEK \u2014 Buy & Sell on Kaspacom",
+      "title": "Trade GEEK — Buy & Sell on Kaspacom",
       "description": "Find GEEK trading links on Kaspacom and learn what to check before trading. Geek Protocol links to external markets and does not operate an exchange.",
       "index": true,
       "private": false,
@@ -285,7 +285,7 @@
     {
       "file": "public/vault/index.html",
       "path": "/vault/",
-      "title": "Daily Vault \u2014 Geek Protocol",
+      "title": "Daily Vault — Geek Protocol",
       "description": "Open Geek Protocol's Daily Vault for a free cosmetic seal. Keep a private collection of daily discoveries; seals do not award XP, credits or tokens.",
       "index": true,
       "private": false,
@@ -294,7 +294,7 @@
     {
       "file": "server/ops-ui/activity/index.html",
       "path": "/ops/activity/",
-      "title": "Audit activity \u2014 Geek Protocol Operations",
+      "title": "Audit activity — Geek Protocol Operations",
       "description": "Private Geek Protocol operator workspace. Authorized role access is required; decisions and evidence remain subject to the existing controls.",
       "index": false,
       "private": true
@@ -302,7 +302,7 @@
     {
       "file": "server/ops-ui/appearance/index.html",
       "path": "/ops/appearance/",
-      "title": "Holiday themes \u2014 Geek Protocol Operations",
+      "title": "Holiday themes — Geek Protocol Operations",
       "description": "Private Geek Protocol operator workspace. Authorized role access is required; decisions and evidence remain subject to the existing controls.",
       "index": false,
       "private": true
@@ -310,7 +310,7 @@
     {
       "file": "server/ops-ui/community/index.html",
       "path": "/ops/community/",
-      "title": "Community contributions \u2014 Geek Operations",
+      "title": "Community contributions — Geek Operations",
       "description": "Private Geek Protocol operator workspace. Authorized role access is required; decisions and evidence remain subject to the existing controls.",
       "index": false,
       "private": true
@@ -318,7 +318,7 @@
     {
       "file": "server/ops-ui/imported/index.html",
       "path": "/ops/imported/",
-      "title": "Imported questions \u2014 Geek Operations",
+      "title": "Imported questions — Geek Operations",
       "description": "Private Geek Protocol operator workspace. Authorized role access is required; decisions and evidence remain subject to the existing controls.",
       "index": false,
       "private": true
@@ -326,7 +326,7 @@
     {
       "file": "server/ops-ui/index.html",
       "path": "/ops/",
-      "title": "Operations \u2014 Geek Protocol Operations",
+      "title": "Operations — Geek Protocol Operations",
       "description": "Private Geek Protocol operator workspace. Authorized role access is required; decisions and evidence remain subject to the existing controls.",
       "index": false,
       "private": true
@@ -334,7 +334,7 @@
     {
       "file": "server/ops-ui/monitor/index.html",
       "path": "/ops/monitor/",
-      "title": "Production monitoring \u2014 Geek Operations",
+      "title": "Production monitoring — Geek Operations",
       "description": "Private Geek Protocol operator workspace. Authorized role access is required; decisions and evidence remain subject to the existing controls.",
       "index": false,
       "private": true
@@ -342,7 +342,7 @@
     {
       "file": "server/ops-ui/payouts/index.html",
       "path": "/ops/payouts/",
-      "title": "Payout reviews \u2014 Geek Protocol Operations",
+      "title": "Payout reviews — Geek Protocol Operations",
       "description": "Private Geek Protocol operator workspace. Authorized role access is required; decisions and evidence remain subject to the existing controls.",
       "index": false,
       "private": true
@@ -350,7 +350,7 @@
     {
       "file": "server/ops-ui/questions/index.html",
       "path": "/ops/questions/",
-      "title": "Questions \u2014 Geek Protocol Operations",
+      "title": "Questions — Geek Protocol Operations",
       "description": "Private Geek Protocol operator workspace. Authorized role access is required; decisions and evidence remain subject to the existing controls.",
       "index": false,
       "private": true
@@ -358,7 +358,7 @@
     {
       "file": "server/ops-ui/stress/index.html",
       "path": "/ops/stress/",
-      "title": "Economy stress lab \u2014 Geek Operations",
+      "title": "Economy stress lab — Geek Operations",
       "description": "Private Geek Protocol operator workspace. Authorized role access is required; decisions and evidence remain subject to the existing controls.",
       "index": false,
       "private": true
@@ -366,7 +366,7 @@
     {
       "file": "server/ops-ui/testnet/index.html",
       "path": "/ops/testnet/",
-      "title": "Testnet pilot \u2014 Geek Operations",
+      "title": "Testnet pilot — Geek Operations",
       "description": "Private Geek Protocol operator workspace. Authorized role access is required; decisions and evidence remain subject to the existing controls.",
       "index": false,
       "private": true
@@ -374,7 +374,7 @@
     {
       "file": "server/ops-ui/ace/index.html",
       "path": "/ops/ace/",
-      "title": "A.C.E. readiness \u2014 Geek Operations",
+      "title": "A.C.E. readiness — Geek Operations",
       "description": "Private Geek Protocol operator workspace. Authorized role access is required; decisions and evidence remain subject to the existing controls.",
       "index": false,
       "private": true
@@ -400,7 +400,7 @@
     {
       "file": "public/kaspa/directory/index.html",
       "path": "/kaspa/directory/",
-      "title": "Kaspa Directory \u2014 Exchanges, Wallets & KRC-20 | Geek Protocol",
+      "title": "Kaspa Directory — Exchanges, Wallets & KRC-20 | Geek Protocol",
       "description": "Find where to buy native KAS: spot exchanges, brokers and swaps, plus Kaspa wallets, explorers, developer tools, KRC-20 projects and holder lookups.",
       "index": true,
       "private": false,
@@ -413,7 +413,7 @@
     {
       "file": "public/leaderboard/index.html",
       "path": "/leaderboard/",
-      "title": "Global Leaderboard \u2014 Geek Protocol & Geek Mini",
+      "title": "Global Leaderboard — Geek Protocol & Geek Mini",
       "description": "Explore public Geek Protocol and Geek Mini quiz standings. Compare players within each game, mode and category, with separate Mini Daily and Speed boards.",
       "index": true,
       "private": false,
@@ -422,7 +422,7 @@
     {
       "file": "public/media/index.html",
       "path": "/media/",
-      "title": "Media & Builders \u2014 Geek Protocol",
+      "title": "Media & Builders — Geek Protocol",
       "description": "Download Geek Protocol logos and share artwork, copy project descriptions, find official sources and share Geek Mini challenges with your community.",
       "index": true,
       "private": false,
@@ -431,7 +431,7 @@
     {
       "file": "public/news/index.html",
       "path": "/news/",
-      "title": "Geek News \u2014 Crypto & Global Markets",
+      "title": "Geek News — Crypto & Global Markets",
       "description": "Explore Kaspa, crypto, global indexes, stocks, forex, commodities, bond yields, futures and financial headlines with Geek Protocol.",
       "index": true,
       "private": false,
@@ -440,8 +440,17 @@
     {
       "file": "public/games/index.html",
       "path": "/games/",
-      "title": "Geek Games \u2014 Find Your Next Challenge",
-      "description": "Choose Practice, Daily Signal, Speed Signal, Memory Grid, Quiz Quest, Gauntlet, Duel or Trivia Royale. Free Alpha games, clear setup and no wallet required.",
+      "title": "Geek Games — Find Your Next Challenge",
+      "description": "Explore Geek quizzes, adventures, multiplayer and Brain Games. Practice sequence recall, mental math and attention with free, untimed challenges.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-08"
+    },
+    {
+      "file": "public/games/brain/index.html",
+      "path": "/games/brain/",
+      "title": "Brain Games — Geek Protocol",
+      "description": "Practice recall, mental math and attention in Signal Sequence, Number Forge and Rule Shift. Three difficulty levels, ten untimed rounds and device-only scores.",
       "index": true,
       "private": false,
       "lastmod": "2026-11-08"

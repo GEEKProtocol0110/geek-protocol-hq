@@ -1202,3 +1202,7 @@ Added five founder-approved primary-sourced resources (KAS Watch, Kinesis, KANet
 ## November 8, 2026 — UX-015 Geek Games hub
 
 Founder approved a hub with clear game cards. Added /games/ with eight existing modes grouped into Quick play, Adventures and With friends, timing/pace/access details, setup-only links, saved-progress and separate leaderboard/companion links. Home and five game navs expose the hub. Assisted Practice is correctly labeled timed; Memory and Quest are untimed. Gold/cyan edge lighting and lighter body copy preserve the approved readability direction. No gameplay/API/reward/room-start logic added. Static/metadata and preview evidence belong in PR; physical-phone acceptance remains separate.
+
+### November 8, 2026 — UX-016 Brain Games candidate
+
+Added Signal Sequence, Number Forge and Rule Shift in a shared Brain Lab, with three levels and ten untimed rounds. Explicit start, per-answer explanations, exit/replay and local best-score clearing. No server, account, leaderboard, XP or reward writes. Memory Grid remains linked for visual matching. Tests and release evidence belong in the PR; rendered/phone acceptance remains separate.

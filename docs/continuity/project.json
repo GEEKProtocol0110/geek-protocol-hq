@@ -133,8 +133,14 @@
   },
   "gamesHub": {
     "task": "UX-015",
-    "status": "source-candidate",
+    "status": "merged-deployed-http-verified",
     "evidence": "docs/GAMES-HUB.md",
-    "nextAction": "Review existing-mode cards and preview; phone acceptance remains separate."
+    "nextAction": "PR #249 merged as 7a931bfecfc79bf556575d3d99ed36d72dd6bf46; production READY and canonical HTML/CSS matched source. Phone acceptance remains separate."
+  },
+  "brainGames": {
+    "task": "UX-016",
+    "status": "source-candidate",
+    "evidence": "docs/BRAIN-GAMES.md",
+    "nextAction": "Review playable Brain Lab and its tests/preview. No economic or intelligence claims introduced."
   }
 }
