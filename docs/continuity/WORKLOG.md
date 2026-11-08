@@ -1202,3 +1202,9 @@ Added five founder-approved primary-sourced resources (KAS Watch, Kinesis, KANet
 ## November 8, 2026 — UX-015 Geek Games hub
 
 Founder approved a hub with clear game cards. Added /games/ with eight existing modes grouped into Quick play, Adventures and With friends, timing/pace/access details, setup-only links, saved-progress and separate leaderboard/companion links. Home and five game navs expose the hub. Assisted Practice is correctly labeled timed; Memory and Quest are untimed. Gold/cyan edge lighting and lighter body copy preserve the approved readability direction. No gameplay/API/reward/room-start logic added. Static/metadata and preview evidence belong in PR; physical-phone acceptance remains separate.
+
+### November 8, 2026 — UX-014 News heading correction
+
+Founder screenshot exposed inherited Impact headings in News after earlier typography polish. Replaced News heading family with regular UI sans-serif, 600 weight, relaxed spacing and no text effects. Kept cyan/gold edge accents and added a CSS revision query. Source candidate only; News/crypto behavior and site/continuity checks recorded in follow-up PR. Phone rendering remains unclaimed.
+
+Directory included in UX-014 follow-up after the founder reported the same heavy text: replace inherited heading font, soften white, retain cyan/gold accents and refresh CSS revision. Catalog and filtering unchanged.
