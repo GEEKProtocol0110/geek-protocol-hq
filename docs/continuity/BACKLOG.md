@@ -70,6 +70,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-012 | P1 | needs-evidence | Connect the first-player learning, quiz, results and leaderboard journey | Maintainer prepares source and checks; founder approves release; physical-phone and independent review unassigned |
 | UX-013 | P1 | needs-evidence | Review all 17 open HQ reports and fix verified interface defects | Maintainer prepares source, tests and triage; founder approves merge; device/accessibility and independent content reviewers unassigned |
 | UX-014 | P1 | in-progress | Make page typography calmer and easier to read | Maintainer prepares source and checks; founder reviews merge; physical-phone acceptance unassigned |
+| UX-015 | P1 | in-progress | Give existing Geek modes a clear Games hub | Maintainer prepares source and checks; founder approves release; physical-device acceptance unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1033,3 +1034,18 @@ Acceptance:
 - Check representative phone and desktop layouts, site and continuity validation; record actual rendering limits.
 
 Evidence/specification: [public/assets/styles.css](../../public/assets/styles.css), [public/assets/atmosphere.css](../../public/assets/atmosphere.css), [docs/READABILITY-POLISH.md](../../docs/READABILITY-POLISH.md).
+
+## UX-015: Give existing Geek modes a clear Games hub
+
+**P1 / in-progress.** Owner: Maintainer prepares source and checks; founder approves release; physical-device acceptance unassigned. Dependencies: none.
+
+Next action: Review hub PR, metadata and navigation checks, then inspect the preview on phone.
+
+Acceptance:
+
+- Group existing modes into Quick play, Adventures and With friends; show timing, pace/difficulty and access.
+- Links open setup screens only; no automatic game or room creation or new reward behavior.
+- Keep the gold/cyan Geek character with crisp reading text, responsive cards and keyboard focus.
+- Link from homepage and existing game navigation; register metadata and crawlable routes.
+
+Evidence/specification: [public/games/index.html](../../public/games/index.html), [public/games/assets/games.css](../../public/games/assets/games.css), [docs/GAMES-HUB.md](../../docs/GAMES-HUB.md).

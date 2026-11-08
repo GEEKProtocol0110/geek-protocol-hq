@@ -125,5 +125,11 @@
     "status": "source-candidate",
     "evidence": "docs/READABILITY-POLISH.md",
     "nextAction": "Review typography preview and verify on founder phone before release acceptance."
+  },
+  "gamesHub": {
+    "task": "UX-015",
+    "status": "source-candidate",
+    "evidence": "docs/GAMES-HUB.md",
+    "nextAction": "Review existing-mode cards and preview; phone acceptance remains separate."
   }
 }

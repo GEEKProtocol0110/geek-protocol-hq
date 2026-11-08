@@ -60,7 +60,7 @@
       "description": "Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. Explore lessons, free quizzes and community tools. No wallet needed to start.",
       "index": true,
       "private": false,
-      "lastmod": "2026-11-05"
+      "lastmod": "2026-11-08"
     },
     {
       "file": "public/kaspa/index.html",
@@ -436,6 +436,15 @@
       "index": true,
       "private": false,
       "lastmod": "2026-11-06"
+    },
+    {
+      "file": "public/games/index.html",
+      "path": "/games/",
+      "title": "Geek Games \u2014 Find Your Next Challenge",
+      "description": "Choose Practice, Daily Signal, Speed Signal, Memory Grid, Quiz Quest, Gauntlet, Duel or Trivia Royale. Free Alpha games, clear setup and no wallet required.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-08"
     }
   ]
 }

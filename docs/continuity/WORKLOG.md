@@ -1183,3 +1183,8 @@ Reviewed two selected Technology items against RFC 3986 and CERN. Preserved URL 
 ## November 8, 2026 — BANK-009 protocol and SI-prefix batch
 
 Reviewed five retained Technology items against RFC/BIPM/W3C primary sources and consolidated one WWW semantic duplicate with exact issued grading and canonical exclusion preserved. Counts: 8,437 active / 8,223 ranked-eligible / 214 practice-only / 809 eligible reviews / 7,191 target deficit. Six selected rows only; full-bank and independent review remain open. New deterministic regression forces the duplicate survivor into a ten-item pool and proves that the old issued identity excludes it. Exact validation and release evidence belong in the PR.
+
+
+## November 8, 2026 — UX-015 Geek Games hub
+
+Founder approved a hub with clear game cards. Added /games/ with eight existing modes grouped into Quick play, Adventures and With friends, timing/pace/access details, setup-only links, saved-progress and separate leaderboard/companion links. Home and five game navs expose the hub. Assisted Practice is correctly labeled timed; Memory and Quest are untimed. Gold/cyan edge lighting and lighter body copy preserve the approved readability direction. No gameplay/API/reward/room-start logic added. Static/metadata and preview evidence belong in PR; physical-phone acceptance remains separate.

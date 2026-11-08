@@ -1705,6 +1705,26 @@
         "public/assets/atmosphere.css",
         "docs/READABILITY-POLISH.md"
       ]
+    },
+    {
+      "id": "UX-015",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Give existing Geek modes a clear Games hub",
+      "owner": "Maintainer prepares source and checks; founder approves release; physical-device acceptance unassigned",
+      "nextAction": "Review hub PR, metadata and navigation checks, then inspect the preview on phone.",
+      "acceptance": [
+        "Group existing modes into Quick play, Adventures and With friends; show timing, pace/difficulty and access.",
+        "Links open setup screens only; no automatic game or room creation or new reward behavior.",
+        "Keep the gold/cyan Geek character with crisp reading text, responsive cards and keyboard focus.",
+        "Link from homepage and existing game navigation; register metadata and crawlable routes."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "public/games/index.html",
+        "public/games/assets/games.css",
+        "docs/GAMES-HUB.md"
+      ]
     }
   ]
 }
