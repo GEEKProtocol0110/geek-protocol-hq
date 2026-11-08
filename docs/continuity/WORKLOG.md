@@ -1173,3 +1173,8 @@ Founder reported bold bright blurry white text on black. Removed reading-text sh
 ### UX-014 — founder preview correction
 
 Founder rejected the first preview as too plain. Restored restrained centered cyan title/timer glow and cyan/gold edge lighting, while keeping body/answer copy sharp, softer white, reduced extra-bold weights and no grain/chromatic double-shadow. Preview and new exact-head checks remain pending.
+
+
+## November 7, 2026 — BANK-009 web-basics continuation
+
+Reviewed two selected Technology items against RFC 3986 and CERN. Preserved URL grading with internal evidence; replaced misleading HTTP language wording under a new practice-only identity. Historical grading for all 1,470 baseline Technology rows remains unchanged through active/retired lookup. Counts: 8,438 active / 8,224 ranked-eligible / 214 practice-only / 804 eligible recorded reviews / 7,196 target deficit. Separate reviewer and whole-bank audit remain open. Exact checks belong in the PR.
