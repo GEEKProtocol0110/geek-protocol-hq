@@ -3418,9 +3418,44 @@
       "reason": "semantic-duplicate",
       "note": "Same WWW acronym-expansion objective as TECH-N-168bcb9a7078; retain the concise survivor and preserve this issued answer key.",
       "answerKeyHash": "117ceab5706de6330bf4ddf9ba27aa041bfa792511bcb8f06375d95e641f16aa"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0604",
+      "reason": "semantic-duplicate",
+      "note": "Repeats the coleopterology-to-beetles objective in TECH-0096; retain one draft concept, with no source-check promotion.",
+      "answerKeyHash": "5634b9f19b6bdfacfcdafba83a11bd45eb93bcfce6d72d244fe00e565c5e9bfa"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0169",
+      "reason": "invalid-options",
+      "note": "Crustaceans and crabs/lobsters/crayfish are overlapping valid descriptions of the study subject; this single-answer item does not specify broadest taxonomic scope.",
+      "answerKeyHash": "c0b766d006f842e1a6a05f7a14fa9a1fa17fe629e4cf1391b5c845342e4948b2"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-d721179b1a86",
+      "reason": "unsupported-claim",
+      "note": "Mixes baseball with a quarterback pass and omits the idealized no-drag conditions needed for a strictly parabolic path. Retire rather than certify the real-world claim.",
+      "answerKeyHash": "9adbcd6c2886f343bd7e3357cc8bd93e41108641c2566410392d05baded47932"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-cee108018491",
+      "reason": "unsupported-claim",
+      "note": "Pulsar names a type/observational behavior of neutron star, not an unrestricted synonym for every neutron star. Its related draft definition is also retired pending a precise replacement.",
+      "answerKeyHash": "31e84f9a55c5321302182fdf9d442d90cae6bbd3ad55a1f80b27b09d1a48e926"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0363",
+      "reason": "invalid-options",
+      "note": "Pulsar and magnetar properties can overlap, so the supplied radio-pulse description does not establish mutually exclusive options. Retire pending a more precise objective.",
+      "answerKeyHash": "710f8d14472bc671d4f025591ba5429d5608589b9c40aa2fb63c5fa45b6e7e42"
     }
   ],
-  "retirementCount": 447,
+  "retirementCount": 452,
   "newLicensedImportsRetired": 258,
   "activeNewLicensedImportsPending": 3598,
   "activeDraftQuestions": 7516,
@@ -3525,6 +3560,13 @@
       "scope": "Six selected rows: five exact-grading internal confirmations and one semantic duplicate consolidated, not a contiguous/full-category audit.",
       "evidence": "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-08.md",
       "decisionRegister": "server/question-audit/technology-2026-11-08.json"
+    },
+    {
+      "date": "2026-11-08",
+      "task": "BANK-009",
+      "scope": "Six selected rows: five retired for ambiguity, unsupported context or semantic duplication; one unchanged draft survivor. No source-check promotions or difficulty calibration.",
+      "evidence": "docs/TECHNOLOGY-RISK-REVIEW-2026-11-08.md",
+      "decisionRegister": "server/question-audit/technology-risk-2026-11-08.json"
     }
   ],
   "practiceOnlyHolds": {

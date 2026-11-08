@@ -10,14 +10,14 @@ Record date: 2026-11-09. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,223 active ranked-eligible questions, plus 214 practice-only unranked draft questions (not ranked-eligible, not source-checked); 809 recorded internal source reviews; 7,191 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,218 active ranked-eligible questions, plus 214 practice-only unranked draft questions (not ranked-eligible, not source-checked); 809 recorded internal source reviews; 7,191 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
 | Kaspa | 866 | 766 | 234 |
 | Video games | 601 | 0 | 1000 |
 | Science fiction | 514 | 0 | 1000 |
-| Technology | 1484 | 28 | 972 |
+| Technology | 1479 | 28 | 972 |
 | Movies | 1490 | 5 | 995 |
 | History | 1502 | 9 | 991 |
 | Comics | 412 | 1 | 999 |
@@ -25,9 +25,9 @@ Record date: 2026-11-09. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-009: active.** BANK-009: five internal primary-source checks and one WWW semantic duplicate consolidation prepared. Historical grading retained; whole-bank and independent review remain open.
+**BANK-009: active.** BANK-009: six-row Technology risk triage retires five ambiguous, unsupported or repeated items without padding the bank. One duplicate survivor remains draft; no review-count promotion.
 
-Next task: **BANK-009**. Review the November 8 Technology candidate and CI; then continue unflagged factual, semantic, category and authorship review.
+Next task: **BANK-009**. Review the November 8 risk-triage candidate and exact-head checks, then continue unflagged rows across categories.
 
 ## Holds
 
