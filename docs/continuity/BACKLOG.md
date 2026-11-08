@@ -74,9 +74,9 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-015 | P1 | in-progress | Give existing Geek modes a clear Games hub | Maintainer prepares source and checks; founder approves release; physical-device acceptance unassigned |
 | UX-016 | P1 | in-progress | Add Brain Games for recall, arithmetic and attention practice | Maintainer builds and checks; founder approves release; physical-device acceptance unassigned |
 | UX-017 | P1 | in-progress | Add classic strategy and card games, starting with checkers and solitaire | Maintainer builds and checks; founder approves release; browser/physical-device acceptance unassigned |
-| UX-019 | P2 | in-progress | Add playable Geek Chess | Maintainer; founder release review |
-| UX-018 | P1 | in-progress | Fit Geek games to phone screens and compact active play | Maintainer fixes layout and checks; founder approves release; physical-phone acceptance unassigned |
-| UX-020 | P2 | in-progress | Unify the Geek Games visual feel and play controls | Maintainer; founder release review |
+| UX-019 | P2 | needs-evidence | Add playable Geek Chess | Maintainer; founder release review |
+| UX-018 | P1 | needs-evidence | Fit Geek games to phone screens and compact active play | Maintainer fixes layout and checks; founder approves release; physical-phone acceptance unassigned |
+| UX-020 | P2 | needs-evidence | Unify the Geek Games visual feel and play controls | Maintainer; founder release review |
 | GAME-002 | P2 | in-progress | Online chess and checkers lobbies with accepted game requests | Maintainer; founder release review |
 
 ## CONT-001: Publish the continuation system
@@ -1108,9 +1108,9 @@ Evidence/specification: [docs/CLASSIC-GAMES.md](../../docs/CLASSIC-GAMES.md), [p
 
 ## UX-019: Add playable Geek Chess
 
-**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: UX-017.
+**P2 / needs-evidence.** Owner: Maintainer; founder release review. Dependencies: UX-017.
 
-Next action: Review PR and preview; verify rendered phone layout before acceptance.
+Next action: PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 with founder approval. Production and phone acceptance tracked separately from merge.
 
 Acceptance:
 
@@ -1122,9 +1122,9 @@ Evidence/specification: [docs/CLASSIC-GAMES.md](../../docs/CLASSIC-GAMES.md), [t
 
 ## UX-018: Fit Geek games to phone screens and compact active play
 
-**P1 / in-progress.** Owner: Maintainer fixes layout and checks; founder approves release; physical-phone acceptance unassigned. Dependencies: UX-016, UX-017.
+**P1 / needs-evidence.** Owner: Maintainer fixes layout and checks; founder approves release; physical-phone acceptance unassigned. Dependencies: UX-016, UX-017.
 
-Next action: Review responsive game preview at phone widths, then release review.
+Next action: PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 with founder approval. Production and phone acceptance tracked separately from merge.
 
 Acceptance:
 
@@ -1137,9 +1137,9 @@ Evidence/specification: [docs/MOBILE-GAMES.md](../../docs/MOBILE-GAMES.md), [pub
 
 ## UX-020: Unify the Geek Games visual feel and play controls
 
-**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: UX-018, UX-019.
+**P2 / needs-evidence.** Owner: Maintainer; founder release review. Dependencies: UX-018, UX-019.
 
-Next action: Review combined chess, mobile-fit and polish preview in PR #253.
+Next action: PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 with founder approval. Production and phone acceptance tracked separately from merge.
 
 Acceptance:
 
@@ -1153,7 +1153,7 @@ Evidence/specification: [docs/GAME-POLISH.md](../../docs/GAME-POLISH.md).
 
 **P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: UX-019, UX-020.
 
-Next action: Review the stacked multiplayer candidate after PR #253; complete two-device browser acceptance in Preview before release.
+Next action: Founder approved Merge November 8. Merge #254 after refreshed exact-head CI; record the merge/deployment result in PR #254, with two-device acceptance still separate.
 
 Acceptance:
 

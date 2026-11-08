@@ -145,26 +145,26 @@
   },
   "classicGames": {
     "task": "UX-017",
-    "status": "source-candidate",
+    "status": "merged-release-check-pending",
     "evidence": "docs/CLASSIC-GAMES.md",
-    "nextAction": "Review combined candidate PR #253: chess UX-019, mobile fit UX-018 and visual polish UX-020; backgammon remains planned."
+    "nextAction": "Founder approved release November 8. PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4. Combined multiplayer #254 production and device acceptance are tracked separately."
   },
   "mobileGameFit": {
     "task": "UX-018",
-    "status": "source-candidate",
+    "status": "merged-release-check-pending",
     "evidence": "docs/MOBILE-GAMES.md",
-    "nextAction": "Inspect compact boards and active-play layouts at narrow widths; retain physical-phone acceptance separately."
+    "nextAction": "Founder approved release November 8. PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4. Combined multiplayer #254 production and device acceptance are tracked separately."
   },
   "gamePolish": {
     "task": "UX-020",
-    "status": "source-candidate",
+    "status": "merged-release-check-pending",
     "evidence": "docs/GAME-POLISH.md",
-    "nextAction": "Review PR #253; rendered-browser and physical-phone acceptance remain open."
+    "nextAction": "Founder approved release November 8. PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4. Combined multiplayer #254 production and device acceptance are tracked separately."
   },
   "classicMultiplayer": {
     "task": "GAME-002",
-    "status": "source-candidate",
+    "status": "founder-approved-release",
     "evidence": "docs/CLASSIC-MULTIPLAYER.md",
-    "nextAction": "Review multiplayer candidate stacked on #253; public/private lounge, requests and authoritative live turns. Two-device Preview acceptance remains outstanding."
+    "nextAction": "Founder explicitly approved Merge November 8. Merge #254 after exact-head CI, then record its merge and production result in the #254 review record. Two-device acceptance remains separate."
   }
 }

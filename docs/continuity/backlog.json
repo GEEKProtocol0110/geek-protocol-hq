@@ -1803,10 +1803,10 @@
     {
       "id": "UX-019",
       "priority": "P2",
-      "status": "in-progress",
+      "status": "needs-evidence",
       "title": "Add playable Geek Chess",
       "owner": "Maintainer; founder release review",
-      "nextAction": "Review PR and preview; verify rendered phone layout before acceptance.",
+      "nextAction": "PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 with founder approval. Production and phone acceptance tracked separately from merge.",
       "acceptance": [
         "Playable local chess with legal moves, special moves and promotion choices.",
         "Geek branding and responsive board.",
@@ -1823,10 +1823,10 @@
     {
       "id": "UX-018",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "needs-evidence",
       "title": "Fit Geek games to phone screens and compact active play",
       "owner": "Maintainer fixes layout and checks; founder approves release; physical-phone acceptance unassigned",
-      "nextAction": "Review responsive game preview at phone widths, then release review.",
+      "nextAction": "PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 with founder approval. Production and phone acceptance tracked separately from merge.",
       "acceptance": [
         "Remove forced 320px/540px board minima; fit eight checker squares and all seven solitaire columns to available width.",
         "Overlap solitaire cards while keeping rank/suit labels and numbered destinations reachable.",
@@ -1848,10 +1848,10 @@
     {
       "id": "UX-020",
       "priority": "P2",
-      "status": "in-progress",
+      "status": "needs-evidence",
       "title": "Unify the Geek Games visual feel and play controls",
       "owner": "Maintainer; founder release review",
-      "nextAction": "Review combined chess, mobile-fit and polish preview in PR #253.",
+      "nextAction": "PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 with founder approval. Production and phone acceptance tracked separately from merge.",
       "acceptance": [
         "Crisp typography with gold/cyan accents across the games hub, Brain Lab and classics.",
         "Responsive boards, consistent controls, compact active play and useful local-game navigation.",
@@ -1871,7 +1871,7 @@
       "status": "in-progress",
       "title": "Online chess and checkers lobbies with accepted game requests",
       "owner": "Maintainer; founder release review",
-      "nextAction": "Review the stacked multiplayer candidate after PR #253; complete two-device browser acceptance in Preview before release.",
+      "nextAction": "Founder approved Merge November 8. Merge #254 after refreshed exact-head CI; record the merge/deployment result in PR #254, with two-device acceptance still separate.",
       "acceptance": [
         "Public and invite-only lobbies with request, accept, decline and cancellation.",
         "Authenticated server-authoritative chess/checkers moves with atomic seat selection and revision checks.",
