@@ -148,5 +148,11 @@
     "status": "source-candidate",
     "evidence": "docs/CLASSIC-GAMES.md",
     "nextAction": "Review playable checkers and solitaire in #250 alongside Brain Games. Chess and backgammon remain planned."
+  },
+  "mobileGameFit": {
+    "task": "UX-018",
+    "status": "source-candidate",
+    "evidence": "docs/MOBILE-GAMES.md",
+    "nextAction": "Inspect compact boards and active-play layouts at narrow widths; retain physical-phone acceptance separately."
   }
 }

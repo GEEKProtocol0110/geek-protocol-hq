@@ -51,7 +51,7 @@ function respond(value) {
 }
 $('start').addEventListener('click', () => {
   state = setup($('mode').value, $('level').value);
-  $('setup').hidden = true; $('session').hidden = false; $('results').hidden = true;
+  document.body.classList.toggle('is-playing', true); $('setup').hidden = true; $('session').hidden = false; $('results').hidden = true;
   renderQuestion();
 });
 $('memorized').addEventListener('click', () => {
@@ -72,7 +72,7 @@ $('next').addEventListener('click', () => {
   if (storageOK) try { localStorage.setItem(key, JSON.stringify(records)); } catch { storageOK = false; }
   saved(); focus($('result'));
 });
-function back() { state.phase = 'ready'; $('session').hidden = true; $('results').hidden = true; $('setup').hidden = false; saved(); focus($('mode')); }
+function back() { document.body.classList.toggle('is-playing', false); state.phase = 'ready'; $('session').hidden = true; $('results').hidden = true; $('setup').hidden = false; saved(); focus($('mode')); }
 $('exit').addEventListener('click', back);
 $('again').addEventListener('click', back);
 $('mode').addEventListener('change', saved); $('level').addEventListener('change', saved);

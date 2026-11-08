@@ -1220,3 +1220,7 @@ Founder requests all new games carry Geek identity. Added shared Geek game style
 Founder screenshot exposed inherited Impact headings in News after earlier typography polish. Replaced News heading family with regular UI sans-serif, 600 weight, relaxed spacing and no text effects. Kept cyan/gold edge accents and added a CSS revision query. Source candidate only; News/crypto behavior and site/continuity checks recorded in follow-up PR. Phone rendering remains unclaimed.
 
 Directory included in UX-014 follow-up after the founder reported the same heavy text: replace inherited heading font, soften white, retain cyan/gold accents and refresh CSS revision. Catalog and filtering unchanged.
+
+### November 8, 2026 — UX-018 responsive games correction
+
+Founder reports games do not fit screens/mobile. Removed fixed checker/solitaire board minima, made seven columns fluid and overlapped cards, compacted active-play header/tips, adjusted phone controls/input sizes and corrected classic header text. Desktop live inspection confirmed tall card stacks; preview width checks and test limits recorded in docs/MOBILE-GAMES.md. No game rules or persistence changes.

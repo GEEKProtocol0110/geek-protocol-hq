@@ -74,6 +74,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-015 | P1 | in-progress | Give existing Geek modes a clear Games hub | Maintainer prepares source and checks; founder approves release; physical-device acceptance unassigned |
 | UX-016 | P1 | in-progress | Add Brain Games for recall, arithmetic and attention practice | Maintainer builds and checks; founder approves release; physical-device acceptance unassigned |
 | UX-017 | P1 | in-progress | Add classic strategy and card games, starting with checkers and solitaire | Maintainer builds and checks; founder approves release; browser/physical-device acceptance unassigned |
+| UX-018 | P1 | in-progress | Fit Geek games to phone screens and compact active play | Maintainer fixes layout and checks; founder approves release; physical-phone acceptance unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1101,3 +1102,18 @@ Acceptance:
 - Apply the shared Geek game styling, GIGA practice tips and crisp cyan/gold accents; retain readable text, rank/suit labels and focus outlines.
 
 Evidence/specification: [docs/CLASSIC-GAMES.md](../../docs/CLASSIC-GAMES.md), [public/games/classics/](../../public/games/classics/), [public/games/checkers/index.html](../../public/games/checkers/index.html), [public/games/solitaire/index.html](../../public/games/solitaire/index.html), [tests/classic-games.test.js](../../tests/classic-games.test.js), [public/games/assets/geek-play.css](../../public/games/assets/geek-play.css).
+
+## UX-018: Fit Geek games to phone screens and compact active play
+
+**P1 / in-progress.** Owner: Maintainer fixes layout and checks; founder approves release; physical-phone acceptance unassigned. Dependencies: UX-016, UX-017.
+
+Next action: Review responsive game preview at phone widths, then release review.
+
+Acceptance:
+
+- Remove forced 320px/540px board minima; fit eight checker squares and all seven solitaire columns to available width.
+- Overlap solitaire cards while keeping rank/suit labels and numbered destinations reachable.
+- Compact active-play headers, tips and controls on phones without clipping reading content; prevent mobile input auto-zoom.
+- Preserve gameplay and undo behavior; verify tests and report actual browser/device limits.
+
+Evidence/specification: [docs/MOBILE-GAMES.md](../../docs/MOBILE-GAMES.md), [public/games/assets/geek-play.css](../../public/games/assets/geek-play.css), [public/games/assets/games.css](../../public/games/assets/games.css), [public/games/classics/classics.js](../../public/games/classics/classics.js), [public/games/brain/brain.js](../../public/games/brain/brain.js).

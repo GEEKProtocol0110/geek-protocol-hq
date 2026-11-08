@@ -49,21 +49,21 @@ function renderSolitaire(){
  $('foundations').replaceChildren();
  state.foundations.forEach((p,i)=>{
   const wrap=document.createElement('div');wrap.className='foundation';
-  wrap.append(button(`Foundation ${i+1}`,`Move selected card to foundation ${i+1}`,()=>{if(selected){if(!commit(moveSolitaire(state,selected,{kind:'foundations',pile:i})))say('Foundations start with an ace and build up in the same suit.');}else say('Select a card first.');}));
+  wrap.append(button(`Home ${i+1}`,`Move selected card to foundation ${i+1}`,()=>{if(selected){if(!commit(moveSolitaire(state,selected,{kind:'foundations',pile:i})))say('Foundations start with an ace and build up in the same suit.');}else say('Select a card first.');}));
   if(p.length)wrap.append(card(p.at(-1),{kind:'foundations',pile:i,index:p.length-1}));else{const empty=document.createElement('span');empty.textContent='Ace → King';wrap.append(empty);}$('foundations').append(wrap);
  });
  $('tableau').replaceChildren();state.tableau.forEach((p,i)=>{
   const col=document.createElement('div');col.className='tableau-column';
-  col.append(button(`Column ${i+1}`,`Move selection to column ${i+1}`,()=>choose({kind:'tableau',pile:i,index:p.length-1})));
+  col.append(button(`${i+1}`,`Move selection to column ${i+1}`,()=>choose({kind:'tableau',pile:i,index:p.length-1})));
   p.forEach((c,index)=>col.append(card(c,{kind:'tableau',pile:i,index})));$('tableau').append(col);
  });
  const count=state.foundations.reduce((a,p)=>a+p.length,0);
  say(solitaireWon(state)?'You solved it! All 52 cards are home.':`${count}/52 cards home · ${state.moves} moves. Select a face-up card or run, then a column or foundation.`);
 }
 function render(){if(game==='checkers')renderCheckers();else renderSolitaire();$('undo').disabled=history.length===0;}
-$('start').addEventListener('click',()=>{state=game==='checkers'?newCheckers():newSolitaire();selected=null;history=[];$('setup').hidden=true;$('play').hidden=false;render();$('status').focus();});
+$('start').addEventListener('click',()=>{state=game==='checkers'?newCheckers():newSolitaire();selected=null;history=[];$('setup').hidden=true;$('play').hidden=false;document.body.classList.toggle('is-playing',true);render();$('status').focus();});
 $('undo').addEventListener('click',()=>{if(history.length){state=history.pop();selected=game==='checkers'?state.forced:null;render();$('status').focus();}});
-$('exit').addEventListener('click',()=>{state=null;selected=null;history=[];$('play').hidden=true;$('setup').hidden=false;$('start').focus();});
+$('exit').addEventListener('click',()=>{state=null;selected=null;history=[];$('play').hidden=true;$('setup').hidden=false;document.body.classList.toggle('is-playing',false);$('start').focus();});
 if(game==='solitaire')$('stock').addEventListener('click',()=>{if(!commit(drawSolitaire(state)))say('The stock and waste are empty. Try a board move, undo, or start a new deal.');});
 if(game==='checkers')$('draw').addEventListener('click',()=>{if(!state.winner&&confirm('Do both players agree to a draw?')){remember();state.winner='draw';render();say('Draw agreed. Undo to continue, or exit to start again.');}});
 $('loading').hidden=true;$('setup').hidden=false;
