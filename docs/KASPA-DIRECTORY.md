@@ -77,3 +77,10 @@ The founder approved Kaspalytics, Kasia, Kastle, KEF, Kii, Kaspero Labs and KAT,
 Official project/repository/store sources support the descriptions. Several pages are client-rendered: KAT and KEF had indexed primary-site evidence but no readable fetched body; TX Missile Command returned its loading shell and was not gameplay-tested. KasPlay score figures and chain/security claims are not independently verified. KaPlay chess features are publisher-described, not played. Existing directory disclaimers distinguish listings from endorsement/security/functionality acceptance.
 
 Geek already has Practice, Daily, Gauntlet, Quest, Memory, Duel and Royale routes. A separate first-party Games hub is recommended as a follow-up proposal, with external games remaining clearly identified; no new game, paid mode or score-sharing integration is part of this directory change.
+
+
+### Additional builder and learning resources — November 8, 2026
+
+Founder approved KAS Watch, Kaspa Kinesis, KANet, ChainVsDag and the Kaspa-specific OpenSilver library. Primary home/repository pages support short original descriptions; catalog source URLs retain that evidence. Kinesis is explicitly a hackathon prototype; no fairness, NIST certification, quantum security or infrastructure guarantees are adopted. KANet architecture documentation was readable although its repository root fetch was blocked. ChainVsDag had indexed primary-site content but an empty fetched body; no live comparative performance is independently verified. KAS Watch showed connecting placeholders in the text fetch: its feed freshness and premium features were not tested. No third-party software was installed or run and no wallet or game action was performed. Candidate now has 183 resources / 18 categories.
+
+Split the existing generic GitHub suggestion link into Submit a project and Report a broken link draft links, each with relevant fields and clear GitHub-account/manual-review expectations. Clicking only prepares a draft; nothing is automatically sent or published. Browser and phone acceptance remain separate.

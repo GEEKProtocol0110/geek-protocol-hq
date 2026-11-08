@@ -1193,3 +1193,7 @@ Founder requested KaspaDollar in the directory. Added official project link unde
 ### ECO-007 — social, builder and games expansion
 
 Founder approved all seven proposed additions plus K, Stag Hunt, KaChat and a games area. Added those ten and three external game resources; 178 entries / 18 categories. Stag Hunt stays in ecosystem coordination and its safety assurances are not repeated. Project/store evidence and limited rendered-page observations are recorded in directory documentation. Existing Geek game routes support a proposed Games hub as a separate follow-up, not an implemented feature. No new funds, apps installed, wallet prompts, chat messages or third-party gameplay.
+
+### November 8, 2026 — ECO-007 additional resources and contribution actions
+
+Added five founder-approved primary-sourced resources (KAS Watch, Kinesis, KANet, ChainVsDag, OpenSilver), 183 total. Split project suggestion and broken-link reporting into explicit GitHub draft links. No automatic submission, third-party execution or economic change. Directory/client/site/continuity checks will be recorded in #248; visual and phone acceptance remain unclaimed.

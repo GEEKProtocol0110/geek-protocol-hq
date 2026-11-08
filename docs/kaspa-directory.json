@@ -2675,6 +2675,56 @@
       "source": "https://tx-missile-command.com/",
       "reviewedAt": "2026-11-08",
       "status": "listed"
+    },
+    {
+      "id": "kaswatch",
+      "category": "explorers",
+      "name": "KAS Watch",
+      "url": "https://kaswatch.app/",
+      "description": "Kaspa-focused market, network and news dashboards with free and premium features.",
+      "source": "https://kaswatch.app/",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "kinesis",
+      "category": "developers",
+      "name": "Kaspa Kinesis · hackathon build",
+      "url": "https://kaspakinesis.vercel.app/",
+      "description": "Multiplayer engine prototype exploring Kaspa-based messaging and randomness, with documentation and demos.",
+      "source": "https://github.com/peavey2787/KaspaKinesis",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "kanet",
+      "category": "developers",
+      "name": "KANet",
+      "url": "https://github.com/Unio996/KANet",
+      "description": "Self-hosted AI-agent infrastructure with Kaspa messaging, observation and transaction components.",
+      "source": "https://github.com/Unio996/KANet/blob/master/KANET-FOR-QWEN.md",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "chainvsdag",
+      "category": "learn",
+      "name": "ChainVsDag",
+      "url": "https://chainvsdag.com/",
+      "description": "Interactive 3D comparison of linear blockchains and Kaspa’s BlockDAG, with an embeddable visualization.",
+      "source": "https://chainvsdag.com/",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "opensilver",
+      "category": "developers",
+      "name": "OpenSilver · Kaspa covenant library",
+      "url": "https://github.com/trillskillz/OpenSilver",
+      "description": "Open-source covenant-pattern library and integration examples for Kaspa SilverScript.",
+      "source": "https://github.com/trillskillz/OpenSilver",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
     }
   ],
   "updatedAt": "2026-11-08T14:47:01.653431+00:00",
