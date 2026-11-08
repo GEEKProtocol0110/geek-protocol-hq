@@ -104,7 +104,7 @@
     "task": "ECO-006",
     "status": "merged-deployed-http-verified",
     "evidence": "docs/GEEK-NEWS.md",
-    "nextAction": "Founder-approved #241 squash-merged as 0a8a53fa9acc62262b5493c4eb9aa95811b88f67 after exact-head CI 42262924168 and both Vercel checks passed. Production dpl_J6BvCnjY33YSkbkbwDGxBi5rzHoU READY. Canonical /news/ HTTP 200 has the GEEK market desk and News CSP; /api/widget?service=markets returns 100 rows, ranks 1\u2013100; Profile retains its baseline CSP. Desktop preview rendered all 100 rows and working search. Production HTTP verification does not establish physical-phone or independent acceptance. Maintain provider availability and retain device/independent acceptance as separate work."
+    "nextAction": "Founder-approved #241 squash-merged as 0a8a53fa9acc62262b5493c4eb9aa95811b88f67 after exact-head CI 42262924168 and both Vercel checks passed. Production dpl_J6BvCnjY33YSkbkbwDGxBi5rzHoU READY. Canonical /news/ HTTP 200 has the GEEK market desk and News CSP; /api/widget?service=markets returns 100 rows, ranks 1–100; Profile retains its baseline CSP. Desktop preview rendered all 100 rows and working search. Production HTTP verification does not establish physical-phone or independent acceptance. Maintain provider availability and retain device/independent acceptance as separate work."
   },
   "firstPlayerJourney": {
     "task": "UX-012",
@@ -125,6 +125,11 @@
     "status": "source-candidate",
     "evidence": "docs/READABILITY-POLISH.md",
     "nextAction": "Review typography preview and verify on founder phone before release acceptance."
+  },
+  "directoryKaspaDollar": {
+    "task": "ECO-007",
+    "status": "merged-deployed-http-verified",
+    "nextAction": "PR #248 merged as e7206648a9afc86ae0450b415a30a4f0b2c0b28d; production READY and exact 183-card canonical HTML verified. Keep device acceptance separate."
   },
   "gamesHub": {
     "task": "UX-015",

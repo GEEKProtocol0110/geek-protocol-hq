@@ -1185,6 +1185,20 @@ Reviewed two selected Technology items against RFC 3986 and CERN. Preserved URL 
 Reviewed five retained Technology items against RFC/BIPM/W3C primary sources and consolidated one WWW semantic duplicate with exact issued grading and canonical exclusion preserved. Counts: 8,437 active / 8,223 ranked-eligible / 214 practice-only / 809 eligible reviews / 7,191 target deficit. Six selected rows only; full-bank and independent review remain open. New deterministic regression forces the duplicate survivor into a ten-item pool and proves that the old issued identity excludes it. Exact validation and release evidence belong in the PR.
 
 
+## November 8, 2026 — ECO-007 KaspaDollar listing
+
+Founder requested KaspaDollar in the directory. Added official project link under Apps & token ecosystems with visible in-development status and preliminary-design qualification. Primary project pages reviewed; no live/audited stablecoin, security endorsement, wallet action or donation behavior is implied. 165 resources / 17 categories. Regenerated catalog and continuity; exact validation and PR/release result remain separate.
+
+
+### ECO-007 — social, builder and games expansion
+
+Founder approved all seven proposed additions plus K, Stag Hunt, KaChat and a games area. Added those ten and three external game resources; 178 entries / 18 categories. Stag Hunt stays in ecosystem coordination and its safety assurances are not repeated. Project/store evidence and limited rendered-page observations are recorded in directory documentation. Existing Geek game routes support a proposed Games hub as a separate follow-up, not an implemented feature. No new funds, apps installed, wallet prompts, chat messages or third-party gameplay.
+
+### November 8, 2026 — ECO-007 additional resources and contribution actions
+
+Added five founder-approved primary-sourced resources (KAS Watch, Kinesis, KANet, ChainVsDag, OpenSilver), 183 total. Split project suggestion and broken-link reporting into explicit GitHub draft links. No automatic submission, third-party execution or economic change. Directory/client/site/continuity checks will be recorded in #248; visual and phone acceptance remain unclaimed.
+
+
 ## November 8, 2026 — UX-015 Geek Games hub
 
 Founder approved a hub with clear game cards. Added /games/ with eight existing modes grouped into Quick play, Adventures and With friends, timing/pace/access details, setup-only links, saved-progress and separate leaderboard/companion links. Home and five game navs expose the hub. Assisted Practice is correctly labeled timed; Memory and Quest are untimed. Gold/cyan edge lighting and lighter body copy preserve the approved readability direction. No gameplay/API/reward/room-start logic added. Static/metadata and preview evidence belong in PR; physical-phone acceptance remains separate.

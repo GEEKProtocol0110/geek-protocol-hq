@@ -63,3 +63,24 @@ The preceding founder-approved #236 is merged as b38e27dedeec5ac6a014ff6647401d1
 Ordering #237 subsequently merged as `478dfc16b6843eef93603b3905d63b7a31f2f1ef`, matching tree `0b0311ddff28150aa1a8a4ae7341d2f76c6054f3`. CI 42063638109 succeeded; production `dpl_6VGBV45EHRDo6EfcLr1xfx932mfo` is READY with exact canonical HTML confirming all 104 resources and Kaspa-first order. Rendering/phone acceptance remains separate.
 
 ECO-004 now prepares 60 native-KAS provider listings: 37 spot exchanges, 14 brokers/on-ramps and nine swaps/aggregators. Place those three alphabetical groups after wallets, with all general Kaspa sections still preceding KRC-20. Preserve all 104 existing records: 164 resources/17 categories overall. The [exchange review](KASPA-EXCHANGE-REVIEW.md) and [dated ledger](kaspa-exchange-review.json) record primary sources, discovery scope, known transfer limitations and 42 held candidates. This expansion is a source candidate, not a merged/deployed or exhaustive worldwide availability claim.
+
+
+## KaspaDollar — November 8, 2026
+
+Founder requested https://kaspadollar.com/ be included. Added one Apps & token ecosystems resource named KaspaDollar · in development. The project home and /how-it-works describe a proposed KAS-backed dollar stablecoin on L1, with preliminary parameters. The label and description distinguish development/fundraising from a verified live or audited product. No final ticker, security endorsement, donation link, wallet action or investment claim is added. Source review date is editorial; no functionality or solvency test is claimed. Catalog now contains 165 resources in 17 categories. Exact tests and release evidence belong in the PR.
+
+
+### Founder-approved expansion and games category
+
+The founder approved Kaspalytics, Kasia, Kastle, KEF, Kii, Kaspero Labs and KAT, then requested K app, Stag Hunt, KaChat and games. Added all ten plus KasPlay, KaPlay and TX Missile Command, bringing the candidate to 178 resources / 18 categories including Games & arcade. K uses the web destination linked by its own repository; KaChat uses its Android listing with its publisher app listing as feature evidence. Stag Hunt is coordination/crowdfunding, not an arcade game. Its page currently displays a winner-selection bug notice and claims risk-free refunds; neither safety claims nor refund assurances are repeated. No donation, escrow, chat or wallet action was performed.
+
+Official project/repository/store sources support the descriptions. Several pages are client-rendered: KAT and KEF had indexed primary-site evidence but no readable fetched body; TX Missile Command returned its loading shell and was not gameplay-tested. KasPlay score figures and chain/security claims are not independently verified. KaPlay chess features are publisher-described, not played. Existing directory disclaimers distinguish listings from endorsement/security/functionality acceptance.
+
+Geek already has Practice, Daily, Gauntlet, Quest, Memory, Duel and Royale routes. A separate first-party Games hub is recommended as a follow-up proposal, with external games remaining clearly identified; no new game, paid mode or score-sharing integration is part of this directory change.
+
+
+### Additional builder and learning resources — November 8, 2026
+
+Founder approved KAS Watch, Kaspa Kinesis, KANet, ChainVsDag and the Kaspa-specific OpenSilver library. Primary home/repository pages support short original descriptions; catalog source URLs retain that evidence. Kinesis is explicitly a hackathon prototype; no fairness, NIST certification, quantum security or infrastructure guarantees are adopted. KANet architecture documentation was readable although its repository root fetch was blocked. ChainVsDag had indexed primary-site content but an empty fetched body; no live comparative performance is independently verified. KAS Watch showed connecting placeholders in the text fetch: its feed freshness and premium features were not tested. No third-party software was installed or run and no wallet or game action was performed. Candidate now has 183 resources / 18 categories.
+
+Split the existing generic GitHub suggestion link into Submit a project and Report a broken link draft links, each with relevant fields and clear GitHub-account/manual-review expectations. Clicking only prepares a draft; nothing is automatically sent or published. Browser and phone acceptance remain separate.

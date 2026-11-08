@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-08",
   "categories": [
     {
       "id": "learn",
@@ -58,6 +58,11 @@
     {
       "id": "ecosystem",
       "name": "Apps & token ecosystems"
+    },
+    {
+      "id": "games",
+      "name": "Games & arcade",
+      "description": "External Kaspa games and chess apps. Follow each project for its own device, wallet and fee requirements; these are separate from Geek gameplay."
     },
     {
       "id": "payments",
@@ -469,6 +474,16 @@
       "description": "Community platform for Kaspa ecosystem tools and tokens.",
       "source": "https://kaspa.com/",
       "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "kaspadollar",
+      "category": "ecosystem",
+      "name": "KaspaDollar · in development",
+      "url": "https://kaspadollar.com/",
+      "description": "Proposed KAS-backed dollar stablecoin for Kaspa L1. Design parameters are preliminary; the site describes development and fundraising, not a verified live or audited stablecoin.",
+      "source": "https://kaspadollar.com/how-it-works",
+      "reviewedAt": "2026-11-08",
       "status": "listed"
     },
     {
@@ -2530,9 +2545,189 @@
       "source": "https://swapzone.io/exchange/kaspa",
       "reviewedAt": "2026-11-05",
       "status": "listed"
+    },
+    {
+      "id": "kaspalytics",
+      "category": "explorers",
+      "name": "Kaspalytics",
+      "url": "https://www.kaspalytics.com/",
+      "description": "Kaspa network, mining, supply and transaction analytics.",
+      "source": "https://www.kaspalytics.com/",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "kasia",
+      "category": "ecosystem",
+      "name": "Kasia",
+      "url": "https://github.com/K-Kluster/Kasia",
+      "description": "Open-source peer-to-peer messaging protocol and application built on Kaspa.",
+      "source": "https://github.com/K-Kluster/Kasia",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "kastle",
+      "category": "wallets",
+      "name": "Kastle",
+      "url": "https://kastle.cc/",
+      "description": "Kaspa wallet with project documentation for managing assets across supported networks.",
+      "source": "https://docs.kastle.cc/",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "kef",
+      "category": "community",
+      "name": "Kaspa Ecosystem Foundation",
+      "url": "https://www.kaspafoundation.org/",
+      "description": "Ecosystem organization supporting Kaspa research, builders and community initiatives.",
+      "source": "https://www.kaspafoundation.org/",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "kii",
+      "category": "research",
+      "name": "Kaspa Industrial Initiative",
+      "url": "https://kaspa-kii.org/",
+      "description": "Industrial ecosystem initiative with standards and specification work stewarded by Stichting Kii; commercial products have separate operators.",
+      "source": "https://kaspa-kii.org/foundation/",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "kaspero-labs",
+      "category": "developers",
+      "name": "Kaspero Labs",
+      "url": "https://kasperolabs.com/",
+      "description": "Independent Kaspa software studio working on payments, wallets, security and developer tools.",
+      "source": "https://kasperolabs.com/",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "kat-foundation",
+      "category": "community",
+      "name": "Kaspa Alliance for Transparency",
+      "url": "https://kat.foundation/",
+      "description": "Community initiative presenting transparency principles and open ecosystem infrastructure.",
+      "source": "https://kat.foundation/charter",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "k-social",
+      "category": "ecosystem",
+      "name": "K · social app",
+      "url": "https://k-social.network/",
+      "description": "Open-source Kaspa microblogging app for public posts, replies and community interactions.",
+      "source": "https://github.com/thesheepcat/K",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "staghunt",
+      "category": "ecosystem",
+      "name": "Stag Hunt",
+      "url": "https://staghunt.app/",
+      "description": "Kaspa-native crowdfunding and bounty coordination with project-defined escrow, referees and expiry rules.",
+      "source": "https://staghunt.app/",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "kachat",
+      "category": "ecosystem",
+      "name": "KaChat",
+      "url": "https://play.google.com/store/apps/details?id=com.kachat.app",
+      "description": "Kaspa messaging app with chat, payment and chess features described in its published app listings.",
+      "source": "https://apps.apple.com/us/app/kachat/id6759102359",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "kasplay",
+      "category": "games",
+      "name": "KasPlay",
+      "url": "https://www.kasplay.fun/",
+      "description": "Browser arcade with multiple retro-style games and Kaspa-linked score records. The project advertises play without a wallet or sign-up.",
+      "source": "https://www.kasplay.fun/",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "kaplay",
+      "category": "games",
+      "name": "KaPlay",
+      "url": "https://apps.apple.com/us/app/kaplay/id6827369081",
+      "description": "Kaspa chess app listing friend matches, bots, tournaments and leaderboards. Check the app for device and transaction requirements.",
+      "source": "https://apps.apple.com/us/app/kaplay/id6827369081",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "tx-missile-command",
+      "category": "games",
+      "name": "TX Missile Command",
+      "url": "https://tx-missile-command.com/",
+      "description": "Kaspa-themed browser arcade project inspired by Missile Command.",
+      "source": "https://tx-missile-command.com/",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "kaswatch",
+      "category": "explorers",
+      "name": "KAS Watch",
+      "url": "https://kaswatch.app/",
+      "description": "Kaspa-focused market, network and news dashboards with free and premium features.",
+      "source": "https://kaswatch.app/",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "kinesis",
+      "category": "developers",
+      "name": "Kaspa Kinesis · hackathon build",
+      "url": "https://kaspakinesis.vercel.app/",
+      "description": "Multiplayer engine prototype exploring Kaspa-based messaging and randomness, with documentation and demos.",
+      "source": "https://github.com/peavey2787/KaspaKinesis",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "kanet",
+      "category": "developers",
+      "name": "KANet",
+      "url": "https://github.com/Unio996/KANet",
+      "description": "Self-hosted AI-agent infrastructure with Kaspa messaging, observation and transaction components.",
+      "source": "https://github.com/Unio996/KANet/blob/master/KANET-FOR-QWEN.md",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "chainvsdag",
+      "category": "learn",
+      "name": "ChainVsDag",
+      "url": "https://chainvsdag.com/",
+      "description": "Interactive 3D comparison of linear blockchains and Kaspa’s BlockDAG, with an embeddable visualization.",
+      "source": "https://chainvsdag.com/",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
+    },
+    {
+      "id": "opensilver",
+      "category": "developers",
+      "name": "OpenSilver · Kaspa covenant library",
+      "url": "https://github.com/trillskillz/OpenSilver",
+      "description": "Open-source covenant-pattern library and integration examples for Kaspa SilverScript.",
+      "source": "https://github.com/trillskillz/OpenSilver",
+      "reviewedAt": "2026-11-08",
+      "status": "listed"
     }
   ],
-  "updatedAt": "2026-11-06T00:32:01.241912+00:00",
+  "updatedAt": "2026-11-08T14:47:01.653431+00:00",
   "krc20Review": {
     "windowDays": 90,
     "candidateCount": 45,
