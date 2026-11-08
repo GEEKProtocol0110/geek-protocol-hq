@@ -1693,17 +1693,20 @@
       "status": "in-progress",
       "title": "Make page typography calmer and easier to read",
       "owner": "Maintainer prepares source and checks; founder reviews merge; physical-phone acceptance unassigned",
-      "nextAction": "Review the revised preview: founder rejected the initial no-glow version as too plain. Verify restrained glow and phone readability.",
+      "nextAction": "Review News and directory heading fix: regular UI sans at 600 replaces inherited Impact; founder device comparison pending.",
       "acceptance": [
         "Keep restrained centered cyan title/timer glow and gold/cyan edge lighting; remove chromatic double-shadows, body/answer glow and foreground grain.",
         "Reduce extra-bold weights and soften white text while preserving gold/cyan controls and keyboard focus.",
-        "Check representative phone and desktop layouts, site and continuity validation; record actual rendering limits."
+        "Check representative phone and desktop layouts, site and continuity validation; record actual rendering limits.",
+        "News market headings use a regular UI sans-serif family rather than inherited Impact, with crisp text and restrained weights."
       ],
       "dependsOn": [],
       "evidence": [
         "public/assets/styles.css",
         "public/assets/atmosphere.css",
-        "docs/READABILITY-POLISH.md"
+        "docs/READABILITY-POLISH.md",
+        "public/news/assets/news.css",
+        "public/kaspa/directory/assets/directory.css"
       ]
     },
     {

@@ -1214,3 +1214,9 @@ Founder agreed to classic games, starting with checkers and solitaire. Added sam
 ### November 8, 2026 — UX-016/017 Geek visual finish
 
 Founder requests all new games carry Geek identity. Added shared Geek game stylesheet, GIGA practice tips using existing artwork, logo headers, gold primary actions, custom checker rims, framed boards and dark circuit card backs/fronts. Behavior unchanged; 19 focused tests and site checks pass. Visual/phone acceptance remains separate.
+
+### November 8, 2026 — UX-014 News heading correction
+
+Founder screenshot exposed inherited Impact headings in News after earlier typography polish. Replaced News heading family with regular UI sans-serif, 600 weight, relaxed spacing and no text effects. Kept cyan/gold edge accents and added a CSS revision query. Source candidate only; News/crypto behavior and site/continuity checks recorded in follow-up PR. Phone rendering remains unclaimed.
+
+Directory included in UX-014 follow-up after the founder reported the same heavy text: replace inherited heading font, soften white, retain cyan/gold accents and refresh CSS revision. Catalog and filtering unchanged.
