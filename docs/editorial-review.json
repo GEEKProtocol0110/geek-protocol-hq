@@ -3411,9 +3411,16 @@
       "reason": "source-correction",
       "note": "HTTP is a protocol, not a language. Practice-only replacement: TECH-N-4a46c8d3f25b-Rd06700e155.",
       "answerKeyHash": "cd37c26d478354862ed9873fd3681db13517e82dd6cf5a563d34d8ebb1075e22"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-8c3ba98d7703",
+      "reason": "semantic-duplicate",
+      "note": "Same WWW acronym-expansion objective as TECH-N-168bcb9a7078; retain the concise survivor and preserve this issued answer key.",
+      "answerKeyHash": "117ceab5706de6330bf4ddf9ba27aa041bfa792511bcb8f06375d95e641f16aa"
     }
   ],
-  "retirementCount": 446,
+  "retirementCount": 447,
   "newLicensedImportsRetired": 258,
   "activeNewLicensedImportsPending": 3598,
   "activeDraftQuestions": 7516,
@@ -3468,7 +3475,7 @@
     }
   },
   "importCountCorrection": "The previous prose total of 3,868 licensed additions was incorrect: the original active snapshot has 3,856 new draft imports and 168 new source-checked authored items (92 Kaspa, 39 Comics, 37 Science Fiction).",
-  "maintainedAt": "2026-11-07",
+  "maintainedAt": "2026-11-08",
   "followUpAudits": [
     {
       "date": "2026-10-27",
@@ -3511,6 +3518,13 @@
       "scope": "Two selected web-basics items only. URL grading retained; HTTP wording corrected under a new practice-only identity. No category-wide certification.",
       "evidence": "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-07.md",
       "decisionRegister": "server/question-audit/technology-2026-11-07.json"
+    },
+    {
+      "date": "2026-11-08",
+      "task": "BANK-009",
+      "scope": "Six selected rows: five exact-grading internal confirmations and one semantic duplicate consolidated, not a contiguous/full-category audit.",
+      "evidence": "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-08.md",
+      "decisionRegister": "server/question-audit/technology-2026-11-08.json"
     }
   ],
   "practiceOnlyHolds": {

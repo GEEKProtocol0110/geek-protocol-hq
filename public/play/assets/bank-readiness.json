@@ -3,10 +3,10 @@
   "targetPerCategory": 1000,
   "requiredCategories": 8,
   "bankReady": false,
-  "active": 8438,
+  "active": 8437,
   "practiceOnly": 214,
-  "reviewed": 804,
-  "remaining": 7196,
+  "reviewed": 809,
+  "remaining": 7191,
   "categories": [
     {
       "id": "kaspa",
@@ -62,17 +62,17 @@
     {
       "id": "technology",
       "name": "Technology",
-      "active": 1485,
+      "active": 1484,
       "practiceOnly": 10,
-      "reviewed": 23,
-      "needsReview": 1462,
+      "reviewed": 28,
+      "needsReview": 1456,
       "target": 1000,
-      "remaining": 977,
+      "remaining": 972,
       "additionalQuestionsNeeded": 0,
       "tiers": {
-        "easy": 14,
-        "medium": 9,
-        "hard": 0
+        "easy": 15,
+        "medium": 12,
+        "hard": 1
       },
       "ready": false
     },

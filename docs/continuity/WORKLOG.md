@@ -1178,3 +1178,8 @@ Founder rejected the first preview as too plain. Restored restrained centered cy
 ## November 7, 2026 — BANK-009 web-basics continuation
 
 Reviewed two selected Technology items against RFC 3986 and CERN. Preserved URL grading with internal evidence; replaced misleading HTTP language wording under a new practice-only identity. Historical grading for all 1,470 baseline Technology rows remains unchanged through active/retired lookup. Counts: 8,438 active / 8,224 ranked-eligible / 214 practice-only / 804 eligible recorded reviews / 7,196 target deficit. Separate reviewer and whole-bank audit remain open. Exact checks belong in the PR.
+
+
+## November 8, 2026 — BANK-009 protocol and SI-prefix batch
+
+Reviewed five retained Technology items against RFC/BIPM/W3C primary sources and consolidated one WWW semantic duplicate with exact issued grading and canonical exclusion preserved. Counts: 8,437 active / 8,223 ranked-eligible / 214 practice-only / 809 eligible reviews / 7,191 target deficit. Six selected rows only; full-bank and independent review remain open. New deterministic regression forces the duplicate survivor into a ten-item pool and proves that the old issued identity excludes it. Exact validation and release evidence belong in the PR.
