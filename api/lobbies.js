@@ -1,3 +1,4 @@
+import classicOnlineHandler from '../server/classic-online-api.js';
 import duelHandler from '../server/duel-api.js';
 import royaleHandler from '../server/royale-api.js';
 import { randomBytes } from 'node:crypto';
@@ -115,6 +116,7 @@ const createRoom = async (session, body) => {
 };
 
 export default async function handler(req, res) {
+  if (req.query?.service === 'classic') return classicOnlineHandler(req, res);
   if (req.query?.service === 'royale') return royaleHandler(req, res);
   if (req.query?.service === 'duel') return duelHandler(req, res);
   setApiHeaders(res);

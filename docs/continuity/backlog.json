@@ -1864,6 +1864,29 @@
       "evidence": [
         "docs/GAME-POLISH.md"
       ]
+    },
+    {
+      "id": "GAME-002",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Online chess and checkers lobbies with accepted game requests",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review the stacked multiplayer candidate after PR #253; complete two-device browser acceptance in Preview before release.",
+      "acceptance": [
+        "Public and invite-only lobbies with request, accept, decline and cancellation.",
+        "Authenticated server-authoritative chess/checkers moves with atomic seat selection and revision checks.",
+        "Reconnect, draw consent, resignation, private-room visibility and multiplayer-client tests pass.",
+        "Separate-browser/device acceptance and exact-head CI recorded separately."
+      ],
+      "dependsOn": [
+        "UX-019",
+        "UX-020"
+      ],
+      "evidence": [
+        "docs/CLASSIC-MULTIPLAYER.md",
+        "tests/classic-online-api.test.js",
+        "tests/classic-online-client.test.js"
+      ]
     }
   ]
 }

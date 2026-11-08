@@ -77,6 +77,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-019 | P2 | in-progress | Add playable Geek Chess | Maintainer; founder release review |
 | UX-018 | P1 | in-progress | Fit Geek games to phone screens and compact active play | Maintainer fixes layout and checks; founder approves release; physical-phone acceptance unassigned |
 | UX-020 | P2 | in-progress | Unify the Geek Games visual feel and play controls | Maintainer; founder release review |
+| GAME-002 | P2 | in-progress | Online chess and checkers lobbies with accepted game requests | Maintainer; founder release review |
 
 ## CONT-001: Publish the continuation system
 
@@ -1147,3 +1148,18 @@ Acceptance:
 - Focused gameplay, site and continuity checks pass; rendered-device acceptance recorded separately.
 
 Evidence/specification: [docs/GAME-POLISH.md](../../docs/GAME-POLISH.md).
+
+## GAME-002: Online chess and checkers lobbies with accepted game requests
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: UX-019, UX-020.
+
+Next action: Review the stacked multiplayer candidate after PR #253; complete two-device browser acceptance in Preview before release.
+
+Acceptance:
+
+- Public and invite-only lobbies with request, accept, decline and cancellation.
+- Authenticated server-authoritative chess/checkers moves with atomic seat selection and revision checks.
+- Reconnect, draw consent, resignation, private-room visibility and multiplayer-client tests pass.
+- Separate-browser/device acceptance and exact-head CI recorded separately.
+
+Evidence/specification: [docs/CLASSIC-MULTIPLAYER.md](../../docs/CLASSIC-MULTIPLAYER.md), [tests/classic-online-api.test.js](../../tests/classic-online-api.test.js), [tests/classic-online-client.test.js](../../tests/classic-online-client.test.js).

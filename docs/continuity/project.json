@@ -160,5 +160,11 @@
     "status": "source-candidate",
     "evidence": "docs/GAME-POLISH.md",
     "nextAction": "Review PR #253; rendered-browser and physical-phone acceptance remain open."
+  },
+  "classicMultiplayer": {
+    "task": "GAME-002",
+    "status": "source-candidate",
+    "evidence": "docs/CLASSIC-MULTIPLAYER.md",
+    "nextAction": "Review multiplayer candidate stacked on #253; public/private lounge, requests and authoritative live turns. Two-device Preview acceptance remains outstanding."
   }
 }
