@@ -71,6 +71,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-013 | P1 | needs-evidence | Review all 17 open HQ reports and fix verified interface defects | Maintainer prepares source, tests and triage; founder approves merge; device/accessibility and independent content reviewers unassigned |
 | UX-014 | P1 | in-progress | Make page typography calmer and easier to read | Maintainer prepares source and checks; founder reviews merge; physical-phone acceptance unassigned |
 | ECO-007 | P1 | in-progress | Expand the ecosystem directory with KaspaDollar, social apps, builder resources and games | Maintainer prepares source and checks; founder reviews release |
+| UX-015 | P1 | in-progress | Give existing Geek modes a clear Games hub | Maintainer prepares source and checks; founder approves release; physical-device acceptance unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1050,3 +1051,18 @@ Acceptance:
 - Include five approved analytics, visualization and developer resources with primary evidence; separate editable project and broken-link drafts without automatic submission.
 
 Evidence/specification: [docs/KASPA-DIRECTORY.md](../../docs/KASPA-DIRECTORY.md), [docs/kaspa-directory.json](../../docs/kaspa-directory.json), [public/kaspa/directory/index.html](../../public/kaspa/directory/index.html).
+
+## UX-015: Give existing Geek modes a clear Games hub
+
+**P1 / in-progress.** Owner: Maintainer prepares source and checks; founder approves release; physical-device acceptance unassigned. Dependencies: none.
+
+Next action: Review hub PR, metadata and navigation checks, then inspect the preview on phone.
+
+Acceptance:
+
+- Group existing modes into Quick play, Adventures and With friends; show timing, pace/difficulty and access.
+- Links open setup screens only; no automatic game or room creation or new reward behavior.
+- Keep the gold/cyan Geek character with crisp reading text, responsive cards and keyboard focus.
+- Link from homepage and existing game navigation; register metadata and crawlable routes.
+
+Evidence/specification: [public/games/index.html](../../public/games/index.html), [public/games/assets/games.css](../../public/games/assets/games.css), [docs/GAMES-HUB.md](../../docs/GAMES-HUB.md).

@@ -128,7 +128,13 @@
   },
   "directoryKaspaDollar": {
     "task": "ECO-007",
+    "status": "merged-deployed-http-verified",
+    "nextAction": "PR #248 merged as e7206648a9afc86ae0450b415a30a4f0b2c0b28d; production READY and exact 183-card canonical HTML verified. Keep device acceptance separate."
+  },
+  "gamesHub": {
+    "task": "UX-015",
     "status": "source-candidate",
-    "nextAction": "Review PR #248: 183 resources / 18 categories and separate project-submission/broken-link drafts. Games hub is separately prepared in #249."
+    "evidence": "docs/GAMES-HUB.md",
+    "nextAction": "Review existing-mode cards and preview; phone acceptance remains separate."
   }
 }

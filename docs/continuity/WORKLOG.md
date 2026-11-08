@@ -1197,3 +1197,8 @@ Founder approved all seven proposed additions plus K, Stag Hunt, KaChat and a ga
 ### November 8, 2026 — ECO-007 additional resources and contribution actions
 
 Added five founder-approved primary-sourced resources (KAS Watch, Kinesis, KANet, ChainVsDag, OpenSilver), 183 total. Split project suggestion and broken-link reporting into explicit GitHub draft links. No automatic submission, third-party execution or economic change. Directory/client/site/continuity checks will be recorded in #248; visual and phone acceptance remain unclaimed.
+
+
+## November 8, 2026 — UX-015 Geek Games hub
+
+Founder approved a hub with clear game cards. Added /games/ with eight existing modes grouped into Quick play, Adventures and With friends, timing/pace/access details, setup-only links, saved-progress and separate leaderboard/companion links. Home and five game navs expose the hub. Assisted Practice is correctly labeled timed; Memory and Quest are untimed. Gold/cyan edge lighting and lighter body copy preserve the approved readability direction. No gameplay/API/reward/room-start logic added. Static/metadata and preview evidence belong in PR; physical-phone acceptance remains separate.
