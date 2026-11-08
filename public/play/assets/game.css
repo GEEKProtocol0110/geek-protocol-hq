@@ -55,7 +55,7 @@ h1,h2{font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-we
 .timer-wrap svg{position:absolute;width:clamp(180px,25vw,248px);height:clamp(180px,25vw,248px);transform:rotate(-90deg);filter:drop-shadow(0 0 12px rgba(112,230,220,.22))}
 .timer-track,.timer-line{fill:none;stroke-width:1.2}.timer-track{stroke:#273c38}.timer-line{stroke:var(--cyan);stroke-linecap:round;stroke-dasharray:125.66;stroke-dashoffset:0;transition:stroke .2s}
 .timer-wrap.warning .timer-line{stroke:var(--gold)}.timer-wrap.danger .timer-line{stroke:var(--red)}
-.timer-wrap strong{position:relative;color:var(--cyan);font-size:2rem;font-variant-numeric:tabular-nums;line-height:1;text-shadow:none}
+.timer-wrap strong{position:relative;color:var(--cyan);font-size:2rem;font-variant-numeric:tabular-nums;line-height:1;text-shadow:0 0 8px rgba(112,230,220,.14)}
 .timer-wrap.warning strong{color:var(--gold)}.timer-wrap.danger strong{color:var(--red)}
 
 .question-progress{height:3px;background:#1d2724;overflow:hidden}.question-progress i{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--cyan),var(--gold));box-shadow:0 0 14px rgba(112,230,220,.45);transition:width .25s ease}

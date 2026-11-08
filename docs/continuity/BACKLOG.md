@@ -1024,11 +1024,11 @@ Evidence/specification: [docs/OPEN-ISSUE-REVIEW-2026-11-06.md](../../docs/OPEN-I
 
 **P1 / in-progress.** Owner: Maintainer prepares source and checks; founder reviews merge; physical-phone acceptance unassigned. Dependencies: none.
 
-Next action: Review the typography PR and preview, then confirm readability on the founder phone.
+Next action: Review the revised preview: founder rejected the initial no-glow version as too plain. Verify restrained glow and phone readability.
 
 Acceptance:
 
-- Remove reading-text glow and chromatic shadows and the full-screen grain overlay.
+- Keep restrained centered cyan title/timer glow and gold/cyan edge lighting; remove chromatic double-shadows, body/answer glow and foreground grain.
 - Reduce extra-bold weights and soften white text while preserving gold/cyan controls and keyboard focus.
 - Check representative phone and desktop layouts, site and continuity validation; record actual rendering limits.
 

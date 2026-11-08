@@ -1168,3 +1168,8 @@ Full local npm run verify passed on Node 24.22.1 with native Redis 7.0.15: 755 H
 ## November 7, 2026 — UX-014 readability polish
 
 Founder reported bold bright blurry white text on black. Removed reading-text shadows and the foreground grain overlay, reduced extra-bold typography to 700, softened white copy and shared/Play dark surfaces. Gold/cyan accents, focus and answer states remain. Source candidate; validation and preview evidence belong in the PR. Physical-phone acceptance remains open.
+
+
+### UX-014 — founder preview correction
+
+Founder rejected the first preview as too plain. Restored restrained centered cyan title/timer glow and cyan/gold edge lighting, while keeping body/answer copy sharp, softer white, reduced extra-bold weights and no grain/chromatic double-shadow. Preview and new exact-head checks remain pending.
