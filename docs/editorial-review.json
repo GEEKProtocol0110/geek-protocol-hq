@@ -3010,14 +3010,14 @@
       "category": "movies",
       "id": "MOV-N-ffdb7dbe5996",
       "reason": "source-correction",
-      "note": "Consolidate the shared voice-role fact under Movies and remove the question that reveals the character’s name in its stem. Canonical replacement: POP-N-f9b081c8be26-Rc38649ac9a.",
+      "note": "Consolidate the shared voice-role fact under Movies and remove the question that reveals the character\u2019s name in its stem. Canonical replacement: POP-N-f9b081c8be26-Rc38649ac9a.",
       "answerKeyHash": "b4300c95f8d74b8986ec8bdb9317d4927b58997a3c546d2a62e61776b773ee31"
     },
     {
       "category": "pop-culture",
       "id": "POP-N-f9b081c8be26",
       "reason": "source-correction",
-      "note": "Consolidate the shared voice-role fact under Movies and remove the question that reveals the character’s name in its stem. Canonical replacement: POP-N-f9b081c8be26-Rc38649ac9a.",
+      "note": "Consolidate the shared voice-role fact under Movies and remove the question that reveals the character\u2019s name in its stem. Canonical replacement: POP-N-f9b081c8be26-Rc38649ac9a.",
       "answerKeyHash": "9f1f71f1560e29daeb5413a0ed438073daf1607b53bee2b84da7a7011b7697f7"
     },
     {
@@ -3094,7 +3094,7 @@
       "category": "technology",
       "id": "TECH-0046",
       "reason": "source-correction",
-      "note": "Correct the keyed person’s misspelled surname Gray to Cray under a new identity; replace a vague honorific with a dated company/design relation. Canonical replacement: TECH-0046-R7e5d1009b6.",
+      "note": "Correct the keyed person\u2019s misspelled surname Gray to Cray under a new identity; replace a vague honorific with a dated company/design relation. Canonical replacement: TECH-0046-R7e5d1009b6.",
       "answerKeyHash": "d549adaffa2061854e83b03491c511ba32deba7f6b792acee451f6a98c78bbfe"
     },
     {
@@ -3404,9 +3404,16 @@
       "reason": "source-correction",
       "note": "Replace an undated intended-to-succeed claim and code-name lore with the explicit historical release date. Practice-only replacement: TECH-N-d0bbfb636d98-R488e1b3347.",
       "answerKeyHash": "861c578d5a98507b3cc4a276b584ea5355f07855f44b198293a9d4dec5c86d45"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-4a46c8d3f25b",
+      "reason": "source-correction",
+      "note": "HTTP is a protocol, not a language. Practice-only replacement: TECH-N-4a46c8d3f25b-Rd06700e155.",
+      "answerKeyHash": "cd37c26d478354862ed9873fd3681db13517e82dd6cf5a563d34d8ebb1075e22"
     }
   ],
-  "retirementCount": 445,
+  "retirementCount": 446,
   "newLicensedImportsRetired": 258,
   "activeNewLicensedImportsPending": 3598,
   "activeDraftQuestions": 7516,
@@ -3461,7 +3468,7 @@
     }
   },
   "importCountCorrection": "The previous prose total of 3,868 licensed additions was incorrect: the original active snapshot has 3,856 new draft imports and 168 new source-checked authored items (92 Kaspa, 39 Comics, 37 Science Fiction).",
-  "maintainedAt": "2026-11-06",
+  "maintainedAt": "2026-11-07",
   "followUpAudits": [
     {
       "date": "2026-10-27",
@@ -3497,6 +3504,13 @@
       "scope": "Six selected hardware/OS/interface drafts, not a whole-category or contiguous-prefix approval. Three existing identities retain exact grading and receive item-specific internal source checks; three corrected replacements remain practice-only drafts pending separate review.",
       "evidence": "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md",
       "decisionRegister": "server/question-audit/technology-2026-11-06.json"
+    },
+    {
+      "date": "2026-11-07",
+      "task": "BANK-009",
+      "scope": "Two selected web-basics items only. URL grading retained; HTTP wording corrected under a new practice-only identity. No category-wide certification.",
+      "evidence": "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-07.md",
+      "decisionRegister": "server/question-audit/technology-2026-11-07.json"
     }
   ],
   "practiceOnlyHolds": {
