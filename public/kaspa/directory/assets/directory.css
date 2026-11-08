@@ -55,3 +55,5 @@
 @media(max-width:900px){.directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.directory-nav{align-items:flex-start;flex-direction:column}.directory-main{padding:2.25rem 1.15rem}.directory-grid,.directory-controls{grid-template-columns:1fr}.directory-controls{padding:1.15rem}.directory-controls button{width:100%}.directory-heading{align-items:flex-start}.directory-card{padding:1.25rem}.directory-contribute{padding:1.3rem}}
 @media(forced-colors:active){.directory-card,.directory-controls,.directory-contribute{background:Canvas;border-color:CanvasText}.directory-page a{color:LinkText}}
+
+.directory-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin:1rem 0}.directory-action{display:inline-flex;align-items:center;min-height:48px;padding:.65rem 1rem;border:1px solid currentColor;border-radius:.7rem;text-decoration:none}.directory-action:focus-visible{outline:3px solid var(--gold,#ffd36a);outline-offset:4px}
