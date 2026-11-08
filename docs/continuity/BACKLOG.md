@@ -74,6 +74,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-015 | P1 | in-progress | Give existing Geek modes a clear Games hub | Maintainer prepares source and checks; founder approves release; physical-device acceptance unassigned |
 | UX-016 | P1 | in-progress | Add Brain Games for recall, arithmetic and attention practice | Maintainer builds and checks; founder approves release; physical-device acceptance unassigned |
 | UX-017 | P1 | in-progress | Add classic strategy and card games, starting with checkers and solitaire | Maintainer builds and checks; founder approves release; browser/physical-device acceptance unassigned |
+| UX-018 | P2 | in-progress | Add playable Geek Chess | Maintainer; founder release review |
 
 ## CONT-001: Publish the continuation system
 
@@ -1101,3 +1102,17 @@ Acceptance:
 - Apply the shared Geek game styling, GIGA practice tips and crisp cyan/gold accents; retain readable text, rank/suit labels and focus outlines.
 
 Evidence/specification: [docs/CLASSIC-GAMES.md](../../docs/CLASSIC-GAMES.md), [public/games/classics/](../../public/games/classics/), [public/games/checkers/index.html](../../public/games/checkers/index.html), [public/games/solitaire/index.html](../../public/games/solitaire/index.html), [tests/classic-games.test.js](../../tests/classic-games.test.js), [public/games/assets/geek-play.css](../../public/games/assets/geek-play.css).
+
+## UX-018: Add playable Geek Chess
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: UX-017.
+
+Next action: Review PR and preview; verify rendered phone layout before acceptance.
+
+Acceptance:
+
+- Playable local chess with legal moves, special moves and promotion choices.
+- Geek branding and responsive board.
+- Rules tests and site/continuity checks pass.
+
+Evidence/specification: [docs/CLASSIC-GAMES.md](../../docs/CLASSIC-GAMES.md), [tests/chess.test.js](../../tests/chess.test.js).

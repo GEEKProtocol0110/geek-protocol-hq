@@ -1220,3 +1220,7 @@ Founder requests all new games carry Geek identity. Added shared Geek game style
 Founder screenshot exposed inherited Impact headings in News after earlier typography polish. Replaced News heading family with regular UI sans-serif, 600 weight, relaxed spacing and no text effects. Kept cyan/gold edge accents and added a CSS revision query. Source candidate only; News/crypto behavior and site/continuity checks recorded in follow-up PR. Phone rendering remains unclaimed.
 
 Directory included in UX-014 follow-up after the founder reported the same heavy text: replace inherited heading font, soften white, retain cyan/gold accents and refresh CSS revision. Catalog and filtering unchanged.
+
+### November 8, 2026 — UX-018 Geek Chess candidate
+
+Added first-party local chess, Geek visual finish and responsive board, using licensed vendored chess.js 1.4.0. Special moves, promotion choice, legal hints, undo, flip and move history; no server/economy changes. Rule tests and site/continuity checks run before PR. Rendered/physical-device acceptance remains open.

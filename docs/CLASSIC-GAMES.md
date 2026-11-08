@@ -18,3 +18,9 @@ Game-rule/immutability tests and shipped-client fixture tests cover opening move
 ## Geek visual finish — November 8, 2026
 
 Founder requires a consistent Geek look for every new game. Shared /games/assets/geek-play.css adds branded headers, existing GIGA artwork in compact practice-tip panels, gold primary controls, cyan/gold rimmed checker pieces, a framed board and circuit-patterned dark card backs. Card fronts retain readable rank/suit symbols on dark blue panels with distinct red-suit text; no color-only cues. Brain prompts use a framed signal panel. No new game logic, image generation, external requests or score behavior. Site and all 19 focused game/client/homepage checks pass. Visual browser/phone acceptance remains unclaimed.
+
+## Geek Chess candidate — November 8, 2026 (UX-018)
+
+Local two-player untimed chess with legal hints, undo, board flip and all four promotion choices. Castling, en passant, checkmate, stalemate, insufficient material, threefold repetition and fifty-move draws use vendored chess.js 1.4.0, BSD-2-Clause; license retained beside the unmodified ESM build. Source: https://github.com/jhlywa/chess.js/tree/v1.4.0 (npm chess.js 1.4.0). No runtime network dependency. Repetition and fifty-move draws are automatic casual conventions rather than tournament claims. Refresh resets the in-memory game. No bots, remote multiplayer, account writes or rewards. Board scales to its parent without a minimum width; gold/white and cyan/black pieces have explicit accessible names. Browser, screen-reader and physical-phone acceptance remain open.
+
+Validation: opening perft depth 3 (8,902 leaves), mate/undo, castling, en passant, underpromotion, repetition, stalemate and pinned-piece safety. This validates rules integration, not a complete browser interaction test.
