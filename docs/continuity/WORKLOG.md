@@ -1203,6 +1203,18 @@ Added five founder-approved primary-sourced resources (KAS Watch, Kinesis, KANet
 
 Founder approved a hub with clear game cards. Added /games/ with eight existing modes grouped into Quick play, Adventures and With friends, timing/pace/access details, setup-only links, saved-progress and separate leaderboard/companion links. Home and five game navs expose the hub. Assisted Practice is correctly labeled timed; Memory and Quest are untimed. Gold/cyan edge lighting and lighter body copy preserve the approved readability direction. No gameplay/API/reward/room-start logic added. Static/metadata and preview evidence belong in PR; physical-phone acceptance remains separate.
 
+### November 8, 2026 — UX-016 Brain Games candidate
+
+Added Signal Sequence, Number Forge and Rule Shift in a shared Brain Lab, with three levels and ten untimed rounds. Explicit start, per-answer explanations, exit/replay and local best-score clearing. No server, account, leaderboard, XP or reward writes. Memory Grid remains linked for visual matching. Tests and release evidence belong in the PR; rendered/phone acceptance remains separate.
+
+### November 8, 2026 — UX-017 classic strategy and cards candidate
+
+Founder agreed to classic games, starting with checkers and solitaire. Added same-device two-player checkers and solo draw-one Klondike, with instructions, legal move validation and practice undo; no server, account, reward or persistence writes. Chess/backgammon remain planned. Bundled with pending Brain Games #250; source tests are not rendered/phone acceptance.
+
+### November 8, 2026 — UX-016/017 Geek visual finish
+
+Founder requests all new games carry Geek identity. Added shared Geek game stylesheet, GIGA practice tips using existing artwork, logo headers, gold primary actions, custom checker rims, framed boards and dark circuit card backs/fronts. Behavior unchanged; 19 focused tests and site checks pass. Visual/phone acceptance remains separate.
+
 ### November 8, 2026 — UX-014 News heading correction
 
 Founder screenshot exposed inherited Impact headings in News after earlier typography polish. Replaced News heading family with regular UI sans-serif, 600 weight, relaxed spacing and no text effects. Kept cyan/gold edge accents and added a CSS revision query. Source candidate only; News/crypto behavior and site/continuity checks recorded in follow-up PR. Phone rendering remains unclaimed.
