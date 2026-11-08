@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "reviewedAt": "2026-11-08",
+  "dateBasis": "America/Detroit",
+  "task": "BANK-009",
+  "reviewKind": "internal-primary-source-technology-batch",
+  "independentReview": false,
+  "difficultyCalibration": "unchanged-provisional-imported",
+  "baselineCommit": "486a468e2f70475ca093ce10974330642d140055",
+  "scope": "Six selected rows: five exact-grading internal confirmations and one semantic duplicate consolidated, not a contiguous/full-category audit.",
+  "retained": [
+    {
+      "category": "technology",
+      "id": "TECH-0607",
+      "gradingHash": "e48584ed3223c8b9cad7e70c9f71e6fb9e9dbb644fb05d58d73b891fc3dacec1",
+      "source": "https://www.bipm.org/en/measurement-units/si-prefixes",
+      "sourceClaim": "The SI prefix kilo represents a factor of one thousand, or 10^3. This is the decimal metric prefix, not the binary prefix kibi.",
+      "distractorReview": [
+        "10000 is 10^4, not kilo.",
+        "100 is hecto.",
+        "1000 is kilo.",
+        "1000000 is mega."
+      ],
+      "contextDecision": "Exact prompt/options/key and provisional imported difficulty retained. Internal primary-source check only; no independent review or difficulty calibration claimed."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0663",
+      "gradingHash": "2303713a56869da774f9e6298b1391d16a90c41e7f63ed9410bf53e120165211",
+      "source": "https://www.rfc-editor.org/rfc/rfc9051.html",
+      "sourceClaim": "IMAP expands to Internet Message Access Protocol. It lets a mail client work with messages and mailboxes stored on a server; sending outgoing mail is a separate function.",
+      "distractorReview": [
+        "Intelligent Message Account Process is not the standardized name.",
+        "Internet Massive Access Peak is not the standardized name.",
+        "Internet Message Access Protocol is the RFC title.",
+        "Intelligent Messaging Account Protocol is not the standardized name."
+      ],
+      "contextDecision": "Exact prompt/options/key and provisional imported difficulty retained. Internal primary-source check only; no independent review or difficulty calibration claimed."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-9a30b3c928d6",
+      "gradingHash": "1667093c33c7e37f1f8174287cc1554da9a41efb5c0cc04f1ef9b8c09c1ac8f7",
+      "source": "https://www.rfc-editor.org/info/rfc959/",
+      "sourceClaim": "FTP stands for File Transfer Protocol and can transfer files between computers. The expansion does not imply that ordinary FTP encrypts a connection or is the best choice for sensitive transfers.",
+      "distractorReview": [
+        "File To Person is not the protocol name.",
+        "File Transfer Protocol is the RFC name.",
+        "Fast Transfer Protocol is not the name.",
+        "Full Transfer Protocol is not the name."
+      ],
+      "contextDecision": "Exact prompt/options/key and provisional imported difficulty retained. Internal primary-source check only; no independent review or difficulty calibration claimed."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-168bcb9a7078",
+      "gradingHash": "e3fc9888f717a37179654faaecf9a09a628721c63365f1f116dc43d1d0d22f13",
+      "source": "https://www.w3.org/WWW/Overview.html",
+      "sourceClaim": "WWW abbreviates World Wide Web. The Web is the linked information system accessed with browsers; it is not another name for every service on the Internet.",
+      "distractorReview": [
+        "Wild Wonderful World is not the W3C expansion.",
+        "World Wide Web is the identified expansion.",
+        "Whole World Web is not the identified name.",
+        "World War Web is not the identified name."
+      ],
+      "contextDecision": "Exact prompt/options/key and provisional imported difficulty retained. Internal primary-source check only; no independent review or difficulty calibration claimed."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-f6c87971e261",
+      "gradingHash": "92e457a68e193b2376c1a5ac7ee46d8101e27fc52e657e612ec157353c33305d",
+      "source": "https://www.bipm.org/en/measurement-units/si-prefixes",
+      "sourceClaim": "The SI prefix nano represents one billionth, or 10^-9. For example, a nanometer is one billionth of a meter.",
+      "distractorReview": [
+        "One billionth is 10^-9, nano.",
+        "10 is deca.",
+        "1000000 is mega.",
+        "1000000000 is giga."
+      ],
+      "contextDecision": "Exact prompt/options/key and provisional imported difficulty retained. Internal primary-source check only; no independent review or difficulty calibration claimed."
+    }
+  ],
+  "retirements": [
+    {
+      "category": "technology",
+      "id": "TECH-N-8c3ba98d7703",
+      "gradingHash": "117ceab5706de6330bf4ddf9ba27aa041bfa792511bcb8f06375d95e641f16aa",
+      "canonicalId": "TECH-N-168bcb9a7078",
+      "reason": "semantic-duplicate",
+      "note": "Same WWW acronym-expansion objective as TECH-N-168bcb9a7078; retain the concise survivor and preserve this issued answer key."
+    }
+  ],
+  "pairs": [
+    {
+      "ids": [
+        "TECH-N-168bcb9a7078",
+        "TECH-N-8c3ba98d7703"
+      ],
+      "categories": [
+        "technology",
+        "technology"
+      ],
+      "gradingHashes": [
+        "e3fc9888f717a37179654faaecf9a09a628721c63365f1f116dc43d1d0d22f13",
+        "117ceab5706de6330bf4ddf9ba27aa041bfa792511bcb8f06375d95e641f16aa"
+      ],
+      "disposition": "resolved",
+      "note": "Same WWW acronym-expansion objective as TECH-N-168bcb9a7078; retain the concise survivor and preserve this issued answer key.",
+      "reviewedAt": "2026-11-08",
+      "source": "https://www.w3.org/WWW/Overview.html",
+      "retiredIds": [
+        "TECH-N-8c3ba98d7703"
+      ]
+    }
+  ],
+  "duplicateReview": "Inspected active registry JSON prompts for FTP, IMAP, WWW and metric-prefix objectives. Kilo and nano ask distinct factors; the two WWW rows ask the same expansion despite dissimilar wording. Whole-bank semantic review remains open."
+}

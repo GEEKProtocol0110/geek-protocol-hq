@@ -2,17 +2,17 @@
   "metadata": {
     "title": "GEEK Protocol — Technology Question Bank",
     "version": "2.0.0-distinct",
-    "maintainedAt": "2026-11-07",
-    "questionCount": 1470,
-    "conceptCount": 1470,
+    "maintainedAt": "2026-11-08",
+    "questionCount": 1469,
+    "conceptCount": 1469,
     "category": "Technology",
     "difficultyDistribution": {
       "easy": 567,
-      "medium": 605,
+      "medium": 604,
       "hard": 298
     },
     "correctIndexDistribution": {
-      "0": 372,
+      "0": 371,
       "1": 339,
       "2": 366,
       "3": 393
@@ -10418,17 +10418,19 @@
       ],
       "correctIndex": 2,
       "difficulty": "medium",
-      "funFact": null,
+      "funFact": "The SI prefix kilo represents a factor of one thousand, or 10^3. This is the decimal metric prefix, not the binary prefix kibi.",
       "tags": [
         "technology"
       ],
       "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
+      "source": "https://www.bipm.org/en/measurement-units/si-prefixes",
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
+      "reviewStatus": "source-checked",
       "conceptId": "TECH-0607",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "originalSource": "https://github.com/uberspot/OpenTriviaQA",
+      "reviewedAt": "2026-11-08"
     },
     {
       "id": "TECH-0608",
@@ -11480,17 +11482,19 @@
       ],
       "correctIndex": 2,
       "difficulty": "medium",
-      "funFact": null,
+      "funFact": "IMAP expands to Internet Message Access Protocol. It lets a mail client work with messages and mailboxes stored on a server; sending outgoing mail is a separate function.",
       "tags": [
         "technology"
       ],
       "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
+      "source": "https://www.rfc-editor.org/rfc/rfc9051.html",
       "sourceFile": "source-science-technology.txt",
       "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
+      "reviewStatus": "source-checked",
       "conceptId": "TECH-0663",
-      "maintenanceCheckedAt": "2026-10-07"
+      "maintenanceCheckedAt": "2026-10-07",
+      "originalSource": "https://github.com/uberspot/OpenTriviaQA",
+      "reviewedAt": "2026-11-08"
     },
     {
       "id": "TECH-0664",
@@ -26523,17 +26527,19 @@
       "conceptId": "TECH-N-9a30b3c928d6",
       "category": "Technology",
       "subcategory": "Science Technology",
-      "funFact": null,
+      "funFact": "FTP stands for File Transfer Protocol and can transfer files between computers. The expansion does not imply that ordinary FTP encrypts a connection or is the best choice for sensitive transfers.",
       "tags": [
         "technology"
       ],
       "volatile": false,
       "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
+      "reviewStatus": "source-checked",
       "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
+      "source": "https://www.rfc-editor.org/info/rfc959/",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "hard"
+      "difficulty": "hard",
+      "originalSource": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
+      "reviewedAt": "2026-11-08"
     },
     {
       "prompt": "Saturn is the Roman name of the Greek Titan Cronus. Who is Cronus son?",
@@ -27290,33 +27296,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "hard"
-    },
-    {
-      "prompt": "WWW, an abbreviation well known to Internet lovers, actually stands for what?",
-      "options": [
-        "World Wide Web",
-        "World Wild Web",
-        "Windows World Wide",
-        "Wonderful World of Web-casting"
-      ],
-      "correctIndex": 0,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 2125,
-      "id": "TECH-N-8c3ba98d7703",
-      "conceptId": "TECH-N-8c3ba98d7703",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "What was the first spacecraft to fly by Jupiter?",
@@ -32031,17 +32010,19 @@
       "conceptId": "TECH-N-168bcb9a7078",
       "category": "Technology",
       "subcategory": "Science Technology",
-      "funFact": null,
+      "funFact": "WWW abbreviates World Wide Web. The Web is the linked information system accessed with browsers; it is not another name for every service on the Internet.",
       "tags": [
         "technology"
       ],
       "volatile": false,
       "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
+      "reviewStatus": "source-checked",
       "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
+      "source": "https://www.w3.org/WWW/Overview.html",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "originalSource": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
+      "reviewedAt": "2026-11-08"
     },
     {
       "prompt": "What biological term refers to the organs, whose function is considered to have been lost or reduced during evolution?",
@@ -35119,17 +35100,19 @@
       "conceptId": "TECH-N-f6c87971e261",
       "category": "Technology",
       "subcategory": "Science Technology",
-      "funFact": null,
+      "funFact": "The SI prefix nano represents one billionth, or 10^-9. For example, a nanometer is one billionth of a meter.",
       "tags": [
         "technology"
       ],
       "volatile": false,
       "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
+      "reviewStatus": "source-checked",
       "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
+      "source": "https://www.bipm.org/en/measurement-units/si-prefixes",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "originalSource": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
+      "reviewedAt": "2026-11-08"
     },
     {
       "prompt": "Finish the popular quote by the great Greek philosopher Aristotle: ‘There was never a genius without a tincture of…’.",

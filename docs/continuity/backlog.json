@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-07",
+  "updatedAt": "2026-11-08",
   "priorityOrder": [
     "P0",
     "P1",
@@ -86,7 +86,7 @@
       "status": "active",
       "title": "Audit every question category before treating counts as quality",
       "owner": "Content maintainer; independent editor unassigned",
-      "nextAction": "Review the November 7 two-item Technology web-basics candidate and exact-head CI; then continue unflagged rows. No whole-bank or independent certification.",
+      "nextAction": "Review the November 8 Technology candidate and exact-head CI, then continue the full-bank audit.",
       "acceptance": [
         "All active identities have a recorded audit disposition; screening and factual review coverage are distinguished.",
         "Semantic duplicates, inverse/paraphrased facts, key/distractor ambiguity, missing media/context, encoding, taxonomy, dates/editions and licensing are reviewed, including unflagged imports.",
@@ -112,7 +112,8 @@
         "server/question-audit/technology-2026-10-28.json",
         "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md",
         "server/question-audit/technology-2026-11-06.json",
-        "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-07.md"
+        "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-07.md",
+        "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-08.md"
       ],
       "validationEvidence": [
         "Initial full-bank screen: 8,371 baseline active / 864 recorded checks / 7,507 drafts; 33 candidate pairs, 26 within and seven cross-category. Internal triage: 15 duplicate retirements, ten retained distinct objectives, four scope and four category decisions outstanding. Candidate: 8,356 active / 7,492 drafts; 76 encoding and four time-wording signals. No factual certification added.",

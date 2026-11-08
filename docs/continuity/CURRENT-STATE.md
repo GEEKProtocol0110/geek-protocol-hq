@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-11-07. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-11-08. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -10,14 +10,14 @@ Record date: 2026-11-07. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,224 active ranked-eligible questions, plus 214 practice-only unranked draft questions (not ranked-eligible, not source-checked); 804 recorded internal source reviews; 7,196 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,223 active ranked-eligible questions, plus 214 practice-only unranked draft questions (not ranked-eligible, not source-checked); 809 recorded internal source reviews; 7,191 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
 | Kaspa | 866 | 766 | 234 |
 | Video games | 601 | 0 | 1000 |
 | Science fiction | 514 | 0 | 1000 |
-| Technology | 1485 | 23 | 977 |
+| Technology | 1484 | 28 | 972 |
 | Movies | 1490 | 5 | 995 |
 | History | 1502 | 9 | 991 |
 | Comics | 412 | 1 | 999 |
@@ -25,9 +25,9 @@ Record date: 2026-11-07. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-009: active.** BANK-009 continues with two selected web-basics items: unchanged URL grading with primary evidence, and an HTTP wording correction under a new practice-only identity. Internal candidate; independent review and whole-bank audit remain open.
+**BANK-009: active.** BANK-009: five internal primary-source checks and one WWW semantic duplicate consolidation prepared. Historical grading retained; whole-bank and independent review remain open.
 
-Next task: **BANK-009**. Review the November 7 web-basics candidate and exact-head CI, then continue factual/semantic/context/authorship review across the bank.
+Next task: **BANK-009**. Review the November 8 Technology candidate and CI; then continue unflagged factual, semantic, category and authorship review.
 
 ## Holds
 

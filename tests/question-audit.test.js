@@ -147,3 +147,25 @@ test('retired overlapping Joker objective keeps saved grading and excludes its r
     canonical.practiceOnly=true;
   }
 });
+
+test('WWW consolidation preserves both keys and prevents the same fact after an old run', async()=>{
+  const ledger=JSON.parse(readFileSync('server/question-audit/technology-2026-11-08.json','utf8'));
+  const bank=loadQuestionBank('technology');
+  const item=ledger.retirements[0], old=bank.byId.get(item.id);
+  const survivor=bank.questions.find(q=>q.id===item.canonicalId);
+  assert.equal(gradingHash(old),item.gradingHash);
+  assert.equal(old.conceptId,survivor.conceptId);
+  assert.ok(!bank.questions.some(q=>q.id===old.id));
+  for(const d of ledger.retained){
+    const q=bank.byId.get(d.id);
+    assert.equal(gradingHash(q),d.gradingHash);
+    assert.equal(q.source,d.source);
+    assert.equal(q.reviewStatus,'source-checked');
+    assert.equal(q.reviewedAt,ledger.reviewedAt);
+  }
+  const controls=bank.questions.filter(q=>!q.practiceOnly&&q.difficulty===survivor.difficulty&&q.id!==survivor.id).slice(0,9);
+  const allowed=new Set([survivor.id,...controls.map(q=>q.id)]);
+  const excluded=bank.questions.filter(q=>q.difficulty===survivor.difficulty&&!allowed.has(q.id)).map(q=>q.id);
+  assert.ok((await selectRoundQuestionIds('technology',4,excluded)).includes(survivor.id));
+  await assert.rejects(selectRoundQuestionIds('technology',4,[...excluded,old.id]),/QUESTION_POOL_EXHAUSTED/);
+});
