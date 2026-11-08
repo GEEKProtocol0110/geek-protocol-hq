@@ -68,3 +68,12 @@ ECO-004 now prepares 60 native-KAS provider listings: 37 spot exchanges, 14 brok
 ## KaspaDollar — November 8, 2026
 
 Founder requested https://kaspadollar.com/ be included. Added one Apps & token ecosystems resource named KaspaDollar · in development. The project home and /how-it-works describe a proposed KAS-backed dollar stablecoin on L1, with preliminary parameters. The label and description distinguish development/fundraising from a verified live or audited product. No final ticker, security endorsement, donation link, wallet action or investment claim is added. Source review date is editorial; no functionality or solvency test is claimed. Catalog now contains 165 resources in 17 categories. Exact tests and release evidence belong in the PR.
+
+
+### Founder-approved expansion and games category
+
+The founder approved Kaspalytics, Kasia, Kastle, KEF, Kii, Kaspero Labs and KAT, then requested K app, Stag Hunt, KaChat and games. Added all ten plus KasPlay, KaPlay and TX Missile Command, bringing the candidate to 178 resources / 18 categories including Games & arcade. K uses the web destination linked by its own repository; KaChat uses its Android listing with its publisher app listing as feature evidence. Stag Hunt is coordination/crowdfunding, not an arcade game. Its page currently displays a winner-selection bug notice and claims risk-free refunds; neither safety claims nor refund assurances are repeated. No donation, escrow, chat or wallet action was performed.
+
+Official project/repository/store sources support the descriptions. Several pages are client-rendered: KAT and KEF had indexed primary-site evidence but no readable fetched body; TX Missile Command returned its loading shell and was not gameplay-tested. KasPlay score figures and chain/security claims are not independently verified. KaPlay chess features are publisher-described, not played. Existing directory disclaimers distinguish listings from endorsement/security/functionality acceptance.
+
+Geek already has Practice, Daily, Gauntlet, Quest, Memory, Duel and Royale routes. A separate first-party Games hub is recommended as a follow-up proposal, with external games remaining clearly identified; no new game, paid mode or score-sharing integration is part of this directory change.

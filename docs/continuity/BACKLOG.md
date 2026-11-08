@@ -70,7 +70,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-012 | P1 | needs-evidence | Connect the first-player learning, quiz, results and leaderboard journey | Maintainer prepares source and checks; founder approves release; physical-phone and independent review unassigned |
 | UX-013 | P1 | needs-evidence | Review all 17 open HQ reports and fix verified interface defects | Maintainer prepares source, tests and triage; founder approves merge; device/accessibility and independent content reviewers unassigned |
 | UX-014 | P1 | in-progress | Make page typography calmer and easier to read | Maintainer prepares source and checks; founder reviews merge; physical-phone acceptance unassigned |
-| ECO-007 | P1 | in-progress | List KaspaDollar with explicit development status | Maintainer prepares source and checks; founder reviews release |
+| ECO-007 | P1 | in-progress | Expand the ecosystem directory with KaspaDollar, social apps, builder resources and games | Maintainer prepares source and checks; founder reviews release |
 
 ## CONT-001: Publish the continuation system
 
@@ -1035,16 +1035,17 @@ Acceptance:
 
 Evidence/specification: [public/assets/styles.css](../../public/assets/styles.css), [public/assets/atmosphere.css](../../public/assets/atmosphere.css), [docs/READABILITY-POLISH.md](../../docs/READABILITY-POLISH.md).
 
-## ECO-007: List KaspaDollar with explicit development status
+## ECO-007: Expand the ecosystem directory with KaspaDollar, social apps, builder resources and games
 
 **P1 / in-progress.** Owner: Maintainer prepares source and checks; founder reviews release. Dependencies: none.
 
-Next action: Review the directory PR and exact-head checks, then approve release.
+Next action: Review expanded directory PR and exact-head CI; consider a separate first-party Games hub afterward.
 
 Acceptance:
 
 - Add the official HTTPS destination and project-specific source.
 - Label the proposed stablecoin in development; do not imply verified live operation or audit.
 - Regenerate directory and pass catalog, client, site and continuity checks.
+- Include founder-approved resource additions, a dedicated external Games category, and accurate coordination versus gaming descriptions.
 
 Evidence/specification: [docs/KASPA-DIRECTORY.md](../../docs/KASPA-DIRECTORY.md), [docs/kaspa-directory.json](../../docs/kaspa-directory.json), [public/kaspa/directory/index.html](../../public/kaspa/directory/index.html).

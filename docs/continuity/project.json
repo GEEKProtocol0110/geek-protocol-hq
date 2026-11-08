@@ -129,6 +129,6 @@
   "directoryKaspaDollar": {
     "task": "ECO-007",
     "status": "source-candidate",
-    "nextAction": "Review KaspaDollar directory listing and final checks; development status stays explicit."
+    "nextAction": "Review the expanded directory PR: 178 resources / 18 categories, with Games & arcade. First-party Games hub remains a follow-up proposal."
   }
 }

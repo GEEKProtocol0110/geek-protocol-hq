@@ -1188,3 +1188,8 @@ Reviewed five retained Technology items against RFC/BIPM/W3C primary sources and
 ## November 8, 2026 — ECO-007 KaspaDollar listing
 
 Founder requested KaspaDollar in the directory. Added official project link under Apps & token ecosystems with visible in-development status and preliminary-design qualification. Primary project pages reviewed; no live/audited stablecoin, security endorsement, wallet action or donation behavior is implied. 165 resources / 17 categories. Regenerated catalog and continuity; exact validation and PR/release result remain separate.
+
+
+### ECO-007 — social, builder and games expansion
+
+Founder approved all seven proposed additions plus K, Stag Hunt, KaChat and a games area. Added those ten and three external game resources; 178 entries / 18 categories. Stag Hunt stays in ecosystem coordination and its safety assurances are not repeated. Project/store evidence and limited rendered-page observations are recorded in directory documentation. Existing Geek game routes support a proposed Games hub as a separate follow-up, not an implemented feature. No new funds, apps installed, wallet prompts, chat messages or third-party gameplay.
