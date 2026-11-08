@@ -125,5 +125,10 @@
     "status": "source-candidate",
     "evidence": "docs/READABILITY-POLISH.md",
     "nextAction": "Review typography preview and verify on founder phone before release acceptance."
+  },
+  "directoryKaspaDollar": {
+    "task": "ECO-007",
+    "status": "source-candidate",
+    "nextAction": "Review KaspaDollar directory listing and final checks; development status stays explicit."
   }
 }

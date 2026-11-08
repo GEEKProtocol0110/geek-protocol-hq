@@ -63,3 +63,8 @@ The preceding founder-approved #236 is merged as b38e27dedeec5ac6a014ff6647401d1
 Ordering #237 subsequently merged as `478dfc16b6843eef93603b3905d63b7a31f2f1ef`, matching tree `0b0311ddff28150aa1a8a4ae7341d2f76c6054f3`. CI 42063638109 succeeded; production `dpl_6VGBV45EHRDo6EfcLr1xfx932mfo` is READY with exact canonical HTML confirming all 104 resources and Kaspa-first order. Rendering/phone acceptance remains separate.
 
 ECO-004 now prepares 60 native-KAS provider listings: 37 spot exchanges, 14 brokers/on-ramps and nine swaps/aggregators. Place those three alphabetical groups after wallets, with all general Kaspa sections still preceding KRC-20. Preserve all 104 existing records: 164 resources/17 categories overall. The [exchange review](KASPA-EXCHANGE-REVIEW.md) and [dated ledger](kaspa-exchange-review.json) record primary sources, discovery scope, known transfer limitations and 42 held candidates. This expansion is a source candidate, not a merged/deployed or exhaustive worldwide availability claim.
+
+
+## KaspaDollar — November 8, 2026
+
+Founder requested https://kaspadollar.com/ be included. Added one Apps & token ecosystems resource named KaspaDollar · in development. The project home and /how-it-works describe a proposed KAS-backed dollar stablecoin on L1, with preliminary parameters. The label and description distinguish development/fundraising from a verified live or audited product. No final ticker, security endorsement, donation link, wallet action or investment claim is added. Source review date is editorial; no functionality or solvency test is claimed. Catalog now contains 165 resources in 17 categories. Exact tests and release evidence belong in the PR.

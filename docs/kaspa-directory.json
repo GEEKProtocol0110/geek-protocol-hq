@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-08",
   "categories": [
     {
       "id": "learn",
@@ -469,6 +469,16 @@
       "description": "Community platform for Kaspa ecosystem tools and tokens.",
       "source": "https://kaspa.com/",
       "reviewedAt": "2026-11-05",
+      "status": "listed"
+    },
+    {
+      "id": "kaspadollar",
+      "category": "ecosystem",
+      "name": "KaspaDollar · in development",
+      "url": "https://kaspadollar.com/",
+      "description": "Proposed KAS-backed dollar stablecoin for Kaspa L1. Design parameters are preliminary; the site describes development and fundraising, not a verified live or audited stablecoin.",
+      "source": "https://kaspadollar.com/how-it-works",
+      "reviewedAt": "2026-11-08",
       "status": "listed"
     },
     {
@@ -2532,7 +2542,7 @@
       "status": "listed"
     }
   ],
-  "updatedAt": "2026-11-06T00:32:01.241912+00:00",
+  "updatedAt": "2026-11-08T14:33:25.430406+00:00",
   "krc20Review": {
     "windowDays": 90,
     "candidateCount": 45,

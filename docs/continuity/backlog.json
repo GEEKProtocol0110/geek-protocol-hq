@@ -1705,6 +1705,25 @@
         "public/assets/atmosphere.css",
         "docs/READABILITY-POLISH.md"
       ]
+    },
+    {
+      "id": "ECO-007",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "List KaspaDollar with explicit development status",
+      "owner": "Maintainer prepares source and checks; founder reviews release",
+      "nextAction": "Review the directory PR and exact-head checks, then approve release.",
+      "acceptance": [
+        "Add the official HTTPS destination and project-specific source.",
+        "Label the proposed stablecoin in development; do not imply verified live operation or audit.",
+        "Regenerate directory and pass catalog, client, site and continuity checks."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/KASPA-DIRECTORY.md",
+        "docs/kaspa-directory.json",
+        "public/kaspa/directory/index.html"
+      ]
     }
   ]
 }

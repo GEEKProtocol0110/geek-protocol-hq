@@ -1183,3 +1183,8 @@ Reviewed two selected Technology items against RFC 3986 and CERN. Preserved URL 
 ## November 8, 2026 — BANK-009 protocol and SI-prefix batch
 
 Reviewed five retained Technology items against RFC/BIPM/W3C primary sources and consolidated one WWW semantic duplicate with exact issued grading and canonical exclusion preserved. Counts: 8,437 active / 8,223 ranked-eligible / 214 practice-only / 809 eligible reviews / 7,191 target deficit. Six selected rows only; full-bank and independent review remain open. New deterministic regression forces the duplicate survivor into a ten-item pool and proves that the old issued identity excludes it. Exact validation and release evidence belong in the PR.
+
+
+## November 8, 2026 — ECO-007 KaspaDollar listing
+
+Founder requested KaspaDollar in the directory. Added official project link under Apps & token ecosystems with visible in-development status and preliminary-design qualification. Primary project pages reviewed; no live/audited stablecoin, security endorsement, wallet action or donation behavior is implied. 165 resources / 17 categories. Regenerated catalog and continuity; exact validation and PR/release result remain separate.
