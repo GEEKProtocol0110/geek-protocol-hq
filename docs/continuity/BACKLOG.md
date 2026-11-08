@@ -1026,15 +1026,16 @@ Evidence/specification: [docs/OPEN-ISSUE-REVIEW-2026-11-06.md](../../docs/OPEN-I
 
 **P1 / in-progress.** Owner: Maintainer prepares source and checks; founder reviews merge; physical-phone acceptance unassigned. Dependencies: none.
 
-Next action: Review the revised preview: founder rejected the initial no-glow version as too plain. Verify restrained glow and phone readability.
+Next action: Review News and directory heading fix: regular UI sans at 600 replaces inherited Impact; founder device comparison pending.
 
 Acceptance:
 
 - Keep restrained centered cyan title/timer glow and gold/cyan edge lighting; remove chromatic double-shadows, body/answer glow and foreground grain.
 - Reduce extra-bold weights and soften white text while preserving gold/cyan controls and keyboard focus.
 - Check representative phone and desktop layouts, site and continuity validation; record actual rendering limits.
+- News market headings use a regular UI sans-serif family rather than inherited Impact, with crisp text and restrained weights.
 
-Evidence/specification: [public/assets/styles.css](../../public/assets/styles.css), [public/assets/atmosphere.css](../../public/assets/atmosphere.css), [docs/READABILITY-POLISH.md](../../docs/READABILITY-POLISH.md).
+Evidence/specification: [public/assets/styles.css](../../public/assets/styles.css), [public/assets/atmosphere.css](../../public/assets/atmosphere.css), [docs/READABILITY-POLISH.md](../../docs/READABILITY-POLISH.md), [public/news/assets/news.css](../../public/news/assets/news.css), [public/kaspa/directory/assets/directory.css](../../public/kaspa/directory/assets/directory.css).
 
 ## ECO-007: Expand the ecosystem directory with KaspaDollar, social apps, builder resources and games
 

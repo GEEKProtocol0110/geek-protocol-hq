@@ -124,7 +124,7 @@
     "task": "UX-014",
     "status": "source-candidate",
     "evidence": "docs/READABILITY-POLISH.md",
-    "nextAction": "Review typography preview and verify on founder phone before release acceptance."
+    "nextAction": "Review News and directory Impact font correction prompted by founder screenshot/reports; retain phone acceptance separately."
   },
   "directoryKaspaDollar": {
     "task": "ECO-007",
