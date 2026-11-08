@@ -2,13 +2,13 @@
 .welcome-page { --welcome-panel:#131e22; --welcome-line:#35464d; --welcome-copy:#c4d0d4; --welcome-max:1120px; background-color:#0c1317; color:#eff5f6; }
 .welcome-page::before { display:none; }
 .welcome-page :where(h1,h2,h3) { font-family:Inter,ui-sans-serif,system-ui,sans-serif; text-transform:none; letter-spacing:-.035em; }
-.welcome-page :where(h1) { font-size:clamp(2.5rem,5vw,4.4rem); line-height:1.12; font-weight:800; }
+.welcome-page :where(h1) { font-size:clamp(2.5rem,5vw,4.4rem); line-height:1.12; font-weight:700; }
 .welcome-page :where(h2) { line-height:1.22; }
 .welcome-page :where(p) { text-wrap:pretty; }
 .welcome-page :where(.eyebrow,.section-kicker) { text-transform:none; letter-spacing:.04em; font-size:.78rem; color:#a9c4cd; }
 .welcome-page :where(.button,.primary-action) { border-radius:10px; text-transform:none; letter-spacing:0; font-size:.94rem; min-height:48px; white-space:normal; }
 .welcome-page .button-secondary { background:transparent; color:#eaf3f5; border:1px solid #68828b; }
-.welcome-page .button-secondary:hover { color:#fff; background:#203138; border-color:#70e6dc; }
+.welcome-page .button-secondary:hover { color: #dce4e7; background:#203138; border-color:#70e6dc; }
 .welcome-page :where(.button-primary,.primary-action,.primary) { box-shadow:none; }
 .welcome-page :where(a,button,summary,input,select):focus-visible { outline:3px solid #70e6dc; outline-offset:4px; }
 .welcome-page :where(summary,button) { touch-action:manipulation; }

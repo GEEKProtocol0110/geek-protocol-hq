@@ -4,7 +4,7 @@
 body.hq-world{isolation:isolate;background-color:#050b18;background-image:radial-gradient(ellipse at 0 12%,#0c94b035,transparent 45%),radial-gradient(ellipse at 100% 25%,#6828a441,transparent 48%),radial-gradient(ellipse at 55% 80%,#143b8828,transparent 48%),radial-gradient(1px 1px at 18px 34px,#c4f1ffb3 70%,transparent 100%),radial-gradient(1px 1px at 91px 117px,#dfb7ff90 70%,transparent 100%);background-size:auto,auto,auto,163px 211px,277px 251px}
 .hq-world main{position:relative;min-width:0}
 .hq-world :is(.eyebrow,.section-kicker){font-family:ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.09em}
-.hq-world .hq-signal-title{text-shadow:-1px 0 #ef75d04d,1px 0 #72f0ff66}
+.hq-world .hq-signal-title{text-shadow:none}
 .hq-world :is(.welcome-cards>a,.welcome-panel,.giga-guide){border-color:#547c9c88;box-shadow:inset 0 1px #8ee8ff12,0 12px 32px #0003}
 .hq-world .welcome-cards>a:hover{border-color:var(--cyan);box-shadow:0 0 30px #48c9ff22}
 .hq-world .space-scene{background-image:radial-gradient(ellipse at 95% 30%,#6732a540,transparent 65%),radial-gradient(ellipse at 3% 70%,#116a873d,transparent 60%)}

@@ -69,6 +69,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ECO-006 | P1 | done | Add Geek News with provider market, news and futures feeds | Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned |
 | UX-012 | P1 | needs-evidence | Connect the first-player learning, quiz, results and leaderboard journey | Maintainer prepares source and checks; founder approves release; physical-phone and independent review unassigned |
 | UX-013 | P1 | needs-evidence | Review all 17 open HQ reports and fix verified interface defects | Maintainer prepares source, tests and triage; founder approves merge; device/accessibility and independent content reviewers unassigned |
+| UX-014 | P1 | in-progress | Make page typography calmer and easier to read | Maintainer prepares source and checks; founder reviews merge; physical-phone acceptance unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1018,3 +1019,17 @@ Acceptance:
 - Run regression and exact-head CI; distinguish source, preview, production and actual-device acceptance.
 
 Evidence/specification: [docs/OPEN-ISSUE-REVIEW-2026-11-06.md](../../docs/OPEN-ISSUE-REVIEW-2026-11-06.md), [tests/issue-clients.test.js](../../tests/issue-clients.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/quest-client.test.js](../../tests/quest-client.test.js), [scripts/site-pages.mjs](../../scripts/site-pages.mjs).
+
+## UX-014: Make page typography calmer and easier to read
+
+**P1 / in-progress.** Owner: Maintainer prepares source and checks; founder reviews merge; physical-phone acceptance unassigned. Dependencies: none.
+
+Next action: Review the typography PR and preview, then confirm readability on the founder phone.
+
+Acceptance:
+
+- Remove reading-text glow and chromatic shadows and the full-screen grain overlay.
+- Reduce extra-bold weights and soften white text while preserving gold/cyan controls and keyboard focus.
+- Check representative phone and desktop layouts, site and continuity validation; record actual rendering limits.
+
+Evidence/specification: [public/assets/styles.css](../../public/assets/styles.css), [public/assets/atmosphere.css](../../public/assets/atmosphere.css), [docs/READABILITY-POLISH.md](../../docs/READABILITY-POLISH.md).
