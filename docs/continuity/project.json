@@ -166,5 +166,11 @@
     "status": "founder-approved-release",
     "evidence": "docs/CLASSIC-MULTIPLAYER.md",
     "nextAction": "Founder explicitly approved Merge November 8. Merge #254 after exact-head CI, then record its merge and production result in the #254 review record. Two-device acceptance remains separate."
+  },
+  "tabletopArt": {
+    "task": "UX-021",
+    "status": "source-candidate",
+    "evidence": "docs/TABLETOP-ART.md",
+    "nextAction": "Review sculpted gold/cyan chess pieces, raised checkers and solitaire card art; browser/device acceptance and release remain separate."
   }
 }

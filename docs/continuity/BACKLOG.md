@@ -78,6 +78,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-018 | P1 | needs-evidence | Fit Geek games to phone screens and compact active play | Maintainer fixes layout and checks; founder approves release; physical-phone acceptance unassigned |
 | UX-020 | P2 | needs-evidence | Unify the Geek Games visual feel and play controls | Maintainer; founder release review |
 | GAME-002 | P2 | in-progress | Online chess and checkers lobbies with accepted game requests | Maintainer; founder release review |
+| UX-021 | P2 | in-progress | Sculpted chess pieces, raised checkers and collector-style solitaire cards | Maintainer; founder release review |
 
 ## CONT-001: Publish the continuation system
 
@@ -1163,3 +1164,18 @@ Acceptance:
 - Separate-browser/device acceptance and exact-head CI recorded separately.
 
 Evidence/specification: [docs/CLASSIC-MULTIPLAYER.md](../../docs/CLASSIC-MULTIPLAYER.md), [tests/classic-online-api.test.js](../../tests/classic-online-api.test.js), [tests/classic-online-client.test.js](../../tests/classic-online-client.test.js).
+
+## UX-021: Sculpted chess pieces, raised checkers and collector-style solitaire cards
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: UX-020.
+
+Next action: Review the tabletop-art preview; verify rendered phone layout and approve release separately.
+
+Acceptance:
+
+- Distinct local vector chess artwork in gold/cyan shared by local and online play.
+- Raised checker tokens, machined board rims and polished card faces/backs.
+- Gameplay controls, accessible square/card labels and legal-move indicators remain functional.
+- Focused gameplay and site/continuity/security checks pass; browser/device acceptance stays separate.
+
+Evidence/specification: [docs/TABLETOP-ART.md](../../docs/TABLETOP-ART.md), [public/games/assets/tabletop.css](../../public/games/assets/tabletop.css), [public/games/assets/pieces.js](../../public/games/assets/pieces.js).

@@ -1243,3 +1243,7 @@ GAME-002 validation: full npm test 800/800 with real Redis 7.2, signer 9/9, site
 ### November 8, 2026 — Founder-approved games release
 
 Founder explicitly requested Merge. #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 after exact-head verify and both Vercel checks succeeded. #254 retargeted to main and updated against that squash merge; gameplay tree preserved. Final exact-head CI, merge commit and production deployment disposition are recorded in the #254 review record. Rendered two-device/physical-phone acceptance remains open and is not implied by release authorization.
+
+### November 8, 2026 — UX-021 tabletop art candidate
+
+Added twelve hand-authored local vector chess assets with metallic gold/cyan finishes, shared by local and online boards with glyph fallback on image failure. Refined raised checker rims, framed board surfaces, solitaire face corners/center pips and patterned Geek backs. Accessible card/square names and game rules remain intact. Contact-sheet raster proof inspected; focused gameplay, site/continuity/security checks run before PR. Rendered browser/phone acceptance remains open. No merge or production claim.

@@ -1,3 +1,4 @@
+import { createChessPiece } from '../assets/pieces.js';
 import { Chess } from '../chess/vendor/chess.js';
 import { legalCheckers } from '../classics/checkers-engine.js';
 const $=id=>document.getElementById(id), endpoint='/api/lobbies?service=classic';
@@ -29,7 +30,7 @@ async function refresh(){
  finally{polling=false;}
 }
 async function open(value){if(!valid(value)){say('Enter a valid PLAY- room code.');return;}epoch++;code=value;room=null;selected=null;flipped=false;$('browse').hidden=true;$('room-panel').hidden=false;$('room-title').textContent='Opening room…';$('game-panel').hidden=true;$('room-actions').replaceChildren();$('requests').replaceChildren();history.replaceState(null,'',`?room=${value}`);await refresh();}
-const names={p:'pawn',r:'rook',n:'knight',b:'bishop',q:'queen',k:'king'},glyph={p:'♟',r:'♜',n:'♞',b:'♝',q:'♛',k:'♚'};
+const names={p:'pawn',r:'rook',n:'knight',b:'bishop',q:'queen',k:'king'};
 function drawBoard(){
  const chess=room.game==='chess', c=chess?new Chess(room.position):null,host=room.role==='host';
  const turn=chess?(c.turn()==='w'?'host':'guest'):(room.position.turn==='gold'?'host':'guest'),mine=room.role===turn&&room.state==='playing';
@@ -39,7 +40,7 @@ function drawBoard(){
   const white=p&&(chess?p.color==='w':p.side==='gold'),piece=p?(chess?names[p.type]:p.king?'king':'piece'):'';
   const b=btn('',()=>{if(!mine||busy)return;if(legal){act('move',{from:selected,to:ref,revision:room.revision,...(chess&&moves.some(m=>m.from===selected&&m.to===ref&&m.promotion)?{promotion:$('promote').value}:{})});return;}if(p&&(white===host)){selected=selected===ref?null:ref;drawBoard();const target=[...board.children].find(n=>n.dataset.square===square);target?.focus();}});
   b.dataset.square=square;b.className=`chess-square ${(Math.floor(i/8)+i%8)%2?'dark':'light'} ${p?white?'white-piece':'black-piece':''} ${legal?'legal':''}`;b.disabled=!mine||busy;b.setAttribute('aria-label',`${square}: ${p?`${white?(chess?'White':'Gold'):(chess?'Black':'Cyan')} ${piece}`:'empty'}${legal?', legal destination':''}`);b.setAttribute('aria-pressed',String(selected===ref));
-  if(p){const span=document.createElement('span');span.setAttribute('aria-hidden','true');if(chess)span.textContent=glyph[p.type];else{span.className='online-checker';span.textContent=(white?'G':'C')+(p.king?'♛':'');}b.append(span);}const small=document.createElement('small');small.textContent=square;small.setAttribute('aria-hidden','true');b.append(small);board.append(b);
+  if(p){const span=document.createElement('span');span.setAttribute('aria-hidden','true');if(chess){span.append(createChessPiece(document,p.type,p.color));span.className='online-piece-wrap';}else{span.className='online-checker';span.textContent=(white?'G':'C')+(p.king?'♛':'');}b.append(span);}const small=document.createElement('small');small.textContent=square;small.setAttribute('aria-hidden','true');b.append(small);board.append(b);
  }
  $('promote').parentElement.hidden=!chess;
  $('history').textContent=room.history.join(' · ')||'No moves yet.';

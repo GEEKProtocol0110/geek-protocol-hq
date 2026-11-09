@@ -1,7 +1,7 @@
+import { createChessPiece } from '../assets/pieces.js';
 import { Chess } from './vendor/chess.js';
 const $=id=>document.getElementById(id);
 const names={p:'pawn',r:'rook',n:'knight',b:'bishop',q:'queen',k:'king'};
-const glyphs={p:'♟',r:'♜',n:'♞',b:'♝',q:'♛',k:'♚'};
 let game=null,selected=null,flipped=false,pending=null;
 function render(){
  const board=$('board');board.replaceChildren();
@@ -12,7 +12,7 @@ function render(){
   button.type='button';button.className='chess-square '+((file.charCodeAt(0)+Number(rank))%2?'light':'dark');
   button.dataset.square=square;button.setAttribute('aria-label',`${square}: ${piece?`${piece.color==='w'?'White':'Black'} ${names[piece.type]}`:'empty'}${legal.some(m=>m.to===square)?', legal destination':''}`);
   button.setAttribute('aria-pressed',String(selected===square));
-  if(piece){button.classList.add(piece.color==='w'?'white-piece':'black-piece');const icon=document.createElement('span');icon.textContent=glyphs[piece.type];icon.setAttribute('aria-hidden','true');button.append(icon);}
+  if(piece){button.classList.add(piece.color==='w'?'white-piece':'black-piece');button.append(createChessPiece(document,piece.type,piece.color));}
   const label=document.createElement('small');label.textContent=square;label.setAttribute('aria-hidden','true');button.append(label);
   if(legal.some(m=>m.to===square))button.classList.add('legal');
   button.disabled=!!pending||game.isGameOver();button.addEventListener('click',()=>choose(square));board.append(button);
