@@ -31,6 +31,13 @@ const cardName=c=>`${rank(c.rank)} of ${c.suit}`;
 function card(c,ref){
  const b=button(c.up?`${rank(c.rank)}${glyph[c.suit]}`:'GEEK',c.up?cardName(c):'Face-down card',()=>choose(ref));
  b.className=`playing-card ${c.up?'face':'back'} ${['hearts','diamonds'].includes(c.suit)?'red-card':''}`;
+ b.textContent='';
+ if(c.up){
+  const corner=document.createElement('span');corner.className='card-corner';corner.textContent=`${rank(c.rank)}${glyph[c.suit]}`;
+  const pip=document.createElement('span');pip.className='card-pip';pip.textContent=c.rank>10?`${rank(c.rank)}`:glyph[c.suit];
+  const foot=document.createElement('span');foot.className='card-foot';foot.textContent=glyph[c.suit];
+  for(const el of [corner,pip,foot])el.setAttribute('aria-hidden','true');b.append(corner,pip,foot);
+ }else{const mark=document.createElement('span');mark.className='card-back-mark';mark.textContent='G';mark.setAttribute('aria-hidden','true');b.append(mark);}
  b.disabled=!c.up;
  b.setAttribute('aria-pressed',String(selected&&selected.kind===ref.kind&&selected.pile===ref.pile&&selected.index===ref.index));return b;
 }

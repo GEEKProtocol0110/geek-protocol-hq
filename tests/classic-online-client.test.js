@@ -1,3 +1,4 @@
+import {createChessPiece} from '../public/games/assets/pieces.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -16,7 +17,7 @@ function client(){
    return Response.json({ok:true,room:onlineView(stored,'host')});
   }
   return Response.json(stored?{ok:true,room:onlineView(stored,'host')}:{ok:true,rooms:[]});
- },{Chess,legalCheckers,setInterval(fn){poll=fn;},location:{search:'',pathname:'/games/online/',origin:'https://example.test'}});
+ },{Chess,legalCheckers,createChessPiece,setInterval(fn){poll=fn;},location:{search:'',pathname:'/games/online/',origin:'https://example.test'}});
  f.document.getElementById=id=>f.node('#'+id);f.document.body=f.make('body');f.node('#promote').parentElement=f.make('label');f.node('#promote').value='q';
  f.run(readFileSync('public/games/online/online.js','utf8').replace(/^import .*\n/gm,''));
  return {...f,calls,getStored:()=>stored,guest(action,b={}){stored=transitionOnline(stored,'guest',action,{name:'Guest Geek',...b});},poll:async()=>{poll();await tick();await tick();}};

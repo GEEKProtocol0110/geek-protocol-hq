@@ -1887,6 +1887,28 @@
         "tests/classic-online-api.test.js",
         "tests/classic-online-client.test.js"
       ]
+    },
+    {
+      "id": "UX-021",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Sculpted chess pieces, raised checkers and collector-style solitaire cards",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review the tabletop-art preview; verify rendered phone layout and approve release separately.",
+      "acceptance": [
+        "Distinct local vector chess artwork in gold/cyan shared by local and online play.",
+        "Raised checker tokens, machined board rims and polished card faces/backs.",
+        "Gameplay controls, accessible square/card labels and legal-move indicators remain functional.",
+        "Focused gameplay and site/continuity/security checks pass; browser/device acceptance stays separate."
+      ],
+      "dependsOn": [
+        "UX-020"
+      ],
+      "evidence": [
+        "docs/TABLETOP-ART.md",
+        "public/games/assets/tabletop.css",
+        "public/games/assets/pieces.js"
+      ]
     }
   ]
 }
