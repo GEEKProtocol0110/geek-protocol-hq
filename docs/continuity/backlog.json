@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-08",
+  "updatedAt": "2026-11-09",
   "priorityOrder": [
     "P0",
     "P1",
@@ -1908,6 +1908,27 @@
         "docs/TABLETOP-ART.md",
         "public/games/assets/tabletop.css",
         "public/games/assets/pieces.js"
+      ]
+    },
+    {
+      "id": "ECO-008",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Education directory with explicit learning utility-token projects",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review PR #256: GEEK/BMT token-network and utility-state cards plus six learning resources; founder approval required for merge.",
+      "acceptance": [
+        "Education & Learning appears in directory navigation, category filter and crawlable cards.",
+        "Geek Protocol listed alongside independently sourced Kaspa learning projects.",
+        "L1, L2, off-chain resources and historical program guidelines are accurately distinguished.",
+        "Directory, site and continuity checks pass."
+      ],
+      "dependsOn": [
+        "ECO-003"
+      ],
+      "evidence": [
+        "docs/EDUCATION-DIRECTORY.md",
+        "docs/kaspa-directory.json"
       ]
     }
   ]

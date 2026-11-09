@@ -33,6 +33,10 @@ function projectEvidence(entry, policy) {
   }
 }
 function renderEvidence(entry) {
+  if (entry.learningToken) {
+    const token=entry.learningToken;
+    return `<div class="directory-evidence"><span class="directory-activity">Education token project</span><dl><div><dt>Token</dt><dd>${esc(token.symbol)}</dd></div><div><dt>Network</dt><dd>${esc(token.network)}</dd></div><div><dt>Learning utility</dt><dd>${esc(token.utility)}</dd></div></dl><div class="directory-evidence-links">${link(token.recordUrl,'Token record ↗')}</div></div>`;
+  }
   if (entry.tokenReference) {
     const token=entry.tokenReference;
     return `<div class="directory-evidence"><span class="directory-activity">Token record available</span><dl>
@@ -93,6 +97,13 @@ export function validateCatalog(data) {
       const url = new URL(entry[field]);
       assert.ok(url.protocol === 'https:' && !url.username && !url.password, entry.id);
     }
+    if (entry.learningToken) {
+      assert.equal(entry.category,'education');
+      assert.match(entry.learningToken.symbol,/^[A-Z][A-Z0-9]{2,5}$/);
+      assert.ok(['Kaspa · KRC-20','Kasplex L2 · ERC-20'].includes(entry.learningToken.network));
+      assert.ok(entry.learningToken.utility.trim());
+      https(entry.learningToken.recordUrl);
+    }
     const key = entry.url.replace(/\/$/, '');
     assert.ok(!urls.has(key), `Duplicate URL: ${entry.url}`); urls.add(key);
   }
@@ -107,10 +118,10 @@ export function renderCatalog(data) {
         <header class="directory-heading"><h2 id="heading-${category.id}">${esc(category.name)}</h2><span>${entries.length} ${entries.length === 1 ? 'resource' : 'resources'}</span></header>${category.description ? `
         <p class="directory-category-note">${esc(category.description)}</p>` : ''}${category.links ? `
         <div class="directory-category-links">${category.links.map(item=>link(item.url,esc(item.label)+' ↗')).join('')}</div>` : ''}
-        <div class="directory-grid">${entries.map(entry => `<article class="directory-card" id="resource-${entry.id}" data-directory-card data-category="${entry.category}" data-search="${esc([entry.name,category.name,entry.description,entry.url,entry.status].join(' '))}">
+        <div class="directory-grid">${entries.map(entry => `<article class="directory-card" id="resource-${entry.id}" data-directory-card data-category="${entry.category}" data-search="${esc([entry.name,category.name,entry.description,entry.url,entry.status,entry.learningToken?.symbol||'',entry.learningToken?.network||'',entry.learningToken?.utility||''].filter(Boolean).join(' '))}">
           <span class="directory-kind">${entry.status === 'legacy' ? 'Legacy · service closed' : entry.tokenReference ? 'Holder reference · token record' : esc(category.name)}</span>
           <h3>${link(entry.url, `${esc(entry.name)} <span aria-hidden="true">↗</span>`)}</h3>
-          <p>${esc(entry.description)}</p><span class="directory-domain">${esc(new URL(entry.url).hostname)}</span>${entry.krc20 || entry.tokenReference ? '\n          '+renderEvidence(entry) : ''}
+          <p>${esc(entry.description)}</p><span class="directory-domain">${esc(new URL(entry.url).hostname)}</span>${entry.krc20 || entry.tokenReference || entry.learningToken ? '\n          '+renderEvidence(entry) : ''}
           <div class="directory-source">${link(entry.source, 'Source <span aria-hidden="true">↗</span>')}<span>Reviewed <time datetime="${entry.reviewedAt}">${entry.reviewedAt}</time></span></div>
         </article>`).join('\n')}</div>
       </section>`;

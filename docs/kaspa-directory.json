@@ -1,10 +1,20 @@
 {
   "schema": 1,
-  "reviewedAt": "2026-11-08",
+  "reviewedAt": "2026-11-09",
   "categories": [
     {
       "id": "learn",
       "name": "Start & learn"
+    },
+    {
+      "id": "education",
+      "name": "Education & Learning · Token Projects",
+      "description": "Kaspa ecosystem token projects with an education purpose. Each card identifies the token network and distinguishes project-described learning utility from planned features."
+    },
+    {
+      "id": "education-resources",
+      "name": "Learning Platforms & Guides",
+      "description": "Courses, educational infrastructure and independent Kaspa resources. Learning about Kaspa or rewarding native KAS does not by itself establish a separate utility token."
     },
     {
       "id": "wallets",
@@ -2725,9 +2735,101 @@
       "source": "https://github.com/trillskillz/OpenSilver",
       "reviewedAt": "2026-11-08",
       "status": "listed"
+    },
+    {
+      "id": "geek-education",
+      "category": "education",
+      "name": "Geek Protocol (GEEK)",
+      "url": "https://www.geekprotocol.xyz/start/",
+      "description": "Kaspa-focused learning ecosystem with guided lessons, quizzes and learning games. GEEK is a KRC-20 token; current Alpha credits are internal, with token settlement not live.",
+      "source": "https://www.geekprotocol.xyz/about/",
+      "reviewedAt": "2026-11-09",
+      "status": "listed",
+      "learningToken": {
+        "symbol": "GEEK",
+        "network": "Kaspa · KRC-20",
+        "utility": "Learning ecosystem · token settlement planned, disabled in Alpha",
+        "recordUrl": "https://api.kasplex.org/v1/krc20/token/GEEK"
+      }
+    },
+    {
+      "id": "kaspa-university",
+      "category": "education-resources",
+      "name": "Kaspa University",
+      "url": "https://kaspa.university/",
+      "description": "Beta learning platform with Kaspa and BlockDAG courses and quizzes. The project describes Kaspa L1 quiz proofs and diploma features.",
+      "source": "https://github.com/Dr-Liberty/Kaspa-University-KU-Protocol",
+      "reviewedAt": "2026-11-09",
+      "status": "listed"
+    },
+    {
+      "id": "bmt-university",
+      "category": "education",
+      "name": "BMT University (BMT)",
+      "url": "https://bmtuniversity.com/",
+      "description": "Kaspa and BlockDAG courses and quizzes linked to the Bitcoin Maxi Tears token. BMT is an ERC-20 on Kasplex L2, with learning rewards described by the project.",
+      "source": "https://bmtuniversity.com/",
+      "reviewedAt": "2026-11-09",
+      "status": "listed",
+      "learningToken": {
+        "symbol": "BMT",
+        "network": "Kasplex L2 · ERC-20",
+        "utility": "Course and quiz rewards · project-described, not independently tested",
+        "recordUrl": "https://explorer.kasplex.org/token/0x35fba50f52e2aa305438134c646957066608d976"
+      }
+    },
+    {
+      "id": "lyceum-education",
+      "category": "education-resources",
+      "name": "Lyceum Protocol",
+      "url": "https://lyceumprotocol.com/",
+      "description": "Branded academy infrastructure with courses, quizzes and credentials; the project describes Kasplex L2 integration. Its homepage showed no academies at review.",
+      "source": "https://lyceumprotocol.com/protocol",
+      "reviewedAt": "2026-11-09",
+      "status": "listed"
+    },
+    {
+      "id": "kaspa-mastery",
+      "category": "education-resources",
+      "name": "Kaspa Mastery",
+      "url": "https://kaspamastery.base44.app/Home",
+      "description": "Community learning platform about Kaspa and BlockDAG, with learning paths, quizzes and progress tracking. An account is required for saved learning.",
+      "source": "https://kaspamastery.base44.app/FAQ",
+      "reviewedAt": "2026-11-09",
+      "status": "listed"
+    },
+    {
+      "id": "kasstacker-learn",
+      "category": "education-resources",
+      "name": "KasStacker Learn",
+      "url": "https://kasstacker.org/learn/",
+      "description": "Independent educational guide to Kaspa programmability, with a short guided tour, interactive exercises and cheat sheets. A learning resource, not an on-chain course credential service.",
+      "source": "https://kasstacker.org/learn/",
+      "reviewedAt": "2026-11-09",
+      "status": "listed"
+    },
+    {
+      "id": "hello-kaspa",
+      "category": "education-resources",
+      "name": "Hello Kaspa",
+      "url": "https://hellokaspa.com/",
+      "description": "Independent Kaspa explainer covering BlockDAG, GHOSTDAG, network fundamentals and risks. An educational website rather than a Kaspa transaction application.",
+      "source": "https://hellokaspa.com/",
+      "reviewedAt": "2026-11-09",
+      "status": "listed"
+    },
+    {
+      "id": "kii-academy-guide",
+      "category": "education-resources",
+      "name": "Kii Academy — program guide",
+      "url": "https://kaspa-kii.org/wp-content/uploads/2024/11/KII-Academy-Guidelines.pdf",
+      "description": "Published 2024 academy guidelines covering developer education, university initiatives, startups and enterprise training. This historical program document does not establish current enrollment availability.",
+      "source": "https://kaspa-kii.org/wp-content/uploads/2024/11/KII-Academy-Guidelines.pdf",
+      "reviewedAt": "2026-11-09",
+      "status": "listed"
     }
   ],
-  "updatedAt": "2026-11-08T14:47:01.653431+00:00",
+  "updatedAt": "2026-11-09T06:46:40Z",
   "krc20Review": {
     "windowDays": 90,
     "candidateCount": 45,

@@ -1247,3 +1247,9 @@ Founder explicitly requested Merge. #253 merged as 099bb78022bc579dfee72b134d97e
 ### November 8, 2026 — UX-021 tabletop art candidate
 
 Added twelve hand-authored local vector chess assets with metallic gold/cyan finishes, shared by local and online boards with glyph fallback on image failure. Refined raised checker rims, framed board surfaces, solitaire face corners/center pips and patterned Geek backs. Accessible card/square names and game rules remain intact. Contact-sheet raster proof inspected; focused gameplay, site/continuity/security checks run before PR. Rendered browser/phone acceptance remains open. No merge or production claim.
+
+### November 9, 2026 — ECO-008 education directory
+
+Added Education & Learning with Geek Protocol, Kaspa University, BMT University, Lyceum Protocol, Kaspa Mastery, KasStacker Learn, Hello Kaspa and the dated Kii Academy program guide. Primary project sources inspected; project-reported L1/L2 features are distinguished from off-chain learning guides and historical program documentation. Geek links its learner start page without duplicating the token listing URL. Catalog generator handles navigation/filter/schema/counts. No external submissions, rewards or account changes. Directory, site and continuity checks run before PR. Candidate only.
+
+ECO-008 clarified scope: distinguish GEEK/BMT token-linked learning projects with network and implemented/planned utility state; other six entries move to Learning Platforms & Guides. BMT primary token site identifies Kasplex L2 ERC-20. KU native KAS rewards do not imply a KU fungible token. Existing BURTLE community education positioning does not establish a learning utility mechanic. No other token utility is inferred. PR #256 updated, not merged.
