@@ -3,19 +3,19 @@
     "title": "GEEK Protocol — Technology Question Bank",
     "version": "2.0.0-distinct",
     "maintainedAt": "2026-11-08",
-    "questionCount": 1469,
-    "conceptCount": 1469,
+    "questionCount": 1464,
+    "conceptCount": 1464,
     "category": "Technology",
     "difficultyDistribution": {
-      "easy": 567,
-      "medium": 604,
+      "easy": 564,
+      "medium": 602,
       "hard": 298
     },
     "correctIndexDistribution": {
-      "0": 371,
+      "0": 370,
       "1": 339,
-      "2": 366,
-      "3": 393
+      "2": 364,
+      "3": 391
     },
     "schema": "correctIndex is zero-based; options contains four distinct strings",
     "reviewNotice": "Distinct active pool; retired questions are lookup-only. Source-checked items cite primary evidence and carry individual review dates. Licensed imports retain draft-needs-human-review status; automatic duplicate/schema checks do not establish factual correctness or calibrated difficulty.",
@@ -2730,30 +2730,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "TECH-0168",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "TECH-0169",
-      "category": "Technology",
-      "prompt": "What does carcinology study?",
-      "options": [
-        "Crustaceans",
-        "Malignant tumors in animals and humans",
-        "The outer shells of invertebrates and reptiles",
-        "Crabs, lobsters, and crayfish"
-      ],
-      "correctIndex": 0,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0169",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -5940,30 +5916,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "TECH-0362",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "TECH-0363",
-      "category": "Technology",
-      "prompt": "What is a fast-spinning neutron star that emits pulses of radio waves called?",
-      "options": [
-        "Millisecondar",
-        "White Dwarf",
-        "Pulsar",
-        "Magnetar"
-      ],
-      "correctIndex": 2,
-      "difficulty": "easy",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0363",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -10332,30 +10284,6 @@
       "license": "CC BY-SA 4.0",
       "reviewStatus": "draft-needs-human-review",
       "conceptId": "TECH-0602",
-      "maintenanceCheckedAt": "2026-10-07"
-    },
-    {
-      "id": "TECH-0604",
-      "category": "Technology",
-      "prompt": "These animals are the subject of study of coleopterology, which is a subfield of entomology.",
-      "options": [
-        "jaguars",
-        "tigers",
-        "snakes",
-        "beetles"
-      ],
-      "correctIndex": 3,
-      "difficulty": "medium",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "source": "https://github.com/uberspot/OpenTriviaQA",
-      "sourceFile": "source-science-technology.txt",
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "conceptId": "TECH-0604",
       "maintenanceCheckedAt": "2026-10-07"
     },
     {
@@ -21323,33 +21251,6 @@
       "difficulty": "medium"
     },
     {
-      "prompt": "In baseball, when a quarterback throws a pass, the ball follows what type of path?",
-      "options": [
-        "Point",
-        "Line",
-        "Parabola",
-        "Ray"
-      ],
-      "correctIndex": 2,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 1725,
-      "id": "TECH-N-d721179b1a86",
-      "conceptId": "TECH-N-d721179b1a86",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "easy"
-    },
-    {
       "prompt": "This gland is shaped like a butterfly and helps regulate energy in the body.",
       "options": [
         "parathyroid",
@@ -28646,33 +28547,6 @@
       "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
       "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
       "difficulty": "easy"
-    },
-    {
-      "prompt": "This is a synonym for neutron star.",
-      "options": [
-        "Questars",
-        "White Dwarf",
-        "Black hole",
-        "Pulsar"
-      ],
-      "correctIndex": 3,
-      "sourceFile": "science-technology",
-      "sourceOrdinal": 1532,
-      "id": "TECH-N-cee108018491",
-      "conceptId": "TECH-N-cee108018491",
-      "category": "Technology",
-      "subcategory": "Science Technology",
-      "funFact": null,
-      "tags": [
-        "technology"
-      ],
-      "volatile": false,
-      "license": "CC BY-SA 4.0",
-      "reviewStatus": "draft-needs-human-review",
-      "maintenanceCheckedAt": "2026-10-07",
-      "source": "https://github.com/uberspot/OpenTriviaQA/blob/dcc1cdf36c2985ed5c849d1f2265c5041ffcdfb9/categories/science-technology",
-      "attribution": "OpenTriviaQA contributors; normalized for GEEK Protocol.",
-      "difficulty": "medium"
     },
     {
       "prompt": "This person is considered as the Father of Computer, as he invented a counting machine called The Difference Engine.",
