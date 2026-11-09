@@ -79,7 +79,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-020 | P2 | needs-evidence | Unify the Geek Games visual feel and play controls | Maintainer; founder release review |
 | GAME-002 | P2 | in-progress | Online chess and checkers lobbies with accepted game requests | Maintainer; founder release review |
 | UX-021 | P2 | in-progress | Sculpted chess pieces, raised checkers and collector-style solitaire cards | Maintainer; founder release review |
-| ECO-008 | P2 | in-progress | Education & Learning directory section with Geek Protocol and sourced peers | Maintainer; founder release review |
+| ECO-008 | P2 | in-progress | Education directory with explicit learning utility-token projects | Maintainer; founder release review |
 
 ## CONT-001: Publish the continuation system
 
@@ -1181,11 +1181,11 @@ Acceptance:
 
 Evidence/specification: [docs/TABLETOP-ART.md](../../docs/TABLETOP-ART.md), [public/games/assets/tabletop.css](../../public/games/assets/tabletop.css), [public/games/assets/pieces.js](../../public/games/assets/pieces.js).
 
-## ECO-008: Education & Learning directory section with Geek Protocol and sourced peers
+## ECO-008: Education directory with explicit learning utility-token projects
 
 **P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: ECO-003.
 
-Next action: Review the new directory category and sources; merge after founder approval.
+Next action: Review PR #256: GEEK/BMT token-network and utility-state cards plus six learning resources; founder approval required for merge.
 
 Acceptance:
 

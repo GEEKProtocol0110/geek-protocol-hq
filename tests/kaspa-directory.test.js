@@ -110,3 +110,13 @@ test('shipped filters combine words and category, handle no matches and reset ac
   assert.equal(status.textContent,'2 of 3 resources shown.');assert.equal(walletSection.hidden,false);
   await controls.emit('submit');
 });
+
+test('education token cards disclose network and utility state without assigning tokens to learning guides',()=>{
+ const geek=catalog.entries.find(e=>e.id==='geek-education');
+ const bmt=catalog.entries.find(e=>e.id==='bmt-university');
+ assert.equal(geek.learningToken.symbol,'GEEK');assert.match(geek.learningToken.utility,/disabled/);
+ assert.equal(bmt.learningToken.network,'Kasplex L2 · ERC-20');
+ assert.equal(catalog.entries.find(e=>e.id==='kaspa-university').learningToken,undefined);
+ const rendered=renderCatalog(catalog).catalog;assert.match(rendered,/Learning utility/);assert.match(rendered,/Kasplex L2 · ERC-20/);
+ const bad=structuredClone(catalog);bad.entries.find(e=>e.id==='bmt-university').learningToken.recordUrl='javascript:alert(1)';assert.throws(()=>validateCatalog(bad));
+});
