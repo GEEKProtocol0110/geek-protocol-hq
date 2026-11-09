@@ -79,6 +79,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-020 | P2 | needs-evidence | Unify the Geek Games visual feel and play controls | Maintainer; founder release review |
 | GAME-002 | P2 | in-progress | Online chess and checkers lobbies with accepted game requests | Maintainer; founder release review |
 | UX-021 | P2 | in-progress | Sculpted chess pieces, raised checkers and collector-style solitaire cards | Maintainer; founder release review |
+| ECO-008 | P2 | in-progress | Education & Learning directory section with Geek Protocol and sourced peers | Maintainer; founder release review |
 
 ## CONT-001: Publish the continuation system
 
@@ -1179,3 +1180,18 @@ Acceptance:
 - Focused gameplay and site/continuity/security checks pass; browser/device acceptance stays separate.
 
 Evidence/specification: [docs/TABLETOP-ART.md](../../docs/TABLETOP-ART.md), [public/games/assets/tabletop.css](../../public/games/assets/tabletop.css), [public/games/assets/pieces.js](../../public/games/assets/pieces.js).
+
+## ECO-008: Education & Learning directory section with Geek Protocol and sourced peers
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: ECO-003.
+
+Next action: Review the new directory category and sources; merge after founder approval.
+
+Acceptance:
+
+- Education & Learning appears in directory navigation, category filter and crawlable cards.
+- Geek Protocol listed alongside independently sourced Kaspa learning projects.
+- L1, L2, off-chain resources and historical program guidelines are accurately distinguished.
+- Directory, site and continuity checks pass.
+
+Evidence/specification: [docs/EDUCATION-DIRECTORY.md](../../docs/EDUCATION-DIRECTORY.md), [docs/kaspa-directory.json](../../docs/kaspa-directory.json).
