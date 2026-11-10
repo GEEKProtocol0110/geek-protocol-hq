@@ -85,3 +85,11 @@
 @media(max-width:650px){.home-launchpad{grid-template-columns:1fr}.home-launchpad>a{padding:20px}.home-launchpad h2{margin-top:8px}.home-launchpad p{margin-bottom:12px}.home-onboarding .home-first-steps li{grid-template-columns:1fr;gap:4px}.home-onboarding .home-main>.welcome-panel>summary{padding:18px}.home-onboarding .home-first-steps{padding:20px}.home-onboarding .home-main h1{font-size:clamp(2.5rem,9.8vw,3.7rem)}}
 @media(forced-colors:active){.home-launchpad>a,.home-onboarding .eyebrow{background:Canvas;color:CanvasText;border:1px solid CanvasText;box-shadow:none}.home-launchpad :is(p,.launch-link,.launch-number){color:CanvasText}}
 @media(min-width:851px) and (max-width:1050px){.home-onboarding .site-header{height:64px}}
+
+/* Keep Kaspa and its existing brand mark together in the hero. */
+.home-onboarding #home-title .home-kaspa-line{display:flex;align-items:center;gap:.16em;white-space:nowrap;font-style:normal;color:#e8c56e}
+.home-onboarding #home-title .home-kaspa-line>span:first-child{font-size:.8em}
+.home-onboarding #home-title .home-kaspa-word{font-size:1.18em;color:#6fc7ba;letter-spacing:-.045em}
+.home-onboarding #home-title .home-kaspa-line img{width:.95em;height:.95em;flex:0 0 .95em;object-fit:contain;filter:drop-shadow(0 0 12px #6fc7ba24)}
+@media(max-width:360px){.home-onboarding #home-title .home-kaspa-line{gap:.12em}.home-onboarding #home-title .home-kaspa-line img{width:.85em;height:.85em;flex-basis:.85em}}
+@media(forced-colors:active){.home-onboarding #home-title .home-kaspa-word{color:CanvasText}.home-onboarding #home-title .home-kaspa-line img{filter:none}}

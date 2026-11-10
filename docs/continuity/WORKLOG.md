@@ -1282,3 +1282,8 @@ Founder requested the Tower of Geek name and selectable difficulty. Added six le
 ## November 10 — UX-022 site polish
 
 Founder requested geekprotocol.xyz polish. Added visible Learn/Games/News discovery cards; refined homepage spacing, panels, action buttons and reading hierarchy; kept glow on edges. Shared navigation now collapses coherently at tablet widths instead of mixing the 760/850 breakpoints, using existing menu handlers and header height alignment. Source checks pass. Local native browser started, but localhost and forwarded terminal.local connections were refused; rendered/phone acceptance remains open. No account, reward, feed loading or A.C.E. activation changes. Candidate only.
+
+
+### UX-022 founder screenshot revision
+
+Enlarged the homepage Kaspa word, switched it to Kaspa turquoise and placed the existing Kaspa mark immediately afterward. Scoped hero row sizing keeps the word and logo together. Site and continuity source checks pass; rendered narrow-device acceptance remains open.
