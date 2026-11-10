@@ -1203,7 +1203,7 @@ Evidence/specification: [docs/EDUCATION-DIRECTORY.md](../../docs/EDUCATION-DIREC
 
 **P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: GAME-002, UX-021.
 
-Next action: Review nine playable game pages and five new online-lobby modes in preview. Browser and physical-device acceptance remain separate.
+Next action: Review #258 upgraded boards and game-over flow in preview; browser and physical-phone visual acceptance remain outstanding.
 
 Acceptance:
 
@@ -1211,5 +1211,6 @@ Acceptance:
 - Five two-player games work through existing authoritative lobby/request/reconnect flow.
 - Battle Geek opposing fleets stay server-only online; local mode uses an explicit handoff curtain.
 - Rules, client and real-Redis integration tests pass; no account/XP/token reward changes.
+- Standard 10×10 five-ship fleet; selectable Dots sizes; terminal result, reduced-motion-safe celebration, replay, exit and board review.
 
 Evidence/specification: [docs/STRATEGY-PUZZLE-GAMES.md](../../docs/STRATEGY-PUZZLE-GAMES.md), [tests/strategy-games.test.js](../../tests/strategy-games.test.js), [tests/strategy-client.test.js](../../tests/strategy-client.test.js), [tests/classic-online-api.test.js](../../tests/classic-online-api.test.js).

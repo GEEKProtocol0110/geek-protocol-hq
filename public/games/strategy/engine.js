@@ -1,7 +1,7 @@
 export const GAME_META={
  'tic-tac-toe':{name:'Geek Tac Toe',icon:'×',players:2,skill:'Pattern recognition',rules:'Gold X starts. Place a mark in an empty square. Three in a row, column or diagonal wins. A full board without a line is a draw.'},
- 'dots':{name:'Dots & Boxes',icon:'▦',players:2,skill:'Planning chains',rules:'Join neighboring dots by claiming an edge. Complete the fourth side of a box to claim it and take another turn. Most of the nine boxes wins.'},
- 'battle-geek':{name:'Battle Geek',icon:'⌖',players:2,skill:'Deduction',rules:'Each player deploys three straight ships (lengths 3, 2 and 2) on a 6×6 grid. Ships cannot overlap but may touch. Scan one enemy cell per turn, even after a hit. Sink all three ships to win. Local play uses a pass-device privacy curtain; online only your own fleet is sent to your browser.'},
+ 'dots':{name:'Dots & Boxes',icon:'▦',players:2,skill:'Planning chains',rules:'Join neighboring dots by claiming an edge. Complete the fourth side of a box to claim it and take another turn. Choose 4×4, 5×5, 6×6 or 8×8 dots. Most boxes wins.'},
+ 'battle-geek':{name:'Battle Geek',icon:'⌖',players:2,skill:'Deduction',rules:'Each player deploys five straight ships (carrier 5, battleship 4, cruiser 3, submarine 3 and destroyer 2) on a standard 10×10 grid. Ships cannot overlap but may touch. Scan one enemy cell per turn, even after a hit. Sink all five ships to win. Local play uses a pass-device privacy curtain; online only your own fleet is sent to your browser.'},
  'connect-four':{name:'Geek Connect Four',icon:'◉',players:2,skill:'Planning threats',rules:'Gold starts. Choose a column to drop a token into its lowest empty slot. Four in a row horizontally, vertically or diagonally wins. A full board without four is a draw.'},
  'reversi':{name:'Geek Reversi',icon:'◐',players:2,skill:'Positioning',rules:'Gold starts. Place a disc to bracket at least one opponent disc in a straight line between your discs. All bracketed discs flip. If a player has no legal move, their turn passes automatically. The game ends when neither player can move. Most discs wins.'},
  'codebreaker':{name:'Geek Codebreaker',icon:'◇',players:1,skill:'Eliminating possibilities',rules:'Find the secret four-symbol code in ten guesses. Each position uses a digit from 1 to 6; repeats are allowed. Exact counts correct symbol and position. Elsewhere counts correct symbols in different positions, without double counting.'},
@@ -13,13 +13,13 @@ export const ONLINE_STRATEGY=['tic-tac-toe','dots','battle-geek','connect-four',
 const clone=x=>structuredClone(x),inside=(r,c,n)=>r>=0&&r<n&&c>=0&&c<n;
 const refuse=()=>{throw new Error('ONLINE_ILLEGAL');};
 export const isStrategy=g=>ONLINE_STRATEGY.includes(g);
-export function newStrategy(game){
+export function newStrategy(game,options={}){
  const base={game,turn:0,winner:null,moves:0};
  if(game==='tic-tac-toe')return {...base,board:Array(9).fill(null)};
  if(game==='connect-four')return {...base,board:Array(42).fill(null)};
- if(game==='dots')return {...base,edges:Array(24).fill(null),boxes:Array(9).fill(null),scores:[0,0]};
+ if(game==='dots'){const size=[4,5,6,8].includes(options.dotsSize)?options.dotsSize:6;return {...base,size,edges:Array(2*size*(size-1)).fill(null),boxes:Array((size-1)**2).fill(null),scores:[0,0]};}
  if(game==='reversi'){const board=Array(64).fill(null);board[27]=1;board[28]=0;board[35]=0;board[36]=1;return {...base,board};}
- if(game==='battle-geek')return {...base,phase:'deploy',ready:[false,false],fleets:[[],[]],shots:[Array(36).fill(false),Array(36).fill(false)]};
+ if(game==='battle-geek')return {...base,size:10,fleetLengths:[5,4,3,3,2],phase:'deploy',ready:[false,false],fleets:[[],[]],shots:[Array(100).fill(false),Array(100).fill(false)]};
  throw new Error('INVALID_REQUEST');
 }
 function lineWinner(board,rows,cols,length){
@@ -36,29 +36,29 @@ export function reversiFlips(board,index,side){
  }return result;
 }
 export const reversiLegal=(board,side)=>board.flatMap((_,i)=>reversiFlips(board,i,side).length?[i]:[]);
-export function validateFleet(fleet){
- if(!Array.isArray(fleet)||fleet.length!==3)return false;
- const all=[];for(let i=0;i<3;i++){
-  const ship=fleet[i];if(!Array.isArray(ship)||ship.length!==[3,2,2][i]||!ship.every(v=>Number.isInteger(v)&&v>=0&&v<36))return false;
-  const cells=[...ship].sort((a,b)=>a-b),horizontal=cells.every(v=>Math.floor(v/6)===Math.floor(cells[0]/6));
-  if(!cells.every((v,k)=>v===cells[0]+k*(horizontal?1:6)))return false;all.push(...cells);
- }return new Set(all).size===7;
+export function validateFleet(fleet,size=10,lengths=[5,4,3,3,2]){
+ if(!Array.isArray(fleet)||fleet.length!==lengths.length)return false;
+ const all=[];for(let i=0;i<lengths.length;i++){
+  const ship=fleet[i];if(!Array.isArray(ship)||ship.length!==lengths[i]||!ship.every(v=>Number.isInteger(v)&&v>=0&&v<size*size))return false;
+  const cells=[...ship].sort((a,b)=>a-b),horizontal=cells.every(v=>Math.floor(v/size)===Math.floor(cells[0]/size));
+  if(!cells.every((v,k)=>v===cells[0]+k*(horizontal?1:size)))return false;all.push(...cells);
+ }return new Set(all).size===lengths.reduce((a,b)=>a+b,0);
 }
-export function randomFleet(random=Math.random){
- const used=new Set(),fleet=[];for(const length of [3,2,2]){
-  const options=[];for(let i=0;i<36;i++)for(const step of [1,6]){
-   const cells=Array.from({length},(_,k)=>i+k*step);if(cells.at(-1)<36&&(step===6||Math.floor(i/6)===Math.floor(cells.at(-1)/6))&&cells.every(x=>!used.has(x)))options.push(cells);
+export function randomFleet(random=Math.random,size=10,lengths=[5,4,3,3,2]){
+ const used=new Set(),fleet=[];for(const length of lengths){
+  const options=[];for(let i=0;i<size*size;i++)for(const step of [1,size]){
+   const cells=Array.from({length},(_,k)=>i+k*step);if(cells.at(-1)<size*size&&(step===size||Math.floor(i/size)===Math.floor(cells.at(-1)/size))&&cells.every(x=>!used.has(x)))options.push(cells);
   }const ship=options[Math.floor(random()*options.length)];fleet.push(ship);ship.forEach(x=>used.add(x));
  }return fleet;
 }
 export function strategyView(s,side){
  if(s.game!=='battle-geek')return clone(s);
- return {game:s.game,turn:s.turn,winner:s.winner,moves:s.moves,phase:s.phase,ready:[...s.ready],ownFleet:clone(s.fleets[side]),incoming:[...s.shots[1-side]],target:s.shots[side].map((shot,i)=>!shot?'unknown':s.fleets[1-side].some(ship=>ship.includes(i))?'hit':'miss'),sunk:s.fleets[1-side].filter(ship=>ship.every(i=>s.shots[side][i])).map(ship=>[...ship])};
+ return {game:s.game,size:s.size||6,fleetLengths:s.fleetLengths||[3,2,2],turn:s.turn,winner:s.winner,moves:s.moves,phase:s.phase,ready:[...s.ready],ownFleet:clone(s.fleets[side]),incoming:[...s.shots[1-side]],target:s.shots[side].map((shot,i)=>!shot?'unknown':s.fleets[1-side].some(ship=>ship.includes(i))?'hit':'miss'),sunk:s.fleets[1-side].filter(ship=>ship.every(i=>s.shots[side][i])).map(ship=>[...ship])};
 }
 export function moveStrategy(state,side,body){
  if(![0,1].includes(side)||state.winner!==null)refuse();const s=clone(state);const n=body.cell;
  if(s.game==='battle-geek'&&s.phase==='deploy'){
-  if(body.kind!=='deploy'||s.ready[side]||!validateFleet(body.fleet))refuse();
+  if(body.kind!=='deploy'||s.ready[side]||!validateFleet(body.fleet,s.size||6,s.fleetLengths||[3,2,2]))refuse();
   s.fleets[side]=clone(body.fleet);s.ready[side]=true;if(s.ready.every(Boolean))s.phase='play';s.moves++;return s;
  }
  if(s.turn!==side)throw new Error('ONLINE_TURN');
@@ -67,14 +67,14 @@ export function moveStrategy(state,side,body){
  }else if(s.game==='connect-four'){
   if(!Number.isInteger(n)||n<0||n>6)refuse();let i=35+n;while(i>=0&&s.board[i]!==null)i-=7;if(i<0)refuse();s.board[i]=side;s.winner=lineWinner(s.board,6,7,4);s.turn=1-side;
  }else if(s.game==='dots'){
-  if(!Number.isInteger(n)||n<0||n>=24||s.edges[n]!==null)refuse();s.edges[n]=side;let scored=0;
-  for(let r=0;r<3;r++)for(let c=0;c<3;c++){const box=r*3+c;if(s.boxes[box]===null&&[r*3+c,(r+1)*3+c,12+r*4+c,12+r*4+c+1].every(i=>s.edges[i]!==null)){s.boxes[box]=side;s.scores[side]++;scored++;}}
+  if(!Number.isInteger(n)||n<0||n>=s.edges.length||s.edges[n]!==null)refuse();s.edges[n]=side;let scored=0;
+  const size=s.size||4,w=size-1,h=size*w;for(let r=0;r<w;r++)for(let c=0;c<w;c++){const box=r*w+c;if(s.boxes[box]===null&&[r*w+c,(r+1)*w+c,h+r*size+c,h+r*size+c+1].every(i=>s.edges[i]!==null)){s.boxes[box]=side;s.scores[side]++;scored++;}}
   if(!scored)s.turn=1-side;if(s.boxes.every(v=>v!==null))s.winner=s.scores[0]===s.scores[1]?'draw':s.scores[0]>s.scores[1]?0:1;
  }else if(s.game==='reversi'){
   const flips=reversiFlips(s.board,n,side);if(!flips.length)refuse();s.board[n]=side;flips.forEach(i=>s.board[i]=side);
   s.turn=1-side;if(!reversiLegal(s.board,s.turn).length){s.turn=side;if(!reversiLegal(s.board,side).length){const a=s.board.filter(x=>x===0).length,b=s.board.filter(x=>x===1).length;s.winner=a===b?'draw':a>b?0:1;}}
  }else if(s.game==='battle-geek'){
-  if(body.kind!=='scan'||!Number.isInteger(n)||n<0||n>=36||s.shots[side][n])refuse();s.shots[side][n]=true;if(s.fleets[1-side].flat().every(i=>s.shots[side][i]))s.winner=side;s.turn=1-side;
+  if(body.kind!=='scan'||!Number.isInteger(n)||n<0||n>=s.shots[side].length||s.shots[side][n])refuse();s.shots[side][n]=true;if(s.fleets[1-side].flat().every(i=>s.shots[side][i]))s.winner=side;s.turn=1-side;
  }else refuse();s.moves++;return s;
 }
 const pegCoords=Array.from({length:5},(_,r)=>Array.from({length:r+1},(_,c)=>[r,c])).flat();

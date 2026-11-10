@@ -13,11 +13,11 @@ if redis.call('GET',KEYS[1]) ~= ARGV[1] then return 0 end
 redis.call('SET',KEYS[1],ARGV[2],'EX',ARGV[3])
 return 1`;
 const fail=code=>{throw new Error(code);};
-export function newOnlineRoom({code,game,visibility,player,now=Date.now()}){
+export function newOnlineRoom({code,game,visibility,player,dotsSize,now=Date.now()}){
  if(!(['chess','checkers'].includes(game)||isStrategy(game))||!['public','private'].includes(visibility))fail('INVALID_REQUEST');
- return {code,game,visibility,host:{id:player.id,name:player.name},guest:null,requests:[],state:'waiting',revision:0,createdAt:now,expiresAt:now+ONLINE_TTL*1000,updatedAt:now,ply:0,history:[],position:null,result:null,drawOffer:null};
+ return {code,game,visibility,options:{dotsSize:[4,5,6,8].includes(dotsSize)?dotsSize:6},host:{id:player.id,name:player.name},guest:null,requests:[],state:'waiting',revision:0,createdAt:now,expiresAt:now+ONLINE_TTL*1000,updatedAt:now,ply:0,history:[],position:null,result:null,drawOffer:null};
 }
-const summary=r=>({code:r.code,game:r.game,hostName:r.host.name,state:r.state,createdAt:r.createdAt});
+const summary=r=>({code:r.code,game:r.game,options:r.options,hostName:r.host.name,state:r.state,createdAt:r.createdAt});
 export function onlineView(r,id){
  const host=r.host.id===id,guest=r.guest?.id===id,member=host||guest;
  return {...summary(r),revision:r.revision,expiresAt:r.expiresAt,visibility:r.visibility,role:host?'host':guest?'guest':'visitor',guestName:r.guest?.name||null,requests:host?r.requests.map(({id,name})=>({id,name})):[],requested:r.requests.some(p=>p.playerId===id),position:member?(r.position&&isStrategy(r.game)?strategyView(r.position,host?0:1):r.position):null,history:member?r.history:[],ply:member?r.ply:0,result:member?r.result:null,drawOffer:member?r.drawOffer:null};
@@ -38,7 +38,7 @@ export function transitionOnline(room,id,action,body={},now=Date.now()){
   if(!host)fail('ONLINE_FORBIDDEN');if(r.state!=='waiting')fail('ONLINE_CONFLICT');
   const request=r.requests.find(p=>p.id===body.requestId);if(!request)fail('ONLINE_CONFLICT');
   if(action==='decline')r.requests=r.requests.filter(p=>p.id!==request.id);
-  else{r.guest={id:request.playerId,name:request.name};r.requests=[];r.state='playing';r.position=r.game==='chess'?new Chess().fen():r.game==='checkers'?newCheckers():newStrategy(r.game);}
+  else{r.guest={id:request.playerId,name:request.name};r.requests=[];r.state='playing';r.position=r.game==='chess'?new Chess().fen():r.game==='checkers'?newCheckers():newStrategy(r.game,r.options);}
  }else if(action==='cancel'){
   if(!host)fail('ONLINE_FORBIDDEN');if(r.state!=='waiting')fail('ONLINE_CONFLICT');r.state='finished';r.result='Lobby closed';r.requests=[];
  }else{
@@ -79,7 +79,7 @@ export function transitionOnline(room,id,action,body={},now=Date.now()){
 export async function createOnline(player,body){
  for(let i=0;i<5;i++){
   const code=`PLAY-${randomBytes(6).toString('hex').toUpperCase()}`;
-  const room=newOnlineRoom({code,player,game:body.game,visibility:body.visibility||'public'});
+  const room=newOnlineRoom({code,player,game:body.game,visibility:body.visibility||'public',dotsSize:body.dotsSize});
   if(await redis('SET',onlineKey(code),JSON.stringify(room),'EX',ONLINE_TTL,'NX')==='OK'){
    if(room.visibility==='public')await pipeline([['ZADD',indexKey(),room.createdAt,code],['ZREMRANGEBYRANK',indexKey(),0,-101],['EXPIRE',indexKey(),ONLINE_TTL]]);
    return room;

@@ -183,6 +183,6 @@
     "task": "GAME-003",
     "status": "source-candidate",
     "evidence": "docs/STRATEGY-PUZZLE-GAMES.md",
-    "nextAction": "Review nine games and five new online modes. Actual browser/phone acceptance remains outstanding. A.C.E. stays paused."
+    "nextAction": "Review #258 rendering upgrade: standard Battle Geek, selectable Dots and game-over celebration. Browser/phone acceptance open; A.C.E. paused."
   }
 }

@@ -5,8 +5,8 @@ GAME-003, November 9, 2026. Founder approved all nine games. This candidate adds
 | Game | Format | Rules implemented |
 | --- | --- | --- |
 | Geek Tac Toe | Local two-player and online | 3×3, Gold X first, three in a line, full-board draw. |
-| Dots & Boxes | Local two-player and online | 4×4 dots / nine boxes; four-edge completion claims a box and grants an extra turn. Most boxes wins. |
-| Battle Geek | Local pass-device and online | Custom 6×6 hidden-fleet strategy, three straight non-overlapping ships of lengths 3/2/2; ships may touch. Shuffle an automatic placement, then explicitly deploy. Scan one cell per turn, including after a hit. Seven hits wins. |
+| Dots & Boxes | Local two-player and online | Selectable 4×4, 5×5, 6×6 (default), or 8×8 dots / 9, 16, 25 or 49 boxes; four-edge completion claims a box and grants an extra turn. Most boxes wins. |
+| Battle Geek | Local pass-device and online | Standard 10×10 hidden-fleet strategy, five straight non-overlapping ships of lengths 5/4/3/3/2; ships may touch. Shuffle an automatic placement, then explicitly deploy. Scan one cell per turn, including after a hit. Seventeen hits wins. |
 | Geek Connect Four | Local two-player and online | 7×6 gravity board, four in a line, full-board draw. |
 | Geek Reversi | Local two-player and online | 8×8 bracket-and-flip; Gold first; automatic forced pass; neither side can move ends the game, most discs wins. |
 | Geek Codebreaker | Solo | Four symbols from 1–6 with repeats, ten guesses; exact/elsewhere feedback counts repeated symbols once. No undo. |
@@ -29,3 +29,9 @@ Engine tests cover all nine games, wins/draws, invalid moves, extra turns, Rever
 A local preview server started, but the supported browser tab timed out. Browser renders, physical-device sizing, keyboard/screen-reader acceptance and separate-device live acceptance remain outstanding; synthetic DOM fixtures and API integration do not establish those. A.C.E. stays paused under DR-034. Candidate only; not merged or deployed to production.
 
 Validation checkpoint: full npm test passes 821/821 with real Redis 7.2, zero failures/skips; signer 9/9. New domain/client/API checks include complete strategy matches, separate Battle Geek views, a solved triangle, optimal Hanoi and Sudoku uniqueness. The first full-suite attempt lost its /tmp Redis executable after the browser timeout; rebuilding the test executable under the workspace and rerunning the full suite produced the clean result above. Directory/site/continuity and public-answer/security (311 assertions) checks pass. Final online-entry links preselect the requested strategy game without creating a session.
+
+### November 10 rendering revision
+
+Sculpted discs, metallic fleet tiles, sector coordinates, larger boards and framed game status. All nine new games plus chess/checkers/solitaire and online matches expose terminal result dialogs: bounded two-burst fireworks on completion, Play Again, Exit to Games and Review Board. Peg no-jump and unsuccessful Codebreaker endings use a quiet result. Native dialogs retain keyboard/Escape behavior; reduced motion shows a static medal. Online replay opens the lounge for a new consent-based match, never resets an existing room. Existing small Battle Geek states retain their dimensions in server views. Dots size is sanitized in room creation and visible in room options. Source/fixture checks are not visual-device acceptance.
+
+Rendering revision validation: 825/825 full-suite tests with real Redis, zero failures/skips; signer 9/9; security evidence 311 assertions; site and continuity checks pass. Browser/phone visual check remains open.

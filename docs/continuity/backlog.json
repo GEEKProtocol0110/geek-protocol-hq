@@ -1939,12 +1939,13 @@
       "status": "in-progress",
       "title": "Nine strategy and puzzle games, including Battle Geek and Peg Quest",
       "owner": "Maintainer; founder release review",
-      "nextAction": "Review nine playable game pages and five new online-lobby modes in preview. Browser and physical-device acceptance remain separate.",
+      "nextAction": "Review #258 upgraded boards and game-over flow in preview; browser and physical-phone visual acceptance remain outstanding.",
       "acceptance": [
         "Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four, Reversi, Codebreaker, Hanoi, Sudoku and Peg Quest are playable with clear rules and Geek styling.",
         "Five two-player games work through existing authoritative lobby/request/reconnect flow.",
         "Battle Geek opposing fleets stay server-only online; local mode uses an explicit handoff curtain.",
-        "Rules, client and real-Redis integration tests pass; no account/XP/token reward changes."
+        "Rules, client and real-Redis integration tests pass; no account/XP/token reward changes.",
+        "Standard 10\u00d710 five-ship fleet; selectable Dots sizes; terminal result, reduced-motion-safe celebration, replay, exit and board review."
       ],
       "dependsOn": [
         "GAME-002",

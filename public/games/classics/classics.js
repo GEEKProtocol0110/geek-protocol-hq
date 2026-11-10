@@ -67,7 +67,7 @@ function renderSolitaire(){
  const count=state.foundations.reduce((a,p)=>a+p.length,0);
  say(solitaireWon(state)?'You solved it! All 52 cards are home.':`${count}/52 cards home · ${state.moves} moves. Select a face-up card or run, then a column or foundation.`);
 }
-function render(){if(game==='checkers')renderCheckers();else renderSolitaire();$('undo').disabled=history.length===0;}
+function render(){if(game==='checkers')renderCheckers();else renderSolitaire();$('undo').disabled=history.length===0;document.dispatchEvent?.(new CustomEvent('geek-game-state',{detail:{finished:game==='checkers'?!!state.winner:solitaireWon(state),title:game==='checkers'?(state.winner==='draw'?'Honors shared':`${state.winner} wins!`):'All cards home!',detail:$('status').textContent}}));}
 $('start').addEventListener('click',()=>{state=game==='checkers'?newCheckers():newSolitaire();selected=null;history=[];$('setup').hidden=true;$('play').hidden=false;document.body.classList.toggle('is-playing',true);render();$('status').focus();});
 $('undo').addEventListener('click',()=>{if(history.length){state=history.pop();selected=game==='checkers'?state.forced:null;render();$('status').focus();}});
 $('exit').addEventListener('click',()=>{state=null;selected=null;history=[];$('play').hidden=true;$('setup').hidden=false;document.body.classList.toggle('is-playing',false);$('start').focus();});

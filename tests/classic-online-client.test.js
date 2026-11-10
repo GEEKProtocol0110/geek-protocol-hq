@@ -43,6 +43,6 @@ test('online strategy renderer sends tic tac toe cells with revisions and receiv
 test('online Battle Geek deploys through controls and never renders an unscanned enemy ship',async()=>{
  const f=client();await f.node('#connect').emit('click');await tick();f.node('#game-type').value='battle-geek';f.node('#visibility').value='private';await f.node('#create-form').emit('submit');await tick();f.guest('request');await f.poll();await f.node('#requests').children[0].children.find(b=>b.textContent==='Accept').emit('click');await tick();
  await f.node('#board').children[1].children.find(b=>b.textContent==='Deploy fleet').emit('click');await tick();assert.equal(f.getStored().position.ready[0],true);
- f.guest('move',{kind:'deploy',fleet:[[0,1,2],[6,7],[12,13]],revision:f.getStored().revision});await f.poll();
- const enemy=f.node('#board').children[0].children[1].children[1];assert.equal(enemy.children.length,36);assert.equal(enemy.children.every(b=>b.getAttribute('aria-label').endsWith('unknown')),true);await enemy.children[0].emit('click');await tick();assert.equal(f.getStored().position.shots[0][0],true);assert.equal(f.getStored().position.turn,1);
+ f.guest('move',{kind:'deploy',fleet:[[0,1,2,3,4],[10,11,12,13],[20,21,22],[30,31,32],[40,41]],revision:f.getStored().revision});await f.poll();
+ const enemy=f.node('#board').children[0].children[1].children[1];assert.equal(enemy.children.length,100);assert.equal(enemy.children.every(b=>b.getAttribute('aria-label').endsWith('unknown')),true);await enemy.children[0].emit('click');await tick();assert.equal(f.getStored().position.shots[0][0],true);assert.equal(f.getStored().position.turn,1);
 });

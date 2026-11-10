@@ -66,7 +66,7 @@ function drawBoard(){
 function render(){
  if(!room)return;const host=room.role==='host',member=host||room.role==='guest';
  $('room-title').textContent=`${gameName(room.game)}`;
- $('room-detail').textContent=`${room.code} · ${room.visibility==='private'?'Invite only':'Public lobby'} · ${host?'You host':`Hosted by ${room.hostName}`} · ${member?(host?'You play '+(room.game==='chess'?'White':'Gold'):'You play '+(room.game==='chess'?'Black':'Cyan')):'Request a seat'}`;
+ $('room-detail').textContent=`${room.code}${room.game==='dots'?` · ${room.options?.dotsSize||4}×${room.options?.dotsSize||4} dots`:''} · ${room.visibility==='private'?'Invite only':'Public lobby'} · ${host?'You host':`Hosted by ${room.hostName}`} · ${member?(host?'You play '+(room.game==='chess'?'White':'Gold'):'You play '+(room.game==='chess'?'Black':'Cyan')):'Request a seat'}`;
  const actions=$('room-actions'),requests=$('requests');actions.replaceChildren();requests.replaceChildren();$('game-panel').hidden=!member||!room.position;
  document.body.classList.toggle('is-playing',member&&room.state==='playing');
  if(room.state==='waiting'){
@@ -74,14 +74,14 @@ function render(){
   actions.append(host?btn('Close lobby',()=>act('cancel')):room.requested?btn('Cancel request',()=>act('cancel-request')):btn('Request game',()=>act('request')));
   if(host){if(!room.requests.length)requests.textContent='No game requests yet.';for(const r of room.requests){const row=document.createElement('div');row.className='online-row';const p=document.createElement('p');p.textContent=`${r.name} requests a game`;row.append(p,btn('Accept',()=>act('accept',{requestId:r.id})),btn('Decline',()=>act('decline',{requestId:r.id})));requests.append(row);}}
  }else if(room.position&&member){
-  drawBoard();if(room.state==='playing'){actions.append(btn('Resign',()=>{if(confirm('Resign this game?'))act('resign');}));
+  drawBoard();document.dispatchEvent?.(new CustomEvent('geek-game-state',{detail:{finished:room.state==='finished',key:room.code,title:room.result||'Game complete',detail:'Start a new lobby and invite your opponent for another round.',online:true}}));if(room.state==='playing'){actions.append(btn('Resign',()=>{if(confirm('Resign this game?'))act('resign');}));
    if(!room.drawOffer)actions.append(btn('Offer draw',()=>act('offer-draw')));else if(room.drawOffer!==room.role){actions.append(btn('Accept draw',()=>act('accept-draw')),btn('Decline draw',()=>act('decline-draw')));}else{const p=document.createElement('p');p.textContent='Draw offered. Waiting for your opponent.';actions.append(p);}}
  }else $('status').textContent=room.state==='finished'?'This room is closed. Start a new lobby for another game.':'This game already has two players.';
 }
 $('connect').addEventListener('click',async()=>{if(busy)return;busy=true;$('connect').disabled=true;say('Connecting your Geek player…');try{
  const control=new AbortController(),timer=setTimeout(()=>control.abort(),10000);let response,data;try{response=await fetch('/api/session',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:'{}',signal:control.signal});data=await response.json();}finally{clearTimeout(timer);}if(!response.ok||!data.ok)throw new Error('Could not start a player session. Try again shortly.');connected=true;$('connect-panel').hidden=true;$('lounge').hidden=false;say(`Connected as ${data.player.name}.`);if(incoming&&valid(incoming))await open(incoming);else await refresh();
  }catch(e){say(e.message);}finally{busy=false;$('connect').disabled=false;if(room)render();else if(connected)refresh();}});
-$('create-form').addEventListener('submit',e=>{e.preventDefault();epoch++;act('create',{game:$('game-type').value,visibility:$('visibility').value});});
+$('create-form').addEventListener('submit',e=>{e.preventDefault();epoch++;act('create',{game:$('game-type').value,visibility:$('visibility').value,dotsSize:Number($('dots-size')?.value||6)});});
 $('join-form').addEventListener('submit',e=>{e.preventDefault();open($('room-code').value.trim().toUpperCase());});
 $('refresh').addEventListener('click',()=>refresh());
 $('back').addEventListener('click',()=>{if(busy)return;epoch++;code='';room=null;selected=null;document.body.classList.remove('is-playing');$('browse').hidden=false;$('room-panel').hidden=true;history.replaceState(null,'',location.pathname);refresh();});

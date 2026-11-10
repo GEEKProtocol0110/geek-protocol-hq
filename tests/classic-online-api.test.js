@@ -44,23 +44,23 @@ run('all four open-board strategy games complete through authoritative lobby req
  for(const game of ['tic-tac-toe','connect-four','dots','reversi']){
   const p=await pair(game,'private');await call(p.b,'request',p);const requests=(await call(p.a,'view',p)).body.room.requests;
   let r=await call(p.a,'accept',{...p,requestId:requests[0].id});assert.equal(r.statusCode,200);let turn=0;
-  const sequence=game==='tic-tac-toe'?[0,3,1,4,2]:game==='connect-four'?[0,1,0,1,0,1,0]:game==='dots'?Array.from({length:24},(_,i)=>i):null;
+  const sequence=game==='tic-tac-toe'?[0,3,1,4,2]:game==='connect-four'?[0,1,0,1,0,1,0]:game==='dots'?Array.from({length:60},(_,i)=>i):null;
   while(r.body.room.state==='playing'&&turn<65){const pos=r.body.room.position,cell=sequence?sequence[turn]:reversiLegal(pos.board,pos.turn)[0];r=await call(pos.turn===0?p.a:p.b,'move',{...p,cell,revision:r.body.room.revision});assert.equal(r.statusCode,200,game);turn++;}
   assert.equal(r.body.room.state,'finished',game);assert.ok(r.body.room.result);
  }
 });
 run('Battle Geek opponent fleets stay absent from every API view; stale deployment and repeated scans fail',async()=>{
  const p=await pair('battle-geek','private');await call(p.b,'request',p);let r=await call(p.a,'view',p);r=await call(p.a,'accept',{...p,requestId:r.body.room.requests[0].id});
- const fleets=[[[0,1,2],[6,7],[12,13]],[[18,19,20],[24,25],[30,31]]];const revision=r.body.room.revision;
+ const fleets=[[[0,1,2,3,4],[10,11,12,13],[20,21,22],[30,31,32],[40,41]],[[50,51,52,53,54],[60,61,62,63],[70,71,72],[80,81,82],[90,91]]];const revision=r.body.room.revision;
  r=await call(p.a,'move',{...p,revision,kind:'deploy',fleet:fleets[0]});assert.equal(r.statusCode,200);
  assert.equal((await call(p.b,'move',{...p,revision,kind:'deploy',fleet:fleets[1]})).statusCode,409);
  const guest=await call(p.b,'view',p);assert.deepEqual(guest.body.room.position.ownFleet,[]);assert.equal(guest.body.room.position.fleets,undefined);assert.ok(guest.body.room.position.target.every(x=>x==='unknown'));
  r=await call(p.b,'move',{...p,revision:guest.body.room.revision,kind:'deploy',fleet:fleets[1]});assert.equal(r.statusCode,200);
- let miss=35;for(const cell of fleets[1].flat()){
+ let miss=99;for(const cell of fleets[1].flat()){
   r=await call(p.a,'move',{...p,revision:r.body.room.revision,kind:'scan',cell});assert.equal(r.statusCode,200);
   assert.equal(r.body.room.position.fleets,undefined);assert.deepEqual(r.body.room.position.ownFleet,fleets[0]);
   if(r.body.room.state==='playing'){r=await call(p.b,'move',{...p,revision:r.body.room.revision,kind:'scan',cell:miss--});assert.equal(r.statusCode,200);}
  }
- assert.equal(r.body.room.state,'finished');assert.equal(r.body.room.position.sunk.length,3);assert.ok(r.body.room.history.slice(0,2).every(s=>s==='Fleet deployed'));
+ assert.equal(r.body.room.state,'finished');assert.equal(r.body.room.position.sunk.length,5);assert.ok(r.body.room.history.slice(0,2).every(s=>s==='Fleet deployed'));
  assert.equal((await call(p.c,'view',p)).body.room.position,null);
 });

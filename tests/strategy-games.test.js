@@ -15,22 +15,22 @@ test('connect four uses gravity, rejects full columns and detects diagonal and v
  s=newStrategy('connect-four');for(const n of [0,1,1,2,4,2,2,3,4,3,5,3,3])s=step(s,n);assert.equal(s.winner,0);
 });
 test('dots closes boxes, grants an extra turn and scores two adjacent boxes in one edge',()=>{
- let s=newStrategy('dots');for(const n of [0,3,12])s=step(s,n);const side=s.turn;s=step(s,13);assert.equal(s.boxes[0],side);assert.equal(s.turn,side);assert.equal(s.scores[side],1);assert.throws(()=>step(s,13),/ONLINE_ILLEGAL/);
- s=newStrategy('dots');for(const n of [0,1,3,4,12,14])s=step(s,n);const owner=s.turn;s=step(s,13);assert.deepEqual(s.boxes.slice(0,2),[owner,owner]);assert.equal(s.scores[owner],2);
- s=newStrategy('dots');for(let n=0;n<24;n++)s=step(s,n);assert.equal(s.boxes.filter(v=>v!==null).length,9);assert.ok(s.winner!==null);
+ let s=newStrategy('dots',{dotsSize:4});for(const n of [0,3,12])s=step(s,n);const side=s.turn;s=step(s,13);assert.equal(s.boxes[0],side);assert.equal(s.turn,side);assert.equal(s.scores[side],1);assert.throws(()=>step(s,13),/ONLINE_ILLEGAL/);
+ s=newStrategy('dots',{dotsSize:4});for(const n of [0,1,3,4,12,14])s=step(s,n);const owner=s.turn;s=step(s,13);assert.deepEqual(s.boxes.slice(0,2),[owner,owner]);assert.equal(s.scores[owner],2);
+ s=newStrategy('dots',{dotsSize:4});for(let n=0;n<24;n++)s=step(s,n);assert.equal(s.boxes.filter(v=>v!==null).length,9);assert.ok(s.winner!==null);
 });
 test('reversi flips bracketed discs, forces a pass and scores when neither side can move',()=>{
  let s=newStrategy('reversi');assert.deepEqual(reversiLegal(s.board,0),[19,26,37,44]);assert.throws(()=>step(s,0),/ONLINE_ILLEGAL/);s=step(s,19);assert.equal(s.board[27],0);assert.equal(s.turn,1);
  s=newStrategy('reversi');s.board=Array(64).fill(0);s.board[1]=1;s.board[2]=null;s.board[10]=1;s.board[18]=null;s=step(s,2);assert.equal(s.turn,0);assert.equal(s.winner,null);s=step(s,18);assert.equal(s.winner,0);
 });
-const fleets=[[[0,1,2],[6,7],[12,13]],[[18,19,20],[24,25],[30,31]]];
-test('Battle Geek validates placement, keeps opponent fleet cells out of views and ends after seven hits',()=>{
+const fleets=[[[0,1,2,3,4],[10,11,12,13],[20,21,22],[30,31,32],[40,41]],[[50,51,52,53,54],[60,61,62,63],[70,71,72],[80,81,82],[90,91]]];
+test('Battle Geek validates placement, keeps opponent fleet cells out of views and ends after seventeen hits',()=>{
  let s=newStrategy('battle-geek');assert.ok(validateFleet(fleets[0]));assert.equal(validateFleet([[4,5,6],[8,9],[10,11]]),false);assert.equal(validateFleet([[0,1,2],[1,7],[12,13]]),false);assert.equal(validateFleet([[0,0,0],[1,2],[3,4]]),false);
  for(let i=0;i<100;i++)assert.ok(validateFleet(randomFleet()));
  s=moveStrategy(s,1,{kind:'deploy',fleet:fleets[1]});const view=strategyView(s,0);assert.deepEqual(view.ownFleet,[]);assert.equal(view.fleets,undefined);assert.equal(view.target.every(x=>x==='unknown'),true);assert.throws(()=>moveStrategy(s,1,{kind:'deploy',fleet:fleets[1]}),/ONLINE_ILLEGAL/);
  s=moveStrategy(s,0,{kind:'deploy',fleet:fleets[0]});assert.equal(s.phase,'play');assert.throws(()=>moveStrategy(s,1,{kind:'scan',cell:0}),/ONLINE_TURN/);
- let miss=35;for(const cell of fleets[1].flat()){s=moveStrategy(s,0,{kind:'scan',cell});if(s.winner===null)s=moveStrategy(s,1,{kind:'scan',cell:miss--});}
- assert.equal(s.winner,0);assert.equal(strategyView(s,0).sunk.length,3);assert.equal(strategyView(s,1).target.filter(x=>x==='unknown').length,30);
+ let miss=99;for(const cell of fleets[1].flat()){s=moveStrategy(s,0,{kind:'scan',cell});if(s.winner===null)s=moveStrategy(s,1,{kind:'scan',cell:miss--});}
+ assert.equal(s.winner,0);assert.equal(strategyView(s,0).sunk.length,5);assert.equal(strategyView(s,1).target.filter(x=>x==='unknown').length,84);
 });
 test('Battle Geek rejects repeated scans and refuses scans before both fleets deploy',()=>{
  let s=newStrategy('battle-geek');assert.throws(()=>moveStrategy(s,0,{kind:'scan',cell:0}),/ONLINE_ILLEGAL/);for(const side of [0,1])s=moveStrategy(s,side,{kind:'deploy',fleet:fleets[side]});s=moveStrategy(s,0,{kind:'scan',cell:35});s=moveStrategy(s,1,{kind:'scan',cell:35});assert.throws(()=>moveStrategy(s,0,{kind:'scan',cell:35}),/ONLINE_ILLEGAL/);
@@ -57,4 +57,13 @@ test('Sudoku template has one solution rather than ambiguous completion targets'
  const s=newSolo('sudoku',0,()=>.25),board=[...s.given];let found=0;
  function search(){if(found>1)return;let cell=-1,choices=null;for(let i=0;i<81;i++)if(!board[i]){const row=Math.floor(i/9),col=i%9;const options=[1,2,3,4,5,6,7,8,9].filter(n=>!board.some((v,j)=>v===n&&(Math.floor(j/9)===row||j%9===col||Math.floor(Math.floor(j/9)/3)===Math.floor(row/3)&&Math.floor(j%9/3)===Math.floor(col/3))));if(!options.length)return;if(!choices||options.length<choices.length){cell=i;choices=options;}}if(cell<0){found++;return;}for(const n of choices){board[cell]=n;search();board[cell]=0;}}
  search();assert.equal(found,1);
+});
+test('Dots selectable boards have consistent edges, box totals and terminal scores',()=>{
+ for(const size of [4,5,6,8]){let s=newStrategy('dots',{dotsSize:size});assert.equal(s.size,size);assert.equal(s.edges.length,2*size*(size-1));for(let cell=0;cell<s.edges.length;cell++)s=step(s,cell);assert.equal(s.scores[0]+s.scores[1],(size-1)**2);assert.ok(s.winner!==null);}
+ assert.equal(newStrategy('dots',{dotsSize:999}).size,6);
+});
+test('standard fleet is five ships on 100 sectors, with no wrapping or overlap',()=>{
+ const s=newStrategy('battle-geek');assert.equal(s.size,10);assert.deepEqual(s.fleetLengths,[5,4,3,3,2]);assert.equal(s.shots[0].length,100);
+ assert.equal(validateFleet([[8,9,10,11,12],[20,21,22,23],[30,31,32],[40,41,42],[50,51]]),false);
+ assert.equal(validateFleet([[0,1,2,3,4],[0,10,20,30],[40,41,42],[50,51,52],[60,61]]),false);
 });
