@@ -1267,3 +1267,8 @@ Continued past #246 with six selected rows: five lookup-only retirements for sem
 ## November 10 — GAME-003 rendering and full-size boards
 
 Updated #258 candidate with standard 10×10 Battle Geek / five ships (5,4,3,3,2), selectable 4/5/6/8 Dots grids (default 6), and sculpted gold/cyan board treatment. Local game, chess, checkers, solitaire and online terminal states open a native result dialog with bounded fireworks, replay, exit and board review. Reduced motion disables fireworks; online replay returns to lobby creation and never resets another player without consent. Engine, client, result-dialog and real-Redis checks pass; full suite and source checks recorded in PR. Browser/physical-phone visual acceptance remains outstanding. A.C.E. stays paused.
+
+
+## November 10 — GAME-003 GIGA victory art
+
+Founder requested GIGA’s head in place of the victory badge. Reused the existing gold GIGA mascot artwork with a head-only CSS viewport and silhouette, retaining reduced-motion behavior and the existing result controls. Candidate update to #258; not merged.
