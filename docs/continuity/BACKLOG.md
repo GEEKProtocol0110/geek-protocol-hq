@@ -81,6 +81,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-021 | P2 | in-progress | Sculpted chess pieces, raised checkers and collector-style solitaire cards | Maintainer; founder release review |
 | ECO-008 | P2 | in-progress | Education directory with explicit learning utility-token projects | Maintainer; founder release review |
 | GAME-003 | P2 | in-progress | Nine strategy and puzzle games, including Battle Geek and Peg Quest | Maintainer; founder release review |
+| UX-022 | P2 | in-progress | Homepage pathways and shared navigation polish | Maintainer; founder release review |
 
 ## CONT-001: Publish the continuation system
 
@@ -1214,3 +1215,18 @@ Acceptance:
 - Standard 10×10 five-ship fleet; selectable Dots sizes; terminal result, reduced-motion-safe celebration, replay, exit and board review.
 
 Evidence/specification: [docs/STRATEGY-PUZZLE-GAMES.md](../../docs/STRATEGY-PUZZLE-GAMES.md), [tests/strategy-games.test.js](../../tests/strategy-games.test.js), [tests/strategy-client.test.js](../../tests/strategy-client.test.js), [tests/classic-online-api.test.js](../../tests/classic-online-api.test.js).
+
+## UX-022: Homepage pathways and shared navigation polish
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: none.
+
+Next action: Review the Vercel preview, especially compact navigation and phone spacing. Local browser could not connect to the preview host.
+
+Acceptance:
+
+- Visible Learn, Games and News paths while preserving the first quiz and lesson choices.
+- Readable type, gold/cyan edge accents, consistent panels and adaptive layouts.
+- Compact menu at tablet widths; existing Escape, outside-click and link-close behaviors remain.
+- Site and continuity checks pass; browser and physical-device acceptance remain separate.
+
+Evidence/specification: [docs/SITE-POLISH-2026-11-10.md](../../docs/SITE-POLISH-2026-11-10.md), [public/assets/home.css](../../public/assets/home.css), [public/assets/styles.css](../../public/assets/styles.css).
