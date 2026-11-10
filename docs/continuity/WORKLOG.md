@@ -1272,3 +1272,8 @@ Updated #258 candidate with standard 10×10 Battle Geek / five ships (5,4,3,3,2)
 ## November 10 — GAME-003 GIGA victory art
 
 Founder requested GIGA’s head in place of the victory badge. Reused the existing gold GIGA mascot artwork with a head-only CSS viewport and silhouette, retaining reduced-motion behavior and the existing result controls. Candidate update to #258; not merged.
+
+
+## November 10 — GAME-003 Tower of Geek
+
+Founder requested the Tower of Geek name and selectable difficulty. Added six levels (3–8 discs), optimal-move targets, perfect-solution feedback and scalable tower rendering. Existing address remains compatible. Candidate only; browser/phone visual acceptance remains open.

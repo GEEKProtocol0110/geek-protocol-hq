@@ -37,3 +37,7 @@ Sculpted discs, metallic fleet tiles, sector coordinates, larger boards and fram
 Rendering revision validation: 825/825 full-suite tests with real Redis, zero failures/skips; signer 9/9; security evidence 311 assertions; site and continuity checks pass. Browser/phone visual check remains open.
 
 Founder art revision: replace the result badge with a head-only view of the existing gold GIGA mascot from /assets/kaspa-culture.png. No new mascot variant or image dependency; fireworks and replay/review/exit stay intact.
+
+### Tower of Geek difficulty revision
+
+Founder renamed Tower of Hanoi to Tower of Geek. The existing /games/hanoi/ address stays compatible. Six selectable levels: Easy 3 discs / 7 minimum moves, Normal 4 / 15, Challenging 5 / 31, Hard 6 / 63, Expert 7 / 127, Geek Master 8 / 255. Engine validates the disc count, scales completion to the selected tower, and reports the optimal target during play and perfect solutions on completion. Replay keeps the choice; returning to setup permits changing it. Disc widths and tower height adapt to the count; the existing 200-action undo cap remains. No reward or A.C.E. changes.

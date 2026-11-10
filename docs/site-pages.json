@@ -548,8 +548,8 @@
     {
       "file": "public/games/hanoi/index.html",
       "path": "/games/hanoi/",
-      "title": "Tower of Hanoi \u2014 Geek Strategy & Puzzles",
-      "description": "Play Tower of Hanoi with Geek gold/cyan styling. Practice sequencing in untimed solo puzzles with clear rules and tap controls.",
+      "title": "Tower of Geek \u2014 Geek Strategy & Puzzles",
+      "description": "Play Tower of Geek with six difficulty levels, 3\u20138 discs and minimum-move targets. A gold/cyan sequencing puzzle with untimed tap controls.",
       "index": true,
       "private": false,
       "lastmod": "2026-11-09"

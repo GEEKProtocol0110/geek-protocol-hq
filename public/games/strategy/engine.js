@@ -5,7 +5,7 @@ export const GAME_META={
  'connect-four':{name:'Geek Connect Four',icon:'◉',players:2,skill:'Planning threats',rules:'Gold starts. Choose a column to drop a token into its lowest empty slot. Four in a row horizontally, vertically or diagonally wins. A full board without four is a draw.'},
  'reversi':{name:'Geek Reversi',icon:'◐',players:2,skill:'Positioning',rules:'Gold starts. Place a disc to bracket at least one opponent disc in a straight line between your discs. All bracketed discs flip. If a player has no legal move, their turn passes automatically. The game ends when neither player can move. Most discs wins.'},
  'codebreaker':{name:'Geek Codebreaker',icon:'◇',players:1,skill:'Eliminating possibilities',rules:'Find the secret four-symbol code in ten guesses. Each position uses a digit from 1 to 6; repeats are allowed. Exact counts correct symbol and position. Elsewhere counts correct symbols in different positions, without double counting.'},
- 'hanoi':{name:'Tower of Hanoi',icon:'△',players:1,skill:'Sequencing',rules:'Move all four discs from tower A to tower C. Tap the source tower, then the destination. Move only the top disc; a larger disc can never sit on a smaller one. The minimum is 15 moves.'},
+ 'hanoi':{name:'Tower of Geek',icon:'△',players:1,skill:'Sequencing',rules:'Choose 3–8 discs, then move the whole tower from A to C. Tap the source tower, then the destination. Move only the top disc; a larger disc can never sit on a smaller one. The minimum is 2ⁿ − 1 moves for n discs. More discs require a longer plan.'},
  'sudoku':{name:'Geek Sudoku',icon:'9',players:1,skill:'Logical deduction',rules:'Fill each row, column and 3×3 box with 1–9 exactly once. Given clues are locked. Select an empty or entered cell, then use the number pad. Conflicting placements are blocked. New puzzles vary by transformations of one uniquely solvable starting puzzle.'},
  'peg-quest':{name:'Geek Peg Quest',icon:'⋰',players:1,skill:'Spatial planning',rules:'Jump one peg over a neighboring peg into an empty hole in a straight line. The jumped peg is removed. Finish with one peg. Choose any starting empty hole; undo lets you explore a different route.'}
 };
@@ -90,7 +90,7 @@ const solution='5346789126721953481983425678597614234268537917139248569615372842
 const shuffle=(a,random)=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 export function newSolo(game,option=0,random=Math.random){
  if(game==='peg-quest'){const board=Array(15).fill(true);board[Number.isInteger(option)&&option>=0&&option<15?option:0]=false;return {game,board,moves:0,done:false};}
- if(game==='hanoi')return {game,towers:[[4,3,2,1],[],[]],moves:0,done:false};
+ if(game==='hanoi'){const discs=Number.isInteger(option)&&option>=3&&option<=8?option:4;return {game,discs,minimum:2**discs-1,towers:[Array.from({length:discs},(_,i)=>discs-i),[],[]],moves:0,done:false};}
  if(game==='codebreaker')return {game,secret:Array.from({length:4},()=>1+Math.floor(random()*6)),guesses:[],moves:0,done:false};
  if(game==='sudoku'){
   const digits=shuffle([1,2,3,4,5,6,7,8,9],random),rows=shuffle([0,1,2],random).flatMap(b=>shuffle([0,1,2],random).map(r=>b*3+r)),cols=shuffle([0,1,2],random).flatMap(b=>shuffle([0,1,2],random).map(c=>b*3+c));
@@ -106,7 +106,7 @@ export function moveSolo(state,body){
  if(s.game==='peg-quest'){
   const move=pegMoves(s.board).find(m=>m.from===body.from&&m.to===body.to);if(!move)refuse();s.board[move.from]=false;s.board[move.middle]=false;s.board[move.to]=true;s.done=s.board.filter(Boolean).length===1;
  }else if(s.game==='hanoi'){
-  const {from,to}=body;if(!Number.isInteger(from)||!Number.isInteger(to)||from<0||from>2||to<0||to>2||from===to||!s.towers[from].length)refuse();const disk=s.towers[from].at(-1);if(s.towers[to].length&&s.towers[to].at(-1)<disk)refuse();s.towers[to].push(s.towers[from].pop());s.done=s.towers[2].length===4;
+  const {from,to}=body;if(!Number.isInteger(from)||!Number.isInteger(to)||from<0||from>2||to<0||to>2||from===to||!s.towers[from].length)refuse();const disk=s.towers[from].at(-1);if(s.towers[to].length&&s.towers[to].at(-1)<disk)refuse();s.towers[to].push(s.towers[from].pop());s.done=s.towers[2].length===(s.discs||4);
  }else if(s.game==='codebreaker'){
   const guess=body.guess;if(!Array.isArray(guess)||guess.length!==4||!guess.every(n=>Number.isInteger(n)&&n>=1&&n<=6))refuse();const feedback=codeFeedback(s.secret,guess);s.guesses.push({guess:[...guess],...feedback});s.won=feedback.exact===4;s.done=s.won||s.guesses.length===10;
  }else if(s.game==='sudoku'){

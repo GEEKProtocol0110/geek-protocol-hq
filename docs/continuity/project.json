@@ -183,6 +183,6 @@
     "task": "GAME-003",
     "status": "source-candidate",
     "evidence": "docs/STRATEGY-PUZZLE-GAMES.md",
-    "nextAction": "Review #258 rendering upgrade: standard Battle Geek, selectable Dots and game-over celebration. Browser/phone acceptance open; A.C.E. paused."
+    "nextAction": "Review Tower of Geek rename and selectable 3\u20138 discs; #258 merged. Browser/phone acceptance remains open. A.C.E. stays paused."
   }
 }

@@ -67,3 +67,12 @@ test('standard fleet is five ships on 100 sectors, with no wrapping or overlap',
  assert.equal(validateFleet([[8,9,10,11,12],[20,21,22,23],[30,31,32],[40,41,42],[50,51]]),false);
  assert.equal(validateFleet([[0,1,2,3,4],[0,10,20,30],[40,41,42],[50,51,52],[60,61]]),false);
 });
+test('Tower of Geek completes every difficulty at its optimal move count',()=>{
+ assert.equal(GAME_META.hanoi.name,'Tower of Geek');
+ for(let discs=3;discs<=8;discs++){
+  let s=newSolo('hanoi',discs);assert.equal(s.discs,discs);assert.equal(s.minimum,2**discs-1);assert.equal(s.towers[0].length,discs);
+  function solve(n,from,to,spare){if(!n)return;solve(n-1,from,spare,to);s=moveSolo(s,{from,to});solve(n-1,spare,to,from);}solve(discs,0,2,1);
+  assert.equal(s.done,true);assert.equal(s.moves,s.minimum);assert.equal(s.towers[2].length,discs);assert.throws(()=>moveSolo(s,{from:2,to:0}),/ONLINE_ILLEGAL/);
+ }
+ for(const option of [2,9,4.5,'8',null])assert.equal(newSolo('hanoi',option).discs,4);
+});
