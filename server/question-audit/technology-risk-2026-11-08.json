@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "reviewedAt": "2026-11-08",
+  "dateBasis": "America/Detroit",
+  "task": "BANK-009",
+  "reviewKind": "internal-primary-source-risk-triage",
+  "independentReview": false,
+  "baselineCommit": "1d16d2261ee336f96a85563a6fdbc260ab132bbe",
+  "scope": "Six selected rows: five retired for ambiguity, unsupported context or semantic duplication; one unchanged draft survivor. No source-check promotions or difficulty calibration.",
+  "retirements": [
+    {
+      "category": "technology",
+      "id": "TECH-0604",
+      "gradingHash": "5634b9f19b6bdfacfcdafba83a11bd45eb93bcfce6d72d244fe00e565c5e9bfa",
+      "canonicalId": "TECH-0096",
+      "reason": "semantic-duplicate",
+      "note": "Repeats the coleopterology-to-beetles objective in TECH-0096; retain one draft concept, with no source-check promotion.",
+      "source": "https://naturalhistory.si.edu/research/entomology/collections-overview/coleoptera",
+      "disposition": "retired-lookup-only",
+      "independentReview": false
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0169",
+      "gradingHash": "c0b766d006f842e1a6a05f7a14fa9a1fa17fe629e4cf1391b5c845342e4948b2",
+      "canonicalId": "TECH-0169",
+      "reason": "invalid-options",
+      "note": "Crustaceans and crabs/lobsters/crayfish are overlapping valid descriptions of the study subject; this single-answer item does not specify broadest taxonomic scope.",
+      "source": "https://naturalhistory.si.edu/research/invertebrate-zoology/about/carcinologist-hall-fame",
+      "disposition": "retired-lookup-only",
+      "independentReview": false
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-d721179b1a86",
+      "gradingHash": "9adbcd6c2886f343bd7e3357cc8bd93e41108641c2566410392d05baded47932",
+      "canonicalId": "TECH-N-d721179b1a86",
+      "reason": "unsupported-claim",
+      "note": "Mixes baseball with a quarterback pass and omits the idealized no-drag conditions needed for a strictly parabolic path. Retire rather than certify the real-world claim.",
+      "source": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/ballistic-flight-equations/",
+      "disposition": "retired-lookup-only",
+      "independentReview": false
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-cee108018491",
+      "gradingHash": "31e84f9a55c5321302182fdf9d442d90cae6bbd3ad55a1f80b27b09d1a48e926",
+      "canonicalId": "TECH-0363",
+      "reason": "unsupported-claim",
+      "note": "Pulsar names a type/observational behavior of neutron star, not an unrestricted synonym for every neutron star. Its related draft definition is also retired pending a precise replacement.",
+      "source": "https://www.jpl.nasa.gov/news/the-case-of-the-missing-link-neutron-star/",
+      "disposition": "retired-lookup-only",
+      "independentReview": false
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0363",
+      "gradingHash": "710f8d14472bc671d4f025591ba5429d5608589b9c40aa2fb63c5fa45b6e7e42",
+      "canonicalId": "TECH-0363",
+      "reason": "invalid-options",
+      "note": "Pulsar and magnetar properties can overlap, so the supplied radio-pulse description does not establish mutually exclusive options. Retire pending a more precise objective.",
+      "source": "https://www.jpl.nasa.gov/news/the-case-of-the-missing-link-neutron-star/",
+      "disposition": "retired-lookup-only",
+      "independentReview": false
+    }
+  ],
+  "retainedDrafts": [
+    {
+      "category": "technology",
+      "id": "TECH-0096",
+      "gradingHash": "900d352f7fdcdf7c72426468247c627f2ad8aa97df61a66c5a854b7511eafa54",
+      "source": "https://naturalhistory.si.edu/research/entomology/collections-overview/coleoptera",
+      "disposition": "draft-needs-human-review",
+      "note": "Concise survivor of the repeated coleopterology objective. No independent certification or source-check promotion; full distractor/category review remains open."
+    }
+  ],
+  "pairReview": [
+    {
+      "ids": [
+        "TECH-0096",
+        "TECH-0604"
+      ],
+      "disposition": "semantic-duplicate",
+      "canonicalId": "TECH-0096",
+      "source": "https://naturalhistory.si.edu/research/entomology/collections-overview/coleoptera",
+      "note": "Both ask the same study-subject relation despite low lexical similarity."
+    }
+  ],
+  "limits": "No new replacement or content-count padding. Prior keys and provenance unchanged; all retired records remain available to saved runs. The pulsar concept is held with no active survivor; the beetle concept retains one draft survivor."
+}

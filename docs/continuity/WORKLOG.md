@@ -1254,6 +1254,10 @@ Added Education & Learning with Geek Protocol, Kaspa University, BMT University,
 
 ECO-008 clarified scope: distinguish GEEK/BMT token-linked learning projects with network and implemented/planned utility state; other six entries move to Learning Platforms & Guides. BMT primary token site identifies Kasplex L2 ERC-20. KU native KAS rewards do not imply a KU fungible token. Existing BURTLE community education positioning does not establish a learning utility mechanic. No other token utility is inferred. PR #256 updated, not merged.
 
+## November 8, 2026 — BANK-009 Technology risk triage
+
+Continued past #246 with six selected rows: five lookup-only retirements for semantic duplication, overlapping options, overbroad neutron-star terminology and projectile context; one unchanged draft survivor. No new rows or review-count promotion. Counts: 8,432 active / 8,218 ranked-eligible / 214 practice-only / 809 eligible reviews / 7,191 target deficit. New deterministic selection test verifies historical duplicate exclusion; original grading and prior retired records remain protected. Exact checks and PR release evidence remain separate.
+
 ### November 9, 2026 — GAME-003 nine strategy/puzzle games
 
 Founder approved all nine suggested games. Added local playable Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four, Reversi, Codebreaker, Tower of Hanoi, Sudoku and triangular Peg Quest. Extended the existing authoritative lobby flow to the five two-player strategy games. Battle Geek masks opposing fleets in server views and clears the local board DOM during handoff. New rules, shipped-client and real-Redis API tests cover winning/invalid moves, extra turns, forced passes, hidden-information boundaries and complete matches. Browser preview startup succeeded, but browser access timed out; no rendered-phone acceptance is claimed. A.C.E. remains paused (DR-034). No merge or production release in this checkpoint.
