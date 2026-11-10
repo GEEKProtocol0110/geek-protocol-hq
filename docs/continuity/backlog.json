@@ -1957,6 +1957,26 @@
         "tests/strategy-client.test.js",
         "tests/classic-online-api.test.js"
       ]
+    },
+    {
+      "id": "UX-022",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Homepage pathways and shared navigation polish",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review the Vercel preview, especially compact navigation and phone spacing. Local browser could not connect to the preview host.",
+      "acceptance": [
+        "Visible Learn, Games and News paths while preserving the first quiz and lesson choices.",
+        "Readable type, gold/cyan edge accents, consistent panels and adaptive layouts.",
+        "Compact menu at tablet widths; existing Escape, outside-click and link-close behaviors remain.",
+        "Site and continuity checks pass; browser and physical-device acceptance remain separate."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/SITE-POLISH-2026-11-10.md",
+        "public/assets/home.css",
+        "public/assets/styles.css"
+      ]
     }
   ]
 }

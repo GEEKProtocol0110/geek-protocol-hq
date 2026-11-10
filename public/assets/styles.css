@@ -822,3 +822,13 @@ h1 em { color: var(--gold); font-style: normal; }
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.level-track i{transition:none}}
 
 .wallet-panel__choice{display:grid;gap:.45rem;font-size:.75rem;color:var(--muted,#becfc4)}.wallet-panel__choice:has(select[hidden]){display:none}.wallet-panel__choice select{max-width:100%;border:1px solid #638574;border-radius:6px;padding:.6rem;background:#101c16;color:#edf4ef;font:inherit;font-size:16px}
+
+/* Shared finishing pass: crisp labels and predictable compact navigation. */
+.hq-world :is(h1,h2,h3,.eyebrow,.section-kicker,.hq-signal-title){text-shadow:none}
+:is(.welcome-page,.news-page,.directory-page) :is(p,li,dd){line-height:1.7}
+:is(.welcome-page,.news-page,.directory-page) :is(h1,h2,h3){text-wrap:balance}
+:is(.welcome-page,.news-page,.directory-page) :is(main,section,article,nav,details)>*{min-width:0}
+.site-header .brand{min-width:0}.site-footer a{text-underline-offset:4px}
+body{--navigation-height:68px}body.welcome-page{--navigation-height:72px}body.home-onboarding{--navigation-height:64px}
+@media(max-width:1050px){.site-header .menu-toggle{width:44px;height:44px;min-width:44px;padding:10px;display:grid;align-content:center;gap:5px;border:1px solid #72908b66;border-radius:8px;background:#14262d}.site-header .menu-toggle span:not(.sr-only){display:block;height:2px;background:#d5e8e2}.site-header .main-nav{position:fixed;inset:var(--navigation-height) 0 auto;display:none;flex-direction:column;align-items:stretch;gap:0;max-height:calc(100dvh - var(--navigation-height));overflow-y:auto;overscroll-behavior:contain;background:#0e1d26fa;border-bottom:1px solid #719b9766;padding:16px max(20px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom))}.site-header .main-nav.open{display:flex}.site-header .main-nav a{display:flex;align-items:center;min-height:48px;padding:12px 4px;border-bottom:1px solid #6e999425}.site-header .main-nav .nav-more{width:100%;padding:8px 0}.site-header .main-nav summary{min-height:48px;display:flex;align-items:center}.site-header .nav-more-panel{position:static;width:100%;margin-top:8px;padding:0 0 0 12px;border:0;box-shadow:none;background:transparent}.site-header{height:var(--navigation-height)}.site-header .brand>span{font-size:clamp(.7rem,2vw,.95rem);overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){.home-launchpad>a{transition:none}}

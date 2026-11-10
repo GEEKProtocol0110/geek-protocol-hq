@@ -1277,3 +1277,13 @@ Founder requested GIGA’s head in place of the victory badge. Reused the existi
 ## November 10 — GAME-003 Tower of Geek
 
 Founder requested the Tower of Geek name and selectable difficulty. Added six levels (3–8 discs), optimal-move targets, perfect-solution feedback and scalable tower rendering. Existing address remains compatible. Candidate only; browser/phone visual acceptance remains open.
+
+
+## November 10 — UX-022 site polish
+
+Founder requested geekprotocol.xyz polish. Added visible Learn/Games/News discovery cards; refined homepage spacing, panels, action buttons and reading hierarchy; kept glow on edges. Shared navigation now collapses coherently at tablet widths instead of mixing the 760/850 breakpoints, using existing menu handlers and header height alignment. Source checks pass. Local native browser started, but localhost and forwarded terminal.local connections were refused; rendered/phone acceptance remains open. No account, reward, feed loading or A.C.E. activation changes. Candidate only.
+
+
+### UX-022 founder screenshot revision
+
+Enlarged the homepage Kaspa word, switched it to Kaspa turquoise and placed the existing Kaspa mark immediately afterward. Scoped hero row sizing keeps the word and logo together. Site and continuity source checks pass; rendered narrow-device acceptance remains open.
