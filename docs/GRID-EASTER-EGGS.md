@@ -1,0 +1,7 @@
+# Extra Grid easter eggs
+
+UX-023 expands the closed-by-default Stray signal footer terminal. Existing binary decode, rotating pings and messages remain. New commands: scan for route-specific notes; riddle for three rotating riddles; hint and answer YOUR GUESS; fortune for five rotating GIGA cookies; launch for a bounded decorative rocket; discoveries for a page-visit-only checklist. Unlisted quack, 42 and blockdag messages reward exploration with text only. No points, inventory or actual rewards.
+
+The terminal now also appears on /games/, /news/, /kaspa/directory/ and /whitepaper/. Individual new game boards, account and owner pages are excluded. Existing terminal placement on legacy learning/game landing pages stays in the footer, with no modal, global keyboard handling, timer or game hook. Commands use textContent and a fixed map, never execution or HTML insertion. No fetch, cookies, browser storage or player state. Discovery progress resets on navigation/reload. Clear removes decorative art but keeps the current page-visit checklist. Each launch replaces its art, with one 1.1-second animation and a static reduced-motion alternative. Existing rewarded hidden-word claims remain separate.
+
+Validation: five focused synthetic DOM tests cover existing routes and commands, answer/hint flow, riddle rotation, route availability, discovery deduplication/reset, art cleanup and fortune cycling. These tests do not establish rendered browser or physical-device acceptance. Candidate only; no merge or production claim.
