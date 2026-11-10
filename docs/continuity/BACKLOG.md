@@ -46,7 +46,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ART-001 | P2 | blocked | Preserve paused original art and resume production only on founder direction | Founder supplies art; production maintainer unassigned |
 | SEO-001 | P0 | done | Maintain metadata and link coverage for every HQ page | Maintainer |
 | AUTH-003 | P0 | needs-evidence | Provide a cross-device account path beyond local passkey creation | Maintainer; family-account and recovery policy reviewed by founder |
-| ACE-001 | P1 | needs-evidence | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
+| ACE-001 | P1 | blocked | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
 | PERF-001 | P1 | needs-evidence | Measure growth capacity and stage storage, delivery and worker improvements | Maintainer; performance/recovery reviewer unassigned |
 | UX-006 | P0 | needs-evidence | Make returning login clear and keep advanced setup optional | Maintainer; founder confirms usability |
 | UX-007 | P1 | needs-evidence | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
@@ -80,6 +80,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | GAME-002 | P2 | in-progress | Online chess and checkers lobbies with accepted game requests | Maintainer; founder release review |
 | UX-021 | P2 | in-progress | Sculpted chess pieces, raised checkers and collector-style solitaire cards | Maintainer; founder release review |
 | ECO-008 | P2 | in-progress | Education directory with explicit learning utility-token projects | Maintainer; founder release review |
+| GAME-003 | P2 | in-progress | Nine strategy and puzzle games, including Battle Geek and Peg Quest | Maintainer; founder release review |
 
 ## CONT-001: Publish the continuation system
 
@@ -670,9 +671,11 @@ Evidence/specification: [docs/PASSKEY-LOGIN.md](../../docs/PASSKEY-LOGIN.md), [d
 
 ## ACE-001: Build source-grounded A.C.E. tutoring and scoped operational automation
 
-**P1 / needs-evidence.** Owner: Maintainer; AI/content evaluation reviewer unassigned. Dependencies: none.
+**P1 / blocked.** Owner: Maintainer; AI/content evaluation reviewer unassigned. Dependencies: none.
 
-Next action: #148 merged/deployed. Authored lesson help works; optional bounded Gateway path and private read-only readiness are installed. Select model/budget/data policy and record a bounded live citation/injection/usage evaluation before activation. Autonomous operational tools are not installed.
+Next action: Keep A.C.E. work and live AI activation paused until the founder explicitly resumes it. Existing authored lesson help remains available.
+
+Blocker: Founder paused A.C.E. work on November 9, 2026.
 
 Acceptance:
 
@@ -1195,3 +1198,19 @@ Acceptance:
 - Directory, site and continuity checks pass.
 
 Evidence/specification: [docs/EDUCATION-DIRECTORY.md](../../docs/EDUCATION-DIRECTORY.md), [docs/kaspa-directory.json](../../docs/kaspa-directory.json).
+
+## GAME-003: Nine strategy and puzzle games, including Battle Geek and Peg Quest
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: GAME-002, UX-021.
+
+Next action: Review #258 upgraded boards and game-over flow in preview; browser and physical-phone visual acceptance remain outstanding.
+
+Acceptance:
+
+- Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four, Reversi, Codebreaker, Hanoi, Sudoku and Peg Quest are playable with clear rules and Geek styling.
+- Five two-player games work through existing authoritative lobby/request/reconnect flow.
+- Battle Geek opposing fleets stay server-only online; local mode uses an explicit handoff curtain.
+- Rules, client and real-Redis integration tests pass; no account/XP/token reward changes.
+- Standard 10×10 five-ship fleet; selectable Dots sizes; terminal result, reduced-motion-safe celebration, replay, exit and board review.
+
+Evidence/specification: [docs/STRATEGY-PUZZLE-GAMES.md](../../docs/STRATEGY-PUZZLE-GAMES.md), [tests/strategy-games.test.js](../../tests/strategy-games.test.js), [tests/strategy-client.test.js](../../tests/strategy-client.test.js), [tests/classic-online-api.test.js](../../tests/classic-online-api.test.js).

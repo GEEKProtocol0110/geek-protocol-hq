@@ -178,5 +178,11 @@
     "status": "source-candidate",
     "evidence": "docs/EDUCATION-DIRECTORY.md",
     "nextAction": "Review #256: Education & Learning token projects GEEK (KRC-20) and BMT (Kasplex L2 ERC-20), plus six separate learning resources. Candidate only."
+  },
+  "strategyPuzzles": {
+    "task": "GAME-003",
+    "status": "source-candidate",
+    "evidence": "docs/STRATEGY-PUZZLE-GAMES.md",
+    "nextAction": "Review #258 rendering upgrade: standard Battle Geek, selectable Dots and game-over celebration. Browser/phone acceptance open; A.C.E. paused."
   }
 }

@@ -333,3 +333,13 @@ Use a fixed public CoinGecko market-cap endpoint through the existing widget fun
 Basis: Founder requests more crypto markets, like the top 100. Direct testing of the legacy crypto screener returned no matches.
 
 Evidence: [docs/GEEK-NEWS.md](../../docs/GEEK-NEWS.md), [server/crypto-markets.js](../../server/crypto-markets.js), [public/news/assets/crypto100.js](../../public/news/assets/crypto100.js), [tests/crypto100.test.js](../../tests/crypto100.test.js). Supersedes DR-032.
+
+## DR-034: Pause A.C.E. while continuing game work
+
+**founder-direction** · 2026-11-09.
+
+Pause A.C.E. development and live AI activation until the founder explicitly resumes it. Continue the approved strategy/puzzle games.
+
+Basis: Founder directed Pause ACE and then approved all nine proposed strategy/puzzle games.
+
+Evidence: [docs/STRATEGY-PUZZLE-GAMES.md](../../docs/STRATEGY-PUZZLE-GAMES.md).
