@@ -1,3 +1,4 @@
+import { isStrategy, newStrategy, moveStrategy, strategyView } from '../public/games/strategy/engine.js';
 import { randomBytes, createHash } from 'node:crypto';
 import { Chess } from '../public/games/chess/vendor/chess.js';
 import { newCheckers, moveCheckers } from '../public/games/classics/checkers-engine.js';
@@ -13,13 +14,13 @@ redis.call('SET',KEYS[1],ARGV[2],'EX',ARGV[3])
 return 1`;
 const fail=code=>{throw new Error(code);};
 export function newOnlineRoom({code,game,visibility,player,now=Date.now()}){
- if(!['chess','checkers'].includes(game)||!['public','private'].includes(visibility))fail('INVALID_REQUEST');
+ if(!(['chess','checkers'].includes(game)||isStrategy(game))||!['public','private'].includes(visibility))fail('INVALID_REQUEST');
  return {code,game,visibility,host:{id:player.id,name:player.name},guest:null,requests:[],state:'waiting',revision:0,createdAt:now,expiresAt:now+ONLINE_TTL*1000,updatedAt:now,ply:0,history:[],position:null,result:null,drawOffer:null};
 }
 const summary=r=>({code:r.code,game:r.game,hostName:r.host.name,state:r.state,createdAt:r.createdAt});
 export function onlineView(r,id){
  const host=r.host.id===id,guest=r.guest?.id===id,member=host||guest;
- return {...summary(r),revision:r.revision,expiresAt:r.expiresAt,visibility:r.visibility,role:host?'host':guest?'guest':'visitor',guestName:r.guest?.name||null,requests:host?r.requests.map(({id,name})=>({id,name})):[],requested:r.requests.some(p=>p.playerId===id),position:member?r.position:null,history:member?r.history:[],ply:member?r.ply:0,result:member?r.result:null,drawOffer:member?r.drawOffer:null};
+ return {...summary(r),revision:r.revision,expiresAt:r.expiresAt,visibility:r.visibility,role:host?'host':guest?'guest':'visitor',guestName:r.guest?.name||null,requests:host?r.requests.map(({id,name})=>({id,name})):[],requested:r.requests.some(p=>p.playerId===id),position:member?(r.position&&isStrategy(r.game)?strategyView(r.position,host?0:1):r.position):null,history:member?r.history:[],ply:member?r.ply:0,result:member?r.result:null,drawOffer:member?r.drawOffer:null};
 }
 export function transitionOnline(room,id,action,body={},now=Date.now()){
  const r=structuredClone(room);if(now>=r.expiresAt)fail('ONLINE_NOT_FOUND');
@@ -37,7 +38,7 @@ export function transitionOnline(room,id,action,body={},now=Date.now()){
   if(!host)fail('ONLINE_FORBIDDEN');if(r.state!=='waiting')fail('ONLINE_CONFLICT');
   const request=r.requests.find(p=>p.id===body.requestId);if(!request)fail('ONLINE_CONFLICT');
   if(action==='decline')r.requests=r.requests.filter(p=>p.id!==request.id);
-  else{r.guest={id:request.playerId,name:request.name};r.requests=[];r.state='playing';r.position=r.game==='chess'?new Chess().fen():newCheckers();}
+  else{r.guest={id:request.playerId,name:request.name};r.requests=[];r.state='playing';r.position=r.game==='chess'?new Chess().fen():r.game==='checkers'?newCheckers():newStrategy(r.game);}
  }else if(action==='cancel'){
   if(!host)fail('ONLINE_FORBIDDEN');if(r.state!=='waiting')fail('ONLINE_CONFLICT');r.state='finished';r.result='Lobby closed';r.requests=[];
  }else{
@@ -57,13 +58,18 @@ export function transitionOnline(room,id,action,body={},now=Date.now()){
     r.history.push(move.san);r.position=c.fen();
     if(c.isCheckmate()){r.state='finished';r.result=`${host?r.host.name:r.guest.name} wins by checkmate`;}
     else if(c.isDraw()){r.state='finished';r.result=c.isStalemate()?'Draw by stalemate':'Draw by chess rules';}
-   }else{
+   }else if(r.game==='checkers'){
     if((r.position.turn==='gold')!==host)fail('ONLINE_TURN');
     if(!Number.isInteger(body.from)||!Number.isInteger(body.to))fail('INVALID_REQUEST');
     const next=moveCheckers(r.position,body.from,body.to);if(!next)fail('ONLINE_ILLEGAL');
     r.position=next;r.history.push(`${body.from}-${body.to}`);
     if(next.winner){r.state='finished';r.result=`${next.winner==='gold'?r.host.name:r.guest.name} wins`;}
-   }
+   }else if(isStrategy(r.game)){
+    r.position=moveStrategy(r.position,host?0:1,body);
+    const log=body.kind==='deploy'?'Fleet deployed':r.game==='battle-geek'?`Scan ${body.cell+1}: ${r.position.fleets[host?1:0].some(ship=>ship.includes(body.cell))?'hit':'miss'}`:`Move ${body.cell+1}`;
+    r.history.push(log);
+    if(r.position.winner!==null){r.state='finished';r.result=r.position.winner==='draw'?'Draw':`${r.position.winner===0?r.host.name:r.guest.name} wins`;}
+   }else fail('INVALID_REQUEST');
    r.ply++;r.drawOffer=null;
    if(r.ply>=600&&r.state==='playing'){r.state='finished';r.result='Draw at the 600-move practice limit';}
   }else fail('INVALID_REQUEST');

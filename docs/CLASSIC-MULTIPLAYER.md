@@ -27,3 +27,7 @@ Local validation result: full `npm test` with compiled Redis 7.2 passes 800/800,
 ## Release authorization — November 8
 
 Founder requested Merge. Prerequisite #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 after exact-head verify and Vercel checks succeeded. #254 now targets main and includes that squash merge; final merge/deployment disposition is recorded in the #254 review record. Earlier candidate statements above describe the pre-release checkpoint. Separate-browser/device acceptance remains open.
+
+## Strategy expansion candidate — November 9, 2026
+
+GAME-003 adds Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four and Reversi to this same lobby service. Battle Geek views are explicitly filtered per player, and both deployments plus every scan use revision-checked server moves. See [strategy/puzzle scope and validation](STRATEGY-PUZZLE-GAMES.md). The existing chess/checkers release record remains historical; expansion is a separate candidate.
