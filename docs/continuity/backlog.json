@@ -1939,7 +1939,7 @@
       "status": "in-progress",
       "title": "Nine strategy and puzzle games, including Battle Geek and Peg Quest",
       "owner": "Maintainer; founder release review",
-      "nextAction": "Review #258 upgraded boards and game-over flow in preview; browser and physical-phone visual acceptance remain outstanding.",
+      "nextAction": "Review Tower of Geek rename and six difficulty levels in preview; existing nine-game release #258 is merged. Browser/phone visual acceptance remains open.",
       "acceptance": [
         "Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four, Reversi, Codebreaker, Hanoi, Sudoku and Peg Quest are playable with clear rules and Geek styling.",
         "Five two-player games work through existing authoritative lobby/request/reconnect flow.",

@@ -1203,7 +1203,7 @@ Evidence/specification: [docs/EDUCATION-DIRECTORY.md](../../docs/EDUCATION-DIREC
 
 **P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: GAME-002, UX-021.
 
-Next action: Review #258 upgraded boards and game-over flow in preview; browser and physical-phone visual acceptance remain outstanding.
+Next action: Review Tower of Geek rename and six difficulty levels in preview; existing nine-game release #258 is merged. Browser/phone visual acceptance remains open.
 
 Acceptance:
 

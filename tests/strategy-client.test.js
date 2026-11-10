@@ -28,3 +28,8 @@ test('Battle Geek clears the DOM for handoff between deployments and scans',asyn
 test('code guess controls reject invalid digits and record one feedback row',async()=>{
  const f=ui('codebreaker');await f.node('#start').emit('click');let form=f.node('#board').children[0];f.node('#code-guess').value='7777';await form.emit('submit');assert.match(f.node('#feedback').textContent,/exactly four/);f.node('#code-guess').value='1234';await form.emit('submit');assert.match(f.node('#status').textContent,/1\/10 guesses/);assert.equal(f.node('#board').children[1].children.length,1);
 });
+test('Tower of Geek uses the selected difficulty and fits all eight discs inside the tower',async()=>{
+ const f=ui('hanoi');f.node('#tower-difficulty').value='8';await f.node('#start').emit('click');assert.match(f.node('#status').textContent,/8 discs.*Best possible: 255/);
+ const tower=f.node('#board').children[0];assert.equal(tower.children.length,9);for(const disc of tower.children.slice(1))assert.ok(parseFloat(disc.style.width)<=92);
+ await tower.emit('click');await f.node('#board').children[1].emit('click');assert.match(f.node('#status').textContent,/1 moves/);await f.node('#undo').emit('click');assert.match(f.node('#status').textContent,/0 moves/);
+});
