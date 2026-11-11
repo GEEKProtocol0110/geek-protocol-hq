@@ -2013,6 +2013,24 @@
         "docs/COSMIC-GLITCH.md",
         "tests/cosmic-glitch.test.js"
       ]
+    },
+    {
+      "id": "UX-025",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Clean Geek branding and black installed-app launch",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review new vector logo and installed-app manifest in preview. Physical Android launch/reinstall acceptance remains open.",
+      "acceptance": [
+        "New clean logo replaces the old watermark-bearing logo across site references and compatibility bytes.",
+        "Black app manifest background/theme, standalone launch, local 192/512 and maskable icons, Apple touch icon.",
+        "Metadata generation remains idempotent; no service-worker caching of private/session/game data."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/APP-LAUNCH-BRAND.md",
+        "tests/app-brand.test.js"
+      ]
     }
   ]
 }

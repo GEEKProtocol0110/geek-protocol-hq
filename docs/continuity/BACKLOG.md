@@ -84,6 +84,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-022 | P2 | in-progress | Homepage pathways and shared navigation polish | Maintainer; founder release review |
 | UX-023 | P2 | in-progress | More optional Grid easter eggs | Maintainer; founder release review |
 | UX-024 | P2 | in-progress | Minimal cosmic glitch feedback and Geek code accents | Maintainer; founder release review |
+| UX-025 | P2 | in-progress | Clean Geek branding and black installed-app launch | Maintainer; founder release review |
 
 ## CONT-001: Publish the continuation system
 
@@ -1260,3 +1261,17 @@ Acceptance:
 - No account, answer, board or timed gameplay input hooks; no requests, storage or rewards.
 
 Evidence/specification: [docs/COSMIC-GLITCH.md](../../docs/COSMIC-GLITCH.md), [tests/cosmic-glitch.test.js](../../tests/cosmic-glitch.test.js).
+
+## UX-025: Clean Geek branding and black installed-app launch
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: none.
+
+Next action: Review new vector logo and installed-app manifest in preview. Physical Android launch/reinstall acceptance remains open.
+
+Acceptance:
+
+- New clean logo replaces the old watermark-bearing logo across site references and compatibility bytes.
+- Black app manifest background/theme, standalone launch, local 192/512 and maskable icons, Apple touch icon.
+- Metadata generation remains idempotent; no service-worker caching of private/session/game data.
+
+Evidence/specification: [docs/APP-LAUNCH-BRAND.md](../../docs/APP-LAUNCH-BRAND.md), [tests/app-brand.test.js](../../tests/app-brand.test.js).
