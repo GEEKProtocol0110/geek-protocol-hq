@@ -2031,6 +2031,24 @@
         "docs/APP-LAUNCH-BRAND.md",
         "tests/app-brand.test.js"
       ]
+    },
+    {
+      "id": "APP-001",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Android test package and device acceptance",
+      "owner": "Maintainer; founder device review",
+      "nextAction": "Build debug APK through the Android workflow, verify artifact and device behavior; configure a stable test signing identity/domain association before claiming verified TWA.",
+      "acceptance": [
+        "Reproducible separately identified debug wrapper uses reviewed site and supplied logo.",
+        "APK compiles and installs; sign-in, Back, game/lobby and network behavior checked on phone.",
+        "No release secrets or placeholder Digital Asset Links; Play submission stays separate."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "android/README.md",
+        ".github/workflows/android-test.yml"
+      ]
     }
   ]
 }

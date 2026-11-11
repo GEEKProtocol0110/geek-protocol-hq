@@ -85,6 +85,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-023 | P2 | in-progress | More optional Grid easter eggs | Maintainer; founder release review |
 | UX-024 | P2 | in-progress | Minimal cosmic glitch feedback and Geek code accents | Maintainer; founder release review |
 | UX-025 | P2 | in-progress | Clean Geek branding and black installed-app launch | Maintainer; founder release review |
+| APP-001 | P2 | in-progress | Android test package and device acceptance | Maintainer; founder device review |
 
 ## CONT-001: Publish the continuation system
 
@@ -1275,3 +1276,17 @@ Acceptance:
 - Metadata generation remains idempotent; no service-worker caching of private/session/game data.
 
 Evidence/specification: [docs/APP-LAUNCH-BRAND.md](../../docs/APP-LAUNCH-BRAND.md), [tests/app-brand.test.js](../../tests/app-brand.test.js).
+
+## APP-001: Android test package and device acceptance
+
+**P2 / in-progress.** Owner: Maintainer; founder device review. Dependencies: none.
+
+Next action: Build debug APK through the Android workflow, verify artifact and device behavior; configure a stable test signing identity/domain association before claiming verified TWA.
+
+Acceptance:
+
+- Reproducible separately identified debug wrapper uses reviewed site and supplied logo.
+- APK compiles and installs; sign-in, Back, game/lobby and network behavior checked on phone.
+- No release secrets or placeholder Digital Asset Links; Play submission stays separate.
+
+Evidence/specification: [android/README.md](../../android/README.md), [.github/workflows/android-test.yml](../../.github/workflows/android-test.yml).

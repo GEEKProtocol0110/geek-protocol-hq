@@ -1312,3 +1312,8 @@ Founder rejected the new circuit-brain robot. Replaced candidate site/app brandi
 ### UX-025 exact installed-app logo
 
 Founder clarified the app should use the supplied neon brain-robot GEEK PROTOCOL image. Replaced only app manifest icons and touch icon via size-only resampling; retained gold GIGA site/mascot branding and black launch settings. Candidate only.
+
+
+## November 11 — Android test packaging candidate
+
+Added reproducible Bubblewrap 1.27.0 generator for a separately identified Android debug test wrapper and GitHub APK artifact workflow. Native project generation succeeded locally with supplied logo and black launch settings. Local Android SDK/Gradle absent; APK compilation is not yet established. Digital Asset Links, stable test signing identity, installed-phone acceptance and Play preparation remain open. No release keys, placeholder fingerprints or store publishing.
