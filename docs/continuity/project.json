@@ -196,5 +196,11 @@
     "status": "source-candidate",
     "evidence": "docs/GRID-EASTER-EGGS.md",
     "nextAction": "Review additional footer secrets in preview; no account/reward changes, A.C.E. remains paused."
+  },
+  "cosmicGlitch": {
+    "task": "UX-024",
+    "status": "source-candidate",
+    "evidence": "docs/COSMIC-GLITCH.md",
+    "nextAction": "Review bounded edge feedback and decorative code with easter eggs in #261; browser/phone acceptance open."
   }
 }

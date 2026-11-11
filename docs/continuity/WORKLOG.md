@@ -1292,3 +1292,8 @@ Enlarged the homepage Kaspa word, switched it to Kaspa turquoise and placed the 
 ## November 10 — UX-023 additional easter eggs
 
 Expanded the optional Stray signal footer terminal with three answerable riddles and hints, rotating GIGA fortunes, a bounded launch animation, route-specific scan messages, unlisted duck/42/BlockDAG messages and a page-visit discovery list. Added footer availability on Games hub, News, Directory and Whitepaper; individual game boards remain excluded. No storage, requests, rewards, global input handlers or A.C.E. activation. Focused client tests and source checks pass; rendered device acceptance remains open. Candidate only.
+
+
+## November 10 — UX-024 minimal cosmic glitch
+
+Founder requested subtle animated cypherpunk Kaspa/Geek accents and selection feedback. Added a 320ms edge-only glitch with 360ms cooldown on selected discovery controls, sparse code labels with two finite animation cycles, and reduced-motion/forced-color suppression. Route whitelist excludes individual boards, timed play and account/owner surfaces; active-game class suppresses feedback. No default action interception, requests, state storage, score or reward changes. Seven focused effect/easter-egg tests pass; site/continuity checks pass. Candidate alongside #261; rendered device acceptance remains open.

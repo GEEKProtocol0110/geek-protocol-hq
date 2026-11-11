@@ -1995,6 +1995,24 @@
         "docs/GRID-EASTER-EGGS.md",
         "tests/easter-eggs.test.js"
       ]
+    },
+    {
+      "id": "UX-024",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Minimal cosmic glitch feedback and Geek code accents",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review together with UX-023 in #261 preview; rendered phone acceptance remains open.",
+      "acceptance": [
+        "Brief edge-only feedback on selected discovery controls without changing navigation or labels.",
+        "Sparse decorative Kaspa/Geek code accents, bounded animation and reduced-motion/forced-color support.",
+        "No account, answer, board or timed gameplay input hooks; no requests, storage or rewards."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/COSMIC-GLITCH.md",
+        "tests/cosmic-glitch.test.js"
+      ]
     }
   ]
 }
