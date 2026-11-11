@@ -1297,3 +1297,8 @@ Expanded the optional Stray signal footer terminal with three answerable riddles
 ## November 10 — UX-024 minimal cosmic glitch
 
 Founder requested subtle animated cypherpunk Kaspa/Geek accents and selection feedback. Added a 320ms edge-only glitch with 360ms cooldown on selected discovery controls, sparse code labels with two finite animation cycles, and reduced-motion/forced-color suppression. Route whitelist excludes individual boards, timed play and account/owner surfaces; active-game class suppresses feedback. No default action interception, requests, state storage, score or reward changes. Seven focused effect/easter-egg tests pass; site/continuity checks pass. Candidate alongside #261; rendered device acceptance remains open.
+
+
+## November 10 — UX-025 clean app branding
+
+Founder showed white installed-site launch with watermark-bearing logo. Rebuilt the brain/robot mark as native SVG, rendered clean versioned PNG and compatibility logo bytes, replaced site references, added black standalone manifest, standard/maskable app icons and Apple touch icon. Managed metadata now includes manifest and touch icon idempotently. No fake loading delay or service worker added. Browser/Android controls native splash; physical installed-app acceptance and possible reinstall remain open. Candidate only.
