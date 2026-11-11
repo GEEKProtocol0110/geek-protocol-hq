@@ -72,3 +72,7 @@ KCC20 remains CHAIN-002 research/decision work. Native-KAS service-payment ideas
 ## Resume without losing place
 
 Read [Start Here](../START-HERE.md), the maintained [state](continuity/CURRENT-STATE.md), [backlog](continuity/BACKLOG.md) and [audit report](QUESTION-BANK-AUDIT-2026-10-27.md). Record actual release evidence separately from candidate authorship. Preserve private learner, account, wallet, room and provider details outside this public repository. The [free-beta checklist](FREE-BETA-READINESS.md) and [backup guide](continuity/OPERATING-GUIDE.md) own their remaining acceptance boundaries.
+
+## November 11 — authorized GAME-004 and Android release work
+
+Founder authorized resolving #266 first, then #265, and merging each after passing verification. #266 keeps accepted matches without a time expiry, ten active matches and My Games, while retaining current lobby security and planet rendering. Open-lounge alerts do not establish closed-app push. Android stable signing/domain trust and physical-phone acceptance retain their own evidence gates.

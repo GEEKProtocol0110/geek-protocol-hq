@@ -209,10 +209,22 @@
     "evidence": "docs/APP-LAUNCH-BRAND.md",
     "nextAction": "Review clean logo and black launch config; installed Android acceptance remains open. Browser controls native startup; existing shortcuts may need reinstall."
   },
+  "kaspaMatrix": {
+    "task": "UX-026",
+    "status": "source-candidate",
+    "evidence": "docs/KASPA-MATRIX.md",
+    "nextAction": "Review the layered Kaspa space and faint planet in the PR preview on desktop, phone and a game page; no footer toggle. Physical-phone acceptance open."
+  },
+  "ongoingGames": {
+    "task": "GAME-004",
+    "status": "merged-deployed-http-verified",
+    "evidence": "docs/ONGOING-GAMES.md",
+    "nextAction": "Founder-approved #266 squash-merged as aab4d36f9345c373f55bcb467a3bd45be3254d4d. Production dpl_GXfjz8fvUKpnEW3D8saPjqtqVygZ is READY with both canonical domains; lounge HTML, client and notification worker match exact source via HTTP 200. Physical-phone acceptance and closed-app push remain open."
+  },
   "androidTest": {
     "task": "APP-001",
-    "status": "source-candidate",
+    "status": "founder-approved-release",
     "evidence": "android/README.md",
-    "nextAction": "Debug APK build and founder install/launch confirmed. Stable test signing workflow prepared; owner secure GitHub secret setup blocks signed build and domain verification. No trust statement deployed."
+    "nextAction": "Verify and merge #265. The unsigned release build and protected-environment signing pipeline are prepared. Owner configuration of main-only environment, required reviewer and dedicated environment secrets remains open; no stable signing run or domain association is claimed."
   }
 }

@@ -26,3 +26,4 @@
     } finally { clearTimeout(timer); pending = false; form.querySelector('button').disabled = false; form.elements.key.disabled = false; form.elements.code.disabled = false; }
   });
 })();
+import('/assets/kaspa-planet.js').catch(()=>{});

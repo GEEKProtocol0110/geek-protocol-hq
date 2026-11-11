@@ -1,7 +1,7 @@
 name: Android test APK
 on:
   pull_request:
-    paths: ['android/**', '.github/workflows/android-test.yml']
+    paths: ['android/**', '.github/workflows/android-test.yml', '.github/workflows/android-verified-test.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -17,18 +17,22 @@ jobs:
         with:
           node-version: '24'
       - name: Install packaging dependencies
-        run: npm ci --prefix android --no-audit --no-fund
+        run: npm ci --prefix android --ignore-scripts --no-audit --no-fund
       - name: Generate reviewed test project
         run: npm run generate --prefix android
+      - uses: gradle/actions/wrapper-validation@ed408507eac070d1f99cc633dbcf757c94c7933a # v4.4.3
       - name: Build debug APK
         run: |
           export JAVA_HOME="$JAVA_HOME_17_X64"
           export PATH="$JAVA_HOME/bin:$PATH"
           cd android/generated
           ./gradlew --no-daemon assembleDebug
+          ./gradlew --no-daemon --init-script ../unsigned-test.gradle assembleRelease
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: geek-android-test-apk
-          path: android/generated/app/build/outputs/apk/debug/app-debug.apk
+          path: |
+            android/generated/app/build/outputs/apk/debug/app-debug.apk
+            android/generated/app/build/outputs/apk/release/app-release-unsigned.apk
           if-no-files-found: error
           retention-days: 14

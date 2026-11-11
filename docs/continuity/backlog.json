@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-09",
+  "updatedAt": "2026-11-11",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2033,12 +2033,53 @@
       ]
     },
     {
+      "id": "UX-026",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Kaspa space, planet and code-rain full-page background",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review the PR preview on desktop and phone; confirm readability, the faint planet on a game page, and game/quiz dimming (no footer toggle; terminal matrix commands are session-only). Physical-phone acceptance open.",
+      "acceptance": [
+        "Fixed full-viewport layered scene behind content (nebula, planet, stars, rain), pointer-events none, aria-hidden, low opacity.",
+        "Capped ~24fps, paused when hidden, reduced-motion still frames, bounded DPR/columns on phones; planet is a still image on game, quiz and operator pages.",
+        "No footer toggle and no localStorage persistence; terminal matrix commands are session-only; rain off on individual game boards and dim/still on quiz and lobby routes; planet on every page.",
+        "No requests, player records, rewards or gameplay input hooks; CSP unchanged."
+      ],
+      "dependsOn": [
+        "UX-024"
+      ],
+      "evidence": [
+        "docs/KASPA-MATRIX.md",
+        "tests/kaspa-matrix.test.js"
+      ]
+    },
+    {
+      "id": "GAME-004",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Ongoing matches, My Games and turn alerts",
+      "owner": "Maintainer; founder release/device review",
+      "nextAction": "Founder authorized release November 11. Resolve current-main conflicts, verify and merge #266; phone acceptance and closed-app push remain open.",
+      "acceptance": [
+        "Atomic per-player capacity of 10 waiting/playing rooms, released on finish and expiry.",
+        "Waiting invitations expire after 24 hours or 30 days; accepted matches have no time expiry and remain in My Games.",
+        "Your-turn badges and opt-in page-open notifications deduplicate per move; closed-app limitations are explicit.",
+        "Real Redis integration and client tests pass without board/private-fleet leakage."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/ONGOING-GAMES.md",
+        "tests/classic-online-api.test.js",
+        "tests/classic-online-client.test.js"
+      ]
+    },
+    {
       "id": "APP-001",
       "priority": "P2",
       "status": "in-progress",
       "title": "Android test package and device acceptance",
       "owner": "Maintainer; founder device review",
-      "nextAction": "Owner stores dedicated test keystore/password in GitHub Secrets; merge reviewed workflow, run on main, then review/deploy the derived real certificate association and install matching APK. Existing debug install/launch confirmed by founder screenshots.",
+      "nextAction": "Founder authorized #265 merge November 11. Verify unsigned APK build and protected-environment signing preparation; owner must configure main-only environment with required reviewer and dedicated environment secrets before stable signing. Domain association and phone acceptance remain open.",
       "acceptance": [
         "Reproducible separately identified debug wrapper uses reviewed site and supplied logo.",
         "APK compiles and installs; sign-in, Back, game/lobby and network behavior checked on phone.",

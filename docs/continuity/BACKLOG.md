@@ -85,6 +85,8 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-023 | P2 | in-progress | More optional Grid easter eggs | Maintainer; founder release review |
 | UX-024 | P2 | in-progress | Minimal cosmic glitch feedback and Geek code accents | Maintainer; founder release review |
 | UX-025 | P2 | in-progress | Clean Geek branding and black installed-app launch | Maintainer; founder release review |
+| UX-026 | P2 | in-progress | Kaspa space, planet and code-rain full-page background | Maintainer; founder release review |
+| GAME-004 | P2 | in-progress | Ongoing matches, My Games and turn alerts | Maintainer; founder release/device review |
 | APP-001 | P2 | in-progress | Android test package and device acceptance | Maintainer; founder device review |
 
 ## CONT-001: Publish the continuation system
@@ -1277,11 +1279,41 @@ Acceptance:
 
 Evidence/specification: [docs/APP-LAUNCH-BRAND.md](../../docs/APP-LAUNCH-BRAND.md), [tests/app-brand.test.js](../../tests/app-brand.test.js).
 
+## UX-026: Kaspa space, planet and code-rain full-page background
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: UX-024.
+
+Next action: Review the PR preview on desktop and phone; confirm readability, the faint planet on a game page, and game/quiz dimming (no footer toggle; terminal matrix commands are session-only). Physical-phone acceptance open.
+
+Acceptance:
+
+- Fixed full-viewport layered scene behind content (nebula, planet, stars, rain), pointer-events none, aria-hidden, low opacity.
+- Capped ~24fps, paused when hidden, reduced-motion still frames, bounded DPR/columns on phones; planet is a still image on game, quiz and operator pages.
+- No footer toggle and no localStorage persistence; terminal matrix commands are session-only; rain off on individual game boards and dim/still on quiz and lobby routes; planet on every page.
+- No requests, player records, rewards or gameplay input hooks; CSP unchanged.
+
+Evidence/specification: [docs/KASPA-MATRIX.md](../../docs/KASPA-MATRIX.md), [tests/kaspa-matrix.test.js](../../tests/kaspa-matrix.test.js).
+
+## GAME-004: Ongoing matches, My Games and turn alerts
+
+**P2 / in-progress.** Owner: Maintainer; founder release/device review. Dependencies: none.
+
+Next action: Founder authorized release November 11. Resolve current-main conflicts, verify and merge #266; phone acceptance and closed-app push remain open.
+
+Acceptance:
+
+- Atomic per-player capacity of 10 waiting/playing rooms, released on finish and expiry.
+- Waiting invitations expire after 24 hours or 30 days; accepted matches have no time expiry and remain in My Games.
+- Your-turn badges and opt-in page-open notifications deduplicate per move; closed-app limitations are explicit.
+- Real Redis integration and client tests pass without board/private-fleet leakage.
+
+Evidence/specification: [docs/ONGOING-GAMES.md](../../docs/ONGOING-GAMES.md), [tests/classic-online-api.test.js](../../tests/classic-online-api.test.js), [tests/classic-online-client.test.js](../../tests/classic-online-client.test.js).
+
 ## APP-001: Android test package and device acceptance
 
 **P2 / in-progress.** Owner: Maintainer; founder device review. Dependencies: none.
 
-Next action: Owner stores dedicated test keystore/password in GitHub Secrets; merge reviewed workflow, run on main, then review/deploy the derived real certificate association and install matching APK. Existing debug install/launch confirmed by founder screenshots.
+Next action: Founder authorized #265 merge November 11. Verify unsigned APK build and protected-environment signing preparation; owner must configure main-only environment with required reviewer and dedicated environment secrets before stable signing. Domain association and phone acceptance remain open.
 
 Acceptance:
 

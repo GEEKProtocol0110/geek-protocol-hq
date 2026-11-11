@@ -1,4 +1,5 @@
 import { createHash, randomBytes } from 'node:crypto';
+import { isIP } from 'node:net';
 
 const SESSION_COOKIE = 'geek_session';
 const SESSION_TTL = 60 * 60 * 24 * 30;
@@ -64,12 +65,68 @@ export const readSessionId = (req) => {
 
 export const createSessionId = () => randomBytes(16).toString('hex');
 
-export const clientFingerprint = (req) => {
-  const forwarded = String(req.headers?.['x-forwarded-for'] || '').split(',')[0].trim();
-  const address = forwarded || String(req.socket?.remoteAddress || 'unknown');
-  const agent = String(req.headers?.['user-agent'] || '').slice(0, 160);
-  return createHash('sha256').update(`${address}|${agent}`).digest('hex').slice(0, 24);
+// Client address precedence. On Vercel these headers are set by the platform
+// (x-forwarded-for is overwritten to prevent spoofing; x-vercel-forwarded-for and
+// x-real-ip carry the same value). Off Vercel (local/dev) they are trusted as-is.
+const CLIENT_IP_HEADERS = ['x-vercel-forwarded-for', 'x-real-ip', 'x-forwarded-for'];
+
+// Expand an IPv6 address (already validated) to eight 4-digit lowercase groups.
+const expandIpv6 = (address) => {
+  let text = address.toLowerCase();
+  const v4 = /(\d{1,3}(?:\.\d{1,3}){3})$/.exec(text);
+  if (v4) {
+    const octets = v4[1].split('.').map(Number);
+    text = text.slice(0, -v4[1].length) + `${((octets[0] << 8) | octets[1]).toString(16)}:${((octets[2] << 8) | octets[3]).toString(16)}`;
+  }
+  const [head, tail] = text.includes('::') ? text.split('::') : [text, null];
+  const left = head ? head.split(':') : [];
+  const right = tail === null ? [] : (tail ? tail.split(':') : []);
+  const groups = tail === null ? left : [...left, ...Array(8 - left.length - right.length).fill('0'), ...right];
+  return groups.map((group) => group.padStart(4, '0'));
 };
+
+// Returns a canonical IP string, or '' when the candidate is not a real address.
+export const normalizeIp = (value) => {
+  let candidate = String(value ?? '').trim();
+  if (!candidate || candidate.length > 64) return '';
+  const bracketed = /^\[([^\]]+)\](?::\d+)?$/.exec(candidate);
+  if (bracketed) candidate = bracketed[1];
+  else if (/^\d{1,3}(\.\d{1,3}){3}:\d+$/.test(candidate)) candidate = candidate.slice(0, candidate.lastIndexOf(':'));
+  candidate = candidate.replace(/%[0-9a-z._~-]+$/i, '');
+  const version = isIP(candidate);
+  if (version === 4) return candidate;
+  if (version !== 6) return '';
+  const groups = expandIpv6(candidate);
+  if (groups.slice(0, 5).every((group) => group === '0000') && groups[5] === 'ffff') {
+    const [a, b] = [parseInt(groups[6], 16), parseInt(groups[7], 16)];
+    return [a >> 8, a & 255, b >> 8, b & 255].join('.');
+  }
+  return candidate.toLowerCase();
+};
+
+export const clientIp = (req) => {
+  for (const header of CLIENT_IP_HEADERS) {
+    const ip = normalizeIp(String(req.headers?.[header] ?? '').split(',')[0]);
+    if (ip) return ip;
+  }
+  return normalizeIp(req.socket?.remoteAddress) || 'unknown';
+};
+
+// Network key for abuse controls: IPv4 as-is, IPv6 reduced to its /64 prefix,
+// because one subscriber usually owns a whole /64 and rotates addresses inside it.
+export const clientNetwork = (req) => {
+  const ip = clientIp(req);
+  return isIP(ip) === 6 ? `${expandIpv6(ip).slice(0, 4).join(':')}::/64` : ip;
+};
+
+export const clientFingerprint = (req) => {
+  const agent = String(req.headers?.['user-agent'] || '').slice(0, 160);
+  return createHash('sha256').update(`${clientIp(req)}|${agent}`).digest('hex').slice(0, 24);
+};
+
+// Network address only (no User-Agent), for limits and blocks that must survive
+// header rotation and IPv6 address rotation within one /64.
+export const clientAddressFingerprint = (req) => createHash('sha256').update(`addr|${clientNetwork(req)}`).digest('hex').slice(0, 24);
 
 export const setSessionCookie = (res, sessionId) => {
   res.setHeader('Set-Cookie', `${SESSION_COOKIE}=${sessionId}; Max-Age=${SESSION_TTL}; Path=/; HttpOnly; Secure; SameSite=Lax`);
@@ -168,6 +225,7 @@ export const handleApiError = (res, error) => {
   if (code === 'STICKER_TRADE_FORBIDDEN') return sendJson(res, 403, { ok: false, code, error: 'Only the player who created this offer can cancel it.' });
   if (code === 'STICKER_TRADE_FAILED') return sendJson(res, 503, { ok: false, code, error: 'The sticker exchange could not be completed safely.' });
   if (code === 'INVALID_BODY' || code === 'INVALID_REQUEST') return sendJson(res, 400, { ok: false, error: 'The request was not valid.' });
-  console.error('Geek API error', error);
+  // Log a bounded classification only; raw errors can carry request or storage detail.
+  console.error('Geek API error', JSON.stringify({ name: String(error?.name || 'Error').slice(0, 40), code: /^[A-Z][A-Z0-9_]{2,63}$/.test(code) ? code : 'UNCLASSIFIED' }));
   return sendJson(res, 500, { ok: false, error: 'The community service hit an unexpected error.' });
 };

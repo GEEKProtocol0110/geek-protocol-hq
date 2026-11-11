@@ -52,3 +52,4 @@ export const auditSummary = events => ({
   critical: events.filter(event => event.severity === 'critical').length,
   failures: events.filter(event => event.outcome === 'failure').length
 });
+if (typeof document !== 'undefined') import('/assets/kaspa-planet.js').catch(() => {});

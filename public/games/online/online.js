@@ -6,6 +6,7 @@ import { legalCheckers } from '../classics/checkers-engine.js';
 const $=id=>document.getElementById(id), endpoint='/api/lobbies?service=classic';
 let room=null,code='',connected=false,busy=false,polling=false,selected=null,flipped=false,epoch=0;
 let draftFleet=randomFleet();
+let turnAlerts=false,seenTurns=new Map(),turnsInitialized=false;
 const gameName=g=>GAME_META[g]?.name||(g==='chess'?'Geek Chess':'Geek Checkers');
 const incoming=new URLSearchParams(location.search).get('room');
 const requestedGame=new URLSearchParams(location.search).get('game');
@@ -26,10 +27,15 @@ async function act(action,extra={}){
  catch(e){say(e.name==='AbortError'?'Connection timed out. Refresh before trying that move again.':e.message);if(previous&&generation===epoch)await refresh();}
  finally{busy=false;if(room)render();}
 }
+function drawMyGames(games){const mine=games,personal=$('my-games');personal.replaceChildren();$('turn-count').textContent=`· ${mine.filter(g=>g.yourTurn).length} your turn`;
+   if(!mine.length)personal.textContent='No active games yet.';
+   for(const g of mine){const row=document.createElement('div');row.className='online-row';const p=document.createElement('p');p.textContent=`${gameName(g.game)} · ${g.opponent} · ${g.yourTurn?'YOUR TURN':g.state==='waiting'?'Waiting for player':'Waiting for opponent'} · ${g.expiresAt?new Date(g.expiresAt).toLocaleDateString():'No move deadline'}`;row.append(p,btn('Open game',()=>open(g.code)));personal.append(row);
+    const old=seenTurns.get(g.code);if(turnAlerts&&turnsInitialized&&g.yourTurn&&old!==undefined&&old!==g.turnToken&&Notification.permission==='granted'){navigator.serviceWorker?.getRegistration('/games/online/').then(reg=>reg?.showNotification('Geek · Your turn',{body:`${gameName(g.game)} with ${g.opponent}`,icon:'/assets/app/geek-logo-192.png',tag:g.code,data:{code:g.code}})).catch(()=>{});}seenTurns.set(g.code,g.turnToken);
+   }turnsInitialized=true;}
 async function refresh(){
  if(polling||!connected)return;polling=true;const at=epoch,target=code;
  try{const data=await api(null,target);if(at!==epoch||target!==code)return;
-  if(target){if(!room||data.room.revision!==room.revision||data.room.role!==room.role){room=data.room;selected=null;render();}}
+  drawMyGames(data.myGames||[]);if(target){if(!room||data.room.revision!==room.revision||data.room.role!==room.role){room=data.room;selected=null;render();}}
   else{const list=$('rooms');list.replaceChildren();if(!data.rooms.length)list.textContent='No open lobbies yet. Create one and invite a friend.';
    for(const r of data.rooms){const row=document.createElement('div');row.className='online-row';const p=document.createElement('p');p.textContent=`${gameName(r.game)} · ${r.hostName}`;row.append(p,btn('View lobby',()=>open(r.code)));list.append(row);}}
  }catch(e){say(e.name==='AbortError'?'Connection is slow. Your game is kept on the server; refresh to reconnect.':e.message);if(e.status===401)connected=false;}
@@ -72,7 +78,7 @@ function render(){
  if(room.state==='waiting'){
   $('status').textContent=host?'Share the invitation or accept a game request below.':room.requested?'Game requested. Waiting for the host to accept.':'Ask the host for a game.';
   actions.append(host?btn('Close lobby',()=>act('cancel')):room.requested?btn('Cancel request',()=>act('cancel-request')):btn('Request game',()=>act('request')));
-  if(host){if(!room.requests.length)requests.textContent='No game requests yet.';for(const r of room.requests){const row=document.createElement('div');row.className='online-row';const p=document.createElement('p');p.textContent=`${r.name} requests a game`;row.append(p,btn('Accept',()=>act('accept',{requestId:r.id})),btn('Decline',()=>act('decline',{requestId:r.id})));requests.append(row);}}
+  if(host){if(!room.requests.length)requests.textContent='No game requests yet.';for(const r of room.requests){const row=document.createElement('div');row.className='online-row';const p=document.createElement('p');p.textContent=`${r.name} requests a game`;row.append(p,btn('Accept',()=>act('accept',{requestId:r.id})),btn('Decline',()=>act('decline',{requestId:r.id})),btn('Block',()=>{if(confirm(`Block ${r.name} from requesting this lobby again?`))act('block',{requestId:r.id});}));requests.append(row);}}
  }else if(room.position&&member){
   drawBoard();document.dispatchEvent?.(new CustomEvent('geek-game-state',{detail:{finished:room.state==='finished',key:room.code,title:room.result||'Game complete',detail:'Start a new lobby and invite your opponent for another round.',online:true}}));if(room.state==='playing'){actions.append(btn('Resign',()=>{if(confirm('Resign this game?'))act('resign');}));
    if(!room.drawOffer)actions.append(btn('Offer draw',()=>act('offer-draw')));else if(room.drawOffer!==room.role){actions.append(btn('Accept draw',()=>act('accept-draw')),btn('Decline draw',()=>act('decline-draw')));}else{const p=document.createElement('p');p.textContent='Draw offered. Waiting for your opponent.';actions.append(p);}}
@@ -81,7 +87,7 @@ function render(){
 $('connect').addEventListener('click',async()=>{if(busy)return;busy=true;$('connect').disabled=true;say('Connecting your Geek player…');try{
  const control=new AbortController(),timer=setTimeout(()=>control.abort(),10000);let response,data;try{response=await fetch('/api/session',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:'{}',signal:control.signal});data=await response.json();}finally{clearTimeout(timer);}if(!response.ok||!data.ok)throw new Error('Could not start a player session. Try again shortly.');connected=true;$('connect-panel').hidden=true;$('lounge').hidden=false;say(`Connected as ${data.player.name}.`);if(incoming&&valid(incoming))await open(incoming);else await refresh();
  }catch(e){say(e.message);}finally{busy=false;$('connect').disabled=false;if(room)render();else if(connected)refresh();}});
-$('create-form').addEventListener('submit',e=>{e.preventDefault();epoch++;act('create',{game:$('game-type').value,visibility:$('visibility').value,dotsSize:Number($('dots-size')?.value||6)});});
+$('create-form').addEventListener('submit',e=>{e.preventDefault();epoch++;act('create',{game:$('game-type').value,pace:$('game-pace')?.value||'slow',visibility:$('visibility').value,dotsSize:Number($('dots-size')?.value||6)});});
 $('join-form').addEventListener('submit',e=>{e.preventDefault();open($('room-code').value.trim().toUpperCase());});
 $('refresh').addEventListener('click',()=>refresh());
 $('back').addEventListener('click',()=>{if(busy)return;epoch++;code='';room=null;selected=null;document.body.classList.remove('is-playing');$('browse').hidden=false;$('room-panel').hidden=true;history.replaceState(null,'',location.pathname);refresh();});
@@ -89,3 +95,6 @@ $('flip').addEventListener('click',()=>{flipped=!flipped;drawBoard();});
 $('copy').addEventListener('click',async()=>{const link=new URL(location.pathname,location.origin);link.searchParams.set('room',code);try{await navigator.clipboard.writeText(link.href);say('Invite link copied.');}catch{say(`Share this invite: ${link.href}`);}});
 setInterval(()=>{if(connected&&!document.hidden&&!busy)refresh();},4000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!busy)refresh();});
+
+$('turn-alerts').addEventListener('click',async()=>{if(turnAlerts){turnAlerts=false;$('turn-alerts').textContent='Enable turn alerts while lounge is open';$('turn-alert-note').textContent='Turn alerts are off. Your turn badges still work.';return;}if(!('Notification' in window)){$('turn-alert-note').textContent='This browser does not support page notifications. Use Your turn badges.';return;}try{if(!('serviceWorker' in navigator))throw new Error('Unavailable');const permission=await Notification.requestPermission();if(permission==='granted')await navigator.serviceWorker.register('/games/online/turn-alerts-sw.js',{scope:'/games/online/'});turnAlerts=permission==='granted';$('turn-alerts').textContent=turnAlerts?'Turn alerts off':'Enable turn alerts while lounge is open';$('turn-alert-note').textContent=turnAlerts?'Turn alerts enabled for this open lounge. Keep it open; closed-app push alerts are not enabled yet.':'Phone permission was not granted. Your turn badges still work.';}catch{$('turn-alert-note').textContent='Notifications are unavailable here. Your turn badges still work.';}});
+import('/assets/kaspa-planet.js').catch(()=>{});
