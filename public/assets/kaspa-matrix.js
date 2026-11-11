@@ -22,27 +22,29 @@ const planetHash = path => {
   return hash >>> 0;
 };
 // Explicit corners for the main routes so home, inner, game, quiz and ops pages clearly differ.
+// size is the on-desktop diameter in px (70–95% of an 800px-tall viewport). hangX/hangY are
+// the off-canvas fractions, chosen so about 50–70% of the disc stays on-screen.
 export const PLANET_PLACEMENTS = {
-  '/': { corner: 'br', insetX: -8, insetY: -10, size: 520, rotate: 4 },
-  '/news/': { corner: 'bl', insetX: -16, insetY: -18, size: 500, rotate: -8 },
-  '/about/': { corner: 'tr', insetX: -18, insetY: -16, size: 480, rotate: 8 },
-  '/media/': { corner: 'tl', insetX: -20, insetY: -18, size: 470, rotate: -6 },
-  '/games/': { corner: 'br', insetX: -8, insetY: -28, size: 440, rotate: 10 },
-  '/games/hanoi/': { corner: 'tr', insetX: -14, insetY: -20, size: 420, rotate: -10 },
-  '/games/chess/': { corner: 'bl', insetX: -18, insetY: -24, size: 400, rotate: 7 },
-  '/play/': { corner: 'tl', insetX: -16, insetY: -22, size: 380, rotate: 6 },
-  '/practice/': { corner: 'tr', insetX: -20, insetY: -14, size: 390, rotate: -4 },
-  '/quest/': { corner: 'bl', insetX: -10, insetY: -26, size: 430, rotate: 9 },
-  '/duel/': { corner: 'tl', insetX: -22, insetY: -16, size: 400, rotate: -9 },
-  '/royale/': { corner: 'br', insetX: -20, insetY: -16, size: 410, rotate: 5 },
-  '/memory/': { corner: 'tr', insetX: -10, insetY: -24, size: 400, rotate: -7 },
-  '/challenges/': { corner: 'bl', insetX: -22, insetY: -14, size: 390, rotate: 8 },
-  '/sign-in/': { corner: 'tl', insetX: -18, insetY: -20, size: 360, rotate: -5 },
-  '/ops-login/': { corner: 'br', insetX: -22, insetY: -20, size: 360, rotate: 11 },
-  '/ops/': { corner: 'tr', insetX: -16, insetY: -18, size: 360, rotate: -8 },
-  '/leaderboard/': { corner: 'bl', insetX: -12, insetY: -22, size: 450, rotate: 3 }
+  '/': { corner: 'br', hangX: 0.32, hangY: 0.36, size: 720, rotate: 4 },
+  '/news/': { corner: 'bl', hangX: 0.38, hangY: 0.34, size: 700, rotate: -8 },
+  '/about/': { corner: 'tr', hangX: 0.36, hangY: 0.32, size: 680, rotate: 8 },
+  '/media/': { corner: 'tl', hangX: 0.40, hangY: 0.34, size: 660, rotate: -6 },
+  '/games/': { corner: 'br', hangX: 0.30, hangY: 0.40, size: 680, rotate: 10 },
+  '/games/hanoi/': { corner: 'tr', hangX: 0.34, hangY: 0.38, size: 640, rotate: -10 },
+  '/games/chess/': { corner: 'bl', hangX: 0.36, hangY: 0.40, size: 640, rotate: 7 },
+  '/play/': { corner: 'tl', hangX: 0.38, hangY: 0.34, size: 660, rotate: 6 },
+  '/practice/': { corner: 'tr', hangX: 0.40, hangY: 0.32, size: 650, rotate: -4 },
+  '/quest/': { corner: 'bl', hangX: 0.32, hangY: 0.40, size: 680, rotate: 9 },
+  '/duel/': { corner: 'tl', hangX: 0.40, hangY: 0.36, size: 650, rotate: -9 },
+  '/royale/': { corner: 'br', hangX: 0.38, hangY: 0.34, size: 660, rotate: 5 },
+  '/memory/': { corner: 'tr', hangX: 0.30, hangY: 0.40, size: 650, rotate: -7 },
+  '/challenges/': { corner: 'bl', hangX: 0.40, hangY: 0.32, size: 650, rotate: 8 },
+  '/sign-in/': { corner: 'tl', hangX: 0.36, hangY: 0.36, size: 620, rotate: -5 },
+  '/ops-login/': { corner: 'br', hangX: 0.40, hangY: 0.36, size: 620, rotate: 11 },
+  '/ops/': { corner: 'tr', hangX: 0.36, hangY: 0.34, size: 620, rotate: -8 },
+  '/leaderboard/': { corner: 'bl', hangX: 0.34, hangY: 0.36, size: 680, rotate: 3 }
 };
-export const planetPlacement = (path, { mobile = false } = {}) => {
+export const planetPlacement = (path, { mobile = false, width = 1280 } = {}) => {
   const key = planetPath(path);
   const preset = PLANET_PLACEMENTS[key];
   let place;
@@ -51,23 +53,27 @@ export const planetPlacement = (path, { mobile = false } = {}) => {
     const hash = planetHash(key);
     place = {
       corner: ['br', 'bl', 'tr', 'tl'][hash % 4],
-      insetX: -8 - ((hash >>> 8) % 14),
-      insetY: -14 - ((hash >>> 16) % 12),
-      size: 400 + ((hash >>> 4) % 120),
+      hangX: 0.30 + ((hash >>> 8) % 16) / 100,
+      hangY: 0.32 + ((hash >>> 16) % 14) / 100,
+      size: 620 + ((hash >>> 4) % 121),
       rotate: -12 + ((hash >>> 12) % 25)
     };
   }
   if (mobile) {
-    place = { ...place, insetX: place.insetX - 6, insetY: place.insetY - 4, size: Math.round(place.size * 0.58) };
+    const scale = 0.84 + (place.size % 9) / 50; // 0.84–1.00, kept inside 0.80–1.10 of viewport width
+    place = { ...place, size: Math.round((width || 390) * Math.min(1.1, Math.max(0.8, scale))) };
   }
   return place;
 };
-export const applyPlanetPlacement = (node, path, { mobile = false } = {}) => {
-  const place = planetPlacement(path, { mobile });
-  const x = `${place.insetX}vw`, y = `${place.insetY}vw`;
+export const applyPlanetPlacement = (node, path, { mobile = false, width = 1280 } = {}) => {
+  const place = planetPlacement(path, { mobile, width });
+  const x = `-${Math.round(place.size * place.hangX)}px`;
+  const y = `-${Math.round(place.size * place.hangY)}px`;
   const left = place.corner.includes('l');
   const top = place.corner.includes('t');
   node.dataset.kaspaPlanetCorner = place.corner;
+  // This asset is lit on the right; flip right-edge placements so the bright limb faces the page.
+  const flip = place.corner.includes('r') ? 'scaleX(-1) ' : '';
   Object.assign(node.style, {
     position: 'fixed',
     zIndex: '-3',
@@ -76,8 +82,8 @@ export const applyPlanetPlacement = (node, path, { mobile = false } = {}) => {
     right: left ? 'auto' : x,
     top: top ? y : 'auto',
     bottom: top ? 'auto' : y,
-    width: `min(${mobile ? 56 : 42}vw, ${place.size}px)`,
-    transform: `rotate(${place.rotate}deg)`
+    width: mobile ? `min(108vw, ${place.size}px)` : `min(92vh, ${place.size}px)`,
+    transform: `${flip}rotate(${place.rotate}deg)`
   });
   return place;
 };
@@ -103,7 +109,8 @@ export const initKaspaPlanet = () => {
   const saveData = Boolean(navigator.connection?.saveData);
   const picture = document.createElement('picture');
   picture.className = 'kaspa-planet'; picture.dataset.kaspaPlanetLayer = ''; picture.setAttribute('aria-hidden', 'true');
-  const placePlanet = () => applyPlanetPlacement(picture, path, { mobile: (window.innerWidth || 1280) < 700 });
+  const viewport = () => window.innerWidth || 1280;
+  const placePlanet = () => applyPlanetPlacement(picture, path, { mobile: viewport() < 700, width: viewport() });
   placePlanet();
   const source = (srcset, type, query) => {
     const node = document.createElement('source'); node.srcset = srcset; node.type = type; if (query) node.media = query; return node;
@@ -115,9 +122,10 @@ export const initKaspaPlanet = () => {
     source(PLANET_SRC.desktopWebp, 'image/webp')
   );
   const img = document.createElement('img');
-  img.src = PLANET_SRC.desktopWebp; img.alt = ''; img.width = 720; img.height = 720;
+  img.src = PLANET_SRC.desktopWebp; img.alt = ''; img.width = 800; img.height = 800;
   img.decoding = 'async'; img.setAttribute('aria-hidden', 'true'); img.draggable = false;
   picture.append(img); body.append(picture);
+  if (/^\/games\/[^/]+\//.test(path)) picture.classList.add('kaspa-planet--board');
   const syncPlanet = () => {
     const still = planetShouldBeStill(path, reduced, saveData) || forced.matches;
     picture.classList.toggle('kaspa-planet--still', still);

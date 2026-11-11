@@ -150,12 +150,16 @@ test('planet placement is stable for a route and differs across pages', () => {
   assert.equal(home.planet.dataset.kaspaPlanetCorner, 'br');
   assert.equal(news.planet.dataset.kaspaPlanetCorner, 'bl');
   assert.equal(hanoi.planet.dataset.kaspaPlanetCorner, 'tr');
-  assert.match(home.planet.style.right, /vw$/);
+  assert.match(home.planet.style.right, /px$/);
   assert.equal(home.planet.style.left, 'auto');
   assert.equal(news.planet.style.right, 'auto');
-  const narrow = setup({ path: '/' });
-  // Re-run placement the way a narrow viewport would, by reconstructing from applied API via a second init context.
-  assert.match(narrow.planet.style.width, /42vw/, 'desktop width formula at 1280px fixture');
+  assert.match(home.planet.style.width, /92vh/, 'desktop size tracks viewport height');
+  const homeWidth = Number((home.planet.style.width.match(/(\d+)px/) || [])[1]);
+  assert.ok(homeWidth >= 560 && homeWidth <= 760, `desktop diameter ${homeWidth} should be 560–760px`);
+  const hangRight = Math.abs(parseFloat(home.planet.style.right));
+  assert.ok(hangRight / homeWidth <= 0.5 && hangRight / homeWidth >= 0.25, 'about 50–70% of the disc stays on-screen');
+  const board = setup({ path: '/games/hanoi/' });
+  assert.ok(board.planet.classList.contains('kaspa-planet--board'));
 });
 
 test('planet assets exist at the documented swap paths and stay under size budgets', () => {

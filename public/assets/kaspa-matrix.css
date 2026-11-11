@@ -13,12 +13,14 @@ html.kaspa-matrix-on body{background-color:transparent!important;background-imag
   #050814;animation:kaspa-nebula-drift 90s ease-in-out infinite alternate}
 @keyframes kaspa-nebula-drift{from{transform:translate(0,0) scale(1)}to{transform:translate(-3.5%,2.8%) scale(1.05)}}
 .kaspa-space-stars{display:block;position:absolute;inset:0;z-index:1;pointer-events:none}
-/* Planet: pre-rendered image, faint, partly off-canvas. Corner, size and rotation are set per route in JS (viewport-anchored). */
-.kaspa-planet{position:fixed;margin:0;z-index:-3;pointer-events:none;user-select:none;opacity:.2;filter:drop-shadow(0 0 36px #70e6dc33) drop-shadow(0 0 70px #b46cff22);animation:kaspa-planet-glow 10s ease-in-out infinite}
+/* Planet: pre-rendered image, large and clearly visible, partly off-canvas. Corner, size and rotation are set per route in JS. */
+.kaspa-planet{position:fixed;margin:0;z-index:-3;pointer-events:none;user-select:none;opacity:.66;filter:drop-shadow(0 0 48px #70e6dc66) drop-shadow(0 0 100px #b46cff40);animation:kaspa-planet-glow 10s ease-in-out infinite}
 .kaspa-planet img{display:block;width:100%;height:auto}
-@keyframes kaspa-planet-glow{0%,100%{opacity:.16}50%{opacity:.24}}
-@media(max-width:700px){.kaspa-planet{opacity:.13;filter:drop-shadow(0 0 22px #70e6dc22)}@keyframes kaspa-planet-glow{0%,100%{opacity:.1}50%{opacity:.16}}}
+@keyframes kaspa-planet-glow{0%,100%{opacity:.58}50%{opacity:.72}}
+@media(max-width:700px){.kaspa-planet{opacity:.54;filter:drop-shadow(0 0 28px #70e6dc55)}@keyframes kaspa-planet-glow{0%,100%{opacity:.48}50%{opacity:.6}}}
+.kaspa-planet--board{opacity:.52}
 .kaspa-planet--still,.kaspa-space--still .kaspa-space-nebula{animation:none!important}
+body.kaspa-planet-host :is(.site-header,.games-header){background-color:rgba(6,10,16,.78)}
 /* Code rain: front of the background stack, behind content. */
 .kaspa-matrix{position:fixed;inset:0;z-index:-1;pointer-events:none;user-select:none;overflow:hidden;contain:strict;opacity:.2;transition:opacity .4s ease}
 .kaspa-matrix[hidden],.kaspa-matrix-slices[hidden],.kaspa-planet[hidden]{display:none!important}
@@ -32,10 +34,13 @@ html.kaspa-matrix-on body{background-color:transparent!important;background-imag
 .kaspa-matrix.kaspa-matrix--burst .kaspa-matrix-canvas{animation:kaspa-matrix-split 240ms steps(3,end) 1}
 @keyframes kaspa-matrix-slice{0%{opacity:.9;transform:translateX(0)}33%{opacity:.8;transform:translateX(calc(var(--kaspa-glitch-shift,1) * 14px))}66%{opacity:.6;transform:translateX(calc(var(--kaspa-glitch-shift,1) * -8px)) translateY(40%)}100%{opacity:0;transform:none}}
 @keyframes kaspa-matrix-split{0%,100%{filter:none;transform:none}40%{filter:drop-shadow(3px 0 #b46cff) drop-shadow(-3px 0 #49f2c7);transform:translateX(2px)}70%{transform:translateX(-2px)}}
-/* Dimmed panels so dark sections stay readable while the scene shows through. Light and gold bands stay solid. */
-html.kaspa-matrix-on :is(.site-footer,.games-footer,.flow,.build,.universe,.categories,.final-cta,.gauntlet,.kaspa-brief){background-color:rgba(8,12,18,.72)}
-html.kaspa-matrix-on :is(.home-first-steps,.welcome-panel,.news-terminal,.news-source-card,.news-explainer,.about-status-grid article,.game-card,.rounds-panel,.arch-node,.games-signal,.games-beyond,.news-feed){background-color:rgba(10,16,22,.86)}
-html.kaspa-matrix-on .home-launchpad>a{background-color:rgba(12,20,28,.88)}
+/* Darker translucent panels so body text stays readable over a large, brighter planet. Light and gold bands stay solid. */
+html.kaspa-matrix-on :is(.site-footer,.games-footer,.flow,.build,.universe,.categories,.final-cta,.gauntlet,.kaspa-brief){background-color:rgba(6,10,16,.9)}
+html.kaspa-matrix-on :is(.home-first-steps,.welcome-panel,.news-terminal,.news-source-card,.news-explainer,.about-status-grid article,.game-card,.rounds-panel,.arch-node,.games-signal,.games-beyond,.news-feed){background-color:rgba(7,12,18,.94)}
+html.kaspa-matrix-on .home-launchpad>a{background-color:rgba(8,14,20,.95)}
+/* The welcome hero ships with a solid #0c1317 fill that would hide the planet; keep a left-side scrim for the copy. */
+html.kaspa-matrix-on .welcome-page .hero{background:radial-gradient(ellipse at 16% 38%,rgba(6,10,16,.78),rgba(6,10,16,.22) 44%,transparent 70%)}
+html.kaspa-matrix-on :is(.home-onboarding .hero h1,.home-onboarding .hero-lede,.home-onboarding .eyebrow,.news-hero h1,.news-hero p,.news-kicker,.games-hero h1,.games-lede,.about-page h1){text-shadow:0 2px 18px #050814f2,0 0 28px #050814e6}
 body.is-playing .kaspa-matrix{opacity:.04}
 @media(prefers-reduced-motion:reduce){.kaspa-matrix,.kaspa-matrix *,.kaspa-space-nebula,.kaspa-planet{animation:none!important;transition:none!important}.kaspa-matrix-slices{display:none!important}}
 @media(forced-colors:active){.kaspa-matrix,.kaspa-matrix-slices,.kaspa-space,.kaspa-planet{display:none!important}}
