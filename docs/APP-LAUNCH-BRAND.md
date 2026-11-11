@@ -9,3 +9,7 @@ The browser/OS controls the native launch splash, icon placement, timing and ins
 ## Founder correction
 
 The founder rejected the substitute circuit-brain robot and requested the original gold GIGA from the posts. The replacement icon is a head-only image edit derived from /assets/kaspa-culture.png using image_gen; preserve gold helmet/antennae, cyan eyes and white smile on black. This is an image-derived adaptation, not a byte-exact crop. New versioned app icon names refresh manifest references; site logo compatibility PNGs also use gold GIGA. Black launch settings remain. No production release yet.
+
+## Exact app-logo clarification
+
+Founder supplied the neon brain-robot GEEK PROTOCOL wordmark specifically for installed-app branding. Standard/maskable app icons and Apple touch icon now use that supplied image with size-only resampling, not generated or redrawn art. Gold GIGA site/mascot branding remains unchanged. Black native splash settings remain; the supplied image itself retains its dark background. Physical install/launch review remains open.

@@ -1307,3 +1307,8 @@ Founder showed white installed-site launch with watermark-bearing logo. Rebuilt 
 ### UX-025 founder mascot correction
 
 Founder rejected the new circuit-brain robot. Replaced candidate site/app branding with a head-only adaptation of the original gold GIGA post artwork. Used image_gen with original kaspa-culture.png as reference, black background and no text. New app icon names avoid reuse of the rejected mark. Black manifest settings unchanged. Candidate only; installed-device acceptance open.
+
+
+### UX-025 exact installed-app logo
+
+Founder clarified the app should use the supplied neon brain-robot GEEK PROTOCOL image. Replaced only app manifest icons and touch icon via size-only resampling; retained gold GIGA site/mascot branding and black launch settings. Candidate only.
