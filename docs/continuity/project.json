@@ -214,5 +214,11 @@
     "status": "source-candidate",
     "evidence": "docs/KASPA-MATRIX.md",
     "nextAction": "Review the layered Kaspa space and faint planet in the PR preview on desktop, phone and a game page; no footer toggle. Physical-phone acceptance open."
+  },
+  "ongoingGames": {
+    "task": "GAME-004",
+    "status": "founder-approved-release",
+    "evidence": "docs/ONGOING-GAMES.md",
+    "nextAction": "Founder authorized release November 11. Verify and merge #266: accepted matches have no expiry, My Games supports ten active matches, and opt-in alerts require the lounge open. Phone acceptance and closed-app push remain open."
   }
 }

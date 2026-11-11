@@ -2052,6 +2052,26 @@
         "docs/KASPA-MATRIX.md",
         "tests/kaspa-matrix.test.js"
       ]
+    },
+    {
+      "id": "GAME-004",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Ongoing matches, My Games and turn alerts",
+      "owner": "Maintainer; founder release/device review",
+      "nextAction": "Founder authorized release November 11. Resolve current-main conflicts, verify and merge #266; phone acceptance and closed-app push remain open.",
+      "acceptance": [
+        "Atomic per-player capacity of 10 waiting/playing rooms, released on finish and expiry.",
+        "Waiting invitations expire after 24 hours or 30 days; accepted matches have no time expiry and remain in My Games.",
+        "Your-turn badges and opt-in page-open notifications deduplicate per move; closed-app limitations are explicit.",
+        "Real Redis integration and client tests pass without board/private-fleet leakage."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/ONGOING-GAMES.md",
+        "tests/classic-online-api.test.js",
+        "tests/classic-online-client.test.js"
+      ]
     }
   ]
 }

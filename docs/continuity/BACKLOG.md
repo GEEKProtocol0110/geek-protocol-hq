@@ -86,6 +86,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-024 | P2 | in-progress | Minimal cosmic glitch feedback and Geek code accents | Maintainer; founder release review |
 | UX-025 | P2 | in-progress | Clean Geek branding and black installed-app launch | Maintainer; founder release review |
 | UX-026 | P2 | in-progress | Kaspa space, planet and code-rain full-page background | Maintainer; founder release review |
+| GAME-004 | P2 | in-progress | Ongoing matches, My Games and turn alerts | Maintainer; founder release/device review |
 
 ## CONT-001: Publish the continuation system
 
@@ -1291,3 +1292,18 @@ Acceptance:
 - No requests, player records, rewards or gameplay input hooks; CSP unchanged.
 
 Evidence/specification: [docs/KASPA-MATRIX.md](../../docs/KASPA-MATRIX.md), [tests/kaspa-matrix.test.js](../../tests/kaspa-matrix.test.js).
+
+## GAME-004: Ongoing matches, My Games and turn alerts
+
+**P2 / in-progress.** Owner: Maintainer; founder release/device review. Dependencies: none.
+
+Next action: Founder authorized release November 11. Resolve current-main conflicts, verify and merge #266; phone acceptance and closed-app push remain open.
+
+Acceptance:
+
+- Atomic per-player capacity of 10 waiting/playing rooms, released on finish and expiry.
+- Waiting invitations expire after 24 hours or 30 days; accepted matches have no time expiry and remain in My Games.
+- Your-turn badges and opt-in page-open notifications deduplicate per move; closed-app limitations are explicit.
+- Real Redis integration and client tests pass without board/private-fleet leakage.
+
+Evidence/specification: [docs/ONGOING-GAMES.md](../../docs/ONGOING-GAMES.md), [tests/classic-online-api.test.js](../../tests/classic-online-api.test.js), [tests/classic-online-client.test.js](../../tests/classic-online-client.test.js).

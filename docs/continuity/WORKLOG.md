@@ -1328,3 +1328,21 @@ Founder: the code rain should not need a button to turn off, the site should sit
 ## November 11 — UX-026 planet larger and more visible
 
 Founder could not see the planet in the first screenshots and asked for it to be big. Raised desktop diameter to about 70–95% of the 800px viewport height (~560–760px) with roughly 50–70% of the disc on-screen, and opacity to about 0.55–0.75 (a little lower on phones and behind game boards). Per-route corner, offset and rotation stay deterministic and varied. Re-optimized Planet B to 800px still under the size budgets. Right-edge placements flip the texture so the lit limb faces the page. The home welcome hero’s solid #0c1317 fill is replaced with a left-side scrim so the disc is not hidden behind the hero. Darkened translucent text panels and added a light text-shadow on hero copy. Tests and docs updated. Candidate only.
+
+
+## November 11 — GAME-004 ongoing games candidate
+
+Added 30-day at-your-pace rooms (24-hour quick option), private My Games summaries and atomic per-player 10-active-room indexes integrated with room create/CAS. Finished and expired slots are released. Your-turn state covers chess, checkers and all strategy games including fleet deployment; no boards/fleets are included in summaries. Opt-in open-visible-lounge notifications use a notification-only service worker, deduplicated by ply rather than draw-offer revisions. No push subscription/background delivery, key, scheduler, or claim of closed-app alerts. 19 focused Redis/client checks pass; site check passes. Device acceptance and closed-app push remain open. Candidate only.
+
+
+### GAME-004 correspondence clarification
+
+Founder clarified mail-style chess, without premature time expiry. Acceptance now clears room expiry and Redis TTL; persistent player indexes retain active matches. Waiting invitation lifetimes remain 24 hours/30 days, finished retention is 30 days. Removed the artificial chess 600-ply cap while preserving chess-rule outcomes. Added real-Redis no-TTL and simulated year-later move tests. Candidate update to #266, not live.
+
+## November 11 — GAME-004 authorized release integration
+
+Founder authorized resolving and merging #266, then #265. Integrated main with the new lobby/IP abuse protections and planet background retained. Capacity tests exercise atomic storage independently of the newer eight-create/hour API throttle. Accepted games remain persistent; invitation/finished retention stays bounded. Full verification and exact-head CI results are recorded with the PR before merge. Phone acceptance and closed-app push remain open.
+
+Addressed the security review without adding an inactivity deadline: atomic 1,000 saved-game ceiling, waiting-only index expiry, missing-room slot cleanup, clearing request/block fingerprints when a room leaves waiting, and notification navigation fallback. Current-main lobby hardening tests remain in the combined suite. Exceptional chess history replay cost remains explicitly documented; no artificial chess move cap is restored.
+
+Validation of the integrated #266 candidate: full npm run verify passed with real Redis (861 HQ tests and nine signer checks, zero failures/skips); all question, security, collection/archive, repository, economy, continuity, site and whitepaper checks passed. Focused lobby/IP checks passed 37/37, including concurrent permanent-cap reservation, existing play at capacity, release on finish, waiting-index expiry and fingerprint cleanup. Deployment and phone acceptance are not inferred from these tests.

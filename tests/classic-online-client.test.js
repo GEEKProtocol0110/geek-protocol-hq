@@ -46,3 +46,12 @@ test('online Battle Geek deploys through controls and never renders an unscanned
  f.guest('move',{kind:'deploy',fleet:[[0,1,2,3,4],[10,11,12,13],[20,21,22],[30,31,32],[40,41]],revision:f.getStored().revision});await f.poll();
  const enemy=f.node('#board').children[0].children[1].children[1];assert.equal(enemy.children.length,100);assert.equal(enemy.children.every(b=>b.getAttribute('aria-label').endsWith('unknown')),true);await enemy.children[0].emit('click');await tick();assert.equal(f.getStored().position.shots[0][0],true);assert.equal(f.getStored().position.turn,1);
 });
+test('turn alerts require opt-in and deduplicate moves rather than draw-offer revisions',async()=>{
+ const f=client(),notices=[];const notifications={permission:'granted',requestPermission:async()=> 'granted'};f.window.Notification=notifications;f.context.Notification=notifications;
+ f.context.navigator.serviceWorker={register:async()=>({}),getRegistration:async()=>({showNotification:async(title,body)=>notices.push({title,body})})};
+ const game={code:'PLAY-0123456789AB',game:'chess',opponent:'Guest',state:'playing',expiresAt:Date.now()+86400000,yourTurn:false,turnToken:0,revision:2};
+ f.run(`drawMyGames(${JSON.stringify([game])})`);await f.node('#turn-alerts').emit('click');game.yourTurn=true;game.turnToken=1;
+ f.run(`drawMyGames(${JSON.stringify([game])})`);await tick();assert.equal(notices.length,1);assert.match(f.node('#turn-count').textContent,/1 your turn/);
+ game.revision=99;f.run(`drawMyGames(${JSON.stringify([game])})`);await tick();assert.equal(notices.length,1);
+ notifications.permission='denied';game.turnToken=3;f.run(`drawMyGames(${JSON.stringify([game])})`);await tick();assert.equal(notices.length,1);
+});
