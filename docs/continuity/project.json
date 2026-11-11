@@ -213,6 +213,6 @@
     "task": "APP-001",
     "status": "source-candidate",
     "evidence": "android/README.md",
-    "nextAction": "Verify APK CI build and phone flow; native project generation passed, local SDK absent. TWA domain/signing association remains open."
+    "nextAction": "Debug APK build and founder install/launch confirmed. Stable test signing workflow prepared; owner secure GitHub secret setup blocks signed build and domain verification. No trust statement deployed."
   }
 }

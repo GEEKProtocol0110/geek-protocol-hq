@@ -1281,7 +1281,7 @@ Evidence/specification: [docs/APP-LAUNCH-BRAND.md](../../docs/APP-LAUNCH-BRAND.m
 
 **P2 / in-progress.** Owner: Maintainer; founder device review. Dependencies: none.
 
-Next action: Build debug APK through the Android workflow, verify artifact and device behavior; configure a stable test signing identity/domain association before claiming verified TWA.
+Next action: Owner stores dedicated test keystore/password in GitHub Secrets; merge reviewed workflow, run on main, then review/deploy the derived real certificate association and install matching APK. Existing debug install/launch confirmed by founder screenshots.
 
 Acceptance:
 

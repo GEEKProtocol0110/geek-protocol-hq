@@ -1317,3 +1317,8 @@ Founder clarified the app should use the supplied neon brain-robot GEEK PROTOCOL
 ## November 11 — Android test packaging candidate
 
 Added reproducible Bubblewrap 1.27.0 generator for a separately identified Android debug test wrapper and GitHub APK artifact workflow. Native project generation succeeded locally with supplied logo and black launch settings. Local Android SDK/Gradle absent; APK compilation is not yet established. Digital Asset Links, stable test signing identity, installed-phone acceptance and Play preparation remain open. No release keys, placeholder fingerprints or store publishing.
+
+
+### APP-001 stable signing preparation
+
+Phone screenshots establish debug APK install and launch with expected browser UI fallback. Prepared a main-only manual stable-test signing workflow using two GitHub secrets, private key cleanup and a derived public certificate association artifact. No signing key or domain trust statement has been created/deployed. Connected GitHub tools cannot write repository secrets; owner secure setup is the blocker. Association formatter checked with a synthetic fingerprint outside deployable public paths. Native signing/device verification remains untested.
