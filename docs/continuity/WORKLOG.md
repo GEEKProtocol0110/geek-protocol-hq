@@ -1346,3 +1346,23 @@ Founder authorized resolving and merging #266, then #265. Integrated main with t
 Addressed the security review without adding an inactivity deadline: atomic 1,000 saved-game ceiling, waiting-only index expiry, missing-room slot cleanup, clearing request/block fingerprints when a room leaves waiting, and notification navigation fallback. Current-main lobby hardening tests remain in the combined suite. Exceptional chess history replay cost remains explicitly documented; no artificial chess move cap is restored.
 
 Validation of the integrated #266 candidate: full npm run verify passed with real Redis (861 HQ tests and nine signer checks, zero failures/skips); all question, security, collection/archive, repository, economy, continuity, site and whitepaper checks passed. Focused lobby/IP checks passed 37/37, including concurrent permanent-cap reservation, existing play at capacity, release on finish, waiting-index expiry and fingerprint cleanup. Deployment and phone acceptance are not inferred from these tests.
+
+
+## November 11 — Android test packaging candidate
+
+Added reproducible Bubblewrap 1.27.0 generator for a separately identified Android debug test wrapper and GitHub APK artifact workflow. Native project generation succeeded locally with supplied logo and black launch settings. Local Android SDK/Gradle absent; APK compilation is not yet established. Digital Asset Links, stable test signing identity, installed-phone acceptance and Play preparation remain open. No release keys, placeholder fingerprints or store publishing.
+
+
+### APP-001 stable signing preparation
+
+Phone screenshots establish debug APK install and launch with expected browser UI fallback. Prepared a main-only manual stable-test signing workflow using two GitHub secrets, private key cleanup and a derived public certificate association artifact. No signing key or domain trust statement has been created/deployed. Connected GitHub tools cannot write repository secrets; owner secure setup is the blocker. Association formatter checked with a synthetic fingerprint outside deployable public paths. Native signing/device verification remains untested.
+
+## November 11 — APP-001 signing hardening and authorized release
+
+Founder authorized #265 after #266. #266 merged as aab4d36f9345c373f55bcb467a3bd45be3254d4d after exact-head remote verify and both previews passed (6797a82, tree 83743f25a45a55af86a32f99345bc11437fdc4db). Local full verification passed 861 HQ and nine signer checks.
+
+For #265, separate unsigned release build from the protected signing job. The build uses npm ci --ignore-scripts and pinned Gradle wrapper validation, with no signing secrets. The minimal signing job downloads only the current workflow artifact and signs with apksigner; it does not run Gradle/npm/repository scripts. Stable output is non-debuggable and separately identified as the test app. Secrets belong only in a main-only, required-reviewer GitHub environment configured by the owner; this PR does not create that environment or assert those protections exist. No key or live domain association is created, and no signed workflow is dispatched.
+
+Release verification: #266 production dpl_GXfjz8fvUKpnEW3D8saPjqtqVygZ is READY at aab4d36f9345c373f55bcb467a3bd45be3254d4d with both canonical domains assigned. Canonical lounge HTML, online.js and turn-alerts-sw.js returned HTTP 200 and byte-for-byte matched the verified source.
+
+Android validation: project generation succeeds with the reviewed logo; generated native webManifestUrl now uses the canonical HTTPS manifest rather than the temporary loopback asset server. Both workflow YAML files parse, JS syntax passes, and full npm run verify passes 861 HQ plus nine signer checks, zero failures/skips, with real Redis. Android SDK is not installed locally; native compilation is delegated to the secret-free PR build and not claimed until CI completes. No environment/secret configuration or stable signing execution performed.

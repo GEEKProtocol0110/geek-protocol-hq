@@ -1,0 +1,8 @@
+// Build without a signing key. The protected job signs the APK with apksigner.
+gradle.beforeProject { app ->
+    app.pluginManager.withPlugin('com.android.application') {
+        def android = app.extensions.getByName('android')
+        android.buildTypes.release.signingConfig = null
+        android.buildTypes.release.debuggable = false
+    }
+}

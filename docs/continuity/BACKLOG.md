@@ -87,6 +87,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-025 | P2 | in-progress | Clean Geek branding and black installed-app launch | Maintainer; founder release review |
 | UX-026 | P2 | in-progress | Kaspa space, planet and code-rain full-page background | Maintainer; founder release review |
 | GAME-004 | P2 | in-progress | Ongoing matches, My Games and turn alerts | Maintainer; founder release/device review |
+| APP-001 | P2 | in-progress | Android test package and device acceptance | Maintainer; founder device review |
 
 ## CONT-001: Publish the continuation system
 
@@ -1307,3 +1308,17 @@ Acceptance:
 - Real Redis integration and client tests pass without board/private-fleet leakage.
 
 Evidence/specification: [docs/ONGOING-GAMES.md](../../docs/ONGOING-GAMES.md), [tests/classic-online-api.test.js](../../tests/classic-online-api.test.js), [tests/classic-online-client.test.js](../../tests/classic-online-client.test.js).
+
+## APP-001: Android test package and device acceptance
+
+**P2 / in-progress.** Owner: Maintainer; founder device review. Dependencies: none.
+
+Next action: Founder authorized #265 merge November 11. Verify unsigned APK build and protected-environment signing preparation; owner must configure main-only environment with required reviewer and dedicated environment secrets before stable signing. Domain association and phone acceptance remain open.
+
+Acceptance:
+
+- Reproducible separately identified debug wrapper uses reviewed site and supplied logo.
+- APK compiles and installs; sign-in, Back, game/lobby and network behavior checked on phone.
+- No release secrets or placeholder Digital Asset Links; Play submission stays separate.
+
+Evidence/specification: [android/README.md](../../android/README.md), [.github/workflows/android-test.yml](../../.github/workflows/android-test.yml).

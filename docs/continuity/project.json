@@ -217,8 +217,14 @@
   },
   "ongoingGames": {
     "task": "GAME-004",
-    "status": "founder-approved-release",
+    "status": "merged-deployed-http-verified",
     "evidence": "docs/ONGOING-GAMES.md",
-    "nextAction": "Founder authorized release November 11. Verify and merge #266: accepted matches have no expiry, My Games supports ten active matches, and opt-in alerts require the lounge open. Phone acceptance and closed-app push remain open."
+    "nextAction": "Founder-approved #266 squash-merged as aab4d36f9345c373f55bcb467a3bd45be3254d4d. Production dpl_GXfjz8fvUKpnEW3D8saPjqtqVygZ is READY with both canonical domains; lounge HTML, client and notification worker match exact source via HTTP 200. Physical-phone acceptance and closed-app push remain open."
+  },
+  "androidTest": {
+    "task": "APP-001",
+    "status": "founder-approved-release",
+    "evidence": "android/README.md",
+    "nextAction": "Verify and merge #265. The unsigned release build and protected-environment signing pipeline are prepared. Owner configuration of main-only environment, required reviewer and dedicated environment secrets remains open; no stable signing run or domain association is claimed."
   }
 }
