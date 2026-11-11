@@ -86,7 +86,7 @@
       "status": "active",
       "title": "Audit every question category before treating counts as quality",
       "owner": "Content maintainer; independent editor unassigned",
-      "nextAction": "Review the November 8 Technology candidate and exact-head CI, then continue the full-bank audit.",
+      "nextAction": "Review the November 8 risk-triage candidate and exact-head CI, then continue unflagged rows across categories.",
       "acceptance": [
         "All active identities have a recorded audit disposition; screening and factual review coverage are distinguished.",
         "Semantic duplicates, inverse/paraphrased facts, key/distractor ambiguity, missing media/context, encoding, taxonomy, dates/editions and licensing are reviewed, including unflagged imports.",
@@ -113,7 +113,8 @@
         "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md",
         "server/question-audit/technology-2026-11-06.json",
         "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-07.md",
-        "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-08.md"
+        "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-08.md",
+        "docs/TECHNOLOGY-RISK-REVIEW-2026-11-08.md"
       ],
       "validationEvidence": [
         "Initial full-bank screen: 8,371 baseline active / 864 recorded checks / 7,507 drafts; 33 candidate pairs, 26 within and seven cross-category. Internal triage: 15 duplicate retirements, ten retained distinct objectives, four scope and four category decisions outstanding. Candidate: 8,356 active / 7,492 drafts; 76 encoding and four time-wording signals. No factual certification added.",
@@ -1000,10 +1001,10 @@
     {
       "id": "ACE-001",
       "priority": "P1",
-      "status": "needs-evidence",
+      "status": "blocked",
       "title": "Build source-grounded A.C.E. tutoring and scoped operational automation",
       "owner": "Maintainer; AI/content evaluation reviewer unassigned",
-      "nextAction": "#148 merged/deployed. Authored lesson help works; optional bounded Gateway path and private read-only readiness are installed. Select model/budget/data policy and record a bounded live citation/injection/usage evaluation before activation. Autonomous operational tools are not installed.",
+      "nextAction": "Keep A.C.E. work and live AI activation paused until the founder explicitly resumes it. Existing authored lesson help remains available.",
       "acceptance": [
         "Tutor retrieves reviewed sources and keeps grading/reward authority deterministic.",
         "Typed role-checked tools, audit history, bounded budget/latency and authored fallback are tested.",
@@ -1021,7 +1022,8 @@
       ],
       "releaseEvidence": [
         "PR #148 merged October 17 at 11:07:47 UTC as 67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f. Exact checked head 0d3125792fbe1e46f4e99fcb3eda0cd0b832e53f/tree 3834af65cf3bd89d157fd64af08103e32225cd60 passed GitHub Security verification 39026911425 and Vercel. No submitted reviews or inline threads were present. Preview dpl_Gz7chXA2daWVY2yCnLiiiyTAKbkr READY: seven authenticated public delivery checks passed; browser returned authored lesson evidence/primary source and cleared question/answer/consent on topic change. Desktop screenshot inspected; width 1348 <= viewport 1363. Initial raw preview HTTP hit deployment protection; owner-route protected fetch did not expose app headers and is not owner acceptance. Production dpl_dmdhSBWZHDQjJGGJ7pCTX4swPa1f READY on the exact merge with both canonical domains assigned. Ten canonical delivery checks passed: Study page, exact three clients/styles and count-only catalog, inactive-AI/no-store status, 11-topic/537-concept Study catalog, two private/no-store 401 routes and 624 Kaspa/722-review held-bank status. The first bank probe used the wrong nested path; one corrected read passed without an application change. Canonical browser renders the new collapsed/open lesson-help entry with AI opt-in hidden and no horizontal overflow; no canonical question, game, reward, owner-login or wallet action submitted. Production deployment-scoped error/fatal log count query for the recent ten-minute window returned no groups; this early empty window is not a long-term observability guarantee. Full final verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Production dependency audit reports zero vulnerabilities; 37-component SBOM refreshed. Actual phone/Silk, live model quality/budget, first TN10 transfer, provider restore and independent review remain unverified."
-      ]
+      ],
+      "blocker": "Founder paused A.C.E. work on November 9, 2026."
     },
     {
       "id": "PERF-001",
@@ -1929,6 +1931,105 @@
       "evidence": [
         "docs/EDUCATION-DIRECTORY.md",
         "docs/kaspa-directory.json"
+      ]
+    },
+    {
+      "id": "GAME-003",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Nine strategy and puzzle games, including Battle Geek and Peg Quest",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review Tower of Geek rename and six difficulty levels in preview; existing nine-game release #258 is merged. Browser/phone visual acceptance remains open.",
+      "acceptance": [
+        "Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four, Reversi, Codebreaker, Hanoi, Sudoku and Peg Quest are playable with clear rules and Geek styling.",
+        "Five two-player games work through existing authoritative lobby/request/reconnect flow.",
+        "Battle Geek opposing fleets stay server-only online; local mode uses an explicit handoff curtain.",
+        "Rules, client and real-Redis integration tests pass; no account/XP/token reward changes.",
+        "Standard 10\u00d710 five-ship fleet; selectable Dots sizes; terminal result, reduced-motion-safe celebration, replay, exit and board review."
+      ],
+      "dependsOn": [
+        "GAME-002",
+        "UX-021"
+      ],
+      "evidence": [
+        "docs/STRATEGY-PUZZLE-GAMES.md",
+        "tests/strategy-games.test.js",
+        "tests/strategy-client.test.js",
+        "tests/classic-online-api.test.js"
+      ]
+    },
+    {
+      "id": "UX-022",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Homepage pathways and shared navigation polish",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review the Vercel preview, especially compact navigation and phone spacing. Local browser could not connect to the preview host.",
+      "acceptance": [
+        "Visible Learn, Games and News paths while preserving the first quiz and lesson choices.",
+        "Readable type, gold/cyan edge accents, consistent panels and adaptive layouts.",
+        "Compact menu at tablet widths; existing Escape, outside-click and link-close behaviors remain.",
+        "Site and continuity checks pass; browser and physical-device acceptance remain separate."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/SITE-POLISH-2026-11-10.md",
+        "public/assets/home.css",
+        "public/assets/styles.css"
+      ]
+    },
+    {
+      "id": "UX-023",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "More optional Grid easter eggs",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review expanded Stray signal terminal in preview; founder merge review and rendered device acceptance remain open.",
+      "acceptance": [
+        "Riddles, hints, fortunes, launch art, route signals and hidden command messages work without requests or saved player state.",
+        "Terminal remains closed until opened, with native keyboard/touch controls and reduced-motion support.",
+        "No global input hooks, rewards or timed-game overlays; existing rewarded hunt remains separate."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/GRID-EASTER-EGGS.md",
+        "tests/easter-eggs.test.js"
+      ]
+    },
+    {
+      "id": "UX-024",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Minimal cosmic glitch feedback and Geek code accents",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review together with UX-023 in #261 preview; rendered phone acceptance remains open.",
+      "acceptance": [
+        "Brief edge-only feedback on selected discovery controls without changing navigation or labels.",
+        "Sparse decorative Kaspa/Geek code accents, bounded animation and reduced-motion/forced-color support.",
+        "No account, answer, board or timed gameplay input hooks; no requests, storage or rewards."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/COSMIC-GLITCH.md",
+        "tests/cosmic-glitch.test.js"
+      ]
+    },
+    {
+      "id": "UX-025",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Clean Geek branding and black installed-app launch",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review new vector logo and installed-app manifest in preview. Physical Android launch/reinstall acceptance remains open.",
+      "acceptance": [
+        "New clean logo replaces the old watermark-bearing logo across site references and compatibility bytes.",
+        "Black app manifest background/theme, standalone launch, local 192/512 and maskable icons, Apple touch icon.",
+        "Metadata generation remains idempotent; no service-worker caching of private/session/game data."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/APP-LAUNCH-BRAND.md",
+        "tests/app-brand.test.js"
       ]
     }
   ]

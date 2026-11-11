@@ -1,3 +1,4 @@
+import {reversiLegal} from '../public/games/strategy/engine.js';
 import test,{after} from 'node:test';
 import assert from 'node:assert/strict';
 import {redisFixture} from './helpers/redis-fixture.js';
@@ -37,4 +38,29 @@ run('room expiration, environment isolation, request cancellation and draw conse
  let r=await call(p.a,'view',p);await call(p.a,'accept',{...p,requestId:r.body.room.requests[0].id});await call(p.a,'offer-draw',p);assert.equal((await call(p.a,'accept-draw',p)).statusCode,409);assert.equal((await call(p.b,'accept-draw',p)).body.room.result,'Draw by agreement');
  const before=onlineKey(p.code),prev=process.env.VERCEL_ENV;process.env.VERCEL_ENV='preview';assert.notEqual(before,onlineKey(p.code));assert.equal((await call(p.a,'view',p)).statusCode,404);if(prev===undefined)delete process.env.VERCEL_ENV;else process.env.VERCEL_ENV=prev;
  const stored=JSON.parse(await fixture.command('GET',onlineKey(p.code)));stored.expiresAt=Date.now()-1;await fixture.command('SET',onlineKey(p.code),JSON.stringify(stored));assert.equal((await call(p.a,'view',p)).statusCode,404);
+});
+
+run('all four open-board strategy games complete through authoritative lobby requests and turns',async()=>{
+ for(const game of ['tic-tac-toe','connect-four','dots','reversi']){
+  const p=await pair(game,'private');await call(p.b,'request',p);const requests=(await call(p.a,'view',p)).body.room.requests;
+  let r=await call(p.a,'accept',{...p,requestId:requests[0].id});assert.equal(r.statusCode,200);let turn=0;
+  const sequence=game==='tic-tac-toe'?[0,3,1,4,2]:game==='connect-four'?[0,1,0,1,0,1,0]:game==='dots'?Array.from({length:60},(_,i)=>i):null;
+  while(r.body.room.state==='playing'&&turn<65){const pos=r.body.room.position,cell=sequence?sequence[turn]:reversiLegal(pos.board,pos.turn)[0];r=await call(pos.turn===0?p.a:p.b,'move',{...p,cell,revision:r.body.room.revision});assert.equal(r.statusCode,200,game);turn++;}
+  assert.equal(r.body.room.state,'finished',game);assert.ok(r.body.room.result);
+ }
+});
+run('Battle Geek opponent fleets stay absent from every API view; stale deployment and repeated scans fail',async()=>{
+ const p=await pair('battle-geek','private');await call(p.b,'request',p);let r=await call(p.a,'view',p);r=await call(p.a,'accept',{...p,requestId:r.body.room.requests[0].id});
+ const fleets=[[[0,1,2,3,4],[10,11,12,13],[20,21,22],[30,31,32],[40,41]],[[50,51,52,53,54],[60,61,62,63],[70,71,72],[80,81,82],[90,91]]];const revision=r.body.room.revision;
+ r=await call(p.a,'move',{...p,revision,kind:'deploy',fleet:fleets[0]});assert.equal(r.statusCode,200);
+ assert.equal((await call(p.b,'move',{...p,revision,kind:'deploy',fleet:fleets[1]})).statusCode,409);
+ const guest=await call(p.b,'view',p);assert.deepEqual(guest.body.room.position.ownFleet,[]);assert.equal(guest.body.room.position.fleets,undefined);assert.ok(guest.body.room.position.target.every(x=>x==='unknown'));
+ r=await call(p.b,'move',{...p,revision:guest.body.room.revision,kind:'deploy',fleet:fleets[1]});assert.equal(r.statusCode,200);
+ let miss=99;for(const cell of fleets[1].flat()){
+  r=await call(p.a,'move',{...p,revision:r.body.room.revision,kind:'scan',cell});assert.equal(r.statusCode,200);
+  assert.equal(r.body.room.position.fleets,undefined);assert.deepEqual(r.body.room.position.ownFleet,fleets[0]);
+  if(r.body.room.state==='playing'){r=await call(p.b,'move',{...p,revision:r.body.room.revision,kind:'scan',cell:miss--});assert.equal(r.statusCode,200);}
+ }
+ assert.equal(r.body.room.state,'finished');assert.equal(r.body.room.position.sunk.length,5);assert.ok(r.body.room.history.slice(0,2).every(s=>s==='Fleet deployed'));
+ assert.equal((await call(p.c,'view',p)).body.room.position,null);
 });

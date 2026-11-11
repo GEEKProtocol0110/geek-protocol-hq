@@ -35,3 +35,7 @@ Founder requested Merge. Prerequisite #253 merged as 099bb78022bc579dfee72b134d9
 - Closed or started rooms are removed from the public index; listing reads prune stale entries.
 - Each network address can send at most 4 requests per lobby per hour. Hosts can **Block** a request, which bars that player and network address from requesting the same lobby again (`ONLINE_BLOCKED`). Block data and network fingerprints are never returned to clients.
 - Non-object request bodies return `INVALID_REQUEST`; unexpected API errors log only `{name, code}` classification, never the raw error.
+
+## Strategy expansion candidate — November 9, 2026
+
+GAME-003 adds Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four and Reversi to this same lobby service. Battle Geek views are explicitly filtered per player, and both deployments plus every scan use revision-checked server moves. See [strategy/puzzle scope and validation](STRATEGY-PUZZLE-GAMES.md). The existing chess/checkers release record remains historical; expansion is a separate candidate.

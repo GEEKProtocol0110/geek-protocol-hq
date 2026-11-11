@@ -1253,3 +1253,62 @@ Added twelve hand-authored local vector chess assets with metallic gold/cyan fin
 Added Education & Learning with Geek Protocol, Kaspa University, BMT University, Lyceum Protocol, Kaspa Mastery, KasStacker Learn, Hello Kaspa and the dated Kii Academy program guide. Primary project sources inspected; project-reported L1/L2 features are distinguished from off-chain learning guides and historical program documentation. Geek links its learner start page without duplicating the token listing URL. Catalog generator handles navigation/filter/schema/counts. No external submissions, rewards or account changes. Directory, site and continuity checks run before PR. Candidate only.
 
 ECO-008 clarified scope: distinguish GEEK/BMT token-linked learning projects with network and implemented/planned utility state; other six entries move to Learning Platforms & Guides. BMT primary token site identifies Kasplex L2 ERC-20. KU native KAS rewards do not imply a KU fungible token. Existing BURTLE community education positioning does not establish a learning utility mechanic. No other token utility is inferred. PR #256 updated, not merged.
+
+### November 9, 2026 — GAME-003 nine strategy/puzzle games
+
+Founder approved all nine suggested games. Added local playable Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four, Reversi, Codebreaker, Tower of Hanoi, Sudoku and triangular Peg Quest. Extended the existing authoritative lobby flow to the five two-player strategy games. Battle Geek masks opposing fleets in server views and clears the local board DOM during handoff. New rules, shipped-client and real-Redis API tests cover winning/invalid moves, extra turns, forced passes, hidden-information boundaries and complete matches. Browser preview startup succeeded, but browser access timed out; no rendered-phone acceptance is claimed. A.C.E. remains paused (DR-034). No merge or production release in this checkpoint.
+
+GAME-003 validation: full suite 821/821 with real Redis 7.2 and no skips/failures; signer 9/9. Final UI entry links preselect the correct online game, with focused client/site checks repeated afterward. Site has 62 pages. Browser render timed out; no physical-device acceptance or production deployment claim.
+## November 8, 2026 — BANK-009 Technology risk triage
+
+Continued past #246 with six selected rows: five lookup-only retirements for semantic duplication, overlapping options, overbroad neutron-star terminology and projectile context; one unchanged draft survivor. No new rows or review-count promotion. Counts: 8,432 active / 8,218 ranked-eligible / 214 practice-only / 809 eligible reviews / 7,191 target deficit. New deterministic selection test verifies historical duplicate exclusion; original grading and prior retired records remain protected. Exact checks and PR release evidence remain separate.
+
+
+## November 10 — GAME-003 rendering and full-size boards
+
+Updated #258 candidate with standard 10×10 Battle Geek / five ships (5,4,3,3,2), selectable 4/5/6/8 Dots grids (default 6), and sculpted gold/cyan board treatment. Local game, chess, checkers, solitaire and online terminal states open a native result dialog with bounded fireworks, replay, exit and board review. Reduced motion disables fireworks; online replay returns to lobby creation and never resets another player without consent. Engine, client, result-dialog and real-Redis checks pass; full suite and source checks recorded in PR. Browser/physical-phone visual acceptance remains outstanding. A.C.E. stays paused.
+
+
+## November 10 — GAME-003 GIGA victory art
+
+Founder requested GIGA’s head in place of the victory badge. Reused the existing gold GIGA mascot artwork with a head-only CSS viewport and silhouette, retaining reduced-motion behavior and the existing result controls. Candidate update to #258; not merged.
+
+
+## November 10 — GAME-003 Tower of Geek
+
+Founder requested the Tower of Geek name and selectable difficulty. Added six levels (3–8 discs), optimal-move targets, perfect-solution feedback and scalable tower rendering. Existing address remains compatible. Candidate only; browser/phone visual acceptance remains open.
+
+
+## November 10 — UX-022 site polish
+
+Founder requested geekprotocol.xyz polish. Added visible Learn/Games/News discovery cards; refined homepage spacing, panels, action buttons and reading hierarchy; kept glow on edges. Shared navigation now collapses coherently at tablet widths instead of mixing the 760/850 breakpoints, using existing menu handlers and header height alignment. Source checks pass. Local native browser started, but localhost and forwarded terminal.local connections were refused; rendered/phone acceptance remains open. No account, reward, feed loading or A.C.E. activation changes. Candidate only.
+
+
+### UX-022 founder screenshot revision
+
+Enlarged the homepage Kaspa word, switched it to Kaspa turquoise and placed the existing Kaspa mark immediately afterward. Scoped hero row sizing keeps the word and logo together. Site and continuity source checks pass; rendered narrow-device acceptance remains open.
+
+
+## November 10 — UX-023 additional easter eggs
+
+Expanded the optional Stray signal footer terminal with three answerable riddles and hints, rotating GIGA fortunes, a bounded launch animation, route-specific scan messages, unlisted duck/42/BlockDAG messages and a page-visit discovery list. Added footer availability on Games hub, News, Directory and Whitepaper; individual game boards remain excluded. No storage, requests, rewards, global input handlers or A.C.E. activation. Focused client tests and source checks pass; rendered device acceptance remains open. Candidate only.
+
+
+## November 10 — UX-024 minimal cosmic glitch
+
+Founder requested subtle animated cypherpunk Kaspa/Geek accents and selection feedback. Added a 320ms edge-only glitch with 360ms cooldown on selected discovery controls, sparse code labels with two finite animation cycles, and reduced-motion/forced-color suppression. Route whitelist excludes individual boards, timed play and account/owner surfaces; active-game class suppresses feedback. No default action interception, requests, state storage, score or reward changes. Seven focused effect/easter-egg tests pass; site/continuity checks pass. Candidate alongside #261; rendered device acceptance remains open.
+
+
+## November 10 — UX-025 clean app branding
+
+Founder showed white installed-site launch with watermark-bearing logo. Rebuilt the brain/robot mark as native SVG, rendered clean versioned PNG and compatibility logo bytes, replaced site references, added black standalone manifest, standard/maskable app icons and Apple touch icon. Managed metadata now includes manifest and touch icon idempotently. No fake loading delay or service worker added. Browser/Android controls native splash; physical installed-app acceptance and possible reinstall remain open. Candidate only.
+
+
+### UX-025 founder mascot correction
+
+Founder rejected the new circuit-brain robot. Replaced candidate site/app branding with a head-only adaptation of the original gold GIGA post artwork. Used image_gen with original kaspa-culture.png as reference, black background and no text. New app icon names avoid reuse of the rejected mark. Black manifest settings unchanged. Candidate only; installed-device acceptance open.
+
+
+### UX-025 exact installed-app logo
+
+Founder clarified the app should use the supplied neon brain-robot GEEK PROTOCOL image. Replaced only app manifest icons and touch icon via size-only resampling; retained gold GIGA site/mascot branding and black launch settings. Candidate only.

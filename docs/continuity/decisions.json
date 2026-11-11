@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-06",
+  "updatedAt": "2026-11-09",
   "records": [
     {
       "id": "DR-001",
@@ -178,7 +178,7 @@
       "status": "founder-direction",
       "title": "500 character concepts, each with five rarity artworks",
       "decision": "Plan 500 Geek character concepts with Common, Rare, Epic, Legendary and Mythic artwork for every concept: 2,500 distinct planned images. This corrects the earlier interpretation of 500 total editions. Artwork count does not determine collectible copies per artwork, mint supply or acquisition allocations.",
-      "basis": "Founder clarified October 15, 2026: “So you see the direction I went with the 500 geek. 2500 different images.” Three supplied five-tier sets demonstrate the intended structure. Runtime manifest migration remains COLL-001 work. Recovered into main during October 16 PR reconciliation; later fourth-set intake remains preserved in paused PR #120. No art production or runtime migration resumed.",
+      "basis": "Founder clarified October 15, 2026: \u201cSo you see the direction I went with the 500 geek. 2500 different images.\u201d Three supplied five-tier sets demonstrate the intended structure. Runtime manifest migration remains COLL-001 work. Recovered into main during October 16 PR reconciliation; later fourth-set intake remains preserved in paused PR #120. No art production or runtime migration resumed.",
       "evidence": [
         "docs/GEEK-500-COLLECTION-STRUCTURE.md",
         "docs/PR-RECONCILIATION.md",
@@ -381,7 +381,7 @@
       "status": "implementation-choice",
       "title": "Use bounded Technology review without a blanket science purge",
       "decision": "Apply BANK-009 to a risk-selected Technology sample. Retire unrelated clinical/film objectives and malformed option sets; keep engineering, computing and instrument-application objectives with item-level primary evidence. Do not infer that all basic science or instrument anatomy is off-category, and do not transfer unverified facts into another active category. Corrections use new identities with old grading/aliases preserved.",
-      "basis": "DR-029 and the maintained next action authorize thorough category/context and factual review. This is the maintainer’s scoped implementation choice, not a new founder taxonomy approval or full-bank certification.",
+      "basis": "DR-029 and the maintained next action authorize thorough category/context and factual review. This is the maintainer\u2019s scoped implementation choice, not a new founder taxonomy approval or full-bank certification.",
       "evidence": [
         "docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md",
         "server/question-audit/technology-2026-10-28.json"
@@ -431,6 +431,18 @@
       ],
       "recordedAt": "2026-11-06",
       "supersedes": "DR-032"
+    },
+    {
+      "id": "DR-034",
+      "status": "founder-direction",
+      "title": "Pause A.C.E. while continuing game work",
+      "decision": "Pause A.C.E. development and live AI activation until the founder explicitly resumes it. Continue the approved strategy/puzzle games.",
+      "basis": "Founder directed Pause ACE and then approved all nine proposed strategy/puzzle games.",
+      "evidence": [
+        "docs/STRATEGY-PUZZLE-GAMES.md"
+      ],
+      "recordedAt": "2026-11-09",
+      "supersedes": null
     }
   ]
 }

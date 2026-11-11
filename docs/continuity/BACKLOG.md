@@ -46,7 +46,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ART-001 | P2 | blocked | Preserve paused original art and resume production only on founder direction | Founder supplies art; production maintainer unassigned |
 | SEO-001 | P0 | done | Maintain metadata and link coverage for every HQ page | Maintainer |
 | AUTH-003 | P0 | needs-evidence | Provide a cross-device account path beyond local passkey creation | Maintainer; family-account and recovery policy reviewed by founder |
-| ACE-001 | P1 | needs-evidence | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
+| ACE-001 | P1 | blocked | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
 | PERF-001 | P1 | needs-evidence | Measure growth capacity and stage storage, delivery and worker improvements | Maintainer; performance/recovery reviewer unassigned |
 | UX-006 | P0 | needs-evidence | Make returning login clear and keep advanced setup optional | Maintainer; founder confirms usability |
 | UX-007 | P1 | needs-evidence | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
@@ -80,6 +80,11 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | GAME-002 | P2 | in-progress | Online chess and checkers lobbies with accepted game requests | Maintainer; founder release review |
 | UX-021 | P2 | in-progress | Sculpted chess pieces, raised checkers and collector-style solitaire cards | Maintainer; founder release review |
 | ECO-008 | P2 | in-progress | Education directory with explicit learning utility-token projects | Maintainer; founder release review |
+| GAME-003 | P2 | in-progress | Nine strategy and puzzle games, including Battle Geek and Peg Quest | Maintainer; founder release review |
+| UX-022 | P2 | in-progress | Homepage pathways and shared navigation polish | Maintainer; founder release review |
+| UX-023 | P2 | in-progress | More optional Grid easter eggs | Maintainer; founder release review |
+| UX-024 | P2 | in-progress | Minimal cosmic glitch feedback and Geek code accents | Maintainer; founder release review |
+| UX-025 | P2 | in-progress | Clean Geek branding and black installed-app launch | Maintainer; founder release review |
 
 ## CONT-001: Publish the continuation system
 
@@ -129,7 +134,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Review the November 8 Technology candidate and exact-head CI, then continue the full-bank audit.
+Next action: Review the November 8 risk-triage candidate and exact-head CI, then continue unflagged rows across categories.
 
 Acceptance:
 
@@ -139,7 +144,7 @@ Acceptance:
 - Corrections use new identities; original grading remains lookup-only and duplicate aliases prevent repeated concepts in subsequent rounds.
 - Independent editorial review is assigned and accepted before claiming independent completion; generated coverage, compatibility, tier capacity and public-answer protections pass.
 
-Evidence/specification: [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md), [scripts/audit-question-banks.mjs](../../scripts/audit-question-banks.mjs), [server/question-audit/decisions-2026-10-27.json](../../server/question-audit/decisions-2026-10-27.json), [server/question-audit/latest.json](../../server/question-audit/latest.json), [tests/question-audit.test.js](../../tests/question-audit.test.js), [docs/QUESTION-ENCODING-REVIEW-2026-10-28.md](../../docs/QUESTION-ENCODING-REVIEW-2026-10-28.md), [server/question-audit/encoding-2026-10-28.json](../../server/question-audit/encoding-2026-10-28.json), [scripts/question-encoding.mjs](../../scripts/question-encoding.mjs), [tests/question-encoding.test.js](../../tests/question-encoding.test.js), [docs/QUESTION-SCOPE-REVIEW-2026-10-28.md](../../docs/QUESTION-SCOPE-REVIEW-2026-10-28.md), [server/question-audit/scope-2026-10-28.json](../../server/question-audit/scope-2026-10-28.json), [server/question-audit/reviews.json](../../server/question-audit/reviews.json), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md), [server/question-audit/technology-2026-10-28.json](../../server/question-audit/technology-2026-10-28.json), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md), [server/question-audit/technology-2026-11-06.json](../../server/question-audit/technology-2026-11-06.json), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-07.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-07.md), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-08.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-08.md).
+Evidence/specification: [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md), [scripts/audit-question-banks.mjs](../../scripts/audit-question-banks.mjs), [server/question-audit/decisions-2026-10-27.json](../../server/question-audit/decisions-2026-10-27.json), [server/question-audit/latest.json](../../server/question-audit/latest.json), [tests/question-audit.test.js](../../tests/question-audit.test.js), [docs/QUESTION-ENCODING-REVIEW-2026-10-28.md](../../docs/QUESTION-ENCODING-REVIEW-2026-10-28.md), [server/question-audit/encoding-2026-10-28.json](../../server/question-audit/encoding-2026-10-28.json), [scripts/question-encoding.mjs](../../scripts/question-encoding.mjs), [tests/question-encoding.test.js](../../tests/question-encoding.test.js), [docs/QUESTION-SCOPE-REVIEW-2026-10-28.md](../../docs/QUESTION-SCOPE-REVIEW-2026-10-28.md), [server/question-audit/scope-2026-10-28.json](../../server/question-audit/scope-2026-10-28.json), [server/question-audit/reviews.json](../../server/question-audit/reviews.json), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md), [server/question-audit/technology-2026-10-28.json](../../server/question-audit/technology-2026-10-28.json), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md), [server/question-audit/technology-2026-11-06.json](../../server/question-audit/technology-2026-11-06.json), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-07.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-07.md), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-08.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-08.md), [docs/TECHNOLOGY-RISK-REVIEW-2026-11-08.md](../../docs/TECHNOLOGY-RISK-REVIEW-2026-11-08.md).
 
 ## BANK-001: Grow Kaspa toward 1,000 reviewed concepts
 
@@ -670,9 +675,11 @@ Evidence/specification: [docs/PASSKEY-LOGIN.md](../../docs/PASSKEY-LOGIN.md), [d
 
 ## ACE-001: Build source-grounded A.C.E. tutoring and scoped operational automation
 
-**P1 / needs-evidence.** Owner: Maintainer; AI/content evaluation reviewer unassigned. Dependencies: none.
+**P1 / blocked.** Owner: Maintainer; AI/content evaluation reviewer unassigned. Dependencies: none.
 
-Next action: #148 merged/deployed. Authored lesson help works; optional bounded Gateway path and private read-only readiness are installed. Select model/budget/data policy and record a bounded live citation/injection/usage evaluation before activation. Autonomous operational tools are not installed.
+Next action: Keep A.C.E. work and live AI activation paused until the founder explicitly resumes it. Existing authored lesson help remains available.
+
+Blocker: Founder paused A.C.E. work on November 9, 2026.
 
 Acceptance:
 
@@ -1195,3 +1202,76 @@ Acceptance:
 - Directory, site and continuity checks pass.
 
 Evidence/specification: [docs/EDUCATION-DIRECTORY.md](../../docs/EDUCATION-DIRECTORY.md), [docs/kaspa-directory.json](../../docs/kaspa-directory.json).
+
+## GAME-003: Nine strategy and puzzle games, including Battle Geek and Peg Quest
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: GAME-002, UX-021.
+
+Next action: Review Tower of Geek rename and six difficulty levels in preview; existing nine-game release #258 is merged. Browser/phone visual acceptance remains open.
+
+Acceptance:
+
+- Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four, Reversi, Codebreaker, Hanoi, Sudoku and Peg Quest are playable with clear rules and Geek styling.
+- Five two-player games work through existing authoritative lobby/request/reconnect flow.
+- Battle Geek opposing fleets stay server-only online; local mode uses an explicit handoff curtain.
+- Rules, client and real-Redis integration tests pass; no account/XP/token reward changes.
+- Standard 10×10 five-ship fleet; selectable Dots sizes; terminal result, reduced-motion-safe celebration, replay, exit and board review.
+
+Evidence/specification: [docs/STRATEGY-PUZZLE-GAMES.md](../../docs/STRATEGY-PUZZLE-GAMES.md), [tests/strategy-games.test.js](../../tests/strategy-games.test.js), [tests/strategy-client.test.js](../../tests/strategy-client.test.js), [tests/classic-online-api.test.js](../../tests/classic-online-api.test.js).
+
+## UX-022: Homepage pathways and shared navigation polish
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: none.
+
+Next action: Review the Vercel preview, especially compact navigation and phone spacing. Local browser could not connect to the preview host.
+
+Acceptance:
+
+- Visible Learn, Games and News paths while preserving the first quiz and lesson choices.
+- Readable type, gold/cyan edge accents, consistent panels and adaptive layouts.
+- Compact menu at tablet widths; existing Escape, outside-click and link-close behaviors remain.
+- Site and continuity checks pass; browser and physical-device acceptance remain separate.
+
+Evidence/specification: [docs/SITE-POLISH-2026-11-10.md](../../docs/SITE-POLISH-2026-11-10.md), [public/assets/home.css](../../public/assets/home.css), [public/assets/styles.css](../../public/assets/styles.css).
+
+## UX-023: More optional Grid easter eggs
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: none.
+
+Next action: Review expanded Stray signal terminal in preview; founder merge review and rendered device acceptance remain open.
+
+Acceptance:
+
+- Riddles, hints, fortunes, launch art, route signals and hidden command messages work without requests or saved player state.
+- Terminal remains closed until opened, with native keyboard/touch controls and reduced-motion support.
+- No global input hooks, rewards or timed-game overlays; existing rewarded hunt remains separate.
+
+Evidence/specification: [docs/GRID-EASTER-EGGS.md](../../docs/GRID-EASTER-EGGS.md), [tests/easter-eggs.test.js](../../tests/easter-eggs.test.js).
+
+## UX-024: Minimal cosmic glitch feedback and Geek code accents
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: none.
+
+Next action: Review together with UX-023 in #261 preview; rendered phone acceptance remains open.
+
+Acceptance:
+
+- Brief edge-only feedback on selected discovery controls without changing navigation or labels.
+- Sparse decorative Kaspa/Geek code accents, bounded animation and reduced-motion/forced-color support.
+- No account, answer, board or timed gameplay input hooks; no requests, storage or rewards.
+
+Evidence/specification: [docs/COSMIC-GLITCH.md](../../docs/COSMIC-GLITCH.md), [tests/cosmic-glitch.test.js](../../tests/cosmic-glitch.test.js).
+
+## UX-025: Clean Geek branding and black installed-app launch
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: none.
+
+Next action: Review new vector logo and installed-app manifest in preview. Physical Android launch/reinstall acceptance remains open.
+
+Acceptance:
+
+- New clean logo replaces the old watermark-bearing logo across site references and compatibility bytes.
+- Black app manifest background/theme, standalone launch, local 192/512 and maskable icons, Apple touch icon.
+- Metadata generation remains idempotent; no service-worker caching of private/session/game data.
+
+Evidence/specification: [docs/APP-LAUNCH-BRAND.md](../../docs/APP-LAUNCH-BRAND.md), [tests/app-brand.test.js](../../tests/app-brand.test.js).

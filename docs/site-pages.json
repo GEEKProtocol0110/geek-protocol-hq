@@ -441,10 +441,10 @@
       "file": "public/games/index.html",
       "path": "/games/",
       "title": "Geek Games \u2014 Find Your Next Challenge",
-      "description": "Explore Geek quizzes, Brain Games, checkers and solitaire. Play untimed strategy and card games, practice number skills, or challenge friends.",
+      "description": "Explore Geek quizzes, brain games, chess, checkers, solitaire and nine strategy and puzzle games, with solo, local and online play.",
       "index": true,
       "private": false,
-      "lastmod": "2026-11-08"
+      "lastmod": "2026-11-09"
     },
     {
       "file": "public/games/brain/index.html",
@@ -485,11 +485,92 @@
     {
       "file": "public/games/online/index.html",
       "path": "/games/online/",
-      "title": "Geek Multiplayer \u2014 Chess & Checkers Lobbies",
-      "description": "Create a public or private chess or checkers lobby, request a game and play live turns with a friend on Geek Games.",
+      "title": "Geek Multiplayer \u2014 Strategy Game Lobbies",
+      "description": "Create public or private lobbies for chess, checkers, Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four and Reversi. Request a game and play live turns.",
       "index": true,
       "private": false,
-      "lastmod": "2026-11-08"
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/tic-tac-toe/index.html",
+      "path": "/games/tic-tac-toe/",
+      "title": "Geek Tac Toe \u2014 Geek Strategy & Puzzles",
+      "description": "Play Geek Tac Toe with Geek gold/cyan styling. Practice pattern recognition in untimed two-player strategy with local play and online lobbies.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/dots/index.html",
+      "path": "/games/dots/",
+      "title": "Dots & Boxes \u2014 Geek Strategy & Puzzles",
+      "description": "Play Dots & Boxes with Geek gold/cyan styling. Practice planning chains in untimed two-player strategy with local play and online lobbies.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/battle-geek/index.html",
+      "path": "/games/battle-geek/",
+      "title": "Battle Geek \u2014 Geek Strategy & Puzzles",
+      "description": "Play Battle Geek with Geek gold/cyan styling. Practice deduction in untimed two-player strategy with local play and online lobbies.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/connect-four/index.html",
+      "path": "/games/connect-four/",
+      "title": "Geek Connect Four \u2014 Geek Strategy & Puzzles",
+      "description": "Play Geek Connect Four with Geek gold/cyan styling. Practice planning threats in untimed two-player strategy with local play and online lobbies.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/reversi/index.html",
+      "path": "/games/reversi/",
+      "title": "Geek Reversi \u2014 Geek Strategy & Puzzles",
+      "description": "Play Geek Reversi with Geek gold/cyan styling. Practice positioning in untimed two-player strategy with local play and online lobbies.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/codebreaker/index.html",
+      "path": "/games/codebreaker/",
+      "title": "Geek Codebreaker \u2014 Geek Strategy & Puzzles",
+      "description": "Play Geek Codebreaker with Geek gold/cyan styling. Practice eliminating possibilities in untimed solo puzzles with clear rules and tap controls.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/hanoi/index.html",
+      "path": "/games/hanoi/",
+      "title": "Tower of Geek \u2014 Geek Strategy & Puzzles",
+      "description": "Play Tower of Geek with six difficulty levels, 3\u20138 discs and minimum-move targets. A gold/cyan sequencing puzzle with untimed tap controls.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/sudoku/index.html",
+      "path": "/games/sudoku/",
+      "title": "Geek Sudoku \u2014 Geek Strategy & Puzzles",
+      "description": "Play Geek Sudoku with Geek gold/cyan styling. Practice logical deduction in untimed solo puzzles with clear rules and tap controls.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/peg-quest/index.html",
+      "path": "/games/peg-quest/",
+      "title": "Geek Peg Quest \u2014 Geek Strategy & Puzzles",
+      "description": "Play Geek Peg Quest with Geek gold/cyan styling. Practice spatial planning in untimed solo puzzles with clear rules and tap controls.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
     }
   ]
 }

@@ -3,9 +3,11 @@
     <!-- site-metadata:start -->
     <title>Global Leaderboard — Geek Protocol &amp; Geek Mini</title>
     <meta name="description" content="Explore public Geek Protocol and Geek Mini quiz standings. Compare players within each game, mode and category, with separate Mini Daily and Speed boards." />
-    <meta name="theme-color" content="#080b0b" />
+    <meta name="theme-color" content="#000000" />
     <meta name="robots" content="index,follow" />
-    <link rel="icon" type="image/png" href="/assets/geek-protocol-logo.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/assets/app/giga-apple-touch.png" />
+    <link rel="icon" type="image/png" href="/assets/geek-protocol-logo-v2.png" />
     <link rel="canonical" href="https://www.geekprotocol.xyz/leaderboard/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Geek Protocol" />
@@ -28,7 +30,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="/assets/styles.css" /><link rel="stylesheet" href="/leaderboard/leaderboard.css" /><script defer src="/leaderboard/leaderboard.js"></script>
 </head><body class="leaders-page"><a class="skip-link" href="#main">Skip to standings</a>
-<header class="leaders-nav"><a class="brand" href="/"><img src="/assets/geek-protocol-logo.png" width="42" height="42" alt="" /><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span></a><nav aria-label="Main navigation"><a href="/play/">Play</a><a href="/study/">Learn</a><a href="/profile/">My HQ</a></nav></header>
+<header class="leaders-nav"><a class="brand" href="/"><img src="/assets/geek-protocol-logo-v2.png" width="42" height="42" alt="" /><span>GEEK<span class="brand-mark">//</span>PROTOCOL</span></a><nav aria-label="Main navigation"><a href="/play/">Play</a><a href="/study/">Learn</a><a href="/profile/">My HQ</a></nav></header>
 <main id="main" class="leaders-main"><header class="leaders-hero"><p class="section-kicker">CURIOSITY HAS COMPANY</p><h1>Global<br /><em>leaderboard.</em></h1><p>Meet the Geeks putting their knowledge to the test. Public standings from Geek Protocol and Geek Mini, open for everyone to explore.</p><div class="leaders-actions"><a class="button button-primary" href="/play/">Play in HQ →</a><a class="button button-secondary" href="https://geek-mini.vercel.app/leaderboard">Play for the Mini board ↗</a></div></header>
 <section class="leaders-board" aria-labelledby="board-title"><div class="leaders-heading"><div><p class="section-kicker" id="board-source">GEEK PROTOCOL HQ</p><h2 id="board-title">Top Geeks.</h2></div><span class="leaders-live">PUBLIC ALPHA</span></div>
 <form id="board-filters" class="leaders-filters"><label>Game<select name="source"><option value="hq">Geek Protocol HQ</option><option value="mini">Geek Mini</option></select></label><label>Mode<select name="mode"><option value="gauntlet">Geek Gauntlet</option><option value="daily">Daily</option><option value="speed">Speed</option></select></label><label id="category-filter">Category<select name="category"><option value="kaspa">Kaspa</option><option value="video-games">Video Games</option><option value="science-fiction">Science Fiction</option><option value="technology">Technology</option><option value="movies">Movies</option><option value="history">History</option><option value="comics">Comics</option><option value="pop-culture">Pop Culture</option></select></label><label id="focus-filter" hidden>Mini topic<select name="focus"><option value="mixed">All Kaspa topics</option><option value="basics">Kaspa basics</option><option value="network">The network</option><option value="wallets">Wallets and payments</option><option value="builders">Tokens and builders</option></select></label><button class="button button-secondary" type="submit">Refresh standings</button></form>
