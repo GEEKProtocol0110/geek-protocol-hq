@@ -15,6 +15,6 @@ try{
  await mkdir(out,{recursive:true});await new TwaGenerator().createTwaProject(out,manifest,{debug(){},info(){},warn:console.warn,error:console.error});
  manifest.webManifestUrl=new URL('https://www.geekprotocol.xyz/manifest.webmanifest');manifest.iconUrl='https://www.geekprotocol.xyz/assets/app/geek-logo-512.png';manifest.maskableIconUrl=manifest.iconUrl;await manifest.saveToFile(out+'/twa-manifest.json');
  // Reject production signing: this candidate produces a separately identified debug test app only.
- const build=await readFile(out+'/app/build.gradle','utf8');await writeFile(out+'/app/build.gradle',build.replace(/jcenter\(\)/g,'mavenCentral()').replace(/androidbrowserhelper:[^']+/g,'androidbrowserhelper:2.7.4'));
+ const build=await readFile(out+'/app/build.gradle','utf8');await writeFile(out+'/app/build.gradle',build.replace(/jcenter\(\)/g,'mavenCentral()'));
  console.log('Generated Android test project:',out);
 }finally{server.closeAllConnections();server.close();}
