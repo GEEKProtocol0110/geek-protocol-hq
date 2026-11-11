@@ -1312,3 +1312,8 @@ Founder rejected the new circuit-brain robot. Replaced candidate site/app brandi
 ### UX-025 exact installed-app logo
 
 Founder clarified the app should use the supplied neon brain-robot GEEK PROTOCOL image. Replaced only app manifest icons and touch icon via size-only resampling; retained gold GIGA site/mascot branding and black launch settings. Candidate only.
+
+
+## November 11 — GAME-004 ongoing games candidate
+
+Added 30-day at-your-pace rooms (24-hour quick option), private My Games summaries and atomic per-player 10-active-room indexes integrated with room create/CAS. Finished and expired slots are released. Your-turn state covers chess, checkers and all strategy games including fleet deployment; no boards/fleets are included in summaries. Opt-in open-visible-lounge notifications use a notification-only service worker, deduplicated by ply rather than draw-offer revisions. No push subscription/background delivery, key, scheduler, or claim of closed-app alerts. 19 focused Redis/client checks pass; site check passes. Device acceptance and closed-app push remain open. Candidate only.

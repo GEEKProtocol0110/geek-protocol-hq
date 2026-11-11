@@ -85,6 +85,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-023 | P2 | in-progress | More optional Grid easter eggs | Maintainer; founder release review |
 | UX-024 | P2 | in-progress | Minimal cosmic glitch feedback and Geek code accents | Maintainer; founder release review |
 | UX-025 | P2 | in-progress | Clean Geek branding and black installed-app launch | Maintainer; founder release review |
+| GAME-004 | P2 | in-progress | Ongoing matches, My Games and turn alerts | Maintainer; founder release/device review |
 
 ## CONT-001: Publish the continuation system
 
@@ -1275,3 +1276,18 @@ Acceptance:
 - Metadata generation remains idempotent; no service-worker caching of private/session/game data.
 
 Evidence/specification: [docs/APP-LAUNCH-BRAND.md](../../docs/APP-LAUNCH-BRAND.md), [tests/app-brand.test.js](../../tests/app-brand.test.js).
+
+## GAME-004: Ongoing matches, My Games and turn alerts
+
+**P2 / in-progress.** Owner: Maintainer; founder release/device review. Dependencies: none.
+
+Next action: Review preview for 10 active games and 30-day rooms; verify opt-in open-lounge alerts on phone. Closed-app push delivery remains unimplemented and needs a separately configured push service.
+
+Acceptance:
+
+- Atomic per-player capacity of 10 waiting/playing rooms, released on finish and expiry.
+- 30-day at-your-pace option, 24-hour quick rooms and own-game reconnect list.
+- Your-turn badges and opt-in page-open notifications deduplicate per move; closed-app limitations are explicit.
+- Real Redis integration and client tests pass without board/private-fleet leakage.
+
+Evidence/specification: [docs/ONGOING-GAMES.md](../../docs/ONGOING-GAMES.md), [tests/classic-online-api.test.js](../../tests/classic-online-api.test.js), [tests/classic-online-client.test.js](../../tests/classic-online-client.test.js).

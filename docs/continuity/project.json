@@ -208,5 +208,11 @@
     "status": "source-candidate",
     "evidence": "docs/APP-LAUNCH-BRAND.md",
     "nextAction": "Review clean logo and black launch config; installed Android acceptance remains open. Browser controls native startup; existing shortcuts may need reinstall."
+  },
+  "ongoingGames": {
+    "task": "GAME-004",
+    "status": "source-candidate",
+    "evidence": "docs/ONGOING-GAMES.md",
+    "nextAction": "Review My Games, atomic 10-seat capacity, 30-day rooms and open-lounge alerts. Closed-app push delivery not implemented."
   }
 }

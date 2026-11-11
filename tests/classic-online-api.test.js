@@ -64,3 +64,17 @@ run('Battle Geek opponent fleets stay absent from every API view; stale deployme
  assert.equal(r.body.room.state,'finished');assert.equal(r.body.room.position.sunk.length,5);assert.ok(r.body.room.history.slice(0,2).every(s=>s==='Fleet deployed'));
  assert.equal((await call(p.c,'view',p)).body.room.position,null);
 });
+run('ten-room limit is atomic and My Games stays private, expires at 30 days and frees finished seats',async()=>{
+ await fixture.command('FLUSHDB');const a=await session('Many Games'),b=await session('Other Player');
+ const results=await Promise.all(Array.from({length:11},()=>call(a,'create',{game:'chess',visibility:'private',pace:'slow'})));
+ assert.equal(results.filter(r=>r.statusCode===201).length,10);assert.equal(results.filter(r=>r.body.code==='ONLINE_LIMIT').length,1);
+ const list=await call(a,'list');assert.equal(list.body.myGames.length,10);assert.equal(list.body.rooms.length,0);assert.equal(list.body.myGames.every(r=>r.pace==='slow'&&!r.position),true);
+ assert.equal((await call(b,'list')).body.myGames.length,0);
+ const room=results.find(r=>r.statusCode===201).body.room;assert.ok(room.expiresAt-Date.now()>29*86400*1000);
+ assert.equal((await call(a,'cancel',{code:room.code})).statusCode,200);assert.equal((await call(a,'list')).body.myGames.length,9);assert.equal((await call(a,'create',{game:'chess',visibility:'private',pace:'slow'})).statusCode,201);
+});
+run('My Games follows chess turn changes without exposing opponent or third-party boards',async()=>{
+ const p=await pair('chess','private');await call(p.b,'request',p);let r=await call(p.a,'view',p);await call(p.a,'accept',{...p,requestId:r.body.room.requests[0].id});
+ assert.equal((await call(p.a,'list')).body.myGames[0].yourTurn,true);assert.equal((await call(p.b,'list')).body.myGames[0].yourTurn,false);
+ r=await call(p.a,'move',{...p,revision:2,from:'e2',to:'e4'});assert.equal(r.statusCode,200);assert.equal((await call(p.b,'list')).body.myGames[0].yourTurn,true);assert.equal((await call(p.c,'list')).body.myGames.length,0);
+});

@@ -2031,6 +2031,26 @@
         "docs/APP-LAUNCH-BRAND.md",
         "tests/app-brand.test.js"
       ]
+    },
+    {
+      "id": "GAME-004",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Ongoing matches, My Games and turn alerts",
+      "owner": "Maintainer; founder release/device review",
+      "nextAction": "Review preview for 10 active games and 30-day rooms; verify opt-in open-lounge alerts on phone. Closed-app push delivery remains unimplemented and needs a separately configured push service.",
+      "acceptance": [
+        "Atomic per-player capacity of 10 waiting/playing rooms, released on finish and expiry.",
+        "30-day at-your-pace option, 24-hour quick rooms and own-game reconnect list.",
+        "Your-turn badges and opt-in page-open notifications deduplicate per move; closed-app limitations are explicit.",
+        "Real Redis integration and client tests pass without board/private-fleet leakage."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/ONGOING-GAMES.md",
+        "tests/classic-online-api.test.js",
+        "tests/classic-online-client.test.js"
+      ]
     }
   ]
 }
