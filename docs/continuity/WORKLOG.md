@@ -1302,3 +1302,8 @@ Founder requested subtle animated cypherpunk Kaspa/Geek accents and selection fe
 ## November 10 — UX-025 clean app branding
 
 Founder showed white installed-site launch with watermark-bearing logo. Rebuilt the brain/robot mark as native SVG, rendered clean versioned PNG and compatibility logo bytes, replaced site references, added black standalone manifest, standard/maskable app icons and Apple touch icon. Managed metadata now includes manifest and touch icon idempotently. No fake loading delay or service worker added. Browser/Android controls native splash; physical installed-app acceptance and possible reinstall remain open. Candidate only.
+
+
+### UX-025 founder mascot correction
+
+Founder rejected the new circuit-brain robot. Replaced candidate site/app branding with a head-only adaptation of the original gold GIGA post artwork. Used image_gen with original kaspa-culture.png as reference, black background and no text. New app icon names avoid reuse of the rejected mark. Black manifest settings unchanged. Candidate only; installed-device acceptance open.
