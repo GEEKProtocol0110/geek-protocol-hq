@@ -4,7 +4,8 @@ import assert from 'node:assert/strict';
 import {redisFixture} from './helpers/redis-fixture.js';
 import handler from '../api/lobbies.js';
 import sessionHandler from '../api/session.js';
-import {onlineKey} from '../server/classic-online.js';
+import {onlineKey,createOnline} from '../server/classic-online.js';
+import {playerIdFor,requireSession} from '../server/session.js';
 let fixture;
 try{fixture=await redisFixture();}catch(e){if(process.env.CI||e.code!=='ENOENT')throw e;}
 const run=fixture?test:(name,fn)=>test(name,{skip:'Real Redis is required; CI installs it.'},fn);
@@ -66,7 +67,9 @@ run('Battle Geek opponent fleets stay absent from every API view; stale deployme
 });
 run('ten-room limit is atomic and My Games stays private, expires at 30 days and frees finished seats',async()=>{
  await fixture.command('FLUSHDB');const a=await session('Many Games'),b=await session('Other Player');
- const results=await Promise.all(Array.from({length:11},()=>call(a,'create',{game:'chess',visibility:'private',pace:'slow'})));
+ // Exercise concurrent storage capacity separately from the eight-create/hour API throttle.
+ const player={id:playerIdFor(await requireSession(req('GET',undefined,a))),name:'Many Games'};
+ const results=await Promise.all(Array.from({length:11},async()=>{try{return {statusCode:201,body:{room:await createOnline(player,{game:'chess',visibility:'private',pace:'slow'})}};}catch(e){return {statusCode:409,body:{code:e.message}};}}));
  assert.equal(results.filter(r=>r.statusCode===201).length,10);assert.equal(results.filter(r=>r.body.code==='ONLINE_LIMIT').length,1);
  const list=await call(a,'list');assert.equal(list.body.myGames.length,10);assert.equal(list.body.rooms.length,0);assert.equal(list.body.myGames.every(r=>r.pace==='slow'&&!r.position),true);
  assert.equal((await call(b,'list')).body.myGames.length,0);
@@ -82,4 +85,26 @@ run('accepted correspondence chess has no Redis expiry or index expiry and survi
  const p=await pair('chess','private');await call(p.b,'request',p);let r=await call(p.a,'view',p);r=await call(p.a,'accept',{...p,requestId:r.body.room.requests[0].id});assert.equal(r.body.room.expiresAt,null);assert.equal(await fixture.command('TTL',onlineKey(p.code)),-1);
  const {transitionOnline}=await import('../server/classic-online.js');const raw=JSON.parse(await fixture.command('GET',onlineKey(p.code)));const future=Date.now()+366*86400000;const next=transitionOnline(raw,raw.host.id,'move',{revision:raw.revision,from:'e2',to:'e4'},future);assert.equal(next.expiresAt,null);assert.equal(next.state,'playing');
  assert.equal((await call(p.a,'list')).body.myGames[0].expiresAt,null);r=await call(p.a,'resign',p);assert.equal(r.statusCode,200);assert.ok(r.body.room.expiresAt>Date.now());assert.ok(await fixture.command('TTL',onlineKey(p.code))>0);
+});
+
+run('permanent saved-game capacity is atomic, preserves existing play and releases on finish',async()=>{
+ const {savedGamesKey,MAX_SAVED_GAMES,createOnline,updateOnline}=await import('../server/classic-online.js');await fixture.command('FLUSHDB');
+ // Fill all but one registry slot with real bounded sentinel room keys.
+ const prefix=onlineKey(''),entries=Array.from({length:MAX_SAVED_GAMES-1},(_,i)=>`PLAY-${i.toString(16).padStart(12,'0').toUpperCase()}`);
+ await fixture.commands(entries.map(code=>['SET',prefix+code,'occupied']));await fixture.command('SADD',savedGamesKey(),...entries);
+ const rooms=await Promise.all([0,1].map(async i=>{const r=await createOnline({id:'host'+i,name:'Host Player'},{game:'chess',visibility:'private'});const q=await updateOnline(r.code,'guest'+i,'request',{name:'Guest Player',ip:'hashed-network'});return {...q,guestId:'guest'+i};}));
+ const accepts=await Promise.allSettled(rooms.map(r=>updateOnline(r.code,r.host.id,'accept',{requestId:r.requests[0].id})));
+ assert.equal(accepts.filter(r=>r.status==='fulfilled').length,1);assert.match(accepts.find(r=>r.status==='rejected').reason.message,/ONLINE_CAPACITY/);assert.equal(await fixture.command('SCARD',savedGamesKey()),MAX_SAVED_GAMES);
+ const accepted=accepts.find(r=>r.status==='fulfilled').value;assert.equal(await fixture.command('TTL',onlineKey(accepted.code)),-1);
+ const moved=await updateOnline(accepted.code,accepted.host.id,'move',{revision:accepted.revision,from:'e2',to:'e4'});assert.equal(moved.ply,1);
+ await updateOnline(accepted.code,accepted.host.id,'resign',{});assert.equal(await fixture.command('SCARD',savedGamesKey()),MAX_SAVED_GAMES-1);
+ const waiting=rooms.find(r=>r.code!==accepted.code);await updateOnline(waiting.code,waiting.host.id,'accept',{requestId:waiting.requests[0].id});assert.equal(await fixture.command('SCARD',savedGamesKey()),MAX_SAVED_GAMES);
+});
+run('waiting indexes expire, missing persistent rooms free player slots, and started games clear request fingerprints',async()=>{
+ const {createOnline,updateOnline,listMyGames}=await import('../server/classic-online.js');const {createHash}=await import('node:crypto');await fixture.command('FLUSHDB');
+ const prefix=onlineKey('').replace(/room:$/,''),key=id=>prefix+'player:'+createHash('sha256').update(id).digest('hex');
+ const r=await createOnline({id:'cleanup-host',name:'Host Player'},{game:'chess',visibility:'private'});assert.ok(await fixture.command('TTL',key('cleanup-host'))>0);
+ let q=await updateOnline(r.code,'blocked','request',{name:'Blocked Player',ip:'network-one'});q=await updateOnline(r.code,'cleanup-host','block',{requestId:q.requests[0].id});q=await updateOnline(r.code,'guest','request',{name:'Guest Player',ip:'network-two'});q=await updateOnline(r.code,'cleanup-host','accept',{requestId:q.requests[0].id});
+ assert.deepEqual(q.blocked,[]);assert.deepEqual(q.requests,[]);assert.equal(await fixture.command('TTL',key('cleanup-host')),-1);
+ await fixture.command('DEL',onlineKey(r.code));assert.deepEqual(await listMyGames('cleanup-host'),[]);assert.equal(await fixture.command('EXISTS',key('cleanup-host')),0);
 });

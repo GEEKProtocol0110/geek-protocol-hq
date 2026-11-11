@@ -42,7 +42,7 @@ test('draws require opponent consent and resignations preserve a final board',()
  const resigned=transitionOnline(active(),'guest','resign');assert.match(resigned.result,/First Geek wins/);assert.ok(resigned.position);
 });
 test('request bounds, input validation and 600-ply limit are enforced',()=>{
- let r=room('checkers');for(let i=0;i<12;i++)r=transitionOnline(r,'g'+i,'request',{name:'Geek'});assert.throws(()=>transitionOnline(r,'extra','request',{name:'Extra'}),/ONLINE_FULL/);
+ let r=room('checkers');for(let i=0;i<12;i++)r=transitionOnline(r,'g'+i,'request',{name:'Player'});assert.throws(()=>transitionOnline(r,'extra','request',{name:'Extra'}),/ONLINE_FULL/);
  assert.throws(()=>newOnlineRoom({game:'solitaire',visibility:'public',player:{id:'h',name:'Host'}}),/INVALID_REQUEST/);
  r=active();assert.throws(()=>move(r,'host','e2','e4',{promotion:'king'}),/INVALID_REQUEST/);
  r=active('checkers');r.ply=599;r=move(r,'host',40,33);assert.equal(r.state,'finished');assert.match(r.result,/600/);

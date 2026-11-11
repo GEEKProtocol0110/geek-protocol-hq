@@ -209,10 +209,16 @@
     "evidence": "docs/APP-LAUNCH-BRAND.md",
     "nextAction": "Review clean logo and black launch config; installed Android acceptance remains open. Browser controls native startup; existing shortcuts may need reinstall."
   },
+  "kaspaMatrix": {
+    "task": "UX-026",
+    "status": "source-candidate",
+    "evidence": "docs/KASPA-MATRIX.md",
+    "nextAction": "Review the layered Kaspa space and faint planet in the PR preview on desktop, phone and a game page; no footer toggle. Physical-phone acceptance open."
+  },
   "ongoingGames": {
     "task": "GAME-004",
-    "status": "source-candidate",
+    "status": "founder-approved-release",
     "evidence": "docs/ONGOING-GAMES.md",
-    "nextAction": "Review My Games, atomic 10-seat capacity, 30-day rooms and open-lounge alerts. Closed-app push delivery not implemented."
+    "nextAction": "Founder authorized release November 11. Verify and merge #266: accepted matches have no expiry, My Games supports ten active matches, and opt-in alerts require the lounge open. Phone acceptance and closed-app push remain open."
   }
 }

@@ -18,3 +18,4 @@ document.addEventListener('geek-game-state',event=>{
  const review=el('button','finish-review','Review board');review.type='button';review.addEventListener('click',()=>dialog.close());
  actions.append(replay,exit,review);dialog.append(art,medal,el('p','finish-kicker','GEEK // GAME COMPLETE'),heading,detailNode,actions);document.body.append(dialog);dialog.showModal();replay.focus();
 });
+import('/assets/kaspa-planet.js').catch(()=>{});

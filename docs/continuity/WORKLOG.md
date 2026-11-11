@@ -1313,6 +1313,22 @@ Founder rejected the new circuit-brain robot. Replaced candidate site/app brandi
 
 Founder clarified the app should use the supplied neon brain-robot GEEK PROTOCOL image. Replaced only app manifest icons and touch icon via size-only resampling; retained gold GIGA site/mascot branding and black launch settings. Candidate only.
 
+## November 11 — Desktop 1280x800 solitaire and Tower of Geek layout
+
+Waste pile cards used intrinsic shrink-to-fit width (~12px) while tableau cards used the shared column width, clipping face corners. `.waste .playing-card` now uses the same `--card-width` and `--card-height` as tableau cards. On Tower of Geek Expert (7) and Geek Master (8), disc height and tower gaps scale so every disc and the base stay in an 800px-tall 1280px desktop viewport; the previous per-disc min-height formula no longer extends the board below the fold. Headless 1280x800 browser check recorded in the PR. Candidate only.
+
+## November 11 — UX-026 Kaspa code-rain background
+
+Founder requested a full-page Kaspa "static matrix-like code" effect beyond UX-024's edge accents. Added `kaspa-matrix.js/.css`: one fixed full-viewport canvas veil just above section backgrounds and below the header/menus (z-index 1; z-index -1 was hidden by opaque sections), pointer-events none, aria-hidden, 20% desktop / 14% phone opacity, calmer center mask) with Kaspa-style K, digits, hex, BlockDAG marks and KAS/GEEK words, static scanlines and sparse specks, and a 240ms thin-band RGB slice at most every 9–22s (no full-screen flash). Capped 24fps (20fps phones/Save-Data), DPR ≤1.5 (1 on phones), ≤26 phone columns, debounced resize, paused when hidden. Footer "Code rain" toggle and Stray signal `matrix` command persist the choice on the device; default on, off under reduced motion (opt-in shows a still frame). Game boards, owner and sign-in pages excluded; quiz/lobby routes get a dim still frame; active play stops the loop. Same-origin module, CSP unchanged. Six synthetic client tests plus full suite and checks pass; local 1280x800 headless screenshots taken. Physical-phone acceptance open. Candidate only.
+
+## November 11 — UX-026 space layers, Kaspa planet, drop the footer toggle
+
+Founder: the code rain should not need a button to turn off, the site should sit on a layered space background, and every page should carry a faint 3D-realistic cypherpunk Kaspa planet. Removed the footer "Code rain: on/off" button and all localStorage persistence; a leftover `geek-matrix-background` value is cleared on load and never read. The Stray signal `matrix` commands remain as a session-only easter egg (`sessionStorage` at most). Added a background stack behind translucent dark panels: CSS nebula, a pre-rendered planet image (Image Bot `planet-b-transparent.png`, optimized to `public/assets/kaspa-planet.{webp,avif}` and `-sm` variants, about 20% opacity, with a deterministic per-route corner, offset, size and rotation so pages differ while a given path stays stable), a starfield with faint DAG constellation lines, then the existing rain and RGB slice. The planet loads on every page, including game boards and operator/sign-in surfaces, as a still frame there and under reduced motion; rain and nebula motion stay off those routes as before. Light and gold sections stay solid. Tests and docs updated. Candidate only.
+
+## November 11 — UX-026 planet larger and more visible
+
+Founder could not see the planet in the first screenshots and asked for it to be big. Raised desktop diameter to about 70–95% of the 800px viewport height (~560–760px) with roughly 50–70% of the disc on-screen, and opacity to about 0.55–0.75 (a little lower on phones and behind game boards). Per-route corner, offset and rotation stay deterministic and varied. Re-optimized Planet B to 800px still under the size budgets. Right-edge placements flip the texture so the lit limb faces the page. The home welcome hero’s solid #0c1317 fill is replaced with a left-side scrim so the disc is not hidden behind the hero. Darkened translucent text panels and added a light text-shadow on hero copy. Tests and docs updated. Candidate only.
+
 
 ## November 11 — GAME-004 ongoing games candidate
 
@@ -1322,3 +1338,11 @@ Added 30-day at-your-pace rooms (24-hour quick option), private My Games summari
 ### GAME-004 correspondence clarification
 
 Founder clarified mail-style chess, without premature time expiry. Acceptance now clears room expiry and Redis TTL; persistent player indexes retain active matches. Waiting invitation lifetimes remain 24 hours/30 days, finished retention is 30 days. Removed the artificial chess 600-ply cap while preserving chess-rule outcomes. Added real-Redis no-TTL and simulated year-later move tests. Candidate update to #266, not live.
+
+## November 11 — GAME-004 authorized release integration
+
+Founder authorized resolving and merging #266, then #265. Integrated main with the new lobby/IP abuse protections and planet background retained. Capacity tests exercise atomic storage independently of the newer eight-create/hour API throttle. Accepted games remain persistent; invitation/finished retention stays bounded. Full verification and exact-head CI results are recorded with the PR before merge. Phone acceptance and closed-app push remain open.
+
+Addressed the security review without adding an inactivity deadline: atomic 1,000 saved-game ceiling, waiting-only index expiry, missing-room slot cleanup, clearing request/block fingerprints when a room leaves waiting, and notification navigation fallback. Current-main lobby hardening tests remain in the combined suite. Exceptional chess history replay cost remains explicitly documented; no artificial chess move cap is restored.
+
+Validation of the integrated #266 candidate: full npm run verify passed with real Redis (861 HQ tests and nine signer checks, zero failures/skips); all question, security, collection/archive, repository, economy, continuity, site and whitepaper checks passed. Focused lobby/IP checks passed 37/37, including concurrent permanent-cap reservation, existing play at capacity, release on finish, waiting-index expiry and fingerprint cleanup. Deployment and phone acceptance are not inferred from these tests.

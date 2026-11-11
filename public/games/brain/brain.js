@@ -82,3 +82,4 @@ $('clear').addEventListener('click', () => {
   saved(); $('save-status').textContent = storageOK ? 'Brain Games device scores cleared.' : 'Saving is unavailable; this visit’s scores were cleared.';
 });
 $('setup').hidden = false; $('loading').hidden = true; saved();
+import('/assets/kaspa-planet.js').catch(()=>{});

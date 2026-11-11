@@ -57,7 +57,7 @@ export const initGridDiscovery = () => {
   ]);
   const pings = ['PONG ✦ A little signal in a very big universe.', 'PONG ✦ Somewhere, a rubber duck just solved a bug.', 'PONG ✦ Side quest: teach someone one thing you learned today.'];
   const messages = new Map([
-    ['help', 'Commands: decode, ping, scan, riddle, answer YOUR ANSWER, hint, fortune, launch, discoveries, hope, giga, ace, clear. A rubber duck may know a few unlisted commands.'],
+    ['help', 'Commands: decode, ping, scan, riddle, answer YOUR ANSWER, hint, fortune, launch, matrix, discoveries, hope, giga, ace, clear. A rubber duck may know a few unlisted commands.'],
     ['decode', '01001011 01000001 01010011 → K A S. Three bytes. One curious beginning. Next stop: the Kaspa field guide.'],
     ['hope', 'ALL HOPE, NO HYPE. Hidden signal unlocked: stay curious, check your sources, bring a friend.'],
     ['giga', 'GIGA left a note: “Even a giant adventure starts with one small question.”'],
@@ -82,6 +82,10 @@ export const initGridDiscovery = () => {
     else if(key==='launch'){
       message='Launch sequence complete. ✦ Curiosity cleared for orbit.';
       const rocket=element('span','grid-secret-rocket','🚀'),stars=element('span','grid-secret-stars','✦ · ✧ · ✦');art.append(rocket,stars);art.hidden=false;
+    }else if(key==='matrix'||key==='matrix on'||key==='matrix off'){
+      const on=key==='matrix'?undefined:key==='matrix on';
+      document.dispatchEvent(new CustomEvent('geek:matrix-toggle',{detail:{on}}));
+      message=`Code rain ${on===false?'paused':on?'flowing':'toggled'} for this tab visit.`;
     }else if(key==='quack')message='QUACK. Rubber-duck debugging protocol: explain the problem out loud. The duck is listening.';
     else if(key==='42')message='42. The answer arrived before the question. Please allow one universe for clarification.';
     else if(key==='blockdag')message='Secret builder channel: many blocks, one curious community. Keep learning how the pieces connect.';
