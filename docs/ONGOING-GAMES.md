@@ -13,3 +13,7 @@ Important limit: this release does NOT send notifications after the lounge is cl
 Validation: 19 focused engine/API/client checks pass with real Redis, including eleven concurrent room creates (exactly ten succeed), per-player privacy, slot release and chess turn transitions; client checks permission and per-ply deduplication. Site source checks pass. Browser/phone acceptance is separate and open. No production merge claimed.
 
 Full-suite checkpoint: 835/835 pass, zero failures/skips, with real Redis. Alerts can be toggled off without changing the browser’s saved permission.
+
+## Superseding correspondence rule
+
+Founder clarified that started matches must not end simply due to elapsed time. The 24-hour/30-day choice now applies only to unaccepted invitations. Acceptance clears expiresAt and writes the active room without Redis TTL; per-player indexes are persistent, with active scores set to +inf. Started matches have no time expiry. Finished games receive 30-day retention and free their active slots. Chess no longer has the artificial 600-ply practice cap; existing chess game-rule outcomes/draw/resignation remain. Other games retain their existing practice move cap. A 366-day simulated pause and actual Redis TTL test establish the no-time-expiry behavior. No claim of immunity to provider deletion/eviction or loss of guest identity. Legacy rooms already expired cannot be restored; this acceptance policy applies to newly started matches. Closed-app push remains unimplemented.

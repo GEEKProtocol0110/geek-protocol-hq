@@ -29,7 +29,7 @@ async function act(action,extra={}){
 }
 function drawMyGames(games){const mine=games,personal=$('my-games');personal.replaceChildren();$('turn-count').textContent=`· ${mine.filter(g=>g.yourTurn).length} your turn`;
    if(!mine.length)personal.textContent='No active games yet.';
-   for(const g of mine){const row=document.createElement('div');row.className='online-row';const p=document.createElement('p');p.textContent=`${gameName(g.game)} · ${g.opponent} · ${g.yourTurn?'YOUR TURN':g.state==='waiting'?'Waiting for player':'Waiting for opponent'} · ends ${new Date(g.expiresAt).toLocaleDateString()}`;row.append(p,btn('Open game',()=>open(g.code)));personal.append(row);
+   for(const g of mine){const row=document.createElement('div');row.className='online-row';const p=document.createElement('p');p.textContent=`${gameName(g.game)} · ${g.opponent} · ${g.yourTurn?'YOUR TURN':g.state==='waiting'?'Waiting for player':'Waiting for opponent'} · ${g.expiresAt?new Date(g.expiresAt).toLocaleDateString():'No move deadline'}`;row.append(p,btn('Open game',()=>open(g.code)));personal.append(row);
     const old=seenTurns.get(g.code);if(turnAlerts&&turnsInitialized&&g.yourTurn&&old!==undefined&&old!==g.turnToken&&Notification.permission==='granted'){navigator.serviceWorker?.getRegistration('/games/online/').then(reg=>reg?.showNotification('Geek · Your turn',{body:`${gameName(g.game)} with ${g.opponent}`,icon:'/assets/app/geek-logo-192.png',tag:g.code,data:{code:g.code}})).catch(()=>{});}seenTurns.set(g.code,g.turnToken);
    }turnsInitialized=true;}
 async function refresh(){

@@ -78,3 +78,8 @@ run('My Games follows chess turn changes without exposing opponent or third-part
  assert.equal((await call(p.a,'list')).body.myGames[0].yourTurn,true);assert.equal((await call(p.b,'list')).body.myGames[0].yourTurn,false);
  r=await call(p.a,'move',{...p,revision:2,from:'e2',to:'e4'});assert.equal(r.statusCode,200);assert.equal((await call(p.b,'list')).body.myGames[0].yourTurn,true);assert.equal((await call(p.c,'list')).body.myGames.length,0);
 });
+run('accepted correspondence chess has no Redis expiry or index expiry and survives long pauses',async()=>{
+ const p=await pair('chess','private');await call(p.b,'request',p);let r=await call(p.a,'view',p);r=await call(p.a,'accept',{...p,requestId:r.body.room.requests[0].id});assert.equal(r.body.room.expiresAt,null);assert.equal(await fixture.command('TTL',onlineKey(p.code)),-1);
+ const {transitionOnline}=await import('../server/classic-online.js');const raw=JSON.parse(await fixture.command('GET',onlineKey(p.code)));const future=Date.now()+366*86400000;const next=transitionOnline(raw,raw.host.id,'move',{revision:raw.revision,from:'e2',to:'e4'},future);assert.equal(next.expiresAt,null);assert.equal(next.state,'playing');
+ assert.equal((await call(p.a,'list')).body.myGames[0].expiresAt,null);r=await call(p.a,'resign',p);assert.equal(r.statusCode,200);assert.ok(r.body.room.expiresAt>Date.now());assert.ok(await fixture.command('TTL',onlineKey(p.code))>0);
+});

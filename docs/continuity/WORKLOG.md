@@ -1317,3 +1317,8 @@ Founder clarified the app should use the supplied neon brain-robot GEEK PROTOCOL
 ## November 11 — GAME-004 ongoing games candidate
 
 Added 30-day at-your-pace rooms (24-hour quick option), private My Games summaries and atomic per-player 10-active-room indexes integrated with room create/CAS. Finished and expired slots are released. Your-turn state covers chess, checkers and all strategy games including fleet deployment; no boards/fleets are included in summaries. Opt-in open-visible-lounge notifications use a notification-only service worker, deduplicated by ply rather than draw-offer revisions. No push subscription/background delivery, key, scheduler, or claim of closed-app alerts. 19 focused Redis/client checks pass; site check passes. Device acceptance and closed-app push remain open. Candidate only.
+
+
+### GAME-004 correspondence clarification
+
+Founder clarified mail-style chess, without premature time expiry. Acceptance now clears room expiry and Redis TTL; persistent player indexes retain active matches. Waiting invitation lifetimes remain 24 hours/30 days, finished retention is 30 days. Removed the artificial chess 600-ply cap while preserving chess-rule outcomes. Added real-Redis no-TTL and simulated year-later move tests. Candidate update to #266, not live.
