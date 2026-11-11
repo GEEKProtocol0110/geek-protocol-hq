@@ -17,7 +17,8 @@
 :is(.brain-page,.classics-page) :is(select,input){box-sizing:border-box;min-width:0;font-size:16px}
 .classics-page .checkerboard{width:100%;max-width:560px;min-width:0;box-sizing:border-box}
 .classics-page .checkerboard .square{width:100%;min-width:0;min-height:0;aspect-ratio:1;box-sizing:border-box}
-.classics-page .tableau{width:100%;max-width:900px;min-width:0;grid-template-columns:repeat(7,minmax(0,1fr));gap:clamp(2px,.7vw,8px);--card-height:clamp(64px,10vw,112px);--card-peek:clamp(24px,3.6vw,40px)}
+.classics-page .classic-panel{container-type:inline-size;--card-height:clamp(64px,10vw,112px);--card-peek:clamp(24px,3.6vw,40px);--card-gap:clamp(2px,.7vw,8px);--card-width:calc((min(900px,100cqi) - 6 * var(--card-gap)) / 7)}
+.classics-page .tableau{width:100%;max-width:900px;min-width:0;grid-template-columns:repeat(7,minmax(0,1fr));gap:var(--card-gap);--card-height:clamp(64px,10vw,112px);--card-peek:clamp(24px,3.6vw,40px)}
 .classics-page .tableau-column{gap:0}
 .classics-page .tableau-column>button:first-child{width:100%;min-width:0;height:44px;min-height:44px;margin-bottom:6px;padding:0;font-size:.85rem}
 .classics-page .tableau-column .playing-card{width:100%;height:var(--card-height);min-height:var(--card-height);padding:.35rem .2rem;font-size:clamp(.85rem,2.2vw,1.3rem);align-items:start;justify-content:start;flex-shrink:0;letter-spacing:0;box-sizing:border-box}
@@ -27,6 +28,8 @@
 .classics-page .tableau-column .playing-card:focus-visible{position:relative;z-index:2;outline-offset:-3px}
 .classics-page .playing-card[aria-pressed=true]{outline-offset:-3px}
 .classics-page .foundation{min-width:0}.classics-page .foundation>button:first-child{font-size:.75rem;min-height:44px;overflow-wrap:normal}.classics-page .foundation .playing-card{width:100%;max-width:82px;min-height:70px}
+.classics-page .waste{min-width:var(--card-width);min-height:var(--card-height)}
+.classics-page .waste .playing-card{width:var(--card-width);height:var(--card-height);min-height:var(--card-height);padding:.35rem .2rem;font-size:clamp(.85rem,2.2vw,1.3rem);box-sizing:border-box;flex-shrink:0}
 .classics-page .board-scroll{width:100%;max-width:100%;box-sizing:border-box;overflow-x:auto}
 :is(.brain-page,.classics-page).is-playing .geek-coach{display:none}
 .classics-page.is-playing .geek-game-specs{display:none}
@@ -41,7 +44,7 @@
  .classics-page .board-scroll{padding:3px;border-radius:6px}
  .classics-page .classic-toolbar{gap:.5rem}.classics-page .classic-toolbar button{flex:1;padding:.55rem .4rem;font-size:.85rem}
  .classics-page #status{padding:.65rem;font-size:.82rem;line-height:1.5;margin:.75rem 0}
- .classics-page .solitaire-top{margin:.6rem 0;align-items:center;gap:.7rem}.classics-page .waste{min-height:70px;min-width:65px}.classics-page .waste .playing-card{width:65px;min-height:70px}
+ .classics-page .solitaire-top{margin:.6rem 0;align-items:center;gap:.7rem}
  .classics-page .foundations{gap:4px;max-width:none}.classics-page .foundation{padding:3px}.classics-page .foundation>button:first-child{font-size:.7rem;padding:.3rem .1rem}.classics-page .foundation span{font-size:.6rem}
  .classics-page .scroll-note{font-size:.75rem;line-height:1.4;margin:.6rem 0}
  .classics-page .classic-rules{padding:1rem .4rem}.classics-page .classic-rules ol{padding-left:1.4rem}
