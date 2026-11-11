@@ -39,3 +39,7 @@ Founder requested Merge. Prerequisite #253 merged as 099bb78022bc579dfee72b134d9
 ## Strategy expansion candidate — November 9, 2026
 
 GAME-003 adds Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four and Reversi to this same lobby service. Battle Geek views are explicitly filtered per player, and both deployments plus every scan use revision-checked server moves. See [strategy/puzzle scope and validation](STRATEGY-PUZZLE-GAMES.md). The existing chess/checkers release record remains historical; expansion is a separate candidate.
+
+## Client network key — #257 follow-up
+
+Abuse controls resolve the client address from `x-vercel-forwarded-for`, then `x-real-ip`, then the first `x-forwarded-for` entry, then the socket, skipping anything that is not a valid IP and normalizing IPv4-mapped IPv6 to IPv4. Lobby create/request limits and host Blocks key IPv6 clients by their /64 prefix, so address rotation inside one subscriber network no longer escapes a Block. Off Vercel (local/dev) these headers are trusted as sent.
