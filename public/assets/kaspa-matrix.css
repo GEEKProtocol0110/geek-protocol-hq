@@ -1,0 +1,28 @@
+/* Kaspa code rain: decorative, behind content, never captures input. */
+body.kaspa-matrix-host{isolation:isolate}
+/* A faint veil above section backgrounds and below the header (z 90), menus and dialogs. It never takes input. */
+.kaspa-matrix{position:fixed;inset:0;z-index:1;pointer-events:none;user-select:none;overflow:hidden;contain:strict;opacity:.2;transition:opacity .4s ease}
+.kaspa-matrix[hidden],.kaspa-matrix-slices[hidden]{display:none!important}
+/* Keep the reading column calmer than the edges. */
+.kaspa-matrix-canvas{display:block;position:absolute;inset:0;mask-image:linear-gradient(90deg,#000 0,#000a 18%,#0006 38%,#0006 62%,#000a 82%,#000 100%)}
+/* Static scanlines, no animation. */
+.kaspa-matrix::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,#70e6dc0d 3px 4px)}
+.kaspa-matrix--quiet{opacity:.06}
+@media(max-width:700px){.kaspa-matrix{opacity:.14}.kaspa-matrix--quiet{opacity:.04}}
+/* Brief slice: a thin band offset in Kaspa teal and violet. Low opacity, small area, no full-screen flash. */
+.kaspa-matrix-slices{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden;contain:strict}
+.kaspa-matrix-glitch{position:absolute;left:0;right:0;top:var(--kaspa-glitch-top,40%);height:var(--kaspa-glitch-height,3%);opacity:0;background:linear-gradient(90deg,transparent,#70e6dc1f 12%,#70e6dc14 60%,transparent);box-shadow:calc(var(--kaspa-glitch-shift,1) * 6px) 0 #b46cff14,calc(var(--kaspa-glitch-shift,1) * -6px) 0 #49f2c714}
+.kaspa-matrix-slices.kaspa-matrix--burst .kaspa-matrix-glitch{animation:kaspa-matrix-slice 240ms steps(3,end) 1}
+.kaspa-matrix.kaspa-matrix--burst .kaspa-matrix-canvas{animation:kaspa-matrix-split 240ms steps(3,end) 1}
+@keyframes kaspa-matrix-slice{0%{opacity:.9;transform:translateX(0)}33%{opacity:.8;transform:translateX(calc(var(--kaspa-glitch-shift,1) * 14px))}66%{opacity:.6;transform:translateX(calc(var(--kaspa-glitch-shift,1) * -8px)) translateY(40%)}100%{opacity:0;transform:none}}
+@keyframes kaspa-matrix-split{0%,100%{filter:none;transform:none}40%{filter:drop-shadow(3px 0 #b46cff) drop-shadow(-3px 0 #49f2c7);transform:translateX(2px)}70%{transform:translateX(-2px)}}
+/* Footer control. */
+.kaspa-matrix-toggle{display:inline-flex;width:max-content;max-width:100%;justify-self:start;align-self:start;align-items:center;gap:.35rem;margin:.5rem .25rem;padding:.3rem .7rem;border:1px solid #41665f;border-radius:999px;background:#07131bcc;color:#9fe9dc;font:600 .72rem/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.05em;cursor:pointer}
+.kaspa-matrix-toggle::before{content:'';width:.5rem;height:.5rem;border-radius:50%;background:#3b4f4b}
+.kaspa-matrix-toggle[aria-pressed="true"]::before{background:#70e6dc;box-shadow:0 0 6px #70e6dc}
+.kaspa-matrix-toggle:hover{border-color:#70e6dc}
+.kaspa-matrix-toggle:focus-visible{outline:2px solid #70e6dc;outline-offset:2px}
+body.is-playing .kaspa-matrix{opacity:.04}
+@media(prefers-reduced-motion:reduce){.kaspa-matrix,.kaspa-matrix *{animation:none!important;transition:none!important}.kaspa-matrix-slices{display:none!important}}
+@media(forced-colors:active){.kaspa-matrix,.kaspa-matrix-slices{display:none!important}}
+@media print{.kaspa-matrix,.kaspa-matrix-slices,.kaspa-matrix-toggle{display:none!important}}

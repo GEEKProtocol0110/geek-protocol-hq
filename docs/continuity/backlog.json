@@ -2031,6 +2031,27 @@
         "docs/APP-LAUNCH-BRAND.md",
         "tests/app-brand.test.js"
       ]
+    },
+    {
+      "id": "UX-026",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Kaspa code-rain full-page background with brief glitch bursts",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review the PR preview on desktop and phone; confirm readability, toggle and game/quiz dimming. Physical-phone acceptance open.",
+      "acceptance": [
+        "Fixed full-viewport canvas behind content, pointer-events none, aria-hidden, low opacity.",
+        "Capped ~24fps, paused when hidden, reduced-motion still frame or off, bounded DPR/columns on phones.",
+        "Footer and terminal toggle persisted on device; off on individual game boards and dim/still on quiz and lobby routes.",
+        "No requests, player records, rewards or gameplay input hooks; CSP unchanged."
+      ],
+      "dependsOn": [
+        "UX-024"
+      ],
+      "evidence": [
+        "docs/KASPA-MATRIX.md",
+        "tests/kaspa-matrix.test.js"
+      ]
     }
   ]
 }

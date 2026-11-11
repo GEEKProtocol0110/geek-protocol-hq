@@ -208,5 +208,11 @@
     "status": "source-candidate",
     "evidence": "docs/APP-LAUNCH-BRAND.md",
     "nextAction": "Review clean logo and black launch config; installed Android acceptance remains open. Browser controls native startup; existing shortcuts may need reinstall."
+  },
+  "kaspaMatrix": {
+    "task": "UX-026",
+    "status": "source-candidate",
+    "evidence": "docs/KASPA-MATRIX.md",
+    "nextAction": "Review full-page Kaspa code rain in the PR preview on desktop and phone; toggle in footer; game boards excluded. Physical-phone acceptance open."
   }
 }
