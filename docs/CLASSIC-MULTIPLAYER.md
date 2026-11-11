@@ -28,6 +28,14 @@ Local validation result: full `npm test` with compiled Redis 7.2 passes 800/800,
 
 Founder requested Merge. Prerequisite #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 after exact-head verify and Vercel checks succeeded. #254 now targets main and includes that squash merge; final merge/deployment disposition is recorded in the #254 review record. Earlier candidate statements above describe the pre-release checkpoint. Separate-browser/device acceptance remains open.
 
+## Abuse hardening — PR #254 security follow-up
+
+- Lobby creation is limited per player (8/h), per network address only (30/h; User-Agent rotation no longer resets it) and globally (600/h).
+- Host and requester names that look like links/domains or staff/project identities (geek, gee, official, admin, moderator, support, team, including spacing and common leetspeak) are rejected with `ONLINE_NAME_NOT_ALLOWED` and are also hidden from the public listing.
+- Closed or started rooms are removed from the public index; listing reads prune stale entries.
+- Each network address can send at most 4 requests per lobby per hour. Hosts can **Block** a request, which bars that player and network address from requesting the same lobby again (`ONLINE_BLOCKED`). Block data and network fingerprints are never returned to clients.
+- Non-object request bodies return `INVALID_REQUEST`; unexpected API errors log only `{name, code}` classification, never the raw error.
+
 ## Strategy expansion candidate — November 9, 2026
 
 GAME-003 adds Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four and Reversi to this same lobby service. Battle Geek views are explicitly filtered per player, and both deployments plus every scan use revision-checked server moves. See [strategy/puzzle scope and validation](STRATEGY-PUZZLE-GAMES.md). The existing chess/checkers release record remains historical; expansion is a separate candidate.

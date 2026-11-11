@@ -6,13 +6,26 @@ import { redis, parseStoredJson, pipeline } from './redis.js';
 export const ONLINE_TTL = 86400;
 const prefix=()=>`geek:classic:${process.env.VERCEL_ENV==='production'?'production':createHash('sha256').update(`${process.env.VERCEL_ENV||'development'}:${process.env.VERCEL_URL||'local'}`).digest('hex').slice(0,16)}`;
 export const onlineKey=code=>`${prefix()}:room:${code}`;
-const indexKey=()=>`${prefix()}:index`;
+export const indexKey=()=>`${prefix()}:index`;
 const valid=code=>/^PLAY-[A-F0-9]{12}$/.test(code);
 export const ONLINE_CAS=`-- geek-classic-cas-v1
 if redis.call('GET',KEYS[1]) ~= ARGV[1] then return 0 end
 redis.call('SET',KEYS[1],ARGV[2],'EX',ARGV[3])
 return 1`;
 const fail=code=>{throw new Error(code);};
+// Public lobby names are a broadcast surface: block link-like and staff-like names.
+const LEET={'0':'o','1':'i','!':'i','|':'i','3':'e','4':'a','@':'a','5':'s','$':'s','7':'t','+':'t','8':'b','9':'g'};
+const STAFF=/official|admin(?!ton)|moderat|support/;
+const RESERVED=['geek','gee','team'],FILLER=['the','real','protocol','onkas','kaspa','kas','on','staff','dev','bot','mod'];
+const LINKLIKE=/https?:|www\.|t\.me|discord\.|[a-z0-9-]\.[a-z]{2,}\b|[a-z0-9-]\s*(\(dot\)|\[dot\]|\sdot\s)\s*[a-z]{2,}\b/i;
+const reservedOnly=w=>{const words=[...RESERVED,...FILLER];const ok=Array(w.length+1).fill(false),hit=Array(w.length+1).fill(false);ok[0]=true;
+ for(let i=0;i<w.length;i++)if(ok[i])for(const x of words)if(w.startsWith(x,i)){ok[i+x.length]=true;hit[i+x.length]||=hit[i]||RESERVED.includes(x);}
+ return ok[w.length]&&hit[w.length];};
+export function publicNameAllowed(name){
+ const raw=String(name||'');if(!raw.trim()||LINKLIKE.test(raw))return false;
+ const w=raw.toLowerCase().replace(/[0-9!|@$+]/g,c=>LEET[c]||c).replace(/[^a-z]/g,'');
+ return !STAFF.test(w)&&!reservedOnly(w);
+}
 export function newOnlineRoom({code,game,visibility,player,dotsSize,now=Date.now()}){
  if(!(['chess','checkers'].includes(game)||isStrategy(game))||!['public','private'].includes(visibility))fail('INVALID_REQUEST');
  return {code,game,visibility,options:{dotsSize:[4,5,6,8].includes(dotsSize)?dotsSize:6},host:{id:player.id,name:player.name},guest:null,requests:[],state:'waiting',revision:0,createdAt:now,expiresAt:now+ONLINE_TTL*1000,updatedAt:now,ply:0,history:[],position:null,result:null,drawOffer:null};
@@ -27,17 +40,20 @@ export function transitionOnline(room,id,action,body={},now=Date.now()){
  const host=r.host.id===id,guest=r.guest?.id===id;
  if(action==='request'){
   if(r.state!=='waiting'||host)fail('ONLINE_CONFLICT');
+  if((r.blocked||[]).some(b=>b.playerId===id||body.ip&&b.ip===body.ip))fail('ONLINE_BLOCKED');
+  if(!publicNameAllowed(body.name))fail('ONLINE_NAME_NOT_ALLOWED');
   if(!r.requests.some(p=>p.playerId===id)){
    if(r.requests.length>=12)fail('ONLINE_FULL');
-   r.requests.push({id:randomBytes(8).toString('hex'),playerId:id,name:body.name});
+   r.requests.push({id:randomBytes(8).toString('hex'),playerId:id,name:body.name,ip:typeof body.ip==='string'?body.ip:''});
   }
  }else if(action==='cancel-request'){
   if(r.state!=='waiting'||!r.requests.some(p=>p.playerId===id))fail('ONLINE_CONFLICT');
   r.requests=r.requests.filter(p=>p.playerId!==id);
- }else if(action==='accept'||action==='decline'){
+ }else if(action==='accept'||action==='decline'||action==='block'){
   if(!host)fail('ONLINE_FORBIDDEN');if(r.state!=='waiting')fail('ONLINE_CONFLICT');
   const request=r.requests.find(p=>p.id===body.requestId);if(!request)fail('ONLINE_CONFLICT');
-  if(action==='decline')r.requests=r.requests.filter(p=>p.id!==request.id);
+  if(action==='block'){r.blocked=[...(r.blocked||[]),{playerId:request.playerId,ip:request.ip||''}].slice(-24);r.requests=r.requests.filter(p=>p.playerId!==request.playerId&&!(request.ip&&p.ip===request.ip));}
+  else if(action==='decline')r.requests=r.requests.filter(p=>p.id!==request.id);
   else{r.guest={id:request.playerId,name:request.name};r.requests=[];r.state='playing';r.position=r.game==='chess'?new Chess().fen():r.game==='checkers'?newCheckers():newStrategy(r.game,r.options);}
  }else if(action==='cancel'){
   if(!host)fail('ONLINE_FORBIDDEN');if(r.state!=='waiting')fail('ONLINE_CONFLICT');r.state='finished';r.result='Lobby closed';r.requests=[];
@@ -79,6 +95,7 @@ export function transitionOnline(room,id,action,body={},now=Date.now()){
 export async function createOnline(player,body){
  for(let i=0;i<5;i++){
   const code=`PLAY-${randomBytes(6).toString('hex').toUpperCase()}`;
+  if(!publicNameAllowed(player.name))fail('ONLINE_NAME_NOT_ALLOWED');
   const room=newOnlineRoom({code,player,game:body.game,visibility:body.visibility||'public',dotsSize:body.dotsSize});
   if(await redis('SET',onlineKey(code),JSON.stringify(room),'EX',ONLINE_TTL,'NX')==='OK'){
    if(room.visibility==='public')await pipeline([['ZADD',indexKey(),room.createdAt,code],['ZREMRANGEBYRANK',indexKey(),0,-101],['EXPIRE',indexKey(),ONLINE_TTL]]);
@@ -92,13 +109,19 @@ export async function loadOnline(code){
 }
 export async function listOnline(){
  const codes=await redis('ZREVRANGE',indexKey(),0,39);if(!Array.isArray(codes)||!codes.length)return [];
- const rooms=(await pipeline(codes.filter(valid).map(c=>['GET',onlineKey(c)]))).map(parseStoredJson);
- return rooms.filter(r=>r&&r.visibility==='public'&&r.state==='waiting'&&r.expiresAt>Date.now()).map(summary);
+ const listed=codes.filter(valid),rooms=(await pipeline(listed.map(c=>['GET',onlineKey(c)]))).map(parseStoredJson);
+ const open=r=>r&&r.visibility==='public'&&r.state==='waiting'&&r.expiresAt>Date.now();
+ // Prune closed, started or expired rooms so they stop occupying listing slots.
+ const stale=[...codes.filter(c=>!valid(c)),...listed.filter((c,i)=>!open(rooms[i]))];if(stale.length)await redis('ZREM',indexKey(),...stale);
+ return rooms.filter(r=>open(r)&&publicNameAllowed(r.host.name)).map(summary);
 }
 export async function updateOnline(code,id,action,body){
  for(let attempt=0;attempt<5;attempt++){
   if(!valid(code))fail('ONLINE_NOT_FOUND');const raw=await redis('GET',onlineKey(code));const r=parseStoredJson(raw);if(!r)fail('ONLINE_NOT_FOUND');
   const next=transitionOnline(r,id,action,body);const ttl=Math.max(1,Math.ceil((next.expiresAt-Date.now())/1000));
-  if(await redis('EVAL',ONLINE_CAS,1,onlineKey(code),raw,JSON.stringify(next),ttl)===1)return next;
+  if(await redis('EVAL',ONLINE_CAS,1,onlineKey(code),raw,JSON.stringify(next),ttl)===1){
+   if(r.visibility==='public'&&r.state==='waiting'&&next.state!=='waiting')await redis('ZREM',indexKey(),code);
+   return next;
+  }
  }fail('ONLINE_STALE');
 }

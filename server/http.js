@@ -71,6 +71,13 @@ export const clientFingerprint = (req) => {
   return createHash('sha256').update(`${address}|${agent}`).digest('hex').slice(0, 24);
 };
 
+// Network address only (no User-Agent), for limits that must survive header rotation.
+export const clientAddressFingerprint = (req) => {
+  const forwarded = String(req.headers?.['x-forwarded-for'] || '').split(',')[0].trim();
+  const address = forwarded || String(req.socket?.remoteAddress || 'unknown');
+  return createHash('sha256').update(`addr|${address}`).digest('hex').slice(0, 24);
+};
+
 export const setSessionCookie = (res, sessionId) => {
   res.setHeader('Set-Cookie', `${SESSION_COOKIE}=${sessionId}; Max-Age=${SESSION_TTL}; Path=/; HttpOnly; Secure; SameSite=Lax`);
 };
@@ -168,6 +175,7 @@ export const handleApiError = (res, error) => {
   if (code === 'STICKER_TRADE_FORBIDDEN') return sendJson(res, 403, { ok: false, code, error: 'Only the player who created this offer can cancel it.' });
   if (code === 'STICKER_TRADE_FAILED') return sendJson(res, 503, { ok: false, code, error: 'The sticker exchange could not be completed safely.' });
   if (code === 'INVALID_BODY' || code === 'INVALID_REQUEST') return sendJson(res, 400, { ok: false, error: 'The request was not valid.' });
-  console.error('Geek API error', error);
+  // Log a bounded classification only; raw errors can carry request or storage detail.
+  console.error('Geek API error', JSON.stringify({ name: String(error?.name || 'Error').slice(0, 40), code: /^[A-Z][A-Z0-9_]{2,63}$/.test(code) ? code : 'UNCLASSIFIED' }));
   return sendJson(res, 500, { ok: false, error: 'The community service hit an unexpected error.' });
 };
