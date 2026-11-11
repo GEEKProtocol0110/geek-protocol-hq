@@ -82,6 +82,8 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ECO-008 | P2 | in-progress | Education directory with explicit learning utility-token projects | Maintainer; founder release review |
 | GAME-003 | P2 | in-progress | Nine strategy and puzzle games, including Battle Geek and Peg Quest | Maintainer; founder release review |
 | UX-022 | P2 | in-progress | Homepage pathways and shared navigation polish | Maintainer; founder release review |
+| UX-023 | P2 | in-progress | More optional Grid easter eggs | Maintainer; founder release review |
+| UX-024 | P2 | in-progress | Minimal cosmic glitch feedback and Geek code accents | Maintainer; founder release review |
 
 ## CONT-001: Publish the continuation system
 
@@ -1230,3 +1232,31 @@ Acceptance:
 - Site and continuity checks pass; browser and physical-device acceptance remain separate.
 
 Evidence/specification: [docs/SITE-POLISH-2026-11-10.md](../../docs/SITE-POLISH-2026-11-10.md), [public/assets/home.css](../../public/assets/home.css), [public/assets/styles.css](../../public/assets/styles.css).
+
+## UX-023: More optional Grid easter eggs
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: none.
+
+Next action: Review expanded Stray signal terminal in preview; founder merge review and rendered device acceptance remain open.
+
+Acceptance:
+
+- Riddles, hints, fortunes, launch art, route signals and hidden command messages work without requests or saved player state.
+- Terminal remains closed until opened, with native keyboard/touch controls and reduced-motion support.
+- No global input hooks, rewards or timed-game overlays; existing rewarded hunt remains separate.
+
+Evidence/specification: [docs/GRID-EASTER-EGGS.md](../../docs/GRID-EASTER-EGGS.md), [tests/easter-eggs.test.js](../../tests/easter-eggs.test.js).
+
+## UX-024: Minimal cosmic glitch feedback and Geek code accents
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: none.
+
+Next action: Review together with UX-023 in #261 preview; rendered phone acceptance remains open.
+
+Acceptance:
+
+- Brief edge-only feedback on selected discovery controls without changing navigation or labels.
+- Sparse decorative Kaspa/Geek code accents, bounded animation and reduced-motion/forced-color support.
+- No account, answer, board or timed gameplay input hooks; no requests, storage or rewards.
+
+Evidence/specification: [docs/COSMIC-GLITCH.md](../../docs/COSMIC-GLITCH.md), [tests/cosmic-glitch.test.js](../../tests/cosmic-glitch.test.js).

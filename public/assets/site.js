@@ -148,3 +148,6 @@ import('/assets/session-access.js').catch(() => {});
 // private status read. It is not an auth signal; the server authorizes every request.
 for (const name of ['geek:signed-in', 'geek:passkey-signed-in', 'geek:device-signed-in']) document.addEventListener(name, () => { try { localStorage.setItem('geek-session-hint', 'signed-in'); } catch { /* Storage is optional. */ } });
 document.addEventListener('geek:signed-out', () => { try { localStorage.removeItem('geek-session-hint'); } catch { /* Storage is optional. */ } });
+
+// Brief opt-in-surface feedback; never hooks answer buttons or individual game boards.
+import('/assets/cosmic-glitch.js').catch(() => {});

@@ -190,5 +190,17 @@
     "status": "source-candidate",
     "evidence": "docs/SITE-POLISH-2026-11-10.md",
     "nextAction": "Review home discovery paths, crisp typography and compact navigation in preview; local browser connection failed. A.C.E. remains paused."
+  },
+  "gridEasterEggs": {
+    "task": "UX-023",
+    "status": "source-candidate",
+    "evidence": "docs/GRID-EASTER-EGGS.md",
+    "nextAction": "Review additional footer secrets in preview; no account/reward changes, A.C.E. remains paused."
+  },
+  "cosmicGlitch": {
+    "task": "UX-024",
+    "status": "source-candidate",
+    "evidence": "docs/COSMIC-GLITCH.md",
+    "nextAction": "Review bounded edge feedback and decorative code with easter eggs in #261; browser/phone acceptance open."
   }
 }

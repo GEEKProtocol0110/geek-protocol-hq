@@ -1977,6 +1977,42 @@
         "public/assets/home.css",
         "public/assets/styles.css"
       ]
+    },
+    {
+      "id": "UX-023",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "More optional Grid easter eggs",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review expanded Stray signal terminal in preview; founder merge review and rendered device acceptance remain open.",
+      "acceptance": [
+        "Riddles, hints, fortunes, launch art, route signals and hidden command messages work without requests or saved player state.",
+        "Terminal remains closed until opened, with native keyboard/touch controls and reduced-motion support.",
+        "No global input hooks, rewards or timed-game overlays; existing rewarded hunt remains separate."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/GRID-EASTER-EGGS.md",
+        "tests/easter-eggs.test.js"
+      ]
+    },
+    {
+      "id": "UX-024",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Minimal cosmic glitch feedback and Geek code accents",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review together with UX-023 in #261 preview; rendered phone acceptance remains open.",
+      "acceptance": [
+        "Brief edge-only feedback on selected discovery controls without changing navigation or labels.",
+        "Sparse decorative Kaspa/Geek code accents, bounded animation and reduced-motion/forced-color support.",
+        "No account, answer, board or timed gameplay input hooks; no requests, storage or rewards."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/COSMIC-GLITCH.md",
+        "tests/cosmic-glitch.test.js"
+      ]
     }
   ]
 }
