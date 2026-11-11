@@ -17,4 +17,4 @@ try{
  // Reject production signing: this candidate produces a separately identified debug test app only.
  const build=await readFile(out+'/app/build.gradle','utf8');await writeFile(out+'/app/build.gradle',build.replace(/jcenter\(\)/g,'mavenCentral()'));
  console.log('Generated Android test project:',out);
-}finally{server.close();}
+}finally{server.closeAllConnections();server.close();}
