@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-09",
+  "updatedAt": "2026-11-11",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2036,13 +2036,13 @@
       "id": "UX-026",
       "priority": "P2",
       "status": "in-progress",
-      "title": "Kaspa code-rain full-page background with brief glitch bursts",
+      "title": "Kaspa space, planet and code-rain full-page background",
       "owner": "Maintainer; founder release review",
-      "nextAction": "Review the PR preview on desktop and phone; confirm readability, toggle and game/quiz dimming. Physical-phone acceptance open.",
+      "nextAction": "Review the PR preview on desktop and phone; confirm readability, the faint planet on a game page, and game/quiz dimming (no footer toggle; terminal matrix commands are session-only). Physical-phone acceptance open.",
       "acceptance": [
-        "Fixed full-viewport canvas behind content, pointer-events none, aria-hidden, low opacity.",
-        "Capped ~24fps, paused when hidden, reduced-motion still frame or off, bounded DPR/columns on phones.",
-        "Footer and terminal toggle persisted on device; off on individual game boards and dim/still on quiz and lobby routes.",
+        "Fixed full-viewport layered scene behind content (nebula, planet, stars, rain), pointer-events none, aria-hidden, low opacity.",
+        "Capped ~24fps, paused when hidden, reduced-motion still frames, bounded DPR/columns on phones; planet is a still image on game, quiz and operator pages.",
+        "No footer toggle and no localStorage persistence; terminal matrix commands are session-only; rain off on individual game boards and dim/still on quiz and lobby routes; planet on every page.",
         "No requests, player records, rewards or gameplay input hooks; CSP unchanged."
       ],
       "dependsOn": [

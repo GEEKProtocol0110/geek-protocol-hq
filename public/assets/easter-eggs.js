@@ -85,7 +85,7 @@ export const initGridDiscovery = () => {
     }else if(key==='matrix'||key==='matrix on'||key==='matrix off'){
       const on=key==='matrix'?undefined:key==='matrix on';
       document.dispatchEvent(new CustomEvent('geek:matrix-toggle',{detail:{on}}));
-      message=`Code rain ${on===false?'paused':on?'flowing':'toggled'}. The footer Code rain button does the same.`;
+      message=`Code rain ${on===false?'paused':on?'flowing':'toggled'} for this tab visit.`;
     }else if(key==='quack')message='QUACK. Rubber-duck debugging protocol: explain the problem out loud. The duck is listening.';
     else if(key==='42')message='42. The answer arrived before the question. Please allow one universe for clarification.';
     else if(key==='blockdag')message='Secret builder channel: many blocks, one curious community. Keep learning how the pieces connect.';

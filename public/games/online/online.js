@@ -89,3 +89,4 @@ $('flip').addEventListener('click',()=>{flipped=!flipped;drawBoard();});
 $('copy').addEventListener('click',async()=>{const link=new URL(location.pathname,location.origin);link.searchParams.set('room',code);try{await navigator.clipboard.writeText(link.href);say('Invite link copied.');}catch{say(`Share this invite: ${link.href}`);}});
 setInterval(()=>{if(connected&&!document.hidden&&!busy)refresh();},4000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!busy)refresh();});
+import('/assets/kaspa-planet.js').catch(()=>{});
