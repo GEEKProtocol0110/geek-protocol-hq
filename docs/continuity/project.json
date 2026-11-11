@@ -208,5 +208,11 @@
     "status": "source-candidate",
     "evidence": "docs/APP-LAUNCH-BRAND.md",
     "nextAction": "Review clean logo and black launch config; installed Android acceptance remains open. Browser controls native startup; existing shortcuts may need reinstall."
+  },
+  "kaspaMatrix": {
+    "task": "UX-026",
+    "status": "source-candidate",
+    "evidence": "docs/KASPA-MATRIX.md",
+    "nextAction": "Review the layered Kaspa space and faint planet in the PR preview on desktop, phone and a game page; no footer toggle. Physical-phone acceptance open."
   }
 }

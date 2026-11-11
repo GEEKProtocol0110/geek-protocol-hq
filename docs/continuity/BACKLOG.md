@@ -85,6 +85,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-023 | P2 | in-progress | More optional Grid easter eggs | Maintainer; founder release review |
 | UX-024 | P2 | in-progress | Minimal cosmic glitch feedback and Geek code accents | Maintainer; founder release review |
 | UX-025 | P2 | in-progress | Clean Geek branding and black installed-app launch | Maintainer; founder release review |
+| UX-026 | P2 | in-progress | Kaspa space, planet and code-rain full-page background | Maintainer; founder release review |
 
 ## CONT-001: Publish the continuation system
 
@@ -1275,3 +1276,18 @@ Acceptance:
 - Metadata generation remains idempotent; no service-worker caching of private/session/game data.
 
 Evidence/specification: [docs/APP-LAUNCH-BRAND.md](../../docs/APP-LAUNCH-BRAND.md), [tests/app-brand.test.js](../../tests/app-brand.test.js).
+
+## UX-026: Kaspa space, planet and code-rain full-page background
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: UX-024.
+
+Next action: Review the PR preview on desktop and phone; confirm readability, the faint planet on a game page, and game/quiz dimming (no footer toggle; terminal matrix commands are session-only). Physical-phone acceptance open.
+
+Acceptance:
+
+- Fixed full-viewport layered scene behind content (nebula, planet, stars, rain), pointer-events none, aria-hidden, low opacity.
+- Capped ~24fps, paused when hidden, reduced-motion still frames, bounded DPR/columns on phones; planet is a still image on game, quiz and operator pages.
+- No footer toggle and no localStorage persistence; terminal matrix commands are session-only; rain off on individual game boards and dim/still on quiz and lobby routes; planet on every page.
+- No requests, player records, rewards or gameplay input hooks; CSP unchanged.
+
+Evidence/specification: [docs/KASPA-MATRIX.md](../../docs/KASPA-MATRIX.md), [tests/kaspa-matrix.test.js](../../tests/kaspa-matrix.test.js).
