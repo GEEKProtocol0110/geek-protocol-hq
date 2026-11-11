@@ -1312,3 +1312,7 @@ Founder rejected the new circuit-brain robot. Replaced candidate site/app brandi
 ### UX-025 exact installed-app logo
 
 Founder clarified the app should use the supplied neon brain-robot GEEK PROTOCOL image. Replaced only app manifest icons and touch icon via size-only resampling; retained gold GIGA site/mascot branding and black launch settings. Candidate only.
+
+## November 11 — Desktop 1280x800 solitaire and Tower of Geek layout
+
+Waste pile cards used intrinsic shrink-to-fit width (~12px) while tableau cards used the shared column width, clipping face corners. `.waste .playing-card` now uses the same `--card-width` and `--card-height` as tableau cards. On Tower of Geek Expert (7) and Geek Master (8), disc height and tower gaps scale so every disc and the base stay in an 800px-tall 1280px desktop viewport; the previous per-disc min-height formula no longer extends the board below the fold. Headless 1280x800 browser check recorded in the PR. Candidate only.
