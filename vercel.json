@@ -303,7 +303,7 @@
   ],
   "crons": [
     {
-      "path": "/api/game-notifications",
+      "path": "/api/game-notifications/",
       "schedule": "*/5 * * * *"
     }
   ]

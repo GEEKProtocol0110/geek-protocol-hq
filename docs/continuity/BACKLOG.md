@@ -1328,7 +1328,7 @@ Evidence/specification: [android/README.md](../../android/README.md), [.github/w
 
 **P2 / in-progress.** Owner: Maintainer; founder phone acceptance. Dependencies: GAME-004.
 
-Next action: Verify and release real Web Push with production-only keys, durable atomic move outbox and protected five-minute retry. Complete phone opt-in/delivery and Android signing acceptance separately.
+Next action: #271 is merged/deployed; canonical retry follow-up uses a direct slash URL. Production public-key settings, two-player move/turn badge and no-expiry behavior passed. Complete explicit device permission and actual closed-lounge phone delivery acceptance.
 
 Acceptance:
 
