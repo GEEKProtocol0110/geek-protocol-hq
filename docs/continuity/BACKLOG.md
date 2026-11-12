@@ -89,6 +89,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | GAME-004 | P2 | in-progress | Ongoing matches, My Games and turn alerts | Maintainer; founder release/device review |
 | APP-001 | P2 | in-progress | Android test package and device acceptance | Maintainer; founder device review |
 | GAME-005 | P2 | in-progress | Opt-in closed-lounge turn notifications and durable delivery | Maintainer; founder phone acceptance |
+| OPS-004 | P2 | in-progress | Record default code ownership and limited weekly dependency updates | Maintainer; founder reviews the pull request |
 
 ## CONT-001: Publish the continuation system
 
@@ -1338,3 +1339,19 @@ Acceptance:
 - Real Redis and worker regression checks pass; actual phone delivery is a separate acceptance item.
 
 Evidence/specification: [docs/WEB-PUSH-TURN-ALERTS.md](../../docs/WEB-PUSH-TURN-ALERTS.md), [tests/classic-push.test.js](../../tests/classic-push.test.js), [tests/game-push-worker.test.js](../../tests/game-push-worker.test.js).
+
+## OPS-004: Record default code ownership and limited weekly dependency updates
+
+**P2 / in-progress.** Owner: Maintainer; founder reviews the pull request. Dependencies: none.
+
+Next action: Review the repository-hygiene pull request. Merging it does not enable rulesets, an SLA, a bounty, or an audit. Product pickup remains BANK-009.
+
+Acceptance:
+
+- CODEOWNERS has one default rule for the GitHub user GEEKProtocol0110 and names no team.
+- Dependabot is weekly and limited to npm at /, /android, and /workers/testnet, plus GitHub Actions at /, each with an open-pull-request limit of 5.
+- Minor and patch updates are grouped. Major updates stay ungrouped. Ecosystems without a lockfile or manifest are omitted.
+- SECURITY.md states that private vulnerability reporting is enabled and still states that there is no independent audit. No SLA, bounty, or audit claim is added.
+- No application, game, lesson, wallet, question-bank, or repository-setting change is included.
+
+Evidence/specification: [.github/CODEOWNERS](../../.github/CODEOWNERS), [.github/dependabot.yml](../../.github/dependabot.yml), [SECURITY.md](../../SECURITY.md).

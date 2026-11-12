@@ -13,7 +13,7 @@ An audit report applies only to the exact commit, configuration, contracts, and 
 
 ## Reporting a vulnerability
 
-Do not open a public issue for an unpatched vulnerability. Use GitHub's private vulnerability-reporting feature for this repository. Include:
+Do not open a public issue for an unpatched vulnerability. GitHub private vulnerability reporting is enabled for this repository (Security → Report a vulnerability). Use that private channel. Include:
 
 - affected commit and environment;
 - reproducible steps or proof of concept;

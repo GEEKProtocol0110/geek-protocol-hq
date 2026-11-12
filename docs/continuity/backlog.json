@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-11",
+  "updatedAt": "2026-11-12",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2111,6 +2111,27 @@
         "docs/WEB-PUSH-TURN-ALERTS.md",
         "tests/classic-push.test.js",
         "tests/game-push-worker.test.js"
+      ]
+    },
+    {
+      "id": "OPS-004",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Record default code ownership and limited weekly dependency updates",
+      "owner": "Maintainer; founder reviews the pull request",
+      "nextAction": "Review the repository-hygiene pull request. Merging it does not enable rulesets, an SLA, a bounty, or an audit. Product pickup remains BANK-009.",
+      "acceptance": [
+        "CODEOWNERS has one default rule for the GitHub user GEEKProtocol0110 and names no team.",
+        "Dependabot is weekly and limited to npm at /, /android, and /workers/testnet, plus GitHub Actions at /, each with an open-pull-request limit of 5.",
+        "Minor and patch updates are grouped. Major updates stay ungrouped. Ecosystems without a lockfile or manifest are omitted.",
+        "SECURITY.md states that private vulnerability reporting is enabled and still states that there is no independent audit. No SLA, bounty, or audit claim is added.",
+        "No application, game, lesson, wallet, question-bank, or repository-setting change is included."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        ".github/CODEOWNERS",
+        ".github/dependabot.yml",
+        "SECURITY.md"
       ]
     }
   ]
