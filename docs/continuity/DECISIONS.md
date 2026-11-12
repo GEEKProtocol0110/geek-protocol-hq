@@ -343,3 +343,13 @@ Pause A.C.E. development and live AI activation until the founder explicitly res
 Basis: Founder directed Pause ACE and then approved all nine proposed strategy/puzzle games.
 
 Evidence: [docs/STRATEGY-PUZZLE-GAMES.md](../../docs/STRATEGY-PUZZLE-GAMES.md).
+
+## DR-035: Port the GEEKT payout worker toward mainnet GEEK while settlement stays off
+
+**implementation-choice** · 2026-11-12.
+
+Reuse the tested CHAIN-004 journaled signer for current KRC-20 GEEK. Pay 100 GEEK for one qualifying Daily and the perfect-round ladder once per finished Gauntlet round, with a temporary 100,000 GEEK daily cap. Keep settlementEligible and withdrawalsEnabled false, and keep both operational flags false. The signing key stays out of the repository and is added later in the Vercel or GitHub secret UI.
+
+Basis: Founder confirmed the reward schedule on 2026-11-12 and asked for a draft port of the tested worker with payouts off.
+
+Evidence: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [server/mainnet-payout.js](../../server/mainnet-payout.js), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs).

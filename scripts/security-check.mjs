@@ -35,6 +35,16 @@ check(!publicFiles.some((path) => /questions.*\.json$/i.test(path)), 'ranked que
 const rewards = await text('api/rewards.js');
 check(rewards.includes('withdrawalsEnabled: false'), 'withdrawals remain disabled');
 check(rewards.includes('settlementEligible: false'), 'payout preferences remain settlement-ineligible');
+const mainnetPayout = await text('server/mainnet-payout.js');
+const mainnetSchedule = await text('workers/mainnet/schedule.mjs');
+const mainnetCron = await text('workers/mainnet/cron.mjs');
+const envExample = await text('.env.example');
+check(mainnetPayout.includes('settlementEligible: false') && mainnetPayout.includes('withdrawalsEnabled: false'), 'mainnet payout flags stay false');
+check(mainnetPayout.includes("MAINNET_PAYOUT_ENABLED !== 'true'"), 'mainnet payout admission defaults off');
+check(mainnetCron.includes("MAINNET_SIGNER_ENABLED !== 'true'"), 'mainnet signer defaults off');
+check(mainnetSchedule.includes('kaspa:qql9hrch8rqk62ywncjmm4y3qr6dv0d8r0vvu8q7382ccawlwz50xqu0e3gvs'), 'mainnet hot wallet is the pinned public receive address');
+check(envExample.includes('MAINNET_PAYOUT_ENABLED=false') && envExample.includes('MAINNET_SIGNER_ENABLED=false'), 'mainnet payout example flags stay false');
+check(!/MAINNET_SIGNER_PRIVATE_KEY\s*=\s*\S/.test(envExample), 'mainnet signing key is not stored in the env example');
 check(rewards.includes('PAYOUT_CHANGE_COOLDOWN_MS'), 'payout changes declare a cooldown');
 check(rewards.includes('requirePayoutAuthorization'), 'linked identities require fresh payout authorization');
 check(rewards.includes('payoutMutationHistory'), 'payout mutations retain a bounded risk history');

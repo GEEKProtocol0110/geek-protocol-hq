@@ -24,6 +24,8 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Install isolated testnet worker package graph
         run: npm ci --prefix workers/testnet --ignore-scripts
+      - name: Install isolated mainnet payout worker package graph
+        run: npm ci --prefix workers/mainnet --ignore-scripts
       - name: Check JavaScript syntax
         run: find api server public scripts \( -name '*.js' -o -name '*.mjs' \) | sort | xargs -n1 node --check
       - name: Install Redis for atomic game and chapter integration tests
@@ -39,6 +41,8 @@ jobs:
         run: npm run test:signer
       - name: Audit isolated testnet worker dependencies
         run: npm audit --prefix workers/testnet --omit=dev --audit-level=high
+      - name: Audit isolated mainnet payout worker dependencies
+        run: npm audit --prefix workers/mainnet --omit=dev --audit-level=high
       - name: Verify distinct question banks and public counts
         run: npm run questions:check
       - name: Verify page metadata, sitemap and internal links

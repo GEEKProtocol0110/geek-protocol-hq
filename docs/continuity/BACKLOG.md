@@ -90,6 +90,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | APP-001 | P2 | in-progress | Android test package and device acceptance | Maintainer; founder device review |
 | GAME-005 | P2 | in-progress | Opt-in closed-lounge turn notifications and durable delivery | Maintainer; founder phone acceptance |
 | OPS-004 | P2 | in-progress | Record default code ownership and limited weekly dependency updates | Maintainer; founder reviews the pull request |
+| CHAIN-006 | P1 | in-progress | Port the automatic payout worker toward mainnet GEEK | Maintainer; founder controls explicit enable and the signing secret |
 
 ## CONT-001: Publish the continuation system
 
@@ -1355,3 +1356,18 @@ Acceptance:
 - No application, game, lesson, wallet, question-bank, or repository-setting change is included.
 
 Evidence/specification: [.github/CODEOWNERS](../../.github/CODEOWNERS), [.github/dependabot.yml](../../.github/dependabot.yml), [SECURITY.md](../../SECURITY.md).
+
+## CHAIN-006: Port the automatic payout worker toward mainnet GEEK
+
+**P1 / in-progress.** Owner: Maintainer; founder controls explicit enable and the signing secret. Dependencies: CHAIN-004.
+
+Next action: Review the draft port. Keep settlementEligible and withdrawalsEnabled false. Add the signing key in the Vercel or GitHub secret UI only after review; do not enable payouts in this change.
+
+Acceptance:
+
+- The mainnet worker reuses the CHAIN-004 journaled KRC-20 commit/reveal path for current GEEK, with the pinned public hot-wallet receive address.
+- Daily pays 100 GEEK once. A Gauntlet round pays the ROUND_CONFIG perfect-round ladder once. Retries do not pay again. The temporary daily cap is 100,000 GEEK.
+- settlementEligible and withdrawalsEnabled stay false. MAINNET_PAYOUT_ENABLED and MAINNET_SIGNER_ENABLED default false. No signing key is committed.
+- Focused tests and the existing testnet signer checks pass. A real mainnet transfer is not claimed.
+
+Evidence/specification: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [server/mainnet-payout.js](../../server/mainnet-payout.js), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs), [workers/mainnet/signer.mjs](../../workers/mainnet/signer.mjs), [workers/mainnet/process.mjs](../../workers/mainnet/process.mjs), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js), [workers/mainnet/check-signing.mjs](../../workers/mainnet/check-signing.mjs).

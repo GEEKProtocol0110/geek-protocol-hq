@@ -17,6 +17,7 @@ import assistedPracticeHandler from '../server/assisted-practice.js';
 import rewardedChallengesHandler from '../server/rewarded-challenges.js';
 import { careerChallengeState } from '../server/career-challenges.js';
 import { prepareAutomaticReward, automaticError } from '../server/testnet-automatic.js';
+import { prepareMainnetPayout, mainnetPayoutError } from '../server/mainnet-payout.js';
 
 const RUN_TTL = 60 * 60 * 2;
 const QUESTION_MS = 15_000;
@@ -115,7 +116,8 @@ const finishRun = async (run, session, profile) => {
   run.status = 'finished';
   run.current = null;
   const automaticReward = await prepareAutomaticReward(playerIdFor(session), run);
-  await commitRankedState({ playerId: playerIdFor(session), run, previousRun: runSnapshots.get(run), profile, ttl: 300, automaticReward });
+  const mainnetPayout = run.mode === 'daily' ? await prepareMainnetPayout(playerIdFor(session), run) : null;
+  await commitRankedState({ playerId: playerIdFor(session), run, previousRun: runSnapshots.get(run), profile, ttl: 300, automaticReward, mainnetPayout });
   const leaderboard = await recordVerifiedScore({ session, category: run.category, score: run.totalScore, round: Math.max(1, run.completedRound || 0), mode: run.mode });
   return { leaderboard };
 };
@@ -240,7 +242,8 @@ const answerQuestion = async (run, session, profile, body) => {
     profile: withProgression(profile)
   };
   run.lastResponse = response;
-  await commitRankedState({ playerId: playerIdFor(session), run, previousRun: runSnapshots.get(run), profile, auditInput });
+  const mainnetPayout = roundResult && run.mode === 'gauntlet' ? await prepareMainnetPayout(playerIdFor(session), run) : null;
+  await commitRankedState({ playerId: playerIdFor(session), run, previousRun: runSnapshots.get(run), profile, auditInput, mainnetPayout });
   return response;
 };
 
@@ -342,6 +345,7 @@ export default async function handler(req, res) {
     throw new Error('INVALID_REQUEST');
   } catch (error) {
     if (error.message?.startsWith('TESTNET_')) return automaticError(res, error);
+    if (error.message?.startsWith('MAINNET_')) return mainnetPayoutError(res, error);
     return handleApiError(res, error);
   }
 }

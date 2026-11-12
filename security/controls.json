@@ -32,7 +32,7 @@
       "id": "GP-INV-005",
       "title": "Settlement fail-closed",
       "status": "implemented",
-      "evidence": ["api/rewards.js", "tests/api.test.js", "scripts/security-check.mjs", "tests/release-boundaries.test.js", "docs/RELEASE-BOUNDARY-CHECKS.md"]
+      "evidence": ["api/rewards.js", "tests/api.test.js", "scripts/security-check.mjs", "tests/release-boundaries.test.js", "docs/RELEASE-BOUNDARY-CHECKS.md", "server/mainnet-payout.js", "tests/mainnet-payout.test.js", "docs/MAINNET-GEEK-PAYOUT.md"]
     },
     {
       "id": "GP-INV-006",

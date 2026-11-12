@@ -2133,6 +2133,32 @@
         ".github/dependabot.yml",
         "SECURITY.md"
       ]
+    },
+    {
+      "id": "CHAIN-006",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Port the automatic payout worker toward mainnet GEEK",
+      "owner": "Maintainer; founder controls explicit enable and the signing secret",
+      "nextAction": "Review the draft port. Keep settlementEligible and withdrawalsEnabled false. Add the signing key in the Vercel or GitHub secret UI only after review; do not enable payouts in this change.",
+      "acceptance": [
+        "The mainnet worker reuses the CHAIN-004 journaled KRC-20 commit/reveal path for current GEEK, with the pinned public hot-wallet receive address.",
+        "Daily pays 100 GEEK once. A Gauntlet round pays the ROUND_CONFIG perfect-round ladder once. Retries do not pay again. The temporary daily cap is 100,000 GEEK.",
+        "settlementEligible and withdrawalsEnabled stay false. MAINNET_PAYOUT_ENABLED and MAINNET_SIGNER_ENABLED default false. No signing key is committed.",
+        "Focused tests and the existing testnet signer checks pass. A real mainnet transfer is not claimed."
+      ],
+      "dependsOn": [
+        "CHAIN-004"
+      ],
+      "evidence": [
+        "docs/MAINNET-GEEK-PAYOUT.md",
+        "server/mainnet-payout.js",
+        "workers/mainnet/schedule.mjs",
+        "workers/mainnet/signer.mjs",
+        "workers/mainnet/process.mjs",
+        "tests/mainnet-payout.test.js",
+        "workers/mainnet/check-signing.mjs"
+      ]
     }
   ]
 }
