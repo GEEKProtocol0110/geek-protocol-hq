@@ -160,7 +160,8 @@ export function createSigner(secret, rpc) {
             BigInt(balance.balance) < BigInt(job.amount)) throw new Error('GEEK_FUNDING_REQUIRED');
       }
     },
-    async prepare(config, job) {
+    async prepare(config, job, priorReveal = '') {
+      if (priorReveal) throw new Error('JOB_ALREADY_SIGNED');
       if (!jobMacMatches(job, process.env.MAINNET_PAYOUT_JOB_HMAC)) throw new Error('JOB_MAC_INVALID');
       const { entries } = await bounded(rpc.getUtxosByAddresses({ addresses: [config.sender] }));
       return prepareTransactions(key, job, entries, { ...livePolicy, jobHmacSecret: process.env.MAINNET_PAYOUT_JOB_HMAC });

@@ -2146,6 +2146,7 @@
         "Daily pays 100 GEEK once. A Gauntlet round pays ROUND_CONFIG.reward times the server-graded correct count. Zero correct pays nothing. One correct answer in round 10 pays 1800, and 18000 is rejected for that proof. Retries do not pay again.",
         "Temporary caps are 100,000 GEEK globally and 46,400 GEEK per player and per receiving address. The active index counts outstanding jobs only. A journal unconfirmed for six hours is stuck and does not block later jobs or receive a second journal.",
         "Admission and signing require production plus the explicit flag. Preview cannot pay. settlementEligible and withdrawalsEnabled stay false. No signing key is committed.",
+        "The job mac is an explicit ordered field list that includes each proof field. An already signed earning cannot be signed again. A record that fails decoding or the mac check is quarantined and logged, and the earning lock is kept.",
         "Focused tests and the existing testnet signer checks pass. A real mainnet transfer is not claimed."
       ],
       "dependsOn": [
@@ -2158,7 +2159,8 @@
         "workers/mainnet/signer.mjs",
         "workers/mainnet/process.mjs",
         "tests/mainnet-payout.test.js",
-        "workers/mainnet/check-signing.mjs"
+        "workers/mainnet/check-signing.mjs",
+        "workers/mainnet/job-mac.mjs"
       ]
     }
   ]

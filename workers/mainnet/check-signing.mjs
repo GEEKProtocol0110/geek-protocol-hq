@@ -63,6 +63,11 @@ test('journal rehydration preserves signed bytes and the live policy rejects the
   assert.notEqual(roundTen.commit.id, roundTen.reveal.id);
   await assert.rejects(prepareTransactions(key, mac({ ...oneInRoundTen, amount: toRaw(18000), mac: undefined }), [entry], fixturePolicy), /SIGNER_POLICY_MISMATCH/);
   await assert.rejects(prepareTransactions(key, { ...oneInRoundTen, amount: toRaw(18000) }, [entry], fixturePolicy), /JOB_MAC_INVALID/);
+  process.env.MAINNET_PAYOUT_JOB_HMAC = hmacSecret;
+  const signer = createSigner('1'.padStart(64, '0'), { getUtxosByAddresses() { throw new Error('UTXO_READ'); } });
+  await assert.rejects(signer.prepare({}, oneInRoundTen, '2'.repeat(64)), /JOB_ALREADY_SIGNED/);
+  signer.close();
+  delete process.env.MAINNET_PAYOUT_JOB_HMAC;
   await assert.rejects(prepareTransactions(key, job, [], fixturePolicy), /FUNDED_UTXO_REQUIRED/);
 });
 

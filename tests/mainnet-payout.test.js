@@ -11,7 +11,7 @@ import { GEEK_DEPLOYMENT } from '../server/geek-deployment.js';
 import { ROUND_CONFIG } from '../server/game-economy.js';
 import {
   PAYOUT_INDEX_CEILING, STUCK_AFTER_MS, earningId, mainnetPayoutConfig, mainnetPayoutFlags, payoutAddressDayKey, payoutDay, payoutDayKey,
-  payoutEarnKey, payoutIdentityFingerprint, payoutIndexKey, payoutJobKey, payoutPlayerDayKey, payoutStuckKey
+  payoutEarnKey, payoutIdentityFingerprint, payoutIndexKey, payoutJobKey, payoutPlayerDayKey, payoutQuarantineKey, payoutSignedKey, payoutStuckKey
 } from '../server/mainnet-payout.js';
 import { createCronHandler } from '../workers/mainnet/cron.mjs';
 import { workerRequest } from '../workers/mainnet/request.mjs';
@@ -440,6 +440,7 @@ test('a journal that never confirms is removed from the active queue without a s
   assert.equal(confirmed.statusCode, 200, JSON.stringify(confirmed.body));
   assert.equal(confirmed.body.job.state, 'indexed-confirmed');
   assert.deepEqual(confirmed.body.job.journal, journal);
+  assert.equal((await fixture.command('ZRANGE', payoutStuckKey, 0, -1)).includes(older.id), false);
   await call(sessionHandler, 'POST', { action: 'release', lease: claimed.body.lease }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
 });
 
@@ -472,13 +473,27 @@ test('a production HMAC binds amount, address, and earning id, and a preview sec
   assert.equal(claimed.statusCode, 200);
   assert.equal(claimed.body.job.id, real.id);
   assert.equal((await fixture.command('ZRANGE', payoutIndexKey, 0, -1)).includes(forged.id), false);
+  assert.equal((await fixture.command('ZRANGE', payoutQuarantineKey, 0, -1)).includes(forged.id), true);
+  assert.equal(await fixture.command('GET', payoutJobKey(forged.id)), JSON.stringify(forged));
+  await call(sessionHandler, 'POST', { action: 'release', lease: claimed.body.lease }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
+  const broken = { ...real, proof: { ...real.proof, runId: 'ab'.repeat(20) } };
+  await fixture.command('SET', payoutJobKey(real.id), JSON.stringify(broken));
+  const events = [];
+  const info = console.info;
+  console.info = (...args) => { events.push(args.map(String).join(' ')); };
+  const held = await call(sessionHandler, 'POST', { action: 'claim' }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
+  console.info = info;
+  assert.equal(held.body.job, null);
+  assert.match(events.join('\n'), /"code":"PAYOUT_MAC_INVALID"/);
+  assert.equal(await fixture.command('GET', payoutEarnKey(real.id)), real.id);
+  assert.equal(await fixture.command('GET', payoutJobKey(real.id)), JSON.stringify(broken));
+  await call(sessionHandler, 'POST', { action: 'release', lease: held.body.lease }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
   let prepared = 0;
   await assert.rejects(() => processPayment({
     request: async () => ({ lease: 'a'.repeat(24), job: forged, config: {} }),
     signer: { verify() { prepared += 1; }, prepare() { prepared += 1; }, submit() { prepared += 1; } }
   }), /JOB_MAC_INVALID/);
   assert.equal(prepared, 0);
-  await call(sessionHandler, 'POST', { action: 'release', lease: claimed.body.lease }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
   delete process.env.MAINNET_PAYOUT_JOB_HMAC;
   const unsigned = await player();
   await saveAddress(unsigned);
@@ -497,4 +512,58 @@ test('cap changes do not alter the job fingerprint, and asset identity changes d
   assert.notEqual(payoutIdentityFingerprint({ ...config, decimals: '7' }), config.fingerprint);
   assert.notEqual(payoutIdentityFingerprint({ ...config, network: 'testnet-10' }), config.fingerprint);
   assert.notEqual(payoutIdentityFingerprint({ ...config, deploymentHash: 'b'.repeat(64) }), config.fingerprint);
+});
+
+test('the job mac changes when any proof field changes', () => {
+  const base = { id: 'a'.repeat(64), amount: toRaw(1800), recipient, sender: MAINNET_PAYOUT_SENDER, playerId: 'b'.repeat(32), network: 'mainnet', protocol: 'KRC-20', ticker: 'GEEK', decimals: '8', deploymentHash: 'c'.repeat(64), configFingerprint: 'd'.repeat(64), proof: { kind: 'gauntlet', round: 10, correctCount: 1, runId: 'e'.repeat(40) } };
+  const original = jobMac(base, hmacSecret);
+  for (const [field, value] of [['kind', 'daily'], ['round', 9], ['correctCount', 10], ['runId', 'f'.repeat(40)]]) {
+    assert.notEqual(jobMac({ ...base, proof: { ...base.proof, [field]: value } }, hmacSecret), original, field);
+  }
+  assert.notEqual(jobMac({ ...base, amount: toRaw(18000) }, hmacSecret), original);
+  assert.notEqual(jobMac({ ...base, recipient: 'kaspa:other' }, hmacSecret), original);
+  assert.notEqual(jobMac({ ...base, sender: 'kaspa:other' }, hmacSecret), original);
+  assert.notEqual(jobMac({ ...base, playerId: 'c'.repeat(32) }, hmacSecret), original);
+  assert.notEqual(jobMac({ ...base, id: '1'.repeat(64) }, hmacSecret), original);
+  assert.notEqual(jobMac({ ...base, ticker: 'GEEKT' }, hmacSecret), original);
+});
+
+test('a queued copy of an already signed job is quarantined and cannot be signed again', async () => {
+  enable();
+  const cookie = await player();
+  await saveAddress(cookie);
+  let result = await play(cookie, 'start', { mode: 'daily', category: 'kaspa' });
+  result = await answerRound(cookie, result.body);
+  assert.equal((await play(cookie, 'finish', { runId: result.run.id })).statusCode, 200);
+  const queued = structuredClone((await jobs())[0]);
+  const claim = await call(sessionHandler, 'POST', { action: 'claim' }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
+  const journal = { commit: { id: 'b'.repeat(64), transaction: 'c'.repeat(80) }, reveal: { id: 'd'.repeat(64), transaction: 'e'.repeat(80) } };
+  indexerPayload = () => ({ message: 'successful', result: [{ tick: 'GEEK', state: 'deployed', hashRev: GEEK_DEPLOYMENT_HASH, dec: '8', p: 'KRC-20', op: 'deploy', txAccept: '1', opAccept: '1' }] });
+  const prepared = await call(sessionHandler, 'POST', { action: 'prepare', lease: claim.body.lease, id: queued.id, version: queued.version, journal }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
+  assert.equal(prepared.statusCode, 200, JSON.stringify(prepared.body));
+  await call(sessionHandler, 'POST', { action: 'release', lease: claim.body.lease }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
+  await fixture.command('SET', payoutJobKey(queued.id), JSON.stringify(queued));
+  await fixture.command('ZADD', payoutIndexKey, '1', queued.id);
+  const events = [];
+  const info = console.info;
+  console.info = (...args) => { events.push(args.map(String).join(' ')); };
+  const again = await call(sessionHandler, 'POST', { action: 'claim' }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
+  console.info = info;
+  assert.equal(again.statusCode, 200);
+  assert.equal(again.body.job, null);
+  assert.match(events.join('\n'), /"code":"PAYOUT_ALREADY_SIGNED"/);
+  assert.equal((await fixture.command('ZRANGE', payoutQuarantineKey, 0, -1)).includes(queued.id), true);
+  assert.equal(await fixture.command('GET', payoutEarnKey(queued.id)), queued.id);
+  assert.equal(await fixture.command('HGET', payoutSignedKey, queued.id), journal.reveal.id);
+  const otherJournal = { commit: { id: '1'.repeat(64), transaction: 'c'.repeat(80) }, reveal: { id: '2'.repeat(64), transaction: 'e'.repeat(80) } };
+  const rejected = await call(sessionHandler, 'POST', { action: 'prepare', lease: again.body.lease, id: queued.id, version: queued.version, journal: otherJournal }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
+  assert.notEqual(rejected.statusCode, 200);
+  assert.equal(JSON.parse(await fixture.command('GET', payoutJobKey(queued.id))).journal, undefined);
+  let signed = 0;
+  await assert.rejects(() => processPayment({
+    request: async () => ({ lease: 'a'.repeat(24), job: queued, config: {}, signedReveal: journal.reveal.id }),
+    signer: { prepare() { signed += 1; }, verify() { signed += 1; }, submit() { signed += 1; } }
+  }), /JOB_ALREADY_SIGNED/);
+  assert.equal(signed, 0);
+  await call(sessionHandler, 'POST', { action: 'release', lease: again.body.lease }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
 });

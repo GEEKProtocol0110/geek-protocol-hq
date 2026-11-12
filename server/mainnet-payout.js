@@ -22,6 +22,8 @@ export const payoutAddressDayKey = (day, recipient) => `geek:mainnet-payout:addr
 export const payoutJobKey = id => `geek:mainnet-payout:job:${id}`;
 export const payoutEarnKey = id => `geek:mainnet-payout:earn:${id}`;
 export const payoutStuckKey = 'geek:mainnet-payout:stuck:v1';
+export const payoutSignedKey = 'geek:mainnet-payout:signed:v1';
+export const payoutQuarantineKey = 'geek:mainnet-payout:quarantine:v1';
 const leaseKey = 'geek:mainnet-payout:sender-lease:v1';
 export const payoutDay = (now = Date.now()) => new Date(now).toISOString().slice(0, 10);
 
@@ -220,6 +222,16 @@ const saveJob = async (key, raw, job, lease, terminal) => {
   if (await redis('EVAL', UPDATE, 3, key, leaseKey, payoutIndexKey, raw, JSON.stringify(job), lease, terminal ? '1' : '0', job.id) !== 1) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
   return job;
 };
+const quarantineJob = async (id, code) => {
+  await redis('ZADD', payoutQuarantineKey, String(Date.now()), id);
+  await redis('ZREM', payoutIndexKey, id);
+  console.info(JSON.stringify({ event: 'mainnet-payout-quarantine', code }));
+};
+const SIGNED = `-- geek-mainnet-payout-signed-v1
+local prior = redis.call('HGET', KEYS[1], ARGV[1])
+if prior and prior ~= ARGV[2] then return 0 end
+if not prior then redis.call('HSET', KEYS[1], ARGV[1], ARGV[2]) end
+return 1`;
 
 const validToken = req => {
   const expected = process.env.MAINNET_PAYOUT_WORKER_TOKEN || '', given = String(req.headers?.authorization || '');
@@ -244,11 +256,13 @@ export async function mainnetPayoutWorkerHandler(req, res) {
       let job = null;
       for (const id of page) {
         const key = payoutJobKey(id), raw = await redis('GET', key);
-        if (!raw) { await redis('ZREM', payoutIndexKey, id); continue; }
+        if (!raw) { await quarantineJob(id, 'PAYOUT_RECORD_INVALID'); continue; }
         let candidate;
         try { candidate = decodeJob(raw, id); }
-        catch { await redis('ZREM', payoutIndexKey, id); continue; }
-        if (!jobMacMatches(candidate, jobMacSecret())) { await redis('ZREM', payoutIndexKey, id); continue; }
+        catch { await quarantineJob(id, 'PAYOUT_RECORD_INVALID'); continue; }
+        if (!jobMacMatches(candidate, jobMacSecret())) { await quarantineJob(id, 'PAYOUT_MAC_INVALID'); continue; }
+        const signedReveal = await redis('HGET', payoutSignedKey, candidate.id);
+        if (signedReveal && candidate.journal?.reveal?.id !== signedReveal) { await quarantineJob(id, 'PAYOUT_ALREADY_SIGNED'); continue; }
         if (candidate.state === 'indexed-confirmed' || candidate.state === 'stuck') { await redis('ZREM', payoutIndexKey, id); continue; }
         if (jobIsStuck(candidate)) {
           const journal = candidate.journal ? JSON.stringify(candidate.journal) : '';
@@ -262,7 +276,8 @@ export async function mainnetPayoutWorkerHandler(req, res) {
         if (!job) job = candidate;
       }
       if (job && job.configFingerprint !== config.fingerprint) throw new Error('MAINNET_PAYOUT_CONFIG_CHANGED');
-      return sendJson(res, 200, { ok: true, lease, job, config });
+      const signedReveal = job ? await redis('HGET', payoutSignedKey, job.id) : '';
+      return sendJson(res, 200, { ok: true, lease, job, config, signedReveal: signedReveal || '' });
     }
     if (!hex(body.lease, 24)) throw new Error('INVALID_REQUEST');
     if (body.action === 'release') {
@@ -279,6 +294,7 @@ export async function mainnetPayoutWorkerHandler(req, res) {
     if (body.action === 'prepare') {
       if (job.state !== 'queued' || !validJournal(body.journal) || job.amount !== expectedRaw(job.proof)) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
       await checkAsset(config);
+      if (await redis('EVAL', SIGNED, 1, payoutSignedKey, job.id, body.journal.reveal.id) !== 1) throw new Error('MAINNET_PAYOUT_ALREADY_SIGNED');
       job.journal = body.journal; job.transactionHash = body.journal.reveal.id; job.state = 'prepared'; job.preparedAt = Date.now();
     } else if (body.action === 'submitted') {
       if (!['prepared', 'awaiting-indexer'].includes(job.state)) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
@@ -293,6 +309,7 @@ export async function mainnetPayoutWorkerHandler(req, res) {
       job.lastCheckedAt = Date.now();
     }
     await saveJob(key, raw, job, body.lease, terminal);
+    if (job.state === 'indexed-confirmed') await redis('ZREM', payoutStuckKey, job.id);
     return sendJson(res, 200, { ok: true, job });
   } catch (error) { return mainnetPayoutError(res, error); }
 }

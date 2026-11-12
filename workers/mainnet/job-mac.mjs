@@ -4,26 +4,30 @@ import { createHmac, timingSafeEqual } from 'node:crypto';
 // No value belongs in the repository.
 export const JOB_HMAC_ENV = 'MAINNET_PAYOUT_JOB_HMAC';
 
-const canonical = value => JSON.stringify(value, Object.keys(value).sort());
+const text = value => value === undefined || value === null ? '' : String(value);
 
-// Fields that choose who is paid, how much, and for which earning. State, version,
-// and the journal are excluded so a later confirmation can keep the same mac.
-export function payableIdentity(job) {
+// Explicit field order. Do not use JSON.stringify's array replacer: it drops nested keys.
+// State and the journal stay out so the same earning can be reconciled without a new mac.
+export function payableCanonical(job) {
   const proof = job?.proof || {};
-  return {
-    amount: job?.amount,
-    configFingerprint: job?.configFingerprint,
-    decimals: job?.decimals,
-    deploymentHash: job?.deploymentHash,
-    id: job?.id,
-    network: job?.network,
-    playerId: job?.playerId,
-    proof: { correctCount: proof.correctCount, kind: proof.kind, round: proof.round, runId: proof.runId },
-    protocol: job?.protocol,
-    recipient: job?.recipient,
-    sender: job?.sender,
-    ticker: job?.ticker
-  };
+  return [
+    'geek-mainnet-job-mac-v1',
+    text(job?.id),
+    text(job?.amount),
+    text(job?.recipient),
+    text(job?.sender),
+    text(job?.playerId),
+    text(job?.network),
+    text(job?.protocol),
+    text(job?.ticker),
+    text(job?.decimals),
+    text(job?.deploymentHash),
+    text(job?.configFingerprint),
+    text(proof.kind),
+    text(proof.round),
+    text(proof.correctCount),
+    text(proof.runId)
+  ].join('\n');
 }
 
 export function jobMacSecret(env = process.env) {
@@ -33,7 +37,7 @@ export function jobMacSecret(env = process.env) {
 
 export function jobMac(job, secret) {
   if (!/^[a-f0-9]{64}$/.test(secret || '')) return null;
-  return createHmac('sha256', Buffer.from(secret, 'hex')).update(canonical(payableIdentity(job))).digest('hex');
+  return createHmac('sha256', Buffer.from(secret, 'hex')).update(payableCanonical(job)).digest('hex');
 }
 
 export function jobMacMatches(job, secret) {

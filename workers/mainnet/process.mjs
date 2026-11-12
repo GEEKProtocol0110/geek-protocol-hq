@@ -23,11 +23,16 @@ export async function processPayment({ request, signer, report }) {
       reportFailure('verify', error, report);
       throw error;
     }
+    if (claim.signedReveal && job.journal?.reveal?.id !== claim.signedReveal) {
+      const error = new Error('JOB_ALREADY_SIGNED');
+      reportFailure('prepare', error, report);
+      throw error;
+    }
     // A stuck job keeps its original journal. Do not verify, sign, or broadcast it again.
     if (job.state === 'stuck') return 'stuck';
     await step('verify', () => signer.verify(config, job));
     if (!job.journal) {
-      const journal = await step('prepare', () => signer.prepare(config, job));
+      const journal = await step('prepare', () => signer.prepare(config, job, claim.signedReveal));
       // A timeout here exits. The next claim retrieves the possibly committed
       // journal; nothing is broadcast from the unacknowledged local candidate.
       await step('persist-journal', () => update('prepare', { journal }));

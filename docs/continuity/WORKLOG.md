@@ -1402,3 +1402,7 @@ Temporary caps are 100,000 GEEK globally and 46,400 GEEK per player and per rece
 Each admitted job is HMAC-signed with Production-only `MAINNET_PAYOUT_JOB_HMAC` over the payable identity. Claim, the worker, and the signer reject a missing, wrong, or mutated mac. Preview does not create a signature production accepts. No secret value is stored.
 
 The six-hour stuck clock starts at the first submit. Stuck jobs are listed and emit `PAYOUT_UNCONFIRMED`. The original journal and earning lock remain, and a later manual check can still confirm that same hash. Temporary caps are no longer part of the job fingerprint. Network, protocol, ticker, decimals, deployment, and sender remain bound. Flags stay false.
+
+## November 12, 2026 — CHAIN-006 mac fields, replay refusal, and quarantine
+
+The job mac is an explicit ordered field list, including each proof field. Changing kind, round, correct count, or run id changes the mac. The first accepted journal is recorded by the worker handler. A queued copy of a signed, stuck, or confirmed earning is not signed again. Decode and mac failures are logged and quarantined. The earning lock is kept. A confirmed stuck job leaves the stuck list. Flags stay false. No secret value was added.
