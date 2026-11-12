@@ -223,8 +223,14 @@
   },
   "androidTest": {
     "task": "APP-001",
-    "status": "founder-approved-release",
+    "status": "merged-deployed",
     "evidence": "android/README.md",
-    "nextAction": "Verify and merge #265. The unsigned release build and protected-environment signing pipeline are prepared. Owner configuration of main-only environment, required reviewer and dedicated environment secrets remains open; no stable signing run or domain association is claimed."
+    "nextAction": "Preparation #265 merged as 1cb03f87ce65266d245d090241a6d1724b0c5cdc and production READY. Owner protected signing environment/reviewer/secrets, actual signed build/domain association and phone acceptance remain open."
+  },
+  "devicePush": {
+    "task": "GAME-005",
+    "status": "source-candidate",
+    "evidence": "docs/WEB-PUSH-TURN-ALERTS.md",
+    "nextAction": "Verify/release encrypted opt-in push, atomic outbox and protected retry; complete phone delivery acceptance separately."
   }
 }

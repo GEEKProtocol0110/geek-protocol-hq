@@ -8,6 +8,14 @@
   "trailingSlash": true,
   "rewrites": [
     {
+      "source": "/api/game-notifications",
+      "destination": "/api/lobbies?service=classic&pushCron=1"
+    },
+    {
+      "source": "/api/game-notifications/",
+      "destination": "/api/lobbies?service=classic&pushCron=1"
+    },
+    {
       "source": "/api/appearance",
       "destination": "/api/session?service=appearance"
     },
@@ -291,6 +299,12 @@
       "source": "/moderate/:path*",
       "destination": "/ops/",
       "permanent": false
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/game-notifications",
+      "schedule": "*/5 * * * *"
     }
   ]
 }
