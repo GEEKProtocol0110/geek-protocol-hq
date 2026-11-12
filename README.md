@@ -29,11 +29,11 @@ The [economy stress lab](docs/ECONOMY-STRESS.md) adds reproducible credit-path, 
 
 The [power-up and economy foundation](https://www.geekprotocol.xyz/economy/) restores six planned items, treasury categories, exact 70/30 fee examples, and a private planning journal. It cannot move funds or create spendable GEEK. Try [free assisted practice](https://www.geekprotocol.xyz/practice/) with one 50/50 and one Extra Time use per session. It awards no XP, credits, tokens or ranked entries. Read the [Economy Protocol](docs/ECONOMY-PROTOCOL.md).
 
-**Question bank:** 7,801 distinct active questions across eight categories, including fifteen original technology questions added on October 14. Guided Study has eleven topics and 191 concepts. See [Question Maintenance](docs/QUESTION-MAINTENANCE.md) for counts, source licenses, and editorial review status.
+**Question bank:** Eight categories with guided Study and reviewed/draft content tracked separately. See [Question Maintenance](docs/QUESTION-MAINTENANCE.md) and the [current project record](docs/continuity/CURRENT-STATE.md) for maintained counts and review limits.
 
 ## What is Geek Protocol?
 
-Geek Protocol turns knowledge into a verifiable player journey. Players study Kaspa and practical technology at their own pace with A.C.E., revisit missed concepts, compete in timed trivia, build persistent profiles, join live lobbies, contribute reviewed questions, and interact with the GEEK ecosystem through non-custodial Kaspa wallet proofs and a Kasware mint flow.
+Geek Protocol turns knowledge into a verifiable player journey. Players study Kaspa and practical technology at their own pace through authored lessons, revisit missed concepts, compete in timed trivia, build persistent profiles, join live lobbies, contribute reviewed questions, and interact with the GEEK ecosystem through optional Kaspa wallet proofs and a Kasware mint flow. A.C.E. development and live AI activation remain paused.
 
 The project began as a way to make learning exciting for one child. HQ is the public Alpha where that idea is becoming a transparent, security-first Proof-of-Learning platform on Kaspa.
 
@@ -45,7 +45,7 @@ The project began as a way to make learning exciting for one child. HQ is the pu
 | --- | --- | --- |
 | Public website and information surfaces | **Live** | Production at `www.geekprotocol.xyz` |
 | Ranked trivia, lobbies, leaderboards, and profiles | **Public Alpha** | Server-authoritative; Redis required |
-| Kaspa identity and account recovery | **Implemented Alpha** | Server-verified KIP-5 proofs through browser wallets or pasted signatures; wallet signing support required |
+| Kaspa identity and account recovery | **Implemented Alpha** | Passkey account access; optional saved receiving addresses and wallet recovery/proofs retain their own checks |
 | GEEK fair-mint interface | **Live / non-custodial** | A reviewed queue of up to 100 requests against the pinned deployment; each requires wallet approval |
 | Community Content Engine | **Held for banks and economy** | Historical records remain readable; new intake, publication and credits are disabled |
 | Alpha GEEK rewards | **Internal ledger only** | No withdrawals, transfers, or promised monetary value |
@@ -67,10 +67,16 @@ See the dated [Project Status](docs/PROJECT-STATUS.md) for the release-readiness
 | **Player dashboard** | Levels 1–50, 25 manual prestige ranks, achievements, challenges, verified standings, category records and collectibles |
 | **C.C.E.** | Historical submission, review and first-use records; new intake, publication and credits held for reviewed banks and economy |
 | **Profile characters** | Free block-style Personal Geek and GIGA robot editor with server-saved skin, hair, face, outfit and accessory choices, plus five launch avatars |
-| **Collection** | Five-tier, 500-NFT blueprint with planned mint/reward/GEEK-or-KAS purchase routes and hashed legacy-art archive |
+| **Collection** | 500 planned character concepts with five rarity artworks each; mint supply and ownership remain separate/disabled |
 | **Mint** | Fail-closed, user-approved GEEK KRC-20 fair-mint interface |
 | **Operations** | Private owner workspaces for questions, audit activity, payout reviews and [holiday appearance](docs/HOLIDAY-THEMES.md) |
 | **Security** | Public control posture, trust boundaries, and independent-audit gates |
+
+## Geek Games and Android
+
+[Geek Games](https://www.geekprotocol.xyz/games/) includes chess, checkers, solitaire and strategy/puzzle games. [The multiplayer lounge](https://www.geekprotocol.xyz/games/online/) keeps accepted matches without a time deadline and lists up to ten active matches per player. Optional device push alerts require browser permission; phone/OS delivery acceptance remains separate.
+
+Android test build and stable-signing preparation are merged in [#265](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/265). See [Android setup](android/README.md): owner-controlled protected signing keys and actual domain association remain open. This is not a Play Store release.
 
 ## Hall of Thanks
 
@@ -99,7 +105,7 @@ The browser renders the experience but does not own ranked answers, scores, rewa
 
 Geek Protocol is designed to fail closed around identity, mint verification, ranked play, and any future value movement.
 
-- Ranked answer keys never enter the public bundle.
+- Answer keys stay outside the browser bundle. Existing repository banks are public/exposed; private-ranked-bank and monthly-season cutover remains held.
 - Scores, XP, streaks, rewards, and deadlines are computed by the server.
 - Shared lobby rounds use a fixed server clock and one atomic answer per player and question; their practice standings do not award Alpha GEEK or tokens.
 - Wallet challenges are random, single-use, short-lived, and bound to the exact HTTPS origin and action.

@@ -25,3 +25,7 @@ Founder authorized #266 release. Integrated current main without removing lobby 
 ### Storage and abuse bounds
 
 Permanent accepted games have an atomic site-wide ceiling of 1,000 per deployment in addition to ten active games per player. At capacity, only starting another saved match is refused; existing games keep working and finishing one frees capacity. No time-based deletion or move deadline is added. Waiting-only player indexes expire with their last invitation; an index persists only while it contains an active game. Missing room keys are pruned from player indexes and, when full, the saved-game registry. Stored request/block network fingerprints are cleared on acceptance, cancellation and finish. Notification clicks fall back to a new same-origin room window if navigating an uncontrolled tab fails. Full-history chess replay remains a low-priority performance limitation for exceptionally long games; chess rule-based draws still apply.
+
+## Superseding device push implementation — GAME-005
+
+The earlier open-lounge-only notification limitation is superseded by [Device turn alerts](WEB-PUSH-TURN-ALERTS.md). Explicit opt-in, Web Push encryption, private device storage, authoritative move outbox and protected retry support alerts while closed. Actual phone delivery acceptance remains open; OS/browser restrictions still apply. The ten-active-match and no-time-expiry rules are unchanged.

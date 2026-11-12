@@ -2059,7 +2059,7 @@
       "status": "in-progress",
       "title": "Ongoing matches, My Games and turn alerts",
       "owner": "Maintainer; founder release/device review",
-      "nextAction": "Founder authorized release November 11. Resolve current-main conflicts, verify and merge #266; phone acceptance and closed-app push remain open.",
+      "nextAction": "Released in #266. Preserve no-expiry matches/My Games and security caps; GAME-005 implements device push. Phone acceptance remains open.",
       "acceptance": [
         "Atomic per-player capacity of 10 waiting/playing rooms, released on finish and expiry.",
         "Waiting invitations expire after 24 hours or 30 days; accepted matches have no time expiry and remain in My Games.",
@@ -2079,7 +2079,7 @@
       "status": "in-progress",
       "title": "Android test package and device acceptance",
       "owner": "Maintainer; founder device review",
-      "nextAction": "Founder authorized #265 merge November 11. Verify unsigned APK build and protected-environment signing preparation; owner must configure main-only environment with required reviewer and dedicated environment secrets before stable signing. Domain association and phone acceptance remain open.",
+      "nextAction": "Released package/signing preparation in #265. Owner protected environment, reviewer, dedicated signing secrets and real certificate association remain required before stable signed build/device acceptance.",
       "acceptance": [
         "Reproducible separately identified debug wrapper uses reviewed site and supplied logo.",
         "APK compiles and installs; sign-in, Back, game/lobby and network behavior checked on phone.",
@@ -2089,6 +2089,28 @@
       "evidence": [
         "android/README.md",
         ".github/workflows/android-test.yml"
+      ]
+    },
+    {
+      "id": "GAME-005",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Opt-in closed-lounge turn notifications and durable delivery",
+      "owner": "Maintainer; founder phone acceptance",
+      "nextAction": "Verify and release real Web Push with production-only keys, durable atomic move outbox and protected five-minute retry. Complete phone opt-in/delivery and Android signing acceptance separately.",
+      "acceptance": [
+        "No permission prompt or subscription without explicit device opt-in.",
+        "Encrypted device delivery while lounge closed; bounded retries, expired-device removal and current-account/turn validation.",
+        "No time expiry added to accepted games; private credentials/endpoints never published.",
+        "Real Redis and worker regression checks pass; actual phone delivery is a separate acceptance item."
+      ],
+      "dependsOn": [
+        "GAME-004"
+      ],
+      "evidence": [
+        "docs/WEB-PUSH-TURN-ALERTS.md",
+        "tests/classic-push.test.js",
+        "tests/game-push-worker.test.js"
       ]
     }
   ]

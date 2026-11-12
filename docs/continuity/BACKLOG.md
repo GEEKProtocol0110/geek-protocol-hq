@@ -88,6 +88,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-026 | P2 | in-progress | Kaspa space, planet and code-rain full-page background | Maintainer; founder release review |
 | GAME-004 | P2 | in-progress | Ongoing matches, My Games and turn alerts | Maintainer; founder release/device review |
 | APP-001 | P2 | in-progress | Android test package and device acceptance | Maintainer; founder device review |
+| GAME-005 | P2 | in-progress | Opt-in closed-lounge turn notifications and durable delivery | Maintainer; founder phone acceptance |
 
 ## CONT-001: Publish the continuation system
 
@@ -1298,7 +1299,7 @@ Evidence/specification: [docs/KASPA-MATRIX.md](../../docs/KASPA-MATRIX.md), [tes
 
 **P2 / in-progress.** Owner: Maintainer; founder release/device review. Dependencies: none.
 
-Next action: Founder authorized release November 11. Resolve current-main conflicts, verify and merge #266; phone acceptance and closed-app push remain open.
+Next action: Released in #266. Preserve no-expiry matches/My Games and security caps; GAME-005 implements device push. Phone acceptance remains open.
 
 Acceptance:
 
@@ -1313,7 +1314,7 @@ Evidence/specification: [docs/ONGOING-GAMES.md](../../docs/ONGOING-GAMES.md), [t
 
 **P2 / in-progress.** Owner: Maintainer; founder device review. Dependencies: none.
 
-Next action: Founder authorized #265 merge November 11. Verify unsigned APK build and protected-environment signing preparation; owner must configure main-only environment with required reviewer and dedicated environment secrets before stable signing. Domain association and phone acceptance remain open.
+Next action: Released package/signing preparation in #265. Owner protected environment, reviewer, dedicated signing secrets and real certificate association remain required before stable signed build/device acceptance.
 
 Acceptance:
 
@@ -1322,3 +1323,18 @@ Acceptance:
 - No release secrets or placeholder Digital Asset Links; Play submission stays separate.
 
 Evidence/specification: [android/README.md](../../android/README.md), [.github/workflows/android-test.yml](../../.github/workflows/android-test.yml).
+
+## GAME-005: Opt-in closed-lounge turn notifications and durable delivery
+
+**P2 / in-progress.** Owner: Maintainer; founder phone acceptance. Dependencies: GAME-004.
+
+Next action: Verify and release real Web Push with production-only keys, durable atomic move outbox and protected five-minute retry. Complete phone opt-in/delivery and Android signing acceptance separately.
+
+Acceptance:
+
+- No permission prompt or subscription without explicit device opt-in.
+- Encrypted device delivery while lounge closed; bounded retries, expired-device removal and current-account/turn validation.
+- No time expiry added to accepted games; private credentials/endpoints never published.
+- Real Redis and worker regression checks pass; actual phone delivery is a separate acceptance item.
+
+Evidence/specification: [docs/WEB-PUSH-TURN-ALERTS.md](../../docs/WEB-PUSH-TURN-ALERTS.md), [tests/classic-push.test.js](../../tests/classic-push.test.js), [tests/game-push-worker.test.js](../../tests/game-push-worker.test.js).

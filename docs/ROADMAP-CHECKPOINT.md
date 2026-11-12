@@ -76,3 +76,7 @@ Read [Start Here](../START-HERE.md), the maintained [state](continuity/CURRENT-S
 ## November 11 — authorized GAME-004 and Android release work
 
 Founder authorized resolving #266 first, then #265, and merging each after passing verification. #266 keeps accepted matches without a time expiry, ten active matches and My Games, while retaining current lobby security and planet rendering. Open-lounge alerts do not establish closed-app push. Android stable signing/domain trust and physical-phone acceptance retain their own evidence gates.
+
+## November 12 follow-up
+
+See [pending-work reconciliation](PR-RECONCILIATION-2026-11-12.md) for five superseded PRs and six explicitly held PRs. GAME-005 completes the device-push implementation path with phone acceptance separate; APP-001 signing/domain owner setup remains open. Private bank, migration, CCE, payouts, collection ownership and A.C.E. holds remain unchanged.

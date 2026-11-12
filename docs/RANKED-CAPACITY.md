@@ -133,3 +133,7 @@ future ranked questions or answers appear in this document.
 9. **Royale/Duel/Lobby** are out of scope. Per #200 they keep the exposed public pool; verify this before merge.
 10. **Leakage is not size-bounded.** The leakage model assumes sharing is limited; a coordinated harvester defeats any pool size within the rate limits.
 11. **Private-bank authoring throughput** (about 385 rows per category per month at target) is unverified against editorial capacity.
+
+## November 12 queue reconciliation
+
+The season design preserves Season 0 history, then numbers monthly seasons 1, 2, 3 and onward. Royale, Duel and Lobby remain outside Season 1 ranked until their private-bank handling is ready. This records the design from #204 without importing stale continuity IDs or enabling code/configuration. The private-bank/season stack remains held in #200/#206/#207/#231; a date alone does not authorize production cutover.

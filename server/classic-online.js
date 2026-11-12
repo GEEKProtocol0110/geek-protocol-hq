@@ -1,3 +1,5 @@
+import {classicPrefix,pushOutboxKey} from './classic-online-keys.js';
+import {pushReady} from './classic-push.js';
 import { isStrategy, newStrategy, moveStrategy, strategyView } from '../public/games/strategy/engine.js';
 import { randomBytes, createHash } from 'node:crypto';
 import { Chess } from '../public/games/chess/vendor/chess.js';
@@ -8,7 +10,7 @@ export const SLOW_TTL=30*86400;
 export const MAX_SAVED_GAMES=1000;
 export const savedGamesKey=()=>`${prefix()}:saved`;
 const playerIndex=id=>`${prefix()}:player:${createHash("sha256").update(id).digest("hex")}`;
-const prefix=()=>`geek:classic:${process.env.VERCEL_ENV==='production'?'production':createHash('sha256').update(`${process.env.VERCEL_ENV||'development'}:${process.env.VERCEL_URL||'local'}`).digest('hex').slice(0,16)}`;
+const prefix=classicPrefix;
 export const onlineKey=code=>`${prefix()}:room:${code}`;
 export const indexKey=()=>`${prefix()}:index`;
 const valid=code=>/^PLAY-[A-F0-9]{12}$/.test(code);
@@ -23,7 +25,7 @@ if ARGV[6] == 'playing' and redis.call('SISMEMBER',KEYS[2],ARGV[4]) == 0 then
  end
  if redis.call('SCARD',KEYS[2]) >= ${MAX_SAVED_GAMES} then return -2 end
 end
-for i=3,#KEYS do
+for i=4,#KEYS do
  redis.call('ZREMRANGEBYSCORE',KEYS[i],'-inf',ARGV[5])
  for _,code in ipairs(redis.call('ZRANGE',KEYS[i],0,-1)) do
   if redis.call('EXISTS',roomPrefix..code) == 0 then redis.call('ZREM',KEYS[i],code) end
@@ -32,11 +34,12 @@ for i=3,#KEYS do
 end
 if ARGV[3] == '0' then redis.call('SET',KEYS[1],ARGV[2]) else redis.call('SET',KEYS[1],ARGV[2],'EX',ARGV[3]) end
 if ARGV[6] == 'playing' then redis.call('SADD',KEYS[2],ARGV[4]) elseif ARGV[6] == 'finished' then redis.call('SREM',KEYS[2],ARGV[4]) end
-for i=3,#KEYS do
+for i=4,#KEYS do
  if ARGV[6] == 'finished' then redis.call('ZREM',KEYS[i],ARGV[4]) else redis.call('ZADD',KEYS[i],ARGV[7],ARGV[4]) end
  local last=redis.call('ZREVRANGE',KEYS[i],0,0,'WITHSCORES')
  if #last == 0 then redis.call('DEL',KEYS[i]) elseif last[2] == 'inf' then redis.call('PERSIST',KEYS[i]) else redis.call('EXPIREAT',KEYS[i],math.ceil(tonumber(last[2])/1000)+1) end
 end
+if ARGV[8]=='1' then redis.call('ZADD',KEYS[3],ARGV[5],ARGV[4]) elseif ARGV[6]=='finished' then redis.call('ZREM',KEYS[3],ARGV[4]) end
 return 1`;
 export const ONLINE_CAS=`-- geek-classic-cas-v2
 if redis.call('GET',KEYS[1]) ~= ARGV[1] then return 0 end
@@ -121,6 +124,8 @@ export function transitionOnline(room,id,action,body={},now=Date.now()){
    if(r.game!=='chess'&&r.ply>=600&&r.state==='playing'){r.state='finished';r.result='Draw at the 600-move practice limit';}
   }else fail('INVALID_REQUEST');
  }
+ if(action==='move'){const other=host?r.guest?.id:r.host.id;r.pendingPush=r.state==='playing'&&other&&isPlayersTurn(r,other)?{playerId:other,ply:r.ply,createdAt:now}:null;}
+ if(r.state==='finished')r.pendingPush=null;
  if(r.state!=='waiting'){r.blocked=[];r.requests=[];}
  if(r.state==='finished'&&!r.expiresAt)r.expiresAt=now+SLOW_TTL*1000;r.revision++;r.updatedAt=now;return r;
 }
@@ -129,7 +134,7 @@ export async function createOnline(player,body){
   const code=`PLAY-${randomBytes(6).toString('hex').toUpperCase()}`;
   if(!publicNameAllowed(player.name))fail('ONLINE_NAME_NOT_ALLOWED');
   const room=newOnlineRoom({code,player,game:body.game,visibility:body.visibility||'public',dotsSize:body.dotsSize,pace:body.pace});
-  const result=await redis('EVAL',ONLINE_CREATE,3,onlineKey(code),savedGamesKey(),playerIndex(player.id),'',JSON.stringify(room),Math.ceil((room.expiresAt-Date.now())/1000),code,Date.now(),room.state,room.expiresAt);if(result===-2)fail('ONLINE_CAPACITY');if(result===-1)fail('ONLINE_LIMIT');if(result===1){
+  const result=await redis('EVAL',ONLINE_CREATE,4,onlineKey(code),savedGamesKey(),pushOutboxKey(),playerIndex(player.id),'',JSON.stringify(room),Math.ceil((room.expiresAt-Date.now())/1000),code,Date.now(),room.state,room.expiresAt,'0');if(result===-2)fail('ONLINE_CAPACITY');if(result===-1)fail('ONLINE_LIMIT');if(result===1){
    if(room.visibility==='public')await pipeline([['ZADD',indexKey(),room.createdAt,code],['ZREMRANGEBYRANK',indexKey(),0,-101],['EXPIRE',indexKey(),SLOW_TTL]]);
    return room;
   }
@@ -151,7 +156,7 @@ export async function updateOnline(code,id,action,body){
  for(let attempt=0;attempt<5;attempt++){
   if(!valid(code))fail('ONLINE_NOT_FOUND');const raw=await redis('GET',onlineKey(code));const r=parseStoredJson(raw);if(!r)fail('ONLINE_NOT_FOUND');
   const next=transitionOnline(r,id,action,body);const ttl=next.expiresAt?Math.max(1,Math.ceil((next.expiresAt-Date.now())/1000)):0;
-  const keys=[onlineKey(code),savedGamesKey(),playerIndex(next.host.id),...(next.guest?[playerIndex(next.guest.id)]:[])];const result=await redis('EVAL',ONLINE_CAS,keys.length,...keys,raw,JSON.stringify(next),ttl,code,Date.now(),next.state,next.expiresAt||'+inf');if(result===-2)fail('ONLINE_CAPACITY');if(result===-1)fail('ONLINE_LIMIT');if(result===1){
+  const keys=[onlineKey(code),savedGamesKey(),pushOutboxKey(),playerIndex(next.host.id),...(next.guest?[playerIndex(next.guest.id)]:[])];const result=await redis('EVAL',ONLINE_CAS,keys.length,...keys,raw,JSON.stringify(next),ttl,code,Date.now(),next.state,next.expiresAt||'+inf',pushReady()&&action==='move'&&next.pendingPush?'1':'0');if(result===-2)fail('ONLINE_CAPACITY');if(result===-1)fail('ONLINE_LIMIT');if(result===1){
    if(r.visibility==='public'&&r.state==='waiting'&&next.state!=='waiting')await redis('ZREM',indexKey(),code);
    return next;
   }

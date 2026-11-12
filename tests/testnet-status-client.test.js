@@ -215,3 +215,9 @@ test('retained original attempts say retries stopped and a fresh attempt remains
   assert.equal(ui.node('[data-testnet-badge]').textContent, 'Queued');
   assert.ok(descriptions(ui).includes('Fresh test · original receipt retained'));
 });
+
+test('unknown visitors make no automatic rewards request and a later sign-in restores the normal read',async()=>{
+ const calls=[],listeners=new Map();const ui=clientFixture(async(url,options)=>{calls.push({url,options});return json(status({enrollment:null,records:[]}));},{localStorage:{getItem:()=>null,setItem(){},removeItem(){}}});
+ const panel=ui.node('[data-testnet-status]');panel.hidden=true;ui.document.addEventListener=(name,handler)=>listeners.set(name,handler);ui.run(source);await settle();assert.equal(calls.length,0);assert.equal(panel.hidden,true);assert.equal(ui.timers.size,0);
+ await listeners.get('geek:signed-in')();await settle();assert.equal(calls.length,1);assert.equal(calls[0].url,'/api/rewards/?service=testnet');
+});
