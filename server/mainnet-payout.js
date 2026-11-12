@@ -1,4 +1,5 @@
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
+import { jobMac, jobMacMatches, jobMacSecret } from '../workers/mainnet/job-mac.mjs';
 import { redis, rateLimit } from './redis.js';
 import { isValidKaspaMainnetAddress } from './kaspa-address.js';
 import { decodeRewardAddresses, rewardAddressKey, validReceivingAddress } from './reward-addresses.js';
@@ -20,6 +21,7 @@ export const payoutPlayerDayKey = (day, playerId) => `geek:mainnet-payout:player
 export const payoutAddressDayKey = (day, recipient) => `geek:mainnet-payout:address-day:${day}:${createHash('sha256').update(String(recipient)).digest('hex')}`;
 export const payoutJobKey = id => `geek:mainnet-payout:job:${id}`;
 export const payoutEarnKey = id => `geek:mainnet-payout:earn:${id}`;
+export const payoutStuckKey = 'geek:mainnet-payout:stuck:v1';
 const leaseKey = 'geek:mainnet-payout:sender-lease:v1';
 export const payoutDay = (now = Date.now()) => new Date(now).toISOString().slice(0, 10);
 
@@ -36,13 +38,22 @@ export function mainnetPayoutConfig() {
   // Preview and any non-production environment cannot admit, even if a secret is present.
   // A missing worker token skips admission; it must not fail the player's answer.
   if (process.env.VERCEL_ENV !== 'production' || process.env.MAINNET_PAYOUT_ENABLED !== 'true') return null;
-  if (!hex(process.env.MAINNET_PAYOUT_WORKER_TOKEN || '', 64) || !isValidKaspaMainnetAddress(MAINNET_PAYOUT_SENDER)) return null;
-  const config = {
+  if (!jobMacSecret() || !hex(process.env.MAINNET_PAYOUT_WORKER_TOKEN || '', 64) || !isValidKaspaMainnetAddress(MAINNET_PAYOUT_SENDER)) return null;
+  const identity = {
     network: 'mainnet', protocol: GEEK_PROTOCOL, ticker: GEEK_TICKER, deploymentHash: GEEK_DEPLOYMENT_HASH,
-    decimals: String(GEEK_DECIMALS), sender: MAINNET_PAYOUT_SENDER, dailyCapRaw: toRaw(DAILY_CAP_WHOLE),
-    playerCapRaw: toRaw(PLAYER_DAILY_CAP_WHOLE), addressCapRaw: toRaw(PLAYER_DAILY_CAP_WHOLE)
+    decimals: String(GEEK_DECIMALS), sender: MAINNET_PAYOUT_SENDER
   };
-  return { ...config, fingerprint: hash(config) };
+  return {
+    ...identity, dailyCapRaw: toRaw(DAILY_CAP_WHOLE), playerCapRaw: toRaw(PLAYER_DAILY_CAP_WHOLE), addressCapRaw: toRaw(PLAYER_DAILY_CAP_WHOLE),
+    fingerprint: hash(identity)
+  };
+}
+
+export function payoutIdentityFingerprint(fields) {
+  return hash({
+    network: fields.network, protocol: fields.protocol, ticker: fields.ticker,
+    deploymentHash: fields.deploymentHash, decimals: String(fields.decimals), sender: fields.sender
+  });
 }
 
 export function earningId(playerId, run, quote, now) {
@@ -82,10 +93,12 @@ const qualifyingProofCorrect = proof => proof?.kind === 'daily'
 
 // A journaled job that is still unconfirmed after the window is stuck.
 // Queued jobs have not been signed and stay available for the signer.
+// The clock starts when the original journal is first submitted, not when it is prepared.
+// A prepared job that was never broadcast is not abandoned.
 export function jobIsStuck(job, now = Date.now()) {
-  if (!job?.journal || !['prepared', 'awaiting-indexer'].includes(job.state)) return false;
-  const since = Number.isSafeInteger(job.preparedAt) ? job.preparedAt : job.createdAt;
-  return Number.isSafeInteger(since) && now - since >= STUCK_AFTER_MS;
+  if (job?.state !== 'awaiting-indexer' || !job.journal) return false;
+  if (!Number.isSafeInteger(job.submittedAt) || job.submittedAt <= 0) return false;
+  return now - job.submittedAt >= STUCK_AFTER_MS;
 }
 
 // Checked before the ranked write. A bad payout key fails the answer closed.
@@ -155,6 +168,8 @@ export async function prepareMainnetPayout(playerId, run) {
     ticker: config.ticker, sender: config.sender, recipient, deploymentHash: config.deploymentHash,
     configFingerprint: config.fingerprint, amount: quote.raw, decimals: config.decimals, proof, createdAt
   };
+  job.mac = jobMac(job, jobMacSecret());
+  if (!job.mac) return null;
   const day = payoutDay(createdAt);
   return {
     keys: [payoutEarnKey(id), payoutJobKey(id), payoutIndexKey, payoutDayKey(day), addressKey, payoutPlayerDayKey(day, playerId), payoutAddressDayKey(day, recipient)],
@@ -230,13 +245,18 @@ export async function mainnetPayoutWorkerHandler(req, res) {
       for (const id of page) {
         const key = payoutJobKey(id), raw = await redis('GET', key);
         if (!raw) { await redis('ZREM', payoutIndexKey, id); continue; }
-        const candidate = decodeJob(raw, id);
+        let candidate;
+        try { candidate = decodeJob(raw, id); }
+        catch { await redis('ZREM', payoutIndexKey, id); continue; }
+        if (!jobMacMatches(candidate, jobMacSecret())) { await redis('ZREM', payoutIndexKey, id); continue; }
         if (candidate.state === 'indexed-confirmed' || candidate.state === 'stuck') { await redis('ZREM', payoutIndexKey, id); continue; }
         if (jobIsStuck(candidate)) {
           const journal = candidate.journal ? JSON.stringify(candidate.journal) : '';
           candidate.state = 'stuck'; candidate.stuckAt = Date.now();
           if (journal && JSON.stringify(candidate.journal) !== journal) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
           await saveJob(key, raw, candidate, lease, true);
+          await redis('ZADD', payoutStuckKey, String(candidate.stuckAt), candidate.id);
+          console.info(JSON.stringify({ event: 'mainnet-payout-stuck', code: 'PAYOUT_UNCONFIRMED' }));
           continue;
         }
         if (!job) job = candidate;
@@ -253,7 +273,7 @@ export async function mainnetPayoutWorkerHandler(req, res) {
     if (!['prepare', 'submitted', 'check'].includes(body.action) || !hex(body.id, 64) || !hex(body.version, 24) ||
         Object.keys(body).some(key => !['action', 'lease', 'id', 'version', ...(body.action === 'prepare' ? ['journal'] : [])].includes(key))) throw new Error('INVALID_REQUEST');
     const key = payoutJobKey(body.id), raw = await redis('GET', key), job = decodeJob(raw, body.id);
-    if (job.version !== body.version || job.configFingerprint !== config.fingerprint || await redis('GET', leaseKey) !== body.lease) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
+    if (job.version !== body.version || job.configFingerprint !== config.fingerprint || await redis('GET', leaseKey) !== body.lease || !jobMacMatches(job, jobMacSecret())) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
     if (job.state === 'stuck' && body.action !== 'check') throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
     let terminal = false;
     if (body.action === 'prepare') {
@@ -262,6 +282,7 @@ export async function mainnetPayoutWorkerHandler(req, res) {
       job.journal = body.journal; job.transactionHash = body.journal.reveal.id; job.state = 'prepared'; job.preparedAt = Date.now();
     } else if (body.action === 'submitted') {
       if (!['prepared', 'awaiting-indexer'].includes(job.state)) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
+      if (!Number.isSafeInteger(job.submittedAt)) job.submittedAt = Date.now();
       job.state = 'awaiting-indexer';
     } else {
       if (!job.journal || job.state === 'queued') throw new Error('MAINNET_PAYOUT_STATE_CHANGED');

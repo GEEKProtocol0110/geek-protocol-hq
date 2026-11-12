@@ -2,6 +2,7 @@
 // Restart reads the durable journal before any transaction construction.
 // Fee repair stays optional: this worker does not offer it unless a signer implements repair.
 import { reportFailure, reportJournalState } from './diagnostics.mjs';
+import { jobMacMatches, jobMacSecret } from './job-mac.mjs';
 export async function processPayment({ request, signer, report }) {
   const step = async (stage, action) => {
     try { return await action(); }
@@ -17,6 +18,11 @@ export async function processPayment({ request, signer, report }) {
   };
   try {
     if (!job) return 'idle';
+    if (!jobMacMatches(job, jobMacSecret())) {
+      const error = new Error('JOB_MAC_INVALID');
+      reportFailure('verify', error, report);
+      throw error;
+    }
     // A stuck job keeps its original journal. Do not verify, sign, or broadcast it again.
     if (job.state === 'stuck') return 'stuck';
     await step('verify', () => signer.verify(config, job));

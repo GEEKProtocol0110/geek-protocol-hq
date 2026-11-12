@@ -48,6 +48,7 @@ check(mainnetWorker.indexOf("MAINNET_SIGNER_ENABLED !== 'true'") !== -1 && mainn
 check(mainnetSchedule.includes('kaspa:qql9hrch8rqk62ywncjmm4y3qr6dv0d8r0vvu8q7382ccawlwz50xqu0e3gvs'), 'mainnet hot wallet is the pinned public receive address');
 check(envExample.includes('MAINNET_PAYOUT_ENABLED=false') && envExample.includes('MAINNET_SIGNER_ENABLED=false'), 'mainnet payout example flags stay false');
 check(!/MAINNET_SIGNER_PRIVATE_KEY\s*=\s*\S/.test(envExample), 'mainnet signing key is not stored in the env example');
+check(envExample.includes('MAINNET_PAYOUT_JOB_HMAC') && !/MAINNET_PAYOUT_JOB_HMAC\s*=/.test(envExample), 'job hmac secret is named and has no committed value');
 check(rewards.includes('PAYOUT_CHANGE_COOLDOWN_MS'), 'payout changes declare a cooldown');
 check(rewards.includes('requirePayoutAuthorization'), 'linked identities require fresh payout authorization');
 check(rewards.includes('payoutMutationHistory'), 'payout mutations retain a bounded risk history');

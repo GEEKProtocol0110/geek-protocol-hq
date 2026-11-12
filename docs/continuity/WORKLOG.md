@@ -1396,3 +1396,9 @@ Reward rules recorded for a later enable: 100 GEEK once per qualifying Daily; th
 Gee confirmed Gauntlet GEEK is `ROUND_CONFIG.reward` times the server-graded correct count. One correct answer in round 10 is 1,800; 18,000 is rejected for that proof. Zero correct admits no job. Daily remains 100 once. The correct count is counted from stored boolean grades. The signer recomputes the amount from kind, round, and `correctCount` and requires an exact match.
 
 Temporary caps are 100,000 GEEK globally and 46,400 GEEK per player and per receiving address. The active index lists outstanding jobs only. A journal still unconfirmed six hours after preparation is marked stuck, keeps its original journal and earning lock, and no longer blocks later jobs. Admission and both signer entry points require production plus the explicit flag. A missing worker token skips admission and does not fail the saved answer. Ranked starts use the network address only, still 20 per hour. Settlement flags remain false. No signing key was added.
+
+## November 12, 2026 — CHAIN-006 job HMAC, stuck visibility, and cap fingerprint
+
+Each admitted job is HMAC-signed with Production-only `MAINNET_PAYOUT_JOB_HMAC` over the payable identity. Claim, the worker, and the signer reject a missing, wrong, or mutated mac. Preview does not create a signature production accepts. No secret value is stored.
+
+The six-hour stuck clock starts at the first submit. Stuck jobs are listed and emit `PAYOUT_UNCONFIRMED`. The original journal and earning lock remain, and a later manual check can still confirm that same hash. Temporary caps are no longer part of the job fingerprint. Network, protocol, ticker, decimals, deployment, and sender remain bound. Flags stay false.

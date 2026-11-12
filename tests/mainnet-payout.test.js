@@ -10,11 +10,13 @@ import { rewardAddressKey } from '../server/reward-addresses.js';
 import { GEEK_DEPLOYMENT } from '../server/geek-deployment.js';
 import { ROUND_CONFIG } from '../server/game-economy.js';
 import {
-  PAYOUT_INDEX_CEILING, STUCK_AFTER_MS, earningId, mainnetPayoutFlags, payoutAddressDayKey, payoutDay, payoutDayKey,
-  payoutEarnKey, payoutIndexKey, payoutJobKey, payoutPlayerDayKey
+  PAYOUT_INDEX_CEILING, STUCK_AFTER_MS, earningId, mainnetPayoutConfig, mainnetPayoutFlags, payoutAddressDayKey, payoutDay, payoutDayKey,
+  payoutEarnKey, payoutIdentityFingerprint, payoutIndexKey, payoutJobKey, payoutPlayerDayKey, payoutStuckKey
 } from '../server/mainnet-payout.js';
 import { createCronHandler } from '../workers/mainnet/cron.mjs';
 import { workerRequest } from '../workers/mainnet/request.mjs';
+import { jobMac, jobMacMatches } from '../workers/mainnet/job-mac.mjs';
+import { processPayment } from '../workers/mainnet/process.mjs';
 import {
   DAILY_CAP_WHOLE, DAILY_WHOLE, GAUNTLET_PERFECT_WHOLE, GAUNTLET_REWARD_WHOLE, GEEK_DEPLOYMENT_HASH, GEEK_TICKER,
   MAINNET_PAYOUT_SENDER, PERFECT_GAUNTLET_WHOLE, PLAYER_DAILY_CAP_WHOLE, allowedRawAmounts, expectedRaw, quoteGeekReward, toRaw
@@ -46,6 +48,7 @@ beforeEach(async () => {
   delete process.env.MAINNET_PAYOUT_ENABLED;
   delete process.env.MAINNET_SIGNER_ENABLED;
   delete process.env.MAINNET_PAYOUT_WORKER_TOKEN;
+  delete process.env.MAINNET_PAYOUT_JOB_HMAC;
   delete process.env.VERCEL_ENV;
   indexerPayload = null;
   Object.assign(process.env, {
@@ -83,7 +86,13 @@ const saveAddress = async (cookie) => {
     mainnetEligibleAt: Date.now() - 1000, mainnet: recipient, 'testnet-10': '' };
   await fixture.command('SET', rewardAddressKey(id), JSON.stringify(record));
 };
-const enable = () => { process.env.MAINNET_PAYOUT_ENABLED = 'true'; process.env.MAINNET_PAYOUT_WORKER_TOKEN = token; process.env.VERCEL_ENV = 'production'; };
+const hmacSecret = 'cd'.repeat(32);
+const enable = () => {
+  process.env.MAINNET_PAYOUT_ENABLED = 'true';
+  process.env.MAINNET_PAYOUT_WORKER_TOKEN = token;
+  process.env.MAINNET_PAYOUT_JOB_HMAC = hmacSecret;
+  process.env.VERCEL_ENV = 'production';
+};
 const jobs = async () => {
   const ids = await fixture.command('ZRANGE', payoutIndexKey, 0, -1);
   return Promise.all(ids.map(async id => JSON.parse(await fixture.command('GET', payoutJobKey(id)))));
@@ -359,6 +368,7 @@ return redis.call('ZCARD', KEYS[1])`, 1, payoutIndexKey, String(PAYOUT_INDEX_CEI
 test('preview and a missing worker token do not admit a job or fail the saved answer', async () => {
   process.env.MAINNET_PAYOUT_ENABLED = 'true';
   process.env.MAINNET_PAYOUT_WORKER_TOKEN = token;
+  process.env.MAINNET_PAYOUT_JOB_HMAC = 'ab'.repeat(32);
   process.env.VERCEL_ENV = 'preview';
   const preview = await player();
   await saveAddress(preview);
@@ -388,9 +398,20 @@ test('a journal that never confirms is removed from the active queue without a s
   older.state = 'prepared';
   older.journal = journal;
   older.transactionHash = journal.reveal.id;
-  older.preparedAt = Date.now() - STUCK_AFTER_MS - 1000;
+  older.preparedAt = Date.now() - STUCK_AFTER_MS - 5000;
+  delete older.submittedAt;
   await fixture.command('SET', payoutJobKey(older.id), JSON.stringify(older));
   await fixture.command('ZADD', payoutIndexKey, '1', older.id);
+  const info = console.info;
+  const events = [];
+  console.info = (...args) => { events.push(args.map(String).join(' ')); };
+  const stillPrepared = await call(sessionHandler, 'POST', { action: 'claim' }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
+  assert.equal(stillPrepared.body.job.id, older.id);
+  assert.equal(stillPrepared.body.job.state, 'prepared');
+  await call(sessionHandler, 'POST', { action: 'release', lease: stillPrepared.body.lease }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
+  older.submittedAt = Date.now() - STUCK_AFTER_MS - 1000;
+  older.state = 'awaiting-indexer';
+  await fixture.command('SET', payoutJobKey(older.id), JSON.stringify(older));
   const second = await player();
   await saveAddress(second);
   result = await play(second, 'start', { mode: 'daily', category: 'kaspa' });
@@ -408,6 +429,17 @@ test('a journal that never confirms is removed from the active queue without a s
   const rejected = await call(sessionHandler, 'POST', { action: 'prepare', lease: claimed.body.lease, id: older.id, version: stuck.version, journal }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
   assert.equal(rejected.statusCode, 409);
   assert.deepEqual(JSON.parse(await fixture.command('GET', payoutJobKey(older.id))).journal, journal);
+  assert.equal((await fixture.command('ZRANGE', payoutStuckKey, 0, -1)).includes(older.id), true);
+  assert.match(events.join('\n'), /"code":"PAYOUT_UNCONFIRMED"/);
+  console.info = info;
+  indexerPayload = (url) => {
+    if (String(url).includes(`/op/${journal.reveal.id}`)) return { message: 'successful', result: [{ p: 'KRC-20', op: 'transfer', hashRev: journal.reveal.id, tick: 'GEEK', from: MAINNET_PAYOUT_SENDER, to: recipient, amt: stuck.amount, mtsAdd: String(Date.now()), txAccept: '1', opAccept: '1', opScore: '1', checkpoint: 'ab'.repeat(32) }] };
+    return { message: 'successful', result: [{ tick: 'GEEK', state: 'deployed', hashRev: GEEK_DEPLOYMENT_HASH, dec: '8', p: 'KRC-20', op: 'deploy', txAccept: '1', opAccept: '1' }] };
+  };
+  const confirmed = await call(sessionHandler, 'POST', { action: 'check', lease: claimed.body.lease, id: older.id, version: stuck.version }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
+  assert.equal(confirmed.statusCode, 200, JSON.stringify(confirmed.body));
+  assert.equal(confirmed.body.job.state, 'indexed-confirmed');
+  assert.deepEqual(confirmed.body.job.journal, journal);
   await call(sessionHandler, 'POST', { action: 'release', lease: claimed.body.lease }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
 });
 
@@ -420,4 +452,49 @@ test('ranked starts share one 20-per-hour budget for an IP across User-Agent cha
   assert.equal(statuses[20], 429);
   const other = await player();
   assert.equal((await start(other, '198.51.100.21', 'agent-0')).statusCode, 201);
+});
+
+test('a production HMAC binds amount, address, and earning id, and a preview secret is not payable', async () => {
+  enable();
+  const cookie = await player();
+  await saveAddress(cookie);
+  let result = await play(cookie, 'start', { mode: 'daily', category: 'kaspa' });
+  result = await answerRound(cookie, result.body);
+  assert.equal((await play(cookie, 'finish', { runId: result.run.id })).statusCode, 200);
+  const real = (await jobs())[0];
+  assert.equal(jobMacMatches(real, hmacSecret), true);
+  assert.equal(jobMacMatches(real, 'ab'.repeat(32)), false);
+  assert.equal(jobMacMatches({ ...real, mac: undefined }, hmacSecret), false);
+  const forged = { ...real, id: 'f'.repeat(64), amount: toRaw(18000), mac: real.mac };
+  await fixture.command('SET', payoutJobKey(forged.id), JSON.stringify(forged));
+  await fixture.command('ZADD', payoutIndexKey, '1', forged.id);
+  const claimed = await call(sessionHandler, 'POST', { action: 'claim' }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
+  assert.equal(claimed.statusCode, 200);
+  assert.equal(claimed.body.job.id, real.id);
+  assert.equal((await fixture.command('ZRANGE', payoutIndexKey, 0, -1)).includes(forged.id), false);
+  let prepared = 0;
+  await assert.rejects(() => processPayment({
+    request: async () => ({ lease: 'a'.repeat(24), job: forged, config: {} }),
+    signer: { verify() { prepared += 1; }, prepare() { prepared += 1; }, submit() { prepared += 1; } }
+  }), /JOB_MAC_INVALID/);
+  assert.equal(prepared, 0);
+  await call(sessionHandler, 'POST', { action: 'release', lease: claimed.body.lease }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
+  delete process.env.MAINNET_PAYOUT_JOB_HMAC;
+  const unsigned = await player();
+  await saveAddress(unsigned);
+  result = await play(unsigned, 'start', { mode: 'daily', category: 'kaspa' });
+  result = await answerRound(unsigned, result.body);
+  assert.equal((await play(unsigned, 'finish', { runId: result.run.id })).statusCode, 200);
+  assert.equal((await jobs()).some(job => job.playerId === playerId(unsigned)), false);
+});
+
+test('cap changes do not alter the job fingerprint, and asset identity changes do', () => {
+  enable();
+  const config = mainnetPayoutConfig();
+  assert.equal(payoutIdentityFingerprint({ ...config, dailyCapRaw: '1', playerCapRaw: '2', addressCapRaw: '3' }), config.fingerprint);
+  assert.notEqual(payoutIdentityFingerprint({ ...config, ticker: 'GEEKT' }), config.fingerprint);
+  assert.notEqual(payoutIdentityFingerprint({ ...config, sender: recipient }), config.fingerprint);
+  assert.notEqual(payoutIdentityFingerprint({ ...config, decimals: '7' }), config.fingerprint);
+  assert.notEqual(payoutIdentityFingerprint({ ...config, network: 'testnet-10' }), config.fingerprint);
+  assert.notEqual(payoutIdentityFingerprint({ ...config, deploymentHash: 'b'.repeat(64) }), config.fingerprint);
 });

@@ -8,7 +8,7 @@ const reasons = new Set(['RPC_TIMEOUT', 'INDEXER_UNAVAILABLE', 'DEDICATED_SIGNER
   'CANONICAL_HQ_REQUIRED', 'MAINNET_SYNCED_NODE_REQUIRED', 'SIGNER_POLICY_MISMATCH', 'PINNED_ASSET_REQUIRED',
   'GEEK_FUNDING_REQUIRED', 'FUNDED_UTXO_REQUIRED', 'CONSOLIDATION_NOT_ALLOWED', 'COMMIT_OUTPUT_INVALID',
   'FEE_LIMIT_EXCEEDED', 'JOURNAL_LIMIT_EXCEEDED', 'JOURNAL_HASH_MISMATCH', 'RPC_HASH_MISMATCH', 'HQ_REQUEST_FAILED',
-  'TRANSACTION_MASS_INVALID', 'FEE_RATE_SHORTFALL']);
+  'TRANSACTION_MASS_INVALID', 'FEE_RATE_SHORTFALL', 'JOB_MAC_INVALID']);
 const outcomes = new Set(['idle', 'busy', 'indexed-confirmed', 'reconciling', 'awaiting-indexer', 'paused', 'stuck']);
 const write = event => console[event.event === 'mainnet-worker-failure' ? 'error' : 'info'](JSON.stringify(event));
 const emit = (event, report) => { try { report(event); } catch { /* Logging must not change payment recovery. */ } };

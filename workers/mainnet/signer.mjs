@@ -1,6 +1,7 @@
 import { Wasm } from '@kasplex/kiwi';
 import { readRpcHealth, rpcDeadline } from './rpc-health.mjs';
 import { GEEK_DECIMALS, GEEK_DEPLOYMENT_HASH, GEEK_TICKER, MAINNET_PAYOUT_SENDER, expectedRaw } from './schedule.mjs';
+import { jobMacMatches } from './job-mac.mjs';
 
 const hashPattern = /^[a-f0-9]{64}$/;
 const BASE = 'https://api.kasplex.org/v1/krc20';
@@ -65,6 +66,7 @@ export const inscription = (key, job) => new Wasm.ScriptBuilder()
 
 export async function prepareTransactions(key, job, entries, policy = livePolicy) {
   const rules = policyOf(policy);
+  if (!jobMacMatches(job, rules.jobHmacSecret)) throw new Error('JOB_MAC_INVALID');
   const sender = key.toPublicKey().toAddress(rules.addressNetwork).toString();
   // Exact amount for this proof's round and server-graded correctCount. Another
   // schedule amount, including that round's perfect maximum, is not payable.
@@ -147,7 +149,7 @@ export function createSigner(secret, rpc) {
           config?.deploymentHash !== GEEK_DEPLOYMENT_HASH || job?.deploymentHash !== GEEK_DEPLOYMENT_HASH ||
           String(config?.decimals) !== String(GEEK_DECIMALS) || String(job?.decimals) !== String(GEEK_DECIMALS) ||
           config?.fingerprint !== job?.configFingerprint || job?.amount !== expectedRaw(job?.proof) ||
-          job?.recipient === job?.sender) throw new Error('SIGNER_POLICY_MISMATCH');
+          job?.recipient === job?.sender || !jobMacMatches(job, process.env.MAINNET_PAYOUT_JOB_HMAC)) throw new Error('SIGNER_POLICY_MISMATCH');
       const [asset, deploy] = await Promise.all([indexed(`token/${job.ticker}`), indexed(`op/${job.deploymentHash}`)]);
       if (asset?.tick !== job.ticker || asset.state !== 'deployed' || asset.hashRev !== job.deploymentHash || asset.dec !== String(job.decimals) ||
           deploy?.hashRev !== job.deploymentHash || deploy.p !== 'KRC-20' || deploy.op !== 'deploy' || deploy.tick !== job.ticker ||
@@ -159,8 +161,9 @@ export function createSigner(secret, rpc) {
       }
     },
     async prepare(config, job) {
+      if (!jobMacMatches(job, process.env.MAINNET_PAYOUT_JOB_HMAC)) throw new Error('JOB_MAC_INVALID');
       const { entries } = await bounded(rpc.getUtxosByAddresses({ addresses: [config.sender] }));
-      return prepareTransactions(key, job, entries);
+      return prepareTransactions(key, job, entries, { ...livePolicy, jobHmacSecret: process.env.MAINNET_PAYOUT_JOB_HMAC });
     },
     async submit(saved) {
       const tx = Wasm.Transaction.deserializeFromSafeJSON(saved.transaction);

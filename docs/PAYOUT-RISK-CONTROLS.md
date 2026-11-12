@@ -7,7 +7,7 @@ Status: implemented Alpha control; configuration and independent review required
 
 The rewards page stores a preferred Kaspa mainnet receiving address for possible future use. The separate public mint page can request one user-approved, non-custodial mint through Kasware. A review approval is evidence only: it never changes `settlementEligible: false` or `withdrawalsEnabled: false`.
 
-A separate mainnet worker, ported from the tested GEEKT signer, can build a current KRC-20 GEEK transfer only when `MAINNET_PAYOUT_ENABLED` and `MAINNET_SIGNER_ENABLED` are both explicitly true. Both are false in the committed defaults, so this worker does not settle or withdraw. The signing key is not in the repository. Add the signing key in the Vercel or GitHub secret UI before any later enable. See [Mainnet GEEK payout worker](MAINNET-GEEK-PAYOUT.md).
+A separate mainnet worker, ported from the tested GEEKT signer, can build a current KRC-20 GEEK transfer only when `MAINNET_PAYOUT_ENABLED` and `MAINNET_SIGNER_ENABLED` are both explicitly true. Both are false in the committed defaults, so this worker does not settle or withdraw. The signing key is not in the repository. Add the signing key in the Vercel or GitHub secret UI before any later enable. Payable jobs are also bound by the Production-only `MAINNET_PAYOUT_JOB_HMAC` secret. Add that in the same secret UI for HQ production and the worker project. No secret value is stored here. See [Mainnet GEEK payout worker](MAINNET-GEEK-PAYOUT.md).
 
 ## Player notice
 

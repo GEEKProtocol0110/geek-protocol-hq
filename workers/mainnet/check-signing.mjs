@@ -6,14 +6,17 @@ import { fileURLToPath } from 'node:url';
 import { Wasm } from '@kasplex/kiwi';
 import { inscription, livePolicy, prepareTransactions, createSigner } from './signer.mjs';
 import { DAILY_WHOLE, GAUNTLET_PERFECT_WHOLE, MAINNET_PAYOUT_SENDER, toRaw } from './schedule.mjs';
+import { jobMac } from './job-mac.mjs';
 
 const key = new Wasm.PrivateKey('1'.padStart(64, '0'));
 const sender = key.toPublicKey().toAddress('mainnet').toString();
 const recipient = new Wasm.PrivateKey('2'.padStart(64, '0')).toPublicKey().toAddress('mainnet').toString();
-const job = { network: 'mainnet', sender, recipient, ticker: 'GEEK', amount: toRaw(DAILY_WHOLE), proof: { kind: 'daily', round: 1, correctCount: 1 } };
+const hmacSecret = 'cd'.repeat(32);
+const mac = value => ({ ...value, mac: jobMac(value, hmacSecret) });
+const job = mac({ network: 'mainnet', sender, recipient, ticker: 'GEEK', amount: toRaw(DAILY_WHOLE), proof: { kind: 'daily', round: 1, correctCount: 1 } });
 const entry = { address: sender, amount: 2000000000n, outpoint: { transactionId: 'a'.repeat(64), index: 2 },
   scriptPublicKey: Wasm.payToAddressScript(key.toPublicKey().toAddress('mainnet')), blockDaaScore: 0n, isCoinbase: false };
-const fixturePolicy = { ...livePolicy, sender, syntheticFixture: true };
+const fixturePolicy = { ...livePolicy, sender, syntheticFixture: true, jobHmacSecret: hmacSecret };
 
 test('live policy pays only the pinned hot wallet and the published ladder', () => {
   assert.equal(livePolicy.sender, MAINNET_PAYOUT_SENDER);
@@ -50,16 +53,16 @@ test('journal rehydration preserves signed bytes and the live policy rejects the
     assert.equal(rehydrated.serializeToSafeJSON(), saved.transaction);
     rehydrated.free();
   }
-  await assert.rejects(prepareTransactions(key, job, [entry]), /SIGNER_POLICY_MISMATCH/);
-  const partial = { ...job, amount: toRaw(70), proof: { kind: 'gauntlet', round: 1, correctCount: 7 } };
+  await assert.rejects(prepareTransactions(key, job, [entry]), /JOB_MAC_INVALID|SIGNER_POLICY_MISMATCH/);
+  const partial = mac({ ...job, amount: toRaw(70), proof: { kind: 'gauntlet', round: 1, correctCount: 7 }, mac: undefined });
   const signed = await prepareTransactions(key, partial, [entry], fixturePolicy);
   assert.notEqual(signed.commit.id, signed.reveal.id);
-  await assert.rejects(prepareTransactions(key, { ...partial, amount: toRaw(100) }, [entry], fixturePolicy), /SIGNER_POLICY_MISMATCH/);
-  const oneInRoundTen = { ...job, amount: toRaw(1800), proof: { kind: 'gauntlet', round: 10, correctCount: 1 } };
+  await assert.rejects(prepareTransactions(key, { ...partial, amount: toRaw(100) }, [entry], fixturePolicy), /JOB_MAC_INVALID/);
+  const oneInRoundTen = mac({ ...job, amount: toRaw(1800), proof: { kind: 'gauntlet', round: 10, correctCount: 1 }, mac: undefined });
   const roundTen = await prepareTransactions(key, oneInRoundTen, [entry], fixturePolicy);
   assert.notEqual(roundTen.commit.id, roundTen.reveal.id);
-  await assert.rejects(prepareTransactions(key, { ...oneInRoundTen, amount: toRaw(18000) }, [entry], fixturePolicy), /SIGNER_POLICY_MISMATCH/);
-  await assert.rejects(prepareTransactions(key, { ...job, amount: toRaw(1800), proof: { kind: 'gauntlet', round: 10, correctCount: 0 } }, [entry], fixturePolicy), /SIGNER_POLICY_MISMATCH/);
+  await assert.rejects(prepareTransactions(key, mac({ ...oneInRoundTen, amount: toRaw(18000), mac: undefined }), [entry], fixturePolicy), /SIGNER_POLICY_MISMATCH/);
+  await assert.rejects(prepareTransactions(key, { ...oneInRoundTen, amount: toRaw(18000) }, [entry], fixturePolicy), /JOB_MAC_INVALID/);
   await assert.rejects(prepareTransactions(key, job, [], fixturePolicy), /FUNDED_UTXO_REQUIRED/);
 });
 
