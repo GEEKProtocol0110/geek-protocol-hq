@@ -175,6 +175,22 @@ export const requireCceModerator = (req) => {
   if (expectedBuffer.length !== providedBuffer.length || !timingSafeEqual(expectedBuffer, providedBuffer)) throw new Error('CCE_FORBIDDEN');
 };
 
+// Read-only reviewer key (CCE_REVIEWER_TOKEN). It never satisfies
+// requireCceModerator and is never an owner/ops login key, so it cannot
+// approve, reject, edit, publish or create a session. Unset, short, or equal
+// to an admin/owner key: the reviewer path is disabled and fails closed.
+export const cceReviewerCredential = (req) => {
+  const expected = String(process.env.CCE_REVIEWER_TOKEN || '');
+  if (expected.length < 24 || expected.length > 512) return false;
+  for (const name of ['CCE_ADMIN_TOKEN', 'OPS_ACCESS_TOKEN']) {
+    const other = String(process.env[name] || '');
+    if (other && other === expected) return false;
+  }
+  const expectedBuffer = Buffer.from(expected);
+  const providedBuffer = Buffer.from(providedAdminToken(req));
+  return expectedBuffer.length === providedBuffer.length && timingSafeEqual(expectedBuffer, providedBuffer);
+};
+
 export const moderationQueue = async () => {
   const ids = await redis('ZREVRANGE', REVIEW_QUEUE, 0, 99);
   const stored = ids.length ? await pipeline(ids.map((id) => ['GET', submissionKey(id)])) : [];

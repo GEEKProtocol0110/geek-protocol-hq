@@ -1742,3 +1742,43 @@ test('technology Study grades privately, saves missed concepts and resumes revie
     assert.equal(fixed.progress.topics.find(t => t.id === topic).review, 0);
   }
 });
+
+test('CCE reviewer key reads the moderation queue but cannot moderate or open an owner session', async () => {
+  const reviewer = 'test-cce-reviewer-token-123456789';
+  const saved = { reviewer: process.env.CCE_REVIEWER_TOKEN, ops: process.env.OPS_ACCESS_TOKEN };
+  const contributorCookie = await startSession('Reviewer Probe');
+  const id = 'cce_' + 'd'.repeat(24);
+  const row = {id,contributorSessionId:sessionIdFromCookie(contributorCookie),category:'kaspa',difficulty:'easy',topic:'Consensus',prompt:'A reviewer-visible pending question?',options:['One','Two','Three','Four'],correctIndex:0,explanation:'Pending explanation.',source:'https://docs.kaspa.org/',displayName:'Reviewer Probe',status:'submitted',submittedAt:2000,updatedAt:2000,reward:{amount:25,status:'pending',settlement:'launch-gated'}};
+  strings.set('geek:cce:submission:'+id,JSON.stringify(row));
+  sorted.set('geek:cce:review',new Map([...(sorted.get('geek:cce:review')||new Map()),[id,2000]]));
+  const before = strings.get('geek:cce:submission:'+id);
+  const call = async (method, body, headers) => { const r=response(); await moderationHandler(request(method,body,'',{},headers),r); return r; };
+  const login = async key => { const r=response(); await sessionHandler(request('POST',{key},'',{service:'operations',action:'login'},{origin:'https://www.geekprotocol.xyz','content-type':'application/json','sec-fetch-site':'same-origin'}),r); return r; };
+  try {
+    // Unset: disabled, fails closed.
+    delete process.env.CCE_REVIEWER_TOKEN; delete process.env.OPS_ACCESS_TOKEN;
+    assert.equal((await call('GET',undefined,{'x-cce-admin':reviewer})).statusCode,403);
+    process.env.CCE_REVIEWER_TOKEN = reviewer;
+    for (const headers of [{'x-cce-admin':reviewer},{authorization:'Bearer '+reviewer}]) {
+      const read = await call('GET',undefined,headers); assert.equal(read.statusCode,200); assert.equal(read.body.readOnly,true); assert.ok(read.body.queue.some(item => item.id === id));
+    }
+    for (const action of ['approve','reject','request-changes','publish','edit','delete']) {
+      const r = await call('POST',{action,id,reason:'Reviewer probe'},{'x-cce-admin':reviewer}); assert.equal(r.statusCode,403);
+    }
+    for (const method of ['PUT','PATCH','DELETE']) assert.equal((await call(method,{id},{'x-cce-admin':reviewer})).statusCode,403);
+    assert.equal(strings.get('geek:cce:submission:'+id),before);
+    // OPS_ACCESS_TOKEN unset: CCE admin falls back to owner login; the reviewer key must not.
+    const denied = await login(reviewer); assert.equal(denied.statusCode,403); assert.equal(denied.headers['set-cookie'],undefined);
+    assert.equal((await login(process.env.CCE_ADMIN_TOKEN)).statusCode,200); // positive control: same request shape succeeds for the admin key
+    process.env.OPS_ACCESS_TOKEN = 'test-dedicated-owner-token-123456789';
+    assert.equal((await login(reviewer)).statusCode,403);
+    // Short reviewer keys are disabled; a reviewer key equal to the admin key is not treated as a reviewer.
+    process.env.CCE_REVIEWER_TOKEN = 'short'; assert.equal((await call('GET',undefined,{'x-cce-admin':'short'})).statusCode,403);
+    process.env.CCE_REVIEWER_TOKEN = process.env.CCE_ADMIN_TOKEN; assert.equal((await call('GET',undefined,{'x-cce-admin':process.env.CCE_ADMIN_TOKEN})).body.readOnly,undefined);
+    // Admin key behavior unchanged.
+    assert.equal((await call('GET',undefined,{'x-cce-admin':process.env.CCE_ADMIN_TOKEN})).statusCode,200);
+  } finally {
+    if (saved.reviewer === undefined) delete process.env.CCE_REVIEWER_TOKEN; else process.env.CCE_REVIEWER_TOKEN = saved.reviewer;
+    if (saved.ops === undefined) delete process.env.OPS_ACCESS_TOKEN; else process.env.OPS_ACCESS_TOKEN = saved.ops;
+  }
+});
