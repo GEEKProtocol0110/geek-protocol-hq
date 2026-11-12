@@ -1366,8 +1366,9 @@ Next action: Review the draft port. Keep settlementEligible and withdrawalsEnabl
 Acceptance:
 
 - The mainnet worker reuses the CHAIN-004 journaled KRC-20 commit/reveal path for current GEEK, with the pinned public hot-wallet receive address.
-- Daily pays 100 GEEK once. A Gauntlet round pays the ROUND_CONFIG perfect-round ladder once. Retries do not pay again. The temporary daily cap is 100,000 GEEK.
-- settlementEligible and withdrawalsEnabled stay false. MAINNET_PAYOUT_ENABLED and MAINNET_SIGNER_ENABLED default false. No signing key is committed.
+- Daily pays 100 GEEK once. A Gauntlet round pays ROUND_CONFIG.reward times the server-graded correct count. Zero correct pays nothing. One correct answer in round 10 pays 1800, and 18000 is rejected for that proof. Retries do not pay again.
+- Temporary caps are 100,000 GEEK globally and 46,400 GEEK per player and per receiving address. The active index counts outstanding jobs only. A journal unconfirmed for six hours is stuck and does not block later jobs or receive a second journal.
+- Admission and signing require production plus the explicit flag. Preview cannot pay. settlementEligible and withdrawalsEnabled stay false. No signing key is committed.
 - Focused tests and the existing testnet signer checks pass. A real mainnet transfer is not claimed.
 
 Evidence/specification: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [server/mainnet-payout.js](../../server/mainnet-payout.js), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs), [workers/mainnet/signer.mjs](../../workers/mainnet/signer.mjs), [workers/mainnet/process.mjs](../../workers/mainnet/process.mjs), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js), [workers/mainnet/check-signing.mjs](../../workers/mainnet/check-signing.mjs).

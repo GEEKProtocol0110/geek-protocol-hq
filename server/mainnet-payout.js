@@ -5,15 +5,19 @@ import { decodeRewardAddresses, rewardAddressKey, validReceivingAddress } from '
 import { handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from './http.js';
 import {
   DAILY_CAP_WHOLE, GEEK_DECIMALS, GEEK_DEPLOYMENT_HASH, GEEK_PROTOCOL, GEEK_TICKER, MAINNET_PAYOUT_SENDER,
-  expectedRaw, quoteGeekReward, toRaw
+  PLAYER_DAILY_CAP_WHOLE, expectedRaw, quoteGeekReward, toRaw
 } from '../workers/mainnet/schedule.mjs';
 
 const hash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const hex = (value, length) => typeof value === 'string' && new RegExp(`^[a-f0-9]{${length}}$`).test(value);
 const nonce = () => randomBytes(12).toString('hex');
 export const PAYOUT_INDEX_CEILING = 10000;
-export const payoutIndexKey = 'geek:mainnet-payout:index:v1';
+// Outstanding jobs only. Completed and stuck jobs are removed, so the ceiling can shrink.
+export const STUCK_AFTER_MS = 6 * 60 * 60 * 1000;
+export const payoutIndexKey = 'geek:mainnet-payout:active:v1';
 export const payoutDayKey = day => `geek:mainnet-payout:day:${day}`;
+export const payoutPlayerDayKey = (day, playerId) => `geek:mainnet-payout:player-day:${day}:${playerId}`;
+export const payoutAddressDayKey = (day, recipient) => `geek:mainnet-payout:address-day:${day}:${createHash('sha256').update(String(recipient)).digest('hex')}`;
 export const payoutJobKey = id => `geek:mainnet-payout:job:${id}`;
 export const payoutEarnKey = id => `geek:mainnet-payout:earn:${id}`;
 const leaseKey = 'geek:mainnet-payout:sender-lease:v1';
@@ -29,11 +33,14 @@ export function mainnetPayoutFlags() {
 }
 
 export function mainnetPayoutConfig() {
-  if (process.env.MAINNET_PAYOUT_ENABLED !== 'true') return null;
-  if (!hex(process.env.MAINNET_PAYOUT_WORKER_TOKEN || '', 64) || !isValidKaspaMainnetAddress(MAINNET_PAYOUT_SENDER)) throw new Error('MAINNET_PAYOUT_CONFIG_INVALID');
+  // Preview and any non-production environment cannot admit, even if a secret is present.
+  // A missing worker token skips admission; it must not fail the player's answer.
+  if (process.env.VERCEL_ENV !== 'production' || process.env.MAINNET_PAYOUT_ENABLED !== 'true') return null;
+  if (!hex(process.env.MAINNET_PAYOUT_WORKER_TOKEN || '', 64) || !isValidKaspaMainnetAddress(MAINNET_PAYOUT_SENDER)) return null;
   const config = {
     network: 'mainnet', protocol: GEEK_PROTOCOL, ticker: GEEK_TICKER, deploymentHash: GEEK_DEPLOYMENT_HASH,
-    decimals: String(GEEK_DECIMALS), sender: MAINNET_PAYOUT_SENDER, dailyCapRaw: toRaw(DAILY_CAP_WHOLE)
+    decimals: String(GEEK_DECIMALS), sender: MAINNET_PAYOUT_SENDER, dailyCapRaw: toRaw(DAILY_CAP_WHOLE),
+    playerCapRaw: toRaw(PLAYER_DAILY_CAP_WHOLE), addressCapRaw: toRaw(PLAYER_DAILY_CAP_WHOLE)
   };
   return { ...config, fingerprint: hash(config) };
 }
@@ -52,22 +59,39 @@ export function decodeJob(raw, id) {
   let job;
   try { job = JSON.parse(raw); } catch { throw new Error('MAINNET_PAYOUT_RECORD_INVALID'); }
   const proof = job?.proof;
+  const states = ['queued', 'prepared', 'awaiting-indexer', 'indexed-confirmed', 'stuck'];
+  const journalRequired = ['prepared', 'awaiting-indexer', 'indexed-confirmed'].includes(job?.state);
   if (!job || job.schema !== 1 || job.id !== id || !hex(id, 64) || !hex(job.version, 24) || !hex(job.playerId, 32) ||
       job.network !== 'mainnet' || job.protocol !== GEEK_PROTOCOL || job.ticker !== GEEK_TICKER || !hex(job.configFingerprint, 64) ||
       job.deploymentHash !== GEEK_DEPLOYMENT_HASH || job.decimals !== String(GEEK_DECIMALS) || job.amount !== expectedRaw(proof) ||
       job.sender !== MAINNET_PAYOUT_SENDER || !isValidKaspaMainnetAddress(job.recipient) || job.sender === job.recipient ||
-      !hex(proof?.runId, 40) || !Number.isSafeInteger(job.createdAt) || job.createdAt <= 0 ||
-      !['queued', 'prepared', 'awaiting-indexer', 'indexed-confirmed'].includes(job.state) ||
-      (job.state !== 'queued' && !validJournal(job.journal)) ||
-      (job.state !== 'queued' && job.transactionHash !== job.journal.reveal.id) ||
+      !hex(proof?.runId, 40) || !qualifyingProofCorrect(proof) || !Number.isSafeInteger(job.createdAt) || job.createdAt <= 0 ||
+      !states.includes(job.state) ||
+      (job.state === 'queued' && job.journal) ||
+      (journalRequired && !validJournal(job.journal)) ||
+      (job.state === 'stuck' && job.journal && !validJournal(job.journal)) ||
+      (job.journal && job.transactionHash !== job.journal.reveal.id) ||
+      (job.preparedAt !== undefined && (!Number.isSafeInteger(job.preparedAt) || job.preparedAt <= 0)) ||
       (job.state === 'indexed-confirmed' && job.observation?.accepted !== true)) throw new Error('MAINNET_PAYOUT_RECORD_INVALID');
   return job;
+}
+
+const qualifyingProofCorrect = proof => proof?.kind === 'daily'
+  ? Number.isInteger(proof.correctCount) && proof.correctCount >= 1 && proof.correctCount <= 5
+  : Number.isInteger(proof?.correctCount) && proof.correctCount >= 1 && proof.correctCount <= 10;
+
+// A journaled job that is still unconfirmed after the window is stuck.
+// Queued jobs have not been signed and stay available for the signer.
+export function jobIsStuck(job, now = Date.now()) {
+  if (!job?.journal || !['prepared', 'awaiting-indexer'].includes(job.state)) return false;
+  const since = Number.isSafeInteger(job.preparedAt) ? job.preparedAt : job.createdAt;
+  return Number.isSafeInteger(since) && now - since >= STUCK_AFTER_MS;
 }
 
 // Checked before the ranked write. A bad payout key fails the answer closed.
 export const MAINNET_PAYOUT_PREFLIGHT_LUA = `
 if ARGV[20] ~= '' then
-  for _, i in ipairs({16,17,19}) do
+  for _, i in ipairs({16,17,19,21,22}) do
     local kind = redis.call('TYPE', KEYS[i]).ok
     if kind ~= 'none' and kind ~= 'string' then return -4 end
   end
@@ -75,26 +99,39 @@ if ARGV[20] ~= '' then
   if indexKind ~= 'none' and indexKind ~= 'zset' then return -4 end
   local addressKind = redis.call('TYPE', KEYS[20]).ok
   if addressKind ~= 'none' and addressKind ~= 'string' then return -4 end
-  local spent = redis.call('GET', KEYS[19])
-  if spent and not string.match(spent, '^%d+$') then return -4 end
-  if not string.match(ARGV[21], '^[a-f0-9]+$') or not string.match(ARGV[23], '^[1-9]%d*$') or not string.match(ARGV[24], '^[1-9]%d*$') then return -4 end
+  for _, i in ipairs({19,21,22}) do
+    local spent = redis.call('GET', KEYS[i])
+    if spent and not string.match(spent, '^%d+$') then return -4 end
+  end
+  if not string.match(ARGV[21], '^[a-f0-9]+$') or not string.match(ARGV[23], '^[1-9]%d*$') or not string.match(ARGV[24], '^[1-9]%d*$')
+    or not string.match(ARGV[27], '^[1-9]%d*$') or not string.match(ARGV[28], '^[1-9]%d*$') then return -4 end
 end`;
 
 // Same ranked commit as the learning result. An existing earn lock pays nothing again.
-// Cap exhaustion records not-paid and still saves the result. The cap is temporary.
+// Any of the temporary caps records not-paid and still saves the result.
+// KEYS[18] counts outstanding jobs only.
 export const MAINNET_PAYOUT_COMMIT_LUA = `
 if ARGV[20] ~= '' and redis.call('EXISTS', KEYS[16]) == 0 and redis.call('EXISTS', KEYS[17]) == 0
   and (redis.call('GET', KEYS[20]) or '') == ARGV[26] then
   local spent = tonumber(redis.call('GET', KEYS[19]) or '0')
+  local playerSpent = tonumber(redis.call('GET', KEYS[21]) or '0')
+  local addressSpent = tonumber(redis.call('GET', KEYS[22]) or '0')
   local amount = tonumber(ARGV[23])
   local cap = tonumber(ARGV[24])
-  if spent and amount and cap and (spent + amount > cap or redis.call('ZCARD', KEYS[18]) >= ${PAYOUT_INDEX_CEILING}) then
+  local playerCap = tonumber(ARGV[27])
+  local addressCap = tonumber(ARGV[28])
+  local over = not spent or not playerSpent or not addressSpent or not amount or not cap or not playerCap or not addressCap
+    or spent + amount > cap or playerSpent + amount > playerCap or addressSpent + amount > addressCap
+    or redis.call('ZCARD', KEYS[18]) >= ${PAYOUT_INDEX_CEILING}
+  if over then
     redis.call('SET', KEYS[16], 'not-paid')
-  elseif spent and amount and cap then
+  else
     redis.call('SET', KEYS[16], ARGV[21])
     redis.call('SET', KEYS[17], ARGV[22])
     redis.call('ZADD', KEYS[18], ARGV[25], ARGV[21])
     redis.call('INCRBY', KEYS[19], ARGV[23])
+    redis.call('INCRBY', KEYS[21], ARGV[23])
+    redis.call('INCRBY', KEYS[22], ARGV[23])
   end
 end`;
 
@@ -111,16 +148,17 @@ export async function prepareMainnetPayout(playerId, run) {
   if (!Number.isSafeInteger(record.mainnetEligibleAt) || record.mainnetEligibleAt <= 0 || record.mainnetEligibleAt > Date.now()) return null;
   const createdAt = Date.now();
   const id = earningId(playerId, run, quote, createdAt);
-  const proof = { kind: quote.kind, round: quote.round, runId: run.id, correct: run.correct, answered: run.roundAnswers.length };
+  const proof = { kind: quote.kind, round: quote.round, runId: run.id, correctCount: quote.correctCount, answered: run.roundAnswers.length };
   if (expectedRaw(proof) !== quote.raw) throw new Error('MAINNET_PAYOUT_AMOUNT_INVALID');
   const job = {
     schema: 1, id, version: nonce(), state: 'queued', playerId, network: config.network, protocol: config.protocol,
     ticker: config.ticker, sender: config.sender, recipient, deploymentHash: config.deploymentHash,
     configFingerprint: config.fingerprint, amount: quote.raw, decimals: config.decimals, proof, createdAt
   };
+  const day = payoutDay(createdAt);
   return {
-    keys: [payoutEarnKey(id), payoutJobKey(id), payoutIndexKey, payoutDayKey(payoutDay(createdAt)), addressKey],
-    args: ['mainnet-payout', id, JSON.stringify(job), quote.raw, config.dailyCapRaw, String(createdAt), addressRaw]
+    keys: [payoutEarnKey(id), payoutJobKey(id), payoutIndexKey, payoutDayKey(day), addressKey, payoutPlayerDayKey(day, playerId), payoutAddressDayKey(day, recipient)],
+    args: ['mainnet-payout', id, JSON.stringify(job), quote.raw, config.dailyCapRaw, String(createdAt), addressRaw, config.playerCapRaw, config.addressCapRaw]
   };
 }
 
@@ -159,7 +197,14 @@ const checkAsset = async config => {
 
 const UPDATE = `-- geek-mainnet-payout-update-v1
 if redis.call('GET', KEYS[1]) ~= ARGV[1] or redis.call('GET', KEYS[2]) ~= ARGV[3] then return 0 end
-redis.call('SET', KEYS[1], ARGV[2]); return 1`;
+redis.call('SET', KEYS[1], ARGV[2])
+if ARGV[4] == '1' then redis.call('ZREM', KEYS[3], ARGV[5]) end
+return 1`;
+const saveJob = async (key, raw, job, lease, terminal) => {
+  job.version = nonce();
+  if (await redis('EVAL', UPDATE, 3, key, leaseKey, payoutIndexKey, raw, JSON.stringify(job), lease, terminal ? '1' : '0', job.id) !== 1) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
+  return job;
+};
 
 const validToken = req => {
   const expected = process.env.MAINNET_PAYOUT_WORKER_TOKEN || '', given = String(req.headers?.authorization || '');
@@ -179,15 +224,22 @@ export async function mainnetPayoutWorkerHandler(req, res) {
       if (Object.keys(body).length !== 1) throw new Error('INVALID_REQUEST');
       const lease = nonce();
       if (await redis('SET', leaseKey, lease, 'NX', 'EX', 120) !== 'OK') return sendJson(res, 200, { ok: true, busy: true });
+      const page = await redis('ZRANGE', payoutIndexKey, 0, 49);
+      if (!Array.isArray(page) || page.some(id => !hex(id, 64))) throw new Error('MAINNET_PAYOUT_RECORD_INVALID');
       let job = null;
-      for (let cursor = 0; cursor < PAYOUT_INDEX_CEILING && !job; cursor += 100) {
-        const page = await redis('ZRANGE', payoutIndexKey, cursor, cursor + 99);
-        if (!Array.isArray(page) || page.some(id => !hex(id, 64))) throw new Error('MAINNET_PAYOUT_RECORD_INVALID');
-        for (const id of page) {
-          const candidate = decodeJob(await redis('GET', payoutJobKey(id)), id);
-          if (candidate.state !== 'indexed-confirmed') { job = candidate; break; }
+      for (const id of page) {
+        const key = payoutJobKey(id), raw = await redis('GET', key);
+        if (!raw) { await redis('ZREM', payoutIndexKey, id); continue; }
+        const candidate = decodeJob(raw, id);
+        if (candidate.state === 'indexed-confirmed' || candidate.state === 'stuck') { await redis('ZREM', payoutIndexKey, id); continue; }
+        if (jobIsStuck(candidate)) {
+          const journal = candidate.journal ? JSON.stringify(candidate.journal) : '';
+          candidate.state = 'stuck'; candidate.stuckAt = Date.now();
+          if (journal && JSON.stringify(candidate.journal) !== journal) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
+          await saveJob(key, raw, candidate, lease, true);
+          continue;
         }
-        if (page.length < 100) break;
+        if (!job) job = candidate;
       }
       if (job && job.configFingerprint !== config.fingerprint) throw new Error('MAINNET_PAYOUT_CONFIG_CHANGED');
       return sendJson(res, 200, { ok: true, lease, job, config });
@@ -202,22 +254,24 @@ export async function mainnetPayoutWorkerHandler(req, res) {
         Object.keys(body).some(key => !['action', 'lease', 'id', 'version', ...(body.action === 'prepare' ? ['journal'] : [])].includes(key))) throw new Error('INVALID_REQUEST');
     const key = payoutJobKey(body.id), raw = await redis('GET', key), job = decodeJob(raw, body.id);
     if (job.version !== body.version || job.configFingerprint !== config.fingerprint || await redis('GET', leaseKey) !== body.lease) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
+    if (job.state === 'stuck' && body.action !== 'check') throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
+    let terminal = false;
     if (body.action === 'prepare') {
       if (job.state !== 'queued' || !validJournal(body.journal) || job.amount !== expectedRaw(job.proof)) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
       await checkAsset(config);
-      job.journal = body.journal; job.transactionHash = body.journal.reveal.id; job.state = 'prepared';
+      job.journal = body.journal; job.transactionHash = body.journal.reveal.id; job.state = 'prepared'; job.preparedAt = Date.now();
     } else if (body.action === 'submitted') {
       if (!['prepared', 'awaiting-indexer'].includes(job.state)) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
       job.state = 'awaiting-indexer';
     } else {
-      if (job.state === 'queued') throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
+      if (!job.journal || job.state === 'queued') throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
       await checkAsset(config);
       job.observation = transferObservation(await jsonFromIndexer(`op/${job.transactionHash}`, { allowMissingOperation: true }), job);
-      job.state = job.observation.accepted ? 'indexed-confirmed' : 'awaiting-indexer';
+      if (job.observation.accepted) { job.state = 'indexed-confirmed'; terminal = true; }
+      else if (job.state !== 'stuck') job.state = 'awaiting-indexer';
       job.lastCheckedAt = Date.now();
     }
-    job.version = nonce();
-    if (await redis('EVAL', UPDATE, 2, key, leaseKey, raw, JSON.stringify(job), body.lease) !== 1) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
+    await saveJob(key, raw, job, body.lease, terminal);
     return sendJson(res, 200, { ok: true, job });
   } catch (error) { return mainnetPayoutError(res, error); }
 }

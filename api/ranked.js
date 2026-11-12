@@ -1,7 +1,7 @@
 import { ROUND_CONFIG, RANKED_START_IP_LIMIT } from '../server/game-economy.js';
 import { randomBytes } from 'node:crypto';
 import { recordCommunityQuestionUse } from '../server/cce.js';
-import { categories, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
+import { categories, clientAddressFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
 import { recordVerifiedScore } from '../server/leaderboard.js';
 import { loadProfile } from '../server/profile.js';
 import { commitRankedState } from '../server/ranked-state.js';
@@ -273,7 +273,8 @@ export default async function handler(req, res) {
     const action = String(body.action || '');
     await rateLimit('ranked', playerId, 240, 60 * 5);
     if (action === 'start') {
-      await rateLimit('ranked-start-ip', clientFingerprint(req), RANKED_START_IP_LIMIT.maximum, RANKED_START_IP_LIMIT.seconds);
+      // 20 starts per hour for one network address. User-Agent rotation does not reset it.
+      await rateLimit('ranked-start-ip', clientAddressFingerprint(req), RANKED_START_IP_LIMIT.maximum, RANKED_START_IP_LIMIT.seconds);
       const category = categories.has(body.category) ? body.category : 'kaspa';
       const mode = Object.hasOwn(MODE_CONFIG, body.mode) ? body.mode : 'gauntlet';
       const focus = ['ghostdag', 'builders'].includes(body.focus) ? body.focus : '';

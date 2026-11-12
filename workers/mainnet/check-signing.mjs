@@ -1,5 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { spawn } from 'node:child_process';
+import { once } from 'node:events';
+import { fileURLToPath } from 'node:url';
 import { Wasm } from '@kasplex/kiwi';
 import { inscription, livePolicy, prepareTransactions, createSigner } from './signer.mjs';
 import { DAILY_WHOLE, GAUNTLET_PERFECT_WHOLE, MAINNET_PAYOUT_SENDER, toRaw } from './schedule.mjs';
@@ -7,7 +10,7 @@ import { DAILY_WHOLE, GAUNTLET_PERFECT_WHOLE, MAINNET_PAYOUT_SENDER, toRaw } fro
 const key = new Wasm.PrivateKey('1'.padStart(64, '0'));
 const sender = key.toPublicKey().toAddress('mainnet').toString();
 const recipient = new Wasm.PrivateKey('2'.padStart(64, '0')).toPublicKey().toAddress('mainnet').toString();
-const job = { network: 'mainnet', sender, recipient, ticker: 'GEEK', amount: toRaw(DAILY_WHOLE), proof: { kind: 'daily', round: 1 } };
+const job = { network: 'mainnet', sender, recipient, ticker: 'GEEK', amount: toRaw(DAILY_WHOLE), proof: { kind: 'daily', round: 1, correctCount: 1 } };
 const entry = { address: sender, amount: 2000000000n, outpoint: { transactionId: 'a'.repeat(64), index: 2 },
   scriptPublicKey: Wasm.payToAddressScript(key.toPublicKey().toAddress('mainnet')), blockDaaScore: 0n, isCoinbase: false };
 const fixturePolicy = { ...livePolicy, sender, syntheticFixture: true };
@@ -48,7 +51,15 @@ test('journal rehydration preserves signed bytes and the live policy rejects the
     rehydrated.free();
   }
   await assert.rejects(prepareTransactions(key, job, [entry]), /SIGNER_POLICY_MISMATCH/);
-  await assert.rejects(prepareTransactions(key, { ...job, amount: toRaw(10), proof: { kind: 'gauntlet', round: 1 } }, [entry], fixturePolicy), /SIGNER_POLICY_MISMATCH/);
+  const partial = { ...job, amount: toRaw(70), proof: { kind: 'gauntlet', round: 1, correctCount: 7 } };
+  const signed = await prepareTransactions(key, partial, [entry], fixturePolicy);
+  assert.notEqual(signed.commit.id, signed.reveal.id);
+  await assert.rejects(prepareTransactions(key, { ...partial, amount: toRaw(100) }, [entry], fixturePolicy), /SIGNER_POLICY_MISMATCH/);
+  const oneInRoundTen = { ...job, amount: toRaw(1800), proof: { kind: 'gauntlet', round: 10, correctCount: 1 } };
+  const roundTen = await prepareTransactions(key, oneInRoundTen, [entry], fixturePolicy);
+  assert.notEqual(roundTen.commit.id, roundTen.reveal.id);
+  await assert.rejects(prepareTransactions(key, { ...oneInRoundTen, amount: toRaw(18000) }, [entry], fixturePolicy), /SIGNER_POLICY_MISMATCH/);
+  await assert.rejects(prepareTransactions(key, { ...job, amount: toRaw(1800), proof: { kind: 'gauntlet', round: 10, correctCount: 0 } }, [entry], fixturePolicy), /SIGNER_POLICY_MISMATCH/);
   await assert.rejects(prepareTransactions(key, job, [], fixturePolicy), /FUNDED_UTXO_REQUIRED/);
 });
 
@@ -62,4 +73,25 @@ test('the signer rejects a non-mainnet node and a key that is not the pinned hot
   const signer = createSigner('1'.padStart(64, '0'), { isConnected: true, getServerInfo: async () => healthy });
   await assert.rejects(signer.verify({ sender: MAINNET_PAYOUT_SENDER, network: 'mainnet' }, { ...job, sender: MAINNET_PAYOUT_SENDER }), /SIGNER_POLICY_MISMATCH/);
   signer.close();
+});
+
+test('the local worker does not read the signing key while paused', async () => {
+  const marker = 'paused-key-marker';
+  const run = async env => {
+    const child = spawn(process.execPath, ['worker.mjs', '--once'], {
+      cwd: fileURLToPath(new URL('.', import.meta.url)),
+      env: { ...process.env, MAINNET_SIGNER_PRIVATE_KEY: marker, ...env }
+    });
+    let output = '';
+    child.stdout.on('data', chunk => { output += chunk; });
+    child.stderr.on('data', chunk => { output += chunk; });
+    const [code] = await once(child, 'exit');
+    return { code, output };
+  };
+  for (const env of [{ MAINNET_SIGNER_ENABLED: 'false', VERCEL_ENV: 'production' }, { MAINNET_SIGNER_ENABLED: 'true', VERCEL_ENV: 'preview' }]) {
+    const result = await run(env);
+    assert.equal(result.code, 0);
+    assert.match(result.output, /mainnet worker: paused/);
+    assert.equal(result.output.includes(marker), false);
+  }
 });

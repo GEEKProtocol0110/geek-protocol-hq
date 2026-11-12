@@ -353,3 +353,13 @@ Reuse the tested CHAIN-004 journaled signer for current KRC-20 GEEK. Pay 100 GEE
 Basis: Founder confirmed the reward schedule on 2026-11-12 and asked for a draft port of the tested worker with payouts off.
 
 Evidence: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [server/mainnet-payout.js](../../server/mainnet-payout.js), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs).
+
+## DR-036: Bind mainnet Gauntlet GEEK to the graded correct count
+
+**founder-direction** · 2026-11-12.
+
+Pay Gauntlet GEEK as ROUND_CONFIG.reward times the server-graded correct count, using integer max times correctCount divided by 10. One correct answer in round 10 is 1800. The perfect-round maximum is not payable for a smaller count. Zero correct admits no job. Daily remains 100 once. Add temporary 46,400 GEEK player and receiving-address daily caps beside the 100,000 global cap. Keep settlement flags false and require production before admission or signing.
+
+Basis: Founder confirmed the per-correct Gauntlet rule on 2026-11-12 after the flat perfect-round amount was set aside. Security review required the amount to match that job's graded proof.
+
+Evidence: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs), [workers/mainnet/signer.mjs](../../workers/mainnet/signer.mjs), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js). Supersedes DR-035.

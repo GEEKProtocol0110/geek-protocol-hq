@@ -17,6 +17,8 @@ export async function processPayment({ request, signer, report }) {
   };
   try {
     if (!job) return 'idle';
+    // A stuck job keeps its original journal. Do not verify, sign, or broadcast it again.
+    if (job.state === 'stuck') return 'stuck';
     await step('verify', () => signer.verify(config, job));
     if (!job.journal) {
       const journal = await step('prepare', () => signer.prepare(config, job));

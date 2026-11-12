@@ -66,8 +66,11 @@ export const inscription = (key, job) => new Wasm.ScriptBuilder()
 export async function prepareTransactions(key, job, entries, policy = livePolicy) {
   const rules = policyOf(policy);
   const sender = key.toPublicKey().toAddress(rules.addressNetwork).toString();
+  // Exact amount for this proof's round and server-graded correctCount. Another
+  // schedule amount, including that round's perfect maximum, is not payable.
+  const boundAmount = expectedRaw(job.proof);
   if (job.network !== 'mainnet' || job.sender !== sender || job.sender !== rules.sender || !job.recipient?.startsWith('kaspa:') ||
-      job.recipient === sender || job.ticker !== GEEK_TICKER || job.amount !== expectedRaw(job.proof)) throw new Error('SIGNER_POLICY_MISMATCH');
+      job.recipient === sender || job.ticker !== GEEK_TICKER || !boundAmount || job.amount !== boundAmount) throw new Error('SIGNER_POLICY_MISMATCH');
   const script = inscription(key, job), spk = script.createPayToScriptHashScript();
   const address = Wasm.addressFromScriptPublicKey(spk, rules.addressNetwork);
   let commit, reveal;
