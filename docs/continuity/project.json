@@ -229,8 +229,8 @@
   },
   "devicePush": {
     "task": "GAME-005",
-    "status": "source-candidate",
+    "status": "implemented-configured-phone-acceptance-open",
     "evidence": "docs/WEB-PUSH-TURN-ALERTS.md",
-    "nextAction": "Verify/release encrypted opt-in push, atomic outbox and protected retry; complete phone delivery acceptance separately."
+    "nextAction": "#271 merged as d86d3d3964885f0ab3cc2071c8cd067736380245; production READY, public key configuration and two-player turn/no-expiry flow verified. Canonical retry route follow-up removes its 308 redirect. Actual phone notification permission/delivery and Android signing/domain acceptance remain open."
   }
 }

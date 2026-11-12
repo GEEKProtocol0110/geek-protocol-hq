@@ -2097,7 +2097,7 @@
       "status": "in-progress",
       "title": "Opt-in closed-lounge turn notifications and durable delivery",
       "owner": "Maintainer; founder phone acceptance",
-      "nextAction": "Verify and release real Web Push with production-only keys, durable atomic move outbox and protected five-minute retry. Complete phone opt-in/delivery and Android signing acceptance separately.",
+      "nextAction": "#271 is merged/deployed; canonical retry follow-up uses a direct slash URL. Production public-key settings, two-player move/turn badge and no-expiry behavior passed. Complete explicit device permission and actual closed-lounge phone delivery acceptance.",
       "acceptance": [
         "No permission prompt or subscription without explicit device opt-in.",
         "Encrypted device delivery while lounge closed; bounded retries, expired-device removal and current-account/turn validation.",
