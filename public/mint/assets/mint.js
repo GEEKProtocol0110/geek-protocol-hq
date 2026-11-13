@@ -10,6 +10,8 @@
   });
   const HEX_64 = /^[a-f0-9]{64}$/i;
   const MAX_MINTS = 100;
+  const HISTORY_KEY = 'geek:mint-receipts:v1';
+  const HISTORY_LIMIT = 100;
   const state = {
     status: null,
     wallet: window.GeekWallet?.snapshot?.() || null,
@@ -25,7 +27,9 @@
     count: 1,
     batch: null,
     walletVersion: 'Unavailable',
-    diagnosticMessage: ''
+    diagnosticMessage: '',
+    history: [],
+    historyError: ''
   };
 
   const byId = (id) => document.getElementById(id);
@@ -41,6 +45,68 @@
   const safeExplorerUrl = (transactionId) => HEX_64.test(transactionId || '')
     ? `https://explorer.kaspa.org/txs/${transactionId}`
     : '';
+
+  // Local receipts are untrusted display data, never mint or confirmation authority.
+  const cleanHistory = (rows) => {
+    if (!Array.isArray(rows)) return [];
+    return rows.slice(-HISTORY_LIMIT).filter(row => row && typeof row.id === 'string' && /^[0-9a-z-]{1,40}$/.test(row.id)
+      && typeof row.address === 'string' && /^kaspa:[a-z0-9]{1,120}$/.test(row.address)
+      && Number.isSafeInteger(row.openedAt) && row.openedAt > 0 && row.openedAt <= Date.now() + 5000
+      && ['opened', 'returned'].includes(row.stage)
+      && ['commitId', 'revealId', 'transactionId'].every(field => row[field] === '' || typeof row[field] === 'string' && HEX_64.test(row[field])))
+      .map(row => ({ id: row.id, address: row.address, openedAt: row.openedAt, stage: row.stage,
+        commitId: row.commitId, revealId: row.revealId, transactionId: row.transactionId }));
+  };
+  const readHistory = () => {
+    try {
+      const raw = window.localStorage.getItem(HISTORY_KEY);
+      if (raw && raw.length > 150000) return [];
+      return cleanHistory(raw ? JSON.parse(raw) : []);
+    } catch {
+      state.historyError = 'History cannot be read in this browser. Copy your current receipt to keep it.';
+      return [];
+    }
+  };
+  const saveHistory = (row) => {
+    // Re-read before each save so another tab's receipts are retained when possible.
+    const saved = readHistory();
+    const merged = new Map([...saved, ...state.history].map(item => [item.id, item]));
+    if (row) merged.set(row.id, row);
+    state.history = cleanHistory([...merged.values()]);
+    try {
+      window.localStorage.setItem(HISTORY_KEY, JSON.stringify(state.history));
+      state.historyError = '';
+    } catch {
+      state.historyError = 'History could not be saved on this device. Copy your current receipt to keep it.';
+    }
+  };
+  const renderHistory = () => {
+    const list = byId('mint-history-list');
+    if (!list) return;
+    list.replaceChildren();
+    const address = state.wallet?.network === MAINNET && state.wallet?.connected ? state.wallet.address : '';
+    const rows = state.history.filter(row => row.address === address).slice().reverse();
+    setText('mint-history-message', state.historyError || (rows.length
+      ? 'Saved on this browser only. Transaction references do not confirm a successful mint. Queues never restart after a reload.'
+      : address ? 'No saved requests for this wallet on this browser.' : 'Connect Kasware on Mainnet to view this wallet’s saved requests.'));
+    for (const row of rows) {
+      const item = document.createElement('li');
+      const label = document.createElement('p');
+      label.textContent = `${new Date(row.openedAt).toLocaleString()} · ${row.stage === 'opened' ? 'Wallet request opened; outcome unknown' : 'Wallet response received; outcome unverified'}`;
+      item.append(label);
+      for (const [field, name] of [['commitId', 'Commit'], ['revealId', 'Reveal'], ['transactionId', 'Transaction reference']]) {
+        if (!row[field]) continue;
+        const link = document.createElement('a');
+        link.textContent = `${name}: ${shortHash(row[field])} ↗`;
+        link.href = safeExplorerUrl(row[field]); link.target = '_blank'; link.rel = 'noopener noreferrer';
+        item.append(link);
+      }
+      list.append(item);
+    }
+    const clear = byId('mint-history-clear');
+    if (clear) clear.disabled = state.pending || !rows.length;
+  };
+  state.history = readHistory();
 
   const validStatus = (payload) => {
     if (!payload?.ok || payload?.deployment?.verified !== true) return false;
@@ -83,6 +149,7 @@
   );
 
   const render = () => {
+    renderHistory();
     const status = state.status;
     const mint = status?.mint;
     const progress = mint ? Math.min(100, Math.max(0, Number(mint.progressBasisPoints || 0) / 100)) : 0;
@@ -311,6 +378,7 @@
     state.copyMessage = '';
     state.diagnosticMessage = '';
     render();
+    let receiptEntry = null;
     try {
       if (!provider?.signKRC20Transaction) throw new Error('This Kasware version does not support KRC-20 mint transactions.');
       while (batch.attempted < batch.total && !batch.stopped) {
@@ -336,6 +404,10 @@
         batch.attempted++;
         render();
 
+        receiptEntry = { id: `${Date.now()}-${Math.random().toString(36).slice(2, 12)}`, address, openedAt: Date.now(),
+          stage: 'opened', commitId: '', revealId: '', transactionId: '' };
+        saveHistory(receiptEntry);
+        renderHistory();
         const response = await provider.signKRC20Transaction(
           status.transaction.inscription,
           3,
@@ -343,6 +415,7 @@
           0
         );
         state.result = { ...parseWalletResult(response), address, submittedAt: Date.now(), requestNumber: batch.attempted };
+        saveHistory({ ...receiptEntry, stage: 'returned', commitId: state.result.commitId, revealId: state.result.revealId, transactionId: state.result.transactionId });
         batch.receipts.push(state.result);
         state.phase = 'submitted';
         render();
@@ -403,6 +476,16 @@
     const checkbox = byId('mint-acknowledge');
     if (checkbox) checkbox.checked = false;
     render();
+  });
+  byId('mint-history-clear')?.addEventListener('click', () => {
+    if (state.pending || !state.wallet?.connected || state.wallet.network !== MAINNET) return;
+    const address = state.wallet.address;
+    state.history = readHistory().filter(row => row.address !== address);
+    try {
+      window.localStorage.setItem(HISTORY_KEY, JSON.stringify(state.history));
+      state.historyError = '';
+    } catch { state.historyError = 'Saved history could not be cleared in this browser.'; }
+    renderHistory();
   });
   byId('mint-copy-receipt')?.addEventListener('click', async () => {
     if (!state.result || state.copying) return;

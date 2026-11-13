@@ -120,8 +120,15 @@
               <p id="mint-copy-message" role="status" aria-live="polite"></p>
               <details class="mint-receipt-details"><summary>Queue receipts</summary><pre id="mint-batch-log"></pre></details>
               <details class="mint-receipt-details"><summary>Receipt diagnostics</summary><p id="mint-receipt-diagnostic"></p><button id="mint-copy-diagnostic" type="button">Copy receipt diagnostics</button><p id="mint-diagnostic-message" role="status"></p><p>No raw response, wallet address, transaction data, or keys are included in this diagnostic.</p></details>
-              <p class="receipt-note">This receipt stays on this page only. Copy it if you want to keep it.</p>
+              <p class="receipt-note">Recent requests are saved on this browser when storage is available. Copy this receipt for your own records.</p>
             </div>
+            <details class="mint-history" id="mint-history">
+              <summary>Recent mint requests on this device</summary>
+              <p id="mint-history-message" role="status">Connect Kasware on Mainnet to view saved requests.</p>
+              <ul id="mint-history-list"></ul>
+              <button id="mint-history-clear" type="button" disabled>Clear this wallet’s history on this device</button>
+              <p>Public wallet addresses and transaction references are saved locally, up to 100 recent requests across wallets. Browser data can be edited or cleared. Use the explorer and Kasware to check the outcome. Clearing this list does not cancel transactions.</p>
+            </details>
           </section>
         </div>
       </section>

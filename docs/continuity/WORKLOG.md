@@ -1434,3 +1434,10 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - **Task:** UX-028, stacked on the UX-027 catalog draft. Public ornaments are static SVG marks from `public/assets/holiday-marks.js`. Every holiday, including the original twelve, now has its own catalog color tokens. Presidents' Day, Memorial Day, Independence Day, and Veterans Day no longer share one stripe.
 - **Left unchanged:** greetings, the `{ id }` API, America/Detroit selection, the Off default, and code rain. Ornaments still stay off individual game routes, an active quiz, and `body.is-playing`. Reduced motion still clears the tilt. No keyframes or remote assets.
 - **Validation:** `npm run verify` again passed 886 HQ tests and 9 signer checks, zero failures, plus the same supporting checks. Local headless Chrome at 1280px showed distinct Geek birthday, Halloween, Memorial Day, and Independence Day headers, and a 390px Geek birthday header. Mocked appearance only. Not merged or deployed.
+
+## November 13, 2026 — MINT-001 local receipt history candidate
+
+- **Base:** main `01e79787b82e61d551e8023df7dd4a9c1d68fcb8`; branch `codex/mint-receipt-history`. Independent of the held payout drafts #278/#282.
+- **Outcome:** bounded browser-local request history with connected-wallet filtering, fixed explorer links, unknown outcomes saved before wallet handoff, and per-wallet clearing. No queue/approval restoration or chain-confirmation claims.
+- **Validation:** all 41 focused mint tests passed. Initial verification passed 884 application tests plus 9 offline testnet signer checks. After integrating main 59291438a1d91b92a82314233149c1a35bf310e0 and preserving its payout/holiday records, full npm run verify passed 910 application tests plus 9 testnet and 5 mainnet signer checks, zero failures/skips, with all supporting checks. Decision DR-039 preserves the new local-history rule without colliding with main records. Synthetic wallet responses only; no production mint, payment or real wallet approval.
+- **Pickup:** review source/preview, then actual-browser and Kasware device acceptance. Nothing merged or deployed; economic holds remain.

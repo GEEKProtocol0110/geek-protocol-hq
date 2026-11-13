@@ -237,7 +237,7 @@
     "task": "UX-027",
     "status": "source-candidate",
     "evidence": "docs/HOLIDAY-THEMES.md",
-    "nextAction": "Draft only. Gee previews the catalog, including Geek Protocol's Birthday on June 21–23, before any Appearance save. The saved default remains Off."
+    "nextAction": "Draft only. Gee previews the catalog, including Geek Protocol's Birthday on June 21\u201323, before any Appearance save. The saved default remains Off."
   },
   "devicePush": {
     "task": "GAME-005",
@@ -250,5 +250,11 @@
     "status": "source-candidate",
     "evidence": "docs/MAINNET-GEEK-PAYOUT.md; tests/mainnet-payout.test.js",
     "nextAction": "Review draft #282 on top of #278: journal preparation is one Lua update, and a terminal stuck mark writes the job and stuck:v1 together. A lost prepare acknowledgment is recovered by the next claim. No merge, deployment, or enable is implied. Settlement and withdrawals remain disabled. This is an internal source candidate, not an independent audit."
+  },
+  "mintReceiptHistory": {
+    "task": "MINT-001",
+    "status": "source-candidate",
+    "evidence": "docs/MINT-RECEIPT-HISTORY.md",
+    "nextAction": "Review preview and actual-browser/Kasware behavior; source-only validation does not establish real mint confirmation or device acceptance."
   }
 }

@@ -93,6 +93,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | GAME-005 | P2 | in-progress | Opt-in closed-lounge turn notifications and durable delivery | Maintainer; founder phone acceptance |
 | OPS-004 | P2 | in-progress | Record default code ownership and limited weekly dependency updates | Maintainer; founder reviews the pull request |
 | CHAIN-006 | P1 | in-progress | Port the automatic payout worker toward mainnet GEEK | Maintainer; founder controls explicit enable and the signing secret |
+| MINT-001 | P1 | in-progress | Preserve local mint request references across reloads | Maintainer; founder reviews release |
 
 ## CONT-001: Publish the continuation system
 
@@ -1407,3 +1408,19 @@ Acceptance:
 - Marking a job stuck writes the stuck state and its stuck:v1 membership in one update that still checks the lease and job snapshot. A failed update does not leave the job stuck and absent from that list. The PAYOUT_UNCONFIRMED log follows a successful update.
 
 Evidence/specification: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [server/mainnet-payout.js](../../server/mainnet-payout.js), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs), [workers/mainnet/signer.mjs](../../workers/mainnet/signer.mjs), [workers/mainnet/process.mjs](../../workers/mainnet/process.mjs), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js), [workers/mainnet/check-signing.mjs](../../workers/mainnet/check-signing.mjs), [workers/mainnet/job-mac.mjs](../../workers/mainnet/job-mac.mjs).
+
+## MINT-001: Preserve local mint request references across reloads
+
+**P1 / in-progress.** Owner: Maintainer; founder reviews release. Dependencies: none.
+
+Next action: Review the source candidate and preview, then perform actual-browser and Kasware device acceptance. No automatic retry or confirmation claim.
+
+Acceptance:
+
+- Save at most 100 recent public-address/request-reference records locally; display only the connected Mainnet wallet history.
+- Persist an unknown-outcome marker before wallet handoff; never resume a queue or restore approval after reload.
+- Validate stored display data, use fixed explorer links and text rendering, and explain local-storage failure without preventing the wallet flow.
+- Allow clearing the connected wallet history; clearing cannot cancel or repeat a transaction.
+- Focused reload, interrupted-request, wallet/network-isolation, invalid-data and blocked-storage tests pass; physical-wallet acceptance is tracked separately.
+
+Evidence/specification: [docs/MINT-RECEIPT-HISTORY.md](../../docs/MINT-RECEIPT-HISTORY.md), [public/mint/assets/mint.js](../../public/mint/assets/mint.js), [tests/mint-client.test.js](../../tests/mint-client.test.js).

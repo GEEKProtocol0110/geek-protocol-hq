@@ -97,7 +97,7 @@ const mintClient = await text('public/mint/assets/mint.js');
 check(mintClient.includes('const provider = window.kasware;') && mintClient.includes('await provider.signKRC20Transaction('), 'minting is handed to the captured Kasware provider');
 check(mintClient.includes("network !== MAINNET"), 'mint client enforces Kaspa Mainnet');
 check(/status\.transaction\.inscription,\s*3,\s*undefined,\s*0/.test(mintClient), 'mint request fixes type, destination behavior, and added priority fee');
-check(!mintClient.includes('localStorage'), 'mint result is not persisted in local storage');
+check(mintClient.includes('const HISTORY_LIMIT = 100;') && mintClient.includes('return cleanHistory(raw ? JSON.parse(raw) : []);') && !mintClient.includes('innerHTML'), 'mint history is bounded, validated display data rendered without HTML');
 check(!mintClient.includes('rawtx'), 'raw mint transactions are not handled by the page');
 
 const audit = await text('server/audit.js');
