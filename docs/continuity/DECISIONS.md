@@ -343,3 +343,13 @@ Pause A.C.E. development and live AI activation until the founder explicitly res
 Basis: Founder directed Pause ACE and then approved all nine proposed strategy/puzzle games.
 
 Evidence: [docs/STRATEGY-PUZZLE-GAMES.md](../../docs/STRATEGY-PUZZLE-GAMES.md).
+
+## DR-035: Drive holiday appearance from one priority catalog
+
+**implementation-choice** · 2026-11-13.
+
+Keep Appearance Off by default. Resolve automatic windows in America/Detroit by priority, then shortest window, then id. Add the verified Kaspa and crypto decoration windows, end Halloween's automatic window on October 30, and keep Satoshi's April 5 date manual-only. Add Geek Protocol's Birthday as June 21–23, priority 90, using the deployment hash already pinned in server/geek-deployment.js. Do not recolor the existing twelve holidays or enable a production mode from this change.
+
+Basis: Reviewed holiday-theme plan against main 01e79787. On November 13, 2026 the founder named the KRC-20 deploy, June 22 in America/Detroit, as the Geek Protocol birthday.
+
+Evidence: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/holiday-calendar.js](../../public/assets/holiday-calendar.js), [tests/appearance.test.js](../../tests/appearance.test.js).

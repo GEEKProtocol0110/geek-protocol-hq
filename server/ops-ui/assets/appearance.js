@@ -10,7 +10,19 @@ export const appearancePanel = ({ isReady, onExpired }) => {
   const preview = $('[data-appearance-preview]');
   const client = ownerClient({ endpoint: '/api/session/?service=operations&action=appearance' });
   let revision = null, busy = false, epoch = 0;
-  HOLIDAYS.forEach(item => { const option = document.createElement('option'); option.value = item.id; option.textContent = item.label; holiday.append(option); });
+  const groupLabels = [['seasonal', 'Seasonal'], ['civic', 'Civic'], ['kaspa', 'Kaspa'], ['geek', 'Geek Protocol'], ['bitcoin', 'Bitcoin'], ['ethereum', 'Ethereum']];
+  for (const [group, label] of groupLabels) {
+    const items = HOLIDAYS.filter(item => item.group === group);
+    if (!items.length) continue;
+    const box = document.createElement('optgroup'); box.label = label;
+    for (const item of items) {
+      const option = document.createElement('option');
+      option.value = item.id;
+      option.textContent = item.manualOnly ? `${item.label} (manual only)` : item.label;
+      box.append(option);
+    }
+    holiday.append(box);
+  }
   const updatePreview = () => {
     $('[data-holiday-choice]').hidden = mode.value !== 'manual';
     const active = effectiveHoliday({ mode: mode.value, holiday: holiday.value });
@@ -32,11 +44,19 @@ export const appearancePanel = ({ isReady, onExpired }) => {
   const renderCalendar = () => {
     const year = Number(new Intl.DateTimeFormat('en-US', { year: 'numeric', timeZone: HOLIDAY_TIMEZONE }).format(new Date()));
     const calendar = document.querySelector('[data-holiday-calendar]'); calendar.replaceChildren();
-    const table = document.createElement('table'), caption = document.createElement('caption'); caption.textContent = `${year} celebration windows`; table.append(caption);
+    const table = document.createElement('table'), caption = document.createElement('caption'); caption.textContent = `${year} automatic windows (${HOLIDAY_TIMEZONE})`; table.append(caption);
     const head = table.createTHead().insertRow(); ['Holiday', 'Automatic window'].forEach(text => { const cell = document.createElement('th'); cell.scope = 'col'; cell.textContent = text; head.append(cell); });
     const body = table.createTBody();
-    holidayWindows(year).forEach(item => { const row = body.insertRow(); const name = document.createElement('th'); name.scope = 'row'; name.textContent = item.label; row.append(name); const when = row.insertCell(); when.textContent = item.start === item.end ? item.start : `${item.start} → ${item.end}`; });
+    const windows = holidayWindows(year);
+    for (const [group, label] of groupLabels) {
+      const items = windows.filter(item => item.group === group).sort((a, b) => a.start.localeCompare(b.start) || a.id.localeCompare(b.id));
+      if (!items.length) continue;
+      const groupRow = body.insertRow(); const groupCell = document.createElement('th'); groupCell.scope = 'colgroup'; groupCell.colSpan = 2; groupCell.textContent = label; groupRow.append(groupCell);
+      for (const item of items) { const row = body.insertRow(); const name = document.createElement('th'); name.scope = 'row'; name.textContent = item.label; row.append(name); const when = row.insertCell(); when.textContent = item.start === item.end ? item.start : `${item.start} → ${item.end}`; }
+    }
     calendar.append(table);
+    const manual = HOLIDAYS.filter(item => item.manualOnly);
+    if (manual.length) { const note = document.createElement('p'); note.textContent = `Manual only, never automatic: ${manual.map(item => `${item.label} (${item.when})`).join('; ')}.`; calendar.append(note); }
   };
   const render = payload => {
     revision = payload.config.revision; mode.value = payload.config.mode; holiday.value = payload.config.holiday || 'christmas'; updatePreview(); renderCalendar();

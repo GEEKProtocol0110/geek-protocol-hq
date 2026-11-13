@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-12",
+  "updatedAt": "2026-11-13",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2051,6 +2051,27 @@
       "evidence": [
         "docs/KASPA-MATRIX.md",
         "tests/kaspa-matrix.test.js"
+      ]
+    },
+    {
+      "id": "UX-027",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Data-driven holiday catalog with Kaspa and crypto dates",
+      "owner": "Maintainer; founder preview",
+      "nextAction": "Gee previews the draft catalog and compact greeting before saving any Appearance mode. The saved default remains Off. A visual refresh of the existing twelve holidays is separate.",
+      "acceptance": [
+        "One catalog drives windows, priority, motifs and greetings. Automatic overlaps resolve by priority, then shortest window, then id. America/Detroit and the public { id } payload stay unchanged.",
+        "Verified Kaspa and crypto windows are selectable. Satoshi's April 5 date is manual-only. Halloween's automatic window ends October 30. Geek Protocol's Birthday is June 21–23 at priority 90, and its hash matches server/geek-deployment.js.",
+        "The portrait badge and orphan greeting selector are gone. One compact greeting clears on Off, an unknown id or a failed read. Holiday decorations stay static, honor prefers-reduced-motion, and do not cover an active quiz or individual game route.",
+        "Appearance default remains Off. Saves stay allowlisted and audited. No payout, ranked-bank or production setting change."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/HOLIDAY-THEMES.md",
+        "public/assets/holiday-calendar.js",
+        "public/assets/holiday-theme.js",
+        "tests/appearance.test.js"
       ]
     },
     {

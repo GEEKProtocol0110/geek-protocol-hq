@@ -30,7 +30,14 @@ export const loadAppearance = async () => {
   if (config.mode === 'manual' && retiredHoliday(config.holiday)) config = { ...config, mode: 'off', holiday: null };
   return { raw, config };
 };
-const view = config => ({ config, active: effectiveHoliday(config), upcoming: upcomingHolidayWindows(), timeZone: HOLIDAY_TIMEZONE });
+// Citation URLs stay in the catalog module. Responses carry the allowlisted record without them.
+const withoutSource = holiday => {
+  if (!holiday?.source) return holiday;
+  const copy = { ...holiday };
+  delete copy.source;
+  return copy;
+};
+const view = config => ({ config, active: withoutSource(effectiveHoliday(config)), upcoming: upcomingHolidayWindows().map(withoutSource), timeZone: HOLIDAY_TIMEZONE });
 const errors = (res, error) => {
   if (error.message === 'APPEARANCE_STATE_INVALID') return sendJson(res, 503, { ok: false, error: 'Holiday settings could not be read safely. Saved settings have not been replaced.' });
   if (error.message === 'APPEARANCE_CHANGED') return sendJson(res, 409, { ok: false, error: 'Holiday settings changed in another window. Refresh settings before saving again.' });

@@ -5,7 +5,8 @@ import { redisFixture } from './helpers/redis-fixture.js';
 import sessionHandler from '../api/session.js';
 import { appearanceKey } from '../server/appearance.js';
 import { verifyAuditRecord } from '../server/audit.js';
-import { HOLIDAYS, automaticHoliday, effectiveHoliday, holidayWindows, easterDay } from '../public/assets/holiday-calendar.js';
+import { HOLIDAYS, automaticHoliday, compareHolidayWindows, effectiveHoliday, holidayById, holidayWindows, easterDay } from '../public/assets/holiday-calendar.js';
+import { GEEK_DEPLOYMENT } from '../server/geek-deployment.js';
 
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
 process.env.UPSTASH_REDIS_REST_URL = 'https://redis.appearance.test';
@@ -48,7 +49,7 @@ test('automatic dates cover moving holidays, Easter and the December/January bou
   assert.equal(windows.thanksgiving.start, '2026-11-23'); assert.equal(windows.thanksgiving.end, '2026-11-29');
   assert.equal(automaticHoliday(Date.parse('2026-12-31T17:00:00Z')).id, 'new-year');
   assert.equal(automaticHoliday(Date.parse('2027-01-03T04:59:59Z')).id, 'new-year');
-  assert.equal(automaticHoliday(Date.parse('2027-01-03T05:00:00Z')), null);
+  assert.equal(automaticHoliday(Date.parse('2027-01-03T05:00:00Z')).id, 'bitcoin-genesis');
   assert.equal(automaticHoliday(Date.parse('2026-10-24T03:59:59Z')), null);
   assert.equal(automaticHoliday(Date.parse('2026-10-24T04:00:00Z')).id, 'halloween');
   assert.equal(automaticHoliday(Date.parse('2027-02-15T17:00:00Z')).id, 'presidents-day');
@@ -58,9 +59,17 @@ test('automatic dates cover moving holidays, Easter and the December/January bou
 test('all holiday palettes retain readable accent text and dark primary-button text', () => {
   const css = readFileSync(new URL('../public/assets/holiday-theme.css', import.meta.url), 'utf8');
   const luminance = hex => { const values = hex.match(/[a-f0-9]{2}/gi).map(x => parseInt(x, 16) / 255).map(x => x <= .04045 ? x / 12.92 : ((x + .055) / 1.055) ** 2.4); return .2126 * values[0] + .7152 * values[1] + .0722 * values[2]; };
-  for (const holiday of HOLIDAYS) assert.ok(css.includes(`[data-holiday-theme='${holiday.id}']`));
+  const preserved = { 'new-year': '#ffe19b', valentines: '#ffc2d9', 'presidents-day': '#ffccd1', 'st-patricks': '#e1ec9e', easter: '#ead3ff', 'memorial-day': '#ffccd1', 'independence-day': '#ffccd1', 'labor-day': '#d8e7ff', halloween: '#ffbd70', 'veterans-day': '#ffccd1', thanksgiving: '#ffd299', christmas: '#ffe2a3' };
+  for (const holiday of HOLIDAYS) assert.ok(css.includes(`[data-holiday-theme='${holiday.id}']`), holiday.id);
+  for (const [id, gold] of Object.entries(preserved)) assert.ok(css.includes(gold) && css.includes(`[data-holiday-theme='${id}']`), id);
+  for (const holiday of HOLIDAYS) if (holiday.tokens) for (const token of [holiday.tokens.gold, holiday.tokens.goldBright, holiday.tokens.cyan, holiday.tokens.glow, holiday.tokens.cool, holiday.tokens.fringe]) assert.ok(css.includes(token), `${holiday.id} ${token}`);
   for (const match of css.matchAll(/--(?:gold|cyan):#([a-f0-9]{6})/gi)) assert.ok((luminance(match[1]) + .05) / (luminance('151b1b') + .05) >= 4.5, match[0]);
   assert.doesNotMatch(css, /animation:|@keyframes|url\(/);
+  assert.doesNotMatch(css, /giga-portrait|hq-holiday-greeting/);
+  assert.match(css, /@media\(prefers-reduced-motion:reduce\)\{\.holiday-atmosphere span\{transform:none\}\}/);
+  assert.match(css, /body\.is-playing \.holiday-atmosphere/);
+  const atmosphere = readFileSync(new URL('../public/assets/atmosphere.css', import.meta.url), 'utf8');
+  assert.doesNotMatch(atmosphere, /hq-holiday-greeting|hq-seasonal-note/);
 });
 
 test('public appearance is read-only, defaults Off, caches briefly and returns no owner configuration', async () => {
@@ -68,7 +77,9 @@ test('public appearance is read-only, defaults Off, caches briefly and returns n
   assert.equal(view.headers['Cache-Control'], 'public, max-age=30, s-maxage=30'); assert.equal(view.headers['Set-Cookie'], undefined);
   assert.equal((await publicView('POST')).statusCode, 405); assert.equal((await publicView('HEAD')).body, undefined);
   const cookie = await login(); assert.equal((await save(cookie, 0)).statusCode, 200);
-  assert.deepEqual((await publicView()).body, { ok: true, theme: { id: 'christmas' } });
+  const published = await publicView();
+  assert.deepEqual(published.body, { ok: true, theme: { id: 'christmas' } });
+  assert.deepEqual(Object.keys(published.body.theme), ['id']);
   const raw = JSON.stringify((await publicView()).body); for (const forbidden of ['revision', 'updatedAt', 'key', 'permissions', 'config']) assert.equal(raw.includes(forbidden), false);
 });
 
@@ -142,4 +153,141 @@ test('retired stored holidays render Off without rewriting data and can be repla
     assert.equal(replacement.statusCode, 200); assert.equal(replacement.body.config.revision, 8);
     assert.equal((await publicView()).body.theme.id, 'christmas');
   }
+});
+
+test('the catalog is allowlisted, and uncertain dates stay manual', () => {
+  const ids = HOLIDAYS.map(holiday => holiday.id);
+  assert.equal(new Set(ids).size, ids.length);
+  for (const holiday of HOLIDAYS) {
+    assert.match(holiday.id, /^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+    for (const key of ['label', 'group', 'icon', 'greeting', 'when', 'motifs', 'window']) assert.ok(holiday[key], `${holiday.id} ${key}`);
+    assert.equal(Number.isInteger(holiday.priority), true, holiday.id);
+    assert.ok(['seasonal', 'civic', 'kaspa', 'bitcoin', 'ethereum', 'geek'].includes(holiday.group), holiday.id);
+    assert.doesNotMatch(`${holiday.label} ${holiday.greeting}`, /\$|price|market|pump|moon|\bath\b|hype|valuation|million|billion|\bUSD\b|10,000|10000/i);
+  }
+  assert.deepEqual(HOLIDAYS.filter(holiday => holiday.group === 'geek').map(holiday => holiday.id), ['geek-birthday']);
+  assert.equal(holidayById('geek-protocol-day'), null);
+  const geekBirthday = holidayById('geek-birthday');
+  assert.equal(geekBirthday.priority, 90);
+  assert.equal(geekBirthday.manualOnly, undefined);
+  assert.deepEqual(geekBirthday.window, { type: 'annual', start: [6, 21], end: [6, 23] });
+  assert.equal(geekBirthday.deploymentHash, GEEK_DEPLOYMENT.deploymentHash);
+  assert.equal(geekBirthday.deploymentHash, 'c3cea245b394374b6d80d9fa82269967b56bd5d128a4db3152087a05e014d0b1');
+  const satoshi = holidayById('satoshi-birthday');
+  assert.equal(satoshi.manualOnly, true);
+  assert.equal(satoshi.priority, 0);
+  assert.deepEqual([satoshi.window.type, satoshi.window.month, satoshi.window.day], ['one-day', 4, 5]);
+  assert.equal(holidayWindows(2026).some(window => window.id === 'satoshi-birthday'), false);
+  assert.equal(holidayById('mlk-day'), null);
+  assert.equal(holidayById('not-a-theme'), null);
+  assert.equal(effectiveHoliday({ mode: 'manual', holiday: 'satoshi-birthday' }).id, 'satoshi-birthday');
+  assert.equal(effectiveHoliday({ mode: 'manual', holiday: 'not-a-theme' }), null);
+});
+
+test('overlap ties resolve by priority, then shortest window, then id', () => {
+  const ranked = [
+    { id: 'b-long', priority: 40, start: '2026-05-01', end: '2026-05-20' },
+    { id: 'm-b', priority: 40, start: '2026-05-05', end: '2026-05-06' },
+    { id: 'short-low', priority: 10, start: '2026-05-05', end: '2026-05-05' },
+    { id: 'm-a', priority: 40, start: '2026-05-05', end: '2026-05-06' }
+  ].sort(compareHolidayWindows).map(window => window.id);
+  assert.deepEqual(ranked, ['m-a', 'm-b', 'b-long', 'short-low']);
+});
+
+test('every 2026 Detroit date selects the priority winner, including the new boundaries', () => {
+  const expected = new Map();
+  const fill = (start, end, id) => {
+    for (let day = Date.parse(`${start}T00:00:00Z`); day <= Date.parse(`${end}T00:00:00Z`); day += 86_400_000) expected.set(new Date(day).toISOString().slice(0, 10), id);
+  };
+  for (const [start, end, id] of [
+    ['2026-01-01', '2026-01-02', 'new-year'],
+    ['2026-01-03', '2026-01-03', 'bitcoin-genesis'],
+    ['2026-02-12', '2026-02-15', 'valentines'],
+    ['2026-02-16', '2026-02-16', 'presidents-day'],
+    ['2026-03-16', '2026-03-18', 'st-patricks'],
+    ['2026-03-29', '2026-04-06', 'easter'],
+    ['2026-05-04', '2026-05-06', 'crescendo'],
+    ['2026-05-22', '2026-05-22', 'bitcoin-pizza-day'],
+    ['2026-05-23', '2026-05-25', 'memorial-day'],
+    ['2026-06-21', '2026-06-23', 'geek-birthday'],
+    ['2026-06-29', '2026-06-30', 'toccata'],
+    ['2026-07-01', '2026-07-05', 'independence-day'],
+    ['2026-07-29', '2026-07-31', 'ethereum-launch'],
+    ['2026-09-04', '2026-09-07', 'labor-day'],
+    ['2026-09-14', '2026-09-16', 'krc20-launch'],
+    ['2026-10-24', '2026-10-30', 'halloween'],
+    ['2026-10-31', '2026-10-31', 'bitcoin-whitepaper'],
+    ['2026-11-06', '2026-11-08', 'kaspa-birthday'],
+    ['2026-11-10', '2026-11-12', 'veterans-day'],
+    ['2026-11-23', '2026-11-29', 'thanksgiving'],
+    ['2026-12-01', '2026-12-26', 'christmas'],
+    ['2026-12-29', '2026-12-31', 'new-year']
+  ]) fill(start, end, id);
+  assert.equal(expected.size, [...expected.keys()].length);
+  const openOn = iso => holidayWindows(2026).filter(window => window.start <= iso && window.end >= iso).map(window => window.id).sort();
+  assert.deepEqual(openOn('2026-04-05'), ['easter']);
+  assert.deepEqual(openOn('2026-05-22'), ['bitcoin-pizza-day', 'memorial-day']);
+  assert.deepEqual(openOn('2026-05-23'), ['memorial-day']);
+  assert.deepEqual(openOn('2026-06-20'), []);
+  assert.deepEqual(openOn('2026-06-21'), ['geek-birthday']);
+  assert.deepEqual(openOn('2026-06-22'), ['geek-birthday']);
+  assert.deepEqual(openOn('2026-06-23'), ['geek-birthday']);
+  assert.deepEqual(openOn('2026-06-24'), []);
+  assert.deepEqual(openOn('2026-06-29'), ['toccata']);
+  assert.deepEqual(openOn('2026-06-30'), ['toccata']);
+  assert.deepEqual(openOn('2026-07-01'), ['independence-day']);
+  assert.deepEqual(openOn('2026-10-30'), ['halloween']);
+  assert.deepEqual(openOn('2026-10-31'), ['bitcoin-whitepaper']);
+  assert.deepEqual(openOn('2026-11-08'), ['kaspa-birthday']);
+  assert.deepEqual(openOn('2026-11-09'), []);
+  assert.deepEqual(openOn('2026-11-10'), ['veterans-day']);
+  assert.deepEqual(openOn('2026-12-27'), []);
+  assert.deepEqual(openOn('2026-12-28'), []);
+  for (let month = 1; month <= 12; month += 1) {
+    const last = new Date(Date.UTC(2026, month, 0)).getUTCDate();
+    for (let day = 1; day <= last; day += 1) {
+      const iso = `${2026}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      const instant = Date.UTC(2026, month - 1, day, 17, 0, 0);
+      const civil = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Detroit', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(instant));
+      assert.equal(civil, iso, iso);
+      assert.equal(automaticHoliday(instant)?.id ?? null, expected.get(iso) ?? null, iso);
+    }
+  }
+  assert.equal(automaticHoliday(Date.parse('2026-01-03T04:59:59Z')).id, 'new-year');
+  assert.equal(automaticHoliday(Date.parse('2026-01-03T05:00:00Z')).id, 'bitcoin-genesis');
+  assert.equal(automaticHoliday(Date.parse('2026-01-04T05:00:00Z')), null);
+  assert.equal(automaticHoliday(Date.parse('2026-04-05T16:00:00Z')).id, 'easter');
+  assert.equal(automaticHoliday(Date.parse('2026-05-22T04:00:00Z')).id, 'bitcoin-pizza-day');
+  assert.equal(automaticHoliday(Date.parse('2026-05-23T03:59:59Z')).id, 'bitcoin-pizza-day');
+  assert.equal(automaticHoliday(Date.parse('2026-05-23T04:00:00Z')).id, 'memorial-day');
+  assert.equal(automaticHoliday(Date.parse('2026-06-21T03:59:59Z')), null);
+  assert.equal(automaticHoliday(Date.parse('2026-06-21T04:00:00Z')).id, 'geek-birthday');
+  assert.equal(automaticHoliday(Date.parse('2026-06-22T16:00:00Z')).id, 'geek-birthday');
+  assert.equal(automaticHoliday(Date.parse('2026-06-24T03:59:59Z')).id, 'geek-birthday');
+  assert.equal(automaticHoliday(Date.parse('2026-06-24T04:00:00Z')), null);
+  assert.equal(automaticHoliday(Date.parse('2026-06-29T04:00:00Z')).id, 'toccata');
+  assert.equal(automaticHoliday(Date.parse('2026-07-01T03:59:59Z')).id, 'toccata');
+  assert.equal(automaticHoliday(Date.parse('2026-07-01T04:00:00Z')).id, 'independence-day');
+  assert.equal(automaticHoliday(Date.parse('2026-10-31T03:59:59Z')).id, 'halloween');
+  assert.equal(automaticHoliday(Date.parse('2026-10-31T04:00:00Z')).id, 'bitcoin-whitepaper');
+  assert.equal(automaticHoliday(Date.parse('2026-11-01T03:59:59Z')).id, 'bitcoin-whitepaper');
+  assert.equal(automaticHoliday(Date.parse('2026-11-01T04:00:00Z')), null);
+  assert.equal(automaticHoliday(Date.parse('2026-11-09T04:59:59Z')).id, 'kaspa-birthday');
+  assert.equal(automaticHoliday(Date.parse('2026-11-09T05:00:00Z')), null);
+  assert.equal(automaticHoliday(Date.parse('2026-11-10T05:00:00Z')).id, 'veterans-day');
+});
+
+test('a manual-only holiday saves by id, and citation URLs stay out of appearance responses', async () => {
+  const cookie = await login();
+  assert.equal((await save(cookie, 0, 'manual', 'satoshi-birthday')).statusCode, 200);
+  const published = await publicView();
+  assert.deepEqual(published.body, { ok: true, theme: { id: 'satoshi-birthday' } });
+  assert.deepEqual(Object.keys(published.body.theme), ['id']);
+  const ownerView = await call({ cookie });
+  const raw = JSON.stringify(ownerView.body);
+  assert.equal(raw.includes('http'), false);
+  assert.equal(raw.includes('source'), false);
+  assert.equal(ownerView.body.active.manualOnly, true);
+  assert.equal((await save(cookie, 1, 'manual', 'geek-protocol-day')).statusCode, 400);
+  assert.equal((await record()).holiday, 'satoshi-birthday');
 });
