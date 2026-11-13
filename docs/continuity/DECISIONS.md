@@ -353,3 +353,13 @@ Keep Appearance Off by default. Resolve automatic windows in America/Detroit by 
 Basis: Reviewed holiday-theme plan against main 01e79787. On November 13, 2026 the founder named the KRC-20 deploy, June 22 in America/Detroit, as the Geek Protocol birthday.
 
 Evidence: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/holiday-calendar.js](../../public/assets/holiday-calendar.js), [tests/appearance.test.js](../../tests/appearance.test.js).
+
+## DR-036: Draw holiday ornaments as in-repo Geek strokes
+
+**implementation-choice** · 2026-11-13.
+
+Replace public unicode ornaments with static SVG marks from the repo, and apply distinct catalog color tokens to every holiday, including the original twelve. Keep greetings factual, decorations off game boards, and Appearance Off until the founder saves a mode.
+
+Basis: November 13, 2026 founder request for a more Geek holiday look, after the catalog draft. This supersedes only the do-not-recolor limit in DR-035.
+
+Evidence: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/holiday-marks.js](../../public/assets/holiday-marks.js), [public/assets/holiday-theme.css](../../public/assets/holiday-theme.css). Supersedes DR-035.

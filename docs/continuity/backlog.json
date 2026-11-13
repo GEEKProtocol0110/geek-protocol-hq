@@ -2075,6 +2075,29 @@
       ]
     },
     {
+      "id": "UX-028",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Geek stroke marks and distinct holiday palettes",
+      "owner": "Maintainer; founder preview",
+      "nextAction": "Gee previews the stroke ornaments and the separated civic palettes before any Appearance save. The saved default remains Off.",
+      "acceptance": [
+        "Public ornaments are static in-repo SVG marks named by the catalog. No remote image or operator-supplied CSS is accepted.",
+        "Each holiday, including the original twelve, has its own color tokens. The four civic days are visually distinct. Greetings stay the catalog sentences.",
+        "Reduced motion clears ornament tilt. Active quizzes, playing pages, and individual game routes do not receive the ornament layer.",
+        "Appearance default remains Off. The public payload remains an id. Code rain behavior is unchanged."
+      ],
+      "dependsOn": [
+        "UX-027"
+      ],
+      "evidence": [
+        "docs/HOLIDAY-THEMES.md",
+        "public/assets/holiday-marks.js",
+        "public/assets/holiday-theme.css",
+        "tests/appearance.test.js"
+      ]
+    },
+    {
       "id": "GAME-004",
       "priority": "P2",
       "status": "in-progress",

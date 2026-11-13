@@ -457,6 +457,20 @@
       ],
       "recordedAt": "2026-11-13",
       "supersedes": null
+    },
+    {
+      "id": "DR-036",
+      "status": "implementation-choice",
+      "title": "Draw holiday ornaments as in-repo Geek strokes",
+      "decision": "Replace public unicode ornaments with static SVG marks from the repo, and apply distinct catalog color tokens to every holiday, including the original twelve. Keep greetings factual, decorations off game boards, and Appearance Off until the founder saves a mode.",
+      "basis": "November 13, 2026 founder request for a more Geek holiday look, after the catalog draft. This supersedes only the do-not-recolor limit in DR-035.",
+      "evidence": [
+        "docs/HOLIDAY-THEMES.md",
+        "public/assets/holiday-marks.js",
+        "public/assets/holiday-theme.css"
+      ],
+      "recordedAt": "2026-11-13",
+      "supersedes": "DR-035"
     }
   ]
 }

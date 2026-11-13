@@ -1391,3 +1391,9 @@ Live HTTP showed /api/game-notifications returns 308 to /api/game-notifications/
 - **Geek Protocol birthday:** June 21–23, priority 90, named day June 22 Detroit. `deploymentHash` is the same value as `GEEK_DEPLOYMENT.deploymentHash` in `server/geek-deployment.js` (`c3cea245b394374b6d80d9fa82269967b56bd5d128a4db3152087a05e014d0b1`). The 2026 tests cover June 20 through June 24 and the later Toccata and Independence Day boundaries.
 - **Not in this change:** recoloring the existing twelve holidays, closing December 27–28, code-rain tint, or turning Automatic on.
 - **Validation:** `npm run verify` passed 886 HQ tests and 9 signer checks, zero failures, with real Redis 7.0.15 for the appearance fixture. Security evidence check passed 311 assertions. Continuity, site, question, collection, archive, repository, economy and whitepaper checks passed. This is a draft. It is not merged, deployed, or a production appearance change.
+
+## November 13, 2026 — UX-028 holiday stroke marks
+
+- **Task:** UX-028, stacked on the UX-027 catalog draft. Public ornaments are static SVG marks from `public/assets/holiday-marks.js`. Every holiday, including the original twelve, now has its own catalog color tokens. Presidents' Day, Memorial Day, Independence Day, and Veterans Day no longer share one stripe.
+- **Left unchanged:** greetings, the `{ id }` API, America/Detroit selection, the Off default, and code rain. Ornaments still stay off individual game routes, an active quiz, and `body.is-playing`. Reduced motion still clears the tilt. No keyframes or remote assets.
+- **Validation:** `npm run verify` again passed 886 HQ tests and 9 signer checks, zero failures, plus the same supporting checks. Local headless Chrome at 1280px showed distinct Geek birthday, Halloween, Memorial Day, and Independence Day headers, and a 390px Geek birthday header. Mocked appearance only. Not merged or deployed.
