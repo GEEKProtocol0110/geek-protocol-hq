@@ -2233,10 +2233,10 @@
     {
       "id": "UX-029",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "needs-evidence",
       "title": "Keep home account access in sync and expose receiving-wallet switching",
       "owner": "Maintainer; founder reviews release",
-      "nextAction": "Review the home account and Switch wallet candidate, then verify the deployed return-home and passkey-confirmed address flow on actual devices.",
+      "nextAction": "PR #287 merged as e177a551e22c3ff948af6a569d954e6a87cd0327. Production dpl_GtxZPNWRU3q6d48qJyhVrHm6oeSg is READY with both canonical domains; five exact canonical HTML/client HTTP 200 checks passed. Actual-device return-home and passkey-confirmed receiving-address acceptance remain separate.",
       "acceptance": [
         "Home reads the existing session without creating a guest or opening a wallet and sends signed-in players to My HQ. Guest and expired sessions offer Sign in.",
         "Home rechecks on browser history restore; late reads cannot override newer account status and transient failures do not pretend the player signed out.",
@@ -2253,6 +2253,32 @@
         "public/assets/receiving-address.js",
         "tests/session-access-client.test.js",
         "tests/receiving-address-client.test.js"
+      ]
+    },
+    {
+      "id": "CHAIN-007",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Require private-ranked proof before mainnet payout admission and signing",
+      "owner": "Maintainer; founder controls economic enable; independent reviewer unassigned",
+      "nextAction": "Review the main-based gate and its negative/positive controls. Before any future payout activation, integrate the held private-bank/season checks, independently review the exact release and reconcile any pre-v2 records without replacing a journal. No payment activation is authorized.",
+      "acceptance": [
+        "Public, legacy, unranked, malformed bank versions and Season 0 results admit no mainnet job even when operational flags are enabled. The current public Alpha continues saving learning results.",
+        "Private-bank hash, season and answered count join the exact HMAC-bound payout proof. Unknown proof fields and incomplete or nonqualifying proof fail closed.",
+        "HQ claim, worker processing and signer validation reject missing/public/legacy proofs. Invalid pending jobs retain their raw record and earning lock in quarantine; no second signature or automatic upgrade.",
+        "Real-Redis adversarial tests cannot promote a public result using client-provided bank/season fields. Offline SDK tests reject bad proof before RPC input access or signing. Existing cap, replay, journal and lost-acknowledgment tests remain meaningful using explicitly annotated future-private fixtures.",
+        "Full repository verification passes; real private-bank cutover, live provider recovery and independent audit remain open. Treasury settings, secrets and deployment configuration stay unchanged."
+      ],
+      "dependsOn": [
+        "CHAIN-006"
+      ],
+      "evidence": [
+        "docs/MAINNET-GEEK-PAYOUT.md",
+        "workers/mainnet/eligibility.mjs",
+        "workers/mainnet/job-mac.mjs",
+        "server/mainnet-payout.js",
+        "tests/mainnet-payout.test.js",
+        "workers/mainnet/check-signing.mjs"
       ]
     }
   ]

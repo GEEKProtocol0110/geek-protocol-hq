@@ -11,7 +11,7 @@ import { GEEK_DEPLOYMENT } from '../server/geek-deployment.js';
 import { ROUND_CONFIG } from '../server/game-economy.js';
 import {
   PAYOUT_INDEX_CEILING, STUCK_AFTER_MS, earningId, mainnetPayoutConfig, mainnetPayoutFlags, payoutAddressDayKey, payoutDay, payoutDayKey,
-  payoutEarnKey, payoutIdentityFingerprint, payoutIndexKey, payoutJobKey, payoutPlayerDayKey, payoutQuarantineKey, payoutSignedKey, payoutStuckKey
+  payoutEarnKey, payoutIdentityFingerprint, payoutIndexKey, payoutJobKey, payoutPlayerDayKey, payoutQuarantineKey, payoutSignedKey, payoutStuckKey, prepareMainnetPayout
 } from '../server/mainnet-payout.js';
 import { createCronHandler } from '../workers/mainnet/cron.mjs';
 import { workerRequest } from '../workers/mainnet/request.mjs';
@@ -67,7 +67,19 @@ const call = async (handler, method, body = {}, cookie = '', query = {}, extra =
 };
 const player = async () => (await call(sessionHandler, 'POST', { displayName: 'Mainnet payout fixture' })).headers['Set-Cookie'].split(';')[0];
 const playerId = cookie => cookie.split('=')[1];
-const play = (cookie, action, fields = {}) => call(rankedHandler, 'POST', { action, ...fields }, cookie);
+const syntheticBank = 'f'.repeat(64);
+// Positive payout/recovery fixtures model a future private-ranked server result.
+// Only the isolated Redis fixture is annotated. This does not claim today's
+// public question loader supplies private content or payout eligibility.
+const play = async (cookie, action, fields = {}) => {
+  const result = await call(rankedHandler, 'POST', { action, ...fields }, cookie);
+  if (action === 'start' && result.statusCode === 201 && result.body.run?.id) {
+    const key = `geek:run:${result.body.run.id}`;
+    const saved = JSON.parse(await fixture.command('GET', key));
+    await fixture.command('SET', key, JSON.stringify({ ...saved, bankVersion: syntheticBank, season: 'season-1' }), 'KEEPTTL');
+  }
+  return result;
+};
 const choice = (payload, correct) => {
   const question = loadQuestionBank('kaspa').questions.find(item => item.prompt === payload.question.prompt);
   const right = payload.question.options.indexOf(question.options[question.correctIndex]);
@@ -520,7 +532,7 @@ test('cap changes do not alter the job fingerprint, and asset identity changes d
 test('the job mac changes when any proof field changes', () => {
   const base = { id: 'a'.repeat(64), amount: toRaw(1800), recipient, sender: MAINNET_PAYOUT_SENDER, playerId: 'b'.repeat(32), network: 'mainnet', protocol: 'KRC-20', ticker: 'GEEK', decimals: '8', deploymentHash: 'c'.repeat(64), configFingerprint: 'd'.repeat(64), proof: { kind: 'gauntlet', round: 10, correctCount: 1, runId: 'e'.repeat(40) } };
   const original = jobMac(base, hmacSecret);
-  for (const [field, value] of [['kind', 'daily'], ['round', 9], ['correctCount', 10], ['runId', 'f'.repeat(40)]]) {
+  for (const [field, value] of [['kind', 'daily'], ['round', 9], ['correctCount', 10], ['runId', 'f'.repeat(40)], ['answered', 9], ['bankVersion', syntheticBank], ['season', 'season-2']]) {
     assert.notEqual(jobMac({ ...base, proof: { ...base.proof, [field]: value } }, hmacSecret), original, field);
   }
   assert.notEqual(jobMac({ ...base, amount: toRaw(18000) }, hmacSecret), original);
@@ -699,4 +711,68 @@ test('a stuck mark commits the job and stuck list together or not at all', async
     console.info = info;
     beforeRedisCommand = null;
   }
+});
+
+
+test('public Alpha results stay nonpayable even with all payout flags and client-supplied bank claims', async () => {
+  enable();
+  const cookie = await player(); await saveAddress(cookie);
+  // Deliberately bypass the positive fixture helper: use the actual public start.
+  let result = await call(rankedHandler, 'POST', { action: 'start', mode: 'daily', category: 'kaspa',
+    bankVersion: syntheticBank, season: 'season-1', unranked: false }, cookie);
+  assert.equal(result.statusCode, 201);
+  const key = `geek:run:${result.body.run.id}`;
+  let saved = JSON.parse(await fixture.command('GET', key));
+  assert.equal(saved.bankVersion, undefined); assert.equal(saved.season, undefined);
+  result = await answerRound(cookie, result.body);
+  const finished = await call(rankedHandler, 'POST', { action: 'finish', runId: result.run.id,
+    bankVersion: syntheticBank, season: 'season-1' }, cookie);
+  assert.equal(finished.statusCode, 200);
+  saved = JSON.parse(await fixture.command('GET', key));
+  assert.equal(saved.status, 'finished'); assert.equal(saved.correct, 5);
+  assert.deepEqual(await jobs(), []); assert.equal(await daySpend(), null);
+});
+
+test('admission requires a private bank hash and live season from server state, with no unranked result', async () => {
+  enable(); const cookie = await player(); await saveAddress(cookie);
+  const run = { id: 'a'.repeat(40), bankVersion: syntheticBank, season: 'season-1', mode: 'daily',
+    status: 'finished', completedRound: 1, questionCount: 5, correct: 5,
+    roundAnswers: Array.from({ length: 5 }, () => ({ correct: true })) };
+  const prepared = await prepareMainnetPayout(playerId(cookie), run);
+  assert.ok(prepared, 'positive control: future private-ranked fixture');
+  const job = JSON.parse(prepared.args[2]);
+  assert.equal(job.proof.bankVersion, syntheticBank); assert.equal(job.proof.season, 'season-1');
+  assert.equal(jobMacMatches(job, hmacSecret), true);
+  for (const invalid of [{ bankVersion: undefined }, { bankVersion: 'public' }, { bankVersion: 'not-a-hash' },
+    { bankVersion: 'F'.repeat(64) }, { season: undefined }, { season: 'season-0' }, { season: 'season-01' },
+    { season: 'season-10000' }, { unranked: true }]) {
+    assert.equal(await prepareMainnetPayout(playerId(cookie), { ...run, ...invalid }), null);
+  }
+  assert.deepEqual(await jobs(), [], 'preparation alone never commits a job');
+});
+
+test('bank/season/answer-count tampering is MAC-bound, and invalid pending proofs retain their job and earning lock', async () => {
+  enable(); const cookie = await player(); await saveAddress(cookie);
+  let result = await play(cookie, 'start', { mode: 'daily', category: 'kaspa' });
+  result = await answerRound(cookie, result.body);
+  await play(cookie, 'finish', { runId: result.run.id });
+  const job = (await jobs())[0], key = payoutJobKey(job.id);
+  for (const fields of [{ bankVersion: 'e'.repeat(64) }, { season: 'season-2' }, { answered: 4 }]) {
+    assert.equal(jobMacMatches({ ...job, proof: { ...job.proof, ...fields } }, hmacSecret), false);
+  }
+  const legacy = { ...job, proof: { ...job.proof, bankVersion: undefined, season: undefined } };
+  legacy.mac = jobMac(legacy, hmacSecret); // Even a valid MAC cannot waive the eligibility policy.
+  const saved = JSON.stringify(legacy); await fixture.command('SET', key, saved);
+  const claim = await call(sessionHandler, 'POST', { action: 'claim' }, '', { service: 'mainnet-worker' },
+    { origin: '', authorization: `Bearer ${token}` });
+  assert.equal(claim.statusCode, 200); assert.equal(claim.body.job, null);
+  assert.equal((await fixture.command('ZRANGE', payoutQuarantineKey, 0, -1)).includes(job.id), true);
+  assert.equal(await fixture.command('GET', key), saved);
+  assert.equal(await fixture.command('GET', payoutEarnKey(job.id)), job.id);
+  let touched = 0;
+  await assert.rejects(processPayment({
+    request: async body => { if (body.action === 'release') return {}; return { job: legacy, lease: 'a'.repeat(24), config: {} }; },
+    signer: { verify() { touched++; }, prepare() { touched++; }, submit() { touched++; } }, report() {}
+  }), /PRIVATE_RANKED_PROOF_REQUIRED/);
+  assert.equal(touched, 0);
 });

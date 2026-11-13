@@ -1,6 +1,6 @@
 # Home account and receiving-wallet controls
 
-UX-029, November 13, 2026. Main-based source candidate; no release or device acceptance is claimed.
+UX-029, November 13, 2026. Released in PR #287 as e177a551e22c3ff948af6a569d954e6a87cd0327. Production dpl_GtxZPNWRU3q6d48qJyhVrHm6oeSg is READY with both canonical domains. Canonical home, profile, rewards and both account/receiving clients returned HTTP 200 with exact source bytes. Actual-device acceptance remains separate.
 
 The founder reported that returning home shows Sign in after account authentication and requested a Switch wallet control without KasWare. The home header was hardcoded, and the shared account controller returned before reading the session when a page had no sign-out button.
 

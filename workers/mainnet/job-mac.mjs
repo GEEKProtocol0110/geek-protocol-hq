@@ -11,7 +11,7 @@ const text = value => value === undefined || value === null ? '' : String(value)
 export function payableCanonical(job) {
   const proof = job?.proof || {};
   return [
-    'geek-mainnet-job-mac-v1',
+    'geek-mainnet-job-mac-v2',
     text(job?.id),
     text(job?.amount),
     text(job?.recipient),
@@ -26,7 +26,10 @@ export function payableCanonical(job) {
     text(proof.kind),
     text(proof.round),
     text(proof.correctCount),
-    text(proof.runId)
+    text(proof.runId),
+    text(proof.answered),
+    text(proof.bankVersion),
+    text(proof.season)
   ].join('\n');
 }
 
