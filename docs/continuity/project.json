@@ -227,6 +227,18 @@
     "evidence": "android/README.md",
     "nextAction": "Preparation #265 merged as 1cb03f87ce65266d245d090241a6d1724b0c5cdc and production READY. Owner protected signing environment/reviewer/secrets, actual signed build/domain association and phone acceptance remain open."
   },
+  "holidayVisuals": {
+    "task": "UX-028",
+    "status": "source-candidate",
+    "evidence": "docs/HOLIDAY-THEMES.md",
+    "nextAction": "Draft stacked on the catalog branch. Gee previews stroke marks and palettes before any Appearance save. The saved default remains Off."
+  },
+  "holidayThemes": {
+    "task": "UX-027",
+    "status": "source-candidate",
+    "evidence": "docs/HOLIDAY-THEMES.md",
+    "nextAction": "Draft only. Gee previews the catalog, including Geek Protocol's Birthday on June 21–23, before any Appearance save. The saved default remains Off."
+  },
   "devicePush": {
     "task": "GAME-005",
     "status": "implemented-configured-phone-acceptance-open",

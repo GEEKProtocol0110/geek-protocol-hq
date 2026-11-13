@@ -344,7 +344,27 @@ Basis: Founder directed Pause ACE and then approved all nine proposed strategy/p
 
 Evidence: [docs/STRATEGY-PUZZLE-GAMES.md](../../docs/STRATEGY-PUZZLE-GAMES.md).
 
-## DR-035: Port the GEEKT payout worker toward mainnet GEEK while settlement stays off
+## DR-035: Drive holiday appearance from one priority catalog
+
+**implementation-choice** · 2026-11-13.
+
+Keep Appearance Off by default. Resolve automatic windows in America/Detroit by priority, then shortest window, then id. Add the verified Kaspa and crypto decoration windows, end Halloween's automatic window on October 30, and keep Satoshi's April 5 date manual-only. Add Geek Protocol's Birthday as June 21–23, priority 90, using the deployment hash already pinned in server/geek-deployment.js. Do not recolor the existing twelve holidays or enable a production mode from this change.
+
+Basis: Reviewed holiday-theme plan against main 01e79787. On November 13, 2026 the founder named the KRC-20 deploy, June 22 in America/Detroit, as the Geek Protocol birthday.
+
+Evidence: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/holiday-calendar.js](../../public/assets/holiday-calendar.js), [tests/appearance.test.js](../../tests/appearance.test.js).
+
+## DR-036: Draw holiday ornaments as in-repo Geek strokes
+
+**implementation-choice** · 2026-11-13.
+
+Replace public unicode ornaments with static SVG marks from the repo, and apply distinct catalog color tokens to every holiday, including the original twelve. Keep greetings factual, decorations off game boards, and Appearance Off until the founder saves a mode.
+
+Basis: November 13, 2026 founder request for a more Geek holiday look, after the catalog draft. This supersedes only the do-not-recolor limit in DR-035.
+
+Evidence: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/holiday-marks.js](../../public/assets/holiday-marks.js), [public/assets/holiday-theme.css](../../public/assets/holiday-theme.css). Supersedes DR-035.
+
+## DR-037: Port the GEEKT payout worker toward mainnet GEEK while settlement stays off
 
 **implementation-choice** · 2026-11-12.
 
@@ -354,7 +374,7 @@ Basis: Founder confirmed the reward schedule on 2026-11-12 and asked for a draft
 
 Evidence: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [server/mainnet-payout.js](../../server/mainnet-payout.js), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs).
 
-## DR-036: Bind mainnet Gauntlet GEEK to the graded correct count
+## DR-038: Bind mainnet Gauntlet GEEK to the graded correct count
 
 **founder-direction** · 2026-11-12.
 
@@ -362,4 +382,4 @@ Pay Gauntlet GEEK as ROUND_CONFIG.reward times the server-graded correct count, 
 
 Basis: Founder confirmed the per-correct Gauntlet rule on 2026-11-12 after the flat perfect-round amount was set aside. Security review required the amount to match that job's graded proof.
 
-Evidence: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs), [workers/mainnet/signer.mjs](../../workers/mainnet/signer.mjs), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js). Supersedes DR-035.
+Evidence: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs), [workers/mainnet/signer.mjs](../../workers/mainnet/signer.mjs), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js). Supersedes DR-037.

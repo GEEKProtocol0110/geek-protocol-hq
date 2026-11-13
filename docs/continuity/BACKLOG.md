@@ -86,6 +86,8 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-024 | P2 | in-progress | Minimal cosmic glitch feedback and Geek code accents | Maintainer; founder release review |
 | UX-025 | P2 | in-progress | Clean Geek branding and black installed-app launch | Maintainer; founder release review |
 | UX-026 | P2 | in-progress | Kaspa space, planet and code-rain full-page background | Maintainer; founder release review |
+| UX-027 | P2 | in-progress | Data-driven holiday catalog with Kaspa and crypto dates | Maintainer; founder preview |
+| UX-028 | P2 | in-progress | Geek stroke marks and distinct holiday palettes | Maintainer; founder preview |
 | GAME-004 | P2 | in-progress | Ongoing matches, My Games and turn alerts | Maintainer; founder release/device review |
 | APP-001 | P2 | in-progress | Android test package and device acceptance | Maintainer; founder device review |
 | GAME-005 | P2 | in-progress | Opt-in closed-lounge turn notifications and durable delivery | Maintainer; founder phone acceptance |
@@ -1296,6 +1298,36 @@ Acceptance:
 - No requests, player records, rewards or gameplay input hooks; CSP unchanged.
 
 Evidence/specification: [docs/KASPA-MATRIX.md](../../docs/KASPA-MATRIX.md), [tests/kaspa-matrix.test.js](../../tests/kaspa-matrix.test.js).
+
+## UX-027: Data-driven holiday catalog with Kaspa and crypto dates
+
+**P2 / in-progress.** Owner: Maintainer; founder preview. Dependencies: none.
+
+Next action: Gee previews the draft catalog and compact greeting before saving any Appearance mode. The saved default remains Off. A visual refresh of the existing twelve holidays is separate.
+
+Acceptance:
+
+- One catalog drives windows, priority, motifs and greetings. Automatic overlaps resolve by priority, then shortest window, then id. America/Detroit and the public { id } payload stay unchanged.
+- Verified Kaspa and crypto windows are selectable. Satoshi's April 5 date is manual-only. Halloween's automatic window ends October 30. Geek Protocol's Birthday is June 21–23 at priority 90, and its hash matches server/geek-deployment.js.
+- The portrait badge and orphan greeting selector are gone. One compact greeting clears on Off, an unknown id or a failed read. Holiday decorations stay static, honor prefers-reduced-motion, and do not cover an active quiz or individual game route.
+- Appearance default remains Off. Saves stay allowlisted and audited. No payout, ranked-bank or production setting change.
+
+Evidence/specification: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/holiday-calendar.js](../../public/assets/holiday-calendar.js), [public/assets/holiday-theme.js](../../public/assets/holiday-theme.js), [tests/appearance.test.js](../../tests/appearance.test.js).
+
+## UX-028: Geek stroke marks and distinct holiday palettes
+
+**P2 / in-progress.** Owner: Maintainer; founder preview. Dependencies: UX-027.
+
+Next action: Gee previews the stroke ornaments and the separated civic palettes before any Appearance save. The saved default remains Off.
+
+Acceptance:
+
+- Public ornaments are static in-repo SVG marks named by the catalog. No remote image or operator-supplied CSS is accepted.
+- Each holiday, including the original twelve, has its own color tokens. The four civic days are visually distinct. Greetings stay the catalog sentences.
+- Reduced motion clears ornament tilt. Active quizzes, playing pages, and individual game routes do not receive the ornament layer.
+- Appearance default remains Off. The public payload remains an id. Code rain behavior is unchanged.
+
+Evidence/specification: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/holiday-marks.js](../../public/assets/holiday-marks.js), [public/assets/holiday-theme.css](../../public/assets/holiday-theme.css), [tests/appearance.test.js](../../tests/appearance.test.js).
 
 ## GAME-004: Ongoing matches, My Games and turn alerts
 
