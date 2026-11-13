@@ -62,3 +62,8 @@ The helper now refuses a private ranked start before the configured UTC month wi
 A synthetic December-start regression checks the last millisecond of November, a forged client season, no question/run response, no non-rate-limit state writes, legacy board availability and the first millisecond of December. A separate regression preserves exposed public Alpha as Season 0. The full focused bank/loader/leak/resilience/season set passes 103 tests, zero failures/skips. Existing tests cover deferred correctness, replayed answer recovery, immutable source versions and Preview refusal. These tests do not establish resistance to external answer assistance or real-bank editorial acceptance.
 
 No real private-bank question, artifact identity or credential was read. No provider, payout, signing or production setting changed. Keep this candidate stacked against #231 for review; do not merge the stale assembly into current main. Reconcile its private-bank and unranked protections with current main's later payout worker before proposing any future release. The approved artifact, editorial/capacity acceptance, isolated rehearsal and independent abuse review remain open.
+
+
+## Current HQ and local rehearsal follow-up
+
+The November 13 candidate in [local rehearsal](PRIVATE-BANK-LOCAL-REHEARSAL.md) combines the #284 merge into this held assembly with released main dbdb7f0. It preserves the earlier review record, retains later payout/site changes and adds a credential-scrubbed local API rehearsal. This supersedes the earlier follow-up’s lack of current-main integration, but does not establish hosted, real-bank, device or independent acceptance. Keep the combined integration draft against the held branch.

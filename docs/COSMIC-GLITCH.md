@@ -1,0 +1,7 @@
+# Cosmic glitch accents
+
+UX-024, candidate for the easter-egg preview #261. Local decoration only. On home, first steps, Games hub, News, Kaspa guide/directory, Thanks, Tools, Whitepaper and Litepaper, selected discovery links, disclosure summaries and terminal shortcut buttons receive a 320ms gold/turquoise edge-only effect. Labels are never split, blurred or rewritten; navigation is never prevented. A 360ms shared cooldown bounds rapid clicks. Modified/nonprimary clicks, disabled controls, hidden documents, active games, reduced motion and forced colors skip feedback.
+
+Up to three discovery headings get aria-hidden Kaspa/Geek code labels. Animations use one-pixel drift and opacity variation for two seven-second cycles, then settle; no infinite matrix rain, screen flashes, audio, canvas or polling. Reduced motion and forced colors remain static. Individual game boards, timed-play pages, Study answers, account and owner pages are excluded by route. Existing background code becomes quiet during active games. No player records, network requests, browser storage or rewards. A.C.E. remains paused.
+
+Validation: two synthetic client tests verify excluded routes, initialization deduplication, disabled/active-game/reduced-motion/forced-color suppression and bounded cleanup. Combined with five easter-egg tests, seven pass. Site metadata/internal links and continuity source checks pass. Rendered/physical-phone visual acceptance remains open.

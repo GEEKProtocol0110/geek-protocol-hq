@@ -1,7 +1,7 @@
 import { ROUND_CONFIG, RANKED_START_IP_LIMIT } from '../server/game-economy.js';
 import { randomBytes } from 'node:crypto';
 import { recordCommunityQuestionUse } from '../server/cce.js';
-import { categories, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
+import { categories, clientAddressFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson, setApiHeaders } from '../server/http.js';
 import { listLeaderboard, recordVerifiedScore } from '../server/leaderboard.js';
 import { loadProfile } from '../server/profile.js';
 import { activeRunKeyFor, assertRankedWritesAllowed, commitRankedState, dailyKeyFor, runKeyFor } from '../server/ranked-state.js';
@@ -17,6 +17,7 @@ import assistedPracticeHandler from '../server/assisted-practice.js';
 import rewardedChallengesHandler from '../server/rewarded-challenges.js';
 import { careerChallengeState } from '../server/career-challenges.js';
 import { prepareAutomaticReward, automaticError } from '../server/testnet-automatic.js';
+import { prepareMainnetPayout, mainnetPayoutError } from '../server/mainnet-payout.js';
 
 const RUN_TTL = 60 * 60 * 2;
 // Per-player ranked run starts: limits answer harvesting across repeated runs.
@@ -165,7 +166,8 @@ const finishRun = async (run, session, profile) => {
   // Persist the first mismatch so retries (even after a pin reset) stay unranked.
   if (!run.unranked && !(await seasonBankAllowsScore(run))) run.unranked = true;
   const automaticReward = await prepareAutomaticReward(playerIdFor(session), run);
-  await commitRankedState({ playerId: playerIdFor(session), run, previousRun: runSnapshots.get(run), profile, ttl: 300, automaticReward });
+  const mainnetPayout = run.mode === 'daily' ? await prepareMainnetPayout(playerIdFor(session), run) : null;
+  await commitRankedState({ playerId: playerIdFor(session), run, previousRun: runSnapshots.get(run), profile, ttl: 300, automaticReward, mainnetPayout });
   const leaderboard = await recordRunScore(run, session);
   return { leaderboard };
 };
@@ -295,7 +297,8 @@ const answerQuestion = async (run, session, profile, body) => {
     profile: withProgression(profile)
   };
   run.lastResponse = response;
-  await commitRankedState({ playerId: playerIdFor(session), run, previousRun: runSnapshots.get(run), profile, auditInput });
+  const mainnetPayout = roundResult && run.mode === 'gauntlet' ? await prepareMainnetPayout(playerIdFor(session), run) : null;
+  await commitRankedState({ playerId: playerIdFor(session), run, previousRun: runSnapshots.get(run), profile, auditInput, mainnetPayout });
   return response;
 };
 
@@ -327,7 +330,8 @@ export default async function handler(req, res) {
     if (action === 'start') {
       assertRankedWritesAllowed();
       await rateLimit('ranked-start-player', playerId, RANKED_START_PLAYER_LIMIT.maximum, RANKED_START_PLAYER_LIMIT.seconds);
-      await rateLimit('ranked-start-ip', clientFingerprint(req), RANKED_START_IP_LIMIT.maximum, RANKED_START_IP_LIMIT.seconds);
+      // 20 starts per hour for one network address. User-Agent rotation does not reset it.
+      await rateLimit('ranked-start-ip', clientAddressFingerprint(req), RANKED_START_IP_LIMIT.maximum, RANKED_START_IP_LIMIT.seconds);
       const category = categories.has(body.category) ? body.category : 'kaspa';
       const mode = Object.hasOwn(MODE_CONFIG, body.mode) ? body.mode : 'gauntlet';
       const focus = ['ghostdag', 'builders'].includes(body.focus) ? body.focus : '';
@@ -402,6 +406,7 @@ export default async function handler(req, res) {
     throw new Error('INVALID_REQUEST');
   } catch (error) {
     if (error.message?.startsWith('TESTNET_')) return automaticError(res, error);
+    if (error.message?.startsWith('MAINNET_')) return mainnetPayoutError(res, error);
     return handleApiError(res, error);
   }
 }

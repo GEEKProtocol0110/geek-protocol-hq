@@ -1,0 +1,1802 @@
+[
+  {
+    "id": "mini_consensus",
+    "topic": "Kaspa basics",
+    "question": "What secures Kaspa consensus?",
+    "choices": [
+      "Proof of work",
+      "Proof of stake",
+      "A bank committee",
+      "Social-media votes"
+    ],
+    "answer": 0,
+    "explain": "Miners contribute computational work to secure the network.",
+    "source": {
+      "label": "Kaspa · Lore",
+      "url": "https://kaspa.org/lore"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_structure",
+    "topic": "Kaspa basics",
+    "question": "How is Kaspa’s block history structured?",
+    "choices": [
+      "A private database",
+      "A blockDAG",
+      "One mandatory linear chain",
+      "A spreadsheet"
+    ],
+    "answer": 1,
+    "explain": "Kaspa orders parallel blocks within a directed graph.",
+    "source": {
+      "label": "Kaspa · Lore",
+      "url": "https://kaspa.org/lore"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_launch",
+    "topic": "Kaspa basics",
+    "question": "In which year did Kaspa mainnet launch?",
+    "choices": [
+      "2017",
+      "2024",
+      "2021",
+      "2015"
+    ],
+    "answer": 2,
+    "explain": "Mainnet launched in November 2021.",
+    "source": {
+      "label": "Kaspa · Lore",
+      "url": "https://kaspa.org/lore"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_fair_launch",
+    "topic": "Kaspa basics",
+    "question": "What was absent from Kaspa’s fair launch?",
+    "choices": [
+      "Public mining",
+      "Open participation",
+      "A genesis block",
+      "A premine"
+    ],
+    "answer": 3,
+    "explain": "KAS began without premine, presales or insider allocations.",
+    "source": {
+      "label": "Kaspa · Lore",
+      "url": "https://kaspa.org/lore"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_research",
+    "topic": "Kaspa basics",
+    "question": "Which university was part of Kaspa’s research origins?",
+    "choices": [
+      "Hebrew University of Jerusalem",
+      "University of Tokyo",
+      "University of Toronto",
+      "University of Sydney"
+    ],
+    "answer": 0,
+    "explain": "Its research roots include Hebrew University and later Harvard.",
+    "source": {
+      "label": "Kaspa · Lore",
+      "url": "https://kaspa.org/lore"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_north_star",
+    "topic": "Kaspa basics",
+    "question": "What does Kaspa call its north star?",
+    "choices": [
+      "A single transaction leader",
+      "Real-time decentralization",
+      "Private settlement",
+      "Token-based voting"
+    ],
+    "answer": 1,
+    "explain": "Fast consensus and decentralization are central design goals.",
+    "source": {
+      "label": "Kaspa · Lore",
+      "url": "https://kaspa.org/lore"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_dag_name",
+    "topic": "Blocks and consensus",
+    "question": "What does DAG stand for?",
+    "choices": [
+      "Digital asset group",
+      "Direct approval grid",
+      "Directed acyclic graph",
+      "Distributed account gateway"
+    ],
+    "answer": 2,
+    "explain": "A DAG has directed links without cycles.",
+    "source": {
+      "label": "Kaspa Wiki · Kaspa",
+      "url": "https://wiki.kaspa.org/en/kaspa"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_parents",
+    "topic": "Blocks and consensus",
+    "question": "A Kaspa block can reference how many parent blocks?",
+    "choices": [
+      "Exactly one always",
+      "No parents ever",
+      "Only its own future block",
+      "More than one"
+    ],
+    "answer": 3,
+    "explain": "Multiple parent references connect parallel branches.",
+    "source": {
+      "label": "Kaspa Wiki · Kaspa",
+      "url": "https://wiki.kaspa.org/en/kaspa"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_ordering",
+    "topic": "Blocks and consensus",
+    "question": "What does GHOSTDAG establish for parallel blocks?",
+    "choices": [
+      "A consensus ordering",
+      "A token exchange rate",
+      "A wallet password",
+      "A staking committee"
+    ],
+    "answer": 0,
+    "explain": "Ordering lets participants agree on transaction history.",
+    "source": {
+      "label": "Kaspa Wiki · Kaspa",
+      "url": "https://wiki.kaspa.org/en/kaspa"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_double_spend",
+    "topic": "Blocks and consensus",
+    "question": "Why does transaction ordering matter for conflicting spends?",
+    "choices": [
+      "It removes signature checks",
+      "It determines which spend can be accepted",
+      "It accepts both spends",
+      "It creates extra coins"
+    ],
+    "answer": 1,
+    "explain": "Accepted transactions must not contradict earlier accepted spends.",
+    "source": {
+      "label": "Kaspa Wiki · Kaspa",
+      "url": "https://wiki.kaspa.org/en/kaspa"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_throughput",
+    "topic": "Blocks and consensus",
+    "question": "What tradeoff motivated GHOSTDAG research?",
+    "choices": [
+      "Token price versus logos",
+      "Wallet size versus screen size",
+      "Throughput versus security from orphaned blocks",
+      "Passwords versus usernames"
+    ],
+    "answer": 2,
+    "explain": "Frequent parallel blocks challenge traditional chain-based consensus.",
+    "source": {
+      "label": "Kaspa Wiki · Kaspa",
+      "url": "https://wiki.kaspa.org/en/kaspa"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_rust",
+    "topic": "Network history",
+    "question": "Which language powers Rusty Kaspa?",
+    "choices": [
+      "Ruby",
+      "PHP",
+      "Swift",
+      "Rust"
+    ],
+    "answer": 3,
+    "explain": "Rusty Kaspa is the Rust full-node reference implementation.",
+    "source": {
+      "label": "Rusty Kaspa · README",
+      "url": "https://github.com/kaspanet/rusty-kaspa"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_predecessor",
+    "topic": "Network history",
+    "question": "Which language powered Kaspa’s earlier node?",
+    "choices": [
+      "Go",
+      "Java",
+      "C#",
+      "Kotlin"
+    ],
+    "answer": 0,
+    "explain": "The Rust node replaced the earlier Go implementation.",
+    "source": {
+      "label": "Rusty Kaspa · README",
+      "url": "https://github.com/kaspanet/rusty-kaspa"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_crescendo",
+    "topic": "Network history",
+    "question": "Which upgrade raised Kaspa from 1 to 10 blocks per second?",
+    "choices": [
+      "Taproot",
+      "Crescendo",
+      "SegWit",
+      "The Merge"
+    ],
+    "answer": 1,
+    "explain": "Crescendo increased mainnet’s block rate in May 2025.",
+    "source": {
+      "label": "Rusty Kaspa · README",
+      "url": "https://github.com/kaspanet/rusty-kaspa"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_crescendo_date",
+    "topic": "Network history",
+    "question": "In which year did Crescendo activate?",
+    "choices": [
+      "2022",
+      "2024",
+      "2025",
+      "2021"
+    ],
+    "answer": 2,
+    "explain": "The hardfork took place on May 5, 2025.",
+    "source": {
+      "label": "Rusty Kaspa · README",
+      "url": "https://github.com/kaspanet/rusty-kaspa"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_stable",
+    "topic": "Network history",
+    "question": "Which Rusty Kaspa branch corresponds to a stable release?",
+    "choices": [
+      "experimental-only",
+      "draft",
+      "sandbox",
+      "stable"
+    ],
+    "answer": 3,
+    "explain": "The README separates stable releases from ongoing master development.",
+    "source": {
+      "label": "Rusty Kaspa · README",
+      "url": "https://github.com/kaspanet/rusty-kaspa"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_wasm",
+    "topic": "Network history",
+    "question": "What allows Rusty Kaspa libraries to run through a browser SDK?",
+    "choices": [
+      "WebAssembly",
+      "A staking validator",
+      "An exchange listing",
+      "A paper wallet"
+    ],
+    "answer": 0,
+    "explain": "WASM builds expose Rust functionality to JavaScript applications.",
+    "source": {
+      "label": "Rusty Kaspa · README",
+      "url": "https://github.com/kaspanet/rusty-kaspa"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_hardware",
+    "topic": "Wallet basics",
+    "question": "Where does a hardware wallet keep private keys?",
+    "choices": [
+      "In your receiving address",
+      "On the device",
+      "In a public explorer",
+      "Inside a transaction ID"
+    ],
+    "answer": 1,
+    "explain": "Hardware wallets isolate private keys from the host computer.",
+    "source": {
+      "label": "Kaspa · Wallet and custody guide",
+      "url": "https://kaspa.org/hodl"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_backup",
+    "topic": "Wallet basics",
+    "question": "What can preserve wallet recovery after losing a device?",
+    "choices": [
+      "A price alert",
+      "A block number",
+      "A proper recovery backup",
+      "A social-media handle"
+    ],
+    "answer": 2,
+    "explain": "Follow the wallet’s recovery-phrase or backup instructions.",
+    "source": {
+      "label": "Kaspa · Wallet and custody guide",
+      "url": "https://kaspa.org/hodl"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_receive",
+    "topic": "Wallet basics",
+    "question": "Which wallet action gives an address for incoming KAS?",
+    "choices": [
+      "Delete wallet",
+      "Export password",
+      "Change theme",
+      "Receive"
+    ],
+    "answer": 3,
+    "explain": "The Receive screen supplies your destination address.",
+    "source": {
+      "label": "Kaspa · Wallet and custody guide",
+      "url": "https://kaspa.org/hodl"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_test_transfer",
+    "topic": "Wallet basics",
+    "question": "What can check a transfer route before a larger send?",
+    "choices": [
+      "A small test transaction",
+      "A new profile picture",
+      "A token poll",
+      "A browser bookmark"
+    ],
+    "answer": 0,
+    "explain": "Verify that a test transfer arrives at the intended wallet.",
+    "source": {
+      "label": "Kaspa · Wallet and custody guide",
+      "url": "https://kaspa.org/hodl"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_exchange_delay",
+    "topic": "Wallet basics",
+    "question": "Why might an exchange withdrawal wait despite a fast network?",
+    "choices": [
+      "KAS needs a staking period",
+      "Exchange processing or holds",
+      "The address changes coin supply",
+      "Every block requires an email"
+    ],
+    "answer": 1,
+    "explain": "An exchange’s withdrawal process can add its own delay.",
+    "source": {
+      "label": "Kaspa · Wallet and custody guide",
+      "url": "https://kaspa.org/hodl"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_qr",
+    "topic": "Wallet basics",
+    "question": "What can a mobile wallet scan to help send a payment?",
+    "choices": [
+      "A block reward table",
+      "A compiler log",
+      "A QR code",
+      "A mining fan"
+    ],
+    "answer": 2,
+    "explain": "Mobile wallets can read payment details from QR codes.",
+    "source": {
+      "label": "Kaspa · Wallet and custody guide",
+      "url": "https://kaspa.org/hodl"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_utxo_name",
+    "topic": "Transactions",
+    "question": "What does UTXO stand for?",
+    "choices": [
+      "Universal token exchange order",
+      "Unsigned transfer execution option",
+      "User transaction ownership",
+      "Unspent transaction output"
+    ],
+    "answer": 3,
+    "explain": "UTXOs are outputs that remain available to spend.",
+    "source": {
+      "label": "Kaspa Wiki · UTXO",
+      "url": "https://wiki.kaspa.org/en/utxo"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_utxo_spend",
+    "topic": "Transactions",
+    "question": "Can one UTXO be spent partially?",
+    "choices": [
+      "No, it is consumed completely",
+      "Yes, indefinitely",
+      "Only on weekends",
+      "Only after staking"
+    ],
+    "answer": 0,
+    "explain": "Spending consumes the whole output; new outputs carry resulting amounts.",
+    "source": {
+      "label": "Kaspa Wiki · UTXO",
+      "url": "https://wiki.kaspa.org/en/utxo"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_utxo_create",
+    "topic": "Transactions",
+    "question": "What does a transaction create after consuming its inputs?",
+    "choices": [
+      "A staking identity",
+      "New transaction outputs",
+      "New wallet passwords",
+      "A second mainnet"
+    ],
+    "answer": 1,
+    "explain": "Transactions replace spent outputs with newly created outputs.",
+    "source": {
+      "label": "Kaspa Wiki · UTXO",
+      "url": "https://wiki.kaspa.org/en/utxo"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_change",
+    "topic": "Transactions",
+    "question": "Where does leftover input value go after amount and fees?",
+    "choices": [
+      "Into a new premine",
+      "It always disappears",
+      "A change output",
+      "Automatically to an exchange"
+    ],
+    "answer": 2,
+    "explain": "Change sends the remaining value back to the wallet.",
+    "source": {
+      "label": "Kaspa Wiki · Wallet FAQ",
+      "url": "https://wiki.kaspa.org/en/faq"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_compound",
+    "topic": "Transactions",
+    "question": "What does compounding wallet UTXOs do?",
+    "choices": [
+      "Doubles the supply",
+      "Changes consensus to staking",
+      "Replaces the recovery phrase",
+      "Combines smaller outputs into larger ones"
+    ],
+    "answer": 3,
+    "explain": "Compounding reduces the number of separate unspent outputs.",
+    "source": {
+      "label": "Kaspa Wiki · Wallet FAQ",
+      "url": "https://wiki.kaspa.org/en/faq"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_node_reward",
+    "topic": "Transactions",
+    "question": "Does merely running a Kaspa node earn a staking reward?",
+    "choices": [
+      "No",
+      "Yes, for every peer",
+      "Yes, after a login",
+      "Yes, for every wallet"
+    ],
+    "answer": 0,
+    "explain": "Running a node supports connectivity; it is not proof-of-stake validation.",
+    "source": {
+      "label": "Kaspa Wiki · Wallet FAQ",
+      "url": "https://wiki.kaspa.org/en/faq"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_sompi",
+    "topic": "KAS units",
+    "question": "What is Kaspa’s smallest base unit called?",
+    "choices": [
+      "Gwei",
+      "Sompi",
+      "Satoshi",
+      "Wei"
+    ],
+    "answer": 1,
+    "explain": "KAS amounts are represented in integer sompi.",
+    "source": {
+      "label": "Rusty Kaspa · Monetary units",
+      "url": "https://github.com/kaspanet/rusty-kaspa/blob/master/consensus/core/src/constants.rs"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_sompi_count",
+    "topic": "KAS units",
+    "question": "How many sompi equal 1 KAS?",
+    "choices": [
+      "1,000,000",
+      "1,000,000,000",
+      "100,000,000",
+      "1,000"
+    ],
+    "answer": 2,
+    "explain": "The node defines 100 million sompi per KAS.",
+    "source": {
+      "label": "Rusty Kaspa · Monetary units",
+      "url": "https://github.com/kaspanet/rusty-kaspa/blob/master/consensus/core/src/constants.rs"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_rpc",
+    "topic": "Builder basics",
+    "question": "What interface connects an application to a Kaspa node?",
+    "choices": [
+      "A price widget",
+      "A recovery phrase",
+      "A mint ticker",
+      "RPC"
+    ],
+    "answer": 3,
+    "explain": "RPC lets applications request data from a node.",
+    "source": {
+      "label": "Kaspa Docs · Getting started",
+      "url": "https://docs.kaspa.org/integrate/getting-started"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_sdk_languages",
+    "topic": "Builder basics",
+    "question": "Which language has an example in Kaspa’s getting-started guide?",
+    "choices": [
+      "Python",
+      "COBOL",
+      "Scratch",
+      "BASIC"
+    ],
+    "answer": 0,
+    "explain": "The guide includes JavaScript, Rust and Python examples.",
+    "source": {
+      "label": "Kaspa Docs · Getting started",
+      "url": "https://docs.kaspa.org/integrate/getting-started"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_dag_info",
+    "topic": "Builder basics",
+    "question": "Which SDK call reads current DAG information?",
+    "choices": [
+      "setTokenLogo",
+      "getBlockDagInfo",
+      "getStockPrice",
+      "getSeedPhrase"
+    ],
+    "answer": 1,
+    "explain": "The RPC call returns information about the node’s blockDAG.",
+    "source": {
+      "label": "Kaspa Docs · Getting started",
+      "url": "https://docs.kaspa.org/integrate/getting-started"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_node_binary",
+    "topic": "Node basics",
+    "question": "What is the Kaspa node executable called?",
+    "choices": [
+      "kaspa-price",
+      "krc-minter",
+      "kaspad",
+      "kaswallet-browser"
+    ],
+    "answer": 2,
+    "explain": "kaspad runs the network node used by integrations.",
+    "source": {
+      "label": "Kaspa Docs · Kaspa node",
+      "url": "https://docs.kaspa.org/integrate/kaspa-node"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_node_index",
+    "topic": "Node basics",
+    "question": "Which node flag enables UTXO indexing?",
+    "choices": [
+      "--staking",
+      "--premine",
+      "--token-logo",
+      "--utxoindex"
+    ],
+    "answer": 3,
+    "explain": "UTXO indexing supports address-based wallet queries.",
+    "source": {
+      "label": "Kaspa Docs · Kaspa node",
+      "url": "https://docs.kaspa.org/integrate/kaspa-node"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_docker",
+    "topic": "Node basics",
+    "question": "What is one documented way to run a Kaspa node?",
+    "choices": [
+      "Docker",
+      "A spreadsheet macro",
+      "A social-media poll",
+      "A token swap"
+    ],
+    "answer": 0,
+    "explain": "The node guide offers source builds and a Docker image.",
+    "source": {
+      "label": "Kaspa Docs · Kaspa node",
+      "url": "https://docs.kaspa.org/integrate/kaspa-node"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_checkpoint",
+    "topic": "Network events",
+    "question": "What helps a transaction reader resume after disconnecting?",
+    "choices": [
+      "A price target",
+      "A saved checkpoint",
+      "A new seed phrase",
+      "A new ticker"
+    ],
+    "answer": 1,
+    "explain": "A durable checkpoint records the position already processed.",
+    "source": {
+      "label": "Kaspa Docs · Accepted transactions",
+      "url": "https://docs.kaspa.org/integrate/accepted-transactions"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_reorg",
+    "topic": "Network events",
+    "question": "What should an indexer do with data from removed chain blocks?",
+    "choices": [
+      "Mint compensating KAS",
+      "Change wallet passwords",
+      "Roll back affected derived data",
+      "Ignore every removal"
+    ],
+    "answer": 2,
+    "explain": "Reconciliation removes old-path effects before applying replacement transactions.",
+    "source": {
+      "label": "Kaspa Docs · Accepted transactions",
+      "url": "https://docs.kaspa.org/integrate/accepted-transactions"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_confirmations",
+    "topic": "Network events",
+    "question": "Why keep a confirmation buffer when ingesting transactions?",
+    "choices": [
+      "It increases coin supply",
+      "It reveals private keys",
+      "It gives a token its logo",
+      "Recent virtual-chain state can still change"
+    ],
+    "answer": 3,
+    "explain": "Near-tip changes require careful acceptance and rollback handling.",
+    "source": {
+      "label": "Kaspa Docs · Accepted transactions",
+      "url": "https://docs.kaspa.org/integrate/accepted-transactions"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_payload",
+    "topic": "Application data",
+    "question": "Which transaction field can carry application data?",
+    "choices": [
+      "Payload",
+      "Wallet password",
+      "Recovery phrase",
+      "Exchange username"
+    ],
+    "answer": 0,
+    "explain": "Applications can attach data through a transaction’s payload field.",
+    "source": {
+      "label": "Kaspa Docs · Transaction payload",
+      "url": "https://docs.kaspa.org/integrate/transaction-payload"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_payload_limit",
+    "topic": "Application data",
+    "question": "Is transaction payload space unlimited?",
+    "choices": [
+      "Only for hardware wallets",
+      "No, standard mempool limits apply",
+      "Yes, always",
+      "Only for verified profiles"
+    ],
+    "answer": 1,
+    "explain": "Payload bytes share transaction size and mass limits with other fields.",
+    "source": {
+      "label": "Kaspa Docs · Transaction payload",
+      "url": "https://docs.kaspa.org/integrate/transaction-payload"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_covenants",
+    "topic": "Programmability",
+    "question": "What do Kaspa covenants describe?",
+    "choices": [
+      "A guaranteed token price",
+      "Social-media moderation",
+      "Rules for spending and evolving outputs",
+      "Exchange opening hours"
+    ],
+    "answer": 2,
+    "explain": "Covenants express asset and stateful-output rules directly on L1.",
+    "source": {
+      "label": "Kaspa Docs · Programmability overview",
+      "url": "https://docs.kaspa.org/programmability"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_based_apps",
+    "topic": "Programmability",
+    "question": "Which model does the guide suggest for shared app state?",
+    "choices": [
+      "A private-key list",
+      "A token logo",
+      "A wallet theme",
+      "Based Apps"
+    ],
+    "answer": 3,
+    "explain": "Based Apps address applications with accounts and shared state.",
+    "source": {
+      "label": "Kaspa Docs · Programmability overview",
+      "url": "https://docs.kaspa.org/programmability"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_inline_zk",
+    "topic": "Programmability",
+    "question": "What does Inline ZK let an individual action carry?",
+    "choices": [
+      "A proof for independent verification",
+      "A staking vote",
+      "An exchange password",
+      "An automatic price promise"
+    ],
+    "answer": 0,
+    "explain": "Inline ZK suits actions with their own proof or validity check.",
+    "source": {
+      "label": "Kaspa Docs · Programmability overview",
+      "url": "https://docs.kaspa.org/programmability"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_vprogs",
+    "topic": "Programmability",
+    "question": "How does the overview describe Full vProgs?",
+    "choices": [
+      "A shipped exchange",
+      "A future direction for app composition",
+      "A wallet recovery code",
+      "A mining algorithm"
+    ],
+    "answer": 1,
+    "explain": "The guide identifies Full vProgs as an end goal, not a current universal feature.",
+    "source": {
+      "label": "Kaspa Docs · Programmability overview",
+      "url": "https://docs.kaspa.org/programmability"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_krc_deploy",
+    "topic": "KRC-20",
+    "question": "Which KRC-20 operation establishes a token?",
+    "choices": [
+      "list",
+      "send",
+      "deploy",
+      "transfer"
+    ],
+    "answer": 2,
+    "explain": "Deployment defines the token before later operations use it.",
+    "source": {
+      "label": "Kasplex Kiwi · KRC-20 examples",
+      "url": "https://github.com/kasplex/sdk-kiwi/blob/main/examples/krc20.test.ts"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_krc_mint",
+    "topic": "KRC-20",
+    "question": "Which KRC-20 operation mints a deploy-mint token?",
+    "choices": [
+      "transfer",
+      "blacklist",
+      "chown",
+      "mint"
+    ],
+    "answer": 3,
+    "explain": "Mint requests token issuance under the deployed token’s rules.",
+    "source": {
+      "label": "Kasplex Kiwi · KRC-20 examples",
+      "url": "https://github.com/kasplex/sdk-kiwi/blob/main/examples/krc20.test.ts"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_krc_transfer",
+    "topic": "KRC-20",
+    "question": "Which operation moves an existing KRC-20 balance?",
+    "choices": [
+      "transfer",
+      "deploy",
+      "mint",
+      "chown"
+    ],
+    "answer": 0,
+    "explain": "Transfer specifies an amount and a recipient.",
+    "source": {
+      "label": "Kasplex Kiwi · KRC-20 examples",
+      "url": "https://github.com/kasplex/sdk-kiwi/blob/main/examples/krc20.test.ts"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_krc_tick",
+    "topic": "KRC-20",
+    "question": "In ticker-based KRC-20 data, what does tick identify?",
+    "choices": [
+      "A timestamp",
+      "The token ticker",
+      "A private key",
+      "A mining fan"
+    ],
+    "answer": 1,
+    "explain": "Ticker-based operations identify their token through tick.",
+    "source": {
+      "label": "Kasplex Kiwi · KRC-20 examples",
+      "url": "https://github.com/kasplex/sdk-kiwi/blob/main/examples/krc20.test.ts"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_krc_to",
+    "topic": "KRC-20",
+    "question": "Which transfer field holds the recipient address?",
+    "choices": [
+      "op",
+      "tick",
+      "to",
+      "p"
+    ],
+    "answer": 2,
+    "explain": "The Kasplex example places the destination address in to.",
+    "source": {
+      "label": "Kasplex Kiwi · KRC-20 examples",
+      "url": "https://github.com/kasplex/sdk-kiwi/blob/main/examples/krc20.test.ts"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_krc_p",
+    "topic": "KRC-20",
+    "question": "Which protocol marker is used in KRC-20 operation data?",
+    "choices": [
+      "erc-20",
+      "btc-20",
+      "kas-password",
+      "krc-20"
+    ],
+    "answer": 3,
+    "explain": "The p field identifies the KRC-20 protocol.",
+    "source": {
+      "label": "Kasplex Kiwi · KRC-20 examples",
+      "url": "https://github.com/kasplex/sdk-kiwi/blob/main/examples/krc20.test.ts"
+    },
+    "reviewedAt": "2026-10-09"
+  },
+  {
+    "id": "mini_fee_difference",
+    "question": "Inputs total 10 KAS and all outputs total 9.99 KAS. What is the fee?",
+    "choices": [
+      "0.01 KAS",
+      "9.99 KAS",
+      "10 KAS",
+      "19.99 KAS"
+    ],
+    "answer": 0,
+    "explain": "The fee is the difference: 10 minus 9.99 equals 0.01 KAS. This is a fictional arithmetic example, not a fee quote.",
+    "topic": "Transactions",
+    "source": {
+      "label": "Kaspa transaction fee guide",
+      "url": "https://kaspa.aspectron.org/transactions/fees/index.html"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_fee_change",
+    "question": "Which amounts count when subtracting outputs from inputs to find a fee?",
+    "choices": [
+      "Only the recipient output",
+      "All outputs, including change",
+      "Only the change output",
+      "The number of wallet tabs"
+    ],
+    "answer": 1,
+    "explain": "Count every output, including change. Subtracting only the recipient amount would mistake change for a fee.",
+    "topic": "Transactions",
+    "source": {
+      "label": "Kaspa transaction fee guide",
+      "url": "https://kaspa.aspectron.org/transactions/fees/index.html"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_fee_subsidy",
+    "question": "Does paying a transaction fee create new KAS?",
+    "choices": [
+      "Yes, it is another block subsidy",
+      "Only if the wallet is new",
+      "No, it uses existing input value",
+      "Yes, each fee doubles the supply"
+    ],
+    "answer": 2,
+    "explain": "A fee comes from the transaction’s existing input value. It is not new issuance.",
+    "topic": "Transactions",
+    "source": {
+      "label": "Kaspa transaction fee guide",
+      "url": "https://kaspa.aspectron.org/transactions/fees/index.html"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_fee_approval",
+    "question": "Which is the best place to review the actual cost of a proposed payment?",
+    "choices": [
+      "An old screenshot of a different payment",
+      "A fixed estimate in a quiz",
+      "The color of the app icon",
+      "The wallet’s current transaction review"
+    ],
+    "answer": 3,
+    "explain": "Fees depend on the proposed transaction. Use its wallet review rather than treating this lesson’s examples as quotations.",
+    "topic": "Wallet basics",
+    "source": {
+      "label": "Kaspa wallet guide",
+      "url": "https://docs.kaspa.org/integrate/wallet"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_two_inputs",
+    "question": "A payment consumes two UTXOs. What happens to those original outputs?",
+    "choices": [
+      "Both are consumed as transaction inputs",
+      "Half of each original output stays unspent",
+      "Both become wallet passwords",
+      "Neither can ever be spent"
+    ],
+    "answer": 0,
+    "explain": "Inputs consume existing unspent outputs. Any remaining value belongs in new outputs, not a partly spent original output.",
+    "topic": "Transactions",
+    "source": {
+      "label": "Kaspa UTXO reference",
+      "url": "https://wiki.kaspa.org/en/utxo"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_change_math",
+    "question": "In a fictional payment, 8 KAS of inputs fund 3 KAS to a recipient and a 0.01 KAS fee. How much change remains?",
+    "choices": [
+      "8 KAS",
+      "4.99 KAS",
+      "5.01 KAS",
+      "11 KAS"
+    ],
+    "answer": 1,
+    "explain": "Eight minus three minus 0.01 is 4.99 KAS. The example illustrates value accounting; it does not estimate a real fee.",
+    "topic": "Transactions",
+    "source": {
+      "label": "Kaspa transaction fee guide",
+      "url": "https://kaspa.aspectron.org/transactions/fees/index.html"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_output_identity",
+    "question": "What identifies a particular UTXO within a transaction?",
+    "choices": [
+      "Only its coin amount",
+      "A player nickname",
+      "The transaction ID and output index",
+      "The time shown on a phone"
+    ],
+    "answer": 2,
+    "explain": "A transaction can create several outputs. Its transaction ID and the output’s index distinguish one output from the others.",
+    "topic": "Transactions",
+    "source": {
+      "label": "Kaspa UTXO reference",
+      "url": "https://wiki.kaspa.org/en/utxo"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_unspent_only",
+    "question": "Which outputs can be selected as inputs for a new valid spend?",
+    "choices": [
+      "Any output from any old screenshot",
+      "Already consumed outputs",
+      "A profile badge",
+      "Available unspent outputs"
+    ],
+    "answer": 3,
+    "explain": "A previously consumed output cannot be reused. Input selection works with outputs that remain unspent.",
+    "topic": "Transactions",
+    "source": {
+      "label": "Kaspa UTXO reference",
+      "url": "https://wiki.kaspa.org/en/utxo"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_fraction_quarter",
+    "question": "How many sompi are in 0.25 KAS?",
+    "choices": [
+      "25,000,000",
+      "250,000",
+      "2,500",
+      "25"
+    ],
+    "answer": 0,
+    "explain": "One KAS is 100 million sompi. Multiplying by one quarter gives 25 million sompi.",
+    "topic": "KAS units",
+    "source": {
+      "label": "Rusty Kaspa consensus constants",
+      "url": "https://github.com/kaspanet/rusty-kaspa/blob/master/consensus/core/src/constants.rs"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_fraction_one",
+    "question": "How much KAS is 1 sompi?",
+    "choices": [
+      "1 KAS",
+      "0.00000001 KAS",
+      "0.01 KAS",
+      "100,000,000 KAS"
+    ],
+    "answer": 1,
+    "explain": "A sompi is one hundred-millionth of a KAS, expressed at eight decimal places.",
+    "topic": "KAS units",
+    "source": {
+      "label": "Rusty Kaspa consensus constants",
+      "url": "https://github.com/kaspanet/rusty-kaspa/blob/master/consensus/core/src/constants.rs"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_fraction_two",
+    "question": "A balance has 250,000,000 sompi. What is it in KAS?",
+    "choices": [
+      "250 KAS",
+      "0.25 KAS",
+      "2.5 KAS",
+      "25,000 KAS"
+    ],
+    "answer": 2,
+    "explain": "Divide the integer sompi amount by 100 million: 250 million sompi is 2.5 KAS.",
+    "topic": "KAS units",
+    "source": {
+      "label": "Rusty Kaspa consensus constants",
+      "url": "https://github.com/kaspanet/rusty-kaspa/blob/master/consensus/core/src/constants.rs"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_fraction_exact",
+    "question": "Why keep coin amounts as integer sompi while calculating?",
+    "choices": [
+      "To hide every payment",
+      "To make the price fixed",
+      "To create extra coins",
+      "To avoid floating-point rounding in base-unit arithmetic"
+    ],
+    "answer": 3,
+    "explain": "Integer base units preserve exact coin amounts. Convert carefully when displaying decimal KAS.",
+    "topic": "KAS units",
+    "source": {
+      "label": "Rusty Kaspa consensus constants",
+      "url": "https://github.com/kaspanet/rusty-kaspa/blob/master/consensus/core/src/constants.rs"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_wallet_resident",
+    "question": "What does resident: true mean in the documented Wallet API?",
+    "choices": [
+      "A memory-only wallet that is not persisted",
+      "A wallet stored on every miner",
+      "An account with guaranteed recovery",
+      "A permanent online backup"
+    ],
+    "answer": 0,
+    "explain": "The documented resident mode is memory-only. Persistence and key backup are separate concerns.",
+    "topic": "Wallet basics",
+    "source": {
+      "label": "Kaspa wallet guide",
+      "url": "https://docs.kaspa.org/integrate/wallet"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_wallet_start",
+    "question": "After connecting the Wallet API, which step begins processing and event delivery?",
+    "choices": [
+      "Renaming the token",
+      "Starting the wallet",
+      "Sharing its private key",
+      "Changing the site’s logo"
+    ],
+    "answer": 1,
+    "explain": "The wallet’s start operation begins its processing and events after connection.",
+    "topic": "Wallet basics",
+    "source": {
+      "label": "Kaspa wallet guide",
+      "url": "https://docs.kaspa.org/integrate/wallet"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_wallet_account",
+    "question": "Before using an account through the Wallet API, what does the guide tell an app to do?",
+    "choices": [
+      "Assume every account is the same",
+      "Erase all other accounts",
+      "Select and activate the intended account",
+      "Publish the recovery phrase"
+    ],
+    "answer": 2,
+    "explain": "Enumerate the accounts, select the intended account, and activate it. This avoids confusing account selection with simply connecting.",
+    "topic": "Wallet basics",
+    "source": {
+      "label": "Kaspa wallet guide",
+      "url": "https://docs.kaspa.org/integrate/wallet"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_wallet_storage",
+    "question": "Where do browser builds of the documented Wallet API keep transaction records?",
+    "choices": [
+      "Inside an image file",
+      "In the quiz score URL",
+      "In the recovery phrase",
+      "IndexedDB"
+    ],
+    "answer": 3,
+    "explain": "The guide distinguishes transaction records in IndexedDB from wallet data in localStorage.",
+    "topic": "Wallet basics",
+    "source": {
+      "label": "Kaspa wallet guide",
+      "url": "https://docs.kaspa.org/integrate/wallet"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_reader_fields",
+    "question": "A builder needs payloads and other accepted-transaction fields. Which documented call provides that view?",
+    "choices": [
+      "getVirtualChainFromBlockV2",
+      "getBalanceScreenshot",
+      "approveAllPayments",
+      "createProfileBadge"
+    ],
+    "answer": 0,
+    "explain": "The V2 accepted-transaction call provides transaction fields. The ID-only alternative serves a different data need.",
+    "topic": "Network events",
+    "source": {
+      "label": "Kaspa accepted-transaction guide",
+      "url": "https://docs.kaspa.org/integrate/accepted-transactions"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_reader_id_only",
+    "question": "A builder only needs accepted transaction references. What should that view return?",
+    "choices": [
+      "Secret wallet keys",
+      "Accepted transaction IDs",
+      "Invented token balances",
+      "Only profile names"
+    ],
+    "answer": 1,
+    "explain": "The accepted-transactions guide provides an ID-only flow when full transaction objects are unnecessary.",
+    "topic": "Network events",
+    "source": {
+      "label": "Kaspa accepted-transaction guide",
+      "url": "https://docs.kaspa.org/integrate/accepted-transactions"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_reader_after_pass",
+    "question": "When should a reader persist its new checkpoint?",
+    "choices": [
+      "Before it processes anything",
+      "Whenever the page color changes",
+      "After a successful processing pass",
+      "Only after erasing all history"
+    ],
+    "answer": 2,
+    "explain": "Save a checkpoint after processing succeeds. Advancing it before processing can skip work after a failure.",
+    "topic": "Network events",
+    "source": {
+      "label": "Kaspa accepted-transaction guide",
+      "url": "https://docs.kaspa.org/integrate/accepted-transactions"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_reader_filter",
+    "question": "A listener receives more events than its app needs. Which documented pattern reduces unnecessary work?",
+    "choices": [
+      "Make up fewer transactions",
+      "Discard all failed requests silently",
+      "Publish private keys",
+      "Filter unwanted transactions early"
+    ],
+    "answer": 3,
+    "explain": "The guide recommends filtering unnecessary transactions early in a pipeline.",
+    "topic": "Network events",
+    "source": {
+      "label": "Kaspa accepted-transaction guide",
+      "url": "https://docs.kaspa.org/integrate/accepted-transactions"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_payload_overhead",
+    "question": "Why is the useful payload capacity lower when a transaction has more other fields?",
+    "choices": [
+      "Inputs, outputs and signatures share the serialized-size budget",
+      "A token ticker fixes the limit",
+      "Phone brightness controls capacity",
+      "An app badge increases the limit"
+    ],
+    "answer": 0,
+    "explain": "The serialized transaction includes more than its payload. Other fields consume space within the same standard limit.",
+    "topic": "Application data",
+    "source": {
+      "label": "Kaspa transaction payload guide",
+      "url": "https://docs.kaspa.org/integrate/transaction-payload"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_payload_encoding",
+    "question": "Which JavaScript example turns a text label into payload bytes?",
+    "choices": [
+      "Math.random()",
+      "TextEncoder",
+      "A recovery-phrase textbox",
+      "A screenshot crop"
+    ],
+    "answer": 1,
+    "explain": "The payload guide uses TextEncoder to encode text as bytes. That does not make secret data safe to publish.",
+    "topic": "Application data",
+    "source": {
+      "label": "Kaspa transaction payload guide",
+      "url": "https://docs.kaspa.org/integrate/transaction-payload"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_payload_secret",
+    "question": "Should a builder put a recovery phrase in public transaction application data?",
+    "choices": [
+      "Yes, it improves confirmation",
+      "Only if the transaction is fast",
+      "No, secret wallet material must stay private",
+      "Yes, every payload is an encrypted backup"
+    ],
+    "answer": 2,
+    "explain": "A payload is application data, not a secret backup mechanism. Keep recovery material out of public transactions.",
+    "topic": "Wallet basics",
+    "source": {
+      "label": "Kaspa wallet guide",
+      "url": "https://docs.kaspa.org/integrate/wallet"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_reader_queue",
+    "question": "What can sit between a transaction listener and slower independent workers?",
+    "choices": [
+      "A fabricated receipt",
+      "A new seed phrase",
+      "A price promise",
+      "A processing queue"
+    ],
+    "answer": 3,
+    "explain": "The accepted-transactions guide suggests a queue to separate ingestion from downstream work.",
+    "topic": "Network events",
+    "source": {
+      "label": "Kaspa accepted-transaction guide",
+      "url": "https://docs.kaspa.org/integrate/accepted-transactions"
+    },
+    "reviewedAt": "2026-10-11"
+  },
+  {
+    "id": "mini_wallet_encryption",
+    "question": "What does walletSecret protect in the documented Wallet API?",
+    "choices": [
+      "Encrypted wallet storage",
+      "Public block order",
+      "Mining difficulty",
+      "Token prices"
+    ],
+    "answer": 0,
+    "explain": "It derives the key that encrypts wallet storage.",
+    "topic": "Wallet basics",
+    "source": {
+      "label": "Kaspa Wallet guide",
+      "url": "https://docs.kaspa.org/integrate/wallet"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_wallet_passphrase",
+    "question": "What is paymentSecret in the documented Wallet API?",
+    "choices": [
+      "A mining reward",
+      "An optional mnemonic passphrase",
+      "A public ticker",
+      "A node address"
+    ],
+    "answer": 1,
+    "explain": "The guide separates the mnemonic passphrase from wallet storage encryption.",
+    "topic": "Wallet basics",
+    "source": {
+      "label": "Kaspa Wallet guide",
+      "url": "https://docs.kaspa.org/integrate/wallet"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_wallet_native_store",
+    "question": "Where does the native Wallet API persist its wallet data?",
+    "choices": [
+      "Every block header",
+      "The token ticker",
+      "The local filesystem",
+      "A public payload"
+    ],
+    "answer": 2,
+    "explain": "Native Rust, Node.js and Python use local filesystem storage.",
+    "topic": "Wallet basics",
+    "source": {
+      "label": "Kaspa Wallet guide",
+      "url": "https://docs.kaspa.org/integrate/wallet"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_wallet_balance_event",
+    "question": "Which Wallet API event reports balance changes?",
+    "choices": [
+      "discovery",
+      "error",
+      "maturity",
+      "balance"
+    ],
+    "answer": 3,
+    "explain": "The guide lists balance among wallet events.",
+    "topic": "Wallet basics",
+    "source": {
+      "label": "Kaspa Wallet guide",
+      "url": "https://docs.kaspa.org/integrate/wallet"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_wallet_connect",
+    "question": "What does connect() do in the documented Wallet API?",
+    "choices": [
+      "Attaches to a node",
+      "Mints a token",
+      "Starts a miner",
+      "Deletes all accounts"
+    ],
+    "answer": 0,
+    "explain": "Connection and wallet processing are separate lifecycle steps.",
+    "topic": "Wallet basics",
+    "source": {
+      "label": "Kaspa Wallet guide",
+      "url": "https://docs.kaspa.org/integrate/wallet"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_wallet_send_call",
+    "question": "Which Wallet API call sends funds to external addresses?",
+    "choices": [
+      "getBlockDagInfo",
+      "accountsSend",
+      "accountsEnumerate",
+      "walletOpen"
+    ],
+    "answer": 1,
+    "explain": "The send example supplies an account and destination outputs.",
+    "topic": "Wallet basics",
+    "source": {
+      "label": "Kaspa Wallet guide",
+      "url": "https://docs.kaspa.org/integrate/wallet"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_node_borsh_listener",
+    "question": "Which documented node flag enables the Borsh wRPC listener?",
+    "choices": [
+      "--help",
+      "--version",
+      "--rpclisten-borsh",
+      "--utxoindex"
+    ],
+    "answer": 2,
+    "explain": "The integration command enables a separate Borsh listener.",
+    "topic": "Node basics",
+    "source": {
+      "label": "Kaspa node guide",
+      "url": "https://docs.kaspa.org/integrate/kaspa-node"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_node_cargo",
+    "question": "Which tool builds kaspad in the source-based integration example?",
+    "choices": [
+      "A web wallet",
+      "A block explorer",
+      "A token indexer",
+      "Cargo"
+    ],
+    "answer": 3,
+    "explain": "The guide runs the Rust binary through cargo run.",
+    "topic": "Node basics",
+    "source": {
+      "label": "Kaspa node guide",
+      "url": "https://docs.kaspa.org/integrate/kaspa-node"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_sdk_network_id",
+    "question": "Which setting selects mainnet in the RPC getting-started example?",
+    "choices": [
+      "networkId",
+      "A token ticker",
+      "A quiz score",
+      "A recovery phrase"
+    ],
+    "answer": 0,
+    "explain": "The RPC client receives a network identifier.",
+    "topic": "Builder basics",
+    "source": {
+      "label": "Kaspa integration guide",
+      "url": "https://docs.kaspa.org/integrate/getting-started"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_sdk_borsh_encoding",
+    "question": "Which RPC encoding appears in the JavaScript getting-started example?",
+    "choices": [
+      "PDF",
+      "Borsh",
+      "JPEG",
+      "MP3"
+    ],
+    "answer": 1,
+    "explain": "The example explicitly selects Encoding.Borsh.",
+    "topic": "Builder basics",
+    "source": {
+      "label": "Kaspa integration guide",
+      "url": "https://docs.kaspa.org/integrate/getting-started"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_sdk_resolver",
+    "question": "What finds a node when the getting-started example omits rpcUrl?",
+    "choices": [
+      "A miner reward",
+      "A quiz receipt",
+      "A Resolver",
+      "A token ticker"
+    ],
+    "answer": 2,
+    "explain": "The example selects a resolver when no direct URL is supplied.",
+    "topic": "Builder basics",
+    "source": {
+      "label": "Kaspa integration guide",
+      "url": "https://docs.kaspa.org/integrate/getting-started"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_sdk_rpc_cleanup",
+    "question": "After reading DAG information, how does the example release its RPC connection?",
+    "choices": [
+      "Mint another token",
+      "Publish its keys",
+      "Erase the network",
+      "disconnect()"
+    ],
+    "answer": 3,
+    "explain": "The finally block disconnects the RPC client.",
+    "topic": "Builder basics",
+    "source": {
+      "label": "Kaspa integration guide",
+      "url": "https://docs.kaspa.org/integrate/getting-started"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_reader_pruning_start",
+    "question": "What is the oldest checkpoint still available on a node in the reader guide?",
+    "choices": [
+      "pruningPointHash",
+      "A wallet password",
+      "The token ticker",
+      "A quiz timestamp"
+    ],
+    "answer": 0,
+    "explain": "The first pull can begin at the node’s pruning point.",
+    "topic": "Network events",
+    "source": {
+      "label": "Kaspa accepted-transactions guide",
+      "url": "https://docs.kaspa.org/integrate/accepted-transactions"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_reader_order",
+    "question": "In which direction does the documented accepted-transaction pull return blocks?",
+    "choices": [
+      "Sorted by token price",
+      "From startHash toward newer blocks",
+      "Always newest to oldest",
+      "Randomly shuffled"
+    ],
+    "answer": 1,
+    "explain": "The response advances from its starting position toward the tip.",
+    "topic": "Network events",
+    "source": {
+      "label": "Kaspa accepted-transactions guide",
+      "url": "https://docs.kaspa.org/integrate/accepted-transactions"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_reader_subscription",
+    "question": "Which subscription follows live virtual-chain changes in the accepted-transactions guide?",
+    "choices": [
+      "walletOpen",
+      "TextEncoder",
+      "SubscribeVirtualChainChanged",
+      "accountsSend"
+    ],
+    "answer": 2,
+    "explain": "It offers a live alternative to repeatedly pulling accepted IDs.",
+    "topic": "Network events",
+    "source": {
+      "label": "Kaspa accepted-transactions guide",
+      "url": "https://docs.kaspa.org/integrate/accepted-transactions"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_reader_parallel",
+    "question": "When does the ingestion guide suggest parallel workers?",
+    "choices": [
+      "Only before connecting",
+      "When sharing private keys",
+      "To skip all validation",
+      "When processing is order-independent"
+    ],
+    "answer": 3,
+    "explain": "Independent pipelines can process work in parallel.",
+    "topic": "Network events",
+    "source": {
+      "label": "Kaspa accepted-transactions guide",
+      "url": "https://docs.kaspa.org/integrate/accepted-transactions"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_krc_amount",
+    "question": "Which KRC-20 transfer field contains the token amount in Kiwi’s example?",
+    "choices": [
+      "amt",
+      "p",
+      "tick",
+      "to"
+    ],
+    "answer": 0,
+    "explain": "The transfer example puts its amount in amt.",
+    "topic": "KRC-20",
+    "source": {
+      "label": "Kasplex Kiwi examples",
+      "url": "https://github.com/kasplex/sdk-kiwi/blob/main/examples/krc20.test.ts"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_krc_commit_reveal",
+    "question": "What are the two inscription stages demonstrated by Kiwi?",
+    "choices": [
+      "Score, then level",
+      "Commit, then reveal",
+      "Stake, then vote",
+      "Swap, then mine"
+    ],
+    "answer": 1,
+    "explain": "The separate reveal example refers to a previous commit transaction.",
+    "topic": "KRC-20",
+    "source": {
+      "label": "Kasplex Kiwi examples",
+      "url": "https://github.com/kasplex/sdk-kiwi/blob/main/examples/krc20.test.ts"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_krc_transfer_receipt",
+    "question": "What identifier does Kiwi’s transfer example return after its transaction call?",
+    "choices": [
+      "An account password",
+      "A quiz score",
+      "A transaction ID",
+      "A recovery phrase"
+    ],
+    "answer": 2,
+    "explain": "The example stores and logs the transfer txid.",
+    "topic": "KRC-20",
+    "source": {
+      "label": "Kasplex Kiwi examples",
+      "url": "https://github.com/kasplex/sdk-kiwi/blob/main/examples/krc20.test.ts"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_krc_issue_identifier",
+    "question": "In Kiwi’s issue-mode example, which field identifies the deployment hash?",
+    "choices": [
+      "tick",
+      "lim",
+      "dec",
+      "ca"
+    ],
+    "answer": 3,
+    "explain": "The issue-mode example uses ca to identify the deployment.",
+    "topic": "KRC-20",
+    "source": {
+      "label": "Kasplex Kiwi examples",
+      "url": "https://github.com/kasplex/sdk-kiwi/blob/main/examples/krc20.test.ts"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_wallet_hd_addresses",
+    "question": "What can an HD wallet derive according to Kiwi’s documentation?",
+    "choices": [
+      "Multiple wallet addresses",
+      "Guaranteed token profits",
+      "Unlimited new KAS",
+      "Other people’s keys"
+    ],
+    "answer": 0,
+    "explain": "The SDK documents hierarchical deterministic address derivation.",
+    "topic": "Wallet basics",
+    "source": {
+      "label": "Kasplex Kiwi SDK",
+      "url": "https://github.com/kasplex/sdk-kiwi/blob/main/README.md"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_wallet_multisig",
+    "question": "What does Kiwi’s multi-signature support allow?",
+    "choices": [
+      "Guaranteed recovery without keys",
+      "A wallet using multiple signing keys",
+      "A password-free exchange",
+      "Unlimited token issuance"
+    ],
+    "answer": 1,
+    "explain": "Multiple signing keys can participate under the wallet’s signing rules.",
+    "topic": "Wallet basics",
+    "source": {
+      "label": "Kasplex Kiwi SDK",
+      "url": "https://github.com/kasplex/sdk-kiwi/blob/main/README.md"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_sdk_wasm_pair",
+    "question": "Why keep Kiwi’s JavaScript and WebAssembly modules on compatible versions?",
+    "choices": [
+      "It doubles every balance",
+      "It removes all network fees",
+      "Mismatched versions can fail at runtime",
+      "It changes token supply"
+    ],
+    "answer": 2,
+    "explain": "Kiwi warns against mixing incompatible JS and WASM builds.",
+    "topic": "Builder basics",
+    "source": {
+      "label": "Kasplex Kiwi SDK",
+      "url": "https://github.com/kasplex/sdk-kiwi/blob/main/README.md"
+    },
+    "reviewedAt": "2026-10-14"
+  },
+  {
+    "id": "mini_wallet_request_accounts",
+    "question": "Which call requests account access in Kiwi’s browser-extension example?",
+    "choices": [
+      "getBlockDagInfo()",
+      "executeReveal()",
+      "TextEncoder()",
+      "requestAccounts()"
+    ],
+    "answer": 3,
+    "explain": "The example requests accounts before reading the connected wallet balance.",
+    "topic": "Wallet basics",
+    "source": {
+      "label": "Kasplex Kiwi SDK",
+      "url": "https://github.com/kasplex/sdk-kiwi/blob/main/README.md"
+    },
+    "reviewedAt": "2026-10-14"
+  }
+]

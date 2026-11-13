@@ -5,9 +5,11 @@
     <!-- site-metadata:start -->
     <title>Geek Protocol — Kaspa Onboarding &amp; Proof of Learning</title>
     <meta name="description" content="Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. Explore lessons, free quizzes and community tools. No wallet needed to start." />
-    <meta name="theme-color" content="#080b0b" />
+    <meta name="theme-color" content="#000000" />
     <meta name="robots" content="index,follow" />
-    <link rel="icon" type="image/png" href="/assets/geek-protocol-logo.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/assets/app/giga-apple-touch.png" />
+    <link rel="icon" type="image/png" href="/assets/geek-protocol-logo-v2.png" />
     <link rel="canonical" href="https://www.geekprotocol.xyz/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Geek Protocol" />
@@ -29,7 +31,7 @@
     <!-- site-metadata:end -->
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.geekprotocol.xyz/#website","name":"Geek Protocol","url":"https://www.geekprotocol.xyz/","description":"Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. Explore lessons, free quizzes and community tools. No wallet needed to start.","inLanguage":"en-US","publisher":{"@id":"https://www.geekprotocol.xyz/#organization"}}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.geekprotocol.xyz/#organization","name":"Geek Protocol","url":"https://www.geekprotocol.xyz/","description":"Kaspa onboarding ecosystem built for Proof of Learning. GEEK is a KRC-20 token on Kaspa; Alpha game credits are internal and nonwithdrawable.","logo":"https://www.geekprotocol.xyz/assets/geek-protocol-logo.png","sameAs":["https://github.com/GEEKProtocol0110","https://x.com/geekonkas","https://t.me/GEEKonKAScommunity"]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://www.geekprotocol.xyz/#organization","name":"Geek Protocol","url":"https://www.geekprotocol.xyz/","description":"Kaspa onboarding ecosystem built for Proof of Learning. GEEK is a KRC-20 token on Kaspa; Alpha game credits are internal and nonwithdrawable.","logo":"https://www.geekprotocol.xyz/assets/geek-protocol-logo-v2.png","sameAs":["https://github.com/GEEKProtocol0110","https://x.com/geekonkas","https://t.me/GEEKonKAScommunity"]}</script>
     <link rel="stylesheet" href="/assets/atmosphere.css" />
     <link rel="stylesheet" href="./assets/styles.css" /><link rel="stylesheet" href="./assets/space.css">
     <script defer src="./assets/site.js"></script>
@@ -40,18 +42,18 @@
 
     <header class="site-header" data-header>
       <a class="brand" href="#top" aria-label="Geek Protocol home">
-        <img src="./assets/geek-protocol-logo.png" alt="" width="48" height="48" />
+        <img src="./assets/geek-protocol-logo-v2.png" alt="" width="48" height="48" />
         <span>GEEK<span class="brand-mark">//</span>PROTOCOL</span>
       </a>
       <div class="home-header-actions"><a class="home-sign-in" href="/sign-in/" data-nav-account>Sign in</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span><span></span><span class="sr-only">Open menu</span></button></div>
-      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="./study/">Learn</a><a href="./play/">Play</a><a href="./profile/">My HQ</a><details class="nav-more"><summary>More</summary><div class="nav-more-panel"><a href="/start/">First-visit guide</a><a href="./quest/">Quiz Quest</a><a href="./play/?mode=gauntlet#timed-games">Geek Gauntlet</a><a href="/store/">Geek Store</a><a href="/trade/">Trade GEEK</a><a href="https://geek-mini.vercel.app/">Geek Mini ↗</a><a href="/tools/#kaspa-widget">Free Kaspa widget</a><a href="./kaspa/">Kaspa field guide</a><a href="./memory/">Memory Grid</a><a href="./duel/">Duel with a friend or A.C.E.</a><a href="./challenges/">Challenges &amp; XP</a><a href="/royale/">Trivia Royale · live rooms</a><a href="https://geekjr.xyz/">Geek Jr · for younger children ↗</a><a href="/thanks/">Hall of Thanks</a><a href="#project-links">About the project</a></div></details></nav>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-nav><a href="./study/">Learn</a><a href="/games/">Games</a><a href="/news/">Geek News</a><a href="./profile/">My HQ</a><a href="/leaderboard/">Leaderboard</a><details class="nav-more"><summary>More</summary><div class="nav-more-panel"><a href="/games/">All Geek games</a><a href="/start/">First-visit guide</a><a href="./quest/">Quiz Quest</a><a href="./play/?mode=gauntlet#timed-games">Geek Gauntlet</a><a href="/store/">Geek Store</a><a href="/trade/">Trade GEEK</a><a href="https://geek-mini.vercel.app/">Geek Mini ↗</a><a href="/tools/#kaspa-widget">Free Kaspa widget</a><a href="./kaspa/">Kaspa field guide</a><a href="/kaspa/directory/">Kaspa directory</a><a href="./memory/">Memory Grid</a><a href="./duel/">Duel with a friend or A.C.E.</a><a href="./challenges/">Challenges &amp; XP</a><a href="/royale/">Trivia Royale · live rooms</a><a href="https://geekjr.xyz/">Geek Jr · for younger children ↗</a><a href="/thanks/">Hall of Thanks</a><a href="/media/">Media &amp; builders</a><a href="#project-links">About the project</a></div></details></nav>
     </header>
 
     <main id="main" class="home-main">
       <section class="hero" id="top" aria-labelledby="home-title">
         <div class="hero-copy">
           <div class="eyebrow"><span class="live-dot"></span> Curiosity is your way in</div>
-          <h1 id="home-title">Your first steps<br /><em>into Kaspa.</em></h1>
+          <h1 id="home-title">Your first steps<br /><em class="home-kaspa-line"><span>into</span> <span class="home-kaspa-word">Kaspa.</span><img src="/assets/kaspa-widget-mark.svg" alt="" width="64" height="64" aria-hidden="true" /></em></h1>
           <p class="hero-lede">A Kaspa onboarding ecosystem built for <strong>Proof of Learning.</strong> Learn one idea, try it out, and build your understanding.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="/play/?mode=daily&amp;category=kaspa#timed-games" aria-describedby="home-quiz-note">Play today’s quiz <span aria-hidden="true">→</span></a>
@@ -63,9 +65,16 @@
         <div class="hero-visual" aria-hidden="true"><img class="hq-signal-art" src="/assets/neon-constellation.svg" alt="" width="600" height="520" /></div>
       </section>
 
-      <nav class="home-project-documents" aria-label="Project documents and contributors">
+      <section class="home-launchpad" aria-label="Choose your Geek experience">
+        <a href="/study/"><span class="launch-number">01 // DISCOVER</span><h2>Learn one new thing.</h2><p>Explore Kaspa in small steps, with clear explanations and practice at your own pace.</p><span class="launch-link">Open the learning hub →</span></a>
+        <a href="/games/"><span class="launch-number">02 // CHALLENGE</span><h2>Make your next move.</h2><p>Chess, Battle Geek, Tower of Geek and more. Play a solo puzzle or find a friend in the lounge.</p><span class="launch-link">Explore Geek Games →</span></a>
+        <a href="/news/"><span class="launch-number">03 // EXPLORE</span><h2>Follow your curiosity.</h2><p>Browse Geek News and market feeds, then discover what the Kaspa community is building.</p><span class="launch-link">Visit Geek News →</span></a>
+      </section>
+
+      <nav class="home-project-documents" aria-label="Project facts, documents and contributors">
         <span>Explore the project</span>
         <div class="home-document-buttons">
+          <a class="button button-secondary" href="/about/">Facts &amp; FAQ <span aria-hidden="true">→</span></a>
           <a class="button button-secondary" href="/whitepaper/">Whitepaper <span aria-hidden="true">→</span></a>
           <a class="button button-secondary" href="/litepaper/">Litepaper <span aria-hidden="true">→</span></a>
           <a class="button button-secondary" href="/thanks/">Contributors <span aria-hidden="true">→</span></a>
@@ -76,7 +85,7 @@
 
       <details class="welcome-panel" id="kaspa-next-steps"><summary><span><b>Your next steps with Kaspa</b><small>Learn about wallets, then try tracking a public address.</small></span></summary><div class="welcome-panel-content home-kaspa-next"><p>Geek helps you move from discovering Kaspa to understanding how to use it. Take these steps when you feel ready.</p><div class="welcome-project-links"><a href="/study/?topic=wallets&amp;level=foundations">Learn how Kaspa wallets work →</a><a href="/kaspa/">Explore the Kaspa field guide →</a><a href="https://wallet.geekprotocol.xyz/" target="_blank" rel="noopener noreferrer">Track a public Kaspa address in Geek Wallet ↗</a><a href="/sign-in/" data-signed-out-only>Recover your Geek player with a passkey or linked wallet →</a></div><p>Learning and games work without a wallet. A passkey saves access to your player. Wallet sign-in proves control of a Kaspa address and sends no payment.</p></div></details>
 
-      <details class="welcome-panel home-more-play" id="more-ways-to-play"><summary><span><b>More ways to play</b><small>Geek Gauntlet, story adventures and matching games.</small></span></summary><div class="welcome-panel-content"><section class="welcome-gauntlet" aria-labelledby="home-gauntlet-title">
+      <details class="welcome-panel home-more-play" id="more-ways-to-play"><summary><span><b>More ways to play</b><small>Geek Gauntlet, story adventures and matching games.</small></span></summary><div class="welcome-panel-content"><p><a class="text-link" href="/games/">Explore all Geek games →</a></p><section class="welcome-gauntlet" aria-labelledby="home-gauntlet-title">
         <div><span class="section-kicker">The Geek Protocol challenge</span><h2 id="home-gauntlet-title">Geek Gauntlet</h2><p>Ten rounds. Ten questions each. Fifteen seconds to choose your answer. Start round one and see how far you can climb.</p><small>Career XP and internal Alpha credits. No token payouts.</small></div>
         <a class="button button-primary" href="./play/?mode=gauntlet#timed-games">Play the Gauntlet <span aria-hidden="true">→</span></a>
       </section>
@@ -123,7 +132,7 @@
   </main>
 
     <footer class="site-footer" itemscope itemtype="https://schema.org/Organization">
-      <link itemprop="logo" href="https://www.geekprotocol.xyz/assets/geek-protocol-logo.png" />
+      <link itemprop="logo" href="https://www.geekprotocol.xyz/assets/geek-protocol-logo-v2.png" />
       <link itemprop="sameAs" href="https://github.com/GEEKProtocol0110" />
       <meta itemprop="name" content="Geek Protocol" />
       <meta itemprop="description" content="Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning." />
@@ -133,11 +142,14 @@
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a itemprop="url" href="https://www.geekprotocol.xyz/">Home</a>
-        <a href="/study/">Learn</a><a href="/play/">Play</a>
+        <a href="/study/">Learn</a><a href="/play/">Play</a><a href="/leaderboard/">Leaderboard</a>
         <a href="https://wallet.geekprotocol.xyz/" target="_blank" rel="noopener noreferrer">Geek Wallet ↗</a>
+        <a href="/about/">About &amp; FAQ</a>
         <a href="/whitepaper/">Whitepaper</a>
         <a href="/litepaper/">Litepaper</a>
         <a href="/thanks/">Contributors</a>
+        <a href="/news/">Geek News</a><a href="/media/">Media &amp; builders</a>
+        <a href="/kaspa/directory/">Kaspa directory</a>
         <a href="/security/">Security</a>
         <a itemprop="sameAs" href="https://x.com/geekonkas">X / Twitter ↗</a>
       </nav>

@@ -67,3 +67,15 @@ GEEK-specific Tangem compatibility remains a separate task requiring the current
 ## Community participation — October 8, 2026
 
 The founder subsequently requested a Hall application/contribution flow and supplied the fund address. This is the separate product request required by the initial maintenance guidance. `/thanks/#join` accepts private offers to help and opt-in recognition applications, displays the designated fund and loads only owner-approved credits. `/ops/community/` provides review and withdrawal. See [Community Contributions](COMMUNITY-CONTRIBUTIONS.md) for address, consent, retention, abuse controls and validation. Founding dedications remain in Git; application credits live in Redis with audit events and require database backup/recovery coverage.
+
+## Kas.fyi acknowledgment — November 5, 2026
+
+The founder explicitly requested a Kas.fyi shout-out. Add a static ecosystem card (`credit-kasfyi`) thanking its public explorer contribution, with the original project link and a separately labeled Kaspa Stream link. The source-owned farewell indexed at https://kas.fyi/ states that the explorer closed and directs visitors to Kaspa Stream. Its old address/token pages also expose that notice in search results. Preserve this as legacy recognition, not an active-service, endorsement, partnership or HQ-integration claim. The [Kaspa directory](KASPA-DIRECTORY.md) includes the same legacy distinction and the Hall links to it. Other new Hall links await founder supply; no individual or project credit was inferred from directory inclusion.
+
+## Dedicated Kaspa Stream acknowledgment — November 5, 2026
+
+The founder clarifies that Kaspa Stream needs its own Hall credit. #233 included it in the directory and as a link inside the Kas.fyi card, which did not give it a dedicated acknowledgment. Add a separate static ecosystem card (`credit-kaspa-stream`), thanking its public block explorer and network insights with a direct https://kaspa.stream/ link. Its primary home page identifies those functions. This is an independent project credit, without an inferred partnership, sponsorship or HQ integration. Keep the existing Kas.fyi tribute and directory entry.
+
+## Kas.fyi special thank-you placement — November 4, 2026 (Detroit)
+
+The founder requests Kas.fyi at the bottom of the ecosystem card group, labeled “Special thank you.” Move the existing `credit-kasfyi` article to the final position in that grid and replace its category label with `SPECIAL THANK YOU`. Retain the tribute, legacy-service explanation, links and stable fragment. Kaspa Stream keeps its separate card. This is a presentation correction; it does not change the directory or recognition policy.

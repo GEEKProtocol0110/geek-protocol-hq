@@ -9,7 +9,7 @@
 .study-tags { display: flex; flex-wrap: wrap; gap: .55rem; }
 .study-tags span { padding: .35rem .7rem; border: 1px solid var(--line); color: var(--paper-soft); font-size: .8rem; border-radius: 3px; }
 .ace-intro { border-top: 2px solid var(--cyan); padding: 1.6rem; background: #111d1b; }
-.ace-label { color: var(--cyan); font-size: .72rem; font-weight: 800; letter-spacing: .1em; }
+.ace-label { color: var(--cyan); font-size: .72rem; font-weight: 700; letter-spacing: .1em; }
 .ace-intro p { margin: 1.2rem 0; font-size: 1.45rem; line-height: 1.5; }
 .ace-intro small { color: var(--muted); }
 .study-notice { margin: 3rem 0 4rem; padding: 1rem 1.2rem; border-left: 2px solid var(--gold); background: #171a12; color: var(--paper-soft); font-size: .88rem; }
@@ -42,16 +42,16 @@
 .study-practice progress::-webkit-progress-bar { background: #1e3028; }
 .study-practice progress::-webkit-progress-value { background: var(--cyan); }
 .study-practice progress::-moz-progress-bar { background: var(--cyan); }
-.study-question-kicker { color: var(--muted); font-size: .73rem; font-weight: 800; letter-spacing: .1em; }
+.study-question-kicker { color: var(--muted); font-size: .73rem; font-weight: 700; letter-spacing: .1em; }
 .study-question h2 { margin: .8rem 0 1.5rem; overflow-wrap: anywhere; }
 .study-options { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
 .study-options button { min-height: 85px; padding: 1.1rem; border: 1px solid var(--line); background: #141e1a; border-radius: 3px; color: var(--paper); display: flex; gap: .9rem; align-items: center; text-align: left; font: inherit; cursor: pointer; }
-.study-options button span { flex: none; color: var(--cyan); font-weight: 800; }
+.study-options button span { flex: none; color: var(--cyan); font-weight: 700; }
 .study-options button:hover { border-color: var(--cyan); background: #1b2c24; }
 .study-feedback, .study-summary { margin-top: 1.5rem; border: 1px solid #355447; border-radius: 4px; background: #13211b; padding: 2rem; }
 .study-feedback h3, .study-summary h3 { margin: 1rem 0; }
 .study-feedback p, .study-summary p { color: var(--paper-soft); }
-.study-feedback .study-right-answer { color: var(--paper); font-weight: 800; }
+.study-feedback .study-right-answer { color: var(--paper); font-weight: 700; }
 .study-your-answer { font-size: .9rem; }
 .ace-guidance { border-left: 2px solid var(--cyan); padding-left: 1rem; }
 .study-feedback a { display: inline-block; color: var(--cyan); margin-right: 1rem; }

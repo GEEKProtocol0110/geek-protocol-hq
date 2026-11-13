@@ -1,0 +1,147 @@
+{
+  "schema": 1,
+  "reviewedAt": "2026-11-06",
+  "dateBasis": "America/Detroit",
+  "task": "BANK-009",
+  "reviewKind": "internal-primary-source-technology-batch",
+  "independentReview": false,
+  "difficultyCalibration": "provisional-editorial",
+  "baselineCommit": "0a8a53fa9acc62262b5493c4eb9aa95811b88f67",
+  "scope": "Six selected hardware/OS/interface drafts, not a whole-category or contiguous-prefix approval. Three existing identities retain exact grading and receive item-specific internal source checks; three corrected replacements remain practice-only drafts pending separate review.",
+  "retained": [
+    {
+      "category": "technology",
+      "id": "TECH-N-7ce1893db2ea",
+      "gradingHash": "ac31d122b85a14ba63dc527c51d61d062a83e89a32f3c99fcef3a3146b55d633",
+      "source": "https://www.usb.org/about",
+      "sourceClaim": "USB-IF identifies the technology it develops as Universal Serial Bus.",
+      "distractorReview": [
+        "United Bus Scan is not the interface name identified by USB-IF.",
+        "Unique Serial Bus is not the identified name.",
+        "Universal Storage Bank is not the identified name.",
+        "Key: Universal Serial Bus is the specification name."
+      ],
+      "contextDecision": "Retain exact prompt/options/key and existing provisional difficulty; add an original explanation and specific primary evidence. No independent review is claimed."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-b61820698c2e",
+      "gradingHash": "483b1eb1c7a314606f6986deff61973a1def77db037071416a2d7b0f53c61699",
+      "source": "https://www.ibm.com/support/pages/dvd-ram-media-types-and-media-formats",
+      "sourceClaim": "IBM explicitly expands CD-ROM as compact disk read only memory and distinguishes it from writable media.",
+      "distractorReview": [
+        "Key: Read Only Memory is the ROM expansion in the named optical format.",
+        "Nothing is not the defined expansion.",
+        "Romial Memory is not the defined expansion.",
+        "Erase Only Memory contradicts the read-only format."
+      ],
+      "contextDecision": "Retain exact prompt/options/key and existing provisional difficulty; add an original explanation and specific primary evidence. No independent review is claimed."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-0802a9e35a49",
+      "gradingHash": "e457e056210cd9732714b35cf4a94d4e71fe5ad030aa78f534823c095c0dca19",
+      "source": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig",
+      "sourceClaim": "Microsoft distinguishes full TCP/IP configuration with /all from the basic no-parameter summary, and describes DHCP configuration use.",
+      "distractorReview": [
+        "Bare ipconfig supplies a basic summary rather than full adapter configuration.",
+        "Key: ipconfig /all requests the full adapter configuration.",
+        "ipsec /total is not the documented command for this task.",
+        "ifconfig /all is not the Windows ipconfig command."
+      ],
+      "contextDecision": "Retain exact prompt/options/key and existing provisional difficulty; add an original explanation and specific primary evidence. No independent review is claimed."
+    }
+  ],
+  "replacements": [
+    {
+      "category": "technology",
+      "id": "TECH-0810-Rfcd02b1e2f",
+      "fromIds": [
+        "TECH-0810"
+      ],
+      "gradingHash": "fcd02b1e2f59e9a6f9ea15c7ec0eee1588c6afdfa3d89e14119e879786d2ebd2",
+      "source": "https://learn.microsoft.com/en-us/windows-hardware/drivers/gettingstarted/virtual-address-spaces",
+      "supportingSources": [
+        "https://learn.microsoft.com/en-us/windows/win32/memory/physical-address-extension"
+      ],
+      "sourceClaim": "The total address space is 2^32 bytes, or 4 GiB. Its user/system split is a separate limit; PAE can let capable 32-bit Windows systems use more physical RAM without enlarging that virtual address space.",
+      "distractorReview": [
+        "1 GiB is smaller than the documented total.",
+        "2 GiB is the usual user-space share, not the total.",
+        "Key: 2^32 bytes equals 4 GiB before the split.",
+        "8 GiB exceeds the documented 32-bit total."
+      ],
+      "contextDecision": "The old generic physical-RAM limit ignores PAE and confuses physical memory, total virtual space and the process user-space share.",
+      "reviewStatus": "draft-needs-human-review",
+      "practiceOnly": true
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-0461c5e98b88-Rbc490ae047",
+      "fromIds": [
+        "TECH-N-0461c5e98b88"
+      ],
+      "gradingHash": "bc490ae047e6a22ab69884972e7fd1cd836791c858b0123f4f89dec004391720",
+      "source": "https://www.corsair.com/us/en/explorer/diy-builder/memory/volatile-vs-non-volatile-memory-whats-the-difference/",
+      "supportingSources": [],
+      "sourceClaim": "A hard disk drive provides nonvolatile storage for saved files. Ordinary RAM is working memory and loses its contents without power; storage and working memory serve different roles.",
+      "distractorReview": [
+        "DRAM working memory is volatile.",
+        "Key: a hard disk drive retains saved data without continuous power.",
+        "CPU registers hold execution state rather than normal saved user files.",
+        "CPU cache accelerates access to working data rather than serving as normal persistent file storage."
+      ],
+      "contextDecision": "Replace the imprecise human-memory analogy with an explicit saved-file/nonvolatile-storage objective.",
+      "reviewStatus": "draft-needs-human-review",
+      "practiceOnly": true
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-d0bbfb636d98-R488e1b3347",
+      "fromIds": [
+        "TECH-N-d0bbfb636d98"
+      ],
+      "gradingHash": "488e1b3347f9ae18835aa4816ca0bcc0aea5ba78fecd7872a9a3188553bf21ee",
+      "source": "https://news.microsoft.com/source/2009/10/22/microsoft-simplifies-the-pc-with-windows-7/",
+      "supportingSources": [
+        "https://learn.microsoft.com/en-us/lifecycle/products/windows-7"
+      ],
+      "sourceClaim": "Microsoft announced worldwide availability of Windows 7 on October 22, 2009. This is a dated release-history question, not a claim about a future or currently supported Windows version.",
+      "distractorReview": [
+        "Windows XP is not the product named in the dated launch announcement.",
+        "Windows Vista is not the product named in that announcement.",
+        "Windows 8 is not the product named in that announcement.",
+        "Key: the dated Microsoft announcement identifies Windows 7."
+      ],
+      "contextDecision": "Replace an undated intended-to-succeed claim and code-name lore with the explicit historical release date.",
+      "reviewStatus": "draft-needs-human-review",
+      "practiceOnly": true
+    }
+  ],
+  "retirements": [
+    {
+      "category": "technology",
+      "id": "TECH-0810",
+      "gradingHash": "b5c12ffc2c94b7750f9fbd26d8eee73d44227a8bb0ba00fc908e952fe0f2eb14",
+      "canonicalId": "TECH-0810-Rfcd02b1e2f",
+      "reason": "source-correction",
+      "note": "The old generic physical-RAM limit ignores PAE and confuses physical memory, total virtual space and the process user-space share."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-0461c5e98b88",
+      "gradingHash": "aabdce4441b1643f145e7617614d9df09ec875882c1ffaacc439553c9daa7b25",
+      "canonicalId": "TECH-N-0461c5e98b88-Rbc490ae047",
+      "reason": "source-correction",
+      "note": "Replace the imprecise human-memory analogy with an explicit saved-file/nonvolatile-storage objective."
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-d0bbfb636d98",
+      "gradingHash": "861c578d5a98507b3cc4a276b584ea5355f07855f44b198293a9d4dec5c86d45",
+      "canonicalId": "TECH-N-d0bbfb636d98-R488e1b3347",
+      "reason": "source-correction",
+      "note": "Replace an undated intended-to-succeed claim and code-name lore with the explicit historical release date."
+    }
+  ]
+}

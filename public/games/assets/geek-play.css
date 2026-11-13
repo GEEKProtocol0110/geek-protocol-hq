@@ -1,0 +1,86 @@
+/* Shared Geek game identity: bright edges, quiet reading surfaces. */
+:is(.brain-page,.classics-page){background-image:radial-gradient(ellipse at 90% 3%,#30b9ba13,transparent 36%),radial-gradient(ellipse at 3% 40%,#bc882c0a,transparent 38%);background-attachment:fixed}
+.geek-game-brand{display:inline-flex;gap:.7rem;align-items:center;color:#d8e9eb;text-decoration:none;font:650 .95rem/1.3 Inter,system-ui,sans-serif;letter-spacing:.07em}.geek-game-brand img{border-radius:12px;border:1px solid #77e6d655;box-shadow:0 0 16px #70e6dc14}.brand-slash{color:#f6cf70}
+.geek-coach{max-width:840px;display:flex;align-items:center;gap:1.1rem;padding:1rem 1.2rem;margin:0 0 1.5rem;border:1px solid #f6c64344;border-radius:16px;background:linear-gradient(100deg,#26312c,#12232c 65%);box-shadow:inset 3px 0 #f6c64388}.geek-coach-portrait{position:relative;overflow:hidden;flex:0 0 76px;width:76px;height:76px;border:1px solid #f6c64399;border-radius:18px;background:#092030;box-shadow:0 0 15px #f6c64312}.geek-coach-portrait img{position:absolute;width:230%;height:230%;max-width:none;left:-23%;top:-80%;object-fit:cover}.geek-coach .geek-coach-label{font:600 .65rem/1.5 ui-monospace,monospace;letter-spacing:.14em;color:#f6d784;margin:0 0 .25rem}.geek-coach h2{font:600 1.1rem/1.4 Inter,system-ui,sans-serif;text-transform:none;letter-spacing:0;margin:0 0 .3rem;color:#dfe9e8}.geek-coach p:last-child{font-size:.9rem;line-height:1.6;color:#b9cdd3;margin:0;text-shadow:none}
+.geek-game-specs{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.4rem;padding-bottom:1rem;border-bottom:1px solid #70e6dc24}.geek-game-specs span{font:500 .65rem/1.5 ui-monospace,monospace;letter-spacing:.1em;color:#b3ddd7;padding:.3rem .6rem;border:1px solid #70e6dc33;border-radius:5px;background:#70e6dc07}
+:is(.brain-panel,.classic-panel){position:relative;border-top:2px solid #70e6dc99;box-shadow:0 12px 32px #00000022,0 0 30px #70e6dc0c,inset 0 1px #ffffff08}:is(.brain-panel,.classic-panel)::before{content:'';position:absolute;right:20px;top:-2px;width:65px;height:2px;background:#f6cf70;box-shadow:0 0 10px #f6c64330}
+:is(.brain-page,.classics-page) :is(#start,#next,#again){background:linear-gradient(120deg,#ead28c,#e9b74c);border-color:#f4d887;color:#15232a;box-shadow:0 0 15px #e9b74c16;text-shadow:none}:is(.brain-page,.classics-page) :is(#start,#next,#again):hover{background:#f5d989}
+.brain-page .brain-prompt{padding:1rem;border:1px solid #70e6dc38;border-radius:12px;background:radial-gradient(ellipse at 50% 100%,#70e6dc10,transparent 70%),#0c1b29;text-align:center;box-shadow:inset 0 0 24px #00000020;text-shadow:none}.brain-page #progress{font:500 .8rem/1.6 ui-monospace,monospace;color:#8ed9d3;padding:.5rem 0;border-bottom:1px solid #70e6dc26}.brain-page #result{color:#f6d784;line-height:1.6}
+.classics-page .board-scroll{border:1px solid #70e6dc38;border-radius:12px;padding:10px;background:linear-gradient(135deg,#15304466,#0a1625);box-shadow:inset 0 0 30px #0000002b}.classics-page .checkerboard{border:3px solid #789e9f;border-radius:5px;overflow:hidden;box-shadow:0 0 0 3px #132331,0 0 24px #70e6dc0d}.classics-page .checkerboard .light{background:linear-gradient(135deg,#516e7a,#405a66)}.classics-page .checkerboard .dark{background:linear-gradient(135deg,#102431,#172e3c)}.classics-page .checkerboard :is(.gold,.cyan){position:relative;isolation:isolate;z-index:0;background:#122835;color:#fce6a5;font-weight:600;text-shadow:none}.classics-page .checkerboard :is(.gold,.cyan)::before{content:'';position:absolute;inset:12%;border-radius:50%;z-index:-1;border:2px solid #e7bb5a;box-shadow:inset 0 0 0 3px #463c28,inset 0 0 0 4px #e7bb5a88,0 2px 4px #0008;background:radial-gradient(circle at 35% 25%,#8a7039,#574325)}.classics-page .checkerboard .cyan{color:#c6fff5}.classics-page .checkerboard .cyan::before{border-color:#7be8db;box-shadow:inset 0 0 0 3px #1d424b,inset 0 0 0 4px #7be8db88,0 2px 4px #0008;background:radial-gradient(circle at 35% 25%,#346f75,#19404a)}.classics-page .checkerboard .destination{background:#314332;box-shadow:inset 0 0 0 3px #f6c643;color:#ffdc82}.classics-page .checkerboard [aria-pressed=true]{outline:3px solid #f6d784;outline-offset:-4px}
+.classics-page .playing-card.face{position:relative;background:linear-gradient(140deg,#203c4d,#142a39);color:#baf3e7;border-color:#79b8b7;box-shadow:inset 0 0 0 3px #0e202a,0 2px 5px #0004}.classics-page .playing-card.red-card.face{color:#ffb3b7;border-color:#c78188}.classics-page .playing-card.face::after{content:'//';position:absolute;right:.35rem;bottom:.3rem;font:500 .55rem ui-monospace,monospace;color:#8db0b688}.classics-page .playing-card.back{position:relative;justify-content:center;align-items:center;min-height:48px;letter-spacing:.15em;color:#f6d784;border-color:#bca15e;background-image:radial-gradient(circle at 50% 50%,#143445 2px,transparent 3px),linear-gradient(45deg,transparent 47%,#70e6dc17 49%,#70e6dc17 51%,transparent 53%),linear-gradient(-45deg,transparent 47%,#f6c64312 49%,#f6c64312 51%,transparent 53%);background-size:12px 12px,24px 24px,24px 24px;background-color:#102936;box-shadow:inset 0 0 0 3px #0b1b28,inset 0 0 0 4px #bca15e44}.classics-page .foundation{border-color:#70e6dc55;background:#102634}.classics-page .foundation span{font-family:ui-monospace,monospace;color:#bdd6d6}.classics-page #status{border-radius:0 10px 10px 0;background:linear-gradient(90deg,#253733,#142b37);border-left-color:#e9c56b;color:#d0dfe1;text-shadow:none}
+@media(max-width:540px){.geek-coach{padding:.85rem;gap:.8rem}.geek-coach-portrait{flex-basis:58px;width:58px;height:58px;border-radius:14px}.geek-coach h2{font-size:1rem}.geek-coach p:last-child{font-size:.85rem}.geek-game-brand{font-size:.8rem}.classics-page .board-scroll{padding:6px}}
+@media(prefers-reduced-motion:reduce){:is(.brain-page,.classics-page){background-attachment:scroll}}
+@media(forced-colors:active){.geek-coach,.geek-game-specs span,.classics-page .board-scroll,.classics-page .foundation,.brain-page .brain-prompt{background:Canvas;color:CanvasText;border:1px solid CanvasText;box-shadow:none}:is(.brain-panel,.classic-panel)::before,.classics-page .checkerboard :is(.gold,.cyan)::before{display:none}.classics-page .playing-card.face::after{display:none}.classics-page .playing-card.back{background:Canvas;color:CanvasText;box-shadow:none}.geek-game-brand img{box-shadow:none}}
+
+/* Phone-first play surfaces; the board itself fits, rather than needing a pan. */
+:is(.brain-page,.classics-page) :is(.classic-panel,.brain-panel,.geek-coach,.geek-coach>div,.brain-session-head,.classic-toolbar,.foundations,.tableau-column){min-width:0;max-width:100%;box-sizing:border-box}
+:is(.brain-page,.classics-page) :is(select,input){box-sizing:border-box;min-width:0;font-size:16px}
+.classics-page .checkerboard{width:100%;max-width:560px;min-width:0;box-sizing:border-box}
+.classics-page .checkerboard .square{width:100%;min-width:0;min-height:0;aspect-ratio:1;box-sizing:border-box}
+.classics-page .classic-panel{container-type:inline-size;--card-height:clamp(64px,10vw,112px);--card-peek:clamp(24px,3.6vw,40px);--card-gap:clamp(2px,.7vw,8px);--card-width:calc((min(900px,100cqi) - 6 * var(--card-gap)) / 7)}
+.classics-page .tableau{width:100%;max-width:900px;min-width:0;grid-template-columns:repeat(7,minmax(0,1fr));gap:var(--card-gap);--card-height:clamp(64px,10vw,112px);--card-peek:clamp(24px,3.6vw,40px)}
+.classics-page .tableau-column{gap:0}
+.classics-page .tableau-column>button:first-child{width:100%;min-width:0;height:44px;min-height:44px;margin-bottom:6px;padding:0;font-size:.85rem}
+.classics-page .tableau-column .playing-card{width:100%;height:var(--card-height);min-height:var(--card-height);padding:.35rem .2rem;font-size:clamp(.85rem,2.2vw,1.3rem);align-items:start;justify-content:start;flex-shrink:0;letter-spacing:0;box-sizing:border-box}
+.classics-page .tableau-column .playing-card+.playing-card{margin-top:calc(var(--card-peek) - var(--card-height))}
+.classics-page .tableau-column .playing-card.back{font-size:clamp(.4rem,1vw,.65rem);padding:.4rem .15rem;justify-content:center}
+.classics-page .tableau-column .playing-card.face::after{display:none}
+.classics-page .tableau-column .playing-card:focus-visible{position:relative;z-index:2;outline-offset:-3px}
+.classics-page .playing-card[aria-pressed=true]{outline-offset:-3px}
+.classics-page .foundation{min-width:0}.classics-page .foundation>button:first-child{font-size:.75rem;min-height:44px;overflow-wrap:normal}.classics-page .foundation .playing-card{width:100%;max-width:82px;min-height:70px}
+.classics-page .waste{min-width:var(--card-width);min-height:var(--card-height)}
+.classics-page .waste .playing-card{width:var(--card-width);height:var(--card-height);min-height:var(--card-height);padding:.35rem .2rem;font-size:clamp(.85rem,2.2vw,1.3rem);box-sizing:border-box;flex-shrink:0}
+.classics-page .board-scroll{width:100%;max-width:100%;box-sizing:border-box;overflow-x:auto}
+:is(.brain-page,.classics-page).is-playing .geek-coach{display:none}
+.classics-page.is-playing .geek-game-specs{display:none}
+@media(max-width:600px){
+ :is(.brain-page,.classics-page) .games-main{padding-inline:8px}
+ :is(.brain-page,.classics-page) .games-header{padding:.65rem .75rem;gap:.35rem}
+ :is(.brain-page,.classics-page) .games-header nav{gap:.8rem;width:100%;font-size:.8rem;justify-content:flex-start}
+ :is(.brain-page,.classics-page) :is(.classic-hero,.brain-hero){padding:1.3rem .4rem .8rem}
+ :is(.brain-page,.classics-page) :is(.classic-hero,.brain-hero) h1{font-size:clamp(2rem,8vw,2.8rem);line-height:1.15;margin:.5rem 0}
+ :is(.brain-page,.classics-page) :is(.classic-panel,.brain-panel){padding:12px 8px;border-radius:14px}
+ .geek-coach{margin-inline:4px}.geek-coach-portrait{flex-basis:48px;width:48px;height:48px}
+ .classics-page .board-scroll{padding:3px;border-radius:6px}
+ .classics-page .classic-toolbar{gap:.5rem}.classics-page .classic-toolbar button{flex:1;padding:.55rem .4rem;font-size:.85rem}
+ .classics-page #status{padding:.65rem;font-size:.82rem;line-height:1.5;margin:.75rem 0}
+ .classics-page .solitaire-top{margin:.6rem 0;align-items:center;gap:.7rem}
+ .classics-page .foundations{gap:4px;max-width:none}.classics-page .foundation{padding:3px}.classics-page .foundation>button:first-child{font-size:.7rem;padding:.3rem .1rem}.classics-page .foundation span{font-size:.6rem}
+ .classics-page .scroll-note{font-size:.75rem;line-height:1.4;margin:.6rem 0}
+ .classics-page .classic-rules{padding:1rem .4rem}.classics-page .classic-rules ol{padding-left:1.4rem}
+ .brain-page .brain-notes{padding-inline:.4rem}.brain-page .brain-panel #prompt{padding:.75rem .3rem}.brain-page .brain-panel #prompt.digits{letter-spacing:.04em;font-size:clamp(1.05rem,5.2vw,1.7rem)}
+ :is(.brain-page,.classics-page).is-playing :is(.brain-hero,.classic-hero){padding:.6rem .4rem}
+ :is(.brain-page,.classics-page).is-playing :is(.brain-hero,.classic-hero) :is(p,.brain-tags){display:none}
+ :is(.brain-page,.classics-page).is-playing :is(.brain-hero,.classic-hero) h1{font-size:1.5rem;margin:0}
+ .brain-page.is-playing .brain-notes{margin-top:1.5rem}
+}
+
+/* Consistent game room spacing and controls. */
+:is(.brain-page,.classics-page) .games-main{max-width:1060px}
+:is(.brain-page,.classics-page) :is(.brain-hero,.classic-hero){padding-top:1.6rem;padding-bottom:1.2rem}
+:is(.brain-page,.classics-page) :is(.brain-hero,.classic-hero) h1{font-weight:600;text-shadow:none;letter-spacing:-.035em}
+:is(.brain-page,.classics-page) :is(.brain-hero,.classic-hero)>p{max-width:640px}
+:is(.brain-panel,.classic-panel,.geek-coach){max-width:none}
+:is(.brain-page,.classics-page) :is(.brain-panel,.classic-panel){background:radial-gradient(ellipse at 95% 0,#70e6dc08,transparent 55%),linear-gradient(145deg,#142635,#0e1b28)}
+:is(.brain-page,.classics-page) :is(button,select,input){font-weight:500;box-shadow:inset 0 1px #ffffff0a}
+:is(.brain-page,.classics-page) button:active:not(:disabled){filter:brightness(1.12)}
+.classic-toolbar{padding-bottom:.8rem;border-bottom:1px solid #70e6dc22;align-items:center}
+.classic-toolbar #exit{margin-left:auto;background:#172632;border-color:#526978;color:#c6d4dc}
+.classics-page .classic-rules{border:1px solid #344f60;border-radius:12px;padding:.3rem .6rem;margin-top:1.2rem;max-width:none;background:#0e1c28}
+.classic-rules summary{font:500 .95rem/1.5 Inter,system-ui,sans-serif;text-shadow:none}.classic-rules[open]{padding-bottom:1rem}.classic-rules p,.classic-rules li{font-size:.9rem}.classic-rules summary::marker{color:#e9c56b}
+.classics-page .checkerboard{margin-inline:auto;max-width:520px}.classics-page .board-scroll{background:radial-gradient(ellipse at 50% 0,#24556030,transparent 70%),#0b1823}
+.classics-page .foundation{border-style:solid;border-radius:10px;background:linear-gradient(155deg,#142d3a,#10222e)}
+.classics-page .foundation>button:first-child{background:#173540;border-color:#3a6670;color:#c4e5df}
+.classics-page .tableau-column>button:first-child{background:#132937;border-color:#365766;color:#b4d0d9;border-radius:8px}
+.brain-page .brain-prompt{font-weight:500;border-color:#5f9b9d66;padding-block:1.4rem;color:#f7dc9d!important}
+.brain-page #progress{color:#9ed9d5}.brain-page #rule{font-size:1.1rem;font-weight:500;line-height:1.5}
+.brain-page #feedback{border-radius:0 10px 10px 0;background:linear-gradient(90deg,#29392f,#142936);color:#dbe8e5}
+.brain-page .brain-binary{max-width:none}.brain-page #number-form input{max-width:none}.brain-page #number-form button{width:100%}
+:is(.brain-page,.classics-page).is-playing .play-switcher{display:none}
+@media(max-width:600px){
+ :is(.brain-page,.classics-page) :is(.classic-hero,.brain-hero){padding-top:1rem}
+ .classic-toolbar #exit{margin-left:0}.classics-page .classic-rules{padding:.2rem .4rem}
+ .brain-page #setup>p{font-size:.9rem}.brain-page .brain-panel #prompt{margin:1rem 0;padding-block:1.1rem}
+ :is(.brain-page,.classics-page).is-playing :is(.brain-hero,.classic-hero){padding-top:.65rem}
+}
+@media(forced-colors:active){:is(.brain-page,.classics-page) :is(.classic-rules,.classic-toolbar,.foundation,.board-scroll),.brain-page #feedback{background:Canvas;border-color:CanvasText;box-shadow:none}.brain-page .brain-prompt{color:CanvasText!important}}

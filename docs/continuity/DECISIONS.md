@@ -313,3 +313,83 @@ Draft a full whitepaper alongside the existing litepaper. Move the live Play tim
 Basis: Founder November 2 asks for the first whitepaper and a timer directly in the middle of the four answers, behind glass-like panels.
 
 Evidence: [docs/WHITEPAPER.md](../../docs/WHITEPAPER.md), [docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md](../../docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md).
+
+## DR-032: Use isolated provider feeds for Geek News
+
+**implementation-choice** · 2026-11-06.
+
+Provide Geek News with one selected TradingView cross-origin iframe at a time. Fixed configurations reproduce the current official bootstrap iframe format, retain attribution and canonical public page URI, and send no account or query-string data. Keep local scripts and account-origin policies; permit the provider frame only under /news/. Preserve direct sources and explain data delays. No paid API account, AI reporting or trading flow is introduced.
+
+Basis: Founder November 6 requests Geek News with live markets, crypto world news and futures. Futures are interpreted as separately labeled crypto perpetual derivatives.
+
+Evidence: [docs/GEEK-NEWS.md](../../docs/GEEK-NEWS.md), [public/news/assets/news.js](../../public/news/assets/news.js), [tests/geek-news.test.js](../../tests/geek-news.test.js), [vercel.json](../../vercel.json).
+
+## DR-033: Provide native top-100 crypto rankings
+
+**implementation-choice** · 2026-11-06.
+
+Use a fixed public CoinGecko market-cap endpoint through the existing widget function to provide exactly 100 native searchable USD rows. Cache snapshots for five minutes and show unavailable on invalid/partial/provider failure; retain attribution, fetch-time limits, no account data and no background polling. TradingView frames continue for other feeds. This replaces the no-news-API portion of DR-032 for crypto rankings only.
+
+Basis: Founder requests more crypto markets, like the top 100. Direct testing of the legacy crypto screener returned no matches.
+
+Evidence: [docs/GEEK-NEWS.md](../../docs/GEEK-NEWS.md), [server/crypto-markets.js](../../server/crypto-markets.js), [public/news/assets/crypto100.js](../../public/news/assets/crypto100.js), [tests/crypto100.test.js](../../tests/crypto100.test.js). Supersedes DR-032.
+
+## DR-034: Pause A.C.E. while continuing game work
+
+**founder-direction** · 2026-11-09.
+
+Pause A.C.E. development and live AI activation until the founder explicitly resumes it. Continue the approved strategy/puzzle games.
+
+Basis: Founder directed Pause ACE and then approved all nine proposed strategy/puzzle games.
+
+Evidence: [docs/STRATEGY-PUZZLE-GAMES.md](../../docs/STRATEGY-PUZZLE-GAMES.md).
+
+## DR-035: Drive holiday appearance from one priority catalog
+
+**implementation-choice** · 2026-11-13.
+
+Keep Appearance Off by default. Resolve automatic windows in America/Detroit by priority, then shortest window, then id. Add the verified Kaspa and crypto decoration windows, end Halloween's automatic window on October 30, and keep Satoshi's April 5 date manual-only. Add Geek Protocol's Birthday as June 21–23, priority 90, using the deployment hash already pinned in server/geek-deployment.js. Do not recolor the existing twelve holidays or enable a production mode from this change.
+
+Basis: Reviewed holiday-theme plan against main 01e79787. On November 13, 2026 the founder named the KRC-20 deploy, June 22 in America/Detroit, as the Geek Protocol birthday.
+
+Evidence: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/holiday-calendar.js](../../public/assets/holiday-calendar.js), [tests/appearance.test.js](../../tests/appearance.test.js).
+
+## DR-036: Draw holiday ornaments as in-repo Geek strokes
+
+**implementation-choice** · 2026-11-13.
+
+Replace public unicode ornaments with static SVG marks from the repo, and apply distinct catalog color tokens to every holiday, including the original twelve. Keep greetings factual, decorations off game boards, and Appearance Off until the founder saves a mode.
+
+Basis: November 13, 2026 founder request for a more Geek holiday look, after the catalog draft. This supersedes only the do-not-recolor limit in DR-035.
+
+Evidence: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/holiday-marks.js](../../public/assets/holiday-marks.js), [public/assets/holiday-theme.css](../../public/assets/holiday-theme.css). Supersedes DR-035.
+
+## DR-037: Port the GEEKT payout worker toward mainnet GEEK while settlement stays off
+
+**implementation-choice** · 2026-11-12.
+
+Reuse the tested CHAIN-004 journaled signer for current KRC-20 GEEK. Pay 100 GEEK for one qualifying Daily and the perfect-round ladder once per finished Gauntlet round, with a temporary 100,000 GEEK daily cap. Keep settlementEligible and withdrawalsEnabled false, and keep both operational flags false. The signing key stays out of the repository and is added later in the Vercel or GitHub secret UI.
+
+Basis: Founder confirmed the reward schedule on 2026-11-12 and asked for a draft port of the tested worker with payouts off.
+
+Evidence: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [server/mainnet-payout.js](../../server/mainnet-payout.js), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs).
+
+## DR-038: Bind mainnet Gauntlet GEEK to the graded correct count
+
+**founder-direction** · 2026-11-12.
+
+Pay Gauntlet GEEK as ROUND_CONFIG.reward times the server-graded correct count, using integer max times correctCount divided by 10. One correct answer in round 10 is 1800. The perfect-round maximum is not payable for a smaller count. Zero correct admits no job. Daily remains 100 once. Add temporary 46,400 GEEK player and receiving-address daily caps beside the 100,000 global cap. Keep settlement flags false and require production before admission or signing.
+
+Basis: Founder confirmed the per-correct Gauntlet rule on 2026-11-12 after the flat perfect-round amount was set aside. Security review required the amount to match that job's graded proof.
+
+Evidence: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs), [workers/mainnet/signer.mjs](../../workers/mainnet/signer.mjs), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js). Supersedes DR-037.
+
+## DR-039: Retain bounded local mint references without restoring authority
+
+**implementation-choice** · 2026-11-13.
+
+Supersede the page-memory-only mint receipt implementation with up to 100 browser-local request markers and public transaction references. No keys, raw responses, approvals, queue restoration or confirmation authority may be persisted. Show storage scope and a per-wallet clear action.
+
+Basis: Founder authorized continuing the announced mint receipt history follow-up. Existing non-custodial and economic constraints remain.
+
+Evidence: [docs/MINT-RECEIPT-HISTORY.md](../../docs/MINT-RECEIPT-HISTORY.md), [docs/MINT-PROTOCOL.md](../../docs/MINT-PROTOCOL.md), [tests/mint-client.test.js](../../tests/mint-client.test.js).

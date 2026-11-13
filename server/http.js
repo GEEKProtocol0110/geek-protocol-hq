@@ -1,4 +1,5 @@
 import { createHash, randomBytes } from 'node:crypto';
+import { isIP } from 'node:net';
 
 const SESSION_COOKIE = 'geek_session';
 const SESSION_TTL = 60 * 60 * 24 * 30;
@@ -64,12 +65,68 @@ export const readSessionId = (req) => {
 
 export const createSessionId = () => randomBytes(16).toString('hex');
 
-export const clientFingerprint = (req) => {
-  const forwarded = String(req.headers?.['x-forwarded-for'] || '').split(',')[0].trim();
-  const address = forwarded || String(req.socket?.remoteAddress || 'unknown');
-  const agent = String(req.headers?.['user-agent'] || '').slice(0, 160);
-  return createHash('sha256').update(`${address}|${agent}`).digest('hex').slice(0, 24);
+// Client address precedence. On Vercel these headers are set by the platform
+// (x-forwarded-for is overwritten to prevent spoofing; x-vercel-forwarded-for and
+// x-real-ip carry the same value). Off Vercel (local/dev) they are trusted as-is.
+const CLIENT_IP_HEADERS = ['x-vercel-forwarded-for', 'x-real-ip', 'x-forwarded-for'];
+
+// Expand an IPv6 address (already validated) to eight 4-digit lowercase groups.
+const expandIpv6 = (address) => {
+  let text = address.toLowerCase();
+  const v4 = /(\d{1,3}(?:\.\d{1,3}){3})$/.exec(text);
+  if (v4) {
+    const octets = v4[1].split('.').map(Number);
+    text = text.slice(0, -v4[1].length) + `${((octets[0] << 8) | octets[1]).toString(16)}:${((octets[2] << 8) | octets[3]).toString(16)}`;
+  }
+  const [head, tail] = text.includes('::') ? text.split('::') : [text, null];
+  const left = head ? head.split(':') : [];
+  const right = tail === null ? [] : (tail ? tail.split(':') : []);
+  const groups = tail === null ? left : [...left, ...Array(8 - left.length - right.length).fill('0'), ...right];
+  return groups.map((group) => group.padStart(4, '0'));
 };
+
+// Returns a canonical IP string, or '' when the candidate is not a real address.
+export const normalizeIp = (value) => {
+  let candidate = String(value ?? '').trim();
+  if (!candidate || candidate.length > 64) return '';
+  const bracketed = /^\[([^\]]+)\](?::\d+)?$/.exec(candidate);
+  if (bracketed) candidate = bracketed[1];
+  else if (/^\d{1,3}(\.\d{1,3}){3}:\d+$/.test(candidate)) candidate = candidate.slice(0, candidate.lastIndexOf(':'));
+  candidate = candidate.replace(/%[0-9a-z._~-]+$/i, '');
+  const version = isIP(candidate);
+  if (version === 4) return candidate;
+  if (version !== 6) return '';
+  const groups = expandIpv6(candidate);
+  if (groups.slice(0, 5).every((group) => group === '0000') && groups[5] === 'ffff') {
+    const [a, b] = [parseInt(groups[6], 16), parseInt(groups[7], 16)];
+    return [a >> 8, a & 255, b >> 8, b & 255].join('.');
+  }
+  return candidate.toLowerCase();
+};
+
+export const clientIp = (req) => {
+  for (const header of CLIENT_IP_HEADERS) {
+    const ip = normalizeIp(String(req.headers?.[header] ?? '').split(',')[0]);
+    if (ip) return ip;
+  }
+  return normalizeIp(req.socket?.remoteAddress) || 'unknown';
+};
+
+// Network key for abuse controls: IPv4 as-is, IPv6 reduced to its /64 prefix,
+// because one subscriber usually owns a whole /64 and rotates addresses inside it.
+export const clientNetwork = (req) => {
+  const ip = clientIp(req);
+  return isIP(ip) === 6 ? `${expandIpv6(ip).slice(0, 4).join(':')}::/64` : ip;
+};
+
+export const clientFingerprint = (req) => {
+  const agent = String(req.headers?.['user-agent'] || '').slice(0, 160);
+  return createHash('sha256').update(`${clientIp(req)}|${agent}`).digest('hex').slice(0, 24);
+};
+
+// Network address only (no User-Agent), for limits and blocks that must survive
+// header rotation and IPv6 address rotation within one /64.
+export const clientAddressFingerprint = (req) => createHash('sha256').update(`addr|${clientNetwork(req)}`).digest('hex').slice(0, 24);
 
 export const setSessionCookie = (res, sessionId) => {
   res.setHeader('Set-Cookie', `${SESSION_COOKIE}=${sessionId}; Max-Age=${SESSION_TTL}; Path=/; HttpOnly; Secure; SameSite=Lax`);
@@ -84,6 +141,7 @@ export const methodNotAllowed = (res, methods = 'GET, POST, OPTIONS') => {
 
 export const handleApiError = (res, error) => {
   const code = error?.message || 'UNKNOWN';
+  if (code === 'QUESTIONS_UNAVAILABLE') { console.error('Geek API error code',code); return sendJson(res,503,{ok:false,code,error:'Questions are temporarily unavailable. Please try again shortly.'}); }
   if (code === 'CHALLENGE_TRACK_LIMIT') return sendJson(res,400,{ok:false,code,error:'You can track three challenge paths. Untrack one before choosing another.'});
   if (code === 'DISCOVERY_WORD_UNKNOWN') return sendJson(res, 400, { ok: false, code, error: 'That signal is not one of the five words. Check the spelling and try another clue.' });
   if (code === 'CHALLENGE_NOT_READY') return sendJson(res, 409, { ok: false, code, error: 'Keep going! This task is not complete in your saved game results yet.' });
@@ -120,8 +178,8 @@ export const handleApiError = (res, error) => {
   if (code === 'RUN_STATE_INVALID') return sendJson(res, 409, { ok: false, error: 'That ranked action is not available right now.' });
   if (code === 'ANSWER_IN_PROGRESS') return sendJson(res, 409, { ok: false, error: 'That answer is already being locked. Retry once to retrieve its result.' });
   if (code === 'INSUFFICIENT_BALANCE') return sendJson(res, 409, { ok: false, code, error: 'Your server Alpha GEEK balance is too low for the next round.' });
-  if (code === 'ROOM_NOT_FOUND') return sendJson(res, 404, { ok: false, error: 'That lobby is no longer active.' });
-  if (code === 'ROOM_FULL') return sendJson(res, 409, { ok: false, error: 'That lobby is full.' });
+  if (code === 'ROOM_NOT_FOUND') return sendJson(res, 404, { ok: false, code, error: 'That lobby is no longer active.' });
+  if (code === 'ROOM_FULL') return sendJson(res, 409, { ok: false, code, error: 'That lobby is full.' });
   if (code === 'ROOM_NOT_MEMBER') return sendJson(res, 403, { ok: false, code, error: 'Your room seat expired. Rejoin with the invitation link.' });
   if (code === 'MATCH_ALREADY_STARTED') return sendJson(res, 409, { ok: false, code, error: 'This room already started a shared round. Create a new room to play again.' });
   if (code === 'MATCH_HOST_REQUIRED') return sendJson(res, 403, { ok: false, code, error: 'Only the room host can start the shared round.' });
@@ -184,11 +242,9 @@ export const handleApiError = (res, error) => {
   if (code === 'STICKER_TRADE_FORBIDDEN') return sendJson(res, 403, { ok: false, code, error: 'Only the player who created this offer can cancel it.' });
   if (code === 'STICKER_TRADE_FAILED') return sendJson(res, 503, { ok: false, code, error: 'The sticker exchange could not be completed safely.' });
   if (code === 'INVALID_BODY' || code === 'INVALID_REQUEST') return sendJson(res, 400, { ok: false, error: 'The request was not valid.' });
-  // Unknown errors: log only the error's name and code (both restricted to
-  // identifier characters), never its message or stack, which may carry paths
-  // or private bank text.
-  const safe = (v) => (typeof v === 'string' && /^[A-Za-z0-9_]{1,64}$/.test(v) ? v : 'UNKNOWN');
-  console.error('Geek API error', safe(error?.name), safe(error?.code));
+  // Never log a raw error name, message or stack; private bank content can appear there.
+  const safeName = typeof error?.name === 'string' && /^[A-Za-z0-9_]{1,40}$/.test(error.name) ? error.name : 'Error';
+  console.error('Geek API error', JSON.stringify({ name: safeName, code: /^[A-Z][A-Z0-9_]{2,63}$/.test(error?.code || '') ? error.code : /^[A-Z][A-Z0-9_]{2,63}$/.test(code) ? code : 'UNCLASSIFIED' }));
   return sendJson(res, 500, { ok: false, error: 'The community service hit an unexpected error.' });
 };
 

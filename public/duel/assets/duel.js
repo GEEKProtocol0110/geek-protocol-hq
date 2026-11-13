@@ -6,14 +6,14 @@ let duel = null, connected = false, loading = false, acting = false, answerPendi
 const say = text => { $('[data-message]').textContent = text; };
 const api = async (path, body) => {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 12_000);
+  const timeout = setTimeout(() => controller.abort(), initializing ? 6_000 : 12_000);
   try {
     const response = await fetch(path, { credentials: 'same-origin', signal: controller.signal,
       ...(body ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {}) });
     const data = await response.json().catch(() => ({}));
     if (!response.ok) throw Object.assign(new Error(data.error || 'Duel service unavailable.'), { code: data.code, status: response.status });
     return data;
-  } finally { clearTimeout(timeout); }
+  } catch (error) { if (controller.signal.aborted || error.name === 'AbortError') throw new Error(initializing ? 'Still loading your player. Use Retry connection to try again.' : 'The connection took too long. Reconnect to check your saved match.'); throw error; } finally { clearTimeout(timeout); }
 };
 const escape = value => String(value || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const now = () => Date.now() + offset;
@@ -150,7 +150,7 @@ $('[data-new]').addEventListener('click', async () => {
 });
 $('[data-reconnect]').addEventListener('click', async () => { await refresh(); });
 const initialize = async () => {
-  if (initializing) return; initializing = true;
+  if (initializing) return; initializing = true; $('[data-initial-loading]').hidden = false;
   $('[data-retry-service]').hidden = true;
   try {
     const data = await api('/api/session', {}); connected = true; $('[data-create-form]').elements.displayName.value = data.player.name;
@@ -164,7 +164,7 @@ const initialize = async () => {
       catch (error) { if (error.code === 'DUEL_NOT_PLAYER') await enter('join', { code }); else throw error; }
     }
   } catch (error) { say(error.message); $('[data-retry-service]').hidden = false; }
-  finally { initializing = false; }
+  finally { initializing = false; $('[data-initial-loading]').hidden = true; }
 };
 $('[data-retry-service]').addEventListener('click', initialize);
 document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });

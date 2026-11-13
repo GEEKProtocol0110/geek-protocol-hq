@@ -150,7 +150,8 @@ test('a locked chapter still directs the player to its prerequisite', async () =
 });
 test('an aborted chapter read has a clear retry message and cannot start a chapter', async () => {
   const ui = await page(() => { throw Object.assign(new Error('Aborted'), { name: 'AbortError' }); });
-  assert.match(ui.node('[data-status]').textContent, /took too long to respond/);
+  assert.match(ui.node('[data-status]').textContent, /Still loading.*Retry loading/);
+  assert.equal(ui.node('[data-initial-loading]').hidden, true);
   assert.doesNotMatch(ui.node('[data-status]').textContent, /Saving could not be confirmed|last action may have saved/);
   assert.equal(ui.node('[data-begin]').hidden, true);
   assert.equal(ui.node('[data-resume]').disabled, false);

@@ -86,7 +86,7 @@
       "status": "active",
       "title": "Audit every question category before treating counts as quality",
       "owner": "Content maintainer; independent editor unassigned",
-      "nextAction": "Complete the corrected #209 integration with fresh exact-head checks, then continue the remaining BANK-009 factual, semantic, category and authorship audit. Preserve all historical grading and keep new drafts practice-only. Private-ranked-bank end-to-end and UX acceptance remain separate cutover gates.",
+      "nextAction": "Review the November 8 risk-triage candidate and exact-head CI, then continue unflagged rows across categories.",
       "acceptance": [
         "All active identities have a recorded audit disposition; screening and factual review coverage are distinguished.",
         "Semantic duplicates, inverse/paraphrased facts, key/distractor ambiguity, missing media/context, encoding, taxonomy, dates/editions and licensing are reviewed, including unflagged imports.",
@@ -109,7 +109,12 @@
         "server/question-audit/scope-2026-10-28.json",
         "server/question-audit/reviews.json",
         "docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md",
-        "server/question-audit/technology-2026-10-28.json"
+        "server/question-audit/technology-2026-10-28.json",
+        "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md",
+        "server/question-audit/technology-2026-11-06.json",
+        "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-07.md",
+        "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-08.md",
+        "docs/TECHNOLOGY-RISK-REVIEW-2026-11-08.md"
       ],
       "validationEvidence": [
         "Initial full-bank screen: 8,371 baseline active / 864 recorded checks / 7,507 drafts; 33 candidate pairs, 26 within and seven cross-category. Internal triage: 15 duplicate retirements, ten retained distinct objectives, four scope and four category decisions outstanding. Candidate: 8,356 active / 7,492 drafts; 76 encoding and four time-wording signals. No factual certification added.",
@@ -123,13 +128,16 @@
         "November 1 final review of PR #208 at 046368ea296f0c2939660a09b3de7c78b9ee486b: six old Technology grading keys preserved in lookup-only retirement and six replacements remain practice-only drafts. Integrated current main including #212, and regenerated the audit from the combined corpus rather than selecting either old corpus hash. Final integration checks are pending.",
         "November 1 final #208 integration passed npm run verify with native Redis 7.4.2: 717 HQ tests plus nine signer tests, zero failures/skips, 311 security assertions and all question, generated-data, repository, economy, continuity and site checks. The combined audit includes #212; historical grading keys remain unchanged. Fresh published-head CI is required before merge.",
         "November 1 #209 correction: retired the older overlapping Joker debut objective and linked its historical concept to the clearer practice-only replacement. All 12,859 grading tuples and all 4,421 prior retired objects from current main are unchanged. The deterministic alias regression passes, including future-eligibility simulation. Combined corpus after #212/#208: 8,438 active rows, 210 practice-only, 8,228 ranked-eligible; 800 meet readiness review criteria. Seventy-five active authorship holds plus one retired unresolved-authorship row remain; this is not authorship clearance or full-bank factual certification.",
-        "Final combined local npm run verify passed with native Redis 7.4.2: 718 HQ tests and nine offline signer tests, zero failures/skips; 311 security assertions and all question/generated-data, collection/archive, repository, economy, continuity and site checks. Focused audit regression suite passed 11/11. Post-evidence continuity generation/check and whitespace checks passed. Fresh published-head CI is required before merge."
+        "Final combined local npm run verify passed with native Redis 7.4.2: 718 HQ tests and nine offline signer tests, zero failures/skips; 311 security assertions and all question/generated-data, collection/archive, repository, economy, continuity and site checks. Focused audit regression suite passed 11/11. Post-evidence continuity generation/check and whitespace checks passed. Fresh published-head CI is required before merge.",
+        "November 6 candidate reviews six Technology identities: three exact-grading confirmations and three corrected practice-only drafts. Static active count stays 8,438; ranked-eligible 8,225; practice-only 213; recorded eligible reviews 803; target deficit 7,197. Primary evidence comes from Microsoft, USB-IF, IBM and Corsair; no independent certification or new-draft eligibility. Final checks recorded in the scoped PR.",
+        "Full local npm run verify passed on Node 24.22.1 with native Redis 7.0.15: 755 HQ tests plus nine offline signer checks (764 total), zero failures/skips; 311 security assertions and bank/schema/similarity/catalog/readiness/audit, collection/archive, repository, economy, continuity, site and whitepaper checks. Focused audit tests passed 13/13. Separate baseline comparison preserves all 12,888 historical grading tuples and all 4,450 previously retired objects unchanged; exactly three new identities and three retirement records are added. Fresh published-head CI remains required."
       ],
       "releaseEvidence": [
         "PR #176 merged as ff422a5960f3c73c76987e34789c86ad2c83140d with checked tree 557e22fdc6e3d7c24e25281726bb43f8eca4ed5e and head a6b7837d425ffa3d6ddaed9e35cd7041b43cbf37. Exact-head Security verification 40622819782 and Vercel statuses passed; no submitted reviews/threads. Production dpl_5jFJuwqqeVCWH59AXqkiUpwRaEDA is READY on that merge with both canonical domains assigned. Five canonical reads passed: held/no-store readiness at 8,356 active / 864 recorded checks / 7,492 drafts; matching eight-category counts; unchanged 11-topic/537-concept Study; server-only audit path 404; and server-only bank path 404 without internal content. Full 708 HQ plus nine offline signer tests (717), zero failures/skips, and 311 security assertions passed. Fifteen duplicate drafts retired with historical grading/aliases retained. Screening is not independent or complete factual approval.",
         "PR #177 merged as 4297709f7ab201516cdcf86ca7ad9e1385b70927 with checked tree c92baa365b968a39a4f40cc6be0c9b188091ca2f and head b82418049447855ca67ca8d5dc69828242b88a10. Exact-head Security verification 40632784556 and Vercel statuses succeeded; no submitted reviews/threads. Production dpl_BabbEA1nfHm7poVMhdjgK4oVWRwk is READY on that merge with both canonical domains assigned. Five canonical reads passed: held/no-store readiness at 8,355 active / 864 checks / 7,491 drafts; matching eight-category counts; unchanged 11-topic/537-concept Study; server-only encoding register and History bank paths 404 without internal content. Full 711 HQ plus nine offline signer tests (720) passed, zero failures/skips, 311 security assertions. Standard post-release monitoring passed 21/21 at October 28 12:34 AM Detroit, unchanged five-second bounds. Seventy-seven encoding corrections and one revealed duplicate were released without factual promotion; independent editing and broader launch acceptance remain open.",
         "PR #178 merged October 28 at 11:10:19 UTC as 954a7b24b6e6c84522bc51c83c18bef5c28482d0; merge tree d8b027cba0baac76f12f2d38e2767a83d0508d12 matches checked head c947196de5bb0108c729d8264702d12660cb785c. Exact-head Security verification 40677635018 and both Vercel statuses succeeded. HQ production dpl_wANoLDQmxc9A44HXQMS9q1KzKHBJ READY on the merge with canonical domains; five canonical reads passed at 8,346 active / 872 checks / 7,474 drafts, with server-only paths 404. First standard monitoring run passed 15/21 with six protected-route five-second timeouts; focused protection reads then passed, followed by a standard 21/21 recheck at 7:13 AM Detroit. Retain the failure: later point-in-time health does not explain its cause or prove sustained capacity. Full local checks passed 713 HQ plus nine signer tests (722), zero failures/skips, 311 security assertions. Independent editing remains unassigned.",
-        "PR #208 merged as 7157d0c4b802b7605541f1743d868831b19a625c after exact-head Security verification 41332306615 and both Vercel contexts succeeded. New Technology rows remain practice-only; 717 HQ and nine signer tests passed locally before push."
+        "PR #208 merged as 7157d0c4b802b7605541f1743d868831b19a625c after exact-head Security verification 41332306615 and both Vercel contexts succeeded. New Technology rows remain practice-only; 717 HQ and nine signer tests passed locally before push.",
+        "PR #209 is already merged as 5a860ff072bde1c90ba912da843f3bf41f523b2a after exact-head CI 41332799495 and both Vercel contexts passed. Its 29 replacements remain practice-only; the overlapping Joker objective retains saved grading and canonical exclusion."
       ]
     },
     {
@@ -993,10 +1001,10 @@
     {
       "id": "ACE-001",
       "priority": "P1",
-      "status": "needs-evidence",
+      "status": "blocked",
       "title": "Build source-grounded A.C.E. tutoring and scoped operational automation",
       "owner": "Maintainer; AI/content evaluation reviewer unassigned",
-      "nextAction": "#148 merged/deployed. Authored lesson help works; optional bounded Gateway path and private read-only readiness are installed. Select model/budget/data policy and record a bounded live citation/injection/usage evaluation before activation. Autonomous operational tools are not installed.",
+      "nextAction": "Keep A.C.E. work and live AI activation paused until the founder explicitly resumes it. Existing authored lesson help remains available.",
       "acceptance": [
         "Tutor retrieves reviewed sources and keeps grading/reward authority deterministic.",
         "Typed role-checked tools, audit history, bounded budget/latency and authored fallback are tested.",
@@ -1014,7 +1022,8 @@
       ],
       "releaseEvidence": [
         "PR #148 merged October 17 at 11:07:47 UTC as 67a687cedbfdf82692f3e9b2dedd6230cb8a3a2f. Exact checked head 0d3125792fbe1e46f4e99fcb3eda0cd0b832e53f/tree 3834af65cf3bd89d157fd64af08103e32225cd60 passed GitHub Security verification 39026911425 and Vercel. No submitted reviews or inline threads were present. Preview dpl_Gz7chXA2daWVY2yCnLiiiyTAKbkr READY: seven authenticated public delivery checks passed; browser returned authored lesson evidence/primary source and cleared question/answer/consent on topic change. Desktop screenshot inspected; width 1348 <= viewport 1363. Initial raw preview HTTP hit deployment protection; owner-route protected fetch did not expose app headers and is not owner acceptance. Production dpl_dmdhSBWZHDQjJGGJ7pCTX4swPa1f READY on the exact merge with both canonical domains assigned. Ten canonical delivery checks passed: Study page, exact three clients/styles and count-only catalog, inactive-AI/no-store status, 11-topic/537-concept Study catalog, two private/no-store 401 routes and 624 Kaspa/722-review held-bank status. The first bank probe used the wrong nested path; one corrected read passed without an application change. Canonical browser renders the new collapsed/open lesson-help entry with AI opt-in hidden and no horizontal overflow; no canonical question, game, reward, owner-login or wallet action submitted. Production deployment-scoped error/fatal log count query for the recent ten-minute window returned no groups; this early empty window is not a long-term observability guarantee. Full final verification passed 568 tests, zero failures/skips, required Redis 7.4.2, 311 security assertions and all required checks. Production dependency audit reports zero vulnerabilities; 37-component SBOM refreshed. Actual phone/Silk, live model quality/budget, first TN10 transfer, provider restore and independent review remain unverified."
-      ]
+      ],
+      "blocker": "Founder paused A.C.E. work on November 9, 2026."
     },
     {
       "id": "PERF-001",
@@ -1392,10 +1401,10 @@
     {
       "id": "DOC-002",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "done",
       "title": "Expose project documents and contributors on the homepage",
       "owner": "Maintainer; founder approves merge",
-      "nextAction": "Verify the exact preview, obtain approval for the small publication batch, and confirm live homepage links and indexing signals after deployment.",
+      "nextAction": "Maintain public links and sitemap; SEO-002 follows with a project facts/FAQ page and indexation evidence.",
       "acceptance": [
         "Whitepaper, Litepaper and Contributors have visible native links near the top and in the homepage footer, outside collapsed menus.",
         "Document and contributor targets are public and reachable from plain HTML without JavaScript.",
@@ -1414,6 +1423,811 @@
       ],
       "validationEvidence": [
         "Six native homepage links are outside disclosures; all three targets are public, canonical, indexable and in the sitemap. Metadata, whitepaper, site-link, continuity, repository, 311 security assertions and whitespace checks pass. No game/API/server/header/deployment change. Preview and exact-head CI recorded separately in the PR."
+      ],
+      "completedAt": "2026-11-02",
+      "completionEvidence": [
+        "PR #230 merged as 12a02285491e07c93bc2398ff0f0e61975b814d5; production dpl_8Qtxa2EFiEPCSpeFLFyGzEau8Erf READY on that merge. Seven live resources returned 200 and exact expected bytes; browser verified visible document/contributor links. Local full verification: 725 HQ plus nine signer tests, zero failures/skips; exact-head remote Security workflow 41565129353 and both Vercel previews passed. External indexing/grading remains unverified."
+      ]
+    },
+    {
+      "id": "SEO-002",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Publish clear project facts and verify search discovery",
+      "owner": "Maintainer prepares source; founder approves merge; verified property owner handles search-console evidence",
+      "nextAction": "Validate the project facts/FAQ candidate and review it for merge. Record Google/Bing indexing and verified crawler evidence separately; identify the owner/source of the earlier litepaper deployment before proposing a redirect.",
+      "acceptance": [
+        "Visible native homepage/footer links lead to a public, canonical, indexable facts/FAQ page in the sitemap.",
+        "Project identity, live Alpha features, token boundaries, audit status and official profiles agree with published source evidence; no founder personal name is added.",
+        "All answers remain readable without JavaScript; narrow-screen and keyboard access are checked.",
+        "Record actual source/crawl findings, provider limits and the remaining console/legacy-deployment actions without claiming indexing, citations or external grading."
+      ],
+      "dependsOn": [
+        "DOC-002"
+      ],
+      "evidence": [
+        "public/about/index.html",
+        "public/about/assets/about.css",
+        "public/index.html",
+        "docs/site-pages.json",
+        "docs/SEARCH-DISCOVERY-REVIEW-2026-11-03.md"
+      ]
+    },
+    {
+      "id": "ECO-002",
+      "priority": "P1",
+      "status": "done",
+      "title": "Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream",
+      "owner": "Maintainer prepares source; founder reviews release and supplies additional Hall links",
+      "nextAction": "Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope.",
+      "acceptance": [
+        "Keep the Kaspa beginner guide and existing Hall credits intact; Kas.fyi is the final ecosystem card labeled Special thank you, and Kaspa Stream has its own thank-you card.",
+        "Provide native HTML resource links, useful categories, accessible search/reset and a no-JavaScript browsing path.",
+        "Record primary sources and editorial review dates; distinguish sourced listings from availability, audits and endorsements.",
+        "Expose the directory from Home, Kaspa and the Hall, with canonical metadata and sitemap coverage.",
+        "Run catalog, filter, metadata, continuity and relevant regression checks; record preview and physical-device limits honestly."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/KASPA-DIRECTORY.md",
+        "docs/kaspa-directory.json",
+        "scripts/kaspa-directory.mjs",
+        "tests/kaspa-directory.test.js",
+        "public/kaspa/directory/index.html",
+        "public/thanks/index.html"
+      ],
+      "releaseEvidence": [
+        "#233 merged/deployed as 4d83352dcf2e1d42301261997d14161c2d881c89; tree matches reviewed candidate. CI 41961204573 passed 728 HQ tests plus nine signer checks. Production dpl_EvPcBFWmVfpM9dDAJHMVRVa5RQZ9 READY with seven exact-byte canonical HTTP checks. Dedicated Kaspa Stream credit remains an unmerged follow-up.",
+        "#234 merged as 730babacb698ad4ca6eec41bdba36fb0856967d1 with checked tree e0dd28371eeae01e5a90dd034688514f50d387e6. CI 41963435552 passed; production dpl_AGqewHZAmdW2ZsbtFfPCTMMjCjRo READY with exact public Hall HTML, separate Kaspa Stream card and preserved Kas.fyi credit. Kas.fyi placement/label is the current unmerged follow-up."
+      ],
+      "completedAt": "2026-11-04",
+      "completionEvidence": [
+        "Founder-approved #233/#234/#235 are merged and deployed. Directory/Kas.fyi: 4d83352dcf2e1d42301261997d14161c2d881c89, production dpl_EvPcBFWmVfpM9dDAJHMVRVa5RQZ9, seven exact-byte canonical checks. Dedicated Kaspa Stream: 730babacb698ad4ca6eec41bdba36fb0856967d1, production dpl_AGqewHZAmdW2ZsbtFfPCTMMjCjRo, exact Hall bytes. Final Kas.fyi placement: c7d780da18fb12e80b190c620476ee6b2409bf90, production dpl_6Tg4xPAMg2cgRBMb8LiqTdrLZRsf, exact Hall bytes with Kas.fyi last/SPECIAL THANK YOU and separate Kaspa Stream preserved. All exact-head CI and both Vercel statuses succeeded. Source/HTTP acceptance only; rendering/phone acceptance remains unverified."
+      ]
+    },
+    {
+      "id": "ECO-003",
+      "priority": "P1",
+      "status": "done",
+      "title": "Expand KRC-20 project links and preserve token lookups for holders",
+      "owner": "Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned",
+      "nextAction": "Maintain the 104 released resources and holder-reference policy. Founder-approved ordering #237 is merged/deployed with exact public HTML verification; exchange expansion continues separately under ECO-004.",
+      "acceptance": [
+        "Review all 45 sourced candidates, including founder-requested KAEN, and retain every confirmed KRC-20 asset as a project listing or holder lookup with status separate from token existence.",
+        "Publish native project links where inspected and native matching token-record lookups for holders otherwise; label status and dated evidence without declaring coins dead.",
+        "Keep KRC-20 distinct from KCC-20/L2 versions, explain known migrations and the unresolved GHOADFI identity, and avoid active-team or exhaustive-coverage claims.",
+        "Record held links and insufficient evidence without labeling the entire project dead. Preserve existing directory and Hall credits; make no automated publication or visitor-side third-party call.",
+        "Verify data/HTML/schema parity, accepted activity dates and token/source identity, search/category shortcuts, metadata and continuity. Record actual CI/preview and browser limits.",
+        "Place both KRC-20 sections after the ten general Kaspa categories, with matching navigation, filter and structured-data order; preserve all 104 entry records."
+      ],
+      "dependsOn": [
+        "ECO-002"
+      ],
+      "evidence": [
+        "docs/KRC20-DIRECTORY-REVIEW.md",
+        "docs/krc20-directory-review.json",
+        "docs/kaspa-directory.json",
+        "scripts/kaspa-directory.mjs",
+        "tests/kaspa-directory.test.js",
+        "public/kaspa/directory/index.html"
+      ],
+      "completedAt": "2026-11-05",
+      "completionEvidence": [
+        "#237 merged 478dfc16b6843eef93603b3905d63b7a31f2f1ef; checked tree 0b0311ddff28150aa1a8a4ae7341d2f76c6054f3; CI 42063638109 succeeded; production dpl_6VGBV45EHRDo6EfcLr1xfx932mfo READY and exact canonical HTML confirms Kaspa-first order/all 104 entries. Rendering/phone acceptance remains separate."
+      ]
+    },
+    {
+      "id": "UX-011",
+      "priority": "P1",
+      "status": "needs-evidence",
+      "title": "Public HQ global leaderboard and separate shared Mini standings",
+      "owner": "Maintainer prepares source and verification; founder approves release; independent abuse review unassigned",
+      "nextAction": "HQ #238 and Mini #13 are merged/deployed with source/HTTP/API acceptance. Verify rendered desktop/mobile behavior and independent abuse limits separately; public practice does not open private-ranked seasons or economic gates.",
+      "acceptance": [
+        "Provide a public /leaderboard/ in HQ with separate HQ and Mini filters and native entry points from Home, Play and My HQ; no sign-in to view.",
+        "Mini provides a Mini-only /leaderboard and an explicit public challenge opt-in; existing local scores are never imported or ranked.",
+        "Server owns Mini selection, grading, deadline and attempt state; atomic retries cannot change answers or create duplicate scores; equal scores share rank.",
+        "Keep HQ accounts, rewards, private-bank seasons and all economic/ownership holds separate; do not claim that public practice banks prevent lookup, bots or repeat browser identities.",
+        "Use the existing HQ Redis in an isolated namespace and a same-origin Mini proxy with HttpOnly identity cookie, origin checks, bounded quotas, expiry and self-removal. No provider secret is copied to Mini.",
+        "Test real Redis concurrency, expiry, authorization, mode/topic separation and removal races; run regression, metadata, security and continuity checks."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/PUBLIC-LEADERBOARD.md",
+        "server/mini/competition.js",
+        "api/mini.js",
+        "public/leaderboard/index.html",
+        "public/leaderboard/leaderboard.js",
+        "tests/mini-competition.test.js"
+      ],
+      "releaseEvidence": [
+        "Founder-approved HQ #238 merged 3a98a38dee7eb3d7d7fa2733ab38c324fce88cf4, checked tree 64a2f01a74fd306143b20bcc5e318a6b1c45c25f, CI 42115327072 succeeded, production dpl_GQDZHv5VKYhJQkx1KffcZnxyygUR READY; leaderboard HTML/JS/CSS exact and Mini API read succeeds. Mini #13 merged 845eef9fec91acf5109362750e82a05a56e23711, CI 42115333430 and both production statuses succeeded; public Mini routes/proxy read succeed. No synthetic scores written to production. Rendered/device and independent abuse acceptance remain separate."
+      ]
+    },
+    {
+      "id": "ECO-004",
+      "priority": "P1",
+      "status": "done",
+      "title": "Add native-KAS exchanges, brokers and swaps to the Kaspa directory",
+      "owner": "Maintainer prepares source and evidence; founder approves release; independent coverage reviewer unassigned",
+      "nextAction": "Maintain the 164-resource directory and dated provider evidence. #239 is merged/deployed with exact public HTML/CSS/JS verification; keep the 42-item held review queue and transfer/eligibility limits. Rendering/device and live transaction acceptance remain separate.",
+      "acceptance": [
+        "Add broadly researched native-KAS purchase links with provider-owned primary sources and honest editorial dates; spot markets, brokers/on-ramps and swaps have separate alphabetical sections.",
+        "Preserve all 104 prior resources, the KRC-20 holder policy, Hall credits and Kaspa-first category order. New purchase sections belong with the general Kaspa links.",
+        "Distinguish listing evidence from eligibility, execution, liquidity and native-network transfer availability. Exclude derivative-only, unavailable, sell-only or unconfirmed purchase routes; retain the review queue.",
+        "Serve all new links and context in native HTML with matching category/filter/schema output; add a buy-KAS shortcut and update directory search metadata. No affiliate links or visitor-side external fetches.",
+        "Run directory behavior/parity, metadata and continuity checks; record exact CI/preview evidence and actual rendering limits without certifying live trades or exhaustive global coverage."
+      ],
+      "dependsOn": [
+        "ECO-003"
+      ],
+      "evidence": [
+        "docs/KASPA-EXCHANGE-REVIEW.md",
+        "docs/kaspa-exchange-review.json",
+        "docs/kaspa-directory.json",
+        "public/kaspa/directory/index.html",
+        "docs/site-pages.json"
+      ],
+      "completedAt": "2026-11-05",
+      "completionEvidence": [
+        "#239 merged 898eaa366cb100bca55dea7b00fffda3ffee6e84; checked tree 896a39074c6d560d8dc8ddcabad909e8e7f4e27c; CI 42141825207 succeeded. Production dpl_Hg4jfYLqSeq7uNqHTNhUdqQ86bJT READY with both canonical aliases; public directory HTML/CSS/JS HTTP 200 and exact source, 164 cards/17 categories."
+      ]
+    },
+    {
+      "id": "ECO-005",
+      "priority": "P1",
+      "status": "done",
+      "title": "Publish Media and Builders resources for ecosystem listings and sharing",
+      "owner": "Maintainer prepares source and checks; founder reviews release; independent builder/device acceptance unassigned",
+      "nextAction": "Maintain the released Media & Builders resources and exact original artwork. Rendered/device acceptance remains separate. No external listing submissions have been sent.",
+      "acceptance": [
+        "Provide a native public /media/ page with copy-ready project descriptions, current Alpha facts, original logo/share downloads, official source/document links and Geek Mini sharing resources.",
+        "Keep native labelled text available without JavaScript; reveal copy controls progressively, report actual clipboard success, select text on denial/unavailability and prevent overlapping writes.",
+        "Package exact published image bytes and a small README in a public ZIP; omit private outreach drafts, owner contact details and internal trackers. No new brand generation or screenshot claim.",
+        "Expose the route from Home, About and Free Tools with canonical metadata, sitemap and matching download/CollectionPage data. Preserve all 164 directory records, question content, backend, privacy and existing CSP.",
+        "Verify meaningful copy behavior, asset archive contents, metadata/internal links, supporting regressions and continuity. Record exact CI/preview source delivery and actual browser/device limits."
+      ],
+      "dependsOn": [
+        "DOC-002"
+      ],
+      "evidence": [
+        "docs/MEDIA-BUILDERS.md",
+        "public/media/index.html",
+        "public/media/assets/media.js",
+        "public/media/assets/media.css",
+        "public/media/downloads/geek-protocol-brand-kit.zip",
+        "tests/media-copy.test.js",
+        "docs/site-pages.json"
+      ],
+      "completedAt": "2026-11-06",
+      "completionEvidence": [
+        "Founder-approved #240 merged as bbb58bf95d4babf4f2e0e244e58fe08011da9d39 with checked tree 31c0af154bd4054b0174ff653f1094b0dda62915. CI 42151062253 succeeded. Production dpl_DDd7qpW3PUQxnR7K1wa4dCtjwfbU READY, both canonical aliases, eight exact public HTTP responses. Artwork ZIP passes CRC and contains only the two original PNGs plus README. Source/HTTP acceptance; no phone/browser or independent builder acceptance claimed."
+      ]
+    },
+    {
+      "id": "ECO-006",
+      "priority": "P1",
+      "status": "done",
+      "title": "Add Geek News with provider market, news and futures feeds",
+      "owner": "Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned",
+      "nextAction": "Maintain the released Geek News page and provider availability; retain physical-phone and independent market-data acceptance separately.",
+      "acceptance": [
+        "Provide /news/ with native Home links, canonical metadata and sitemap coverage.",
+        "Show Kaspa and major crypto spot prices, crypto/global market headlines and distinct USDT perpetual futures through attributed provider frames.",
+        "Keep one selected frame at a time, pause/resume, fixed allowlisted feed settings, account-origin isolation and native source fallbacks.",
+        "State provider delays/availability and distinguish spot from derivatives; no fabricated quotes, news, forecasts or paid API/AI plan.",
+        "Run functional and security/header checks; record actual browser, CI, preview, production and physical-device evidence separately."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/GEEK-NEWS.md",
+        "public/news/index.html",
+        "public/news/assets/news.js",
+        "public/news/assets/news.css",
+        "tests/geek-news.test.js",
+        "vercel.json",
+        "server/crypto-markets.js",
+        "public/news/assets/crypto100.js",
+        "tests/crypto100.test.js"
+      ],
+      "completedAt": "2026-11-06",
+      "completionEvidence": [
+        "Founder-approved #241 squash-merged as 0a8a53fa9acc62262b5493c4eb9aa95811b88f67 after exact-head CI 42262924168 and both Vercel checks passed. Production dpl_J6BvCnjY33YSkbkbwDGxBi5rzHoU READY. Canonical /news/ HTTP 200 has the GEEK market desk and News CSP; /api/widget?service=markets returns 100 rows, ranks 1\u2013100; Profile retains its baseline CSP. Desktop preview rendered all 100 rows and working search. Production HTTP verification does not establish physical-phone or independent acceptance."
+      ]
+    },
+    {
+      "id": "UX-012",
+      "priority": "P1",
+      "status": "needs-evidence",
+      "title": "Connect the first-player learning, quiz, results and leaderboard journey",
+      "owner": "Maintainer prepares source and checks; founder approves release; physical-phone and independent review unassigned",
+      "nextAction": "Verify the #243 address-viewing fix on its immutable preview, then founder review. Physical-phone and actual passkey/address mutation acceptance remain separate.",
+      "acceptance": [
+        "Lead the first-visit guide with learning, explicit Daily setup and saved progress; account and customization follow as optional steps. Preserve existing checklist IDs and migration.",
+        "Saved quiz results expose My HQ, continued learning and the matching public category/mode board. Focus result headings without repeating game writes.",
+        "Shared HQ category and Mini Speed focus links retain their filters; allowlist query values and keep boards separate.",
+        "Run client behavior and full regression checks. Record rendered preview evidence and actual device limits without touching existing production player progress.",
+        "Receiving-address GETs remain session-authenticated and private without requiring WebAuthn origin setup. Address mutations retain exact origin and proof checks; guest views explain that adding an address is optional."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "public/start/index.html",
+        "public/play/assets/game.js",
+        "public/leaderboard/leaderboard.js",
+        "tests/start-client.test.js",
+        "tests/ranked-client.test.js",
+        "tests/leaderboard-client.test.js",
+        "server/reward-addresses.js",
+        "public/assets/receiving-address.js",
+        "tests/passkeys.test.js",
+        "tests/receiving-address-client.test.js"
+      ]
+    },
+    {
+      "id": "UX-013",
+      "priority": "P1",
+      "status": "needs-evidence",
+      "title": "Review all 17 open HQ reports and fix verified interface defects",
+      "owner": "Maintainer prepares source, tests and triage; founder approves merge; device/accessibility and independent content reviewers unassigned",
+      "nextAction": "Verify the issue-review candidate, reconcile existing coverage, and review the PR. Keep content, translation, CI enhancement, migration and coordination tasks distinct from confirmed defects.",
+      "acceptance": [
+        "Read and classify every open report with evidence; do not label feature proposals or stale tickets as current bugs.",
+        "Provide immediate answer selection in Play, Practice and Quest without duplicate writes or client grading.",
+        "Bound initial Duel/Quest loading, provide static skeletons and manual recovery, and keep uncertain writes from automatic replay.",
+        "Give Lobby full/closed/offline states safe next actions and working reconnection; preserve server authority.",
+        "Align setup documentation and add contribution/mint guidance; enforce static image and landmark accessibility rules.",
+        "Run regression and exact-head CI; distinguish source, preview, production and actual-device acceptance."
+      ],
+      "dependsOn": [
+        "UX-012"
+      ],
+      "evidence": [
+        "docs/OPEN-ISSUE-REVIEW-2026-11-06.md",
+        "tests/issue-clients.test.js",
+        "tests/ranked-client.test.js",
+        "tests/quest-client.test.js",
+        "scripts/site-pages.mjs"
+      ]
+    },
+    {
+      "id": "UX-014",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Make page typography calmer and easier to read",
+      "owner": "Maintainer prepares source and checks; founder reviews merge; physical-phone acceptance unassigned",
+      "nextAction": "Review News and directory heading fix: regular UI sans at 600 replaces inherited Impact; founder device comparison pending.",
+      "acceptance": [
+        "Keep restrained centered cyan title/timer glow and gold/cyan edge lighting; remove chromatic double-shadows, body/answer glow and foreground grain.",
+        "Reduce extra-bold weights and soften white text while preserving gold/cyan controls and keyboard focus.",
+        "Check representative phone and desktop layouts, site and continuity validation; record actual rendering limits.",
+        "News market headings use a regular UI sans-serif family rather than inherited Impact, with crisp text and restrained weights."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "public/assets/styles.css",
+        "public/assets/atmosphere.css",
+        "docs/READABILITY-POLISH.md",
+        "public/news/assets/news.css",
+        "public/kaspa/directory/assets/directory.css"
+      ]
+    },
+    {
+      "id": "ECO-007",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Expand the ecosystem directory with KaspaDollar, social apps, builder resources and games",
+      "owner": "Maintainer prepares source and checks; founder reviews release",
+      "nextAction": "Review expanded PR #248 with 183 resources, distinct project/link-report drafts and exact-head checks. Games hub is separately prepared in #249.",
+      "acceptance": [
+        "Add the official HTTPS destination and project-specific source.",
+        "Label the proposed stablecoin in development; do not imply verified live operation or audit.",
+        "Regenerate directory and pass catalog, client, site and continuity checks.",
+        "Include founder-approved resource additions, a dedicated external Games category, and accurate coordination versus gaming descriptions.",
+        "Include five approved analytics, visualization and developer resources with primary evidence; separate editable project and broken-link drafts without automatic submission."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/KASPA-DIRECTORY.md",
+        "docs/kaspa-directory.json",
+        "public/kaspa/directory/index.html"
+      ]
+    },
+    {
+      "id": "UX-015",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Give existing Geek modes a clear Games hub",
+      "owner": "Maintainer prepares source and checks; founder approves release; physical-device acceptance unassigned",
+      "nextAction": "Review hub PR, metadata and navigation checks, then inspect the preview on phone.",
+      "acceptance": [
+        "Group existing modes into Quick play, Adventures and With friends; show timing, pace/difficulty and access.",
+        "Links open setup screens only; no automatic game or room creation or new reward behavior.",
+        "Keep the gold/cyan Geek character with crisp reading text, responsive cards and keyboard focus.",
+        "Link from homepage and existing game navigation; register metadata and crawlable routes."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "public/games/index.html",
+        "public/games/assets/games.css",
+        "docs/GAMES-HUB.md"
+      ]
+    },
+    {
+      "id": "UX-016",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Add Brain Games for recall, arithmetic and attention practice",
+      "owner": "Maintainer builds and checks; founder approves release; physical-device acceptance unassigned",
+      "nextAction": "Review updated #250 with the Geek visual finish; rendered desktop/phone acceptance remains separate.",
+      "acceptance": [
+        "Provide three untimed ten-round games with three difficulty levels, explicit start, answer feedback and exit/replay.",
+        "Prevent duplicate scoring; preserve leading-zero recall; explain every answer; no IQ or broad cognitive-benefit claims.",
+        "Keep only bounded per-game/level best scores on device, tolerate blocked storage and provide clearing. No account, server scores, XP or token rewards.",
+        "Add crawlable Brain Games cards, metadata, keyboard-friendly controls and narrow-screen styles; verify game and client behavior.",
+        "Apply the shared Geek game styling, GIGA practice tips and crisp cyan/gold accents; retain readable text, rank/suit labels and focus outlines."
+      ],
+      "dependsOn": [
+        "UX-015"
+      ],
+      "evidence": [
+        "docs/BRAIN-GAMES.md",
+        "public/games/brain/",
+        "tests/brain-games.test.js",
+        "public/games/assets/geek-play.css"
+      ]
+    },
+    {
+      "id": "UX-017",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Add classic strategy and card games, starting with checkers and solitaire",
+      "owner": "Maintainer builds and checks; founder approves release; browser/physical-device acceptance unassigned",
+      "nextAction": "Review updated #250 with the Geek visual finish; rendered desktop/phone acceptance remains separate.",
+      "acceptance": [
+        "Add beginner-friendly local two-player checkers with legal move hints, forced captures, multi-jumps, kings, wins and practice undo.",
+        "Add draw-one Klondike with seven columns, same-suit foundations, legal alternating runs, stock recycling, win detection and undo.",
+        "Make every action keyboard/tap usable without dragging; explain local-only unsaved state, draw conventions and restart.",
+        "Keep games free of account, wallet, leaderboard, XP and reward changes; verify engine rules and shipped-client behavior.",
+        "Apply the shared Geek game styling, GIGA practice tips and crisp cyan/gold accents; retain readable text, rank/suit labels and focus outlines."
+      ],
+      "dependsOn": [
+        "UX-015"
+      ],
+      "evidence": [
+        "docs/CLASSIC-GAMES.md",
+        "public/games/classics/",
+        "public/games/checkers/index.html",
+        "public/games/solitaire/index.html",
+        "tests/classic-games.test.js",
+        "public/games/assets/geek-play.css"
+      ]
+    },
+    {
+      "id": "UX-019",
+      "priority": "P2",
+      "status": "needs-evidence",
+      "title": "Add playable Geek Chess",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 with founder approval. Production and phone acceptance tracked separately from merge.",
+      "acceptance": [
+        "Playable local chess with legal moves, special moves and promotion choices.",
+        "Geek branding and responsive board.",
+        "Rules tests and site/continuity checks pass."
+      ],
+      "dependsOn": [
+        "UX-017"
+      ],
+      "evidence": [
+        "docs/CLASSIC-GAMES.md",
+        "tests/chess.test.js"
+      ]
+    },
+    {
+      "id": "UX-018",
+      "priority": "P1",
+      "status": "needs-evidence",
+      "title": "Fit Geek games to phone screens and compact active play",
+      "owner": "Maintainer fixes layout and checks; founder approves release; physical-phone acceptance unassigned",
+      "nextAction": "PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 with founder approval. Production and phone acceptance tracked separately from merge.",
+      "acceptance": [
+        "Remove forced 320px/540px board minima; fit eight checker squares and all seven solitaire columns to available width.",
+        "Overlap solitaire cards while keeping rank/suit labels and numbered destinations reachable.",
+        "Compact active-play headers, tips and controls on phones without clipping reading content; prevent mobile input auto-zoom.",
+        "Preserve gameplay and undo behavior; verify tests and report actual browser/device limits."
+      ],
+      "dependsOn": [
+        "UX-016",
+        "UX-017"
+      ],
+      "evidence": [
+        "docs/MOBILE-GAMES.md",
+        "public/games/assets/geek-play.css",
+        "public/games/assets/games.css",
+        "public/games/classics/classics.js",
+        "public/games/brain/brain.js"
+      ]
+    },
+    {
+      "id": "UX-020",
+      "priority": "P2",
+      "status": "needs-evidence",
+      "title": "Unify the Geek Games visual feel and play controls",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 with founder approval. Production and phone acceptance tracked separately from merge.",
+      "acceptance": [
+        "Crisp typography with gold/cyan accents across the games hub, Brain Lab and classics.",
+        "Responsive boards, consistent controls, compact active play and useful local-game navigation.",
+        "Focused gameplay, site and continuity checks pass; rendered-device acceptance recorded separately."
+      ],
+      "dependsOn": [
+        "UX-018",
+        "UX-019"
+      ],
+      "evidence": [
+        "docs/GAME-POLISH.md"
+      ]
+    },
+    {
+      "id": "GAME-002",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Online chess and checkers lobbies with accepted game requests",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Founder approved Merge November 8. Merge #254 after refreshed exact-head CI; record the merge/deployment result in PR #254, with two-device acceptance still separate.",
+      "acceptance": [
+        "Public and invite-only lobbies with request, accept, decline and cancellation.",
+        "Authenticated server-authoritative chess/checkers moves with atomic seat selection and revision checks.",
+        "Reconnect, draw consent, resignation, private-room visibility and multiplayer-client tests pass.",
+        "Separate-browser/device acceptance and exact-head CI recorded separately."
+      ],
+      "dependsOn": [
+        "UX-019",
+        "UX-020"
+      ],
+      "evidence": [
+        "docs/CLASSIC-MULTIPLAYER.md",
+        "tests/classic-online-api.test.js",
+        "tests/classic-online-client.test.js"
+      ]
+    },
+    {
+      "id": "UX-021",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Sculpted chess pieces, raised checkers and collector-style solitaire cards",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review the tabletop-art preview; verify rendered phone layout and approve release separately.",
+      "acceptance": [
+        "Distinct local vector chess artwork in gold/cyan shared by local and online play.",
+        "Raised checker tokens, machined board rims and polished card faces/backs.",
+        "Gameplay controls, accessible square/card labels and legal-move indicators remain functional.",
+        "Focused gameplay and site/continuity/security checks pass; browser/device acceptance stays separate."
+      ],
+      "dependsOn": [
+        "UX-020"
+      ],
+      "evidence": [
+        "docs/TABLETOP-ART.md",
+        "public/games/assets/tabletop.css",
+        "public/games/assets/pieces.js"
+      ]
+    },
+    {
+      "id": "ECO-008",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Education directory with explicit learning utility-token projects",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review PR #256: GEEK/BMT token-network and utility-state cards plus six learning resources; founder approval required for merge.",
+      "acceptance": [
+        "Education & Learning appears in directory navigation, category filter and crawlable cards.",
+        "Geek Protocol listed alongside independently sourced Kaspa learning projects.",
+        "L1, L2, off-chain resources and historical program guidelines are accurately distinguished.",
+        "Directory, site and continuity checks pass."
+      ],
+      "dependsOn": [
+        "ECO-003"
+      ],
+      "evidence": [
+        "docs/EDUCATION-DIRECTORY.md",
+        "docs/kaspa-directory.json"
+      ]
+    },
+    {
+      "id": "GAME-003",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Nine strategy and puzzle games, including Battle Geek and Peg Quest",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review Tower of Geek rename and six difficulty levels in preview; existing nine-game release #258 is merged. Browser/phone visual acceptance remains open.",
+      "acceptance": [
+        "Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four, Reversi, Codebreaker, Hanoi, Sudoku and Peg Quest are playable with clear rules and Geek styling.",
+        "Five two-player games work through existing authoritative lobby/request/reconnect flow.",
+        "Battle Geek opposing fleets stay server-only online; local mode uses an explicit handoff curtain.",
+        "Rules, client and real-Redis integration tests pass; no account/XP/token reward changes.",
+        "Standard 10\u00d710 five-ship fleet; selectable Dots sizes; terminal result, reduced-motion-safe celebration, replay, exit and board review."
+      ],
+      "dependsOn": [
+        "GAME-002",
+        "UX-021"
+      ],
+      "evidence": [
+        "docs/STRATEGY-PUZZLE-GAMES.md",
+        "tests/strategy-games.test.js",
+        "tests/strategy-client.test.js",
+        "tests/classic-online-api.test.js"
+      ]
+    },
+    {
+      "id": "UX-022",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Homepage pathways and shared navigation polish",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review the Vercel preview, especially compact navigation and phone spacing. Local browser could not connect to the preview host.",
+      "acceptance": [
+        "Visible Learn, Games and News paths while preserving the first quiz and lesson choices.",
+        "Readable type, gold/cyan edge accents, consistent panels and adaptive layouts.",
+        "Compact menu at tablet widths; existing Escape, outside-click and link-close behaviors remain.",
+        "Site and continuity checks pass; browser and physical-device acceptance remain separate."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/SITE-POLISH-2026-11-10.md",
+        "public/assets/home.css",
+        "public/assets/styles.css"
+      ]
+    },
+    {
+      "id": "UX-023",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "More optional Grid easter eggs",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review expanded Stray signal terminal in preview; founder merge review and rendered device acceptance remain open.",
+      "acceptance": [
+        "Riddles, hints, fortunes, launch art, route signals and hidden command messages work without requests or saved player state.",
+        "Terminal remains closed until opened, with native keyboard/touch controls and reduced-motion support.",
+        "No global input hooks, rewards or timed-game overlays; existing rewarded hunt remains separate."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/GRID-EASTER-EGGS.md",
+        "tests/easter-eggs.test.js"
+      ]
+    },
+    {
+      "id": "UX-024",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Minimal cosmic glitch feedback and Geek code accents",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review together with UX-023 in #261 preview; rendered phone acceptance remains open.",
+      "acceptance": [
+        "Brief edge-only feedback on selected discovery controls without changing navigation or labels.",
+        "Sparse decorative Kaspa/Geek code accents, bounded animation and reduced-motion/forced-color support.",
+        "No account, answer, board or timed gameplay input hooks; no requests, storage or rewards."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/COSMIC-GLITCH.md",
+        "tests/cosmic-glitch.test.js"
+      ]
+    },
+    {
+      "id": "UX-025",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Clean Geek branding and black installed-app launch",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review new vector logo and installed-app manifest in preview. Physical Android launch/reinstall acceptance remains open.",
+      "acceptance": [
+        "New clean logo replaces the old watermark-bearing logo across site references and compatibility bytes.",
+        "Black app manifest background/theme, standalone launch, local 192/512 and maskable icons, Apple touch icon.",
+        "Metadata generation remains idempotent; no service-worker caching of private/session/game data."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/APP-LAUNCH-BRAND.md",
+        "tests/app-brand.test.js"
+      ]
+    },
+    {
+      "id": "UX-026",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Kaspa space, planet and code-rain full-page background",
+      "owner": "Maintainer; founder release review",
+      "nextAction": "Review the PR preview on desktop and phone; confirm readability, the faint planet on a game page, and game/quiz dimming (no footer toggle; terminal matrix commands are session-only). Physical-phone acceptance open.",
+      "acceptance": [
+        "Fixed full-viewport layered scene behind content (nebula, planet, stars, rain), pointer-events none, aria-hidden, low opacity.",
+        "Capped ~24fps, paused when hidden, reduced-motion still frames, bounded DPR/columns on phones; planet is a still image on game, quiz and operator pages.",
+        "No footer toggle and no localStorage persistence; terminal matrix commands are session-only; rain off on individual game boards and dim/still on quiz and lobby routes; planet on every page.",
+        "No requests, player records, rewards or gameplay input hooks; CSP unchanged."
+      ],
+      "dependsOn": [
+        "UX-024"
+      ],
+      "evidence": [
+        "docs/KASPA-MATRIX.md",
+        "tests/kaspa-matrix.test.js"
+      ]
+    },
+    {
+      "id": "UX-027",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Data-driven holiday catalog with Kaspa and crypto dates",
+      "owner": "Maintainer; founder preview",
+      "nextAction": "Gee previews the draft catalog and compact greeting before saving any Appearance mode. The saved default remains Off. A visual refresh of the existing twelve holidays is separate.",
+      "acceptance": [
+        "One catalog drives windows, priority, motifs and greetings. Automatic overlaps resolve by priority, then shortest window, then id. America/Detroit and the public { id } payload stay unchanged.",
+        "Verified Kaspa and crypto windows are selectable. Satoshi's April 5 date is manual-only. Halloween's automatic window ends October 30. Geek Protocol's Birthday is June 21\u201323 at priority 90, and its hash matches server/geek-deployment.js.",
+        "The portrait badge and orphan greeting selector are gone. One compact greeting clears on Off, an unknown id or a failed read. Holiday decorations stay static, honor prefers-reduced-motion, and do not cover an active quiz or individual game route.",
+        "Appearance default remains Off. Saves stay allowlisted and audited. No payout, ranked-bank or production setting change."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/HOLIDAY-THEMES.md",
+        "public/assets/holiday-calendar.js",
+        "public/assets/holiday-theme.js",
+        "tests/appearance.test.js"
+      ]
+    },
+    {
+      "id": "UX-028",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Geek stroke marks and distinct holiday palettes",
+      "owner": "Maintainer; founder preview",
+      "nextAction": "Gee previews the stroke ornaments and the separated civic palettes before any Appearance save. The saved default remains Off.",
+      "acceptance": [
+        "Public ornaments are static in-repo SVG marks named by the catalog. No remote image or operator-supplied CSS is accepted.",
+        "Each holiday, including the original twelve, has its own color tokens. The four civic days are visually distinct. Greetings stay the catalog sentences.",
+        "Reduced motion clears ornament tilt. Active quizzes, playing pages, and individual game routes do not receive the ornament layer.",
+        "Appearance default remains Off. The public payload remains an id. Code rain behavior is unchanged."
+      ],
+      "dependsOn": [
+        "UX-027"
+      ],
+      "evidence": [
+        "docs/HOLIDAY-THEMES.md",
+        "public/assets/holiday-marks.js",
+        "public/assets/holiday-theme.css",
+        "tests/appearance.test.js"
+      ]
+    },
+    {
+      "id": "GAME-004",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Ongoing matches, My Games and turn alerts",
+      "owner": "Maintainer; founder release/device review",
+      "nextAction": "Released in #266. Preserve no-expiry matches/My Games and security caps; GAME-005 implements device push. Phone acceptance remains open.",
+      "acceptance": [
+        "Atomic per-player capacity of 10 waiting/playing rooms, released on finish and expiry.",
+        "Waiting invitations expire after 24 hours or 30 days; accepted matches have no time expiry and remain in My Games.",
+        "Your-turn badges and opt-in page-open notifications deduplicate per move; closed-app limitations are explicit.",
+        "Real Redis integration and client tests pass without board/private-fleet leakage."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/ONGOING-GAMES.md",
+        "tests/classic-online-api.test.js",
+        "tests/classic-online-client.test.js"
+      ]
+    },
+    {
+      "id": "APP-001",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Android test package and device acceptance",
+      "owner": "Maintainer; founder device review",
+      "nextAction": "Released package/signing preparation in #265. Owner protected environment, reviewer, dedicated signing secrets and real certificate association remain required before stable signed build/device acceptance.",
+      "acceptance": [
+        "Reproducible separately identified debug wrapper uses reviewed site and supplied logo.",
+        "APK compiles and installs; sign-in, Back, game/lobby and network behavior checked on phone.",
+        "No release secrets or placeholder Digital Asset Links; Play submission stays separate."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "android/README.md",
+        ".github/workflows/android-test.yml"
+      ]
+    },
+    {
+      "id": "GAME-005",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Opt-in closed-lounge turn notifications and durable delivery",
+      "owner": "Maintainer; founder phone acceptance",
+      "nextAction": "#271 is merged/deployed; canonical retry follow-up uses a direct slash URL. Production public-key settings, two-player move/turn badge and no-expiry behavior passed. Complete explicit device permission and actual closed-lounge phone delivery acceptance.",
+      "acceptance": [
+        "No permission prompt or subscription without explicit device opt-in.",
+        "Encrypted device delivery while lounge closed; bounded retries, expired-device removal and current-account/turn validation.",
+        "No time expiry added to accepted games; private credentials/endpoints never published.",
+        "Real Redis and worker regression checks pass; actual phone delivery is a separate acceptance item."
+      ],
+      "dependsOn": [
+        "GAME-004"
+      ],
+      "evidence": [
+        "docs/WEB-PUSH-TURN-ALERTS.md",
+        "tests/classic-push.test.js",
+        "tests/game-push-worker.test.js"
+      ]
+    },
+    {
+      "id": "OPS-004",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Record default code ownership and limited weekly dependency updates",
+      "owner": "Maintainer; founder reviews the pull request",
+      "nextAction": "Review the repository-hygiene pull request. Merging it does not enable rulesets, an SLA, a bounty, or an audit. Product pickup remains BANK-009.",
+      "acceptance": [
+        "CODEOWNERS has one default rule for the GitHub user GEEKProtocol0110 and names no team.",
+        "Dependabot is weekly and limited to npm at /, /android, and /workers/testnet, plus GitHub Actions at /, each with an open-pull-request limit of 5.",
+        "Minor and patch updates are grouped. Major updates stay ungrouped. Ecosystems without a lockfile or manifest are omitted.",
+        "SECURITY.md states that private vulnerability reporting is enabled and still states that there is no independent audit. No SLA, bounty, or audit claim is added.",
+        "No application, game, lesson, wallet, question-bank, or repository-setting change is included."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        ".github/CODEOWNERS",
+        ".github/dependabot.yml",
+        "SECURITY.md"
+      ]
+    },
+    {
+      "id": "CHAIN-006",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Port the automatic payout worker toward mainnet GEEK",
+      "owner": "Maintainer; founder controls explicit enable and the signing secret",
+      "nextAction": "Review draft #282 on top of #278: journal preparation is one Lua update, and a terminal stuck mark writes the job and stuck:v1 together. A lost prepare acknowledgment is recovered by the next claim. No merge, deployment, or enable is implied. Settlement and withdrawals remain disabled. This is an internal source candidate, not an independent audit.",
+      "acceptance": [
+        "The mainnet worker reuses the CHAIN-004 journaled KRC-20 commit/reveal path for current GEEK, with the pinned public hot-wallet receive address.",
+        "Daily pays 100 GEEK once. A Gauntlet round pays ROUND_CONFIG.reward times the server-graded correct count. Zero correct pays nothing. One correct answer in round 10 pays 1800, and 18000 is rejected for that proof. Retries do not pay again.",
+        "Temporary caps are 100,000 GEEK globally and 46,400 GEEK per player and per receiving address. The active index counts outstanding jobs only. A journal unconfirmed for six hours is stuck and does not block later jobs or receive a second journal.",
+        "Admission and signing require production plus the explicit flag. Preview cannot pay. settlementEligible and withdrawalsEnabled stay false. No signing key is committed.",
+        "The job mac is an explicit ordered field list that includes each proof field. An already signed earning cannot be signed again. A record that fails decoding or the mac check is quarantined and logged, and the earning lock is kept.",
+        "Focused tests and the existing testnet signer checks pass. A real mainnet transfer is not claimed.",
+        "Journal preparation commits the replay marker and signed bytes together after checking the current lease and job snapshot. Rejected writes and lost acknowledgments preserve safe recovery without a new journal for an accepted earning. A lost prepare acknowledgment is recovered by the next claim. Re-sending that prepare returns 409.",
+        "Marking a job stuck writes the stuck state and its stuck:v1 membership in one update that still checks the lease and job snapshot. A failed update does not leave the job stuck and absent from that list. The PAYOUT_UNCONFIRMED log follows a successful update."
+      ],
+      "dependsOn": [
+        "CHAIN-004"
+      ],
+      "evidence": [
+        "docs/MAINNET-GEEK-PAYOUT.md",
+        "server/mainnet-payout.js",
+        "workers/mainnet/schedule.mjs",
+        "workers/mainnet/signer.mjs",
+        "workers/mainnet/process.mjs",
+        "tests/mainnet-payout.test.js",
+        "workers/mainnet/check-signing.mjs",
+        "workers/mainnet/job-mac.mjs"
+      ]
+    },
+    {
+      "id": "MINT-001",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Preserve local mint request references across reloads",
+      "owner": "Maintainer; founder reviews release",
+      "nextAction": "Review the source candidate and preview, then perform actual-browser and Kasware device acceptance. No automatic retry or confirmation claim.",
+      "acceptance": [
+        "Save at most 100 recent public-address/request-reference records locally; display only the connected Mainnet wallet history.",
+        "Persist an unknown-outcome marker before wallet handoff; never resume a queue or restore approval after reload.",
+        "Validate stored display data, use fixed explorer links and text rendering, and explain local-storage failure without preventing the wallet flow.",
+        "Allow clearing the connected wallet history; clearing cannot cancel or repeat a transaction.",
+        "Focused reload, interrupted-request, wallet/network-isolation, invalid-data and blocked-storage tests pass; physical-wallet acceptance is tracked separately."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/MINT-RECEIPT-HISTORY.md",
+        "public/mint/assets/mint.js",
+        "tests/mint-client.test.js"
       ]
     },
     {
@@ -1422,7 +2236,7 @@
       "status": "in-progress",
       "title": "Serve future ranked questions and answers from private storage; treat published banks as exposed",
       "owner": "Maintainer; founder selects private storage and approves rollout",
-      "nextAction": "Review the pre-start refusal follow-up stacked on #231. Then reconcile the old private-bank assembly with current main, obtain the approved immutable artifact and design the isolated rehearsal. Do not cut over production or enable rewards.",
+      "nextAction": "Review current-HQ integration on main dbdb7f0 plus held bank/start-guard 73f80ce and the local synthetic rehearsal. Obtain approved immutable artifact/editorial/capacity evidence and define a bounded hosted rehearsal before any production cutover. Payouts and Preview guards remain held.",
       "acceptance": [
         "Ranked rounds draw only from a configured private source or fail closed in production.",
         "Published and retired public rows stay addressable so saved runs grade with their original keys; private IDs cannot collide with them.",
@@ -1441,14 +2255,19 @@
         "tests/ranked-client.test.js",
         "tests/profile-client.test.js",
         "api/leaderboard.js",
-        "docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md"
+        "docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md",
+        "docs/PRIVATE-BANK-LOCAL-REHEARSAL.md",
+        "scripts/private-bank-rehearsal.mjs",
+        "tests/private-bank-rehearsal.test.js",
+        "tests/mainnet-payout.test.js"
       ],
       "validationEvidence": [
         "#180 merged as a3b2441f82636e511658be09d47a7171b89472d4; #198 merged as 33f74c0aee05e416f91b8331cf4236d9ddd758a4. Main tree matches reviewed f8521cbee17e406085d080c9558cb69c56185665. Production dpl_7VJFZmLJ9NqZdhbx8b6s1bGFehFg is READY on the #198 merge. #200 remains draft and unmerged.",
         "Browser candidate based on #200 head 981c9f6e396ddd3869be49ad6d56629b4d947f19: current-season queries, explicit historical season choices, labeled empty boards and deferred reconnect text. Focused client/API tests: 73 passed, zero failures/skips. This is synthetic client verification, not restricted Preview or phone acceptance.",
         "Full browser-candidate npm run verify with required native Redis 7.0.15: 738 HQ tests + nine offline signer checks = 747 passed, zero failures/skips, all supporting checks passed. #200 still requires private-bank/restricted-Preview acceptance before cutover.",
         "Assembled on main 12a0228 with all four exact input heads. Full native-Redis verify: 893 HQ tests, 892 passed, zero failed, one root-only permission skip; nine signer checks and all supporting checks passed. Added safe JSON CLI errors and mandatory concept IDs in authoring tooling with synthetic regressions. No real private bank content or provider setting changed; hosted playable rehearsal remains blocked by missing immutable pin and Preview write guard.",
-        "November 13 source candidate on #231: 103 focused synthetic bank/leak/resilience/season tests pass, including exact December UTC boundary and no non-rate-limit writes before start. Current-main integration and real-bank/hosted rehearsal acceptance remain separate."
+        "November 13 source candidate on #231: 103 focused synthetic bank/leak/resilience/season tests pass, including exact December UTC boundary and no non-rate-limit writes before start. Current-main integration and real-bank/hosted rehearsal acceptance remain separate.",
+        "November 13: #284 passed CI and both Vercel checks and merged into the held assembly as 73f80ce. Integrated current main dbdb7f0, retained later payout and public-site changes, and blocked mainnet jobs for public/legacy/unranked results. The credential-scrubbed local synthetic rehearsal passes 105 tests; full combined suite passes 1077 application tests with zero failures/skips. Full supporting verification recorded in the review candidate. No real-bank or hosted acceptance claimed."
       ]
     }
   ]

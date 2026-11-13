@@ -18,12 +18,12 @@
     "evidence": "PR #155 merged October 23, 2026 at 12:21:55 Detroit (16:21:55 UTC) as 1476aa2d1a4469ed1eed30d9c72f94ca50e8bd4f. Final checked head ee1ce12bb3e961e2013d56a4dda29855a14d1810/tree d8d0e4fd94564ba79cd7559ce7e4add355587a0b matches local 4da8aeb3dee54ed73e1172c16afa5f5206a38fa2; the merge has that same tree. Exact-head GitHub Security verification 39964886728 succeeded; no submitted reviews or inline threads were present before merge. Full local verification passed 603 HQ tests plus four offline signer tests, zero failures/skips, real Redis 7.0.15, 311 security assertions and all supporting checks. Production dpl_7FYxuRoLQ6VVpB5PLdnHGqFwaxzk is READY on the exact merge with both canonical domains assigned. Five no-redirect canonical checks passed under 15-second request bounds: exact status-client bytes, Play HTML referencing the client, private player 401, unauthorized worker POST 401 and private owner-auto 401; all protected responses were private/no-store. The earlier protected-preview private-fetch failure remains provider authentication evidence, not application acceptance. Actual-phone status recovery and actual automatic transfer remain unproved. Fresh project search found no geek-geekt-testnet-worker; creation in the existing Vercel team again returned 403 forbidden/no project-create permission. Neither vercel nor vc CLI is installed. No signer project, key, environment value, test funding or automatic payment was created. Mainnet/CCE/ownership holds remain unchanged."
   },
   "questionCheckpoint": {
-    "active": 8228,
-    "reviewed": 800,
-    "remaining": 7200,
+    "active": 8218,
+    "reviewed": 809,
+    "remaining": 7191,
     "kaspaActive": 766,
     "kaspaReviewed": 766,
-    "practiceOnly": 210,
+    "practiceOnly": 214,
     "kaspaPracticeOnly": 100,
     "studyConcepts": 537,
     "questChapters": 4
@@ -39,10 +39,10 @@
   "currentWork": {
     "id": "BANK-009",
     "status": "active",
-    "description": "BANK-009: #208 Technology corrections merged; #209 History/Comics final integration removes the overlapping Joker objective while retaining historical grading, practice-only replacements and unresolved-authorship holds. Independent/full-bank acceptance remains open."
+    "description": "BANK-009: six-row Technology risk triage retires five ambiguous, unsupported or repeated items without padding the bank. One duplicate survivor remains draft; no review-count promotion."
   },
   "nextTask": "BANK-009",
-  "nextAction": "Complete the corrected #209 integration with fresh exact-head checks, then continue the remaining BANK-009 factual, semantic, category and authorship audit. Preserve all historical grading and keep new drafts practice-only. Private-ranked-bank end-to-end and UX acceptance remain separate cutover gates.",
+  "nextAction": "Review the November 8 risk-triage candidate and exact-head checks, then continue unflagged rows across categories.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
@@ -72,20 +72,201 @@
   },
   "documentDiscovery": {
     "task": "DOC-002",
-    "status": "in-progress",
+    "status": "merged-deployed-http-and-browser-verified",
     "evidence": "docs/HOMEPAGE-DOCUMENT-DISCOVERY.md",
-    "nextAction": "Prepare and verify visible document/contributor links and whitepaper indexing; production approval remains separate."
+    "nextAction": "Preserve the live #230 links and indexing policy; SEO-002 adds a facts/FAQ destination."
   },
-  "privateRankedReview": {
-    "task": "SEC-010",
-    "status": "assembled-local-verified",
-    "evidence": "docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md",
-    "nextAction": "Publish a draft assembly review into the existing private-bank branch; verify exact-head CI and fail-closed Preview without issuing real questions. Production cutover is blocked."
+  "searchDiscovery": {
+    "task": "SEO-002",
+    "status": "in-progress",
+    "evidence": "docs/SEARCH-DISCOVERY-REVIEW-2026-11-03.md",
+    "nextAction": "Review the source candidate; verify external indexing through property-owner consoles and identify the historical litepaper owner. No production or bot/security setting changed."
+  },
+  "ecosystemDirectory": {
+    "task": "ECO-004",
+    "status": "merged-deployed-http-verified",
+    "evidence": "docs/KASPA-EXCHANGE-REVIEW.md",
+    "nextAction": "Founder-approved #239 merged/deployed as 898eaa366cb100bca55dea7b00fffda3ffee6e84, with exact public directory HTML/CSS/JS (164 cards/17 categories). Preserve the 60 KAS provider additions, prior resources and held review queue. Provider availability and rendered/device acceptance remain separate."
+  },
+  "publicLeaderboard": {
+    "task": "UX-011",
+    "status": "merged-deployed-http-verified",
+    "evidence": "docs/PUBLIC-LEADERBOARD.md",
+    "nextAction": "Founder-approved HQ #238 and Mini #13 are merged/deployed, with exact source and public API/route HTTP checks recorded in their PRs. Rendered/device acceptance and independent abuse review remain separate. Preserve public-practice limits and all economic/private-ranked holds."
+  },
+  "mediaAndBuilders": {
+    "task": "ECO-005",
+    "status": "merged-deployed-http-verified",
+    "evidence": "docs/MEDIA-BUILDERS.md",
+    "nextAction": "Founder-approved #240 merged as bbb58bf95d4babf4f2e0e244e58fe08011da9d39; CI 42151062253 passed. Production dpl_DDd7qpW3PUQxnR7K1wa4dCtjwfbU READY with both canonical domains and eight exact public HTTP responses, including original-image ZIP CRC/content checks. Rendered/device acceptance remains separate; external submissions remain unsent."
+  },
+  "geekNews": {
+    "task": "ECO-006",
+    "status": "merged-deployed-http-verified",
+    "evidence": "docs/GEEK-NEWS.md",
+    "nextAction": "Founder-approved #241 squash-merged as 0a8a53fa9acc62262b5493c4eb9aa95811b88f67 after exact-head CI 42262924168 and both Vercel checks passed. Production dpl_J6BvCnjY33YSkbkbwDGxBi5rzHoU READY. Canonical /news/ HTTP 200 has the GEEK market desk and News CSP; /api/widget?service=markets returns 100 rows, ranks 1\u2013100; Profile retains its baseline CSP. Desktop preview rendered all 100 rows and working search. Production HTTP verification does not establish physical-phone or independent acceptance. Maintain provider availability and retain device/independent acceptance as separate work."
+  },
+  "firstPlayerJourney": {
+    "task": "UX-012",
+    "status": "source-candidate",
+    "checkedOn": "2026-11-06",
+    "evidence": "public/start/index.html; public/play/assets/game.js; public/leaderboard/leaderboard.js; client behavior tests",
+    "nextAction": "PR #243 adds the learning-first journey and fixes address viewing on immutable previews: GET remains session-authenticated; POST retains configured origin/proof validation. Verify final checks and preview, then founder review. Physical-phone and actual address mutation acceptance remain separate."
+  },
+  "openIssueReview": {
+    "task": "UX-013",
+    "checkedOn": "2026-11-06",
+    "status": "source-candidate",
+    "evidence": "docs/OPEN-ISSUE-REVIEW-2026-11-06.md",
+    "nextAction": "Verify all confirmed interface fixes and publish the 17-ticket disposition. Content review/new packs, translations, fast-CI proposal, device/assistive-technology acceptance and migration design remain open with their own criteria."
+  },
+  "readabilityPolish": {
+    "task": "UX-014",
+    "status": "source-candidate",
+    "evidence": "docs/READABILITY-POLISH.md",
+    "nextAction": "Review News and directory Impact font correction prompted by founder screenshot/reports; retain phone acceptance separately."
+  },
+  "directoryKaspaDollar": {
+    "task": "ECO-007",
+    "status": "merged-deployed-http-verified",
+    "nextAction": "PR #248 merged as e7206648a9afc86ae0450b415a30a4f0b2c0b28d; production READY and exact 183-card canonical HTML verified. Keep device acceptance separate."
+  },
+  "gamesHub": {
+    "task": "UX-015",
+    "status": "merged-deployed-http-verified",
+    "evidence": "docs/GAMES-HUB.md",
+    "nextAction": "PR #249 merged as 7a931bfecfc79bf556575d3d99ed36d72dd6bf46; production READY and canonical HTML/CSS matched source. Phone acceptance remains separate."
+  },
+  "brainGames": {
+    "task": "UX-016",
+    "status": "source-candidate",
+    "evidence": "docs/BRAIN-GAMES.md",
+    "nextAction": "Review playable Brain Lab and its tests/preview. No economic or intelligence claims introduced."
+  },
+  "classicGames": {
+    "task": "UX-017",
+    "status": "merged-release-check-pending",
+    "evidence": "docs/CLASSIC-GAMES.md",
+    "nextAction": "Founder approved release November 8. PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4. Combined multiplayer #254 production and device acceptance are tracked separately."
+  },
+  "mobileGameFit": {
+    "task": "UX-018",
+    "status": "merged-release-check-pending",
+    "evidence": "docs/MOBILE-GAMES.md",
+    "nextAction": "Founder approved release November 8. PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4. Combined multiplayer #254 production and device acceptance are tracked separately."
+  },
+  "gamePolish": {
+    "task": "UX-020",
+    "status": "merged-release-check-pending",
+    "evidence": "docs/GAME-POLISH.md",
+    "nextAction": "Founder approved release November 8. PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4. Combined multiplayer #254 production and device acceptance are tracked separately."
+  },
+  "classicMultiplayer": {
+    "task": "GAME-002",
+    "status": "founder-approved-release",
+    "evidence": "docs/CLASSIC-MULTIPLAYER.md",
+    "nextAction": "Founder explicitly approved Merge November 8. Merge #254 after exact-head CI, then record its merge and production result in the #254 review record. Two-device acceptance remains separate."
+  },
+  "tabletopArt": {
+    "task": "UX-021",
+    "status": "source-candidate",
+    "evidence": "docs/TABLETOP-ART.md",
+    "nextAction": "Review sculpted gold/cyan chess pieces, raised checkers and solitaire card art; browser/device acceptance and release remain separate."
+  },
+  "educationDirectory": {
+    "task": "ECO-008",
+    "status": "source-candidate",
+    "evidence": "docs/EDUCATION-DIRECTORY.md",
+    "nextAction": "Review #256: Education & Learning token projects GEEK (KRC-20) and BMT (Kasplex L2 ERC-20), plus six separate learning resources. Candidate only."
+  },
+  "strategyPuzzles": {
+    "task": "GAME-003",
+    "status": "source-candidate",
+    "evidence": "docs/STRATEGY-PUZZLE-GAMES.md",
+    "nextAction": "Review Tower of Geek rename and selectable 3\u20138 discs; #258 merged. Browser/phone acceptance remains open. A.C.E. stays paused."
+  },
+  "sitePolish": {
+    "task": "UX-022",
+    "status": "source-candidate",
+    "evidence": "docs/SITE-POLISH-2026-11-10.md",
+    "nextAction": "Review home discovery paths, crisp typography and compact navigation in preview; local browser connection failed. A.C.E. remains paused."
+  },
+  "gridEasterEggs": {
+    "task": "UX-023",
+    "status": "source-candidate",
+    "evidence": "docs/GRID-EASTER-EGGS.md",
+    "nextAction": "Review additional footer secrets in preview; no account/reward changes, A.C.E. remains paused."
+  },
+  "cosmicGlitch": {
+    "task": "UX-024",
+    "status": "source-candidate",
+    "evidence": "docs/COSMIC-GLITCH.md",
+    "nextAction": "Review bounded edge feedback and decorative code with easter eggs in #261; browser/phone acceptance open."
+  },
+  "appBrand": {
+    "task": "UX-025",
+    "status": "source-candidate",
+    "evidence": "docs/APP-LAUNCH-BRAND.md",
+    "nextAction": "Review clean logo and black launch config; installed Android acceptance remains open. Browser controls native startup; existing shortcuts may need reinstall."
+  },
+  "kaspaMatrix": {
+    "task": "UX-026",
+    "status": "source-candidate",
+    "evidence": "docs/KASPA-MATRIX.md",
+    "nextAction": "Review the layered Kaspa space and faint planet in the PR preview on desktop, phone and a game page; no footer toggle. Physical-phone acceptance open."
+  },
+  "ongoingGames": {
+    "task": "GAME-004",
+    "status": "merged-deployed-http-verified",
+    "evidence": "docs/ONGOING-GAMES.md",
+    "nextAction": "Founder-approved #266 squash-merged as aab4d36f9345c373f55bcb467a3bd45be3254d4d. Production dpl_GXfjz8fvUKpnEW3D8saPjqtqVygZ is READY with both canonical domains; lounge HTML, client and notification worker match exact source via HTTP 200. Physical-phone acceptance and closed-app push remain open."
+  },
+  "androidTest": {
+    "task": "APP-001",
+    "status": "merged-deployed",
+    "evidence": "android/README.md",
+    "nextAction": "Preparation #265 merged as 1cb03f87ce65266d245d090241a6d1724b0c5cdc and production READY. Owner protected signing environment/reviewer/secrets, actual signed build/domain association and phone acceptance remain open."
+  },
+  "holidayVisuals": {
+    "task": "UX-028",
+    "status": "source-candidate",
+    "evidence": "docs/HOLIDAY-THEMES.md",
+    "nextAction": "Draft stacked on the catalog branch. Gee previews stroke marks and palettes before any Appearance save. The saved default remains Off."
+  },
+  "holidayThemes": {
+    "task": "UX-027",
+    "status": "source-candidate",
+    "evidence": "docs/HOLIDAY-THEMES.md",
+    "nextAction": "Draft only. Gee previews the catalog, including Geek Protocol's Birthday on June 21\u201323, before any Appearance save. The saved default remains Off."
+  },
+  "devicePush": {
+    "task": "GAME-005",
+    "status": "implemented-configured-phone-acceptance-open",
+    "evidence": "docs/WEB-PUSH-TURN-ALERTS.md",
+    "nextAction": "#271 merged as d86d3d3964885f0ab3cc2071c8cd067736380245; production READY, public key configuration and two-player turn/no-expiry flow verified. Canonical retry route follow-up removes its 308 redirect. Actual phone notification permission/delivery and Android signing/domain acceptance remain open."
+  },
+  "mainnetPayoutRecovery": {
+    "task": "CHAIN-006",
+    "status": "source-candidate",
+    "evidence": "docs/MAINNET-GEEK-PAYOUT.md; tests/mainnet-payout.test.js",
+    "nextAction": "Review draft #282 on top of #278: journal preparation is one Lua update, and a terminal stuck mark writes the job and stuck:v1 together. A lost prepare acknowledgment is recovered by the next claim. No merge, deployment, or enable is implied. Settlement and withdrawals remain disabled. This is an internal source candidate, not an independent audit."
+  },
+  "mintReceiptHistory": {
+    "task": "MINT-001",
+    "status": "source-candidate",
+    "evidence": "docs/MINT-RECEIPT-HISTORY.md",
+    "nextAction": "Review preview and actual-browser/Kasware behavior; source-only validation does not establish real mint confirmation or device acceptance."
   },
   "privateSeasonStartGuard": {
     "task": "SEC-010",
-    "status": "source-candidate-on-held-assembly",
+    "status": "merged-into-held-assembly",
     "evidence": "docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md",
-    "nextAction": "Review the pre-start refusal follow-up stacked on #231. Then reconcile the old private-bank assembly with current main, obtain the approved immutable artifact and design the isolated rehearsal. Do not cut over production or enable rewards."
+    "nextAction": "Review current-HQ integration on main dbdb7f0 plus held bank/start-guard 73f80ce and the local synthetic rehearsal. Obtain approved immutable artifact/editorial/capacity evidence and define a bounded hosted rehearsal before any production cutover. Payouts and Preview guards remain held."
+  },
+  "privateBankRehearsal": {
+    "task": "SEC-010",
+    "status": "local-synthetic-pass-source-candidate",
+    "evidence": "docs/PRIVATE-BANK-LOCAL-REHEARSAL.md",
+    "nextAction": "Review current-HQ integration on main dbdb7f0 plus held bank/start-guard 73f80ce and the local synthetic rehearsal. Obtain approved immutable artifact/editorial/capacity evidence and define a bounded hosted rehearsal before any production cutover. Payouts and Preview guards remain held."
   }
 }

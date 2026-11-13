@@ -638,3 +638,30 @@ test('play after sign-out belongs to a new guest player, not the signed-out acco
   const status = (await call(passkeysHandler, next, undefined, 'GET')).body;
   assert.equal(status.signedIn, false); assert.deepEqual(status.credentials, []);
 });
+
+test('receiving reads on preview hosts require a session but no passkey-origin configuration', async () => {
+  const changed = { host: 'immutable-preview.vercel.app', origin: 'https://immutable-preview.vercel.app' };
+  const guest = await session(), player = guest.split('=')[1];
+  const noSession = await call(receivingHandler, '', null, 'GET', changed);
+  assert.equal(noSession.statusCode, 401);
+  const guestView = await call(receivingHandler, guest, null, 'GET', changed);
+  assert.equal(guestView.statusCode, 200); assert.equal(guestView.body.signedIn, false); assert.equal(guestView.body.canEdit, false);
+  assert.match(guestView.headers['Cache-Control'], /private.*no-store/);
+  const account = await enroll(guest);
+  const begin = await beginAddress(account.cookie);
+  const finish = await call(receivingHandler, account.cookie, { action: 'finish', challengeId: begin.body.challengeId, response: account.key.login(begin.body.options, player) });
+  assert.equal(finish.statusCode, 200);
+  const before = await fixture.command('GET', rewardAddressKey(player));
+  const read = await call(receivingHandler, account.cookie, null, 'GET', changed);
+  assert.equal(read.statusCode, 200); assert.equal(read.body.addresses['testnet-10'], receivingAddress(11));
+  const other = await session();
+  const isolated = await call(receivingHandler, other, null, 'GET', changed);
+  assert.equal(isolated.body.addresses['testnet-10'], '');
+  for (const action of ['begin', 'finish']) {
+    const denied = await call(receivingHandler, account.cookie, { action, challengeId: begin.body.challengeId }, 'POST', changed);
+    assert.equal(denied.statusCode, 400); assert.equal(denied.body.code, 'PASSKEY_ORIGIN_INVALID');
+    assert.match(denied.body.error, /unavailable at this site address/);
+    assert.doesNotMatch(denied.body.error, /confirmation was not completed/);
+    assert.equal(await fixture.command('GET', rewardAddressKey(player)), before);
+  }
+});

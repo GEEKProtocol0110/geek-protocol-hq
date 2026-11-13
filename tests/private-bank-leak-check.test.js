@@ -7,7 +7,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { existsSync, symlinkSync } from 'node:fs';
 import test from 'node:test';
-import { readAllowlist, FAKE_EXAMPLE_ID, OPAQUE_ALLOWLIST, answerHashes, highEntropy, isTextScanned, loadPrivateIndex, MAX_SCAN_BYTES, scanRepo, scanText, validRetiredAt } from '../scripts/private-bank-leak-check.mjs';
+import { reviewedPublicBrandKit, readAllowlist, FAKE_EXAMPLE_ID, OPAQUE_ALLOWLIST, answerHashes, highEntropy, isTextScanned, loadPrivateIndex, MAX_SCAN_BYTES, scanRepo, scanText, validRetiredAt } from '../scripts/private-bank-leak-check.mjs';
 
 const TEMPLATE_ROW = JSON.parse(readFileSync(new URL('../private-bank-template/bank/kaspa.json', import.meta.url), 'utf8')).questions[0];
 const retired = { ...TEMPLATE_ROW, retiredReason: 'rotation', retiredAt: '2026-10-15' };
@@ -346,4 +346,16 @@ test('--private exits 2 when it indexes zero rows and reports the row count on s
     assert.equal(out.status, 0, out.stderr); assert.match(out.stdout, /with private index of 3 rows/);
     assert.doesNotMatch(out.stdout + out.stderr, /FAKE leak-check prompt|FAKE opt/);
   } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+
+test('the published brand kit exception accepts only its reviewed path and exact bytes', async () => {
+  const path = 'public/media/downloads/geek-protocol-brand-kit.zip';
+  const bytes = readFileSync(new URL('../' + path, import.meta.url));
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), 'f3724d22ffe8911bda89a1ae41b8b3b7dd346325b0342076eba986e02a54fd7b');
+  assert.equal(reviewedPublicBrandKit(path, bytes), true);
+  const changed = Buffer.from(bytes); changed[20] ^= 1;
+  assert.equal(reviewedPublicBrandKit(path, changed), false);
+  assert.equal(reviewedPublicBrandKit('public/other.zip', bytes), false);
+  assert.equal(reviewedPublicBrandKit(path, Buffer.from('fake archive')), false);
 });

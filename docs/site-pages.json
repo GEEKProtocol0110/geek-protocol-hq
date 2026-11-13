@@ -60,7 +60,7 @@
       "description": "Geek Protocol is a Kaspa onboarding ecosystem built for Proof of Learning. Explore lessons, free quizzes and community tools. No wallet needed to start.",
       "index": true,
       "private": false,
-      "lastmod": "2026-11-02"
+      "lastmod": "2026-11-08"
     },
     {
       "file": "public/kaspa/index.html",
@@ -73,7 +73,7 @@
       "imageAlt": "Kaspa, without the hype. Kaspa 101 field guide from Geek Protocol.",
       "imageWidth": 1200,
       "imageHeight": 630,
-      "lastmod": "2026-10-17"
+      "lastmod": "2026-11-05"
     },
     {
       "file": "public/litepaper/index.html",
@@ -244,7 +244,7 @@
       "imageAlt": "Hall of Thanks. No Geek stands alone. Built on Kaspa. Carried by community.",
       "imageWidth": 1200,
       "imageHeight": 630,
-      "lastmod": "2026-10-31"
+      "lastmod": "2026-11-05"
     },
     {
       "file": "public/tools/index.html",
@@ -253,7 +253,7 @@
       "description": "Explore free Geek Protocol tools: Geek Mini quizzes, the Kaspa Live Widget and Geek Wallet's public-address tracker. No GEEK required to get started.",
       "index": true,
       "private": false,
-      "lastmod": "2026-10-17"
+      "lastmod": "2026-11-05"
     },
     {
       "file": "public/tools/kaspa-widget/index.html",
@@ -387,6 +387,190 @@
       "index": true,
       "private": false,
       "lastmod": "2026-11-02"
+    },
+    {
+      "file": "public/about/index.html",
+      "path": "/about/",
+      "title": "About Geek Protocol: Project Facts & FAQ",
+      "description": "Official Geek Protocol project facts and FAQ: Kaspa learning, current Alpha features, Proof of Learning, GEEK token boundaries, contributors and official links.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-05"
+    },
+    {
+      "file": "public/kaspa/directory/index.html",
+      "path": "/kaspa/directory/",
+      "title": "Kaspa Directory \u2014 Exchanges, Wallets & KRC-20 | Geek Protocol",
+      "description": "Find where to buy native KAS: spot exchanges, brokers and swaps, plus Kaspa wallets, explorers, developer tools, KRC-20 projects and holder lookups.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09",
+      "image": "/assets/share-kaspa-v1.png",
+      "imageAlt": "Kaspa resources and learning from Geek Protocol.",
+      "imageWidth": 1200,
+      "imageHeight": 630
+    },
+    {
+      "file": "public/leaderboard/index.html",
+      "path": "/leaderboard/",
+      "title": "Global Leaderboard \u2014 Geek Protocol & Geek Mini",
+      "description": "Explore public Geek Protocol and Geek Mini quiz standings. Compare players within each game, mode and category, with separate Mini Daily and Speed boards.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-05"
+    },
+    {
+      "file": "public/media/index.html",
+      "path": "/media/",
+      "title": "Media & Builders \u2014 Geek Protocol",
+      "description": "Download Geek Protocol logos and share artwork, copy project descriptions, find official sources and share Geek Mini challenges with your community.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-05"
+    },
+    {
+      "file": "public/news/index.html",
+      "path": "/news/",
+      "title": "Geek News \u2014 Crypto & Global Markets",
+      "description": "Explore Kaspa, crypto, global indexes, stocks, forex, commodities, bond yields, futures and financial headlines with Geek Protocol.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-06"
+    },
+    {
+      "file": "public/games/index.html",
+      "path": "/games/",
+      "title": "Geek Games \u2014 Find Your Next Challenge",
+      "description": "Explore Geek quizzes, brain games, chess, checkers, solitaire and nine strategy and puzzle games, with solo, local and online play.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/brain/index.html",
+      "path": "/games/brain/",
+      "title": "Brain Games \u2014 Geek Protocol",
+      "description": "Practice recall, mental math and attention in Signal Sequence, Number Forge and Rule Shift. Three difficulty levels, ten untimed rounds and device-only scores.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-08"
+    },
+    {
+      "file": "public/games/checkers/index.html",
+      "path": "/games/checkers/",
+      "title": "Geek Checkers \u2014 Local Strategy Game",
+      "description": "Play two-player American-style checkers on one device. Legal moves, required captures, kings, beginner rules and practice undo.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-08"
+    },
+    {
+      "file": "public/games/solitaire/index.html",
+      "path": "/games/solitaire/",
+      "title": "Geek Solitaire \u2014 Draw-One Klondike",
+      "description": "Play untimed draw-one Klondike solitaire with tap-to-move controls, unlimited redeals, instructions and undo. No account or wallet needed.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-08"
+    },
+    {
+      "file": "public/games/chess/index.html",
+      "path": "/games/chess/",
+      "title": "Geek Chess \u2014 Local Strategy Game",
+      "description": "Play chess with a friend on one device. Legal move hints, castling, pawn promotion and practice undo in the Geek Games arena.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-08"
+    },
+    {
+      "file": "public/games/online/index.html",
+      "path": "/games/online/",
+      "title": "Geek Multiplayer \u2014 Strategy Game Lobbies",
+      "description": "Create public or private lobbies for chess, checkers, Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four and Reversi. Request a game and play live turns.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/tic-tac-toe/index.html",
+      "path": "/games/tic-tac-toe/",
+      "title": "Geek Tac Toe \u2014 Geek Strategy & Puzzles",
+      "description": "Play Geek Tac Toe with Geek gold/cyan styling. Practice pattern recognition in untimed two-player strategy with local play and online lobbies.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/dots/index.html",
+      "path": "/games/dots/",
+      "title": "Dots & Boxes \u2014 Geek Strategy & Puzzles",
+      "description": "Play Dots & Boxes with Geek gold/cyan styling. Practice planning chains in untimed two-player strategy with local play and online lobbies.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/battle-geek/index.html",
+      "path": "/games/battle-geek/",
+      "title": "Battle Geek \u2014 Geek Strategy & Puzzles",
+      "description": "Play Battle Geek with Geek gold/cyan styling. Practice deduction in untimed two-player strategy with local play and online lobbies.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/connect-four/index.html",
+      "path": "/games/connect-four/",
+      "title": "Geek Connect Four \u2014 Geek Strategy & Puzzles",
+      "description": "Play Geek Connect Four with Geek gold/cyan styling. Practice planning threats in untimed two-player strategy with local play and online lobbies.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/reversi/index.html",
+      "path": "/games/reversi/",
+      "title": "Geek Reversi \u2014 Geek Strategy & Puzzles",
+      "description": "Play Geek Reversi with Geek gold/cyan styling. Practice positioning in untimed two-player strategy with local play and online lobbies.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/codebreaker/index.html",
+      "path": "/games/codebreaker/",
+      "title": "Geek Codebreaker \u2014 Geek Strategy & Puzzles",
+      "description": "Play Geek Codebreaker with Geek gold/cyan styling. Practice eliminating possibilities in untimed solo puzzles with clear rules and tap controls.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/hanoi/index.html",
+      "path": "/games/hanoi/",
+      "title": "Tower of Geek \u2014 Geek Strategy & Puzzles",
+      "description": "Play Tower of Geek with six difficulty levels, 3\u20138 discs and minimum-move targets. A gold/cyan sequencing puzzle with untimed tap controls.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/sudoku/index.html",
+      "path": "/games/sudoku/",
+      "title": "Geek Sudoku \u2014 Geek Strategy & Puzzles",
+      "description": "Play Geek Sudoku with Geek gold/cyan styling. Practice logical deduction in untimed solo puzzles with clear rules and tap controls.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/peg-quest/index.html",
+      "path": "/games/peg-quest/",
+      "title": "Geek Peg Quest \u2014 Geek Strategy & Puzzles",
+      "description": "Play Geek Peg Quest with Geek gold/cyan styling. Practice spatial planning in untimed solo puzzles with clear rules and tap controls.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-09"
     }
   ]
 }

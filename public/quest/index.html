@@ -5,9 +5,11 @@
     <!-- site-metadata:start -->
     <title>Quiz Quest — Geek Protocol</title>
     <meta name="description" content="Explore Quiz Quest with GIGA. Complete four Kaspa learning chapters, save your progress and replay adventures in Geek Protocol&#39;s free Alpha." />
-    <meta name="theme-color" content="#080b0b" />
+    <meta name="theme-color" content="#000000" />
     <meta name="robots" content="index,follow" />
-    <link rel="icon" type="image/png" href="/assets/geek-protocol-logo.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/assets/app/giga-apple-touch.png" />
+    <link rel="icon" type="image/png" href="/assets/geek-protocol-logo-v2.png" />
     <link rel="canonical" href="https://www.geekprotocol.xyz/quest/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Geek Protocol" />
@@ -39,12 +41,12 @@
 </head>
 <body class="welcome-page welcome-quest">
   <a class="skip-link" href="#quest-main">Skip to chapter</a>
-  <header><a class="brand" href="../"><img src="../assets/geek-protocol-logo.png" alt="" width="42" height="42" />GEEK<span>// QUEST</span></a><nav aria-label="Player navigation"><a href="../study/">Learn</a><a href="../quest/" aria-current="page">Adventure</a><a href="../play/">Play</a><a href="../profile/">My HQ</a></nav></header>
+  <header><a class="brand" href="../"><img src="../assets/geek-protocol-logo-v2.png" alt="" width="42" height="42" />GEEK<span>// QUEST</span></a><nav aria-label="Player navigation"><a href="../study/">Learn</a><a href="../quest/" aria-current="page">Adventure</a><a href="/games/">Games</a><a href="../profile/">My HQ</a></nav></header>
   <main id="quest-main">
     <section class="quest-intro" aria-labelledby="quest-title"><div><p class="eyebrow" data-chapter-kicker>QUIZ QUEST · CHAPTER 01 · FREE SOLO</p><h1 id="quest-title" data-chapter-title>FIRST<br /><em>SIGNAL.</em></h1><p data-chapter-subtitle>An archive. Three stops. One curious Geek.<br />Explore Kaspa’s origins with GIGA and A.C.E.</p><div class="chapter-facts"><span>3 STORY STOPS</span><span>6 LEARNING CHECKS</span><span>NO TIMER</span></div></div><div class="arrival"><div class="arrival-orbit" aria-hidden="true"></div><div class="arrival-geek" data-player-art aria-label="Your selected Geek"></div><span data-player-name>YOUR GEEK IN THE GRID</span><a href="../profile/#geek-builder">Customize your Geek →</a></div></section>
     <details class="welcome-panel" id="campaign-overview"><summary><span><b>Chapters & badges</b><small>Finish a chapter to unlock the next.</small></span></summary><div class="welcome-panel-content"><nav class="campaign-nav" aria-labelledby="campaign-title"><h2 id="campaign-title">Your path through the Grid.</h2><p data-campaign-summary>Three chapters. Complete each chapter to unlock the next. Each keeps its own saved place.</p><div class="campaign-cards" data-campaign></div><button class="secondary" type="button" data-campaign-retry hidden>Retry campaign status</button></nav></div></details>
     <section class="chapter-map" data-story-map aria-label="Story stops"><div class="map-route" aria-hidden="true"></div><ol data-map></ol></section>
-    <div class="service-bar"><p data-status role="status" aria-live="polite">Connecting your saved chapter…</p><button class="secondary" type="button" data-resume hidden>Resume saved chapter</button></div>
+    <div class="initial-loading" data-initial-loading role="status" aria-live="polite"><span class="sr-only">Loading your saved player…</span><div aria-hidden="true"><i></i><i></i><i></i></div></div><div class="service-bar"><p data-status role="status" aria-live="polite">Connecting your saved chapter…</p><button class="secondary" type="button" data-resume hidden>Resume saved chapter</button></div>
     <section class="chapter-lock" data-chapter-lock hidden aria-labelledby="chapter-lock-title"><p class="eyebrow">YOUR NEXT CHAPTER</p><h2 id="chapter-lock-title" data-lock-title>Complete First Signal to unlock.</h2><p data-lock-copy>Finish all six checks and save Chapter 1’s completion badge to continue your adventure.</p><a class="primary link-button" data-lock-link href="./?chapter=first-signal">Continue First Signal →</a><p>Your existing chapter progress stays saved.</p></section>
     <div class="quest-layout" data-chapter-layout>
       <section class="story-panel" data-story aria-labelledby="story-title">

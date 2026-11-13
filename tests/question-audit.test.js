@@ -147,3 +147,44 @@ test('retired overlapping Joker objective keeps saved grading and excludes its r
     canonical.practiceOnly=true;
   }
 });
+
+test('WWW consolidation preserves both keys and prevents the same fact after an old run', async()=>{
+  const ledger=JSON.parse(readFileSync('server/question-audit/technology-2026-11-08.json','utf8'));
+  const bank=loadQuestionBank('technology');
+  const item=ledger.retirements[0], old=bank.byId.get(item.id);
+  const survivor=bank.questions.find(q=>q.id===item.canonicalId);
+  assert.equal(gradingHash(old),item.gradingHash);
+  assert.equal(old.conceptId,survivor.conceptId);
+  assert.ok(!bank.questions.some(q=>q.id===old.id));
+  for(const d of ledger.retained){
+    const q=bank.byId.get(d.id);
+    assert.equal(gradingHash(q),d.gradingHash);
+    assert.equal(q.source,d.source);
+    assert.equal(q.reviewStatus,'source-checked');
+    assert.equal(q.reviewedAt,ledger.reviewedAt);
+  }
+  const controls=bank.questions.filter(q=>!q.practiceOnly&&q.difficulty===survivor.difficulty&&q.id!==survivor.id).slice(0,9);
+  const allowed=new Set([survivor.id,...controls.map(q=>q.id)]);
+  const excluded=bank.questions.filter(q=>q.difficulty===survivor.difficulty&&!allowed.has(q.id)).map(q=>q.id);
+  assert.ok((await selectRoundQuestionIds('technology',4,excluded)).includes(survivor.id));
+  await assert.rejects(selectRoundQuestionIds('technology',4,[...excluded,old.id]),/QUESTION_POOL_EXHAUSTED/);
+});
+
+test('risk-triaged Technology rows stay lookup-only and the duplicate excludes its draft survivor',async()=>{
+  const ledger=JSON.parse(readFileSync('server/question-audit/technology-risk-2026-11-08.json','utf8'));
+  const bank=loadQuestionBank('technology');
+  for(const d of ledger.retirements){
+    const old=bank.byId.get(d.id);
+    assert.equal(gradingHash(old),d.gradingHash);
+    assert.equal(old.retiredReason,'editorial-'+d.reason);
+    assert.ok(!bank.questions.some(q=>q.id===old.id));
+  }
+  const old=bank.byId.get('TECH-0604'),survivor=bank.questions.find(q=>q.id==='TECH-0096');
+  assert.equal(survivor.reviewStatus,'draft-needs-human-review');
+  assert.equal(old.conceptId,survivor.conceptId);
+  const controls=bank.questions.filter(q=>!q.practiceOnly&&q.difficulty===survivor.difficulty&&q.id!==survivor.id).slice(0,9);
+  const allowed=new Set([survivor.id,...controls.map(q=>q.id)]);
+  const excluded=bank.questions.filter(q=>q.difficulty===survivor.difficulty&&!allowed.has(q.id)).map(q=>q.id);
+  assert.ok((await selectRoundQuestionIds('technology',1,excluded)).includes(survivor.id));
+  await assert.rejects(selectRoundQuestionIds('technology',1,[...excluded,old.id]),/QUESTION_POOL_EXHAUSTED/);
+});

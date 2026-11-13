@@ -1,0 +1,34 @@
+/* Geek tabletop: machined rims, sculpted pieces and a collector-card finish. */
+.classics-page :is(.chessboard,.checkerboard){border:6px solid #647c7a;border-image:none;border-radius:10px;overflow:hidden;background:#102330;box-shadow:0 0 0 1px #d3bb7555,0 0 0 4px #102431,0 12px 20px #0005,inset 0 0 0 1px #c0e6df33}
+.classics-page .chessboard{max-width:560px}
+.classics-page :is(.chess-square.light,.checkerboard .light){background:linear-gradient(135deg,#536f78,#3c5864);border-color:#8ca5a31c}
+.classics-page :is(.chess-square.dark,.checkerboard .dark){background:linear-gradient(135deg,#172f3c,#102430);border-color:#0a172322}
+.classics-page .chess-square{overflow:hidden}
+.geek-chess-piece{display:grid;place-items:center;width:83%;height:90%;pointer-events:none;position:relative;z-index:1;line-height:1}
+.geek-chess-piece img{display:block;width:100%;height:100%;object-fit:contain;max-width:none;filter:drop-shadow(0 2px 1px #04101799)}
+.geek-chess-piece [hidden]{display:none!important}.geek-chess-piece .piece-fallback{font-size:clamp(1.3rem,6vw,3rem)}
+.classics-page .online-piece-wrap{display:grid;place-items:center;width:100%;height:100%}
+.classics-page .chess-square small{z-index:2;color:#d7e7e7;font-size:clamp(.43rem,1.4vw,.62rem);line-height:1}
+.classics-page .chess-square.legal{box-shadow:inset 0 0 0 3px #f3d78f;background-image:radial-gradient(circle at 50% 50%,#d6b45520,transparent 70%)}
+.classics-page .chess-square[aria-pressed=true]{outline:3px solid #fff0b8;outline-offset:-4px;background-color:#2e4b47}
+.classics-page .checkerboard :is(.gold,.cyan)::before{inset:11%;border:2px solid #f3d68c;background:radial-gradient(ellipse at 35% 15%,#f2db9780,transparent 46%),conic-gradient(from 40deg,#8a652b,#d4ad59,#765426,#ddbe79,#8a652b);box-shadow:0 4px 0 #4c3820,0 6px 5px #0007,inset 0 0 0 3px #70532a,inset 0 0 0 4px #f4d58c99,inset 0 0 0 7px #795b2c66}
+.classics-page .checkerboard .cyan::before{border-color:#a0f1e4;background:radial-gradient(ellipse at 35% 15%,#b4fced80,transparent 46%),conic-gradient(from 40deg,#265e65,#79c8bd,#1e4b58,#83d5cd,#265e65);box-shadow:0 4px 0 #123942,0 6px 5px #0007,inset 0 0 0 3px #27565d,inset 0 0 0 4px #a1f0e099,inset 0 0 0 7px #24565b66}
+.classics-page .checkerboard :is(.gold,.cyan){font:600 clamp(.7rem,2.5vw,1.1rem)/1 Georgia,serif;letter-spacing:.02em;color:#fff0bf;text-shadow:0 1px #3e2a19}
+.classics-page .checkerboard .cyan{color:#d9fff5;text-shadow:0 1px #0b343c}
+.online-page .online-checker{color:#cafff1;border:2px solid #a0f1e4;background:radial-gradient(ellipse at 35% 15%,#b4fced80,transparent 46%),conic-gradient(from 40deg,#265e65,#79c8bd,#1e4b58,#83d5cd,#265e65);box-shadow:0 4px 0 #123942,0 5px 5px #0007,inset 0 0 0 3px #27565d,inset 0 0 0 4px #a1f0e099;font-family:Georgia,serif}
+.online-page .white-piece .online-checker{color:#fff0bf;border-color:#f3d68c;background:radial-gradient(ellipse at 35% 15%,#f2db9780,transparent 46%),conic-gradient(from 40deg,#8a652b,#d4ad59,#765426,#ddbe79,#8a652b);box-shadow:0 4px 0 #4c3820,0 5px 5px #0007,inset 0 0 0 3px #70532a,inset 0 0 0 4px #f4d58c99}
+.classics-page .board-scroll{padding:12px;background:radial-gradient(ellipse at 50% 0,#294d5b55,transparent 70%),repeating-linear-gradient(90deg,#10202c 0,#10202c 3px,#122431 4px);border-color:#68847b66;box-shadow:inset 0 0 30px #06121c77}
+.classics-page .playing-card.face{display:block;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,#2f5361aa,transparent 70%),linear-gradient(135deg,#233f50,#132b3a);border:1px solid #8ebcb6;border-radius:8px;color:#c5f6ec;box-shadow:inset 0 0 0 2px #10232e,inset 0 0 0 3px #83bbb322,0 3px 6px #0005}
+.classics-page .playing-card.red-card.face{color:#ffc1b8;border-color:#c78e8d;background:radial-gradient(ellipse at 50% 30%,#5d404844,transparent 70%),linear-gradient(135deg,#263b4b,#172a38)}
+.classics-page .playing-card.face::after{content:'';inset:7px;border:1px solid #9ed0c514;border-radius:3px;pointer-events:none}
+.card-corner{position:absolute;left:5px;top:4px;font:600 clamp(.78rem,2vw,1.2rem)/1.1 Georgia,serif;letter-spacing:0;white-space:nowrap;z-index:2}
+.card-pip{position:absolute;inset:0;display:grid;place-items:center;font:500 clamp(1.3rem,4vw,2.6rem)/1 Georgia,serif;opacity:.88;text-shadow:0 2px #061a25}
+.card-foot{position:absolute;right:5px;bottom:4px;font:500 .85rem/1 Georgia,serif;transform:rotate(180deg);opacity:.8}
+.classics-page .tableau-column .playing-card:not(:last-child) :is(.card-pip,.card-foot){visibility:hidden}
+.classics-page .playing-card.back{position:relative;overflow:hidden;background:linear-gradient(135deg,transparent 47%,#d5b86c22 48%,#d5b86c22 52%,transparent 53%),linear-gradient(45deg,transparent 47%,#79d5cc22 48%,#79d5cc22 52%,transparent 53%),radial-gradient(ellipse at 30% 15%,#2d5863,#102b3a 80%);background-size:18px 18px,18px 18px,auto;border:1px solid #d1b575;border-radius:7px;box-shadow:inset 0 0 0 3px #102431,inset 0 0 0 4px #bda46777,0 2px 4px #0004}
+.card-back-mark{position:absolute;inset:24%;display:grid;place-items:center;border:1px solid #e3ca83aa;transform:rotate(0);background:#102f3de8;color:#f1d48e;font:500 clamp(.5rem,1.7vw,1.3rem)/1 Georgia,serif;border-radius:3px;box-shadow:0 0 0 3px #102b3c,0 0 0 4px #e3ca8333}
+.classics-page .tableau-column .playing-card.back:not(:last-child) .card-back-mark{inset:3px 30% auto;height:16px;font-size:.5rem;box-shadow:none;border-color:#cdb67755;background:#0e2a36}
+.classics-page .foundation{border-color:#5c8a88;background:linear-gradient(145deg,#183845,#0d2533);box-shadow:inset 0 0 18px #06131d66}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.geek-chess-piece,.online-checker{transition:transform .15s}.chess-square:not(:disabled):hover :is(.geek-chess-piece,.online-checker){transform:translateY(-2px)}.playing-card.face:not(:disabled):hover{border-color:#f4d78d}}
+@media(max-width:600px){.classics-page .board-scroll{padding:6px}.classics-page :is(.chessboard,.checkerboard){border-width:4px;border-radius:6px}.card-corner{left:3px;top:4px}.card-foot{display:none}.card-pip{font-size:clamp(1.15rem,4.5vw,1.7rem)}.classics-page .playing-card.face::after{inset:4px}.classics-page .tableau-column .playing-card.back:not(:last-child) .card-back-mark{height:14px;top:4px}}
+@media(forced-colors:active){.classics-page :is(.chessboard,.checkerboard,.board-scroll,.playing-card,.foundation){box-shadow:none;border-color:CanvasText}.classics-page .checkerboard :is(.gold,.cyan)::before{display:block;background:Canvas;border:2px solid CanvasText;box-shadow:none}.classics-page .checkerboard :is(.gold,.cyan){color:CanvasText;text-shadow:none}.card-pip{color:CanvasText;text-shadow:none}.classics-page .chess-square.legal{outline:3px solid Highlight;box-shadow:none}.online-page .online-checker{background:Canvas!important;color:CanvasText!important;border-color:CanvasText;box-shadow:none}.geek-chess-piece img{filter:none}}

@@ -112,3 +112,13 @@ test('network selection keeps receiving addresses distinct and a lost reply tell
   assert.match(ui.node('[data-receiving-status]').textContent, /check whether your change was saved/);
   assert.doesNotMatch(ui.node('[data-receiving-status]').textContent, /^Testnet-10 receiving address saved/);
 });
+
+
+test('guest address viewing offers an optional next step without an error or passkey prompt', async () => {
+  const ui = await mount({ canEdit: false });
+  assert.equal(ui.node('[data-receiving-badge]').textContent, 'Sign in to add');
+  assert.match(ui.node('[data-receiving-status]').textContent, /optional.*no wallet is needed/);
+  assert.equal(ui.node('[data-receiving-retry]').hidden, true);
+  assert.equal(ui.form.hidden, true);
+  assert.equal(ui.calls.length, 1); assert.equal(ui.prompts.length, 0);
+});

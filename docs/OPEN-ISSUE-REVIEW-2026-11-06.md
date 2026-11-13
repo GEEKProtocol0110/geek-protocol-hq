@@ -1,0 +1,27 @@
+# Open issue review — November 6, 2026
+
+All 17 open HQ issues were read. An open issue is not evidence of a current defect. This review separates source fixes, existing coverage, acceptance work and feature proposals. Candidate code is not merged or production acceptance.
+
+| Issue | Disposition | Evidence / next step |
+| --- | --- | --- |
+| #182 Duel/Quest loading | Candidate fix | Immediate static skeleton, polite loading status, six-second initial-request deadline, explicit retry. Mutation requests retain their existing twelve-second deadline; no automatic game replay. Duel timeout/retry and Quest recovery tests. |
+| #183 Study guest reward reads | Existing fix plus edge correction | Existing sign-in hint skips automatic reads for new/signed-out visitors. Blocked local storage now also skips an unknown visitor instead of probing a private endpoint. An expired known sign-in can still receive one authorized-denial response before the stale hint is cleared. Session-hint tests cover these distinctions. |
+| #184 Profile inline styles | Existing merged fix | #197 removed the reported inline style. Current Profile HTML has no style attributes; profile tests and site checks verify the baseline. Retain device/rendered acceptance separately. |
+| #185 Immediate answer selection | Candidate fix | Play, assisted Practice and Quest set selected styling and aria-pressed before awaiting the server; other answers stay disabled. Grading/feedback replaces the pending state. Deferred-response tests cover all three and duplicate-write guards. |
+| #186 Fast client CI | Enhancement, open | Full required verify already runs on PRs. A separate fast client job is useful, but the proposed full npm test still requires Redis and is not a fast unit-only check. Keep required integration coverage; prepare a separately reviewable focused workflow. |
+| #187 Node documentation | Candidate fix | README and CONTRIBUTING now match package engines: Node 22 or newer; full CI uses Node 24. |
+| #188 New 25-question pack | Content feature, open | Not a defect. BANK-009 content review precedes new volume. Requires distinct concepts, primary sources, separate fact-checking and founder review; no rushed draft is labeled reviewed to close a ticket. |
+| #189 Flagged Kaspa questions | Ongoing BANK-009 | Existing audited Kaspa checkpoint is 766 reviewed concepts; practice-only material is not promoted. Continue item-by-item audit with new replacement identities and preserved historical grading. This ticket is not a count of 189 bugs or proof every question is wrong. |
+| #190 Translation groundwork | Enhancement, open | English-only onboarding is the current baseline. A Spanish draft needs a complete locale design, human language review, fallback/loading tests and consistency with dynamic checklist guidance. Keep it separate from defect repair. |
+| #191 Quiz keyboard/focus audit | Partially covered; acceptance open | Play already has keyboard-accessible buttons, explicit focus rings and timer aria-live off. Practice now has an explicit focus outline and non-live timer. Pending selection is announced through aria-pressed. A rendered axe/Lighthouse and actual-device assistive-technology pass is still required; static checks do not establish it. |
+| #192 Alt text and landmarks | Static pass; regression guard added | Every public HTML page has exactly one main landmark, every image has an alt attribute and navigation has a label. site:check now enforces these rules. Attribute presence does not prove all image descriptions are ideal; rendered/semantic review stays separate. |
+| #193 First contribution guide | Candidate complete | docs/FIRST-CONTRIBUTION.md explains setup, one test, site:write vs site:check, isolated Redis, continuity and protected boundaries; CONTRIBUTING and docs index link it. |
+| #194 Lobby states | Candidate fix | Distinct room-full/closed copy with next actions, safe service errors, bounded requests, empty/offline guidance and a Refresh rooms action that reconnects an offline session. API exposes existing room error codes without private provider text. No change to seat/game authority. |
+| #195 Mint checklist | Candidate complete | Added visible pre-mint checklist; existing FAQ retains Kasware/request verification and protocol facts. No wallet prompt, transaction or mint behavior was changed or tested by sending funds. |
+| #196 Reward-status client tests | Already covered | tests/testnet-status-client.test.js covers success, 401/403, abort, polling, race isolation and recovery. tests/testnet-status-session-hint.test.js covers unknown and signed-out visitors. Full verify validates coverage; no new duplicate test suite needed. |
+| #216 KCC-20 migration | Design/decision task, open | Preserve holder/supply invariants and existing approval gates. No snapshot, policy choice, funded rehearsal or migration execution is implied by a request to fix interface errors. |
+| #225 Daily bot handoff | Coordination record, open | Permanent operational handoff, not a defect. No new report/comment or scheduler change was sent as part of this review. |
+
+## Verification
+
+Run the shipped-client deferred response, retry, guest-state and server-error tests; then full verify with isolated real Redis. Record exact-head CI and preview evidence in the PR. Physical-phone, assistive-technology, independent security/content and monetary-flow acceptance remain separate. No production matches or payouts are replayed for this review.

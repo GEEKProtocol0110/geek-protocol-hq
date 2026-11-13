@@ -1,7 +1,10 @@
+import { createCryptoMarkets, marketHandler } from '../server/crypto-markets.js';
 import { createWidgetDownloads, releasesUrl } from '../server/widget-download.js';
 
 const downloads = createWidgetDownloads();
+const cryptoMarkets = marketHandler(createCryptoMarkets());
 export default async function handler(req, res) {
+  if (req.query?.service === 'markets') return cryptoMarkets(req, res);
   res.setHeader('X-Content-Type-Options', 'nosniff');
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET'); return res.status(405).end();

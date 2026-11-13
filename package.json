@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "test": "node --test",
-    "test:signer": "npm --prefix workers/testnet run check",
+    "test:signer": "npm --prefix workers/testnet run check && npm --prefix workers/mainnet run check",
     "recovery:drill": "node --test tests/recovery.test.js",
     "security:check": "node scripts/public-answer-check.mjs && node scripts/security-check.mjs",
     "collection:generate": "node scripts/generate-geek-collection.mjs",
@@ -46,14 +46,18 @@
     "whitepaper:write": "node scripts/whitepaper.mjs --write",
     "whitepaper:check": "node scripts/whitepaper.mjs",
     "private-bank:check": "node scripts/private-bank.mjs check private-bank-template --template",
-    "private-bank:leak-check": "node scripts/private-bank-leak-check.mjs"
+    "private-bank:leak-check": "node scripts/private-bank-leak-check.mjs",
+    "directory:write": "node scripts/kaspa-directory.mjs --write",
+    "directory:check": "node scripts/kaspa-directory.mjs",
+    "private-bank:rehearse": "node scripts/private-bank-rehearsal.mjs"
   },
   "engines": {
     "node": ">=22"
   },
   "dependencies": {
     "@dfns/kaspa-wasm": "0.14.1",
-    "@simplewebauthn/server": "14.0.3",
-    "ai": "7.0.143"
+    "@simplewebauthn/server": "14.1.0",
+    "ai": "7.0.166",
+    "web-push": "4.0.0"
   }
 }

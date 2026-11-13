@@ -10,14 +10,14 @@ Record date: 2026-11-13. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current checkout counts
 
-8,228 active ranked-eligible questions, plus 210 practice-only unranked draft questions (not ranked-eligible, not source-checked); 800 recorded internal source reviews; 7,200 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
+8,218 active ranked-eligible questions, plus 214 practice-only unranked draft questions (not ranked-eligible, not source-checked); 809 recorded internal source reviews; 7,191 further reviews needed across eight targets. 537 Study concepts and 4 Quest chapters. These are local code counts, not independent educational certification.
 
 | Category | Active | Recorded reviews | Still needed |
 | --- | --- | --- | --- |
 | Kaspa | 866 | 766 | 234 |
 | Video games | 601 | 0 | 1000 |
 | Science fiction | 514 | 0 | 1000 |
-| Technology | 1485 | 19 | 981 |
+| Technology | 1479 | 28 | 972 |
 | Movies | 1490 | 5 | 995 |
 | History | 1502 | 9 | 991 |
 | Comics | 412 | 1 | 999 |
@@ -25,9 +25,9 @@ Record date: 2026-11-13. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-009: active.** BANK-009: #208 Technology corrections merged; #209 History/Comics final integration removes the overlapping Joker objective while retaining historical grading, practice-only replacements and unresolved-authorship holds. Independent/full-bank acceptance remains open.
+**BANK-009: active.** BANK-009: six-row Technology risk triage retires five ambiguous, unsupported or repeated items without padding the bank. One duplicate survivor remains draft; no review-count promotion.
 
-Next task: **BANK-009**. Complete the corrected #209 integration with fresh exact-head checks, then continue the remaining BANK-009 factual, semantic, category and authorship audit. Preserve all historical grading and keep new drafts practice-only. Private-ranked-bank end-to-end and UX acceptance remain separate cutover gates.
+Next task: **BANK-009**. Review the November 8 risk-triage candidate and exact-head checks, then continue unflagged rows across categories.
 
 ## Holds
 

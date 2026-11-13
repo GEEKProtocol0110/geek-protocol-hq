@@ -8,6 +8,14 @@
   "trailingSlash": true,
   "rewrites": [
     {
+      "source": "/api/game-notifications",
+      "destination": "/api/lobbies?service=classic&pushCron=1"
+    },
+    {
+      "source": "/api/game-notifications/",
+      "destination": "/api/lobbies?service=classic&pushCron=1"
+    },
+    {
       "source": "/api/appearance",
       "destination": "/api/session?service=appearance"
     },
@@ -175,6 +183,10 @@
     },
     "api/passkeys.js": {
       "includeFiles": "node_modules/@dfns/kaspa-wasm/kaspa_bg.wasm"
+    },
+    "api/mini.js": {
+      "includeFiles": "server/mini/public-practice-bank.json",
+      "maxDuration": 30
     }
   },
   "headers": [
@@ -194,10 +206,6 @@
           "value": "camera=(), microphone=(), geolocation=()"
         },
         {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; frame-src https://kgi.kaspad.net; form-action 'self'; script-src 'self' 'sha256-z4nhfmSCNrXFiKv3iMJVPjFv5lrk3ueDGEn5lnOcZpg='; style-src 'self'; img-src 'self' data:; connect-src 'self'; upgrade-insecure-requests"
-        },
-        {
           "key": "Strict-Transport-Security",
           "value": "max-age=31536000; includeSubDomains"
         },
@@ -212,6 +220,33 @@
         {
           "key": "Cross-Origin-Resource-Policy",
           "value": "same-origin"
+        }
+      ]
+    },
+    {
+      "source": "/((?!news(?:/|$)).*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; frame-src https://kgi.kaspad.net; form-action 'self'; script-src 'self' 'sha256-z4nhfmSCNrXFiKv3iMJVPjFv5lrk3ueDGEn5lnOcZpg='; style-src 'self'; img-src 'self' data:; connect-src 'self'; upgrade-insecure-requests"
+        }
+      ]
+    },
+    {
+      "source": "/news/:path*",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; frame-src https://www.tradingview-widget.com; form-action 'self'; script-src 'self' 'sha256-z4nhfmSCNrXFiKv3iMJVPjFv5lrk3ueDGEn5lnOcZpg='; style-src 'self'; img-src 'self' data:; connect-src 'self'; upgrade-insecure-requests"
+        }
+      ]
+    },
+    {
+      "source": "/news/",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; frame-src https://www.tradingview-widget.com; form-action 'self'; script-src 'self' 'sha256-z4nhfmSCNrXFiKv3iMJVPjFv5lrk3ueDGEn5lnOcZpg='; style-src 'self'; img-src 'self' data:; connect-src 'self'; upgrade-insecure-requests"
         }
       ]
     }
@@ -264,6 +299,12 @@
       "source": "/moderate/:path*",
       "destination": "/ops/",
       "permanent": false
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/game-notifications/",
+      "schedule": "*/5 * * * *"
     }
   ]
 }

@@ -1,0 +1,32 @@
+.about-page{background:#080b0b;color:#eef5f2}
+.about-nav,.about-footer{max-width:1120px;margin:auto;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;border-bottom:1px solid #35464d}
+.about-nav .brand{font-size:.9rem;gap:.65rem;letter-spacing:.02em}
+.about-nav .brand img{width:40px;height:40px}
+.about-nav nav,.about-jump{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem}
+.about-page a{color:#70e6dc;text-underline-offset:4px;overflow-wrap:anywhere}
+.about-page a:focus-visible{outline:3px solid #70e6dc;outline-offset:4px}
+.about-nav a,.about-jump a,.about-link-grid a,.about-faq article>a,.about-footer>a{display:inline-flex;align-items:center;min-height:44px}
+.about-main{max-width:1000px;margin:auto;padding:3.5rem 1.5rem}
+.about-intro{padding-bottom:2.5rem}
+.about-intro h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.12;letter-spacing:-.04em;margin:1rem 0 1.5rem}
+.about-lede{max-width:760px;font-size:clamp(1.1rem,2.5vw,1.35rem);line-height:1.7;color:#d1ded9}
+.about-motto{color:#70e6dc;font-weight:750;margin:1.5rem 0}
+.about-reviewed{font-size:.82rem;color:#afc2ba;line-height:1.6}
+.about-jump{margin-top:1.5rem}
+.about-section{padding:2.5rem 0;border-top:1px solid #35464d;scroll-margin-top:1rem}
+.about-section h2{font-size:clamp(1.65rem,4vw,2.3rem);line-height:1.25;margin:.6rem 0 1.5rem;letter-spacing:-.025em}
+.about-section h3{font-size:1.2rem;line-height:1.45;margin:.75rem 0}
+.about-section p{color:#c4d3cd;font-size:1rem;line-height:1.8;max-width:780px}
+.about-facts{margin:1.5rem 0}
+.about-facts>div{display:grid;grid-template-columns:180px minmax(0,1fr);gap:1rem;border-bottom:1px solid #35464d;padding:1rem 0}
+.about-facts dt{font-weight:750;color:#eef5f2}
+.about-facts dd{margin:0;color:#c4d3cd;line-height:1.65;overflow-wrap:anywhere}
+.about-status-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.about-status-grid article{padding:1.5rem;background:#131e22;border:1px solid #35464d;border-radius:14px}
+.about-label{font-size:.7rem;letter-spacing:.08em;color:#70e6dc;font-weight:750}
+.about-faq article{padding:1.25rem 0;border-bottom:1px solid #35464d;scroll-margin-top:1rem}
+.about-faq article:last-child{border:0;padding-bottom:0}
+.about-faq article>a{font-size:.9rem;margin-right:1.25rem}
+.about-link-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem 1.5rem}
+.about-footer{border-top:1px solid #35464d;border-bottom:0;flex-wrap:wrap;font-size:.8rem;color:#afc2ba;line-height:1.7}
+@media(max-width:650px){.about-nav{align-items:flex-start;flex-direction:column}.about-main{padding:2.25rem 1.25rem}.about-facts>div{grid-template-columns:1fr;gap:.35rem}.about-status-grid,.about-link-grid{grid-template-columns:1fr}.about-status-grid article{padding:1.25rem}.about-section{padding:2rem 0}}

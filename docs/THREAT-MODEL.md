@@ -78,5 +78,6 @@ The server-side value-moving boundary is intentionally absent. Adding a treasury
 - Audit logging for the Alpha C.C.E. credit is best-effort after the atomic first-use credit; settlement must use an atomic outbox or equivalent transaction boundary.
 - The GEEK mint interface and its wallet-extension interaction have not completed an independent penetration test. A compromised wallet, client runtime, dependency, hosting account, or DNS path can mislead the user; the Kasware confirmation is the final independent review point.
 - Kasplex state may lag the Kaspa network. The wallet or network can reject a mint even after the page reports capacity, and displayed totals can update after a delay.
+- A paused mainnet KRC-20 payout worker is present. It uses the same journaled commit/reveal path as the GEEKT test worker. `MAINNET_PAYOUT_ENABLED` and `MAINNET_SIGNER_ENABLED` default to false, and `settlementEligible` / `withdrawalsEnabled` remain false. Enabling it still requires a separate review.
 
 These risks prohibit on-chain settlement. They are not waived by publishing this document.

@@ -28,7 +28,7 @@
   const nameDialog = $('[data-name-dialog]');
   const nameForm = $('form', nameDialog);
   let identity = localStorage.getItem(IDENTITY_KEY) || 'Guest Geek';
-  let serviceAvailable = false;
+  let serviceAvailable = false, refreshingRooms = false;
   let currentRoom = null;
   let heartbeatTimer = null;
   let roomListTimer = null;
@@ -37,19 +37,26 @@
   let matchClockOffset = 0;
   let matchLoading = false;
 
+  const roomError = code => ({
+    ROOM_FULL: 'That room is full. Choose another room or create your own.',
+    ROOM_NOT_MEMBER: 'Your room seat expired. Rejoin using the invitation link.',
+    MATCH_ALREADY_STARTED: 'This room already started. Choose another room or create a new one.',
+    MATCH_HOST_REQUIRED: 'Only the host can start this room. Wait for the host.',
+    ROOM_NOT_FOUND: 'That room has closed. Refresh rooms or create a new one.',
+    RATE_LIMITED: 'A few too many requests. Wait a moment, then refresh rooms.',
+    SESSION_REQUIRED: 'Your player connection expired. Refresh rooms to reconnect.',
+  })[code] || 'Live rooms are temporarily unavailable. Refresh rooms to reconnect; check your room before repeating an action.';
   const api = async (path, options = {}) => {
-    const response = await fetch(path, {
-      credentials: 'same-origin',
-      headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
-      ...options
-    });
-    const payload = await response.json().catch(() => ({}));
-    if (!response.ok) {
-      const error = new Error(payload.error || 'Community service unavailable.');
-      error.code = payload.code || response.status;
-      throw error;
-    }
-    return payload;
+    const controller = new AbortController(), deadline = setTimeout(() => controller.abort(), 15000);
+    try {
+      const response = await fetch(path, { credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json', ...(options.headers || {}) }, ...options, signal: controller.signal });
+      const payload = await response.json();
+      if (!response.ok) throw Object.assign(new Error(roomError(payload.code)), { code: payload.code || response.status });
+      return payload;
+    } catch (error) {
+      throw Object.assign(new Error(roomError(error.code)), { code: error.code });
+    } finally { clearTimeout(deadline); }
   };
 
   const escapeHtml = (value) => String(value ?? '').replace(/[&<>'"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character]);
@@ -194,7 +201,7 @@
   const renderRoomList = (rooms = []) => {
     const list = $('[data-live-rooms]');
     if (!rooms.length) {
-      list.innerHTML = `<div class="empty-room-list"><b>${serviceAvailable ? 'No public rooms are active yet.' : 'Live room board is offline.'}</b><span>${serviceAvailable ? 'Create the first room and share its code.' : 'Creating rooms resumes when the community service returns.'}</span></div>`;
+      list.innerHTML = `<div class="empty-room-list"><b>${serviceAvailable ? 'No public rooms are active yet.' : 'Live room board is offline.'}</b><span>${serviceAvailable ? 'Create the first room and share its code.' : 'Use Refresh rooms to reconnect, then choose or create a room.'}</span></div>`;
       return;
     }
     list.innerHTML = rooms.map((room) => `
@@ -293,7 +300,12 @@
       button.disabled = false;
     }
   });
-  $('[data-refresh-rooms]').addEventListener('click', loadRoomList);
+  $('[data-refresh-rooms]').addEventListener('click', async () => {
+    if (refreshingRooms) return; refreshingRooms = true; $('[data-refresh-rooms]').disabled = true;
+    try { if (!serviceAvailable) await syncSession(); await loadRoomList(); }
+    catch { setServiceState('offline', 'Live rooms unavailable. Use Refresh rooms to reconnect.'); renderRoomList([]); }
+    finally { refreshingRooms = false; $('[data-refresh-rooms]').disabled = false; }
+  });
 
   $('[data-start-match]').addEventListener('click', async (event) => {
     if (!currentRoom?.live || !currentRoom.isHost) return;

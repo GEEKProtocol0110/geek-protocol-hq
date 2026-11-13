@@ -13,7 +13,7 @@ const managed = new Set(['description','robots','theme-color', 'og:type','og:sit
 
 export function metadataFor(page, config) {
   const meta = (key, value) => `<meta ${key.startsWith('og:') ? 'property' : 'name'}="${key}" content="${escape(value)}" />`;
-  const lines = [`<title>${escape(page.title)}</title>`, meta('description',page.description),meta('theme-color','#080b0b'),meta('robots',page.index ? 'index,follow' : page.private ? 'noindex,nofollow' : 'noindex,follow'),'<link rel="icon" type="image/png" href="/assets/geek-protocol-logo.png" />'];
+  const lines = [`<title>${escape(page.title)}</title>`, meta('description',page.description),meta('theme-color','#000000'),meta('robots',page.index ? 'index,follow' : page.private ? 'noindex,nofollow' : 'noindex,follow'),'<link rel="manifest" href="/manifest.webmanifest" />','<link rel="apple-touch-icon" href="/assets/app/giga-apple-touch.png" />','<link rel="icon" type="image/png" href="/assets/geek-protocol-logo-v2.png" />'];
   if (!page.private) {
     const image = page.image || config.image, alt = page.imageAlt || config.imageAlt;
     const wide = (page.imageWidth || config.imageWidth) / (page.imageHeight || config.imageHeight) > 1.5;
@@ -26,7 +26,7 @@ export function renderMetadata(html, page, config) {
   return html.replace(/<head\b[^>]*>[\s\S]*?<\/head>/i, head => {
     head = head.replace(/<!-- site-metadata:(?:start|end) -->/g,'').replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi,'')
       .replace(/<meta\b[^>]*>/gi, tag => managed.has(attrs(tag).name || attrs(tag).property) ? '' : tag)
-      .replace(/<link\b[^>]*>/gi, tag => ['canonical','icon'].includes(attrs(tag).rel) ? '' : tag);
+      .replace(/<link\b[^>]*>/gi, tag => ['canonical','icon','manifest','apple-touch-icon'].includes(attrs(tag).rel) ? '' : tag);
     // Remove only blank lines left by the managed fields. Keep scripts/styles in order.
     head = head.replace(/^[ \t]*\r?\n/gm,'');
     assert.match(head, /<meta\b[^>]*charset\s*=/i, page.file);
@@ -51,6 +51,11 @@ export function checkSitePages({ write = false } = {}) {
     const image = page.image || config.image;
     assert.ok(existsSync(`public${image}`),'Share image must be a local asset');
     const input = readFileSync(page.file,'utf8'), html = renderMetadata(input,page,config);
+    if (page.file.startsWith('public/')) {
+      assert.equal([...html.matchAll(/<main\b/gi)].length, 1, `Expected one main landmark: ${page.file}`);
+      for (const tag of html.matchAll(/<img\b[^>]*>/gi)) assert.ok(Object.hasOwn(attrs(tag[0]), 'alt'), `Image needs an alt attribute: ${page.file}`);
+      for (const tag of html.matchAll(/<nav\b[^>]*>/gi)) { const a = attrs(tag[0]); assert.ok(a['aria-label'] || a['aria-labelledby'], `Navigation needs a label: ${page.file}`); }
+    }
     assert.equal(renderMetadata(html,page,config),html,'Metadata generation must be idempotent');
     if (page.file.startsWith('public/') && /\bsrc=["'][^"']*(?:site|characters)\.js/.test(html)) {
       const styles = [...html.matchAll(/<link\b[^>]*>/gi)].map(m => attrs(m[0])).filter(a => a.rel === 'stylesheet');
