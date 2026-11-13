@@ -2,6 +2,7 @@
 // Restart reads the durable journal before any transaction construction.
 // Fee repair stays optional: this worker does not offer it unless a signer implements repair.
 import { reportFailure, reportJournalState } from './diagnostics.mjs';
+import { privateRankedProof } from './eligibility.mjs';
 import { jobMacMatches, jobMacSecret } from './job-mac.mjs';
 export async function processPayment({ request, signer, report }) {
   const step = async (stage, action) => {
@@ -18,6 +19,11 @@ export async function processPayment({ request, signer, report }) {
   };
   try {
     if (!job) return 'idle';
+    if (!privateRankedProof(job.proof)) {
+      const error = new Error('PRIVATE_RANKED_PROOF_REQUIRED');
+      reportFailure('verify', error, report);
+      throw error;
+    }
     if (!jobMacMatches(job, jobMacSecret())) {
       const error = new Error('JOB_MAC_INVALID');
       reportFailure('verify', error, report);

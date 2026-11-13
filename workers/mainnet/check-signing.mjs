@@ -13,7 +13,8 @@ const sender = key.toPublicKey().toAddress('mainnet').toString();
 const recipient = new Wasm.PrivateKey('2'.padStart(64, '0')).toPublicKey().toAddress('mainnet').toString();
 const hmacSecret = 'cd'.repeat(32);
 const mac = value => ({ ...value, mac: jobMac(value, hmacSecret) });
-const job = mac({ network: 'mainnet', sender, recipient, ticker: 'GEEK', amount: toRaw(DAILY_WHOLE), proof: { kind: 'daily', round: 1, correctCount: 1 } });
+const proofContext = { runId: 'a'.repeat(40), bankVersion: 'f'.repeat(64), season: 'season-1' };
+const job = mac({ network: 'mainnet', sender, recipient, ticker: 'GEEK', amount: toRaw(DAILY_WHOLE), proof: { ...proofContext, kind: 'daily', round: 1, correctCount: 1, answered: 5 } });
 const entry = { address: sender, amount: 2000000000n, outpoint: { transactionId: 'a'.repeat(64), index: 2 },
   scriptPublicKey: Wasm.payToAddressScript(key.toPublicKey().toAddress('mainnet')), blockDaaScore: 0n, isCoinbase: false };
 const fixturePolicy = { ...livePolicy, sender, syntheticFixture: true, jobHmacSecret: hmacSecret };
@@ -54,11 +55,11 @@ test('journal rehydration preserves signed bytes and the live policy rejects the
     rehydrated.free();
   }
   await assert.rejects(prepareTransactions(key, job, [entry]), /JOB_MAC_INVALID|SIGNER_POLICY_MISMATCH/);
-  const partial = mac({ ...job, amount: toRaw(70), proof: { kind: 'gauntlet', round: 1, correctCount: 7 }, mac: undefined });
+  const partial = mac({ ...job, amount: toRaw(70), proof: { ...proofContext, kind: 'gauntlet', round: 1, correctCount: 7, answered: 10 }, mac: undefined });
   const signed = await prepareTransactions(key, partial, [entry], fixturePolicy);
   assert.notEqual(signed.commit.id, signed.reveal.id);
   await assert.rejects(prepareTransactions(key, { ...partial, amount: toRaw(100) }, [entry], fixturePolicy), /JOB_MAC_INVALID/);
-  const oneInRoundTen = mac({ ...job, amount: toRaw(1800), proof: { kind: 'gauntlet', round: 10, correctCount: 1 }, mac: undefined });
+  const oneInRoundTen = mac({ ...job, amount: toRaw(1800), proof: { ...proofContext, kind: 'gauntlet', round: 10, correctCount: 1, answered: 10 }, mac: undefined });
   const roundTen = await prepareTransactions(key, oneInRoundTen, [entry], fixturePolicy);
   assert.notEqual(roundTen.commit.id, roundTen.reveal.id);
   await assert.rejects(prepareTransactions(key, mac({ ...oneInRoundTen, amount: toRaw(18000), mac: undefined }), [entry], fixturePolicy), /SIGNER_POLICY_MISMATCH/);
@@ -101,5 +102,22 @@ test('the local worker does not read the signing key while paused', async () => 
     assert.equal(result.code, 0);
     assert.match(result.output, /mainnet worker: paused/);
     assert.equal(result.output.includes(marker), false);
+  }
+});
+
+
+test('signing refuses public, legacy, Season 0 and incomplete answer proofs before RPC inputs or transaction construction', async () => {
+  for (const fields of [{ bankVersion: undefined }, { bankVersion: 'public' }, { season: 'season-0' },
+    { season: undefined }, { answered: 4 }, { runId: '' }, { unranked: true }, { correctCount: 0 }]) {
+    const bad = mac({ ...job, proof: { ...job.proof, ...fields } });
+    await assert.rejects(prepareTransactions(key, bad, [entry], fixturePolicy), /PRIVATE_RANKED_PROOF_REQUIRED/);
+    const signer = createSigner('1'.padStart(64, '0'), {
+      getServerInfo() { assert.fail('Invalid proof cannot reach RPC'); },
+      getUtxosByAddresses() { assert.fail('Invalid proof cannot request signing inputs'); }
+    });
+    try {
+      await assert.rejects(signer.verify({}, bad), /PRIVATE_RANKED_PROOF_REQUIRED/);
+      await assert.rejects(signer.prepare({}, bad), /PRIVATE_RANKED_PROOF_REQUIRED/);
+    } finally { signer.close(); }
   }
 });

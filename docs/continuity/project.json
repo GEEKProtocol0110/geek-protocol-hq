@@ -259,8 +259,14 @@
   },
   "homeAccountWallet": {
     "task": "UX-029",
-    "status": "source-candidate",
+    "status": "merged-deployed-http-verified",
     "evidence": "docs/HOME-ACCOUNT-WALLET.md",
-    "nextAction": "Review the main-based home account / receiving-wallet fix. Home My HQ reflects the current server session; Switch wallet prepares a passkey-confirmed receiving-address change. Release and real-device acceptance remain pending; held bank work remains separate."
+    "nextAction": "PR #287 merged e177a551e22c3ff948af6a569d954e6a87cd0327; production dpl_GtxZPNWRU3q6d48qJyhVrHm6oeSg READY with exact canonical home/profile/rewards HTML and account/receiving clients HTTP-verified. Actual-device acceptance remains separate."
+  },
+  "mainnetPrivateProof": {
+    "task": "CHAIN-007",
+    "status": "source-candidate",
+    "evidence": "docs/MAINNET-GEEK-PAYOUT.md",
+    "nextAction": "Review strict private-bank/season payout eligibility and v2 proof MAC binding before release. The public Alpha remains nonpayable even if flags are mistakenly enabled. Complete held private-bank integration and independent review before any enable; preserve/quarantine incompatible records instead of upgrading or re-signing them."
   }
 }
