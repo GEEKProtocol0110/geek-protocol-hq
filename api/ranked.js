@@ -331,8 +331,8 @@ export default async function handler(req, res) {
       const category = categories.has(body.category) ? body.category : 'kaspa';
       const mode = Object.hasOwn(MODE_CONFIG, body.mode) ? body.mode : 'gauntlet';
       const focus = ['ghostdag', 'builders'].includes(body.focus) ? body.focus : '';
-      const profile = await loadProfile(playerId);
       const binding = await rankedRunBinding();
+      const profile = await loadProfile(playerId);
       const run = {
         ...binding, feedback: 'deferred',
         id: randomBytes(20).toString('hex'), sessionId: session.id, category, focus, mode, round: 1,

@@ -5,7 +5,8 @@
 //
 //   GEEK_SEASON_1_START_MONTH=YYYY-MM   (UTC calendar month in which Season 1 starts)
 //
-//   season number = max(1, (UTC month of `now`) - (start month) + 1)
+//   season number = (UTC month of `now`) - (start month) + 1
+//   Before the configured month, private ranked starts fail closed.
 //
 // When the variable is unset, monthly rollover is OFF and every private-bank run
 // stays in Season 1 (the pre-monthly behaviour). An invalid value fails closed for
@@ -37,7 +38,9 @@ const monthIndexAt = (now) => {
 export const currentSeasonNumber = (now = Date.now(), env = process.env) => {
   const config = seasonConfig(env);
   if (!config.monthly) return 1;
-  return Math.min(MAX_SEASON_NUMBER, Math.max(1, monthIndexAt(now) - config.startIndex + 1));
+  const number = monthIndexAt(now) - config.startIndex + 1;
+  if (number < 1) throw new Error('SEASON_NOT_STARTED');
+  return Math.min(MAX_SEASON_NUMBER, number);
 };
 
 const monthLabel = (index) => `${MONTHS[index % 12]} ${Math.floor(index / 12)}`;
@@ -89,7 +92,10 @@ export const assertWritableLeaderboardSeason = (id) => {
 // Viewable boards: Season 0 plus every private season up to the current one.
 export const leaderboardSeasonIds = (now = Date.now(), env = process.env) => {
   let current = 1;
-  try { current = currentSeasonNumber(now, env); } catch { current = 1; }
+  try { current = currentSeasonNumber(now, env); } catch (error) {
+    if (error.message === 'SEASON_NOT_STARTED') return ['legacy'];
+    current = 1;
+  }
   return ['legacy', ...Array.from({ length: current }, (_, i) => `season-${i + 1}`)];
 };
 

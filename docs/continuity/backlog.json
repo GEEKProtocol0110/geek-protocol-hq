@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-02",
+  "updatedAt": "2026-11-13",
   "priorityOrder": [
     "P0",
     "P1",
@@ -1422,14 +1422,15 @@
       "status": "in-progress",
       "title": "Serve future ranked questions and answers from private storage; treat published banks as exposed",
       "owner": "Maintainer; founder selects private storage and approves rollout",
-      "nextAction": "Review the assembled #200/#206/#207/#213 candidate on current main. Resolve the immutable pin, bounded playable Preview plan and pre-start season behavior before requesting production cutover.",
+      "nextAction": "Review the pre-start refusal follow-up stacked on #231. Then reconcile the old private-bank assembly with current main, obtain the approved immutable artifact and design the isolated rehearsal. Do not cut over production or enable rewards.",
       "acceptance": [
         "Ranked rounds draw only from a configured private source or fail closed in production.",
         "Published and retired public rows stay addressable so saved runs grade with their original keys; private IDs cannot collide with them.",
         "Issued questions never include correctIndex; a public fixture bank with no real answers supports dev/tests.",
         "Payouts stay disabled.",
         "Play and My HQ default to the current ranked season, label every board and preserve selectable Season 0 history.",
-        "Deferred answer recovery confirms saving without showing correctness before round lock."
+        "Deferred answer recovery confirms saving without showing correctness before round lock.",
+        "Before a configured private season begins, refuse new private ranked starts without a question, run, season pin or gameplay/profile mutation; read-only Season 0 history remains available."
       ],
       "dependsOn": [],
       "evidence": [
@@ -1446,7 +1447,8 @@
         "#180 merged as a3b2441f82636e511658be09d47a7171b89472d4; #198 merged as 33f74c0aee05e416f91b8331cf4236d9ddd758a4. Main tree matches reviewed f8521cbee17e406085d080c9558cb69c56185665. Production dpl_7VJFZmLJ9NqZdhbx8b6s1bGFehFg is READY on the #198 merge. #200 remains draft and unmerged.",
         "Browser candidate based on #200 head 981c9f6e396ddd3869be49ad6d56629b4d947f19: current-season queries, explicit historical season choices, labeled empty boards and deferred reconnect text. Focused client/API tests: 73 passed, zero failures/skips. This is synthetic client verification, not restricted Preview or phone acceptance.",
         "Full browser-candidate npm run verify with required native Redis 7.0.15: 738 HQ tests + nine offline signer checks = 747 passed, zero failures/skips, all supporting checks passed. #200 still requires private-bank/restricted-Preview acceptance before cutover.",
-        "Assembled on main 12a0228 with all four exact input heads. Full native-Redis verify: 893 HQ tests, 892 passed, zero failed, one root-only permission skip; nine signer checks and all supporting checks passed. Added safe JSON CLI errors and mandatory concept IDs in authoring tooling with synthetic regressions. No real private bank content or provider setting changed; hosted playable rehearsal remains blocked by missing immutable pin and Preview write guard."
+        "Assembled on main 12a0228 with all four exact input heads. Full native-Redis verify: 893 HQ tests, 892 passed, zero failed, one root-only permission skip; nine signer checks and all supporting checks passed. Added safe JSON CLI errors and mandatory concept IDs in authoring tooling with synthetic regressions. No real private bank content or provider setting changed; hosted playable rehearsal remains blocked by missing immutable pin and Preview write guard.",
+        "November 13 source candidate on #231: 103 focused synthetic bank/leak/resilience/season tests pass, including exact December UTC boundary and no non-rate-limit writes before start. Current-main integration and real-bank/hosted rehearsal acceptance remain separate."
       ]
     }
   ]
