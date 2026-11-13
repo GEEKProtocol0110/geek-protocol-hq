@@ -59,10 +59,13 @@ test('automatic dates cover moving holidays, Easter and the December/January bou
 test('all holiday palettes retain readable accent text and dark primary-button text', () => {
   const css = readFileSync(new URL('../public/assets/holiday-theme.css', import.meta.url), 'utf8');
   const luminance = hex => { const values = hex.match(/[a-f0-9]{2}/gi).map(x => parseInt(x, 16) / 255).map(x => x <= .04045 ? x / 12.92 : ((x + .055) / 1.055) ** 2.4); return .2126 * values[0] + .7152 * values[1] + .0722 * values[2]; };
-  const preserved = { 'new-year': '#ffe19b', valentines: '#ffc2d9', 'presidents-day': '#ffccd1', 'st-patricks': '#e1ec9e', easter: '#ead3ff', 'memorial-day': '#ffccd1', 'independence-day': '#ffccd1', 'labor-day': '#d8e7ff', halloween: '#ffbd70', 'veterans-day': '#ffccd1', thanksgiving: '#ffd299', christmas: '#ffe2a3' };
-  for (const holiday of HOLIDAYS) assert.ok(css.includes(`[data-holiday-theme='${holiday.id}']`), holiday.id);
-  for (const [id, gold] of Object.entries(preserved)) assert.ok(css.includes(gold) && css.includes(`[data-holiday-theme='${id}']`), id);
-  for (const holiday of HOLIDAYS) if (holiday.tokens) for (const token of [holiday.tokens.gold, holiday.tokens.goldBright, holiday.tokens.cyan, holiday.tokens.glow, holiday.tokens.cool, holiday.tokens.fringe]) assert.ok(css.includes(token), `${holiday.id} ${token}`);
+  for (const holiday of HOLIDAYS) {
+    assert.ok(css.includes(`[data-holiday-theme='${holiday.id}']`), holiday.id);
+    assert.equal(holiday.marks?.length, 3, holiday.id);
+    for (const token of [holiday.tokens.gold, holiday.tokens.goldBright, holiday.tokens.cyan, holiday.tokens.glow, holiday.tokens.cool, holiday.tokens.fringe]) assert.ok(css.includes(token), `${holiday.id} ${token}`);
+  }
+  const marks = readFileSync(new URL('../public/assets/holiday-marks.js', import.meta.url), 'utf8');
+  assert.doesNotMatch(marks, /url\(|https?:\/\/(?!www\.w3\.org\/2000\/svg)/);
   for (const match of css.matchAll(/--(?:gold|cyan):#([a-f0-9]{6})/gi)) assert.ok((luminance(match[1]) + .05) / (luminance('151b1b') + .05) >= 4.5, match[0]);
   assert.doesNotMatch(css, /animation:|@keyframes|url\(/);
   assert.doesNotMatch(css, /giga-portrait|hq-holiday-greeting/);

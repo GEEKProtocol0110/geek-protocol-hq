@@ -4,6 +4,7 @@ export const HOLIDAY_TIMEZONE = 'America/Detroit';
 const entry = holiday => Object.freeze({
   ...holiday,
   motifs: Object.freeze([...holiday.motifs]),
+  ...(holiday.marks ? { marks: Object.freeze([...holiday.marks]) } : {}),
   window: Object.freeze({
     ...holiday.window,
     ...(holiday.window.start ? { start: Object.freeze([...holiday.window.start]), end: Object.freeze([...holiday.window.end]) } : {})
@@ -13,80 +14,80 @@ const entry = holiday => Object.freeze({
 
 // Priority bands: 90 Kaspa birthday and Geek Protocol birthday, 80 other Kaspa milestones, 70 other crypto days,
 // 50 short civic days, 30 medium windows, 20 long seasonal windows, 0 manual-only.
-// Existing civic and seasonal palettes stay in holiday-theme.css; tokens below are only for days added with this catalog.
+// marks are in-repo stroke ids drawn by holiday-marks.js. tokens match holiday-theme.css.
 export const HOLIDAYS = Object.freeze([
-  { id: 'new-year', label: "New Year's", group: 'seasonal', icon: '✦', greeting: 'A new year of discovery', when: 'Dec 29–Jan 2', priority: 30, motifs: ['✦', '✧', '✦'], window: { type: 'annual', start: [12, 29], end: [1, 2] } },
-  { id: 'valentines', label: "Valentine's Day", group: 'seasonal', icon: '♡', greeting: 'Share a little knowledge and kindness', when: 'Feb 12–15', priority: 30, motifs: ['♡', '♥', '♡'], window: { type: 'annual', start: [2, 12], end: [2, 15] } },
-  { id: 'presidents-day', label: "Presidents' Day", group: 'civic', icon: '★', greeting: 'Discover the stories that shaped us', when: 'Third Monday in February', priority: 50, motifs: ['★', '☆', '★'], window: { type: 'nth-weekday', month: 2, weekday: 1, nth: 3 } },
-  { id: 'st-patricks', label: "St. Patrick's Day", group: 'seasonal', icon: '☘', greeting: 'A little luck. A lot of learning.', when: 'Mar 16–18', priority: 50, motifs: ['☘', '✧', '☘'], window: { type: 'annual', start: [3, 16], end: [3, 18] } },
-  { id: 'easter', label: 'Easter', group: 'seasonal', icon: '✝', greeting: 'Hope, renewal, and new beginnings', when: 'Palm Sunday–Easter Monday', priority: 20, motifs: ['✝', '🌷', '✧'], window: { type: 'easter-relative', from: -7, to: 1 } },
-  { id: 'memorial-day', label: 'Memorial Day', group: 'civic', icon: '★', greeting: 'Remember and honor', when: 'Friday–last Monday in May', priority: 30, motifs: ['★', '❧', '★'], window: { type: 'nth-weekday', month: 5, weekday: 1, nth: 'last', from: -3, to: 0 } },
-  { id: 'independence-day', label: 'Independence Day', group: 'civic', icon: '★', greeting: 'Celebrate independence and curiosity', when: 'Jul 1–5', priority: 30, motifs: ['★', '✦', '☆'], window: { type: 'annual', start: [7, 1], end: [7, 5] } },
-  { id: 'labor-day', label: 'Labor Day', group: 'civic', icon: '⚒', greeting: 'Celebrate the people who build', when: 'Friday–first Monday in September', priority: 30, motifs: ['⚒', '⚙', '✦'], window: { type: 'nth-weekday', month: 9, weekday: 1, nth: 1, from: -3, to: 0 } },
-  { id: 'halloween', label: 'Halloween', group: 'seasonal', icon: '🎃', greeting: 'A little spooky. A lot of Geek.', when: 'Oct 24–30', priority: 20, motifs: ['🎃', '☾', '✧'], window: { type: 'annual', start: [10, 24], end: [10, 30] } },
-  { id: 'veterans-day', label: 'Veterans Day', group: 'civic', icon: '★', greeting: 'Honor those who served', when: 'Nov 10–12', priority: 50, motifs: ['★', '❧', '★'], window: { type: 'annual', start: [11, 10], end: [11, 12] } },
-  { id: 'thanksgiving', label: 'Thanksgiving', group: 'seasonal', icon: '🍂', greeting: 'Grateful for every curious mind', when: 'Monday–Sunday of Thanksgiving week', priority: 30, motifs: ['🍂', '❧', '🍁'], window: { type: 'nth-weekday', month: 11, weekday: 4, nth: 4, from: -3, to: 3 } },
-  { id: 'christmas', label: 'Christmas', group: 'seasonal', icon: '🎄', greeting: 'Merry Christmas, Geeks', when: 'Dec 1–26', priority: 20, motifs: ['❄', '✦', '🎄'], window: { type: 'annual', start: [12, 1], end: [12, 26] } },
+  { id: 'new-year', label: "New Year's", group: 'seasonal', icon: '✦', greeting: 'A new year of discovery', when: 'Dec 29–Jan 2', priority: 30, motifs: ['✦', '✧', '✦'], marks: ['terminal', 'star', 'hex'], window: { type: 'annual', start: [12, 29], end: [1, 2] }, tokens: { gold: '#ffe19b', goldBright: '#ffedc3', cyan: '#c8d8ff', glow: 'rgba(157,121,48,.18)', cool: 'rgba(91,110,191,.15)', fringe: 'repeating-linear-gradient(105deg,#ffe19b 0 10px,#152544 10px 23px,#b2caff 23px 26px)' } },
+  { id: 'valentines', label: "Valentine's Day", group: 'seasonal', icon: '♡', greeting: 'Share a little knowledge and kindness', when: 'Feb 12–15', priority: 30, motifs: ['♡', '♥', '♡'], marks: ['heart', 'dag', 'hex'], window: { type: 'annual', start: [2, 12], end: [2, 15] }, tokens: { gold: '#ffc2d9', goldBright: '#ffdeeb', cyan: '#e0ccff', glow: 'rgba(172,64,109,.18)', cool: 'rgba(133,84,169,.12)', fringe: 'repeating-linear-gradient(105deg,#e681a9 0 10px,#42243e 10px 22px,#c2a1ed 22px 25px)' } },
+  { id: 'presidents-day', label: "Presidents' Day", group: 'civic', icon: '★', greeting: 'Discover the stories that shaped us', when: 'Third Monday in February', priority: 50, motifs: ['★', '☆', '★'], marks: ['terminal', 'star', 'tablet'], window: { type: 'nth-weekday', month: 2, weekday: 1, nth: 3 }, tokens: { gold: '#e8d9a8', goldBright: '#f4ebc8', cyan: '#b9d4f5', glow: 'rgba(140,110,50,.16)', cool: 'rgba(45,80,130,.16)', fringe: 'repeating-linear-gradient(90deg,#e8d9a8 0 14px,#1c2430 14px 28px,#3d5f8a 28px 32px)' } },
+  { id: 'st-patricks', label: "St. Patrick's Day", group: 'seasonal', icon: '☘', greeting: 'A little luck. A lot of learning.', when: 'Mar 16–18', priority: 50, motifs: ['☘', '✧', '☘'], marks: ['shamrock', 'hex', 'terminal'], window: { type: 'annual', start: [3, 16], end: [3, 18] }, tokens: { gold: '#e1ec9e', goldBright: '#f0f6c7', cyan: '#a9efbe', glow: 'rgba(60,146,86,.18)', cool: 'rgba(141,158,54,.12)', fringe: 'repeating-linear-gradient(105deg,#315f3c 0 16px,#c6d777 16px 20px,#123e2e 20px 36px)' } },
+  { id: 'easter', label: 'Easter', group: 'seasonal', icon: '✝', greeting: 'Hope, renewal, and new beginnings', when: 'Palm Sunday–Easter Monday', priority: 20, motifs: ['✝', '🌷', '✧'], marks: ['cross', 'bud', 'hex'], window: { type: 'easter-relative', from: -7, to: 1 }, tokens: { gold: '#ead3ff', goldBright: '#f5e8ff', cyan: '#a9efe2', glow: 'rgba(141,104,181,.18)', cool: 'rgba(70,151,124,.12)', fringe: 'repeating-linear-gradient(105deg,#bba0da 0 18px,#8bcbbb 18px 36px,#e7d6a7 36px 54px)' } },
+  { id: 'memorial-day', label: 'Memorial Day', group: 'civic', icon: '★', greeting: 'Remember and honor', when: 'Friday–last Monday in May', priority: 30, motifs: ['★', '❧', '★'], marks: ['star', 'line', 'hex'], window: { type: 'nth-weekday', month: 5, weekday: 1, nth: 'last', from: -3, to: 0 }, tokens: { gold: '#e6d3a3', goldBright: '#f0e6c4', cyan: '#c9d4ce', glow: 'rgba(110,90,50,.12)', cool: 'rgba(40,55,70,.16)', fringe: 'linear-gradient(90deg,#2a3544,#e6d3a3,#1e2833)' } },
+  { id: 'independence-day', label: 'Independence Day', group: 'civic', icon: '★', greeting: 'Celebrate independence and curiosity', when: 'Jul 1–5', priority: 30, motifs: ['★', '✦', '☆'], marks: ['burst', 'star', 'hex'], window: { type: 'annual', start: [7, 1], end: [7, 5] }, tokens: { gold: '#ffd38a', goldBright: '#ffe7b8', cyan: '#b2d7ff', glow: 'rgba(170,59,71,.14)', cool: 'rgba(63,121,192,.16)', fringe: 'repeating-linear-gradient(105deg,#ffd38a 0 12px,#f4efe4 12px 18px,#9c3546 18px 20px,#264b81 20px 32px)' } },
+  { id: 'labor-day', label: 'Labor Day', group: 'civic', icon: '⚒', greeting: 'Celebrate the people who build', when: 'Friday–first Monday in September', priority: 30, motifs: ['⚒', '⚙', '✦'], marks: ['gear', 'hex', 'robot'], window: { type: 'nth-weekday', month: 9, weekday: 1, nth: 1, from: -3, to: 0 }, tokens: { gold: '#d8e7ff', goldBright: '#ecf3ff', cyan: '#a9e4f5', glow: 'rgba(63,118,174,.18)', cool: 'rgba(94,165,170,.12)', fringe: 'repeating-linear-gradient(105deg,#467a98 0 16px,#b2dce6 16px 20px,#e8c56e 20px 24px,#1b3347 24px 40px)' } },
+  { id: 'halloween', label: 'Halloween', group: 'seasonal', icon: '🎃', greeting: 'A little spooky. A lot of Geek.', when: 'Oct 24–30', priority: 20, motifs: ['🎃', '☾', '✧'], marks: ['terminal', 'hex', 'robot'], window: { type: 'annual', start: [10, 24], end: [10, 30] }, tokens: { gold: '#ffbd70', goldBright: '#ffdaac', cyan: '#dfbbff', glow: 'rgba(166,91,38,.18)', cool: 'rgba(114,65,162,.17)', fringe: 'repeating-linear-gradient(105deg,#cf792d 0 18px,#27172e 18px 36px,#9e79bb 36px 40px)' } },
+  { id: 'veterans-day', label: 'Veterans Day', group: 'civic', icon: '★', greeting: 'Honor those who served', when: 'Nov 10–12', priority: 50, motifs: ['★', '❧', '★'], marks: ['ribbon', 'star', 'line'], window: { type: 'annual', start: [11, 10], end: [11, 12] }, tokens: { gold: '#e6d3a3', goldBright: '#f3e8c6', cyan: '#b7cce8', glow: 'rgba(90,50,55,.12)', cool: 'rgba(40,70,110,.16)', fringe: 'linear-gradient(90deg,#6e3a42,#e6d3a3,#2c4d72)' } },
+  { id: 'thanksgiving', label: 'Thanksgiving', group: 'seasonal', icon: '🍂', greeting: 'Grateful for every curious mind', when: 'Monday–Sunday of Thanksgiving week', priority: 30, motifs: ['🍂', '❧', '🍁'], marks: ['terminal', 'hex', 'robot'], window: { type: 'nth-weekday', month: 11, weekday: 4, nth: 4, from: -3, to: 3 }, tokens: { gold: '#ffd299', goldBright: '#ffe9cb', cyan: '#e4d2a1', glow: 'rgba(167,100,39,.18)', cool: 'rgba(146,116,68,.14)', fringe: 'repeating-linear-gradient(105deg,#9b5835 0 16px,#c6a259 16px 22px,#70e6dc 22px 24px,#493721 24px 40px)' } },
+  { id: 'christmas', label: 'Christmas', group: 'seasonal', icon: '🎄', greeting: 'Merry Christmas, Geeks', when: 'Dec 1–26', priority: 20, motifs: ['❄', '✦', '🎄'], marks: ['tree', 'hex', 'star'], window: { type: 'annual', start: [12, 1], end: [12, 26] }, tokens: { gold: '#ffe2a3', goldBright: '#fff0d0', cyan: '#92e7b6', glow: 'rgba(157,51,60,.16)', cool: 'rgba(44,127,76,.20)', fringe: 'repeating-linear-gradient(105deg,#963544 0 16px,#e8e0c5 16px 22px,#2b6247 22px 38px,#e8e0c5 38px 44px)' } },
   {
     id: 'kaspa-birthday', label: "Kaspa's Birthday", group: 'kaspa', icon: '✦', greeting: 'Happy Birthday, Kaspa.', when: 'Nov 6–8', priority: 90,
-    motifs: ['✦', '◇', '⬡'], window: { type: 'annual', start: [11, 6], end: [11, 8] },
-    tokens: { gold: '#d9fff6', goldBright: '#f4fffc', cyan: '#7dffe6', glow: 'rgba(73, 234, 203, .22)', cool: 'rgba(56, 147, 135, .18)', fringe: 'repeating-linear-gradient(105deg,#49eacb 0 10px,#0b1210 10px 22px,#70e6dc 22px 26px)' },
+    motifs: ['✦', '◇', '⬡'], marks: ['candle', 'hex', 'robot'], window: { type: 'annual', start: [11, 6], end: [11, 8] },
+    tokens: { gold: '#c8fff4', goldBright: '#e7fffb', cyan: '#49eacb', glow: 'rgba(73,234,203,.20)', cool: 'rgba(56,147,135,.16)', fringe: 'repeating-linear-gradient(105deg,#49eacb 0 8px,#0b1210 8px 16px,#c8fff4 16px 20px)' },
     source: 'https://wiki.kaspa.org/en/tokenomics'
   },
   {
     id: 'bitcoin-genesis', label: 'Bitcoin Genesis', group: 'bitcoin', icon: '▣', greeting: 'The first block.', when: 'Jan 3', priority: 70,
-    motifs: ['▣', '✦', '▣'], window: { type: 'one-day', month: 1, day: 3 },
-    tokens: { gold: '#ffe7a8', goldBright: '#fff3cc', cyan: '#d5e2ff', glow: 'rgba(196, 154, 62, .16)', cool: 'rgba(36, 58, 112, .20)', fringe: 'repeating-linear-gradient(90deg,#142033 0 16px,#e6c56a 16px 20px,#142033 20px 36px)' },
+    motifs: ['▣', '✦', '▣'], marks: ['tablet', 'spark', 'hex'], window: { type: 'one-day', month: 1, day: 3 },
+    tokens: { gold: '#ffe19b', goldBright: '#fff0c4', cyan: '#c8d8ff', glow: 'rgba(157,121,48,.16)', cool: 'rgba(30,45,90,.20)', fringe: 'repeating-linear-gradient(90deg,#142033 0 16px,#ffe19b 16px 20px,#1a1a1a 20px 36px)' },
     source: 'https://help.blockstream.com/education/glossary/genesis-block'
   },
   {
     id: 'bitcoin-pizza-day', label: 'Bitcoin Pizza Day', group: 'bitcoin', icon: '◔', greeting: 'A first meal, paid on a new network.', when: 'May 22', priority: 70,
-    motifs: ['◔', '▭', '✦'], window: { type: 'one-day', month: 5, day: 22 },
-    tokens: { gold: '#ffd7a3', goldBright: '#ffe8c6', cyan: '#ffd0a8', glow: 'rgba(176, 98, 32, .18)', cool: 'rgba(120, 64, 24, .14)', fringe: 'repeating-linear-gradient(105deg,#e0a15a 0 14px,#3a2416 14px 28px,#f0c48a 28px 32px)' },
+    motifs: ['◔', '▭', '✦'], marks: ['pizza', 'hex', 'tablet'], window: { type: 'one-day', month: 5, day: 22 },
+    tokens: { gold: '#ffc48a', goldBright: '#ffe0c0', cyan: '#f0d0a0', glow: 'rgba(170,90,30,.18)', cool: 'rgba(120,80,40,.12)', fringe: 'repeating-linear-gradient(105deg,#ffc48a 0 12px,#6b3e22 12px 24px,#70e6dc 24px 26px)' },
     source: 'https://www.guinnessworldrecords.com/world-records/696240-first-commercial-bitcoin-transaction'
   },
   {
     id: 'ethereum-launch', label: 'Ethereum Launch', group: 'ethereum', icon: '◆', greeting: 'A world computer, still being learned.', when: 'Jul 29–31', priority: 70,
-    motifs: ['◆', '✦', '◇'], window: { type: 'annual', start: [7, 29], end: [7, 31] },
-    tokens: { gold: '#e6d4ff', goldBright: '#f4ebff', cyan: '#9af0e2', glow: 'rgba(124, 82, 186, .18)', cool: 'rgba(56, 147, 135, .16)', fringe: 'repeating-linear-gradient(105deg,#8d6cc4 0 14px,#12302c 14px 28px,#49eacb 28px 32px)' },
+    motifs: ['◆', '✦', '◇'], marks: ['diamond', 'hex', 'dag'], window: { type: 'annual', start: [7, 29], end: [7, 31] },
+    tokens: { gold: '#c9b6ff', goldBright: '#e4d9ff', cyan: '#70e6dc', glow: 'rgba(120,90,180,.16)', cool: 'rgba(56,147,135,.12)', fringe: 'repeating-linear-gradient(105deg,#c9b6ff 0 12px,#121816 12px 24px,#70e6dc 24px 28px)' },
     source: 'https://blog.ethereum.org/2015/07/30/ethereum-launches'
   },
   {
     id: 'krc20-launch', label: 'KRC-20 Launch', group: 'kaspa', icon: '⌬', greeting: 'Tokens on Kaspa, made for building.', when: 'Sep 14–16', priority: 80,
-    motifs: ['⌬', '▣', '✦'], window: { type: 'annual', start: [9, 14], end: [9, 16] },
-    tokens: { gold: '#d4fff3', goldBright: '#f0fffb', cyan: '#b7e7ff', glow: 'rgba(73, 234, 203, .16)', cool: 'rgba(70, 140, 190, .14)', fringe: 'repeating-linear-gradient(105deg,#49eacb 0 8px,#123038 8px 18px,#b7e7ff 18px 22px,#123038 22px 34px)' },
+    motifs: ['⌬', '▣', '✦'], marks: ['tablet', 'seal', 'hex'], window: { type: 'annual', start: [9, 14], end: [9, 16] },
+    tokens: { gold: '#c8fff4', goldBright: '#e7fffb', cyan: '#70e6dc', glow: 'rgba(73,234,203,.16)', cool: 'rgba(80,120,160,.12)', fringe: 'repeating-linear-gradient(105deg,#70e6dc 0 6px,#123038 6px 16px,#e8c56e 16px 18px,#123038 18px 30px)' },
     source: 'https://minerbases.com/krc-20-mainnet-launch-announcement/'
   },
   {
     id: 'bitcoin-whitepaper', label: 'Bitcoin Whitepaper Day', group: 'bitcoin', icon: '§', greeting: 'A peer-to-peer electronic cash system.', when: 'Oct 31', priority: 70,
-    motifs: ['§', '✦', '¶'], window: { type: 'one-day', month: 10, day: 31 },
-    tokens: { gold: '#f3e2b8', goldBright: '#fff6e2', cyan: '#ead7b0', glow: 'rgba(168, 132, 64, .16)', cool: 'rgba(90, 70, 40, .14)', fringe: 'repeating-linear-gradient(90deg,#3a3224 0 12px,#e6d2a4 12px 14px,#3a3224 14px 26px)' },
+    motifs: ['§', '✦', '¶'], marks: ['tablet', 'dag', 'hex'], window: { type: 'one-day', month: 10, day: 31 },
+    tokens: { gold: '#e7dfc8', goldBright: '#f4efdc', cyan: '#d4c8a0', glow: 'rgba(150,130,70,.16)', cool: 'rgba(50,45,30,.14)', fringe: 'repeating-linear-gradient(90deg,#3a3224 0 12px,#e7dfc8 12px 14px,#2a241c 14px 26px)' },
     source: 'https://www.metzdowd.com/pipermail/cryptography/2008-October/014810.html'
   },
   {
     id: 'crescendo', label: 'Crescendo', group: 'kaspa', icon: '♩', greeting: 'Ten blocks a second.', when: 'May 4–6', priority: 80,
-    motifs: ['♩', '♪', '✦'], window: { type: 'annual', start: [5, 4], end: [5, 6] },
-    tokens: { gold: '#cffff6', goldBright: '#f2fffc', cyan: '#8ef3ea', glow: 'rgba(73, 234, 203, .20)', cool: 'rgba(32, 90, 84, .16)', fringe: 'repeating-linear-gradient(105deg,#49eacb 0 6px,#0d1c18 6px 12px,#49eacb 12px 18px,#0d1c18 18px 30px)' },
+    motifs: ['♩', '♪', '✦'], marks: ['staff', 'hex', 'dag'], window: { type: 'annual', start: [5, 4], end: [5, 6] },
+    tokens: { gold: '#c8fff4', goldBright: '#e7fffb', cyan: '#7dfff0', glow: 'rgba(73,234,203,.20)', cool: 'rgba(40,100,120,.14)', fringe: 'repeating-linear-gradient(105deg,#49eacb 0 4px,#0d1c18 4px 12px,#49eacb 12px 20px,#0d1c18 20px 26px,#7dfff0 26px 34px)' },
     source: 'https://github.com/kaspanet/rusty-kaspa/releases/tag/v1.0.0'
   },
   {
     // Named day is June 22 in America/Detroit. deploymentHash is the canonical pin in server/geek-deployment.js, not a second hash.
     id: 'geek-birthday', label: "Geek Protocol's Birthday", group: 'geek', icon: '✦', greeting: 'Deployed on Kaspa. Built for curious minds.', when: 'Jun 21–23', priority: 90,
-    motifs: ['✦', '⬡', '◇'], window: { type: 'annual', start: [6, 21], end: [6, 23] },
+    motifs: ['✦', '⬡', '◇'], marks: ['robot', 'candle', 'tablet'], window: { type: 'annual', start: [6, 21], end: [6, 23] },
     deploymentHash: 'c3cea245b394374b6d80d9fa82269967b56bd5d128a4db3152087a05e014d0b1',
     tokens: { gold: '#e8c56e', goldBright: '#f3df9a', cyan: '#c8fff4', glow: 'rgba(73,234,203,.20)', cool: 'rgba(180,140,50,.14)', fringe: 'repeating-linear-gradient(105deg,#6fc7ba 0 10px,#0b1210 10px 20px,#e8c56e 20px 24px,#b9f1e2 24px 28px)' },
     source: 'https://api.kasplex.org/v1/krc20/token/GEEK'
   },
   {
     id: 'toccata', label: 'Toccata', group: 'kaspa', icon: '♫', greeting: 'Programmability on the first layer.', when: 'Jun 29–30', priority: 80,
-    motifs: ['♫', '♩', '✦'], window: { type: 'annual', start: [6, 29], end: [6, 30] },
-    tokens: { gold: '#f0e2b0', goldBright: '#fff6d4', cyan: '#9ee6d6', glow: 'rgba(180, 150, 70, .14)', cool: 'rgba(56, 147, 135, .16)', fringe: 'repeating-linear-gradient(105deg,#d7c07a 0 8px,#12302c 8px 20px,#49eacb 20px 24px,#12302c 24px 36px)' },
+    motifs: ['♫', '♩', '✦'], marks: ['keys', 'hex', 'diamond'], window: { type: 'annual', start: [6, 29], end: [6, 30] },
+    tokens: { gold: '#e8c56e', goldBright: '#f3df9a', cyan: '#70e6dc', glow: 'rgba(180,140,50,.16)', cool: 'rgba(56,147,135,.16)', fringe: 'repeating-linear-gradient(105deg,#e8c56e 0 8px,#12302c 8px 18px,#70e6dc 18px 22px,#12302c 22px 34px)' },
     source: 'https://kaspa.org/lore'
   },
   {
     id: 'satoshi-birthday', label: "Satoshi's Birthday", group: 'bitcoin', icon: '✧', greeting: 'For the curious minds who start things.', when: 'Apr 5', priority: 0, manualOnly: true,
-    motifs: ['✧', '·', '✧'], window: { type: 'one-day', month: 4, day: 5 },
-    tokens: { gold: '#efe6cf', goldBright: '#f8f3e6', cyan: '#d5ebe4', glow: 'rgba(120, 110, 70, .12)', cool: 'rgba(56, 147, 135, .10)', fringe: 'linear-gradient(90deg,#2a3330,#d9d0b8,#243833)' },
+    motifs: ['✧', '·', '✧'], marks: ['candle', 'tablet', 'hex'], window: { type: 'one-day', month: 4, day: 5 },
+    tokens: { gold: '#e8d9a8', goldBright: '#f4ebc8', cyan: '#b9e4dc', glow: 'rgba(120,100,50,.12)', cool: 'rgba(40,80,80,.12)', fringe: 'linear-gradient(90deg,#24302e,#e8d9a8,#1c2424)' },
     source: 'https://web.archive.org/web/20120529203623/p2pfoundation.ning.com/profile/SatoshiNakamoto'
   }
 ].map(entry));

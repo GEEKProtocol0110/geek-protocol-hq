@@ -4,9 +4,10 @@ import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 import { holidayById } from '../public/assets/holiday-calendar.js';
 
-const source = readFileSync(new URL('../public/assets/holiday-theme.js', import.meta.url), 'utf8')
-  .replace(/^import .*\n/, '')
-  .replace('export const initHolidayTheme', 'globalThis.initHolidayTheme');
+const source = [
+  readFileSync(new URL('../public/assets/holiday-marks.js', import.meta.url), 'utf8').replace('export const holidayMark', 'globalThis.holidayMark'),
+  readFileSync(new URL('../public/assets/holiday-theme.js', import.meta.url), 'utf8').replace(/^import .*\n/gm, '').replace('export const initHolidayTheme', 'globalThis.initHolidayTheme')
+].join('\n');
 
 const matchSimple = (el, selector) => {
   let rest = selector.trim();
@@ -63,6 +64,7 @@ const mount = async ({ pathname = '/', quiz = false, playing = false, payload = 
     addEventListener() {},
     dispatchEvent() {},
     createElement: make,
+    createElementNS: () => make('svg'),
     querySelector: selector => queryAll(selector)[0] || null,
     querySelectorAll: queryAll
   };
@@ -120,9 +122,10 @@ test('a catalog holiday renders one greeting and twelve catalog motifs, and a re
   assert.equal(page.greetings()[0].textContent.includes(holiday.icon), false);
   assert.equal(page.ornaments().length, 1);
   assert.equal(page.ornaments()[0].getAttribute('aria-hidden'), 'true');
-  assert.deepEqual(page.ornaments()[0].children.map(node => node.textContent), Array.from({ length: 12 }, (_, index) => holiday.motifs[index % holiday.motifs.length]));
+  assert.deepEqual(page.ornaments()[0].children.map(node => node.children[0].getAttribute('data-mark')), Array.from({ length: 12 }, (_, index) => holiday.marks[index % holiday.marks.length]));
   assert.equal(page.marks().length, 1);
   assert.equal(page.marks()[0].getAttribute('aria-hidden'), 'true');
+  assert.equal(page.marks()[0].children[0].getAttribute('data-mark'), holiday.marks[0]);
   await page.again();
   assert.equal(page.calls(), 2);
   assert.equal(page.greetings().length, 1);

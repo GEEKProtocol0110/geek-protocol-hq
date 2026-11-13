@@ -121,3 +121,11 @@ Citation links for the new days, not sent by the API:
 | Satoshi's Birthday | P2P Foundation profile date, manual only: https://web.archive.org/web/20120529203623/p2pfoundation.ning.com/profile/SatoshiNakamoto |
 
 Greetings for the new days stay factual. They do not mention price, market value or hype. The twelve existing greeting lines were left as written. Appearance still defaults to Off until an owner saves another mode.
+
+## Stroke marks and palette pass
+
+Public ornaments are drawn from `public/assets/holiday-marks.js`. Each holiday names three mark ids. The page paints twelve static SVG strokes from that list: hex nodes, DAG edges, a terminal frame, and a small circuit-face. The brand circle uses the first mark. Unicode in the catalog remains the ops-preview corner, not the public ornament.
+
+Color tokens for every holiday, including the original twelve, live on the catalog entry and in `holiday-theme.css`. Presidents' Day, Memorial Day, Independence Day, and Veterans Day no longer share one patriotic stripe. Memorial Day is a single quiet fade. Independence Day keeps a short crimson divider. Kaspa teal stays in the crypto, Kaspa, and Geek Protocol fringes. Greetings stay the catalog sentences, in Inter, under the header.
+
+There is still no `@keyframes`, animation, or `url(` in the holiday stylesheet. Reduced motion clears the fixed tilt. An active quiz, `body.is-playing`, and `/games/<name>/` routes do not receive the ornament layer. Code rain is unchanged: this pass does not retint it.

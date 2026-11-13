@@ -1,4 +1,5 @@
 import { holidayById } from './holiday-calendar.js';
+import { holidayMark } from './holiday-marks.js';
 
 const boardRoute = () => /^\/games\/[^/]+\//.test(location.pathname);
 
@@ -31,7 +32,7 @@ export const initHolidayTheme = ({ fetchImpl = globalThis.fetch } = {}) => {
     if (brand) {
       const mark = document.createElement('span');
       mark.className = 'holiday-brand-mark';
-      mark.textContent = holiday.icon;
+      mark.append(holidayMark(holiday.marks?.[0] || 'hex'));
       mark.setAttribute('aria-hidden', 'true');
       mark.title = `${holiday.label} at Geek HQ`;
       brand.append(mark);
@@ -47,10 +48,10 @@ export const initHolidayTheme = ({ fetchImpl = globalThis.fetch } = {}) => {
       const scene = document.createElement('div');
       scene.className = 'holiday-atmosphere';
       scene.setAttribute('aria-hidden', 'true');
-      const motifs = holiday.motifs?.length ? holiday.motifs : [holiday.icon];
+      const kinds = holiday.marks?.length ? holiday.marks : ['hex'];
       for (let index = 0; index < 12; index += 1) {
         const symbol = document.createElement('span');
-        symbol.textContent = motifs[index % motifs.length];
+        symbol.append(holidayMark(kinds[index % kinds.length]));
         scene.append(symbol);
       }
       document.body.append(scene);
