@@ -212,14 +212,28 @@ const checkAsset = async config => {
       deployment.dec !== config.decimals || deployment.txAccept !== '1' || deployment.opAccept !== '1' || deployment.opError) throw new Error('MAINNET_ASSET_MISMATCH');
 };
 
+// The saved job and live lease are checked before any write. A terminal stuck
+// score also joins stuck:v1 in this same script. Check the list before writing:
+// a script error after SET is not reverted, so a failed update must not leave
+// a stuck job unlisted. The PAYOUT_UNCONFIRMED log runs only after success.
 const UPDATE = `-- geek-mainnet-payout-update-v1
 if redis.call('GET', KEYS[1]) ~= ARGV[1] or redis.call('GET', KEYS[2]) ~= ARGV[3] then return 0 end
+if ARGV[6] ~= '' then
+  if not string.match(ARGV[6], '^%d+$') then return -2 end
+  local stuckKind = redis.call('TYPE', KEYS[4]).ok
+  if stuckKind ~= 'none' and stuckKind ~= 'zset' then return -2 end
+  local indexKind = redis.call('TYPE', KEYS[3]).ok
+  if indexKind ~= 'none' and indexKind ~= 'zset' then return -2 end
+end
 redis.call('SET', KEYS[1], ARGV[2])
 if ARGV[4] == '1' then redis.call('ZREM', KEYS[3], ARGV[5]) end
+if ARGV[6] ~= '' then redis.call('ZADD', KEYS[4], ARGV[6], ARGV[5]) end
 return 1`;
-const saveJob = async (key, raw, job, lease, terminal) => {
+const saveJob = async (key, raw, job, lease, terminal, stuckScore = '') => {
   job.version = nonce();
-  if (await redis('EVAL', UPDATE, 3, key, leaseKey, payoutIndexKey, raw, JSON.stringify(job), lease, terminal ? '1' : '0', job.id) !== 1) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
+  const result = await redis('EVAL', UPDATE, 4, key, leaseKey, payoutIndexKey, payoutStuckKey, raw, JSON.stringify(job), lease, terminal ? '1' : '0', job.id, stuckScore);
+  if (result === -2) throw new Error('MAINNET_PAYOUT_RECORD_INVALID');
+  if (result !== 1) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
   return job;
 };
 const quarantineJob = async (id, code) => {
@@ -227,11 +241,26 @@ const quarantineJob = async (id, code) => {
   await redis('ZREM', payoutIndexKey, id);
   console.info(JSON.stringify({ event: 'mainnet-payout-quarantine', code }));
 };
-const SIGNED = `-- geek-mainnet-payout-signed-v1
-local prior = redis.call('HGET', KEYS[1], ARGV[1])
-if prior and prior ~= ARGV[2] then return 0 end
-if not prior then redis.call('HSET', KEYS[1], ARGV[1], ARGV[2]) end
+// Validate every condition before writing. A lost response can leave both the
+// journal and replay marker committed, but never a marker without its journal.
+const PREPARE = `-- geek-mainnet-payout-prepare-v1
+if redis.call('GET', KEYS[1]) ~= ARGV[1] or redis.call('GET', KEYS[2]) ~= ARGV[3] then return 0 end
+local kind = redis.call('TYPE', KEYS[3]).ok
+if kind ~= 'none' and kind ~= 'hash' then return -2 end
+local prior = redis.call('HGET', KEYS[3], ARGV[4])
+if prior and prior ~= ARGV[5] then return -1 end
+redis.call('HSET', KEYS[3], ARGV[4], ARGV[5])
+redis.call('SET', KEYS[1], ARGV[2])
 return 1`;
+
+const savePreparedJob = async (key, raw, job, lease) => {
+  job.version = nonce();
+  const result = await redis('EVAL', PREPARE, 3, key, leaseKey, payoutSignedKey,
+    raw, JSON.stringify(job), lease, job.id, job.journal.reveal.id);
+  if (result === -1) throw new Error('MAINNET_PAYOUT_ALREADY_SIGNED');
+  if (result === -2) throw new Error('MAINNET_PAYOUT_RECORD_INVALID');
+  if (result !== 1) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
+};
 
 const validToken = req => {
   const expected = process.env.MAINNET_PAYOUT_WORKER_TOKEN || '', given = String(req.headers?.authorization || '');
@@ -268,8 +297,7 @@ export async function mainnetPayoutWorkerHandler(req, res) {
           const journal = candidate.journal ? JSON.stringify(candidate.journal) : '';
           candidate.state = 'stuck'; candidate.stuckAt = Date.now();
           if (journal && JSON.stringify(candidate.journal) !== journal) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
-          await saveJob(key, raw, candidate, lease, true);
-          await redis('ZADD', payoutStuckKey, String(candidate.stuckAt), candidate.id);
+          await saveJob(key, raw, candidate, lease, true, String(candidate.stuckAt));
           console.info(JSON.stringify({ event: 'mainnet-payout-stuck', code: 'PAYOUT_UNCONFIRMED' }));
           continue;
         }
@@ -294,7 +322,6 @@ export async function mainnetPayoutWorkerHandler(req, res) {
     if (body.action === 'prepare') {
       if (job.state !== 'queued' || !validJournal(body.journal) || job.amount !== expectedRaw(job.proof)) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
       await checkAsset(config);
-      if (await redis('EVAL', SIGNED, 1, payoutSignedKey, job.id, body.journal.reveal.id) !== 1) throw new Error('MAINNET_PAYOUT_ALREADY_SIGNED');
       job.journal = body.journal; job.transactionHash = body.journal.reveal.id; job.state = 'prepared'; job.preparedAt = Date.now();
     } else if (body.action === 'submitted') {
       if (!['prepared', 'awaiting-indexer'].includes(job.state)) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
@@ -308,7 +335,8 @@ export async function mainnetPayoutWorkerHandler(req, res) {
       else if (job.state !== 'stuck') job.state = 'awaiting-indexer';
       job.lastCheckedAt = Date.now();
     }
-    await saveJob(key, raw, job, body.lease, terminal);
+    if (body.action === 'prepare') await savePreparedJob(key, raw, job, body.lease);
+    else await saveJob(key, raw, job, body.lease, terminal);
     if (job.state === 'indexed-confirmed') await redis('ZREM', payoutStuckKey, job.id);
     return sendJson(res, 200, { ok: true, job });
   } catch (error) { return mainnetPayoutError(res, error); }

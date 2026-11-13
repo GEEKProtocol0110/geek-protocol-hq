@@ -27,7 +27,7 @@ Three temporary caps apply together: 100,000 GEEK globally per UTC day, and 46,4
 
 The active index holds outstanding jobs only. `indexed-confirmed` and `stuck` jobs are removed, so the 10,000-job ceiling counts work still in the queue. A claim reads at most 50 active ids.
 
-A journal that is still unconfirmed six hours after its first `submitted` time is marked `stuck`. The clock does not start at preparation, so a journal that was never submitted is not abandoned. Stuck jobs are listed in `geek:mainnet-payout:stuck:v1` and emit the fixed code `PAYOUT_UNCONFIRMED`. The original journal and earning lock stay. The job is not broadcast again and cannot receive a replacement journal. A later manual check of that same hash can still record confirmation. Automatic retry is not allowed.
+A journal that is still unconfirmed six hours after its first `submitted` time is marked `stuck`. The clock does not start at preparation, so a journal that was never submitted is not abandoned. The stuck state and membership in `geek:mainnet-payout:stuck:v1` are written by the same update, which still checks the saved job and the sender lease. The fixed code `PAYOUT_UNCONFIRMED` is logged only after that update succeeds. A failed update does not save the job as stuck and does not leave it half-written. The original journal and earning lock stay. The job is not broadcast again and cannot receive a replacement journal. A later manual check of that same hash can still record confirmation. Automatic retry is not allowed.
 
 Jobs are created only for an account-confirmed mainnet receiving address whose cooldown has elapsed, and only in production when the payout flag is later enabled. The destination is copied onto the job. The hot wallet is not a valid recipient. Ranked starts are limited to 20 per hour for one network address. Changing the User-Agent does not reset that limit.
 
@@ -50,3 +50,12 @@ Offline fixture tests may pass a synthetic key only inside `workers/mainnet/chec
 ## Not enabled
 
 This change does not deploy the worker, admit jobs, sign, broadcast, or change CCE or collection ownership. Indexed confirmation would still be an indexer observation, not an independent finality proof. Review the reward rules, the temporary cap, the retention ceiling, and the signer before any explicit enable.
+
+
+## November 13 recovery follow-up (source candidate)
+
+Review of draft #278 at `721c973eb32d8d6b38c281331a7f06dbdb9a03bc` reproduced a failure between the replay-marker write and the journal save. A failed second write could leave an unpaid queued earning marked signed but without its journal, causing quarantine on retry. No broadcast was needed to reproduce this availability failure.
+
+Preparation now checks the exact job snapshot, live sender lease, replay-marker key type, and any existing reveal id before writing the marker and complete prepared job in one Redis Lua operation. A rejected request writes neither record. A lost acknowledgment of `prepare` (the Lua operation committed, but the caller saw an error) preserves both records and is recovered by the next claim, not by re-sending the request. Re-sending an already-committed prepare returns a harmless 409 by design. Previously accepted replay markers cannot be replaced. This removes the inter-request failure window; it does not establish provider durability or backup/restore safety.
+
+Real local Redis regression tests exercise a request rejected before execution, a response lost after commit, lease expiry at execution, a changed job snapshot, a conflicting reveal marker, and an invalid marker-key type. Existing replay and flags-off checks remain. This is an internal source candidate only; all external audit, release and economic holds remain.
