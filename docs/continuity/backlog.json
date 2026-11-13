@@ -2054,6 +2054,50 @@
       ]
     },
     {
+      "id": "UX-027",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Data-driven holiday catalog with Kaspa and crypto dates",
+      "owner": "Maintainer; founder preview",
+      "nextAction": "Gee previews the draft catalog and compact greeting before saving any Appearance mode. The saved default remains Off. A visual refresh of the existing twelve holidays is separate.",
+      "acceptance": [
+        "One catalog drives windows, priority, motifs and greetings. Automatic overlaps resolve by priority, then shortest window, then id. America/Detroit and the public { id } payload stay unchanged.",
+        "Verified Kaspa and crypto windows are selectable. Satoshi's April 5 date is manual-only. Halloween's automatic window ends October 30. Geek Protocol's Birthday is June 21\u201323 at priority 90, and its hash matches server/geek-deployment.js.",
+        "The portrait badge and orphan greeting selector are gone. One compact greeting clears on Off, an unknown id or a failed read. Holiday decorations stay static, honor prefers-reduced-motion, and do not cover an active quiz or individual game route.",
+        "Appearance default remains Off. Saves stay allowlisted and audited. No payout, ranked-bank or production setting change."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/HOLIDAY-THEMES.md",
+        "public/assets/holiday-calendar.js",
+        "public/assets/holiday-theme.js",
+        "tests/appearance.test.js"
+      ]
+    },
+    {
+      "id": "UX-028",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Geek stroke marks and distinct holiday palettes",
+      "owner": "Maintainer; founder preview",
+      "nextAction": "Gee previews the stroke ornaments and the separated civic palettes before any Appearance save. The saved default remains Off.",
+      "acceptance": [
+        "Public ornaments are static in-repo SVG marks named by the catalog. No remote image or operator-supplied CSS is accepted.",
+        "Each holiday, including the original twelve, has its own color tokens. The four civic days are visually distinct. Greetings stay the catalog sentences.",
+        "Reduced motion clears ornament tilt. Active quizzes, playing pages, and individual game routes do not receive the ornament layer.",
+        "Appearance default remains Off. The public payload remains an id. Code rain behavior is unchanged."
+      ],
+      "dependsOn": [
+        "UX-027"
+      ],
+      "evidence": [
+        "docs/HOLIDAY-THEMES.md",
+        "public/assets/holiday-marks.js",
+        "public/assets/holiday-theme.css",
+        "tests/appearance.test.js"
+      ]
+    },
+    {
       "id": "GAME-004",
       "priority": "P2",
       "status": "in-progress",
@@ -2132,6 +2176,37 @@
         ".github/CODEOWNERS",
         ".github/dependabot.yml",
         "SECURITY.md"
+      ]
+    },
+    {
+      "id": "CHAIN-006",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Port the automatic payout worker toward mainnet GEEK",
+      "owner": "Maintainer; founder controls explicit enable and the signing secret",
+      "nextAction": "Review draft #282 on top of #278: journal preparation is one Lua update, and a terminal stuck mark writes the job and stuck:v1 together. A lost prepare acknowledgment is recovered by the next claim. No merge, deployment, or enable is implied. Settlement and withdrawals remain disabled. This is an internal source candidate, not an independent audit.",
+      "acceptance": [
+        "The mainnet worker reuses the CHAIN-004 journaled KRC-20 commit/reveal path for current GEEK, with the pinned public hot-wallet receive address.",
+        "Daily pays 100 GEEK once. A Gauntlet round pays ROUND_CONFIG.reward times the server-graded correct count. Zero correct pays nothing. One correct answer in round 10 pays 1800, and 18000 is rejected for that proof. Retries do not pay again.",
+        "Temporary caps are 100,000 GEEK globally and 46,400 GEEK per player and per receiving address. The active index counts outstanding jobs only. A journal unconfirmed for six hours is stuck and does not block later jobs or receive a second journal.",
+        "Admission and signing require production plus the explicit flag. Preview cannot pay. settlementEligible and withdrawalsEnabled stay false. No signing key is committed.",
+        "The job mac is an explicit ordered field list that includes each proof field. An already signed earning cannot be signed again. A record that fails decoding or the mac check is quarantined and logged, and the earning lock is kept.",
+        "Focused tests and the existing testnet signer checks pass. A real mainnet transfer is not claimed.",
+        "Journal preparation commits the replay marker and signed bytes together after checking the current lease and job snapshot. Rejected writes and lost acknowledgments preserve safe recovery without a new journal for an accepted earning. A lost prepare acknowledgment is recovered by the next claim. Re-sending that prepare returns 409.",
+        "Marking a job stuck writes the stuck state and its stuck:v1 membership in one update that still checks the lease and job snapshot. A failed update does not leave the job stuck and absent from that list. The PAYOUT_UNCONFIRMED log follows a successful update."
+      ],
+      "dependsOn": [
+        "CHAIN-004"
+      ],
+      "evidence": [
+        "docs/MAINNET-GEEK-PAYOUT.md",
+        "server/mainnet-payout.js",
+        "workers/mainnet/schedule.mjs",
+        "workers/mainnet/signer.mjs",
+        "workers/mainnet/process.mjs",
+        "tests/mainnet-payout.test.js",
+        "workers/mainnet/check-signing.mjs",
+        "workers/mainnet/job-mac.mjs"
       ]
     },
     {

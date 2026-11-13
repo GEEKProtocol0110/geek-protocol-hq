@@ -86,10 +86,13 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-024 | P2 | in-progress | Minimal cosmic glitch feedback and Geek code accents | Maintainer; founder release review |
 | UX-025 | P2 | in-progress | Clean Geek branding and black installed-app launch | Maintainer; founder release review |
 | UX-026 | P2 | in-progress | Kaspa space, planet and code-rain full-page background | Maintainer; founder release review |
+| UX-027 | P2 | in-progress | Data-driven holiday catalog with Kaspa and crypto dates | Maintainer; founder preview |
+| UX-028 | P2 | in-progress | Geek stroke marks and distinct holiday palettes | Maintainer; founder preview |
 | GAME-004 | P2 | in-progress | Ongoing matches, My Games and turn alerts | Maintainer; founder release/device review |
 | APP-001 | P2 | in-progress | Android test package and device acceptance | Maintainer; founder device review |
 | GAME-005 | P2 | in-progress | Opt-in closed-lounge turn notifications and durable delivery | Maintainer; founder phone acceptance |
 | OPS-004 | P2 | in-progress | Record default code ownership and limited weekly dependency updates | Maintainer; founder reviews the pull request |
+| CHAIN-006 | P1 | in-progress | Port the automatic payout worker toward mainnet GEEK | Maintainer; founder controls explicit enable and the signing secret |
 | MINT-001 | P1 | in-progress | Preserve local mint request references across reloads | Maintainer; founder reviews release |
 
 ## CONT-001: Publish the continuation system
@@ -1297,6 +1300,36 @@ Acceptance:
 
 Evidence/specification: [docs/KASPA-MATRIX.md](../../docs/KASPA-MATRIX.md), [tests/kaspa-matrix.test.js](../../tests/kaspa-matrix.test.js).
 
+## UX-027: Data-driven holiday catalog with Kaspa and crypto dates
+
+**P2 / in-progress.** Owner: Maintainer; founder preview. Dependencies: none.
+
+Next action: Gee previews the draft catalog and compact greeting before saving any Appearance mode. The saved default remains Off. A visual refresh of the existing twelve holidays is separate.
+
+Acceptance:
+
+- One catalog drives windows, priority, motifs and greetings. Automatic overlaps resolve by priority, then shortest window, then id. America/Detroit and the public { id } payload stay unchanged.
+- Verified Kaspa and crypto windows are selectable. Satoshi's April 5 date is manual-only. Halloween's automatic window ends October 30. Geek Protocol's Birthday is June 21–23 at priority 90, and its hash matches server/geek-deployment.js.
+- The portrait badge and orphan greeting selector are gone. One compact greeting clears on Off, an unknown id or a failed read. Holiday decorations stay static, honor prefers-reduced-motion, and do not cover an active quiz or individual game route.
+- Appearance default remains Off. Saves stay allowlisted and audited. No payout, ranked-bank or production setting change.
+
+Evidence/specification: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/holiday-calendar.js](../../public/assets/holiday-calendar.js), [public/assets/holiday-theme.js](../../public/assets/holiday-theme.js), [tests/appearance.test.js](../../tests/appearance.test.js).
+
+## UX-028: Geek stroke marks and distinct holiday palettes
+
+**P2 / in-progress.** Owner: Maintainer; founder preview. Dependencies: UX-027.
+
+Next action: Gee previews the stroke ornaments and the separated civic palettes before any Appearance save. The saved default remains Off.
+
+Acceptance:
+
+- Public ornaments are static in-repo SVG marks named by the catalog. No remote image or operator-supplied CSS is accepted.
+- Each holiday, including the original twelve, has its own color tokens. The four civic days are visually distinct. Greetings stay the catalog sentences.
+- Reduced motion clears ornament tilt. Active quizzes, playing pages, and individual game routes do not receive the ornament layer.
+- Appearance default remains Off. The public payload remains an id. Code rain behavior is unchanged.
+
+Evidence/specification: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/holiday-marks.js](../../public/assets/holiday-marks.js), [public/assets/holiday-theme.css](../../public/assets/holiday-theme.css), [tests/appearance.test.js](../../tests/appearance.test.js).
+
 ## GAME-004: Ongoing matches, My Games and turn alerts
 
 **P2 / in-progress.** Owner: Maintainer; founder release/device review. Dependencies: none.
@@ -1356,6 +1389,25 @@ Acceptance:
 - No application, game, lesson, wallet, question-bank, or repository-setting change is included.
 
 Evidence/specification: [.github/CODEOWNERS](../../.github/CODEOWNERS), [.github/dependabot.yml](../../.github/dependabot.yml), [SECURITY.md](../../SECURITY.md).
+
+## CHAIN-006: Port the automatic payout worker toward mainnet GEEK
+
+**P1 / in-progress.** Owner: Maintainer; founder controls explicit enable and the signing secret. Dependencies: CHAIN-004.
+
+Next action: Review draft #282 on top of #278: journal preparation is one Lua update, and a terminal stuck mark writes the job and stuck:v1 together. A lost prepare acknowledgment is recovered by the next claim. No merge, deployment, or enable is implied. Settlement and withdrawals remain disabled. This is an internal source candidate, not an independent audit.
+
+Acceptance:
+
+- The mainnet worker reuses the CHAIN-004 journaled KRC-20 commit/reveal path for current GEEK, with the pinned public hot-wallet receive address.
+- Daily pays 100 GEEK once. A Gauntlet round pays ROUND_CONFIG.reward times the server-graded correct count. Zero correct pays nothing. One correct answer in round 10 pays 1800, and 18000 is rejected for that proof. Retries do not pay again.
+- Temporary caps are 100,000 GEEK globally and 46,400 GEEK per player and per receiving address. The active index counts outstanding jobs only. A journal unconfirmed for six hours is stuck and does not block later jobs or receive a second journal.
+- Admission and signing require production plus the explicit flag. Preview cannot pay. settlementEligible and withdrawalsEnabled stay false. No signing key is committed.
+- The job mac is an explicit ordered field list that includes each proof field. An already signed earning cannot be signed again. A record that fails decoding or the mac check is quarantined and logged, and the earning lock is kept.
+- Focused tests and the existing testnet signer checks pass. A real mainnet transfer is not claimed.
+- Journal preparation commits the replay marker and signed bytes together after checking the current lease and job snapshot. Rejected writes and lost acknowledgments preserve safe recovery without a new journal for an accepted earning. A lost prepare acknowledgment is recovered by the next claim. Re-sending that prepare returns 409.
+- Marking a job stuck writes the stuck state and its stuck:v1 membership in one update that still checks the lease and job snapshot. A failed update does not leave the job stuck and absent from that list. The PAYOUT_UNCONFIRMED log follows a successful update.
+
+Evidence/specification: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [server/mainnet-payout.js](../../server/mainnet-payout.js), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs), [workers/mainnet/signer.mjs](../../workers/mainnet/signer.mjs), [workers/mainnet/process.mjs](../../workers/mainnet/process.mjs), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js), [workers/mainnet/check-signing.mjs](../../workers/mainnet/check-signing.mjs), [workers/mainnet/job-mac.mjs](../../workers/mainnet/job-mac.mjs).
 
 ## MINT-001: Preserve local mint request references across reloads
 

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "npm ci --ignore-scripts",
+  "functions": {
+    "api/tick.js": {
+      "maxDuration": 90,
+      "includeFiles": "node_modules/@kasplex/kiwi/dist/**"
+    }
+  },
+  "crons": [{ "path": "/api/tick", "schedule": "* * * * *" }]
+}

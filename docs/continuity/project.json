@@ -227,11 +227,29 @@
     "evidence": "android/README.md",
     "nextAction": "Preparation #265 merged as 1cb03f87ce65266d245d090241a6d1724b0c5cdc and production READY. Owner protected signing environment/reviewer/secrets, actual signed build/domain association and phone acceptance remain open."
   },
+  "holidayVisuals": {
+    "task": "UX-028",
+    "status": "source-candidate",
+    "evidence": "docs/HOLIDAY-THEMES.md",
+    "nextAction": "Draft stacked on the catalog branch. Gee previews stroke marks and palettes before any Appearance save. The saved default remains Off."
+  },
+  "holidayThemes": {
+    "task": "UX-027",
+    "status": "source-candidate",
+    "evidence": "docs/HOLIDAY-THEMES.md",
+    "nextAction": "Draft only. Gee previews the catalog, including Geek Protocol's Birthday on June 21\u201323, before any Appearance save. The saved default remains Off."
+  },
   "devicePush": {
     "task": "GAME-005",
     "status": "implemented-configured-phone-acceptance-open",
     "evidence": "docs/WEB-PUSH-TURN-ALERTS.md",
     "nextAction": "#271 merged as d86d3d3964885f0ab3cc2071c8cd067736380245; production READY, public key configuration and two-player turn/no-expiry flow verified. Canonical retry route follow-up removes its 308 redirect. Actual phone notification permission/delivery and Android signing/domain acceptance remain open."
+  },
+  "mainnetPayoutRecovery": {
+    "task": "CHAIN-006",
+    "status": "source-candidate",
+    "evidence": "docs/MAINNET-GEEK-PAYOUT.md; tests/mainnet-payout.test.js",
+    "nextAction": "Review draft #282 on top of #278: journal preparation is one Lua update, and a terminal stuck mark writes the job and stuck:v1 together. A lost prepare acknowledgment is recovered by the next claim. No merge, deployment, or enable is implied. Settlement and withdrawals remain disabled. This is an internal source candidate, not an independent audit."
   },
   "mintReceiptHistory": {
     "task": "MINT-001",

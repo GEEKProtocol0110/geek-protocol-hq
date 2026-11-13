@@ -1,33 +1,62 @@
 import { holidayById } from './holiday-calendar.js';
+import { holidayMark } from './holiday-marks.js';
 
-// Fixed seasonal motifs; neither settings nor responses can provide markup/URLs.
-const motifs = Object.freeze({
-  'new-year': ['✦', '✧', '✦'], valentines: ['♡', '♥', '♡'],
-  'presidents-day': ['★', '☆', '★'], 'st-patricks': ['☘', '✧', '☘'],
-  easter: ['✝', '🌷', '✧'], 'memorial-day': ['★', '❧', '★'],
-  'independence-day': ['★', '✦', '☆'], 'labor-day': ['⚒', '⚙', '✦'],
-  halloween: ['🎃', '☾', '✧'], 'veterans-day': ['★', '❧', '★'],
-  thanksgiving: ['🍂', '❧', '🍁'], christmas: ['❄', '✦', '🎄']
-});
+const boardRoute = () => /^\/games\/[^/]+\//.test(location.pathname);
 
 export const initHolidayTheme = ({ fetchImpl = globalThis.fetch } = {}) => {
   const root = document.documentElement;
   let active = null, timer = null, stopped = false, generation = 0, lastRead = 0, stylesheet = null, applied = null;
   const announce = () => document.dispatchEvent(new Event('geek:holiday-change'));
-  const clear = () => { applied = null; delete root.dataset.holidayTheme; document.querySelectorAll('.holiday-brand-mark, .holiday-atmosphere').forEach(mark => mark.remove()); announce(); };
+  const clear = () => {
+    applied = null;
+    delete root.dataset.holidayTheme;
+    document.querySelectorAll('.holiday-brand-mark, .holiday-atmosphere, .holiday-greeting').forEach(node => node.remove());
+    announce();
+  };
+  const playing = () => document.body.classList.contains('is-playing') || Boolean(document.querySelector('[data-screen="quiz"].active'));
   const apply = id => {
     const holiday = holidayById(id);
     if (holiday && applied === holiday.id) return;
     clear();
-    if (!holiday) return;
-    if (!stylesheet) { stylesheet = document.createElement('link'); stylesheet.rel = 'stylesheet'; stylesheet.href = '/assets/holiday-theme.css'; document.head.append(stylesheet); }
+    // Individual game routes stay undecorated even if this script is loaded later.
+    if (!holiday || boardRoute()) return;
+    if (!stylesheet) {
+      stylesheet = document.createElement('link');
+      stylesheet.rel = 'stylesheet';
+      stylesheet.href = '/assets/holiday-theme.css';
+      document.head.append(stylesheet);
+    }
     root.dataset.holidayTheme = holiday.id;
     applied = holiday.id;
     const brand = document.querySelector('.site-header .brand, .game-header .brand');
-    if (brand) { const mark = document.createElement('span'); mark.className = 'holiday-brand-mark'; mark.textContent = holiday.icon; mark.setAttribute('aria-hidden', 'true'); mark.title = `${holiday.label} at Geek HQ`; brand.append(mark); }
-    const scene = document.createElement('div'); scene.className = 'holiday-atmosphere'; scene.setAttribute('aria-hidden', 'true');
-    for (let i = 0; i < 12; i++) { const symbol = document.createElement('span'); symbol.textContent = motifs[holiday.id][i % 3]; scene.append(symbol); }
-    document.body.append(scene); announce();
+    if (brand) {
+      const mark = document.createElement('span');
+      mark.className = 'holiday-brand-mark';
+      mark.append(holidayMark(holiday.marks?.[0] || 'hex'));
+      mark.setAttribute('aria-hidden', 'true');
+      mark.title = `${holiday.label} at Geek HQ`;
+      brand.append(mark);
+    }
+    const header = document.querySelector('.site-header');
+    if (header) {
+      const greeting = document.createElement('p');
+      greeting.className = 'holiday-greeting';
+      greeting.textContent = holiday.greeting;
+      header.append(greeting);
+    }
+    if (!playing()) {
+      const scene = document.createElement('div');
+      scene.className = 'holiday-atmosphere';
+      scene.setAttribute('aria-hidden', 'true');
+      const kinds = holiday.marks?.length ? holiday.marks : ['hex'];
+      for (let index = 0; index < 12; index += 1) {
+        const symbol = document.createElement('span');
+        symbol.append(holidayMark(kinds[index % kinds.length]));
+        scene.append(symbol);
+      }
+      document.body.append(scene);
+    }
+    announce();
   };
   const refresh = async () => {
     clearTimeout(timer);
