@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-09",
+  "updatedAt": "2026-11-13",
   "records": [
     {
       "id": "DR-001",
@@ -442,6 +442,20 @@
         "docs/STRATEGY-PUZZLE-GAMES.md"
       ],
       "recordedAt": "2026-11-09",
+      "supersedes": null
+    },
+    {
+      "id": "DR-035",
+      "status": "implementation-choice",
+      "title": "Drive holiday appearance from one priority catalog",
+      "decision": "Keep Appearance Off by default. Resolve automatic windows in America/Detroit by priority, then shortest window, then id. Add the verified Kaspa and crypto decoration windows, end Halloween's automatic window on October 30, and keep Satoshi's April 5 date manual-only. Add Geek Protocol's Birthday as June 21–23, priority 90, using the deployment hash already pinned in server/geek-deployment.js. Do not recolor the existing twelve holidays or enable a production mode from this change.",
+      "basis": "Reviewed holiday-theme plan against main 01e79787. On November 13, 2026 the founder named the KRC-20 deploy, June 22 in America/Detroit, as the Geek Protocol birthday.",
+      "evidence": [
+        "docs/HOLIDAY-THEMES.md",
+        "public/assets/holiday-calendar.js",
+        "tests/appearance.test.js"
+      ],
+      "recordedAt": "2026-11-13",
       "supersedes": null
     }
   ]
