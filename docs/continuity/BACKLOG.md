@@ -869,7 +869,7 @@ Evidence/specification: [public/index.html](../../public/index.html), [public/as
 
 **P0 / in-progress.** Owner: Maintainer; founder selects private storage and approves rollout. Dependencies: none.
 
-Next action: Review the assembled #200/#206/#207/#213 candidate on current main. Resolve the immutable pin, bounded playable Preview plan and pre-start season behavior before requesting production cutover.
+Next action: Review the pre-start refusal follow-up stacked on #231. Then reconcile the old private-bank assembly with current main, obtain the approved immutable artifact and design the isolated rehearsal. Do not cut over production or enable rewards.
 
 Acceptance:
 
@@ -879,5 +879,6 @@ Acceptance:
 - Payouts stay disabled.
 - Play and My HQ default to the current ranked season, label every board and preserve selectable Season 0 history.
 - Deferred answer recovery confirms saving without showing correctness before round lock.
+- Before a configured private season begins, refuse new private ranked starts without a question, run, season pin or gameplay/profile mutation; read-only Season 0 history remains available.
 
 Evidence/specification: [docs/MIGRATION-private-ranked-bank.md](../../docs/MIGRATION-private-ranked-bank.md), [server/question-source.js](../../server/question-source.js), [server/questions.js](../../server/questions.js), [tests/private-ranked-bank.test.js](../../tests/private-ranked-bank.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/profile-client.test.js](../../tests/profile-client.test.js), [api/leaderboard.js](../../api/leaderboard.js), [docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md](../../docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md).

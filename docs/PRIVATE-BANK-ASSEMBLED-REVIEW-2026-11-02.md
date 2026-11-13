@@ -51,3 +51,14 @@ No provider variable, token permission, database setting, signing setting or pro
 ## Next review step
 
 Publish this as a separate **draft assembly review** against #200's branch. Preserve the original PRs and their exact inputs. Record assembled-head CI/preview evidence in the PR description. Main must continue serving the approved public Alpha. A hosted fail-closed probe can confirm that the Preview guard rejects ranked start without issuing a question; it does not satisfy the playable restricted-rehearsal gate above.
+
+
+## November 13 follow-up: refuse private ranked starts before the configured month
+
+Source candidate based only on #231 head `b9b67d16ef37268ff01403a94366023e46133869`, not an assembly on today's main. The November 2 findings above remain historical evidence. This follow-up addresses the season-start row; it does not close the other release gates.
+
+The helper now refuses a private ranked start before the configured UTC month with fixed code `SEASON_NOT_STARTED`. The read-only board lists only legacy Season 0 before that boundary; a request for the future Season 1 board also resolves to legacy. At the exact first millisecond of the start month, new private runs can bind Season 1. Unset start-month behavior is unchanged, and saved-run grading still follows the run's original season. Validate the bank/season binding before loading a profile so a rejected start cannot initialize gameplay records.
+
+A synthetic December-start regression checks the last millisecond of November, a forged client season, no question/run response, no non-rate-limit state writes, legacy board availability and the first millisecond of December. A separate regression preserves exposed public Alpha as Season 0. The full focused bank/loader/leak/resilience/season set passes 103 tests, zero failures/skips. Existing tests cover deferred correctness, replayed answer recovery, immutable source versions and Preview refusal. These tests do not establish resistance to external answer assistance or real-bank editorial acceptance.
+
+No real private-bank question, artifact identity or credential was read. No provider, payout, signing or production setting changed. Keep this candidate stacked against #231 for review; do not merge the stale assembly into current main. Reconcile its private-bank and unranked protections with current main's later payout worker before proposing any future release. The approved artifact, editorial/capacity acceptance, isolated rehearsal and independent abuse review remain open.

@@ -99,7 +99,6 @@ const boardKeys = async () => (await fixture.command('KEYS', 'geek:*leaderboard*
 // ---------------------------------------------------------------------------
 test('season number follows the configured UTC start month with exact month boundaries', () => {
   const cases = [
-    ['2026-10-31T23:59:59.999Z', 1], // before Season 1 starts: clamps to Season 1
     ['2026-11-01T00:00:00.000Z', 1],
     ['2026-11-30T23:59:59.999Z', 1],
     ['2026-12-01T00:00:00.000Z', 2],
@@ -846,4 +845,45 @@ test('catch-all: an unknown error logs only its name and code, never message, pa
   const weird = new Error('Fake bank text'); weird.name = 'Bad /secret name'; weird.code = { path: '/secret' };
   const logs2 = await captureLogs(() => handleApiError(fakeRes(), weird));
   assert.deepEqual(logs2, [['Geek API error', 'UNKNOWN', 'UNKNOWN']]);
+});
+
+
+test('private ranked starts refuse the configured pre-start month without issuing a run or pin', async () => {
+  const configured = process.env.GEEK_SEASON_1_START_MONTH;
+  process.env.GEEK_SEASON_1_START_MONTH = '2026-12';
+  try {
+    for (const iso of ['2026-11-01T00:00:00Z', '2026-11-30T23:59:59.999Z']) {
+      assert.throws(() => currentSeasonNumber(at(iso), { GEEK_SEASON_1_START_MONTH: '2026-12' }), /SEASON_NOT_STARTED/);
+      assert.deepEqual(leaderboardSeasonIds(at(iso), { GEEK_SEASON_1_START_MONTH: '2026-12' }), ['legacy']);
+    }
+    setClock('2026-11-30T23:59:59.999Z', { frozen: true });
+    const cookie = await session('Pre-start Geek');
+    const before = (await fixture.command('KEYS', 'geek:*')).filter(k => !k.startsWith('geek:rate:')).sort();
+    const early = await ranked(cookie, 'start', { category: 'kaspa', mode: 'speed', season: 'season-1' });
+    assert.equal(early.statusCode, 503); assert.equal(early.body.code, 'SEASON_NOT_STARTED');
+    assert.equal(early.body.question, undefined); assert.equal(early.body.run, undefined);
+    assert.deepEqual((await fixture.command('KEYS', 'geek:*')).filter(k => !k.startsWith('geek:rate:')).sort(), before);
+    const listed = await board('current');
+    assert.equal(listed.body.season, 'legacy'); assert.deepEqual(listed.body.seasons, ['current', 'legacy']);
+    assert.equal((await board('season-1')).body.season, 'legacy');
+    setClock('2026-12-01T00:00:00.000Z', { frozen: true });
+    const opened = await ranked(cookie, 'start', { category: 'kaspa', mode: 'speed' });
+    assert.equal(opened.statusCode, 201, JSON.stringify(opened.body));
+    assert.equal(opened.body.run.season, 'season-1'); assert.equal(opened.body.question.correctIndex, undefined);
+  } finally { process.env.GEEK_SEASON_1_START_MONTH = configured; }
+});
+
+test('public Alpha still binds Season 0 before the private season starts', async () => {
+  const configured = process.env.GEEK_SEASON_1_START_MONTH;
+  const mode = process.env.GEEK_RANKED_QUESTION_SOURCE;
+  process.env.GEEK_SEASON_1_START_MONTH = '2026-12';
+  process.env.GEEK_RANKED_QUESTION_SOURCE = 'exposed'; resetRankedSourceCache();
+  try {
+    setClock('2026-11-30T23:59:59.999Z', { frozen: true });
+    assert.equal((await rankedRunBinding()).season, 'season-0');
+  } finally {
+    process.env.GEEK_SEASON_1_START_MONTH = configured;
+    if (mode === undefined) delete process.env.GEEK_RANKED_QUESTION_SOURCE; else process.env.GEEK_RANKED_QUESTION_SOURCE = mode;
+    resetRankedSourceCache();
+  }
 });

@@ -1047,3 +1047,11 @@ Founder screenshots show unstyled HTML and broken images after opening the apex 
 - Full native-Redis verify: 893 HQ tests (892 pass, zero fail, one root-only permission skip) and nine signer checks, with all supporting checks and 311 security assertions passing. Non-root execution is unavailable in this runner; remote normal-user CI remains separate evidence.
 - Metadata-only readiness review finds a missing immutable source pin, distinct linked Preview/Production storage and disabled Preview reward/signing flags. #206 blocks Preview ranked writes; December start also clamps November private runs to Season 1. Keep these rollout gates explicit; no setting is changed and no real private question is read.
 - Detailed disposition, source inputs, known limits and next action: docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md. Publish only a separate draft assembly review into #200, with original PRs and production unchanged.
+
+
+## November 13, 2026 — SEC-010 private-season start guard
+
+- **Base and scope:** #231 head b9b67d16ef37268ff01403a94366023e46133869; branch codex/private-season-start-guard. Held old assembly, not current-main integration or cutover.
+- **Outcome:** configured private seasons cannot start early. Before the UTC month boundary, the API refuses without a question/run or gameplay mutation and the read-only board stays on Season 0. Public Alpha and saved-run compatibility are preserved.
+- **Validation:** 103 focused synthetic private-bank/leak/resilience/season tests pass with real local Redis, zero failures/skips. Full npm run verify also passes: 895 application tests and 9 offline signer checks, zero failures/skips; all private-bank/template/leak, security, continuity and supporting checks pass. No real private questions or provider credentials read; no production writes or economic gate changes.
+- **Next:** review this stacked patch, then reconcile current main (including later payout/unranked interactions), approve the immutable bank artifact/editorial evidence and design isolated rehearsal. External automated-answer assistance remains an open threat; passing protocol tests is not an anti-bot certification.
