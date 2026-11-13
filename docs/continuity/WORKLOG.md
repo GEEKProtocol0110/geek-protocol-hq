@@ -1406,3 +1406,11 @@ The six-hour stuck clock starts at the first submit. Stuck jobs are listed and e
 ## November 12, 2026 — CHAIN-006 mac fields, replay refusal, and quarantine
 
 The job mac is an explicit ordered field list, including each proof field. Changing kind, round, correct count, or run id changes the mac. The first accepted journal is recorded by the worker handler. A queued copy of a signed, stuck, or confirmed earning is not signed again. Decode and mac failures are logged and quarantined. The earning lock is kept. A confirmed stuck job leaves the stuck list. Flags stay false. No secret value was added.
+
+
+## November 13, 2026 — CHAIN-006 atomic journal recovery candidate
+
+- **Review base:** draft #278 head `721c973eb32d8d6b38c281331a7f06dbdb9a03bc`; local branch `codex/atomic-payout-journal`.
+- **Finding and fix:** failure injection reproduced a signed marker without its transaction journal. Preparation now validates the job snapshot, sender lease and replay marker before atomically saving the complete journal and marker.
+- **Validation:** all 18 focused mainnet payout tests passed with real isolated Redis, including six new failure scenarios. Full npm run verify passed: 897 application tests, 9 testnet signer checks and 5 mainnet signer checks, zero failures/skips; question, archive, collection, security, repository, economy, continuity, site and whitepaper checks passed. No production requests, real signing key or broadcast used.
+- **Pickup:** review the stacked candidate before #278; independent signing/application audit and private-bank/abuse readiness remain open. No merge, deployment, environment or economic control changed.

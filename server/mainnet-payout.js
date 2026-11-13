@@ -227,11 +227,26 @@ const quarantineJob = async (id, code) => {
   await redis('ZREM', payoutIndexKey, id);
   console.info(JSON.stringify({ event: 'mainnet-payout-quarantine', code }));
 };
-const SIGNED = `-- geek-mainnet-payout-signed-v1
-local prior = redis.call('HGET', KEYS[1], ARGV[1])
-if prior and prior ~= ARGV[2] then return 0 end
-if not prior then redis.call('HSET', KEYS[1], ARGV[1], ARGV[2]) end
+// Validate every condition before writing. A lost response can leave both the
+// journal and replay marker committed, but never a marker without its journal.
+const PREPARE = `-- geek-mainnet-payout-prepare-v1
+if redis.call('GET', KEYS[1]) ~= ARGV[1] or redis.call('GET', KEYS[2]) ~= ARGV[3] then return 0 end
+local kind = redis.call('TYPE', KEYS[3]).ok
+if kind ~= 'none' and kind ~= 'hash' then return -2 end
+local prior = redis.call('HGET', KEYS[3], ARGV[4])
+if prior and prior ~= ARGV[5] then return -1 end
+redis.call('HSET', KEYS[3], ARGV[4], ARGV[5])
+redis.call('SET', KEYS[1], ARGV[2])
 return 1`;
+
+const savePreparedJob = async (key, raw, job, lease) => {
+  job.version = nonce();
+  const result = await redis('EVAL', PREPARE, 3, key, leaseKey, payoutSignedKey,
+    raw, JSON.stringify(job), lease, job.id, job.journal.reveal.id);
+  if (result === -1) throw new Error('MAINNET_PAYOUT_ALREADY_SIGNED');
+  if (result === -2) throw new Error('MAINNET_PAYOUT_RECORD_INVALID');
+  if (result !== 1) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
+};
 
 const validToken = req => {
   const expected = process.env.MAINNET_PAYOUT_WORKER_TOKEN || '', given = String(req.headers?.authorization || '');
@@ -294,7 +309,6 @@ export async function mainnetPayoutWorkerHandler(req, res) {
     if (body.action === 'prepare') {
       if (job.state !== 'queued' || !validJournal(body.journal) || job.amount !== expectedRaw(job.proof)) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
       await checkAsset(config);
-      if (await redis('EVAL', SIGNED, 1, payoutSignedKey, job.id, body.journal.reveal.id) !== 1) throw new Error('MAINNET_PAYOUT_ALREADY_SIGNED');
       job.journal = body.journal; job.transactionHash = body.journal.reveal.id; job.state = 'prepared'; job.preparedAt = Date.now();
     } else if (body.action === 'submitted') {
       if (!['prepared', 'awaiting-indexer'].includes(job.state)) throw new Error('MAINNET_PAYOUT_STATE_CHANGED');
@@ -308,7 +322,8 @@ export async function mainnetPayoutWorkerHandler(req, res) {
       else if (job.state !== 'stuck') job.state = 'awaiting-indexer';
       job.lastCheckedAt = Date.now();
     }
-    await saveJob(key, raw, job, body.lease, terminal);
+    if (body.action === 'prepare') await savePreparedJob(key, raw, job, body.lease);
+    else await saveJob(key, raw, job, body.lease, terminal);
     if (job.state === 'indexed-confirmed') await redis('ZREM', payoutStuckKey, job.id);
     return sendJson(res, 200, { ok: true, job });
   } catch (error) { return mainnetPayoutError(res, error); }

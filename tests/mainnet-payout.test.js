@@ -28,7 +28,7 @@ const recipient = (() => {
   try { return key.toAddress('mainnet').toString(); } finally { key.free(); }
 })();
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
-let indexerPayload = null;
+let indexerPayload = null, beforeRedisCommand = null, afterRedisCommand = null;
 globalThis.fetch = async (url, options) => {
   const target = String(url);
   if (target.includes('kasplex.org')) {
@@ -37,9 +37,11 @@ globalThis.fetch = async (url, options) => {
   }
   assert.ok(target.startsWith(process.env.UPSTASH_REDIS_REST_URL), 'No production data or network sends');
   const values = JSON.parse(options.body);
+  await beforeRedisCommand?.(values);
   const result = target.endsWith('/pipeline') ? (await fixture.commands(values)).map(item => ({ result: item }))
     : target.endsWith('/multi-exec') ? (await fixture.commands([['MULTI'], ...values, ['EXEC']])).at(-1).map(item => ({ result: item }))
       : { result: await fixture.command(...values) };
+  await afterRedisCommand?.(values);
   return Response.json(result);
 };
 after(async () => { globalThis.fetch = originalFetch; await fixture.close(); });
@@ -51,6 +53,7 @@ beforeEach(async () => {
   delete process.env.MAINNET_PAYOUT_JOB_HMAC;
   delete process.env.VERCEL_ENV;
   indexerPayload = null;
+  beforeRedisCommand = null; afterRedisCommand = null;
   Object.assign(process.env, {
     UPSTASH_REDIS_REST_URL: 'https://redis.mainnet-payout.test', UPSTASH_REDIS_REST_TOKEN: 'synthetic-token',
     AUDIT_LOG_SECRET: 'synthetic-mainnet-payout-audit-32-characters'
@@ -566,4 +569,63 @@ test('a queued copy of an already signed job is quarantined and cannot be signed
   }), /JOB_ALREADY_SIGNED/);
   assert.equal(signed, 0);
   await call(sessionHandler, 'POST', { action: 'release', lease: again.body.lease }, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
+});
+
+
+test('journal preparation is recoverable across rejected writes and lost acknowledgments', async () => {
+  for (const failure of ['before-write', 'lost-response', 'expired-lease', 'changed-job', 'conflicting-marker', 'invalid-marker-type']) {
+    await fixture.command('FLUSHDB'); enable();
+    const cookie = await player(); await saveAddress(cookie);
+    let result = await play(cookie, 'start', { mode: 'daily', category: 'kaspa' });
+    result = await answerRound(cookie, result.body);
+    assert.equal((await play(cookie, 'finish', { runId: result.run.id })).statusCode, 200);
+    const queued = (await jobs())[0];
+    const worker = body => call(sessionHandler, 'POST', body, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
+    const claim = await worker({ action: 'claim' }); assert.equal(claim.statusCode, 200);
+    const journal = { commit: { id: 'b'.repeat(64), transaction: 'c'.repeat(80) }, reveal: { id: 'd'.repeat(64), transaction: 'e'.repeat(80) } };
+    indexerPayload = () => ({ message: 'successful', result: [{ tick: 'GEEK', state: 'deployed', hashRev: GEEK_DEPLOYMENT_HASH, dec: '8', p: 'KRC-20', op: 'deploy', txAccept: '1', opAccept: '1' }] });
+    const prepareCommand = values => values[0] === 'EVAL' && values[1].startsWith('-- geek-mainnet-payout-prepare-v1');
+    beforeRedisCommand = async values => {
+      if (!prepareCommand(values)) return;
+      if (failure === 'before-write') throw new Error('Synthetic request not delivered');
+      if (failure === 'expired-lease') await fixture.command('DEL', 'geek:mainnet-payout:sender-lease:v1');
+      if (failure === 'changed-job') await fixture.command('SET', payoutJobKey(queued.id), JSON.stringify({ ...queued, version: 'f'.repeat(24) }));
+      if (failure === 'conflicting-marker') await fixture.command('HSET', payoutSignedKey, queued.id, 'f'.repeat(64));
+      if (failure === 'invalid-marker-type') await fixture.command('SET', payoutSignedKey, 'synthetic-wrong-type');
+    };
+    afterRedisCommand = values => {
+      if (failure === 'lost-response' && prepareCommand(values)) throw new Error('Synthetic response lost after commit');
+    };
+    let prepared;
+    try { prepared = await worker({ action: 'prepare', lease: claim.body.lease, id: queued.id, version: queued.version, journal }); }
+    finally { beforeRedisCommand = null; afterRedisCommand = null; }
+    assert.ok(prepared.statusCode >= 400, failure);
+    const saved = JSON.parse(await fixture.command('GET', payoutJobKey(queued.id)));
+    if (failure === 'lost-response') {
+      assert.equal(saved.state, 'prepared'); assert.deepEqual(saved.journal, journal);
+      assert.equal(await fixture.command('HGET', payoutSignedKey, queued.id), journal.reveal.id);
+    } else {
+      assert.equal(saved.state, 'queued'); assert.equal(saved.journal, undefined);
+      if (failure === 'invalid-marker-type') assert.equal(await fixture.command('GET', payoutSignedKey), 'synthetic-wrong-type');
+      else assert.equal(await fixture.command('HGET', payoutSignedKey, queued.id), failure === 'conflicting-marker' ? 'f'.repeat(64) : null);
+    }
+    assert.equal(await fixture.command('GET', payoutEarnKey(queued.id)), queued.id);
+    await worker({ action: 'release', lease: claim.body.lease });
+    if (['conflicting-marker', 'invalid-marker-type'].includes(failure)) continue;
+    const retry = await worker({ action: 'claim' }); assert.equal(retry.statusCode, 200);
+    assert.equal(retry.body.job.id, queued.id);
+    assert.deepEqual(await fixture.command('ZRANGE', payoutQuarantineKey, 0, -1), []);
+    if (failure === 'lost-response') {
+      assert.deepEqual(retry.body.job.journal, journal);
+      const replacement = { ...journal, reveal: { ...journal.reveal, id: 'a'.repeat(64) } };
+      const rejected = await worker({ action: 'prepare', lease: retry.body.lease, id: queued.id, version: retry.body.job.version, journal: replacement });
+      assert.equal(rejected.statusCode, 409);
+      assert.deepEqual(JSON.parse(await fixture.command('GET', payoutJobKey(queued.id))).journal, journal);
+    } else {
+      const retried = await worker({ action: 'prepare', lease: retry.body.lease, id: queued.id, version: retry.body.job.version, journal });
+      assert.equal(retried.statusCode, 200, failure);
+      assert.deepEqual(retried.body.job.journal, journal);
+    }
+    await worker({ action: 'release', lease: retry.body.lease });
+  }
 });

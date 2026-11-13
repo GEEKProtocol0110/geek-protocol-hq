@@ -50,3 +50,12 @@ Offline fixture tests may pass a synthetic key only inside `workers/mainnet/chec
 ## Not enabled
 
 This change does not deploy the worker, admit jobs, sign, broadcast, or change CCE or collection ownership. Indexed confirmation would still be an indexer observation, not an independent finality proof. Review the reward rules, the temporary cap, the retention ceiling, and the signer before any explicit enable.
+
+
+## November 13 recovery follow-up (source candidate)
+
+Review of draft #278 at `721c973eb32d8d6b38c281331a7f06dbdb9a03bc` reproduced a failure between the replay-marker write and the journal save. A failed second write could leave an unpaid queued earning marked signed but without its journal, causing quarantine on retry. No broadcast was needed to reproduce this availability failure.
+
+Preparation now checks the exact job snapshot, live sender lease, replay-marker key type, and any existing reveal id before writing the marker and complete prepared job in one Redis Lua operation. A rejected request writes neither record. A lost acknowledgment after successful execution preserves both records, and the next claim retrieves the same journal. Previously accepted replay markers cannot be replaced. This removes the inter-request failure window; it does not establish provider durability or backup/restore safety.
+
+Real local Redis regression tests exercise a request rejected before execution, a response lost after commit, lease expiry at execution, a changed job snapshot, a conflicting reveal marker, and an invalid marker-key type. Existing replay and flags-off checks remain. This is an internal source candidate only; all external audit, release and economic holds remain.

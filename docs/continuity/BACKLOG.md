@@ -1361,7 +1361,7 @@ Evidence/specification: [.github/CODEOWNERS](../../.github/CODEOWNERS), [.github
 
 **P1 / in-progress.** Owner: Maintainer; founder controls explicit enable and the signing secret. Dependencies: CHAIN-004.
 
-Next action: Review the draft port. Keep settlementEligible and withdrawalsEnabled false. Add the signing key in the Vercel or GitHub secret UI only after review; do not enable payouts in this change.
+Next action: Review the atomic journal recovery follow-up against draft #278 (base 721c973eb32d8d6b38c281331a7f06dbdb9a03bc), then continue signer review. No merge, deployment or enable is implied. Settlement and withdrawals remain disabled.
 
 Acceptance:
 
@@ -1371,5 +1371,6 @@ Acceptance:
 - Admission and signing require production plus the explicit flag. Preview cannot pay. settlementEligible and withdrawalsEnabled stay false. No signing key is committed.
 - The job mac is an explicit ordered field list that includes each proof field. An already signed earning cannot be signed again. A record that fails decoding or the mac check is quarantined and logged, and the earning lock is kept.
 - Focused tests and the existing testnet signer checks pass. A real mainnet transfer is not claimed.
+- Journal preparation commits the replay marker and signed bytes together after checking the current lease and job snapshot. Rejected writes and lost acknowledgments preserve safe recovery without a new journal for an accepted earning.
 
 Evidence/specification: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [server/mainnet-payout.js](../../server/mainnet-payout.js), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs), [workers/mainnet/signer.mjs](../../workers/mainnet/signer.mjs), [workers/mainnet/process.mjs](../../workers/mainnet/process.mjs), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js), [workers/mainnet/check-signing.mjs](../../workers/mainnet/check-signing.mjs), [workers/mainnet/job-mac.mjs](../../workers/mainnet/job-mac.mjs).

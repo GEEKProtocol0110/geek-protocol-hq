@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-12",
+  "updatedAt": "2026-11-13",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2140,14 +2140,15 @@
       "status": "in-progress",
       "title": "Port the automatic payout worker toward mainnet GEEK",
       "owner": "Maintainer; founder controls explicit enable and the signing secret",
-      "nextAction": "Review the draft port. Keep settlementEligible and withdrawalsEnabled false. Add the signing key in the Vercel or GitHub secret UI only after review; do not enable payouts in this change.",
+      "nextAction": "Review the atomic journal recovery follow-up against draft #278 (base 721c973eb32d8d6b38c281331a7f06dbdb9a03bc), then continue signer review. No merge, deployment or enable is implied. Settlement and withdrawals remain disabled.",
       "acceptance": [
         "The mainnet worker reuses the CHAIN-004 journaled KRC-20 commit/reveal path for current GEEK, with the pinned public hot-wallet receive address.",
         "Daily pays 100 GEEK once. A Gauntlet round pays ROUND_CONFIG.reward times the server-graded correct count. Zero correct pays nothing. One correct answer in round 10 pays 1800, and 18000 is rejected for that proof. Retries do not pay again.",
         "Temporary caps are 100,000 GEEK globally and 46,400 GEEK per player and per receiving address. The active index counts outstanding jobs only. A journal unconfirmed for six hours is stuck and does not block later jobs or receive a second journal.",
         "Admission and signing require production plus the explicit flag. Preview cannot pay. settlementEligible and withdrawalsEnabled stay false. No signing key is committed.",
         "The job mac is an explicit ordered field list that includes each proof field. An already signed earning cannot be signed again. A record that fails decoding or the mac check is quarantined and logged, and the earning lock is kept.",
-        "Focused tests and the existing testnet signer checks pass. A real mainnet transfer is not claimed."
+        "Focused tests and the existing testnet signer checks pass. A real mainnet transfer is not claimed.",
+        "Journal preparation commits the replay marker and signed bytes together after checking the current lease and job snapshot. Rejected writes and lost acknowledgments preserve safe recovery without a new journal for an accepted earning."
       ],
       "dependsOn": [
         "CHAIN-004"
