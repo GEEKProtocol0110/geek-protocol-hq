@@ -514,6 +514,20 @@
       ],
       "recordedAt": "2026-11-13",
       "supersedes": null
+    },
+    {
+      "id": "DR-040",
+      "status": "founder-direction",
+      "title": "Reuse and audit the published bank for Alpha; keep token competition on a private path",
+      "decision": "Retain and audit the existing question corpus for learning and openly known-question Alpha rankings. Build fresh confidential content incrementally for future token-bearing competition; published content is not made secret retroactively. Keep CCE review targets and payout/cutover approval separate.",
+      "basis": "Founder questioned unnecessary replacement authoring and explicitly instructed Do it after the reuse/public-Alpha and future-private-competition proposal.",
+      "evidence": [
+        "docs/EXISTING-BANK-REUSE-AND-REVIEW.md",
+        "server/question-audit/review-queue.json",
+        "server/mainnet-payout.js"
+      ],
+      "recordedAt": "2026-11-13",
+      "supersedes": null
     }
   ]
 }
