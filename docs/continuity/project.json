@@ -39,10 +39,10 @@
   "currentWork": {
     "id": "BANK-009",
     "status": "active",
-    "description": "BANK-009: six-row Technology risk triage retires five ambiguous, unsupported or repeated items without padding the bank. One duplicate survivor remains draft; no review-count promotion."
+    "description": "BANK-009: retain and audit the existing public corpus for learning and Alpha rankings. Generated review queue prioritizes existing drafts; future token competition stays private and held."
   },
   "nextTask": "BANK-009",
-  "nextAction": "Review the November 8 risk-triage candidate and exact-head checks, then continue unflagged rows across categories.",
+  "nextAction": "Review the existing-bank retention/triage/CI candidate, then fact-check the bounded existing-row batches against primary sources. Do not discard the public corpus or promote drafts from heuristic signals. Token-bearing competition and CCE holds remain separate.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
@@ -268,5 +268,11 @@
     "status": "local-synthetic-pass-source-candidate",
     "evidence": "docs/PRIVATE-BANK-LOCAL-REHEARSAL.md",
     "nextAction": "Review current-HQ integration on main dbdb7f0 plus held bank/start-guard 73f80ce and the local synthetic rehearsal. Obtain approved immutable artifact/editorial/capacity evidence and define a bounded hosted rehearsal before any production cutover. Payouts and Preview guards remain held."
+  },
+  "existingBankReuse": {
+    "task": "BANK-009",
+    "status": "source-candidate",
+    "evidence": "docs/EXISTING-BANK-REUSE-AND-REVIEW.md",
+    "nextAction": "Review the existing-bank retention/triage/CI candidate, then fact-check the bounded existing-row batches against primary sources. Do not discard the public corpus or promote drafts from heuristic signals. Token-bearing competition and CCE holds remain separate."
   }
 }

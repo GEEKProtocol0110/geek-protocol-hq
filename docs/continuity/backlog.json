@@ -86,13 +86,14 @@
       "status": "active",
       "title": "Audit every question category before treating counts as quality",
       "owner": "Content maintainer; independent editor unassigned",
-      "nextAction": "Review the November 8 risk-triage candidate and exact-head CI, then continue unflagged rows across categories.",
+      "nextAction": "Review the existing-bank retention/triage/CI candidate, then fact-check the bounded existing-row batches against primary sources. Do not discard the public corpus or promote drafts from heuristic signals. Token-bearing competition and CCE holds remain separate.",
       "acceptance": [
         "All active identities have a recorded audit disposition; screening and factual review coverage are distinguished.",
         "Semantic duplicates, inverse/paraphrased facts, key/distractor ambiguity, missing media/context, encoding, taxonomy, dates/editions and licensing are reviewed, including unflagged imports.",
         "Each retained reviewed item has specific primary evidence, an original explanation, review date and provisional difficulty; no blanket source-checked promotion.",
         "Corrections use new identities; original grading remains lookup-only and duplicate aliases prevent repeated concepts in subsequent rounds.",
-        "Independent editorial review is assigned and accepted before claiming independent completion; generated coverage, compatibility, tier capacity and public-answer protections pass."
+        "Independent editorial review is assigned and accepted before claiming independent completion; generated coverage, compatibility, tier capacity and public-answer protections pass.",
+        "A fresh aggregate report distinguishes raw source-check tags, readiness-qualified records, selectable drafts, practice-only rows and review-target deficit; review queues never auto-approve, retire or rewrite grading content."
       ],
       "dependsOn": [],
       "evidence": [
@@ -114,7 +115,11 @@
         "server/question-audit/technology-2026-11-06.json",
         "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-07.md",
         "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-08.md",
-        "docs/TECHNOLOGY-RISK-REVIEW-2026-11-08.md"
+        "docs/TECHNOLOGY-RISK-REVIEW-2026-11-08.md",
+        "docs/EXISTING-BANK-REUSE-AND-REVIEW.md",
+        "scripts/question-review-queue.mjs",
+        "server/question-audit/review-queue.json",
+        "tests/question-review-queue.test.js"
       ],
       "validationEvidence": [
         "Initial full-bank screen: 8,371 baseline active / 864 recorded checks / 7,507 drafts; 33 candidate pairs, 26 within and seven cross-category. Internal triage: 15 duplicate retirements, ten retained distinct objectives, four scope and four category decisions outstanding. Candidate: 8,356 active / 7,492 drafts; 76 encoding and four time-wording signals. No factual certification added.",

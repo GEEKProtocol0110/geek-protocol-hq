@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Check out pinned source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - name: Use Node.js 24 with current npm audit support
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
@@ -30,26 +32,16 @@ jobs:
         run: find api server public scripts \( -name '*.js' -o -name '*.mjs' \) | sort | xargs -n1 node --check
       - name: Install Redis for atomic game and chapter integration tests
         run: sudo apt-get update -qq && sudo apt-get install -y redis-server
-      - name: Run integration tests
+      - name: Run full application and release verification
         env:
           DUEL_REQUIRE_REDIS: "1"
           QUEST_REQUIRE_REDIS: "1"
-        run: npm test
-      - name: Verify security evidence
-        run: npm run security:check
-      - name: Verify real SDK transaction construction offline
-        run: npm run test:signer
+        run: npm run verify
+      - name: Rehearse the fake private bank with isolated settings
+        run: npm run private-bank:rehearse
       - name: Audit isolated testnet worker dependencies
         run: npm audit --prefix workers/testnet --omit=dev --audit-level=high
       - name: Audit isolated mainnet payout worker dependencies
         run: npm audit --prefix workers/mainnet --omit=dev --audit-level=high
-      - name: Verify distinct question banks and public counts
-        run: npm run questions:check
-      - name: Verify page metadata, sitemap and internal links
-        run: npm run site:check
-      - name: Verify the project continuation record
-        run: npm run continuity:check
-      - name: Verify economy stress baseline
-        run: npm run economy:stress:check
       - name: Audit production dependencies
         run: npm audit --omit=dev --audit-level=high

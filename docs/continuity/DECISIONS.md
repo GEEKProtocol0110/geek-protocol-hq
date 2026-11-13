@@ -393,3 +393,13 @@ Supersede the page-memory-only mint receipt implementation with up to 100 browse
 Basis: Founder authorized continuing the announced mint receipt history follow-up. Existing non-custodial and economic constraints remain.
 
 Evidence: [docs/MINT-RECEIPT-HISTORY.md](../../docs/MINT-RECEIPT-HISTORY.md), [docs/MINT-PROTOCOL.md](../../docs/MINT-PROTOCOL.md), [tests/mint-client.test.js](../../tests/mint-client.test.js).
+
+## DR-040: Reuse and audit the published bank for Alpha; keep token competition on a private path
+
+**founder-direction** · 2026-11-13.
+
+Retain and audit the existing question corpus for learning and openly known-question Alpha rankings. Build fresh confidential content incrementally for future token-bearing competition; published content is not made secret retroactively. Keep CCE review targets and payout/cutover approval separate.
+
+Basis: Founder questioned unnecessary replacement authoring and explicitly instructed Do it after the reuse/public-Alpha and future-private-competition proposal.
+
+Evidence: [docs/EXISTING-BANK-REUSE-AND-REVIEW.md](../../docs/EXISTING-BANK-REUSE-AND-REVIEW.md), [server/question-audit/review-queue.json](../../server/question-audit/review-queue.json), [server/mainnet-payout.js](../../server/mainnet-payout.js).

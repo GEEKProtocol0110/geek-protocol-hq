@@ -25,9 +25,9 @@ Record date: 2026-11-13. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-009: active.** BANK-009: six-row Technology risk triage retires five ambiguous, unsupported or repeated items without padding the bank. One duplicate survivor remains draft; no review-count promotion.
+**BANK-009: active.** BANK-009: retain and audit the existing public corpus for learning and Alpha rankings. Generated review queue prioritizes existing drafts; future token competition stays private and held.
 
-Next task: **BANK-009**. Review the November 8 risk-triage candidate and exact-head checks, then continue unflagged rows across categories.
+Next task: **BANK-009**. Review the existing-bank retention/triage/CI candidate, then fact-check the bounded existing-row batches against primary sources. Do not discard the public corpus or promote drafts from heuristic signals. Token-bearing competition and CCE holds remain separate.
 
 ## Holds
 

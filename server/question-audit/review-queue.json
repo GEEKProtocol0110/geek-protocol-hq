@@ -1,0 +1,1592 @@
+{
+  "schema": 1,
+  "method": "existing-bank-review-queue-v1",
+  "factualAuditComplete": false,
+  "automaticApproval": false,
+  "automaticRetirement": false,
+  "scope": "Existing public static bank only; private ranked content is never read.",
+  "limit": "Review signals are prompts for source/wording checks, not proof a question is wrong. Unflagged drafts still require review. Readiness-qualified records are internal evidence, not independent acceptance.",
+  "totals": {
+    "rows": 8432,
+    "practiceOnly": 214,
+    "selectable": 8218,
+    "rawSourceCheckTags": 884,
+    "readinessQualified": 809,
+    "draftRows": 7548,
+    "selectableDraftRows": 7409,
+    "reviewTargetDeficit": 7191
+  },
+  "categories": [
+    {
+      "id": "kaspa",
+      "name": "Kaspa",
+      "total": 866,
+      "practiceOnly": 100,
+      "selectable": 766,
+      "rawSourceCheckTags": 766,
+      "readinessQualified": 766,
+      "draftRows": 100,
+      "selectableDraftRows": 0,
+      "reviewTargetDeficit": 234,
+      "signals": {
+        "clinical-scope-review": 0,
+        "superlative-scope-review": 0,
+        "unit-system-review": 0,
+        "missing-explanation": 0,
+        "primary-source-review-needed": 0
+      },
+      "nextBatch": []
+    },
+    {
+      "id": "video-games",
+      "name": "Video games",
+      "total": 601,
+      "practiceOnly": 0,
+      "selectable": 601,
+      "rawSourceCheckTags": 0,
+      "readinessQualified": 0,
+      "draftRows": 601,
+      "selectableDraftRows": 601,
+      "reviewTargetDeficit": 1000,
+      "signals": {
+        "clinical-scope-review": 0,
+        "superlative-scope-review": 76,
+        "unit-system-review": 0,
+        "missing-explanation": 601,
+        "primary-source-review-needed": 601
+      },
+      "nextBatch": [
+        {
+          "id": "VG-0017",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0027",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0037",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0049",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0063",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0082",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0086",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0119",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0120",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0175",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0207",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0218",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0221",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0304",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0305",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0308",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0315",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0324",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0346",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0369",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0386",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0390",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0409",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0447",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "VG-0448",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "science-fiction",
+      "name": "Science fiction",
+      "total": 514,
+      "practiceOnly": 37,
+      "selectable": 477,
+      "rawSourceCheckTags": 37,
+      "readinessQualified": 0,
+      "draftRows": 477,
+      "selectableDraftRows": 477,
+      "reviewTargetDeficit": 1000,
+      "signals": {
+        "clinical-scope-review": 0,
+        "superlative-scope-review": 45,
+        "unit-system-review": 1,
+        "missing-explanation": 477,
+        "primary-source-review-needed": 477
+      },
+      "nextBatch": [
+        {
+          "id": "SF-0035",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0046",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0072",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0087",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0090",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0115",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0118",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0121",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0126",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0130",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0147",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0195",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0204",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0219",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0271",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0278",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0306",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0320",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0340",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0345",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0374",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0381",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0382",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0426",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "SF-0446",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "technology",
+      "name": "Technology",
+      "total": 1479,
+      "practiceOnly": 10,
+      "selectable": 1469,
+      "rawSourceCheckTags": 28,
+      "readinessQualified": 28,
+      "draftRows": 1451,
+      "selectableDraftRows": 1441,
+      "reviewTargetDeficit": 972,
+      "signals": {
+        "clinical-scope-review": 10,
+        "superlative-scope-review": 228,
+        "unit-system-review": 14,
+        "missing-explanation": 1441,
+        "primary-source-review-needed": 1441
+      },
+      "nextBatch": [
+        {
+          "id": "TECH-0799",
+          "flags": [
+            "clinical-scope-review",
+            "unit-system-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0059",
+          "flags": [
+            "clinical-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0151",
+          "flags": [
+            "clinical-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0332",
+          "flags": [
+            "clinical-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0479",
+          "flags": [
+            "clinical-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0944",
+          "flags": [
+            "clinical-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-N-39e115cf67bc",
+          "flags": [
+            "clinical-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-N-476a77e84d41",
+          "flags": [
+            "clinical-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-N-930c505b62aa",
+          "flags": [
+            "clinical-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-N-f0d3df889012",
+          "flags": [
+            "clinical-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0149",
+          "flags": [
+            "superlative-scope-review",
+            "unit-system-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0004",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0012",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0019",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0021",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0045",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0047",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0050",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0057",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0058",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0074",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0076",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0084",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0088",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "TECH-0091",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "movies",
+      "name": "Movies",
+      "total": 1490,
+      "practiceOnly": 0,
+      "selectable": 1490,
+      "rawSourceCheckTags": 5,
+      "readinessQualified": 5,
+      "draftRows": 1485,
+      "selectableDraftRows": 1485,
+      "reviewTargetDeficit": 995,
+      "signals": {
+        "clinical-scope-review": 2,
+        "superlative-scope-review": 197,
+        "unit-system-review": 6,
+        "missing-explanation": 1485,
+        "primary-source-review-needed": 1485
+      },
+      "nextBatch": [
+        {
+          "id": "MOV-N-3bd98b00e00f",
+          "flags": [
+            "clinical-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-N-4c2a25456079",
+          "flags": [
+            "clinical-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-N-aceb1545e7be",
+          "flags": [
+            "superlative-scope-review",
+            "unit-system-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0006",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0007",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0009",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0012",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0027",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0035",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0038",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0064",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0069",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0074",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0077",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0083-Eaa9e3df1d6",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0115",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0123",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0126",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0142",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0154",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0168",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0185",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0192",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0203",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "MOV-0207",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "history",
+      "name": "History",
+      "total": 1502,
+      "practiceOnly": 14,
+      "selectable": 1488,
+      "rawSourceCheckTags": 9,
+      "readinessQualified": 9,
+      "draftRows": 1493,
+      "selectableDraftRows": 1479,
+      "reviewTargetDeficit": 991,
+      "signals": {
+        "clinical-scope-review": 1,
+        "superlative-scope-review": 257,
+        "unit-system-review": 9,
+        "missing-explanation": 1479,
+        "primary-source-review-needed": 1479
+      },
+      "nextBatch": [
+        {
+          "id": "HIS-N-15941742ebed",
+          "flags": [
+            "clinical-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-638b3e40f900",
+          "flags": [
+            "superlative-scope-review",
+            "unit-system-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-026cb667e4bc",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-02846384fc62",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-0350f74f341e",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-05c9ab771c1f",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-072a8dbe6441",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-09018bb2d9f7",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-0b41ab78bc88",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-0c05099a4439",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-1500028484ad",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-16417e491a1d",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-18db5645bc94",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-1925f241d979",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-1a125400a0ea",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-1b10851cca57",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-1d341331bf51",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-1eee67c47ff6",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-1f78299684e0",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-2504ee8bf627",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-2c034f30d855",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-2f071d3f087b",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-2fda6d9d0e46",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-2ff9013db73f",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "HIS-N-3309ad39f59c",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "comics",
+      "name": "Comics",
+      "total": 412,
+      "practiceOnly": 52,
+      "selectable": 360,
+      "rawSourceCheckTags": 39,
+      "readinessQualified": 1,
+      "draftRows": 373,
+      "selectableDraftRows": 359,
+      "reviewTargetDeficit": 999,
+      "signals": {
+        "clinical-scope-review": 0,
+        "superlative-scope-review": 43,
+        "unit-system-review": 0,
+        "missing-explanation": 359,
+        "primary-source-review-needed": 359
+      },
+      "nextBatch": [
+        {
+          "id": "COM-0079",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0096",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0123",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0126",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0147",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0151",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0152",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0171",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0185",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0191",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0219",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0238",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0279",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0295",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0306",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0311",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0321",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0347",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0354",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0431",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0461",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0473",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0549",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0565",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "COM-0577",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pop-culture",
+      "name": "Pop culture",
+      "total": 1568,
+      "practiceOnly": 1,
+      "selectable": 1567,
+      "rawSourceCheckTags": 0,
+      "readinessQualified": 0,
+      "draftRows": 1568,
+      "selectableDraftRows": 1567,
+      "reviewTargetDeficit": 1000,
+      "signals": {
+        "clinical-scope-review": 1,
+        "superlative-scope-review": 249,
+        "unit-system-review": 2,
+        "missing-explanation": 1567,
+        "primary-source-review-needed": 1567
+      },
+      "nextBatch": [
+        {
+          "id": "POP-N-28b42d5e749f",
+          "flags": [
+            "clinical-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0008",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0042",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0054",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0065",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0083",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0085",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0094",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0095",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0096",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0097",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0101",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0106",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0112",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0113",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0117",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0123",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0131",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0141",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0144",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0145",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0153",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0157",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0174",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        },
+        {
+          "id": "POP-0175",
+          "flags": [
+            "superlative-scope-review",
+            "missing-explanation",
+            "primary-source-review-needed"
+          ]
+        }
+      ]
+    }
+  ]
+}
