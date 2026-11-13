@@ -94,6 +94,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | OPS-004 | P2 | in-progress | Record default code ownership and limited weekly dependency updates | Maintainer; founder reviews the pull request |
 | CHAIN-006 | P1 | in-progress | Port the automatic payout worker toward mainnet GEEK | Maintainer; founder controls explicit enable and the signing secret |
 | MINT-001 | P1 | in-progress | Preserve local mint request references across reloads | Maintainer; founder reviews release |
+| UX-029 | P1 | in-progress | Keep home account access in sync and expose receiving-wallet switching | Maintainer; founder reviews release |
 
 ## CONT-001: Publish the continuation system
 
@@ -1424,3 +1425,19 @@ Acceptance:
 - Focused reload, interrupted-request, wallet/network-isolation, invalid-data and blocked-storage tests pass; physical-wallet acceptance is tracked separately.
 
 Evidence/specification: [docs/MINT-RECEIPT-HISTORY.md](../../docs/MINT-RECEIPT-HISTORY.md), [public/mint/assets/mint.js](../../public/mint/assets/mint.js), [tests/mint-client.test.js](../../tests/mint-client.test.js).
+
+## UX-029: Keep home account access in sync and expose receiving-wallet switching
+
+**P1 / in-progress.** Owner: Maintainer; founder reviews release. Dependencies: AUTH-004.
+
+Next action: Review the home account and Switch wallet candidate, then verify the deployed return-home and passkey-confirmed address flow on actual devices.
+
+Acceptance:
+
+- Home reads the existing session without creating a guest or opening a wallet and sends signed-in players to My HQ. Guest and expired sessions offer Sign in.
+- Home rechecks on browser history restore; late reads cannot override newer account status and transient failures do not pretend the player signed out.
+- My HQ and Rewards expose Switch wallet for a saved receiving address, without requiring KasWare. Preparing a replacement does not change saved settings or prompt for credentials.
+- Saving a new receiving address retains the existing fresh passkey, exact network/destination/version binding and account identity. Guest, unsupported and busy states cannot switch or save.
+- Focused behavior and repository verification pass. Rendered and physical-device acceptance remain separate.
+
+Evidence/specification: [docs/HOME-ACCOUNT-WALLET.md](../../docs/HOME-ACCOUNT-WALLET.md), [public/assets/session-access.js](../../public/assets/session-access.js), [public/assets/receiving-address.js](../../public/assets/receiving-address.js), [tests/session-access-client.test.js](../../tests/session-access-client.test.js), [tests/receiving-address-client.test.js](../../tests/receiving-address-client.test.js).

@@ -22,7 +22,7 @@ const mount = async ({ canEdit = true, supported = true, prompt, handle } = {}) 
   ui.context.navigator.credentials = { get: async options => { prompts.push(options); if (prompt) return prompt(options); return { id: 'account-key', rawId: buffer('account-key'), type: 'public-key', getClientExtensionResults: () => ({}), response: { clientDataJSON: buffer('client'), authenticatorData: buffer('auth'), signature: buffer('sig'), userHandle: null } }; } };
   const root = ui.node('[data-receiving-address]'), form = ui.node('[data-receiving-form]', 'form'); root.append(form);
   form.reportValidity = () => true;
-  for (const [name, tag] of [['network','select'],['input','input'],['save','button'],['remove','button'],['retry','button'],['status','p'],['access','a'],['confirm','input'],['badge','span'],['hint','p']]) root.append(ui.node(`[data-receiving-${name}]`, tag));
+  for (const [name, tag] of [['network','select'],['input','input'],['save','button'],['remove','button'],['retry','button'],['status','p'],['access','a'],['confirm','input'],['badge','span'],['hint','p'],['switch','button'],['current','p']]) root.append(ui.node(`[data-receiving-${name}]`, tag));
   ui.node('[data-receiving-network]').value = 'mainnet';
   ui.run(source); await tick();
   return { ...ui, root, form, calls, prompts };
@@ -121,4 +121,57 @@ test('guest address viewing offers an optional next step without an error or pas
   assert.equal(ui.node('[data-receiving-retry]').hidden, true);
   assert.equal(ui.form.hidden, true);
   assert.equal(ui.calls.length, 1); assert.equal(ui.prompts.length, 0);
+});
+
+
+test('Switch wallet prepares a new destination without saving, signing or connecting a wallet', async () => {
+  const saved = { ok: true, canEdit: true, signedIn: true, addresses: { mainnet: 'kaspa:old-fixture', 'testnet-10': '', version: 'old' } };
+  const ui = await mount({ handle: body => !body ? json(saved) : undefined });
+  const button = ui.node('[data-receiving-switch]'), input = ui.node('[data-receiving-input]');
+  assert.equal(button.hidden, false); assert.equal(button.disabled, false);
+  ui.node('[data-receiving-confirm]').checked = true;
+  await button.emit('click');
+  assert.equal(input.value, ''); assert.equal(ui.document.activeElement, input);
+  assert.equal(ui.node('[data-receiving-confirm]').checked, false);
+  assert.equal(ui.node('[data-receiving-save]').disabled, true);
+  assert.match(ui.node('[data-receiving-current]').textContent, /kaspa:old-fixture/);
+  assert.match(ui.node('[data-receiving-status]').textContent, /stays unchanged until you confirm/);
+  assert.equal(ui.calls.length, 1); assert.equal(ui.prompts.length, 0);
+  input.value = 'kaspa:new-fixture'; await input.emit('input');
+  ui.node('[data-receiving-confirm]').checked = true;
+  await ui.form.emit('submit');
+  assert.equal(ui.calls[1].address, 'kaspa:new-fixture');
+  assert.equal(ui.calls[1].version, 'old'); assert.equal(ui.prompts.length, 1);
+  assert.match(ui.node('[data-receiving-current]').textContent, /kaspa:saved-fixture/);
+});
+
+test('Switch wallet respects account access and locks while a change is being confirmed', async () => {
+  for (const setup of [{ canEdit: false }, { supported: false }]) {
+    const ui = await mount(setup);
+    assert.equal(ui.node('[data-receiving-switch]').disabled, true);
+    await ui.node('[data-receiving-switch]').emit('click');
+    assert.equal(ui.calls.length, 1); assert.equal(ui.prompts.length, 0);
+  }
+  const wait = deferred();
+  const ui = await mount({ prompt: () => wait.promise, handle: body => !body ? json({ ok: true, canEdit: true, signedIn: true, addresses: { mainnet: 'kaspa:old-fixture', version: 'old' } }) : undefined });
+  const input = ui.node('[data-receiving-input]'); input.value = 'kaspa:new-fixture';
+  ui.node('[data-receiving-confirm]').checked = true;
+  const pending = ui.form.emit('submit'); await tick();
+  assert.equal(ui.node('[data-receiving-switch]').disabled, true);
+  await ui.node('[data-receiving-switch]').emit('click');
+  assert.equal(input.value, 'kaspa:new-fixture');
+  wait.reject(new DOMException('cancel', 'NotAllowedError')); await pending;
+  assert.match(ui.node('[data-receiving-current]').textContent, /kaspa:old-fixture/);
+});
+
+test('home and both receiving pages expose the shipped account and Switch wallet controls', () => {
+  const home = readFileSync(new URL('../public/index.html', import.meta.url), 'utf8');
+  assert.match(home, /data-nav-account/);
+  assert.match(home, /data-signed-in-only hidden/);
+  assert.match(home, /href="\/profile\/#reward-address">Switch wallet/);
+  for (const page of ['profile', 'rewards']) {
+    const html = readFileSync(new URL(`../public/${page}/index.html`, import.meta.url), 'utf8');
+    assert.match(html, /type="button" data-receiving-switch hidden disabled>Switch wallet/);
+    assert.match(html, /data-receiving-current hidden/);
+  }
 });

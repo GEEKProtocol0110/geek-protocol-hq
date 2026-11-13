@@ -25,3 +25,5 @@
 .receiving-details p{margin:.4rem 0}
 .receiving-address :focus-visible{outline:3px solid #70e6dc;outline-offset:3px}
 @media(max-width:520px){.receiving-actions{display:grid;grid-template-columns:1fr}.receiving-actions .button{width:100%;box-sizing:border-box}.receiving-heading{gap:.8rem}.receiving-address{border-radius:13px}.receiving-badge{font-size:.72rem}}
+
+[data-receiving-current] { overflow-wrap: anywhere; }
