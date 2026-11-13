@@ -938,21 +938,6 @@ Full npm run verify passed with required native Redis 7.0.15: 714 HQ tests plus 
 
 Read-only standard monitoring of released #178 passed 21/21 at October 28, 5:36 PM Detroit (21:36 UTC), unchanged five-second bounds. This is baseline point-in-time health; it is not deployment proof for this Technology candidate or sustained-capacity/device/provider acceptance.
 
-## October 29, 2026 — SEC-010 private ranked bank (proposed, draft PR)
-
-- **Scope:** security audit found every public bank file carries `correctIndex`, so ranked scores can be scripted; draft #198 would publish 100 more keys. Proposed a configurable private ranked source (directory or HTTPS URL), a public fixture bank without real answers, and fail-closed production when no private source is set. All committed public rows are treated as exposed (practice/grading only); none are deleted or rewritten.
-- **Compatibility:** saved runs keep grading by ID against published, retired and private rows; private IDs that collide with published IDs are rejected. Payouts remain disabled. Not merged or deployed; storage choice and access remain founder decisions (see docs/MIGRATION-private-ranked-bank.md).
-- **Validation limits:** local run lacked a native Redis binary, so Redis-backed suites could not run on this box; results are recorded in the PR.
-
-
-## October 29, 2026 — SEC-010 browser integration and merged public-bank prerequisites
-
-- **Released prerequisites:** founder requested merge after review. #180 merged as a3b2441f82636e511658be09d47a7171b89472d4, then #198 as 33f74c0aee05e416f91b8331cf4236d9ddd758a4. The resulting main tree exactly matches tested f8521cbee17e406085d080c9558cb69c56185665; Vercel production dpl_7VJFZmLJ9NqZdhbx8b6s1bGFehFg reported READY at that merge. This is provider deployment evidence, not phone acceptance. The 100 added questions remain practice-only drafts.
-- **Candidate:** continuing on draft #200 head 981c9f6e396ddd3869be49ad6d56629b4d947f19. Play and My HQ request the current season explicitly and offer labeled Season 0/Season 1 history. API requests with no season retain legacy compatibility; `season=current` resolves from server configuration without fetching the private bank. Finishing a run selects its own season; stale Play board responses cannot overwrite a newer selection.
-- **Recovery:** a saved deferred answer displays “Answer saved — results after the round.” It offers manual next without inventing correctness or issuing another answer mutation.
-- **Validation:** 73 focused API/client tests passed, zero failures/skips, including current/private vs legacy separation, empty-board labels, stale response ordering and deferred recovery. Full `npm run verify` passed with required native Redis 7.0.15: 738 HQ tests plus nine offline signer checks (747 total), zero failures/skips, all question, security, continuity, site, archive, collection, repository and economy checks. Synthetic DOM tests do not establish real-device rendering or restricted Preview acceptance.
-- **Holds/next:** #200 is unmerged and undeployed. Separate private storage, scoped server credential, reviewed private questions, rotation acceptance and restricted Preview remain prerequisites. No private bank, token, environment setting, production cutover or payment was created. The independent Technology OS candidate remains paused.
-
 
 ## November 1, 2026 — CHAIN-002 final factual refresh review (#212)
 
@@ -1040,6 +1025,437 @@ Founder screenshots show unstyled HTML and broken images after opening the apex 
 
 - Validation: all six native homepage links are outside closed disclosures; target metadata, canonical paths and sitemap membership pass. Whitepaper/site/continuity/repository checks, 311 security assertions and whitespace checks pass. Full backend/signer suites not rerun for this low-impact presentation/metadata change; exact-head remote CI and preview verification follow.
 
+## November 3, 2026 — SEO-002 project facts and search discovery
+
+- **Scope:** founder approved the recommended facts/FAQ, indexation review and outdated-source cleanup batch. Add static `/about/`, visible homepage/footer and README links, matching Organization/AboutPage identity, metadata and sitemap. Keep all financial/security claims bounded by the whitepaper/security statement.
+- **Audit:** ordinary canonical public requests pass; robots allows public pages. The live Alpha README is already corrected, while its search snippet is stale. The older litepaper still serves publicly, but its source project was not found in the connected team. Provider active-firewall inspection returned a scoped 404, so verified crawler access is not established. No console ownership/submission or index status is claimed.
+- **Continuity:** reconcile DOC-002 to the already merged/deployed #230 with exact release/check evidence. Preserve BANK-009 and private-bank review priorities.
+- **Validation/disposition:** site parity (43 pages / 948 local links), whitepaper parity, repository presentation, continuity, 311 security assertions, five homepage tests, a separate initial-HTML discovery/identity audit and whitespace checks pass. Prepare a reviewable candidate; no merge, provider setting, external submission, private-bank cutover or economic activation.
+
+## November 5, 2026 — Kaspa directory and Kas.fyi recognition candidate
+
+- ECO-002: founder requests a broad Kaspa directory and Hall updates, then explicitly names Kas.fyi. Prepare 60 resources across 12 categories with native links, category sections, client-only search/filter/reset, primary-source links and editorial dates. Preserve the field guide and all existing Hall credits. Kas.fyi receives a static thank-you and a legacy directory entry; its farewell directs users to Kaspa Stream. No claim of a formal relationship or ongoing Kas.fyi service.
+- Link the new route from Home navigation/footer, Kaspa hero/source desk and Hall roots. Add maintained metadata/sitemap plus an offline generator/parity check in the test suite. No new dependency, backend, analytics, security-header or hosting change.
+- Initial relevant tests pass 10/10. Bounded ordinary GET checks return 200 for 51/60 URLs; nine return 403 from this transport. Primary-site/search evidence supports those listings; these results do not certify security, complete functionality or crawler access. Catalog/metadata, continuity, whitepaper parity, repository presentation, syntax/whitespace and security checks pass (311 assertions). Browser automation is unavailable; no rendered or physical-device acceptance is claimed. Record exact-head PR/CI/preview evidence separately. Further Hall links are not yet supplied.
+
+## November 5, 2026 — dedicated Kaspa Stream Hall credit
+
+- ECO-002 follow-up: founder notes Kaspa Stream did not receive a dedicated Hall card. #233 shipped its directory entry and a link under Kas.fyi; prepare a separate static acknowledgment and direct project link. Retain all existing credits and record the distinction between the shipped directory and this unmerged card. Source: https://kaspa.stream/ identifies its block explorer and network insights.
+- Record #233 release: exact checked tree 81ff95c140312180242ab752316582b7ab9b6034 merged as 4d83352dcf2e1d42301261997d14161c2d881c89; CI 41961204573 passed 728 HQ + nine signer checks. Production dpl_EvPcBFWmVfpM9dDAJHMVRVa5RQZ9 READY, both domains assigned, seven exact-byte canonical delivery checks. Rendered/physical-device acceptance remains unverified.
+- Follow-up is a static credit and continuity change; no new test, dependency, backend, directory listing or economic setting. Run existing relevant checks and preserve review/merge as separate states.
+
+## November 4, 2026 (Detroit) — Kas.fyi special thank-you placement
+
+- ECO-002: founder requests moving Kas.fyi to the bottom of its ecosystem card group and labeling it Special thank you. Reorder the existing article in native HTML and replace only its category label. Retain its stable ID, text, links and the separate Kaspa Stream card. No CSS, script, directory-data or backend change.
+- Record approved #234 release: 730babacb698ad4ca6eec41bdba36fb0856967d1, checked tree e0dd28371eeae01e5a90dd034688514f50d387e6, CI 41963435552 successful, production dpl_AGqewHZAmdW2ZsbtFfPCTMMjCjRo READY and canonical Hall bytes exact. This new placement correction remains an unmerged candidate; browser/phone acceptance is separate.
+- Validation: native ecosystem order confirms Kas.fyi is last among eight cards with the new label; existing Hall tests pass 2/2, metadata/internal links and continuity checks pass, whitespace clean. No new test added for this static presentation edit. CI/preview and release remain separate.
+
+## November 4, 2026 (Detroit) — checked KRC-20 directory expansion
+
+- ECO-002 completion: #233/#234/#235 shipped the directory, dedicated Kas.fyi/Kaspa Stream acknowledgments and final Kas.fyi special-thanks placement. Preserve exact release/HTTP and CI evidence in backlog and PR descriptions; browser/phone acceptance remains separate.
+- ECO-003: founder asks for active KRC-20 projects with live links. Review the 32 KasBay KRC-20 candidates and 12 additional sourced projects. Candidate includes 23 inspected project destinations with accepted KRC-20 activity within a dated 90-day window; 21 await stronger link/activity evidence. Parked, repurposed and hosting-placeholder destinations are excluded, with matching public profiles/hubs used when verified. No claim of complete ecosystem coverage or active developer teams follows from token activity.
+- Add explicit ticker/network/record links, dated link and activity evidence, client-zone date display, category description/browse links and a shortcut that clears incompatible filters. Keep all cards/schema/static links in one offline generation flow. The PEPE domain redirects to a matching Arweave-hosted project page; its cross-host redirect is explicitly inspected and recorded. No visitor-side external requests or provider/security/economic changes.
+- Offline tests reject network/ticker mismatches, rejected/stale/future activity, malformed identity/link evidence and unreviewed redirects; existing filter tests cover the category shortcut. Complete targeted and supporting checks, then record exact published-head CI and preview delivery before release review.
+- Validation: 16 targeted tests pass, zero failures/skips; all 23 public token-record reads match their tickers. Catalog/site, continuity, repository, whitepaper parity and 311 security assertions pass, with syntax/whitespace clean. All 60 preexisting catalog entries are byte-equivalent at the data level. Rendered/phone acceptance is unavailable; publish the concrete review candidate and retain exact-head CI/preview separately.
+
+## November 5, 2026 (Detroit) — preserve holder access in the KRC-20 directory
+
+- Founder challenges the 21-name hold queue because people still hold these tokens. The earlier link/recent-activity filter was too restrictive for token discovery. Retain all confirmed KRC-20 records even without a verified current website or recent operation; show project status separately.
+- Correct an actual selection error: ZEAL had passing project and activity evidence but was mistakenly left out of the first data selection. It becomes the 24th project listing. Fresh public token-record reads match 20 of the earlier 21 names; the other 19 become holder-reference cards. GHOADFI's record fetch returns 403, so its exact token/network identity remains unconfirmed rather than declared inactive. There are now 43 confirmed assets across the 44 researched names, 103 total resources and 14 categories.
+- Preserve the original 21-name queue in review history, replace the current unresolved queue with the single identity issue, and test that old activity does not suppress a verified holder lookup. No unverified project URL is promoted as official; no holder identity or balance is collected.
+
+## November 5, 2026 (Detroit) — add KAEN holder lookup
+
+- Founder asks about KAEN and identifies it as Tony’s project. KAEN was absent from the earlier candidate set. A fresh public Kasplex Mainnet token request returns matching KAEN metadata and deployment hash 429d772ebbb05eeacd27624cadea73e2a439c9df02746e82ddf5e7a921296a87; add its holder-reference card.
+- No verified official website/profile was found through the project-name searches; do not guess one or publish a personal attribution from inference. Counts become 45 researched names, 44 confirmed assets (24 project listings/20 holder references), 104 resources/14 categories. GHOADFI remains the single unresolved identity. This is a PR #236 source revision, not a production release.
+
+## November 5, 2026 (Detroit) — attach the supplied KAEN profile
+
+- Founder supplies @kaenarchitect after the KAEN lookup addition. Direct X read returns HTTP 200 with the matching title Kaen (@KaenArchitect). Use https://x.com/kaenarchitect as KAEN’s project destination and preserve the separate Mainnet KRC-20 record/activity links. A fresh accepted-transfer sample remains within the recorded 90-day project snapshot window.
+- KAEN moves from holder-only reference to the project category. Counts are 25 project destinations plus 19 additional holder lookups, 104 total resources and 44 confirmed assets from 45 researched names. No personal identity, partnership or guessed standalone website is published. PR #236 remains unmerged.
+
+## November 5, 2026 (Detroit) — put Kaspa resources before KRC-20
+
+- ECO-003 expansion #236 merged after explicit founder approval as b38e27dedeec5ac6a014ff6647401d127749ea4e, matching checked tree 3c73119f1bfce6d354b071f9468f03c9023a9835. CI 41974695614 succeeded; production dpl_CRhPA23oi9PEs51aRjUU2P3GGnDw is READY on the merge with both domains assigned. Three canonical HTML/CSS/JS responses matched source exactly. No absence-of-review-feedback claim is made from the rejected comment-timeline read.
+- Founder now requests KRC after the Kaspa links. Reorder the maintained categories to put ten general Kaspa groups first, then KRC-20 projects/holder lookups, then Geek/legacy. Put the beginner field-guide CTA before the KRC-20 shortcut. Preserve every one of the 104 resource records, evidence dates and links; regenerate visible sections, native category links, filter options and schema together. No backend, provider, token or economic change.
+- Run existing directory behavior/parity, metadata and continuity checks and a one-off source comparison for unchanged entries and ordered output. Exact-head CI/preview delivery is separate from local checks; rendered/mobile acceptance remains unavailable. This follow-up is not merged or deployed.
+
+- Local verification: all five existing directory tests pass (zero failures/skips); directory, site metadata and continuity checks pass. One-off comparison confirms all 104 entry records and category contents unchanged, with generated section/filter/schema order matching the requested category order. Whitespace check passes. Browser/device rendering is not claimed.
+
+## November 5, 2026 (Detroit) — public HQ and Mini leaderboards
+
+- Founder explicitly asks for a global Geek Protocol leaderboard with Mini stats and a Mini-only leaderboard. UX-011 adds public pages while preserving separate games, scoring and identity models. Existing HQ standings are exposed without sign-in; local-only Mini history is never promoted to shared rankings.
+- A new explicit Mini public challenge path is server-selected/graded in HQ's isolated Redis namespace. The Mini proxy uses an HttpOnly browser identity and no copied provider secret. Atomic answer/attempt/score operations, server deadlines, bounded quotas and self-removal are under verification. Public-bank lookup/bots/repeat identities remain disclosed limits; this is not private-ranked-season acceptance or an intelligence test.
+- Prior directory ordering #237 is merged/deployed as 478dfc16b6843eef93603b3905d63b7a31f2f1ef with matching checked tree and exact public HTML (104 listings). Mini artwork #12 merged/deployed as eae52c3048f19d964b0547946aa2b28372451f47 with both production checks and exact public image hashes. Preserve those release results; no Hall/directory resource change is part of UX-011.
+- This paired implementation is unmerged. Finish meaningful real-storage/API/client checks, supporting verification and exact-head CI before requesting release review. HQ must deploy before Mini. Device/rendered acceptance and independent abuse review remain separate.
+
+- Local UX-011 validation: 11 real-Redis Mini scoring checks and 38 Mini regression/proxy tests pass, zero failures/skips. Mini lint, TypeScript, build and production dependency audit pass. A paired actual-proxy/actual-HQ-handler rehearsal used isolated real Redis for all five Daily answers, shared public reads and score removal; unrelated HQ profile state was unchanged. The HQ static preview starts, but browser navigation was interrupted and not retried; Next preview retains the runner flag limitation. Full HQ regression and exact-head CI remain separate checks.
+
+## November 5, 2026 (Detroit) — KAS exchange directory candidate
+
+- Founder requests all exchanges where visitors can buy Kaspa. ECO-004 researches 102 provider candidates and prepares 60 purchase/service listings: 37 spot exchanges, 14 brokers/on-ramps and nine swaps/aggregators. No exhaustive or transaction-availability claim. Preserve all 104 existing resources, all KRC-20 holder references and Hall credits; 164 resources/17 categories overall.
+- Provider-owned market pages, indexed primary guidance and bounded public spot APIs support the listings. The dated review ledger retains 42 held candidates, stale/anomalous discovery rows, unavailable/sell-only/suspended products, derivative-only and generic-price traps, plus actual delivery limits. Known Hotcoin/Swyftx/Coinstash transfer restrictions are visible in the affected cards. No account, order, wallet, deposit, withdrawal, tracking or live visitor fetch is added.
+- Reconcile prior release checkpoints: #237 directory ordering was merged/deployed with all 104 entries; HQ #238 and Mini #13 leaderboards were founder-approved, merged and deployed with exact-source/public-route/API HTTP evidence. Rendering/device and independent abuse acceptance remain separate. Detailed prior release evidence stays in the PR descriptions and source protocols.
+- This exchange expansion remains an unmerged candidate. Validation and exact-head CI/preview results will be recorded in its PR. Founder merge approval and production acceptance remain separate; Mainnet, CCE, settlement, ownership and private-ranked-bank holds are unchanged.
+
+- ECO-004 local validation passes: five directory behavior/parity tests; catalog, metadata/site, continuity and repository presentation checks; 311 security assertions; whitespace. One-off base comparison preserves every one of the 104 prior entries and prior-category relative order; the 60 additions and alphabetical groups match the ledger. Browser/device and live transaction acceptance are not claimed.
+
+## November 5, 2026 (Detroit) — Media and Builders page candidate
+
+- Founder approves a public Media & Builders page so directories and other Kaspa projects can feature Geek. ECO-005 adds /media/ with native short/full descriptions, original logo/share downloads, a three-file artwork ZIP, official links and existing Geek Mini sharing/iframe examples. Home More/footer, About and Free Tools link it. No directory submission, outreach, payment or third-party PR is sent. Owner contact details and the internal listing tracker remain outside the public kit.
+- Copy buttons progressively reveal, write only on a click, lock overlapping writes and report success only after resolution. Clipboard denial/unavailability selects the labelled native field with truthful manual-copy guidance. Two focused shipped-client tests pass. HQ embeds no third-party frame and CSP/backend/identity/ledger/question files are unchanged. Broader checks and exact-head CI/preview results remain separate until recorded in the PR.
+- Prior exchange expansion #239 is founder-approved, merged and deployed as 898eaa366cb100bca55dea7b00fffda3ffee6e84; checked tree 896a39074c6d560d8dc8ddcabad909e8e7f4e27c; CI 42141825207 succeeded; production dpl_Hg4jfYLqSeq7uNqHTNhUdqQ86bJT READY with both canonical domains and exact public directory HTML/CSS/JS, 164 cards/17 categories. Preserve those entries and provider limits.
+- This Media candidate is unmerged. Browser/device and independent builder acceptance remain separate; Mainnet, CCE, settlement, ownership and private-ranked-bank holds remain unchanged. BANK-009 remains the content priority after the bounded page work.
+
+- ECO-005 local checks pass: 12 targeted clipboard/directory/Home tests; site metadata (46 HTML records/32 indexed routes), continuity, directory and whitepaper parity, repository presentation, 311 security assertions, syntax and whitespace. Source checks confirm all four copy fields are labelled/readonly and the public ZIP has exactly the two unchanged PNGs plus README. No live iframe or CSP change. Exact-head CI/preview and browser/device acceptance remain separate.
+
+## 2026-11-06 — ECO-006 Geek News candidate and #240 release reconciliation
+
+Prepared /news/ from main bbb58bf (#240) following the founder's market/news/futures request. Four fixed provider views, one cross-origin frame at a time, pause/resume, native source fallbacks, attribution/data timing/privacy notes and Home/sitemap discovery. Local scripts only; no new paid provider/AI plan, polling API, wallet/trading flow or account-origin provider script. Exclusive News CSP changes frame-src only; existing account policy/common headers preserved. See docs/GEEK-NEWS.md for primary references, architecture, checks and actual acceptance limits. Ten targeted client/Home/Media tests and 311 security assertions pass. Desktop browser observed numeric spot/perpetual quotes plus crypto/global headlines and pause/resume; exact-head Vercel/CI acceptance is pending at this checkpoint. Source is unmerged; no device/independent review claim.
+
+Reconciled founder-approved Media & Builders #240 as merged/deployed: bbb58bf95d4babf4f2e0e244e58fe08011da9d39 / tree 31c0af154bd4054b0174ff653f1094b0dda62915; CI 42151062253 succeeded; production dpl_DDd7qpW3PUQxnR7K1wa4dCtjwfbU READY on both domains, eight exact ordinary public HTTP responses and artwork ZIP CRC/original-image verification. External submissions remain unsent. BANK-009 and economic/private-ranked holds stay separate.
+
+## 2026-11-06 — ECO-006 preview header correction
+
+Preview check at source 45bee79: /news/ returned HTTP 200 without Content-Security-Policy, while Home/Profile retained their baseline and the News script received the intended policy. Added an explicit /news/ document rule alongside /news/:path* and a configuration regression. Fresh deployment/header and CI verification are required; source changes alone do not prove the fix.
+
+
+## 2026-11-06 — ECO-006 broader markets
+
+Expanded the candidate after founder feedback that markets/global markets were lacking. The default world overview covers US, Europe and Japan benchmarks plus currency/commodity context. Ten views now include eight crypto spot pairs, ten US stocks, eight forex pairs, metals/energy, six government yields, seven traditional futures, four crypto perpetuals and two news feeds. Market groups and headline controls are distinct; each selected view has an instrument explanation and a matching external market link. Native links expose broader indexes/stocks/currencies/futures/bonds without JavaScript. Broker index CFDs, spot metals, continuous futures and yields are labeled separately; no invented prices or market-open claims. One-frame/pause/CSP isolation is preserved. Four focused tests pass locally; fresh exact-head CI and deployed source/header checks pending. Actual per-symbol quote availability, physical phone rendering and independent data review are not established by source tests.
+
+
+## 2026-11-06 — ECO-006 native crypto Top 100
+
+Founder requested top-100 crypto coverage. Added a native searchable USD table for exactly 100 unique CoinGecko market-cap entries, with rank, name/symbol, price, signed 24-hour change, capitalization and volume. Kaspa watchlist stays distinct and does not force Kaspa into the ranking. Stablecoins/wrapped assets remain included. A fixed public GET service in the existing widget function fetches only CoinGecko coins/markets with market_cap_desc/per_page=100/page=1; no new function, key or paid account. Five-minute caches, concurrent-request coalescing, bounded timeout/response, failure cooldown and explicit unavailable output avoid invented or silently incomplete rankings. Browser requests use same-origin credentials for protected previews; the public service never reads or forwards account cookies to CoinGecko. switching or pausing aborts the request and prevents late insertion. No automatic polling. Native text/encoded links prevent provider HTML injection. Snapshot fetch time is not asserted as quote freshness. The legacy TradingView crypto screener rendered no matches in a direct browser check, so it was not shipped. Focused tests cover ranking validity, cache/backoff, unchanged APK behavior, table/search/zero/null values, late responses and pause/switch isolation; fresh deployment/API and full CI remain to be checked.
+
+
+## 2026-11-06 — ECO-006 GEEK visual polish
+
+Founder requested polish and more GEEK identity. News adopts the existing HQ gold (#f6c643), Kaspa cyan (#70e6dc), dark green panels, technical grid/orbit typography, clear gold entry control, native section links and Geek field notes. Market controls have 48px minimum height; Top 100 retains a distinct cyan outline, sticky table headers, numeric alignment and signed change colors. Decorative signal artwork is hidden from assistive technology and removed on narrow screens. No new images, portrait rollout, network dependency or data/security behavior. Focused News/Top100/APK regressions passed 15/15. Earlier native Top100 CI 42261263638 passed; browser rendered 100 rows, bitcoin search narrowed to Bitcoin/Bitcoin Cash and clearing restored 100. Final polish preview/rendered acceptance and CI remain pending at this checkpoint.
+
+## 2026-11-06 — Roadmap reconciliation and BANK-009 Technology continuation
+
+Reconciled #209 as merged, and #241 as founder-approved/merged/deployed with exact CI and canonical HTTP evidence. Refreshed START-HERE and the roadmap queue while preserving the dated October 28 snapshot. The original product baseline remains historical; economic/private-ranked gates are unchanged.
+
+Prepared a bounded six-item Technology candidate: three exact-grading internal confirmations and three scoped corrections under new identities. Replacements remain practice-only drafts; saved grading and license/provenance are preserved. Item-level primary evidence/distractor/context decisions are in the server-only November 6 register. Static rows stay 8,438; ranked-eligible 8,225; practice-only 213; eligible recorded reviews 803; target deficit 7,197. No whole-bank, independent, merged/deployed or physical-device acceptance is claimed for this candidate. Exact compatibility/check evidence is recorded in its PR. Next: review this candidate, then continue the unflagged full-bank factual/semantic/category/authorship queue.
+
+Full local npm run verify passed on Node 24.22.1 with native Redis 7.0.15: 755 HQ tests plus nine offline signer checks (764 total), zero failures/skips; 311 security assertions and bank/schema/similarity/catalog/readiness/audit, collection/archive, repository, economy, continuity, site and whitepaper checks. Focused audit tests passed 13/13. Separate baseline comparison preserves all 12,888 historical grading tuples and all 4,450 previously retired objects unchanged; exactly three new identities and three retirement records are added. Fresh published-head CI remains required.
+
+## November 6, 2026 — UX-012 first-player journey candidate
+
+- **Scope:** learning → explicit Daily setup → saved result → My HQ / matching public board. Production review was read-only; existing guest progress was preserved.
+- **Changes:** learning-first guide with stable checklist IDs and optional account/customization steps; clearer Finish & save result instruction; keyboard focus on result headings; saved-result links to progress, learning and matching category/mode board. HQ category and Mini Speed focus survive copied links; query values are allowlisted against shipped options. Public board reads use same-origin credentials so the deployment protection cookie can accompany requests.
+- **Validation:** client behavior tests cover reordered checklist migration, saved-result focus/context, shared filters, invalid queries and stale response isolation. Full regression/preview evidence will be recorded in the PR.
+- **Limits:** cloud browser exposes no mobile viewport control. Physical-phone, passkey/account recovery and independent acceptance remain separate; no production quiz was started, no wallet or economic setting changed.
+- **Next:** full verification and protected-preview walkthrough, then founder review before merge.
+
+## November 6, 2026 — UX-012 preview address-viewing correction (#243 follow-up)
+
+- **Cause:** receiving-address GET called WebAuthn origin validation before reading the session. Immutable preview hosts differ from the configured passkey origin, so a read was mislabeled as a failed account-confirmation attempt.
+- **Fix:** read-only viewing keeps session/account isolation and private/no-store responses without invoking WebAuthn origin validation. Both POST actions still validate the configured origin before any work; unsupported origins receive an accurate site-address error. Guest copy explains optional address setup and requires no passkey prompt. No origin allowlist, provider environment or wallet permission is broadened.
+- **Checks:** real-Redis regression covers unauthenticated denial, guest state, saved-address reads, another player's isolation and denied begin/finish writes on a mismatched preview host. Client coverage checks guest copy, hidden edit/retry controls and no confirmation prompt. Final regression and rendered preview evidence belongs in #243.
+- **Status:** source candidate; no merge or production deployment. Actual passkey/address change and physical-phone acceptance remain separate.
+
+## November 6, 2026 — UX-013 all-open-report review candidate
+
+- **Scope:** read all 17 open issue bodies; classify stale evidence, interface defects, acceptance work and proposals in docs/OPEN-ISSUE-REVIEW-2026-11-06.md. Source is based on #243's 4b759c11ba6df8b92fca809c0af18c1791369194; earlier staged worktrees were preserved.
+- **Changes:** immediate Play/Practice/Quest selected feedback; six-second initial Duel/Quest requests and static skeletons; safe Lobby state messages and manual offline reconnection; unknown reward-status visitors with blocked storage skip private reads; Node setup consistency, contribution walkthrough and mint checklist; static image/main/nav guards. No gameplay authority, grading key, paid action or provider configuration changed.
+- **Validation:** deferred replies and duplicate answer guards cover all three clients; Duel timeout/retry and Lobby full/closed/provider-failure behavior execute shipped code. Existing reward-status and Quest recovery tests remain in the regression suite. Full verify and rendered preview evidence belong in the PR.
+- **Open:** this is not completion of the full question audit, a 25-question pack, translations, separate fast CI, actual-device/axe acceptance, migration or coordination work. No production multiplayer retry or transaction was performed. Founder merge remains separate.
+
+
+## November 7, 2026 — UX-014 readability polish
+
+Founder reported bold bright blurry white text on black. Removed reading-text shadows and the foreground grain overlay, reduced extra-bold typography to 700, softened white copy and shared/Play dark surfaces. Gold/cyan accents, focus and answer states remain. Source candidate; validation and preview evidence belong in the PR. Physical-phone acceptance remains open.
+
+
+### UX-014 — founder preview correction
+
+Founder rejected the first preview as too plain. Restored restrained centered cyan title/timer glow and cyan/gold edge lighting, while keeping body/answer copy sharp, softer white, reduced extra-bold weights and no grain/chromatic double-shadow. Preview and new exact-head checks remain pending.
+
+
+## November 7, 2026 — BANK-009 web-basics continuation
+
+Reviewed two selected Technology items against RFC 3986 and CERN. Preserved URL grading with internal evidence; replaced misleading HTTP language wording under a new practice-only identity. Historical grading for all 1,470 baseline Technology rows remains unchanged through active/retired lookup. Counts: 8,438 active / 8,224 ranked-eligible / 214 practice-only / 804 eligible recorded reviews / 7,196 target deficit. Separate reviewer and whole-bank audit remain open. Exact checks belong in the PR.
+
+
+## November 8, 2026 — BANK-009 protocol and SI-prefix batch
+
+Reviewed five retained Technology items against RFC/BIPM/W3C primary sources and consolidated one WWW semantic duplicate with exact issued grading and canonical exclusion preserved. Counts: 8,437 active / 8,223 ranked-eligible / 214 practice-only / 809 eligible reviews / 7,191 target deficit. Six selected rows only; full-bank and independent review remain open. New deterministic regression forces the duplicate survivor into a ten-item pool and proves that the old issued identity excludes it. Exact validation and release evidence belong in the PR.
+
+
+## November 8, 2026 — ECO-007 KaspaDollar listing
+
+Founder requested KaspaDollar in the directory. Added official project link under Apps & token ecosystems with visible in-development status and preliminary-design qualification. Primary project pages reviewed; no live/audited stablecoin, security endorsement, wallet action or donation behavior is implied. 165 resources / 17 categories. Regenerated catalog and continuity; exact validation and PR/release result remain separate.
+
+
+### ECO-007 — social, builder and games expansion
+
+Founder approved all seven proposed additions plus K, Stag Hunt, KaChat and a games area. Added those ten and three external game resources; 178 entries / 18 categories. Stag Hunt stays in ecosystem coordination and its safety assurances are not repeated. Project/store evidence and limited rendered-page observations are recorded in directory documentation. Existing Geek game routes support a proposed Games hub as a separate follow-up, not an implemented feature. No new funds, apps installed, wallet prompts, chat messages or third-party gameplay.
+
+### November 8, 2026 — ECO-007 additional resources and contribution actions
+
+Added five founder-approved primary-sourced resources (KAS Watch, Kinesis, KANet, ChainVsDag, OpenSilver), 183 total. Split project suggestion and broken-link reporting into explicit GitHub draft links. No automatic submission, third-party execution or economic change. Directory/client/site/continuity checks will be recorded in #248; visual and phone acceptance remain unclaimed.
+
+
+## November 8, 2026 — UX-015 Geek Games hub
+
+Founder approved a hub with clear game cards. Added /games/ with eight existing modes grouped into Quick play, Adventures and With friends, timing/pace/access details, setup-only links, saved-progress and separate leaderboard/companion links. Home and five game navs expose the hub. Assisted Practice is correctly labeled timed; Memory and Quest are untimed. Gold/cyan edge lighting and lighter body copy preserve the approved readability direction. No gameplay/API/reward/room-start logic added. Static/metadata and preview evidence belong in PR; physical-phone acceptance remains separate.
+
+### November 8, 2026 — UX-016 Brain Games candidate
+
+Added Signal Sequence, Number Forge and Rule Shift in a shared Brain Lab, with three levels and ten untimed rounds. Explicit start, per-answer explanations, exit/replay and local best-score clearing. No server, account, leaderboard, XP or reward writes. Memory Grid remains linked for visual matching. Tests and release evidence belong in the PR; rendered/phone acceptance remains separate.
+
+### November 8, 2026 — UX-017 classic strategy and cards candidate
+
+Founder agreed to classic games, starting with checkers and solitaire. Added same-device two-player checkers and solo draw-one Klondike, with instructions, legal move validation and practice undo; no server, account, reward or persistence writes. Chess/backgammon remain planned. Bundled with pending Brain Games #250; source tests are not rendered/phone acceptance.
+
+### November 8, 2026 — UX-016/017 Geek visual finish
+
+Founder requests all new games carry Geek identity. Added shared Geek game stylesheet, GIGA practice tips using existing artwork, logo headers, gold primary actions, custom checker rims, framed boards and dark circuit card backs/fronts. Behavior unchanged; 19 focused tests and site checks pass. Visual/phone acceptance remains separate.
+
+### November 8, 2026 — UX-014 News heading correction
+
+Founder screenshot exposed inherited Impact headings in News after earlier typography polish. Replaced News heading family with regular UI sans-serif, 600 weight, relaxed spacing and no text effects. Kept cyan/gold edge accents and added a CSS revision query. Source candidate only; News/crypto behavior and site/continuity checks recorded in follow-up PR. Phone rendering remains unclaimed.
+
+Directory included in UX-014 follow-up after the founder reported the same heavy text: replace inherited heading font, soften white, retain cyan/gold accents and refresh CSS revision. Catalog and filtering unchanged.
+
+### November 8, 2026 — UX-019 Geek Chess candidate
+
+Added first-party local chess, Geek visual finish and responsive board, using licensed vendored chess.js 1.4.0. Special moves, promotion choice, legal hints, undo, flip and move history; no server/economy changes. Rule tests and site/continuity checks run before PR. Rendered/physical-device acceptance remains open.
+
+
+### November 8, 2026 — UX-018 responsive games correction
+
+Founder reports games do not fit screens/mobile. Removed fixed checker/solitaire board minima, made seven columns fluid and overlapped cards, compacted active-play header/tips, adjusted phone controls/input sizes and corrected classic header text. Desktop live inspection confirmed tall card stacks; preview width checks and test limits recorded in docs/MOBILE-GAMES.md. No game rules or persistence changes.
+
+### November 8, 2026 — UX-020 consistent game-room polish
+
+Combined mobile-fit #252 into the chess candidate #253, preserving mobile UX-018 and renumbering chess UX-019. Added shared game switching, brand lockups, quiet typography, framed boards and feedback, consistent controls and distinct Geek hub emblems. Chess uses the compact active-play state. Focused game/home checks and site/continuity/security validation run before updating #253. Browser preview timed out; no rendered or physical-phone acceptance. No merge or deployment.
+
+### November 8, 2026 — GAME-002 chess/checkers multiplayer
+
+Added the online game lounge, public/private rooms, host-approved requests, authoritative chess/checkers moves, reconnect, draw offers and resignation. Existing lobby function routes the new classic service; no extra Vercel Function. Redis CAS serializes competing acceptance and versioned moves. Guest or existing player sessions are explicitly started by Enter. No XP/rewards, chat, bot, tournament clocks or solo-game races. Rules, API/real-Redis and shipped-client tests run before PR; two-browser/device acceptance remains outstanding. Stacked on #253; no merge/production claim.
+
+GAME-002 validation: full npm test 800/800 with real Redis 7.2, signer 9/9, site/continuity and 311 security assertions pass. Twelve multiplayer tests cover domain permissions/rules, API concurrency/storage and shipped-client flows. No skipped tests in the final full suite. Two-device browser/Preview acceptance remains separate.
+
+### November 8, 2026 — Founder-approved games release
+
+Founder explicitly requested Merge. #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 after exact-head verify and both Vercel checks succeeded. #254 retargeted to main and updated against that squash merge; gameplay tree preserved. Final exact-head CI, merge commit and production deployment disposition are recorded in the #254 review record. Rendered two-device/physical-phone acceptance remains open and is not implied by release authorization.
+
+### November 8, 2026 — UX-021 tabletop art candidate
+
+Added twelve hand-authored local vector chess assets with metallic gold/cyan finishes, shared by local and online boards with glyph fallback on image failure. Refined raised checker rims, framed board surfaces, solitaire face corners/center pips and patterned Geek backs. Accessible card/square names and game rules remain intact. Contact-sheet raster proof inspected; focused gameplay, site/continuity/security checks run before PR. Rendered browser/phone acceptance remains open. No merge or production claim.
+
+### November 9, 2026 — ECO-008 education directory
+
+Added Education & Learning with Geek Protocol, Kaspa University, BMT University, Lyceum Protocol, Kaspa Mastery, KasStacker Learn, Hello Kaspa and the dated Kii Academy program guide. Primary project sources inspected; project-reported L1/L2 features are distinguished from off-chain learning guides and historical program documentation. Geek links its learner start page without duplicating the token listing URL. Catalog generator handles navigation/filter/schema/counts. No external submissions, rewards or account changes. Directory, site and continuity checks run before PR. Candidate only.
+
+ECO-008 clarified scope: distinguish GEEK/BMT token-linked learning projects with network and implemented/planned utility state; other six entries move to Learning Platforms & Guides. BMT primary token site identifies Kasplex L2 ERC-20. KU native KAS rewards do not imply a KU fungible token. Existing BURTLE community education positioning does not establish a learning utility mechanic. No other token utility is inferred. PR #256 updated, not merged.
+
+### November 9, 2026 — GAME-003 nine strategy/puzzle games
+
+Founder approved all nine suggested games. Added local playable Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four, Reversi, Codebreaker, Tower of Hanoi, Sudoku and triangular Peg Quest. Extended the existing authoritative lobby flow to the five two-player strategy games. Battle Geek masks opposing fleets in server views and clears the local board DOM during handoff. New rules, shipped-client and real-Redis API tests cover winning/invalid moves, extra turns, forced passes, hidden-information boundaries and complete matches. Browser preview startup succeeded, but browser access timed out; no rendered-phone acceptance is claimed. A.C.E. remains paused (DR-034). No merge or production release in this checkpoint.
+
+GAME-003 validation: full suite 821/821 with real Redis 7.2 and no skips/failures; signer 9/9. Final UI entry links preselect the correct online game, with focused client/site checks repeated afterward. Site has 62 pages. Browser render timed out; no physical-device acceptance or production deployment claim.
+## November 8, 2026 — BANK-009 Technology risk triage
+
+Continued past #246 with six selected rows: five lookup-only retirements for semantic duplication, overlapping options, overbroad neutron-star terminology and projectile context; one unchanged draft survivor. No new rows or review-count promotion. Counts: 8,432 active / 8,218 ranked-eligible / 214 practice-only / 809 eligible reviews / 7,191 target deficit. New deterministic selection test verifies historical duplicate exclusion; original grading and prior retired records remain protected. Exact checks and PR release evidence remain separate.
+
+
+## November 10 — GAME-003 rendering and full-size boards
+
+Updated #258 candidate with standard 10×10 Battle Geek / five ships (5,4,3,3,2), selectable 4/5/6/8 Dots grids (default 6), and sculpted gold/cyan board treatment. Local game, chess, checkers, solitaire and online terminal states open a native result dialog with bounded fireworks, replay, exit and board review. Reduced motion disables fireworks; online replay returns to lobby creation and never resets another player without consent. Engine, client, result-dialog and real-Redis checks pass; full suite and source checks recorded in PR. Browser/physical-phone visual acceptance remains outstanding. A.C.E. stays paused.
+
+
+## November 10 — GAME-003 GIGA victory art
+
+Founder requested GIGA’s head in place of the victory badge. Reused the existing gold GIGA mascot artwork with a head-only CSS viewport and silhouette, retaining reduced-motion behavior and the existing result controls. Candidate update to #258; not merged.
+
+
+## November 10 — GAME-003 Tower of Geek
+
+Founder requested the Tower of Geek name and selectable difficulty. Added six levels (3–8 discs), optimal-move targets, perfect-solution feedback and scalable tower rendering. Existing address remains compatible. Candidate only; browser/phone visual acceptance remains open.
+
+
+## November 10 — UX-022 site polish
+
+Founder requested geekprotocol.xyz polish. Added visible Learn/Games/News discovery cards; refined homepage spacing, panels, action buttons and reading hierarchy; kept glow on edges. Shared navigation now collapses coherently at tablet widths instead of mixing the 760/850 breakpoints, using existing menu handlers and header height alignment. Source checks pass. Local native browser started, but localhost and forwarded terminal.local connections were refused; rendered/phone acceptance remains open. No account, reward, feed loading or A.C.E. activation changes. Candidate only.
+
+
+### UX-022 founder screenshot revision
+
+Enlarged the homepage Kaspa word, switched it to Kaspa turquoise and placed the existing Kaspa mark immediately afterward. Scoped hero row sizing keeps the word and logo together. Site and continuity source checks pass; rendered narrow-device acceptance remains open.
+
+
+## November 10 — UX-023 additional easter eggs
+
+Expanded the optional Stray signal footer terminal with three answerable riddles and hints, rotating GIGA fortunes, a bounded launch animation, route-specific scan messages, unlisted duck/42/BlockDAG messages and a page-visit discovery list. Added footer availability on Games hub, News, Directory and Whitepaper; individual game boards remain excluded. No storage, requests, rewards, global input handlers or A.C.E. activation. Focused client tests and source checks pass; rendered device acceptance remains open. Candidate only.
+
+
+## November 10 — UX-024 minimal cosmic glitch
+
+Founder requested subtle animated cypherpunk Kaspa/Geek accents and selection feedback. Added a 320ms edge-only glitch with 360ms cooldown on selected discovery controls, sparse code labels with two finite animation cycles, and reduced-motion/forced-color suppression. Route whitelist excludes individual boards, timed play and account/owner surfaces; active-game class suppresses feedback. No default action interception, requests, state storage, score or reward changes. Seven focused effect/easter-egg tests pass; site/continuity checks pass. Candidate alongside #261; rendered device acceptance remains open.
+
+
+## November 10 — UX-025 clean app branding
+
+Founder showed white installed-site launch with watermark-bearing logo. Rebuilt the brain/robot mark as native SVG, rendered clean versioned PNG and compatibility logo bytes, replaced site references, added black standalone manifest, standard/maskable app icons and Apple touch icon. Managed metadata now includes manifest and touch icon idempotently. No fake loading delay or service worker added. Browser/Android controls native splash; physical installed-app acceptance and possible reinstall remain open. Candidate only.
+
+
+### UX-025 founder mascot correction
+
+Founder rejected the new circuit-brain robot. Replaced candidate site/app branding with a head-only adaptation of the original gold GIGA post artwork. Used image_gen with original kaspa-culture.png as reference, black background and no text. New app icon names avoid reuse of the rejected mark. Black manifest settings unchanged. Candidate only; installed-device acceptance open.
+
+
+### UX-025 exact installed-app logo
+
+Founder clarified the app should use the supplied neon brain-robot GEEK PROTOCOL image. Replaced only app manifest icons and touch icon via size-only resampling; retained gold GIGA site/mascot branding and black launch settings. Candidate only.
+
+## November 11 — Desktop 1280x800 solitaire and Tower of Geek layout
+
+Waste pile cards used intrinsic shrink-to-fit width (~12px) while tableau cards used the shared column width, clipping face corners. `.waste .playing-card` now uses the same `--card-width` and `--card-height` as tableau cards. On Tower of Geek Expert (7) and Geek Master (8), disc height and tower gaps scale so every disc and the base stay in an 800px-tall 1280px desktop viewport; the previous per-disc min-height formula no longer extends the board below the fold. Headless 1280x800 browser check recorded in the PR. Candidate only.
+
+## November 11 — UX-026 Kaspa code-rain background
+
+Founder requested a full-page Kaspa "static matrix-like code" effect beyond UX-024's edge accents. Added `kaspa-matrix.js/.css`: one fixed full-viewport canvas veil just above section backgrounds and below the header/menus (z-index 1; z-index -1 was hidden by opaque sections), pointer-events none, aria-hidden, 20% desktop / 14% phone opacity, calmer center mask) with Kaspa-style K, digits, hex, BlockDAG marks and KAS/GEEK words, static scanlines and sparse specks, and a 240ms thin-band RGB slice at most every 9–22s (no full-screen flash). Capped 24fps (20fps phones/Save-Data), DPR ≤1.5 (1 on phones), ≤26 phone columns, debounced resize, paused when hidden. Footer "Code rain" toggle and Stray signal `matrix` command persist the choice on the device; default on, off under reduced motion (opt-in shows a still frame). Game boards, owner and sign-in pages excluded; quiz/lobby routes get a dim still frame; active play stops the loop. Same-origin module, CSP unchanged. Six synthetic client tests plus full suite and checks pass; local 1280x800 headless screenshots taken. Physical-phone acceptance open. Candidate only.
+
+## November 11 — UX-026 space layers, Kaspa planet, drop the footer toggle
+
+Founder: the code rain should not need a button to turn off, the site should sit on a layered space background, and every page should carry a faint 3D-realistic cypherpunk Kaspa planet. Removed the footer "Code rain: on/off" button and all localStorage persistence; a leftover `geek-matrix-background` value is cleared on load and never read. The Stray signal `matrix` commands remain as a session-only easter egg (`sessionStorage` at most). Added a background stack behind translucent dark panels: CSS nebula, a pre-rendered planet image (Image Bot `planet-b-transparent.png`, optimized to `public/assets/kaspa-planet.{webp,avif}` and `-sm` variants, about 20% opacity, with a deterministic per-route corner, offset, size and rotation so pages differ while a given path stays stable), a starfield with faint DAG constellation lines, then the existing rain and RGB slice. The planet loads on every page, including game boards and operator/sign-in surfaces, as a still frame there and under reduced motion; rain and nebula motion stay off those routes as before. Light and gold sections stay solid. Tests and docs updated. Candidate only.
+
+## November 11 — UX-026 planet larger and more visible
+
+Founder could not see the planet in the first screenshots and asked for it to be big. Raised desktop diameter to about 70–95% of the 800px viewport height (~560–760px) with roughly 50–70% of the disc on-screen, and opacity to about 0.55–0.75 (a little lower on phones and behind game boards). Per-route corner, offset and rotation stay deterministic and varied. Re-optimized Planet B to 800px still under the size budgets. Right-edge placements flip the texture so the lit limb faces the page. The home welcome hero’s solid #0c1317 fill is replaced with a left-side scrim so the disc is not hidden behind the hero. Darkened translucent text panels and added a light text-shadow on hero copy. Tests and docs updated. Candidate only.
+
+
+## November 11 — GAME-004 ongoing games candidate
+
+Added 30-day at-your-pace rooms (24-hour quick option), private My Games summaries and atomic per-player 10-active-room indexes integrated with room create/CAS. Finished and expired slots are released. Your-turn state covers chess, checkers and all strategy games including fleet deployment; no boards/fleets are included in summaries. Opt-in open-visible-lounge notifications use a notification-only service worker, deduplicated by ply rather than draw-offer revisions. No push subscription/background delivery, key, scheduler, or claim of closed-app alerts. 19 focused Redis/client checks pass; site check passes. Device acceptance and closed-app push remain open. Candidate only.
+
+
+### GAME-004 correspondence clarification
+
+Founder clarified mail-style chess, without premature time expiry. Acceptance now clears room expiry and Redis TTL; persistent player indexes retain active matches. Waiting invitation lifetimes remain 24 hours/30 days, finished retention is 30 days. Removed the artificial chess 600-ply cap while preserving chess-rule outcomes. Added real-Redis no-TTL and simulated year-later move tests. Candidate update to #266, not live.
+
+## November 11 — GAME-004 authorized release integration
+
+Founder authorized resolving and merging #266, then #265. Integrated main with the new lobby/IP abuse protections and planet background retained. Capacity tests exercise atomic storage independently of the newer eight-create/hour API throttle. Accepted games remain persistent; invitation/finished retention stays bounded. Full verification and exact-head CI results are recorded with the PR before merge. Phone acceptance and closed-app push remain open.
+
+Addressed the security review without adding an inactivity deadline: atomic 1,000 saved-game ceiling, waiting-only index expiry, missing-room slot cleanup, clearing request/block fingerprints when a room leaves waiting, and notification navigation fallback. Current-main lobby hardening tests remain in the combined suite. Exceptional chess history replay cost remains explicitly documented; no artificial chess move cap is restored.
+
+Validation of the integrated #266 candidate: full npm run verify passed with real Redis (861 HQ tests and nine signer checks, zero failures/skips); all question, security, collection/archive, repository, economy, continuity, site and whitepaper checks passed. Focused lobby/IP checks passed 37/37, including concurrent permanent-cap reservation, existing play at capacity, release on finish, waiting-index expiry and fingerprint cleanup. Deployment and phone acceptance are not inferred from these tests.
+
+
+## November 11 — Android test packaging candidate
+
+Added reproducible Bubblewrap 1.27.0 generator for a separately identified Android debug test wrapper and GitHub APK artifact workflow. Native project generation succeeded locally with supplied logo and black launch settings. Local Android SDK/Gradle absent; APK compilation is not yet established. Digital Asset Links, stable test signing identity, installed-phone acceptance and Play preparation remain open. No release keys, placeholder fingerprints or store publishing.
+
+
+### APP-001 stable signing preparation
+
+Phone screenshots establish debug APK install and launch with expected browser UI fallback. Prepared a main-only manual stable-test signing workflow using two GitHub secrets, private key cleanup and a derived public certificate association artifact. No signing key or domain trust statement has been created/deployed. Connected GitHub tools cannot write repository secrets; owner secure setup is the blocker. Association formatter checked with a synthetic fingerprint outside deployable public paths. Native signing/device verification remains untested.
+
+## November 11 — APP-001 signing hardening and authorized release
+
+Founder authorized #265 after #266. #266 merged as aab4d36f9345c373f55bcb467a3bd45be3254d4d after exact-head remote verify and both previews passed (6797a82, tree 83743f25a45a55af86a32f99345bc11437fdc4db). Local full verification passed 861 HQ and nine signer checks.
+
+For #265, separate unsigned release build from the protected signing job. The build uses npm ci --ignore-scripts and pinned Gradle wrapper validation, with no signing secrets. The minimal signing job downloads only the current workflow artifact and signs with apksigner; it does not run Gradle/npm/repository scripts. Stable output is non-debuggable and separately identified as the test app. Secrets belong only in a main-only, required-reviewer GitHub environment configured by the owner; this PR does not create that environment or assert those protections exist. No key or live domain association is created, and no signed workflow is dispatched.
+
+Release verification: #266 production dpl_GXfjz8fvUKpnEW3D8saPjqtqVygZ is READY at aab4d36f9345c373f55bcb467a3bd45be3254d4d with both canonical domains assigned. Canonical lounge HTML, online.js and turn-alerts-sw.js returned HTTP 200 and byte-for-byte matched the verified source.
+
+Android validation: project generation succeeds with the reviewed logo; generated native webManifestUrl now uses the canonical HTTPS manifest rather than the temporary loopback asset server. Both workflow YAML files parse, JS syntax passes, and full npm run verify passes 861 HQ plus nine signer checks, zero failures/skips, with real Redis. Android SDK is not installed locally; native compilation is delegated to the secret-free PR build and not claimed until CI completes. No environment/secret configuration or stable signing execution performed.
+
+## November 12, 2026 — OPS-004 repository hygiene candidate
+
+Added a single default CODEOWNERS rule for the GitHub user GEEKProtocol0110. No team was invented. Added weekly Monday Dependabot configuration for the ecosystems present in this tree: npm at `/` (`package-lock.json`, lockfileVersion 3), npm at `/android` (`android/package-lock.json`), npm at `/workers/testnet` (`workers/testnet/package-lock.json`), and GitHub Actions at `/`. Minor and patch updates are grouped. Each entry limits open pull requests to 5. Major updates stay ungrouped. `android/unsigned-test.gradle` is a signing init script, not a Gradle manifest or lockfile, so the Gradle ecosystem was omitted. No pip, Docker, or other package manifest was found. SECURITY.md now states that GitHub private vulnerability reporting is enabled (Security → Report a vulnerability). The existing statements remain: there is no independent audit, and reporters use the private channel. No SLA, bounty, or audit was added. No application, game, lesson, wallet, question-bank, or repository-setting change. BANK-009 stays the product pickup. CCE, contributor rate, settlement, and collection ownership holds are unchanged. Candidate only; the pull request is the review record. Merging this configuration does not enable rulesets.
+
+## November 12 — fix pending app and PR follow-ups
+
+Founder asked to fix the listed pending work. Current-main reconciliation supersedes #181/#199/#204/#205 without importing stale source/continuity; standalone public-bank 503 handling and synthetic recovery tests preserve #213. Held private bank/seasons, CCE, migration and artwork remain held; branches/history are preserved. README fixes current account, collection, content-count, games/app and A.C.E. status. APP-001 now correctly records #265 merged/deployed while protected owner key/domain setup remains open.
+
+GAME-005 implements explicit device Web Push opt-in, canonical-origin session-authorized subscription changes, known-provider/curve validation, atomic device capacity/owner binding, encrypted generic turn data, atomic per-room move outbox, per-device success receipts, 404/410 removal and protected five-minute retry on the already-Pro project. Public key only reaches the client. Preview delivery stays off. No recipients, endpoints, private keys or messages are logged. Worker rechecks current account/turn/ply; no premature game deadline or gameplay/reward changes. Actual phone permission/delivery and stable Android/domain acceptance remain open.
+
+Verification: full local npm run verify with real Redis passed 876 HQ tests plus nine signer checks, zero failures/skips, and every supporting check. Added focused client/API/guest tests were then run on the unchanged implementation; exact-head remote CI establishes the final combined count. Runtime dependency audit reports zero vulnerabilities. Production-only VAPID public/private and independent Cron credentials were generated in session memory and saved directly to Vercel (private values sensitive); no secret file/artifact was created. Preview has none of these keys. Native signing credentials remain an owner-only blocker because the connected GitHub interface cannot provision protected environments or secrets.
+
+### GAME-005 release and canonical retry follow-up
+
+#271 squash-merged as d86d3d3964885f0ab3cc2071c8cd067736380245. Exact-head CI c1a75b8 passed 878 HQ tests, nine signer checks and audits with zero findings; both previews passed. Production dpl_BHnj1A9pwQesNnHPBeFpPysUYFSv is READY with both canonical domains. A bounded synthetic two-player private chess flow verified production push configuration exposes only public data, acceptance clears expiry, a legal move updates the opponent turn badge, and anonymous retry access is 401. The synthetic game was finished afterward. No device subscription or actual phone notification was created.
+
+Live HTTP showed /api/game-notifications returns 308 to /api/game-notifications/, while the canonical slash URL directly returns the expected unauthenticated 401. Set the Cron definition to that direct canonical path and add a route regression so scheduling does not depend on redirect handling. #181/#199/#204/#205/#213 were closed as superseded, retaining branches/history. Six historical held PRs remain; new #270 repository-hygiene work appeared during this review and remains separately reviewable. Android protected signing setup remains owner-only.
+
+## November 12, 2026 — CHAIN-006 mainnet GEEK payout worker draft
+
+Ported the tested CHAIN-004 automatic signer toward current KRC-20 GEEK. The same lease, commit/reveal journal, and exact reveal check are in `workers/mainnet`. HQ can admit a Daily or Gauntlet job only when `MAINNET_PAYOUT_ENABLED` is exactly true. The signer reads `MAINNET_SIGNER_PRIVATE_KEY` from the environment and stays paused unless that flag is exactly true in production. `settlementEligible` and `withdrawalsEnabled` remain false. No signing key is in the repository. The owner adds the signing key in the Vercel or GitHub secret UI later.
+
+Reward rules recorded for a later enable: 100 GEEK once per qualifying Daily; the `ROUND_CONFIG` perfect-round ladder once per finished Gauntlet round (46,300 GEEK for ten perfect rounds); retries do not pay again; temporary daily cap 100,000 GEEK. The public hot-wallet receive address is pinned in code and is not the token deploy address. This draft does not admit, sign, or broadcast a mainnet payout. CCE and collection ownership stay disabled. Test limits belong in the pull request.
+
+## November 12, 2026 — CHAIN-006 per-correct amount and queue bounds
+
+Gee confirmed Gauntlet GEEK is `ROUND_CONFIG.reward` times the server-graded correct count. One correct answer in round 10 is 1,800; 18,000 is rejected for that proof. Zero correct admits no job. Daily remains 100 once. The correct count is counted from stored boolean grades. The signer recomputes the amount from kind, round, and `correctCount` and requires an exact match.
+
+Temporary caps are 100,000 GEEK globally and 46,400 GEEK per player and per receiving address. The active index lists outstanding jobs only. A journal still unconfirmed six hours after preparation is marked stuck, keeps its original journal and earning lock, and no longer blocks later jobs. Admission and both signer entry points require production plus the explicit flag. A missing worker token skips admission and does not fail the saved answer. Ranked starts use the network address only, still 20 per hour. Settlement flags remain false. No signing key was added.
+
+## November 12, 2026 — CHAIN-006 job HMAC, stuck visibility, and cap fingerprint
+
+Each admitted job is HMAC-signed with Production-only `MAINNET_PAYOUT_JOB_HMAC` over the payable identity. Claim, the worker, and the signer reject a missing, wrong, or mutated mac. Preview does not create a signature production accepts. No secret value is stored.
+
+The six-hour stuck clock starts at the first submit. Stuck jobs are listed and emit `PAYOUT_UNCONFIRMED`. The original journal and earning lock remain, and a later manual check can still confirm that same hash. Temporary caps are no longer part of the job fingerprint. Network, protocol, ticker, decimals, deployment, and sender remain bound. Flags stay false.
+
+## November 12, 2026 — CHAIN-006 mac fields, replay refusal, and quarantine
+
+The job mac is an explicit ordered field list, including each proof field. Changing kind, round, correct count, or run id changes the mac. The first accepted journal is recorded by the worker handler. A queued copy of a signed, stuck, or confirmed earning is not signed again. Decode and mac failures are logged and quarantined. The earning lock is kept. A confirmed stuck job leaves the stuck list. Flags stay false. No secret value was added.
+
+
+## November 13, 2026 — CHAIN-006 atomic journal recovery candidate
+
+- **Review base:** draft #278 head `721c973eb32d8d6b38c281331a7f06dbdb9a03bc`; local branch `codex/atomic-payout-journal`.
+- **Finding and fix:** failure injection reproduced a signed marker without its transaction journal. Preparation now validates the job snapshot, sender lease and replay marker before atomically saving the complete journal and marker.
+- **Validation:** all 18 focused mainnet payout tests passed with real isolated Redis, including six new failure scenarios. Full npm run verify passed: 897 application tests, 9 testnet signer checks and 5 mainnet signer checks, zero failures/skips; question, archive, collection, security, repository, economy, continuity, site and whitepaper checks passed. No production requests, real signing key or broadcast used.
+- **Pickup:** review the stacked candidate before #278; independent signing/application audit and private-bank/abuse readiness remain open. No merge, deployment, environment or economic control changed.
+
+## November 13, 2026 — CHAIN-006 atomic stuck-list update
+
+- **Review base:** internal review of combined head `dd85120a5b40e609d79791e8ca4f15d7a39dd48d`. This entry records a source fix. It is not an independent audit, and it does not approve enablement.
+- **Finding and fix:** marking a job stuck saved the job, then added `stuck:v1` in a separate command. A failed second write could leave the job stuck and unlisted, with no `PAYOUT_UNCONFIRMED` log. The stuck-list write is now inside the same update script, after the existing job-snapshot and lease checks and before any write. Redis 7 does not revert a script error, so a bad stuck list or score is refused before the job is saved. The log runs only after that update succeeds. A lost `prepare` acknowledgment is documented as recovered by the next claim; re-sending that prepare returns 409 by design.
+- **Validation:** `npm test` passed 898 tests, 0 failed, 0 skipped, with real loopback Redis. `npm run test:signer` passed 9 testnet and 5 mainnet checks. `npm run security:check` passed 323 assertions. No production request, real signing key, or broadcast was used. Flags stay off.
+- **Pickup:** review draft #282 on top of #278. No merge, deployment, environment, or economic control changed. Settlement and withdrawals remain disabled.
+
+## November 13, 2026 — UX-027 holiday catalog draft
+
+- **Task:** UX-027. One catalog now supplies windows, priority, motifs and greetings. Automatic selection is priority, then shortest window, then id, in America/Detroit. The public appearance payload remains `{ id }`. Saves stay allowlisted and audited. The stored default remains Off.
+- **Geek Protocol birthday:** June 21–23, priority 90, named day June 22 Detroit. `deploymentHash` is the same value as `GEEK_DEPLOYMENT.deploymentHash` in `server/geek-deployment.js` (`c3cea245b394374b6d80d9fa82269967b56bd5d128a4db3152087a05e014d0b1`). The 2026 tests cover June 20 through June 24 and the later Toccata and Independence Day boundaries.
+- **Not in this change:** recoloring the existing twelve holidays, closing December 27–28, code-rain tint, or turning Automatic on.
+- **Validation:** `npm run verify` passed 886 HQ tests and 9 signer checks, zero failures, with real Redis 7.0.15 for the appearance fixture. Security evidence check passed 311 assertions. Continuity, site, question, collection, archive, repository, economy and whitepaper checks passed. This is a draft. It is not merged, deployed, or a production appearance change.
+
+## November 13, 2026 — UX-028 holiday stroke marks
+
+- **Task:** UX-028, stacked on the UX-027 catalog draft. Public ornaments are static SVG marks from `public/assets/holiday-marks.js`. Every holiday, including the original twelve, now has its own catalog color tokens. Presidents' Day, Memorial Day, Independence Day, and Veterans Day no longer share one stripe.
+- **Left unchanged:** greetings, the `{ id }` API, America/Detroit selection, the Off default, and code rain. Ornaments still stay off individual game routes, an active quiz, and `body.is-playing`. Reduced motion still clears the tilt. No keyframes or remote assets.
+- **Validation:** `npm run verify` again passed 886 HQ tests and 9 signer checks, zero failures, plus the same supporting checks. Local headless Chrome at 1280px showed distinct Geek birthday, Halloween, Memorial Day, and Independence Day headers, and a 390px Geek birthday header. Mocked appearance only. Not merged or deployed.
+
+## November 13, 2026 — MINT-001 local receipt history candidate
+
+- **Base:** main `01e79787b82e61d551e8023df7dd4a9c1d68fcb8`; branch `codex/mint-receipt-history`. Independent of the held payout drafts #278/#282.
+- **Outcome:** bounded browser-local request history with connected-wallet filtering, fixed explorer links, unknown outcomes saved before wallet handoff, and per-wallet clearing. No queue/approval restoration or chain-confirmation claims.
+- **Validation:** all 41 focused mint tests passed. Initial verification passed 884 application tests plus 9 offline testnet signer checks. After integrating main 59291438a1d91b92a82314233149c1a35bf310e0 and preserving its payout/holiday records, full npm run verify passed 910 application tests plus 9 testnet and 5 mainnet signer checks, zero failures/skips, with all supporting checks. Decision DR-039 preserves the new local-history rule without colliding with main records. Synthetic wallet responses only; no production mint, payment or real wallet approval.
+- **Pickup:** review source/preview, then actual-browser and Kasware device acceptance. Nothing merged or deployed; economic holds remain.
+
+## October 29, 2026 — SEC-010 private ranked bank (proposed, draft PR)
+
+- **Scope:** security audit found every public bank file carries `correctIndex`, so ranked scores can be scripted; draft #198 would publish 100 more keys. Proposed a configurable private ranked source (directory or HTTPS URL), a public fixture bank without real answers, and fail-closed production when no private source is set. All committed public rows are treated as exposed (practice/grading only); none are deleted or rewritten.
+- **Compatibility:** saved runs keep grading by ID against published, retired and private rows; private IDs that collide with published IDs are rejected. Payouts remain disabled. Not merged or deployed; storage choice and access remain founder decisions (see docs/MIGRATION-private-ranked-bank.md).
+- **Validation limits:** local run lacked a native Redis binary, so Redis-backed suites could not run on this box; results are recorded in the PR.
+
+## October 29, 2026 — SEC-010 browser integration and merged public-bank prerequisites
+
+- **Released prerequisites:** founder requested merge after review. #180 merged as a3b2441f82636e511658be09d47a7171b89472d4, then #198 as 33f74c0aee05e416f91b8331cf4236d9ddd758a4. The resulting main tree exactly matches tested f8521cbee17e406085d080c9558cb69c56185665; Vercel production dpl_7VJFZmLJ9NqZdhbx8b6s1bGFehFg reported READY at that merge. This is provider deployment evidence, not phone acceptance. The 100 added questions remain practice-only drafts.
+- **Candidate:** continuing on draft #200 head 981c9f6e396ddd3869be49ad6d56629b4d947f19. Play and My HQ request the current season explicitly and offer labeled Season 0/Season 1 history. API requests with no season retain legacy compatibility; `season=current` resolves from server configuration without fetching the private bank. Finishing a run selects its own season; stale Play board responses cannot overwrite a newer selection.
+- **Recovery:** a saved deferred answer displays “Answer saved — results after the round.” It offers manual next without inventing correctness or issuing another answer mutation.
+- **Validation:** 73 focused API/client tests passed, zero failures/skips, including current/private vs legacy separation, empty-board labels, stale response ordering and deferred recovery. Full `npm run verify` passed with required native Redis 7.0.15: 738 HQ tests plus nine offline signer checks (747 total), zero failures/skips, all question, security, continuity, site, archive, collection, repository and economy checks. Synthetic DOM tests do not establish real-device rendering or restricted Preview acceptance.
+- **Holds/next:** #200 is unmerged and undeployed. Separate private storage, scoped server credential, reviewed private questions, rotation acceptance and restricted Preview remain prerequisites. No private bank, token, environment setting, production cutover or payment was created. The independent Technology OS candidate remains paused.
+
 ## November 2, 2026 - SEC-010 assembled private-bank review
 
 - Founder approves starting combined review, reconciliation and testing of #200/#206/#207/#213; no main cutover is authorized. Merge current main 12a0228 and all four pinned draft heads normally in an isolated review branch. Preserve current question files, public docs/buttons, timer, artwork, headers and routing.
@@ -1048,10 +1464,18 @@ Founder screenshots show unstyled HTML and broken images after opening the apex 
 - Metadata-only readiness review finds a missing immutable source pin, distinct linked Preview/Production storage and disabled Preview reward/signing flags. #206 blocks Preview ranked writes; December start also clamps November private runs to Season 1. Keep these rollout gates explicit; no setting is changed and no real private question is read.
 - Detailed disposition, source inputs, known limits and next action: docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md. Publish only a separate draft assembly review into #200, with original PRs and production unchanged.
 
-
 ## November 13, 2026 — SEC-010 private-season start guard
 
 - **Base and scope:** #231 head b9b67d16ef37268ff01403a94366023e46133869; branch codex/private-season-start-guard. Held old assembly, not current-main integration or cutover.
 - **Outcome:** configured private seasons cannot start early. Before the UTC month boundary, the API refuses without a question/run or gameplay mutation and the read-only board stays on Season 0. Public Alpha and saved-run compatibility are preserved.
 - **Validation:** 103 focused synthetic private-bank/leak/resilience/season tests pass with real local Redis, zero failures/skips. Full npm run verify also passes: 895 application tests and 9 offline signer checks, zero failures/skips; all private-bank/template/leak, security, continuity and supporting checks pass. No real private questions or provider credentials read; no production writes or economic gate changes.
 - **Next:** review this stacked patch, then reconcile current main (including later payout/unranked interactions), approve the immutable bank artifact/editorial evidence and design isolated rehearsal. External automated-answer assistance remains an open threat; passing protocol tests is not an anti-bot certification.
+
+
+## November 13, 2026 — SEC-010 current-HQ integration and isolated local rehearsal
+
+- **Authorization and inputs:** founder authorized steps 1–3. #284 checks/reviews cleared and squash-merged into the held branch as 73f80ce5372b87d1b82027463678c1d9b70adddf. Combine that branch with released main dbdb7f04b840d6ef14fc792448692d5bb656a4b7; preserve both histories. No production cutover is authorized.
+- **Result:** retained current HQ site/sign-in/game/mint/payout changes and private-bank/deferred-feedback/season/Preview protections. Mainnet preparation refuses public, legacy and unranked results. Reconciled structured error redaction and added an exact-path/exact-byte published brand-kit compatibility check; arbitrary public archives remain blocked.
+- **Local rehearsal:** credential-scrubbed child runner with fake banks and disposable loopback Redis passes 105 tests; no inherited database/source/signing settings. Full combined application suite passes 1077 tests, zero failures/skips, on current lockfile dependencies. Full npm run verify passed: 1077 application tests, 9 testnet signer checks and 5 mainnet signer checks, zero failures/skips; all private-bank, leak, security, archive, collection, question, repository, economy, continuity, site and whitepaper checks passed.
+- **Evidence:** docs/PRIVATE-BANK-LOCAL-REHEARSAL.md, scripts/private-bank-rehearsal.mjs, tests/private-bank-rehearsal.test.js and existing bank/season/mainnet integration suites. Synthetic fixtures only, no real private question or provider credential read.
+- **Next:** review the combined draft, approve real-bank editorial/capacity/immutable-artifact evidence, and define hosted rehearsal without weakening Preview isolation. No merge to main, hosted write, secret change, payout enable or independent audit acceptance.

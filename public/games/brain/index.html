@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+    <!-- site-metadata:start -->
+    <title>Brain Games — Geek Protocol</title>
+    <meta name="description" content="Practice recall, mental math and attention in Signal Sequence, Number Forge and Rule Shift. Three difficulty levels, ten untimed rounds and device-only scores." />
+    <meta name="theme-color" content="#000000" />
+    <meta name="robots" content="index,follow" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/assets/app/giga-apple-touch.png" />
+    <link rel="icon" type="image/png" href="/assets/geek-protocol-logo-v2.png" />
+    <link rel="canonical" href="https://www.geekprotocol.xyz/games/brain/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Geek Protocol" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Brain Games — Geek Protocol" />
+    <meta property="og:description" content="Practice recall, mental math and attention in Signal Sequence, Number Forge and Rule Shift. Three difficulty levels, ten untimed rounds and device-only scores." />
+    <meta property="og:url" content="https://www.geekprotocol.xyz/games/brain/" />
+    <meta property="og:image" content="https://www.geekprotocol.xyz/assets/share-default-v1.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Geek Protocol: Your first steps into Kaspa. GIGA, the gold robot mascot, beside the Kaspa emblem." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@geekonkas" />
+    <meta name="twitter:title" content="Brain Games — Geek Protocol" />
+    <meta name="twitter:description" content="Practice recall, mental math and attention in Signal Sequence, Number Forge and Rule Shift. Three difficulty levels, ten untimed rounds and device-only scores." />
+    <meta name="twitter:image" content="https://www.geekprotocol.xyz/assets/share-default-v1.png" />
+    <meta name="twitter:image:alt" content="Geek Protocol: Your first steps into Kaspa. GIGA, the gold robot mascot, beside the Kaspa emblem." />
+    <!-- site-metadata:end -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/assets/atmosphere.css"><link rel="stylesheet" href="/assets/space.css"><link rel="stylesheet" href="/assets/styles.css"><link rel="stylesheet" href="/games/assets/games.css"><link rel="stylesheet" href="/games/brain/brain.css">
+<script type="module" src="/games/brain/brain.js"></script><link rel="stylesheet" href="/games/assets/geek-play.css"></head>
+<body class="games-page brain-page"><a class="skip-link" href="#main">Skip to brain games</a>
+<header class="games-header"><a class="geek-game-brand" href="/games/"><img src="/assets/geek-protocol-logo-v2.png" alt="" width="44" height="44"><span>GEEK<span class="brand-slash"> // </span>GAMES</span></a><nav aria-label="Main navigation"><a href="/games/">All games</a><a href="/memory/">Memory Grid</a><a href="/study/">Study</a></nav></header>
+<main id="main" class="games-main"><nav class="play-switcher" aria-label="Pick a game"><a aria-current="page" href="/games/brain/">Brain Lab</a><a href="/games/chess/">Chess</a><a href="/games/checkers/">Checkers</a><a href="/games/solitaire/">Solitaire</a></nav><section class="brain-hero"><p class="section-kicker">GEEK // BRAIN LAB</p><h1>Give your mind<br><em>something to solve.</em></h1><p>Practice recall, number skills and attention. Ten rounds. No clock. A fresh challenge each time.</p><div class="brain-tags"><span>Free play</span><span>No account</span><span>No wallet</span></div></section>
+<aside class="geek-coach" aria-label="GIGA practice tip"><div class="geek-coach-portrait"><img src="/assets/kaspa-culture.png" alt="GIGA, the friendly gold Geek robot" width="1024" height="1024" loading="lazy"></div><div><p class="geek-coach-label">GIGA // PRACTICE BUDDY</p><h2>One signal at a time.</h2><p>Take your time, find a pattern, then try it from memory. Every round is a fresh chance to practice.</p></div></aside><section class="brain-panel" aria-label="Brain Games play area"><div class="geek-game-specs" aria-label="Game features"><span>RECALL</span><span>NUMBERS</span><span>FOCUS</span></div>
+<p id="loading">Loading the Brain Lab. If it does not load, refresh the page or try <a href="/memory/">Memory Grid</a>.</p><noscript><p>These games need JavaScript. You can still <a href="/study/">read the Study guide</a>.</p></noscript>
+<div id="setup" hidden><h2>Choose your workout</h2><label for="mode">Game</label><select id="mode"><option value="sequence">Signal Sequence · recall digits</option><option value="math">Number Forge · mental math</option><option value="switch">Rule Shift · follow changing rules</option></select>
+<label for="level">Difficulty</label><select id="level"><option value="easy">Easy</option><option value="steady">Steady</option><option value="stretch">Stretch</option></select>
+<p>Sequence: study digits for as long as you like, then hide and recall them. Math: addition and subtraction, plus multiplication at higher levels. Rule Shift: alternate between “even?” and “greater than 5?”</p><p id="best" aria-live="polite"></p><button id="start" type="button">Start 10 rounds →</button></div>
+<div id="session" hidden><div class="brain-session-head"><h2 id="session-title">Brain Games</h2><button id="exit" type="button" class="quiet">Exit session</button></div><p id="progress"></p><h3 id="rule" tabindex="-1"></h3><p id="prompt" class="brain-prompt"></p><button id="memorized" type="button" hidden>I’m ready · hide the digits</button>
+<div id="answers" hidden><form id="number-form"><label id="answer-label" for="answer">Your answer</label><input id="answer" type="text" inputmode="numeric" pattern="[0-9]+" autocomplete="off" spellcheck="false" required maxlength="12"><button type="submit">Check answer</button></form><div id="binary" class="brain-binary" hidden><button id="yes" type="button">Yes</button><button id="no" type="button">No</button></div></div>
+<p id="feedback" role="status" tabindex="-1"></p><button id="next" type="button" hidden>Next round</button></div>
+<div id="results" hidden><p class="section-kicker">SESSION COMPLETE</p><h2 id="result" tabindex="-1"></h2><p>Nice practice. Take a break, try another game, or change the difficulty. Compare your own scores within the same game and level.</p><button id="again" type="button">Choose another workout</button></div></section>
+<section class="brain-notes"><div><h2>Small skills. Real practice.</h2><p>These games exercise the tasks you play. Scores describe this session; they are not an IQ test or a promise of broader intelligence gains.</p><p>Prefer visual matching? <a href="/memory/">Try Memory Grid →</a></p></div><div><h2>Your device, your progress.</h2><p>Only your best completed score per game and level is saved in this browser. No account sync, leaderboard, XP or token rewards. Clearing browser data removes these scores.</p><button id="clear" type="button" class="quiet">Clear Brain Games scores</button><p id="save-status" role="status"></p></div></section></main><footer class="games-footer"><a href="/games/">Back to all Geek Games</a><p>All Hope, No Hype.</p></footer></body></html>

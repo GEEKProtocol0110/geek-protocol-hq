@@ -1,7 +1,7 @@
 const key = 'geek_start_checklist_v2';
 const boxes = [...document.querySelectorAll('[data-step-check]')];
 const ids = boxes.map(box => box.dataset.stepCheck);
-const names = ['choose your player', 'make your Geek', 'learn one idea', 'try Daily Signal', 'see your saved progress'];
+const names = { learn: 'learn one idea', play: 'try Daily Signal', progress: 'see your saved progress', account: 'choose your player (optional)', geek: 'make your Geek (optional)' };
 let completed = [];
 function read() {
   try {
@@ -15,10 +15,10 @@ function render() {
   for (const box of boxes) box.checked = completed.includes(box.dataset.stepCheck);
   const count = boxes.filter(box => box.checked).length, next = boxes.findIndex(box => !box.checked);
   const progress = document.querySelector('[data-start-progress]'); progress.value = count; progress.textContent = `${count} of ${boxes.length}`;
-  document.querySelector('[data-start-status]').textContent = next < 0 ? 'Your first visit is complete. Come back to any step whenever you like.' : `${count} of ${boxes.length} steps checked. Next: ${names[next]}.`;
+  document.querySelector('[data-start-status]').textContent = next < 0 ? 'Your first visit is complete. Come back to any step whenever you like.' : `${count} of ${boxes.length} steps checked. Next: ${names[ids[next]]}.`;
   const link = document.querySelector('[data-start-next]');
   link.href = next < 0 ? '/profile/' : `#step-${ids[next]}`;
-  link.textContent = next < 0 ? 'Return to My HQ →' : `${names[next].charAt(0).toUpperCase()}${names[next].slice(1)} →`;
+  link.textContent = next < 0 ? 'Return to My HQ →' : `${names[ids[next]].charAt(0).toUpperCase()}${names[ids[next]].slice(1)} →`;
   for (const card of document.querySelectorAll('[data-start-card]')) card.classList.toggle('step-complete', completed.includes(card.dataset.startCard));
 }
 function save() {

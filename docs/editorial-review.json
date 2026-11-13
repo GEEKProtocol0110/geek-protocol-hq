@@ -3010,14 +3010,14 @@
       "category": "movies",
       "id": "MOV-N-ffdb7dbe5996",
       "reason": "source-correction",
-      "note": "Consolidate the shared voice-role fact under Movies and remove the question that reveals the character’s name in its stem. Canonical replacement: POP-N-f9b081c8be26-Rc38649ac9a.",
+      "note": "Consolidate the shared voice-role fact under Movies and remove the question that reveals the character\u2019s name in its stem. Canonical replacement: POP-N-f9b081c8be26-Rc38649ac9a.",
       "answerKeyHash": "b4300c95f8d74b8986ec8bdb9317d4927b58997a3c546d2a62e61776b773ee31"
     },
     {
       "category": "pop-culture",
       "id": "POP-N-f9b081c8be26",
       "reason": "source-correction",
-      "note": "Consolidate the shared voice-role fact under Movies and remove the question that reveals the character’s name in its stem. Canonical replacement: POP-N-f9b081c8be26-Rc38649ac9a.",
+      "note": "Consolidate the shared voice-role fact under Movies and remove the question that reveals the character\u2019s name in its stem. Canonical replacement: POP-N-f9b081c8be26-Rc38649ac9a.",
       "answerKeyHash": "9f1f71f1560e29daeb5413a0ed438073daf1607b53bee2b84da7a7011b7697f7"
     },
     {
@@ -3094,7 +3094,7 @@
       "category": "technology",
       "id": "TECH-0046",
       "reason": "source-correction",
-      "note": "Correct the keyed person’s misspelled surname Gray to Cray under a new identity; replace a vague honorific with a dated company/design relation. Canonical replacement: TECH-0046-R7e5d1009b6.",
+      "note": "Correct the keyed person\u2019s misspelled surname Gray to Cray under a new identity; replace a vague honorific with a dated company/design relation. Canonical replacement: TECH-0046-R7e5d1009b6.",
       "answerKeyHash": "d549adaffa2061854e83b03491c511ba32deba7f6b792acee451f6a98c78bbfe"
     },
     {
@@ -3383,9 +3383,79 @@
       "reason": "semantic-duplicate",
       "note": "BANK-009 final review: overlaps the debut-issue objective of COM-ST-005. Retired rather than keeping two active versions. Original prompt, options and grading are retained for saved runs; canonical concept is COM-ST-005, which remains practice-only. The earlier uncertain-authorship hold is not cleared by this retirement.",
       "answerKeyHash": "cd938866517ed7d35de867bce3e411ee24e3feb00b91d5828521642836a02b92"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0810",
+      "reason": "source-correction",
+      "note": "The old generic physical-RAM limit ignores PAE and confuses physical memory, total virtual space and the process user-space share. Practice-only replacement: TECH-0810-Rfcd02b1e2f.",
+      "answerKeyHash": "b5c12ffc2c94b7750f9fbd26d8eee73d44227a8bb0ba00fc908e952fe0f2eb14"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-0461c5e98b88",
+      "reason": "source-correction",
+      "note": "Replace the imprecise human-memory analogy with an explicit saved-file/nonvolatile-storage objective. Practice-only replacement: TECH-N-0461c5e98b88-Rbc490ae047.",
+      "answerKeyHash": "aabdce4441b1643f145e7617614d9df09ec875882c1ffaacc439553c9daa7b25"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-d0bbfb636d98",
+      "reason": "source-correction",
+      "note": "Replace an undated intended-to-succeed claim and code-name lore with the explicit historical release date. Practice-only replacement: TECH-N-d0bbfb636d98-R488e1b3347.",
+      "answerKeyHash": "861c578d5a98507b3cc4a276b584ea5355f07855f44b198293a9d4dec5c86d45"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-4a46c8d3f25b",
+      "reason": "source-correction",
+      "note": "HTTP is a protocol, not a language. Practice-only replacement: TECH-N-4a46c8d3f25b-Rd06700e155.",
+      "answerKeyHash": "cd37c26d478354862ed9873fd3681db13517e82dd6cf5a563d34d8ebb1075e22"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-8c3ba98d7703",
+      "reason": "semantic-duplicate",
+      "note": "Same WWW acronym-expansion objective as TECH-N-168bcb9a7078; retain the concise survivor and preserve this issued answer key.",
+      "answerKeyHash": "117ceab5706de6330bf4ddf9ba27aa041bfa792511bcb8f06375d95e641f16aa"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0604",
+      "reason": "semantic-duplicate",
+      "note": "Repeats the coleopterology-to-beetles objective in TECH-0096; retain one draft concept, with no source-check promotion.",
+      "answerKeyHash": "5634b9f19b6bdfacfcdafba83a11bd45eb93bcfce6d72d244fe00e565c5e9bfa"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0169",
+      "reason": "invalid-options",
+      "note": "Crustaceans and crabs/lobsters/crayfish are overlapping valid descriptions of the study subject; this single-answer item does not specify broadest taxonomic scope.",
+      "answerKeyHash": "c0b766d006f842e1a6a05f7a14fa9a1fa17fe629e4cf1391b5c845342e4948b2"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-d721179b1a86",
+      "reason": "unsupported-claim",
+      "note": "Mixes baseball with a quarterback pass and omits the idealized no-drag conditions needed for a strictly parabolic path. Retire rather than certify the real-world claim.",
+      "answerKeyHash": "9adbcd6c2886f343bd7e3357cc8bd93e41108641c2566410392d05baded47932"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-N-cee108018491",
+      "reason": "unsupported-claim",
+      "note": "Pulsar names a type/observational behavior of neutron star, not an unrestricted synonym for every neutron star. Its related draft definition is also retired pending a precise replacement.",
+      "answerKeyHash": "31e84f9a55c5321302182fdf9d442d90cae6bbd3ad55a1f80b27b09d1a48e926"
+    },
+    {
+      "category": "technology",
+      "id": "TECH-0363",
+      "reason": "invalid-options",
+      "note": "Pulsar and magnetar properties can overlap, so the supplied radio-pulse description does not establish mutually exclusive options. Retire pending a more precise objective.",
+      "answerKeyHash": "710f8d14472bc671d4f025591ba5429d5608589b9c40aa2fb63c5fa45b6e7e42"
     }
   ],
-  "retirementCount": 442,
+  "retirementCount": 452,
   "newLicensedImportsRetired": 258,
   "activeNewLicensedImportsPending": 3598,
   "activeDraftQuestions": 7516,
@@ -3440,7 +3510,7 @@
     }
   },
   "importCountCorrection": "The previous prose total of 3,868 licensed additions was incorrect: the original active snapshot has 3,856 new draft imports and 168 new source-checked authored items (92 Kaspa, 39 Comics, 37 Science Fiction).",
-  "maintainedAt": "2026-11-01",
+  "maintainedAt": "2026-11-08",
   "followUpAudits": [
     {
       "date": "2026-10-27",
@@ -3469,6 +3539,34 @@
       "scope": "Twelve selected Technology drafts: four primary-source-checked corrections plus eight category/context/option retirements. Risk sample only; original grading preserved.",
       "evidence": "docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md",
       "decisionRegister": "server/question-audit/technology-2026-10-28.json"
+    },
+    {
+      "date": "2026-11-06",
+      "task": "BANK-009",
+      "scope": "Six selected hardware/OS/interface drafts, not a whole-category or contiguous-prefix approval. Three existing identities retain exact grading and receive item-specific internal source checks; three corrected replacements remain practice-only drafts pending separate review.",
+      "evidence": "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md",
+      "decisionRegister": "server/question-audit/technology-2026-11-06.json"
+    },
+    {
+      "date": "2026-11-07",
+      "task": "BANK-009",
+      "scope": "Two selected web-basics items only. URL grading retained; HTTP wording corrected under a new practice-only identity. No category-wide certification.",
+      "evidence": "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-07.md",
+      "decisionRegister": "server/question-audit/technology-2026-11-07.json"
+    },
+    {
+      "date": "2026-11-08",
+      "task": "BANK-009",
+      "scope": "Six selected rows: five exact-grading internal confirmations and one semantic duplicate consolidated, not a contiguous/full-category audit.",
+      "evidence": "docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-08.md",
+      "decisionRegister": "server/question-audit/technology-2026-11-08.json"
+    },
+    {
+      "date": "2026-11-08",
+      "task": "BANK-009",
+      "scope": "Six selected rows: five retired for ambiguity, unsupported context or semantic duplication; one unchanged draft survivor. No source-check promotions or difficulty calibration.",
+      "evidence": "docs/TECHNOLOGY-RISK-REVIEW-2026-11-08.md",
+      "decisionRegister": "server/question-audit/technology-risk-2026-11-08.json"
     }
   ],
   "practiceOnlyHolds": {

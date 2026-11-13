@@ -147,3 +147,9 @@ import('/assets/session-hint.js').catch(() => {}).then(() => import('/assets/ses
 // UX-only status hint remains separate from the bounded saved-player hint.
 for (const name of ['geek:signed-in', 'geek:passkey-signed-in', 'geek:device-signed-in']) document.addEventListener(name, () => { try { localStorage.setItem('geek-session-hint', 'signed-in'); } catch { /* Storage is optional. */ } });
 document.addEventListener('geek:signed-out', () => { try { localStorage.removeItem('geek-session-hint'); } catch { /* Storage is optional. */ } });
+
+// Full-page Kaspa space, planet and code rain; reduced-motion still, rain off on game boards.
+import('/assets/kaspa-matrix.js').catch(() => {});
+
+// Brief opt-in-surface feedback; never hooks answer buttons or individual game boards.
+import('/assets/cosmic-glitch.js').catch(() => {});

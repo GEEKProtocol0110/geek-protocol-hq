@@ -46,7 +46,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | ART-001 | P2 | blocked | Preserve paused original art and resume production only on founder direction | Founder supplies art; production maintainer unassigned |
 | SEO-001 | P0 | done | Maintain metadata and link coverage for every HQ page | Maintainer |
 | AUTH-003 | P0 | needs-evidence | Provide a cross-device account path beyond local passkey creation | Maintainer; family-account and recovery policy reviewed by founder |
-| ACE-001 | P1 | needs-evidence | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
+| ACE-001 | P1 | blocked | Build source-grounded A.C.E. tutoring and scoped operational automation | Maintainer; AI/content evaluation reviewer unassigned |
 | PERF-001 | P1 | needs-evidence | Measure growth capacity and stage storage, delivery and worker improvements | Maintainer; performance/recovery reviewer unassigned |
 | UX-006 | P0 | needs-evidence | Make returning login clear and keep advanced setup optional | Maintainer; founder confirms usability |
 | UX-007 | P1 | needs-evidence | Add a five-word hunt and one-time rewarded challenges | Maintainer; founder confirms phone usability |
@@ -59,7 +59,41 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-008 | P1 | in-progress | Center the question timer behind four glass answer panels | Maintainer; founder accepts device presentation |
 | UX-009 | P0 | in-progress | Redirect the apex homepage before its assets cross origins | Maintainer; founder approves release |
 | UX-010 | P0 | needs-evidence | Redirect trailing-slash apex page links to the canonical host | Maintainer; founder approves production merge |
-| DOC-002 | P1 | in-progress | Expose project documents and contributors on the homepage | Maintainer; founder approves merge |
+| DOC-002 | P1 | done | Expose project documents and contributors on the homepage | Maintainer; founder approves merge |
+| SEO-002 | P1 | in-progress | Publish clear project facts and verify search discovery | Maintainer prepares source; founder approves merge; verified property owner handles search-console evidence |
+| ECO-002 | P1 | done | Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream | Maintainer prepares source; founder reviews release and supplies additional Hall links |
+| ECO-003 | P1 | done | Expand KRC-20 project links and preserve token lookups for holders | Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned |
+| UX-011 | P1 | needs-evidence | Public HQ global leaderboard and separate shared Mini standings | Maintainer prepares source and verification; founder approves release; independent abuse review unassigned |
+| ECO-004 | P1 | done | Add native-KAS exchanges, brokers and swaps to the Kaspa directory | Maintainer prepares source and evidence; founder approves release; independent coverage reviewer unassigned |
+| ECO-005 | P1 | done | Publish Media and Builders resources for ecosystem listings and sharing | Maintainer prepares source and checks; founder reviews release; independent builder/device acceptance unassigned |
+| ECO-006 | P1 | done | Add Geek News with provider market, news and futures feeds | Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned |
+| UX-012 | P1 | needs-evidence | Connect the first-player learning, quiz, results and leaderboard journey | Maintainer prepares source and checks; founder approves release; physical-phone and independent review unassigned |
+| UX-013 | P1 | needs-evidence | Review all 17 open HQ reports and fix verified interface defects | Maintainer prepares source, tests and triage; founder approves merge; device/accessibility and independent content reviewers unassigned |
+| UX-014 | P1 | in-progress | Make page typography calmer and easier to read | Maintainer prepares source and checks; founder reviews merge; physical-phone acceptance unassigned |
+| ECO-007 | P1 | in-progress | Expand the ecosystem directory with KaspaDollar, social apps, builder resources and games | Maintainer prepares source and checks; founder reviews release |
+| UX-015 | P1 | in-progress | Give existing Geek modes a clear Games hub | Maintainer prepares source and checks; founder approves release; physical-device acceptance unassigned |
+| UX-016 | P1 | in-progress | Add Brain Games for recall, arithmetic and attention practice | Maintainer builds and checks; founder approves release; physical-device acceptance unassigned |
+| UX-017 | P1 | in-progress | Add classic strategy and card games, starting with checkers and solitaire | Maintainer builds and checks; founder approves release; browser/physical-device acceptance unassigned |
+| UX-019 | P2 | needs-evidence | Add playable Geek Chess | Maintainer; founder release review |
+| UX-018 | P1 | needs-evidence | Fit Geek games to phone screens and compact active play | Maintainer fixes layout and checks; founder approves release; physical-phone acceptance unassigned |
+| UX-020 | P2 | needs-evidence | Unify the Geek Games visual feel and play controls | Maintainer; founder release review |
+| GAME-002 | P2 | in-progress | Online chess and checkers lobbies with accepted game requests | Maintainer; founder release review |
+| UX-021 | P2 | in-progress | Sculpted chess pieces, raised checkers and collector-style solitaire cards | Maintainer; founder release review |
+| ECO-008 | P2 | in-progress | Education directory with explicit learning utility-token projects | Maintainer; founder release review |
+| GAME-003 | P2 | in-progress | Nine strategy and puzzle games, including Battle Geek and Peg Quest | Maintainer; founder release review |
+| UX-022 | P2 | in-progress | Homepage pathways and shared navigation polish | Maintainer; founder release review |
+| UX-023 | P2 | in-progress | More optional Grid easter eggs | Maintainer; founder release review |
+| UX-024 | P2 | in-progress | Minimal cosmic glitch feedback and Geek code accents | Maintainer; founder release review |
+| UX-025 | P2 | in-progress | Clean Geek branding and black installed-app launch | Maintainer; founder release review |
+| UX-026 | P2 | in-progress | Kaspa space, planet and code-rain full-page background | Maintainer; founder release review |
+| UX-027 | P2 | in-progress | Data-driven holiday catalog with Kaspa and crypto dates | Maintainer; founder preview |
+| UX-028 | P2 | in-progress | Geek stroke marks and distinct holiday palettes | Maintainer; founder preview |
+| GAME-004 | P2 | in-progress | Ongoing matches, My Games and turn alerts | Maintainer; founder release/device review |
+| APP-001 | P2 | in-progress | Android test package and device acceptance | Maintainer; founder device review |
+| GAME-005 | P2 | in-progress | Opt-in closed-lounge turn notifications and durable delivery | Maintainer; founder phone acceptance |
+| OPS-004 | P2 | in-progress | Record default code ownership and limited weekly dependency updates | Maintainer; founder reviews the pull request |
+| CHAIN-006 | P1 | in-progress | Port the automatic payout worker toward mainnet GEEK | Maintainer; founder controls explicit enable and the signing secret |
+| MINT-001 | P1 | in-progress | Preserve local mint request references across reloads | Maintainer; founder reviews release |
 | SEC-010 | P0 | in-progress | Serve future ranked questions and answers from private storage; treat published banks as exposed | Maintainer; founder selects private storage and approves rollout |
 
 ## CONT-001: Publish the continuation system
@@ -110,7 +144,7 @@ Evidence/specification: [docs/continuity/ARCHIVE-GUIDE.md](../../docs/continuity
 
 **P0 / active.** Owner: Content maintainer; independent editor unassigned. Dependencies: none.
 
-Next action: Complete the corrected #209 integration with fresh exact-head checks, then continue the remaining BANK-009 factual, semantic, category and authorship audit. Preserve all historical grading and keep new drafts practice-only. Private-ranked-bank end-to-end and UX acceptance remain separate cutover gates.
+Next action: Review the November 8 risk-triage candidate and exact-head CI, then continue unflagged rows across categories.
 
 Acceptance:
 
@@ -120,7 +154,7 @@ Acceptance:
 - Corrections use new identities; original grading remains lookup-only and duplicate aliases prevent repeated concepts in subsequent rounds.
 - Independent editorial review is assigned and accepted before claiming independent completion; generated coverage, compatibility, tier capacity and public-answer protections pass.
 
-Evidence/specification: [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md), [scripts/audit-question-banks.mjs](../../scripts/audit-question-banks.mjs), [server/question-audit/decisions-2026-10-27.json](../../server/question-audit/decisions-2026-10-27.json), [server/question-audit/latest.json](../../server/question-audit/latest.json), [tests/question-audit.test.js](../../tests/question-audit.test.js), [docs/QUESTION-ENCODING-REVIEW-2026-10-28.md](../../docs/QUESTION-ENCODING-REVIEW-2026-10-28.md), [server/question-audit/encoding-2026-10-28.json](../../server/question-audit/encoding-2026-10-28.json), [scripts/question-encoding.mjs](../../scripts/question-encoding.mjs), [tests/question-encoding.test.js](../../tests/question-encoding.test.js), [docs/QUESTION-SCOPE-REVIEW-2026-10-28.md](../../docs/QUESTION-SCOPE-REVIEW-2026-10-28.md), [server/question-audit/scope-2026-10-28.json](../../server/question-audit/scope-2026-10-28.json), [server/question-audit/reviews.json](../../server/question-audit/reviews.json), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md), [server/question-audit/technology-2026-10-28.json](../../server/question-audit/technology-2026-10-28.json).
+Evidence/specification: [docs/QUESTION-BANK-AUDIT-2026-10-27.md](../../docs/QUESTION-BANK-AUDIT-2026-10-27.md), [scripts/audit-question-banks.mjs](../../scripts/audit-question-banks.mjs), [server/question-audit/decisions-2026-10-27.json](../../server/question-audit/decisions-2026-10-27.json), [server/question-audit/latest.json](../../server/question-audit/latest.json), [tests/question-audit.test.js](../../tests/question-audit.test.js), [docs/QUESTION-ENCODING-REVIEW-2026-10-28.md](../../docs/QUESTION-ENCODING-REVIEW-2026-10-28.md), [server/question-audit/encoding-2026-10-28.json](../../server/question-audit/encoding-2026-10-28.json), [scripts/question-encoding.mjs](../../scripts/question-encoding.mjs), [tests/question-encoding.test.js](../../tests/question-encoding.test.js), [docs/QUESTION-SCOPE-REVIEW-2026-10-28.md](../../docs/QUESTION-SCOPE-REVIEW-2026-10-28.md), [server/question-audit/scope-2026-10-28.json](../../server/question-audit/scope-2026-10-28.json), [server/question-audit/reviews.json](../../server/question-audit/reviews.json), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md), [server/question-audit/technology-2026-10-28.json](../../server/question-audit/technology-2026-10-28.json), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-06.md), [server/question-audit/technology-2026-11-06.json](../../server/question-audit/technology-2026-11-06.json), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-07.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-07.md), [docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-08.md](../../docs/TECHNOLOGY-QUESTION-REVIEW-2026-11-08.md), [docs/TECHNOLOGY-RISK-REVIEW-2026-11-08.md](../../docs/TECHNOLOGY-RISK-REVIEW-2026-11-08.md).
 
 ## BANK-001: Grow Kaspa toward 1,000 reviewed concepts
 
@@ -651,9 +685,11 @@ Evidence/specification: [docs/PASSKEY-LOGIN.md](../../docs/PASSKEY-LOGIN.md), [d
 
 ## ACE-001: Build source-grounded A.C.E. tutoring and scoped operational automation
 
-**P1 / needs-evidence.** Owner: Maintainer; AI/content evaluation reviewer unassigned. Dependencies: none.
+**P1 / blocked.** Owner: Maintainer; AI/content evaluation reviewer unassigned. Dependencies: none.
 
-Next action: #148 merged/deployed. Authored lesson help works; optional bounded Gateway path and private read-only readiness are installed. Select model/budget/data policy and record a bounded live citation/injection/usage evaluation before activation. Autonomous operational tools are not installed.
+Next action: Keep A.C.E. work and live AI activation paused until the founder explicitly resumes it. Existing authored lesson help remains available.
+
+Blocker: Founder paused A.C.E. work on November 9, 2026.
 
 Acceptance:
 
@@ -852,9 +888,9 @@ Evidence/specification: [docs/APEX-HOMEPAGE-ASSET-FAILURE.md](../../docs/APEX-HO
 
 ## DOC-002: Expose project documents and contributors on the homepage
 
-**P1 / in-progress.** Owner: Maintainer; founder approves merge. Dependencies: DOC-001.
+**P1 / done.** Owner: Maintainer; founder approves merge. Dependencies: DOC-001.
 
-Next action: Verify the exact preview, obtain approval for the small publication batch, and confirm live homepage links and indexing signals after deployment.
+Next action: Maintain public links and sitemap; SEO-002 follows with a project facts/FAQ page and indexation evidence.
 
 Acceptance:
 
@@ -865,11 +901,536 @@ Acceptance:
 
 Evidence/specification: [public/index.html](../../public/index.html), [public/assets/home.css](../../public/assets/home.css), [docs/site-pages.json](../../docs/site-pages.json), [public/sitemap.xml](../../public/sitemap.xml), [docs/HOMEPAGE-DOCUMENT-DISCOVERY.md](../../docs/HOMEPAGE-DOCUMENT-DISCOVERY.md).
 
+## SEO-002: Publish clear project facts and verify search discovery
+
+**P1 / in-progress.** Owner: Maintainer prepares source; founder approves merge; verified property owner handles search-console evidence. Dependencies: DOC-002.
+
+Next action: Validate the project facts/FAQ candidate and review it for merge. Record Google/Bing indexing and verified crawler evidence separately; identify the owner/source of the earlier litepaper deployment before proposing a redirect.
+
+Acceptance:
+
+- Visible native homepage/footer links lead to a public, canonical, indexable facts/FAQ page in the sitemap.
+- Project identity, live Alpha features, token boundaries, audit status and official profiles agree with published source evidence; no founder personal name is added.
+- All answers remain readable without JavaScript; narrow-screen and keyboard access are checked.
+- Record actual source/crawl findings, provider limits and the remaining console/legacy-deployment actions without claiming indexing, citations or external grading.
+
+Evidence/specification: [public/about/index.html](../../public/about/index.html), [public/about/assets/about.css](../../public/about/assets/about.css), [public/index.html](../../public/index.html), [docs/site-pages.json](../../docs/site-pages.json), [docs/SEARCH-DISCOVERY-REVIEW-2026-11-03.md](../../docs/SEARCH-DISCOVERY-REVIEW-2026-11-03.md).
+
+## ECO-002: Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream
+
+**P1 / done.** Owner: Maintainer prepares source; founder reviews release and supplies additional Hall links. Dependencies: none.
+
+Next action: Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope.
+
+Acceptance:
+
+- Keep the Kaspa beginner guide and existing Hall credits intact; Kas.fyi is the final ecosystem card labeled Special thank you, and Kaspa Stream has its own thank-you card.
+- Provide native HTML resource links, useful categories, accessible search/reset and a no-JavaScript browsing path.
+- Record primary sources and editorial review dates; distinguish sourced listings from availability, audits and endorsements.
+- Expose the directory from Home, Kaspa and the Hall, with canonical metadata and sitemap coverage.
+- Run catalog, filter, metadata, continuity and relevant regression checks; record preview and physical-device limits honestly.
+
+Evidence/specification: [docs/KASPA-DIRECTORY.md](../../docs/KASPA-DIRECTORY.md), [docs/kaspa-directory.json](../../docs/kaspa-directory.json), [scripts/kaspa-directory.mjs](../../scripts/kaspa-directory.mjs), [tests/kaspa-directory.test.js](../../tests/kaspa-directory.test.js), [public/kaspa/directory/index.html](../../public/kaspa/directory/index.html), [public/thanks/index.html](../../public/thanks/index.html).
+
+## ECO-003: Expand KRC-20 project links and preserve token lookups for holders
+
+**P1 / done.** Owner: Maintainer curates source; founder reviews release; independent ecosystem coverage reviewer unassigned. Dependencies: ECO-002.
+
+Next action: Maintain the 104 released resources and holder-reference policy. Founder-approved ordering #237 is merged/deployed with exact public HTML verification; exchange expansion continues separately under ECO-004.
+
+Acceptance:
+
+- Review all 45 sourced candidates, including founder-requested KAEN, and retain every confirmed KRC-20 asset as a project listing or holder lookup with status separate from token existence.
+- Publish native project links where inspected and native matching token-record lookups for holders otherwise; label status and dated evidence without declaring coins dead.
+- Keep KRC-20 distinct from KCC-20/L2 versions, explain known migrations and the unresolved GHOADFI identity, and avoid active-team or exhaustive-coverage claims.
+- Record held links and insufficient evidence without labeling the entire project dead. Preserve existing directory and Hall credits; make no automated publication or visitor-side third-party call.
+- Verify data/HTML/schema parity, accepted activity dates and token/source identity, search/category shortcuts, metadata and continuity. Record actual CI/preview and browser limits.
+- Place both KRC-20 sections after the ten general Kaspa categories, with matching navigation, filter and structured-data order; preserve all 104 entry records.
+
+Evidence/specification: [docs/KRC20-DIRECTORY-REVIEW.md](../../docs/KRC20-DIRECTORY-REVIEW.md), [docs/krc20-directory-review.json](../../docs/krc20-directory-review.json), [docs/kaspa-directory.json](../../docs/kaspa-directory.json), [scripts/kaspa-directory.mjs](../../scripts/kaspa-directory.mjs), [tests/kaspa-directory.test.js](../../tests/kaspa-directory.test.js), [public/kaspa/directory/index.html](../../public/kaspa/directory/index.html).
+
+## UX-011: Public HQ global leaderboard and separate shared Mini standings
+
+**P1 / needs-evidence.** Owner: Maintainer prepares source and verification; founder approves release; independent abuse review unassigned. Dependencies: none.
+
+Next action: HQ #238 and Mini #13 are merged/deployed with source/HTTP/API acceptance. Verify rendered desktop/mobile behavior and independent abuse limits separately; public practice does not open private-ranked seasons or economic gates.
+
+Acceptance:
+
+- Provide a public /leaderboard/ in HQ with separate HQ and Mini filters and native entry points from Home, Play and My HQ; no sign-in to view.
+- Mini provides a Mini-only /leaderboard and an explicit public challenge opt-in; existing local scores are never imported or ranked.
+- Server owns Mini selection, grading, deadline and attempt state; atomic retries cannot change answers or create duplicate scores; equal scores share rank.
+- Keep HQ accounts, rewards, private-bank seasons and all economic/ownership holds separate; do not claim that public practice banks prevent lookup, bots or repeat browser identities.
+- Use the existing HQ Redis in an isolated namespace and a same-origin Mini proxy with HttpOnly identity cookie, origin checks, bounded quotas, expiry and self-removal. No provider secret is copied to Mini.
+- Test real Redis concurrency, expiry, authorization, mode/topic separation and removal races; run regression, metadata, security and continuity checks.
+
+Evidence/specification: [docs/PUBLIC-LEADERBOARD.md](../../docs/PUBLIC-LEADERBOARD.md), [server/mini/competition.js](../../server/mini/competition.js), [api/mini.js](../../api/mini.js), [public/leaderboard/index.html](../../public/leaderboard/index.html), [public/leaderboard/leaderboard.js](../../public/leaderboard/leaderboard.js), [tests/mini-competition.test.js](../../tests/mini-competition.test.js).
+
+## ECO-004: Add native-KAS exchanges, brokers and swaps to the Kaspa directory
+
+**P1 / done.** Owner: Maintainer prepares source and evidence; founder approves release; independent coverage reviewer unassigned. Dependencies: ECO-003.
+
+Next action: Maintain the 164-resource directory and dated provider evidence. #239 is merged/deployed with exact public HTML/CSS/JS verification; keep the 42-item held review queue and transfer/eligibility limits. Rendering/device and live transaction acceptance remain separate.
+
+Acceptance:
+
+- Add broadly researched native-KAS purchase links with provider-owned primary sources and honest editorial dates; spot markets, brokers/on-ramps and swaps have separate alphabetical sections.
+- Preserve all 104 prior resources, the KRC-20 holder policy, Hall credits and Kaspa-first category order. New purchase sections belong with the general Kaspa links.
+- Distinguish listing evidence from eligibility, execution, liquidity and native-network transfer availability. Exclude derivative-only, unavailable, sell-only or unconfirmed purchase routes; retain the review queue.
+- Serve all new links and context in native HTML with matching category/filter/schema output; add a buy-KAS shortcut and update directory search metadata. No affiliate links or visitor-side external fetches.
+- Run directory behavior/parity, metadata and continuity checks; record exact CI/preview evidence and actual rendering limits without certifying live trades or exhaustive global coverage.
+
+Evidence/specification: [docs/KASPA-EXCHANGE-REVIEW.md](../../docs/KASPA-EXCHANGE-REVIEW.md), [docs/kaspa-exchange-review.json](../../docs/kaspa-exchange-review.json), [docs/kaspa-directory.json](../../docs/kaspa-directory.json), [public/kaspa/directory/index.html](../../public/kaspa/directory/index.html), [docs/site-pages.json](../../docs/site-pages.json).
+
+## ECO-005: Publish Media and Builders resources for ecosystem listings and sharing
+
+**P1 / done.** Owner: Maintainer prepares source and checks; founder reviews release; independent builder/device acceptance unassigned. Dependencies: DOC-002.
+
+Next action: Maintain the released Media & Builders resources and exact original artwork. Rendered/device acceptance remains separate. No external listing submissions have been sent.
+
+Acceptance:
+
+- Provide a native public /media/ page with copy-ready project descriptions, current Alpha facts, original logo/share downloads, official source/document links and Geek Mini sharing resources.
+- Keep native labelled text available without JavaScript; reveal copy controls progressively, report actual clipboard success, select text on denial/unavailability and prevent overlapping writes.
+- Package exact published image bytes and a small README in a public ZIP; omit private outreach drafts, owner contact details and internal trackers. No new brand generation or screenshot claim.
+- Expose the route from Home, About and Free Tools with canonical metadata, sitemap and matching download/CollectionPage data. Preserve all 164 directory records, question content, backend, privacy and existing CSP.
+- Verify meaningful copy behavior, asset archive contents, metadata/internal links, supporting regressions and continuity. Record exact CI/preview source delivery and actual browser/device limits.
+
+Evidence/specification: [docs/MEDIA-BUILDERS.md](../../docs/MEDIA-BUILDERS.md), [public/media/index.html](../../public/media/index.html), [public/media/assets/media.js](../../public/media/assets/media.js), [public/media/assets/media.css](../../public/media/assets/media.css), [public/media/downloads/geek-protocol-brand-kit.zip](../../public/media/downloads/geek-protocol-brand-kit.zip), [tests/media-copy.test.js](../../tests/media-copy.test.js), [docs/site-pages.json](../../docs/site-pages.json).
+
+## ECO-006: Add Geek News with provider market, news and futures feeds
+
+**P1 / done.** Owner: Maintainer prepares and checks source; founder reviews merge; independent market-data reviewer unassigned. Dependencies: none.
+
+Next action: Maintain the released Geek News page and provider availability; retain physical-phone and independent market-data acceptance separately.
+
+Acceptance:
+
+- Provide /news/ with native Home links, canonical metadata and sitemap coverage.
+- Show Kaspa and major crypto spot prices, crypto/global market headlines and distinct USDT perpetual futures through attributed provider frames.
+- Keep one selected frame at a time, pause/resume, fixed allowlisted feed settings, account-origin isolation and native source fallbacks.
+- State provider delays/availability and distinguish spot from derivatives; no fabricated quotes, news, forecasts or paid API/AI plan.
+- Run functional and security/header checks; record actual browser, CI, preview, production and physical-device evidence separately.
+
+Evidence/specification: [docs/GEEK-NEWS.md](../../docs/GEEK-NEWS.md), [public/news/index.html](../../public/news/index.html), [public/news/assets/news.js](../../public/news/assets/news.js), [public/news/assets/news.css](../../public/news/assets/news.css), [tests/geek-news.test.js](../../tests/geek-news.test.js), [vercel.json](../../vercel.json), [server/crypto-markets.js](../../server/crypto-markets.js), [public/news/assets/crypto100.js](../../public/news/assets/crypto100.js), [tests/crypto100.test.js](../../tests/crypto100.test.js).
+
+## UX-012: Connect the first-player learning, quiz, results and leaderboard journey
+
+**P1 / needs-evidence.** Owner: Maintainer prepares source and checks; founder approves release; physical-phone and independent review unassigned. Dependencies: none.
+
+Next action: Verify the #243 address-viewing fix on its immutable preview, then founder review. Physical-phone and actual passkey/address mutation acceptance remain separate.
+
+Acceptance:
+
+- Lead the first-visit guide with learning, explicit Daily setup and saved progress; account and customization follow as optional steps. Preserve existing checklist IDs and migration.
+- Saved quiz results expose My HQ, continued learning and the matching public category/mode board. Focus result headings without repeating game writes.
+- Shared HQ category and Mini Speed focus links retain their filters; allowlist query values and keep boards separate.
+- Run client behavior and full regression checks. Record rendered preview evidence and actual device limits without touching existing production player progress.
+- Receiving-address GETs remain session-authenticated and private without requiring WebAuthn origin setup. Address mutations retain exact origin and proof checks; guest views explain that adding an address is optional.
+
+Evidence/specification: [public/start/index.html](../../public/start/index.html), [public/play/assets/game.js](../../public/play/assets/game.js), [public/leaderboard/leaderboard.js](../../public/leaderboard/leaderboard.js), [tests/start-client.test.js](../../tests/start-client.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/leaderboard-client.test.js](../../tests/leaderboard-client.test.js), [server/reward-addresses.js](../../server/reward-addresses.js), [public/assets/receiving-address.js](../../public/assets/receiving-address.js), [tests/passkeys.test.js](../../tests/passkeys.test.js), [tests/receiving-address-client.test.js](../../tests/receiving-address-client.test.js).
+
+## UX-013: Review all 17 open HQ reports and fix verified interface defects
+
+**P1 / needs-evidence.** Owner: Maintainer prepares source, tests and triage; founder approves merge; device/accessibility and independent content reviewers unassigned. Dependencies: UX-012.
+
+Next action: Verify the issue-review candidate, reconcile existing coverage, and review the PR. Keep content, translation, CI enhancement, migration and coordination tasks distinct from confirmed defects.
+
+Acceptance:
+
+- Read and classify every open report with evidence; do not label feature proposals or stale tickets as current bugs.
+- Provide immediate answer selection in Play, Practice and Quest without duplicate writes or client grading.
+- Bound initial Duel/Quest loading, provide static skeletons and manual recovery, and keep uncertain writes from automatic replay.
+- Give Lobby full/closed/offline states safe next actions and working reconnection; preserve server authority.
+- Align setup documentation and add contribution/mint guidance; enforce static image and landmark accessibility rules.
+- Run regression and exact-head CI; distinguish source, preview, production and actual-device acceptance.
+
+Evidence/specification: [docs/OPEN-ISSUE-REVIEW-2026-11-06.md](../../docs/OPEN-ISSUE-REVIEW-2026-11-06.md), [tests/issue-clients.test.js](../../tests/issue-clients.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/quest-client.test.js](../../tests/quest-client.test.js), [scripts/site-pages.mjs](../../scripts/site-pages.mjs).
+
+## UX-014: Make page typography calmer and easier to read
+
+**P1 / in-progress.** Owner: Maintainer prepares source and checks; founder reviews merge; physical-phone acceptance unassigned. Dependencies: none.
+
+Next action: Review News and directory heading fix: regular UI sans at 600 replaces inherited Impact; founder device comparison pending.
+
+Acceptance:
+
+- Keep restrained centered cyan title/timer glow and gold/cyan edge lighting; remove chromatic double-shadows, body/answer glow and foreground grain.
+- Reduce extra-bold weights and soften white text while preserving gold/cyan controls and keyboard focus.
+- Check representative phone and desktop layouts, site and continuity validation; record actual rendering limits.
+- News market headings use a regular UI sans-serif family rather than inherited Impact, with crisp text and restrained weights.
+
+Evidence/specification: [public/assets/styles.css](../../public/assets/styles.css), [public/assets/atmosphere.css](../../public/assets/atmosphere.css), [docs/READABILITY-POLISH.md](../../docs/READABILITY-POLISH.md), [public/news/assets/news.css](../../public/news/assets/news.css), [public/kaspa/directory/assets/directory.css](../../public/kaspa/directory/assets/directory.css).
+
+## ECO-007: Expand the ecosystem directory with KaspaDollar, social apps, builder resources and games
+
+**P1 / in-progress.** Owner: Maintainer prepares source and checks; founder reviews release. Dependencies: none.
+
+Next action: Review expanded PR #248 with 183 resources, distinct project/link-report drafts and exact-head checks. Games hub is separately prepared in #249.
+
+Acceptance:
+
+- Add the official HTTPS destination and project-specific source.
+- Label the proposed stablecoin in development; do not imply verified live operation or audit.
+- Regenerate directory and pass catalog, client, site and continuity checks.
+- Include founder-approved resource additions, a dedicated external Games category, and accurate coordination versus gaming descriptions.
+- Include five approved analytics, visualization and developer resources with primary evidence; separate editable project and broken-link drafts without automatic submission.
+
+Evidence/specification: [docs/KASPA-DIRECTORY.md](../../docs/KASPA-DIRECTORY.md), [docs/kaspa-directory.json](../../docs/kaspa-directory.json), [public/kaspa/directory/index.html](../../public/kaspa/directory/index.html).
+
+## UX-015: Give existing Geek modes a clear Games hub
+
+**P1 / in-progress.** Owner: Maintainer prepares source and checks; founder approves release; physical-device acceptance unassigned. Dependencies: none.
+
+Next action: Review hub PR, metadata and navigation checks, then inspect the preview on phone.
+
+Acceptance:
+
+- Group existing modes into Quick play, Adventures and With friends; show timing, pace/difficulty and access.
+- Links open setup screens only; no automatic game or room creation or new reward behavior.
+- Keep the gold/cyan Geek character with crisp reading text, responsive cards and keyboard focus.
+- Link from homepage and existing game navigation; register metadata and crawlable routes.
+
+Evidence/specification: [public/games/index.html](../../public/games/index.html), [public/games/assets/games.css](../../public/games/assets/games.css), [docs/GAMES-HUB.md](../../docs/GAMES-HUB.md).
+
+## UX-016: Add Brain Games for recall, arithmetic and attention practice
+
+**P1 / in-progress.** Owner: Maintainer builds and checks; founder approves release; physical-device acceptance unassigned. Dependencies: UX-015.
+
+Next action: Review updated #250 with the Geek visual finish; rendered desktop/phone acceptance remains separate.
+
+Acceptance:
+
+- Provide three untimed ten-round games with three difficulty levels, explicit start, answer feedback and exit/replay.
+- Prevent duplicate scoring; preserve leading-zero recall; explain every answer; no IQ or broad cognitive-benefit claims.
+- Keep only bounded per-game/level best scores on device, tolerate blocked storage and provide clearing. No account, server scores, XP or token rewards.
+- Add crawlable Brain Games cards, metadata, keyboard-friendly controls and narrow-screen styles; verify game and client behavior.
+- Apply the shared Geek game styling, GIGA practice tips and crisp cyan/gold accents; retain readable text, rank/suit labels and focus outlines.
+
+Evidence/specification: [docs/BRAIN-GAMES.md](../../docs/BRAIN-GAMES.md), [public/games/brain/](../../public/games/brain/), [tests/brain-games.test.js](../../tests/brain-games.test.js), [public/games/assets/geek-play.css](../../public/games/assets/geek-play.css).
+
+## UX-017: Add classic strategy and card games, starting with checkers and solitaire
+
+**P1 / in-progress.** Owner: Maintainer builds and checks; founder approves release; browser/physical-device acceptance unassigned. Dependencies: UX-015.
+
+Next action: Review updated #250 with the Geek visual finish; rendered desktop/phone acceptance remains separate.
+
+Acceptance:
+
+- Add beginner-friendly local two-player checkers with legal move hints, forced captures, multi-jumps, kings, wins and practice undo.
+- Add draw-one Klondike with seven columns, same-suit foundations, legal alternating runs, stock recycling, win detection and undo.
+- Make every action keyboard/tap usable without dragging; explain local-only unsaved state, draw conventions and restart.
+- Keep games free of account, wallet, leaderboard, XP and reward changes; verify engine rules and shipped-client behavior.
+- Apply the shared Geek game styling, GIGA practice tips and crisp cyan/gold accents; retain readable text, rank/suit labels and focus outlines.
+
+Evidence/specification: [docs/CLASSIC-GAMES.md](../../docs/CLASSIC-GAMES.md), [public/games/classics/](../../public/games/classics/), [public/games/checkers/index.html](../../public/games/checkers/index.html), [public/games/solitaire/index.html](../../public/games/solitaire/index.html), [tests/classic-games.test.js](../../tests/classic-games.test.js), [public/games/assets/geek-play.css](../../public/games/assets/geek-play.css).
+
+## UX-019: Add playable Geek Chess
+
+**P2 / needs-evidence.** Owner: Maintainer; founder release review. Dependencies: UX-017.
+
+Next action: PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 with founder approval. Production and phone acceptance tracked separately from merge.
+
+Acceptance:
+
+- Playable local chess with legal moves, special moves and promotion choices.
+- Geek branding and responsive board.
+- Rules tests and site/continuity checks pass.
+
+Evidence/specification: [docs/CLASSIC-GAMES.md](../../docs/CLASSIC-GAMES.md), [tests/chess.test.js](../../tests/chess.test.js).
+
+## UX-018: Fit Geek games to phone screens and compact active play
+
+**P1 / needs-evidence.** Owner: Maintainer fixes layout and checks; founder approves release; physical-phone acceptance unassigned. Dependencies: UX-016, UX-017.
+
+Next action: PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 with founder approval. Production and phone acceptance tracked separately from merge.
+
+Acceptance:
+
+- Remove forced 320px/540px board minima; fit eight checker squares and all seven solitaire columns to available width.
+- Overlap solitaire cards while keeping rank/suit labels and numbered destinations reachable.
+- Compact active-play headers, tips and controls on phones without clipping reading content; prevent mobile input auto-zoom.
+- Preserve gameplay and undo behavior; verify tests and report actual browser/device limits.
+
+Evidence/specification: [docs/MOBILE-GAMES.md](../../docs/MOBILE-GAMES.md), [public/games/assets/geek-play.css](../../public/games/assets/geek-play.css), [public/games/assets/games.css](../../public/games/assets/games.css), [public/games/classics/classics.js](../../public/games/classics/classics.js), [public/games/brain/brain.js](../../public/games/brain/brain.js).
+
+## UX-020: Unify the Geek Games visual feel and play controls
+
+**P2 / needs-evidence.** Owner: Maintainer; founder release review. Dependencies: UX-018, UX-019.
+
+Next action: PR #253 merged as 099bb78022bc579dfee72b134d97e47fe868fcc4 with founder approval. Production and phone acceptance tracked separately from merge.
+
+Acceptance:
+
+- Crisp typography with gold/cyan accents across the games hub, Brain Lab and classics.
+- Responsive boards, consistent controls, compact active play and useful local-game navigation.
+- Focused gameplay, site and continuity checks pass; rendered-device acceptance recorded separately.
+
+Evidence/specification: [docs/GAME-POLISH.md](../../docs/GAME-POLISH.md).
+
+## GAME-002: Online chess and checkers lobbies with accepted game requests
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: UX-019, UX-020.
+
+Next action: Founder approved Merge November 8. Merge #254 after refreshed exact-head CI; record the merge/deployment result in PR #254, with two-device acceptance still separate.
+
+Acceptance:
+
+- Public and invite-only lobbies with request, accept, decline and cancellation.
+- Authenticated server-authoritative chess/checkers moves with atomic seat selection and revision checks.
+- Reconnect, draw consent, resignation, private-room visibility and multiplayer-client tests pass.
+- Separate-browser/device acceptance and exact-head CI recorded separately.
+
+Evidence/specification: [docs/CLASSIC-MULTIPLAYER.md](../../docs/CLASSIC-MULTIPLAYER.md), [tests/classic-online-api.test.js](../../tests/classic-online-api.test.js), [tests/classic-online-client.test.js](../../tests/classic-online-client.test.js).
+
+## UX-021: Sculpted chess pieces, raised checkers and collector-style solitaire cards
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: UX-020.
+
+Next action: Review the tabletop-art preview; verify rendered phone layout and approve release separately.
+
+Acceptance:
+
+- Distinct local vector chess artwork in gold/cyan shared by local and online play.
+- Raised checker tokens, machined board rims and polished card faces/backs.
+- Gameplay controls, accessible square/card labels and legal-move indicators remain functional.
+- Focused gameplay and site/continuity/security checks pass; browser/device acceptance stays separate.
+
+Evidence/specification: [docs/TABLETOP-ART.md](../../docs/TABLETOP-ART.md), [public/games/assets/tabletop.css](../../public/games/assets/tabletop.css), [public/games/assets/pieces.js](../../public/games/assets/pieces.js).
+
+## ECO-008: Education directory with explicit learning utility-token projects
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: ECO-003.
+
+Next action: Review PR #256: GEEK/BMT token-network and utility-state cards plus six learning resources; founder approval required for merge.
+
+Acceptance:
+
+- Education & Learning appears in directory navigation, category filter and crawlable cards.
+- Geek Protocol listed alongside independently sourced Kaspa learning projects.
+- L1, L2, off-chain resources and historical program guidelines are accurately distinguished.
+- Directory, site and continuity checks pass.
+
+Evidence/specification: [docs/EDUCATION-DIRECTORY.md](../../docs/EDUCATION-DIRECTORY.md), [docs/kaspa-directory.json](../../docs/kaspa-directory.json).
+
+## GAME-003: Nine strategy and puzzle games, including Battle Geek and Peg Quest
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: GAME-002, UX-021.
+
+Next action: Review Tower of Geek rename and six difficulty levels in preview; existing nine-game release #258 is merged. Browser/phone visual acceptance remains open.
+
+Acceptance:
+
+- Geek Tac Toe, Dots & Boxes, Battle Geek, Connect Four, Reversi, Codebreaker, Hanoi, Sudoku and Peg Quest are playable with clear rules and Geek styling.
+- Five two-player games work through existing authoritative lobby/request/reconnect flow.
+- Battle Geek opposing fleets stay server-only online; local mode uses an explicit handoff curtain.
+- Rules, client and real-Redis integration tests pass; no account/XP/token reward changes.
+- Standard 10×10 five-ship fleet; selectable Dots sizes; terminal result, reduced-motion-safe celebration, replay, exit and board review.
+
+Evidence/specification: [docs/STRATEGY-PUZZLE-GAMES.md](../../docs/STRATEGY-PUZZLE-GAMES.md), [tests/strategy-games.test.js](../../tests/strategy-games.test.js), [tests/strategy-client.test.js](../../tests/strategy-client.test.js), [tests/classic-online-api.test.js](../../tests/classic-online-api.test.js).
+
+## UX-022: Homepage pathways and shared navigation polish
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: none.
+
+Next action: Review the Vercel preview, especially compact navigation and phone spacing. Local browser could not connect to the preview host.
+
+Acceptance:
+
+- Visible Learn, Games and News paths while preserving the first quiz and lesson choices.
+- Readable type, gold/cyan edge accents, consistent panels and adaptive layouts.
+- Compact menu at tablet widths; existing Escape, outside-click and link-close behaviors remain.
+- Site and continuity checks pass; browser and physical-device acceptance remain separate.
+
+Evidence/specification: [docs/SITE-POLISH-2026-11-10.md](../../docs/SITE-POLISH-2026-11-10.md), [public/assets/home.css](../../public/assets/home.css), [public/assets/styles.css](../../public/assets/styles.css).
+
+## UX-023: More optional Grid easter eggs
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: none.
+
+Next action: Review expanded Stray signal terminal in preview; founder merge review and rendered device acceptance remain open.
+
+Acceptance:
+
+- Riddles, hints, fortunes, launch art, route signals and hidden command messages work without requests or saved player state.
+- Terminal remains closed until opened, with native keyboard/touch controls and reduced-motion support.
+- No global input hooks, rewards or timed-game overlays; existing rewarded hunt remains separate.
+
+Evidence/specification: [docs/GRID-EASTER-EGGS.md](../../docs/GRID-EASTER-EGGS.md), [tests/easter-eggs.test.js](../../tests/easter-eggs.test.js).
+
+## UX-024: Minimal cosmic glitch feedback and Geek code accents
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: none.
+
+Next action: Review together with UX-023 in #261 preview; rendered phone acceptance remains open.
+
+Acceptance:
+
+- Brief edge-only feedback on selected discovery controls without changing navigation or labels.
+- Sparse decorative Kaspa/Geek code accents, bounded animation and reduced-motion/forced-color support.
+- No account, answer, board or timed gameplay input hooks; no requests, storage or rewards.
+
+Evidence/specification: [docs/COSMIC-GLITCH.md](../../docs/COSMIC-GLITCH.md), [tests/cosmic-glitch.test.js](../../tests/cosmic-glitch.test.js).
+
+## UX-025: Clean Geek branding and black installed-app launch
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: none.
+
+Next action: Review new vector logo and installed-app manifest in preview. Physical Android launch/reinstall acceptance remains open.
+
+Acceptance:
+
+- New clean logo replaces the old watermark-bearing logo across site references and compatibility bytes.
+- Black app manifest background/theme, standalone launch, local 192/512 and maskable icons, Apple touch icon.
+- Metadata generation remains idempotent; no service-worker caching of private/session/game data.
+
+Evidence/specification: [docs/APP-LAUNCH-BRAND.md](../../docs/APP-LAUNCH-BRAND.md), [tests/app-brand.test.js](../../tests/app-brand.test.js).
+
+## UX-026: Kaspa space, planet and code-rain full-page background
+
+**P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: UX-024.
+
+Next action: Review the PR preview on desktop and phone; confirm readability, the faint planet on a game page, and game/quiz dimming (no footer toggle; terminal matrix commands are session-only). Physical-phone acceptance open.
+
+Acceptance:
+
+- Fixed full-viewport layered scene behind content (nebula, planet, stars, rain), pointer-events none, aria-hidden, low opacity.
+- Capped ~24fps, paused when hidden, reduced-motion still frames, bounded DPR/columns on phones; planet is a still image on game, quiz and operator pages.
+- No footer toggle and no localStorage persistence; terminal matrix commands are session-only; rain off on individual game boards and dim/still on quiz and lobby routes; planet on every page.
+- No requests, player records, rewards or gameplay input hooks; CSP unchanged.
+
+Evidence/specification: [docs/KASPA-MATRIX.md](../../docs/KASPA-MATRIX.md), [tests/kaspa-matrix.test.js](../../tests/kaspa-matrix.test.js).
+
+## UX-027: Data-driven holiday catalog with Kaspa and crypto dates
+
+**P2 / in-progress.** Owner: Maintainer; founder preview. Dependencies: none.
+
+Next action: Gee previews the draft catalog and compact greeting before saving any Appearance mode. The saved default remains Off. A visual refresh of the existing twelve holidays is separate.
+
+Acceptance:
+
+- One catalog drives windows, priority, motifs and greetings. Automatic overlaps resolve by priority, then shortest window, then id. America/Detroit and the public { id } payload stay unchanged.
+- Verified Kaspa and crypto windows are selectable. Satoshi's April 5 date is manual-only. Halloween's automatic window ends October 30. Geek Protocol's Birthday is June 21–23 at priority 90, and its hash matches server/geek-deployment.js.
+- The portrait badge and orphan greeting selector are gone. One compact greeting clears on Off, an unknown id or a failed read. Holiday decorations stay static, honor prefers-reduced-motion, and do not cover an active quiz or individual game route.
+- Appearance default remains Off. Saves stay allowlisted and audited. No payout, ranked-bank or production setting change.
+
+Evidence/specification: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/holiday-calendar.js](../../public/assets/holiday-calendar.js), [public/assets/holiday-theme.js](../../public/assets/holiday-theme.js), [tests/appearance.test.js](../../tests/appearance.test.js).
+
+## UX-028: Geek stroke marks and distinct holiday palettes
+
+**P2 / in-progress.** Owner: Maintainer; founder preview. Dependencies: UX-027.
+
+Next action: Gee previews the stroke ornaments and the separated civic palettes before any Appearance save. The saved default remains Off.
+
+Acceptance:
+
+- Public ornaments are static in-repo SVG marks named by the catalog. No remote image or operator-supplied CSS is accepted.
+- Each holiday, including the original twelve, has its own color tokens. The four civic days are visually distinct. Greetings stay the catalog sentences.
+- Reduced motion clears ornament tilt. Active quizzes, playing pages, and individual game routes do not receive the ornament layer.
+- Appearance default remains Off. The public payload remains an id. Code rain behavior is unchanged.
+
+Evidence/specification: [docs/HOLIDAY-THEMES.md](../../docs/HOLIDAY-THEMES.md), [public/assets/holiday-marks.js](../../public/assets/holiday-marks.js), [public/assets/holiday-theme.css](../../public/assets/holiday-theme.css), [tests/appearance.test.js](../../tests/appearance.test.js).
+
+## GAME-004: Ongoing matches, My Games and turn alerts
+
+**P2 / in-progress.** Owner: Maintainer; founder release/device review. Dependencies: none.
+
+Next action: Released in #266. Preserve no-expiry matches/My Games and security caps; GAME-005 implements device push. Phone acceptance remains open.
+
+Acceptance:
+
+- Atomic per-player capacity of 10 waiting/playing rooms, released on finish and expiry.
+- Waiting invitations expire after 24 hours or 30 days; accepted matches have no time expiry and remain in My Games.
+- Your-turn badges and opt-in page-open notifications deduplicate per move; closed-app limitations are explicit.
+- Real Redis integration and client tests pass without board/private-fleet leakage.
+
+Evidence/specification: [docs/ONGOING-GAMES.md](../../docs/ONGOING-GAMES.md), [tests/classic-online-api.test.js](../../tests/classic-online-api.test.js), [tests/classic-online-client.test.js](../../tests/classic-online-client.test.js).
+
+## APP-001: Android test package and device acceptance
+
+**P2 / in-progress.** Owner: Maintainer; founder device review. Dependencies: none.
+
+Next action: Released package/signing preparation in #265. Owner protected environment, reviewer, dedicated signing secrets and real certificate association remain required before stable signed build/device acceptance.
+
+Acceptance:
+
+- Reproducible separately identified debug wrapper uses reviewed site and supplied logo.
+- APK compiles and installs; sign-in, Back, game/lobby and network behavior checked on phone.
+- No release secrets or placeholder Digital Asset Links; Play submission stays separate.
+
+Evidence/specification: [android/README.md](../../android/README.md), [.github/workflows/android-test.yml](../../.github/workflows/android-test.yml).
+
+## GAME-005: Opt-in closed-lounge turn notifications and durable delivery
+
+**P2 / in-progress.** Owner: Maintainer; founder phone acceptance. Dependencies: GAME-004.
+
+Next action: #271 is merged/deployed; canonical retry follow-up uses a direct slash URL. Production public-key settings, two-player move/turn badge and no-expiry behavior passed. Complete explicit device permission and actual closed-lounge phone delivery acceptance.
+
+Acceptance:
+
+- No permission prompt or subscription without explicit device opt-in.
+- Encrypted device delivery while lounge closed; bounded retries, expired-device removal and current-account/turn validation.
+- No time expiry added to accepted games; private credentials/endpoints never published.
+- Real Redis and worker regression checks pass; actual phone delivery is a separate acceptance item.
+
+Evidence/specification: [docs/WEB-PUSH-TURN-ALERTS.md](../../docs/WEB-PUSH-TURN-ALERTS.md), [tests/classic-push.test.js](../../tests/classic-push.test.js), [tests/game-push-worker.test.js](../../tests/game-push-worker.test.js).
+
+## OPS-004: Record default code ownership and limited weekly dependency updates
+
+**P2 / in-progress.** Owner: Maintainer; founder reviews the pull request. Dependencies: none.
+
+Next action: Review the repository-hygiene pull request. Merging it does not enable rulesets, an SLA, a bounty, or an audit. Product pickup remains BANK-009.
+
+Acceptance:
+
+- CODEOWNERS has one default rule for the GitHub user GEEKProtocol0110 and names no team.
+- Dependabot is weekly and limited to npm at /, /android, and /workers/testnet, plus GitHub Actions at /, each with an open-pull-request limit of 5.
+- Minor and patch updates are grouped. Major updates stay ungrouped. Ecosystems without a lockfile or manifest are omitted.
+- SECURITY.md states that private vulnerability reporting is enabled and still states that there is no independent audit. No SLA, bounty, or audit claim is added.
+- No application, game, lesson, wallet, question-bank, or repository-setting change is included.
+
+Evidence/specification: [.github/CODEOWNERS](../../.github/CODEOWNERS), [.github/dependabot.yml](../../.github/dependabot.yml), [SECURITY.md](../../SECURITY.md).
+
+## CHAIN-006: Port the automatic payout worker toward mainnet GEEK
+
+**P1 / in-progress.** Owner: Maintainer; founder controls explicit enable and the signing secret. Dependencies: CHAIN-004.
+
+Next action: Review draft #282 on top of #278: journal preparation is one Lua update, and a terminal stuck mark writes the job and stuck:v1 together. A lost prepare acknowledgment is recovered by the next claim. No merge, deployment, or enable is implied. Settlement and withdrawals remain disabled. This is an internal source candidate, not an independent audit.
+
+Acceptance:
+
+- The mainnet worker reuses the CHAIN-004 journaled KRC-20 commit/reveal path for current GEEK, with the pinned public hot-wallet receive address.
+- Daily pays 100 GEEK once. A Gauntlet round pays ROUND_CONFIG.reward times the server-graded correct count. Zero correct pays nothing. One correct answer in round 10 pays 1800, and 18000 is rejected for that proof. Retries do not pay again.
+- Temporary caps are 100,000 GEEK globally and 46,400 GEEK per player and per receiving address. The active index counts outstanding jobs only. A journal unconfirmed for six hours is stuck and does not block later jobs or receive a second journal.
+- Admission and signing require production plus the explicit flag. Preview cannot pay. settlementEligible and withdrawalsEnabled stay false. No signing key is committed.
+- The job mac is an explicit ordered field list that includes each proof field. An already signed earning cannot be signed again. A record that fails decoding or the mac check is quarantined and logged, and the earning lock is kept.
+- Focused tests and the existing testnet signer checks pass. A real mainnet transfer is not claimed.
+- Journal preparation commits the replay marker and signed bytes together after checking the current lease and job snapshot. Rejected writes and lost acknowledgments preserve safe recovery without a new journal for an accepted earning. A lost prepare acknowledgment is recovered by the next claim. Re-sending that prepare returns 409.
+- Marking a job stuck writes the stuck state and its stuck:v1 membership in one update that still checks the lease and job snapshot. A failed update does not leave the job stuck and absent from that list. The PAYOUT_UNCONFIRMED log follows a successful update.
+
+Evidence/specification: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [server/mainnet-payout.js](../../server/mainnet-payout.js), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs), [workers/mainnet/signer.mjs](../../workers/mainnet/signer.mjs), [workers/mainnet/process.mjs](../../workers/mainnet/process.mjs), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js), [workers/mainnet/check-signing.mjs](../../workers/mainnet/check-signing.mjs), [workers/mainnet/job-mac.mjs](../../workers/mainnet/job-mac.mjs).
+
+## MINT-001: Preserve local mint request references across reloads
+
+**P1 / in-progress.** Owner: Maintainer; founder reviews release. Dependencies: none.
+
+Next action: Review the source candidate and preview, then perform actual-browser and Kasware device acceptance. No automatic retry or confirmation claim.
+
+Acceptance:
+
+- Save at most 100 recent public-address/request-reference records locally; display only the connected Mainnet wallet history.
+- Persist an unknown-outcome marker before wallet handoff; never resume a queue or restore approval after reload.
+- Validate stored display data, use fixed explorer links and text rendering, and explain local-storage failure without preventing the wallet flow.
+- Allow clearing the connected wallet history; clearing cannot cancel or repeat a transaction.
+- Focused reload, interrupted-request, wallet/network-isolation, invalid-data and blocked-storage tests pass; physical-wallet acceptance is tracked separately.
+
+Evidence/specification: [docs/MINT-RECEIPT-HISTORY.md](../../docs/MINT-RECEIPT-HISTORY.md), [public/mint/assets/mint.js](../../public/mint/assets/mint.js), [tests/mint-client.test.js](../../tests/mint-client.test.js).
+
 ## SEC-010: Serve future ranked questions and answers from private storage; treat published banks as exposed
 
 **P0 / in-progress.** Owner: Maintainer; founder selects private storage and approves rollout. Dependencies: none.
 
-Next action: Review the pre-start refusal follow-up stacked on #231. Then reconcile the old private-bank assembly with current main, obtain the approved immutable artifact and design the isolated rehearsal. Do not cut over production or enable rewards.
+Next action: Review current-HQ integration on main dbdb7f0 plus held bank/start-guard 73f80ce and the local synthetic rehearsal. Obtain approved immutable artifact/editorial/capacity evidence and define a bounded hosted rehearsal before any production cutover. Payouts and Preview guards remain held.
 
 Acceptance:
 
@@ -881,4 +1442,4 @@ Acceptance:
 - Deferred answer recovery confirms saving without showing correctness before round lock.
 - Before a configured private season begins, refuse new private ranked starts without a question, run, season pin or gameplay/profile mutation; read-only Season 0 history remains available.
 
-Evidence/specification: [docs/MIGRATION-private-ranked-bank.md](../../docs/MIGRATION-private-ranked-bank.md), [server/question-source.js](../../server/question-source.js), [server/questions.js](../../server/questions.js), [tests/private-ranked-bank.test.js](../../tests/private-ranked-bank.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/profile-client.test.js](../../tests/profile-client.test.js), [api/leaderboard.js](../../api/leaderboard.js), [docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md](../../docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md).
+Evidence/specification: [docs/MIGRATION-private-ranked-bank.md](../../docs/MIGRATION-private-ranked-bank.md), [server/question-source.js](../../server/question-source.js), [server/questions.js](../../server/questions.js), [tests/private-ranked-bank.test.js](../../tests/private-ranked-bank.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/profile-client.test.js](../../tests/profile-client.test.js), [api/leaderboard.js](../../api/leaderboard.js), [docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md](../../docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md), [docs/PRIVATE-BANK-LOCAL-REHEARSAL.md](../../docs/PRIVATE-BANK-LOCAL-REHEARSAL.md), [scripts/private-bank-rehearsal.mjs](../../scripts/private-bank-rehearsal.mjs), [tests/private-bank-rehearsal.test.js](../../tests/private-bank-rehearsal.test.js), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js).

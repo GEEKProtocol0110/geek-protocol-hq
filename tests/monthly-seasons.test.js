@@ -840,11 +840,11 @@ test('catch-all: an unknown error logs only its name and code, never message, pa
   let res;
   const logs = await captureLogs(() => { res = fakeRes(); handleApiError(res, error); });
   assert.equal(res.statusCode, 500);
-  assert.deepEqual(logs, [['Geek API error', 'Error', 'ENOENT']]);
+  assert.deepEqual(logs, [['Geek API error', JSON.stringify({ name: 'Error', code: 'ENOENT' })]]);
   assertCleanLogs(logs, ['/secret', 'kaspa-fake.json', 'FAKE-CATCHALL', 'no such file']);
   const weird = new Error('Fake bank text'); weird.name = 'Bad /secret name'; weird.code = { path: '/secret' };
   const logs2 = await captureLogs(() => handleApiError(fakeRes(), weird));
-  assert.deepEqual(logs2, [['Geek API error', 'UNKNOWN', 'UNKNOWN']]);
+  assert.deepEqual(logs2, [['Geek API error', JSON.stringify({ name: 'Error', code: 'UNCLASSIFIED' })]]);
 });
 
 

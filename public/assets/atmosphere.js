@@ -1,5 +1,3 @@
-import { holidayById } from './holiday-calendar.js';
-
 // Decoration only: no player records, game state, telemetry or external resources.
 export const initAtmosphere = () => {
   // Never place decorative text in normal document flow when its CSS is absent.
@@ -22,17 +20,6 @@ export const initAtmosphere = () => {
     code.textContent = '01100111  01100101\n{ curiosity: true }\nlearn.connect();\n01001011  01000001\n// discover something';
     scene.append(code);
   }
-  // Seasonal greetings remain available without putting characters on every page.
-  const note = document.createElement('aside'); note.className = 'hq-seasonal-note'; note.hidden = true;
-  const greeting = document.createElement('p'); greeting.className = 'hq-holiday-greeting'; note.append(greeting);
-  const intro = main.firstElementChild;
-  if (intro) intro.after(note); else main.append(note);
-  const syncHoliday = () => {
-    const holiday = holidayById(document.documentElement.dataset.holidayTheme);
-    note.hidden = !holiday;
-    greeting.textContent = holiday ? `${holiday.icon} ${holiday.greeting}` : '';
-  };
-  document.addEventListener('geek:holiday-change', syncHoliday); syncHoliday();
 };
 
 initAtmosphere();

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-02",
+  "updatedAt": "2026-11-13",
   "records": [
     {
       "id": "DR-001",
@@ -178,7 +178,7 @@
       "status": "founder-direction",
       "title": "500 character concepts, each with five rarity artworks",
       "decision": "Plan 500 Geek character concepts with Common, Rare, Epic, Legendary and Mythic artwork for every concept: 2,500 distinct planned images. This corrects the earlier interpretation of 500 total editions. Artwork count does not determine collectible copies per artwork, mint supply or acquisition allocations.",
-      "basis": "Founder clarified October 15, 2026: “So you see the direction I went with the 500 geek. 2500 different images.” Three supplied five-tier sets demonstrate the intended structure. Runtime manifest migration remains COLL-001 work. Recovered into main during October 16 PR reconciliation; later fourth-set intake remains preserved in paused PR #120. No art production or runtime migration resumed.",
+      "basis": "Founder clarified October 15, 2026: \u201cSo you see the direction I went with the 500 geek. 2500 different images.\u201d Three supplied five-tier sets demonstrate the intended structure. Runtime manifest migration remains COLL-001 work. Recovered into main during October 16 PR reconciliation; later fourth-set intake remains preserved in paused PR #120. No art production or runtime migration resumed.",
       "evidence": [
         "docs/GEEK-500-COLLECTION-STRUCTURE.md",
         "docs/PR-RECONCILIATION.md",
@@ -381,7 +381,7 @@
       "status": "implementation-choice",
       "title": "Use bounded Technology review without a blanket science purge",
       "decision": "Apply BANK-009 to a risk-selected Technology sample. Retire unrelated clinical/film objectives and malformed option sets; keep engineering, computing and instrument-application objectives with item-level primary evidence. Do not infer that all basic science or instrument anatomy is off-category, and do not transfer unverified facts into another active category. Corrections use new identities with old grading/aliases preserved.",
-      "basis": "DR-029 and the maintained next action authorize thorough category/context and factual review. This is the maintainer’s scoped implementation choice, not a new founder taxonomy approval or full-bank certification.",
+      "basis": "DR-029 and the maintained next action authorize thorough category/context and factual review. This is the maintainer\u2019s scoped implementation choice, not a new founder taxonomy approval or full-bank certification.",
       "evidence": [
         "docs/TECHNOLOGY-QUESTION-REVIEW-2026-10-28.md",
         "server/question-audit/technology-2026-10-28.json"
@@ -400,6 +400,119 @@
         "docs/WHITEPAPER-TIMER-REVIEW-2026-11-02.md"
       ],
       "recordedAt": "2026-11-02",
+      "supersedes": null
+    },
+    {
+      "id": "DR-032",
+      "status": "implementation-choice",
+      "title": "Use isolated provider feeds for Geek News",
+      "decision": "Provide Geek News with one selected TradingView cross-origin iframe at a time. Fixed configurations reproduce the current official bootstrap iframe format, retain attribution and canonical public page URI, and send no account or query-string data. Keep local scripts and account-origin policies; permit the provider frame only under /news/. Preserve direct sources and explain data delays. No paid API account, AI reporting or trading flow is introduced.",
+      "basis": "Founder November 6 requests Geek News with live markets, crypto world news and futures. Futures are interpreted as separately labeled crypto perpetual derivatives.",
+      "evidence": [
+        "docs/GEEK-NEWS.md",
+        "public/news/assets/news.js",
+        "tests/geek-news.test.js",
+        "vercel.json"
+      ],
+      "recordedAt": "2026-11-06",
+      "supersedes": null
+    },
+    {
+      "id": "DR-033",
+      "status": "implementation-choice",
+      "title": "Provide native top-100 crypto rankings",
+      "decision": "Use a fixed public CoinGecko market-cap endpoint through the existing widget function to provide exactly 100 native searchable USD rows. Cache snapshots for five minutes and show unavailable on invalid/partial/provider failure; retain attribution, fetch-time limits, no account data and no background polling. TradingView frames continue for other feeds. This replaces the no-news-API portion of DR-032 for crypto rankings only.",
+      "basis": "Founder requests more crypto markets, like the top 100. Direct testing of the legacy crypto screener returned no matches.",
+      "evidence": [
+        "docs/GEEK-NEWS.md",
+        "server/crypto-markets.js",
+        "public/news/assets/crypto100.js",
+        "tests/crypto100.test.js"
+      ],
+      "recordedAt": "2026-11-06",
+      "supersedes": "DR-032"
+    },
+    {
+      "id": "DR-034",
+      "status": "founder-direction",
+      "title": "Pause A.C.E. while continuing game work",
+      "decision": "Pause A.C.E. development and live AI activation until the founder explicitly resumes it. Continue the approved strategy/puzzle games.",
+      "basis": "Founder directed Pause ACE and then approved all nine proposed strategy/puzzle games.",
+      "evidence": [
+        "docs/STRATEGY-PUZZLE-GAMES.md"
+      ],
+      "recordedAt": "2026-11-09",
+      "supersedes": null
+    },
+    {
+      "id": "DR-035",
+      "status": "implementation-choice",
+      "title": "Drive holiday appearance from one priority catalog",
+      "decision": "Keep Appearance Off by default. Resolve automatic windows in America/Detroit by priority, then shortest window, then id. Add the verified Kaspa and crypto decoration windows, end Halloween's automatic window on October 30, and keep Satoshi's April 5 date manual-only. Add Geek Protocol's Birthday as June 21\u201323, priority 90, using the deployment hash already pinned in server/geek-deployment.js. Do not recolor the existing twelve holidays or enable a production mode from this change.",
+      "basis": "Reviewed holiday-theme plan against main 01e79787. On November 13, 2026 the founder named the KRC-20 deploy, June 22 in America/Detroit, as the Geek Protocol birthday.",
+      "evidence": [
+        "docs/HOLIDAY-THEMES.md",
+        "public/assets/holiday-calendar.js",
+        "tests/appearance.test.js"
+      ],
+      "recordedAt": "2026-11-13",
+      "supersedes": null
+    },
+    {
+      "id": "DR-036",
+      "status": "implementation-choice",
+      "title": "Draw holiday ornaments as in-repo Geek strokes",
+      "decision": "Replace public unicode ornaments with static SVG marks from the repo, and apply distinct catalog color tokens to every holiday, including the original twelve. Keep greetings factual, decorations off game boards, and Appearance Off until the founder saves a mode.",
+      "basis": "November 13, 2026 founder request for a more Geek holiday look, after the catalog draft. This supersedes only the do-not-recolor limit in DR-035.",
+      "evidence": [
+        "docs/HOLIDAY-THEMES.md",
+        "public/assets/holiday-marks.js",
+        "public/assets/holiday-theme.css"
+      ],
+      "recordedAt": "2026-11-13",
+      "supersedes": "DR-035"
+    },
+    {
+      "id": "DR-037",
+      "status": "implementation-choice",
+      "title": "Port the GEEKT payout worker toward mainnet GEEK while settlement stays off",
+      "decision": "Reuse the tested CHAIN-004 journaled signer for current KRC-20 GEEK. Pay 100 GEEK for one qualifying Daily and the perfect-round ladder once per finished Gauntlet round, with a temporary 100,000 GEEK daily cap. Keep settlementEligible and withdrawalsEnabled false, and keep both operational flags false. The signing key stays out of the repository and is added later in the Vercel or GitHub secret UI.",
+      "basis": "Founder confirmed the reward schedule on 2026-11-12 and asked for a draft port of the tested worker with payouts off.",
+      "evidence": [
+        "docs/MAINNET-GEEK-PAYOUT.md",
+        "server/mainnet-payout.js",
+        "workers/mainnet/schedule.mjs"
+      ],
+      "recordedAt": "2026-11-12",
+      "supersedes": null
+    },
+    {
+      "id": "DR-038",
+      "status": "founder-direction",
+      "title": "Bind mainnet Gauntlet GEEK to the graded correct count",
+      "decision": "Pay Gauntlet GEEK as ROUND_CONFIG.reward times the server-graded correct count, using integer max times correctCount divided by 10. One correct answer in round 10 is 1800. The perfect-round maximum is not payable for a smaller count. Zero correct admits no job. Daily remains 100 once. Add temporary 46,400 GEEK player and receiving-address daily caps beside the 100,000 global cap. Keep settlement flags false and require production before admission or signing.",
+      "basis": "Founder confirmed the per-correct Gauntlet rule on 2026-11-12 after the flat perfect-round amount was set aside. Security review required the amount to match that job's graded proof.",
+      "evidence": [
+        "docs/MAINNET-GEEK-PAYOUT.md",
+        "workers/mainnet/schedule.mjs",
+        "workers/mainnet/signer.mjs",
+        "tests/mainnet-payout.test.js"
+      ],
+      "recordedAt": "2026-11-12",
+      "supersedes": "DR-037"
+    },
+    {
+      "id": "DR-039",
+      "status": "implementation-choice",
+      "title": "Retain bounded local mint references without restoring authority",
+      "decision": "Supersede the page-memory-only mint receipt implementation with up to 100 browser-local request markers and public transaction references. No keys, raw responses, approvals, queue restoration or confirmation authority may be persisted. Show storage scope and a per-wallet clear action.",
+      "basis": "Founder authorized continuing the announced mint receipt history follow-up. Existing non-custodial and economic constraints remain.",
+      "evidence": [
+        "docs/MINT-RECEIPT-HISTORY.md",
+        "docs/MINT-PROTOCOL.md",
+        "tests/mint-client.test.js"
+      ],
+      "recordedAt": "2026-11-13",
       "supersedes": null
     }
   ]

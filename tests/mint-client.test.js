@@ -17,7 +17,7 @@ const live = () => ({
 
 const settle = () => new Promise((resolve) => setImmediate(resolve));
 
-const mount = async ({ wallet = {}, clipboard, version = '0.8.50.3' } = {}) => {
+const mount = async ({ wallet = {}, clipboard, version = '0.8.50.3', storage = new Map(), storageBlocked = false } = {}) => {
   const elements = new Map();
   const listeners = new Map();
   const intervals = [];
@@ -29,18 +29,21 @@ const mount = async ({ wallet = {}, clipboard, version = '0.8.50.3' } = {}) => {
   };
   const element = (id) => {
     if (!elements.has(id)) elements.set(id, {
-      textContent: '', disabled: false, checked: false, hidden: false, style: {}, dataset: {},
+      ...makeNode(), textContent: '', disabled: false, checked: false, hidden: false, style: {}, dataset: {},
       attributes: {}, setAttribute(name, value) { this.attributes[name] = value; }, removeAttribute(name) { delete this.attributes[name]; },
       parentElement: { setAttribute() {} },
       addEventListener: (event, handler) => listeners.set(`${id}:${event}`, handler)
     });
     return elements.get(id);
   };
+  const makeNode = () => ({ textContent: '', children: [], append(child) { this.children.push(child); }, replaceChildren() { this.children = []; } });
   const document = {
+    createElement: makeNode,
     hidden: false, getElementById: element,
     addEventListener: (event, handler) => listeners.set(`document:${event}`, handler)
   };
   const window = {
+    localStorage: { getItem(key) { if (storageBlocked) throw new Error('Storage blocked'); return storage.get(key) || null; }, setItem(key, value) { if (storageBlocked) throw new Error('Storage blocked'); storage.set(key, value); } },
     GeekWallet: { snapshot: () => ({ installed: true, connected: true, network: 'kaspa_mainnet', address: 'kaspa:test', ...wallet }) },
     kasware: {
       getNetwork: async () => 'kaspa_mainnet', getAccounts: async () => ['kaspa:test'],
@@ -56,7 +59,7 @@ const mount = async ({ wallet = {}, clipboard, version = '0.8.50.3' } = {}) => {
   } });
   await settle();
   return Object.assign(ui, {
-    element, document, walletCalls, requests,
+    element, document, walletCalls, requests, storage,
     chooseCount: (value) => listeners.get('mint-count:change')({currentTarget:{value:String(value)}}),
     changeProvider: () => { window.kasware = {...window.kasware}; },
     walletChange: (detail) => listeners.get('document:geek:wallet')({ detail }),
@@ -404,4 +407,67 @@ test('clipboard refusal gives manual-copy guidance without invoking the wallet a
   ui.acknowledge(); await ui.click('mint-submit'); await ui.click('mint-copy-receipt');
   assert.match(ui.element('mint-copy-message').textContent,/copy them manually/);
   assert.equal(ui.walletCalls.length,1);
+});
+
+
+test('mint receipts survive reload as references without opening a wallet or restoring queue approval', async () => {
+  const ui = await mount(); ui.chooseCount(2); ui.acknowledge(); await ui.click('mint-submit');
+  assert.equal(ui.walletCalls.length, 2);
+  const reload = await mount({ storage: ui.storage });
+  assert.equal(reload.element('mint-history-list').children.length, 2);
+  assert.equal(reload.walletCalls.length, 0);
+  assert.equal(reload.element('mint-submit').disabled, true);
+  assert.equal(reload.element('mint-batch-status').hidden, true);
+  const item = reload.element('mint-history-list').children[0];
+  assert.match(item.children[0].textContent, /outcome unverified/);
+  assert.equal(item.children[2].href, `https://explorer.kaspa.org/txs/${'b'.repeat(64)}`);
+  assert.equal(reload.element('mint-result').hidden, true);
+});
+
+test('an interrupted or rejected wallet request remains unknown after reload and never resubmits', async () => {
+  const ui = await mount();
+  let reject;
+  ui.sign = () => new Promise((_, fail) => { reject = fail; });
+  ui.acknowledge(); const pending = ui.click('mint-submit'); await settle();
+  const reload = await mount({ storage: ui.storage });
+  assert.match(reload.element('mint-history-list').children[0].children[0].textContent, /outcome unknown/);
+  assert.equal(reload.walletCalls.length, 0);
+  reject(new Error('User rejected')); await pending;
+  assert.equal((await mount({ storage: ui.storage })).walletCalls.length, 0);
+});
+
+test('history is isolated by connected Mainnet wallet and can be cleared without wallet calls', async () => {
+  const ui = await mount(); ui.acknowledge(); await ui.click('mint-submit');
+  const other = await mount({ storage: ui.storage, wallet: { address: 'kaspa:other' } });
+  assert.equal(other.element('mint-history-list').children.length, 0);
+  const wrongNetwork = await mount({ storage: ui.storage, wallet: { network: 'kaspa_testnet' } });
+  assert.equal(wrongNetwork.element('mint-history-list').children.length, 0);
+  const reload = await mount({ storage: ui.storage }); await reload.click('mint-history-clear');
+  assert.equal(reload.element('mint-history-list').children.length, 0);
+  assert.equal(reload.walletCalls.length, 0);
+  assert.equal((await mount({ storage: ui.storage })).element('mint-history-list').children.length, 0);
+});
+
+test('history rejects hostile fields, bounds records and never trusts stored confirmation status', async () => {
+  const row = { id: 'sample', address: 'kaspa:test', openedAt: Date.now(), stage: 'returned', commitId: '', revealId: 'a'.repeat(64), transactionId: '' };
+  const storage = new Map([['geek:mint-receipts:v1', JSON.stringify([
+    { ...row, id: 'bad-link', revealId: 'javascript:alert(1)' },
+    { ...row, id: 'bad-address', address: '<img onerror=alert(1)>' },
+    { ...row, id: 'fake-confirmation', stage: 'confirmed' },
+    { ...row, confirmed: true, amount: '999999999' }
+  ])]]);
+  const ui = await mount({ storage });
+  assert.equal(ui.element('mint-history-list').children.length, 1);
+  assert.match(ui.element('mint-history-list').children[0].children[0].textContent, /outcome unverified/);
+  storage.set('geek:mint-receipts:v1', JSON.stringify(Array.from({ length: 120 }, (_, i) => ({ ...row, id: `row-${i}` }))));
+  assert.equal((await mount({ storage })).element('mint-history-list').children.length, 100);
+  storage.set('geek:mint-receipts:v1', '{bad-json');
+  assert.equal((await mount({ storage })).element('mint-history-list').children.length, 0);
+});
+
+test('blocked browser storage does not break minting and warns users to copy their receipt', async () => {
+  const ui = await mount({ storageBlocked: true }); ui.acknowledge(); await ui.click('mint-submit');
+  assert.equal(ui.walletCalls.length, 1);
+  assert.match(ui.element('mint-history-message').textContent, /could not be saved/);
+  assert.equal(ui.element('mint-result').hidden, false);
 });

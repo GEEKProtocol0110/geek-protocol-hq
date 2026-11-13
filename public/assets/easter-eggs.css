@@ -6,7 +6,7 @@
 .grid-terminal-output{min-height:5em;padding:1rem;border:1px solid #46667d;background:#060d1e;color:#dcf5ff;border-radius:6px;white-space:pre-wrap}
 .grid-terminal-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5rem}
 .grid-terminal-form label{grid-column:1/-1;color:#d3e9f7}
-.grid-terminal input{min-width:0;width:100%;box-sizing:border-box;font:inherit;padding:.7rem;border:1px solid #61849e;border-radius:6px;color:#fff;background:#060d1e}
+.grid-terminal input{min-width:0;width:100%;box-sizing:border-box;font:inherit;padding:.7rem;border:1px solid #61849e;border-radius:6px;color: #dce4e7;background:#060d1e}
 .grid-terminal button{min-height:44px;padding:.65rem .85rem;border:1px solid #7384bd;border-radius:6px;background:#19243e;color:#e2eeff;font:inherit;cursor:pointer}
 .grid-terminal button:hover{background:#273558;border-color:#a8f5e9}
 .grid-terminal :is(button,input):focus-visible,.grid-discovery summary:focus-visible{outline:3px solid #a8f5e9;outline-offset:3px}
@@ -15,3 +15,4 @@
 @media(forced-colors:active){.grid-terminal,.grid-terminal-output{border:1px solid CanvasText}.grid-terminal input,.grid-terminal button,.grid-discovery summary{border:1px solid ButtonText}}
 
 .hunt-signal{margin:2rem auto;width:calc(100% - 2.5rem)}.hunt-signal strong{color:#a7ffe7;letter-spacing:.15em}.hunt-signal a{display:inline-flex;align-items:center;min-height:44px;color:#a7ffe7}
+.grid-secret-art[hidden]{display:none!important}.grid-secret-art{position:relative;display:flex;align-items:center;justify-content:center;gap:24px;min-height:92px;overflow:hidden;border:1px solid #6fc7ba44;border-radius:10px;background:radial-gradient(ellipse at center,#2a535344,#09192a);margin:12px 0}.grid-secret-rocket{display:inline-block;font-size:2.5rem}.grid-secret-stars{font-size:1.5rem;color:#efd18d;letter-spacing:.2em}.grid-terminal-shortcuts button{flex:1 1 135px}.grid-terminal-form input{font-size:16px}@media(prefers-reduced-motion:no-preference){.grid-secret-rocket{animation:grid-liftoff 1.1s ease-out 1}@keyframes grid-liftoff{from{transform:translate(-70px,45px) rotate(-18deg);opacity:0}to{transform:translate(0,0);opacity:1}}}@media(max-width:420px){.grid-terminal-form{grid-template-columns:1fr}.grid-terminal-form button{width:100%}}@media(forced-colors:active){.grid-secret-art{background:Canvas;border-color:CanvasText}.grid-secret-stars{color:CanvasText}}

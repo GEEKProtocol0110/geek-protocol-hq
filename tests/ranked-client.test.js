@@ -53,7 +53,9 @@ test('an unconfirmed answer locks writes; read-only reconnect offers a manual ne
 test('recovered round review and finish preserve one score and a saved-progress destination', async () => {
   const ui = await page((path, options, body) => path.includes('runId=') ? json(state('between-rounds')) : body?.action === 'finish' ? json({ ...state('finished'), leaderboard: { entries: [] } }) : undefined, id);
   await ui.context.actions.reconnectRun(); assert.match(ui.node('[data-round-review]').innerHTML, /A graded question/);
+  assert.equal(ui.document.activeElement, ui.node('[data-result-title]'));
   await ui.context.actions.finishRun(true); assert.equal(ui.node('[data-final-score]').textContent, '1,500'); assert.equal(ui.storage.has(key), false);
+  assert.equal(ui.document.activeElement, ui.node('[data-complete-title]'));
 });
 
 test('an expired saved run enables a new run after the server confirms it is absent', async () => {
@@ -147,4 +149,34 @@ test('deferred reconnect shows a neutral pending tally instead of 0 and 0x', asy
   await ui.context.actions.reconnectRun();
   assert.equal(ui.node('[data-correct]').textContent, '1');
   assert.equal(ui.node('[data-streak]').textContent, '1×');
+});
+
+test('saved and recovered runs link to their matching mode and category without starting another game', async () => {
+  const payload = state('between-rounds'); payload.run.category = 'technology'; payload.run.mode = 'speed';
+  const ui = await page(path => path.includes('runId=') ? json(payload) : undefined, id);
+  // Add the shipped links before reconnecting to a different game context.
+  const board = ui.node('[data-public-board-link]');
+  await ui.context.actions.reconnectRun();
+  assert.equal(board.href, '/leaderboard/?source=hq&mode=speed&category=technology');
+  assert.equal(ui.requests.filter(r => r.body?.action === 'start').length, 0);
+  const html = readFileSync(new URL('../public/play/index.html', import.meta.url), 'utf8');
+  assert.equal((html.match(/data-public-board-link/g) || []).length, 2);
+  assert.match(html, /id="result-title" tabindex="-1"/);
+  assert.match(html, /id="complete-title" tabindex="-1"/);
+  assert.match(html, /Keep learning →/);
+});
+
+
+test('an answer is visibly selected before a delayed reply and is cleared only after grading', async () => {
+  const waiting = deferred();
+  const ui = await page((path, options, body) => body?.action === 'answer' ? waiting.promise : undefined);
+  await ui.context.actions.startNewRun();
+  const buttons = ui.node('[data-answers]').querySelectorAll('.answer');
+  const pending = ui.context.actions.answerQuestion(1);
+  assert.equal(buttons[1].getAttribute('aria-pressed'), 'true');
+  assert.ok(buttons.every(b => b.disabled));
+  await ui.context.actions.answerQuestion(0);
+  assert.equal(ui.requests.filter(r => r.body?.action === 'answer').length, 1);
+  waiting.resolve(json(state())); await pending;
+  assert.ok(buttons.every(b => b.getAttribute('aria-pressed') === 'false'));
 });

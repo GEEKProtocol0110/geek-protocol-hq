@@ -1,6 +1,6 @@
 .receiving-address{margin:1.5rem 0;padding:clamp(1.25rem,4vw,2rem);border:1px solid #496958;border-radius:16px;background:#101c16;color:#edf4ef;min-width:0}
 .receiving-heading{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.receiving-eyebrow{display:block;margin-bottom:.5rem;color:#70e6dc;font-size:.72rem;font-weight:800;letter-spacing:.1em}
+.receiving-eyebrow{display:block;margin-bottom:.5rem;color:#70e6dc;font-size:.72rem;font-weight:700;letter-spacing:.1em}
 .receiving-address h2{margin:0;font-size:clamp(1.3rem,4vw,1.6rem);line-height:1.3;text-transform:none}
 .receiving-address p{line-height:1.65;color:#becfc4;overflow-wrap:anywhere}
 .receiving-badge{padding:.4rem .65rem;border:1px solid #496958;border-radius:999px;color:#becfc4;font-size:.78rem;font-weight:750;white-space:nowrap}
