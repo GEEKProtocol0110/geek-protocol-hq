@@ -1385,6 +1385,43 @@ Verification: full local npm run verify with real Redis passed 876 HQ tests plus
 
 Live HTTP showed /api/game-notifications returns 308 to /api/game-notifications/, while the canonical slash URL directly returns the expected unauthenticated 401. Set the Cron definition to that direct canonical path and add a route regression so scheduling does not depend on redirect handling. #181/#199/#204/#205/#213 were closed as superseded, retaining branches/history. Six historical held PRs remain; new #270 repository-hygiene work appeared during this review and remains separately reviewable. Android protected signing setup remains owner-only.
 
+## November 12, 2026 — CHAIN-006 mainnet GEEK payout worker draft
+
+Ported the tested CHAIN-004 automatic signer toward current KRC-20 GEEK. The same lease, commit/reveal journal, and exact reveal check are in `workers/mainnet`. HQ can admit a Daily or Gauntlet job only when `MAINNET_PAYOUT_ENABLED` is exactly true. The signer reads `MAINNET_SIGNER_PRIVATE_KEY` from the environment and stays paused unless that flag is exactly true in production. `settlementEligible` and `withdrawalsEnabled` remain false. No signing key is in the repository. The owner adds the signing key in the Vercel or GitHub secret UI later.
+
+Reward rules recorded for a later enable: 100 GEEK once per qualifying Daily; the `ROUND_CONFIG` perfect-round ladder once per finished Gauntlet round (46,300 GEEK for ten perfect rounds); retries do not pay again; temporary daily cap 100,000 GEEK. The public hot-wallet receive address is pinned in code and is not the token deploy address. This draft does not admit, sign, or broadcast a mainnet payout. CCE and collection ownership stay disabled. Test limits belong in the pull request.
+
+## November 12, 2026 — CHAIN-006 per-correct amount and queue bounds
+
+Gee confirmed Gauntlet GEEK is `ROUND_CONFIG.reward` times the server-graded correct count. One correct answer in round 10 is 1,800; 18,000 is rejected for that proof. Zero correct admits no job. Daily remains 100 once. The correct count is counted from stored boolean grades. The signer recomputes the amount from kind, round, and `correctCount` and requires an exact match.
+
+Temporary caps are 100,000 GEEK globally and 46,400 GEEK per player and per receiving address. The active index lists outstanding jobs only. A journal still unconfirmed six hours after preparation is marked stuck, keeps its original journal and earning lock, and no longer blocks later jobs. Admission and both signer entry points require production plus the explicit flag. A missing worker token skips admission and does not fail the saved answer. Ranked starts use the network address only, still 20 per hour. Settlement flags remain false. No signing key was added.
+
+## November 12, 2026 — CHAIN-006 job HMAC, stuck visibility, and cap fingerprint
+
+Each admitted job is HMAC-signed with Production-only `MAINNET_PAYOUT_JOB_HMAC` over the payable identity. Claim, the worker, and the signer reject a missing, wrong, or mutated mac. Preview does not create a signature production accepts. No secret value is stored.
+
+The six-hour stuck clock starts at the first submit. Stuck jobs are listed and emit `PAYOUT_UNCONFIRMED`. The original journal and earning lock remain, and a later manual check can still confirm that same hash. Temporary caps are no longer part of the job fingerprint. Network, protocol, ticker, decimals, deployment, and sender remain bound. Flags stay false.
+
+## November 12, 2026 — CHAIN-006 mac fields, replay refusal, and quarantine
+
+The job mac is an explicit ordered field list, including each proof field. Changing kind, round, correct count, or run id changes the mac. The first accepted journal is recorded by the worker handler. A queued copy of a signed, stuck, or confirmed earning is not signed again. Decode and mac failures are logged and quarantined. The earning lock is kept. A confirmed stuck job leaves the stuck list. Flags stay false. No secret value was added.
+
+
+## November 13, 2026 — CHAIN-006 atomic journal recovery candidate
+
+- **Review base:** draft #278 head `721c973eb32d8d6b38c281331a7f06dbdb9a03bc`; local branch `codex/atomic-payout-journal`.
+- **Finding and fix:** failure injection reproduced a signed marker without its transaction journal. Preparation now validates the job snapshot, sender lease and replay marker before atomically saving the complete journal and marker.
+- **Validation:** all 18 focused mainnet payout tests passed with real isolated Redis, including six new failure scenarios. Full npm run verify passed: 897 application tests, 9 testnet signer checks and 5 mainnet signer checks, zero failures/skips; question, archive, collection, security, repository, economy, continuity, site and whitepaper checks passed. No production requests, real signing key or broadcast used.
+- **Pickup:** review the stacked candidate before #278; independent signing/application audit and private-bank/abuse readiness remain open. No merge, deployment, environment or economic control changed.
+
+## November 13, 2026 — CHAIN-006 atomic stuck-list update
+
+- **Review base:** internal review of combined head `dd85120a5b40e609d79791e8ca4f15d7a39dd48d`. This entry records a source fix. It is not an independent audit, and it does not approve enablement.
+- **Finding and fix:** marking a job stuck saved the job, then added `stuck:v1` in a separate command. A failed second write could leave the job stuck and unlisted, with no `PAYOUT_UNCONFIRMED` log. The stuck-list write is now inside the same update script, after the existing job-snapshot and lease checks and before any write. Redis 7 does not revert a script error, so a bad stuck list or score is refused before the job is saved. The log runs only after that update succeeds. A lost `prepare` acknowledgment is documented as recovered by the next claim; re-sending that prepare returns 409 by design.
+- **Validation:** `npm test` passed 898 tests, 0 failed, 0 skipped, with real loopback Redis. `npm run test:signer` passed 9 testnet and 5 mainnet checks. `npm run security:check` passed 323 assertions. No production request, real signing key, or broadcast was used. Flags stay off.
+- **Pickup:** review draft #282 on top of #278. No merge, deployment, environment, or economic control changed. Settlement and withdrawals remain disabled.
+
 ## November 13, 2026 — UX-027 holiday catalog draft
 
 - **Task:** UX-027. One catalog now supplies windows, priority, motifs and greetings. Automatic selection is priority, then shortest window, then id, in America/Detroit. The public appearance payload remains `{ id }`. Saves stay allowlisted and audited. The stored default remains Off.

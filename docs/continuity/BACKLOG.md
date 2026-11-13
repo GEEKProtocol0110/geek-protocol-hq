@@ -92,6 +92,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | APP-001 | P2 | in-progress | Android test package and device acceptance | Maintainer; founder device review |
 | GAME-005 | P2 | in-progress | Opt-in closed-lounge turn notifications and durable delivery | Maintainer; founder phone acceptance |
 | OPS-004 | P2 | in-progress | Record default code ownership and limited weekly dependency updates | Maintainer; founder reviews the pull request |
+| CHAIN-006 | P1 | in-progress | Port the automatic payout worker toward mainnet GEEK | Maintainer; founder controls explicit enable and the signing secret |
 
 ## CONT-001: Publish the continuation system
 
@@ -1387,3 +1388,22 @@ Acceptance:
 - No application, game, lesson, wallet, question-bank, or repository-setting change is included.
 
 Evidence/specification: [.github/CODEOWNERS](../../.github/CODEOWNERS), [.github/dependabot.yml](../../.github/dependabot.yml), [SECURITY.md](../../SECURITY.md).
+
+## CHAIN-006: Port the automatic payout worker toward mainnet GEEK
+
+**P1 / in-progress.** Owner: Maintainer; founder controls explicit enable and the signing secret. Dependencies: CHAIN-004.
+
+Next action: Review draft #282 on top of #278: journal preparation is one Lua update, and a terminal stuck mark writes the job and stuck:v1 together. A lost prepare acknowledgment is recovered by the next claim. No merge, deployment, or enable is implied. Settlement and withdrawals remain disabled. This is an internal source candidate, not an independent audit.
+
+Acceptance:
+
+- The mainnet worker reuses the CHAIN-004 journaled KRC-20 commit/reveal path for current GEEK, with the pinned public hot-wallet receive address.
+- Daily pays 100 GEEK once. A Gauntlet round pays ROUND_CONFIG.reward times the server-graded correct count. Zero correct pays nothing. One correct answer in round 10 pays 1800, and 18000 is rejected for that proof. Retries do not pay again.
+- Temporary caps are 100,000 GEEK globally and 46,400 GEEK per player and per receiving address. The active index counts outstanding jobs only. A journal unconfirmed for six hours is stuck and does not block later jobs or receive a second journal.
+- Admission and signing require production plus the explicit flag. Preview cannot pay. settlementEligible and withdrawalsEnabled stay false. No signing key is committed.
+- The job mac is an explicit ordered field list that includes each proof field. An already signed earning cannot be signed again. A record that fails decoding or the mac check is quarantined and logged, and the earning lock is kept.
+- Focused tests and the existing testnet signer checks pass. A real mainnet transfer is not claimed.
+- Journal preparation commits the replay marker and signed bytes together after checking the current lease and job snapshot. Rejected writes and lost acknowledgments preserve safe recovery without a new journal for an accepted earning. A lost prepare acknowledgment is recovered by the next claim. Re-sending that prepare returns 409.
+- Marking a job stuck writes the stuck state and its stuck:v1 membership in one update that still checks the lease and job snapshot. A failed update does not leave the job stuck and absent from that list. The PAYOUT_UNCONFIRMED log follows a successful update.
+
+Evidence/specification: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [server/mainnet-payout.js](../../server/mainnet-payout.js), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs), [workers/mainnet/signer.mjs](../../workers/mainnet/signer.mjs), [workers/mainnet/process.mjs](../../workers/mainnet/process.mjs), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js), [workers/mainnet/check-signing.mjs](../../workers/mainnet/check-signing.mjs), [workers/mainnet/job-mac.mjs](../../workers/mainnet/job-mac.mjs).

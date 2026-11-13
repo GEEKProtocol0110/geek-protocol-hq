@@ -3,6 +3,7 @@ import { profileJson, profileKeyFor, profileSnapshot, parseProfile } from './pro
 import { prestigeKeyFor } from './prestige-state.js';
 import { redis } from './redis.js';
 import { AUTO_PREFLIGHT_LUA, AUTO_COMMIT_LUA } from './testnet-automatic.js';
+import { MAINNET_PAYOUT_COMMIT_LUA, MAINNET_PAYOUT_PREFLIGHT_LUA } from './mainnet-payout.js';
 
 // Grades, career changes, entry debits and their receipt commit together.
 // Exact snapshots prevent a game from overwriting an avatar, trade or prestige.
@@ -16,6 +17,7 @@ if ARGV[9] ~= '' then
   if kind ~= 'none' and kind ~= 'zset' then return -2 end
 end
 ${AUTO_PREFLIGHT_LUA}
+${MAINNET_PAYOUT_PREFLIGHT_LUA}
 redis.call('SET', KEYS[1], ARGV[4], 'EX', ARGV[6])
 if ARGV[7] == '1' then redis.call('SET', KEYS[2], ARGV[5]) end
 if ARGV[8] ~= '' then redis.call('SET', KEYS[6], ARGV[8], 'EX', 172800) end
@@ -25,9 +27,10 @@ if ARGV[9] ~= '' then
   redis.call('ZADD', KEYS[5], ARGV[10], ARGV[11])
 end
 ${AUTO_COMMIT_LUA}
+${MAINNET_PAYOUT_COMMIT_LUA}
 return 1`;
 
-export const commitRankedState = async ({ playerId, run, previousRun = '', profile, ttl = 7200, auditInput, dailyKey, activeKey, automaticReward }) => {
+export const commitRankedState = async ({ playerId, run, previousRun = '', profile, ttl = 7200, auditInput, dailyKey, activeKey, automaticReward, mainnetPayout }) => {
   const snapshot = profileSnapshot(profile);
   if (!snapshot) throw new Error('PROFILE_STATE_INVALID');
   const next = profileJson(profile);
@@ -35,12 +38,16 @@ export const commitRankedState = async ({ playerId, run, previousRun = '', profi
   const changed = next !== profileJson(parseProfile(snapshot.raw || null));
   const record = auditInput ? await createAuditRecord({ actorType: 'alpha-session', actorId: playerId, interactionId: run.id, ...auditInput }) : null;
   const [event, index] = record ? auditWriteCommands(record) : [];
-  const result = Number(await redis('EVAL', RANKED_COMMIT_LUA, 15,
-    `geek:run:${run.id}`, profileKeyFor(playerId), prestigeKeyFor(playerId), event?.[1] || profileKeyFor(playerId), index?.[1] || profileKeyFor(playerId), dailyKey || profileKeyFor(playerId),
-    activeKey || profileKeyFor(playerId),
-    ...(automaticReward?.keys || Array(8).fill(profileKeyFor(playerId))),
+  const profileKey = profileKeyFor(playerId);
+  const result = Number(await redis('EVAL', RANKED_COMMIT_LUA, 22,
+    `geek:run:${run.id}`, profileKey, prestigeKeyFor(playerId), event?.[1] || profileKey, index?.[1] || profileKey, dailyKey || profileKey,
+    activeKey || profileKey,
+    ...(automaticReward?.keys || Array(8).fill(profileKey)),
+    ...(mainnetPayout?.keys || Array(7).fill(profileKey)),
     previousRun, snapshot.raw, snapshot.prestigeRaw, JSON.stringify(run), next, ttl, changed ? '1' : '0', dailyKey ? run.id : '', event?.[2] || '', index?.[2] || 0, index?.[3] || '', activeKey ? run.id : '',
-    ...(automaticReward?.args || ['', '', '', 0, 0, '', ''])));
+    ...(automaticReward?.args || ['', '', '', 0, 0, '', '']),
+    ...(mainnetPayout?.args || ['', '', '', '0', '0', '0', '', '0', '0'])));
+  if (result === -4) throw new Error('MAINNET_PAYOUT_RECORD_INVALID');
   if (result === -3) throw new Error('TESTNET_AUTO_RECORD_INVALID');
   if (result === -2) throw new Error('AUDIT_STATE_INVALID');
   if (result === -1) throw new Error('DAILY_ALREADY_PLAYED');

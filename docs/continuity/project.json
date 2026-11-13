@@ -244,5 +244,11 @@
     "status": "implemented-configured-phone-acceptance-open",
     "evidence": "docs/WEB-PUSH-TURN-ALERTS.md",
     "nextAction": "#271 merged as d86d3d3964885f0ab3cc2071c8cd067736380245; production READY, public key configuration and two-player turn/no-expiry flow verified. Canonical retry route follow-up removes its 308 redirect. Actual phone notification permission/delivery and Android signing/domain acceptance remain open."
+  },
+  "mainnetPayoutRecovery": {
+    "task": "CHAIN-006",
+    "status": "source-candidate",
+    "evidence": "docs/MAINNET-GEEK-PAYOUT.md; tests/mainnet-payout.test.js",
+    "nextAction": "Review draft #282 on top of #278: journal preparation is one Lua update, and a terminal stuck mark writes the job and stuck:v1 together. A lost prepare acknowledgment is recovered by the next claim. No merge, deployment, or enable is implied. Settlement and withdrawals remain disabled. This is an internal source candidate, not an independent audit."
   }
 }

@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "test": "node --test",
-    "test:signer": "npm --prefix workers/testnet run check",
+    "test:signer": "npm --prefix workers/testnet run check && npm --prefix workers/mainnet run check",
     "recovery:drill": "node --test tests/recovery.test.js",
     "security:check": "node scripts/public-answer-check.mjs && node scripts/security-check.mjs",
     "collection:generate": "node scripts/generate-geek-collection.mjs",
