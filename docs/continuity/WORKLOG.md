@@ -1384,3 +1384,11 @@ Verification: full local npm run verify with real Redis passed 876 HQ tests plus
 #271 squash-merged as d86d3d3964885f0ab3cc2071c8cd067736380245. Exact-head CI c1a75b8 passed 878 HQ tests, nine signer checks and audits with zero findings; both previews passed. Production dpl_BHnj1A9pwQesNnHPBeFpPysUYFSv is READY with both canonical domains. A bounded synthetic two-player private chess flow verified production push configuration exposes only public data, acceptance clears expiry, a legal move updates the opponent turn badge, and anonymous retry access is 401. The synthetic game was finished afterward. No device subscription or actual phone notification was created.
 
 Live HTTP showed /api/game-notifications returns 308 to /api/game-notifications/, while the canonical slash URL directly returns the expected unauthenticated 401. Set the Cron definition to that direct canonical path and add a route regression so scheduling does not depend on redirect handling. #181/#199/#204/#205/#213 were closed as superseded, retaining branches/history. Six historical held PRs remain; new #270 repository-hygiene work appeared during this review and remains separately reviewable. Android protected signing setup remains owner-only.
+
+
+## November 13, 2026 — MINT-001 local receipt history candidate
+
+- **Base:** main `01e79787b82e61d551e8023df7dd4a9c1d68fcb8`; branch `codex/mint-receipt-history`. Independent of the held payout drafts #278/#282.
+- **Outcome:** bounded browser-local request history with connected-wallet filtering, fixed explorer links, unknown outcomes saved before wallet handoff, and per-wallet clearing. No queue/approval restoration or chain-confirmation claims.
+- **Validation:** all 41 focused mint tests passed. Full npm run verify passed: 884 application tests plus 9 offline testnet signer checks, zero failures/skips, with all supporting checks. Synthetic wallet responses only; no production mint, payment or real wallet approval.
+- **Pickup:** review source/preview, then actual-browser and Kasware device acceptance. Nothing merged or deployed; economic holds remain.

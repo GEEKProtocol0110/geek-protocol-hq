@@ -343,3 +343,13 @@ Pause A.C.E. development and live AI activation until the founder explicitly res
 Basis: Founder directed Pause ACE and then approved all nine proposed strategy/puzzle games.
 
 Evidence: [docs/STRATEGY-PUZZLE-GAMES.md](../../docs/STRATEGY-PUZZLE-GAMES.md).
+
+## DR-037: Retain bounded local mint references without restoring authority
+
+**implementation-choice** · 2026-11-13.
+
+Supersede the page-memory-only mint receipt implementation with up to 100 browser-local request markers and public transaction references. No keys, raw responses, approvals, queue restoration or confirmation authority may be persisted. Show storage scope and a per-wallet clear action.
+
+Basis: Founder authorized continuing the announced mint receipt history follow-up. Existing non-custodial and economic constraints remain.
+
+Evidence: [docs/MINT-RECEIPT-HISTORY.md](../../docs/MINT-RECEIPT-HISTORY.md), [docs/MINT-PROTOCOL.md](../../docs/MINT-PROTOCOL.md), [tests/mint-client.test.js](../../tests/mint-client.test.js).

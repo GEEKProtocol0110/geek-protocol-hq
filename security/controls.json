@@ -104,7 +104,7 @@
       "id": "GP-INV-016",
       "title": "Pinned non-custodial GEEK mint request",
       "status": "implemented-unaudited-noncustodial",
-      "evidence": ["server/mint.js", "api/mint.js", "public/mint/index.html", "public/mint/assets/mint.js", "tests/mint.test.js", "docs/MINT-PROTOCOL.md"]
+      "evidence": ["server/mint.js", "api/mint.js", "public/mint/index.html", "public/mint/assets/mint.js", "tests/mint.test.js", "docs/MINT-PROTOCOL.md", "tests/mint-client.test.js", "docs/MINT-RECEIPT-HISTORY.md"]
     },
     {
       "id": "GP-INV-017",

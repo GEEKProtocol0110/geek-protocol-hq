@@ -90,6 +90,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | APP-001 | P2 | in-progress | Android test package and device acceptance | Maintainer; founder device review |
 | GAME-005 | P2 | in-progress | Opt-in closed-lounge turn notifications and durable delivery | Maintainer; founder phone acceptance |
 | OPS-004 | P2 | in-progress | Record default code ownership and limited weekly dependency updates | Maintainer; founder reviews the pull request |
+| MINT-001 | P1 | in-progress | Preserve local mint request references across reloads | Maintainer; founder reviews release |
 
 ## CONT-001: Publish the continuation system
 
@@ -1355,3 +1356,19 @@ Acceptance:
 - No application, game, lesson, wallet, question-bank, or repository-setting change is included.
 
 Evidence/specification: [.github/CODEOWNERS](../../.github/CODEOWNERS), [.github/dependabot.yml](../../.github/dependabot.yml), [SECURITY.md](../../SECURITY.md).
+
+## MINT-001: Preserve local mint request references across reloads
+
+**P1 / in-progress.** Owner: Maintainer; founder reviews release. Dependencies: none.
+
+Next action: Review the source candidate and preview, then perform actual-browser and Kasware device acceptance. No automatic retry or confirmation claim.
+
+Acceptance:
+
+- Save at most 100 recent public-address/request-reference records locally; display only the connected Mainnet wallet history.
+- Persist an unknown-outcome marker before wallet handoff; never resume a queue or restore approval after reload.
+- Validate stored display data, use fixed explorer links and text rendering, and explain local-storage failure without preventing the wallet flow.
+- Allow clearing the connected wallet history; clearing cannot cancel or repeat a transaction.
+- Focused reload, interrupted-request, wallet/network-isolation, invalid-data and blocked-storage tests pass; physical-wallet acceptance is tracked separately.
+
+Evidence/specification: [docs/MINT-RECEIPT-HISTORY.md](../../docs/MINT-RECEIPT-HISTORY.md), [public/mint/assets/mint.js](../../public/mint/assets/mint.js), [tests/mint-client.test.js](../../tests/mint-client.test.js).

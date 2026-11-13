@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-12",
+  "updatedAt": "2026-11-13",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2132,6 +2132,27 @@
         ".github/CODEOWNERS",
         ".github/dependabot.yml",
         "SECURITY.md"
+      ]
+    },
+    {
+      "id": "MINT-001",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Preserve local mint request references across reloads",
+      "owner": "Maintainer; founder reviews release",
+      "nextAction": "Review the source candidate and preview, then perform actual-browser and Kasware device acceptance. No automatic retry or confirmation claim.",
+      "acceptance": [
+        "Save at most 100 recent public-address/request-reference records locally; display only the connected Mainnet wallet history.",
+        "Persist an unknown-outcome marker before wallet handoff; never resume a queue or restore approval after reload.",
+        "Validate stored display data, use fixed explorer links and text rendering, and explain local-storage failure without preventing the wallet flow.",
+        "Allow clearing the connected wallet history; clearing cannot cancel or repeat a transaction.",
+        "Focused reload, interrupted-request, wallet/network-isolation, invalid-data and blocked-storage tests pass; physical-wallet acceptance is tracked separately."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/MINT-RECEIPT-HISTORY.md",
+        "public/mint/assets/mint.js",
+        "tests/mint-client.test.js"
       ]
     }
   ]

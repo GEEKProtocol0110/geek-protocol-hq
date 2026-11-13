@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-09",
+  "updatedAt": "2026-11-13",
   "records": [
     {
       "id": "DR-001",
@@ -442,6 +442,20 @@
         "docs/STRATEGY-PUZZLE-GAMES.md"
       ],
       "recordedAt": "2026-11-09",
+      "supersedes": null
+    },
+    {
+      "id": "DR-037",
+      "status": "implementation-choice",
+      "title": "Retain bounded local mint references without restoring authority",
+      "decision": "Supersede the page-memory-only mint receipt implementation with up to 100 browser-local request markers and public transaction references. No keys, raw responses, approvals, queue restoration or confirmation authority may be persisted. Show storage scope and a per-wallet clear action.",
+      "basis": "Founder authorized continuing the announced mint receipt history follow-up. Existing non-custodial and economic constraints remain.",
+      "evidence": [
+        "docs/MINT-RECEIPT-HISTORY.md",
+        "docs/MINT-PROTOCOL.md",
+        "tests/mint-client.test.js"
+      ],
+      "recordedAt": "2026-11-13",
       "supersedes": null
     }
   ]
