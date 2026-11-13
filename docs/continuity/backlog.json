@@ -2258,10 +2258,10 @@
     {
       "id": "CHAIN-007",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "done",
       "title": "Require private-ranked proof before mainnet payout admission and signing",
       "owner": "Maintainer; founder controls economic enable; independent reviewer unassigned",
-      "nextAction": "Review the main-based gate and its negative/positive controls. Before any future payout activation, integrate the held private-bank/season checks, independently review the exact release and reconcile any pre-v2 records without replacing a journal. No payment activation is authorized.",
+      "nextAction": "Retain the released private-proof boundary while integrating the held private bank and season controls. Reconcile any pre-v2 records in the protected operator process. Independent application/signing review and separate founder economic enable remain required; no automatic conversion of public Alpha credits.",
       "acceptance": [
         "Public, legacy, unranked, malformed bank versions and Season 0 results admit no mainnet job even when operational flags are enabled. The current public Alpha continues saving learning results.",
         "Private-bank hash, season and answered count join the exact HMAC-bound payout proof. Unknown proof fields and incomplete or nonqualifying proof fail closed.",
@@ -2279,6 +2279,11 @@
         "server/mainnet-payout.js",
         "tests/mainnet-payout.test.js",
         "workers/mainnet/check-signing.mjs"
+      ],
+      "completedAt": "2026-11-13",
+      "completionEvidence": [
+        "PR #289, https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/289, squash-merged 61d5b6d133089e68f5f0cdc62eff03abd97c1293. Exact-head Security verification 43522698604 and both Vercel checks passed. Local full verification: 921 application + 9 testnet + 6 mainnet signer checks, 936 total, zero failures/skips. Negative public-API control fails against the original admission code.",
+        "Production dpl_9CsS9j28cma3jg4eJUEQj7gwVjmW READY on that exact merge with both canonical domains; credential-free worker GET returns 405, Allow POST and no-store. This confirms delivery/module loading, not mainnet signing, private-bank acceptance, independent audit or physical-device acceptance."
       ]
     }
   ]

@@ -95,7 +95,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CHAIN-006 | P1 | in-progress | Port the automatic payout worker toward mainnet GEEK | Maintainer; founder controls explicit enable and the signing secret |
 | MINT-001 | P1 | in-progress | Preserve local mint request references across reloads | Maintainer; founder reviews release |
 | UX-029 | P1 | needs-evidence | Keep home account access in sync and expose receiving-wallet switching | Maintainer; founder reviews release |
-| CHAIN-007 | P1 | in-progress | Require private-ranked proof before mainnet payout admission and signing | Maintainer; founder controls economic enable; independent reviewer unassigned |
+| CHAIN-007 | P1 | done | Require private-ranked proof before mainnet payout admission and signing | Maintainer; founder controls economic enable; independent reviewer unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1445,9 +1445,9 @@ Evidence/specification: [docs/HOME-ACCOUNT-WALLET.md](../../docs/HOME-ACCOUNT-WA
 
 ## CHAIN-007: Require private-ranked proof before mainnet payout admission and signing
 
-**P1 / in-progress.** Owner: Maintainer; founder controls economic enable; independent reviewer unassigned. Dependencies: CHAIN-006.
+**P1 / done.** Owner: Maintainer; founder controls economic enable; independent reviewer unassigned. Dependencies: CHAIN-006.
 
-Next action: Review the main-based gate and its negative/positive controls. Before any future payout activation, integrate the held private-bank/season checks, independently review the exact release and reconcile any pre-v2 records without replacing a journal. No payment activation is authorized.
+Next action: Retain the released private-proof boundary while integrating the held private bank and season controls. Reconcile any pre-v2 records in the protected operator process. Independent application/signing review and separate founder economic enable remain required; no automatic conversion of public Alpha credits.
 
 Acceptance:
 

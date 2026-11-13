@@ -265,8 +265,8 @@
   },
   "mainnetPrivateProof": {
     "task": "CHAIN-007",
-    "status": "source-candidate",
+    "status": "merged-deployed-http-verified",
     "evidence": "docs/MAINNET-GEEK-PAYOUT.md",
-    "nextAction": "Review strict private-bank/season payout eligibility and v2 proof MAC binding before release. The public Alpha remains nonpayable even if flags are mistakenly enabled. Complete held private-bank integration and independent review before any enable; preserve/quarantine incompatible records instead of upgrading or re-signing them."
+    "nextAction": "Preserve #289, merged as 61d5b6d133089e68f5f0cdc62eff03abd97c1293; production dpl_9CsS9j28cma3jg4eJUEQj7gwVjmW READY on exact merge with both canonical domains, credential-free worker GET 405/Allow POST/no-store. Integrate the held private bank/season pipeline without weakening v2 proof, then independent review and protected reconciliation of any older records before a separately authorized enable. No payout activation."
   }
 }
