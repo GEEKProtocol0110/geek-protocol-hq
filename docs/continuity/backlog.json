@@ -2229,6 +2229,31 @@
         "public/mint/assets/mint.js",
         "tests/mint-client.test.js"
       ]
+    },
+    {
+      "id": "UX-029",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Keep home account access in sync and expose receiving-wallet switching",
+      "owner": "Maintainer; founder reviews release",
+      "nextAction": "Review the home account and Switch wallet candidate, then verify the deployed return-home and passkey-confirmed address flow on actual devices.",
+      "acceptance": [
+        "Home reads the existing session without creating a guest or opening a wallet and sends signed-in players to My HQ. Guest and expired sessions offer Sign in.",
+        "Home rechecks on browser history restore; late reads cannot override newer account status and transient failures do not pretend the player signed out.",
+        "My HQ and Rewards expose Switch wallet for a saved receiving address, without requiring KasWare. Preparing a replacement does not change saved settings or prompt for credentials.",
+        "Saving a new receiving address retains the existing fresh passkey, exact network/destination/version binding and account identity. Guest, unsupported and busy states cannot switch or save.",
+        "Focused behavior and repository verification pass. Rendered and physical-device acceptance remain separate."
+      ],
+      "dependsOn": [
+        "AUTH-004"
+      ],
+      "evidence": [
+        "docs/HOME-ACCOUNT-WALLET.md",
+        "public/assets/session-access.js",
+        "public/assets/receiving-address.js",
+        "tests/session-access-client.test.js",
+        "tests/receiving-address-client.test.js"
+      ]
     }
   ]
 }

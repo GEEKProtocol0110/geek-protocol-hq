@@ -256,5 +256,11 @@
     "status": "source-candidate",
     "evidence": "docs/MINT-RECEIPT-HISTORY.md",
     "nextAction": "Review preview and actual-browser/Kasware behavior; source-only validation does not establish real mint confirmation or device acceptance."
+  },
+  "homeAccountWallet": {
+    "task": "UX-029",
+    "status": "source-candidate",
+    "evidence": "docs/HOME-ACCOUNT-WALLET.md",
+    "nextAction": "Review the main-based home account / receiving-wallet fix. Home My HQ reflects the current server session; Switch wallet prepares a passkey-confirmed receiving-address change. Release and real-device acceptance remain pending; held bank work remains separate."
   }
 }
