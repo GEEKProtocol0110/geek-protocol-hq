@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, statSync } from 'node:fs';
 import assert from 'node:assert/strict';
 
 // This document deliberately uses only headings, paragraphs, links and lists.
@@ -22,6 +22,9 @@ const content = blocks.slice(4).map(block => {
   assert.ok(!block.startsWith('#'), 'Unsupported heading in whitepaper body');
   return `<p>${inline(block.replace(/\n/g, ' '))}</p>`;
 }).join('\n');
+// The published PDF edition is linked from the web edition and must ship beside it.
+const pdf = readFileSync('public/whitepaper/Geek-Protocol-Whitepaper.pdf');
+assert.ok(statSync('public/whitepaper/Geek-Protocol-Whitepaper.pdf').size > 50000 && pdf.subarray(0, 5).toString() === '%PDF-', 'Run python3 scripts/build-whitepaper-pdf.py');
 const html = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,10 +38,10 @@ const html = `<!doctype html>
 <a class="skip-link" href="#main">Skip to whitepaper</a>
 <header class="whitepaper-nav"><a class="brand" href="/">GEEK<span class="brand-mark">//</span>PROTOCOL</a><nav aria-label="Project documents"><a href="/litepaper/">Litepaper</a><a href="/security/">Security</a><a href="/play/">Play</a></nav></header>
 <main id="main" class="whitepaper-main">
-<header class="whitepaper-cover"><p class="section-kicker">PUBLICATION CANDIDATE · V1.0 · NOVEMBER 2, 2026</p><h1>GEEK<br /><em>PROTOCOL</em></h1><p class="whitepaper-subtitle">The Whitepaper</p><p>All Hope, No Hype.</p><p class="whitepaper-status">Version 1.0 is ready for founder publication review.</p></header>
+<header class="whitepaper-cover"><p class="section-kicker">PUBLISHED · V1.0 · NOVEMBER 2, 2026</p><h1>GEEK<br /><em>PROTOCOL</em></h1><p class="whitepaper-subtitle">The Whitepaper</p><p>All Hope, No Hype.</p><p class="whitepaper-status">Version 1.0 is the published edition.</p><p class="whitepaper-download"><a class="button button-secondary" href="/whitepaper/Geek-Protocol-Whitepaper.pdf" type="application/pdf" download>Download PDF <span aria-hidden="true">↓</span></a></p></header>
 <nav class="whitepaper-index" aria-label="Whitepaper sections">${headings.map(h => `<a href="#${h.id}">${escape(h.title)}</a>`).join('')}</nav>
 <article class="whitepaper-body">${content}</article>
-</main><footer class="whitepaper-footer"><a href="/litepaper/">Read the shorter litepaper</a><a href="/">Return to HQ</a><span>Geek Protocol · Whitepaper v1.0 · Publication candidate</span></footer>
+</main><footer class="whitepaper-footer"><a href="/litepaper/">Read the shorter litepaper</a><a href="/whitepaper/Geek-Protocol-Whitepaper.pdf" type="application/pdf" download>Download the PDF</a><a href="/">Return to HQ</a><span>Geek Protocol · Whitepaper v1.0 · Published</span></footer>
 </body></html>
 `;
 // The site metadata generator owns only the head's managed metadata fields.

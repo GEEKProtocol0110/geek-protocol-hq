@@ -383,10 +383,10 @@
       "file": "public/whitepaper/index.html",
       "path": "/whitepaper/",
       "title": "Whitepaper - Geek Protocol",
-      "description": "Read the first Geek Protocol whitepaper draft: learning model, architecture, content integrity, GEEK economics, security, governance and evidence-based launch gates.",
+      "description": "Read the published Geek Protocol Whitepaper v1.0: learning model, architecture, content integrity, GEEK economics, security, governance and evidence-based launch gates.",
       "index": true,
       "private": false,
-      "lastmod": "2026-11-02"
+      "lastmod": "2026-11-13"
     },
     {
       "file": "public/about/index.html",
