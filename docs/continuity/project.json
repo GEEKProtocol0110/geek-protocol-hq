@@ -237,6 +237,6 @@
     "task": "CHAIN-006",
     "status": "source-candidate",
     "evidence": "docs/MAINNET-GEEK-PAYOUT.md; tests/mainnet-payout.test.js",
-    "nextAction": "Review the atomic journal recovery follow-up against draft #278 (base 721c973eb32d8d6b38c281331a7f06dbdb9a03bc), then continue signer review. No merge, deployment or enable is implied. Settlement and withdrawals remain disabled."
+    "nextAction": "Review draft #282 on top of #278: journal preparation is one Lua update, and a terminal stuck mark writes the job and stuck:v1 together. A lost prepare acknowledgment is recovered by the next claim. No merge, deployment, or enable is implied. Settlement and withdrawals remain disabled. This is an internal source candidate, not an independent audit."
   }
 }

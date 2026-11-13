@@ -1361,7 +1361,7 @@ Evidence/specification: [.github/CODEOWNERS](../../.github/CODEOWNERS), [.github
 
 **P1 / in-progress.** Owner: Maintainer; founder controls explicit enable and the signing secret. Dependencies: CHAIN-004.
 
-Next action: Review the atomic journal recovery follow-up against draft #278 (base 721c973eb32d8d6b38c281331a7f06dbdb9a03bc), then continue signer review. No merge, deployment or enable is implied. Settlement and withdrawals remain disabled.
+Next action: Review draft #282 on top of #278: journal preparation is one Lua update, and a terminal stuck mark writes the job and stuck:v1 together. A lost prepare acknowledgment is recovered by the next claim. No merge, deployment, or enable is implied. Settlement and withdrawals remain disabled. This is an internal source candidate, not an independent audit.
 
 Acceptance:
 
@@ -1371,6 +1371,7 @@ Acceptance:
 - Admission and signing require production plus the explicit flag. Preview cannot pay. settlementEligible and withdrawalsEnabled stay false. No signing key is committed.
 - The job mac is an explicit ordered field list that includes each proof field. An already signed earning cannot be signed again. A record that fails decoding or the mac check is quarantined and logged, and the earning lock is kept.
 - Focused tests and the existing testnet signer checks pass. A real mainnet transfer is not claimed.
-- Journal preparation commits the replay marker and signed bytes together after checking the current lease and job snapshot. Rejected writes and lost acknowledgments preserve safe recovery without a new journal for an accepted earning.
+- Journal preparation commits the replay marker and signed bytes together after checking the current lease and job snapshot. Rejected writes and lost acknowledgments preserve safe recovery without a new journal for an accepted earning. A lost prepare acknowledgment is recovered by the next claim. Re-sending that prepare returns 409.
+- Marking a job stuck writes the stuck state and its stuck:v1 membership in one update that still checks the lease and job snapshot. A failed update does not leave the job stuck and absent from that list. The PAYOUT_UNCONFIRMED log follows a successful update.
 
 Evidence/specification: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [server/mainnet-payout.js](../../server/mainnet-payout.js), [workers/mainnet/schedule.mjs](../../workers/mainnet/schedule.mjs), [workers/mainnet/signer.mjs](../../workers/mainnet/signer.mjs), [workers/mainnet/process.mjs](../../workers/mainnet/process.mjs), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js), [workers/mainnet/check-signing.mjs](../../workers/mainnet/check-signing.mjs), [workers/mainnet/job-mac.mjs](../../workers/mainnet/job-mac.mjs).

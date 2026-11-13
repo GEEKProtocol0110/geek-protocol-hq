@@ -629,3 +629,74 @@ test('journal preparation is recoverable across rejected writes and lost acknowl
     await worker({ action: 'release', lease: retry.body.lease });
   }
 });
+
+test('a stuck mark commits the job and stuck list together or not at all', async () => {
+  const info = console.info;
+  const events = [];
+  console.info = (...args) => { events.push(args.map(String).join(' ')); };
+  const worker = body => call(sessionHandler, 'POST', body, '', { service: 'mainnet-worker' }, { origin: '', authorization: `Bearer ${token}` });
+  try {
+    for (const failure of ['committed', 'rejected', 'wrong-type']) {
+      await fixture.command('FLUSHDB');
+      enable();
+      events.length = 0;
+      const cookie = await player();
+      await saveAddress(cookie);
+      let result = await play(cookie, 'start', { mode: 'daily', category: 'kaspa' });
+      result = await answerRound(cookie, result.body);
+      assert.equal((await play(cookie, 'finish', { runId: result.run.id })).statusCode, 200, failure);
+      const queued = (await jobs())[0];
+      const journal = { commit: { id: 'b'.repeat(64), transaction: 'c'.repeat(80) }, reveal: { id: 'd'.repeat(64), transaction: 'e'.repeat(80) } };
+      const awaiting = {
+        ...queued, state: 'awaiting-indexer', journal, transactionHash: journal.reveal.id,
+        preparedAt: Date.now() - STUCK_AFTER_MS - 5000, submittedAt: Date.now() - STUCK_AFTER_MS - 1000
+      };
+      await fixture.command('SET', payoutJobKey(awaiting.id), JSON.stringify(awaiting));
+      if (failure === 'wrong-type') await fixture.command('SET', payoutStuckKey, 'synthetic-wrong-type');
+      const prior = await fixture.command('GET', payoutJobKey(awaiting.id));
+      const seen = [];
+      beforeRedisCommand = async values => {
+        if (!Array.isArray(values) || Array.isArray(values[0])) return;
+        seen.push(values);
+        if (failure === 'rejected' && values[0] === 'EVAL' && String(values[1]).startsWith('-- geek-mainnet-payout-update-v1')) throw new Error('Synthetic stuck update not delivered');
+      };
+      let claimed;
+      try { claimed = await worker({ action: 'claim' }); }
+      finally { beforeRedisCommand = null; }
+      const saved = await fixture.command('GET', payoutJobKey(awaiting.id));
+      const update = seen.filter(values => values[0] === 'EVAL' && String(values[1]).startsWith('-- geek-mainnet-payout-update-v1'));
+      assert.equal(update.length, 1, failure);
+      const script = String(update[0][1]);
+      const typeAt = script.indexOf("redis.call('TYPE', KEYS[4])");
+      const setAt = script.indexOf("redis.call('SET', KEYS[1], ARGV[2])");
+      const zaddAt = script.indexOf("redis.call('ZADD', KEYS[4], ARGV[6], ARGV[5])");
+      assert.ok(typeAt > 0 && typeAt < setAt && setAt < zaddAt, failure);
+      assert.equal(update[0][6], payoutStuckKey);
+      assert.deepEqual(seen.filter(values => values[0] === 'ZADD' && values[1] === payoutStuckKey), []);
+      if (failure === 'committed') {
+        assert.equal(claimed.statusCode, 200, JSON.stringify(claimed.body));
+        const stuck = JSON.parse(saved);
+        assert.equal(stuck.state, 'stuck');
+        assert.deepEqual(stuck.journal, journal);
+        assert.equal((await fixture.command('ZRANGE', payoutStuckKey, 0, -1)).includes(awaiting.id), true);
+        assert.equal((await fixture.command('ZRANGE', payoutIndexKey, 0, -1)).includes(awaiting.id), false);
+        assert.equal(await fixture.command('GET', payoutEarnKey(awaiting.id)), awaiting.id);
+        assert.match(events.join('\n'), /"code":"PAYOUT_UNCONFIRMED"/);
+        assert.equal(update[0].at(-1), String(stuck.stuckAt));
+      } else {
+        assert.equal(claimed.statusCode, 503, `${failure} ${claimed.statusCode} ${JSON.stringify(claimed.body)}`);
+        assert.equal(saved, prior, failure);
+        assert.equal(JSON.parse(saved).state, 'awaiting-indexer');
+        assert.equal((await fixture.command('ZRANGE', payoutIndexKey, 0, -1)).includes(awaiting.id), true);
+        assert.doesNotMatch(events.join('\n'), /PAYOUT_UNCONFIRMED/);
+        if (failure === 'wrong-type') {
+          assert.equal(await fixture.command('TYPE', payoutStuckKey), 'string');
+          assert.equal(await fixture.command('GET', payoutStuckKey), 'synthetic-wrong-type');
+        } else assert.deepEqual(await fixture.command('ZRANGE', payoutStuckKey, 0, -1), []);
+      }
+    }
+  } finally {
+    console.info = info;
+    beforeRedisCommand = null;
+  }
+});
