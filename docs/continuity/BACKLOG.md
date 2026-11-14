@@ -95,6 +95,9 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CHAIN-006 | P1 | in-progress | Port the automatic payout worker toward mainnet GEEK | Maintainer; founder controls explicit enable and the signing secret |
 | MINT-001 | P1 | in-progress | Preserve local mint request references across reloads | Maintainer; founder reviews release |
 | SEC-010 | P0 | in-progress | Serve future ranked questions and answers from private storage; treat published banks as exposed | Maintainer; founder selects private storage and approves rollout |
+| UX-029 | P1 | needs-evidence | Keep home account access in sync and expose receiving-wallet switching | Maintainer; founder reviews release |
+| CHAIN-007 | P1 | done | Require private-ranked proof before mainnet payout admission and signing | Maintainer; founder controls economic enable; independent reviewer unassigned |
+| OPS-005 | P1 | in-progress | Synchronize the bound Preview branch with current HQ releases | Maintainer; founder requested Preview deployment |
 
 ## CONT-001: Publish the continuation system
 
@@ -1443,3 +1446,51 @@ Acceptance:
 - Before a configured private season begins, refuse new private ranked starts without a question, run, season pin or gameplay/profile mutation; read-only Season 0 history remains available.
 
 Evidence/specification: [docs/MIGRATION-private-ranked-bank.md](../../docs/MIGRATION-private-ranked-bank.md), [server/question-source.js](../../server/question-source.js), [server/questions.js](../../server/questions.js), [tests/private-ranked-bank.test.js](../../tests/private-ranked-bank.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/profile-client.test.js](../../tests/profile-client.test.js), [api/leaderboard.js](../../api/leaderboard.js), [docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md](../../docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md), [docs/PRIVATE-BANK-LOCAL-REHEARSAL.md](../../docs/PRIVATE-BANK-LOCAL-REHEARSAL.md), [scripts/private-bank-rehearsal.mjs](../../scripts/private-bank-rehearsal.mjs), [tests/private-bank-rehearsal.test.js](../../tests/private-bank-rehearsal.test.js), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js).
+
+## UX-029: Keep home account access in sync and expose receiving-wallet switching
+
+**P1 / needs-evidence.** Owner: Maintainer; founder reviews release. Dependencies: AUTH-004.
+
+Next action: PR #287 merged as e177a551e22c3ff948af6a569d954e6a87cd0327. Production dpl_GtxZPNWRU3q6d48qJyhVrHm6oeSg is READY with both canonical domains; five exact canonical HTML/client HTTP 200 checks passed. Actual-device return-home and passkey-confirmed receiving-address acceptance remain separate.
+
+Acceptance:
+
+- Home reads the existing session without creating a guest or opening a wallet and sends signed-in players to My HQ. Guest and expired sessions offer Sign in.
+- Home rechecks on browser history restore; late reads cannot override newer account status and transient failures do not pretend the player signed out.
+- My HQ and Rewards expose Switch wallet for a saved receiving address, without requiring KasWare. Preparing a replacement does not change saved settings or prompt for credentials.
+- Saving a new receiving address retains the existing fresh passkey, exact network/destination/version binding and account identity. Guest, unsupported and busy states cannot switch or save.
+- Focused behavior and repository verification pass. Rendered and physical-device acceptance remain separate.
+
+Evidence/specification: [docs/HOME-ACCOUNT-WALLET.md](../../docs/HOME-ACCOUNT-WALLET.md), [public/assets/session-access.js](../../public/assets/session-access.js), [public/assets/receiving-address.js](../../public/assets/receiving-address.js), [tests/session-access-client.test.js](../../tests/session-access-client.test.js), [tests/receiving-address-client.test.js](../../tests/receiving-address-client.test.js).
+
+## CHAIN-007: Require private-ranked proof before mainnet payout admission and signing
+
+**P1 / done.** Owner: Maintainer; founder controls economic enable; independent reviewer unassigned. Dependencies: CHAIN-006.
+
+Next action: Retain the released private-proof boundary while integrating the held private bank and season controls. Reconcile any pre-v2 records in the protected operator process. Independent application/signing review and separate founder economic enable remain required; no automatic conversion of public Alpha credits.
+
+Acceptance:
+
+- Public, legacy, unranked, malformed bank versions and Season 0 results admit no mainnet job even when operational flags are enabled. The current public Alpha continues saving learning results.
+- Private-bank hash, season and answered count join the exact HMAC-bound payout proof. Unknown proof fields and incomplete or nonqualifying proof fail closed.
+- HQ claim, worker processing and signer validation reject missing/public/legacy proofs. Invalid pending jobs retain their raw record and earning lock in quarantine; no second signature or automatic upgrade.
+- Real-Redis adversarial tests cannot promote a public result using client-provided bank/season fields. Offline SDK tests reject bad proof before RPC input access or signing. Existing cap, replay, journal and lost-acknowledgment tests remain meaningful using explicitly annotated future-private fixtures.
+- Full repository verification passes; real private-bank cutover, live provider recovery and independent audit remain open. Treasury settings, secrets and deployment configuration stay unchanged.
+
+Evidence/specification: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [workers/mainnet/eligibility.mjs](../../workers/mainnet/eligibility.mjs), [workers/mainnet/job-mac.mjs](../../workers/mainnet/job-mac.mjs), [server/mainnet-payout.js](../../server/mainnet-payout.js), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js), [workers/mainnet/check-signing.mjs](../../workers/mainnet/check-signing.mjs).
+
+## OPS-005: Synchronize the bound Preview branch with current HQ releases
+
+**P1 / in-progress.** Owner: Maintainer; founder requested Preview deployment. Dependencies: SEC-010, CHAIN-007, UX-029.
+
+Next action: Verify the merged candidate, publish a PR into security/private-ranked-bank and deploy that exact reviewed result to preview.geekprotocol.xyz. Retain the existing Preview database/passkey origin bindings and disabled payments. Actual-device sign-in remains pending.
+
+Acceptance:
+
+- Preview retains the private-bank and season draft while incorporating main through 142f104419ea16dab6b1762b77ffd7cae2ed6fdb, including home account, receiving-wallet switch, published whitepaper/PDF, litepaper correction and v2 payout proof.
+- Home My HQ navigation works with the existing rate-limit-aware session controller; failed or stale status reads do not pretend sign-out or hide authenticated controls.
+- Canonical immutable bank identifiers from the real loader are accepted by v2 proof validation; public/malformed/unranked/Season 0 results remain nonpayable.
+- Full verification and isolated synthetic rehearsal pass before the bound branch moves. Preview production/write guards, namespace rules, separate provider bindings and disabled Preview payment settings stay intact.
+- The live Preview alias resolves to the new READY preview deployment with exact source checks and a browser-observed ready sign-in page. No production cutover, real account recovery, bank approval or payment activation is implied.
+
+Evidence/specification: [docs/PREVIEW-SYNC-2026-11-14.md](../../docs/PREVIEW-SYNC-2026-11-14.md), [docs/PRIVATE-BANK-LOCAL-REHEARSAL.md](../../docs/PRIVATE-BANK-LOCAL-REHEARSAL.md), [public/assets/session-access.js](../../public/assets/session-access.js), [workers/mainnet/eligibility.mjs](../../workers/mainnet/eligibility.mjs), [tests/session-access-client.test.js](../../tests/session-access-client.test.js), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js).

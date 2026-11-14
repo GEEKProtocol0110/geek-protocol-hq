@@ -230,6 +230,6 @@ Your next chapter, career unlock and achievement goal now share a dashboard entr
 
 [Trivia Royale](https://www.geekprotocol.xyz/royale/) implements The Battle of a Hundred Minds: choose a player limit from 2 to 100, invite the crew and start when at least two players are online and ready. The room does not need to be full. Wrong, missing and slowest correct answers eliminate players; exact ties stay together. A shared 15-second question clock, five-second reveal and stable-identity reconnect lead to the Last Mind Standing's visual room-result medal. No XP or monetary rewards. The implementation has local real-Redis 100-client tests; deployment and a real production pilot are pending. [Rules and architecture](docs/ROYALE-PROTOCOL.md).
 
-## Whitepaper draft
+## Whitepaper
 
-The [Version 1.0 whitepaper publication candidate](docs/WHITEPAPER.md) expands the existing litepaper with technical architecture, content integrity, economic boundaries and launch criteria. Version 1.0 is prepared for founder publication review. The web edition at `/whitepaper/` is generated from the same source with `npm run whitepaper:write`; `npm run whitepaper:check` verifies parity.
+The [published Version 1.0 whitepaper](docs/WHITEPAPER.md) expands the existing litepaper with technical architecture, content integrity, economic boundaries and launch criteria. The web edition at `/whitepaper/` is generated from the same source with `npm run whitepaper:write`; `npm run whitepaper:check` verifies parity and that the PDF edition is present. The PDF at `/whitepaper/Geek-Protocol-Whitepaper.pdf` is built with `python3 scripts/build-whitepaper-pdf.py` (requires reportlab, pypdf and DejaVu fonts).

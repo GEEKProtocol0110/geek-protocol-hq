@@ -1,7 +1,7 @@
 # Default owner for Geek Protocol HQ.
 * @GEEKProtocol0110
 
-# Changes to the private-bank leak check, its allowlist, tests and the gates around them need owner review.
+# Preserve private-bank review boundaries in Preview.
 /scripts/private-bank-leak-allowlist.json @GEEKProtocol0110
 /scripts/private-bank-leak-check.mjs @GEEKProtocol0110
 /tests/private-bank-leak-check.test.js @GEEKProtocol0110

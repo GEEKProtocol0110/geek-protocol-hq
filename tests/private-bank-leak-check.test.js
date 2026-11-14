@@ -7,7 +7,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { existsSync, symlinkSync } from 'node:fs';
 import test from 'node:test';
-import { reviewedPublicBrandKit, readAllowlist, FAKE_EXAMPLE_ID, OPAQUE_ALLOWLIST, answerHashes, highEntropy, isTextScanned, loadPrivateIndex, MAX_SCAN_BYTES, scanRepo, scanText, validRetiredAt } from '../scripts/private-bank-leak-check.mjs';
+import { reviewedPublicWhitepaperPdf, reviewedPublicBrandKit, readAllowlist, FAKE_EXAMPLE_ID, OPAQUE_ALLOWLIST, answerHashes, highEntropy, isTextScanned, loadPrivateIndex, MAX_SCAN_BYTES, scanRepo, scanText, validRetiredAt } from '../scripts/private-bank-leak-check.mjs';
 
 const TEMPLATE_ROW = JSON.parse(readFileSync(new URL('../private-bank-template/bank/kaspa.json', import.meta.url), 'utf8')).questions[0];
 const retired = { ...TEMPLATE_ROW, retiredReason: 'rotation', retiredAt: '2026-10-15' };
@@ -358,4 +358,16 @@ test('the published brand kit exception accepts only its reviewed path and exact
   assert.equal(reviewedPublicBrandKit(path, changed), false);
   assert.equal(reviewedPublicBrandKit('public/other.zip', bytes), false);
   assert.equal(reviewedPublicBrandKit(path, Buffer.from('fake archive')), false);
+});
+
+
+test('the published whitepaper PDF exception is exact-path and exact-byte only', () => {
+  const path = 'public/whitepaper/Geek-Protocol-Whitepaper.pdf';
+  const bytes = readFileSync(new URL('../' + path, import.meta.url));
+  assert.equal(reviewedPublicWhitepaperPdf(path, bytes), true);
+  const changed = Buffer.from(bytes); changed[changed.length - 1] ^= 1;
+  assert.equal(reviewedPublicWhitepaperPdf(path, changed), false);
+  assert.equal(reviewedPublicWhitepaperPdf('public/other.pdf', bytes), false);
+  assert.equal(reviewedPublicWhitepaperPdf(path, Buffer.from('%PDF-unreviewed')), false);
+  assert.equal(reviewedPublicWhitepaperPdf(path, Buffer.concat([bytes, Buffer.from('extra')])), false);
 });

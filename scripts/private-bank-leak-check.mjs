@@ -92,6 +92,10 @@ export const OPAQUE = /\.(?:gz|tgz|zip|br|pdf|7z|rar|tar|xz|bz2)$/i;
 // Other served archives remain forbidden, including any changed bytes at this path.
 export const reviewedPublicBrandKit = (path, bytes) => path === 'public/media/downloads/geek-protocol-brand-kit.zip'
   && createHash('sha256').update(bytes).digest('hex') === 'f3724d22ffe8911bda89a1ae41b8b3b7dd346325b0342076eba986e02a54fd7b';
+// Exact published v1.0 PDF from main #288. Its extracted public text was checked
+// with scanText; changed bytes or any other PDF path require a separate review.
+export const reviewedPublicWhitepaperPdf = (path, bytes) => path === 'public/whitepaper/Geek-Protocol-Whitepaper.pdf'
+  && createHash('sha256').update(bytes).digest('hex') === '662b9fcdc9d54461c7eb13993b285bc6d5a31b8b5d1227196fd51d5f9abb5388';
 export const OPAQUE_ALLOWLIST = 'scripts/private-bank-leak-allowlist.json';
 // The single documented example ID. Exact string only: no case, separator or digit variants.
 export const FAKE_EXAMPLE_ID = 'PRK-FAKE-000000-0000';
@@ -234,7 +238,7 @@ export const scanRepo = async (root, { privateDir } = {}) => {
     const abs = join(root, path);
     let st; try { st = statSync(abs); } catch { continue; }
     if (!st.isFile()) continue;
-    if (OPAQUE.test(path) && !reviewedOpaque(root, path, allow.entries) && !reviewedPublicBrandKit(path, readFileSync(abs))) { violations.push(`${path}: opaque archive/PDF cannot be scanned; keep it out of the repo`); continue; }
+    if (OPAQUE.test(path) && !reviewedOpaque(root, path, allow.entries) && !reviewedPublicBrandKit(path, readFileSync(abs)) && !reviewedPublicWhitepaperPdf(path, readFileSync(abs))) { violations.push(`${path}: opaque archive/PDF cannot be scanned; keep it out of the repo`); continue; }
     if (st.size > MAX_SCAN_BYTES) { violations.push(`${path}: larger than 32 MB, cannot be scanned`); continue; }
     files += 1;
     const text = readFileSync(abs, 'utf8');

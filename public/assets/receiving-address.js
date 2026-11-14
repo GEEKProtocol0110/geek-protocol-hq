@@ -5,6 +5,7 @@
   const find = s => root.querySelector(s), form = find('form'), network = find('[data-receiving-network]'), address = find('[data-receiving-input]');
   const save = find('[data-receiving-save]'), remove = find('[data-receiving-remove]'), retry = find('[data-receiving-retry]');
   const note = find('[data-receiving-status]'), access = find('[data-receiving-access]'), checked = find('[data-receiving-confirm]');
+  const switchWallet = find('[data-receiving-switch]'), currentAddress = find('[data-receiving-current]');
   const badge = find('[data-receiving-badge]'), hint = find('[data-receiving-hint]');
   let state = null, busy = false, phase = 'loading', needsRetry = false, signInRequired = false, currentNetwork = network.value;
   const drafts = Object.create(null);
@@ -39,6 +40,11 @@
     save.textContent = phase === 'confirming' ? 'Confirm on your device…' : phase === 'saving' ? 'Saving address…' : 'Save address';
     network.disabled = retry.disabled = busy;
     remove.hidden = !savedAddress(); retry.hidden = !needsRetry;
+    if (switchWallet) { switchWallet.hidden = !savedAddress(); switchWallet.disabled = busy || !enabled; }
+    if (currentAddress) {
+      currentAddress.hidden = !savedAddress();
+      currentAddress.textContent = savedAddress() ? `Saved receiving address: ${savedAddress()}` : '';
+    }
     form.hidden = !state || (!state.signedIn && !state.canEdit);
     root.setAttribute('aria-busy', busy ? 'true' : 'false');
     const status = phase === 'loading' ? 'loading' : signInRequired ? 'guest' : !state ? 'unavailable' : !state.signedIn && !state.canEdit ? 'guest' : dirty() ? 'unsaved' : savedAddress() ? 'saved' : 'empty';
@@ -97,6 +103,12 @@
   };
   form.addEventListener('submit', event => { event.preventDefault(); return change('set'); });
   remove.addEventListener('click', () => change('remove'));
+  switchWallet?.addEventListener('click', () => {
+    if (busy || !state?.canEdit || !supported || !savedAddress()) return;
+    address.value = ''; drafts[network.value] = ''; checked.checked = false; controls();
+    note.textContent = 'Paste another wallet’s receiving address, check its network, then save with your Geek passkey. Your saved address stays unchanged until you confirm. Your Geek account and progress stay the same.';
+    address.focus();
+  });
   network.addEventListener('change', () => { rememberDraft(); currentNetwork = network.value; showNetwork(); });
   address.addEventListener('input', () => { checked.checked = false; controls(); });
   checked.addEventListener('change', controls);

@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Check out pinned source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - name: Use Node.js 24 with current npm audit support
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
@@ -35,6 +37,10 @@ jobs:
           DUEL_REQUIRE_REDIS: "1"
           QUEST_REQUIRE_REDIS: "1"
         run: npm test
+      - name: Verify private-bank boundaries
+        run: npm run private-bank:check && npm run private-bank:leak-check
+      - name: Rehearse private-bank flows with isolated synthetic data
+        run: npm run private-bank:rehearse
       - name: Verify security evidence
         run: npm run security:check
       - name: Verify real SDK transaction construction offline

@@ -2,7 +2,7 @@
 
 ## Proof of Learning on Kaspa
 
-Version 1.0 · November 2, 2026 · Publication candidate
+Version 1.0 · November 2, 2026 · Published
 
 All Hope, No Hype.
 
@@ -180,7 +180,7 @@ Expansion into stores, collectibles, creator payments, education, professional l
 
 ### 13. Sources and document control
 
-Version 1.0 uses the HQ code and maintained project record at main commit 0302dfe01fc6447a74972978649b2b44c98cf5c6. The numbered references identify supporting documents and pending proposals. Repository implementation and dated evidence govern operational status. This edition is prepared for founder review; its label must become an approved release only after publication is accepted. The litepaper is the shorter overview and may require separate editorial reconciliation. No whitepaper revision activates an economic or governance gate.
+Version 1.0 uses the HQ code and maintained project record at main commit 0302dfe01fc6447a74972978649b2b44c98cf5c6. The numbered references identify supporting documents and pending proposals. Repository implementation and dated evidence govern operational status. The founder approved this edition for publication on November 13, 2026. The litepaper is the shorter overview and may require separate editorial reconciliation. No whitepaper revision activates an economic or governance gate.
 
 [1] [Kaspa project and network overview](https://kaspa.org/).
 [2] [Kaspa Rust node reference implementation](https://github.com/kaspanet/rusty-kaspa).

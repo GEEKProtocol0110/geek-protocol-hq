@@ -22,7 +22,8 @@
   let signedIn = false;
   const walletLink = document.querySelector('[data-wallet-hq-link]');
   if (walletLink) {
-    walletLink.value = `https://www.geekprotocol.xyz/sign-in/${Object.hasOwn(nextPages, requestedNext) ? `?next=${requestedNext}` : ''}`;
+    const handoffOrigin = location.origin === 'https://preview.geekprotocol.xyz' ? 'https://preview.geekprotocol.xyz' : 'https://www.geekprotocol.xyz';
+    walletLink.value = `${handoffOrigin}/sign-in/${Object.hasOwn(nextPages, requestedNext) ? `?next=${requestedNext}` : ''}`;
     const launch = document.querySelector('[data-wallet-open-app]');
     const launchStatus = document.querySelector('[data-wallet-launch-status]');
     if (launch && /Android/i.test(navigator.userAgent || '')) {

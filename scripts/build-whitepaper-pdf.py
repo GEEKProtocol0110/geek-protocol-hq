@@ -14,7 +14,7 @@ from reportlab.graphics.shapes import Drawing, Rect, Line, Circle, String, Polyg
 from reportlab.graphics import renderSVG
 
 ROOT=Path(__file__).resolve().parents[1]
-OUT=Path(sys.argv[1]) if len(sys.argv)>1 else ROOT/'output/pdf/Geek-Protocol-Whitepaper-v1.0-Publication-Candidate.pdf'
+OUT=Path(sys.argv[1]) if len(sys.argv)>1 else ROOT/'public/whitepaper/Geek-Protocol-Whitepaper.pdf'
 OUT.parent.mkdir(parents=True,exist_ok=True)
 for name,file in [('Body','DejaVuSans.ttf'),('Bold','DejaVuSans-Bold.ttf')]:
     pdfmetrics.registerFont(TTFont(name, '/usr/share/fonts/truetype/dejavu/'+file))
@@ -94,13 +94,13 @@ def furniture(c,doc):
         c.setFont('Body',11);c.setFillColor(HexColor('#c7dbd5'));c.drawString(52,245,'Learn. Practice. Understand. Return.')
         c.setStrokeColor(TEAL);c.line(52,182,W-52,182)
         c.setFont('Bold',10);c.setFillColor(GOLD);c.drawString(52,153,'ALL HOPE, NO HYPE.')
-        c.setFont('Body',9);c.setFillColor(HexColor('#c7dbd5'));c.drawString(52,127,'November 2, 2026  /  Publication candidate')
+        c.setFont('Body',9);c.setFillColor(HexColor('#c7dbd5'));c.drawString(52,127,'November 2, 2026  /  Published')
         c.drawString(52,106,'Prepared by Geek Protocol')
     else:
         c.setFont('Bold',8);c.setFillColor(TEAL);c.drawString(52,H-31,'GEEK / PROTOCOL')
         c.setFont('Body',7.5);c.setFillColor(MUTED);c.drawRightString(W-52,H-31,'WHITEPAPER  /  VERSION 1.0')
         c.setStrokeColor(HexColor('#d4e0da'));c.line(52,43,W-52,43)
-        c.setFont('Body',7.4);c.setFillColor(MUTED);c.drawString(52,28,'All Hope, No Hype.  |  Publication candidate');c.drawRightString(W-52,28,f'{doc.page:02}')
+        c.setFont('Body',7.4);c.setFillColor(MUTED);c.drawString(52,28,'All Hope, No Hype.  |  Published');c.drawRightString(W-52,28,f'{doc.page:02}')
     c.restoreState()
 
 def make_table(rows):
@@ -115,7 +115,7 @@ def make_table(rows):
 source=(ROOT/'docs/WHITEPAPER.md').read_text()
 story=[Spacer(1,1),PageBreak(),Paragraph('Inside this whitepaper',ParagraphStyle('ContentsTitle',parent=heading,spaceBefore=8)),Paragraph('A learning ecosystem, its technical foundation, and its path to responsible economic activation.',body),Spacer(1,10)]
 toc=TableOfContents();toc.levelStyles=[ParagraphStyle('TOC',fontName='Body',fontSize=9.3,leading=14,textColor=INK,spaceBefore=3,leftIndent=0,rightIndent=18)]
-story.extend([toc,Spacer(1,22),make_table([['Document control','Edition'],['Version / date','1.0 / November 2, 2026'],['Status','Publication candidate; founder approval pending'],['Publisher','Geek Protocol'],['Scope','Current Alpha, proposed economy, and release requirements']]),PageBreak()])
+story.extend([toc,Spacer(1,22),make_table([['Document control','Edition'],['Version / date','1.0 / November 2, 2026'],['Status','Published; approved by the founder on November 13, 2026'],['Publisher','Geek Protocol'],['Scope','Current Alpha, proposed economy, and release requirements']]),PageBreak()])
 for block in source.strip().split('\n\n')[4:]:
     if block.startswith('### '):
         if block.startswith('### 13.'):story.append(PageBreak())

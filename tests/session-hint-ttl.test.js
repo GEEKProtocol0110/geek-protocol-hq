@@ -130,11 +130,11 @@ test('home page sign-in and recover prompts hide when signed in and come back af
   assert.equal(expired.homeNodes[0].hidden, false);
   const stale = page({ reply: limited, local: at(DAY + 1), home: true });
   await stale.run();
-  assert.equal(stale.homeNodes[0].hidden, false);
+  assert.equal(stale.homeNodes[0].hidden, true, 'unknown status must not claim sign-out');
 });
 
 test('home page markup tags both prompts as signed-out only', () => {
   const html = read('../public/index.html');
-  assert.match(html, /<span data-signed-out-only><br \/><a href="\/sign-in\/">Already a Geek\? Sign in →<\/a>/);
+  assert.match(html, /<span data-signed-out-only><a href="\/sign-in\/">Already a Geek\? Sign in →<\/a>/);
   assert.match(html, /<a href="\/sign-in\/" data-signed-out-only>Recover your Geek player/);
 });

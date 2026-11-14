@@ -1,3 +1,4 @@
+import { privateRankedProof } from './eligibility.mjs';
 import { Wasm } from '@kasplex/kiwi';
 import { readRpcHealth, rpcDeadline } from './rpc-health.mjs';
 import { GEEK_DECIMALS, GEEK_DEPLOYMENT_HASH, GEEK_TICKER, MAINNET_PAYOUT_SENDER, expectedRaw } from './schedule.mjs';
@@ -66,6 +67,7 @@ export const inscription = (key, job) => new Wasm.ScriptBuilder()
 
 export async function prepareTransactions(key, job, entries, policy = livePolicy) {
   const rules = policyOf(policy);
+  if (!privateRankedProof(job?.proof)) throw new Error('PRIVATE_RANKED_PROOF_REQUIRED');
   if (!jobMacMatches(job, rules.jobHmacSecret)) throw new Error('JOB_MAC_INVALID');
   const sender = key.toPublicKey().toAddress(rules.addressNetwork).toString();
   // Exact amount for this proof's round and server-graded correctCount. Another
@@ -142,6 +144,7 @@ export function createSigner(secret, rpc) {
   const sender = () => key.toPublicKey().toAddress('mainnet').toString();
   return {
     async verify(config, job) {
+      if (!privateRankedProof(job?.proof)) throw new Error('PRIVATE_RANKED_PROOF_REQUIRED');
       const info = await readRpcHealth(rpc);
       if (info.networkId !== 'mainnet' || !info.isSynced || !info.hasUtxoIndex) throw new Error('MAINNET_SYNCED_NODE_REQUIRED');
       if (sender() !== MAINNET_PAYOUT_SENDER || config?.sender !== MAINNET_PAYOUT_SENDER || job?.sender !== MAINNET_PAYOUT_SENDER ||
@@ -161,6 +164,7 @@ export function createSigner(secret, rpc) {
       }
     },
     async prepare(config, job, priorReveal = '') {
+      if (!privateRankedProof(job?.proof)) throw new Error('PRIVATE_RANKED_PROOF_REQUIRED');
       if (priorReveal) throw new Error('JOB_ALREADY_SIGNED');
       if (!jobMacMatches(job, process.env.MAINNET_PAYOUT_JOB_HMAC)) throw new Error('JOB_MAC_INVALID');
       const { entries } = await bounded(rpc.getUtxosByAddresses({ addresses: [config.sender] }));

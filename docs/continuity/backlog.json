@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-13",
+  "updatedAt": "2026-11-14",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2268,6 +2268,90 @@
         "Assembled on main 12a0228 with all four exact input heads. Full native-Redis verify: 893 HQ tests, 892 passed, zero failed, one root-only permission skip; nine signer checks and all supporting checks passed. Added safe JSON CLI errors and mandatory concept IDs in authoring tooling with synthetic regressions. No real private bank content or provider setting changed; hosted playable rehearsal remains blocked by missing immutable pin and Preview write guard.",
         "November 13 source candidate on #231: 103 focused synthetic bank/leak/resilience/season tests pass, including exact December UTC boundary and no non-rate-limit writes before start. Current-main integration and real-bank/hosted rehearsal acceptance remain separate.",
         "November 13: #284 passed CI and both Vercel checks and merged into the held assembly as 73f80ce. Integrated current main dbdb7f0, retained later payout and public-site changes, and blocked mainnet jobs for public/legacy/unranked results. The credential-scrubbed local synthetic rehearsal passes 105 tests; full combined suite passes 1077 application tests with zero failures/skips. Full supporting verification recorded in the review candidate. No real-bank or hosted acceptance claimed."
+      ]
+    },
+    {
+      "id": "UX-029",
+      "priority": "P1",
+      "status": "needs-evidence",
+      "title": "Keep home account access in sync and expose receiving-wallet switching",
+      "owner": "Maintainer; founder reviews release",
+      "nextAction": "PR #287 merged as e177a551e22c3ff948af6a569d954e6a87cd0327. Production dpl_GtxZPNWRU3q6d48qJyhVrHm6oeSg is READY with both canonical domains; five exact canonical HTML/client HTTP 200 checks passed. Actual-device return-home and passkey-confirmed receiving-address acceptance remain separate.",
+      "acceptance": [
+        "Home reads the existing session without creating a guest or opening a wallet and sends signed-in players to My HQ. Guest and expired sessions offer Sign in.",
+        "Home rechecks on browser history restore; late reads cannot override newer account status and transient failures do not pretend the player signed out.",
+        "My HQ and Rewards expose Switch wallet for a saved receiving address, without requiring KasWare. Preparing a replacement does not change saved settings or prompt for credentials.",
+        "Saving a new receiving address retains the existing fresh passkey, exact network/destination/version binding and account identity. Guest, unsupported and busy states cannot switch or save.",
+        "Focused behavior and repository verification pass. Rendered and physical-device acceptance remain separate."
+      ],
+      "dependsOn": [
+        "AUTH-004"
+      ],
+      "evidence": [
+        "docs/HOME-ACCOUNT-WALLET.md",
+        "public/assets/session-access.js",
+        "public/assets/receiving-address.js",
+        "tests/session-access-client.test.js",
+        "tests/receiving-address-client.test.js"
+      ]
+    },
+    {
+      "id": "CHAIN-007",
+      "priority": "P1",
+      "status": "done",
+      "title": "Require private-ranked proof before mainnet payout admission and signing",
+      "owner": "Maintainer; founder controls economic enable; independent reviewer unassigned",
+      "nextAction": "Retain the released private-proof boundary while integrating the held private bank and season controls. Reconcile any pre-v2 records in the protected operator process. Independent application/signing review and separate founder economic enable remain required; no automatic conversion of public Alpha credits.",
+      "acceptance": [
+        "Public, legacy, unranked, malformed bank versions and Season 0 results admit no mainnet job even when operational flags are enabled. The current public Alpha continues saving learning results.",
+        "Private-bank hash, season and answered count join the exact HMAC-bound payout proof. Unknown proof fields and incomplete or nonqualifying proof fail closed.",
+        "HQ claim, worker processing and signer validation reject missing/public/legacy proofs. Invalid pending jobs retain their raw record and earning lock in quarantine; no second signature or automatic upgrade.",
+        "Real-Redis adversarial tests cannot promote a public result using client-provided bank/season fields. Offline SDK tests reject bad proof before RPC input access or signing. Existing cap, replay, journal and lost-acknowledgment tests remain meaningful using explicitly annotated future-private fixtures.",
+        "Full repository verification passes; real private-bank cutover, live provider recovery and independent audit remain open. Treasury settings, secrets and deployment configuration stay unchanged."
+      ],
+      "dependsOn": [
+        "CHAIN-006"
+      ],
+      "evidence": [
+        "docs/MAINNET-GEEK-PAYOUT.md",
+        "workers/mainnet/eligibility.mjs",
+        "workers/mainnet/job-mac.mjs",
+        "server/mainnet-payout.js",
+        "tests/mainnet-payout.test.js",
+        "workers/mainnet/check-signing.mjs"
+      ],
+      "completedAt": "2026-11-13",
+      "completionEvidence": [
+        "PR #289, https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/289, squash-merged 61d5b6d133089e68f5f0cdc62eff03abd97c1293. Exact-head Security verification 43522698604 and both Vercel checks passed. Local full verification: 921 application + 9 testnet + 6 mainnet signer checks, 936 total, zero failures/skips. Negative public-API control fails against the original admission code.",
+        "Production dpl_9CsS9j28cma3jg4eJUEQj7gwVjmW READY on that exact merge with both canonical domains; credential-free worker GET returns 405, Allow POST and no-store. This confirms delivery/module loading, not mainnet signing, private-bank acceptance, independent audit or physical-device acceptance."
+      ]
+    },
+    {
+      "id": "OPS-005",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Synchronize the bound Preview branch with current HQ releases",
+      "owner": "Maintainer; founder requested Preview deployment",
+      "nextAction": "Verify the merged candidate, publish a PR into security/private-ranked-bank and deploy that exact reviewed result to preview.geekprotocol.xyz. Retain the existing Preview database/passkey origin bindings and disabled payments. Actual-device sign-in remains pending.",
+      "acceptance": [
+        "Preview retains the private-bank and season draft while incorporating main through 142f104419ea16dab6b1762b77ffd7cae2ed6fdb, including home account, receiving-wallet switch, published whitepaper/PDF, litepaper correction and v2 payout proof.",
+        "Home My HQ navigation works with the existing rate-limit-aware session controller; failed or stale status reads do not pretend sign-out or hide authenticated controls.",
+        "Canonical immutable bank identifiers from the real loader are accepted by v2 proof validation; public/malformed/unranked/Season 0 results remain nonpayable.",
+        "Full verification and isolated synthetic rehearsal pass before the bound branch moves. Preview production/write guards, namespace rules, separate provider bindings and disabled Preview payment settings stay intact.",
+        "The live Preview alias resolves to the new READY preview deployment with exact source checks and a browser-observed ready sign-in page. No production cutover, real account recovery, bank approval or payment activation is implied."
+      ],
+      "dependsOn": [
+        "SEC-010",
+        "CHAIN-007",
+        "UX-029"
+      ],
+      "evidence": [
+        "docs/PREVIEW-SYNC-2026-11-14.md",
+        "docs/PRIVATE-BANK-LOCAL-REHEARSAL.md",
+        "public/assets/session-access.js",
+        "workers/mainnet/eligibility.mjs",
+        "tests/session-access-client.test.js",
+        "tests/mainnet-payout.test.js"
       ]
     }
   ]

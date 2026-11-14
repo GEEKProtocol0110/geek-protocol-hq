@@ -1,4 +1,5 @@
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
+import { privateRankedContext, privateRankedProof } from '../workers/mainnet/eligibility.mjs';
 import { jobMac, jobMacMatches, jobMacSecret } from '../workers/mainnet/job-mac.mjs';
 import { redis, rateLimit } from './redis.js';
 import { isValidKaspaMainnetAddress } from './kaspa-address.js';
@@ -78,7 +79,7 @@ export function decodeJob(raw, id) {
       job.network !== 'mainnet' || job.protocol !== GEEK_PROTOCOL || job.ticker !== GEEK_TICKER || !hex(job.configFingerprint, 64) ||
       job.deploymentHash !== GEEK_DEPLOYMENT_HASH || job.decimals !== String(GEEK_DECIMALS) || job.amount !== expectedRaw(proof) ||
       job.sender !== MAINNET_PAYOUT_SENDER || !isValidKaspaMainnetAddress(job.recipient) || job.sender === job.recipient ||
-      !hex(proof?.runId, 40) || !qualifyingProofCorrect(proof) || !Number.isSafeInteger(job.createdAt) || job.createdAt <= 0 ||
+      !hex(proof?.runId, 40) || !privateRankedProof(proof) || !qualifyingProofCorrect(proof) || !Number.isSafeInteger(job.createdAt) || job.createdAt <= 0 ||
       !states.includes(job.state) ||
       (job.state === 'queued' && job.journal) ||
       (journalRequired && !validJournal(job.journal)) ||
@@ -151,10 +152,8 @@ if ARGV[20] ~= '' and redis.call('EXISTS', KEYS[16]) == 0 and redis.call('EXISTS
 end`;
 
 export async function prepareMainnetPayout(playerId, run) {
-  // Public/exposed, mismatched and legacy results are never payable, even if an
-  // operator later enables the worker. Eligibility is server-bound, not client input.
-  if (run?.unranked || !run?.bankVersion || run.bankVersion === 'public'
-    || !/^season-[1-9]\d{0,3}$/.test(run.season || '')) return null;
+  // Public, legacy, mismatched and Season 0 Alpha results are never payable.
+  if (!privateRankedContext(run)) return null;
   const config = mainnetPayoutConfig();
   if (!config) return null;
   const quote = quoteGeekReward(run);
@@ -167,7 +166,7 @@ export async function prepareMainnetPayout(playerId, run) {
   if (!Number.isSafeInteger(record.mainnetEligibleAt) || record.mainnetEligibleAt <= 0 || record.mainnetEligibleAt > Date.now()) return null;
   const createdAt = Date.now();
   const id = earningId(playerId, run, quote, createdAt);
-  const proof = { kind: quote.kind, round: quote.round, runId: run.id, correctCount: quote.correctCount, answered: run.roundAnswers.length };
+  const proof = { kind: quote.kind, round: quote.round, runId: run.id, correctCount: quote.correctCount, answered: run.roundAnswers.length, bankVersion: run.bankVersion, season: run.season };
   if (expectedRaw(proof) !== quote.raw) throw new Error('MAINNET_PAYOUT_AMOUNT_INVALID');
   const job = {
     schema: 1, id, version: nonce(), state: 'queued', playerId, network: config.network, protocol: config.protocol,
