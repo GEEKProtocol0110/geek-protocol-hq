@@ -106,10 +106,10 @@ test('a concurrent character save survives a ranked answer, and a stale entry de
   assert.equal((await answer(cookie, payload)).statusCode, 409);
   assert.equal((await answer(cookie, payload)).statusCode, 200);
   assert.equal((await loadProfile(id)).avatarCustomization.palette, 'cyan');
-  const raw = await fixture.command('GET', `geek:run:${payload.run.id}`), before = await loadProfile(id);
+  const raw = await fixture.command('GET', `geek:development:run:${payload.run.id}`), before = await loadProfile(id);
   beforeCommit = async () => { const p = await stored(profileKeyFor(id)); p.avatarId = 'giga-genesis'; await fixture.command('SET', profileKeyFor(id), JSON.stringify(p)); };
   assert.equal((await ranked(cookie, 'continue', { runId: payload.run.id })).statusCode, 409);
-  assert.equal(await fixture.command('GET', `geek:run:${payload.run.id}`), raw); assert.equal((await loadProfile(id)).balance, before.balance);
+  assert.equal(await fixture.command('GET', `geek:development:run:${payload.run.id}`), raw); assert.equal((await loadProfile(id)).balance, before.balance);
   const accepted = await ranked(cookie, 'continue', { runId: payload.run.id }); assert.equal(accepted.statusCode, 200);
   assert.equal((await loadProfile(id)).balance, before.balance - 40);
 });
@@ -133,7 +133,7 @@ test('a damaged profile blocks reads, starts and cosmetic saves without replacin
     assert.equal((await ranked(cookie, 'start', { mode: 'daily' })).statusCode, 503);
     assert.equal((await call(collectiblesHandler, 'POST', { action: 'customize-avatar', customization: defaultGeek }, cookie)).statusCode, 503);
     assert.equal(await fixture.command('GET', key), raw); assert.equal(await fixture.command('GET', prestigeKeyFor(id)), null);
-    assert.deepEqual(await fixture.command('KEYS', `geek:daily:${id}:*`), []);
+    assert.deepEqual(await fixture.command('KEYS', `geek:development:daily:${id}:*`), []);
   }
 });
 
@@ -149,9 +149,9 @@ test('a lost start reply can resume the same daily attempt without claiming a se
   assert.equal((await ranked(cookie, 'start', { category: 'kaspa', mode: 'daily' })).statusCode, 503);
   const recovered = await call(rankedHandler, 'GET', undefined, cookie, { resume: '1' });
   assert.equal(recovered.statusCode, 200); assert.equal(recovered.body.run.status, 'question');
-  const raw = await fixture.command('GET', `geek:run:${recovered.body.run.id}`);
+  const raw = await fixture.command('GET', `geek:development:run:${recovered.body.run.id}`);
   assert.equal((await resume(cookie, recovered.body.run.id)).body.question.token, recovered.body.question.token);
-  assert.equal(await fixture.command('GET', `geek:run:${recovered.body.run.id}`), raw);
+  assert.equal(await fixture.command('GET', `geek:development:run:${recovered.body.run.id}`), raw);
   assert.equal((await ranked(cookie, 'start', { category: 'kaspa', mode: 'daily' })).statusCode, 409);
   assert.equal((await call(rankedHandler, 'GET', undefined, await session(), { resume: '1' })).statusCode, 404);
 });
@@ -160,16 +160,16 @@ test('a failed start snapshot does not consume a Daily attempt', async () => {
   const cookie = await session(), id = pid(cookie);
   beforeCommit = async () => { const p = await loadProfile(id); await fixture.command('SET', profileKeyFor(id), JSON.stringify({ ...p, avatarId: 'giga-builder' })); };
   assert.equal((await ranked(cookie, 'start', { category: 'kaspa', mode: 'daily' })).statusCode, 409);
-  assert.deepEqual(await fixture.command('KEYS', `geek:daily:${id}:*`), []);
+  assert.deepEqual(await fixture.command('KEYS', `geek:development:daily:${id}:*`), []);
   assert.equal((await ranked(cookie, 'start', { category: 'kaspa', mode: 'daily' })).statusCode, 201);
 });
 
 test('a damaged audit index rejects a round award before changing its run, balance or XP', async () => {
   const cookie = await session(), payload = await beforeLast(cookie, 'gauntlet'), id = pid(cookie);
-  const raw = await fixture.command('GET', `geek:run:${payload.run.id}`), p = await fixture.command('GET', profileKeyFor(id));
+  const raw = await fixture.command('GET', `geek:development:run:${payload.run.id}`), p = await fixture.command('GET', profileKeyFor(id));
   await fixture.command('SET', 'geek:audit:index', 'damaged-index');
   const rejected = await answer(cookie, payload); assert.equal(rejected.statusCode, 503); assert.equal(rejected.body.code, 'AUDIT_STATE_INVALID');
-  assert.equal(await fixture.command('GET', `geek:run:${payload.run.id}`), raw);
+  assert.equal(await fixture.command('GET', `geek:development:run:${payload.run.id}`), raw);
   assert.equal(await fixture.command('GET', profileKeyFor(id)), p);
   await fixture.command('DEL', 'geek:audit:index'); assert.equal((await answer(cookie, payload)).statusCode, 200);
 });

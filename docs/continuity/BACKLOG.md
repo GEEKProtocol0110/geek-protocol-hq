@@ -94,8 +94,10 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | OPS-004 | P2 | in-progress | Record default code ownership and limited weekly dependency updates | Maintainer; founder reviews the pull request |
 | CHAIN-006 | P1 | in-progress | Port the automatic payout worker toward mainnet GEEK | Maintainer; founder controls explicit enable and the signing secret |
 | MINT-001 | P1 | in-progress | Preserve local mint request references across reloads | Maintainer; founder reviews release |
+| SEC-010 | P0 | in-progress | Serve future ranked questions and answers from private storage; treat published banks as exposed | Maintainer; founder selects private storage and approves rollout |
 | UX-029 | P1 | needs-evidence | Keep home account access in sync and expose receiving-wallet switching | Maintainer; founder reviews release |
 | CHAIN-007 | P1 | done | Require private-ranked proof before mainnet payout admission and signing | Maintainer; founder controls economic enable; independent reviewer unassigned |
+| OPS-005 | P1 | done | Synchronize the bound Preview branch with current HQ releases | Maintainer; founder requested Preview deployment |
 
 ## CONT-001: Publish the continuation system
 
@@ -1427,6 +1429,24 @@ Acceptance:
 
 Evidence/specification: [docs/MINT-RECEIPT-HISTORY.md](../../docs/MINT-RECEIPT-HISTORY.md), [public/mint/assets/mint.js](../../public/mint/assets/mint.js), [tests/mint-client.test.js](../../tests/mint-client.test.js).
 
+## SEC-010: Serve future ranked questions and answers from private storage; treat published banks as exposed
+
+**P0 / in-progress.** Owner: Maintainer; founder selects private storage and approves rollout. Dependencies: none.
+
+Next action: Review current-HQ integration on main dbdb7f0 plus held bank/start-guard 73f80ce and the local synthetic rehearsal. Obtain approved immutable artifact/editorial/capacity evidence and define a bounded hosted rehearsal before any production cutover. Payouts and Preview guards remain held.
+
+Acceptance:
+
+- Ranked rounds draw only from a configured private source or fail closed in production.
+- Published and retired public rows stay addressable so saved runs grade with their original keys; private IDs cannot collide with them.
+- Issued questions never include correctIndex; a public fixture bank with no real answers supports dev/tests.
+- Payouts stay disabled.
+- Play and My HQ default to the current ranked season, label every board and preserve selectable Season 0 history.
+- Deferred answer recovery confirms saving without showing correctness before round lock.
+- Before a configured private season begins, refuse new private ranked starts without a question, run, season pin or gameplay/profile mutation; read-only Season 0 history remains available.
+
+Evidence/specification: [docs/MIGRATION-private-ranked-bank.md](../../docs/MIGRATION-private-ranked-bank.md), [server/question-source.js](../../server/question-source.js), [server/questions.js](../../server/questions.js), [tests/private-ranked-bank.test.js](../../tests/private-ranked-bank.test.js), [tests/ranked-client.test.js](../../tests/ranked-client.test.js), [tests/profile-client.test.js](../../tests/profile-client.test.js), [api/leaderboard.js](../../api/leaderboard.js), [docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md](../../docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md), [docs/PRIVATE-BANK-LOCAL-REHEARSAL.md](../../docs/PRIVATE-BANK-LOCAL-REHEARSAL.md), [scripts/private-bank-rehearsal.mjs](../../scripts/private-bank-rehearsal.mjs), [tests/private-bank-rehearsal.test.js](../../tests/private-bank-rehearsal.test.js), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js).
+
 ## UX-029: Keep home account access in sync and expose receiving-wallet switching
 
 **P1 / needs-evidence.** Owner: Maintainer; founder reviews release. Dependencies: AUTH-004.
@@ -1458,3 +1478,19 @@ Acceptance:
 - Full repository verification passes; real private-bank cutover, live provider recovery and independent audit remain open. Treasury settings, secrets and deployment configuration stay unchanged.
 
 Evidence/specification: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [workers/mainnet/eligibility.mjs](../../workers/mainnet/eligibility.mjs), [workers/mainnet/job-mac.mjs](../../workers/mainnet/job-mac.mjs), [server/mainnet-payout.js](../../server/mainnet-payout.js), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js), [workers/mainnet/check-signing.mjs](../../workers/mainnet/check-signing.mjs).
+
+## OPS-005: Synchronize the bound Preview branch with current HQ releases
+
+**P1 / done.** Owner: Maintainer; founder requested Preview deployment. Dependencies: SEC-010, CHAIN-007, UX-029.
+
+Next action: Use the updated Preview sign-in page for actual-device acceptance. Preserve its separate data/origin bindings and closed payment/ranked-write guards. Main remains unchanged; private-bank production cutover and independent review stay open.
+
+Acceptance:
+
+- Preview retains the private-bank and season draft while incorporating main through 142f104419ea16dab6b1762b77ffd7cae2ed6fdb, including home account, receiving-wallet switch, published whitepaper/PDF, litepaper correction and v2 payout proof.
+- Home My HQ navigation works with the existing rate-limit-aware session controller; failed or stale status reads do not pretend sign-out or hide authenticated controls.
+- Canonical immutable bank identifiers from the real loader are accepted by v2 proof validation; public/malformed/unranked/Season 0 results remain nonpayable.
+- Full verification and isolated synthetic rehearsal pass before the bound branch moves. Preview production/write guards, namespace rules, separate provider bindings and disabled Preview payment settings stay intact.
+- The live Preview alias resolves to the new READY preview deployment with exact source checks and a browser-observed ready sign-in page. No production cutover, real account recovery, bank approval or payment activation is implied.
+
+Evidence/specification: [docs/PREVIEW-SYNC-2026-11-14.md](../../docs/PREVIEW-SYNC-2026-11-14.md), [docs/PRIVATE-BANK-LOCAL-REHEARSAL.md](../../docs/PRIVATE-BANK-LOCAL-REHEARSAL.md), [public/assets/session-access.js](../../public/assets/session-access.js), [workers/mainnet/eligibility.mjs](../../workers/mainnet/eligibility.mjs), [tests/session-access-client.test.js](../../tests/session-access-client.test.js), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js).

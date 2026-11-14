@@ -4,6 +4,20 @@ import { prestigeKeyFor } from './prestige-state.js';
 import { redis } from './redis.js';
 import { AUTO_PREFLIGHT_LUA, AUTO_COMMIT_LUA } from './testnet-automatic.js';
 import { MAINNET_PAYOUT_COMMIT_LUA, MAINNET_PAYOUT_PREFLIGHT_LUA } from './mainnet-payout.js';
+import { assertRankedWritesAllowed, seasonKeyNamespace } from './seasons.js';
+
+// Ranked run, active-run and Daily keys share the season key namespace:
+// production keeps the original `geek:` keys (runs active across a deploy keep
+// resolving); preview/development and local runs without VERCEL_ENV use
+// `geek:<env>:` / `geek:development:`. Deployed (VERCEL set) without VERCEL_ENV
+// fails closed with RANKED_ENV_UNKNOWN.
+export const rankedKeyNamespace = (env = process.env) => seasonKeyNamespace(env);
+export const runKeyFor = (id, env = process.env) => `${rankedKeyNamespace(env)}run:${id}`;
+export const activeRunKeyFor = (sessionId, env = process.env) => `${rankedKeyNamespace(env)}ranked:active:${sessionId}`;
+export const dailyKeyFor = (playerId, day, env = process.env) => `${rankedKeyNamespace(env)}daily:${playerId}:${day}`;
+// Season 0 boards and player profiles are shared, un-namespaced keys. Deployed
+// non-production environments may not write ranked state to them at all.
+export { assertRankedWritesAllowed };
 
 // Grades, career changes, entry debits and their receipt commit together.
 // Exact snapshots prevent a game from overwriting an avatar, trade or prestige.
@@ -31,6 +45,7 @@ ${MAINNET_PAYOUT_COMMIT_LUA}
 return 1`;
 
 export const commitRankedState = async ({ playerId, run, previousRun = '', profile, ttl = 7200, auditInput, dailyKey, activeKey, automaticReward, mainnetPayout }) => {
+  assertRankedWritesAllowed();
   const snapshot = profileSnapshot(profile);
   if (!snapshot) throw new Error('PROFILE_STATE_INVALID');
   const next = profileJson(profile);
@@ -40,7 +55,7 @@ export const commitRankedState = async ({ playerId, run, previousRun = '', profi
   const [event, index] = record ? auditWriteCommands(record) : [];
   const profileKey = profileKeyFor(playerId);
   const result = Number(await redis('EVAL', RANKED_COMMIT_LUA, 22,
-    `geek:run:${run.id}`, profileKey, prestigeKeyFor(playerId), event?.[1] || profileKey, index?.[1] || profileKey, dailyKey || profileKey,
+    runKeyFor(run.id), profileKey, prestigeKeyFor(playerId), event?.[1] || profileKey, index?.[1] || profileKey, dailyKey || profileKey,
     activeKey || profileKey,
     ...(automaticReward?.keys || Array(8).fill(profileKey)),
     ...(mainnetPayout?.keys || Array(7).fill(profileKey)),

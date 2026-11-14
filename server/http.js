@@ -151,7 +151,11 @@ export const handleApiError = (res, error) => {
   if (code.startsWith('REDIS_')) return sendJson(res, 503, { ok: false, code: 'SERVICE_UNAVAILABLE', error: 'Saved-player services are temporarily unavailable. Reload to check your saved state before trying again.' });
   if (code === 'OPS_ROLE_FORBIDDEN') return sendJson(res, 403, { ok: false, error: 'Operator access was not accepted.' });
   if (code === 'OPS_NOT_CONFIGURED') return sendJson(res, 503, { ok: false, error: 'Private operator access is unavailable.' });
-  if (code === 'RATE_LIMITED') return sendJson(res, 429, { ok: false, error: 'Slow down and try again in a moment.' });
+  if (code === 'RATE_LIMITED') {
+    const retryAfter = Number.isInteger(error.retryAfter) && error.retryAfter > 0 ? error.retryAfter : 60;
+    res.setHeader('Retry-After', String(retryAfter));
+    return sendJson(res, 429, { ok: false, code, retryAfter, reset: Date.now() + retryAfter * 1000, error: 'Slow down and try again in a moment.' });
+  }
   if (code === 'SESSION_CHANGED') return sendJson(res, 409, { ok: false, code, error: 'Your player session changed. Reload to check your saved player before trying again.' });
   if (code === 'SESSION_REQUIRED') return sendJson(res, 401, { ok: false, error: 'Start a player session first.' });
   if (code === 'DUEL_NOT_FOUND') return sendJson(res, 404, { ok: false, code, error: 'This Duel invitation has expired.' });
@@ -159,6 +163,18 @@ export const handleApiError = (res, error) => {
   if (code === 'DUEL_NOT_PLAYER') return sendJson(res, 403, { ok: false, code, error: 'Join this Duel before viewing or playing.' });
   if (['DUEL_CHANGED', 'DUEL_STATE_INVALID', 'DUEL_QUESTION_CLOSED', 'DUEL_ANSWER_RECORDED'].includes(code)) return sendJson(res, 409, { ok: false, code, error: 'That Duel action is no longer available. Refresh the match and try again.' });
   if (code === 'RUN_NOT_FOUND') return sendJson(res, 404, { ok: false, error: 'That ranked run expired or is no longer active.' });
+  if (code === 'RANKED_BANK_VERSION_CHANGED') return sendJson(res, 409, { ok: false, code, error: 'This ranked season has rotated. Finish this run to submit its completed rounds, then start a new run.' });
+  if (code === 'SEASON_NOT_STARTED') { console.error('Geek API error code', code); return sendJson(res, 503, { ok: false, code, error: 'The ranked season has not started. Practice remains open.' }); }
+  if (code === 'SEASON_UNSUPPORTED') { console.error('Geek API error code', code); return sendJson(res, 409, { ok: false, code, error: 'This season is not accepting scores.', message: 'This season is not accepting scores' }); }
+  if (code === 'SEASON_CONFIG_INVALID' || code === 'SEASON_CLOCK_INVALID') { console.error('Geek API error code', code); return sendJson(res, 503, { ok: false, code, error: 'Ranked seasons are temporarily unavailable. Practice remains open.' }); }
+  // Private-bank fail-closed errors: generic body, log only the fixed code
+  // (never the error object, stack, paths or bank text).
+  // Public bank unreadable: practice is down too, so the message must not promise it.
+  if (code === 'QUESTIONS_UNAVAILABLE') { console.error('Geek API error code', code); return sendJson(res, 503, { ok: false, code, error: 'Questions are temporarily unavailable. Please try again shortly.' }); }
+  if (code === 'RANKED_BANK_UNAVAILABLE' || code === 'RANKED_BANK_SEASON_MISMATCH' || code === 'RANKED_WRITES_DISABLED' || code === 'RANKED_ENV_UNKNOWN' || code === 'RANKED_SOURCE_INVALID' || /^PRIVATE_BANK_[A-Z_]+$/.test(code)) {
+    console.error('Geek API error code', code);
+    return sendJson(res, 503, { ok: false, code: 'RANKED_BANK_UNAVAILABLE', error: 'Ranked play is temporarily unavailable. Practice remains open.' });
+  }
   if (code === 'RUN_STATE_INVALID') return sendJson(res, 409, { ok: false, error: 'That ranked action is not available right now.' });
   if (code === 'ANSWER_IN_PROGRESS') return sendJson(res, 409, { ok: false, error: 'That answer is already being locked. Retry once to retrieve its result.' });
   if (code === 'INSUFFICIENT_BALANCE') return sendJson(res, 409, { ok: false, code, error: 'Your server Alpha GEEK balance is too low for the next round.' });
@@ -226,7 +242,26 @@ export const handleApiError = (res, error) => {
   if (code === 'STICKER_TRADE_FORBIDDEN') return sendJson(res, 403, { ok: false, code, error: 'Only the player who created this offer can cancel it.' });
   if (code === 'STICKER_TRADE_FAILED') return sendJson(res, 503, { ok: false, code, error: 'The sticker exchange could not be completed safely.' });
   if (code === 'INVALID_BODY' || code === 'INVALID_REQUEST') return sendJson(res, 400, { ok: false, error: 'The request was not valid.' });
-  // Log a bounded classification only; raw errors can carry request or storage detail.
-  console.error('Geek API error', JSON.stringify({ name: String(error?.name || 'Error').slice(0, 40), code: /^[A-Z][A-Z0-9_]{2,63}$/.test(code) ? code : 'UNCLASSIFIED' }));
+  // Never log a raw error name, message or stack; private bank content can appear there.
+  const safeName = typeof error?.name === 'string' && /^[A-Za-z0-9_]{1,40}$/.test(error.name) ? error.name : 'Error';
+  console.error('Geek API error', JSON.stringify({ name: safeName, code: /^[A-Z][A-Z0-9_]{2,63}$/.test(error?.code || '') ? error.code : /^[A-Z][A-Z0-9_]{2,63}$/.test(code) ? code : 'UNCLASSIFIED' }));
   return sendJson(res, 500, { ok: false, error: 'The community service hit an unexpected error.' });
 };
+
+// Rate-limit buckets per endpoint class (count per window, seconds). Reads that every page load
+// performs (session checks, passkey status) get generous separate buckets, so normal browsing can
+// never use up the strict buckets for account creation, login attempts or other writes.
+export const RATE_LIMITS = Object.freeze({
+  sessionIp: { maximum: 600, seconds: 600 },          // shared networks / events (unchanged)
+  sessionCreateIp: { maximum: 120, seconds: 600 },    // new guest sessions per client (unchanged)
+  sessionRead: { maximum: 240, seconds: 600 },        // was 'session' 40 per 60 s, shared with renames
+  sessionWrite: { maximum: 20, seconds: 600 },        // renames / display names
+  passkeyReadSession: { maximum: 240, seconds: 600 }, // GET status; was shared 30 per 600 s
+  passkeyReadClient: { maximum: 600, seconds: 600 },  // was shared 60 per 600 s
+  passkeyCreateSession: { maximum: 10, seconds: 600 },// begin/finish-register: 5 creations
+  passkeyCreateClient: { maximum: 20, seconds: 600 },
+  passkeyLoginSession: { maximum: 20, seconds: 600 }, // begin/finish-login: 10 attempts
+  passkeyLoginClient: { maximum: 40, seconds: 600 },
+  passkeyWriteSession: { maximum: 30, seconds: 600 }, // logout, delete, device-* (as before)
+  passkeyWriteClient: { maximum: 60, seconds: 600 }
+});

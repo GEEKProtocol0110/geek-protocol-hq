@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-13",
+  "updatedAt": "2026-11-14",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2231,6 +2231,46 @@
       ]
     },
     {
+      "id": "SEC-010",
+      "priority": "P0",
+      "status": "in-progress",
+      "title": "Serve future ranked questions and answers from private storage; treat published banks as exposed",
+      "owner": "Maintainer; founder selects private storage and approves rollout",
+      "nextAction": "Review current-HQ integration on main dbdb7f0 plus held bank/start-guard 73f80ce and the local synthetic rehearsal. Obtain approved immutable artifact/editorial/capacity evidence and define a bounded hosted rehearsal before any production cutover. Payouts and Preview guards remain held.",
+      "acceptance": [
+        "Ranked rounds draw only from a configured private source or fail closed in production.",
+        "Published and retired public rows stay addressable so saved runs grade with their original keys; private IDs cannot collide with them.",
+        "Issued questions never include correctIndex; a public fixture bank with no real answers supports dev/tests.",
+        "Payouts stay disabled.",
+        "Play and My HQ default to the current ranked season, label every board and preserve selectable Season 0 history.",
+        "Deferred answer recovery confirms saving without showing correctness before round lock.",
+        "Before a configured private season begins, refuse new private ranked starts without a question, run, season pin or gameplay/profile mutation; read-only Season 0 history remains available."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/MIGRATION-private-ranked-bank.md",
+        "server/question-source.js",
+        "server/questions.js",
+        "tests/private-ranked-bank.test.js",
+        "tests/ranked-client.test.js",
+        "tests/profile-client.test.js",
+        "api/leaderboard.js",
+        "docs/PRIVATE-BANK-ASSEMBLED-REVIEW-2026-11-02.md",
+        "docs/PRIVATE-BANK-LOCAL-REHEARSAL.md",
+        "scripts/private-bank-rehearsal.mjs",
+        "tests/private-bank-rehearsal.test.js",
+        "tests/mainnet-payout.test.js"
+      ],
+      "validationEvidence": [
+        "#180 merged as a3b2441f82636e511658be09d47a7171b89472d4; #198 merged as 33f74c0aee05e416f91b8331cf4236d9ddd758a4. Main tree matches reviewed f8521cbee17e406085d080c9558cb69c56185665. Production dpl_7VJFZmLJ9NqZdhbx8b6s1bGFehFg is READY on the #198 merge. #200 remains draft and unmerged.",
+        "Browser candidate based on #200 head 981c9f6e396ddd3869be49ad6d56629b4d947f19: current-season queries, explicit historical season choices, labeled empty boards and deferred reconnect text. Focused client/API tests: 73 passed, zero failures/skips. This is synthetic client verification, not restricted Preview or phone acceptance.",
+        "Full browser-candidate npm run verify with required native Redis 7.0.15: 738 HQ tests + nine offline signer checks = 747 passed, zero failures/skips, all supporting checks passed. #200 still requires private-bank/restricted-Preview acceptance before cutover.",
+        "Assembled on main 12a0228 with all four exact input heads. Full native-Redis verify: 893 HQ tests, 892 passed, zero failed, one root-only permission skip; nine signer checks and all supporting checks passed. Added safe JSON CLI errors and mandatory concept IDs in authoring tooling with synthetic regressions. No real private bank content or provider setting changed; hosted playable rehearsal remains blocked by missing immutable pin and Preview write guard.",
+        "November 13 source candidate on #231: 103 focused synthetic bank/leak/resilience/season tests pass, including exact December UTC boundary and no non-rate-limit writes before start. Current-main integration and real-bank/hosted rehearsal acceptance remain separate.",
+        "November 13: #284 passed CI and both Vercel checks and merged into the held assembly as 73f80ce. Integrated current main dbdb7f0, retained later payout and public-site changes, and blocked mainnet jobs for public/legacy/unranked results. The credential-scrubbed local synthetic rehearsal passes 105 tests; full combined suite passes 1077 application tests with zero failures/skips. Full supporting verification recorded in the review candidate. No real-bank or hosted acceptance claimed."
+      ]
+    },
+    {
       "id": "UX-029",
       "priority": "P1",
       "status": "needs-evidence",
@@ -2284,6 +2324,39 @@
       "completionEvidence": [
         "PR #289, https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/289, squash-merged 61d5b6d133089e68f5f0cdc62eff03abd97c1293. Exact-head Security verification 43522698604 and both Vercel checks passed. Local full verification: 921 application + 9 testnet + 6 mainnet signer checks, 936 total, zero failures/skips. Negative public-API control fails against the original admission code.",
         "Production dpl_9CsS9j28cma3jg4eJUEQj7gwVjmW READY on that exact merge with both canonical domains; credential-free worker GET returns 405, Allow POST and no-store. This confirms delivery/module loading, not mainnet signing, private-bank acceptance, independent audit or physical-device acceptance."
+      ]
+    },
+    {
+      "id": "OPS-005",
+      "priority": "P1",
+      "status": "done",
+      "title": "Synchronize the bound Preview branch with current HQ releases",
+      "owner": "Maintainer; founder requested Preview deployment",
+      "nextAction": "Use the updated Preview sign-in page for actual-device acceptance. Preserve its separate data/origin bindings and closed payment/ranked-write guards. Main remains unchanged; private-bank production cutover and independent review stay open.",
+      "acceptance": [
+        "Preview retains the private-bank and season draft while incorporating main through 142f104419ea16dab6b1762b77ffd7cae2ed6fdb, including home account, receiving-wallet switch, published whitepaper/PDF, litepaper correction and v2 payout proof.",
+        "Home My HQ navigation works with the existing rate-limit-aware session controller; failed or stale status reads do not pretend sign-out or hide authenticated controls.",
+        "Canonical immutable bank identifiers from the real loader are accepted by v2 proof validation; public/malformed/unranked/Season 0 results remain nonpayable.",
+        "Full verification and isolated synthetic rehearsal pass before the bound branch moves. Preview production/write guards, namespace rules, separate provider bindings and disabled Preview payment settings stay intact.",
+        "The live Preview alias resolves to the new READY preview deployment with exact source checks and a browser-observed ready sign-in page. No production cutover, real account recovery, bank approval or payment activation is implied."
+      ],
+      "dependsOn": [
+        "SEC-010",
+        "CHAIN-007",
+        "UX-029"
+      ],
+      "evidence": [
+        "docs/PREVIEW-SYNC-2026-11-14.md",
+        "docs/PRIVATE-BANK-LOCAL-REHEARSAL.md",
+        "public/assets/session-access.js",
+        "workers/mainnet/eligibility.mjs",
+        "tests/session-access-client.test.js",
+        "tests/mainnet-payout.test.js"
+      ],
+      "completedAt": "2026-11-14",
+      "completionEvidence": [
+        "PR #293: https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/293. Bound security/private-ranked-bank fast-forwarded with an expected-head lease from 55c610153e0bb72d6dc320891e607d2d52a37ec7 to d3da56dfff687dac587e35902c50096d1dcf6afc; main through 142f104 and reviewed held assembly retained. Exact tree f9b7f92005dc094c0193d775d4a46b1d8688eb2a passed full 1105 local checks and 106 isolated rehearsal checks, zero failures/skips; Security verification 43638498071 and both Vercel checks passed. Android debug APK workflow 43638498146 also passed.",
+        "Live Preview deployment dpl_4PUgGmrzYuGFPck1jFRLQEcaZZhe READY on that exact commit and bound branch, target Preview, with preview.geekprotocol.xyz assigned. Browser observes enabled Sign in/Create Geek account and the ready message, plus the Preview-origin wallet link. Configuration records unchanged, exact Preview passkey origin retained and Preview reward/automatic flags false. Actual user passkey/KasWare/device and bank acceptance remain separate. Production stays 142f104 on dpl_3BdzDLjKrRXSeTZrtLs4YFeJiSQp."
       ]
     }
   ]

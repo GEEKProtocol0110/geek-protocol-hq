@@ -1,10 +1,13 @@
 import test, { after, beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import kaspa from '@dfns/kaspa-wasm';
 import { redisFixture } from './helpers/redis-fixture.js';
 import sessionHandler from '../api/session.js';
 import rankedHandler from '../api/ranked.js';
+import { runKeyFor } from '../server/ranked-state.js';
 import { loadQuestionBank } from '../server/questions.js';
 import { rewardAddressKey } from '../server/reward-addresses.js';
 import { GEEK_DEPLOYMENT } from '../server/geek-deployment.js';
@@ -27,6 +30,12 @@ const recipient = (() => {
   const key = new kaspa.PrivateKey('3'.padStart(64, '0'));
   try { return key.toAddress('mainnet').toString(); } finally { key.free(); }
 })();
+const fakeBankDir = mkdtempSync(join(tmpdir(), 'geek-payout-fake-bank-'));
+const fakeQuestions = ['easy', 'medium', 'hard'].flatMap(tier => Array.from({ length: 50 }, (_, i) => ({
+  id: `FAKE-PAYOUT-${tier}-${i}`, conceptId: `FAKE-PAYOUT-CONCEPT-${tier}-${i}`, difficulty: tier,
+  prompt: `Synthetic payout ${tier} ${i}?`, options: ['Fake payout right', 'Fake wrong A', 'Fake wrong B', 'Fake wrong C'], correctIndex: 0
+})));
+writeFileSync(join(fakeBankDir, 'kaspa.json'), JSON.stringify({ questions: fakeQuestions }));
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
 let indexerPayload = null, beforeRedisCommand = null, afterRedisCommand = null;
 globalThis.fetch = async (url, options) => {
@@ -44,7 +53,7 @@ globalThis.fetch = async (url, options) => {
   await afterRedisCommand?.(values);
   return Response.json(result);
 };
-after(async () => { globalThis.fetch = originalFetch; await fixture.close(); });
+after(async () => { globalThis.fetch = originalFetch; await fixture.close(); rmSync(fakeBankDir, { recursive: true, force: true }); });
 beforeEach(async () => {
   await fixture.command('FLUSHDB');
   delete process.env.MAINNET_PAYOUT_ENABLED;
@@ -52,6 +61,8 @@ beforeEach(async () => {
   delete process.env.MAINNET_PAYOUT_WORKER_TOKEN;
   delete process.env.MAINNET_PAYOUT_JOB_HMAC;
   delete process.env.VERCEL_ENV;
+  process.env.GEEK_PRIVATE_QUESTION_DIR = fakeBankDir;
+  process.env.GEEK_SEASON_1_START_MONTH = new Date().toISOString().slice(0, 7);
   indexerPayload = null;
   beforeRedisCommand = null; afterRedisCommand = null;
   Object.assign(process.env, {
@@ -68,21 +79,10 @@ const call = async (handler, method, body = {}, cookie = '', query = {}, extra =
 const player = async () => (await call(sessionHandler, 'POST', { displayName: 'Mainnet payout fixture' })).headers['Set-Cookie'].split(';')[0];
 const playerId = cookie => cookie.split('=')[1];
 const syntheticBank = 'f'.repeat(64);
-// Positive payout/recovery fixtures model a future private-ranked server result.
-// Only the isolated Redis fixture is annotated. This does not claim today's
-// public question loader supplies private content or payout eligibility.
-const play = async (cookie, action, fields = {}) => {
-  const result = await call(rankedHandler, 'POST', { action, ...fields }, cookie);
-  if (action === 'start' && result.statusCode === 201 && result.body.run?.id) {
-    const key = `geek:run:${result.body.run.id}`;
-    const saved = JSON.parse(await fixture.command('GET', key));
-    await fixture.command('SET', key, JSON.stringify({ ...saved, bankVersion: syntheticBank, season: 'season-1' }), 'KEEPTTL');
-  }
-  return result;
-};
+const play = (cookie, action, fields = {}) => call(rankedHandler, 'POST', { action, ...fields }, cookie);
 const choice = (payload, correct) => {
-  const question = loadQuestionBank('kaspa').questions.find(item => item.prompt === payload.question.prompt);
-  const right = payload.question.options.indexOf(question.options[question.correctIndex]);
+  const right = payload.question.options.indexOf('Fake payout right');
+  assert.ok(right >= 0, 'Only synthetic private payout questions');
   return correct ? right : (right === 0 ? 1 : 0);
 };
 const answerRound = async (cookie, payload, correctAt = () => true) => {
@@ -388,8 +388,8 @@ test('preview and a missing worker token do not admit a job or fail the saved an
   const preview = await player();
   await saveAddress(preview);
   let result = await play(preview, 'start', { mode: 'daily', category: 'kaspa' });
-  result = await answerRound(preview, result.body);
-  assert.equal((await play(preview, 'finish', { runId: result.run.id })).statusCode, 200);
+  assert.equal(result.statusCode, 503);
+  assert.equal(result.body.question, undefined);
   assert.deepEqual(await jobs(), []);
   process.env.VERCEL_ENV = 'production';
   delete process.env.MAINNET_PAYOUT_WORKER_TOKEN;
@@ -717,14 +717,24 @@ test('a stuck mark commits the job and stuck list together or not at all', async
 test('public Alpha results stay nonpayable even with all payout flags and client-supplied bank claims', async () => {
   enable();
   const cookie = await player(); await saveAddress(cookie);
-  // Deliberately bypass the positive fixture helper: use the actual public start.
+  delete process.env.GEEK_PRIVATE_QUESTION_DIR;
+  delete process.env.VERCEL_ENV;
+  // Explicit local exposed-bank regression; deployed Preview refuses exposed starts.
+
   let result = await call(rankedHandler, 'POST', { action: 'start', mode: 'daily', category: 'kaspa',
     bankVersion: syntheticBank, season: 'season-1', unranked: false }, cookie);
   assert.equal(result.statusCode, 201);
-  const key = `geek:run:${result.body.run.id}`;
+  const key = runKeyFor(result.body.run.id);
   let saved = JSON.parse(await fixture.command('GET', key));
-  assert.equal(saved.bankVersion, undefined); assert.equal(saved.season, undefined);
-  result = await answerRound(cookie, result.body);
+  assert.equal(saved.bankVersion, 'public'); assert.equal(saved.season, 'season-0');
+  const publicChoice = payload => { const q = loadQuestionBank('kaspa').questions.find(q => q.prompt === payload.question.prompt); return payload.question.options.indexOf(q.options[q.correctIndex]); };
+  let payload = result.body;
+  for (let i = 0; i < 5; i++) {
+    const answered = await call(rankedHandler, 'POST', { action: 'answer', runId: payload.run.id, questionToken: payload.question.token, selectedIndex: publicChoice(payload) }, cookie);
+    assert.equal(answered.statusCode, 200);
+    payload = i < 4 ? (await call(rankedHandler, 'POST', { action: 'next', runId: payload.run.id }, cookie)).body : answered.body;
+  }
+  result = { run: payload.run };
   const finished = await call(rankedHandler, 'POST', { action: 'finish', runId: result.run.id,
     bankVersion: syntheticBank, season: 'season-1' }, cookie);
   assert.equal(finished.statusCode, 200);
@@ -740,6 +750,9 @@ test('admission requires a private bank hash and live season from server state, 
     roundAnswers: Array.from({ length: 5 }, () => ({ correct: true })) };
   const prepared = await prepareMainnetPayout(playerId(cookie), run);
   assert.ok(prepared, 'positive control: future private-ranked fixture');
+  for (const bankVersion of [`sha256:${syntheticBank}`, `git:${'a'.repeat(40)}`]) {
+    assert.ok(await prepareMainnetPayout(playerId(cookie), { ...run, bankVersion }), 'canonical loader version accepted');
+  }
   const job = JSON.parse(prepared.args[2]);
   assert.equal(job.proof.bankVersion, syntheticBank); assert.equal(job.proof.season, 'season-1');
   assert.equal(jobMacMatches(job, hmacSecret), true);

@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "version": "sha256:1d67e879821cf29fe69b877034d86d650c6ee9f44b35a1f01a9592dd3cb34021",
+  "files": [
+    {
+      "name": "bank/history-retired.json",
+      "sha256": "6d382c408823a9388f371c7d90ef0386175cf61601e1a74db650cc71e8bc9e05",
+      "rows": 1,
+      "lookupOnly": true
+    },
+    {
+      "name": "bank/history.json",
+      "sha256": "83c7aa06d3ef1ad04fd906c94f88f578972231919ad6264f3ed2d6406bb444ac",
+      "rows": 6,
+      "lookupOnly": false
+    },
+    {
+      "name": "bank/kaspa-retired.json",
+      "sha256": "a3d900b802c76a3ded0c56027c0c347a72e05b3d718d131cc81a2bbf2df363dc",
+      "rows": 1,
+      "lookupOnly": true
+    },
+    {
+      "name": "bank/kaspa.json",
+      "sha256": "dbd3fcea4bebc1fdcf87a9b66fbec48db368645bd85e8178257a97baef7c729c",
+      "rows": 6,
+      "lookupOnly": false
+    }
+  ],
+  "counts": {
+    "history": {
+      "active": {
+        "easy": 2,
+        "medium": 2,
+        "hard": 2
+      },
+      "retired": 1
+    },
+    "kaspa": {
+      "active": {
+        "easy": 2,
+        "medium": 2,
+        "hard": 2
+      },
+      "retired": 1
+    }
+  }
+}

@@ -34,9 +34,10 @@ const walletState = async id => {
   return { raw, version: wallet?.sessionVersion || 0 };
 };
 const getAccount = async id => { const raw = await redis('GET', passkeyAccountKey(id)); return { raw, account: decodePasskeyAccount(raw, id) }; };
-const issueChallenge = async (session, context, action, options, previous = '', walletVersion = -1) => {
+const issueChallenge = async (session, context, action, options, previous = '', walletVersion = -1, register = null) => {
   const id = randomBytes(20).toString('hex'), now = Date.now();
-  const c = { version: 1, sessionId: session.id, playerId: pid(session), action, ...context, challenge: options.challenge, previous, walletVersion, issuedAt: now, expiresAt: now + 300000 };
+  const c = { version: 1, sessionId: session.id, playerId: pid(session), action, ...context, challenge: options.challenge, previous, walletVersion, issuedAt: now, expiresAt: now + 300000,
+    ...(register ? { guest: register.guest, claim: register.claim, target: register.target } : {}) };
   if (await redis('SET', challengeKey(id), JSON.stringify(c), 'EX', 300, 'NX') !== 'OK') throw new Error('PASSKEY_UNAVAILABLE');
   return { challengeId: id, options };
 };
@@ -64,13 +65,13 @@ redis.call('DEL', KEYS[5])
 redis.call('SET', KEYS[6], ARGV[9])
 redis.call('ZADD', KEYS[7], ARGV[10], ARGV[11])
 return 'OK'`;
-const saveAndRotate = async (res, session, previous, account, credentialId, wallet, mode) => {
+const saveAndRotate = async (res, session, previous, account, credentialId, wallet, mode, freshName = null) => {
   const sessionRaw = await redis('GET', sessionKey(session.id));
   let live; try { live = JSON.parse(sessionRaw); } catch { /* reject */ }
   if (!live || (live.playerId || live.id) !== pid(session)) throw new Error('PASSKEY_STATE_CHANGED');
   const id = createSessionId(), now = Date.now();
   const fresh = { id, playerId: account.playerId, identityVersion: wallet.version, passkeyEpoch: account.epoch,
-    name: cleanName(await redis('GET', `geek:player-name:${account.playerId}`), session.name), createdAt: account.createdAt, lastSeen: now };
+    name: freshName || cleanName(await redis('GET', `geek:player-name:${account.playerId}`), session.name), createdAt: account.createdAt, lastSeen: now };
   decodePasskeyAccount(JSON.stringify(account), account.playerId);
   const audit = await createAuditRecord({ type: `identity.passkey.${mode}`, actorType: 'passkey-player', actorId: account.playerId, objectType: 'player-access', objectId: account.playerId, reason: 'fresh-user-verification', interactionId: session.id, details: { walletLinked: wallet.version > 0, credentialCount: account.credentials.length } });
   const [event, index] = auditWriteCommands(audit);
@@ -95,27 +96,40 @@ export const passkeyAction = async (req, res, session, body) => {
     if (wallet.version || account) await consumePasskeyGrant(session, body.token, wallet.version);
     const current = account?.walletVersion === wallet.version ? account.credentials : [];
     if (current.length >= 10) throw new Error('PASSKEY_LIMIT');
+    // New account from a guest: guest progress carries over only on an explicit claim.
+    // Anything other than literal true (false, missing, "true") creates a fresh player, so it fails safe.
+    const guest = !account && !wallet.version && !session.passkeyEpoch;
+    const claim = guest && body.claimGuestProgress === true;
+    const target = guest && !claim ? randomBytes(16).toString('hex') : id;
     const options = await generateRegistrationOptions({ rpName: 'Geek Protocol', rpID: context.rpID,
-      userID: Buffer.from(id, 'hex'), userName: `geek-${id.slice(0, 8)}`, userDisplayName: session.name,
+      userID: Buffer.from(target, 'hex'), userName: `geek-${id.slice(0, 8)}`, userDisplayName: session.name,
       attestationType: 'none', supportedAlgorithmIDs: [-7, -257],
       excludeCredentials: current.map(c => ({ id: c.id, transports: c.transports })),
       authenticatorSelection: { residentKey: 'required', userVerification: 'required' } });
-    return issueChallenge(session, context, 'register', options, raw || '', wallet.version);
+    return issueChallenge(session, context, 'register', options, raw || '', wallet.version, { guest, claim, target });
   }
   if (body.action === 'finish-register') {
     const c = await consumeChallenge(session, context, 'register', body.challengeId), wallet = await walletState(id);
     const { raw, account } = await getAccount(id);
     if (c.walletVersion !== wallet.version) throw new Error('PASSKEY_STATE_CHANGED');
     if ((raw || '') !== c.previous) throw new Error('PASSKEY_STATE_CHANGED');
+    // The finish choice must repeat the begin choice; a missing or different value never merges.
+    const fresh = c.guest === true && c.claim !== true;
+    if (c.guest === true && (body.claimGuestProgress === true) !== (c.claim === true)) throw new Error('PASSKEY_STATE_CHANGED');
+    if (fresh && (!hex(c.target) || c.target === id)) throw new Error('PASSKEY_STATE_CHANGED');
     const result = await verifyRegistrationResponse({ response: body.response, expectedChallenge: c.challenge,
       expectedOrigin: context.origin, expectedRPID: context.rpID, requireUserVerification: true });
     if (!result.verified || !result.registrationInfo) throw new Error('PASSKEY_PROOF_INVALID');
     const info = result.registrationInfo, credential = info.credential;
-    const a = account?.walletVersion === wallet.version ? account : { version: 1, playerId: id, epoch: (account?.epoch || 0) + 1, walletVersion: wallet.version, createdAt: account?.createdAt || session.createdAt || Date.now(), credentials: [] };
+    if (fresh && (await redis('GET', passkeyAccountKey(c.target)) || await redis('GET', identityPlayerKey(c.target)))) throw new Error('PASSKEY_STATE_CHANGED');
+    // Fresh: a new player with no guest data; the guest player's records are left untouched and unlinked.
+    const a = fresh ? { version: 1, playerId: c.target, epoch: 1, walletVersion: 0, createdAt: Date.now(), credentials: [] }
+      : account?.walletVersion === wallet.version ? account : { version: 1, playerId: id, epoch: (account?.epoch || 0) + 1, walletVersion: wallet.version, createdAt: account?.createdAt || session.createdAt || Date.now(), credentials: [] };
     a.credentials.push({ id: credential.id, publicKey: Buffer.from(credential.publicKey).toString('base64url'), counter: credential.counter,
       label: String(body.label || 'My passkey').replace(/[<>\u0000-\u001f]/g, '').trim().slice(0, 40) || 'My passkey', createdAt: Date.now(), transports: credential.transports || [] });
-    decodePasskeyAccount(JSON.stringify(a), id);
-    return saveAndRotate(res, session, raw, a, credential.id, wallet, 'register');
+    decodePasskeyAccount(JSON.stringify(a), a.playerId);
+    return fresh ? saveAndRotate(res, session, '', a, credential.id, { raw: '', version: 0 }, 'register', 'Guest Geek')
+      : saveAndRotate(res, session, raw, a, credential.id, wallet, 'register');
   }
   if (body.action === 'begin-login') {
     const options = await generateAuthenticationOptions({ rpID: context.rpID, userVerification: 'required' });

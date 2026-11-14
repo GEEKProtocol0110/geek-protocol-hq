@@ -11,7 +11,7 @@ const playerA='a'.repeat(32), playerB='b'.repeat(32), sessionA='c'.repeat(32), r
 const input=(reference='purchase_00000001', feeRaw='10000000000')=>({reference,kind:'powerup-purchase',grossRaw:'10000000000',feeRaw});
 const store=new Map();let forcedConflicts=0, loseCommittedResponse=false;
 const savedFetch=globalThis.fetch;
-process.env.UPSTASH_REDIS_REST_URL='https://economy-redis.test';process.env.UPSTASH_REDIS_REST_TOKEN='economy-test-only';
+process.env.UPSTASH_REDIS_REST_URL='https://economy-redis.test';process.env.UPSTASH_REDIS_REST_TOKEN='test-economy-only';
 const execute=command=>{
  const [op,...args]=command;
  if(op==='GET')return store.get(args[0])??null;
@@ -29,7 +29,7 @@ const execute=command=>{
  throw Error('Unexpected Redis operation '+op);
 };
 globalThis.fetch=async(url,options)=>{
- assert.ok(String(url).startsWith('https://economy-redis.test'));assert.equal(options.headers.Authorization,'Bearer economy-test-only');
+ assert.ok(String(url).startsWith('https://economy-redis.test'));assert.equal(options.headers.Authorization,'Bearer test-economy-only');
  const commands=JSON.parse(options.body);
  const data=String(url).endsWith('/pipeline')?commands.map(command=>({result:execute(command)})):{result:execute(commands)};
  return {ok:true,json:async()=>data};

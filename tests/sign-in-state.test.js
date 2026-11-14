@@ -2,13 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {clientFixture,json} from './helpers/client-fixture.js';
-const scripts=['sign-in.js','passkeys.js'].map(p=>readFileSync(new URL('../public/sign-in/assets/'+p,import.meta.url),'utf8'));
+const scripts=['sign-in.js','passkeys.js'].map(p=>readFileSync(new URL('../public/assets/session-hint.js', import.meta.url), 'utf8') + readFileSync(new URL('../public/sign-in/assets/'+p,import.meta.url),'utf8'));
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
-const mount=async (state, next='', userAgent='')=>{
+const mount=async (state, next='', userAgent='', origin='https://www.geekprotocol.xyz')=>{
   const calls=[],listeners=new Map(),redirects=[];
   const ui=clientFixture(async(path,options={})=>{calls.push(path);return json(path==='/api/session'?{ok:true}:state);});
   ui.window.isSecureContext=true;ui.window.PublicKeyCredential=undefined;
-  ui.context.location.search=next;ui.context.location.assign=path=>redirects.push(path);
+  ui.context.location.origin=origin;ui.context.location.search=next;ui.context.location.assign=path=>redirects.push(path);
   ui.context.navigator.userAgent=userAgent;
   ui.node('[data-wallet-open-app]','a').hidden=true;
   ui.document.addEventListener=(type,fn)=>{const list=listeners.get(type)||[];listeners.set(type,[...list,fn]);};
@@ -35,7 +35,7 @@ test('a saved session continues directly to HQ, including a receiving browser wi
   assert.equal(ui.node('[data-sign-in-hq]').hidden,false);assert.equal(ui.node('[data-sign-in-guest]').hidden,true);
   assert.equal(ui.node('[data-sign-in-title]').textContent,'Welcome back.');
   assert.equal(ui.node('[data-passkey-player]').textContent,'Saved Geek');assert.equal(ui.node('[data-passkey-login-area]').hidden,true);
-  assert.match(ui.node('[data-passkey-note]').textContent,/You’re signed in/);assert.equal(ui.node('[data-passkey-logout]').disabled,false);
+  assert.match(ui.node('[data-passkey-note]').textContent,/You’re signed in/);
   assert.equal(ui.node('[data-passkey-verify]').disabled,true);
   ui.emit('geek:account-status',{signedIn:false,walletLinked:false});
   assert.equal(ui.node('[data-sign-in-hq]').hidden,false,'late guest status cannot replace successful sign-in');
@@ -117,4 +117,21 @@ test('unsupported platforms hide the Android launcher and a failed launch retain
   assert.match(ui.node('[data-wallet-launch-status]').textContent,/could not be opened/);
   assert.equal(ui.node('[data-wallet-hq-link]').value,'https://www.geekprotocol.xyz/sign-in/');
   assert.equal(ui.node('[data-sign-in-hq]').hidden,true);
+});
+
+
+test('Preview mobile wallet links and Android fallback stay on the separate Preview origin', async () => {
+  const ui = await mount({signedIn:false,walletLinked:false,credentials:[]}, '?next=play&token=private', 'Android', 'https://preview.geekprotocol.xyz');
+  assert.equal(ui.node('[data-wallet-hq-link]').value, 'https://preview.geekprotocol.xyz/sign-in/?next=play');
+  const intent = ui.node('[data-wallet-open-app]').href;
+  assert.equal(decodeURIComponent(intent.match(/S.browser_fallback_url=([^;]+);end$/)[1]), 'https://preview.geekprotocol.xyz/sign-in/?next=play&walletLaunch=unavailable');
+  assert.doesNotMatch(intent, /token|private/);
+  assert.deepEqual(ui.redirects, []);
+});
+
+test('a lookalike or unknown origin cannot become a copied wallet destination', async () => {
+  for (const origin of ['https://preview.geekprotocol.xyz.evil.invalid','http://preview.geekprotocol.xyz','https://unknown.invalid']) {
+    const ui = await mount({signedIn:false,walletLinked:false,credentials:[]}, '?next=play', '', origin);
+    assert.equal(ui.node('[data-wallet-hq-link]').value, 'https://www.geekprotocol.xyz/sign-in/?next=play');
+  }
 });

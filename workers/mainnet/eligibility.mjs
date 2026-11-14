@@ -2,7 +2,7 @@ import { expectedRaw } from './schedule.mjs';
 
 // Defense in depth for a future reviewed private-ranked release. These fields
 // come from saved server state, never from a client's requested payout/score.
-const privateBank = value => typeof value === 'string' && /^[a-f0-9]{64}$/.test(value);
+const privateBank = value => typeof value === 'string' && /^(?:[a-f0-9]{64}|sha256:[a-f0-9]{64}|git:[a-f0-9]{40})$/.test(value);
 const liveSeason = value => typeof value === 'string' && /^season-[1-9]\d{0,3}$/.test(value);
 export const privateRankedContext = value => Boolean(value && !value.unranked &&
   privateBank(value.bankVersion) && liveSeason(value.season));

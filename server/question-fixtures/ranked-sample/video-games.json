@@ -1,0 +1,774 @@
+{
+ "metadata": {
+  "purpose": "Public sample ranked bank for development and tests. Contains no real ranked questions or answers.",
+  "category": "video-games",
+  "questionCount": 45
+ },
+ "questions": [
+  {
+   "id": "SAMPLE-VIDEO-GAMES-E01",
+   "category": "video-games",
+   "subcategory": "Sample topic 1",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE video-games easy 1] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-E02",
+   "category": "video-games",
+   "subcategory": "Sample topic 2",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE video-games easy 2] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-E03",
+   "category": "video-games",
+   "subcategory": "Sample topic 3",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE video-games easy 3] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-E04",
+   "category": "video-games",
+   "subcategory": "Sample topic 4",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE video-games easy 4] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-E05",
+   "category": "video-games",
+   "subcategory": "Sample topic 5",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE video-games easy 5] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-E06",
+   "category": "video-games",
+   "subcategory": "Sample topic 1",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE video-games easy 6] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-E07",
+   "category": "video-games",
+   "subcategory": "Sample topic 2",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE video-games easy 7] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-E08",
+   "category": "video-games",
+   "subcategory": "Sample topic 3",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE video-games easy 8] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-E09",
+   "category": "video-games",
+   "subcategory": "Sample topic 4",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE video-games easy 9] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-E10",
+   "category": "video-games",
+   "subcategory": "Sample topic 5",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE video-games easy 10] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-E11",
+   "category": "video-games",
+   "subcategory": "Sample topic 1",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE video-games easy 11] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-E12",
+   "category": "video-games",
+   "subcategory": "Sample topic 2",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE video-games easy 12] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-E13",
+   "category": "video-games",
+   "subcategory": "Sample topic 3",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE video-games easy 13] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-E14",
+   "category": "video-games",
+   "subcategory": "Sample topic 4",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE video-games easy 14] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-E15",
+   "category": "video-games",
+   "subcategory": "Sample topic 5",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE video-games easy 15] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-M01",
+   "category": "video-games",
+   "subcategory": "Sample topic 1",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE video-games medium 1] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-M02",
+   "category": "video-games",
+   "subcategory": "Sample topic 2",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE video-games medium 2] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-M03",
+   "category": "video-games",
+   "subcategory": "Sample topic 3",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE video-games medium 3] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-M04",
+   "category": "video-games",
+   "subcategory": "Sample topic 4",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE video-games medium 4] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-M05",
+   "category": "video-games",
+   "subcategory": "Sample topic 5",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE video-games medium 5] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-M06",
+   "category": "video-games",
+   "subcategory": "Sample topic 1",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE video-games medium 6] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-M07",
+   "category": "video-games",
+   "subcategory": "Sample topic 2",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE video-games medium 7] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-M08",
+   "category": "video-games",
+   "subcategory": "Sample topic 3",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE video-games medium 8] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-M09",
+   "category": "video-games",
+   "subcategory": "Sample topic 4",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE video-games medium 9] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-M10",
+   "category": "video-games",
+   "subcategory": "Sample topic 5",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE video-games medium 10] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-M11",
+   "category": "video-games",
+   "subcategory": "Sample topic 1",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE video-games medium 11] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-M12",
+   "category": "video-games",
+   "subcategory": "Sample topic 2",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE video-games medium 12] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-M13",
+   "category": "video-games",
+   "subcategory": "Sample topic 3",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE video-games medium 13] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-M14",
+   "category": "video-games",
+   "subcategory": "Sample topic 4",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE video-games medium 14] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-M15",
+   "category": "video-games",
+   "subcategory": "Sample topic 5",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE video-games medium 15] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-H01",
+   "category": "video-games",
+   "subcategory": "Sample topic 1",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE video-games hard 1] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-H02",
+   "category": "video-games",
+   "subcategory": "Sample topic 2",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE video-games hard 2] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-H03",
+   "category": "video-games",
+   "subcategory": "Sample topic 3",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE video-games hard 3] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-H04",
+   "category": "video-games",
+   "subcategory": "Sample topic 4",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE video-games hard 4] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-H05",
+   "category": "video-games",
+   "subcategory": "Sample topic 5",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE video-games hard 5] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-H06",
+   "category": "video-games",
+   "subcategory": "Sample topic 1",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE video-games hard 6] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-H07",
+   "category": "video-games",
+   "subcategory": "Sample topic 2",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE video-games hard 7] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-H08",
+   "category": "video-games",
+   "subcategory": "Sample topic 3",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE video-games hard 8] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-H09",
+   "category": "video-games",
+   "subcategory": "Sample topic 4",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE video-games hard 9] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-H10",
+   "category": "video-games",
+   "subcategory": "Sample topic 5",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE video-games hard 10] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-H11",
+   "category": "video-games",
+   "subcategory": "Sample topic 1",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE video-games hard 11] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-H12",
+   "category": "video-games",
+   "subcategory": "Sample topic 2",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE video-games hard 12] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-H13",
+   "category": "video-games",
+   "subcategory": "Sample topic 3",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE video-games hard 13] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-H14",
+   "category": "video-games",
+   "subcategory": "Sample topic 4",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE video-games hard 14] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-VIDEO-GAMES-H15",
+   "category": "video-games",
+   "subcategory": "Sample topic 5",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE video-games hard 15] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  }
+ ]
+}

@@ -1,0 +1,774 @@
+{
+ "metadata": {
+  "purpose": "Public sample ranked bank for development and tests. Contains no real ranked questions or answers.",
+  "category": "movies",
+  "questionCount": 45
+ },
+ "questions": [
+  {
+   "id": "SAMPLE-MOVIES-E01",
+   "category": "movies",
+   "subcategory": "Sample topic 1",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE movies easy 1] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-E02",
+   "category": "movies",
+   "subcategory": "Sample topic 2",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE movies easy 2] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-E03",
+   "category": "movies",
+   "subcategory": "Sample topic 3",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE movies easy 3] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-E04",
+   "category": "movies",
+   "subcategory": "Sample topic 4",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE movies easy 4] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-E05",
+   "category": "movies",
+   "subcategory": "Sample topic 5",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE movies easy 5] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-E06",
+   "category": "movies",
+   "subcategory": "Sample topic 1",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE movies easy 6] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-E07",
+   "category": "movies",
+   "subcategory": "Sample topic 2",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE movies easy 7] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-E08",
+   "category": "movies",
+   "subcategory": "Sample topic 3",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE movies easy 8] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-E09",
+   "category": "movies",
+   "subcategory": "Sample topic 4",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE movies easy 9] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-E10",
+   "category": "movies",
+   "subcategory": "Sample topic 5",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE movies easy 10] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-E11",
+   "category": "movies",
+   "subcategory": "Sample topic 1",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE movies easy 11] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-E12",
+   "category": "movies",
+   "subcategory": "Sample topic 2",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE movies easy 12] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-E13",
+   "category": "movies",
+   "subcategory": "Sample topic 3",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE movies easy 13] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-E14",
+   "category": "movies",
+   "subcategory": "Sample topic 4",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE movies easy 14] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-E15",
+   "category": "movies",
+   "subcategory": "Sample topic 5",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE movies easy 15] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-M01",
+   "category": "movies",
+   "subcategory": "Sample topic 1",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE movies medium 1] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-M02",
+   "category": "movies",
+   "subcategory": "Sample topic 2",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE movies medium 2] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-M03",
+   "category": "movies",
+   "subcategory": "Sample topic 3",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE movies medium 3] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-M04",
+   "category": "movies",
+   "subcategory": "Sample topic 4",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE movies medium 4] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-M05",
+   "category": "movies",
+   "subcategory": "Sample topic 5",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE movies medium 5] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-M06",
+   "category": "movies",
+   "subcategory": "Sample topic 1",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE movies medium 6] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-M07",
+   "category": "movies",
+   "subcategory": "Sample topic 2",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE movies medium 7] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-M08",
+   "category": "movies",
+   "subcategory": "Sample topic 3",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE movies medium 8] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-M09",
+   "category": "movies",
+   "subcategory": "Sample topic 4",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE movies medium 9] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-M10",
+   "category": "movies",
+   "subcategory": "Sample topic 5",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE movies medium 10] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-M11",
+   "category": "movies",
+   "subcategory": "Sample topic 1",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE movies medium 11] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-M12",
+   "category": "movies",
+   "subcategory": "Sample topic 2",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE movies medium 12] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-M13",
+   "category": "movies",
+   "subcategory": "Sample topic 3",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE movies medium 13] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-M14",
+   "category": "movies",
+   "subcategory": "Sample topic 4",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE movies medium 14] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-M15",
+   "category": "movies",
+   "subcategory": "Sample topic 5",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE movies medium 15] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-H01",
+   "category": "movies",
+   "subcategory": "Sample topic 1",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE movies hard 1] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-H02",
+   "category": "movies",
+   "subcategory": "Sample topic 2",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE movies hard 2] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-H03",
+   "category": "movies",
+   "subcategory": "Sample topic 3",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE movies hard 3] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-H04",
+   "category": "movies",
+   "subcategory": "Sample topic 4",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE movies hard 4] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-H05",
+   "category": "movies",
+   "subcategory": "Sample topic 5",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE movies hard 5] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-H06",
+   "category": "movies",
+   "subcategory": "Sample topic 1",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE movies hard 6] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-H07",
+   "category": "movies",
+   "subcategory": "Sample topic 2",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE movies hard 7] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-H08",
+   "category": "movies",
+   "subcategory": "Sample topic 3",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE movies hard 8] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-H09",
+   "category": "movies",
+   "subcategory": "Sample topic 4",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE movies hard 9] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-H10",
+   "category": "movies",
+   "subcategory": "Sample topic 5",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE movies hard 10] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-H11",
+   "category": "movies",
+   "subcategory": "Sample topic 1",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE movies hard 11] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-H12",
+   "category": "movies",
+   "subcategory": "Sample topic 2",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE movies hard 12] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-H13",
+   "category": "movies",
+   "subcategory": "Sample topic 3",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE movies hard 13] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-H14",
+   "category": "movies",
+   "subcategory": "Sample topic 4",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE movies hard 14] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-MOVIES-H15",
+   "category": "movies",
+   "subcategory": "Sample topic 5",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE movies hard 15] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  }
+ ]
+}

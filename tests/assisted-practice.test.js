@@ -26,7 +26,7 @@ test('free rules, private questions and lifelines require a player session witho
  reset();const publicRules=await call({},null,'GET');assert.equal(publicRules.status,200);assert.equal(publicRules.body.rules.rewardsEnabled,false);assert.equal((await call({action:'start'},null)).status,401);
  store.set('geek:profile:'+player,'untouched-profile');store.set('geek:economy:v1:'+player,'untouched-journal');
  const p=await start();assert.equal(p.rules,practiceRules);assert.equal(p.question.options.length,4);assert.equal(p.question.number,1);assert.ok(!('correctIndex' in p.question));assert.deepEqual(p.used,{'fifty-fifty':false,'extra-time':false});
- assert.equal(store.get('geek:profile:'+player),'untouched-profile');assert.equal(store.get('geek:economy:v1:'+player),'untouched-journal');assert.ok(![...store.keys()].some(k=>k.startsWith('geek:run:')||k.startsWith('geek:leaderboard:')));
+ assert.equal(store.get('geek:profile:'+player),'untouched-profile');assert.equal(store.get('geek:economy:v1:'+player),'untouched-journal');assert.ok(![...store.keys()].some(k=>k.startsWith('geek:run:')||k.startsWith('geek:development:run:')||k.startsWith('geek:leaderboard:')));
  assert.equal((await call({action:'view',runId:p.id,playerId:player},b)).status,404);assert.equal((await call({action:'view',runId:p.id},recovered)).status,200);
 });
 test('50/50 removes exactly two wrong answers, preserves indices and cannot be spent twice',async()=>{

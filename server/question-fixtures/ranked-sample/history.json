@@ -1,0 +1,774 @@
+{
+ "metadata": {
+  "purpose": "Public sample ranked bank for development and tests. Contains no real ranked questions or answers.",
+  "category": "history",
+  "questionCount": 45
+ },
+ "questions": [
+  {
+   "id": "SAMPLE-HISTORY-E01",
+   "category": "history",
+   "subcategory": "Sample topic 1",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE history easy 1] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-E02",
+   "category": "history",
+   "subcategory": "Sample topic 2",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE history easy 2] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-E03",
+   "category": "history",
+   "subcategory": "Sample topic 3",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE history easy 3] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-E04",
+   "category": "history",
+   "subcategory": "Sample topic 4",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE history easy 4] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-E05",
+   "category": "history",
+   "subcategory": "Sample topic 5",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE history easy 5] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-E06",
+   "category": "history",
+   "subcategory": "Sample topic 1",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE history easy 6] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-E07",
+   "category": "history",
+   "subcategory": "Sample topic 2",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE history easy 7] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-E08",
+   "category": "history",
+   "subcategory": "Sample topic 3",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE history easy 8] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-E09",
+   "category": "history",
+   "subcategory": "Sample topic 4",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE history easy 9] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-E10",
+   "category": "history",
+   "subcategory": "Sample topic 5",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE history easy 10] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-E11",
+   "category": "history",
+   "subcategory": "Sample topic 1",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE history easy 11] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-E12",
+   "category": "history",
+   "subcategory": "Sample topic 2",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE history easy 12] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-E13",
+   "category": "history",
+   "subcategory": "Sample topic 3",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE history easy 13] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-E14",
+   "category": "history",
+   "subcategory": "Sample topic 4",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE history easy 14] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-E15",
+   "category": "history",
+   "subcategory": "Sample topic 5",
+   "difficulty": "easy",
+   "prompt": "[SAMPLE history easy 15] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-M01",
+   "category": "history",
+   "subcategory": "Sample topic 1",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE history medium 1] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-M02",
+   "category": "history",
+   "subcategory": "Sample topic 2",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE history medium 2] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-M03",
+   "category": "history",
+   "subcategory": "Sample topic 3",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE history medium 3] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-M04",
+   "category": "history",
+   "subcategory": "Sample topic 4",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE history medium 4] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-M05",
+   "category": "history",
+   "subcategory": "Sample topic 5",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE history medium 5] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-M06",
+   "category": "history",
+   "subcategory": "Sample topic 1",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE history medium 6] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-M07",
+   "category": "history",
+   "subcategory": "Sample topic 2",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE history medium 7] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-M08",
+   "category": "history",
+   "subcategory": "Sample topic 3",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE history medium 8] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-M09",
+   "category": "history",
+   "subcategory": "Sample topic 4",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE history medium 9] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-M10",
+   "category": "history",
+   "subcategory": "Sample topic 5",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE history medium 10] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-M11",
+   "category": "history",
+   "subcategory": "Sample topic 1",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE history medium 11] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-M12",
+   "category": "history",
+   "subcategory": "Sample topic 2",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE history medium 12] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-M13",
+   "category": "history",
+   "subcategory": "Sample topic 3",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE history medium 13] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-M14",
+   "category": "history",
+   "subcategory": "Sample topic 4",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE history medium 14] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-M15",
+   "category": "history",
+   "subcategory": "Sample topic 5",
+   "difficulty": "medium",
+   "prompt": "[SAMPLE history medium 15] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-H01",
+   "category": "history",
+   "subcategory": "Sample topic 1",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE history hard 1] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-H02",
+   "category": "history",
+   "subcategory": "Sample topic 2",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE history hard 2] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-H03",
+   "category": "history",
+   "subcategory": "Sample topic 3",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE history hard 3] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-H04",
+   "category": "history",
+   "subcategory": "Sample topic 4",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE history hard 4] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-H05",
+   "category": "history",
+   "subcategory": "Sample topic 5",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE history hard 5] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-H06",
+   "category": "history",
+   "subcategory": "Sample topic 1",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE history hard 6] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-H07",
+   "category": "history",
+   "subcategory": "Sample topic 2",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE history hard 7] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-H08",
+   "category": "history",
+   "subcategory": "Sample topic 3",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE history hard 8] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-H09",
+   "category": "history",
+   "subcategory": "Sample topic 4",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE history hard 9] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-H10",
+   "category": "history",
+   "subcategory": "Sample topic 5",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE history hard 10] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-H11",
+   "category": "history",
+   "subcategory": "Sample topic 1",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE history hard 11] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-H12",
+   "category": "history",
+   "subcategory": "Sample topic 2",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE history hard 12] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample answer"
+   ],
+   "correctIndex": 3,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-H13",
+   "category": "history",
+   "subcategory": "Sample topic 3",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE history hard 13] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample answer",
+    "Sample option 2",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 0,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-H14",
+   "category": "history",
+   "subcategory": "Sample topic 4",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE history hard 14] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample answer",
+    "Sample option 3",
+    "Sample option 4"
+   ],
+   "correctIndex": 1,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  },
+  {
+   "id": "SAMPLE-HISTORY-H15",
+   "category": "history",
+   "subcategory": "Sample topic 5",
+   "difficulty": "hard",
+   "prompt": "[SAMPLE history hard 15] Which option is labeled 'Sample answer'?",
+   "options": [
+    "Sample option 1",
+    "Sample option 2",
+    "Sample answer",
+    "Sample option 4"
+   ],
+   "correctIndex": 2,
+   "funFact": "Fixture data for development and tests only. Not a real ranked question.",
+   "source": "",
+   "reviewStatus": "fixture"
+  }
+ ]
+}
