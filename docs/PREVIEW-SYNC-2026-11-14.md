@@ -1,6 +1,6 @@
 # Preview synchronization
 
-OPS-005, November 14, 2026. The founder requested bringing current HQ releases into the older Preview branch and redeploying Preview with separate test data and payouts disabled. This records a candidate until the PR review record contains the actual release.
+OPS-005, November 14, 2026. The founder requested bringing current HQ releases into the older Preview branch and redeploying Preview with separate test data and payouts disabled. Released to Preview through PR #293; production main is unchanged.
 
 ## Inputs and boundaries
 
@@ -25,3 +25,13 @@ Current main's published whitepaper/PDF, four-chapter litepaper, wallet switchin
 ## Acceptance limits
 
 Verify full repository checks, immutable version proof negatives/positives and the scrubbed local private-bank rehearsal before moving the bound branch. After deployment, verify the exact commit/READY state, Preview alias, public assets, authentication startup and closed payment/write boundaries. Public/bare HTTP delivery does not establish a user's actual passkey, KasWare signing, tablet compatibility or real private-bank readiness. Record the deployment and tests in the PR review record; no mainnet enable or production cutover is authorized.
+
+
+## Released Preview evidence
+
+The bound branch was fast-forwarded with an expected-head lease to d3da56dfff687dac587e35902c50096d1dcf6afc, preserving the merge ancestry. PR #293 is merged. Exact tree f9b7f92005dc094c0193d775d4a46b1d8688eb2a passed 1090 application plus 9 testnet and 6 mainnet signer checks (1105 total), zero failures/skips, with real Redis, all required content/security/generated checks, and 106 scrubbed synthetic rehearsal checks. Exact-head Security verification 43638498071, both Vercel checks and Android debug APK workflow 43638498146 passed.
+
+Live Preview deployment dpl_4PUgGmrzYuGFPck1jFRLQEcaZZhe is READY on that exact commit and the existing bound branch, with preview.geekprotocol.xyz assigned. The browser shows enabled Sign in and Create Geek account, its ready message and the fixed Preview wallet URL. Existing environment records are unchanged; exact Preview passkey origin and false Preview reward/automatic flags remain. No account data or credential was reset, migrated or copied. Production remains 142f104 on dpl_3BdzDLjKrRXSeTZrtLs4YFeJiSQp. These checks establish updated Preview delivery and authentication startup, not actual user passkey completion or private-ranked-bank acceptance. Final HTTP and release results are retained in the [PR review record](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/293).
+
+
+Bare unauthenticated HTTP reaches Vercel's login page, not the application. Deployment Protection remains enabled. Owner-authorized protected fetches returned exact source for sign-in HTML, session-access JS, sign-in JS and receiving-address JS (all HTTP 200); a credential-free application status request returned 401 and the worker GET returned 405/Allow POST/no-store. Browser startup and these HTTP checks do not establish that an unrelated device has passed the outer Vercel access gate or completed Geek authentication. The exact-head follow-up Security verification 43638679870 also passed.

@@ -2329,10 +2329,10 @@
     {
       "id": "OPS-005",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "done",
       "title": "Synchronize the bound Preview branch with current HQ releases",
       "owner": "Maintainer; founder requested Preview deployment",
-      "nextAction": "Verify the merged candidate, publish a PR into security/private-ranked-bank and deploy that exact reviewed result to preview.geekprotocol.xyz. Retain the existing Preview database/passkey origin bindings and disabled payments. Actual-device sign-in remains pending.",
+      "nextAction": "Use the updated Preview sign-in page for actual-device acceptance. Preserve its separate data/origin bindings and closed payment/ranked-write guards. Main remains unchanged; private-bank production cutover and independent review stay open.",
       "acceptance": [
         "Preview retains the private-bank and season draft while incorporating main through 142f104419ea16dab6b1762b77ffd7cae2ed6fdb, including home account, receiving-wallet switch, published whitepaper/PDF, litepaper correction and v2 payout proof.",
         "Home My HQ navigation works with the existing rate-limit-aware session controller; failed or stale status reads do not pretend sign-out or hide authenticated controls.",
@@ -2352,6 +2352,11 @@
         "workers/mainnet/eligibility.mjs",
         "tests/session-access-client.test.js",
         "tests/mainnet-payout.test.js"
+      ],
+      "completedAt": "2026-11-14",
+      "completionEvidence": [
+        "PR #293: https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/293. Bound security/private-ranked-bank fast-forwarded with an expected-head lease from 55c610153e0bb72d6dc320891e607d2d52a37ec7 to d3da56dfff687dac587e35902c50096d1dcf6afc; main through 142f104 and reviewed held assembly retained. Exact tree f9b7f92005dc094c0193d775d4a46b1d8688eb2a passed full 1105 local checks and 106 isolated rehearsal checks, zero failures/skips; Security verification 43638498071 and both Vercel checks passed. Android debug APK workflow 43638498146 also passed.",
+        "Live Preview deployment dpl_4PUgGmrzYuGFPck1jFRLQEcaZZhe READY on that exact commit and bound branch, target Preview, with preview.geekprotocol.xyz assigned. Browser observes enabled Sign in/Create Geek account and the ready message, plus the Preview-origin wallet link. Configuration records unchanged, exact Preview passkey origin retained and Preview reward/automatic flags false. Actual user passkey/KasWare/device and bank acceptance remain separate. Production stays 142f104 on dpl_3BdzDLjKrRXSeTZrtLs4YFeJiSQp."
       ]
     }
   ]

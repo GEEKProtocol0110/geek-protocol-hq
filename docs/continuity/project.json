@@ -283,8 +283,8 @@
   },
   "previewSync": {
     "task": "OPS-005",
-    "status": "source-candidate",
+    "status": "deployed-http-and-browser-startup-verified",
     "evidence": "docs/PREVIEW-SYNC-2026-11-14.md",
-    "nextAction": "Sync existing security/private-ranked-bank Preview branch with held reviewed assembly and main through 142f104. Verify exact candidate before deployment; preserve current Preview credentials/origin, namespaces, ranked-write refusal and disabled payments. Production remains unchanged."
+    "nextAction": "PR #293 fast-forwarded the bound Preview branch to d3da56dfff687dac587e35902c50096d1dcf6afc; dpl_4PUgGmrzYuGFPck1jFRLQEcaZZhe READY on exact source. Browser sign-in startup and Preview wallet link verified. Test actual user devices next. Keep existing Preview database/origin bindings, false payment flags and ranked-write guard. Main/Production remain unchanged; no private-bank production cutover."
   }
 }

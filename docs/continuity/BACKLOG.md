@@ -97,7 +97,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | SEC-010 | P0 | in-progress | Serve future ranked questions and answers from private storage; treat published banks as exposed | Maintainer; founder selects private storage and approves rollout |
 | UX-029 | P1 | needs-evidence | Keep home account access in sync and expose receiving-wallet switching | Maintainer; founder reviews release |
 | CHAIN-007 | P1 | done | Require private-ranked proof before mainnet payout admission and signing | Maintainer; founder controls economic enable; independent reviewer unassigned |
-| OPS-005 | P1 | in-progress | Synchronize the bound Preview branch with current HQ releases | Maintainer; founder requested Preview deployment |
+| OPS-005 | P1 | done | Synchronize the bound Preview branch with current HQ releases | Maintainer; founder requested Preview deployment |
 
 ## CONT-001: Publish the continuation system
 
@@ -1481,9 +1481,9 @@ Evidence/specification: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PA
 
 ## OPS-005: Synchronize the bound Preview branch with current HQ releases
 
-**P1 / in-progress.** Owner: Maintainer; founder requested Preview deployment. Dependencies: SEC-010, CHAIN-007, UX-029.
+**P1 / done.** Owner: Maintainer; founder requested Preview deployment. Dependencies: SEC-010, CHAIN-007, UX-029.
 
-Next action: Verify the merged candidate, publish a PR into security/private-ranked-bank and deploy that exact reviewed result to preview.geekprotocol.xyz. Retain the existing Preview database/passkey origin bindings and disabled payments. Actual-device sign-in remains pending.
+Next action: Use the updated Preview sign-in page for actual-device acceptance. Preserve its separate data/origin bindings and closed payment/ranked-write guards. Main remains unchanged; private-bank production cutover and independent review stay open.
 
 Acceptance:
 
