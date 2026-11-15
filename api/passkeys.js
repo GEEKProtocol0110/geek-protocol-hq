@@ -10,8 +10,13 @@ export default async function handler(req, res) {
   try {
     passkeyContext(req);
     const session = await requireSession(req);
-    await rateLimit('passkey-session', session.id, 30, 600);
-    await rateLimit('passkey-client', clientFingerprint(req), 60, 600);
+    // Navigation/status reads must not consume the allowance for proof and
+    // device actions. Keep the original POST scopes and limits so an existing
+    // action throttle remains effective across this deployment. Classification
+    // uses the HTTP method, never a caller-supplied action name.
+    const read = req.method === 'GET';
+    await rateLimit(read ? 'passkey-read-session' : 'passkey-session', session.id, read ? 240 : 30, 600);
+    await rateLimit(read ? 'passkey-read-client' : 'passkey-client', clientFingerprint(req), read ? 600 : 60, 600);
     const result = req.method === 'GET' ? await passkeyStatus(session) : await passkeyAction(req, res, session, parseBody(req));
     return sendJson(res, 200, { ok: true, ...result });
   } catch (error) {

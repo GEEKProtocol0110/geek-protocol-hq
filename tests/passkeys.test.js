@@ -66,6 +66,56 @@ const enroll = async (cookie, key = authenticator(), token) => {
   return { cookie: cookieFrom(finish), grant: finish.body.grant.token, key };
 };
 
+test('passkey status reads cannot consume the proof budget for a real returning login', async () => {
+  const original = await session(), player = original.split('=')[1], account = await enroll(original);
+  const guest = await session();
+  for (let i = 0; i < 30; i++) {
+    assert.equal((await call(passkeysHandler, guest, null, 'GET')).statusCode, 200, `status read ${i + 1}`);
+  }
+  const begin = await call(passkeysHandler, guest, { action: 'begin-login' });
+  assert.equal(begin.statusCode, 200, JSON.stringify(begin.body));
+  const finish = await call(passkeysHandler, guest, { action: 'finish-login', challengeId: begin.body.challengeId, response: account.key.login(begin.body.options, player) });
+  assert.equal(finish.statusCode, 200, JSON.stringify(finish.body));
+  const saved = JSON.parse(await fixture.command('GET', 'geek:session:' + cookieFrom(finish).split('=')[1]));
+  assert.equal(saved.playerId, player);
+});
+
+test('passkey status limits remain bounded per session and across sessions on one client', async () => {
+  const cookie = await session(), id = cookie.split('=')[1];
+  await fixture.command('SET', `geek:rate:passkey-read-session:${id}`, '239', 'EX', 600);
+  assert.equal((await call(passkeysHandler, cookie, null, 'GET')).statusCode, 200);
+  const limited = await call(passkeysHandler, cookie, null, 'GET');
+  assert.equal(limited.statusCode, 429);
+  assert.match(limited.headers['Cache-Control'], /no-store/);
+  assert.equal((await call(passkeysHandler, cookie, { action: 'begin-login' })).statusCode, 200);
+  const clientKeys = await fixture.command('KEYS', 'geek:rate:passkey-read-client:*');
+  assert.equal(clientKeys.length, 1);
+  await fixture.command('SET', clientKeys[0], '599', 'EX', 600);
+  const other = await session(), third = await session();
+  assert.equal((await call(passkeysHandler, other, null, 'GET')).statusCode, 200);
+  assert.equal((await call(passkeysHandler, third, null, 'GET')).statusCode, 429);
+  assert.equal((await call(passkeysHandler, third, { action: 'begin-login' })).statusCode, 200);
+  assert.ok(await fixture.command('TTL', clientKeys[0]) > 0);
+});
+
+test('passkey POST limits retain existing counters and cannot be bypassed by a status action', async () => {
+  const first = await session(), second = await session(), third = await session();
+  // Even read-sounding POST bodies use the original action limits. Unknown
+  // actions fail validation and still spend budget before any action executes.
+  for (const cookie of [first, second]) {
+    for (let i = 0; i < 30; i++) assert.equal((await call(passkeysHandler, cookie, { action: 'status' })).statusCode, 400);
+    assert.equal(await fixture.command('GET', 'geek:rate:passkey-session:' + cookie.split('=')[1]), '30');
+    assert.equal((await call(passkeysHandler, cookie, { action: 'begin-register' })).statusCode, 429);
+    assert.equal((await call(passkeysHandler, cookie, null, 'GET')).statusCode, 200);
+  }
+  // A new session cannot bypass the client's original 60-action cap.
+  assert.equal((await call(passkeysHandler, third, { action: 'begin-login' })).statusCode, 429);
+  assert.equal((await call(passkeysHandler, third, null, 'GET')).statusCode, 200);
+  for (const key of await fixture.command('KEYS', 'geek:rate:passkey-*')) {
+    assert.ok(await fixture.command('TTL', key) > 0, key);
+  }
+});
+
 const receivingHandler = (req, res) => rewardsHandler({ ...req, query: { service: 'addresses' } }, res);
 const receivingAddress = (n, network = 'testnet') => {
   const key = new kaspa.PrivateKey(n.toString(16).padStart(64, '0'));

@@ -47,3 +47,7 @@ The founder reported that passkey creation failed on a family Amazon tablet and 
 ## Nearby trusted-device access — Alpha
 
 [AUTH-003](TRUSTED-DEVICE-ACCESS.md) implements explicit same-player approval from a freshly authenticated passkey device to a guest browser without local WebAuthn support. Five-minute requests, receiving-player confirmation, bounded device lists and fresh-proof revocation preserve existing account/economic gates. This does not create parent/child accounts or merge guest progress. Actual phone/Silk and independent security acceptance remain pending; the earlier no-device-link statement describes the prior release.
+
+## November 14 status-read isolation — AUTH-005
+
+GET status uses separate ten-minute client/session limits (600/client and 240/session). All POST proof, management and device actions retain the existing 60/client and 30/session counters. Navigation cannot spend the proof allowance; action names cannot choose the read allowance. Existing origin, session, replay and fresh-proof requirements remain. See the [internal boundary review](TRUST-BOUNDARY-REVIEW-2026-11-14.md) for the reproduced failure and remaining gates.

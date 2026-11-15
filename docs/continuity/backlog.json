@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-13",
+  "updatedAt": "2026-11-14",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2284,6 +2284,30 @@
       "completionEvidence": [
         "PR #289, https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/289, squash-merged 61d5b6d133089e68f5f0cdc62eff03abd97c1293. Exact-head Security verification 43522698604 and both Vercel checks passed. Local full verification: 921 application + 9 testnet + 6 mainnet signer checks, 936 total, zero failures/skips. Negative public-API control fails against the original admission code.",
         "Production dpl_9CsS9j28cma3jg4eJUEQj7gwVjmW READY on that exact merge with both canonical domains; credential-free worker GET returns 405, Allow POST and no-store. This confirms delivery/module loading, not mainnet signing, private-bank acceptance, independent audit or physical-device acceptance."
+      ]
+    },
+    {
+      "id": "AUTH-005",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Isolate passkey status limits and record account/payout trust boundaries",
+      "owner": "Maintainer; independent reviewer unassigned; founder confirms physical devices",
+      "nextAction": "Run full verification and exact-head CI; publish the narrow status-limit fix and record actual release evidence. Retain independent and physical-device acceptance separately.",
+      "acceptance": [
+        "Thirty GET status reads cannot block a complete same-player WebAuthn login.",
+        "GET status remains bounded per session and client; every POST retains the existing action counters, limits and expiry, regardless of its body action.",
+        "Existing exact-origin, session, proof, replay, revocation and trusted-device tests pass.",
+        "Record internal review boundaries separately for Kaspa, GEEK KRC-20 and HQ; do not change economic, private-bank, owner-enrollment or provider settings.",
+        "Full verification, exact-head CI and release evidence are recorded without claiming independent or actual-device acceptance."
+      ],
+      "dependsOn": [
+        "AUTH-004",
+        "CHAIN-007"
+      ],
+      "evidence": [
+        "docs/TRUST-BOUNDARY-REVIEW-2026-11-14.md",
+        "api/passkeys.js",
+        "tests/passkeys.test.js"
       ]
     }
   ]
