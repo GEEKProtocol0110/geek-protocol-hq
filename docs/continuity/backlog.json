@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-14",
+  "updatedAt": "2026-11-15",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2289,10 +2289,10 @@
     {
       "id": "AUTH-005",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "done",
       "title": "Isolate passkey status limits and record account/payout trust boundaries",
       "owner": "Maintainer; independent reviewer unassigned; founder confirms physical devices",
-      "nextAction": "Run full verification and exact-head CI; publish the narrow status-limit fix and record actual release evidence. Retain independent and physical-device acceptance separately.",
+      "nextAction": "Retain the released status/proof isolation. Complete same-account physical-device return-home/recovery acceptance and independent application/signing review separately; private-bank production cutover and economic holds remain.",
       "acceptance": [
         "Thirty GET status reads cannot block a complete same-player WebAuthn login.",
         "GET status remains bounded per session and client; every POST retains the existing action counters, limits and expiry, regardless of its body action.",
@@ -2308,6 +2308,11 @@
         "docs/TRUST-BOUNDARY-REVIEW-2026-11-14.md",
         "api/passkeys.js",
         "tests/passkeys.test.js"
+      ],
+      "completedAt": "2026-11-15",
+      "completionEvidence": [
+        "PR #294 squash-merged as f5401bcb658341c8dad31588440eb18d9e6e06d8; exact head 752fa9945d5c450ae803cc833112ff5a335d3da9/tree 79af152030d58719f1758ccf490268b8395b5241 passed Security verification 43674738267 and both Vercel statuses. Full local verification: 924 application + nine testnet + six mainnet signer checks, 939 total, zero failures/skips.",
+        "Production dpl_8cUhe2CetiLcuvyN5vuKCA8z6bcv READY on that exact merge with both canonical domains. Canonical sign-in HTML returned 200 and matched source exactly; direct credential-free passkey GET returned the expected session-required JSON 401 with no-store and Allow GET, POST, OPTIONS; worker GET returned 405 with Allow POST and no-store. No actual login, credential creation, receiving mutation or payout was submitted."
       ]
     }
   ]
