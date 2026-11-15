@@ -1497,3 +1497,11 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - Candidate validation and browser evidence follow. No merge, production release or physical-device acceptance is claimed.
 
 - UX-032 local evidence: all 50 public pages preserved byte-for-byte except their additive stylesheet link; metadata/continuity checks, 33 focused client tests, public-answer scan and 325 security assertions passed. Browser checked representative phone/narrow/desktop shells with no horizontal overflow, a real local Chess pawn move and mobile menu/Escape. Backend/session/passkey behavior, actual devices and third-party iframe internals remain separate.
+
+## November 15, 2026 — UX acceptance fixes on #297
+
+- Founder approved fixing UX Bot's #297/production findings. Branch `fix/arcade-hub-ux` on top of `codex/arcade-hub` (`8f3a554`), which already contains main `80f3e0b`.
+- Retired the superseded #296 concept: `/games/preview/` (and paths below it) now 308-redirects to `/games/`; concept files and their private site-pages entry are removed. UX-030 evidence now points at the redirect.
+- Hub phone fit: the tilted hero chessboard is sized relative to its scene and the scene clips its own paint, so it no longer depends on the hero's overflow clipping; Tower of Geek bars use proportional widths with a max-width guard inside two-column cards.
+- Mint history Clear is visibly dimmed with a not-allowed cursor while disabled. Lounge spacing added under Enable turn alerts, under the invite form, and above Open public lobbies. ONGOING-GAMES.md early paragraphs now describe the current push/notificationclick service worker and closed-lounge alerts.
+- Local headless Chromium at 360 and 390 CSS pixels reported no horizontal overflow (also with root overflow clipping disabled). Live redirect, physical-phone and real-session lounge checks remain for retest. No merge, deploy or production change.

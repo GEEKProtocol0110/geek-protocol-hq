@@ -299,6 +299,21 @@
       "source": "/moderate/:path*",
       "destination": "/ops/",
       "permanent": false
+    },
+    {
+      "source": "/games/preview",
+      "destination": "/games/",
+      "permanent": true
+    },
+    {
+      "source": "/games/preview/",
+      "destination": "/games/",
+      "permanent": true
+    },
+    {
+      "source": "/games/preview/:path*",
+      "destination": "/games/",
+      "permanent": true
     }
   ],
   "crons": [
