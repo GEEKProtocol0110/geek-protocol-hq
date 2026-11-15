@@ -17,7 +17,7 @@ The phone remains signed in. The tablet receives an ordinary 30-day HttpOnly/Sec
 
 ## Protocol and security boundaries
 
-The existing `/api/passkeys` handler handles `device-*` actions with the existing exact-origin, valid-session, no-store and client/session rate limits (30/session and 60/client per ten minutes). There is no new public API function or WASM packaging requirement.
+The existing `/api/passkeys` handler handles `device-*` actions with the existing exact-origin, valid-session, no-store and client/session rate limits (POST actions retain 30/session and 60/client per ten minutes; status GETs have separate limits under AUTH-005). There is no new public API function or WASM packaging requirement.
 
 A 96-bit random code indexes a SHA-256 request key. A separate random matching check aids side-by-side confirmation. Only one request is current for a receiving session; creating another invalidates its predecessor. Requests expire in five minutes, are bound to the exact origin and receiving session/player, and require explicit guest-progress acknowledgement. A code alone does not grant access. Only its original session can inspect approval, cancel or complete it. Names and device labels are untrusted text and never authentication identifiers.
 

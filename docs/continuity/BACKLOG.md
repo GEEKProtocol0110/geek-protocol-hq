@@ -96,6 +96,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | MINT-001 | P1 | in-progress | Preserve local mint request references across reloads | Maintainer; founder reviews release |
 | UX-029 | P1 | needs-evidence | Keep home account access in sync and expose receiving-wallet switching | Maintainer; founder reviews release |
 | CHAIN-007 | P1 | done | Require private-ranked proof before mainnet payout admission and signing | Maintainer; founder controls economic enable; independent reviewer unassigned |
+| AUTH-005 | P1 | in-progress | Isolate passkey status limits and record account/payout trust boundaries | Maintainer; independent reviewer unassigned; founder confirms physical devices |
 
 ## CONT-001: Publish the continuation system
 
@@ -1458,3 +1459,19 @@ Acceptance:
 - Full repository verification passes; real private-bank cutover, live provider recovery and independent audit remain open. Treasury settings, secrets and deployment configuration stay unchanged.
 
 Evidence/specification: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PAYOUT.md), [workers/mainnet/eligibility.mjs](../../workers/mainnet/eligibility.mjs), [workers/mainnet/job-mac.mjs](../../workers/mainnet/job-mac.mjs), [server/mainnet-payout.js](../../server/mainnet-payout.js), [tests/mainnet-payout.test.js](../../tests/mainnet-payout.test.js), [workers/mainnet/check-signing.mjs](../../workers/mainnet/check-signing.mjs).
+
+## AUTH-005: Isolate passkey status limits and record account/payout trust boundaries
+
+**P1 / in-progress.** Owner: Maintainer; independent reviewer unassigned; founder confirms physical devices. Dependencies: AUTH-004, CHAIN-007.
+
+Next action: Run full verification and exact-head CI; publish the narrow status-limit fix and record actual release evidence. Retain independent and physical-device acceptance separately.
+
+Acceptance:
+
+- Thirty GET status reads cannot block a complete same-player WebAuthn login.
+- GET status remains bounded per session and client; every POST retains the existing action counters, limits and expiry, regardless of its body action.
+- Existing exact-origin, session, proof, replay, revocation and trusted-device tests pass.
+- Record internal review boundaries separately for Kaspa, GEEK KRC-20 and HQ; do not change economic, private-bank, owner-enrollment or provider settings.
+- Full verification, exact-head CI and release evidence are recorded without claiming independent or actual-device acceptance.
+
+Evidence/specification: [docs/TRUST-BOUNDARY-REVIEW-2026-11-14.md](../../docs/TRUST-BOUNDARY-REVIEW-2026-11-14.md), [api/passkeys.js](../../api/passkeys.js), [tests/passkeys.test.js](../../tests/passkeys.test.js).
