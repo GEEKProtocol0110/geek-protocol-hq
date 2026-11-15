@@ -99,6 +99,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | AUTH-005 | P1 | done | Isolate passkey status limits and record account/payout trust boundaries | Maintainer; independent reviewer unassigned; founder confirms physical devices |
 | UX-030 | P2 | done | Preview sharper glow Arcade styling on the existing HQ deployment workflow | Maintainer; founder reviews the preview before any merge |
 | UX-031 | P2 | in-progress | Apply the Arcade design to the main Games hub while preserving every mode | Maintainer; founder reviews release; physical-phone acceptance unassigned |
+| UX-032 | P2 | in-progress | Blend the Arcade finish across all public HQ pages | Maintainer; founder reviews release; physical-device acceptance unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1508,3 +1509,18 @@ Acceptance:
 - Check 320px, phone and desktop layouts; verify discovery interactions, links, security, continuity and site metadata. Physical-device acceptance remains separate.
 
 Evidence/specification: [docs/ARCADE-HUB.md](../../docs/ARCADE-HUB.md), [public/games/index.html](../../public/games/index.html), [public/games/assets/hub.css](../../public/games/assets/hub.css), [public/games/assets/hub.js](../../public/games/assets/hub.js), [tests/games-hub-client.test.js](../../tests/games-hub-client.test.js).
+
+## UX-032: Blend the Arcade finish across all public HQ pages
+
+**P2 / in-progress.** Owner: Maintainer; founder reviews release; physical-device acceptance unassigned. Dependencies: UX-031.
+
+Next action: Review homepage, My HQ, learning, sign-in, news, directory and game/lobby previews in the expanded #297 before merging.
+
+Acceptance:
+
+- Apply consistent crisp typography, teal action buttons, gold identity accents and readable illuminated panels across all 50 public nonprivate HQ pages.
+- Preserve original layouts, cosmos/code-rain, GIGA/other art, theme logic, game boards, answer states, market gain/loss colors, semantic markup and all behavior hooks.
+- Load one self-hosted shared stylesheet after page styles through the maintained page generator; keep private operator pages and historical concept separate.
+- Validate metadata, markup preservation, existing client checks and representative desktop/phone layouts. Actual-device acceptance is separate.
+
+Evidence/specification: [docs/SITE-FINISH.md](../../docs/SITE-FINISH.md), [public/assets/site-finish.css](../../public/assets/site-finish.css), [scripts/site-pages.mjs](../../scripts/site-pages.mjs).

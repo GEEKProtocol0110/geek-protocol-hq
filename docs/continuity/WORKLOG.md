@@ -1489,3 +1489,11 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - Added regression coverage for original destinations, group/search intersection, empty-state recovery and historic section links. Source/visual checks and PR evidence follow; no merge or physical-phone acceptance is claimed here.
 
 - UX-031 candidate checks: four new hub discovery tests and five homepage tests passed, plus continuity/site/public-answer/security (325 assertions), syntax and whitespace. Browser rendered desktop and 320/390/820px QA frames without horizontal overflow; Friends/Chess/empty-result/recovery behavior passed. Full CI and provider preview follow publication; no physical-phone acceptance claim.
+
+## November 15, 2026 — UX-032 whole-site blended finish
+
+- Founder expanded the Arcade work to the whole HQ site, mixed with the existing design. Extend #297 rather than start an unrelated redesign. One shared last-loaded CSS layer covers 50 public nonprivate pages. Private operator pages and the historical concept retain their original presentation.
+- Preserve the existing cosmos/code-rain, art, layouts, boards, state colors and hooks. The page generator inserts only a self-hosted stylesheet link, with no new runtime script, tracking, dependency, API, game or financial change.
+- Candidate validation and browser evidence follow. No merge, production release or physical-device acceptance is claimed.
+
+- UX-032 local evidence: all 50 public pages preserved byte-for-byte except their additive stylesheet link; metadata/continuity checks, 33 focused client tests, public-answer scan and 325 security assertions passed. Browser checked representative phone/narrow/desktop shells with no horizontal overflow, a real local Chess pawn move and mobile menu/Escape. Backend/session/passkey behavior, actual devices and third-party iframe internals remain separate.

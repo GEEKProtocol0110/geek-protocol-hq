@@ -1,0 +1,71 @@
+/* Geek's shared finish: Arcade craft over the existing cosmos, art and layouts.
+   Loaded last on public HQ pages. Operator pages and the concept are excluded.
+   This file styles chrome, never answer states, board cells or collectible art. */
+:root{--finish-teal:var(--cyan,#7de4d2);--finish-gold:var(--gold,#e8c775);--finish-panel:#101c22;--finish-line:#38524f;--finish-copy:#c6d5d8;--finish-quiet:#aac0c4;--finish-font:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+/* The typeface changes, while each page keeps its own responsive heading sizes. */
+body :is(h1,h2,h3,h4){font-family:var(--finish-font)!important;font-weight:550!important;text-transform:none;text-shadow:none;-webkit-text-stroke:0;filter:none;letter-spacing:-.025em}
+body :is(p,li,dd,label,input,textarea,.answer-text){text-shadow:none}
+body :is(.eyebrow,.section-kicker,.news-kicker,.directory-kicker){font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-weight:500;text-shadow:none;letter-spacing:.1em}
+/* A centered, quiet halo remains on the established main signal title. */
+body.hq-world .hq-signal-title{text-shadow:0 0 10px #70e6dc20;filter:none}
+body :is(.welcome-panel>summary b,.welcome-card-action,.home-sign-in,.game-open){font-weight:550}
+/* Opaque reading panels retain the cosmos and code rain behind the page. */
+body :is(.welcome-panel,.welcome-cards>a,.home-launchpad>a,.sign-in-card,.identity-card,.quest-progress-card,.start-card,.start-progress,.practice-panel,.classic-panel,.brain-panel,.geek-coach,.online-row,.leaders-board,.news-terminal,.news-source-card,.news-explainer,.directory-card,.market-view,.market-snapshot){
+  background:radial-gradient(ellipse at 95% 0,#70e6dc09,transparent 55%),linear-gradient(135deg,#14272a,#101b22 70%);
+  border-color:var(--finish-line);border-radius:14px;
+  box-shadow:inset 0 1px #a4e9d10d,0 9px 27px #00000024;
+}
+body :is(.welcome-panel>summary,.news-terminal-heading,.directory-section-heading){border-bottom-color:#39534e}
+body :is(.welcome-panel>summary small,.welcome-cards p,.home-launchpad p,.directory-card>p,.news-source-card p,.news-explainer p){color:var(--finish-copy)}
+body :is(.welcome-panel[open]>summary,.welcome-panel>summary:hover){background:#192d30;border-radius:13px 13px 0 0}
+body .welcome-panel:not([open])>summary:hover{border-radius:13px}
+/* Reuse gold for identity and teal for action, with clear foreground contrast. */
+body :is(.button,.study-button,.primary-action,.quiet-action,.link-button){border-radius:8px;font-family:var(--finish-font);font-weight:550;letter-spacing:0;text-transform:none;text-shadow:none;white-space:normal;min-height:44px}
+body :is(.button-primary,.primary-action,.study-button.primary){background:var(--finish-teal);border-color:var(--finish-teal);color:#09231f;box-shadow:0 3px 18px #70e6dc16}
+body :is(.button-primary,.primary-action,.study-button.primary):hover:not(:disabled){background:#a3e9dc;border-color:#a3e9dc;color:#09231f}
+body :is(.button-secondary,.quiet-action,.study-button.quiet,.sign-in-main .button-secondary){background:#102126;border:1px solid #52716b;color:#dcece8;box-shadow:inset 0 1px #b8e7dc0a}
+body :is(.button-secondary,.quiet-action,.study-button.quiet,.sign-in-main .button-secondary):hover:not(:disabled){background:#203c36;border-color:var(--finish-teal);color:#c8f5e9}
+body .button-gold{background:var(--finish-gold);border-color:var(--finish-gold);color:#252012;border-radius:8px;text-shadow:none}
+body :is(.button,.study-button,.primary-action,.quiet-action):disabled{box-shadow:none;cursor:not-allowed}
+body .sign-in-main .button-secondary:disabled{background:#142126;color:#a9bfbd;border-color:#415a55;opacity:1}
+/* Existing navigation behavior stays owned by its page scripts. */
+body :is(.site-header,.games-header,.news-nav,.directory-header,.leaders-header){border-bottom-color:#36514d}
+body .site-header{background:#0b151beb}
+body :is(.main-nav a,.main-nav summary,.games-header nav a,.news-nav nav a,.directory-nav a){font-family:var(--finish-font);font-weight:500;text-transform:none;letter-spacing:0;text-shadow:none}
+body :is(.brand img,.geek-game-brand img){border-radius:10px}
+body .brand-mark{color:var(--finish-gold)}
+body .nav-more-panel{background:#111f26;border:1px solid #48655d;border-radius:12px;box-shadow:0 14px 40px #0008}
+body :is(.main-nav,.games-header nav,.news-nav nav,.directory-nav) a[aria-current=page]{color:var(--finish-teal);text-decoration-color:var(--finish-gold);text-underline-offset:6px}
+/* Form chrome is scoped to settings/search, not game answer or board controls. */
+body :is(.sign-in-main,.directory-controls,.leaders-filters,.news-controls,.dashboard-board-controls,.online-columns) :is(input:not([type=checkbox]):not([type=radio]),select,textarea){background:#0c1a20;color:#e2efeb;border:1px solid #52716b;border-radius:8px;font-family:var(--finish-font)}
+body :is(.sign-in-main,.directory-controls,.leaders-filters,.dashboard-board-controls) :is(input,select,textarea)::placeholder{color:#9eb8b7;opacity:1}
+body :is(.news-controls button,.news-pause,.market-tabs button,.directory-controls button,.leaders-filters button){border-radius:8px;font-family:var(--finish-font);font-weight:500;text-shadow:none}
+body :is(.news-controls,.market-tabs) button[aria-pressed=true]{background:var(--finish-teal);border-color:var(--finish-teal);color:#09231f}
+body :is(.news-source-card--gold,.welcome-gauntlet,.welcome-family){border-color:#796c43}
+body .directory-card:hover,body .directory-card:focus-within,body .welcome-cards>a:hover,body .home-launchpad>a:hover{border-color:#79b6a8;box-shadow:inset 0 1px #9de8d518,0 0 22px #70e6dc0c}
+/* Table headers and row separators follow the same reading surfaces. Values,
+   gain/loss colors, rank badges and all gameplay feedback retain their rules. */
+body :is(.dashboard-table,.leaders-table,.market-table) thead{background:#19302d}
+body :is(.dashboard-table,.leaders-table,.market-table) :is(th,td){border-bottom-color:#2d4644}
+body :is(.dashboard-table,.leaders-table,.market-table) th{font-weight:500}
+body :is(.play-switcher a,.games-jumps a){border-color:#3d5d57;background:#11262a;color:#bfded5;border-radius:8px}
+body .play-switcher a[aria-current]{color:#a3f1e5;background:#1b3940;border-color:#70e6dc88}
+/* No global width, padding, display, transform or background rule touches a board. */
+body :is(.welcome-panel,.sign-in-card,.online-row,.news-source-card,.directory-card,.home-launchpad>a){min-width:0;overflow-wrap:anywhere}
+body :is(.button,.study-button,.primary-action,.quiet-action,.main-nav a,.nav-more summary){touch-action:manipulation}
+body :is(.button,.study-button,.primary-action,.quiet-action,.news-controls button,.news-pause,.directory-controls input,.directory-controls select,.leaders-filters select):focus-visible{outline:2px solid var(--finish-teal);outline-offset:4px}
+@media(max-width:600px){
+ body :is(.sign-in-main,.directory-controls,.leaders-filters,.online-columns) :is(input:not([type=checkbox]):not([type=radio]),select,textarea){font-size:16px}
+ body :is(.main-nav a,.main-nav summary,.games-header nav a,.news-nav nav a,.directory-nav a){min-height:44px}
+ body :is(.welcome-panel>summary b,.welcome-cards h3){font-weight:550}
+ body :is(.button,.study-button,.primary-action,.quiet-action){overflow-wrap:anywhere;max-width:100%}
+}
+@media(prefers-reduced-motion:no-preference){body :is(.welcome-cards>a,.home-launchpad>a,.directory-card){transition:border-color .16s,box-shadow .16s}}
+@media(prefers-reduced-motion:reduce){body :is(.welcome-cards>a,.home-launchpad>a,.directory-card){transition:none}}
+@media(forced-colors:active){
+ body :is(h1,h2,h3,h4,.hq-signal-title){text-shadow:none}
+ body :is(.welcome-panel,.welcome-cards>a,.home-launchpad>a,.sign-in-card,.identity-card,.quest-progress-card,.start-card,.start-progress,.practice-panel,.classic-panel,.brain-panel,.geek-coach,.online-row,.leaders-board,.news-terminal,.news-source-card,.news-explainer,.directory-card,.market-view,.market-snapshot,.nav-more-panel){background:Canvas;color:CanvasText;border-color:CanvasText;box-shadow:none}
+ body :is(.button,.study-button,.primary-action,.quiet-action,.link-button,.button-gold,.play-switcher a,.games-jumps a){background:ButtonFace;color:ButtonText;border-color:ButtonText;box-shadow:none}
+ body :is(.news-controls,.market-tabs) button[aria-pressed=true]{outline:2px solid Highlight;background:ButtonFace;color:ButtonText}
+ body :is(.sign-in-main,.directory-controls,.leaders-filters,.news-controls,.dashboard-board-controls,.online-columns) :is(input,select,textarea){background:Canvas;color:CanvasText;border-color:CanvasText}
+}
