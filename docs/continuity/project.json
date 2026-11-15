@@ -277,8 +277,20 @@
   },
   "arcadeGlowPreview": {
     "task": "UX-030",
-    "status": "source-candidate",
+    "status": "merged-deployed-http-verified",
     "evidence": "docs/ARCADE-GLOW-PREVIEW.md",
-    "nextAction": "Draft branch preview only; founder reviews before integration or merge."
+    "nextAction": "PR #296 merged and production READY; UX-031 applies the visual direction to /games/."
+  },
+  "arcadeHub": {
+    "task": "UX-031",
+    "status": "source-candidate",
+    "evidence": "docs/ARCADE-HUB.md",
+    "nextAction": "Review the integrated main Games hub and exact-head checks in the PR preview before release; physical-phone acceptance remains separate."
+  },
+  "sharedSiteFinish": {
+    "task": "UX-032",
+    "status": "source-candidate",
+    "evidence": "docs/SITE-FINISH.md",
+    "nextAction": "Expanded #297 blends Arcade polish with existing HQ styling across all public pages; review before merging. Physical-device acceptance remains open."
   }
 }

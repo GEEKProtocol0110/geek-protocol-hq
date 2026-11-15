@@ -1481,3 +1481,19 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - Scope: separate `/games/preview/` design route on a draft branch based on main `9786472`. Corrects the earlier separate-site preview workflow; live hub unchanged.
 - Reuses GIGA and existing CSP. All styles/scripts are local; no third-party component or animation dependencies. Local memory/tic-tac-toe demos, filters and search; Practice uses HQ. Backgammon labeled a concept.
 - Next: validate source and publish a Vercel draft preview for founder feedback. No merge, production release, account mutation or economic enable. Actual-phone acceptance remains open.
+
+## November 15, 2026 — UX-031 main Arcade integration
+
+- Founder directed applying the approved Arcade design to the real Games hub after #296. Source branch based on `80f3e0b`; all 24 original card links and game-section fragments remain. The real lounge is grouped with multiplayer and exposed in a direct invitation/My Games callout.
+- New hub-only CSS and presentation-only search/category filtering. Existing game engines, rooms, guest/account behavior and economic holds stay unchanged. The homepage's existing Games link is labeled Play Games. Preview concept retained as historical.
+- Added regression coverage for original destinations, group/search intersection, empty-state recovery and historic section links. Source/visual checks and PR evidence follow; no merge or physical-phone acceptance is claimed here.
+
+- UX-031 candidate checks: four new hub discovery tests and five homepage tests passed, plus continuity/site/public-answer/security (325 assertions), syntax and whitespace. Browser rendered desktop and 320/390/820px QA frames without horizontal overflow; Friends/Chess/empty-result/recovery behavior passed. Full CI and provider preview follow publication; no physical-phone acceptance claim.
+
+## November 15, 2026 — UX-032 whole-site blended finish
+
+- Founder expanded the Arcade work to the whole HQ site, mixed with the existing design. Extend #297 rather than start an unrelated redesign. One shared last-loaded CSS layer covers 50 public nonprivate pages. Private operator pages and the historical concept retain their original presentation.
+- Preserve the existing cosmos/code-rain, art, layouts, boards, state colors and hooks. The page generator inserts only a self-hosted stylesheet link, with no new runtime script, tracking, dependency, API, game or financial change.
+- Candidate validation and browser evidence follow. No merge, production release or physical-device acceptance is claimed.
+
+- UX-032 local evidence: all 50 public pages preserved byte-for-byte except their additive stylesheet link; metadata/continuity checks, 33 focused client tests, public-answer scan and 325 security assertions passed. Browser checked representative phone/narrow/desktop shells with no horizontal overflow, a real local Chess pawn move and mobile menu/Escape. Backend/session/passkey behavior, actual devices and third-party iframe internals remain separate.

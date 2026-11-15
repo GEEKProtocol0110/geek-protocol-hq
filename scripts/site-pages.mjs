@@ -23,7 +23,7 @@ export function metadataFor(page, config) {
 }
 
 export function renderMetadata(html, page, config) {
-  return html.replace(/<head\b[^>]*>[\s\S]*?<\/head>/i, head => {
+  const output = html.replace(/<head\b[^>]*>[\s\S]*?<\/head>/i, head => {
     head = head.replace(/<!-- site-metadata:(?:start|end) -->/g,'').replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi,'')
       .replace(/<meta\b[^>]*>/gi, tag => managed.has(attrs(tag).name || attrs(tag).property) ? '' : tag)
       .replace(/<link\b[^>]*>/gi, tag => ['canonical','icon','manifest','apple-touch-icon'].includes(attrs(tag).rel) ? '' : tag);
@@ -32,6 +32,12 @@ export function renderMetadata(html, page, config) {
     assert.match(head, /<meta\b[^>]*charset\s*=/i, page.file);
     return head.replace(/(<meta\b[^>]*charset\s*=[^>]*>)\s*/i, (_, tag) => `${tag}\n    ${metadataFor(page, config)}\n    `);
   });
+  // Keep the shared public finish after each page's own styles. Private operator
+  // pages and the preserved, private-marked design concept keep their own chrome.
+  if (!page.file.startsWith('public/') || page.private) return output;
+  return output.replace(/<head\b[^>]*>[\s\S]*?<\/head>/i, head => head
+    .replace(/<link\b[^>]*href=["']\/assets\/site-finish\.css["'][^>]*>\s*/gi, '')
+    .replace(/<\/head>/i, '<link rel="stylesheet" href="/assets/site-finish.css"></head>'));
 }
 
 export function checkSitePages({ write = false } = {}) {

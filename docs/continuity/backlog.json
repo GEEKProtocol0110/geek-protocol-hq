@@ -2318,10 +2318,10 @@
     {
       "id": "UX-030",
       "priority": "P2",
-      "status": "in-progress",
+      "status": "done",
       "title": "Preview sharper glow Arcade styling on the existing HQ deployment workflow",
       "owner": "Maintainer; founder reviews the preview before any merge",
-      "nextAction": "Publish a draft PR preview at /games/preview/ and obtain founder visual feedback; do not merge.",
+      "nextAction": "Preserve the historical concept route; UX-031 integrates the approved visual direction into the real Games hub.",
       "acceptance": [
         "Separate noindex concept route with existing GIGA, sharp typography and responsive teal/gold cards.",
         "Use existing CSP with self-hosted CSS/JS; keep the live Games hub, account state, rooms and rewards unchanged.",
@@ -2332,6 +2332,57 @@
       "evidence": [
         "docs/ARCADE-GLOW-PREVIEW.md",
         "public/games/preview/"
+      ],
+      "completedAt": "2026-11-15",
+      "completionEvidence": [
+        "Founder-approved #296 squash-merged as 80f3e0bf793780e4bf05ab5ea244ed780dff35e7. Production dpl_DYUqTbXbjM69gisHus31ULwo7owN READY with both canonical domains; /games/preview/ and its CSS/JS returned 200."
+      ]
+    },
+    {
+      "id": "UX-031",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Apply the Arcade design to the main Games hub while preserving every mode",
+      "owner": "Maintainer; founder reviews release; physical-phone acceptance unassigned",
+      "nextAction": "Verify /games/ source, browser layouts and PR preview; retain every game setup route and review before merge.",
+      "acceptance": [
+        "Use the approved crisp teal/gold design and existing GIGA/tabletop assets on /games/.",
+        "Keep all 24 original game-card destinations, timing/access descriptions, section fragments and multiplayer invitation/My Games entry. No demo replaces a game.",
+        "Progressively enhance the static catalog with local category/search filters, announced counts and a no-result recovery path. Opening the hub makes no game API requests.",
+        "Preserve main navigation and label the existing homepage Games call-to-action Play Games.",
+        "Check 320px, phone and desktop layouts; verify discovery interactions, links, security, continuity and site metadata. Physical-device acceptance remains separate."
+      ],
+      "dependsOn": [
+        "UX-030"
+      ],
+      "evidence": [
+        "docs/ARCADE-HUB.md",
+        "public/games/index.html",
+        "public/games/assets/hub.css",
+        "public/games/assets/hub.js",
+        "tests/games-hub-client.test.js"
+      ]
+    },
+    {
+      "id": "UX-032",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Blend the Arcade finish across all public HQ pages",
+      "owner": "Maintainer; founder reviews release; physical-device acceptance unassigned",
+      "nextAction": "Review homepage, My HQ, learning, sign-in, news, directory and game/lobby previews in the expanded #297 before merging.",
+      "acceptance": [
+        "Apply consistent crisp typography, teal action buttons, gold identity accents and readable illuminated panels across all 50 public nonprivate HQ pages.",
+        "Preserve original layouts, cosmos/code-rain, GIGA/other art, theme logic, game boards, answer states, market gain/loss colors, semantic markup and all behavior hooks.",
+        "Load one self-hosted shared stylesheet after page styles through the maintained page generator; keep private operator pages and historical concept separate.",
+        "Validate metadata, markup preservation, existing client checks and representative desktop/phone layouts. Actual-device acceptance is separate."
+      ],
+      "dependsOn": [
+        "UX-031"
+      ],
+      "evidence": [
+        "docs/SITE-FINISH.md",
+        "public/assets/site-finish.css",
+        "scripts/site-pages.mjs"
       ]
     }
   ]

@@ -97,7 +97,9 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-029 | P1 | needs-evidence | Keep home account access in sync and expose receiving-wallet switching | Maintainer; founder reviews release |
 | CHAIN-007 | P1 | done | Require private-ranked proof before mainnet payout admission and signing | Maintainer; founder controls economic enable; independent reviewer unassigned |
 | AUTH-005 | P1 | done | Isolate passkey status limits and record account/payout trust boundaries | Maintainer; independent reviewer unassigned; founder confirms physical devices |
-| UX-030 | P2 | in-progress | Preview sharper glow Arcade styling on the existing HQ deployment workflow | Maintainer; founder reviews the preview before any merge |
+| UX-030 | P2 | done | Preview sharper glow Arcade styling on the existing HQ deployment workflow | Maintainer; founder reviews the preview before any merge |
+| UX-031 | P2 | in-progress | Apply the Arcade design to the main Games hub while preserving every mode | Maintainer; founder reviews release; physical-phone acceptance unassigned |
+| UX-032 | P2 | in-progress | Blend the Arcade finish across all public HQ pages | Maintainer; founder reviews release; physical-device acceptance unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1479,9 +1481,9 @@ Evidence/specification: [docs/TRUST-BOUNDARY-REVIEW-2026-11-14.md](../../docs/TR
 
 ## UX-030: Preview sharper glow Arcade styling on the existing HQ deployment workflow
 
-**P2 / in-progress.** Owner: Maintainer; founder reviews the preview before any merge. Dependencies: none.
+**P2 / done.** Owner: Maintainer; founder reviews the preview before any merge. Dependencies: none.
 
-Next action: Publish a draft PR preview at /games/preview/ and obtain founder visual feedback; do not merge.
+Next action: Preserve the historical concept route; UX-031 integrates the approved visual direction into the real Games hub.
 
 Acceptance:
 
@@ -1491,3 +1493,34 @@ Acceptance:
 - Provide the Vercel branch preview for founder review before integration.
 
 Evidence/specification: [docs/ARCADE-GLOW-PREVIEW.md](../../docs/ARCADE-GLOW-PREVIEW.md), [public/games/preview/](../../public/games/preview/).
+
+## UX-031: Apply the Arcade design to the main Games hub while preserving every mode
+
+**P2 / in-progress.** Owner: Maintainer; founder reviews release; physical-phone acceptance unassigned. Dependencies: UX-030.
+
+Next action: Verify /games/ source, browser layouts and PR preview; retain every game setup route and review before merge.
+
+Acceptance:
+
+- Use the approved crisp teal/gold design and existing GIGA/tabletop assets on /games/.
+- Keep all 24 original game-card destinations, timing/access descriptions, section fragments and multiplayer invitation/My Games entry. No demo replaces a game.
+- Progressively enhance the static catalog with local category/search filters, announced counts and a no-result recovery path. Opening the hub makes no game API requests.
+- Preserve main navigation and label the existing homepage Games call-to-action Play Games.
+- Check 320px, phone and desktop layouts; verify discovery interactions, links, security, continuity and site metadata. Physical-device acceptance remains separate.
+
+Evidence/specification: [docs/ARCADE-HUB.md](../../docs/ARCADE-HUB.md), [public/games/index.html](../../public/games/index.html), [public/games/assets/hub.css](../../public/games/assets/hub.css), [public/games/assets/hub.js](../../public/games/assets/hub.js), [tests/games-hub-client.test.js](../../tests/games-hub-client.test.js).
+
+## UX-032: Blend the Arcade finish across all public HQ pages
+
+**P2 / in-progress.** Owner: Maintainer; founder reviews release; physical-device acceptance unassigned. Dependencies: UX-031.
+
+Next action: Review homepage, My HQ, learning, sign-in, news, directory and game/lobby previews in the expanded #297 before merging.
+
+Acceptance:
+
+- Apply consistent crisp typography, teal action buttons, gold identity accents and readable illuminated panels across all 50 public nonprivate HQ pages.
+- Preserve original layouts, cosmos/code-rain, GIGA/other art, theme logic, game boards, answer states, market gain/loss colors, semantic markup and all behavior hooks.
+- Load one self-hosted shared stylesheet after page styles through the maintained page generator; keep private operator pages and historical concept separate.
+- Validate metadata, markup preservation, existing client checks and representative desktop/phone layouts. Actual-device acceptance is separate.
+
+Evidence/specification: [docs/SITE-FINISH.md](../../docs/SITE-FINISH.md), [public/assets/site-finish.css](../../public/assets/site-finish.css), [scripts/site-pages.mjs](../../scripts/site-pages.mjs).
