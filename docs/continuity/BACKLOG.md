@@ -96,7 +96,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | MINT-001 | P1 | in-progress | Preserve local mint request references across reloads | Maintainer; founder reviews release |
 | UX-029 | P1 | needs-evidence | Keep home account access in sync and expose receiving-wallet switching | Maintainer; founder reviews release |
 | CHAIN-007 | P1 | done | Require private-ranked proof before mainnet payout admission and signing | Maintainer; founder controls economic enable; independent reviewer unassigned |
-| AUTH-005 | P1 | in-progress | Isolate passkey status limits and record account/payout trust boundaries | Maintainer; independent reviewer unassigned; founder confirms physical devices |
+| AUTH-005 | P1 | done | Isolate passkey status limits and record account/payout trust boundaries | Maintainer; independent reviewer unassigned; founder confirms physical devices |
 
 ## CONT-001: Publish the continuation system
 
@@ -1462,9 +1462,9 @@ Evidence/specification: [docs/MAINNET-GEEK-PAYOUT.md](../../docs/MAINNET-GEEK-PA
 
 ## AUTH-005: Isolate passkey status limits and record account/payout trust boundaries
 
-**P1 / in-progress.** Owner: Maintainer; independent reviewer unassigned; founder confirms physical devices. Dependencies: AUTH-004, CHAIN-007.
+**P1 / done.** Owner: Maintainer; independent reviewer unassigned; founder confirms physical devices. Dependencies: AUTH-004, CHAIN-007.
 
-Next action: Run full verification and exact-head CI; publish the narrow status-limit fix and record actual release evidence. Retain independent and physical-device acceptance separately.
+Next action: Retain the released status/proof isolation. Complete same-account physical-device return-home/recovery acceptance and independent application/signing review separately; private-bank production cutover and economic holds remain.
 
 Acceptance:
 
