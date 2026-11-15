@@ -1475,3 +1475,9 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - **Delivery:** Production dpl_8cUhe2CetiLcuvyN5vuKCA8z6bcv READY on that exact merge with both canonical domains. Canonical sign-in HTML returned 200 and matched source exactly; direct credential-free passkey GET returned the expected session-required JSON 401 with no-store and Allow GET, POST, OPTIONS; worker GET returned 405 with Allow POST and no-store. No actual login, credential creation, receiving mutation or payout was submitted.
 - **Limits:** authenticated Vercel fetch misclassified the private route's 401; the direct canonical check verified app JSON and headers. No account/provider data, credentials or environment settings were changed. Physical-device success and independent review remain separate.
 - **Next:** retain the fix and complete same-account phone/tablet/PC acceptance without treating Preview credentials as production credentials.
+
+## November 15, 2026 — UX-030 Arcade concept preview
+
+- Scope: separate `/games/preview/` design route on a draft branch based on main `9786472`. Corrects the earlier separate-site preview workflow; live hub unchanged.
+- Reuses GIGA and existing CSP. All styles/scripts are local; no third-party component or animation dependencies. Local memory/tic-tac-toe demos, filters and search; Practice uses HQ. Backgammon labeled a concept.
+- Next: validate source and publish a Vercel draft preview for founder feedback. No merge, production release, account mutation or economic enable. Actual-phone acceptance remains open.

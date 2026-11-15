@@ -274,5 +274,11 @@
     "status": "merged-deployed-http-verified",
     "evidence": "docs/TRUST-BOUNDARY-REVIEW-2026-11-14.md",
     "nextAction": "PR #294 merged f5401bcb658341c8dad31588440eb18d9e6e06d8; production dpl_8cUhe2CetiLcuvyN5vuKCA8z6bcv READY, exact sign-in HTML and credential-free API denials verified. Preserve status/proof isolation; physical-device account recovery, independent review, private-bank production cutover and economic gates remain separate."
+  },
+  "arcadeGlowPreview": {
+    "task": "UX-030",
+    "status": "source-candidate",
+    "evidence": "docs/ARCADE-GLOW-PREVIEW.md",
+    "nextAction": "Draft branch preview only; founder reviews before integration or merge."
   }
 }

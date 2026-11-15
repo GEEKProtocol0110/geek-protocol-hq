@@ -2314,6 +2314,25 @@
         "PR #294 squash-merged as f5401bcb658341c8dad31588440eb18d9e6e06d8; exact head 752fa9945d5c450ae803cc833112ff5a335d3da9/tree 79af152030d58719f1758ccf490268b8395b5241 passed Security verification 43674738267 and both Vercel statuses. Full local verification: 924 application + nine testnet + six mainnet signer checks, 939 total, zero failures/skips.",
         "Production dpl_8cUhe2CetiLcuvyN5vuKCA8z6bcv READY on that exact merge with both canonical domains. Canonical sign-in HTML returned 200 and matched source exactly; direct credential-free passkey GET returned the expected session-required JSON 401 with no-store and Allow GET, POST, OPTIONS; worker GET returned 405 with Allow POST and no-store. No actual login, credential creation, receiving mutation or payout was submitted."
       ]
+    },
+    {
+      "id": "UX-030",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Preview sharper glow Arcade styling on the existing HQ deployment workflow",
+      "owner": "Maintainer; founder reviews the preview before any merge",
+      "nextAction": "Publish a draft PR preview at /games/preview/ and obtain founder visual feedback; do not merge.",
+      "acceptance": [
+        "Separate noindex concept route with existing GIGA, sharp typography and responsive teal/gold cards.",
+        "Use existing CSP with self-hosted CSS/JS; keep the live Games hub, account state, rooms and rewards unchanged.",
+        "Search and filters work; browser-local memory and tic-tac-toe are labeled demos; backgammon stays a nonplayable concept.",
+        "Provide the Vercel branch preview for founder review before integration."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/ARCADE-GLOW-PREVIEW.md",
+        "public/games/preview/"
+      ]
     }
   ]
 }

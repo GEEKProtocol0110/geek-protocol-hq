@@ -97,6 +97,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-029 | P1 | needs-evidence | Keep home account access in sync and expose receiving-wallet switching | Maintainer; founder reviews release |
 | CHAIN-007 | P1 | done | Require private-ranked proof before mainnet payout admission and signing | Maintainer; founder controls economic enable; independent reviewer unassigned |
 | AUTH-005 | P1 | done | Isolate passkey status limits and record account/payout trust boundaries | Maintainer; independent reviewer unassigned; founder confirms physical devices |
+| UX-030 | P2 | in-progress | Preview sharper glow Arcade styling on the existing HQ deployment workflow | Maintainer; founder reviews the preview before any merge |
 
 ## CONT-001: Publish the continuation system
 
@@ -1475,3 +1476,18 @@ Acceptance:
 - Full verification, exact-head CI and release evidence are recorded without claiming independent or actual-device acceptance.
 
 Evidence/specification: [docs/TRUST-BOUNDARY-REVIEW-2026-11-14.md](../../docs/TRUST-BOUNDARY-REVIEW-2026-11-14.md), [api/passkeys.js](../../api/passkeys.js), [tests/passkeys.test.js](../../tests/passkeys.test.js).
+
+## UX-030: Preview sharper glow Arcade styling on the existing HQ deployment workflow
+
+**P2 / in-progress.** Owner: Maintainer; founder reviews the preview before any merge. Dependencies: none.
+
+Next action: Publish a draft PR preview at /games/preview/ and obtain founder visual feedback; do not merge.
+
+Acceptance:
+
+- Separate noindex concept route with existing GIGA, sharp typography and responsive teal/gold cards.
+- Use existing CSP with self-hosted CSS/JS; keep the live Games hub, account state, rooms and rewards unchanged.
+- Search and filters work; browser-local memory and tic-tac-toe are labeled demos; backgammon stays a nonplayable concept.
+- Provide the Vercel branch preview for founder review before integration.
+
+Evidence/specification: [docs/ARCADE-GLOW-PREVIEW.md](../../docs/ARCADE-GLOW-PREVIEW.md), [public/games/preview/](../../public/games/preview/).

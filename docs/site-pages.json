@@ -571,6 +571,14 @@
       "index": true,
       "private": false,
       "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/preview/index.html",
+      "path": "/games/preview/",
+      "title": "Geek Arcade \u2014 Design Preview",
+      "description": "Review the proposed sharper glow Arcade lobby, with game filters and browser-local demos. A design candidate awaiting founder review.",
+      "index": false,
+      "private": true
     }
   ]
 }
