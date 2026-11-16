@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-13",
+  "updatedAt": "2026-11-16",
   "records": [
     {
       "id": "DR-001",
@@ -514,6 +514,19 @@
       ],
       "recordedAt": "2026-11-13",
       "supersedes": null
+    },
+    {
+      "id": "DR-041",
+      "status": "implementation-choice",
+      "title": "Resume A.C.E. only as bounded local board-game practice",
+      "decision": "Scope the founder\u2019s renewed A.C.E. direction to local computer opponents and browser-local practice continuity across the seven released strategy games. No remote tutor/model activation, new cost, account record, rating or economic enablement. The earlier pause remains applicable outside this local game scope.",
+      "basis": "Founder November 16 requests playing only their own side against A.C.E., approves #299, then asks to make #300 special. Saved games and a personal practice desk are the maintainer\u2019s scoped implementation choice. DR-040 is reserved by the separate held existing-bank review candidate.",
+      "evidence": [
+        "docs/ACE-GAME-OPPONENTS.md",
+        "docs/ARCADE-300.md"
+      ],
+      "recordedAt": "2026-11-16",
+      "supersedes": "DR-034"
     }
   ]
 }

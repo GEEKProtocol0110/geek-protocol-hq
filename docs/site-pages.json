@@ -571,6 +571,15 @@
       "index": true,
       "private": false,
       "lastmod": "2026-11-09"
+    },
+    {
+      "file": "public/games/ace/index.html",
+      "path": "/games/ace/",
+      "title": "A.C.E. Arena \u2014 Saved Games & Practice | Geek Protocol",
+      "description": "Play seven board games against A.C.E., resume saved games and follow your local practice record. Free Geek Games with two computer difficulties.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-16"
     }
   ]
 }

@@ -393,3 +393,13 @@ Supersede the page-memory-only mint receipt implementation with up to 100 browse
 Basis: Founder authorized continuing the announced mint receipt history follow-up. Existing non-custodial and economic constraints remain.
 
 Evidence: [docs/MINT-RECEIPT-HISTORY.md](../../docs/MINT-RECEIPT-HISTORY.md), [docs/MINT-PROTOCOL.md](../../docs/MINT-PROTOCOL.md), [tests/mint-client.test.js](../../tests/mint-client.test.js).
+
+## DR-041: Resume A.C.E. only as bounded local board-game practice
+
+**implementation-choice** · 2026-11-16.
+
+Scope the founder’s renewed A.C.E. direction to local computer opponents and browser-local practice continuity across the seven released strategy games. No remote tutor/model activation, new cost, account record, rating or economic enablement. The earlier pause remains applicable outside this local game scope.
+
+Basis: Founder November 16 requests playing only their own side against A.C.E., approves #299, then asks to make #300 special. Saved games and a personal practice desk are the maintainer’s scoped implementation choice. DR-040 is reserved by the separate held existing-bank review candidate.
+
+Evidence: [docs/ACE-GAME-OPPONENTS.md](../../docs/ACE-GAME-OPPONENTS.md), [docs/ARCADE-300.md](../../docs/ARCADE-300.md). Supersedes DR-034.

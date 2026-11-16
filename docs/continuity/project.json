@@ -301,8 +301,14 @@
   },
   "aceGameOpponents": {
     "task": "UX-034",
-    "status": "source-candidate",
+    "status": "merged-deployed-http-verified",
     "evidence": "docs/ACE-GAME-OPPONENTS.md",
-    "nextAction": "Review one-player versus A.C.E. in all seven local two-player games before merge."
+    "nextAction": "Preserve #299 at 1443eaf; production READY with seven game pages and three opponent modules HTTP-verified. UX-035 adds practice continuity; physical-device acceptance remains separate."
+  },
+  "arcadeMilestone": {
+    "task": "UX-035",
+    "status": "source-candidate",
+    "evidence": "docs/ARCADE-300.md",
+    "nextAction": "Original #300 merged independently as ee0716f. The follow-up milestone adds an A.C.E. Arena, browser-local saves and practice record on that main. Verify exact-head CI/preview before founder review; no merge implied."
   }
 }

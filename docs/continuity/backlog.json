@@ -2341,10 +2341,10 @@
     {
       "id": "UX-031",
       "priority": "P2",
-      "status": "in-progress",
+      "status": "done",
       "title": "Apply the Arcade design to the main Games hub while preserving every mode",
       "owner": "Maintainer; founder reviews release; physical-phone acceptance unassigned",
-      "nextAction": "Verify /games/ source, browser layouts and PR preview; retain every game setup route and review before merge.",
+      "nextAction": "Retain the blended Arcade design and address the acceptance findings in UX-035.",
       "acceptance": [
         "Use the approved crisp teal/gold design and existing GIGA/tabletop assets on /games/.",
         "Keep all 24 original game-card destinations, timing/access descriptions, section fragments and multiplayer invitation/My Games entry. No demo replaces a game.",
@@ -2361,15 +2361,19 @@
         "public/games/assets/hub.css",
         "public/games/assets/hub.js",
         "tests/games-hub-client.test.js"
+      ],
+      "completedAt": "2026-11-15",
+      "completionEvidence": [
+        "Founder-approved #297 merged as 028560f. Follow-up acceptance fixes are retained in expanded #300."
       ]
     },
     {
       "id": "UX-032",
       "priority": "P2",
-      "status": "in-progress",
+      "status": "done",
       "title": "Blend the Arcade finish across all public HQ pages",
       "owner": "Maintainer; founder reviews release; physical-device acceptance unassigned",
-      "nextAction": "Review homepage, My HQ, learning, sign-in, news, directory and game/lobby previews in the expanded #297 before merging.",
+      "nextAction": "Retain the blended Arcade design and address the acceptance findings in UX-035.",
       "acceptance": [
         "Apply consistent crisp typography, teal action buttons, gold identity accents and readable illuminated panels across all 50 public nonprivate HQ pages.",
         "Preserve original layouts, cosmos/code-rain, GIGA/other art, theme logic, game boards, answer states, market gain/loss colors, semantic markup and all behavior hooks.",
@@ -2383,6 +2387,10 @@
         "docs/SITE-FINISH.md",
         "public/assets/site-finish.css",
         "scripts/site-pages.mjs"
+      ],
+      "completedAt": "2026-11-15",
+      "completionEvidence": [
+        "Founder-approved #297 merged as 028560f. Follow-up acceptance fixes are retained in expanded #300."
       ]
     },
     {
@@ -2415,10 +2423,10 @@
     {
       "id": "UX-034",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "done",
       "title": "Let one player face A.C.E. in the two-player local strategy games",
       "owner": "Maintainer; founder reviews release; independent difficulty/device acceptance unassigned",
-      "nextAction": "Validate legal computer turns, cancellation/undo, masked Battle Geek targeting and browser play in all seven games; provide a preview before merge.",
+      "nextAction": "Preserve the released local opponents while adding browser-local practice continuity in UX-035. Physical-device acceptance remains separate.",
       "dependsOn": [
         "UX-033"
       ],
@@ -2435,6 +2443,37 @@
         "public/games/assets/ace-player.js",
         "public/games/assets/ace-worker.js",
         "tests/ace-game-opponents.test.js"
+      ],
+      "completedAt": "2026-11-16",
+      "completionEvidence": [
+        "Founder-approved #299 merged as 1443eaf0780c5fed64d4acac85965d9e5f8996ab. Exact-head Security verification 43812243675 and both Vercel checks succeeded. Production dpl_55hUrtu1c453xoN2BsJhaD6PW58F READY with both canonical domains; all seven pages and three opponent modules returned HTTP 200."
+      ]
+    },
+    {
+      "id": "UX-035",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Build the A.C.E. Arcade milestone with saved games and a personal practice desk",
+      "owner": "Maintainer; founder reviews release; physical-device acceptance unassigned",
+      "nextAction": "Verify the milestone follow-up to merged #300 in the hosted preview, including save/resume during computer turns, record/milestones, rematches and original acceptance fixes. Review before merge.",
+      "dependsOn": [
+        "UX-034"
+      ],
+      "acceptance": [
+        "An Arena links all seven A.C.E. games, resumes a saved match and shows clearly browser-local recent results and milestones. Preserve the original Games catalog and friend/solo/online modes.",
+        "Save one unfinished legal action journal per title; replay through real engines before restoration. Resuming a pending computer turn cannot give the human control of that side.",
+        "Undo trims the journal and returns to the player; rematches retain difficulty and create separate match identities. Record first finishes once in bounded recent history; milestones survive history rotation.",
+        "Storage denial, quota and malformed journals fail safely without blocking play or claiming a successful save. Explain browser scope, replacement, multiple tabs, clearing and lack of sync.",
+        "Keep #300\u2019s original phone art, concept redirect, mint contrast and lounge spacing fixes. Verify focused tests, security, continuity, metadata, exact-head CI and hosted preview before review."
+      ],
+      "evidence": [
+        "docs/ARCADE-300.md",
+        "public/games/ace/index.html",
+        "public/games/assets/arcade-book.js",
+        "public/games/assets/arcade-session.js",
+        "public/games/assets/arena.js",
+        "tests/arcade-practice.test.js",
+        "tests/arcade-hub-ux.test.js"
       ]
     }
   ]

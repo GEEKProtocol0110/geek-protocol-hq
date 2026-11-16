@@ -98,10 +98,11 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | CHAIN-007 | P1 | done | Require private-ranked proof before mainnet payout admission and signing | Maintainer; founder controls economic enable; independent reviewer unassigned |
 | AUTH-005 | P1 | done | Isolate passkey status limits and record account/payout trust boundaries | Maintainer; independent reviewer unassigned; founder confirms physical devices |
 | UX-030 | P2 | done | Preview sharper glow Arcade styling on the existing HQ deployment workflow | Maintainer; founder reviews the preview before any merge |
-| UX-031 | P2 | in-progress | Apply the Arcade design to the main Games hub while preserving every mode | Maintainer; founder reviews release; physical-phone acceptance unassigned |
-| UX-032 | P2 | in-progress | Blend the Arcade finish across all public HQ pages | Maintainer; founder reviews release; physical-device acceptance unassigned |
+| UX-031 | P2 | done | Apply the Arcade design to the main Games hub while preserving every mode | Maintainer; founder reviews release; physical-phone acceptance unassigned |
+| UX-032 | P2 | done | Blend the Arcade finish across all public HQ pages | Maintainer; founder reviews release; physical-device acceptance unassigned |
 | UX-033 | P1 | done | Keep active game controls and boards together without focus-driven scrolling | Maintainer; founder reviews release; physical-device acceptance unassigned |
-| UX-034 | P1 | in-progress | Let one player face A.C.E. in the two-player local strategy games | Maintainer; founder reviews release; independent difficulty/device acceptance unassigned |
+| UX-034 | P1 | done | Let one player face A.C.E. in the two-player local strategy games | Maintainer; founder reviews release; independent difficulty/device acceptance unassigned |
+| UX-035 | P1 | in-progress | Build the A.C.E. Arcade milestone with saved games and a personal practice desk | Maintainer; founder reviews release; physical-device acceptance unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1498,9 +1499,9 @@ Evidence/specification: [docs/ARCADE-GLOW-PREVIEW.md](../../docs/ARCADE-GLOW-PRE
 
 ## UX-031: Apply the Arcade design to the main Games hub while preserving every mode
 
-**P2 / in-progress.** Owner: Maintainer; founder reviews release; physical-phone acceptance unassigned. Dependencies: UX-030.
+**P2 / done.** Owner: Maintainer; founder reviews release; physical-phone acceptance unassigned. Dependencies: UX-030.
 
-Next action: Verify /games/ source, browser layouts and PR preview; retain every game setup route and review before merge.
+Next action: Retain the blended Arcade design and address the acceptance findings in UX-035.
 
 Acceptance:
 
@@ -1514,9 +1515,9 @@ Evidence/specification: [docs/ARCADE-HUB.md](../../docs/ARCADE-HUB.md), [public/
 
 ## UX-032: Blend the Arcade finish across all public HQ pages
 
-**P2 / in-progress.** Owner: Maintainer; founder reviews release; physical-device acceptance unassigned. Dependencies: UX-031.
+**P2 / done.** Owner: Maintainer; founder reviews release; physical-device acceptance unassigned. Dependencies: UX-031.
 
-Next action: Review homepage, My HQ, learning, sign-in, news, directory and game/lobby previews in the expanded #297 before merging.
+Next action: Retain the blended Arcade design and address the acceptance findings in UX-035.
 
 Acceptance:
 
@@ -1545,9 +1546,9 @@ Evidence/specification: [docs/GAME-PLAY-VIEWPORT.md](../../docs/GAME-PLAY-VIEWPO
 
 ## UX-034: Let one player face A.C.E. in the two-player local strategy games
 
-**P1 / in-progress.** Owner: Maintainer; founder reviews release; independent difficulty/device acceptance unassigned. Dependencies: UX-033.
+**P1 / done.** Owner: Maintainer; founder reviews release; independent difficulty/device acceptance unassigned. Dependencies: UX-033.
 
-Next action: Validate legal computer turns, cancellation/undo, masked Battle Geek targeting and browser play in all seven games; provide a preview before merge.
+Next action: Preserve the released local opponents while adding browser-local practice continuity in UX-035. Physical-device acceptance remains separate.
 
 Acceptance:
 
@@ -1558,3 +1559,19 @@ Acceptance:
 - Keep the compact viewport, keyboard/live status, rules and existing solo/online/account/economic boundaries. No network AI, cost or rewards.
 
 Evidence/specification: [docs/ACE-GAME-OPPONENTS.md](../../docs/ACE-GAME-OPPONENTS.md), [public/games/assets/ace-moves.js](../../public/games/assets/ace-moves.js), [public/games/assets/ace-player.js](../../public/games/assets/ace-player.js), [public/games/assets/ace-worker.js](../../public/games/assets/ace-worker.js), [tests/ace-game-opponents.test.js](../../tests/ace-game-opponents.test.js).
+
+## UX-035: Build the A.C.E. Arcade milestone with saved games and a personal practice desk
+
+**P1 / in-progress.** Owner: Maintainer; founder reviews release; physical-device acceptance unassigned. Dependencies: UX-034.
+
+Next action: Verify the milestone follow-up to merged #300 in the hosted preview, including save/resume during computer turns, record/milestones, rematches and original acceptance fixes. Review before merge.
+
+Acceptance:
+
+- An Arena links all seven A.C.E. games, resumes a saved match and shows clearly browser-local recent results and milestones. Preserve the original Games catalog and friend/solo/online modes.
+- Save one unfinished legal action journal per title; replay through real engines before restoration. Resuming a pending computer turn cannot give the human control of that side.
+- Undo trims the journal and returns to the player; rematches retain difficulty and create separate match identities. Record first finishes once in bounded recent history; milestones survive history rotation.
+- Storage denial, quota and malformed journals fail safely without blocking play or claiming a successful save. Explain browser scope, replacement, multiple tabs, clearing and lack of sync.
+- Keep #300’s original phone art, concept redirect, mint contrast and lounge spacing fixes. Verify focused tests, security, continuity, metadata, exact-head CI and hosted preview before review.
+
+Evidence/specification: [docs/ARCADE-300.md](../../docs/ARCADE-300.md), [public/games/ace/index.html](../../public/games/ace/index.html), [public/games/assets/arcade-book.js](../../public/games/assets/arcade-book.js), [public/games/assets/arcade-session.js](../../public/games/assets/arcade-session.js), [public/games/assets/arena.js](../../public/games/assets/arena.js), [tests/arcade-practice.test.js](../../tests/arcade-practice.test.js), [tests/arcade-hub-ux.test.js](../../tests/arcade-hub-ux.test.js).

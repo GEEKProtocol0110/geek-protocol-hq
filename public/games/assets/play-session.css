@@ -92,3 +92,5 @@ body.is-playing.strategy-page .number-pad button {min-height:44px;min-width:0;pa
 .classics-page .ace-options select{display:block;width:100%;max-width:100%;min-height:48px;padding:8px 10px;border:1px solid #638f97;border-radius:10px;background:#102632;color:#e1f0ec;font:400 16px system-ui;box-sizing:border-box}
 .ace-note{font-size:14px;color:#b6d1cf;max-width:700px}
 @media(max-width:540px){.ace-options{grid-template-columns:1fr;gap:10px}}
+
+.arcade-return{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:12px 0}.arcade-return a{color:#93e7d4;font-size:14px}.arcade-return button{min-height:48px;padding:10px 16px;border:1px solid #cfb56e;border-radius:9px;background:#e4ca85;color:#142733;font:500 16px system-ui}.arcade-save-note{font:400 12px/1.4 system-ui;color:#9ebcba;margin:0 0 5px}
