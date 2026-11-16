@@ -1,8 +1,16 @@
+import {AcePlayer} from '../assets/ace-player.js';
 import { createChessPiece } from '../assets/pieces.js';
 import { Chess } from './vendor/chess.js';
 const $=id=>document.getElementById(id);
 const names={p:'pawn',r:'rook',n:'knight',b:'bishop',q:'queen',k:'king'};
-let game=null,selected=null,flipped=false,pending=null;
+let game=null,selected=null,flipped=false,pending=null,versusAce=false,ace=null,aceFailed=false,aceLevel='steady';
+const aceTurn=()=>versusAce&&game?.turn()==='b'&&!game.isGameOver();
+function requestAce(){
+ if(!aceTurn())return;aceFailed=false;render();ace ||= new AcePlayer();
+ ace.play({game:'chess',state:game.fen(),level:aceLevel},m=>{if(!aceTurn())return;try{game.move(m);selected=null;render();}catch{failAce();}},failAce);
+}
+function failAce(){aceFailed=true;render();}
+$('ace-retry').addEventListener('click',requestAce);
 function render(){
  const board=$('board');board.replaceChildren();
  const legal=selected&&!pending?game.moves({square:selected,verbose:true}):[];
@@ -15,25 +23,27 @@ function render(){
   if(piece){button.classList.add(piece.color==='w'?'white-piece':'black-piece');button.append(createChessPiece(document,piece.type,piece.color));}
   const label=document.createElement('small');label.textContent=square;label.setAttribute('aria-hidden','true');button.append(label);
   if(legal.some(m=>m.to===square))button.classList.add('legal');
-  button.disabled=!!pending||game.isGameOver();button.addEventListener('click',()=>choose(square));board.append(button);
+  button.disabled=!!pending||game.isGameOver()||aceTurn();button.addEventListener('click',()=>choose(square));board.append(button);
  }
  const turn=game.turn()==='w'?'White':'Black';
- $('status').textContent=game.isCheckmate()?`Checkmate — ${turn==='White'?'Black':'White'} wins.`:game.isStalemate()?'Draw — stalemate.':game.isThreefoldRepetition()?'Draw — threefold repetition.':game.isDrawByFiftyMoves()?'Draw — fifty moves without a pawn move or capture.':game.isInsufficientMaterial()?'Draw — insufficient material.':`${turn} to move${game.isCheck()?' — check!':'.'}${pending?' Choose a promotion piece.':''}`;
+ $('ace-retry').hidden=!aceFailed;
+ const opponent=aceTurn()?(aceFailed?'A.C.E. could not move. Retry A.C.E. or undo.':'A.C.E. is thinking… · Black'):versusAce?'Your turn · White':'';
+ $('status').textContent=game.isCheckmate()?`Checkmate — ${turn==='White'?'Black':'White'} wins.`:game.isStalemate()?'Draw — stalemate.':game.isThreefoldRepetition()?'Draw — threefold repetition.':game.isDrawByFiftyMoves()?'Draw — fifty moves without a pawn move or capture.':game.isInsufficientMaterial()?'Draw — insufficient material.':`${opponent||turn+' to move'}${game.isCheck()?' — check!':'.'}${pending?' Choose a promotion piece.':''}`;
  document.dispatchEvent?.(new CustomEvent('geek-game-state',{detail:{finished:game.isGameOver(),title:game.isCheckmate()?`${turn==='White'?'Black':'White'} wins!`:'Honors shared',detail:$('status').textContent}}));
  $('undo').disabled=!game.history().length||!!pending;$('promotion').hidden=!pending;
  const moves=game.history();$('moves').textContent=moves.length?moves.map((m,i)=>`${i%2===0?`${Math.floor(i/2)+1}. `:''}${m}`).join(' '):'No moves yet.';
 }
-function move(m){game.move(m);selected=null;pending=null;render();if(!document.querySelector('dialog[open]'))$('status').focus({preventScroll:true});}
+function move(m){game.move(m);selected=null;pending=null;render();requestAce();if(!document.querySelector('dialog[open]'))$('status').focus({preventScroll:true});}
 function choose(square){
- if(!game||pending||game.isGameOver())return;
+ if(!game||pending||game.isGameOver()||aceTurn())return;
  const possibilities=selected?game.moves({square:selected,verbose:true}).filter(m=>m.to===square):[];
  if(possibilities.length){if(possibilities[0].promotion){pending={from:selected,to:square};render();document.querySelector('[data-promotion]').focus({preventScroll:true});}else move({from:selected,to:square});return;}
  const p=game.get(square);selected=p&&p.color===game.turn()&&selected!==square?square:null;render();
  document.querySelector(`[data-square="${square}"]`).focus({preventScroll:true});
 }
-$('start').addEventListener('click',()=>{game=new Chess();selected=null;pending=null;flipped=false;document.body.classList.add('is-playing');$('setup').hidden=true;$('play').hidden=false;render();if(!document.querySelector('dialog[open]'))$('status').focus({preventScroll:true});$('main').scrollIntoView({block:'start',behavior:'instant'});});
-$('undo').addEventListener('click',()=>{if(!pending){game.undo();selected=null;render();if(!document.querySelector('dialog[open]'))$('status').focus({preventScroll:true});}});
+$('start').addEventListener('click',()=>{ace?.cancel();aceFailed=false;versusAce=$('opponent').value==='ace';aceLevel=$('ace-level').value||'steady';game=new Chess();selected=null;pending=null;flipped=false;document.body.classList.add('is-playing');$('setup').hidden=true;$('play').hidden=false;render();if(!document.querySelector('dialog[open]'))$('status').focus({preventScroll:true});$('main').scrollIntoView({block:'start',behavior:'instant'});});
+$('undo').addEventListener('click',()=>{if(!pending){ace?.cancel();aceFailed=false;game.undo();if(versusAce&&game.turn()==='b'&&game.history().length)game.undo();selected=null;render();if(!document.querySelector('dialog[open]'))$('status').focus({preventScroll:true});}});
 $('flip').addEventListener('click',()=>{flipped=!flipped;render();});
-$('exit').addEventListener('click',()=>{if(!game.isGameOver()&&game.history().length&&!confirm('End this game and return to setup?'))return;game=null;selected=null;pending=null;document.body.classList.remove('is-playing');$('play').hidden=true;$('setup').hidden=false;$('start').focus();});
+$('exit').addEventListener('click',()=>{if(!game.isGameOver()&&game.history().length&&!confirm('End this game and return to setup?'))return;ace?.cancel();aceFailed=false;game=null;selected=null;pending=null;document.body.classList.remove('is-playing');$('play').hidden=true;$('setup').hidden=false;$('start').focus();});
 for(const b of document.querySelectorAll('[data-promotion]'))b.addEventListener('click',()=>{if(pending)move({...pending,promotion:b.dataset.promotion});});
 $('cancel-promotion').addEventListener('click',()=>{pending=null;selected=null;render();if(!document.querySelector('dialog[open]'))$('status').focus({preventScroll:true});});
