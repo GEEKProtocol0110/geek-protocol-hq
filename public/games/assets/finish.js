@@ -1,7 +1,7 @@
 // Native modal supplies focus containment and Escape dismissal. No sound or network work.
 let dialog=null,lastKey=null;
 document.addEventListener('geek-game-state',event=>{
- const {finished,title,detail='',key=title,online=false,celebrate=true}=event.detail;
+ const {finished,title,detail='',key=title,online=false,celebrate=true,arcade=false}=event.detail;
  if(!finished){lastKey=null;if(dialog?.open)dialog.close();return;}
  if(lastKey===key)return;lastKey=key;
  if(dialog){dialog.close();dialog.remove();}
@@ -12,9 +12,9 @@ document.addEventListener('geek-game-state',event=>{
  const medal=el('div','finish-giga','');medal.setAttribute('aria-hidden','true');const giga=el('img','','');giga.src='/assets/kaspa-culture.png';giga.alt='';giga.width=1024;giga.height=1024;giga.draggable=false;medal.append(giga);
  const heading=el('h2','','');heading.id='finish-title';heading.textContent=title;
  const detailNode=el('p','',detail||'Game complete. Ready for another round?');detailNode.id='finish-detail';
- const actions=el('div','finish-actions',''),replay=el('button','finish-replay',online?'Play again · new lobby':'Play again');replay.type='button';
+ const actions=el('div','finish-actions',''),replay=el('button','finish-replay',online?'Play again · new lobby':arcade?'Rematch A.C.E.':'Play again');replay.type='button';
  replay.addEventListener('click',()=>{dialog.close();lastKey=null;document.getElementById(online?'back':'start')?.click();});
- const exit=el('a','finish-exit','Exit to games');exit.href='/games/';
+ const exit=el('a','finish-exit','Exit to games');exit.href=arcade?'/games/ace/':'/games/';if(arcade)exit.textContent='Back to A.C.E. Arena';
  const review=el('button','finish-review','Review board');review.type='button';review.addEventListener('click',()=>dialog.close());
  actions.append(replay,exit,review);dialog.append(art,medal,el('p','finish-kicker','GEEK // GAME COMPLETE'),heading,detailNode,actions);document.body.append(dialog);dialog.showModal();replay.focus();
 });

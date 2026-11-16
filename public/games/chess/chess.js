@@ -29,7 +29,8 @@ function render(){
  $('ace-retry').hidden=!aceFailed;
  const opponent=aceTurn()?(aceFailed?'A.C.E. could not move. Retry A.C.E. or undo.':'A.C.E. is thinking… · Black'):versusAce?'Your turn · White':'';
  $('status').textContent=game.isCheckmate()?`Checkmate — ${turn==='White'?'Black':'White'} wins.`:game.isStalemate()?'Draw — stalemate.':game.isThreefoldRepetition()?'Draw — threefold repetition.':game.isDrawByFiftyMoves()?'Draw — fifty moves without a pawn move or capture.':game.isInsufficientMaterial()?'Draw — insufficient material.':`${opponent||turn+' to move'}${game.isCheck()?' — check!':'.'}${pending?' Choose a promotion piece.':''}`;
- document.dispatchEvent?.(new CustomEvent('geek-game-state',{detail:{finished:game.isGameOver(),title:game.isCheckmate()?`${turn==='White'?'Black':'White'} wins!`:'Honors shared',detail:$('status').textContent}}));
+ if(versusAce)document.dispatchEvent?.(new CustomEvent('geek-arcade-snapshot',{detail:{game:'chess',level:aceLevel,actions:game.history()}}));
+ document.dispatchEvent?.(new CustomEvent('geek-game-state',{detail:{arcade:versusAce,celebrate:!versusAce||(!game.isDraw()&&game.turn()==='b'),finished:game.isGameOver(),title:game.isCheckmate()?`${turn==='White'?'Black':'White'} wins!`:'Honors shared',detail:$('status').textContent}}));
  $('undo').disabled=!game.history().length||!!pending;$('promotion').hidden=!pending;
  const moves=game.history();$('moves').textContent=moves.length?moves.map((m,i)=>`${i%2===0?`${Math.floor(i/2)+1}. `:''}${m}`).join(' '):'No moves yet.';
 }
@@ -41,9 +42,11 @@ function choose(square){
  const p=game.get(square);selected=p&&p.color===game.turn()&&selected!==square?square:null;render();
  document.querySelector(`[data-square="${square}"]`).focus({preventScroll:true});
 }
-$('start').addEventListener('click',()=>{ace?.cancel();aceFailed=false;versusAce=$('opponent').value==='ace';aceLevel=$('ace-level').value||'steady';game=new Chess();selected=null;pending=null;flipped=false;document.body.classList.add('is-playing');$('setup').hidden=true;$('play').hidden=false;render();if(!document.querySelector('dialog[open]'))$('status').focus({preventScroll:true});$('main').scrollIntoView({block:'start',behavior:'instant'});});
+$('start').addEventListener('click',()=>{ace?.cancel();aceFailed=false;versusAce=$('opponent').value==='ace';aceLevel=$('ace-level').value||'steady';game=new Chess();if(versusAce)document.dispatchEvent?.(new CustomEvent('geek-arcade-start',{detail:{game:'chess'}}));selected=null;pending=null;flipped=false;document.body.classList.add('is-playing');$('setup').hidden=true;$('play').hidden=false;render();if(!document.querySelector('dialog[open]'))$('status').focus({preventScroll:true});$('main').scrollIntoView({block:'start',behavior:'instant'});});
 $('undo').addEventListener('click',()=>{if(!pending){ace?.cancel();aceFailed=false;game.undo();if(versusAce&&game.turn()==='b'&&game.history().length)game.undo();selected=null;render();if(!document.querySelector('dialog[open]'))$('status').focus({preventScroll:true});}});
 $('flip').addEventListener('click',()=>{flipped=!flipped;render();});
-$('exit').addEventListener('click',()=>{if(!game.isGameOver()&&game.history().length&&!confirm('End this game and return to setup?'))return;ace?.cancel();aceFailed=false;game=null;selected=null;pending=null;document.body.classList.remove('is-playing');$('play').hidden=true;$('setup').hidden=false;$('start').focus();});
+$('exit').addEventListener('click',()=>{if(!versusAce&&!game.isGameOver()&&game.history().length&&!confirm('End this game and return to setup?'))return;ace?.cancel();document.dispatchEvent?.(new CustomEvent('geek-arcade-exit'));aceFailed=false;game=null;selected=null;pending=null;document.body.classList.remove('is-playing');$('play').hidden=true;$('setup').hidden=false;$('start').focus();});
 for(const b of document.querySelectorAll('[data-promotion]'))b.addEventListener('click',()=>{if(pending)move({...pending,promotion:b.dataset.promotion});});
 $('cancel-promotion').addEventListener('click',()=>{pending=null;selected=null;render();if(!document.querySelector('dialog[open]'))$('status').focus({preventScroll:true});});
+
+document.addEventListener('geek-arcade-restore',event=>{const d=event.detail;if(d.game!=='chess')return;ace?.cancel();aceFailed=false;versusAce=true;aceLevel=d.level;$('opponent').value='ace';$('ace-level').value=aceLevel;game=d.restored.chess;selected=null;pending=null;flipped=false;document.body.classList.add('is-playing');$('setup').hidden=true;$('play').hidden=false;render();requestAce();$('status').focus({preventScroll:true});$('main').scrollIntoView({block:'start',behavior:'instant'});});
