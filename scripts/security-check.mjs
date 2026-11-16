@@ -43,6 +43,23 @@ check(mainnetPayout.includes('settlementEligible: false') && mainnetPayout.inclu
 check(mainnetPayout.includes("MAINNET_PAYOUT_ENABLED !== 'true'"), 'mainnet payout admission defaults off');
 check(mainnetCron.includes("MAINNET_SIGNER_ENABLED !== 'true'"), 'mainnet signer defaults off');
 const mainnetWorker = await text('workers/mainnet/worker.mjs');
+const mainnetSigner = await text('workers/mainnet/signer.mjs');
+check(mainnetSigner.includes("MAINNET_PAYOUT_ADDRESS_SHA256, MAINNET_PAYOUT_SENDER, expectedRaw } from './schedule.mjs';") &&
+  mainnetSigner.includes('let pinnedSenderDigest = MAINNET_PAYOUT_ADDRESS_SHA256;') && (mainnetSigner.match(/pinnedSenderDigest =/g) || []).length === 2,
+  'mainnet signer takes its sender pin from the schedule digest and only the guarded test hook can change it');
+check(mainnetSigner.includes('if (!chosen.sender || !senderPinned(chosen.sender) ||') && mainnetSigner.includes('if (!senderPinned(sender()) ||') &&
+  mainnetSigner.includes("config.network !== 'mainnet' || !senderPinned(config.sender) ||"), 'mainnet signer requires the pinned sender digest in policy, verify and inspect');
+check(mainnetSigner.includes("if (process.env.VERCEL_ENV === 'production' || !process.env.NODE_TEST_CONTEXT ||"), 'mainnet signer test pin hook is refused in production and outside the test runner');
+const pinHookUsers = (await Promise.all(['api/', 'server/', 'workers/', 'scripts/', 'public/'].map(walk))).flat()
+  .filter(path => /\.(m?js|json)$/.test(path) && !path.includes('node_modules') && path !== 'scripts/security-check.mjs');
+const pinHookCallers = [];
+for (const path of pinHookUsers) if ((await text(path)).includes('pinTestSenderDigest')) pinHookCallers.push(path);
+check(pinHookCallers.sort().join('|') === 'workers/mainnet/check-signing.mjs|workers/mainnet/signer.mjs', 'only the offline signer check can call the test sender pin hook');
+const { spawnSync } = await import('node:child_process');
+const pinAttempt = spawnSync(process.execPath, ['--input-type=module', '-e',
+  "const s = await import('./signer.mjs'); try { s.pinTestSenderDigest('0'.repeat(64)); console.log('PINNED'); } catch (e) { console.log(e.message); }"],
+  { cwd: new URL('workers/mainnet/', root), encoding: 'utf8', env: { PATH: process.env.PATH, VERCEL_ENV: 'production', NODE_TEST_CONTEXT: 'child-v8' } });
+check(pinAttempt.status === 0 && pinAttempt.stdout.trim() === 'SIGNER_POLICY_MISMATCH', 'production cannot override the mainnet signer sender pin');
 check(mainnetPayout.includes("VERCEL_ENV !== 'production'"), 'mainnet admission is production-only');
 check(mainnetWorker.indexOf("MAINNET_SIGNER_ENABLED !== 'true'") !== -1 && mainnetWorker.indexOf("MAINNET_SIGNER_ENABLED !== 'true'") < mainnetWorker.indexOf('MAINNET_SIGNER_PRIVATE_KEY'), 'mainnet worker checks the signer gate before reading the key');
 // The reviewed hot wallet stays pinned, now by SHA-256 hex of its exact full address string
