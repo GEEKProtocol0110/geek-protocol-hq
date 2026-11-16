@@ -1,0 +1,14 @@
+.support-main{background:#080b0b;color:#eef4ef;padding-top:96px}
+.support-hero{padding:clamp(4rem,9vw,7rem) clamp(1.5rem,6vw,6rem) clamp(3rem,6vw,4.5rem);background:radial-gradient(circle at 75% 35%,rgba(105,230,220,.12),transparent 32%),linear-gradient(135deg,#080b0b 0%,#101817 100%);border-bottom:1px solid rgba(255,255,255,.12)}
+.support-hero h1{margin:1.6rem 0;font-size:clamp(3.4rem,9vw,7.5rem);line-height:.84;letter-spacing:-.07em;text-transform:uppercase}.support-hero h1 em{color:#69e6dc;font-style:normal}
+.support-hero p,.support-section>p{max-width:720px;color:#bbc5c0;font-size:clamp(1.05rem,1.8vw,1.25rem);line-height:1.65}
+.support-section{padding:clamp(3rem,7vw,6rem) clamp(1.5rem,6vw,6rem);border-bottom:1px solid rgba(255,255,255,.08)}.support-section .section-label{color:#69e6dc;font-size:.8rem;font-weight:700;letter-spacing:.2em}
+.support-section h2{margin:1.2rem 0 1rem;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.04em}.support-section a:not(.button){color:#69e6dc;text-underline-offset:4px}
+.support-tip{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2rem;align-items:start;max-width:880px;margin-top:2rem;padding:30px;background:#142329;border:1px solid #44615e;border-radius:16px}
+.support-tip-address{display:grid;gap:1rem;min-width:0}.support-tip label{display:block;margin-bottom:.4rem;color:#9fb3ad;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.support-tip textarea{width:100%;box-sizing:border-box;padding:.8rem;resize:none;color:#eef4ef;background:#0b1416;border:1px solid #44615e;border-radius:10px;font:600 1rem/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere;word-break:break-all}
+.support-tip .button{width:fit-content}.support-tip .button:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.support-pending{margin:0;padding:1rem;border-left:2px solid #f2b847;color:#f2b847;background:rgba(242,184,71,.06)}.support-status{margin:0;color:#9fb3ad;font-size:.9rem;line-height:1.55}
+.support-qr{display:block;width:232px;height:232px;padding:0;background:#fff;border-radius:10px;image-rendering:pixelated}.support-qr[hidden]{display:none}
+.support-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem}.support-actions:not(:has(a:not([hidden]))){display:none}
+@media(max-width:700px){.support-tip{grid-template-columns:1fr;padding:20px}.support-qr{width:min(232px,100%);height:auto;aspect-ratio:1}}

@@ -247,6 +247,15 @@
       "lastmod": "2026-11-05"
     },
     {
+      "file": "public/support/index.html",
+      "path": "/support/",
+      "title": "Support Geek Protocol",
+      "description": "Support Geek Protocol's open-source Kaspa learning work with a KAS tip, or contact the project on X about sponsorship. Tips are gifts, not investments or token purchases.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-16"
+    },
+    {
       "file": "public/tools/index.html",
       "path": "/tools/",
       "title": "Free Kaspa Tools \u2014 Geek Mini & Kaspa Live Widget",
