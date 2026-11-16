@@ -18,7 +18,7 @@ function saved() {
   const id = `${$('mode').value}:${$('level').value}`;
   $('best').textContent = storageOK ? (records[id] === undefined ? 'No completed session at this level yet.' : `Device best: ${records[id]}/10 · ${names[$('mode').value]} · ${$('level').value}.`) : 'Device saving is unavailable. You can still play this session.';
 }
-function focus(el) { el.focus(); }
+function focus(el) { el.focus({preventScroll:true}); }
 function renderQuestion() {
   item = question(state);
   const memory = state.mode === 'sequence';
@@ -52,7 +52,7 @@ function respond(value) {
 $('start').addEventListener('click', () => {
   state = setup($('mode').value, $('level').value);
   document.body.classList.toggle('is-playing', true); $('setup').hidden = true; $('session').hidden = false; $('results').hidden = true;
-  renderQuestion();
+  renderQuestion(); $('main').scrollIntoView({block:'start',behavior:'instant'});
 });
 $('memorized').addEventListener('click', () => {
   if (state.phase !== 'memorize') return;
@@ -72,7 +72,7 @@ $('next').addEventListener('click', () => {
   if (storageOK) try { localStorage.setItem(key, JSON.stringify(records)); } catch { storageOK = false; }
   saved(); focus($('result'));
 });
-function back() { document.body.classList.toggle('is-playing', false); state.phase = 'ready'; $('session').hidden = true; $('results').hidden = true; $('setup').hidden = false; saved(); focus($('mode')); }
+function back() { document.body.classList.toggle('is-playing', false); state.phase = 'ready'; $('session').hidden = true; $('results').hidden = true; $('setup').hidden = false; saved(); $('mode').focus(); }
 $('exit').addEventListener('click', back);
 $('again').addEventListener('click', back);
 $('mode').addEventListener('change', saved); $('level').addEventListener('change', saved);

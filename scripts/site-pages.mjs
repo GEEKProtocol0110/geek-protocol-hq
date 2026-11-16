@@ -37,7 +37,8 @@ export function renderMetadata(html, page, config) {
   if (!page.file.startsWith('public/') || page.private) return output;
   return output.replace(/<head\b[^>]*>[\s\S]*?<\/head>/i, head => head
     .replace(/<link\b[^>]*href=["']\/assets\/site-finish\.css["'][^>]*>\s*/gi, '')
-    .replace(/<\/head>/i, '<link rel="stylesheet" href="/assets/site-finish.css"></head>'));
+    .replace(/<link\b[^>]*href=["']\/games\/assets\/play-session\.css["'][^>]*>\s*/gi, '')
+    .replace(/<\/head>/i, '<link rel="stylesheet" href="/assets/site-finish.css">' + (page.file.startsWith('public/games/') ? '<link rel="stylesheet" href="/games/assets/play-session.css">' : '') + '</head>'));
 }
 
 export function checkSitePages({ write = false } = {}) {

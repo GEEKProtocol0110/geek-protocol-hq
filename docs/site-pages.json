@@ -459,10 +459,10 @@
       "file": "public/games/checkers/index.html",
       "path": "/games/checkers/",
       "title": "Geek Checkers \u2014 Local Strategy Game",
-      "description": "Play two-player American-style checkers on one device. Legal moves, required captures, kings, beginner rules and practice undo.",
+      "description": "Play Geek Checkers against A.C.E. or a friend. Free untimed practice with legal moves, undo and two computer difficulty choices.",
       "index": true,
       "private": false,
-      "lastmod": "2026-11-08"
+      "lastmod": "2026-11-16"
     },
     {
       "file": "public/games/solitaire/index.html",
@@ -477,10 +477,10 @@
       "file": "public/games/chess/index.html",
       "path": "/games/chess/",
       "title": "Geek Chess \u2014 Local Strategy Game",
-      "description": "Play chess with a friend on one device. Legal move hints, castling, pawn promotion and practice undo in the Geek Games arena.",
+      "description": "Play Geek Chess against A.C.E. or a friend. Free untimed practice with legal moves, undo and two computer difficulty choices.",
       "index": true,
       "private": false,
-      "lastmod": "2026-11-08"
+      "lastmod": "2026-11-16"
     },
     {
       "file": "public/games/online/index.html",
@@ -495,46 +495,46 @@
       "file": "public/games/tic-tac-toe/index.html",
       "path": "/games/tic-tac-toe/",
       "title": "Geek Tac Toe \u2014 Geek Strategy & Puzzles",
-      "description": "Play Geek Tac Toe with Geek gold/cyan styling. Practice pattern recognition in untimed two-player strategy with local play and online lobbies.",
+      "description": "Play Geek Tac Toe against A.C.E. or a friend. Free untimed practice with legal moves, undo and two computer difficulty choices.",
       "index": true,
       "private": false,
-      "lastmod": "2026-11-09"
+      "lastmod": "2026-11-16"
     },
     {
       "file": "public/games/dots/index.html",
       "path": "/games/dots/",
       "title": "Dots & Boxes \u2014 Geek Strategy & Puzzles",
-      "description": "Play Dots & Boxes with Geek gold/cyan styling. Practice planning chains in untimed two-player strategy with local play and online lobbies.",
+      "description": "Play Dots & Boxes against A.C.E. or a friend. Free untimed practice with legal moves, undo and two computer difficulty choices.",
       "index": true,
       "private": false,
-      "lastmod": "2026-11-09"
+      "lastmod": "2026-11-16"
     },
     {
       "file": "public/games/battle-geek/index.html",
       "path": "/games/battle-geek/",
       "title": "Battle Geek \u2014 Geek Strategy & Puzzles",
-      "description": "Play Battle Geek with Geek gold/cyan styling. Practice deduction in untimed two-player strategy with local play and online lobbies.",
+      "description": "Play Battle Geek against A.C.E. or a friend. Free untimed practice with legal moves, undo and two computer difficulty choices.",
       "index": true,
       "private": false,
-      "lastmod": "2026-11-09"
+      "lastmod": "2026-11-16"
     },
     {
       "file": "public/games/connect-four/index.html",
       "path": "/games/connect-four/",
       "title": "Geek Connect Four \u2014 Geek Strategy & Puzzles",
-      "description": "Play Geek Connect Four with Geek gold/cyan styling. Practice planning threats in untimed two-player strategy with local play and online lobbies.",
+      "description": "Play Geek Connect Four against A.C.E. or a friend. Free untimed practice with legal moves, undo and two computer difficulty choices.",
       "index": true,
       "private": false,
-      "lastmod": "2026-11-09"
+      "lastmod": "2026-11-16"
     },
     {
       "file": "public/games/reversi/index.html",
       "path": "/games/reversi/",
       "title": "Geek Reversi \u2014 Geek Strategy & Puzzles",
-      "description": "Play Geek Reversi with Geek gold/cyan styling. Practice positioning in untimed two-player strategy with local play and online lobbies.",
+      "description": "Play Geek Reversi against A.C.E. or a friend. Free untimed practice with legal moves, undo and two computer difficulty choices.",
       "index": true,
       "private": false,
-      "lastmod": "2026-11-09"
+      "lastmod": "2026-11-16"
     },
     {
       "file": "public/games/codebreaker/index.html",

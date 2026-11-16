@@ -1498,6 +1498,23 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 
 - UX-032 local evidence: all 50 public pages preserved byte-for-byte except their additive stylesheet link; metadata/continuity checks, 33 focused client tests, public-answer scan and 325 security assertions passed. Browser checked representative phone/narrow/desktop shells with no horizontal overflow, a real local Chess pawn move and mobile menu/Escape. Backend/session/passkey behavior, actual devices and third-party iframe internals remain separate.
 
+## November 15, 2026 — UX-033 active game viewport
+
+- Founder reported back-and-forth scrolling exposed by the gameplay recording. Traced focus-driven jumps in local chess, checkers, Solitaire and Brain Lab, plus the same focus pattern in local strategy and online piece selection. Preserve focus/live announcements with preventScroll; position the compact main area once on session entry.
+- Compact active header/title; hide setup art only during play; height-aware chess/checkers boards; disclose chess history. Solitaire's stock/waste/four Home piles share a stable sticky row, keeping all seven initial columns visible at 320×568. Sudoku's grid and digit pad share short-screen space. No engine, timer, score, storage, session, room or economic change.
+- Local checks: 40 focused engine/client tests, including four focus regressions; site/continuity metadata and public-answer/security (325 assertions) passed. Missing worktree dependencies were installed from the unchanged lockfile before the online client checks.
+- Actual browser/native taps at 320×568 kept scrollY=0 through chess selection/move, Solitaire card selection/draw/waste/undo and Brain Lab answer/feedback/next. Initial chess/checkers boards and all seven initial Solitaire columns fit. Solitaire additionally checked at 390×844, 820×1180 and 1200×800; desktop chess fits 1200×800. Automated locator clicks can center elements; native taps distinguish that test-driver behavior from application focus. Provider CI/preview evidence follows in the PR.
+- Limits: exceptionally long card runs and short/zoomed viewports retain natural scrolling; no body lock. Keyboard, promotion and provider two-player/physical-device/on-screen-keyboard acceptance are not claimed by viewport simulations. Candidate awaits founder review before merge.
+
+## November 16, 2026 — UX-034 A.C.E. game opponents
+
+- UX-033 merged with founder approval as PR #298, squash 42215c6edba8afc5f0df5ddb77e48cc6dab8b9a1. This candidate starts from that merge.
+- Founder wants one-sided play against A.C.E. Added default computer practice and Relaxed/Steady options for Chess, Checkers, Tac Toe, Connect Four, Reversi, Dots & Boxes and Battle Geek, retaining friend mode. All moves pass through existing rules. Search uses a bounded self-hosted worker; no remote AI, dependency, account or economic change.
+- Request cancellation and human-turn undo cover restart/exit, late replies, Checkers chains and strategy bonus turns. Battle Geek receives only the computer's masked view. Retry keeps failures recoverable without exposing the computer side to human control.
+- Local focused suite: 50 engine/client/opponent tests passed, including real engine tactics, legal complete strategy games, hidden-fleet invariance, worker duplicate/cancellation/error recovery and seven client turn/undo paths. Browser and exact provider checks follow publication. No production release or physical-device acceptance is claimed.
+
+- Browser evidence: real worker replies restored the human turn in Chess, Checkers, Tac Toe, Connect Four, Reversi and Dots. At 320×568, Checkers and Reversi boards fit and the checked layouts had no horizontal overflow. Battle deployment, scan and pending-turn undo passed; friend Tac Toe retained Cyan control. Full local verification was attempted but Redis-dependent suites could not start because this runtime lacks redis-server; full provider CI remains required.
+
 ## November 15, 2026 — UX acceptance fixes on #297
 
 - Founder approved fixing UX Bot's #297/production findings. Branch `fix/arcade-hub-ux` on top of `codex/arcade-hub` (`8f3a554`), which already contains main `80f3e0b`.
