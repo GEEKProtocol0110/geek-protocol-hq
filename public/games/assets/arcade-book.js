@@ -48,9 +48,8 @@ export class ArcadeBook {
   if(!validGame(game)||typeof id!=='string'||!/^[a-zA-Z0-9-]{1,80}$/.test(id)||!['relaxed','steady'].includes(level))refuse();
   const rebuilt=replayPractice(game,actions,options),data=this.read(),at=Date.now();
   if(rebuilt.result){
-   if(!data.results.some(r=>r.id===id))data.results.push({id,game,level,result:rebuilt.result,at});
+   if(!data.results.some(r=>r.id===id)){data.results.push({id,game,level,result:rebuilt.result,at});data.milestones.firstFinish=true;if(rebuilt.result==='win')data.milestones.firstWin=true;if(!data.milestones.played.includes(game))data.milestones.played.push(game);}
    data.results=data.results.slice(-200);if(data.saves[game]?.id===id)delete data.saves[game];
-   data.milestones.firstFinish=true;if(rebuilt.result==='win')data.milestones.firstWin=true;if(!data.milestones.played.includes(game))data.milestones.played.push(game);
   }else data.saves[game]={id,game,level,actions,options:{dotsSize:options.dotsSize},at};
   return this.write(data);
  }

@@ -18,6 +18,7 @@ test('replay preserves chess castling, turn and repetition rather than trusting 
  assert.throws(()=>replayPractice('chess',['e5']));assert.throws(()=>replayPractice('chess',Array(1201).fill('e4')));assert.throws(()=>replayPractice('unknown',[]));
 });
 test('practice records count first finish once, remove its save, retain milestones and bound recent history',()=>{
+ const review=new ArcadeBook(memory());review.save('chess','review','steady',['f3','e5','g4','Qh4#']);review.save('chess','review','steady',['e4','f6','d4','g5','Qh5#']);assert.equal(review.summary()[0].result,'loss');assert.equal(review.milestones().firstWin,false,'Reviewing a finished match must not grant a different first-finish milestone');
  const store=memory(),book=new ArcadeBook(store);book.save('tic-tac-toe','same','relaxed',win.slice(0,2));assert.ok(book.load('tic-tac-toe'));book.save('tic-tac-toe','same','relaxed',win);assert.equal(book.load('tic-tac-toe'),null);book.save('tic-tac-toe','same','relaxed',win);assert.equal(book.summary().length,1);
  book.save('tic-tac-toe','same','relaxed',win.slice(0,2));book.save('tic-tac-toe','same','relaxed',win);assert.equal(book.summary().length,1,'Undo and refinish must not add a result');
  book.save('chess','first-chess','steady',['f3','e5','g4','Qh4#']);for(let i=0;i<201;i++)book.save('tic-tac-toe','new-'+i,'relaxed',win);assert.equal(book.summary().length,200);assert.deepEqual(new Set(book.milestones().played),new Set(['chess','tic-tac-toe']));assert.ok(book.milestones().firstWin);
