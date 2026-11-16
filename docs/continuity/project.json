@@ -292,5 +292,11 @@
     "status": "source-candidate",
     "evidence": "docs/SITE-FINISH.md",
     "nextAction": "Expanded #297 blends Arcade polish with existing HQ styling across all public pages; review before merging. Physical-device acceptance remains open."
+  },
+  "gamePlayViewport": {
+    "task": "UX-033",
+    "status": "source-candidate",
+    "evidence": "docs/GAME-PLAY-VIEWPORT.md",
+    "nextAction": "Review compact active game surfaces and no-scroll focus behavior through browser gameplay before merge."
   }
 }

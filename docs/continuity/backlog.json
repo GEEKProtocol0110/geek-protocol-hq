@@ -2384,6 +2384,29 @@
         "public/assets/site-finish.css",
         "scripts/site-pages.mjs"
       ]
+    },
+    {
+      "id": "UX-033",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Keep active game controls and boards together without focus-driven scrolling",
+      "owner": "Maintainer; founder reviews release; physical-device acceptance unassigned",
+      "nextAction": "Validate local and provider previews through repeated moves at narrow, phone, tablet and desktop viewports; review before merge.",
+      "acceptance": [
+        "No automatic viewport jump between piece/card selection, moves, undo or Brain Lab feedback. Preserve keyboard focus and live announcements.",
+        "Use a compact active-game header and height-aware board size; preserve the full setup artwork and descriptions.",
+        "Keep Solitaire stock, waste and four foundations together in a stable sticky deck row; retain all seven columns and natural scrolling for long runs.",
+        "Collapse chess move history; retain access to instructions and game navigation.",
+        "Verify actual browser moves and key game-engine/client regressions; keep real-device/keyboard/provider acceptance limits explicit."
+      ],
+      "dependsOn": [
+        "UX-032"
+      ],
+      "evidence": [
+        "docs/GAME-PLAY-VIEWPORT.md",
+        "public/games/assets/play-session.css",
+        "tests/game-play-focus.test.js"
+      ]
     }
   ]
 }

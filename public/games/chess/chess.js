@@ -23,17 +23,17 @@ function render(){
  $('undo').disabled=!game.history().length||!!pending;$('promotion').hidden=!pending;
  const moves=game.history();$('moves').textContent=moves.length?moves.map((m,i)=>`${i%2===0?`${Math.floor(i/2)+1}. `:''}${m}`).join(' '):'No moves yet.';
 }
-function move(m){game.move(m);selected=null;pending=null;render();if(!document.querySelector('dialog[open]'))$('status').focus();}
+function move(m){game.move(m);selected=null;pending=null;render();if(!document.querySelector('dialog[open]'))$('status').focus({preventScroll:true});}
 function choose(square){
  if(!game||pending||game.isGameOver())return;
  const possibilities=selected?game.moves({square:selected,verbose:true}).filter(m=>m.to===square):[];
- if(possibilities.length){if(possibilities[0].promotion){pending={from:selected,to:square};render();document.querySelector('[data-promotion]').focus();}else move({from:selected,to:square});return;}
+ if(possibilities.length){if(possibilities[0].promotion){pending={from:selected,to:square};render();document.querySelector('[data-promotion]').focus({preventScroll:true});}else move({from:selected,to:square});return;}
  const p=game.get(square);selected=p&&p.color===game.turn()&&selected!==square?square:null;render();
- document.querySelector(`[data-square="${square}"]`).focus();
+ document.querySelector(`[data-square="${square}"]`).focus({preventScroll:true});
 }
-$('start').addEventListener('click',()=>{game=new Chess();selected=null;pending=null;flipped=false;document.body.classList.add('is-playing');$('setup').hidden=true;$('play').hidden=false;render();if(!document.querySelector('dialog[open]'))$('status').focus();});
-$('undo').addEventListener('click',()=>{if(!pending){game.undo();selected=null;render();if(!document.querySelector('dialog[open]'))$('status').focus();}});
+$('start').addEventListener('click',()=>{game=new Chess();selected=null;pending=null;flipped=false;document.body.classList.add('is-playing');$('setup').hidden=true;$('play').hidden=false;render();if(!document.querySelector('dialog[open]'))$('status').focus({preventScroll:true});$('main').scrollIntoView({block:'start',behavior:'instant'});});
+$('undo').addEventListener('click',()=>{if(!pending){game.undo();selected=null;render();if(!document.querySelector('dialog[open]'))$('status').focus({preventScroll:true});}});
 $('flip').addEventListener('click',()=>{flipped=!flipped;render();});
 $('exit').addEventListener('click',()=>{if(!game.isGameOver()&&game.history().length&&!confirm('End this game and return to setup?'))return;game=null;selected=null;pending=null;document.body.classList.remove('is-playing');$('play').hidden=true;$('setup').hidden=false;$('start').focus();});
 for(const b of document.querySelectorAll('[data-promotion]'))b.addEventListener('click',()=>{if(pending)move({...pending,promotion:b.dataset.promotion});});
-$('cancel-promotion').addEventListener('click',()=>{pending=null;selected=null;render();if(!document.querySelector('dialog[open]'))$('status').focus();});
+$('cancel-promotion').addEventListener('click',()=>{pending=null;selected=null;render();if(!document.querySelector('dialog[open]'))$('status').focus({preventScroll:true});});

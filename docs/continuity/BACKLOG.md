@@ -100,6 +100,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-030 | P2 | done | Preview sharper glow Arcade styling on the existing HQ deployment workflow | Maintainer; founder reviews the preview before any merge |
 | UX-031 | P2 | in-progress | Apply the Arcade design to the main Games hub while preserving every mode | Maintainer; founder reviews release; physical-phone acceptance unassigned |
 | UX-032 | P2 | in-progress | Blend the Arcade finish across all public HQ pages | Maintainer; founder reviews release; physical-device acceptance unassigned |
+| UX-033 | P1 | in-progress | Keep active game controls and boards together without focus-driven scrolling | Maintainer; founder reviews release; physical-device acceptance unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1524,3 +1525,19 @@ Acceptance:
 - Validate metadata, markup preservation, existing client checks and representative desktop/phone layouts. Actual-device acceptance is separate.
 
 Evidence/specification: [docs/SITE-FINISH.md](../../docs/SITE-FINISH.md), [public/assets/site-finish.css](../../public/assets/site-finish.css), [scripts/site-pages.mjs](../../scripts/site-pages.mjs).
+
+## UX-033: Keep active game controls and boards together without focus-driven scrolling
+
+**P1 / in-progress.** Owner: Maintainer; founder reviews release; physical-device acceptance unassigned. Dependencies: UX-032.
+
+Next action: Validate local and provider previews through repeated moves at narrow, phone, tablet and desktop viewports; review before merge.
+
+Acceptance:
+
+- No automatic viewport jump between piece/card selection, moves, undo or Brain Lab feedback. Preserve keyboard focus and live announcements.
+- Use a compact active-game header and height-aware board size; preserve the full setup artwork and descriptions.
+- Keep Solitaire stock, waste and four foundations together in a stable sticky deck row; retain all seven columns and natural scrolling for long runs.
+- Collapse chess move history; retain access to instructions and game navigation.
+- Verify actual browser moves and key game-engine/client regressions; keep real-device/keyboard/provider acceptance limits explicit.
+
+Evidence/specification: [docs/GAME-PLAY-VIEWPORT.md](../../docs/GAME-PLAY-VIEWPORT.md), [public/games/assets/play-session.css](../../public/games/assets/play-session.css), [tests/game-play-focus.test.js](../../tests/game-play-focus.test.js).
