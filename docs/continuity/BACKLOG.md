@@ -1485,7 +1485,7 @@ Evidence/specification: [docs/TRUST-BOUNDARY-REVIEW-2026-11-14.md](../../docs/TR
 
 **P2 / done.** Owner: Maintainer; founder reviews the preview before any merge. Dependencies: none.
 
-Next action: Preserve the historical concept route; UX-031 integrates the approved visual direction into the real Games hub.
+Next action: Concept route retired: /games/preview/ 308-redirects to /games/ now that UX-031 integrates the approved visual direction into the real Games hub.
 
 Acceptance:
 
@@ -1494,7 +1494,7 @@ Acceptance:
 - Search and filters work; browser-local memory and tic-tac-toe are labeled demos; backgammon stays a nonplayable concept.
 - Provide the Vercel branch preview for founder review before integration.
 
-Evidence/specification: [docs/ARCADE-GLOW-PREVIEW.md](../../docs/ARCADE-GLOW-PREVIEW.md), [public/games/preview/](../../public/games/preview/).
+Evidence/specification: [docs/ARCADE-GLOW-PREVIEW.md](../../docs/ARCADE-GLOW-PREVIEW.md), [vercel.json](../../vercel.json).
 
 ## UX-031: Apply the Arcade design to the main Games hub while preserving every mode
 
@@ -1522,7 +1522,7 @@ Acceptance:
 
 - Apply consistent crisp typography, teal action buttons, gold identity accents and readable illuminated panels across all 50 public nonprivate HQ pages.
 - Preserve original layouts, cosmos/code-rain, GIGA/other art, theme logic, game boards, answer states, market gain/loss colors, semantic markup and all behavior hooks.
-- Load one self-hosted shared stylesheet after page styles through the maintained page generator; keep private operator pages and historical concept separate.
+- Load one self-hosted shared stylesheet after page styles through the maintained page generator; keep private operator pages separate; the retired historical concept redirects to /games/.
 - Validate metadata, markup preservation, existing client checks and representative desktop/phone layouts. Actual-device acceptance is separate.
 
 Evidence/specification: [docs/SITE-FINISH.md](../../docs/SITE-FINISH.md), [public/assets/site-finish.css](../../public/assets/site-finish.css), [scripts/site-pages.mjs](../../scripts/site-pages.mjs).

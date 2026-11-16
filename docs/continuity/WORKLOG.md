@@ -1514,3 +1514,11 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - Local focused suite: 50 engine/client/opponent tests passed, including real engine tactics, legal complete strategy games, hidden-fleet invariance, worker duplicate/cancellation/error recovery and seven client turn/undo paths. Browser and exact provider checks follow publication. No production release or physical-device acceptance is claimed.
 
 - Browser evidence: real worker replies restored the human turn in Chess, Checkers, Tac Toe, Connect Four, Reversi and Dots. At 320×568, Checkers and Reversi boards fit and the checked layouts had no horizontal overflow. Battle deployment, scan and pending-turn undo passed; friend Tac Toe retained Cyan control. Full local verification was attempted but Redis-dependent suites could not start because this runtime lacks redis-server; full provider CI remains required.
+
+## November 15, 2026 — UX acceptance fixes on #297
+
+- Founder approved fixing UX Bot's #297/production findings. Branch `fix/arcade-hub-ux` on top of `codex/arcade-hub` (`8f3a554`), which already contains main `80f3e0b`.
+- Retired the superseded #296 concept: `/games/preview/` (and paths below it) now 308-redirects to `/games/`; concept files and their private site-pages entry are removed. UX-030 evidence now points at the redirect.
+- Hub phone fit: the tilted hero chessboard is sized relative to its scene and the scene clips its own paint, so it no longer depends on the hero's overflow clipping; Tower of Geek bars use proportional widths with a max-width guard inside two-column cards.
+- Mint history Clear is visibly dimmed with a not-allowed cursor while disabled. Lounge spacing added under Enable turn alerts, under the invite form, and above Open public lobbies. ONGOING-GAMES.md early paragraphs now describe the current push/notificationclick service worker and closed-lounge alerts.
+- Local headless Chromium at 360 and 390 CSS pixels reported no horizontal overflow (also with root overflow clipping disabled). Live redirect, physical-phone and real-session lounge checks remain for retest. No merge, deploy or production change.

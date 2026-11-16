@@ -33,7 +33,7 @@ export function renderMetadata(html, page, config) {
     return head.replace(/(<meta\b[^>]*charset\s*=[^>]*>)\s*/i, (_, tag) => `${tag}\n    ${metadataFor(page, config)}\n    `);
   });
   // Keep the shared public finish after each page's own styles. Private operator
-  // pages and the preserved, private-marked design concept keep their own chrome.
+  // pages and other private-marked pages keep their own chrome.
   if (!page.file.startsWith('public/') || page.private) return output;
   return output.replace(/<head\b[^>]*>[\s\S]*?<\/head>/i, head => head
     .replace(/<link\b[^>]*href=["']\/assets\/site-finish\.css["'][^>]*>\s*/gi, '')

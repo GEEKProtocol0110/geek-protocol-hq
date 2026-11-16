@@ -2,7 +2,7 @@
 
 UX-032 expands PR #297 from the main Games lobby to the public HQ site. The founder explicitly requested the new finish mixed with what is already built.
 
-The existing universe, code rain, GIGA and tabletop art, page layouts and entry points remain. A small shared self-hosted stylesheet harmonizes regular sans-serif headings, action buttons, quiet gold identity accents, illuminated dark panels, navigation and search/settings fields. It is loaded last on all 50 public nonprivate HTML pages by the page generator. Private operator pages and the preserved preview concept remain separate.
+The existing universe, code rain, GIGA and tabletop art, page layouts and entry points remain. A small shared self-hosted stylesheet harmonizes regular sans-serif headings, action buttons, quiet gold identity accents, illuminated dark panels, navigation and search/settings fields. It is loaded last on all 50 public nonprivate HTML pages by the page generator. Private operator pages remain separate; the retired `/games/preview/` concept now redirects to `/games/`.
 
 No new library dependency, third-party request, tracking, or runtime JavaScript is added by this layer. Board cells, answer controls, collectible art, scores, gain/loss colors, gameplay, account/wallet settings, and economic gates keep their existing implementation. Panel decoration does not change board dimensions, display, padding or input handling. Reduced-motion and forced-color overrides are included. Third-party market iframe interiors remain provider-controlled.
 

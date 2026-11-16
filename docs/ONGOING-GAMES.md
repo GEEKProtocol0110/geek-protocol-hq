@@ -6,9 +6,11 @@ Each player has up to 10 new waiting-host or accepted-playing rooms. Lua checks 
 
 My Games is session-authenticated, bounded to ten and contains only room metadata, opponent name, expiry and turn indicator. It never returns boards, hidden fleets, session/player IDs or unrelated private room codes. Same Geek player is required to reconnect; guests who lose their session should not expect recovery. Public lobby discovery remains separate.
 
-Turn indicators use authoritative turn state, including forced checkers captures, Dots bonus turns and pending fleet deployment. Alerts require an explicit button and browser permission. A service worker scoped only to /games/online/ displays notifications and routes their clicks to the exact room; it has no fetch/cache or push handlers. Page polling remains visible-only and four-second bounded. A new turn notifies once per ply; repeated polls and draw-offer revisions do not repeat it. No initial notification flood on reconnect. Notification text can show the opponent’s display name on the phone lock screen according to browser/OS settings.
+Turn indicators use authoritative turn state, including forced checkers captures, Dots bonus turns and pending fleet deployment. Page polling remains visible-only and four-second bounded and drives the in-lounge turn badges.
 
-Important limit: this release does NOT send notifications after the lounge is closed, suspended or backgrounded. The interface says this explicitly. True closed-app push requires subscription storage, a configured push sender and reliable move-event delivery, still future implementation. No notification subscription, VAPID keys or scheduled push service is created here. No monetary, reward, XP or A.C.E. changes.
+Current device alerts (GAME-005, see [Device turn alerts](WEB-PUSH-TURN-ALERTS.md)): alerts require the explicit Enable turn alerts button, browser permission and a Push API subscription. The service worker `public/games/online/turn-alerts-sw.js`, scoped only to /games/online/, has `push` and `notificationclick` handlers and no fetch/cache handlers. It can show an alert while the lounge is closed or backgrounded, subject to browser/OS delivery limits (iPhone needs the installed home-screen app). Before showing an alert it re-checks My Games for the same room, turn and ply, and drops stale or switched-account alerts. Alert text is generic ("Geek · Your turn" / "Geek · Saved games") and never includes the opponent’s name, board or account details. One alert per room replaces the previous one (stable tag) without re-alerting. Clicks open the exact room.
+
+No monetary, reward, XP or A.C.E. changes.
 
 Validation: 19 focused engine/API/client checks pass with real Redis, including eleven concurrent room creates (exactly ten succeed), per-player privacy, slot release and chess turn transitions; client checks permission and per-ply deduplication. Site source checks pass. Browser/phone acceptance is separate and open. No production merge claimed.
 
@@ -16,11 +18,11 @@ Full-suite checkpoint: 835/835 pass, zero failures/skips, with real Redis. Alert
 
 ## Superseding correspondence rule
 
-Founder clarified that started matches must not end simply due to elapsed time. The 24-hour/30-day choice now applies only to unaccepted invitations. Acceptance clears expiresAt and writes the active room without Redis TTL; per-player indexes are persistent, with active scores set to +inf. Started matches have no time expiry. Finished games receive 30-day retention and free their active slots. Chess no longer has the artificial 600-ply practice cap; existing chess game-rule outcomes/draw/resignation remain. Other games retain their existing practice move cap. A 366-day simulated pause and actual Redis TTL test establish the no-time-expiry behavior. No claim of immunity to provider deletion/eviction or loss of guest identity. Legacy rooms already expired cannot be restored; this acceptance policy applies to newly started matches. Closed-app push remains unimplemented.
+Founder clarified that started matches must not end simply due to elapsed time. The 24-hour/30-day choice now applies only to unaccepted invitations. Acceptance clears expiresAt and writes the active room without Redis TTL; per-player indexes are persistent, with active scores set to +inf. Started matches have no time expiry. Finished games receive 30-day retention and free their active slots. Chess no longer has the artificial 600-ply practice cap; existing chess game-rule outcomes/draw/resignation remain. Other games retain their existing practice move cap. A 366-day simulated pause and actual Redis TTL test establish the no-time-expiry behavior. No claim of immunity to provider deletion/eviction or loss of guest identity. Legacy rooms already expired cannot be restored; this acceptance policy applies to newly started matches. Closed-app push was not part of this change; it was added later by GAME-005 (below).
 
 ## November 11 release integration
 
-Founder authorized #266 release. Integrated current main without removing lobby name filtering, host/network blocking, public-index pruning, eight-create/hour and network/global limits, or the static Kaspa planet. Accepted matches remain nonexpiring; no new per-move timer is introduced. Browser/physical-phone acceptance and closed-app push remain separate.
+Founder authorized #266 release. Integrated current main without removing lobby name filtering, host/network blocking, public-index pruning, eight-create/hour and network/global limits, or the static Kaspa planet. Accepted matches remain nonexpiring; no new per-move timer is introduced. Browser/physical-phone acceptance remained separate; closed-app push shipped later in GAME-005 (below).
 
 ### Storage and abuse bounds
 
@@ -28,4 +30,4 @@ Permanent accepted games have an atomic site-wide ceiling of 1,000 per deploymen
 
 ## Superseding device push implementation — GAME-005
 
-The earlier open-lounge-only notification limitation is superseded by [Device turn alerts](WEB-PUSH-TURN-ALERTS.md). Explicit opt-in, Web Push encryption, private device storage, authoritative move outbox and protected retry support alerts while closed. Actual phone delivery acceptance remains open; OS/browser restrictions still apply. The ten-active-match and no-time-expiry rules are unchanged.
+The original open-lounge-only, no-push-handler design is superseded by [Device turn alerts](WEB-PUSH-TURN-ALERTS.md). Explicit opt-in, Web Push encryption, private device storage, authoritative move outbox and protected retry support alerts while closed. Actual phone delivery acceptance remains open; OS/browser restrictions still apply. The ten-active-match and no-time-expiry rules are unchanged.

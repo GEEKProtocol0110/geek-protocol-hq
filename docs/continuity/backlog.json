@@ -2321,7 +2321,7 @@
       "status": "done",
       "title": "Preview sharper glow Arcade styling on the existing HQ deployment workflow",
       "owner": "Maintainer; founder reviews the preview before any merge",
-      "nextAction": "Preserve the historical concept route; UX-031 integrates the approved visual direction into the real Games hub.",
+      "nextAction": "Concept route retired: /games/preview/ 308-redirects to /games/ now that UX-031 integrates the approved visual direction into the real Games hub.",
       "acceptance": [
         "Separate noindex concept route with existing GIGA, sharp typography and responsive teal/gold cards.",
         "Use existing CSP with self-hosted CSS/JS; keep the live Games hub, account state, rooms and rewards unchanged.",
@@ -2331,7 +2331,7 @@
       "dependsOn": [],
       "evidence": [
         "docs/ARCADE-GLOW-PREVIEW.md",
-        "public/games/preview/"
+        "vercel.json"
       ],
       "completedAt": "2026-11-15",
       "completionEvidence": [
@@ -2373,7 +2373,7 @@
       "acceptance": [
         "Apply consistent crisp typography, teal action buttons, gold identity accents and readable illuminated panels across all 50 public nonprivate HQ pages.",
         "Preserve original layouts, cosmos/code-rain, GIGA/other art, theme logic, game boards, answer states, market gain/loss colors, semantic markup and all behavior hooks.",
-        "Load one self-hosted shared stylesheet after page styles through the maintained page generator; keep private operator pages and historical concept separate.",
+        "Load one self-hosted shared stylesheet after page styles through the maintained page generator; keep private operator pages separate; the retired historical concept redirects to /games/.",
         "Validate metadata, markup preservation, existing client checks and representative desktop/phone layouts. Actual-device acceptance is separate."
       ],
       "dependsOn": [
