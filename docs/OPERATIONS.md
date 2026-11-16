@@ -8,12 +8,17 @@ The private Operations home at [www.geekprotocol.xyz/ops/](https://www.geekproto
 | --- | --- | --- |
 | `/ops/` | Owner home and service overview | Owner session |
 | `/ops/questions/` | Read community queue; approve, request changes, reject and publish | `CCE_ADMIN_TOKEN` |
+| `GET /api/moderation` | Read-only community queue and submission details; no decisions | `CCE_REVIEWER_TOKEN` (optional) |
 | `/ops/activity/` | Read paginated audit events and integrity results | `AUDIT_ADMIN_TOKEN` |
 | `/ops/payouts/` | Read masked destination-change cases; approve or reject risk reviews | `PAYOUT_REVIEW_ADMIN_TOKEN` |
 | `/ops/appearance/` | Preview and save site-wide holiday themes | Owner session; no additional key |
 | `/ops/community/` | Review Hall applications and publish consented credits | Owner session; no additional key |
 
 Sign in once with `OPS_ACCESS_TOKEN` when configured, or the existing CCE moderator key while it is absent. The current sole owner can keep using that existing key. A configured but empty/invalid dedicated owner key fails closed. Owner keys must be 24–512 characters. An optional authenticator adds a second factor through `OPS_TOTP_SECRET`; see [Owner authenticator setup](OPERATOR-SECURITY.md). This remains the current sole-owner identity, not named staff accounts. **Configure a distinct `OPS_ACCESS_TOKEN` before giving anyone the CCE moderator key: the fallback CCE key now grants the complete owner session.**
+
+### Read-only CCE reviewer key
+
+`CCE_REVIEWER_TOKEN` (optional, 24–512 characters) lets a reviewer list and view CCE submissions with `GET /api/moderation`, sent as `X-CCE-Admin` or `Authorization: Bearer`. It is compared in constant time. It can never approve, request changes, reject, publish, edit or delete (any non-GET returns 403), and it is never an owner/ops login key, so it cannot create or obtain an owner session even when `OPS_ACCESS_TOKEN` is unset. When it is unset, too short, equal to `CCE_ADMIN_TOKEN` or `OPS_ACCESS_TOKEN`, or the owner authenticator (`OPS_TOTP_SECRET`) is enabled, the reviewer path is disabled and fails closed. `CCE_ADMIN_TOKEN` behavior is unchanged. Share this key instead of the CCE moderator key when someone only needs to read the queue.
 
 Login creates a random Redis-backed 30-minute `Secure`, `HttpOnly`, `SameSite=Strict`, `__Host-` cookie. Version 2 sessions explicitly record the owner role and configured permissions; older page-only sessions must sign in again and do not gain API permissions. Permissions are granted by the server only for roles whose existing configuration meets its 24-character requirement. Server-held role secrets never travel to the workspace browser. Changing the owner key, any configured role key, the authenticator secret, or the audit HMAC secret invalidates owner sessions. Reads do not extend the deadline. Sign out deletes the session, revoking copied cookies as well.
 
