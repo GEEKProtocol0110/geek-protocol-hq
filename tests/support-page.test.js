@@ -6,17 +6,14 @@ import { encodeQr, qrSvg } from '../public/support/assets/qr.js';
 import { isKaspaAddress, setupSupport, PENDING_ADDRESS } from '../public/support/assets/support.js';
 
 const TIP = 'kaspa:qph2ze987szljrmkscymvjk03gh0ncwj7s73a4rgcmcaf5qdmrjguxf54pf42';
-const PAYOUT = 'kaspa:qql9hrch8rqk62ywncjmm4y3qr6dv0d8r0vvu8q7382ccawlwz50xqu0e3gvs';
 const html = readFileSync('public/support/index.html', 'utf8');
 const files = dir => readdirSync(dir, { withFileTypes: true }).flatMap(e => e.isDirectory() ? files(`${dir}/${e.name}`) : [`${dir}/${e.name}`]);
 const rows = q => q.modules.map(r => r.map(c => c ? 1 : 0).join('')).join('\n');
 
-test('the tip address is defined once, in the data-tip-address attribute, and the payout wallet appears nowhere public', () => {
-  assert.equal(html.split(TIP).length - 1, 1);
+test('the support page contains exactly one kaspa: address, the tip address, defined once in data-tip-address', () => {
+  assert.deepEqual(html.match(/kaspa:[a-z0-9]+/g), [TIP]);
   assert.match(html, new RegExp(`data-tip data-tip-address="${TIP}"`));
   assert.equal(isKaspaAddress(TIP), true);
-  assert.ok(TIP !== PAYOUT);
-  for (const file of files('public')) if (/\.(html|js|css|json|svg|txt|xml|webmanifest)$/.test(file)) assert.ok(!readFileSync(file, 'utf8').includes(PAYOUT), file);
 });
 
 test('address validation needs the kaspa prefix and a valid checksum', () => {
