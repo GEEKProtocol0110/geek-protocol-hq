@@ -45,7 +45,16 @@ check(mainnetCron.includes("MAINNET_SIGNER_ENABLED !== 'true'"), 'mainnet signer
 const mainnetWorker = await text('workers/mainnet/worker.mjs');
 check(mainnetPayout.includes("VERCEL_ENV !== 'production'"), 'mainnet admission is production-only');
 check(mainnetWorker.indexOf("MAINNET_SIGNER_ENABLED !== 'true'") !== -1 && mainnetWorker.indexOf("MAINNET_SIGNER_ENABLED !== 'true'") < mainnetWorker.indexOf('MAINNET_SIGNER_PRIVATE_KEY'), 'mainnet worker checks the signer gate before reading the key');
-check(mainnetSchedule.includes('kaspa:qql9hrch8rqk62ywncjmm4y3qr6dv0d8r0vvu8q7382ccawlwz50xqu0e3gvs'), 'mainnet hot wallet is the pinned public receive address');
+// The reviewed hot wallet stays pinned, now by SHA-256 hex of its exact full address string
+// (UTF-8, lowercase, including the "kaspa:" prefix) instead of the plain text.
+const REVIEWED_PAYOUT_ADDRESS_SHA256 = '662d1730e13025e8df48ffcfc1d982a8047bf8ba191958dda7739e111b504d59';
+check(mainnetSchedule.includes(`export const MAINNET_PAYOUT_ADDRESS_SHA256 = '${REVIEWED_PAYOUT_ADDRESS_SHA256}';`), 'mainnet hot wallet is pinned to the reviewed public receive address digest');
+check(mainnetSchedule.includes("export const MAINNET_PAYOUT_ADDRESS_ENV = 'MAINNET_PAYOUT_ADDRESS';") && !/kaspa:q[a-z0-9]{50,}/.test(mainnetSchedule), 'mainnet hot wallet is read from MAINNET_PAYOUT_ADDRESS with no hardcoded address');
+const scheduleModule = await import(new URL('workers/mainnet/schedule.mjs', root));
+const syntheticSender = 'kaspa:qrjf8kl3cyxcpu6creysfyctzszvcmqnjq8wqavywnaff2lgcnx3xcldmts00';
+check(scheduleModule.MAINNET_PAYOUT_ADDRESS_SHA256 === REVIEWED_PAYOUT_ADDRESS_SHA256 &&
+  [{}, { MAINNET_PAYOUT_ADDRESS: '' }, { MAINNET_PAYOUT_ADDRESS: 'kaspa:invalid' }, { MAINNET_PAYOUT_ADDRESS: syntheticSender, VERCEL_ENV: 'production' }].every(env => scheduleModule.resolvePayoutSender(env) === null) &&
+  scheduleModule.resolvePayoutSender({ MAINNET_PAYOUT_ADDRESS: syntheticSender }) === syntheticSender, 'mainnet payout sender fails closed when missing, invalid, or not the reviewed wallet in production');
 check(envExample.includes('MAINNET_PAYOUT_ENABLED=false') && envExample.includes('MAINNET_SIGNER_ENABLED=false'), 'mainnet payout example flags stay false');
 check(!/MAINNET_SIGNER_PRIVATE_KEY\s*=\s*\S/.test(envExample), 'mainnet signing key is not stored in the env example');
 check(envExample.includes('MAINNET_PAYOUT_JOB_HMAC') && !/MAINNET_PAYOUT_JOB_HMAC\s*=/.test(envExample), 'job hmac secret is named and has no committed value');

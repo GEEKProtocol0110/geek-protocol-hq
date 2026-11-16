@@ -121,3 +121,9 @@ test('signing refuses public, legacy, Season 0 and incomplete answer proofs befo
     } finally { signer.close(); }
   }
 });
+
+test('without a configured sender the live policy refuses to sign', { skip: process.env.MAINNET_PAYOUT_ADDRESS !== undefined }, async () => {
+  assert.equal(MAINNET_PAYOUT_SENDER, null);
+  assert.equal(livePolicy.sender, null);
+  await assert.rejects(prepareTransactions(key, job, [entry], livePolicy), /SIGNER_POLICY_MISMATCH/);
+});

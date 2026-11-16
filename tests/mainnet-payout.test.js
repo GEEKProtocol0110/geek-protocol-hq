@@ -1,6 +1,9 @@
+import { TEST_MAINNET_PAYOUT_ADDRESS } from './helpers/mainnet-payout-env.js';
 import test, { after, beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import kaspa from '@dfns/kaspa-wasm';
 import { redisFixture } from './helpers/redis-fixture.js';
 import sessionHandler from '../api/session.js';
@@ -19,7 +22,7 @@ import { jobMac, jobMacMatches } from '../workers/mainnet/job-mac.mjs';
 import { processPayment } from '../workers/mainnet/process.mjs';
 import {
   DAILY_CAP_WHOLE, DAILY_WHOLE, GAUNTLET_PERFECT_WHOLE, GAUNTLET_REWARD_WHOLE, GEEK_DEPLOYMENT_HASH, GEEK_TICKER,
-  MAINNET_PAYOUT_SENDER, PERFECT_GAUNTLET_WHOLE, PLAYER_DAILY_CAP_WHOLE, allowedRawAmounts, expectedRaw, quoteGeekReward, toRaw
+  MAINNET_PAYOUT_ADDRESS_ENV, MAINNET_PAYOUT_ADDRESS_SHA256, MAINNET_PAYOUT_SENDER, PERFECT_GAUNTLET_WHOLE, PLAYER_DAILY_CAP_WHOLE, allowedRawAmounts, expectedRaw, isMainnetPayoutAddress, quoteGeekReward, resolvePayoutSender, toRaw
 } from '../workers/mainnet/schedule.mjs';
 
 const token = 'e'.repeat(64);
@@ -775,4 +778,42 @@ test('bank/season/answer-count tampering is MAC-bound, and invalid pending proof
     signer: { verify() { touched++; }, prepare() { touched++; }, submit() { touched++; } }, report() {}
   }), /PRIVATE_RANKED_PROOF_REQUIRED/);
   assert.equal(touched, 0);
+});
+
+test('the payout sender comes only from MAINNET_PAYOUT_ADDRESS and fails closed when missing or invalid', () => {
+  assert.equal(MAINNET_PAYOUT_ADDRESS_ENV, 'MAINNET_PAYOUT_ADDRESS');
+  assert.equal(MAINNET_PAYOUT_SENDER, TEST_MAINNET_PAYOUT_ADDRESS);
+  assert.match(MAINNET_PAYOUT_ADDRESS_SHA256, /^[a-f0-9]{64}$/);
+  const source = readFileSync('workers/mainnet/schedule.mjs', 'utf8');
+  assert.doesNotMatch(source, /kaspa:q[a-z0-9]{50,}/, 'no hardcoded sender address');
+  const testnet = new kaspa.PrivateKey('5'.padStart(64, '0'));
+  const testnetAddress = (() => { try { return testnet.toAddress('testnet-10').toString(); } finally { testnet.free(); } })();
+  for (const value of [undefined, '', ' ', 'null', TEST_MAINNET_PAYOUT_ADDRESS.toUpperCase(), ` ${TEST_MAINNET_PAYOUT_ADDRESS}`, `${TEST_MAINNET_PAYOUT_ADDRESS}\n`,
+    TEST_MAINNET_PAYOUT_ADDRESS.slice(0, -1) + (TEST_MAINNET_PAYOUT_ADDRESS.endsWith('0') ? '2' : '0'), testnetAddress, 'kaspa:' + 'q'.repeat(61)]) {
+    assert.equal(isMainnetPayoutAddress(value), false, String(value));
+    assert.equal(resolvePayoutSender({ MAINNET_PAYOUT_ADDRESS: value }), null, String(value));
+  }
+  assert.equal(resolvePayoutSender({}), null);
+  assert.equal(resolvePayoutSender(null), null);
+  assert.equal(resolvePayoutSender({ MAINNET_PAYOUT_ADDRESS: TEST_MAINNET_PAYOUT_ADDRESS }), TEST_MAINNET_PAYOUT_ADDRESS);
+  assert.equal(resolvePayoutSender({ MAINNET_PAYOUT_ADDRESS: TEST_MAINNET_PAYOUT_ADDRESS, VERCEL_ENV: 'preview' }), TEST_MAINNET_PAYOUT_ADDRESS);
+  // Production accepts only the reviewed wallet's digest; a valid but different address is refused.
+  assert.notEqual(createHash('sha256').update(TEST_MAINNET_PAYOUT_ADDRESS).digest('hex'), MAINNET_PAYOUT_ADDRESS_SHA256);
+  assert.equal(resolvePayoutSender({ MAINNET_PAYOUT_ADDRESS: TEST_MAINNET_PAYOUT_ADDRESS, VERCEL_ENV: 'production' }), null);
+});
+
+test('HQ admission skips without crashing when the payout address is unset, invalid or not the reviewed wallet', () => {
+  const script = `const m = await import('./server/mainnet-payout.js'); process.env.VERCEL_ENV = 'production'; console.log(JSON.stringify(m.mainnetPayoutConfig() !== null));`;
+  const run = extra => {
+    const env = { PATH: process.env.PATH, MAINNET_PAYOUT_ENABLED: 'true', MAINNET_PAYOUT_WORKER_TOKEN: 'e'.repeat(64), MAINNET_PAYOUT_JOB_HMAC: 'cd'.repeat(32), ...extra };
+    const result = spawnSync(process.execPath, ['--input-type=module', '-e', script], { env, encoding: 'utf8' });
+    assert.equal(result.status, 0, result.stderr);
+    return JSON.parse(result.stdout.trim());
+  };
+  assert.equal(run({}), false);
+  assert.equal(run({ MAINNET_PAYOUT_ADDRESS: '' }), false);
+  assert.equal(run({ MAINNET_PAYOUT_ADDRESS: 'kaspa:not-an-address' }), false);
+  assert.equal(run({ MAINNET_PAYOUT_ADDRESS: TEST_MAINNET_PAYOUT_ADDRESS, VERCEL_ENV: 'production' }), false);
+  // Control: the same inputs with a valid sender resolved outside production do configure.
+  assert.equal(run({ MAINNET_PAYOUT_ADDRESS: TEST_MAINNET_PAYOUT_ADDRESS }), true);
 });

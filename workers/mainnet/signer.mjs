@@ -24,7 +24,7 @@ export const livePolicy = Object.freeze({
 function policyOf(policy) {
   const chosen = policy || livePolicy;
   if (chosen.network !== 'mainnet' || chosen.networkId !== 'mainnet' || chosen.addressNetwork !== 'mainnet' || chosen.feeRate !== FEE_RATE) throw new Error('SIGNER_POLICY_MISMATCH');
-  if (chosen.sender !== MAINNET_PAYOUT_SENDER && chosen.syntheticFixture !== true) throw new Error('SIGNER_POLICY_MISMATCH');
+  if (!chosen.sender || (chosen.sender !== MAINNET_PAYOUT_SENDER && chosen.syntheticFixture !== true)) throw new Error('SIGNER_POLICY_MISMATCH');
   return chosen;
 }
 
