@@ -100,7 +100,8 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-030 | P2 | done | Preview sharper glow Arcade styling on the existing HQ deployment workflow | Maintainer; founder reviews the preview before any merge |
 | UX-031 | P2 | in-progress | Apply the Arcade design to the main Games hub while preserving every mode | Maintainer; founder reviews release; physical-phone acceptance unassigned |
 | UX-032 | P2 | in-progress | Blend the Arcade finish across all public HQ pages | Maintainer; founder reviews release; physical-device acceptance unassigned |
-| UX-033 | P1 | in-progress | Keep active game controls and boards together without focus-driven scrolling | Maintainer; founder reviews release; physical-device acceptance unassigned |
+| UX-033 | P1 | done | Keep active game controls and boards together without focus-driven scrolling | Maintainer; founder reviews release; physical-device acceptance unassigned |
+| UX-034 | P1 | in-progress | Let one player face A.C.E. in the two-player local strategy games | Maintainer; founder reviews release; independent difficulty/device acceptance unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1528,9 +1529,9 @@ Evidence/specification: [docs/SITE-FINISH.md](../../docs/SITE-FINISH.md), [publi
 
 ## UX-033: Keep active game controls and boards together without focus-driven scrolling
 
-**P1 / in-progress.** Owner: Maintainer; founder reviews release; physical-device acceptance unassigned. Dependencies: UX-032.
+**P1 / done.** Owner: Maintainer; founder reviews release; physical-device acceptance unassigned. Dependencies: UX-032.
 
-Next action: Validate local and provider previews through repeated moves at narrow, phone, tablet and desktop viewports; review before merge.
+Next action: Retain the compact play surface and no-scroll focus behavior while adding A.C.E. local opponents in UX-034.
 
 Acceptance:
 
@@ -1541,3 +1542,19 @@ Acceptance:
 - Verify actual browser moves and key game-engine/client regressions; keep real-device/keyboard/provider acceptance limits explicit.
 
 Evidence/specification: [docs/GAME-PLAY-VIEWPORT.md](../../docs/GAME-PLAY-VIEWPORT.md), [public/games/assets/play-session.css](../../public/games/assets/play-session.css), [tests/game-play-focus.test.js](../../tests/game-play-focus.test.js).
+
+## UX-034: Let one player face A.C.E. in the two-player local strategy games
+
+**P1 / in-progress.** Owner: Maintainer; founder reviews release; independent difficulty/device acceptance unassigned. Dependencies: UX-033.
+
+Next action: Validate legal computer turns, cancellation/undo, masked Battle Geek targeting and browser play in all seven games; provide a preview before merge.
+
+Acceptance:
+
+- Default to local A.C.E. with Relaxed/Steady choices; retain same-device friend play in chess, checkers, Tac Toe, Connect Four, Reversi, Dots & Boxes and Battle Geek.
+- Human controls White/Gold only; computer controls Black/Cyan, including forced jumps, bonus turns, passes, deployment and terminal states.
+- Run bounded legal move selection off the UI thread; cancel stale work on undo, exit and restart. Provide retry on worker failure.
+- Undo returns to a human decision; computer Battle Geek receives only its masked view and cannot inspect unhit enemy ships.
+- Keep the compact viewport, keyboard/live status, rules and existing solo/online/account/economic boundaries. No network AI, cost or rewards.
+
+Evidence/specification: [docs/ACE-GAME-OPPONENTS.md](../../docs/ACE-GAME-OPPONENTS.md), [public/games/assets/ace-moves.js](../../public/games/assets/ace-moves.js), [public/games/assets/ace-player.js](../../public/games/assets/ace-player.js), [public/games/assets/ace-worker.js](../../public/games/assets/ace-worker.js), [tests/ace-game-opponents.test.js](../../tests/ace-game-opponents.test.js).

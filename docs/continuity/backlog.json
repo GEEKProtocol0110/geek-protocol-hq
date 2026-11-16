@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-15",
+  "updatedAt": "2026-11-16",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2388,10 +2388,10 @@
     {
       "id": "UX-033",
       "priority": "P1",
-      "status": "in-progress",
+      "status": "done",
       "title": "Keep active game controls and boards together without focus-driven scrolling",
       "owner": "Maintainer; founder reviews release; physical-device acceptance unassigned",
-      "nextAction": "Validate local and provider previews through repeated moves at narrow, phone, tablet and desktop viewports; review before merge.",
+      "nextAction": "Retain the compact play surface and no-scroll focus behavior while adding A.C.E. local opponents in UX-034.",
       "acceptance": [
         "No automatic viewport jump between piece/card selection, moves, undo or Brain Lab feedback. Preserve keyboard focus and live announcements.",
         "Use a compact active-game header and height-aware board size; preserve the full setup artwork and descriptions.",
@@ -2406,6 +2406,35 @@
         "docs/GAME-PLAY-VIEWPORT.md",
         "public/games/assets/play-session.css",
         "tests/game-play-focus.test.js"
+      ],
+      "completedAt": "2026-11-16",
+      "completionEvidence": [
+        "Founder-approved #298 squash-merged as 42215c6edba8afc5f0df5ddb77e48cc6dab8b9a1. Exact head passed Security verification and both Vercel checks; prior hosted/native-tap evidence is in #298. Physical-device acceptance remains separate."
+      ]
+    },
+    {
+      "id": "UX-034",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Let one player face A.C.E. in the two-player local strategy games",
+      "owner": "Maintainer; founder reviews release; independent difficulty/device acceptance unassigned",
+      "nextAction": "Validate legal computer turns, cancellation/undo, masked Battle Geek targeting and browser play in all seven games; provide a preview before merge.",
+      "dependsOn": [
+        "UX-033"
+      ],
+      "acceptance": [
+        "Default to local A.C.E. with Relaxed/Steady choices; retain same-device friend play in chess, checkers, Tac Toe, Connect Four, Reversi, Dots & Boxes and Battle Geek.",
+        "Human controls White/Gold only; computer controls Black/Cyan, including forced jumps, bonus turns, passes, deployment and terminal states.",
+        "Run bounded legal move selection off the UI thread; cancel stale work on undo, exit and restart. Provide retry on worker failure.",
+        "Undo returns to a human decision; computer Battle Geek receives only its masked view and cannot inspect unhit enemy ships.",
+        "Keep the compact viewport, keyboard/live status, rules and existing solo/online/account/economic boundaries. No network AI, cost or rewards."
+      ],
+      "evidence": [
+        "docs/ACE-GAME-OPPONENTS.md",
+        "public/games/assets/ace-moves.js",
+        "public/games/assets/ace-player.js",
+        "public/games/assets/ace-worker.js",
+        "tests/ace-game-opponents.test.js"
       ]
     }
   ]

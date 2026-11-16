@@ -85,3 +85,10 @@ body.is-playing.online-page #room-panel>p:last-child {font-size:12px}
 body.is-playing.strategy-page .sudoku-grid {width:min(100%,max(216px,calc(100svh - 350px)));margin-inline:auto;box-sizing:border-box}
 body.is-playing.strategy-page .number-pad {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;max-width:440px;margin:8px auto 0}
 body.is-playing.strategy-page .number-pad button {min-height:44px;min-width:0;padding:4px;font-size:16px}
+
+/* Pick computer or friend before play; keep the active board compact. */
+.ace-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.ace-options label{display:block;color:#cce2df;font-size:14px;margin-bottom:6px}
+.classics-page .ace-options select{display:block;width:100%;max-width:100%;min-height:48px;padding:8px 10px;border:1px solid #638f97;border-radius:10px;background:#102632;color:#e1f0ec;font:400 16px system-ui;box-sizing:border-box}
+.ace-note{font-size:14px;color:#b6d1cf;max-width:700px}
+@media(max-width:540px){.ace-options{grid-template-columns:1fr;gap:10px}}
