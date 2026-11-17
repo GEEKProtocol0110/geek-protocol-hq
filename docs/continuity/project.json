@@ -104,7 +104,7 @@
     "task": "ECO-006",
     "status": "merged-deployed-http-verified",
     "evidence": "docs/GEEK-NEWS.md",
-    "nextAction": "Founder-approved #241 squash-merged as 0a8a53fa9acc62262b5493c4eb9aa95811b88f67 after exact-head CI 42262924168 and both Vercel checks passed. Production dpl_J6BvCnjY33YSkbkbwDGxBi5rzHoU READY. Canonical /news/ HTTP 200 has the GEEK market desk and News CSP; /api/widget?service=markets returns 100 rows, ranks 1\u2013100; Profile retains its baseline CSP. Desktop preview rendered all 100 rows and working search. Production HTTP verification does not establish physical-phone or independent acceptance. Maintain provider availability and retain device/independent acceptance as separate work."
+    "nextAction": "Founder-approved #241 squash-merged as 0a8a53fa9acc62262b5493c4eb9aa95811b88f67 after exact-head CI 42262924168 and both Vercel checks passed. Production dpl_J6BvCnjY33YSkbkbwDGxBi5rzHoU READY. Canonical /news/ HTTP 200 has the GEEK market desk and News CSP; /api/widget?service=markets returns 100 rows, ranks 1–100; Profile retains its baseline CSP. Desktop preview rendered all 100 rows and working search. Production HTTP verification does not establish physical-phone or independent acceptance. Maintain provider availability and retain device/independent acceptance as separate work."
   },
   "firstPlayerJourney": {
     "task": "UX-012",
@@ -183,7 +183,7 @@
     "task": "GAME-003",
     "status": "source-candidate",
     "evidence": "docs/STRATEGY-PUZZLE-GAMES.md",
-    "nextAction": "Review Tower of Geek rename and selectable 3\u20138 discs; #258 merged. Browser/phone acceptance remains open. A.C.E. stays paused."
+    "nextAction": "Review Tower of Geek rename and selectable 3–8 discs; #258 merged. Browser/phone acceptance remains open. A.C.E. stays paused."
   },
   "sitePolish": {
     "task": "UX-022",
@@ -237,7 +237,7 @@
     "task": "UX-027",
     "status": "source-candidate",
     "evidence": "docs/HOLIDAY-THEMES.md",
-    "nextAction": "Draft only. Gee previews the catalog, including Geek Protocol's Birthday on June 21\u201323, before any Appearance save. The saved default remains Off."
+    "nextAction": "Draft only. Gee previews the catalog, including Geek Protocol's Birthday on June 21–23, before any Appearance save. The saved default remains Off."
   },
   "devicePush": {
     "task": "GAME-005",
@@ -310,5 +310,11 @@
     "status": "source-candidate",
     "evidence": "docs/ARCADE-300.md",
     "nextAction": "Original #300 merged independently as ee0716f. The follow-up milestone adds an A.C.E. Arena, browser-local saves and practice record on that main. Verify exact-head CI/preview before founder review; no merge implied."
+  },
+  "officialDocumentSuite": {
+    "task": "DOC-004",
+    "status": "founder-review-draft-not-adopted",
+    "evidence": "docs/review/official-suite-v0.1/README.md",
+    "nextAction": "Review seven source drafts; run repository continuity/checks when execution is available; complete separate Official Files delivery and matched PDF/web exports before publication. Economic and institutional holds remain unchanged."
   }
 }

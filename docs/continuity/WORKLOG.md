@@ -1530,3 +1530,12 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - Legal restoration uses existing engines; malformed/quota/blocked storage cannot stop gameplay or become a board authority. Record first finishes once within bounded recent history; local records are mutable and are not verified competition. The original #300 merged independently as ee0716f during implementation; this milestone moves to a separate follow-up on that main. Browser and exact provider evidence follow in that PR. Physical-device acceptance remains separate.
 
 - Focused checks passed: 69 tests covering all seven actual client save/restore/worker/undo/exit paths plus existing engine, friend, solo, online, focus, hub and acceptance regressions. Security evidence (325 assertions), metadata and continuity checks pass. The local preview tab was denied by browser policy; use the independently hosted branch preview for rendered acceptance rather than bypassing that block. Full real-Redis CI is required because redis-server is absent locally.
+
+
+## November 16, 2026 — DOC-004 source document suite
+
+- **Scope:** seven substantive companion drafts, index, manifest and review record in [the review suite](../review/official-suite-v0.1/README.md), based on main `b7521c6db2087d0c40580afa443104f33f4cd212`.
+- **Review branch:** `codex/official-document-suite-v01`. Founder adoption, publication and merge remain pending. The separate DOC-003 Official Files publication attempt is not confirmed on main.
+- **Outcome:** architecture, Proof of Learning/fair play, token/Alpha economy, release roadmap, contributor charter, account/data and brand documents. Later disabled payout schedule/private proof gate distinguished from the older whitepaper planning example. Published whitepaper and all economy/CCE/collection gates unchanged.
+- **Validation:** in-memory structural checks and exact existing BACKLOG renderer-template comparison; full execution, continuity commands, runtime tests and PDF exports unavailable because no usable execution environment exists. This is source review material only.
+- **Next:** review the drafts, run `npm run continuity:write` and `npm run continuity:check` plus applicable checks against the exact head, and connect approved editions to the separate Official Files publication work. No deployment or policy activation claimed.
