@@ -103,6 +103,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-033 | P1 | done | Keep active game controls and boards together without focus-driven scrolling | Maintainer; founder reviews release; physical-device acceptance unassigned |
 | UX-034 | P1 | done | Let one player face A.C.E. in the two-player local strategy games | Maintainer; founder reviews release; independent difficulty/device acceptance unassigned |
 | UX-035 | P1 | in-progress | Build the A.C.E. Arcade milestone with saved games and a personal practice desk | Maintainer; founder reviews release; physical-device acceptance unassigned |
+| DOC-004 | P1 | in-progress | Draft seven substantive companion documents for founder review | Maintainer drafts; founder reviews adoption and publication; policy owners unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1575,3 +1576,18 @@ Acceptance:
 - Keep #300’s original phone art, concept redirect, mint contrast and lounge spacing fixes. Verify focused tests, security, continuity, metadata, exact-head CI and hosted preview before review.
 
 Evidence/specification: [docs/ARCADE-300.md](../../docs/ARCADE-300.md), [public/games/ace/index.html](../../public/games/ace/index.html), [public/games/assets/arcade-book.js](../../public/games/assets/arcade-book.js), [public/games/assets/arcade-session.js](../../public/games/assets/arcade-session.js), [public/games/assets/arena.js](../../public/games/assets/arena.js), [tests/arcade-practice.test.js](../../tests/arcade-practice.test.js), [tests/arcade-hub-ux.test.js](../../tests/arcade-hub-ux.test.js).
+
+## DOC-004: Draft seven substantive companion documents for founder review
+
+**P1 / in-progress.** Owner: Maintainer drafts; founder reviews adoption and publication; policy owners unassigned. Dependencies: none.
+
+Next action: Review the draft suite, run continuity and applicable repository checks in a working environment, then prepare matching publication exports after approval. Keep the separate Official Files publication state explicit.
+
+Acceptance:
+
+- Seven complete versioned drafts cover architecture, Proof of Learning/fair play, token/Alpha economy, roadmap/release gates, contributors, account/data and brand communications.
+- Observed implementation, later disabled source policy and proposed requirements are distinguished; current CCE, settlement and collection holds remain unchanged.
+- Each document has a stable ID, source baseline and review status, with a linked reading index and manifest.
+- Continuity and applicable repository checks pass on the assembled head before merge; approved web/PDF editions and deployed links require separate publication evidence.
+
+Evidence/specification: [docs/review/official-suite-v0.1/README.md](../../docs/review/official-suite-v0.1/README.md), [docs/review/official-suite-v0.1/REVIEW-RECORD.md](../../docs/review/official-suite-v0.1/REVIEW-RECORD.md), [docs/review/official-suite-v0.1/manifest.json](../../docs/review/official-suite-v0.1/manifest.json).

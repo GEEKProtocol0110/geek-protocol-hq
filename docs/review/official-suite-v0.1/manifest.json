@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "suite": "Geek Protocol companion documents",
+  "version": "0.1",
+  "status": "founder-review-draft-not-adopted",
+  "sourceCommit": "b7521c6db2087d0c40580afa443104f33f4cd212",
+  "effectiveDate": null,
+  "approvedBy": null,
+  "documents": [
+    {
+      "id": "GEEK-TECH-001",
+      "title": "Geek Protocol Technical Overview",
+      "source": "TECHNICAL-OVERVIEW.md",
+      "version": "0.1",
+      "status": "founder-review-draft-not-adopted"
+    },
+    {
+      "id": "GEEK-POL-001",
+      "title": "Proof of Learning and Fair Play Standard",
+      "source": "PROOF-OF-LEARNING-AND-FAIR-PLAY.md",
+      "version": "0.1",
+      "status": "founder-review-draft-not-adopted"
+    },
+    {
+      "id": "GEEK-ECON-001",
+      "title": "GEEK Token and Alpha Economy",
+      "source": "TOKEN-AND-ALPHA-ECONOMY.md",
+      "version": "0.1",
+      "status": "founder-review-draft-not-adopted"
+    },
+    {
+      "id": "GEEK-ROAD-001",
+      "title": "Roadmap and Release Acceptance",
+      "source": "ROADMAP-AND-RELEASE-ACCEPTANCE.md",
+      "version": "0.1",
+      "status": "founder-review-draft-not-adopted"
+    },
+    {
+      "id": "GEEK-COMM-001",
+      "title": "Community and Contributor Charter",
+      "source": "COMMUNITY-AND-CONTRIBUTOR-CHARTER.md",
+      "version": "0.1",
+      "status": "founder-review-draft-not-adopted"
+    },
+    {
+      "id": "GEEK-DATA-001",
+      "title": "Account and Data Guide",
+      "source": "ACCOUNT-AND-DATA-GUIDE.md",
+      "version": "0.1",
+      "status": "founder-review-draft-not-adopted"
+    },
+    {
+      "id": "GEEK-BRAND-001",
+      "title": "Brand and Communications Guide",
+      "source": "BRAND-AND-COMMUNICATIONS-GUIDE.md",
+      "version": "0.1",
+      "status": "founder-review-draft-not-adopted"
+    }
+  ]
+}
