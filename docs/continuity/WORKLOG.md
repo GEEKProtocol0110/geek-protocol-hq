@@ -1554,3 +1554,5 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - **Existing remote evidence:** verify run 44012581468 passed on fd08a3c; no submitted reviews/threads returned. Fresh exact-head checks are required for the follow-up. Source-only, no merge/deployment.
 
 - **Follow-up final checks:** full verify passed 986 tests/checks (971 application, nine testnet signer, six mainnet signer), zero failures/skips, with real Redis and 325 security assertions. Production provisioning/external caller confirmation still pending; no runtime policy or environment change.
+
+- **Saved follow-up:** draft [PR #306](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/306) source `82d14b96e9d981b050a94d22c18b18d45c1deb01`, tree `23b822fdd98fca14659726bf8ddc6b1465aa25c7` exactly matches local `5ce574a5b8dec5702e171e17aabd63fb12655a6b`. Exact-origin work is independently staged in draft [PR #307](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/307). No merge; provisioning, external caller confirmation and fresh remote verification remain pending. This handoff update changes no runtime code.
