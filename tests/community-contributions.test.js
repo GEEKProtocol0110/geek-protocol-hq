@@ -1,3 +1,4 @@
+import { decodeTotpSecret, hotpCode } from '../server/operations-mfa.js';
 import test, { after, beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
@@ -10,6 +11,8 @@ import { isValidKaspaMainnetAddress } from '../server/kaspa-address.js';
 import { applicationClient, communityLink } from '../public/thanks/assets/community-core.js';
 
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
+const mfaSecret = 'GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ';
+let opsSeconds = 1_700_000_000;
 const origin = 'https://www.geekprotocol.xyz', owner = 'synthetic-community-owner-key-with-32-characters';
 process.env.UPSTASH_REDIS_REST_URL = 'https://redis.community.test';
 process.env.UPSTASH_REDIS_REST_TOKEN = 'synthetic-community-fixture';
@@ -17,6 +20,7 @@ let loseReply = '';
 globalThis.fetch = async (url, options) => {
   assert.match(String(url), /^https:\/\/redis\.community\.test/);
   const args = JSON.parse(options.body); let payload;
+  if (args[0] === 'TIME') return Response.json({ result: [String(opsSeconds), '0'] });
   if (String(url).endsWith('/multi-exec')) payload = (await fixture.commands([['MULTI'], ...args, ['EXEC']])).at(-1).map(result => ({ result }));
   else if (String(url).endsWith('/pipeline')) payload = (await fixture.commands(args)).map(result => ({ result }));
   else {
@@ -25,7 +29,7 @@ globalThis.fetch = async (url, options) => {
   }
   return new Response(JSON.stringify(payload));
 };
-beforeEach(async () => { await fixture.command('FLUSHDB'); loseReply = ''; process.env.OPS_ACCESS_TOKEN = owner; process.env.CCE_ADMIN_TOKEN = 'synthetic-community-cce-key-with-24-characters'; process.env.AUDIT_LOG_SECRET = 'synthetic-community-audit-secret-with-32-characters'; process.env.VERCEL_ENV = 'production'; delete process.env.OPS_TOTP_SECRET; });
+beforeEach(async () => { await fixture.command('FLUSHDB'); opsSeconds = 1_700_000_000; process.env.OPS_TOTP_SECRET = mfaSecret; loseReply = ''; process.env.OPS_ACCESS_TOKEN = owner; process.env.CCE_ADMIN_TOKEN = 'synthetic-community-cce-key-with-24-characters'; process.env.AUDIT_LOG_SECRET = 'synthetic-community-audit-secret-with-32-characters'; process.env.VERCEL_ENV = 'production'; });
 after(async () => { globalThis.fetch = originalFetch; await fixture.close(); });
 const response = () => ({ headers: {}, statusCode: 0, body: null, setHeader(k, v) { this.headers[k] = v; }, status(s) { this.statusCode = s; return this; }, json(v) { this.body = v; return this; }, end(v) { this.body = v; return this; } });
 const call = async ({ method = 'GET', service = 'community', action = '', cookie = '', body, query = {}, headers = {} } = {}) => {
@@ -33,7 +37,7 @@ const call = async ({ method = 'GET', service = 'community', action = '', cookie
 };
 const application = (extra = {}) => ({ requestId: randomUUID(), name: 'Example Geek', profile: 'https://example.com/geek', kind: 'testing', details: 'I tested the game and reported a reproducible bug.', evidence: 'https://example.com/public-evidence', recognition: true, consent: true, website: '', ...extra });
 const apply = body => call({ method: 'POST', body });
-const login = async () => { const result = await call({ service: 'operations', action: 'login', method: 'POST', body: { key: owner } }); assert.equal(result.statusCode, 200); return result.headers['Set-Cookie'].split(';')[0]; };
+const login = async () => { opsSeconds += 30; const result = await call({ service: 'operations', action: 'login', method: 'POST', body: { key: owner, code: hotpCode(decodeTotpSecret(mfaSecret), Math.floor(opsSeconds / 30)) } }); assert.equal(result.statusCode, 200); return result.headers['Set-Cookie'].split(';')[0]; };
 const review = (cookie, body, extra = {}) => call({ service: 'operations', action: 'community', cookie, method: 'POST', body, ...extra });
 const list = (cookie, view = 'pending') => call({ service: 'operations', action: 'community', cookie, query: { view } });
 const publish = id => ({ id, expectedRevision: 1, action: 'publish', note: 'Checked the submitted evidence.', summary: 'Helped test Geek and report a reproducible bug.', confirmed: true });

@@ -1,5 +1,5 @@
 import { readFile } from 'node:fs/promises';
-import { clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson } from './http.js';
+import { clientAddressFingerprint, clientFingerprint, handleApiError, methodNotAllowed, parseBody, sendJson } from './http.js';
 import { redis, rateLimit } from './redis.js';
 import { operationsConfig as config, operationsEqual as equal, operationsCookieId as cookieId, operationsSessionKey as keyFor, setOperationsCookie as setCookie, operationsTrustedOrigin as trustedOrigin, operationsJsonRequest, operationsSession, createOperationsSession } from './operations-access.js';
 import { recordAuditEvent } from './audit.js';
@@ -65,7 +65,7 @@ export default async function operationsHandler(req, res) {
     if (action === 'login' || action === 'logout') {
       if (req.method !== 'POST') return methodNotAllowed(res, 'POST');
       if (!trustedOrigin(req) || !operationsJsonRequest(req)) return sendJson(res, 403, { ok: false, error: 'Access was not accepted.' });
-      await rateLimit('ops-access', clientFingerprint(req), 10, 600);
+      await rateLimit('ops-access', clientAddressFingerprint(req), 10, 600);
       const body = parseBody(req);
       if (action === 'logout') {
         const id = cookieId(req);

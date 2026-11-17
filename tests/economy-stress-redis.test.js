@@ -10,7 +10,7 @@ import { loadQuestionBank } from '../server/questions.js';
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
 process.env.UPSTASH_REDIS_REST_URL = 'https://redis.economy-stress.test'; process.env.UPSTASH_REDIS_REST_TOKEN = 'synthetic-economy-stress-token';
 process.env.CCE_ADMIN_TOKEN = 'synthetic-economy-stress-owner-key-32-characters'; process.env.AUDIT_LOG_SECRET = 'synthetic-economy-stress-audit-key-32-characters';
-delete process.env.OPS_ACCESS_TOKEN; delete process.env.OPS_TOTP_SECRET;
+process.env.OPS_ACCESS_TOKEN = process.env.CCE_ADMIN_TOKEN; delete process.env.OPS_TOTP_SECRET;
 let lost = false;
 globalThis.fetch = async (url, options) => {
   assert.ok(String(url).startsWith('https://redis.economy-stress.test'), 'No production or wallet request in stress fixtures');

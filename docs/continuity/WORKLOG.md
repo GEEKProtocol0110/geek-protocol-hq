@@ -1530,3 +1530,29 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - Legal restoration uses existing engines; malformed/quota/blocked storage cannot stop gameplay or become a board authority. Record first finishes once within bounded recent history; local records are mutable and are not verified competition. The original #300 merged independently as ee0716f during implementation; this milestone moves to a separate follow-up on that main. Browser and exact provider evidence follow in that PR. Physical-device acceptance remains separate.
 
 - Focused checks passed: 69 tests covering all seven actual client save/restore/worker/undo/exit paths plus existing engine, friend, solo, online, focus, hub and acceptance regressions. Security evidence (325 assertions), metadata and continuity checks pass. The local preview tab was denied by browser policy; use the independently hosted branch preview for rendered acceptance rather than bypassing that block. Full real-Redis CI is required because redis-server is absent locally.
+
+
+## November 16, 2026 — SEC-001 22-item triage and owner-access hardening
+
+- **Base/branch:** b7521c6db2087d0c40580afa443104f33f4cd212; `codex/security-review-22`. [Detailed review](../SECURITY-REVIEW-22.md) covers all 22 items, including corrections to the body-limit, dependency, Redis-skip and CSP allegations.
+- **Candidate:** remove CCE owner fallback, require distinct production owner key/MFA, prohibit missing-MFA role-key fallback, use network-based login limits and shared pre-auth role-route limits. Update private setup/login guidance and legacy test fixtures; no production secrets inspected or configured.
+- **Evidence:** four new tests fail on original code and pass on candidate. Complete application suite: 969 passed, zero failures/skips, real isolated Redis. First full run lacked the isolated worker SDK; supplying the existing pinned worker installation resolved that environment issue. Full verify follows after continuity generation.
+- **GitHub rules:** public effective-main/ruleset API snapshot confirms active ruleset 26214524, required PR/checks and non-fast-forward/deletion restrictions, but zero required approvals. Public response omits bypass actors. No settings changed.
+- **Open:** deeper races/answer-leak/recovery assessment remains deferred as requested, plus origin selection, upstream costs, browser sink inventory, evidence matrix, external audit and production/recovery acceptance. Published payout/CCE/collection gates unchanged.
+- **Release:** unmerged source candidate. Production private ops will fail closed without separately provisioned owner/MFA; no environment or money movement authorized or performed.
+
+- **Final local verification:** `npm run verify` passed 984 tests/checks (969 application, nine testnet signer, six mainnet signer), zero failures/skips, with real Redis; 325 security assertions and all bank, archive, repository, economy, continuity, metadata and whitepaper checks passed. Both worker signature audits passed (11 registry signatures and one attestation each). Root signature audit failed `EMISSINGSIGNATUREKEY` for `@peculiar/x509@2.2.0`; root provenance verification remains unresolved and is not reported as passed.
+
+- **Saved review:** draft [PR #306](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/306), remote source `476f18922a9c06c2b2c569e93102f0c7b81f6c36`, verified tree `01da2fd1015f3c4e03bcaf8c8da18fdd2feed2bc` equal to local `459b4c0ba05a13b0f482de32ceecfed61823f963`. Both Vercel preview statuses succeeded. Required GitHub verification, independent review, production owner/MFA provisioning and founder merge remain pending; no release. Local author/committer uses noreply, but the connector publisher did not inherit it; publisher metadata remains a separate item-18 follow-up.
+
+
+## November 17, 2026 — SEC-001 Claude handoff follow-up
+
+- **Scope:** add signed-in dashboard-budget/backoff and Preview/NODE_ENV MFA regressions; record four rollout concerns in [the 22-item review](../SECURITY-REVIEW-22.md). No runtime authorization change.
+- **Internal checks:** 13 operations MFA tests pass against real isolated Redis, including all prior regressions. Full verification follows before publication.
+- **Blockers:** HQ configuration metadata lists neither dedicated owner token nor authenticator (zero hidden Production entries); provisioning/recovery and external Geek Bot callers require operator confirmation before merge. No secrets read/decrypted/provisioned and no bot message sent. Global rate-counter pipeline atomicity remains open for separate work.
+- **Existing remote evidence:** verify run 44012581468 passed on fd08a3c; no submitted reviews/threads returned. Fresh exact-head checks are required for the follow-up. Source-only, no merge/deployment.
+
+- **Follow-up final checks:** full verify passed 986 tests/checks (971 application, nine testnet signer, six mainnet signer), zero failures/skips, with real Redis and 325 security assertions. Production provisioning/external caller confirmation still pending; no runtime policy or environment change.
+
+- **Saved follow-up:** draft [PR #306](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/306) source `82d14b96e9d981b050a94d22c18b18d45c1deb01`, tree `23b822fdd98fca14659726bf8ddc6b1465aa25c7` exactly matches local `5ce574a5b8dec5702e171e17aabd63fb12655a6b`. Exact-origin work is independently staged in draft [PR #307](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/307). No merge; provisioning, external caller confirmation and fresh remote verification remain pending. This handoff update changes no runtime code.

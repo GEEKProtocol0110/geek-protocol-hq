@@ -8,7 +8,7 @@ import { monitorChecks, MONITOR_ORIGIN } from '../server/production-monitor.js';
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
 process.env.UPSTASH_REDIS_REST_URL = 'https://redis.monitor.test'; process.env.UPSTASH_REDIS_REST_TOKEN = 'synthetic-monitor-token';
 process.env.AUDIT_LOG_SECRET = 'synthetic-monitor-audit-key-32-characters'; process.env.CCE_ADMIN_TOKEN = 'synthetic-monitor-owner-key-32-characters';
-delete process.env.OPS_ACCESS_TOKEN; delete process.env.OPS_TOTP_SECRET;
+process.env.OPS_ACCESS_TOKEN = process.env.CCE_ADMIN_TOKEN; delete process.env.OPS_TOTP_SECRET;
 let probes = 0, failing = false;
 globalThis.fetch = async (url, options) => {
   if (String(url).startsWith(MONITOR_ORIGIN)) {

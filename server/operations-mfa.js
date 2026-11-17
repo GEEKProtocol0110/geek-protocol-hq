@@ -13,7 +13,14 @@ export const decodeTotpSecret = value => {
   if (bytes.length < 20 || bytes.length > 64 || bits >= 5 || (accumulator & ((1 << bits) - 1))) throw new Error('OPS_NOT_CONFIGURED');
   return Buffer.from(bytes);
 };
-export const operationsMfaSecret = () => process.env.OPS_TOTP_SECRET === undefined ? null : decodeTotpSecret(process.env.OPS_TOTP_SECRET);
+export const operationsProduction = () => process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production';
+export const operationsMfaSecret = () => {
+  if (process.env.OPS_TOTP_SECRET === undefined) {
+    if (operationsProduction()) throw new Error('OPS_NOT_CONFIGURED');
+    return null;
+  }
+  return decodeTotpSecret(process.env.OPS_TOTP_SECRET);
+};
 export const hotpCode = (secret, counter, digits = 6) => {
   if (!Number.isSafeInteger(counter) || counter < 0 || ![6, 8].includes(digits)) throw new Error('OPS_NOT_CONFIGURED');
   const message = Buffer.alloc(8); message.writeBigUInt64BE(BigInt(counter));

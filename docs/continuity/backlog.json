@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-16",
+  "updatedAt": "2026-11-17",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2474,6 +2474,33 @@
         "public/games/assets/arena.js",
         "tests/arcade-practice.test.js",
         "tests/arcade-hub-ux.test.js"
+      ]
+    },
+    {
+      "id": "SEC-001",
+      "priority": "P0",
+      "status": "in-progress",
+      "title": "Triage the 22-item security review and harden privileged access",
+      "owner": "Maintainer; founder reviews release; independent reviewer unassigned",
+      "nextAction": "Review dedicated owner/MFA enforcement and provisioning requirements; verify exact-head CI before merge. Then address origin and upstream-resource gaps and complete separate adversarial reviews of races, answer leakage and recovery. No settlement activation.",
+      "acceptance": [
+        "Each of the 22 findings has source evidence, disposition and required acceptance without promoting unverified claims.",
+        "Owner fallback removed, production owner credentials separated from role keys, and missing MFA cannot restore legacy privileged access.",
+        "Login and CCE/audit/payout-review credential attempts are bounded across User-Agent and endpoint changes, with failing-baseline/passing-candidate regressions.",
+        "Applicable real-Redis regressions, full verification and continuity checks pass; production provisioning, independent review, merge and deployment recorded separately."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/SECURITY-REVIEW-22.md",
+        "docs/OPERATOR-SECURITY.md",
+        "tests/operations-mfa.test.js",
+        "security/review-main-rules.json"
+      ],
+      "validationEvidence": [
+        "Four new regression tests fail against b7521c6 and pass with the source candidate. Full npm run verify passes: 969 application tests plus 9 testnet and 6 mainnet signer checks (984 total), zero failures/skips, real isolated Redis; 325 security assertions and all generated/content checks pass.",
+        "Public GitHub API confirms active main ruleset 26214524, required PR/checks and non-fast-forward/deletion blocks; required approval count is zero, bypass actors not exposed. No settings changed.",
+        "npm audit signatures succeeds for both isolated worker graphs (11 registry signatures and one attestation each). Root graph verification exits EMISSINGSIGNATUREKEY for @peculiar/x509@2.2.0: missing corresponding public key(s) for attestations; root provenance verification remains unresolved, not passed.",
+        "November 17 Claude follow-up: 13 MFA regressions pass, including signed-in owner 429/backoff without session revocation and Preview with NODE_ENV=production requiring MFA. Full verify passes 986 checks (971 application, nine testnet and six mainnet signer), zero failures/skips, real Redis; 325 security assertions. Production provisioning, external callers and global rate-counter atomicity remain open."
       ]
     }
   ]

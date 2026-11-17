@@ -53,7 +53,7 @@ beforeEach(async () => {
     TESTNET_REWARDS_NETWORK: 'testnet-10', TESTNET_REWARDS_TICKER: 'GEEKT', TESTNET_REWARDS_DEPLOYMENT_HASH: deploy,
     TESTNET_REWARDS_DECIMALS: '8', TESTNET_REWARDS_SENDER: wallet(6), TESTNET_REWARDS_AMOUNT_RAW: '100000000',
     TESTNET_AUTO_ENABLED: 'true', TESTNET_AUTO_SENDER: sender, TESTNET_AUTO_WORKER_TOKEN: token, TESTNET_AUTO_DAILY_LIMIT: '2' });
-  delete process.env.OPS_ACCESS_TOKEN; delete process.env.OPS_TOTP_SECRET;
+  process.env.OPS_ACCESS_TOKEN = process.env.CCE_ADMIN_TOKEN; delete process.env.OPS_TOTP_SECRET;
 });
 const call = async (handler, method, body = {}, cookie = '', query = {}, extra = {}) => {
   const res = { headers: {}, statusCode: 0, body: null, setHeader(k, v) { this.headers[k] = v; }, status(n) { this.statusCode = n; return this; }, json(v) { this.body = v; }, end(v) { this.body = v; } };

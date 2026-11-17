@@ -1,3 +1,4 @@
+import { decodeTotpSecret, hotpCode } from '../server/operations-mfa.js';
 import test, { after, beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -9,6 +10,8 @@ import { HOLIDAYS, automaticHoliday, compareHolidayWindows, effectiveHoliday, ho
 import { GEEK_DEPLOYMENT } from '../server/geek-deployment.js';
 
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
+const mfaSecret = 'GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ';
+let opsSeconds = 1_700_000_000;
 process.env.UPSTASH_REDIS_REST_URL = 'https://redis.appearance.test';
 process.env.UPSTASH_REDIS_REST_TOKEN = 'synthetic-appearance-fixture';
 const owner = 'synthetic-appearance-owner-key-with-32-characters', origin = 'https://www.geekprotocol.xyz';
@@ -16,13 +19,14 @@ let loseSaveReply = false;
 globalThis.fetch = async (url, options) => {
   assert.match(String(url), /^https:\/\/redis\.appearance\.test/);
   const values = JSON.parse(options.body); let payload;
+  if (values[0] === 'TIME') return Response.json({ result: [String(opsSeconds), '0'] });
   if (String(url).endsWith('/multi-exec')) payload = (await fixture.commands([['MULTI'], ...values, ['EXEC']])).at(-1).map(result => ({ result }));
   else if (String(url).endsWith('/pipeline')) payload = (await fixture.commands(values)).map(result => ({ result }));
   else { payload = { result: await fixture.command(...values) }; if (loseSaveReply && values[0] === 'EVAL' && String(values[1]).includes('geek-appearance-save-v1')) { loseSaveReply = false; throw new Error('Synthetic lost save response'); } }
   return new Response(JSON.stringify(payload));
 };
 beforeEach(async () => {
-  await fixture.command('FLUSHDB'); loseSaveReply = false;
+  await fixture.command('FLUSHDB'); opsSeconds = 1_700_000_000; process.env.OPS_TOTP_SECRET = mfaSecret; loseSaveReply = false;
   process.env.OPS_ACCESS_TOKEN = owner; process.env.CCE_ADMIN_TOKEN = 'synthetic-cce-key-with-24-characters';
   process.env.AUDIT_LOG_SECRET = 'synthetic-appearance-audit-secret-with-32-characters'; process.env.VERCEL_ENV = 'production';
 });
@@ -31,7 +35,7 @@ const response = () => ({ headers: {}, statusCode: 0, body: null, setHeader(k, v
 const call = async ({ method = 'GET', action = 'appearance', service = 'operations', cookie = '', body, path, headers = {} } = {}) => {
   const res = response(); await sessionHandler({ method, query: { service, action, ...(path ? { path } : {}) }, headers: { cookie, origin, 'content-type': 'application/json', 'user-agent': 'appearance-test', 'x-forwarded-for': '192.0.2.10', ...headers }, body }, res); return res;
 };
-const login = async () => { const res = await call({ method: 'POST', action: 'login', body: { key: owner } }); assert.equal(res.statusCode, 200); return res.headers['Set-Cookie'].split(';')[0]; };
+const login = async () => { opsSeconds += 30; const res = await call({ method: 'POST', action: 'login', body: { key: owner, code: hotpCode(decodeTotpSecret(mfaSecret), Math.floor(opsSeconds / 30)) } }); assert.equal(res.statusCode, 200); return res.headers['Set-Cookie'].split(';')[0]; };
 const save = (cookie, expectedRevision, mode = 'manual', holiday = 'christmas') => call({ method: 'POST', cookie, body: { mode, holiday, expectedRevision } });
 const publicView = (method = 'GET') => call({ method, service: 'appearance', headers: { origin: undefined }, action: '' });
 const record = async () => JSON.parse(await fixture.command('GET', appearanceKey()));
