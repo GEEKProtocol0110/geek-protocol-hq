@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-16",
+  "updatedAt": "2026-11-17",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2474,6 +2474,32 @@
         "public/games/assets/arena.js",
         "tests/arcade-practice.test.js",
         "tests/arcade-hub-ux.test.js"
+      ]
+    },
+    {
+      "id": "SEC-003",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Make shared rate counters atomic and fail closed on invalid state",
+      "owner": "Maintainer; founder reviews merge; independent reviewer unassigned",
+      "nextAction": "Inspect exact-head CI and provider/integration evidence, reconcile continuity with #306/#307 and request founder review before merge. No provisioning, rate-policy expansion or economic enablement.",
+      "acceptance": [
+        "New and missing-expiry counters use one expiring write and cannot be stranded by a rejected separate expiry command.",
+        "Existing expiring counters retain their exact deadline, exhausted legacy budgets stay exhausted during repair, and no automatic retry follows a lost acknowledgment.",
+        "Real-Redis concurrency, ACL write/expiry failures, malformed results/state, invalid policy and expiry recovery tests pass; baseline negative controls demonstrate the failures.",
+        "The application suite, isolated signer checks and all remaining verify components pass; preserve domain failure injection and update continuity/source evidence honestly.",
+        "Keep owner/MFA, origin and economic holds intact; integration, exact-head CI, founder merge and production acceptance remain separately evidenced."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/ATOMIC-RATE-LIMIT.md",
+        "server/redis.js",
+        "tests/rate-limit.test.js"
+      ],
+      "validationEvidence": [
+        "Eleven real-Redis limiter regressions pass; six fail against original b7521c6. Focused limiter/transport: 28 passed. Complete application suite: 976 passed, zero failures/skips, real Redis, concurrency two. Earlier interrupted default-concurrency run has no completion summary and is not counted. Supporting verification and publication follow.",
+        "All verification components pass: 976 application tests at concurrency two plus nine testnet and six mainnet signer checks (991 total), zero failures/skips; 329 security assertions and all generated/content/continuity/economy/whitepaper checks pass. No production fault injection or independent acceptance.",
+        "Disposable runtime overlay with the local equivalents of #306 b7eaff0 and #307 99603f3 passed 104 focused real-Redis tests, zero failures/skips. This is runtime integration evidence, not combined continuity resolution, a merged branch or deployed acceptance."
       ]
     }
   ]

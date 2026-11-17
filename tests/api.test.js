@@ -24,6 +24,7 @@ import { publishedCommunityQuestionById, recordCommunityQuestionUse } from '../s
 import { studyQuestionById, studyBank } from '../server/study-curriculum.js';
 import { challengePeriod, CHALLENGE_CAP } from '../server/challenge-periods.js';
 import { vaultDay, vaultKey, vaultSeals } from '../server/vault.js';
+import { RATE_LIMIT_LUA } from '../server/redis.js';
 
 test('level 50 is a manual boundary and lifetime XP never auto-prestiges', () => {
   const p = defaultProfile();
@@ -175,6 +176,12 @@ const execute = (command) => {
     return withScores ? entries.flatMap(([member, score]) => [member, String(score)]) : entries.map(([member]) => member);
   }
   if (name === 'EVAL') {
+    // This legacy fixture does not model expiry. Real Redis limiter tests own
+    // TTL/failure semantics; retain this fixture's existing request counts.
+    if (args[0] === RATE_LIMIT_LUA) {
+      assert.equal(args[1], 1);
+      return execute(['INCR', args[2]]);
+    }
     if (String(args[0]).includes('geek-session-save-v1')) {
       const [sessionKey,nameKey] = args.slice(2,4), [previous,next,ttl,name,action] = args.slice(4);
       const current = strings.get(sessionKey);

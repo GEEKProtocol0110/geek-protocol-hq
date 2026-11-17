@@ -1530,3 +1530,17 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - Legal restoration uses existing engines; malformed/quota/blocked storage cannot stop gameplay or become a board authority. Record first finishes once within bounded recent history; local records are mutable and are not verified competition. The original #300 merged independently as ee0716f during implementation; this milestone moves to a separate follow-up on that main. Browser and exact provider evidence follow in that PR. Physical-device acceptance remains separate.
 
 - Focused checks passed: 69 tests covering all seven actual client save/restore/worker/undo/exit paths plus existing engine, friend, solo, online, focus, hub and acceptance regressions. Security evidence (325 assertions), metadata and continuity checks pass. The local preview tab was denied by browser policy; use the independently hosted branch preview for rendered acceptance rather than bypassing that block. Full real-Redis CI is required because redis-server is absent locally.
+
+
+## November 17, 2026 — SEC-003 atomic rate-counter candidate
+
+- **Base/branch:** b7521c6db2087d0c40580afa443104f33f4cd212; `codex/atomic-rate-limit`. [Protocol and evidence](../ATOMIC-RATE-LIMIT.md).
+- **Outcome:** one-key Lua transition uses SET EX for creation/missing-TTL repair and INCR for an existing expiry; invalid policies, counters and replies fail closed. Existing key/budget/window policy preserved. No production record or environment touched.
+- **Evidence:** eleven real-Redis regressions pass and six fail on the original implementation. Includes real ACL-denied expiry/write cases, concurrency, missing TTL, lost acknowledgment and unchanged absolute expiry. Focused limiter/transport: 28 passed.
+- **Application run:** 976 passed, zero failures/skips, real Redis, test concurrency two. Initial default-concurrency run was interrupted while collecting results and lacks a completion summary; it is not reported as passed. Supporting verify components follow this entry.
+- **Compatibility:** older domain fixtures recognize the new script; MFA replay-fault injection remains targeted to the replay script. Shared owner and origin candidates #306/#307 remain separate and unmerged. Provisioning/external caller, private-bank and economic holds remain.
+- **Next:** supporting checks, exact-source publication, review/integration and founder merge authorization. No independent or production fault-injection acceptance, branch deletion, merge or deployment claimed.
+
+- **Completed verification:** 976 application tests plus nine testnet and six mainnet signer checks, 991 total, zero failures/skips. All verify components passed, including 329 security assertions and continuity, question, archive, collection, repository, economy, metadata and whitepaper checks. Application concurrency was explicitly two after the interrupted run; do not equate that interruption with a test failure or a completed default-concurrency run.
+
+- **Combined runtime check:** disposable overlay based on local #306 b7eaff0, local #307 99603f3 runtime files and SEC-003 ab90bd2, preserving the scoped MFA failure hook: 104 focused real-Redis tests passed, zero failures/skips. No actual merge or combined continuity acceptance.

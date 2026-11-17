@@ -21,7 +21,7 @@ globalThis.fetch = async (url, options) => {
   if (String(url).endsWith('/pipeline')) payload = (await fixture.commands(commands)).map(result => ({ result }));
   else if (String(url).endsWith('/multi-exec')) payload = (await fixture.commands([['MULTI'], ...commands, ['EXEC']])).at(-1).map(result => ({ result }));
   else {
-    if (failClaim && commands[0] === 'EVAL') throw new Error('Synthetic unavailable MFA store');
+    if (failClaim && commands[0] === 'EVAL' && String(commands[1]).includes('geek-ops-totp-claim-v1')) throw new Error('Synthetic unavailable MFA store');
     payload = { result: commands[0] === 'TIME' ? [String(seconds), '0'] : await fixture.command(...commands) };
   }
   return new Response(JSON.stringify(payload));
