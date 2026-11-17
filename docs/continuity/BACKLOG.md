@@ -103,6 +103,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-033 | P1 | done | Keep active game controls and boards together without focus-driven scrolling | Maintainer; founder reviews release; physical-device acceptance unassigned |
 | UX-034 | P1 | done | Let one player face A.C.E. in the two-player local strategy games | Maintainer; founder reviews release; independent difficulty/device acceptance unassigned |
 | UX-035 | P1 | in-progress | Build the A.C.E. Arcade milestone with saved games and a personal practice desk | Maintainer; founder reviews release; physical-device acceptance unassigned |
+| SEC-002 | P1 | in-progress | Restrict wallet proofs and Royale writes to exact trusted origins | Maintainer; founder reviews release and real-wallet acceptance; independent reviewer unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1575,3 +1576,19 @@ Acceptance:
 - Keep #300’s original phone art, concept redirect, mint contrast and lounge spacing fixes. Verify focused tests, security, continuity, metadata, exact-head CI and hosted preview before review.
 
 Evidence/specification: [docs/ARCADE-300.md](../../docs/ARCADE-300.md), [public/games/ace/index.html](../../public/games/ace/index.html), [public/games/assets/arcade-book.js](../../public/games/assets/arcade-book.js), [public/games/assets/arcade-session.js](../../public/games/assets/arcade-session.js), [public/games/assets/arena.js](../../public/games/assets/arena.js), [tests/arcade-practice.test.js](../../tests/arcade-practice.test.js), [tests/arcade-hub-ux.test.js](../../tests/arcade-hub-ux.test.js).
+
+## SEC-002: Restrict wallet proofs and Royale writes to exact trusted origins
+
+**P1 / in-progress.** Owner: Maintainer; founder reviews release and real-wallet acceptance; independent reviewer unassigned. Dependencies: none.
+
+Next action: Review exact-head CI and preview, provision exact approved preview origins separately, and reconcile continuity with #305/#306 before a separately approved release. Keep #306 held for owner/MFA provisioning and external caller confirmation.
+
+Acceptance:
+
+- Matching attacker Origin and spoofed forwarded Host, arbitrary Vercel tenants, non-HTTPS and multi-value/array headers are rejected.
+- Explicit exact preview entries work, and a proof issued on one allowed origin fails verification on another while valid same-origin proof remains usable.
+- Restoring wildcard trust makes a targeted negative-control test fail; the weakened code is never committed.
+- Existing passkey/WebAuthn, wallet, Royale and full repository checks pass on the assembled head; live wallet/device acceptance and release status remain separate.
+- Preserve all economic gates and document Claude handoff concerns, branch integration and outstanding rate-counter atomicity without claiming those separate tasks are complete.
+
+Evidence/specification: [docs/EXACT-ORIGIN-REVIEW.md](../../docs/EXACT-ORIGIN-REVIEW.md), [server/request-origin.js](../../server/request-origin.js), [tests/exact-origins.test.js](../../tests/exact-origins.test.js), [docs/IDENTITY-PROTOCOL.md](../../docs/IDENTITY-PROTOCOL.md).

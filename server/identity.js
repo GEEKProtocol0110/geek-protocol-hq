@@ -17,6 +17,7 @@ import {
 } from './identity-records.js';
 import { sessionTtl } from './http.js';
 import { issuePasskeyGrant } from './passkey-grants.js';
+import { trustedRequestOrigin } from './request-origin.js';
 
 const IDENTITY_BIND_SCRIPT = `
 -- geek-identity-bind-v1
@@ -64,23 +65,9 @@ const verifySignature = ({ message, signature, publicKey }) => {
   }
 };
 
-const configuredOrigins = () => new Set([
-  'https://www.geekprotocol.xyz',
-  'https://geekprotocol.xyz',
-  ...String(process.env.IDENTITY_ALLOWED_ORIGINS || '').split(','),
-  String(process.env.IDENTITY_ORIGIN || '')
-].map((value) => value.trim().replace(/\/$/, '')).filter(Boolean));
-
-const canonicalOrigin = (req) => {
-  const host = String(req?.headers?.['x-forwarded-host'] || req?.headers?.host || '').split(',')[0].trim().toLowerCase();
-  const forwardedProtocol = String(req?.headers?.['x-forwarded-proto'] || 'https').split(',')[0].trim().toLowerCase();
-  if (forwardedProtocol !== 'https' || !/^[a-z0-9.-]+$/.test(host)) throw new Error('IDENTITY_ORIGIN_INVALID');
-  const origin = `https://${host}`;
-  if (!configuredOrigins().has(origin) && !/^[a-z0-9-]+\.vercel\.app$/.test(host)) throw new Error('IDENTITY_ORIGIN_INVALID');
-  const suppliedOrigin = String(req?.headers?.origin || '').trim().replace(/\/$/, '');
-  if (suppliedOrigin && suppliedOrigin !== origin) throw new Error('IDENTITY_ORIGIN_MISMATCH');
-  return origin;
-};
+const canonicalOrigin = req => trustedRequestOrigin(req, {
+  invalidCode: 'IDENTITY_ORIGIN_INVALID', mismatchCode: 'IDENTITY_ORIGIN_MISMATCH'
+});
 
 const safeIdentity = (identity) => identity ? ({
   linked: true,
