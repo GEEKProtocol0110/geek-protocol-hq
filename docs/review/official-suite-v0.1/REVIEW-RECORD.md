@@ -25,3 +25,7 @@ The author used an in-memory structural check for unique document IDs, required 
 - Obtain founder review of the seven drafts. Any adopted policy needs scope, owner, effective date and relevant review before version 1.0.
 - Complete the separate Official Files delivery and connect accepted documents; make and visually inspect matched PDF/web exports before claiming they exist.
 - Verify deployed URLs after a separately approved release. No merge, deployment, PDF creation or effective-policy claim is made by this review record.
+
+## Saved review candidate
+
+Draft [PR #305](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/305) contains source commit `cbd5848ed3caea398fafcaf3037699216c147793`, tree `8334df08c862dcb696cd28b9a67754405828ae86`: 14 changed files. All 14 file contents were read back from that exact commit and matched the prepared text. The PR remains draft and unmerged. These readbacks establish saved source contents, not runtime or CI acceptance. This follow-up records the handoff; it does not change the seven drafts.
