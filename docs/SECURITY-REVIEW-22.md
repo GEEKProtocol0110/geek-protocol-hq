@@ -132,7 +132,7 @@ The current [payout module](../server/mainnet-payout.js) and [worker schedule](.
 
 **Future commit identity addressed locally; history unchanged.** This worktree now uses the repository owner's GitHub noreply address for new commits. No private address is copied into this report.
 
-**Required:** configure the same identity in other worktrees, bots and contributor environments; confirm the next authored/committer metadata. A local config change cannot remove historic metadata. History rewriting is disruptive and is not authorized or proposed here; public copies may persist regardless.
+**Required:** configure the same identity in other worktrees, bots and contributor environments; confirm the next authored/committer metadata. A local config change cannot remove historic metadata. The repository connector creates its own remote commit identity and does not inherit this local setting; its published author/committer metadata did not use the noreply domain. Review that publisher/account setting separately before calling this item complete. History rewriting is disruptive and is not authorized or proposed here; public copies may persist regardless.
 
 ## P3 — evidence, scope and repository rules
 
@@ -173,3 +173,8 @@ Required approving review count is **zero**; code-owner and last-push approval a
 The four new regressions at `tests/operations-mfa.test.js:44`, `:60`, `:73` and `:80` failed on the baseline, then passed with the candidate. The complete application suite subsequently passed **969 tests, zero failures/skips**, using real isolated Redis. Full `npm run verify` passed: 969 application tests plus nine testnet and six mainnet signer checks (984 total), zero failures/skips; 325 security assertions and all supporting checks passed. Final review results belong in WORKLOG and the PR; a source report alone is not production evidence.
 
 Before merging this enforcement change, provision a separate owner token and authenticator through the existing private setup procedure and verify operator recovery. No production secret was generated, read or configured here. Missing configuration intentionally makes privileged access unavailable while public learning remains unchanged. Do not weaken the new checks as a lockout workaround. No merge, deployment or economic enablement is claimed by this document.
+
+
+## Review handoff
+
+Draft [PR #306](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/306) preserves verified source tree `01da2fd1015f3c4e03bcaf8c8da18fdd2feed2bc` at remote source commit `476f18922a9c06c2b2c569e93102f0c7b81f6c36` (local verification commit `459b4c0ba05a13b0f482de32ceecfed61823f963` has the identical tree). Both Vercel preview statuses succeeded when checked. Required GitHub verification/independent review, production credential provisioning, merge and deployed acceptance remain separate. This handoff adds evidence only.
