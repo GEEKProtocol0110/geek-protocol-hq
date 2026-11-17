@@ -44,6 +44,8 @@ This proves wallet control only. It does not authorize a transaction, transfer, 
 
 The exact requesting HTTPS origin, action, identity wallet, requested destination where applicable, nonce, issue time, and expiry are therefore inside the signed payload. Geek Protocol re-derives and compares that origin when the proof is submitted. A challenge created on `www.geekprotocol.xyz` is rejected on `geekprotocol.xyz`, and vice versa.
 
+The SEC-002 source candidate selects only the two canonical HTTPS origins or exact entries in `IDENTITY_ALLOWED_ORIGINS` / the legacy `IDENTITY_ORIGIN`. It does not trust every Vercel tenant or infer authorization from deployment names. Request Host must match the configured origin; a forwarded host may confirm Host but cannot replace it. Non-HTTPS, multi-value and array headers fail closed. Wallet clients may omit Origin for compatibility with the existing proof API, but Host must still be independently allowlisted and cross-site metadata is rejected. A supplied Origin must be exact and match Host. See [exact-origin review and preview setup](EXACT-ORIGIN-REVIEW.md). Passkey relying-party configuration is separate and unchanged.
+
 ## State transitions
 
 1. The player explicitly connects a browser wallet or submits a Kaspa address to create a message.

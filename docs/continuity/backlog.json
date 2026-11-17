@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-16",
+  "updatedAt": "2026-11-17",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2474,6 +2474,32 @@
         "public/games/assets/arena.js",
         "tests/arcade-practice.test.js",
         "tests/arcade-hub-ux.test.js"
+      ]
+    },
+    {
+      "id": "SEC-002",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Restrict wallet proofs and Royale writes to exact trusted origins",
+      "owner": "Maintainer; founder reviews release and real-wallet acceptance; independent reviewer unassigned",
+      "nextAction": "Review exact-head CI and preview, provision exact approved preview origins separately, and reconcile continuity with #305/#306 before a separately approved release. Keep #306 held for owner/MFA provisioning and external caller confirmation.",
+      "acceptance": [
+        "Matching attacker Origin and spoofed forwarded Host, arbitrary Vercel tenants, non-HTTPS and multi-value/array headers are rejected.",
+        "Explicit exact preview entries work, and a proof issued on one allowed origin fails verification on another while valid same-origin proof remains usable.",
+        "Restoring wildcard trust makes a targeted negative-control test fail; the weakened code is never committed.",
+        "Existing passkey/WebAuthn, wallet, Royale and full repository checks pass on the assembled head; live wallet/device acceptance and release status remain separate.",
+        "Preserve all economic gates and document Claude handoff concerns, branch integration and outstanding rate-counter atomicity without claiming those separate tasks are complete."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/EXACT-ORIGIN-REVIEW.md",
+        "server/request-origin.js",
+        "tests/exact-origins.test.js",
+        "docs/IDENTITY-PROTOCOL.md"
+      ],
+      "validationEvidence": [
+        "Five of eight new origin tests fail on b7521c6; all pass with the candidate. Restoring the Vercel wildcard makes the arbitrary-tenant test fail (201 instead of 400). Initial focused wallet/Royale/passkey run: 63 passed, zero failures/skips.",
+        "Final full npm run verify: 973 application plus nine testnet and six mainnet signer checks, 988 total, zero failures/skips, real Redis; 328 security assertions and all generated/content/continuity checks pass. No runtime config, secret, live wallet or economic change."
       ]
     }
   ]

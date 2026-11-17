@@ -92,7 +92,7 @@
       "id": "GP-INV-014",
       "title": "Exact-origin wallet proof binding",
       "status": "implemented",
-      "evidence": ["server/identity.js", "api/identity.js", "tests/api.test.js", "docs/IDENTITY-PROTOCOL.md"]
+      "evidence": ["server/identity.js", "api/identity.js", "tests/api.test.js", "docs/IDENTITY-PROTOCOL.md", "server/request-origin.js", "tests/exact-origins.test.js", "docs/EXACT-ORIGIN-REVIEW.md"]
     },
     {
       "id": "GP-INV-015",
