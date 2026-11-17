@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-16",
+  "updatedAt": "2026-11-17",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2499,7 +2499,8 @@
       "validationEvidence": [
         "Four new regression tests fail against b7521c6 and pass with the source candidate. Full npm run verify passes: 969 application tests plus 9 testnet and 6 mainnet signer checks (984 total), zero failures/skips, real isolated Redis; 325 security assertions and all generated/content checks pass.",
         "Public GitHub API confirms active main ruleset 26214524, required PR/checks and non-fast-forward/deletion blocks; required approval count is zero, bypass actors not exposed. No settings changed.",
-        "npm audit signatures succeeds for both isolated worker graphs (11 registry signatures and one attestation each). Root graph verification exits EMISSINGSIGNATUREKEY for @peculiar/x509@2.2.0: missing corresponding public key(s) for attestations; root provenance verification remains unresolved, not passed."
+        "npm audit signatures succeeds for both isolated worker graphs (11 registry signatures and one attestation each). Root graph verification exits EMISSINGSIGNATUREKEY for @peculiar/x509@2.2.0: missing corresponding public key(s) for attestations; root provenance verification remains unresolved, not passed.",
+        "November 17 Claude follow-up: 13 MFA regressions pass, including signed-in owner 429/backoff without session revocation and Preview with NODE_ENV=production requiring MFA. Full verify passes 986 checks (971 application, nine testnet and six mainnet signer), zero failures/skips, real Redis; 325 security assertions. Production provisioning, external callers and global rate-counter atomicity remain open."
       ]
     }
   ]

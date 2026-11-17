@@ -11,6 +11,7 @@ import payout from '../api/payout-review.js';
 import { decodeTotpSecret, hotpCode } from '../server/operations-mfa.js';
 import { operationsConfig } from '../server/operations-access.js';
 import { createEnrollment, writeEnrollment } from '../scripts/setup-ops-mfa.mjs';
+import { ownerClient } from '../server/ops-ui/assets/ops-core.js';
 
 const secret = 'GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ', key = 'synthetic-owner-key-for-authenticator-tests', origin = 'https://www.geekprotocol.xyz';
 const fixture = await redisFixture(), oldFetch = globalThis.fetch;
@@ -85,6 +86,28 @@ test('all role-key entry points share a pre-auth network limit across header rot
     assert.equal(result.statusCode, 403);
   }
   assert.equal((await call({ api: audit, method: 'GET', headers: { 'x-audit-admin': 'wrong', 'user-agent': 'new-agent' } })).statusCode, 429);
+});
+
+test('a signed-in owner hitting the role budget receives backoff without losing the session', async () => {
+  process.env.VERCEL_ENV = 'production'; process.env.OPS_TOTP_SECRET = secret;
+  const cookie = cookieFor(await call());
+  const sessionKey = 'geek:ops:session:' + cookie.split('=')[1];
+  const saved = await fixture.command('GET', sessionKey);
+  for (let i = 0; i < 60; i++) assert.equal((await call({ api: audit, method: 'GET', cookie })).statusCode, 200);
+  const client = ownerClient({ endpoint: '/api/audit/', fetchImpl: async () => {
+    const response = await call({ api: audit, method: 'GET', cookie });
+    return Response.json(response.body, { status: response.statusCode });
+  } });
+  await assert.rejects(client.request(), error => error.status === 429 && /Wait a moment/.test(error.message));
+  assert.equal((await call({ action: 'status', method: 'GET', cookie })).body.authenticated, true);
+  assert.equal(await fixture.command('GET', sessionKey), saved);
+});
+
+test('Preview with NODE_ENV production also requires configured owner MFA', async () => {
+  process.env.VERCEL_ENV = 'preview'; process.env.NODE_ENV = 'production';
+  assert.equal((await call()).statusCode, 503);
+  process.env.OPS_TOTP_SECRET = secret;
+  assert.equal((await call()).statusCode, 200);
 });
 
 test('HOTP and TOTP match independent RFC vectors including timestamps beyond 2038', () => {

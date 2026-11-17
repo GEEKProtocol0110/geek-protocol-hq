@@ -1544,3 +1544,13 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - **Final local verification:** `npm run verify` passed 984 tests/checks (969 application, nine testnet signer, six mainnet signer), zero failures/skips, with real Redis; 325 security assertions and all bank, archive, repository, economy, continuity, metadata and whitepaper checks passed. Both worker signature audits passed (11 registry signatures and one attestation each). Root signature audit failed `EMISSINGSIGNATUREKEY` for `@peculiar/x509@2.2.0`; root provenance verification remains unresolved and is not reported as passed.
 
 - **Saved review:** draft [PR #306](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/306), remote source `476f18922a9c06c2b2c569e93102f0c7b81f6c36`, verified tree `01da2fd1015f3c4e03bcaf8c8da18fdd2feed2bc` equal to local `459b4c0ba05a13b0f482de32ceecfed61823f963`. Both Vercel preview statuses succeeded. Required GitHub verification, independent review, production owner/MFA provisioning and founder merge remain pending; no release. Local author/committer uses noreply, but the connector publisher did not inherit it; publisher metadata remains a separate item-18 follow-up.
+
+
+## November 17, 2026 — SEC-001 Claude handoff follow-up
+
+- **Scope:** add signed-in dashboard-budget/backoff and Preview/NODE_ENV MFA regressions; record four rollout concerns in [the 22-item review](../SECURITY-REVIEW-22.md). No runtime authorization change.
+- **Internal checks:** 13 operations MFA tests pass against real isolated Redis, including all prior regressions. Full verification follows before publication.
+- **Blockers:** HQ configuration metadata lists neither dedicated owner token nor authenticator (zero hidden Production entries); provisioning/recovery and external Geek Bot callers require operator confirmation before merge. No secrets read/decrypted/provisioned and no bot message sent. Global rate-counter pipeline atomicity remains open for separate work.
+- **Existing remote evidence:** verify run 44012581468 passed on fd08a3c; no submitted reviews/threads returned. Fresh exact-head checks are required for the follow-up. Source-only, no merge/deployment.
+
+- **Follow-up final checks:** full verify passed 986 tests/checks (971 application, nine testnet signer, six mainnet signer), zero failures/skips, with real Redis and 325 security assertions. Production provisioning/external caller confirmation still pending; no runtime policy or environment change.
