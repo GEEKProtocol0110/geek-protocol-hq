@@ -103,6 +103,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-033 | P1 | done | Keep active game controls and boards together without focus-driven scrolling | Maintainer; founder reviews release; physical-device acceptance unassigned |
 | UX-034 | P1 | done | Let one player face A.C.E. in the two-player local strategy games | Maintainer; founder reviews release; independent difficulty/device acceptance unassigned |
 | UX-035 | P1 | in-progress | Build the A.C.E. Arcade milestone with saved games and a personal practice desk | Maintainer; founder reviews release; physical-device acceptance unassigned |
+| SEC-003 | P1 | in-progress | Make shared rate counters atomic and fail closed on invalid state | Maintainer; founder reviews merge; independent reviewer unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1575,3 +1576,19 @@ Acceptance:
 - Keep #300’s original phone art, concept redirect, mint contrast and lounge spacing fixes. Verify focused tests, security, continuity, metadata, exact-head CI and hosted preview before review.
 
 Evidence/specification: [docs/ARCADE-300.md](../../docs/ARCADE-300.md), [public/games/ace/index.html](../../public/games/ace/index.html), [public/games/assets/arcade-book.js](../../public/games/assets/arcade-book.js), [public/games/assets/arcade-session.js](../../public/games/assets/arcade-session.js), [public/games/assets/arena.js](../../public/games/assets/arena.js), [tests/arcade-practice.test.js](../../tests/arcade-practice.test.js), [tests/arcade-hub-ux.test.js](../../tests/arcade-hub-ux.test.js).
+
+## SEC-003: Make shared rate counters atomic and fail closed on invalid state
+
+**P1 / in-progress.** Owner: Maintainer; founder reviews merge; independent reviewer unassigned. Dependencies: none.
+
+Next action: Inspect exact-head CI and provider/integration evidence, reconcile continuity with #306/#307 and request founder review before merge. No provisioning, rate-policy expansion or economic enablement.
+
+Acceptance:
+
+- New and missing-expiry counters use one expiring write and cannot be stranded by a rejected separate expiry command.
+- Existing expiring counters retain their exact deadline, exhausted legacy budgets stay exhausted during repair, and no automatic retry follows a lost acknowledgment.
+- Real-Redis concurrency, ACL write/expiry failures, malformed results/state, invalid policy and expiry recovery tests pass; baseline negative controls demonstrate the failures.
+- The application suite, isolated signer checks and all remaining verify components pass; preserve domain failure injection and update continuity/source evidence honestly.
+- Keep owner/MFA, origin and economic holds intact; integration, exact-head CI, founder merge and production acceptance remain separately evidenced.
+
+Evidence/specification: [docs/ATOMIC-RATE-LIMIT.md](../../docs/ATOMIC-RATE-LIMIT.md), [server/redis.js](../../server/redis.js), [tests/rate-limit.test.js](../../tests/rate-limit.test.js).

@@ -6,6 +6,7 @@ import { GEEK_DEPLOYMENT } from '../server/mint.js';
 import { appendPlannedTransaction, decodeLedger, emptyLedger, ledgerCasScript, ledgerKey, ledgerView, MAX_RECEIPTS, planTransaction, readLedger, transactionKinds } from '../server/economy-ledger.js';
 import sessionHandler from '../api/session.js';
 import { economyStatus } from '../server/economy.js';
+import { RATE_LIMIT_LUA } from '../server/redis.js';
 
 const playerA='a'.repeat(32), playerB='b'.repeat(32), sessionA='c'.repeat(32), recoveredA='d'.repeat(32), sessionB='e'.repeat(32);
 const input=(reference='purchase_00000001', feeRaw='10000000000')=>({reference,kind:'powerup-purchase',grossRaw:'10000000000',feeRaw});
@@ -18,6 +19,7 @@ const execute=command=>{
  if(op==='INCR'){const next=Number(store.get(args[0])||0)+1;store.set(args[0],String(next));return next;}
  if(op==='EXPIRE')return 1;
  if(op==='EVAL'){
+  if(args[0]===RATE_LIMIT_LUA){assert.equal(args[1],1);return execute(['INCR',args[2]]);}
   assert.equal(args[0],ledgerCasScript);assert.equal(args[1],1);
   const [, ,key,expected,next]=args;
   if(forcedConflicts>0){forcedConflicts--;return 0;}
