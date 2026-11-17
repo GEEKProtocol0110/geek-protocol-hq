@@ -198,7 +198,7 @@
     },
     {
       "id": "GP-INV-032",
-      "title": "Configured owner authenticator enforces both factors, bounded attempts, atomic replay claims and no direct privileged role-key bypass",
+      "title": "Production owner access requires a separate key and MFA, with bounded network attempts, atomic replay claims and no direct role-key bypass",
       "status": "implemented-alpha",
       "evidence": ["server/operations-mfa.js", "server/operations-access.js", "server/operations.js", "tests/operations-mfa.test.js", "docs/OPERATOR-SECURITY.md"]
     },

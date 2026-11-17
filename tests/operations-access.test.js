@@ -35,7 +35,7 @@ if (fixture) {
     await fixture.command('FLUSHDB');
     process.env.CCE_ADMIN_TOKEN = moderator; process.env.AUDIT_ADMIN_TOKEN = audit; process.env.PAYOUT_REVIEW_ADMIN_TOKEN = payout;
     process.env.AUDIT_LOG_SECRET = 'synthetic-ops-audit-hmac-key-with-32-characters';
-    delete process.env.OPS_ACCESS_TOKEN; delete process.env.OPS_ALLOWED_ORIGINS;
+    process.env.OPS_ACCESS_TOKEN = moderator; delete process.env.OPS_ALLOWED_ORIGINS;
   });
 }
 after(async () => { globalThis.fetch = savedFetch; if (fixture) await fixture.close(); });

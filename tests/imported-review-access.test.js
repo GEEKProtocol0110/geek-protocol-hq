@@ -10,7 +10,7 @@ process.env.UPSTASH_REDIS_REST_URL = 'https://redis.import-review.test';
 process.env.UPSTASH_REDIS_REST_TOKEN = 'synthetic-import-review-token';
 process.env.AUDIT_LOG_SECRET = 'synthetic-import-review-audit-key-32-characters';
 process.env.CCE_ADMIN_TOKEN = 'synthetic-import-review-owner-key-32-characters';
-delete process.env.OPS_ACCESS_TOKEN; delete process.env.OPS_TOTP_SECRET;
+process.env.OPS_ACCESS_TOKEN = process.env.CCE_ADMIN_TOKEN; delete process.env.OPS_TOTP_SECRET;
 globalThis.fetch = async (url, options) => {
   assert.ok(String(url).startsWith('https://redis.import-review.test'));
   const values = JSON.parse(options.body);

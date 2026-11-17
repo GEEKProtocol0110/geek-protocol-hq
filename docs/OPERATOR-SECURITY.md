@@ -1,8 +1,8 @@
 # Owner authenticator login
 
-The sole owner can add an authenticator app to Operations. Login then requires the existing owner key **and** a six-digit TOTP code. The existing 30-minute cookie grants the configured workspaces, so the code is not entered again on every page. This is an additional factor for the current owner, not individual staff accounts or hardware-backed, phishing-resistant authentication.
+Production Operations requires a dedicated owner key **and** a six-digit TOTP code. The existing 30-minute cookie grants the configured workspaces, so the code is not entered again on every page. This is an additional factor for the current owner, not individual staff accounts or hardware-backed, phishing-resistant authentication.
 
-Deploying the feature does not enable it. While `OPS_TOTP_SECRET` is absent, existing owner access continues and Operations explicitly reports **Authenticator not enabled**. A configured empty or malformed value fails closed.
+When `VERCEL_ENV=production` or `NODE_ENV=production`, a missing, empty or malformed `OPS_TOTP_SECRET` fails closed. Removing it cannot restore direct role-key access or an older single-factor session. Non-production fixtures may omit MFA; that is not a production recovery path. Every environment requires `OPS_ACCESS_TOKEN`; no CCE fallback remains. In production, that token must also differ from every configured role key.
 
 ## Enroll before enabling
 
@@ -12,11 +12,11 @@ Deploying the feature does not enable it. While `OPS_TOTP_SECRET` is absent, exi
 4. Add that same secret as the **Secret** environment variable `OPS_TOTP_SECRET` in Vercel **Production**, then redeploy. Never use a `NEXT_PUBLIC_` name. Preview enrollment should have a different secret. Do not add it to Git, screenshots, support messages or audit notes.
 5. Open `/ops-login/`, enter your existing owner key and the code from the app. Confirm Operations reports **Authenticator enabled** and that all configured workspaces open. Enabling or changing the secret revokes older owner sessions. Do not discard the offline recovery copy after login.
 
-If a dedicated `OPS_ACCESS_TOKEN` is absent, the existing CCE key remains the first factor. Configure a distinct owner key before sharing any moderator key. Other role configuration remains server-side; no additional role keys are entered in the browser.
+Provision a separate 24–512-character `OPS_ACCESS_TOKEN` before deploying this enforcement change. Keep it distinct from the CCE, audit and payout-review keys. Other role configuration remains server-side; no additional role keys are entered in the browser. This source change does not inspect or provision production secrets. If configuration is missing, public learning remains available while private Operations refuses access.
 
 ## Enforcement
 
-Codes use Redis server time with a 30-second period and one step of clock tolerance in either direction. An atomic high-water counter prevents replay and concurrent use; a used or older code is rejected. The replay guard is tied to the authenticator secret, so rotating another role/owner key cannot make a used code valid again. The owner-wide limit is eight well-formed code attempts per minute, alongside the existing client login limit. Changing IP or User-Agent cannot bypass the owner-wide limit. Audit or session-creation failures can consume a code without completing login: wait for a fresh code and retry manually.
+Codes use Redis server time with a 30-second period and one step of clock tolerance in either direction. An atomic high-water counter prevents replay and concurrent use; a used or older code is rejected. The replay guard is tied to the authenticator secret, so rotating another role/owner key cannot make a used code valid again. The owner-wide limit is eight well-formed code attempts per minute after the first factor is accepted. Login/logout share ten attempts per network per ten minutes; the three role APIs share sixty requests per network per minute before credential checks, including rejected keys. Network budgets ignore User-Agent and normalize IPv6 to /64; platform client-address headers must be trusted only at the intended proxy boundary. Distributed flooding is not solved by these limits. Audit or session-creation failures can consume a code without completing login: wait for a fresh code and retry manually.
 
 When an authenticator is configured, moderation, audit and payout APIs require the MFA-established owner cookie. Standalone role keys and Authorization headers cannot bypass it, even if valid. Any external callers using those headers must be migrated before activation. These APIs still enforce configured role permissions, trusted origin, JSON mutation requests and session expiry. Secrets and codes are absent from status responses, session records and audit events. The login form clears both fields immediately on submit and never stores them.
 
@@ -24,7 +24,7 @@ The independent-audit gate for individual hardware-backed privileged access rema
 
 ## Lost phone or lockout
 
-Use the secure offline enrollment copy to add the same authenticator on a replacement device. If compromise is suspected, use the independently secured Vercel account to provision a **new** authenticator secret and rotate the owner key, then redeploy and verify login. For planned rotation, enroll the new secret before replacing the environment value. Do not make the variable blank: that fails closed. Removing it disables the second factor and reopens legacy role-key access, so removal is not the normal recovery path. Never delete the replay guard to reuse a code. See [Backup recovery](BACKUP-RECOVERY.md) for database recovery; the authenticator secret is not in Redis backups.
+Use the secure offline enrollment copy to add the same authenticator on a replacement device. If compromise is suspected, use the independently secured Vercel account to provision a **new** authenticator secret and rotate the owner key, then redeploy and verify login. For planned rotation, enroll the new secret before replacing the environment value. Removing or blanking it fails closed in production. Never delete the replay guard to reuse a code. See [Backup recovery](BACKUP-RECOVERY.md) for database recovery; the authenticator secret is not in Redis backups.
 
 ## Evidence
 

@@ -15,7 +15,7 @@ process.env.UPSTASH_REDIS_REST_TOKEN = 'synthetic-testnet-token';
 process.env.AUDIT_LOG_SECRET = 'synthetic-testnet-audit-key-32-characters';
 process.env.CCE_ADMIN_TOKEN = 'synthetic-testnet-cce-key-32-characters';
 process.env.PAYOUT_REVIEW_ADMIN_TOKEN = 'synthetic-testnet-payout-key-32-characters';
-delete process.env.OPS_ACCESS_TOKEN; delete process.env.OPS_TOTP_SECRET;
+process.env.OPS_ACCESS_TOKEN = process.env.CCE_ADMIN_TOKEN; delete process.env.OPS_TOTP_SECRET;
 let observation = null, assetState = 'deployed', upstreamCalls = [], beforeQueue = null;
 globalThis.fetch = async (url, options) => {
   if (String(url).startsWith('https://tn10api.kasplex.org/v1/krc20/')) {

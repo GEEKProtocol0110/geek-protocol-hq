@@ -103,6 +103,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-033 | P1 | done | Keep active game controls and boards together without focus-driven scrolling | Maintainer; founder reviews release; physical-device acceptance unassigned |
 | UX-034 | P1 | done | Let one player face A.C.E. in the two-player local strategy games | Maintainer; founder reviews release; independent difficulty/device acceptance unassigned |
 | UX-035 | P1 | in-progress | Build the A.C.E. Arcade milestone with saved games and a personal practice desk | Maintainer; founder reviews release; physical-device acceptance unassigned |
+| SEC-001 | P0 | in-progress | Triage the 22-item security review and harden privileged access | Maintainer; founder reviews release; independent reviewer unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1575,3 +1576,18 @@ Acceptance:
 - Keep #300’s original phone art, concept redirect, mint contrast and lounge spacing fixes. Verify focused tests, security, continuity, metadata, exact-head CI and hosted preview before review.
 
 Evidence/specification: [docs/ARCADE-300.md](../../docs/ARCADE-300.md), [public/games/ace/index.html](../../public/games/ace/index.html), [public/games/assets/arcade-book.js](../../public/games/assets/arcade-book.js), [public/games/assets/arcade-session.js](../../public/games/assets/arcade-session.js), [public/games/assets/arena.js](../../public/games/assets/arena.js), [tests/arcade-practice.test.js](../../tests/arcade-practice.test.js), [tests/arcade-hub-ux.test.js](../../tests/arcade-hub-ux.test.js).
+
+## SEC-001: Triage the 22-item security review and harden privileged access
+
+**P0 / in-progress.** Owner: Maintainer; founder reviews release; independent reviewer unassigned. Dependencies: none.
+
+Next action: Review dedicated owner/MFA enforcement and provisioning requirements; verify exact-head CI before merge. Then address origin and upstream-resource gaps and complete separate adversarial reviews of races, answer leakage and recovery. No settlement activation.
+
+Acceptance:
+
+- Each of the 22 findings has source evidence, disposition and required acceptance without promoting unverified claims.
+- Owner fallback removed, production owner credentials separated from role keys, and missing MFA cannot restore legacy privileged access.
+- Login and CCE/audit/payout-review credential attempts are bounded across User-Agent and endpoint changes, with failing-baseline/passing-candidate regressions.
+- Applicable real-Redis regressions, full verification and continuity checks pass; production provisioning, independent review, merge and deployment recorded separately.
+
+Evidence/specification: [docs/SECURITY-REVIEW-22.md](../../docs/SECURITY-REVIEW-22.md), [docs/OPERATOR-SECURITY.md](../../docs/OPERATOR-SECURITY.md), [tests/operations-mfa.test.js](../../tests/operations-mfa.test.js), [security/review-main-rules.json](../../security/review-main-rules.json).

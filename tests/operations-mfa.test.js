@@ -28,6 +28,7 @@ globalThis.fetch = async (url, options) => {
 };
 beforeEach(async () => {
   await fixture.command('FLUSHDB'); seconds = 1_700_000_000; failClaim = false;
+  delete process.env.VERCEL_ENV; delete process.env.NODE_ENV;
   process.env.OPS_ACCESS_TOKEN = key; delete process.env.OPS_TOTP_SECRET;
   process.env.AUDIT_LOG_SECRET = 'synthetic-mfa-audit-key-with-32-characters';
   for (const name of ['CCE_ADMIN_TOKEN', 'AUDIT_ADMIN_TOKEN', 'PAYOUT_REVIEW_ADMIN_TOKEN']) process.env[name] = 'synthetic-' + name + '-with-32-characters';
@@ -39,6 +40,52 @@ const call = async ({ action = 'login', method = 'POST', cookie = '', body = { k
   await api({ method, query: { service: 'operations', action }, headers: { origin, 'content-type':'application/json', cookie, 'x-forwarded-for':'192.0.2.22', ...headers }, body },res); return res;
 };
 const cookieFor = res => res.headers['Set-Cookie']?.split(';')[0] || '';
+
+test('production owner access requires a separate owner key and configured MFA', async () => {
+  process.env.VERCEL_ENV = 'production';
+  process.env.OPS_TOTP_SECRET = secret;
+  delete process.env.OPS_ACCESS_TOKEN;
+  const roleKey = process.env.CCE_ADMIN_TOKEN;
+  assert.equal((await call({ body: { key: roleKey, code: code() } })).statusCode, 503);
+  process.env.OPS_ACCESS_TOKEN = roleKey;
+  assert.equal((await call({ body: { key: roleKey, code: code() } })).statusCode, 503);
+  process.env.OPS_ACCESS_TOKEN = key;
+  delete process.env.OPS_TOTP_SECRET;
+  assert.equal((await call()).statusCode, 503);
+  for (const [api, header, name] of [[moderation, 'x-cce-admin', 'CCE_ADMIN_TOKEN'], [audit, 'x-audit-admin', 'AUDIT_ADMIN_TOKEN'], [payout, 'x-payout-review-admin', 'PAYOUT_REVIEW_ADMIN_TOKEN']]) {
+    assert.equal((await call({ api, method: 'GET', headers: { [header]: process.env[name] } })).statusCode, 503);
+  }
+});
+
+test('production MFA cannot be removed to restore legacy sessions or direct role keys', async () => {
+  const legacy = cookieFor(await call());
+  process.env.NODE_ENV = 'production';
+  assert.equal((await call({ action: 'status', method: 'GET', cookie: legacy })).statusCode, 503);
+  process.env.OPS_TOTP_SECRET = secret;
+  const cookie = cookieFor(await call());
+  assert.ok(cookie);
+  assert.equal((await call({ action: 'status', method: 'GET', cookie })).body.mfaEnabled, true);
+  delete process.env.OPS_TOTP_SECRET;
+  assert.equal((await call({ action: 'status', method: 'GET', cookie })).statusCode, 503);
+  assert.equal((await call({ api: audit, method: 'GET', cookie, headers: { 'x-audit-admin': process.env.AUDIT_ADMIN_TOKEN } })).statusCode, 503);
+});
+
+test('owner login rate budget survives User-Agent rotation on one network', async () => {
+  for (let i = 0; i < 10; i++) {
+    assert.equal((await call({ body: { key: 'wrong' }, headers: { 'user-agent': 'agent-' + i } })).statusCode, 403);
+  }
+  assert.equal((await call({ headers: { 'user-agent': 'new-agent' } })).statusCode, 429);
+});
+
+test('all role-key entry points share a pre-auth network limit across header rotation', async () => {
+  const endpoints = [[moderation, 'x-cce-admin'], [audit, 'x-audit-admin'], [payout, 'x-payout-review-admin']];
+  for (let i = 0; i < 60; i++) {
+    const [api, header] = endpoints[i % endpoints.length];
+    const result = await call({ api, method: 'GET', headers: { [header]: 'wrong', 'user-agent': 'agent-' + i } });
+    assert.equal(result.statusCode, 403);
+  }
+  assert.equal((await call({ api: audit, method: 'GET', headers: { 'x-audit-admin': 'wrong', 'user-agent': 'new-agent' } })).statusCode, 429);
+});
 
 test('HOTP and TOTP match independent RFC vectors including timestamps beyond 2038', () => {
   const bytes = decodeTotpSecret(secret);

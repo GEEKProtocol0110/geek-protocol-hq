@@ -1,6 +1,7 @@
 import { createHash, createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
-import { parseStoredJson, redis } from './redis.js';
-import { operationsMfaSecret } from './operations-mfa.js';
+import { parseStoredJson, rateLimit, redis } from './redis.js';
+import { clientAddressFingerprint } from './http.js';
+import { operationsMfaSecret, operationsProduction } from './operations-mfa.js';
 
 export const OPERATIONS_TTL = 30 * 60;
 const COOKIE = '__Host-geek_ops';
@@ -8,11 +9,11 @@ const SESSION_ID = /^[a-f0-9]{64}$/;
 const roles = { cce: 'CCE_ADMIN_TOKEN', audit: 'AUDIT_ADMIN_TOKEN', payout: 'PAYOUT_REVIEW_ADMIN_TOKEN' };
 export const operationsPermissions = () => Object.entries(roles).filter(([, name]) => String(process.env[name] || '').length >= 24).map(([role]) => role);
 export const operationsConfig = () => {
-  // The current sole owner can keep using the CCE key. Separate it before sharing CCE access.
-  const key = String(process.env.OPS_ACCESS_TOKEN === undefined ? process.env.CCE_ADMIN_TOKEN || '' : process.env.OPS_ACCESS_TOKEN);
+  const key = String(process.env.OPS_ACCESS_TOKEN || '');
   const secret = String(process.env.AUDIT_LOG_SECRET || '');
   if (key.length < 24 || key.length > 512 || secret.length < 32) throw new Error('OPS_NOT_CONFIGURED');
   const credentials = Object.values(roles).map(name => String(process.env[name] || ''));
+  if (operationsProduction() && credentials.includes(key)) throw new Error('OPS_NOT_CONFIGURED');
   const totpSecret = operationsMfaSecret(), factors = ['geek-ops-owner-v2', key, ...credentials];
   if (totpSecret) factors.push(['totp', totpSecret.toString('hex')]);
   return { key, totpSecret, totpFingerprint: totpSecret ? createHash('sha256').update(totpSecret).digest('hex') : '', fingerprint: createHmac('sha256', secret).update(JSON.stringify(factors)).digest('hex') };
@@ -56,6 +57,10 @@ export const createOperationsSession = async (req, res, current) => {
 };
 export const requireOperationsRole = async (req, role, requireToken) => {
   if (!Object.hasOwn(roles, role)) throw new Error('OPS_ROLE_FORBIDDEN');
+  // Count rejected credentials too, across role routes and User-Agent changes.
+  await rateLimit('ops-role-auth', clientAddressFingerprint(req), 60, 60);
+  // No production role-key bypass when the owner/MFA configuration is absent.
+  if (operationsProduction()) operationsConfig();
   // Explicit API credentials retain their existing role checks; a wrong key cannot fall back to the cookie.
   const credentialHeaders = ['x-cce-admin', 'x-audit-admin', 'x-payout-review-admin', 'authorization'];
   if (operationsMfaSecret()) {
