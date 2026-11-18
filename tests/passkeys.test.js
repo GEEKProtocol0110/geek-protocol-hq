@@ -330,21 +330,110 @@ test('native snapshot recovery rejects restored cookies and proofs, then signs i
   } finally { activeFixture = fixture; await restored.close(); }
 });
 
-test('linking a wallet after passkey-only signup preserves the player and requires explicit passkey re-enrollment', async () => {
+const walletLink = async (cookie, token, secret = '7') => {
+  const key = new kaspa.PrivateKey(secret.padStart(64, '0')), object = key.toAddress('mainnet');
+  const address = object.toString(); object.free(); key.free();
+  const issued = await call(identityHandler, cookie, { action: 'challenge', address, token });
+  const submit = () => call(identityHandler, cookie, { action: 'verify', challengeId: issued.body.challenge.challengeId,
+    signature: kaspa.signMessage({ message: issued.body.challenge.message, privateKey: secret.padStart(64, '0') }) });
+  return { address, issued, submit };
+};
+const returnWithPasskey = async (cookie, key, player, counter = 1) => {
+  const begin = await call(passkeysHandler, cookie, { action: 'begin-login' });
+  assert.equal(begin.statusCode, 200, JSON.stringify(begin.body));
+  return call(passkeysHandler, cookie, { action: 'finish-login', challengeId: begin.body.challengeId,
+    response: key.login(begin.body.options, player, counter) });
+};
+
+test('wallet linking requires fresh account proof, not a passkey-only bearer session', async () => {
   const guest = await session(), player = guest.split('=')[1], enrolled = await enroll(guest);
-  const key = new kaspa.PrivateKey('7'.padStart(64,'0')), addressObject = key.toAddress('mainnet');
-  const address = addressObject.toString();addressObject.free();key.free();
-  const issued = await call(identityHandler,enrolled.cookie,{action:'challenge',address});
-  assert.equal(issued.statusCode,201);
-  const linked = await call(identityHandler,enrolled.cookie,{action:'verify',challengeId:issued.body.challenge.challengeId,
-    signature:kaspa.signMessage({message:issued.body.challenge.message,privateKey:'7'.padStart(64,'0')})});
-  assert.equal(linked.statusCode,200);
-  const status = await call(passkeysHandler,enrolled.cookie,null,'GET');
-  assert.equal(status.statusCode,200,JSON.stringify(status.body));assert.equal(status.body.walletLinked,true);
-  assert.equal(status.body.signedIn,false);assert.equal(status.body.credentials.length,0);
-  const saved = JSON.parse(await fixture.command('GET','geek:session:'+enrolled.cookie.split('=')[1]));
-  assert.equal(saved.playerId,player);assert.equal(saved.identityVersion,1);assert.equal(saved.passkeyEpoch,undefined);
-  assert.equal((await call(passkeysHandler,enrolled.cookie,{action:'begin-register',token:enrolled.grant})).body.code,'PASSKEY_REAUTH_REQUIRED');
+  const account = await fixture.command('GET', passkeyAccountKey(player));
+  const link = await walletLink(enrolled.cookie);
+  assert.equal(link.issued.statusCode, 401, JSON.stringify(link.issued.body));
+  assert.equal(link.issued.body.code, 'WALLET_LINK_REAUTH_REQUIRED');
+  assert.equal(await fixture.command('GET', identityPlayerKey(player)), null);
+  assert.equal(await fixture.command('GET', passkeyAccountKey(player)), account);
+  assert.equal((await returnWithPasskey(await session(), enrolled.key, player)).statusCode, 200);
+});
+
+test('authorized first wallet link preserves every existing passkey and saved player', async () => {
+  const guest = await session(), player = guest.split('=')[1], first = await enroll(guest);
+  const enrolled = await enroll(first.cookie, authenticator(), first.grant);
+  const fresh = await returnWithPasskey(enrolled.cookie, enrolled.key, player);
+  assert.equal(fresh.statusCode, 200); const cookie = cookieFrom(fresh);
+  const profile = JSON.stringify({ xp: 123, journey: [] });
+  await fixture.command('SET', 'geek:profile:' + player, profile);
+  const before = JSON.parse(await fixture.command('GET', passkeyAccountKey(player)));
+  const link = await walletLink(cookie, fresh.body.grant.token);
+  assert.equal(link.issued.statusCode, 201, JSON.stringify(link.issued.body));
+  const linked = await link.submit(); assert.equal(linked.statusCode, 200, JSON.stringify(linked.body));
+  const status = await call(passkeysHandler, cookie, null, 'GET');
+  assert.equal(status.statusCode, 200); assert.equal(status.body.walletLinked, true);
+  assert.equal(status.body.credentials.length, 2);
+  const after = JSON.parse(await fixture.command('GET', passkeyAccountKey(player)));
+  assert.equal(after.walletVersion, 1); assert.equal(after.epoch, before.epoch);
+  assert.deepEqual(after.credentials, before.credentials);
+  assert.equal(await fixture.command('GET', 'geek:profile:' + player), profile);
+  assert.equal((await returnWithPasskey(await session(), first.key, player)).statusCode, 200);
+  assert.equal((await returnWithPasskey(await session(), enrolled.key, player, 2)).statusCode, 200);
+  assert.equal((await link.submit()).body.code, 'IDENTITY_CHALLENGE_INVALID');
+  assert.equal((await walletLink(cookie, fresh.body.grant.token, '8')).issued.body.code, 'IDENTITY_ROTATION_UNAVAILABLE');
+});
+
+test('wallet-link proof is session-bound, expires and cannot authorize two challenges', async () => {
+  const guest = await session(), player = guest.split('=')[1], enrolled = await enroll(guest);
+  const otherLogin = await returnWithPasskey(await session(), enrolled.key, player);
+  const otherCookie = cookieFrom(otherLogin);
+  const wrongSession = await walletLink(otherCookie, enrolled.grant);
+  assert.equal(wrongSession.issued.body.code, 'WALLET_LINK_REAUTH_REQUIRED');
+  const fresh = await returnWithPasskey(otherCookie, enrolled.key, player, 2);
+  const cookie = cookieFrom(fresh), token = fresh.body.grant.token;
+  const grantKey = 'geek:passkey:grant:v1:' + hash(token).toString('hex');
+  const grant = JSON.parse(await fixture.command('GET', grantKey)); grant.expiresAt = Date.now() - 1;
+  await fixture.command('SET', grantKey, JSON.stringify(grant));
+  assert.equal((await walletLink(cookie, token)).issued.body.code, 'WALLET_LINK_REAUTH_REQUIRED');
+  const again = await returnWithPasskey(cookie, enrolled.key, player, 3), current = cookieFrom(again);
+  assert.equal((await walletLink(current, again.body.grant.token)).issued.statusCode, 201);
+  assert.equal((await walletLink(current, again.body.grant.token, '8')).issued.body.code, 'WALLET_LINK_REAUTH_REQUIRED');
+});
+
+test('a wallet challenge prepared before passkey enrollment cannot bypass fresh proof', async () => {
+  const guest = await session(), player = guest.split('=')[1], link = await walletLink(guest);
+  assert.equal(link.issued.statusCode, 201);
+  const { requireSession } = await import('../server/session.js');
+  const { verifyIdentityChallenge } = await import('../server/identity.js');
+  const requester = await requireSession({ headers: { cookie: guest } });
+  const enrolled = await enroll(guest);
+  // The verify request already passed requireSession before enrollment rotated it.
+  const c = link.issued.body.challenge;
+  await assert.rejects(() => verifyIdentityChallenge({ req: { headers: { host: 'www.geekprotocol.xyz', origin } },
+    session: requester, challengeId: c.challengeId,
+    signature: kaspa.signMessage({ message: c.message, privateKey: '7'.padStart(64, '0') }) }), /IDENTITY_STATE_CONFLICT/);
+  assert.equal(await fixture.command('GET', identityPlayerKey(player)), null);
+  assert.equal((await returnWithPasskey(await session(), enrolled.key, player)).statusCode, 200);
+});
+
+test('wallet-link commit rejects changed passkeys or a revoked session without partial binding', async () => {
+  for (const change of ['account', 'logout']) {
+    await fixture.command('FLUSHDB');
+    const guest = await session(), player = guest.split('=')[1], enrolled = await enroll(guest);
+    const link = await walletLink(enrolled.cookie, enrolled.grant);
+    assert.equal(link.issued.statusCode, 201);
+    beforeCommand = async command => {
+      if (command[0] !== 'EVAL' || !String(command[1]).includes('geek-identity-bind-v1')) return;
+      beforeCommand = null;
+      if (change === 'logout') await fixture.command('DEL', 'geek:session:' + enrolled.cookie.split('=')[1]);
+      else {
+        const account = JSON.parse(await fixture.command('GET', passkeyAccountKey(player)));
+        account.epoch++; await fixture.command('SET', passkeyAccountKey(player), JSON.stringify(account));
+      }
+    };
+    const result = await link.submit();
+    assert.equal(result.body.code, 'IDENTITY_STATE_CONFLICT', JSON.stringify(result.body));
+    assert.equal(await fixture.command('GET', identityPlayerKey(player)), null);
+    assert.deepEqual(await fixture.command('KEYS', 'geek:identity:wallet:*'), []);
+    if (change === 'logout') assert.equal(await fixture.command('GET', 'geek:session:' + enrolled.cookie.split('=')[1]), null);
+  }
 });
 
 
@@ -653,4 +742,34 @@ test('receiving reads on preview hosts require a session but no passkey-origin c
     assert.doesNotMatch(denied.body.error, /confirmation was not completed/);
     assert.equal(await fixture.command('GET', rewardAddressKey(player)), before);
   }
+});
+
+
+test('wallet link cannot extend the fresh-proof deadline with a later wallet challenge', async () => {
+  const guest = await session(), player = guest.split('=')[1], enrolled = await enroll(guest);
+  const grantKey = 'geek:passkey:grant:v1:' + hash(enrolled.grant).toString('hex');
+  const grant = JSON.parse(await fixture.command('GET', grantKey));
+  grant.expiresAt = Date.now() + 1000;
+  await fixture.command('SET', grantKey, JSON.stringify(grant));
+  const link = await walletLink(enrolled.cookie, enrolled.grant);
+  assert.equal(link.issued.statusCode, 201);
+  const clock = Date.now, expired = grant.expiresAt + 1;
+  let result;
+  try { Date.now = () => expired; result = await link.submit(); }
+  finally { Date.now = clock; }
+  assert.equal(result.body.code, 'IDENTITY_STATE_CONFLICT', JSON.stringify(result.body));
+  assert.equal(await fixture.command('GET', identityPlayerKey(player)), null);
+  assert.equal((await returnWithPasskey(await session(), enrolled.key, player)).statusCode, 200);
+});
+
+test('parallel submissions of one authorized wallet challenge produce one binding', async () => {
+  const guest = await session(), player = guest.split('=')[1], enrolled = await enroll(guest);
+  const link = await walletLink(enrolled.cookie, enrolled.grant);
+  assert.equal(link.issued.statusCode, 201);
+  const results = await Promise.all([link.submit(), link.submit()]);
+  assert.equal(results.filter(r => r.statusCode === 200).length, 1);
+  assert.equal(results.find(r => r.statusCode !== 200).body.code, 'IDENTITY_CHALLENGE_INVALID');
+  const account = JSON.parse(await fixture.command('GET', passkeyAccountKey(player)));
+  assert.equal(account.walletVersion, 1); assert.equal(account.credentials.length, 1);
+  assert.equal((await returnWithPasskey(await session(), enrolled.key, player)).statusCode, 200);
 });

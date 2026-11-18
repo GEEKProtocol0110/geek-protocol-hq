@@ -15,4 +15,5 @@ export const consumePasskeyGrant = async (session, token, walletVersion) => {
   let g; try { g = JSON.parse(raw); } catch { /* reject below */ }
   if (!g || g.sessionId !== session.id || g.playerId !== (session.playerId || session.id)
     || g.walletVersion !== walletVersion || !Number.isSafeInteger(g.expiresAt) || g.expiresAt <= Date.now()) throw new Error('PASSKEY_REAUTH_REQUIRED');
+  return g.expiresAt;
 };

@@ -114,6 +114,9 @@ export const validateChallengeRecord = (record, challengeId) => {
     && typeof record.origin === 'string' && /^https:\/\/[a-z0-9.-]+$/.test(record.origin)
     && typeof record.message === 'string' && record.message.length <= 2000
     && validLifetime(record, CHALLENGE_TTL_SECONDS), code);
+  assert(record.linkPasskeyAccountHash === undefined || hex(record.linkPasskeyAccountHash, 64), code);
+  assert(record.linkPasskeyProofExpiresAt === undefined || (integer(record.linkPasskeyProofExpiresAt, record.issuedAt)
+    && record.linkPasskeyProofExpiresAt <= record.expiresAt && hex(record.linkPasskeyAccountHash, 64)), code);
   assert(record.intent === 'recover' ? record.targetPlayerId !== record.requesterPlayerId
     : record.targetPlayerId === record.requesterPlayerId, code);
   assert(record.intent === 'payout-set'

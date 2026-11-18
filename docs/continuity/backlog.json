@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-16",
+  "updatedAt": "2026-11-17",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2474,6 +2474,30 @@
         "public/games/assets/arena.js",
         "tests/arcade-practice.test.js",
         "tests/arcade-hub-ux.test.js"
+      ]
+    },
+    {
+      "id": "AUTH-006",
+      "priority": "P0",
+      "status": "in-progress",
+      "title": "Require fresh account proof for a first recovery-wallet link",
+      "owner": "Maintainer implements; independent reviewer unassigned; founder reviews release and devices",
+      "nextAction": "Publish the checked source as a draft PR; obtain independent and founder review. Rebase continuity conflicts and rerun verification on the combined head before any authorized merge. Session rotation and remaining adversarial findings stay open.",
+      "dependsOn": [
+        "AUTH-005"
+      ],
+      "acceptance": [
+        "An existing passkey-only bearer session cannot add its first recovery wallet without fresh user-verified account proof.",
+        "First linking commits wallet identity and existing credential wallet-version continuity atomically against exact account and requesting-session snapshots. Existing passkeys, stable player ID and progress remain usable.",
+        "Missing, expired, replayed, wrong-session or raced proofs fail closed; an earlier guest challenge cannot adopt later passkey credentials. Revoked sessions cannot be recreated by an in-flight wallet link.",
+        "Browser-provider and manual message flows submit a fresh one-use account grant explicitly; no background wallet proof, unbounded request or automatic write retry.",
+        "Record baseline negative controls, real-Redis cryptographic regressions, full repository checks and exact PR/CI status separately from deployment and physical-device acceptance."
+      ],
+      "evidence": [
+        "docs/WALLET-LINK-REAUTH.md",
+        "tests/passkeys.test.js",
+        "tests/wallet-quick-login.test.js",
+        "tests/sign-in-copy.test.js"
       ]
     }
   ]

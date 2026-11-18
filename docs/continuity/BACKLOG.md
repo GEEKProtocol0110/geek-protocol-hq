@@ -103,6 +103,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-033 | P1 | done | Keep active game controls and boards together without focus-driven scrolling | Maintainer; founder reviews release; physical-device acceptance unassigned |
 | UX-034 | P1 | done | Let one player face A.C.E. in the two-player local strategy games | Maintainer; founder reviews release; independent difficulty/device acceptance unassigned |
 | UX-035 | P1 | in-progress | Build the A.C.E. Arcade milestone with saved games and a personal practice desk | Maintainer; founder reviews release; physical-device acceptance unassigned |
+| AUTH-006 | P0 | in-progress | Require fresh account proof for a first recovery-wallet link | Maintainer implements; independent reviewer unassigned; founder reviews release and devices |
 
 ## CONT-001: Publish the continuation system
 
@@ -1575,3 +1576,19 @@ Acceptance:
 - Keep #300’s original phone art, concept redirect, mint contrast and lounge spacing fixes. Verify focused tests, security, continuity, metadata, exact-head CI and hosted preview before review.
 
 Evidence/specification: [docs/ARCADE-300.md](../../docs/ARCADE-300.md), [public/games/ace/index.html](../../public/games/ace/index.html), [public/games/assets/arcade-book.js](../../public/games/assets/arcade-book.js), [public/games/assets/arcade-session.js](../../public/games/assets/arcade-session.js), [public/games/assets/arena.js](../../public/games/assets/arena.js), [tests/arcade-practice.test.js](../../tests/arcade-practice.test.js), [tests/arcade-hub-ux.test.js](../../tests/arcade-hub-ux.test.js).
+
+## AUTH-006: Require fresh account proof for a first recovery-wallet link
+
+**P0 / in-progress.** Owner: Maintainer implements; independent reviewer unassigned; founder reviews release and devices. Dependencies: AUTH-005.
+
+Next action: Publish the checked source as a draft PR; obtain independent and founder review. Rebase continuity conflicts and rerun verification on the combined head before any authorized merge. Session rotation and remaining adversarial findings stay open.
+
+Acceptance:
+
+- An existing passkey-only bearer session cannot add its first recovery wallet without fresh user-verified account proof.
+- First linking commits wallet identity and existing credential wallet-version continuity atomically against exact account and requesting-session snapshots. Existing passkeys, stable player ID and progress remain usable.
+- Missing, expired, replayed, wrong-session or raced proofs fail closed; an earlier guest challenge cannot adopt later passkey credentials. Revoked sessions cannot be recreated by an in-flight wallet link.
+- Browser-provider and manual message flows submit a fresh one-use account grant explicitly; no background wallet proof, unbounded request or automatic write retry.
+- Record baseline negative controls, real-Redis cryptographic regressions, full repository checks and exact PR/CI status separately from deployment and physical-device acceptance.
+
+Evidence/specification: [docs/WALLET-LINK-REAUTH.md](../../docs/WALLET-LINK-REAUTH.md), [tests/passkeys.test.js](../../tests/passkeys.test.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/sign-in-copy.test.js](../../tests/sign-in-copy.test.js).

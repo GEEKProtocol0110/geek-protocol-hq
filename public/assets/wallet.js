@@ -19,6 +19,11 @@
 
   const providers = new Map();
   const kaswareOnly = Boolean(document.querySelector('[data-wallet-kasware-only]'));
+  let linkGrant = '';
+  document.addEventListener('geek:device-grant', event => { linkGrant = event.detail.token; });
+  document.addEventListener('geek:device-grant-used', () => { linkGrant = ''; });
+  document.addEventListener('geek:signed-in', () => { linkGrant = ''; });
+  document.addEventListener('geek:device-signed-in', () => { linkGrant = ''; });
   let selected = null;
   let readRevision = 0;
   const addProvider = (id, name, adapter) => {
@@ -225,9 +230,11 @@
     render();
     try {
       await ensureSession();
+      const token = linkGrant;
+      if (token) document.dispatchEvent(new CustomEvent('geek:device-grant-used'));
       const issued = await api('/api/identity', {
         method: 'POST',
-        body: JSON.stringify({ action: 'challenge', intent: 'identity', address: state.address, publicKey: state.publicKey })
+        body: JSON.stringify({ action: 'challenge', intent: 'identity', address: state.address, publicKey: state.publicKey, ...(token ? { token } : {}) })
       });
       const signature = await signServerChallenge(issued.challenge);
       if (provider !== selected || address !== state.address || state.network !== MAINNET) throw new Error('The wallet changed. Request a new login message.');
