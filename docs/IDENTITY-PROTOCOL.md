@@ -143,3 +143,7 @@ AUTH-002 remains blocked for this phone. The next implementation task is to isol
 ## Wallet-independent passkey access — October 16, 2026
 
 The focused [passkey login protocol](PASSKEY-LOGIN.md) adds a separate player-access credential without changing Kaspa proof validation or payout authorization. Passkeys protect the current player and recover a player with an enrolled credential; first-time guest enrollment cannot bypass ownership of an older wallet-linked identity. Wallet-linked enrollment still requires fresh explicit authorization. This supersedes the earlier statement that all passkey work remains only in the broad PR #119; consult the focused release PR for merged/deployed status and actual phone acceptance.
+
+## November 17 first-wallet-link candidate — AUTH-006
+
+A passkey-only account must present a fresh one-use account grant before issuing its first wallet-link challenge. The stored challenge binds the exact credential-set snapshot and the existing proof deadline. Commit compares both that account and the exact validated requester-session snapshot, then writes the identity, updated credential wallet version, session and audit event together. Existing passkeys remain usable after authorized first linking. Previously prepared guest challenges cannot adopt credentials enrolled later. Ordinary guest wallet linking and wallet recovery retain their existing proof requirements; recovery still invalidates prior passkeys. See [the scoped review record](WALLET-LINK-REAUTH.md). Session-ID rotation is separate, still open work.

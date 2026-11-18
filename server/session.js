@@ -49,6 +49,14 @@ export const readSession = async (req) => {
   return session;
 };
 
+// Other authentication transitions must compare the snapshot validated at entry,
+// rather than re-read and accidentally accept a concurrently revoked session.
+export const sessionStorageSnapshot = session => {
+  const raw = snapshots.get(session);
+  if (typeof raw !== 'string') throw new Error('SESSION_STATE_INVALID');
+  return raw;
+};
+
 export const playerIdFor = (session) => String(session?.playerId || session?.id || '');
 
 export const requireSession = async (req) => {

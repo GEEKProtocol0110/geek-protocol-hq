@@ -384,9 +384,12 @@ const execute = (command) => {
       const player = strings.get(keys[1]);
       if (wallet && wallet !== String(values[0])) return 'WALLET_BOUND';
       if ((!values[1] && player) || (values[1] && player !== String(values[1]))) return 'PLAYER_CONFLICT';
+      if ((strings.get(keys[5]) || '') !== String(values[8])) return 'PASSKEY_CONFLICT';
+      if (strings.get(keys[2]) !== String(values[10])) return 'SESSION_CONFLICT';
       if (strings.has(keys[3])) return 'AUDIT_CONFLICT';
       strings.set(keys[0], String(values[0]));
       strings.set(keys[1], String(values[2]));
+      if (values[9]) strings.set(keys[5], String(values[9]));
       strings.set(keys[2], String(values[3]));
       strings.set(keys[3], String(values[5]));
       const index = sorted.get(keys[4]) || new Map();
