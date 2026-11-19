@@ -1,4 +1,5 @@
 import { deviceAccessAction } from './device-access.js';
+import { deleteAccount } from './account-deletion.js';
 import { createAuditRecord, auditWriteCommands } from './audit.js';
 import { decodePasskeyAccount } from './passkey-records.js';
 import { createHash, randomBytes } from 'node:crypto';
@@ -147,6 +148,7 @@ export const passkeyAction = async (req, res, session, body) => {
     if (result !== 1) throw new Error('PASSKEY_STATE_CHANGED');
     return { signedOut: true };
   }
+  if (body.action === 'delete-account') return deleteAccount(res, session, body);
   if (body.action === 'logout') { await redis('DEL', sessionKey(session.id)); res.setHeader('Set-Cookie', 'geek_session=; Max-Age=0; Path=/; HttpOnly; Secure; SameSite=Lax'); return { signedOut: true }; }
   throw new Error('INVALID_REQUEST');
 };
