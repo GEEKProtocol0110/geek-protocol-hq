@@ -600,6 +600,15 @@
       "lastmod": "2026-11-19"
     },
     {
+      "file": "public/terms/index.html",
+      "path": "/terms/",
+      "title": "Terms of Use \u2014 Geek Protocol",
+      "description": "Terms for using Geek Protocol HQ: public Alpha, accounts, game records with no cash value, GEEK minting and trading risks, fair play and contributions.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-19"
+    },
+    {
       "file": "public/404.html",
       "path": "/404/",
       "title": "Page Not Found \u2014 Geek Protocol",
