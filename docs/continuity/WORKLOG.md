@@ -1561,3 +1561,9 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - Homepage "More" menu grouped into Play, Learn Kaspa, GEEK token and Project; the duplicate /games/ link (already in the main nav) is removed. Daily Signal, Speed Signal and Alpha credits are defined where they first appear on the homepage.
 - Add `/terms/` (Terms of use) reflecting current behavior: public Alpha, accounts for ages 13+ (Geek Jr for younger learners), game records with no cash value, GEEK mint/trade risk, fair play, contributions, no warranty. Governing law and a formal legal review remain open founder decisions. Linked from footers beside Privacy.
 - Validation: site, security and continuity checks pass. No deployment performed by this entry.
+
+## November 19, 2026 — PRIV-001 self-serve account deletion
+
+- Founder chose self-serve deletion and accepted the recommendations: keep payout/test-reward accounting and the audit log, keep shared multiplayer games, require fresh passkey or wallet proof for protected accounts. Archived the `a.c.e.-AGI` and `kaspa-speed-benchmark-dashboard` placeholder repositories on founder approval.
+- Add `delete-account` to the passkey API, `server/account-deletion.js` (one Lua transition plus a tombstone that `readSession` checks first), a Delete my Geek account control on `/sign-in/`, and the updated privacy notice. Design, retained data and limits: [ACCOUNT-DELETION.md](../ACCOUNT-DELETION.md).
+- Validation: site, security and continuity checks pass locally. `tests/account-deletion.test.js` needs real Redis and runs in CI; local `redis-server` is absent. Wallet-linked deletion tests, browser acceptance and independent security review remain open.
