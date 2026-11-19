@@ -1,10 +1,21 @@
 import { privateRankedProof } from './eligibility.mjs';
 import { Wasm } from '@kasplex/kiwi';
 import { readRpcHealth, rpcDeadline } from './rpc-health.mjs';
-import { GEEK_DECIMALS, GEEK_DEPLOYMENT_HASH, GEEK_TICKER, MAINNET_PAYOUT_SENDER, expectedRaw } from './schedule.mjs';
+import { GEEK_DECIMALS, GEEK_DEPLOYMENT_HASH, GEEK_TICKER, MAINNET_PAYOUT_ADDRESS_SHA256, MAINNET_PAYOUT_SENDER, expectedRaw } from './schedule.mjs';
+import { createHash } from 'node:crypto';
 import { jobMacMatches } from './job-mac.mjs';
 
 const hashPattern = /^[a-f0-9]{64}$/;
+// Every sender must hash to the reviewed wallet pin from schedule.mjs, in every environment.
+// Neither the environment nor HQ config can change it.
+let pinnedSenderDigest = MAINNET_PAYOUT_ADDRESS_SHA256;
+const senderPinned = address => typeof address === 'string' && createHash('sha256').update(address, 'utf8').digest('hex') === pinnedSenderDigest;
+// Offline signer checks only: pin a synthetic test sender's digest. Refused in production and
+// outside the Node test runner. No worker, cron or HQ code calls this.
+export function pinTestSenderDigest(digest) {
+  if (process.env.VERCEL_ENV === 'production' || !process.env.NODE_TEST_CONTEXT || !hashPattern.test(digest || '')) throw new Error('SIGNER_POLICY_MISMATCH');
+  pinnedSenderDigest = digest;
+}
 const BASE = 'https://api.kasplex.org/v1/krc20';
 const FUNDING = 130000000n, MAX_FEE = 5000000n;
 // Mainnet relay pricing follows the pinned SDK default of 1 sompi/gram.
@@ -24,7 +35,7 @@ export const livePolicy = Object.freeze({
 function policyOf(policy) {
   const chosen = policy || livePolicy;
   if (chosen.network !== 'mainnet' || chosen.networkId !== 'mainnet' || chosen.addressNetwork !== 'mainnet' || chosen.feeRate !== FEE_RATE) throw new Error('SIGNER_POLICY_MISMATCH');
-  if (chosen.sender !== MAINNET_PAYOUT_SENDER && chosen.syntheticFixture !== true) throw new Error('SIGNER_POLICY_MISMATCH');
+  if (!chosen.sender || !senderPinned(chosen.sender) || (chosen.sender !== MAINNET_PAYOUT_SENDER && chosen.syntheticFixture !== true)) throw new Error('SIGNER_POLICY_MISMATCH');
   return chosen;
 }
 
@@ -147,7 +158,7 @@ export function createSigner(secret, rpc) {
       if (!privateRankedProof(job?.proof)) throw new Error('PRIVATE_RANKED_PROOF_REQUIRED');
       const info = await readRpcHealth(rpc);
       if (info.networkId !== 'mainnet' || !info.isSynced || !info.hasUtxoIndex) throw new Error('MAINNET_SYNCED_NODE_REQUIRED');
-      if (sender() !== MAINNET_PAYOUT_SENDER || config?.sender !== MAINNET_PAYOUT_SENDER || job?.sender !== MAINNET_PAYOUT_SENDER ||
+      if (!senderPinned(sender()) || sender() !== MAINNET_PAYOUT_SENDER || config?.sender !== MAINNET_PAYOUT_SENDER || job?.sender !== MAINNET_PAYOUT_SENDER ||
           config?.network !== 'mainnet' || job?.network !== 'mainnet' || config?.ticker !== GEEK_TICKER || job?.ticker !== GEEK_TICKER ||
           config?.deploymentHash !== GEEK_DEPLOYMENT_HASH || job?.deploymentHash !== GEEK_DEPLOYMENT_HASH ||
           String(config?.decimals) !== String(GEEK_DECIMALS) || String(job?.decimals) !== String(GEEK_DECIMALS) ||
@@ -179,7 +190,7 @@ export function createSigner(secret, rpc) {
       } finally { tx.free(); }
     },
     async inspect(config, job) {
-      if (config.network !== 'mainnet' || config.sender !== sender() || config.sender !== MAINNET_PAYOUT_SENDER || job.sender !== config.sender) throw new Error('SIGNER_POLICY_MISMATCH');
+      if (config.network !== 'mainnet' || !senderPinned(config.sender) || config.sender !== sender() || config.sender !== MAINNET_PAYOUT_SENDER || job.sender !== config.sender) throw new Error('SIGNER_POLICY_MISMATCH');
       const info = await rpcDeadline(() => rpc.getServerInfo(), 'RPC_SERVER_INFO_TIMEOUT', 6000);
       if (info.networkId !== 'mainnet' || !info.isSynced || !info.hasUtxoIndex) throw new Error('MAINNET_SYNCED_NODE_REQUIRED');
       return inspectJournal(job, rpc);
