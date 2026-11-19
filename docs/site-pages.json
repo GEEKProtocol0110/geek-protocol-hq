@@ -12,7 +12,7 @@
       "file": "public/challenges/index.html",
       "path": "/challenges/",
       "title": "Career Challenges, Mastery & Hidden Words \u2014 Geek Protocol",
-      "description": "Build your Geek career with 90 Bronze-to-Diamond challenges, mastery emblems, tracked goals and a five-word hunt. Earn one-time XP and try community quiz standings.",
+      "description": "Build your Geek career with 90 Bronze-to-Diamond challenges, mastery emblems, tracked goals and a five-word hunt. Earn one-time XP and climb quiz standings.",
       "index": true,
       "private": false,
       "lastmod": "2026-10-17"
@@ -175,7 +175,7 @@
       "file": "public/rewards/index.html",
       "path": "/rewards/",
       "title": "Receiving Addresses & Rewards \u2014 Geek Protocol",
-      "description": "Save receiving addresses from any Kaspa wallet to your Geek account without connecting the wallet app. Mainnet payouts remain disabled; approved test rewards use GEEKT.",
+      "description": "Save a receiving address from any Kaspa wallet to your Geek account, no wallet app connection needed. Mainnet payouts stay disabled; test rewards use GEEKT.",
       "index": true,
       "private": false,
       "lastmod": "2026-10-24"
@@ -250,7 +250,7 @@
       "file": "public/support/index.html",
       "path": "/support/",
       "title": "Support Geek Protocol",
-      "description": "Support Geek Protocol's open-source Kaspa learning work with a KAS tip, or contact the project on X about sponsorship. Tips are gifts, not investments or token purchases.",
+      "description": "Support Geek Protocol's open-source Kaspa learning with a KAS tip, or ask about sponsorship on X. Tips are gifts, not investments or token purchases.",
       "index": true,
       "private": false,
       "lastmod": "2026-11-16"
@@ -392,7 +392,7 @@
       "file": "public/whitepaper/index.html",
       "path": "/whitepaper/",
       "title": "Whitepaper - Geek Protocol",
-      "description": "Read the published Geek Protocol Whitepaper v1.0: learning model, architecture, content integrity, GEEK economics, security, governance and evidence-based launch gates.",
+      "description": "Geek Protocol Whitepaper v1.0: learning model, architecture, content integrity, GEEK economics, security, governance and evidence-based launch gates.",
       "index": true,
       "private": false,
       "lastmod": "2026-11-13"
@@ -589,6 +589,23 @@
       "index": true,
       "private": false,
       "lastmod": "2026-11-16"
+    },
+    {
+      "file": "public/privacy/index.html",
+      "path": "/privacy/",
+      "title": "Privacy Notice \u2014 Geek Protocol",
+      "description": "What Geek Protocol HQ stores when you learn and play: sessions, passkeys, receiving addresses, public names, analytics and how to ask for deletion.",
+      "index": true,
+      "private": false,
+      "lastmod": "2026-11-19"
+    },
+    {
+      "file": "public/404.html",
+      "path": "/404/",
+      "title": "Page Not Found \u2014 Geek Protocol",
+      "description": "This Geek Protocol page does not exist or has moved. Head back to lessons, games and today's quiz.",
+      "index": false,
+      "private": true
     }
   ]
 }
