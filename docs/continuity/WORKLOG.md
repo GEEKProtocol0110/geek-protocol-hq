@@ -1553,3 +1553,11 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - **Media:** Stereo MP3 at 128 kbps, metadata stripped except the supplied title, 3495882 bytes; SHA-256 `795764126c3fb6f29c3206e453d40694cc3086ce2258ff7d72d6e68085536171`. Full FFmpeg decode passed; duration 218.46 seconds matches the supplied recording. No artist attribution inferred.
 - **Validation:** Two focused behavior/markup tests passed; syntax, continuity, site-link and security checks passed (325 security assertions). Native audio controls remain available without JavaScript. Actual rendered/phone sound acceptance and hosted CI remain separate.
 - **Status / next:** Founder approved merge. Integrated current main and preserved both worklog entries. Hosted checks on the integration commit are required.
+
+## November 19, 2026 — Content clarity, Terms of use, privacy contact
+
+- Founder selected geek.coin.protocol@gmail.com as the privacy and terms contact, and asked for self-serve account deletion (scoped separately; not in this change).
+- `/rewards/` headline "Learn. Play. Get rewarded." becomes "Learn. Play. Level up."; `/collection/` "Mint. Earn. Collect." becomes "Three ways to collect, later." with a PLANNED kicker. Mainnet payouts, collection ownership and settlement holds are unchanged.
+- Homepage "More" menu grouped into Play, Learn Kaspa, GEEK token and Project; the duplicate /games/ link (already in the main nav) is removed. Daily Signal, Speed Signal and Alpha credits are defined where they first appear on the homepage.
+- Add `/terms/` (Terms of use) reflecting current behavior: public Alpha, accounts for ages 13+ (Geek Jr for younger learners), game records with no cash value, GEEK mint/trade risk, fair play, contributions, no warranty. Governing law and a formal legal review remain open founder decisions. Linked from footers beside Privacy.
+- Validation: site, security and continuity checks pass. No deployment performed by this entry.
