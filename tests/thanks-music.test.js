@@ -1,29 +1,39 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, statSync } from 'node:fs';
-import { MUSIC_KEY, MUSIC_VOLUME, musicPreference, saveMusicPreference, startsOnInteraction, musicLabel } from '../public/thanks/assets/music-core.js';
+import { runInNewContext } from 'node:vm';
+import { MUSIC_VOLUME, musicLabel } from '../public/thanks/assets/music-core.js';
 
-const memory = () => { const map = new Map(); return { getItem: k => map.get(k) ?? null, setItem: (k, v) => map.set(k, String(v)) }; };
-
-test('Hall of Thanks music stays quiet and remembers the visitor choice', () => {
-  assert.ok(MUSIC_VOLUME > 0 && MUSIC_VOLUME <= 0.2);
-  const storage = memory(); assert.equal(musicPreference(storage), '');
-  saveMusicPreference(storage, false); assert.equal(storage.getItem(MUSIC_KEY), 'off'); assert.equal(musicPreference(storage), 'off');
-  saveMusicPreference(storage, true); assert.equal(musicPreference(storage), 'on');
-  assert.equal(musicPreference({ getItem: () => { throw new Error('blocked'); } }), '');
-  assert.equal(musicPreference(null), '');
-  assert.equal(startsOnInteraction('off', false), false); assert.equal(startsOnInteraction('on', true), true);
-  assert.equal(startsOnInteraction('', false), true); assert.equal(startsOnInteraction('', true), false);
-  assert.match(musicLabel(true), /Mute/); assert.match(musicLabel(false), /Play/);
+const html = readFileSync('public/thanks/index.html', 'utf8');
+test('credits song is optional, page-local and usable without JavaScript', () => {
+  const tag = html.match(/<audio[^>]*>/)[0];
+  assert.match(tag, /controls/); assert.match(tag, /preload="none"/);
+  assert.doesNotMatch(tag, /autoplay|loop/);
+  assert.match(tag, /aria-label="GEEK Credits Song"/);
+  assert.match(html, /\/thanks\/audio\/geek-credits-song\.mp3/);
+  assert.ok(statSync('public/thanks/audio/geek-credits-song.mp3').size < 4_000_000);
+  assert.doesNotMatch(html, /\/thanks\/audio\/hall-of-thanks\./);
+  for (const page of ['index.html', 'study/index.html', 'profile/index.html']) assert.doesNotMatch(readFileSync(`public/${page}`, 'utf8'), /thanks-music|music\.js/);
 });
 
-test('Hall of Thanks music is scoped to the page, never autoplays and uses local small files', () => {
-  const html = readFileSync('public/thanks/index.html', 'utf8');
-  const tag = html.match(/<audio[^>]*>/)[0];
-  assert.doesNotMatch(tag, /autoplay/); assert.match(tag, /preload="none"/);
-  assert.match(html, /data-thanks-music-toggle[^>]*|aria-label="Play Hall of Thanks music"/);
-  assert.match(html, /src="\/thanks\/assets\/music\.js"/);
-  for (const file of ['hall-of-thanks.mp3', 'hall-of-thanks.ogg']) { assert.match(html, new RegExp(`/thanks/audio/${file.replace('.', '\\.')}`)); assert.ok(statSync(`public/thanks/audio/${file}`).size < 1_200_000); }
-  for (const page of ['index.html', 'study/index.html', 'profile/index.html']) assert.doesNotMatch(readFileSync(`public/${page}`, 'utf8'), /thanks-music|music\.js/);
-  assert.doesNotMatch(readFileSync('public/thanks/assets/music.js', 'utf8'), /innerHTML|autoplay/);
+test('only explicit Play starts the song; pause, finish and rejected playback update the shortcut', async () => {
+  const events = new Map(), clicks = new Map(), attributes = new Map();
+  let plays = 0, reject = false;
+  const audio = { paused: true, ended: false,
+    addEventListener: (type, fn) => events.set(type, [...(events.get(type) || []), fn]),
+    async play() { plays++; if (reject) throw new Error('offline'); this.paused = false; emit('play'); },
+    pause() { this.paused = true; emit('pause'); } };
+  const emit = type => { for (const fn of events.get(type) || []) fn(); };
+  const toggle = { hidden: true, dataset: {}, addEventListener: (type, fn) => clicks.set(type, fn), setAttribute: (k, v) => attributes.set(k, v) };
+  const status = { textContent: '' };
+  const document = { querySelector: selector => selector === '[data-thanks-music]' ? audio : selector === '[data-thanks-music-toggle]' ? toggle : status,
+    addEventListener() { assert.fail('Unrelated page interactions cannot start music'); } };
+  const source = readFileSync('public/thanks/assets/music.js', 'utf8').replace(/^import[^\n]+\n/, '');
+  runInNewContext(source, { document, MUSIC_VOLUME, musicLabel });
+  assert.equal(plays, 0); assert.equal(toggle.hidden, false);
+  await clicks.get('click')(); assert.equal(plays, 1); assert.equal(attributes.get('aria-label'), 'Pause GEEK Credits Song');
+  await clicks.get('click')(); assert.equal(audio.paused, true); assert.equal(attributes.get('aria-pressed'), 'false');
+  audio.ended = true; emit('ended'); assert.equal(attributes.get('aria-label'), 'Play GEEK Credits Song');
+  reject = true; await clicks.get('click')(); assert.match(status.textContent, /could not play/);
+  assert.equal(attributes.get('aria-pressed'), 'false');
 });

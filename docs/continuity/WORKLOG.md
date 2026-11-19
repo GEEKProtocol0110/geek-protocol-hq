@@ -1530,3 +1530,11 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - Legal restoration uses existing engines; malformed/quota/blocked storage cannot stop gameplay or become a board authority. Record first finishes once within bounded recent history; local records are mutable and are not verified competition. The original #300 merged independently as ee0716f during implementation; this milestone moves to a separate follow-up on that main. Browser and exact provider evidence follow in that PR. Physical-device acceptance remains separate.
 
 - Focused checks passed: 69 tests covering all seven actual client save/restore/worker/undo/exit paths plus existing engine, friend, solo, online, focus, hub and acceptance regressions. Security evidence (325 assertions), metadata and continuity checks pass. The local preview tab was denied by browser policy; use the independently hosted branch preview for rendered acceptance rather than bypassing that block. Full real-Redis CI is required because redis-server is absent locally.
+
+
+## November 19, 2026 — UX-036 credits song candidate
+
+- **Scope:** Founder-supplied full GEEK Credits Song, 3:38, in a named Hall of Thanks native audio player and accessible Play/Pause shortcut. Replace ambient first-interaction playback with explicit Play only, including for older saved preferences; no loop or audio preload. Preserve the supplied original outside the web rendition.
+- **Media:** Stereo MP3 at 128 kbps, metadata stripped except the supplied title, 3495882 bytes; SHA-256 `795764126c3fb6f29c3206e453d40694cc3086ce2258ff7d72d6e68085536171`. Full FFmpeg decode passed; duration 218.46 seconds matches the supplied recording. No artist attribution inferred.
+- **Validation:** Two focused behavior/markup tests passed; syntax, continuity, site-link and security checks passed (325 security assertions). Native audio controls remain available without JavaScript. Actual rendered/phone sound acceptance and hosted CI remain separate.
+- **Status / next:** Source candidate, not merged/deployed. Publish draft with preview for founder review; leave existing security PRs and economic holds unchanged.

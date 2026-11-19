@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-16",
+  "updatedAt": "2026-11-19",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2474,6 +2474,26 @@
         "public/games/assets/arena.js",
         "tests/arcade-practice.test.js",
         "tests/arcade-hub-ux.test.js"
+      ]
+    },
+    {
+      "id": "UX-036",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Add the founder-supplied GEEK Credits Song to Hall of Thanks",
+      "owner": "Maintainer; founder reviews preview and phone sound",
+      "nextAction": "Verify the web rendition and explicit-play controls; publish draft with hosted preview before release.",
+      "dependsOn": [],
+      "acceptance": [
+        "Named GEEK Credits Song player uses the supplied full track and accessible Play/Pause, seek and volume controls.",
+        "No page load, unrelated interaction or stored preference starts playback; preload none and native no-JavaScript controls remain.",
+        "Local web audio is metadata-stripped and decodes fully; page fits narrow screens. Record preview and remaining actual-phone acceptance separately."
+      ],
+      "evidence": [
+        "docs/HALL-OF-THANKS.md",
+        "public/thanks/index.html",
+        "public/thanks/assets/music.js",
+        "tests/thanks-music.test.js"
       ]
     }
   ]

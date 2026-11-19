@@ -79,3 +79,10 @@ The founder clarifies that Kaspa Stream needs its own Hall credit. #233 included
 ## Kas.fyi special thank-you placement — November 4, 2026 (Detroit)
 
 The founder requests Kas.fyi at the bottom of the ecosystem card group, labeled “Special thank you.” Move the existing `credit-kasfyi` article to the final position in that grid and replace its category label with `SPECIAL THANK YOU`. Retain the tribute, legacy-service explanation, links and stable fragment. Kaspa Stream keeps its separate card. This is a presentation correction; it does not change the directory or recognition policy.
+
+
+## GEEK Credits Song — November 19, 2026 candidate (UX-036)
+
+The founder supplied `GEEK Credits Song.mp3` and authorized optional music on the Hall of Thanks. Preserve the supplied original in the founder’s files; publish a metadata-stripped 128 kbps stereo MP3 web rendition (3:38) under `/thanks/audio/geek-credits-song.mp3`. No artist or production credits were inferred.
+
+Replace ambient first-interaction playback with a named, visible native player and the existing accessible floating Play/Pause shortcut. Loading the page, tapping other controls, reduced-motion settings or a saved older music preference cannot start the track. Native controls work without JavaScript. Preload stays `none`; no automatic loop, outside embed, tracking or account setting. Playback is page-local. Actual phone sound/codec acceptance remains separate from source and media checks. Draft only until reviewed and merged.
