@@ -1531,10 +1531,25 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 
 - Focused checks passed: 69 tests covering all seven actual client save/restore/worker/undo/exit paths plus existing engine, friend, solo, online, focus, hub and acceptance regressions. Security evidence (325 assertions), metadata and continuity checks pass. The local preview tab was denied by browser policy; use the independently hosted branch preview for rendered acceptance rather than bypassing that block. Full real-Redis CI is required because redis-server is absent locally.
 
+## November 19, 2026 — Site review follow-up: privacy notice, 404, links
+
+- An external review of the live site found no site-wide privacy notice, Vercel's default 404, two dead directory links, four meta descriptions over 160 characters and inline `<style>` on the Kaspa Live Widget privacy page that the site CSP (`style-src 'self'`) blocks.
+- Add `/privacy/` describing only what current code and protocol docs record: the 30-day HttpOnly session cookie, player record, passkey public data, linked-wallet public key/address, receiving addresses, rooms and push subscriptions, contribution retention, public names, browser-local data, Vercel Web Analytics, abuse-control IP use, the opt-in A.C.E. AI explanation, Vercel/Upstash providers and backups. Contact is X DM to @geekonkas; a dedicated private contact channel, self-serve account deletion, Terms of Service and an age/children statement for HQ remain founder decisions. Footer and sign-in links point to it.
+- Add a branded `public/404.html` (noindex). Move the widget privacy styling into shared `/assets/legal-page.css`.
+- Directory: Kraken Pro link changed to the lowercase `kas-usd` route (uppercase returns 404); remove the Kii Academy guide entry whose PDF now returns 404 (evidence in EDUCATION-DIRECTORY.md is unchanged).
+- Validation: site, directory, security, repository, whitepaper and continuity checks pass. `npm test` gives 643 pass / 26 fail / 80 skipped both before and after the change; every failure needs the absent local `redis-server` or is Windows-specific. Real-Redis CI and rendered/browser acceptance remain required. No deployment performed.
+
+## November 19, 2026 — Android test-builder dependency alerts
+
+- Dependabot reported four alerts, all in `android/package-lock.json` (the local Bubblewrap test-project generator; not part of the deployed site). `@bubblewrap/core` 1.27.0 is already its latest release.
+- `uuid` (medium, alert 2): pinned to 11.1.1 through an npm override. googleapis-common still loads; `npm run generate` still produces the Android test project.
+- `extract-zip` (high, alerts 3 and 4): no patched release exists. Bubblewrap uses it only to unzip JDK/SDK downloads; `android/generate.mjs` calls `TwaGenerator.createTwaProject` only and never reaches it.
+- `file-type` (medium, alert 1): the fix is 21.x, which is ESM-only and drops the `fromBuffer` API that jimp 0.22 calls, so an override would break icon generation. Here it reads only the repository's own icon.
+- Next: drop the override and revisit extract-zip/file-type when Bubblewrap ships updated dependencies.
 
 ## November 19, 2026 — UX-036 credits song candidate
 
 - **Scope:** Founder-supplied full GEEK Credits Song, 3:38, in a named Hall of Thanks native audio player and accessible Play/Pause shortcut. Replace ambient first-interaction playback with explicit Play only, including for older saved preferences; no loop or audio preload. Preserve the supplied original outside the web rendition.
 - **Media:** Stereo MP3 at 128 kbps, metadata stripped except the supplied title, 3495882 bytes; SHA-256 `795764126c3fb6f29c3206e453d40694cc3086ce2258ff7d72d6e68085536171`. Full FFmpeg decode passed; duration 218.46 seconds matches the supplied recording. No artist attribution inferred.
 - **Validation:** Two focused behavior/markup tests passed; syntax, continuity, site-link and security checks passed (325 security assertions). Native audio controls remain available without JavaScript. Actual rendered/phone sound acceptance and hosted CI remain separate.
-- **Status / next:** Source candidate, not merged/deployed. Publish draft with preview for founder review; leave existing security PRs and economic holds unchanged.
+- **Status / next:** Founder approved merge. Integrated current main and preserved both worklog entries. Hosted checks on the integration commit are required.

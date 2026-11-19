@@ -2180,7 +2180,7 @@
       "id": "kas-kraken",
       "category": "kas-exchanges",
       "name": "Kraken",
-      "url": "https://pro.kraken.com/app/trade/KAS-USD",
+      "url": "https://pro.kraken.com/app/trade/kas-usd",
       "description": "KAS/USD spot market on Kraken Pro; the provider also publishes a Kaspa purchase guide.",
       "source": "https://www.kraken.com/buy/kas",
       "reviewedAt": "2026-11-05",
@@ -2815,16 +2815,6 @@
       "url": "https://hellokaspa.com/",
       "description": "Independent Kaspa explainer covering BlockDAG, GHOSTDAG, network fundamentals and risks. An educational website rather than a Kaspa transaction application.",
       "source": "https://hellokaspa.com/",
-      "reviewedAt": "2026-11-09",
-      "status": "listed"
-    },
-    {
-      "id": "kii-academy-guide",
-      "category": "education-resources",
-      "name": "Kii Academy — program guide",
-      "url": "https://kaspa-kii.org/wp-content/uploads/2024/11/KII-Academy-Guidelines.pdf",
-      "description": "Published 2024 academy guidelines covering developer education, university initiatives, startups and enterprise training. This historical program document does not establish current enrollment availability.",
-      "source": "https://kaspa-kii.org/wp-content/uploads/2024/11/KII-Academy-Guidelines.pdf",
       "reviewedAt": "2026-11-09",
       "status": "listed"
     }
