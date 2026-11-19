@@ -588,7 +588,7 @@
       "id": "kas-kraken",
       "name": "Kraken",
       "kind": "spot",
-      "url": "https://pro.kraken.com/app/trade/KAS-USD",
+      "url": "https://pro.kraken.com/app/trade/kas-usd",
       "primarySources": [
         "https://www.kraken.com/buy/kas",
         "https://pro.kraken.com/app/trade/KAS-USD"
