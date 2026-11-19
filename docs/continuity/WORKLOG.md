@@ -1538,3 +1538,11 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - Add a branded `public/404.html` (noindex). Move the widget privacy styling into shared `/assets/legal-page.css`.
 - Directory: Kraken Pro link changed to the lowercase `kas-usd` route (uppercase returns 404); remove the Kii Academy guide entry whose PDF now returns 404 (evidence in EDUCATION-DIRECTORY.md is unchanged).
 - Validation: site, directory, security, repository, whitepaper and continuity checks pass. `npm test` gives 643 pass / 26 fail / 80 skipped both before and after the change; every failure needs the absent local `redis-server` or is Windows-specific. Real-Redis CI and rendered/browser acceptance remain required. No deployment performed.
+
+## November 19, 2026 — Android test-builder dependency alerts
+
+- Dependabot reported four alerts, all in `android/package-lock.json` (the local Bubblewrap test-project generator; not part of the deployed site). `@bubblewrap/core` 1.27.0 is already its latest release.
+- `uuid` (medium, alert 2): pinned to 11.1.1 through an npm override. googleapis-common still loads; `npm run generate` still produces the Android test project.
+- `extract-zip` (high, alerts 3 and 4): no patched release exists. Bubblewrap uses it only to unzip JDK/SDK downloads; `android/generate.mjs` calls `TwaGenerator.createTwaProject` only and never reaches it.
+- `file-type` (medium, alert 1): the fix is 21.x, which is ESM-only and drops the `fromBuffer` API that jimp 0.22 calls, so an override would break icon generation. Here it reads only the repository's own icon.
+- Next: drop the override and revisit extract-zip/file-type when Bubblewrap ships updated dependencies.
