@@ -49,7 +49,8 @@ check(mainnetSigner.includes("MAINNET_PAYOUT_ADDRESS_SHA256, MAINNET_PAYOUT_SEND
   'mainnet signer takes its sender pin from the schedule digest and only the guarded test hook can change it');
 check(mainnetSigner.includes('if (!chosen.sender || !senderPinned(chosen.sender) ||') && mainnetSigner.includes('if (!senderPinned(sender()) ||') &&
   mainnetSigner.includes("config.network !== 'mainnet' || !senderPinned(config.sender) ||"), 'mainnet signer requires the pinned sender digest in policy, verify and inspect');
-check(mainnetSigner.includes("if (process.env.VERCEL_ENV === 'production' || !process.env.NODE_TEST_CONTEXT ||"), 'mainnet signer test pin hook is refused in production and outside the test runner');
+check(mainnetSigner.includes("process.env.NODE_ENV === 'production' || process.env.VERCEL !== undefined || process.env.VERCEL_ENV !== undefined") &&
+  mainnetSigner.includes("process.env.NODE_TEST_CONTEXT === 'child-v8' && process.execArgv.some(") && mainnetSigner.includes('if (deployed || !nodeTestRunner() ||'), 'mainnet signer test pin hook is refused on any production or Vercel marker and outside the Node test runner');
 const pinHookUsers = (await Promise.all(['api/', 'server/', 'workers/', 'scripts/', 'public/'].map(walk))).flat()
   .filter(path => /\.(m?js|json)$/.test(path) && !path.includes('node_modules') && path !== 'scripts/security-check.mjs');
 const pinHookCallers = [];
@@ -60,6 +61,12 @@ const pinAttempt = spawnSync(process.execPath, ['--input-type=module', '-e',
   "const s = await import('./signer.mjs'); try { s.pinTestSenderDigest('0'.repeat(64)); console.log('PINNED'); } catch (e) { console.log(e.message); }"],
   { cwd: new URL('workers/mainnet/', root), encoding: 'utf8', env: { PATH: process.env.PATH, VERCEL_ENV: 'production', NODE_TEST_CONTEXT: 'child-v8' } });
 check(pinAttempt.status === 0 && pinAttempt.stdout.trim() === 'SIGNER_POLICY_MISMATCH', 'production cannot override the mainnet signer sender pin');
+// A plain process (no --test flags) must be refused even with every spoofable variable set to a test-looking value.
+const spoofed = [{}, { NODE_TEST_CONTEXT: 'child-v8' }, { NODE_TEST_CONTEXT: '0' }, { NODE_ENV: 'production', NODE_TEST_CONTEXT: 'child-v8' }, { VERCEL_ENV: 'preview', NODE_TEST_CONTEXT: 'child-v8' }, { VERCEL: '1', NODE_TEST_CONTEXT: 'child-v8' }]
+  .map(extra => spawnSync(process.execPath, ['--input-type=module', '-e',
+    "const s = await import('./signer.mjs'); try { s.pinTestSenderDigest('0'.repeat(64)); console.log('PINNED'); } catch (e) { console.log(e.message); }"],
+    { cwd: new URL('workers/mainnet/', root), encoding: 'utf8', env: { PATH: process.env.PATH, ...extra } }).stdout.trim());
+check(spoofed.every(result => result === 'SIGNER_POLICY_MISMATCH'), 'mainnet signer test pin hook refuses plain processes with spoofed test or deployment variables');
 check(mainnetPayout.includes("VERCEL_ENV !== 'production'"), 'mainnet admission is production-only');
 check(mainnetWorker.indexOf("MAINNET_SIGNER_ENABLED !== 'true'") !== -1 && mainnetWorker.indexOf("MAINNET_SIGNER_ENABLED !== 'true'") < mainnetWorker.indexOf('MAINNET_SIGNER_PRIVATE_KEY'), 'mainnet worker checks the signer gate before reading the key');
 // The reviewed hot wallet stays pinned, now by SHA-256 hex of its exact full address string

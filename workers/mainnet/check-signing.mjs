@@ -119,17 +119,29 @@ test('a valid sender that is not pinned is refused outside production, including
   signer.close(); otherKey.free();
 });
 
-test('the test pin hook is refused in production and outside the test runner, and the shipped pin is the reviewed digest', () => {
+test('the test pin hook is refused on any production or Vercel marker and outside the Node test runner, and the shipped pin is the reviewed digest', () => {
   assert.match(MAINNET_PAYOUT_ADDRESS_SHA256, /^[a-f0-9]{64}$/);
   assert.notEqual(MAINNET_PAYOUT_ADDRESS_SHA256, sha256(sender));
-  const saved = { VERCEL_ENV: process.env.VERCEL_ENV, NODE_TEST_CONTEXT: process.env.NODE_TEST_CONTEXT };
+  const saved = { VERCEL_ENV: process.env.VERCEL_ENV, VERCEL: process.env.VERCEL, NODE_ENV: process.env.NODE_ENV, NODE_TEST_CONTEXT: process.env.NODE_TEST_CONTEXT };
   try {
+    // Any deployment marker refuses, even inside the runner with the runner's own context value.
+    for (const marker of [{ VERCEL_ENV: 'production' }, { VERCEL_ENV: 'preview' }, { VERCEL_ENV: '' }, { VERCEL: '1' }, { NODE_ENV: 'production' }]) {
+      for (const name of ['VERCEL_ENV', 'VERCEL', 'NODE_ENV']) delete process.env[name];
+      Object.assign(process.env, marker);
+      assert.throws(() => pinTestSenderDigest(sha256(sender)), /SIGNER_POLICY_MISMATCH/, JSON.stringify(marker));
+    }
+    for (const name of ['VERCEL_ENV', 'VERCEL', 'NODE_ENV']) delete process.env[name];
+    // NODE_TEST_CONTEXT alone is not enough: only the runner's exact value counts.
+    for (const spoof of ['0', '1', 'true', 'child']) { process.env.NODE_TEST_CONTEXT = spoof; assert.throws(() => pinTestSenderDigest(sha256(sender)), /SIGNER_POLICY_MISMATCH/, spoof); }
+    process.env.NODE_TEST_CONTEXT = saved.NODE_TEST_CONTEXT;
     process.env.VERCEL_ENV = 'production';
     assert.throws(() => pinTestSenderDigest(sha256(sender)), /SIGNER_POLICY_MISMATCH/);
     delete process.env.VERCEL_ENV; delete process.env.NODE_TEST_CONTEXT;
     assert.throws(() => pinTestSenderDigest(sha256(sender)), /SIGNER_POLICY_MISMATCH/);
     process.env.NODE_TEST_CONTEXT = saved.NODE_TEST_CONTEXT;
     assert.throws(() => pinTestSenderDigest('not-a-digest'), /SIGNER_POLICY_MISMATCH/);
+    // Control: inside the runner with no deployment marker the same call is accepted (re-pinning the test sender).
+    assert.doesNotThrow(() => pinTestSenderDigest(sha256(sender)));
   } finally {
     for (const [name, value] of Object.entries(saved)) { if (value === undefined) delete process.env[name]; else process.env[name] = value; }
   }

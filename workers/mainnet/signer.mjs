@@ -10,10 +10,15 @@ const hashPattern = /^[a-f0-9]{64}$/;
 // Neither the environment nor HQ config can change it.
 let pinnedSenderDigest = MAINNET_PAYOUT_ADDRESS_SHA256;
 const senderPinned = address => typeof address === 'string' && createHash('sha256').update(address, 'utf8').digest('hex') === pinnedSenderDigest;
-// Offline signer checks only: pin a synthetic test sender's digest. Refused in production and
-// outside the Node test runner. No worker, cron or HQ code calls this.
+// Offline signer checks only: pin a synthetic test sender's digest. Fail closed. It is refused when
+// any Vercel or production marker is present (NODE_ENV=production, VERCEL, or VERCEL_ENV set to any
+// value), unless the process is a Node test-runner child: NODE_TEST_CONTEXT is exactly the runner's
+// value and the runner's own --test flags are in execArgv. NODE_TEST_CONTEXT alone is only an
+// ordinary variable and is never enough. No worker, cron or HQ code calls this.
+const nodeTestRunner = () => process.env.NODE_TEST_CONTEXT === 'child-v8' && process.execArgv.some(flag => flag === '--test' || flag.startsWith('--test-'));
 export function pinTestSenderDigest(digest) {
-  if (process.env.VERCEL_ENV === 'production' || !process.env.NODE_TEST_CONTEXT || !hashPattern.test(digest || '')) throw new Error('SIGNER_POLICY_MISMATCH');
+  const deployed = process.env.NODE_ENV === 'production' || process.env.VERCEL !== undefined || process.env.VERCEL_ENV !== undefined;
+  if (deployed || !nodeTestRunner() || !hashPattern.test(digest || '')) throw new Error('SIGNER_POLICY_MISMATCH');
   pinnedSenderDigest = digest;
 }
 const BASE = 'https://api.kasplex.org/v1/krc20';
