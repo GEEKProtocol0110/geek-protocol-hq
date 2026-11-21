@@ -1215,7 +1215,7 @@ Evidence/specification: [docs/TABLETOP-ART.md](../../docs/TABLETOP-ART.md), [pub
 
 **P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: ECO-003.
 
-Next action: Review the DAGKnight Explained learning-resource addition to the Education directory from merged PR #256.
+Next action: Review the DAGKnight Explained learning-resource addition to the Education directory, which landed in #317 (education-resources).
 
 Acceptance:
 

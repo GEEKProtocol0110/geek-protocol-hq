@@ -1918,7 +1918,7 @@
       "status": "in-progress",
       "title": "Education directory with explicit learning utility-token projects",
       "owner": "Maintainer; founder release review",
-      "nextAction": "Review the DAGKnight Explained learning-resource addition to the Education directory from merged PR #256.",
+      "nextAction": "Review the DAGKnight Explained learning-resource addition to the Education directory, which landed in #317 (education-resources).",
       "acceptance": [
         "Education & Learning appears in directory navigation, category filter and crawlable cards.",
         "Geek Protocol listed alongside independently sourced Kaspa learning projects.",
