@@ -177,7 +177,7 @@
     "task": "ECO-008",
     "status": "source-candidate",
     "evidence": "docs/EDUCATION-DIRECTORY.md",
-    "nextAction": "Review #256: Education & Learning token projects GEEK (KRC-20) and BMT (Kasplex L2 ERC-20), plus six separate learning resources. Candidate only."
+    "nextAction": "Review the DAGKnight Explained learning-resource addition to the Education directory from merged PR #256."
   },
   "strategyPuzzles": {
     "task": "GAME-003",

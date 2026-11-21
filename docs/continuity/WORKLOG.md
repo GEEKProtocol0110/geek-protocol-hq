@@ -1567,3 +1567,8 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - Founder chose self-serve deletion and accepted the recommendations: keep payout/test-reward accounting and the audit log, keep shared multiplayer games, require fresh passkey or wallet proof for protected accounts. Archived the `a.c.e.-AGI` and `kaspa-speed-benchmark-dashboard` placeholder repositories on founder approval.
 - Add `delete-account` to the passkey API, `server/account-deletion.js` (one Lua transition plus a tombstone that `readSession` checks first), a Delete my Geek account control on `/sign-in/`, and the updated privacy notice. Design, retained data and limits: [ACCOUNT-DELETION.md](../ACCOUNT-DELETION.md).
 - Validation: site, security and continuity checks pass locally. `tests/account-deletion.test.js` needs real Redis and runs in CI; local `redis-server` is absent. Wallet-linked deletion tests, browser acceptance and independent security review remain open.
+
+## November 21, 2026 — DAGKnight learning resource
+
+- ECO-008 adds DAGKnight Explained to Education Resources. The independent site provides a plain-language explainer, comparison with GHOSTDAG and implementation tracker. The separate research paper listing remains available.
+- Candidate prepared locally for review. Geek Protocol's free reciprocal listing copy is ready for review.
