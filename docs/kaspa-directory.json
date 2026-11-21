@@ -2847,6 +2847,16 @@
       "source": "https://kaspet.app/",
       "reviewedAt": "2026-11-21",
       "status": "listed"
+    },
+    {
+      "id": "kaspa-daily-charts",
+      "category": "explorers",
+      "name": "Kaspa Daily Charts",
+      "url": "https://kaspadaily.com/charts",
+      "description": "Kaspa network and market charts covering active addresses, daily transactions, hashrate, realized capitalization and MVRV.",
+      "source": "https://kaspadaily.com/charts",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
     }
   ],
   "updatedAt": "2026-11-21T08:00:00Z",

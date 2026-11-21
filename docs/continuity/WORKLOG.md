@@ -1577,3 +1577,4 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 
 - ECO-002 adds Kaspa Live to Explorers & data and Kaspet to Games & arcade. The founder's screen recording showed the Kaspa Live graph and activity panel; a direct fetch returned HTTP 403. Kaspet's project site documents the mainnet game and KAS fees.
 - Both listings are candidates for review. Directory parity, six focused tests, site and continuity checks passed.
+- PR #319 also adds Kaspa Daily Charts under Explorers & data. The direct chart page returned HTTP 200 and identifies its Kaspa on-chain indicators.
