@@ -1572,3 +1572,8 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 
 - ECO-008 adds DAGKnight Explained to Education Resources. The independent site provides a plain-language explainer, comparison with GHOSTDAG and implementation tracker. The separate research paper listing remains available.
 - Candidate prepared locally for review. Geek Protocol's free reciprocal listing copy is ready for review.
+
+## November 21, 2026 — Kaskad directory listing
+
+- ECO-002 adds Kaskad under Apps & token ecosystems. The listing identifies Igra as its Kaspa Layer 2 deployment and names Robinhood Chain separately. The project website and supported-networks documentation are the references.
+- Directory parity, six focused tests and site checks passed. Candidate for pull request review.
