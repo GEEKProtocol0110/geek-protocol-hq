@@ -2897,6 +2897,26 @@
       "source": "https://github.com/Knitser/kascov",
       "reviewedAt": "2026-11-21",
       "status": "listed"
+    },
+    {
+      "id": "kaspacom-covenant-explorer",
+      "category": "developers",
+      "name": "KaspaCom Covenant Explorer",
+      "url": "https://covenants.kaspa.com/",
+      "description": "Inspect Kaspa covenant templates, decoded arguments and spend history. Includes API documentation and covenant learning resources.",
+      "source": "https://covenants.kaspa.com/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kasway-pos",
+      "category": "payments",
+      "name": "Kasway",
+      "url": "https://github.com/Kasway-Tech/pos",
+      "description": "Open-source point-of-sale terminal for accepting KAS payments via QR codes. The project repository includes the source and setup information.",
+      "source": "https://github.com/Kasway-Tech/pos",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
     }
   ],
   "updatedAt": "2026-11-21T08:00:00Z",

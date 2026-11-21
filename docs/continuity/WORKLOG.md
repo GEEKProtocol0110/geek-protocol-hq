@@ -1585,3 +1585,7 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 
 - ECO-002 adds Kaskad under Apps & token ecosystems. The listing identifies Igra as its Kaspa Layer 2 deployment and names Robinhood Chain separately. The project website and supported-networks documentation are the references.
 - Directory parity, six focused tests and site checks passed. Candidate for pull request review.
+
+## November 21, 2026 — Covenant explorer and point of sale
+
+- PR #319 merged as 301535d; all six directory listings were verified live. ECO-002 prepares KaspaCom Covenant Explorer under Developer tools and Kasway under Payments & merchants.

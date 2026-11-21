@@ -86,7 +86,7 @@
     "task": "ECO-004",
     "status": "merged-deployed-http-verified",
     "evidence": "docs/KASPA-EXCHANGE-REVIEW.md",
-    "nextAction": "Founder-approved #239 merged/deployed as 898eaa366cb100bca55dea7b00fffda3ffee6e84, with exact public directory HTML/CSS/JS (164 cards/17 categories). Preserve the 60 KAS provider additions, prior resources and held review queue. Provider availability and rendered/device acceptance remain separate. Review Kaspa Live, Kaspet, Kaspa Daily Charts, Kaspa Links, Kaspa Explained and kascov in the directory. Review Kaskad in PR #318."
+    "nextAction": "Founder-approved #239 merged/deployed as 898eaa366cb100bca55dea7b00fffda3ffee6e84, with exact public directory HTML/CSS/JS (164 cards/17 categories). Preserve the 60 KAS provider additions, prior resources and held review queue. Provider availability and rendered/device acceptance remain separate. Review Kaspa Live, Kaspet, Kaspa Daily Charts, Kaspa Links, Kaspa Explained and kascov in the directory. Kaskad merged in PR #318 and was verified live. Review KaspaCom Covenant Explorer and Kasway in PR #320."
   },
   "publicLeaderboard": {
     "task": "UX-011",
