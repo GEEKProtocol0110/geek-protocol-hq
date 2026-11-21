@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-17",
+  "updatedAt": "2026-11-21",
   "priorityOrder": [
     "P0",
     "P1",
@@ -1459,7 +1459,7 @@
       "status": "done",
       "title": "Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream",
       "owner": "Maintainer prepares source; founder reviews release and supplies additional Hall links",
-      "nextAction": "Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope.",
+      "nextAction": "Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope. Review the Kaspa Live, Kaspet, Kaspa Daily Charts, Kaspa Links, Kaspa Explained and kascov directory additions. Kaskad merged in PR #318 and was verified live. Review KaspaCom Covenant Explorer and Kasway in PR #320.",
       "acceptance": [
         "Keep the Kaspa beginner guide and existing Hall credits intact; Kas.fyi is the final ecosystem card labeled Special thank you, and Kaspa Stream has its own thank-you card.",
         "Provide native HTML resource links, useful categories, accessible search/reset and a no-JavaScript browsing path.",
@@ -1918,7 +1918,7 @@
       "status": "in-progress",
       "title": "Education directory with explicit learning utility-token projects",
       "owner": "Maintainer; founder release review",
-      "nextAction": "Review PR #256: GEEK/BMT token-network and utility-state cards plus six learning resources; founder approval required for merge.",
+      "nextAction": "Review the DAGKnight Explained learning-resource addition to the Education directory from merged PR #256.",
       "acceptance": [
         "Education & Learning appears in directory navigation, category filter and crawlable cards.",
         "Geek Protocol listed alongside independently sourced Kaspa learning projects.",
@@ -2477,12 +2477,32 @@
       ]
     },
     {
+      "id": "UX-036",
+      "priority": "P2",
+      "status": "in-progress",
+      "title": "Add the founder-supplied GEEK Credits Song to Hall of Thanks",
+      "owner": "Maintainer; founder reviews preview and phone sound",
+      "nextAction": "Verify the web rendition and explicit-play controls; publish draft with hosted preview before release.",
+      "dependsOn": [],
+      "acceptance": [
+        "Named GEEK Credits Song player uses the supplied full track and accessible Play/Pause, seek and volume controls.",
+        "No page load, unrelated interaction or stored preference starts playback; preload none and native no-JavaScript controls remain.",
+        "Local web audio is metadata-stripped and decodes fully; page fits narrow screens. Record preview and remaining actual-phone acceptance separately."
+      ],
+      "evidence": [
+        "docs/HALL-OF-THANKS.md",
+        "public/thanks/index.html",
+        "public/thanks/assets/music.js",
+        "tests/thanks-music.test.js"
+      ]
+    },
+    {
       "id": "AUTH-006",
       "priority": "P0",
       "status": "in-progress",
       "title": "Require fresh account proof for a first recovery-wallet link",
       "owner": "Maintainer implements; independent reviewer unassigned; founder reviews release and devices",
-      "nextAction": "Publish the checked source as a draft PR; obtain independent and founder review. Rebase continuity conflicts and rerun verification on the combined head before any authorized merge. Session rotation and remaining adversarial findings stay open.",
+      "nextAction": "PR #309 integrated main 7db37b3 on November 21; 983 application and 18 offline signer tests pass, zero failures/skips. Inspect refreshed exact-head CI and obtain founder release review. Original-passkey wallet-link phone acceptance and session rotation remain separate.",
       "dependsOn": [
         "AUTH-005"
       ],
@@ -2497,7 +2517,8 @@
         "docs/WALLET-LINK-REAUTH.md",
         "tests/passkeys.test.js",
         "tests/wallet-quick-login.test.js",
-        "tests/sign-in-copy.test.js"
+        "tests/sign-in-copy.test.js",
+        "docs/SECURITY-QUEUE-2026-11-21.md"
       ]
     }
   ]

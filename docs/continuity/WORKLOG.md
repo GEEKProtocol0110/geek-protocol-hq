@@ -1531,6 +1531,65 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 
 - Focused checks passed: 69 tests covering all seven actual client save/restore/worker/undo/exit paths plus existing engine, friend, solo, online, focus, hub and acceptance regressions. Security evidence (325 assertions), metadata and continuity checks pass. The local preview tab was denied by browser policy; use the independently hosted branch preview for rendered acceptance rather than bypassing that block. Full real-Redis CI is required because redis-server is absent locally.
 
+## November 19, 2026 — Site review follow-up: privacy notice, 404, links
+
+- An external review of the live site found no site-wide privacy notice, Vercel's default 404, two dead directory links, four meta descriptions over 160 characters and inline `<style>` on the Kaspa Live Widget privacy page that the site CSP (`style-src 'self'`) blocks.
+- Add `/privacy/` describing only what current code and protocol docs record: the 30-day HttpOnly session cookie, player record, passkey public data, linked-wallet public key/address, receiving addresses, rooms and push subscriptions, contribution retention, public names, browser-local data, Vercel Web Analytics, abuse-control IP use, the opt-in A.C.E. AI explanation, Vercel/Upstash providers and backups. Contact is X DM to @geekonkas; a dedicated private contact channel, self-serve account deletion, Terms of Service and an age/children statement for HQ remain founder decisions. Footer and sign-in links point to it.
+- Add a branded `public/404.html` (noindex). Move the widget privacy styling into shared `/assets/legal-page.css`.
+- Directory: Kraken Pro link changed to the lowercase `kas-usd` route (uppercase returns 404); remove the Kii Academy guide entry whose PDF now returns 404 (evidence in EDUCATION-DIRECTORY.md is unchanged).
+- Validation: site, directory, security, repository, whitepaper and continuity checks pass. `npm test` gives 643 pass / 26 fail / 80 skipped both before and after the change; every failure needs the absent local `redis-server` or is Windows-specific. Real-Redis CI and rendered/browser acceptance remain required. No deployment performed.
+
+## November 19, 2026 — Android test-builder dependency alerts
+
+- Dependabot reported four alerts, all in `android/package-lock.json` (the local Bubblewrap test-project generator; not part of the deployed site). `@bubblewrap/core` 1.27.0 is already its latest release.
+- `uuid` (medium, alert 2): pinned to 11.1.1 through an npm override. googleapis-common still loads; `npm run generate` still produces the Android test project.
+- `extract-zip` (high, alerts 3 and 4): no patched release exists. Bubblewrap uses it only to unzip JDK/SDK downloads; `android/generate.mjs` calls `TwaGenerator.createTwaProject` only and never reaches it.
+- `file-type` (medium, alert 1): the fix is 21.x, which is ESM-only and drops the `fromBuffer` API that jimp 0.22 calls, so an override would break icon generation. Here it reads only the repository's own icon.
+- Next: drop the override and revisit extract-zip/file-type when Bubblewrap ships updated dependencies.
+
+## November 19, 2026 — UX-036 credits song candidate
+
+- **Scope:** Founder-supplied full GEEK Credits Song, 3:38, in a named Hall of Thanks native audio player and accessible Play/Pause shortcut. Replace ambient first-interaction playback with explicit Play only, including for older saved preferences; no loop or audio preload. Preserve the supplied original outside the web rendition.
+- **Media:** Stereo MP3 at 128 kbps, metadata stripped except the supplied title, 3495882 bytes; SHA-256 `795764126c3fb6f29c3206e453d40694cc3086ce2258ff7d72d6e68085536171`. Full FFmpeg decode passed; duration 218.46 seconds matches the supplied recording. No artist attribution inferred.
+- **Validation:** Two focused behavior/markup tests passed; syntax, continuity, site-link and security checks passed (325 security assertions). Native audio controls remain available without JavaScript. Actual rendered/phone sound acceptance and hosted CI remain separate.
+- **Status / next:** Founder approved merge. Integrated current main and preserved both worklog entries. Hosted checks on the integration commit are required.
+
+## November 19, 2026 — Content clarity, Terms of use, privacy contact
+
+- Founder selected geek.coin.protocol@gmail.com as the privacy and terms contact, and asked for self-serve account deletion (scoped separately; not in this change).
+- `/rewards/` headline "Learn. Play. Get rewarded." becomes "Learn. Play. Level up."; `/collection/` "Mint. Earn. Collect." becomes "Three ways to collect, later." with a PLANNED kicker. Mainnet payouts, collection ownership and settlement holds are unchanged.
+- Homepage "More" menu grouped into Play, Learn Kaspa, GEEK token and Project; the duplicate /games/ link (already in the main nav) is removed. Daily Signal, Speed Signal and Alpha credits are defined where they first appear on the homepage.
+- Add `/terms/` (Terms of use) reflecting current behavior: public Alpha, accounts for ages 13+ (Geek Jr for younger learners), game records with no cash value, GEEK mint/trade risk, fair play, contributions, no warranty. Governing law and a formal legal review remain open founder decisions. Linked from footers beside Privacy.
+- Validation: site, security and continuity checks pass. No deployment performed by this entry.
+
+## November 19, 2026 — PRIV-001 self-serve account deletion
+
+- Founder chose self-serve deletion and accepted the recommendations: keep payout/test-reward accounting and the audit log, keep shared multiplayer games, require fresh passkey or wallet proof for protected accounts. Archived the `a.c.e.-AGI` and `kaspa-speed-benchmark-dashboard` placeholder repositories on founder approval.
+- Add `delete-account` to the passkey API, `server/account-deletion.js` (one Lua transition plus a tombstone that `readSession` checks first), a Delete my Geek account control on `/sign-in/`, and the updated privacy notice. Design, retained data and limits: [ACCOUNT-DELETION.md](../ACCOUNT-DELETION.md).
+- Validation: site, security and continuity checks pass locally. `tests/account-deletion.test.js` needs real Redis and runs in CI; local `redis-server` is absent. Wallet-linked deletion tests, browser acceptance and independent security review remain open.
+
+## November 21, 2026 — DAGKnight learning resource
+
+- ECO-008 adds DAGKnight Explained to Education Resources. The independent site provides a plain-language explainer, comparison with GHOSTDAG and implementation tracker. The separate research paper listing remains available.
+- Candidate prepared locally for review. Geek Protocol's free reciprocal listing copy is ready for review.
+
+## November 21, 2026 — Kaspa Live and Kaspet directory listings
+
+- ECO-002 adds Kaspa Live to Explorers & data and Kaspet to Games & arcade. The founder's screen recording showed the Kaspa Live graph and activity panel; a direct fetch returned HTTP 403. Kaspet's project site documents the mainnet game and KAS fees.
+- Both listings are candidates for review. Directory parity, six focused tests, site and continuity checks passed.
+- PR #319 also adds Kaspa Daily Charts under Explorers & data. The direct chart page returned HTTP 200 and identifies its Kaspa on-chain indicators.
+- PR #319 also adds the Kaspa Links homepage to Payments & merchants for KAS tips, donations and invoices.
+- PR #319 also adds Kaspa Explained under Learning Platforms & Guides and kascov under Explorers & data.
+
+## November 21, 2026 — Kaskad directory listing
+
+- ECO-002 adds Kaskad under Apps & token ecosystems. The listing identifies Igra as its Kaspa Layer 2 deployment and names Robinhood Chain separately. The project website and supported-networks documentation are the references.
+- Directory parity, six focused tests and site checks passed. Candidate for pull request review.
+
+## November 21, 2026 — Covenant explorer and point of sale
+
+- PR #319 merged as 301535d; all six directory listings were verified live. ECO-002 prepares KaspaCom Covenant Explorer under Developer tools and Kasway under Payments & merchants.
+
 
 ## November 17, 2026 — AUTH-006 first-wallet-link candidate
 
@@ -1540,3 +1599,11 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - **Next:** publish draft for independent and founder review; resolve continuity conflicts with other held security PRs and run verification on the resulting exact head before release. Record the PR/head/tree below. After an authorized merge, separately verify production and an actual original-passkey return after first wallet linking.
 
 - **Published review:** Draft [PR #309](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/309), source head `420d5bbd04e82fa37e8edf1a9afa58aa7fa9daaf`, exact tree `98fb462b31fde22b7585521747b2869a83062720`, matches locally checked `36f66277856af08e8dfd7f22a2361911ab67dec3`. GitHub publishing succeeded November 18 after the interrupted preparation. Hosted CI remains pending at this handoff commit; record final results in the PR. Draft remains unmerged; production unchanged.
+
+
+## November 21, 2026 — AUTH-006 integration and security work queue
+
+- Integrated main `7db37b3` into the existing #309 branch, preserving both histories, all maintained backlog tasks and account deletion's tombstone guard. Conflicts were confined to continuity records and their generated views. No change to the first-link runtime design.
+- Added regressions for fresh passkey deletion after first wallet linking and a different device deleting the account during atomic link commit. Both fail closed as required. Full integrated application suite: 983 pass, zero fail/skip, required isolated real Redis 7.2.5, concurrency two. Offline signer suites: 18 pass, zero fail/skip. All other verify components pass; 333 security assertions. One initial test expectation for the established removed-credential error was corrected from HTTP 401 to the actual PASSKEY_PROOF_INVALID refusal code (HTTP 400).
+- Updated AUTH-006 and current checkpoint. Recorded the next jobs, dependencies and actual review limits in `docs/SECURITY-QUEUE-2026-11-21.md`. Bank review and the other held security candidates remain open.
+- Next: push this integration to existing draft #309, inspect exact-head hosted checks, and return it for founder release review. No main merge, production configuration, secret change, payout activation or physical-device acceptance is claimed.

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "reviewedAt": "2026-11-09",
+  "reviewedAt": "2026-11-21",
   "categories": [
     {
       "id": "learn",
@@ -2180,7 +2180,7 @@
       "id": "kas-kraken",
       "category": "kas-exchanges",
       "name": "Kraken",
-      "url": "https://pro.kraken.com/app/trade/KAS-USD",
+      "url": "https://pro.kraken.com/app/trade/kas-usd",
       "description": "KAS/USD spot market on Kraken Pro; the provider also publishes a Kaspa purchase guide.",
       "source": "https://www.kraken.com/buy/kas",
       "reviewedAt": "2026-11-05",
@@ -2657,6 +2657,16 @@
       "status": "listed"
     },
     {
+      "id": "kaskad",
+      "category": "ecosystem",
+      "name": "Kaskad",
+      "url": "https://www.kaskad.app/",
+      "description": "DeFi lending and borrowing protocol on Igra, an EVM-compatible Kaspa Layer 2. Kaskad also operates on Robinhood Chain.",
+      "source": "https://docs.kaskad.app/docs/supported-networks",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
       "id": "kasplay",
       "category": "games",
       "name": "KasPlay",
@@ -2819,17 +2829,97 @@
       "status": "listed"
     },
     {
-      "id": "kii-academy-guide",
+      "id": "dagknight-explained",
       "category": "education-resources",
-      "name": "Kii Academy — program guide",
-      "url": "https://kaspa-kii.org/wp-content/uploads/2024/11/KII-Academy-Guidelines.pdf",
-      "description": "Published 2024 academy guidelines covering developer education, university initiatives, startups and enterprise training. This historical program document does not establish current enrollment availability.",
-      "source": "https://kaspa-kii.org/wp-content/uploads/2024/11/KII-Academy-Guidelines.pdf",
-      "reviewedAt": "2026-11-09",
+      "name": "DAGKnight Explained",
+      "url": "https://dagknight.com/",
+      "description": "Independent Kaspa learning resource with a plain-English DAGKnight explainer, a GHOSTDAG comparison, and a tracker for the proposed consensus upgrade.",
+      "source": "https://dagknight.com/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kaspa-live",
+      "category": "explorers",
+      "name": "Kaspa Live",
+      "url": "https://kaspacoin.info/kaspa-live/",
+      "description": "Interactive Kaspa mainnet BlockDAG visualization with color-coded blocks and a breakdown of activity in recently observed blocks.",
+      "source": "https://kaspacoin.info/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kaspet",
+      "category": "games",
+      "name": "Kaspet",
+      "url": "https://kaspet.app/",
+      "description": "Virtual pet game on Kaspa mainnet. Hatch, feed and play through on-chain actions. Getting an egg costs KAS, and care actions incur network fees.",
+      "source": "https://kaspet.app/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kaspa-daily-charts",
+      "category": "explorers",
+      "name": "Kaspa Daily Charts",
+      "url": "https://kaspadaily.com/charts",
+      "description": "Kaspa network and market charts covering active addresses, daily transactions, hashrate, realized capitalization and MVRV.",
+      "source": "https://kaspadaily.com/charts",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kaspa-links",
+      "category": "payments",
+      "name": "Kaspa Links",
+      "url": "https://kaspalinks.com/",
+      "description": "Non-custodial tool for creating shareable KAS payment links for tips, donations and invoices.",
+      "source": "https://kaspalinks.com/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kaspa-explained",
+      "category": "education-resources",
+      "name": "Kaspa Explained",
+      "url": "https://kaspaexplained.com/",
+      "description": "Interactive Kaspa learning guide with a beginner tour, a live 3D BlockDAG and a roadmap that distinguishes deployed features from proposals.",
+      "source": "https://kaspaexplained.com/learn/roadmap/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kascov",
+      "category": "explorers",
+      "name": "kascov",
+      "url": "https://kascov.io/",
+      "description": "Open-source Kaspa covenant explorer and indexer for inspecting KCC-20 tokens, markets and liquidity pools. Includes a public API.",
+      "source": "https://github.com/Knitser/kascov",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kaspacom-covenant-explorer",
+      "category": "developers",
+      "name": "KaspaCom Covenant Explorer",
+      "url": "https://covenants.kaspa.com/",
+      "description": "Inspect Kaspa covenant templates, decoded arguments and spend history. Includes API documentation and covenant learning resources.",
+      "source": "https://covenants.kaspa.com/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kasway-pos",
+      "category": "payments",
+      "name": "Kasway",
+      "url": "https://github.com/Kasway-Tech/pos",
+      "description": "Open-source point-of-sale terminal for accepting KAS payments via QR codes. The project repository includes the source and setup information.",
+      "source": "https://github.com/Kasway-Tech/pos",
+      "reviewedAt": "2026-11-21",
       "status": "listed"
     }
   ],
-  "updatedAt": "2026-11-09T06:46:40Z",
+  "updatedAt": "2026-11-21T08:00:00Z",
   "krc20Review": {
     "windowDays": 90,
     "candidateCount": 45,

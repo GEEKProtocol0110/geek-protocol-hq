@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-11-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-11-21. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -25,9 +25,9 @@ Record date: 2026-11-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-009: active.** BANK-009: six-row Technology risk triage retires five ambiguous, unsupported or repeated items without padding the bank. One duplicate survivor remains draft; no review-count promotion.
+**AUTH-006: source-candidate.** Integrate the first-wallet-link security fix with current HQ and account deletion; preserve passkeys and verify cross-feature deletion behavior.
 
-Next task: **BANK-009**. Review the November 8 risk-triage candidate and exact-head checks, then continue unflagged rows across categories.
+Next task: **AUTH-006**. PR #309 integrated main 7db37b3 on November 21; 983 application and 18 offline signer tests pass, zero failures/skips. Inspect refreshed exact-head CI and obtain founder release review. Original-passkey wallet-link phone acceptance and session rotation remain separate.
 
 ## Holds
 

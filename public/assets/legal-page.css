@@ -1,0 +1,11 @@
+/* Plain reading layout for policy, notice and error pages. External file: the site CSP allows style-src 'self' only. */
+.legal-page{max-width:780px;margin:auto;padding:48px 22px 80px}
+.legal-page h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.1}
+.legal-page h2{margin-top:32px;font-size:1.4rem}
+.legal-page p,.legal-page li{line-height:1.8;color:#c6d0ca}
+.legal-page a{color:#92debe}
+.legal-page ul{padding-left:1.2em}
+.legal-page .legal-summary{border:1px solid rgba(146,222,190,.35);border-radius:12px;padding:4px 20px;margin:24px 0}
+.legal-page .legal-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.legal-footer{max-width:780px;margin:0 auto;padding:0 22px 48px;color:#8fa39a;font-size:.9rem}
+.legal-footer a{color:#92debe;margin-right:14px}

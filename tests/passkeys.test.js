@@ -15,6 +15,7 @@ import { identityPlayerKey } from '../server/identity-keys.js';
 import { resetRestoredSessions } from '../scripts/reset-restored-sessions.mjs';
 import rewardsHandler from '../api/rewards.js';
 import { rewardAddressKey } from '../server/reward-addresses.js';
+import { deletedPlayerKey } from '../server/account-deletion.js';
 
 const fixture = await redisFixture(), originalFetch = globalThis.fetch;
 let beforeCommand = null, activeFixture = fixture;
@@ -772,4 +773,52 @@ test('parallel submissions of one authorized wallet challenge produce one bindin
   const account = JSON.parse(await fixture.command('GET', passkeyAccountKey(player)));
   assert.equal(account.walletVersion, 1); assert.equal(account.credentials.length, 1);
   assert.equal((await returnWithPasskey(await session(), enrolled.key, player)).statusCode, 200);
+});
+
+test('a preserved passkey can freshly authorize account deletion after first wallet linking', async () => {
+  const guest = await session(), player = guest.split('=')[1], enrolled = await enroll(guest);
+  const link = await walletLink(enrolled.cookie, enrolled.grant);
+  assert.equal(link.issued.statusCode, 201, JSON.stringify(link.issued.body));
+  assert.equal((await link.submit()).statusCode, 200);
+  const login = await returnWithPasskey(await session(), enrolled.key, player);
+  assert.equal(login.statusCode, 200, JSON.stringify(login.body));
+  const cookie = cookieFrom(login);
+  const denied = await call(passkeysHandler, cookie, { action: 'delete-account', confirm: 'DELETE' });
+  assert.equal(denied.body.code, 'PASSKEY_REAUTH_REQUIRED');
+  assert.notEqual(await fixture.command('GET', identityPlayerKey(player)), null);
+  const deleted = await call(passkeysHandler, cookie, {
+    action: 'delete-account', confirm: 'DELETE', token: login.body.grant.token
+  });
+  assert.equal(deleted.statusCode, 200, JSON.stringify(deleted.body));
+  assert.equal(await fixture.command('GET', identityPlayerKey(player)), null);
+  assert.equal(await fixture.command('GET', passkeyAccountKey(player)), null);
+  assert.deepEqual(await fixture.command('KEYS', 'geek:identity:wallet:*'), []);
+  assert.equal(await fixture.command('EXISTS', deletedPlayerKey(player)), 1);
+  assert.equal((await call(passkeysHandler, enrolled.cookie, null, 'GET')).statusCode, 401);
+  const refused = await returnWithPasskey(await session(), enrolled.key, player, 2);
+  assert.equal(refused.body.code, 'PASSKEY_PROOF_INVALID');
+  assert.equal(refused.body.signedIn, undefined);
+});
+
+test('deletion on another device during first-link commit cannot recreate the deleted identity', async () => {
+  const guest = await session(), player = guest.split('=')[1], enrolled = await enroll(guest);
+  const other = await returnWithPasskey(await session(), enrolled.key, player);
+  assert.equal(other.statusCode, 200, JSON.stringify(other.body));
+  const link = await walletLink(enrolled.cookie, enrolled.grant);
+  assert.equal(link.issued.statusCode, 201, JSON.stringify(link.issued.body));
+  beforeCommand = async command => {
+    if (command[0] !== 'EVAL' || !String(command[1]).includes('geek-identity-bind-v1')) return;
+    beforeCommand = null;
+    const deleted = await call(passkeysHandler, cookieFrom(other), {
+      action: 'delete-account', confirm: 'DELETE', token: other.body.grant.token
+    });
+    assert.equal(deleted.statusCode, 200, JSON.stringify(deleted.body));
+  };
+  const result = await link.submit();
+  assert.equal(result.body.code, 'IDENTITY_STATE_CONFLICT', JSON.stringify(result.body));
+  assert.equal(await fixture.command('GET', identityPlayerKey(player)), null);
+  assert.equal(await fixture.command('GET', passkeyAccountKey(player)), null);
+  assert.deepEqual(await fixture.command('KEYS', 'geek:identity:wallet:*'), []);
+  assert.equal(await fixture.command('EXISTS', deletedPlayerKey(player)), 1);
+  assert.equal((await call(passkeysHandler, enrolled.cookie, null, 'GET')).statusCode, 401);
 });

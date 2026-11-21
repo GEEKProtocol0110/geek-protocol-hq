@@ -103,6 +103,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-033 | P1 | done | Keep active game controls and boards together without focus-driven scrolling | Maintainer; founder reviews release; physical-device acceptance unassigned |
 | UX-034 | P1 | done | Let one player face A.C.E. in the two-player local strategy games | Maintainer; founder reviews release; independent difficulty/device acceptance unassigned |
 | UX-035 | P1 | in-progress | Build the A.C.E. Arcade milestone with saved games and a personal practice desk | Maintainer; founder reviews release; physical-device acceptance unassigned |
+| UX-036 | P2 | in-progress | Add the founder-supplied GEEK Credits Song to Hall of Thanks | Maintainer; founder reviews preview and phone sound |
 | AUTH-006 | P0 | in-progress | Require fresh account proof for a first recovery-wallet link | Maintainer implements; independent reviewer unassigned; founder reviews release and devices |
 
 ## CONT-001: Publish the continuation system
@@ -929,7 +930,7 @@ Evidence/specification: [public/about/index.html](../../public/about/index.html)
 
 **P1 / done.** Owner: Maintainer prepares source; founder reviews release and supplies additional Hall links. Dependencies: none.
 
-Next action: Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope.
+Next action: Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope. Review the Kaspa Live, Kaspet, Kaspa Daily Charts, Kaspa Links, Kaspa Explained and kascov directory additions. Kaskad merged in PR #318 and was verified live. Review KaspaCom Covenant Explorer and Kasway in PR #320.
 
 Acceptance:
 
@@ -1211,7 +1212,7 @@ Evidence/specification: [docs/TABLETOP-ART.md](../../docs/TABLETOP-ART.md), [pub
 
 **P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: ECO-003.
 
-Next action: Review PR #256: GEEK/BMT token-network and utility-state cards plus six learning resources; founder approval required for merge.
+Next action: Review the DAGKnight Explained learning-resource addition to the Education directory from merged PR #256.
 
 Acceptance:
 
@@ -1577,11 +1578,25 @@ Acceptance:
 
 Evidence/specification: [docs/ARCADE-300.md](../../docs/ARCADE-300.md), [public/games/ace/index.html](../../public/games/ace/index.html), [public/games/assets/arcade-book.js](../../public/games/assets/arcade-book.js), [public/games/assets/arcade-session.js](../../public/games/assets/arcade-session.js), [public/games/assets/arena.js](../../public/games/assets/arena.js), [tests/arcade-practice.test.js](../../tests/arcade-practice.test.js), [tests/arcade-hub-ux.test.js](../../tests/arcade-hub-ux.test.js).
 
+## UX-036: Add the founder-supplied GEEK Credits Song to Hall of Thanks
+
+**P2 / in-progress.** Owner: Maintainer; founder reviews preview and phone sound. Dependencies: none.
+
+Next action: Verify the web rendition and explicit-play controls; publish draft with hosted preview before release.
+
+Acceptance:
+
+- Named GEEK Credits Song player uses the supplied full track and accessible Play/Pause, seek and volume controls.
+- No page load, unrelated interaction or stored preference starts playback; preload none and native no-JavaScript controls remain.
+- Local web audio is metadata-stripped and decodes fully; page fits narrow screens. Record preview and remaining actual-phone acceptance separately.
+
+Evidence/specification: [docs/HALL-OF-THANKS.md](../../docs/HALL-OF-THANKS.md), [public/thanks/index.html](../../public/thanks/index.html), [public/thanks/assets/music.js](../../public/thanks/assets/music.js), [tests/thanks-music.test.js](../../tests/thanks-music.test.js).
+
 ## AUTH-006: Require fresh account proof for a first recovery-wallet link
 
 **P0 / in-progress.** Owner: Maintainer implements; independent reviewer unassigned; founder reviews release and devices. Dependencies: AUTH-005.
 
-Next action: Publish the checked source as a draft PR; obtain independent and founder review. Rebase continuity conflicts and rerun verification on the combined head before any authorized merge. Session rotation and remaining adversarial findings stay open.
+Next action: PR #309 integrated main 7db37b3 on November 21; 983 application and 18 offline signer tests pass, zero failures/skips. Inspect refreshed exact-head CI and obtain founder release review. Original-passkey wallet-link phone acceptance and session rotation remain separate.
 
 Acceptance:
 
@@ -1591,4 +1606,4 @@ Acceptance:
 - Browser-provider and manual message flows submit a fresh one-use account grant explicitly; no background wallet proof, unbounded request or automatic write retry.
 - Record baseline negative controls, real-Redis cryptographic regressions, full repository checks and exact PR/CI status separately from deployment and physical-device acceptance.
 
-Evidence/specification: [docs/WALLET-LINK-REAUTH.md](../../docs/WALLET-LINK-REAUTH.md), [tests/passkeys.test.js](../../tests/passkeys.test.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/sign-in-copy.test.js](../../tests/sign-in-copy.test.js).
+Evidence/specification: [docs/WALLET-LINK-REAUTH.md](../../docs/WALLET-LINK-REAUTH.md), [tests/passkeys.test.js](../../tests/passkeys.test.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/sign-in-copy.test.js](../../tests/sign-in-copy.test.js), [docs/SECURITY-QUEUE-2026-11-21.md](../../docs/SECURITY-QUEUE-2026-11-21.md).

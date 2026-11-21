@@ -32,6 +32,9 @@ export const readSession = async (req) => {
   const stored = await redis('GET', keyFor(id));
   const session = decodeSessionRecord(stored, id);
   if (!session) return null;
+  // A deleted player's remaining sessions (other devices, wallet or passkey
+  // sessions) end here, before their removed identity records are consulted.
+  if (await redis('GET', `geek:player-deleted:v1:${playerIdFor(session)}`)) return null;
   if (session.passkeyEpoch) {
     const account = decodePasskeyAccount(await redis('GET', passkeyAccountKey(playerIdFor(session))), playerIdFor(session));
     if (!account || account.epoch !== session.passkeyEpoch || !account.credentials.length) return null;
