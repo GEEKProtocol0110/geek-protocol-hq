@@ -2827,6 +2827,66 @@
       "source": "https://dagknight.com/",
       "reviewedAt": "2026-11-21",
       "status": "listed"
+    },
+    {
+      "id": "kaspa-live",
+      "category": "explorers",
+      "name": "Kaspa Live",
+      "url": "https://kaspacoin.info/kaspa-live/",
+      "description": "Interactive Kaspa mainnet BlockDAG visualization with color-coded blocks and a breakdown of activity in recently observed blocks.",
+      "source": "https://kaspacoin.info/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kaspet",
+      "category": "games",
+      "name": "Kaspet",
+      "url": "https://kaspet.app/",
+      "description": "Virtual pet game on Kaspa mainnet. Hatch, feed and play through on-chain actions. Getting an egg costs KAS, and care actions incur network fees.",
+      "source": "https://kaspet.app/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kaspa-daily-charts",
+      "category": "explorers",
+      "name": "Kaspa Daily Charts",
+      "url": "https://kaspadaily.com/charts",
+      "description": "Kaspa network and market charts covering active addresses, daily transactions, hashrate, realized capitalization and MVRV.",
+      "source": "https://kaspadaily.com/charts",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kaspa-links",
+      "category": "payments",
+      "name": "Kaspa Links",
+      "url": "https://kaspalinks.com/",
+      "description": "Non-custodial tool for creating shareable KAS payment links for tips, donations and invoices.",
+      "source": "https://kaspalinks.com/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kaspa-explained",
+      "category": "education-resources",
+      "name": "Kaspa Explained",
+      "url": "https://kaspaexplained.com/",
+      "description": "Interactive Kaspa learning guide with a beginner tour, a live 3D BlockDAG and a roadmap that distinguishes deployed features from proposals.",
+      "source": "https://kaspaexplained.com/learn/roadmap/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kascov",
+      "category": "explorers",
+      "name": "kascov",
+      "url": "https://kascov.io/",
+      "description": "Open-source Kaspa covenant explorer and indexer for inspecting KCC-20 tokens, markets and liquidity pools. Includes a public API.",
+      "source": "https://github.com/Knitser/kascov",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
     }
   ],
   "updatedAt": "2026-11-21T08:00:00Z",
