@@ -2827,6 +2827,26 @@
       "source": "https://dagknight.com/",
       "reviewedAt": "2026-11-21",
       "status": "listed"
+    },
+    {
+      "id": "kaspa-live",
+      "category": "explorers",
+      "name": "Kaspa Live",
+      "url": "https://kaspacoin.info/kaspa-live/",
+      "description": "Interactive Kaspa mainnet BlockDAG visualization with color-coded blocks and a breakdown of activity in recently observed blocks.",
+      "source": "https://kaspacoin.info/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kaspet",
+      "category": "games",
+      "name": "Kaspet",
+      "url": "https://kaspet.app/",
+      "description": "Virtual pet game on Kaspa mainnet. Hatch, feed and play through on-chain actions. Getting an egg costs KAS, and care actions incur network fees.",
+      "source": "https://kaspet.app/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
     }
   ],
   "updatedAt": "2026-11-21T08:00:00Z",
