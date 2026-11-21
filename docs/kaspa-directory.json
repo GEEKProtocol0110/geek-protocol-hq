@@ -2857,6 +2857,16 @@
       "source": "https://kaspadaily.com/charts",
       "reviewedAt": "2026-11-21",
       "status": "listed"
+    },
+    {
+      "id": "kaspa-links",
+      "category": "payments",
+      "name": "Kaspa Links",
+      "url": "https://kaspalinks.com/",
+      "description": "Non-custodial tool for creating shareable KAS payment links for tips, donations and invoices.",
+      "source": "https://kaspalinks.com/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
     }
   ],
   "updatedAt": "2026-11-21T08:00:00Z",
