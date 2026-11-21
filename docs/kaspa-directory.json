@@ -2657,6 +2657,16 @@
       "status": "listed"
     },
     {
+      "id": "kaskad",
+      "category": "ecosystem",
+      "name": "Kaskad",
+      "url": "https://www.kaskad.app/",
+      "description": "DeFi lending and borrowing protocol on Igra, an EVM-compatible Kaspa Layer 2. Kaskad also operates on Robinhood Chain.",
+      "source": "https://docs.kaskad.app/docs/supported-networks",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
       "id": "kasplay",
       "category": "games",
       "name": "KasPlay",

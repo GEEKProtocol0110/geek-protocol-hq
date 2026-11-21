@@ -1459,7 +1459,7 @@
       "status": "done",
       "title": "Build a public Kaspa directory and acknowledge Kas.fyi and Kaspa Stream",
       "owner": "Maintainer prepares source; founder reviews release and supplies additional Hall links",
-      "nextAction": "Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope. Review KaspaCom Covenant Explorer and Kasway following merged PR #319.",
+      "nextAction": "Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope. Review the Kaspa Live, Kaspet, Kaspa Daily Charts, Kaspa Links, Kaspa Explained and kascov directory additions. Kaskad merged in PR #318 and was verified live. Review KaspaCom Covenant Explorer and Kasway in PR #320.",
       "acceptance": [
         "Keep the Kaspa beginner guide and existing Hall credits intact; Kas.fyi is the final ecosystem card labeled Special thank you, and Kaspa Stream has its own thank-you card.",
         "Provide native HTML resource links, useful categories, accessible search/reset and a no-JavaScript browsing path.",
