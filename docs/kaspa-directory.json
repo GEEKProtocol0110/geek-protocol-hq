@@ -2867,6 +2867,26 @@
       "source": "https://kaspalinks.com/",
       "reviewedAt": "2026-11-21",
       "status": "listed"
+    },
+    {
+      "id": "kaspa-explained",
+      "category": "education-resources",
+      "name": "Kaspa Explained",
+      "url": "https://kaspaexplained.com/",
+      "description": "Interactive Kaspa learning guide with a beginner tour, a live 3D BlockDAG and a roadmap that distinguishes deployed features from proposals.",
+      "source": "https://kaspaexplained.com/learn/roadmap/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
+    },
+    {
+      "id": "kascov",
+      "category": "explorers",
+      "name": "kascov",
+      "url": "https://kascov.io/",
+      "description": "Open-source Kaspa covenant explorer and indexer for inspecting KCC-20 tokens, markets and liquidity pools. Includes a public API.",
+      "source": "https://github.com/Knitser/kascov",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
     }
   ],
   "updatedAt": "2026-11-21T08:00:00Z",

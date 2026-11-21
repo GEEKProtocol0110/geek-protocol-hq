@@ -1579,3 +1579,4 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - Both listings are candidates for review. Directory parity, six focused tests, site and continuity checks passed.
 - PR #319 also adds Kaspa Daily Charts under Explorers & data. The direct chart page returned HTTP 200 and identifies its Kaspa on-chain indicators.
 - PR #319 also adds the Kaspa Links homepage to Payments & merchants for KAS tips, donations and invoices.
+- PR #319 also adds Kaspa Explained under Learning Platforms & Guides and kascov under Explorers & data.
