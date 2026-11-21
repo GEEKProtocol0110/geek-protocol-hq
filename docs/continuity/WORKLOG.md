@@ -1573,6 +1573,14 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - ECO-008 adds DAGKnight Explained to Education Resources. The independent site provides a plain-language explainer, comparison with GHOSTDAG and implementation tracker. The separate research paper listing remains available.
 - Candidate prepared locally for review. Geek Protocol's free reciprocal listing copy is ready for review.
 
+## November 21, 2026 — Kaspa Live and Kaspet directory listings
+
+- ECO-002 adds Kaspa Live to Explorers & data and Kaspet to Games & arcade. The founder's screen recording showed the Kaspa Live graph and activity panel; a direct fetch returned HTTP 403. Kaspet's project site documents the mainnet game and KAS fees.
+- Both listings are candidates for review. Directory parity, six focused tests, site and continuity checks passed.
+- PR #319 also adds Kaspa Daily Charts under Explorers & data. The direct chart page returned HTTP 200 and identifies its Kaspa on-chain indicators.
+- PR #319 also adds the Kaspa Links homepage to Payments & merchants for KAS tips, donations and invoices.
+- PR #319 also adds Kaspa Explained under Learning Platforms & Guides and kascov under Explorers & data.
+
 ## November 21, 2026 — Kaskad directory listing
 
 - ECO-002 adds Kaskad under Apps & token ecosystems. The listing identifies Igra as its Kaspa Layer 2 deployment and names Robinhood Chain separately. The project website and supported-networks documentation are the references.
