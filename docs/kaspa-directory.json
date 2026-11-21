@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "reviewedAt": "2026-11-09",
+  "reviewedAt": "2026-11-21",
   "categories": [
     {
       "id": "learn",
@@ -2817,9 +2817,19 @@
       "source": "https://hellokaspa.com/",
       "reviewedAt": "2026-11-09",
       "status": "listed"
+    },
+    {
+      "id": "dagknight-explained",
+      "category": "education-resources",
+      "name": "DAGKnight Explained",
+      "url": "https://dagknight.com/",
+      "description": "Independent Kaspa learning resource with a plain-English DAGKnight explainer, a GHOSTDAG comparison, and a tracker for the proposed consensus upgrade.",
+      "source": "https://dagknight.com/",
+      "reviewedAt": "2026-11-21",
+      "status": "listed"
     }
   ],
-  "updatedAt": "2026-11-09T06:46:40Z",
+  "updatedAt": "2026-11-21T08:00:00Z",
   "krc20Review": {
     "windowDays": 90,
     "candidateCount": 45,
