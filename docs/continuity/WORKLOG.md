@@ -1580,3 +1580,8 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - PR #319 also adds Kaspa Daily Charts under Explorers & data. The direct chart page returned HTTP 200 and identifies its Kaspa on-chain indicators.
 - PR #319 also adds the Kaspa Links homepage to Payments & merchants for KAS tips, donations and invoices.
 - PR #319 also adds Kaspa Explained under Learning Platforms & Guides and kascov under Explorers & data.
+
+## November 21, 2026 — Kaskad directory listing
+
+- ECO-002 adds Kaskad under Apps & token ecosystems. The listing identifies Igra as its Kaspa Layer 2 deployment and names Robinhood Chain separately. The project website and supported-networks documentation are the references.
+- Directory parity, six focused tests and site checks passed. Candidate for pull request review.
