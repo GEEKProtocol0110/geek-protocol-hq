@@ -929,7 +929,7 @@ Evidence/specification: [public/about/index.html](../../public/about/index.html)
 
 **P1 / done.** Owner: Maintainer prepares source; founder reviews release and supplies additional Hall links. Dependencies: none.
 
-Next action: Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope. Review the Kaspa Live, Kaspet, Kaspa Daily Charts, Kaspa Links, Kaspa Explained and kascov directory additions. Kaskad merged in PR #318 and was verified live. Review KaspaCom Covenant Explorer and Kasway in PR #320.
+Next action: Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope. Review the Kaspa Live, Kaspet, Kaspa Daily Charts, Kaspa Links, Kaspa Explained and kascov directory additions. Kaskad merged in PR #318 and was verified live. Review KaspaCom Covenant Explorer and Kasway in PR #320. The Truth (https://the-truth.ai.studio/) added as a founder-requested neutral News & community listing on November 22; page-content and browser review remain pending.
 
 Acceptance:
 

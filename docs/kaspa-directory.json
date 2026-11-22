@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "reviewedAt": "2026-11-21",
+  "reviewedAt": "2026-11-22",
   "categories": [
     {
       "id": "learn",
@@ -2917,9 +2917,19 @@
       "source": "https://github.com/Kasway-Tech/pos",
       "reviewedAt": "2026-11-21",
       "status": "listed"
+    },
+    {
+      "id": "the-truth",
+      "category": "community",
+      "name": "The Truth",
+      "url": "https://the-truth.ai.studio/",
+      "description": "The Truth project website, shared by the Geek Protocol community.",
+      "source": "https://the-truth.ai.studio/",
+      "reviewedAt": "2026-11-22",
+      "status": "listed"
     }
   ],
-  "updatedAt": "2026-11-21T08:00:00Z",
+  "updatedAt": "2026-11-22T05:07:30.582Z",
   "krc20Review": {
     "windowDays": 90,
     "candidateCount": 45,
