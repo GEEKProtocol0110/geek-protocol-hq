@@ -1589,3 +1589,11 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 ## November 21, 2026 — Covenant explorer and point of sale
 
 - PR #319 merged as 301535d; all six directory listings were verified live. ECO-002 prepares KaspaCom Covenant Explorer under Developer tools and Kasway under Payments & merchants.
+
+
+## November 22, 2026 — The Truth directory listing
+
+- ECO-002: founder explicitly requested The Truth at https://the-truth.ai.studio/. Added one neutral News & community resource, bringing the directory to 201 resources in 20 categories, with one native card and one JSON-LD item. Prior entries remain unchanged. The source and description make no inferred feature, network, token or security claim.
+- Source-content verification is incomplete: the web reader could not fetch the exact site, and search did not provide matching indexed page content. Editorial date does not certify availability or functionality.
+- Local shell execution is unavailable. In-memory execution of the existing directory generator with adapters passed baseline and updated HTML parity; ID/URL uniqueness, existing-entry preservation and card/JSON-LD/count alignment passed. The existing backlog generator expression reproduced the original bytes before generating the updated view. Native tests, continuity/site/security checks and rendering remain for hosted CI/preview. These in-memory checks are not reported as npm commands.
+- Updated maintained JSON, generated backlog/current-state views and directory evidence. Prepare a separate review PR; #321's fact corrections remain separate. No merge, production mutation or economic activation is claimed.
