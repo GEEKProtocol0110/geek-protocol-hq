@@ -1597,3 +1597,11 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - Source-content verification is incomplete: the web reader could not fetch the exact site, and search did not provide matching indexed page content. Editorial date does not certify availability or functionality.
 - Local shell execution is unavailable. In-memory execution of the existing directory generator with adapters passed baseline and updated HTML parity; ID/URL uniqueness, existing-entry preservation and card/JSON-LD/count alignment passed. The existing backlog generator expression reproduced the original bytes before generating the updated view. Native tests, continuity/site/security checks and rendering remain for hosted CI/preview. These in-memory checks are not reported as npm commands.
 - Updated maintained JSON, generated backlog/current-state views and directory evidence. Prepare a separate review PR; #321's fact corrections remain separate. No merge, production mutation or economic activation is claimed.
+
+
+## November 22, 2026 — The Truth card wording
+
+- ECO-002: founder clarified that The Truth is made by an independent developer for analyzing currencies with thermodynamics and physics. Updated the catalog description and regenerated native card/search text/JSON-LD; retained its name, exact URL, News & community category and all other entries. Attribution is founder-supplied, not independent site-content validation.
+- #322 was merged as e521170e42dd9efd481aab2201497a33633aa898 and production dpl_4WPXUoRZBMhkeVYt7HJeRJ6bxXFw was READY with canonical directory HTML matching the reviewed bytes. That establishes the prior neutral listing release, not this wording update.
+- Updated maintained ECO-002/project checkpoint and generated views. Validation and the exact release result will be recorded in the follow-up PR.
+- Local validation: 6/6 directory regression tests pass, zero failures/skips. Native directory parity, continuity and site checks plus git diff --check pass. A fresh worktree initially lacked dependencies; installed the unchanged locked graph with npm ci --ignore-scripts, then regenerated and ran the checks successfully. Hosted CI and production evidence follow in the PR.
