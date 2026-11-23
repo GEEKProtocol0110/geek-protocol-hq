@@ -42,7 +42,7 @@
     "description": "One reviewable branch integrates exact origins, atomic limits and fresh-proof wallet linking, including maintained records and release gates."
   },
   "nextTask": "SEC-004",
-  "nextAction": "Verify the assembled candidate and exact-head hosted checks, prepare branch-scoped Preview origins, and obtain missing independent review and Preview isolation evidence before real-account/device acceptance. Main merge remains separate.",
+  "nextAction": "Combined draft PR #324 is published and its exact branch-scoped Preview origins are configured and read back. Existing fixed Preview alias is unchanged. Obtain independent review and owner/provider confirmation of Preview database isolation before actual-account/device acceptance; inspect final exact-head hosted checks. Main merge remains separate.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
@@ -337,8 +337,8 @@
   },
   "securityReleaseCandidate": {
     "task": "SEC-004",
-    "status": "assembled-locally-verified",
+    "status": "published-review-preview-prepared",
     "evidence": "docs/SECURITY-RELEASE-CANDIDATE.md",
-    "nextAction": "Verify the assembled candidate and exact-head hosted checks, prepare branch-scoped Preview origins, and obtain missing independent review and Preview isolation evidence before real-account/device acceptance. Main merge remains separate."
+    "nextAction": "Combined draft PR #324 is published and its exact branch-scoped Preview origins are configured and read back. Existing fixed Preview alias is unchanged. Obtain independent review and owner/provider confirmation of Preview database isolation before actual-account/device acceptance; inspect final exact-head hosted checks. Main merge remains separate."
   }
 }

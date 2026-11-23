@@ -27,7 +27,7 @@ Record date: 2026-11-23. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 **SEC-004: source-candidate.** One reviewable branch integrates exact origins, atomic limits and fresh-proof wallet linking, including maintained records and release gates.
 
-Next task: **SEC-004**. Verify the assembled candidate and exact-head hosted checks, prepare branch-scoped Preview origins, and obtain missing independent review and Preview isolation evidence before real-account/device acceptance. Main merge remains separate.
+Next task: **SEC-004**. Combined draft PR #324 is published and its exact branch-scoped Preview origins are configured and read back. Existing fixed Preview alias is unchanged. Obtain independent review and owner/provider confirmation of Preview database isolation before actual-account/device acceptance; inspect final exact-head hosted checks. Main merge remains separate.
 
 ## Holds
 

@@ -33,3 +33,11 @@ The original #307/#308/#309 PRs remain intact for comparison; this candidate doe
 ## Assembled local verification
 
 The completed application suite passes 1,002 tests with required isolated Redis 7.2.5 and concurrency two, zero failures/skips. Both offline signer suites pass nine tests each: 1,020 application/signer checks total. All other verify components pass, including 340 security assertions, shared continuity, question/content, economy, site and whitepaper checks. Documentation finalization reruns continuity/site/whitespace checks. Exact published head/tree, hosted checks and branch-scoped Preview outcomes are recorded in the PR; no independent or physical-device acceptance is claimed here.
+
+## Published review candidate and Preview evidence
+
+[PR #324](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/324) publishes the combined candidate. The initial published source bf1f61efc57aed402a5d424c82af55bb7ded001c has the same checked tree as local cb19acb; all three pinned component heads are preserved as commit parents.
+
+The server-returned branch alias is `geek-protocol-hq-git-codex-secur-aff3b8-geek-protocols-projects.vercel.app`. IDENTITY_ALLOWED_ORIGINS and PASSKEY_ORIGIN were set to its exact HTTPS origin, with target Preview and gitBranch codex/security-release-candidate only. Both values/scopes were read back. Redeployment dpl_Cnyf2SGtoLEDrRC9JN1ro3WZzqwn is READY on the initial combined source, is a Preview deployment, and serves exact checked sign-in HTML over HTTP 200. The existing preview.geekprotocol.xyz alias still points to its prior deployment; Production origins, secrets and settings were not changed.
+
+This completes Preview routing/origin preparation, not permission to use real accounts. Database isolation and independent review remain unconfirmed. Final documentation-only source changes require their own exact-head hosted checks, recorded in #324. No authentication, wallet, registration or credential action was performed during HTTP delivery verification.

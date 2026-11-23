@@ -2581,7 +2581,7 @@
       "status": "in-progress",
       "title": "Assemble and verify the combined origin, limiter and wallet-link release",
       "owner": "Maintainer prepares candidate; founder reviews release; independent reviewer unassigned",
-      "nextAction": "Publish the combined draft, verify exact-head hosted checks, configure branch-scoped Preview origins on its returned branch alias, and obtain independent review and storage-isolation confirmation before real-account/device acceptance. Main merge remains separate.",
+      "nextAction": "Combined draft PR #324 is published and its exact branch-scoped Preview origins are configured and read back. Existing fixed Preview alias is unchanged. Obtain independent review and owner/provider confirmation of Preview database isolation before actual-account/device acceptance; inspect final exact-head hosted checks. Main merge remains separate.",
       "dependsOn": [
         "SEC-002",
         "SEC-003",
@@ -2601,7 +2601,8 @@
         "docs/WALLET-LINK-REAUTH.md"
       ],
       "validationEvidence": [
-        "Assembled source: 1002 application tests with required real Redis 7.2.5, concurrency two, plus 18 offline signer checks (1020 total), zero failures/skips. All other verify components pass, including 340 security assertions and shared continuity/site/content/economy/whitepaper checks. Exact hosted/Preview results follow in the PR."
+        "Assembled source: 1002 application tests with required real Redis 7.2.5, concurrency two, plus 18 offline signer checks (1020 total), zero failures/skips. All other verify components pass, including 340 security assertions and shared continuity/site/content/economy/whitepaper checks. Exact hosted/Preview results follow in the PR.",
+        "Review Preview dpl_Cnyf2SGtoLEDrRC9JN1ro3WZzqwn READY on initial combined source bf1f61e; sign-in HTTP 200 matches checked HTML. IDENTITY_ALLOWED_ORIGINS and PASSKEY_ORIGIN match the exact server-returned branch alias and are scoped only to Preview/gitBranch codex/security-release-candidate. Existing fixed Preview alias deployment is unchanged. This is HTTP/configuration evidence, not independent, isolation or device acceptance."
       ]
     }
   ]

@@ -1647,7 +1647,7 @@ Evidence/specification: [docs/WALLET-LINK-REAUTH.md](../../docs/WALLET-LINK-REAU
 
 **P0 / in-progress.** Owner: Maintainer prepares candidate; founder reviews release; independent reviewer unassigned. Dependencies: SEC-002, SEC-003, AUTH-006.
 
-Next action: Publish the combined draft, verify exact-head hosted checks, configure branch-scoped Preview origins on its returned branch alias, and obtain independent review and storage-isolation confirmation before real-account/device acceptance. Main merge remains separate.
+Next action: Combined draft PR #324 is published and its exact branch-scoped Preview origins are configured and read back. Existing fixed Preview alias is unchanged. Obtain independent review and owner/provider confirmation of Preview database isolation before actual-account/device acceptance; inspect final exact-head hosted checks. Main merge remains separate.
 
 Acceptance:
 
