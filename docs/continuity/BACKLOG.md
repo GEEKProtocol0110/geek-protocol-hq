@@ -930,7 +930,7 @@ Evidence/specification: [public/about/index.html](../../public/about/index.html)
 
 **P1 / done.** Owner: Maintainer prepares source; founder reviews release and supplies additional Hall links. Dependencies: none.
 
-Next action: Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope. Review the Kaspa Live, Kaspet, Kaspa Daily Charts, Kaspa Links, Kaspa Explained and kascov directory additions. Kaskad merged in PR #318 and was verified live. Review KaspaCom Covenant Explorer and Kasway in PR #320.
+Next action: Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope. Review the Kaspa Live, Kaspet, Kaspa Daily Charts, Kaspa Links, Kaspa Explained and kascov directory additions. Kaskad merged in PR #318 and was verified live. Review KaspaCom Covenant Explorer and Kasway in PR #320. The Truth is live from #322. Founder requested its card describe an independent developer analyzing currencies through thermodynamics and physics; verify the wording follow-up before release. Independent site-content and browser review remain separate.
 
 Acceptance:
 
@@ -1596,7 +1596,7 @@ Evidence/specification: [docs/HALL-OF-THANKS.md](../../docs/HALL-OF-THANKS.md), 
 
 **P0 / in-progress.** Owner: Maintainer implements; independent reviewer unassigned; founder reviews release and devices. Dependencies: AUTH-005.
 
-Next action: PR #309 integrated main 7db37b3 on November 21; 983 application and 18 offline signer tests pass, zero failures/skips. Inspect refreshed exact-head CI and obtain founder release review. Original-passkey wallet-link phone acceptance and session rotation remain separate.
+Next action: Current-main refresh integrates 352d811 with authentication runtime/tests unchanged from 38b50b8. Local verification passes 983 application + 18 offline signer checks, zero failures/skips. Inspect refreshed exact-head CI and obtain the missing Security Bot delta review before proposing release. Actual-phone acceptance remains separate.
 
 Acceptance:
 

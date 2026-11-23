@@ -1591,6 +1591,22 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - PR #319 merged as 301535d; all six directory listings were verified live. ECO-002 prepares KaspaCom Covenant Explorer under Developer tools and Kasway under Payments & merchants.
 
 
+## November 22, 2026 — The Truth directory listing
+
+- ECO-002: founder explicitly requested The Truth at https://the-truth.ai.studio/. Added one neutral News & community resource, bringing the directory to 201 resources in 20 categories, with one native card and one JSON-LD item. Prior entries remain unchanged. The source and description make no inferred feature, network, token or security claim.
+- Source-content verification is incomplete: the web reader could not fetch the exact site, and search did not provide matching indexed page content. Editorial date does not certify availability or functionality.
+- Local shell execution is unavailable. In-memory execution of the existing directory generator with adapters passed baseline and updated HTML parity; ID/URL uniqueness, existing-entry preservation and card/JSON-LD/count alignment passed. The existing backlog generator expression reproduced the original bytes before generating the updated view. Native tests, continuity/site/security checks and rendering remain for hosted CI/preview. These in-memory checks are not reported as npm commands.
+- Updated maintained JSON, generated backlog/current-state views and directory evidence. Prepare a separate review PR; #321's fact corrections remain separate. No merge, production mutation or economic activation is claimed.
+
+
+## November 22, 2026 — The Truth card wording
+
+- ECO-002: founder clarified that The Truth is made by an independent developer for analyzing currencies with thermodynamics and physics. Updated the catalog description and regenerated native card/search text/JSON-LD; retained its name, exact URL, News & community category and all other entries. Attribution is founder-supplied, not independent site-content validation.
+- #322 was merged as e521170e42dd9efd481aab2201497a33633aa898 and production dpl_4WPXUoRZBMhkeVYt7HJeRJ6bxXFw was READY with canonical directory HTML matching the reviewed bytes. That establishes the prior neutral listing release, not this wording update.
+- Updated maintained ECO-002/project checkpoint and generated views. Validation and the exact release result will be recorded in the follow-up PR.
+- Local validation: 6/6 directory regression tests pass, zero failures/skips. Native directory parity, continuity and site checks plus git diff --check pass. A fresh worktree initially lacked dependencies; installed the unchanged locked graph with npm ci --ignore-scripts, then regenerated and ran the checks successfully. Hosted CI and production evidence follow in the PR.
+
+
 ## November 17, 2026 — AUTH-006 first-wallet-link candidate
 
 - **Base / scope:** main `b7521c6db2087d0c40580afa443104f33f4cd212`, branch `codex/wallet-link-reauth`. Fresh one-use account proof for the first recovery-wallet link; retain existing passkeys through an atomic credential wallet-version update. Compare the exact credential account and validated requesting-session snapshot at commit. The fresh-proof deadline cannot be extended by a later wallet challenge. Preserve player/progress and wallet recovery's existing passkey invalidation.
@@ -1607,3 +1623,11 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - Added regressions for fresh passkey deletion after first wallet linking and a different device deleting the account during atomic link commit. Both fail closed as required. Full integrated application suite: 983 pass, zero fail/skip, required isolated real Redis 7.2.5, concurrency two. Offline signer suites: 18 pass, zero fail/skip. All other verify components pass; 333 security assertions. One initial test expectation for the established removed-credential error was corrected from HTTP 401 to the actual PASSKEY_PROOF_INVALID refusal code (HTTP 400).
 - Updated AUTH-006 and current checkpoint. Recorded the next jobs, dependencies and actual review limits in `docs/SECURITY-QUEUE-2026-11-21.md`. Bank review and the other held security candidates remain open.
 - Next: push this integration to existing draft #309, inspect exact-head hosted checks, and return it for founder release review. No main merge, production configuration, secret change, payout activation or physical-device acceptance is claimed.
+
+
+## November 22, 2026 — AUTH-006 refresh after directory release
+
+- Integrated main 352d811 into #309 head 38b50b8 without rewriting history. Resolved continuity dates and appended worklog conflicts, preserving both AUTH-006 and all live The Truth directory work. All authentication/API/client/test/script/worker bytes remain unchanged from 38b50b8.
+- Fresh required-isolated-Redis application suite: 983 pass, zero fail/skip. Offline signer suites: 18 pass, zero fail/skip. Every other verify component passes, including 333 security assertions, continuity/site/content/economy/whitepaper checks. The focused directory/manual/provider client suite additionally passed 22 tests.
+- No posted Security Bot delta-review result was found. The latest #225 handoff assigns that review; #309 contains no submitted reviews or non-Vercel conversation comments. This refresh preserves the review prerequisite and does not claim an independent audit or actual-phone acceptance.
+- Updated task/current checkpoint and evidence. Publish the refreshed draft head and inspect its hosted checks. No merge, live auth change, secret/provider mutation, payout or private-bank cutover is authorized by this source-preparation record.

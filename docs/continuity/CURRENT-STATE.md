@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-11-21. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-11-22. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -27,7 +27,7 @@ Record date: 2026-11-21. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 **AUTH-006: source-candidate.** Integrate the first-wallet-link security fix with current HQ and account deletion; preserve passkeys and verify cross-feature deletion behavior.
 
-Next task: **AUTH-006**. PR #309 integrated main 7db37b3 on November 21; 983 application and 18 offline signer tests pass, zero failures/skips. Inspect refreshed exact-head CI and obtain founder release review. Original-passkey wallet-link phone acceptance and session rotation remain separate.
+Next task: **AUTH-006**. Current-main refresh integrates 352d811 with authentication runtime/tests unchanged from 38b50b8. Local verification passes 983 application + 18 offline signer checks, zero failures/skips. Inspect refreshed exact-head CI and obtain the missing Security Bot delta review before proposing release. Actual-phone acceptance remains separate.
 
 ## Holds
 

@@ -14,3 +14,8 @@ Source checkpoint: main `7db37b3459ef80ef0ec05635c39a81ca0f049da1`. This is a wo
 Geek Bot's November 20 report on issue #225 says Security Bot rated #306–#309 READY with LOW/INFO notes. The underlying local report was not available in this checkout, and #309 has no submitted GitHub review. Treat this as reported review of earlier candidates, not a new independent audit or refreshed-head acceptance.
 
 Other open work: #321 directory fact corrections; #305 companion-document drafts; #200 private-ranked-bank cutover; #216 migration design. The last two retain their separate restrictions. Credits Song phone sound, multiplayer/device acceptance and restore evidence remain distinct acceptance jobs. No automatic merge, production rollout, announcement or payment is authorized by this queue.
+
+
+## November 22 checkpoint
+
+AUTH-006 is refreshed against main 352d811. Authentication/runtime/test bytes are unchanged from 38b50b8; only the live directory additions and maintained records were integrated. Fresh local verification again passes 983 application and 18 offline signer tests, zero failures/skips; all remaining verify components pass. Geek Bot's November 22 handoff assigns Security Bot a delta review but does not contain its result, and #309 has no submitted review. Preserve that prerequisite and actual-device acceptance. The published PR records the refreshed head, tree and hosted checks.
