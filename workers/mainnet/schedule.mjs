@@ -1,9 +1,44 @@
+import { createHash } from 'node:crypto';
+
 // Current KRC-20 GEEK reward schedule confirmed 2026-11-12.
 // Whole-token amounts. Eight decimals are applied at the raw-unit boundary.
 // The 100,000 daily cap is a temporary safety limit, not a permanent reward policy.
 // Alpha-credit ROUND_CONFIG rewards are a separate internal balance and are not paid here.
 
-export const MAINNET_PAYOUT_SENDER = 'kaspa:qql9hrch8rqk62ywncjmm4y3qr6dv0d8r0vvu8q7382ccawlwz50xqu0e3gvs';
+// The public hot-wallet sender address is read from the environment, never from source.
+// MAINNET_PAYOUT_ADDRESS belongs to the Production scope (HQ production and the worker project).
+export const MAINNET_PAYOUT_ADDRESS_ENV = 'MAINNET_PAYOUT_ADDRESS';
+// SHA-256 hex digest of the reviewed hot-wallet address: the exact UTF-8 string, including the
+// "kaspa:" prefix, lowercase, with no surrounding whitespace. In production a configured address
+// with any other digest is refused, so the reviewed wallet stays pinned without its plain text here.
+export const MAINNET_PAYOUT_ADDRESS_SHA256 = '662d1730e13025e8df48ffcfc1d982a8047bf8ba191958dda7739e111b504d59';
+const ADDRESS_CHARSET = 'qpzry9x8gf2tvdw0s3jn54khce6mua7l';
+const ADDRESS_GENERATORS = [0x98f2bc8e61n, 0x79b76d99e2n, 0xf33e5fb3c4n, 0xae2eabe2a8n, 0x1e4f43e470n];
+
+// Exact lowercase kaspa: mainnet address with a valid checksum. No trimming or case folding.
+export function isMainnetPayoutAddress(value) {
+  const match = typeof value === 'string' ? /^kaspa:([qpzry9x8gf2tvdw0s3jn54khce6mua7l]{61,63})$/.exec(value) : null;
+  if (!match) return false;
+  let checksum = 1n;
+  for (const digit of [...'kaspa'].map(c => c.charCodeAt(0) & 31).concat(0, [...match[1]].map(c => ADDRESS_CHARSET.indexOf(c)))) {
+    const high = checksum >> 35n;
+    checksum = ((checksum & 0x07ffffffffn) << 5n) ^ BigInt(digit);
+    ADDRESS_GENERATORS.forEach((generator, index) => { if ((high >> BigInt(index)) & 1n) checksum ^= generator; });
+  }
+  return (checksum ^ 1n) === 0n;
+}
+
+// Returns the configured sender, or null when it is missing, empty, malformed, or (in production)
+// not the reviewed wallet. There is no hardcoded fallback. Every payout path compares against the
+// result, so null fails closed: HQ admits nothing and the signer refuses every live job.
+export function resolvePayoutSender(env = process.env) {
+  const value = env?.[MAINNET_PAYOUT_ADDRESS_ENV];
+  if (!isMainnetPayoutAddress(value)) return null;
+  if (env.VERCEL_ENV === 'production' && createHash('sha256').update(value, 'utf8').digest('hex') !== MAINNET_PAYOUT_ADDRESS_SHA256) return null;
+  return value;
+}
+
+export const MAINNET_PAYOUT_SENDER = resolvePayoutSender();
 export const GEEK_TICKER = 'GEEK';
 export const GEEK_PROTOCOL = 'KRC-20';
 export const GEEK_DECIMALS = 8;

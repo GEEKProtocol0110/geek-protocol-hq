@@ -83,6 +83,13 @@
           <div data-passkey-wallet-help hidden><p>You can also verify your linked wallet to manage passkeys.</p><button type="button" class="button button-secondary" data-passkey-wallet-authorize>Verify my linked wallet</button></div>
           <p class="sign-in-note">Keep another passkey or linked wallet available before removing access.</p>
         </details>
+        <details class="sign-in-method" data-account-delete>
+          <summary>Delete my Geek account</summary>
+          <p>This permanently deletes your name, XP, progress, passkeys, linked wallet, receiving addresses and leaderboard standings, and signs you out on every device. It cannot be undone. <a href="/privacy/">What is kept</a>.</p>
+          <p class="sign-in-note">Signed in with a passkey or wallet? Choose Verify with a passkey (or verify your linked wallet) first.</p>
+          <label for="account-delete-confirm">Type DELETE to confirm</label><input id="account-delete-confirm" data-account-delete-confirm maxlength="6" autocomplete="off" spellcheck="false" />
+          <button type="button" class="button button-secondary" data-account-delete-button disabled>Delete my account</button>
+        </details>
       </section>
       <div class="sign-in-guest" data-sign-in-guest><a href="/profile/" class="button button-secondary" data-sign-in-continue>Continue as a guest →</a><p>No wallet needed. Guest progress stays in this browser.</p></div>
       <details class="sign-in-card sign-in-alternate" data-wallet-methods aria-labelledby="wallet-login-title"><summary>Use a linked wallet</summary>
@@ -108,7 +115,7 @@
             <p>Use a wallet browser with Kaspa message signing. On a phone, open Geek inside a compatible wallet browser. If your wallet cannot sign in here, use a saved passkey below.</p>
           </details>
         </div>
-        <p class="sign-in-note">No seed phrase. No transaction or network fee to sign in. Test rewards use GEEKT; Mainnet payouts are not enabled.</p>
+        <p class="sign-in-note">No seed phrase. No transaction or network fee to sign in. Test rewards use GEEKT; Mainnet payouts are not enabled. <a href="/privacy/">What we store</a>.</p>
       </details>
       <details class="sign-in-card sign-in-alternate" data-device-access>
         <summary>Use another device</summary>

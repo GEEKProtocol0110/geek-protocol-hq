@@ -48,3 +48,14 @@ Before release: inspect exact-head CI and preview, reconcile continuity changes 
 - Remote branch counts and deletion safety were not established here. Inventory ownership, open PR linkage, merged history and preservation needs before proposing labels or pruning; no branch was deleted.
 
 Reference: [Vercel system environment variables](https://vercel.com/docs/environment-variables/system-environment-variables). This source candidate changes no owner credentials, Mainnet payouts, CCE admission, collection ownership or paused remote tutor settings.
+
+
+## November 23 current-main integration
+
+Integrated live main `352d811d95b9964d900782244952a6fb5e059563` into #307 head `a0049790906a6d62966838035f7cdedefd9a8fc4`, preserving both histories. Conflicts were confined to continuity records and generated views; all prior worklog history and tasks remain. The exact-origin helper, wallet integration, Royale integration and eight origin regressions are unchanged from the prior candidate. Current main's account deletion, signer guard, Credits Song and directory work are retained. #309's first-wallet-link change is still a separate unmerged candidate; this is not an assembled #307/#309 release.
+
+Fresh required-isolated-Redis (7.2.5), concurrency-two application suite: **981 pass**, zero failures/skips. Offline signer suites: **9 each**, for **999 total tests**. Every other verify component passes, including **336 security assertions**, question/content, economy, continuity, site and whitepaper checks. A separate focused exact-origin/passkey/account-deletion/Royale suite passes **63 tests**, zero failures/skips. Historical baseline and wildcard negative controls above were not repeated because their code/tests are unchanged; this run establishes compatibility with current main.
+
+Read-only HQ environment inspection lists PASSKEY_ORIGIN for Preview, set to the previously approved `https://preview.geekprotocol.xyz`, and lists neither IDENTITY_ALLOWED_ORIGINS nor IDENTITY_ORIGIN. Only this plain origin variable was retrieved individually; no secret was decrypted. Configure exact approved wallet/Royale origins in Preview before interactive use of this candidate, and confirm the chosen alias points at that review deployment. PASSKEY_ORIGIN remains a separate boundary and does not itself authorize wallet proofs or Royale mutations. Production canonical origins are built in. No variable, alias, secret, live account or production setting was changed here.
+
+Geek Bot's earlier report calls #307 READY; #307 currently has no submitted GitHub review or non-Vercel conversation comment. This refresh records internal integration verification, not a new independent audit. Hosted checks, founder release review and actual wallet/device acceptance remain separate and are recorded in the PR. Owner MFA (#306), atomic rates (#308), wallet-link recovery (#309) and private-bank #200 remain independent work; no economic gate is lifted.

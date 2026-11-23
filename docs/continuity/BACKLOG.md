@@ -103,6 +103,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-033 | P1 | done | Keep active game controls and boards together without focus-driven scrolling | Maintainer; founder reviews release; physical-device acceptance unassigned |
 | UX-034 | P1 | done | Let one player face A.C.E. in the two-player local strategy games | Maintainer; founder reviews release; independent difficulty/device acceptance unassigned |
 | UX-035 | P1 | in-progress | Build the A.C.E. Arcade milestone with saved games and a personal practice desk | Maintainer; founder reviews release; physical-device acceptance unassigned |
+| UX-036 | P2 | in-progress | Add the founder-supplied GEEK Credits Song to Hall of Thanks | Maintainer; founder reviews preview and phone sound |
 | SEC-002 | P1 | in-progress | Restrict wallet proofs and Royale writes to exact trusted origins | Maintainer; founder reviews release and real-wallet acceptance; independent reviewer unassigned |
 
 ## CONT-001: Publish the continuation system
@@ -929,7 +930,7 @@ Evidence/specification: [public/about/index.html](../../public/about/index.html)
 
 **P1 / done.** Owner: Maintainer prepares source; founder reviews release and supplies additional Hall links. Dependencies: none.
 
-Next action: Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope.
+Next action: Maintain the deployed directory and Hall credits; checked KRC-20 expansion continues under ECO-003. Additional named Hall acknowledgments require their own source and scope. Review the Kaspa Live, Kaspet, Kaspa Daily Charts, Kaspa Links, Kaspa Explained and kascov directory additions. Kaskad merged in PR #318 and was verified live. Review KaspaCom Covenant Explorer and Kasway in PR #320. The Truth is live from #322. Founder requested its card describe an independent developer analyzing currencies through thermodynamics and physics; verify the wording follow-up before release. Independent site-content and browser review remain separate.
 
 Acceptance:
 
@@ -1211,7 +1212,7 @@ Evidence/specification: [docs/TABLETOP-ART.md](../../docs/TABLETOP-ART.md), [pub
 
 **P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: ECO-003.
 
-Next action: Review PR #256: GEEK/BMT token-network and utility-state cards plus six learning resources; founder approval required for merge.
+Next action: Review the DAGKnight Explained learning-resource addition to the Education directory from merged PR #256.
 
 Acceptance:
 
@@ -1577,11 +1578,25 @@ Acceptance:
 
 Evidence/specification: [docs/ARCADE-300.md](../../docs/ARCADE-300.md), [public/games/ace/index.html](../../public/games/ace/index.html), [public/games/assets/arcade-book.js](../../public/games/assets/arcade-book.js), [public/games/assets/arcade-session.js](../../public/games/assets/arcade-session.js), [public/games/assets/arena.js](../../public/games/assets/arena.js), [tests/arcade-practice.test.js](../../tests/arcade-practice.test.js), [tests/arcade-hub-ux.test.js](../../tests/arcade-hub-ux.test.js).
 
+## UX-036: Add the founder-supplied GEEK Credits Song to Hall of Thanks
+
+**P2 / in-progress.** Owner: Maintainer; founder reviews preview and phone sound. Dependencies: none.
+
+Next action: Verify the web rendition and explicit-play controls; publish draft with hosted preview before release.
+
+Acceptance:
+
+- Named GEEK Credits Song player uses the supplied full track and accessible Play/Pause, seek and volume controls.
+- No page load, unrelated interaction or stored preference starts playback; preload none and native no-JavaScript controls remain.
+- Local web audio is metadata-stripped and decodes fully; page fits narrow screens. Record preview and remaining actual-phone acceptance separately.
+
+Evidence/specification: [docs/HALL-OF-THANKS.md](../../docs/HALL-OF-THANKS.md), [public/thanks/index.html](../../public/thanks/index.html), [public/thanks/assets/music.js](../../public/thanks/assets/music.js), [tests/thanks-music.test.js](../../tests/thanks-music.test.js).
+
 ## SEC-002: Restrict wallet proofs and Royale writes to exact trusted origins
 
 **P1 / in-progress.** Owner: Maintainer; founder reviews release and real-wallet acceptance; independent reviewer unassigned. Dependencies: none.
 
-Next action: Review exact-head CI and preview, provision exact approved preview origins separately, and reconcile continuity with #305/#306 before a separately approved release. Keep #306 held for owner/MFA provisioning and external caller confirmation.
+Next action: Refreshed against main 352d811. Local verification passes 981 application + 18 offline signer checks, zero failures/skips; 336 security assertions. Inspect exact-head hosted checks. Provision only the approved Preview wallet/Royale origins before interactive preview testing; obtain founder release review and retain real-wallet/device acceptance separately. #309 and #306 remain separate.
 
 Acceptance:
 
