@@ -1,16 +1,21 @@
-import { MUSIC_VOLUME, musicPreference, saveMusicPreference, startsOnInteraction, musicLabel } from './music-core.js';
+import { MUSIC_VOLUME, musicLabel } from './music-core.js';
 const audio = document.querySelector('[data-thanks-music]'), toggle = document.querySelector('[data-thanks-music-toggle]');
+const status = document.querySelector('[data-thanks-music-status]');
 if (audio && toggle) {
-  const storage = (() => { try { return window.localStorage; } catch { return null; } })();
-  const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-  audio.volume = MUSIC_VOLUME; audio.loop = true;
-  const sync = () => { const playing = !audio.paused; toggle.setAttribute('aria-pressed', String(playing)); toggle.setAttribute('aria-label', musicLabel(playing)); toggle.title = musicLabel(playing); toggle.dataset.playing = String(playing); };
-  const play = () => audio.play().then(sync, sync);
-  const events = ['pointerdown', 'keydown'];
-  const stopWaiting = () => events.forEach(type => document.removeEventListener(type, firstInteraction, true));
-  function firstInteraction(event) { stopWaiting(); if (!toggle.contains(event.target)) play(); }
-  toggle.addEventListener('click', () => { stopWaiting(); if (audio.paused) { saveMusicPreference(storage, true); play(); } else { saveMusicPreference(storage, false); audio.pause(); sync(); } });
-  audio.addEventListener('play', sync); audio.addEventListener('pause', sync);
+  audio.volume = MUSIC_VOLUME;
+  const sync = () => {
+    const playing = !audio.paused && !audio.ended;
+    toggle.setAttribute('aria-pressed', String(playing));
+    toggle.setAttribute('aria-label', musicLabel(playing));
+    toggle.title = musicLabel(playing); toggle.dataset.playing = String(playing);
+  };
+  const failed = () => { sync(); if (status) status.textContent = 'The song could not play. Try the player again when your connection is ready.'; };
+  toggle.addEventListener('click', async () => {
+    if (!audio.paused && !audio.ended) { audio.pause(); return; }
+    try { await audio.play(); } catch { failed(); }
+  });
+  for (const event of ['play', 'pause', 'ended']) audio.addEventListener(event, sync);
+  audio.addEventListener('play', () => { if (status) status.textContent = ''; });
+  audio.addEventListener('error', failed);
   toggle.hidden = false; sync();
-  if (startsOnInteraction(musicPreference(storage), reduced)) events.forEach(type => document.addEventListener(type, firstInteraction, { capture: true, passive: true }));
 }

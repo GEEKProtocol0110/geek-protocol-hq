@@ -137,6 +137,15 @@
   });
   document.addEventListener('geek:device-grant-used', () => { grant = ''; });
   document.addEventListener('geek:passkey-grant', event => { grant = event.detail.token; note.textContent = 'Wallet verified. Open Add another passkey to continue.'; });
+  panel.querySelector('[data-account-delete-button]')?.addEventListener('click', () => act(async () => {
+    const confirmText = panel.querySelector('[data-account-delete-confirm]').value.trim();
+    if (confirmText !== 'DELETE') { note.textContent = 'Type DELETE in the box to confirm account deletion.'; return; }
+    const token = grant; grant = '';
+    await request({ action: 'delete-account', confirm: confirmText, token });
+    document.dispatchEvent(new CustomEvent('geek:signed-out'));
+    note.textContent = 'Your Geek account was deleted and this browser is signed out.';
+    location.assign('/');
+  }));
   panel.querySelector('[data-passkey-wallet-authorize]').addEventListener('click', () => document.dispatchEvent(new CustomEvent('geek:passkey-wallet-proof')));
   setDisabled();
   if (!supported) {

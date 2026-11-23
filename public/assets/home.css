@@ -93,3 +93,6 @@
 .home-onboarding #home-title .home-kaspa-line img{width:.95em;height:.95em;flex:0 0 .95em;object-fit:contain;filter:drop-shadow(0 0 12px #6fc7ba24)}
 @media(max-width:360px){.home-onboarding #home-title .home-kaspa-line{gap:.12em}.home-onboarding #home-title .home-kaspa-line img{width:.85em;height:.85em;flex-basis:.85em}}
 @media(forced-colors:active){.home-onboarding #home-title .home-kaspa-word{color:CanvasText}.home-onboarding #home-title .home-kaspa-line img{filter:none}}
+
+.nav-more-group{margin:.55rem 0 .1rem;padding:.35rem .8rem 0;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan,#7fe7e0)}
+.nav-more-group:first-child{margin-top:0}

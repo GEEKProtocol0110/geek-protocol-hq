@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-11-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-11-23. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -25,9 +25,9 @@ Record date: 2026-11-17. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-009: active.** BANK-009: six-row Technology risk triage retires five ambiguous, unsupported or repeated items without padding the bank. One duplicate survivor remains draft; no review-count promotion.
+**SEC-003: source-candidate.** Refresh atomic fixed-window rate limiting against live HQ and verify failures and recovery with real Redis.
 
-Next task: **BANK-009**. Review the November 8 risk-triage candidate and exact-head checks, then continue unflagged rows across categories.
+Next task: **SEC-003**. Refreshed against main 352d811; 984 application + 18 signer checks pass (1002 total), zero failures/skips; 337 security assertions. Disposable runtime combination with #307 607d579 and #309 e31230d also passes all 1002 application tests. Inspect refreshed hosted checks and review the combined import resolution/provider compatibility before founder release review; actual combined continuity, deployment and device acceptance remain separate.
 
 ## Holds
 
