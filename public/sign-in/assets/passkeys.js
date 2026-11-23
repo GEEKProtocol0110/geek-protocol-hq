@@ -122,7 +122,7 @@
     const issued = await request({ action: 'begin-login' });
     const credential = await credentialPrompt('get', issued.options);
     const result = await request({ action: 'finish-login', challengeId: issued.challengeId, response: serialize(credential) });
-    grant = result.grant.token; document.dispatchEvent(new CustomEvent('geek:device-grant', {detail:result.grant})); note.textContent = 'Signed in to your saved player. You can add or remove a passkey during this fresh sign-in.';
+    grant = result.grant.token; document.dispatchEvent(new CustomEvent('geek:device-grant', {detail:result.grant})); note.textContent = 'Signed in to your saved player. You can link a wallet, add or remove a passkey, or approve a device during this fresh sign-in.';
     document.dispatchEvent(new CustomEvent('geek:passkey-signed-in', { detail: { continue: !reauthenticate } }));
     try { await refresh(); } catch { note.textContent += ' Your player is signed in, but the passkey list could not refresh. Reload to check it.'; }
   });

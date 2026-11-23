@@ -24,6 +24,7 @@ import { publishedCommunityQuestionById, recordCommunityQuestionUse } from '../s
 import { studyQuestionById, studyBank } from '../server/study-curriculum.js';
 import { challengePeriod, CHALLENGE_CAP } from '../server/challenge-periods.js';
 import { vaultDay, vaultKey, vaultSeals } from '../server/vault.js';
+import { RATE_LIMIT_LUA } from '../server/redis.js';
 
 test('level 50 is a manual boundary and lifetime XP never auto-prestiges', () => {
   const p = defaultProfile();
@@ -175,6 +176,12 @@ const execute = (command) => {
     return withScores ? entries.flatMap(([member, score]) => [member, String(score)]) : entries.map(([member]) => member);
   }
   if (name === 'EVAL') {
+    // This legacy fixture does not model expiry. Real Redis limiter tests own
+    // TTL/failure semantics; retain this fixture's existing request counts.
+    if (args[0] === RATE_LIMIT_LUA) {
+      assert.equal(args[1], 1);
+      return execute(['INCR', args[2]]);
+    }
     if (String(args[0]).includes('geek-session-save-v1')) {
       const [sessionKey,nameKey] = args.slice(2,4), [previous,next,ttl,name,action] = args.slice(4);
       const current = strings.get(sessionKey);
@@ -384,9 +391,12 @@ const execute = (command) => {
       const player = strings.get(keys[1]);
       if (wallet && wallet !== String(values[0])) return 'WALLET_BOUND';
       if ((!values[1] && player) || (values[1] && player !== String(values[1]))) return 'PLAYER_CONFLICT';
+      if ((strings.get(keys[5]) || '') !== String(values[8])) return 'PASSKEY_CONFLICT';
+      if (strings.get(keys[2]) !== String(values[10])) return 'SESSION_CONFLICT';
       if (strings.has(keys[3])) return 'AUDIT_CONFLICT';
       strings.set(keys[0], String(values[0]));
       strings.set(keys[1], String(values[2]));
+      if (values[9]) strings.set(keys[5], String(values[9]));
       strings.set(keys[2], String(values[3]));
       strings.set(keys[3], String(values[5]));
       const index = sorted.get(keys[4]) || new Map();

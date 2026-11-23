@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-11-22. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-11-23. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -25,9 +25,9 @@ Record date: 2026-11-22. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**BANK-009: active.** BANK-009: six-row Technology risk triage retires five ambiguous, unsupported or repeated items without padding the bank. One duplicate survivor remains draft; no review-count promotion.
+**SEC-004: source-candidate.** One reviewable branch integrates exact origins, atomic limits and fresh-proof wallet linking, including maintained records and release gates.
 
-Next task: **BANK-009**. Review the November 8 risk-triage candidate and exact-head checks, then continue unflagged rows across categories.
+Next task: **SEC-004**. Verify the assembled candidate and exact-head hosted checks, prepare branch-scoped Preview origins, and obtain missing independent review and Preview isolation evidence before real-account/device acceptance. Main merge remains separate.
 
 ## Holds
 

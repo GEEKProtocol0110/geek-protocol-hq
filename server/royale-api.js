@@ -2,6 +2,7 @@ import { categories, clientFingerprint, handleApiError, methodNotAllowed, parseB
 import { rateLimit } from './redis.js';
 import { requireSession, playerIdFor } from './session.js';
 import { createRoyale, discoverRoyale, transitionRoyale, royaleView } from './royale.js';
+import { trustedRequestOrigin } from './request-origin.js';
 
 const errors = {
   ROYALE_DISCOVERY_INVALID: [503, 'Public rooms could not be loaded. Try again later.'],
@@ -23,9 +24,8 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (!['GET', 'POST'].includes(req.method)) return methodNotAllowed(res);
   if (req.method === 'POST') {
-    const origin = String(req.headers?.origin || '');
-    const host = String(req.headers?.['x-forwarded-host'] || req.headers?.host || '').toLowerCase();
-    if (req.headers?.['sec-fetch-site'] === 'cross-site' || (origin && origin !== `https://${host}`)) {
+    try { trustedRequestOrigin(req, { requireOrigin: true }); }
+    catch {
       return sendJson(res, 403, { ok: false, error: 'Open Royale on this site before changing a room.' });
     }
     const type = String(req.headers?.['content-type'] || '');

@@ -25,7 +25,10 @@ const mount = async ({ exec = false, clipboard } = {}) => {
     assert.deepEqual([input.selectionStart, input.selectionEnd], [0, message.length]);
     return typeof exec === 'function' ? exec(input.value) : exec;
   };
-  ui.document.dispatchEvent = event => events.push(event);
+  const listeners = new Map();
+  // Install before executing the shipped client so its one-use proof events run.
+  ui.document.addEventListener = (type, handler) => listeners.set(type, [...(listeners.get(type) || []), handler]);
+  ui.document.dispatchEvent = event => { events.push(event); for (const handler of listeners.get(event.type) || []) handler(event); };
   ui.run(source); await tick();
   ui.node('[data-login-address]').value = 'kaspa:synthetic-test-address';
   await ui.node('[data-address-form]').emit('submit');
@@ -86,4 +89,16 @@ test('copying does not sign in; a separately pasted signature verifies once and 
   assert.equal(verified[0].body.challengeId, ui.challenge.challengeId); assert.equal(verified[0].body.signature, 'ab'.repeat(64));
   assert.equal(ui.node('[data-login-message]').value, ''); assert.equal(ui.node('[data-proof-step]').hidden, true);
   assert.equal(ui.events[0].type, 'geek:signed-in'); assert.equal(ui.events[0].detail.recovered, true);
+});
+
+
+test('manual wallet linking uses fresh account proof once without automatically submitting a wallet signature', async () => {
+  const ui = await mount();
+  ui.document.dispatchEvent(new CustomEvent('geek:device-grant', { detail: { token: 'fresh-link-proof' } }));
+  await ui.node('[data-address-form]').emit('submit');
+  assert.equal(ui.requests.filter(r => r.body?.action === 'challenge').at(-1).body.token, 'fresh-link-proof');
+  await ui.node('[data-address-form]').emit('submit');
+  assert.equal(ui.requests.filter(r => r.body?.action === 'challenge').at(-1).body.token, undefined);
+  assert.equal(ui.requests.filter(r => r.body?.action === 'verify').length, 0);
+  assert.equal(ui.events.filter(e => e.type === 'geek:device-grant-used').length, 1);
 });

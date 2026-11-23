@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-22",
+  "updatedAt": "2026-11-23",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2494,6 +2494,114 @@
         "public/thanks/index.html",
         "public/thanks/assets/music.js",
         "tests/thanks-music.test.js"
+      ]
+    },
+    {
+      "id": "SEC-002",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Restrict wallet proofs and Royale writes to exact trusted origins",
+      "owner": "Maintainer; founder reviews release and real-wallet acceptance; independent reviewer unassigned",
+      "nextAction": "Included in combined release candidate SEC-004. Preserve this task and its earlier evidence; review the assembled head before release. The original component PR remains separate and unmerged.",
+      "acceptance": [
+        "Matching attacker Origin and spoofed forwarded Host, arbitrary Vercel tenants, non-HTTPS and multi-value/array headers are rejected.",
+        "Explicit exact preview entries work, and a proof issued on one allowed origin fails verification on another while valid same-origin proof remains usable.",
+        "Restoring wildcard trust makes a targeted negative-control test fail; the weakened code is never committed.",
+        "Existing passkey/WebAuthn, wallet, Royale and full repository checks pass on the assembled head; live wallet/device acceptance and release status remain separate.",
+        "Preserve all economic gates and document Claude handoff concerns, branch integration and outstanding rate-counter atomicity without claiming those separate tasks are complete."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/EXACT-ORIGIN-REVIEW.md",
+        "server/request-origin.js",
+        "tests/exact-origins.test.js",
+        "docs/IDENTITY-PROTOCOL.md"
+      ],
+      "validationEvidence": [
+        "Five of eight new origin tests fail on b7521c6; all pass with the candidate. Restoring the Vercel wildcard makes the arbitrary-tenant test fail (201 instead of 400). Initial focused wallet/Royale/passkey run: 63 passed, zero failures/skips.",
+        "Final full npm run verify: 973 application plus nine testnet and six mainnet signer checks, 988 total, zero failures/skips, real Redis; 328 security assertions and all generated/content/continuity checks pass. No runtime config, secret, live wallet or economic change.",
+        "November 23 refresh on main 352d811: 981 application and 18 offline signer checks pass, zero failures/skips; 336 security assertions and all remaining verify components pass. Focused exact-origin/passkey/deletion/Royale suite: 63 pass. Preview metadata confirms PASSKEY_ORIGIN only, with no IDENTITY_ALLOWED_ORIGINS or IDENTITY_ORIGIN; no setting changed."
+      ]
+    },
+    {
+      "id": "SEC-003",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Make shared rate counters atomic and fail closed on invalid state",
+      "owner": "Maintainer; founder reviews merge; independent reviewer unassigned",
+      "nextAction": "Included in combined release candidate SEC-004. Preserve this task and its earlier evidence; review the assembled head before release. The original component PR remains separate and unmerged.",
+      "acceptance": [
+        "New and missing-expiry counters use one expiring write and cannot be stranded by a rejected separate expiry command.",
+        "Existing expiring counters retain their exact deadline, exhausted legacy budgets stay exhausted during repair, and no automatic retry follows a lost acknowledgment.",
+        "Real-Redis concurrency, ACL write/expiry failures, malformed results/state, invalid policy and expiry recovery tests pass; baseline negative controls demonstrate the failures.",
+        "The application suite, isolated signer checks and all remaining verify components pass; preserve domain failure injection and update continuity/source evidence honestly.",
+        "Keep owner/MFA, origin and economic holds intact; integration, exact-head CI, founder merge and production acceptance remain separately evidenced."
+      ],
+      "dependsOn": [],
+      "evidence": [
+        "docs/ATOMIC-RATE-LIMIT.md",
+        "server/redis.js",
+        "tests/rate-limit.test.js"
+      ],
+      "validationEvidence": [
+        "Eleven real-Redis limiter regressions pass; six fail against original b7521c6. Focused limiter/transport: 28 passed. Complete application suite: 976 passed, zero failures/skips, real Redis, concurrency two. Earlier interrupted default-concurrency run has no completion summary and is not counted. Supporting verification and publication follow.",
+        "All verification components pass: 976 application tests at concurrency two plus nine testnet and six mainnet signer checks (991 total), zero failures/skips; 329 security assertions and all generated/content/continuity/economy/whitepaper checks pass. No production fault injection or independent acceptance.",
+        "Disposable runtime overlay with the local equivalents of #306 b7eaff0 and #307 99603f3 passed 104 focused real-Redis tests, zero failures/skips. This is runtime integration evidence, not combined continuity resolution, a merged branch or deployed acceptance.",
+        "November 23 integration: 984 application + 18 offline signer checks pass, zero failures/skips; 337 security assertions and all remaining verify checks pass. Eleven limiter fault/concurrency regressions pass. Disposable runtime combination with #307 607d579 and #309 e31230d passes all 1002 application tests after restoring a missing test-worker dependency; no combined continuity or deployment claim."
+      ]
+    },
+    {
+      "id": "AUTH-006",
+      "priority": "P0",
+      "status": "in-progress",
+      "title": "Require fresh account proof for a first recovery-wallet link",
+      "owner": "Maintainer implements; independent reviewer unassigned; founder reviews release and devices",
+      "nextAction": "Included in combined release candidate SEC-004. Preserve this task and its earlier evidence; review the assembled head before release. The original component PR remains separate and unmerged.",
+      "dependsOn": [
+        "AUTH-005"
+      ],
+      "acceptance": [
+        "An existing passkey-only bearer session cannot add its first recovery wallet without fresh user-verified account proof.",
+        "First linking commits wallet identity and existing credential wallet-version continuity atomically against exact account and requesting-session snapshots. Existing passkeys, stable player ID and progress remain usable.",
+        "Missing, expired, replayed, wrong-session or raced proofs fail closed; an earlier guest challenge cannot adopt later passkey credentials. Revoked sessions cannot be recreated by an in-flight wallet link.",
+        "Browser-provider and manual message flows submit a fresh one-use account grant explicitly; no background wallet proof, unbounded request or automatic write retry.",
+        "Record baseline negative controls, real-Redis cryptographic regressions, full repository checks and exact PR/CI status separately from deployment and physical-device acceptance."
+      ],
+      "evidence": [
+        "docs/WALLET-LINK-REAUTH.md",
+        "tests/passkeys.test.js",
+        "tests/wallet-quick-login.test.js",
+        "tests/sign-in-copy.test.js",
+        "docs/SECURITY-QUEUE-2026-11-21.md"
+      ]
+    },
+    {
+      "id": "SEC-004",
+      "priority": "P0",
+      "status": "in-progress",
+      "title": "Assemble and verify the combined origin, limiter and wallet-link release",
+      "owner": "Maintainer prepares candidate; founder reviews release; independent reviewer unassigned",
+      "nextAction": "Publish the combined draft, verify exact-head hosted checks, configure branch-scoped Preview origins on its returned branch alias, and obtain independent review and storage-isolation confirmation before real-account/device acceptance. Main merge remains separate.",
+      "dependsOn": [
+        "SEC-002",
+        "SEC-003",
+        "AUTH-006"
+      ],
+      "acceptance": [
+        "Preserve pinned #307/#308/#309 implementations and all maintained tasks/history; resolve identity imports retaining both origin and passkey protections.",
+        "Full application, signer, security, content, economy, continuity, site and whitepaper verification passes on the assembled source; prior compatibility-only results stay historical.",
+        "Use only exact branch-scoped Preview origins for wallet/Royale and WebAuthn; preserve Production and the existing fixed Preview alias.",
+        "Record actual independent review, Preview data isolation, hosted check and physical-device acceptance separately. Do not describe missing results as accepted.",
+        "Preserve owner/MFA #306, private bank, migration, payout, CCE and collection holds; do not close original PRs before accepted replacement release."
+      ],
+      "evidence": [
+        "docs/SECURITY-RELEASE-CANDIDATE.md",
+        "docs/EXACT-ORIGIN-REVIEW.md",
+        "docs/ATOMIC-RATE-LIMIT.md",
+        "docs/WALLET-LINK-REAUTH.md"
+      ],
+      "validationEvidence": [
+        "Assembled source: 1002 application tests with required real Redis 7.2.5, concurrency two, plus 18 offline signer checks (1020 total), zero failures/skips. All other verify components pass, including 340 security assertions and shared continuity/site/content/economy/whitepaper checks. Exact hosted/Preview results follow in the PR."
       ]
     }
   ]

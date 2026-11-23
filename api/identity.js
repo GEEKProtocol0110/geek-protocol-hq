@@ -21,7 +21,8 @@ export default async function handler(req, res) {
         publicKey: body.publicKey,
         intent: body.intent,
         operation: body.operation,
-        payoutAddress: body.payoutAddress
+        payoutAddress: body.payoutAddress,
+        token: body.token
       });
       return sendJson(res, 201, { ok: true, challenge });
     }

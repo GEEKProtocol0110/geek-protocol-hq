@@ -48,7 +48,7 @@ globalThis.fetch = async (url, options) => {
 };
 after(async () => { globalThis.fetch = originalFetch; await fixture.close(); });
 const response = () => ({ headers: {}, statusCode: 0, body: null, setHeader(k, v) { this.headers[k] = v; }, status(s) { this.statusCode = s; return this; }, json(v) { this.body = v; return this; }, end() {} });
-const request = (method, body, cookie = '', query = {}) => ({ method, body, query, headers: { cookie, host: 'www.geekprotocol.xyz', 'x-forwarded-proto': 'https', 'user-agent': 'shared-royale-network', 'x-forwarded-for': '192.0.2.1' } });
+const request = (method, body, cookie = '', query = {}) => ({ method, body, query, headers: { cookie, host: 'www.geekprotocol.xyz', origin: 'https://www.geekprotocol.xyz', 'x-forwarded-proto': 'https', 'user-agent': 'shared-royale-network', 'x-forwarded-for': '192.0.2.1' } });
 const session = async name => { const res = response(); await sessionHandler(request('POST', { displayName: name }), res); assert.equal(res.statusCode, 200); return res.headers['Set-Cookie'].split(';')[0]; };
 const pid = cookie => cookie.split('=')[1];
 const call = async (cookie, action, fields = {}) => { const res = response(); await lobbiesHandler(request(action === 'view' ? 'GET' : 'POST', action === 'view' ? undefined : { action, ...fields }, cookie, { service: 'royale', ...(action === 'view' ? { code: fields.code } : {}) }), res); return res; };

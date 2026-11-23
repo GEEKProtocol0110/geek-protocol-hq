@@ -44,6 +44,8 @@ This proves wallet control only. It does not authorize a transaction, transfer, 
 
 The exact requesting HTTPS origin, action, identity wallet, requested destination where applicable, nonce, issue time, and expiry are therefore inside the signed payload. Geek Protocol re-derives and compares that origin when the proof is submitted. A challenge created on `www.geekprotocol.xyz` is rejected on `geekprotocol.xyz`, and vice versa.
 
+The SEC-002 source candidate selects only the two canonical HTTPS origins or exact entries in `IDENTITY_ALLOWED_ORIGINS` / the legacy `IDENTITY_ORIGIN`. It does not trust every Vercel tenant or infer authorization from deployment names. Request Host must match the configured origin; a forwarded host may confirm Host but cannot replace it. Non-HTTPS, multi-value and array headers fail closed. Wallet clients may omit Origin for compatibility with the existing proof API, but Host must still be independently allowlisted and cross-site metadata is rejected. A supplied Origin must be exact and match Host. See [exact-origin review and preview setup](EXACT-ORIGIN-REVIEW.md). Passkey relying-party configuration is separate and unchanged.
+
 ## State transitions
 
 1. The player explicitly connects a browser wallet or submits a Kaspa address to create a message.
@@ -143,3 +145,7 @@ AUTH-002 remains blocked for this phone. The next implementation task is to isol
 ## Wallet-independent passkey access — October 16, 2026
 
 The focused [passkey login protocol](PASSKEY-LOGIN.md) adds a separate player-access credential without changing Kaspa proof validation or payout authorization. Passkeys protect the current player and recover a player with an enrolled credential; first-time guest enrollment cannot bypass ownership of an older wallet-linked identity. Wallet-linked enrollment still requires fresh explicit authorization. This supersedes the earlier statement that all passkey work remains only in the broad PR #119; consult the focused release PR for merged/deployed status and actual phone acceptance.
+
+## November 17 first-wallet-link candidate — AUTH-006
+
+A passkey-only account must present a fresh one-use account grant before issuing its first wallet-link challenge. The stored challenge binds the exact credential-set snapshot and the existing proof deadline. Commit compares both that account and the exact validated requester-session snapshot, then writes the identity, updated credential wallet version, session and audit event together. Existing passkeys remain usable after authorized first linking. Previously prepared guest challenges cannot adopt credentials enrolled later. Ordinary guest wallet linking and wallet recovery retain their existing proof requirements; recovery still invalidates prior passkeys. See [the scoped review record](WALLET-LINK-REAUTH.md). Session-ID rotation is separate, still open work.

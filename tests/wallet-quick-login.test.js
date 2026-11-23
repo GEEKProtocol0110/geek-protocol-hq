@@ -5,13 +5,14 @@ import { clientFixture, deferred, json } from './helpers/client-fixture.js';
 
 const source = readFileSync(new URL('../public/assets/wallet.js', import.meta.url), 'utf8');
 const settle = () => new Promise(setImmediate);
-async function mount({ rejectSignature = false, connectedOnly = false, requestAccounts, installed = true } = {}) {
+async function mount({ rejectSignature = false, connectedOnly = false, requestAccounts, installed = true, rejectLink = false } = {}) {
   const calls = [], events = [], listeners = new Map(), walletEvents = new Map();
   const ui = clientFixture(async (path, options = {}) => {
     const body = options.body ? JSON.parse(options.body) : null;
     calls.push({ path, body });
     if (!body) return json({ identity: { linked: false } });
     if (path === '/api/session') return json({ ok: true });
+    if (body.action === 'challenge' && rejectLink) return json({ code: 'WALLET_LINK_REAUTH_REQUIRED', error: 'Verify with a passkey on the Sign in page first.' }, 401);
     if (body.action === 'challenge') return json({ challenge: { challengeId: 'nonce', message: 'Exact server sign-in message' } });
     if (body.action === 'verify') return json({ identity: { linked: true, address: 'kaspa:fixture' }, recovered: true });
     assert.fail('Unexpected wallet request');
@@ -91,4 +92,19 @@ test('KasWare injected after page load is discovered on tap without background w
   assert.equal(ui.help.hidden, true);
   assert.equal(ui.calls.filter(x => x === 'connect').length, 1);
   assert.equal(ui.calls.filter(x => x.body?.action === 'verify').length, 1);
+});
+
+
+test('wallet link sends fresh proof once and never signs after a reauthentication rejection', async () => {
+  const ui = await mount({ rejectLink: true });
+  ui.document.dispatchEvent(new CustomEvent('geek:device-grant', { detail: { token: 'fresh-passkey-proof' } }));
+  assert.equal(ui.calls.length, 0, 'Fresh proof alone must not request wallet access');
+  await ui.click();
+  const challenges = () => ui.calls.filter(x => x.body?.action === 'challenge');
+  assert.equal(challenges().length, 1); assert.equal(challenges()[0].body.token, 'fresh-passkey-proof');
+  assert.equal(ui.calls.some(x => x.sign), false);
+  assert.match(ui.node('[data-wallet-message]').textContent, /Verify with a passkey/);
+  await ui.click();
+  assert.equal(challenges().length, 2); assert.equal(challenges()[1].body.token, undefined);
+  assert.equal(ui.calls.some(x => x.body?.action === 'verify'), false);
 });

@@ -16,7 +16,10 @@ import {
   validateIdentityRecord, validateSessionRecord, validateChallengeRecord, validateAuthorizationRecord, readWalletBinding
 } from './identity-records.js';
 import { sessionTtl } from './http.js';
-import { issuePasskeyGrant } from './passkey-grants.js';
+import { consumePasskeyGrant, issuePasskeyGrant, passkeyAccountKey } from './passkey-grants.js';
+import { trustedRequestOrigin } from './request-origin.js';
+import { decodePasskeyAccount } from './passkey-records.js';
+import { sessionStorageSnapshot } from './session.js';
 
 const IDENTITY_BIND_SCRIPT = `
 -- geek-identity-bind-v1
@@ -28,9 +31,12 @@ if ARGV[2] == '' then
 elseif player ~= ARGV[2] then
   return 'PLAYER_CONFLICT'
 end
+if (redis.call('GET', KEYS[6]) or '') ~= ARGV[9] then return 'PASSKEY_CONFLICT' end
+if redis.call('GET', KEYS[3]) ~= ARGV[11] then return 'SESSION_CONFLICT' end
 if redis.call('EXISTS', KEYS[4]) == 1 then return 'AUDIT_CONFLICT' end
 redis.call('SET', KEYS[1], ARGV[1])
 redis.call('SET', KEYS[2], ARGV[3])
+if ARGV[10] ~= '' then redis.call('SET', KEYS[6], ARGV[10]) end
 redis.call('SET', KEYS[3], ARGV[4], 'EX', ARGV[5])
 redis.call('SET', KEYS[4], ARGV[6])
 redis.call('ZADD', KEYS[5], ARGV[7], ARGV[8])
@@ -64,23 +70,9 @@ const verifySignature = ({ message, signature, publicKey }) => {
   }
 };
 
-const configuredOrigins = () => new Set([
-  'https://www.geekprotocol.xyz',
-  'https://geekprotocol.xyz',
-  ...String(process.env.IDENTITY_ALLOWED_ORIGINS || '').split(','),
-  String(process.env.IDENTITY_ORIGIN || '')
-].map((value) => value.trim().replace(/\/$/, '')).filter(Boolean));
-
-const canonicalOrigin = (req) => {
-  const host = String(req?.headers?.['x-forwarded-host'] || req?.headers?.host || '').split(',')[0].trim().toLowerCase();
-  const forwardedProtocol = String(req?.headers?.['x-forwarded-proto'] || 'https').split(',')[0].trim().toLowerCase();
-  if (forwardedProtocol !== 'https' || !/^[a-z0-9.-]+$/.test(host)) throw new Error('IDENTITY_ORIGIN_INVALID');
-  const origin = `https://${host}`;
-  if (!configuredOrigins().has(origin) && !/^[a-z0-9-]+\.vercel\.app$/.test(host)) throw new Error('IDENTITY_ORIGIN_INVALID');
-  const suppliedOrigin = String(req?.headers?.origin || '').trim().replace(/\/$/, '');
-  if (suppliedOrigin && suppliedOrigin !== origin) throw new Error('IDENTITY_ORIGIN_MISMATCH');
-  return origin;
-};
+const canonicalOrigin = req => trustedRequestOrigin(req, {
+  invalidCode: 'IDENTITY_ORIGIN_INVALID', mismatchCode: 'IDENTITY_ORIGIN_MISMATCH'
+});
 
 const safeIdentity = (identity) => identity ? ({
   linked: true,
@@ -139,7 +131,7 @@ const recordRejectedProof = async (session, reason, challenge = {}) => {
   }
 };
 
-export const createIdentityChallenge = async ({ req, session, address: rawAddress, publicKey: rawPublicKey, intent = 'identity', operation = 'set', payoutAddress: rawPayoutAddress = '' }) => {
+export const createIdentityChallenge = async ({ req, session, address: rawAddress, publicKey: rawPublicKey, intent = 'identity', operation = 'set', payoutAddress: rawPayoutAddress = '', token }) => {
   const { address, publicKey } = validateWalletProofInputs(rawAddress, rawPublicKey);
   const playerId = stablePlayerId(session);
   const addressHash = hashAuditIdentifier(address);
@@ -154,6 +146,7 @@ export const createIdentityChallenge = async ({ req, session, address: rawAddres
   let selectedIntent;
   let targetPlayerId;
   let payoutAddress = '';
+  let linkPasskeyAccountHash, linkPasskeyProofExpiresAt;
 
   if (intent === 'payout' || intent === 'passkey') {
     const identity = await loadIdentity(playerId);
@@ -169,6 +162,21 @@ export const createIdentityChallenge = async ({ req, session, address: rawAddres
     if (!boundPlayerId && currentIdentity && currentIdentity.address !== address) throw new Error('IDENTITY_ROTATION_UNAVAILABLE');
     selectedIntent = boundPlayerId && boundPlayerId !== playerId ? 'recover' : 'link';
     targetPlayerId = boundPlayerId || playerId;
+    if (selectedIntent === 'link' && !currentIdentity) {
+      const accountRaw = await redis('GET', passkeyAccountKey(playerId));
+      const account = decodePasskeyAccount(accountRaw, playerId);
+      if (account) {
+        if (account.walletVersion !== 0 || !account.credentials.length) throw new Error('WALLET_LINK_REAUTH_REQUIRED');
+        try { linkPasskeyProofExpiresAt = await consumePasskeyGrant(session, token, 0); }
+        catch (error) {
+          if (error.message === 'PASSKEY_REAUTH_REQUIRED') throw new Error('WALLET_LINK_REAUTH_REQUIRED');
+          throw error;
+        }
+      }
+      // Bind fresh account proof to this exact wallet challenge and credential set.
+      // A pre-enrollment/legacy challenge cannot adopt later passkeys.
+      linkPasskeyAccountHash = digest(accountRaw || '');
+    }
   }
 
   const now = Date.now();
@@ -179,6 +187,8 @@ export const createIdentityChallenge = async ({ req, session, address: rawAddres
   const message = challengeMessage({ origin, intent: selectedIntent, address, payoutAddress, nonce, issuedAt: now, expiresAt });
   const challenge = {
     version: PROOF_VERSION,
+    ...(linkPasskeyAccountHash ? { linkPasskeyAccountHash } : {}),
+    ...(linkPasskeyProofExpiresAt ? { linkPasskeyProofExpiresAt } : {}),
     challengeId,
     sessionId: session.id,
     requesterPlayerId: playerId,
@@ -300,6 +310,13 @@ export const verifyIdentityChallenge = async ({ req, session, challengeId, signa
     throw new Error('IDENTITY_WALLET_BOUND');
   }
 
+  const accountRaw = await redis('GET', passkeyAccountKey(targetPlayerId));
+  const account = decodePasskeyAccount(accountRaw, targetPlayerId);
+  const initialLink = !previous && challenge.intent === 'link';
+  if (initialLink && ((challenge.linkPasskeyAccountHash || digest('')) !== digest(accountRaw || '')
+      || (account && (!challenge.linkPasskeyProofExpiresAt || challenge.linkPasskeyProofExpiresAt <= Date.now())))) {
+    throw new Error('IDENTITY_STATE_CONFLICT');
+  }
   const recovered = challenge.intent === 'recover' && targetPlayerId !== currentPlayerId;
   const now = Date.now();
   const identity = {
@@ -322,9 +339,16 @@ export const verifyIdentityChallenge = async ({ req, session, challengeId, signa
     identityVersion: identity.sessionVersion,
     lastSeen: now
   };
-  // A freshly signed wallet proof establishes wallet-based access. Do not leave
-  // this session gated by a former passkey-only account's older wallet version.
-  delete updatedSession.passkeyEpoch;
+  // Freshly authorized first linking retains the owner's existing credentials.
+  // Wallet recovery still invalidates old passkeys until explicit re-enrollment.
+  let updatedAccountRaw = '';
+  if (initialLink && account) {
+    account.walletVersion = identity.sessionVersion;
+    updatedAccountRaw = JSON.stringify(account);
+    decodePasskeyAccount(updatedAccountRaw, targetPlayerId);
+  } else {
+    delete updatedSession.passkeyEpoch;
+  }
   validateIdentityRecord(identity, targetPlayerId);
   validateSessionRecord(updatedSession, session.id);
   const audit = await createAuditRecord({
@@ -349,12 +373,13 @@ export const verifyIdentityChallenge = async ({ req, session, challengeId, signa
   const transition = await redis(
     'EVAL',
     IDENTITY_BIND_SCRIPT,
-    5,
+    6,
     walletKey,
     playerKey,
     sessionKey(session.id),
     eventWrite[1],
     indexWrite[1],
+    passkeyAccountKey(targetPlayerId),
     targetPlayerId,
     previousRaw || '',
     JSON.stringify(identity),
@@ -362,7 +387,10 @@ export const verifyIdentityChallenge = async ({ req, session, challengeId, signa
     sessionTtl,
     JSON.stringify(audit),
     audit.sequence,
-    audit.eventId
+    audit.eventId,
+    accountRaw || '',
+    updatedAccountRaw,
+    sessionStorageSnapshot(session)
   );
   if (transition !== 'OK') {
     const reason = transition === 'WALLET_BOUND' ? 'wallet-already-bound' : 'identity-state-race';

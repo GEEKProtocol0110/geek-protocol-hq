@@ -1605,3 +1605,84 @@ The job mac is an explicit ordered field list, including each proof field. Chang
 - #322 was merged as e521170e42dd9efd481aab2201497a33633aa898 and production dpl_4WPXUoRZBMhkeVYt7HJeRJ6bxXFw was READY with canonical directory HTML matching the reviewed bytes. That establishes the prior neutral listing release, not this wording update.
 - Updated maintained ECO-002/project checkpoint and generated views. Validation and the exact release result will be recorded in the follow-up PR.
 - Local validation: 6/6 directory regression tests pass, zero failures/skips. Native directory parity, continuity and site checks plus git diff --check pass. A fresh worktree initially lacked dependencies; installed the unchanged locked graph with npm ci --ignore-scripts, then regenerated and ran the checks successfully. Hosted CI and production evidence follow in the PR.
+
+
+## November 17, 2026 — SEC-002 exact-origin source candidate
+
+- **Base/branch:** b7521c6db2087d0c40580afa443104f33f4cd212; `codex/exact-origins`, independent of held #306. [Review and rollout](../EXACT-ORIGIN-REVIEW.md).
+- **Outcome:** shared exact HTTPS-origin validation for wallet proof issuance/verification and Royale mutations. Reject arbitrary Vercel tenants, forwarded-host substitutions, malformed/multi-value context and non-HTTPS. Explicit exact preview configuration remains available; passkey RP context stays separate. No env/secret change.
+- **Regression evidence:** five of eight new tests fail on baseline; candidate passes. Wildcard-restoration negative control fails the arbitrary-tenant test (201 vs 400); source restored immediately. Focused wallet/Royale/passkey run: 63 passed. First complete verify: 988 checks (973 application, nine testnet signer, six mainnet signer), zero failures/skips, real Redis. Final assembled-head verification follows this entry.
+- **Handoff:** #305/#306 remain drafts; #306 prior-head verify 44012581468 succeeded with no submitted reviews/threads returned. HQ metadata shows no dedicated owner-token/MFA entries and zero hidden Production entries, so #306 stays held. Existing preview.geekprotocol.xyz alias confirmed; no preview environment modified. External bot callers and actual runtime NODE_ENV remain separate operator checks. No message sent on the founder's behalf.
+- **Open:** rate-counter pipeline atomicity, independent races/answer/recovery reviews, cross-PR continuity reconciliation, exact-head CI, founder release and real-wallet acceptance. No branch deleted, merge, production deployment or economic activation.
+
+- **Final assembled checks:** full npm run verify passed 988 checks (973 application, nine testnet and six mainnet signer), zero failures/skips, real Redis; 328 security assertions and all generated/content checks pass. Separate #306 follow-up passes 986 checks and records owner-budget/Preview MFA behavior; release blockers remain.
+
+- **Saved review:** draft [PR #307](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/307), source commit `b30349a00c7f81c515027471000d501ec8b46890`, tree `5760b2304f4c18f794417fce591bc0a89ee154f3` exactly equal to local `e115590b7e063b1801c3bd552083f70ab214a447`. #306 follow-up is separately saved at `82d14b96e9d981b050a94d22c18b18d45c1deb01`; both remain draft/unmerged. Fresh exact-head remote checks and all documented rollout/owner acceptance remain separate from local verification.
+
+
+## November 23, 2026 — SEC-002 current-main integration
+
+- Refreshed #307 against main 352d811; resolved only continuity JSON/generated-view/worklog conflicts and preserved the current directory, account deletion and signer work. Exact-origin helper, identity/Royale origin integration and eight origin regression tests are unchanged from a004979. #309 remains separate and unmerged.
+- Local verification: 981 application tests with required isolated Redis 7.2.5 and concurrency two, plus 18 offline signer checks, 999 total; zero failures/skips. All other verify components pass, including 336 security assertions, continuity/site/content/economy/whitepaper checks. Focused origin/passkey/deletion/Royale run: 63 pass. Regenerated maintained views and checked whitespace after documentation finalization.
+- Read-only HQ metadata confirms the approved fixed Preview passkey origin and no explicit wallet/Royale allowlist. No variables or aliases changed. Exact Preview origin setup and review-deployment routing remain release prerequisites. No submitted #307 review was available; earlier Security Bot readiness is reported evidence, not an independent review conducted here.
+- Publish the refreshed draft head and inspect exact-head CI/preview. Keep founder release and actual-wallet acceptance distinct. No main merge, production configuration change or economic activation.
+
+
+
+## November 17, 2026 — SEC-003 atomic rate-counter candidate
+
+- **Base/branch:** b7521c6db2087d0c40580afa443104f33f4cd212; `codex/atomic-rate-limit`. [Protocol and evidence](../ATOMIC-RATE-LIMIT.md).
+- **Outcome:** one-key Lua transition uses SET EX for creation/missing-TTL repair and INCR for an existing expiry; invalid policies, counters and replies fail closed. Existing key/budget/window policy preserved. No production record or environment touched.
+- **Evidence:** eleven real-Redis regressions pass and six fail on the original implementation. Includes real ACL-denied expiry/write cases, concurrency, missing TTL, lost acknowledgment and unchanged absolute expiry. Focused limiter/transport: 28 passed.
+- **Application run:** 976 passed, zero failures/skips, real Redis, test concurrency two. Initial default-concurrency run was interrupted while collecting results and lacks a completion summary; it is not reported as passed. Supporting verify components follow this entry.
+- **Compatibility:** older domain fixtures recognize the new script; MFA replay-fault injection remains targeted to the replay script. Shared owner and origin candidates #306/#307 remain separate and unmerged. Provisioning/external caller, private-bank and economic holds remain.
+- **Next:** supporting checks, exact-source publication, review/integration and founder merge authorization. No independent or production fault-injection acceptance, branch deletion, merge or deployment claimed.
+
+- **Completed verification:** 976 application tests plus nine testnet and six mainnet signer checks, 991 total, zero failures/skips. All verify components passed, including 329 security assertions and continuity, question, archive, collection, repository, economy, metadata and whitepaper checks. Application concurrency was explicitly two after the interrupted run; do not equate that interruption with a test failure or a completed default-concurrency run.
+
+- **Combined runtime check:** disposable overlay based on local #306 b7eaff0, local #307 99603f3 runtime files and SEC-003 ab90bd2, preserving the scoped MFA failure hook: 104 focused real-Redis tests passed, zero failures/skips. No actual merge or combined continuity acceptance.
+
+- **Saved review:** draft [PR #308](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/308), source `03d0d8ca60ff59bf50e614cf50e045128685db0a`, tree `0562ecac1b22421455680906decf9ed694418573` exactly matches local `8afa5cd3cdff0c37e921f9e89f84600c0aeb60d5`. The PR remains unmerged; fresh exact-head CI/provider review and founder release authorization are separate from the recorded local checks. #306 owner/MFA provisioning and other security holds remain unchanged. This final handoff changes no runtime code.
+
+
+## November 23, 2026 — SEC-003 current-main and combined-runtime verification
+
+- Refreshed #308 against main 352d811; resolved only continuity record/view/worklog conflicts, retaining current directory, account deletion and signer work. Atomic limiter and its eleven fault regressions, including scoped MFA outage injection, remain unchanged.
+- Standalone: 984 real-Redis application + 18 offline signer tests pass (1002 total), zero failures/skips. All remaining verify components pass, including 337 security assertions and continuity/site/content/economy/whitepaper checks. Focused limiter suite: 11 pass.
+- Disposable compatibility checkout combines the refreshed rate limiter with #307 607d579 and #309 e31230d. Resolved only overlapping identity imports, preserving both origin validation and fresh-passkey/session protection. All 1002 application tests pass after restoring a missing locked worker dependency in that temporary environment; the first incomplete run is not counted as passed. Local compatibility commit 8008739 is not published or a production release. Combined continuity/review/deployment acceptance remains open; #306 is excluded.
+- Updated task/current checkpoint and evidence; native continuity/site and whitespace checks rerun after finalization. Publish the refreshed draft #308 head and inspect hosted checks. No main merge, provider mutation, production fault injection or economic activation.
+
+
+
+## November 17, 2026 — AUTH-006 first-wallet-link candidate
+
+- **Base / scope:** main `b7521c6db2087d0c40580afa443104f33f4cd212`, branch `codex/wallet-link-reauth`. Fresh one-use account proof for the first recovery-wallet link; retain existing passkeys through an atomic credential wallet-version update. Compare the exact credential account and validated requesting-session snapshot at commit. The fresh-proof deadline cannot be extended by a later wallet challenge. Preserve player/progress and wallet recovery's existing passkey invalidation.
+- **Validation:** 973 application tests with required real Redis and concurrency two, plus nine Testnet and six Mainnet offline signer checks: 988 total, zero failures/skips. All supporting verify components passed, including 325 security assertions and continuity/site/whitepaper checks. Seven new cryptographic/real-Redis regressions all fail against unchanged main, then pass on the candidate. Browser-provider and manual clients send the proof once; failed challenge issuance never signs or retries automatically. Synthetic clients are not physical-device acceptance.
+- **Limits:** source candidate, no merge/deployment or production mutation. Claude's full named adversarial report was not available in connected files; the pasted High finding was independently reproduced. Session-ID rotation remains open, as do device approval phishing, legacy payout-preference proof, trade serialization and the pre-settlement findings. The separate receiving-address service's fresh-proof tests do not close the legacy route finding. No economic hold, owner secret or provider setting changed.
+- **Next:** publish draft for independent and founder review; resolve continuity conflicts with other held security PRs and run verification on the resulting exact head before release. Record the PR/head/tree below. After an authorized merge, separately verify production and an actual original-passkey return after first wallet linking.
+
+- **Published review:** Draft [PR #309](https://github.com/GEEKProtocol0110/geek-protocol-hq/pull/309), source head `420d5bbd04e82fa37e8edf1a9afa58aa7fa9daaf`, exact tree `98fb462b31fde22b7585521747b2869a83062720`, matches locally checked `36f66277856af08e8dfd7f22a2361911ab67dec3`. GitHub publishing succeeded November 18 after the interrupted preparation. Hosted CI remains pending at this handoff commit; record final results in the PR. Draft remains unmerged; production unchanged.
+
+
+## November 21, 2026 — AUTH-006 integration and security work queue
+
+- Integrated main `7db37b3` into the existing #309 branch, preserving both histories, all maintained backlog tasks and account deletion's tombstone guard. Conflicts were confined to continuity records and their generated views. No change to the first-link runtime design.
+- Added regressions for fresh passkey deletion after first wallet linking and a different device deleting the account during atomic link commit. Both fail closed as required. Full integrated application suite: 983 pass, zero fail/skip, required isolated real Redis 7.2.5, concurrency two. Offline signer suites: 18 pass, zero fail/skip. All other verify components pass; 333 security assertions. One initial test expectation for the established removed-credential error was corrected from HTTP 401 to the actual PASSKEY_PROOF_INVALID refusal code (HTTP 400).
+- Updated AUTH-006 and current checkpoint. Recorded the next jobs, dependencies and actual review limits in `docs/SECURITY-QUEUE-2026-11-21.md`. Bank review and the other held security candidates remain open.
+- Next: push this integration to existing draft #309, inspect exact-head hosted checks, and return it for founder release review. No main merge, production configuration, secret change, payout activation or physical-device acceptance is claimed.
+
+
+## November 22, 2026 — AUTH-006 refresh after directory release
+
+- Integrated main 352d811 into #309 head 38b50b8 without rewriting history. Resolved continuity dates and appended worklog conflicts, preserving both AUTH-006 and all live The Truth directory work. All authentication/API/client/test/script/worker bytes remain unchanged from 38b50b8.
+- Fresh required-isolated-Redis application suite: 983 pass, zero fail/skip. Offline signer suites: 18 pass, zero fail/skip. Every other verify component passes, including 333 security assertions, continuity/site/content/economy/whitepaper checks. The focused directory/manual/provider client suite additionally passed 22 tests.
+- No posted Security Bot delta-review result was found. The latest #225 handoff assigns that review; #309 contains no submitted reviews or non-Vercel conversation comments. This refresh preserves the review prerequisite and does not claim an independent audit or actual-phone acceptance.
+- Updated task/current checkpoint and evidence. Publish the refreshed draft head and inspect its hosted checks. No merge, live auth change, secret/provider mutation, payout or private-bank cutover is authorized by this source-preparation record.
+
+
+## November 23, 2026 — SEC-004 assembled security candidate
+
+- Integrated pinned #307 607d579, #308 165f8d1 and #309 e31230d through Git history on live main 352d811. Retained all three task/project checkpoints and every appended worklog section; regenerated shared views. Resolved one identity import conflict preserving both exact origins and passkey/account/session-snapshot protection. Runtime/test bytes match local compatibility commit 8008739.
+- Added SEC-004 and the combined review/Preview/release record. Independent #309 delta review is still missing in connected GitHub. Preview and Production have separate configuration records, but endpoint comparison is unavailable for sensitive values; actual database isolation remains an acceptance prerequisite. No tokens or signing keys retrieved.
+- Prepare branch-scoped exact Preview origins without moving the existing fixed alias. Do not invite real-account/device testing until isolation and review are confirmed. Main merge, original PR closure and economic activation remain separate. Verification and Preview configuration outcomes will be recorded in the PR.
+- Completed assembled verification: 1002 application + 18 offline signer tests (1020 total), zero failures/skips, required isolated Redis 7.2.5 and concurrency two. All remaining verify components pass, including 340 security assertions and shared content/economy/continuity/site/whitepaper checks. Component task checkpoints now point to SEC-004 without treating their original PRs as merged. Final source/hosted/Preview evidence follows in the candidate PR.

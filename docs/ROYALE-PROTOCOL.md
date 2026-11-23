@@ -30,6 +30,8 @@ Correctness is withheld until the shared deadline, including from a player who a
 
 `/api/royale` is rewritten to the existing lobby function with `service=royale`. This preserves the deployment structure; the function's existing question-bank inclusion also covers Royale. `server/royale-api.js` checks the current session, per-player and create/join limits, input types, HTTPS request origin and JSON browser writes. `server/royale.js` owns the event state and projection.
 
+SEC-002 uses the shared exact-origin validator for mutations: a present Origin must match an allowlisted Host, forwarded headers cannot select another origin, and absent/malformed/non-HTTPS/multi-value Origin context is rejected. Approved preview origins use the same explicit identity-origin configuration; public discovery reads remain available without Origin. See [the source review and rollout requirements](EXACT-ORIGIN-REVIEW.md).
+
 - `geek:royale:<code>` stores the host/stable participant IDs, chosen capacity, readiness, immutable event ID, deadlines, current answers, elimination and result. Each player stores only one current answer, keeping room state bounded for 100 participants.
 - `geek:royale:<code>:questions` stores a private 100-question snapshot drawn from distinct active concepts/prompts. Retired items never enter selection. Difficulty moves from easy toward hard. Categories use the existing pools and retain their current editorial-review limitations.
 - A single Redis Lua transaction uses `TIME` to decide entry, start, deadlines, answer locking, elimination and final results. State changes are serialized across concurrent requests. A snapshot checksum detects missing/substituted event content; grading never switches to a changed live question bank.

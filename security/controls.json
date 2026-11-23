@@ -92,7 +92,7 @@
       "id": "GP-INV-014",
       "title": "Exact-origin wallet proof binding",
       "status": "implemented",
-      "evidence": ["server/identity.js", "api/identity.js", "tests/api.test.js", "docs/IDENTITY-PROTOCOL.md"]
+      "evidence": ["server/identity.js", "api/identity.js", "tests/api.test.js", "docs/IDENTITY-PROTOCOL.md", "server/request-origin.js", "tests/exact-origins.test.js", "docs/EXACT-ORIGIN-REVIEW.md"]
     },
     {
       "id": "GP-INV-015",
@@ -236,6 +236,16 @@
       "title": "Stored identity, session and one-time proof records validate before use; incompatible durable records remain preserved and unavailable",
       "status": "implemented-alpha-independent-review-required",
       "evidence": ["server/identity-records.js", "server/identity-wallet.js", "server/identity.js", "server/session.js", "tests/identity-records.test.js", "docs/IDENTITY-PROTOCOL.md", "vercel.json"]
+    },
+    {
+      "id": "GP-INV-037",
+      "title": "Fixed-window rate limits use atomic expiring writes, preserve consumed budgets and fail closed on invalid counters or replies",
+      "status": "source-candidate-internally-checked-independent-review-required",
+      "evidence": [
+        "server/redis.js",
+        "tests/rate-limit.test.js",
+        "docs/ATOMIC-RATE-LIMIT.md"
+      ]
     }
   ]
 }
