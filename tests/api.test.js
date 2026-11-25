@@ -387,6 +387,7 @@ const execute = (command) => {
       const keyCount = Number(args[1]);
       const keys = args.slice(2, 2 + keyCount);
       const values = args.slice(2 + keyCount);
+      if (strings.has(keys[6]) || strings.has(keys[7])) return 'DELETED';
       const wallet = strings.get(keys[0]);
       const player = strings.get(keys[1]);
       if (wallet && wallet !== String(values[0])) return 'WALLET_BOUND';

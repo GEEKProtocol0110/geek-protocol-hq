@@ -2,7 +2,7 @@
 
 Generated from the maintained JSON by `npm run continuity:write`. Update the source record, then regenerate. [Start Here](../../START-HERE.md).
 
-Record date: 2026-11-23. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
+Record date: 2026-11-25. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-protocol-hq](https://github.com/GEEKProtocol0110/geek-protocol-hq).
 
 ## Last verified product release
 
@@ -25,9 +25,9 @@ Record date: 2026-11-23. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 ## Current work and pickup
 
-**SEC-004: source-candidate.** One reviewable branch integrates exact origins, atomic limits and fresh-proof wallet linking, including maintained records and release gates.
+**AUTH-007: source-candidate.** Reject first-wallet-link and recovery writes after either the target or requesting player is concurrently deleted.
 
-Next task: **SEC-004**. Combined draft PR #324 is published and its exact branch-scoped Preview origins are configured and read back. Existing fixed Preview alias is unchanged. Obtain independent review and owner/provider confirmation of Preview database isolation before actual-account/device acceptance; inspect final exact-head hosted checks. Main merge remains separate.
+Next task: **AUTH-007**. Review the separate AUTH-007 follow-up to #324 at 0f35636, including baseline failures, real-Redis races and exact-head checks. Preserve the parent head. Confirm Preview database isolation before actual-account/device acceptance; main merge remains separate.
 
 ## Holds
 

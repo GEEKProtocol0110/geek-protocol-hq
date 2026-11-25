@@ -19,6 +19,8 @@ Founder decision, November 19, 2026: players can delete their own Geek account. 
 
 `readSession` checks the tombstone before any identity or passkey lookup, so every other session for the player, including device-approved sessions that have no index, returns signed out rather than a recovery error.
 
+The AUTH-007 follow-up also checks target/requester tombstones inside the atomic wallet-binding transition, preventing an already validated request on another device from recreating the deleted account. See [the candidate and race evidence](WALLET-LINK-DELETION-GUARD.md); release acceptance remains separate.
+
 ## Kept, and why
 
 - **Audit log**: integrity-chained; records hold only hashed identifiers.
@@ -30,4 +32,4 @@ Founder decision, November 19, 2026: players can delete their own Geek account. 
 
 ## Evidence and remaining work
 
-`tests/account-deletion.test.js` (real Redis) covers typed confirmation, guest deletion and cross-device revocation, standings removal that leaves other players intact, the hashed audit event, the fresh-grant requirement and credential release for passkey accounts, and a concurrent change that aborts without deleting anything. Wallet-linked deletion, rendered/browser acceptance and an independent security review remain open. Replacing names inside accepted classic games is a possible follow-up.
+`tests/account-deletion.test.js` (real Redis) covers typed confirmation, guest deletion and cross-device revocation, standings removal that leaves other players intact, the hashed audit event, fresh grants and credential/wallet release, stale-proof refusal, and both orderings of deletion versus wallet linking. AUTH-007 also rejects recovery when the requester or target is concurrently deleted. Rendered/browser acceptance and independent review of this delta remain open. Replacing names inside accepted classic games is a possible follow-up.
