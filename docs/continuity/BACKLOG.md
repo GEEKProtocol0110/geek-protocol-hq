@@ -108,6 +108,7 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | SEC-003 | P1 | in-progress | Make shared rate counters atomic and fail closed on invalid state | Maintainer; founder reviews merge; independent reviewer unassigned |
 | AUTH-006 | P0 | in-progress | Require fresh account proof for a first recovery-wallet link | Maintainer implements; independent reviewer unassigned; founder reviews release and devices |
 | SEC-004 | P0 | in-progress | Assemble and verify the combined origin, limiter and wallet-link release | Maintainer prepares candidate; founder reviews release; independent reviewer unassigned |
+| AUTH-007 | P1 | in-progress | Reject wallet binding after concurrent account deletion | Maintainer implements; independent delta reviewer unassigned; founder reviews release and devices |
 
 ## CONT-001: Publish the continuation system
 
@@ -1647,7 +1648,7 @@ Evidence/specification: [docs/WALLET-LINK-REAUTH.md](../../docs/WALLET-LINK-REAU
 
 **P0 / in-progress.** Owner: Maintainer prepares candidate; founder reviews release; independent reviewer unassigned. Dependencies: SEC-002, SEC-003, AUTH-006.
 
-Next action: Combined draft PR #324 is published and its exact branch-scoped Preview origins are configured and read back. Existing fixed Preview alias is unchanged. Obtain independent review and owner/provider confirmation of Preview database isolation before actual-account/device acceptance; inspect final exact-head hosted checks. Main merge remains separate.
+Next action: GitHub reports #324 merged as c8029d162788c934b768973581f1e4b8d7e62446 on November 25. Auth runtime, API and tests match reviewed source 0f35636; the merge includes the separate ai dependency update. Database resources are confirmed distinct from provider metadata. Physical-device and Production authentication acceptance remain separate. AUTH-007 closes the retained deletion-marker LOW in draft #326.
 
 Acceptance:
 
@@ -1658,3 +1659,19 @@ Acceptance:
 - Preserve owner/MFA #306, private bank, migration, payout, CCE and collection holds; do not close original PRs before accepted replacement release.
 
 Evidence/specification: [docs/SECURITY-RELEASE-CANDIDATE.md](../../docs/SECURITY-RELEASE-CANDIDATE.md), [docs/EXACT-ORIGIN-REVIEW.md](../../docs/EXACT-ORIGIN-REVIEW.md), [docs/ATOMIC-RATE-LIMIT.md](../../docs/ATOMIC-RATE-LIMIT.md), [docs/WALLET-LINK-REAUTH.md](../../docs/WALLET-LINK-REAUTH.md).
+
+## AUTH-007: Reject wallet binding after concurrent account deletion
+
+**P1 / in-progress.** Owner: Maintainer implements; independent delta reviewer unassigned; founder reviews release and devices. Dependencies: SEC-004.
+
+Next action: Draft #326 integrates current main f95a0dc after observed #324 merge c8029d1. Fresh local verification passes 1006 application and 18 signer checks, with all supporting checks. Publish the exact refreshed head and inspect hosted checks; request independent review of that head through Geek Bot. Preview database isolation and authenticated origin/session boundaries are confirmed. Actual-device acceptance and founder release approval remain pending.
+
+Acceptance:
+
+- One binding Lua transition checks the existing target-player and requester-player tombstones before any wallet, identity, credential, session or successful-audit write.
+- Deletion winning the first-link or recovery race returns the existing conflict without recreating deleted state, changing a live owner, or locking a released wallet.
+- Linking winning first leaves the existing deletion snapshot comparison intact; freshly authorized deletion and fresh-player linking/recovery remain usable.
+- Shipped handlers with signed synthetic proofs and isolated real Redis reproduce three failures on unchanged parent and pass them with the guard; reverse-order, original access and no-partial-write behavior are checked.
+- Record focused/full local verification, exact published head and hosted results separately from independent review, database isolation, device acceptance and founder release.
+
+Evidence/specification: [docs/WALLET-LINK-DELETION-GUARD.md](../../docs/WALLET-LINK-DELETION-GUARD.md), [docs/ACCOUNT-DELETION.md](../../docs/ACCOUNT-DELETION.md), [server/identity.js](../../server/identity.js), [tests/account-deletion.test.js](../../tests/account-deletion.test.js), [tests/api.test.js](../../tests/api.test.js).

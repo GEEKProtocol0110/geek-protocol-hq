@@ -172,6 +172,129 @@ const linkedWallet = async n => {
   return { cookie, w, playerId };
 };
 
+// Keep a second session with the same player so deletion can revoke it by
+// tombstone without removing the exact requester-session snapshot under test.
+const otherDeviceFor = async cookie => {
+  const id = randomBytes(16).toString('hex');
+  await fixture.command('SET', `geek:session:${id}`, JSON.stringify({ ...(await sessionRecord(cookie)), id }), 'EX', 600);
+  return `geek_session=${id}`;
+};
+
+test('deletion winning a guest first-link race cannot recreate the account or lock its wallet', async () => {
+  const cookie = await newSession(), playerId = (await sessionRecord(cookie)).playerId;
+  const otherDevice = await otherDeviceFor(cookie), w = testWallet(31);
+  const issued = await challenge(cookie, w), requesterKey = `geek:session:${cookie.split('=')[1]}`;
+  const requesterBefore = await fixture.command('GET', requesterKey);
+  let deleted = false;
+  beforeCommand = async command => {
+    if (command[0] !== 'EVAL' || !String(command[1]).includes('geek-identity-bind-v1')) return;
+    beforeCommand = null;
+    const result = await call(passkeysHandler, otherDevice, { action: 'delete-account', confirm: 'DELETE' });
+    assert.equal(result.statusCode, 200, JSON.stringify(result.body));
+    assert.equal(await fixture.command('GET', requesterKey), requesterBefore, 'the other device leaves this stored session intact');
+    deleted = true;
+  };
+  const result = await identityCall(cookie, { action: 'verify', challengeId: issued.challengeId, signature: sign(w, issued) });
+  assert.equal(deleted, true, 'actual deletion completed immediately before binding');
+  assert.equal(result.statusCode, 409, JSON.stringify(result.body));
+  assert.equal(result.body.code, 'IDENTITY_STATE_CONFLICT');
+  assert.equal(await fixture.command('GET', walletBindingKey(w)), null);
+  assert.equal(await fixture.command('GET', identityPlayerKey(playerId)), null);
+  assert.equal(await fixture.command('GET', passkeyAccountKey(playerId)), null);
+  assert.equal(await fixture.command('GET', requesterKey), requesterBefore, 'no session write follows deletion');
+  assert.equal(await fixture.command('EXISTS', deletedPlayerKey(playerId)), 1);
+  const records = await Promise.all((await fixture.command('KEYS', 'geek:audit:event:*')).map(async key => JSON.parse(await fixture.command('GET', key))));
+  assert.equal(records.some(record => record.type === 'identity.wallet.linked'), false, 'no successful-link audit is committed');
+  assert.equal((await identityCall(cookie, undefined, 'GET')).statusCode, 401);
+  const fresh = await newSession(), freshPlayer = (await sessionRecord(fresh)).playerId;
+  assert.equal((await prove(fresh, w)).statusCode, 200, 'a new player can still link the wallet with a fresh signed proof');
+  assert.equal(await fixture.command('GET', walletBindingKey(w)), freshPlayer);
+});
+
+test('deleting a recovery requester on another device cannot commit its in-flight wallet recovery', async () => {
+  const owner = await linkedWallet(32), cookie = await newSession();
+  const requesterId = (await sessionRecord(cookie)).playerId, otherDevice = await otherDeviceFor(cookie);
+  const issued = await challenge(cookie, owner.w);
+  assert.equal(issued.intent, 'recover');
+  const ownerBefore = await fixture.command('GET', identityPlayerKey(owner.playerId));
+  const requesterKey = `geek:session:${cookie.split('=')[1]}`, requesterBefore = await fixture.command('GET', requesterKey);
+  beforeCommand = async command => {
+    if (command[0] !== 'EVAL' || !String(command[1]).includes('geek-identity-bind-v1')) return;
+    beforeCommand = null;
+    const result = await call(passkeysHandler, otherDevice, { action: 'delete-account', confirm: 'DELETE' });
+    assert.equal(result.statusCode, 200, JSON.stringify(result.body));
+    assert.equal(await fixture.command('GET', requesterKey), requesterBefore);
+  };
+  const result = await identityCall(cookie, { action: 'verify', challengeId: issued.challengeId, signature: sign(owner.w, issued) });
+  assert.equal(result.statusCode, 409, JSON.stringify(result.body));
+  assert.equal(result.body.code, 'IDENTITY_STATE_CONFLICT');
+  assert.equal(await fixture.command('EXISTS', deletedPlayerKey(requesterId)), 1);
+  assert.equal(await fixture.command('GET', requesterKey), requesterBefore, 'a deleted requester is not switched to the recovered player');
+  assert.equal(await fixture.command('GET', identityPlayerKey(owner.playerId)), ownerBefore, 'the existing account version is untouched');
+  assert.equal(await fixture.command('GET', walletBindingKey(owner.w)), owner.playerId);
+  assert.equal((await identityCall(owner.cookie, undefined, 'GET')).statusCode, 200, 'the owner keeps access');
+  const records = await Promise.all((await fixture.command('KEYS', 'geek:audit:event:*')).map(async key => JSON.parse(await fixture.command('GET', key))));
+  assert.equal(records.some(record => record.type === 'identity.session.recovered'), false);
+  const fresh = await newSession();
+  assert.equal((await prove(fresh, owner.w)).statusCode, 200, 'a nondeleted requester can still recover with a fresh wallet proof');
+  assert.equal((await sessionRecord(fresh)).playerId, owner.playerId);
+});
+
+test('a wallet link winning the race makes an older deletion snapshot fail safely', async () => {
+  const cookie = await newSession(), playerId = (await sessionRecord(cookie)).playerId;
+  const otherDevice = await otherDeviceFor(cookie), w = testWallet(33);
+  let linked = false;
+  beforeCommand = async command => {
+    if (command[0] !== 'EVAL' || !String(command[1]).includes('geek-account-delete-v1')) return;
+    beforeCommand = null;
+    const result = await prove(cookie, w);
+    assert.equal(result.statusCode, 200, JSON.stringify(result.body));
+    linked = true;
+  };
+  const deletion = await call(passkeysHandler, otherDevice, { action: 'delete-account', confirm: 'DELETE' });
+  assert.equal(linked, true);
+  assert.equal(deletion.statusCode, 409, JSON.stringify(deletion.body));
+  assert.equal(deletion.body.code, 'ACCOUNT_DELETE_CHANGED');
+  assert.equal(await fixture.command('GET', walletBindingKey(w)), playerId);
+  assert.notEqual(await fixture.command('GET', identityPlayerKey(playerId)), null);
+  assert.equal(await fixture.command('EXISTS', deletedPlayerKey(playerId)), 0);
+  const retried = await call(passkeysHandler, cookie, { action: 'delete-account', confirm: 'DELETE', token: await walletGrant(cookie, w) });
+  assert.equal(retried.statusCode, 200, JSON.stringify(retried.body));
+  assert.equal(await fixture.command('GET', walletBindingKey(w)), null);
+  assert.equal(await fixture.command('GET', identityPlayerKey(playerId)), null);
+  assert.equal(await fixture.command('EXISTS', deletedPlayerKey(playerId)), 1);
+});
+
+test('recovery cannot recreate a target deleted before its identity snapshots are read', async () => {
+  const owner = await linkedWallet(34), token = await walletGrant(owner.cookie, owner.w);
+  const cookie = await newSession(), requesterId = (await sessionRecord(cookie)).playerId;
+  const issued = await challenge(cookie, owner.w), requesterKey = `geek:session:${cookie.split('=')[1]}`;
+  assert.equal(issued.intent, 'recover');
+  const requesterBefore = await fixture.command('GET', requesterKey);
+  let deleted = false;
+  beforeCommand = async command => {
+    if (command[0] !== 'GET' || command[1] !== walletBindingKey(owner.w)) return;
+    beforeCommand = null;
+    const result = await call(passkeysHandler, owner.cookie, { action: 'delete-account', confirm: 'DELETE', token });
+    assert.equal(result.statusCode, 200, JSON.stringify(result.body));
+    deleted = true;
+  };
+  const result = await identityCall(cookie, { action: 'verify', challengeId: issued.challengeId, signature: sign(owner.w, issued) });
+  assert.equal(deleted, true, 'deletion removes the wallet and player before verification reads them');
+  assert.equal(result.statusCode, 409, JSON.stringify(result.body));
+  assert.equal(result.body.code, 'IDENTITY_STATE_CONFLICT');
+  assert.equal(await fixture.command('GET', identityPlayerKey(owner.playerId)), null);
+  assert.equal(await fixture.command('GET', walletBindingKey(owner.w)), null);
+  assert.equal(await fixture.command('EXISTS', deletedPlayerKey(owner.playerId)), 1);
+  assert.equal(await fixture.command('EXISTS', deletedPlayerKey(requesterId)), 0);
+  assert.equal(await fixture.command('GET', requesterKey), requesterBefore);
+  const records = await Promise.all((await fixture.command('KEYS', 'geek:audit:event:*')).map(async key => JSON.parse(await fixture.command('GET', key))));
+  assert.equal(records.some(record => record.type === 'identity.session.recovered'), false);
+  const fresh = await newSession(), freshPlayer = (await sessionRecord(fresh)).playerId;
+  assert.equal((await prove(fresh, owner.w)).statusCode, 200);
+  assert.equal(await fixture.command('GET', walletBindingKey(owner.w)), freshPlayer, 'fresh proof links to a new player, never the deleted target');
+});
+
 test('deleting a wallet-linked account needs a fresh wallet grant and releases the wallet binding', async () => {
   const { cookie, w, playerId } = await linkedWallet(21);
   await seedPlayerData(playerId);

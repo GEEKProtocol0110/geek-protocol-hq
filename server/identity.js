@@ -20,9 +20,13 @@ import { consumePasskeyGrant, issuePasskeyGrant, passkeyAccountKey } from './pas
 import { trustedRequestOrigin } from './request-origin.js';
 import { decodePasskeyAccount } from './passkey-records.js';
 import { sessionStorageSnapshot } from './session.js';
+import { deletedPlayerKey } from './account-deletion.js';
 
 const IDENTITY_BIND_SCRIPT = `
 -- geek-identity-bind-v1
+-- Deletion on another device can leave the requester session stored. Check both
+-- players inside the binding transition, before any identity/session/audit write.
+if redis.call('EXISTS', KEYS[7]) == 1 or redis.call('EXISTS', KEYS[8]) == 1 then return 'DELETED' end
 local wallet = redis.call('GET', KEYS[1])
 local player = redis.call('GET', KEYS[2])
 if wallet and wallet ~= ARGV[1] then return 'WALLET_BOUND' end
@@ -373,13 +377,15 @@ export const verifyIdentityChallenge = async ({ req, session, challengeId, signa
   const transition = await redis(
     'EVAL',
     IDENTITY_BIND_SCRIPT,
-    6,
+    8,
     walletKey,
     playerKey,
     sessionKey(session.id),
     eventWrite[1],
     indexWrite[1],
     passkeyAccountKey(targetPlayerId),
+    deletedPlayerKey(targetPlayerId),
+    deletedPlayerKey(currentPlayerId),
     targetPlayerId,
     previousRaw || '',
     JSON.stringify(identity),

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updatedAt": "2026-11-23",
+  "updatedAt": "2026-11-25",
   "priorityOrder": [
     "P0",
     "P1",
@@ -2581,7 +2581,7 @@
       "status": "in-progress",
       "title": "Assemble and verify the combined origin, limiter and wallet-link release",
       "owner": "Maintainer prepares candidate; founder reviews release; independent reviewer unassigned",
-      "nextAction": "Combined draft PR #324 is published and its exact branch-scoped Preview origins are configured and read back. Existing fixed Preview alias is unchanged. Obtain independent review and owner/provider confirmation of Preview database isolation before actual-account/device acceptance; inspect final exact-head hosted checks. Main merge remains separate.",
+      "nextAction": "GitHub reports #324 merged as c8029d162788c934b768973581f1e4b8d7e62446 on November 25. Auth runtime, API and tests match reviewed source 0f35636; the merge includes the separate ai dependency update. Database resources are confirmed distinct from provider metadata. Physical-device and Production authentication acceptance remain separate. AUTH-007 closes the retained deletion-marker LOW in draft #326.",
       "dependsOn": [
         "SEC-002",
         "SEC-003",
@@ -2602,7 +2602,39 @@
       ],
       "validationEvidence": [
         "Assembled source: 1002 application tests with required real Redis 7.2.5, concurrency two, plus 18 offline signer checks (1020 total), zero failures/skips. All other verify components pass, including 340 security assertions and shared continuity/site/content/economy/whitepaper checks. Exact hosted/Preview results follow in the PR.",
-        "Review Preview dpl_Cnyf2SGtoLEDrRC9JN1ro3WZzqwn READY on initial combined source bf1f61e; sign-in HTTP 200 matches checked HTML. IDENTITY_ALLOWED_ORIGINS and PASSKEY_ORIGIN match the exact server-returned branch alias and are scoped only to Preview/gitBranch codex/security-release-candidate. Existing fixed Preview alias deployment is unchanged. This is HTTP/configuration evidence, not independent, isolation or device acceptance."
+        "Review Preview dpl_Cnyf2SGtoLEDrRC9JN1ro3WZzqwn READY on initial combined source bf1f61e; sign-in HTTP 200 matches checked HTML. IDENTITY_ALLOWED_ORIGINS and PASSKEY_ORIGIN match the exact server-returned branch alias and are scoped only to Preview/gitBranch codex/security-release-candidate. Existing fixed Preview alias deployment is unchanged. This is HTTP/configuration evidence, not independent, isolation or device acceptance.",
+        "GitHub reports #324 merged as c8029d1 and #326 retargeted to main; observed main f95a0dc includes #325 ai patch and #321 directory corrections. Parent identity/origin/limiter runtime and tests match 0f35636. This observation is not physical-device or Production authentication acceptance."
+      ]
+    },
+    {
+      "id": "AUTH-007",
+      "priority": "P1",
+      "status": "in-progress",
+      "title": "Reject wallet binding after concurrent account deletion",
+      "owner": "Maintainer implements; independent delta reviewer unassigned; founder reviews release and devices",
+      "nextAction": "Draft #326 integrates current main f95a0dc after observed #324 merge c8029d1. Fresh local verification passes 1006 application and 18 signer checks, with all supporting checks. Publish the exact refreshed head and inspect hosted checks; request independent review of that head through Geek Bot. Preview database isolation and authenticated origin/session boundaries are confirmed. Actual-device acceptance and founder release approval remain pending.",
+      "dependsOn": [
+        "SEC-004"
+      ],
+      "acceptance": [
+        "One binding Lua transition checks the existing target-player and requester-player tombstones before any wallet, identity, credential, session or successful-audit write.",
+        "Deletion winning the first-link or recovery race returns the existing conflict without recreating deleted state, changing a live owner, or locking a released wallet.",
+        "Linking winning first leaves the existing deletion snapshot comparison intact; freshly authorized deletion and fresh-player linking/recovery remain usable.",
+        "Shipped handlers with signed synthetic proofs and isolated real Redis reproduce three failures on unchanged parent and pass them with the guard; reverse-order, original access and no-partial-write behavior are checked.",
+        "Record focused/full local verification, exact published head and hosted results separately from independent review, database isolation, device acceptance and founder release."
+      ],
+      "evidence": [
+        "docs/WALLET-LINK-DELETION-GUARD.md",
+        "docs/ACCOUNT-DELETION.md",
+        "server/identity.js",
+        "tests/account-deletion.test.js",
+        "tests/api.test.js"
+      ],
+      "validationEvidence": [
+        "Three refusal regressions fail against unchanged parent 0f35636 with HTTP 200; reverse ordering and six prior deletion tests pass. All ten deletion tests pass with the guard.",
+        "Full local application verification: 1006 tests, required isolated Redis 7.2.5, concurrency two, zero failures/skips. Both offline signer suites pass nine tests each (1024 application/signer total). All other verify components pass, including 340 security assertions, content/economy/continuity/site/whitepaper checks. Hosted and independent delta review remain separate.",
+        "November 25 read-only provider metadata confirms each environment URL/token pair maps to its own available database resource, with distinct provider IDs and no higher-priority REST overrides. Exact #326 Preview-only origin settings were read back; redeployed d287696 is READY. Authenticated checks: home/health 200, storage connected and settlement disabled; passkey GET and exact-origin empty POST 401 SESSION_REQUIRED; foreign-origin POST 400 PASSKEY_ORIGIN_INVALID. No account or wallet action was created. Independent delta review requested in #225 issuecomment-7154922350, no result posted.",
+        "Refreshed integration on main f95a0dc: clean isolated npm ci from current lock, 1006 application tests with required isolated Redis 7.2.5/concurrency two, 18 offline signer checks (1024 total), zero failures/skips. All supporting verify components plus directory check pass, including 340 security assertions. Authentication runtime/API/client/tests exactly match prior d287696; current ai patch and directory corrections retained. Hosted and independent exact-head checks follow in #326."
       ]
     }
   ]
