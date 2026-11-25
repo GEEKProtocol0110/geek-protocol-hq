@@ -1664,7 +1664,7 @@ Evidence/specification: [docs/SECURITY-RELEASE-CANDIDATE.md](../../docs/SECURITY
 
 **P1 / in-progress.** Owner: Maintainer implements; independent delta reviewer unassigned; founder reviews release and devices. Dependencies: SEC-004.
 
-Next action: Review the separate AUTH-007 follow-up to #324 at 0f35636, including baseline failures, real-Redis races and exact-head checks. Preserve the parent head. Confirm Preview database isolation before actual-account/device acceptance; main merge remains separate.
+Next action: Draft #326 is stacked on #324 at 0f35636 and contains the separately checked AUTH-007 deletion-race fix. Inspect final exact-head hosted checks and obtain independent delta review. Preserve the parent head; confirm Preview database isolation before actual-account/device acceptance. Retarget only after accepted parent release; main merge remains separate.
 
 Acceptance:
 
