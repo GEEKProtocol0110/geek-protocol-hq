@@ -198,6 +198,7 @@ export const handleApiError = (res, error) => {
   if (code === 'IDENTITY_SIGNATURE_INVALID') return sendJson(res, 401, { ok: false, code, error: 'The wallet signature was not valid for this one-time challenge.' });
   if (code === 'IDENTITY_CHALLENGE_INVALID') return sendJson(res, 409, { ok: false, code, error: 'That wallet challenge expired or was already used. Request a new one.' });
   if (code === 'IDENTITY_WALLET_BOUND') return sendJson(res, 409, { ok: false, code, error: 'That wallet is already bound to another player identity.' });
+  if (code === 'WALLET_LINK_REAUTH_REQUIRED') return sendJson(res, 401, { ok: false, code, error: 'Before linking this wallet, open Manage saved access on the Sign in page and choose Verify with a passkey. Then request a new wallet message.' });
   if (code === 'IDENTITY_REAUTH_REQUIRED') return sendJson(res, 401, { ok: false, code, error: 'Reconnect the verified identity wallet and sign a fresh challenge.' });
   if (code === 'IDENTITY_ROTATION_UNAVAILABLE') return sendJson(res, 409, { ok: false, code, error: 'This player is already protected by another wallet. Reconnect the linked identity wallet; wallet rotation is not enabled in Alpha.' });
   if (code === 'IDENTITY_CHALLENGE_FAILED') return sendJson(res, 503, { ok: false, code, error: 'A one-time wallet challenge could not be created.' });

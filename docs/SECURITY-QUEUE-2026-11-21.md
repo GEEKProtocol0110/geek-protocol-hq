@@ -1,0 +1,21 @@
+# Security execution queue — November 21, 2026
+
+Source checkpoint: main `7db37b3459ef80ef0ec05635c39a81ca0f049da1`. This is a work queue, not release approval. Economic and private-bank holds remain unchanged.
+
+| Order | Work | Current evidence | Next action / completion condition | Owner role |
+| --- | --- | --- | --- | --- |
+| 1 | AUTH-006, #309: fresh proof before first wallet link, preserve existing passkeys | Integrated with current main; 983 application tests and 18 offline signer checks pass locally, zero failures/skips; two new account-deletion integration tests | Publish refreshed draft head, inspect hosted checks, obtain founder release review, then separately verify original-passkey return on an actual device | Maintainer; founder release review; independent reviewer unassigned |
+| 2 | #307: exact origins for wallet proofs and Royale writes | Draft; GitHub reports conflicts with current main; earlier local/hosted evidence is scoped to its prior head | Integrate current main, preserve both continuity histories, verify approved preview-origin prerequisites, rerun full checks and inspect resulting head | Maintainer; independent reviewer unassigned |
+| 3 | #308: atomic fixed-window rate counters | Draft; GitHub reports conflicts with current main; earlier real-Redis evidence covers the prior implementation | Integrate current main, verify limiter compatibility with the other auth candidates, rerun real-Redis races/faults and full checks | Maintainer; independent reviewer unassigned |
+| 4 | #306: owner MFA and security triage | Draft, conflicts with main; earlier report says distinct owner credentials/authenticator and external bot caller acceptance remain prerequisites | Reconcile code separately; before release establish owner access, authenticator recovery and isolated preview setup, confirm affected external callers, then test resulting head | Maintainer prepares; owner provisions; external caller owners unassigned |
+| 5 | Remaining adversarial findings | #309 explicitly leaves session rotation, device-approval phishing, legacy payout-preference reauthorization and Redis trade serialization open | Scope separate regressions and fixes; do not describe the four draft PRs as completing the full adversarial review | Maintainer; independent reviewer unassigned |
+| 6 | BANK-009 and #286: existing-bank quality and triage | Draft conflicts with main; latest Geek Bot report says Security Bot review remains missing | Obtain the actual review evidence, integrate and verify without promoting unreviewed rows or changing saved grading | Maintainer; content/security reviewers unassigned |
+
+Geek Bot's November 20 report on issue #225 says Security Bot rated #306–#309 READY with LOW/INFO notes. The underlying local report was not available in this checkout, and #309 has no submitted GitHub review. Treat this as reported review of earlier candidates, not a new independent audit or refreshed-head acceptance.
+
+Other open work: #321 directory fact corrections; #305 companion-document drafts; #200 private-ranked-bank cutover; #216 migration design. The last two retain their separate restrictions. Credits Song phone sound, multiplayer/device acceptance and restore evidence remain distinct acceptance jobs. No automatic merge, production rollout, announcement or payment is authorized by this queue.
+
+
+## November 22 checkpoint
+
+AUTH-006 is refreshed against main 352d811. Authentication/runtime/test bytes are unchanged from 38b50b8; only the live directory additions and maintained records were integrated. Fresh local verification again passes 983 application and 18 offline signer tests, zero failures/skips; all remaining verify components pass. Geek Bot's November 22 handoff assigns Security Bot a delta review but does not contain its result, and #309 has no submitted review. Preserve that prerequisite and actual-device acceptance. The published PR records the refreshed head, tree and hosted checks.

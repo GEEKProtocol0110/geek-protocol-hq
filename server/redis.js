@@ -67,13 +67,41 @@ export const pipeline = async (commands, atomic = false) => {
   return result.map(item => item.result);
 };
 
+export const RATE_LIMIT_LUA = `-- geek-rate-limit-v1
+local seconds = tonumber(ARGV[1])
+if not seconds or seconds < 1 or seconds > 2147483647 or seconds ~= math.floor(seconds) then
+  return redis.error_reply('RATE_LIMIT_CONFIG_INVALID')
+end
+local value = redis.call('GET', KEYS[1])
+local previous = 0
+if value then
+  if not string.match(value, '^%d+$') or (#value > 1 and string.sub(value, 1, 1) == '0') or #value > 16 then
+    return redis.error_reply('RATE_LIMIT_STATE_INVALID')
+  end
+  previous = tonumber(value)
+  if not previous or previous >= 9007199254740991 then
+    return redis.error_reply('RATE_LIMIT_STATE_INVALID')
+  end
+end
+local ttl = redis.call('PTTL', KEYS[1])
+if not value or ttl < 0 then
+  -- One expiring write: a later EXPIRE failure cannot strand this counter.
+  -- Repair legacy missing TTLs without forgiving any consumed requests.
+  local next = previous + 1
+  redis.call('SET', KEYS[1], string.format('%.0f', next), 'EX', ARGV[1])
+  return next
+end
+-- INCR preserves the existing expiry, including when the budget is exhausted.
+return redis.call('INCR', KEYS[1])
+`;
+
 export const rateLimit = async (scope, id, maximum = 30, seconds = 60) => {
+  if (!Number.isSafeInteger(maximum) || maximum < 1 || !Number.isSafeInteger(seconds) || seconds < 1 || seconds > 2147483647) throw new Error('INVALID_RATE_LIMIT');
   const key = `geek:rate:${scope}:${id}`;
-  const [count] = await pipeline([
-    ['INCR', key],
-    ['EXPIRE', key, seconds, 'NX']
-  ]);
-  if (Number(count) > maximum) throw new Error('RATE_LIMITED');
+  const result = await redis('EVAL', RATE_LIMIT_LUA, 1, key, seconds);
+  const count = typeof result === 'number' ? result : typeof result === 'string' && /^[1-9]\d*$/.test(result) ? Number(result) : NaN;
+  if (!Number.isSafeInteger(count) || count < 1) throw new Error('REDIS_INVALID_RESPONSE');
+  if (count > maximum) throw new Error('RATE_LIMITED');
 };
 
 export const parseStoredJson = (value) => {

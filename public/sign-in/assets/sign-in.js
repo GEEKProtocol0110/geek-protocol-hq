@@ -52,7 +52,11 @@
       } catch { /* Selected text remains available when clipboard access is denied. */ }
     });
   }
-  let proofIntent = 'identity';
+  let proofIntent = 'identity', linkGrant = '';
+  document.addEventListener('geek:device-grant', event => { linkGrant = event.detail.token; });
+  document.addEventListener('geek:device-grant-used', () => { linkGrant = ''; });
+  document.addEventListener('geek:signed-in', () => { linkGrant = ''; });
+  document.addEventListener('geek:device-signed-in', () => { linkGrant = ''; });
   const showSignedIn = (message) => { status.textContent = message; hq.hidden = false; continueLink.textContent = nextPage[1]; const title = document.querySelector('[data-sign-in-title]'); if (title) title.textContent = 'Welcome back.'; const guest = document.querySelector('[data-sign-in-guest]'); if (guest) guest.hidden = true; };
   document.addEventListener('geek:passkey-signed-in', event => { signedIn = true; invalidate(); manualStatus.textContent = ''; proofIntent = 'identity'; showSignedIn(`Signed in to your saved player. ${destination}`); hq.focus(); if (event.detail?.continue) location.assign(nextPage[0]); });
   document.addEventListener('geek:device-signed-in', event => { signedIn = true; invalidate(); showSignedIn(`Signed in to ${event.detail.playerName}. ${destination}`); hq.focus(); });
@@ -120,7 +124,9 @@
     invalidate(); busy(true); manualStatus.textContent = 'Creating your one-time login message…';
     try {
       await request('/api/session', {});
-      const issued = await request('/api/identity', { action: 'challenge', intent: proofIntent, address: addressInput.value.trim() });
+      const token = proofIntent === 'identity' ? linkGrant : '';
+      if (token) document.dispatchEvent(new CustomEvent('geek:device-grant-used'));
+      const issued = await request('/api/identity', { action: 'challenge', intent: proofIntent, address: addressInput.value.trim(), ...(token ? { token } : {}) });
       challenge = issued.challenge;
       messageInput.value = challenge.message;
       proofStep.hidden = false;

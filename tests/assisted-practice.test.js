@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import rankedHandler from '../api/ranked.js';
 import { decodePractice, practiceCasScript, practiceRules, practiceView, transitionPractice } from '../server/assisted-practice.js';
 import { loadQuestionBank } from '../server/questions.js';
+import { RATE_LIMIT_LUA } from '../server/redis.js';
 const store=new Map(), a='a'.repeat(32), b='b'.repeat(32), recovered='c'.repeat(32), player='d'.repeat(32);
 const savedFetch=globalThis.fetch;let loseResponse=false, conflicts=0;
 process.env.UPSTASH_REDIS_REST_URL='https://practice-redis.test';process.env.UPSTASH_REDIS_REST_TOKEN='practice-test';
@@ -11,7 +12,7 @@ const execute=([op,...args])=>{
  if(op==='SET'){if(args.includes('NX')&&store.has(args[0]))return null;store.set(args[0],String(args[1]));return 'OK';}
  if(op==='INCR'){const n=Number(store.get(args[0])||0)+1;store.set(args[0],String(n));return n;}
  if(op==='EXPIRE')return 1;
- if(op==='EVAL'){assert.equal(args[0],practiceCasScript);assert.equal(args[1],1);const [,,key,old,next,ttl]=args;assert.equal(ttl,7200);if(conflicts>0){conflicts--;return 0;}if((store.get(key)??'')!==old)return 0;store.set(key,next);if(loseResponse){loseResponse=false;throw Error('Lost response');}return 1;}
+ if(op==='EVAL'){if(args[0]===RATE_LIMIT_LUA){assert.equal(args[1],1);return execute(['INCR',args[2]]);}assert.equal(args[0],practiceCasScript);assert.equal(args[1],1);const [,,key,old,next,ttl]=args;assert.equal(ttl,7200);if(conflicts>0){conflicts--;return 0;}if((store.get(key)??'')!==old)return 0;store.set(key,next);if(loseResponse){loseResponse=false;throw Error('Lost response');}return 1;}
  throw Error('Unexpected command '+op);
 };
 globalThis.fetch=async(url,options)=>{assert.ok(String(url).startsWith('https://practice-redis.test'));const body=JSON.parse(options.body),payload=String(url).endsWith('/pipeline')?body.map(c=>({result:execute(c)})):({result:execute(body)});return {ok:true,json:async()=>payload};};

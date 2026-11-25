@@ -104,6 +104,10 @@ P0 is the immediate product/recovery queue. Planned and proposed work is not aut
 | UX-034 | P1 | done | Let one player face A.C.E. in the two-player local strategy games | Maintainer; founder reviews release; independent difficulty/device acceptance unassigned |
 | UX-035 | P1 | in-progress | Build the A.C.E. Arcade milestone with saved games and a personal practice desk | Maintainer; founder reviews release; physical-device acceptance unassigned |
 | UX-036 | P2 | in-progress | Add the founder-supplied GEEK Credits Song to Hall of Thanks | Maintainer; founder reviews preview and phone sound |
+| SEC-002 | P1 | in-progress | Restrict wallet proofs and Royale writes to exact trusted origins | Maintainer; founder reviews release and real-wallet acceptance; independent reviewer unassigned |
+| SEC-003 | P1 | in-progress | Make shared rate counters atomic and fail closed on invalid state | Maintainer; founder reviews merge; independent reviewer unassigned |
+| AUTH-006 | P0 | in-progress | Require fresh account proof for a first recovery-wallet link | Maintainer implements; independent reviewer unassigned; founder reviews release and devices |
+| SEC-004 | P0 | in-progress | Assemble and verify the combined origin, limiter and wallet-link release | Maintainer prepares candidate; founder reviews release; independent reviewer unassigned |
 
 ## CONT-001: Publish the continuation system
 
@@ -1590,3 +1594,67 @@ Acceptance:
 - Local web audio is metadata-stripped and decodes fully; page fits narrow screens. Record preview and remaining actual-phone acceptance separately.
 
 Evidence/specification: [docs/HALL-OF-THANKS.md](../../docs/HALL-OF-THANKS.md), [public/thanks/index.html](../../public/thanks/index.html), [public/thanks/assets/music.js](../../public/thanks/assets/music.js), [tests/thanks-music.test.js](../../tests/thanks-music.test.js).
+
+## SEC-002: Restrict wallet proofs and Royale writes to exact trusted origins
+
+**P1 / in-progress.** Owner: Maintainer; founder reviews release and real-wallet acceptance; independent reviewer unassigned. Dependencies: none.
+
+Next action: Included in combined release candidate SEC-004. Preserve this task and its earlier evidence; review the assembled head before release. The original component PR remains separate and unmerged.
+
+Acceptance:
+
+- Matching attacker Origin and spoofed forwarded Host, arbitrary Vercel tenants, non-HTTPS and multi-value/array headers are rejected.
+- Explicit exact preview entries work, and a proof issued on one allowed origin fails verification on another while valid same-origin proof remains usable.
+- Restoring wildcard trust makes a targeted negative-control test fail; the weakened code is never committed.
+- Existing passkey/WebAuthn, wallet, Royale and full repository checks pass on the assembled head; live wallet/device acceptance and release status remain separate.
+- Preserve all economic gates and document Claude handoff concerns, branch integration and outstanding rate-counter atomicity without claiming those separate tasks are complete.
+
+Evidence/specification: [docs/EXACT-ORIGIN-REVIEW.md](../../docs/EXACT-ORIGIN-REVIEW.md), [server/request-origin.js](../../server/request-origin.js), [tests/exact-origins.test.js](../../tests/exact-origins.test.js), [docs/IDENTITY-PROTOCOL.md](../../docs/IDENTITY-PROTOCOL.md).
+
+## SEC-003: Make shared rate counters atomic and fail closed on invalid state
+
+**P1 / in-progress.** Owner: Maintainer; founder reviews merge; independent reviewer unassigned. Dependencies: none.
+
+Next action: Included in combined release candidate SEC-004. Preserve this task and its earlier evidence; review the assembled head before release. The original component PR remains separate and unmerged.
+
+Acceptance:
+
+- New and missing-expiry counters use one expiring write and cannot be stranded by a rejected separate expiry command.
+- Existing expiring counters retain their exact deadline, exhausted legacy budgets stay exhausted during repair, and no automatic retry follows a lost acknowledgment.
+- Real-Redis concurrency, ACL write/expiry failures, malformed results/state, invalid policy and expiry recovery tests pass; baseline negative controls demonstrate the failures.
+- The application suite, isolated signer checks and all remaining verify components pass; preserve domain failure injection and update continuity/source evidence honestly.
+- Keep owner/MFA, origin and economic holds intact; integration, exact-head CI, founder merge and production acceptance remain separately evidenced.
+
+Evidence/specification: [docs/ATOMIC-RATE-LIMIT.md](../../docs/ATOMIC-RATE-LIMIT.md), [server/redis.js](../../server/redis.js), [tests/rate-limit.test.js](../../tests/rate-limit.test.js).
+
+## AUTH-006: Require fresh account proof for a first recovery-wallet link
+
+**P0 / in-progress.** Owner: Maintainer implements; independent reviewer unassigned; founder reviews release and devices. Dependencies: AUTH-005.
+
+Next action: Included in combined release candidate SEC-004. Preserve this task and its earlier evidence; review the assembled head before release. The original component PR remains separate and unmerged.
+
+Acceptance:
+
+- An existing passkey-only bearer session cannot add its first recovery wallet without fresh user-verified account proof.
+- First linking commits wallet identity and existing credential wallet-version continuity atomically against exact account and requesting-session snapshots. Existing passkeys, stable player ID and progress remain usable.
+- Missing, expired, replayed, wrong-session or raced proofs fail closed; an earlier guest challenge cannot adopt later passkey credentials. Revoked sessions cannot be recreated by an in-flight wallet link.
+- Browser-provider and manual message flows submit a fresh one-use account grant explicitly; no background wallet proof, unbounded request or automatic write retry.
+- Record baseline negative controls, real-Redis cryptographic regressions, full repository checks and exact PR/CI status separately from deployment and physical-device acceptance.
+
+Evidence/specification: [docs/WALLET-LINK-REAUTH.md](../../docs/WALLET-LINK-REAUTH.md), [tests/passkeys.test.js](../../tests/passkeys.test.js), [tests/wallet-quick-login.test.js](../../tests/wallet-quick-login.test.js), [tests/sign-in-copy.test.js](../../tests/sign-in-copy.test.js), [docs/SECURITY-QUEUE-2026-11-21.md](../../docs/SECURITY-QUEUE-2026-11-21.md).
+
+## SEC-004: Assemble and verify the combined origin, limiter and wallet-link release
+
+**P0 / in-progress.** Owner: Maintainer prepares candidate; founder reviews release; independent reviewer unassigned. Dependencies: SEC-002, SEC-003, AUTH-006.
+
+Next action: Combined draft PR #324 is published and its exact branch-scoped Preview origins are configured and read back. Existing fixed Preview alias is unchanged. Obtain independent review and owner/provider confirmation of Preview database isolation before actual-account/device acceptance; inspect final exact-head hosted checks. Main merge remains separate.
+
+Acceptance:
+
+- Preserve pinned #307/#308/#309 implementations and all maintained tasks/history; resolve identity imports retaining both origin and passkey protections.
+- Full application, signer, security, content, economy, continuity, site and whitepaper verification passes on the assembled source; prior compatibility-only results stay historical.
+- Use only exact branch-scoped Preview origins for wallet/Royale and WebAuthn; preserve Production and the existing fixed Preview alias.
+- Record actual independent review, Preview data isolation, hosted check and physical-device acceptance separately. Do not describe missing results as accepted.
+- Preserve owner/MFA #306, private bank, migration, payout, CCE and collection holds; do not close original PRs before accepted replacement release.
+
+Evidence/specification: [docs/SECURITY-RELEASE-CANDIDATE.md](../../docs/SECURITY-RELEASE-CANDIDATE.md), [docs/EXACT-ORIGIN-REVIEW.md](../../docs/EXACT-ORIGIN-REVIEW.md), [docs/ATOMIC-RATE-LIMIT.md](../../docs/ATOMIC-RATE-LIMIT.md), [docs/WALLET-LINK-REAUTH.md](../../docs/WALLET-LINK-REAUTH.md).
