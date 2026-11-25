@@ -2863,7 +2863,7 @@
       "category": "explorers",
       "name": "Kaspa Daily Charts",
       "url": "https://kaspadaily.com/charts",
-      "description": "Kaspa network and market charts covering active addresses, daily transactions, hashrate, realized capitalization and MVRV.",
+      "description": "Kaspa network and market charts, including Network Activity (transactions and active addresses), Hash Ribbons, and mVRV.",
       "source": "https://kaspadaily.com/charts",
       "reviewedAt": "2026-11-21",
       "status": "listed"
@@ -2893,7 +2893,7 @@
       "category": "explorers",
       "name": "kascov",
       "url": "https://kascov.io/",
-      "description": "Open-source Kaspa covenant explorer and indexer for inspecting KCC-20 tokens, markets and liquidity pools. Includes a public API.",
+      "description": "Live Kaspa covenant explorer and indexer for KCC-20 tokens, markets and liquidity pools, with a public API. The public GitHub repo currently publishes the decoder (kascov-decode); explorer and indexer source is not fully public.",
       "source": "https://github.com/Knitser/kascov",
       "reviewedAt": "2026-11-21",
       "status": "listed"

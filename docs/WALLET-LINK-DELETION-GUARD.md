@@ -1,6 +1,6 @@
 # Wallet-link deletion guard — AUTH-007
 
-Prepared November 25, 2026 against combined candidate #324 at `0f356360980851228670303cd1322a02be1b1351`. This is a separately reviewed follow-up, not a change to #324's published head, a main merge or a production release.
+Prepared November 25, 2026 against combined candidate #324 at `0f356360980851228670303cd1322a02be1b1351`. This follow-up requires its own independent review. Its original parent review is historical evidence and does not approve this delta.
 
 ## Reproduced failure
 
@@ -31,4 +31,8 @@ Full local verification passes 1,006 application tests with required isolated Re
 
 ## Remaining boundaries
 
-Independent review of this delta, owner/provider confirmation that Preview and Production Redis are separate, actual account/device acceptance and founder release approval remain separate. No real account, wallet signature, provider configuration, secret, payout, migration or private-ranked-bank change is made here. The original combined candidate and its earlier component PRs remain intact and unmerged.
+GitHub now reports #324 merged as c8029d1 and this follow-up retargeted to main. Current main f95a0dc also includes the separate ai patch and directory corrections. Integrate those changes without altering the scoped deletion guard; record exact-head checks in #326.
+
+Read-only provider metadata confirms separate Preview and Production database resources, with matching URL/token resource assignments in each scope and no higher-priority REST override. Only the two plain exact-origin variables for this branch Preview were added; Production and the fixed Preview alias were unchanged. Authenticated smoke checks on d287696 passed home/health, expected session-required responses and foreign-origin rejection; no account or wallet action was created. The earlier connector redirect failure was resolved using the authorized Preview share link and a same-origin cookie client.
+
+Independent review of the refreshed delta, actual account/device acceptance and founder release approval remain pending. The review request is posted through Geek Bot on #225; no independent verdict is claimed. Economic, private-bank, migration and Production configuration holds remain.

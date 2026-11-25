@@ -54,7 +54,7 @@
   "dependencies": {
     "@dfns/kaspa-wasm": "0.14.1",
     "@simplewebauthn/server": "14.1.0",
-    "ai": "7.0.172",
+    "ai": "7.0.177",
     "web-push": "4.0.0"
   }
 }

@@ -27,7 +27,7 @@ Record date: 2026-11-25. **Public Alpha**. Canonical: [GEEKProtocol0110/geek-pro
 
 **AUTH-007: source-candidate.** Reject first-wallet-link and recovery writes after either the target or requesting player is concurrently deleted.
 
-Next task: **AUTH-007**. Draft #326 is stacked on #324 at 0f35636 and contains the separately checked AUTH-007 deletion-race fix. Inspect final exact-head hosted checks and obtain independent delta review. Preserve the parent head; confirm Preview database isolation before actual-account/device acceptance. Retarget only after accepted parent release; main merge remains separate.
+Next task: **AUTH-007**. Draft #326 integrates current main f95a0dc after observed #324 merge c8029d1. Fresh local verification passes 1006 application and 18 signer checks, with all supporting checks. Publish the exact refreshed head and inspect hosted checks; request independent review of that head through Geek Bot. Preview database isolation and authenticated origin/session boundaries are confirmed. Actual-device acceptance and founder release approval remain pending.
 
 ## Holds
 

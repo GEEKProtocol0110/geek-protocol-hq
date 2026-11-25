@@ -42,7 +42,7 @@
     "description": "Reject first-wallet-link and recovery writes after either the target or requesting player is concurrently deleted."
   },
   "nextTask": "AUTH-007",
-  "nextAction": "Draft #326 is stacked on #324 at 0f35636 and contains the separately checked AUTH-007 deletion-race fix. Inspect final exact-head hosted checks and obtain independent delta review. Preserve the parent head; confirm Preview database isolation before actual-account/device acceptance. Retarget only after accepted parent release; main merge remains separate.",
+  "nextAction": "Draft #326 integrates current main f95a0dc after observed #324 merge c8029d1. Fresh local verification passes 1006 application and 18 signer checks, with all supporting checks. Publish the exact refreshed head and inspect hosted checks; request independent review of that head through Geek Bot. Preview database isolation and authenticated origin/session boundaries are confirmed. Actual-device acceptance and founder release approval remain pending.",
   "unresolved": [
     "Original founding conversation and remaining phone files are still missing; the supplied 500-position roster and incomplete trait PDF are preserved unchanged in merged PR #116.",
     "Founder recalls 23 hours; an earlier assistant kit used approximately 29 hours. Neither is independently verified.",
@@ -104,7 +104,7 @@
     "task": "ECO-006",
     "status": "merged-deployed-http-verified",
     "evidence": "docs/GEEK-NEWS.md",
-    "nextAction": "Founder-approved #241 squash-merged as 0a8a53fa9acc62262b5493c4eb9aa95811b88f67 after exact-head CI 42262924168 and both Vercel checks passed. Production dpl_J6BvCnjY33YSkbkbwDGxBi5rzHoU READY. Canonical /news/ HTTP 200 has the GEEK market desk and News CSP; /api/widget?service=markets returns 100 rows, ranks 1\u2013100; Profile retains its baseline CSP. Desktop preview rendered all 100 rows and working search. Production HTTP verification does not establish physical-phone or independent acceptance. Maintain provider availability and retain device/independent acceptance as separate work."
+    "nextAction": "Founder-approved #241 squash-merged as 0a8a53fa9acc62262b5493c4eb9aa95811b88f67 after exact-head CI 42262924168 and both Vercel checks passed. Production dpl_J6BvCnjY33YSkbkbwDGxBi5rzHoU READY. Canonical /news/ HTTP 200 has the GEEK market desk and News CSP; /api/widget?service=markets returns 100 rows, ranks 1–100; Profile retains its baseline CSP. Desktop preview rendered all 100 rows and working search. Production HTTP verification does not establish physical-phone or independent acceptance. Maintain provider availability and retain device/independent acceptance as separate work."
   },
   "firstPlayerJourney": {
     "task": "UX-012",
@@ -177,13 +177,13 @@
     "task": "ECO-008",
     "status": "source-candidate",
     "evidence": "docs/EDUCATION-DIRECTORY.md",
-    "nextAction": "Review the DAGKnight Explained learning-resource addition to the Education directory from merged PR #256."
+    "nextAction": "Review the DAGKnight Explained learning-resource addition to the Education directory, which landed in #317 (education-resources)."
   },
   "strategyPuzzles": {
     "task": "GAME-003",
     "status": "source-candidate",
     "evidence": "docs/STRATEGY-PUZZLE-GAMES.md",
-    "nextAction": "Review Tower of Geek rename and selectable 3\u20138 discs; #258 merged. Browser/phone acceptance remains open. A.C.E. stays paused."
+    "nextAction": "Review Tower of Geek rename and selectable 3–8 discs; #258 merged. Browser/phone acceptance remains open. A.C.E. stays paused."
   },
   "sitePolish": {
     "task": "UX-022",
@@ -237,7 +237,7 @@
     "task": "UX-027",
     "status": "source-candidate",
     "evidence": "docs/HOLIDAY-THEMES.md",
-    "nextAction": "Draft only. Gee previews the catalog, including Geek Protocol's Birthday on June 21\u201323, before any Appearance save. The saved default remains Off."
+    "nextAction": "Draft only. Gee previews the catalog, including Geek Protocol's Birthday on June 21–23, before any Appearance save. The saved default remains Off."
   },
   "devicePush": {
     "task": "GAME-005",
@@ -337,14 +337,14 @@
   },
   "securityReleaseCandidate": {
     "task": "SEC-004",
-    "status": "published-review-preview-prepared",
+    "status": "merged-device-acceptance-open",
     "evidence": "docs/SECURITY-RELEASE-CANDIDATE.md",
-    "nextAction": "Geek Bot November 24 reports Security Bot READY for Preview review at #324 head 0f35636. AUTH-007 is a separately reviewed deletion-race delta. Preview/Production database isolation and actual-device acceptance remain unconfirmed; no main merge is authorized."
+    "nextAction": "GitHub reports #324 merged as c8029d162788c934b768973581f1e4b8d7e62446 on November 25. Auth runtime, API and tests match reviewed source 0f35636; the merge includes the separate ai dependency update. Database resources are confirmed distinct from provider metadata. Physical-device and Production authentication acceptance remain separate. AUTH-007 closes the retained deletion-marker LOW in draft #326."
   },
   "walletLinkDeletionGuard": {
     "task": "AUTH-007",
-    "status": "published-draft",
+    "status": "integration-internally-verified",
     "evidence": "docs/WALLET-LINK-DELETION-GUARD.md",
-    "nextAction": "Draft #326 is stacked on #324 at 0f35636 and contains the separately checked AUTH-007 deletion-race fix. Inspect final exact-head hosted checks and obtain independent delta review. Preserve the parent head; confirm Preview database isolation before actual-account/device acceptance. Retarget only after accepted parent release; main merge remains separate."
+    "nextAction": "Draft #326 integrates current main f95a0dc after observed #324 merge c8029d1. Fresh local verification passes 1006 application and 18 signer checks, with all supporting checks. Publish the exact refreshed head and inspect hosted checks; request independent review of that head through Geek Bot. Preview database isolation and authenticated origin/session boundaries are confirmed. Actual-device acceptance and founder release approval remain pending."
   }
 }

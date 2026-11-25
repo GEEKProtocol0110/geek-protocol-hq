@@ -1216,7 +1216,7 @@ Evidence/specification: [docs/TABLETOP-ART.md](../../docs/TABLETOP-ART.md), [pub
 
 **P2 / in-progress.** Owner: Maintainer; founder release review. Dependencies: ECO-003.
 
-Next action: Review the DAGKnight Explained learning-resource addition to the Education directory from merged PR #256.
+Next action: Review the DAGKnight Explained learning-resource addition to the Education directory, which landed in #317 (education-resources).
 
 Acceptance:
 
@@ -1648,7 +1648,7 @@ Evidence/specification: [docs/WALLET-LINK-REAUTH.md](../../docs/WALLET-LINK-REAU
 
 **P0 / in-progress.** Owner: Maintainer prepares candidate; founder reviews release; independent reviewer unassigned. Dependencies: SEC-002, SEC-003, AUTH-006.
 
-Next action: Combined draft PR #324 is published and its exact branch-scoped Preview origins are configured and read back. Existing fixed Preview alias is unchanged. Obtain independent review and owner/provider confirmation of Preview database isolation before actual-account/device acceptance; inspect final exact-head hosted checks. Main merge remains separate.
+Next action: GitHub reports #324 merged as c8029d162788c934b768973581f1e4b8d7e62446 on November 25. Auth runtime, API and tests match reviewed source 0f35636; the merge includes the separate ai dependency update. Database resources are confirmed distinct from provider metadata. Physical-device and Production authentication acceptance remain separate. AUTH-007 closes the retained deletion-marker LOW in draft #326.
 
 Acceptance:
 
@@ -1664,7 +1664,7 @@ Evidence/specification: [docs/SECURITY-RELEASE-CANDIDATE.md](../../docs/SECURITY
 
 **P1 / in-progress.** Owner: Maintainer implements; independent delta reviewer unassigned; founder reviews release and devices. Dependencies: SEC-004.
 
-Next action: Draft #326 is stacked on #324 at 0f35636 and contains the separately checked AUTH-007 deletion-race fix. Inspect final exact-head hosted checks and obtain independent delta review. Preserve the parent head; confirm Preview database isolation before actual-account/device acceptance. Retarget only after accepted parent release; main merge remains separate.
+Next action: Draft #326 integrates current main f95a0dc after observed #324 merge c8029d1. Fresh local verification passes 1006 application and 18 signer checks, with all supporting checks. Publish the exact refreshed head and inspect hosted checks; request independent review of that head through Geek Bot. Preview database isolation and authenticated origin/session boundaries are confirmed. Actual-device acceptance and founder release approval remain pending.
 
 Acceptance:
 

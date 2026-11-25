@@ -23,3 +23,7 @@ AUTH-006 is refreshed against main 352d811. Authentication/runtime/test bytes ar
 ## November 25 checkpoint
 
 Geek Bot's November 24 report on #225 (`issuecomment-7132620799`) supplies an attributed Security Bot READY-for-Preview result for combined #324 at `0f35636`; the previous missing-review statement above is historical. Database isolation and physical-device acceptance remain unconfirmed. AUTH-007 is a separate follow-up to that exact parent: reject wallet-binding writes when either the target or requester has been deleted. Three real-Redis race regressions fail against the unchanged parent, then pass with the guard; reverse-order deletion remains safe. Review this delta independently and preserve the existing merge/economic holds. Other LOW notes in the report remain separate.
+
+### November 25 integration and Preview follow-up
+
+GitHub now reports #324 merged as c8029d1, #325 and #321 also merged, and #326 retargeted to main. Refresh AUTH-007 on f95a0dc; the parent authentication runtime/tests match 0f35636. Provider metadata confirms separate Preview/Production database resources. Authenticated read-only/session-rejection checks on d287696 pass with exact branch origins. Independent delta review remains requested and pending; device acceptance and founder approval for #326 remain separate.
